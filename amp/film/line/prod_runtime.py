@@ -51,8 +51,7 @@ def export_worker(config, row, workspace):
     result = read_json(Path(config['root'])/'films'/row['id']/'voice-run.json',{})
     if result.get('exit_code') != 0 or not completed_voice(config, row, workspace):
         raise RuntimeError('Voiced timing has no passing kit check; export stopped')
-    from pages import line_page
-    return export(config, row, workspace, page_builder=line_page)
+    return export(config, row, workspace)
 
 
 def export_film(config, row, workspace):

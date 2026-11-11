@@ -9,7 +9,7 @@ import subprocess
 import urllib.request
 
 from providers import clean_environment, now, write_json
-from state import coordinator_lock, read_json
+from state import shared_lock, read_json
 
 NAMES = {'XescS24CsOySAkKrLAO3': 'Madeline', 'J3Ei0Lj6fAobhIqY5ySH': 'Paul', 'SYXbTJsLE7zmSjr1DchT': 'Champ'}
 ALLOWED = {'id', 'title', 'problemType', 'skill', 'skillTitle', 'grade', 'strand', 'standards', 'script', 'timing', 'figure'}
@@ -68,7 +68,7 @@ def player_copy(payload):
     return value
 
 
-def export_worker(config, row, workspace, *, page_builder):
+def export_worker(config, row, workspace):
     if not os.environ.get('FILM_LINE_HEAVY'):
         raise RuntimeError('Audio export requires the heavy-command gate')
     from runtime import validate_cast
@@ -92,25 +92,25 @@ def export_worker(config, row, workspace, *, page_builder):
         raise RuntimeError('Exported voices differ from the production assignment')
     payload = player_copy(emitted)
     index_row = next(r for r in read_json(stage/'index.json') if r['id']==row['id'])
+    data.mkdir(parents=True, exist_ok=True)
     destination = data/(row['id']+'.json')
-    with coordinator_lock(root/'live-export.lock'):
+    with shared_lock(config):
         existing = read_json(destination)
-        if existing is not None and existing != payload:
-            raise RuntimeError('A different live edition already uses this film ID')
+        released = any(r['id'] == row['id'] for r in read_json(data/'queue.json', []))
         audio = data/(row['id']+'.m4a')
         temporary = audio.with_suffix('.m4a.tmp')
         shutil.copyfile(stage/(row['id']+'.m4a'), temporary)
         temporary.replace(audio)
         write_json(destination, payload)
-        index = read_json(data/'index.json', [])
-        prior = next((r for r in index if r['id']==row['id']), None)
-        if prior:
-            index_row['added'] = prior.get('added', index_row['added'])
-            index[index.index(prior)] = index_row
-        else:
-            index.append(index_row)
-        write_json(data/'index.json', index)
-        page_builder(config)
+        prior = read_json(root/'films'/row['id']/'export.json', {})
+        if existing == payload and prior.get('added'):
+            index_row['added'] = prior['added']
+        if released:
+            # Publishing needs the current edition for director follow-ups.
+            # The queue retains the release record until an explicit re-release.
+            index = read_json(data/'index.json', [])
+            write_json(data/'index.json', [
+                {**r, **index_row} if r['id'] == row['id'] else r for r in index])
     base = config['player_url'].rstrip('/')+'/data/'
     with urllib.request.urlopen(base+row['id']+'.json', timeout=20) as response:
         if json.load(response) != payload:
@@ -119,11 +119,8 @@ def export_worker(config, row, workspace, *, page_builder):
     with urllib.request.urlopen(request, timeout=20) as response:
         if int(response.headers.get('Content-Length', 0)) != audio.stat().st_size:
             raise RuntimeError('Live audio readback has the wrong size')
-    with urllib.request.urlopen(base+'index.json', timeout=20) as response:
-        if not any(r['id']==row['id'] for r in json.load(response)):
-            raise RuntimeError('Live index does not list the film')
     receipt = {'exported': True, 'id': row['id'], 'at': now(), 'added': index_row['added'],
                'json_sha256': hashlib.sha256(destination.read_bytes()).hexdigest(),
-               'audio_sha256': hashlib.sha256(audio.read_bytes()).hexdigest()}
+               'audio_sha256': hashlib.sha256(audio.read_bytes()).hexdigest(), 'index_row': index_row}
     write_json(root/'films'/row['id']/'export.json', receipt)
     return receipt

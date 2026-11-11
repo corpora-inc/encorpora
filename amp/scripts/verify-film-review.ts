@@ -19,6 +19,7 @@ const chromium = secureChromium(rawChromium);
 
 const stub = `<!doctype html><html lang="en" data-theme="light"><body>
 <div class="live ready playing">
+  <div class="live-frame" style="height:600px;background:#9cd">stage</div>
   <button class="live-grade-btn is-approve" aria-label="Approve">Approve</button>
   <div class="live-sheet">Grade sheet</div>
   <input class="live-scrub" type="range" min="0" max="120" step="0.01" value="0" aria-label="Position">
@@ -28,6 +29,7 @@ const stub = `<!doctype html><html lang="en" data-theme="light"><body>
   const scrub = document.querySelector(".live-scrub");
   let playing = true;
   window.__playing = () => playing;
+  window.__toggle = () => document.querySelector(".live").classList.toggle("playing");
   let base = 0, origin = performance.now();
   const now = () => base + (playing ? (performance.now() - origin) / 1000 : 0);
   const tick = () => { if (playing) scrub.value = String(now()); requestAnimationFrame(tick); };
@@ -89,6 +91,19 @@ async function boxOf(page: Page, selector: string) {
   assert.ok(box, selector);
   return box;
 }
+
+/** The film stage's box in page coordinates: the iframe's box plus the stage's place inside it. */
+async function stageBox(page: Page) {
+  const frame = await boxOf(page, "iframe");
+  const inner = await page.evaluate(() => {
+    const r = document.querySelector("iframe")!.contentDocument!.querySelector(".live-frame")!.getBoundingClientRect();
+    return { x: r.x, y: r.y, width: r.width, height: r.height };
+  });
+  return { x: frame.x + inner.x, y: frame.y + inner.y, width: inner.width, height: inner.height };
+}
+
+const apart = (a: { x: number; y: number; width: number; height: number }, b: { x: number; y: number; width: number; height: number }) =>
+  a.x + a.width <= b.x + 0.5 || b.x + b.width <= a.x + 0.5 || a.y + a.height <= b.y + 0.5 || b.y + b.height <= a.y + 0.5;
 
 async function behavior() {
   const kept = { t: 12.5, text: "Kept from before" };
@@ -176,11 +191,29 @@ async function behavior() {
           return {
             fullWidth: Math.abs(sr.width - document.documentElement.clientWidth) < 2,
             inside: ir.top >= sr.top - 1 && ir.left >= sr.left - 1 && ir.bottom <= sr.bottom + 1 && ir.right <= sr.right + 1,
-            tall: sr.height + 1 >= sr.width * (1920 / 1080) + 120 && sr.height < sr.width * (1920 / 1080) + 220,
+            tall: sr.height + 1 >= sr.width * (1920 / 1080) + 120 + 52 && sr.height < sr.width * (1920 / 1080) + 220 + 52,
             slotClipped: clipped[0],
             frameClipped: clipped[1],
           };
         });
+        const button = await boxOf(page, ".film-full");
+        const stage = await stageBox(page);
+        assert.ok(button.width >= 44 && button.height >= 44, `full screen button ${button.width}x${button.height} at ${width}`);
+        assert.ok(apart(button, stage), `full screen button covers the film at ${width}`);
+        assert.ok(apart(button, await boxOf(page, "iframe")), `full screen button overlaps the player at ${width}`);
+        assert.ok(button.x >= 0 && button.x + button.width <= width, `full screen button off screen at ${width}`);
+        await page.evaluate("window.scrollTo(0, 0)");
+        const stageStill = await stageBox(page);
+        await page.evaluate("document.querySelector('iframe').contentWindow.__toggle()");
+        await settle();
+        const stageMoved = await stageBox(page);
+        const buttonMoved = await boxOf(page, ".film-full");
+        await page.evaluate("document.querySelector('iframe').contentWindow.__toggle()");
+        await settle();
+        for (const key of ["x", "y", "width", "height"] as const) {
+          assert.ok(Math.abs(stageMoved[key] - stageStill[key]) < 1, `stage ${key} moved when playback changed at ${width}`);
+          assert.ok(Math.abs(buttonMoved[key] - button[key]) < 1, `button ${key} moved when playback changed at ${width}`);
+        }
         assert.equal(fit.fullWidth, true, `film width at ${width}`);
         assert.equal(fit.inside, true, `iframe clipped by the slot at ${width}`);
         assert.equal(fit.tall, true, `film shorter than its picture at ${width}`);
@@ -268,6 +301,17 @@ async function behavior() {
     assert.ok(Math.abs(filmAfterType.width - beforeType.width) < 1 && Math.abs(filmAfterType.height - beforeType.height) < 1, "typing resized the film");
     assert.equal(await playing(), true, "typing paused the film");
 
+    // Page scroll may differ after full screen, so compare against the slot's own top edge.
+    const inSlot = async () => {
+      const slotBox = await boxOf(page, ".player-slot");
+      const stage = await stageBox(page);
+      const button = await boxOf(page, ".film-full");
+      return {
+        stage: { x: stage.x - slotBox.x, y: stage.y - slotBox.y, width: stage.width, height: stage.height },
+        button: { x: button.x - slotBox.x, y: button.y - slotBox.y, width: button.width, height: button.height },
+      };
+    };
+    const placedBefore = await inSlot();
     await page.locator(".film-full").click();
     await page.waitForFunction(() => !!document.fullscreenElement || !!document.querySelector(".player-slot.is-fill"));
     assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear still");
@@ -276,6 +320,14 @@ async function behavior() {
     await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector(".player-slot.is-fill"));
     assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear still");
     assert.equal(await page.locator(".score").getAttribute("data-set"), "true");
+    await settle();
+    const placedAfter = await inSlot();
+    const stageBefore = placedBefore.stage, stageAfter = placedAfter.stage;
+    const buttonBefore = placedBefore.button, buttonAfter = placedAfter.button;
+    for (const key of ["x", "y", "width", "height"] as const) {
+      assert.ok(Math.abs(stageAfter[key] - stageBefore[key]) < 2, `stage ${key} moved after full screen`);
+      assert.ok(Math.abs(buttonAfter[key] - buttonBefore[key]) < 2, `button ${key} moved after full screen`);
+    }
     const restored = await boxOf(page, ".player-slot");
     assert.ok(Math.abs(restored.height - beforeType.height) < 2, "leaving full screen resized the film");
 
