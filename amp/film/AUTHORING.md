@@ -381,7 +381,7 @@ Parts:
 | `seg` | Two point names, `ink`, `w`, `dash`, `arrows` (parallel marks), `ticks` (equal marks), `tickAt`, `extend` (a line, not a segment) |
 | `dot` | A point name, `ink`, `r` |
 | `angle` | Three point names with the corner in the middle, `fill`, `ink`, `r`, `right` |
-| `label` | TeX, `at` (a point, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph) |
+| `label` | TeX, `at` (a point, a thing, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph), `flies` (it travels; see "Pairs, and things that travel to a label") |
 | `dim` | Two point names, `side`, `tex`: a measuring bracket |
 | `curve` | Point names, `ink`, `w` |
 | `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled |
@@ -569,6 +569,44 @@ Figure actions:
 | `{"do":"view","to":[-8,-8,8,8]}` | Push in or pull back, on purpose |
 
 `target` may be a list. Leave `dur` out unless a motion needs more room.
+
+### Pairs, and things that travel to a label
+
+Comparing two groups is pairing: every bear gets one balloon, and whatever is left over says which group has more. Make the pair something a child can see.
+
+**A line between two things.** A `seg` may name things as its ends. It follows them wherever they are sent, and things paint over it, so it reads as a string from one to the other. `draw` it on the word that makes the pair.
+
+```json
+{ "figure": {
+    "view": [0, 0, 9.6, 9.1],
+    "points": { "B": [0, 2.5], "H": [0, 6.1], "S": [0.3, 9] },
+    "parts": [
+      { "id": "s1", "seg": ["sky1", "bear1"], "ink": "muted", "w": 4 },
+      { "id": "s2", "seg": ["sky2", "bear2"], "ink": "muted", "w": 4 },
+      { "id": "bear", "things": "bear", "n": 3, "at": "B", "start": true },
+      { "id": "held", "things": "balloon", "n": 0, "slots": 3, "at": "H" },
+      { "id": "sky", "things": "balloon", "n": 2, "at": "S", "arrange": "scatter", "perRow": 3, "start": true }
+    ] },
+  "beats": [
+    { "say": "One for you. One for you.", "do": [
+      { "do": "send", "target": "sky1", "to": "held", "at": "One" }, { "do": "draw", "target": "s1", "at": "you" },
+      { "do": "send", "target": "sky2", "to": "held", "at": "One", "nth": 2 }, { "do": "draw", "target": "s2", "at": "you", "nth": 2 } ] },
+    { "say": "One bear has no balloon.", "do": [ { "do": "highlight", "target": "bear3", "at": "One" } ] }
+  ] }
+```
+
+- Put the partner group's places (`held`) straight above or below the group that stays (`bear`), with the same `size`: the first thing sent lands by the first bear, the second by the second, and the one with no partner is plain to see.
+- List the `seg` parts before the things. A segment keeps the names it was given: `["sky1", "bear1"]` still joins that balloon and that bear after the balloon has moved to `held`.
+- Counters pair the same way: a `seg` between two counters (`["c1", "q1"]`) follows a counter that is moved into another grid's cell. A hidden grid (no `start`) with wide cells is a spread-out row; `move` its counters into a grid with narrow cells to slide them together.
+
+**A label that travels.** A label rides whatever its `at` names: a point that is moved, or a thing that is sent. Give a travelling label `"flies": true`. In flight it passes over the labels in its way; without it, a label crossed in mid-flight is pushed aside and stays aside for the whole shot. Where a flying label comes to rest it is kept clear of the others, as any label is.
+
+```
+{ "id": "mA", "label": "\\text{A}", "at": "MA", "dir": "c", "size": "l", "flies": true }
+{ "do": "show", "target": "mA", "at": "four" }, { "do": "move", "points": { "MA": [5.25, 2.75] }, "at": "four" }
+```
+
+This is how a group's letter leaves its group and lands on its count on a number path (a `grid` of `[n, 1]` cells with a numeral in each). `compare-groups--sk` uses all three: balloons handed to bears, a spread-out row slid together and paired, and four groups' letters flown to a number path.
 
 ## Make it show why
 

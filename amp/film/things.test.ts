@@ -213,6 +213,17 @@ describe("the authoring guide", () => {
     expect(thingsProblems(script)).toEqual([]);
     expect(scriptSchema.safeParse(script).error?.issues ?? []).toEqual([]);
   });
+  it("gives a pairs example that passes the schema and the --dry check", () => {
+    const pairs = guide.slice(guide.indexOf("### Pairs, and things that travel to a label"), guide.indexOf("## Make it show why"));
+    const shots = [...pairs.matchAll(/```json\n([\s\S]*?)```/g)].map((m) => JSON.parse(m[1]!));
+    expect(shots).toHaveLength(1);
+    const script = { id: "guide", title: "Guide", shots };
+    expect(thingsProblems(script)).toEqual([]);
+    expect(scriptSchema.safeParse(script).error?.issues ?? []).toEqual([]);
+    // the travelling label's part, as the guide writes it
+    const label = pairs.match(/^\{ "id": "mA".*\}$/m)?.[0];
+    expect(partSchema.safeParse(JSON.parse(label ?? "null")).success).toBe(true);
+  });
   it("shows every action row in a form the schema takes", () => {
     const rows = [...section.matchAll(/^\| `(\{"do":[^`]+\})` \|/gm)].map((m) => JSON.parse(m[1]!));
     expect(rows.map((r) => r.do)).toEqual(["arrive", "count", "count", "count", "send", "leave"]);

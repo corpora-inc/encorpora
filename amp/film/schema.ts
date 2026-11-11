@@ -100,6 +100,12 @@ const label = z.object({
   /** Stay put on the card when the view zooms (a readout, the function's name); other labels follow the figure. */
   pin: z.boolean().optional(),
   /**
+   * This label travels: its point is moved, or it rides a thing that is sent
+   * somewhere. In flight it passes over the labels in its way instead of
+   * pushing them apart; where it rests, it is kept clear as any label is.
+   */
+  flies: z.boolean().optional(),
+  /**
    * A live readout. @x and @y become this point's coordinates as it moves (defaults to `at`).
    * @n becomes how many counters sit in this grid's cells, counting as they land.
    */
