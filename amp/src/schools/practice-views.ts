@@ -60,24 +60,29 @@ async function learnerWeeks(
   return weeks;
 }
 
-/** Each learner's last placed level in each week of the term, off the
- * (learner, day) index that carries the level and its answer count. */
+/** Each learner's last placed level in each week of the term: one backward
+ * probe of the (learner, day) index, which carries the level and its answer
+ * count, per learner-week. No sort and no heap, at 10,000 students. */
 async function levelWeeks(
   db: Database,
   learners: readonly string[],
+  weeks: readonly string[],
   from: string,
   to: string,
 ) {
   const levels = new Map<string, Map<string, number>>();
-  if (!learners.length) return levels;
+  if (!learners.length || !weeks.length) return levels;
   const { rows } = await db.query(
-    `SELECT DISTINCT ON (d.learner_id,date_trunc('week',d.day))
-       d.learner_id AS learner,date_trunc('week',d.day)::date::text AS week,d.overall_level::float8 AS level
-     FROM amp_level_days d
-     WHERE d.learner_id=ANY($1::text[]) AND d.day BETWEEN $2::date AND $3::date
-       AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
-     ORDER BY d.learner_id,date_trunc('week',d.day),d.day DESC`,
-    [learners, from, to],
+    `SELECT l.learner,w.week::text AS week,x.level
+     FROM unnest($1::text[]) l(learner)
+     CROSS JOIN unnest($2::date[]) w(week)
+     CROSS JOIN LATERAL (
+       SELECT d.overall_level::float8 AS level FROM amp_level_days d
+       WHERE d.learner_id=l.learner AND d.day BETWEEN w.week AND w.week+6
+         AND d.day BETWEEN $3::date AND $4::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
+       ORDER BY d.day DESC LIMIT 1
+     ) x`,
+    [learners, weeks, from, to],
   );
   for (const row of rows as { learner: string; week: string; level: number }[]) {
     const byWeek = levels.get(row.learner) ?? new Map<string, number>();
@@ -150,7 +155,13 @@ export async function readPractice(
 
   const [byWeek, levels, groups] = await Promise.all([
     learnerWeeks(pool, learners, first, current),
-    levelWeeks(pool, learners, term.startsOn, lastDay),
+    levelWeeks(
+      pool,
+      learners,
+      weeks.filter((week) => week <= current),
+      term.startsOn,
+      lastDay,
+    ),
     school ? classGroups(pool, orgId, students) : schoolGroups(pool, orgId, students),
   ]);
 
