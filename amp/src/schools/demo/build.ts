@@ -38,7 +38,7 @@ import {
 import {
   seedCalendar,
   seedStaffEvents,
-  seedTermEvidence,
+  seedEngineTerm,
   SHORT_LAST_WEEK,
   sumWeeks,
 } from "./term.js";
@@ -133,7 +133,10 @@ export async function createDemo(
   const place = await transaction(pool, async (client) => {
     // A second request (a double-click) waits for the first to finish,
     // then returns what it made.
-    await client.query("SET LOCAL lock_timeout='30s'");
+    // The school persona replays the estimator over a term of answers. A second
+    // click waits for that transaction instead of starting another.
+    await client.query("SET LOCAL lock_timeout='120s'");
+    await client.query("SET LOCAL statement_timeout='120s'");
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-demo:${input.accountId}:${input.kind}`,
     ]);
@@ -516,10 +519,11 @@ async function build(
     ],
   );
   if (others.length)
-    await seedTermEvidence(client, {
+    await seedEngineTerm(client, {
       yearStart: year.start,
       skillsPerDay: 2,
       weekShape: SHORT_LAST_WEEK,
+      now,
     });
   // The hero class's students join the event log's sample too.
   await client.query(
@@ -774,10 +778,12 @@ async function seedWorkbooks(
       recordedAt,
     ],
   );
-  // Recording results stores today's level from the few answers on file; the
-  // term's stored levels are the class's real story, so they stand.
+  // Paper marks are answers. A level day the estimator already wrote from
+  // the term's answers stays. A row from an older writer, with no reported-sd
+  // version, does not.
   await pool.query(
-    "DELETE FROM amp_level_days WHERE learner_id=ANY($1::text[]) AND policy_version<>'demo'",
+    `DELETE FROM amp_level_days WHERE learner_id=ANY($1::text[])
+       AND NOT (frontier ? 'sdVersion')`,
     [rows.map((row) => row.learner_id)],
   );
 }
