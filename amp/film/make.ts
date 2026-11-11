@@ -156,7 +156,7 @@ function even(src: Int16Array) {
   const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
   return Int16Array.from(src, (v) => Math.round(v * gain));
 }
-/** Notes about the voice that do not stop the film. */
+/** Notes that do not stop the film: about the voice, and labels a crowded app figure left out. */
 const voiceNotes: string[] = [];
 async function voice(): Promise<Timing> {
   requireVoices(cast);
@@ -372,7 +372,8 @@ const server = await createServer({
     configureServer(vite) {
       vite.middlewares.use(async (req, res_, next) => {
         if (!req.url?.startsWith("/__film")) return next();
-        // estimated timing runs a little off the real voice: hold the dry check to a 6 s still limit for margin
+        // estimated timing runs a little off the real voice: hold the dry check to a 6 s still limit for margin.
+        // `figure` is the template's example, for {example: true} shots; a shot's own scene travels in the script.
         const payload = JSON.stringify({ script, timing, figure: lesson.example.figure ?? null, still: values.dry ? 6 : 7.5, layout: values.tall ? "tall" : "wide" }).replace(/</g, "\\u003c");
         res_.setHeader("Content-Type", "text/html");
         res_.end(await vite.transformIndexHtml(req.url, `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"></head><body><div id="film"></div><script>window.__filmData=${payload}</script><script type="module" src="/film/page.tsx"></script></body></html>`));
@@ -393,6 +394,7 @@ try {
   await page.waitForFunction(() => !!(window as any).__film, undefined, { timeout: 60000 });
   await page.evaluate(() => (window as any).__film.ready);
   problems.push(...(await page.evaluate(() => (window as any).__film.issues as string[])));
+  voiceNotes.push(...(await page.evaluate(() => ((window as any).__film.notes ?? []) as string[])));
   // the board's math, checked without rendering: arithmetic true, every step consistent with its answer
   problems.push(...mathProblems(script));
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > ((window as any).__filmData.layout === "tall" ? 1080 : 1920));

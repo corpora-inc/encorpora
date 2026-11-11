@@ -99,7 +99,10 @@ command verifies existing immutable files. `-- --check` validates without writin
 Removing every approval writes an empty manifest, withdrawing all film links.
 If more than one edition of a problem type is approved, choose one on the review
 page before publishing. Review records, notes, voiced data and audio stay outside
-Git. Clients without `lesson-film-v1` receive written lessons only.
+Git. A film with a shot's own app figure (`{"scene": ...}`) is published as
+`lesson-film-v3` and reaches only clients that declare it; other films also
+reach `lesson-film-v2` and `lesson-film-v1` clients. Clients that declare none
+receive written lessons only.
 
 Approvals without a screenplay committed in Git HEAD are reported and skipped.
 Commit those screenplays and rerun the command to include them. Uncommitted
