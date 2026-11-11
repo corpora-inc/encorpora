@@ -267,12 +267,7 @@ test(
             lastActive: 1,
             lastMinutes: 20,
           });
-          // Only placed students stand: Gia's unanswered starting guess and
-          // Wen with no level at all are both "not placed yet".
-          assert.equal(view.standing.at, 0);
-          assert.equal(view.standing.ahead, 1);
-          assert.equal(view.standing.behind, 1);
-          assert.equal(view.standing.unplaced, 2);
+          assert.equal(view.standing, undefined);
           // This week's problems, split by help, beside its minutes.
           const thisWeek = view.trend.find(
             (row: { week: string }) => row.week === week,
@@ -280,13 +275,6 @@ test(
           assert.equal(thisWeek.problems, 6);
           assert.equal(thisWeek.assisted, 3);
           assert.equal(thisWeek.students, 2);
-          assert.equal(
-            view.standing.bins.reduce(
-              (sum: number, bin: { students: number }) => sum + bin.students,
-              0,
-            ),
-            2,
-          );
           const math = view.classes.find(
             (row: { name: string }) => row.name === "Grade 5 Math",
           );
@@ -298,6 +286,8 @@ test(
           // 0, whose only reading starts and ends his term.
           assert.equal(math.growth, 0.3);
           assert.equal(math.placed, 2);
+          // With where that median sits: two students at sd 0.4 a reading.
+          assert.ok(math.growthLow < 0.3 && math.growthHigh > 0.3);
           // Amara went from 5.2 to 5.8 in the window; only she has two readings.
           assert.equal(view.schools, null);
           const ids = view.attention.map((item: { id: string }) => item.id);
@@ -308,6 +298,39 @@ test(
             assert.ok(item.action.label && item.action.org);
             assert.ok(item.rule, item.id);
           }
+        },
+      );
+
+      await t.test(
+        "every rostered student is on the standing curves, unanswered ones wide",
+        async () => {
+          const response = await get(`/orgs/${alder.id}/standing`, HEAD);
+          assert.equal(response.statusCode, 200, response.body);
+          const view = response.json();
+          // Amara, Caleb, Gia's unanswered guess and Wen with no level: all four.
+          assert.equal(view.all.n, 4);
+          assert.equal(view.all.settling, 2);
+          const total = view.all.behind + view.all.within + view.all.ahead;
+          assert.ok(Math.abs(total - 4) < 0.01, `${total}`);
+          // The curve integrates to one over its axis.
+          const area =
+            view.all.density.reduce((sum: number, y: number) => sum + y, 0) *
+            view.grid.step;
+          assert.ok(Math.abs(area - 1) < 0.02, `${area}`);
+          const math = view.groups.find(
+            (group: { name: string }) => group.name === "Grade 5 Math",
+          );
+          assert.equal(math.curve.n, 3);
+          assert.deepEqual(math.grades, [5, 8]);
+          const drill = await get(`/classes/${grade5.id}/standing`, HEAD);
+          assert.equal(drill.statusCode, 200, drill.body);
+          const klass = drill.json();
+          assert.deepEqual(
+            klass.students.map((row: { name: string }) => row.name),
+            ["Caleb Ortiz", "Gia Lane", "Amara Osei"],
+          );
+          assert.equal(klass.growth.n, 2);
+          assert.ok(klass.growth.low < 0.3 && klass.growth.high > 0.3);
         },
       );
 

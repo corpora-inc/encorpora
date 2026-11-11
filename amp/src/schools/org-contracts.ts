@@ -17,6 +17,9 @@ export const usageResource = z.object({
   minutes: count,
   /** Median grades gained this term among placed students, either sign. */
   growth: z.number().nullable(),
+  /** Where that median sits, 95%; null with it. */
+  growthLow: z.number().nullable().default(null),
+  growthHigh: z.number().nullable().default(null),
   /** How many placed students that median is over. */
   placed: count.default(0),
 });
@@ -35,13 +38,6 @@ export const attentionItem = z.object({
   action: attentionAction,
   /** How this is decided, in one sentence. */
   rule: z.string().optional(),
-});
-export const standingBin = z.object({
-  /** Grades from the student's own, low edge. Null: everything below `to`. */
-  from: z.number().nullable(),
-  /** High edge. Null: everything at or above `from`. */
-  to: z.number().nullable(),
-  students: count,
 });
 export const overviewResponse = z.object({
   org: z.object({
@@ -86,14 +82,6 @@ export const overviewResponse = z.object({
       assisted: count.default(0),
     }),
   ),
-  standing: z.object({
-    bins: z.array(standingBin),
-    behind: count,
-    at: count,
-    ahead: count,
-    /** Rostered with no grade on file, or fewer answers than placement. */
-    unplaced: count,
-  }),
   classes: z
     .array(
       usageResource.extend({

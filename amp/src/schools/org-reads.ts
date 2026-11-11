@@ -9,6 +9,8 @@ import { joinNames, weekStart, dayOfWeek } from "./today.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { YEAR_IN_USE } from "./years.js";
 import { startLevelSql } from "./start-level.js";
+import { growthOf, medianInterval } from "./standing-math.js";
+import { levelSdSql } from "./student-sd.js";
 import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
 import {
   lowPractice,
@@ -110,10 +112,13 @@ export type StudentFact = {
   lastAttempts: number;
   level: number | null;
   startLevel: number | null;
+  /** Each reading's sd, for growth's interval. */
+  levelSd: number | null;
+  startSd: number | null;
   seated: boolean;
   signedIn: boolean;
 };
-const SQL_ACTIVE_STUDENTS = `
+export const SQL_ACTIVE_STUDENTS = `
   SELECT DISTINCT ON (p.id) p.id,p.learner_id,p.grade_level,r.org_id
   FROM amp_orgs o
   JOIN amp_org_roles r ON r.org_id=o.id AND r.role='student'
@@ -139,6 +144,7 @@ export async function studentFacts(
        COALESCE(w."thisMs",0)::float8 AS "thisMs",COALESCE(w."lastMs",0)::float8 AS "lastMs",
        COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
        latest.overall_level::float8 AS level,first.overall_level::float8 AS "startLevel",
+       latest.sd AS "levelSd",first.sd AS "startSd",
        seat.person_id IS NOT NULL AS seated,
        session.id IS NOT NULL AS "signedIn"
      FROM roster r
@@ -153,12 +159,13 @@ export async function studentFacts(
        GROUP BY w.learner_id
      ) w ON w.learner_id=r.learner_id
      LEFT JOIN LATERAL (
-       SELECT d.overall_level FROM amp_level_days d
+       SELECT d.overall_level,${levelSdSql("d")} AS sd FROM amp_level_days d
        WHERE d.learner_id=r.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
        ORDER BY d.day DESC LIMIT 1
      ) latest ON true
      LEFT JOIN LATERAL (
-       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "$2::date" })} AS overall_level
+       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "$2::date" })} AS overall_level,
+         ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "$2::date" })} AS sd
      ) first ON true
      LEFT JOIN (
        SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
@@ -180,19 +187,30 @@ export const middle = (values: number[]): number | null => medianOf(values);
 export function usageOf(students: readonly StudentFact[]) {
   let active = 0;
   let minutes = 0;
-  const gains: number[] = [];
+  const gains: { mu: number; sd: number }[] = [];
   for (const student of students) {
     if (isActive(student.thisMs, student.thisAttempts)) active++;
     minutes += minutesOf(student.thisMs);
     if (student.level !== null && student.startLevel !== null)
-      gains.push(student.level - student.startLevel);
+      gains.push(
+        growthOf(
+          { mu: student.startLevel, sd: student.startSd ?? 0 },
+          { mu: student.level, sd: student.levelSd ?? 0 },
+        ),
+      );
   }
-  const growth = middle(gains);
+  const growth = middle(gains.map((gain) => gain.mu));
+  // Where that median sits (95%): students resampled, each drawn from their
+  // own growth N(Δμ, σ_start² + σ_end²) (`standing-math.ts`).
+  const interval = medianInterval(gains, { mode: "bootstrap" });
+  const hundredth = (value: number) => Math.round(value * 100) / 100;
   return {
     students: students.length,
     active,
     minutes: Math.round(minutes),
-    growth: growth === null ? null : Math.round(growth * 100) / 100,
+    growth: growth === null ? null : hundredth(growth),
+    growthLow: interval ? hundredth(interval.low) : null,
+    growthHigh: interval ? hundredth(interval.high) : null,
     /** How many students the growth median is over. */
     placed: gains.length,
   };
@@ -204,41 +222,6 @@ export const classWeekOf = (students: readonly StudentFact[]): ClassWeek => ({
     isActive(student.thisMs, student.thisAttempts),
   ).length,
 });
-
-/** Half-grade columns from three grades behind to three ahead, either side of
- * the student's own grade: "at grade" is -0.5 up to +0.5, the same band a class
- * map shows a grade as. */
-export function standingOf(students: readonly StudentFact[]) {
-  const edges = Array.from({ length: 13 }, (_, index) => -3 + index / 2);
-  const counts = new Array<number>(edges.length + 1).fill(0);
-  let behind = 0;
-  let at = 0;
-  let ahead = 0;
-  let unplaced = 0;
-  for (const student of students) {
-    if (student.level === null || student.grade === null) {
-      unplaced++;
-      continue;
-    }
-    const gap = student.level - student.grade;
-    if (gap < -0.5) behind++;
-    else if (gap < 0.5) at++;
-    else ahead++;
-    const index = edges.findIndex((edge) => gap < edge);
-    counts[index === -1 ? edges.length : index]!++;
-  }
-  return {
-    bins: counts.map((count, index) => ({
-      from: index === 0 ? null : edges[index - 1]!,
-      to: index === edges.length ? null : edges[index]!,
-      students: count,
-    })),
-    behind,
-    at,
-    ahead,
-    unplaced,
-  };
-}
 
 export async function trendOf(
   db: Database,
@@ -279,7 +262,7 @@ export async function trendOf(
 }
 
 /** Classes in the year in use at this org and below, each with its teachers. */
-async function classesHere(db: Database, orgId: string) {
+export async function classesHere(db: Database, orgId: string) {
   const { rows } = await db.query(
     `SELECT c.id,c.name,c.org_id AS org,
        ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
@@ -751,7 +734,6 @@ export async function readOverview(
       lastMinutes: Math.round(minutesOf(week.lastMs)),
     },
     trend,
-    standing: standingOf(students),
     classes: isSchool
       ? classes.map(
           ({ org: _org, week: _week, target: _target, ...row }) => row,

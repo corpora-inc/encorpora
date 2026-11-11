@@ -17,6 +17,7 @@ import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
+import { defineStandingRoutes } from "./standing-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -499,6 +500,7 @@ defineSignInRoutes(defineSchoolRoute);
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
+defineStandingRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);
