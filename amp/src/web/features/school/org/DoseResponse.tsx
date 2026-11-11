@@ -129,7 +129,11 @@ function Axes({
           x={x(tick)}
           y={HEIGHT - PAD.bottom + 16}
           textAnchor={
-            index === 0 ? "start" : index === xTicks.length - 1 ? "end" : "middle"
+            index === 0
+              ? "start"
+              : index === xTicks.length - 1
+                ? "end"
+                : "middle"
           }
         >
           {xFormat(tick)}
@@ -258,7 +262,15 @@ function Scatter({
 const QUARTER_NAMES = ["Q1, least", "Q2", "Q3", "Q4, most"];
 /** Mean growth since each student's first placed reading this term, week by
  * week, for the four quarters of students by practice time. */
-function Quarters({ dose, weeks, current }: { dose: Dose; weeks: string[]; current: string }) {
+function Quarters({
+  dose,
+  weeks,
+  current,
+}: {
+  dose: Dose;
+  weeks: string[];
+  current: string;
+}) {
   const last = weeks.indexOf(current);
   const quarters = dose.quartiles;
   const message = quarters
@@ -293,7 +305,10 @@ function Quarters({ dose, weeks, current }: { dose: Dose; weeks: string[]; curre
           PAD.top +
           (1 - (value - yTicks[0]!) / (yTicks.at(-1)! - yTicks[0]!)) *
             (HEIGHT - PAD.top - PAD.bottom);
-        const every = Math.max(1, Math.ceil(shown.length / Math.max(2, Math.floor(width / 90))));
+        const every = Math.max(
+          1,
+          Math.ceil(shown.length / Math.max(2, Math.floor(width / 90))),
+        );
         const labelled = xTicks.filter(
           (index) => index % every === 0 || index === shown.length - 1,
         );
@@ -303,8 +318,10 @@ function Quarters({ dose, weeks, current }: { dose: Dose; weeks: string[]; curre
               width={width}
               x={x}
               y={y}
-              xTicks={labelled.filter((index, at) =>
-                at === labelled.length - 1 || labelled[at + 1]! - index >= every,
+              xTicks={labelled.filter(
+                (index, at) =>
+                  at === labelled.length - 1 ||
+                  labelled[at + 1]! - index >= every,
               )}
               yTicks={yTicks}
               xLabel="Week of the term"
@@ -318,9 +335,13 @@ function Quarters({ dose, weeks, current }: { dose: Dose; weeks: string[]; curre
                 .map((quarter, index) => {
                   const at = quarter.weeks
                     .slice(0, last + 1)
-                    .flatMap((week, weekIndex) => (week ? [{ weekIndex, week }] : []))
+                    .flatMap((week, weekIndex) =>
+                      week ? [{ weekIndex, week }] : [],
+                    )
                     .at(-1);
-                  return at ? { index, x: x(at.weekIndex) + 6, y: y(at.week.mean) } : null;
+                  return at
+                    ? { index, x: x(at.weekIndex) + 6, y: y(at.week.mean) }
+                    : null;
                 })
                 .filter((end) => end !== null)
                 .sort((a, b) => a.y - b.y);
@@ -349,7 +370,10 @@ function Quarters({ dose, weeks, current }: { dose: Dose; weeks: string[]; curre
                   <polyline
                     className={styles.doseQuarter}
                     points={at
-                      .map(({ weekIndex, week }) => `${x(weekIndex)},${y(week.mean)}`)
+                      .map(
+                        ({ weekIndex, week }) =>
+                          `${x(weekIndex)},${y(week.mean)}`,
+                      )
                       .join(" ")}
                   />
                   {at.map(({ weekIndex, week }) => (
@@ -431,8 +455,8 @@ export function DoseResponse({
               : "No line yet."}{" "}
             {fit && (
               <span className={styles.doseSlope}>
-                Slope {signedGrades(fit.slope * 60)} grade levels per extra
-                hour a week. An association, not a measured effect.
+                Slope {signedGrades(fit.slope * 60)} grade levels per extra hour
+                a week. An association, not a measured effect.
               </span>
             )}
           </p>
@@ -446,7 +470,9 @@ export function DoseResponse({
       </figure>
       <figure className={styles.doseFigure}>
         <div className={styles.trendHead}>
-          <h3 className={styles.doseTitle}>Growth over the term, by practice time</h3>
+          <h3 className={styles.doseTitle}>
+            Growth over the term, by practice time
+          </h3>
         </div>
         <TipZone>
           <Quarters dose={dose} weeks={data.weeks} current={data.current} />
@@ -475,7 +501,9 @@ export function DoseResponse({
             <p className={styles.tableNote}>
               Growth is the pace of each student’s level on the days its
               uncertainty was at most 0.6 grades, across the days the term has
-              run. Quarters are by active minutes a week this term.
+              run. Quarters are by active minutes a week this term. A week shows
+              once ten students, and three in five of the quarter, have a
+              reading, and their mean is sure to half a grade.
             </p>
           </figcaption>
         )}

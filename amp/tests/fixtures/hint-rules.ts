@@ -131,9 +131,35 @@ export const unnamedGivens = (id: string) => {
         .reduce((all, next) => new Set([...all].filter((n) => next.has(n)))),
     ]),
   );
+  // A number the template prints in every prompt ("Line 1", "Line 2") is
+  // still a given where this prompt writes it more often than that: the 2 in
+  // "y = -x - 2" beside the label "Line 2".
+  const counts = (p: GeneratedProblem) => {
+    const seen = new Map<string, number>();
+    for (const token of tokens(p.public.prompt)) {
+      const value = exact(token);
+      if (value === null) continue;
+      const key = size(value);
+      seen.set(key, (seen.get(key) ?? 0) + 1);
+    }
+    return seen;
+  };
+  const floors = new Map(
+    [...new Set(problems.map(group))].map((clause) => {
+      const floor = new Map<string, number>();
+      const each = problems.filter((p) => group(p) === clause).map(counts);
+      for (const value of constants.get(clause)!)
+        floor.set(value, Math.min(...each.map((seen) => seen.get(value) ?? 0)));
+      return [clause, floor];
+    }),
+  );
   return problems.some((p) => {
     const constant = constants.get(group(p))!;
-    const named = [...given(p)].filter((n) => !constant.has(n));
+    const floor = floors.get(group(p))!;
+    const seen = counts(p);
+    const named = [...given(p)].filter(
+      (n) => !constant.has(n) || (seen.get(n) ?? 0) > (floor.get(n) ?? 0),
+    );
     const hint = new Set([...stated(p.hint)].map(size));
     return named.length > 0 && !named.some((n) => hint.has(n));
   });

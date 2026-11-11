@@ -961,7 +961,9 @@ async function journey(browser: Browser, engine: string) {
       .getByRole("radiogroup", { name: "Google sign-in" })
       .getByRole("radio", { name: "On" })
       .click();
-    await page.getByText("Google sign-in is on").waitFor();
+    await page
+      .getByText("Google sign-in is on.", { exact: true })
+      .waitFor();
     const student = await browser.newContext({
       viewport: { width: 390, height: 844 },
     });

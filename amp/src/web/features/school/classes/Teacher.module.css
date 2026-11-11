@@ -501,9 +501,17 @@ a.workRow:focus-visible {
 .answered,
 .promptMissing {
   min-width: 0;
-  overflow: hidden;
   font-size: var(--text-table-small);
   line-height: 1.35;
+}
+/* A problem's words wrap, whole: a row is as tall as its prompt, and
+   nothing reads "…". */
+.prompt,
+.promptMissing {
+  overflow-wrap: break-word;
+}
+.answered {
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }

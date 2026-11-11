@@ -738,14 +738,14 @@ export function statisticsClause(
     const prediction = r(0, 1) === 1;
     const copy = {
       prompt: prediction
-        ? `The table records a machine's output $y$ after $x$ minutes. The least-squares fit is $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}. Predict output at $x=7$.`
+        ? `The table records a machine's output $y$ after $x$ minutes. The least-squares fit is $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}$. Predict output at $x=7$.`
         : "Each graph shows the same machine measurements and a candidate line. Which line best fits the data?",
       hint: prediction
-        ? `Substitute 7 for $x$ in $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}.`
+        ? `Substitute 7 for $x$ in $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}$.`
         : "Look for a line through the middle, with small vertical misses on both sides.",
       explanation: [
         `The candidate sums of squared vertical misses are ${sse.map((x) => round(x, 3)).join(", ")}.`,
-        `The smallest belongs to $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}. At $x=7$, it predicts ${7 * m + c}.`,
+        `The smallest belongs to $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}$. At $x=7$, it predicts ${7 * m + c}.`,
       ],
     };
     if (prediction)

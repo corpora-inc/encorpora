@@ -128,9 +128,11 @@ function cellOf(
 }
 
 /** A quarter's week is drawn once this many of its students have a settled
- * growth reading: at least ten, and at least three in five of the quarter.
- * Fewer is the first weeks' noise, not the quarter. */
-const QUARTER_SETTLED = { students: 10, share: 0.6 };
+ * growth reading: at least ten, and at least three in five of the quarter;
+ * and once the standard error of their mean, from each reading's own sd, is
+ * at most half a grade. Before that it is the first weeks’ noise,
+ * not the quarter. */
+const QUARTER_SETTLED = { students: 10, share: 0.6, meanSd: 0.5 };
 export const settledEnough = (size: number) =>
   Math.max(QUARTER_SETTLED.students, Math.ceil(QUARTER_SETTLED.share * size));
 
@@ -260,14 +262,23 @@ export async function readPractice(
                   )
                   .map((point) => ({ ...point, day: point.day - origin }));
                 const figure = termGrowth(days, elapsed);
-                return figure ? [figure.mu] : [];
+                return figure ? [figure] : [];
               });
               // Early in a term few students have settled: a week is drawn
               // once enough of its quarter has (QUARTER_SETTLED), never
               // from a handful.
               if (growths.length < settledEnough(group.items.length))
                 return null;
-              return { n: growths.length, ...statOf(growths) };
+              // A pace over the first days is mostly noise: each reading's
+              // own sd is large. The week shows once its mean is that sure.
+              const error =
+                Math.sqrt(growths.reduce((sum, g) => sum + g.sd * g.sd, 0)) /
+                growths.length;
+              if (error > QUARTER_SETTLED.meanSd) return null;
+              return {
+                n: growths.length,
+                ...statOf(growths.map((growth) => growth.mu)),
+              };
             }),
           }),
         )
