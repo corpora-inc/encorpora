@@ -1,0 +1,191 @@
+{
+  "id": "take-away-within-10--sk",
+  "title": "Start with all, some go away",
+  "teaches": ["take-away-within-10"],
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.2, -0.8, 12.1, 10.0],
+        "points": { "P": [0.2, 8.8] },
+        "parts": [
+          { "id": "d", "things": "duck", "n": 5, "at": "P", "size": 2.6, "arrange": "scatter", "perRow": 3, "seed": "pond", "start": true, "count": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "There are five ducks. Two fly away. How many are left?", "pause": 0.4,
+          "do": [
+            { "do": "problem", "text": "There are $5$ ducks. $2$ fly away. How many are left?", "id": "p1", "at": "There" },
+            { "do": "highlight", "target": "d", "at": "five" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Start with all of them. One, two, three, four, five.", "pause": 0.3,
+          "do": [
+            { "do": "count", "target": "d" },
+            { "do": "write", "tex": "\\ca{5}", "fresh": true, "id": "w5", "at": "five" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Two fly away.", "pause": 0.5,
+          "do": [{ "do": "leave", "target": ["d2", "d5"], "at": "fly" }]
+        },
+        {
+          "speaker": "teacher", "say": "Some go away. That is take away. The sign minus writes it.", "pause": 0.3,
+          "do": [
+            { "do": "term", "word": "take away", "meaning": "Some go away from the group.", "at": "take" },
+            { "do": "write", "tex": "\\ca{5}-\\cw{2}", "id": "w52", "at": "minus" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Left means the ones still here. Count what is left: one, two, three.", "pause": 0.3,
+          "do": [
+            { "do": "term", "word": "left", "meaning": "The ones that are still here.", "at": "Left" },
+            { "do": "count", "target": "d" },
+            { "do": "write", "tex": "\\ca{5}-\\cw{2}=3", "id": "w3", "at": "three" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "So the answer is two?", "pause": 0.2,
+          "do": [{ "do": "watch", "text": "Count the ones that are left, not the ones that went away.", "id": "wt", "at": "two" }]
+        },
+        {
+          "speaker": "teacher", "say": "No. Two is how many went away. Look at the pond. Three are left.", "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "d", "at": "Look" },
+            { "do": "answer", "tex": "3", "id": "a1", "at": "Three" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.6, -1.8, 10.8, 11.6],
+        "points": { "B": [2.8, 9.8], "C": [0, 4.6] },
+        "parts": [
+          { "id": "bear", "things": "bear", "n": 1, "at": "B", "size": 4.0, "start": true },
+          { "id": "plate", "grid": [4, 1], "at": "C", "size": [2.4, 2.4], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "ck", "things": "cookie", "n": 4, "at": "C", "size": 2.0, "start": true, "count": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "Here is a new story. There are four cookies. The bear eats all four. How many are left?", "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "There are $4$ cookies. The bear eats all $4$. How many are left?", "id": "p2", "at": "Here" },
+            { "do": "highlight", "target": "ck", "at": "four" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Start with all four.", "pause": 0.2,
+          "do": [{ "do": "write", "tex": "\\ca{4}", "fresh": true, "id": "v4", "at": "four" }]
+        },
+        {
+          "speaker": "teacher", "say": "The bear eats them all.", "pause": 0.6,
+          "do": [{ "do": "leave", "target": ["ck1", "ck2", "ck3", "ck4"], "at": "eats" }]
+        },
+        {
+          "speaker": "teacher", "say": "Four go away. Four take away four.", "pause": 0.3,
+          "do": [{ "do": "write", "tex": "\\ca{4}-\\cw{4}", "id": "v44", "at": "Four" }]
+        },
+        {
+          "speaker": "learner", "say": "The plate is empty. Nothing is left!", "pause": 0.3,
+          "do": [{ "do": "highlight", "target": "plate", "at": "empty" }]
+        },
+        {
+          "speaker": "teacher", "say": "Nothing is zero. Four take away four is zero.", "pause": 0.7,
+          "do": [
+            { "do": "write", "tex": "\\ca{4}-\\cw{4}=0", "id": "v0", "at": "zero" },
+            { "do": "answer", "tex": "0", "id": "a2", "at": "zero", "nth": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.6, -2.0, 12.4, 10.2],
+        "points": { "C": [0.2, 8.2] },
+        "parts": [
+          { "id": "car", "things": "car", "n": 6, "at": "C", "size": 3.5, "arrange": "grid", "perRow": 3, "start": true, "count": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "One more story. There are six cars. No car drives away. How many are left?", "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "There are $6$ cars. No car drives away. How many are left?", "id": "p3", "at": "One" },
+            { "do": "highlight", "target": "car", "at": "six" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Start with all six. Nobody goes away, so take away zero.", "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "car", "at": "all" },
+            { "do": "write", "tex": "\\ca{6}-\\cw{0}", "fresh": true, "id": "u60", "at": "Start" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "Then all of them are still here. One, two, three, four, five, six.", "pause": 0.3,
+          "do": [{ "do": "count", "target": "car" }]
+        },
+        {
+          "speaker": "teacher", "say": "Six take away zero is six. Take away nothing and all are left.", "pause": 0.7,
+          "do": [
+            { "do": "write", "tex": "\\ca{6}-\\cw{0}=6", "id": "u6", "at": "Six" },
+            { "do": "answer", "tex": "6", "id": "a3", "at": "all" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.4, -0.5, 13.6, 7.2],
+        "points": { "G": [0, 6.7] },
+        "parts": [
+          { "id": "g", "grid": [5, 2], "at": "G", "size": [2.6, 3.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 4, "ink": "accent", "start": true },
+          { "id": "t", "counters": "g", "n": 3, "from": 5, "ink": "accent", "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "Now a ten-frame. There are seven counters. Take away three. How many are left?", "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "There are $7$ counters. Take away $3$. How many are left?", "id": "p4", "at": "Now" },
+            { "do": "highlight", "target": ["a", "t"], "at": "seven" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "Start with all seven. Take away three.", "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "\\ca{7}", "fresh": true, "id": "x7", "at": "Start" },
+            { "do": "hide", "target": "t", "at": "three" },
+            { "do": "write", "tex": "\\ca{7}-\\cw{3}", "id": "x73", "at": "three" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "Count what is left: one, two, three, four.", "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "a1", "at": "one" },
+            { "do": "highlight", "target": "a2", "at": "two" },
+            { "do": "highlight", "target": "a3", "at": "three" },
+            { "do": "highlight", "target": "a4", "at": "four" }
+          ]
+        },
+        { "speaker": "learner", "say": "Seven take away three is four. Four are left.", "pause": 0.6, "do": [{ "do": "write", "tex": "\\ca{7}-\\cw{3}=4", "id": "x4", "at": "Seven" }, { "do": "answer", "tex": "4", "id": "a4", "at": "left" }] }
+      ]
+    },
+    {
+      "beats": [
+        { "speaker": "teacher", "say": "Every take away goes the same way.", "do": [{ "do": "overview", "of": "w5", "at": "Every" }] },
+        { "speaker": "teacher", "say": "Start with all.", "do": [{ "do": "recap", "text": "Start with all.", "marks": ["w5"], "at": "Start" }] },
+        { "speaker": "teacher", "say": "Some go away.", "do": [{ "do": "recap", "text": "Some go away.", "marks": ["w52"], "at": "Some" }] },
+        { "speaker": "teacher", "say": "Count what is left.", "pause": 0.8, "do": [{ "do": "recap", "text": "Count what is left.", "marks": ["w3", "a1"], "at": "Count" }] }
+      ]
+    }
+  ]
+}
