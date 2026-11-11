@@ -226,6 +226,18 @@ nav button {
   display: block;
   margin-top: var(--space-2);
 }
+/* A two-line system is a display, not a word in the sentence. On a phone the
+   following line otherwise sits beside the brace. Same own-row rule as a
+   table that follows its question, for the prompt and its review summary. */
+.problem-content[data-template="scaled-elimination"]
+  :is(.question, .answer-prompt-summary)
+  > .math:has(.mtable) {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  margin-block: var(--space-2);
+}
 /* Cases and matrices cannot wrap between their columns. Keep their prompts
    readable inside the narrow phone stage, including its scrollbar gutters. */
 @media (max-width: 380px) {

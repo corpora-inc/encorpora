@@ -1820,7 +1820,7 @@ export function scaledElimination(seed: string): GeneratedProblem {
     prompt: `${shownSystem([
       [`${left1} = ${c}`, "E1"],
       [`${left2} = ${f}`, "E2"],
-    ])} The system is replaced by E1 and ${addedToE2(k)}.`,
+    ])}\n\nThe system is replaced by E1 and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
     hint: `E1 is $${left1} = ${c}$, and the new system uses ${addedToE2(k)}. Multiply every term of E1 by ${term(k)}, then add matching terms to E2. The new equation is reversible: subtract ${term(k)}·E1 to get E2 back.`,
