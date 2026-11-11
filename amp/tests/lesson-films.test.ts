@@ -19,8 +19,13 @@ import {
   canonical,
   filmCapability,
   filmManifest,
+  followUpRelease,
+  followUpsSchema,
   planFilm,
+  publishArgs,
   publishFilms,
+  recordFollowUp,
+  releases,
   screenplayFromExport,
 } from "../film/publication";
 import { scriptSchema } from "../film/schema";
@@ -490,6 +495,111 @@ test("withdrawing an approval removes its film from every problem type it was li
   const specific = skillPlan("dot-group-compared-to-number");
   assert.equal((await manifestOf([skill, specific]))["dot-group-compared-to-number"], "dot-group-compared-to-number");
   assert.equal((await manifestOf([skill]))["dot-group-compared-to-number"], "compare-groups--sk");
+});
+/**
+ * The founder approves edition E1 with notes (7 of 10); the director applies
+ * them, exports E2 and records a follow-up answering that grade.
+ */
+const E1 = "2026-11-11T03:41:22.157Z";
+const graded = "2026-11-11T05:38:07.608019+00:00";
+const E2 = "2026-11-11T05:40:56.000Z";
+const directed = "2026-11-11T06:00:00.000Z";
+const founderApproval = { grade: "approved", added: E1, at: graded };
+const exportedE2 = [{ id: "film", added: E2 }];
+const followUp = { added: E2, at: directed, answers: graded, by: "director" as const, note: "Applied the three notes" };
+test("a director follow-up releases the edition that answers the founder's approval of an earlier one", () => {
+  const grades = { film: founderApproval };
+  assert.deepEqual(releases(grades, exportedE2, { film: followUp }), {
+    released: { film: { via: "follow-up", added: E2, at: directed } },
+    ignored: [],
+  });
+  assert.deepEqual(committedApprovalIds(grades, exportedE2, new Set(["amp/film/lessons/film.json"]), { film: followUp }), {
+    ids: ["film"], pending: [],
+  });
+  // The founder's rule alone is unchanged: his grade is for another edition.
+  assert.deepEqual(approvedIds(grades, exportedE2), []);
+  assert.deepEqual(releases(grades, exportedE2).released, {});
+  assert.deepEqual(committedApprovalIds(grades, exportedE2, new Set(["amp/film/lessons/film.json"])).ids, []);
+  // Its media are checked against the follow-up: nothing may change after the director approved it.
+  const release = releases(grades, exportedE2, { film: followUp }).released.film!;
+  assert.doesNotThrow(() => assertReviewedFiles(release, [Date.parse(E2) + 3000, Date.parse(directed)]));
+  assert.throws(() => assertReviewedFiles(release, [Date.parse(directed) + 1]), /reviewed edition/);
+});
+test("the founder's grade of the current edition decides, and a follow-up is then ignored", () => {
+  const approvedE2 = { grade: "approved", added: E2, at: "2026-11-11T07:00:00.000Z" };
+  const { released, ignored } = releases({ film: approvedE2 }, exportedE2, { film: followUp });
+  assert.deepEqual(released, { film: { via: "founder", added: E2, at: approvedE2.at } });
+  assert.match(ignored[0]!, /graded the current edition of film; his grade decides/);
+  const rejectedE2 = { ...approvedE2, grade: "rejected" };
+  assert.deepEqual(releases({ film: rejectedE2 }, exportedE2, { film: followUp }).released, {});
+  assert.deepEqual(committedApprovalIds({ film: rejectedE2 }, exportedE2, new Set(["amp/film/lessons/film.json"]), { film: followUp }).ids, []);
+});
+test("a follow-up never rescues a rejection or a film the founder has not approved", () => {
+  const rejected = { ...founderApproval, grade: "rejected" };
+  assert.match(followUpRelease("film", rejected, E2, followUp).reason!, /is a rejection/);
+  assert.match(followUpRelease("film", undefined, E2, followUp).reason!, /has not approved an earlier edition/);
+  assert.deepEqual(releases({ film: rejected }, exportedE2, { film: followUp }).released, {});
+  assert.deepEqual(releases({}, exportedE2, { film: followUp }).released, {});
+});
+test("a follow-up applies only to the current export and the founder grade it answers", () => {
+  const release = (grade: object, current: string | undefined, entry: object) =>
+    followUpRelease("film", grade, current, { ...followUp, ...entry });
+  assert.ok(release(founderApproval, E2, {}).release);
+  // A newer export is a new edition: this follow-up approved the previous one.
+  assert.match(release(founderApproval, "2026-11-11T08:00:00.000Z", {}).reason!, /not the current export/);
+  assert.match(release(founderApproval, undefined, {}).reason!, /no current review export/);
+  // The founder re-scored the earlier edition since: his new grade needs its own answer.
+  assert.match(release({ ...founderApproval, at: "2026-11-11T06:30:00.000Z" }, E2, {}).reason!, /no longer his grade/);
+  assert.match(release(founderApproval, E2, { at: graded }).reason!, /not later than the founder's grade/);
+  assert.match(release(founderApproval, E2, { at: "2026-11-11T05:39:00.000Z" }).reason!, /predates the edition/);
+  // His approval must be of an earlier edition, with its time recorded.
+  assert.match(release({ ...founderApproval, added: "2026-11-11T09:00:00.000Z" }, E2, {}).reason!, /not of an earlier edition/);
+  assert.match(release({ grade: "approved", added: E1 }, E2, {}).reason!, /not of an earlier edition/);
+  // Only a director's follow-up has this shape; nothing here can stand in for the founder.
+  assert.throws(() => followUpsSchema.parse({ film: { ...followUp, by: "founder" } }));
+  assert.throws(() => followUpsSchema.parse({ film: { ...followUp, note: "" } }));
+  assert.throws(() => followUpsSchema.parse({ film: { ...followUp, grade: "approved" } }));
+});
+test("recording a follow-up answers the founder's approval of an earlier edition", () => {
+  const before = { other: { ...followUp, added: E1 } };
+  const after = recordFollowUp(before, "film", founderApproval, exportedE2, "  Applied the three notes ", directed);
+  assert.deepEqual(after, { ...before, film: followUp });
+  assert.deepEqual(before, { other: { ...followUp, added: E1 } });
+  assert.ok(followUpsSchema.parse(after));
+  assert.deepEqual(releases({ film: founderApproval }, exportedE2, after).released.film, { via: "follow-up", added: E2, at: directed });
+  // A follow-up for the previous edition is replaced by the one for the current export.
+  assert.deepEqual(
+    recordFollowUp({ film: { ...followUp, added: E1 } }, "film", founderApproval, exportedE2, "Applied the three notes", directed),
+    { film: followUp },
+  );
+});
+test("recording a follow-up refuses when there is nothing to answer", () => {
+  const record = (grade: object | undefined, rows = exportedE2, note = "Applied", existing = {}) =>
+    () => recordFollowUp(existing, "film", grade, rows, note, directed);
+  assert.throws(record(undefined), /The founder has not approved an earlier edition of film/);
+  assert.throws(record({ ...founderApproval, grade: "rejected" }), /a rejection; only a new founder grade can release it/);
+  assert.throws(record({ grade: "approved", added: E2, at: graded }), /The founder graded the current edition of film; his grade decides/);
+  // A re-export that kept the graded edition's stamp is still that edition.
+  assert.throws(record(founderApproval, [{ id: "film", added: E1 }]), /graded the current edition/);
+  assert.throws(record(founderApproval, []), /film has no current review export/);
+  assert.throws(record(founderApproval, exportedE2, "  "), /Say what changed/);
+  assert.throws(record(founderApproval, exportedE2, "Again", { film: followUp }), /already recorded|was recorded at/);
+  assert.throws(() => recordFollowUp({}, "../film", founderApproval, exportedE2, "Applied", directed), /Invalid film ID/);
+  // The director's clock must be past the founder's grade.
+  assert.throws(() => recordFollowUp({}, "film", founderApproval, exportedE2, "Applied", graded), /not later than the founder's grade/);
+});
+test("publish arguments: check, publish, or record a follow-up", () => {
+  assert.deepEqual(publishArgs([]), { check: false });
+  assert.deepEqual(publishArgs(["--check"]), { check: true });
+  assert.deepEqual(publishArgs(["--follow-up", "film", "--note", "Applied the notes"]), {
+    check: false, followUp: "film", note: "Applied the notes",
+  });
+  assert.throws(() => publishArgs(["--follow-up", "film"]), /Say what changed/);
+  assert.throws(() => publishArgs(["--follow-up", "film", "--note", " "]), /Say what changed/);
+  assert.throws(() => publishArgs(["--note", "Applied"]), /--note goes with --follow-up/);
+  assert.throws(() => publishArgs(["--check", "--follow-up", "film", "--note", "Applied"]), /publishes nothing/);
+  assert.throws(() => publishArgs(["--publish"]));
+  assert.throws(() => publishArgs(["film"]));
 });
 test("search lists a film once, however many problem types link it", () => {
   const film = { id: "count-objects", title: "Count objects" };

@@ -1,5 +1,6 @@
 /** Publication planning has no IO: every approval and byte is checked before uploading. */
 import { createHash } from "node:crypto";
+import { parseArgs } from "node:util";
 import { z } from "zod";
 import { semanticFigureSchema } from "../src/math/contracts";
 import { scriptSchema, type Script } from "./schema";
@@ -62,14 +63,145 @@ export function approvedIds(
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([id]) => id);
 }
+
+/**
+ * A director's approval of a new edition that carries out the notes of the
+ * founder's approval of an earlier one (`answers` is that grade's `at`).
+ * Kept beside the grades in the review data as `followups.json`.
+ */
+export const followUpSchema = z
+  .object({
+    added: z.string().min(1),
+    at: z.string().min(1),
+    answers: z.string().min(1),
+    by: z.literal("director"),
+    note: z.string().min(1),
+  })
+  .strict();
+export type FollowUp = z.infer<typeof followUpSchema>;
+export const followUpsSchema = z.record(z.string(), followUpSchema);
+export type FollowUps = z.infer<typeof followUpsSchema>;
+/** What lets a film's current export ship, and the approval its media is checked against. */
+export type Release = { via: "founder" | "follow-up"; added: string; at?: string };
+
+const stamp = (value?: string) => Date.parse(value ?? "");
+/** Why a director cannot answer the founder's grade with the current export, if they cannot. */
+function unanswerable(id: string, grade: Approval | undefined, current: string | undefined) {
+  if (!current) return `${id} has no current review export`;
+  if (grade?.added === current)
+    return `The founder graded the current edition of ${id}; his grade decides. A changed export needs its own edition stamp before a follow-up can answer his grade`;
+  if (grade?.grade === "rejected")
+    return `The founder's grade of ${id} is a rejection; only a new founder grade can release it`;
+  if (grade?.grade !== "approved")
+    return `The founder has not approved an earlier edition of ${id}`;
+  if (!(stamp(grade.added) < stamp(current)) || !Number.isFinite(stamp(grade.at)))
+    return `The founder's approval of ${id} is not of an earlier edition`;
+  return undefined;
+}
+/** A follow-up releases the current export, or says why it does not. */
+export function followUpRelease(
+  id: string,
+  grade: Approval | undefined,
+  current: string | undefined,
+  followUp: FollowUp,
+): { release: Release; reason?: undefined } | { release?: undefined; reason: string } {
+  const reason = unanswerable(id, grade, current);
+  if (reason) return { reason };
+  if (followUp.added !== current)
+    return { reason: `The follow-up for ${id} approves edition ${followUp.added}, not the current export ${current}` };
+  if (followUp.answers !== grade!.at)
+    return { reason: `The follow-up for ${id} answers a founder grade (${followUp.answers}) that is no longer his grade (${grade!.at})` };
+  if (!(stamp(followUp.at) > stamp(grade!.at)))
+    return { reason: `The follow-up for ${id} is not later than the founder's grade` };
+  if (!(stamp(followUp.at) >= stamp(followUp.added)))
+    return { reason: `The follow-up for ${id} predates the edition it approves` };
+  return { release: { via: "follow-up", added: followUp.added, at: followUp.at } };
+}
+/**
+ * Every film whose current export may ship. The founder's approval of that
+ * exact edition releases it (`approvedIds`), and his grade of it alone
+ * decides. Otherwise a director's follow-up may release it. `ignored` says
+ * why each other follow-up does not apply.
+ */
+export function releases(
+  grades: Record<string, Approval>,
+  rows: ReviewRow[],
+  followUps: FollowUps = {},
+) {
+  const released: Record<string, Release> = {};
+  for (const id of approvedIds(grades, rows))
+    released[id] = { via: "founder", added: grades[id]!.added!, at: grades[id]!.at };
+  const ignored: string[] = [];
+  for (const [id, followUp] of Object.entries(followUps)) {
+    const { release, reason } = followUpRelease(id, grades[id], rows.find((row) => row.id === id)?.added, followUp);
+    if (release) released[id] = release;
+    else ignored.push(reason);
+  }
+  return {
+    released: Object.fromEntries(
+      Object.entries(released).sort(([a], [b]) => a.localeCompare(b)),
+    ),
+    ignored,
+  };
+}
+/**
+ * The follow-up file with a new entry for the film's current export, approved
+ * `at` now. Refuses when no founder approval of an earlier edition is there to
+ * answer, or when one for this edition is already recorded.
+ */
+export function recordFollowUp(
+  followUps: FollowUps,
+  id: string,
+  grade: Approval | undefined,
+  rows: ReviewRow[],
+  note: string,
+  at: string,
+): FollowUps {
+  if (!/^[a-z0-9-]+$/.test(id)) throw new Error("Invalid film ID");
+  if (!note.trim()) throw new Error('Say what changed: --note "<text>"');
+  const current = rows.find((row) => row.id === id)?.added;
+  const refusal = unanswerable(id, grade, current);
+  if (refusal) throw new Error(refusal);
+  const existing = followUps[id];
+  if (existing?.added === current)
+    throw new Error(
+      `A follow-up for this edition of ${id} was recorded at ${existing.at}; export a new edition to approve further changes`,
+    );
+  const entry: FollowUp = { added: current!, at, answers: grade!.at!, by: "director", note: note.trim() };
+  const { reason } = followUpRelease(id, grade, current, entry);
+  if (reason) throw new Error(reason);
+  return { ...followUps, [id]: entry };
+}
+/** `film:publish [--check]`, or `--follow-up <film-id> --note "<text>"` to record one. */
+export function publishArgs(argv: string[]) {
+  const { values } = parseArgs({
+    args: argv,
+    options: {
+      check: { type: "boolean", default: false },
+      "follow-up": { type: "string" },
+      note: { type: "string" },
+    },
+    strict: true,
+    allowPositionals: false,
+  });
+  const followUp = values["follow-up"];
+  if (followUp === undefined) {
+    if (values.note !== undefined) throw new Error("--note goes with --follow-up <film-id>");
+    return { check: values.check };
+  }
+  if (values.check) throw new Error("--follow-up records an approval and publishes nothing; run --check on its own");
+  if (!values.note?.trim()) throw new Error('Say what changed: --follow-up <film-id> --note "<text>"');
+  return { check: false, followUp, note: values.note };
+}
 /** Reviews can arrive while a committed release batch is being published. */
 export function committedApprovalIds(
   grades: Record<string, Approval>,
   rows: ReviewRow[],
   committedPaths: ReadonlySet<string>,
+  followUps: FollowUps = {},
 ) {
   const ids: string[] = [], pending: string[] = [];
-  for (const id of approvedIds(grades, rows)) {
+  for (const id of Object.keys(releases(grades, rows, followUps).released)) {
     if (!/^[a-z0-9-]+$/.test(id)) throw new Error("Invalid film ID");
     (committedPaths.has(`amp/film/lessons/${id}.json`) ? ids : pending).push(id);
   }

@@ -1,4 +1,9 @@
-/** Publish only current founder approvals whose exact screenplay is committed. */
+/**
+ * Publish only approved current exports whose exact screenplay is committed:
+ * the founder's approval of that edition, or a director's follow-up to his
+ * approval of an earlier one. `--follow-up <film-id> --note "<text>"` records
+ * a follow-up and publishes nothing.
+ */
 import { execFileSync } from "node:child_process";
 import { readFile, writeFile, rename, mkdtemp, stat } from "node:fs/promises";
 import { homedir, tmpdir } from "node:os";
@@ -11,13 +16,19 @@ import {
   assertReviewedFiles,
   canonical,
   filmManifest,
+  followUpsSchema,
   planFilm,
+  publishArgs,
   publishFilms,
+  recordFollowUp,
+  releases,
   sha256,
   type Approval,
+  type FollowUps,
   type ReviewRow,
 } from "./publication";
 
+const args = publishArgs(process.argv.slice(2));
 const root = fileURLToPath(new URL("../..", import.meta.url));
 const configPath =
   process.env.AMP_FILM_PUBLISH_CONFIG ??
@@ -39,14 +50,43 @@ const grades: Record<string, Approval> = await json(
   join(config.reviewDir, "grades.json"),
 );
 const rows: ReviewRow[] = await json(join(config.reviewDir, "index.json"));
+const followUpsPath = join(config.reviewDir, "followups.json");
+async function readFollowUps(): Promise<FollowUps> {
+  let text: string;
+  try {
+    text = await readFile(followUpsPath, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return {};
+    throw error;
+  }
+  return followUpsSchema.parse(JSON.parse(text));
+}
+const followUps = await readFollowUps();
+if (args.followUp) {
+  const id = args.followUp;
+  const next = recordFollowUp(followUps, id, grades[id], rows, args.note!, new Date().toISOString());
+  await writeFile(`${followUpsPath}.tmp`, JSON.stringify(next, null, 2) + "\n");
+  await rename(`${followUpsPath}.tmp`, followUpsPath);
+  console.log(
+    `Recorded a director follow-up for ${id}: edition ${next[id]!.added}, answering the founder's approval at ${next[id]!.answers}. Nothing was published; run npm run film:publish -- --check.`,
+  );
+  process.exit(0);
+}
 const committedPaths = new Set(
   execFileSync("git", ["-C", root, "ls-tree", "-r", "--name-only", "HEAD", "--", "amp/film/lessons"], {
     encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
   }).trim().split("\n"),
 );
-const { ids, pending } = committedApprovalIds(grades, rows, committedPaths);
+const { released, ignored } = releases(grades, rows, followUps);
+for (const reason of ignored) console.warn(`Follow-up not applied: ${reason}`);
+const { ids, pending } = committedApprovalIds(grades, rows, committedPaths, followUps);
 if (pending.length)
   console.warn(`Skipped ${pending.length} approved films until their screenplays are committed: ${pending.join(", ")}`);
+const viaFollowUp = ids.filter((id) => released[id]!.via === "follow-up");
+if (viaFollowUp.length)
+  console.log(
+    `Publishable through a director follow-up: ${viaFollowUp.map((id) => `${id} (answers the founder's approval at ${followUps[id]!.answers})`).join(", ")}`,
+  );
 const plans = [];
 const snapshots = new Map<string, string>();
 async function snapshot(path: string, approval: Approval) {
@@ -86,8 +126,8 @@ for (const id of ids) {
     throw new Error(`Uncommitted screenplay changes: ${id}`);
   const dataPath = join(config.reviewDir, `${id}.json`),
     audioPath = join(config.reviewDir, `${id}.m4a`);
-  const data = await snapshot(dataPath, grades[id]!),
-    audio = await snapshot(audioPath, grades[id]!);
+  const data = await snapshot(dataPath, released[id]!),
+    audio = await snapshot(audioPath, released[id]!);
   snapshots.set(dataPath, data.identity);
   snapshots.set(audioPath, audio.identity);
   plans.push(
@@ -102,7 +142,7 @@ for (const id of ids) {
 }
 const { manifest, conflicts } = filmManifest(plans);
 for (const conflict of conflicts) console.warn(conflict);
-if (process.argv.includes("--check")) {
+if (args.check) {
   console.log(
     `${plans.length} approved films validated for ${Object.keys(manifest).length} problem types; no uploads or manifest changes.`,
   );
@@ -184,17 +224,19 @@ if (process.argv.includes("--check")) {
         const currentRows: ReviewRow[] = await json(
           join(config.reviewDir, "index.json"),
         );
+        const currentFollowUps = await readFollowUps();
+        const current = releases(currentGrades, currentRows, currentFollowUps).released;
         if (
-          canonical(committedApprovalIds(currentGrades, currentRows, committedPaths).ids) !==
+          canonical(committedApprovalIds(currentGrades, currentRows, committedPaths, currentFollowUps).ids) !==
             canonical(ids) ||
-          ids.some((id) => currentGrades[id]?.added !== grades[id]?.added)
+          ids.some((id) => canonical(current[id]) !== canonical(released[id]))
         )
           throw new Error("Approvals changed during publishing; run again");
         for (const id of ids)
           for (const extension of ["json", "m4a"]) {
             const path = join(config.reviewDir, `${id}.${extension}`);
             if (
-              (await snapshot(path, currentGrades[id]!)).identity !==
+              (await snapshot(path, current[id]!)).identity !==
               snapshots.get(path)
             )
               throw new Error(
