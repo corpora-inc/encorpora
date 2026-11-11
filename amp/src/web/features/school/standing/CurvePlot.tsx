@@ -49,6 +49,9 @@ function apart(
   return {
     x: ((at * grid.step) / span) * 100,
     y: 100 - (Math.min(values[at]!, top) / top) * TOP,
+    /** Outward from the grade band: left of it, the name goes left. */
+    side:
+      grid.from + at * grid.step > 0 ? ("end" as const) : ("start" as const),
   };
 }
 
@@ -179,7 +182,7 @@ export function CurvePlot({
       {own && (
         <span
           className={styles.curveName}
-          data-side={own.x > 50 ? "end" : "start"}
+          data-side={own.side}
           style={{ left: `${own.x}%`, "--y": own.y } as CSSProperties}
           aria-hidden="true"
         >
@@ -190,7 +193,7 @@ export function CurvePlot({
         <span
           className={styles.curveName}
           data-curve="national"
-          data-side={national.x > 50 ? "end" : "start"}
+          data-side={national.side}
           style={{ left: `${national.x}%`, "--y": national.y } as CSSProperties}
           aria-hidden="true"
         >
