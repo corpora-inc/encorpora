@@ -1,7 +1,6 @@
 {
   "id": "take-away-within-10--sk",
   "title": "Start with all, some go away",
-  "teaches": ["take-away-within-10"],
   "cast": { "teacher": {}, "learner": {} },
   "shots": [
     {
