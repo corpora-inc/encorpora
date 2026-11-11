@@ -1,0 +1,1260 @@
+{
+  "id": "teen-frame-compose--st",
+  "title": "A teen number is ten and some more",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -3.6,
+          11.8,
+          13.6
+        ],
+        "points": {
+          "T": [
+            0,
+            8.5
+          ],
+          "E": [
+            0,
+            2.5
+          ],
+          "N": [
+            5,
+            12
+          ],
+          "TL": [
+            5,
+            9.85
+          ],
+          "EL": [
+            5,
+            -2.85
+          ],
+          "PA": [
+            0.12,
+            8.4
+          ],
+          "PB": [
+            1.94,
+            8.51
+          ],
+          "PC": [
+            4.1,
+            6.56
+          ],
+          "PD": [
+            5.99,
+            8.36
+          ],
+          "PE": [
+            8.14,
+            8.5
+          ],
+          "PF": [
+            -0.04,
+            6.54
+          ],
+          "PG": [
+            2.19,
+            4.41
+          ],
+          "PH": [
+            3.92,
+            4.56
+          ],
+          "PI": [
+            6.14,
+            6.38
+          ],
+          "PJ": [
+            7.89,
+            4.46
+          ],
+          "PK": [
+            0.11,
+            2.52
+          ],
+          "PL": [
+            1.98,
+            2.36
+          ],
+          "PM": [
+            4.14,
+            0.51
+          ],
+          "PN": [
+            5.94,
+            2.53
+          ],
+          "PO": [
+            7.99,
+            0.38
+          ],
+          "PP": [
+            2.12,
+            0.56
+          ]
+        },
+        "parts": [
+          {
+            "id": "tenFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": 2,
+            "fill": "paper",
+            "ink": "blue",
+            "w": 3
+          },
+          {
+            "id": "extraFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "E",
+            "size": 2,
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3
+          },
+          {
+            "id": "tenLabel",
+            "label": "1\\text{ ten}",
+            "at": "TL",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "cookieA",
+            "things": "cookie",
+            "n": 1,
+            "at": "PA",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieB",
+            "things": "cookie",
+            "n": 1,
+            "at": "PB",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieC",
+            "things": "cookie",
+            "n": 1,
+            "at": "PC",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieD",
+            "things": "cookie",
+            "n": 1,
+            "at": "PD",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieE",
+            "things": "cookie",
+            "n": 1,
+            "at": "PE",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieF",
+            "things": "cookie",
+            "n": 1,
+            "at": "PF",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieG",
+            "things": "cookie",
+            "n": 1,
+            "at": "PG",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieH",
+            "things": "cookie",
+            "n": 1,
+            "at": "PH",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieI",
+            "things": "cookie",
+            "n": 1,
+            "at": "PI",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieJ",
+            "things": "cookie",
+            "n": 1,
+            "at": "PJ",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieK",
+            "things": "cookie",
+            "n": 1,
+            "at": "PK",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieL",
+            "things": "cookie",
+            "n": 1,
+            "at": "PL",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieM",
+            "things": "cookie",
+            "n": 1,
+            "at": "PM",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieN",
+            "things": "cookie",
+            "n": 1,
+            "at": "PN",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieO",
+            "things": "cookie",
+            "n": 1,
+            "at": "PO",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "cookieP",
+            "things": "cookie",
+            "n": 1,
+            "at": "PP",
+            "size": 1.6,
+            "start": true
+          },
+          {
+            "id": "packedTen",
+            "things": "cookie",
+            "n": 0,
+            "slots": 10,
+            "in": "tenFrame"
+          },
+          {
+            "id": "packedExtras",
+            "things": "cookie",
+            "n": 0,
+            "slots": 10,
+            "in": "extraFrame"
+          },
+          {
+            "id": "newCookie",
+            "things": "cookie",
+            "n": 1,
+            "in": "extraFrame",
+            "from": 7
+          },
+          {
+            "id": "sixteen",
+            "label": "16",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "sixteenTen",
+            "label": "\\cb{1}6",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "sixteenBoth",
+            "label": "\\cb{1}\\cw{6}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "fourteen",
+            "label": "\\cb{1}\\cw{4}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "seventeen",
+            "label": "\\cb{1}\\cw{7}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "sixOnes",
+            "label": "6\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "fourOnes",
+            "label": "4\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "sevenOnes",
+            "label": "7\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Sixteen cookies. Let's see the ten hiding inside.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "sixteen",
+              "at": "Sixteen"
+            },
+            {
+              "do": "text",
+              "text": "$16$ cookies"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A ten-frame has two rows of five spaces. Let's fill it.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "draw",
+              "target": "tenFrame"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "Ten-frame",
+              "meaning": "Two rows of $5$ spaces."
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five. Six, seven, eight, nine, ten!",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "count",
+              "target": [
+                "cookieA1",
+                "cookieB1",
+                "cookieC1",
+                "cookieD1",
+                "cookieE1",
+                "cookieF1",
+                "cookieG1",
+                "cookieH1",
+                "cookieI1",
+                "cookieJ1"
+              ],
+              "into": "packedTen",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Full! Ten ones make one ten.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "Full"
+            },
+            {
+              "do": "show",
+              "target": "tenLabel",
+              "at": "one"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "10\\text{ ones}=1\\text{ ten}",
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The extras go in another frame.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "draw",
+              "target": "extraFrame",
+              "at": "another"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "count",
+              "target": [
+                "cookieK1",
+                "cookieL1",
+                "cookieM1",
+                "cookieN1",
+                "cookieO1",
+                "cookieP1"
+              ],
+              "into": "packedExtras",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "sixOnes",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten plus six equals sixteen. Plus puts parts together; equals means the same amount.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{6}=16"
+            },
+            {
+              "do": "text",
+              "text": "$+$ puts parts together.",
+              "at": "Plus",
+              "nth": 2
+            },
+            {
+              "do": "text",
+              "text": "$=$ means the same amount.",
+              "at": "equals",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "In sixteen, the one means one ten.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "hide",
+              "target": "sixteen",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "sixteenTen",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The six means six extra ones.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "hide",
+              "target": "sixteenTen",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "sixteenBoth",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "extraFrame",
+              "at": "extra"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eleven through nineteen are teen numbers: ten and some more.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "Teen numbers",
+              "meaning": "$11$ through $19$."
+            },
+            {
+              "do": "text",
+              "text": "Ten and some more.",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take away two extras. Ten and four: fourteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "leave",
+              "target": [
+                "cookieO1",
+                "cookieP1"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "sixteenBoth",
+                "sixOnes"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Change the extras."
+            },
+            {
+              "do": "show",
+              "target": [
+                "fourteen",
+                "fourOnes"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{4}=14",
+              "at": "fourteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Add three extras. Ten and seven: seventeen.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "send",
+              "target": [
+                "cookieO1",
+                "cookieP1",
+                "newCookie1"
+              ],
+              "to": "packedExtras",
+              "at": "three"
+            },
+            {
+              "do": "arrive",
+              "target": [
+                "cookieO1",
+                "cookieP1",
+                "newCookie1"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "fourteen",
+                "fourOnes"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "seventeen",
+                "sevenOnes"
+              ],
+              "at": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{7}=17",
+              "at": "seventeen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The full ten stays.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Only the extras change.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "extraFrame",
+              "at": "extras"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -3.6,
+          11.8,
+          13.6
+        ],
+        "points": {
+          "T": [
+            0,
+            8.5
+          ],
+          "E": [
+            0,
+            2.5
+          ],
+          "N": [
+            5,
+            12
+          ],
+          "TL": [
+            5,
+            9.85
+          ],
+          "EL": [
+            5,
+            -2.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "tenFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": 2,
+            "fill": "paper",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "extraFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "E",
+            "size": 2,
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tenLabel",
+            "label": "1\\text{ ten}",
+            "at": "TL",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "tenCookies",
+            "things": "cookie",
+            "n": 10,
+            "in": "tenFrame",
+            "start": true
+          },
+          {
+            "id": "extraCookies",
+            "things": "cookie",
+            "n": 8,
+            "in": "extraFrame",
+            "start": true
+          },
+          {
+            "id": "eighteen",
+            "label": "\\cb{1}\\cw{8}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "start": true
+          },
+          {
+            "id": "eightOnes",
+            "label": "8\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "eleven",
+            "label": "\\cb{1}\\cw{1}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "twelve",
+            "label": "\\cb{1}\\cw{2}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "thirteen",
+            "label": "\\cb{1}\\cw{3}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "oneOnes",
+            "label": "1\\text{ one}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "twoOnes",
+            "label": "2\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "threeOnes",
+            "label": "3\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Eighteen is ten and how many more ones?",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "$18$ is $10$ and how many more ones?"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The full frame is ten. Count only the extras.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six, seven, eight.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "count",
+              "target": "extraCookies"
+            },
+            {
+              "do": "show",
+              "target": "eightOnes",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight more ones. Eighteen equals ten plus eight.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "8\\text{ more ones}"
+            },
+            {
+              "do": "write",
+              "tex": "18=\\cb{10}+\\cw{8}",
+              "at": "Eighteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Use a ten and extra ones to fill both boxes. Eighteen equals box plus box.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Use a ten and extra ones to fill both boxes."
+            },
+            {
+              "do": "write",
+              "tex": "18=\\square+\\square",
+              "at": "Eighteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The first box gets ten, for the full frame.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "18=\\cb{10}+\\square",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The second box gets eight, for the eight extra ones.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "write",
+              "tex": "18=\\cb{10}+\\cw{8}",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "extraFrame",
+              "at": "extra"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eleven is ten and one.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "eighteen",
+                "eightOnes",
+                "extraCookies2",
+                "extraCookies3",
+                "extraCookies4",
+                "extraCookies5",
+                "extraCookies6",
+                "extraCookies7",
+                "extraCookies8"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "eleven",
+                "oneOnes"
+              ]
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{1}=11"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twelve is ten and two.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": "eleven",
+              "at": "Twelve"
+            },
+            {
+              "do": "show",
+              "target": "twelve",
+              "at": "Twelve"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{2}=12",
+              "at": "Twelve"
+            },
+            {
+              "do": "show",
+              "target": "extraCookies2",
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": "oneOnes",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "twoOnes",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Thirteen is ten and three. Hear three first; write the ten first.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": "twelve",
+              "at": "Thirteen"
+            },
+            {
+              "do": "show",
+              "target": "thirteen",
+              "at": "Thirteen"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{10}+\\cw{3}=13",
+              "at": "Thirteen"
+            },
+            {
+              "do": "show",
+              "target": "extraCookies3",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": "twoOnes",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "threeOnes",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "ten",
+              "nth": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -3.6,
+          11.8,
+          13.6
+        ],
+        "points": {
+          "T": [
+            0,
+            8.5
+          ],
+          "E": [
+            0,
+            2.5
+          ],
+          "N": [
+            5,
+            12
+          ],
+          "TL": [
+            5,
+            9.85
+          ],
+          "EL": [
+            5,
+            -2.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "tenFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": 2,
+            "fill": "paper",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "extraFrame",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "E",
+            "size": 2,
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tenLabel",
+            "label": "1\\text{ ten}",
+            "at": "TL",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "tenCounters",
+            "counters": "tenFrame",
+            "n": 10,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "extras",
+            "counters": "extraFrame",
+            "n": 9,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "unknown",
+            "label": "?",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "nineteen",
+            "label": "\\cb{1}\\cw{9}",
+            "at": "N",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "nineOnes",
+            "label": "9\\text{ ones}",
+            "at": "EL",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which number sentence tells about the counters?",
+          "pause": 3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which number sentence tells about the counters?",
+              "choices": [
+                "$1+9=10$",
+                "$10+9=19$",
+                "$9+9=18$"
+              ]
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One full frame and nine more. Is it one plus nine?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "$1+9$?",
+              "at": "Is"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Wait. One full frame is one ten. That's ten ones.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tenFrame",
+              "at": "full"
+            },
+            {
+              "do": "show",
+              "target": "tenLabel",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "And nine extra ones.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "extraFrame",
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": "nineOnes",
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Ten plus nine equals nineteen.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "The counters show:"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cb{10}+\\cw{9}=19"
+            },
+            {
+              "do": "hide",
+              "target": "unknown",
+              "at": "nineteen"
+            },
+            {
+              "do": "show",
+              "target": "nineteen",
+              "at": "nineteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "A teen number is ten and some more.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Ten and some more.",
+              "at": "ten"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
