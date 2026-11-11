@@ -328,6 +328,39 @@ Scene actions (one `scene` action holds a list of them; the scene's own steps ar
 
 A target names a part and everything under it: `e0.bar.0` matches `e0.bar.0.part.3`. Use the part names `facts.ts` prints.
 
+### Any app figure
+
+When the app already draws the picture you need (a bar chart, graph, number line, ten-frame, clock, any of the components in [docs/figures.md](../docs/figures.md)), give the shot that figure with your own data instead of building it from points: `"figure": { "scene": <scene spec> }`. The same scene actions drive it, on the words that say them. Leave out the spec's `steps`; the film's actions replace them.
+
+```json
+{ "figure": { "scene": { "v": 1, "title": "Trees by kind", "elements": [
+    { "type": "barChart", "id": "c", "bars": [ { "label": "Oak", "value": 3 }, { "label": "Pine", "value": 5 }, { "label": "Maple", "value": 2 } ], "max": 6, "step": 1, "unit": "Trees" } ] } },
+  "beats": [ { "say": "The trees are sorted into three kinds: oak, pine and maple.", "do": [
+    { "do": "scene", "at": "oak", "actions": [ { "do": "highlight", "target": "c.bar.0" } ] },
+    { "do": "scene", "at": "pine", "actions": [ { "do": "highlight", "target": "c.bar.1" } ] },
+    { "do": "scene", "at": "maple", "actions": [ { "do": "highlight", "target": "c.bar.2" } ] } ] } ] }
+```
+
+```json
+{ "figure": { "scene": { "v": 1, "elements": [
+    { "type": "graph", "id": "g", "x": [-1, 9], "y": [-1, 10], "grid": 1, "tick": 2,
+      "lines": [ { "line": { "through": [[3, 2], [5, 8]] }, "color": "accent" } ],
+      "points": [ { "x": 3, "y": 2, "label": "(3, 2)", "color": "gold" }, { "x": 5, "y": 8, "label": "(5, 8)", "color": "gold" } ],
+      "slopeTriangles": [ { "from": [3, 2], "to": [5, 8] } ] } ] } },
+  "beats": [ { "say": "Slope measures how steep a line is.", "do": [
+    { "do": "scene", "at": "Slope", "dur": 1.2, "actions": [ { "do": "trace", "target": "g.line.0" } ] } ] } ] }
+```
+
+List the part names a target can use (from a spec, `{"scene": ...}` or a whole shot, as a file or on stdin):
+
+```sh
+npx tsx film/parts.ts shot.json
+```
+
+The actions are the scene actions in the table above. A highlight lasts until the shot's next scene action. `--dry` reports a target that names no part, and notes a crowded tick value the figure leaves out. A film with a shot like this plays only in app versions that can draw it; older ones keep showing the written lesson.
+
+### Build a figure
+
 Otherwise build one. Name the points, in the figure's own units with y up, then the parts:
 
 ```json

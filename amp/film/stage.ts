@@ -33,7 +33,10 @@ const ease = (u: number) => {
 };
 /**
  * A highlight grows about its own centre and takes no layout space.
- * The in and out are a short smooth ease, with no bounce.
+ * A ten-frame is the exception: its cells, counters and labels grow with it
+ * about one centre, so a counter stays in the middle of its cell. Two frames
+ * that would otherwise swell into each other grow as one piece. The in and
+ * out are a short smooth ease, with no bounce.
  */
 const EMPH_GROW = 0.15;
 const EMPH_IN = 0.2;
@@ -328,11 +331,25 @@ function readTranslate(el: HTMLElement): [number, number, string] | null {
   if (!m) return null;
   return [parseFloat(m[1]!), parseFloat(m[2]!), m[4] ? ` scale(${m[4]})` : ""];
 }
-/** Nudge a placed label. Keeps the highlight scale place() wrote after the translate. */
+/** Nudge a placed label. Keeps whatever follows the first translate: a highlight scale, or a ride on a growing frame. */
 function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
-  const m = readTranslate(el);
+  const m = el.style.transform.match(/^translate\(([-\d.]+)px,\s*([-\d.]+)px\)(.*)$/);
   if (!m) return;
-  el.style.transform = `translate(${(m[0] + dx).toFixed(2)}px, ${(m[1] + dy).toFixed(2)}px)${m[2]}`;
+  const x = parseFloat(m[1]!) + dx, y = parseFloat(m[2]!) + dy;
+  let tail = m[3] ?? "";
+  if (el.dataset.ox) {
+    el.dataset.ox = x.toFixed(2);
+    el.dataset.oy = (parseFloat(el.dataset.oy ?? "0") + dy).toFixed(2);
+    el.dataset.cx = (parseFloat(el.dataset.cx ?? "0") + dx).toFixed(2);
+    el.dataset.cy = (parseFloat(el.dataset.cy ?? "0") + dy).toFixed(2);
+    if (el.dataset.ax) {
+      const k = 1 + EMPH_GROW * Number(el.dataset.sem || 0);
+      const rx = (parseFloat(el.dataset.cx) - parseFloat(el.dataset.ax)) * (k - 1);
+      const ry = (parseFloat(el.dataset.cy!) - parseFloat(el.dataset.ay ?? "0")) * (k - 1);
+      tail = ` translate(${rx.toFixed(2)}px, ${ry.toFixed(2)}px) scale(${k.toFixed(4)})`;
+    }
+  }
+  el.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px)${tail}`;
 }
 /**
  * Labels that land on each other are pushed apart. The shot stores the nudge
@@ -370,59 +387,114 @@ const boxesMeet = (a: Box4, b: Box4, gap: number) =>
   Math.min(a.r, b.r) - Math.max(a.l, b.l) > gap && Math.min(a.b, b.b) - Math.max(a.t, b.t) > gap;
 /**
  * A highlight may grow only until it would touch a neighbour it did not already
- * cover. The scale is a transform, so the neighbour's layout does not move.
+ * cover. One frame and everything in its cells share a scale, so a counter is
+ * never left behind. The scale is a transform: the neighbour's layout does not move.
  */
-function setEmVisual(el: SVGElement | HTMLElement, em: number) {
-  const clamped = clamp(em);
-  const k = (1 + EMPH_GROW * clamped).toFixed(4);
-  const scale = `scale(${k})`;
-  if (el instanceof HTMLElement && el.style.transform.includes("scale(")) el.style.transform = el.style.transform.replace(/scale\([-\d.]+\)/, scale);
-  else if (el instanceof SVGElement && (el.getAttribute("transform") ?? "").includes("scale(")) el.setAttribute("transform", (el.getAttribute("transform") ?? "").replace(/scale\([-\d.]+\)/, scale));
-  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * clamped));
-  if (clamped > 0.02) el.dataset.em = clamped.toFixed(3);
-  else delete el.dataset.em;
+let growN = 0;
+const resetGrowIds = () => { growN = 0; };
+function localToViewport(fit: HTMLElement, x: number, y: number) {
+  const rect = fit.getBoundingClientRect();
+  const sx = rect.width / (fit.offsetWidth || 1), sy = rect.height / (fit.offsetHeight || 1);
+  return { x: rect.left + x * sx, y: rect.top + y * sy };
 }
-/** True when the grown element meets a neighbour it did not already cover. */
-function coversNeighbour(el: Element, em: number) {
-  const cur = el.getBoundingClientRect();
-  const k = 1 + EMPH_GROW * Math.max(em, 0.001);
-  const cx = (cur.left + cur.right) / 2, cy = (cur.top + cur.bottom) / 2;
-  const rest: Box4 = { l: cx - cur.width / k / 2, t: cy - cur.height / k / 2, r: cx + cur.width / k / 2, b: cy + cur.height / k / 2 };
-  const grown: Box4 = { l: cur.left, t: cur.top, r: cur.right, b: cur.bottom };
-  const root = el.closest(".film-fit");
-  if (!root) return false;
+function localBoxToViewport(fit: HTMLElement, l: number, t: number, r: number, b: number): Box4 {
+  const p = localToViewport(fit, l, t), q = localToViewport(fit, r, b);
+  return { l: Math.min(p.x, q.x), t: Math.min(p.y, q.y), r: Math.max(p.x, q.x), b: Math.max(p.y, q.y) };
+}
+/** Draw this element at `factor` of its authored grow. A frame's riders use the same factor, so they stay centred in its cells. */
+function setFactor(el: SVGElement | HTMLElement, factor: number) {
+  const em0 = Number(el.dataset.em0 || 0);
+  const em = em0 * factor;
+  const k = 1 + EMPH_GROW * em;
+  if (el instanceof HTMLElement && el.dataset.ox) {
+    const ox = parseFloat(el.dataset.ox), oy = parseFloat(el.dataset.oy ?? "0");
+    const cx = parseFloat(el.dataset.cx ?? "0"), cy = parseFloat(el.dataset.cy ?? "0");
+    const ax = parseFloat(el.dataset.ax ?? "0"), ay = parseFloat(el.dataset.ay ?? "0");
+    const dx = (cx - ax) * (k - 1), dy = (cy - ay) * (k - 1);
+    el.style.transform = `translate(${ox.toFixed(2)}px, ${oy.toFixed(2)}px) translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${k.toFixed(4)})`;
+  } else {
+    const tr = el instanceof SVGElement ? (el.getAttribute("transform") ?? "") : el.style.transform;
+    const next = tr.replace(/scale\([-\d.]+\)/, `scale(${k.toFixed(4)})`);
+    if (next !== tr) {
+      if (el instanceof SVGElement) el.setAttribute("transform", next);
+      else el.style.transform = next;
+    }
+  }
+  el.dataset.sem = em.toFixed(3);
+  el.dataset.factor = String(factor);
+  if (el.dataset.hot === "1") {
+    if (em > 0.02) el.dataset.em = em.toFixed(3);
+    else delete el.dataset.em;
+  }
+  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em));
+}
+/** True when the grown group meets a neighbour it did not already cover. */
+function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
+  const mine = new Set<Element>(members);
+  const grown: Box4[] = [];
+  let rest: Box4 | null = null;
+  const addRest = (b: Box4) => { rest = rest ? { l: Math.min(rest.l, b.l), t: Math.min(rest.t, b.t), r: Math.max(rest.r, b.r), b: Math.max(rest.b, b.b) } : b; };
+  const shown: { el: SVGElement | HTMLElement; box: Box4 }[] = [];
+  for (const el of members) {
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden" || (Number.parseFloat(cs.opacity) || 0) < 0.45) continue;
+    const cur = el.getBoundingClientRect();
+    if (cur.width < 0.4 && cur.height < 0.4) continue;
+    const box = { l: cur.left, t: cur.top, r: cur.right, b: cur.bottom };
+    shown.push({ el, box });
+    grown.push(box);
+    if (el.dataset.rl) addRest(localBoxToViewport(fit, parseFloat(el.dataset.rl), parseFloat(el.dataset.rt ?? "0"), parseFloat(el.dataset.rr ?? "0"), parseFloat(el.dataset.rb ?? "0")));
+  }
+  if (!shown.length) return false;
+  if (!rest) {
+    for (const { el, box } of shown) {
+      const k = 1 + EMPH_GROW * Number(el.dataset.em0 || 0) * Math.max(Number(el.dataset.factor || 1), 0.001);
+      const cx = (box.l + box.r) / 2, cy = (box.t + box.b) / 2;
+      addRest({ l: cx - (box.r - box.l) / k / 2, t: cy - (box.b - box.t) / k / 2, r: cx + (box.r - box.l) / k / 2, b: cy + (box.b - box.t) / k / 2 });
+    }
+  }
+  if (!rest) return false;
+  const home: Box4 = rest;
+  const sx = fit.getBoundingClientRect().width / (fit.offsetWidth || 1);
+  const slop = Math.max(0.4, 0.6 * sx);
   const see = (node: Element, opac: number): boolean => {
-    if (node === el || node.classList.contains("film-em") || node.classList.contains("film-things-extent")) return false;
+    if (mine.has(node) || node.classList.contains("film-em") || node.classList.contains("film-things-extent")) return false;
     const cs = getComputedStyle(node);
     if (cs.display === "none" || cs.visibility === "hidden") return false;
     const o = opac * (Number.parseFloat(cs.opacity) || 0);
     if (o < 0.45) return false;
-    if (isPaint(node) && !el.contains(node) && !node.contains(el)) {
+    if (isPaint(node) && ![...mine].some((m) => m.contains(node) || node.contains(m))) {
       const box = node.getBoundingClientRect();
       const ocx = (box.left + box.right) / 2, ocy = (box.top + box.bottom) / 2;
-      const outside = !(ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b);
-      if (outside && box.width >= 0.5 && boxesMeet(grown, { l: box.left, t: box.top, r: box.right, b: box.bottom }, 2)) return true;
+      const outside = !(ocx > home.l && ocx < home.r && ocy > home.t && ocy < home.b);
+      if (outside && box.width >= 0.5 && grown.some((g) => boxesMeet(g, { l: box.left, t: box.top, r: box.right, b: box.bottom }, slop))) return true;
     }
     if (node instanceof HTMLElement && node.classList.contains("film-label")) return false;
     for (const c of node.children) if (see(c, o)) return true;
     return false;
   };
-  for (const c of root.children) if (see(c, 1)) return true;
+  for (const c of fit.children) if (see(c, 1)) return true;
   return false;
 }
 function limitGrow(root: HTMLElement) {
-  const nodes = [...root.querySelectorAll<SVGElement | HTMLElement>("[data-em]")].filter((el) => !el.classList.contains("film-em"));
+  const nodes = [...root.querySelectorAll<SVGElement | HTMLElement>("[data-grow]")].filter((el) => !el.classList.contains("film-em"));
+  const groups = new Map<string, (SVGElement | HTMLElement)[]>();
   for (const el of nodes) {
-    let em = Number(el.dataset.em || 0);
-    if (em < 0.04 || !coversNeighbour(el, em)) continue;
-    let lo = 0, hi = em;
-    for (let n = 0; n < 6; n++) {
+    const id = el.dataset.grow ?? "";
+    const list = groups.get(id);
+    if (list) list.push(el);
+    else groups.set(id, [el]);
+  }
+  for (const members of groups.values()) {
+    if (!groupCovers(members, root)) continue;
+    let lo = 0, hi = 1;
+    for (let n = 0; n < 8; n++) {
       const mid = (lo + hi) / 2;
-      setEmVisual(el, mid);
-      if (coversNeighbour(el, mid)) hi = mid;
+      for (const el of members) setFactor(el, mid);
+      if (groupCovers(members, root)) hi = mid;
       else lo = mid;
     }
-    setEmVisual(el, lo);
+    for (const el of members) setFactor(el, lo);
   }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
@@ -461,7 +533,9 @@ class GeoStage {
   riders = new Set<string>();
   readouts = new Map<HTMLElement, string>();
   /** Emphasis transforms composed at the end of the frame. A highlight never changes layout. */
-  emphList: { el: SVGElement; em: number; lift: string }[] = [];
+  emphList: { el: SVGElement; em: number; lift: string; about?: P; group: string; hot: boolean }[] = [];
+  /** Fresh ids for each frame's grow groups. */
+  growSeq = 0;
   /** Whole-shot label nudges. Empty while the shot is being measured. */
   labelNudges: Map<HTMLElement, { dx: number; dy: number }> | null = null;
   /** When set, draw reports this frame's nudges instead of applying the stored ones. */
@@ -1132,7 +1206,9 @@ class GeoStage {
         this.svg.appendChild(entry.extra[0]!);
       }
     } else if ("dot" in p) {
-      entry.el = svg((p as Counter).counter ? "path" : "circle"); this.svg.appendChild(entry.el);
+      entry.el = svg((p as Counter).counter ? "path" : "circle");
+      if ((p as Counter).counter) entry.el.dataset.kind = "counter";
+      this.svg.appendChild(entry.el);
     } else if ("circle" in p) {
       entry.el = svg("path");
       this.svg.appendChild(entry.el);
@@ -1149,6 +1225,9 @@ class GeoStage {
       }
     } else if ("grid" in p) {
       entry.el = svg("path");
+      entry.el.dataset.kind = "grid";
+      entry.el.dataset.cols = String(p.grid[0]);
+      entry.el.dataset.rows = String(p.grid[1]);
       entry.el.setAttribute("stroke-linejoin", "round");
       this.svg.appendChild(entry.el);
       entry.extra = [svg("path")];
@@ -1194,6 +1273,8 @@ class GeoStage {
       entry.html.innerHTML = tex(p.tex);
       entry.html.style.color = INK[p.ink ?? "ink"]!;
     }
+    entry.el.dataset.part = p.id;
+    if (entry.html) entry.html.dataset.part = p.id;
     this.parts.push(entry);
   }
   segLine(id: string, t: number): [P, P] | null {
@@ -1205,21 +1286,160 @@ class GeoStage {
   /** Remember a shape's emphasis. The transform is composed after the whole frame is placed. */
   markEm(el: SVGElement | undefined, em: number, lift = "") {
     if (!el) return;
-    this.emphList.push({ el, em: clamp(em), lift });
+    this.emphList.push({ el, em: clamp(em), lift, group: `s${this.growSeq++}`, hot: true });
   }
-  /** Grow highlighted shapes about their own centres. A lift (a solid's thickness) stays outside the scale. */
+  /** Scale `el` about `about` with the frame, instead of about its own centre. */
+  setRide(el: SVGElement, em: number, about: P, group: string, hot: boolean, rest?: Box4) {
+    let found = false;
+    for (let i = 0; i < this.emphList.length; i++) {
+      const cur = this.emphList[i]!;
+      if (cur.el !== el) continue;
+      this.emphList[i] = { el, em, lift: cur.lift, about, group, hot };
+      found = true;
+    }
+    if (!found) this.emphList.push({ el, em, lift: "", about, group, hot });
+    if (rest) {
+      el.dataset.rl = rest.l.toFixed(2); el.dataset.rt = rest.t.toFixed(2);
+      el.dataset.rr = rest.r.toFixed(2); el.dataset.rb = rest.b.toFixed(2);
+    }
+  }
+  /**
+   * A lit ten-frame grows with whatever sits in its cells, about one centre.
+   * Frames that would swell across each other share that centre, so the gap
+   * between them grows instead of closing. A counter highlighted on its own
+   * is left to grow about itself, as before.
+   */
+  rideFrames(t: number, map: (p: P) => P) {
+    type Lit = { em: number; l: number; t: number; r: number; b: number; sw: number; els: SVGElement[] };
+    const grids: Lit[] = [];
+    for (const e of this.parts) {
+      if (!("grid" in e.p)) continue;
+      const em = this.opacity(e.p, t).em;
+      if (em <= 0.02 || !e.el) continue;
+      const { T } = this.xform(e.p, t);
+      const a = this.at(e.p.at, t), [cw, ch] = cellSize(e.p), [nc, nr] = e.p.grid;
+      const corners = [[0, 0], [nc, 0], [nc, nr], [0, nr]].map(([c, r]) => map(T([a[0] + c! * cw, a[1] - r! * ch])));
+      const xs = corners.map((p) => p[0]), ys = corners.map((p) => p[1]);
+      const sw = parseFloat(e.el.style.strokeWidth || "0") || 0;
+      grids.push({
+        em, sw, els: [e.el, ...(e.extra ?? [])].filter((x) => !x.classList.contains("film-em")),
+        l: Math.min(...xs), r: Math.max(...xs), t: Math.min(...ys), b: Math.max(...ys),
+      });
+    }
+    if (!grids.length) return;
+    const parent = grids.map((_, i) => i);
+    const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i]!)));
+    const grown = (g: Lit) => {
+      const k = 1 + EMPH_GROW * g.em, cx = (g.l + g.r) / 2, cy = (g.t + g.b) / 2;
+      // The thickened stroke sits outside the path. Count it, or two lit frames kiss and read as one.
+      const pad = g.sw * (1 + 0.75 * g.em) * k / 2;
+      const hw = (g.r - g.l) / 2 * k + pad, hh = (g.b - g.t) / 2 * k + pad;
+      return { l: cx - hw, r: cx + hw, t: cy - hh, b: cy + hh };
+    };
+    for (let i = 0; i < grids.length; i++) for (let j = i + 1; j < grids.length; j++) {
+      const A = grown(grids[i]!), B = grown(grids[j]!);
+      if (Math.min(A.r, B.r) - Math.max(A.l, B.l) > 0.5 && Math.min(A.b, B.b) - Math.max(A.t, B.t) > 0.5) parent[find(i)] = find(j);
+    }
+    type Ride = Lit & { cx: number; cy: number; group: string };
+    const rides: Ride[] = [];
+    const clusters = new Map<number, Lit[]>();
+    grids.forEach((g, i) => { const f = find(i); const list = clusters.get(f); if (list) list.push(g); else clusters.set(f, [g]); });
+    for (const members of clusters.values()) {
+      const group = `f${this.growSeq++}`;
+      // Stay inside the box each frame would have occupied growing on its own,
+      // so a pair that grows as one piece does not push the rest of the shot.
+      let ol = Infinity, ot = Infinity, or_ = -Infinity, ob = -Infinity;
+      for (const m of members) {
+        const k = 1 + EMPH_GROW * m.em, mx = (m.l + m.r) / 2, my = (m.t + m.b) / 2;
+        const hw = (m.r - m.l) / 2 * k, hh = (m.b - m.t) / 2 * k;
+        ol = Math.min(ol, mx - hw); or_ = Math.max(or_, mx + hw);
+        ot = Math.min(ot, my - hh); ob = Math.max(ob, my + hh);
+      }
+      const ul = Math.min(...members.map((m) => m.l)), ur = Math.max(...members.map((m) => m.r));
+      const ut = Math.min(...members.map((m) => m.t)), ub = Math.max(...members.map((m) => m.b));
+      const cx = (ul + ur) / 2, cy = (ut + ub) / 2;
+      const halfW = (ur - ul) / 2, halfH = (ub - ut) / 2;
+      let kCap = Math.max(...members.map((m) => 1 + EMPH_GROW * m.em));
+      if (halfW > 0.5) kCap = Math.min(kCap, (cx - ol) / halfW, (or_ - cx) / halfW);
+      if (halfH > 0.5) kCap = Math.min(kCap, (cy - ot) / halfH, (ob - cy) / halfH);
+      const emCap = Math.max(0, (Math.max(1, kCap) - 1) / EMPH_GROW);
+      for (const m of members) {
+        const em = Math.min(m.em, emCap);
+        const pad = m.sw / 2;
+        const rest = { l: m.l - pad, t: m.t - pad, r: m.r + pad, b: m.b + pad };
+        for (const el of m.els) this.setRide(el, em, [cx, cy], group, true, rest);
+        rides.push({ ...m, em, cx, cy, group });
+      }
+    }
+    const hit = (x: number, y: number) => rides.find((m) => x > m.l + 1 && x < m.r - 1 && y > m.t + 1 && y < m.b - 1);
+    for (const e of this.parts) {
+      const { p } = e;
+      if ("grid" in p || "things" in p || !("dot" in p)) continue;
+      const { T } = this.xform(p, t);
+      const c = map(T(this.at(p.dot, t)));
+      const m = hit(c[0], c[1]);
+      if (m) this.setRide(e.el, m.em, [m.cx, m.cy], m.group, false);
+    }
+    for (const el of this.labels.querySelectorAll<HTMLElement>(".film-label")) {
+      if (!el.dataset.px) continue;
+      const m = hit(parseFloat(el.dataset.px), parseFloat(el.dataset.py ?? "0"));
+      if (!m) continue;
+      const tr = readTranslate(el);
+      if (!tr) continue;
+      const k = 1 + EMPH_GROW * m.em;
+      const ccx = tr[0] + el.offsetWidth / 2, ccy = tr[1] + el.offsetHeight / 2;
+      const dx = (ccx - m.cx) * (k - 1), dy = (ccy - m.cy) * (k - 1);
+      el.style.transform = `translate(${tr[0].toFixed(2)}px, ${tr[1].toFixed(2)}px) translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${k.toFixed(4)})`;
+      el.dataset.ox = tr[0].toFixed(2); el.dataset.oy = tr[1].toFixed(2);
+      el.dataset.cx = ccx.toFixed(2); el.dataset.cy = ccy.toFixed(2);
+      el.dataset.ax = m.cx.toFixed(2); el.dataset.ay = m.cy.toFixed(2);
+      el.dataset.grow = m.group;
+      el.dataset.em0 = m.em.toFixed(3); el.dataset.sem = m.em.toFixed(3); el.dataset.factor = "1";
+      // The label moved with the frame, so it did not scale about its own centre.
+      // A tiny mark keeps the "did this highlight move the layout?" check from
+      // reading the ride as a shove, without counting as a shape that covers a neighbour.
+      if ((Math.abs(dx) > 0.4 || Math.abs(dy) > 0.4) && el.dataset.hot === "1") {
+        delete el.dataset.hot;
+        el.dataset.em = "0.350";
+      }
+    }
+    if (!this.thingsModel) return;
+    for (const [name, v] of this.thingViews) {
+      if (v.g.style.display === "none") continue;
+      const q = map(this.thingAt(name, t).c);
+      const m = hit(q[0], q[1]);
+      if (!m) continue;
+      const k = (1 + EMPH_GROW * m.em).toFixed(4);
+      const local = v.g.getAttribute("transform") ?? "";
+      v.g.setAttribute("transform", `translate(${m.cx.toFixed(2)} ${m.cy.toFixed(2)}) scale(${k}) translate(${(-m.cx).toFixed(2)} ${(-m.cy).toFixed(2)}) ${local}`);
+      v.g.dataset.grow = m.group;
+      v.g.dataset.em0 = m.em.toFixed(3); v.g.dataset.sem = m.em.toFixed(3); v.g.dataset.factor = "1";
+      v.g.dataset.ax = m.cx.toFixed(2); v.g.dataset.ay = m.cy.toFixed(2);
+      this.emphList = this.emphList.filter((x) => x.el !== v.art);
+    }
+  }
+  /** Grow highlighted shapes. A frame's riders use the frame's centre. A lift stays outside the scale. */
   finishEmphasis() {
-    for (const { el, em, lift } of this.emphList) {
-      if (em > 0.02) el.dataset.em = em.toFixed(3);
-      else delete el.dataset.em;
-      let about = "";
+    for (const { el, em, lift, about, group, hot } of this.emphList) {
+      el.dataset.grow = group;
+      el.dataset.em0 = em.toFixed(3);
+      el.dataset.sem = em.toFixed(3);
+      el.dataset.factor = "1";
+      if (hot && em > 0.02) { el.dataset.em = em.toFixed(3); el.dataset.hot = "1"; }
+      else { delete el.dataset.em; delete el.dataset.hot; }
+      let aboutTf = "";
       if (em > 0.02 && el instanceof SVGGraphicsElement) {
-        let box = { x: 0, y: 0, width: 0, height: 0 };
-        try { box = el.getBBox(); } catch { /* not in the document yet */ }
-        if (box.width >= 0.4 || box.height >= 0.4) {
-          const cx = box.x + box.width / 2, cy = box.y + box.height / 2;
+        let cx: number | undefined, cy: number | undefined;
+        if (about) { cx = about[0]; cy = about[1]; }
+        else {
+          let box = { x: 0, y: 0, width: 0, height: 0 };
+          try { box = el.getBBox(); } catch { /* not in the document yet */ }
+          if (box.width >= 0.4 || box.height >= 0.4) { cx = box.x + box.width / 2; cy = box.y + box.height / 2; }
+        }
+        if (cx !== undefined && cy !== undefined) {
           const k = 1 + EMPH_GROW * em;
-          about = `translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${k.toFixed(4)}) translate(${(-cx).toFixed(2)} ${(-cy).toFixed(2)})`;
+          aboutTf = `translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${k.toFixed(4)}) translate(${(-cx).toFixed(2)} ${(-cy).toFixed(2)})`;
+          el.dataset.ax = cx.toFixed(2); el.dataset.ay = cy.toFixed(2);
           // The branch just wrote the resting stroke. Keep it, then thicken.
           if (el.style.strokeWidth) {
             el.dataset.sw = el.style.strokeWidth;
@@ -1227,8 +1447,8 @@ class GeoStage {
           }
         }
       }
-      // SVG applies the list right to left: scale about the local centre, then the lift.
-      const transform = [lift, about].filter(Boolean).join(" ");
+      // SVG applies the list right to left: scale about the centre, then the lift.
+      const transform = [lift, aboutTf].filter(Boolean).join(" ");
       if (transform) el.setAttribute("transform", transform);
       else el.removeAttribute("transform");
     }
@@ -1273,10 +1493,19 @@ class GeoStage {
   }
   draw(t: number) {
     this.emphList = [];
-    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em]")) {
-      delete old.dataset.em;
+    this.growSeq = 0;
+    resetGrowIds();
+    const clearGrow = (old: SVGElement | HTMLElement) => {
+      delete old.dataset.em; delete old.dataset.em0; delete old.dataset.sem; delete old.dataset.factor;
+      delete old.dataset.grow; delete old.dataset.hot; delete old.dataset.ax; delete old.dataset.ay;
+      delete old.dataset.rl; delete old.dataset.rt; delete old.dataset.rr; delete old.dataset.rb;
+      delete old.dataset.ox; delete old.dataset.oy; delete old.dataset.cx; delete old.dataset.cy;
+    };
+    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em], [data-grow]")) {
+      clearGrow(old);
       old.removeAttribute("transform");
     }
+    for (const old of this.labels.querySelectorAll<HTMLElement>("[data-grow], [data-em]")) clearGrow(old);
     const { s, map } = this.px(t);
     const unit = 1;
     for (const e of this.parts) {
@@ -1593,6 +1822,8 @@ class GeoStage {
         const m = p.pin ? this.px(t, this.view0).map : map;
         const anchor: P = line ? m(T([(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2])) : m(T(this.at(p.at, t)));
         place(e.html!, anchor, p.dir ?? "n", p.far ?? 1, o, em);
+        e.html!.dataset.px = anchor[0].toFixed(2);
+        e.html!.dataset.py = anchor[1].toFixed(2);
       } else if ("dim" in p) {
         const a = P(p.dim[0]), b = P(p.dim[1]);
         const dirv = DIRS[p.side]!; const gap = LABEL_GAP * 0.7 * (p.far ?? 1);
@@ -1607,6 +1838,7 @@ class GeoStage {
       e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
     }
     if (this.thingsModel) this.drawThings(t, map, s);
+    this.rideFrames(t, map);
     this.finishEmphasis();
     const host = this.labels.parentElement;
     if (host) {
@@ -2077,8 +2309,11 @@ function place(el: HTMLElement, at: P, dir: string, far: number, o: number, em: 
   // Scale about the label's own centre (transform-origin is center). The translate stays put.
   el.style.transform = `translate(${x}px, ${y}px) scale(${grow.toFixed(4)})`;
   el.style.opacity = String(o);
-  if (em > 0.02) el.dataset.em = clamp(em).toFixed(3);
-  else delete el.dataset.em;
+  if (em > 0.02) {
+    const on = clamp(em).toFixed(3);
+    el.dataset.em = on; el.dataset.em0 = on; el.dataset.sem = on;
+    el.dataset.factor = "1"; el.dataset.hot = "1"; el.dataset.grow = `p${growN++}`;
+  } else delete el.dataset.em;
   el.style.removeProperty("text-shadow");
 }
 /** Half a line of the label: the room a cell keeps on every side. */
@@ -3012,15 +3247,19 @@ class Board {
 }
 
 // ------------------------------------------------------------------ the film
+/** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
+export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
 export class Film {
-  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
+  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
   issues: string[] = [];
+  /** Worth knowing, not wrong: printed as notes, never a reason to stop. */
+  notes: string[] = [];
   duration: number;
   L: Layout;
   /** Longest stretch of speech with nothing changing on screen; --dry passes a stricter limit, since its timing is estimated. */
   still = 7.5;
-  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountExample?: (host: HTMLElement, shot: Shot, list: Entry[]) => ((t: number) => void) | undefined, opts: { checks?: boolean; layout?: Layout; still?: number; voices?: readonly VoiceSpec[] } = {}) {
+  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountFigure?: (host: HTMLElement, shot: Shot, list: Entry[]) => FigureMount | undefined, opts: { checks?: boolean; layout?: Layout; still?: number; voices?: readonly VoiceSpec[] } = {}) {
     if (opts.still) this.still = opts.still;
     this.duration = timing.duration;
     const L0 = opts.layout ?? WIDE;
@@ -3037,15 +3276,15 @@ export class Film {
       const el = div("film-shot", root);
       const t0 = i === 0 ? 0 : times[0]!.start - 0.5;
       const hasFig = !!shot.figure;
-      let geo: GeoStage | undefined; let extern: ((t: number) => void) | undefined;
+      let geo: GeoStage | undefined; let mount: FigureMount | undefined;
       if (hasFig) {
         const card = div("film-figure", el);
         card.style.cssText = `left:${FIG.x}px;top:${FIG.y}px;width:${FIG.w}px;height:${FIG.h}px`;
         const host = div("film-fit", card);
         if (shot.figure && "parts" in shot.figure) geo = new GeoStage(host, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
-        else extern = mountExample?.(host, shot, list);
+        else mount = mountFigure?.(host, shot, list);
       }
-      this.shots.push({ el, t0, t1: Infinity, geo, list, extern, hasFig, pose: null, fill: 0 });
+      this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
     this.lockFrames();
@@ -3135,9 +3374,15 @@ export class Film {
       s: prev.s + (pose.s - prev.s) * u,
     };
   }
-  /** Labels and points must stay on their card, and the picture must be big enough to see. */
+  /** Labels and points must stay on their card, the picture must be big enough to see, and scene actions must name real parts. */
   checkFigures() {
     this.shots.forEach((s, i) => {
+      // an app figure checks its own scene actions when it is mounted
+      for (const m of s.mount?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
+      for (const m of s.mount?.notes ?? []) this.notes.push(`Shot ${i + 1}: ${m}`);
+      const fig = this.script.shots[i]!.figure;
+      if ((!fig || "parts" in fig) && s.list.some((e) => e.a.do === "scene"))
+        this.issues.push(`Shot ${i + 1}: scene actions drive an app figure, but this shot has none. Give it {"example": true} or {"scene": ...}.`);
       if (!s.geo) return;
       this.checkSize(s, i);
       const box = s.geo.box;

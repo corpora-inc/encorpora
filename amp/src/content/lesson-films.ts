@@ -1,8 +1,12 @@
 import { z } from "zod";
 import manifest from "./films/manifest.json";
 
-/** Current clients receive voice editions. v1 clients still receive the default edition. */
-export const FILM_CAPABILITY = "lesson-film-v2";
+/**
+ * Current clients draw any app figure in a film (v3). v2 clients receive voice
+ * editions of films without one; v1 clients the default edition of those.
+ */
+export const FILM_CAPABILITY = "lesson-film-v3";
+export const FILM_CAPABILITY_V2 = "lesson-film-v2";
 export const FILM_CAPABILITY_V1 = "lesson-film-v1";
 export const FILM_CDN = "https://d38iwc9748jekz.cloudfront.net";
 const id = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*(?:--[a-z0-9-]+)?$/);
@@ -27,7 +31,8 @@ export const lessonFilmSchema = z
     audioUrl: z.string().url(),
     duration: z.number().positive().finite(),
     teacher: z.enum(["Madeline Brousseaux", "Paul"]),
-    capability: z.literal(FILM_CAPABILITY),
+    /** The oldest player that can draw it: a shot with its own app figure needs v3. */
+    capability: z.enum([FILM_CAPABILITY_V2, FILM_CAPABILITY]),
     /** Every voice edition of this film. The first is the default the app plays. */
     editions: z.array(filmEditionSchema).min(1),
   })
@@ -81,13 +86,18 @@ export const filmManifestSchema = z.record(id, lessonFilmSchema);
 export const lessonFilms = filmManifestSchema.parse(manifest);
 
 /** Opt in explicitly: clients predating the player receive written lessons only. */
-export function lessonFilmFor(
-  templateId: string,
+export function lessonFilmFor(templateId: string, capability?: unknown) {
+  return filmForClient(lessonFilms[templateId], capability);
+}
+/** A film only reaches a client whose player can draw it. */
+export function filmForClient(
+  film: LessonFilm | undefined,
   capability?: unknown,
 ): LessonFilm | LessonFilmV1 | undefined {
-  const film = lessonFilms[templateId];
   if (!film) return undefined;
   if (capability === FILM_CAPABILITY) return film;
+  if (film.capability !== FILM_CAPABILITY_V2) return undefined;
+  if (capability === FILM_CAPABILITY_V2) return film;
   if (capability === FILM_CAPABILITY_V1) {
     const { editions: _editions, ...rest } = film;
     return { ...rest, capability: FILM_CAPABILITY_V1 };
