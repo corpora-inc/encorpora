@@ -215,16 +215,21 @@ MARKERS = {
     'trig-identity-value': ('Complete the proof, then divide the identity', 'Both chords subtend angle', 'Use the tangent addition or subtraction formula'),
     'complementary-trig': ('Which ratio at the other acute angle', 'for every such right triangle?'),
     'oblique-triangle-solve': ('Surveying: stations P and Q', 'Two forces of', 'A ship leaves harbor on bearing'),
-    'triangle-law-reasoning': ('What does the law of cosines for side c become?', 'What does a/sin A = c/sin C become?', 'Use the law of cosines to find c.'),
+    # The sine form is typeset ($a/\sin A = c/\sin C$). plain() strips dollars
+    # and leaves the command, so both wordings select the same task.
+    'triangle-law-reasoning': ('What does the law of cosines for side c become?', 'What does a/sin A = c/sin C become?', 'What does a/\\sin A = c/\\sin C become?', 'Use the law of cosines to find c.'),
 }
 
 
 def matches(public):
-    return any(marker in public['prompt'] for marker in MARKERS.get(public['templateId'], ()))
+    # Typesetting wraps names in $...$. plain() strips those dollars, so a
+    # marker written either way still selects the same task. No draw changes.
+    prompt = plain(public['prompt'])
+    return any(plain(marker) in prompt for marker in MARKERS.get(public['templateId'], ()))
 
 
 def solve(public):
-    require(matches(public), 'Not a clause-variant prompt')
+    require(matches(public), 'Not a clause-variant prompt: ' + public['templateId'])
     tid, p, response = public['templateId'], plain(public['prompt']), public['response']
     opts = response.get('options', [])
     if tid == 'representative-sample-choice':
@@ -314,7 +319,8 @@ def solve(public):
         require(residual(labeled['E']) <= 3, 'Extreme-x decoy is off trend')
         expected = []
         for o in opts:
-            label = o['label']
+            # Typesetting only: $P$ reads as P.
+            label = plain(o['label'])
             if label == ('No clear association' if flat else 'Positive association' if slope > 0 else 'Negative association') or (clustered and label.startswith('Two clusters')) or (outlier and label.startswith('An outlier at P')):
                 expected.append(o['id'])
         require(len(expected) == response['selectionCount'], 'Incorrect selection count')

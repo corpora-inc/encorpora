@@ -672,8 +672,8 @@ def solve_quadratic_factors(public):
     return pick(public, lambda lab: equation(lab), expected)
 
 
-def _radical_text(m):
-    """Matches radicalText in complex-conics-practice.ts."""
+def _radical_tex(m):
+    """Matches radicalTex in complex-conics-practice.ts. Typesetting only."""
     k, rest = 1, m
     p = 2
     while p * p <= rest:
@@ -683,27 +683,28 @@ def _radical_text(m):
         p += 1
     if rest == 1:
         return str(k)
-    return f'√{rest}' if k == 1 else f'{k}√{rest}'
-
-
-def _uni(n):
-    return str(n).replace('-', '−')
+    root = f'\\sqrt{{{rest}}}'
+    return root if k == 1 else f'{k}{root}'
 
 
 def quadratic_fta_statement(b, c):
-    """Matches quadraticFtaStatement. b and c are ints of a monic quadratic."""
+    """Matches quadraticFtaStatement. b and c are ints of a monic quadratic.
+
+    The wording change is typesetting only ($...$, \\pm, \\sqrt). plain()
+    still reads the same roots.
+    """
     d = b * b - 4 * c
     if d > 0:
         s = int(d ** 0.5)
         require(s * s == d, 'Discriminant is not a square')
         hi, lo = (-b + s) // 2, (-b - s) // 2
-        return f'D = {_uni(d)} > 0, so x = {_uni(hi)} and x = {_uni(lo)}: two real roots, which is two roots counting multiplicity.'
+        return f'$D = {d} > 0$, so $x = {hi}$ and $x = {lo}$: two real roots, which is two roots counting multiplicity.'
     if d == 0:
         require(b % 2 == 0, 'Repeated root is not an integer')
-        return f'D = 0, so x = {_uni(-b // 2)} is a root of multiplicity 2, which counts as two roots.'
+        return f'$D = 0$, so $x = {-b // 2}$ is a root of multiplicity 2, which counts as two roots.'
     require(d % 4 == 0 and b % 2 == 0, 'Nonreal roots are not of the form h ± √m i')
     h, m = -b // 2, -d // 4
-    return f'D = {_uni(d)} < 0, so x = {_uni(h)} ± {_radical_text(m)}i: two nonreal roots, which is two roots counting multiplicity.'
+    return f'$D = {d} < 0$, so $x = {h} \\pm {_radical_tex(m)}i$: two nonreal roots, which is two roots counting multiplicity.'
 
 
 def solve_root_count(public):

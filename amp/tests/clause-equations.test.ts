@@ -410,7 +410,8 @@ test("assumption checks and scaled elimination are exact", () => {
     const ny = e! + k * b!;
     const nr = f! + k * c!;
     assert.equal(ny, 0, p.public.prompt);
-    const xTerm = nx === 1 ? /(?:^| )x =/ : nx === -1 ? /-x =/ : new RegExp(`${nx}x`);
+    // Typesetting only: the term may be wrapped as $x =$ or $-x =$.
+    const xTerm = nx === 1 ? /(?:^| )\$?x =/ : nx === -1 ? /\$?-x =/ : new RegExp(`${nx}x`);
     assert.match(sum, xTerm);
     assert.match(sum, new RegExp(`= ${nr}`));
     const unscaled = p.public.response.kind === "multi-part-choice"

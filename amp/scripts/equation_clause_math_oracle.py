@@ -32,12 +32,18 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def plain(text):
+    """Typesetting wraps a name or an equation in $...$. The sentence shape is the same."""
+    return text.replace("$", "")
+
+
 def dumps(value):
     return json.dumps(value, separators=(",", ":"))
 
 
 def pick(options, label):
-    hits = [option["id"] for option in options if option["label"] == label]
+    want = plain(label)
+    hits = [option["id"] for option in options if plain(option["label"]) == want]
     require(len(hits) == 1, f"expected one choice {label!r}, found {len(hits)}")
     return hits[0]
 
@@ -82,6 +88,7 @@ def lines(prompt):
 
 
 def role_of(sentence):
+    sentence = plain(sentence)
     fixed = re.fullmatch(
         r".+ has s \w+\. .+ gives away (\d+) and has (\d+) left\.",
         sentence,
@@ -123,7 +130,7 @@ def variable_role(public):
 
 
 def arithmetic(public):
-    prompt = public["prompt"]
+    prompt = plain(public["prompt"])
     grouped = prompt.startswith("A rectangle has perimeter")
     if grouped:
         found = re.fullmatch(
@@ -245,7 +252,9 @@ def make_example(public):
         factor, shift, factor_again = (int(numeric[i]) for i in (1, 2, 3))
         require(factor == factor_again, "same factor")
         return dumps([[str(factor * shift)]])
-    found = re.search(r"\$([0-9x+-]+) = ____\$", prompt)
+    # The blank sits just outside the span: $-5x-3 =$ ____. The older
+    # $expr = ____$ shape is the same sentence.
+    found = re.search(r"\$([0-9x+-]+) =(?:\$ ____| ____\$)", prompt)
     require(found is not None, "right side")
     factor, constant = parse_axb(found[1])
     none_constant = constant - 1 if constant == 12 else constant + 1
@@ -254,8 +263,9 @@ def make_example(public):
 
 
 def intersection(public):
-    (n1, d1, b1), (n2, d2, b2) = lines(public["prompt"])
-    found = re.search(r"Q is \((-?\d+), (-?\d+)\)", public["prompt"])
+    prompt = plain(public["prompt"])
+    (n1, d1, b1), (n2, d2, b2) = lines(prompt)
+    found = re.search(r"Q is \((-?\d+), (-?\d+)\)", prompt)
     require(found is not None, "Q")
     qx, qy = int(found[1]), int(found[2])
     y1 = b1 + Fraction(n1 * qx, d1)
@@ -312,7 +322,7 @@ def crossing(public):
 
 
 def assume(public):
-    prompt = public["prompt"]
+    prompt = plain(public["prompt"])
     why = "We assume a solution exists; later lines are true for that x"
     none = re.fullmatch(
         r"Suppose x is a number with (\d+)\(x([+-]\d+)\) = (\d+)x([+-]\d+)\. Expanding and subtracting \d+x from both sides leaves (-?\d+) = (-?\d+)\.",
@@ -353,7 +363,7 @@ def elimination(public):
     found = re.fullmatch(
         r"E1: (-?\d+)x([+-]\d+)y = (-?\d+)\. E2: (-?\d+)x([+-]\d+)y = (-?\d+)\. "
         r"The system is replaced by E1 and E2 \+ (-?\d+)·E1\.",
-        public["prompt"],
+        plain(public["prompt"]),
     )
     require(found is not None, "elimination")
     a, b = int(found[1]), int(found[2])

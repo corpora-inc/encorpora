@@ -22,16 +22,26 @@ const NAMING = /\$\\pi\$ \(pi\)/g;
 export const ALLOWED: readonly [RegExp, string][] = [
   [/\b(?:e\.g\.|i\.e\.|a\.m\.|p\.m\.)/g, "Latin abbreviations are prose"],
   [
-    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|T-charts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
-    "a letter that names a shape (an L-shaped face) or a chart (T-chart), not a quantity",
+    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|T-charts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:[Aa]n|[Tt]he) L\b(?! =)/g,
+    "a letter that names a shape (an L-shaped face, or An L at a sentence start) or a chart (T-chart), not a quantity",
   ],
   [
     /\bletters [A-Z] through [A-Z]\b/g,
     "letters of the alphabet named as letters (the letters A through E)",
   ],
   [
-    /(?<=°\s?)[CF]\b|(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])|(?<=\b(?:in|[Ee]ach|per) )(?:m|g|L)\b(?![-=])/g,
-    "a unit symbol (8 m, 2 L, 4°C, length in m) is text, like any unit",
+    /(?<=°\s?)[CF]\b|(?<=\d\s?)(?:m|g|L|s|h|N)\b(?![-=])|(?<=\b(?:in|[Ee]ach|per) )(?:m|g|L)\b(?![-=])/g,
+    "a unit symbol (8 m, 12 N, 2 L, 4°C, length in m) is text, like any unit",
+  ],
+  [
+    // A comma-separated ladder that contains a longer unit symbol (kg, mm, MB).
+    // A single letter matches only as its own list item, never inside a word.
+    /(?:(?:[tgsmB]\b|µm|µs|nm|ns|mm|ms|km|kg|cm|mg|TB|GB|MB|KB|kB)\b,\s+){1,8}(?:µm|µs|nm|ns|mm|ms|km|kg|cm|mg|TB|GB|MB|KB|kB)\b(?:,\s+(?:[tgsmB]\b|µm|µs|nm|ns|mm|ms|km|kg|cm|mg|TB|GB|MB|KB|kB)\b){0,8}|(?:µm|µs|nm|ns|mm|ms|km|kg|cm|mg|TB|GB|MB|KB|kB)\b(?:,\s+(?:[tgsmB]\b|µm|µs|nm|ns|mm|ms|km|kg|cm|mg|TB|GB|MB|KB|kB)\b){1,8}/gu,
+    "single-letter units t, g, m, s and B inside a unit ladder (kg, g, mg or kB, MB, B)",
+  ],
+  [
+    /(?<=\d\s?)(?:t|g|m|s|B)\b(?![-=])/gu,
+    "a tonne, gram, meter, second or byte after a number (5 t, 8 B) is a unit",
   ],
 ];
 

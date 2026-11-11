@@ -1220,14 +1220,14 @@ export function systemEquationChoiceCase(seed: string): TexasHsCase {
   const crossed = systemLabel([m1, b2], [m2, b1]);
   const bothSwapped = systemLabel([b1, m1], [b2, m2]);
   const wrongSet = (swapFeedback: string, crossFeedback: string): Wrong[] => [
-    { ...swapOne, feedback: swapFeedback.replace("%", "A") },
-    { ...swapOther, feedback: swapFeedback.replace("%", "B") },
+    { ...swapOne, feedback: swapFeedback.replace("%", "$A$") },
+    { ...swapOther, feedback: swapFeedback.replace("%", "$B$") },
     { ...crossed, feedback: crossFeedback },
     { ...bothSwapped, feedback: swapFeedback.replace("%", "both plans") },
   ];
   if (variant === 0) {
     const names = pick(r, [
-      ["Gym A", "Gym B", "visits", "a month's membership"],
+      ["Gym $A$", "Gym $B$", "visits", "a month's membership"],
       ["Plan A", "Plan B", "months", "the plan"],
     ] as const);
     return finish(meta, seed, r, {
@@ -1268,7 +1268,7 @@ export function systemEquationChoiceCase(seed: string): TexasHsCase {
       prompt: `The table shows the height $y$ in centimeters of two plants $x$ weeks after the first measurement. Which system models both heights?`,
       hint: `Find how much each row increases when $x$ goes up by 1; that is the slope. Then use ${x0 === 0 ? "the value at $x=0$" : "the first value and the slope to work back to $x=0$"} for the constant.`,
       explanation: [
-        `Plant A increases by ${m1} each week and Plant B by ${m2} each week, so the slopes are ${m1} and ${m2}.`,
+        `Plant $A$ increases by ${m1} each week and Plant $B$ by ${m2} each week, so the slopes are ${m1} and ${m2}.`,
         x0 === 0
           ? `At $x=0$ the heights are ${b1} and ${b2}, so these are the constants.`
           : `At $x=1$ the heights are ${m1 + b1} and ${m2 + b2}. Going back one week subtracts the slope, so the heights at $x=0$ are ${b1} and ${b2}.`,
@@ -1279,11 +1279,11 @@ export function systemEquationChoiceCase(seed: string): TexasHsCase {
       wrong: [
         {
           ...swapOne,
-          feedback: `The change per week is the coefficient of $x$ and the value at $x=0$ is the constant. Plant A's two numbers were exchanged.`,
+          feedback: `The change per week is the coefficient of $x$ and the value at $x=0$ is the constant. Plant $A$'s two numbers were exchanged.`,
         },
         {
           ...swapOther,
-          feedback: `The change per week is the coefficient of $x$ and the value at $x=0$ is the constant. Plant B's two numbers were exchanged.`,
+          feedback: `The change per week is the coefficient of $x$ and the value at $x=0$ is the constant. Plant $B$'s two numbers were exchanged.`,
         },
         {
           ...crossed,

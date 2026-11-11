@@ -1265,7 +1265,7 @@ function nonlinearCase(r: Random, judge: JudgeValue): Case {
   const noConstant = {
     label: "Because it has no constant term added.",
     feedback:
-      "A rule with no added constant can still be linear, such as y = 4s. The test is equal changes, not a missing constant.",
+      "A rule with no added constant can still be linear, such as $y = 4s$. The test is equal changes, not a missing constant.",
   };
   const instead = {
     label: "Because the variable is used more than once.",

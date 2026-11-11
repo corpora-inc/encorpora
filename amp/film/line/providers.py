@@ -200,10 +200,13 @@ def grok_output(stdout):
 
 
 def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
-              check_command=None, images=(), timeout=1800, max_dollars=None, effort='xhigh'):
+              check_command=None, images=(), timeout=1800, max_dollars=None, effort='xhigh', claude_auth='api'):
     """One measured attempt. The caller owns retry limits and concurrency."""
     if provider not in MODELS or effort not in ('low', 'medium', 'high', 'xhigh'):
         raise ValueError('Unsupported model or reasoning effort')
+    if claude_auth not in ('api', 'subscription'):
+        raise ValueError('claude_auth must be api or subscription')
+    subscription = provider in RATES and claude_auth == 'subscription'
     workspace, receipt = Path(workspace).resolve(), Path(receipt)
     workspace.mkdir(parents=True, exist_ok=True)
     receipt.parent.mkdir(parents=True, exist_ok=True)
@@ -231,15 +234,16 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                    '--always-approve', '--rules', house, '--no-subagents',
                    '--disable-web-search', '--output-format', 'streaming-json']
     else:
-        if not secrets.get('ANTHROPIC_API_KEY'):
+        if not subscription and not secrets.get('ANTHROPIC_API_KEY'):
             raise RuntimeError('Anthropic API key is unavailable')
-        env['ANTHROPIC_API_KEY'] = secrets['ANTHROPIC_API_KEY']
-        command = ['claude', '-p', '--bare', '--restricted', '--strict-mcp-config',
+        if not subscription:
+            env['ANTHROPIC_API_KEY'] = secrets['ANTHROPIC_API_KEY']
+        command = ['claude', '-p', *([] if subscription else ['--bare']), '--restricted', '--strict-mcp-config',
                    '--mcp-config', '{"mcpServers":{}}', '--model', MODELS[provider],
                    '--effort', effort, '--output-format', 'stream-json', '--verbose', '--include-partial-messages',
                    '--no-session-persistence', '--permission-mode', 'dontAsk',
                    '--disable-slash-commands', '--append-system-prompt', house]
-        if max_dollars is not None:
+        if max_dollars is not None and not subscription:
             if not isinstance(max_dollars,(int,float)) or max_dollars <= 0:
                 raise ValueError('The API attempt budget must be positive')
             command += ['--max-budget-usd',str(max_dollars)]
@@ -256,13 +260,14 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
               'started_at': now(), 'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
               'image_sha256': [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images],
               'timeout_seconds': timeout,
-              'transport': 'account-cli' if provider in ('astra', 'sol', 'grok') else 'api-cli',
+              'transport': 'subscription-cli' if subscription else 'account-cli' if provider in ('astra', 'sol', 'grok') else 'api-cli',
               'api_dollars': None, 'reported_dollars': None, 'status': 'running'}
-    if max_dollars is not None and provider in RATES:
+    if max_dollars is not None and provider in RATES and not subscription:
         record['budget_limit_usd'] = max_dollars
     write_json(receipt, record)
     start = time.monotonic()
     timed_out = False
+    interruption = None
     try:
         process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, cwd=workspace, env=env,
@@ -270,7 +275,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
     except OSError as error:
         record.update(status='failed', launch_error=redact(str(error), secrets),
                       finished_at=now(), wall_seconds=round(time.monotonic()-start, 3),
-                      api_dollars=0, usage_complete=True, response='')
+                      api_dollars=None if subscription else 0, usage_complete=True, response='')
         write_json(receipt, record)
         return record
     record['pid'] = process.pid
@@ -285,6 +290,15 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         except subprocess.TimeoutExpired:
             os.killpg(process.pid, signal.SIGKILL)
             stdout, stderr = process.communicate()
+    except BaseException as error:
+        interruption = error
+        os.killpg(process.pid, signal.SIGTERM)
+        try:
+            stdout, stderr = process.communicate(timeout=15)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            stdout, stderr = process.communicate()
+    record['interrupted'] = interruption is not None
     stdout, stderr = redact(stdout, secrets), redact(stderr, secrets)
     receipt.with_suffix('.stdout').write_text(stdout)
     receipt.with_suffix('.stderr').write_text(stderr)
@@ -321,11 +335,16 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                 record['reported_cost_is_partial'] = response.get('cost_is_partial', False)
         record['raw_usage'] = raw_usage
         record['tokens'] = normalized_usage(provider, raw_usage)
-        record['usage_complete'] = bool(raw_usage) and not timed_out and not record.get('usage_partial')
+        record['usage_complete'] = bool(raw_usage) and not timed_out and interruption is None and not record.get('usage_partial')
     except (ValueError, KeyError, TypeError) as error:
         record['parse_error'] = type(error).__name__
         record['usage_complete'] = False
-    record['status'] = 'failed' if process.returncode or timed_out or record.get('provider_error') else 'succeeded'
+    record['status'] = 'failed' if process.returncode or timed_out or interruption is not None or record.get('provider_error') else 'succeeded'
+    if subscription:
+        for key in ('api_dollars', 'reported_dollars', 'partial_api_dollars'):
+            record[key] = None
     record['response'] = result
     write_json(receipt, record)
+    if interruption is not None:
+        raise interruption
     return record

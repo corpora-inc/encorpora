@@ -7,5 +7,7 @@
   "live_data": "/private/lesson-films/_review/live/data",
   "player_url": "http://127.0.0.1:28941/live/",
   "review_url": "http://127.0.0.1:28941/live/line.html",
-  "voice_cache": "/private/lesson-films/_voice"
+  "voice_cache": "/private/lesson-films/_voice",
+  "queue_page": "/private/lesson-films/_review/index.html",
+  "claude_auth": "api"
 }

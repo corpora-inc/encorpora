@@ -1092,7 +1092,7 @@ function graphFromFactored(r: Random): Case {
       {
         label: negatedText,
         feedback:
-          "This reads (x + a) as a zero at +a. The factor (x − r) is zero at r, so (x + 3) is zero at −3.",
+          "This reads $(x + a)$ as a zero at $+a$. The factor $(x - r)$ is zero at $r$, so $(x + 3)$ is zero at $-3$.",
       },
     ]);
     if (!choices) continue;
@@ -1108,7 +1108,7 @@ function graphFromFactored(r: Random): Case {
       prompt: `Use the zeros of $y = ${written}$ to sketch a rough graph. Which description matches your sketch?`,
       choices,
       explanation: [
-        `A factor (x − r) is zero at r, and (x + a) is zero at −a. The zeros are ${joinSigned(pairs.map((p) => p.z))}.`,
+        `A factor $(x - r)$ is zero at $r$, and $(x + a)$ is zero at $-a$. The zeros are ${joinSigned(pairs.map((p) => p.z))}.`,
         `The exponents add to ${degree}, and the leading coefficient is ${lead === 1 ? "positive" : "negative"}, so the right end ${lead < 0 ? "falls" : "rises"}.`,
         `An even exponent touches and an odd exponent crosses. The graph touches at ${touchAt} and crosses at ${crossAt}.`,
         `So the sketch is: ${correct}`,

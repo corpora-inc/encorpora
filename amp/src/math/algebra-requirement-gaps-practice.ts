@@ -1779,7 +1779,7 @@ function oneContextual(meta: TemplateMetadata, seed: string, r: Random) {
           ? `Read the three forms, starting with $${forms.A}$. Factored form shows the break-even counts. The squared form shows the greatest profit and how many items give it.`
           : `Read the three forms, starting with $${forms.A}$. Factored form shows the landing, a zero. Vertex form shows the greatest height and its time. Standard form shows the height at the throw.`,
     explanation: [
-      `The three forms expand to the same ${fname}(${v}).`,
+      `The three forms expand to the same $${fname}(${v})$.`,
       ask === "symmetry"
         ? `The starting height returns at twice the axis: $t=${mirror}$ s.`
         : `The asked number is read from the form that shows that feature directly.`,
