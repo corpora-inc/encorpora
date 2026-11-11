@@ -1,2128 +1,2141 @@
 {
-  "id": "compare-function-rates--sk",
-  "title": "Compare two functions: the start and the step",
-  "teaches": [
-    "mcas-table-intercept-select",
-    "linear-function-choice"
-  ],
-  "cast": {
-    "teacher": {},
-    "learner": {}
-  },
-  "shots": [
-    {
-      "figure": {
-        "stretch": true,
-        "view": [
-          -4.85,
-          -2.4,
-          4.6,
-          11.4
-        ],
-        "points": {
-          "TL": [
-            -4.6,
-            10.0
-          ],
-          "P0": [
-            0,
-            3
-          ],
-          "P1": [
-            1,
-            5
-          ],
-          "P2": [
-            2,
-            7
-          ],
-          "LE": [
-            3.5,
-            10
-          ],
-          "C1": [
-            1,
-            3
-          ],
-          "C2": [
-            2,
-            5
-          ],
-          "XT": [
-            2.15,
-            0
-          ],
-          "YT": [
-            0,
-            10.2
-          ],
-          "M1": [
-            -2.3999999999999995,
-            5.6
-          ],
-          "M2": [
-            -2.3999999999999995,
-            3.3999999999999995
-          ],
-          "D0": {
-            "anchor": [
-              "t",
-              "right:1"
-            ]
-          },
-          "D1": {
-            "anchor": [
-              "t",
-              "right:2"
-            ]
-          },
-          "D2": {
-            "anchor": [
-              "t",
-              "right:3"
-            ]
-          }
-        },
-        "parts": [
-          {
-            "id": "ax",
-            "axes": true,
-            "step": 1,
-            "every": 1,
-            "ystep": 1,
-            "yevery": 3,
-            "xrange": [
-              0,
-              4.3
-            ],
-            "yrange": [
-              0,
-              10.2
-            ],
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "xt",
-            "label": "\\text{miles}",
-            "at": "XT",
-            "dir": "s",
-            "far": 2.3,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "yt",
-            "label": "\\text{dollars}",
-            "at": "YT",
-            "dir": "n",
-            "far": 0.4,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "t",
-            "table": true,
-            "at": "TL",
-            "corner": "$x$",
-            "head": [
-              "$y$"
-            ],
-            "rows": [
-              {
-                "label": "0",
-                "cells": [
-                  "3"
-                ]
-              },
-              {
-                "label": "1",
-                "cells": [
-                  "5"
-                ]
-              },
-              {
-                "label": "2",
-                "cells": [
-                  "7"
-                ]
-              }
-            ],
-            "cell": [
-              1.1,
-              2.2
-            ],
-            "size": "m"
-          },
-          {
-            "id": "line",
-            "seg": [
-              "P0",
-              "LE"
-            ],
-            "ink": "accent",
-            "w": 8
-          },
-          {
-            "id": "cy1",
-            "label": "+2",
-            "at": "M1",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "tsteps"
-          },
-          {
-            "id": "cy2",
-            "label": "+2",
-            "at": "M2",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "tsteps"
-          },
-          {
-            "id": "run0",
-            "seg": [
-              "P0",
-              "C1"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "stair"
-          },
-          {
-            "id": "rise0",
-            "seg": [
-              "C1",
-              "P1"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "stair"
-          },
-          {
-            "id": "lr0",
-            "label": "+2",
-            "at": "rise0",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "stair"
-          },
-          {
-            "id": "run1",
-            "seg": [
-              "P1",
-              "C2"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "stair"
-          },
-          {
-            "id": "rise1",
-            "seg": [
-              "C2",
-              "P2"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "stair"
-          },
-          {
-            "id": "lr1",
-            "label": "+2",
-            "at": "rise1",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "stair"
-          },
-          {
-            "id": "d0",
-            "dot": "D0",
-            "ink": "ink",
-            "r": 14
-          },
-          {
-            "id": "d1",
-            "dot": "D1",
-            "ink": "ink",
-            "r": 14
-          },
-          {
-            "id": "d2",
-            "dot": "D2",
-            "ink": "ink",
-            "r": 14
-          },
-          {
-            "id": "dS",
-            "dot": "P0",
-            "ink": "gold",
-            "r": 19
-          }
-        ]
-      },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "A taxi ride costs three dollars to get in, plus two dollars for each mile.",
-          "do": [
-            {
-              "do": "text",
-              "text": "Taxi:\u00a0$\\cg{3}$\u00a0dollars, plus\u00a0$\\cw{2}$\u00a0a\u00a0mile.",
-              "at": "A",
-              "id": "tTaxi"
-            },
-            {
-              "do": "highlight",
-              "target": "yt",
-              "at": "dollars"
-            },
-            {
-              "do": "highlight",
-              "target": "xt",
-              "at": "mile"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "As a table, x is the miles and y the dollars: zero, three. One, five. Two, seven.",
-          "do": [
-            {
-              "do": "show",
-              "target": "t.row.0",
-              "at": "table"
-            },
-            {
-              "do": "show",
-              "target": "t.row.1",
-              "at": "zero"
-            },
-            {
-              "do": "show",
-              "target": "t.row.2",
-              "at": "One"
-            },
-            {
-              "do": "show",
-              "target": "t.row.3",
-              "at": "Two"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "As a graph, each row is a point.",
-          "pause": 0.8,
-          "do": [
-            {
-              "do": "show",
-              "target": "d0",
-              "at": "graph"
-            },
-            {
-              "do": "move",
-              "points": {
-                "D0": "P0"
-              },
-              "at": "graph",
-              "dur": 1.1
-            },
-            {
-              "do": "show",
-              "target": "d1",
-              "at": "row"
-            },
-            {
-              "do": "move",
-              "points": {
-                "D1": "P1"
-              },
-              "at": "row",
-              "dur": 1.1
-            },
-            {
-              "do": "show",
-              "target": "d2",
-              "at": "point"
-            },
-            {
-              "do": "move",
-              "points": {
-                "D2": "P2"
-              },
-              "at": "point",
-              "dur": 1.1
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "The points fall on one straight line.",
-          "do": [
-            {
-              "do": "draw",
-              "target": "line",
-              "at": "straight",
-              "dur": 1.2
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "As an equation: y equals two x, plus three.",
-          "pause": 0.3,
-          "do": [
-            {
-              "do": "write",
-              "tex": "y=\\cw{2}x+\\cg{3}",
-              "fresh": true,
-              "at": "y",
-              "id": "tEq"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Each form holds the same two numbers. The start: three dollars, at zero miles.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "t.row.1",
-              "at": "start"
-            },
-            {
-              "do": "show",
-              "target": "dS",
-              "at": "three"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "It is the initial value, or y-intercept: where the line meets the y-axis.",
-          "do": [
-            {
-              "do": "text",
-              "text": "$\\cg{\\text{Start}}$: initial\u00a0value, or\u00a0$y$‑intercept.",
-              "at": "initial",
-              "id": "tStart"
-            },
-            {
-              "do": "highlight",
-              "target": "dS",
-              "at": "meets"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "The step: two dollars more for each mile. It is the rate of change, or slope.",
-          "do": [
-            {
-              "do": "show",
-              "target": "tsteps",
-              "at": "step"
-            },
-            {
-              "do": "show",
-              "target": "stair",
-              "at": "two"
-            },
-            {
-              "do": "text",
-              "text": "$\\cw{\\text{Step}}$: rate\u00a0of\u00a0change, or\u00a0slope.",
-              "at": "rate",
-              "id": "tStep"
-            },
-            {
-              "do": "highlight",
-              "target": "stair",
-              "at": "slope"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Any form: find the start, find the step.",
-          "pause": 0.6,
-          "do": [
-            {
-              "do": "text",
-              "text": "Any\u00a0form: find\u00a0the\u00a0start, find\u00a0the\u00a0step.",
-              "at": "Any",
-              "id": "tPhrase"
-            },
-            {
-              "do": "highlight",
-              "target": "dS",
-              "at": "start"
-            },
-            {
-              "do": "highlight",
-              "target": "stair",
-              "at": "step"
-            }
-          ]
-        }
+ "id": "compare-function-rates--sk",
+ "title": "Compare two functions: the start and the step",
+ "teaches": [
+  "mcas-table-intercept-select",
+  "linear-function-choice"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -4.85,
+     -2.4,
+     4.6,
+     11.4
+    ],
+    "points": {
+     "TL": [
+      -4.6,
+      10.0
+     ],
+     "P0": [
+      0,
+      3
+     ],
+     "P1": [
+      1,
+      5
+     ],
+     "P2": [
+      2,
+      7
+     ],
+     "LE": [
+      3.5,
+      10
+     ],
+     "C1": [
+      1,
+      3
+     ],
+     "C2": [
+      2,
+      5
+     ],
+     "XT": [
+      2.15,
+      0
+     ],
+     "YT": [
+      0,
+      10.2
+     ],
+     "M1": [
+      -2.3999999999999995,
+      5.6
+     ],
+     "M2": [
+      -2.3999999999999995,
+      3.3999999999999995
+     ],
+     "D0": {
+      "anchor": [
+       "t",
+       "right:1"
       ]
+     },
+     "D1": {
+      "anchor": [
+       "t",
+       "right:2"
+      ]
+     },
+     "D2": {
+      "anchor": [
+       "t",
+       "right:3"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 3,
+      "xrange": [
+       0,
+       4.3
+      ],
+      "yrange": [
+       0,
+       10.2
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{miles}",
+      "at": "XT",
+      "dir": "s",
+      "far": 2.3,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{dollars}",
+      "at": "YT",
+      "dir": "n",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "t",
+      "table": true,
+      "at": "TL",
+      "corner": "$x$",
+      "head": [
+       "$y$"
+      ],
+      "rows": [
+       {
+        "label": "0",
+        "cells": [
+         "3"
+        ]
+       },
+       {
+        "label": "1",
+        "cells": [
+         "5"
+        ]
+       },
+       {
+        "label": "2",
+        "cells": [
+         "7"
+        ]
+       }
+      ],
+      "cell": [
+       1.1,
+       2.2
+      ],
+      "size": "m"
+     },
+     {
+      "id": "line",
+      "seg": [
+       "P0",
+       "LE"
+      ],
+      "ink": "accent",
+      "w": 8
+     },
+     {
+      "id": "cy1",
+      "label": "+2",
+      "at": "M1",
+      "dir": "e",
+      "far": 0.35,
+      "ink": "warm",
+      "size": "l",
+      "group": "tsteps"
+     },
+     {
+      "id": "cy2",
+      "label": "+2",
+      "at": "M2",
+      "dir": "e",
+      "far": 0.35,
+      "ink": "warm",
+      "size": "l",
+      "group": "tsteps"
+     },
+     {
+      "id": "run0",
+      "seg": [
+       "P0",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "group": "stair"
+     },
+     {
+      "id": "rise0",
+      "seg": [
+       "C1",
+       "P1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "stair"
+     },
+     {
+      "id": "lr0",
+      "label": "+2",
+      "at": "rise0",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "warm",
+      "size": "l",
+      "group": "stair"
+     },
+     {
+      "id": "run1",
+      "seg": [
+       "P1",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "group": "stair"
+     },
+     {
+      "id": "rise1",
+      "seg": [
+       "C2",
+       "P2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "stair"
+     },
+     {
+      "id": "lr1",
+      "label": "+2",
+      "at": "rise1",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "warm",
+      "size": "l",
+      "group": "stair"
+     },
+     {
+      "id": "d0",
+      "dot": "D0",
+      "ink": "ink",
+      "r": 14
+     },
+     {
+      "id": "d1",
+      "dot": "D1",
+      "ink": "ink",
+      "r": 14
+     },
+     {
+      "id": "d2",
+      "dot": "D2",
+      "ink": "ink",
+      "r": 14
+     },
+     {
+      "id": "dS",
+      "dot": "P0",
+      "ink": "gold",
+      "r": 19
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A taxi ride costs three dollars to get in, plus two dollars for each mile.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Taxi: $\\cg{3}$ dollars, plus $\\cw{2}$ a mile.",
+       "at": "A",
+       "id": "tTaxi"
+      },
+      {
+       "do": "highlight",
+       "target": "yt",
+       "at": "dollars"
+      },
+      {
+       "do": "highlight",
+       "target": "xt",
+       "at": "mile"
+      }
+     ]
     },
     {
-      "figure": {
-        "stretch": true,
-        "view": [
-          -6.0,
-          -2.4,
-          4.6,
-          11.4
-        ],
-        "points": {
-          "TL": [
-            -4.8,
-            10.0
-          ],
-          "TT": [
-            -3.6999999999999997,
-            10.0
-          ],
-          "GT": [
-            2.75,
-            10.0
-          ],
-          "B0": [
-            0,
-            9
-          ],
-          "B3": [
-            3,
-            0
-          ],
-          "BS1": [
-            1,
-            9
-          ],
-          "BP1": [
-            1,
-            6
-          ],
-          "BS2": [
-            2,
-            6
-          ],
-          "BP2": [
-            2,
-            3
-          ],
-          "BS3": [
-            3,
-            3
-          ],
-          "A0": [
-            0,
-            1
-          ],
-          "A1": [
-            1,
-            3
-          ],
-          "A3": [
-            3,
-            7
-          ],
-          "AE": [
-            4.0,
-            9.0
-          ],
-          "XT": [
-            2.15,
-            0
-          ],
-          "YT": [
-            0,
-            10.2
-          ],
-          "DV0": [
-            -1.1,
-            -1.4
-          ],
-          "DV1": [
-            -1.1,
-            11.0
-          ],
-          "M1": [
-            -2.5999999999999996,
-            5.6
-          ],
-          "M2": [
-            -2.5999999999999996,
-            3.3999999999999995
-          ],
-          "N1": [
-            -4.8,
-            5.6
-          ],
-          "N2": [
-            -4.8,
-            3.3999999999999995
-          ],
-          "F0": {
-            "anchor": [
-              "t",
-              "right:1"
-            ]
-          },
-          "F1": {
-            "anchor": [
-              "t",
-              "right:2"
-            ]
-          },
-          "F3": {
-            "anchor": [
-              "t",
-              "right:3"
-            ]
-          }
-        },
-        "parts": [
-          {
-            "id": "ax",
-            "axes": true,
-            "step": 1,
-            "every": 1,
-            "ystep": 1,
-            "yevery": 3,
-            "xrange": [
-              0,
-              4.3
-            ],
-            "yrange": [
-              0,
-              10.2
-            ],
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "xt",
-            "label": "x",
-            "at": "XT",
-            "dir": "s",
-            "far": 2.3,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "yt",
-            "label": "y",
-            "at": "YT",
-            "dir": "n",
-            "far": 0.4,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "div",
-            "seg": [
-              "DV0",
-              "DV1"
-            ],
-            "ink": "muted",
-            "w": 4,
-            "dash": true,
-            "start": true
-          },
-          {
-            "id": "t",
-            "table": true,
-            "at": "TL",
-            "corner": "$x$",
-            "head": [
-              "$y$"
-            ],
-            "rows": [
-              {
-                "label": "0",
-                "cells": [
-                  "1"
-                ]
-              },
-              {
-                "label": "1",
-                "cells": [
-                  "3"
-                ]
-              },
-              {
-                "label": "3",
-                "cells": [
-                  "7"
-                ]
-              }
-            ],
-            "cell": [
-              1.1,
-              2.2
-            ],
-            "size": "m",
-            "ink": "violet"
-          },
-          {
-            "id": "nA",
-            "label": "\\text{Function A}",
-            "at": "TT",
-            "dir": "n",
-            "far": 0.45,
-            "ink": "violet",
-            "size": "m"
-          },
-          {
-            "id": "nB",
-            "label": "\\text{Function B}",
-            "at": "GT",
-            "dir": "n",
-            "far": 0.45,
-            "ink": "accent",
-            "size": "m"
-          },
-          {
-            "id": "cy2",
-            "label": "+4",
-            "at": "M2",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "violet",
-            "size": "l"
-          },
-          {
-            "id": "cx2",
-            "label": "+2",
-            "at": "N2",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "violet",
-            "size": "l"
-          },
-          {
-            "id": "cy1",
-            "label": "-2",
-            "at": "M1",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "violet",
-            "size": "l"
-          },
-          {
-            "id": "cx1",
-            "label": "-1",
-            "at": "N1",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "violet",
-            "size": "l"
-          },
-          {
-            "id": "lineB",
-            "seg": [
-              "B0",
-              "B3"
-            ],
-            "ink": "accent",
-            "w": 8
-          },
-          {
-            "id": "dB3",
-            "dot": "B3",
-            "ink": "accent",
-            "r": 14
-          },
-          {
-            "id": "brun0",
-            "seg": [
-              "B0",
-              "BS1"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "bst1"
-          },
-          {
-            "id": "bdrop0",
-            "seg": [
-              "BS1",
-              "BP1"
-            ],
-            "ink": "accent",
-            "w": 7,
-            "group": "bst1"
-          },
-          {
-            "id": "lbd0",
-            "label": "-3",
-            "at": "bdrop0",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "accent",
-            "size": "l",
-            "group": "bst1"
-          },
-          {
-            "id": "brun1",
-            "seg": [
-              "BP1",
-              "BS2"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "bstR"
-          },
-          {
-            "id": "bdrop1",
-            "seg": [
-              "BS2",
-              "BP2"
-            ],
-            "ink": "accent",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "lbd1",
-            "label": "-3",
-            "at": "bdrop1",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "accent",
-            "size": "l",
-            "group": "bstR"
-          },
-          {
-            "id": "brun2",
-            "seg": [
-              "BP2",
-              "BS3"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "bstR"
-          },
-          {
-            "id": "bdrop2",
-            "seg": [
-              "BS3",
-              "B3"
-            ],
-            "ink": "accent",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "lbd2",
-            "label": "-3",
-            "at": "bdrop2",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "accent",
-            "size": "l",
-            "group": "bstR"
-          },
-          {
-            "id": "dB0",
-            "dot": "B0",
-            "ink": "accent",
-            "r": 19
-          },
-          {
-            "id": "lineA",
-            "seg": [
-              "AE",
-              "A0"
-            ],
-            "ink": "violet",
-            "w": 8
-          },
-          {
-            "id": "fA1",
-            "dot": "F1",
-            "ink": "violet",
-            "r": 14
-          },
-          {
-            "id": "fA3",
-            "dot": "F3",
-            "ink": "violet",
-            "r": 14
-          },
-          {
-            "id": "fA0",
-            "dot": "F0",
-            "ink": "violet",
-            "r": 19
-          }
-        ]
+     "speaker": "teacher",
+     "say": "As a table, x is the miles and y the dollars: zero, three. One, five. Two, seven.",
+     "do": [
+      {
+       "do": "show",
+       "target": "t.row.0",
+       "at": "table"
       },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "Function A is a table, and Function B is a graph.",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "problem",
-              "text": "Function A is a table, and Function B is a graph. Which has the greater rate of change? And the greater initial value?",
-              "at": "Function",
-              "id": "pB"
-            },
-            {
-              "do": "show",
-              "target": "nA",
-              "at": "A"
-            },
-            {
-              "do": "show",
-              "target": [
-                "t.row.0",
-                "t.row.2",
-                "t.row.3"
-              ],
-              "at": "table"
-            },
-            {
-              "do": "show",
-              "target": "nB",
-              "at": "B"
-            },
-            {
-              "do": "show",
-              "target": [
-                "lineB",
-                "dB3"
-              ],
-              "at": "graph"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Which has the greater rate of change? And the greater initial value?",
-          "pause": 0.3
-        },
-        {
-          "speaker": "learner",
-          "say": "A table and a graph? How do I compare those?",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "nA",
-              "at": "table"
-            },
-            {
-              "do": "highlight",
-              "target": "nB",
-              "at": "graph"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Find the start and the step of each. In the table, x goes up two, and y goes up four.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "nA",
-              "at": "table"
-            },
-            {
-              "do": "show",
-              "target": "cx2",
-              "at": "two"
-            },
-            {
-              "do": "show",
-              "target": "cy2",
-              "at": "four"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Four for every two is two for every one. A's step is two.",
-          "do": [
-            {
-              "do": "write",
-              "tex": "4\\div 2=\\cv{2}",
-              "fresh": true,
-              "at": "Four",
-              "id": "aStep"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "So A starts at three?",
-          "pause": 0.2,
-          "do": [
-            {
-              "do": "highlight",
-              "target": "t.row.2",
-              "at": "three"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Only if x were zero. Here x is one. Walk back one step: three, minus two, is one.",
-          "do": [
-            {
-              "do": "show",
-              "target": "cx1",
-              "at": "Walk"
-            },
-            {
-              "do": "show",
-              "target": "cy1",
-              "at": "minus"
-            },
-            {
-              "do": "write",
-              "tex": "3-2=\\cv{1}",
-              "fresh": true,
-              "at": "minus",
-              "id": "aStart"
-            },
-            {
-              "do": "show",
-              "target": "t.row.1",
-              "at": "is",
-              "nth": 2
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Graph B meets the y-axis at nine. That is its start.",
-          "do": [
-            {
-              "do": "show",
-              "target": "dB0",
-              "at": "nine"
-            },
-            {
-              "do": "highlight",
-              "target": "dB0",
-              "at": "start"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "It falls to zero at x equals three: down nine in three steps. Its step is negative three.",
-          "do": [
-            {
-              "do": "show",
-              "target": "bst1",
-              "at": "falls"
-            },
-            {
-              "do": "show",
-              "target": "bstR",
-              "at": "three",
-              "nth": 2
-            },
-            {
-              "do": "write",
-              "tex": "-9\\div 3=\\ca{-3}",
-              "fresh": true,
-              "at": "negative",
-              "id": "bStep"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Now put A on the same graph. Each row is a point, and the line runs back to its start.",
-          "do": [
-            {
-              "do": "hide",
-              "target": [
-                "bstR",
-                "div"
-              ],
-              "at": "Now"
-            },
-            {
-              "do": "show",
-              "target": "fA1",
-              "at": "Each"
-            },
-            {
-              "do": "move",
-              "points": {
-                "F1": "A1"
-              },
-              "at": "Each",
-              "dur": 1.2
-            },
-            {
-              "do": "show",
-              "target": "fA3",
-              "at": "point"
-            },
-            {
-              "do": "move",
-              "points": {
-                "F3": "A3"
-              },
-              "at": "point",
-              "dur": 1.2
-            },
-            {
-              "do": "draw",
-              "target": "lineA",
-              "at": "line",
-              "dur": 1.4
-            },
-            {
-              "do": "show",
-              "target": "fA0",
-              "at": "runs"
-            },
-            {
-              "do": "move",
-              "points": {
-                "F0": "A0"
-              },
-              "at": "runs",
-              "dur": 1.2
-            }
-          ]
-        }
-      ]
+      {
+       "do": "show",
+       "target": "t.row.1",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "t.row.2",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "t.row.3",
+       "at": "Two"
+      }
+     ]
     },
     {
-      "figure": {
-        "stretch": true,
-        "view": [
-          -1.0,
-          -2.4,
-          4.7,
-          11.4
-        ],
-        "points": {
-          "B0": [
-            0,
-            9
-          ],
-          "B3": [
-            3,
-            0
-          ],
-          "BS1": [
-            1,
-            9
-          ],
-          "BP1": [
-            1,
-            6
-          ],
-          "BS2": [
-            2,
-            6
-          ],
-          "BP2": [
-            2,
-            3
-          ],
-          "BS3": [
-            3,
-            3
-          ],
-          "A0": [
-            0,
-            1
-          ],
-          "A1": [
-            1,
-            3
-          ],
-          "A3": [
-            3,
-            7
-          ],
-          "AE": [
-            3.9,
-            8.8
-          ],
-          "AS": [
-            2,
-            5
-          ],
-          "AC": [
-            3,
-            5
-          ],
-          "XT": [
-            2.15,
-            0
-          ],
-          "YT": [
-            0,
-            10.2
-          ],
-          "NA": [
-            3.4,
-            9.9
-          ],
-          "NB": [
-            3.45,
-            1.7
-          ]
-        },
-        "parts": [
-          {
-            "id": "ax",
-            "axes": true,
-            "step": 1,
-            "every": 1,
-            "ystep": 1,
-            "yevery": 3,
-            "xrange": [
-              0,
-              4.3
-            ],
-            "yrange": [
-              0,
-              10.2
-            ],
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "xt",
-            "label": "x",
-            "at": "XT",
-            "dir": "s",
-            "far": 2.3,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "yt",
-            "label": "y",
-            "at": "YT",
-            "dir": "n",
-            "far": 0.4,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "lineB",
-            "seg": [
-              "B0",
-              "B3"
-            ],
-            "ink": "accent",
-            "w": 8,
-            "start": true
-          },
-          {
-            "id": "dB3",
-            "dot": "B3",
-            "ink": "accent",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "brun0",
-            "seg": [
-              "B0",
-              "BS1"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "bdrop0",
-            "seg": [
-              "BS1",
-              "BP1"
-            ],
-            "ink": "accent",
-            "w": 7,
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "lbd0",
-            "label": "-3",
-            "at": "bdrop0",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "accent",
-            "size": "l",
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "dB0",
-            "dot": "B0",
-            "ink": "accent",
-            "r": 19,
-            "start": true
-          },
-          {
-            "id": "nB",
-            "label": "\\text{Function B}",
-            "at": "NB",
-            "dir": "c",
-            "ink": "accent",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "lineA",
-            "seg": [
-              "AE",
-              "A0"
-            ],
-            "ink": "violet",
-            "w": 8,
-            "start": true
-          },
-          {
-            "id": "arun",
-            "seg": [
-              "AS",
-              "AC"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "ast"
-          },
-          {
-            "id": "arise",
-            "seg": [
-              "AC",
-              "A3"
-            ],
-            "ink": "violet",
-            "w": 7,
-            "group": "ast"
-          },
-          {
-            "id": "lar",
-            "label": "+2",
-            "at": "arise",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "violet",
-            "size": "l",
-            "group": "ast"
-          },
-          {
-            "id": "fA1",
-            "dot": "A1",
-            "ink": "violet",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "fA3",
-            "dot": "A3",
-            "ink": "violet",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "fA0",
-            "dot": "A0",
-            "ink": "violet",
-            "r": 19,
-            "start": true
-          },
-          {
-            "id": "lA0",
-            "label": "1",
-            "at": "A0",
-            "dir": "w",
-            "far": 0.55,
-            "ink": "violet",
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "nA",
-            "label": "\\text{Function A}",
-            "at": "NA",
-            "dir": "c",
-            "ink": "violet",
-            "size": "m",
-            "start": true
-          }
-        ]
+     "speaker": "teacher",
+     "say": "As a graph, each row is a point.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "show",
+       "target": "d0",
+       "at": "graph"
       },
-      "beats": [
-        {
-          "speaker": "learner",
-          "say": "B is steeper. So B has the greater rate of change?",
-          "pause": 0.3,
-          "do": [
-            {
-              "do": "highlight",
-              "target": "lineB",
-              "at": "steeper"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Steeper, but falling. A climbs two each step, and B falls three. Two is greater than negative three.",
-          "do": [
-            {
-              "do": "clear",
-              "at": "greater"
-            },
-            {
-              "do": "show",
-              "target": "ast",
-              "at": "climbs"
-            },
-            {
-              "do": "highlight",
-              "target": "ast",
-              "at": "two"
-            },
-            {
-              "do": "highlight",
-              "target": "bst1",
-              "at": "falls"
-            },
-            {
-              "do": "write",
-              "tex": "\\cv{2}>\\ca{-3}",
-              "fresh": true,
-              "at": "greater",
-              "id": "cmpR"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "And B starts higher: nine is greater than one.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "dB0",
-                "fA0"
-              ],
-              "at": "higher"
-            },
-            {
-              "do": "write",
-              "tex": "\\ca{9}>\\cv{1}",
-              "fresh": true,
-              "at": "nine",
-              "id": "cmpS"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "So A has the greater rate of change, and B has the greater initial value.",
-          "pause": 0.5,
-          "do": [
-            {
-              "do": "answer",
-              "tex": "\\text{Rate of change: }\\cv{\\text{A}}",
-              "at": "A",
-              "id": "ansR"
-            },
-            {
-              "do": "answer",
-              "tex": "\\text{Initial value: }\\ca{\\text{B}}",
-              "at": "B",
-              "id": "ansS"
-            }
-          ]
-        }
-      ]
+      {
+       "do": "move",
+       "points": {
+        "D0": "P0"
+       },
+       "at": "graph",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "row"
+      },
+      {
+       "do": "move",
+       "points": {
+        "D1": "P1"
+       },
+       "at": "row",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "point"
+      },
+      {
+       "do": "move",
+       "points": {
+        "D2": "P2"
+       },
+       "at": "point",
+       "dur": 1.1
+      }
+     ]
     },
     {
-      "figure": {
-        "stretch": true,
-        "view": [
-          -0.8,
-          -2.4,
-          4.2,
-          13.4
-        ],
-        "points": {
-          "Q1": [
-            1,
-            3
-          ],
-          "Q2": [
-            2,
-            6
-          ],
-          "Q3": [
-            3,
-            11
-          ],
-          "K1": [
-            2,
-            3
-          ],
-          "K2": [
-            3,
-            6
-          ],
-          "Q9": [
-            3,
-            9
-          ],
-          "U2": [
-            3,
-            7.6
-          ],
-          "LS": [
-            0,
-            0
-          ],
-          "LE": [
-            3.6,
-            10.8
-          ],
-          "XT": [
-            1.8,
-            0
-          ],
-          "YT": [
-            0,
-            12.3
-          ]
-        },
-        "parts": [
-          {
-            "id": "ax",
-            "axes": true,
-            "step": 1,
-            "every": 1,
-            "ystep": 1,
-            "yevery": 3,
-            "xrange": [
-              0,
-              3.7
-            ],
-            "yrange": [
-              0,
-              12.3
-            ],
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "xt",
-            "label": "x",
-            "at": "XT",
-            "dir": "s",
-            "far": 2.3,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "yt",
-            "label": "y",
-            "at": "YT",
-            "dir": "n",
-            "far": 0.4,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "ref",
-            "seg": [
-              "LS",
-              "LE"
-            ],
-            "ink": "muted",
-            "w": 5,
-            "dash": true
-          },
-          {
-            "id": "r1",
-            "seg": [
-              "Q1",
-              "K1"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "st1"
-          },
-          {
-            "id": "u1",
-            "seg": [
-              "K1",
-              "Q2"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "st1"
-          },
-          {
-            "id": "lu1",
-            "label": "+3",
-            "at": "u1",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "st1"
-          },
-          {
-            "id": "r2",
-            "seg": [
-              "Q2",
-              "K2"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "st2"
-          },
-          {
-            "id": "u2",
-            "seg": [
-              "K2",
-              "Q3"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "st2"
-          },
-          {
-            "id": "lu2",
-            "label": "+5",
-            "at": "U2",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "st2"
-          },
-          {
-            "id": "d9",
-            "dot": "Q9",
-            "ink": "muted",
-            "r": 11
-          },
-          {
-            "id": "dq1",
-            "dot": "Q1",
-            "ink": "ink",
-            "r": 15
-          },
-          {
-            "id": "dq2",
-            "dot": "Q2",
-            "ink": "ink",
-            "r": 15
-          },
-          {
-            "id": "dq3",
-            "dot": "Q3",
-            "ink": "ink",
-            "r": 15
-          },
-          {
-            "id": "curve",
-            "plot": "x^2+2",
-            "from": 0,
-            "to": 3.18,
-            "ink": "accent",
-            "w": 7
-          }
-        ]
-      },
-      "beats": [
-        {
-          "speaker": "learner",
-          "say": "And if the step changes, it is not linear. Take y equals x squared plus two.",
-          "do": [
-            {
-              "do": "clear",
-              "at": "And"
-            },
-            {
-              "do": "text",
-              "text": "If\u00a0the\u00a0step\u00a0changes, it\u00a0is\u00a0not\u00a0linear.",
-              "at": "And",
-              "id": "lDef"
-            },
-            {
-              "do": "draw",
-              "target": "ref",
-              "at": "linear",
-              "dur": 1.2
-            },
-            {
-              "do": "write",
-              "tex": "y=x^2+2",
-              "fresh": true,
-              "at": "Take",
-              "id": "lRule"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "Three, six, eleven: steps of three, then five.",
-          "do": [
-            {
-              "do": "show",
-              "target": "dq1",
-              "at": "Three"
-            },
-            {
-              "do": "show",
-              "target": "dq2",
-              "at": "six"
-            },
-            {
-              "do": "show",
-              "target": "dq3",
-              "at": "eleven"
-            },
-            {
-              "do": "show",
-              "target": "st1",
-              "at": "three",
-              "nth": 2
-            },
-            {
-              "do": "show",
-              "target": "st2",
-              "at": "five"
-            },
-            {
-              "do": "write",
-              "tex": "3\\xrightarrow{\\cw{+3}}6\\xrightarrow{\\cw{+5}}11",
-              "fresh": true,
-              "at": "steps",
-              "id": "lSteps"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "So the third point leaves the straight line through the first two.",
-          "pause": 0.4,
-          "do": [
-            {
-              "do": "highlight",
-              "target": "ref",
-              "at": "straight"
-            },
-            {
-              "do": "show",
-              "target": "d9",
-              "at": "leaves"
-            },
-            {
-              "do": "highlight",
-              "target": "dq3",
-              "at": "third"
-            },
-            {
-              "do": "draw",
-              "target": "curve",
-              "at": "first",
-              "dur": 1.3
-            }
-          ]
-        }
-      ]
+     "speaker": "teacher",
+     "say": "The points fall on one straight line.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "line",
+       "at": "straight",
+       "dur": 1.2
+      }
+     ]
     },
     {
-      "figure": {
-        "stretch": true,
-        "view": [
-          -1.0,
-          -2.4,
-          4.7,
-          11.4
-        ],
-        "points": {
-          "B0": [
-            0,
-            9
-          ],
-          "B3": [
-            3,
-            0
-          ],
-          "BS1": [
-            1,
-            9
-          ],
-          "BP1": [
-            1,
-            6
-          ],
-          "BS2": [
-            2,
-            6
-          ],
-          "BP2": [
-            2,
-            3
-          ],
-          "BS3": [
-            3,
-            3
-          ],
-          "A0": [
-            0,
-            1
-          ],
-          "A1": [
-            1,
-            3
-          ],
-          "A3": [
-            3,
-            7
-          ],
-          "AE": [
-            3.9,
-            8.8
-          ],
-          "AS": [
-            2,
-            5
-          ],
-          "AC": [
-            3,
-            5
-          ],
-          "XT": [
-            2.15,
-            0
-          ],
-          "YT": [
-            0,
-            10.2
-          ],
-          "NA": [
-            3.4,
-            9.9
-          ],
-          "NB": [
-            3.45,
-            1.7
-          ]
-        },
-        "parts": [
-          {
-            "id": "ax",
-            "axes": true,
-            "step": 1,
-            "every": 1,
-            "ystep": 1,
-            "yevery": 3,
-            "xrange": [
-              0,
-              4.3
-            ],
-            "yrange": [
-              0,
-              10.2
-            ],
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "xt",
-            "label": "x",
-            "at": "XT",
-            "dir": "s",
-            "far": 2.3,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "yt",
-            "label": "y",
-            "at": "YT",
-            "dir": "n",
-            "far": 0.4,
-            "ink": "muted",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "lineB",
-            "seg": [
-              "B0",
-              "B3"
-            ],
-            "ink": "accent",
-            "w": 8,
-            "start": true
-          },
-          {
-            "id": "dB3",
-            "dot": "B3",
-            "ink": "accent",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "brun0",
-            "seg": [
-              "B0",
-              "BS1"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "bdrop0",
-            "seg": [
-              "BS1",
-              "BP1"
-            ],
-            "ink": "accent",
-            "w": 7,
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "lbd0",
-            "label": "-3",
-            "at": "bdrop0",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "accent",
-            "size": "l",
-            "group": "bst1",
-            "start": true
-          },
-          {
-            "id": "dB0",
-            "dot": "B0",
-            "ink": "accent",
-            "r": 19,
-            "start": true
-          },
-          {
-            "id": "nB",
-            "label": "\\text{Function B}",
-            "at": "NB",
-            "dir": "c",
-            "ink": "accent",
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "lineA",
-            "seg": [
-              "AE",
-              "A0"
-            ],
-            "ink": "violet",
-            "w": 8,
-            "start": true
-          },
-          {
-            "id": "arun",
-            "seg": [
-              "AS",
-              "AC"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "group": "ast",
-            "start": true
-          },
-          {
-            "id": "arise",
-            "seg": [
-              "AC",
-              "A3"
-            ],
-            "ink": "violet",
-            "w": 7,
-            "group": "ast",
-            "start": true
-          },
-          {
-            "id": "lar",
-            "label": "+2",
-            "at": "arise",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "violet",
-            "size": "l",
-            "group": "ast",
-            "start": true
-          },
-          {
-            "id": "fA1",
-            "dot": "A1",
-            "ink": "violet",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "fA3",
-            "dot": "A3",
-            "ink": "violet",
-            "r": 14,
-            "start": true
-          },
-          {
-            "id": "fA0",
-            "dot": "A0",
-            "ink": "violet",
-            "r": 19,
-            "start": true
-          },
-          {
-            "id": "lA0",
-            "label": "1",
-            "at": "A0",
-            "dir": "w",
-            "far": 0.55,
-            "ink": "violet",
-            "size": "l",
-            "start": true
-          },
-          {
-            "id": "nA",
-            "label": "\\text{Function A}",
-            "at": "NA",
-            "dir": "c",
-            "ink": "violet",
-            "size": "m",
-            "start": true
-          }
-        ]
+     "speaker": "teacher",
+     "say": "As an equation: y equals two x, plus three.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "y=\\cw{2}x+\\cg{3}",
+       "fresh": true,
+       "at": "y",
+       "id": "tEq"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each form holds the same two numbers. The start: three dollars, at zero miles.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.1",
+       "at": "start"
       },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "The step: the change in y for each one of x.",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "text",
-              "text": "$\\cw{\\text{Step}}$: the\u00a0change\u00a0in\u00a0$y$ for\u00a0each\u00a01\u00a0of\u00a0$x$.",
-              "at": "step",
-              "id": "zStep"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "ast",
-                "bst1"
-              ],
-              "at": "change"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "The start: y when x is zero. Hidden? Walk back.",
-          "do": [
-            {
-              "do": "text",
-              "text": "$\\cg{\\text{Start}}$: $y$\u00a0when\u00a0$x$\u00a0is\u00a0$0$. Hidden?\u00a0Walk\u00a0back.",
-              "at": "start",
-              "id": "zStart"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "fA0",
-                "dB0"
-              ],
-              "at": "zero"
-            },
-            {
-              "do": "highlight",
-              "target": "lA0",
-              "at": "Walk"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Then compare them, signs and all.",
-          "do": [
-            {
-              "do": "text",
-              "text": "Then\u00a0compare\u00a0them, signs\u00a0and\u00a0all.",
-              "at": "compare",
-              "id": "zCmp"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Any form: find the start, find the step.",
-          "pause": 1.0,
-          "do": [
-            {
-              "do": "text",
-              "text": "Any\u00a0form: find\u00a0the\u00a0start, find\u00a0the\u00a0step.",
-              "at": "Any",
-              "id": "zPhrase"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "fA0",
-                "dB0"
-              ],
-              "at": "start"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "ast",
-                "bst1"
-              ],
-              "at": "step"
-            }
-          ]
-        }
-      ]
+      {
+       "do": "show",
+       "target": "dS",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It is the initial value, or y-intercept: where the line meets the y-axis.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\cg{\\text{Start}}$: initial value, or $y$‑intercept.",
+       "at": "initial",
+       "id": "tStart"
+      },
+      {
+       "do": "highlight",
+       "target": "dS",
+       "at": "meets"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The step: two dollars more for each mile. It is the rate of change, or slope.",
+     "do": [
+      {
+       "do": "show",
+       "target": "tsteps",
+       "at": "step"
+      },
+      {
+       "do": "show",
+       "target": "stair",
+       "at": "two"
+      },
+      {
+       "do": "text",
+       "text": "$\\cw{\\text{Step}}$: rate of change, or slope.",
+       "at": "rate",
+       "id": "tStep"
+      },
+      {
+       "do": "highlight",
+       "target": "stair",
+       "at": "slope"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Any form: find the start, find the step.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "text",
+       "text": "Any form: find the start, find the step.",
+       "at": "Any",
+       "id": "tPhrase"
+      },
+      {
+       "do": "highlight",
+       "target": "dS",
+       "at": "start"
+      },
+      {
+       "do": "highlight",
+       "target": "stair",
+       "at": "step"
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -6.0,
+     -2.4,
+     4.6,
+     11.4
+    ],
+    "points": {
+     "TL": [
+      -4.8,
+      10.0
+     ],
+     "TT": [
+      -3.6999999999999997,
+      10.0
+     ],
+     "GT": [
+      2.75,
+      10.0
+     ],
+     "B0": [
+      0,
+      9
+     ],
+     "B3": [
+      3,
+      0
+     ],
+     "BS1": [
+      1,
+      9
+     ],
+     "BP1": [
+      1,
+      6
+     ],
+     "BS2": [
+      2,
+      6
+     ],
+     "BP2": [
+      2,
+      3
+     ],
+     "BS3": [
+      3,
+      3
+     ],
+     "A0": [
+      0,
+      1
+     ],
+     "A1": [
+      1,
+      3
+     ],
+     "A3": [
+      3,
+      7
+     ],
+     "AE": [
+      4.0,
+      9.0
+     ],
+     "XT": [
+      2.15,
+      0
+     ],
+     "YT": [
+      0,
+      10.2
+     ],
+     "DV0": [
+      -1.1,
+      -1.4
+     ],
+     "DV1": [
+      -1.1,
+      11.0
+     ],
+     "M1": [
+      -2.5999999999999996,
+      5.6
+     ],
+     "M2": [
+      -2.5999999999999996,
+      3.3999999999999995
+     ],
+     "N1": [
+      -4.8,
+      5.6
+     ],
+     "N2": [
+      -4.8,
+      3.3999999999999995
+     ],
+     "F0": {
+      "anchor": [
+       "t",
+       "right:1"
+      ]
+     },
+     "F1": {
+      "anchor": [
+       "t",
+       "right:2"
+      ]
+     },
+     "F3": {
+      "anchor": [
+       "t",
+       "right:3"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 3,
+      "xrange": [
+       0,
+       4.3
+      ],
+      "yrange": [
+       0,
+       10.2
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "x",
+      "at": "XT",
+      "dir": "s",
+      "far": 2.3,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "y",
+      "at": "YT",
+      "dir": "n",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "div",
+      "seg": [
+       "DV0",
+       "DV1"
+      ],
+      "ink": "muted",
+      "w": 4,
+      "dash": true,
+      "start": true
+     },
+     {
+      "id": "t",
+      "table": true,
+      "at": "TL",
+      "corner": "$x$",
+      "head": [
+       "$y$"
+      ],
+      "rows": [
+       {
+        "label": "0",
+        "cells": [
+         "1"
+        ]
+       },
+       {
+        "label": "1",
+        "cells": [
+         "3"
+        ]
+       },
+       {
+        "label": "3",
+        "cells": [
+         "7"
+        ]
+       }
+      ],
+      "cell": [
+       1.1,
+       2.2
+      ],
+      "size": "m",
+      "ink": "violet"
+     },
+     {
+      "id": "nA",
+      "label": "\\text{Function A}",
+      "at": "TT",
+      "dir": "n",
+      "far": 0.45,
+      "ink": "violet",
+      "size": "m"
+     },
+     {
+      "id": "nB",
+      "label": "\\text{Function B}",
+      "at": "GT",
+      "dir": "n",
+      "far": 0.45,
+      "ink": "accent",
+      "size": "m"
+     },
+     {
+      "id": "cy2",
+      "label": "+4",
+      "at": "M2",
+      "dir": "e",
+      "far": 0.35,
+      "ink": "violet",
+      "size": "l"
+     },
+     {
+      "id": "cx2",
+      "label": "+2",
+      "at": "N2",
+      "dir": "w",
+      "far": 0.35,
+      "ink": "violet",
+      "size": "l"
+     },
+     {
+      "id": "cy1",
+      "label": "-2",
+      "at": "M1",
+      "dir": "e",
+      "far": 0.35,
+      "ink": "violet",
+      "size": "l"
+     },
+     {
+      "id": "cx1",
+      "label": "-1",
+      "at": "N1",
+      "dir": "w",
+      "far": 0.35,
+      "ink": "violet",
+      "size": "l"
+     },
+     {
+      "id": "lineB",
+      "seg": [
+       "B0",
+       "B3"
+      ],
+      "ink": "accent",
+      "w": 8
+     },
+     {
+      "id": "dB3",
+      "dot": "B3",
+      "ink": "accent",
+      "r": 14
+     },
+     {
+      "id": "brun0",
+      "seg": [
+       "B0",
+       "BS1"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "bst1"
+     },
+     {
+      "id": "bdrop0",
+      "seg": [
+       "BS1",
+       "BP1"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "group": "bst1"
+     },
+     {
+      "id": "lbd0",
+      "label": "-3",
+      "at": "bdrop0",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "accent",
+      "size": "l",
+      "group": "bst1"
+     },
+     {
+      "id": "brun1",
+      "seg": [
+       "BP1",
+       "BS2"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "bstR"
+     },
+     {
+      "id": "bdrop1",
+      "seg": [
+       "BS2",
+       "BP2"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "group": "bstR"
+     },
+     {
+      "id": "lbd1",
+      "label": "-3",
+      "at": "bdrop1",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "accent",
+      "size": "l",
+      "group": "bstR"
+     },
+     {
+      "id": "brun2",
+      "seg": [
+       "BP2",
+       "BS3"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "bstR"
+     },
+     {
+      "id": "bdrop2",
+      "seg": [
+       "BS3",
+       "B3"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "group": "bstR"
+     },
+     {
+      "id": "lbd2",
+      "label": "-3",
+      "at": "bdrop2",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "accent",
+      "size": "l",
+      "group": "bstR"
+     },
+     {
+      "id": "dB0",
+      "dot": "B0",
+      "ink": "accent",
+      "r": 19
+     },
+     {
+      "id": "lineA",
+      "seg": [
+       "AE",
+       "A0"
+      ],
+      "ink": "violet",
+      "w": 8
+     },
+     {
+      "id": "fA1",
+      "dot": "F1",
+      "ink": "violet",
+      "r": 14
+     },
+     {
+      "id": "fA3",
+      "dot": "F3",
+      "ink": "violet",
+      "r": 14
+     },
+     {
+      "id": "fA0",
+      "dot": "F0",
+      "ink": "violet",
+      "r": 19
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Function A is a table, and Function B is a graph.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Function A is a table, and Function B is a graph. Which has the greater rate of change? And the greater initial value?",
+       "at": "Function",
+       "id": "pB"
+      },
+      {
+       "do": "show",
+       "target": "nA",
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": [
+        "t.row.0",
+        "t.row.2",
+        "t.row.3"
+       ],
+       "at": "table"
+      },
+      {
+       "do": "show",
+       "target": "nB",
+       "at": "B"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lineB",
+        "dB3"
+       ],
+       "at": "graph"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which has the greater rate of change? And the greater initial value?",
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "A table and a graph? How do I compare those?",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "nA",
+       "at": "table"
+      },
+      {
+       "do": "highlight",
+       "target": "nB",
+       "at": "graph"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find the start and the step of each. In the table, x goes up two, and y goes up four.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "nA",
+       "at": "table"
+      },
+      {
+       "do": "show",
+       "target": "cx2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "cy2",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four for every two is two for every one. A's step is two.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\div 2=\\cv{2}",
+       "fresh": true,
+       "at": "Four",
+       "id": "aStep",
+       "note": "\\text{A's step}"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So A starts at three?",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.2",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Only if x were zero. Here x is one. Walk back one step: three, minus two, is one.",
+     "do": [
+      {
+       "do": "show",
+       "target": "cx1",
+       "at": "Walk"
+      },
+      {
+       "do": "show",
+       "target": "cy1",
+       "at": "minus"
+      },
+      {
+       "do": "write",
+       "tex": "3-2=\\cv{1}",
+       "fresh": true,
+       "at": "minus",
+       "id": "aStart",
+       "note": "\\text{A's start}"
+      },
+      {
+       "do": "show",
+       "target": "t.row.1",
+       "at": "is",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Graph B meets the y-axis at nine. That is its start.",
+     "do": [
+      {
+       "do": "show",
+       "target": "dB0",
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "dB0",
+       "at": "start"
+      },
+      {
+       "do": "write",
+       "tex": "y=\\ca{9}",
+       "fresh": true,
+       "at": "nine",
+       "id": "bStart",
+       "note": "\\text{B's start}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It falls to zero at x equals three: down nine in three steps. Its step is negative three.",
+     "do": [
+      {
+       "do": "show",
+       "target": "bst1",
+       "at": "falls"
+      },
+      {
+       "do": "show",
+       "target": "bstR",
+       "at": "three",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "-9\\div 3=\\ca{-3}",
+       "fresh": true,
+       "at": "negative",
+       "id": "bStep",
+       "note": "\\text{B's step}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now put A on the same graph. Each row is a point, and the line runs back to its start.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "bstR",
+        "div"
+       ],
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": "fA1",
+       "at": "Each"
+      },
+      {
+       "do": "move",
+       "points": {
+        "F1": "A1"
+       },
+       "at": "Each",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "fA3",
+       "at": "point"
+      },
+      {
+       "do": "move",
+       "points": {
+        "F3": "A3"
+       },
+       "at": "point",
+       "dur": 1.2
+      },
+      {
+       "do": "draw",
+       "target": "lineA",
+       "at": "line",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "fA0",
+       "at": "runs"
+      },
+      {
+       "do": "move",
+       "points": {
+        "F0": "A0"
+       },
+       "at": "runs",
+       "dur": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.0,
+     -2.4,
+     4.7,
+     11.4
+    ],
+    "points": {
+     "B0": [
+      0,
+      9
+     ],
+     "B3": [
+      3,
+      0
+     ],
+     "BS1": [
+      1,
+      9
+     ],
+     "BP1": [
+      1,
+      6
+     ],
+     "BS2": [
+      2,
+      6
+     ],
+     "BP2": [
+      2,
+      3
+     ],
+     "BS3": [
+      3,
+      3
+     ],
+     "A0": [
+      0,
+      1
+     ],
+     "A1": [
+      1,
+      3
+     ],
+     "A3": [
+      3,
+      7
+     ],
+     "AE": [
+      3.9,
+      8.8
+     ],
+     "AS": [
+      2,
+      5
+     ],
+     "AC": [
+      3,
+      5
+     ],
+     "XT": [
+      2.15,
+      0
+     ],
+     "YT": [
+      0,
+      10.2
+     ],
+     "NA": [
+      3.4,
+      9.9
+     ],
+     "NB": [
+      3.45,
+      1.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 3,
+      "xrange": [
+       0,
+       4.3
+      ],
+      "yrange": [
+       0,
+       10.2
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "x",
+      "at": "XT",
+      "dir": "s",
+      "far": 2.3,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "y",
+      "at": "YT",
+      "dir": "n",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "lineB",
+      "seg": [
+       "B0",
+       "B3"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "dB3",
+      "dot": "B3",
+      "ink": "accent",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "brun0",
+      "seg": [
+       "B0",
+       "BS1"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "bdrop0",
+      "seg": [
+       "BS1",
+       "BP1"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "lbd0",
+      "label": "-3",
+      "at": "bdrop0",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "accent",
+      "size": "l",
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "dB0",
+      "dot": "B0",
+      "ink": "accent",
+      "r": 19,
+      "start": true
+     },
+     {
+      "id": "nB",
+      "label": "\\text{Function B}",
+      "at": "NB",
+      "dir": "c",
+      "ink": "accent",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "lineA",
+      "seg": [
+       "AE",
+       "A0"
+      ],
+      "ink": "violet",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "arun",
+      "seg": [
+       "AS",
+       "AC"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "ast"
+     },
+     {
+      "id": "arise",
+      "seg": [
+       "AC",
+       "A3"
+      ],
+      "ink": "violet",
+      "w": 7,
+      "group": "ast"
+     },
+     {
+      "id": "lar",
+      "label": "+2",
+      "at": "arise",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "violet",
+      "size": "l",
+      "group": "ast"
+     },
+     {
+      "id": "fA1",
+      "dot": "A1",
+      "ink": "violet",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "fA3",
+      "dot": "A3",
+      "ink": "violet",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "fA0",
+      "dot": "A0",
+      "ink": "violet",
+      "r": 19,
+      "start": true
+     },
+     {
+      "id": "lA0",
+      "label": "1",
+      "at": "A0",
+      "dir": "w",
+      "far": 0.55,
+      "ink": "violet",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nA",
+      "label": "\\text{Function A}",
+      "at": "NA",
+      "dir": "c",
+      "ink": "violet",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "B is steeper. So B has the greater rate of change?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "lineB",
+       "at": "steeper"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Steeper, but falling. A climbs two each step, and B falls three. Two is greater than negative three.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "greater"
+      },
+      {
+       "do": "show",
+       "target": "ast",
+       "at": "climbs"
+      },
+      {
+       "do": "highlight",
+       "target": "ast",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "bst1",
+       "at": "falls"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{2}>\\ca{-3}",
+       "fresh": true,
+       "at": "greater",
+       "id": "cmpR",
+       "note": "\\text{rate of change}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And B starts higher: nine is greater than one.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "dB0",
+        "fA0"
+       ],
+       "at": "higher"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{9}>\\cv{1}",
+       "fresh": true,
+       "at": "nine",
+       "id": "cmpS",
+       "note": "\\text{initial value}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So A has the greater rate of change, and B has the greater initial value.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{Rate of change: }\\cv{\\text{A}}",
+       "at": "A",
+       "id": "ansR"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Initial value: }\\ca{\\text{B}}",
+       "at": "B",
+       "id": "ansS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -0.8,
+     -2.4,
+     4.2,
+     13.4
+    ],
+    "points": {
+     "Q1": [
+      1,
+      3
+     ],
+     "Q2": [
+      2,
+      6
+     ],
+     "Q3": [
+      3,
+      11
+     ],
+     "K1": [
+      2,
+      3
+     ],
+     "K2": [
+      3,
+      6
+     ],
+     "Q9": [
+      3,
+      9
+     ],
+     "U2": [
+      3,
+      7.6
+     ],
+     "LS": [
+      0,
+      0
+     ],
+     "LE": [
+      3.6,
+      10.8
+     ],
+     "XT": [
+      1.8,
+      0
+     ],
+     "YT": [
+      0,
+      12.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 3,
+      "xrange": [
+       0,
+       3.7
+      ],
+      "yrange": [
+       0,
+       12.3
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "x",
+      "at": "XT",
+      "dir": "s",
+      "far": 2.3,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "y",
+      "at": "YT",
+      "dir": "n",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "ref",
+      "seg": [
+       "LS",
+       "LE"
+      ],
+      "ink": "muted",
+      "w": 5,
+      "dash": true
+     },
+     {
+      "id": "r1",
+      "seg": [
+       "Q1",
+       "K1"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "group": "st1"
+     },
+     {
+      "id": "u1",
+      "seg": [
+       "K1",
+       "Q2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "st1"
+     },
+     {
+      "id": "lu1",
+      "label": "+3",
+      "at": "u1",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "warm",
+      "size": "l",
+      "group": "st1"
+     },
+     {
+      "id": "r2",
+      "seg": [
+       "Q2",
+       "K2"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "group": "st2"
+     },
+     {
+      "id": "u2",
+      "seg": [
+       "K2",
+       "Q3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "st2"
+     },
+     {
+      "id": "lu2",
+      "label": "+5",
+      "at": "U2",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "warm",
+      "size": "l",
+      "group": "st2"
+     },
+     {
+      "id": "d9",
+      "dot": "Q9",
+      "ink": "muted",
+      "r": 11
+     },
+     {
+      "id": "dq1",
+      "dot": "Q1",
+      "ink": "ink",
+      "r": 15
+     },
+     {
+      "id": "dq2",
+      "dot": "Q2",
+      "ink": "ink",
+      "r": 15
+     },
+     {
+      "id": "dq3",
+      "dot": "Q3",
+      "ink": "ink",
+      "r": 15
+     },
+     {
+      "id": "curve",
+      "plot": "x^2+2",
+      "from": 0,
+      "to": 3.18,
+      "ink": "accent",
+      "w": 7
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "And if the step changes, it is not linear. Take y equals x squared plus two.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "And"
+      },
+      {
+       "do": "text",
+       "text": "If the step changes, it is not linear.",
+       "at": "And",
+       "id": "lDef"
+      },
+      {
+       "do": "draw",
+       "target": "ref",
+       "at": "linear",
+       "dur": 1.2
+      },
+      {
+       "do": "write",
+       "tex": "y=x^2+2",
+       "fresh": true,
+       "at": "Take",
+       "id": "lRule"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three, six, eleven: steps of three, then five.",
+     "do": [
+      {
+       "do": "show",
+       "target": "dq1",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "dq2",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "dq3",
+       "at": "eleven"
+      },
+      {
+       "do": "show",
+       "target": "st1",
+       "at": "three",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": "st2",
+       "at": "five"
+      },
+      {
+       "do": "write",
+       "tex": "3\\xrightarrow{\\cw{+3}}6\\xrightarrow{\\cw{+5}}11",
+       "fresh": true,
+       "at": "steps",
+       "id": "lSteps"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So the third point leaves the straight line through the first two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ref",
+       "at": "straight"
+      },
+      {
+       "do": "show",
+       "target": "d9",
+       "at": "leaves"
+      },
+      {
+       "do": "highlight",
+       "target": "dq3",
+       "at": "third"
+      },
+      {
+       "do": "draw",
+       "target": "curve",
+       "at": "first",
+       "dur": 1.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.0,
+     -2.4,
+     4.7,
+     11.4
+    ],
+    "points": {
+     "B0": [
+      0,
+      9
+     ],
+     "B3": [
+      3,
+      0
+     ],
+     "BS1": [
+      1,
+      9
+     ],
+     "BP1": [
+      1,
+      6
+     ],
+     "BS2": [
+      2,
+      6
+     ],
+     "BP2": [
+      2,
+      3
+     ],
+     "BS3": [
+      3,
+      3
+     ],
+     "A0": [
+      0,
+      1
+     ],
+     "A1": [
+      1,
+      3
+     ],
+     "A3": [
+      3,
+      7
+     ],
+     "AE": [
+      3.9,
+      8.8
+     ],
+     "AS": [
+      2,
+      5
+     ],
+     "AC": [
+      3,
+      5
+     ],
+     "XT": [
+      2.15,
+      0
+     ],
+     "YT": [
+      0,
+      10.2
+     ],
+     "NA": [
+      3.4,
+      9.9
+     ],
+     "NB": [
+      3.45,
+      1.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 3,
+      "xrange": [
+       0,
+       4.3
+      ],
+      "yrange": [
+       0,
+       10.2
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "x",
+      "at": "XT",
+      "dir": "s",
+      "far": 2.3,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "y",
+      "at": "YT",
+      "dir": "n",
+      "far": 0.4,
+      "ink": "muted",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "lineB",
+      "seg": [
+       "B0",
+       "B3"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "dB3",
+      "dot": "B3",
+      "ink": "accent",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "brun0",
+      "seg": [
+       "B0",
+       "BS1"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "bdrop0",
+      "seg": [
+       "BS1",
+       "BP1"
+      ],
+      "ink": "accent",
+      "w": 7,
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "lbd0",
+      "label": "-3",
+      "at": "bdrop0",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "accent",
+      "size": "l",
+      "group": "bst1",
+      "start": true
+     },
+     {
+      "id": "dB0",
+      "dot": "B0",
+      "ink": "accent",
+      "r": 19,
+      "start": true
+     },
+     {
+      "id": "nB",
+      "label": "\\text{Function B}",
+      "at": "NB",
+      "dir": "c",
+      "ink": "accent",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "lineA",
+      "seg": [
+       "AE",
+       "A0"
+      ],
+      "ink": "violet",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "arun",
+      "seg": [
+       "AS",
+       "AC"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "group": "ast",
+      "start": true
+     },
+     {
+      "id": "arise",
+      "seg": [
+       "AC",
+       "A3"
+      ],
+      "ink": "violet",
+      "w": 7,
+      "group": "ast",
+      "start": true
+     },
+     {
+      "id": "lar",
+      "label": "+2",
+      "at": "arise",
+      "dir": "e",
+      "far": 0.4,
+      "ink": "violet",
+      "size": "l",
+      "group": "ast",
+      "start": true
+     },
+     {
+      "id": "fA1",
+      "dot": "A1",
+      "ink": "violet",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "fA3",
+      "dot": "A3",
+      "ink": "violet",
+      "r": 14,
+      "start": true
+     },
+     {
+      "id": "fA0",
+      "dot": "A0",
+      "ink": "violet",
+      "r": 19,
+      "start": true
+     },
+     {
+      "id": "lA0",
+      "label": "1",
+      "at": "A0",
+      "dir": "w",
+      "far": 0.55,
+      "ink": "violet",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nA",
+      "label": "\\text{Function A}",
+      "at": "NA",
+      "dir": "c",
+      "ink": "violet",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The step: the change in y for each one of x.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "$\\cw{\\text{Step}}$: the change in $y$ for each 1 of $x$.",
+       "at": "step",
+       "id": "zStep"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ast",
+        "bst1"
+       ],
+       "at": "change"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The start: y when x is zero. Hidden? Walk back.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\cg{\\text{Start}}$: $y$ when $x$ is $0$. Hidden? Walk back.",
+       "at": "start",
+       "id": "zStart"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fA0",
+        "dB0"
+       ],
+       "at": "zero"
+      },
+      {
+       "do": "highlight",
+       "target": "lA0",
+       "at": "Walk"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then compare them, signs and all.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Then compare them, signs and all.",
+       "at": "compare",
+       "id": "zCmp"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Any form: find the start, find the step.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "text",
+       "text": "Any form: find the start, find the step.",
+       "at": "Any",
+       "id": "zPhrase"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "fA0",
+        "dB0"
+       ],
+       "at": "start"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "ast",
+        "bst1"
+       ],
+       "at": "step"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }
