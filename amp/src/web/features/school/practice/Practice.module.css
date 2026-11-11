@@ -30,12 +30,16 @@
 
 .legend {
   display: grid;
-  gap: var(--space-1);
+  grid-template-columns: minmax(0, 420px);
+  column-gap: var(--space-5);
+  row-gap: var(--space-1);
   min-width: 0;
-  max-width: 420px;
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   font-variant-numeric: var(--numeric);
+}
+.legend > * {
+  grid-column: 1;
 }
 .legendCaption {
   color: var(--color-on-surface);
@@ -77,22 +81,43 @@
   color: var(--color-on-surface);
   font-weight: 600;
 }
+.legendNote {
+  margin-top: var(--space-1);
+}
+/* The keys are the map's own cells in miniature, beside the scale on a wide
+   screen and under it on a narrow one. */
 .legendKeys {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1) var(--space-4);
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-1);
+}
+@media (min-width: 640px) {
+  .legend {
+    grid-template-columns: minmax(0, 420px) auto;
+  }
+  .legendKeys {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    flex-direction: column;
+    align-self: start;
+    margin-top: 0;
+  }
 }
 .legendKeys > span {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-2);
   white-space: nowrap;
 }
 .legendKeys .cell {
-  width: 14px;
-  height: 12px;
+  flex: none;
+  width: 18px;
+  height: 14px;
 }
-
+.legendKeys .cell[data-current] {
+  background: var(--color-heat-4);
+}
 .stats {
   color: var(--color-muted-text);
   font-size: var(--text-table-small);

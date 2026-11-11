@@ -200,7 +200,7 @@ function Heat({
                             share: {
                               done: Math.min(amount, scale),
                               of: scale,
-                              label: `${measure === "minutes" ? "Target" : "Midpoint"} ${Math.round(scale)}`,
+                              label: `${measure === "minutes" ? "Target" : "Midpoint"}: ${Math.round(scale)} ${unitWord(measure, Math.round(scale))}`,
                             },
                           }
                         : {}),

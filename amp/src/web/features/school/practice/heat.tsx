@@ -102,21 +102,24 @@ export function HeatLegend({
           </span>
         ))}
       </span>
-      <span className={styles.legendKeys}>
-        <span>
-          Cold: 0 {unit}. Neutral: the {midpointWord}. Hot: twice it or more.
-        </span>
-        {current && (
-          <span>
-            <span className={styles.cell} data-current="" /> This week, so far
-          </span>
-        )}
-        {empty && (
-          <span>
-            <span className={styles.cell} data-empty="" /> Not on the roster yet
-          </span>
-        )}
+      <span className={styles.legendNote}>
+        Cold: 0 {unit}. Neutral: the {midpointWord}. Hot: twice it or more.
       </span>
+      {(current || empty) && (
+        <span className={styles.legendKeys}>
+          {current && (
+            <span>
+              <span className={styles.cell} data-current="" /> This week, so far
+            </span>
+          )}
+          {empty && (
+            <span>
+              <span className={styles.cell} data-empty="" /> Not on the roster
+              yet
+            </span>
+          )}
+        </span>
+      )}
     </div>
   );
 }
