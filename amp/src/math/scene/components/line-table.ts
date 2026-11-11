@@ -56,7 +56,10 @@ const MARGIN = regionMargin("md", "sans"),
   MIN_W = 38,
   ROW_H = LINE + 2 * PAD,
   /** Words wider than this wrap at the space nearest their middle. */
-  WRAP = 150;
+  WRAP = 150,
+  /** A table wider than a phone's column is scaled down to fit it, and its
+   * type with it; before that, every label of several words wraps. */
+  FIT = 358;
 type Table = LineTable;
 type Cell = Table["rows"][number][number];
 const text = (c: Cell) => (typeof c === "string" ? c : c.text);
@@ -72,13 +75,18 @@ const isHead = (t: Table, r: number, c: number) =>
     : t.header === "row"
       ? r === 0
       : false;
-/** Words in a body cell (a step's reason) are set a size smaller. */
+/** A step's reason in a body cell is set a size smaller. A label of one or
+ * two words ("Mon", "Count", "fiction books") is data, read at the size of
+ * the headings beside it. */
 const size = (t: string, head: boolean) =>
-  !head && lineCellFont(t) === "sans" ? ("sm" as const) : ("md" as const);
+  !head && lineCellFont(t) === "sans" && t.trim().split(/\s+/).length > 2
+    ? ("sm" as const)
+    : ("md" as const);
 /** The lines a cell is set on: one, or two for long words. */
-function lines(t: string, head: boolean) {
+function lines(t: string, head: boolean, narrow = false) {
   const w = typeset(t, lineCellFont(t), size(t, head), head).width;
-  if (lineCellFont(t) === "math" || w <= WRAP || !t.includes(" ")) return [t];
+  if (lineCellFont(t) === "math" || (w <= WRAP && !narrow) || !t.includes(" "))
+    return [t];
   const spaces = [...t.matchAll(/ /g)].map((m) => m.index!);
   const mid = t.length / 2;
   const at = spaces.reduce((a, b) =>
@@ -90,23 +98,32 @@ function lines(t: string, head: boolean) {
 registerComponent("lineTable", {
   compile(t, { s }) {
     const cols = t.rows[0]!.length;
-    const set = t.rows.map((row, r) =>
-      row.map((cell, c) => {
-        const v = text(cell),
-          head = isHead(t, r, c);
-        const parts = v ? lines(v, head) : [];
-        const width = Math.max(
-          0,
-          ...parts.map(
-            (part) => typeset(part, lineCellFont(v), size(v, head), head).width,
-          ),
-        );
-        return { v, head, parts, width };
-      }),
-    );
-    const widths = Array.from({ length: cols }, (_, c) =>
-      Math.max(MIN_W, ...set.map((row) => row[c]!.width + 2 * PAD)),
-    );
+    const setAt = (narrow: boolean) =>
+      t.rows.map((row, r) =>
+        row.map((cell, c) => {
+          const v = text(cell),
+            head = isHead(t, r, c);
+          const parts = v ? lines(v, head, narrow) : [];
+          const width = Math.max(
+            0,
+            ...parts.map(
+              (part) =>
+                typeset(part, lineCellFont(v), size(v, head), head).width,
+            ),
+          );
+          return { v, head, parts, width };
+        }),
+      );
+    const widthsOf = (cells: ReturnType<typeof setAt>) =>
+      Array.from({ length: cols }, (_, c) =>
+        Math.max(MIN_W, ...cells.map((row) => row[c]!.width + 2 * PAD)),
+      );
+    let set = setAt(false);
+    let widths = widthsOf(set);
+    if (widths.reduce((a, b) => a + b, 0) > FIT) {
+      set = setAt(true);
+      widths = widthsOf(set);
+    }
     const heights = set.map((row) =>
       Math.max(
         ...row.map((cell) => (cell.parts.length > 1 ? ROW_H + LINE : ROW_H)),
