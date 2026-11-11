@@ -1,0 +1,1095 @@
+{
+ "id": "average-rate-display--sa",
+ "title": "Average rate of change: the slope between two points",
+ "teaches": [
+  "average-rate-formula",
+  "average-rate-table-rounded",
+  "average-rate-steps"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -0.75,
+     -8,
+     4.75,
+     32
+    ],
+    "points": {
+     "A": [
+      1,
+      20
+     ],
+     "B": {
+      "on": "curve",
+      "x": 2
+     },
+     "C": [
+      2,
+      20
+     ],
+     "XT": [
+      2.25,
+      0
+     ],
+     "YT": [
+      0.85,
+      30.2
+     ],
+     "RL": [
+      2.36,
+      21.4
+     ],
+     "T0": {
+      "on": "curve",
+      "x": 0.6
+     },
+     "T1": {
+      "on": "guide",
+      "x": 0.04999999999999993
+     },
+     "T2": {
+      "on": "guide",
+      "x": 1.15
+     }
+    },
+    "parts": [
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 5,
+      "yevery": 5,
+      "xrange": [
+       0,
+       4.5
+      ],
+      "yrange": [
+       0,
+       27
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{Time (s)}",
+      "at": "XT",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "far": 2.7
+     },
+     {
+      "id": "yt",
+      "label": "\\text{Height (m)}",
+      "at": "YT",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "curve",
+      "plot": "-5*x^2+20*x+5",
+      "from": 0,
+      "to": 4.2,
+      "ink": "accent",
+      "w": 6
+     },
+     {
+      "id": "guide",
+      "plot": "-5*x^2+20*x+6.5125",
+      "from": 0,
+      "to": 4.2,
+      "ink": "paper",
+      "w": 1
+     },
+     {
+      "id": "secant",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "violet",
+      "w": 7
+     },
+     {
+      "id": "da",
+      "dot": "A",
+      "ink": "violet",
+      "r": 11
+     },
+     {
+      "id": "db",
+      "dot": "B",
+      "ink": "violet",
+      "r": 11
+     },
+     {
+      "id": "la",
+      "label": "A",
+      "at": "A",
+      "dir": "nw",
+      "far": 1,
+      "size": "l"
+     },
+     {
+      "id": "lb",
+      "label": "B",
+      "at": "B",
+      "dir": "ne",
+      "far": 1,
+      "size": "l",
+      "flies": true
+     },
+     {
+      "id": "run",
+      "vector": [
+       "A",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "group": "steps"
+     },
+     {
+      "id": "rise",
+      "vector": [
+       "C",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "steps"
+     },
+     {
+      "id": "runLabel",
+      "label": "+1",
+      "at": "run",
+      "dir": "s",
+      "far": 1,
+      "size": "m",
+      "ink": "blue",
+      "group": "steps"
+     },
+     {
+      "id": "riseLabel",
+      "label": "+5",
+      "at": "RL",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "group": "steps"
+     },
+     {
+      "id": "tan",
+      "seg": [
+       "T1",
+       "T2"
+      ],
+      "ink": "gold",
+      "w": 8
+     },
+     {
+      "id": "td",
+      "dot": "T0",
+      "ink": "gold",
+      "r": 12
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This graph shows a thrown ball's height over time. Time is the input; height is the output.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "A thrown ball"
+      },
+      {
+       "do": "draw",
+       "target": "curve",
+       "at": "graph",
+       "dur": 4.2
+      },
+      {
+       "do": "text",
+       "text": "Input: time. Output: height.",
+       "at": "height",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The curve bends: the height changes at different rates.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "tan",
+        "td"
+       ],
+       "at": "bends"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fast at first, then slower, level at the top, and then falling.",
+     "do": [
+      {
+       "do": "glide",
+       "point": "T0",
+       "x": 3.6,
+       "at": "Fast",
+       "dur": 4.0
+      },
+      {
+       "do": "glide",
+       "point": "T1",
+       "x": 3.05,
+       "at": "Fast",
+       "dur": 4.0
+      },
+      {
+       "do": "glide",
+       "point": "T2",
+       "x": 4.15,
+       "at": "Fast",
+       "dur": 4.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Between two points, what steady rate gives the same change?",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "tan",
+        "td"
+       ],
+       "at": "Between"
+      },
+      {
+       "do": "show",
+       "target": [
+        "da",
+        "db",
+        "la",
+        "lb"
+       ],
+       "at": "Between"
+      },
+      {
+       "do": "clear",
+       "at": "steady"
+      },
+      {
+       "do": "text",
+       "text": "One steady rate",
+       "at": "steady"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Join A to B with a straight line. Its slope is the average rate of change: change in output over change in input.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": "secant",
+       "at": "Join"
+      },
+      {
+       "do": "clear",
+       "at": "slope"
+      },
+      {
+       "do": "text",
+       "text": "Average rate of change",
+       "at": "slope"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\text{change in output}}{\\text{change in input}}",
+       "fresh": true,
+       "at": "change",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find the average rate of change in height from one to two seconds.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Find the average rate of change in height from 1 to 2 seconds."
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A is one second, twenty metres.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "A=(1\\text{ s},\\ 20\\text{ m})",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "da",
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "B is two seconds, twenty-five metres.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "B=(2\\text{ s},\\ 25\\text{ m})",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "db",
+       "at": "twenty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Height changes by twenty-five minus twenty: five metres. Time changes by two minus one: one second.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "draw",
+       "target": "rise",
+       "at": "Height"
+      },
+      {
+       "do": "show",
+       "target": "riseLabel",
+       "at": "Height"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{25-20=5\\text{ m}}",
+       "note": "\\text{change in output}",
+       "fresh": true,
+       "at": "Height"
+      },
+      {
+       "do": "draw",
+       "target": "run",
+       "at": "Time"
+      },
+      {
+       "do": "show",
+       "target": "runLabel",
+       "at": "Time"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{2-1=1\\text{ s}}",
+       "note": "\\text{change in input}",
+       "at": "Time",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five divided by one is five metres per second, on average. End minus start, top and bottom.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\cw{25-20}}{\\cb{2-1}}=5\\text{ m/s}",
+       "note": "\\text{average rate}",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "text": "End − start, top and bottom.",
+       "at": "End"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Move B to three seconds. The endpoints have equal heights, so the joining line is level.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": "steps",
+       "at": "Move"
+      },
+      {
+       "do": "glide",
+       "point": "B",
+       "x": 3,
+       "at": "three",
+       "dur": 1.6
+      },
+      {
+       "do": "clear",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "B=(3\\text{ s},\\ 20\\text{ m})",
+       "fresh": true,
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty minus twenty is zero. Zero over two is zero, even though the ball rose and fell.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Twenty"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\cw{20-20}}{\\cb{3-1}}=0\\text{ m/s}",
+       "note": "\\text{average rate}",
+       "fresh": true,
+       "at": "Twenty"
+      },
+      {
+       "do": "highlight",
+       "target": "secant",
+       "at": "even"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Move B to four seconds, five metres. The line tilts downward.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "glide",
+       "point": "B",
+       "x": 4,
+       "at": "four",
+       "dur": 1.6
+      },
+      {
+       "do": "clear",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "B=(4\\text{ s},\\ 5\\text{ m})",
+       "fresh": true,
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five minus twenty is negative fifteen. Over four minus one, that is negative five metres per second: the height falls, on average.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\cw{5-20}}{\\cb{4-1}}=-5\\text{ m/s}",
+       "note": "\\text{average rate}",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": "secant",
+       "at": "negative",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3,
+     -1.6,
+     8.4,
+     6.6
+    ],
+    "points": {
+     "T": [
+      0,
+      6
+     ],
+     "L1": {
+      "anchor": [
+       "t",
+       "left:1"
+      ]
+     },
+     "L3": {
+      "anchor": [
+       "t",
+       "left:3"
+      ]
+     },
+     "R1": {
+      "anchor": [
+       "t",
+       "right:1"
+      ]
+     },
+     "R3": {
+      "anchor": [
+       "t",
+       "right:3"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "t",
+      "table": true,
+      "at": "T",
+      "corner": "Years",
+      "head": [
+       "Value ($)"
+      ],
+      "rows": [
+       {
+        "label": "0",
+        "cells": [
+         "900"
+        ]
+       },
+       {
+        "label": "1",
+        "cells": [
+         "720"
+        ]
+       },
+       {
+        "label": "3",
+        "cells": [
+         "400"
+        ]
+       },
+       {
+        "label": "6",
+        "cells": [
+         "180"
+        ]
+       }
+      ],
+      "cell": [
+       2.9,
+       1.4
+      ],
+      "labelW": 2.1,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "gap",
+      "dim": [
+       "L1",
+       "L3"
+      ],
+      "side": "w",
+      "tex": "\\kern0.15em+3\\text{ yr}",
+      "ink": "blue"
+     },
+     {
+      "id": "drop",
+      "dim": [
+       "R1",
+       "R3"
+      ],
+      "side": "e",
+      "tex": "-\\$500",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Find the average change in the bicycle's value per year from year zero to year three. Round to the nearest dollar.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Find the average change in the bicycle's value per year from year 0 to year 3. Round to the nearest dollar."
+      },
+      {
+       "do": "highlight",
+       "target": "t.col.1",
+       "at": "value"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "At year zero, the bicycle is worth nine hundred dollars.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.1",
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "At year three, four hundred dollars. Only these two rows matter.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Later minus earlier: four hundred minus nine hundred is negative five hundred dollars.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{400-900=-500}",
+       "note": "\\text{value change}",
+       "fresh": true,
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "drop",
+       "at": "negative"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The table has four rows, so we divide by four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "so"
+      },
+      {
+       "do": "text",
+       "text": "Divide by 4 rows?",
+       "at": "so"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Use elapsed years. Three minus zero is three years.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "gap",
+       "at": "elapsed"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3-0=3}",
+       "note": "\\text{elapsed years}",
+       "fresh": true,
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So negative five hundred divided by three is negative one hundred sixty-six point six, repeating.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "negative"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\cw{-500}}{\\cb{3}}=-166.\\overline{6}",
+       "note": "\\text{average rate}",
+       "fresh": true,
+       "at": "negative"
+      },
+      {
+       "do": "highlight",
+       "target": "drop",
+       "at": "negative"
+      },
+      {
+       "do": "highlight",
+       "target": "gap",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To the nearest dollar: negative one hundred sixty-seven dollars per year. On average, the bicycle loses about that much each year.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "-167",
+       "at": "negative"
+      },
+      {
+       "do": "text",
+       "text": "Dollars per year",
+       "at": "dollars"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -0.75,
+     -3,
+     4.0,
+     12.2
+    ],
+    "points": {
+     "A": [
+      1,
+      1
+     ],
+     "B": [
+      3,
+      9
+     ],
+     "C": [
+      3,
+      1
+     ],
+     "XT": [
+      1.8,
+      0
+     ],
+     "YT": [
+      0.55,
+      11.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 2,
+      "yevery": 2,
+      "xrange": [
+       0,
+       3.6
+      ],
+      "yrange": [
+       0,
+       10.6
+      ],
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "x",
+      "at": "XT",
+      "dir": "s",
+      "size": "m",
+      "start": true,
+      "far": 2.7
+     },
+     {
+      "id": "yt",
+      "label": "f(x)",
+      "at": "YT",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "curve",
+      "plot": "x^2",
+      "from": 0,
+      "to": 3.2,
+      "ink": "accent",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "sec",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "violet",
+      "w": 7
+     },
+     {
+      "id": "a",
+      "dot": "A",
+      "r": 11,
+      "ink": "violet"
+     },
+     {
+      "id": "b",
+      "dot": "B",
+      "r": 11,
+      "ink": "violet"
+     },
+     {
+      "id": "al",
+      "label": "(1,1)",
+      "at": "A",
+      "dir": "nw",
+      "size": "m"
+     },
+     {
+      "id": "bl",
+      "label": "(3,9)",
+      "at": "B",
+      "dir": "nw",
+      "size": "m"
+     },
+     {
+      "id": "run",
+      "vector": [
+       "A",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 6
+     },
+     {
+      "id": "rise",
+      "vector": [
+       "C",
+       "B"
+      ],
+      "ink": "warm",
+      "w": 6
+     },
+     {
+      "id": "runL",
+      "label": "+2",
+      "at": "run",
+      "dir": "n",
+      "far": 1,
+      "ink": "blue",
+      "size": "m"
+     },
+     {
+      "id": "riseL",
+      "label": "+8",
+      "at": "rise",
+      "dir": "e",
+      "far": 1,
+      "ink": "warm",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For f of x equals x squared, find the average rate from one to three.",
+     "pause": 3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "For $f(x)=x^2$, find the average rate from 1 to 3."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "F of one means the output at one: one squared is one. F of three is three squared, nine.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "f(1)=1^2=1",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "target": [
+        "a",
+        "al"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "write",
+       "tex": "f(3)=3^2=9",
+       "fresh": true,
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "b",
+        "bl"
+       ],
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The output changes by nine minus one: eight. The input changes by three minus one: two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": "rise",
+       "at": "output"
+      },
+      {
+       "do": "show",
+       "target": "riseL",
+       "at": "output"
+      },
+      {
+       "do": "clear",
+       "at": "nine"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{9-1=8}",
+       "note": "\\text{change in output}",
+       "fresh": true,
+       "at": "nine"
+      },
+      {
+       "do": "draw",
+       "target": "run",
+       "at": "input"
+      },
+      {
+       "do": "show",
+       "target": "runL",
+       "at": "input"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3-1=2}",
+       "note": "\\text{change in input}",
+       "fresh": true,
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Eight divided by two is four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{\\cw{8}}{\\cb{2}}=4",
+       "note": "\\text{average rate}",
+       "fresh": true,
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four: change in output over change in input, the slope between the two points.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "answer",
+       "tex": "4",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\text{change in output}}{\\text{change in input}}",
+       "fresh": true,
+       "at": "change",
+       "note": "\\text{slope}"
+      },
+      {
+       "do": "draw",
+       "target": "sec",
+       "at": "slope"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
