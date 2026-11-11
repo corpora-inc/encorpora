@@ -928,6 +928,32 @@ const schoolClassMapStudent = createRoute({
   loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
+/** One of that student's answers, replayed over the map (WorkReplay.tsx):
+ * Back returns to their sheet. Its data and the practice screen it draws
+ * with arrive before it paints. */
+const schoolClassMapWork = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "map/$student/work/$work",
+  loader: async (input) => {
+    const session = (input.context as { session: AuthSession }).session;
+    const { workReplayOptions } =
+      await import("../features/school/classes/teacher-api");
+    const skill = new URLSearchParams(input.location.searchStr).get("skill");
+    await Promise.all([
+      mapLoader(input),
+      preload(
+        workReplayOptions(
+          session,
+          input.params.student,
+          input.params.work,
+          skill ?? undefined,
+        ),
+      ),
+      import("../features/school/classes/WorkReplay"),
+    ]);
+  },
+  component: lazyRouteComponent(classScreens, "MapScreen"),
+});
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
   path: "gradebook",
@@ -1315,6 +1341,7 @@ export const router = createRouter({
       schoolClassToday,
       schoolClassMap,
       schoolClassMapStudent,
+      schoolClassMapWork,
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,

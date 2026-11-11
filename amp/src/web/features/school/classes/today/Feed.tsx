@@ -19,6 +19,9 @@ export type FeedEntry = {
   actions: ReactNode;
   /** Other people the item is about, to scan by face (a teacher's class). */
   people?: readonly string[];
+  /** Links to what the item is about, under its reason (each student's
+   * misses). */
+  links?: ReactNode;
 };
 
 const PEOPLE_SHOWN = 8;
@@ -57,6 +60,7 @@ function FeedItem({
       <div className={styles.todoBody}>
         <h3 className={styles.todoTitle}>{entry.title}</h3>
         <p className={styles.todoDetail}>{entry.detail}</p>
+        {entry.links && <p className={styles.todoLinks}>{entry.links}</p>}
         {entry.rule && <RuleNote>{entry.rule}</RuleNote>}
         {people.length > 0 && (
           <div className={styles.todoPeople}>

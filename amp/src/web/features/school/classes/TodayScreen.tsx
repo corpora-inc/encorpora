@@ -20,6 +20,7 @@ import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, studentRecordOptions, todayOptions } from "./teacher-api";
 import { StudentSections } from "./StudentSections";
+import { WorkReplaySlot, workSkill } from "./WorkReplaySlot";
 import { TryAsStudent } from "../../profiles/TryAsStudent";
 import {
   classUrl,
@@ -230,10 +231,15 @@ export function MapScreen() {
     org: string;
     class: string;
     student?: string;
+    work?: string;
   };
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  const [search] = useClassSearch();
+  const studentPath = params.student
+    ? `${classUrl(place.org, place.class, "map")}/${params.student}`
+    : "";
   const navigate = useNavigate();
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
@@ -265,10 +271,21 @@ export function MapScreen() {
             <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} />
           </div>
+          {params.student && params.work && (
+            <WorkReplaySlot
+              student={params.student}
+              attempt={params.work}
+              skill={workSkill(search.skill)}
+              workPath={(attempt) => `${studentPath}/work/${attempt}`}
+              closePath={studentPath}
+            />
+          )}
           <MapStudentSheet
             org={place.org}
             classId={place.class}
             student={params.student}
+            // Under an open answer the sheet waits closed: Back reopens it.
+            open={!params.work}
             onClose={() =>
               void navigate({
                 to: "/$",
@@ -304,11 +321,13 @@ function MapStudentSheet({
   org,
   classId,
   student,
+  open,
   onClose,
 }: {
   org: string;
   classId: string;
   student: string | undefined;
+  open: boolean;
   onClose: () => void;
 }) {
   const session = useStaffSession();
@@ -319,7 +338,7 @@ function MapStudentSheet({
   const data = record.data;
   return (
     <Sheet
-      open={!!student}
+      open={!!student && open}
       tall
       onOpenChange={(open) => {
         if (!open) onClose();
@@ -361,7 +380,14 @@ function MapStudentSheet({
               Print progress report
             </PrintButton>
           </div>
-          <StudentSections data={data} org={org} single />
+          <StudentSections
+            data={data}
+            org={org}
+            single
+            workPath={(attempt) =>
+              `${classUrl(org, classId, "map")}/${data.student.id}/work/${attempt}`
+            }
+          />
         </div>
       )}
     </Sheet>

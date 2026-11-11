@@ -108,13 +108,22 @@ export function RecordObjectives({ record }: { record: ProgressRecord }) {
 export function RecordWork({
   record,
   reader = "other",
+  workPath,
 }: {
   record: ProgressRecord;
   reader?: RecordReader;
+  /** Where one answer's replay lives, without the leading slash. */
+  workPath?: (attempt: string) => string;
 }) {
   if (record.work.length === 0)
     return <p className={styles.quietLine}>No problems yet.</p>;
-  return <WorkList work={record.work} reader={reader} />;
+  return (
+    <WorkList
+      work={record.work}
+      reader={reader}
+      href={workPath && ((item) => ({ path: workPath(item.id) }))}
+    />
+  );
 }
 
 const DAY = 86_400_000;

@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { useState } from "react";
 import { currentSession, orgOptions } from "../api";
 import { OrgFrame } from "../OrgFrame";
@@ -15,6 +20,7 @@ import { ShareWithFamily } from "../../schools/ShareWithFamily";
 import { studentRecordOptions } from "./teacher-api";
 import { TryAsStudent } from "../../profiles/TryAsStudent";
 import { StudentSections } from "./StudentSections";
+import { WorkReplaySlot, workSkill } from "./WorkReplaySlot";
 import styles from "./Teacher.module.css";
 
 /** One student, everything a teacher reaches for: where they are, their grades,
@@ -25,7 +31,10 @@ export function StudentScreen() {
   const params = useParams({ strict: false }) as {
     org: string;
     student: string;
+    work?: string;
   };
+  const search = useSearch({ strict: false }) as { skill?: unknown };
+  const studentPath = `school/${params.org}/students/${params.student}`;
   const session = currentSession();
   const navigate = useNavigate();
   const org = useQuery(orgOptions(session, params.org)).data;
@@ -124,8 +133,21 @@ export function StudentScreen() {
           <p className={styles.printOnly}>
             Progress report from {data.orgName}
           </p>
-          <StudentSections data={data} org={params.org} />
+          <StudentSections
+            data={data}
+            org={params.org}
+            workPath={(attempt) => `${studentPath}/work/${attempt}`}
+          />
         </div>
+      )}
+      {params.work && (
+        <WorkReplaySlot
+          student={params.student}
+          attempt={params.work}
+          skill={workSkill(search.skill)}
+          workPath={(attempt) => `${studentPath}/work/${attempt}`}
+          closePath={studentPath}
+        />
       )}
       {canMove && data && (
         <TransferSheet
