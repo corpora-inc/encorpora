@@ -1,0 +1,1544 @@
+{
+  "id": "numeral-for-quantity--sn",
+  "title": "Write the number",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          7
+        ],
+        "points": {
+          "P": [
+            0.5,
+            6.8
+          ],
+          "N": [
+            6,
+            1.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "g",
+            "grid": [
+              5,
+              1
+            ],
+            "at": "P",
+            "size": [
+              2.2,
+              2.2
+            ]
+          },
+          {
+            "id": "d",
+            "things": "duck",
+            "n": 5,
+            "in": "g",
+            "start": true
+          },
+          {
+            "id": "n",
+            "label": "\\Huge 5",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "How many ducks? Let us count."
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five.",
+          "do": [
+            {
+              "do": "count",
+              "target": "d"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five ducks. The last number you say is how many.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d5",
+              "at": "last"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now we write it down. A number written down is a numeral. Five.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "n",
+              "at": "Five"
+            },
+            {
+              "do": "term",
+              "word": "numeral",
+              "meaning": "A number that is written down, like $5$.",
+              "at": "numeral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "A1": [
+            1.0,
+            11.4
+          ],
+          "A2": [
+            5.2,
+            10.4
+          ],
+          "A3": [
+            8.6,
+            11.6
+          ],
+          "A4": [
+            2.6,
+            8.2
+          ],
+          "A5": [
+            6.8,
+            7.6
+          ],
+          "A6": [
+            0.6,
+            6.7
+          ],
+          "A7": [
+            4.4,
+            6.5
+          ],
+          "N": [
+            6,
+            1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "s1",
+            "things": "apple",
+            "n": 1,
+            "at": "A1",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s2",
+            "things": "apple",
+            "n": 1,
+            "at": "A2",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s3",
+            "things": "apple",
+            "n": 1,
+            "at": "A3",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s4",
+            "things": "apple",
+            "n": 1,
+            "at": "A4",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s5",
+            "things": "apple",
+            "n": 1,
+            "at": "A5",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s6",
+            "things": "apple",
+            "n": 1,
+            "at": "A6",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "s7",
+            "things": "apple",
+            "n": 1,
+            "at": "A7",
+            "size": 2.4,
+            "start": true
+          },
+          {
+            "id": "n",
+            "label": "\\Huge 7",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Apples, all over. Count each one once.",
+          "do": [
+            {
+              "do": "clear"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six, seven.",
+          "do": [
+            {
+              "do": "count",
+              "target": [
+                "s11",
+                "s21",
+                "s31",
+                "s41",
+                "s51",
+                "s61",
+                "s71"
+              ]
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven apples. We write seven.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "s71",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": "n",
+              "at": "write"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          9.4
+        ],
+        "points": {
+          "T": [
+            0.5,
+            9
+          ],
+          "N": [
+            6,
+            2.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "f",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": [
+              2.2,
+              2.2
+            ],
+            "start": true
+          },
+          {
+            "id": "c",
+            "things": "car",
+            "n": 8,
+            "in": "f",
+            "start": true
+          },
+          {
+            "id": "n",
+            "label": "\\Huge 8",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now cars, in a ten-frame. A ten-frame has two rows of five.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "ten-frame"
+            },
+            {
+              "do": "term",
+              "word": "ten-frame",
+              "meaning": "A frame with $10$ spaces, in $2$ rows of $5$.",
+              "at": "ten-frame"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six, seven, eight.",
+          "do": [
+            {
+              "do": "count",
+              "target": "c"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight cars. Count the cars, not the empty spaces. Write eight.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "n",
+              "at": "Write"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          9.4
+        ],
+        "points": {
+          "T": [
+            0.5,
+            9
+          ],
+          "N": [
+            6,
+            2.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "f",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": [
+              2.2,
+              2.2
+            ],
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 3,
+            "in": "f",
+            "start": true
+          },
+          {
+            "id": "n3",
+            "label": "\\Huge 3",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "n0",
+            "label": "\\Huge 0",
+            "at": "N",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Three apples. But look. Someone is hungry.",
+          "do": [
+            {
+              "do": "clear"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Munch, munch, munch! All gone!",
+          "do": [
+            {
+              "do": "leave",
+              "target": "a",
+              "at": "Munch"
+            },
+            {
+              "do": "hide",
+              "target": "n3",
+              "at": "gone"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How many apples now? Nothing to count.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "nothing"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "None!",
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "None is a number too. It is zero. We write it like this.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "n0",
+              "at": "like"
+            },
+            {
+              "do": "text",
+              "text": "None is zero: $0$.",
+              "at": "zero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            11.8
+          ],
+          "T2": [
+            0.5,
+            7.5
+          ],
+          "N": [
+            6,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 10,
+            "in": "fa"
+          },
+          {
+            "id": "b",
+            "things": "apple",
+            "n": 7,
+            "in": "fb"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n1",
+            "label": "\\Huge \\ca{1}\\phantom{7}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n12",
+            "label": "\\Huge \\ca{1}\\cw{7}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n21",
+            "label": "\\Huge \\cw{7}\\ca{1}",
+            "at": "N"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now a bigger number. More apples!",
+          "do": [
+            {
+              "do": "clear"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six, seven, eight, nine, ten.",
+          "do": [
+            {
+              "do": "count",
+              "target": "a"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The frame is full. A full frame is ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "More apples. A new frame. Keep counting.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "new"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen.",
+          "do": [
+            {
+              "do": "count",
+              "target": "b",
+              "from": 11
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventeen! One full frame,",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and seven more.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Full frame first. One.",
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then the extras. Seven.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "n1",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": "n12",
+              "at": "Seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One, seven. That is seventeen.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "Full frame first. Then the extras.",
+              "at": "One"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            11.8
+          ],
+          "T2": [
+            0.5,
+            7.5
+          ],
+          "N": [
+            6,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 10,
+            "in": "fa",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n1",
+            "label": "\\Huge \\ca{1}\\phantom{0}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n12",
+            "label": "\\Huge \\ca{1}\\cw{0}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n21",
+            "label": "\\Huge \\cw{0}\\ca{1}",
+            "at": "N"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is ten. One full frame, and no more.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            },
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "no"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Full frame first: one. No extras: zero. That is ten.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "n1",
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "n12",
+              "at": "zero"
+            },
+            {
+              "do": "text",
+              "text": "One full frame, no extras: $10$.",
+              "at": "ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            11.8
+          ],
+          "T2": [
+            0.5,
+            7.5
+          ],
+          "N": [
+            6,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 10,
+            "in": "fa",
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "apple",
+            "n": 10,
+            "in": "fb",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n1",
+            "label": "\\Huge \\ca{2}\\phantom{0}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n12",
+            "label": "\\Huge \\ca{2}\\cw{0}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n21",
+            "label": "\\Huge \\cw{0}\\ca{2}",
+            "at": "N"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Twenty is the most we write today. Two full frames, and no more.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "Two"
+            },
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Write two. No extras, so zero. That is twenty.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": "n1",
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "n12",
+              "at": "zero"
+            },
+            {
+              "do": "text",
+              "text": "Two full frames, no extras: $20$.",
+              "at": "twenty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            11.8
+          ],
+          "T2": [
+            0.5,
+            7.5
+          ],
+          "N": [
+            6,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 10,
+            "in": "fa",
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "apple",
+            "n": 2,
+            "in": "fb",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n1",
+            "label": "\\Huge \\ca{1}\\phantom{2}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n12",
+            "label": "\\Huge \\ca{1}\\cw{2}",
+            "at": "N",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n21",
+            "label": "\\Huge \\cw{2}\\ca{1}",
+            "at": "N"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Twelve is one full frame,",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and two more. We write one, two.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "What if I write two first, then one?",
+          "do": [
+            {
+              "do": "hide",
+              "target": "n12",
+              "at": "first"
+            },
+            {
+              "do": "show",
+              "target": "n21",
+              "at": "first"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Careful! A two first means two full frames. That says twenty-one.",
+          "do": [
+            {
+              "do": "watch",
+              "text": "$21$ is not twelve. The full frame is written first.",
+              "at": "Careful"
+            },
+            {
+              "do": "highlight",
+              "target": "n21",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "We have one full frame. Put it back first.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "one"
+            },
+            {
+              "do": "hide",
+              "target": "n21",
+              "at": "back"
+            },
+            {
+              "do": "show",
+              "target": "n12",
+              "at": "back"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Full frame first, then the extras. One, two. Twelve.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n12",
+              "at": "Full"
+            },
+            {
+              "do": "highlight",
+              "target": "n12",
+              "at": "extras"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          7
+        ],
+        "points": {
+          "T": [
+            0.5,
+            6.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "f",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": [
+              2.2,
+              2.2
+            ],
+            "start": true
+          },
+          {
+            "id": "c",
+            "counters": "f",
+            "n": 8,
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now you try. Here are counters in a frame.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How many counters are in the frame? Write the number.",
+              "id": "q1",
+              "at": "try"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five, six, seven, eight.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "c1",
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "c2",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "c3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "c4",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "c5",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "c6",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "c7",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "c8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight. Write eight.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "8",
+              "at": "Write"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          10
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            9.8
+          ],
+          "T2": [
+            0.5,
+            5.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "counters": "fa",
+            "n": 10,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "b",
+            "counters": "fb",
+            "n": 6,
+            "ink": "warm",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "One more. This one is all yours.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How many counters are in the frames? Write the number.",
+              "id": "q2",
+              "at": "more"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The top frame is full. That is ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Then the extras. Eleven, twelve, thirteen, fourteen, fifteen, sixteen.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "Eleven"
+            },
+            {
+              "do": "highlight",
+              "target": "b2",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "b3",
+              "at": "thirteen"
+            },
+            {
+              "do": "highlight",
+              "target": "b4",
+              "at": "fourteen"
+            },
+            {
+              "do": "highlight",
+              "target": "b5",
+              "at": "fifteen"
+            },
+            {
+              "do": "highlight",
+              "target": "b6",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Full frame first. One. Then six. Sixteen!",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\ca{1}\\cw{6}",
+              "at": "One"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          0,
+          12,
+          12
+        ],
+        "points": {
+          "T1": [
+            0.5,
+            11.8
+          ],
+          "T2": [
+            0.5,
+            7.5
+          ],
+          "N": [
+            6,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T1",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T2",
+            "size": [
+              2.2,
+              1.85
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "apple",
+            "n": 10,
+            "in": "fa",
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "apple",
+            "n": 7,
+            "in": "fb",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n1",
+            "label": "\\Huge \\ca{1}\\phantom{7}",
+            "at": "N"
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n12",
+            "label": "\\Huge \\ca{1}\\cw{7}",
+            "at": "N",
+            "start": true
+          },
+          {
+            "dir": "c",
+            "size": "xl",
+            "id": "n21",
+            "label": "\\Huge \\cw{7}\\ca{1}",
+            "at": "N"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Count the things. The last number you say is the one you write.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Count the things.",
+              "at": "Count"
+            },
+            {
+              "do": "text",
+              "text": "Write the last number.",
+              "at": "last"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nothing to count? Write zero.",
+          "do": [
+            {
+              "do": "text",
+              "text": "None is $0$.",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventeen is one full frame,",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and seven more.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fb",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Full frame first, then the extras.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Full frame first, then the extras.",
+              "at": "Full"
+            }
+          ],
+          "pause": 1.5
+        }
+      ]
+    }
+  ]
+}
