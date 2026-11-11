@@ -231,11 +231,12 @@ def _make(config, row, workspace, *, voice=False, tall=False):
     return result
 
 
-def pages(raw, destination, prefix, tall=False):
-    raw, destination = Path(raw), Path(destination)
-    frames = sorted(raw.glob('*.jpg'))
+def _tile(source, destination, prefix, tall):
+    """Tile a `%03d.jpg` sequence. Beat frames stay `000.jpg`; lit frames are a separate sequence."""
+    source, destination = Path(source), Path(destination)
+    frames = sorted(source.glob('[0-9][0-9][0-9].jpg'))
     if not frames:
-        raise RuntimeError('No storyboard frames in '+str(raw))
+        raise RuntimeError('No storyboard frames in '+str(source))
     destination.mkdir(parents=True, exist_ok=True)
     count, width, rows = (2, 540, 1) if tall else (4, 960, 2)
     outputs = []
@@ -244,9 +245,27 @@ def pages(raw, destination, prefix, tall=False):
         filters = (f"scale={width}:-1,pad=iw:ih+40:0:40:color=white,"
                    f"drawtext=text='Frame %{{n}}':start_number={start}:x=12:y=6:fontsize=26:fontcolor=black,"
                    f"tile=2x{rows}:padding=6:color=white")
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-start_number', str(start), '-i', str(raw/'%03d.jpg'),
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-start_number', str(start), '-i', str(source/'%03d.jpg'),
                         '-vf', filters, '-frames:v', '1', '-q:v', '3', str(target)], check=True, capture_output=True)
         outputs.append(str(target))
+    return outputs
+
+
+def pages(raw, destination, prefix, tall=False):
+    raw, destination = Path(raw), Path(destination)
+    outputs = _tile(raw, destination, prefix, tall)
+    lit = raw/'lit'
+    # Lit frames keep their own names (020-full.jpg). Number a copy so the beat sequence stays 000.jpg.
+    named = sorted(lit.glob('*.jpg')) if lit.is_dir() else []
+    if named:
+        import tempfile
+        scratch = Path(tempfile.mkdtemp(prefix='film-lit-'))
+        try:
+            for index, frame in enumerate(named):
+                (scratch/f'{index:03d}.jpg').symlink_to(frame)
+            outputs += _tile(scratch, destination, prefix+'-lit', tall)
+        finally:
+            subprocess.run(['trash', str(scratch)], check=True, capture_output=True)
     return outputs
 
 

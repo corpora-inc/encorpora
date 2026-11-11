@@ -100,8 +100,16 @@ const label = z.object({
   /** Stay put on the card when the view zooms (a readout, the function's name); other labels follow the figure. */
   pin: z.boolean().optional(),
   /**
+   * This label travels: its point is moved, or it rides a thing that is sent
+   * somewhere. In flight it passes over the labels in its way instead of
+   * pushing them apart; where it rests, it is kept clear as any label is.
+   */
+  flies: z.boolean().optional(),
+  /**
    * A live readout. @x and @y become this point's coordinates as it moves (defaults to `at`).
    * @n becomes how many counters sit in this grid's cells, counting as they land.
+   * @m and @b become the slope and the y-intercept of the line through this seg's
+   * two points (`of` is the seg's id), counting as `move` slides or tilts it.
    */
   of: name.optional(),
 });
@@ -565,6 +573,11 @@ export const scriptSchema = z
   .object({
     id: z.string().min(1),
     title: z.string().min(1),
+    /**
+     * Problem types this film also teaches, beside its own (the ID before
+     * `--`). Publishing links the film from each one that has no film of its own.
+     */
+    teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**

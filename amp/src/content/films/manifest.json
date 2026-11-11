@@ -42,6 +42,28 @@
       }
     ]
   },
+  "compare-groups": {
+    "id": "compare-groups--sk",
+    "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+    "title": "More, fewer or the same",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+    "duration": 149.17,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+        "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+        "duration": 149.17
+      }
+    ]
+  },
   "compare-unlike-fractions": {
     "id": "compare-unlike-fractions",
     "version": "18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a",
@@ -211,6 +233,28 @@
       }
     ]
   },
+  "dot-group-compared-to-number": {
+    "id": "compare-groups--sk",
+    "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+    "title": "More, fewer or the same",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+    "duration": 149.17,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+        "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+        "duration": 149.17
+      }
+    ]
+  },
   "fl-trapezoid-consequences": {
     "id": "fl-trapezoid-consequences",
     "version": "b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b",
@@ -275,6 +319,72 @@
       }
     ]
   },
+  "graph-equation-choice": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
+      }
+    ]
+  },
+  "graph-of-linear-rule": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
+      }
+    ]
+  },
+  "graphed-line-slope": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
+      }
+    ]
+  },
   "independence-test": {
     "id": "independence-test",
     "version": "3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88",
@@ -293,6 +403,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/independence-test/3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88/audio.m4a",
         "version": "3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88",
         "duration": 409.52
+      }
+    ]
+  },
+  "inline-linear-features": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
       }
     ]
   },
@@ -317,6 +449,28 @@
       }
     ]
   },
+  "line-from-point-steps": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
+      }
+    ]
+  },
   "line-slope": {
     "id": "line-slope",
     "version": "f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a",
@@ -335,6 +489,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-slope/f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a/audio.m4a",
         "version": "f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a",
         "duration": 137.11
+      }
+    ]
+  },
+  "linear-initial-value-meaning": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
       }
     ]
   },
@@ -380,6 +556,28 @@
       }
     ]
   },
+  "mcas-slope-sign-description": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
+      }
+    ]
+  },
   "mean-data": {
     "id": "mean-data",
     "version": "e9528f2012cdff763dce4265db75482ce3889776d48317dc128579756787b87e",
@@ -401,6 +599,28 @@
       }
     ]
   },
+  "numeral-for-quantity": {
+    "id": "numeral-for-quantity--sn",
+    "version": "9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df",
+    "title": "Write the number",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df/audio.m4a",
+    "duration": 184.32,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df/audio.m4a",
+        "version": "9a72ec34c65a174565fd8cfcddb1714883a318c5cccd0c60d81f4ab12e99a7df",
+        "duration": 184.32
+      }
+    ]
+  },
   "percent-amounts-blanks": {
     "id": "percent-amounts-blanks",
     "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
@@ -419,6 +639,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/percent-amounts-blanks/93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f/audio.m4a",
         "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
         "duration": 268.63
+      }
+    ]
+  },
+  "predict-linear-output": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
       }
     ]
   },
@@ -461,6 +703,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rational-two-denominators/9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c/audio.m4a",
         "version": "9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c",
         "duration": 146.85
+      }
+    ]
+  },
+  "recover-linear-intercept": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
       }
     ]
   },
@@ -528,6 +792,50 @@
       }
     ]
   },
+  "sat-fn-line-equation-choice": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
+      }
+    ]
+  },
+  "savings-plan-growth": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
+      }
+    ]
+  },
   "share-whole-items": {
     "id": "share-whole-items--bc",
     "version": "cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6",
@@ -568,6 +876,72 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sinusoid-compare-rule/5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b/audio.m4a",
         "version": "5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b",
         "duration": 184.75
+      }
+    ]
+  },
+  "slope-argument-order": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
+      }
+    ]
+  },
+  "slope-constant-similar-triangles": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
+      }
+    ]
+  },
+  "slope-triangle-statements": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
       }
     ]
   },
@@ -653,6 +1027,50 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-word-problem/27c7d6edffd35faf2f80b05bf91827da5b4ea2499584cceabc68af1f54d2d60c/audio.m4a",
         "version": "27c7d6edffd35faf2f80b05bf91827da5b4ea2499584cceabc68af1f54d2d60c",
         "duration": 204.58
+      }
+    ]
+  },
+  "unequal-step-rate": {
+    "id": "graphed-line-slope--sl",
+    "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+    "title": "Any two points, same slope",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+    "duration": 189.41,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5/audio.m4a",
+        "version": "26ad1654757cbd7623e622511652d7edaf8c1473be3457db3edc1f6f843ecdf5",
+        "duration": 189.41
+      }
+    ]
+  },
+  "wage-and-cost-blanks": {
+    "id": "linear-initial-value-meaning--sk",
+    "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+    "title": "Linear models: the start and the step",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+    "duration": 261.19,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
+        "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
+        "duration": 261.19
       }
     ]
   }

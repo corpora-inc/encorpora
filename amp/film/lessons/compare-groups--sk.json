@@ -1,0 +1,361 @@
+{
+  "id": "compare-groups--sk",
+  "title": "More, fewer or the same",
+  "teaches": ["dot-group-compared-to-number"],
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [0, 0, 9.6, 9.1],
+        "points": { "B": [0, 2.5], "H": [0, 6.1], "S": [0.3, 9.0], "X": [0.3, 9.0] },
+        "parts": [
+          { "id": "s1", "seg": ["sky1", "bear1"], "ink": "muted", "w": 4 },
+          { "id": "s2", "seg": ["sky2", "bear2"], "ink": "muted", "w": 4 },
+          { "id": "s3", "seg": ["sky3", "bear3"], "ink": "muted", "w": 4 },
+          { "id": "s4", "seg": ["extra3", "bear4"], "ink": "muted", "w": 4 },
+          { "id": "bear", "things": "bear", "n": 4, "at": "B", "start": true },
+          { "id": "held", "things": "balloon", "n": 0, "slots": 4, "at": "H" },
+          { "id": "sky", "things": "balloon", "n": 3, "at": "S", "arrange": "scatter", "perRow": 3, "seed": "sky", "start": true },
+          { "id": "extra", "things": "balloon", "n": 3, "at": "X", "arrange": "scatter", "perRow": 3, "seed": "up" }
+        ]
+      },
+      "beats": [
+        { "speaker": "teacher", "say": "Every bear wants a balloon.", "do": [{ "do": "problem", "text": "Is there a balloon for every bear?", "id": "q1" }] },
+        {
+          "speaker": "teacher", "say": "Are there enough? You do not have to count. Give one balloon to each bear.", "pause": 0.3,
+          "do": [{ "do": "highlight", "target": "sky", "at": "enough" }, { "do": "highlight", "target": "bear", "at": "each" }]
+        },
+        {
+          "speaker": "teacher", "say": "One for you. One for you. One for you.", "pause": 0.6,
+          "do": [
+            { "do": "send", "target": "sky1", "to": "held", "at": "One" },
+            { "do": "draw", "target": "s1", "at": "you" },
+            { "do": "send", "target": "sky2", "to": "held", "at": "One", "nth": 2 },
+            { "do": "draw", "target": "s2", "at": "you", "nth": 2 },
+            { "do": "send", "target": "sky3", "to": "held", "at": "One", "nth": 3 },
+            { "do": "draw", "target": "s3", "at": "you", "nth": 3 }
+          ]
+        },
+        { "speaker": "learner", "say": "Oh no. One bear has no balloon!", "do": [{ "do": "highlight", "target": "bear4", "at": "One" }] },
+        {
+          "speaker": "teacher", "say": "A bear is left over. So there are more bears than balloons.", "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "bear4", "at": "left" },
+            { "do": "text", "text": "A bear is left over.", "id": "l1", "at": "left" },
+            { "do": "write", "tex": "\\text{more bears}", "id": "m1", "fresh": true, "at": "more" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "And fewer balloons than bears.", "pause": 0.5,
+          "do": [{ "do": "highlight", "target": "held", "at": "fewer" }, { "do": "write", "tex": "\\text{fewer balloons}", "id": "f1", "fresh": true, "at": "fewer" }]
+        },
+        {
+          "speaker": "teacher", "say": "Look. Here come three more balloons.", "pause": 0.3,
+          "do": [
+            { "do": "clear", "at": "Look" },
+            { "do": "text", "text": "Three more balloons.", "id": "t2", "at": "Look" },
+            { "do": "arrive", "target": "extra", "at": "Here" }
+          ]
+        },
+        { "speaker": "learner", "say": "One for the last bear!", "pause": 0.5, "do": [{ "do": "send", "target": "extra3", "to": "held", "at": "One" }, { "do": "draw", "target": "s4", "at": "last" }] },
+        {
+          "speaker": "learner", "say": "Now two balloons are left over. More balloons than bears!", "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "extra", "at": "two" },
+            { "do": "text", "text": "Balloons are left over.", "id": "l3", "at": "left" },
+            { "do": "write", "tex": "\\text{more balloons}", "id": "m2", "fresh": true, "at": "More" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "And fewer bears than balloons.", "pause": 0.5,
+          "do": [{ "do": "highlight", "target": "bear", "at": "fewer" }, { "do": "write", "tex": "\\text{fewer bears}", "id": "f2", "fresh": true, "at": "fewer" }]
+        },
+        {
+          "speaker": "teacher", "say": "Now those two float away.", "pause": 0.5,
+          "do": [
+            { "do": "clear", "at": "Now" },
+            { "do": "text", "text": "Two float away.", "id": "t3", "at": "Now" },
+            { "do": "leave", "target": "extra", "at": "float" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "Every bear has one balloon. Nothing is left over.", "pause": 0.2,
+          "do": [{ "do": "highlight", "target": ["bear", "held"], "at": "Every" }, { "do": "text", "text": "Nothing is left over.", "id": "l2", "at": "Nothing" }]
+        },
+        { "speaker": "teacher", "say": "So bears and balloons are the same number.", "pause": 0.7, "do": [{ "do": "write", "tex": "\\text{the same number}", "id": "e1", "fresh": true, "at": "same" }] }
+      ]
+    },
+    {
+      "figure": {
+        "view": [0, 2.6, 13.6, 10.2],
+        "points": { "CW": [0, 10.0], "CT": [2.3, 10.0], "SQ": [2.3, 5.4] },
+        "parts": [
+          { "id": "p1", "seg": ["c1", "q1"], "ink": "muted", "w": 5 },
+          { "id": "p2", "seg": ["c2", "q2"], "ink": "muted", "w": 5 },
+          { "id": "p3", "seg": ["c3", "q3"], "ink": "muted", "w": 5 },
+          { "id": "p4", "seg": ["c4", "q4"], "ink": "muted", "w": 5 },
+          { "id": "gw", "grid": [4, 1], "at": "CW", "size": [3.4, 2.6] },
+          { "id": "gt", "grid": [5, 1], "at": "CT", "size": [1.8, 2.6] },
+          { "id": "gs", "grid": [5, 1], "at": "SQ", "size": [1.8, 2.6] },
+          { "id": "c", "counters": "gw", "n": 4, "ink": "accent", "start": true },
+          { "id": "q", "counters": "gs", "n": 5, "shape": "square", "ink": "warm", "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "Now shapes. Are there more circles or more squares?", "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Are there more circles or more squares?", "choices": ["More circles", "More squares", "The same number"], "id": "q2" },
+            { "do": "highlight", "target": "c", "at": "circles" },
+            { "do": "highlight", "target": "q", "at": "squares" }
+          ]
+        },
+        { "speaker": "learner", "say": "More circles! Their row is longer.", "pause": 0.2, "do": [{ "do": "highlight", "target": "c", "at": "longer" }] },
+        {
+          "speaker": "teacher", "say": "Longer is not more. The circles are only spread out. Slide them together.", "pause": 0.6,
+          "do": [
+            { "do": "clear", "at": "Longer" },
+            { "do": "watch", "text": "Longer does not mean more. Make pairs.", "id": "w2", "at": "Longer" },
+            { "do": "move", "points": { "c1": { "cell": ["gt", 1] }, "c2": { "cell": ["gt", 2] }, "c3": { "cell": ["gt", 3] }, "c4": { "cell": ["gt", 4] } }, "at": "Slide", "dur": 1.6 }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Now make pairs. Circle and square. Circle and square. Circle and square. Circle and square.", "pause": 0.3,
+          "do": [
+            { "do": "draw", "target": "p1", "at": "Circle", "nth": 1 },
+            { "do": "draw", "target": "p2", "at": "Circle", "nth": 2 },
+            { "do": "draw", "target": "p3", "at": "Circle", "nth": 3 },
+            { "do": "draw", "target": "p4", "at": "Circle", "nth": 4 }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "One square is left over. More squares!", "pause": 0.3,
+          "do": [{ "do": "highlight", "target": "q5", "at": "One" }, { "do": "answer", "tex": "\\text{More squares}", "id": "a2", "at": "More" }]
+        },
+        { "speaker": "teacher", "say": "More squares. That means fewer circles.", "pause": 0.7, "do": [{ "do": "highlight", "target": "c", "at": "fewer" }, { "do": "text", "text": "Fewer circles.", "id": "fc", "at": "fewer" }] }
+      ]
+    },
+    {
+      "figure": {
+        "view": [0, 0.5, 11.2, 10.2],
+        "points": {
+          "CT": [0, 10.0], "SQ": [0, 5.4], "NP": [0, 2.2], "K4": [10.3, 8.7], "K5": [10.3, 4.1000000000000005], "N1": { "cell": ["np", 1] },
+          "N2": { "cell": ["np", 2] }, "N3": { "cell": ["np", 3] }, "N4": { "cell": ["np", 4] }, "N5": { "cell": ["np", 5] }
+        },
+        "parts": [
+          { "id": "p1", "seg": ["c1", "q1"], "ink": "muted", "w": 5, "start": true },
+          { "id": "p2", "seg": ["c2", "q2"], "ink": "muted", "w": 5, "start": true },
+          { "id": "p3", "seg": ["c3", "q3"], "ink": "muted", "w": 5, "start": true },
+          { "id": "p4", "seg": ["c4", "q4"], "ink": "muted", "w": 5, "start": true },
+          { "id": "gt", "grid": [5, 1], "at": "CT", "size": [1.8, 2.6] },
+          { "id": "gs", "grid": [5, 1], "at": "SQ", "size": [1.8, 2.6] },
+          { "id": "np", "grid": [5, 1], "at": "NP", "size": [1.8, 1.5], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "c", "counters": "gt", "n": 4, "ink": "accent", "start": true },
+          { "id": "q", "counters": "gs", "n": 5, "shape": "square", "ink": "warm", "start": true },
+          { "id": "n1", "label": "1", "at": "N1", "dir": "c", "size": "l" },
+          { "id": "n2", "label": "2", "at": "N2", "dir": "c", "size": "l" },
+          { "id": "n3", "label": "3", "at": "N3", "dir": "c", "size": "l" },
+          { "id": "n4", "label": "4", "at": "N4", "dir": "c", "size": "l" },
+          { "id": "n5", "label": "5", "at": "N5", "dir": "c", "size": "l" },
+          { "id": "k4", "label": "4", "at": "K4", "dir": "c", "size": "xl", "ink": "accent" },
+          { "id": "k5", "label": "5", "at": "K5", "dir": "c", "size": "xl", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        { "speaker": "teacher", "say": "You can count, too.", "do": [{ "do": "clear" }, { "do": "text", "text": "Or count.", "id": "oc" }] },
+        {
+          "speaker": "learner", "say": "Circles: one, two, three, four.", "pause": 0.2,
+          "do": [
+            { "do": "show", "target": "n1", "at": "one" },
+            { "do": "show", "target": "n2", "at": "two" },
+            { "do": "show", "target": "n3", "at": "three" },
+            { "do": "show", "target": "n4", "at": "four" },
+            { "do": "highlight", "target": "c1", "at": "one" },
+            { "do": "highlight", "target": "c2", "at": "two" },
+            { "do": "highlight", "target": "c3", "at": "three" },
+            { "do": "highlight", "target": "c4", "at": "four" },
+            { "do": "show", "target": "k4", "at": "four" },
+            { "do": "write", "tex": "\\ca{4}\\text{ circles}", "id": "n4", "fresh": true, "at": "four" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "Squares: one, two, three, four, five.", "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "n5", "at": "five" },
+            { "do": "highlight", "target": "q1", "at": "one" },
+            { "do": "highlight", "target": "q2", "at": "two" },
+            { "do": "highlight", "target": "q3", "at": "three" },
+            { "do": "highlight", "target": "q4", "at": "four" },
+            { "do": "highlight", "target": "q5", "at": "five" },
+            { "do": "show", "target": "k5", "at": "five" },
+            { "do": "write", "tex": "\\cw{5}\\text{ squares}", "id": "n5", "fresh": true, "at": "five" }
+          ]
+        },
+        { "speaker": "teacher", "say": "When you count, you say five after four.", "pause": 0.3, "do": [{ "do": "highlight", "target": ["n5", "k5"], "at": "five" }, { "do": "highlight", "target": ["n4", "k4"], "at": "four" }] },
+        { "speaker": "teacher", "say": "Look where five is. It is the square that is left over.", "pause": 0.3, "do": [{ "do": "highlight", "target": ["n5", "q5"], "at": "five" }] },
+        {
+          "speaker": "teacher", "say": "So the number you say later is more.", "pause": 0.7,
+          "do": [
+            { "do": "highlight", "target": ["n5", "k5"], "at": "later" },
+            { "do": "text", "text": "$5$ comes after $4$. $5$ is more.", "id": "lm", "at": "later" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [0, -0.5, 10.5, 11.5],
+        "points": {
+          "NP": [0, 2.1], "G5": [6.0, 2.1], "N1": { "cell": ["np", 1] }, "N2": { "cell": ["np", 2] }, "N3": { "cell": ["np", 3] }, "N4": { "cell": ["np", 4] },
+          "N5": { "cell": ["np", 5] }, "N6": { "cell": ["np", 6] }, "N7": { "cell": ["np", 7] }, "GA": [0.65, 10.2], "LA": [2.6, 10.899999999999999],
+          "MA": [2.6, 10.899999999999999], "GB": [5.95, 10.2], "LB": [7.9, 10.899999999999999], "MB": [7.9, 10.899999999999999], "GC": [0.65, 6.0],
+          "LC": [2.6, 6.7], "MC": [2.6, 6.7], "GD": [5.95, 6.0], "LD": [7.9, 6.7], "MD": [7.9, 6.7], "F1": [0.15, 0.7], "F4": [5.85, 0.7], "R6": [7.65, 0.7],
+          "R7": [10.35, 0.7], "E4": [6.15, 0.7], "E5": [7.35, 0.7]
+        },
+        "parts": [
+          { "id": "np", "grid": [7, 1], "at": "NP", "size": [1.5, 1.3], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "tgt", "grid": [1, 1], "at": "G5", "size": [1.5, 1.3], "fill": "gold-fill", "ink": "gold", "w": 6 },
+          { "id": "n1", "label": "1", "at": "N1", "dir": "c", "size": "m", "start": true },
+          { "id": "n2", "label": "2", "at": "N2", "dir": "c", "size": "m", "start": true },
+          { "id": "n3", "label": "3", "at": "N3", "dir": "c", "size": "m", "start": true },
+          { "id": "n4", "label": "4", "at": "N4", "dir": "c", "size": "m", "start": true },
+          { "id": "n5", "label": "5", "at": "N5", "dir": "c", "size": "m", "start": true },
+          { "id": "n6", "label": "6", "at": "N6", "dir": "c", "size": "m", "start": true },
+          { "id": "n7", "label": "7", "at": "N7", "dir": "c", "size": "m", "start": true },
+          { "id": "ga", "grid": [3, 2], "at": "GA", "size": 1.3 },
+          { "id": "a", "counters": "ga", "n": 4, "ink": "accent", "start": true },
+          { "id": "la", "label": "\\text{A}", "at": "LA", "dir": "c", "size": "l", "ink": "accent", "start": true },
+          { "id": "ma", "label": "\\text{A}", "at": "MA", "dir": "c", "size": "l", "ink": "accent", "flies": true },
+          { "id": "gb", "grid": [3, 2], "at": "GB", "size": 1.3 },
+          { "id": "b", "counters": "gb", "n": 5, "ink": "warm", "start": true },
+          { "id": "lb", "label": "\\text{B}", "at": "LB", "dir": "c", "size": "l", "ink": "warm", "start": true },
+          { "id": "mb", "label": "\\text{B}", "at": "MB", "dir": "c", "size": "l", "ink": "warm", "flies": true },
+          { "id": "gc", "grid": [3, 2], "at": "GC", "size": 1.3 },
+          { "id": "c", "counters": "gc", "n": 6, "ink": "violet", "start": true },
+          { "id": "lc", "label": "\\text{C}", "at": "LC", "dir": "c", "size": "l", "ink": "violet", "start": true },
+          { "id": "mc", "label": "\\text{C}", "at": "MC", "dir": "c", "size": "l", "ink": "violet", "flies": true },
+          { "id": "gd", "grid": [3, 2], "at": "GD", "size": 1.3 },
+          { "id": "d", "counters": "gd", "n": 2, "ink": "blue", "start": true },
+          { "id": "ld", "label": "\\text{D}", "at": "LD", "dir": "c", "size": "l", "ink": "blue", "start": true },
+          { "id": "md", "label": "\\text{D}", "at": "MD", "dir": "c", "size": "l", "ink": "blue", "flies": true },
+          { "id": "few", "dim": ["F1", "F4"], "side": "s", "tex": "\\text{fewer}", "ink": "muted" },
+          { "id": "mor", "dim": ["R6", "R7"], "side": "s", "tex": "\\text{more}", "ink": "muted" },
+          { "id": "sam", "dim": ["E4", "E5"], "side": "s", "tex": "\\text{same}", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "Now dots and a number. Which group has more dots than five?", "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which group has more dots than $5$?", "choices": ["A", "B", "C", "D"], "id": "q3" },
+            { "do": "show", "target": "tgt", "at": "five" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "I count each group. A: one, two, three, four.", "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": "a1", "at": "one" },
+            { "do": "highlight", "target": "a2", "at": "two" },
+            { "do": "highlight", "target": "a3", "at": "three" },
+            { "do": "highlight", "target": "a4", "at": "four" },
+            { "do": "show", "target": "ma", "at": "four" },
+            { "do": "move", "points": { "MA": [5.25, 2.75] }, "at": "four" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "B has five.", "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "b", "at": "B" },
+            { "do": "show", "target": "mb", "at": "five" },
+            { "do": "move", "points": { "MB": [6.75, 2.75] }, "at": "five" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "C has six.", "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "c", "at": "C" },
+            { "do": "show", "target": "mc", "at": "six" },
+            { "do": "move", "points": { "MC": [8.25, 2.75] }, "at": "six" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "D has two.", "pause": 0.6,
+          "do": [
+            { "do": "highlight", "target": "d", "at": "D" },
+            { "do": "show", "target": "md", "at": "two" },
+            { "do": "move", "points": { "MD": [2.25, 2.75] }, "at": "two" }
+          ]
+        },
+        {
+          "speaker": "learner", "say": "More than five comes after five. Six! Group C.", "pause": 0.5,
+          "do": [
+            { "do": "show", "target": "mor", "at": "after" },
+            { "do": "highlight", "target": ["n6", "mc"], "at": "Six" },
+            { "do": "highlight", "target": ["c", "lc"], "at": "C" },
+            { "do": "answer", "tex": "\\text{C}", "id": "a3", "at": "C" }
+          ]
+        },
+        {
+          "speaker": "teacher", "say": "Before five is fewer. And B has five: the same as five, not more.", "pause": 0.7,
+          "do": [
+            { "do": "show", "target": "few", "at": "Before" },
+            { "do": "highlight", "target": ["ma", "md"], "at": "fewer" },
+            { "do": "show", "target": "sam", "at": "same" },
+            { "do": "highlight", "target": ["mb", "n5"], "at": "B" },
+            { "do": "text", "text": "$5$ is the same as $5$, not more.", "id": "sm", "at": "same" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [0, 0, 13.4, 12.2],
+        "points": { "C1": [0, 12.0], "S1": [0, 10.1], "W1": [6.9, 10.2], "C2": [0, 7.8], "S2": [0, 5.9], "W2": [6.9, 6.0], "C3": [0, 3.6], "S3": [0, 1.7], "W3": [6.9, 1.8] },
+        "parts": [
+          { "id": "p11", "seg": ["c1x1", "s1x1"], "ink": "muted", "w": 5, "group": "r1" },
+          { "id": "p12", "seg": ["c1x2", "s1x2"], "ink": "muted", "w": 5, "group": "r1" },
+          { "id": "p13", "seg": ["c1x3", "s1x3"], "ink": "muted", "w": 5, "group": "r1" },
+          { "id": "p21", "seg": ["c2x1", "s2x1"], "ink": "muted", "w": 5, "group": "r2" },
+          { "id": "p22", "seg": ["c2x2", "s2x2"], "ink": "muted", "w": 5, "group": "r2" },
+          { "id": "p23", "seg": ["c2x3", "s2x3"], "ink": "muted", "w": 5, "group": "r2" },
+          { "id": "p31", "seg": ["c3x1", "s3x1"], "ink": "muted", "w": 5, "group": "r3" },
+          { "id": "p32", "seg": ["c3x2", "s3x2"], "ink": "muted", "w": 5, "group": "r3" },
+          { "id": "p33", "seg": ["c3x3", "s3x3"], "ink": "muted", "w": 5, "group": "r3" },
+          { "id": "gc1", "grid": [4, 1], "at": "C1", "size": [1.7, 1.7] },
+          { "id": "gs1", "grid": [4, 1], "at": "S1", "size": [1.7, 1.7] },
+          { "id": "c1x", "counters": "gc1", "n": 4, "ink": "accent", "start": true },
+          { "id": "s1x", "counters": "gs1", "n": 3, "shape": "square", "ink": "warm", "start": true },
+          { "id": "w1", "label": "\\text{more circles}", "at": "W1", "dir": "e", "size": "l" },
+          { "id": "gc2", "grid": [4, 1], "at": "C2", "size": [1.7, 1.7] },
+          { "id": "gs2", "grid": [4, 1], "at": "S2", "size": [1.7, 1.7] },
+          { "id": "c2x", "counters": "gc2", "n": 3, "ink": "accent", "start": true },
+          { "id": "s2x", "counters": "gs2", "n": 3, "shape": "square", "ink": "warm", "start": true },
+          { "id": "w2", "label": "\\text{the same number}", "at": "W2", "dir": "e", "size": "l" },
+          { "id": "gc3", "grid": [4, 1], "at": "C3", "size": [1.7, 1.7] },
+          { "id": "gs3", "grid": [4, 1], "at": "S3", "size": [1.7, 1.7] },
+          { "id": "c3x", "counters": "gc3", "n": 3, "ink": "accent", "start": true },
+          { "id": "s3x", "counters": "gs3", "n": 4, "shape": "square", "ink": "warm", "start": true },
+          { "id": "w3", "label": "\\text{fewer circles}", "at": "W3", "dir": "e", "size": "l" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher", "say": "To compare two groups, make pairs. Left over means more.", "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "text", "text": "Make pairs.", "id": "r1" },
+            { "do": "draw", "target": ["r1", "r2", "r3"], "at": "pairs" },
+            { "do": "text", "text": "Left over means more.", "id": "r2", "at": "Left" },
+            { "do": "highlight", "target": ["c1x4", "s3x4"], "at": "Left" }
+          ]
+        },
+        { "speaker": "learner", "say": "A circle left over: more circles.", "pause": 0.3, "do": [{ "do": "highlight", "target": "c1x4", "at": "left" }, { "do": "show", "target": "w1", "at": "more" }] },
+        { "speaker": "learner", "say": "Nothing left over: the same number.", "pause": 0.3, "do": [{ "do": "highlight", "target": ["c2x", "s2x"], "at": "Nothing" }, { "do": "show", "target": "w2", "at": "same" }] },
+        { "speaker": "learner", "say": "A square left over: more squares, so fewer circles.", "pause": 0.3, "do": [{ "do": "highlight", "target": "s3x4", "at": "square" }, { "do": "show", "target": "w3", "at": "fewer" }] },
+        { "speaker": "teacher", "say": "Or count. The number you say later is more.", "pause": 0.9, "do": [{ "do": "text", "text": "Or count. Later is more.", "id": "r3", "at": "count" }] }
+      ]
+    }
+  ]
+}

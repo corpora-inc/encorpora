@@ -11,6 +11,7 @@ import { placeNames, planStack, type StackPlan } from "./stack";
 import { BlocksModel, chartView, subBox, zoomView, type Box, type Dir, type Place } from "./blocks";
 import { axisSpan, glided, onCircle, sectorAngles, sweepLabelAngle, traceRange } from "./wave";
 import { planVector, vectorPath } from "./vector";
+import { fillLine, readLine, readsLine } from "./line";
 import { resolveCast } from "./cast";
 import type { VoiceSpec } from "./voices";
 import { amountAt, barAnchor, barCells, checkBar, planBar, shareBox, shadedAt, spreadBarLabels, type BarCut, type BarShade, type BarSpec } from "./bar";
@@ -31,8 +32,12 @@ const ease = (u: number) => {
   return u * u * u * (u * (u * 6 - 15) + 10);
 };
 /**
- * A highlight grows about its own centre and takes no layout space.
- * A ten-frame is the exception: its cells, counters and labels grow with it
+ * A highlight grows about its own centre and takes no layout space. It stops
+ * at the card's inner margin and at a label, and a part with no room still
+ * boldens. The shot's view is a tight drawing area, so a light on its edge
+ * would be clipped there: the picture's clip opens around the lit part, stroke
+ * included, and the card is what keeps it on screen. A ten-frame is the
+ * exception to growing alone: its cells, counters and labels grow with it
  * about one centre, so a counter stays in the middle of its cell. Two frames
  * that would otherwise swell into each other grow as one piece. The in and
  * out are a short smooth ease, with no bounce.
@@ -40,6 +45,16 @@ const ease = (u: number) => {
 const EMPH_GROW = 0.15;
 const EMPH_IN = 0.2;
 const EMPH_OUT = 0.22;
+/** Air a grown highlight keeps between itself and a label it did not already cover. */
+const LABEL_AIR = 8;
+/**
+ * The moment a highlight is fully held: the ease-in has finished, and the
+ * ease-out (which starts just after the beat) has not. A light that is still
+ * rising at the end of the beat is sampled at its fullest, just before it fades.
+ */
+export function highlightHeld(t0: number, beatEnd: number): number {
+  return Math.min(t0 + EMPH_IN + 0.02, beatEnd + 0.04);
+}
 const svgNS = "http://www.w3.org/2000/svg";
 const svg = (tag: string, cls?: string) => {
   const e = document.createElementNS(svgNS, tag);
@@ -178,6 +193,35 @@ function entries(shot: Shot, times: BeatTime[]) {
     }
   });
   return out.sort((x, y) => x.t0 - y.t0);
+}
+/** One held moment per highlight in the film. Highlights that peak together share a moment. */
+export type HeldHighlight = { beat: number; t: number; word: string };
+export function heldHighlights(script: Script, timing: Timing): HeldHighlight[] {
+  const out: HeldHighlight[] = [];
+  let beat = 0;
+  script.shots.forEach((shot, si) => {
+    const times = timing.shots[si] ?? [];
+    shot.beats.forEach((b, bi) => {
+      const span = times[bi];
+      const index = beat++;
+      if (!span) return;
+      let stagger = 0;
+      const groups = new Map<number, string[]>();
+      for (const a of b.do ?? []) {
+        if (a.do === "count") continue;
+        const t0 = a.at ? wordTime(span, a.at, a.nth ?? 1) : span.start + stagger;
+        if (!a.at) stagger += 0.1;
+        if (a.do !== "highlight") continue;
+        const t = Math.round(highlightHeld(t0, span.end) * 100) / 100;
+        const word = (a.at ?? "").trim();
+        const list = groups.get(t) ?? [];
+        if (word && !list.includes(word)) list.push(word);
+        groups.set(t, list);
+      }
+      for (const [t, words] of [...groups.entries()].sort((a, b) => a[0] - b[0])) out.push({ beat: index, t, word: words.join("-") || "highlight" });
+    });
+  });
+  return out;
 }
 
 // ------------------------------------------------------------------ figure
@@ -353,9 +397,13 @@ function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
 /**
  * Labels that land on each other are pushed apart. The shot stores the nudge
  * and replays it, so a label that appears later does not shove one already there.
+ * A label that `flies`, while in flight (its point is moving, or the thing it
+ * rides is travelling), takes no part: it passes over the others, and what it
+ * rests on is settled where it lands.
  */
 function separateLabels(root: HTMLElement) {
   const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
+    if (el.dataset.flying === "1") return false;
     const cs = getComputedStyle(el);
     if (cs.display === "none" || cs.visibility === "hidden" || (Number.parseFloat(cs.opacity) || 0) < 0.85) return false;
     const r = el.getBoundingClientRect();
@@ -386,8 +434,10 @@ const boxesMeet = (a: Box4, b: Box4, gap: number) =>
   Math.min(a.r, b.r) - Math.max(a.l, b.l) > gap && Math.min(a.b, b.b) - Math.max(a.t, b.t) > gap;
 /**
  * A highlight may grow only until it would touch a neighbour it did not already
- * cover. One frame and everything in its cells share a scale, so a counter is
- * never left behind. The scale is a transform: the neighbour's layout does not move.
+ * cover, meet a label, or cross the card's inner margin. One frame and
+ * everything in its cells share a scale, so a counter is never left behind.
+ * The scale is a transform: the neighbour's layout does not move. A part with
+ * no room to grow still boldens.
  */
 let growN = 0;
 const resetGrowIds = () => { growN = 0; };
@@ -400,11 +450,11 @@ function localBoxToViewport(fit: HTMLElement, l: number, t: number, r: number, b
   const p = localToViewport(fit, l, t), q = localToViewport(fit, r, b);
   return { l: Math.min(p.x, q.x), t: Math.min(p.y, q.y), r: Math.max(p.x, q.x), b: Math.max(p.y, q.y) };
 }
-/** Draw this element at `factor` of its authored grow. A frame's riders use the same factor, so they stay centred in its cells. */
+/** Draw this element at `factor` of its authored grow. The ink stays bold even when the scale cannot grow. A frame's riders use the same factor, so they stay centred in its cells. */
 function setFactor(el: SVGElement | HTMLElement, factor: number) {
   const em0 = Number(el.dataset.em0 || 0);
-  const em = em0 * factor;
-  const k = 1 + EMPH_GROW * em;
+  const grow = em0 * factor;
+  const k = 1 + EMPH_GROW * grow;
   if (el instanceof HTMLElement && el.dataset.ox) {
     const ox = parseFloat(el.dataset.ox), oy = parseFloat(el.dataset.oy ?? "0");
     const cx = parseFloat(el.dataset.cx ?? "0"), cy = parseFloat(el.dataset.cy ?? "0");
@@ -419,16 +469,120 @@ function setFactor(el: SVGElement | HTMLElement, factor: number) {
       else el.style.transform = next;
     }
   }
-  el.dataset.sem = em.toFixed(3);
+  el.dataset.sem = grow.toFixed(3);
   el.dataset.factor = String(factor);
+  // dataset.em is the scale that was applied. The stroke stays at the full light, even when there is no room to grow.
   if (el.dataset.hot === "1") {
-    if (em > 0.02) el.dataset.em = em.toFixed(3);
+    if (grow > 0.02) el.dataset.em = grow.toFixed(3);
     else delete el.dataset.em;
   }
-  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em));
+  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em0));
 }
-/** True when the grown group meets a neighbour it did not already cover. */
-function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
+/** The card's padding box, inset by the same margin the figure fit keeps. */
+function cardLimit(fit: HTMLElement): Box4 | null {
+  const card = fit.parentElement;
+  if (!card) return null;
+  const area = card.getBoundingClientRect();
+  if (area.width < 32 || area.height < 32) return null;
+  const cs = getComputedStyle(card);
+  const l = area.left + (parseFloat(cs.borderLeftWidth) || 0);
+  const t = area.top + (parseFloat(cs.borderTopWidth) || 0);
+  const r = area.right - (parseFloat(cs.borderRightWidth) || 0);
+  const b = area.bottom - (parseFloat(cs.borderBottomWidth) || 0);
+  const margin = Math.max(Math.min(r - l, b - t) * 0.06, 16) + 0.75;
+  if (r - l < margin * 2 + 8 || b - t < margin * 2 + 8) return null;
+  return { l: l + margin, t: t + margin, r: r - margin, b: b - margin };
+}
+const pastCard = (box: Box4, limit: Box4) => box.l < limit.l - 1 || box.t < limit.t - 1 || box.r > limit.r + 1 || box.b > limit.b + 1;
+const pastBox = (a: Box4, b: Box4) => a.l < b.l - 1 || a.t < b.t - 1 || a.r > b.r + 1 || a.b > b.b + 1;
+/**
+ * The lit part's own box after its highlight transform, including the thickened
+ * stroke, in viewport pixels. `getBoundingClientRect` is the geometry only:
+ * the stroke is not in it, and a clip must not be what decides the box.
+ */
+function fullLitBox(el: Element): Box4 | null {
+  if (!(el instanceof SVGGraphicsElement || el instanceof HTMLElement)) return null;
+  const b = el.getBoundingClientRect();
+  if (b.width < 0.2 && b.height < 0.2) return null;
+  let px = 0, py = 0;
+  if (el instanceof SVGGraphicsElement) {
+    const sw = parseFloat(el.style.strokeWidth || "") || parseFloat(el.getAttribute("stroke-width") || "") || 0;
+    const ctm = sw > 0 && typeof el.getScreenCTM === "function" ? el.getScreenCTM() : null;
+    if (sw > 0 && ctm) {
+      px = Math.hypot(ctm.a, ctm.b) * sw / 2;
+      py = Math.hypot(ctm.c, ctm.d) * sw / 2;
+    } else if (sw > 0) px = py = sw / 2;
+  }
+  return { l: b.left - px, t: b.top - py, r: b.right + px, b: b.bottom + py };
+}
+/** Where an ancestor actually clips painting: overflow, and an SVG clip rect. */
+function clipBounds(el: Element): Box4 {
+  const b = el.getBoundingClientRect();
+  if (!(el instanceof HTMLElement)) return { l: b.left, t: b.top, r: b.right, b: b.bottom };
+  const cs = getComputedStyle(el);
+  return {
+    l: b.left + (parseFloat(cs.borderLeftWidth) || 0),
+    t: b.top + (parseFloat(cs.borderTopWidth) || 0),
+    r: b.right - (parseFloat(cs.borderRightWidth) || 0),
+    b: b.bottom - (parseFloat(cs.borderBottomWidth) || 0),
+  };
+}
+function clipRectBox(node: Element): Box4 | null {
+  if (!(node instanceof SVGGraphicsElement)) return null;
+  const ref = node.getAttribute("clip-path") ?? "";
+  const id = ref.match(/#([^)]+)\)/)?.[1];
+  const rect = id ? document.getElementById(id)?.querySelector("rect") : null;
+  const svg = node.ownerSVGElement;
+  if (!rect || !svg) return null;
+  // The svg's border box, not getScreenCTM: a film measured off to the side
+  // (the other layout) has a CTM that drops that offset, and every light looks cut off.
+  const svgBox = svg.getBoundingClientRect();
+  const vb = svg.viewBox.baseVal;
+  const sx = vb.width ? svgBox.width / vb.width : 1;
+  const sy = vb.height ? svgBox.height / vb.height : 1;
+  const x = parseFloat(rect.getAttribute("x") || "0"), y = parseFloat(rect.getAttribute("y") || "0");
+  const w = parseFloat(rect.getAttribute("width") || "0"), h = parseFloat(rect.getAttribute("height") || "0");
+  return {
+    l: svgBox.left + (x - vb.x) * sx, t: svgBox.top + (y - vb.y) * sy,
+    r: svgBox.left + (x + w - vb.x) * sx, b: svgBox.top + (y + h - vb.y) * sy,
+  };
+}
+/** The region of `el` that can actually be seen: every clipping ancestor, and a clip rect. */
+function visibleRegion(el: Element): Box4 | null {
+  let region: Box4 | null = null;
+  const meet = (box: Box4) => {
+    region = region ? { l: Math.max(region.l, box.l), t: Math.max(region.t, box.t), r: Math.min(region.r, box.r), b: Math.min(region.b, box.b) } : box;
+  };
+  for (let n: Element | null = el.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.overflowX !== "visible" || cs.overflowY !== "visible") meet(clipBounds(n));
+    const clip = clipRectBox(n);
+    if (clip) meet(clip);
+    // The film frame is the screen. The page around an off-screen second layout is not.
+    if (n instanceof HTMLElement && n.dataset.layout) break;
+  }
+  return region;
+}
+/** A held light whose unclipped stroke leaves the region that is actually painted. */
+function litCutOff(fit: HTMLElement): boolean {
+  const hot = [...fit.querySelectorAll<HTMLElement | SVGElement>("[data-hot='1']")].filter((el) => !el.classList.contains("film-em") && Number(el.dataset.em0 || 0) > 0.35);
+  const leaves = (el: Element) => {
+    const box = fullLitBox(el);
+    const region = box && visibleRegion(el);
+    return !!box && !!region && pastBox(box, region);
+  };
+  for (const el of hot) {
+    if (leaves(el)) return true;
+    for (const c of el.querySelectorAll<Element>("*")) if (!c.classList.contains("film-em") && leaves(c)) return true;
+  }
+  return false;
+}
+type GrowFault = "card" | "label" | "neighbour";
+/**
+ * Why this grown group must shrink. `labelGap` is the overlap a label is
+ * allowed: negative keeps air, positive allows a hair of overlap.
+ */
+function growFault(members: (SVGElement | HTMLElement)[], fit: HTMLElement, labelGap: number): GrowFault | null {
   const mine = new Set<Element>(members);
   const grown: Box4[] = [];
   let rest: Box4 | null = null;
@@ -444,7 +598,9 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
     grown.push(box);
     if (el.dataset.rl) addRest(localBoxToViewport(fit, parseFloat(el.dataset.rl), parseFloat(el.dataset.rt ?? "0"), parseFloat(el.dataset.rr ?? "0"), parseFloat(el.dataset.rb ?? "0")));
   }
-  if (!shown.length) return false;
+  if (!shown.length) return null;
+  const limit = cardLimit(fit);
+  if (limit && grown.some((g) => pastCard(g, limit))) return "card";
   if (!rest) {
     for (const { el, box } of shown) {
       const k = 1 + EMPH_GROW * Number(el.dataset.em0 || 0) * Math.max(Number(el.dataset.factor || 1), 0.001);
@@ -452,10 +608,11 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
       addRest({ l: cx - (box.r - box.l) / k / 2, t: cy - (box.b - box.t) / k / 2, r: cx + (box.r - box.l) / k / 2, b: cy + (box.b - box.t) / k / 2 });
     }
   }
-  if (!rest) return false;
+  if (!rest) return null;
   const home: Box4 = rest;
   const sx = fit.getBoundingClientRect().width / (fit.offsetWidth || 1);
   const slop = Math.max(0.4, 0.6 * sx);
+  let fault: GrowFault | null = null;
   const see = (node: Element, opac: number): boolean => {
     if (mine.has(node) || node.classList.contains("film-em") || node.classList.contains("film-things-extent")) return false;
     const cs = getComputedStyle(node);
@@ -466,16 +623,20 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
       const box = node.getBoundingClientRect();
       const ocx = (box.left + box.right) / 2, ocy = (box.top + box.bottom) / 2;
       const outside = !(ocx > home.l && ocx < home.r && ocy > home.t && ocy < home.b);
-      if (outside && box.width >= 0.5 && grown.some((g) => boxesMeet(g, { l: box.left, t: box.top, r: box.right, b: box.bottom }, slop))) return true;
+      const label = node instanceof HTMLElement && node.classList.contains("film-label");
+      if (outside && box.width >= 0.5 && grown.some((g) => boxesMeet(g, { l: box.left, t: box.top, r: box.right, b: box.bottom }, label ? labelGap : slop))) {
+        fault = label ? "label" : "neighbour";
+        return true;
+      }
     }
     if (node instanceof HTMLElement && node.classList.contains("film-label")) return false;
     for (const c of node.children) if (see(c, o)) return true;
     return false;
   };
-  for (const c of fit.children) if (see(c, 1)) return true;
-  return false;
+  for (const c of fit.children) if (see(c, 1)) return fault;
+  return null;
 }
-function limitGrow(root: HTMLElement) {
+function growGroups(root: HTMLElement) {
   const nodes = [...root.querySelectorAll<SVGElement | HTMLElement>("[data-grow]")].filter((el) => !el.classList.contains("film-em"));
   const groups = new Map<string, (SVGElement | HTMLElement)[]>();
   for (const el of nodes) {
@@ -484,24 +645,42 @@ function limitGrow(root: HTMLElement) {
     if (list) list.push(el);
     else groups.set(id, [el]);
   }
-  for (const members of groups.values()) {
-    if (!groupCovers(members, root)) continue;
+  return groups;
+}
+/** Faults still showing after the grow has been limited: a light that leaves the card, covers a neighbour, or touches a label. */
+function litFaults(fit: HTMLElement): GrowFault[] {
+  const found = new Set<GrowFault>();
+  for (const members of growGroups(fit).values()) {
+    if (!members.some((el) => el.dataset.hot === "1" && Number(el.dataset.em0 || 0) > 0.35)) continue;
+    const fault = growFault(members, fit, 0.5);
+    if (fault) found.add(fault);
+  }
+  return [...found];
+}
+function limitGrow(root: HTMLElement) {
+  for (const members of growGroups(root).values()) {
+    if (!growFault(members, root, -LABEL_AIR)) continue;
     let lo = 0, hi = 1;
-    for (let n = 0; n < 8; n++) {
+    for (let n = 0; n < 12; n++) {
       const mid = (lo + hi) / 2;
       for (const el of members) setFactor(el, mid);
-      if (groupCovers(members, root)) hi = mid;
+      if (growFault(members, root, -LABEL_AIR)) hi = mid;
       else lo = mid;
     }
     for (const el of members) setFactor(el, lo);
+    if (growFault(members, root, -LABEL_AIR)) for (const el of members) setFactor(el, 0);
   }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
   r = Math.min(r, w / 2, h / 2);
   return `M${(x + r).toFixed(2)} ${y.toFixed(2)}H${(x + w - r).toFixed(2)}Q${(x + w).toFixed(2)} ${y.toFixed(2)} ${(x + w).toFixed(2)} ${(y + r).toFixed(2)}V${(y + h - r).toFixed(2)}Q${(x + w).toFixed(2)} ${(y + h).toFixed(2)} ${(x + w - r).toFixed(2)} ${(y + h).toFixed(2)}H${(x + r).toFixed(2)}Q${x.toFixed(2)} ${(y + h).toFixed(2)} ${x.toFixed(2)} ${(y + h - r).toFixed(2)}V${(y + r).toFixed(2)}Q${x.toFixed(2)} ${y.toFixed(2)} ${(x + r).toFixed(2)} ${y.toFixed(2)}Z`;
 };
+let clipSeq = 0;
 class GeoStage {
   svg: SVGSVGElement;
+  /** Ink lives here, clipped to the view, and the clip opens around a light. */
+  layer: SVGGElement;
+  viewRect: SVGElement;
   labels: HTMLElement;
   parts: { p: Part; el: SVGElement; shadow?: SVGElement; side?: SVGElement; html?: HTMLElement; extra?: SVGElement[]; extraHtml?: HTMLElement[]; blocks?: BlocksView; table?: TableView; mosaic?: MosaicView; bar?: BarView; a0: number }[] = [];
   barCuts = new Map<string, BarCut[]>();
@@ -549,6 +728,21 @@ class GeoStage {
     this.svg.setAttribute("height", String(box.h));
     this.svg.setAttribute("viewBox", `0 0 ${box.w} ${box.h}`);
     host.appendChild(this.svg);
+    const clipId = `film-clip-${++clipSeq}`;
+    const clip = svg("clipPath");
+    clip.id = clipId;
+    clip.setAttribute("clipPathUnits", "userSpaceOnUse");
+    this.viewRect = svg("rect", "film-em");
+    this.viewRect.setAttribute("x", "0");
+    this.viewRect.setAttribute("y", "0");
+    this.viewRect.setAttribute("width", String(box.w));
+    this.viewRect.setAttribute("height", String(box.h));
+    clip.appendChild(this.viewRect);
+    this.svg.appendChild(clip);
+    this.layer = svg("g", "film-geo-ink") as SVGGElement;
+    // An absolute url(): a bare url(#id) is resolved against the page, and the clip silently does nothing.
+    this.layer.setAttribute("clip-path", `url(${new URL("#" + clipId, document.baseURI).href})`);
+    this.svg.appendChild(this.layer);
     this.labels = div("film-labels", host);
     for (const p of geo.parts) if ("plot" in p) this.fns.set(p.id, compile(p.plot));
     // a point on a graph may ride off the view; a point on a circle never leaves it
@@ -619,7 +813,7 @@ class GeoStage {
     }
     for (const p of geo.parts) this.build(p);
     // things paint above every other part: a frame, a plate or a line never covers one
-    if (this.thingLayer) this.svg.appendChild(this.thingLayer);
+    if (this.thingLayer) this.layer.appendChild(this.thingLayer);
     this.size = (Math.abs(this.view0[2]! - this.view0[0]!)) / box.w;
   }
   fit() {
@@ -712,6 +906,11 @@ class GeoStage {
       v = [from[0] + (to[0] - from[0]) * u, from[1] + (to[1] - from[1]) * u];
     }
     return v;
+  }
+  /** True while a point is part-way through a `move`, or the thing of that name is travelling between two places. */
+  inFlight(name: string, t: number) {
+    if (!this.geo.points[name] && this.thingsModel?.isThing(name)) return this.thingsModel.stateAt(name, t).flying;
+    return this.moves.some((m) => m.name === name && t > m.t0 + 1e-6 && t < m.t0 + m.dur - 1e-6);
   }
   target(to: Target, t: number): P {
     if (Array.isArray(to)) return to;
@@ -1018,7 +1217,7 @@ class GeoStage {
   build(p: Part) {
     const entry: GeoStage["parts"][number] = { p, el: svg("g"), a0: 0 };
     if ("things" in p) {
-      const g = svg("g", "film-things"); this.svg.appendChild(g); entry.el = g;
+      const g = svg("g", "film-things"); this.layer.appendChild(g); entry.el = g;
       const group = this.thingGroups.get(p.id)!;
       // the group's whole footprint, including a thing that has not arrived yet, is ink from the first frame
       group.extent = svg("rect", "film-things-extent"); g.appendChild(group.extent);
@@ -1054,7 +1253,7 @@ class GeoStage {
       this.parts.push(entry); return;
     }
     if ("bar" in p) {
-      const g = svg("g", "film-bar"); this.svg.appendChild(g); entry.el = g;
+      const g = svg("g", "film-bar"); this.layer.appendChild(g); entry.el = g;
       const path = (cls: string) => { const el = svg("path", cls); g.appendChild(el); return el; };
       const label = (cls: string, content: string) => { const el = div(`film-label ${cls}`, this.labels); el.innerHTML = tex(content); return el; };
       const base = path("film-bar-base"), part = path("film-bar-part"), cuts = path("film-bar-cuts"), major = path("film-bar-major"), unit = path("film-bar-unit"), ring = path("film-bar-ring film-em"), bracket = path("film-bar-bracket");
@@ -1075,7 +1274,7 @@ class GeoStage {
     if ("blocks" in p) {
       const model = this.blocks.get(p.id)!;
       const g = svg("g", "film-blocks");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       const pointLine = svg("path", "film-block-pointline"), point = svg("circle");
       g.appendChild(pointLine); g.appendChild(point);
@@ -1122,7 +1321,7 @@ class GeoStage {
     }
     if ("table" in p) {
       const g = svg("g", "film-table");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       // bands beneath, then cell backgrounds, then the lines
       const bands = new Map<string, SVGElement>();
@@ -1152,7 +1351,7 @@ class GeoStage {
     }
     if ("mosaic" in p) {
       const g = svg("g", "film-mosaic");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       const slabs: MosaicView["slabs"] = [];
       const html: HTMLElement[] = [];
@@ -1186,37 +1385,37 @@ class GeoStage {
     }
     if ("poly" in p) {
       if (p.solid) {
-        entry.shadow = svg("path", "film-shadow"); this.svg.appendChild(entry.shadow);
-        entry.side = svg("path", "film-side"); this.svg.appendChild(entry.side);
+        entry.shadow = svg("path", "film-shadow"); this.layer.appendChild(entry.shadow);
+        entry.side = svg("path", "film-side"); this.layer.appendChild(entry.side);
       }
       entry.el = svg("path");
       entry.el.setAttribute("stroke-linejoin", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("seg" in p || "curve" in p || "vector" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       if ("seg" in p && (p.arrows || p.ticks)) {
         entry.extra = [svg("path")];
         entry.extra[0]!.setAttribute("fill", "none");
         entry.extra[0]!.setAttribute("stroke-linecap", "round");
         entry.extra[0]!.setAttribute("stroke-linejoin", "round");
-        this.svg.appendChild(entry.extra[0]!);
+        this.layer.appendChild(entry.extra[0]!);
       }
     } else if ("dot" in p) {
       entry.el = svg((p as Counter).counter ? "path" : "circle");
       if ((p as Counter).counter) entry.el.dataset.kind = "counter";
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("circle" in p) {
       entry.el = svg("path");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("sweep" in p) {
-      entry.el = svg("path"); this.svg.appendChild(entry.el);
+      entry.el = svg("path"); this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
       entry.extra[0]!.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
       if (p.tex) {
         entry.html = div(`film-label size-${p.size ?? "m"} halo`, this.labels);
         entry.html.innerHTML = tex(p.tex);
@@ -1228,19 +1427,24 @@ class GeoStage {
       entry.el.dataset.cols = String(p.grid[0]);
       entry.el.dataset.rows = String(p.grid[1]);
       entry.el.setAttribute("stroke-linejoin", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
     } else if ("angle" in p) {
-      entry.el = svg("path"); this.svg.appendChild(entry.el);
+      entry.el = svg("path"); this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
     } else if ("label" in p) {
       // on a graph, every label is haloed so grid lines and curves never cut through it
       const halo = p.halo || this.geo.parts.some((q) => "axes" in q);
       entry.html = div(`film-label size-${p.size ?? "m"}${halo ? " halo" : ""}`, this.labels);
+      // a line's slope and intercept are read from a seg: a typo would otherwise read "undefined" for the whole shot
+      if (readsLine(p.label)) {
+        const of = this.geo.parts.find((q) => q.id === p.of);
+        if (!of || !("seg" in of)) throw new Error(`Label ${p.id}: @m and @b read a line. Give "of" the id of a seg${p.of ? `; ${p.of} is not one` : ""}.`);
+      }
       if (p.label.includes("@")) this.readouts.set(entry.html, "");
       // a fraction on a figure is read at a glance: full size, not squeezed into a line
       else entry.html.innerHTML = tex(p.label.replace(/\\frac/g, "\\dfrac"));
@@ -1251,18 +1455,18 @@ class GeoStage {
       entry.el.setAttribute("stroke-linecap", "round");
       entry.el.setAttribute("stroke-linejoin", "round");
       entry.el.setAttribute("pathLength", "1");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("axes" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.extra = [];
     } else if ("dim" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.html = div("film-label size-m", this.labels);
       entry.html.innerHTML = tex(p.tex);
       entry.html.style.color = INK[p.ink ?? "ink"]!;
@@ -1411,6 +1615,37 @@ class GeoStage {
       v.g.dataset.ax = m.cx.toFixed(2); v.g.dataset.ay = m.cy.toFixed(2);
       this.emphList = this.emphList.filter((x) => x.el !== v.art);
     }
+  }
+  /**
+   * The view clips the picture. A light is allowed past that edge, out to its
+   * own thickened stroke, so the card margin — not the view — is what limits it.
+   * The rect starts as the view and opens only around what is lit right now.
+   */
+  revealLit() {
+    let l = 0, t = 0, r = this.box.w, b = this.box.h;
+    const add = (el: SVGGraphicsElement) => {
+      if (el.classList.contains("film-em") || el instanceof SVGGElement || el instanceof SVGSVGElement) return;
+      if (typeof el.getBBox !== "function" || typeof el.getCTM !== "function") return;
+      let bb: DOMRect;
+      try { bb = el.getBBox(); } catch { return; }
+      if (bb.width < 0.05 && bb.height < 0.05) return;
+      const sw = parseFloat(el.style.strokeWidth || "") || 0;
+      const pad = sw / 2 + 3;
+      const ctm = el.getCTM();
+      if (!ctm) return;
+      for (const [x, y] of [[bb.x - pad, bb.y - pad], [bb.x + bb.width + pad, bb.y - pad], [bb.x - pad, bb.y + bb.height + pad], [bb.x + bb.width + pad, bb.y + bb.height + pad]] as [number, number][]) {
+        const p = new DOMPoint(x, y).matrixTransform(ctm);
+        l = Math.min(l, p.x); t = Math.min(t, p.y); r = Math.max(r, p.x); b = Math.max(b, p.y);
+      }
+    };
+    for (const el of this.layer.querySelectorAll<SVGGraphicsElement>("[data-hot='1']")) {
+      if (el instanceof SVGGElement) for (const c of el.querySelectorAll<SVGGraphicsElement>("*")) add(c);
+      else add(el);
+    }
+    this.viewRect.setAttribute("x", l.toFixed(2));
+    this.viewRect.setAttribute("y", t.toFixed(2));
+    this.viewRect.setAttribute("width", Math.max(0, r - l).toFixed(2));
+    this.viewRect.setAttribute("height", Math.max(0, b - t).toFixed(2));
   }
   /** Grow highlighted shapes. A frame's riders use the frame's centre. A lift stays outside the scale. */
   finishEmphasis() {
@@ -1605,7 +1840,7 @@ class GeoStage {
         e.el.style.fill = emphInk(INK[p.ink ?? "accent"]!, em);
         e.el.style.opacity = String(o);
         // a counter in flight passes over the others
-        if (this.moves.some((m) => m.name === p.dot && t >= m.t0 && t <= m.t0 + m.dur) && this.svg.lastChild !== e.el) this.svg.appendChild(e.el);
+        if (this.moves.some((m) => m.name === p.dot && t >= m.t0 && t <= m.t0 + m.dur) && this.layer.lastChild !== e.el) this.layer.appendChild(e.el);
       } else if ("circle" in p) {
         // traced as points so a stretched view and every transform apply
         const c = T(this.at(p.circle, t)), n = 96;
@@ -1804,6 +2039,11 @@ class GeoStage {
             const digits = Math.max(3, ...this.glides.filter((g) => g.name === who).map((g) => dec(g.to)));
             text = text.replace(/@x/g, fmtNum(q[0], digits)).replace(/@y/g, fmtNum(q[1]));
           }
+          if (readsLine(text)) {
+            // the seg's own points, wherever `move` has taken them: the numbers count as the line slides or tilts
+            const [a, b] = this.segLine(p.of!, t)!;
+            text = fillLine(text, readLine(a, b), (v) => fmtNum(v, 2));
+          }
           if (this.readouts.get(e.html!) !== text) { this.readouts.set(e.html!, text); e.html!.innerHTML = tex(text.replace(/\\frac/g, "\\dfrac")); }
         }
         const line = this.segLine(p.at, t);
@@ -1811,6 +2051,11 @@ class GeoStage {
         const m = p.pin ? this.px(t, this.view0).map : map;
         const anchor: P = line ? m(T([(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2])) : m(T(this.at(p.at, t)));
         place(e.html!, anchor, p.dir ?? "n", p.far ?? 1, o, em);
+        // a label that flies is on its way somewhere: it may cross other labels without shoving them
+        if (p.flies) {
+          const flying = !line && this.inFlight(p.at, t) ? "1" : "0";
+          if (e.html!.dataset.flying !== flying) e.html!.dataset.flying = flying;
+        }
         e.html!.dataset.px = anchor[0].toFixed(2);
         e.html!.dataset.py = anchor[1].toFixed(2);
       } else if ("dim" in p) {
@@ -1833,6 +2078,7 @@ class GeoStage {
     if (host) {
       limitGrow(host);
       this.syncThingStrokes();
+      this.revealLit();
       if (this.nudgeReport) this.nudgeReport(this.capturedNudges(host));
       else this.applyNudges();
       host.dataset.moving = this.figureMoving(t) ? "1" : "0";
@@ -1901,7 +2147,7 @@ class GeoStage {
   syncThingStrokes() {
     for (const v of this.thingViews.values()) {
       if (v.px <= 0) continue;
-      const bold = 1 + 0.75 * Number(v.art.dataset.em || 0);
+      const bold = 1 + 0.75 * Number(v.art.dataset.em0 || v.art.dataset.em || 0);
       for (const l of v.layers) l.el.style.strokeWidth = ((thingStroke(v.px, l.w) * 100) / v.px * bold).toFixed(3);
     }
   }
@@ -2399,6 +2645,16 @@ export const TALL: Layout = {
   // an upright phone scales the frame less, so slightly smaller type still reads at about 19 px
   minType: 52,
 };
+/**
+ * How many pixels of a recap card fall outside the frame, at its worse end; 0
+ * when the whole card shows. The card is as tall as its steps and sits centred
+ * in its place (`room`), so a card taller than the frame loses its top and its
+ * bottom alike.
+ */
+export function recapCut(cardH: number, room: { y: number; h: number }, frameH: number) {
+  const top = room.y + (room.h - cardH) / 2;
+  return Math.max(0, Math.ceil(Math.max(-top, top + cardH - frameH) - 0.5));
+}
 /** Phone recap type, in stage pixels. It may shrink a little, and it stops at a size that still reads once the frame is scaled onto a phone. */
 const RECAP_FONT = 44, RECAP_FONT_MIN = 40;
 /** Clear band between the figure, the notes and a card on a phone. */
@@ -3274,7 +3530,18 @@ export class Film {
     if (opts.checks !== false) {
       this.checkFigures();
       this.checkScreen();
+      this.checkRecap();
     }
+  }
+  /**
+   * The 16:9 film's recap card is as tall as its steps and sits centred in its
+   * place. Steps that need more than the frame's height are cut off at the top
+   * and the bottom, so say so. (A phone sets the type smaller by itself.)
+   */
+  checkRecap() {
+    if (this.L.name !== "wide" || !this.board.recapItems.length) return;
+    const cut = recapCut(this.board.recapList.offsetHeight, this.L.recap, this.L.h);
+    if (cut > 0) this.issues.push(`The recap card is taller than the frame: ${cut}px are cut off at its top and at its bottom. Use fewer steps, or shorter ones.`);
   }
   /**
    * Fit each figure to the union of everything the shot will draw, including
@@ -3367,6 +3634,7 @@ export class Film {
           }
         }
       }
+      this.checkLit(s, i);
       // every label that is showing stays on its card, at the end of each beat: never cut by the card's edge
       const card = s.el.querySelector(".film-figure")!.getBoundingClientRect();
       const end = Math.min(s.t1, this.duration) - 0.05;
@@ -3388,6 +3656,50 @@ export class Film {
         }
       }
     });
+  }
+  /**
+   * A held highlight stays inside the card, off its neighbours, and off any
+   * label it did not already cover. The word is the one the light is tied to.
+   */
+  checkLit(s: Film["shots"][number], i: number) {
+    const fit = s.el.querySelector<HTMLElement>(".film-fit");
+    if (!fit || !s.geo) return;
+    const end = Math.min(s.t1, this.duration);
+    const beats = this.timing.shots[i] ?? [];
+    const flagged = new Set<string>();
+    for (const e of s.list) {
+      if (e.a.do !== "highlight") continue;
+      const t = highlightHeld(e.t0, e.beatEnd);
+      if (t < s.t0 - 0.05 || t > end + 0.05) continue;
+      s.geo.draw(t);
+      const beat = beats.find((b) => e.t0 >= b.start - 1e-3 && e.t0 <= b.end + 1e-3);
+      const word = ("at" in e.a && e.a.at) || beat?.words.find((w) => Math.abs(w.start - e.t0) < 0.05)?.text || "highlight";
+      // The lit part's own box, stroke included, against what is actually painted.
+      // Ink a clip throws away is not in the painted box, so the painted box cannot answer this.
+      if (litCutOff(fit)) {
+        const key = `clip:${word}`;
+        if (!flagged.has(key)) {
+          flagged.add(key);
+          this.issues.push(`Shot ${i + 1}: highlighting "${word}" is cut off.`);
+        }
+      }
+      const grown = litFaults(fit);
+      if (!grown.length) continue;
+      // A counter already sits on its frame before the light. Report a cover or a touch only when the growth causes it.
+      const groups = [...growGroups(fit).values()].filter((members) => members.some((el) => el.dataset.hot === "1" && Number(el.dataset.em0 || 0) > 0.35));
+      const saved = groups.map((members) => members.map((el) => Number(el.dataset.factor || 1)));
+      for (const members of groups) for (const el of members) setFactor(el, 0);
+      const atRest = new Set(litFaults(fit));
+      groups.forEach((members, gi) => members.forEach((el, j) => setFactor(el, saved[gi]![j]!)));
+      const faults = grown.filter((fault) => fault === "card" || !atRest.has(fault));
+      for (const fault of faults) {
+        const key = `${fault}:${word}`;
+        if (flagged.has(key)) continue;
+        flagged.add(key);
+        const what = fault === "card" ? "leaves the card" : fault === "label" ? "touches a label" : "covers a neighbour";
+        this.issues.push(`Shot ${i + 1}: highlighting "${word}" ${what}.`);
+      }
+    }
   }
   /**
    * A picture fills its card: at a few moments of the shot, what is drawn must
