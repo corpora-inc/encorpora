@@ -4,14 +4,15 @@
  *   npx tsx film/make.ts <template-id>                  voice, check, 4K60 film, captions, contact sheet
  *   npx tsx film/make.ts <template-id> --check          voice and layout check only; prints problems, renders nothing
  *   npx tsx film/make.ts <template-id> --dry            the same check on estimated timing: no voice, costs nothing
- *   npx tsx film/make.ts <template-id> --dry --board    plus storyboard.jpg: the screen at the end of every beat
+ *   npx tsx film/make.ts <template-id> --dry --board    plus storyboard.jpg: the end of every beat, and each held highlight
  *   npx tsx film/make.ts <template-id> --res 540 --fps 30   a quick look
  *   npx tsx film/make.ts <template-id> --still 12.5,40  single frames
  *
  * Voice takes are cached by their text, so editing one shot only pays for that shot.
  */
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -27,6 +28,7 @@ import { thingsProblems } from "./things";
 import { isTagWord, neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
+import { heldHighlights } from "./stage";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -156,7 +158,7 @@ function even(src: Int16Array) {
   const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
   return Int16Array.from(src, (v) => Math.round(v * gain));
 }
-/** Notes about the voice that do not stop the film. */
+/** Notes that do not stop the film: about the voice, and labels a crowded app figure left out. */
 const voiceNotes: string[] = [];
 async function voice(): Promise<Timing> {
   requireVoices(cast);
@@ -372,7 +374,8 @@ const server = await createServer({
     configureServer(vite) {
       vite.middlewares.use(async (req, res_, next) => {
         if (!req.url?.startsWith("/__film")) return next();
-        // estimated timing runs a little off the real voice: hold the dry check to a 6 s still limit for margin
+        // estimated timing runs a little off the real voice: hold the dry check to a 6 s still limit for margin.
+        // `figure` is the template's example, for {example: true} shots; a shot's own scene travels in the script.
         const payload = JSON.stringify({ script, timing, figure: lesson.example.figure ?? null, still: values.dry ? 6 : 7.5, layout: values.tall ? "tall" : "wide" }).replace(/</g, "\\u003c");
         res_.setHeader("Content-Type", "text/html");
         res_.end(await vite.transformIndexHtml(req.url, `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"></head><body><div id="film"></div><script>window.__filmData=${payload}</script><script type="module" src="/film/page.tsx"></script></body></html>`));
@@ -393,6 +396,7 @@ try {
   await page.waitForFunction(() => !!(window as any).__film, undefined, { timeout: 60000 });
   await page.evaluate(() => (window as any).__film.ready);
   problems.push(...(await page.evaluate(() => (window as any).__film.issues as string[])));
+  voiceNotes.push(...(await page.evaluate(() => ((window as any).__film.notes ?? []) as string[])));
   // the board's math, checked without rendering: arithmetic true, every step consistent with its answer
   problems.push(...mathProblems(script));
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > ((window as any).__filmData.layout === "tall" ? 1080 : 1920));
@@ -416,17 +420,49 @@ try {
     // a shot fades out half a second before the next shot's first word: sample before that
     const shotEnd = timing.shots.flatMap((sh, si) => sh.map((_, bi) => (bi === sh.length - 1 && timing.shots[si + 1] ? timing.shots[si + 1]![0]!.start - 0.55 : Infinity)));
     const dir = join(OUT, `board${suffix}`);
+    const litDir = join(dir, "lit");
     rmSync(dir, { recursive: true, force: true });
-    mkdirSync(dir, { recursive: true });
+    mkdirSync(litDir, { recursive: true });
+    const lights = heldHighlights(script, timing);
+    const byBeat = new Map<number, typeof lights>();
+    for (const light of lights) {
+      const list = byBeat.get(light.beat) ?? [];
+      list.push(light);
+      byBeat.set(light.beat, list);
+    }
+    // Beat-end frames stay NNN.jpg. Lit frames live in lit/ so a reader of the
+    // numbered sequence (the line's pages, the critic's first N frames) is unchanged.
+    const sheet: { file: string; label: string }[] = [];
+    const slug = (word: string) => word.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "highlight";
     for (let i = 0; i < beats.length; i++) {
       const next = beats[i + 1]?.start ?? timing.duration;
       const t = Math.max(beats[i]!.end, Math.min(beats[i]!.end + 0.9, next - 0.05, shotEnd[i]!));
-      writeFileSync(join(dir, `${String(i).padStart(3, "0")}.jpg`), await shot(t));
+      const beatFile = join(dir, `${String(i).padStart(3, "0")}.jpg`);
+      writeFileSync(beatFile, await shot(t));
+      sheet.push({ file: beatFile, label: String(i) });
+      const mine = byBeat.get(i) ?? [];
+      for (let k = 0; k < mine.length; k++) {
+        const light = mine[k]!;
+        const name = slug(light.word);
+        const file = join(litDir, mine.length > 1 ? `${String(i).padStart(3, "0")}-${k + 1}-${name}.jpg` : `${String(i).padStart(3, "0")}-${name}.jpg`);
+        writeFileSync(file, await shot(light.t));
+        sheet.push({ file, label: name === "highlight" ? `${i} lit` : `${i} lit ${name.replace(/-/g, " ")}` });
+      }
     }
-    const cols = values.tall ? 6 : 4, rows = Math.ceil(beats.length / cols);
-    execFileSync("ffmpeg", ["-v", "error", "-y", "-pattern_type", "glob", "-i", join(dir, "*.jpg"), "-vf", `scale=${values.tall ? 540 : 960}:-1,drawtext=text='%{n}':x=12:y=10:fontsize=34:fontcolor=white:box=1:boxcolor=black@0.6,tile=${cols}x${rows}:padding=6`, "-frames:v", "1", "-q:v", "3", join(OUT, `storyboard${suffix}.jpg`)]);
+    const cols = values.tall ? 6 : 4, rows = Math.ceil(sheet.length / cols);
+    const sheetDir = mkdtempSync(join(tmpdir(), "film-sheet-"));
+    try {
+      const scaleW = values.tall ? 540 : 960;
+      for (let k = 0; k < sheet.length; k++) {
+        const label = sheet[k]!.label.replace(/[%:'\\]/g, "").slice(0, 48);
+        execFileSync("ffmpeg", ["-v", "error", "-y", "-i", sheet[k]!.file, "-vf", `scale=${scaleW}:-1,drawtext=text='${label}':x=12:y=10:fontsize=34:fontcolor=white:box=1:boxcolor=black@0.6`, "-q:v", "3", join(sheetDir, `${String(k).padStart(4, "0")}.jpg`)]);
+      }
+      execFileSync("ffmpeg", ["-v", "error", "-y", "-pattern_type", "glob", "-i", join(sheetDir, "*.jpg"), "-vf", `tile=${cols}x${rows}:padding=6`, "-frames:v", "1", "-q:v", "3", join(OUT, `storyboard${suffix}.jpg`)]);
+    } finally {
+      try { execFileSync("trash", [sheetDir], { stdio: "ignore" }); } catch { /* the sheet copies are temporary */ }
+    }
     // the single frames stay beside it, for a reviewer that reads them one by one
-    console.log(`storyboard: ${join(OUT, `storyboard${suffix}.jpg`)} (${beats.length} beats, numbered from 0; frames in ${dir})`);
+    console.log(`storyboard: ${join(OUT, `storyboard${suffix}.jpg`)} (${beats.length} beats, ${lights.length} lit; beat frames 000.jpg…, lit frames in ${litDir})`);
   }
   if (values.still) {
     const dir = join(OUT, `stills${suffix}`);

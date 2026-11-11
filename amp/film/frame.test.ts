@@ -2,7 +2,8 @@
  * The live player fits each figure once, to everything that shot will draw,
  * and draws no cast name tags. Text keeps its padding, wrapped lines keep
  * their leading, and a highlight grows in place without pushing a neighbour.
- * A handful of real exports, at phone and desktop, in both themes.
+ * A handful of real exports, and a film whose shots draw scene specs of their
+ * own (fixtures/scene-shot.ts), at phone and desktop, in both themes.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -12,9 +13,132 @@ import type { Browser, Page } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
+import { resolveCast, runsOf, TURN_GAP, voiceBindings } from "./cast";
+import { scriptSchema, type Script, type Timing } from "./schema";
+import { highlightHeld } from "./stage";
+import { SCENE_FILM_ID, sceneFilm } from "./fixtures/scene-shot";
 
+
+/** The same word-timing guess `make.ts --dry` uses, so a held highlight is the same moment. */
+function dryTiming(script: Script): Timing {
+  const cast = resolveCast(script, {});
+  const runs = runsOf(script, cast);
+  let t = 0.5;
+  const shots: Timing["shots"] = [];
+  for (const shot of script.shots) {
+    const out: Timing["shots"][number] = [];
+    shot.beats.forEach((b, bi) => {
+      if (bi && runs.some((r) => r.shot === shots.length && r.from === bi)) t += TURN_GAP;
+      const words: Timing["shots"][number][number]["words"] = [];
+      for (const raw of b.say.split(/\s+/).filter(Boolean)) {
+        const d = 0.087 + 0.0487 * raw.replace(/[^\p{L}\p{N}]/gu, "").length;
+        words.push({ text: raw, start: t, end: t + d });
+        t += d + 0.035 + (/[.?!:]$/.test(raw) ? 0.35 : /[,;]$/.test(raw) ? 0.14 : 0);
+      }
+      out.push({ start: words[0]!.start, end: words[words.length - 1]!.end, words });
+      t += (b.pause ?? 0) + 0.25;
+    });
+    shots.push(out);
+    t += 0.45;
+  }
+  return { duration: t + 1.8, shots, voices: voiceBindings(cast) };
+}
+const vaScript = scriptSchema.parse(JSON.parse(readFileSync(fileURLToPath(new URL("./lessons/count-out-objects--va.json", import.meta.url)), "utf8")));
+const vaTiming = dryTiming(vaScript);
+const vaPayload = JSON.stringify({ id: vaScript.id, title: vaScript.title, script: vaScript, timing: vaTiming, figure: null });
+
+function targetsOf(action: { target?: unknown }): string[] {
+  const target = action.target;
+  if (typeof target === "string") return [target];
+  if (Array.isArray(target)) return target.filter((x): x is string => typeof x === "string");
+  return [];
+}
+/** Beat end, while a highlight is still fully held. */
+function heldAt(say: string, includes: string[]): number {
+  for (let si = 0; si < vaScript.shots.length; si++) {
+    const shot = vaScript.shots[si]!;
+    for (let bi = 0; bi < shot.beats.length; bi++) {
+      const beat = shot.beats[bi]!;
+      if (beat.say !== say) continue;
+      const names = (beat.do ?? []).filter((a) => a.do === "highlight").flatMap(targetsOf);
+      if (!includes.every((n) => names.includes(n))) continue;
+      return vaTiming.shots[si]![bi]!.end - 0.08;
+    }
+  }
+  throw new Error(`No held highlight for ${includes.join(", ")}`);
+}
 const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
-const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things"];
+/**
+ * A full-width ten-frame, and a frame with a letter beside it. The held light
+ * used to leave the card and meet the letter. Built here, not under lessons/.
+ */
+const CARD_FILM_ID = "highlight-in-card";
+const cardScript = scriptSchema.parse({
+  id: CARD_FILM_ID,
+  title: "A light stays in its card",
+  cast: { teacher: {} },
+  shots: [
+    {
+      figure: {
+        view: [0, 0, 10, 4],
+        points: { T: [0, 4] },
+        parts: [
+          { id: "f", grid: [5, 2], at: "T", size: [2, 2], fill: "paper", ink: "ink", w: 5, start: true },
+          { id: "c", counters: "f", n: 10, ink: "accent", start: true },
+        ],
+      },
+      beats: [{ say: "A full ten-frame.", speaker: "teacher", do: [{ do: "highlight", target: "f", at: "full" }] }],
+    },
+    {
+      figure: {
+        view: [-1.2, 0, 8, 4],
+        points: { G: [0, 3.6], L: [-0.55, 2.6] },
+        parts: [
+          { id: "f", grid: [5, 2], at: "G", size: [1.2, 1], fill: "paper", ink: "ink", w: 5, start: true },
+          { id: "a", label: "A", at: "L", dir: "c", size: "l", start: true },
+        ],
+      },
+      beats: [{ say: "Frame A sits beside its letter.", speaker: "teacher", do: [{ do: "highlight", target: "f", at: "A" }] }],
+    },
+    {
+      figure: {
+        view: [0, 0, 12, 12],
+        points: { T1: [0.5, 11.8], T2: [0.5, 7.5] },
+        parts: [
+          { id: "fa", grid: [5, 2], at: "T1", size: [2.2, 1.85], ink: "accent", w: 5, start: true },
+          { id: "fb", grid: [5, 2], at: "T2", size: [2.2, 1.85], ink: "warm", w: 5, start: true },
+          { id: "a", counters: "fa", n: 10, ink: "accent", start: true },
+          { id: "b", counters: "fb", n: 7, ink: "warm", start: true },
+        ],
+      },
+      beats: [{ say: "Seventeen is a full frame and seven more.", speaker: "teacher", do: [{ do: "highlight", target: "fa", at: "full" }] }],
+    },
+  ],
+});
+const cardTiming = dryTiming(cardScript);
+const cardFilm = { id: cardScript.id, title: cardScript.title, script: cardScript, timing: cardTiming, figure: null };
+function heldWord(say: string, word: string): number {
+  for (let si = 0; si < cardScript.shots.length; si++) {
+    const shot = cardScript.shots[si]!;
+    for (let bi = 0; bi < shot.beats.length; bi++) {
+      if (shot.beats[bi]!.say !== say) continue;
+      const beat = cardTiming.shots[si]![bi]!;
+      const hit = beat.words.find((w) => w.text.toLowerCase().replace(/[^a-z0-9]/g, "") === word.toLowerCase());
+      if (!hit) continue;
+      return highlightHeld(hit.start, beat.end);
+    }
+  }
+  throw new Error(`No held highlight for ${word}`);
+}
+const CARD_HELD = [
+  { t: heldWord("A full ten-frame.", "full"), part: "f", letter: false },
+  { t: heldWord("Frame A sits beside its letter.", "A"), part: "f", letter: true },
+  { t: heldWord("Seventeen is a full frame and seven more.", "full"), part: "fa", letter: false },
+] as const;
+/** Films built here rather than exported: shots that draw a scene spec of their own. */
+const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm };
+const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
+const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
 const VIEWS = [
   { width: 390, height: 844, layout: "tall" },
@@ -28,7 +152,7 @@ let origin = "";
 const worst = { centre: 0, margin: Infinity, pad: Infinity, line: Infinity, where: "" };
 
 function timesOf(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { figure?: unknown }[] };
     timing: { shots: { start: number; end: number }[][] };
   };
@@ -54,6 +178,16 @@ beforeAll(async () => {
         s.middlewares.use((req, res, next) => {
           const m = (req.url ?? "").split("?")[0]?.match(/^\/data\/([^/]+)\.json$/);
           if (!m) return next();
+          if (m[1] === "count-out-objects--va") {
+            res.setHeader("content-type", "application/json");
+            res.end(vaPayload);
+            return;
+          }
+          if (BUILT[m[1]!]) {
+            res.setHeader("content-type", "application/json");
+            res.end(JSON.stringify(BUILT[m[1]!]));
+            return;
+          }
           const file = path.join(FIX, `${m[1]}.json`);
           if (!existsSync(file)) { res.statusCode = 404; res.end(); return; }
           res.setHeader("content-type", "application/json");
@@ -338,6 +472,170 @@ test("a highlight does not move the other elements", async () => {
   }
 }, 120_000);
 
+test("a held highlight stays inside the card and off its label", async () => {
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(CARD_FILM_ID)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      for (const sample of CARD_HELD) {
+        const where = `${view.layout} t=${sample.t.toFixed(2)}`;
+        const got = await page.evaluate(({ time, part }) => {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { error: "no scrubber" };
+          scrub.value = String(time);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          const shots = [...document.querySelectorAll<HTMLElement>(".film-shot")];
+          let fit: HTMLElement | null = null, best = 0;
+          for (const shot of shots) {
+            const o = Number.parseFloat(getComputedStyle(shot).opacity);
+            const host = shot.querySelector<HTMLElement>(".film-fit");
+            if (!host || o < 0.5 || getComputedStyle(shot).visibility === "hidden") continue;
+            if (o >= best) { fit = host; best = o; }
+          }
+          if (!fit) return { error: "no figure" };
+          const cardEl = fit.parentElement;
+          if (!cardEl) return { error: "no card" };
+          const card = cardEl.getBoundingClientRect();
+          const frame = fit.querySelector<SVGElement>(`[data-part="${part}"]`);
+          if (!frame) return { error: "no frame" };
+          const group = frame.dataset.grow ?? "";
+          const members: Element[] = group ? [...fit.querySelectorAll(`[data-grow="${group}"]`)] : [frame];
+          const paint = (el: Element) => {
+            if (el.classList.contains("film-em") || el.classList.contains("film-things-extent")) return false;
+            if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
+            if (el instanceof SVGGraphicsElement) return true;
+            if (el instanceof HTMLElement && el.classList.contains("film-label")) return true;
+            return false;
+          };
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          let l = Infinity, top = Infinity, r = -Infinity, b = -Infinity, n = 0;
+          const boxes: { l: number; t: number; r: number; b: number }[] = [];
+          const take = (el: Element) => {
+            if (!paint(el) || shown(el) < 0.45) return;
+            const box = el.getBoundingClientRect();
+            if (box.width < 0.5 && box.height < 0.5) return;
+            l = Math.min(l, box.left); top = Math.min(top, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
+            boxes.push({ l: box.left, t: box.top, r: box.right, b: box.bottom });
+            n++;
+          };
+          for (const el of members) {
+            take(el);
+            for (const c of el.querySelectorAll("*")) take(c);
+          }
+          if (!n) return { error: "no lit ink" };
+          const labels = [...fit.querySelectorAll<HTMLElement>(".film-label")].flatMap((el) => {
+            if (shown(el) < 0.45 || members.includes(el)) return [];
+            const box = el.getBoundingClientRect();
+            if (box.width < 1 || box.height < 1) return [];
+            const cx = (box.left + box.right) / 2, cy = (box.top + box.bottom) / 2;
+            const inside = boxes.some((g) => cx > g.l && cx < g.r && cy > g.t && cy < g.b);
+            if (inside) return [];
+            let gap = Infinity;
+            for (const g of boxes) {
+              const dx = Math.max(g.l - box.right, box.left - g.r);
+              const dy = Math.max(g.t - box.bottom, box.top - g.b);
+              gap = Math.min(gap, Math.hypot(Math.max(dx, 0), Math.max(dy, 0)));
+              if (dx < 0 && dy < 0) gap = Math.min(gap, -Math.min(-dx, -dy));
+            }
+            return [{ text: (el.textContent ?? "").trim(), gap }];
+          });
+          // The painted box stops at a clip. The lit part's own box, after the highlight
+          // transform and including the thickened stroke, is what has to be visible.
+          const fullBox = (el: Element) => {
+            if (!(el instanceof SVGGraphicsElement || el instanceof HTMLElement)) return null;
+            const b = el.getBoundingClientRect();
+            if (b.width < 0.2 && b.height < 0.2) return null;
+            let px = 0, py = 0;
+            if (el instanceof SVGGraphicsElement) {
+              const sw = parseFloat(el.style.strokeWidth || "") || 0;
+              const ctm = sw > 0 && typeof el.getScreenCTM === "function" ? el.getScreenCTM() : null;
+              if (ctm) { px = Math.hypot(ctm.a, ctm.b) * sw / 2; py = Math.hypot(ctm.c, ctm.d) * sw / 2; }
+            }
+            return { l: b.left - px, t: b.top - py, r: b.right + px, b: b.bottom + py };
+          };
+          const regionOf = (el: Element): { l: number; t: number; r: number; b: number } | null => {
+            let region: { l: number; t: number; r: number; b: number } | null = null;
+            const meet = (box: { l: number; t: number; r: number; b: number }) => {
+              region = region ? { l: Math.max(region.l, box.l), t: Math.max(region.t, box.t), r: Math.min(region.r, box.r), b: Math.min(region.b, box.b) } : box;
+            };
+            for (let n: Element | null = el.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+              const cs = getComputedStyle(n);
+              if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+                const b = n.getBoundingClientRect();
+                const bl = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderLeftWidth) || 0 : 0;
+                const bt = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderTopWidth) || 0 : 0;
+                const br = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderRightWidth) || 0 : 0;
+                const bb = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderBottomWidth) || 0 : 0;
+                meet({ l: b.left + bl, t: b.top + bt, r: b.right - br, b: b.bottom - bb });
+              }
+              if (n instanceof HTMLElement && n.dataset.layout) break;
+              if (n instanceof SVGGraphicsElement) {
+                const id = (n.getAttribute("clip-path") ?? "").match(/#([^)]+)\)/)?.[1];
+                const rect = id ? document.getElementById(id)?.querySelector("rect") : null;
+                const svg = n.ownerSVGElement;
+                if (rect && svg) {
+                  const svgBox = svg.getBoundingClientRect();
+                  const vb = svg.viewBox.baseVal;
+                  const sx = vb.width ? svgBox.width / vb.width : 1;
+                  const sy = vb.height ? svgBox.height / vb.height : 1;
+                  const x = parseFloat(rect.getAttribute("x") || "0"), y = parseFloat(rect.getAttribute("y") || "0");
+                  const w = parseFloat(rect.getAttribute("width") || "0"), h = parseFloat(rect.getAttribute("height") || "0");
+                  meet({
+                    l: svgBox.left + (x - vb.x) * sx, t: svgBox.top + (y - vb.y) * sy,
+                    r: svgBox.left + (x + w - vb.x) * sx, b: svgBox.top + (y + h - vb.y) * sy,
+                  });
+                }
+              }
+            }
+            return region;
+          };
+          const pieces = members.flatMap((el) => [el, ...el.querySelectorAll("*")]).filter((el) => !el.classList.contains("film-em"));
+          let over = 0;
+          for (const el of pieces) {
+            const box = fullBox(el);
+            const region = box && regionOf(el);
+            if (!box || !region) continue;
+            over = Math.max(over, region.l - box.l, region.t - box.t, box.r - region.r, box.b - region.b);
+          }
+          return {
+            margins: [l - card.left, card.right - r, top - card.top, card.bottom - b],
+            need: Math.max(Math.min(card.width, card.height) * 0.06, 16),
+            stroke: parseFloat(frame.style.strokeWidth || "0"),
+            em: Number(frame.dataset.em || 0),
+            labels,
+            n,
+            over,
+          };
+        }, { time: sample.t, part: sample.part });
+        if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
+        for (const m of got.margins) expect(m, `${where} margin`).toBeGreaterThanOrEqual(got.need);
+        expect(got.over, `${where} unclipped stroke leaves the visible region by ${got.over.toFixed(1)}px`).toBeLessThanOrEqual(1);
+        expect(got.stroke, `${where} still bold`).toBeGreaterThan(6);
+        expect(got.n, `${where} ink`).toBeGreaterThan(1);
+        if (sample.letter) {
+          expect(got.labels.length, `${where} label`).toBeGreaterThan(0);
+          for (const label of got.labels) expect(label.gap, `${where} ${label.text}`).toBeGreaterThan(2);
+        }
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 120_000);
+
 const MOTION = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "draw", "partition", "shade", "cut"]);
 const MOTION_DUR: Record<string, number> = {
   glide: 1.4, move: 1.2, turn: 2.2, flip: 2.2, slide: 1.1, view: 1.3,
@@ -346,7 +644,7 @@ const MOTION_DUR: Record<string, number> = {
 
 /** Times when an authored motion can change a figure element's place. */
 function motionWindows(id: string) {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { beats: { do?: { do: string; at?: string; nth?: number; dur?: number }[] }[] }[] };
     timing: { shots: { start: number; words: { text: string; start: number }[] }[][] };
   };
@@ -377,7 +675,7 @@ function motionWindows(id: string) {
 }
 
 function shotSpans(id: string) {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { figure?: unknown }[] };
     timing: { duration: number; shots: { start: number }[][] };
   };
@@ -555,7 +853,6 @@ test("elements stay put unless a motion is authored, and a highlight does not co
   }
 }, 180_000);
 
-
 const PHONE = [
   { width: 390, height: 844 },
   { width: 412, height: 892 },
@@ -563,7 +860,7 @@ const PHONE = [
 
 /** Times across the whole film, plus the founder's phone frame at 11:31. */
 function phoneSamples(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as { timing: { duration: number } };
+  const lesson = lessonOf(id) as { timing: { duration: number } };
   const times: number[] = [];
   for (let t = 0.4; t <= lesson.timing.duration; t += 2) times.push(Math.round(t * 10) / 10);
   const at = 11 * 60 + 31;
@@ -663,9 +960,141 @@ test("on a phone, no text sits behind a card or is cut in half", async () => {
   }
 }, 240_000);
 
+/** One moment per shot where a run of steps is showing its reason labels. */
+function stackTimes(id: string): number[] {
+  const lesson = lessonOf(id) as {
+    script: { shots: { beats: { do?: { do: string; note?: string }[] }[] }[] };
+    timing: { shots: { end: number }[][] };
+  };
+  const times: number[] = [];
+  lesson.script.shots.forEach((shot, si) => {
+    let notes = 0;
+    let at = -1;
+    shot.beats.forEach((beat, bi) => {
+      for (const action of beat.do ?? []) {
+        if (action.do === "clear") notes = 0;
+        if ((action.do === "write" || action.do === "answer") && action.note) notes++;
+      }
+      const end = lesson.timing.shots[si]?.[bi]?.end;
+      if (notes >= 2 && end) at = end - 0.08;
+    });
+    if (at > 0) times.push(at);
+  });
+  return times;
+}
+
+test("derivation labels share one edge and equations do not overlap", async () => {
+  const id = "parabola-derivation-check--sg";
+  const views = [
+    { width: 390, height: 844, layout: "tall" },
+    { width: 412, height: 892, layout: "tall" },
+    { width: 1280, height: 800, layout: "wide" },
+  ] as const;
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const times = stackTimes(id);
+    expect(times.length).toBeGreaterThan(0);
+    for (const view of views) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      const got = await page.evaluate((samples) => {
+        const TEXT = ".film-label, .film-prose, .film-math, .film-display, .film-note, .film-stack-cell, .film-line.term > b, .film-line.term > span, .film-choices > span, .film-recap-item > b, .film-recap-item > span, .film-line.watch, .film-line.text";
+        const shown = (el: Element) => {
+          let o = 1;
+          let n: Element | null = el;
+          while (n && n !== document.body) {
+            const cs = getComputedStyle(n);
+            if (cs.display === "none" || cs.visibility === "hidden") return 0;
+            o *= Number.parseFloat(cs.opacity) || 0;
+            if (o < 0.45) return 0;
+            n = n.parentElement;
+          }
+          return o;
+        };
+        const clip = (el: HTMLElement, box: DOMRect) => {
+          let l = box.left, t = box.top, r = box.right, b = box.bottom;
+          let n: HTMLElement | null = el.parentElement;
+          while (n && n !== document.body) {
+            const cs = getComputedStyle(n);
+            if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+              const h = n.getBoundingClientRect();
+              l = Math.max(l, h.left); t = Math.max(t, h.top); r = Math.min(r, h.right); b = Math.min(b, h.bottom);
+            }
+            n = n.parentElement;
+          }
+          return { l, t, r, b };
+        };
+        const problems: string[] = [];
+        const note = (m: string) => { if (problems.length < 6) problems.push(m); };
+        let stacks = 0;
+        for (const time of samples) {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { problems: ["no scrubber"], stacks: 0 };
+          scrub.value = String(time);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          for (const col of document.querySelectorAll<HTMLElement>(".film-col")) {
+            if (shown(col) < 0.45) continue;
+            let notes: DOMRect[] = [];
+            let eqs: number[] = [];
+            const flush = () => {
+              if (notes.length >= 2) {
+                stacks++;
+                const lefts = notes.map((b) => b.left);
+                const rights = notes.map((b) => b.right);
+                const span = Math.min(Math.max(...lefts) - Math.min(...lefts), Math.max(...rights) - Math.min(...rights));
+                if (span > 1) note(`labels differ by ${span.toFixed(1)}px @ ${time}s`);
+              }
+              if (eqs.length >= 2) {
+                const span = Math.max(...eqs) - Math.min(...eqs);
+                if (span > 1) note(`equals differ by ${span.toFixed(1)}px @ ${time}s`);
+              }
+              notes = [];
+              eqs = [];
+            };
+            for (const line of col.querySelectorAll<HTMLElement>(":scope > .film-line")) {
+              if (shown(line) < 0.45) continue;
+              if (!line.classList.contains("write")) { flush(); continue; }
+              const label = line.querySelector<HTMLElement>(".film-note");
+              if (label && shown(label) >= 0.45) notes.push(label.getBoundingClientRect());
+              const math = line.querySelector<HTMLElement>(".film-math");
+              const rel = math ? [...math.querySelectorAll<HTMLElement>(".mrel")].find((el) => (el.textContent ?? "").trim() === "=") : undefined;
+              if (rel && math && shown(math) >= 0.45) eqs.push(rel.getBoundingClientRect().left);
+            }
+            flush();
+          }
+          const boxes: { l: number; t: number; r: number; b: number; name: string }[] = [];
+          for (const el of document.querySelectorAll<HTMLElement>(TEXT)) {
+            if (shown(el) < 0.45) continue;
+            const raw = el.getBoundingClientRect();
+            const v = clip(el, raw);
+            if (v.r - v.l < 2 || v.b - v.t < 2) continue;
+            boxes.push({ ...v, name: (el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 32) });
+          }
+          for (let i = 0; i < boxes.length; i++) {
+            const a = boxes[i]!;
+            for (let j = i + 1; j < boxes.length; j++) {
+              const c = boxes[j]!;
+              const ox = Math.min(a.r, c.r) - Math.max(a.l, c.l);
+              const oy = Math.min(a.b, c.b) - Math.max(a.t, c.t);
+              if (ox > 2 && oy > 2) note(`"${a.name}" ∩ "${c.name}" @ ${time}s`);
+            }
+          }
+        }
+        return { problems, stacks };
+      }, times);
+      expect(got.stacks, `${id} ${view.width}`).toBeGreaterThan(0);
+      expect(got.problems, `${id} ${view.width}`).toEqual([]);
+    }
+  } finally {
+    await page.close();
+  }
+}, 180_000);
+
 /** One time near the end of every beat, when that beat's marks are on screen. */
 function beatEnds(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     timing: { shots: { start: number; end: number }[][] };
   };
   const times: number[] = [];
@@ -826,3 +1255,121 @@ test("a shaded or boxed region keeps half a line around what it holds", async ()
     await page.close();
   }
 }, 180_000);
+
+test("a lit ten-frame keeps every counter in the middle of its cell and off its neighbour", async () => {
+  const moments = [
+    { name: "f1", ids: ["f1"], t: heldAt("The last number is ten, so this frame shows ten. A full frame is ten.", ["f1"]) },
+    { name: "seconds", ids: ["fA2", "fB2", "fD2"], t: heldAt("It does not fit in one frame. Seventeen needs a second frame.", ["fA2", "fB2", "fD2"]) },
+  ];
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent("count-out-objects--va")}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      await page.evaluate(() => { document.documentElement.dataset.theme = "light"; });
+      for (const moment of moments) {
+        const got = await page.evaluate(({ ids, t }) => {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { error: "no scrubber" };
+          scrub.value = String(t);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          const shots = [...document.querySelectorAll<HTMLElement>(".film-shot")];
+          let fit: HTMLElement | null = null, best = 0;
+          for (const shot of shots) {
+            const o = Number.parseFloat(getComputedStyle(shot).opacity);
+            const host = shot.querySelector<HTMLElement>(".film-fit");
+            if (!host || o < 0.5 || getComputedStyle(shot).visibility === "hidden") continue;
+            if (o >= best) { fit = host; best = o; }
+          }
+          if (!fit) return { error: "no figure" };
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const at = (el: SVGGraphicsElement, x: number, y: number) => {
+            const svg = el.ownerSVGElement;
+            const ctm = el.getScreenCTM();
+            if (!svg || !ctm) return null;
+            const pt = svg.createSVGPoint();
+            pt.x = x; pt.y = y;
+            const p = pt.matrixTransform(ctm);
+            return { x: p.x, y: p.y };
+          };
+          const problems: string[] = [];
+          const grids = [...fit.querySelectorAll<SVGGraphicsElement>('[data-kind="grid"]')].filter((el) => shown(el) > 0.45);
+          const byId = new Map(grids.map((el) => [el.dataset.part ?? "", el]));
+          for (const id of ids) {
+            const grid = byId.get(id);
+            if (!grid) { problems.push(`${id} is not on screen`); continue; }
+            const box = grid.getBBox();
+            const cols = Number(grid.dataset.cols || 0), rows = Number(grid.dataset.rows || 0);
+            if (cols < 1 || rows < 1 || box.width < 1) { problems.push(`${id} has no cells`); continue; }
+            const cellW = box.width / cols, cellH = box.height / rows;
+            const cells: { x: number; y: number; l: number; t: number; r: number; b: number }[] = [];
+            for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+              const x0 = box.x + c * cellW, y0 = box.y + r * cellH;
+              const corners = [[x0, y0], [x0 + cellW, y0], [x0, y0 + cellH], [x0 + cellW, y0 + cellH]].map(([x, y]) => at(grid, x!, y!));
+              if (corners.some((p) => !p)) { problems.push(`${id} cell did not map`); continue; }
+              const xs = corners.map((p) => p!.x), ys = corners.map((p) => p!.y);
+              const mid = at(grid, x0 + cellW / 2, y0 + cellH / 2);
+              if (!mid) continue;
+              cells.push({ x: mid.x, y: mid.y, l: Math.min(...xs), t: Math.min(...ys), r: Math.max(...xs), b: Math.max(...ys) });
+            }
+            const ctm = grid.getScreenCTM();
+            const stroke = (parseFloat(grid.style.strokeWidth || "0") || 0) * (ctm ? Math.hypot(ctm.a, ctm.b) : 1);
+            const inset = stroke / 2;
+            let counters = 0;
+            const inside = (x: number, y: number) => cells.some((cell) => x > cell.l && x < cell.r && y > cell.t && y < cell.b);
+            const pieces = [
+              ...fit.querySelectorAll<SVGGraphicsElement>('[data-kind="counter"]'),
+              ...fit.querySelectorAll<HTMLElement>(".film-label"),
+            ];
+            for (const el of pieces) {
+              if (shown(el) < 0.45) continue;
+              const rect = el.getBoundingClientRect();
+              if (rect.width < 1 || rect.height < 1) continue;
+              const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+              if (!inside(cx, cy)) continue;
+              counters++;
+              let best = cells[0]!, dist = Infinity;
+              for (const cell of cells) {
+                const d = Math.hypot(cell.x - cx, cell.y - cy);
+                if (d < dist) { best = cell; dist = d; }
+              }
+              const span = Math.min(best.r - best.l, best.b - best.t);
+              if (dist > Math.max(1.25, span * 0.04)) problems.push(`${el.dataset.part ?? "label"} sits ${dist.toFixed(1)}px off the middle of a ${id} cell`);
+              if (el.dataset.kind === "counter") {
+                const cut = rect.left < best.l + inset - 0.5 || rect.right > best.r - inset + 0.5 || rect.top < best.t + inset - 0.5 || rect.bottom > best.b - inset + 0.5;
+                if (cut) problems.push(`${el.dataset.part} is cut by a line of ${id}`);
+              }
+            }
+            if (counters < 1) problems.push(`${id} has no counter in its cells`);
+            const mine = grid.getBoundingClientRect();
+            for (const other of grids) {
+              if (other === grid) continue;
+              const o = other.getBoundingClientRect();
+              const ox = Math.min(mine.right, o.right) - Math.max(mine.left, o.left);
+              const oy = Math.min(mine.bottom, o.bottom) - Math.max(mine.top, o.top);
+              if (ox > 1 && oy > 1) problems.push(`${id} covers ${other.dataset.part} by ${ox.toFixed(1)}×${oy.toFixed(1)}px`);
+            }
+          }
+          return { problems };
+        }, { ids: moment.ids, t: moment.t });
+        const where = `${moment.name} ${view.layout} t=${moment.t.toFixed(2)}`;
+        if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
+        expect(got.problems, where).toEqual([]);
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 120_000);

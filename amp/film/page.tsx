@@ -1,4 +1,4 @@
-/** What the renderer loads: the app's stylesheet, the film, and the lesson's real figure when a shot asks for it. */
+/** What the renderer loads: the app's stylesheet, the film, and the app figures its shots ask for (the template's example, or a shot's own scene). */
 import "../src/web/app/styles";
 import "./film.css";
 import { Film, TALL, WIDE } from "./stage";
@@ -7,7 +7,7 @@ import { mountExample } from "./example";
 
 declare global {
   interface Window {
-    __film: { ready: Promise<void>; seek(t: number): void; moving(): [number, number][]; issues: string[]; duration: number };
+    __film: { ready: Promise<void>; seek(t: number): void; moving(): [number, number][]; issues: string[]; notes: string[]; duration: number };
   }
 }
 const data = (window as unknown as { __filmData: { script: Script; timing: Timing; figure?: any } }).__filmData;
@@ -28,8 +28,10 @@ const ready = (async () => {
   document.body.appendChild(otherRoot);
   const second = new Film(otherRoot, data.script, data.timing, (host, shot, list) => mountExample(data.figure, host, shot, list), { layout: other, still: (data as any).still });
   for (const issue of second.issues) if (!film.issues.includes(issue)) film.issues.push(`${tallFirst ? "In the 16:9 film" : "On a phone held upright"}: ${issue}`);
+  for (const note of second.notes) if (!film.notes.includes(note)) film.notes.push(`${tallFirst ? "In the 16:9 film" : "On a phone held upright"}: ${note}`);
   otherRoot.remove();
   window.__film.issues = film.issues;
+  window.__film.notes = film.notes;
   window.__film.duration = film.duration;
   film.seek(0);
 })();
@@ -38,5 +40,6 @@ window.__film = {
   seek: (t) => film.seek(t),
   moving: () => film.moving(),
   issues: [],
+  notes: [],
   duration: data.timing.duration,
 };

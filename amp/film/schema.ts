@@ -6,6 +6,8 @@
 import { z } from "zod";
 import { PLACES } from "./blocks";
 import { thingKinds } from "../src/math/scene/components/things-art";
+import { sceneSchema } from "../src/math/scene/spec";
+import { actionSchema as sceneActionSchema } from "../src/math/scene/timeline";
 import { isRoleKind, ROLE_KINDS, type RoleKind } from "./voices";
 
 const num = z.number().finite();
@@ -98,8 +100,16 @@ const label = z.object({
   /** Stay put on the card when the view zooms (a readout, the function's name); other labels follow the figure. */
   pin: z.boolean().optional(),
   /**
+   * This label travels: its point is moved, or it rides a thing that is sent
+   * somewhere. In flight it passes over the labels in its way instead of
+   * pushing them apart; where it rests, it is kept clear as any label is.
+   */
+  flies: z.boolean().optional(),
+  /**
    * A live readout. @x and @y become this point's coordinates as it moves (defaults to `at`).
    * @n becomes how many counters sit in this grid's cells, counting as they land.
+   * @m and @b become the slope and the y-intercept of the line through this seg's
+   * two points (`of` is the seg's id), counting as `move` slides or tilts it.
    */
   of: name.optional(),
 });
@@ -467,8 +477,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("send"), target: targets, to: z.union([name, z.array(name).min(2)]), ...timing }).strict(),
   /** Things go away one by one. */
   z.object({ do: z.literal("leave"), target: targets, ...timing }).strict(),
-  /** The lesson's real figure (figure: {example: true}): scene actions on its part names. */
-  z.object({ do: z.literal("scene"), actions: z.array(z.record(z.string(), z.unknown())).min(1), ...timing }).strict(),
+  /** An app figure (figure {example: true} or {scene: ...}): scene timeline actions on its part names. */
+  z.object({ do: z.literal("scene"), actions: z.array(sceneActionSchema).min(1), ...timing }).strict(),
   // ---- the work column
   /** The problem as the learner sees it, with its answer choices if it has them. */
   z.object({ do: z.literal("problem"), text: z.string().min(1), choices: z.array(z.string().min(1)).optional(), ...lineId, ...timing }).strict(),
@@ -540,10 +550,20 @@ export const speakerRoles = ROLE_KINDS;
 export type SpeakerRole = RoleKind;
 const speakerKey = z.string().regex(/^[a-z][a-z0-9-]{0,40}$/);
 
+/**
+ * Any app figure with the author's own data: the scene spec the app draws
+ * (src/math/scene, docs/figures.md). The film's `scene` actions drive it, so
+ * the spec carries no steps of its own.
+ */
+export const sceneFigureSchema = z
+  .object({ scene: sceneSchema })
+  .strict()
+  .refine((f) => !f.scene.steps, { message: "A film drives its scene with scene actions; leave out steps", path: ["scene", "steps"] });
+
 export const shotSchema = z
   .object({
-    /** A built figure, the lesson's real figure, or none (the work fills the frame). */
-    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict()]).optional(),
+    /** A built figure, the lesson's real figure, any app figure, or none (the work fills the frame). */
+    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict(), sceneFigureSchema]).optional(),
     beats: z.array(beatSchema).min(1),
   })
   .strict();
@@ -553,6 +573,11 @@ export const scriptSchema = z
   .object({
     id: z.string().min(1),
     title: z.string().min(1),
+    /**
+     * Problem types this film also teaches, beside its own (the ID before
+     * `--`). Publishing links the film from each one that has no film of its own.
+     */
+    teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**

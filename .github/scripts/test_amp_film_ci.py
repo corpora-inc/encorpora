@@ -18,10 +18,11 @@ def test_film_kit_uses_its_unit_job_without_application_or_media_work():
     assert 'amp-film' in jobs['ci-gate']['needs']
     commands = [step.get('run', '') for step in film['steps']]
     assert 'npm run film:test' in commands
+    assert 'python -m pytest film/line -q' in commands
     assert not any('film/make' in command or 'film:build' in command for command in commands)
     detection = next(step['run'] for step in jobs['changes']['steps'] if step.get('id') == 'filter')
     pattern = re.search(r"set_output amp_film '([^']+)'", detection).group(1)
-    for path in ('amp/film/cast.ts', 'amp/film/lessons/rectangle-area.json',
+    for path in ('amp/film/cast.ts', 'amp/film/lessons/rectangle-area.json', 'amp/film/line/line.py',
                  'amp/src/web/Figure.tsx', 'amp/package-lock.json', 'amp/tsconfig.json',
                  '.github/workflows/ci.yml'):
         assert re.search(pattern, path), path

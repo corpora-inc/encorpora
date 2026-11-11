@@ -50,6 +50,7 @@ export type LineTable = z.infer<typeof lineTableSchema>;
  * Cell sizes are figure pixels; the component converts them to math units
  * at the current scale, so a table reads the same beside any graph. */
 const MARGIN = regionMargin("md", "sans"),
+  /** Above and below a row's text; across, each cell keeps its own `pad`. */
   PAD = Math.ceil(MARGIN),
   /** One line, so a second line plus the margin still clears the rules. */
   LINE = Math.ceil(2 * MARGIN),
@@ -82,6 +83,10 @@ const size = (t: string, head: boolean) =>
   !head && lineCellFont(t) === "sans" && t.trim().split(/\s+/).length > 2
     ? ("sm" as const)
     : ("md" as const);
+/** Room on each side of a cell's text: half a line of the type it is set
+ * in, so a column of numbers is no wider than its digits need. */
+const pad = (t: string, head: boolean) =>
+  regionMargin(size(t, head), lineCellFont(t));
 /** The lines a cell is set on: one, or two for long words. */
 function lines(t: string, head: boolean, narrow = false) {
   const w = typeset(t, lineCellFont(t), size(t, head), head).width;
@@ -111,12 +116,12 @@ registerComponent("lineTable", {
                 typeset(part, lineCellFont(v), size(v, head), head).width,
             ),
           );
-          return { v, head, parts, width };
+          return { v, head, parts, width, pad: pad(v, head) };
         }),
       );
     const widthsOf = (cells: ReturnType<typeof setAt>) =>
       Array.from({ length: cols }, (_, c) =>
-        Math.max(MIN_W, ...cells.map((row) => row[c]!.width + 2 * PAD)),
+        Math.max(MIN_W, ...cells.map((row) => row[c]!.width + 2 * row[c]!.pad)),
       );
     let set = setAt(false);
     let widths = widthsOf(set);
@@ -145,7 +150,7 @@ registerComponent("lineTable", {
       const top = tops[r]!,
         h = heights[r]!;
       for (const [c, cell] of row.entries()) {
-        const { v, head, parts } = set[r]![c]!;
+        const { v, head, parts, pad: inset } = set[r]![c]!;
         const color = typeof cell === "string" ? undefined : cell.color;
         const fill = color
           ? (`${color}-fill` as const)
@@ -169,9 +174,9 @@ registerComponent("lineTable", {
         const align = t.align?.[c] ?? "center";
         const x =
           align === "left"
-            ? left[c]! + PAD
+            ? left[c]! + inset
             : align === "right"
-              ? left[c]! + widths[c]! - PAD
+              ? left[c]! + widths[c]! - inset
               : left[c]! + widths[c]! / 2;
         const shift = (i: number) =>
           parts.length > 1 ? (i ? -LINE / 2 : LINE / 2) : 0;

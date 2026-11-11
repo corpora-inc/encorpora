@@ -5,7 +5,10 @@
  * One score and one feedback box. The box is the review summary. Timestamped
  * notes already stored stay in the saved review and are not shown or edited.
  *
- *   review.html?id=<film>&list=lab|prod|one
+ *   review.html?id=<film>&list=lab|prod|one|line
+ *
+ * There is one review queue, the page one level above this one. Every way out
+ * of a review leads there, and a link that lost its film opens it.
  */
 import "../src/web/ui/tokens.css";
 import "./review.css";
@@ -22,6 +25,7 @@ const $ = <T extends HTMLElement>(tag: string, cls: string, parent: HTMLElement,
   return e;
 };
 
+const QUEUE = "../";
 const params = new URLSearchParams(location.search);
 const id = params.get("id") ?? "";
 const app = document.getElementById("app")!;
@@ -74,10 +78,7 @@ function keptNotes(raw: unknown): Note[] {
 }
 
 if (!/^[a-z0-9-]+$/.test(id)) {
-  const page = $("main", "panel empty", app);
-  $("h1", "panel-title", page, "This review link needs a film.");
-  const back = $<HTMLAnchorElement>("a", "", page, "All films");
-  back.href = "./";
+  location.replace(QUEUE);
 } else {
   void openReview(id);
 }
@@ -86,9 +87,9 @@ async function openReview(filmId: string) {
   const review: Review = { score: null, summary: "", notes: [] };
   let ready = false;
   let listName = params.get("list") ?? "";
-  if (!["lab", "prod", "one"].includes(listName)) {
+  if (!["lab", "prod", "one", "line"].includes(listName)) {
     const ref = document.referrer;
-    listName = ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
+    listName = ref.includes("line.html") ? "line" : ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
   }
 
   const root = $("div", "review", app);
@@ -213,8 +214,8 @@ async function openReview(filmId: string) {
   const head = $("div", "panel-head", panel);
   const titles = $("div", "panel-titles", head);
   const kicker = $("p", "panel-kicker", titles);
-  const back = $<HTMLAnchorElement>("a", "", kicker, "All films");
-  back.href = "./";
+  const back = $<HTMLAnchorElement>("a", "", kicker, "Review queue");
+  back.href = QUEUE;
   const title = $("h1", "panel-title", titles, "Lesson film");
   const next = $<HTMLButtonElement>("button", "btn btn-next", head, "Next film");
   next.type = "button";
@@ -378,7 +379,7 @@ async function openReview(filmId: string) {
   paintScore();
   setStatus("idle");
 
-  const names = listName ? [listName] : ["prod", "lab", "one"];
+  const names = listName ? [listName] : ["prod", "lab", "one", "line"];
   const noReviews: Record<string, Review> = {};
   const [loaded, catalog, savedAll] = await Promise.all([
     Promise.all(names.map(async (name) => ({ name, rows: await loadList(name) }))),
@@ -399,10 +400,6 @@ async function openReview(filmId: string) {
   if (row?.title) {
     title.textContent = row.title;
     document.title = `Review · ${row.title}`;
-  }
-  if (listName) {
-    back.href = `${listName}.html`;
-    back.textContent = listName === "lab" ? "Model comparison" : listName === "one" ? "One at a time" : "Lesson films";
   }
   review.added = row?.added ?? "";
 
@@ -431,10 +428,10 @@ async function openReview(filmId: string) {
   };
   const armNext = () => {
     const target = goNext();
-    next.disabled = !target;
-    next.textContent = "Next film";
+    next.disabled = false;
+    next.textContent = target ? "Next film" : "Back to the queue";
     next.onclick = () => {
-      if (target) location.href = `review.html?id=${encodeURIComponent(target)}&list=${encodeURIComponent(listName)}`;
+      location.href = target ? `review.html?id=${encodeURIComponent(target)}&list=${encodeURIComponent(listName)}` : QUEUE;
     };
   };
   armNext();

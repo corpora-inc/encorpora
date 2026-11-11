@@ -10,7 +10,9 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   box-shadow: 0 2px 4px var(--color-shadow), 0 18px 48px -18px var(--color-shadow);
   overflow: hidden;
 }
-.film-geo { position: absolute; inset: 0; display: block; }
+/* Visible, so a highlight may paint into the card's margin. A clip on the ink
+   group keeps everything else inside the shot's view; the clip opens around a light. */
+.film-geo { position: absolute; inset: 0; display: block; overflow: visible; }
 /* The drawn figure, scaled and shifted so its ink sits in the card with a margin. */
 .film-fit { position: absolute; inset: 0; transform-origin: 0 0; }
 .film-shadow { fill: #10231f; }
@@ -45,10 +47,15 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-line.write { align-self: stretch; max-width: none; display: block; }
 .film-line.answer { display: flex; align-items: center; justify-content: center; }
 .film-line.text { text-align: center; line-height: 1.45; }
-.film-math { display: inline-block; font-size: var(--film-math); line-height: 1.35; padding-block: 0.1em; white-space: nowrap; }
+.film-math { display: inline-block; font-size: calc(var(--film-math) * var(--film-fit, 1)); line-height: 1.35; padding-block: 0.1em; white-space: nowrap; max-width: none; }
 .film-math .katex-display { margin: 0; text-align: left; }
-.film-math .katex-display > .katex { text-align: left; }
+.film-math .katex-display > .katex { text-align: left; white-space: nowrap; }
 .film-math .katex { font-size: 1em; }
+.film-math .katex, .film-math .katex-html, .film-math .base { white-space: nowrap; }
+/* A line broken at its equals sign: the left side ends on the sign, the continuation starts there. */
+.film-math.film-eq { display: inline-grid; grid-template-columns: max-content max-content; row-gap: 0.15em; vertical-align: top; }
+.film-eq-lhs { grid-column: 1; grid-row: 1; justify-self: end; white-space: nowrap; }
+.film-eq-rhs { grid-column: 2; grid-row: 2; justify-self: start; white-space: nowrap; }
 .film-note {
   position: absolute; top: 50%; transform: translateY(-50%);
   color: var(--color-muted-text);
@@ -182,9 +189,9 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 /* a card that cannot fit any other way takes the screen, and the picture and the notes step aside */
 #film[data-card-takeover="1"] .film-shot,
 #film[data-card-takeover="1"] .film-board { visibility: hidden; }
-/* a column too narrow for a margin: each note sits under the end of its own line */
+/* a column too narrow for a margin: every reason sits under the equations, on their shared left edge */
 .notes-below .film-line.has-note { padding-bottom: calc(var(--film-math) * 0.98); }
-.notes-below .film-note { top: auto; bottom: 0; transform: none; }
+.notes-below .film-note { top: auto; bottom: 0; transform: none; text-align: left; }
 /* column arithmetic: digits on a grid, carries and borrows above, a rule over the answer */
 .film-line.stack { display: flex; justify-content: center; }
 .film-stack {

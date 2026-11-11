@@ -115,7 +115,13 @@ for (const earlyPayment of [false, true])
         await pool.query(
           `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='parent'`,
         );
-        await assert.rejects(learners.create(account, "Fixture"), /consent/);
+        // A parent may add and name their own child before consent; the child
+        // learns on the restricted basis (docs/parent-consent.md#childrens-names)
+        // and gets no funded access from it.
+        assert.equal(
+          (await learners.create(account, "Early", 2017)).namePending,
+          true,
+        );
         const now = new Date().toISOString();
         const config: ClassWalletConfig = {
           verificationReference: "synthetic-only",

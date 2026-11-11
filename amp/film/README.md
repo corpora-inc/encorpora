@@ -89,7 +89,9 @@ the existing media publisher, and `originPrefix` for the CDN origin prefix
 (`artifacts`). `AMP_FILM_PUBLISH_CONFIG` can select another configuration file.
 AWS credentials use the provider chain; never put credentials in this file.
 
-Only an explicit approval for the current review edition qualifies. The command
+Only an explicit approval of the current review edition qualifies: the
+founder's grade of it, or a director's follow-up to his approval of an earlier
+edition. The command
 checks the exported screenplay against Git HEAD, validates timing and voice
 bindings, uploads data and narration to content-hashed CDN paths, and verifies
 their bytes and browser access. It writes `src/content/films/manifest.json`
@@ -98,8 +100,25 @@ the normal trunk PR gates; the app deploy includes the film links. Repeating the
 command verifies existing immutable files. `-- --check` validates without writing.
 Removing every approval writes an empty manifest, withdrawing all film links.
 If more than one edition of a problem type is approved, choose one on the review
-page before publishing. Review records, notes, voiced data and audio stay outside
-Git. Clients without `lesson-film-v1` receive written lessons only.
+page before publishing. A screenplay may list further problem types in
+`teaches`, usually the rest of its skill; publishing links the film from each
+of them too, except a type with an approved film of its own, which always wins.
+A type taught by two such films is reported and gets neither until one
+screenplay drops it. `teaches` is not part of the reviewed film, so changing it
+needs no new review. Review records, notes, voiced data and audio stay outside
+Git. A film with a shot's own app figure (`{"scene": ...}`) is published as
+`lesson-film-v3` and reaches only clients that declare it; other films also
+reach `lesson-film-v2` and `lesson-film-v1` clients. Clients that declare none
+receive written lessons only.
+
+When the founder approves a film with notes, the director applies them, exports
+the result as a new edition (its own `added` stamp in the review index) and
+records a follow-up with `npm run film:publish -- --follow-up <film-id> --note
+"<what changed>"`. The follow-up is written to `followups.json` beside the
+grades and publishes nothing; `-- --check` names the films it releases. It
+counts only while the founder approval it answers stands and the media are
+unchanged since; his grade of the new edition decides on its own, and a
+follow-up never releases a rejected film.
 
 Approvals without a screenplay committed in Git HEAD are reported and skipped.
 Commit those screenplays and rerun the command to include them. Uncommitted
