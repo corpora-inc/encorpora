@@ -232,6 +232,14 @@ export const gradebookResponse = z.object({
     .object({
       own: gradeCurveSchema.nullable(),
       proposed: gradeCurveSchema,
+      /** How many students the standard scale puts at each letter now. */
+      standard: z.object({
+        A: z.number(),
+        B: z.number(),
+        C: z.number(),
+        D: z.number(),
+        F: z.number(),
+      }),
     })
     .nullable()
     .default(null),

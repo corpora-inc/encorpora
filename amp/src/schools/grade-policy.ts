@@ -564,31 +564,117 @@ export type CompositeDraw = {
   /** Null where reviews don't count, as in the suggestion. */
   retentionShare: number | null;
 };
-/** The composite for one draw, with the suggestion's own scorers and weights,
- * so a curve ranks exactly what the standard scale scores. */
+/** One student's composite as a function of the estimates alone, with the
+ * calendar, counts and weights worked out once: the suggestion's own scorers,
+ * fast enough to run a thousand times a student. */
+export type CompositeModel = {
+  /** The estimates the course score reads: each strand, else the overall. */
+  strands: readonly Estimate[];
+  start: Estimate | null;
+  end: Estimate;
+  /** Reviews right, as a Beta; null where reviews don't count. */
+  retention: { right: number; wrong: number } | null;
+  score(
+    strandLevels: ArrayLike<number>,
+    startLevel: number | null,
+    endLevel: number,
+    retentionShare: number | null,
+  ): number;
+};
+export function compositeModel(
+  input: GradeInput & { end: StudentLevel },
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): CompositeModel {
+  const { weights, course, growth } = policy;
+  const strands = Object.values(input.end.strands);
+  const estimates = strands.length ? strands : [input.end.overall];
+  const precision = estimates.map(
+    (estimate) => 1 / Math.max(estimate.sd, 0.1) ** 2,
+  );
+  const totalPrecision = precision.reduce((sum, value) => sum + value, 0);
+  const reference = referenceFor(input);
+  const fixedExpected = reference
+    ? expectedLevel(input.year, input.enrolled.to, reference)
+    : null;
+  const yearDays = daysIn(input.year) || growth.fallbackYearDays;
+  const days = daysIn(input.enrolled);
+  const expectedGain = Math.max(
+    0.001,
+    (growth.gradesPerYear * days) / yearDays,
+  );
+  const capped = (pace: number) => Math.min(growth.maximumPace, pace);
+  const objectivePace = capped(
+    input.objectivesGained / (growth.objectivesPerGrade * expectedGain),
+  );
+  const practice = practiceScore(input, policy).score;
+  return {
+    strands: estimates,
+    start: input.start?.overall ?? null,
+    end: input.end.overall,
+    retention: retentionPosterior(input, policy),
+    score(strandLevels, startLevel, endLevel, retentionShare) {
+      // As courseScore: without a course, the student's own start.
+      const expected = fixedExpected ?? startLevel ?? endLevel;
+      let scored = 0;
+      for (let i = 0; i < estimates.length; i++) {
+        const gap = strandLevels[i]! - expected;
+        scored +=
+          precision[i]! *
+          (gap >= 0
+            ? Math.min(
+                100,
+                course.onPaceScore +
+                  ((100 - course.onPaceScore) * gap) / course.aheadFullGrades,
+              )
+            : Math.max(
+                course.floor,
+                course.onPaceScore + gap * course.behindPerGrade,
+              ));
+      }
+      const courseScore = scored / totalPrecision;
+      // As growthScore.
+      const gained =
+        startLevel === null ? 0 : Math.max(0, endLevel - startLevel);
+      const observed =
+        growth.levelShare * capped(gained / expectedGain) +
+        (1 - growth.levelShare) * objectivePace;
+      const pace =
+        (observed * days + growth.steadyDays) / (days + growth.steadyDays);
+      const growthScore =
+        pace <= 1
+          ? growth.floor + (growth.onPaceScore - growth.floor) * pace
+          : Math.min(
+              100,
+              growth.onPaceScore +
+                ((100 - growth.onPaceScore) * (pace - 1)) /
+                  (growth.fullAtPace - 1),
+            );
+      let total =
+        weights.course * courseScore +
+        weights.growth * growthScore +
+        weights.practice * practice;
+      let carried = weights.course + weights.growth + weights.practice;
+      if (retentionShare !== null) {
+        total += weights.retention * 100 * retentionShare;
+        carried += weights.retention;
+      }
+      return total / carried;
+    },
+  };
+}
+/** The composite for one draw (the model, from whole levels). */
 export function compositeScore(
   input: GradeInput,
   draw: CompositeDraw,
   policy: GradePolicy = DEFAULT_GRADE_POLICY,
 ): number {
-  const { weights } = policy;
-  const course = courseScore(input, draw.end, policy).score;
-  const growth = growthScore(
-    { ...input, start: draw.start, end: draw.end },
-    policy,
-  ).score;
-  const practice = practiceScore(input, policy).score;
-  const parts = [
-    { weight: weights.course, score: course },
-    { weight: weights.growth, score: growth },
-    { weight: weights.practice, score: practice },
-    ...(draw.retentionShare === null
-      ? []
-      : [{ weight: weights.retention, score: 100 * draw.retentionShare }]),
-  ];
-  const carried = parts.reduce((sum, part) => sum + part.weight, 0);
-  return (
-    parts.reduce((sum, part) => sum + part.weight * part.score, 0) / carried
+  const model = compositeModel({ ...input, end: draw.end }, policy);
+  const strands = Object.values(draw.end.strands);
+  return model.score(
+    (strands.length ? strands : [draw.end.overall]).map((e) => e.level),
+    draw.start?.overall.level ?? null,
+    draw.end.overall.level,
+    draw.retentionShare,
   );
 }
 

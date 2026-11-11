@@ -66,13 +66,13 @@ const students = (count: number) =>
 export function curveIssueText(issue: CurveIssue): string {
   switch (issue.kind) {
     case "order":
-      return `${issue.letter}’s low is above its high.`;
+      return `${issue.letter}’s fewest is above its most.`;
     case "over":
-      return `${issue.letter}’s high is more than the ${students(issue.size)}.`;
+      return `${issue.letter}’s most is more than the ${students(issue.size)}.`;
     case "lows":
-      return `The lows add to ${issue.total}, ${issue.total - issue.size} more than the ${students(issue.size)}. Lower one.`;
+      return `The fewest add to ${issue.total}, ${issue.total - issue.size} more than the ${students(issue.size)}. Lower one.`;
     case "highs":
-      return `The highs add to ${issue.total}, ${issue.size - issue.total} short of the ${students(issue.size)}. Raise one.`;
+      return `The most add to ${issue.total}, ${issue.size - issue.total} short of the ${students(issue.size)}. Raise one.`;
   }
 }
 

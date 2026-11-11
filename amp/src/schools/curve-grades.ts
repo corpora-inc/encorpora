@@ -11,15 +11,13 @@ import {
   type GradeCurve,
 } from "./grade-curve.js";
 import {
-  compositeScore,
+  compositeModel,
   DEFAULT_GRADE_POLICY,
   letterFor,
-  retentionPosterior,
   type Estimate,
   type GradeInput,
   type GradePolicy,
   type GradeSuggestion,
-  type StudentLevel,
 } from "./grade-policy.js";
 
 /**
@@ -94,22 +92,8 @@ function beta(a: number, b: number, random: () => number): number {
     y = gamma(b, random);
   return x / (x + y);
 }
-const drawEstimate = (estimate: Estimate, random: () => number): Estimate => ({
-  level: estimate.level + Math.max(0, estimate.sd) * normal(random),
-  sd: estimate.sd,
-});
-const drawLevel = (
-  level: StudentLevel,
-  random: () => number,
-): StudentLevel => ({
-  overall: drawEstimate(level.overall, random),
-  strands: Object.fromEntries(
-    Object.entries(level.strands).map(([id, estimate]) => [
-      id,
-      drawEstimate(estimate, random),
-    ]),
-  ),
-});
+const drawFrom = (estimate: Estimate, random: () => number) =>
+  estimate.level + Math.max(0, estimate.sd) * normal(random);
 
 /** Nearest-rank quantiles of a sorted list. */
 const lowQuantile = (sorted: readonly number[], share: number) =>
@@ -144,6 +128,11 @@ function seedOf(
   ]);
 }
 
+const KEPT = 64;
+const recent = new Map<string, Map<string, GradeSuggestion>>();
+/** Drops what's kept, so a test computes afresh. */
+export const forgetCurves = () => recent.clear();
+
 /** Each ranked student's curved suggestion, by id; students without enough work
  * keep theirs. Null when the curve can't hold the class, so the standard scale
  * stands. Pure and deterministic. */
@@ -165,10 +154,18 @@ export function applyCurve(
   const scaled = scaleCurve(curve, size);
   const sample = allocationSampler(scaled.ranges, size);
   if (!sample) return null;
-  const random = seededRandom(seedOf(ranked, curve, policy, options));
+  const seed = seedOf(ranked, curve, policy, options);
+  // Reads of one class repeat (the gradebook, a sheet, a record): the same
+  // seed is the same answer, so it is kept.
+  const kept = recent.get(seed);
+  if (kept) return new Map(kept);
+  const random = seededRandom(seed);
   const bands = letterBands(policy.letters, options.failingFloor);
-  const posteriors = ranked.map(({ input }) =>
-    retentionPosterior(input, policy),
+  const models = ranked.map(({ input }) =>
+    compositeModel({ ...input, end: input.end! }, policy),
+  );
+  const strandLevels = models.map(
+    (model) => new Float64Array(model.strands.length),
   );
   const places = ranked.map(() => new Array<number>(options.draws));
   const scores = ranked.map(() => new Array<number>(options.draws));
@@ -183,18 +180,18 @@ export function applyCurve(
   const tie = new Float64Array(size);
   const order = Array.from({ length: size }, (_, index) => index);
   for (let draw = 0; draw < options.draws; draw++) {
-    ranked.forEach(({ input }, index) => {
-      const posterior = posteriors[index]!;
-      composite[index] = compositeScore(
-        input,
-        {
-          start: input.start && drawLevel(input.start, random),
-          end: drawLevel(input.end!, random),
-          retentionShare: posterior
-            ? beta(posterior.right, posterior.wrong, random)
-            : null,
-        },
-        policy,
+    models.forEach((model, index) => {
+      const levels = strandLevels[index]!;
+      model.strands.forEach((estimate, strand) => {
+        levels[strand] = drawFrom(estimate, random);
+      });
+      composite[index] = model.score(
+        levels,
+        model.start && drawFrom(model.start, random),
+        drawFrom(model.end, random),
+        model.retention
+          ? beta(model.retention.right, model.retention.wrong, random)
+          : null,
       );
       // Equal composites share their places evenly.
       tie[index] = random();
@@ -243,5 +240,7 @@ export function applyCurve(
       },
     });
   });
-  return result;
+  recent.set(seed, result);
+  if (recent.size > KEPT) recent.delete(recent.keys().next().value!);
+  return new Map(result);
 }

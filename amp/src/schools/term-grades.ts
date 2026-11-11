@@ -574,10 +574,10 @@ export async function curveFor(
   return parsed.data;
 }
 
-/** A starting curve from the class's own work: each student with a range, at
- * its letter on the standard scale, for the whole roster. */
-export function proposedCurve(rows: readonly GradebookRow[]): GradeCurve {
-  const letters = rows.flatMap(({ suggestion }) => {
+/** Each student with a range, at its letter on the standard scale: the middle
+ * of the range the curve replaced, where one did. */
+export function standardLetters(rows: readonly GradebookRow[]): CurveLetter[] {
+  return rows.flatMap(({ suggestion }) => {
     const range = suggestion.curve?.standard ?? suggestion;
     if (suggestion.status !== "ready" || range.low === null) return [];
     const family = letterFamily(
@@ -585,8 +585,10 @@ export function proposedCurve(rows: readonly GradebookRow[]): GradeCurve {
     );
     return family ? [family] : [];
   });
-  return defaultCurve(letters as CurveLetter[], Math.max(1, rows.length));
 }
+/** A starting curve from the class's own work, for the whole roster. */
+export const proposedCurve = (rows: readonly GradebookRow[]): GradeCurve =>
+  defaultCurve(standardLetters(rows), Math.max(1, rows.length));
 /** The curve a term's grades used: what was frozen with a closed term, else
  * what is set now. */
 export async function termCurve(

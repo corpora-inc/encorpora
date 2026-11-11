@@ -101,6 +101,10 @@ function check(theme: Theme) {
   // A meter's fill reads on the page and on a card.
   need("meter", "surface", UI);
   need("meter", "surface-raised", UI);
+  // A grade curve's letters are marks on every neutral surface.
+  for (const letter of ["a", "b", "c", "d", "f"])
+    for (const bg of ["surface", "surface-raised", "surface-sunken"])
+      need(`grade-${letter}`, bg, UI);
   // Strand colors are marks (dots, bars) on every neutral surface.
   for (const strand of [
     "number",

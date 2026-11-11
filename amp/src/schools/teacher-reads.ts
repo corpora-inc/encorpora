@@ -26,6 +26,7 @@ import {
   objectivesBySpan,
   PERSON_FIRST,
   proposedCurve,
+  standardLetters,
   PERSON_NAME,
   skillStrandOf,
   skillTitleOf,
@@ -55,7 +56,11 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
-import { curveSentence } from "./grade-curve.js";
+import {
+  curveLetters,
+  curveSentence,
+  type CurveLetter,
+} from "./grade-curve.js";
 import { practiced } from "./practice-rules.js";
 import {
   todayTodos,
@@ -412,7 +417,20 @@ export async function readGradebook(
       suggestion: toSuggestionResource(suggestion),
       final,
     })),
-    curve: term && rows.length ? { own, proposed: proposedCurve(rows) } : null,
+    curve:
+      term && rows.length
+        ? {
+            own,
+            proposed: proposedCurve(rows),
+            standard: Object.fromEntries(
+              curveLetters.map((letter) => [
+                letter,
+                standardLetters(rows).filter((found) => found === letter)
+                  .length,
+              ]),
+            ) as Record<CurveLetter, number>,
+          }
+        : null,
   };
 }
 
