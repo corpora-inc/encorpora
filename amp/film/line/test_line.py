@@ -30,6 +30,7 @@ def setup(tmp_path, monkeypatch):
     config = {'root': str(tmp_path/'private'), 'worktree': str(worktree), 'env_file': str(env),
               'heavy': '/usr/bin/env', 'standards': str(tmp_path/'standards.json'),
               'live_data': str(tmp_path/'live/data'), 'player_url': 'http://localhost/live/',
+              'queue_page': str(tmp_path/'index.html'),
               'review_url': 'http://localhost/live/line.html', 'voice_cache': str(tmp_path/'cache')}
     pack = {'skill': {'id': 'example.skill', 'title': 'One whole skill'},
             'standards': [{'code': 'X.1', 'text': 'Exact synthetic standard.'}], 'standards_sha256': 'fixture',
@@ -138,7 +139,7 @@ def test_predict_and_board_only_reveal_author_after_current_score(setup):
     prediction = line.predict(config, args.film, 8.5, 'The picture explains the operation.')
     assert prediction['score'] == 8.5
     data = Path(config['live_data'])
-    providers.write_json(data/'index.json', [{'id': args.film, 'title': 'A < B', 'seconds': 90, 'added': 'new'}])
+    providers.write_json(data/'queue.json', [{'id': args.film, 'title': 'A < B', 'seconds': 90, 'added': 'new'}])
     providers.write_json(data/'reviews.json', {args.film: {'score': 7, 'added': 'old', 'summary': 'Old note'}})
     page = pages.board(config).read_text()
     assert 'gpt-6.1-sol' not in page and 'Old note' not in page
@@ -150,7 +151,7 @@ def test_predict_and_board_only_reveal_author_after_current_score(setup):
     pages.line_page(config)
     page = (data.parent/'line.html').read_text()
     assert 'gpt-6.1-sol' not in page and 'note' not in page.split('const films=')[1]
-    assert f'review.html?id={args.film}&amp;list=line' in page and 'A &lt; B' in page
+    assert args.film in page and 'A \\u003c B' in page and 'location.replace' in page
     for score in (True, float('nan'), -1, 11):
         with pytest.raises(ValueError):
             line.predict(config, args.film, score, 'reason')
@@ -198,19 +199,19 @@ def test_accounting_retains_unknown_and_partial_costs_without_double_counting(tm
     assert result['voice_dollars'] is None
 
 
-def test_board_and_list_order_are_newest_first_without_hidden_model_data(setup):
+def test_board_is_newest_first_and_line_preserves_release_order_without_author(setup):
     config, args, _, _ = setup
     first = line.write_film(config, args)
     second = {**first, 'id': 'example--second', 'started_at': '9999', 'model': 'PRIVATE_AUTHOR'}
     providers.write_json(Path(config['root'])/'example--second/recipe.json', second)
-    providers.write_json(Path(config['live_data'])/'index.json', [
+    providers.write_json(Path(config['live_data'])/'queue.json', [
         {'id': first['id'], 'title': 'First', 'added': '2026-01-01', 'seconds': 60},
         {'id': second['id'], 'title': 'Second', 'added': '2026-01-02', 'seconds': 90}])
     assert [r['id'] for r in pages.board_rows(config)] == [second['id'], first['id']]
     assert 'PRIVATE_AUTHOR' not in pages.board(config).read_text()
     pages.line_page(config)
     page = (Path(config['live_data']).parent/'line.html').read_text()
-    assert page.index('Second') < page.index('First')
+    assert page.index('First') < page.index('Second')
     assert 'PRIVATE_AUTHOR' not in page
 
 

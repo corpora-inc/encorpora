@@ -2,6 +2,8 @@
 import html
 import json
 import math
+import os
+from urllib.parse import quote
 from pathlib import Path
 
 from state import read_json
@@ -17,16 +19,16 @@ def recipes(config):
                   key=lambda r: (r['started_at'], r['id']), reverse=True)
 
 
-def write_page(config, name, title, body):
+def write_page(config, name, title, body, *, destination=None):
     source = Path(config['worktree'])/'amp'
     # Reuse the review desk's actual tokens and CSS, including focus states.
     css = (source/'src/web/ui/tokens.css').read_text()+'\n'+(source/'film/review.css').read_text()
     css += '''
 html,body{height:auto;overflow:auto}main.panel{display:block;max-width:1100px;width:auto;margin:auto;overflow:visible}
-a{color:var(--color-figure-accent);overflow-wrap:anywhere}nav a,.film{display:inline-flex;align-items:center;min-height:44px}
+a{color:var(--color-figure-accent);overflow-wrap:anywhere}nav a,.film{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 section{padding:16px 0;border-bottom:1px solid var(--color-border)}h2{font-size:20px}p{overflow-wrap:anywhere}
-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--color-border);vertical-align:top;overflow-wrap:anywhere}
-small{display:block;color:var(--color-muted-text)}.note{white-space:pre-wrap}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+table{table-layout:fixed;width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--color-border);vertical-align:top;overflow-wrap:anywhere}
+small{display:block;color:var(--color-muted-text)}.note{white-space:pre-wrap}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:12px}
 @media(max-width:767px){table,tbody,tr,td{display:block}thead{display:none}tr{padding:16px 0;border-bottom:1px solid var(--color-border)}td{border:0;padding:4px 0}td:before{content:attr(data-label) ': ';font-weight:650}}
 '''
     page = ('<!doctype html><html lang="en"><meta charset="utf-8">'
@@ -36,7 +38,7 @@ small{display:block;color:var(--color-muted-text)}.note{white-space:pre-wrap}.me
             'const paint=()=>document.documentElement.dataset.theme=theme.matches?"dark":"light";'
             'paint();theme.addEventListener("change",paint);</script><style>'+css+'</style>'
             '<main class="panel"><h1>'+html.escape(title)+'</h1>'+body+'</main></html>')
-    path = Path(config['live_data']).parent/(name+'.html')
+    path = Path(destination) if destination else Path(config['live_data']).parent/(name+'.html')
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix('.html.tmp')
     temporary.write_text(page)
@@ -44,22 +46,54 @@ small{display:block;color:var(--color-muted-text)}.note{white-space:pre-wrap}.me
     return path
 
 
+
+def queue_location(config):
+    if not config.get('queue_page'):
+        raise ValueError('Set queue_page to the review site root HTML file')
+    return Path(config['queue_page'])
+
+
+def relative_url(path, parent):
+    return quote(os.path.relpath(path, parent).replace(os.sep, '/'), safe='/')
+
+
+def script_json(value):
+    return json.dumps(value, ensure_ascii=False).replace('<', '\\u003c')
+
+
 def line_page(config):
-    index = {r['id']: r for r in read_json(Path(config['live_data'])/'index.json', [])}
-    # Only this allowlist is embedded. No recipe or prediction enters the list.
-    rows = [{k: index[r['id']].get(k) for k in ('id', 'title', 'added', 'seconds')}
-            for r in recipes(config) if r['id'] in index]
-    rows.sort(key=lambda r: (r['added'] or '', r['id']), reverse=True)
-    body = '<p>One film per skill. Open a film to watch, score it, and leave a note.</p>'
-    for row in rows:
-        identifier = html.escape(row['id'], quote=True)
-        minutes, seconds = divmod(round(row['seconds'] or 0), 60)
-        body += (f'<section data-film="{identifier}"><a class="film" href="review.html?id={identifier}&amp;list=line">'
-                 f'{html.escape(row["title"] or row["id"])}</a><small>{minutes}:{seconds:02}</small></section>')
-    body += '<script>const films='+json.dumps(rows, ensure_ascii=False).replace('<', '\\u003c')+';</script>'
-    write_page(config, 'line', 'AMP lesson films', body)
+    rows = read_json(Path(config['live_data'])/'queue.json', [])
+    location = queue_location(config)
+    queue = relative_url(location.parent if location.name == 'index.html' else location, Path(config['live_data']).parent)
+    if location.name == 'index.html':
+        queue += '/'
+    body = '<p><a class="film" href="'+html.escape(queue, quote=True)+'">Review queue</a></p>'
+    body += '<script>const films='+script_json(rows)+';location.replace('+script_json(queue)+');</script>'
+    write_page(config, 'line', 'Review queue', body)
     return len(rows)
 
+
+def queue_page(config):
+    path = queue_location(config)
+    live = Path(config['live_data']).parent
+    urls = {'queue': relative_url(Path(config['live_data'])/'queue.json', path.parent),
+            'reviews': relative_url(live/'review', path.parent),
+            'review': relative_url(live/'review.html', path.parent)}
+    body = '''<style>
+.q-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--color-border)}
+.q-main{min-width:0;flex:1}.q-row a{font-size:18px;font-weight:600;min-height:44px;min-width:44px;display:inline-flex;align-items:center;text-decoration:none}
+.q-row a:hover,.q-row a:focus-visible{text-decoration:underline}
+.q-meta,.q-note,.q-side{color:var(--color-muted-text);font-size:14px}.q-note{margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
+.q-side{flex:none;text-align:right}.q-score{font-size:26px;font-weight:700;color:var(--color-on-surface)}
+.q-row a.q-watch{box-sizing:border-box;padding:0 18px;border-radius:999px;background:var(--color-primary);color:var(--color-on-primary);font-size:16px}
+.q-row a.q-watch:hover{background:var(--color-primary-hover)}.q-list{min-height:60px}footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+</style><p>Watch a film, give it one score and a note.</p>
+<h2>Waiting for your score</h2><div class="q-list" id="waiting" aria-live="polite">Loading…</div>
+<h2>Scored</h2><div class="q-list" id="scored"></div>'''
+    body += '<script>const urls='+script_json(urls)+';'+(Path(__file__).parent/'queue.js').read_text()+'</script>'
+    if (live/'board.html').exists():
+        body += '<footer><a href="'+html.escape(relative_url(live/'board.html', path.parent), quote=True)+'">Scoreboard</a></footer>'
+    return write_page(config, 'queue', 'AMP lesson films', body, destination=path)
 
 def founder_score(identifier, public, reviews, grades):
     def current(entry):
@@ -81,26 +115,28 @@ METRICS = {'score': 'Founder score', 'prediction': 'Director score', 'dollars': 
 
 def board_rows(config):
     data = Path(config['live_data'])
-    index = {r['id']: r for r in read_json(data/'index.json', [])}
+    index = {r['id']: r for r in read_json(data/'queue.json', [])}
     reviews, grades = read_json(data/'reviews.json', {}), read_json(data/'grades.json', {})
     predictions = read_json(Path(config['root'])/'predictions.json', {})
     rows = []
     for recipe in recipes(config):
         identifier = recipe['id']
+        if identifier not in index:
+            continue
         score, note = founder_score(identifier, index.get(identifier), reviews, grades)
         cost, tokens = recipe.get('cost', {}), recipe.get('tokens') or {}
         components = [tokens.get(k) for k in ('input_uncached', 'input_cached', 'cache_write', 'output')]
         prediction = predictions.get(identifier, {})
-        row = {'id': identifier, 'title': recipe['skill']['title'], 'status': recipe['status'],
+        row = {'id': identifier, 'title': index[identifier]['title'], 'status': recipe['status'],
                'score': score, 'note': note, 'prediction': prediction.get('score'),
                'reason': prediction.get('reason', ''),
                'author': f'{recipe["model"]} / {recipe["effort"]}' if score is not None else 'Awaiting founder score',
                'dollars': cost.get('known_model_dollars') if cost.get('model_receipts_without_full_dollars') == 0 else None,
                'partial_dollars': cost.get('known_model_dollars'),
-               'tokens': sum(components) if all(number(n) for n in components) and recipe.get('usage_complete') else None,
+               'tokens': recipe.get('external_usage', {}).get('tokens') if recipe.get('adopted') else sum(components) if all(number(n) for n in components) and recipe.get('usage_complete') else None,
                'characters': cost.get('voice_input_characters'), 'credits': cost.get('voice_confirmed_credits'),
                'reserved': cost.get('voice_reserved_credits'),
-               'minutes': recipe['total_seconds']/60 if number(recipe.get('total_seconds')) else None}
+               'minutes': (recipe['total_seconds']/60 + (recipe.get('external_usage', {}).get('minutes') or 0)) if number(recipe.get('total_seconds')) else None}
         rows.append(row)
     return rows
 
@@ -144,4 +180,6 @@ def board(config):
         for key in ('tokens', 'characters', 'credits', 'reserved', 'minutes'):
             cells['Usage'] += '<small>'+display(row[key])+' '+METRICS[key].lower()+'</small>'
         body += '<tr>'+''.join(f'<td data-label="{label}">{value}</td>' for label, value in cells.items())+'</tr>'
-    return write_page(config, 'board', 'Film production board', body+'</tbody></table>')
+    path = write_page(config, 'board', 'Film production board', body+'</tbody></table>')
+    queue_page(config)
+    return path
