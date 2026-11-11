@@ -12,7 +12,7 @@ npx tsx film/make.ts <template-id>          # the 4K film, captions and contact.
 
 Fix everything `--check` prints before rendering. Then look at `contact.jpg`.
 
-`--dry --board` also writes `storyboard.jpg`: the screen as each beat ends, numbered. Look at every frame. The picture should fill its card, labels should stand apart, and the board should show the step the voice just said.
+`--dry --board` also writes `storyboard.jpg`: the screen as each beat ends, numbered, and beside it a frame for every moment a highlight is held, marked `lit`. Look at every frame, including the lit ones. The picture should fill its card, a light must not leave the card or touch a label, labels should stand apart, and the board should show the step the voice just said.
 
 The voice takes care of itself. Every take is transcribed and compared with your `say` lines; a take that skips, repeats or misreads a word, or is cut off, is made again automatically. Pauses go only into silence the voice really has, and a narration with an audible edit is never rendered. A `note:` line from `--check` (a pause that had to be left out, a take that failed three times) needs no action unless it names a word: then reword that line.
 
@@ -199,7 +199,7 @@ Place value, decimals and trades are drawn with the app's own base-ten blocks in
 
 `tenths-as-hundredths` is the reference: the definition cut live on one flat, flat | rod | square under their names, a rename (7 rods into 70 squares, 0.7 = 0.70), the same with wholes in front, and tenths added to hundredths with the trap on a `watch` card.
 
-`npx tsx film/make.ts <id> --dry --board --tall` shoots the storyboard for a phone held upright (`storyboard-tall.jpg`, frames in `board-tall/`); look at both.
+`npx tsx film/make.ts <id> --dry --board --tall` shoots the storyboard for a phone held upright (`storyboard-tall.jpg`, beat frames in `board-tall/`, held highlights in `board-tall/lit/`); look at both.
 
 ### The circle and the wave
 
