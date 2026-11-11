@@ -3,6 +3,7 @@ import { base, fill, label, num as zNum, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { FillRole, Point } from "../spec";
 import { count } from "../../agreement";
+import { textClearsBox } from "../type";
 import { num, spoken } from "./format";
 
 /** A rectangle partitioned by place value or by terms: an area model. */
@@ -156,15 +157,19 @@ registerComponent("areaModel", {
         y -= h;
         for (const [i, w] of across.entries()) {
           const text = num(c.across[i]! * c.down[j]!);
-          prims.push({
-            type: "text",
-            id: `product.${i}.${j}`,
-            at: [x + w / 2, y + h / 2],
-            text,
-            derived: c.products !== "shown",
-            bold: true,
-            size: w * s < 44 ? "sm" : "md",
-          });
+          const size = (["md", "sm"] as const).find((sz) =>
+            textClearsBox(text, "math", sz, w * s, h * s, true),
+          );
+          if (size)
+            prims.push({
+              type: "text",
+              id: `product.${i}.${j}`,
+              at: [x + w / 2, y + h / 2],
+              text,
+              derived: c.products !== "shown",
+              bold: true,
+              size,
+            });
           x += w;
         }
       }

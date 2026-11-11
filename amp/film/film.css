@@ -65,7 +65,8 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-line .katex { font-size: 1.08em; }
 .film-line.text.muted { color: var(--color-muted-text); }
 .film-line.answer {
-  padding: 32px 48px;
+  /* Half a line of the math inside, equal on every side. */
+  padding: calc(0.5 * 1.35 * var(--film-math));
   border-radius: 22px;
   background: color-mix(in srgb, var(--color-success) calc(var(--film-box, 0) * 100%), transparent);
   box-shadow: inset 0 0 0 calc(var(--film-box, 0) * 3px) var(--color-success-accent);
@@ -73,7 +74,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 }
 .film-line.problem {
   width: var(--film-card, 1400px); box-sizing: border-box;
-  padding: 48px 52px;
+  padding: max(52px, calc(0.5 * 1.48 * 0.74 * var(--film-math)));
   background: var(--color-answer);
   border: 2px solid var(--color-border);
   border-radius: 22px;
@@ -81,7 +82,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   line-height: 1.48;
 }
 .film-line.term {
-  padding: 44px 48px;
+  padding: max(48px, calc(0.5 * 1.48 * 0.7 * var(--film-math)));
   background: var(--color-secondary);
   color: var(--color-on-secondary);
   border-radius: 22px;
@@ -90,7 +91,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 }
 .film-line.term b { display: block; font-family: var(--font-display); font-size: 1.16em; line-height: 1.35; margin-bottom: 0.42em; }
 .film-line.watch {
-  padding: 44px 48px;
+  padding: max(48px, calc(0.5 * 1.48 * 0.7 * var(--film-math)));
   background: var(--color-warning);
   color: var(--color-on-warning);
   border-left: 10px solid var(--color-warning-accent);
@@ -98,7 +99,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   font-size: calc(var(--film-math) * 0.7);
   line-height: 1.48;
 }
-.film-line.problem.long { font-size: calc(var(--film-math) * 0.6); padding: 42px 46px; }
+.film-line.problem.long { font-size: calc(var(--film-math) * 0.6); padding: max(46px, calc(0.5 * 1.48 * 0.6 * var(--film-math))); }
 .film-line.problem.long .film-display { font-size: calc(var(--film-math) * 0.8); margin: 20px 0 16px; }
 .film-line.problem.long .film-choices { gap: 16px 18px; margin-top: 22px; }
 .film-line.problem .film-display { font-size: calc(var(--film-math) * 0.95); margin: 28px 0 18px; text-align: center; }
@@ -106,7 +107,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-line.problem .film-display .katex { font-size: 1em; }
 .film-choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 22px; margin-top: 28px; font-size: 0.86em; }
 .film-choices > span {
-  padding: 22px 32px; border-radius: 999px;
+  padding: calc(0.5 * 1.4em); border-radius: 999px;
   border: 2px solid var(--color-border); background: var(--color-surface);
   /* a short choice stays on one line; a sentence-long one takes its own row and wraps inside its pill */
   flex: 0 0 auto; max-width: 100%; box-sizing: border-box; text-align: center; line-height: 1.4;
@@ -170,7 +171,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   border: 1.5px solid var(--color-border);
   border-radius: 28px;
   box-shadow: 0 2px 4px var(--color-shadow), 0 18px 48px -18px var(--color-shadow);
-  padding: 56px 52px; display: flex; flex-direction: column; gap: 40px;
+  padding: 56px; display: flex; flex-direction: column; gap: 40px;
   font-size: 48px; line-height: 1.48;
 }
 .film-recap-item { display: grid; grid-template-columns: 64px 1fr; align-items: start; column-gap: 8px; }
@@ -191,21 +192,32 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .notes-below .film-note { top: auto; bottom: 0; transform: none; text-align: left; }
 /* column arithmetic: digits on a grid, carries and borrows above, a rule over the answer */
 .film-line.stack { display: flex; justify-content: center; }
-.film-stack { display: grid; grid-auto-rows: auto; column-gap: 0.08em; font-size: var(--film-math); line-height: 1.28; position: relative; }
+.film-stack {
+  display: grid; grid-auto-rows: auto; font-size: var(--film-math); line-height: 1.28; position: relative;
+  /* Half a line, equal on every side. The band grows into the padding and the gaps, so a digit, a place name and the rule stay off the shade. */
+  --film-region-margin: calc(0.5 * 1.28em + 4px);
+  padding: var(--film-region-margin);
+  column-gap: calc(2 * var(--film-region-margin));
+}
 .film-stack .katex { font-size: 1em; }
-.film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0.06em 0.08em; z-index: 1; }
+.film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0.08em 0.12em; z-index: 1; }
 .film-stack-cell.point { min-width: 0.24em; }
 .film-stack-cell.op { padding-right: 0.22em; }
 .film-stack-cell.pad { color: var(--color-figure-accent); }
 .film-stack-cell.mark { font-size: 0.5em; line-height: 1.5; align-self: end; color: #9a5c12; font-weight: 600; }
 .film-stack-cell.mark.borrow { color: #9c4420; }
-.film-stack-rule { border-top: 0.06em solid currentColor; z-index: 1; }
-.film-stack-cell.answer { color: var(--color-figure-accent); z-index: 1; }
-.film-stack-band { background: color-mix(in srgb, var(--color-figure-accent) 12%, transparent); border-radius: 0.16em; margin: -0.04em 0; z-index: 0; }
+.film-stack-cell.pre-rule { padding-bottom: var(--film-region-margin); }
+.film-stack-rule { border-top: 0.06em solid currentColor; align-self: start; z-index: 1; }
+.film-stack-cell.answer { color: var(--color-figure-accent); z-index: 1; padding-top: var(--film-region-margin); padding-bottom: 0.08em; }
+.film-stack-band {
+  background: color-mix(in srgb, var(--color-figure-accent) 12%, transparent);
+  border-radius: 0.16em;
+  margin: calc(-1 * var(--film-region-margin));
+  z-index: 0;
+}
 .film-strike { position: absolute; left: 8%; right: 8%; top: 50%; height: 0.06em; background: #9c4420; transform: rotate(-24deg); }
 
 /* a stack with headers is the place-value chart: place names on top, even columns, the point line through every row */
-.film-stack.headers { column-gap: 0.16em; }
 .film-stack.headers .film-stack-cell { justify-self: center; }
 .film-stack-cell.head {
   align-self: end; padding: 0 0.1em 0.3em; white-space: nowrap;

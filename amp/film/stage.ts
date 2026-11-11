@@ -1727,9 +1727,9 @@ class GeoStage {
       if (!cell || opacity < 0.002) return;
       const content = cell.amount === undefined ? "?" : Number.isInteger(cell.amount) ? fmtNum(cell.amount) : `\\frac{${fmtNum(spec.whole!)}}{${plan.divisions}}`;
       if (el.dataset.value !== content) { el.innerHTML = tex(content); el.dataset.value = content; }
-      if (opacity > 0.5) fitCellLabel(el, cell.box.w * s, cell.box.h * s, 10, 8);
+      if (opacity > 0.5) fitCellLabel(el, cell.box.w * s, cell.box.h * s);
       place(el, map(cell.center), "c", 0, opacity, values.em);
-      if (opacity > 0.5 && !fits(el.offsetWidth, el.offsetHeight, cell.box.w * s, cell.box.h * s, 10, 8))
+      if (opacity > 0.5 && !fits(labelInk(el).w, labelInk(el).h, cell.box.w * s, cell.box.h * s, labelMargin(el), labelMargin(el)))
         this.tableIssues.add(`bar ${p.id}: a per-piece value does not fit. Widen the bar or hide .values.`);
     });
     const title = this.chainState([`${p.id}.title`], true, t);
@@ -1809,9 +1809,9 @@ class GeoStage {
       bg.style.strokeWidth = st.em > 0.02 ? String(3 + 4 * st.em) : "0";
       bg.style.opacity = String(o);
       if (st.em > 0.02) this.markEm(bg, st.em);
-      if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s, 12, 8);
+      if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s);
       place(el, map([box.x + box.w / 2, box.y + box.h / 2]), "c", 0, o, st.em);
-      if (o > 0.5 && !fits(el.offsetWidth, el.offsetHeight, box.w * s, box.h * s, 12, 8))
+      if (o > 0.5 && !fits(labelInk(el).w, labelInk(el).h, box.w * s, box.h * s, labelMargin(el), labelMargin(el)))
         this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(box.w * s)} by ${Math.round(box.h * s)} px. Widen the cell or shorten the text.`);
     }
     g.style.display = frameO < 0.002 ? "none" : "";
@@ -2070,13 +2070,33 @@ function place(el: HTMLElement, at: P, dir: string, far: number, o: number, em: 
   else delete el.dataset.em;
   el.style.removeProperty("text-shadow");
 }
-/** Shrink a label until it clears its cell. Extra leading must not spill into the rules. */
-function fitCellLabel(el: HTMLElement, cellW: number, cellH: number, padX = 12, padY = 8) {
+/** Half a line of the label: the room a cell keeps on every side. */
+function labelMargin(el: HTMLElement) {
+  const cs = getComputedStyle(el);
+  const fs = parseFloat(cs.fontSize) || 44;
+  const lh = cs.lineHeight === "normal" ? fs * 1.2 : parseFloat(cs.lineHeight);
+  // The extra pixels cover a font that draws a little outside its line box.
+  return 0.5 * (Number.isFinite(lh) && lh > 0 ? lh : fs) + 4;
+}
+/** The label's ink, including what draws outside its line box. */
+function labelInk(el: HTMLElement) {
+  return {
+    w: Math.max(el.offsetWidth, el.scrollWidth),
+    h: Math.max(el.offsetHeight, el.scrollHeight),
+  };
+}
+/** Shrink a label until it clears its cell by half a line on every side. */
+function fitCellLabel(el: HTMLElement, cellW: number, cellH: number) {
   el.style.fontSize = "";
   let size = parseFloat(getComputedStyle(el).fontSize) || 44;
-  for (let i = 0; i < 8 && !fits(el.offsetWidth, el.offsetHeight, cellW, cellH, padX, padY); i++) {
+  const clear = () => {
+    const ink = labelInk(el);
+    const margin = labelMargin(el);
+    return fits(ink.w, ink.h, cellW, cellH, margin, margin);
+  };
+  for (let i = 0; i < 10 && !clear(); i++) {
     size *= 0.9;
-    if (size < 24) break;
+    if (size < 22) break;
     el.style.fontSize = `${size.toFixed(1)}px`;
   }
 }
@@ -2197,15 +2217,16 @@ function renderStack(plan: StackPlan, host: HTMLElement, headers = false): { el:
   const digitEls: HTMLElement[][] = plan.rows.map(() => []);
   const pads: HTMLElement[] = [];
   plan.rows.forEach((r, ri) => {
+    const aboveRule = ri === n - 1 ? " pre-rule" : "";
     r.forEach((d, c) => {
       if (!d.digit) return;
-      const e = cell(d.pad ? "pad" : "", ri + 2 + h, gcol(c), tex(d.digit));
+      const e = cell(`${d.pad ? "pad" : ""}${aboveRule}`, ri + 2 + h, gcol(c), tex(d.digit));
       digitEls[ri]![c] = e;
       if (d.pad) pads.push(e);
     });
-    if (plan.frac) cell("point", ri + 2 + h, pointCol, tex("."));
+    if (plan.frac) cell(`point${aboveRule}`, ri + 2 + h, pointCol, tex("."));
   });
-  cell("op", n + 1 + h, 1, tex(plan.op === "+" ? "+" : "-"));
+  cell("op pre-rule", n + 1 + h, 1, tex(plan.op === "+" ? "+" : "-"));
   const rule = div("film-stack-rule", g);
   rule.style.gridRow = String(ansRow); rule.style.gridColumn = `1 / ${2 + width + (plan.frac ? 1 : 0)}`;
   const point = plan.frac ? cell("point answer", ansRow, pointCol, tex(".")) : null;
