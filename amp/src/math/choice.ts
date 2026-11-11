@@ -113,9 +113,13 @@ export function generateChoiceProblem(
       hint = `Subtract ${a}x and ${b} from both sides of ${a}x + ${b} = ${c}x + ${d}. Is what is left a value for $x$, a false statement, or true for every $x$?`;
       explanation = [
         `A solution is a value of $x$ that makes both sides equal. Simplify the equation to see how many there are.`,
-        `Subtract $${a}x$ and then ${b} from both sides, which keeps them equal: $0 = ${c - a}x + ${d - b}$.`,
+        `Subtract $${a}x$ and then ${b} from both sides, which keeps them equal: $0 = ${
+          c - a === 0
+            ? d - b
+            : `${c - a === 1 ? "x" : `${c - a}x`}${d - b === 0 ? "" : d - b > 0 ? ` + ${d - b}` : ` - ${b - d}`}`
+        }$.`,
         category === 0
-          ? `The number multiplying $x$ (its coefficient) is ${c - a}, not zero. So $${c - a}x = ${b - d}$ picks out exactly one value of $x$.`
+          ? `The number multiplying $x$ (its coefficient) is ${c - a}, not zero. So $${c - a === 1 ? "x" : `${c - a}x`} = ${b - d}$ picks out exactly one value of $x$.`
           : category === 1
             ? `The $x$-terms canceled, leaving $0 = ${d - b}$. That is false whatever $x$ is.`
             : "The $x$-terms canceled, leaving $0 = 0$. That is true whatever $x$ is.",
@@ -171,18 +175,20 @@ export function generateChoiceProblem(
         `From $A$ to $B$, $x$ goes up by 2 and $y$ goes up by ${2 * m}. Slope is rise over run: ${2 * m}/2 = ${m}.`,
         `So the equation is $y = ${m === 1 ? "" : m}x + ${b}$. Check $B$: $${m} \\times 2 + ${b} = ${b + 2 * m}$.`,
       ];
+      const slopeTerm = (slope: number) =>
+        slope === 1 ? "x" : slope === -1 ? "−x" : `${slope}x`;
       choices = [
-        { label: `y = ${m}x + ${b}`, correct: true },
+        { label: `y = ${slopeTerm(m)} + ${b}`, correct: true },
         {
           label: `y = ${b}x + ${m}`,
           feedback: `This swaps the slope and intercept. At x = 0 it gives y = ${m}, but $A$ is at y = ${b}.`,
         },
         {
-          label: `y = ${m}x`,
+          label: `y = ${slopeTerm(m)}`,
           feedback: `This line would pass through (0, 0). The displayed line crosses the $y$-axis at ${b}.`,
         },
         {
-          label: `y = −${m}x + ${b}`,
+          label: `y = ${slopeTerm(-m)} + ${b}`,
           feedback:
             "A negative slope falls as $x$ increases. The displayed line rises from $A$ to $B$.",
         },

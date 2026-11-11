@@ -25,8 +25,13 @@ const fmt = (a: Q) =>
 const operand = (a: Q) => (a.n < 0 ? `(${fmt(a)})` : fmt(a));
 const constant = (b: number) =>
   b === 0 ? "" : ` ${b < 0 ? "−" : "+"} ${Math.abs(b)}`;
-const term = (a: number) => (a === 1 ? "x" : a === -1 ? "−x" : `${fmt(q(a))}x`);
-const inner = (a: number, b: number) => term(a) + constant(b);
+const term = (a: number) =>
+  a === 0 ? "" : a === 1 ? "x" : a === -1 ? "−x" : `${fmt(q(a))}x`;
+const inner = (a: number, b: number) => {
+  const x = term(a);
+  if (!x) return fmt(q(b));
+  return x + constant(b);
+};
 const factor = (k: number) => (k === 1 ? "" : k === -1 ? "−" : fmt(q(k)));
 const roots = (a: number, b: number, c: Q) =>
   [mul(add(c, q(-b)), q(1, a)), mul(add(neg(c), q(-b)), q(1, a))].sort(
@@ -124,7 +129,7 @@ function generateCase(
     tags.push(truth ? "true" : "false");
     explanation.push(
       kind === "constant-interior"
-        ? `For every real $x$, 0x = 0, so |${inner(a, b)}| = |${fmt(q(b))}| = ${Math.abs(b)}.`
+        ? `The coefficient of $x$ is 0, so the inside does not change with $x$: |${inner(a, b)}| = |${fmt(q(b))}| = ${Math.abs(b)}.`
         : `For every real $x$, multiplying |${inner(a, b)}| by 0 gives 0.`,
       `The left side is ${kind === "constant-interior" ? `${fmt(q(k))} × ${Math.abs(b)}${constant(d)}` : `0${constant(d)}`} = ${fmt(q(total))}. The equation therefore says ${fmt(q(total))} = ${fmt(e)}.`,
       `This numerical statement is ${truth ? "true" : "false"} and does not depend on $x$. ${truth ? "Every real number satisfies the original equation." : "No real number satisfies the original equation."}`,

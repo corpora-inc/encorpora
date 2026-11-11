@@ -810,7 +810,7 @@ function linearRule(r: Random, kind: string): Rule {
       text: `y = ${c}`,
       linear: true,
       kind,
-      note: `y = ${c} is y = 0x + ${c}: its rate of change is 0, and its graph is a horizontal line`,
+      note: `y = ${c} does not change with x, so its rate of change is 0 and its graph is a horizontal line`,
     };
   }
   if (kind === "factored") {

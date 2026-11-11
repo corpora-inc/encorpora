@@ -35,6 +35,7 @@ import {
   type PointPlotResponse,
 } from "./point-plot";
 import { chooseAxes, defineAxis, type Random } from "./variation/axes";
+import { n, termText, twoTerm } from "./algebra-one-kit";
 
 /**
  * Common Core clause families for equations and inequalities.
@@ -126,12 +127,21 @@ const feq = (a: Fr, b: Fr) => a.n === b.n && a.d === b.d;
 const fnum = (a: Fr) => a.n / a.d;
 const ftxt = (a: Fr) => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);
 /** Add n, folding a negative into the operator: 3 + −2 is 3 − 2. */
-const plus = (n: number) => (n < 0 ? ` − ${-n}` : ` + ${n}`);
-const lineText = (m: Fr, b: number) => `y = ${ftxt(m)}x${plus(b)}`;
+const plus = (value: number) => (value < 0 ? ` − ${-value}` : ` + ${value}`);
+/** Explicit TeX. KaTeX rejects a typographic minus, so that sign becomes a hyphen. */
+const tex = (expression: string) => `$${expression.replaceAll("−", "-")}$`;
+const lineText = (m: Fr, b: number) => {
+  const slope =
+    m.d === 1 && Math.abs(m.n) === 1 ? termText(m.n, "x") : `${ftxt(m)}x`;
+  return `y = ${slope}${plus(b)}`;
+};
 /** Two labeled equations, each on its own line. */
 function shownSystem(rows: readonly [string, string][]) {
   const body = rows
-    .map(([equation, label]) => `${equation} & \\text{${label}}`)
+    .map(
+      ([equation, label]) =>
+        `${equation.replaceAll("−", "-")} & \\text{${label}}`,
+    )
     .join(" \\\\ ");
   return `$\\begin{cases} ${body} \\end{cases}$`;
 }
@@ -561,6 +571,8 @@ export function solutionCountSteps(
     throw new Error("Equation does not match its solution count");
   // "One solution, x = 0" is a distractor; at x0 = 0 it would also be true.
   if (kind === 0 && x0 === 0) throw new Error("Two true conclusions");
+  const added =
+    c === 1 ? "+x" : c === -1 ? "-x" : c > 0 ? `+${c}x` : `${c}x`;
   const leftConst = a * b;
   const expand = `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
     .replace(/\+\-/, "-")
@@ -587,7 +599,7 @@ export function solutionCountSteps(
     label: "Show each stage, then how many solutions",
     layout: "steps",
     mode: "build",
-    start: `$${a}(x${b >= 0 ? "+" : ""}${b})${c >= 0 ? "+" : ""}${c}x=${lin(d, e)}$`,
+    start: `$${a}(x${b >= 0 ? "+" : ""}${b})${added}=${lin(d, e)}$`,
     banks: [
       {
         id: "count",
@@ -643,7 +655,7 @@ export function solutionCountSteps(
     throw new Error("Key is not credited");
   if (kind === 2 && leftConst === e) throw new Error("a = b collapsed");
   return stamp(meta, seed, "solution-count-steps", {
-    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${c >= 0 ? "+" : ""}${c}x = ${lin(d, e)}$ one stage at a time until you reach x = a, a = a, or a = b. Then say how many solutions it has.`,
+    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${added} = ${lin(d, e)}$ one stage at a time until you reach x = a, a = a, or a = b. Then say how many solutions it has.`,
     response,
     answer,
     workGrading,
@@ -1521,7 +1533,7 @@ export function intersectionReason(seed: string): GeneratedProblem {
     response: built.response,
     answer: built.answer,
     figure: { kind: "scene", scene },
-    hint: `Line 1 is $${lineText(m1, b1)}$ and line 2 is $${lineText(m2, b2)}$. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R $(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
+    hint: `Line 1 is ${tex(lineText(m1, b1))} and line 2 is ${tex(lineText(m2, b2))}. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R $(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
     explanation: [
       `Q (${qx}, ${qy}) is on both lines, so both equations are true there.`,
       `P is on line 1 only: ${P[1]} equals the first line and not the second.`,
@@ -1576,9 +1588,9 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: `The first line is $${lineText(m, b)}$. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
+    hint: `The first line is ${tex(lineText(m, b))}. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
     explanation: [
-      `On $${lineText(m, b)}$, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
+      `On ${tex(lineText(m, b))}, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
       `One such point is (${answerPoints[0]![0]}, ${answerPoints[0]![1]}). Another is (${answerPoints[1]![0]}, ${answerPoints[1]![1]}).`,
       "Any two distinct lattice points on that line are accepted. Line 2 is already drawn and is not part of this plot.",
     ],
@@ -1647,7 +1659,7 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
     figure: { kind: "scene", scene },
-    hint: `The lines are $${lineText(m1, b1)}$ and $${lineText(m2, b2)}$. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
+    hint: `The lines are ${tex(lineText(m1, b1))} and ${tex(lineText(m2, b2))}. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
     explanation: [
       `Exactly, x = ${ftxt(x)} and y = ${ftxt(y)}.`,
       `The nearest half-unit pair is ${key}, within a quarter unit of the exact crossing.`,
@@ -1668,7 +1680,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
   const x = r(-6, 8);
   const leftConst = a * b;
   const d = none ? leftConst + nz(r, 1, 5) : (a - c) * x + leftConst;
-  const eq = `${a}(x${b >= 0 ? "+" : ""}${b}) = ${c}x${d >= 0 ? "+" : ""}${d}`;
+  const eq = `${a}(x${b >= 0 ? "+" : ""}${b}) = ${c === 1 ? "x" : `${c}x`}${d >= 0 ? "+" : ""}${d}`;
   const expandedLeft = a * x + leftConst;
   const checkX = none ? 0 : x;
   const sideL = a * (checkX + b);
@@ -1749,8 +1761,10 @@ export function assumeCheck(seed: string): GeneratedProblem {
   });
 }
 
-const coef = (n: number, v: string) =>
-  n === 1 ? v : n === -1 ? `-${v}` : `${n}${v}`;
+/** ax + by, dropping a coefficient of 1 or a zero term: "x", "−x", " + y", " − y". */
+const side = (xCoef: number, yCoef: number) => twoTerm(xCoef, yCoef);
+const equation = (xCoef: number, yCoef: number, right: number) =>
+  `${side(xCoef, yCoef)} = ${n(right)}`;
 export function scaledElimination(seed: string): GeneratedProblem {
   const meta = metaOf("scaled-elimination");
   const r = clauseStream(meta.id, seed);
@@ -1777,14 +1791,12 @@ export function scaledElimination(seed: string): GeneratedProblem {
     Math.abs(f) > 40
   )
     throw new Error("Need a clean elimination");
-  const side = (x: number, y: number) =>
-    `${x}x${y < 0 ? "" : "+"}${y}y`;
   const left1 = side(a, b);
   const left2 = side(d, e);
-  const key = `${coef(nx, "x")} = ${nr}`;
-  const unscaled = `${coef(nx, "x")} = ${f + c}`;
-  const subtracted = `${coef(d - k * a, "x")}${e - k * b >= 0 ? "+" : ""}${e - k * b}y = ${f - k * c}`;
-  const scaledE2 = `${coef(k * d, "x")}${k * e >= 0 ? "+" : ""}${k * e}y = ${k * f}`;
+  const key = equation(nx, 0, nr);
+  const unscaled = equation(nx, 0, f + c);
+  const subtracted = equation(d - k * a, e - k * b, f - k * c);
+  const scaledE2 = equation(k * d, k * e, k * f);
   const labels = [key, unscaled, subtracted, scaledE2];
   if (new Set(labels).size !== 4) throw new Error("Elimination labels");
   const general = r(0, 1) === 0;
@@ -1823,10 +1835,10 @@ export function scaledElimination(seed: string): GeneratedProblem {
     ])}\n\nThe system is replaced by E1 and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
-    hint: `E1 is $${left1} = ${c}$, and the new system uses ${addedToE2(k)}. Multiply every term of E1 by ${term(k)}, then add matching terms to E2. The new equation is reversible: subtract ${term(k)}·E1 to get E2 back.`,
+    hint: `E1 is ${tex(`${left1} = ${c}`)}, and the new system uses ${addedToE2(k)}. Multiply every term of E1 by ${term(k)}, then add matching terms to E2. The new equation is reversible: subtract ${term(k)}·E1 to get E2 back.`,
     explanation: [
-      `${k}·E1 is ${coef(k * a, "x")} and ${coef(k * b, "y")} equal to ${k * c}.`,
-      `Add E2: ${coef(nx, "x")} = ${nr}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
+      `${k}·E1 is ${termText(k * a, "x")} and ${termText(k * b, "y")} equal to ${k * c}.`,
+      `Add E2: ${termText(nx, "x")} = ${n(nr)}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
       `The unscaled right side would be ${f + c}, which is not ${nr}.`,
       general
         ? `At a solution, E2 contributes ${f} and k·E1 contributes ${k * c}, so the sum is ${nr}.`
