@@ -302,8 +302,15 @@ def check_worker(config, row, workspace):
             captures.append(str(destination))
     except Exception as error:
         errors.append(str(error))
-    result = {'passed': not errors, 'errors': errors, 'storyboard_pages': captures, 'checked_at': now(),
+    result = {'passed': not errors, 'errors': errors, 'storyboard_pages': captures, 'notes': [], 'checked_at': now(),
               'screenplay_sha256': digest(Path(workspace)/'screenplay.json') if (Path(workspace)/'screenplay.json').is_file() else None}
+    from review_notes import mechanical_notes
+    payload = read_json(Path(workspace)/'check-output'/row['id']/'line-payload.json')
+    if payload and payload.get('script') == read_json(Path(workspace)/'screenplay.json'):
+        try:
+            result.update(mechanical_notes(payload), timing_source=payload.get('timing_source', 'estimated'))
+        except (KeyError, ValueError, IndexError, TypeError):
+            result['note_limits'] = ['Mechanical notes unavailable: screenplay or word timing is incomplete.']
     write_json(Path(workspace)/'check.json', result)
     return result
 

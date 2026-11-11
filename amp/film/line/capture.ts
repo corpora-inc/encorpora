@@ -11,7 +11,7 @@ const { values } = parseArgs({ options: {
 } });
 if (!process.env.FILM_LINE_HEAVY) throw new Error("Run capture through the configured heavy-command gate");
 if (!values.items || !values.url || !values.out) throw new Error("Required: --items <private-json> --url <local-player-url> --out <private-directory>");
-type CaptureItem = { id: string; payload: string };
+type CaptureItem = { id: string; payload: string; times?: number[] };
 type Payload = { id: string; script: { id: string; cast?: Record<string, Record<string, unknown>> }; timing: {
   duration: number; voices?: Record<string, string>; shots: { start: number; end: number; words: unknown[] }[][];
 }; [key: string]: unknown };
@@ -41,14 +41,14 @@ try {
     const beats = payload.timing.shots.flat();
     const shotEnds = payload.timing.shots.flatMap((shot, si) => shot.map((_, bi) =>
       bi===shot.length-1 && payload.timing.shots[si+1] ? payload.timing.shots[si+1]![0]!.start-.55 : Infinity));
-    const times = beats.map((beat, i) => Math.max(beat.end,
+    const times = item.times ?? beats.map((beat, i) => Math.max(beat.end,
       Math.min(beat.end+.9, (beats[i+1]?.start ?? payload.timing.duration)-.05, shotEnds[i]!)));
     const out = join(values.out, item.id);
     mkdirSync(out, { recursive: true });
     const rendererAssets = new Map<string, string>();
     const manifest: Record<string, unknown> = { id: item.id, payload_sha256: createHash('sha256').update(bytes).digest('hex'),
       source: 'checked payload through the live installed review player',
-      captured_at: new Date().toISOString(), times, frames: beats.length, layouts: [] };
+      captured_at: new Date().toISOString(), times, frames: times.length, layouts: [] };
     for (const [name, width, height] of [['wide', 1920, 1080], ['tall', 1080, 1920]] as const) {
       const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, colorScheme: 'light' });
       const page = await context.newPage();
@@ -104,7 +104,7 @@ try {
     }
     manifest.renderer_assets = [...rendererAssets].map(([path, sha256]) => ({ path, sha256 }));
     writeFileSync(join(out, 'capture.json'), JSON.stringify(manifest, null, 2));
-    console.log(JSON.stringify({ id: item.id, frames: beats.length, layouts: 2 }));
+    console.log(JSON.stringify({ id: item.id, frames: times.length, layouts: 2 }));
   }
 } finally {
   await browser.close();
