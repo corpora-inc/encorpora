@@ -128,13 +128,16 @@ function cellOf(
 }
 
 /** A quarter's week is drawn once this many of its students have a settled
- * growth reading: at least ten, and at least three in five of the quarter;
- * and once the standard error of their mean, from each reading's own sd, is
+ * growth reading: ten, or three in five of a smaller quarter; and once the
+ * standard error of their mean, from each reading's own sd, is
  * at most half a grade. Before that it is the first weeks’ noise,
  * not the quarter. */
 const QUARTER_SETTLED = { students: 10, share: 0.6, meanSd: 0.5 };
 export const settledEnough = (size: number) =>
-  Math.max(QUARTER_SETTLED.students, Math.ceil(QUARTER_SETTLED.share * size));
+  Math.max(
+    1,
+    Math.min(QUARTER_SETTLED.students, Math.ceil(QUARTER_SETTLED.share * size)),
+  );
 
 /**
  * A head's practice views over the term in use: a heat map of classes (or a

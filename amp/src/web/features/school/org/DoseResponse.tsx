@@ -502,7 +502,7 @@ export function DoseResponse({
               Growth is the pace of each student’s level on the days its
               uncertainty was at most 0.6 grades, across the days the term has
               run. Quarters are by active minutes a week this term. A week shows
-              once ten students, and three in five of the quarter, have a
+              once ten students, or three in five of a smaller quarter, have a
               reading, and their mean is sure to half a grade.
             </p>
           </figcaption>
