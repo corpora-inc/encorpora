@@ -95,13 +95,16 @@ export function CurvePlot({
   const area = `M0,100 L${line.join(" L")} L${WIDTH},100 Z`;
   const typical = path(grid, curve.typical, top);
   const middle = curve.middle;
-  // Each curve is named where it is drawn, on a flank away from the grade
-  // band's label: this group on its right, the national spread on its left.
+  // Each curve is named where it is drawn, where it stands furthest from
+  // the other curve: the group's and the national spread's never share a
+  // stretch of line.
   const showTypical = curve.typical.some((value) => value > 0);
   const named = size === "large" && name;
-  const own = named ? flank(grid, curve.density, top, "right", 0.55) : null;
+  const own = named ? apart(grid, curve.density, curve.typical, top) : null;
   const national =
-    named && showTypical ? flank(grid, curve.typical, top, "left", 0.45) : null;
+    named && showTypical
+      ? apart(grid, curve.typical, curve.density, top)
+      : null;
   const move = (event: PointerEvent<HTMLDivElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
     const share = (event.clientX - box.left) / box.width;
