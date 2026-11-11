@@ -2318,7 +2318,7 @@
             "at": "P",
             "dir": "w",
             "far": 0.6,
-            "size": "m"
+            "size": "l"
           },
           {
             "id": "lr1",
@@ -2550,8 +2550,14 @@
             },
             {
               "do": "write",
-              "tex": "1=\\cw{-2}\\cdot 3+\\cg{b}",
+              "tex": "y=\\cw{m}x+\\cg{b}",
               "fresh": true,
+              "at": "equation",
+              "id": "w1"
+            },
+            {
+              "do": "write",
+              "tex": "1=\\cw{-2}\\cdot 3+\\cg{b}",
               "at": "put",
               "id": "w2"
             },
@@ -2618,11 +2624,23 @@
               "at": "three"
             },
             {
+              "do": "text",
+              "text": "$(3,\\cw{1})$: the height at $x=3$.",
+              "id": "wP",
+              "at": "three"
+            },
+            {
               "do": "highlight",
               "target": [
                 "d0",
                 "l0"
               ],
+              "at": "zero"
+            },
+            {
+              "do": "text",
+              "text": "$(0,\\cg{7})$: the start.",
+              "id": "wS",
               "at": "zero"
             }
           ]
