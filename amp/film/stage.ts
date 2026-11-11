@@ -336,9 +336,13 @@ function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
 /**
  * Labels that land on each other are pushed apart. The shot stores the nudge
  * and replays it, so a label that appears later does not shove one already there.
+ * A label that `flies`, while in flight (its point is moving, or the thing it
+ * rides is travelling), takes no part: it passes over the others, and what it
+ * rests on is settled where it lands.
  */
 function separateLabels(root: HTMLElement) {
   const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
+    if (el.dataset.flying === "1") return false;
     const cs = getComputedStyle(el);
     if (cs.display === "none" || cs.visibility === "hidden" || (Number.parseFloat(cs.opacity) || 0) < 0.85) return false;
     const r = el.getBoundingClientRect();
@@ -638,6 +642,11 @@ class GeoStage {
       v = [from[0] + (to[0] - from[0]) * u, from[1] + (to[1] - from[1]) * u];
     }
     return v;
+  }
+  /** True while a point is part-way through a `move`, or the thing of that name is travelling between two places. */
+  inFlight(name: string, t: number) {
+    if (!this.geo.points[name] && this.thingsModel?.isThing(name)) return this.thingsModel.stateAt(name, t).flying;
+    return this.moves.some((m) => m.name === name && t > m.t0 + 1e-6 && t < m.t0 + m.dur - 1e-6);
   }
   target(to: Target, t: number): P {
     if (Array.isArray(to)) return to;
@@ -1582,6 +1591,11 @@ class GeoStage {
         const m = p.pin ? this.px(t, this.view0).map : map;
         const anchor: P = line ? m(T([(line[0][0] + line[1][0]) / 2, (line[0][1] + line[1][1]) / 2])) : m(T(this.at(p.at, t)));
         place(e.html!, anchor, p.dir ?? "n", p.far ?? 1, o, em);
+        // a label that flies is on its way somewhere: it may cross other labels without shoving them
+        if (p.flies) {
+          const flying = !line && this.inFlight(p.at, t) ? "1" : "0";
+          if (e.html!.dataset.flying !== flying) e.html!.dataset.flying = flying;
+        }
       } else if ("dim" in p) {
         const a = P(p.dim[0]), b = P(p.dim[1]);
         const dirv = DIRS[p.side]!; const gap = LABEL_GAP * 0.7 * (p.far ?? 1);
