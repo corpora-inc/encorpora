@@ -15,6 +15,7 @@ import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
 import { resolveCast, runsOf, TURN_GAP, voiceBindings } from "./cast";
 import { scriptSchema, type Script, type Timing } from "./schema";
+import { highlightHeld } from "./stage";
 import { SCENE_FILM_ID, sceneFilm } from "./fixtures/scene-shot";
 
 
@@ -67,8 +68,75 @@ function heldAt(say: string, includes: string[]): number {
   throw new Error(`No held highlight for ${includes.join(", ")}`);
 }
 const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
+/**
+ * A full-width ten-frame, and a frame with a letter beside it. The held light
+ * used to leave the card and meet the letter. Built here, not under lessons/.
+ */
+const CARD_FILM_ID = "highlight-in-card";
+const cardScript = scriptSchema.parse({
+  id: CARD_FILM_ID,
+  title: "A light stays in its card",
+  cast: { teacher: {} },
+  shots: [
+    {
+      figure: {
+        view: [0, 0, 10, 4],
+        points: { T: [0, 4] },
+        parts: [
+          { id: "f", grid: [5, 2], at: "T", size: [2, 2], fill: "paper", ink: "ink", w: 5, start: true },
+          { id: "c", counters: "f", n: 10, ink: "accent", start: true },
+        ],
+      },
+      beats: [{ say: "A full ten-frame.", speaker: "teacher", do: [{ do: "highlight", target: "f", at: "full" }] }],
+    },
+    {
+      figure: {
+        view: [-1.2, 0, 8, 4],
+        points: { G: [0, 3.6], L: [-0.55, 2.6] },
+        parts: [
+          { id: "f", grid: [5, 2], at: "G", size: [1.2, 1], fill: "paper", ink: "ink", w: 5, start: true },
+          { id: "a", label: "A", at: "L", dir: "c", size: "l", start: true },
+        ],
+      },
+      beats: [{ say: "Frame A sits beside its letter.", speaker: "teacher", do: [{ do: "highlight", target: "f", at: "A" }] }],
+    },
+    {
+      figure: {
+        view: [0, 0, 12, 12],
+        points: { T1: [0.5, 11.8], T2: [0.5, 7.5] },
+        parts: [
+          { id: "fa", grid: [5, 2], at: "T1", size: [2.2, 1.85], ink: "accent", w: 5, start: true },
+          { id: "fb", grid: [5, 2], at: "T2", size: [2.2, 1.85], ink: "warm", w: 5, start: true },
+          { id: "a", counters: "fa", n: 10, ink: "accent", start: true },
+          { id: "b", counters: "fb", n: 7, ink: "warm", start: true },
+        ],
+      },
+      beats: [{ say: "Seventeen is a full frame and seven more.", speaker: "teacher", do: [{ do: "highlight", target: "fa", at: "full" }] }],
+    },
+  ],
+});
+const cardTiming = dryTiming(cardScript);
+const cardFilm = { id: cardScript.id, title: cardScript.title, script: cardScript, timing: cardTiming, figure: null };
+function heldWord(say: string, word: string): number {
+  for (let si = 0; si < cardScript.shots.length; si++) {
+    const shot = cardScript.shots[si]!;
+    for (let bi = 0; bi < shot.beats.length; bi++) {
+      if (shot.beats[bi]!.say !== say) continue;
+      const beat = cardTiming.shots[si]![bi]!;
+      const hit = beat.words.find((w) => w.text.toLowerCase().replace(/[^a-z0-9]/g, "") === word.toLowerCase());
+      if (!hit) continue;
+      return highlightHeld(hit.start, beat.end);
+    }
+  }
+  throw new Error(`No held highlight for ${word}`);
+}
+const CARD_HELD = [
+  { t: heldWord("A full ten-frame.", "full"), part: "f", letter: false },
+  { t: heldWord("Frame A sits beside its letter.", "A"), part: "f", letter: true },
+  { t: heldWord("Seventeen is a full frame and seven more.", "full"), part: "fa", letter: false },
+] as const;
 /** Films built here rather than exported: shots that draw a scene spec of their own. */
-const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm() };
+const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm };
 const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
@@ -397,6 +465,110 @@ test("a highlight does not move the other elements", async () => {
         if (note) await page.waitForTimeout(250);
         }
         expect(note, note).toBe("");
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 120_000);
+
+test("a held highlight stays inside the card and off its label", async () => {
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(CARD_FILM_ID)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      for (const sample of CARD_HELD) {
+        const where = `${view.layout} t=${sample.t.toFixed(2)}`;
+        const got = await page.evaluate(({ time, part }) => {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { error: "no scrubber" };
+          scrub.value = String(time);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          const shots = [...document.querySelectorAll<HTMLElement>(".film-shot")];
+          let fit: HTMLElement | null = null, best = 0;
+          for (const shot of shots) {
+            const o = Number.parseFloat(getComputedStyle(shot).opacity);
+            const host = shot.querySelector<HTMLElement>(".film-fit");
+            if (!host || o < 0.5 || getComputedStyle(shot).visibility === "hidden") continue;
+            if (o >= best) { fit = host; best = o; }
+          }
+          if (!fit) return { error: "no figure" };
+          const cardEl = fit.parentElement;
+          if (!cardEl) return { error: "no card" };
+          const card = cardEl.getBoundingClientRect();
+          const frame = fit.querySelector<SVGElement>(`[data-part="${part}"]`);
+          if (!frame) return { error: "no frame" };
+          const group = frame.dataset.grow ?? "";
+          const members: Element[] = group ? [...fit.querySelectorAll(`[data-grow="${group}"]`)] : [frame];
+          const paint = (el: Element) => {
+            if (el.classList.contains("film-em") || el.classList.contains("film-things-extent")) return false;
+            if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
+            if (el instanceof SVGGraphicsElement) return true;
+            if (el instanceof HTMLElement && el.classList.contains("film-label")) return true;
+            return false;
+          };
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          let l = Infinity, top = Infinity, r = -Infinity, b = -Infinity, n = 0;
+          const boxes: { l: number; t: number; r: number; b: number }[] = [];
+          const take = (el: Element) => {
+            if (!paint(el) || shown(el) < 0.45) return;
+            const box = el.getBoundingClientRect();
+            if (box.width < 0.5 && box.height < 0.5) return;
+            l = Math.min(l, box.left); top = Math.min(top, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
+            boxes.push({ l: box.left, t: box.top, r: box.right, b: box.bottom });
+            n++;
+          };
+          for (const el of members) {
+            take(el);
+            for (const c of el.querySelectorAll("*")) take(c);
+          }
+          if (!n) return { error: "no lit ink" };
+          const labels = [...fit.querySelectorAll<HTMLElement>(".film-label")].flatMap((el) => {
+            if (shown(el) < 0.45 || members.includes(el)) return [];
+            const box = el.getBoundingClientRect();
+            if (box.width < 1 || box.height < 1) return [];
+            const cx = (box.left + box.right) / 2, cy = (box.top + box.bottom) / 2;
+            const inside = boxes.some((g) => cx > g.l && cx < g.r && cy > g.t && cy < g.b);
+            if (inside) return [];
+            let gap = Infinity;
+            for (const g of boxes) {
+              const dx = Math.max(g.l - box.right, box.left - g.r);
+              const dy = Math.max(g.t - box.bottom, box.top - g.b);
+              gap = Math.min(gap, Math.hypot(Math.max(dx, 0), Math.max(dy, 0)));
+              if (dx < 0 && dy < 0) gap = Math.min(gap, -Math.min(-dx, -dy));
+            }
+            return [{ text: (el.textContent ?? "").trim(), gap }];
+          });
+          return {
+            margins: [l - card.left, card.right - r, top - card.top, card.bottom - b],
+            need: Math.max(Math.min(card.width, card.height) * 0.06, 16),
+            stroke: parseFloat(frame.style.strokeWidth || "0"),
+            em: Number(frame.dataset.em || 0),
+            labels,
+            n,
+          };
+        }, { time: sample.t, part: sample.part });
+        if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
+        for (const m of got.margins) expect(m, `${where} margin`).toBeGreaterThanOrEqual(got.need);
+        expect(got.stroke, `${where} still bold`).toBeGreaterThan(6);
+        expect(got.n, `${where} ink`).toBeGreaterThan(1);
+        if (sample.letter) {
+          expect(got.labels.length, `${where} label`).toBeGreaterThan(0);
+          for (const label of got.labels) expect(label.gap, `${where} ${label.text}`).toBeGreaterThan(2);
+        }
       }
     }
   } finally {

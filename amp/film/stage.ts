@@ -31,15 +31,26 @@ const ease = (u: number) => {
   return u * u * u * (u * (u * 6 - 15) + 10);
 };
 /**
- * A highlight grows about its own centre and takes no layout space.
- * A ten-frame is the exception: its cells, counters and labels grow with it
- * about one centre, so a counter stays in the middle of its cell. Two frames
- * that would otherwise swell into each other grow as one piece. The in and
- * out are a short smooth ease, with no bounce.
+ * A highlight grows about its own centre and takes no layout space. It stops
+ * at the card's inner margin and at a label, and a part with no room still
+ * boldens. A ten-frame is the exception to growing alone: its cells, counters
+ * and labels grow with it about one centre, so a counter stays in the middle
+ * of its cell. Two frames that would otherwise swell into each other grow as
+ * one piece. The in and out are a short smooth ease, with no bounce.
  */
 const EMPH_GROW = 0.15;
 const EMPH_IN = 0.2;
 const EMPH_OUT = 0.22;
+/** Air a grown highlight keeps between itself and a label it did not already cover. */
+const LABEL_AIR = 8;
+/**
+ * The moment a highlight is fully held: the ease-in has finished, and the
+ * ease-out (which starts just after the beat) has not. A light that is still
+ * rising at the end of the beat is sampled at its fullest, just before it fades.
+ */
+export function highlightHeld(t0: number, beatEnd: number): number {
+  return Math.min(t0 + EMPH_IN + 0.02, beatEnd + 0.04);
+}
 const svgNS = "http://www.w3.org/2000/svg";
 const svg = (tag: string, cls?: string) => {
   const e = document.createElementNS(svgNS, tag);
@@ -178,6 +189,35 @@ function entries(shot: Shot, times: BeatTime[]) {
     }
   });
   return out.sort((x, y) => x.t0 - y.t0);
+}
+/** One held moment per highlight in the film. Highlights that peak together share a moment. */
+export type HeldHighlight = { beat: number; t: number; word: string };
+export function heldHighlights(script: Script, timing: Timing): HeldHighlight[] {
+  const out: HeldHighlight[] = [];
+  let beat = 0;
+  script.shots.forEach((shot, si) => {
+    const times = timing.shots[si] ?? [];
+    shot.beats.forEach((b, bi) => {
+      const span = times[bi];
+      const index = beat++;
+      if (!span) return;
+      let stagger = 0;
+      const groups = new Map<number, string[]>();
+      for (const a of b.do ?? []) {
+        if (a.do === "count") continue;
+        const t0 = a.at ? wordTime(span, a.at, a.nth ?? 1) : span.start + stagger;
+        if (!a.at) stagger += 0.1;
+        if (a.do !== "highlight") continue;
+        const t = Math.round(highlightHeld(t0, span.end) * 100) / 100;
+        const word = (a.at ?? "").trim();
+        const list = groups.get(t) ?? [];
+        if (word && !list.includes(word)) list.push(word);
+        groups.set(t, list);
+      }
+      for (const [t, words] of [...groups.entries()].sort((a, b) => a[0] - b[0])) out.push({ beat: index, t, word: words.join("-") || "highlight" });
+    });
+  });
+  return out;
 }
 
 // ------------------------------------------------------------------ figure
@@ -386,8 +426,10 @@ const boxesMeet = (a: Box4, b: Box4, gap: number) =>
   Math.min(a.r, b.r) - Math.max(a.l, b.l) > gap && Math.min(a.b, b.b) - Math.max(a.t, b.t) > gap;
 /**
  * A highlight may grow only until it would touch a neighbour it did not already
- * cover. One frame and everything in its cells share a scale, so a counter is
- * never left behind. The scale is a transform: the neighbour's layout does not move.
+ * cover, meet a label, or cross the card's inner margin. One frame and
+ * everything in its cells share a scale, so a counter is never left behind.
+ * The scale is a transform: the neighbour's layout does not move. A part with
+ * no room to grow still boldens.
  */
 let growN = 0;
 const resetGrowIds = () => { growN = 0; };
@@ -400,11 +442,11 @@ function localBoxToViewport(fit: HTMLElement, l: number, t: number, r: number, b
   const p = localToViewport(fit, l, t), q = localToViewport(fit, r, b);
   return { l: Math.min(p.x, q.x), t: Math.min(p.y, q.y), r: Math.max(p.x, q.x), b: Math.max(p.y, q.y) };
 }
-/** Draw this element at `factor` of its authored grow. A frame's riders use the same factor, so they stay centred in its cells. */
+/** Draw this element at `factor` of its authored grow. The ink stays bold even when the scale cannot grow. A frame's riders use the same factor, so they stay centred in its cells. */
 function setFactor(el: SVGElement | HTMLElement, factor: number) {
   const em0 = Number(el.dataset.em0 || 0);
-  const em = em0 * factor;
-  const k = 1 + EMPH_GROW * em;
+  const grow = em0 * factor;
+  const k = 1 + EMPH_GROW * grow;
   if (el instanceof HTMLElement && el.dataset.ox) {
     const ox = parseFloat(el.dataset.ox), oy = parseFloat(el.dataset.oy ?? "0");
     const cx = parseFloat(el.dataset.cx ?? "0"), cy = parseFloat(el.dataset.cy ?? "0");
@@ -419,16 +461,37 @@ function setFactor(el: SVGElement | HTMLElement, factor: number) {
       else el.style.transform = next;
     }
   }
-  el.dataset.sem = em.toFixed(3);
+  el.dataset.sem = grow.toFixed(3);
   el.dataset.factor = String(factor);
+  // dataset.em is the scale that was applied. The stroke stays at the full light, even when there is no room to grow.
   if (el.dataset.hot === "1") {
-    if (em > 0.02) el.dataset.em = em.toFixed(3);
+    if (grow > 0.02) el.dataset.em = grow.toFixed(3);
     else delete el.dataset.em;
   }
-  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em));
+  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em0));
 }
-/** True when the grown group meets a neighbour it did not already cover. */
-function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
+/** The card's padding box, inset by the same margin the figure fit keeps. */
+function cardLimit(fit: HTMLElement): Box4 | null {
+  const card = fit.parentElement;
+  if (!card) return null;
+  const area = card.getBoundingClientRect();
+  if (area.width < 32 || area.height < 32) return null;
+  const cs = getComputedStyle(card);
+  const l = area.left + (parseFloat(cs.borderLeftWidth) || 0);
+  const t = area.top + (parseFloat(cs.borderTopWidth) || 0);
+  const r = area.right - (parseFloat(cs.borderRightWidth) || 0);
+  const b = area.bottom - (parseFloat(cs.borderBottomWidth) || 0);
+  const margin = Math.max(Math.min(r - l, b - t) * 0.06, 16) + 0.75;
+  if (r - l < margin * 2 + 8 || b - t < margin * 2 + 8) return null;
+  return { l: l + margin, t: t + margin, r: r - margin, b: b - margin };
+}
+const pastCard = (box: Box4, limit: Box4) => box.l < limit.l - 1 || box.t < limit.t - 1 || box.r > limit.r + 1 || box.b > limit.b + 1;
+type GrowFault = "card" | "label" | "neighbour";
+/**
+ * Why this grown group must shrink. `labelGap` is the overlap a label is
+ * allowed: negative keeps air, positive allows a hair of overlap.
+ */
+function growFault(members: (SVGElement | HTMLElement)[], fit: HTMLElement, labelGap: number): GrowFault | null {
   const mine = new Set<Element>(members);
   const grown: Box4[] = [];
   let rest: Box4 | null = null;
@@ -444,7 +507,9 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
     grown.push(box);
     if (el.dataset.rl) addRest(localBoxToViewport(fit, parseFloat(el.dataset.rl), parseFloat(el.dataset.rt ?? "0"), parseFloat(el.dataset.rr ?? "0"), parseFloat(el.dataset.rb ?? "0")));
   }
-  if (!shown.length) return false;
+  if (!shown.length) return null;
+  const limit = cardLimit(fit);
+  if (limit && grown.some((g) => pastCard(g, limit))) return "card";
   if (!rest) {
     for (const { el, box } of shown) {
       const k = 1 + EMPH_GROW * Number(el.dataset.em0 || 0) * Math.max(Number(el.dataset.factor || 1), 0.001);
@@ -452,10 +517,11 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
       addRest({ l: cx - (box.r - box.l) / k / 2, t: cy - (box.b - box.t) / k / 2, r: cx + (box.r - box.l) / k / 2, b: cy + (box.b - box.t) / k / 2 });
     }
   }
-  if (!rest) return false;
+  if (!rest) return null;
   const home: Box4 = rest;
   const sx = fit.getBoundingClientRect().width / (fit.offsetWidth || 1);
   const slop = Math.max(0.4, 0.6 * sx);
+  let fault: GrowFault | null = null;
   const see = (node: Element, opac: number): boolean => {
     if (mine.has(node) || node.classList.contains("film-em") || node.classList.contains("film-things-extent")) return false;
     const cs = getComputedStyle(node);
@@ -466,16 +532,20 @@ function groupCovers(members: (SVGElement | HTMLElement)[], fit: HTMLElement) {
       const box = node.getBoundingClientRect();
       const ocx = (box.left + box.right) / 2, ocy = (box.top + box.bottom) / 2;
       const outside = !(ocx > home.l && ocx < home.r && ocy > home.t && ocy < home.b);
-      if (outside && box.width >= 0.5 && grown.some((g) => boxesMeet(g, { l: box.left, t: box.top, r: box.right, b: box.bottom }, slop))) return true;
+      const label = node instanceof HTMLElement && node.classList.contains("film-label");
+      if (outside && box.width >= 0.5 && grown.some((g) => boxesMeet(g, { l: box.left, t: box.top, r: box.right, b: box.bottom }, label ? labelGap : slop))) {
+        fault = label ? "label" : "neighbour";
+        return true;
+      }
     }
     if (node instanceof HTMLElement && node.classList.contains("film-label")) return false;
     for (const c of node.children) if (see(c, o)) return true;
     return false;
   };
-  for (const c of fit.children) if (see(c, 1)) return true;
-  return false;
+  for (const c of fit.children) if (see(c, 1)) return fault;
+  return null;
 }
-function limitGrow(root: HTMLElement) {
+function growGroups(root: HTMLElement) {
   const nodes = [...root.querySelectorAll<SVGElement | HTMLElement>("[data-grow]")].filter((el) => !el.classList.contains("film-em"));
   const groups = new Map<string, (SVGElement | HTMLElement)[]>();
   for (const el of nodes) {
@@ -484,16 +554,30 @@ function limitGrow(root: HTMLElement) {
     if (list) list.push(el);
     else groups.set(id, [el]);
   }
-  for (const members of groups.values()) {
-    if (!groupCovers(members, root)) continue;
+  return groups;
+}
+/** Faults still showing after the grow has been limited: a light that leaves the card, covers a neighbour, or touches a label. */
+function litFaults(fit: HTMLElement): GrowFault[] {
+  const found = new Set<GrowFault>();
+  for (const members of growGroups(fit).values()) {
+    if (!members.some((el) => el.dataset.hot === "1" && Number(el.dataset.em0 || 0) > 0.35)) continue;
+    const fault = growFault(members, fit, 0.5);
+    if (fault) found.add(fault);
+  }
+  return [...found];
+}
+function limitGrow(root: HTMLElement) {
+  for (const members of growGroups(root).values()) {
+    if (!growFault(members, root, -LABEL_AIR)) continue;
     let lo = 0, hi = 1;
-    for (let n = 0; n < 8; n++) {
+    for (let n = 0; n < 12; n++) {
       const mid = (lo + hi) / 2;
       for (const el of members) setFactor(el, mid);
-      if (groupCovers(members, root)) hi = mid;
+      if (growFault(members, root, -LABEL_AIR)) hi = mid;
       else lo = mid;
     }
     for (const el of members) setFactor(el, lo);
+    if (growFault(members, root, -LABEL_AIR)) for (const el of members) setFactor(el, 0);
   }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
@@ -1901,7 +1985,7 @@ class GeoStage {
   syncThingStrokes() {
     for (const v of this.thingViews.values()) {
       if (v.px <= 0) continue;
-      const bold = 1 + 0.75 * Number(v.art.dataset.em || 0);
+      const bold = 1 + 0.75 * Number(v.art.dataset.em0 || v.art.dataset.em || 0);
       for (const l of v.layers) l.el.style.strokeWidth = ((thingStroke(v.px, l.w) * 100) / v.px * bold).toFixed(3);
     }
   }
@@ -3367,6 +3451,7 @@ export class Film {
           }
         }
       }
+      this.checkLit(s, i);
       // every label that is showing stays on its card, at the end of each beat: never cut by the card's edge
       const card = s.el.querySelector(".film-figure")!.getBoundingClientRect();
       const end = Math.min(s.t1, this.duration) - 0.05;
@@ -3388,6 +3473,42 @@ export class Film {
         }
       }
     });
+  }
+  /**
+   * A held highlight stays inside the card, off its neighbours, and off any
+   * label it did not already cover. The word is the one the light is tied to.
+   */
+  checkLit(s: Film["shots"][number], i: number) {
+    const fit = s.el.querySelector<HTMLElement>(".film-fit");
+    if (!fit || !s.geo) return;
+    const end = Math.min(s.t1, this.duration);
+    const beats = this.timing.shots[i] ?? [];
+    const flagged = new Set<string>();
+    for (const e of s.list) {
+      if (e.a.do !== "highlight") continue;
+      const t = highlightHeld(e.t0, e.beatEnd);
+      if (t < s.t0 - 0.05 || t > end + 0.05) continue;
+      s.geo.draw(t);
+      const grown = litFaults(fit);
+      if (!grown.length) continue;
+      // A counter already sits on its frame before the light. Report a cover or a touch only when the growth causes it.
+      const groups = [...growGroups(fit).values()].filter((members) => members.some((el) => el.dataset.hot === "1" && Number(el.dataset.em0 || 0) > 0.35));
+      const saved = groups.map((members) => members.map((el) => Number(el.dataset.factor || 1)));
+      for (const members of groups) for (const el of members) setFactor(el, 0);
+      const atRest = new Set(litFaults(fit));
+      groups.forEach((members, gi) => members.forEach((el, j) => setFactor(el, saved[gi]![j]!)));
+      const faults = grown.filter((fault) => fault === "card" || !atRest.has(fault));
+      if (!faults.length) continue;
+      const beat = beats.find((b) => e.t0 >= b.start - 1e-3 && e.t0 <= b.end + 1e-3);
+      const word = ("at" in e.a && e.a.at) || beat?.words.find((w) => Math.abs(w.start - e.t0) < 0.05)?.text || "highlight";
+      for (const fault of faults) {
+        const key = `${fault}:${word}`;
+        if (flagged.has(key)) continue;
+        flagged.add(key);
+        const what = fault === "card" ? "leaves the card" : fault === "label" ? "touches a label" : "covers a neighbour";
+        this.issues.push(`Shot ${i + 1}: highlighting "${word}" ${what}.`);
+      }
+    }
   }
   /**
    * A picture fills its card: at a few moments of the shot, what is drawn must
