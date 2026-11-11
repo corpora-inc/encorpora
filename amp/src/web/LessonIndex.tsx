@@ -17,6 +17,8 @@ type Props = {
   practice: (templateId: string) => void;
 };
 
+/** A lesson opened from the library, recorded as such. */
+const LIBRARY_HELP = { source: "lessons" } as const;
 /** The lesson library, and one problem type's short lesson (`?topic=`). */
 export function LessonIndex(props: Props) {
   const { location, navigate } = useAppRoute();
@@ -76,7 +78,7 @@ export function LessonIndex(props: Props) {
         ) : (
           <>
             <h2>{open.title}</h2>
-            <ProblemLesson lesson={open} />
+            <ProblemLesson lesson={open} help={LIBRARY_HELP} />
             <button
               className="lesson-practice"
               disabled={props.busy}

@@ -41,6 +41,7 @@ import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
 import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
+import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
 import { Navigate, useRouter } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
@@ -565,6 +566,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       requestId: string;
       response: string;
       hintViewed?: boolean;
+      help?: ("hint" | "lesson" | "video" | "example")[];
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -1097,6 +1099,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     )
       return;
     progressLessonReturn.current = skillId;
+    noteHelp({
+      kind: "lesson",
+      source: "progress",
+      ref: selected.id,
+      ...(problem &&
+      !outcome &&
+      selected.templateIds.includes(problem.templateId)
+        ? { problemId: problem.id }
+        : {}),
+    });
     setReadingLesson(selected);
   }
   function showProblem(p: HintedProblem) {
@@ -1257,10 +1269,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   async function submit() {
     if (!learner || !problem) return;
+    // The kinds of help opened before this answer (a native shell's older
+    // attempt contract has no field for it).
+    const help = nativeRuntime ? [] : helpUsedBefore(problem.id);
     const attempt = pending ?? {
       requestId: crypto.randomUUID(),
       response,
       ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
+      ...(help.length ? { help } : {}),
     };
     setPending(attempt);
     try {
@@ -1270,6 +1286,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       });
       if (learnerRef.current !== learner.id) return;
       rememberOpenProblem(learner.id, null);
+      forgetHelp(problem.id);
       setOutcome(result);
       setPending(null);
       track("practice_answer", { index: practiceAnswers.current });

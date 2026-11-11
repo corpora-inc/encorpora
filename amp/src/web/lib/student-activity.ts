@@ -7,6 +7,7 @@ import { nativeRuntime } from "../native-runtime";
 import { practicingAsAdult } from "./adult-learner";
 import { meKey, queryClient, sessionOptions } from "./query";
 import { isStudentDevice, studentSession } from "./student-device";
+import { HelpQueue, onHelp } from "./help-events";
 
 /** Active time for a learner's own record: a school student's session, sent to
  * the school's activity route, and an adult practicing as themselves, sent to
@@ -14,7 +15,18 @@ import { isStudentDevice, studentSession } from "./student-device";
  * and an adult's is their own, so it ignores DNT and GPC, and it carries no
  * identifiers beyond the sign-in. Time counts only while the page is visible
  * and the learner has touched it within the last minute. */
-type Surface = "practice" | "lesson" | "feedback" | "map" | "other";
+type Surface =
+  | "practice"
+  | "lesson"
+  | "feedback"
+  | "map"
+  | "other"
+  | "hint"
+  | "video"
+  | "example";
+/** What help is showing over the route, so its time is its own. */
+type HelpSurface = "lesson" | "hint" | "video" | "example";
+type Overlay = { surface: HelpSurface; problemId?: string; skillId?: string };
 /** Where the time goes now, or null to let it go uncounted. */
 type Destination = { url: string; token: string } | null;
 type Activity = { navigate(path: string): void; stop(): void };
@@ -31,11 +43,37 @@ export function surfaceOf(path: string): Surface {
   return "other";
 }
 
-const running = new Set<{ noteProblem(id: string): void }>();
+type Watcher = {
+  noteProblem(id: string): void;
+  overlay(): void;
+  attend(): void;
+};
+const running = new Set<Watcher>();
 /** The problem now showing, so time lands on its skill. A no-op when no one's
  * time is counted. */
 export function noteActiveProblem(problemId: string) {
   for (const clock of running) clock.noteProblem(problemId);
+}
+/** Help showing over the route, innermost last. */
+const overlays: Overlay[] = [];
+/** While help shows (a hint, a lesson, a video, a worked explanation), active
+ * time counts under its surface, on its problem's skill: the same clock, idle
+ * rule and server cap as all active time. Returns the call that ends it. */
+export function showHelpSurface(overlay: Overlay): () => void {
+  const entry = { ...overlay };
+  for (const clock of running) clock.overlay();
+  overlays.push(entry);
+  return () => {
+    const at = overlays.indexOf(entry);
+    if (at < 0) return;
+    for (const clock of running) clock.overlay();
+    overlays.splice(at, 1);
+  };
+}
+/** Playing media holds attention without a touch: a video that plays counts
+ * like input, still only while the page is visible and focused. */
+export function noteAttention() {
+  for (const clock of running) clock.attend();
 }
 
 /** A school student's time in class. */
@@ -70,16 +108,39 @@ export function startAdultActivity(): Activity {
   );
 }
 
-function startActivity(
+/** One learner's heartbeat to `destination` (exported for its tests). */
+export function startActivity(
   destination: () => Destination,
   /** Which surfaces count; every one when absent. */
   counts: (surface: Surface) => boolean = () => true,
 ): Activity {
-  let surface: Surface = surfaceOf(location.pathname);
-  let problemId: string | undefined;
+  let routeSurface: Surface = surfaceOf(location.pathname);
+  let routeProblem: string | undefined;
+  /** What is showing: the innermost help, else the route and its problem. */
+  const showing = (): {
+    surface: Surface;
+    problemId?: string;
+    skillId?: string;
+  } => {
+    const top = overlays.at(-1);
+    return top
+      ? {
+          surface: top.surface,
+          problemId: top.problemId ?? routeProblem,
+          skillId: top.skillId,
+        }
+      : { surface: routeSurface, problemId: routeProblem };
+  };
   let stopped = false;
-  type Delta = { surface: Surface; problemId?: string; activeMs: number };
+  type Delta = {
+    surface: Surface;
+    problemId?: string;
+    skillId?: string;
+    activeMs: number;
+  };
   const queue: Delta[] = [];
+  const help = new HelpQueue();
+  const unsubscribe = onHelp((note, at) => help.push(note, at));
   const visible = () =>
     document.visibilityState === "visible" && document.hasFocus();
   let clock = new EngagementClock(performance.now(), visible());
@@ -90,25 +151,37 @@ function startActivity(
     const total = Math.floor(clock.activeMs);
     const fresh = total - banked;
     banked = total;
+    const { surface, problemId, skillId } = showing();
     if (fresh <= 0 || !counts(surface)) return;
     const last = queue[queue.length - 1];
-    if (last && last.surface === surface && last.problemId === problemId)
+    if (
+      last &&
+      last.surface === surface &&
+      last.problemId === problemId &&
+      last.skillId === skillId
+    )
       last.activeMs += fresh;
     else
       queue.push({
         surface,
         ...(problemId ? { problemId } : {}),
+        ...(skillId && !problemId ? { skillId } : {}),
         activeMs: fresh,
       });
   }
   async function send(leaving: boolean) {
     bank();
     const target = destination();
-    if (!target || !queue.length) {
-      if (!target) queue.length = 0;
+    if (!target || (!queue.length && !help.size)) {
+      if (!target) {
+        queue.length = 0;
+        help.clear();
+      }
       return;
     }
     const deltas = queue.splice(0, MAX_DELTAS);
+    const takenAt = performance.now();
+    const events = help.take(takenAt);
     try {
       const response = await fetch(target.url, {
         method: "POST",
@@ -123,11 +196,15 @@ function startActivity(
             ...d,
             activeMs: Math.min(90_000, d.activeMs),
           })),
+          ...(events.length ? { events } : {}),
         }),
       });
       if (!response.ok && response.status !== 401)
         console.warn("Active time not saved", response.status);
     } catch (error) {
+      // Offline: the help waits for the next heartbeat (time already passed
+      // can't be claimed again, so its deltas are not kept).
+      help.restore(events, takenAt);
       console.warn("Active time not saved", error);
     }
   }
@@ -146,26 +223,29 @@ function startActivity(
   window.addEventListener("pagehide", leave);
   document.addEventListener("visibilitychange", leave);
   const timer = setInterval(() => void send(false), SEND_EVERY_MS);
-  const watcher = {
+  const watcher: Watcher = {
     noteProblem(id: string) {
-      if (id === problemId) return;
+      if (id === routeProblem) return;
       bank();
-      problemId = id;
+      routeProblem = id;
     },
+    overlay: bank,
+    attend: interact,
   };
   running.add(watcher);
   return {
     navigate(path: string) {
       const next = surfaceOf(path.split(/[?#]/)[0]);
-      if (next === surface) return;
+      if (next === routeSurface) return;
       bank();
-      surface = next;
-      problemId = undefined;
+      routeSurface = next;
+      routeProblem = undefined;
     },
     stop() {
       if (stopped) return;
       stopped = true;
       running.delete(watcher);
+      unsubscribe();
       clearInterval(timer);
       for (const e of interactions) window.removeEventListener(e, interact);
       window.removeEventListener("focus", interact);

@@ -10,6 +10,8 @@ import "../../practice.css";
 import "../../scene/scene-player.css";
 import "katex/dist/katex.min.css";
 import { Loading } from "../../ui/Loading";
+/** A lesson opened from Pathways, recorded as such. */
+const PATHWAYS_HELP = { source: "pathways" } as const;
 export default function SkillLesson({
   templateId,
   onBack,
@@ -46,7 +48,7 @@ export default function SkillLesson({
   return (
     <>
       <h2>{lesson.data.lesson.title}</h2>
-      <ProblemLesson lesson={lesson.data.lesson} />
+      <ProblemLesson lesson={lesson.data.lesson} help={PATHWAYS_HELP} />
     </>
   );
 }
