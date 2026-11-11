@@ -100,6 +100,8 @@ const label = z.object({
   /**
    * A live readout. @x and @y become this point's coordinates as it moves (defaults to `at`).
    * @n becomes how many counters sit in this grid's cells, counting as they land.
+   * @m and @b become the slope and the y-intercept of the line through this seg's
+   * two points (`of` is the seg's id), counting as `move` slides or tilts it.
    */
   of: name.optional(),
 });
