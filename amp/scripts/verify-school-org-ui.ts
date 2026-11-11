@@ -10,7 +10,7 @@ import { schoolShellReview } from "./school-shell-review";
  * docs/reviews/school-org/ for a person to look at.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-org-ui.ts \
- *       [--engine chromium|webkit] [--widths 390,1280] [--themes light,dark] [--skip-sweep] [--skip-journey] [--measure-only] [--small]
+ *       [--engine chromium|webkit] [--widths 390,1280] [--themes light,dark] [--skip-sweep] [--skip-journey] [--measure-only] [--small] [--keep]
  */
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
@@ -1170,7 +1170,9 @@ try {
   await api.close();
   await new Promise((done) => providerServer.close(done));
   await learning.pool.end();
-  await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+  // `--keep` leaves the district for profiling its reads.
+  if (process.argv.includes("--keep")) console.log(`Kept schema ${schema}`);
+  else await admin.query(`DROP SCHEMA ${schema} CASCADE`);
   await admin.end();
 }
 process.exit(exit);

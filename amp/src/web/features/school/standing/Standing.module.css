@@ -635,8 +635,8 @@
 /* Outward from the middle: left of a point on the left, right of one on
    the right, so a name never sits over the grade band. */
 .curveName[data-side="start"] {
-  transform: translate(calc(-100% - var(--space-2)), -100%);
+  transform: translate(calc(-100% - var(--space-2) + var(--shift, 0px)), -100%);
 }
 .curveName[data-side="end"] {
-  transform: translate(var(--space-2), -100%);
+  transform: translate(calc(var(--space-2) + var(--shift, 0px)), -100%);
 }

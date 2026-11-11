@@ -1,4 +1,12 @@
-import { useId, useState, type CSSProperties, type PointerEvent } from "react";
+import {
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent,
+  type ReactNode,
+} from "react";
 import type {
   StandingCurve,
   StandingGrid,
@@ -179,26 +187,11 @@ export function CurvePlot({
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      {own && (
-        <span
-          className={styles.curveName}
-          data-side={own.side}
-          style={{ left: `${own.x}%`, "--y": own.y } as CSSProperties}
-          aria-hidden="true"
-        >
-          {name}
-        </span>
-      )}
+      {own && <CurveName at={own}>{name}</CurveName>}
       {national && (
-        <span
-          className={styles.curveName}
-          data-curve="national"
-          data-side={national.side}
-          style={{ left: `${national.x}%`, "--y": national.y } as CSSProperties}
-          aria-hidden="true"
-        >
+        <CurveName at={national} curve="national">
           National spread
-        </span>
+        </CurveName>
       )}
       {middle && (
         <span
@@ -296,5 +289,61 @@ export function CurveLegend(_props: { typical?: boolean } = {}) {
         Median, 95% range
       </span>
     </p>
+  );
+}
+
+/** A curve's name beside the point where only its own line runs, outward
+ * from the middle, and moved back inside the plot when a narrow one would
+ * put it past an edge. */
+function CurveName({
+  at,
+  curve,
+  children,
+}: {
+  at: { x: number; y: number; side: "start" | "end" };
+  curve?: "national";
+  children: ReactNode;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [shift, setShift] = useState(0);
+  useLayoutEffect(() => {
+    const label = ref.current;
+    const plot = label?.offsetParent as HTMLElement | null;
+    if (!label || !plot) return;
+    const fit = () => {
+      label.style.setProperty("--shift", "0px");
+      const box = label.getBoundingClientRect();
+      const frame = plot.getBoundingClientRect();
+      const next =
+        box.right > frame.right
+          ? frame.right - box.right
+          : box.left < frame.left
+            ? frame.left - box.left
+            : 0;
+      label.style.setProperty("--shift", `${next}px`);
+      setShift(next);
+    };
+    fit();
+    const watch = new ResizeObserver(fit);
+    watch.observe(plot);
+    return () => watch.disconnect();
+  }, [at.x, at.side, children]);
+  return (
+    <span
+      ref={ref}
+      className={styles.curveName}
+      data-curve={curve}
+      data-side={at.side}
+      style={
+        {
+          left: `${at.x}%`,
+          "--y": at.y,
+          "--shift": `${shift}px`,
+        } as CSSProperties
+      }
+      aria-hidden="true"
+    >
+      {children}
+    </span>
   );
 }

@@ -157,11 +157,14 @@ export const unnamedGivens = (id: string) => {
     const constant = constants.get(group(p))!;
     const floor = floors.get(group(p))!;
     const seen = counts(p);
-    const named = [...given(p)].filter(
-      (n) => !constant.has(n) || (seen.get(n) ?? 0) > (floor.get(n) ?? 0),
+    const named = [...given(p)].filter((n) => !constant.has(n));
+    // Naming a number the prompt writes beyond the template's own copies
+    // counts too; it never makes a hint owe a number it didn't before.
+    const beyond = [...given(p)].filter(
+      (n) => constant.has(n) && (seen.get(n) ?? 0) > (floor.get(n) ?? 0),
     );
     const hint = new Set([...stated(p.hint)].map(size));
-    return named.length > 0 && !named.some((n) => hint.has(n));
+    return named.length > 0 && ![...named, ...beyond].some((n) => hint.has(n));
   });
 };
 export const thin = (id: string) => {

@@ -143,16 +143,17 @@ export async function studentFacts(
        r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
        session.id IS NOT NULL AS "signedIn"
      FROM roster r
-     LEFT JOIN (
-       SELECT w.learner_id,
+     LEFT JOIN LATERAL (
+       -- Two rows by the learner's own key: a grouped join over the whole
+       -- roster was planned as a nested loop, 10,000 × 5,000 rows.
+       SELECT
          sum(w.active_ms) FILTER (WHERE w.week=$3::date) AS "thisMs",
          sum(w.active_ms) FILTER (WHERE w.week=$4::date) AS "lastMs",
          sum(w.attempts) FILTER (WHERE w.week=$3::date) AS "thisAttempts",
          sum(w.attempts) FILTER (WHERE w.week=$4::date) AS "lastAttempts"
-       FROM amp_learner_weeks w JOIN roster s ON s.learner_id=w.learner_id
-       WHERE w.week=ANY(ARRAY[$3::date,$4::date])
-       GROUP BY w.learner_id
-     ) w ON w.learner_id=r.learner_id
+       FROM amp_learner_weeks w
+       WHERE w.learner_id=r.learner_id AND w.week=ANY(ARRAY[$3::date,$4::date])
+     ) w ON true
      LEFT JOIN LATERAL (
        SELECT d.overall_level,${levelSdSql("d")} AS sd FROM amp_level_days d
        WHERE d.learner_id=r.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
@@ -163,14 +164,17 @@ export async function studentFacts(
          ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS sd
      ) first ON true
      LEFT JOIN LATERAL (
-       SELECT g.mu, g.sd FROM (
+       -- One fit per student, read off amp_level_days_growth_idx alone:
+       -- OFFSET 0 keeps the planner from copying the fit into each place its
+       -- two numbers are read.
+       SELECT raw.pair[1] AS mu, raw.pair[2] AS sd FROM (
          SELECT ${growthArraySql({
            learner: "r.learner_id",
            from: "GREATEST($2::date, r.begin_on)",
            to: "$5::date",
-         })} AS pair
-       ) raw, LATERAL (SELECT raw.pair[1] AS mu, raw.pair[2] AS sd) g
-     ) growth ON growth.mu IS NOT NULL
+         })} AS pair OFFSET 0
+       ) raw
+     ) growth ON true
      LEFT JOIN (
        SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
        WHERE s.released_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
@@ -192,7 +196,13 @@ const minutesOf = (ms: number) => ms / 60_000;
 const isActive = (ms: number, attempts: number) =>
   practiced(minutesOf(ms), attempts);
 export const middle = (values: number[]): number | null => medianOf(values);
-export function usageOf(students: readonly StudentFact[]) {
+/** `interval: false` skips the growth median's bootstrap, for rows nobody
+ * sees: a district's classes, which only count toward its schools. Across
+ * 386 classes it was most of a district Overview's time. */
+export function usageOf(
+  students: readonly StudentFact[],
+  { interval: withInterval = true }: { interval?: boolean } = {},
+) {
   let active = 0;
   let minutes = 0;
   const gains: { mu: number; sd: number }[] = [];
@@ -205,7 +215,9 @@ export function usageOf(students: readonly StudentFact[]) {
   const growth = middle(gains.map((gain) => gain.mu));
   // Where that median sits (95%): students resampled, each drawn from the
   // pace's own N(μ, σ²) (`growth.ts`).
-  const interval = medianInterval(gains, { mode: "bootstrap" });
+  const interval = withInterval
+    ? medianInterval(gains, { mode: "bootstrap" })
+    : null;
   const hundredth = (value: number) => Math.round(value * 100) / 100;
   return {
     students: students.length,
@@ -610,11 +622,11 @@ export async function readOverview(
     if (list) list.push(fact);
     else enrolled.set(classId, [fact]);
   }
+  const isSchool = org.kind === "school";
   const classes = classList.map((row) => ({
     ...row,
-    ...usageOf(enrolled.get(row.id) ?? []),
+    ...usageOf(enrolled.get(row.id) ?? [], { interval: isSchool }),
   }));
-  const isSchool = org.kind === "school";
   const week = students.reduce(
     (sum, student) => {
       sum.thisMs += student.thisMs;
