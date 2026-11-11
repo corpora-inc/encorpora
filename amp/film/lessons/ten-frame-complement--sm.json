@@ -1,0 +1,1080 @@
+{
+  "id": "ten-frame-complement--sm",
+  "title": "How many more to fill the ten?",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.5,
+          10.8,
+          5.5
+        ],
+        "points": {
+          "G": [
+            0,
+            4
+          ],
+          "TL": [
+            0,
+            4
+          ],
+          "TR": [
+            10,
+            4
+          ],
+          "ML": [
+            0,
+            2
+          ],
+          "MR": [
+            10,
+            2
+          ],
+          "BL": [
+            0,
+            0
+          ],
+          "BR": [
+            10,
+            0
+          ],
+          "A": [
+            -0.25,
+            4.25
+          ],
+          "B": [
+            10.25,
+            4.25
+          ],
+          "C": [
+            10.25,
+            -0.25
+          ],
+          "D": [
+            -0.25,
+            -0.25
+          ],
+          "EA": [
+            4,
+            2
+          ],
+          "EB": [
+            10,
+            2
+          ],
+          "EC": [
+            10,
+            0
+          ],
+          "ED": [
+            4,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "box",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "g",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "paper",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "top",
+            "poly": [
+              "TL",
+              "TR",
+              "MR",
+              "ML"
+            ],
+            "fill": "none",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "poly": [
+              "ML",
+              "MR",
+              "BR",
+              "BL"
+            ],
+            "fill": "none",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "empty",
+            "poly": [
+              "EA",
+              "EB",
+              "EC",
+              "ED"
+            ],
+            "fill": "none",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "eggs",
+            "things": "egg",
+            "n": 7,
+            "in": "g",
+            "start": true
+          },
+          {
+            "id": "more",
+            "things": "egg",
+            "n": 3,
+            "in": "g",
+            "from": 8
+          },
+          {
+            "id": "f",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 3
+          },
+          {
+            "id": "b",
+            "counters": "f",
+            "n": 7,
+            "ink": "blue"
+          },
+          {
+            "id": "o",
+            "counters": "f",
+            "n": 3,
+            "ink": "warm",
+            "shape": "square",
+            "from": 8
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "How many more eggs will fill the egg box?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "problem",
+              "text": "How many more eggs will fill the egg box?"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This egg box has ten places. Five in the top row.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "top",
+              "at": "Five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five in the bottom row. One egg fits in each place.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "bottom",
+              "at": "Five"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I see seven eggs. Is the answer seven?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "eggs",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven are here already. We need how many more.",
+          "pause": 0.3,
+          "do": []
+        },
+        {
+          "speaker": "learner",
+          "say": "Oh! Count the empty places.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "text",
+              "text": "Count the empty places.",
+              "at": "Count"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each empty place needs one egg. Fill them, Champ.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "empty",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "arrive",
+              "target": "more1",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Two.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "arrive",
+              "target": "more2",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three! Three more eggs fill the box.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "arrive",
+              "target": "more3",
+              "at": "Three"
+            },
+            {
+              "do": "clear",
+              "at": "more"
+            },
+            {
+              "do": "write",
+              "tex": "7+3=10",
+              "fresh": true,
+              "at": "more"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The app draws the same box as a ten-frame, with counters instead of eggs.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "box",
+                "g",
+                "top",
+                "bottom",
+                "empty"
+              ],
+              "at": "ten-frame"
+            },
+            {
+              "do": "show",
+              "target": "f",
+              "at": "ten-frame"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "eggs",
+                "more"
+              ],
+              "at": "counters"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b",
+                "o"
+              ],
+              "at": "counters"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven plus three equals ten.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Seven"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{7}+\\cw{3}=10",
+              "fresh": true,
+              "at": "Seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Plus means put together. Equals means the same amount.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "Equals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.5,
+          10.8,
+          5.5
+        ],
+        "points": {
+          "G": [
+            0,
+            4
+          ],
+          "TL": [
+            0,
+            4
+          ],
+          "TR": [
+            10,
+            4
+          ],
+          "ML": [
+            0,
+            2
+          ],
+          "MR": [
+            10,
+            2
+          ],
+          "BL": [
+            0,
+            0
+          ],
+          "BR": [
+            10,
+            0
+          ],
+          "oneP0": [
+            0,
+            2
+          ],
+          "oneP1": [
+            2,
+            2
+          ],
+          "oneP2": [
+            2,
+            0
+          ],
+          "oneP3": [
+            0,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "g",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "room",
+            "things": "egg",
+            "n": 0,
+            "in": "g",
+            "start": true
+          },
+          {
+            "id": "top",
+            "poly": [
+              "TL",
+              "TR",
+              "MR",
+              "ML"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "poly": [
+              "ML",
+              "MR",
+              "BR",
+              "BL"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "b",
+            "counters": "g",
+            "n": 9,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "o",
+            "counters": "g",
+            "n": 10,
+            "ink": "warm",
+            "shape": "square"
+          },
+          {
+            "id": "one",
+            "poly": [
+              "oneP0",
+              "oneP1",
+              "oneP2",
+              "oneP3"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Nine blue and one orange make ten. Watch the pair change.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{9}+\\cw{1}=10",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "o10"
+            },
+            {
+              "do": "move",
+              "points": {
+                "o6": [
+                  1,
+                  1.8
+                ],
+                "o7": [
+                  3,
+                  1.8
+                ],
+                "o8": [
+                  5,
+                  1.8
+                ],
+                "o9": [
+                  7,
+                  1.8
+                ]
+              },
+              "dur": 0.01
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One blue out. One orange in. Eight plus two equals ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b9": [
+                  7,
+                  1.8
+                ]
+              },
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": "b9",
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "show",
+              "target": "o9",
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "o9": {
+                  "cell": [
+                    "g",
+                    9
+                  ]
+                }
+              },
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "clear",
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{8}+\\cw{2}=10",
+              "fresh": true,
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One blue out. One orange in. Seven plus three equals ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b8": [
+                  5,
+                  1.8
+                ]
+              },
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": "b8",
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "show",
+              "target": "o8",
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "o8": {
+                  "cell": [
+                    "g",
+                    8
+                  ]
+                }
+              },
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "clear",
+              "at": "Seven"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{7}+\\cw{3}=10",
+              "fresh": true,
+              "at": "Seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One blue out. One orange in. Six plus four equals ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b7": [
+                  3,
+                  1.8
+                ]
+              },
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": "b7",
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "show",
+              "target": "o7",
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "o7": {
+                  "cell": [
+                    "g",
+                    7
+                  ]
+                }
+              },
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "clear",
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{6}+\\cw{4}=10",
+              "fresh": true,
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "See six as a full row of five.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "top",
+              "at": "row"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And one more blue. Four places are left for orange.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "one",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One blue out. One orange in. Five plus five equals ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "top",
+                "bottom",
+                "one"
+              ],
+              "at": "out"
+            },
+            {
+              "do": "move",
+              "points": {
+                "b6": [
+                  1,
+                  1.8
+                ]
+              },
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "hide",
+              "target": "b6",
+              "at": "out",
+              "dur": 0.55
+            },
+            {
+              "do": "show",
+              "target": "o6",
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "o6": {
+                  "cell": [
+                    "g",
+                    6
+                  ]
+                }
+              },
+              "at": "in",
+              "dur": 0.55
+            },
+            {
+              "do": "clear",
+              "at": "Five"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{5}+\\cw{5}=10",
+              "fresh": true,
+              "at": "Five"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One fewer blue, one more orange. Ten altogether!",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g",
+              "at": "Ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.5,
+          10.8,
+          5.5
+        ],
+        "points": {
+          "G": [
+            0,
+            4
+          ],
+          "TL": [
+            0,
+            4
+          ],
+          "TR": [
+            10,
+            4
+          ],
+          "ML": [
+            0,
+            2
+          ],
+          "MR": [
+            10,
+            2
+          ],
+          "BL": [
+            0,
+            0
+          ],
+          "BR": [
+            10,
+            0
+          ],
+          "filledP0": [
+            0,
+            4
+          ],
+          "filledP1": [
+            8,
+            4
+          ],
+          "filledP2": [
+            8,
+            2
+          ],
+          "filledP3": [
+            0,
+            2
+          ],
+          "P5a": [
+            8,
+            4
+          ],
+          "P5b": [
+            10,
+            4
+          ],
+          "P5c": [
+            10,
+            2
+          ],
+          "P5d": [
+            8,
+            2
+          ]
+        },
+        "parts": [
+          {
+            "id": "g",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "room",
+            "things": "egg",
+            "n": 0,
+            "in": "g",
+            "start": true
+          },
+          {
+            "id": "top",
+            "poly": [
+              "TL",
+              "TR",
+              "MR",
+              "ML"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "poly": [
+              "ML",
+              "MR",
+              "BR",
+              "BL"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "b",
+            "counters": "g",
+            "n": 4,
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "o",
+            "counters": "g",
+            "n": 10,
+            "ink": "warm",
+            "shape": "square"
+          },
+          {
+            "id": "filled",
+            "poly": [
+              "filledP0",
+              "filledP1",
+              "filledP2",
+              "filledP3"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "place5",
+            "poly": [
+              "P5a",
+              "P5b",
+              "P5c",
+              "P5d"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "How many more counters will fill this ten-frame?",
+          "pause": 3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How many more counters will fill this ten-frame?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four are filled. I'll look at the empty places.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "filled",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The bottom row needs five.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "bottom",
+              "at": "bottom"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "And this top place needs one more. That's six!",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "place5",
+              "at": "top"
+            },
+            {
+              "do": "show",
+              "target": "o5",
+              "at": "one"
+            },
+            {
+              "do": "write",
+              "tex": "5+1=6",
+              "at": "six",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Fill the bottom row. Six orange counters fit.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "o6",
+                "o7",
+                "o8",
+                "o9",
+                "o10"
+              ],
+              "at": "Fill"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four plus six equals ten. The answer is six more.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{4}+\\cw{6}=10",
+              "fresh": true
+            },
+            {
+              "do": "answer",
+              "tex": "6",
+              "at": "answer"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How many more to fill the ten? Count the empty places.",
+          "pause": 1,
+          "do": []
+        }
+      ]
+    }
+  ]
+}
