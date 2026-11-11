@@ -187,6 +187,16 @@ From 1024 px, a dashboard may use two columns when both carry data of similar we
 - Waits use `Loading`, `LoadingScreen` and skeletons the size of the content.
 - Lessons, workbooks and report cards are TeX PDFs. A screen report prints with the browser's own print (Cmd+P) through a print stylesheet; there is no Print button.
 
+### Smoothness
+
+The founder: "impeccable smoothness, never a wild flash of state transitions." A screen appears once, whole.
+
+- **One change per navigation.** A link preloads its screen's code and data on intent (hover, focus, touch), and opening the drawer preloads its items' screens. The screen on show stays until the next one can render whole. The wave shows only for a wait longer than a second, so a short one never flashes the page to a loader and back.
+- **A route loads its data before it renders.** Its loader ensures the queries the screen reads (`ensureQueryData`), so it paints with its data. Pathways and Inventory load the curriculum and the learner's record and level (`preloadLearningView`); a class's Settings loads every section's data.
+- **One placeholder at most.** Where a wait can't be avoided, one stable skeleton the size of the content stands in, then the content. Never a spinner, then a skeleton, then the content. A screen never waits on lists at its foot, which arrive in place.
+- **An empty state only after the data has truly come back empty** (`isSuccess` and empty), never while it loads.
+- **Checked:** `npm run test:smooth-load-ui` loads the main screens cold on a slow phone (4x CPU, slow network, no cache) and fails on more than one change after the boot wave, or any layout shift.
+
 ## Element finish (the `/design` gallery first)
 
 Every shared element is taken to its final finish in the gallery (`/design`, `features/design/`) before it is applied to screens. The elements are:

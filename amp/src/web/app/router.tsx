@@ -924,6 +924,44 @@ const schoolClassReportCards = createRoute({
 const schoolClassSettings = createRoute({
   getParentRoute: () => schoolClass,
   path: "settings",
+  // Every section's data before the page renders, so it paints once, whole
+  // (docs/design/ia.md, "Smoothness"): a small class's year and grades, and
+  // what its children see.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const [school, { experienceOptions }, { gradebookOptions }] =
+      await Promise.all([
+        import("../features/school/api"),
+        import("../features/school/classroom/api"),
+        import("../features/school/classes/teacher-api"),
+      ]);
+    const org = (await preload(school.orgOptions(session, params.org))) as
+      { kind?: string; solo?: boolean } | undefined;
+    const small = org?.kind === "family" || org?.solo === true;
+    await Promise.all([
+      preload(experienceOptions(session, { kind: "class", id: params.class })),
+      small && preload(school.calendarOptions(session, params.org)),
+      org?.kind === "family" &&
+        preload(gradebookOptions(session, params, undefined)),
+      // The class's students, first page (the roster pages on from there).
+      queryClient
+        .ensureInfiniteQueryData({
+          queryKey: school.studentsKey(session, params.org, ""),
+          initialPageParam: 0,
+          queryFn: ({
+            pageParam,
+            signal,
+          }: {
+            pageParam: number;
+            signal: AbortSignal;
+          }) =>
+            school.fetchStudents(session, params.org, "", pageParam, signal),
+          getNextPageParam: (last: { nextOffset?: number | null }) =>
+            last.nextOffset,
+        } as never)
+        .catch(() => undefined),
+    ]);
+  },
   component: lazyRouteComponent(
     () => import("../features/school/ClassesScreen"),
     "ClassScreen",
