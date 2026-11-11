@@ -221,7 +221,7 @@ export function OwnRecordScreen() {
               )}
               {shown.objectives && (
                 <section className={teacher.recordSection}>
-                  <h2>Objectives gained</h2>
+                  <h2>Skills shown on their own</h2>
                   <RecordObjectives record={data.record} />
                 </section>
               )}

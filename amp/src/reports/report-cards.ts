@@ -103,7 +103,7 @@ function card(
 <div class="head"><div><p class="school">${esc(data.school)}</p><h1>${esc(student.name)}</h1></div><div class="term"><p>${esc(data.term.name)}</p><p class="quiet">${dayWords(data.term.startsOn, "short")} to ${dayWords(data.term.endsOn, "short")}</p></div></div>
 <dl class="people">${people}</dl>
 <div class="result"><div class="grade"><span class="label">Final grade</span>${student.final ? `<span class="gradeValue">${esc(student.final)}</span>` : `<span class="gradeBlank">Not entered yet</span>`}</div>
-<dl class="measures"><div class="measure"><dt class="label">Active minutes</dt><dd>${count(student.minutes)}</dd></div><div class="measure"><dt class="label">Objectives gained</dt><dd>${count(student.objectivesGained)}</dd></div><div class="measure"><dt class="label">Working level at term end</dt>${level}</div></dl></div>
+<dl class="measures"><div class="measure"><dt class="label">Active minutes</dt><dd>${count(student.minutes)}</dd></div><div class="measure"><dt class="label">Skills shown on their own</dt><dd>${count(student.objectivesGained)}</dd></div><div class="measure"><dt class="label">Working level at term end</dt>${level}</div></dl></div>
 <div class="comments"><span class="label">Teacher’s comments</span>${'<div class="line"></div>'.repeat(4)}</div>
 <div class="foot"><p class="note">Final grades are decided by the teacher. AMP measures growth and time on task, and its evidence is available from the teacher on request.</p><div class="signatures"><span>Teacher</span><span>Parent or guardian</span></div></div></article>`;
 }

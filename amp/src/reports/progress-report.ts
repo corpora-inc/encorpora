@@ -215,7 +215,7 @@ export function progressReportHtml(input: ProgressReportInput) {
 <section class="section"><div class="sectionHead"><h2>${input.own ? "Where you are" : `Where ${esc(input.first)} is`}</h2><p>Grade levels, kindergarten to college</p></div>${levels(input)}</section>
 <section class="section"><div class="sectionHead"><h2>Time</h2><p>Active minutes, last ${plural(input.record.weeks.length, "week")}</p></div>${weeks(input.record)}${input.time ? skills(input.time) : ""}</section>
 ${input.grades ? grades(input.grades) : ""}
-<section class="section objectivesSection"><div class="sectionHead"><h2>Objectives gained</h2><p>${input.record.objectives.length ? `${plural(input.record.objectives.length, "objective")} this year` : "This year"}</p></div>${objectives(input.record)}</section>`;
+<section class="section objectivesSection"><div class="sectionHead"><h2>Skills shown on their own</h2><p>${input.record.objectives.length ? `${plural(input.record.objectives.length, "skill")} this year, each right twice without help` : "This year"}</p></div>${objectives(input.record)}</section>`;
   return {
     html: printDocument({
       title: input.name ? `${input.name}: progress report` : "Progress report",

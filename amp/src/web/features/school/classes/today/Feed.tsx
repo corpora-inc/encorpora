@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { AvatarStack } from "../../../../ui/Avatar";
 import { CheckboxControl } from "../../../../ui/Checkbox";
+import { RuleNote } from "../../RuleNote";
 import styles from "./Today.module.css";
 
 /** One thing to do today and why: a title in plain words, the reason under
@@ -10,6 +11,8 @@ export type FeedEntry = {
   id: string;
   title: string;
   detail: string;
+  /** How the item is decided, in one sentence, closed until asked for. */
+  rule?: string;
   /** `check`: marked done on this device for today. `plain`: done by doing
    * it. `dismiss`: an offer the reader can put away for good. */
   mark: "check" | "plain" | "dismiss";
@@ -54,6 +57,7 @@ function FeedItem({
       <div className={styles.todoBody}>
         <h3 className={styles.todoTitle}>{entry.title}</h3>
         <p className={styles.todoDetail}>{entry.detail}</p>
+        {entry.rule && <RuleNote>{entry.rule}</RuleNote>}
         {people.length > 0 && (
           <div className={styles.todoPeople}>
             <AvatarStack

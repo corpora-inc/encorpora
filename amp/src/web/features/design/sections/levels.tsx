@@ -13,13 +13,7 @@ import {
   RecordWork,
   TimeDetail,
 } from "../../school/classes/ProgressRecord";
-import {
-  emptyRecord,
-  frontier,
-  record,
-  strandIds,
-  time,
-} from "../fixtures";
+import { emptyRecord, frontier, record, strandIds, time } from "../fixtures";
 import { Section, Specimen } from "../Gallery";
 
 const areas = strandIds
@@ -102,7 +96,7 @@ export function LevelSections() {
             <TimeDetail time={time} who="Ada" />
           </div>
         </Specimen>
-        <Specimen label="Objectives gained">
+        <Specimen label="Skills shown on their own">
           <div data-dense>
             <RecordObjectives record={record} />
           </div>

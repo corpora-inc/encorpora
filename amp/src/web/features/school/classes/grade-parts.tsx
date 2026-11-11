@@ -5,6 +5,17 @@ import { failureMessage, useSaveFinal, type Place } from "./teacher-api";
 import styles from "./Teacher.module.css";
 
 export function Suggested({ suggestion }: { suggestion: SuggestionResource }) {
+  // One child alone, or a class of one with no target: nothing to measure a
+  // letter against, so its facts stand without one.
+  if (suggestion.status === "facts-only")
+    return (
+      <span
+        className={styles.notEnough}
+        title="With no one to compare with and no weekly target, AMP shows the facts without a letter."
+      >
+        Facts only, no letter
+      </span>
+    );
   if (suggestion.status !== "ready")
     return <span className={styles.notEnough}>Not enough work yet</span>;
   return (

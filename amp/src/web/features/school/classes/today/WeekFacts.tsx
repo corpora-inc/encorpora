@@ -44,7 +44,9 @@ export function WeekFacts({
         {week.objectives > 0 && (
           <div>
             <dt>
-              {week.objectives === 1 ? "new objective" : "new objectives"}
+              {week.objectives === 1
+                ? "skill shown twice on its own"
+                : "skills shown twice on their own"}
             </dt>
             <dd>{number(week.objectives)}</dd>
           </div>

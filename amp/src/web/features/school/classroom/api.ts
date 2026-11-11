@@ -5,6 +5,8 @@ import {
 } from "@tanstack/react-query";
 import {
   experienceResource,
+  orgWeeklyTargetResource,
+  type OrgWeeklyTarget,
   marksResource,
   savedMarksResource,
   stackResource,
@@ -63,6 +65,51 @@ export const experienceOptions = (session: Session, scope: ExperienceScope) =>
         signal,
       }),
   });
+
+/** A school's weekly practice target. */
+export const weeklyTargetOptions = (session: Session, orgId: string) =>
+  queryOptions({
+    queryKey: key(session, "weekly-target", orgId),
+    enabled: !!session,
+    queryFn: ({ signal }) =>
+      request(`/school/orgs/${orgId}/weekly-target`, orgWeeklyTargetResource, {
+        token: session?.token,
+        signal,
+      }),
+  });
+/** Saves it, shown at once; everything that reads it (the overview, each
+ * class's Today and grades) re-reads. */
+export function useWeeklyTargetWrite(session: Session, orgId: string) {
+  const client = useQueryClient();
+  const queryKey = weeklyTargetOptions(session, orgId).queryKey;
+  return useMutation({
+    mutationFn: (minutes: number | null) =>
+      request(`/school/orgs/${orgId}/weekly-target`, orgWeeklyTargetResource, {
+        token: session?.token,
+        body: { minutes },
+      }),
+    onMutate: async (minutes) => {
+      await client.cancelQueries({ queryKey });
+      const before = client.getQueryData<OrgWeeklyTarget>(queryKey);
+      if (before)
+        client.setQueryData(queryKey, {
+          ...before,
+          minutes: minutes ?? before.inherited,
+          own: minutes !== null,
+        });
+      return { before };
+    },
+    onError: (_error, _minutes, context) => {
+      if (context?.before) client.setQueryData(queryKey, context.before);
+    },
+    onSuccess: (saved) => client.setQueryData(queryKey, saved),
+    onSettled: () =>
+      client.invalidateQueries({
+        queryKey: ["account", session?.accountId, "school"],
+        predicate: (query) => query.queryKey[3] !== "classroom",
+      }),
+  });
+}
 
 export type ExperienceWrite = {
   values?: Partial<Record<ExperienceKey, string | null>>;

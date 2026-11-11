@@ -132,11 +132,11 @@ export function EvidenceSheet({
             </dl>
           </section>
           <section>
-            <h3>Objectives gained</h3>
+            <h3>Skills shown on their own</h3>
             {data.objectives.length === 0 ? (
               <p className={styles.quietLine}>
-                None yet this term. An objective counts once{" "}
-                {data.student.first} gets it right without help, more than once.
+                None yet this term. A skill counts once {data.student.first}{" "}
+                gets it right twice without help.
               </p>
             ) : (
               <ul className={styles.objectives}>

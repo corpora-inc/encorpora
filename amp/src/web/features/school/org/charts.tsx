@@ -25,21 +25,42 @@ const axisNumber = (value: number) =>
       ? `${Number((value / 1000).toFixed(1))}K`
       : number(value);
 
-/** Weekly active minutes across the term: one quiet mark a week, future weeks
- * held open so the term's length is plain, this week labelled "so far". */
+export type TrendMeasure = "minutes" | "problems";
+type TrendWeek = OverviewResponse["trend"][number];
+const valueOf = (week: TrendWeek, measure: TrendMeasure) =>
+  measure === "minutes" ? week.minutes : week.problems;
+const unit = (count: number, measure: TrendMeasure) =>
+  measure === "minutes"
+    ? count === 1
+      ? "minute"
+      : "minutes"
+    : count === 1
+      ? "problem"
+      : "problems";
+
+/** Weekly active minutes, or problems answered, across the term: one quiet
+ * mark a week, future weeks held open so the term's length is plain, this week
+ * labelled "so far". Problems stack what students did on their own under what
+ * they did with a hint or lesson. Both draw on one axis frame, so switching
+ * never moves the page. */
 export function TrendChart({
   weeks,
   today,
+  measure = "minutes",
 }: {
   weeks: OverviewResponse["trend"];
   today: string;
+  measure?: TrendMeasure;
 }) {
   const current = weekStart(today);
   const past = weeks.filter((week) => week.week <= current);
-  const top = roundUp(Math.max(0, ...past.map((week) => week.minutes)));
-  const peak = past.reduce<(typeof weeks)[number] | null>(
+  const top = roundUp(
+    Math.max(0, ...past.map((week) => valueOf(week, measure))),
+  );
+  const peak = past.reduce<TrendWeek | null>(
     (best, week) =>
-      week.week !== current && (!best || week.minutes > best.minutes)
+      week.week !== current &&
+      (!best || valueOf(week, measure) > valueOf(best, measure))
         ? week
         : best,
     null,
@@ -49,16 +70,30 @@ export function TrendChart({
   const labelled = new Set<string>();
   if (currentIndex >= 0) labelled.add(current);
   // Two labels side by side would run together: the week in hand wins.
-  if (peak && peak.minutes > 0 && Math.abs(peakIndex - currentIndex) > 2)
+  if (
+    peak &&
+    valueOf(peak, measure) > 0 &&
+    Math.abs(peakIndex - currentIndex) > 2
+  )
     labelled.add(peak.week);
-  const total = past.reduce((sum, week) => sum + week.minutes, 0);
+  const total = past.reduce((sum, week) => sum + valueOf(week, measure), 0);
+  const helped = past.reduce((sum, week) => sum + week.assisted, 0);
+  const problems = measure === "problems";
+  const tipFor = (week: TrendWeek, state: string) => {
+    if (state === "future")
+      return `Week of ${shortDay(week.week)}: still to come`;
+    const soFar = state === "current" ? " so far" : "";
+    return problems
+      ? `Week of ${shortDay(week.week)}: ${number(week.problems)} ${unit(week.problems, measure)}${soFar}, ${number(week.problems - week.assisted)} on their own, ${number(week.assisted)} with help`
+      : `Week of ${shortDay(week.week)}: ${number(week.minutes)} ${unit(week.minutes, measure)}${soFar}, ${number(week.students)} ${week.students === 1 ? "student" : "students"} practiced`;
+  };
   return (
     <figure className={styles.chart}>
       <TipZone className={styles.plotFrame}>
         <div
           className={styles.yAxis}
           aria-hidden="true"
-          data-chart-axis="minutes"
+          data-chart-axis={measure}
         >
           {[top, top / 2, 0].map((tick) => (
             <span key={tick}>{axisNumber(tick)}</span>
@@ -67,7 +102,11 @@ export function TrendChart({
         <div
           className={styles.plot}
           role="img"
-          aria-label={`${number(total)} active minutes so far this term. The table that follows has each week.`}
+          aria-label={
+            problems
+              ? `${number(total)} problems so far this term, ${number(total - helped)} on their own and ${number(helped)} with help. The table that follows has each week.`
+              : `${number(total)} active minutes so far this term. The table that follows has each week.`
+          }
         >
           <span className={styles.gridLine} style={{ bottom: "100%" }} />
           <span className={styles.gridLine} style={{ bottom: "50%" }} />
@@ -79,6 +118,7 @@ export function TrendChart({
                   : week.week === current
                     ? "current"
                     : "past";
+              const value = valueOf(week, measure);
               // The week in hand reads to its right, over the weeks still to
               // come, so a taller week before it never runs into its label.
               const edge =
@@ -91,11 +131,7 @@ export function TrendChart({
                 <span
                   key={week.week}
                   className={styles.column}
-                  data-tip={
-                    state === "future"
-                      ? `Week of ${shortDay(week.week)}: still to come`
-                      : `Week of ${shortDay(week.week)}: ${number(week.minutes)} minutes${state === "current" ? " so far" : ""}, ${number(week.students)} ${week.students === 1 ? "student" : "students"}`
-                  }
+                  data-tip={tipFor(week, state)}
                 >
                   <span
                     className={styles.bar}
@@ -104,14 +140,22 @@ export function TrendChart({
                       height:
                         state === "future"
                           ? undefined
-                          : week.minutes
-                            ? `${Math.max(1.5, (week.minutes / top) * 100)}%`
+                          : value
+                            ? `${Math.max(1.5, (value / top) * 100)}%`
                             : 0,
                     }}
                   >
+                    {problems && state !== "future" && week.assisted > 0 && (
+                      <span
+                        className={styles.barHelp}
+                        style={{
+                          height: `${(week.assisted / Math.max(1, week.problems)) * 100}%`,
+                        }}
+                      />
+                    )}
                     {labelled.has(week.week) && (
                       <span className={styles.barLabel} data-edge={edge}>
-                        {number(week.minutes)}
+                        {number(value)}
                         {state === "current" ? " so far" : ""}
                       </span>
                     )}
@@ -124,23 +168,51 @@ export function TrendChart({
       </TipZone>
       <div className={styles.xAxis} aria-hidden="true">
         <span>{weeks[0] ? shortDay(weeks[0].week) : ""}</span>
+        {problems ? (
+          <span className={styles.legend}>
+            <span className={styles.legendKey} data-series="own" />
+            On their own
+            <span className={styles.legendKey} data-series="help" />
+            With help
+          </span>
+        ) : null}
         <span>{weeks.at(-1) ? shortDay(weeks.at(-1)!.week) : ""}</span>
       </div>
       <table className={styles.hiddenTable}>
-        <caption>Active minutes by week</caption>
+        <caption>
+          {problems ? "Problems by week" : "Active minutes by week"}
+        </caption>
         <thead>
           <tr>
             <th scope="col">Week of</th>
-            <th scope="col">Minutes</th>
-            <th scope="col">Students</th>
+            {problems ? (
+              <>
+                <th scope="col">On their own</th>
+                <th scope="col">With help</th>
+              </>
+            ) : (
+              <>
+                <th scope="col">Minutes</th>
+                <th scope="col">Students who practiced</th>
+              </>
+            )}
           </tr>
         </thead>
         <tbody>
           {past.map((week) => (
             <tr key={week.week}>
               <th scope="row">{shortDay(week.week)}</th>
-              <td>{week.minutes}</td>
-              <td>{week.students}</td>
+              {problems ? (
+                <>
+                  <td>{week.problems - week.assisted}</td>
+                  <td>{week.assisted}</td>
+                </>
+              ) : (
+                <>
+                  <td>{week.minutes}</td>
+                  <td>{week.students}</td>
+                </>
+              )}
             </tr>
           ))}
         </tbody>

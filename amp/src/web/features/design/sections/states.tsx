@@ -160,7 +160,7 @@ export function StateSections() {
               detail="+18% on last week"
             />
             <StatTile label="days worked" value="5" />
-            <StatTile label="objectives gained" value="0" />
+            <StatTile label="skills shown on their own" value="0" />
           </StatRow>
         </Specimen>
       </Section>
