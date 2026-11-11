@@ -75,4 +75,7 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 | Screen | Person | Status | Notes |
 |---|---|---|---|
 | Drawer and place switcher | adult-3wk, family, school | done | places only; learners as quiet rows; no own name or email; exactly one current item (no router prefix match); hover fills only where a pointer hovers |
+| Smoothness (every route) | adult-3wk, family | done | preload on intent and on drawer open; no wave under a second; route loaders for Pathways, Inventory and class Settings; `npm run test:smooth-load-ui`: 8 routes, 0 changes after the wave, CLS 0 |
+| Workbooks for an adult | adult-3wk | done | a drawer item under Practice; its pages have the plain frame; the one current item there |
+| Pathways search | adult-3wk | done | results select their skill (found item first in the panel); no phone overflow; formula-safe snippets; semantic search live in the preview |
 | Generic errors | all | done | `lib/api.ts` names what failed |
