@@ -6,6 +6,8 @@
 import { z } from "zod";
 import { PLACES } from "./blocks";
 import { thingKinds } from "../src/math/scene/components/things-art";
+import { sceneSchema } from "../src/math/scene/spec";
+import { actionSchema as sceneActionSchema } from "../src/math/scene/timeline";
 import { isRoleKind, ROLE_KINDS, type RoleKind } from "./voices";
 
 const num = z.number().finite();
@@ -467,8 +469,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("send"), target: targets, to: z.union([name, z.array(name).min(2)]), ...timing }).strict(),
   /** Things go away one by one. */
   z.object({ do: z.literal("leave"), target: targets, ...timing }).strict(),
-  /** The lesson's real figure (figure: {example: true}): scene actions on its part names. */
-  z.object({ do: z.literal("scene"), actions: z.array(z.record(z.string(), z.unknown())).min(1), ...timing }).strict(),
+  /** An app figure (figure {example: true} or {scene: ...}): scene timeline actions on its part names. */
+  z.object({ do: z.literal("scene"), actions: z.array(sceneActionSchema).min(1), ...timing }).strict(),
   // ---- the work column
   /** The problem as the learner sees it, with its answer choices if it has them. */
   z.object({ do: z.literal("problem"), text: z.string().min(1), choices: z.array(z.string().min(1)).optional(), ...lineId, ...timing }).strict(),
@@ -540,10 +542,20 @@ export const speakerRoles = ROLE_KINDS;
 export type SpeakerRole = RoleKind;
 const speakerKey = z.string().regex(/^[a-z][a-z0-9-]{0,40}$/);
 
+/**
+ * Any app figure with the author's own data: the scene spec the app draws
+ * (src/math/scene, docs/figures.md). The film's `scene` actions drive it, so
+ * the spec carries no steps of its own.
+ */
+export const sceneFigureSchema = z
+  .object({ scene: sceneSchema })
+  .strict()
+  .refine((f) => !f.scene.steps, { message: "A film drives its scene with scene actions; leave out steps", path: ["scene", "steps"] });
+
 export const shotSchema = z
   .object({
-    /** A built figure, the lesson's real figure, or none (the work fills the frame). */
-    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict()]).optional(),
+    /** A built figure, the lesson's real figure, any app figure, or none (the work fills the frame). */
+    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict(), sceneFigureSchema]).optional(),
     beats: z.array(beatSchema).min(1),
   })
   .strict();

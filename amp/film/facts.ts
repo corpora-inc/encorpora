@@ -38,7 +38,7 @@ if (fig) {
   out.figure = fig.kind === "scene"
     ? { use: '{"figure":{"example":true}}', kind: "scene", parts: layoutScene(fig.scene, { reveal: true }).items.map((d) => d.id).filter(Boolean) }
     : { use: '{"figure":{"example":true}}', kind: fig.kind, note: "Shown as drawn; it has no named parts to animate." };
-} else out.figure = "The example has no figure. Build one if a picture helps; many lessons need one.";
+} else out.figure = 'The example has no figure. Build one if a picture helps; many lessons need one: any app figure ({"figure":{"scene":...}}, parts from film/parts.ts) or geo.';
 // every distinct wording a learner can see, with its worked solution
 const seen = new Map<string, unknown>();
 for (let i = 0; i < 300 && seen.size < 12; i++) {

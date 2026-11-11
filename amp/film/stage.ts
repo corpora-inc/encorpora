@@ -2991,15 +2991,19 @@ class Board {
 }
 
 // ------------------------------------------------------------------ the film
+/** An app figure mounted into a shot's card (film/example.tsx): how to draw it at t, and what its checks found. */
+export type FigureMount = { seek?: (t: number) => void; issues?: string[]; notes?: string[] };
 export class Film {
-  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
+  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; mount?: FigureMount; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
   issues: string[] = [];
+  /** Worth knowing, not wrong: printed as notes, never a reason to stop. */
+  notes: string[] = [];
   duration: number;
   L: Layout;
   /** Longest stretch of speech with nothing changing on screen; --dry passes a stricter limit, since its timing is estimated. */
   still = 7.5;
-  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountExample?: (host: HTMLElement, shot: Shot, list: Entry[]) => ((t: number) => void) | undefined, opts: { checks?: boolean; layout?: Layout; still?: number; voices?: readonly VoiceSpec[] } = {}) {
+  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountFigure?: (host: HTMLElement, shot: Shot, list: Entry[]) => FigureMount | undefined, opts: { checks?: boolean; layout?: Layout; still?: number; voices?: readonly VoiceSpec[] } = {}) {
     if (opts.still) this.still = opts.still;
     this.duration = timing.duration;
     const L0 = opts.layout ?? WIDE;
@@ -3016,15 +3020,15 @@ export class Film {
       const el = div("film-shot", root);
       const t0 = i === 0 ? 0 : times[0]!.start - 0.5;
       const hasFig = !!shot.figure;
-      let geo: GeoStage | undefined; let extern: ((t: number) => void) | undefined;
+      let geo: GeoStage | undefined; let mount: FigureMount | undefined;
       if (hasFig) {
         const card = div("film-figure", el);
         card.style.cssText = `left:${FIG.x}px;top:${FIG.y}px;width:${FIG.w}px;height:${FIG.h}px`;
         const host = div("film-fit", card);
         if (shot.figure && "parts" in shot.figure) geo = new GeoStage(host, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
-        else extern = mountExample?.(host, shot, list);
+        else mount = mountFigure?.(host, shot, list);
       }
-      this.shots.push({ el, t0, t1: Infinity, geo, list, extern, hasFig, pose: null, fill: 0 });
+      this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
     this.lockFrames();
@@ -3103,9 +3107,15 @@ export class Film {
       s: prev.s + (pose.s - prev.s) * u,
     };
   }
-  /** Labels and points must stay on their card, and the picture must be big enough to see. */
+  /** Labels and points must stay on their card, the picture must be big enough to see, and scene actions must name real parts. */
   checkFigures() {
     this.shots.forEach((s, i) => {
+      // an app figure checks its own scene actions when it is mounted
+      for (const m of s.mount?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
+      for (const m of s.mount?.notes ?? []) this.notes.push(`Shot ${i + 1}: ${m}`);
+      const fig = this.script.shots[i]!.figure;
+      if ((!fig || "parts" in fig) && s.list.some((e) => e.a.do === "scene"))
+        this.issues.push(`Shot ${i + 1}: scene actions drive an app figure, but this shot has none. Give it {"example": true} or {"scene": ...}.`);
       if (!s.geo) return;
       this.checkSize(s, i);
       const box = s.geo.box;
