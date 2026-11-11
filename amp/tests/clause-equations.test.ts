@@ -389,7 +389,15 @@ test("assumption checks and scaled elimination are exact", () => {
       const value = (side: string) => {
         const m = /(-?\d+)\(x([+-]\d+)\)/.exec(side);
         if (m) return Number(m[1]) * (x + Number(m[2]));
-        return Number(/(-?\d+)x/.exec(side)?.[1] ?? 0) * x + Number(/(?:x)([+-]\d+)/.exec(side)?.[1] ?? 0);
+        const bare = /^(-?\d+)?x([+-]\d+)$/.exec(side);
+        if (!bare) return Number.NaN;
+        const coef =
+          bare[1] === undefined || bare[1] === ""
+            ? 1
+            : bare[1] === "-"
+              ? -1
+              : Number(bare[1]);
+        return coef * x + Number(bare[2]);
       };
       assert.equal(value(left!), value(right!));
       assert.match(check, new RegExp(String(value(left!))));
@@ -400,22 +408,47 @@ test("assumption checks and scaled elimination are exact", () => {
   for (const seed of seeds(80, "elim")) {
     const p = generateProblem("scaled-elimination", seed);
     const sum = chosen(p, "sum");
-    const m = /E2 \+ (-?\d+)·E1/.exec(p.public.prompt)!;
-    const k = Number(m[1]);
-    const eqs = [...p.public.prompt.matchAll(/(-?\d+)x([+-]\d+)y = (-?\d+)/g)];
+    const plusK = /E2 \+ (\d+)\\cdot E1/.exec(p.public.prompt);
+    const minusK = /E2 - (\d+)\\cdot E1/.exec(p.public.prompt);
+    const k = plusK ? Number(plusK[1]) : minusK ? -Number(minusK[1]!) : NaN;
+    assert.ok(Number.isInteger(k) && k !== 0, p.public.prompt);
+    const read = (source: string) => {
+      const m = /([−-]?)(\d+)?x\s*([+−-])\s*(\d+)?y\s*=\s*(-?\d+)/.exec(source);
+      if (!m) return null;
+      const coef = (sign: string, digits: string | undefined) => {
+        const mag = digits ? Number(digits) : 1;
+        return sign === "-" || sign === "−" ? -mag : mag;
+      };
+      return [
+        coef(m[1]!, m[2]),
+        coef(m[3]!, m[4]),
+        Number(m[5]),
+      ] as const;
+    };
+    const eqs = [...p.public.prompt.matchAll(/([−-]?)(\d+)?x\s*([+−-])\s*(\d+)?y\s*=\s*(-?\d+)/g)].map(
+      (m) => read(m[0])!,
+    );
     assert.equal(eqs.length, 2, p.public.prompt);
-    const [a, b, c] = eqs[0]!.slice(1).map(Number);
-    const [d, e, f] = eqs[1]!.slice(1).map(Number);
-    const nx = d! + k * a!;
-    const ny = e! + k * b!;
-    const nr = f! + k * c!;
+    const [a, b, c] = eqs[0]!;
+    const [d, e, f] = eqs[1]!;
+    const nx = d + k * a;
+    const ny = e + k * b;
+    const nr = f + k * c;
     assert.equal(ny, 0, p.public.prompt);
-    const xTerm = nx === 1 ? /(?:^| )x =/ : nx === -1 ? /-x =/ : new RegExp(`${nx}x`);
+    const shown = (value: number) => (value < 0 ? `−${-value}` : String(value));
+    const xTerm =
+      nx === 1
+        ? /(?:^| )x =/
+        : nx === -1
+          ? /[−-]x =/
+          : new RegExp(`${nx < 0 ? `[−-]${-nx}` : nx}x`);
     assert.match(sum, xTerm);
-    assert.match(sum, new RegExp(`= ${nr}`));
+    assert.match(sum, new RegExp(`= ${shown(nr)}`));
     const unscaled = p.public.response.kind === "multi-part-choice"
       ? p.public.response.blanks[0]!.options.map((o) => o.label)
       : [];
-    assert.ok(unscaled.some((label) => label.includes(`= ${f! + c!}`) && label !== sum));
+    assert.ok(
+      unscaled.some((label) => label.includes(`= ${shown(f + c)}`) && label !== sum),
+    );
   }
 });

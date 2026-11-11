@@ -284,7 +284,7 @@ function proportionEstimate(r: Random): Draft {
     answer: `${estimate}`,
     hint: `A random sample should look like the population. The sample has ${k} out of ${s}; find the same fraction of ${p}.`,
     explanation: [
-      `In the sample, ${k} of ${s} ${c.trait}: the fraction ${rational(k, s)}.`,
+      `In the sample, ${k} of ${s} ${c.trait}: the fraction $${rational(k, s)}$.`,
       `A random sample resembles the population, so expect about the same fraction of all ${p}.`,
       `${rational(k, s)} × ${p} = ${thousands(estimate)}.`,
       "This is an estimate: another random sample would give a slightly different fraction.",

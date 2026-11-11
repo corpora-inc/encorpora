@@ -394,7 +394,10 @@
   line-height: 1.6;
 }
 .pathways-browser {
+  box-sizing: border-box;
   width: 260px;
+  max-width: 100%;
+  min-width: 0;
   flex-shrink: 0;
   overflow: auto;
   border: 1px solid var(--atlas-border);
@@ -406,10 +409,27 @@
 .pathways-grade[hidden] {
   display: none;
 }
+/* The grade filter: one compact row, its label beside the shared Listbox
+   picker, with room before the results under it. */
 .pathways-grade {
-  display: grid;
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-bottom: 14px;
   font-size: 12px;
+}
+.pathways-grade > span[aria-hidden="true"] {
+  flex: none;
+  color: var(--atlas-muted);
+  font-weight: 600;
+}
+.pathways-grade > :last-child {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+.pathways-grade small {
+  flex-basis: 100%;
 }
 .pathways ul {
   list-style: none;
@@ -532,6 +552,34 @@
   display: block;
   font-size: 12px;
   color: var(--atlas-muted);
+}
+/* What a search found, first in its skill's panel: the accent's edge over a
+   faint tint, its kind, its name and its one action. */
+.pathways-found {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--atlas-accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--atlas-accent) 9%, transparent);
+  color: var(--atlas-on-panel);
+}
+.pathways-found-kind {
+  color: var(--atlas-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pathways-found strong {
+  font-size: 14px;
+  line-height: 1.35;
+}
+.pathways .pathways-found a,
+.pathways .pathways-found button {
+  min-height: 44px;
+  margin-top: 2px;
+  font-size: 12px;
 }
 .pathways-detail-actions {
   display: flex;
@@ -1342,9 +1390,11 @@
   min-width: 0;
 }
 /* Search results are rows, not the browser's skill cards; the panel widens
-   while it holds them. */
+   while it holds them, never past the column (a phone's edge). */
 .pathways-browser:has(.pathways-results) {
-  width: 380px;
+  box-sizing: border-box;
+  width: min(380px, 100%);
+  max-width: 100%;
 }
 .pathways .pathways-results ul {
   margin: 0;

@@ -222,9 +222,9 @@ function rewriteNote(w: Written, i: number): string | null {
     case "reversed":
       return `Equation ${i}, $${w.tex}$: list $x$ first to match $X$, giving ${target}.`;
     case "x-only":
-      return `Equation ${i}, $${w.tex}$, has no $y$, so its coefficient of $y$ is 0: $${sideTex([{ k: a, v: "x" }])}+0y=${w.c}$.`;
+      return `Equation ${i}, $${w.tex}$, has no $y$, so its coefficient of $y$ is 0. The equation is $${sideTex([{ k: a, v: "x" }])}=${w.c}$.`;
     case "y-only":
-      return `Equation ${i}, $${w.tex}$, has no $x$, so its coefficient of $x$ is 0: $0x${b < 0 ? "-" : "+"}${Math.abs(b) === 1 ? "" : Math.abs(b)}y=${w.c}$.`;
+      return `Equation ${i}, $${w.tex}$, has no $x$, so its coefficient of $x$ is 0. The equation is $${sideTex([{ k: b, v: "y" }])}=${w.c}$.`;
     default:
       return null;
   }

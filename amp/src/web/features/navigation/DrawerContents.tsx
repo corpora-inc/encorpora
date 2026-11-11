@@ -1,6 +1,11 @@
 import { CurriculumDetailsControl } from "../curriculum/CurriculumDetails";
-import { useState, type ReactNode } from "react";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useRouter,
+} from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
@@ -103,6 +108,18 @@ export default function DrawerContents({
   // Exactly one item is current: the most specific match for this route.
   // Practice as someone else and the adult's workbooks sit beside My
   // practice, so they outrank Progress there; never two fills at once.
+  // Opening the drawer is the intent: each item's screen (its code and
+  // data) loads now, so the one a tap chooses renders whole, at once.
+  const router = useRouter();
+  const navRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    for (const link of navRef.current?.querySelectorAll("a[href]") ?? []) {
+      const href = link.getAttribute("href")!;
+      void router.preloadRoute({ href } as never).catch((error: unknown) => {
+        console.error("A drawer item's screen did not preload", href, error);
+      });
+    }
+  }, [router]);
   const currentItem = location.pathname.startsWith("/me/profiles")
     ? "someone"
     : ownWorkbooks &&
@@ -289,7 +306,11 @@ export default function DrawerContents({
           <button onClick={view.retry}>Try again</button>
         </div>
       )}
-      <nav aria-label="AMP navigation" className={styles.navigation}>
+      <nav
+        ref={navRef}
+        aria-label="AMP navigation"
+        className={styles.navigation}
+      >
         {/* A second parent's family's child practices from its class
             ("Let … practice here"), which is the Class link below. */}
         {!view.viewOnly &&

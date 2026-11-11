@@ -1,3 +1,4 @@
+import { PanelFrame } from "./PanelFrame";
 import type { CSSProperties } from "react";
 import {
   handAngles,
@@ -250,6 +251,10 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
   if (figure.kind === "analog-clocks") {
     const n = figure.clocks.length,
       labelled = n > 1;
+    // Lettered clocks sit in their own panels with room around each face,
+    // so a panel can be tapped (and outlined) without crowding the dial.
+    const column = labelled ? 264 : 240,
+      cy = labelled ? 126 : 118;
     const description = figure.clocks
       .map(
         (c) =>
@@ -260,7 +265,7 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
       <svg
         data-kind={figure.kind}
         className="figure time-money-figure"
-        viewBox={`0 0 ${240 * n} ${labelled ? 272 : 236}`}
+        viewBox={`0 0 ${column * n} ${labelled ? 284 : 236}`}
         role="img"
         aria-label={description}
       >
@@ -269,16 +274,25 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
           const a = handAngles(c.hour, c.minute);
           return (
             <g key={i} data-clock={c.label ?? i}>
+              {labelled && (
+                <PanelFrame
+                  label={c.label}
+                  x={column * i + 4}
+                  y={2}
+                  width={column - 8}
+                  height={280}
+                />
+              )}
               <ClockFace
-                cx={120 + 240 * i}
-                cy={118}
+                cx={column / 2 + column * i}
+                cy={cy}
                 hourAngle={a.hour}
                 minuteAngle={a.minute}
               />
               {c.label && (
                 <text
-                  x={120 + 240 * i}
-                  y="262"
+                  x={column / 2 + column * i}
+                  y="272"
                   textAnchor="middle"
                   fill={ink}
                   style={{ fontSize: 28, fontWeight: 700 }}
@@ -319,6 +333,15 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
       <title>{description}</title>
       {rows.map(({ set, layout, y: top }, i) => (
         <g key={i} data-set={set.label ?? i}>
+          {labelled && (
+            <PanelFrame
+              label={set.label}
+              x={2}
+              y={Math.max(1, top - 6)}
+              width={316}
+              height={top + layout.height + 6 - Math.max(1, top - 6)}
+            />
+          )}
           {set.label && (
             <text
               x="16"
@@ -342,6 +365,7 @@ export function TimeMoneyFigure({ figure }: { figure: Data }) {
           ))}
           {labelled && i < rows.length - 1 && (
             <line
+              data-panel-divider=""
               x1="0"
               x2="320"
               y1={top + layout.height + 9}

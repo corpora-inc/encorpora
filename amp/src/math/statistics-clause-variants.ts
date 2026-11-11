@@ -366,7 +366,7 @@ export function statisticsClause(
       c = absurd ? -pick(r, [45, 60, 85]) : r(5, 18);
     const xs = absurd ? [150, 158, 166, 174, 182, 190] : [0, 2, 4, 6, 8, 10];
     const points: [number, number][] = xs.map((x) => [x, m * x + c + r(-2, 2)]);
-    const equation = `$\\hat y = ${m}x ${c < 0 ? "-" : "+"} ${Math.abs(c)}$`;
+    const equation = `$\\hat y = ${m === 1 ? "x" : `${m}x`} ${c < 0 ? "-" : "+"} ${Math.abs(c)}$`;
     return b.choice(
       {
         figure: scatter(
@@ -686,7 +686,7 @@ export function statisticsClause(
       ? "The residuals bend, so a linear model is not appropriate."
       : "The residuals have no clear pattern, so a linear model is reasonable.";
     const copy = {
-      prompt: `The fitted line is $\\hat y=${m}x+${c}$. The table gives observed values. ${plot ? "Compute and plot the residuals for the first four rows. A residual is observed minus predicted." : "Compute the residuals. Does the pattern support a linear model?"}`,
+      prompt: `The fitted line is $\\hat y=${m === 1 ? "x" : `${m}x`}+${c}$. The table gives observed values. ${plot ? "Compute and plot the residuals for the first four rows. A residual is observed minus predicted." : "Compute the residuals. Does the pattern support a linear model?"}`,
       figure: table([["x", "Observed y"], ...points.map((p) => p.map(String))]),
       hint: `At $x=1$, predict ${m} × 1 + ${c}, then subtract that prediction from the observed ${points[0]![1]}.`,
       explanation: [
@@ -738,14 +738,14 @@ export function statisticsClause(
     const prediction = r(0, 1) === 1;
     const copy = {
       prompt: prediction
-        ? `The table records a machine's output $y$ after $x$ minutes. The least-squares fit is $\\hat y=${m}x+${c}$. Predict output at $x=7$.`
+        ? `The table records a machine's output $y$ after $x$ minutes. The least-squares fit is $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}. Predict output at $x=7$.`
         : "Each graph shows the same machine measurements and a candidate line. Which line best fits the data?",
       hint: prediction
-        ? `Substitute 7 for $x$ in $\\hat y=${m}x+${c}$.`
+        ? `Substitute 7 for $x$ in $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}.`
         : "Look for a line through the middle, with small vertical misses on both sides.",
       explanation: [
         `The candidate sums of squared vertical misses are ${sse.map((x) => round(x, 3)).join(", ")}.`,
-        `The smallest belongs to $\\hat y=${m}x+${c}$. At $x=7$, it predicts ${7 * m + c}.`,
+        `The smallest belongs to $\\hat y=${m === 1 ? "x" : m === -1 ? "-x" : `${m}x`}+${c}. At $x=7$, it predicts ${7 * m + c}.`,
       ],
     };
     if (prediction)
@@ -762,7 +762,7 @@ export function statisticsClause(
     return b.figures(
       copy,
       lines.map((l) => ({
-        label: `Candidate line y = ${l.m}x + ${l.b}`,
+        label: `Candidate line ${l.m === 0 ? `y = ${l.b}` : `y = ${l.m === 1 ? "x" : l.m === -1 ? "−x" : `${l.m}x`}${l.b < 0 ? ` − ${-l.b}` : ` + ${l.b}`}`}`,
         scene: graph({
           x: [0, 11],
           y: [

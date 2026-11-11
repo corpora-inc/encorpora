@@ -226,6 +226,22 @@ nav button {
   display: block;
   margin-top: var(--space-2);
 }
+/* A two-line system is a display, not a word in the sentence. On a phone the
+   following line otherwise sits beside the brace. Same own-row rule as a
+   table that follows its question, for the prompt, its review summary and
+   the lesson's example. */
+.problem-content[data-template="scaled-elimination"]
+  :is(.question, .answer-prompt-summary)
+  > .math:has(.mtable),
+.lesson-example[data-template="scaled-elimination"]
+  .lesson-example-prompt
+  > .math:has(.mtable) {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  margin-block: var(--space-2);
+}
 /* Cases and matrices cannot wrap between their columns. Keep their prompts
    readable inside the narrow phone stage, including its scrollbar gutters. */
 @media (max-width: 380px) {
@@ -793,43 +809,69 @@ nav button {
 /* A choice is a complete mathematical statement. Its radio control keeps native
    arrow-key behavior; the letter is an aid to scanning, never the answer value. */
 .choice-form fieldset {
+  position: relative;
   border: 0;
   padding: 0;
   margin: 0;
   min-width: 0;
 }
+/* The instruction, and the option count's reserved place at its end. */
 .choice-form legend {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0;
   font-size: 13px;
+  line-height: 20px;
   color: var(--color-muted-text);
   margin-bottom: 8px;
 }
+.choice-legend-text {
+  min-width: 0;
+}
+.choice-total {
+  flex: none;
+  font-weight: 600;
+  white-space: nowrap;
+  visibility: hidden;
+}
+.choice-total[data-shown] {
+  visibility: visible;
+}
+/* One column of options, or two across when every option fits half the
+   width on one line (ChoiceList measures them): an even grid, never a
+   ragged mix. Rows keep their content height while the list scrolls. */
 .choice-options {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: max-content;
   align-content: start;
   gap: 8px;
 }
-.multi-select-form .choice-options {
-  /* Full statements read in one column, including in the narrow tablet dock. */
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  /* The scrollport may shrink, but its text rows must keep their content height. */
-  grid-auto-rows: max-content;
-  align-content: start;
+.choice-options[data-columns="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* While measuring, each option takes its one-line width. */
+.choice-options[data-measure] > .choice-option {
+  justify-self: start;
+  width: max-content;
+  max-width: none;
+}
+.choice-options[data-measure] .choice-content {
+  white-space: nowrap;
 }
 .answer-dock .choice-option {
   position: relative;
   display: flex;
-  /* Intrinsic width decides whether two complete answers fit. Long answers
-     take a full row; short ones share equal halves, even in a narrow dock. */
-  flex: 1 1 max-content;
-  min-width: calc(50% - 4px);
-  max-width: 100%;
+  min-width: 0;
   align-items: center;
   gap: 10px;
-  min-height: 54px;
+  /* Sized to the content: one line of text in a 48 px row. */
+  min-height: 48px;
   margin: 0;
-  padding: 10px;
+  padding: 8px 12px;
   border: 1px solid var(--color-border-strong);
   border-radius: 12px;
   background: var(--color-surface-raised);
@@ -857,6 +899,13 @@ nav button {
   border-color: var(--color-primary);
   box-shadow: inset 0 0 0 1px var(--color-primary);
   background: var(--color-secondary);
+}
+/* A selection's one marker is its checkbox: drawn at its 24 px size, since
+   the whole row is the target. */
+.choice-option .amp-checkbox-control {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
 }
 .choice-letter {
   flex: none;
@@ -892,15 +941,20 @@ nav button {
   min-height: 48px;
   margin-top: 10px;
 }
-/* Fit, then scroll (#1218): the choice dock never runs off the screen. Long
-   statement choices on a short phone (375×667) made it taller than the
-   surface. It takes at most 62% of the practice surface; past that the
-   options scroll inside it, while the legend, Check and the tools stay put
-   and the problem stage above keeps its own scroll. */
+/* Fit, then scroll (#1218): the choice dock never runs off the screen. The
+   dock shows every option whenever it can: the problem stage yields its
+   height first, down to its own minimum (it scrolls its prompt and figure),
+   and only then do the options scroll inside the dock, while the legend,
+   Check and the tools stay put. */
+.practice-surface:has(> .answer-dock .choice-form) > .problem-stage {
+  flex-shrink: 1000;
+  /* The problem keeps what it needs (PracticeWorkspace measures it), and a
+     long prompt keeps a readable share of a short phone. */
+  min-height: max(180px, min(var(--stage-need, 36%), 36%, 300px));
+}
 .answer-dock:has(.choice-form) {
   display: flex;
   flex-direction: column;
-  max-height: 62%;
   min-height: 0;
 }
 .answer-dock:has(.choice-form) > * {
@@ -926,6 +980,45 @@ nav button {
   padding: 3px;
   margin: -3px;
 }
+/* Options past an edge: that edge fades and a shadow falls under the list,
+   so the first view never hides that there are more. */
+.choice-options[data-more-below] {
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 36px),
+    rgb(0 0 0 / 0.18)
+  );
+}
+.choice-options[data-more-above] {
+  mask-image: linear-gradient(
+    to top,
+    #000 calc(100% - 28px),
+    rgb(0 0 0 / 0.18)
+  );
+}
+.choice-options[data-more-above][data-more-below] {
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.18),
+    #000 28px,
+    #000 calc(100% - 36px),
+    rgb(0 0 0 / 0.18)
+  );
+}
+.choice-form fieldset:has(> .choice-options[data-more-below])::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 10px;
+  pointer-events: none;
+  background: radial-gradient(
+    farthest-side at 50% 0,
+    var(--color-shadow),
+    transparent
+  );
+}
 .choice-model .figure {
   width: 100%;
   height: 120px;
@@ -938,10 +1031,10 @@ nav button {
     flex: 0 1 auto;
   }
   .answer-dock .choice-option {
-    gap: 6px;
-    padding: 8px;
+    gap: 8px;
+    padding: 6px 10px;
     font-size: 15px;
-    min-height: 52px;
+    min-height: 46px;
   }
   .choice-letter {
     width: 22px;

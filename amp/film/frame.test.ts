@@ -554,3 +554,275 @@ test("elements stay put unless a motion is authored, and a highlight does not co
     await page.close();
   }
 }, 180_000);
+
+
+const PHONE = [
+  { width: 390, height: 844 },
+  { width: 412, height: 892 },
+] as const;
+
+/** Times across the whole film, plus the founder's phone frame at 11:31. */
+function phoneSamples(id: string): number[] {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as { timing: { duration: number } };
+  const times: number[] = [];
+  for (let t = 0.4; t <= lesson.timing.duration; t += 2) times.push(Math.round(t * 10) / 10);
+  const at = 11 * 60 + 31;
+  if (at <= lesson.timing.duration + 0.2) times.push(at);
+  return times;
+}
+
+test("on a phone, no text sits behind a card or is cut in half", async () => {
+  const id = "standard-algorithm-rows--aq";
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const samples = phoneSamples(id);
+    expect(samples).toContain(11 * 60 + 31);
+    for (const view of PHONE) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction(() => document.querySelector("#film")?.getAttribute("data-layout") === "tall");
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        const bad = await page.evaluate((times) => {
+          const TEXT = ".film-label, .film-prose, .film-math, .film-display, .film-note, .film-stack-cell, .film-line.term > b, .film-line.term > span, .film-choices > span, .film-recap-item > b, .film-recap-item > span, .film-line.watch, .film-line.text";
+          const CARD = ".film-figure, .film-recap-list, .film-line.problem, .film-line.term, .film-line.watch, .film-line.answer";
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              if (o < 0.04) return 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const problems: string[] = [];
+          const note = (m: string) => { if (problems.length < 8) problems.push(m); };
+          for (const time of times) {
+            const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+            if (!scrub) return { problems: ["no scrubber"], recap: 0, first: "" };
+            scrub.value = String(time);
+            scrub.dispatchEvent(new Event("input", { bubbles: true }));
+            const cards = [...document.querySelectorAll<HTMLElement>(CARD)].flatMap((el) => {
+              if (shown(el) < 0.04) return [];
+              const b = el.getBoundingClientRect();
+              if (b.width < 2 || b.height < 2) return [];
+              return [{ el, l: b.left, t: b.top, r: b.right, b: b.bottom }];
+            });
+            for (const el of document.querySelectorAll<HTMLElement>(TEXT)) {
+              if (shown(el) < 0.04) continue;
+              const label = (el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 42);
+              for (const box of el.getClientRects()) {
+                if (box.width < 1 || box.height < 1) continue;
+                let l = box.left, t = box.top, r = box.right, b = box.bottom;
+                let hidden = false, partial = false;
+                let n: HTMLElement | null = el.parentElement;
+                while (n && n !== document.body) {
+                  const cs = getComputedStyle(n);
+                  if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+                    const h = n.getBoundingClientRect();
+                    const nl = Math.max(l, h.left), nt = Math.max(t, h.top), nr = Math.min(r, h.right), nb = Math.min(b, h.bottom);
+                    if (box.width - (nr - nl) > 3 || box.height - (nb - nt) > 3) {
+                      if (nr - nl <= 2 || nb - nt <= 2) hidden = true;
+                      else partial = true;
+                    }
+                    l = nl; t = nt; r = nr; b = nb;
+                  }
+                  n = n.parentElement;
+                }
+                if (hidden) continue;
+                if (partial) { note(`cut "${label}" @ ${time}s`); continue; }
+                for (const card of cards) {
+                  if (card.el.contains(el) || el.contains(card.el)) continue;
+                  const ox = Math.min(r, card.r) - Math.max(l, card.l);
+                  const oy = Math.min(b, card.b) - Math.max(t, card.t);
+                  if (ox > 2 && oy > 2) note(`"${label}" behind a card @ ${time}s`);
+                }
+              }
+            }
+          }
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (scrub) {
+            scrub.value = "691";
+            scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+          const recap = [...document.querySelectorAll(".film-recap-item span")].map((el) => (el.textContent ?? "").replace(/\s+/g, " ").trim());
+          const visible = recap.filter((_, i) => shown(document.querySelectorAll(".film-recap-item span")[i]!) >= 0.04);
+          return { problems, recap: visible.length, first: visible[0] ?? "" };
+        }, samples);
+        expect(bad.problems, `${id} ${view.width} ${theme}`).toEqual([]);
+        expect(bad.recap, `${id} ${view.width} ${theme} recap steps`).toBeGreaterThanOrEqual(5);
+        expect(bad.first, `${id} ${view.width} ${theme} first step`).toMatch(/Ones row/);
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 240_000);
+
+/** One time near the end of every beat, when that beat's marks are on screen. */
+function beatEnds(id: string): number[] {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+    timing: { shots: { start: number; end: number }[][] };
+  };
+  const times: number[] = [];
+  for (const beats of lesson.timing.shots) {
+    for (const beat of beats) times.push(Math.max(beat.start + 0.35, beat.end - 0.12));
+  }
+  return times;
+}
+
+test("a shaded or boxed region keeps half a line around what it holds", async () => {
+  const id = "standard-algorithm-rows--aq";
+  const times = beatEnds(id);
+  expect(times.length).toBeGreaterThan(10);
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    let checked = 0;
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        const failures = await page.evaluate((samples) => {
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const scaleOf = (el: Element) => {
+            const box = el.getBoundingClientRect();
+            if (el instanceof HTMLElement && el.offsetWidth > 1) return box.width / el.offsetWidth;
+            if (el instanceof SVGGraphicsElement) {
+              try {
+                const local = el.getBBox().width;
+                if (local > 1) return box.width / local;
+              } catch { /* not laid out */ }
+            }
+            return 1;
+          };
+          const halfLine = (el: Element, scale: number) => {
+            const cs = getComputedStyle(el);
+            const fs = Number.parseFloat(cs.fontSize);
+            const lh = cs.lineHeight === "normal" ? fs * 1.2 : Number.parseFloat(cs.lineHeight);
+            return 0.5 * (Number.isFinite(lh) && lh > 0 ? lh : fs) * scale;
+          };
+          const inkOf = (el: HTMLElement) => {
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            const boxes = [...range.getClientRects()].filter((r) => r.width >= 0.5 && r.height >= 0.5);
+            if (!boxes.length) return null;
+            let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
+            for (const box of boxes) {
+              l = Math.min(l, box.left); t = Math.min(t, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
+            }
+            return { l, t, r, b };
+          };
+          const paint = (cs: CSSStyleDeclaration) => {
+            const bg = cs.backgroundColor;
+            const filled = !!bg && bg !== "transparent" && !/rgba?\([^)]*,\s*0(?:\.0+)?\)/.test(bg) && !bg.endsWith("/ 0)") && !bg.endsWith("/0)");
+            return filled;
+          };
+          const problems: string[] = [];
+          const note = (msg: string) => { if (problems.length < 6) problems.push(msg); };
+          let saw = 0;
+          for (const time of samples) {
+            const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+            if (!scrub) return ["no scrubber"];
+            scrub.value = String(time);
+            scrub.dispatchEvent(new Event("input", { bubbles: true }));
+            const regions: { el: HTMLElement; kind: string }[] = [];
+            for (const band of document.querySelectorAll<HTMLElement>(".film-stack-band")) {
+              if (shown(band) < 0.45) continue;
+              const box = band.getBoundingClientRect();
+              if (box.width < 2 || box.height < 2) continue;
+              regions.push({ el: band, kind: "column" });
+            }
+            for (const card of document.querySelectorAll<HTMLElement>(".film-line.problem, .film-line.term, .film-line.watch, .film-line.answer, .film-recap-list, .film-choices > span")) {
+              if (shown(card) < 0.45 || !paint(getComputedStyle(card))) continue;
+              regions.push({ el: card, kind: "card" });
+            }
+            for (const cell of document.querySelectorAll<HTMLElement>(".film-table-bg")) {
+              if (shown(cell) < 0.45) continue;
+              const box = cell.getBoundingClientRect();
+              if (box.width < 2 || box.height < 2) continue;
+              regions.push({ el: cell, kind: "cell" });
+            }
+            for (const region of regions) {
+              const box = region.el.getBoundingClientRect();
+              const scale = scaleOf(region.el);
+              const held: { l: number; t: number; r: number; b: number; el: HTMLElement }[] = [];
+              const texts = region.kind === "column"
+                ? [...region.el.parentElement!.querySelectorAll<HTMLElement>(".film-stack-cell")]
+                : region.kind === "card"
+                  ? [...region.el.querySelectorAll<HTMLElement>("*")]
+                  : [...document.querySelectorAll<HTMLElement>(".film-table-cell")];
+              for (const el of texts) {
+                if (shown(el) < 0.45) continue;
+                if (!(el.textContent ?? "").trim()) continue;
+                const ink = inkOf(el);
+                if (!ink) continue;
+                const cx = (ink.l + ink.r) / 2, cy = (ink.t + ink.b) / 2;
+                if (cx < box.left || cx > box.right || cy < box.top || cy > box.bottom) continue;
+                held.push({ ...ink, el });
+              }
+              if (!held.length) continue;
+              saw++;
+              let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity, margin = 0;
+              for (const piece of held) {
+                l = Math.min(l, piece.l); t = Math.min(t, piece.t); r = Math.max(r, piece.r); b = Math.max(b, piece.b);
+                margin = Math.max(margin, halfLine(piece.el, scale));
+              }
+              const slack = 1;
+              const sides = [
+                ["left", l - box.left],
+                ["right", box.right - r],
+                ["top", t - box.top],
+                ["bottom", box.bottom - b],
+              ] as const;
+              for (const [side, gap] of sides) {
+                if (gap < margin - slack) note(`${region.kind} ${side} ${gap.toFixed(1)}px < ${margin.toFixed(1)}px at ${time.toFixed(1)}s`);
+              }
+              if (region.kind === "column") {
+                const rule = region.el.parentElement!.querySelector<HTMLElement>(".film-stack-rule");
+                if (rule && shown(rule) >= 0.45) {
+                  const line = rule.getBoundingClientRect();
+                  const over = line.bottom > box.top && line.top < box.bottom && line.right > box.left && line.left < box.right;
+                  if (over) {
+                    let above = Infinity, below = Infinity;
+                    for (const piece of held) {
+                      if (piece.b <= line.bottom + slack) above = Math.min(above, line.top - piece.b);
+                      if (piece.t >= line.top - slack) below = Math.min(below, piece.t - line.bottom);
+                    }
+                    if (Number.isFinite(above) && above < margin - slack) note(`rule meets the digit above (${above.toFixed(1)}px) at ${time.toFixed(1)}s`);
+                    if (Number.isFinite(below) && below < margin - slack) note(`rule meets the answer (${below.toFixed(1)}px) at ${time.toFixed(1)}s`);
+                    if (line.top - box.top < margin - slack) note(`rule meets the top of the column at ${time.toFixed(1)}s`);
+                    if (box.bottom - line.bottom < margin - slack) note(`rule meets the bottom of the column at ${time.toFixed(1)}s`);
+                  }
+                }
+              }
+            }
+          }
+          (window as unknown as { __boxChecks?: number }).__boxChecks = saw;
+          return problems;
+        }, times);
+        checked += await page.evaluate(() => (window as unknown as { __boxChecks?: number }).__boxChecks ?? 0);
+        expect(failures, `${id} ${view.width} ${theme}`).toEqual([]);
+      }
+    }
+    expect(checked).toBeGreaterThan(0);
+  } finally {
+    await page.close();
+  }
+}, 180_000);

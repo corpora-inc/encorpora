@@ -772,7 +772,7 @@ function storyCase(r: Random): Case {
     return {
       prompt: `A bank account has a balance of ${decimal(start, 2)} dollars. The owner deposits ${decimal(deposit, 2)} dollars, then pays ${count} bills of ${decimal(price, 2)} dollars each from the account. What is the balance now, in dollars?`,
       answer: answerText(end),
-      hint: `Start at ${decimal(start, 2)}. A deposit adds; each payment subtracts. The ${count} bills together change the balance by ${count} × (−${decimal(price, 2)}).`,
+      hint: `Start at $${decimal(start, 2)}$. A deposit adds; each payment subtracts. The ${count} bills together change the balance by ${count} × (−${decimal(price, 2)}).`,
       explanation: [
         `Deposits add to the balance and payments subtract from it. The balance starts at ${decimal(start, 2)}.`,
         `The ${count} bills change the balance by ${count} × ${operand(-price, 2)} = ${decimal(paid, 2)}.`,

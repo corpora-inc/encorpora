@@ -1,3 +1,4 @@
+import { PanelFrame } from "./PanelFrame";
 import type {
   PartWholeFigure as Data,
   PartitionedShape,
@@ -104,9 +105,11 @@ function Shapes({
 }: {
   figure: Extract<Data, { kind: "partitioned-shapes" }>;
 }) {
-  const cell = 190,
-    width = cell * figure.shapes.length,
-    labelled = figure.shapes.some((s) => s.label);
+  const labelled = figure.shapes.some((s) => s.label),
+    // Lettered shapes sit in their own panels with room around each shape,
+    // so a panel can be tapped (and outlined) without crowding it.
+    cell = labelled ? 206 : 190,
+    width = cell * figure.shapes.length;
   const description = figure.shapes.map(describeShape).join(". ");
   return (
     <svg
@@ -124,6 +127,15 @@ function Shapes({
         const outlines = shapeParts(s, x, y, w, h);
         return (
           <g key={index} data-shape={s.label ?? index}>
+            {labelled && (
+              <PanelFrame
+                label={s.label}
+                x={index * cell + 3}
+                y={1}
+                width={cell - 6}
+                height={198}
+              />
+            )}
             {outlines.map((d, part) => (
               <path
                 key={part}

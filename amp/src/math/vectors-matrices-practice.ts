@@ -3,6 +3,11 @@ import { assemble, random, shuffle } from "./distribution-practice";
 import type { Draft, Random } from "./distribution-practice";
 import { graph } from "./scene/author";
 
+/** A negative number in parentheses. */
+const bare = (n: number) => (n < 0 ? `(${n})` : String(n));
+/** Subtract n, folding a negative into addition: k - (−4) is k + 4. */
+const minusNum = (n: number) => (n < 0 ? `+${-n}` : `-${n}`);
+
 /** Vectors and matrices (HSN.VM, HSA.REI.C.8–9): one choice template per skill.
  * Every instance is built from an exact private model (integers or reduced
  * fractions); only the prompt and shuffled choices are public. */
@@ -1790,11 +1795,11 @@ function matrixInverseOnce(seed: string, attempt: number) {
     const f = (n: number, d: number) => dollar(tex(fr(n, d)));
     return finishV({
       prompt: `For which value of $k$ does $\\begin{bmatrix}k&${a}\\\\${b}&${c}\\end{bmatrix}$ have no inverse?`,
-      hint: `A matrix has no inverse when $\\det=0$. Write the determinant $kc-${a}\\cdot${b}$ with the numbers from the matrix, set it equal to 0 and solve for $k$.`,
+      hint: `A matrix has no inverse when $\\det=0$. Write the determinant $kc-${bare(a)}\\cdot${bare(b)}$ with the numbers from the matrix, set it equal to 0 and solve for $k$.`,
       explanation: [
         INVERSE,
-        `${DETERMINANT} Here: $\\det=k\\cdot${c}-(${a})(${b})=${c}k-${a * b}$.`,
-        `No inverse means the determinant is 0. Set $${c}k-${a * b}=0$.`,
+        `${DETERMINANT} Here: $\\det=k\\cdot${c}-(${a})(${b})=${c}k${minusNum(a * b)}$.`,
+        `No inverse means the determinant is 0. Set $${c}k${minusNum(a * b)}=0$.`,
         `Add ${a * b} to both sides, then divide by ${c}: $k=\\dfrac{${a * b}}{${c}}=${tex(k)}$.`,
         `So the matrix has no inverse when $k=${tex(k)}$.`,
       ],

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { base, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import { typeset } from "../type";
+import { regionMargin, typeset } from "../type";
 import { spoken } from "./format";
 
 /** A picture graph: each whole symbol stands for `key` items, a half symbol
@@ -126,13 +126,15 @@ registerComponent("pictureGraph", {
     // so it is drawn at about 74% on a 320 px phone: the key is set at the
     // row labels' size so it still reads at 12 px or more there.
     const key = `= ${p.key} ${plural(p.key, p.unit)}`,
-      keyWidth = Math.max(190, 34 + typeset(key, "sans", "md").width + 12);
+      keyMargin = regionMargin("md", "sans"),
+      keyH = Math.ceil(2 * keyMargin + 2 * keyMargin),
+      keyWidth = Math.max(190, 34 + typeset(key, "sans", "md").width + keyMargin);
     prims.push(
       {
         type: "rect",
         id: "key",
-        at: P(g.labelWidth, g.keyY + 14),
-        size: [keyWidth / s, 28 / s],
+        at: P(g.labelWidth, g.keyY + keyH / 2),
+        size: [keyWidth / s, keyH / s],
         radius: 6,
         fill: "empty",
       },

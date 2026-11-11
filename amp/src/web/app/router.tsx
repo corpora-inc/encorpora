@@ -637,6 +637,12 @@ const startVerify = createRoute({
 });
 /** Screens on the app frame know who is signed in before they paint, so
  * the frame's bar is there from their first frame and nothing moves under it. */
+/** A learning screen's data before it renders (lib/learning-view), its code
+ * loaded only when one is visited. */
+async function preloadLearning() {
+  const { preloadLearningView } = await import("../lib/learning-view");
+  await preloadLearningView();
+}
 async function framedScreen() {
   if (nativeRuntime) throw redirect({ to: "/" });
   await queryClient.ensureQueryData(sessionOptions).catch(() => undefined);
@@ -653,6 +659,8 @@ const inventory = createRoute({
         search: continuationSearch(location.search),
       });
   },
+  // Its record and level arrive with it: one paint, whole.
+  loader: preloadLearning,
   component: lazyRouteComponent(
     () => import("../features/inventory/InventoryScreen"),
     "InventoryScreen",
@@ -665,6 +673,8 @@ const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   beforeLoad: framedScreen,
+  // The curriculum and the learner's record arrive with it: one paint.
+  loader: preloadLearning,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
@@ -914,6 +924,44 @@ const schoolClassReportCards = createRoute({
 const schoolClassSettings = createRoute({
   getParentRoute: () => schoolClass,
   path: "settings",
+  // Every section's data before the page renders, so it paints once, whole
+  // (docs/design/ia.md, "Smoothness"): a small class's year and grades, and
+  // what its children see.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const [school, { experienceOptions }, { gradebookOptions }] =
+      await Promise.all([
+        import("../features/school/api"),
+        import("../features/school/classroom/api"),
+        import("../features/school/classes/teacher-api"),
+      ]);
+    const org = (await preload(school.orgOptions(session, params.org))) as
+      { kind?: string; solo?: boolean } | undefined;
+    const small = org?.kind === "family" || org?.solo === true;
+    await Promise.all([
+      preload(experienceOptions(session, { kind: "class", id: params.class })),
+      small && preload(school.calendarOptions(session, params.org)),
+      org?.kind === "family" &&
+        preload(gradebookOptions(session, params, undefined)),
+      // The class's students, first page (the roster pages on from there).
+      queryClient
+        .ensureInfiniteQueryData({
+          queryKey: school.studentsKey(session, params.org, ""),
+          initialPageParam: 0,
+          queryFn: ({
+            pageParam,
+            signal,
+          }: {
+            pageParam: number;
+            signal: AbortSignal;
+          }) =>
+            school.fetchStudents(session, params.org, "", pageParam, signal),
+          getNextPageParam: (last: { nextOffset?: number | null }) =>
+            last.nextOffset,
+        } as never)
+        .catch(() => undefined),
+    ]);
+  },
   component: lazyRouteComponent(
     () => import("../features/school/ClassesScreen"),
     "ClassScreen",
@@ -1289,8 +1337,15 @@ export const router = createRouter({
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,
+  // One change per navigation (docs/design/ia.md, "Smoothness"): a link
+  // preloads its screen's code and data on intent (hover, focus, touch), and
+  // the screen on show stays until the next one can render whole. Only a
+  // wait longer than a second shows the wave, so a short one never flashes
+  // the page to a loader and back.
+  defaultPreload: "intent",
+  defaultPreloadDelay: 0,
   defaultPendingComponent: LoadingScreen,
-  defaultPendingMs: 250,
+  defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
 /** Learning screens, which a practice profile never makes a place. */

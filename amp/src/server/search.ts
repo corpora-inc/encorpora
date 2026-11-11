@@ -174,6 +174,7 @@ export function registerSearch(app: FastifyInstance) {
           kind: doc.kind,
           group: groupOf(doc.kind),
           target: doc.target,
+          skill: doc.skill,
           title: doc.title,
           snippet: doc.snippet,
           band: doc.band,

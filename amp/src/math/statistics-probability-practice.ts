@@ -1627,7 +1627,7 @@ function fairCase(r: Random): Built {
         explanation: [
           `Student ${j} is chosen exactly when the sum is ${j + 1}.`,
           `Ordered pairs of dice with sum ${j + 1}: ${ways}.`,
-          `Probability = ${ways}/36${gcd(ways, 36) > 1 ? ` = ${correct.slice(1, -1)}` : ""}. The 11 students do not share equally, so this procedure is not fair.`,
+          `Probability = ${ways}/36${gcd(ways, 36) > 1 ? ` = ${correct}` : ""}. The 11 students do not share equally, so this procedure is not fair.`,
         ],
         choices: options(r, correct, [
           {

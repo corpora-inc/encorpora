@@ -408,7 +408,7 @@ function rectangleCase(r: Random): Case {
     answer: String(value),
     explanation: [
       `Side $AB$ joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the $y$-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
-      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
+      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between $${n(y1)}$ and $${n(y2)}$. ${h.text}`,
       area
         ? `The rectangle is ${w.gap} units wide and ${h.gap} units tall. Area = width × height = ${w.gap} × ${h.gap} = ${value} square units.`
         : `Opposite sides of a rectangle are equal, so the perimeter is ${w.gap} + ${h.gap} + ${w.gap} + ${h.gap} = 2 × (${w.gap} + ${h.gap}) = ${value} units.`,
@@ -1005,7 +1005,7 @@ function dilationImageCase(r: Random): Case {
     if ((p.x * den) % num === 0 && (p.y * den) % num === 0)
       wrong.push([
         { x: (p.x * den) / num, y: (p.y * den) / num },
-        `That divides by ${kText}. A dilation multiplies each coordinate by the scale factor.`,
+        `That divides by $${kText}$. A dilation multiplies each coordinate by the scale factor.`,
       ]);
     if (den === 1)
       wrong.push([

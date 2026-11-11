@@ -30,6 +30,9 @@ export type SearchDoc = {
   kind: SearchKind;
   /** The lesson, template, skill, term or film id it opens. */
   target: string;
+  /** The skill it belongs to (a lesson's earliest), which the map selects;
+   * empty for a math word. */
+  skill: string;
   title: string;
   /** One or two plain sentences shown under the title. */
   snippet: string;
@@ -88,15 +91,40 @@ const plainText = (text: string) =>
 export function excerpt(text: string, max = 160) {
   const plain = text.replace(/\s+/g, " ").trim();
   if (plain.length <= max) return plain;
-  const sentences = plain.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [];
-  let out = "";
-  for (const sentence of sentences) {
-    if (out && (out + sentence).length > max) break;
-    out += sentence;
+  // Where sentences end: ".", "!" or "?" before a space or the end, never
+  // inside a $…$ formula (whose "0.8" is no sentence end). Sentences are
+  // kept from the start, whole, so no words between them are ever lost.
+  const ends: number[] = [];
+  let math = false;
+  for (let i = 0; i < plain.length; i++) {
+    const c = plain[i]!;
+    if (c === "$" && plain[i - 1] !== "\\") math = !math;
+    else if (
+      !math &&
+      (c === "." || c === "!" || c === "?") &&
+      (i + 1 === plain.length || plain[i + 1] === " ")
+    )
+      ends.push(i + 1);
   }
-  if (out.trim()) return out.trim();
-  // One long sentence: end at the last whole word.
-  return `${plain.slice(0, max).replace(/\s+\S*$/, "")}…`;
+  let cut = 0;
+  for (const end of ends) {
+    if (end > max) {
+      if (!cut) cut = end;
+      break;
+    }
+    cut = end;
+  }
+  if (cut && cut <= max * 1.5) return plain.slice(0, cut).trim();
+  // One long sentence: end at the last whole word before the limit that is
+  // outside a formula.
+  let at = 0;
+  math = false;
+  for (let i = 0; i < Math.min(plain.length, max); i++) {
+    const c = plain[i]!;
+    if (c === "$" && plain[i - 1] !== "\\") math = !math;
+    else if (c === " " && !math) at = i;
+  }
+  return `${plain.slice(0, at || max).trimEnd()}…`;
 }
 
 export function buildCorpus({
@@ -139,6 +167,7 @@ export function buildCorpus({
       id: `lesson:${lesson.id}`,
       kind: "lesson",
       target: lesson.id,
+      skill: first.id,
       title: lesson.title,
       snippet: excerpt(lesson.summary),
       body: plainText(
@@ -161,6 +190,7 @@ export function buildCorpus({
       id: `type:${template.id}`,
       kind: "type",
       target: template.id,
+      skill: skill.id,
       title: template.title,
       snippet: excerpt(template.description ?? skill.description ?? ""),
       body: plainText(
@@ -182,6 +212,7 @@ export function buildCorpus({
       id: `film:${film.id}`,
       kind: "film",
       target: film.id,
+      skill: skill.id,
       title: film.title,
       snippet: excerpt(template.description ?? template.title),
       body: plainText([template.title, skill.title ?? ""].join(". ")),
@@ -196,6 +227,7 @@ export function buildCorpus({
       id: `skill:${skill.id}`,
       kind: "skill",
       target: skill.id,
+      skill: skill.id,
       title: skill.title ?? skill.id,
       snippet: excerpt(skill.description ?? ""),
       body: plainText(skill.description ?? ""),
@@ -209,6 +241,7 @@ export function buildCorpus({
       id: `term:${term.id}`,
       kind: "term",
       target: term.id,
+      skill: "",
       title: term.term,
       snippet: term.plain,
       body: plainText(term.plain),

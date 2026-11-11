@@ -59,9 +59,13 @@ import { multiPartAnswerText } from "../math/multi-part-choice";
 import {
   FigureChoiceAnswer,
   FigureChoiceInput,
+  PickedAnswer,
   figureReview,
 } from "./FigureChoiceInput";
 import { figureChoiceName } from "../math/figure-choice";
+import { panelChoice } from "../math/figure-panels";
+import { FigurePanelChoice } from "./FigurePanelChoice";
+import { ChoiceList } from "./ChoiceList";
 import {
   StructuredWorkAnswer,
   StructuredWorkInput,
@@ -76,6 +80,7 @@ import {
   useEffect,
   useId,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -334,6 +339,10 @@ export function PracticeWorkspace(props: Props) {
   // selection readout and Check.
   const figures =
     problem.response.kind === "figure-choice" ? problem.response : null;
+  // A choice among lettered panels of the problem's own figure ("Which
+  // triangle is isosceles?") is made by tapping the panels; the dock holds
+  // the selection readout and Check, as for figure cards.
+  const panels = useMemo(() => panelChoice(problem), [problem.id]);
   // Structured work is built in the problem: steps or proof lines, with
   // the keypad over the dock; the dock holds progress, Clear and Check.
   const work =
@@ -420,6 +429,7 @@ export function PracticeWorkspace(props: Props) {
     !!lineBuild ||
     !!parts ||
     !!figures ||
+    !!panels ||
     !!work ||
     !!equalAddends ||
     !!counters ||
@@ -470,6 +480,7 @@ export function PracticeWorkspace(props: Props) {
       !!lineBuild ||
       !!trend ||
       !!figures ||
+      !!panels ||
       !!work ||
       !!marking ||
       !!equalAddends ||
@@ -604,6 +615,14 @@ export function PracticeWorkspace(props: Props) {
       );
       const content = host.querySelector(".problem-stage .problem-content");
       const stageBox = host.querySelector(".problem-stage");
+      // `--stage-need`: the problem's own height with its figure at its
+      // legible floor. A choice dock takes every pixel the problem does not
+      // need (practice.css), so options fit without scrolling when they can.
+      if (content)
+        host.style.setProperty(
+          "--stage-need",
+          `${Math.ceil(content.scrollHeight)}px`,
+        );
       if (content && stageBox) {
         const end = Math.min(
           content.getBoundingClientRect().bottom -
@@ -637,6 +656,7 @@ export function PracticeWorkspace(props: Props) {
     trend ||
     parts ||
     figures ||
+    panels ||
     work ||
     shapes
   );
@@ -910,16 +930,31 @@ export function PracticeWorkspace(props: Props) {
           submit={props.submit}
         />
       );
+    if (panels) {
+      const value = outcome ? outcome.response : response;
+      return (
+        <PickedAnswer
+          label={problem.response.label}
+          chosen={panels.options.find((o) => o.id === value)?.label ?? null}
+          noun={panels.noun}
+          count={panels.options.length}
+          busy={busy}
+          sending={sending}
+          resolved={!!outcome}
+          submit={submitAnswer}
+        />
+      );
+    }
     if (problem.response.kind === "multi-select") {
       const selected = selectedIds;
       const complete = selected.length === problem.response.selectionCount;
       const optionFields = (
         <fieldset disabled={locked}>
-          <legend>
-            <MathText text={problem.response.label} />
-          </legend>
-          <div className="choice-options">
-            {problem.response.options.map((option, index) => (
+          <ChoiceList
+            legend={problem.response.label}
+            count={problem.response.options.length}
+          >
+            {problem.response.options.map((option) => (
               <label
                 key={option.id}
                 className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
@@ -939,15 +974,12 @@ export function PracticeWorkspace(props: Props) {
                     )
                   }
                 />
-                <span className="choice-letter" aria-hidden="true">
-                  {"ABCDEFGH"[index]}
-                </span>
                 <span className="choice-content">
                   <MathText text={option.label} />
                 </span>
               </label>
             ))}
-          </div>
+          </ChoiceList>
         </fieldset>
       );
       return (
@@ -985,6 +1017,13 @@ export function PracticeWorkspace(props: Props) {
         </form>
       );
     }
+    // Options that are themselves letters ("A", "B") need no second letter
+    // beside them, which could name a different one.
+    const letterOptions =
+      problem.response.kind === "choice" &&
+      problem.response.options.every((o) =>
+        /^\$?[A-Z]\$?$/.test(o.label.trim()),
+      );
     if (problem.response.kind === "choice")
       return (
         <form
@@ -997,10 +1036,10 @@ export function PracticeWorkspace(props: Props) {
           }}
         >
           <fieldset disabled={locked}>
-            <legend>
-              <MathText text={problem.response.label} />
-            </legend>
-            <div className="choice-options">
+            <ChoiceList
+              legend={problem.response.label}
+              count={problem.response.options.length}
+            >
               {problem.response.options.map((option, index) => (
                 <label
                   key={option.id}
@@ -1014,15 +1053,17 @@ export function PracticeWorkspace(props: Props) {
                     checked={response === option.id}
                     onChange={() => setResponse(option.id)}
                   />
-                  <span className="choice-letter" aria-hidden="true">
-                    {"ABCD"[index]}
-                  </span>
+                  {!letterOptions && (
+                    <span className="choice-letter" aria-hidden="true">
+                      {"ABCD"[index]}
+                    </span>
+                  )}
                   <span className="choice-content">
                     <MathText text={option.label} />
                   </span>
                 </label>
               ))}
-            </div>
+            </ChoiceList>
           </fieldset>
           <button
             className="choice-submit"
@@ -1754,6 +1795,22 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {panels && (
+              <FigurePanelChoice
+                problemId={problem.id}
+                choice={panels}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome && !outcome.skipped
+                    ? { correct: outcome.answer, chosen: outcome.response }
+                    : outcome
+                      ? { correct: outcome.answer, chosen: null }
+                      : null
+                }
+              />
+            )}
             {marking && (
               <UnitSquareMarkingInput
                 key={problem.id}

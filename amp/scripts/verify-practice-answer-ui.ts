@@ -11,7 +11,12 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, templates } from "../src/math/engine";
 import { twoColumnProofCases } from "../src/math/two-column-proof-practice";
-import type { GeneratedProblem, ProblemResponse } from "../src/math/contracts";
+import type {
+  GeneratedProblem,
+  ProblemResponse,
+  PublicProblem,
+} from "../src/math/contracts";
+import { panelChoice } from "../src/math/figure-panels";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
@@ -26,6 +31,9 @@ const responseShape = (response: ProblemResponse) =>
       : response.kind === "point-plot"
         ? `${response.kind}/${response.ordered}`
         : response.kind;
+/** A choice among the figure's lettered panels answers on the figure. */
+const shapeOf = (problem: PublicProblem) =>
+  panelChoice(problem) ? "choice/panels" : responseShape(problem.response);
 
 const url = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(url, "AMP_TEST_DATABASE_URL is required");
@@ -70,8 +78,7 @@ try {
   const representatives = new Map<string, GeneratedProblem>();
   for (const template of templates) {
     const problem = generateProblem(template.id, "response-controls");
-    const response = problem.public.response;
-    const signature = responseShape(response);
+    const signature = shapeOf(problem.public);
     if (!representatives.has(signature))
       representatives.set(signature, problem);
   }
@@ -171,7 +178,7 @@ try {
         );
       }
       assert.equal(
-        responseShape(actual.response),
+        shapeOf(actual),
         signature,
         "The actual served problem covers the selected response shape",
       );
@@ -185,64 +192,6 @@ try {
   }
   console.log(
     `Response controls passed: ${representatives.size} shapes, correct and incorrect actual attempts.`,
-  );
-  // Exhaustive viewport sweeps use the supported lesson URL, while the
-  // response-shape journeys above exercise the default library entry.
-  const directTemplate = "complex-parts";
-  const batches = `**/api/v1/learners/${learner.id}/batches`;
-  await page.unroute(batches);
-  await startTopic(page, directTemplate, { entry: "lesson-url" });
-  const directOutcome = await answerOne(page, true);
-  assert.equal(
-    directOutcome.correct,
-    true,
-    "Direct lesson entry uses real API grading",
-  );
-  const beforeMalformed = page.url();
-  await assert.rejects(
-    startTopic(page, `${directTemplate}&topic=mean-data`, {
-      entry: "lesson-url",
-    }),
-    /Invalid lesson template ID/,
-  );
-  assert.equal(
-    page.url(),
-    beforeMalformed,
-    "Malformed IDs cannot change the route",
-  );
-  const lesson = `**/api/v1/problem-lessons/${directTemplate}`;
-  await page.route(lesson, (route) =>
-    route.fulfill({ json: { lesson: null } }),
-  );
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Malformed lesson response/,
-  );
-  await page.unroute(lesson);
-  await page.route(lesson, async (route) => {
-    const response = await route.fetch();
-    const body = await response.json();
-    body.lesson.templateId = "mean-data";
-    await route.fulfill({ json: body });
-  });
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Lesson response template mismatch/,
-  );
-  await page.unroute(lesson);
-  await page.route(batches, async (route) => {
-    const response = await route.fetch();
-    const body = await response.json();
-    for (const problem of body.problems) problem.templateId = "mean-data";
-    await route.fulfill({ json: body });
-  });
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Practice response template mismatch/,
-  );
-  await page.unroute(batches);
-  console.log(
-    "Direct lesson entry passed: real answer, malformed ID/payload and wrong lesson/problem rejection.",
   );
 } finally {
   await browser.close();

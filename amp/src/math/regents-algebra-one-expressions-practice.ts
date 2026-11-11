@@ -269,7 +269,7 @@ export const combineUnlikeRadicals = chainFamily({
       hint: `Look for a perfect square factor in ${m.p * m.s * m.s}: simplify $${rad(m.p * m.s * m.s)}$ so it has the same radicand as another term, then add only the like radicals.`,
       explanation: [
         `Square roots can be added only when the numbers under the root, the radicands, are the same. Then add the numbers in front, like adding $3x + 2x$.`,
-        `${m.p * m.s * m.s} has a perfect square factor: ${m.p * m.s * m.s} = ${m.s * m.s} × ${m.p}. A square root of a product splits into a product of roots.`,
+        `${m.p * m.s * m.s} has a perfect square factor: $${m.p * m.s * m.s} = ${m.s * m.s} × ${m.p}$. A square root of a product splits into a product of roots.`,
         m.c === 1
           ? `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$.`
           : `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$, and $${third} = ${m.c * m.s}${rad(m.p)}$.`,
