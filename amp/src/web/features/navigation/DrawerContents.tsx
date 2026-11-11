@@ -182,30 +182,29 @@ export default function DrawerContents({
     void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
     close();
   }
-  const { entries: places } = usePlaceEntries(
+  const { entries: places, classHere } = usePlaceEntries(
     account,
     here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
+    here?.kind === "class" ? here.classId : undefined,
   );
   const currentClass =
     here?.kind === "class"
       ? (`class:${here.org}:${here.classId}` as const)
       : null;
+  // The drawer holds the place on screen: its class, and the school it
+  // belongs to (docs/design/ia.md). Never a class because it was the last
+  // one opened; every other place is one step away in the switcher. A
+  // family's class is its home, so it stays.
+  const inSchool = here?.kind === "school" || here?.kind === "class";
   const classPlace =
     places.find((place) => place.id === currentClass) ??
-    places.find(
-      (place) =>
-        here?.kind === "school" && place.id.startsWith(`class:${here.org}:`),
-    ) ??
-    places.find((place) => place.id === "home" && account?.familyClass) ??
-    places.find((place) => place.id.startsWith("class:"));
-  const schoolPlace =
-    places.find(
-      (place) =>
-        place.id ===
-        (here?.kind === "school" || here?.kind === "class"
-          ? `school:${here.org}`
-          : ""),
-    ) ?? places.find((place) => place.id.startsWith("school:"));
+    classHere ??
+    (!inSchool
+      ? places.find((place) => place.id === "home" && account?.familyClass)
+      : undefined);
+  const schoolPlace = inSchool
+    ? places.find((place) => place.id === `school:${here.org}`)
+    : undefined;
   const workbookLearner = location.pathname.match(
     /^\/learners\/([^/]+)\/workbooks/,
   );
@@ -232,20 +231,37 @@ export default function DrawerContents({
                   (here?.kind === "progress" || here?.kind === "practice")
                 ? (`learner:${learner.id}` as const)
                 : "home";
+  // A class this person doesn't teach isn't a place in the switcher; it
+  // names the school, and the Class item names the class.
+  const switcherPlace = places.some((place) => place.id === currentPlace)
+    ? currentPlace
+    : (schoolPlace?.id ?? currentPlace);
   const learnerName = own ? (view.learner?.name ?? "") : (learner?.name ?? "");
+  // Get started is the first run only: once a person has any place (a
+  // school, a class, a family, their own practice), starting something new
+  // lives in the switcher's "Add a place".
+  const hasPlace =
+    !!account &&
+    ((account.staffOf?.length ?? 0) > 0 ||
+      !!account.familyClass ||
+      (account.learners?.length ?? 0) > 0 ||
+      !!account.adultPractice?.learner);
   const practiceLabel = view.learner || student ? "Practice" : "Get started";
+  const showPractice = !!view.learner || student || !hasPlace;
   const practiceHref = view.practiceHref;
   const hasProgress = !!view.learner;
   return (
     <>
-      {(places.length > 1 ||
+      {/* One place still shows the switcher: it is where another place is
+          added (docs/design/ia.md). */}
+      {(places.length > 0 ||
         learnerChoices.length > 1 ||
         (!!learnerName && !own)) && (
         <section className={styles.switcher} aria-label="Where you are">
-          {account && places.length > 1 && (
+          {account && places.length > 0 && (
             <PlaceSwitcher
               me={account}
-              current={currentPlace}
+              current={switcherPlace}
               entries={places}
               onNavigate={close}
             />
@@ -314,6 +330,7 @@ export default function DrawerContents({
         {/* A second parent's family's child practices from its class
             ("Let … practice here"), which is the Class link below. */}
         {!view.viewOnly &&
+          showPractice &&
           nav(practiceHref, practiceLabel, "learn", {
             current: currentItem === "practice",
           })}
@@ -343,8 +360,8 @@ export default function DrawerContents({
           nav(`/${classPlace.path}`, "Class", "class", {
             // The place switcher above already names the place on screen.
             detail:
-              classPlace.id === currentPlace ||
-              (classPlace.id === currentClass && currentPlace === "home")
+              classPlace.id === switcherPlace ||
+              (classPlace.id === currentClass && switcherPlace === "home")
                 ? undefined
                 : classPlace.name,
             current: currentItem === "class",
