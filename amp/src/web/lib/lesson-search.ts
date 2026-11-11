@@ -21,6 +21,8 @@ const resultSchema = z.object({
   id: z.string(),
   kind: z.enum(["lesson", "type", "film", "skill", "term"]),
   target: z.string(),
+  // The skill it belongs to; absent from an older server's answer.
+  skill: z.string().default(""),
   title: z.string(),
   snippet: z.string(),
   band: z.string(),
@@ -63,6 +65,7 @@ const view = (doc: SearchDoc, terms: string[]): SearchResult => ({
   kind: doc.kind,
   group: groupOf(doc.kind),
   target: doc.target,
+  skill: doc.skill,
   title: doc.title,
   snippet: doc.snippet,
   band: doc.band,

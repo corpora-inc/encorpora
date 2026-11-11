@@ -747,6 +747,19 @@ async function verifySearchFilters() {
         (url) => url.searchParams.get("topic") === "linear",
       );
       assert.equal(await input.inputValue(), "linear");
+      // Founder (phone, "Lo"): results open never widen the page, and the
+      // panel holding them ends inside the screen (an ancestor's clip hides
+      // the page's own overflow from scrollWidth).
+      await page
+        .locator("[data-search-results] [data-result]")
+        .first()
+        .waitFor();
+      await noOverflow(page);
+      const panel = await page.locator("#pathways-browser").boundingBox();
+      assert(
+        !!panel && panel.x >= 0 && panel.x + panel.width <= width + 1,
+        `the results panel stays on screen at ${width}: ${JSON.stringify(panel)}`,
+      );
       await input.press("Escape");
       assert.equal(await page.locator("#pathways-browser").isVisible(), false);
       assert.equal(
