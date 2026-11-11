@@ -376,7 +376,7 @@ function lengthStory(ctx: ClauseCtx) {
       shape === "join"
         ? `The lengths go end to end: ${a} + ${b} = ${answer}.`
         : `The gap between ${Math.max(a, b)} and ${Math.min(a, b)} is ${answer}.`,
-      `The unit stays ${unit}. ${Math.max(a, b)} and ${Math.min(a, b)} were never added when the question asks for a difference.`,
+      `The unit stays ${unit === "m" ? "$m$" : unit}. ${Math.max(a, b)} and ${Math.min(a, b)} were never added when the question asks for a difference.`,
       `The length is ${answer} ${unit}.`,
     ],
   });
