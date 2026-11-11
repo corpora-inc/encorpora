@@ -1,0 +1,3071 @@
+{
+  "id": "linear-initial-value-meaning--sk",
+  "title": "Linear models: the start and the step",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.62,
+          -2.6,
+          4.9,
+          21.3
+        ],
+        "points": {
+          "BL0": [
+            0,
+            0
+          ],
+          "BR0": [
+            0.62,
+            0
+          ],
+          "GL0": [
+            0,
+            4
+          ],
+          "GR0": [
+            0.62,
+            4
+          ],
+          "GC0": [
+            0.31,
+            2.0
+          ],
+          "T0": [
+            0,
+            4
+          ],
+          "TC0": [
+            0.31,
+            4
+          ],
+          "BL1": [
+            1,
+            0
+          ],
+          "BR1": [
+            1.62,
+            0
+          ],
+          "GL1": [
+            1,
+            4
+          ],
+          "GR1": [
+            1.62,
+            4
+          ],
+          "GC1": [
+            1.31,
+            2.0
+          ],
+          "SL1_1": [
+            1,
+            7
+          ],
+          "SR1_1": [
+            1.62,
+            7
+          ],
+          "SC1_1": [
+            1.31,
+            5.5
+          ],
+          "TC1": [
+            1.31,
+            7
+          ],
+          "BL2": [
+            2,
+            0
+          ],
+          "BR2": [
+            2.62,
+            0
+          ],
+          "GL2": [
+            2,
+            4
+          ],
+          "GR2": [
+            2.62,
+            4
+          ],
+          "GC2": [
+            2.31,
+            2.0
+          ],
+          "SL2_1": [
+            2,
+            7
+          ],
+          "SR2_1": [
+            2.62,
+            7
+          ],
+          "SC2_1": [
+            2.31,
+            5.5
+          ],
+          "SL2_2": [
+            2,
+            10
+          ],
+          "SR2_2": [
+            2.62,
+            10
+          ],
+          "SC2_2": [
+            2.31,
+            8.5
+          ],
+          "T2": [
+            2,
+            10
+          ],
+          "TC2": [
+            2.31,
+            10
+          ],
+          "BL3": [
+            3,
+            0
+          ],
+          "BR3": [
+            3.62,
+            0
+          ],
+          "GL3": [
+            3,
+            4
+          ],
+          "GR3": [
+            3.62,
+            4
+          ],
+          "GC3": [
+            3.31,
+            2.0
+          ],
+          "SL3_1": [
+            3,
+            7
+          ],
+          "SR3_1": [
+            3.62,
+            7
+          ],
+          "SC3_1": [
+            3.31,
+            5.5
+          ],
+          "SL3_2": [
+            3,
+            10
+          ],
+          "SR3_2": [
+            3.62,
+            10
+          ],
+          "SC3_2": [
+            3.31,
+            8.5
+          ],
+          "SL3_3": [
+            3,
+            13
+          ],
+          "SR3_3": [
+            3.62,
+            13
+          ],
+          "SC3_3": [
+            3.31,
+            11.5
+          ],
+          "T3": [
+            3,
+            13
+          ],
+          "TC3": [
+            3.31,
+            13
+          ],
+          "BL4": [
+            4,
+            0
+          ],
+          "BR4": [
+            4.62,
+            0
+          ],
+          "GL4": [
+            4,
+            4
+          ],
+          "GR4": [
+            4.62,
+            4
+          ],
+          "GC4": [
+            4.31,
+            2.0
+          ],
+          "SL4_1": [
+            4,
+            7
+          ],
+          "SR4_1": [
+            4.62,
+            7
+          ],
+          "SC4_1": [
+            4.31,
+            5.5
+          ],
+          "SL4_2": [
+            4,
+            10
+          ],
+          "SR4_2": [
+            4.62,
+            10
+          ],
+          "SC4_2": [
+            4.31,
+            8.5
+          ],
+          "SL4_3": [
+            4,
+            13
+          ],
+          "SR4_3": [
+            4.62,
+            13
+          ],
+          "SC4_3": [
+            4.31,
+            11.5
+          ],
+          "SL4_4": [
+            4,
+            16
+          ],
+          "SR4_4": [
+            4.62,
+            16
+          ],
+          "SC4_4": [
+            4.31,
+            14.5
+          ],
+          "T4": [
+            4,
+            16
+          ],
+          "TC4": [
+            4.31,
+            16
+          ],
+          "S": [
+            0,
+            4
+          ],
+          "E": [
+            4,
+            16
+          ],
+          "XT": [
+            2.4,
+            0
+          ],
+          "YT": [
+            0,
+            19.6
+          ],
+          "RM": [
+            0.4,
+            19.3
+          ],
+          "RB": [
+            0.4,
+            17.1
+          ],
+          "S0": [
+            0,
+            4
+          ],
+          "P1": [
+            1,
+            7
+          ],
+          "P2": [
+            2,
+            10
+          ],
+          "P3": [
+            3,
+            13
+          ],
+          "C0": [
+            1,
+            4
+          ],
+          "C1": [
+            2,
+            7
+          ],
+          "C2": [
+            3,
+            10
+          ],
+          "C3": [
+            4,
+            13
+          ],
+          "T1": [
+            1,
+            7
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 1,
+            "yevery": 2,
+            "xrange": [
+              0,
+              4.85
+            ],
+            "yrange": [
+              0,
+              19.6
+            ],
+            "start": true
+          },
+          {
+            "id": "g0",
+            "poly": [
+              "BL0",
+              "BR0",
+              "GR0",
+              "GL0"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "golds"
+          },
+          {
+            "id": "g1",
+            "poly": [
+              "BL1",
+              "BR1",
+              "GR1",
+              "GL1"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "golds"
+          },
+          {
+            "id": "s1_1",
+            "poly": [
+              "GL1",
+              "GR1",
+              "SR1_1",
+              "SL1_1"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "g2",
+            "poly": [
+              "BL2",
+              "BR2",
+              "GR2",
+              "GL2"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "golds"
+          },
+          {
+            "id": "s2_1",
+            "poly": [
+              "GL2",
+              "GR2",
+              "SR2_1",
+              "SL2_1"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s2_2",
+            "poly": [
+              "SL2_1",
+              "SR2_1",
+              "SR2_2",
+              "SL2_2"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "g3",
+            "poly": [
+              "BL3",
+              "BR3",
+              "GR3",
+              "GL3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "golds"
+          },
+          {
+            "id": "s3_1",
+            "poly": [
+              "GL3",
+              "GR3",
+              "SR3_1",
+              "SL3_1"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s3_2",
+            "poly": [
+              "SL3_1",
+              "SR3_1",
+              "SR3_2",
+              "SL3_2"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s3_3",
+            "poly": [
+              "SL3_2",
+              "SR3_2",
+              "SR3_3",
+              "SL3_3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "g4",
+            "poly": [
+              "BL4",
+              "BR4",
+              "GR4",
+              "GL4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "golds"
+          },
+          {
+            "id": "s4_1",
+            "poly": [
+              "GL4",
+              "GR4",
+              "SR4_1",
+              "SL4_1"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s4_2",
+            "poly": [
+              "SL4_1",
+              "SR4_1",
+              "SR4_2",
+              "SL4_2"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s4_3",
+            "poly": [
+              "SL4_2",
+              "SR4_2",
+              "SR4_3",
+              "SL4_3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "s4_4",
+            "poly": [
+              "SL4_3",
+              "SR4_3",
+              "SR4_4",
+              "SL4_4"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "steps"
+          },
+          {
+            "id": "line",
+            "seg": [
+              "S",
+              "E"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run0",
+            "seg": [
+              "S",
+              "C0"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "run1",
+            "seg": [
+              "P1",
+              "C1"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "run2",
+            "seg": [
+              "P2",
+              "C2"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "run3",
+            "seg": [
+              "P3",
+              "C3"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "rise0",
+            "seg": [
+              "C0",
+              "P1"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "rise1",
+            "seg": [
+              "C1",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "rise2",
+            "seg": [
+              "C2",
+              "P3"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "rise3",
+            "seg": [
+              "C3",
+              "E"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "stair"
+          },
+          {
+            "id": "d1",
+            "dot": "T1",
+            "ink": "ink",
+            "r": 10,
+            "group": "tops"
+          },
+          {
+            "id": "d2",
+            "dot": "T2",
+            "ink": "ink",
+            "r": 10,
+            "group": "tops"
+          },
+          {
+            "id": "d3",
+            "dot": "T3",
+            "ink": "ink",
+            "r": 10,
+            "group": "tops"
+          },
+          {
+            "id": "d4",
+            "dot": "T4",
+            "ink": "ink",
+            "r": 10,
+            "group": "tops"
+          },
+          {
+            "id": "dS",
+            "dot": "S",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lg0",
+            "label": "4",
+            "at": "GC0",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "group": "golds"
+          },
+          {
+            "id": "v0",
+            "label": "4",
+            "at": "TC0",
+            "dir": "n",
+            "far": 0.9,
+            "size": "m",
+            "group": "vals"
+          },
+          {
+            "id": "lg1",
+            "label": "4",
+            "at": "GC1",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "group": "golds"
+          },
+          {
+            "id": "ls1_1",
+            "label": "+3",
+            "at": "SC1_1",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "v1",
+            "label": "7",
+            "at": "TC1",
+            "dir": "n",
+            "far": 0.9,
+            "size": "m",
+            "group": "vals"
+          },
+          {
+            "id": "lg2",
+            "label": "4",
+            "at": "GC2",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "group": "golds"
+          },
+          {
+            "id": "ls2_1",
+            "label": "+3",
+            "at": "SC2_1",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls2_2",
+            "label": "+3",
+            "at": "SC2_2",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "v2",
+            "label": "10",
+            "at": "TC2",
+            "dir": "n",
+            "far": 0.9,
+            "size": "m",
+            "group": "vals"
+          },
+          {
+            "id": "lg3",
+            "label": "4",
+            "at": "GC3",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "group": "golds"
+          },
+          {
+            "id": "ls3_1",
+            "label": "+3",
+            "at": "SC3_1",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls3_2",
+            "label": "+3",
+            "at": "SC3_2",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls3_3",
+            "label": "+3",
+            "at": "SC3_3",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "v3",
+            "label": "13",
+            "at": "TC3",
+            "dir": "n",
+            "far": 0.9,
+            "size": "m",
+            "group": "vals"
+          },
+          {
+            "id": "lg4",
+            "label": "4",
+            "at": "GC4",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "group": "golds"
+          },
+          {
+            "id": "ls4_1",
+            "label": "+3",
+            "at": "SC4_1",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls4_2",
+            "label": "+3",
+            "at": "SC4_2",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls4_3",
+            "label": "+3",
+            "at": "SC4_3",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "ls4_4",
+            "label": "+3",
+            "at": "SC4_4",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s",
+            "group": "steps"
+          },
+          {
+            "id": "v4",
+            "label": "16",
+            "at": "TC4",
+            "dir": "n",
+            "far": 0.9,
+            "size": "m",
+            "group": "vals"
+          },
+          {
+            "id": "xt",
+            "label": "\\text{minutes}",
+            "at": "XT",
+            "dir": "s",
+            "far": 1.75,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{liters}",
+            "at": "YT",
+            "dir": "n",
+            "far": 0.5,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "lrise",
+            "label": "@m",
+            "at": "rise0",
+            "of": "line",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "rm",
+            "label": "\\cw{m=@m}",
+            "at": "RM",
+            "of": "line",
+            "dir": "e",
+            "far": 0,
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "rb",
+            "label": "\\cg{b=@b}",
+            "at": "RB",
+            "of": "line",
+            "dir": "e",
+            "far": 0,
+            "ink": "gold",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A tank holds four liters of water. A tap adds three liters every minute.",
+          "do": [
+            {
+              "do": "text",
+              "text": "A tank holds $\\cg{4}$ liters. A tap adds $\\cw{3}$ liters every minute.",
+              "at": "A",
+              "id": "tStory"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g0",
+                "lg0",
+                "v0"
+              ],
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How much water is in the tank after any number of minutes?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "How much water after $t$ minutes?",
+              "at": "How",
+              "id": "tAsk"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "water"
+            },
+            {
+              "do": "highlight",
+              "target": "xt",
+              "at": "minutes"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "After one minute: four, plus three, is seven. After two minutes: four, plus three, plus three, is ten.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "g1",
+                "lg1"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{1 min:}\\quad\\cg{4}+\\cw{3}=7",
+              "fresh": true,
+              "at": "one",
+              "id": "t1"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s1_1",
+                "ls1_1"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "v1",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g2",
+                "lg2"
+              ],
+              "at": "four",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\text{2 min:}\\quad\\cg{4}+\\cw{3}+\\cw{3}=10",
+              "fresh": true,
+              "at": "two",
+              "id": "t2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s2_1",
+                "ls2_1"
+              ],
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "s2_2",
+                "ls2_2"
+              ],
+              "at": "three",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "v2",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "After three minutes: the same four, plus three threes. Thirteen.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "g3",
+                "lg3"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{3 min:}\\quad\\cg{4}+\\cw{3}\\cdot 3=13",
+              "fresh": true,
+              "at": "three",
+              "id": "t3"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s3_1",
+                "ls3_1",
+                "s3_2",
+                "ls3_2",
+                "s3_3",
+                "ls3_3"
+              ],
+              "at": "threes"
+            },
+            {
+              "do": "show",
+              "target": "v3",
+              "at": "Thirteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So after t minutes, it is four, plus three times t.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "V=\\cg{4}+\\cw{3}t",
+              "at": "four",
+              "id": "tModel"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g4",
+                "lg4",
+                "s4_1",
+                "s4_2",
+                "s4_3",
+                "s4_4",
+                "ls4_1",
+                "ls4_2",
+                "ls4_3",
+                "ls4_4",
+                "v4"
+              ],
+              "at": "times"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is a linear model: where it starts, plus the same step every time.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Where it starts, plus the same step every time.",
+              "at": "where",
+              "id": "tPhrase"
+            },
+            {
+              "do": "highlight",
+              "target": "golds",
+              "at": "starts"
+            },
+            {
+              "do": "highlight",
+              "target": "steps",
+              "at": "step"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each top is three higher than the last: a rise of three for every run of one. So the tops fall on one straight line.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "tops",
+                "dS"
+              ],
+              "at": "top"
+            },
+            {
+              "do": "highlight",
+              "target": "steps",
+              "at": "rise"
+            },
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "straight",
+              "dur": 1.3
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "In general: y equals m x plus b. m is the step for each one of x. It is the rate, the slope of the line.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y=\\cw{m}x+\\cg{b}",
+              "fresh": true,
+              "at": "y",
+              "id": "tForm"
+            },
+            {
+              "do": "text",
+              "text": "$\\cw{m}$ is the rate: the step for each 1 of $x$. The slope of the line.",
+              "at": "m",
+              "nth": 2,
+              "id": "tM"
+            },
+            {
+              "do": "highlight",
+              "target": "steps",
+              "at": "step"
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "slope"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "b is the start, the output when x is zero. It is called the initial value, or the y-intercept: where the line meets the y-axis.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "$\\cg{b}$ is the initial value: the output when $x=0$. The $y$-intercept.",
+              "at": "b",
+              "id": "tB"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "g0",
+                "lg0"
+              ],
+              "at": "start"
+            },
+            {
+              "do": "highlight",
+              "target": "v0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "dS",
+              "at": "meets"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Keep the steps, and watch what each number does.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g0",
+                "lg0",
+                "g1",
+                "lg1",
+                "s1_1",
+                "ls1_1",
+                "g2",
+                "lg2",
+                "s2_1",
+                "s2_2",
+                "ls2_1",
+                "ls2_2",
+                "g3",
+                "lg3",
+                "s3_1",
+                "s3_2",
+                "s3_3",
+                "ls3_1",
+                "ls3_2",
+                "ls3_3",
+                "g4",
+                "lg4",
+                "s4_1",
+                "s4_2",
+                "s4_3",
+                "s4_4",
+                "ls4_1",
+                "ls4_2",
+                "ls4_3",
+                "ls4_4",
+                "vals",
+                "tops"
+              ],
+              "at": "Keep"
+            },
+            {
+              "do": "show",
+              "target": [
+                "stair",
+                "lrise"
+              ],
+              "at": "steps"
+            },
+            {
+              "do": "show",
+              "target": [
+                "rm",
+                "rb"
+              ],
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start the tank empty. The line slides down to zero, and the step is still three.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  0
+                ],
+                "E": [
+                  4,
+                  12
+                ],
+                "P1": [
+                  1,
+                  3
+                ],
+                "P2": [
+                  2,
+                  6
+                ],
+                "P3": [
+                  3,
+                  9
+                ],
+                "C0": [
+                  1,
+                  0
+                ],
+                "C1": [
+                  2,
+                  3
+                ],
+                "C2": [
+                  3,
+                  6
+                ],
+                "C3": [
+                  4,
+                  9
+                ]
+              },
+              "at": "slides",
+              "dur": 1.6
+            },
+            {
+              "do": "highlight",
+              "target": "rb",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "lrise",
+                "rm"
+              ],
+              "at": "still"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start with seven liters, and it slides up. Only b changes.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  7
+                ],
+                "E": [
+                  4,
+                  19
+                ],
+                "P1": [
+                  1,
+                  10
+                ],
+                "P2": [
+                  2,
+                  13
+                ],
+                "P3": [
+                  3,
+                  16
+                ],
+                "C0": [
+                  1,
+                  7
+                ],
+                "C1": [
+                  2,
+                  10
+                ],
+                "C2": [
+                  3,
+                  13
+                ],
+                "C3": [
+                  4,
+                  16
+                ]
+              },
+              "at": "seven",
+              "dur": 1.6
+            },
+            {
+              "do": "highlight",
+              "target": "rb",
+              "at": "b"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Back to four. Now slow the tap to one liter a minute. The line tilts about its start, and only m changes.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  4
+                ],
+                "E": [
+                  4,
+                  16
+                ],
+                "P1": [
+                  1,
+                  7
+                ],
+                "P2": [
+                  2,
+                  10
+                ],
+                "P3": [
+                  3,
+                  13
+                ],
+                "C0": [
+                  1,
+                  4
+                ],
+                "C1": [
+                  2,
+                  7
+                ],
+                "C2": [
+                  3,
+                  10
+                ],
+                "C3": [
+                  4,
+                  13
+                ]
+              },
+              "at": "Back",
+              "dur": 1.0
+            },
+            {
+              "do": "hide",
+              "target": "lrise",
+              "at": "Now"
+            },
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  4
+                ],
+                "E": [
+                  4,
+                  8
+                ],
+                "P1": [
+                  1,
+                  5
+                ],
+                "P2": [
+                  2,
+                  6
+                ],
+                "P3": [
+                  3,
+                  7
+                ],
+                "C0": [
+                  1,
+                  4
+                ],
+                "C1": [
+                  2,
+                  5
+                ],
+                "C2": [
+                  3,
+                  6
+                ],
+                "C3": [
+                  4,
+                  7
+                ]
+              },
+              "at": "slow",
+              "dur": 1.6
+            },
+            {
+              "do": "highlight",
+              "target": "dS",
+              "at": "start"
+            },
+            {
+              "do": "highlight",
+              "target": "rm",
+              "at": "m"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Pull the plug, and the tank loses one liter a minute. The step is negative one, so the line falls.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  4
+                ],
+                "E": [
+                  4,
+                  0
+                ],
+                "P1": [
+                  1,
+                  3
+                ],
+                "P2": [
+                  2,
+                  2
+                ],
+                "P3": [
+                  3,
+                  1
+                ],
+                "C0": [
+                  1,
+                  4
+                ],
+                "C1": [
+                  2,
+                  3
+                ],
+                "C2": [
+                  3,
+                  2
+                ],
+                "C3": [
+                  4,
+                  1
+                ]
+              },
+              "at": "loses",
+              "dur": 1.6
+            },
+            {
+              "do": "highlight",
+              "target": "rm",
+              "at": "negative"
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "falls"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Here is a new line. What is its rule?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "rm",
+                "rb",
+                "lrise"
+              ],
+              "at": "Here"
+            },
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  0,
+                  6
+                ],
+                "E": [
+                  4,
+                  14
+                ],
+                "P1": [
+                  1,
+                  8
+                ],
+                "P2": [
+                  2,
+                  10
+                ],
+                "P3": [
+                  3,
+                  12
+                ],
+                "C0": [
+                  1,
+                  6
+                ],
+                "C1": [
+                  2,
+                  8
+                ],
+                "C2": [
+                  3,
+                  10
+                ],
+                "C3": [
+                  4,
+                  12
+                ]
+              },
+              "at": "new",
+              "dur": 1.4
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "It starts at six, and each step goes up two. So V equals two t plus six.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "dS",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "rb",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "lrise",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "rise0",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "rm",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "V=\\cw{2}t+\\cg{6}",
+              "fresh": true,
+              "at": "V",
+              "id": "tRead"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.7,
+          -2.4,
+          4.75,
+          19.6
+        ],
+        "points": {
+          "L0": [
+            -0.1,
+            0
+          ],
+          "R0": [
+            0.1,
+            0
+          ],
+          "TL0": [
+            -0.1,
+            16
+          ],
+          "TR0": [
+            0.1,
+            16
+          ],
+          "F0": [
+            0,
+            16
+          ],
+          "W0": [
+            0,
+            16.55
+          ],
+          "L1": [
+            0.9,
+            0
+          ],
+          "R1": [
+            1.1,
+            0
+          ],
+          "TL1": [
+            0.9,
+            14
+          ],
+          "TR1": [
+            1.1,
+            14
+          ],
+          "F1": [
+            1,
+            14
+          ],
+          "W1": [
+            1,
+            14.55
+          ],
+          "L2": [
+            1.9,
+            0
+          ],
+          "R2": [
+            2.1,
+            0
+          ],
+          "TL2": [
+            1.9,
+            12
+          ],
+          "TR2": [
+            2.1,
+            12
+          ],
+          "F2": [
+            2,
+            12
+          ],
+          "W2": [
+            2,
+            12.55
+          ],
+          "L3": [
+            2.9,
+            0
+          ],
+          "R3": [
+            3.1,
+            0
+          ],
+          "TL3": [
+            2.9,
+            10
+          ],
+          "TR3": [
+            3.1,
+            10
+          ],
+          "F3": [
+            3,
+            10
+          ],
+          "W3": [
+            3,
+            10.55
+          ],
+          "L4": [
+            3.9,
+            0
+          ],
+          "R4": [
+            4.1,
+            0
+          ],
+          "TL4": [
+            3.9,
+            8
+          ],
+          "TR4": [
+            4.1,
+            8
+          ],
+          "F4": [
+            4,
+            8
+          ],
+          "W4": [
+            4,
+            8.55
+          ],
+          "S": [
+            0,
+            16
+          ],
+          "E": [
+            4,
+            8
+          ],
+          "C": [
+            1,
+            16
+          ],
+          "XT": [
+            2.3,
+            0
+          ],
+          "YT": [
+            0,
+            18
+          ],
+          "L16": [
+            0.5,
+            16
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 1,
+            "yevery": 2,
+            "xrange": [
+              0,
+              4.6
+            ],
+            "yrange": [
+              0,
+              18
+            ],
+            "start": true
+          },
+          {
+            "id": "c0",
+            "poly": [
+              "L0",
+              "R0",
+              "TR0",
+              "TL0"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "k0"
+          },
+          {
+            "id": "c1",
+            "poly": [
+              "L1",
+              "R1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "k1"
+          },
+          {
+            "id": "c2",
+            "poly": [
+              "L2",
+              "R2",
+              "TR2",
+              "TL2"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "k2"
+          },
+          {
+            "id": "c3",
+            "poly": [
+              "L3",
+              "R3",
+              "TR3",
+              "TL3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "k3"
+          },
+          {
+            "id": "c4",
+            "poly": [
+              "L4",
+              "R4",
+              "TR4",
+              "TL4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "group": "k4"
+          },
+          {
+            "id": "line",
+            "seg": [
+              "S",
+              "E"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run",
+            "seg": [
+              "S",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "drop",
+            "seg": [
+              "C",
+              "F1"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "f0",
+            "dot": "F0",
+            "ink": "gold",
+            "r": 13,
+            "group": "k0"
+          },
+          {
+            "id": "f1",
+            "dot": "F1",
+            "ink": "gold",
+            "r": 13,
+            "group": "k1"
+          },
+          {
+            "id": "f2",
+            "dot": "F2",
+            "ink": "gold",
+            "r": 13,
+            "group": "k2"
+          },
+          {
+            "id": "f3",
+            "dot": "F3",
+            "ink": "gold",
+            "r": 13,
+            "group": "k3"
+          },
+          {
+            "id": "f4",
+            "dot": "F4",
+            "ink": "gold",
+            "r": 13,
+            "group": "k4"
+          },
+          {
+            "id": "xt",
+            "label": "\\text{hours}",
+            "at": "XT",
+            "dir": "s",
+            "far": 1.75,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{centimeters}",
+            "at": "YT",
+            "dir": "n",
+            "far": 0.5,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "l16",
+            "label": "16",
+            "at": "L16",
+            "dir": "n",
+            "far": 0.35,
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "ldrop",
+            "label": "-2",
+            "at": "drop",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now read a model. A candle's height, in centimeters, is H equals sixteen minus two h.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A candle is $H$ centimeters tall, $h$ hours after it is lit: $H=\\cg{16}-\\cw{2}h$ What do the $\\cg{16}$ and the $\\cw{2}$ mean?",
+              "at": "Now",
+              "id": "cProb"
+            },
+            {
+              "do": "show",
+              "target": "k0",
+              "at": "candle's"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "centimeters"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "h is the hours since it was lit. What do the sixteen and the two mean?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "xt",
+              "at": "hours"
+            },
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "At zero hours, nothing has burned. Two times zero is zero, so H is sixteen.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\text{at }h=0:\\quad H=\\cg{16}-\\cw{2}\\cdot 0=\\cg{16}",
+              "fresh": true,
+              "at": "Two",
+              "id": "cZero"
+            },
+            {
+              "do": "highlight",
+              "target": "c0",
+              "at": "nothing"
+            },
+            {
+              "do": "show",
+              "target": "l16",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Sixteen is how tall the candle is when it is lit.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "$\\cg{16}$ centimeters: the height when it is lit.",
+              "at": "Sixteen",
+              "id": "cStart"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "l16",
+                "c0"
+              ],
+              "at": "tall"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And the two? One hour, two hours, three, four: each hour takes away two centimeters.",
+          "do": [
+            {
+              "do": "show",
+              "target": "k1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "k2",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "k3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "k4",
+              "at": "four"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "each"
+            },
+            {
+              "do": "draw",
+              "target": "drop",
+              "at": "takes"
+            },
+            {
+              "do": "show",
+              "target": "ldrop",
+              "at": "two",
+              "nth": 3
+            },
+            {
+              "do": "text",
+              "text": "$\\cw{-2}$ centimeters per hour: the change each hour.",
+              "at": "each",
+              "id": "cRate"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The flames trace the line: down two for every hour.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "flames",
+              "dur": 1.4
+            },
+            {
+              "do": "highlight",
+              "target": "ldrop",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixteen is an amount. Two is a rate. And the start is the number standing alone, even when it is written first.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "watch",
+              "text": "A start is an amount: centimeters. A rate is an amount for each unit: centimeters per hour.",
+              "at": "Sixteen",
+              "id": "cWatch"
+            },
+            {
+              "do": "highlight",
+              "target": "l16",
+              "at": "amount"
+            },
+            {
+              "do": "highlight",
+              "target": "ldrop",
+              "at": "rate"
+            },
+            {
+              "do": "highlight",
+              "target": "f0",
+              "at": "alone"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.6,
+          -1.6,
+          6.6,
+          8.6
+        ],
+        "points": {
+          "P": [
+            3,
+            1
+          ],
+          "A2": [
+            3,
+            3
+          ],
+          "Q2": [
+            2,
+            3
+          ],
+          "A1": [
+            2,
+            5
+          ],
+          "Q1": [
+            1,
+            5
+          ],
+          "A0": [
+            1,
+            7
+          ],
+          "Q0": [
+            0,
+            7
+          ],
+          "LA": [
+            -0.3,
+            7.6
+          ],
+          "LB": [
+            3.72,
+            -0.44
+          ],
+          "LQ": [
+            0.5,
+            7
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "LA",
+              "LB"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "rise1",
+            "seg": [
+              "P",
+              "A2"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "run1",
+            "seg": [
+              "A2",
+              "Q2"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise2",
+            "seg": [
+              "Q2",
+              "A1"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "run2",
+            "seg": [
+              "A1",
+              "Q1"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise3",
+            "seg": [
+              "Q1",
+              "A0"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "run3",
+            "seg": [
+              "A0",
+              "Q0"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "ink",
+            "r": 13
+          },
+          {
+            "id": "d2",
+            "dot": "Q2",
+            "ink": "ink",
+            "r": 10
+          },
+          {
+            "id": "d1",
+            "dot": "Q1",
+            "ink": "ink",
+            "r": 10
+          },
+          {
+            "id": "d0",
+            "dot": "Q0",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lP",
+            "label": "(3,1)",
+            "at": "P",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m"
+          },
+          {
+            "id": "lr1",
+            "label": "+2",
+            "at": "rise1",
+            "dir": "e",
+            "far": 0.45,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "lr2",
+            "label": "+2",
+            "at": "rise2",
+            "dir": "e",
+            "far": 0.45,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "lr3",
+            "label": "+2",
+            "at": "rise3",
+            "dir": "e",
+            "far": 0.45,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "l0",
+            "label": "7",
+            "at": "LQ",
+            "dir": "n",
+            "far": 0.35,
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "frun",
+            "seg": [
+              "Q2",
+              "A2"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "dash": true,
+            "group": "fwd"
+          },
+          {
+            "id": "fdrop",
+            "seg": [
+              "A2",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "dash": true,
+            "group": "fwd"
+          },
+          {
+            "id": "lf",
+            "label": "-2",
+            "at": "fdrop",
+            "dir": "e",
+            "far": 0.45,
+            "ink": "warm",
+            "size": "m",
+            "group": "fwd"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Sometimes the start is hidden. A line has slope negative two and passes through the point three, one. Write its equation.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A line has slope $-2$ and passes through the point $(3,1)$. Write its equation in the form $y=mx+b$",
+              "at": "Sometimes",
+              "id": "wProb"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slope negative two: each step to the right goes down two. So each step back, to the left, goes up two.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "frun",
+              "at": "right"
+            },
+            {
+              "do": "draw",
+              "target": "fdrop",
+              "at": "down"
+            },
+            {
+              "do": "show",
+              "target": "lf",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": "fwd",
+              "at": "So"
+            },
+            {
+              "do": "draw",
+              "target": "rise1",
+              "at": "back"
+            },
+            {
+              "do": "draw",
+              "target": "run1",
+              "at": "left"
+            },
+            {
+              "do": "show",
+              "target": "lr1",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "d2",
+              "at": "two",
+              "nth": 3
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Walk back until x is zero. From one, up to three. Five. Seven.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "d2",
+                "rise1"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "rise2",
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "lr2",
+              "at": "Five"
+            },
+            {
+              "do": "draw",
+              "target": "run2",
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "d1",
+              "at": "Five"
+            },
+            {
+              "do": "draw",
+              "target": "rise3",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": "lr3",
+              "at": "Seven"
+            },
+            {
+              "do": "draw",
+              "target": "run3",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "d0",
+                "l0"
+              ],
+              "at": "Seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the line starts at seven.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "line",
+              "dur": 1.2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d0",
+                "l0"
+              ],
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The equation does the same walk. Put the point into y equals m x plus b.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "y=\\cw{-2}x+\\cg{b}",
+              "fresh": true,
+              "at": "equation",
+              "id": "w1"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "point"
+            },
+            {
+              "do": "write",
+              "tex": "1=\\cw{-2}\\cdot 3+\\cg{b}",
+              "at": "y",
+              "id": "w2"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Negative two times three is negative six. Add six to both sides, and b is seven.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "1=-6+\\cg{b}",
+              "at": "Negative",
+              "id": "w3"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{b}=7",
+              "at": "Add",
+              "id": "w4"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So y equals negative two x, plus seven.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "y=\\cw{-2}x+\\cg{7}",
+              "at": "y",
+              "id": "wAns"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The one in three, one, is the height at three. It is the start only when x is zero.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "watch",
+              "text": "A point's $y$ is the start only when its $x$ is 0. Otherwise walk back to zero: $b=y-mx$.",
+              "at": "The",
+              "id": "wWatch"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d0",
+                "l0"
+              ],
+              "at": "zero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.6,
+          -0.2,
+          12.6,
+          12.6
+        ],
+        "points": {
+          "TL": [
+            0,
+            12
+          ],
+          "R0": {
+            "anchor": [
+              "t",
+              "right:0"
+            ]
+          },
+          "R1": {
+            "anchor": [
+              "t",
+              "right:1"
+            ]
+          },
+          "R2": {
+            "anchor": [
+              "t",
+              "right:2"
+            ]
+          },
+          "R3": {
+            "anchor": [
+              "t",
+              "right:3"
+            ]
+          },
+          "R4": {
+            "anchor": [
+              "t",
+              "right:4"
+            ]
+          },
+          "R5": {
+            "anchor": [
+              "t",
+              "right:5"
+            ]
+          },
+          "M12": {
+            "mid": [
+              "R1",
+              "R2"
+            ]
+          },
+          "M23": {
+            "mid": [
+              "R2",
+              "R3"
+            ]
+          },
+          "M34": {
+            "mid": [
+              "R3",
+              "R4"
+            ]
+          },
+          "M45": {
+            "mid": [
+              "R4",
+              "R5"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "TL",
+            "corner": "Hours",
+            "head": [
+              "Net pay, in dollars"
+            ],
+            "rows": [
+              {
+                "label": "0",
+                "cells": [
+                  "$-32$"
+                ]
+              },
+              {
+                "label": "1",
+                "cells": [
+                  "$-20$"
+                ]
+              },
+              {
+                "label": "2",
+                "cells": [
+                  "$-8$"
+                ]
+              },
+              {
+                "label": "3",
+                "cells": [
+                  "$4$"
+                ]
+              },
+              {
+                "label": "4",
+                "cells": [
+                  "$16$"
+                ]
+              }
+            ],
+            "cell": [
+              6.4,
+              1.9
+            ],
+            "labelW": 3.4,
+            "size": "l"
+          },
+          {
+            "id": "sh",
+            "label": "\\text{change}",
+            "at": "R0",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "s12",
+            "label": "+12",
+            "at": "M12",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "s23",
+            "label": "+12",
+            "at": "M23",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "s34",
+            "label": "+12",
+            "at": "M34",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "s45",
+            "label": "+12",
+            "at": "M45",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Your turn. A worker buys a uniform, then earns the same amount each hour.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A worker buys a uniform, then earns the same amount each hour. Net pay is the pay earned minus the cost of the uniform. Find the hourly wage and the uniform's cost.",
+              "at": "Your",
+              "id": "gProb"
+            },
+            {
+              "do": "show",
+              "target": [
+                "t.row.0",
+                "t.col.0",
+                "sh"
+              ],
+              "at": "worker"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Net pay is the pay earned, minus the cost of the uniform. After two hours it is negative eight dollars. After four hours, sixteen.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.row.0",
+              "at": "Net"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.3.1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.5.1",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "From two hours to four, net pay rises from negative eight to sixteen. That is twenty-four dollars in two hours.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.3.1",
+              "at": "negative"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.5.1",
+              "at": "sixteen"
+            },
+            {
+              "do": "write",
+              "tex": "16-(-8)=24",
+              "fresh": true,
+              "at": "twenty-four",
+              "id": "g1"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Two steps, so each step is twelve. The wage is twelve dollars an hour.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "24\\div 2=\\cw{12}",
+              "at": "Two",
+              "id": "g2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s34",
+                "s45"
+              ],
+              "at": "twelve"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.4.1",
+              "at": "twelve"
+            },
+            {
+              "do": "text",
+              "text": "Wage: $\\cw{12}$ dollars per hour.",
+              "at": "wage",
+              "id": "gWage"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Now walk back. One hour: negative twenty. Zero hours: negative thirty-two.",
+          "do": [
+            {
+              "do": "show",
+              "target": "s23",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.2.1",
+              "at": "twenty"
+            },
+            {
+              "do": "write",
+              "tex": "-8-12=-20",
+              "fresh": true,
+              "at": "twenty",
+              "id": "g3"
+            },
+            {
+              "do": "show",
+              "target": "s12",
+              "at": "Zero"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "thirty-two"
+            },
+            {
+              "do": "write",
+              "tex": "-20-12=\\cg{-32}",
+              "at": "thirty-two",
+              "id": "g4"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Before any work, the pay is thirty-two dollars below zero. That is the uniform.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "Before"
+            },
+            {
+              "do": "text",
+              "text": "Uniform: $\\cg{32}$ dollars, the amount at 0 hours.",
+              "at": "uniform",
+              "id": "gCost"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So net pay is twelve h, minus thirty-two.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "given",
+              "target": "t",
+              "at": "So"
+            },
+            {
+              "do": "answer",
+              "tex": "N=\\cw{12}h-\\cg{32}",
+              "at": "twelve",
+              "id": "gAns"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The start is negative here, and it still means the amount at zero.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "negative"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And a model predicts. After ten hours: twelve times ten, minus thirty-two, is eighty-eight dollars.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "12\\cdot 10-32=88",
+              "fresh": true,
+              "at": "twelve",
+              "id": "g6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Every linear model is the same idea.",
+          "do": [
+            {
+              "do": "overview",
+              "of": "tForm",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One. Where it starts, plus the same step every time.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Where it starts, plus the same step every time.",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two. The start, b, is the output at input zero.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Start $b$: the output at input 0.",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three. The step, m, is the change for each one of input.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Step $m$: the change for each 1 of input.",
+              "at": "Three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four. When the start is hidden, walk back to zero.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Start hidden? Walk back to zero: $b=y-mx$.",
+              "at": "Four"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
