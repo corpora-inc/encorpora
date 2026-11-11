@@ -313,7 +313,21 @@ LENSES = {
         "0.19.2): catalog entries that drop or raise version/platform floors "
         "without a compat route, changed published voiceIds, manifest schema "
         "breaks, or removed pack URLs. Reuse of minAppVersion/maxAppVersion/"
-        "platforms routing is expected; flag only real regressions."
+        "platforms routing is expected; flag only real regressions.\n\n"
+        "SCOPE — grade against THIS system, not any file named manifest:\n"
+        "* A content pack is something an INSTALLED app downloads: the pack "
+        "catalog (`corpan/corpan-app/src/contentPacks/catalog.ts`), a pack's "
+        "own `manifest.json` under `corpan/packs/`, and the published pack "
+        "URLs and voiceIds those name. Back-compat findings apply to these.\n"
+        "* `amp/src/content/films/manifest.json` is NOT a pack catalog. It "
+        "lists which lesson films AMP offers and is built into the AMP web "
+        "application and its server, which deploy together; no installed app "
+        "fetches or caches it as a separate file. A problem type with no entry "
+        "has no film link and shows its written lesson. Adding an entry "
+        "publishes a film and "
+        "removing one withdraws it; both are routine and neither can break an "
+        "installed app or lose user data. Do not report a pack back-compat "
+        "finding for an entry added to or removed from that file."
     ),
 }
 
