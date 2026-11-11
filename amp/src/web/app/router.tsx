@@ -921,12 +921,13 @@ const schoolClassMap = createRoute({
   loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
-/** One student, in a sheet over the class map: the class's tabs stay. */
+/** One student, in a sheet over the class map: the class's tabs stay. A
+ * child of the map, so the map under it stays mounted, with its scroll and
+ * its table's place; the map draws the sheet from this route's param. */
 const schoolClassMapStudent = createRoute({
-  getParentRoute: () => schoolClass,
-  path: "map/$student",
-  loader: mapLoader,
-  component: lazyRouteComponent(classScreens, "MapScreen"),
+  getParentRoute: () => schoolClassMap,
+  path: "$student",
+  component: () => null,
 });
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
@@ -1313,8 +1314,7 @@ export const router = createRouter({
     schoolClass.addChildren([
       schoolClassHome,
       schoolClassToday,
-      schoolClassMap,
-      schoolClassMapStudent,
+      schoolClassMap.addChildren([schoolClassMapStudent]),
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,
