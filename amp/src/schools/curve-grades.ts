@@ -98,7 +98,10 @@ const drawEstimate = (estimate: Estimate, random: () => number): Estimate => ({
   level: estimate.level + Math.max(0, estimate.sd) * normal(random),
   sd: estimate.sd,
 });
-const drawLevel = (level: StudentLevel, random: () => number): StudentLevel => ({
+const drawLevel = (
+  level: StudentLevel,
+  random: () => number,
+): StudentLevel => ({
   overall: drawEstimate(level.overall, random),
   strands: Object.fromEntries(
     Object.entries(level.strands).map(([id, estimate]) => [
@@ -169,9 +172,13 @@ export function applyCurve(
   );
   const places = ranked.map(() => new Array<number>(options.draws));
   const scores = ranked.map(() => new Array<number>(options.draws));
-  const letters = ranked.map(
-    (): Allocation => ({ A: 0, B: 0, C: 0, D: 0, F: 0 }),
-  );
+  const letters = ranked.map((): Allocation => ({
+    A: 0,
+    B: 0,
+    C: 0,
+    D: 0,
+    F: 0,
+  }));
   const composite = new Float64Array(size);
   const tie = new Float64Array(size);
   const order = Array.from({ length: size }, (_, index) => index);
@@ -192,9 +199,7 @@ export function applyCurve(
       // Equal composites share their places evenly.
       tie[index] = random();
     });
-    order.sort(
-      (a, b) => composite[b]! - composite[a]! || tie[a]! - tie[b]!,
-    );
+    order.sort((a, b) => composite[b]! - composite[a]! || tie[a]! - tie[b]!);
     const allocation = sample(random);
     let place = 0;
     for (const letter of curveLetters) {
@@ -203,8 +208,7 @@ export function applyCurve(
       for (let within = 0; within < held; within++, place++) {
         const index = order[place]!;
         places[index]![draw] = place + 1;
-        scores[index]![draw] =
-          top - ((within + 0.5) / held) * (top - bottom);
+        scores[index]![draw] = top - ((within + 0.5) / held) * (top - bottom);
         letters[index]![letter] += 1;
       }
     }

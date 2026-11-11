@@ -587,7 +587,9 @@ export function compositeScore(
       : [{ weight: weights.retention, score: 100 * draw.retentionShare }]),
   ];
   const carried = parts.reduce((sum, part) => sum + part.weight, 0);
-  return parts.reduce((sum, part) => sum + part.weight * part.score, 0) / carried;
+  return (
+    parts.reduce((sum, part) => sum + part.weight * part.score, 0) / carried
+  );
 }
 
 /** How wide the range is: from how sure the level estimates are, and how much

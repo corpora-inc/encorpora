@@ -596,7 +596,10 @@ export async function termCurve(
   rows: readonly GradebookRow[],
 ): Promise<GradeCurve | null> {
   if (term.state === "closed")
-    return rows.find((row) => row.suggestion.curve)?.suggestion.curve?.teacher ?? null;
+    return (
+      rows.find((row) => row.suggestion.curve)?.suggestion.curve?.teacher ??
+      null
+    );
   if (term.state === "upcoming") return null;
   return curveFor(db, context.id, term.id);
 }

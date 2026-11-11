@@ -120,7 +120,9 @@ test("a curve that can't hold its class says why, and what to change", () => {
     D: [0, 2],
     F: [0, 2],
   });
-  assert.deepEqual(curveIssues(highs), [{ kind: "highs", total: 16, size: 20 }]);
+  assert.deepEqual(curveIssues(highs), [
+    { kind: "highs", total: 16, size: 20 },
+  ]);
   assert.equal(
     curveIssueText(curveIssues(highs)[0]!),
     "The highs add to 16, 4 short of the 20 students. Raise one.",
@@ -136,7 +138,10 @@ test("a curve that can't hold its class says why, and what to change", () => {
     curveIssues(crossed).map((issue) => issue.kind),
     ["order", "over"],
   );
-  assert.equal(curveIssueText(curveIssues(crossed)[0]!), "A’s low is above its high.");
+  assert.equal(
+    curveIssueText(curveIssues(crossed)[0]!),
+    "A’s low is above its high.",
+  );
   assert.equal(
     allocationSampler(lows.ranges, 20),
     null,
@@ -196,7 +201,10 @@ test("the place odds are the curve as a picture: each place sums to one, each le
   const odds = placeOdds(FOUNDER.ranges, 30)!;
   assert.equal(odds.length, 30);
   for (const place of odds) {
-    const sum = curveLetters.reduce((total, letter) => total + place[letter], 0);
+    const sum = curveLetters.reduce(
+      (total, letter) => total + place[letter],
+      0,
+    );
     assert.ok(Math.abs(sum - 1) < 1e-9);
   }
   assert.ok(odds[0]!.A > 0.999, "the top of a class with 15+ As is an A");

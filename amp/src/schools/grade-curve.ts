@@ -315,8 +315,8 @@ const ordinal = (n: number) => {
   const suffix =
     tens >= 11 && tens <= 13
       ? "th"
-      : ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ??
-        "th";
+      : (({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ??
+        "th");
   return `${n}${suffix}`;
 };
 const article = (letter: string) => (/^[AEF]/.test(letter) ? "an" : "a");
