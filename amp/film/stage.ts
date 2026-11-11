@@ -19,7 +19,7 @@ import {
   bandOpacity, checkGroups, CONTEXT, DIM, fits, guideLine, inRegion, mosaicAnchor, partBox, restBox, restriction, slabBox, tableAnchor, tableBox, tableCell,
   tableRegion, type Given, type MosaicSpec, type TableSpec,
 } from "./table";
-import { countRun, DRIFT, groupLayout, groupOf, IN_CELL, ThingsModel, type CountRun, type GroupLayout, type Seat } from "./things";
+import { countHold, countRun, DRIFT, groupLayout, groupOf, IN_CELL, ThingsModel, type CountRun, type GroupLayout, type Seat } from "./things";
 import { thingArt, thingStroke } from "../src/math/scene/components/things-art";
 
 export type Frame = { w: number; h: number };
@@ -141,7 +141,10 @@ const DEFAULT_DUR: Record<string, number> = {
 };
 
 /** `words`: later moments of the same action, by the words that name them (a stack column's trade and its written digit). */
-type Entry = { a: Action; t0: number; dur: number; beatEnd: number; words?: Record<string, number>; /** A count's numbers, as the voice says them. */ run?: CountRun };
+type Entry = {
+  a: Action; t0: number; dur: number; beatEnd: number; words?: Record<string, number>; /** A count's numbers, as the voice says them. */ run?: CountRun;
+  /** When a count's lights and ticks let go: the end of the speech, or the end of the beat's own pause. */ hold?: number;
+};
 type P = [number, number];
 /** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
 const THING_PAINT: Record<string, string> = {
@@ -167,8 +170,8 @@ function wordAfter(beat: BeatTime, word: string, t: number, what: string) {
   return hit.start;
 }
 
-/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered. */
-function entries(shot: Shot, times: BeatTime[]) {
+/** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered. `shotEnd` is when the shot begins to fade out. */
+function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
   const out: Entry[] = [];
   shot.beats.forEach((b, i) => {
     let stagger = 0;
@@ -178,7 +181,9 @@ function entries(shot: Shot, times: BeatTime[]) {
         // each thing lights on its own number: the count's words are its moments
         const run = countRun(t.words, a.from ?? 1, a.at, a.nth);
         const counted = a.to === undefined ? run.times : run.times.slice(0, Math.max(1, a.to - (a.from ?? 1) + 1));
-        out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
+        // the beat's own pause holds the counted row; it lets go as the next beat, or the shot's end, comes
+        const hold = countHold(t.end, b.pause, times[i + 1]?.start ?? shotEnd);
+        out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, hold, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
         continue;
       }
       const t0 = a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
@@ -1035,7 +1040,7 @@ class GeoStage {
     if (a.do === "arrive" || a.do === "count" || a.do === "send" || a.do === "leave") {
       if (!this.thingsModel) throw new Error(`"${a.do}" acts on things, but this figure has no things part.`);
       // the plan owns the timing: one thing after another, or each on its counted word
-      e.dur = this.thingsModel.apply(a, { t0: e.t0, beatEnd: e.beatEnd, run: e.run });
+      e.dur = this.thingsModel.apply(a, { t0: e.t0, beatEnd: e.hold ?? e.beatEnd, run: e.run });
     } else if (a.do === "partition" || a.do === "shade") {
       const p = this.geo.parts.find(x => x.id === a.target);
       if (!p || !("bar" in p)) throw new Error(`${a.do}: ${a.target} is not a bar.`);
@@ -1253,9 +1258,9 @@ class GeoStage {
           return { el, w: l.w ?? 1 };
         });
         tg.appendChild(art);
-        // counted: a small muted tick at the thing's lower right, inside its own place
+        // counted: a small muted tick at the thing's lower right, inside its own place, clear of the art when the light grows it
         const tick = svg("path", "film-thing-tick film-em");
-        tick.setAttribute("d", "M77 94L85 102L98 86");
+        tick.setAttribute("d", "M81 98L89 106L102 90");
         tg.appendChild(tick);
         layer.appendChild(tg);
         this.thingViews.set(th.name, { g: tg, art, tick, layers, px: 0 });
@@ -3533,7 +3538,9 @@ export class Film {
     const FIG = L.fig;
     script.shots.forEach((shot, i) => {
       const times = timing.shots[i]!;
-      const list = entries(shot, times);
+      // a shot begins to fade half a second before the next shot's first word (its t1, below)
+      const next = timing.shots[i + 1]?.[0];
+      const list = entries(shot, times, next ? next.start - 0.5 : timing.duration);
       const el = div("film-shot", root);
       const t0 = i === 0 ? 0 : times[0]!.start - 0.5;
       const hasFig = !!shot.figure;
