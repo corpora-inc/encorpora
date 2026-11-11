@@ -65,6 +65,7 @@ import {
 } from "../src/math/expanded-form-practice";
 import { reasonableMeasure } from "../src/math/reasonable-measure-practice";
 import { dataList } from "../src/math/data-list-practice";
+import { asCurrent } from "./fixtures/recorded-version";
 
 const SEEDS = 400;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -155,7 +156,11 @@ test("generation is deterministic, reaches the engine and every axis value and v
     const reached = new Map<string, Set<string>>();
     const variants = new Set<string>();
     for (const [i, c] of cases(id).entries()) {
-      assert.deepEqual(generateProblem(id, `eg:${i}`), c.problem, id);
+      assert.deepEqual(
+        generateProblem(id, `eg:${i}`),
+        asCurrent(c.problem),
+        id,
+      );
       assert.equal(c.problem.public.templateId, id);
       variants.add(c.problem.variant!.id);
       for (const [axis, v] of Object.entries(c.problem.variant!.axes ?? {}))

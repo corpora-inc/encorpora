@@ -5,6 +5,7 @@ import { gradeStructuredWork } from "../src/math/structured-work";
 import { classifyLinearRight } from "../src/math/structured-work";
 import type { MultiPartChoiceResponse } from "../src/math/multi-part-choice";
 import type { StructuredWorkResponse } from "../src/math/structured-work";
+import { asRecorded } from "./fixtures/recorded-version";
 
 const seeds = (n: number, prefix: string) =>
   Array.from({ length: n }, (_, i) => `${prefix}-${i}`);
@@ -27,7 +28,12 @@ test("classic clause draws match version 1 byte for byte", () => {
     for (const seed of seeds(80, `classic-${id}`)) {
       const current = generateProblem(id, seed);
       if (current.variant?.axes && "clause" in current.variant.axes) continue;
-      assert.deepEqual(generateProblem(id, seed, 1), current, `${id} ${seed}`);
+      // The same problem; each records the version it was generated at.
+      assert.deepEqual(
+        generateProblem(id, seed, 1),
+        asRecorded(current, 1),
+        `${id} ${seed}`,
+      );
     }
 });
 

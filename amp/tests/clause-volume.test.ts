@@ -8,6 +8,7 @@ import {
 } from "../src/math/volume-coordinate-practice";
 import { layoutScene } from "../src/math/scene";
 import { missingTargets } from "../src/math/scene/timeline";
+import { asRecorded } from "./fixtures/recorded-version";
 
 const CLASSIC = {
   prism:
@@ -70,8 +71,8 @@ test("named units on unit-cube-volume keep the classic sentence at version 1", (
     assert.equal(gradeAnswer(stored, stored.answer), true);
     if (current.variant?.axes?.units == null) {
       classic++;
-      assert.equal(current.public.templateVersion, 1);
-      assert.deepEqual(current, stored);
+      assert.equal(current.public.templateVersion, 2);
+      assert.deepEqual(asRecorded(current, 1), stored);
       continue;
     }
     const unit = current.variant.axes.units;

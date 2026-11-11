@@ -95,12 +95,18 @@ export function replayProblem(stored: StoredWork): {
   const seed = typeof raw?.seed === "string" ? raw.seed : undefined;
   if (!templateId || !seed || !templateIds.has(templateId))
     return { source: "unavailable", problem: null };
-  // A served problem's `templateVersion` is the generator's stamp (1 for all
-  // but count-objects), not the catalog version it was drawn at, so it can't
-  // select a version: under it, a version-2 template draws a different
-  // problem for many seeds. Practice draws at the catalog's current version,
-  // so the rebuild does too, and says it was rebuilt.
-  const version = undefined;
+  // A served problem records the version it was generated at, so the rebuild
+  // draws there. Without a usable version it draws at the current one, as
+  // practice does, and either way says it was rebuilt. (Rows written before
+  // the record was fixed are corrected by scripts/repair-template-versions.ts.)
+  const stamped = raw?.templateVersion;
+  const version =
+    typeof stamped === "number" &&
+    Number.isInteger(stamped) &&
+    stamped >= 1 &&
+    stamped <= 20
+      ? stamped
+      : undefined;
   try {
     const rebuilt = generateProblem(templateId, seed, version).public;
     return {

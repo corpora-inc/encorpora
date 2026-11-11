@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { generateProblem } from "../src/math/engine";
+import { asFrozen } from "./fixtures/recorded-version";
 
 /**
  * times-as-many-comparison before the story19 axis.
@@ -21,7 +22,9 @@ const golden = JSON.parse(
 ) as { digest: string; variantId: string | null }[];
 
 const digestOf = (problem: ReturnType<typeof generateProblem>): string =>
-  createHash("sha256").update(JSON.stringify(problem)).digest("hex");
+  createHash("sha256")
+    .update(JSON.stringify(asFrozen(problem)))
+    .digest("hex");
 
 test("times-as-many comparison replays the stored wording on the classic story", () => {
   assert.equal(golden.length, 200);
