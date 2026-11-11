@@ -290,7 +290,7 @@ export function trigonometryClause(
       .segment([0, 0], D, { dash: "dash" });
     const context = `On the unit circle, $A=(\\cos\\alpha,\\sin\\alpha)$, $B=(\\cos\\beta,\\sin\\beta)$, $C=(1,0)$, and $D=(\\cos(\\alpha-\\beta),\\sin(\\alpha-\\beta))$. The drawing uses $\\alpha=${alpha}^\\circ$, $\\beta=${beta}^\\circ$. Both chords subtend angle $\\alpha-\\beta$.`;
     const proof = [
-      "A rotation by −β takes A to D and B to C, preserving lengths. Thus AB = CD.",
+      "A rotation by −β takes $A$ to $D$ and $B$ to $C$, preserving lengths. Thus $AB = CD$.",
       "$AB^2=2-2(\\cos\\alpha\\cos\\beta+\\sin\\alpha\\sin\\beta)$ and $CD^2=2-2\\cos(\\alpha-\\beta)$.",
       "Equate them and cancel to obtain $\\cos(\\alpha-\\beta)=\\cos\\alpha\\cos\\beta+\\sin\\alpha\\sin\\beta$.",
       "Replacing β by −β gives the cosine sum formula, because cosine is even and sine is odd.",
@@ -303,14 +303,14 @@ export function trigonometryClause(
         "Rotating by −β carries one chord to the other and preserves length.";
       wrong = [
         "Both chords are radii.",
-        "A and D must have the same vertical coordinate.",
+        "$A$ and $D$ must have the same vertical coordinate.",
         "All chords on the unit circle have equal length.",
       ];
     } else if (ask === 1 || ask === 2) {
       const plus = ask === 2;
       prompt = plus
         ? "After proving the cosine difference formula, replace β by −β. Which formula follows using even cosine and odd sine?"
-        : "Expand AB² = CD² with the distance formula and use sin² + cos² = 1. Which formula follows?";
+        : "Expand $AB^2 = CD^2$ with the distance formula and use $\\sin^2 + \\cos^2 = 1$. Which formula follows?";
       const s = plus ? "+" : "-",
         termSign = plus ? "-" : "+";
       correct = `$\\cos(\\alpha${s}\\beta)=\\cos\\alpha\\cos\\beta${termSign}\\sin\\alpha\\sin\\beta$`;
@@ -451,17 +451,17 @@ export function trigonometryClause(
     if (variant === "explain-from-triangle") {
       const reason = r(0, 1) === 1;
       const correct = reason
-        ? `The side opposite ${named} touches ${other}; both ratios divide it by the hypotenuse.`
+        ? `The side opposite $${named}$ touches $${other}$; both ratios divide it by the hypotenuse.`
         : `$\\cos ${other}$`;
       return b.choice(
         {
           figure,
-          prompt: `Triangle ABC has right angle C and sides $a=${a}$, $b=${d}$, $c=${c}$. ${reason ? `Why is $\\sin ${named}=\\cos ${other}$ for every such right triangle?` : `$\\sin ${named}=${opposite}/${c}$. Which ratio at the other acute angle uses these same two sides?`}`,
-          hint: `Locate the side of length ${opposite}. It is opposite ${named}; look at its position relative to ${other}.`,
+          prompt: `Triangle $ABC$ has right angle $C$ and sides $a=${a}$, $b=${d}$, $c=${c}$. ${reason ? `Why is $\\sin ${named}=\\cos ${other}$ for every such right triangle?` : `$\\sin ${named}=${opposite}/${c}$. Which ratio at the other acute angle uses these same two sides?`}`,
+          hint: `Locate the side of length ${opposite}. It is opposite $${named}$; look at its position relative to $${other}$.`,
           explanation: [
-            `At ${named}, sine is opposite over hypotenuse: ${opposite}/${c}.`,
-            `At ${other}, that same side is adjacent, so cosine is ${opposite}/${c}.`,
-            "The acute angles add to 90° because the triangle's angles total 180° and C is 90°. Changing the reference angle changes the side's role, not its length.",
+            `At $${named}$, sine is opposite over hypotenuse: ${opposite}/${c}.`,
+            `At $${other}$, that same side is adjacent, so cosine is ${opposite}/${c}.`,
+            "The acute angles add to 90° because the triangle's angles total 180° and $C$ is 90°. Changing the reference angle changes the side's role, not its length.",
           ],
         },
         correct,
@@ -477,7 +477,7 @@ export function trigonometryClause(
     const ask = r(0, 2);
     const copy = {
       figure,
-      prompt: `In triangle ABC, $C=90^\\circ$, $a=${a}$, and $b=${d}$. ${ask === 0 ? "What does the law of cosines for side c become?" : ask === 1 ? "What does a/sin A = c/sin C become?" : "Use the law of cosines to find c."}`,
+      prompt: `In triangle $ABC$, $C=90^\\circ$, $a=${a}$, and $b=${d}$. ${ask === 0 ? "What does the law of cosines for side $c$ become?" : ask === 1 ? "What does $a/\\sin A = c/\\sin C$ become?" : "Use the law of cosines to find $c$."}`,
       hint: `Here $a=${a}$ and $b=${d}$, with $C=90^\\circ$. The law of cosines has correction term $2ab\\cos C$. Substitute $C=90^\\circ$ before calculating.`,
       explanation: [
         "Since $\\cos90^\\circ=0$, $c^2=a^2+b^2-2ab\\cos C$ becomes $c^2=a^2+b^2$.",
@@ -485,7 +485,7 @@ export function trigonometryClause(
         `Since $\\sin90^\\circ=1$, $a/\\sin A=c$ gives $\\sin A=a/c=${a}/${c}$. The laws include right-triangle trigonometry.`,
       ],
     };
-    if (ask === 2) return b.work(copy, [{ label: "Hypotenuse c", value: c }]);
+    if (ask === 2) return b.work(copy, [{ label: "Hypotenuse $c$", value: c }]);
     return ask === 0
       ? b.choice(copy, "$c^2=a^2+b^2$", [
           "$c^2=a^2+b^2-2ab$",
@@ -536,19 +536,19 @@ export function trigonometryClause(
       );
       const copy = {
         figure,
-        prompt: `Surveying: stations P and Q are on one riverbank, ${baseline} m apart. Landmark R is across the river. The triangle angles are P = ${P}° and Q = ${Q}°. Find the distance PR to the nearest meter.`,
-        hint: `Find angle R by subtracting ${P}° and ${Q}° from 180°. PR lies opposite angle Q.`,
+        prompt: `Surveying: stations $P$ and $Q$ are on one riverbank, ${baseline} m apart. Landmark $R$ is across the river. The triangle angles are $P$ = ${P}° and $Q$ = ${Q}°. Find the distance $PR$ to the nearest meter.`,
+        hint: `Find angle $R$ by subtracting ${P}° and ${Q}° from 180°. $PR$ lies opposite angle $Q$.`,
         explanation: [
           `$R=180^\\circ-${P}^\\circ-${Q}^\\circ=${R}^\\circ$.`,
           `The sine law gives $PR/\\sin ${Q}^\\circ=${baseline}/\\sin ${R}^\\circ$.`,
           `$PR=${baseline}\\sin ${Q}^\\circ/\\sin ${R}^\\circ\\approx${round(result, 4)}$ m, which rounds to ${answer} m.`,
-          "The perpendicular river width is a different distance, shorter than PR here.",
+          "The perpendicular river width is a different distance, shorter than $PR$ here.",
         ],
       };
       return structured
         ? b.work(copy, [
-            { label: "Angle R (degrees)", value: R },
-            { label: "Distance PR (nearest meter)", value: answer },
+            { label: "Angle $R$ (degrees)", value: R },
+            { label: "Distance $PR$ (nearest meter)", value: answer },
           ])
         : b.choice(
             copy,
@@ -589,7 +589,7 @@ export function trigonometryClause(
       interior = 180 - phi,
       bearing1 = r(0, 17) * 10,
       bearing2 = bearing1 + phi;
-    const unit = context === 1 ? "N" : "km";
+    const unit = context === 1 ? "$N$" : "km";
     const u: Point = [first, 0],
       end: Point = [
         first + second * Math.cos(rad(phi)),
@@ -618,7 +618,7 @@ export function trigonometryClause(
       ),
       prompt:
         context === 1
-          ? `Two forces of ${first} N and ${second} N act at a point with angle ${phi}° between them. Find the resultant magnitude to the nearest tenth of a newton.`
+          ? `Two forces of ${first} ${unit} and ${second} ${unit} act at a point with angle ${phi}° between them. Find the resultant magnitude to the nearest tenth of a newton.`
           : `A ship leaves harbor on bearing ${bearing1}° for ${first} km, then travels ${second} km on bearing ${bearing2}°. Bearings are clockwise from north. How far is the ship from harbor, to the nearest tenth of a kilometer?`,
       hint: `The direction change is ${phi}°, so the interior triangle angle at the join is 180° − ${phi}°.`,
       explanation: [
