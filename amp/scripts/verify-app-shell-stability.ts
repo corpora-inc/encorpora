@@ -243,16 +243,17 @@ const check = (ok: unknown, message: string) => {
 async function tabBoxes(page: Page) {
   return page.evaluate(() =>
     Object.fromEntries(
-      [
-        ...document.querySelectorAll<HTMLElement>("[data-app-bar] [data-tab]"),
-      ].map((tab) => {
-        const r = tab.getBoundingClientRect();
-        const scroll = tab.parentElement!.scrollLeft;
-        return [
-          tab.dataset.tab!,
-          { x: r.x + scroll, y: r.y, width: r.width, height: r.height },
-        ];
-      }),
+      [...document.querySelectorAll<HTMLElement>("[data-app-bar] [data-tab]")]
+        // A tab held in More (a phone row too wide for the bar) has no box.
+        .filter((tab) => tab.getClientRects().length > 0)
+        .map((tab) => {
+          const r = tab.getBoundingClientRect();
+          const scroll = tab.parentElement!.scrollLeft;
+          return [
+            tab.dataset.tab!,
+            { x: r.x + scroll, y: r.y, width: r.width, height: r.height },
+          ];
+        }),
     ),
   );
 }
@@ -371,9 +372,12 @@ for (const engine of engines) {
           const here = await tabBoxes(page);
           const key = `${screen.group}:${screen.state}`;
           const first = (tabs[key] ??= here);
+          // Tabs shown on both screens hold their place. On a phone row
+          // with More, the open tab takes the last slot: the tab it
+          // replaces is simply not shown.
           for (const [id, box] of Object.entries(here))
             check(
-              same(box, first[id] ?? null),
+              !(id in first) || same(box, first[id] ?? null),
               `${tag}: tab ${id} at ${show(box)}, elsewhere ${show(first[id] ?? null)}`,
             );
           check(
@@ -473,7 +477,19 @@ for (const engine of engines) {
           const refreshed = page.waitForResponse(
             (response) => new URL(response.url()).pathname === "/api/v1/me",
           );
-          await page.locator(`[data-app-bar] [data-tab="${id}"]`).click();
+          const tab = page.locator(`[data-app-bar] [data-tab="${id}"]`);
+          if (await tab.isVisible()) await tab.click();
+          else {
+            // Held in More on a phone row too wide for the bar.
+            const label = (await tab.textContent())!.trim();
+            await page
+              .locator("[data-app-bar]")
+              .getByRole("button", { name: /^More .* tabs$/ })
+              .click();
+            await page
+              .getByRole("menuitem", { name: label, exact: true })
+              .click();
+          }
           await refreshed;
           await page
             .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
@@ -496,7 +512,7 @@ for (const engine of engines) {
           const after = await tabBoxes(page);
           for (const [tab, box] of Object.entries(before))
             check(
-              same(after[tab] ?? null, box),
+              !(tab in after) || same(after[tab] ?? null, box),
               `${group} → ${id} ${where}: tab ${tab} moved to ${show(after[tab] ?? null)}`,
             );
           check(

@@ -95,6 +95,47 @@
 .tabs[data-fit="tight"] .tab {
   padding-inline: var(--space-1);
 }
+/* A row too wide even at its tightest: the tabs that fit, whole, then More
+   with the rest (Tabs.tsx). More is a tab: same size, type and fill. */
+.tab[data-hidden] {
+  display: none;
+}
+/* The row fills its cell, so the strip keeps one box whichever tabs it
+   shows. */
+.tabs[data-overflow] {
+  flex: 1 1 auto;
+}
+.moreSlot {
+  display: none;
+  flex: none;
+}
+.tabs[data-overflow] .moreSlot {
+  display: inline-flex;
+}
+.tabs .more {
+  gap: var(--space-1);
+  height: 44px;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+.tabs .more:hover:not(:disabled),
+.tabs .more[data-state="open"],
+.tabs .more:active:not(:disabled) {
+  background: transparent;
+  color: var(--color-on-surface);
+}
+.tabs .more[data-state="open"]::before {
+  background: var(--color-surface-hover);
+}
+.tabs .more:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
 @media (prefers-reduced-motion: reduce) {
   .tab,
   .tab::before {

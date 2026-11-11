@@ -150,7 +150,17 @@ export async function classShellJourney(page: Page) {
     "today",
   ].filter((id) => offered.includes(id));
   for (const id of order) {
-    await page.locator(`[data-app-bar] [data-tab="${id}"]`).click();
+    const tab = page.locator(`[data-app-bar] [data-tab="${id}"]`);
+    // On a phone a row too wide for the bar holds some tabs in More.
+    if (await tab.isVisible()) await tab.click();
+    else {
+      const label = (await tab.textContent())!.trim();
+      await page
+        .locator("[data-app-bar]")
+        .getByRole("button", { name: /^More .* tabs$/ })
+        .click();
+      await page.getByRole("menuitem", { name: label, exact: true }).click();
+    }
     await page
       .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
       .waitFor();
