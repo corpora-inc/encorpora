@@ -389,17 +389,17 @@ def elimination(public):
     a, b, c = read_linear(equations[0])
     d, e, f = read_linear(equations[1])
     found = re.search(
-        r"The system is replaced by E1 and E2 (?:− (\d+)|\+ (\d+))·E1\.",
+        r"The system is replaced by \$E1\$ and \$E2 ([+-]) (\d+)\\cdot E1\$\.",
         prompt,
     )
     require(found is not None, "elimination step")
-    k = -int(found[1]) if found[1] else int(found[2])
+    k = int(found[2]) * (-1 if found[1] == "-" else 1)
     combined = d + k * a
     right = f + k * c
     require(e + k * b == 0 and combined != 0, "y cancels")
     expected = {
         "sum": f"{two_term(combined, 0)} = {signed_number(right)}",
-        "why": "Adding k·E1 keeps solutions, and subtracting k·E1 brings E2 back",
+        "why": "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
     }
     if any(blank["id"] == "gen" for blank in public["response"]["blanks"]):
         expected["gen"] = f"{right}, because it equals f + kc"

@@ -408,8 +408,8 @@ test("assumption checks and scaled elimination are exact", () => {
   for (const seed of seeds(80, "elim")) {
     const p = generateProblem("scaled-elimination", seed);
     const sum = chosen(p, "sum");
-    const plusK = /E2 \+ (\d+)·E1/.exec(p.public.prompt);
-    const minusK = /E2 − (\d+)·E1/.exec(p.public.prompt);
+    const plusK = /E2 \+ (\d+)\\cdot E1/.exec(p.public.prompt);
+    const minusK = /E2 - (\d+)\\cdot E1/.exec(p.public.prompt);
     const k = plusK ? Number(plusK[1]) : minusK ? -Number(minusK[1]!) : NaN;
     assert.ok(Number.isInteger(k) && k !== 0, p.public.prompt);
     const read = (source: string) => {

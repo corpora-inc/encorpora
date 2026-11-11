@@ -135,25 +135,26 @@ const lineText = (m: Fr, b: number) => {
     m.d === 1 && Math.abs(m.n) === 1 ? termText(m.n, "x") : `${ftxt(m)}x`;
   return `y = ${slope}${plus(b)}`;
 };
-/** Two labeled equations, each on its own line. */
-function shownSystem(rows: readonly [string, string][]) {
+/** Two labeled equations, each on its own line.
+ * `mathLabels` sets the tags in math, the same face as `$E1$` in a sentence.
+ * Other captions stay upright text. */
+function shownSystem(rows: readonly [string, string][], mathLabels = false) {
   const body = rows
-    .map(
-      ([equation, label]) =>
-        `${equation.replaceAll("−", "-")} & \\text{${label}}`,
-    )
+    .map(([equation, label]) => {
+      const tag = mathLabels ? label : `\\text{${label}}`;
+      return `${equation.replaceAll("−", "-")} & ${tag}`;
+    })
     .join(" \\\\ ");
   return `$\\begin{cases} ${body} \\end{cases}$`;
 }
-/** k·label, with a leading minus when k is negative. k is never 0. */
-function timesLabel(k: number, label: string) {
+/** E2 + k·E1 as math. A negative k reads E2 − |k|·E1. k is never 0. */
+const addedToE2 = (k: number) => {
   const mag = Math.abs(k);
-  const body = mag === 1 ? label : `${mag}·${label}`;
-  return k < 0 ? `−${body}` : body;
-}
-/** E2 + k·E1, so a negative k reads E2 − |k|·E1. */
-const addedToE2 = (k: number) =>
-  k < 0 ? `E2 − ${timesLabel(-k, "E1")}` : `E2 + ${timesLabel(k, "E1")}`;
+  const factor = mag === 1 ? "E1" : `${mag}\\cdot E1`;
+  return `$E2 ${k < 0 ? "-" : "+"} ${factor}$`;
+};
+/** k·E1 as math, including a negative k. */
+const scaledE1 = (k: number) => `$${k}\\cdot E1$`;
 const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
 
 const instanceId = (templateId: string, seed: string) =>
@@ -1803,7 +1804,7 @@ export function scaledElimination(seed: string): GeneratedProblem {
   const parts = [
     {
       id: "sum",
-      label: "Which equation is E2 + k·E1?",
+      label: "Which equation is $E2 + k\\cdot E1$?",
       choices: labels,
       correct: key,
     },
@@ -1811,13 +1812,13 @@ export function scaledElimination(seed: string): GeneratedProblem {
       id: "why",
       label: "Why does the new system have the same solutions?",
       choices: [
-        "Adding k·E1 keeps solutions, and subtracting k·E1 brings E2 back",
-        "Scaling E1 does not change the system",
-        "An equation in only x has the same solutions as E2",
+        "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
+        "Scaling $E1$ does not change the system",
+        "An equation in only $x$ has the same solutions as $E2$",
         "Two systems that share one equation share every solution",
       ],
       correct:
-        "Adding k·E1 keeps solutions, and subtracting k·E1 brings E2 back",
+        "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
     },
   ];
   if (general)
@@ -1832,17 +1833,17 @@ export function scaledElimination(seed: string): GeneratedProblem {
     prompt: `${shownSystem([
       [`${left1} = ${c}`, "E1"],
       [`${left2} = ${f}`, "E2"],
-    ])}\n\nThe system is replaced by E1 and ${addedToE2(k)}.`,
+    ], true)}\n\nThe system is replaced by $E1$ and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
-    hint: `E1 is ${tex(`${left1} = ${c}`)}, and the new system uses ${addedToE2(k)}. Multiply every term of E1 by ${term(k)}, then add matching terms to E2. The new equation is reversible: subtract ${term(k)}·E1 to get E2 back.`,
+    hint: `$E1$ is ${tex(`${left1} = ${c}`)}, and the new system uses ${addedToE2(k)}. Multiply every term of $E1$ by ${term(k)}, then add matching terms to $E2$. The new equation is reversible: subtract ${scaledE1(k)} to get $E2$ back.`,
     explanation: [
-      `${k}·E1 is ${termText(k * a, "x")} and ${termText(k * b, "y")} equal to ${k * c}.`,
-      `Add E2: ${termText(nx, "x")} = ${n(nr)}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
+      `${scaledE1(k)} is ${termText(k * a, "x")} and ${termText(k * b, "y")} equal to ${k * c}.`,
+      `Add $E2$: ${termText(nx, "x")} = ${n(nr)}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
       `The unscaled right side would be ${f + c}, which is not ${nr}.`,
       general
-        ? `At a solution, E2 contributes ${f} and k·E1 contributes ${k * c}, so the sum is ${nr}.`
-        : "Subtracting k·E1 from the new equation returns E2, so nothing was gained or lost.",
+        ? `At a solution, $E2$ contributes ${f} and ${scaledE1(k)} contributes ${k * c}, so the sum is ${nr}.`
+        : "Subtracting $k\\cdot E1$ from the new equation returns $E2$, so nothing was gained or lost.",
     ],
   });
 }
