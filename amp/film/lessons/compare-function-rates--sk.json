@@ -1398,7 +1398,7 @@
           "do": [
             {
               "do": "clear",
-              "at": "Steeper"
+              "at": "greater"
             },
             {
               "do": "show",
