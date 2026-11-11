@@ -26,27 +26,23 @@ export const peakOf = (curves: readonly StandingCurve[]) =>
     ]),
   );
 
-/** Where to name a curve on itself: a point on its flank, past its peak in
- * one direction, where it has fallen to `share` of its height. */
-function flank(
+/** Where to name a curve on itself: the point where it stands furthest
+ * above the other curve, so the name sits on a stretch only its own line
+ * occupies (and not on the faint tails). */
+function apart(
   grid: StandingGrid,
   values: readonly number[],
+  other: readonly number[],
   top: number,
-  side: "left" | "right",
-  share: number,
 ) {
-  let peak = 0;
+  const tallest = Math.max(...values);
+  let at = -1;
   values.forEach((value, index) => {
-    if (value > values[peak]!) peak = index;
+    if (value < tallest * 0.25) return;
+    const gap = value - (other[index] ?? 0);
+    if (at < 0 || gap > values[at]! - (other[at] ?? 0)) at = index;
   });
-  let at = peak;
-  const step = side === "right" ? 1 : -1;
-  while (
-    at + step >= 0 &&
-    at + step < values.length &&
-    values[at]! > values[peak]! * share
-  )
-    at += step;
+  if (at < 0) return null;
   const span = grid.to - grid.from;
   return {
     x: ((at * grid.step) / span) * 100,
@@ -178,6 +174,7 @@ export function CurvePlot({
       {own && (
         <span
           className={styles.curveName}
+          data-side={own.x > 50 ? "end" : "start"}
           style={{ left: `${own.x}%`, "--y": own.y } as CSSProperties}
           aria-hidden="true"
         >
@@ -188,6 +185,7 @@ export function CurvePlot({
         <span
           className={styles.curveName}
           data-curve="national"
+          data-side={national.x > 50 ? "end" : "start"}
           style={{ left: `${national.x}%`, "--y": national.y } as CSSProperties}
           aria-hidden="true"
         >

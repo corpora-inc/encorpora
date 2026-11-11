@@ -634,7 +634,14 @@
   pointer-events: none;
 }
 .curveName[data-curve="national"] {
-  transform: translate(calc(-100% - var(--space-2)), -100%);
   color: var(--color-muted-text);
   font-weight: 600;
+}
+/* Outward from the middle: left of a point on the left, right of one on
+   the right, so a name never sits over the grade band. */
+.curveName[data-side="start"] {
+  transform: translate(calc(-100% - var(--space-2)), -100%);
+}
+.curveName[data-side="end"] {
+  transform: translate(var(--space-2), -100%);
 }
