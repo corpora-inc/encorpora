@@ -1,0 +1,1543 @@
+{
+ "id": "arithmetic-distant-term--sq",
+ "title": "An arithmetic sequence is a staircase",
+ "teaches": [
+  "arithmetic-term",
+  "arithmetic-sequence-as-function",
+  "series-recursion",
+  "nonlinear-recursion-term",
+  "recursion-term-steps"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.05,
+     -1.7,
+     5.55,
+     13.4
+    ],
+    "points": {
+     "P1": [
+      1,
+      2
+     ],
+     "P2": [
+      2,
+      5
+     ],
+     "P3": [
+      3,
+      8
+     ],
+     "P4": [
+      4,
+      11
+     ],
+     "C1": [
+      2,
+      2
+     ],
+     "C2": [
+      3,
+      5
+     ],
+     "C3": [
+      4,
+      8
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 2,
+      "xrange": [
+       0,
+       5
+      ],
+      "yrange": [
+       0,
+       12
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d2",
+      "dot": "P2",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d3",
+      "dot": "P3",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d4",
+      "dot": "P4",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "v1",
+      "label": "2",
+      "at": "P1",
+      "dir": "n",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "v2",
+      "label": "5",
+      "at": "P2",
+      "dir": "n",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "v3",
+      "label": "8",
+      "at": "P3",
+      "dir": "n",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "v4",
+      "label": "11",
+      "at": "P4",
+      "dir": "n",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "run1",
+      "seg": [
+       "P1",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "run2",
+      "seg": [
+       "P2",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "run3",
+      "seg": [
+       "P3",
+       "C3"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "rise1",
+      "seg": [
+       "C1",
+       "P2"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "rise2",
+      "seg": [
+       "C2",
+       "P3"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "rise3",
+      "seg": [
+       "C3",
+       "P4"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "s1",
+      "label": "+3",
+      "at": "rise1",
+      "dir": "e",
+      "far": 1.25,
+      "ink": "warm",
+      "size": "l"
+     },
+     {
+      "id": "s2",
+      "label": "+3",
+      "at": "rise2",
+      "dir": "e",
+      "far": 1.25,
+      "ink": "warm",
+      "size": "l"
+     },
+     {
+      "id": "s3",
+      "label": "+3",
+      "at": "rise3",
+      "dir": "e",
+      "far": 1.25,
+      "ink": "warm",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "An arithmetic sequence is a staircase. Start at two. Each step adds the same amount.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Each step adds the same amount.",
+       "at": "staircase",
+       "id": "idea"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "v1"
+       ],
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step right, and three up. The next term is five.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "run1",
+       "at": "right"
+      },
+      {
+       "do": "draw",
+       "target": "rise1",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "d2",
+        "v2"
+       ],
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The same step again. Term three is eight.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "run2",
+       "at": "same"
+      },
+      {
+       "do": "draw",
+       "target": "rise2",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "d3",
+        "v3"
+       ],
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Once more. Term four is eleven.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "run3",
+       "at": "more"
+      },
+      {
+       "do": "draw",
+       "target": "rise3",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s3",
+        "d4",
+        "v4"
+       ],
+       "at": "eleven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The points stay separate. There is no term at two and a half.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "separate"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the risers, not the posts.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d4",
+       "at": "posts"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Step one, from two up to five.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rise1",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Step two, from five up to eight.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rise2",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Step three, from eight up to eleven.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rise3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three steps from term one to term four. One fewer than four.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "4-1=3",
+       "at": "fewer",
+       "id": "count3",
+       "note": "\\text{steps}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The amount added each step is the common difference, d.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\cw{d}$: the common difference, added every step.",
+       "at": "common",
+       "id": "defD"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Term n is the first term, plus n minus one, times d.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "a_n=\\cg{a_1}+\\cb{(n-1)}\\cw{d}",
+       "at": "plus",
+       "id": "rule"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "First term 2, common difference 3. What is term 8?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "First term $2$, common difference $3$. What is term $8$?",
+       "at": "First",
+       "id": "term8"
+      },
+      {
+       "do": "highlight",
+       "target": "v1",
+       "at": "2"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Eight steps. Two plus eight times three is twenty-six. Easy.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+       ],
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Not eight. Count the gaps. Term 8 is seven steps from the start.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "rise1",
+        "rise2",
+        "rise3"
+       ],
+       "at": "gaps"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven steps. Two plus seven times three is twenty-three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "8-1=\\cb{7}",
+       "at": "Seven",
+       "id": "steps7",
+       "note": "\\text{steps}"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cg{2}+\\cb{7}\\cdot\\cw{3}=23",
+       "at": "twenty-three",
+       "id": "ans23"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.5,
+     -0.62,
+     5.8,
+     4.2
+    ],
+    "points": {
+     "P1": [
+      1,
+      3.6
+     ],
+     "P2": [
+      2,
+      3.1
+     ],
+     "P3": [
+      3,
+      2.6
+     ],
+     "P4": [
+      4,
+      2.1
+     ],
+     "C1": [
+      2,
+      3.6
+     ],
+     "C2": [
+      3,
+      3.1
+     ],
+     "C3": [
+      4,
+      2.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 1,
+      "yevery": 1,
+      "xrange": [
+       0,
+       5
+      ],
+      "yrange": [
+       0,
+       4
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d2",
+      "dot": "P2",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d3",
+      "dot": "P3",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d4",
+      "dot": "P4",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "v1",
+      "label": "3.6",
+      "at": "P1",
+      "dir": "w",
+      "far": 0.72,
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "v2",
+      "label": "3.1",
+      "at": "P2",
+      "dir": "w",
+      "far": 0.72,
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "v3",
+      "label": "2.6",
+      "at": "P3",
+      "dir": "w",
+      "far": 0.72,
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "v4",
+      "label": "2.1",
+      "at": "P4",
+      "dir": "w",
+      "far": 0.72,
+      "ink": "gold",
+      "size": "m"
+     },
+     {
+      "id": "run1",
+      "seg": [
+       "P1",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "run2",
+      "seg": [
+       "P2",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "run3",
+      "seg": [
+       "P3",
+       "C3"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "rise1",
+      "seg": [
+       "C1",
+       "P2"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "rise2",
+      "seg": [
+       "C2",
+       "P3"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "rise3",
+      "seg": [
+       "C3",
+       "P4"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "s1",
+      "label": "-0.5",
+      "at": "rise1",
+      "dir": "e",
+      "far": 1.4,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "s2",
+      "label": "-0.5",
+      "at": "rise2",
+      "dir": "e",
+      "far": 1.4,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "s3",
+      "label": "-0.5",
+      "at": "rise3",
+      "dir": "e",
+      "far": 1.4,
+      "ink": "warm",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "An arithmetic sequence starts 3.6, 3.1, 2.6, 2.1, and so on. What is the 26th term?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "An arithmetic sequence starts $3.6, 3.1, 2.6, 2.1, \\dots$ What is the 26th term?",
+       "at": "An",
+       "id": "farProb"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "v1"
+       ],
+       "at": "3.6"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d2",
+        "v2"
+       ],
+       "at": "3.1"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d3",
+        "v3"
+       ],
+       "at": "2.6"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d4",
+        "v4"
+       ],
+       "at": "2.1"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "3.1 minus 3.6 is negative 0.5. Every drop is that same step.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "run1",
+       "at": "minus"
+      },
+      {
+       "do": "draw",
+       "target": "rise1",
+       "at": "3.6"
+      },
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "negative"
+      },
+      {
+       "do": "write",
+       "tex": "3.1-3.6=\\cw{-0.5}",
+       "at": "negative",
+       "id": "diff1"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "run2",
+        "rise2",
+        "run3",
+        "rise3"
+       ],
+       "at": "Every"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s2",
+        "s3"
+       ],
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Term 26 is 25 steps from the start.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "26-1=\\cb{25}\\text{ steps}",
+       "at": "25",
+       "id": "steps25"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty-five times negative 0.5 is negative 12.5. 3.6 minus 12.5 is negative 8.9.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Twenty-five"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{25}\\times(\\cw{-0.5})=\\cw{-12.5}",
+       "at": "Twenty-five",
+       "id": "drop"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "0.5"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{3.6}-\\cw{12.5}=-8.9",
+       "fresh": true,
+       "at": "3.6",
+       "id": "sub"
+      },
+      {
+       "do": "answer",
+       "tex": "a_{26}=-8.9",
+       "at": "8.9",
+       "id": "ans26"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.05,
+     -4.2,
+     6.55,
+     39
+    ],
+    "points": {
+     "P1": [
+      1,
+      6
+     ],
+     "P2": [
+      2,
+      12
+     ],
+     "P3": [
+      3,
+      18
+     ],
+     "P4": [
+      4,
+      24
+     ],
+     "P5": [
+      5,
+      30
+     ],
+     "C1": [
+      2,
+      6
+     ],
+     "C2": [
+      3,
+      12
+     ],
+     "C3": [
+      4,
+      18
+     ],
+     "C4": [
+      5,
+      24
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 6,
+      "yevery": 6,
+      "xrange": [
+       0,
+       6
+      ],
+      "yrange": [
+       0,
+       36
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 13,
+      "start": true
+     },
+     {
+      "id": "d2",
+      "dot": "P2",
+      "ink": "gold",
+      "r": 13,
+      "start": true
+     },
+     {
+      "id": "d3",
+      "dot": "P3",
+      "ink": "gold",
+      "r": 13,
+      "start": true
+     },
+     {
+      "id": "d4",
+      "dot": "P4",
+      "ink": "gold",
+      "r": 13,
+      "start": true
+     },
+     {
+      "id": "d5",
+      "dot": "P5",
+      "ink": "gold",
+      "r": 14
+     },
+     {
+      "id": "v1",
+      "label": "6",
+      "at": "P1",
+      "dir": "n",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "v2",
+      "label": "12",
+      "at": "P2",
+      "dir": "n",
+      "far": 1,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "v3",
+      "label": "18",
+      "at": "P3",
+      "dir": "n",
+      "far": 1,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "v4",
+      "label": "24",
+      "at": "P4",
+      "dir": "n",
+      "far": 1,
+      "ink": "gold",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "v5",
+      "label": "30",
+      "at": "P5",
+      "dir": "ne",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "run1",
+      "seg": [
+       "P1",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "run2",
+      "seg": [
+       "P2",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "run3",
+      "seg": [
+       "P3",
+       "C3"
+      ],
+      "ink": "blue",
+      "w": 7,
+      "start": true
+     },
+     {
+      "id": "run4",
+      "seg": [
+       "P4",
+       "C4"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "rise1",
+      "seg": [
+       "C1",
+       "P2"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "rise2",
+      "seg": [
+       "C2",
+       "P3"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "rise3",
+      "seg": [
+       "C3",
+       "P4"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "rise4",
+      "seg": [
+       "C4",
+       "P5"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "s1",
+      "label": "+6",
+      "at": "rise1",
+      "dir": "e",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "s2",
+      "label": "+6",
+      "at": "rise2",
+      "dir": "e",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "s3",
+      "label": "+6",
+      "at": "rise3",
+      "dir": "e",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "s4",
+      "label": "+6",
+      "at": "rise4",
+      "dir": "e",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two ways to write one staircase. The next term is the previous term plus 6.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "a(n+1)=a(n)+\\cw{6}",
+       "at": "next",
+       "id": "recStep"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "6"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or jump. a of n equals 6, plus 6 times n minus 1.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "a(n)=\\cg{6}+\\cw{6}\\cb{(n-1)}",
+       "fresh": true,
+       "at": "jump",
+       "id": "explicit"
+      },
+      {
+       "do": "highlight",
+       "target": "v4",
+       "at": "minus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The inputs are 1, 2, 3, and so on.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Domain: $1, 2, 3, \\ldots$",
+       "at": "inputs",
+       "id": "domain"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+       ],
+       "at": "1"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Is 30 a term of this sequence? a of n equals 6 plus 6 times the quantity n minus 1.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Is $30$ a term of this sequence? $a(n)=6+6(n-1)$",
+       "at": "Is",
+       "id": "memProb"
+      },
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "times"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six plus six times n minus 1 equals 30. Then n minus 1 is 4.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cg{6}+\\cw{6}(n-1)=30",
+       "at": "equals",
+       "id": "eq30"
+      },
+      {
+       "do": "write",
+       "tex": "n-1=\\cb{4}",
+       "at": "4",
+       "id": "nm1"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So n is 5. Yes, a of 5 is 30.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "run4",
+        "rise4",
+        "d5",
+        "v5",
+        "s4"
+       ],
+       "at": "5"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Yes. } a(5)=30",
+       "at": "30",
+       "id": "yes30"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "27 sits between 24 and 30, so 27 is not a term.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "v4",
+       "at": "24"
+      },
+      {
+       "do": "clear",
+       "at": "24"
+      },
+      {
+       "do": "write",
+       "tex": "24<27<30",
+       "at": "24",
+       "id": "between"
+      },
+      {
+       "do": "text",
+       "text": "$27$ is not a term.",
+       "at": "not",
+       "id": "not27"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.15,
+     -3.6,
+     4.85,
+     36.5
+    ],
+    "points": {
+     "P1": [
+      1,
+      3
+     ],
+     "P2": [
+      2,
+      6
+     ],
+     "P3": [
+      3,
+      30
+     ],
+     "C1": [
+      2,
+      3
+     ],
+     "C2": [
+      3,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 3,
+      "yevery": 6,
+      "xrange": [
+       0,
+       4
+      ],
+      "yrange": [
+       0,
+       33
+      ],
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "d1",
+      "dot": "P1",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d2",
+      "dot": "P2",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "d3",
+      "dot": "P3",
+      "ink": "gold",
+      "r": 14
+     },
+     {
+      "id": "v1",
+      "label": "3",
+      "at": "P1",
+      "dir": "nw",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "v2",
+      "label": "6",
+      "at": "P2",
+      "dir": "nw",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "v3",
+      "label": "30",
+      "at": "P3",
+      "dir": "ne",
+      "far": 1.05,
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "run1",
+      "seg": [
+       "P1",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "run2",
+      "seg": [
+       "P2",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 7
+     },
+     {
+      "id": "rise1",
+      "seg": [
+       "C1",
+       "P2"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "rise2",
+      "seg": [
+       "C2",
+       "P3"
+      ],
+      "ink": "warm",
+      "w": 8
+     },
+     {
+      "id": "s1",
+      "label": "+3",
+      "at": "rise1",
+      "dir": "e",
+      "far": 1.15,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "s2",
+      "label": "+24",
+      "at": "rise2",
+      "dir": "e",
+      "far": 1.15,
+      "ink": "warm",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Not every sequence adds the same amount each step.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Not every sequence is arithmetic.",
+       "id": "notAll"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start at 3. Square the term, then subtract the term. What is the third term?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Start"
+      },
+      {
+       "do": "problem",
+       "text": "Start at 3. Square the term, then subtract the term. What is the third term?",
+       "at": "Start",
+       "id": "sqProb"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "v1"
+       ],
+       "at": "3"
+      },
+      {
+       "do": "text",
+       "text": "$a_1=3,\\quad a_n=a_{n-1}^{2}-a_{n-1}$",
+       "at": "Square",
+       "id": "sqRule"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Square the 3. 3 squared minus 3 is 6.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "run1",
+       "at": "Square"
+      },
+      {
+       "do": "draw",
+       "target": "rise1",
+       "at": "squared"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d2",
+        "v2",
+        "s1"
+       ],
+       "at": "6"
+      },
+      {
+       "do": "write",
+       "tex": "3^{2}-3=6",
+       "at": "6",
+       "id": "a2"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Now square the 6. 6 squared minus 6 is 30.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "run2",
+       "at": "square"
+      },
+      {
+       "do": "draw",
+       "target": "rise2",
+       "at": "squared"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d3",
+        "v3",
+        "s2"
+       ],
+       "at": "30"
+      },
+      {
+       "do": "answer",
+       "tex": "6^{2}-6=30",
+       "at": "30",
+       "id": "a3"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A step of 3.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "s1",
+       "at": "3"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then a step of 24. The steps change, so this is not an arithmetic sequence. There is no jump: walk it one term at a time.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "s2",
+       "at": "24"
+      },
+      {
+       "do": "clear",
+       "at": "not"
+      },
+      {
+       "do": "text",
+       "text": "The steps change: not arithmetic.",
+       "at": "not",
+       "id": "notArith"
+      },
+      {
+       "do": "text",
+       "text": "Walk it one term at a time.",
+       "at": "walk",
+       "id": "walk"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

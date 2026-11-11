@@ -87,10 +87,35 @@ describe("the plan", () => {
     expect(m.stateAt("d1", 10.5).mark).toBe(0);
     expect(m.stateAt("d1", 11.5).mark).toBe(1);
     expect(m.stateAt("d1", 14).mark).toBe(0);
-    // the last one counted keeps the light to the end of the beat instead: the last number tells how many
+    // the last one counted keeps the light to the end of the beat: the last number tells how many
     expect(m.stateAt("d3", 12.6).lit).toBe(1);
-    expect(m.stateAt("d3", 12.6).mark).toBe(0);
     expect(m.stateAt("d3", 14).lit).toBe(0);
+  });
+  it("ticks the last thing counted where it sits as well, while it keeps the light", () => {
+    const run = countRun(said("One, two, three."));
+    const count = (m: ThingsModel, target: string) => m.apply({ do: "count", target }, { t0: run.times[0]!, beatEnd: 12.5, run });
+    const sits = new ThingsModel([group("d", 3, { start: true })]);
+    count(sits, "d");
+    // the hold after "three": the last duck is lit and ticked, like the two before it
+    const hold = 12.75;
+    expect(sits.stateAt("d3", hold).lit).toBeGreaterThan(0.99);
+    expect(sits.stateAt("d3", hold).mark).toBeGreaterThan(0.99);
+    expect(["d1", "d2"].map((n) => sits.stateAt(n, hold).mark)).toEqual([1, 1]);
+    // its tick comes a short moment after its light has landed, on the frames a render draws
+    expect(sits.stateAt("d3", 12.2).lit).toBe(1);
+    expect(sits.stateAt("d3", 12.4).mark).toBe(0);
+    expect(sits.ranges().some(([a, b]) => a <= 12.45 && b >= 12.67)).toBe(true);
+    // and it releases with the others when the beat is over
+    for (const t of [12.9, 13.05]) expect(sits.stateAt("d3", t).mark).toBeCloseTo(sits.stateAt("d1", t).mark);
+    expect(["d1", "d2", "d3"].map((n) => sits.stateAt(n, 13.3).mark)).toEqual([0, 0, 0]);
+    // a thing that arrives on its number, or slides into another group, takes no tick, the last one included
+    const arrives = new ThingsModel([group("a", 3)]);
+    count(arrives, "a");
+    expect(arrives.stateAt("a3", hold).lit).toBeGreaterThan(0.99);
+    expect(["a1", "a2", "a3"].map((n) => arrives.stateAt(n, hold).mark)).toEqual([0, 0, 0]);
+    const slides = new ThingsModel([group("pile", 3, { start: true }), group("bowl", 0, { slots: 3 })]);
+    slides.apply({ do: "count", target: "pile", into: "bowl" }, { t0: run.times[0]!, beatEnd: 12.5, run });
+    expect(["pile1", "pile2", "pile3"].map((n) => slides.stateAt(n, hold).mark)).toEqual([0, 0, 0]);
   });
   it("is paint only: a light never moves a thing, and no other thing changes", () => {
     const m = new ThingsModel([group("d", 3, { start: true })]);

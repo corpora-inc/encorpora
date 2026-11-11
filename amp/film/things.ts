@@ -136,12 +136,25 @@ const DUR = { show: 0.4, hide: 0.35, arrive: 0.5, leave: 0.45, send: 0.9 };
 const STEP = { arrive: 0.26, leave: 0.26, send: 0.34 };
 /** The highlight's short ease, in and out (stage.ts EMPH_IN / EMPH_OUT). */
 const LIGHT_UP = 0.2, LIGHT_DOWN = 0.22, HOLD = 0.35, RELEASE = 0.35;
+/** The last thing counted where it sits takes its tick this long after its number starts: a short moment after its light has landed. */
+const LAST_TICK = 0.45;
+/**
+ * When a count's lights and ticks let go (the `beatEnd` its plan is given): the
+ * end of the beat's speech, or, when the beat has its own `pause`, the end of
+ * that pause, so the counted row stays up through the silence with the last
+ * thing still lit. It never holds into what comes next: the release starts by
+ * `next`, the next beat's first word or the end of the shot.
+ */
+export function countHold(end: number, pause: number | undefined, next = Infinity): number {
+  if (!pause) return end;
+  return Math.max(end, Math.min(end + pause, next - HOLD));
+}
 
 /** A leaving thing that drifts: the direction it goes (x right, y up, unit length). */
 type Vis = { t0: number; dur: number; on: boolean; moved: boolean; drift?: [number, number] };
 type Hop = { t0: number; dur: number; seat: Seat };
-/** Lit from t0 to t1. `tick`: it was counted where it sits, so it keeps a small muted tick until the beat is over (`end`). */
-type Light = { t0: number; t1: number; end: number; tick: boolean };
+/** Lit from t0 to t1. `tick`: when a thing counted where it sits takes its small muted tick, which it keeps until the beat is over (`end`); null for none. */
+type Light = { t0: number; t1: number; end: number; tick: number | null };
 type Thing = { name: string; kind: ThingKind; home: Seat; start: boolean; vis: Vis[]; hops: Hop[]; lights: Light[] };
 
 export type ThingState = {
@@ -257,7 +270,7 @@ export class ThingsModel {
       return dur;
     }
     if (a.do === "highlight") {
-      for (const n of this.resolve(a.target, a.do)) this.things.get(n)!.lights.push({ t0, t1: beatEnd + HOLD, end: beatEnd, tick: false });
+      for (const n of this.resolve(a.target, a.do)) this.things.get(n)!.lights.push({ t0, t1: beatEnd + HOLD, end: beatEnd, tick: null });
       return a.dur ?? LIGHT_UP;
     }
     if (a.do === "arrive" || a.do === "leave") {
@@ -304,8 +317,11 @@ export class ThingsModel {
       const stays = !!this.shown.get(n) && !a.into;
       if (!this.shown.get(n)) this.vis(n, t, DUR.arrive, true, true);
       if (a.into) this.hop(n, a.into, t, dur, "count");
-      // (the last thing counted keeps the light to the end of the beat instead: the last number tells how many)
-      this.things.get(n)!.lights.push({ t0: t, t1: next, end: beatEnd, tick: stays && k + 1 < who.length });
+      // the tick comes as the light moves on to the next thing. The last thing counted keeps the light to the
+      // end of the beat (the last number tells how many) and takes its tick a short moment after the light lands,
+      // early enough to be fully drawn before the ticks release.
+      const tick = !stays ? null : k + 1 < who.length ? next : Math.min(t + LAST_TICK, beatEnd + HOLD - LIGHT_DOWN);
+      this.things.get(n)!.lights.push({ t0: t, t1: next, end: beatEnd, tick });
     });
     return run.times[who.length - 1]! - t0 + dur;
   }
@@ -341,8 +357,8 @@ export class ThingsModel {
       const downDur = l.t1 < l.end + HOLD - 1e-6 ? LIGHT_UP : LIGHT_DOWN;
       const down = ramp(l.t1, downDur);
       lit = Math.max(lit, Math.min(up, 1 - down));
-      // the tick comes as the light moves on to the next thing
-      if (l.tick) mark = Math.max(mark, Math.min(clamp((t - l.t1) / LIGHT_DOWN), 1 - clamp((t - l.end - HOLD) / RELEASE)));
+      // the tick comes in on the light's short ease and releases with the others when the beat is over
+      if (l.tick !== null) mark = Math.max(mark, Math.min(clamp((t - l.tick) / LIGHT_DOWN), 1 - clamp((t - l.end - HOLD) / RELEASE)));
     }
     return { from, to, u, flying, flightStart, o, drift, pose, present, lit, mark };
   }
@@ -386,7 +402,11 @@ export class ThingsModel {
     for (const th of this.things.values()) {
       for (const v of th.vis) out.push([v.t0 - 0.02, v.t0 + v.dur + 0.02]);
       for (const h of th.hops) out.push([h.t0 - 0.02, h.t0 + h.dur + 0.02]);
-      for (const l of th.lights) out.push([l.t0 - 0.02, l.t0 + LIGHT_UP + 0.02], [l.t1 - 0.02, l.t1 + LIGHT_DOWN + 0.02], [l.end + HOLD - 0.02, l.end + HOLD + RELEASE + 0.02]);
+      for (const l of th.lights) {
+        out.push([l.t0 - 0.02, l.t0 + LIGHT_UP + 0.02], [l.t1 - 0.02, l.t1 + LIGHT_DOWN + 0.02], [l.end + HOLD - 0.02, l.end + HOLD + RELEASE + 0.02]);
+        // the last counted thing's tick comes while its light holds
+        if (l.tick !== null && l.tick !== l.t1) out.push([l.tick - 0.02, l.tick + LIGHT_DOWN + 0.02]);
+      }
     }
     return out;
   }

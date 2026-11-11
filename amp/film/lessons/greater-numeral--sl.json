@@ -1,1890 +1,1901 @@
 {
-  "id": "greater-numeral--sl",
-  "title": "Greater or less, through ten",
-  "cast": {
-    "teacher": {},
-    "learner": {}
-  },
-  "shots": [
+ "id": "greater-numeral--sl",
+ "title": "Greater or less, through ten",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.55,
+     -0.48,
+     11.15,
+     10.55
+    ],
+    "points": {
+     "p1": [
+      0.15,
+      2.34
+     ],
+     "l1": [
+      0.57,
+      0.42
+     ],
+     "p2": [
+      1.23,
+      3.18
+     ],
+     "l2": [
+      1.65,
+      0.42
+     ],
+     "p3": [
+      2.31,
+      4.02
+     ],
+     "l3": [
+      2.73,
+      0.42
+     ],
+     "p4": [
+      3.39,
+      4.86
+     ],
+     "l4": [
+      3.81,
+      0.42
+     ],
+     "p5": [
+      4.47,
+      5.7
+     ],
+     "l5": [
+      4.89,
+      0.42
+     ],
+     "p6": [
+      5.55,
+      6.54
+     ],
+     "l6": [
+      5.97,
+      0.42
+     ],
+     "p7": [
+      6.63,
+      7.38
+     ],
+     "l7": [
+      7.05,
+      0.42
+     ],
+     "p8": [
+      7.71,
+      8.22
+     ],
+     "l8": [
+      8.13,
+      0.42
+     ],
+     "p9": [
+      8.79,
+      9.06
+     ],
+     "l9": [
+      9.21,
+      0.42
+     ],
+     "p10": [
+      9.87,
+      9.9
+     ],
+     "l10": [
+      10.29,
+      0.42
+     ],
+     "z0": [
+      -0.15,
+      1.32
+     ],
+     "z1": [
+      10.85,
+      1.32
+     ]
+    },
+    "parts": [
+     {
+      "id": "ground",
+      "seg": [
+       "z0",
+       "z1"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "a",
+      "things": "block",
+      "n": 1,
+      "at": "p1",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "b",
+      "things": "block",
+      "n": 2,
+      "at": "p2",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "c",
+      "things": "block",
+      "n": 3,
+      "at": "p3",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "d",
+      "things": "block",
+      "n": 4,
+      "at": "p4",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "block",
+      "n": 5,
+      "at": "p5",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "f",
+      "things": "block",
+      "n": 6,
+      "at": "p6",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "g",
+      "things": "block",
+      "n": 7,
+      "at": "p7",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "h",
+      "things": "block",
+      "n": 8,
+      "at": "p8",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "i",
+      "things": "block",
+      "n": 9,
+      "at": "p9",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "j",
+      "things": "block",
+      "n": 10,
+      "at": "p10",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 0.7,
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "l1",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "l2",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "l3",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "l4",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "l5",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n6",
+      "label": "6",
+      "at": "l6",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n7",
+      "label": "7",
+      "at": "l7",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n8",
+      "label": "8",
+      "at": "l8",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n9",
+      "label": "9",
+      "at": "l9",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n10",
+      "label": "10",
+      "at": "l10",
+      "dir": "c",
+      "size": "m",
+      "halo": true,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
     {
-      "figure": {
-        "view": [
-          -0.55,
-          -0.48,
-          11.15,
-          10.55
-        ],
-        "points": {
-          "p1": [
-            0.15,
-            2.34
-          ],
-          "l1": [
-            0.57,
-            0.42
-          ],
-          "p2": [
-            1.23,
-            3.18
-          ],
-          "l2": [
-            1.65,
-            0.42
-          ],
-          "p3": [
-            2.31,
-            4.02
-          ],
-          "l3": [
-            2.73,
-            0.42
-          ],
-          "p4": [
-            3.39,
-            4.86
-          ],
-          "l4": [
-            3.81,
-            0.42
-          ],
-          "p5": [
-            4.47,
-            5.7
-          ],
-          "l5": [
-            4.89,
-            0.42
-          ],
-          "p6": [
-            5.55,
-            6.54
-          ],
-          "l6": [
-            5.97,
-            0.42
-          ],
-          "p7": [
-            6.63,
-            7.38
-          ],
-          "l7": [
-            7.05,
-            0.42
-          ],
-          "p8": [
-            7.71,
-            8.22
-          ],
-          "l8": [
-            8.13,
-            0.42
-          ],
-          "p9": [
-            8.79,
-            9.06
-          ],
-          "l9": [
-            9.21,
-            0.42
-          ],
-          "p10": [
-            9.87,
-            9.9
-          ],
-          "l10": [
-            10.29,
-            0.42
-          ],
-          "z0": [
-            -0.15,
-            1.32
-          ],
-          "z1": [
-            10.85,
-            1.32
-          ]
-        },
-        "parts": [
-          {
-            "id": "ground",
-            "seg": [
-              "z0",
-              "z1"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "start": true
-          },
-          {
-            "id": "a",
-            "things": "block",
-            "n": 1,
-            "at": "p1",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "b",
-            "things": "block",
-            "n": 2,
-            "at": "p2",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "c",
-            "things": "block",
-            "n": 3,
-            "at": "p3",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "d",
-            "things": "block",
-            "n": 4,
-            "at": "p4",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "e",
-            "things": "block",
-            "n": 5,
-            "at": "p5",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "f",
-            "things": "block",
-            "n": 6,
-            "at": "p6",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "g",
-            "things": "block",
-            "n": 7,
-            "at": "p7",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "h",
-            "things": "block",
-            "n": 8,
-            "at": "p8",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "i",
-            "things": "block",
-            "n": 9,
-            "at": "p9",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "j",
-            "things": "block",
-            "n": 10,
-            "at": "p10",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 0.7,
-            "start": true
-          },
-          {
-            "id": "n1",
-            "label": "1",
-            "at": "l1",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n2",
-            "label": "2",
-            "at": "l2",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n3",
-            "label": "3",
-            "at": "l3",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n4",
-            "label": "4",
-            "at": "l4",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n5",
-            "label": "5",
-            "at": "l5",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n6",
-            "label": "6",
-            "at": "l6",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n7",
-            "label": "7",
-            "at": "l7",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n8",
-            "label": "8",
-            "at": "l8",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n9",
-            "label": "9",
-            "at": "l9",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n10",
-            "label": "10",
-            "at": "l10",
-            "dir": "c",
-            "size": "m",
-            "halo": true,
-            "start": true
-          }
-        ]
-      },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "A number you write stands for a count.",
-          "do": [
-            {
-              "do": "text",
-              "text": "A number is a count.",
-              "id": "idea"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "One is one block. Two is two blocks.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "a",
-                "n1"
-              ],
-              "at": "One"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "b",
-                "n2"
-              ],
-              "at": "Two"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Each next number has one more block.",
-          "do": [
-            {
-              "do": "text",
-              "text": "Each step is one more.",
-              "id": "step"
-            },
-            {
-              "do": "highlight",
-              "target": "n1"
-            },
-            {
-              "do": "highlight",
-              "target": "a1"
-            },
-            {
-              "do": "highlight",
-              "target": "n2"
-            },
-            {
-              "do": "highlight",
-              "target": "b1"
-            },
-            {
-              "do": "highlight",
-              "target": "n3"
-            },
-            {
-              "do": "highlight",
-              "target": "c1"
-            },
-            {
-              "do": "highlight",
-              "target": "n4"
-            },
-            {
-              "do": "highlight",
-              "target": "d1"
-            },
-            {
-              "do": "highlight",
-              "target": "n5"
-            },
-            {
-              "do": "highlight",
-              "target": "e1"
-            },
-            {
-              "do": "highlight",
-              "target": "n6"
-            },
-            {
-              "do": "highlight",
-              "target": "f1"
-            },
-            {
-              "do": "highlight",
-              "target": "n7"
-            },
-            {
-              "do": "highlight",
-              "target": "g1"
-            },
-            {
-              "do": "highlight",
-              "target": "n8"
-            },
-            {
-              "do": "highlight",
-              "target": "h1"
-            },
-            {
-              "do": "highlight",
-              "target": "n9"
-            },
-            {
-              "do": "highlight",
-              "target": "i1"
-            },
-            {
-              "do": "highlight",
-              "target": "n10"
-            },
-            {
-              "do": "highlight",
-              "target": "j1"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "One, two, three, four, five, six, seven, eight, nine, ten.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "a",
-                "n1"
-              ],
-              "at": "One"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "b",
-                "n2"
-              ],
-              "at": "two"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "c",
-                "n3"
-              ],
-              "at": "three"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "d",
-                "n4"
-              ],
-              "at": "four"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "e",
-                "n5"
-              ],
-              "at": "five"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "f",
-                "n6"
-              ],
-              "at": "six"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "g",
-                "n7"
-              ],
-              "at": "seven"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "h",
-                "n8"
-              ],
-              "at": "eight"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "i",
-                "n9"
-              ],
-              "at": "nine"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "j",
-                "n10"
-              ],
-              "at": "ten"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "The towers make stairs, from one up to ten.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "a",
-                "n1"
-              ],
-              "at": "one"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "j",
-                "n10"
-              ],
-              "at": "ten"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "A later number has a taller tower.",
-          "do": [
-            {
-              "do": "text",
-              "text": "Later means taller.",
-              "id": "later"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "d",
-                "n4"
-              ],
-              "at": "later"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "h",
-                "n8"
-              ],
-              "at": "taller"
-            }
-          ]
-        }
-      ]
+     "speaker": "teacher",
+     "say": "A number you write stands for a count.",
+     "do": [
+      {
+       "do": "text",
+       "text": "A number is a count.",
+       "id": "idea"
+      }
+     ]
     },
     {
-      "figure": {
-        "view": [
-          -0.3,
-          -0.42,
-          5.55,
-          10.05
-        ],
-        "points": {
-          "o4": [
-            0.2,
-            6.92
-          ],
-          "o6": [
-            3.9,
-            9.68
-          ],
-          "q4": [
-            0.89,
-            0.38
-          ],
-          "q6": [
-            4.59,
-            0.38
-          ],
-          "u0": [
-            -0.15,
-            1.18
-          ],
-          "u1": [
-            5.55,
-            1.18
-          ]
-        },
-        "parts": [
-          {
-            "id": "floor",
-            "seg": [
-              "u0",
-              "u1"
-            ],
-            "ink": "muted",
-            "w": 6,
-            "start": true
-          },
-          {
-            "id": "lo",
-            "things": "block",
-            "n": 4,
-            "at": "o4",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 1.15,
-            "start": true
-          },
-          {
-            "id": "hi",
-            "things": "block",
-            "n": 6,
-            "at": "o6",
-            "arrange": "grid",
-            "perRow": 1,
-            "size": 1.15,
-            "start": true
-          },
-          {
-            "id": "k4",
-            "label": "4",
-            "at": "q4",
-            "dir": "c",
-            "size": "l",
-            "ink": "warm",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "k6",
-            "label": "6",
-            "at": "q6",
-            "dir": "c",
-            "size": "l",
-            "ink": "blue",
-            "halo": true,
-            "start": true
-          }
-        ]
+     "speaker": "teacher",
+     "say": "One is one block. Two is two blocks.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a",
+        "n1"
+       ],
+       "at": "One"
       },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "Which number is greater: six or four?",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "problem",
-              "text": "Which number is greater: $6$ or $4$?",
-              "id": "q64"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "hi",
-                "k6"
-              ],
-              "at": "six"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo",
-                "k4"
-              ],
-              "at": "four"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Bring their towers together.",
-          "pause": 0.35,
-          "do": [
-            {
-              "do": "move",
-              "at": "together",
-              "dur": 1.05,
-              "points": {
-                "o4": [
-                  1.15,
-                  6.92
-                ],
-                "q4": [
-                  1.84,
-                  0.38
-                ],
-                "o6": [
-                  2.9,
-                  9.68
-                ],
-                "q6": [
-                  3.59,
-                  0.38
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Pair the blocks from the ground up.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "lo4",
-                "hi6"
-              ],
-              "at": "Pair"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo3",
-                "hi5"
-              ],
-              "at": "blocks"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo2",
-                "hi4"
-              ],
-              "at": "ground"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo1",
-                "hi3"
-              ],
-              "at": "up"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "Two blocks stick up on the six.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "hi1",
-                "hi2"
-              ],
-              "at": "Two"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Six has blocks left over, so six is greater.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": [
-                "hi",
-                "k6"
-              ],
-              "at": "Six"
-            },
-            {
-              "do": "term",
-              "word": "greater",
-              "meaning": "Later in the count.",
-              "id": "termg",
-              "at": "greater"
-            },
-            {
-              "do": "answer",
-              "tex": "6",
-              "id": "ans6",
-              "at": "greater"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Which number is less: six or four?",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "problem",
-              "text": "Which number is less: $6$ or $4$?",
-              "id": "ql64"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "hi",
-                "k6"
-              ],
-              "at": "six"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo",
-                "k4"
-              ],
-              "at": "four"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Less is the shorter tower. Four is less.",
-          "do": [
-            {
-              "do": "term",
-              "word": "less",
-              "meaning": "Earlier in the count.",
-              "id": "terml",
-              "at": "Less"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "lo",
-                "k4"
-              ],
-              "at": "Four"
-            },
-            {
-              "do": "answer",
-              "tex": "4",
-              "id": "ans4",
-              "at": "less"
-            }
-          ]
-        }
-      ]
+      {
+       "do": "highlight",
+       "target": [
+        "b",
+        "n2"
+       ],
+       "at": "Two"
+      }
+     ]
     },
     {
-      "figure": {
-        "view": [
-          -0.15,
-          -0.45,
-          11.55,
-          8.3
-        ],
-        "points": {
-          "c1a": [
-            0.0,
-            5.6
-          ],
-          "c1b": [
-            2.0,
-            5.6
-          ],
-          "c1c": [
-            2.0,
-            8.0
-          ],
-          "c1d": [
-            0.0,
-            8.0
-          ],
-          "m1": [
-            1.0,
-            6.8
-          ],
-          "c2a": [
-            2.35,
-            5.6
-          ],
-          "c2b": [
-            4.35,
-            5.6
-          ],
-          "c2c": [
-            4.35,
-            8.0
-          ],
-          "c2d": [
-            2.35,
-            8.0
-          ],
-          "m2": [
-            3.35,
-            6.8
-          ],
-          "c3a": [
-            4.7,
-            5.6
-          ],
-          "c3b": [
-            6.7,
-            5.6
-          ],
-          "c3c": [
-            6.7,
-            8.0
-          ],
-          "c3d": [
-            4.7,
-            8.0
-          ],
-          "m3": [
-            5.7,
-            6.8
-          ],
-          "c4a": [
-            7.05,
-            5.6
-          ],
-          "c4b": [
-            9.05,
-            5.6
-          ],
-          "c4c": [
-            9.05,
-            8.0
-          ],
-          "c4d": [
-            7.05,
-            8.0
-          ],
-          "m4": [
-            8.05,
-            6.8
-          ],
-          "c5a": [
-            9.4,
-            5.6
-          ],
-          "c5b": [
-            11.4,
-            5.6
-          ],
-          "c5c": [
-            11.4,
-            8.0
-          ],
-          "c5d": [
-            9.4,
-            8.0
-          ],
-          "m5": [
-            10.4,
-            6.8
-          ],
-          "c6a": [
-            0.0,
-            0.0
-          ],
-          "c6b": [
-            2.0,
-            0.0
-          ],
-          "c6c": [
-            2.0,
-            2.4
-          ],
-          "c6d": [
-            0.0,
-            2.4
-          ],
-          "m6": [
-            1.0,
-            1.2
-          ],
-          "c7a": [
-            2.35,
-            0.0
-          ],
-          "c7b": [
-            4.35,
-            0.0
-          ],
-          "c7c": [
-            4.35,
-            2.4
-          ],
-          "c7d": [
-            2.35,
-            2.4
-          ],
-          "m7": [
-            3.35,
-            1.2
-          ],
-          "c8a": [
-            4.7,
-            0.0
-          ],
-          "c8b": [
-            6.7,
-            0.0
-          ],
-          "c8c": [
-            6.7,
-            2.4
-          ],
-          "c8d": [
-            4.7,
-            2.4
-          ],
-          "m8": [
-            5.7,
-            1.2
-          ],
-          "c9a": [
-            7.05,
-            0.0
-          ],
-          "c9b": [
-            9.05,
-            0.0
-          ],
-          "c9c": [
-            9.05,
-            2.4
-          ],
-          "c9d": [
-            7.05,
-            2.4
-          ],
-          "m9": [
-            8.05,
-            1.2
-          ],
-          "c10a": [
-            9.4,
-            0.0
-          ],
-          "c10b": [
-            11.4,
-            0.0
-          ],
-          "c10c": [
-            11.4,
-            2.4
-          ],
-          "c10d": [
-            9.4,
-            2.4
-          ],
-          "m10": [
-            10.4,
-            1.2
-          ],
-          "s5": [
-            9.65,
-            5.05
-          ],
-          "e5": [
-            1.75,
-            2.95
-          ]
-        },
-        "parts": [
-          {
-            "id": "t1",
-            "poly": [
-              "c1a",
-              "c1b",
-              "c1c",
-              "c1d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t2",
-            "poly": [
-              "c2a",
-              "c2b",
-              "c2c",
-              "c2d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t3",
-            "poly": [
-              "c3a",
-              "c3b",
-              "c3c",
-              "c3d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t4",
-            "poly": [
-              "c4a",
-              "c4b",
-              "c4c",
-              "c4d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t5",
-            "poly": [
-              "c5a",
-              "c5b",
-              "c5c",
-              "c5d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t6",
-            "poly": [
-              "c6a",
-              "c6b",
-              "c6c",
-              "c6d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t7",
-            "poly": [
-              "c7a",
-              "c7b",
-              "c7c",
-              "c7d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t8",
-            "poly": [
-              "c8a",
-              "c8b",
-              "c8c",
-              "c8d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t9",
-            "poly": [
-              "c9a",
-              "c9b",
-              "c9c",
-              "c9d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "t10",
-            "poly": [
-              "c10a",
-              "c10b",
-              "c10c",
-              "c10d"
-            ],
-            "fill": "wood",
-            "ink": "wood",
-            "w": 3,
-            "solid": true,
-            "start": true
-          },
-          {
-            "id": "g1",
-            "poly": [
-              "c1a",
-              "c1b",
-              "c1c",
-              "c1d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g2",
-            "poly": [
-              "c2a",
-              "c2b",
-              "c2c",
-              "c2d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g3",
-            "poly": [
-              "c3a",
-              "c3b",
-              "c3c",
-              "c3d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g4",
-            "poly": [
-              "c4a",
-              "c4b",
-              "c4c",
-              "c4d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g5",
-            "poly": [
-              "c5a",
-              "c5b",
-              "c5c",
-              "c5d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g6",
-            "poly": [
-              "c6a",
-              "c6b",
-              "c6c",
-              "c6d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g7",
-            "poly": [
-              "c7a",
-              "c7b",
-              "c7c",
-              "c7d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g8",
-            "poly": [
-              "c8a",
-              "c8b",
-              "c8c",
-              "c8d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g9",
-            "poly": [
-              "c9a",
-              "c9b",
-              "c9c",
-              "c9d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "g10",
-            "poly": [
-              "c10a",
-              "c10b",
-              "c10c",
-              "c10d"
-            ],
-            "fill": "none",
-            "ink": "gold",
-            "w": 12
-          },
-          {
-            "id": "n1",
-            "label": "1",
-            "at": "m1",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n2",
-            "label": "2",
-            "at": "m2",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n3",
-            "label": "3",
-            "at": "m3",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n4",
-            "label": "4",
-            "at": "m4",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n5",
-            "label": "5",
-            "at": "m5",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n6",
-            "label": "6",
-            "at": "m6",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n7",
-            "label": "7",
-            "at": "m7",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n8",
-            "label": "8",
-            "at": "m8",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n9",
-            "label": "9",
-            "at": "m9",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "n10",
-            "label": "10",
-            "at": "m10",
-            "dir": "c",
-            "size": "xl",
-            "halo": true,
-            "start": true
-          },
-          {
-            "id": "a56",
-            "vector": [
-              "s5",
-              "e5"
-            ],
-            "ink": "accent",
-            "w": 8,
-            "start": true
-          }
-        ]
+     "speaker": "teacher",
+     "say": "Each next number has one more block.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Each step is one more.",
+       "id": "step"
       },
-      "beats": [
-        {
-          "speaker": "teacher",
-          "say": "The towers can go. The numbers stay on a path.",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "highlight",
-              "target": "n1",
-              "at": "numbers"
-            },
-            {
-              "do": "highlight",
-              "target": "n10",
-              "at": "path"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Find six and four.",
-          "do": [
-            {
-              "do": "show",
-              "target": [
-                "g6",
-                "g4"
-              ],
-              "at": "six"
-            },
-            {
-              "do": "highlight",
-              "target": "n6",
-              "at": "six"
-            },
-            {
-              "do": "highlight",
-              "target": "n4",
-              "at": "four"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "From four, across to five, then six.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n4",
-              "at": "four"
-            },
-            {
-              "do": "highlight",
-              "target": "n5",
-              "at": "five"
-            },
-            {
-              "do": "highlight",
-              "target": "a56",
-              "at": "then"
-            },
-            {
-              "do": "highlight",
-              "target": "n6",
-              "at": "six"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Six is further along, so six is greater.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n6",
-              "at": "Six"
-            },
-            {
-              "do": "text",
-              "text": "Further along is greater.",
-              "id": "along",
-              "at": "further"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Four is nearer the start, so four is less.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n4",
-              "at": "Four"
-            },
-            {
-              "do": "text",
-              "text": "Nearer the start is less.",
-              "id": "near",
-              "at": "nearer"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Which number is greater: seven or eight?",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "hide",
-              "target": [
-                "g4",
-                "g6"
-              ]
-            },
-            {
-              "do": "show",
-              "target": [
-                "g7",
-                "g8"
-              ]
-            },
-            {
-              "do": "problem",
-              "text": "Which number is greater: $7$ or $8$?",
-              "id": "q78"
-            },
-            {
-              "do": "highlight",
-              "target": "n7",
-              "at": "seven"
-            },
-            {
-              "do": "highlight",
-              "target": "n8",
-              "at": "eight"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Eight is the next number, so eight is greater.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n8",
-              "at": "next"
-            },
-            {
-              "do": "answer",
-              "tex": "8",
-              "id": "ans8",
-              "at": "greater"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Eight is older than seven.",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "text",
-              "text": "Eight is older than seven.",
-              "id": "age"
-            },
-            {
-              "do": "highlight",
-              "target": "n8",
-              "at": "Eight"
-            },
-            {
-              "do": "highlight",
-              "target": "n7",
-              "at": "seven"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Which number is greater: nine or ten?",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "hide",
-              "target": [
-                "g7",
-                "g8"
-              ]
-            },
-            {
-              "do": "show",
-              "target": [
-                "g9",
-                "g10"
-              ]
-            },
-            {
-              "do": "problem",
-              "text": "Which number is greater: $9$ or $10$?",
-              "id": "q910"
-            },
-            {
-              "do": "highlight",
-              "target": "n9",
-              "at": "nine"
-            },
-            {
-              "do": "highlight",
-              "target": "n10",
-              "at": "ten"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "Nine. Ten starts with a one.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n9",
-              "at": "Nine"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Watch the path step from nine to ten.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n9",
-              "at": "nine"
-            },
-            {
-              "do": "highlight",
-              "target": "n10",
-              "at": "ten"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Ten comes after nine, so ten is greater.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n10",
-              "at": "Ten"
-            },
-            {
-              "do": "text",
-              "text": "Ten comes after nine.",
-              "id": "after",
-              "at": "after"
-            },
-            {
-              "do": "answer",
-              "tex": "10",
-              "id": "ans10",
-              "at": "greater"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Which number is less: one or five?",
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "hide",
-              "target": [
-                "g9",
-                "g10"
-              ]
-            },
-            {
-              "do": "show",
-              "target": [
-                "g1",
-                "g5"
-              ]
-            },
-            {
-              "do": "problem",
-              "text": "Which number is less: $1$ or $5$?",
-              "id": "q15"
-            },
-            {
-              "do": "highlight",
-              "target": "n1",
-              "at": "one"
-            },
-            {
-              "do": "highlight",
-              "target": "n5",
-              "at": "five"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "From one, across to two, three, four, five.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n1",
-              "at": "one"
-            },
-            {
-              "do": "highlight",
-              "target": "n2",
-              "at": "two"
-            },
-            {
-              "do": "highlight",
-              "target": "n3",
-              "at": "three"
-            },
-            {
-              "do": "highlight",
-              "target": "n4",
-              "at": "four"
-            },
-            {
-              "do": "highlight",
-              "target": "n5",
-              "at": "five"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "One is the least. One is less.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n1",
-              "at": "least"
-            },
-            {
-              "do": "answer",
-              "tex": "1",
-              "id": "ans1",
-              "at": "less"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Your turn. Which number is less: two or six?",
-          "pause": 1.1,
-          "do": [
-            {
-              "do": "clear"
-            },
-            {
-              "do": "hide",
-              "target": [
-                "g1",
-                "g5"
-              ]
-            },
-            {
-              "do": "show",
-              "target": [
-                "g2",
-                "g6"
-              ]
-            },
-            {
-              "do": "problem",
-              "text": "Which number is less: $2$ or $6$?",
-              "id": "q26",
-              "at": "Which"
-            },
-            {
-              "do": "highlight",
-              "target": "n2",
-              "at": "two"
-            },
-            {
-              "do": "highlight",
-              "target": "n6",
-              "at": "six"
-            }
-          ]
-        },
-        {
-          "speaker": "learner",
-          "say": "Two. Two comes earlier.",
-          "do": [
-            {
-              "do": "highlight",
-              "target": "n2",
-              "at": "Two"
-            },
-            {
-              "do": "answer",
-              "tex": "2",
-              "id": "ans2",
-              "at": "earlier"
-            }
-          ]
-        },
-        {
-          "speaker": "teacher",
-          "say": "Later in the count is greater.",
-          "do": [
-            {
-              "do": "hide",
-              "target": [
-                "g2",
-                "g6"
-              ]
-            },
-            {
-              "do": "text",
-              "text": "Later in the count is greater.",
-              "id": "phrase"
-            },
-            {
-              "do": "highlight",
-              "target": [
-                "n1",
-                "n2",
-                "n3",
-                "n4",
-                "n5",
-                "n6",
-                "n7",
-                "n8",
-                "n9",
-                "n10"
-              ],
-              "at": "greater"
-            }
-          ]
-        }
-      ]
+      {
+       "do": "highlight",
+       "target": "n1"
+      },
+      {
+       "do": "highlight",
+       "target": "a1"
+      },
+      {
+       "do": "highlight",
+       "target": "n2"
+      },
+      {
+       "do": "highlight",
+       "target": "b1"
+      },
+      {
+       "do": "highlight",
+       "target": "n3"
+      },
+      {
+       "do": "highlight",
+       "target": "c1"
+      },
+      {
+       "do": "highlight",
+       "target": "n4"
+      },
+      {
+       "do": "highlight",
+       "target": "d1"
+      },
+      {
+       "do": "highlight",
+       "target": "n5"
+      },
+      {
+       "do": "highlight",
+       "target": "e1"
+      },
+      {
+       "do": "highlight",
+       "target": "n6"
+      },
+      {
+       "do": "highlight",
+       "target": "f1"
+      },
+      {
+       "do": "highlight",
+       "target": "n7"
+      },
+      {
+       "do": "highlight",
+       "target": "g1"
+      },
+      {
+       "do": "highlight",
+       "target": "n8"
+      },
+      {
+       "do": "highlight",
+       "target": "h1"
+      },
+      {
+       "do": "highlight",
+       "target": "n9"
+      },
+      {
+       "do": "highlight",
+       "target": "i1"
+      },
+      {
+       "do": "highlight",
+       "target": "n10"
+      },
+      {
+       "do": "highlight",
+       "target": "j1"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six, seven, eight, nine, ten.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a",
+        "n1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b",
+        "n2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "c",
+        "n3"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d",
+        "n4"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "e",
+        "n5"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f",
+        "n6"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "g",
+        "n7"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "h",
+        "n8"
+       ],
+       "at": "eight"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "i",
+        "n9"
+       ],
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "j",
+        "n10"
+       ],
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The towers make stairs, from one up to ten.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a",
+        "n1"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "j",
+        "n10"
+       ],
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A later number has a taller tower.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Later means taller.",
+       "id": "later"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d",
+        "n4"
+       ],
+       "at": "later"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "h",
+        "n8"
+       ],
+       "at": "taller"
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.3,
+     -0.42,
+     5.55,
+     10.05
+    ],
+    "points": {
+     "o4": [
+      0.2,
+      6.92
+     ],
+     "o6": [
+      3.9,
+      9.68
+     ],
+     "q4": [
+      0.89,
+      0.38
+     ],
+     "q6": [
+      4.59,
+      0.38
+     ],
+     "u0": [
+      -0.15,
+      1.18
+     ],
+     "u1": [
+      5.55,
+      1.18
+     ]
+    },
+    "parts": [
+     {
+      "id": "floor",
+      "seg": [
+       "u0",
+       "u1"
+      ],
+      "ink": "muted",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "lo",
+      "things": "block",
+      "n": 4,
+      "at": "o4",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 1.15,
+      "start": true
+     },
+     {
+      "id": "hi",
+      "things": "block",
+      "n": 6,
+      "at": "o6",
+      "arrange": "grid",
+      "perRow": 1,
+      "size": 1.15,
+      "start": true
+     },
+     {
+      "id": "k4",
+      "label": "4",
+      "at": "q4",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "k6",
+      "label": "6",
+      "at": "q6",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which number is greater: six or four?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which number is greater: $6$ or $4$?",
+       "id": "q64"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hi",
+        "k6"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo",
+        "k4"
+       ],
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Bring their towers together.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "move",
+       "at": "together",
+       "dur": 1.05,
+       "points": {
+        "o4": [
+         1.15,
+         6.92
+        ],
+        "q4": [
+         1.84,
+         0.38
+        ],
+        "o6": [
+         2.9,
+         9.68
+        ],
+        "q6": [
+         3.59,
+         0.38
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Pair the blocks from the ground up.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "lo4",
+        "hi6"
+       ],
+       "at": "Pair"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo3",
+        "hi5"
+       ],
+       "at": "blocks"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo2",
+        "hi4"
+       ],
+       "at": "ground"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo1",
+        "hi3"
+       ],
+       "at": "up"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two blocks stick up on the six.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "hi1",
+        "hi2"
+       ],
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six has blocks left over, so six is greater.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "hi",
+        "k6"
+       ],
+       "at": "Six"
+      },
+      {
+       "do": "term",
+       "word": "greater",
+       "meaning": "Later in the count.",
+       "id": "termg",
+       "at": "greater"
+      },
+      {
+       "do": "answer",
+       "tex": "6",
+       "id": "ans6",
+       "at": "greater"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which number is less: six or four?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which number is less: $6$ or $4$?",
+       "id": "ql64"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "hi",
+        "k6"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo",
+        "k4"
+       ],
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Less is the shorter tower. Four is less.",
+     "do": [
+      {
+       "do": "term",
+       "word": "less",
+       "meaning": "Earlier in the count.",
+       "id": "terml",
+       "at": "Less"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "lo",
+        "k4"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "answer",
+       "tex": "4",
+       "id": "ans4",
+       "at": "less"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.15,
+     -0.45,
+     11.55,
+     8.3
+    ],
+    "points": {
+     "c1a": [
+      0.0,
+      5.6
+     ],
+     "c1b": [
+      2.0,
+      5.6
+     ],
+     "c1c": [
+      2.0,
+      8.0
+     ],
+     "c1d": [
+      0.0,
+      8.0
+     ],
+     "m1": [
+      1.0,
+      6.8
+     ],
+     "c2a": [
+      2.35,
+      5.6
+     ],
+     "c2b": [
+      4.35,
+      5.6
+     ],
+     "c2c": [
+      4.35,
+      8.0
+     ],
+     "c2d": [
+      2.35,
+      8.0
+     ],
+     "m2": [
+      3.35,
+      6.8
+     ],
+     "c3a": [
+      4.7,
+      5.6
+     ],
+     "c3b": [
+      6.7,
+      5.6
+     ],
+     "c3c": [
+      6.7,
+      8.0
+     ],
+     "c3d": [
+      4.7,
+      8.0
+     ],
+     "m3": [
+      5.7,
+      6.8
+     ],
+     "c4a": [
+      7.05,
+      5.6
+     ],
+     "c4b": [
+      9.05,
+      5.6
+     ],
+     "c4c": [
+      9.05,
+      8.0
+     ],
+     "c4d": [
+      7.05,
+      8.0
+     ],
+     "m4": [
+      8.05,
+      6.8
+     ],
+     "c5a": [
+      9.4,
+      5.6
+     ],
+     "c5b": [
+      11.4,
+      5.6
+     ],
+     "c5c": [
+      11.4,
+      8.0
+     ],
+     "c5d": [
+      9.4,
+      8.0
+     ],
+     "m5": [
+      10.4,
+      6.8
+     ],
+     "c6a": [
+      0.0,
+      0.0
+     ],
+     "c6b": [
+      2.0,
+      0.0
+     ],
+     "c6c": [
+      2.0,
+      2.4
+     ],
+     "c6d": [
+      0.0,
+      2.4
+     ],
+     "m6": [
+      1.0,
+      1.2
+     ],
+     "c7a": [
+      2.35,
+      0.0
+     ],
+     "c7b": [
+      4.35,
+      0.0
+     ],
+     "c7c": [
+      4.35,
+      2.4
+     ],
+     "c7d": [
+      2.35,
+      2.4
+     ],
+     "m7": [
+      3.35,
+      1.2
+     ],
+     "c8a": [
+      4.7,
+      0.0
+     ],
+     "c8b": [
+      6.7,
+      0.0
+     ],
+     "c8c": [
+      6.7,
+      2.4
+     ],
+     "c8d": [
+      4.7,
+      2.4
+     ],
+     "m8": [
+      5.7,
+      1.2
+     ],
+     "c9a": [
+      7.05,
+      0.0
+     ],
+     "c9b": [
+      9.05,
+      0.0
+     ],
+     "c9c": [
+      9.05,
+      2.4
+     ],
+     "c9d": [
+      7.05,
+      2.4
+     ],
+     "m9": [
+      8.05,
+      1.2
+     ],
+     "c10a": [
+      9.4,
+      0.0
+     ],
+     "c10b": [
+      11.4,
+      0.0
+     ],
+     "c10c": [
+      11.4,
+      2.4
+     ],
+     "c10d": [
+      9.4,
+      2.4
+     ],
+     "m10": [
+      10.4,
+      1.2
+     ],
+     "s5": [
+      9.65,
+      5.05
+     ],
+     "e5": [
+      1.75,
+      2.95
+     ]
+    },
+    "parts": [
+     {
+      "id": "t1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t7",
+      "poly": [
+       "c7a",
+       "c7b",
+       "c7c",
+       "c7d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t8",
+      "poly": [
+       "c8a",
+       "c8b",
+       "c8c",
+       "c8d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t9",
+      "poly": [
+       "c9a",
+       "c9b",
+       "c9c",
+       "c9d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "t10",
+      "poly": [
+       "c10a",
+       "c10b",
+       "c10c",
+       "c10d"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "g1",
+      "poly": [
+       "c1a",
+       "c1b",
+       "c1c",
+       "c1d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g2",
+      "poly": [
+       "c2a",
+       "c2b",
+       "c2c",
+       "c2d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g3",
+      "poly": [
+       "c3a",
+       "c3b",
+       "c3c",
+       "c3d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g4",
+      "poly": [
+       "c4a",
+       "c4b",
+       "c4c",
+       "c4d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g5",
+      "poly": [
+       "c5a",
+       "c5b",
+       "c5c",
+       "c5d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g6",
+      "poly": [
+       "c6a",
+       "c6b",
+       "c6c",
+       "c6d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g7",
+      "poly": [
+       "c7a",
+       "c7b",
+       "c7c",
+       "c7d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g8",
+      "poly": [
+       "c8a",
+       "c8b",
+       "c8c",
+       "c8d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g9",
+      "poly": [
+       "c9a",
+       "c9b",
+       "c9c",
+       "c9d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "g10",
+      "poly": [
+       "c10a",
+       "c10b",
+       "c10c",
+       "c10d"
+      ],
+      "fill": "none",
+      "ink": "gold",
+      "w": 12
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "m1",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "m2",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "m3",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "m4",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "m5",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n6",
+      "label": "6",
+      "at": "m6",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n7",
+      "label": "7",
+      "at": "m7",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n8",
+      "label": "8",
+      "at": "m8",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n9",
+      "label": "9",
+      "at": "m9",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "n10",
+      "label": "10",
+      "at": "m10",
+      "dir": "c",
+      "size": "xl",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "a56",
+      "vector": [
+       "s5",
+       "e5"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The towers can go. The numbers stay on a path.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "n1",
+       "at": "numbers"
+      },
+      {
+       "do": "highlight",
+       "target": "n10",
+       "at": "path"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Find six and four.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "g6",
+        "g4"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "n6",
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "n4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From four, across to five, then six.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "n5",
+       "at": "five"
+      },
+      {
+       "do": "highlight",
+       "target": "a56",
+       "at": "then"
+      },
+      {
+       "do": "highlight",
+       "target": "n6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six is further along, so six is greater.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n6",
+       "at": "Six"
+      },
+      {
+       "do": "text",
+       "text": "Further along is greater.",
+       "id": "along",
+       "at": "further"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four is nearer the start, so four is less.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n4",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Nearer the start is less.",
+       "id": "near",
+       "at": "nearer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which number is greater: seven or eight?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "g4",
+        "g6"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "g7",
+        "g8"
+       ]
+      },
+      {
+       "do": "problem",
+       "text": "Which number is greater: $7$ or $8$?",
+       "id": "q78"
+      },
+      {
+       "do": "highlight",
+       "target": "n7",
+       "at": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": "n8",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight is the next number, so eight is greater.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n8",
+       "at": "next"
+      },
+      {
+       "do": "answer",
+       "tex": "8",
+       "id": "ans8",
+       "at": "greater"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight is older than seven.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Eight is older than seven.",
+       "id": "age"
+      },
+      {
+       "do": "highlight",
+       "target": "n8",
+       "at": "Eight"
+      },
+      {
+       "do": "highlight",
+       "target": "n7",
+       "at": "seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which number is greater: nine or ten?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "g7",
+        "g8"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "g9",
+        "g10"
+       ]
+      },
+      {
+       "do": "problem",
+       "text": "Which number is greater: $9$ or $10$?",
+       "id": "q910"
+      },
+      {
+       "do": "highlight",
+       "target": "n9",
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "n10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Nine is greater! Ten starts with a one, and one is small.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n9",
+       "at": "Nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Watch the path step from nine to ten.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n9",
+       "at": "nine"
+      },
+      {
+       "do": "highlight",
+       "target": "n10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten comes after nine, so ten is greater.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n10",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "Ten comes after nine.",
+       "id": "after",
+       "at": "after"
+      },
+      {
+       "do": "answer",
+       "tex": "10",
+       "id": "ans10",
+       "at": "greater"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Oh! Ten is one more than nine. That one does not mean one.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n10",
+       "at": "Ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which number is less: one or five?",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "g9",
+        "g10"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "g1",
+        "g5"
+       ]
+      },
+      {
+       "do": "problem",
+       "text": "Which number is less: $1$ or $5$?",
+       "id": "q15"
+      },
+      {
+       "do": "highlight",
+       "target": "n1",
+       "at": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "n5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From one, across to two, three, four, five.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n1",
+       "at": "one"
+      },
+      {
+       "do": "highlight",
+       "target": "n2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "n3",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "n4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "n5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One is the least. One is less.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n1",
+       "at": "least"
+      },
+      {
+       "do": "answer",
+       "tex": "1",
+       "id": "ans1",
+       "at": "less"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Your turn. Which number is less: two or six?",
+     "pause": 1.1,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "g1",
+        "g5"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "g2",
+        "g6"
+       ]
+      },
+      {
+       "do": "problem",
+       "text": "Which number is less: $2$ or $6$?",
+       "id": "q26",
+       "at": "Which"
+      },
+      {
+       "do": "highlight",
+       "target": "n2",
+       "at": "two"
+      },
+      {
+       "do": "highlight",
+       "target": "n6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two. Two comes earlier.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n2",
+       "at": "Two"
+      },
+      {
+       "do": "answer",
+       "tex": "2",
+       "id": "ans2",
+       "at": "earlier"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Later in the count is greater.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "g2",
+        "g6"
+       ]
+      },
+      {
+       "do": "text",
+       "text": "Later in the count is greater.",
+       "id": "phrase"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n6",
+        "n7",
+        "n8",
+        "n9",
+        "n10"
+       ],
+       "at": "greater"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

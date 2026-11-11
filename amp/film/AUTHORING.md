@@ -223,7 +223,7 @@ A sine wave is the height of a point going around a circle. The kit draws that l
 - A point `{ "on": "circ", "deg": 0 }` sits on a circle part, `deg` degrees counterclockwise from three o'clock; `{"do":"glide","point":"Q","deg":360}` turns it (720 for two turns). A point `{ "foot": "Q" }` is the spot on the x axis straight below it, so a segment from the foot to the point is its height.
 - `"upto": "P"` on a plot draws the graph only as far as that point's x. Glide the circle point and the graph point on the same word for the same `dur` and they stay in step: the wave is the height.
 - `sweep` fills the angle the point has turned through (a sector in pixels of radius `r`, a full disc after one turn), with an optional reading (`tex`) that rides its bisector: the angle is `Bx`.
-- `xrange` and `yrange` on `axes` keep the axes, ticks and numbers to a stretch of the view: the graph's x axis starts at 0 instead of running under the circle, and the room below for brackets has no axis in it. Axis numbers are haloed, so a curve through its own zero never cuts through the number there.
+- `xrange` and `yrange` on `axes` keep the axes, ticks and numbers to a stretch of the view: the graph's x axis starts at 0 instead of running under the circle, and the room below for brackets has no axis in it. Axis numbers are haloed, so a curve through its own zero never cuts through the number there. Axis numbers never leave their ticks: a label that meets one (an axis title, a step label) takes the whole push, so the numbers keep one baseline.
 - Plot expressions have no implied product between a name and a letter: write `3sin(pi*x)`, not `3sin(pi x)`.
 
 A problem whose choices are sentences (which statement is true) sets its card in smaller type and wraps each choice inside its pill; the camera shows the whole card, a little smaller, instead of cutting its top off.
@@ -249,7 +249,7 @@ A table is a figure part: a header row, a label column and the body, with cells 
     { "say": "The same share in both rows: one straight line.", "do": [ { "do": "given", "target": "t", "at": "The" }, { "do": "show", "target": ["m", "m.parts", "m.guide"], "at": "same" } ] } ] }
 ```
 
-- `at` is the table's top-left corner; `cell` is one body cell's width and height in the figure's units; `labelW` the label column's. `totals: true` draws a heavier rule before the last row and column and sets them in muted type. Rows and columns count from 0: `t.row.0` is the header row, `t.col.0` the labels, `t.cell.1.3` row 1's cell under the third header. `start: true` shows the whole table; otherwise `show` its rows, columns or cells as the story fills them in (the grid appears with the first cell). `highlight` lights any of them gold. `--dry` reports a cell whose text does not fit.
+- `at` is the table's top-left corner; `cell` is one body cell's width and height in the figure's units; `labelW` the label column's. `ink` colours the grid: a function's own colour, when the table is one of two functions in a picture. `totals: true` draws a heavier rule before the last row and column and sets them in muted type. Rows and columns count from 0: `t.row.0` is the header row, `t.col.0` the labels, `t.cell.1.3` row 1's cell under the third header. `start: true` shows the whole table; otherwise `show` its rows, columns or cells as the story fills them in (the grid appears with the first cell). `highlight` lights any of them gold. `--dry` reports a cell whose text does not fit.
 - `given` restricts: `{"do":"given","target":"t.row.1"}` keeps that row bright with a gold band and dims the rest (the header row stays legible), `t.col.2` does the same for a column, and the part's own id (`"t"`) releases it. One `given` replaces the last, so "North... South... East..." is one `given` per beat.
 - The mosaic is the table as area: a rectangle for everyone, sliced into slabs in proportion to the groups (`slice: "rows"` stacks them from the top, colored from the left; `"cols"` sets them side by side, colored from the top), each slab colored by its group's share `k/n` of the event. Independent groups make one straight colored edge; `guide: true` draws the dashed line at everyone's share, so the eye sees which slab's edge sits on it. The condition slices, the question colors: for `P(A|B)` slice by `B` and color by `A`.
 - Names: `m.slab.1` (a slab and its name), `m.part.1` (its colored part), `m.parts` (every colored part), `m.guide`, `m.name.1`. A slab's colored part waits for `m.parts` or `m.part.i` even after the slab is shown, so a lesson can draw the groups first and color them on the word. `given m.slab.1` dims the other slabs. `counts: true` writes `k` and `n − k` in the parts (a count too big for its part stays hidden); `names` are TeX, outside the rectangle.
@@ -296,6 +296,7 @@ The screenplays in `lessons/` are reference examples. Read the one closest to yo
 | `mean-data` | Data: counters leveled into equal stacks to show what the number means, then bars leveled to the mean line. |
 | `quadratic-vertex` | Functions: the way to see it first (make the square zero), then a negative leading coefficient with no minimum (zoom out as the arms fall), then a harder form completed to vertex form. |
 | `linear-initial-value-meaning--sk` | Linear models, a whole skill: a story built into columns, a table, a line and `y = mx + b`; a line that slides and tilts with live `m` and `b`; a falling case; walking back to the start; a learner solving the last one from a table. |
+| `compare-function-rates--sk` | Comparing functions in different forms, a whole skill: a table beside its graph; a table and a graph that are two named functions, each in its own colour; rows flown onto the graph, two functions' starts and steps side by side, a falling step that is steeper but smaller, and a rule that is not linear. |
 
 ## Never a blank or still screen
 
@@ -385,7 +386,7 @@ Parts:
 | `label` | TeX, `at` (a point, a thing, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph), `flies` (it travels; see "Pairs, and things that travel to a label") |
 | `dim` | Two point names, `side`, `tex`: a measuring bracket |
 | `curve` | Point names, `ink`, `w` |
-| `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled |
+| `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled; `size` (`m`, `l`) sets the numbers larger, for a graph that shares its card or must read on a phone: number fewer ticks (`every`, `yevery`) to match |
 | `circle` | A center point name and `r` (radius in units), `fill`, `ink`, `w`: a clock face, a wheel, a pie |
 | `plot` | An expression in `x`, `from`, `to`, `ink`, `w` |
 | `grid` | `[columns, rows]`, `at` (its top-left corner), `size` (one cell, or `[w, h]`), `fill`, `ink`: a ten-frame is `[5, 2]`, a bar split into equal parts `[n, 1]`, an array, a hundred chart |
@@ -529,7 +530,7 @@ Rules for `count`:
 - Say every number in the same beat as the `count`, in order. Other words between the numbers are fine ("one duck, two ducks"). `at` is not needed; the count starts at the first number.
 - The numbers said must match the things counted: five things, "one" to "five". When the voice stops early on purpose, give `"to"`. When a later sentence of the beat goes on to the next number for another reason, also give `"to"`.
 - A learner who touches one thing twice, or skips one: list the things in the order touched, one per word: `"target": ["a1", "a2", "a2", "a3"]` with "one, two, three, four".
-- One light at a time. A thing counted where it sits takes a small tick; a thing that arrived or slid away needs none. A light grows that thing about its own centre and boldens its stroke, on a short ease. Nothing around it moves.
+- One light at a time. Each thing counted where it sits takes a small tick as the light moves on. The last one keeps the light to the end of the beat, since the last number tells how many, and takes its tick a moment after it lights. A thing that arrived or slid away needs none. The ticks fade just after the beat ends. A `"pause"` on the counting beat holds the counted row, ticks and last light, through that pause; it fades as the next beat begins. A light grows that thing about its own centre and boldens its stroke, on a short ease. Nothing around it moves.
 
 `--dry` stops with a plain message, before any voice is paid for, when a kind is not in the list, when the numbers said and the things counted do not match, when a thing or group does not exist, or when a group has no room.
 
@@ -586,6 +587,36 @@ In `y = mx + b`, `b` says where the line starts and `m` how steeply it climbs. S
 - Give `m` and `b` one colour each and use the same colours in the equation on the board.
 
 `linear-initial-value-meaning--sk` is the reference: columns of "start plus steps" whose tops make the line, then a staircase under the line that slides (only `b` counts) and tilts (only `m` counts, down to a negative rate).
+
+### A table beside its graph
+
+A function shown two ways is one figure: the table to the left of the y axis, the graph to the right, with `xrange` and `yrange` keeping the axes off the table. On a stretched graph each side of a cell maps on its own axis's scale, so give `cell` in the figure's units and the numbers keep their size.
+
+```json
+{ "figure": { "stretch": true, "view": [-6.9, -2, 6.4, 15.2],
+  "points": { "TL": [-5.5, 12.6], "F1": { "anchor": ["t", "right:2"] }, "A1": [1, 3] },
+  "parts": [
+    { "id": "ax", "axes": true, "step": 1, "every": 1, "ystep": 1, "yevery": 2, "xrange": [0, 5.7], "yrange": [0, 13.2], "start": true },
+    { "id": "t", "table": true, "at": "TL", "corner": "$x$", "head": ["$y$"], "rows": [{ "label": "0", "cells": ["1"] }, { "label": "1", "cells": ["3"] }], "cell": [1.5, 2], "size": "m" },
+    { "id": "fA1", "dot": "F1", "ink": "violet", "r": 12 } ] },
+  "beats": [ { "say": "Each row is a point.", "do": [
+    { "do": "show", "target": "fA1", "at": "row" }, { "do": "move", "points": { "F1": "A1" }, "at": "row", "dur": 1.2 } ] } ] }
+```
+
+- A point on a table's anchor (`right:2`, the middle of row 2's right edge) can be moved: it leaves from the table and lands on the graph. One `move` per row, on successive words, sends the rows across one after another.
+- Changes between rows go beside them on points `{ "mid": [...] }` of two `left:` or `right:` anchors: the change in x on the left (blue), the change in y on the right (rust), so "x goes up two, y goes up four" is read straight off the table.
+- A start the table hides is a row whose cells wait for `show` (its grid is drawn from the first cell, so its place is kept).
+
+A table and a graph share one card, so keep both large: few rows (the cells hold numerals at `size` m), a graph with a short range and large axis numbers (`"size": "l"`, numbers every third unit), single-number change labels at `size` l, and step labels at `size` l. Keep change labels and axis titles clear of the axis numbers (titles at `far` about 2); the numbers stay put and the label is the one pushed.
+
+When the table and the graph are two different functions, a viewer must never read the graph as the table's picture:
+
+- Name both the same way, each in its own colour: "Function A" over the table, "Function B" over the graph. Say it as the picture appears ("Function A is a table, and Function B is a graph.").
+- Everything of a function wears its colour: the table's grid (`ink`), its change labels, its points, line, start and step, and its results on the board (`\cv{2}`, `\ca{-3}`).
+- A dashed line between them keeps them apart until the table's rows fly onto the graph; hide it as they fly.
+- Once both lines share the axes, cut to a figure of the graph alone, so the comparison fills the card, with each name beside its own line.
+
+`compare-function-rates--sk` is the reference: a taxi's table, graph, equation and words holding one start and one step; then Function A (a violet table) and Function B (a teal falling graph) on one card split by a dashed line, A's hidden start walked back, A's rows flown onto B's axes, and the two lines alone on a full card so both starts and both steps stand side by side; and, in the learner's closing turn, a rule whose steps grow, so its third point leaves the line.
 
 Figure actions:
 

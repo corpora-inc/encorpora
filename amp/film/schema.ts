@@ -141,6 +141,8 @@ const axes = z.object({
   yevery: num.positive().optional(),
   /** false: only the x axis, a number line. */
   y: z.boolean().optional(),
+  /** The axis numbers' size: s (the default) for a full row of numbers; m or l for a few numbers that must read on a phone. */
+  size: z.enum(["s", "m", "l"]).optional(),
   /** The x axis, its ticks and numbers run only over this stretch: a graph that starts at 0 beside a circle. */
   xrange: z.tuple([num, num]).optional(),
   /** The y axis, its ticks and numbers run only over this stretch: room below a graph for brackets, with no axis running through it. */
@@ -326,6 +328,8 @@ const table = z.object({
   /** The last row and the last column are totals: a heavier rule before them, muted type. */
   totals: z.boolean().optional(),
   size: z.enum(["s", "m", "l"]).optional(),
+  /** The grid's colour: a function's own colour, when two functions share a picture. */
+  ink: ink.optional(),
 });
 const mosaic = z.object({
   ...common,
@@ -433,6 +437,7 @@ export const actionSchema = z.discriminatedUnion("do", [
   /**
    * Move named points: shapes and labels built on them follow. Each goes to
    * [x, y], to where another point is (its name), or into a grid cell ({cell: [grid, n]}).
+   * A point placed in a grid cell or on a table's anchor leaves from there.
    */
   z.object({ do: z.literal("move"), points: z.record(name, z.union([point, name, z.object({ cell: z.tuple([name, z.number().int().min(1)]) }).strict()])), ...timing }).strict(),
   /** A half turn is deg 180. Turns about a point, physically lifting. */
