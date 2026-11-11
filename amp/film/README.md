@@ -98,7 +98,12 @@ the normal trunk PR gates; the app deploy includes the film links. Repeating the
 command verifies existing immutable files. `-- --check` validates without writing.
 Removing every approval writes an empty manifest, withdrawing all film links.
 If more than one edition of a problem type is approved, choose one on the review
-page before publishing. Review records, notes, voiced data and audio stay outside
+page before publishing. A screenplay may list further problem types in
+`teaches`, usually the rest of its skill; publishing links the film from each
+of them too, except a type with an approved film of its own, which always wins.
+A type taught by two such films is reported and gets neither until one
+screenplay drops it. `teaches` is not part of the reviewed film, so changing it
+needs no new review. Review records, notes, voiced data and audio stay outside
 Git. A film with a shot's own app figure (`{"scene": ...}`) is published as
 `lesson-film-v3` and reaches only clients that declare it; other films also
 reach `lesson-film-v2` and `lesson-film-v1` clients. Clients that declare none

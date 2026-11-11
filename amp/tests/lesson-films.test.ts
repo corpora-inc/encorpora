@@ -18,11 +18,14 @@ import {
   assertReviewedFiles,
   canonical,
   filmCapability,
+  filmManifest,
   planFilm,
   publishFilms,
   screenplayFromExport,
 } from "../film/publication";
 import { scriptSchema } from "../film/schema";
+import { templateOf } from "../film/cast";
+import { buildCorpus } from "../src/search/corpus";
 
 const script = {
   id: "count-objects",
@@ -88,6 +91,39 @@ const scenePlan = () =>
     audio,
     new Set([script.id]),
   );
+/** Problem types for films that teach several of them. */
+const skillTypes = new Set([
+  "compare-groups",
+  "dot-group-compared-to-number",
+  "count-objects",
+  "count-out-objects",
+]);
+/**
+ * A film `id` whose committed screenplay teaches `teaches`. The export is the
+ * reviewed edition, voiced before `teaches` was written: listing problem types
+ * never sends a film back to review.
+ */
+const skillPlan = (
+  id: string,
+  teaches?: string[],
+  source: object = script,
+) => {
+  const reviewed = { ...structuredClone(source), id };
+  return planFilm(
+    id,
+    { ...exported(), id, problemType: templateOf(id).template, script: reviewed },
+    { ...reviewed, ...(teaches ? { teaches } : {}) },
+    audio,
+    skillTypes,
+  );
+};
+const manifestOf = async (plans: ReturnType<typeof skillPlan>[]) => {
+  let written: Record<string, { id: string }> = {};
+  await publishFilms(plans, async () => {}, async () => {}, async (manifest) => {
+    written = manifest;
+  });
+  return Object.fromEntries(Object.entries(written).map(([type, film]) => [type, film.id]));
+};
 
 test("publication accepts only current explicit approvals", () => {
   assert.deepEqual(
@@ -294,6 +330,11 @@ test("committed manifest resolves real problem types, committed screenplays and 
     );
     assert.equal(committed.id, film.id);
     assert.equal(committed.title, film.title);
+    // Listed under its own problem type, or one its screenplay teaches.
+    assert.ok(
+      templateOf(film.id).template === id || committed.teaches?.includes(id),
+      `${id} → ${film.id}`,
+    );
     assert.equal(lessonFilmFor(id), undefined);
     assert.equal(lessonFilmFor(id, "future-unsupported"), undefined);
     assert.equal(lessonFilmFor(id, FILM_CAPABILITY), film);
@@ -339,6 +380,134 @@ test("a film with a shot's own app figure is published for v3 players only", () 
   assert.equal(filmForClient(v2, "lesson-film-v2"), v2);
   assert.equal(filmForClient(v2, "lesson-film-v1")?.capability, "lesson-film-v1");
   assert.equal(FILM_CAPABILITY, "lesson-film-v3");
+});
+test("a film is linked from its own problem type and every problem type it teaches", async () => {
+  const film = skillPlan("compare-groups--sk", ["dot-group-compared-to-number", "count-objects"]);
+  assert.deepEqual(film.teaches, ["dot-group-compared-to-number", "count-objects"]);
+  const uploads: string[] = [];
+  let written: Record<string, unknown> = {};
+  await publishFilms(
+    [film],
+    async (url) => {
+      uploads.push(url);
+    },
+    async () => {},
+    async (manifest) => {
+      written = manifest;
+    },
+  );
+  // One film, uploaded once, is the same entry under every key.
+  assert.deepEqual(Object.keys(written), ["compare-groups", "count-objects", "dot-group-compared-to-number"]);
+  for (const entry of Object.values(written)) assert.equal(entry, film.film);
+  assert.deepEqual(uploads, [film.film.dataUrl, film.film.audioUrl]);
+  assert.doesNotThrow(() => filmManifestSchema.parse(written));
+  // The capability gate is the entry's own: a v3 film stays v3 under every key.
+  const v3 = filmManifest([skillPlan("compare-groups--sk", ["dot-group-compared-to-number"], sceneScript)]).manifest;
+  assert.deepEqual(Object.keys(v3), ["compare-groups", "dot-group-compared-to-number"]);
+  for (const entry of Object.values(v3)) {
+    assert.equal(entry.capability, "lesson-film-v3");
+    assert.equal(filmForClient(entry, FILM_CAPABILITY), entry);
+    for (const older of [undefined, "lesson-film-v1", "lesson-film-v2"])
+      assert.equal(filmForClient(entry, older), undefined, String(older));
+  }
+});
+test("teaches routes a film without changing what was reviewed or published", () => {
+  const plain = skillPlan("compare-groups--sk");
+  const teaching = skillPlan("compare-groups--sk", ["dot-group-compared-to-number"]);
+  assert.deepEqual(plain.teaches, []);
+  assert.equal(teaching.film.version, plain.film.version);
+  assert.ok(teaching.data.equals(plain.data));
+  assert.ok(!teaching.data.toString().includes("teaches"));
+  // An export made after `teaches` was written matches the same screenplay.
+  const reviewed = { ...structuredClone(script), id: "compare-groups--sk", teaches: ["count-objects"] };
+  assert.equal(
+    planFilm(
+      reviewed.id,
+      { ...exported(), id: reviewed.id, problemType: "compare-groups", script: reviewed },
+      { ...reviewed, teaches: ["dot-group-compared-to-number"] },
+      audio,
+      skillTypes,
+    ).film.version,
+    plain.film.version,
+  );
+});
+test("teaches names other real problem types, each once", () => {
+  assert.throws(() => skillPlan("compare-groups--sk", ["no-such-type"]), /Unknown problem type no-such-type in teaches: compare-groups--sk/);
+  assert.throws(() => skillPlan("compare-groups--sk", ["compare-groups"]), /Own problem type listed in teaches: compare-groups--sk/);
+  assert.throws(
+    () => skillPlan("compare-groups--sk", ["count-objects", "dot-group-compared-to-number", "count-objects"]),
+    /Problem type count-objects listed twice in teaches: compare-groups--sk/,
+  );
+  // The schema checks only the shape.
+  assert.throws(() => scriptSchema.parse({ ...script, teaches: "count-objects" }));
+  assert.throws(() => scriptSchema.parse({ ...script, teaches: ["Count Objects"] }));
+  assert.deepEqual(scriptSchema.parse({ ...script, teaches: ["no-such-type"] }).teaches, ["no-such-type"]);
+});
+test("a film made for a problem type wins over a film that only teaches it", async () => {
+  const skill = skillPlan("compare-groups--sk", ["dot-group-compared-to-number"]);
+  const specific = skillPlan("dot-group-compared-to-number");
+  const expected = {
+    "compare-groups": "compare-groups--sk",
+    "dot-group-compared-to-number": "dot-group-compared-to-number",
+  };
+  assert.deepEqual(await manifestOf([skill, specific]), expected);
+  assert.deepEqual(await manifestOf([specific, skill]), expected);
+  assert.deepEqual(filmManifest([skill, specific]).conflicts, []);
+  // A specific film still never shares its problem type with another edition.
+  assert.throws(() => filmManifest([specific, skillPlan("dot-group-compared-to-number--va")]), /Multiple approved editions for dot-group-compared-to-number/);
+});
+test("a problem type taught by two films is reported and linked to neither", async () => {
+  const plans = [
+    skillPlan("compare-groups--sk", ["dot-group-compared-to-number", "count-out-objects"]),
+    skillPlan("count-objects--sk", ["dot-group-compared-to-number"]),
+  ];
+  const { conflicts } = filmManifest(plans);
+  assert.deepEqual(conflicts, [
+    "Multiple approved films teach dot-group-compared-to-number (compare-groups--sk, count-objects--sk); none is linked there until one screenplay drops it from teaches",
+  ]);
+  assert.deepEqual(await manifestOf(plans), {
+    "compare-groups": "compare-groups--sk",
+    "count-objects": "count-objects--sk",
+    "count-out-objects": "compare-groups--sk",
+  });
+  // A film made for that problem type settles it: no conflict.
+  const settled = [...plans, skillPlan("dot-group-compared-to-number")];
+  assert.deepEqual(filmManifest(settled).conflicts, []);
+  assert.equal((await manifestOf(settled))["dot-group-compared-to-number"], "dot-group-compared-to-number");
+});
+test("withdrawing an approval removes its film from every problem type it was linked from", async () => {
+  const skill = skillPlan("compare-groups--sk", ["dot-group-compared-to-number", "count-out-objects"]);
+  const other = skillPlan("count-objects");
+  assert.deepEqual(await manifestOf([skill, other]), {
+    "compare-groups": "compare-groups--sk",
+    "count-objects": "count-objects",
+    "count-out-objects": "compare-groups--sk",
+    "dot-group-compared-to-number": "compare-groups--sk",
+  });
+  assert.deepEqual(await manifestOf([other]), { "count-objects": "count-objects" });
+  assert.deepEqual(await manifestOf([]), {});
+  // Withdrawing the film made for a problem type hands it to the film that teaches it.
+  const specific = skillPlan("dot-group-compared-to-number");
+  assert.equal((await manifestOf([skill, specific]))["dot-group-compared-to-number"], "dot-group-compared-to-number");
+  assert.equal((await manifestOf([skill]))["dot-group-compared-to-number"], "compare-groups--sk");
+});
+test("search lists a film once, however many problem types link it", () => {
+  const film = { id: "count-objects", title: "Count objects" };
+  const docs = buildCorpus({
+    lessons: [],
+    templates: [
+      { id: "count-objects", title: "Count objects", skillId: "counting" },
+      { id: "count-out-objects", title: "Count out objects", skillId: "counting" },
+    ],
+    skills: [{ id: "counting", gradeBand: "K", strand: "number" }],
+    // Object.values of a manifest that lists the film under both problem types.
+    films: [film, film],
+    bandOrder: ["K"],
+  });
+  assert.deepEqual(
+    docs.filter((doc) => doc.kind === "film").map((doc) => doc.id),
+    ["film:count-objects"],
+  );
 });
 test("native CSP permits every published film's data and narration", () => {
   const { app } = JSON.parse(

@@ -10,6 +10,7 @@ import {
   committedApprovalIds,
   assertReviewedFiles,
   canonical,
+  filmManifest,
   planFilm,
   publishFilms,
   sha256,
@@ -99,9 +100,11 @@ for (const id of ids) {
     ),
   );
 }
+const { manifest, conflicts } = filmManifest(plans);
+for (const conflict of conflicts) console.warn(conflict);
 if (process.argv.includes("--check")) {
   console.log(
-    `${plans.length} approved films validated; no uploads or manifest changes.`,
+    `${plans.length} approved films validated for ${Object.keys(manifest).length} problem types; no uploads or manifest changes.`,
   );
 } else {
   // Check the cleanup dependency before performing any external writes.

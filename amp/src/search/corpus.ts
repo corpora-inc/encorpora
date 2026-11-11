@@ -174,7 +174,11 @@ export function buildCorpus({
       strand: skill.strand,
     });
   }
+  // The manifest lists a film under every problem type it teaches; search lists it once.
+  const listedFilms = new Set<string>();
   for (const film of films) {
+    if (listedFilms.has(film.id)) continue;
+    listedFilms.add(film.id);
     const template = templateById.get(film.id);
     const skill = skillById.get(template?.skillId ?? "");
     if (!template || !skill) continue;

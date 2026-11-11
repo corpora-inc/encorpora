@@ -104,10 +104,14 @@ const timingSchema = z
 
 export type Publication = {
   templateId: string;
+  /** Further problem types the film is linked from: the screenplay's `teaches`. */
+  teaches: string[];
   film: LessonFilm;
   data: Buffer;
   audio: Buffer;
 };
+/** `teaches` only routes the film. It is not part of what was reviewed or what is published. */
+const filmContent = ({ teaches: _teaches, ...content }: Script) => content;
 /** Older review exports embedded voice labels in role declarations. Timing owns those bindings. */
 export function screenplayFromExport(value: unknown) {
   const source = z
@@ -156,7 +160,9 @@ export function planFilm(
     })
     .parse(exported);
   const source = { ...raw, script: screenplayFromExport(exported) };
-  const script = scriptSchema.parse(committedScript);
+  const committed = scriptSchema.parse(committedScript);
+  const script = filmContent(committed);
+  const teaches = committed.teaches ?? [];
   const templateId = templateOf(id).template;
   if (
     source.id !== id ||
@@ -165,7 +171,15 @@ export function planFilm(
     !knownTypes.has(templateId)
   )
     throw new Error(`Invalid problem type binding: ${id}`);
-  if (canonical(source.script) !== canonical(script))
+  teaches.forEach((type, i) => {
+    if (type === templateId)
+      throw new Error(`Own problem type listed in teaches: ${id}`);
+    if (!knownTypes.has(type))
+      throw new Error(`Unknown problem type ${type} in teaches: ${id}`);
+    if (teaches.indexOf(type) !== i)
+      throw new Error(`Problem type ${type} listed twice in teaches: ${id}`);
+  });
+  if (canonical(filmContent(source.script)) !== canonical(script))
     throw new Error(`Export differs from committed screenplay: ${id}`);
   if (source.title !== script.title)
     throw new Error(`Export title differs: ${id}`);
@@ -235,6 +249,7 @@ export function planFilm(
   };
   return {
     templateId,
+    teaches,
     data,
     audio,
     film: {
@@ -251,13 +266,13 @@ export function planFilm(
   };
 }
 
-/** Manifest publication is last; failed uploads/readbacks leave the old catalog intact. */
-export async function publishFilms(
-  plans: Publication[],
-  upload: (url: string, bytes: Buffer, type: string) => Promise<void>,
-  verify: (url: string, bytes: Buffer) => Promise<void>,
-  commitManifest: (manifest: Record<string, LessonFilm>) => Promise<void>,
-) {
+/**
+ * Problem type → film. A film is listed under its own problem type and under
+ * each one it teaches. A film made for a problem type wins over one that only
+ * teaches it. A problem type that several films only teach is reported in
+ * `conflicts` and gets no film until one screenplay drops it.
+ */
+export function filmManifest(plans: readonly Publication[]) {
   const manifest: Record<string, LessonFilm> = {};
   for (const plan of plans) {
     if (manifest[plan.templateId])
@@ -266,6 +281,34 @@ export async function publishFilms(
       );
     manifest[plan.templateId] = plan.film;
   }
+  const taught = new Map<string, LessonFilm[]>();
+  for (const plan of plans)
+    for (const type of plan.teaches)
+      if (!manifest[type]) taught.set(type, [...(taught.get(type) ?? []), plan.film]);
+  const conflicts: string[] = [];
+  for (const [type, films] of taught) {
+    if (films.length === 1) manifest[type] = films[0]!;
+    else
+      conflicts.push(
+        `Multiple approved films teach ${type} (${films.map((film) => film.id).join(", ")}); none is linked there until one screenplay drops it from teaches`,
+      );
+  }
+  return {
+    manifest: Object.fromEntries(
+      Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)),
+    ),
+    conflicts,
+  };
+}
+
+/** Manifest publication is last; failed uploads/readbacks leave the old catalog intact. */
+export async function publishFilms(
+  plans: Publication[],
+  upload: (url: string, bytes: Buffer, type: string) => Promise<void>,
+  verify: (url: string, bytes: Buffer) => Promise<void>,
+  commitManifest: (manifest: Record<string, LessonFilm>) => Promise<void>,
+) {
+  const { manifest } = filmManifest(plans);
   for (const { film, data, audio } of plans) {
     await upload(film.dataUrl, data, "application/json");
     await upload(film.audioUrl, audio, "audio/mp4");

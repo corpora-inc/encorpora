@@ -573,6 +573,11 @@ export const scriptSchema = z
   .object({
     id: z.string().min(1),
     title: z.string().min(1),
+    /**
+     * Problem types this film also teaches, beside its own (the ID before
+     * `--`). Publishing links the film from each one that has no film of its own.
+     */
+    teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**
