@@ -61,7 +61,7 @@ export const grade4GeometryMethods: Record<string, ProblemMethod> = {
   "triangle-sides-angles-blanks": {
     goal: "Name a triangle by its equal sides and again by its angles.",
     intuition:
-      "A triangle can be named two ways. By its sides: scalene means no two sides are equal, isosceles means exactly two sides are equal, and equilateral means all three sides are equal. By its angles: acute means every corner is narrower than a square corner, right means one corner is a square corner, and obtuse means one corner is wider than a square corner. A right isosceles triangle has a square corner and exactly two equal sides.",
+      "A triangle can be named two ways. By its sides: scalene means no two sides are equal, isosceles means exactly two sides are equal, and equilateral means all three sides are equal. By its angles: acute means every corner is narrower than a square corner, right means one corner is a square corner, and obtuse means one corner is wider than a square corner. When there is no square mark, the widest angle is labeled, and that measure is how you tell acute from obtuse. A right isosceles triangle has a square corner and exactly two equal sides.",
     senses: { side: "side", sides: "side", square: "square-shape" },
     noLink: ["sort", "exactly"],
     terms: [
@@ -78,11 +78,11 @@ export const grade4GeometryMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Count the equal sides, using the lengths or the tick marks. No two equal means scalene. Exactly two equal means isosceles. All three equal means equilateral.",
-      "Look at the largest corner. A square mark means a right triangle. A corner wider than a square corner means obtuse. Every corner narrower means acute.",
+      "Look at the largest corner. A square mark means a right triangle. If the widest angle is labeled, more than $90^\\circ$ means obtuse, and less than $90^\\circ$ means every angle is acute.",
       "Fill both blanks. The side name and the angle name answer different questions.",
     ],
     watch:
-      "Isosceles here means exactly two equal sides. An equilateral triangle is named equilateral, not isosceles.",
+      "Isosceles here means exactly two equal sides. An equilateral triangle is named equilateral, not isosceles. Read the labeled measure of the widest angle. Do not judge that corner by eye.",
   },
   "quadrilateral-attributes": {
     goal: "Give the most exact name of a quadrilateral from its parallel sides, right angles and equal sides.",
@@ -148,7 +148,7 @@ export const grade4GeometryPrinciples: Record<string, string> = {
   "angle-benchmark-estimate":
     "An angle can be estimated by the nearest of 30°, 45°, 60°, 90° and 180° when it is within 10° of that benchmark and farther from the others.",
   "triangle-sides-angles-blanks":
-    "A triangle is scalene, isosceles or equilateral by how many sides are equal, and acute, right or obtuse by its angles. Here isosceles means exactly two equal sides. A right isosceles triangle has both a square corner and exactly two equal sides.",
+    "A triangle is scalene, isosceles or equilateral by how many sides are equal, and acute, right or obtuse by its angles. Here isosceles means exactly two equal sides. A square mark means a right triangle. When there is no square mark, the labeled widest angle decides: more than $90^\\circ$ is obtuse, and less than $90^\\circ$ is acute.",
   "quadrilateral-attributes":
     "The most exact name uses every mark: one pair of parallel sides is a trapezoid, two pairs is a parallelogram, 4 right angles make a rectangle, 4 equal sides with no right angle make a rhombus, and both together make a square.",
   "composite-rectangle-measure":
@@ -225,37 +225,38 @@ export const grade4GeometryLessons: Lesson[] = [
     openingTitle: "Marks tell you the name",
     opening: [
       "Tick marks show equal sides. A small square shows a right angle, a square corner. Matching arrows show parallel sides, sides that go the same way and never meet.",
-      "For a triangle, count the equal sides and look at the corners. Scalene means no two sides are equal. Isosceles means exactly two. Equilateral means all three. Acute means every corner is narrower than a square corner. Right means one square corner. Obtuse means one corner wider than a square corner.",
+      "For a triangle, count the equal sides and read the angle marks. Scalene means no two sides are equal. Isosceles means exactly two. Equilateral means all three. A square mark means a right triangle. When there is no square mark, the widest angle is labeled. More than $90^\\circ$ means obtuse. Less than $90^\\circ$ means every angle is acute.",
       "For a quadrilateral, use the most exact name. One pair of parallel sides is a trapezoid. Two pairs is a parallelogram. Four right angles make a rectangle. Four equal sides and no right angle make a rhombus. Four right angles and four equal sides make a square.",
     ],
     example: {
       prompt:
-        "A triangle has two equal sides, and one corner is a square corner. What are its two names?",
+        "A triangle has two equal sides. No corner has a square mark, and the widest angle is labeled $118^\\circ$. What are its two names?",
       steps: [
         "Exactly two sides are equal, so by its sides it is isosceles. It is not equilateral, because the third side is different.",
-        "One corner is a square corner, so by its angles it is a right triangle.",
-        "Both names belong: a right isosceles triangle.",
+        "There is no square mark. The widest angle is $118^\\circ$, more than $90^\\circ$, so the triangle is obtuse.",
+        "Both names belong: an obtuse isosceles triangle. A square mark, when the figure has one, is what makes the angle name right.",
       ],
-      answer: "Isosceles and right",
+      answer: "Isosceles and obtuse",
     },
     methodTitle: "Sides, then angles, then the most exact name",
     method: [
-      "Count equal sides first. Then name the triangle by its largest corner.",
+      "Count equal sides first. Then read the square mark or the labeled widest angle.",
       "On a quadrilateral, count parallel pairs, right angles and equal sides.",
       "If two names both fit, choose the one that uses more of the marks. Square is more exact than rectangle or rhombus when both the right angles and the equal sides are there.",
     ],
     formalTitle: "Names from marks",
     formal: [
-      "Side names and angle names are separate. A right triangle can be scalene or isosceles. Here isosceles means exactly two equal sides.",
+      "Side names and angle names are separate. A right triangle can be scalene or isosceles. Here isosceles means exactly two equal sides. A labeled widest angle above $90^\\circ$ means obtuse, and one below $90^\\circ$ means acute.",
       "Trapezoid means exactly one pair of parallel sides. Rectangle, rhombus and square are special parallelograms. Square is the name to use when the shape has both 4 right angles and 4 equal sides.",
     ],
     pitfalls: [
       "Calling an equilateral triangle isosceles. Here isosceles means exactly two equal sides.",
+      "Deciding acute or obtuse by how a corner looks, when the widest angle is labeled.",
       "Stopping at parallelogram when the marks also show 4 right angles or 4 equal sides.",
       "Naming a rhombus a square when it has no right angle.",
     ],
     parentGuide:
-      "Before your learner says a name, ask how many pairs of sides go the same way, how many square corners there are, and whether all the sides match.",
+      "Before your learner says a name, ask which marks are on the figure: matching tick marks, square corners, parallel arrows, and the measure of a labeled angle when one is there.",
   }),
   chainLesson({
     id: "grade4-rectangle-measures-lesson",
@@ -333,7 +334,7 @@ export const grade4GeometryFacetMappings: FacetMapping[] = [
     facetId: "lines-symmetry.lines-angles",
     extent: "partial",
     rationale:
-      "Two blanks name one drawn triangle by equal sides and by angles, including a right isosceles triangle. Isosceles means exactly two equal sides. It does not assess drawing the triangle.",
+      "Two blanks name one drawn triangle by equal sides and by angles, including a right isosceles triangle. A square mark shows a right angle. When there is no square mark, the widest angle is labeled, and that measure decides acute or obtuse. Isosceles means exactly two equal sides. It does not assess drawing the triangle.",
   },
   {
     templateId: "quadrilateral-attributes",
