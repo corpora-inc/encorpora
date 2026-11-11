@@ -11,6 +11,7 @@ import { placeNames, planStack, type StackPlan } from "./stack";
 import { BlocksModel, chartView, subBox, zoomView, type Box, type Dir, type Place } from "./blocks";
 import { axisSpan, glided, onCircle, sectorAngles, sweepLabelAngle, traceRange } from "./wave";
 import { planVector, vectorPath } from "./vector";
+import { fillLine, readLine, readsLine } from "./line";
 import { resolveCast } from "./cast";
 import type { VoiceSpec } from "./voices";
 import { amountAt, barAnchor, barCells, checkBar, planBar, shareBox, shadedAt, spreadBarLabels, type BarCut, type BarShade, type BarSpec } from "./bar";
@@ -1250,6 +1251,11 @@ class GeoStage {
       // on a graph, every label is haloed so grid lines and curves never cut through it
       const halo = p.halo || this.geo.parts.some((q) => "axes" in q);
       entry.html = div(`film-label size-${p.size ?? "m"}${halo ? " halo" : ""}`, this.labels);
+      // a line's slope and intercept are read from a seg: a typo would otherwise read "undefined" for the whole shot
+      if (readsLine(p.label)) {
+        const of = this.geo.parts.find((q) => q.id === p.of);
+        if (!of || !("seg" in of)) throw new Error(`Label ${p.id}: @m and @b read a line. Give "of" the id of a seg${p.of ? `; ${p.of} is not one` : ""}.`);
+      }
       if (p.label.includes("@")) this.readouts.set(entry.html, "");
       // a fraction on a figure is read at a glance: full size, not squeezed into a line
       else entry.html.innerHTML = tex(p.label.replace(/\\frac/g, "\\dfrac"));
@@ -1812,6 +1818,11 @@ class GeoStage {
             const dec = (x: number) => Math.min(6, (String(x).split(".")[1] ?? "").length);
             const digits = Math.max(3, ...this.glides.filter((g) => g.name === who).map((g) => dec(g.to)));
             text = text.replace(/@x/g, fmtNum(q[0], digits)).replace(/@y/g, fmtNum(q[1]));
+          }
+          if (readsLine(text)) {
+            // the seg's own points, wherever `move` has taken them: the numbers count as the line slides or tilts
+            const [a, b] = this.segLine(p.of!, t)!;
+            text = fillLine(text, readLine(a, b), (v) => fmtNum(v, 2));
           }
           if (this.readouts.get(e.html!) !== text) { this.readouts.set(e.html!, text); e.html!.innerHTML = tex(text.replace(/\\frac/g, "\\dfrac")); }
         }
@@ -2413,6 +2424,16 @@ export const TALL: Layout = {
   // an upright phone scales the frame less, so slightly smaller type still reads at about 19 px
   minType: 52,
 };
+/**
+ * How many pixels of a recap card fall outside the frame, at its worse end; 0
+ * when the whole card shows. The card is as tall as its steps and sits centred
+ * in its place (`room`), so a card taller than the frame loses its top and its
+ * bottom alike.
+ */
+export function recapCut(cardH: number, room: { y: number; h: number }, frameH: number) {
+  const top = room.y + (room.h - cardH) / 2;
+  return Math.max(0, Math.ceil(Math.max(-top, top + cardH - frameH) - 0.5));
+}
 /** Phone recap type, in stage pixels. It may shrink a little, and it stops at a size that still reads once the frame is scaled onto a phone. */
 const RECAP_FONT = 44, RECAP_FONT_MIN = 40;
 /** Clear band between the figure, the notes and a card on a phone. */
@@ -3288,7 +3309,18 @@ export class Film {
     if (opts.checks !== false) {
       this.checkFigures();
       this.checkScreen();
+      this.checkRecap();
     }
+  }
+  /**
+   * The 16:9 film's recap card is as tall as its steps and sits centred in its
+   * place. Steps that need more than the frame's height are cut off at the top
+   * and the bottom, so say so. (A phone sets the type smaller by itself.)
+   */
+  checkRecap() {
+    if (this.L.name !== "wide" || !this.board.recapItems.length) return;
+    const cut = recapCut(this.board.recapList.offsetHeight, this.L.recap, this.L.h);
+    if (cut > 0) this.issues.push(`The recap card is taller than the frame: ${cut}px are cut off at its top and at its bottom. Use fewer steps, or shorter ones.`);
   }
   /**
    * Fit each figure to the union of everything the shot will draw, including
