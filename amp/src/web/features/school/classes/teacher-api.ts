@@ -19,6 +19,10 @@ import {
   type GradebookColumn,
   type TimePeriod,
 } from "../../../../schools/teacher-contracts";
+import {
+  gradeCurveSchema,
+  type GradeCurve,
+} from "../../../../schools/grade-curve";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { request } from "../../../lib/api";
@@ -212,6 +216,20 @@ export function useSetTarget(session: Session, place: Place) {
         `${CLASS(place)}/target`,
         z.object({ minutes: z.number().nullable(), locked: z.boolean() }),
         { token: session?.token, body: { minutes } },
+      ),
+    onSettled: () => refresh(),
+  });
+}
+/** Sets the teacher's curve for one term, or null for the standard scale. The
+ * whole class refetches: every suggested range moves with it. */
+export function useSetCurve(session: Session, place: Place) {
+  const refresh = useClassRefresh(session, place);
+  return useMutation({
+    mutationFn: (input: { term: string; curve: GradeCurve | null }) =>
+      request(
+        `${CLASS(place)}/gradebook/curve`,
+        z.object({ curve: gradeCurveSchema.nullable() }),
+        { token: session?.token, body: input },
       ),
     onSettled: () => refresh(),
   });

@@ -25,10 +25,13 @@ import {
   gradebookRows,
   objectivesBySpan,
   PERSON_FIRST,
+  proposedCurve,
+  standardLetters,
   PERSON_NAME,
   skillStrandOf,
   skillTitleOf,
   termById,
+  termCurve,
   termRoster,
   termsFor,
   toSuggestionResource,
@@ -53,6 +56,11 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
+import {
+  curveLetters,
+  curveSentence,
+  type CurveLetter,
+} from "./grade-curve.js";
 import { practiced } from "./practice-rules.js";
 import {
   todayTodos,
@@ -391,6 +399,7 @@ export async function readGradebook(
     : currentTerm(terms, context.today);
   const target = await weeklyTargetFor(pool, context);
   const rows = term ? await gradebookRows(pool, context, term, target) : [];
+  const own = term ? await termCurve(pool, context, term, rows) : null;
   return {
     class: classSummaryOf(context),
     terms,
@@ -408,6 +417,20 @@ export async function readGradebook(
       suggestion: toSuggestionResource(suggestion),
       final,
     })),
+    curve:
+      term && rows.length
+        ? {
+            own,
+            proposed: proposedCurve(rows),
+            standard: Object.fromEntries(
+              curveLetters.map((letter) => [
+                letter,
+                standardLetters(rows).filter((found) => found === letter)
+                  .length,
+              ]),
+            ) as Record<CurveLetter, number>,
+          }
+        : null,
   };
 }
 
@@ -483,6 +506,14 @@ export async function readEvidence(
     final: row.final,
     suggestion: resource,
     question: whyQuestion(rangeLetters(row.suggestion), row.suggestion.status),
+    basis:
+      row.suggestion.curve && row.suggestion.status === "ready"
+        ? curveSentence({
+            ...row.suggestion.curve,
+            letterHigh: row.suggestion.letterHigh!,
+            letterLow: row.suggestion.letterLow!,
+          })
+        : null,
     lines: row.suggestion.components.map((component, index) => ({
       id: component.id,
       label: COMPONENT_LABELS[component.id],

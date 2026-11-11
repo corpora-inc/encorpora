@@ -27,6 +27,7 @@ import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
+import { CurveSheet, CurveStrip } from "./GradeCurve";
 import {
   downloadGradebook,
   downloadOneRoster,
@@ -268,6 +269,7 @@ function ExampleGrade() {
             high: 90,
             letters: "B to A−",
             components: [],
+            curve: null,
           }}
         />
       </div>
@@ -423,6 +425,13 @@ export function GradebookScreen() {
     </div>
   );
   const missing = rows.length - entered;
+  // A curve ranks a class, so it needs one with a letter to give.
+  const curved =
+    !!data?.curve &&
+    rows.length > 1 &&
+    !rows.some((row) => row.suggestion.status === "facts-only");
+  const curveOpen =
+    curved && editable && (search.curve === 1 || search.curve === "1");
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
@@ -598,6 +607,13 @@ export function GradebookScreen() {
                   )}
                 </div>
               </div>
+              {curved && (
+                <CurveStrip
+                  book={data}
+                  term={term}
+                  onEdit={editable ? () => set({ curve: 1 }) : null}
+                />
+              )}
               <DataGrid
                 label={`${term.name} grades`}
                 columns={columns}
@@ -639,6 +655,20 @@ export function GradebookScreen() {
             onError={setError}
             onSaved={setAnnouncement}
           />
+          {curved && editable && (
+            <CurveSheet
+              open={curveOpen}
+              onOpenChange={(next) => {
+                if (!next) set({ curve: undefined });
+              }}
+              session={session}
+              place={place}
+              book={data}
+              term={term}
+              onSaved={setMessage}
+              onError={setError}
+            />
+          )}
           <ExportSheet
             open={search.export === 1 || search.export === "1"}
             onOpenChange={(next) => {

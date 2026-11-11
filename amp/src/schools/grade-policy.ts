@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import type { Allocation, GradeCurve } from "./grade-curve.js";
 
 /**
  * The suggested grade: a range from four components, with fixed defaults. The
@@ -354,6 +355,21 @@ export type GradeComponent =
       reviews: number;
       reviewsRight: number;
     };
+/** What a teacher's curve made of a suggestion (`curve-grades.ts`), frozen with
+ * it when the term closes. */
+export type CurveResult = {
+  /** The curve as the teacher set it. */
+  teacher: GradeCurve;
+  /** Students ranked: those with enough work. */
+  ranked: number;
+  /** The 80% interval of this student's place, 1 the highest composite. */
+  rankLow: number;
+  rankHigh: number;
+  /** The share of draws that gave each letter. */
+  letters: Allocation;
+  /** The range on the standard scale, which the curve replaced. */
+  standard: { low: number; high: number };
+};
 export type GradeSuggestion = {
   /** "facts-only": enough work, and no letter (`GradeInput.factsOnly`). */
   status: "ready" | "not-enough-work" | "facts-only";
@@ -373,6 +389,8 @@ export type GradeSuggestion = {
     endLevel: Estimate | null;
   };
   policyVersion: string;
+  /** Present when the teacher's curve set the range. */
+  curve?: CurveResult;
 };
 
 export function letterFor(
@@ -521,6 +539,144 @@ const hasEnoughWork = (input: GradeInput, policy: GradePolicy) => {
       minimumMinutes
   );
 };
+
+/** The share of spaced reviews right on its own, as a Beta distribution over
+ * what the student would get right: the same prior the retention score uses,
+ * so its mean is that score. Null where reviews don't count yet. */
+export function retentionPosterior(
+  input: Pick<GradeInput, "activity">,
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): { right: number; wrong: number } | null {
+  const { review, reviewIndependent } = input.activity;
+  const { priorShare, priorReviews, minimumReviews } = policy.retention;
+  if (review === 0 || review < minimumReviews) return null;
+  return {
+    right: reviewIndependent + priorShare * priorReviews,
+    wrong: review - reviewIndependent + (1 - priorShare) * priorReviews,
+  };
+}
+
+/** One draw of what a suggestion is uncertain about: the levels, and the share
+ * of reviews right. Everything else is counted, not estimated. */
+export type CompositeDraw = {
+  start: StudentLevel | null;
+  end: StudentLevel;
+  /** Null where reviews don't count, as in the suggestion. */
+  retentionShare: number | null;
+};
+/** One student's composite as a function of the estimates alone, with the
+ * calendar, counts and weights worked out once: the suggestion's own scorers,
+ * fast enough to run a thousand times a student. */
+export type CompositeModel = {
+  /** The estimates the course score reads: each strand, else the overall. */
+  strands: readonly Estimate[];
+  start: Estimate | null;
+  end: Estimate;
+  /** Reviews right, as a Beta; null where reviews don't count. */
+  retention: { right: number; wrong: number } | null;
+  score(
+    strandLevels: ArrayLike<number>,
+    startLevel: number | null,
+    endLevel: number,
+    retentionShare: number | null,
+  ): number;
+};
+export function compositeModel(
+  input: GradeInput & { end: StudentLevel },
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): CompositeModel {
+  const { weights, course, growth } = policy;
+  const strands = Object.values(input.end.strands);
+  const estimates = strands.length ? strands : [input.end.overall];
+  const precision = estimates.map(
+    (estimate) => 1 / Math.max(estimate.sd, 0.1) ** 2,
+  );
+  const totalPrecision = precision.reduce((sum, value) => sum + value, 0);
+  const reference = referenceFor(input);
+  const fixedExpected = reference
+    ? expectedLevel(input.year, input.enrolled.to, reference)
+    : null;
+  const yearDays = daysIn(input.year) || growth.fallbackYearDays;
+  const days = daysIn(input.enrolled);
+  const expectedGain = Math.max(
+    0.001,
+    (growth.gradesPerYear * days) / yearDays,
+  );
+  const capped = (pace: number) => Math.min(growth.maximumPace, pace);
+  const objectivePace = capped(
+    input.objectivesGained / (growth.objectivesPerGrade * expectedGain),
+  );
+  const practice = practiceScore(input, policy).score;
+  return {
+    strands: estimates,
+    start: input.start?.overall ?? null,
+    end: input.end.overall,
+    retention: retentionPosterior(input, policy),
+    score(strandLevels, startLevel, endLevel, retentionShare) {
+      // As courseScore: without a course, the student's own start.
+      const expected = fixedExpected ?? startLevel ?? endLevel;
+      let scored = 0;
+      for (let i = 0; i < estimates.length; i++) {
+        const gap = strandLevels[i]! - expected;
+        scored +=
+          precision[i]! *
+          (gap >= 0
+            ? Math.min(
+                100,
+                course.onPaceScore +
+                  ((100 - course.onPaceScore) * gap) / course.aheadFullGrades,
+              )
+            : Math.max(
+                course.floor,
+                course.onPaceScore + gap * course.behindPerGrade,
+              ));
+      }
+      const courseScore = scored / totalPrecision;
+      // As growthScore.
+      const gained =
+        startLevel === null ? 0 : Math.max(0, endLevel - startLevel);
+      const observed =
+        growth.levelShare * capped(gained / expectedGain) +
+        (1 - growth.levelShare) * objectivePace;
+      const pace =
+        (observed * days + growth.steadyDays) / (days + growth.steadyDays);
+      const growthScore =
+        pace <= 1
+          ? growth.floor + (growth.onPaceScore - growth.floor) * pace
+          : Math.min(
+              100,
+              growth.onPaceScore +
+                ((100 - growth.onPaceScore) * (pace - 1)) /
+                  (growth.fullAtPace - 1),
+            );
+      let total =
+        weights.course * courseScore +
+        weights.growth * growthScore +
+        weights.practice * practice;
+      let carried = weights.course + weights.growth + weights.practice;
+      if (retentionShare !== null) {
+        total += weights.retention * 100 * retentionShare;
+        carried += weights.retention;
+      }
+      return total / carried;
+    },
+  };
+}
+/** The composite for one draw (the model, from whole levels). */
+export function compositeScore(
+  input: GradeInput,
+  draw: CompositeDraw,
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): number {
+  const model = compositeModel({ ...input, end: draw.end }, policy);
+  const strands = Object.values(draw.end.strands);
+  return model.score(
+    (strands.length ? strands : [draw.end.overall]).map((e) => e.level),
+    draw.start?.overall.level ?? null,
+    draw.end.overall.level,
+    draw.retentionShare,
+  );
+}
 
 /** How wide the range is: from how sure the level estimates are, and how much
  * work there is to go on. Neither reads a count of attempts. */

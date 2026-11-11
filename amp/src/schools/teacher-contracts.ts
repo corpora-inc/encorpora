@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { gradeCurveSchema, isValidCurve } from "./grade-curve.js";
 
 /* What the teacher's screens read: the reference for these routes, and what the
    client checks every response against. */
@@ -185,6 +186,23 @@ export const suggestionResource = z.object({
   components: z.array(
     z.object({ id: componentId, score: z.number().nullable() }),
   ),
+  /** Set by the teacher's curve: the 80% interval of the student's place, and
+   * the share of draws at each letter. */
+  curve: z
+    .object({
+      ranked: z.number(),
+      rankLow: z.number(),
+      rankHigh: z.number(),
+      letters: z.object({
+        A: z.number(),
+        B: z.number(),
+        C: z.number(),
+        D: z.number(),
+        F: z.number(),
+      }),
+    })
+    .nullable()
+    .default(null),
 });
 export type SuggestionResource = z.infer<typeof suggestionResource>;
 export const gradeRowResource = z.object({
@@ -208,6 +226,23 @@ export const gradebookResponse = z.object({
   inheritedTargetMinutes: z.number().nullable().default(null),
   canEdit: z.boolean(),
   students: z.array(gradeRowResource),
+  /** The teacher's curve for this term (frozen with a closed one), and a
+   * starting curve from the class's own work for the whole roster. */
+  curve: z
+    .object({
+      own: gradeCurveSchema.nullable(),
+      proposed: gradeCurveSchema,
+      /** How many students the standard scale puts at each letter now. */
+      standard: z.object({
+        A: z.number(),
+        B: z.number(),
+        C: z.number(),
+        D: z.number(),
+        F: z.number(),
+      }),
+    })
+    .nullable()
+    .default(null),
 });
 export type GradebookResponse = z.infer<typeof gradebookResponse>;
 
@@ -238,6 +273,8 @@ export const evidenceResponse = z.object({
   suggestion: suggestionResource,
   /** "Why a B?" */
   question: z.string(),
+  /** Where the teacher's curve put the student, in one sentence. */
+  basis: z.string().nullable().default(null),
   lines: z.array(
     z.object({
       id: componentId,
@@ -391,6 +428,13 @@ export const finalGradeSchema = z.strictObject({
 export const closeTermSchema = z.strictObject({ term: id });
 export const weeklyTargetSchema = z.strictObject({
   minutes: z.number().int().min(1).max(10_080).nullable(),
+});
+/** A curve for one open term, or null for the standard scale. */
+export const gradeCurveWriteSchema = z.strictObject({
+  term: id,
+  curve: gradeCurveSchema
+    .refine(isValidCurve, { message: "The ranges can't hold the class" })
+    .nullable(),
 });
 export const gradebookQuerySchema = z.strictObject({ term: id.optional() });
 export const evidenceQuerySchema = z.strictObject({

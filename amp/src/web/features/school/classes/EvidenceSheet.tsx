@@ -9,6 +9,7 @@ import { Loading } from "../../../ui/Loading";
 import { Meter } from "../../../ui/Meter";
 import { Sheet } from "../../../ui/Sheet";
 import { FinalField, Suggested } from "./grade-parts";
+import { CurvePlace } from "./GradeCurve";
 import { evidenceOptions, type Place } from "./teacher-api";
 import {
   buttonClass,
@@ -115,6 +116,12 @@ export function EvidenceSheet({
           )}
           <section>
             <h3>{data.question}</h3>
+            {data.basis && data.suggestion.curve && (
+              <CurvePlace
+                basis={data.basis}
+                letters={data.suggestion.curve.letters}
+              />
+            )}
             <dl className={styles.lines}>
               {data.lines.map((line) => (
                 <div key={line.id} className={styles.line}>
