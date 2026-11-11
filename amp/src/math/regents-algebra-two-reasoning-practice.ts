@@ -80,6 +80,8 @@ export const rationalAbsCountTemplate = meta(
 );
 
 const sg = (v: number) => (v < 0 ? `-${-v}` : `${v}`);
+/** A linear term in TeX: 1x is x and −1x is -x. */
+const mx = (v: number) => (v === 1 ? "x" : v === -1 ? "-x" : `${sg(v)}x`);
 const xs = (k: number) =>
   k === 0 ? "x" : `x ${k < 0 ? "-" : "+"} ${Math.abs(k)}`;
 
@@ -247,7 +249,7 @@ export const cubicQuotientFactored = chainFamily({
       },
       {
         label: lab(`${bin(-p)}${bin(q)}`),
-        feedback: `Only one sign is changed here; multiplying the two factors gives a middle term of $${sg(q - p)}x$, not $${sg(-(p + q))}x$.`,
+        feedback: `Only one sign is changed here; multiplying the two factors gives a middle term of $${mx(q - p)}$, not $${mx(-(p + q))}$.`,
       },
     ];
     return choiceSurface(r, {

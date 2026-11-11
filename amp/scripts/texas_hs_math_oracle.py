@@ -345,7 +345,10 @@ def solve_system_choice(public):
             text = re.sub(r',?\s*x\s*>=\s*0', '', text)
             text = re.sub(r',?\s*y\s*>=\s*0', '', text)
             return re.sub(r'\s+', '', text)
-        expected = {f'x+y<={cap}and{small}x+{large}y>={goal}', f'{small}x+{large}y>={goal}andx+y<={cap}'}
+        def coef_var(coef, letter):
+            return letter if coef == 1 else f'{coef}{letter}'
+        money = f'{coef_var(small, "x")}+{coef_var(large, "y")}'
+        expected = {f'x+y<={cap}and{money}>={goal}', f'{money}>={goal}andx+y<={cap}'}
         correct, keys = [], []
         for label in labels:
             got = norm_system(label)

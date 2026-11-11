@@ -564,7 +564,15 @@ function slopeCase(r: Random, form = "two-points"): Case {
     const c0 = r(1, 6) * (r(0, 1) ? 1 : -1);
     if (form === "slope-intercept") {
       const slope = `${rise < 0 ? "-" : ""}\\frac{${Math.abs(rise)}}{${runV}}`;
-      given = `Line $ℓ$ has equation $y = ${runV === 1 ? (rise < 0 ? "-" : "") + Math.abs(rise) : slope}x ${c0 < 0 ? "-" : "+"} ${Math.abs(c0)}$.`;
+      given = `Line $ℓ$ has equation $y = ${
+        runV === 1
+          ? rise === 1
+            ? ""
+            : rise === -1
+              ? "-"
+              : rise
+          : slope
+      }x ${c0 < 0 ? "-" : "+"} ${Math.abs(c0)}$.`;
       slopeStep = `In $y = mx + b$ the slope is the coefficient of $x$: the slope of $ℓ$ is ${frac(m)}.`;
       slopeHint = `In $y = mx + b$ the number multiplying $x$ is the slope. Here that is the coefficient of $x$ in the equation of $ℓ$, $${given.replace(/^Line \$ℓ\$ has equation \$|\$\.$/g, "")}$; the constant term, ${Math.abs(c0)}, only moves the line up or down and does not change the slope.`;
     } else {

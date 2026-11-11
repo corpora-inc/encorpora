@@ -115,8 +115,8 @@ def read_solution(label):
 # The three prompt frames a learner can see; each states one equation.
 FRAMES = (
     r'Solve (.+)\. Choose the complete set of real solutions\.',
-    r'Which values of x make (.+) true\? Choose the complete set\.',
-    r'Find every real number x for which (.+)\. Choose the complete set\.',
+    r'Which values of \$?x\$? make (.+) true\? Choose the complete set\.',
+    r'Find every real number \$?x\$? for which (.+)\. Choose the complete set\.',
 )
 
 

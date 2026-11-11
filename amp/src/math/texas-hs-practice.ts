@@ -407,6 +407,10 @@ const qKey = (a: Q) => `${a.n}/${a.d}`;
 const qAbsTex = (a: Q) =>
   a.d === 1 ? `${Math.abs(a.n)}` : `\\frac{${Math.abs(a.n)}}{${a.d}}`;
 const qTex = (a: Q) => `${a.n < 0 ? "-" : ""}${qAbsTex(a)}`;
+/** Coefficient of x in TeX: 1x is x and -1x is -x. */
+const ix = (n: number) => (n === 1 ? "x" : n === -1 ? "-x" : `${n}x`);
+const qx = (m: Q) =>
+  m.d === 1 && Math.abs(m.n) === 1 ? ix(m.n) : `${qTex(m)}x`;
 const qPar = (a: Q) => (a.n < 0 ? `(${qTex(a)})` : qTex(a));
 
 /** y = mx + b, with unit and zero terms omitted. */
@@ -517,7 +521,7 @@ export function lineEquationFormsCase(seed: string): TexasHsCase {
       prompt: `${given} Which equation of the line is in slope-intercept form, $y=mx+b$?`,
       hint: `Put $m=${m.n}$ into $y=mx+b$, then substitute $x=${x1}$ and $y=${y1}$ and solve for $b$.`,
       explanation: [
-        `Start with $y=${m.n}x+b$ and substitute the point: $${y1}=${m.n}(${x1})+b$.`,
+        `Start with $y=${ix(m.n)}+b$ and substitute the point: $${y1}=${m.n}(${x1})+b$.`,
         `Multiply: $${y1}=${m.n * x1}+b$, so $b=${y1}-${par(m.n * x1)}=${b.n}$.`,
         `The equation is ${right.label}.`,
       ],
@@ -566,7 +570,7 @@ export function lineEquationFormsCase(seed: string): TexasHsCase {
         hint: `First find the slope: the change in $y$ from ${y1} to ${y2} divided by the change in $x$ from ${x1} to ${x2}. Then use one point to find $b$.`,
         explanation: [
           `The slope is ${slopeStep}.`,
-          `Substitute $(${x1}, ${y1})$ into $y=${m.n}x+b$: $${y1}=${m.n * x1}+b$, so $b=${b.n}$.`,
+          `Substitute $(${x1}, ${y1})$ into $y=${ix(m.n)}+b$: $${y1}=${m.n * x1}+b$, so $b=${b.n}$.`,
           `The equation is ${right.label}.`,
         ],
         correct: right.label,
@@ -780,7 +784,7 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
           },
           {
             ...si(target, q(y1)),
-            feedback: `${y1} is the point's $y$-coordinate, not the intercept. Substitute $(${x1}, ${y1})$ into $y=${qTex(target)}x+b$.`,
+            feedback: `${y1} is the point's $y$-coordinate, not the intercept. Substitute $(${x1}, ${y1})$ into $y=${qx(target)}+b$.`,
           },
         ];
     return finish(meta, seed, r, {
@@ -795,7 +799,7 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
         parallel
           ? `Parallel lines have the same slope, so the slope is ${m.n}.`
           : `Perpendicular slopes multiply to $-1$, so the slope is the negative reciprocal of ${m.n}, which is $${qTex(target)}$.`,
-        `Substitute $(${x1}, ${y1})$ into $y=${qTex(target)}x+b$: $b=${y1}-${qPar(target)}\\cdot${par(x1)}=${qTex(b)}$.`,
+        `Substitute $(${x1}, ${y1})$ into $y=${qx(target)}+b$: $b=${y1}-${qPar(target)}\\cdot${par(x1)}=${qTex(b)}$.`,
         `The equation is ${right.label}.`,
       ],
       correct: right.label,
@@ -1061,10 +1065,12 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
   const goal = money <= 1 ? 1 : r(1, money - 1);
   if (money <= goal || goal === cap || x + y >= cap)
     return inequalityStory(meta, `${seed}~`);
-  const signs = `x+y\\le ${cap}\\text{ and }${small}x+${large}y\\ge ${goal}`;
-  const flipped = `x+y\\ge ${cap}\\text{ and }${small}x+${large}y\\le ${goal}`;
-  const prices = `x+y\\le ${cap}\\text{ and }${large}x+${small}y\\ge ${goal}`;
-  const totals = `x+y\\le ${goal}\\text{ and }${small}x+${large}y\\ge ${cap}`;
+  const xv = (c: number) => (c === 1 ? "x" : `${c}x`);
+  const yv = (c: number) => (c === 1 ? "y" : `${c}y`);
+  const signs = `x+y\\le ${cap}\\text{ and }${xv(small)}+${yv(large)}\\ge ${goal}`;
+  const flipped = `x+y\\ge ${cap}\\text{ and }${xv(small)}+${yv(large)}\\le ${goal}`;
+  const prices = `x+y\\le ${cap}\\text{ and }${xv(large)}+${yv(small)}\\ge ${goal}`;
+  const totals = `x+y\\le ${goal}\\text{ and }${xv(small)}+${yv(large)}\\ge ${cap}`;
   const bounds = r(0, 3) === 0 ? "\\text{, }x\\ge 0\\text{, }y\\ge 0" : "";
   const label = (body: string) => tex(`${body}${bounds}`);
   const countFirst = r(0, 1) === 0;
@@ -3300,9 +3306,9 @@ export function parametricRectangularCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "write-parametric",
     prompt: `A line has the rectangular equation $${slopeIntercept(q(m), q(b))}$. Which pair of parametric equations describes this line, using $x=${xText}$?`,
-    hint: `The $x$ equation is given. Replace $x$ in $y=${m}x ${plus(b)}$ with $${xText}$ and simplify to get $y$ in terms of $t$.`,
+    hint: `The $x$ equation is given. Replace $x$ in $${slopeIntercept(q(m), q(b))}$ with $${xText}$ and simplify to get $y$ in terms of $t$.`,
     explanation: [
-      `Substitute $x=${xText}$ into $y=${m}x ${plus(b)}$: $y=${m}(${xText}) ${plus(b)}$.`,
+      `Substitute $x=${xText}$ into $${slopeIntercept(q(m), q(b))}$: $y=${m === 1 ? "" : m === -1 ? "-" : m}(${xText}) ${plus(b)}$.`,
       `Distribute: $y=${m * a}t ${plus(m * h)} ${plus(b)}=${ytt(m * a, m * h + b)}$.`,
       `The parametric equations are ${right.label}.`,
     ],
