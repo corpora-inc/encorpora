@@ -1,4 +1,158 @@
 {
+  "arithmetic-distant-term": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
+      }
+    ]
+  },
+  "arithmetic-sequence-as-function": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
+      }
+    ]
+  },
+  "arithmetic-term": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
+      }
+    ]
+  },
+  "average-rate-display": {
+    "id": "average-rate-display--sa",
+    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "title": "Average rate of change: the slope between two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+    "duration": 166.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+        "duration": 166.59
+      }
+    ]
+  },
+  "average-rate-formula": {
+    "id": "average-rate-display--sa",
+    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "title": "Average rate of change: the slope between two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+    "duration": 166.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+        "duration": 166.59
+      }
+    ]
+  },
+  "average-rate-steps": {
+    "id": "average-rate-display--sa",
+    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "title": "Average rate of change: the slope between two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+    "duration": 166.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+        "duration": 166.59
+      }
+    ]
+  },
+  "average-rate-table-rounded": {
+    "id": "average-rate-display--sa",
+    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "title": "Average rate of change: the slope between two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+    "duration": 166.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
+        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+        "duration": 166.59
+      }
+    ]
+  },
   "bar-chart-total": {
     "id": "bar-chart-total--hf",
     "version": "b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b",
@@ -18,6 +172,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/bar-chart-total--hf/b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b/audio.m4a",
         "version": "b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b",
         "duration": 354.82
+      }
+    ]
+  },
+  "build-the-number-sentence": {
+    "id": "picture-to-number-sentence--sj",
+    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+    "title": "A story in pictures and numbers",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+    "duration": 91.18,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+        "duration": 91.18
       }
     ]
   },
@@ -274,6 +450,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/4bfc6d4452f8718f1bcc4954e45d02aabbb5532d374688802d461f518dc4859b/audio.m4a",
         "version": "4bfc6d4452f8718f1bcc4954e45d02aabbb5532d374688802d461f518dc4859b",
         "duration": 148.71995464852608
+      }
+    ]
+  },
+  "facts-to-five": {
+    "id": "facts-to-five--sf",
+    "version": "3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950",
+    "title": "Plus hops forward, minus hops back",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/audio.m4a",
+    "duration": 116.26,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/audio.m4a",
+        "version": "3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950",
+        "duration": 116.26
       }
     ]
   },
@@ -731,6 +929,28 @@
       }
     ]
   },
+  "nonlinear-recursion-term": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
+      }
+    ]
+  },
   "number-bond-missing": {
     "id": "number-bond-missing--sb",
     "version": "a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3",
@@ -750,6 +970,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3/audio.m4a",
         "version": "a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3",
         "duration": 123.3
+      }
+    ]
+  },
+  "number-sentence-to-picture": {
+    "id": "picture-to-number-sentence--sj",
+    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+    "title": "A story in pictures and numbers",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+    "duration": 91.18,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+        "duration": 91.18
       }
     ]
   },
@@ -793,6 +1035,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/percent-amounts-blanks/93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f/audio.m4a",
         "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
         "duration": 268.63
+      }
+    ]
+  },
+  "picture-to-number-sentence": {
+    "id": "picture-to-number-sentence--sj",
+    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+    "title": "A story in pictures and numbers",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+    "duration": 91.18,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
+        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+        "duration": 91.18
       }
     ]
   },
@@ -900,6 +1164,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rectangle-area/cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8/audio.m4a",
         "version": "cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8",
         "duration": 90.93
+      }
+    ]
+  },
+  "recursion-term-steps": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
       }
     ]
   },
@@ -1031,6 +1317,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
         "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
         "duration": 261.19
+      }
+    ]
+  },
+  "series-recursion": {
+    "id": "arithmetic-distant-term--sq",
+    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "title": "An arithmetic sequence is a staircase",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+    "duration": 165.95,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
+        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+        "duration": 165.95
       }
     ]
   },
@@ -1184,6 +1492,50 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/take-away-within-10--sk/a5bd675958c285e5a97c1b77659c8cdbd3110cae797cefacf36cbb31b158be7e/audio.m4a",
         "version": "a5bd675958c285e5a97c1b77659c8cdbd3110cae797cefacf36cbb31b158be7e",
         "duration": 106.44
+      }
+    ]
+  },
+  "teen-frame-compose": {
+    "id": "teen-frame-compose--st",
+    "version": "5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0",
+    "title": "A teen number is ten and some more",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/audio.m4a",
+    "duration": 135.59002267573698,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/audio.m4a",
+        "version": "5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0",
+        "duration": 135.59002267573698
+      }
+    ]
+  },
+  "ten-frame-complement": {
+    "id": "ten-frame-complement--sm",
+    "version": "6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd",
+    "title": "How many more to fill the ten?",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/audio.m4a",
+    "duration": 120.76,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/audio.m4a",
+        "version": "6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd",
+        "duration": 120.76
       }
     ]
   },
