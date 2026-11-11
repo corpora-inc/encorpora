@@ -18,12 +18,13 @@ import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Segmented } from "../../../ui/Segmented";
 import { Loading } from "../../../ui/Loading";
-import { StatRow, StatTile } from "../../../ui/StatTile";
 import { currentSession, orgOptions } from "../api";
 import { fullDay, number } from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
 import { classPath, orgPath } from "../paths";
-import { StandingChart, TrendChart, type TrendMeasure } from "./charts";
+import { TrendChart, type TrendMeasure } from "./charts";
+import { StandingCurves } from "../standing/StandingCurves";
+import { withInterval } from "../standing/format";
 import { RuleNote } from "../RuleNote";
 import { compareClassNames } from "../sort";
 import { overviewOptions } from "./org-api";
@@ -81,8 +82,31 @@ type Usage = {
   active: number;
   minutes: number;
   growth: number | null;
+  growthLow: number | null;
+  growthHigh: number | null;
   placed: number;
 };
+/** Growth with where its median sits: "+0.3 (−0.1 to +0.7)". */
+const growthFull = (row: Usage) =>
+  row.growth === null || row.growthLow === null || row.growthHigh === null
+    ? growthWords(row.growth)
+    : withInterval({
+        median: row.growth,
+        low: row.growthLow,
+        high: row.growthHigh,
+      });
+function GrowthCell({ row }: { row: Usage }) {
+  const full = growthFull(row);
+  const split = full.indexOf(" (");
+  return split === -1 ? (
+    <span title={growthTip(row)}>{full}</span>
+  ) : (
+    <span title={growthTip(row)} className={styles.growthCell}>
+      {full.slice(0, split)}
+      <span>{full.slice(split)}</span>
+    </span>
+  );
+}
 const growthTip = (row: Usage) =>
   row.placed
     ? `Median of ${number(row.placed)} placed ${row.placed === 1 ? "student" : "students"}`
@@ -119,14 +143,12 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "growth",
     header: "Growth this term",
-    width: 104,
+    width: 176,
     align: "end",
     firstSort: "descending",
     compare: (a, b) => (a.growth ?? -99) - (b.growth ?? -99),
-    cell: (row) => (
-      <span title={growthTip(row)}>{growthWords(row.growth)}</span>
-    ),
-    cellLabel: (row) => `${growthWords(row.growth)}. ${growthTip(row)}`,
+    cell: (row) => <GrowthCell row={row} />,
+    cellLabel: (row) => `${growthFull(row)}. ${growthTip(row)}`,
   },
 ];
 
@@ -150,7 +172,9 @@ function UsageCard({
       <span className={styles.usageFacts}>
         <ActiveCell active={row.active} students={row.students} />
         <span>{number(row.minutes)} min</span>
-        <span>{growthWords(row.growth)} grades</span>
+        <span>
+          <GrowthCell row={row} /> grades
+        </span>
       </span>
     </Link>
   );
@@ -486,37 +510,12 @@ export function OverviewScreen() {
                     <Attention items={view.attention} />
                   </section>
                 )}
-                <section
-                  aria-labelledby="overview-standing"
-                  className={styles.standingSection}
-                >
-                  <h2 id="overview-standing" className={styles.sectionTitle}>
-                    Where students stand against grade level
-                  </h2>
-                  <StandingChart standing={view.standing} />
-                </section>
-                <div className={styles.standingFacts}>
-                  <StatRow label="Students by standing">
-                    <StatTile
-                      value={number(view.standing.at)}
-                      label="at grade level"
-                    />
-                    <StatTile
-                      value={number(view.standing.ahead)}
-                      label="ahead"
-                    />
-                    <StatTile
-                      value={number(view.standing.behind)}
-                      label="behind"
-                    />
-                    {view.standing.unplaced > 0 && (
-                      <StatTile
-                        value={number(view.standing.unplaced)}
-                        label="not placed yet"
-                      />
-                    )}
-                  </StatRow>
-                </div>
+                <StandingCurves
+                  orgId={orgId}
+                  sectionClass={styles.standingSection}
+                  factsClass={styles.standingFacts}
+                  titleClass={styles.sectionTitle}
+                />
               </div>
               <section aria-labelledby="overview-usage">
                 <h2 id="overview-usage" className={styles.sectionTitle}>
@@ -555,7 +554,8 @@ export function OverviewScreen() {
                 )}
                 <p className={styles.tableNote}>
                   Growth is each {district ? "school" : "class"}’s median change
-                  in grade level this term, from {number(placed)} placed{" "}
+                  in grade level this term, with its 95% range, from{" "}
+                  {number(placed)} placed{" "}
                   {placed === 1 ? "student" : "students"} (20 or more answers).
                   Practiced means at least 5 active minutes or 5 problems this
                   week.

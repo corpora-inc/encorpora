@@ -9,11 +9,7 @@ import {
   practiced,
   weekElapsed,
 } from "../src/schools/practice-rules";
-import {
-  standingOf,
-  usageOf,
-  type StudentFact,
-} from "../src/schools/org-reads";
+import { usageOf, type StudentFact } from "../src/schools/org-reads";
 import { todayTodos, type TodayStudent } from "../src/schools/today";
 import { resolveWeeklyTarget } from "../src/schools/term-grades";
 import { schoolClock } from "../src/schools/clock";
@@ -181,6 +177,8 @@ const fact = (patch: Partial<StudentFact>): StudentFact => ({
   lastAttempts: 0,
   level: null,
   startLevel: null,
+  levelSd: 0.3,
+  startSd: 0.4,
   seated: true,
   signedIn: true,
   ...patch,
@@ -197,20 +195,12 @@ test("the overview counts practiced students and states the growth median's n", 
   assert.equal(usage.placed, 2);
   // Either sign, as the grade model now shows it.
   assert.equal(usage.growth, 0.05);
-  assert.equal(usageOf([fact({ level: 5, startLevel: 5.3 })]).growth, -0.3);
-});
-
-test("only placed students stand anywhere; the rest are not placed yet", () => {
-  // A level is null in the overview's facts below placement (org-reads.ts).
-  const standing = standingOf([
-    fact({ level: 5.1 }),
-    fact({ level: null }),
-    fact({ level: 3.9 }),
-    fact({ grade: null, level: 6 }),
-  ]);
-  assert.equal(standing.at, 1);
-  assert.equal(standing.behind, 1);
-  assert.equal(standing.unplaced, 2);
+  // One student's growth interval is their own: Δμ ± 1.96·√(0.3² + 0.4²).
+  const one = usageOf([fact({ level: 5, startLevel: 5.3 })]);
+  assert.equal(one.growth, -0.3);
+  assert.ok(Math.abs(one.growthLow! - (-0.3 - 1.96 * 0.5)) < 0.12);
+  assert.ok(Math.abs(one.growthHigh! - (-0.3 + 1.96 * 0.5)) < 0.12);
+  assert.ok(usage.growthLow! < usage.growth! && usage.growth! < usage.growthHigh!);
 });
 
 const student = (

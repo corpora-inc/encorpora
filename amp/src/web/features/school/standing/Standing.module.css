@@ -1,0 +1,621 @@
+/* Where students stand, as curves. One hue (the figure accent) for the
+   students, the course band for their own grade, a quiet dashed line for the
+   national reference. Every frame has a fixed size, so data arriving or a
+   pointer passing never moves the page. */
+
+.screen {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+.up {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  margin: calc(-1 * var(--space-3)) 0 calc(-1 * var(--space-4));
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 600;
+  text-decoration: none;
+}
+.up:hover {
+  color: var(--color-on-surface);
+}
+.title p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.sectionTitle {
+  margin-bottom: var(--space-4);
+  text-wrap: balance;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.head h2 {
+  margin-bottom: 0;
+}
+.drill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: -12px;
+  color: var(--color-primary);
+  font-size: var(--text-table);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.drill:hover {
+  text-decoration: underline;
+}
+
+/* The lead: a large curve, its numbers beside it when there's room. */
+.lead {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.leadFacts {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+@media (min-width: 1024px) {
+  .lead {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
+    column-gap: var(--space-7);
+  }
+  .leadFacts > dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+  /* Growth, the fifth, reads across both columns with its range. */
+  .leadFacts > dl > :nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+.figure {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+}
+
+/* A plot: a label row over the curve's area, the area itself, a baseline. */
+.plot {
+  --label-row: 22px;
+  position: relative;
+  height: 236px;
+  box-shadow: inset 0 -1px 0 var(--color-border-strong);
+  touch-action: pan-y;
+}
+.plot[data-size="compact"] {
+  --label-row: 0px;
+  height: 64px;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.plot[data-state="empty"] {
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+  box-shadow: none;
+}
+.svg {
+  position: absolute;
+  top: var(--label-row);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--label-row));
+  overflow: visible;
+}
+.fillTop {
+  stop-color: var(--color-figure-accent);
+  stop-opacity: 0.34;
+}
+.fillBottom {
+  stop-color: var(--color-figure-accent);
+  stop-opacity: 0.06;
+}
+.line {
+  fill: none;
+  stroke: var(--color-figure-accent);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+.plot[data-size="compact"] .line {
+  stroke-width: 1.5px;
+}
+.typical {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.25px;
+  stroke-dasharray: 3 4;
+  opacity: 0.85;
+}
+.gradeBand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--color-course-band);
+}
+.gradeBand span {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+/* Where the median sits (95%): a finely hatched column, its line on top. */
+.middleBand {
+  position: absolute;
+  top: var(--label-row);
+  bottom: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-figure-ink) 16%, transparent) 0 1px,
+    transparent 1px 5px
+  );
+  background-color: color-mix(in srgb, var(--color-figure-ink) 6%, transparent);
+}
+.medianLine {
+  position: absolute;
+  top: var(--label-row);
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-figure-ink);
+}
+.plot[data-size="compact"] .medianLine {
+  width: 1.5px;
+}
+.crosshair {
+  position: absolute;
+  top: var(--label-row);
+  bottom: 0;
+  width: 1px;
+  background: var(--color-border-strong);
+  pointer-events: none;
+}
+.readout {
+  position: absolute;
+  top: calc(var(--label-row) + 6px);
+  z-index: 2;
+  display: grid;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-small);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: var(--shadow-overlay);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 1.3;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.readout[data-edge="start"] {
+  transform: translateX(8px);
+}
+.readout[data-edge="end"] {
+  transform: translateX(calc(-100% - 8px));
+}
+.failed {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-muted-text);
+}
+
+/* The axis: grades from their own, and the grade itself under it when the
+   group is one grade. Fixed height either way. */
+.axis {
+  position: relative;
+  container-type: inline-size;
+  height: 1.5em;
+  margin-top: var(--space-1);
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 1.25;
+}
+.axis:has(i) {
+  height: 2.75em;
+}
+.axis span {
+  position: absolute;
+  top: 0;
+  display: grid;
+  justify-items: center;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.axis span[data-edge="start"] {
+  justify-items: start;
+  transform: none;
+}
+.axis span[data-edge="end"] {
+  justify-items: end;
+  transform: translateX(-100%);
+}
+/* Too narrow for every tick: every other one. */
+@container (max-width: 360px) {
+  .axis span[data-minor] {
+    display: none;
+  }
+}
+@container (max-width: 520px) {
+  .axis i small {
+    display: none;
+  }
+}
+.axis i small {
+  font-size: inherit;
+}
+.axis b {
+  font-weight: 500;
+}
+.axis i {
+  color: var(--color-muted-text);
+  font-style: normal;
+  opacity: 0.8;
+}
+.ends {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin-top: var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+.legend i {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 10px;
+  border-radius: 2px;
+}
+.legend i[data-key="curve"] {
+  border-top: 2px solid var(--color-figure-accent);
+  background: color-mix(in srgb, var(--color-figure-accent) 22%, transparent);
+}
+.legend i[data-key="median"] {
+  background:
+    linear-gradient(var(--color-figure-ink), var(--color-figure-ink)) center /
+      2px 100% no-repeat,
+    repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-figure-ink) 22%, transparent) 0 1px,
+      transparent 1px 4px
+    );
+}
+.legend i[data-key="typical"] {
+  height: 0;
+  border-top: 1.5px dashed var(--color-border-strong);
+  border-radius: 0;
+}
+.legend i[data-key="band"] {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-figure-accent-fill-strong);
+}
+.legend i[data-key="dot"] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-figure-accent);
+}
+.legend i[data-key="settling"] {
+  height: 8px;
+  border: 1px dashed var(--color-figure-accent);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--color-figure-accent) 8%, transparent);
+}
+
+.settling {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+/* The table, closed until asked for. Opening it pushes only what's below. */
+.disclosure {
+  margin-top: var(--space-4);
+}
+.disclosure summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 600;
+  cursor: pointer;
+}
+.disclosure summary:hover {
+  color: var(--color-on-surface);
+}
+.tableScroll {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+.table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.table th,
+.table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: start;
+  white-space: nowrap;
+}
+.table thead th {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+}
+.table tbody th {
+  font-weight: 500;
+}
+
+/* By class: one row each, on one axis and one scale. */
+.ridge {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+.ridgeRow,
+.ridgeAxis {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2) var(--space-5);
+}
+.ridgeRow {
+  align-items: end;
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  color: inherit;
+  text-decoration: none;
+}
+.ridgeRow:hover {
+  background: var(--color-surface-sunken);
+}
+.ridgeRow:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.ridgeName {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  align-self: center;
+  font-variant-numeric: var(--numeric);
+}
+.ridgeName strong {
+  font-weight: 600;
+}
+.ridgeName > span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.ridgeName > .ridgeFigure {
+  color: var(--color-on-surface);
+  font-size: var(--text-table);
+}
+.ridgeFigure span {
+  color: var(--color-muted-text);
+}
+.ridgeAxis {
+  padding-inline: var(--space-2);
+}
+.ridgeAxis > span {
+  display: none;
+}
+@media (min-width: 720px) {
+  .ridgeRow,
+  .ridgeAxis {
+    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  }
+  .ridgeAxis > span {
+    display: block;
+  }
+}
+
+/* Each student: a band of where they likely are, a dot at the estimate. */
+/* On a phone each row is the name over a full-width band; from 720px the
+   name sits beside it. */
+.bands {
+  --name: 0px;
+  --gutter: 0px;
+  display: grid;
+  min-width: 0;
+}
+@media (min-width: 720px) {
+  .bands {
+    --name: 200px;
+    --gutter: var(--space-3);
+  }
+}
+.bandAxis,
+.bandRow {
+  display: grid;
+  grid-template-columns: var(--name) minmax(0, 1fr);
+  column-gap: var(--gutter);
+  padding-inline: var(--space-2);
+}
+.bandList {
+  position: relative;
+  border-top: 1px solid var(--color-border);
+}
+.bandList ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bandColumnFrame {
+  position: absolute;
+  top: 0;
+  right: var(--space-2);
+  bottom: 0;
+  left: calc(var(--space-2) + var(--name) + var(--gutter));
+}
+.bandColumn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--color-course-band);
+}
+@media (max-width: 719px) {
+  .bandAxis,
+  .bandRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bandAxis > span:first-child {
+    display: none;
+  }
+  .bandRow {
+    padding-top: var(--space-2);
+  }
+  .bandRow .bandTrack {
+    height: 28px;
+  }
+}
+.bandRow {
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-border) 70%, transparent);
+  color: inherit;
+  text-decoration: none;
+}
+.bandRow:hover {
+  background: color-mix(in srgb, var(--color-surface-sunken) 80%, transparent);
+}
+.bandRow:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.bandName {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+  font-size: var(--text-table);
+}
+.bandName > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bandName small {
+  flex: 0 0 auto;
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}
+.bandTrack {
+  position: relative;
+  height: 44px;
+}
+.bandTrack::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--color-border) 60%, transparent);
+  content: "";
+}
+.band {
+  position: absolute;
+  top: calc(50% - 6px);
+  height: 12px;
+  border-radius: 6px;
+  background: var(--color-figure-accent-fill-strong);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--color-figure-accent) 30%, transparent);
+}
+.band[data-settling] {
+  background: color-mix(in srgb, var(--color-figure-accent) 8%, transparent);
+  box-shadow: none;
+  outline: 1px dashed
+    color-mix(in srgb, var(--color-figure-accent) 70%, transparent);
+  outline-offset: -1px;
+}
+.band[data-clip-start] {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+.band[data-clip-end] {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.dot {
+  position: absolute;
+  top: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--color-figure-accent);
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+.dot[data-settling] {
+  background: var(--color-surface);
+  box-shadow:
+    inset 0 0 0 2px var(--color-figure-accent),
+    0 0 0 2px var(--color-surface);
+}
+.bandAxis {
+  padding-top: var(--space-1);
+}
+.bandAxis:first-child {
+  padding-bottom: var(--space-1);
+}
+.bandAxis:first-child .axis {
+  margin-top: 0;
+}
