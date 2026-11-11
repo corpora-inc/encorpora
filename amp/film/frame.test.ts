@@ -2,7 +2,8 @@
  * The live player fits each figure once, to everything that shot will draw,
  * and draws no cast name tags. Text keeps its padding, wrapped lines keep
  * their leading, and a highlight grows in place without pushing a neighbour.
- * A handful of real exports, at phone and desktop, in both themes.
+ * A handful of real exports, and a film whose shots draw scene specs of their
+ * own (fixtures/scene-shot.ts), at phone and desktop, in both themes.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -14,8 +15,8 @@ import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
 import { resolveCast, runsOf, TURN_GAP, voiceBindings } from "./cast";
 import { scriptSchema, type Script, type Timing } from "./schema";
+import { SCENE_FILM_ID, sceneFilm } from "./fixtures/scene-shot";
 
-const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
 
 /** The same word-timing guess `make.ts --dry` uses, so a held highlight is the same moment. */
 function dryTiming(script: Script): Timing {
@@ -65,7 +66,11 @@ function heldAt(say: string, includes: string[]): number {
   }
   throw new Error(`No held highlight for ${includes.join(", ")}`);
 }
-const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things"];
+const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
+/** Films built here rather than exported: shots that draw a scene spec of their own. */
+const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm() };
+const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
+const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
 const VIEWS = [
   { width: 390, height: 844, layout: "tall" },
@@ -79,7 +84,7 @@ let origin = "";
 const worst = { centre: 0, margin: Infinity, pad: Infinity, line: Infinity, where: "" };
 
 function timesOf(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { figure?: unknown }[] };
     timing: { shots: { start: number; end: number }[][] };
   };
@@ -108,6 +113,11 @@ beforeAll(async () => {
           if (m[1] === "count-out-objects--va") {
             res.setHeader("content-type", "application/json");
             res.end(vaPayload);
+            return;
+          }
+          if (BUILT[m[1]!]) {
+            res.setHeader("content-type", "application/json");
+            res.end(JSON.stringify(BUILT[m[1]!]));
             return;
           }
           const file = path.join(FIX, `${m[1]}.json`);
@@ -402,7 +412,7 @@ const MOTION_DUR: Record<string, number> = {
 
 /** Times when an authored motion can change a figure element's place. */
 function motionWindows(id: string) {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { beats: { do?: { do: string; at?: string; nth?: number; dur?: number }[] }[] }[] };
     timing: { shots: { start: number; words: { text: string; start: number }[] }[][] };
   };
@@ -433,7 +443,7 @@ function motionWindows(id: string) {
 }
 
 function shotSpans(id: string) {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { figure?: unknown }[] };
     timing: { duration: number; shots: { start: number }[][] };
   };
@@ -618,7 +628,7 @@ const PHONE = [
 
 /** Times across the whole film, plus the founder's phone frame at 11:31. */
 function phoneSamples(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as { timing: { duration: number } };
+  const lesson = lessonOf(id) as { timing: { duration: number } };
   const times: number[] = [];
   for (let t = 0.4; t <= lesson.timing.duration; t += 2) times.push(Math.round(t * 10) / 10);
   const at = 11 * 60 + 31;
@@ -720,7 +730,7 @@ test("on a phone, no text sits behind a card or is cut in half", async () => {
 
 /** One moment per shot where a run of steps is showing its reason labels. */
 function stackTimes(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     script: { shots: { beats: { do?: { do: string; note?: string }[] }[] }[] };
     timing: { shots: { end: number }[][] };
   };
@@ -852,7 +862,7 @@ test("derivation labels share one edge and equations do not overlap", async () =
 
 /** One time near the end of every beat, when that beat's marks are on screen. */
 function beatEnds(id: string): number[] {
-  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+  const lesson = lessonOf(id) as {
     timing: { shots: { start: number; end: number }[][] };
   };
   const times: number[] = [];
