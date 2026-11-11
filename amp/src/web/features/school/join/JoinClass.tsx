@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import { Button, buttonClass } from "../../../ui/Button";
+import { useId, useState } from "react";
+import { Button } from "../../../ui/Button";
 import { Dialog } from "../../../ui/Dialog";
-import { Menu, MenuItem } from "../../../ui/Menu";
 import { QrCode } from "../../../ui/QrCode";
 import { Toast } from "../../../ui/Toast";
 import { useQuery } from "@tanstack/react-query";
@@ -95,6 +94,7 @@ export function JoinClass({
           <strong className={styles.code} data-class-code={code}>
             {shown}
           </strong>
+          {newCode}
         </span>
         <span className={`${styles.group} ${styles.wide}`}>
           <CopyButton
@@ -125,7 +125,6 @@ export function JoinClass({
           >
             <Glyph kind="qr" />
           </button>
-          {newCode}
         </span>
         <Dialog open={qrOpen} onOpenChange={setQrOpen} title={shown}>
           <div className={styles.qrSheet}>
@@ -158,6 +157,7 @@ export function JoinClass({
           <strong className={styles.code} data-class-code={code}>
             {shown}
           </strong>
+          {newCode}
         </div>
         <div className={`${styles.group} ${styles.linkRow}`}>
           <span className={styles.link}>
@@ -186,12 +186,11 @@ export function JoinClass({
             <Link
               to="/school/$org/classes/$class/cards"
               params={place}
-              className={`${buttonClass("quiet")} ${styles.quietAct}`}
+              className={styles.act}
             >
               Print sign-in cards
             </Link>
           )}
-          {newCode}
         </div>
         <p className={styles.fallback}>
           Or open {location.host}/join and type the code.
@@ -202,9 +201,10 @@ export function JoinClass({
   );
 }
 
-/** New code, kept out of the way in More: the old code, its link and its QR
- * stop working, so it asks first and says so. While sign-in is paused it is
- * the way on, so it shows as a button of its own. */
+/** New code, a quiet action beside the code itself. The old code, its link
+ * and its QR stop working, so it asks first, in place: a small panel under
+ * the line, over what follows, so nothing moves. While sign-in is paused it
+ * is the way on, so it shows as a button of its own. */
 function NewCode({
   place,
   code,
@@ -221,6 +221,7 @@ function NewCode({
   const [asking, setAsking] = useState(false);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
+  const confirmId = useId();
   async function make() {
     try {
       const { joinCode } = await rotate.mutateAsync();
@@ -233,52 +234,45 @@ function NewCode({
       );
     }
   }
-  let trigger: ReactNode;
-  if (locked)
-    trigger = (
-      <Button
-        variant="primary"
-        className={styles.primaryAct}
-        onClick={() => setAsking(true)}
-      >
-        New code
-      </Button>
-    );
-  else
-    trigger = (
-      <Menu
-        label={<Glyph kind="more" />}
-        aria-label="More for the class code"
-        showChevron={false}
-        triggerClassName={`${styles.act} ${styles.iconOnly}`}
-      >
-        <MenuItem onSelect={() => setAsking(true)}>New class code</MenuItem>
-      </Menu>
-    );
   return (
-    <>
-      {trigger}
-      <Dialog
-        open={asking}
-        onOpenChange={(open) => {
-          if (!rotate.isPending) setAsking(open);
-        }}
-        title="Make a new class code?"
-      >
-        <div className={styles.confirm}>
-          <p>
-            {code} stops working right away, and so do its link and QR code.{" "}
-            {family ? "Children" : "Students"} already signed in stay signed in,
-            and printed cards keep working.
-          </p>
-          <div className={styles.confirmActions}>
-            <Button
-              variant="secondary"
-              disabled={rotate.isPending}
-              onClick={() => setAsking(false)}
-            >
-              Cancel
-            </Button>
+    <span className={styles.newCode}>
+      {locked ? (
+        <Button
+          variant="primary"
+          className={styles.primaryAct}
+          aria-expanded={asking}
+          aria-controls={confirmId}
+          onClick={() => setAsking(true)}
+        >
+          New code
+        </Button>
+      ) : (
+        <button
+          type="button"
+          className={styles.newCodeAct}
+          aria-expanded={asking}
+          aria-controls={confirmId}
+          onClick={() => setAsking((open) => !open)}
+        >
+          New code
+        </button>
+      )}
+      {asking && (
+        <span
+          id={confirmId}
+          role="group"
+          aria-label={`Make a new code in place of ${code}?`}
+          className={styles.confirmPop}
+          onKeyDown={(event) => {
+            if (event.key === "Escape" && !rotate.isPending) setAsking(false);
+          }}
+        >
+          <span className={styles.confirmText}>
+            The old code and link stop working.{" "}
+            {family ? "Children" : "Students"} already in the class aren’t
+            affected.
+          </span>
+          <span className={styles.confirmActions}>
             <Button
               variant="primary"
               aria-busy={rotate.isPending}
@@ -287,11 +281,18 @@ function NewCode({
             >
               Make a new code
             </Button>
-          </div>
-        </div>
-      </Dialog>
+            <Button
+              variant="secondary"
+              disabled={rotate.isPending}
+              onClick={() => setAsking(false)}
+            >
+              Keep
+            </Button>
+          </span>
+        </span>
+      )}
       <Toast message={status} tone="status" onDismiss={() => setStatus("")} />
       <Toast message={error} onDismiss={() => setError("")} />
-    </>
+    </span>
   );
 }
