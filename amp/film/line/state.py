@@ -57,7 +57,7 @@ def command_lock(config, command, identifier=None, out=None):
             stack.enter_context(coordinator_lock(root/'locks'/('facts-'+key+'.lock')))
         if command == 'voice':
             stack.enter_context(coordinator_lock(root/'voice.lock'))
-        elif command in ('predict', 'board', 'release', 'unrelease'):
+        elif command in ('predict', 'board', 'release', 'unrelease', 'follow-up'):
             stack.enter_context(shared_lock(config))
         yield
 

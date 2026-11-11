@@ -5,14 +5,14 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../../browser-security.mjs";
-import { heldHighlights } from "../stage.ts";
+import { heldFrames } from "../held-frames.ts";
 
 const { values } = parseArgs({ options: {
   items: { type: "string" }, url: { type: "string" }, out: { type: "string" },
 } });
 if (!process.env.FILM_LINE_HEAVY) throw new Error("Run capture through the configured heavy-command gate");
 if (!values.items || !values.url || !values.out) throw new Error("Required: --items <private-json> --url <local-player-url> --out <private-directory>");
-type CaptureItem = { id: string; payload: string; times?: number[] };
+type CaptureItem = { id: string; payload: string; times?: number[]; lights?: boolean };
 type Payload = { id: string; script: { id: string; cast?: Record<string, Record<string, unknown>> }; timing: {
   duration: number; voices?: Record<string, string>; shots: { start: number; end: number; words: unknown[] }[][];
 }; [key: string]: unknown };
@@ -103,24 +103,10 @@ try {
         await frame.screenshot({ path: join(directory, String(index).padStart(3,'0')+'.jpg'), type: 'jpeg', quality: 94, animations: 'disabled' });
       }
       // Held lights, beside the beat-end frames. Names match make.ts --board, so a reader of 000.jpg is unchanged.
-      const lights = heldHighlights(payload.script as never, payload.timing as never);
-      const byBeat = new Map<number, typeof lights>();
-      for (const light of lights) {
-        const list = byBeat.get(light.beat) ?? [];
-        list.push(light);
-        byBeat.set(light.beat, list);
-      }
-      const slug = (word: string) => word.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'highlight';
-      const lit: { beat: number; t: number; word: string; file: string }[] = [];
-      for (const [beat, mine] of [...byBeat.entries()].sort((a, b) => a[0] - b[0])) {
-        for (let k = 0; k < mine.length; k++) {
-          const light = mine[k]!;
-          const name = slug(light.word);
-          const file = mine.length > 1 ? `${String(beat).padStart(3, '0')}-${k + 1}-${name}.jpg` : `${String(beat).padStart(3, '0')}-${name}.jpg`;
-          await seek(light.t);
-          await frame.screenshot({ path: join(litDirectory, file), type: 'jpeg', quality: 94, animations: 'disabled' });
-          lit.push({ beat, t: light.t, word: light.word, file });
-        }
+      const lit = item.lights === false ? [] : heldFrames(payload.script as never, payload.timing as never);
+      for (const light of lit) {
+        await seek(light.t);
+        await frame.screenshot({ path: join(litDirectory, light.file), type: 'jpeg', quality: 94, animations: 'disabled' });
       }
       await Promise.all(responseReads);
       if (errors.length) throw new Error('Player errors: '+errors.join('; '));

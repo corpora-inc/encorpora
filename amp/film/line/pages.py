@@ -85,15 +85,16 @@ def queue_page(config):
             'review': relative_url(live/'review.html', path.parent)}
     body = '''<style>
 .q-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--color-border)}
-.q-main{min-width:0;flex:1}.q-row a{font-size:18px;font-weight:600;min-height:44px;min-width:44px;display:inline-flex;align-items:center;text-decoration:none}
+.q-main{min-width:0;flex:1}.q-row a{font-size:18px;font-weight:600;min-height:44px;min-width:44px;display:inline-flex;align-items:center;text-decoration:none;color:var(--color-on-surface)}
 .q-row a:hover,.q-row a:focus-visible{text-decoration:underline}
-.q-meta,.q-note,.q-side{color:var(--color-muted-text);font-size:14px}.q-note{margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
-.q-side{flex:none;text-align:right}.q-score{font-size:26px;font-weight:700;color:var(--color-on-surface)}
+.q-meta,.q-side{color:var(--color-muted-text);font-size:14px}.q-meta{margin-top:2px}
+.q-side{flex:none;text-align:right;font-variant-numeric:tabular-nums}
 .q-row a.q-watch{box-sizing:border-box;padding:0 18px;border-radius:999px;background:var(--color-primary);color:var(--color-on-primary);font-size:16px}
 .q-row a.q-watch:hover{background:var(--color-primary-hover)}.q-list{min-height:60px}footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
-</style><p>Watch a film, give it one score and a note.</p>
-<h2>Waiting for your score</h2><div class="q-list" id="waiting" aria-live="polite">Loading…</div>
-<h2>Scored</h2><div class="q-list" id="scored"></div>'''
+.q-empty{color:var(--color-muted-text);padding:14px 0}h2{margin:28px 0 4px}
+</style><p>The review queue. Watch a film, give it one score and a note.</p>
+<h2>Waiting for your score</h2><div class="q-list" id="waiting" aria-live="polite"><p class="q-empty">Loading…</p></div>
+'''
     body += '<script>const urls='+script_json(urls)+';'+(Path(__file__).parent/'queue.js').read_text()+'</script>'
     if (live/'board.html').exists():
         body += '<footer><a href="'+html.escape(relative_url(live/'board.html', path.parent), quote=True)+'">Scoreboard</a></footer>'

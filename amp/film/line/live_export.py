@@ -97,8 +97,6 @@ def export_worker(config, row, workspace):
     with shared_lock(config):
         existing = read_json(destination)
         released = any(r['id'] == row['id'] for r in read_json(data/'queue.json', []))
-        if released and existing is not None and existing != payload:
-            raise RuntimeError('Unrelease this film before exporting a different edition')
         audio = data/(row['id']+'.m4a')
         temporary = audio.with_suffix('.m4a.tmp')
         shutil.copyfile(stage/(row['id']+'.m4a'), temporary)
@@ -107,6 +105,12 @@ def export_worker(config, row, workspace):
         prior = read_json(root/'films'/row['id']/'export.json', {})
         if existing == payload and prior.get('added'):
             index_row['added'] = prior['added']
+        if released:
+            # Publishing needs the current edition for director follow-ups.
+            # The queue retains the release record until an explicit re-release.
+            index = read_json(data/'index.json', [])
+            write_json(data/'index.json', [
+                {**r, **index_row} if r['id'] == row['id'] else r for r in index])
     base = config['player_url'].rstrip('/')+'/data/'
     with urllib.request.urlopen(base+row['id']+'.json', timeout=20) as response:
         if json.load(response) != payload:

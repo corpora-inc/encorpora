@@ -15,10 +15,11 @@ const out = mkdtempSync(join(tmpdir(), 'film-line-browser-'));
 const film = 'example--waiting', scored = 'example--scored';
 const longTitle = 'Reading a long mathematical explanation with a figure and several worked examples';
 let browser: Browser, server: Server, base = '', writes = 0;
-let reviews: Record<string, unknown> = { [scored]: { score: 9, added: 'one', summary: 'Synthetic review text.' } };
+const released = '2026-01-01T10:00:00Z';
+let reviews: Record<string, unknown> = { [scored]: { score: 9, at: released, added: 'one', summary: 'Synthetic review text.' } };
 const queue = [
-  { id: film, title: longTitle, level: 'Kindergarten', seconds: 25, added: 'one' },
-  { id: scored, title: 'A scored example', level: 'Grade 8', seconds: 25, added: 'one' },
+  { id: film, title: longTitle, level: 'Kindergarten', seconds: 25, added: released, released },
+  { id: scored, title: 'A scored example', level: 'Grade 8', seconds: 25, added: released, released },
 ];
 function wave() {
   const samples = 8000 * 25, buffer = Buffer.alloc(44+samples*2);
@@ -123,18 +124,39 @@ it('queue and scoreboard fit four widths in both themes with readable Watch labe
   }
   writeFileSync('/tmp/film-line-browser-evidence.txt', out+'\n');
 }, 60_000);
-it('queue refreshes scores, treats stale and cleared scores as waiting, and line redirects to root', async () => {
+it('queue waits for a score since release, preserves corrections, and requests a new score on re-release', async () => {
   const page = await browser.newPage();
   await page.goto(base+'/live/line.html'); await page.waitForURL(base+'/');
   await page.locator('.q-watch').waitFor();
   expect(await page.locator('#waiting .q-row').count()).toBe(1);
-  reviews = { [scored]: { score: 9, added: 'stale' }, [film]: { score: null, added: 'one' } };
+  expect(await page.locator('#scored').count()).toBe(0);
+  expect(await page.locator('body').innerText()).not.toContain('A scored example');
+  reviews = { [scored]: { score: 9, at: '2026-01-01T09:59:59Z' }, [film]: { score: null, at: released } };
   await page.reload(); await page.locator('.q-watch').first().waitFor();
   expect(await page.locator('#waiting .q-row').count()).toBe(2);
-  reviews[film] = { score: 0, added: 'one' };
+  reviews[film] = { score: 0, at: released, added: 'older-export' };
   await page.evaluate(() => dispatchEvent(new Event('pageshow')));
-  await page.locator('#scored .q-score').waitFor();
-  expect(await page.locator('#scored .q-score').innerText()).toBe('0');
+  await page.waitForFunction(() => document.querySelectorAll('#waiting .q-row').length === 1);
+  // A correction changes export identity, not its release date.
+  queue[0]!.added = '2026-01-02T10:00:00Z';
+  await page.reload(); await page.locator('.q-watch').waitFor();
+  expect(await page.locator('#waiting .q-row').count()).toBe(1);
+  queue[0]!.released = '2026-01-03T10:00:00Z';
+  await page.reload(); await page.locator('.q-watch').first().waitFor();
+  expect(await page.locator('#waiting .q-row').count()).toBe(2);
+  reviews[film] = { score: 8, at: '2026-01-03T12:00:00+02:00' };
+  await page.reload(); await page.locator('.q-watch').waitFor();
+  expect(await page.locator('#waiting .q-row').count()).toBe(1);
+  // Legacy entries fall back to added; invalid and missing review times cannot clear them.
+  queue[0]!.released = '';
+  for (const review of [{ score: 8 }, { score: 8, at: 'invalid' }, { score: '8', at: released }]) {
+    reviews[film] = review;
+    await page.reload(); await page.locator('.q-watch').first().waitFor();
+    expect(await page.locator('#waiting .q-row').count()).toBe(2);
+  }
+  reviews[film] = { score: 8, at: queue[0]!.added };
+  await page.reload(); await page.locator('.q-watch').waitFor();
+  expect(await page.locator('#waiting .q-row').count()).toBe(1);
   await page.locator('.q-watch').click();
   expect(page.url()).toContain('/live/review.html?id=example--scored&list=line');
   await page.close();
@@ -155,13 +177,22 @@ it('play observes audio and requested seeks, reports errors and iframe overflow,
 
 it('captures every requested moment in both player layouts', async () => {
   const source = join(out, 'payload.json'), jobs = join(out, 'captures.json');
-  writeFileSync(source, JSON.stringify({ id: film, script: { id: film }, timing: { duration: 25, shots: [[{ start: .5, end: 4, words: [] }]] } }));
+  writeFileSync(source, JSON.stringify({ id: film, script: { id: film, shots: [{ beats: [{ do: [
+    { do: 'highlight', target: 'base', at: 'Base' },
+    { do: 'highlight', target: 'base', at: 'base', nth: 2 },
+  ] }] }] }, timing: { duration: 25, shots: [[{ start: .5, end: 4, words: [
+    { text: 'Base', start: .5, end: 1 }, { text: 'base', start: 2, end: 3 },
+  ] }]] } }));
   writeFileSync(jobs, JSON.stringify([{ id: film, payload: source, times: [0, 2, 4, 6, 8] }]));
   await promisify(execFile)(process.execPath, ['--import', 'tsx', join(here, 'capture.ts'), '--items', jobs, '--url', base+'/capture/', '--out', join(out, 'captures')],
     { cwd: resolve(here, '../..'), env: { ...process.env, FILM_LINE_HEAVY: '1' }, timeout: 30_000 });
   const manifest = JSON.parse(readFileSync(join(out, 'captures', film, 'capture.json'), 'utf8'));
   expect(manifest.frames).toBe(5);
   expect(manifest.times).toEqual([0, 2, 4, 6, 8]);
+  for (const layout of manifest.layouts) {
+    expect(layout.lit.map((f: { file: string }) => f.file)).toEqual(['000-1-base.jpg', '000-2-base.jpg']);
+    for (const light of layout.lit) expect(readFileSync(join(layout.directory, 'lit', light.file)).length).toBeGreaterThan(100);
+  }
   for (const layout of ['wide', 'tall']) for (let n = 0; n < 5; n++) {
     expect(readFileSync(join(out, 'captures', film, 'board-'+layout, String(n).padStart(3, '0')+'.jpg')).length).toBeGreaterThan(100);
   }

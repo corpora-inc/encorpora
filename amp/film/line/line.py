@@ -396,6 +396,22 @@ def predict(config, identifier, score, reason):
 
 
 
+def follow_up(config, identifier, note):
+    """Record the director's response through the publisher's follow-up-only mode."""
+    film_root(config, identifier)
+    if not note.strip():
+        raise ValueError('A follow-up needs a note')
+    result = subprocess.run(
+        ['npm', 'run', 'film:publish', '--', '--follow-up', identifier, '--note', note],
+        cwd=Path(config['worktree'])/'amp', env=providers.clean_environment(),
+        text=True, capture_output=True)
+    print(result.stdout, end='')
+    print(result.stderr, end='', file=sys.stderr)
+    if result.returncode:
+        raise SystemExit(result.returncode)
+
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', default=os.environ.get('FILM_LINE_CONFIG'))
@@ -408,10 +424,12 @@ def main(argv=None):
     p.add_argument('--model', choices=providers.MODELS, required=True)
     p.add_argument('--effort', choices=('low', 'medium', 'high', 'xhigh'), required=True)
     p.add_argument('--concept'); p.add_argument('--reference', action='append', nargs='+', default=[])
-    for name in ('voice', 'export', 'predict', 'revise', 'look', 'play', 'release', 'unrelease', 'adopt'):
+    for name in ('voice', 'export', 'predict', 'revise', 'look', 'play', 'release', 'unrelease', 'adopt', 'follow-up'):
         p = commands.add_parser(name); p.add_argument('--film', required=True)
         if name == 'predict':
             p.add_argument('--score', type=float, required=True); p.add_argument('--reason', required=True)
+        if name == 'follow-up':
+            p.add_argument('--note', required=True)
         if name == 'revise':
             p.add_argument('--notes', required=True)
         if name == 'release':
@@ -450,6 +468,8 @@ def main(argv=None):
         elif args.command in ('voice', 'export'):
             recipe = finish_film(config, args.film, args.command)
             print(recipe.get('review_url', recipe['status']))
+        elif args.command == 'follow-up':
+            follow_up(config, args.film, args.note)
         elif args.command == 'predict':
             predict(config, args.film, args.score, args.reason)
         elif args.command in ('release', 'unrelease'):

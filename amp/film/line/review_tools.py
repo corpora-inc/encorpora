@@ -29,6 +29,14 @@ def checked_payload(local, workspace):
     raise ValueError('No checked timing for the current screenplay; run look to recheck it')
 
 
+def capture_moments(local, source, payload):
+    result = _run([local.get('node', 'node'), '--import', 'tsx', str(HERE/'highlights.ts'), str(source)],
+                  Path(local['worktree'])/'amp', clean_environment())
+    if result['exit_code']:
+        raise RuntimeError(result['stderr'][-6000:] or result['stdout'][-6000:])
+    return moments(payload, json.loads(result['stdout']))
+
+
 def tile_sheets(frames, metadata, destination, prefix, *, tall=False):
     """Twelve labeled tiles per page, keeping every frame, including singletons."""
     destination.mkdir(parents=True, exist_ok=True)
@@ -79,7 +87,7 @@ def look_film(config, identifier):
 def look_worker(local):
     root = Path(local['root']); workspace = workspace_for(local, local['film']['id'])
     source, payload = checked_payload(local, workspace)
-    marks = moments(payload)
+    marks = capture_moments(local, source, payload)
     out = root/'look'
     if out.exists():
         subprocess.run(['trash', str(out)], check=True, capture_output=True)
@@ -89,20 +97,16 @@ def look_worker(local):
     report = {'screenplay_sha256': digest(workspace/'screenplay.json'), 'payload_sha256': digest(source),
               'timing_source': payload.get('timing_source', 'voice' if 'voiced' in source.parts else 'estimated'),
               'script': str(out/'script.txt'), 'sheets': {}, 'moments': marks, **notes}
-    jobs = []
     cached = {}
-    for kind, times in marks.items():
-        if not times:
-            continue
-        # Newer kits can supply held highlights directly. Only use a complete
-        # set generated with this payload; otherwise capture the installed player.
-        if kind == 'lit':
-            for layout, folder in (('wide', 'board'), ('tall', 'board-tall')):
-                files = sorted((source.parent/folder/'lit').glob('*.jpg'))
-                if len(files) == len(times) and all(p.stat().st_mtime >= source.stat().st_mtime for p in files):
-                    cached[layout] = files
-        if kind != 'lit' or len(cached) != 2:
-            jobs.append({'id': local['film']['id']+'-'+kind, 'payload': str(source), 'times': [m['time'] for m in times]})
+    for layout, folder in (('wide', 'board'), ('tall', 'board-tall')):
+        files = [source.parent/folder/'lit'/m['file'] for m in marks['lit']]
+        if all(p.is_file() and p.stat().st_mtime >= source.stat().st_mtime for p in files):
+            cached[layout] = files
+    # The beat capture also produces the kit's lit/ frames; the filmstrip needs no second lit pass.
+    jobs = [{'id': local['film']['id']+'-'+kind, 'payload': str(source),
+             'times': [m['time'] for m in marks[kind]],
+             'lights': kind == 'beats' and len(cached) != 2}
+            for kind in ('beats', 'filmstrip') if marks[kind]]
     if jobs:
         job_path = out/'captures.json'; write_json(job_path, jobs)
         env = clean_environment(); env['FILM_LINE_HEAVY'] = '1'
@@ -113,18 +117,22 @@ def look_worker(local):
             raise RuntimeError(result['stderr'][-6000:] or result['stdout'][-6000:])
     for kind, times in marks.items():
         for layout in ('wide', 'tall'):
-            files = cached.get(layout) if kind == 'lit' else None
-            if files:
-                target = out/'frames'/('cached-lit-'+layout); target.mkdir(parents=True)
+            files = cached.get(layout) if kind == 'lit' and len(cached) == 2 else None
+            if files is not None:
+                target = out/'frames'/('cached-'+layout)/'lit'; target.mkdir(parents=True)
                 copied = []
-                for n, file in enumerate(files):
-                    dest = target/f'{n:03}.jpg'; shutil.copyfile(file, dest); copied.append(dest)
+                for file in files:
+                    dest = target/file.name; shutil.copyfile(file, dest); copied.append(dest)
                 files = copied
+            elif kind == 'lit':
+                folder = out/'frames'/(local['film']['id']+'-beats')/('board-'+layout)/'lit'
+                files = [folder/m['file'] for m in times]
             else:
                 files = sorted((out/'frames'/(local['film']['id']+'-'+kind)/('board-'+layout)).glob('*.jpg'))
-            if len(files) != len(times):
+            if len(files) != len(times) or any(not f.is_file() for f in files):
                 raise RuntimeError('Missing '+kind+' frames in '+layout)
-            report['sheets'][kind+'-'+layout] = tile_sheets(files, times, out, kind+'-'+layout, tall=layout=='tall')
+            prefix = layout+'-lit' if kind == 'lit' else kind+'-'+layout
+            report['sheets'][kind+'-'+layout] = tile_sheets(files, times, out, prefix, tall=layout=='tall')
     for path in (workspace/'check.json', root/'films'/local['film']['id']/'check.json'):
         check = read_json(path, {})
         write_json(path, {**check, **notes, 'timing_source': report['timing_source']})
@@ -152,8 +160,9 @@ def play_film(config, identifier):
 def play_worker(local):
     root = Path(local['root']); identifier = local['film']['id']
     out = root/'look'; out.mkdir(parents=True, exist_ok=True)
-    payload = read_json(Path(local['live_data'])/(identifier+'.json'))
-    marks = moments(payload)
+    source = Path(local['live_data'])/(identifier+'.json')
+    payload = read_json(source)
+    marks = capture_moments(local, source, payload)
     ends = marks['beats']; step = max(1, len(ends)//8)
     times = sorted({m['time'] for m in marks['lit']+ends[::step][:8]})
     job = {'url': urljoin(local['review_url'], 'review.html?id='+identifier+'&list=line'),

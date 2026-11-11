@@ -63,13 +63,13 @@ def test_board_persists_between_beats_and_shots_and_pauses_are_not_speech():
     assert mechanical_notes(p)['notes'] == []
 
 
-def test_lit_moments_include_every_occurrence_and_filmstrip_covers_duration():
+def test_moments_use_kit_lights_and_filmstrip_covers_duration():
     p = payload([{'speaker': 'teacher', 'say': 'Base then base then base.', 'do': [
         {'do': 'problem', 'text': 'Base'}, {'do': 'highlight', 'target': 'base', 'at': 'base', 'nth': 2},
         {'do': 'scene', 'at': 'base', 'nth': 3, 'actions': [{'do': 'emphasize', 'target': 'base'}]},
     ]}])
-    marks = moments(p)
-    assert [m['time'] for m in marks['lit']] == [3.05, 5.05]
+    marks = moments(p, [{'beat': 0, 't': 3.2, 'file': '000-base.jpg', 'word': 'base'}])
+    assert marks['lit'] == [{'shot': 1, 'beat': 1, 'time': 3.2, 'file': '000-base.jpg', 'word': 'base'}]
     assert [m['time'] for m in marks['filmstrip']] == [0, 2, 4, 6]
     assert '1. Shot 1, beat 1' in script_text(p)
     assert 'teacher\nBase then base' in script_text(p) and 'On screen (problem): Base' in script_text(p)
@@ -90,6 +90,8 @@ def test_look_uses_current_voice_timing_and_updates_check_notes(setup, monkeypat
     providers.write_json(root/'films'/args.film/'voice-run.json', {'exit_code': 0})
     assert review_tools.checked_payload(local, workspace)[0] == voiced
     def capture(command, *a):
+        if 'highlights.ts' in command[3]:
+            return {'exit_code': 0, 'stdout': '[]'}
         jobs = read_json(command[command.index('--items')+1])
         dest = Path(command[command.index('--out')+1])
         for job in jobs:
@@ -128,3 +130,54 @@ def test_overview_of_empty_column_does_not_hide_empty_board_note():
     p = payload([{'say': 'One.', 'do': [{'do': 'write', 'tex': '1'}]},
                  {'say': 'Here is a long explanation with nothing written.', 'do': [{'do': 'clear'}, {'do': 'overview'}]}])
     assert any(n['kind'] == 'empty-board' for n in mechanical_notes(p)['notes'])
+
+
+@pytest.mark.parametrize('cache', ['complete', 'partial', 'stale', 'wrong-name', 'absent'])
+def test_look_uses_named_kit_lights_without_a_second_capture(setup, monkeypatch, cache):
+    import json
+    import os
+    config, args, _, _ = setup
+    line.write_film(config, args)
+    root, local, _, workspace = line.existing_film(config, args.film)
+    script = read_json(workspace/'screenplay.json')
+    p = payload(script['shots'][0]['beats']); p['script'] = script
+    source = workspace/'check-output'/args.film/'line-payload.json'
+    providers.write_json(source, p)
+    lights = [{'beat': 0, 't': 1.1, 'word': 'two', 'file': '000-two.jpg'}]
+    if cache != 'absent':
+        for folder in ('board', 'board-tall'):
+            if cache == 'partial' and folder == 'board-tall':
+                continue
+            path = source.parent/folder/'lit'/('000-other.jpg' if cache == 'wrong-name' else '000-two.jpg')
+            path.parent.mkdir(parents=True)
+            path.write_bytes(b'cached')
+            if cache == 'stale':
+                os.utime(path, (1, 1))
+    def capture(command, *a):
+        if 'highlights.ts' in command[3]:
+            return {'exit_code': 0, 'stdout': json.dumps(lights)}
+        jobs = read_json(command[command.index('--items')+1])
+        assert [j['id'] for j in jobs] == [args.film+'-beats', args.film+'-filmstrip']
+        assert [j['lights'] for j in jobs] == [cache != 'complete', False]
+        dest = Path(command[command.index('--out')+1])
+        for job in jobs:
+            for layout in ('wide', 'tall'):
+                folder = dest/job['id']/('board-'+layout)
+                folder.mkdir(parents=True)
+                for n, _ in enumerate(job['times']):
+                    (folder/f'{n:03}.jpg').write_bytes(b'beat')
+                if job['lights']:
+                    (folder/'lit').mkdir()
+                    (folder/'lit/000-two.jpg').write_bytes(b'captured')
+        return {'exit_code': 0}
+    def tile(frames, marks, out, prefix, **kw):
+        if prefix.endswith('-lit'):
+            assert [f.name for f in frames] == ['000-two.jpg']
+            assert frames[0].read_bytes() == (b'cached' if cache == 'complete' else b'captured')
+            assert marks[0]['time'] == 1.1
+        return [str(out/(prefix+'-001.jpg'))]
+    monkeypatch.setattr(review_tools, '_run', capture)
+    monkeypatch.setattr(review_tools, 'tile_sheets', tile)
+    result = review_tools.look_worker(local)
+    for layout in ('wide', 'tall'):
+        assert Path(result['sheets']['lit-'+layout][0]).name == layout+'-lit-001.jpg'

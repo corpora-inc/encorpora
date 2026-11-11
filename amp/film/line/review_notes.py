@@ -58,22 +58,18 @@ def actions(beat, timing):
     return sorted(result, key=lambda row: row[0])
 
 
-def moments(payload):
+def moments(payload, lights=()):
     rows = list(beats(payload))
-    end, lit = [], []
+    end = []
     for i, (si, bi, beat, timing) in enumerate(rows):
         next_start = rows[i+1][3]['start'] if i+1 < len(rows) else payload['timing']['duration']
         at = max(timing['end'], min(timing['end']+.9, next_start-.05))
         if i+1 < len(rows) and rows[i+1][0] != si:
             at = max(timing['end'], min(at, next_start-.55))
         end.append({'shot': si+1, 'beat': bi+1, 'time': round(at, 3)})
-        for at, action in actions(beat, timing):
-            if action['do'] not in ('highlight', 'scene'):
-                continue
-            # Capture every explicit highlight, including repeated words. Scene
-            # timelines may emphasize several parts, so retain every scene cue.
-            held = max(at, min(at+.55, timing['end']-.05))
-            lit.append({'shot': si+1, 'beat': bi+1, 'time': round(held, 3)})
+    # The kit owns held-highlight timing; do not approximate it in Python.
+    lit = [{'shot': rows[light['beat']][0]+1, 'beat': rows[light['beat']][1]+1,
+            'time': light['t'], 'file': light['file'], 'word': light['word']} for light in lights]
     strip = [{'time': t} for t in range(0, int(payload['timing']['duration'])+1, 2)
              if t < payload['timing']['duration']]
     return {'beats': end, 'lit': lit, 'filmstrip': strip}

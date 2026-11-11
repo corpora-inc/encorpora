@@ -1,7 +1,7 @@
 """Release is the only operation that adds a film to founder-facing lists."""
 from pathlib import Path
 
-from providers import write_json
+from providers import now, write_json
 from state import read_json
 from pages import board, line_page, queue_page, queue_location
 
@@ -35,7 +35,7 @@ def release_film(config, identifier, level):
     if {**payload['script'], 'cast': current['cast']} != current:
         raise ValueError('Export the current screenplay before release')
     row = {'id': identifier, 'title': payload['title'], 'level': level.strip(),
-           'seconds': payload['timing']['duration'], 'added': receipt['added']}
+           'seconds': payload['timing']['duration'], 'added': receipt['added'], 'released': now()}
     queue = read_json(data/'queue.json', [])
     prior = next((i for i, r in enumerate(queue) if r['id'] == identifier), None)
     if prior is None:

@@ -52,9 +52,12 @@ No qualifying films means no references. The recipe records the selected IDs.
 
 `look` checks an edited screenplay if needed, then writes `<root>/<film>/look/`:
 `script.txt`, numbered/timestamped wide and tall sheets of beat ends and held
-highlights, and a filmstrip every two seconds. Sheets contain up to twelve tiles.
-Existing current `board/lit/` frames are reused; missing frames are captured from
-the installed player. `look.json` lists all sheets and the timing source.
+highlights (`wide-lit-001.jpg`, `tall-lit-001.jpg`), and a filmstrip every two
+seconds. Sheets contain up to twelve tiles.
+Current `board/lit/NNN-word.jpg` and `board-tall/lit/NNN-word.jpg` frames are
+reused by filename; missing frames are captured from the installed player using
+the kit’s held-highlight times and filenames. `look.json` lists all sheets and
+the timing source.
 Current checked voiced timing takes precedence over estimated timing.
 
 `check.json` and `look.json` carry notes, never failures, for unmatched problem
@@ -80,16 +83,34 @@ console errors, overflow and observed audio advancement; it cannot verify physic
 speaker output. It blocks review writes and masks saved scores during capture.
 `release` appends to `queue.json` in release order and generates the root queue
 and `line.html`. The latter supplies Next-button data and redirects to the root.
-Only released films appear on the scoreboard. `board` refreshes scores, adds its
-footer link to the queue and reveals an author only with a current numeric score.
+The queue shows only films without a numeric founder score dated at or after
+`released` (or `added` for older entries). Every release sets `released` to the
+current ISO time, including re-release of a listed film; its list position stays
+the same. Only released films appear on the scoreboard, which keeps score
+history. `board` refreshes scores, adds its footer link to the queue and reveals an author only with a current numeric score.
 To withdraw a film without deleting its files or reviews:
 
 ```sh
 python3 amp/film/line/line.py unrelease --film graphed-line-slope--pilot
 ```
 
-Unrelease before exporting a changed edition under the same ID. Release it again
-when ready. A new edition's timestamp prevents old scores from applying to it.
+For a correction answering the founder’s notes, revise, inspect, voice and export
+under the same ID without releasing again. Record the response with:
+
+```sh
+python3 amp/film/line/line.py follow-up --film graphed-line-slope--pilot --note "Clarified the rise and run labels."
+```
+
+`follow-up` runs `npm run film:publish -- --follow-up <id> --note <text>` from
+`amp/` in the configured worktree and reports its output and exit status. The
+publisher’s configuration selects the review directory; the command records
+`followups.json` beside `grades.json`. It publishes nothing. The line exposes no
+other publishing command. Export updates an existing publishing index entry
+with the corrected edition. Export and follow-up preserve the queue’s release
+record, so a correction does not request another score.
+
+For a remake requiring a new score, release again when ready. Use `unrelease`
+while preparing it if it should be hidden from the queue and scoreboard.
 To register an external author's screenplay against this checkout's kit:
 
 ```sh
