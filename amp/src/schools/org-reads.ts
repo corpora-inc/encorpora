@@ -49,13 +49,19 @@ export type OrgScope = {
   today: string;
   hour: number;
 };
-export async function orgScope(db: Database, orgId: string): Promise<OrgScope> {
+/** The org and its "today", in its own timezone, as of `now`: the clock is an
+ * input, so a weekday rule can be tested and shown on any day. */
+export async function orgScope(
+  db: Database,
+  orgId: string,
+  now: Date = new Date(),
+): Promise<OrgScope> {
   return (
     await db.query(
-      `SELECT id,name,kind,path,timezone,to_char(now() AT TIME ZONE timezone,'YYYY-MM-DD') AS today,
-         extract(hour FROM now() AT TIME ZONE timezone)::int AS hour
+      `SELECT id,name,kind,path,timezone,to_char($2::timestamptz AT TIME ZONE timezone,'YYYY-MM-DD') AS today,
+         extract(hour FROM $2::timestamptz AT TIME ZONE timezone)::int AS hour
        FROM amp_orgs WHERE id=$1`,
-      [orgId],
+      [orgId, now.toISOString()],
     )
   ).rows[0];
 }
@@ -662,8 +668,9 @@ export async function readOverview(
   orgId: string,
   actorPersonId: string | null,
   manages: boolean,
+  now: Date = new Date(),
 ): Promise<OverviewResponse> {
-  const org = await orgScope(pool, orgId);
+  const org = await orgScope(pool, orgId, now);
   const term = await termInUse(pool, org);
   const students = await studentFacts(pool, orgId, term, org.today);
   const [trend, classList, schools, unsigned, year, person] = await Promise.all(
@@ -765,8 +772,12 @@ export async function readOverview(
 }
 
 /** A district's schools, with this week's use. */
-export async function readSchools(pool: Pool, orgId: string) {
-  const org = await orgScope(pool, orgId);
+export async function readSchools(
+  pool: Pool,
+  orgId: string,
+  now: Date = new Date(),
+) {
+  const org = await orgScope(pool, orgId, now);
   const term = await termInUse(pool, org);
   const [students, schools, classes] = await Promise.all([
     studentFacts(pool, orgId, term, org.today),

@@ -60,19 +60,20 @@ export type ClassContext = {
   orgKind: string;
 };
 
-/** What a class is and when "today" is, in one read. */
+/** What a class is and when "today" is, as of `now`, in one read. */
 export async function classContext(
   db: Database,
   classId: string,
+  now: Date = new Date(),
 ): Promise<ClassContext> {
   const row = (
     await db.query(
       `SELECT c.id,c.org_id AS "orgId",o.path,c.name,c.course_bands AS "courseBands",
          c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,o.kind AS "orgKind",
-         to_char(now() AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
-         extract(hour FROM now() AT TIME ZONE o.timezone)::int AS hour
+         to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
+         extract(hour FROM $2::timestamptz AT TIME ZONE o.timezone)::int AS hour
        FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,
-      [classId],
+      [classId, now.toISOString()],
     )
   ).rows[0];
   if (!row) throw new SchoolError(404, "not_found");

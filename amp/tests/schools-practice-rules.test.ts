@@ -16,6 +16,7 @@ import {
 } from "../src/schools/org-reads";
 import { todayTodos, type TodayStudent } from "../src/schools/today";
 import { resolveWeeklyTarget } from "../src/schools/term-grades";
+import { schoolClock } from "../src/schools/clock";
 
 const MONDAY = 0;
 const TUESDAY = 1;
@@ -273,4 +274,23 @@ test("whenever a head's overview flags a class, its teacher's Today says so too"
         JSON.stringify({ size, target, today, flag }),
       );
   }
+});
+
+test("a pinned school clock is for a local preview only", () => {
+  assert.equal(schoolClock({}), undefined);
+  const now = schoolClock({ AMP_SCHOOL_NOW: "2026-11-11T15:00:00Z" })!;
+  assert.equal(now().toISOString(), "2026-11-11T15:00:00.000Z");
+  assert.throws(() =>
+    schoolClock({
+      AMP_SCHOOL_NOW: "2026-11-11T15:00:00Z",
+      NODE_ENV: "production",
+    }),
+  );
+  assert.throws(() =>
+    schoolClock({
+      AMP_SCHOOL_NOW: "2026-11-11T15:00:00Z",
+      AMP_HOST: "0.0.0.0",
+    }),
+  );
+  assert.throws(() => schoolClock({ AMP_SCHOOL_NOW: "Wednesday" }));
 });

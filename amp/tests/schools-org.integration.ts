@@ -8,6 +8,7 @@ import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { ERASE_BATCH } from "../src/schools/privacy.js";
 import { weeklyTargetsFor } from "../src/schools/term-grades.js";
+import { readOverview } from "../src/schools/org-reads.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
@@ -307,6 +308,34 @@ test(
             assert.ok(item.action.label && item.action.org);
             assert.ok(item.rule, item.id);
           }
+        },
+      );
+
+      await t.test(
+        "little practice is decided by the clock it's given: not Tuesday, from Wednesday",
+        async () => {
+          // Noon UTC on this week's Tuesday and Wednesday: the rows above are
+          // in this week whatever day the suite runs.
+          const at = (days: number) =>
+            new Date(`${plus(week, days)}T12:00:00Z`);
+          const flags = async (now: Date) =>
+            (
+              await readOverview(db, alder.id, null, true, now)
+            ).attention.filter((item) => item.id.startsWith("little-practice"));
+          assert.deepEqual(await flags(at(1)), []);
+          const wednesday = await flags(at(2));
+          const math = wednesday.find((item) =>
+            item.title.startsWith("Grade 5 Math"),
+          )!;
+          // Amara's 21 minutes and Caleb's 6 problems practiced; Gia didn't.
+          // The median, 0 minutes, is under 9 (a quarter of 60 by Wednesday).
+          assert.equal(
+            math.detail,
+            "2 of 3 have practiced · median 0 of 60 min.",
+          );
+          assert.match(math.rule!, /\(9 minutes by today\)/);
+          const view = await readOverview(db, alder.id, null, true, at(2));
+          assert.equal(view.today, plus(week, 2));
         },
       );
 
