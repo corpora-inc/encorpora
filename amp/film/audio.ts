@@ -7,7 +7,12 @@
  * every edit must sit in silence, and no stretch of digital silence may meet
  * sound abruptly. A narration that fails is never rendered.
  *
+ * Sounds that belong to no word (a hiss, click or breath left in a pause) are
+ * found here as "islands" of sound; strays.ts decides, from the words, which
+ * of them are strays.
+ *
  * Run on any WAV to scan it:   npx tsx film/audio.ts narration.wav
+ * It has no word timings, so it lists lone sounds in pauses as suspicious.
  */
 import { readFileSync } from "node:fs";
 
@@ -25,6 +30,27 @@ const FADE = Math.round(SR * 0.005);
 /** Fade at the very start and end of a take. */
 export const TAKE_FADE = Math.round(SR * 0.02);
 
+/**
+ * A sound in a pause is heard when it stays at or above EDGE (-42 dBFS, the level
+ * the edge check already treats as audible against digital silence) for
+ * AUDIBLE_FOR, or reaches SPEECH even briefly (a click). Measured at the narration's
+ * speaking level (-21 dBFS, see `even`), the stray sounds heard in finished films
+ * stayed at or above -42 dBFS for 40 to 90 ms and peaked at -36 to -39 dBFS
+ * (sample peaks 1,400 to 1,900); room tone and the decay of a word stay under it.
+ */
+export const AUDIBLE_FOR = 0.03;
+/** A 10 ms window this loud (-30 dBFS, 9 dB under the speaking level) is as loud as speech. */
+export const SPEECH = 0.0316;
+/**
+ * A 10 ms window with at least this share of its energy under about 1 kHz is
+ * voice (a vowel, a nasal, even a breathy vowel); hiss, a breath, a click or the
+ * burst of a consonant has little there. Measured on the cached takes: vowels and
+ * the unstressed last syllables left as islands ("seven", "number", "circle")
+ * 30 to 90 %, a breathy "easy" 25 %; breaths 3 to 7 %; every hiss, loose "s" and
+ * released "t" under 5 %.
+ */
+export const VOICE_LOW = 0.1;
+
 /** RMS of each 10 ms window. */
 export function envelope(pcm: Int16Array) {
   const n = Math.floor(pcm.length / HOP), env = new Float32Array(n);
@@ -34,6 +60,17 @@ export function envelope(pcm: Int16Array) {
     env[i] = Math.sqrt(s / HOP);
   }
   return env;
+}
+
+/** One speaking level for every take: -21 dBFS while speaking, peaks under -1 dBFS. */
+export function even(src: Int16Array) {
+  const env = envelope(src), loud = [...env].filter((x) => x > 0.02);
+  if (!loud.length) return Int16Array.from(src);
+  const level = Math.sqrt(loud.reduce((a, x) => a + x * x, 0) / loud.length);
+  let peak = 1;
+  for (const v of src) peak = Math.max(peak, Math.abs(v));
+  const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
+  return Int16Array.from(src, (v) => Math.round(v * gain));
 }
 
 /** Silent stretches of at least `min` seconds between `from` and `to`, in seconds. */
@@ -59,23 +96,119 @@ export function fadeAround(pcm: Int16Array, at: number, before = true, after = t
   }
 }
 
+/**
+ * `pcm` without the stretches `cuts` (in seconds; each must be measured silence),
+ * every join faded. `map` carries a time in `pcm` to the new audio; `joins` are
+ * the new audio's edits, in seconds.
+ */
+export function cutOut(pcm: Int16Array, cuts: [number, number][]) {
+  const sorted = [...cuts].sort((x, y) => x[0] - y[0]);
+  const map = (t: number) => {
+    let d = 0;
+    for (const [a, b] of sorted) { if (t >= b) d += b - a; else if (t > a) d += t - a; }
+    return t - d;
+  };
+  const parts: Int16Array[] = [];
+  let prev = 0;
+  for (const [a, b] of sorted) { parts.push(pcm.subarray(Math.round(prev * SR), Math.round(a * SR))); prev = b; }
+  parts.push(pcm.subarray(Math.round(prev * SR)));
+  const out = new Int16Array(parts.reduce((s, p) => s + p.length, 0));
+  const joins: number[] = [];
+  let at = 0;
+  for (const p of parts) {
+    out.set(p, at);
+    if (at) { joins.push(at / SR); fadeAround(out, at); }
+    at += p.length;
+  }
+  return { pcm: out, joins, map };
+}
+
+/**
+ * Make `from`..`to` seconds digital silence, in place, fading out over the 5 ms
+ * before it and in over the 5 ms after it, so no edge is made. Call it only where
+ * the 5 ms on each side are silent, and the fades are inaudible.
+ */
+export function silence(pcm: Int16Array, from: number, to: number) {
+  const a = Math.max(0, Math.round(from * SR)), b = Math.min(pcm.length, Math.round(to * SR));
+  if (b <= a) return;
+  pcm.fill(0, a, b);
+  fadeAround(pcm, a, true, false);
+  fadeAround(pcm, b, false, true);
+}
+
+/**
+ * A stretch of sound, in seconds: its loudest 10 ms, how long it is heard, how
+ * long it is heard as voice (VOICE_LOW), and its share of energy under 1 kHz.
+ */
+export type Sound = { start: number; end: number; peak: number; heard: number; voiced: number; low: number };
+/** Heard in a pause: AUDIBLE_FOR at or above EDGE, or as loud as speech even briefly. */
+export const isHeard = (s: Sound) => s.heard >= AUDIBLE_FOR - 1e-9 || s.peak >= SPEECH;
+/**
+ * Noise rather than voice: hiss, a breath, a click, the burst of a consonant.
+ * Any word has a vowel or a voiced consonant heard for AUDIBLE_FOR, or (a blip
+ * shorter than that) carries a tenth of its energy low; noise has neither.
+ */
+export const isNoise = (s: Sound) => s.voiced < AUDIBLE_FOR - 1e-9 && s.low < VOICE_LOW;
+
+/** The share of a 10 ms window's energy under about 1 kHz (two one-pole low-passes). */
+function lowShare(pcm: Int16Array, w: number) {
+  const a = 1 - Math.exp((-2 * Math.PI * 1000) / SR);
+  let y1 = 0, y2 = 0, low = 0, all = 0;
+  for (let k = w * HOP; k < Math.min(pcm.length, (w + 1) * HOP); k++) {
+    const x = pcm[k]!;
+    y1 += a * (x - y1); y2 += a * (y1 - y2);
+    low += y2 * y2; all += x * x;
+  }
+  return all ? low / all : 0;
+}
+/** The share of energy under about 1 kHz from `from` to `to` seconds, each 10 ms weighted by its energy. */
+export function lowEnergy(pcm: Int16Array, from: number, to: number) {
+  let weight = 0, low = 0;
+  for (let w = Math.max(0, Math.round(from * 100)); w < Math.min(Math.floor(pcm.length / HOP), Math.round(to * 100)); w++) {
+    let e = 0;
+    for (let k = w * HOP; k < (w + 1) * HOP; k++) e += pcm[k]! * pcm[k]!;
+    weight += e; low += e * lowShare(pcm, w);
+  }
+  return weight ? low / weight : 0;
+}
+
+/** Every stretch of sound at or above FLOOR, split by each silent 10 ms window. */
+export function sounds(pcm: Int16Array, env = envelope(pcm)): Sound[] {
+  const out: Sound[] = [];
+  for (let i = 0; i < env.length; ) {
+    if (env[i]! < FLOOR) { i++; continue; }
+    let j = i, peak = 0, heard = 0, voiced = 0;
+    while (j < env.length && env[j]! >= FLOOR) {
+      peak = Math.max(peak, env[j]!);
+      if (env[j]! >= EDGE) { heard++; if (lowShare(pcm, j) >= VOICE_LOW) voiced++; }
+      j++;
+    }
+    out.push({ start: i / 100, end: j / 100, peak, heard: heard / 100, voiced: voiced / 100, low: lowEnergy(pcm, i / 100, j / 100) });
+    i = j;
+  }
+  return out;
+}
+
 const rms = (pcm: Int16Array, a: number, b: number) => {
   a = Math.max(0, a); b = Math.min(pcm.length, b);
   let s = 0;
   for (let i = a; i < b; i++) s += (pcm[i]! / 32768) ** 2;
   return b > a ? Math.sqrt(s / (b - a)) : 0;
 };
-const stamp = (t: number) => `${Math.floor(t / 60)}:${(t % 60).toFixed(2).padStart(5, "0")}`;
+export const stamp = (t: number) => `${Math.floor(t / 60)}:${(t % 60).toFixed(2).padStart(5, "0")}`;
+export const dB = (x: number) => `${Math.round(20 * Math.log10(Math.max(x, 1e-9)))} dBFS`;
 
 /**
  * Problems in a finished narration. `edits` are the seconds where we joined
- * audio; each must sit in silence. The scan for hard edges needs no list: it
- * finds every place digital silence meets sound, which is what a bad cut leaves.
+ * audio; each must sit in silence: 20 ms on each side, or `within` when the
+ * edit was made in a shorter silence on purpose (a loose "s" joined back to its
+ * word, strays.ts). The scan for hard edges needs no list: it finds every place
+ * digital silence meets sound, which is what a bad cut leaves.
  */
-export function audioProblems(pcm: Int16Array, edits: { at: number; what: string }[] = []) {
+export function audioProblems(pcm: Int16Array, edits: { at: number; what: string; within?: number }[] = []) {
   const out: string[] = [];
-  const w = Math.round(SR * 0.02);
   for (const e of edits) {
+    const w = Math.round(SR * (e.within ?? 0.02));
     const i = Math.round(e.at * SR), level = rms(pcm, i - w, i + w);
     if (level >= EDGE) out.push(`${stamp(e.at)} ${e.what} is not in silence (level ${level.toFixed(4)})`);
   }
@@ -100,6 +233,36 @@ export function audioProblems(pcm: Int16Array, edits: { at: number; what: string
   return out;
 }
 
+/**
+ * Lone sounds in pauses, found without word timings: a short burst of noise
+ * (heard for less than LONE_HEARD, never as loud as speech) with silence on both
+ * sides and no speech within LONE_REACH on one side, or digital silence right
+ * next to it. A stray breath, click or hiss looks like this, and so does the
+ * detached "s" of a word or the released "t" before a pause: listen there.
+ * A spoken word is voiced or as loud as speech, so it is never listed.
+ */
+export const LONE_HEARD = 0.1;
+const LONE_REACH = 0.25;
+export function loneSounds(pcm: Int16Array): Sound[] {
+  const env = envelope(pcm), all = sounds(pcm, env);
+  const speech = all.filter((s) => !isNoise(s) || s.peak >= SPEECH || s.heard >= LONE_HEARD);
+  const digital = (t: number) => {
+    const i = Math.round(t * SR), side = Math.round(SR * 0.05);
+    for (let k = Math.max(0, i - side); k < Math.min(pcm.length, i + side) - 440; k++) {
+      let z = true;
+      for (let m = k; m < k + 441 && z; m++) z = pcm[m] === 0;
+      if (z) return true;
+    }
+    return false;
+  };
+  return all.filter((s) => {
+    if (!isHeard(s) || !isNoise(s) || s.peak >= SPEECH || s.heard >= LONE_HEARD) return false;
+    const before = speech.filter((x) => x.end <= s.start).at(-1), after = speech.find((x) => x.start >= s.end);
+    const gapBefore = before ? s.start - before.end : Infinity, gapAfter = after ? after.start - s.end : Infinity;
+    return Math.min(gapBefore, gapAfter) >= 0.03 && (Math.max(gapBefore, gapAfter) >= LONE_REACH || digital(s.start) || digital(s.end));
+  });
+}
+
 export function readWav(path: string) {
   const b = readFileSync(path);
   let p = 12;
@@ -118,7 +281,10 @@ export function readWav(path: string) {
 if (process.argv[1]?.endsWith("audio.ts")) {
   const path = process.argv[2];
   if (!path) throw new Error("Usage: npx tsx film/audio.ts <narration.wav>");
-  const found = audioProblems(readWav(path));
-  console.log(found.length ? found.join("\n") : "clean");
-  if (found.length) process.exitCode = 1;
+  const pcm = readWav(path);
+  const found = audioProblems(pcm);
+  const lone = loneSounds(pcm).map((s) =>
+    `${stamp(s.start)} suspicious: a lone sound in a pause, ${Math.round((s.end - s.start) * 1000)} ms, peak ${dB(s.peak)}, heard ${Math.round(s.heard * 1000)} ms`);
+  console.log(found.length || lone.length ? [...found, ...lone].join("\n") : "clean");
+  if (found.length || lone.length) process.exitCode = 1;
 }
