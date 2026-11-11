@@ -926,3 +926,8 @@ button.copy[data-done="copied"] {
   color: var(--color-muted-text);
   font-weight: 400;
 }
+/* A school's class: its grading periods in one line, with their dates. */
+.gradingLine {
+  margin: 0;
+  line-height: 1.45;
+}

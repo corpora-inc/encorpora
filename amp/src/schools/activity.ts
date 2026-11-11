@@ -177,6 +177,8 @@ export function describeEvent({
       return `${who} updated ${possessive(person ?? "a staff member")} details`;
     case "calendar.set":
       return `${who} set the calendar`;
+    case "calendar.grading":
+      return `${who} set the school’s grading periods`;
     case "calendar.session-changed":
       return `${who} changed the dates of ${sessionName ?? "a term"}`;
     case "year.rolled-over":

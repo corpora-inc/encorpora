@@ -22,6 +22,7 @@ import { DatePicker } from "../../ui/DatePicker";
 import { EmptyState } from "../../ui/EmptyState";
 import { Segmented } from "../../ui/Segmented";
 import { Sheet } from "../../ui/Sheet";
+import { Toast } from "../../ui/Toast";
 import {
   calendarOptions,
   classesOptions,
@@ -29,6 +30,7 @@ import {
   orgOptions,
   refreshSchool,
   school,
+  schoolGradingOptions,
 } from "./api";
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
@@ -314,8 +316,8 @@ export function YearCalendar({
                   list={false}
                 />
                 <p className={styles.quiet}>
-                  No terms: classes grade the whole year. A class that grades
-                  by semesters, trimesters or quarters adds them here.
+                  No terms: classes grade the whole year. A class that grades by
+                  semesters, trimesters or quarters adds them here.
                 </p>
               </>
             ) : (
@@ -358,9 +360,7 @@ export function YearCalendar({
                 );
               })
             )}
-            <p className={styles.fieldHelp}>
-              Each class picks its own grading periods in its Settings.
-            </p>
+            {section && <SchoolGradingPicker orgId={orgId} />}
           </div>
         )}
         {editing && (
@@ -460,3 +460,68 @@ export function CalendarScreen() {
     />
   );
 }
+
+/** The school's grading periods, set once for every class, beside its year
+ * and terms (schools/grading-default.ts). A class follows them unless one is
+ * set differently; when any is, a count leads to those classes. */
+function SchoolGradingPicker({ orgId }: { orgId: string }) {
+  const session = currentSession();
+  const org = useQuery(orgOptions(session, orgId)).data;
+  const grading = useQuery(schoolGradingOptions(session, orgId));
+  const [error, setError] = useState("");
+  const canEdit = org?.can?.includes("calendar.write") === true;
+  const data = grading.data;
+  if (!data) return null;
+  const choose = (kind: GradingKind) => {
+    if (kind === "custom" || kind === data.kind) return;
+    void school
+      .setSchoolGrading(session, orgId, kind)
+      .then(() => refreshSchool(session))
+      .catch((failure: unknown) => {
+        console.error("The school's grading periods didn't save", failure);
+        setError("That change didn’t save. Try again.");
+      });
+  };
+  return (
+    <div className={styles.field} data-school-grading="">
+      <span className={styles.fieldLabel}>Grading periods</span>
+      <Segmented<GradingKind>
+        label="Grading periods"
+        compact
+        dense
+        disabled={!canEdit}
+        value={data.kind}
+        onChange={choose}
+        options={(["year", "semester", "trimester", "quarter"] as const).map(
+          (value) => ({ value, label: gradingWords(value) }),
+        )}
+      />
+      <p className={styles.fieldHelp}>
+        Classes follow these unless one is set differently.
+        {data.own > 0 && (
+          <>
+            {" "}
+            <Link
+              to="/$"
+              params={{ _splat: orgPath(orgId, "classes") }}
+              search={{ periods: "own" } as never}
+            >
+              {data.own === 1
+                ? "1 class uses its own periods"
+                : `${data.own} classes use their own periods`}
+            </Link>
+          </>
+        )}
+      </p>
+      <Toast message={error} onDismiss={() => setError("")} />
+    </div>
+  );
+}
+
+/** A grading choice in words: Full year, Semesters, Trimesters, Quarters. */
+export const gradingWords = (kind: GradingKind) =>
+  kind === "year"
+    ? "Full year"
+    : kind === "custom"
+      ? "Custom"
+      : divisionLabels[kind].plural;
