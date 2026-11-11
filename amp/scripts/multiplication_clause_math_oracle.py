@@ -285,7 +285,9 @@ def solve_choice(template, prompt, options):
         needle = f"{tens} × {d} + {carry}"
         return only([oid for oid, label in labels if needle in label])
     if template == "spot-the-error":
-        m = re.search(r"([\d,]+) ÷ (\d+) is shown as (\d+) R (\d+)", prompt)
+        # The shown quotient is typeset: $54 R 63$. The sentence shape is unchanged.
+        m = re.search(r"([\d,]+) ÷ (\d+) is shown as (\d+) R (\d+)", prompt.replace("$", ""))
+        require(m is not None, "shown quotient")
         n, d, shown_q, shown_r = int(m[1].replace(",", "")), int(m[2]), int(m[3]), int(m[4])
         q, rem = divmod(n, d)
         if shown_r >= d:
