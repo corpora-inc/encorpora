@@ -93,6 +93,11 @@ export function TrustScreen() {
               {RETENTION.problemFlagNoteDays} days, and the report itself after{" "}
               {RETENTION.problemFlagDays} days.
             </p>
+            <p>
+              A record of each lesson, hint, video or worked example a student
+              opens, or lesson they print, goes after {RETENTION.helpEventDays}{" "}
+              days.
+            </p>
           </Topic>
           <Topic title="Export and deletion">
             <p>

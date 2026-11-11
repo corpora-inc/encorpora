@@ -434,15 +434,19 @@ test(
           [`fixture:${child}`, child],
         );
         assert.equal((await batch(teacher, child)).statusCode, 403);
-        assert.equal(
-          (
-            await post("/api/v1/learners", teacher, {
-              name: "New child",
-              birthYear: 2016,
-            })
-          ).statusCode,
-          403,
+        // A child added before consent is held unnamed (#2082): stored on a
+        // restricted basis until consent is verified, so its name is never
+        // collected first (server/learner-label.ts).
+        const added = await post("/api/v1/learners", teacher, {
+          name: "New child",
+          birthYear: 2016,
+        });
+        assert.equal(added.statusCode, 201, added.body);
+        const { rows: held } = await db.query(
+          "SELECT name_pending FROM amp_learners WHERE id=$1",
+          [added.json().id],
         );
+        assert.equal(held[0]?.name_pending, true);
         const view = (await me(teacher)).family.learners.find(
           (l: { id: string }) => l.id === child,
         );
