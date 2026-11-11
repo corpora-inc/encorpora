@@ -201,6 +201,26 @@ export async function purgeTrialRecords(
   return { expiredTrialEvents, expiredTrialRecords };
 }
 
+/** Deletes individual help events `helpEventDays` after they happened, oldest
+ * first off the BRIN index. The day and week counts they rolled into stay. */
+export async function purgeHelpEvents(
+  pool: Pool,
+  at = new Date(),
+): Promise<{ expiredHelpEvents: number }> {
+  const clock = validClock(at);
+  let expiredHelpEvents = 0;
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const gone = await pool.query(
+      `DELETE FROM amp_help_events WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_help_events
+      WHERE "at"<=$1::timestamptz-make_interval(days=>$2) LIMIT $3))`,
+      [clock, RETENTION.helpEventDays, RETENTION_BATCH.batchSize * 10],
+    );
+    expiredHelpEvents += gone.rowCount ?? 0;
+    if ((gone.rowCount ?? 0) < RETENTION_BATCH.batchSize * 10) break;
+  }
+  return { expiredHelpEvents };
+}
+
 /** Latest transaction or licence end for commerce order `o`. */
 const ORDER_LAST = `greatest(o.updated_at,
   (o.order_state->'license'->>'endsAt')::timestamptz,

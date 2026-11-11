@@ -835,6 +835,8 @@ test(
             "active_days.csv",
             "enrollments.csv",
             "grades.csv",
+            "help_days.csv",
+            "help_events.csv",
             "level_days.csv",
             "roster.csv",
             "skill_days.csv",
