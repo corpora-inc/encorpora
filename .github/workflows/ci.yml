@@ -1865,6 +1865,13 @@ jobs:
         run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       - name: Lesson-film kit tests
         run: npm run film:test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Film production line test dependencies
+        run: python -m pip install --disable-pip-version-check "pytest==8.3.4"
+      - name: Film production line offline tests
+        run: python -m pytest film/line -q
   amp-core:
     name: amp-core
     needs: changes
