@@ -105,6 +105,20 @@ export function mixtureDensity(
   return density;
 }
 
+/** A mixture of a few distinct curves, each with a weight that sums to one
+ * across them: the same as `mixtureDensity` over the students they stand for. */
+export function weightedDensity(
+  parts: readonly (Normal & { weight: number })[],
+  grid: Grid,
+): Float64Array {
+  const density = new Float64Array(gridPoints(grid));
+  for (const part of parts) {
+    const one = mixtureDensity([part], grid);
+    one.forEach((value, index) => (density[index]! += part.weight * value));
+  }
+  return density;
+}
+
 /** The mixture's CDF at x: the expected share of students below x. */
 export const mixtureCdf = (students: readonly Normal[], x: number) =>
   students.length
@@ -241,10 +255,10 @@ const quantileOfSorted = (sorted: Float64Array, p: number) => {
   return sorted[below]! + (sorted[above]! - sorted[below]!) * (at - below);
 };
 
-/** Draws per interval: enough that the 2.5% and 97.5% ends settle, and never
- * more than about a million normal draws for one group. */
+/** Draws per interval: a thousand for a class, fewer for a big group, whose
+ * median moves little between draws; at most a few million normal draws. */
 export const drawsFor = (n: number) =>
-  Math.max(200, Math.min(1000, Math.floor(1_000_000 / Math.max(1, n))));
+  Math.max(200, Math.min(1000, Math.floor(100_000 / Math.max(1, n))));
 
 /**
  * The group's median with a 95% interval: the middle 95% of many draws'

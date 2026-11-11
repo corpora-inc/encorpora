@@ -22,6 +22,7 @@ import {
   mixtureDensity,
   mixtureStats,
   seedOf,
+  weightedDensity,
   type Grid,
   type Normal,
 } from "./standing-math.js";
@@ -85,9 +86,14 @@ export function curveOf(
 ): StandingCurve {
   const stats = mixtureStats(students);
   const middle = medianInterval(students, { seed: seedOf(seed) });
-  const typical = grades
-    .filter((grade): grade is number => grade !== null)
-    .map((grade) => ({ mu: 0, sd: withinGradeSd(grade) }));
+  const known = grades.filter((grade): grade is number => grade !== null);
+  const byGrade = new Map<number, number>();
+  for (const grade of known) byGrade.set(grade, (byGrade.get(grade) ?? 0) + 1);
+  const typical = [...byGrade].map(([grade, count]) => ({
+    mu: 0,
+    sd: withinGradeSd(grade),
+    weight: count / known.length,
+  }));
   return {
     n: stats.n,
     median: middle && round(middle.median),
@@ -103,7 +109,7 @@ export function curveOf(
     within: round(expectedBetween(students, -0.5, 0.5), 2),
     ahead: round(expectedBetween(students, 0.5, Infinity), 2),
     density: compact(mixtureDensity(students, grid)),
-    typical: compact(mixtureDensity(typical, grid)),
+    typical: compact(weightedDensity(typical, grid)),
   };
 }
 
