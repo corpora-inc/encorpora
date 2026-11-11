@@ -593,7 +593,7 @@ function timesAsManyComparison(r: Random, telling = "classic"): Built {
       choices: choicesFrom(did(b, `${k} times as many ${thing} as ${a}.`), [
         {
           label: did(b, `${k} more ${thing} than ${a}.`),
-          feedback: `"${k} more" is addition, ${base} + ${k}. A product means ${k} equal copies of ${a}'s ${base}.`,
+          feedback: `"${k} more" is addition, $${base} + ${k}$. A product means ${k} equal copies of ${a}'s ${base}.`,
         },
         {
           label: did(a, `${k} times as many ${thing} as ${b}.`),

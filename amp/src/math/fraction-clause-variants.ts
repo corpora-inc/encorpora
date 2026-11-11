@@ -1141,7 +1141,7 @@ function judgeChoice(
     hint: rightSum
       ? `One addend is at least 1/2, so the sum ${a}/${b} + ${c}/${d} is more than 1/2. Check whether Rio's result agrees.`
       : wrongSum
-        ? `One addend is at least 1/2. A sum of that and a positive fraction is more than 1/2. Where does ${claim} sit?`
+        ? `One addend is at least $1/2$. A sum of that and a positive fraction is more than $1/2$. Where does ${claim} sit?`
         : `You start with ${a}/${b} and take away ${c}/${d}. Can the result be greater than ${a}/${b}?`,
     explanation: wrongSum || rightSum
       ? [

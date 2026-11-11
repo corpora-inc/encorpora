@@ -400,8 +400,10 @@ test("assumption checks and scaled elimination are exact", () => {
   for (const seed of seeds(80, "elim")) {
     const p = generateProblem("scaled-elimination", seed);
     const sum = chosen(p, "sum");
-    const m = /E2 \+ (-?\d+)·E1/.exec(p.public.prompt)!;
-    const k = Number(m[1]);
+    const plusK = /E2 \+ (\d+)·E1/.exec(p.public.prompt);
+    const minusK = /E2 − (\d+)·E1/.exec(p.public.prompt);
+    const k = plusK ? Number(plusK[1]) : minusK ? -Number(minusK[1]!) : NaN;
+    assert.ok(Number.isInteger(k) && k !== 0, p.public.prompt);
     const eqs = [...p.public.prompt.matchAll(/(-?\d+)x([+-]\d+)y = (-?\d+)/g)];
     assert.equal(eqs.length, 2, p.public.prompt);
     const [a, b, c] = eqs[0]!.slice(1).map(Number);

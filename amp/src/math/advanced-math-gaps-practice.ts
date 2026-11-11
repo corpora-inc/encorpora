@@ -1214,7 +1214,7 @@ function residualFunctionFit(r: Random): Built {
     hint: `Find the predicted value, then compare it with the observed value ${observed}. Is the prediction larger or smaller than what was observed?`,
     explanation: [
       `Predicted value at $x=${x}$ is ${predicted}; the observed value is ${observed}.`,
-      `Residual = observed − predicted = ${e}. ${over ? "A negative residual means the prediction is above the observed value" : "A positive residual means the prediction is below the observed value"}.`,
+      `Residual = observed − predicted = $${e}$. ${over ? "A negative residual means the prediction is above the observed value" : "A positive residual means the prediction is below the observed value"}.`,
       correct,
     ],
     correct,

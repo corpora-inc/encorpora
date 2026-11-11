@@ -776,7 +776,7 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
           },
           {
             ...si(q(1, mag), interceptThrough(q(1, mag), x1, y1)),
-            feedback: `The reciprocal ${qTex(q(1, mag))} has the wrong sign. A perpendicular slope is the negative reciprocal.`,
+            feedback: `The reciprocal $${qTex(q(1, mag))}$ has the wrong sign. A perpendicular slope is the negative reciprocal.`,
           },
           {
             ...si(target, q(y1)),
@@ -3968,7 +3968,7 @@ export function sigmaNotationCase(seed: string): TexasHsCase {
     ),
   ].filter((w) => JSON.stringify(w.terms) !== JSON.stringify(correct.terms));
   const fb = [
-    `At $k=1$ this gives ${a1 * ratio}, not the first term ${a1}. A geometric term multiplies by the ratio once fewer times than its position.`,
+    `At $k=1$ this gives ${a1 * ratio}, not the first term $${a1}$. A geometric term multiplies by the ratio once fewer times than its position.`,
     `This stops at $k=${nmax - 1}$, so it has ${nmax - 1} terms. The series has ${nmax}.`,
     `The first term ${a1} is the multiplier, and only the ratio ${ratio} is raised to the power. Here the first term and ratio were combined.`,
     `The ratio ${ratio} is raised to a power and the first term ${a1} multiplies it. The two numbers were exchanged.`,

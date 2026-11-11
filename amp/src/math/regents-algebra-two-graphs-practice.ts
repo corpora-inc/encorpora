@@ -305,7 +305,7 @@ export const repeatedZeroRule = chainFamily({
         },
         {
           label: f(a, b, -1, 1, 2),
-          feedback: `The graph touches the $x$-axis at ${a} and crosses at ${b}. A factor that is squared gives a zero where the graph touches without crossing, so the square belongs to the factor for ${a}.`,
+          feedback: `The graph touches the $x$-axis at $${a}$ and crosses at $${b}$. A factor that is squared gives a zero where the graph touches without crossing, so the square belongs to the factor for $${a}$.`,
         },
         {
           label: f(-a, -b, -1, 2, 1),

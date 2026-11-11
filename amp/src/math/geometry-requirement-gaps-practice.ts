@@ -208,7 +208,7 @@ function arcSectorDerivation(r: Random): Built {
       wrong: [
         {
           label: cm(`${s1 + r2 - r1}`),
-          feedback: `Adding the difference of the radii is not scaling. Lengths in similar figures are multiplied by the same factor, ${frac(r2, r1)} here.`,
+          feedback: `Adding the difference of the radii is not scaling. Lengths in similar figures are multiplied by the same factor, $${frac(r2, r1)}$ here.`,
         },
         {
           label: cm(frac(s1 * r1, r2)),

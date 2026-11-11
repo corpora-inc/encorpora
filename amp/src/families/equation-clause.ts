@@ -413,7 +413,8 @@ const pack = formatLessons([
     principle:
       "If a pair satisfies E1 and E2, it satisfies k·E1 and therefore E2 + k·E1. Subtracting k·E1 recovers E2, so the systems have the same solutions. At a solution, the new left side equals f + kc.",
     example: {
-      prompt: "E1 is 2x + 3y = 7 and E2 is 5x − 6y = 4. Replace the system by E1 and E2 + 2·E1.",
+      prompt:
+        "$\\begin{cases} 2x + 3y = 7 & \\text{E1} \\\\ 5x - 6y = 4 & \\text{E2} \\end{cases}$ Replace the system by E1 and E2 + 2·E1.",
       steps: [
         "2·E1 is 4x + 6y = 14.",
         "Add E2: 9x = 18. The y terms cancel, and the right side was scaled.",

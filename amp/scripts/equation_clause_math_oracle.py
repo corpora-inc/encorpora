@@ -72,12 +72,17 @@ def slope_text(text):
 
 
 def lines(prompt):
-    found = re.findall(r"y = (-?\d+(?:/\d+)?)x \+ (-?\d+)", prompt)
+    # A negative intercept is written with a minus, not "+ −".
+    found = re.findall(
+        r"y = (-?\d+(?:/\d+)?)x (?:− (\d+)|\+ (-?\d+))",
+        prompt,
+    )
     require(len(found) == 2, "two lines")
     parsed = []
-    for slope, intercept in found:
+    for slope, minus, plus in found:
         numer, denom = slope_text(slope)
-        parsed.append((numer, denom, int(intercept)))
+        intercept = -int(minus) if minus else int(plus)
+        parsed.append((numer, denom, intercept))
     return parsed
 
 
@@ -350,17 +355,18 @@ def coef(value, letter):
 
 
 def elimination(public):
-    found = re.fullmatch(
-        r"E1: (-?\d+)x([+-]\d+)y = (-?\d+)\. E2: (-?\d+)x([+-]\d+)y = (-?\d+)\. "
-        r"The system is replaced by E1 and E2 \+ (-?\d+)·E1\.",
+    found = re.search(
+        r"(-?\d+)x([+-]\d+)y = (-?\d+)\b.*?(-?\d+)x([+-]\d+)y = (-?\d+)\b.*?"
+        r"The system is replaced by E1 and E2 (?:− (\d+)|\+ (\d+))·E1\.",
         public["prompt"],
+        re.S,
     )
     require(found is not None, "elimination")
     a, b = int(found[1]), int(found[2])
     c = int(found[3])
     d, e = int(found[4]), int(found[5])
     f = int(found[6])
-    k = int(found[7])
+    k = -int(found[7]) if found[7] else int(found[8])
     combined = d + k * a
     right = f + k * c
     require(e + k * b == 0 and combined != 0, "y cancels")

@@ -19,6 +19,9 @@ import {
 } from "./clause-variant-kit";
 import { graph } from "./scene/author";
 
+/** A negative factor in parentheses, so "+ -2" does not appear. */
+const signedFactor = (n: number) => (n < 0 ? `(${n})` : String(n));
+
 export const vectorMatrixClauses: Record<string, readonly string[]> = {
   "matrix-linear-system": ["three-by-three-tool-inverse"],
   "vector-components": [
@@ -647,7 +650,7 @@ export function vectorMatrixClause(
     return b.parts(
       {
         prompt: `Let $A=$ ${matrix(A)} and $B=$ ${matrix(B)}. Compute both orders and distinguish this example from the general rule.`,
-        hint: `For the top-left entry of AB, use ${A[0]![0]} × ${B[0]![0]} + ${A[0]![1]} × ${B[1]![0]}.`,
+        hint: `For the top-left entry of AB, use ${signedFactor(A[0]![0]!)} × ${signedFactor(B[0]![0]!)} + ${signedFactor(A[0]![1]!)} × ${signedFactor(B[1]![0]!)}.`,
         explanation: [
           `Row by column gives $AB=$ ${matrix(AB)} and $BA=$ ${matrix(BA)}.`,
           commuting
