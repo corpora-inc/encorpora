@@ -18,7 +18,7 @@ import providers
 from providers import now, write_json
 from runtime import (HERE, CHAMP, check_command, check_film, digest, fixed_file,
                      prepare_runtime, voice_film, workspace_for)
-from state import coordinator_lock, private_destination, read_json
+from state import command_lock, private_destination, read_json
 
 ID = r'[a-z0-9]+(?:-[a-z0-9]+)*'
 
@@ -44,17 +44,22 @@ def load_config(path):
     for key in ('player_url', 'review_url'):
         if not config.get(key):
             raise ValueError('Missing configuration field: '+key)
+    config.setdefault('claude_auth', 'api')
+    if config['claude_auth'] not in ('api', 'subscription'):
+        raise ValueError('claude_auth must be api or subscription')
+    if config.get('queue_page'):
+        config['queue_page'] = str(private_destination(Path(config['queue_page']).expanduser(), config['worktree']))
     return config
 
 
-def facts(config, skill, out):
+def facts(config, skill, out, *, template=None):
     """Generate exact standards and deterministic examples for every type in a skill."""
-    if not re.fullmatch(r'[a-z0-9]+(?:[.-][a-z0-9]+)*', skill):
+    if not re.fullmatch(r'[a-z0-9]+(?:[.-][a-z0-9]+)*', template or skill):
         raise ValueError('Invalid skill ID')
     out = private_destination(out, config['worktree'])
     out.mkdir(parents=True, exist_ok=True)
     subprocess.run([config['heavy'], config.get('node', 'node'), '--import', 'tsx',
-                    str(HERE/'facts.ts'), '--skill', skill, '--standards', config['standards'],
+                    str(HERE/'facts.ts'), '--template' if template else '--skill', template or skill, '--standards', config['standards'],
                     '--out', str(out)], cwd=Path(config['worktree'])/'amp', check=True,
                    env=providers.clean_environment())
     return read_json(out/'facts.json')
@@ -137,11 +142,140 @@ def stage(config, recipe, name):
         print(f'{name}: {entry["seconds"]:.1f}s ({entry["status"]})', flush=True)
 
 
+
+def remember_attempt(recipe, record, receipt, prompt):
+    attempts = recipe.setdefault('author_attempts', [])
+    entry = {'receipt': str(receipt), 'prompt': prompt, 'tokens': record.get('tokens'),
+             'dollars': {k: record.get(k) for k in ('api_dollars', 'reported_dollars', 'partial_api_dollars')},
+             'seconds': record.get('wall_seconds'), 'status': record['status'],
+             'usage_complete': record.get('usage_complete', False)}
+    prior = next((i for i, a in enumerate(attempts) if a['receipt'] == str(receipt)), None)
+    if prior is None:
+        attempts.append(entry)
+    else:
+        attempts[prior] = entry
+    def total(values):
+        return sum(values) if all(isinstance(v, (int, float)) for v in values) else None
+    recipe['tokens'] = {k: total([(a.get('tokens') or {}).get(k) for a in attempts])
+                        for k in ('input_uncached', 'input_cached', 'cache_write', 'output', 'reasoning')}
+    recipe['dollars'] = {k: total([a['dollars'][k] for a in attempts]) for k in entry['dollars']}
+    recipe['usage_complete'] = all(a['usage_complete'] for a in attempts)
+    recipe['author_seconds'] = total([a['seconds'] for a in attempts])
+
+
+def auto_references(config, skill, root):
+    from pages import founder_score
+    pack = read_json(root/'facts/facts.json') or facts(config, skill, root/'facts')
+    band = pack['skill'].get('gradeBand')
+    data = Path(config['live_data'])
+    reviews, grades = read_json(data/'reviews.json', {}), read_json(data/'grades.json', {})
+    candidates = []
+    for row in read_json(data/'queue.json', []):
+        score, _ = founder_score(row['id'], row, reviews, grades)
+        if score is None or score < 8:
+            continue
+        payload = read_json(data/(row['id']+'.json'))
+        if not payload:
+            continue
+        recipe = read_json(Path(config['root'])/row['id']/'recipe.json', {})
+        grade = recipe.get('skill', {}).get('gradeBand', payload.get('grade'))
+        candidates.append((band is not None and grade == band, row.get('added', ''), row['id']))
+    return [row[2] for row in sorted(candidates, reverse=True)[:2]]
+
+
+def existing_film(config, identifier):
+    root = film_root(config, identifier)
+    local, recipe = read_json(root/'config.json'), read_json(root/'recipe.json')
+    if not local or not recipe:
+        raise ValueError('Run write or adopt for this film first')
+    return root, local, recipe, workspace_for(local, identifier)
+
+
+def recheck(local, recipe, workspace):
+    root, row = Path(local['root']), local['film']
+    with stage(local, recipe, 'kit-check'):
+        checked = check_film(local, row, workspace)
+        write_json(root/'films'/row['id']/'check.json', checked)
+        if not checked['passed']:
+            raise RuntimeError('Kit check failed: '+'; '.join(checked['errors']))
+    changed = recipe.get('screenplay_sha256') != digest(workspace/'screenplay.json')
+    if changed or recipe['status'] not in ('voiced', 'exported', 'released'):
+        recipe['status'] = 'checked'
+    recipe['screenplay_sha256'] = digest(workspace/'screenplay.json')
+    shutil.copyfile(workspace/'screenplay.json', root/'films'/row['id']/'screenplay.json')
+    write_json(root/'recipe.json', recipe)
+    return checked
+
+
+def revise_film(config, identifier, notes_path):
+    root, local, recipe, workspace = existing_film(config, identifier)
+    if recipe.get('adopted'):
+        raise ValueError('This author works outside the line; edit the screenplay and run look')
+    notes = Path(notes_path).read_text()
+    if not notes.strip():
+        raise ValueError('Director notes are empty')
+    # Upgrade an existing first-cut receipt without losing its evidence.
+    if not recipe.get('author_attempts'):
+        receipt = root/'runs'/identifier/'screenplay.json'
+        remember_attempt(recipe, read_json(receipt), receipt, recipe['prompt'])
+    attempt = len(recipe['author_attempts']) + 1
+    archive = root/'attempts'/str(attempt-1)
+    archive.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(workspace/'screenplay.json', archive/'screenplay.json')
+    prompt = recipe['prompt'] + "\n\nDirector's notes on your first cut\n" + notes
+    receipt = root/'runs'/identifier/f'revision-{attempt}.json'
+    with stage(local, recipe, 'revise'):
+        record = providers.run_agent(recipe['provider'], 'screenplay', prompt, workspace, receipt,
+            secrets=providers.credentials(local['env_file']), check_command=check_command(local, local['film'], workspace),
+            timeout=2700, effort=recipe['effort'], claude_auth=local.get('claude_auth', 'api'))
+        remember_attempt(recipe, record, receipt, prompt)
+        if record['status'] != 'succeeded':
+            raise RuntimeError('Author did not succeed; the attempt and prior screenplay are preserved')
+    recheck(local, recipe, workspace)
+    return recipe
+
+
+def adopt_film(config, args):
+    from runtime import validate_cast
+    root = film_root(config, args.film)
+    if (root/'recipe.json').exists():
+        raise ValueError('Film already registered; edit its workspace screenplay and run look')
+    script = validate_cast(args.screenplay, args.film)
+    if not args.author.strip():
+        raise ValueError('An author name is required')
+    for value in (args.minutes, args.tokens):
+        if value is not None and (not math.isfinite(value) or value < 0):
+            raise ValueError('Usage must be finite and nonnegative')
+    primary = args.film.split('--')[0]
+    pack = facts(config, None, root/'facts', template=primary)
+    recipe = {'id': args.film, 'type': primary, 'skill': pack['skill'], 'standards': pack['standards'],
+        'standards_sha256': pack['standards_sha256'], 'problem_types': [p['type'] for p in pack['problem_types']],
+        'model': args.author, 'provider': None, 'effort': args.effort, 'adopted': True,
+        'teacher': TEACHERS[0], 'learner': CHAMP, 'format_references': [], 'started_at': now(),
+        'stages': {}, 'status': 'adopted', 'total_seconds': 0, 'tokens': None, 'usage_complete': False,
+        'external_usage': {'minutes': args.minutes, 'tokens': args.tokens},
+        'dollars': {k: None for k in ('api_dollars', 'reported_dollars', 'partial_api_dollars')}}
+    row = {'id': args.film, 'type': primary, 'teacher': recipe['teacher']}
+    local = {**config, 'line_root': config['root'], 'root': str(root), 'film': row, 'production': True,
+             'workspace_root': str(root/'workspace'), '_config_path': str(root/'config.json')}
+    write_json(root/'config.json', local)
+    write_json(root/'recipe.json', recipe)
+    workspace = prepare_workspace(local, pack, {})
+    write_json(workspace/'screenplay.json', script)
+    recheck(local, recipe, workspace)
+    return recipe
+
 def write_film(config, args):
     root = film_root(config, args.film)
     brief = Path(args.brief).read_text()
     concept = Path(args.concept).read_text() if args.concept else None
-    refs = {name: reference(config, name) for name in args.reference}
+    prior = read_json(root/'inputs.json')
+    names = args.reference
+    if names == ['auto']:
+        names = list(prior['references']) if prior else auto_references(config, args.skill, root)
+    elif 'auto' in names:
+        raise ValueError('Use auto by itself or name explicit references')
+    refs = {name: reference(config, name) for name in names}
     inputs = {'brief': brief, 'concept': concept, 'references': refs,
               'skill': args.skill, 'provider': args.model, 'effort': args.effort}
     prior = read_json(root/'inputs.json')
@@ -179,19 +313,17 @@ def write_film(config, args):
         workspace = prepare_workspace(local, pack, refs)
         command = check_command(local, row, workspace)
         recipe['prompt'] = prompt_for(brief, concept, row, pack, command)
-        fixed_file(workspace/'prompt.txt', recipe['prompt'])
+        fixed_file(workspace/'original-prompt.txt', recipe['prompt'])
     with stage(local, recipe, 'screenplay'):
-        receipt = root/'runs'/row['id']/'screenplay.json'
+        receipt = Path(recipe['author_attempts'][-1]['receipt']) if recipe.get('author_attempts') else root/'runs'/row['id']/'screenplay.json'
         record = read_json(receipt)
         if record is None:
             record = providers.run_agent(args.model, 'screenplay', recipe['prompt'], workspace, receipt,
                 secrets=providers.credentials(config['env_file']), check_command=command,
-                timeout=2700, effort=args.effort)
-        recipe['tokens'] = record.get('tokens')
-        recipe['usage_complete'] = record.get('usage_complete', False)
-        recipe['dollars'] = {k: record.get(k) for k in recipe['dollars']}
+                timeout=2700, effort=args.effort, claude_auth=config.get('claude_auth', 'api'))
+        remember_attempt(recipe, record, receipt, recipe.get('author_attempts', [{}])[-1].get('prompt', recipe['prompt']))
         if record['status'] != 'succeeded':
-            raise RuntimeError('Author did not succeed; preserve the receipt and use a new film ID for another author attempt')
+            raise RuntimeError('Author did not succeed; preserve the receipt and use a revise for another author attempt')
         shutil.copyfile(workspace/'screenplay.json', root/'films'/row['id']/'screenplay.json')
     with stage(local, recipe, 'kit-check'):
         checked = check_film(local, row, workspace)
@@ -209,12 +341,12 @@ def finish_film(config, identifier, action):
     root = film_root(config, identifier)
     local, recipe = read_json(root/'config.json'), read_json(root/'recipe.json')
     if not local or not recipe:
-        raise ValueError('Run write for this film first')
+        raise ValueError('Run write or adopt for this film first')
     row = local['film']
     workspace = workspace_for(local, identifier)
     check = read_json(workspace/'check.json', {})
     if not check.get('passed') or check.get('screenplay_sha256') != digest(workspace/'screenplay.json'):
-        raise ValueError('Run write again to check the current screenplay')
+        raise ValueError('Run look to check the current screenplay')
     with stage(local, recipe, action):
         if action == 'voice':
             keys = providers.credentials(local['env_file'])
@@ -249,37 +381,67 @@ def predict(config, identifier, score, reason):
     return predictions[identifier]
 
 
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', default=os.environ.get('FILM_LINE_CONFIG'))
     commands = parser.add_subparsers(dest='command', required=True)
-    p = commands.add_parser('facts'); p.add_argument('--skill', required=True); p.add_argument('--out', required=True)
+    p = commands.add_parser('facts')
+    p.add_argument('--skill', required=True); p.add_argument('--film'); p.add_argument('--out')
     p = commands.add_parser('write')
     for name in ('film', 'skill', 'brief'):
         p.add_argument('--'+name, required=True)
     p.add_argument('--model', choices=providers.MODELS, required=True)
     p.add_argument('--effort', choices=('low', 'medium', 'high', 'xhigh'), required=True)
     p.add_argument('--concept'); p.add_argument('--reference', action='append', nargs='+', default=[])
-    for name in ('voice', 'export', 'predict'):
+    for name in ('voice', 'export', 'predict', 'revise', 'look', 'play', 'release', 'unrelease', 'adopt'):
         p = commands.add_parser(name); p.add_argument('--film', required=True)
         if name == 'predict':
             p.add_argument('--score', type=float, required=True); p.add_argument('--reason', required=True)
+        if name == 'revise':
+            p.add_argument('--notes', required=True)
+        if name == 'release':
+            p.add_argument('--level', required=True)
+        if name == 'adopt':
+            for key in ('screenplay', 'author', 'effort'):
+                p.add_argument('--'+key, required=True)
+            p.add_argument('--minutes', type=float); p.add_argument('--tokens', type=int)
     commands.add_parser('board')
     args = parser.parse_args(argv)
     if not args.config:
         parser.error('Use --config or set FILM_LINE_CONFIG to the private configuration')
     config = load_config(args.config)
-    with coordinator_lock(Path(config['root'])/'coordinator.lock'):
+    identifier = getattr(args, 'film', None)
+    if identifier:
+        film_root(config, identifier)
+    if args.command == 'facts':
+        if not identifier and not args.out:
+            parser.error('facts requires --film or --out')
+        if identifier and args.out:
+            parser.error('Use --film or --out, not both')
+        args.out = str(film_root(config, identifier)/'facts') if identifier else args.out
+    with command_lock(config, args.command, identifier, getattr(args, 'out', None)):
         if args.command == 'facts':
             facts(config, args.skill, args.out)
         elif args.command == 'write':
             args.reference = [item for group in args.reference for item in group]
             write_film(config, args)
+        elif args.command == 'revise':
+            revise_film(config, args.film, args.notes)
+        elif args.command == 'adopt':
+            adopt_film(config, args)
+        elif args.command in ('look', 'play'):
+            from review_tools import look_film, play_film
+            print((look_film if args.command == 'look' else play_film)(config, args.film))
         elif args.command in ('voice', 'export'):
             recipe = finish_film(config, args.film, args.command)
             print(recipe.get('review_url', recipe['status']))
         elif args.command == 'predict':
             predict(config, args.film, args.score, args.reason)
+        elif args.command in ('release', 'unrelease'):
+            from release import release_film, unrelease_film
+            print(release_film(config, args.film, args.level) if args.command == 'release'
+                  else unrelease_film(config, args.film))
         else:
             from pages import board
             print(board(config))
