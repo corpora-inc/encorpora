@@ -138,6 +138,17 @@ const STEP = { arrive: 0.26, leave: 0.26, send: 0.34 };
 const LIGHT_UP = 0.2, LIGHT_DOWN = 0.22, HOLD = 0.35, RELEASE = 0.35;
 /** The last thing counted where it sits takes its tick this long after its number starts: a short moment after its light has landed. */
 const LAST_TICK = 0.45;
+/**
+ * When a count's lights and ticks let go (the `beatEnd` its plan is given): the
+ * end of the beat's speech, or, when the beat has its own `pause`, the end of
+ * that pause, so the counted row stays up through the silence with the last
+ * thing still lit. It never holds into what comes next: the release starts by
+ * `next`, the next beat's first word or the end of the shot.
+ */
+export function countHold(end: number, pause: number | undefined, next = Infinity): number {
+  if (!pause) return end;
+  return Math.max(end, Math.min(end + pause, next - HOLD));
+}
 
 /** A leaving thing that drifts: the direction it goes (x right, y up, unit length). */
 type Vis = { t0: number; dur: number; on: boolean; moved: boolean; drift?: [number, number] };
