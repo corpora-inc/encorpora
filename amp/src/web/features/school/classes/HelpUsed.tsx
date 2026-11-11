@@ -16,8 +16,7 @@ const ANSWER_KINDS = [
 ] as const;
 
 const used = (week: HelpWeek) =>
-  KINDS.some(([kind]) => week[kind].count > 0 || week[kind].minutes > 0) ||
-  week.assisted > 0;
+  KINDS.some(([kind]) => week[kind].count > 0 || week[kind].minutes > 0);
 const minutesText = (minutes: number) =>
   minutes <= 0 ? "" : minutes < 1 ? "<1 min" : `${number(Math.round(minutes))} min`;
 
