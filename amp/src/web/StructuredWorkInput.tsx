@@ -13,6 +13,8 @@ import { useTileDrag } from "./useTileDrag";
 import { lineTex, parseLine } from "../math/expression";
 import {
   checkEntry,
+  diagramMarks,
+  diagramZeros,
   draftOrder,
   draftRows,
   fieldMaxLength,
@@ -21,12 +23,14 @@ import {
   numberTex,
   rowShape,
   serializeDraft,
+  withDiagramZeros,
   workProgress,
   type StructuredWorkResponse,
   type WorkField,
   type WorkRow,
 } from "../math/structured-work";
 import { deleteBackward, insertText, readField } from "./lib/keypadEdit";
+import { WorkDiagramView, type DiagramSlots } from "./WorkDiagram";
 
 /* Structured work: a list of steps (or a two-column proof) built field by
    field. Every control keeps its size from the first frame: a choice is as
@@ -271,6 +275,7 @@ export function StructuredWorkInput({
   onChange,
   locked,
   marks,
+  answer,
   small,
 }: {
   problemId: string;
@@ -280,6 +285,8 @@ export function StructuredWorkInput({
   locked: boolean;
   /** After an answer: each row right or not (an ordering: each position). */
   marks: boolean[] | null;
+  /** After an answer: the key, so a diagram marks each entry on its own. */
+  answer?: string;
   /** Touch or narrow: entries use the on-screen keypad. */
   small: boolean;
 }) {
@@ -333,7 +340,8 @@ export function StructuredWorkInput({
     if (locked) return;
     const next = draftRows(r, value).map((x) => [...x]);
     next[row]![field] = text;
-    onChange(serializeDraft(next));
+    // A place a diagram leaves out (nothing fits there) is the page's 0.
+    onChange(serializeDraft(withDiagramZeros(r, next)));
   };
   const markOf = (i: number): Mark =>
     marks ? (marks[i] ? "correct" : "incorrect") : undefined;
@@ -368,7 +376,14 @@ export function StructuredWorkInput({
     setEntry(active.row, active.field, edit.value);
   }
 
-  function entry(i: number, j: number, f: WorkField, rowLabel: string) {
+  function entry(
+    i: number,
+    j: number,
+    f: WorkField,
+    rowLabel: string,
+    /** A diagram names the entry by its place ("Part 1 width"). */
+    name?: string,
+  ) {
     const key = `${i}:${j}`;
     const raw = rows[i]?.[j] ?? "";
     const p = preview(f, raw);
@@ -396,8 +411,9 @@ export function StructuredWorkInput({
             autoCorrect="off"
             spellCheck={false}
             maxLength={fieldMaxLength(f)}
+            data-field={key}
             aria-label={
-              rowLabel ? `${spokenMath(rowLabel)}: ${f.label}` : label
+              name ?? (rowLabel ? `${spokenMath(rowLabel)}: ${f.label}` : label)
             }
             aria-describedby={noteId}
             aria-invalid={showError || undefined}
@@ -541,6 +557,20 @@ export function StructuredWorkInput({
     setAnnounce(`${noun} moved to position ${to + 1} of ${next.length}.`);
   }
 
+  const each =
+    marks && answer !== undefined ? diagramMarks(r, value, answer) : null;
+  const slots: DiagramSlots = {
+    entry: ([i, j], name) => entry(i, j, rowShape(r, i).fields[j]!, "", name),
+    value: ([i, j]) => rows[i]?.[j] ?? "",
+    mark: ([i, j]) =>
+      each?.has(`${i}:${j}`)
+        ? each.get(`${i}:${j}`)
+          ? "correct"
+          : "incorrect"
+        : markOf(i),
+    label: ([i, j]) => rowShape(r, i).fields[j]!.label,
+  };
+
   // Dragging a row: the others slide aside to show where it will land, and
   // it settles there on release. Rows keep their layout boxes throughout
   // (transforms only), so the stage and the dock never move.
@@ -655,149 +685,151 @@ export function StructuredWorkInput({
       </div>
     ) : null;
 
-  const body =
-    r.mode === "order" ? (
-      <ol
-        ref={list}
-        className="work-rows"
-        data-layout={r.layout}
-        data-mode="order"
-        data-drop={locked ? undefined : "order"}
-      >
-        {order.map((rowId, position) => {
-          const row = r.rows.find((x) => x.id === rowId)!;
-          return (
-            <li
-              key={rowId}
-              className="work-row"
-              data-row={rowId}
-              data-mark={markOf(position)}
-              data-draggable={locked ? undefined : ""}
-              onPointerDown={(event) => {
-                const target = event.target as HTMLElement;
-                // Touch drags from the grip, so a swipe elsewhere scrolls;
-                // a mouse or pen drags the whole row. The arrows stay buttons.
-                if (target.closest(".work-move")) return;
-                if (
-                  event.pointerType === "touch" &&
-                  !target.closest(".work-grip")
-                )
-                  return;
-                drag.start(rowId, event);
-              }}
+  const body = r.diagram ? (
+    <WorkDiagramView diagram={r.diagram} slots={slots} />
+  ) : r.mode === "order" ? (
+    <ol
+      ref={list}
+      className="work-rows"
+      data-layout={r.layout}
+      data-mode="order"
+      data-drop={locked ? undefined : "order"}
+    >
+      {order.map((rowId, position) => {
+        const row = r.rows.find((x) => x.id === rowId)!;
+        return (
+          <li
+            key={rowId}
+            className="work-row"
+            data-row={rowId}
+            data-mark={markOf(position)}
+            data-draggable={locked ? undefined : ""}
+            onPointerDown={(event) => {
+              const target = event.target as HTMLElement;
+              // Touch drags from the grip, so a swipe elsewhere scrolls;
+              // a mouse or pen drags the whole row. The arrows stay buttons.
+              if (target.closest(".work-move")) return;
+              if (
+                event.pointerType === "touch" &&
+                !target.closest(".work-grip")
+              )
+                return;
+              drag.start(rowId, event);
+            }}
+          >
+            <span
+              className="work-grip"
+              data-drag-tile={locked ? undefined : ""}
+              aria-hidden="true"
             >
-              <span
-                className="work-grip"
-                data-drag-tile={locked ? undefined : ""}
-                aria-hidden="true"
+              <span className="work-number">{position + 1}</span>
+              {!locked && (
+                <svg viewBox="0 0 12 16" className="work-grip-dots">
+                  <circle cx="4" cy="3" r="1.3" />
+                  <circle cx="8" cy="3" r="1.3" />
+                  <circle cx="4" cy="8" r="1.3" />
+                  <circle cx="8" cy="8" r="1.3" />
+                  <circle cx="4" cy="13" r="1.3" />
+                  <circle cx="8" cy="13" r="1.3" />
+                </svg>
+              )}
+            </span>
+            <span className="work-fields">
+              {row.label && (
+                <span className="work-label">
+                  <MathText text={row.label} />
+                </span>
+              )}
+              {row.fields.map((f, j) => (
+                <span key={j} className="work-cell" data-field={f.kind}>
+                  <Given r={r} field={f} />
+                </span>
+              ))}
+            </span>
+            <span className="work-move">
+              <button
+                type="button"
+                className="work-move-button"
+                disabled={locked || position === 0}
+                aria-label={`Move ${noun.toLowerCase()} ${position + 1} up`}
+                onClick={() => move(position, -1)}
               >
-                <span className="work-number">{position + 1}</span>
-                {!locked && (
-                  <svg viewBox="0 0 12 16" className="work-grip-dots">
-                    <circle cx="4" cy="3" r="1.3" />
-                    <circle cx="8" cy="3" r="1.3" />
-                    <circle cx="4" cy="8" r="1.3" />
-                    <circle cx="8" cy="8" r="1.3" />
-                    <circle cx="4" cy="13" r="1.3" />
-                    <circle cx="8" cy="13" r="1.3" />
-                  </svg>
-                )}
-              </span>
-              <span className="work-fields">
-                {row.label && (
-                  <span className="work-label">
-                    <MathText text={row.label} />
-                  </span>
-                )}
-                {row.fields.map((f, j) => (
-                  <span key={j} className="work-cell" data-field={f.kind}>
-                    <Given r={r} field={f} />
-                  </span>
-                ))}
-              </span>
-              <span className="work-move">
-                <button
-                  type="button"
-                  className="work-move-button"
-                  disabled={locked || position === 0}
-                  aria-label={`Move ${noun.toLowerCase()} ${position + 1} up`}
-                  onClick={() => move(position, -1)}
-                >
-                  <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-                    <path d="M2.5 7.5 6 4l3.5 3.5" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className="work-move-button"
-                  disabled={locked || position === order.length - 1}
-                  aria-label={`Move ${noun.toLowerCase()} ${position + 1} down`}
-                  onClick={() => move(position, 1)}
-                >
-                  <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-                    <path d="M2.5 4.5 6 8l3.5-3.5" />
-                  </svg>
-                </button>
-              </span>
-              {markBadge(position)}
-            </li>
-          );
-        })}
-      </ol>
-    ) : (
-      <ol
-        className="work-rows"
-        data-layout={r.layout}
-        data-mode={r.mode}
-        data-compact={compact ? "" : undefined}
-      >
-        {rows.map((_, i) => {
-          const row = rowShape(r, i);
-          // An open list's row label names its item ("Pair"), not each row.
-          const label = r.open ? undefined : row.label;
-          return (
-            <li key={i} className="work-row" data-mark={markOf(i)}>
-              <span className="work-number" aria-hidden="true">
-                {i + 1}
-              </span>
-              <span className="work-fields">
-                {label && (
-                  <span className="work-label">
-                    <MathText text={label} />
-                  </span>
-                )}
-                {compact ? (
-                  <span className="work-cells">
-                    {row.fields.map((f, j) => (
-                      <span key={j} className="work-cell" data-field={f.kind}>
-                        {fieldControl(i, j, f, row)}
-                      </span>
-                    ))}
-                  </span>
-                ) : (
-                  row.fields.map((f, j) => (
+                <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+                  <path d="M2.5 7.5 6 4l3.5 3.5" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="work-move-button"
+                disabled={locked || position === order.length - 1}
+                aria-label={`Move ${noun.toLowerCase()} ${position + 1} down`}
+                onClick={() => move(position, 1)}
+              >
+                <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+                  <path d="M2.5 4.5 6 8l3.5-3.5" />
+                </svg>
+              </button>
+            </span>
+            {markBadge(position)}
+          </li>
+        );
+      })}
+    </ol>
+  ) : (
+    <ol
+      className="work-rows"
+      data-layout={r.layout}
+      data-mode={r.mode}
+      data-compact={compact ? "" : undefined}
+    >
+      {rows.map((_, i) => {
+        const row = rowShape(r, i);
+        // An open list's row label names its item ("Pair"), not each row.
+        const label = r.open ? undefined : row.label;
+        return (
+          <li key={i} className="work-row" data-mark={markOf(i)}>
+            <span className="work-number" aria-hidden="true">
+              {i + 1}
+            </span>
+            <span className="work-fields">
+              {label && (
+                <span className="work-label">
+                  <MathText text={label} />
+                </span>
+              )}
+              {compact ? (
+                <span className="work-cells">
+                  {row.fields.map((f, j) => (
                     <span key={j} className="work-cell" data-field={f.kind}>
-                      {r.layout === "proof" && (
-                        <span className="work-cell-caption" aria-hidden="true">
-                          {f.label}
-                        </span>
-                      )}
                       {fieldControl(i, j, f, row)}
                     </span>
-                  ))
-                )}
-              </span>
-              {markBadge(i)}
-            </li>
-          );
-        })}
-      </ol>
-    );
+                  ))}
+                </span>
+              ) : (
+                row.fields.map((f, j) => (
+                  <span key={j} className="work-cell" data-field={f.kind}>
+                    {r.layout === "proof" && (
+                      <span className="work-cell-caption" aria-hidden="true">
+                        {f.label}
+                      </span>
+                    )}
+                    {fieldControl(i, j, f, row)}
+                  </span>
+                ))
+              )}
+            </span>
+            {markBadge(i)}
+          </li>
+        );
+      })}
+    </ol>
+  );
 
   return (
     <div
       className="work"
       data-layout={r.layout}
+      data-diagram={r.diagram?.kind}
       data-keypad={keypadOpen ? "" : undefined}
       // Room for the keypad is reserved from the first frame, so opening
       // and closing it never changes the scroll extent under a finger.
@@ -948,10 +980,16 @@ export function StructuredWorkAnswer({
   const order = r.mode === "order";
   const shown = JSON.stringify(r.rows.map((x) => x.id));
   const rows = order ? [] : draftRows(r, value);
+  // A diagram's undrawn places hold the page's 0, not the learner's work.
+  const zeros = diagramZeros(r);
   const empty = order
     ? value === "" || value === shown
     : (!r.open || rows.length <= 1) &&
-      rows.every((row) => row.every((v) => !v.trim()));
+      rows.every((row, i) =>
+        row.every(
+          (v, j) => !v.trim() || zeros.some(([a, b]) => a === i && b === j),
+        ),
+      );
   return (
     <form
       className="work-form"
@@ -991,19 +1029,32 @@ export function StructuredWorkAnswer({
 /** What one row is called: an open list's own label ("pair"), else a line
  * of a proof or a step. */
 export function workItem(r: StructuredWorkResponse): string {
-  return r.open && r.rows[0]?.label
-    ? r.rows[0].label.toLowerCase()
-    : r.layout === "proof"
-      ? "line"
-      : "step";
+  return r.diagram
+    ? "number"
+    : r.open && r.rows[0]?.label
+      ? r.rows[0].label.toLowerCase()
+      : r.layout === "proof"
+        ? "line"
+        : "step";
 }
 
-/** "2 of 4 steps correct", from the server's marks. */
+/** "2 of 4 steps correct", from the server's marks; a diagram's numbers
+ * are counted one by one against the answer key. */
 export function workSummary(
   r: StructuredWorkResponse,
   parts: boolean[] | undefined,
+  response?: string,
+  answer?: string,
 ): string {
   const what = `${workItem(r)}s`;
+  const each =
+    response !== undefined && answer !== undefined
+      ? diagramMarks(r, response, answer)
+      : null;
+  if (each) {
+    const marks = [...each.values()];
+    return `${marks.filter(Boolean).length} of ${marks.length} ${what} correct`;
+  }
   if (!parts?.length) return `Your ${what} are marked above`;
   return `${parts.filter(Boolean).length} of ${parts.length} ${what} correct`;
 }

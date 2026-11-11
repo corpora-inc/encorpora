@@ -1210,6 +1210,7 @@ export function PracticeWorkspace(props: Props) {
             onChange={setResponse}
             locked={locked}
             marks={outcome && !outcome.skipped ? (outcome.parts ?? null) : null}
+            answer={outcome && !outcome.skipped ? outcome.answer : undefined}
             small={small}
           />
         )}
@@ -1322,7 +1323,12 @@ export function PracticeWorkspace(props: Props) {
                   // Each step is marked in the problem; the work stays
                   // readable for screen readers.
                   <small>
-                    {workSummary(work, outcome.parts)}
+                    {workSummary(
+                      work,
+                      outcome.parts,
+                      outcome.response,
+                      outcome.answer,
+                    )}
                     <span className="sr-only">
                       . Your last line:{" "}
                       {spokenMath(displayResponse(outcome.response))}
@@ -1766,6 +1772,8 @@ export function PracticeWorkspace(props: Props) {
             </h2>
             {problem.figure &&
               !marking &&
+              // An area model drawn by the work replaces the figure.
+              work?.diagram?.kind !== "area" &&
               (choice ||
               plot ||
               trend ||
