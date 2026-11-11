@@ -9,7 +9,7 @@
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import type { Repository } from "../../server/repository.js";
-import { generateProblem, templates } from "../../math/engine.js";
+import { generateProblem } from "../../math/engine.js";
 import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
 import type { WorkbookRecord } from "../../workbook/contracts.js";
@@ -30,15 +30,12 @@ import {
   GRADE_5_CLASS,
   hash,
   persona,
-  SHARED_GAP,
-  STUCK,
   wrongResponse,
   type Persona,
 } from "./personas.js";
 import {
   seedCalendar,
   seedStaffEvents,
-  seedEngineTerm,
   SHORT_LAST_WEEK,
   sumWeeks,
 } from "./term.js";
@@ -57,8 +54,6 @@ const SCHOOL_CLASSES = [
   { name: "Grade 4 Math", grade: 4, teacher: 1, size: 25 },
   { name: "Grade 6 Math", grade: 6, teacher: 2, size: 24 },
 ] as const;
-/** The demo school's quiet class. */
-const QUIET_GRADE = 3;
 const DEMO_TEACHERS = [
   TEACHER_NAMES[4]!,
   TEACHER_NAMES[2]!,
@@ -135,8 +130,8 @@ export async function createDemo(
     // then returns what it made.
     // The school persona replays the estimator over a term of answers. A second
     // click waits for that transaction instead of starting another.
-    await client.query("SET LOCAL lock_timeout='120s'");
-    await client.query("SET LOCAL statement_timeout='120s'");
+    await client.query("SET LOCAL lock_timeout='180s'");
+    await client.query("SET LOCAL statement_timeout='180s'");
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-demo:${input.accountId}:${input.kind}`,
     ]);
@@ -466,27 +461,31 @@ async function build(
     [carded.map((person) => person.personId), year.start],
   );
 
-  // Twelve weeks of practice: the hero class from its personas, with real
-  // answers lately; every other class straight to the rollups.
-  const hero = classes[0]!;
-  // The week triggers wait; each week is summed once below.
+  // Twelve weeks for every class, from the one dose model. The week
+  // triggers wait; each week is summed once below.
   await client.query("SET LOCAL amp.rollup_weeks='deferred'");
   await seedClassHistory(client, {
-    students: hero.people.map((person): DemoStudent => ({
-      personId: person.personId,
-      learnerId: person.learnerId,
-      persona: person.persona,
-    })),
+    students: classes.flatMap((klass) =>
+      klass.people.map(
+        (person): DemoStudent => ({
+          personId: person.personId,
+          learnerId: person.learnerId,
+          persona: person.persona,
+          grade: klass.grade,
+        }),
+      ),
+    ),
     timezone: input.timezone,
     termStart: year.start,
     today,
-    gradeLevel: hero.grade,
+    gradeLevel: classes[0]?.grade ?? 5,
     weekShape: SHORT_LAST_WEEK,
     now,
     workToday: clock.hour >= 9,
+    model: "dose",
   });
   await sumWeeks(client, "SELECT unnest($1::text[])", [
-    hero.people.map((person) => person.learnerId),
+    people.map((person) => person.learnerId),
   ]);
   await client.query(
     `CREATE TEMP TABLE seed_class(id uuid,org uuid,teacher uuid) ON COMMIT DROP;
@@ -500,46 +499,14 @@ async function build(
       enrollments.filter((row) => row[2] === "teacher").map((row) => row[1]),
     ],
   );
-  const others = people.filter((person) => person.classId !== heroId);
   await client.query(
-    `INSERT INTO seed_student SELECT p,l,c,g,a,d,0.4+d*0.5,n
-     FROM unnest($1::uuid[],$2::text[],$3::uuid[],$4::int[],$5::float8[],$6::float8[]) WITH ORDINALITY AS t(p,l,c,g,a,d,n)`,
+    `INSERT INTO seed_student SELECT p,l,c,g,0,1,1,n
+     FROM unnest($1::uuid[],$2::text[],$3::uuid[],$4::int[]) WITH ORDINALITY AS t(p,l,c,g,n)`,
     [
-      others.map((person) => person.personId),
-      others.map((person) => person.learnerId),
-      others.map((person) => person.classId),
-      others.map((person) => person.grade),
-      others.map((person) => person.persona.ability - person.grade),
-      others.map((person) => {
-        const roll = hash(`${person.persona.name.join(" ")} drive`);
-        // One class practices little: a few keep at it, some come now and
-        // then, the rest barely start. Its minutes, problems and who practiced
-        // come from the same days, so they agree.
-        if (person.grade === QUIET_GRADE)
-          return roll < 0.3
-            ? 0.3 + roll * 0.8
-            : roll < 0.65
-              ? 0.08 + roll * 0.15
-              : roll * 0.04;
-        return roll < 0.06 ? 0 : 0.5 + roll * 0.85;
-      }),
-    ],
-  );
-  if (others.length)
-    await seedEngineTerm(client, {
-      yearStart: year.start,
-      skillsPerDay: 2,
-      weekShape: SHORT_LAST_WEEK,
-      now,
-    });
-  // The hero class's students join the event log's sample too.
-  await client.query(
-    `INSERT INTO seed_student SELECT p,l,$3::uuid,$4,0,1,1,n FROM unnest($1::uuid[],$2::text[]) WITH ORDINALITY AS t(p,l,n)`,
-    [
-      hero.people.map((person) => person.personId),
-      hero.people.map((person) => person.learnerId),
-      heroId,
-      hero.grade,
+      people.map((person) => person.personId),
+      people.map((person) => person.learnerId),
+      people.map((person) => person.classId),
+      people.map((person) => person.grade),
     ],
   );
   await seedStaffEvents(client, input.timezone);
@@ -550,21 +517,6 @@ async function build(
     [orgId, owner, classes.map((klass) => klass.classId), year.start],
   );
   return { orgId, classId: heroId, created: true };
-}
-
-/** The skills a demo student keeps missing (`SHARED_GAP`, `STUCK`). */
-const skillOfTemplate = new Map(
-  templates.map((template) => [template.id, template.skillId]),
-);
-function missedSkills(given: string): Set<string> {
-  return new Set(
-    [
-      SHARED_GAP.people.includes(given) ? SHARED_GAP.template : null,
-      STUCK.person === given ? STUCK.template : null,
-    ].flatMap((template) =>
-      template ? [skillOfTemplate.get(template) ?? ""] : [],
-    ),
-  );
 }
 
 /** A printed problem, made once per process: students share a workbook. */
@@ -704,7 +656,6 @@ async function seedWorkbooks(
         .filter((row) => row.learner_id === student.learner_id)
         .map((row) => row.skill_id),
     );
-    const missing = missedSkills(student.given_name);
     const slipped = new Set<string>();
     const items = record.spec.sections.flatMap((section) =>
       section.items.map((item) => ({ item, section: section.kind })),
@@ -712,18 +663,16 @@ async function seedWorkbooks(
     for (const [index, { item }] of items.entries()) {
       const problem = printed(item);
       const slip =
-        missing.has(item.skillId) ||
-        (!shown.has(item.skillId) &&
-          !slipped.has(item.skillId) &&
-          hash(`${student.given_name}${index}`) > 0.72);
+        !shown.has(item.skillId) &&
+        !slipped.has(item.skillId) &&
+        hash(`${student.given_name}${index}`) > 0.72;
       if (slip) slipped.add(item.skillId);
       const kind = problem.public.response.kind;
       const graded =
         kind === "number" || kind === "fraction" || kind === "choice";
       // A mark counts half, so on a skill they've shown it would follow their
       // screen work weaker; those wait to be marked.
-      if (!graded && shown.has(item.skillId) && !missing.has(item.skillId))
-        continue;
+      if (!graded && shown.has(item.skillId)) continue;
       const id = paperProblemId(record.id, index + 1);
       papers.push({
         learner: student.learner_id,
