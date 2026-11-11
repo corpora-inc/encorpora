@@ -20,7 +20,7 @@ export const linePlotBuildTemplates: readonly TemplateMetadata[] = [
     skillId: "line-plots",
     gradeBand: "K–2",
     description:
-      "Make a line plot from several lengths, repeated measurements, a table, or drawn rulers. Place one X per measurement on a consecutive whole-number scale.",
+      "Make a line plot from several lengths, repeated measurements, a table, or drawn rulers. Place one $X$ per measurement on a consecutive whole-number scale.",
     requiredResponseCapability: "line-plot-build-v1",
     requiredFigureCapability: "scenes-v1",
     glossaryNoLink: ["tally", "whole"],
@@ -193,7 +193,7 @@ export function generateLinePlotBuild(
       );
     });
   } else if (family === "given-table") {
-    prompt = `These ${n} ${objects} were measured to the nearest ${one}. Show the measurements on the line plot. Put one X for each ${object}.`;
+    prompt = `These ${n} ${objects} were measured to the nearest ${one}. Show the measurements on the line plot. Put one $X$ for each ${object}.`;
     figure = {
       kind: "scene",
       scene: scene(
@@ -209,7 +209,7 @@ export function generateLinePlotBuild(
   } else if (family === "given-repeated") {
     prompt = `The same ${object} was measured ${n} times to the nearest ${one}: ${values.join(", ")} ${many}. Show all ${n} measurements on the line plot.`;
   } else {
-    prompt = `${n} ${objects} were measured to the nearest ${one}: ${values.join(", ")} ${many}. Show the measurements on the line plot. Put one X for each ${object}.`;
+    prompt = `${n} ${objects} were measured to the nearest ${one}: ${values.join(", ")} ${many}. Show the measurements on the line plot. Put one $X$ for each ${object}.`;
   }
   const empty = range(min, max).filter((v) => !counts[v]);
   return {
@@ -243,13 +243,13 @@ export function generateLinePlotBuild(
         .map(([v, c]) => `${v} ${many}: ${c}`)
         .join("; ")}.`,
       ...Object.entries(counts).map(
-        ([v, c]) => `Put ${c} ${c === 1 ? "X" : "Xs"} above ${v}.`,
+        ([v, c]) => `Put ${c} ${c === 1 ? "$X$" : "$X$s"} above ${v}.`,
       ),
-      `Leave ${empty.join(", ")} with no X. They stay on the scale so each step is one ${one}.`,
-      `Check: ${n} Xs in all, one per measurement.`,
+      `Leave ${empty.join(", ")} with no $X$. They stay on the scale so each step is one ${one}.`,
+      `Check: ${n} $X$s in all, one per measurement.`,
       ...(family === "given-repeated"
         ? [
-            `Measuring the same ${object} can give slightly different numbers because measuring is never perfect. The Xs pile up around ${values.reduce((a, b) => (counts[a]! > counts[b]! ? a : b))} ${many}.`,
+            `Measuring the same ${object} can give slightly different numbers because measuring is never perfect. The $X$s pile up around ${values.reduce((a, b) => (counts[a]! > counts[b]! ? a : b))} ${many}.`,
           ]
         : []),
     ],

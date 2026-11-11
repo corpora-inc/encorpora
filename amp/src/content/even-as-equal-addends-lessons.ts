@@ -24,7 +24,7 @@ export const evenAsEqualAddendsMethods: Record<string, ProblemMethod> = {
 
 export const evenAsEqualAddendsPrinciples: Record<string, string> = {
   "even-as-equal-addends":
-    "An even number of objects splits into two groups of the same size. If there are n socks and n is even, then n = n/2 + n/2. The two addends are equal, and their sum is n.",
+    "An even number of objects splits into two groups of the same size. If there are $n$ socks and $n$ is even, then $n = n/2 + n/2$. The two addends are equal, and their sum is $n$.",
 };
 
 export const evenAsEqualAddendsLessons: Lesson[] = [

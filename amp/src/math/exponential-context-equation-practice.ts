@@ -147,16 +147,16 @@ export function generateExponentialContextEquation(
     answer: serializeMultiPart(response, { eq: eqPick.key, n: numPick.key }),
     hint:
       axes.kind === "decay"
-        ? `The sample starts at ${model.start} and the half-life is ${model.half} hours, until ${model.target} remain. Each half-life multiplies by 1/2. Match that factor, then read how many half-lives fit in t.`
+        ? `The sample starts at ${model.start} and the half-life is ${model.half} hours, until ${model.target} remain. Each half-life multiplies by 1/2. Match that factor, then read how many half-lives fit in $t$.`
         : `The culture starts at ${model.start} and multiplies by ${model.base}, until there are ${model.target}. Multiplying is not adding. Match the starting amount and the base, then read the exponent.`,
     explanation: [
       axes.kind === "decay"
-        ? `After t hours the amount is ${model.start} times 1/2 to the power t/${model.half}.`
-        : `After t hours the amount is ${model.start} times ${model.base} to the power t.`,
+        ? `After $t$ hours the amount is ${model.start} times 1/2 to the power $t/${model.half}$.`
+        : `After $t$ hours the amount is ${model.start} times ${model.base} to the power $t$.`,
       `Set that equal to ${model.target}.`,
       axes.kind === "decay"
-        ? `The powers of 1/2 match when t/${model.half} = ${model.steps / model.half}, so t = ${model.steps}.`
-        : `${model.base} to the power t equals ${model.target / model.start}, which is ${model.base} to the ${model.steps}. So t = ${model.steps}.`,
+        ? `The powers of 1/2 match when $t/${model.half} = ${model.steps / model.half}$, so $t = ${model.steps}$.`
+        : `${model.base} to the power $t$ equals ${model.target / model.start}, which is ${model.base} to the ${model.steps}. So $t = ${model.steps}$.`,
       `The linear slip (target − start) ÷ ${axes.kind === "decay" ? model.half : model.base} is not ${model.steps}.`,
       "Doubling multiplies. It does not add.",
     ],
