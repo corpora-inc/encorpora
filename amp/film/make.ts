@@ -28,7 +28,7 @@ import { thingsProblems } from "./things";
 import { isTagWord, neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
-import { heldHighlights } from "./stage";
+import { heldFrames } from "./held-frames";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -423,7 +423,7 @@ try {
     const litDir = join(dir, "lit");
     rmSync(dir, { recursive: true, force: true });
     mkdirSync(litDir, { recursive: true });
-    const lights = heldHighlights(script, timing);
+    const lights = heldFrames(script, timing);
     const byBeat = new Map<number, typeof lights>();
     for (const light of lights) {
       const list = byBeat.get(light.beat) ?? [];
@@ -433,7 +433,6 @@ try {
     // Beat-end frames stay NNN.jpg. Lit frames live in lit/ so a reader of the
     // numbered sequence (the line's pages, the critic's first N frames) is unchanged.
     const sheet: { file: string; label: string }[] = [];
-    const slug = (word: string) => word.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "highlight";
     for (let i = 0; i < beats.length; i++) {
       const next = beats[i + 1]?.start ?? timing.duration;
       const t = Math.max(beats[i]!.end, Math.min(beats[i]!.end + 0.9, next - 0.05, shotEnd[i]!));
@@ -443,8 +442,8 @@ try {
       const mine = byBeat.get(i) ?? [];
       for (let k = 0; k < mine.length; k++) {
         const light = mine[k]!;
-        const name = slug(light.word);
-        const file = join(litDir, mine.length > 1 ? `${String(i).padStart(3, "0")}-${k + 1}-${name}.jpg` : `${String(i).padStart(3, "0")}-${name}.jpg`);
+        const name = light.label;
+        const file = join(litDir, light.file);
         writeFileSync(file, await shot(light.t));
         sheet.push({ file, label: name === "highlight" ? `${i} lit` : `${i} lit ${name.replace(/-/g, " ")}` });
       }

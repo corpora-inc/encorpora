@@ -1,4 +1,4 @@
-"""Private production state and a single-coordinator lock."""
+"""Private production state and scoped advisory locks."""
 from contextlib import contextmanager
 import fcntl
 import json
@@ -40,3 +40,28 @@ def coordinator_lock(path):
             yield
         finally:
             fcntl.flock(handle, fcntl.LOCK_UN)
+
+
+@contextmanager
+def command_lock(config, command, identifier=None, out=None):
+    """Film work is independent; voice capacity and shared indexes are serialized."""
+    from contextlib import ExitStack
+    from hashlib import sha256
+    root = Path(config.get('line_root', config['root']))
+    with ExitStack() as stack:
+        if identifier:
+            # Caller validates identifiers before entering this boundary.
+            stack.enter_context(coordinator_lock(root/'locks'/(identifier+'.lock')))
+        elif command == 'facts':
+            key = sha256(str(Path(out).resolve()).encode()).hexdigest()
+            stack.enter_context(coordinator_lock(root/'locks'/('facts-'+key+'.lock')))
+        if command == 'voice':
+            stack.enter_context(coordinator_lock(root/'voice.lock'))
+        elif command in ('predict', 'board', 'release', 'unrelease', 'follow-up'):
+            stack.enter_context(shared_lock(config))
+        yield
+
+
+def shared_lock(config):
+    # All configurations pointing at the same review data share this lock.
+    return coordinator_lock(Path(config['live_data'])/'.line.lock')
