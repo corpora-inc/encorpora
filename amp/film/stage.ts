@@ -399,7 +399,8 @@ function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
  * and replays it, so a label that appears later does not shove one already there.
  * A label that `flies`, while in flight (its point is moving, or the thing it
  * rides is travelling), takes no part: it passes over the others, and what it
- * rests on is settled where it lands.
+ * rests on is settled where it lands. An axis number never moves off its tick:
+ * a label it meets takes the whole push, so the numbers keep one baseline.
  */
 function separateLabels(root: HTMLElement) {
   const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
@@ -419,10 +420,17 @@ function separateLabels(root: HTMLElement) {
         const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left);
         const oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
         if (ox <= 0.5 || oy <= 0.5) continue;
+        // the axes thin their own numbers; two numbers are never pushed apart here
+        const fixedA = els[i]!.classList.contains("film-axis-num"), fixedB = els[j]!.classList.contains("film-axis-num");
+        if (fixedA && fixedB) continue;
         const dx = ox <= oy ? ((a.left + a.width / 2 <= b.left + b.width / 2 ? -1 : 1) * ((ox + gap) / 2)) / k : 0;
         const dy = oy < ox ? ((a.top + a.height / 2 <= b.top + b.height / 2 ? -1 : 1) * ((oy + gap) / 2)) / k : 0;
-        nudgeLabel(els[i]!, dx, dy);
-        nudgeLabel(els[j]!, -dx, -dy);
+        if (fixedA) nudgeLabel(els[j]!, -2 * dx, -2 * dy);
+        else if (fixedB) nudgeLabel(els[i]!, 2 * dx, 2 * dy);
+        else {
+          nudgeLabel(els[i]!, dx, dy);
+          nudgeLabel(els[j]!, -dx, -dy);
+        }
         moved = true;
       }
     }
@@ -2315,6 +2323,7 @@ class GeoStage {
     for (let c = 0; c < p.head.length; c++) { const x = left + lw + c * cw; d += `M${k(x, top)}L${k(x, bottom)}`; }
     v.grid.setAttribute("d", d);
     v.grid.style.opacity = String(frameO);
+    if (p.ink) v.grid.style.stroke = INK[p.ink]!;
     let rules = "";
     if (p.totals) {
       rules += `M${k(left, top - p.rows.length * ch)}L${k(right, top - p.rows.length * ch)}`;
@@ -2323,6 +2332,7 @@ class GeoStage {
     }
     v.rules.setAttribute("d", rules);
     v.rules.style.opacity = String(frameO);
+    if (p.ink) v.rules.style.stroke = INK[p.ink]!;
     for (const [target, band] of v.bands) {
       const bo = bandOpacity(givens, t, target, ease) * frameO;
       band.style.display = bo < 0.002 ? "none" : "";

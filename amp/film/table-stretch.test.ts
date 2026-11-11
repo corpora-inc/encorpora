@@ -9,7 +9,9 @@
  *
  * A row becomes a point: a dot placed on the row's edge (a table anchor)
  * moves to its place on the graph. Axes may set their numbers larger, so a
- * few numbers read on a phone; none of them touch.
+ * few numbers read on a phone; none of them touch, and a title set under
+ * them is pushed clear while every number stays on one baseline. A table may
+ * take a function's colour for its grid.
  */
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -27,10 +29,12 @@ const script: Script = scriptSchema.parse({
       // x runs over 12 units and y over 120: one unit across is ten units up
       stretch: true,
       view: [-6.5, -12, 5.5, 108],
-      points: { TL: [-6, 100], E: [5, 100], D: { anchor: ["t", "right:1"] }, P: [2, 40] },
+      points: { TL: [-6, 100], E: [5, 100], D: { anchor: ["t", "right:1"] }, P: [2, 40], XT: [2.1, 0] },
       parts: [
         { id: "ax", axes: true, step: 1, every: 1, ystep: 10, yevery: 20, xrange: [0, 5.2], yrange: [0, 104], size: "l", start: true },
-        { id: "t", table: true, at: "TL", corner: "$x$", head: ["$y$"], rows: [{ label: "1", cells: ["20"] }, { label: "3", cells: ["60"] }], cell: [2.4, 24], size: "m", start: true },
+        { id: "t", table: true, at: "TL", corner: "$x$", head: ["$y$"], rows: [{ label: "1", cells: ["20"] }, { label: "3", cells: ["60"] }], cell: [2.4, 24], size: "m", ink: "violet", start: true },
+        // a title set too close under the x axis's numbers: it must give way, the numbers must not
+        { id: "xt", label: "\\text{hours}", at: "XT", dir: "s", far: 1.6, ink: "muted", size: "m", start: true },
         { id: "line", seg: ["TL", "E"], ink: "accent", start: true },
         { id: "p", dot: "P", ink: "ink", r: 6, start: true },
         { id: "d", dot: "D", ink: "violet", r: 12, start: true },
@@ -114,9 +118,16 @@ test("a table on a stretched graph fills its grid, keeps its type size, and its 
         })();
         const nums = [...document.querySelectorAll<HTMLElement>(".film-shot .film-axis-num")].filter((el) => el.style.display !== "none").map((el) => {
           const r = el.getBoundingClientRect();
-          return { px: parseFloat(getComputedStyle(el).fontSize), l: r.left, t: r.top, r: r.right, b: r.bottom };
+          return { text: (el.textContent ?? "").trim(), px: parseFloat(getComputedStyle(el).fontSize), l: r.left, t: r.top, r: r.right, b: r.bottom };
         });
-        return { grid, cells, sizes, css, nums };
+        const title = [...document.querySelectorAll<HTMLElement>(".film-shot .film-label")].find((el) => (el.textContent ?? "").trim() === "hours")!.getBoundingClientRect();
+        const probe = document.createElement("div");
+        probe.style.color = "var(--color-strand-operations)";
+        document.body.appendChild(probe);
+        const violet = getComputedStyle(probe).color;
+        probe.remove();
+        const gridInk = getComputedStyle(document.querySelector(".film-shot .film-table-grid")!).stroke;
+        return { grid, cells, sizes, css, nums, title: { l: title.left, r: title.right, t: title.top, b: title.bottom }, violet, gridInk };
       });
       // two columns and three rows (the header and two body rows): each shaded cell is one column wide and one row tall
       expect(got.cells.length, where("cells drawn")).toBe(6);
@@ -129,6 +140,12 @@ test("a table on a stretched graph fills its grid, keeps its type size, and its 
       // the axes asked for large numbers: every number is drawn at that size, and no two touch
       expect(got.nums.length, where("axis numbers drawn")).toBeGreaterThanOrEqual(8);
       for (const n of got.nums) expect(n.px, where("an axis number's size")).toBe(56);
+      // the x axis's numbers (1 to 5) sit on one baseline, and the title under them gave way
+      const xs = got.nums.filter((n) => /^[1-5]$/.test(n.text));
+      expect(xs.length, where("x axis numbers")).toBe(5);
+      expect(Math.max(...xs.map((n) => n.b)) - Math.min(...xs.map((n) => n.b)), where("x axis numbers on one baseline")).toBeLessThanOrEqual(0.5);
+      for (const n of xs) expect(Math.min(n.r, got.title.r) - Math.max(n.l, got.title.l) > 0.5 && Math.min(n.b, got.title.b) - Math.max(n.t, got.title.t) > 0.5, where(`the title clears ${n.text}: ${JSON.stringify([n, got.title])}`)).toBe(false);
+      expect(got.gridInk, where("the table's grid in its ink")).toBe(got.violet);
       for (let i = 0; i < got.nums.length; i++) for (let j = i + 1; j < got.nums.length; j++) {
         const a = got.nums[i]!, b = got.nums[j]!;
         expect(Math.min(a.r, b.r) - Math.max(a.l, b.l) > 0.5 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 0.5, where("two axis numbers touch")).toBe(false);

@@ -328,6 +328,8 @@ const table = z.object({
   /** The last row and the last column are totals: a heavier rule before them, muted type. */
   totals: z.boolean().optional(),
   size: z.enum(["s", "m", "l"]).optional(),
+  /** The grid's colour: a function's own colour, when two functions share a picture. */
+  ink: ink.optional(),
 });
 const mosaic = z.object({
   ...common,
