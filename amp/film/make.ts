@@ -20,12 +20,13 @@ import { createServer } from "vite";
 import { chromium as rawChromium } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { problemLesson } from "../src/content/problem-lessons";
-import { audioProblems, envelope, fadeAround, FLOOR, quietRuns, SR, TAKE_FADE } from "./audio";
-import { goodTake, pcmOf, type Alignment } from "./voice";
+import { audioProblems, cutOut, envelope, even, fadeAround, FLOOR, quietRuns, SR, stamp, TAKE_FADE } from "./audio";
+import { goodTake, heardWords, pcmOf, wordsOf } from "./voice";
+import { describe, JOIN, repairTake, strayPlan } from "./strays";
 import { scriptSchema, type BeatTime, type Script, type Timing, type WordTime } from "./schema";
 import { mathProblems } from "./mathcheck";
 import { thingsProblems } from "./things";
-import { isTagWord, neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
+import { neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
 import { heldFrames } from "./held-frames";
@@ -86,29 +87,6 @@ const runs = runsOf(script, cast);
 // ------------------------------------------------------------------ voice
 let charsSpent = 0;
 const tokens = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
-/**
- * Words with their times. A word runs from its first letter or digit to its
- * last: the service gives the pause after a sentence to its full stop, so a
- * word that kept its punctuation would end at the start of the next word.
- */
-function wordsOf(a: Alignment): WordTime[] {
-  const out: WordTime[] = [];
-  let buf = "", st = -1, en = -1, st0 = 0, en0 = 0;
-  // an audio tag ("[energetic]") sent before the words may come back in the alignment: it was not spoken
-  const push = () => { if (buf.trim() && !isTagWord(buf)) out.push({ text: buf.trim(), start: st >= 0 ? st : st0, end: en >= 0 ? en : en0 }); };
-  a.characters.forEach((ch, i) => {
-    if (/\s/.test(ch)) { push(); buf = ""; st = en = -1; return; }
-    if (!buf) st0 = a.character_start_times_seconds[i]!;
-    en0 = a.character_end_times_seconds[i]!;
-    if (/[\p{L}\p{N}]/u.test(ch)) {
-      if (st < 0) st = a.character_start_times_seconds[i]!;
-      en = a.character_end_times_seconds[i]!;
-    }
-    buf += ch;
-  });
-  push();
-  return out;
-}
 /** Shorten long silences inside a take, cutting only where it is measured silent; word times stay true. */
 function tighten(pcm: Int16Array, words: WordTime[], maxGap = 0.34) {
   const env = envelope(pcm), n = env.length;
@@ -121,26 +99,10 @@ function tighten(pcm: Int16Array, words: WordTime[], maxGap = 0.34) {
     if (len > maxGap && i > 0 && j < n) cuts.push([i * 0.01 + maxGap * 0.55, i * 0.01 + maxGap * 0.55 + (len - maxGap)]);
     i = j;
   }
-  const map = (t: number) => {
-    let d = 0;
-    for (const [a, b] of cuts) { if (t >= b) d += b - a; else if (t > a) d += t - a; }
-    return t - d;
-  };
-  const parts: Int16Array[] = [];
-  let prev = 0;
-  for (const [a, b] of cuts) { parts.push(pcm.subarray(Math.round(prev * SR), Math.round(a * SR))); prev = b; }
-  parts.push(pcm.subarray(Math.round(prev * SR)));
-  const out = new Int16Array(parts.reduce((s, p) => s + p.length, 0));
-  const joins: number[] = [];
-  let at = 0;
-  for (const p of parts) {
-    out.set(p, at);
-    if (at) { joins.push(at / SR); fadeAround(out, at); }
-    at += p.length;
-  }
+  const { pcm: out, joins, map } = cutOut(pcm, cuts);
   fadeAround(out, 0, false, true, TAKE_FADE);
   fadeAround(out, out.length, true, false, TAKE_FADE);
-  return { pcm: out, joins, words: words.map((w) => ({ text: w.text, start: map(w.start), end: map(w.end) })) };
+  return { pcm: out, joins, map, words: words.map((w) => ({ text: w.text, start: map(w.start), end: map(w.end) })) };
 }
 function wav(pcm: Int16Array) {
   const data = Buffer.from(pcm.buffer, pcm.byteOffset, pcm.byteLength), h = Buffer.alloc(44);
@@ -148,24 +110,16 @@ function wav(pcm: Int16Array) {
   h.writeUInt32LE(SR, 24); h.writeUInt32LE(SR * 2, 28); h.writeUInt16LE(2, 32); h.writeUInt16LE(16, 34); h.write("data", 36); h.writeUInt32LE(data.length, 40);
   return Buffer.concat([h, data]);
 }
-/** One speaking level for every take: -21 dBFS while speaking, peaks under -1 dBFS. */
-function even(src: Int16Array) {
-  const env = envelope(src), loud = [...env].filter((x) => x > 0.02);
-  if (!loud.length) return Int16Array.from(src);
-  const level = Math.sqrt(loud.reduce((a, x) => a + x * x, 0) / loud.length);
-  let peak = 1;
-  for (const v of src) peak = Math.max(peak, Math.abs(v));
-  const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
-  return Int16Array.from(src, (v) => Math.round(v * gain));
-}
 /** Notes that do not stop the film: about the voice, and labels a crowded app figure left out. */
 const voiceNotes: string[] = [];
+/** Stray sounds too close to a word to remove: they stop the narration. */
+const strayFaults: string[] = [];
 async function voice(): Promise<Timing> {
   requireVoices(cast);
   const t0 = Date.now();
   const lead = 0.5, gapBetweenShots = 0.45;
   const chunks: Int16Array[] = [new Int16Array(Math.round(SR * lead))];
-  const edits: { at: number; what: string }[] = [];
+  const edits: { at: number; what: string; within?: number }[] = [];
   let clockT = lead;
   const shots: BeatTime[][] = script.shots.map(() => []);
   // One take per run of beats by the same speaker, in that speaker's voice. Every
@@ -183,9 +137,21 @@ async function voice(): Promise<Timing> {
     const where = `Shot ${si + 1}${cast.named ? ` (${run.role.role})` : ""}`;
     const r = made[ri]!.take;
     charsSpent += made[ri]!.spent;
-    for (const f of made[ri]!.faults) voiceNotes.push(`${where}: no take matched the script exactly (the same in each try): ${f}. Listen there.`);
-    const { pcm, words, joins } = tighten(even(pcmOf(r)), wordsOf(r.alignment));
+    for (const f of made[ri]!.faults) voiceNotes.push(`${where}: no take passed every check (the same in each try): ${f}. Listen there.`);
+    // Sounds in the take that are no word: a stray is made silent, a word's last hiss that came
+    // loose is joined back to it, and the take keeps only ROOM of room tone beyond its first and
+    // last sound, so nothing after the last word (or before the first) reaches the film. A stray
+    // too close to a word to remove stops the narration (voice.ts retakes such a take first).
+    const raw = even(pcmOf(r));
+    const plan = strayPlan(raw, wordsOf(r.alignment), heardWords(r));
+    const repaired = repairTake(raw, plan);
+    const { pcm, words, joins: tightJoins, map } = tighten(repaired.pcm, wordsOf(r.alignment).map((w) => ({ ...w, start: repaired.map(w.start), end: repaired.map(w.end) })));
+    const joins = [
+      ...tightJoins.map((at) => ({ at, what: `shortened silence in shot ${si + 1}` })),
+      ...repaired.joins.map((j) => ({ at: map(j.at), what: `"${j.word}" joined to its loose end in shot ${si + 1}`, within: JOIN / 2 })),
+    ];
     const env = envelope(pcm);
+    const segments: { cut: number; end: number; at: number }[] = [];
     const beats = script.shots[si]!.beats.slice(run.from, run.to + 1);
     const out = shots[si]!;
     let w = 0, cut = 0;
@@ -219,7 +185,8 @@ async function voice(): Promise<Timing> {
       const a = Math.round(cut * SR), b = Math.round(end * SR);
       if (pause > 0) fadeAround(pcm, b);
       const seg = pcm.subarray(a, b);
-      for (const j of joins) if (j > cut && j < end) edits.push({ at: clockT + j - cut, what: `shortened silence in shot ${si + 1}` });
+      for (const j of joins) if (j.at > cut && j.at < end) edits.push({ ...j, at: clockT + j.at - cut });
+      segments.push({ cut, end, at: clockT });
       out.push({
         start: clockT + got[0]!.start - cut,
         end: clockT + got[got.length - 1]!.end - cut,
@@ -233,6 +200,13 @@ async function voice(): Promise<Timing> {
         clockT += pause;
       }
       cut = end;
+    }
+    // Say where each repair is in the film; a stray that could not be removed stops the narration.
+    for (const s of plan) {
+      const t = map(repaired.map(s.sound.start)), seg = segments.find((g) => t >= g.cut && t < g.end) ?? segments[segments.length - 1]!;
+      const line = `${where}: ${describe(s, `at ${stamp(seg.at + t - seg.cut)}`)}`;
+      if (s.kind === "near") strayFaults.push(line);
+      else voiceNotes.push(`${line}; ${s.kind === "remove" ? "removed it" : "joined it back to the word"}.`);
     }
     // After a run: a breath before the other speaker answers, or the gap between shots.
     // Both are digital silence against takes that fade in and out (every kept take
@@ -251,9 +225,9 @@ async function voice(): Promise<Timing> {
   const all = new Int16Array(total);
   let at = 0;
   for (const c of chunks) { all.set(c, at); at += c.length; }
-  // A narration with a bad edit is never rendered.
-  const bad = audioProblems(all, edits);
-  if (bad.length) throw new Error(`The narration has edits that would be heard:\n- ${bad.join("\n- ")}`);
+  // A narration with a bad edit, or a stray sound left in it, is never rendered.
+  const bad = [...audioProblems(all, edits), ...strayFaults];
+  if (bad.length) throw new Error(`The narration has edits or sounds that would be heard:\n- ${bad.join("\n- ")}`);
   writeFileSync(join(OUT, "narration.wav"), wav(all));
   const timing: Timing = { duration: total / SR, shots, voices: voiceBindings(cast) };
   writeFileSync(join(OUT, "timing.json"), JSON.stringify(timing));
