@@ -1,15 +1,22 @@
 /**
  * A demo class's term, written in a few bulk statements: every school day of
- * the term for each student, from their persona. Older days go straight to the
- * rollups; the last two weeks are real problems and real answers, so the
- * database's own triggers build skill evidence and skill days from them, and
+ * the term for each student, from their persona. Each practiced day is real
+ * answers. The stored level is the production estimator's posterior mean and
+ * the calibrated reported sd after those answers, not a scripted formula.
  * Today, the evidence sheet and practice read exactly what a real class leaves.
  * Deterministic for a given class and day. Every name is made up.
  */
 import { randomBytes, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { skills } from "../../curriculum/catalog.js";
+import { DEFAULT_FRONTIER_POLICY } from "../../learning/frontier-policy.js";
 import { generateProblem, templates } from "../../math/engine.js";
+import {
+  learnerNoise,
+  levelDocuments,
+  misspecifiedCorrect,
+  type LevelAnswer,
+} from "./engine-levels.js";
 import {
   chanceOfRight,
   DAY,
@@ -233,17 +240,14 @@ export async function seedClassHistory(
     if (stuck?.person === persona.name[0])
       misses.push({ template: stuck.template, days: [4, 2, 1] });
     for (const miss of misses) held.add(skillOfTemplate.get(miss.template)!);
-    let answered = 0;
-    let independent = 0;
-    const byStrand = new Map<
-      string,
-      { answered: number; independent: number }
-    >();
+    const noise = learnerNoise(name);
     const strandOffset = (strand: string) =>
       (hash(`${name}${strand}`) - 0.5) * 0.7 -
       (gap?.people.includes(persona.name[0]) && strand === "fractions"
         ? 0.5
         : 0);
+    const levelAnswers: LevelAnswer[] = [];
+    const levelDaySet: string[] = [];
     let serial = 0;
     // One slip a skill lately: only a persona's designed misses add up.
     const slips = new Map<string, number>();
@@ -263,21 +267,29 @@ export async function seedClassHistory(
         let helped = 0;
         let review = 0;
         let reviewAlone = 0;
-        if (day.ago < recent && !held.has(skill)) {
+        // Every practiced day is real answers. The held skills (a shared gap,
+        // a student stuck on one idea) stay out of this stream; their misses
+        // are written below, and older days of those skills stay a rollup.
+        if (!held.has(skill)) {
           const kinds = templatesFor.get(skill) ?? [];
           for (let item = 0; item < n && kinds.length; item++) {
             serial++;
             const template = kinds[(serial + item) % kinds.length]!;
             const problem = problemFor(template, serial);
             const isReview = serial % 8 === 7 && index > 3;
-            // Spaced review is what sticks: it comes back right more often.
-            // A skill's last answer each day is right and it slips once at
-            // most, so only the misses a persona has (`misses`) read as stuck.
+            // The last answer of a skill each day is right, and a skill slips
+            // once, so only the designed misses read as stuck. The rest are
+            // the misspecified learner at this day's true level.
             const correct =
               item === n - 1 ||
               (slips.get(skill) ?? 0) >= 1 ||
-              hash(`${name}${day.day}${skill}${item}`) <
-                (isReview ? Math.min(0.97, p + 0.2) : p);
+              misspecifiedCorrect({
+                key: `${name}${day.day}${skill}${item}`,
+                theta: day.level + strandOffset(strandOf(skill)),
+                templateId: template,
+                slip: noise.slip,
+                guess: noise.guess,
+              });
             if (!correct) slips.set(skill, (slips.get(skill) ?? 0) + 1);
             const assisted =
               correct && item < n - 1 && hash(`${name}${serial}hint`) < 0.08;
@@ -308,10 +320,15 @@ export async function seedClassHistory(
               }),
             });
             if (correct && !assisted) alone++;
+            levelAnswers.push({
+              templateId: template,
+              correct,
+              assisted,
+              at,
+              day: day.day,
+            });
           }
-          answered += n;
-          independent += alone;
-        } else {
+        } else if (day.ago >= recent) {
           right = Math.min(
             n,
             Math.round(n * p + (hash(`${name}${day.day}${skill}r`) - 0.5)),
@@ -331,46 +348,10 @@ export async function seedClassHistory(
             review,
             reviewAlone,
           ]);
-          answered += n;
-          independent += alone;
         }
-        const strand = strandOf(skill);
-        const entry = byStrand.get(strand) ?? { answered: 0, independent: 0 };
-        entry.answered += n;
-        entry.independent += alone;
-        byStrand.set(strand, entry);
       }
-      // The stored level: early in each week, and on their latest day.
-      if (weekday(day.day) <= 2 || lastDay) {
-        const sd = Math.max(0.28, 1.1 / Math.sqrt(1 + answered / 12));
-        levelDays.push([
-          learnerId,
-          day.day,
-          JSON.stringify({
-            overall: {
-              level: Math.round(day.level * 100) / 100,
-              sd: Math.round(sd * 100) / 100,
-              answered,
-              independent,
-            },
-            strands: Object.fromEntries(
-              [...byStrand].map(([strand, counts]) => [
-                strand,
-                {
-                  level:
-                    Math.round((day.level + strandOffset(strand)) * 100) / 100,
-                  sd:
-                    Math.round(
-                      Math.max(0.32, 1.2 / Math.sqrt(1 + counts.answered / 8)) *
-                        100,
-                    ) / 100,
-                  ...counts,
-                },
-              ]),
-            ),
-          }),
-        ]);
-      }
+      // Early in each week, and on their latest day, if that day has answers.
+      if (weekday(day.day) <= 2 || lastDay) levelDaySet.push(day.day);
     }
     // What they keep missing lately, as their latest answers on that skill.
     for (const miss of misses)
@@ -400,7 +381,20 @@ export async function seedClassHistory(
             createdAt: at,
           }),
         });
+        levelAnswers.push({
+          templateId: miss.template,
+          correct: false,
+          assisted: false,
+          at,
+          day,
+        });
       }
+    for (const row of levelDocuments({
+      start: options.gradeLevel,
+      answers: levelAnswers,
+      days: levelDaySet,
+    }))
+      levelDays.push([learnerId, row.day, row.frontier]);
   }
   const column = <T, K extends keyof T>(rows: readonly T[], key: K) =>
     rows.map((row) => row[key]);
@@ -422,11 +416,14 @@ export async function seedClassHistory(
   );
   await client.query(
     `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-     SELECT l,d,f::jsonb,'demo' FROM unnest($1::text[],$2::date[],$3::text[]) AS t(l,d,f)
+     SELECT l,d,f::jsonb,$4 FROM unnest($1::text[],$2::date[],$3::text[]) AS t(l,d,f)
      ON CONFLICT DO NOTHING`,
-    Array.from({ length: 3 }, (_, index) =>
-      column(levelDays, index as keyof LevelDayRow),
-    ),
+    [
+      ...Array.from({ length: 3 }, (_, index) =>
+        column(levelDays, index as keyof LevelDayRow),
+      ),
+      DEFAULT_FRONTIER_POLICY.version,
+    ],
   );
   // In the order they were given, so evidence order is answer order.
   attempts.sort((a, b) => a.at.localeCompare(b.at));

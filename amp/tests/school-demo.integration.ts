@@ -130,7 +130,8 @@ test(
       const elapsed = performance.now() - started;
       assert.equal(made.statusCode, 201, made.body);
       demo = made.json().demo;
-      assert.ok(elapsed < 5_000, `built in ${Math.round(elapsed)} ms`);
+      // A term of real answers, folded by the production estimator.
+      assert.ok(elapsed < 15_000, `built in ${Math.round(elapsed)} ms`);
       console.log(`  demo class built in ${Math.round(elapsed)} ms`);
       const again = await call("POST", "/api/v1/school/demo", owner, {
         kind: "class",
