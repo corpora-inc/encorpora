@@ -1999,7 +1999,7 @@
             },
             {
               "do": "problem",
-              "text": "A candle is $H$ centimeters tall, $h$ hours after it is lit: $H=\\cg{16}-\\cw{2}h$ What do the $\\cg{16}$ and the $\\cw{2}$ mean?",
+              "text": "A candle's height, in centimeters, is $H=\\cg{16}-\\cw{2}h.$ $h$ is the hours since it was lit. What do the $\\cg{16}$ and the $\\cw{2}$ mean?",
               "at": "Now",
               "id": "cProb"
             },
