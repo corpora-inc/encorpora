@@ -39,12 +39,13 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     url: `${ORG}/overview`,
     action: "overview.read",
     target: orgParam,
-    handler: ({ actor, target, pool }) =>
+    handler: ({ actor, target, pool, services }) =>
       readOverview(
         pool,
         target.orgId,
         actorPerson(actor, target),
         can(actor, "year.rollover", target),
+        services.now?.(),
       ),
   });
 
@@ -54,7 +55,8 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     url: `${ORG}/schools`,
     action: "overview.read",
     target: orgParam,
-    handler: ({ target, pool }) => readSchools(pool, target.orgId),
+    handler: ({ target, pool, services }) =>
+      readSchools(pool, target.orgId, services.now?.()),
   });
   define({
     method: "POST",

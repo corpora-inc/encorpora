@@ -11,6 +11,7 @@ import { recordEvent } from "./events.js";
 import {
   DEFAULT_GRADE_POLICY,
   rangeLetters,
+  shownComponents,
   suggestGrade,
   weeklyMinutes,
   type GradeActivity,
@@ -34,6 +35,7 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { startLevelSql } from "./start-level.js";
+import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 
 type Database = Pick<PoolClient, "query">;
 const catalog = new Map(skills.map((skill) => [skill.id, skill]));
@@ -58,19 +60,20 @@ export type ClassContext = {
   orgKind: string;
 };
 
-/** What a class is and when "today" is, in one read. */
+/** What a class is and when "today" is, as of `now`, in one read. */
 export async function classContext(
   db: Database,
   classId: string,
+  now: Date = new Date(),
 ): Promise<ClassContext> {
   const row = (
     await db.query(
       `SELECT c.id,c.org_id AS "orgId",o.path,c.name,c.course_bands AS "courseBands",
          c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,o.kind AS "orgKind",
-         to_char(now() AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
-         extract(hour FROM now() AT TIME ZONE o.timezone)::int AS hour
+         to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
+         extract(hour FROM $2::timestamptz AT TIME ZONE o.timezone)::int AS hour
        FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,
-      [classId],
+      [classId, now.toISOString()],
     )
   ).rows[0];
   if (!row) throw new SchoolError(404, "not_found");
@@ -353,29 +356,88 @@ export const middleOf = (values: readonly number[]): number | null => {
     : (sorted[half - 1]! + sorted[half]!) / 2;
 };
 
-export type WeeklyTarget = { minutes: number | null; locked: boolean };
+export type WeeklyTarget = {
+  /** What counts: the class's own, else its school's, else the default. Null
+   * only for a family that hasn't set one. */
+  minutes: number | null;
+  /** Locked above this class, so it can't be changed here. */
+  locked: boolean;
+  /** The class set its own. */
+  own: boolean;
+  /** What it follows without its own. */
+  inherited: number | null;
+};
+type ScopeRow = {
+  scope_kind: string;
+  scope_id: string;
+  values: Record<string, unknown>;
+  locked: string[];
+};
+const scopeOf = (
+  rows: readonly ScopeRow[],
+  kind: "org" | "class",
+  id: string,
+): SettingsScope[] => {
+  const row = rows.find((r) => r.scope_kind === kind && r.scope_id === id);
+  return row ? [{ kind, id, values: row.values, locked: row.locked }] : [];
+};
+/** One class's target from its settings chain. A school or district class
+ * always has one; a family's has one only once a parent sets it. */
+export function resolveWeeklyTarget(
+  rows: readonly ScopeRow[],
+  classId: string | null,
+  path: readonly string[],
+  family: boolean,
+): WeeklyTarget {
+  const above = path.flatMap((id) => scopeOf(rows, "org", id));
+  const here = classId ? scopeOf(rows, "class", classId) : [];
+  const fallback = family ? null : DEFAULT_WEEKLY_TARGET_MINUTES;
+  const inherited = resolveSettings(above).weeklyTargetMinutes;
+  const resolved = resolveSettings([...above, ...here]).weeklyTargetMinutes;
+  return {
+    minutes: resolved.value ?? fallback,
+    locked: resolved.lockedBy !== null,
+    own: resolved.setBy?.kind === "class",
+    inherited: inherited.value ?? fallback,
+  };
+}
+const SCOPE_ROWS = `SELECT scope_kind,scope_id,"values",locked FROM amp_scope_settings
+     WHERE (scope_kind='org' AND scope_id=ANY($1::uuid[])) OR (scope_kind='class' AND scope_id=ANY($2::uuid[]))`;
 /** A class's weekly target through the settings chain. */
 export async function weeklyTargetFor(
   db: Database,
-  context: Pick<ClassContext, "id" | "path">,
+  context: Pick<ClassContext, "id" | "path" | "orgKind">,
 ): Promise<WeeklyTarget> {
-  const { rows } = await db.query(
-    `SELECT scope_kind,scope_id,"values",locked FROM amp_scope_settings
-     WHERE (scope_kind='org' AND scope_id=ANY($1::uuid[])) OR (scope_kind='class' AND scope_id=$2)`,
-    [context.path, context.id],
+  const { rows } = await db.query(SCOPE_ROWS, [context.path, [context.id]]);
+  return resolveWeeklyTarget(
+    rows,
+    context.id,
+    context.path,
+    context.orgKind === "family",
   );
-  const scope = (kind: "org" | "class", id: string): SettingsScope[] => {
-    const row = rows.find((r) => r.scope_kind === kind && r.scope_id === id);
-    return row ? [{ kind, id, values: row.values, locked: row.locked }] : [];
-  };
-  const resolved = resolveSettings([
-    ...context.path.flatMap((id) => scope("org", id)),
-    ...scope("class", context.id),
-  ]).weeklyTargetMinutes;
-  return {
-    minutes: resolved.value ?? null,
-    locked: resolved.lockedBy !== null,
-  };
+}
+/** Many classes' targets in one read, for an overview. */
+export async function weeklyTargetsFor(
+  db: Database,
+  classIds: readonly string[],
+): Promise<Map<string, WeeklyTarget>> {
+  if (!classIds.length) return new Map();
+  const classes = (
+    await db.query(
+      `SELECT c.id,o.path,o.kind FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=ANY($1::uuid[])`,
+      [classIds],
+    )
+  ).rows as { id: string; path: string[]; kind: string }[];
+  const { rows } = await db.query(SCOPE_ROWS, [
+    [...new Set(classes.flatMap((row) => row.path))],
+    classIds,
+  ]);
+  return new Map(
+    classes.map((row) => [
+      row.id,
+      resolveWeeklyTarget(rows, row.id, row.path, row.kind === "family"),
+    ]),
+  );
 }
 
 export type ComputedStudent = {
@@ -430,15 +492,22 @@ export async function computeTerm(
       classMedianWeeklyMinutes: null,
     };
   });
-  const median = middleOf(
-    inputs
-      .filter((input) => input.activity.daysActive > 0)
-      .map((input) => weeklyMinutes(input, policy)),
-  );
+  // One child alone, or a class of one with no target: there's no one to
+  // compare with, so no letter. A median of one is that student.
+  const factsOnly =
+    students.length < 2 &&
+    (context.orgKind === "family" || target.minutes === null);
+  const median = factsOnly
+    ? null
+    : middleOf(
+        inputs
+          .filter((input) => input.activity.daysActive > 0)
+          .map((input) => weeklyMinutes(input, policy)),
+      );
   return students.map((student, index) => ({
     student,
     suggestion: suggestGrade(
-      { ...inputs[index]!, classMedianWeeklyMinutes: median },
+      { ...inputs[index]!, classMedianWeeklyMinutes: median, factsOnly },
       policy,
     ),
     objectives: counted.get(student.id)!,
@@ -452,7 +521,10 @@ export const toSuggestionResource = (
   low: suggestion.low,
   high: suggestion.high,
   letters: rangeLetters(suggestion),
-  components: suggestion.components.map(({ id, score }) => ({ id, score })),
+  components: shownComponents(suggestion).map(({ id, score }) => ({
+    id,
+    score,
+  })),
 });
 
 export type GradebookRow = {
@@ -647,7 +719,7 @@ export async function closeTerm(
   });
 }
 
-/** The one number a teacher sets. Null clears it, back to the class median. */
+/** The one number a teacher sets. Null clears it, back to the school's. */
 export async function setWeeklyTarget(
   repository: SchoolRepository,
   context: ClassContext,
@@ -705,7 +777,7 @@ export async function setWeeklyTarget(
         after: { weeklyTargetMinutes: minutes },
       },
     });
-    return { minutes, locked: false };
+    return weeklyTargetFor(client, context);
   });
 }
 

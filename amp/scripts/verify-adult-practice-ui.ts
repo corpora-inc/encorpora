@@ -482,7 +482,7 @@ async function teacherStarts(
     /Where you are/.test(record) &&
       /Time, last 12 weeks/.test(record) &&
       /Time by day and skill/.test(record) &&
-      /Objectives gained/.test(record) &&
+      /Skills shown on their own/.test(record) &&
       /Recent work/.test(record) &&
       /Began at Algebra/.test(record),
     record.slice(0, 600),

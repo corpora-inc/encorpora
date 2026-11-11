@@ -534,7 +534,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     "Growth",
     "Practice",
     "Retention",
-    "Objectives gained",
+    "Skills shown on their own",
   ])
     check(`${label} evidence has ${expected}`, sheetText.includes(expected));
   check(
@@ -659,7 +659,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     "Ms. Okafor",
     "Final grade",
     "Active minutes",
-    "Objectives gained",
+    "Skills shown on their own",
     "Working level",
   ])
     check(`${label} report card has ${expected}`, cardText.includes(expected));

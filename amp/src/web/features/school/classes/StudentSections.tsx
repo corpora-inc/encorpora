@@ -96,7 +96,7 @@ export function StudentSections({
       )}
       {data.objectives.length > 0 && (
         <section className={styles.recordSection}>
-          <h2>Objectives gained</h2>
+          <h2>Skills shown on their own</h2>
           <RecordObjectives record={data} />
         </section>
       )}

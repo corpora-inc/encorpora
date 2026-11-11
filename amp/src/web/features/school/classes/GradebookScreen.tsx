@@ -187,8 +187,9 @@ function ExportSheet({
   );
 }
 
-/** The one number a teacher sets. Zero is no target, which reads as the class's
- * usual week. Changes settle before they save, so stepping isn't a stream of
+/** The one number a teacher sets. A school class starts at its school's target,
+ * and stepping back to it follows the school again; a family's starts at "Not
+ * set". Changes settle before they save, so stepping isn't a stream of
  * writes. */
 /** Exported for Settings, where a small class sets it. */
 export function WeeklyTarget({
@@ -204,6 +205,7 @@ export function WeeklyTarget({
 }) {
   const save = useSetTarget(session, place);
   const stored = book.weeklyTargetMinutes ?? 0;
+  const inherited = book.inheritedTargetMinutes;
   const [value, setValue] = useState(stored);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
@@ -220,7 +222,7 @@ export function WeeklyTarget({
     <Stepper
       label="Weekly target"
       value={value}
-      min={0}
+      min={inherited === null ? 0 : 15}
       max={300}
       step={15}
       format={(minutes) => (minutes === 0 ? "Not set" : `${minutes} min`)}
@@ -229,7 +231,7 @@ export function WeeklyTarget({
         clearTimeout(timer.current);
         timer.current = setTimeout(() => {
           timer.current = undefined;
-          save.mutate(next === 0 ? null : next, {
+          save.mutate(next === 0 || next === inherited ? null : next, {
             onError: (error) => {
               setValue(stored);
               onError(
@@ -425,7 +427,9 @@ export function GradebookScreen() {
   // dashes.
   const waiting =
     rows.length > 0 &&
-    rows.every((row) => row.suggestion.status !== "ready" && !row.final);
+    rows.every(
+      (row) => row.suggestion.status === "not-enough-work" && !row.final,
+    );
   return (
     <ClassFrame
       org={place.org}

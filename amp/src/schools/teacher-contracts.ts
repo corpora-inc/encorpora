@@ -80,6 +80,8 @@ export const todayTodoResource = z.object({
   action: todoAction,
   /** A shared gap can also go on paper: this skill, for these students. */
   groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
+  /** How this item is decided, in one sentence. */
+  rule: z.string().optional(),
 });
 export type TodayTodo = z.infer<typeof todayTodoResource>;
 /** One student's day at a glance: where they work and what they did today. */
@@ -174,7 +176,8 @@ export const termResource = z.object({
 export type TermResource = z.infer<typeof termResource>;
 const componentId = z.enum(["course", "growth", "practice", "retention"]);
 export const suggestionResource = z.object({
-  status: z.enum(["ready", "not-enough-work"]),
+  /** "facts-only": enough work, and nothing to measure a letter against. */
+  status: z.enum(["ready", "not-enough-work", "facts-only"]),
   low: z.number().nullable(),
   high: z.number().nullable(),
   /** "B to A−"; null without enough work. */
@@ -200,6 +203,9 @@ export const gradebookResponse = z.object({
   weeklyTargetMinutes: z.number().nullable(),
   /** Set above this class, so it can't be changed here. */
   targetLocked: z.boolean(),
+  /** The class set its own; otherwise it follows `inheritedTargetMinutes`. */
+  targetOwn: z.boolean().default(false),
+  inheritedTargetMinutes: z.number().nullable().default(null),
   canEdit: z.boolean(),
   students: z.array(gradeRowResource),
 });

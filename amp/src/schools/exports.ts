@@ -1,7 +1,7 @@
 import { Readable } from "node:stream";
 import type { Pool } from "pg";
 import { gradebookColumns, type GradebookColumn } from "./teacher-contracts.js";
-import type { GradeComponentId } from "./grade-policy.js";
+import { shownComponents, type GradeComponentId } from "./grade-policy.js";
 import type { ClassContext, GradebookRow, Term } from "./term-grades.js";
 
 /** A cell a spreadsheet won't run as a formula. Teachers and imports write
@@ -30,8 +30,8 @@ const HEADERS: Record<GradebookColumn, string> = {
   minutes: "Active minutes",
 };
 const componentScore = (row: GradebookRow, id: GradeComponentId) =>
-  row.suggestion.components.find((component) => component.id === id)?.score ??
-  null;
+  shownComponents(row.suggestion).find((component) => component.id === id)
+    ?.score ?? null;
 const gradebookCell = (row: GradebookRow, column: GradebookColumn) => {
   switch (column) {
     case "sis":

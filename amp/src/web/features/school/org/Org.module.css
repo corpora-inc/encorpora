@@ -75,6 +75,22 @@
     gap: var(--space-5) var(--space-5);
   }
 }
+.trendHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.trendHead .sectionTitle {
+  margin-bottom: 0;
+}
+.trendToggle {
+  flex: 0 0 auto;
+  width: 220px;
+  max-width: 100%;
+}
 .tableNote {
   margin-top: var(--space-3);
   color: var(--color-subtle-text);
@@ -165,6 +181,39 @@
   margin-bottom: 4px;
   border-radius: 50%;
   background: var(--color-border-strong);
+}
+/* Problems: what students did with help sits on top of what they did on
+   their own, in a paler tone of the same mark. */
+.barHelp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 4px 4px 0 0;
+  background: color-mix(in srgb, var(--color-meter) 40%, var(--color-surface));
+}
+.bar[data-state="current"] .barHelp {
+  background: color-mix(in srgb, var(--color-meter) 22%, var(--color-surface));
+}
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+}
+.legendKey {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--color-meter);
+}
+.legendKey + .legendKey,
+.legend > .legendKey:not(:first-child) {
+  margin-inline-start: var(--space-2);
+}
+.legendKey[data-series="help"] {
+  background: color-mix(in srgb, var(--color-meter) 40%, var(--color-surface));
 }
 .barLabel {
   position: absolute;

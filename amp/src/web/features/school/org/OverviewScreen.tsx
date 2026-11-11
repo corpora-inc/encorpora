@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { useMemo } from "react";
 import { formatDay } from "../../../../schools/calendar";
 import type {
@@ -11,13 +16,15 @@ import type {
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { Segmented } from "../../../ui/Segmented";
 import { Loading } from "../../../ui/Loading";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { currentSession, orgOptions } from "../api";
 import { fullDay, number } from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
 import { classPath, orgPath } from "../paths";
-import { StandingChart, TrendChart } from "./charts";
+import { StandingChart, TrendChart, type TrendMeasure } from "./charts";
+import { RuleNote } from "../RuleNote";
 import { compareClassNames } from "../sort";
 import { overviewOptions } from "./org-api";
 import styles from "./Org.module.css";
@@ -74,7 +81,12 @@ type Usage = {
   active: number;
   minutes: number;
   growth: number | null;
+  placed: number;
 };
+const growthTip = (row: Usage) =>
+  row.placed
+    ? `Median of ${number(row.placed)} placed ${row.placed === 1 ? "student" : "students"}`
+    : "No placed students yet";
 const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "students",
@@ -87,7 +99,7 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   },
   {
     id: "active",
-    header: "Active this week",
+    header: "Practiced this week",
     width: 170,
     firstSort: "descending",
     compare: (a, b) =>
@@ -111,7 +123,10 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
     align: "end",
     firstSort: "descending",
     compare: (a, b) => (a.growth ?? -99) - (b.growth ?? -99),
-    cell: (row) => growthWords(row.growth),
+    cell: (row) => (
+      <span title={growthTip(row)}>{growthWords(row.growth)}</span>
+    ),
+    cellLabel: (row) => `${growthWords(row.growth)}. ${growthTip(row)}`,
   },
 ];
 
@@ -283,6 +298,7 @@ function Attention({ items }: { items: readonly AttentionItem[] }) {
         <li key={item.id}>
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
+          {item.rule && <RuleNote>{item.rule}</RuleNote>}
           <Link
             to="/$"
             params={{ _splat: orgPath(item.action.org, item.action.path) }}
@@ -370,6 +386,23 @@ export function OverviewScreen() {
   const canImport = org?.can?.includes("roster.import") === true;
   const view = overview.data;
   const district = view ? view.org.kind !== "school" : false;
+  const search = useSearch({ strict: false }) as { chart?: unknown };
+  const measure: TrendMeasure =
+    search.chart === "problems" ? "problems" : "minutes";
+  const navigate = useNavigate();
+  const setMeasure = (next: TrendMeasure) =>
+    void navigate({
+      to: ".",
+      replace: true,
+      search: ((previous: Record<string, unknown>) => ({
+        ...previous,
+        chart: next === "problems" ? "problems" : undefined,
+      })) as never,
+    });
+  const placed = [...(view?.classes ?? []), ...(view?.schools ?? [])].reduce(
+    (sum, row) => sum + row.placed,
+    0,
+  );
   return (
     <OrgFrame orgId={orgId} nav="overview" title="Overview">
       {overview.isPending ? (
@@ -415,13 +448,32 @@ export function OverviewScreen() {
                   aria-labelledby="overview-trend"
                   className={styles.trend}
                 >
-                  <h2 id="overview-trend" className={styles.sectionTitle}>
-                    Weekly active minutes
-                    {view.term.name === "Last 12 weeks"
-                      ? ", last 12 weeks"
-                      : `, ${view.term.name}`}
-                  </h2>
-                  <TrendChart weeks={view.trend} today={view.today} />
+                  <div className={styles.trendHead}>
+                    <h2 id="overview-trend" className={styles.sectionTitle}>
+                      Weekly practice
+                      {view.term.name === "Last 12 weeks"
+                        ? ", last 12 weeks"
+                        : `, ${view.term.name}`}
+                    </h2>
+                    <div className={styles.trendToggle}>
+                      <Segmented
+                        label="Show"
+                        options={[
+                          { value: "minutes", label: "Minutes" },
+                          { value: "problems", label: "Problems" },
+                        ]}
+                        value={measure}
+                        compact
+                        dense
+                        onChange={setMeasure}
+                      />
+                    </div>
+                  </div>
+                  <TrendChart
+                    weeks={view.trend}
+                    today={view.today}
+                    measure={measure}
+                  />
                 </section>
                 {view.attention.length > 0 && (
                   <section
@@ -449,7 +501,10 @@ export function OverviewScreen() {
                       value={number(view.standing.at)}
                       label="at grade level"
                     />
-                    <StatTile value={number(view.standing.ahead)} label="ahead" />
+                    <StatTile
+                      value={number(view.standing.ahead)}
+                      label="ahead"
+                    />
                     <StatTile
                       value={number(view.standing.behind)}
                       label="behind"
@@ -499,7 +554,11 @@ export function OverviewScreen() {
                   </p>
                 )}
                 <p className={styles.tableNote}>
-                  Growth is the middle student’s grades gained this term.
+                  Growth is each {district ? "school" : "class"}’s median change
+                  in grade level this term, from {number(placed)} placed{" "}
+                  {placed === 1 ? "student" : "students"} (20 or more answers).
+                  Practiced means at least 5 active minutes or 5 problems this
+                  week.
                 </p>
               </section>
             </>

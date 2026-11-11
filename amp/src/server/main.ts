@@ -34,6 +34,7 @@ import {
 import { registerFamilyRoutes } from "../family/routes.js";
 import { randomBytes } from "node:crypto";
 import { registerSchoolRoutes } from "../schools/routes.js";
+import { schoolClock } from "../schools/clock.js";
 import { schoolOidcProviders } from "../schools/oidc.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
@@ -171,10 +172,12 @@ await registerFamilyRoutes(app, {
     ...(accounts ? { mail: accounts.send } : {}),
   },
 });
+const schoolNow = schoolClock(process.env);
 await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate,
   services: {
+    ...(schoolNow ? { now: schoolNow } : {}),
     secret: linkSecret,
     origin: accounts?.config.baseURL ?? "",
     learning: repository,

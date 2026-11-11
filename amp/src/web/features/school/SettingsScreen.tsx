@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { OrgExperienceSection } from "./classroom/ExperienceScreens";
+import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
 import { currentSession, orgOptions } from "./api";
 import { YearCalendar } from "./CalendarScreen";
 import { LicenseSection } from "./LicenseScreen";
@@ -37,6 +38,9 @@ export function OrgSettingsScreen() {
       <div className={styles.settingsPage}>
         <PageHead title="Settings" />
         {can.has("calendar.read") && <YearCalendar orgId={orgId} section />}
+        {can.has("settings.read") && org?.kind !== "family" && (
+          <WeeklyTargetSection orgId={orgId} />
+        )}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}
         {more.length > 0 && (

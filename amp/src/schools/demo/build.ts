@@ -509,8 +509,15 @@ async function build(
       others.map((person) => person.persona.ability - person.grade),
       others.map((person) => {
         const roll = hash(`${person.persona.name.join(" ")} drive`);
-        // One class barely practices, so the overview has something to say.
-        if (person.grade === QUIET_GRADE) return roll * 0.08;
+        // One class practices little: a few keep at it, some come now and
+        // then, the rest barely start. Its minutes, problems and who practiced
+        // come from the same days, so they agree.
+        if (person.grade === QUIET_GRADE)
+          return roll < 0.3
+            ? 0.3 + roll * 0.8
+            : roll < 0.65
+              ? 0.08 + roll * 0.15
+              : roll * 0.04;
         return roll < 0.06 ? 0 : 0.5 + roll * 0.85;
       }),
     ],

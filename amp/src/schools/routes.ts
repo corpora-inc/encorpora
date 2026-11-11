@@ -88,6 +88,11 @@ export type SchoolServices = {
   /** The learning store and PDF renderer behind a teacher's workbook stack. */
   learning?: Repository;
   renderer?: WorkbookRenderer | null;
+  /** The clock school reads count "today" and "this week" from. Absent: the
+   * wall clock. A test or a local preview pins it (main.ts, never in
+   * production), so a rule that depends on the weekday can be shown on any
+   * day. */
+  now?: () => Date;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";

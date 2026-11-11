@@ -125,6 +125,7 @@ export function todoEntries({
     id: todo.id,
     title: todo.title,
     detail: todo.detail,
+    rule: todo.rule,
     mark: isFirstStep(todo) ? "plain" : "check",
     people: people ? todo.students.map((student) => student.name) : undefined,
     actions: (

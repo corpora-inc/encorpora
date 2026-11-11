@@ -1,10 +1,28 @@
 import {
   DEFAULT_GRADE_POLICY,
+  skillsShownWords,
   type CourseBand,
   type GradePolicy,
   type StudentLevel,
 } from "./grade-policy.js";
 import type { TodayTodo } from "./teacher-contracts.js";
+import {
+  LOW_PRACTICE,
+  lowPractice,
+  lowPracticeFacts,
+  lowPracticeLine,
+  lowPracticeRule,
+  practiced,
+  PRACTICED,
+} from "./practice-rules.js";
+
+/** Why one student shows as behind, in one sentence. */
+function studentRule(target: number | null, weekday: number) {
+  const done = `${PRACTICED.minutes} minutes or ${PRACTICED.problems} problems this week`;
+  return target === null
+    ? `From Wednesday, a student shows here until they have ${done}.`
+    : `From Wednesday, a student shows here with less than ${done}, or under a quarter of the ${target}-minute target for the days so far (${lowPracticeLine(target, weekday)} minutes).`;
+}
 
 /** One answer as `amp_skill_evidence` keeps its last five. */
 export type RecentOutcome = {
@@ -157,7 +175,7 @@ function familyDay(
           worked.length === 2
             ? "Both children worked today"
             : `All ${worked.length} children worked today`,
-        detail: `That’s ${plural(minutesToday, "active minute")} so far${objectives ? `, and ${plural(objectives, "new objective")} this week` : ""}.`,
+        detail: `That’s ${plural(minutesToday, "active minute")} so far${objectives ? `, and ${skillsShownWords(objectives)} this week` : ""}.`,
         students: people(worked),
         action: { kind: "tab", tab: "time", label: "See the time report" },
       },
@@ -172,7 +190,7 @@ function familyDay(
           ? `${student.first} practiced ${plural(minutes, "minute")} today`
           : `${student.first} practiced today`,
       detail: student.objectivesThisWeek
-        ? `${plural(student.objectivesThisWeek, "new objective")} this week.`
+        ? `${skillsShownWords(student.objectivesThisWeek)} this week.`
         : `${plural(Math.round(student.weekMinutes), "minute")} so far this week.`,
       students: people([student]),
       action: {
@@ -337,24 +355,49 @@ export function todayTodos(
       };
     });
 
-  // A quiet week, against the target if there is one. Early in the week an
-  // empty row means nothing, so the rule waits.
+  // A quiet week, by the rule a head's overview uses (`practice-rules.ts`):
+  // from Wednesday, a class that's short as a whole says so with its facts;
+  // otherwise each student who hasn't practiced, or is under the line, does.
   const day = dayOfWeek(input.today);
+  const target = input.weeklyTargetMinutes;
   const quiet: TodayTodo[] = [];
-  if (day >= rules.quietWeekFromDay) {
-    const soFar = Math.min(1, (day + 1) / 5);
-    const behind = started.filter((student) => {
-      if (student.weekMinutes === 0 && student.weekProblems === 0) return true;
-      return (
-        input.weeklyTargetMinutes !== null &&
-        student.weekMinutes <
-          input.weeklyTargetMinutes * soFar * rules.behindTargetShare
-      );
-    });
-    const idle = behind.filter(
-      (student) => student.weekMinutes === 0 && student.weekProblems === 0,
+  if (day >= LOW_PRACTICE.fromWeekday) {
+    const line = target === null ? null : lowPracticeLine(target, day);
+    const done = (student: TodayStudent) =>
+      practiced(student.weekMinutes, student.weekProblems);
+    const behind = started.filter(
+      (student) =>
+        !done(student) || (line !== null && student.weekMinutes < line),
     );
-    if (behind.length === 1) {
+    const idle = behind.filter((student) => !done(student));
+    const rule = lowPracticeRule(target, day);
+    const classFlag = input.family
+      ? null
+      : lowPractice(
+          {
+            minutes: students.map((student) => student.weekMinutes),
+            practiced: students.filter(done).length,
+          },
+          target,
+          day,
+        );
+    const short = (list: readonly TodayStudent[]) =>
+      line === null
+        ? `${joinNames(list.map((student) => student.first))} ${list.length === 1 ? "hasn’t" : "haven’t"} practiced since Monday.`
+        : `${joinNames(list.map((student) => student.first))} ${list.length === 1 ? "has" : "have"} under ${line} of ${target} minutes so far.`;
+    // A class short as a whole says so with the overview's facts; one student
+    // behind is named on their own, with when they last worked.
+    if (classFlag && behind.length >= 2)
+      quiet.push({
+        id: "quiet",
+        kind: "no-practice",
+        title: "The class had little practice this week",
+        detail: `${lowPracticeFacts(classFlag)}. ${short(behind)}`,
+        students: people(behind),
+        action: { kind: "tab", tab: "time", label: "See the time report" },
+        rule,
+      });
+    else if (behind.length === 1) {
       const student = behind[0]!;
       const none = idle.length === 1;
       quiet.push({
@@ -364,9 +407,11 @@ export function todayTodos(
           ? `${student.first} hasn’t practiced this week`
           : `${student.first} is behind this week’s target`,
         detail: [
-          student.lastActive && none
+          student.lastActive && none && student.weekMinutes < 1
             ? `${student.first} last worked on ${longDate(student.lastActive)}.`
-            : `${student.first} has ${Math.round(student.weekMinutes)} of ${input.weeklyTargetMinutes} minutes so far.`,
+            : target === null
+              ? `${student.first} has ${Math.round(student.weekMinutes)} ${Math.round(student.weekMinutes) === 1 ? "minute" : "minutes"} so far.`
+              : `${student.first} has ${Math.round(student.weekMinutes)} of ${target} minutes so far.`,
           student.usualWeeklyMinutes
             ? `A usual week is about ${Math.round(student.usualWeeklyMinutes)} minutes.`
             : "",
@@ -379,6 +424,7 @@ export function todayTodos(
           personId: student.id,
           label: `See ${possessive(student.first)} work`,
         },
+        rule: studentRule(target, day),
       });
     } else if (behind.length > 1)
       quiet.push({
@@ -388,12 +434,10 @@ export function todayTodos(
           idle.length === behind.length
             ? `${behind.length} ${plural} haven’t practiced this week`
             : `${behind.length} ${plural} are behind this week’s target`,
-        detail:
-          input.weeklyTargetMinutes === null
-            ? `${joinNames(behind.map((student) => student.first))} have no time on the board since Monday.`
-            : `${joinNames(behind.map((student) => student.first))} are short of ${input.weeklyTargetMinutes} minutes.`,
+        detail: short(behind),
         students: people(behind),
         action: { kind: "tab", tab: "time", label: "See the time report" },
+        rule: studentRule(target, day),
       });
   }
 
@@ -462,7 +506,7 @@ export function todayTodos(
             id: "good-day",
             kind: "good-day",
             title: `A good day: ${worked.length} of ${students.length} ${plural} worked today`,
-            detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week` : ""}.`,
+            detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${skillsShownWords(objectives)} this week` : ""}.`,
             students: people(worked),
             action: { kind: "tab", tab: "time", label: "See the time report" },
           },
@@ -472,7 +516,7 @@ export function todayTodos(
             {
               id: "going-well",
               kind: "good-day",
-              title: `${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week`,
+              title: `${skillsShownWords(objectives)} this week`,
               detail: `${joinNames(gained.slice(0, 3).map((student) => student.first))} ${gained.length === 1 ? "is" : "are"} leading the way.`,
               students: people(gained.slice(0, 6)),
               action: { kind: "tab", tab: "map", label: "See the class map" },

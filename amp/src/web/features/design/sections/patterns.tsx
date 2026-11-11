@@ -48,6 +48,8 @@ const trend: OverviewResponse["trend"] = Array.from(
     week: week(11 - index),
     minutes: [0, 120, 340, 410, 380, 520, 610, 480, 700, 760, 690, 820][index]!,
     students: [0, 4, 9, 11, 10, 14, 15, 13, 17, 18, 17, 19][index]!,
+    problems: [0, 90, 260, 300, 290, 400, 470, 360, 540, 590, 520, 640][index]!,
+    assisted: [0, 20, 50, 52, 44, 60, 66, 50, 70, 71, 62, 70][index]!,
   }),
 );
 /** Half-grade columns from three behind to three ahead, as the server
