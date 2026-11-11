@@ -247,9 +247,12 @@
   font-size: var(--text-table-small);
   font-variant-numeric: var(--numeric);
 }
+/* A table is never narrower than its content, so a 1 px one only holds with
+   a fixed layout; otherwise its hidden width ran past a phone's edge. */
 .hiddenTable {
   position: absolute;
   inset-inline-start: 0;
+  table-layout: fixed;
   width: 1px;
   height: 1px;
   margin: -1px;
