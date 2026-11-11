@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -458,7 +459,7 @@ function payExact(r: Random): Draft {
   if (swapAt >= 0) {
     const was = confused[swapAt]!;
     confused[swapAt] = was === "dime" ? "nickel" : "dime";
-    confusion = `a ${confused[swapAt]} where a ${was} is needed: a dime is 10¢ and a nickel is 5¢`;
+    confusion = `${withArticle(confused[swapAt])} where ${withArticle(was)} is needed: a dime is 10¢ and a nickel is 5¢`;
   } else {
     const q = correct.indexOf("quarter");
     confused[q >= 0 ? q : 0] = "dime";
@@ -628,7 +629,7 @@ function draft(templateId: string, r: Random): Draft {
       const name = pick(r, NAMES),
         thing = pick(r, ITEMS);
       return {
-        prompt: `${name} has these coins and buys a ${thing} for ${cents(price)}. How many cents does ${name} have left?`,
+        prompt: `${name} has these coins and buys ${withArticle(thing)} for ${cents(price)}. How many cents does ${name} have left?`,
         hint: `First find what ${name} has: ${startCoins(items).replace(/^S/, "s")} Then take away the ${cents(price)} for the ${thing}.`,
         figure: coinFigure(items),
         explanation: [

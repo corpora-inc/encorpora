@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { withClauseVariants } from "./clause-variants";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { clauseAxis, clauseProblem } from "./fraction-clause-variants";
@@ -538,7 +539,7 @@ const equationSlotsLegacy = defineGenerate(equationSlotsTemplates, {
           parts[2]!,
         ]);
         return multiPartProblem(meta, seed, r, {
-          prompt: `A baker has $${frac(1, d)}$ of a ${food} left and shares it equally among ${g} people. Complete the equation that finds each person's share.`,
+          prompt: `A baker has $${frac(1, d)}$ of ${withArticle(food)} left and shares it equally among ${g} people. Complete the equation that finds each person's share.`,
           layout: "cards",
           label: CARDS_LABEL,
           slots: built.slots,

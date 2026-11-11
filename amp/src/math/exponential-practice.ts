@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count as plural, article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
@@ -1340,7 +1341,7 @@ function logValue(r: Rand): Draft {
       explanation: [
         `A logarithm is an exponent. $${lg(b)} ${root}$ asks: ${b} to what power gives $${root}$?`,
         `First, $${b ** k} = ${b}^{${k}}$${k === 1 ? `, the power 1` : ""}.`,
-        `A ${q === 2 ? "square" : "cube"} root is the same as the power $\\frac{1}{${q}}$, because ${q === 2 ? "two" : "three"} equal factors of it multiply back to the number.`,
+        `${withArticle(q === 2 ? "square" : "cube", true)} root is the same as the power $\\frac{1}{${q}}$, because ${q === 2 ? "two" : "three"} equal factors of it multiply back to the number.`,
         `A power of a power multiplies the exponents: $${root} = (${b}^{${k}})^{1/${q}} = ${b}^{${k}/${q}}$.`,
         `So $${lg(b)} ${root} = ${ftex(k, q)}$.`,
       ],

@@ -313,7 +313,9 @@ def review_problem(problem):
         second_name = shape_name(stages[1]["target"])
         require(second_name == {"square": "rectangle", "rectangle": "square", "half-circle": "circle", "trapezoid": "hexagon", "triangle": "square"}[first_name], "Second construction has the wrong shape")
     first_name = shape_name(stages[0]["target"])
-    require(any(f"make a {first_name}." in line for line in problem["explanation"]), "Explanation misnames the target")
+    # "an arch", "a square": shape names here have no silent or "you" sounds.
+    art = "an" if first_name[0] in "aeiou" else "a"
+    require(any(f"make {art} {first_name}." in line for line in problem["explanation"]), "Explanation misnames the target")
     # Exact tilings are not unique. The independent search proves existence;
     # validate_placement checks the supplied key against the public geometry.
     # Return that accepted representative for the generic string comparator.

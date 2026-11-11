@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { nounFor, isAre, article } from "./agreement";
 import type {
   GeneratedProblem,
@@ -544,16 +545,12 @@ function normalCase(r: Random): Built {
 
 // ----------------------------------------------------------- random-variables
 const randomVariableTaskAxes = {
-  task: defineAxis(
-    "task",
-    ["standard", "graph-the-distribution"] as const,
-    {
-      legacy: "standard",
-      weights: [1, 1],
-      silentLegacy: true,
-      since: 2,
-    },
-  ),
+  task: defineAxis("task", ["standard", "graph-the-distribution"] as const, {
+    legacy: "standard",
+    weights: [1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
 } as const;
 function plainFrac(n: number, d: number) {
   const g = gcd(Math.abs(n), d) || 1;
@@ -605,9 +602,7 @@ function graphDistribution(r: Random): Built {
   }
   if (counts.reduce((a, b) => a + b, 0) !== total)
     throw new Error("Distribution counts must fill the sample space");
-  const pairs = values.map(
-    (v, i) => [v, counts[i]!, total] as const,
-  );
+  const pairs = values.map((v, i) => [v, counts[i]!, total] as const);
   const correct = distLabel(pairs);
   const k = values.length;
   const valueSum = values.reduce((a, b) => a + b, 0);
@@ -645,7 +640,9 @@ function graphDistribution(r: Random): Built {
       choices: options(
         r,
         correct,
-        wrong.slice(0, 4).map((label) => ({ label, feedback: feedback(label) })),
+        wrong
+          .slice(0, 4)
+          .map((label) => ({ label, feedback: feedback(label) })),
       ),
     },
   };
@@ -1253,7 +1250,7 @@ function empiricalCase(r: Random): Built {
     return {
       variant,
       draft: {
-        prompt: `${intro} Use the relative frequencies as estimated probabilities. Estimate the probability that the number of ${ctx.x} in a ${ctx.unit} is ${values[i]}. Give a decimal.`,
+        prompt: `${intro} Use the relative frequencies as estimated probabilities. Estimate the probability that the number of ${ctx.x} in ${withArticle(ctx.unit)} is ${values[i]}. Give a decimal.`,
         figure,
         answer: correct,
         hint: `Read the bar at ${values[i]} and divide its height by the total number of ${ctx.plural}, ${N}.`,

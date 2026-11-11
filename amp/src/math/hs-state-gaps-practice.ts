@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -877,7 +878,7 @@ function conditionalCase(r: Random): Draft {
         label(good!),
         others.map((f) => ({
           label: label(f),
-          feedback: `${whyF(f, env)} The question asks for a ${wantTrue ? "true" : "false"} statement.`,
+          feedback: `${whyF(f, env)} The question asks for ${withArticle(wantTrue ? "true" : "false")} statement.`,
         })),
       ),
     };
@@ -1658,9 +1659,7 @@ function coneCase(r: Random): Draft {
 
 // ------------------------------------------------ feature intervals
 const span = (lo: string, hi: string, openL = true, openR = true) =>
-  M(
-    `${openL ? "(" : "["}${lo}, ${hi}${openR ? ")" : "]"}`,
-  );
+  M(`${openL ? "(" : "["}${lo}, ${hi}${openR ? ")" : "]"}`);
 function featureIntervals(r: Random): Draft {
   const ask = pick(r, [
     "rising",
@@ -1669,7 +1668,8 @@ function featureIntervals(r: Random): Draft {
     "negative",
     "table",
   ] as const);
-  const context = ask === "table" || ask === "negative" ? ask !== "negative" : r(0, 1) === 0;
+  const context =
+    ask === "table" || ask === "negative" ? ask !== "negative" : r(0, 1) === 0;
   if (!context) {
     const a = pick(r, [-2, -1, 1, 2] as const);
     let p = r(-5, 1);
@@ -1688,9 +1688,7 @@ function featureIntervals(r: Random): Draft {
       ? span(`${vertex}`, "\\infty")
       : span("-\\infty", `${vertex}`);
     const between = span(`${p}`, `${q}`);
-    const outside = M(
-      `(-\\infty, ${p}) \\cup (${q}, \\infty)`,
-    );
+    const outside = M(`(-\\infty, ${p}) \\cup (${q}, \\infty)`);
     const positive = a > 0 ? outside : between;
     const negative = a > 0 ? between : outside;
     const correct =
@@ -1727,11 +1725,18 @@ function featureIntervals(r: Random): Draft {
       choices: choicesOf(correct, [
         { label: increasing, feedback: "That is where the graph is rising." },
         { label: decreasing, feedback: "That is where the graph is falling." },
-        { label: positive, feedback: "That is where the graph is above the axis." },
-        { label: negative, feedback: "That is where the graph is below the axis." },
+        {
+          label: positive,
+          feedback: "That is where the graph is above the axis.",
+        },
+        {
+          label: negative,
+          feedback: "That is where the graph is below the axis.",
+        },
         {
           label: span(`${p}`, `${vertex}`),
-          feedback: "That mixes a zero with the axis. Use one or the other, not both.",
+          feedback:
+            "That mixes a zero with the axis. Use one or the other, not both.",
         },
       ]),
     };
@@ -1766,26 +1771,35 @@ function featureIntervals(r: Random): Draft {
       choices: choicesOf(correct, [
         {
           label: span(`${vertex}`, `${times[times.length - 1]}`),
-          feedback: "Those times are after the highest row, so the height is falling.",
+          feedback:
+            "Those times are after the highest row, so the height is falling.",
         },
         {
           label: span(`${times[0]}`, `${times[times.length - 1]}`),
-          feedback: "That is the whole table. The height falls again after the highest row.",
+          feedback:
+            "That is the whole table. The height falls again after the highest row.",
         },
         {
           label: span(`${values[0]}`, `${Math.max(...values)}`),
-          feedback: "Those are heights, not times. The question asks for an interval of time.",
+          feedback:
+            "Those are heights, not times. The question asks for an interval of time.",
         },
         {
           label: positive,
-          feedback: "That is when the ball is above the ground, not when it is rising.",
+          feedback:
+            "That is when the ball is above the ground, not when it is rising.",
         },
       ]),
     };
   }
   const word =
-    ask === "falling" ? "falling" : ask === "positive" ? "above the ground" : "rising";
-  const correct = ask === "falling" ? falling : ask === "positive" ? positive : rising;
+    ask === "falling"
+      ? "falling"
+      : ask === "positive"
+        ? "above the ground"
+        : "rising";
+  const correct =
+    ask === "falling" ? falling : ask === "positive" ? positive : rising;
   return {
     prompt: `The height in meters of a ball $t$ seconds after it is thrown is $h(t)=${expr}$, with $t\\ge 0$. Its graph is a downward parabola. During which interval of time is the ball ${word}?`,
     answer: "",
@@ -1797,16 +1811,27 @@ function featureIntervals(r: Random): Draft {
       `The ball is ${word} on ${correct}.`,
     ],
     choices: choicesOf(correct, [
-      { label: rising, feedback: "That is while the ball is rising, before the axis." },
-      { label: falling, feedback: "That is while the ball is falling, after the axis." },
-      { label: positive, feedback: "That is while the ball is above the ground." },
+      {
+        label: rising,
+        feedback: "That is while the ball is rising, before the axis.",
+      },
+      {
+        label: falling,
+        feedback: "That is while the ball is falling, after the axis.",
+      },
+      {
+        label: positive,
+        feedback: "That is while the ball is above the ground.",
+      },
       {
         label: heights,
-        feedback: "Those are heights, not times. The question asks for an interval of time.",
+        feedback:
+          "Those are heights, not times. The question asks for an interval of time.",
       },
       {
         label: span(`-${s}`, `${root}`),
-        feedback: "That keeps the zero from before the throw. Time starts at 0.",
+        feedback:
+          "That keeps the zero from before the throw. Time starts at 0.",
       },
     ]),
   };

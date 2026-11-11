@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count, isAre, plural } from "./agreement";
 import type { GeneratedProblem, SemanticFigure } from "./contracts";
 import { scene } from "./scene/author";
@@ -124,7 +125,10 @@ function legacy(r: Random): Built {
 }
 
 function oneMore(templateId: string, seed: string, leaves: boolean): Built {
-  const s = surfaceStream(templateId, `${seed}:${leaves ? "leaves" : "arrives"}`);
+  const s = surfaceStream(
+    templateId,
+    `${seed}:${leaves ? "leaves" : "arrives"}`,
+  );
   const noun = nounAt(s);
   const n = leaves
     ? s(2, 20)
@@ -164,7 +168,7 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
         twice >= 1
           ? `Saying ${twice} takes away two, not one.`
           : `The count cannot fall below 1.`,
-        `Saying ${other} adds a ${noun} instead of taking one away.`,
+        `Saying ${other} adds ${withArticle(noun)} instead of taking one away.`,
         `Count the ${many} that are still here. There ${isAre(answer)} ${count(answer, noun)}.`,
       ]
     : [
@@ -174,7 +178,7 @@ function oneMore(templateId: string, seed: string, leaves: boolean): Built {
         `Saying ${twice} counts the new ${noun} twice.`,
         decade
           ? `Saying ${n} copies the old count. Saying ${answer === 10 ? 11 : 21} skips ahead. The next word is one more, not ${n} with a 1 stuck on.`
-          : `Saying ${other} takes a ${noun} away. This ${noun} is arriving, not leaving.`,
+          : `Saying ${other} takes ${withArticle(noun)} away. This ${noun} is arriving, not leaving.`,
         `Count every ${noun}, including the new one. There ${isAre(answer)} ${count(answer, noun)}.`,
       ];
   return {
@@ -295,9 +299,7 @@ function arrangement(
   let title: string;
   if (layout === "line") {
     columns = s(1, 12) === 1 ? 20 : s(1, 20);
-    elements = [
-      { type: "array", id: "row", rows: 1, columns, shape: "dot" },
-    ];
+    elements = [{ type: "array", id: "row", rows: 1, columns, shape: "dot" }];
     title = `A line of ${many}`;
   } else if (layout === "array") {
     const pairs: [number, number][] = [];
@@ -335,7 +337,7 @@ function arrangement(
         : layout === "circle"
           ? `The ${many} are in a ten-frame. Count each counter once, and do not count the first one twice.`
           : `The ${many} are in a ten-frame. Count each counter once.`,
-    `Saying ${n - 1} skips a ${noun}. Saying ${n + 1} counts one ${noun} twice.`,
+    `Saying ${n - 1} skips ${withArticle(noun)}. Saying ${n + 1} counts one ${noun} twice.`,
     layout === "array"
       ? `Adding the rows and columns gives ${shapeRead}. That reads the shape, not the ${many}.`
       : `The shape of the group does not change how many there are.`,
@@ -355,11 +357,7 @@ function arrangement(
       layout === "line" || layout === "array"
         ? Math.min(720, Math.max(180, 36 * columns + 48))
         : 280,
-      layout === "circle" || layout === "scatter"
-        ? n > 10
-          ? 340
-          : 220
-        : 200,
+      layout === "circle" || layout === "scatter" ? (n > 10 ? 340 : 220) : 200,
     ),
     variant: { id: layout, axes: { family: layout } },
   };

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { random } from "./distribution-practice";
@@ -137,7 +138,7 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
       ? `${verb} a shape with ${sides} ${countWord}.`
       : finish
         ? `One ${draw ? "side" : "stick"} is placed. Finish the ${name}.`
-        : `${verb} a ${name}.`;
+        : `${verb} ${withArticle(name)}.`;
   const response: PegBoardResponse = {
     kind: "peg-board",
     label: prompt,

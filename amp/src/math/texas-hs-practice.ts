@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -1001,11 +1002,11 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "axis-parallel-relationship",
     prompt: `Which equation is the line through $(${a}, ${bv})$ that is ${parallel ? "parallel" : "perpendicular"} to $${given}$?`,
-    hint: `The line $${given}$ is ${givenHorizontal ? "horizontal" : "vertical"}. A ${parallel ? "parallel" : "perpendicular"} line is ${resultHorizontal ? "horizontal" : "vertical"}, so one coordinate of $(${a}, ${bv})$ stays fixed.`,
+    hint: `The line $${given}$ is ${givenHorizontal ? "horizontal" : "vertical"}. ${withArticle(parallel ? "parallel" : "perpendicular", true)} line is ${resultHorizontal ? "horizontal" : "vertical"}, so one coordinate of $(${a}, ${bv})$ stays fixed.`,
     explanation: [
-      `$${given}$ is a ${givenHorizontal ? "horizontal" : "vertical"} line.`,
-      `A ${parallel ? "parallel" : "perpendicular"} line to it is ${resultHorizontal ? "horizontal" : "vertical"}${parallel ? "" : ", since lines perpendicular to a horizontal line are vertical and the reverse"}.`,
-      `A ${resultHorizontal ? "horizontal" : "vertical"} line through $(${a}, ${bv})$ holds ${resultHorizontal ? `$y=${bv}$` : `$x=${a}$`}. The equation is ${ans.label}.`,
+      `$${given}$ is ${withArticle(givenHorizontal ? "horizontal" : "vertical")} line.`,
+      `${withArticle(parallel ? "parallel" : "perpendicular", true)} line to it is ${resultHorizontal ? "horizontal" : "vertical"}${parallel ? "" : ", since lines perpendicular to a horizontal line are vertical and the reverse"}.`,
+      `${withArticle(resultHorizontal ? "horizontal" : "vertical", true)} line through $(${a}, ${bv})$ holds ${resultHorizontal ? `$y=${bv}$` : `$x=${a}$`}. The equation is ${ans.label}.`,
     ],
     correct: ans.label,
     wrong: [
@@ -1098,9 +1099,18 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
         : context === "pages"
           ? `Reading uses $x$ hours of notes at ${small} ${nounFor(small, "page")} an hour and $y$ hours of a book at ${large} ${nounFor(large, "page")} an hour.`
           : `A shipment packs $x$ light crates at ${small} ${nounFor(small, "kilogram")} and $y$ heavy crates at ${large} ${nounFor(large, "kilogram")}.`;
-  const limits = countFirst ? `${countBit} ${valueBit}.` : `${valueBit.replace(/^and /, "It needs ").replace(/^and the /, "The ")} ${countBit.replace(/^It |^The |^There /, (w) => w.toLowerCase())}.`;
+  const limits = countFirst
+    ? `${countBit} ${valueBit}.`
+    : `${valueBit.replace(/^and /, "It needs ").replace(/^and the /, "The ")} ${countBit.replace(/^It |^The |^There /, (w) => w.toLowerCase())}.`;
   // Keep the limit sentence simple and in a fixed shape the oracle can read.
-  const unit = context === "bakery" ? "dollar" : context === "pages" ? "page" : context === "cargo" ? "kilogram" : "gram";
+  const unit =
+    context === "bakery"
+      ? "dollar"
+      : context === "pages"
+        ? "page"
+        : context === "cargo"
+          ? "kilogram"
+          : "gram";
   const value = `${goal} ${unit}${goal === 1 ? "" : "s"}`;
   const limitSentence = countFirst
     ? `${countBit}, and it needs at least ${value}.`
@@ -1125,7 +1135,8 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
       {
         label: label(flipped),
         key: flipped + bounds,
-        feedback: "At most was written as ≥ and at least as ≤. The signs are reversed.",
+        feedback:
+          "At most was written as ≥ and at least as ≤. The signs are reversed.",
       },
       {
         label: label(prices),
@@ -1732,7 +1743,7 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
     const right = lab(`\\frac{1}{${a}}+\\frac{1}{${b}}=\\frac{1}{x}`);
     return finish(meta, seed, r, {
       variant: "work-together",
-      prompt: `One ${worker[0]} ${worker[1]} a ${worker[2]} in ${a} hours working alone. A second ${worker[0]} does the same job in ${b} hours working alone. Working together they take $x$ hours. Which equation models this?`,
+      prompt: `One ${worker[0]} ${worker[1]} ${withArticle(worker[2])} in ${a} hours working alone. A second ${worker[0]} does the same job in ${b} hours working alone. Working together they take $x$ hours. Which equation models this?`,
       hint: `Each worker's rate is the part of the job done in one hour, which is 1 divided by the hours alone, ${a} or ${b}. Together the rates add to the rate for the whole team, $\\frac{1}{x}$.`,
       explanation: [
         `The first ${worker[0]} does $\\frac{1}{${a}}$ of the job per hour and the second does $\\frac{1}{${b}}$ of the job per hour.`,
@@ -3064,7 +3075,7 @@ export function oneSidedBehaviorCase(seed: string): TexasHsCase {
       prompt: `For $${fn}$, there is a vertical asymptote at $x=${c}$. Which statement describes $f(x)$ as $x$ approaches ${c} from the left and from the right?`,
       hint: `Test a number just left of ${c} and one just right, such as ${(c - 0.1).toFixed(1)} and ${(c + 0.1).toFixed(1)}. Decide whether each factor is positive or negative there; the factor $x ${minus(c)}$ is the one that is close to 0.`,
       explanation: [
-        `Near $x=${c}$ the factors other than $x ${minus(c)}$ keep a fixed sign: at $x=${c}$ they give a ${s0 > 0 ? "positive" : "negative"} value together with the constant.`,
+        `Near $x=${c}$ the factors other than $x ${minus(c)}$ keep a fixed sign: at $x=${c}$ they give ${withArticle(s0 > 0 ? "positive" : "negative")} value together with the constant.`,
         `Just right of ${c}, $x ${minus(c)}$ is positive, so $f$ is ${right > 0 ? "positive" : "negative"} and large: $f\\to${infText(right)}$. Just left of ${c}, $x ${minus(c)}$ is negative${e === 2 ? " but squared, which is positive" : ""}, so $f$ is ${left > 0 ? "positive" : "negative"}: $f\\to${infText(left)}$.`,
         `The behavior is: from the left $f\\to${infText(left)}$, from the right $f\\to${infText(right)}$.`,
       ],
@@ -3348,7 +3359,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const n = r(2, 15) * 5;
     return finish(meta, seed, r, {
       variant: "angular-speed-from-rpm",
-      prompt: `A ${wheel} turns at ${n} revolutions per minute. What is its angular speed in radians per minute?`,
+      prompt: `${withArticle(wheel, true)} turns at ${n} revolutions per minute. What is its angular speed in radians per minute?`,
       hint: `One full revolution is an angle of $2\\pi$ radians. Multiply the ${n} revolutions per minute by the radians in one revolution.`,
       explanation: [
         `One revolution is $2\\pi$ radians.`,
@@ -3377,7 +3388,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const n = r(2, 10) * 5;
     return finish(meta, seed, r, {
       variant: "linear-speed-of-rim",
-      prompt: `A ${wheel} with radius ${rad} cm turns at ${n} revolutions per minute. How fast, in centimeters per minute, does a point on its rim move?`,
+      prompt: `${withArticle(wheel, true)} with radius ${rad} cm turns at ${n} revolutions per minute. How fast, in centimeters per minute, does a point on its rim move?`,
       hint: `In one revolution a point on the rim travels once around the circle, a distance of $2\\pi r$, with $r=${rad}$ cm. Multiply that distance by the ${n} revolutions per minute.`,
       explanation: [
         `In one revolution a point on the rim travels the circumference, $2\\pi r=2\\pi(${rad})=${2 * rad}\\pi$ cm.`,
@@ -3408,7 +3419,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const revs = `\\dfrac{${w}}{2\\pi}`;
     return finish(meta, seed, r, {
       variant: "angular-speed-from-linear",
-      prompt: `A point on the rim of a ${wheel} with radius ${rad} cm moves at ${v} centimeters per second. What is the ${wheel}'s angular speed in radians per second?`,
+      prompt: `A point on the rim of ${withArticle(wheel)} with radius ${rad} cm moves at ${v} centimeters per second. What is the ${wheel}'s angular speed in radians per second?`,
       hint: `Arc length is radius times angle, so the rim speed ${v} cm per second is the radius ${rad} cm times the angular speed. Divide the rim speed by the radius.`,
       explanation: [
         `For a point at distance $r$ from the center, $v=r\\omega$, where $\\omega$ is angular speed in radians per second.`,
@@ -3438,7 +3449,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const t = r(2, 10);
     return finish(meta, seed, r, {
       variant: "distance-in-time",
-      prompt: `A point on the rim of a ${wheel} with radius ${rad} cm turns at an angular speed of ${w} radians per second. How far along the rim, in centimeters, does the point travel in ${t} seconds?`,
+      prompt: `A point on the rim of ${withArticle(wheel)} with radius ${rad} cm turns at an angular speed of ${w} radians per second. How far along the rim, in centimeters, does the point travel in ${t} seconds?`,
       hint: `First find the angle the ${wheel} turns in ${t} seconds at ${w} radians per second. Then use arc length equals radius times angle in radians.`,
       explanation: [
         `In ${t} seconds the ${wheel} turns through $${w}\\times${t}=${w * t}$ radians.`,
@@ -3772,7 +3783,7 @@ export function bearingTrigCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "compass-bearing-component",
       prompt: `A plane flies ${dist} km on a bearing of $\\mathrm{${north ? "N" : "S"}}\\,${degTex(base)}\\,\\mathrm{${east ? "E" : "W"}}$, which means $${degTex(base)}$ from ${north ? "north" : "south"} toward ${east ? "east" : "west"}. How many kilometers ${word} of its starting point is it?`,
-      hint: `Draw a right triangle with the flight path as the hypotenuse and a ${north ? "north" : "south"}-pointing leg along the ${north ? "north" : "south"} line. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
+      hint: `Draw a right triangle with the flight path as the hypotenuse and ${withArticle(north ? "north" : "south")}-pointing leg along the ${north ? "north" : "south"} line. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
       explanation: [
         `The path is the hypotenuse, ${dist} km. The $${degTex(base)}$ angle is between the ${north ? "north" : "south"} direction and the path.`,
         askNS

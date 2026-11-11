@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
@@ -394,7 +395,7 @@ function polygonCase(r: Random): Case {
     P.forEach((p, i) => (g = g.segment(p, P[(i + 1) % P.length]!)));
     const slanted = para ? 1 : 2;
     return {
-      prompt: `A ${para ? "parallelogram" : "triangle"} has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}. What is its perimeter?`,
+      prompt: `${withArticle(para ? "parallelogram" : "triangle", true)} has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}. What is its perimeter?`,
       answer: q(perimeter),
       explanation: [
         `The perimeter is the distance all the way around: add every side.`,
@@ -411,7 +412,7 @@ function polygonCase(r: Random): Case {
       hint: `From $${names[0]}${pt(P[0]!)}$, count the horizontal and vertical sides on the grid. For a slanted side, use its run and rise in the distance formula.`,
       tags: ["perimeter", para ? "parallelogram" : "triangle"],
       figure: g.scene({
-        title: `A ${para ? "parallelogram" : "triangle"} on a grid`,
+        title: `${withArticle(para ? "parallelogram" : "triangle", true)} on a grid`,
         steps: [
           step(
             "Horizontal and vertical sides: count the units.",
@@ -512,7 +513,7 @@ function partitionCase(r: Random): Case {
       `The $${name}$-coordinate of $P$ is ${frac(answer)}.`,
     ],
     hint: asRatio
-      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in $${name}$ and add it to $A$'s $${name}$-coordinate.`
+      ? `${withArticle(m, true)} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in $${name}$ and add it to $A$'s $${name}$-coordinate.`
       : `Take ${frac(t)} of the change in $${name}$ from $A$ to $B$, then add it to $A$'s $${name}$-coordinate.`,
     tags: [asRatio ? "ratio" : "fraction", `axis-${name}`],
     figure: graph({ x: w.x, y: w.y, tick: w.tick })
@@ -565,13 +566,7 @@ function slopeCase(r: Random, form = "two-points"): Case {
     if (form === "slope-intercept") {
       const slope = `${rise < 0 ? "-" : ""}\\frac{${Math.abs(rise)}}{${runV}}`;
       given = `Line $ℓ$ has equation $y = ${
-        runV === 1
-          ? rise === 1
-            ? ""
-            : rise === -1
-              ? "-"
-              : rise
-          : slope
+        runV === 1 ? (rise === 1 ? "" : rise === -1 ? "-" : rise) : slope
       }x ${c0 < 0 ? "-" : "+"} ${Math.abs(c0)}$.`;
       slopeStep = `In $y = mx + b$ the slope is the coefficient of $x$: the slope of $ℓ$ is ${frac(m)}.`;
       slopeHint = `In $y = mx + b$ the number multiplying $x$ is the slope. Here that is the coefficient of $x$ in the equation of $ℓ$, $${given.replace(/^Line \$ℓ\$ has equation \$|\$\.$/g, "")}$; the constant term, ${Math.abs(c0)}, only moves the line up or down and does not change the slope.`;

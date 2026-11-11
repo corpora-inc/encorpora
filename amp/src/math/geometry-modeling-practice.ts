@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import type {
   GeneratedProblem,
@@ -942,13 +943,13 @@ function modelCase(
         hint: `Match the description of ${obj} to a solid: look at what its ends and its sides are like, and ignore small details.`,
         explanation: [
           desc,
-          `A ${name} has ${feature}.`,
-          `So ${obj} is best modeled by a ${name}.`,
+          `${withArticle(name, true)} has ${feature}.`,
+          `So ${obj} is best modeled by ${withArticle(name)}.`,
         ],
         correct: cap(name),
         wrong: others.map(([shape, f]) => ({
           label: cap(shape),
-          feedback: `A ${shape} has ${f}. That does not match the description of ${obj}.`,
+          feedback: `${withArticle(shape, true)} has ${f}. That does not match the description of ${obj}.`,
         })),
       },
     };
@@ -1335,23 +1336,23 @@ function cavalieriCase(
         hint: `Cavalieri's principle needs two solids of the same height whose slices at every height have equal area. A prism or cylinder has the same slice at every height; ask whether the other solid in each pair does too.`,
         explanation: [
           "Cavalieri's principle: if two solids have the same height and every horizontal slice at the same height has equal area, their volumes are equal.",
-          `A ${solids[0]} and a ${solids[1]} that are each ${hgt} cm tall with base area ${area} cm² have the same slice area, ${area} cm², at every height.`,
+          `${withArticle(solids[0], true)} and ${withArticle(solids[1])} that are each ${hgt} cm tall with base area ${area} cm² have the same slice area, ${area} cm², at every height.`,
           "The other pairs differ in height, or in slice area at some height, so the principle does not apply.",
         ],
-        correct: `A ${solids[0]} and a ${solids[1]}, each ${hgt} cm tall with base area ${area} cm²`,
+        correct: `${withArticle(solids[0], true)} and ${withArticle(solids[1])}, each ${hgt} cm tall with base area ${area} cm²`,
         wrong: [
           {
-            label: `A ${solids[0]} and a square pyramid, each ${hgt} cm tall with base area ${area} cm²`,
+            label: `${withArticle(solids[0], true)} and a square pyramid, each ${hgt} cm tall with base area ${area} cm²`,
             feedback:
               "A pyramid's slices shrink toward the top, so its slices are smaller than the prism's. The volumes differ.",
           },
           {
-            label: `A ${solids[0]} that is ${hgt} cm tall and a ${solids[1]} that is ${hgt2} cm tall, each with base area ${area} cm²`,
+            label: `${withArticle(solids[0], true)} that is ${hgt} cm tall and ${withArticle(solids[1])} that is ${hgt2} cm tall, each with base area ${area} cm²`,
             feedback:
               "Cavalieri's principle requires the same height. The taller solid has more volume.",
           },
           {
-            label: `A ${solids[0]} and a ${solids[1]}, each ${hgt} cm tall, with base areas ${area} cm² and ${area2} cm²`,
+            label: `${withArticle(solids[0], true)} and ${withArticle(solids[1])}, each ${hgt} cm tall, with base areas ${area} cm² and ${area2} cm²`,
             feedback:
               "Slices of different area at the same height give different volumes.",
           },
@@ -1597,7 +1598,7 @@ function revolutionCase(
     // Axis along a side: that side is the height, the other is the radius.
     const [rad, ht] = axis === "vertical" ? [w, h] : [h, w];
     const label = (rr: number, hh: number, kind = "cylinder") =>
-      `A ${kind} with radius ${cm(rr)} and height ${cm(hh)}`;
+      `${withArticle(kind, true)} with radius ${cm(rr)} and height ${cm(hh)}`;
     return {
       variant,
       built: {

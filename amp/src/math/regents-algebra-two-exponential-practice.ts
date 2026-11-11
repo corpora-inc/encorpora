@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
@@ -658,7 +659,7 @@ export const depreciationRecursion = chainFamily({
         ? `loses ${m.pct}% of its value each year`
         : `is worth ${100 - m.pct}% of its value from the year before`;
     return choiceSurface(r, {
-      prompt: `A ${m.item} bought for ${V} dollars ${change}. Let $a_n$ be its value, in dollars, at the start of year $n$. Which recursive rule models this?`,
+      prompt: `${withArticle(m.item, true)} bought for ${V} dollars ${change}. Let $a_n$ be its value, in dollars, at the start of year $n$. Which recursive rule models this?`,
       options: [
         { label: `$a_1=${m.value},\\ a_n=${ks}\\,a_{n-1}$`, correct: true },
         {

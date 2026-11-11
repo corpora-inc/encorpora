@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count, nounFor, term } from "./agreement";
 import {
   choice,
@@ -495,7 +496,7 @@ function jumps(r: Rng): Item {
       { type: "arrow", from: [0.5, start], to: [0.5, end], stroke: "accent" },
     ];
     return {
-      label: `A ${vertical ? "vertical" : "horizontal"} number line: start ${show(start)}, arrow ends at ${show(end)}.`,
+      label: `${withArticle(vertical ? "vertical" : "horizontal", true)} number line: start ${show(start)}, arrow ends at ${show(end)}.`,
       scene: vertical
         ? scene(...elements).build({ width: 260, maxHeight: 290 })
         : numberLine({

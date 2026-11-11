@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import { chainFamily, choiceSurface, dispatch, pick } from "./chain-kit";
@@ -295,7 +296,7 @@ export const linePointSlope = chainFamily({
           feedback: `This uses a point of the given line. The new line must pass through $(${m.qx},\\ ${m.qy})$, so that is the point to put in $y-y_1=m(x-x_1)$.`,
         },
       ],
-      hint: `Find the slope, the steepness, of the line through $(${m.px},\\ ${m.py})$ and $(${x2},\\ ${y2})$ as rise over run: change in $y$ ÷ change in $x$. Then decide what slope a ${a.relation} line needs.`,
+      hint: `Find the slope, the steepness, of the line through $(${m.px},\\ ${m.py})$ and $(${x2},\\ ${y2})$ as rise over run: change in $y$ ÷ change in $x$. Then decide what slope ${withArticle(a.relation)} line needs.`,
       explanation: [
         `The slope of a line is its steepness: rise over run, the change in $y$ divided by the change in $x$.`,
         `The given line's slope is $\\frac{${y2}-${m.py < 0 ? `(${m.py})` : m.py}}{${x2}-${m.px < 0 ? `(${m.px})` : m.px}}=${slopeTex(num, den)}$.`,

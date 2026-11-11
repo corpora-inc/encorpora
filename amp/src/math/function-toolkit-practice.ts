@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -619,7 +620,7 @@ function solutionCount(r: Random): Case {
       choices: [{ label, correct: true }, ...wrong],
       scene: piecewiseGraph(pieces, { level }),
       explanation: [
-        `A solution of ${M(`f(x) = ${tn(level)}`)} is an ${M("x")} where the graph has height ${n(level)}. Those are the points where the dashed line meets the graph.`,
+        `A solution of ${M(`f(x) = ${tn(level)}`)} is ${withArticle(M("x"))} where the graph has height ${n(level)}. Those are the points where the dashed line meets the graph.`,
         meets,
         ...(openHit !== null
           ? [
@@ -1050,7 +1051,7 @@ function transformPoint(r: Random): Case {
   const sign = r(0, 1) ? 1 : -1;
   const answer = even ? y0 : -y0;
   return {
-    prompt: `${M("f")} is an ${even ? "even" : "odd"} function and ${M(`f(${tn(sign * x)}) = ${tn(y0)}`)}. What is ${M(`f(${tn(-sign * x)})`)}?`,
+    prompt: `${M("f")} is ${withArticle(even ? "even" : "odd")} function and ${M(`f(${tn(sign * x)}) = ${tn(y0)}`)}. What is ${M(`f(${tn(-sign * x)})`)}?`,
     answer: rat(answer),
     explanation: [
       even

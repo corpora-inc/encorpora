@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem } from "./contracts";
 import { dispatch, gcd, pick } from "./chain-kit";
 import { clauseAxis } from "./fraction-clause-variants";
@@ -443,11 +444,7 @@ function fractionLineWhole(r: Random) {
       true,
       `${whole * b} pieces of size 1/${b} make ${whole}.`,
     ),
-    st(
-      `$\\frac{1}{${b}}$`,
-      false,
-      `That is one step from 0, not ${whole}.`,
-    ),
+    st(`$\\frac{1}{${b}}$`, false, `That is one step from 0, not ${whole}.`),
     st(
       `$\\frac{${b}}{1}$`,
       false,
@@ -616,7 +613,7 @@ function roundsTo(r: Random) {
         `$${toText(v)}$`,
         holds,
         holds
-          ? `$${toText(v)}$ is within half a ${name} of $${toText(target)}$, so it rounds to $${toText(target)}$.`
+          ? `$${toText(v)}$ is within half ${withArticle(name)} of $${toText(target)}$, so it rounds to $${toText(target)}$.`
           : `$${toText(v)}$ rounds to $${rtext}$, not $${toText(target)}$${note}`,
       ),
     );

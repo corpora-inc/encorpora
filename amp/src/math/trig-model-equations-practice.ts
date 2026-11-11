@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -931,7 +932,7 @@ function interpretProblem(
         {
           label:
             "The calculator is in the wrong mode; in degree mode it would give a time.",
-          feedback: `No angle has a ${m.form === "sin" ? "sine" : "cosine"} of $${rTex(m)}$, in radians or in degrees: the value is outside $[-1,1]$.`,
+          feedback: `No angle has ${withArticle(m.form === "sin" ? "sine" : "cosine")} of $${rTex(m)}$, in radians or in degrees: the value is outside $[-1,1]$.`,
         },
         {
           label: `The equation has the solution $t=${num(m.C)}$.`,
@@ -943,9 +944,9 @@ function interpretProblem(
         },
       ],
       figure: modelFigure(m),
-      hint: `A ${m.form === "sin" ? "sine" : "cosine"} is always between $-1$ and $1$. Here it would have to equal $${rTex(m)}$. What are the model's least and greatest values, ${num(m.D)} minus and plus ${num(m.A)}?`,
+      hint: `${withArticle(m.form === "sin" ? "sine" : "cosine", true)} is always between $-1$ and $1$. Here it would have to equal $${rTex(m)}$. What are the model's least and greatest values, ${num(m.D)} minus and plus ${num(m.A)}?`,
       explanation: [
-        `A ${m.form === "sin" ? "sine" : "cosine"} is always between $-1$ and $1$, so no angle has a ${m.form === "sin" ? "sine" : "cosine"} of $${rTex(m)}$. That is why the calculator gives an error, in either mode.`,
+        `${withArticle(m.form === "sin" ? "sine" : "cosine", true)} is always between $-1$ and $1$, so no angle has ${withArticle(m.form === "sin" ? "sine" : "cosine")} of $${rTex(m)}$. That is why the calculator gives an error, in either mode.`,
         `The model ranges from $${num(m.D)}-${num(m.A)}=${num(m.D - m.A)}$ to $${num(m.D)}+${num(m.A)}=${num(m.D + m.A)}$. ${valueText(m)} is outside that range, so the equation has no solution: the ${ctx.axes[1].replace(/ \(.*\)$/, "")} never reaches it.`,
         "On the graph, the dashed line never meets the curve.",
       ],

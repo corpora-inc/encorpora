@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { defineAxis, type Random } from "./variation/axes";
 import {
@@ -339,12 +340,12 @@ export const operationSentenceChoice = chainFamily({
     // story-for-expression
     const wrongStories: Candidate[] = [
       {
-        label: `A ${m.other.holder} has ${g} ${m.other.unit}. ${s} more are put in. How many ${m.other.unit} are there now?`,
+        label: `${withArticle(m.other.holder, true)} has ${g} ${m.other.unit}. ${s} more are put in. How many ${m.other.unit} are there now?`,
         value: 1,
         feedback: `${g} and ${s} are joined by adding here, so this story matches $${g} + ${s}$.`,
       },
       {
-        label: `A ${m.other.holder} has ${Math.max(g, s) + 2} ${m.other.unit}. ${Math.min(g, s) + 1} are taken out. How many ${m.other.unit} are left?`,
+        label: `${withArticle(m.other.holder, true)} has ${Math.max(g, s) + 2} ${m.other.unit}. ${Math.min(g, s) + 1} are taken out. How many ${m.other.unit} are left?`,
         value: 2,
         feedback: `This story takes ${Math.min(g, s) + 1} away from ${Math.max(g, s) + 2}. Taking away is subtraction, but $${g} ${T} ${s}$ joins equal groups.`,
       },

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { count, nounFor } from "./agreement";
 import type {
@@ -5,7 +6,12 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
-import { assemble, random, shuffle, type Random } from "./distribution-practice";
+import {
+  assemble,
+  random,
+  shuffle,
+  type Random,
+} from "./distribution-practice";
 import {
   figureChoiceResponseSchema,
   figureOptionIds,
@@ -19,11 +25,7 @@ import {
   type StructuredWorkResponse,
   type WorkGrading,
 } from "./structured-work";
-import {
-  multiPartProblem,
-  type Built,
-  type Slot,
-} from "./multi-part-support";
+import { multiPartProblem, type Built, type Slot } from "./multi-part-support";
 import { generatingVersion } from "./variation/axes";
 import type { MultiPartSentence } from "./multi-part-choice";
 import {
@@ -65,7 +67,8 @@ const squareOps = (x: number, y: number, s = 1): PathOp[] => [
 const gridLines = (cols: number, rows: number): PathOp[] => {
   const lines: PathOp[] = [];
   for (let c = 0; c <= cols; c++) lines.push(["M", c, 0], ["L", c, rows]);
-  for (let row = 0; row <= rows; row++) lines.push(["M", 0, row], ["L", cols, row]);
+  for (let row = 0; row <= rows; row++)
+    lines.push(["M", 0, row], ["L", cols, row]);
   return lines;
 };
 const yOf = (row: number, rows: number) => rows - 1 - row;
@@ -202,7 +205,9 @@ function seedOk(seed: string) {
     throw new Error("Seed must contain 1–128 characters");
 }
 const idOf = (templateId: string, seed: string) =>
-  createHash("sha256").update(JSON.stringify([templateId, 1, seed])).digest("hex");
+  createHash("sha256")
+    .update(JSON.stringify([templateId, 1, seed]))
+    .digest("hex");
 
 function nonRect(r: Random): { cells: Cell[]; cols: number; rows: number } {
   for (let attempt = 0; attempt < 40; attempt++) {
@@ -232,7 +237,10 @@ function nonRect(r: Random): { cells: Cell[]; cols: number; rows: number } {
   return { cells, cols: 6, rows: 4 };
 }
 const rowCounts = (cells: readonly Cell[], rows: number) =>
-  Array.from({ length: rows }, (_, row) => cells.filter((c) => c[1] === row).length);
+  Array.from(
+    { length: rows },
+    (_, row) => cells.filter((c) => c[1] === row).length,
+  );
 
 function defineUnit(r: Random): GeneratedProblem {
   const meta = metaOf(countSquareTemplates, "define-unit-square");
@@ -283,7 +291,7 @@ function defineUnit(r: Random): GeneratedProblem {
     hint:
       id === "note"
         ? "A note measures length along an edge. The sticky note covers a flat square, so the unit of area names the square."
-        : `A ${u.length.replace(/^1 /, "")} measures length. The square covers a flat surface, so name the square unit, not the length around it.`,
+        : `${withArticle(u.length.replace(/^1 /, ""), true)} measures length. The square covers a flat surface, so name the square unit, not the length around it.`,
     explanation: [
       `A square ${u.side} on each side is a unit square.`,
       `It covers ${u.area}. Squares like it measure area by counting them.`,
@@ -293,15 +301,18 @@ function defineUnit(r: Random): GeneratedProblem {
       { label: u.area, correct: true },
       {
         label: u.length,
-        feedback: "That is the length of one side. Area names the square the side covers.",
+        feedback:
+          "That is the length of one side. Area names the square the side covers.",
       },
       {
         label: u.peri,
-        feedback: "That adds the four sides. The perimeter is a length, not the area inside.",
+        feedback:
+          "That adds the four sides. The perimeter is a length, not the area inside.",
       },
       {
         label: u.four,
-        feedback: "The square has four sides, but it is still one square, not four.",
+        feedback:
+          "The square has four sides, but it is still one square, not four.",
       },
     ],
   });
@@ -510,9 +521,21 @@ function gapsOverlaps(seed: string, r: Random): GeneratedProblem {
   const skip = new Set(
     region.cells.slice(0, 2).map(([c, row]) => `${c},${row}`),
   );
-  const exact = coverScene(region.cells, region.cols, region.rows, new Set(), 0);
+  const exact = coverScene(
+    region.cells,
+    region.cols,
+    region.rows,
+    new Set(),
+    0,
+  );
   const gaps = coverScene(region.cells, region.cols, region.rows, skip, 0);
-  const overlaps = coverScene(region.cells, region.cols, region.rows, new Set(), 2);
+  const overlaps = coverScene(
+    region.cells,
+    region.cols,
+    region.rows,
+    new Set(),
+    2,
+  );
   return figureProblem(meta, seed, {
     r,
     prompt: "Which covering shows the figure's area?",
@@ -564,7 +587,10 @@ function figureProblem(
   },
 ): GeneratedProblem {
   const r = parts.r ?? random(meta.id, seed || "figure");
-  const order = shuffle(r, parts.options.map((_, i) => i));
+  const order = shuffle(
+    r,
+    parts.options.map((_, i) => i),
+  );
   const response: FigureChoiceResponse = {
     kind: "figure-choice",
     label: parts.label,
@@ -598,7 +624,9 @@ function figureProblem(
     },
     answer,
     hint:
-      typeof parts.hint === "function" ? parts.hint(orderedOptions) : parts.hint,
+      typeof parts.hint === "function"
+        ? parts.hint(orderedOptions)
+        : parts.hint,
     explanation: parts.explanation(name),
     choiceFeedback: feedback,
   };
@@ -685,7 +713,12 @@ export const areaTilingClauseTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-function cardFigure(rows: number, cols: number, splitCol: number | undefined, note: string): SemanticFigure {
+function cardFigure(
+  rows: number,
+  cols: number,
+  splitCol: number | undefined,
+  note: string,
+): SemanticFigure {
   return {
     kind: "scene",
     scene: scene({
@@ -750,9 +783,24 @@ export function tileCards(a: number, b: number, k: number) {
   const ab = a * b;
   const fixed = tray([b, a, ab], [k * b, a + b, 2 * (a + b), k * a]);
   const slots: Slot[] = [
-    { id: "onerow", label: "Unit squares in one row", correct: String(b), fixed },
-    { id: "allrow", label: "Rows when the rectangle is full", correct: String(a), fixed },
-    { id: "cover", label: "Unit squares that cover it", correct: String(ab), fixed },
+    {
+      id: "onerow",
+      label: "Unit squares in one row",
+      correct: String(b),
+      fixed,
+    },
+    {
+      id: "allrow",
+      label: "Rows when the rectangle is full",
+      correct: String(a),
+      fixed,
+    },
+    {
+      id: "cover",
+      label: "Unit squares that cover it",
+      correct: String(ab),
+      fixed,
+    },
     { id: "prod", label: "a times b", correct: String(ab), fixed },
   ];
   const sentence: MultiPartSentence = [
@@ -778,21 +826,28 @@ function tileThen(seed: string, r: Random): GeneratedProblem {
     const k = r(1, a - 1);
     try {
       const built = tileCards(a, b, k);
-      return orderedCards(tilingCardProblem(meta, seed, r, {
-        prompt: `The rectangle has ${a} rows and ${b} unit squares in each row. ${k} ${k === 1 ? "row is" : "rows are"} tiled and the rest are blank. Fill the cards for the whole rectangle.`,
-        layout: "cards",
-        reuse: true,
-        label: "Put a card in each box",
-        slots: built.slots,
-        sentence: built.sentence,
-        figure: cardFigure(a, b, undefined, `Tiled rows: ${k} of ${a}. Squares in a row: ${b}.`),
-        hint: `One full row holds the same number of squares whether or not it is drawn. Use all ${a} rows, not only the tiled ones.`,
-        explanation: [
-          `Each row holds ${b} unit squares.`,
-          `There are ${a} rows, so the running totals are ${Array.from({ length: a }, (_, i) => (i + 1) * b).join(", ")}.`,
-          `That is ${a} × ${b} = ${built.ab}. The covering and the product are the same number.`,
-        ],
-      }));
+      return orderedCards(
+        tilingCardProblem(meta, seed, r, {
+          prompt: `The rectangle has ${a} rows and ${b} unit squares in each row. ${k} ${k === 1 ? "row is" : "rows are"} tiled and the rest are blank. Fill the cards for the whole rectangle.`,
+          layout: "cards",
+          reuse: true,
+          label: "Put a card in each box",
+          slots: built.slots,
+          sentence: built.sentence,
+          figure: cardFigure(
+            a,
+            b,
+            undefined,
+            `Tiled rows: ${k} of ${a}. Squares in a row: ${b}.`,
+          ),
+          hint: `One full row holds the same number of squares whether or not it is drawn. Use all ${a} rows, not only the tiled ones.`,
+          explanation: [
+            `Each row holds ${b} unit squares.`,
+            `There are ${a} rows, so the running totals are ${Array.from({ length: a }, (_, i) => (i + 1) * b).join(", ")}.`,
+            `That is ${a} × ${b} = ${built.ab}. The covering and the product are the same number.`,
+          ],
+        }),
+      );
     } catch (error) {
       if (error instanceof Error && error.message === "retry") continue;
       throw error;
@@ -805,10 +860,23 @@ export function splitCards(a: number, b: number, c: number) {
   const left = a * b;
   const right = a * c;
   const total = left + right;
-  const fixed = tray([left, right, total], [a + b + c, b * c, a * b * c, b + c]);
+  const fixed = tray(
+    [left, right, total],
+    [a + b + c, b * c, a * b * c, b + c],
+  );
   const slots: Slot[] = [
-    { id: "left", label: "Squares in the left part", correct: String(left), fixed },
-    { id: "right", label: "Squares in the right part", correct: String(right), fixed },
+    {
+      id: "left",
+      label: "Squares in the left part",
+      correct: String(left),
+      fixed,
+    },
+    {
+      id: "right",
+      label: "Squares in the right part",
+      correct: String(right),
+      fixed,
+    },
     { id: "total", label: "Total squares", correct: String(total), fixed },
     { id: "prod", label: "a times (b + c)", correct: String(total), fixed },
   ];
@@ -834,31 +902,38 @@ function splitTiled(seed: string, r: Random): GeneratedProblem {
     if (c === b) c = c === 8 ? 2 : c + 1;
     if (b === c || b + c > 12) continue;
     const built = splitCards(a, b, c);
-    return orderedCards(tilingCardProblem(meta, seed, r, {
-      prompt: `The rectangle is ${a} units tall and ${b + c} units wide. A line splits the width into ${b} and ${c}. Count the unit squares.`,
-      layout: "cards",
-      reuse: true,
-      label: "Put a card in each box",
-      slots: built.slots,
-      sentence: built.sentence,
-      figure: cardFigure(
-        a,
-        b + c,
-        b,
-        `Split after ${b} of ${b + c} columns. Rows: ${a}.`,
-      ),
-      hint: `The left part is ${a} rows of ${b}. The right part is ${a} rows of ${c}. Add those two counts.`,
-      explanation: [
-        `Left: ${a} × ${b} = ${built.left}. Right: ${a} × ${c} = ${built.right}.`,
-        `Total: ${built.left} + ${built.right} = ${built.total}.`,
-        `The same squares are ${a} × (${b} + ${c}) = ${a} × ${b + c} = ${built.total}. So a × (b + c) = a × b + a × c.`,
-      ],
-    }));
+    return orderedCards(
+      tilingCardProblem(meta, seed, r, {
+        prompt: `The rectangle is ${a} units tall and ${b + c} units wide. A line splits the width into ${b} and ${c}. Count the unit squares.`,
+        layout: "cards",
+        reuse: true,
+        label: "Put a card in each box",
+        slots: built.slots,
+        sentence: built.sentence,
+        figure: cardFigure(
+          a,
+          b + c,
+          b,
+          `Split after ${b} of ${b + c} columns. Rows: ${a}.`,
+        ),
+        hint: `The left part is ${a} rows of ${b}. The right part is ${a} rows of ${c}. Add those two counts.`,
+        explanation: [
+          `Left: ${a} × ${b} = ${built.left}. Right: ${a} × ${c} = ${built.right}.`,
+          `Total: ${built.left} + ${built.right} = ${built.total}.`,
+          `The same squares are ${a} × (${b} + ${c}) = ${a} × ${b + c} = ${built.total}. So a × (b + c) = a × b + a × c.`,
+        ],
+      }),
+    );
   }
   throw new Error("Could not build split-tiled-count");
 }
 
-function splitCard(rows: number, cols: number, split: { row?: number; col?: number }, text: string): Scene {
+function splitCard(
+  rows: number,
+  cols: number,
+  split: { row?: number; col?: number },
+  text: string,
+): Scene {
   return scene({
     type: "array",
     id: "tiles",
@@ -933,7 +1008,13 @@ export function lCutPieces(W: number, H: number, w1: number, h1: number) {
   };
 }
 
-function lFigure(W: number, H: number, w1: number, h1: number, unit: "cm" | "m" | "in" | "ft"): SemanticFigure {
+function lFigure(
+  W: number,
+  H: number,
+  w1: number,
+  h1: number,
+  unit: "cm" | "m" | "in" | "ft",
+): SemanticFigure {
   return {
     kind: "measured-polygon",
     unit,
@@ -979,7 +1060,8 @@ function workProblem(
   };
   const problem = structuralProblem(response);
   if (problem) throw new Error(problem);
-  if (!gradingFits(response, parts.grading)) throw new Error("Rule does not fit");
+  if (!gradingFits(response, parts.grading))
+    throw new Error("Rule does not fit");
   if (!gradeStructuredWork(response, parts.grading, parts.answer))
     throw new Error("Answer key is not credited");
   return {
@@ -1002,7 +1084,10 @@ function workProblem(
 
 function ownCut(seed: string, r: Random): GeneratedProblem {
   const meta = metaOf(areaTilingClauseTemplates, "your-own-cut");
-  let W = 10, H = 8, w1 = 6, h1 = 5;
+  let W = 10,
+    H = 8,
+    w1 = 6,
+    h1 = 5;
   for (let attempt = 0; attempt < 40; attempt++) {
     W = r(6, 12);
     H = r(6, 12);
@@ -1023,7 +1108,11 @@ function ownCut(seed: string, r: Random): GeneratedProblem {
       figure: lFigure(W, H, w1, h1, unit),
       rows: [
         { id: "r1", label: "Area of one rectangle", unit: "square units" },
-        { id: "r2", label: "Area of the other rectangle", unit: "square units" },
+        {
+          id: "r2",
+          label: "Area of the other rectangle",
+          unit: "square units",
+        },
         { id: "r3", label: "Total area", unit: "square units" },
       ],
       grading: {
@@ -1034,7 +1123,11 @@ function ownCut(seed: string, r: Random): GeneratedProblem {
         pairs: [pieces.horizontal, pieces.vertical],
         box: pieces.box,
       },
-      answer: JSON.stringify([[String(p1)], [String(p2)], [String(pieces.total)]]),
+      answer: JSON.stringify([
+        [String(p1)],
+        [String(p2)],
+        [String(pieces.total)],
+      ]),
       hint: `The outer sides are ${W} and ${H}, and the step-in uses ${w1} and ${h1}. One cut goes across from the inner corner to a side. The two pieces must be rectangles, and the total is their sum, not the box around the L.`,
       explanation: [
         `A horizontal cut gives ${W} × ${h1} = ${pieces.horizontal[0]} and ${w1} × ${H - h1} = ${pieces.horizontal[1]}.`,
@@ -1070,7 +1163,11 @@ function cutScene(extra: Element[]): Scene {
 
 function whichCut(seed: string, r: Random): GeneratedProblem {
   const meta = metaOf(areaTilingClauseTemplates, "which-cut");
-  const seg = (id: string, from: [number, number], to: [number, number]): Element => ({
+  const seg = (
+    id: string,
+    from: [number, number],
+    to: [number, number],
+  ): Element => ({
     type: "segment",
     id,
     from,
@@ -1079,8 +1176,7 @@ function whichCut(seed: string, r: Random): GeneratedProblem {
     width: 2.5,
   });
   return figureProblem(meta, seed, {
-    prompt:
-      "Which cut splits the L into two rectangles that do not overlap?",
+    prompt: "Which cut splits the L into two rectangles that do not overlap?",
     label: "Choose the cut",
     r,
     options: [
@@ -1200,8 +1296,15 @@ function exhibitPerimeter(seed: string, r: Random): GeneratedProblem {
   const unequal = Array.from({ length: half - 1 }, (_, i) => {
     const length = i + 1;
     const width = half - length;
-    return [Math.min(length, width), Math.max(length, width)] as [number, number];
-  }).filter((p, i, all) => p[0] !== p[1] && all.findIndex((q) => q[0] === p[0] && q[1] === p[1]) === i);
+    return [Math.min(length, width), Math.max(length, width)] as [
+      number,
+      number,
+    ];
+  }).filter(
+    (p, i, all) =>
+      p[0] !== p[1] &&
+      all.findIndex((q) => q[0] === p[0] && q[1] === p[1]) === i,
+  );
   const given = unequal[r(0, unequal.length - 1)]!;
   const others = unequal.filter((p) => p[0] !== given[0] || p[1] !== given[1]);
   const [length, width] = others[r(0, others.length - 1)]!;
@@ -1222,7 +1325,11 @@ function exhibitPerimeter(seed: string, r: Random): GeneratedProblem {
       target: half,
       given,
     },
-    answer: JSON.stringify([[String(pick[0])], [String(pick[1])], [String(area)]]),
+    answer: JSON.stringify([
+      [String(pick[0])],
+      [String(pick[1])],
+      [String(area)],
+    ]),
     hint: `Half the trip around is $${given[0]} + ${given[1]}$. A different pair of whole numbers with that same sum is a different rectangle. The area is the product, not the sum.`,
     explanation: [
       `The perimeter is 2 × (${given[0]} + ${given[1]}) = ${2 * half} cm, so one of each side sums to ${half}.`,
@@ -1375,7 +1482,10 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
       hint: `The vertices are ${names.map((name, i) => `${name}${pairText(pts[i]!)}`).join(", ")}. The first number in each pair is the x-coordinate, right if positive and left if negative. Plot each vertex. The order does not matter.`,
       explanation: [
         `Rectangle ABCD is ${rect.w} units wide and ${rect.h} units tall.`,
-        ...pts.map((p, i) => `$${names[i]}${pairText(p)}$ sits ${p[0]} across and ${p[1]} up from the origin.`),
+        ...pts.map(
+          (p, i) =>
+            `$${names[i]}${pairText(p)}$ sits ${p[0]} across and ${p[1]} up from the origin.`,
+        ),
         "All four vertices, in any order, are the rectangle.",
       ],
     });
@@ -1402,7 +1512,11 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
         ordered: false,
         connect: "none",
         given: {
-          vertices: known.map(([name, p]) => ({ x: p[0], y: p[1], label: name })),
+          vertices: known.map(([name, p]) => ({
+            x: p[0],
+            y: p[1],
+            label: name,
+          })),
           closed: false,
         },
       },
@@ -1448,8 +1562,24 @@ export function generateSolidSection(templateId: string, seed: string) {
     const meta = metaOf(solidSectionTemplates, templateId);
     const section = r(0, 1) === 0;
     const pair = section
-      ? ([[60, 10], [40, 8], [36, 6], [24, 8], [48, 10]] as const)[r(0, 4)]!
-      : ([[60, 10], [30, 6], [24, 9], [48, 6], [36, 8]] as const)[r(0, 4)]!;
+      ? (
+          [
+            [60, 10],
+            [40, 8],
+            [36, 6],
+            [24, 8],
+            [48, 10],
+          ] as const
+        )[r(0, 4)]!
+      : (
+          [
+            [60, 10],
+            [30, 6],
+            [24, 9],
+            [48, 6],
+            [36, 8],
+          ] as const
+        )[r(0, 4)]!;
     const [base, height] = pair;
     if (section) {
       const level = height / 2;
@@ -1488,7 +1618,8 @@ export function generateSolidSection(templateId: string, seed: string) {
       } while ((count * tenths) % 10 !== 0);
     }
     const volume = (count * tenths) / 10;
-    const each = tenths % 10 === 0 ? String(tenths / 10) : (tenths / 10).toFixed(1);
+    const each =
+      tenths % 10 === 0 ? String(tenths / 10) : (tenths / 10).toFixed(1);
     return assemble(meta, seed, r, {
       prompt: `A stack of ${count} coins, each of volume ${each} ${nounFor(Number(each), "cubic centimeter")}, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?`,
       answer: String(volume),
@@ -1553,12 +1684,22 @@ export function tiltedFacts(
   const dot = (B[0] - A[0]) * (D[0] - A[0]) + (B[1] - A[1]) * (D[1] - A[1]);
   const xs = [A[0], B[0], C[0], D[0]];
   const ys = [A[1], B[1], C[1], D[1]];
-  const box = (Math.max(...xs) - Math.min(...xs)) * (Math.max(...ys) - Math.min(...ys));
+  const box =
+    (Math.max(...xs) - Math.min(...xs)) * (Math.max(...ys) - Math.min(...ys));
   const deltas = Math.abs(B[0] - A[0]) * Math.abs(B[1] - A[1]);
   const added = (m * m + n * n) * s;
   const taxicab = 2 * (m + n) * (p + q);
   return {
-    A, B, C, D, dot, s, box, deltas, added, taxicab,
+    A,
+    B,
+    C,
+    D,
+    dot,
+    s,
+    box,
+    deltas,
+    added,
+    taxicab,
     area: m * n * s,
     ab: radicalText(m, s),
     ad: radicalText(n, s),
@@ -1632,14 +1773,26 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
     const wrong =
       ask === "area"
         ? [
-            [`${fact.box} square units`, "That is the bounding box, width times height of the grid rectangle around ABCD."],
-            [`${fact.deltas} square units`, "Those are the horizontal and vertical gaps of side AB, used as if they were the two side lengths."],
-            [labels[3]!, "Adding the numbers under the square roots is not multiplying the side lengths."],
+            [
+              `${fact.box} square units`,
+              "That is the bounding box, width times height of the grid rectangle around ABCD.",
+            ],
+            [
+              `${fact.deltas} square units`,
+              "Those are the horizontal and vertical gaps of side AB, used as if they were the two side lengths.",
+            ],
+            [
+              labels[3]!,
+              "Adding the numbers under the square roots is not multiplying the side lengths.",
+            ],
           ]
         : [
             [fact.half, "That is one of each side, not the full trip around."],
             [fact.doubled, "That doubles the perimeter a second time."],
-            [String(fact.taxicab), "Adding the coordinate gaps of each side measures a path along the grid, not the straight sides."],
+            [
+              String(fact.taxicab),
+              "Adding the coordinate gaps of each side measures a path along the grid, not the straight sides.",
+            ],
           ];
     return {
       ...assemble(meta, seed, r, {
@@ -1662,7 +1815,10 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
         },
         choices: [
           { label: correct, correct: true as const },
-          ...wrong.map(([label, feedback]) => ({ label: label!, feedback: feedback! })),
+          ...wrong.map(([label, feedback]) => ({
+            label: label!,
+            feedback: feedback!,
+          })),
         ],
       }),
       variant: { id: ask },

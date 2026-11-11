@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { SimilarTrianglesFigure, TemplateMetadata } from "./contracts";
 import { chainFamily, decimalText, dispatch, gcd, pick } from "./chain-kit";
 import { workModeAxisNoOrder } from "./structured-work-kit";
@@ -295,7 +296,7 @@ const scaleDrawing = chainFamily({
     ];
     const built = rowsWork(rows, axes.mode, r, "Your work");
     return workSurface(built, {
-      prompt: `${m.rooms.owner} draws a scale drawing of a ${m.rooms.what}. The drawing is a rectangle ${length} ${u.first.long} long and ${width} ${u.first.long} wide. The scale is $1\\text{ ${u.first.short}}=${m.perUnit}\\text{ ${u.actual.short}}$. She makes a new drawing of the same ${m.rooms.what} that is ${newLength} ${u.next.long} long. ${task(axes.mode)}`,
+      prompt: `${m.rooms.owner} draws a scale drawing of ${withArticle(m.rooms.what)}. The drawing is a rectangle ${length} ${u.first.long} long and ${width} ${u.first.long} wide. The scale is $1\\text{ ${u.first.short}}=${m.perUnit}\\text{ ${u.actual.short}}$. She makes a new drawing of the same ${m.rooms.what} that is ${newLength} ${u.next.long} long. ${task(axes.mode)}`,
       hint: `Every ${one[u.first.short]} of the drawing stands for ${m.perUnit} ${u.actual.long}, so the actual length is the drawing length times ${m.perUnit}. Area uses the actual length and width, not the drawing's. For the new scale, divide the actual length by the new drawing's length of ${newLength} ${u.next.short}.`,
       explanation: [
         `A scale drawing is a smaller copy. Its scale says what real length each unit on the drawing stands for: here 1 ${one[u.first.short]} stands for ${m.perUnit} ${u.actual.long}.`,

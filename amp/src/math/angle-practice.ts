@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -769,7 +770,7 @@ export function generateAngleProblem(
               ? { label: k, correct: true as const }
               : {
                   label: k,
-                  feedback: `This arc goes past a straight line. That is wider than ${k === "straight" ? "a straight angle" : `an ${k} angle`}.`,
+                  feedback: `This arc goes past a straight line. That is wider than ${k === "straight" ? "a straight angle" : `${withArticle(k)} angle`}.`,
                 },
         );
         keepOrder = true;

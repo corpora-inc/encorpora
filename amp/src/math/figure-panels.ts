@@ -1,3 +1,4 @@
+import { article as sharedArticle } from "./agreement";
 import type { PublicProblem, SemanticFigure } from "./contracts";
 
 /** Choosing a lettered panel of the problem's own figure.
@@ -93,4 +94,5 @@ export function panelChoice(problem: PublicProblem): PanelChoice | null {
 }
 
 /** "a" or "an" before a panel's noun: "a triangle", "an apple". */
-export const article = (noun: string) => (/^[aeiou]/i.test(noun) ? "an" : "a");
+/** "a" or "an" for a noun: the shared rule (agreement.ts). */
+export const article = (noun: string) => sharedArticle(noun);

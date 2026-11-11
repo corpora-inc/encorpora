@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -2061,7 +2062,7 @@ function numberSetVenn(r: Random): Built {
             label: name,
             feedback:
               j < k
-                ? `${item.text} is not a ${SET_ONE[j]}, so this set does not hold it.`
+                ? `${item.text} is not ${withArticle(SET_ONE[j])}, so this set does not hold it.`
                 : `${item.text} is in the ${name}, but a smaller set also holds it. The question asks for the smallest.`,
           },
     ),
@@ -2893,7 +2894,7 @@ function rationalAreaVolumeEquation(r: Random): Built {
       sol: unknown,
     };
     return build(
-      `A triangular banner has an area of ${f(A)} square feet and a ${k} of ${f(known)} feet. Which equation can be used to find its ${uname}, $${u}$, in feet?`,
+      `A triangular banner has an area of ${f(A)} square feet and ${withArticle(k)} of ${f(known)} feet. Which equation can be used to find its ${uname}, $${u}$, in feet?`,
       `The area of a triangle is one half of its base times its height. Write that with the ${k} ${f(known)} and the area ${f(A)}, and leave $${u}$ as the unknown.`,
       [
         `Area of a triangle = 1/2 × base × height.`,
@@ -3786,7 +3787,7 @@ function modelFromData(r: Random): Built {
     .map((outcome, i) => `${outcome}: ${ordered[i]}`)
     .join("; ");
   const prompt = [
-    `A ${process.thing} was ${process.verb} ${total} times.`,
+    `${withArticle(process.thing, true)} was ${process.verb} ${total} times.`,
     `Results: ${results}.`,
     `Which probability model matches these results, and about how many of the next ${next} ${process.per} are ${name}?`,
   ].join(" ");
@@ -4279,7 +4280,7 @@ function bothSidesSituationEquation(r: Random): Built {
   const a0 = b0 + (b1 - a1) * n;
   const v = c.v;
   const same = `${a0} + ${a1}${v} = ${b0} + ${b1}${v}`;
-  const setup = `${c.a} charges a ${c.fee} of ${a0} dollars plus ${a1} dollars ${c.per}. ${c.b} charges a ${c.fee} of ${b0} dollars plus ${b1} dollars ${c.per}.`;
+  const setup = `${c.a} charges ${withArticle(c.fee)} of ${a0} dollars plus ${a1} dollars ${c.per}. ${c.b} charges ${withArticle(c.fee)} of ${b0} dollars plus ${b1} dollars ${c.per}.`;
   if (variant === "equation-same-cost")
     return {
       variant,
@@ -4292,7 +4293,7 @@ function bothSidesSituationEquation(r: Random): Built {
       choices: choicesFrom(same, [
         {
           label: `${a0} + ${a1}${v} = ${b1}${v}`,
-          feedback: `${c.b} also has a ${c.fee}, ${b0} dollars, which belongs on its side.`,
+          feedback: `${c.b} also has ${withArticle(c.fee)}, ${b0} dollars, which belongs on its side.`,
         },
         {
           label: `${a0} + ${b1}${v} = ${b0} + ${a1}${v}`,

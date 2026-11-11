@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count, isAre } from "./agreement";
 import { storyName } from "./story-kit/names";
 import { surfaceStream, type Random } from "./variation/axes";
@@ -797,14 +798,14 @@ function decimalKind(
     if (subtract) {
       const prompt =
         frame === 0
-          ? `${name} has ${moneyWords(leftCents)} and spends ${moneyWords(rightCents)} on a ${bought}. How much is left, in dollars and cents?`
-          : `${name} had ${moneyWords(leftCents)} and paid ${moneyWords(rightCents)} for a ${bought}. How much is left, in dollars and cents?`;
+          ? `${name} has ${moneyWords(leftCents)} and spends ${moneyWords(rightCents)} on ${withArticle(bought)}. How much is left, in dollars and cents?`
+          : `${name} had ${moneyWords(leftCents)} and paid ${moneyWords(rightCents)} for ${withArticle(bought)}. How much is left, in dollars and cents?`;
       return { prompt, closing: `That leaves ${moneyWords(value)}.` };
     }
     const prompt =
       frame === 0
-        ? `${name} buys a ${bought} that costs ${moneyWords(leftCents)} and a ${extra} that costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`
-        : `A ${bought} costs ${moneyWords(leftCents)} and a ${extra} costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`;
+        ? `${name} buys ${withArticle(bought)} that costs ${moneyWords(leftCents)} and ${withArticle(extra)} that costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`
+        : `${withArticle(bought, true)} costs ${moneyWords(leftCents)} and ${withArticle(extra)} costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`;
     return { prompt, closing: `The total cost is ${moneyWords(value)}.` };
   }
   if (kind === "race") {
@@ -853,7 +854,7 @@ function decimalKind(
   }
   const verb = big.band === "rope" ? "lays" : "lines up";
   return {
-    prompt: `${name} ${verb} a ${big.name} that is ${shownL} meters with a ${small.name} that is ${shownR} meters. What is the total length, in meters?`,
+    prompt: `${name} ${verb} ${withArticle(big.name)} that is ${shownL} meters with ${withArticle(small.name)} that is ${shownR} meters. What is the total length, in meters?`,
     closing: `The total length is ${shownValue} meters.`,
   };
 }
@@ -955,8 +956,8 @@ export function moneyAddStory(
   const frame = spread(seed, 2);
   const prompt =
     frame === 0
-      ? `${name} buys a ${first} that costs ${moneyWords(a)} and a ${second} that costs ${moneyWords(b)}. What is the total cost? ${ENTER}`
-      : `At the school fair, a ${first} costs ${moneyWords(a)} and a ${second} costs ${moneyWords(b)}. What is the total cost? ${ENTER}`;
+      ? `${name} buys ${withArticle(first)} that costs ${moneyWords(a)} and ${withArticle(second)} that costs ${moneyWords(b)}. What is the total cost? ${ENTER}`
+      : `At the school fair, ${withArticle(first)} costs ${moneyWords(a)} and ${withArticle(second)} costs ${moneyWords(b)}. What is the total cost? ${ENTER}`;
   return {
     prompt,
     hint: `The ${first} costs ${moneyWords(a)} and the ${second} costs ${moneyWords(b)}. Add the dollars, then the cents. Regroup if the cents reach 100.`,
@@ -981,8 +982,8 @@ export function moneyChangeStory(
   const frame = spread(seed, 2);
   const prompt =
     frame === 0
-      ? `${name} buys a ${item} that costs ${moneyWords(cost)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
-      : `A ${item} costs ${moneyWords(cost)}. You pay with ${payPhrase}. How much change do you get back? ${ENTER}`;
+      ? `${name} buys ${withArticle(item)} that costs ${moneyWords(cost)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
+      : `${withArticle(item, true)} costs ${moneyWords(cost)}. You pay with ${payPhrase}. How much change do you get back? ${ENTER}`;
   return {
     prompt,
     hint: `The ${item} costs ${moneyWords(cost)}. ${cap(payPhrase)} ${payPhrase.startsWith("two") || payPhrase.includes(" and ") ? "are" : "is"} ${moneyWords(paid)}. Change is the payment minus the cost.`,

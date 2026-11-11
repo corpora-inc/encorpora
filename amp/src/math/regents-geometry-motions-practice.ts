@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import { chainFamily, choiceSurface, dispatch, pick } from "./chain-kit";
@@ -348,7 +349,7 @@ function randomMotion(r: R, kind: Motion["kind"]): Motion {
   };
 }
 const kinds = ["translation", "reflection", "rotation"] as const;
-const article = (k: string) => `a ${k}`;
+const article = (k: string) => `${withArticle(k)}`;
 export const motionChain = chainFamily({
   template: motionChainTemplate,
   axes: {

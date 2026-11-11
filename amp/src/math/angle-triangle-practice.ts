@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
@@ -1053,7 +1054,7 @@ function conditionsCase(r: Random): Case {
   } else if (kind === "asa") {
     const [p, q] = triangleAngles(r, 25, 110);
     const side = r(3, 15);
-    condition = `angles of ${p}° and ${q}° with a ${side} ${u} side between them`;
+    condition = `angles of ${p}° and ${q}° with ${withArticle(side)} ${u} side between them`;
     verdict = 0;
     reason = [
       `${p}° + ${q}° = ${p + q}°, which is less than 180°, so the rays drawn at the ends of the ${side} ${u} side meet.`,
@@ -1063,7 +1064,7 @@ function conditionsCase(r: Random): Case {
     const p = r(60, 120),
       q = r(180 - p, 150);
     const side = r(3, 15);
-    condition = `angles of ${p}° and ${q}° and a ${side} ${u} side`;
+    condition = `angles of ${p}° and ${q}° and ${withArticle(side)} ${u} side`;
     verdict = 2;
     reason = [
       `${p}° + ${q}° = ${p + q}°. The third angle would be 180° − ${p + q}°, which is not positive.`,
@@ -1257,7 +1258,7 @@ function sectionShapeCase(r: Random): Case {
               } ${reason[plane].join(" ")}`;
   });
   return {
-    prompt: `A ${solidName} is ${dims}. A plane slices it ${planeText(plane, { l, w, u })}. What is the most specific name for the shape of the cross-section?`,
+    prompt: `${withArticle(solidName, true)} is ${dims}. A plane slices it ${planeText(plane, { l, w, u })}. What is the most specific name for the shape of the cross-section?`,
     answer,
     figure: {
       kind: "solid-section",
@@ -1340,7 +1341,7 @@ function sectionAreaCase(r: Random): Case {
     answer = (l / 2) * (w / 2);
     explanation = [
       `Halfway up, the plane meets every slanted edge at its midpoint. Each side of the section joins two midpoints, so it is half as long as the base edge below it.`,
-      `The section is a ${l / 2} ${u} by ${w / 2} ${u} rectangle.`,
+      `The section is ${withArticle(l / 2)} ${u} by ${w / 2} ${u} rectangle.`,
       `Its area is ${l / 2} × ${w / 2} = ${answer}, one quarter of the base area ${l * w}.`,
       `The cross-section has an area of ${answer} ${squares}.`,
     ];

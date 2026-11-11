@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, SemanticFigure } from "./contracts";
 import { graph, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
@@ -446,7 +447,7 @@ function similarityMeaning(c: Context): GeneratedProblem {
   const p = problem(
     c,
     {
-      prompt: `A dilation with scale factor $${kt}$ followed by a ${pick(c.r, ["translation", "rotation", "reflection"])} maps $A$ to $D$, $B$ to $E$, and $C$ to $F$. $AB=${ab}$, $BC=${bc}$ and $\\angle A=${angle}^\\circ$. Select every statement that must be true.`,
+      prompt: `A dilation with scale factor $${kt}$ followed by ${withArticle(pick(c.r, ["translation", "rotation", "reflection"]))} maps $A$ to $D$, $B$ to $E$, and $C$ to $F$. $AB=${ab}$, $BC=${bc}$ and $\\angle A=${angle}^\\circ$. Select every statement that must be true.`,
       hint: `Apply the scale factor $${kt}$ to side lengths, such as $AB=${ab}$. Decide separately what happens to angles.`,
       explanation: [
         `Dilation multiplies lengths by $${kt}$, so $DE=${imageSide}$ and $EF=${bc * k}$.`,

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count, count as agreeCount, isAre, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { numberWords } from "./staar-gap-practice";
@@ -191,7 +192,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         : mode === 1 || (mode === 0 && !teen)
           ? `${n} has which digits in its ${hundred ? "hundreds, tens and ones" : "tens and ones"} places?`
           : `Read the model. Fill the ${hundred ? "hundreds, tens and ones" : "tens and ones"} digits${(mode === 0 && teen) || mode === 2 ? " and the number" : ""}.`,
-      `A ${hundred ? "hundred" : "ten"} is a group of ${hundred ? "ten tens" : "ten ones"}. Count the ${agreeCount(d, hundred ? "hundred" : "ten")} in this problem, then count any extra ones separately.`,
+      `${withArticle(hundred ? "hundred" : "ten", true)} is a group of ${hundred ? "ten tens" : "ten ones"}. Count the ${agreeCount(d, hundred ? "hundred" : "ten")} in this problem, then count any extra ones separately.`,
       [
         `${n} means ${hundred ? `${count(h, "hundred")}, ` : ""}${count(tens, "ten")} and ${count(ones, "one")}.`,
         `${tex(`${n}=${h * 100}+${tens * 10}+${ones}`)}. A digit counts groups of its place value.`,
@@ -478,7 +479,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       prompt =
         op === 0
           ? `One ${object} contains ${mixed(first)} and another contains ${mixed(second)}. What is their total in ${small}?`
-          : `A ${object} contains ${mixed(first)}. ${unitAmount(second, small)} is removed. How much is left in ${small}?`;
+          : `${withArticle(object, true)} contains ${mixed(first)}. ${unitAmount(second, small)} is removed. How much is left in ${small}?`;
       equation = `${first}${op === 0 ? "+" : "-"}${second}=${answer}`;
     } else if (op === 2) {
       const each = Math.min(first, Math.floor(20000 / groups));

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -186,7 +187,7 @@ export const feePlan = chainFamily({
       const extraNext = m.next - m.allowance;
       const answerCents = m.flat + m.rate * extraNext;
       return numberSurface({
-        prompt: `A ${place} charges a flat fee of ${money(m.flat)} that covers the first ${m.allowance} hours, plus a fixed charge for each hour after that. A booking of ${m.booked} hours costs ${money(m.total)} in all. How many dollars does a booking of ${m.next} hours cost?`,
+        prompt: `${withArticle(place, true)} charges a flat fee of ${money(m.flat)} that covers the first ${m.allowance} hours, plus a fixed charge for each hour after that. A booking of ${m.booked} hours costs ${money(m.total)} in all. How many dollars does a booking of ${m.next} hours cost?`,
         answer: dollars(answerCents),
         hint: `Only the hours after the first ${m.allowance} earn the hourly charge. The booking of ${m.booked} hours has ${m.booked} - ${m.allowance} extra hours, and the total beyond the flat fee is ${dollars(m.total)} - ${dollars(m.flat)}. Use those two to find the charge for one extra hour.`,
         explanation: [
@@ -362,7 +363,7 @@ export const feeRule = chainFamily({
           ];
     if (m.kind === "stated-rate")
       return choiceSurface(r, {
-        prompt: `A ${place} charges a flat fee of ${F} dollars that covers the first ${h0} hours, plus ${rate} dollars for each hour after that. Which equation gives the total charge $C$, in dollars, for a booking of $h$ hours, where $h$ is at least ${h0}?`,
+        prompt: `${withArticle(place, true)} charges a flat fee of ${F} dollars that covers the first ${h0} hours, plus ${rate} dollars for each hour after that. Which equation gives the total charge $C$, in dollars, for a booking of $h$ hours, where $h$ is at least ${h0}?`,
         options: [
           { label: correct, correct: true },
           ...pool.map(([label, feedback]) => ({ label, feedback })),
@@ -384,7 +385,7 @@ export const feeRule = chainFamily({
         ? `$C=${F}+${m.wrongRate}(h-${h0})$`
         : expanded(m.wrongRate, F - m.wrongRate * h0);
     return choiceSurface(r, {
-      prompt: `A ${place} charges a flat fee of ${F} dollars that covers the first ${h0} hours, plus a fixed charge for each hour after that. A booking of ${m.booked} hours costs ${m.total} dollars in all. Which equation gives the total charge $C$, in dollars, for a booking of $h$ hours, where $h$ is at least ${h0}?`,
+      prompt: `${withArticle(place, true)} charges a flat fee of ${F} dollars that covers the first ${h0} hours, plus a fixed charge for each hour after that. A booking of ${m.booked} hours costs ${m.total} dollars in all. Which equation gives the total charge $C$, in dollars, for a booking of $h$ hours, where $h$ is at least ${h0}?`,
       options: [
         { label: correct, correct: true },
         {
@@ -468,7 +469,7 @@ export const feeBudget = chainFamily({
     const flip = strict ? "\\gt" : "\\ge";
     const other = strict ? "\\le" : "\\lt";
     const phrase = strict ? "stay under" : "stay at or under";
-    const intro = `${c.place} charges a ${c.fee} of ${m.fee} dollars plus ${m.rate} dollars ${c.per}. The total cost must ${phrase} a budget of ${budget} dollars.`;
+    const intro = `${c.place} charges ${withArticle(c.fee)} of ${m.fee} dollars plus ${m.rate} dollars ${c.per}. The total cost must ${phrase} a budget of ${budget} dollars.`;
     if (m.kind === "write-inequality")
       return choiceSurface(r, {
         prompt: `${intro} Which inequality describes the number of ${c.unit}, $x$, that fit the budget?`,
