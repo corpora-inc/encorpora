@@ -12,13 +12,7 @@ import { StatTile } from "../../../ui/StatTile";
 import { currentSession } from "../api";
 import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
-import {
-  across,
-  CurveLegend,
-  CurvePlot,
-  GradeAxis,
-  peakOf,
-} from "./CurvePlot";
+import { across, CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
 import {
   gradeName,
   gradesWords,
@@ -123,7 +117,11 @@ export function ClassStandingScreen() {
     standing.error instanceof AppError && standing.error.status === 404;
   const only = data && data.grades.length === 1 ? data.grades[0]! : null;
   const bandLabel =
-    only === null ? "Their grade" : only === 0 ? "Kindergarten" : `Grade ${gradeName(only)}`;
+    only === null
+      ? "Their grade"
+      : only === 0
+        ? "Kindergarten"
+        : `Grade ${gradeName(only)}`;
   return (
     <OrgFrame
       orgId={params.org}
@@ -186,6 +184,7 @@ export function ClassStandingScreen() {
                     top={peakOf([data.curve])}
                     bandLabel={bandLabel}
                     label={curveSentence(data.curve)}
+                    name={data.class.name}
                     hover
                   />
                   <GradeAxis grid={data.grid} grade={only} />
@@ -293,7 +292,8 @@ export function ClassStandingScreen() {
                           {student.growth
                             ? withInterval({
                                 median: student.growth.mu,
-                                low: student.growth.mu - 1.96 * student.growth.sd,
+                                low:
+                                  student.growth.mu - 1.96 * student.growth.sd,
                                 high:
                                   student.growth.mu + 1.96 * student.growth.sd,
                               })

@@ -63,6 +63,7 @@ export function StandingCurves({
               top={peakOf([data.all])}
               bandLabel="Their grade"
               label={curveSentence(data.all)}
+              name={data.org.name}
               hover
             />
             <GradeAxis grid={data.grid} />
@@ -101,7 +102,10 @@ export function StandingCurves({
               {standing.isError && (
                 <p className={styles.failed}>
                   This chart didn’t load.{" "}
-                  <Button variant="quiet" onClick={() => void standing.refetch()}>
+                  <Button
+                    variant="quiet"
+                    onClick={() => void standing.refetch()}
+                  >
                     Try again
                   </Button>
                 </p>

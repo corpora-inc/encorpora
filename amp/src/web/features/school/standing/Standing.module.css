@@ -619,3 +619,22 @@
 .bandAxis:first-child .axis {
   margin-top: 0;
 }
+/* A curve's own name, written on its flank (CurvePlot): the group's in the
+   curve's colour, to the right of the point; the national spread's quieter,
+   to its left. --y is the point's height in the plot's 0–100 units. */
+.curveName {
+  position: absolute;
+  top: calc(var(--label-row) + (100% - var(--label-row)) * var(--y) / 100);
+  transform: translate(var(--space-2), -100%);
+  color: var(--color-figure-accent);
+  font-size: var(--text-table-small);
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.curveName[data-curve="national"] {
+  transform: translate(calc(-100% - var(--space-2)), -100%);
+  color: var(--color-muted-text);
+  font-weight: 600;
+}

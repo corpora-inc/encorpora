@@ -35,7 +35,9 @@ export function CurveFacts({
       <StatTile
         value={curve.median === null ? "—" : signed(curve.median)}
         label="median"
-        detail={curve.middle ? `95%: ${intervalWords(curve.middle)}` : undefined}
+        detail={
+          curve.middle ? `95%: ${intervalWords(curve.middle)}` : undefined
+        }
       />
       <StatTile
         value={curve.mean === null ? "—" : signed(curve.mean)}
