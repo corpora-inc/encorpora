@@ -433,6 +433,7 @@ export const actionSchema = z.discriminatedUnion("do", [
   /**
    * Move named points: shapes and labels built on them follow. Each goes to
    * [x, y], to where another point is (its name), or into a grid cell ({cell: [grid, n]}).
+   * A point placed in a grid cell or on a table's anchor leaves from there.
    */
   z.object({ do: z.literal("move"), points: z.record(name, z.union([point, name, z.object({ cell: z.tuple([name, z.number().int().min(1)]) }).strict()])), ...timing }).strict(),
   /** A half turn is deg 180. Turns about a point, physically lifting. */

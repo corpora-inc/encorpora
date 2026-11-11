@@ -1082,7 +1082,8 @@ class GeoStage {
         const d = this.geo.points[name];
         if (!d && this.thingsModel?.has(name)) throw new Error(`move: ${name} is a thing. Send it to a group: { "do": "send", "target": "${name}", "to": "<group>" }.`);
         if (!d) throw new Error(`move: no point named ${name}`);
-        if (!Array.isArray(d) && !("cell" in d)) throw new Error(`Point ${name} is derived; move the points it is built from`);
+        // a point in a grid cell or on a table's (mosaic's, bar's) anchor leaves from wherever that puts it
+        if (!Array.isArray(d) && !("cell" in d) && !("anchor" in d)) throw new Error(`Point ${name} is derived; move the points it is built from`);
         if (to === name) throw new Error(`move: ${name} cannot move to itself`);
         if (typeof to === "string" && !this.geo.points[to]) throw new Error(`move: no point named ${to}`);
         if (!Array.isArray(to) && typeof to === "object") this.grid(to.cell[0]);
@@ -2151,10 +2152,21 @@ class GeoStage {
       for (const l of v.layers) l.el.style.strokeWidth = ((thingStroke(v.px, l.w) * 100) / v.px * bold).toFixed(3);
     }
   }
+  /**
+   * A box's width and height in pixels. A stretched graph scales x and y on
+   * their own, so a table drawn beside it maps each side separately; `s` is
+   * only the smaller of the two scales.
+   */
+  pxSize(b: Box, map: (p: P) => P, s: number): [number, number] {
+    if (!this.geo.stretch) return [b.w * s, b.h * s];
+    const a = map([b.x, b.y]), c = map([b.x + b.w, b.y + b.h]);
+    return [Math.abs(c[0] - a[0]), Math.abs(a[1] - c[1])];
+  }
   /** A rectangle in pixels from a box in units. */
   rectPath(b: Box, map: (p: P) => P, s: number, r = 0) {
     const tl = map([b.x, b.y + b.h]);
-    return roundRect(tl[0], tl[1], b.w * s, b.h * s, r);
+    const [w, h] = this.pxSize(b, map, s);
+    return roundRect(tl[0], tl[1], w, h, r);
   }
   /** The bar and its two aligned scales. Tick positions never move to accommodate text. */
   drawBar(v: BarView, g: SVGElement, t: number, map: (p: P) => P, s: number) {
@@ -2287,10 +2299,11 @@ class GeoStage {
       bg.style.strokeWidth = st.em > 0.02 ? String(3 + 4 * st.em) : "0";
       bg.style.opacity = String(o);
       if (st.em > 0.02) this.markEm(bg, st.em);
-      if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s);
+      const [pw, ph] = this.pxSize(box, map, s);
+      if (o > 0.5) fitCellLabel(el, pw, ph);
       place(el, map([box.x + box.w / 2, box.y + box.h / 2]), "c", 0, o, st.em);
-      if (o > 0.5 && !fits(labelInk(el).w, labelInk(el).h, box.w * s, box.h * s, labelMargin(el), labelMargin(el)))
-        this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(box.w * s)} by ${Math.round(box.h * s)} px. Widen the cell or shorten the text.`);
+      if (o > 0.5 && !fits(labelInk(el).w, labelInk(el).h, pw, ph, labelMargin(el), labelMargin(el)))
+        this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(pw)} by ${Math.round(ph)} px. Widen the cell or shorten the text.`);
     }
     g.style.display = frameO < 0.002 ? "none" : "";
     if (frameO < 0.002) return;

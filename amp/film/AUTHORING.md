@@ -296,6 +296,7 @@ The screenplays in `lessons/` are reference examples. Read the one closest to yo
 | `mean-data` | Data: counters leveled into equal stacks to show what the number means, then bars leveled to the mean line. |
 | `quadratic-vertex` | Functions: the way to see it first (make the square zero), then a negative leading coefficient with no minimum (zoom out as the arms fall), then a harder form completed to vertex form. |
 | `linear-initial-value-meaning--sk` | Linear models, a whole skill: a story built into columns, a table, a line and `y = mx + b`; a line that slides and tilts with live `m` and `b`; a falling case; walking back to the start; a learner solving the last one from a table. |
+| `compare-function-rates--sk` | Comparing functions in different forms, a whole skill: a table beside its graph, rows flown onto the graph, two functions' starts and steps side by side, a falling step that is steeper but smaller, and a rule that is not linear. |
 
 ## Never a blank or still screen
 
@@ -585,6 +586,27 @@ In `y = mx + b`, `b` says where the line starts and `m` how steeply it climbs. S
 - Give `m` and `b` one colour each and use the same colours in the equation on the board.
 
 `linear-initial-value-meaning--sk` is the reference: columns of "start plus steps" whose tops make the line, then a staircase under the line that slides (only `b` counts) and tilts (only `m` counts, down to a negative rate).
+
+### A table beside its graph
+
+A function shown two ways is one figure: the table to the left of the y axis, the graph to the right, with `xrange` and `yrange` keeping the axes off the table. On a stretched graph each side of a cell maps on its own axis's scale, so give `cell` in the figure's units and the numbers keep their size.
+
+```json
+{ "figure": { "stretch": true, "view": [-6.9, -2, 6.4, 15.2],
+  "points": { "TL": [-5.5, 12.6], "F1": { "anchor": ["t", "right:2"] }, "A1": [1, 3] },
+  "parts": [
+    { "id": "ax", "axes": true, "step": 1, "every": 1, "ystep": 1, "yevery": 2, "xrange": [0, 5.7], "yrange": [0, 13.2], "start": true },
+    { "id": "t", "table": true, "at": "TL", "corner": "$x$", "head": ["$y$"], "rows": [{ "label": "0", "cells": ["1"] }, { "label": "1", "cells": ["3"] }], "cell": [1.5, 2], "size": "m" },
+    { "id": "fA1", "dot": "F1", "ink": "violet", "r": 12 } ] },
+  "beats": [ { "say": "Each row is a point.", "do": [
+    { "do": "show", "target": "fA1", "at": "row" }, { "do": "move", "points": { "F1": "A1" }, "at": "row", "dur": 1.2 } ] } ] }
+```
+
+- A point on a table's anchor (`right:2`, the middle of row 2's right edge) can be moved: it leaves from the table and lands on the graph. One `move` per row, on successive words, sends the rows across one after another.
+- Changes between rows go beside them on points `{ "mid": [...] }` of two `left:` or `right:` anchors: the change in x on the left (blue), the change in y on the right (rust), so "x goes up two, y goes up four" is read straight off the table.
+- A start the table hides is a row whose cells wait for `show` (its grid is drawn from the first cell, so its place is kept).
+
+`compare-function-rates--sk` is the reference: a taxi's table, graph, equation and words holding one start and one step; a table against a falling graph, with the hidden start walked back and the table's rows flown onto the graph so both starts and both first steps stand side by side; speeds whose gap grows by the same amount every hour; and a rule whose steps grow, so its points leave the line.
 
 Figure actions:
 
