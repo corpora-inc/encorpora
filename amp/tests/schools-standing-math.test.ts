@@ -14,7 +14,7 @@ import {
   random,
   type Normal,
 } from "../src/schools/standing-math";
-import { standingNormal } from "../src/schools/standing-reads";
+import { standingNormal } from "../src/schools/standing-curve";
 import { withinGradeSd } from "../src/schools/norms-prior";
 
 const near = (actual: number, expected: number, tolerance: number) =>

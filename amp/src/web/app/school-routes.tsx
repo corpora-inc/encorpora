@@ -28,6 +28,10 @@ import {
   yearsOptions,
 } from "../features/school/org/org-api";
 import {
+  classStandingOptions,
+  orgStandingOptions,
+} from "../features/school/standing/standing-api";
+import {
   markSchoolSignup,
   orgHome,
   setupSteps,
@@ -111,7 +115,10 @@ export function schoolRoutes(root: AnyRoute) {
     "SetupScreen",
   );
   const org = () => import("../features/school/org");
+  const standing = () => import("../features/school/standing");
   const screens = {
+    standing: screen(standing, "StandingScreen"),
+    classStanding: screen(standing, "ClassStandingScreen"),
     overview: screen(org, "OverviewScreen"),
     schools: screen(org, "SchoolsScreen"),
     rollover: screen(org, "RolloverScreen"),
@@ -290,6 +297,7 @@ export function schoolRoutes(root: AnyRoute) {
           await Promise.all([
             frameData(session, orgId),
             preload(overviewOptions(session, orgId)),
+            preload(orgStandingOptions(session, orgId)),
           ]);
         },
         component: screens.overview,
@@ -305,6 +313,27 @@ export function schoolRoutes(root: AnyRoute) {
         component: missing,
       }),
     ]),
+    // Where students stand: the school's curves, then one class's students.
+    orgScreen("/standing", screens.standing, (session, orgId) => [
+      preload(orgStandingOptions(session, orgId)),
+    ]),
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/$org/standing/$class",
+      beforeLoad: staffScreen,
+      loader: async ({ context, params }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        const { org: orgId, class: classId } = params as unknown as {
+          org: string;
+          class: string;
+        };
+        await Promise.all([
+          frameData(session, orgId),
+          preload(classStandingOptions(session, classId)),
+        ]);
+      },
+      component: screens.classStanding,
+    }),
     orgScreen("/schools", screens.schools, (session, orgId) => [
       preload(schoolsOptions(session, orgId)),
     ]),
