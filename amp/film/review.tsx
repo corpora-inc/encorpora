@@ -5,7 +5,7 @@
  * One score and one feedback box. The box is the review summary. Timestamped
  * notes already stored stay in the saved review and are not shown or edited.
  *
- *   review.html?id=<film>&list=lab|prod|one
+ *   review.html?id=<film>&list=lab|prod|one|line
  */
 import "../src/web/ui/tokens.css";
 import "./review.css";
@@ -86,9 +86,9 @@ async function openReview(filmId: string) {
   const review: Review = { score: null, summary: "", notes: [] };
   let ready = false;
   let listName = params.get("list") ?? "";
-  if (!["lab", "prod", "one"].includes(listName)) {
+  if (!["lab", "prod", "one", "line"].includes(listName)) {
     const ref = document.referrer;
-    listName = ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
+    listName = ref.includes("line.html") ? "line" : ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
   }
 
   const root = $("div", "review", app);
@@ -378,7 +378,7 @@ async function openReview(filmId: string) {
   paintScore();
   setStatus("idle");
 
-  const names = listName ? [listName] : ["prod", "lab", "one"];
+  const names = listName ? [listName] : ["prod", "lab", "one", "line"];
   const noReviews: Record<string, Review> = {};
   const [loaded, catalog, savedAll] = await Promise.all([
     Promise.all(names.map(async (name) => ({ name, rows: await loadList(name) }))),
