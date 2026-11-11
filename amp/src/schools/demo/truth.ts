@@ -134,10 +134,19 @@ function slots(options: {
   return out;
 }
 
-function enrolledWeeks(termStart: string, today: string): number {
+/** Weeks on the roster this term: from the term's start, or from the day
+ * a student joined if later. A joiner's dose is a week's minutes over their
+ * own weeks, never a whole term's minutes packed into a few days. */
+function enrolledWeeks(
+  termStart: string,
+  today: string,
+  joined?: string,
+): number {
+  if (joined && joined > termStart) termStart = joined;
   const span =
     Math.round(
-      (Date.parse(`${today}T12:00:00Z`) - Date.parse(`${termStart}T12:00:00Z`)) /
+      (Date.parse(`${today}T12:00:00Z`) -
+        Date.parse(`${termStart}T12:00:00Z`)) /
         DAY,
     ) + 1;
   return Math.max(1, span / 7);
@@ -173,9 +182,8 @@ function sittingsFor(options: {
     return hash(`${name}${slot.day} show`) < chance;
   });
   if (!chosen.length) return [];
-  const weeks = enrolledWeeks(options.termStart, options.today);
-  const targetMs =
-    options.doseMinutes * options.multiplier * weeks * 60_000;
+  const weeks = enrolledWeeks(options.termStart, options.today, options.joined);
+  const targetMs = options.doseMinutes * options.multiplier * weeks * 60_000;
   const meanFactor =
     chosen.reduce((sum, slot) => sum + slot.factor, 0) / chosen.length;
   const problems = options.problems;
@@ -195,8 +203,7 @@ function sittingsFor(options: {
     msEach: Math.max(
       30_000,
       Math.round(
-        (targetMs * (slot.factor / meanFactor)) /
-          (chosen.length * problems),
+        (targetMs * (slot.factor / meanFactor)) / (chosen.length * problems),
       ),
     ),
   }));
@@ -217,8 +224,6 @@ function offsetsFor(
   if (story && strands.includes(story[0])) offsets.set(story[0], story[1]);
   return offsets;
 }
-
-
 
 /** A rostered student in a demo class. */
 export function doseTruth(options: {
@@ -246,6 +251,7 @@ export function doseTruth(options: {
     (0.4 + 1.2 * hash(`${options.name} pace`));
   const dose = CLASS_DOSE_MINUTES[options.grade] ?? 60;
   const weekdays = CLASS_WEEKDAYS[options.grade] ?? [1, 3, 5];
+  const joinedOn = options.joined;
   const planned = sittingsFor({
     ...options,
     doseMinutes: dose,
@@ -253,10 +259,12 @@ export function doseTruth(options: {
     weekdays,
     problems: PROBLEMS_PER_SITTING,
   });
-  const weeks = enrolledWeeks(options.termStart, options.today);
+  const weeks = enrolledWeeks(options.termStart, options.today, joinedOn);
   const minutes =
-    planned.reduce((sum, sitting) => sum + sitting.msEach * sitting.problems, 0) /
-    60_000;
+    planned.reduce(
+      (sum, sitting) => sum + sitting.msEach * sitting.problems,
+      0,
+    ) / 60_000;
   const hoursPerWeek = minutes / 60 / weeks;
   const { slip, guess } = learnerNoise(options.name);
   return {
@@ -290,6 +298,13 @@ export function personaTruth(options: {
     (_, index) => index % every === 0 || every <= 2,
   );
   const dose = options.persona.minutes * Math.min(5, weekdays.length);
+  const joinedOn =
+    options.persona.joined === undefined
+      ? undefined
+      : iso(
+          Date.parse(`${options.today}T12:00:00Z`) -
+            options.persona.joined * DAY,
+        );
   const planned = sittingsFor({
     name: options.name,
     grade: options.grade,
@@ -300,10 +315,7 @@ export function personaTruth(options: {
     today: options.today,
     weekShape: options.weekShape,
     workToday: options.workToday,
-    joined:
-      options.persona.joined === undefined
-        ? undefined
-        : iso(Date.parse(`${options.today}T12:00:00Z`) - options.persona.joined * DAY),
+    joined: joinedOn,
     lastActive: options.persona.lastActive,
     problems: clamp(
       4,
@@ -311,10 +323,12 @@ export function personaTruth(options: {
       12,
     ),
   });
-  const weeks = enrolledWeeks(options.termStart, options.today);
+  const weeks = enrolledWeeks(options.termStart, options.today, joinedOn);
   const minutes =
-    planned.reduce((sum, sitting) => sum + sitting.msEach * sitting.problems, 0) /
-    60_000;
+    planned.reduce(
+      (sum, sitting) => sum + sitting.msEach * sitting.problems,
+      0,
+    ) / 60_000;
   const hoursPerWeek = minutes / 60 / weeks;
   const { slip, guess } = learnerNoise(options.name);
   return {
@@ -326,7 +340,11 @@ export function personaTruth(options: {
     hoursPerWeek,
     slip,
     guess,
-    strandOffsets: offsetsFor(options.name, options.name.split(" ")[0] ?? "", options.strands),
+    strandOffsets: offsetsFor(
+      options.name,
+      options.name.split(" ")[0] ?? "",
+      options.strands,
+    ),
     sittings: planned,
   };
 }

@@ -12,10 +12,7 @@ import {
   termInUse,
   type StudentFact,
 } from "./org-reads.js";
-import {
-  DEFAULT_WEEKLY_TARGET_MINUTES,
-  practiced,
-} from "./practice-rules.js";
+import { DEFAULT_WEEKLY_TARGET_MINUTES, practiced } from "./practice-rules.js";
 import {
   FIT_MINIMUM,
   fitLine,
@@ -130,6 +127,15 @@ function cellOf(
   };
 }
 
+/** A quarter's week is drawn once this many of its students have a settled
+ * growth reading: ten, or three in five of a smaller quarter. */
+const QUARTER_SETTLED = { students: 10, share: 0.6 };
+export const settledEnough = (size: number) =>
+  Math.max(
+    1,
+    Math.min(QUARTER_SETTLED.students, Math.ceil(QUARTER_SETTLED.share * size)),
+  );
+
 /**
  * A head's practice views over the term in use: a heat map of classes (or a
  * district's schools) by week, and whether students who practiced more grew
@@ -156,7 +162,9 @@ export async function readPractice(
   const [byWeek, levels, groups] = await Promise.all([
     learnerWeeks(pool, learners, first, current),
     settledDays(pool, learners, term.startsOn, lastDay),
-    school ? classGroups(pool, orgId, students) : schoolGroups(pool, orgId, students),
+    school
+      ? classGroups(pool, orgId, students)
+      : schoolGroups(pool, orgId, students),
   ]);
 
   const shown = weeks.filter((week) => week <= current);
@@ -196,7 +204,10 @@ export async function readPractice(
     let minutes = 0;
     for (const [week, facts] of byWeek.get(student.learner) ?? [])
       if (week >= from) minutes += facts.minutes;
-    const weeksIn = Math.max(1, (dayAt(lastDay) - dayAt(start) + DAY) / (7 * DAY));
+    const weeksIn = Math.max(
+      1,
+      (dayAt(lastDay) - dayAt(start) + DAY) / (7 * DAY),
+    );
     perWeek.set(student.id, minutes / weeksIn);
   }
   const placed = students.filter(
@@ -243,16 +254,21 @@ export async function readPractice(
                 const origin = Math.round(
                   (dayAt(window) - dayAt(term.startsOn)) / DAY,
                 );
-                const elapsed = Math.round(
-                  (dayAt(end) - dayAt(window)) / DAY,
-                );
+                const elapsed = Math.round((dayAt(end) - dayAt(window)) / DAY);
                 const days = (levels.get(student.learner) ?? [])
-                  .filter((point) => point.day >= origin && point.day <= origin + elapsed)
+                  .filter(
+                    (point) =>
+                      point.day >= origin && point.day <= origin + elapsed,
+                  )
                   .map((point) => ({ ...point, day: point.day - origin }));
                 const figure = termGrowth(days, elapsed);
                 return figure ? [figure.mu] : [];
               });
-              if (!growths.length) return null;
+              // Early in a term few students have settled: a week is drawn
+              // once enough of its quarter has (QUARTER_SETTLED), never
+              // from a handful.
+              if (growths.length < settledEnough(group.items.length))
+                return null;
               return { n: growths.length, ...statOf(growths) };
             }),
           }),
