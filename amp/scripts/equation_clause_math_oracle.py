@@ -33,8 +33,10 @@ def require(condition, message):
 
 
 def plain(text):
-    """Typesetting wraps a name or an equation in $...$. The sentence shape is the same."""
-    return text.replace("$", "")
+    """Typesetting wraps a name or an equation in $...$, and math writes a
+    minus as a hyphen (KaTeX rejects the typographic one). The sentence shape
+    is the same."""
+    return text.replace("$", "").replace("−", "-")
 
 
 def dumps(value):
