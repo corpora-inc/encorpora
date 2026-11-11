@@ -40,7 +40,7 @@
           ]
         },
         {
-          "speaker": "learner", "say": "So the answer is two?", "pause": 0.2,
+          "speaker": "learner", "say": "I think the answer is two.", "pause": 0.2,
           "do": [{ "do": "highlight", "target": "d", "at": "two" }]
         },
         {
