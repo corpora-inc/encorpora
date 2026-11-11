@@ -41,6 +41,10 @@ PROTECTED_DATABASE = {
 }
 
 
+FILM_MANIFEST = 'amp/src/content/films/manifest.json'
+FILM_MANIFEST_TEST = 'tests/lesson-films.test.ts'
+
+
 def test_catalog(root):
     files = sorted((root / 'amp/tests').glob('*.ts'))
     return {
@@ -170,6 +174,16 @@ def plan(paths, root=ROOT, full=False, quick=False):
             continue
         # The standalone film kit has its own unit job behind ci-gate.
         if path.startswith('amp/film/'):
+            continue
+        # The published lesson films: data that only src/content/lesson-films.ts
+        # reads, and whose own test checks every entry. A publish is not a
+        # runtime change, so it must not start the build, browser and content
+        # suites that a change to src/ does.
+        if path == FILM_MANIFEST:
+            result['core'].append(FILM_MANIFEST_TEST)
+            targeted['core'].append(FILM_MANIFEST_TEST)
+            result['typecheck'] = True
+            reasons.append('Published lesson-film manifest')
             continue
         if path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             reasons.append('Documentation only')
