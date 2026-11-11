@@ -555,7 +555,6 @@ test("elements stay put unless a motion is authored, and a highlight does not co
   }
 }, 180_000);
 
-
 const PHONE = [
   { width: 390, height: 844 },
   { width: 412, height: 892 },
@@ -662,6 +661,138 @@ test("on a phone, no text sits behind a card or is cut in half", async () => {
     await page.close();
   }
 }, 240_000);
+
+/** One moment per shot where a run of steps is showing its reason labels. */
+function stackTimes(id: string): number[] {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+    script: { shots: { beats: { do?: { do: string; note?: string }[] }[] }[] };
+    timing: { shots: { end: number }[][] };
+  };
+  const times: number[] = [];
+  lesson.script.shots.forEach((shot, si) => {
+    let notes = 0;
+    let at = -1;
+    shot.beats.forEach((beat, bi) => {
+      for (const action of beat.do ?? []) {
+        if (action.do === "clear") notes = 0;
+        if ((action.do === "write" || action.do === "answer") && action.note) notes++;
+      }
+      const end = lesson.timing.shots[si]?.[bi]?.end;
+      if (notes >= 2 && end) at = end - 0.08;
+    });
+    if (at > 0) times.push(at);
+  });
+  return times;
+}
+
+test("derivation labels share one edge and equations do not overlap", async () => {
+  const id = "parabola-derivation-check--sg";
+  const views = [
+    { width: 390, height: 844, layout: "tall" },
+    { width: 412, height: 892, layout: "tall" },
+    { width: 1280, height: 800, layout: "wide" },
+  ] as const;
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const times = stackTimes(id);
+    expect(times.length).toBeGreaterThan(0);
+    for (const view of views) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      const got = await page.evaluate((samples) => {
+        const TEXT = ".film-label, .film-prose, .film-math, .film-display, .film-note, .film-stack-cell, .film-line.term > b, .film-line.term > span, .film-choices > span, .film-recap-item > b, .film-recap-item > span, .film-line.watch, .film-line.text";
+        const shown = (el: Element) => {
+          let o = 1;
+          let n: Element | null = el;
+          while (n && n !== document.body) {
+            const cs = getComputedStyle(n);
+            if (cs.display === "none" || cs.visibility === "hidden") return 0;
+            o *= Number.parseFloat(cs.opacity) || 0;
+            if (o < 0.45) return 0;
+            n = n.parentElement;
+          }
+          return o;
+        };
+        const clip = (el: HTMLElement, box: DOMRect) => {
+          let l = box.left, t = box.top, r = box.right, b = box.bottom;
+          let n: HTMLElement | null = el.parentElement;
+          while (n && n !== document.body) {
+            const cs = getComputedStyle(n);
+            if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+              const h = n.getBoundingClientRect();
+              l = Math.max(l, h.left); t = Math.max(t, h.top); r = Math.min(r, h.right); b = Math.min(b, h.bottom);
+            }
+            n = n.parentElement;
+          }
+          return { l, t, r, b };
+        };
+        const problems: string[] = [];
+        const note = (m: string) => { if (problems.length < 6) problems.push(m); };
+        let stacks = 0;
+        for (const time of samples) {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { problems: ["no scrubber"], stacks: 0 };
+          scrub.value = String(time);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          for (const col of document.querySelectorAll<HTMLElement>(".film-col")) {
+            if (shown(col) < 0.45) continue;
+            let notes: DOMRect[] = [];
+            let eqs: number[] = [];
+            const flush = () => {
+              if (notes.length >= 2) {
+                stacks++;
+                const lefts = notes.map((b) => b.left);
+                const rights = notes.map((b) => b.right);
+                const span = Math.min(Math.max(...lefts) - Math.min(...lefts), Math.max(...rights) - Math.min(...rights));
+                if (span > 1) note(`labels differ by ${span.toFixed(1)}px @ ${time}s`);
+              }
+              if (eqs.length >= 2) {
+                const span = Math.max(...eqs) - Math.min(...eqs);
+                if (span > 1) note(`equals differ by ${span.toFixed(1)}px @ ${time}s`);
+              }
+              notes = [];
+              eqs = [];
+            };
+            for (const line of col.querySelectorAll<HTMLElement>(":scope > .film-line")) {
+              if (shown(line) < 0.45) continue;
+              if (!line.classList.contains("write")) { flush(); continue; }
+              const label = line.querySelector<HTMLElement>(".film-note");
+              if (label && shown(label) >= 0.45) notes.push(label.getBoundingClientRect());
+              const math = line.querySelector<HTMLElement>(".film-math");
+              const rel = math ? [...math.querySelectorAll<HTMLElement>(".mrel")].find((el) => (el.textContent ?? "").trim() === "=") : undefined;
+              if (rel && math && shown(math) >= 0.45) eqs.push(rel.getBoundingClientRect().left);
+            }
+            flush();
+          }
+          const boxes: { l: number; t: number; r: number; b: number; name: string }[] = [];
+          for (const el of document.querySelectorAll<HTMLElement>(TEXT)) {
+            if (shown(el) < 0.45) continue;
+            const raw = el.getBoundingClientRect();
+            const v = clip(el, raw);
+            if (v.r - v.l < 2 || v.b - v.t < 2) continue;
+            boxes.push({ ...v, name: (el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 32) });
+          }
+          for (let i = 0; i < boxes.length; i++) {
+            const a = boxes[i]!;
+            for (let j = i + 1; j < boxes.length; j++) {
+              const c = boxes[j]!;
+              const ox = Math.min(a.r, c.r) - Math.max(a.l, c.l);
+              const oy = Math.min(a.b, c.b) - Math.max(a.t, c.t);
+              if (ox > 2 && oy > 2) note(`"${a.name}" ∩ "${c.name}" @ ${time}s`);
+            }
+          }
+        }
+        return { problems, stacks };
+      }, times);
+      expect(got.stacks, `${id} ${view.width}`).toBeGreaterThan(0);
+      expect(got.problems, `${id} ${view.width}`).toEqual([]);
+    }
+  } finally {
+    await page.close();
+  }
+}, 180_000);
 
 /** One time near the end of every beat, when that beat's marks are on screen. */
 function beatEnds(id: string): number[] {

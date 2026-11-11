@@ -2301,6 +2301,52 @@ const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
 const lerpRect = (a: Rect, b: Rect, u: number): Rect => ({ x: lerp(a.x, b.x, u), y: lerp(a.y, b.y, u), w: lerp(a.w, b.w, u), h: lerp(a.h, b.h, u) });
 
 /** Problem text: words wrap; an equation gets its own centered display line, with its punctuation. */
+/** Indexes of top-level "=" signs. Braces and TeX commands are not relations. */
+function equalsAt(src: string): number[] {
+  const at: number[] = [];
+  let depth = 0;
+  for (let i = 0; i < src.length; i++) {
+    const c = src[i]!;
+    if (c === "\\") {
+      const n = src[i + 1];
+      if (!n) break;
+      if (!/[A-Za-z]/.test(n)) { i++; continue; }
+      let j = i + 1;
+      while (j < src.length && /[A-Za-z]/.test(src[j]!)) j++;
+      i = j - 1;
+      continue;
+    }
+    if (c === "{") depth++;
+    else if (c === "}") depth = Math.max(0, depth - 1);
+    else if (c === "=" && depth === 0) at.push(i);
+  }
+  return at;
+}
+
+/**
+ * One equation, as a single line. An aligned or gathered break is flattened
+ * when it is still one relation. Several equations stay as the author wrote them.
+ */
+function singleEquation(src: string): string | null {
+  const wrapped = src.trim().match(/^\\begin\{(aligned|gathered|split|align)\}([\s\S]*)\\end\{\1\}$/);
+  const body = wrapped ? wrapped[2]! : src;
+  if (/\\begin\{/.test(body)) return null;
+  const flat = body.replace(/\\\\/g, " ").replace(/&/g, "").replace(/[ \t]+/g, " ").trim();
+  if (equalsAt(flat).length !== 1) return null;
+  return flat;
+}
+
+/** Break one equation at its equals sign. The continuation is the right-hand side. */
+function splitEquation(src: string): { lhs: string; rhs: string } | null {
+  const at = equalsAt(src);
+  if (at.length !== 1) return null;
+  const i = at[0]!;
+  const lhs = src.slice(0, i).trim();
+  const rhs = src.slice(i + 1).trim();
+  if (!lhs || !rhs) return null;
+  return { lhs, rhs };
+}
+
 function problemHtml(text: string) {
   const parts = text.split(/(\$[^$]+\$[?.!,:;]?)/).filter((x) => x !== "");
   return parts
@@ -2393,6 +2439,8 @@ class Board {
         if (a.do === "write" || a.do === "answer") {
           el = div(`film-line ${a.do}`, host);
           el.innerHTML = `<span class="film-math">${tex(a.tex, true)}</span>`;
+          const math = el.querySelector<HTMLElement>(".film-math");
+          if (math) math.dataset.tex = a.tex;
           if (a.note) { note = div("film-note", el); note.innerHTML = tex(a.note); el.classList.add("has-note"); }
         } else if (a.do === "text") {
           el = div(`film-line text ${a.tone ?? "ink"}`, host); el.innerHTML = prose(a.text);
@@ -2439,7 +2487,11 @@ class Board {
     this.cols.push(c);
     return this.cols.length - 1;
   }
-  /** Equals signs in one column per run of lines, the math centered, margin notes in a column to its right. */
+  /**
+   * Equals signs in one column per run of lines, the math centered.
+   * Reason labels share one edge for the whole run: a margin column when it
+   * fits, otherwise the left edge of the equations.
+   */
   layout() {
     this.cols.forEach((c, ci) => {
       // the largest type, up to 84 px, at which the column fits the window it is written in
@@ -2465,12 +2517,22 @@ class Board {
       }
       // A card taller than the window shrinks its type. The padding stays in pixels, so the camera does not have to scale that padding down to a sliver.
       const winH = (this.home[ci] ?? this.L.full).h - 2 * EDGE_PAD;
-      while (size > this.L.minType) {
-        const h = Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight));
-        if (h <= winH) break;
+      const settle = () => {
+        this.fitEquations(ci, room, size);
+        ext = this.measure(ci);
+      };
+      const tooTall = () => Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight)) > winH;
+      while (size > this.L.minType && tooTall()) {
         size -= 4;
         c.style.setProperty("--film-math", `${size}px`);
         ext = this.measure(ci);
+      }
+      // A line that is still wider than the window scales down, and breaks at its equals sign rather than wrapping.
+      settle();
+      while (size > this.L.minType && (tooTall() || ext.r - ext.l > room)) {
+        size -= 4;
+        c.style.setProperty("--film-math", `${size}px`);
+        settle();
       }
       if (ext.r - ext.l > room) {
         const its = this.items.filter((i) => i.col === ci);
@@ -2495,6 +2557,46 @@ class Board {
       this.colX.push(x);
       c.style.left = `${x - COL_W / 2}px`;
     });
+  }
+  /**
+   * A long equation stays one line. It scales down to the readable floor, and
+   * only then breaks, at the equals sign, with the continuation on that sign.
+   */
+  fitEquations(ci: number, room: number, size: number) {
+    const floor = Math.min(1, this.L.minType / size);
+    for (const it of this.items) {
+      if (it.col !== ci) continue;
+      const m = it.el.querySelector<HTMLElement>(".film-math");
+      const src = m?.dataset.tex;
+      if (!m || !src) continue;
+      const authored = /\\\\|\\begin\{/.test(src);
+      const flat = authored ? singleEquation(src) : src;
+      const canonical = flat ?? src;
+      // Restore one line before measuring. A previous pass may have broken this equation.
+      if (m.dataset.split === "1" || (flat && flat !== src && m.dataset.flow !== "1")) {
+        m.innerHTML = tex(canonical, true);
+        if (flat && flat !== src) m.dataset.flow = "1";
+      }
+      delete m.dataset.split;
+      m.classList.remove("film-eq");
+      m.style.removeProperty("--film-fit");
+      const w = m.getBoundingClientRect().width;
+      if (w <= room + 0.5) continue;
+      const fit = room / w;
+      const parts = flat ? splitEquation(flat) : null;
+      // Scale while the type stays readable. Below that, break at the equals sign.
+      if (!parts || fit >= floor - 1e-3) {
+        m.style.setProperty("--film-fit", Math.min(1, fit).toFixed(4));
+        continue;
+      }
+      m.dataset.split = "1";
+      m.classList.add("film-eq");
+      m.style.setProperty("--film-fit", floor.toFixed(4));
+      m.innerHTML = `<span class="film-eq-lhs">${tex(parts.lhs, true)}</span><span class="film-eq-rhs">${tex("=" + parts.rhs, true)}</span>`;
+      const w2 = m.getBoundingClientRect().width;
+      // A side with no further equals still has to fit the window, whole.
+      if (w2 > room + 0.5) m.style.setProperty("--film-fit", (floor * room / w2).toFixed(4));
+    }
   }
   /** Place one column's lines and return how far it reaches left and right of its center. */
   measure(ci: number) {
@@ -2523,14 +2625,16 @@ class Board {
         const minL = Math.min(...left);
         const lefts = left.map((x) => x - minL);
         const B = Math.max(...lefts.map((x, k) => x + widths[k]!));
-        const x0 = center - B / 2;
-        maths.forEach((m, k) => { m.style.transform = `translateX(${x0 + lefts[k]!}px)`; });
         const below = this.cols[ci]!.classList.contains("notes-below");
+        // Below the line, every reason shares the equations' left edge, so a wider label is part of the block.
+        const noteW = below ? Math.max(0, ...rn.map((i) => i.note?.getBoundingClientRect().width ?? 0)) : 0;
+        const block = Math.max(B, noteW);
+        const x0 = center - block / 2;
+        maths.forEach((m, k) => { m.style.transform = `translateX(${x0 + lefts[k]!}px)`; });
         const noteX = x0 + B + gap;
-        // beside: a margin column to the right; below: under the end of its own line
-        rn.forEach((i, k) => { if (i.note) i.note.style.left = `${below ? x0 + lefts[k]! + widths[k]! - i.note.getBoundingClientRect().width : noteX}px`; });
-        l = Math.min(l, -B / 2);
-        r = Math.max(r, B / 2 + (!below && rn.some((i) => i.note) ? gap + Math.max(...rn.map((i) => i.note?.getBoundingClientRect().width ?? 0)) : 0));
+        rn.forEach((i) => { if (i.note) i.note.style.left = `${below ? x0 : noteX}px`; });
+        l = Math.min(l, -block / 2);
+        r = Math.max(r, block / 2 + (!below && rn.some((i) => i.note) ? gap + Math.max(...rn.map((i) => i.note?.getBoundingClientRect().width ?? 0)) : 0));
       }
       for (const it of its) {
         if (it.kind === "write") continue;
