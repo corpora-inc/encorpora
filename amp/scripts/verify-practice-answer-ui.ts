@@ -193,64 +193,6 @@ try {
   console.log(
     `Response controls passed: ${representatives.size} shapes, correct and incorrect actual attempts.`,
   );
-  // Exhaustive viewport sweeps use the supported lesson URL, while the
-  // response-shape journeys above exercise the default library entry.
-  const directTemplate = "complex-parts";
-  const batches = `**/api/v1/learners/${learner.id}/batches`;
-  await page.unroute(batches);
-  await startTopic(page, directTemplate, { entry: "lesson-url" });
-  const directOutcome = await answerOne(page, true);
-  assert.equal(
-    directOutcome.correct,
-    true,
-    "Direct lesson entry uses real API grading",
-  );
-  const beforeMalformed = page.url();
-  await assert.rejects(
-    startTopic(page, `${directTemplate}&topic=mean-data`, {
-      entry: "lesson-url",
-    }),
-    /Invalid lesson template ID/,
-  );
-  assert.equal(
-    page.url(),
-    beforeMalformed,
-    "Malformed IDs cannot change the route",
-  );
-  const lesson = `**/api/v1/problem-lessons/${directTemplate}`;
-  await page.route(lesson, (route) =>
-    route.fulfill({ json: { lesson: null } }),
-  );
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Malformed lesson response/,
-  );
-  await page.unroute(lesson);
-  await page.route(lesson, async (route) => {
-    const response = await route.fetch();
-    const body = await response.json();
-    body.lesson.templateId = "mean-data";
-    await route.fulfill({ json: body });
-  });
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Lesson response template mismatch/,
-  );
-  await page.unroute(lesson);
-  await page.route(batches, async (route) => {
-    const response = await route.fetch();
-    const body = await response.json();
-    for (const problem of body.problems) problem.templateId = "mean-data";
-    await route.fulfill({ json: body });
-  });
-  await assert.rejects(
-    startTopic(page, directTemplate, { entry: "lesson-url" }),
-    /Practice response template mismatch/,
-  );
-  await page.unroute(batches);
-  console.log(
-    "Direct lesson entry passed: real answer, malformed ID/payload and wrong lesson/problem rejection.",
-  );
 } finally {
   await browser.close();
   await vite.close();

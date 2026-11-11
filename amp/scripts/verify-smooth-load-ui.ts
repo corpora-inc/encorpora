@@ -5,28 +5,129 @@
  * frame on a slow phone: a fresh browser, the cache off, the CPU slowed 4x
  * and a slow network.
  *
- * Runs against an AMP seeded with the design preview's synthetic people
- * (scripts/design-personas.ts):
+ * The people are the design preview's synthetic ones (an adult's own
+ * practice three weeks in, a family with its class), seeded by
+ * scripts/design-personas.ts. By default the check starts its own stack, as
+ * CI runs it: the real API (accounts mode) on a fresh schema of
+ * AMP_TEST_DATABASE_URL and Vite in front of it. Or point it at a running,
+ * seeded preview:
  *
- *   npx tsx scripts/verify-smooth-load-ui.ts [--origin http://127.0.0.1:4700]
+ *   AMP_TEST_DATABASE_URL=postgres://…/amp_test npx tsx scripts/verify-smooth-load-ui.ts [--port 4460]
+ *   npx tsx scripts/verify-smooth-load-ui.ts --origin http://127.0.0.1:4700
  *     [--width 390] [--auth-origin <the origin the API trusts>]
  */
 import assert from "node:assert/strict";
-import { chromium, type Browser, type BrowserContextOptions } from "playwright";
+import { spawn } from "node:child_process";
+import { randomBytes, randomUUID } from "node:crypto";
+import { mkdir, open as openFile } from "node:fs/promises";
+import pg from "pg";
+import {
+  chromium as rawChromium,
+  type Browser,
+  type BrowserContextOptions,
+} from "playwright";
+import { createServer } from "vite";
+import { secureChromium } from "../browser-security.mjs";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
+import { migrate } from "./migrate";
+import { assertTestDatabaseTarget } from "./test-database-preflight";
 
+const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
   const at = process.argv.indexOf(`--${name}`);
   return at > 0 ? process.argv[at + 1] : undefined;
 };
-const origin = argument("origin") ?? "http://127.0.0.1:4700";
 const width = Number(argument("width") ?? 390);
+const stack = argument("origin")
+  ? null
+  : await startStack(Number(argument("port") ?? 4460));
+const origin = argument("origin") ?? stack!.origin;
 // The origin the API trusts for sign-in, when this one is a second dev
 // server in front of the same API.
 const authOrigin = argument("auth-origin") ?? origin;
+
+/** The real API on a fresh schema, Vite in front of it, and the two people
+ * seeded through it. */
+async function startStack(webPort: number) {
+  const url = process.env.AMP_TEST_DATABASE_URL;
+  if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
+  assertTestDatabaseTarget(url);
+  const apiPort = webPort + 1;
+  const origin = `http://127.0.0.1:${webPort}`;
+  const schema = `amp_smooth_ui_${randomUUID().replaceAll("-", "")}`;
+  const admin = new pg.Pool({ connectionString: url, max: 1 });
+  await admin.query(`CREATE SCHEMA ${schema}`);
+  const scoped = new URL(url);
+  scoped.searchParams.set("options", `-c search_path=${schema}`);
+  await migrate(scoped.href);
+  await mkdir("artifacts/smooth-load", { recursive: true });
+  const log = await openFile("artifacts/smooth-load/api.log", "w");
+  const api = spawn("npx", ["tsx", "src/server/main.ts"], {
+    env: {
+      ...process.env,
+      AMP_DATABASE_URL: scoped.href,
+      AMP_AUTH_MODE: "accounts",
+      AMP_HOSTED_PILOT_READY: "true",
+      AMP_ACCOUNTS_URL: origin,
+      // A fresh secret each run: nothing here outlives the process.
+      AMP_ACCOUNTS_SECRET: randomBytes(32).toString("hex"),
+      AMP_PORT: String(apiPort),
+      AMP_HOST: "127.0.0.1",
+      NODE_ENV: "development",
+    },
+    stdio: ["ignore", log.fd, log.fd],
+    // Its own process group, so stopping it stops npx's children too and
+    // nothing else.
+    detached: true,
+  });
+  for (let i = 0; ; i++) {
+    const up = await fetch(`http://127.0.0.1:${apiPort}/api/v1/auth-config`)
+      .then((response) => response.ok)
+      .catch(() => false);
+    if (up) break;
+    if (i > 120 || api.exitCode !== null)
+      throw new Error("The API did not start: artifacts/smooth-load/api.log");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+  const vite = await createServer({
+    cacheDir: "node_modules/.vite-smooth-load",
+    server: {
+      host: "127.0.0.1",
+      port: webPort,
+      strictPort: true,
+      proxy: { "/api": `http://127.0.0.1:${apiPort}` },
+    },
+  });
+  await vite.listen();
+  // Asynchronously: Vite answers the seeder's requests from this process,
+  // so this process must keep running while it seeds.
+  const seeder = spawn("npx", ["tsx", "scripts/design-personas.ts"], {
+    env: {
+      ...process.env,
+      AMP_DATABASE_URL: scoped.href,
+      AMP_PREVIEW_ORIGIN: origin,
+      AMP_PERSONAS: "adult-3wk,family",
+    },
+    stdio: ["ignore", "inherit", "inherit"],
+  });
+  const code = await new Promise<number | null>((resolve) =>
+    seeder.on("exit", resolve),
+  );
+  if (code !== 0) throw new Error(`Seeding the two people failed (${code})`);
+  return {
+    origin,
+    async stop() {
+      await vite.close();
+      if (api.pid && api.exitCode === null) process.kill(-api.pid, "SIGTERM");
+      await log.close();
+      await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);
+      await admin.end();
+    },
+  };
+}
 
 type Frame = {
   t: number;
@@ -177,6 +278,7 @@ try {
   }
 } finally {
   await browser.close();
+  await stack?.stop();
 }
 assert.deepEqual(failures, [], failures.join("\n"));
 console.log(`Smooth loads verified at ${width} px.`);

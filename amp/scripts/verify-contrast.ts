@@ -424,7 +424,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   await step("practice-problem", async () => {
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
     await page
-      .getByRole("button", { name: "Practice this", exact: true })
+      .getByRole("link", { name: /^Try this problem type/ })
       .click();
     await page.locator(".problem-stage").waitFor();
     await page.locator("#answer").waitFor();

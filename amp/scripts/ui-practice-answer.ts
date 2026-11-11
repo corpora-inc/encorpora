@@ -310,6 +310,7 @@ export async function answerOne(
   ]);
   assert.equal(outcome.status(), 200, await outcome.text());
   const result = await outcome.json();
+  const sent = outcome.request().postData();
   assert.equal(
     result.problemId,
     problem.id,
@@ -318,7 +319,7 @@ export async function answerOne(
   assert.equal(
     result.correct,
     correct,
-    `${template}/${problem.seed}: actual attempt grading`,
+    `${template}/${problem.seed}: actual attempt grading (sent ${sent})`,
   );
   servedProblems.get(page)!.delete(problem.id);
   await page.locator(".next-action").waitFor();

@@ -164,15 +164,15 @@ try {
   await chooseLearner(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
   await page
-    .getByRole("button", { name: "Practice this", exact: true })
+    .getByRole("link", { name: /^Try this problem type/ })
     .waitFor();
   await page.reload();
   await page
-    .getByRole("button", { name: "Practice this", exact: true })
+    .getByRole("link", { name: /^Try this problem type/ })
     .waitFor();
   assert.ok(page.url().includes("topic=mean-data"));
   await page
-    .getByRole("button", { name: "Practice this", exact: true })
+    .getByRole("link", { name: /^Try this problem type/ })
     .click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
