@@ -10,6 +10,7 @@ import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import {
   DEFAULT_GRADE_POLICY,
+  letterFor,
   rangeLetters,
   shownComponents,
   suggestGrade,
@@ -35,6 +36,14 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { startLevelSql } from "./start-level.js";
+import { applyCurve } from "./curve-grades.js";
+import {
+  defaultCurve,
+  gradeCurveSchema,
+  letterFamily,
+  type CurveLetter,
+  type GradeCurve,
+} from "./grade-curve.js";
 import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 
 type Database = Pick<PoolClient, "query">;
@@ -450,7 +459,7 @@ export type ComputedStudent = {
 export async function computeTerm(
   db: Database,
   context: ClassContext,
-  term: Pick<Term, "startsOn" | "endsOn">,
+  term: Pick<Term, "id" | "startsOn" | "endsOn">,
   target: WeeklyTarget,
   policy: GradePolicy = DEFAULT_GRADE_POLICY,
 ): Promise<ComputedStudent[]> {
@@ -460,11 +469,12 @@ export async function computeTerm(
   };
   const students = await termRoster(db, context.id, range);
   if (!students.length) return [];
-  const [year, activity, level, objectives] = await Promise.all([
+  const [year, activity, level, objectives, curve] = await Promise.all([
     yearFor(db, context.sessionId),
     activityBySpan(db, students),
     levelsBySpan(db, students),
     objectivesBySpan(db, students, policy),
+    curveFor(db, context.id, term.id),
   ]);
   const course = courseBand(context.courseBands);
   const counted = new Map(
@@ -504,14 +514,147 @@ export async function computeTerm(
           .filter((input) => input.activity.daysActive > 0)
           .map((input) => weeklyMinutes(input, policy)),
       );
-  return students.map((student, index) => ({
+  const graded = students.map((student, index) => {
+    const input = {
+      ...inputs[index]!,
+      classMedianWeeklyMinutes: median,
+      factsOnly,
+    };
+    return { student, input, suggestion: suggestGrade(input, policy) };
+  });
+  // The teacher's curve, where there is one and a letter to give.
+  const curved =
+    curve && !factsOnly
+      ? applyCurve(
+          graded.map(({ student, input, suggestion }) => ({
+            id: student.id,
+            input,
+            suggestion,
+          })),
+          curve,
+          policy,
+        )
+      : null;
+  return graded.map(({ student, suggestion }) => ({
     student,
-    suggestion: suggestGrade(
-      { ...inputs[index]!, classMedianWeeklyMinutes: median, factsOnly },
-      policy,
-    ),
+    suggestion: curved?.get(student.id) ?? suggestion,
     objectives: counted.get(student.id)!,
   }));
+}
+
+/** The class-scope key holding the teacher's curve for each term, by term id.
+ * It sits beside the settings in `amp_scope_settings`, as `leftOff` does;
+ * `resolveSettings` only reads its own keys. A closed term's curve is frozen
+ * in its grades, so this one is only read while a term is open. */
+export const GRADE_CURVES_KEY = "gradeCurves";
+/** The curve a teacher set for this class and term, or null. A stored value the
+ * schema no longer accepts is logged and ignored, so the standard scale stands. */
+export async function curveFor(
+  db: Database,
+  classId: string,
+  termId: string,
+): Promise<GradeCurve | null> {
+  const stored = (
+    await db.query(
+      `SELECT "values"->'${GRADE_CURVES_KEY}'->$2 AS curve FROM amp_scope_settings
+       WHERE scope_kind='class' AND scope_id=$1`,
+      [classId, termId],
+    )
+  ).rows[0]?.curve;
+  if (stored === null || stored === undefined) return null;
+  const parsed = gradeCurveSchema.safeParse(stored);
+  if (!parsed.success) {
+    console.error("Ignoring a stored grade curve the schema refuses", {
+      classId,
+      termId,
+      issues: parsed.error.issues,
+    });
+    return null;
+  }
+  return parsed.data;
+}
+
+/** A starting curve from the class's own work: each student with a range, at
+ * its letter on the standard scale, for the whole roster. */
+export function proposedCurve(rows: readonly GradebookRow[]): GradeCurve {
+  const letters = rows.flatMap(({ suggestion }) => {
+    const range = suggestion.curve?.standard ?? suggestion;
+    if (suggestion.status !== "ready" || range.low === null) return [];
+    const family = letterFamily(
+      letterFor(Math.round((range.low + range.high!) / 2)),
+    );
+    return family ? [family] : [];
+  });
+  return defaultCurve(letters as CurveLetter[], Math.max(1, rows.length));
+}
+/** The curve a term's grades used: what was frozen with a closed term, else
+ * what is set now. */
+export async function termCurve(
+  db: Database,
+  context: Pick<ClassContext, "id">,
+  term: Term,
+  rows: readonly GradebookRow[],
+): Promise<GradeCurve | null> {
+  if (term.state === "closed")
+    return rows.find((row) => row.suggestion.curve)?.suggestion.curve?.teacher ?? null;
+  if (term.state === "upcoming") return null;
+  return curveFor(db, context.id, term.id);
+}
+
+/** Sets or clears the teacher's curve for one open term. Closing the term
+ * freezes it with the grades, so a closed term refuses a change. */
+export async function setGradeCurve(
+  repository: SchoolRepository,
+  context: ClassContext,
+  term: Term,
+  curve: GradeCurve | null,
+  actorPersonId: string | null,
+): Promise<{ curve: GradeCurve | null }> {
+  if (term.state === "upcoming") throw new SchoolError(404, "not_found");
+  if (term.state === "closed") throw new SchoolError(409, "term_closed");
+  return repository.transaction(async (client) => {
+    await lockTerm(client, context.id, term.id);
+    await assertTermOpen(client, context.id, term.id);
+    const before =
+      (
+        await client.query(
+          `SELECT "values"->'${GRADE_CURVES_KEY}'->$2 AS curve FROM amp_scope_settings
+           WHERE scope_kind='class' AND scope_id=$1 FOR UPDATE`,
+          [context.id, term.id],
+        )
+      ).rows[0]?.curve ?? null;
+    if (JSON.stringify(before) === JSON.stringify(curve)) return { curve };
+    if (curve)
+      await client.query(
+        `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values")
+         VALUES('class',$1,jsonb_build_object('${GRADE_CURVES_KEY}',jsonb_build_object($2::text,$3::jsonb)))
+         ON CONFLICT(scope_kind,scope_id) DO UPDATE
+         SET "values"=jsonb_set(amp_scope_settings."values",'{${GRADE_CURVES_KEY}}',
+           COALESCE(amp_scope_settings."values"->'${GRADE_CURVES_KEY}','{}'::jsonb)||jsonb_build_object($2::text,$3::jsonb)),
+           updated_at=now()`,
+        [context.id, term.id, JSON.stringify(curve)],
+      );
+    else
+      await client.query(
+        `UPDATE amp_scope_settings
+         SET "values"=jsonb_set("values",'{${GRADE_CURVES_KEY}}',COALESCE("values"->'${GRADE_CURVES_KEY}','{}'::jsonb)-$2::text),
+           updated_at=now()
+         WHERE scope_kind='class' AND scope_id=$1`,
+        [context.id, term.id],
+      );
+    await recordEvent(client, {
+      orgId: context.orgId,
+      actorPersonId,
+      action: "grade.curve-set",
+      targetKind: "class",
+      targetId: context.id,
+      detail: {
+        before: { curve: before },
+        after: { curve, sessionId: term.id },
+      },
+    });
+    return { curve };
+  });
 }
 
 export const toSuggestionResource = (
@@ -525,6 +668,14 @@ export const toSuggestionResource = (
     id,
     score,
   })),
+  curve: suggestion.curve
+    ? {
+        ranked: suggestion.curve.ranked,
+        rankLow: suggestion.curve.rankLow,
+        rankHigh: suggestion.curve.rankHigh,
+        letters: suggestion.curve.letters,
+      }
+    : null,
 });
 
 export type GradebookRow = {
@@ -711,7 +862,10 @@ export async function closeTerm(
         after: {
           sessionId: term.id,
           students: computed.length,
-          policyVersion: policy.version,
+          // A curved term is v3; its curve is frozen inside each grade.
+          policyVersion:
+            computed.find(({ suggestion }) => suggestion.curve)?.suggestion
+              .policyVersion ?? policy.version,
         },
       },
     });

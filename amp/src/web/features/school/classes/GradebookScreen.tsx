@@ -268,6 +268,7 @@ function ExampleGrade() {
             high: 90,
             letters: "B to A−",
             components: [],
+            curve: null,
           }}
         />
       </div>

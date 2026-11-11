@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import type { Allocation, GradeCurve } from "./grade-curve.js";
 
 /**
  * The suggested grade: a range from four components, with fixed defaults. The
@@ -354,6 +355,21 @@ export type GradeComponent =
       reviews: number;
       reviewsRight: number;
     };
+/** What a teacher's curve made of a suggestion (`curve-grades.ts`), frozen with
+ * it when the term closes. */
+export type CurveResult = {
+  /** The curve as the teacher set it. */
+  teacher: GradeCurve;
+  /** Students ranked: those with enough work. */
+  ranked: number;
+  /** The 80% interval of this student's place, 1 the highest composite. */
+  rankLow: number;
+  rankHigh: number;
+  /** The share of draws that gave each letter. */
+  letters: Allocation;
+  /** The range on the standard scale, which the curve replaced. */
+  standard: { low: number; high: number };
+};
 export type GradeSuggestion = {
   /** "facts-only": enough work, and no letter (`GradeInput.factsOnly`). */
   status: "ready" | "not-enough-work" | "facts-only";
@@ -373,6 +389,8 @@ export type GradeSuggestion = {
     endLevel: Estimate | null;
   };
   policyVersion: string;
+  /** Present when the teacher's curve set the range. */
+  curve?: CurveResult;
 };
 
 export function letterFor(
@@ -521,6 +539,56 @@ const hasEnoughWork = (input: GradeInput, policy: GradePolicy) => {
       minimumMinutes
   );
 };
+
+/** The share of spaced reviews right on its own, as a Beta distribution over
+ * what the student would get right: the same prior the retention score uses,
+ * so its mean is that score. Null where reviews don't count yet. */
+export function retentionPosterior(
+  input: Pick<GradeInput, "activity">,
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): { right: number; wrong: number } | null {
+  const { review, reviewIndependent } = input.activity;
+  const { priorShare, priorReviews, minimumReviews } = policy.retention;
+  if (review === 0 || review < minimumReviews) return null;
+  return {
+    right: reviewIndependent + priorShare * priorReviews,
+    wrong: review - reviewIndependent + (1 - priorShare) * priorReviews,
+  };
+}
+
+/** One draw of what a suggestion is uncertain about: the levels, and the share
+ * of reviews right. Everything else is counted, not estimated. */
+export type CompositeDraw = {
+  start: StudentLevel | null;
+  end: StudentLevel;
+  /** Null where reviews don't count, as in the suggestion. */
+  retentionShare: number | null;
+};
+/** The composite for one draw, with the suggestion's own scorers and weights,
+ * so a curve ranks exactly what the standard scale scores. */
+export function compositeScore(
+  input: GradeInput,
+  draw: CompositeDraw,
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): number {
+  const { weights } = policy;
+  const course = courseScore(input, draw.end, policy).score;
+  const growth = growthScore(
+    { ...input, start: draw.start, end: draw.end },
+    policy,
+  ).score;
+  const practice = practiceScore(input, policy).score;
+  const parts = [
+    { weight: weights.course, score: course },
+    { weight: weights.growth, score: growth },
+    { weight: weights.practice, score: practice },
+    ...(draw.retentionShare === null
+      ? []
+      : [{ weight: weights.retention, score: 100 * draw.retentionShare }]),
+  ];
+  const carried = parts.reduce((sum, part) => sum + part.weight, 0);
+  return parts.reduce((sum, part) => sum + part.weight * part.score, 0) / carried;
+}
 
 /** How wide the range is: from how sure the level estimates are, and how much
  * work there is to go on. Neither reads a count of attempts. */

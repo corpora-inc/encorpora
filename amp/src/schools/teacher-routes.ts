@@ -24,6 +24,7 @@ import {
   classContext,
   gradebookRows,
   setFinalGrade,
+  setGradeCurve,
   setWeeklyTarget,
   termById,
   termRoster,
@@ -34,6 +35,7 @@ import {
   closeTermSchema,
   evidenceQuerySchema,
   finalGradeSchema,
+  gradeCurveWriteSchema,
   gradebookExportSchema,
   gradebookQuerySchema,
   oneRosterExportSchema,
@@ -130,6 +132,29 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
       );
       const term = termById(await termsFor(pool, context), termId);
       return closeTerm(repository, context, term, actorPerson(actor, target));
+    },
+  });
+  define({
+    method: "POST",
+    url: `${CLASS}/gradebook/curve`,
+    action: "grades.write",
+    target: classParam,
+    bodyLimit: 2048,
+    handler: async ({ request, actor, target, pool, repository, services }) => {
+      const body = gradeCurveWriteSchema.parse(request.body);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
+      const term = termById(await termsFor(pool, context), body.term);
+      return setGradeCurve(
+        repository,
+        context,
+        term,
+        body.curve,
+        actorPerson(actor, target),
+      );
     },
   });
   define({
