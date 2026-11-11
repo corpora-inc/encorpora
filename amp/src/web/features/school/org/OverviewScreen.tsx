@@ -384,18 +384,20 @@ function Seats({
  * weekly target, then whether more practice went with more growth. Its own
  * read; until it lands, a block the size of what it will draw. */
 function Practice({
+  part,
   orgId,
   rows,
   measure,
-  onMeasure,
   sort,
   dots,
   onDots,
 }: {
+  /** "map": classes by week, under Weekly practice and governed by its
+   * toggle. "dose": practice against growth, a section of its own. */
+  part: "map" | "dose";
   orgId: string;
   rows: number;
   measure: TrendMeasure;
-  onMeasure: (measure: TrendMeasure) => void;
   sort: unknown;
   dots: DoseDots;
   onDots: (dots: DoseDots) => void;
@@ -406,24 +408,13 @@ function Practice({
   if (rows === 0) return null;
   const target =
     summarize(data?.rows.map((row) => row.target) ?? [])?.median ?? 60;
-  return (
-    <>
-      <section aria-labelledby="overview-practice">
-        <div className={styles.practiceHead}>
-          <h2 id="overview-practice" className={styles.sectionTitle}>
-            Practice by week
-          </h2>
-          <div className={styles.trendToggle}>
-            <Segmented
-              label="Show"
-              options={MEASURES}
-              value={measure}
-              compact
-              dense
-              onChange={onMeasure}
-            />
-          </div>
-        </div>
+  if (part === "map")
+    return (
+      <div className={styles.practiceMapBlock}>
+        {/* The Weekly practice toggle above governs this map as well. */}
+        <h3 id="overview-practice" className={styles.sectionTitle}>
+          Practice by week
+        </h3>
         {data ? (
           <PracticeMap
             data={data}
@@ -433,7 +424,10 @@ function Practice({
           />
         ) : practice.isError ? (
           <div className={styles.practiceFailed} role="alert">
-            <p>The practice map didn’t load. Check your connection, then try again.</p>
+            <p>
+              The practice map didn’t load. Check your connection, then try
+              again.
+            </p>
             <Button variant="secondary" onClick={() => void practice.refetch()}>
               Try again
             </Button>
@@ -445,29 +439,25 @@ function Practice({
             aria-busy="true"
           />
         )}
-      </section>
-      <section aria-labelledby="overview-dose">
-        <h2 id="overview-dose" className={styles.sectionTitle}>
-          Practice and growth
-        </h2>
-        {data ? (
-          <DoseResponse
-            data={data}
-            dots={dots}
-            onDots={onDots}
-            target={target}
+      </div>
+    );
+  return (
+    <section aria-labelledby="overview-dose">
+      <h2 id="overview-dose" className={styles.sectionTitle}>
+        Practice and growth
+      </h2>
+      {data ? (
+        <DoseResponse data={data} dots={dots} onDots={onDots} target={target} />
+      ) : (
+        !practice.isError && (
+          <div
+            className={styles.practiceSkeleton}
+            style={{ height: 420 }}
+            aria-busy="true"
           />
-        ) : (
-          !practice.isError && (
-            <div
-              className={styles.practiceSkeleton}
-              style={{ height: 420 }}
-              aria-busy="true"
-            />
-          )
-        )}
-      </section>
-    </>
+        )
+      )}
+    </section>
   );
 }
 
@@ -597,6 +587,15 @@ export function OverviewScreen() {
                     today={view.today}
                     measure={measure}
                   />
+                  <Practice
+                    part="map"
+                    orgId={orgId}
+                    rows={(view.classes ?? view.schools ?? []).length}
+                    measure={measure}
+                    sort={search.rows}
+                    dots={dots}
+                    onDots={() => undefined}
+                  />
                 </section>
                 {view.attention.length > 0 && (
                   <section
@@ -617,10 +616,10 @@ export function OverviewScreen() {
                 />
               </div>
               <Practice
+                part="dose"
                 orgId={orgId}
                 rows={(view.classes ?? view.schools ?? []).length}
                 measure={measure}
-                onMeasure={setMeasure}
                 sort={search.rows}
                 dots={dots}
                 onDots={(next) =>

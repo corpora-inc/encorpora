@@ -348,6 +348,8 @@ export function CurveSheet({
             ? curveIssueText(issues[0]!)
             : `The fewest add to ${lows} and the most to ${highs}, so all ${size} fit.`}
         </p>
+        {/* One row of three boxed actions: on a narrow sheet they wrap, and
+            every row starts at the same left edge. */}
         <div className={styles.actions}>
           <Button
             variant="primary"
@@ -359,7 +361,7 @@ export function CurveSheet({
           </Button>
           {proposed && !sameCurve(draft, proposed) && (
             <Button
-              variant="quiet"
+              variant="secondary"
               disabled={save.isPending}
               onClick={() => setDraft(proposed)}
             >
@@ -368,7 +370,7 @@ export function CurveSheet({
           )}
           {own && (
             <Button
-              variant="quiet"
+              variant="secondary"
               disabled={save.isPending}
               onClick={() =>
                 write(null, `${term.name} uses the standard scale again.`)

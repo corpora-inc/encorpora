@@ -65,8 +65,10 @@
   .read > .trend:has(+ .standingSection) {
     grid-column: 1 / -1;
   }
+  /* The figures sit at the top of the standing row, beside its title,
+     never floating at the bottom with an empty column above them. */
   .read > .standingFacts {
-    align-self: end;
+    align-self: start;
     margin-top: 0;
   }
   .read > .standingFacts > dl {
@@ -1163,14 +1165,38 @@ button.danger:disabled {
   font-weight: 600;
   fill: var(--color-on-surface);
 }
-[data-quarter="1"] > .doseQuarter { stroke: var(--color-dose-1); }
-[data-quarter="2"] > .doseQuarter { stroke: var(--color-dose-2); }
-[data-quarter="3"] > .doseQuarter { stroke: var(--color-dose-3); }
-[data-quarter="4"] > .doseQuarter { stroke: var(--color-dose-4); }
-[data-quarter="1"] > .doseQuarterDot, .doseSwatch[data-quarter="1"] { fill: var(--color-dose-1); background: var(--color-dose-1); }
-[data-quarter="2"] > .doseQuarterDot, .doseSwatch[data-quarter="2"] { fill: var(--color-dose-2); background: var(--color-dose-2); }
-[data-quarter="3"] > .doseQuarterDot, .doseSwatch[data-quarter="3"] { fill: var(--color-dose-3); background: var(--color-dose-3); }
-[data-quarter="4"] > .doseQuarterDot, .doseSwatch[data-quarter="4"] { fill: var(--color-dose-4); background: var(--color-dose-4); }
+[data-quarter="1"] > .doseQuarter {
+  stroke: var(--color-dose-1);
+}
+[data-quarter="2"] > .doseQuarter {
+  stroke: var(--color-dose-2);
+}
+[data-quarter="3"] > .doseQuarter {
+  stroke: var(--color-dose-3);
+}
+[data-quarter="4"] > .doseQuarter {
+  stroke: var(--color-dose-4);
+}
+[data-quarter="1"] > .doseQuarterDot,
+.doseSwatch[data-quarter="1"] {
+  fill: var(--color-dose-1);
+  background: var(--color-dose-1);
+}
+[data-quarter="2"] > .doseQuarterDot,
+.doseSwatch[data-quarter="2"] {
+  fill: var(--color-dose-2);
+  background: var(--color-dose-2);
+}
+[data-quarter="3"] > .doseQuarterDot,
+.doseSwatch[data-quarter="3"] {
+  fill: var(--color-dose-3);
+  background: var(--color-dose-3);
+}
+[data-quarter="4"] > .doseQuarterDot,
+.doseSwatch[data-quarter="4"] {
+  fill: var(--color-dose-4);
+  background: var(--color-dose-4);
+}
 .doseCaption {
   display: grid;
   gap: var(--space-1);
@@ -1212,4 +1238,12 @@ button.danger:disabled {
   align-items: center;
   gap: var(--space-3);
   color: var(--color-muted-text);
+}
+/* Practice by week sits inside Weekly practice, under its trend: one
+   Minutes/Problems toggle governs both. */
+.practiceMapBlock {
+  margin-top: var(--space-6);
+}
+.practiceMapBlock > h3 {
+  margin-bottom: var(--space-3);
 }
