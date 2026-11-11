@@ -176,15 +176,26 @@ export async function preparePracticeAnswer(
               .nth(fieldIndex);
             if (field.kind === "choice") {
               const bank = schema.banks.find((bank) => bank.id === field.bank)!;
+              const at = bank.options.findIndex(
+                (option) => option.id === values[fieldIndex],
+              );
               await cell.locator(".work-choice").click();
               await page
                 .locator('.work-menu [role="menuitemradio"]')
-                .nth(
-                  bank.options.findIndex(
-                    (option) => option.id === values[fieldIndex],
-                  ),
-                )
+                .nth(at)
                 .click();
+              // The blank shows the option picked, and only that one.
+              const shown = cell.locator(
+                ".work-choice-value:not(.work-choice-placeholder)",
+              );
+              if ((await shown.nth(at).getAttribute("data-shown")) === null) {
+                await page.screenshot({
+                  path: "artifacts/work-choice-mismatch.png",
+                });
+                assert.fail(
+                  `Row ${index + 1}, field ${fieldIndex + 1}: picked ${values[fieldIndex]}, the blank shows option ${await shown.evaluateAll((spans) => spans.findIndex((s) => s.hasAttribute("data-shown")))}`,
+                );
+              }
             } else {
               await cell.locator(".work-input").fill(values[fieldIndex]!);
             }
