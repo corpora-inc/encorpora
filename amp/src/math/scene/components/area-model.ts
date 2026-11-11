@@ -157,19 +157,21 @@ registerComponent("areaModel", {
         y -= h;
         for (const [i, w] of across.entries()) {
           const text = num(c.across[i]! * c.down[j]!);
-          const size = (["md", "sm"] as const).find((sz) =>
-            textClearsBox(text, "math", sz, w * s, h * s, true),
-          );
-          if (size)
-            prims.push({
-              type: "text",
-              id: `product.${i}.${j}`,
-              at: [x + w / 2, y + h / 2],
-              text,
-              derived: c.products !== "shown",
-              bold: true,
-              size,
-            });
+          // A part too narrow for the margin still shows its product, small:
+          // the walkthrough points at it.
+          const size =
+            (["md", "sm"] as const).find((sz) =>
+              textClearsBox(text, "math", sz, w * s, h * s, true),
+            ) ?? "sm";
+          prims.push({
+            type: "text",
+            id: `product.${i}.${j}`,
+            at: [x + w / 2, y + h / 2],
+            text,
+            derived: c.products !== "shown",
+            bold: true,
+            size,
+          });
           x += w;
         }
       }
