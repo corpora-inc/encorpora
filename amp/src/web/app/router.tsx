@@ -1387,6 +1387,21 @@ export const router = createRouter({
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// A control that only changes the address's search (a toggle, a segmented
+// control, a sort, a filter, a year) keeps the page where it is: the reader
+// stays on what they were looking at. Going to another screen starts at its
+// top, as before, and a navigation that says otherwise still wins. One rule
+// for every link and navigate(), at the one place they all commit.
+{
+  const commit = router.commitLocation;
+  router.commitLocation = (next) =>
+    commit({
+      ...next,
+      resetScroll:
+        next.resetScroll ??
+        (next.pathname === router.state.location.pathname ? false : undefined),
+    });
+}
 /** Learning screens, which a practice profile never makes a place. */
 const PROFILE_PRACTICE_PATHS = [
   "/practice",
