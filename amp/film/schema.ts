@@ -475,8 +475,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   }).strict(),
   /** Things go to another group and take its next free places: joining, taking away. Several groups in `to` are dealt to in turn: sharing. */
   z.object({ do: z.literal("send"), target: targets, to: z.union([name, z.array(name).min(2)]), ...timing }).strict(),
-  /** Things go away one by one. */
-  z.object({ do: z.literal("leave"), target: targets, ...timing }).strict(),
+  /** Things go away one by one. With `toward`, each drifts that way as it fades (ducks fly off upward) instead of fading where it sits. */
+  z.object({ do: z.literal("leave"), target: targets, toward: z.enum(["n", "s", "e", "w", "ne", "nw", "se", "sw"]).optional(), ...timing }).strict(),
   /** An app figure (figure {example: true} or {scene: ...}): scene timeline actions on its part names. */
   z.object({ do: z.literal("scene"), actions: z.array(sceneActionSchema).min(1), ...timing }).strict(),
   // ---- the work column
