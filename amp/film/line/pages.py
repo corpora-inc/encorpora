@@ -75,6 +75,10 @@ def line_page(config):
 
 def queue_page(config):
     path = queue_location(config)
+    data = Path(config['live_data'])
+    if not (data/'queue.json').exists():
+        from providers import write_json
+        write_json(data/'queue.json', [])
     live = Path(config['live_data']).parent
     urls = {'queue': relative_url(Path(config['live_data'])/'queue.json', path.parent),
             'reviews': relative_url(live/'review', path.parent),
@@ -174,7 +178,7 @@ def board(config):
             'Author': html.escape(row['author']),
         }
         money = display(row['dollars'], True)
-        if row['dollars'] is None and number(row['partial_dollars']):
+        if row['dollars'] is None and number(row['partial_dollars']) and row['partial_dollars'] > 0:
             money = 'At least '+display(row['partial_dollars'], True)+' (incomplete)'
         cells['Usage'] = money+' model dollars; voice dollars unavailable'
         for key in ('tokens', 'characters', 'credits', 'reserved', 'minutes'):

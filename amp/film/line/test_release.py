@@ -85,3 +85,18 @@ def test_export_alone_never_lists_a_film(setup, monkeypatch):
     assert read_json(data/'index.json') == [{'id': 'other--film'}]
     assert not (data/'queue.json').exists() and not (data.parent/'line.html').exists()
     assert not Path(config['queue_page']).exists()
+
+
+def test_release_order_and_edition_scores_are_stable(setup):
+    config, args, root, local, workspace = exported(setup)
+    first = args.film
+    release_film(config, first, 'Grade 8')
+    args.film = 'example--second'
+    exported(setup)
+    release_film(config, args.film, 'Grade 8')
+    release_film(config, first, 'Grade 8')
+    data = Path(config['live_data'])
+    assert [r['id'] for r in read_json(data/'queue.json')] == [first, args.film]
+    unrelease_film(config, first)
+    release_film(config, first, 'Grade 8')
+    assert [r['id'] for r in read_json(data/'queue.json')] == [args.film, first]

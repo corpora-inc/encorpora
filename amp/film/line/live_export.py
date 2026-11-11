@@ -92,6 +92,7 @@ def export_worker(config, row, workspace):
         raise RuntimeError('Exported voices differ from the production assignment')
     payload = player_copy(emitted)
     index_row = next(r for r in read_json(stage/'index.json') if r['id']==row['id'])
+    data.mkdir(parents=True, exist_ok=True)
     destination = data/(row['id']+'.json')
     with shared_lock(config):
         existing = read_json(destination)
