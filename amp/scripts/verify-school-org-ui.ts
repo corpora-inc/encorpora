@@ -536,7 +536,9 @@ async function sweep(
     releasePlaces!();
     const readyDrawer = page.getByRole("dialog");
     await readyDrawer.waitFor();
-    await readyDrawer.getByRole("link", { name: /^Class,/ }).waitFor();
+    // The drawer names the place on screen: a school shows its School item,
+    // never a class (docs/design/ia.md).
+    await readyDrawer.getByRole("link", { name: /^School,/ }).waitFor();
     await readyDrawer.getByRole("button", { name: /switch place$/ }).click();
     await settled(page);
     const menuBefore = await boxes(page, '[role="menu"]');
