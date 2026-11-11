@@ -46,6 +46,7 @@ import {
   perDay,
   perSkill,
   rangeSchema,
+  HEARTBEAT_BODY_LIMIT,
   recordHeartbeat,
   studentRoster,
   totals,
@@ -267,7 +268,7 @@ export async function registerSchoolRoutes(
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
-      { bodyLimit: 4096 },
+      { bodyLimit: HEARTBEAT_BODY_LIMIT },
       async (request, reply) => {
         const token = studentBearer(request);
         if (

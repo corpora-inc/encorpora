@@ -8,12 +8,15 @@ import {
 } from "../learning/free-allowance.js";
 import { FamilyError } from "../family/contracts.js";
 import {
+  CREDITED_SKILL,
   HEARTBEAT_MAX_MS,
   HEARTBEAT_SLACK_MS,
+  heartbeatDeltas,
   heartbeatSchema,
   perDay,
   perSkill,
 } from "../schools/evidence.js";
+import { helpEventsCte, helpRows } from "../schools/help-events.js";
 import { readProgress, shiftDay } from "../schools/teacher-reads.js";
 import { skillStrandOf, skillTitleOf } from "../schools/term-grades.js";
 import { timezone } from "../schools/contracts.js";
@@ -228,7 +231,7 @@ export async function recordAdultActivity(
   accountId: string,
   body: unknown,
 ): Promise<boolean> {
-  const { deltas } = heartbeatSchema.parse(body);
+  const { deltas, events } = heartbeatSchema.parse(body);
   const { rows } = await pool.query(
     `WITH live AS (
        SELECT l.id AS learner_id,COALESCE(l.timezone,'America/New_York') AS timezone,a.seen_at AS previous
@@ -239,12 +242,12 @@ export async function recordAdultActivity(
        SELECT LEAST($2::bigint,
          floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$3::bigint) AS ms FROM live
      ), raw AS (
-       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,(d->>'activeMs')::bigint AS ms
+       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,d->>'skillId' AS skill_id,(d->>'activeMs')::bigint AS ms
        FROM jsonb_array_elements($1::jsonb) d
      ), scale AS (
        SELECT LEAST(1,room.ms::numeric/NULLIF((SELECT sum(ms) FROM raw),0)) AS factor FROM room
      ), credited AS (
-       SELECT raw.surface,COALESCE(i.content->'public'->>'skillId','') AS skill_id,
+       SELECT raw.surface,${CREDITED_SKILL} AS skill_id,
          floor(raw.ms*COALESCE(scale.factor,1))::bigint AS ms
        FROM raw CROSS JOIN scale CROSS JOIN live
        LEFT JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id
@@ -255,9 +258,15 @@ export async function recordAdultActivity(
        ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
      ), touched AS (
        UPDATE amp_adult_activity a SET seen_at=now() FROM live WHERE a.learner_id=live.learner_id
-     )
+     ), ${helpEventsCte(5)}
      SELECT count(*)::int AS live FROM live`,
-    [JSON.stringify(deltas), HEARTBEAT_MAX_MS, HEARTBEAT_SLACK_MS, accountId],
+    [
+      heartbeatDeltas(deltas),
+      HEARTBEAT_MAX_MS,
+      HEARTBEAT_SLACK_MS,
+      accountId,
+      helpRows(events),
+    ],
   );
   return rows[0].live === 1;
 }
