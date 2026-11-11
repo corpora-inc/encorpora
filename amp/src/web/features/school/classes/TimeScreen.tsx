@@ -171,9 +171,11 @@ function Heat({
           : `week of ${shortDay(column.from)}`;
         const future = column.from > today;
         const before =
-          (row.from && column.to < row.from) || (row.to && column.from > row.to);
+          (row.from && column.to < row.from) ||
+          (row.to && column.from > row.to);
         const off = isDay && isWeekend(column.from) && amount === 0;
-        const scale = midpoint === null ? null : isDay ? midpoint / 5 : midpoint;
+        const scale =
+          midpoint === null ? null : isDay ? midpoint / 5 : midpoint;
         return (
           <HeatCell
             key={column.from}
@@ -183,10 +185,26 @@ function Heat({
             midpoint={scale}
             tip={
               future
-                ? `${row.first}, ${when}: still to come`
+                ? { title: `${row.first} · ${when}`, note: "Still to come" }
                 : before
-                  ? `${row.first}, ${when}: not in this class`
-                  : `${row.first}, ${when}${!isDay && column.from === current ? ", so far" : ""}: ${Math.round(amount)} ${unitWord(measure, Math.round(amount))}${scale ? ` (${measure === "minutes" ? "target" : "midpoint"} ${Math.round(scale)})` : ""}`
+                  ? {
+                      title: `${row.first} · ${when}`,
+                      note: "Not in this class",
+                    }
+                  : {
+                      title: `${row.first} · ${when}${!isDay && column.from === current ? ", so far" : ""}`,
+                      figure: String(Math.round(amount)),
+                      unit: unitWord(measure, Math.round(amount)),
+                      ...(scale
+                        ? {
+                            share: {
+                              done: Math.min(amount, scale),
+                              of: scale,
+                              label: `${measure === "minutes" ? "Target" : "Midpoint"} ${Math.round(scale)}`,
+                            },
+                          }
+                        : {}),
+                    }
             }
             style={
               isDay && isMonday(column.from)
@@ -202,7 +220,9 @@ function Heat({
 
 /** Four made-up weeks of one learner, for the empty state: what the grid
  * looks like once there's work. Positions on the scale, -1 to 1. */
-const EXAMPLE_WEEKS = [0.2, 0.6, 0.9, 1.1, 1.0, 0.5, 1.4, 1.2, 0.8, 1.6, 1.3, 1.1];
+const EXAMPLE_WEEKS = [
+  0.2, 0.6, 0.9, 1.1, 1.0, 0.5, 1.4, 1.2, 0.8, 1.6, 1.3, 1.1,
+];
 function ExampleTime() {
   return (
     <div className={styles.exampleTime}>
@@ -215,11 +235,7 @@ function ExampleTime() {
         style={{ "--heat-columns": EXAMPLE_WEEKS.length } as CSSProperties}
       >
         {EXAMPLE_WEEKS.map((share, index) => (
-          <HeatCell
-            key={index}
-            value={share * 60}
-            midpoint={60}
-          />
+          <HeatCell key={index} value={share * 60} midpoint={60} />
         ))}
       </span>
       <HeatLegend
@@ -301,8 +317,7 @@ export function TimeScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/time" });
   const session = useStaffSession();
   const [search, set] = useClassSearch();
-  const period =
-    timePeriods.find((entry) => entry === search.period) ?? "term";
+  const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
   const family =
@@ -545,7 +560,9 @@ export function TimeScreen() {
                   <StatTile
                     value={`${working.length} of ${data.students.length}`}
                     label={
-                      family ? "children with active time" : "students with active time"
+                      family
+                        ? "children with active time"
+                        : "students with active time"
                     }
                   />
                 </StatRow>
@@ -569,8 +586,7 @@ export function TimeScreen() {
                     unit={measure === "minutes" ? "minutes" : "problems"}
                     current={!isDay}
                     empty={data.students.some(
-                      (row) =>
-                        (row.from ?? data.range.from) > data.range.from,
+                      (row) => (row.from ?? data.range.from) > data.range.from,
                     )}
                   />
                 )}
@@ -583,7 +599,9 @@ export function TimeScreen() {
                     options={MEASURES}
                     onChange={(value) =>
                       set(
-                        { chart: value === "problems" ? "problems" : undefined },
+                        {
+                          chart: value === "problems" ? "problems" : undefined,
+                        },
                         { replace: true },
                       )
                     }

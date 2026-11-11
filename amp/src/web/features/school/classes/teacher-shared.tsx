@@ -1,5 +1,7 @@
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import {
+  useLayoutEffect,
+  useRef,
   useState,
   type FocusEvent,
   type PointerEvent,
@@ -76,9 +78,76 @@ export const fullDay = (iso: string) => WEEKDAY.format(dayAt(iso));
 export const dayRange = (from: string, to: string) =>
   `${longDay(from)} to ${longDay(to)}`;
 export const number = (value: number) => value.toLocaleString("en-US");
-/** A hover, tap and focus readout for anything inside with `data-tip`. It
- * overlays the page, so it moves nothing. A tip may hold line breaks. A tap
- * on a touch screen shows it; a second tap, or one elsewhere, puts it away. */
+/** A tip that is a small designed card rather than a line of text: a title,
+ * one large figure, the distribution behind it, and a share with its bar.
+ * Every part is optional; the same card serves every heat map. */
+export type TipCard = {
+  title: string;
+  figure?: string;
+  /** Under the figure: what it counts ("minutes per student, mean"). */
+  unit?: string;
+  stats?: { label: string; value: string }[];
+  share?: { done: number; of: number; label: string };
+  note?: string;
+};
+const cardText = (card: TipCard) =>
+  [
+    card.title,
+    card.figure ? `${card.figure} ${card.unit ?? ""}`.trim() : "",
+    card.stats?.map((stat) => `${stat.label} ${stat.value}`).join(" · ") ?? "",
+    card.share?.label ?? "",
+    card.note ?? "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+/** The attributes that give an element a tip: a line, or a card. */
+export const tipAttributes = (tip: string | TipCard | undefined) =>
+  tip === undefined
+    ? {}
+    : typeof tip === "string"
+      ? { "data-tip": tip }
+      : { "data-tip": cardText(tip), "data-tip-card": JSON.stringify(tip) };
+
+function TipCardView({ card }: { card: TipCard }) {
+  return (
+    <>
+      <span className={styles.tipTitle}>{card.title}</span>
+      {card.figure && (
+        <span className={styles.tipFigure}>
+          <b>{card.figure}</b>
+          {card.unit && <span>{card.unit}</span>}
+        </span>
+      )}
+      {card.stats && (
+        <span className={styles.tipStats}>
+          {card.stats.map((stat) => (
+            <span key={stat.label}>
+              <span>{stat.label}</span>
+              <b>{stat.value}</b>
+            </span>
+          ))}
+        </span>
+      )}
+      {card.share && (
+        <span className={styles.tipShare}>
+          <span>{card.share.label}</span>
+          <span className={styles.tipBar} aria-hidden="true">
+            <span
+              style={{
+                width: `${card.share.of ? (100 * card.share.done) / card.share.of : 0}%`,
+              }}
+            />
+          </span>
+        </span>
+      )}
+      {card.note && <span className={styles.tipNote}>{card.note}</span>}
+    </>
+  );
+}
+
+/** Hover (a mouse), tap (a finger) or focus shows an element's `data-tip`,
+ * floating over the content without moving it: above the element, or below
+ * it near the top of the screen, and always inside the viewport. */
 export function TipZone({
   className,
   children,
@@ -88,19 +157,44 @@ export function TipZone({
 }) {
   const [tip, setTip] = useState<{
     text: string;
-    x: number;
-    y: number;
+    card: TipCard | null;
+    box: { left: number; top: number; bottom: number; width: number };
   } | null>(null);
+  const floating = useRef<HTMLDivElement>(null);
+  const [place, setPlace] = useState<{ x: number; y: number } | null>(null);
   const show = (element: Element | null) => {
     const target = element?.closest<HTMLElement>("[data-tip]");
     if (!target) return setTip(null);
     const box = target.getBoundingClientRect();
+    const card = target.dataset.tipCard;
+    setPlace(null);
     setTip({
       text: target.dataset.tip!,
-      x: Math.min(innerWidth - 150, Math.max(150, box.left + box.width / 2)),
-      y: box.top,
+      card: card ? (JSON.parse(card) as TipCard) : null,
+      box: {
+        left: box.left,
+        top: box.top,
+        bottom: box.bottom,
+        width: box.width,
+      },
     });
   };
+  // Placed once its size is known, so it never shows anywhere else first.
+  useLayoutEffect(() => {
+    const element = floating.current;
+    if (!tip || !element) return;
+    const gap = 6;
+    const edge = 8;
+    const { width, height } = element.getBoundingClientRect();
+    const centre = tip.box.left + tip.box.width / 2;
+    const x = Math.min(
+      innerWidth - edge - width,
+      Math.max(edge, centre - width / 2),
+    );
+    const above = tip.box.top - gap - height;
+    const y = above >= edge ? above : tip.box.bottom + gap;
+    setPlace({ x, y });
+  }, [tip]);
   return (
     <div
       className={className}
@@ -129,11 +223,16 @@ export function TipZone({
       {children}
       {tip && (
         <div
-          className={styles.tip}
-          style={{ left: tip.x, top: tip.y }}
+          ref={floating}
+          className={tip.card ? styles.tipCard : styles.tip}
+          style={{
+            left: place?.x ?? 0,
+            top: place?.y ?? 0,
+            visibility: place ? undefined : "hidden",
+          }}
           aria-hidden="true"
         >
-          {tip.text}
+          {tip.card ? <TipCardView card={tip.card} /> : tip.text}
         </div>
       )}
     </div>

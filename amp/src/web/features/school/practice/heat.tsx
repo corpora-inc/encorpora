@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { tipAttributes, type TipCard } from "../classes/teacher-shared";
 import { heatColor, heatPosition, heatTicks } from "../heat-scale";
 import styles from "./Practice.module.css";
 
@@ -12,8 +13,7 @@ export const MEASURES: { value: HeatMeasure; label: string }[] = [
   { value: "problems", label: "Problems" },
 ];
 
-const format = (value: number) =>
-  Math.round(value).toLocaleString("en-US");
+const format = (value: number) => Math.round(value).toLocaleString("en-US");
 /** "42.5" to one place below 10, whole above: a cell's figures. */
 export const figure = (value: number, places?: number) =>
   places !== undefined
@@ -43,7 +43,7 @@ export function HeatCell({
 }: {
   value: number | null;
   midpoint: number | null;
-  tip?: string;
+  tip?: string | TipCard;
   current?: boolean;
   future?: boolean;
   className?: string;
@@ -57,7 +57,7 @@ export function HeatCell({
       data-empty={(value === null && !future) || undefined}
       data-future={future || undefined}
       data-current={current || undefined}
-      data-tip={tip}
+      {...tipAttributes(tip)}
       style={{ ...style, background }}
     />
   );
@@ -143,12 +143,22 @@ export function StatsLine({
   return (
     <p className={styles.stats}>
       {label ? `${label}: ` : ""}n <b>{n.toLocaleString("en-US")}</b> · median{" "}
-      <b>{figure(median, places)}</b> · mean <b>{figure(mean, places)}</b> ·
-      sd <b>{figure(sd, places)}</b>
+      <b>{figure(median, places)}</b> · mean <b>{figure(mean, places)}</b> · sd{" "}
+      <b>{figure(sd, places)}</b>
       {unit ? ` ${unit}` : ""}
     </p>
   );
 }
+/** n, median, mean and sd as a tip card's stat grid. */
+export const statsCells = (
+  stat: { median: number; mean: number; sd: number },
+  n: number,
+) => [
+  { label: "n", value: n.toLocaleString("en-US") },
+  { label: "median", value: figure(stat.median) },
+  { label: "mean", value: figure(stat.mean) },
+  { label: "sd", value: figure(stat.sd) },
+];
 export const statsWords = (
   stat: { median: number; mean: number; sd: number },
   n?: number,

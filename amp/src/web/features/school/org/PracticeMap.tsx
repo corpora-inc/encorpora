@@ -3,13 +3,20 @@ import { useMemo, type CSSProperties } from "react";
 import type { PracticeResponse } from "../../../../schools/org-contracts";
 import { summarize } from "../../../../schools/practice-stats";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
-import { number, parseSort, shortDay, TipZone } from "../classes/teacher-shared";
+import {
+  number,
+  parseSort,
+  shortDay,
+  tipAttributes,
+  TipZone,
+  type TipCard,
+} from "../classes/teacher-shared";
 import { classPath, orgPath } from "../paths";
 import {
   figure,
   HeatCell,
   HeatLegend,
-  statsWords,
+  statsCells,
   unitWord,
   type HeatMeasure,
 } from "../practice/heat";
@@ -61,14 +68,24 @@ export function PracticeMap({
   );
   const pathOf = (row: Row) =>
     data.rowKind === "class" ? classPath(orgId, row.id) : orgPath(row.id);
-  const tipFor = (row: Row, index: number) => {
+  const tipFor = (row: Row, index: number): TipCard => {
     const week = data.weeks[index]!;
     const cell = row.cells[index];
-    const when = `week of ${shortDay(week)}${index === currentIndex ? ", so far" : ""}`;
-    if (index > currentIndex) return `${row.name}, ${when}: still to come`;
-    if (!cell) return `${row.name}, ${when}: nobody on the roster yet`;
+    const title = `${row.name} · week of ${shortDay(week)}${index === currentIndex ? ", so far" : ""}`;
+    if (index > currentIndex) return { title, note: "Still to come" };
+    if (!cell) return { title, note: "Nobody on the roster yet" };
     const stat = valueOf(cell, measure);
-    return `${row.name}, ${when}\n${figure(stat.mean)} ${unit} per student (mean)\n${statsWords(stat, cell.n)}\n${number(cell.practiced)} of ${number(cell.n)} practiced`;
+    return {
+      title,
+      figure: figure(stat.mean),
+      unit: `${unit} per student, mean`,
+      stats: statsCells(stat, cell.n),
+      share: {
+        done: cell.practiced,
+        of: cell.n,
+        label: `${number(cell.practiced)} of ${number(cell.n)} practiced`,
+      },
+    };
   };
   const strip = (row: Row) => (
     <span
@@ -87,11 +104,17 @@ export function PracticeMap({
       ))}
     </span>
   );
-  const meanTip = (row: Row) => {
+  const meanTip = (row: Row): TipCard => {
     const summary = summarize(row.weeklyMeans);
+    const title = `${row.name} · a week, on average`;
     return summary
-      ? `${row.name}: weekly means over ${summary.n} finished ${summary.n === 1 ? "week" : "weeks"}\n${statsWords(summary)} ${unit}`
-      : `${row.name}: no finished week yet`;
+      ? {
+          title,
+          figure: figure(summary.mean),
+          unit: `${unit} per student, mean of ${summary.n} finished ${summary.n === 1 ? "week" : "weeks"}`,
+          stats: statsCells(summary, summary.n),
+        }
+      : { title, note: "No finished week yet" };
   };
   const ticks = (
     <span
@@ -132,7 +155,7 @@ export function PracticeMap({
       firstSort: "descending",
       compare: (a, b) => (a.mean ?? -1) - (b.mean ?? -1),
       cell: (row) => (
-        <span className={styles.heatMean} data-tip={meanTip(row)}>
+        <span className={styles.heatMean} {...tipAttributes(meanTip(row))}>
           {row.mean === null ? "—" : figure(row.mean)}
         </span>
       ),
@@ -158,7 +181,9 @@ export function PracticeMap({
     measure === "minutes" ? (
       <HeatLegend
         caption={`Active minutes per student, mean for the week`}
-        midpoint={targets.size === 1 ? [...targets][0]! : medianOf([...targets])}
+        midpoint={
+          targets.size === 1 ? [...targets][0]! : medianOf([...targets])
+        }
         midpointWord={targets.size === 1 ? "target" : "median target"}
         unit="minutes"
         empty={rows.some((row) =>
@@ -216,7 +241,10 @@ export function PracticeMap({
                 >
                   {row.name}
                 </Link>
-                <span className={styles.heatMean} data-tip={meanTip(row)}>
+                <span
+                  className={styles.heatMean}
+                  {...tipAttributes(meanTip(row))}
+                >
                   {row.mean === null ? "—" : `${figure(row.mean)} a week`}
                 </span>
               </div>

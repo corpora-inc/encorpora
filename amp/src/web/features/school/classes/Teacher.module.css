@@ -135,8 +135,79 @@ span.student[data-teacher] {
   line-height: 1.35;
   font-variant-numeric: var(--numeric);
   white-space: pre-line;
-  transform: translate(-50%, calc(-100% - 2px));
   pointer-events: none;
+}
+/* A tip as a card (TipCard): the menus' cream, border and shadow, a fixed
+   width so it never resizes as it moves from cell to cell. */
+.tipCard {
+  position: fixed;
+  z-index: 50;
+  display: grid;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  width: min(240px, calc(100vw - 16px));
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+  font-variant-numeric: var(--numeric);
+  pointer-events: none;
+}
+.tipTitle {
+  font-weight: 700;
+}
+.tipFigure {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+}
+.tipFigure b {
+  font-size: 1.75rem;
+  line-height: 1;
+  font-weight: 700;
+}
+.tipFigure span,
+.tipNote {
+  color: var(--color-muted-text);
+}
+.tipStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-block: 1px solid var(--color-border);
+}
+.tipStats > span {
+  display: grid;
+  gap: 2px;
+}
+.tipStats > span > span {
+  color: var(--color-muted-text);
+}
+.tipStats b {
+  font-weight: 700;
+}
+.tipShare {
+  display: grid;
+  gap: var(--space-1);
+}
+.tipBar {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-surface-sunken);
+  overflow: hidden;
+}
+.tipBar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-primary);
 }
 
 /* The gradebook */
