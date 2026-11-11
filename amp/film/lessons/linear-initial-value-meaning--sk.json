@@ -925,15 +925,9 @@
         },
         {
           "speaker": "teacher",
-          "say": "How much water is in the tank after any number of minutes?",
+          "say": "How much water after any number of minutes?",
           "pause": 0.3,
           "do": [
-            {
-              "do": "text",
-              "text": "How much water after $t$ minutes?",
-              "at": "How",
-              "id": "tAsk"
-            },
             {
               "do": "highlight",
               "target": "yt",
@@ -1092,8 +1086,11 @@
           "say": "That is a linear model: where it starts, plus the same step every time.",
           "do": [
             {
+              "do": "clear"
+            },
+            {
               "do": "text",
-              "text": "Where it starts, plus the same step every time.",
+              "text": "Where it starts, plus the same step every\u00a0time.",
               "at": "where",
               "id": "tPhrase"
             },
@@ -1137,29 +1134,36 @@
         },
         {
           "speaker": "teacher",
-          "say": "In general: y equals m x plus b. m is the step for each one of x. It is the rate, the slope of the line.",
+          "say": "In general: y equals m x plus b.",
           "do": [
-            {
-              "do": "clear"
-            },
             {
               "do": "write",
               "tex": "y=\\cw{m}x+\\cg{b}",
               "fresh": true,
               "at": "y",
               "id": "tForm"
-            },
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "m is the step: three more liters for each minute. That is the rate, or slope.",
+          "do": [
             {
-              "do": "text",
-              "text": "$\\cw{m}$ is the rate: the step for each 1 of $x$. The slope of the line.",
-              "at": "m",
-              "nth": 2,
-              "id": "tM"
+              "do": "show",
+              "target": "rm",
+              "at": "m"
             },
             {
               "do": "highlight",
               "target": "steps",
-              "at": "step"
+              "at": "m"
+            },
+            {
+              "do": "text",
+              "text": "$\\cw{m}$: the rate, or slope.",
+              "at": "rate",
+              "id": "tM"
             },
             {
               "do": "highlight",
@@ -1170,27 +1174,29 @@
         },
         {
           "speaker": "teacher",
-          "say": "b is the start, the output when x is zero. It is called the initial value, or the y-intercept: where the line meets the y-axis.",
+          "say": "b is the start: four liters at minute zero. That is the initial value, or the y-intercept, where the line meets the y-axis.",
           "pause": 0.3,
           "do": [
             {
-              "do": "text",
-              "text": "$\\cg{b}$ is the initial value: the output when $x=0$. The $y$-intercept.",
-              "at": "b",
-              "id": "tB"
+              "do": "show",
+              "target": "rb",
+              "at": "b"
             },
             {
               "do": "highlight",
-              "target": [
-                "g0",
-                "lg0"
-              ],
-              "at": "start"
+              "target": "golds",
+              "at": "b"
             },
             {
               "do": "highlight",
               "target": "v0",
-              "at": "zero"
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "$\\cg{b}$: the initial value, or $y$-intercept.",
+              "at": "initial",
+              "id": "tB"
             },
             {
               "do": "highlight",
@@ -1250,7 +1256,7 @@
               "at": "steps"
             },
             {
-              "do": "show",
+              "do": "highlight",
               "target": [
                 "rm",
                 "rb"
@@ -2113,7 +2119,7 @@
             },
             {
               "do": "text",
-              "text": "$\\cw{-2}$ centimeters per hour: the change each hour.",
+              "text": "$\\cw{-2}$ centimeters per hour: the rate.",
               "at": "each",
               "id": "cRate"
             }
@@ -2139,15 +2145,9 @@
         },
         {
           "speaker": "teacher",
-          "say": "Sixteen is an amount. Two is a rate. And the start is the number standing alone, even when it is written first.",
+          "say": "Sixteen is an amount. Two is a rate. The start is the number standing alone, even when it is written first.",
           "pause": 0.4,
           "do": [
-            {
-              "do": "watch",
-              "text": "A start is an amount: centimeters. A rate is an amount for each unit: centimeters per hour.",
-              "at": "Sixteen",
-              "id": "cWatch"
-            },
             {
               "do": "highlight",
               "target": "l16",
@@ -2543,14 +2543,17 @@
         },
         {
           "speaker": "teacher",
-          "say": "The equation does the same walk. Put the point into y equals m x plus b.",
+          "say": "The equation does the same walk. In y equals m x plus b, put in the slope and the point.",
           "do": [
             {
+              "do": "clear"
+            },
+            {
               "do": "write",
-              "tex": "y=\\cw{-2}x+\\cg{b}",
+              "tex": "1=\\cw{-2}\\cdot 3+\\cg{b}",
               "fresh": true,
-              "at": "equation",
-              "id": "w1"
+              "at": "put",
+              "id": "w2"
             },
             {
               "do": "highlight",
@@ -2559,12 +2562,6 @@
                 "lP"
               ],
               "at": "point"
-            },
-            {
-              "do": "write",
-              "tex": "1=\\cw{-2}\\cdot 3+\\cg{b}",
-              "at": "y",
-              "id": "w2"
             }
           ]
         },
@@ -2583,6 +2580,14 @@
               "tex": "\\cg{b}=7",
               "at": "Add",
               "id": "w4"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d0",
+                "l0"
+              ],
+              "at": "seven"
             }
           ]
         },
@@ -2604,12 +2609,6 @@
           "say": "The one in three, one, is the height at three. It is the start only when x is zero.",
           "pause": 0.4,
           "do": [
-            {
-              "do": "watch",
-              "text": "A point's $y$ is the start only when its $x$ is 0. Otherwise walk back to zero: $b=y-mx$.",
-              "at": "The",
-              "id": "wWatch"
-            },
             {
               "do": "highlight",
               "target": [
@@ -2809,7 +2808,7 @@
             },
             {
               "do": "problem",
-              "text": "A worker buys a uniform, then earns the same amount each hour. Net pay is the pay earned minus the cost of the uniform. Find the hourly wage and the uniform's cost.",
+              "text": "A worker buys a uniform, then earns the same amount each hour. Find the hourly wage and the uniform's cost.",
               "at": "Your",
               "id": "gProb"
             },
@@ -2850,6 +2849,9 @@
           "speaker": "learner",
           "say": "From two hours to four, net pay rises from negative eight to sixteen. That is twenty-four dollars in two hours.",
           "do": [
+            {
+              "do": "clear"
+            },
             {
               "do": "highlight",
               "target": "t.cell.3.1",
@@ -2915,13 +2917,6 @@
               "at": "twenty"
             },
             {
-              "do": "write",
-              "tex": "-8-12=-20",
-              "fresh": true,
-              "at": "twenty",
-              "id": "g3"
-            },
-            {
               "do": "show",
               "target": "s12",
               "at": "Zero"
@@ -2930,12 +2925,6 @@
               "do": "show",
               "target": "t.cell.1.1",
               "at": "thirty-two"
-            },
-            {
-              "do": "write",
-              "tex": "-20-12=\\cg{-32}",
-              "at": "thirty-two",
-              "id": "g4"
             }
           ]
         },
@@ -2951,7 +2940,7 @@
             },
             {
               "do": "text",
-              "text": "Uniform: $\\cg{32}$ dollars, the amount at 0 hours.",
+              "text": "Uniform: $\\cg{32}$ dollars.",
               "at": "uniform",
               "id": "gCost"
             }
@@ -2962,6 +2951,9 @@
           "say": "So net pay is twelve h, minus thirty-two.",
           "pause": 0.4,
           "do": [
+            {
+              "do": "clear"
+            },
             {
               "do": "given",
               "target": "t",
@@ -3008,60 +3000,371 @@
       ]
     },
     {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.75,
+          -2.0,
+          4.75,
+          19.2
+        ],
+        "points": {
+          "S": [
+            0,
+            4
+          ],
+          "E": [
+            4,
+            16
+          ],
+          "W": [
+            4,
+            16
+          ],
+          "XT": [
+            2.2,
+            0
+          ],
+          "YT": [
+            0,
+            17.4
+          ],
+          "P1": [
+            1,
+            7
+          ],
+          "P2": [
+            2,
+            10
+          ],
+          "P3": [
+            3,
+            13
+          ],
+          "C0": [
+            1,
+            4
+          ],
+          "C1": [
+            2,
+            7
+          ],
+          "C2": [
+            3,
+            10
+          ],
+          "C3": [
+            4,
+            13
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 99,
+            "ystep": 1,
+            "yevery": 99,
+            "xrange": [
+              0,
+              4.6
+            ],
+            "yrange": [
+              0,
+              17.4
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "S",
+              "E"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run0",
+            "seg": [
+              "S",
+              "C0"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "runs"
+          },
+          {
+            "id": "run1",
+            "seg": [
+              "P1",
+              "C1"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "runs"
+          },
+          {
+            "id": "run2",
+            "seg": [
+              "P2",
+              "C2"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "runs"
+          },
+          {
+            "id": "run3",
+            "seg": [
+              "P3",
+              "C3"
+            ],
+            "ink": "blue",
+            "w": 6,
+            "group": "runs"
+          },
+          {
+            "id": "rise0",
+            "seg": [
+              "C0",
+              "P1"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "rises"
+          },
+          {
+            "id": "rise1",
+            "seg": [
+              "C1",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "rises"
+          },
+          {
+            "id": "rise2",
+            "seg": [
+              "C2",
+              "P3"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "rises"
+          },
+          {
+            "id": "rise3",
+            "seg": [
+              "C3",
+              "E"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "group": "rises"
+          },
+          {
+            "id": "dW",
+            "dot": "W",
+            "ink": "ink",
+            "r": 11
+          },
+          {
+            "id": "dS",
+            "dot": "S",
+            "ink": "gold",
+            "r": 15
+          },
+          {
+            "id": "xt",
+            "label": "\\text{input}",
+            "at": "XT",
+            "dir": "s",
+            "far": 0.9,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{output}",
+            "at": "YT",
+            "dir": "n",
+            "far": 0.5,
+            "ink": "muted",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "lb",
+            "label": "b",
+            "at": "S",
+            "dir": "w",
+            "far": 0.7,
+            "ink": "gold",
+            "size": "xl"
+          },
+          {
+            "id": "lm",
+            "label": "m",
+            "at": "rise0",
+            "dir": "e",
+            "far": 0.5,
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "l1",
+            "label": "1",
+            "at": "run0",
+            "dir": "s",
+            "far": 0.45,
+            "ink": "blue",
+            "size": "m"
+          }
+        ]
+      },
       "beats": [
         {
           "speaker": "teacher",
-          "say": "Every linear model is the same idea.",
+          "say": "One picture holds every linear model: y equals m x plus b.",
           "do": [
             {
-              "do": "overview",
-              "of": "tForm",
-              "at": "Every"
+              "do": "clear"
+            },
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "One",
+              "dur": 1.2
+            },
+            {
+              "do": "show",
+              "target": [
+                "runs",
+                "rises"
+              ],
+              "at": "picture"
+            },
+            {
+              "do": "write",
+              "tex": "y=\\cw{m}x+\\cg{b}",
+              "fresh": true,
+              "at": "y",
+              "id": "zForm"
             }
           ]
         },
         {
           "speaker": "teacher",
-          "say": "One. Where it starts, plus the same step every time.",
+          "say": "b is where it starts, at input zero.",
           "do": [
             {
-              "do": "recap",
-              "text": "Where it starts, plus the same step every time.",
-              "at": "One"
+              "do": "show",
+              "target": [
+                "dS",
+                "lb"
+              ],
+              "at": "b"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dS",
+                "lb"
+              ],
+              "at": "starts"
+            },
+            {
+              "do": "text",
+              "text": "$\\cg{b}$: where it starts, at input 0.",
+              "at": "where",
+              "id": "zB"
             }
           ]
         },
         {
           "speaker": "teacher",
-          "say": "Two. The start, b, is the output at input zero.",
+          "say": "m is the step, for each one of input.",
           "do": [
             {
-              "do": "recap",
-              "text": "Start $b$: the output at input 0.",
-              "at": "Two"
+              "do": "show",
+              "target": [
+                "lm",
+                "l1"
+              ],
+              "at": "m"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "rises",
+                "lm"
+              ],
+              "at": "step"
+            },
+            {
+              "do": "text",
+              "text": "$\\cw{m}$: the step, for each 1 of input.",
+              "at": "step",
+              "id": "zM"
             }
           ]
         },
         {
           "speaker": "teacher",
-          "say": "Three. The step, m, is the change for each one of input.",
+          "say": "When the start is hidden, walk back to zero.",
+          "pause": 0.3,
           "do": [
             {
-              "do": "recap",
-              "text": "Step $m$: the change for each 1 of input.",
-              "at": "Three"
+              "do": "show",
+              "target": "dW",
+              "at": "hidden"
+            },
+            {
+              "do": "move",
+              "points": {
+                "W": "S"
+              },
+              "at": "walk",
+              "dur": 1.7
+            },
+            {
+              "do": "text",
+              "text": "Start hidden? Walk back to zero.",
+              "at": "walk",
+              "id": "zW"
             }
           ]
         },
         {
           "speaker": "teacher",
-          "say": "Four. When the start is hidden, walk back to zero.",
-          "pause": 0.8,
+          "say": "Where it starts, plus the same step every time.",
+          "pause": 1.0,
           "do": [
             {
-              "do": "recap",
-              "text": "Start hidden? Walk back to zero: $b=y-mx$.",
-              "at": "Four"
+              "do": "text",
+              "text": "Where it starts, plus the same step every\u00a0time.",
+              "at": "Where",
+              "id": "zPhrase"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dS",
+                "lb"
+              ],
+              "at": "starts"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "rises",
+                "lm"
+              ],
+              "at": "step"
             }
           ]
         }
