@@ -1,3 +1,4 @@
+import { SettingMeta } from "./SettingMeta";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { WEEKLY_TARGET_RANGE } from "../../../../schools/classroom-contracts";
@@ -78,32 +79,27 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
                   }}
                 />
               )}
-              <div className={rows.rowMeta}>
-                <span
-                  className={rows.who}
-                  data-locked={data.lockedBy || undefined}
-                >
-                  {data.lockedBy
-                    ? `Locked by ${data.lockedBy}`
-                    : data.setBy
-                      ? `Set by ${data.setBy}`
-                      : "AMP’s starting point"}
-                </span>
-                {!fixed && data.own && (
-                  <Button
-                    variant="quiet"
-                    onClick={() => {
-                      clearTimeout(timer.current);
-                      timer.current = undefined;
-                      send(null);
-                    }}
-                  >
-                    {data.inherited === null
-                      ? "Clear"
-                      : `Use ${minutesWords(data.inherited)}`}
-                  </Button>
-                )}
-              </div>
+              <SettingMeta
+                scope="org"
+                own={!!data.own}
+                setBy={data.setBy ?? null}
+                lockedAbove={data.lockedBy ?? null}
+                reset={
+                  !fixed && data.own
+                    ? {
+                        label:
+                          data.inherited === null
+                            ? "Clear"
+                            : `Use ${minutesWords(data.inherited)}`,
+                        onClick: () => {
+                          clearTimeout(timer.current);
+                          timer.current = undefined;
+                          send(null);
+                        },
+                      }
+                    : undefined
+                }
+              />
             </div>
           </section>
         </div>

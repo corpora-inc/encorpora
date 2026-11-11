@@ -1,3 +1,4 @@
+import { LockMark, SettingMeta } from "./SettingMeta";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import {
@@ -113,27 +114,6 @@ const rowOf: { [K in ExperienceKey]: Row<K> } = {
   deviceMode: deviceRow,
 };
 
-const whoSet = (setting: {
-  setBy: NamedScope | null;
-  lockedBy: NamedScope | null;
-}) =>
-  setting.lockedBy
-    ? `Locked by ${setting.lockedBy.name}`
-    : setting.setBy
-      ? `Set by ${setting.setBy.name}`
-      : "AMP’s starting point";
-
-function LockMark({ open = false }: { open?: boolean }) {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" className={styles.lockMark}>
-      <rect x="3" y="7" width="10" height="7" rx="1.6" />
-      <path
-        d={open ? "M5 7V4.8a3 3 0 0 1 5.6-1.4" : "M5 7V4.8a3 3 0 0 1 6 0V7"}
-      />
-    </svg>
-  );
-}
-
 function SettingRow<K extends ExperienceKey>({
   row,
   experience,
@@ -183,18 +163,26 @@ function SettingRow<K extends ExperienceKey>({
             if (next !== value) onValue(next);
           }}
         />
-        <div className={styles.rowMeta}>
-          <span className={styles.who} data-locked={lockedAbove || undefined}>
-            {lockedAbove && <LockMark />}
-            {whoSet(setting)}
-          </span>
-          {!fixed && setting.own && experience.scope.kind === "class" && (
-            <Button variant="quiet" disabled={disabled} onClick={onFollow}>
-              {setting.inherited.from
-                ? `Follow ${setting.inherited.from.name}`
-                : "Use AMP’s starting point"}
-            </Button>
-          )}
+        <SettingMeta
+          scope={experience.scope.kind === "class" ? "class" : "org"}
+          own={setting.own}
+          setBy={setting.setBy?.name ?? null}
+          lockedAbove={lockedAbove ? (setting.lockedBy?.name ?? null) : null}
+          disabled={disabled}
+          reset={
+            !fixed && setting.own
+              ? {
+                  label: `Use ${
+                    options.find(
+                      (option) =>
+                        option.value === (setting.inherited.value as string),
+                    )?.label ?? "the default"
+                  }`,
+                  onClick: onFollow,
+                }
+              : undefined
+          }
+        >
           {experience.canLock && !lockedAbove && (
             <Button
               variant="quiet"
@@ -209,7 +197,7 @@ function SettingRow<K extends ExperienceKey>({
                 : "Lock for everyone below"}
             </Button>
           )}
-        </div>
+        </SettingMeta>
       </div>
     </section>
   );
