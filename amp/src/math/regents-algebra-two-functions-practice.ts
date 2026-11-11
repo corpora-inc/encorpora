@@ -752,27 +752,27 @@ function characteristicModel(
   const B = (x: number) => x % 3 === 0;
   const ops = [
     {
-      words: "in A and not in B",
+      words: "in $A$ and not in $B$",
       holds: (x: number) => A(x) && !B(x),
       note: "Keep the even numbers, then remove the multiples of 3.",
     },
     {
-      words: "not in A",
+      words: "not in $A$",
       holds: (x: number) => !A(x),
-      note: "Not A flips membership in the whole sample space.",
+      note: "Not $A$ flips membership in the whole sample space.",
     },
     {
-      words: "in A or in B",
+      words: "in $A$ or in $B$",
       holds: (x: number) => A(x) || B(x),
       note: "Or keeps a number with either characteristic, including both.",
     },
     {
-      words: "not in A or B",
+      words: "not in $A$ or $B$",
       holds: (x: number) => !(A(x) || B(x)),
       note: "This complement is the numbers outside both characteristics.",
     },
     {
-      words: "not in both A and B",
+      words: "not in both $A$ and $B$",
       holds: (x: number) => !(A(x) && B(x)),
       note: "This keeps every number that misses at least one characteristic.",
     },

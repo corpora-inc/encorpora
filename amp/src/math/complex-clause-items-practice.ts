@@ -49,7 +49,7 @@ export const complexClauseItemsTemplates: readonly TemplateMetadata[] = [
     ...plot,
     glossaryNoLink: ["part", "parts", "plain", "plane"],
     description:
-      "Plot a nonzero real number or a nonzero pure imaginary number on the complex plane. The only accepted point is (a, b) for a+bi.",
+      "Plot a nonzero real number or a nonzero pure imaginary number on the complex plane. The only accepted point is $(a, b)$ for $a+bi$.",
   },
 ];
 
@@ -206,7 +206,7 @@ export function buildModulusViaConjugate(
       templateId: meta.id,
       templateVersion: 1,
       seed,
-      prompt: `Let $z=${cxInt(a, b)}$. (a) Write $\\bar z$. (b) Compute $z\\bar z$. (c) Use the result to find $|z|$.`,
+      prompt: `Let $z=${cxInt(a, b)}$. ($a$) Write $\\bar z$. ($b$) Compute $z\\bar z$. ($c$) Use the result to find $|z|$.`,
       skillId: meta.skillId,
       response,
     },

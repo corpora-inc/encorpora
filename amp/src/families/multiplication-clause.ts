@@ -85,9 +85,9 @@ export const family = {
     ids.map((id) => [
       id,
       id === "list-all-pairs" || id === "complete-list-choice"
-        ? "The factor pairs of n are the divisors d from 1 up to √n, each with partner n ÷ d. A turned pair is the same pair."
+        ? "The factor pairs of $n$ are the divisors $d$ from 1 up to $\\sqrt{n}$, each with partner $n \\div d$. A turned pair is the same pair."
         : id === "partition-from-marks" || id === "choose-partition"
-          ? "A rectangle partitioned into r rows and c columns of the same square holds r × c squares."
+          ? "A rectangle partitioned into $r$ rows and $c$ columns of the same square holds $r \\times c$ squares."
           : "Partial products and partial quotients recombine by place value. A zero place is written, and a tens partial product is shifted one place.",
     ]),
   ),

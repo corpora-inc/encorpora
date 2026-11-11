@@ -448,7 +448,7 @@ function fractionLineWhole(r: Random) {
     st(
       `$\\frac{${b}}{1}$`,
       false,
-      `${b}/1 equals ${b}, and point P is at ${whole}.`,
+      `${b}/1 equals ${b}, and point $P$ is at ${whole}.`,
     ),
     st(`$\\frac{0}{${b}}$`, false, `Zero pieces from 0 is 0, not ${whole}.`),
   ];

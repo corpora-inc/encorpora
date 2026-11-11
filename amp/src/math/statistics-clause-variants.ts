@@ -237,7 +237,7 @@ export function statisticsClause(
       ...(clustered
         ? ["Two clusters separated by an empty horizontal gap"]
         : []),
-      ...(outlier ? [`An outlier at P (${odd.join(", ")})`] : []),
+      ...(outlier ? [`An outlier at $P$ (${odd.join(", ")})`] : []),
     ];
     return b.select(
       {
@@ -254,16 +254,16 @@ export function statisticsClause(
               ]
             : []),
           ...(outlier
-            ? ["P is far from the main cloud's trend, so it is an outlier."]
+            ? ["$P$ is far from the main cloud's trend, so it is an outlier."]
             : []),
-          "E is far along the horizontal axis but follows the trend. An extreme horizontal coordinate alone does not make an outlier.",
+          "$E$ is far along the horizontal axis but follows the trend. An extreme horizontal coordinate alone does not make an outlier.",
         ],
       },
       correct,
       [
         m > 0 ? "Negative association" : "Positive association",
         "Nonlinear association",
-        "An outlier at E",
+        "An outlier at $E$",
       ],
     );
   }
@@ -804,7 +804,7 @@ export function statisticsClause(
         explanation: [
           `The square root of ${(magnitude ** 2).toFixed(4)} is ${magnitude}.`,
           `The slope is ${sign < 0 ? "negative" : "positive"}, so $r=${correlation}$.`,
-          "The size of r measures the strength of the linear relationship; its sign gives the direction.",
+          "The size of $r$ measures the strength of the linear relationship; its sign gives the direction.",
         ],
       },
       `${correlation}`,

@@ -9,7 +9,7 @@ export const exponentialContextEquationMethods: Record<string, ProblemMethod> = 
   "exponential-context-equation": {
     goal: "Choose the exponential equation for a growth or half-life situation, then choose the integer time.",
     intuition:
-      "Doubling multiplies by 2. It does not add 2. After t hours, a start of 500 that doubles is 500 times 2 to the power t. A half-life multiplies by 1/2 once each half-life.",
+      "Doubling multiplies by 2. It does not add 2. After $t$ hours, a start of 500 that doubles is 500 times 2 to the power $t$. A half-life multiplies by 1/2 once each half-life.",
     noLink,
     method: [
       "Write the start times the multiplier to a power. The power counts the steps, or time divided by the half-life.",
@@ -23,7 +23,7 @@ export const exponentialContextEquationMethods: Record<string, ProblemMethod> = 
 
 export const exponentialContextEquationPrinciples: Record<string, string> = {
   "exponential-context-equation":
-    "If a positive start a is multiplied by an integer base b each step, the amount after t steps is a times b to the t. Set that equal to a target that is a times a whole power of b. Matching bases gives t with no logarithm. A half-life of h hours uses the multiplier 1/2 and the exponent t/h.",
+    "If a positive start $a$ is multiplied by an integer base $b$ each step, the amount after $t$ steps is $a$ times $b$ to the $t$. Set that equal to a target that is $a$ times a whole power of $b$. Matching bases gives $t$ with no logarithm. A half-life of $h$ hours uses the multiplier 1/2 and the exponent $t/h$.",
 };
 
 export const exponentialContextEquationLessons: Lesson[] = [
@@ -41,18 +41,18 @@ export const exponentialContextEquationLessons: Lesson[] = [
     openingTitle: "Multiply, then match the bases",
     opening: [
       "A culture starts with 500 bacteria and doubles every hour. After 1 hour there are 1000. After 2 hours there are 2000. Each hour multiplies by 2.",
-      "The equation is 500 times 2 to the t equals the target. Adding 2 each hour is a different situation.",
+      "The equation is 500 times 2 to the $t$ equals the target. Adding 2 each hour is a different situation.",
       "This practice asks you to choose that equation and its solution. It does not ask you to invent a new model from scratch.",
     ],
     example: {
       prompt:
-        "A culture starts with 500 bacteria and multiplies by 2 every hour. Which equation gives the hours t until there are 32000 bacteria? Then choose t.",
+        "A culture starts with 500 bacteria and multiplies by 2 every hour. Which equation gives the hours $t$ until there are 32000 bacteria? Then choose $t$.",
       steps: [
-        "After t hours the count is 500 times 2 to the t.",
-        "Set that equal to 32000. Divide by 500: 2 to the t equals 64.",
-        "64 is 2 to the 6, so t = 6. Check: six doublings reach 32000.",
+        "After $t$ hours the count is 500 times 2 to the $t$.",
+        "Set that equal to 32000. Divide by 500: 2 to the $t$ equals 64.",
+        "64 is 2 to the 6, so $t = 6$. Check: six doublings reach 32000.",
       ],
-      answer: "500 times 2 to the t equals 32000, and t = 6",
+      answer: "500 times 2 to the $t$ equals 32000, and $t = 6$",
     },
     methodTitle: "From the story to the exponent",
     method: [
@@ -62,8 +62,8 @@ export const exponentialContextEquationLessons: Lesson[] = [
     ],
     formalTitle: "When the exponent is a whole number",
     formal: [
-      "For a positive start a and integer base b > 1, a times b to the t equals a times b to the n exactly when t = n.",
-      "For a half-life of h units, a times (1/2) to the t/h equals a over 2 to the k when t = k times h.",
+      "For a positive start $a$ and integer base $b > 1$, $a$ times $b$ to the $t$ equals $a$ times $b$ to the $n$ exactly when $t = n$.",
+      "For a half-life of $h$ units, $a$ times (1/2) to the $t/h$ equals $a$ over 2 to the $k$ when $t = k$ times $h$.",
       "Algebra 1 solves these by matching bases. Logarithms are not required.",
     ],
     pitfalls: [

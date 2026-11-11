@@ -319,12 +319,12 @@ function medians(r: Random): Proof {
       line("$E,F$ are midpoints of $AC,AB$", "Definition of median"),
       line(
         "$FE\\parallel BC,\\ FE=\\tfrac12 BC$",
-        "Midsegment theorem in triangle ABC",
+        "Midsegment theorem in triangle $ABC$",
         0,
       ),
       line(
         "$MN\\parallel BC,\\ MN=\\tfrac12 BC$",
-        "Midsegment theorem in triangle GBC",
+        "Midsegment theorem in triangle $GBC$",
       ),
       line(
         "$FE\\parallel MN,\\ FE=MN$",

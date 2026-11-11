@@ -75,7 +75,8 @@ test("subtraction-unknown keeps one box and a true equation", () => {
     assert.doesNotMatch(p.hint, new RegExp(`\\b${answer}\\b`));
   }
   assert.ok(n >= 120, `family count ${n}`);
-  for (const count of forms.values()) assert.ok(count / n >= 0.15, `${count}/${n}`);
+  for (const count of forms.values())
+    assert.ok(count / n >= 0.15, `${count}/${n}`);
   assert.ok(left / n >= 0.25, `left ${left}/${n}`);
 });
 
@@ -91,12 +92,14 @@ test("values-from-set substitutes exactly and often has no solution", () => {
     const response = p.public.response as MultiPartChoiceResponse;
     const sentence = /\$([^$]+)\$/.exec(p.public.prompt)![1]!;
     const parsed =
-      /^((?:-?\d+)?x)(?: \+ (\d+)| − (\d+))? ([<=>≤≥]) (-?\d+)$/.exec(
-        sentence,
-      );
+      /^((?:-?\d+)?x)(?: \+ (\d+)| − (\d+))? ([<=>≤≥]) (-?\d+)$/.exec(sentence);
     assert.ok(parsed, sentence);
     const coef = parsed[1] === "x" ? 1 : Number(parsed[1]!.replace("x", ""));
-    const add = parsed[2] ? Number(parsed[2]) : parsed[3] ? -Number(parsed[3]) : 0;
+    const add = parsed[2]
+      ? Number(parsed[2])
+      : parsed[3]
+        ? -Number(parsed[3])
+        : 0;
     const op = parsed[4]!;
     const right = Number(parsed[5]);
     const truths: boolean[] = [];
@@ -146,12 +149,15 @@ test("strict inequalities never include the boundary", () => {
     assert.ok(m, p.public.prompt);
     const sign = m[1] as "<" | ">";
     const c = Number(m[2]!.replace("−", "-"));
-    const options = p.public.response.kind === "choice" ? p.public.response.options : [];
+    const options =
+      p.public.response.kind === "choice" ? p.public.response.options : [];
     const key = options.find((o) => o.id === p.answer)!.label;
     assert.match(key, /is not/);
     assert.match(key, /infinitely many/);
     assert.doesNotMatch(key, new RegExp(`and ${m[2]} are solutions`));
-    const finite = options.map((o) => o.label).find((l) => /whole number/.test(l))!;
+    const finite = options
+      .map((o) => o.label)
+      .find((l) => /whole number/.test(l))!;
     if (sign === "<" && c > 0) {
       const greatest = Number.isInteger(c) ? c - 1 : Math.floor(c);
       const count = greatest + 1;
@@ -166,14 +172,9 @@ test("strict inequalities never include the boundary", () => {
     const reversed = options
       .map((o) => o.label)
       .find((l) => l.startsWith("Every number") && !l.includes("is not"))!;
-    const holds =
-      sign === "<" ? probe < c : probe > c;
+    const holds = sign === "<" ? probe < c : probe > c;
     assert.equal(holds, true);
-    assert.equal(
-      sign === "<" ? probe > c : probe < c,
-      false,
-      reversed,
-    );
+    assert.equal(sign === "<" ? probe > c : probe < c, false, reversed);
   }
   assert.ok(n >= 120, `n ${n}`);
 });
@@ -260,12 +261,12 @@ test("line pairs classify by exact slope and intercept", () => {
     const p = generateProblem("linear-system-solution-count", seed);
     if (p.variant?.id !== "lines-through-points") continue;
     n++;
-    const pts = [...p.public.prompt.matchAll(/\((-?\d+), (-?\d+)\)/g)].map((m) => [
-      Number(m[1]),
-      Number(m[2]),
-    ]);
+    const pts = [...p.public.prompt.matchAll(/\((-?\d+), (-?\d+)\)/g)].map(
+      (m) => [Number(m[1]), Number(m[2])],
+    );
     assert.equal(pts.length, 4, p.public.prompt);
-    const slope = (a: number[], b: number[]) => (b[1]! - a[1]!) / (b[0]! - a[0]!);
+    const slope = (a: number[], b: number[]) =>
+      (b[1]! - a[1]!) / (b[0]! - a[0]!);
     const s1 = slope(pts[0]!, pts[1]!);
     const s2 = slope(pts[2]!, pts[3]!);
     const i1 = pts[0]![1]! - s1 * pts[0]![0]!;
@@ -297,7 +298,10 @@ test("line pairs classify by exact slope and intercept", () => {
   }
   assert.ok(n >= 80, `n ${n}`);
   for (const [name, count] of Object.entries(counts))
-    assert.ok(count / n >= (name === "same" ? 0.12 : 0.25), `${name} ${count}/${n}`);
+    assert.ok(
+      count / n >= (name === "same" ? 0.12 : 0.25),
+      `${name} ${count}/${n}`,
+    );
 });
 
 test("the combine stage accepts a commuted equation", () => {
@@ -341,7 +345,10 @@ test("the combine stage accepts a commuted equation", () => {
   }
   assert.ok(checked >= 60, `checked ${checked}`);
   for (const count of Object.values(cases))
-    assert.ok(count / checked >= 0.28, `${count}/${checked} ${JSON.stringify(cases)}`);
+    assert.ok(
+      count / checked >= 0.28,
+      `${count}/${checked} ${JSON.stringify(cases)}`,
+    );
 });
 
 test("linear right-side classes match brute force", () => {
@@ -357,7 +364,8 @@ test("linear right-side classes match brute force", () => {
     for (let q = -12; q <= 12; q += 3)
       for (let a = -12; a <= 12; a += 2)
         for (let b = -18; b <= 18; b += 3) {
-          const cls = a === p && b === q ? "infinite" : a === p ? "none" : "one";
+          const cls =
+            a === p && b === q ? "infinite" : a === p ? "none" : "one";
           assert.equal(classifyLinearRight(p, q, axb(a, b)), cls);
           n++;
         }
@@ -374,7 +382,10 @@ test("linear right-side classes match brute force", () => {
     if (p.public.prompt.startsWith("Fill the box")) numeric++;
     assert.equal(gradeAnswer(p, p.answer), true);
   }
-  assert.ok(numeric / made >= 0.15 && numeric / made <= 0.5, `${numeric}/${made}`);
+  assert.ok(
+    numeric / made >= 0.15 && numeric / made <= 0.5,
+    `${numeric}/${made}`,
+  );
 });
 
 test("assumption checks and scaled elimination are exact", () => {
@@ -390,7 +401,8 @@ test("assumption checks and scaled elimination are exact", () => {
     } else {
       solved++;
       const x = Number(/x = (-?\d+)/.exec(p.public.prompt)![1]);
-      const eq = /with (.+)\. The chain/.exec(p.public.prompt)![1]!;
+      // The equation may be typeset as $…$.
+      const eq = /with \$?(.+?)\$?\. The chain/.exec(p.public.prompt)![1]!;
       const [left, right] = eq.split(" = ");
       const value = (side: string) => {
         const m = /(-?\d+)\(x([+-]\d+)\)/.exec(side);
@@ -425,15 +437,13 @@ test("assumption checks and scaled elimination are exact", () => {
         const mag = digits ? Number(digits) : 1;
         return sign === "-" || sign === "−" ? -mag : mag;
       };
-      return [
-        coef(m[1]!, m[2]),
-        coef(m[3]!, m[4]),
-        Number(m[5]),
-      ] as const;
+      return [coef(m[1]!, m[2]), coef(m[3]!, m[4]), Number(m[5])] as const;
     };
-    const eqs = [...p.public.prompt.matchAll(/([−-]?)(\d+)?x\s*([+−-])\s*(\d+)?y\s*=\s*(-?\d+)/g)].map(
-      (m) => read(m[0])!,
-    );
+    const eqs = [
+      ...p.public.prompt.matchAll(
+        /([−-]?)(\d+)?x\s*([+−-])\s*(\d+)?y\s*=\s*(-?\d+)/g,
+      ),
+    ].map((m) => read(m[0])!);
     assert.equal(eqs.length, 2, p.public.prompt);
     const [a, b, c] = eqs[0]!;
     const [d, e, f] = eqs[1]!;
@@ -441,20 +451,26 @@ test("assumption checks and scaled elimination are exact", () => {
     const ny = e + k * b;
     const nr = f + k * c;
     assert.equal(ny, 0, p.public.prompt);
-    const shown = (value: number) => (value < 0 ? `−${-value}` : String(value));
+    // Typesetting only: a label may be $…$ math, with a hyphen for minus.
+    const shown = (value: number) =>
+      value < 0 ? `[−-]${-value}` : String(value);
     const xTerm =
       nx === 1
-        ? /(?:^| )x =/
+        ? /(?:^| |\$)x =/
         : nx === -1
           ? /[−-]x =/
           : new RegExp(`${nx < 0 ? `[−-]${-nx}` : nx}x`);
     assert.match(sum, xTerm);
     assert.match(sum, new RegExp(`= ${shown(nr)}`));
-    const unscaled = p.public.response.kind === "multi-part-choice"
-      ? p.public.response.blanks[0]!.options.map((o) => o.label)
-      : [];
+    const unscaled =
+      p.public.response.kind === "multi-part-choice"
+        ? p.public.response.blanks[0]!.options.map((o) => o.label)
+        : [];
     assert.ok(
-      unscaled.some((label) => label.includes(`= ${shown(f + c)}`) && label !== sum),
+      unscaled.some(
+        (label) =>
+          new RegExp(`= ${shown(f + c)}(?!\\d)`).test(label) && label !== sum,
+      ),
     );
   }
 });

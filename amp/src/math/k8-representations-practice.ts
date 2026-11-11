@@ -719,7 +719,7 @@ const coordContexts: CoordCtx[] = [
     at: (x, y) =>
       `after ${u(x, "week")}, the plant is ${u(y, "centimeter")} tall`,
     compare: (x) =>
-      `Both plants are measured after ${u(x, "week")}. Point A shows the height of Plant A and point B shows the height of Plant B. How much taller is Plant B than Plant A?`,
+      `Both plants are measured after ${u(x, "week")}. Point $A$ shows the height of Plant $A$ and point $B$ shows the height of Plant $B$. How much taller is Plant $B$ than Plant $A$?`,
     unit: "centimeter",
   },
   {
@@ -922,7 +922,7 @@ function coordinateContextPoints(r: Random): Built {
       `Both points are at ${a} on the horizontal axis, so only their heights differ. Compare the vertical values.`,
       `"How much taller" asks for the difference, so subtract. Point A is at ${y1} and point B is at ${y2}: ${y2} − ${y1} = ${d}.`,
       ctx.unit === "centimeter"
-        ? `Plant B is ${label(d)} taller than Plant A.`
+        ? `Plant $B$ is ${label(d)} taller than Plant $A$.`
         : ctx.unit === "dollar"
           ? `Leo has saved ${label(d)} more than Mia.`
           : ctx.unit === "block"
@@ -1972,7 +1972,11 @@ const pairSpaces: {
     ],
   },
 ];
-const pairText = (x: string, y: string) => `(${x}, ${y})`;
+const outcomeToken = (s: string) => (/^[A-Za-z]$/.test(s) ? `$${s}$` : s);
+const pairText = (x: string, y: string) =>
+  /^[A-Za-z]$/.test(x) || /^[A-Za-z]$/.test(y)
+    ? `$(${x}, ${y})$`
+    : `(${x}, ${y})`;
 function eventOutcomes(r: Random): Built {
   const space = pick(r, pairSpaces);
   const event = pick(r, space.events);
@@ -2008,7 +2012,7 @@ function eventOutcomes(r: Random): Built {
   if (wrongKeys.length < 3) throw new Error("Need three retries");
   const chosen = wrongKeys.slice(0, 3);
   const correct = `The outcomes ${correctKey}.`;
-  const prompt = `${space.intro} First outcomes: ${space.first.join(", ")}. Second outcomes: ${space.second.join(", ")}. The event is: ${event.phrase}. Which list includes every outcome of the event and no others?`;
+  const prompt = `${space.intro} First outcomes: ${space.first.map(outcomeToken).join(", ")}. Second outcomes: ${space.second.map(outcomeToken).join(", ")}. The event is: ${event.phrase}. Which list includes every outcome of the event and no others?`;
   const hint = `There are ${space.first.length} first outcomes and ${space.second.length} second outcomes. Keep a pair only when it matches ${event.phrase}.`;
   const explanation = [
     `There are ${space.first.length} × ${space.second.length} = ${all.length} equally likely outcomes.`,

@@ -674,7 +674,7 @@ export const areaTilingClauseTemplates: readonly TemplateMetadata[] = [
     ...scenes,
     ...senses,
     description:
-      "A tiled rectangle is split into widths b and c. Count each part, the total, and the product a × (b + c).",
+      "A tiled rectangle is split into widths $b$ and $c$. Count each part, the total, and the product $a \\times (b + c)$.",
   },
   {
     id: "choose-the-split",
@@ -1193,7 +1193,7 @@ function whichCut(seed: string, r: Random): GeneratedProblem {
       },
       {
         description:
-          "A vertical cut that misses the inner corner, leaving a rectangle and a smaller L.",
+          "A vertical cut that misses the inner corner, leaving a rectangle and a smaller L-shaped figure.",
         scene: cutScene([seg("cut", [1, 0], [1, 4])]),
       },
       {
@@ -1233,12 +1233,12 @@ function whichCut(seed: string, r: Random): GeneratedProblem {
       `Start with the first picture: ${ordered[0]!.description} A rectangle cut meets the inner corner and runs straight to a side. A slanted line, a line that misses the corner, and two outlines that share the corner do not.`,
     explanation: (name) => [
       "The inner corner is where the outline steps in. A straight cut from that corner to the opposite side makes two rectangles.",
-      "A diagonal makes pieces that are not rectangles. A vertical line that misses the corner leaves a smaller L. Two outlines that both cover the corner count that corner twice.",
+      "A diagonal makes pieces that are not rectangles. A vertical line that misses the corner leaves a smaller L-shaped figure. Two outlines that both cover the corner count that corner twice.",
       `${name} is the straight cut from the inner corner.`,
     ],
     feedback: [
       "The pieces on either side of a slanted cut are not rectangles.",
-      "That line misses the inner corner, so one piece is still an L.",
+      "That line misses the inner corner, so one piece is still an L-shaped figure.",
       "Those two rectangles both cover the inner corner, so that area would be counted twice.",
     ],
   });
@@ -1469,7 +1469,7 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
     const names = ["A", "B", "C", "D"] as const;
     const pts = [rect.A, rect.B, rect.C, rect.D];
     return plotProblem(meta, seed, {
-      prompt: `Plot the vertices of rectangle ABCD: ${names.map((name, i) => `$${name}${pairText(pts[i]!)}$`).join(", ")}.`,
+      prompt: `Plot the vertices of rectangle $ABCD$: ${names.map((name, i) => `$${name}${pairText(pts[i]!)}$`).join(", ")}.`,
       response: {
         kind: "point-plot",
         label: "Plot the four vertices",
@@ -1479,9 +1479,9 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
         connect: "none",
       },
       points: pts,
-      hint: `The vertices are ${names.map((name, i) => `${name}${pairText(pts[i]!)}`).join(", ")}. The first number in each pair is the x-coordinate, right if positive and left if negative. Plot each vertex. The order does not matter.`,
+      hint: `The vertices are ${names.map((name, i) => `$${name}${pairText(pts[i]!)}`).join(", ")}. The first number in each pair is the $x$-coordinate, right if positive and left if negative. Plot each vertex. The order does not matter.`,
       explanation: [
-        `Rectangle ABCD is ${rect.w} units wide and ${rect.h} units tall.`,
+        `Rectangle $ABCD$ is ${rect.w} units wide and ${rect.h} units tall.`,
         ...pts.map(
           (p, i) =>
             `$${names[i]}${pairText(p)}$ sits ${p[0]} across and ${p[1]} up from the origin.`,
@@ -1503,7 +1503,7 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
     const known = named.filter((_, i) => i !== missingAt);
     const swapped: LatticePoint = [missing[1][1], missing[1][0]];
     return plotProblem(meta, seed, {
-      prompt: `Three vertices of rectangle ABCD are ${known.map(([name, p]) => `$${name}${pairText(p)}$`).join(", ")}. Plot the missing vertex $${missing[0]}$.`,
+      prompt: `Three vertices of rectangle $ABCD$ are ${known.map(([name, p]) => `$${name}${pairText(p)}$`).join(", ")}. Plot the missing vertex $${missing[0]}$.`,
       response: {
         kind: "point-plot",
         label: "Plot the missing vertex",
@@ -1779,7 +1779,7 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
             ],
             [
               `${fact.deltas} square units`,
-              "Those are the horizontal and vertical gaps of side AB, used as if they were the two side lengths.",
+              "Those are the horizontal and vertical gaps of side $AB$, used as if they were the two side lengths.",
             ],
             [
               labels[3]!,
@@ -1803,11 +1803,11 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
             ? `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Adjacent sides are perpendicular when the product of their slopes is −1, or when their direction vectors have dot product 0. Multiply the two side lengths.`
             : `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Find the two different side lengths with the distance formula, add them, and double. A grid path along the coordinate gaps is longer than the straight side.`,
         explanation: [
-          `Side AB runs ${count(m, "step")} of (${p}, ${q}), so its length is ${fact.ab}. Side AD runs ${count(n, "step")} of (${-q}, ${p}), so its length is ${fact.ad}.`,
-          `The direction vectors have dot product 0, so the angle at A is a right angle.`,
+          `Side $AB$ runs ${count(m, "step")} of $(${p}, ${q})$, so its length is ${fact.ab}. Side $AD$ runs ${count(n, "step")} of $(${-q}, ${p})$, so its length is ${fact.ad}.`,
+          `The direction vectors have dot product 0, so the angle at $A$ is a right angle.`,
           ask === "area"
-            ? `Area = ${fact.ab} × ${fact.ad} = ${fact.area}. The bounding box has area ${fact.box}, which counts squares outside the rectangle.`
-            : `Perimeter = 2(${fact.ab} + ${fact.ad}) = ${fact.perimeter}.`,
+            ? `Area = $${fact.ab.replaceAll("$", "")} \\times ${fact.ad.replaceAll("$", "")} = ${fact.area}$. The bounding box has area ${fact.box}, which counts squares outside the rectangle.`
+            : `Perimeter = $2(${fact.ab.replaceAll("$", "")} + ${fact.ad.replaceAll("$", "")}) = ${fact.perimeter.replaceAll("$", "")}$.`,
         ],
         figure: {
           kind: "scene",

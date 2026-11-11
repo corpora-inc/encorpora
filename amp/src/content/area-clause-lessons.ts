@@ -86,7 +86,7 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
     ],
   },
   "choose-the-split": {
-    goal: "Choose the column split that matches a times b plus a times c.",
+    goal: "Choose the column split that matches $a$ times $b$ plus $a$ times $c$.",
     watch:
       "Match the split to the number of columns in each part, not the number of rows.",
     senses,
@@ -150,8 +150,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
     watch:
       "Read each pair across first and up or down second; keep the two coordinates in that order.",
     method: [
-      "The first number of a pair is the x-coordinate.",
-      "The second number is the y-coordinate.",
+      "The first number of a pair is the $x$-coordinate.",
+      "The second number is the $y$-coordinate.",
       "Plot all four vertices. The order does not matter.",
     ],
   },
@@ -160,8 +160,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
     watch:
       "Match one coordinate with the corner above or below and the other with the corner beside it.",
     method: [
-      "The missing vertex shares its x-coordinate with the one above or below it.",
-      "It shares its y-coordinate with the one beside it.",
+      "The missing vertex shares its $x$-coordinate with the one above or below it.",
+      "It shares its $y$-coordinate with the one beside it.",
       "Do not swap those two coordinates.",
     ],
   },
@@ -203,7 +203,7 @@ export const areaClausePrinciples: Record<string, string> = {
   "which-is-a-unit-square":
     "Only a square that is one unit on each side is a unit square. A longer side or a segment is not.",
   "count-square-units":
-    "A figure covered without gaps or overlaps by n unit squares has area n square units.",
+    "A figure covered without gaps or overlaps by $n$ unit squares has area $n$ square units.",
   "gaps-overlaps":
     "A gap makes the tile count too small, and an overlap makes it too large. Neither count is the area.",
   "tile-then-multiply":
@@ -211,9 +211,9 @@ export const areaClausePrinciples: Record<string, string> = {
   "split-tiled-count":
     "Splitting a rectangle shows a × (b + c) = a × b + a × c, because both sides count the same squares.",
   "choose-the-split":
-    "The split that shows a × b + a × c falls after b columns of the a × (b + c) rectangle.",
+    "The split that shows $a \\times b + a \\times c$ falls after $b$ columns of the $a \\times (b + c)$ rectangle.",
   "your-own-cut":
-    "An L with no drawn seam is still two rectangles. Either straight cut from the inner corner works, and the areas add.",
+    "An L-shaped figure with no drawn seam is still two rectangles. Either straight cut from the inner corner works, and the areas add.",
   "which-cut":
     "A straight cut from the inner corner to a side makes two rectangles that do not overlap.",
   "exhibit-same-perimeter":
@@ -279,7 +279,7 @@ export const areaClauseLessons: Lesson[] = [
     ],
     [
       "A square 1 cm on each side covers 1 square centimeter. That square is a unit square.",
-      "If n unit squares cover a figure with no gaps and no overlaps, the area is n square units.",
+      "If $n$ unit squares cover a figure with no gaps and no overlaps, the area is $n$ square units.",
     ],
     {
       prompt:
@@ -298,13 +298,13 @@ export const areaClauseLessons: Lesson[] = [
     ],
     [
       "A unit square has area 1 square unit.",
-      "n unit squares with no gaps or overlaps cover n square units.",
+      "$n$ unit squares with no gaps or overlaps cover $n$ square units.",
     ],
   ),
   lesson(
     "area-tiling-clause-lesson",
     "Tiling, splitting, and cutting",
-    "Counting the tiles in a rectangle matches multiplying the sides. An L can be cut into two rectangles.",
+    "Counting the tiles in a rectangle matches multiplying the sides. An L-shaped figure can be cut into two rectangles.",
     [
       "tile-then-multiply",
       "split-tiled-count",
@@ -318,7 +318,7 @@ export const areaClauseLessons: Lesson[] = [
     ],
     [
       "Each row of a rectangle holds the same number of unit squares. The area is rows times that number.",
-      "A split after b columns shows a × (b + c) = a × b + a × c.",
+      "A split after $b$ columns shows $a \\times (b + c) = a \\times b + a \\times c$.",
     ],
     {
       prompt:
@@ -382,16 +382,16 @@ export const areaClauseLessons: Lesson[] = [
       "An axis-aligned rectangle's missing corner shares one coordinate with each neighbor.",
     ],
     {
-      prompt: "Plot A(−3, 2), B(4, 2), C(4, −1), and D(−3, −1).",
+      prompt: "Plot $A(-3, 2)$, $B(4, 2)$, $C(4, -1)$, and $D(-3, -1)$.",
       steps: [
-        "A is 3 left and 2 up.",
-        "B is 4 right and 2 up. C is 4 right and 1 down. D is 3 left and 1 down.",
+        "$A$ is 3 left and 2 up.",
+        "$B$ is 4 right and 2 up. $C$ is 4 right and 1 down. $D$ is 3 left and 1 down.",
       ],
       answer: "The four vertices",
     },
     [
-      "Read each pair as (x, y).",
-      "For a missing corner, copy x from the vertical neighbor and y from the horizontal neighbor.",
+      "Read each pair as $(x, y)$.",
+      "For a missing corner, copy $x$ from the vertical neighbor and $y$ from the horizontal neighbor.",
     ],
     ["Plotting the given vertices draws the polygon."],
   ),
@@ -435,18 +435,18 @@ export const areaClauseLessons: Lesson[] = [
       "Find the perimeter of that same tilted rectangle.",
     ],
     [
-      "A direction (p, q) and a turn (−q, p) are perpendicular because their dot product is 0.",
+      "A direction $(p, q)$ and a turn $(-q, p)$ are perpendicular because their dot product is 0.",
       "The side lengths are whole multiples of the same square root. Multiply them for the area.",
     ],
     {
       prompt:
-        "A(0, 0), B(4, 2), C(3, 4), D(−1, 2). Find the area and the perimeter.",
+        "$A(0, 0)$, $B(4, 2)$, $C(3, 4)$, $D(-1, 2)$. Find the area and the perimeter.",
       steps: [
-        "AB = 2√5 and AD = √5. Their directions (4, 2) and (−1, 2) have dot product 0.",
-        "Area = 2√5 × √5 = 10.",
-        "Perimeter = 2(2√5 + √5) = 6√5.",
+        "$AB = 2\\sqrt{5}$ and $AD = \\sqrt{5}$. Their directions $(4, 2)$ and $(-1, 2)$ have dot product 0.",
+        "Area = $2\\sqrt{5} \\times \\sqrt{5} = 10$.",
+        "Perimeter = $2(2\\sqrt{5} + \\sqrt{5}) = 6\\sqrt{5}$.",
       ],
-      answer: "Area 10, perimeter 6√5",
+      answer: "Area 10, perimeter $6\\sqrt{5}$",
     },
     [
       "Check the right angle with a dot product.",

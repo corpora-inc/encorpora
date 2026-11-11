@@ -7,10 +7,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { shuffle } from "./distribution-practice";
-import {
-  figureOptionIds,
-  type FigureChoiceResponse,
-} from "./figure-choice";
+import { figureOptionIds, type FigureChoiceResponse } from "./figure-choice";
 import {
   serializeMultiPart,
   type MultiPartChoiceResponse,
@@ -374,19 +371,22 @@ export function valuesFromSet(
   while (pool.size < count && guard < 80) {
     guard++;
     const roll = r(0, 2);
-    const k = roll === 0 ? r(0, 20) * 10 : roll === 1 ? r(0, 40) * 5 : r(0, 200);
+    const k =
+      roll === 0 ? r(0, 20) * 10 : roll === 1 ? r(0, 40) * 5 : r(0, 200);
     if (wantNone && holdsTenths(useP, useQ, right, op, k)) continue;
     if (!inequality && wantNone && k === solutionK) continue;
     add(k);
   }
   if (pool.size < count) throw new Error("Need a value set");
   const values = [...pool].slice(0, count).sort((a, b) => a - b);
-  const truths = values.map((k) =>
-    holdsTenths(useP, useQ, right, op, k),
-  );
+  const truths = values.map((k) => holdsTenths(useP, useQ, right, op, k));
   const trueCount = truths.filter(Boolean).length;
   const countLabel =
-    trueCount === 0 ? "none" : trueCount === 1 ? "exactly one" : "more than one";
+    trueCount === 0
+      ? "none"
+      : trueCount === 1
+        ? "exactly one"
+        : "more than one";
   const sym = op === "=" ? "=" : op === "<=" ? "≤" : op === ">=" ? "≥" : op;
   const coef = useP === 1 ? "x" : `${useP}x`;
   const expr =
@@ -447,11 +447,7 @@ export function strictInequality(
   const r = clauseStream(meta.id, seed);
   const sign: "<" | ">" = r(0, 1) ? "<" : ">";
   const c =
-    r(0, 9) < 6
-      ? r(-12, 12)
-      : r(0, 1)
-        ? r(-24, 24) / 2
-        : r(-120, 120) / 10;
+    r(0, 9) < 6 ? r(-12, 12) : r(0, 1) ? r(-24, 24) / 2 : r(-120, 120) / 10;
   const word = sign === "<" ? "less than" : "greater than";
   const back = sign === "<" ? "greater than" : "less than";
   const cText = signed(c);
@@ -502,7 +498,7 @@ export function strictInequality(
       })
         .mark(c, { open: true, label: true })
         .interval(sign === ">" ? c : null, sign === ">" ? null : c, [
-          sign === ">" ,
+          sign === ">",
           sign === "<",
         ])
         .scene({ width: 280, title: `x ${sign} ${cText}` }),
@@ -572,24 +568,25 @@ export function solutionCountSteps(
     throw new Error("Equation does not match its solution count");
   // "One solution, x = 0" is a distractor; at x0 = 0 it would also be true.
   if (kind === 0 && x0 === 0) throw new Error("Two true conclusions");
-  const added =
-    c === 1 ? "+x" : c === -1 ? "-x" : c > 0 ? `+${c}x` : `${c}x`;
+  const added = c === 1 ? "+x" : c === -1 ? "-x" : c > 0 ? `+${c}x` : `${c}x`;
   const leftConst = a * b;
-  const expand = `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
-    .replace(/\+\-/, "-")
-    .replace(/\+\+/, "+");
+  const expand =
+    `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
+      .replace(/\+\-/, "-")
+      .replace(/\+\+/, "+");
   const combined = eqn(a + c, leftConst, d, e);
   const closed =
-    kind === 0 ? `x=${Number.isInteger(x0) ? x0 : `${x0 * 2}/2`}` : eqn(0, leftConst, 0, e);
+    kind === 0
+      ? `x=${Number.isInteger(x0) ? x0 : `${x0 * 2}/2`}`
+      : eqn(0, leftConst, 0, e);
   const lines = [expand, combined, closed];
-  const infinite = `Infinitely many: ${leftConst} = ${leftConst} is true for every x`;
+  const infinite = `Infinitely many: $${leftConst} = ${leftConst}$ is true for every $x$`;
   const noneText = "No solution";
   const oneText = "Exactly one solution";
-  const zeroText = "One solution, x = 0";
+  const zeroText = "One solution, $x = 0$";
   const diff = e - leftConst;
-  const fake = `One solution, x = ${diff}`;
-  const correct =
-    kind === 1 ? infinite : kind === 2 ? noneText : oneText;
+  const fake = `One solution, $x = ${diff}$`;
+  const correct = kind === 1 ? infinite : kind === 2 ? noneText : oneText;
   const bank = [infinite, noneText, oneText, kind === 2 ? fake : zeroText];
   if (new Set(bank).size !== 4) throw new Error("Need four conclusions");
   const order = shuffle(r, bank);
@@ -609,21 +606,23 @@ export function solutionCountSteps(
       },
     ],
     rows: [
-      ...["After expanding", "After combining like terms", "After the x terms cancel or the equation is solved"].map(
-        (label, i) => ({
-          id: `r${i + 1}`,
-          label,
-          fields: [
-            {
-              kind: "expression" as const,
-              label: "Equation",
-              variables: ["x"],
-              relations: true,
-              maxLength: 32,
-            },
-          ],
-        }),
-      ),
+      ...[
+        "After expanding",
+        "After combining like terms",
+        "After the $x$ terms cancel or the equation is solved",
+      ].map((label, i) => ({
+        id: `r${i + 1}`,
+        label,
+        fields: [
+          {
+            kind: "expression" as const,
+            label: "Equation",
+            variables: ["x"],
+            relations: true,
+            maxLength: 32,
+          },
+        ],
+      })),
       {
         id: "r4",
         label: "How many solutions the last line shows",
@@ -656,20 +655,20 @@ export function solutionCountSteps(
     throw new Error("Key is not credited");
   if (kind === 2 && leftConst === e) throw new Error("a = b collapsed");
   return stamp(meta, seed, "solution-count-steps", {
-    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${added} = ${lin(d, e)}$ one stage at a time until you reach x = a, a = a, or a = b. Then say how many solutions it has.`,
+    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${added} = ${lin(d, e)}$ one stage at a time until you reach $x = a$, $a = a$, or $a = b$. Then say how many solutions it has.`,
     response,
     answer,
     workGrading,
-    hint: `Expand $${a}(x${b >= 0 ? "+" : ""}${b})$ first. Combine like terms on the left, then clear the x terms and read whether what is left names one x, a true number sentence, or a false one.`,
+    hint: `Expand $${a}(x${b >= 0 ? "+" : ""}${b})$ first. Combine like terms on the left, then clear the $x$ terms and read whether what is left names one $x$, a true number sentence, or a false one.`,
     explanation: [
-      `Distribute ${a}: the left side becomes ${expand.split("=")[0]}.`,
-      `Combining like terms gives ${combined}.`,
+      `Distribute ${a}: the left side becomes $${expand.split("=")[0]}$.`,
+      `Combining like terms gives $${combined}$.`,
       kind === 1
-        ? `The x terms cancel and ${leftConst} = ${e}, which is true for every x, so there are infinitely many solutions.`
+        ? `The $x$ terms cancel and $${leftConst} = ${e}$, which is true for every $x$, so there are infinitely many solutions.`
         : kind === 2
-          ? `The x terms cancel and ${leftConst} = ${e}, which is false, so there is no solution.`
-          : `One x remains. The solution is ${closed}.`,
-      "Same x-count and same constant means every number. Same x-count and different constants means no number. Different x-counts means exactly one number.",
+          ? `The $x$ terms cancel and $${leftConst} = ${e}$, which is false, so there is no solution.`
+          : `One $x$ remains. The solution is $${closed}$.`,
+      "Same $x$-count and same constant means every number. Same $x$-count and different constants means no number. Different $x$-counts means exactly one number.",
     ],
   });
 }
@@ -688,10 +687,7 @@ export function linesThroughPoints(
   const den = r(1, 4);
   const num = nz(r, 1, 6);
   const m1 = fr(num, den);
-  const m2 =
-    kind === "intersect"
-      ? fr(num + nz(r, 1, 3), den)
-      : m1;
+  const m2 = kind === "intersect" ? fr(num + nz(r, 1, 3), den) : m1;
   const b1 = r(-4, 4);
   const b2 = kind === "same" ? b1 : b1 + nz(r, 1, 4);
   const on = (m: Fr, b: number, t: number) => fadd(fmul(m, fr(t)), fr(b));
@@ -702,7 +698,9 @@ export function linesThroughPoints(
     if (Math.abs(x) > 10 || Math.abs(y.n) > 10) return null;
     return [x, y.n];
   };
-  const ts = [-3, -2, -1, 1, 2, 3].filter((t) => point(m1, b1, t) && point(m2, b2, t));
+  const ts = [-3, -2, -1, 1, 2, 3].filter(
+    (t) => point(m1, b1, t) && point(m2, b2, t),
+  );
   if (ts.length < 4) throw new Error("Need four parameters");
   const p1 = point(m1, b1, ts[0]!);
   const p2 = point(m1, b1, ts[1]!);
@@ -729,7 +727,7 @@ export function linesThroughPoints(
     hit = `(${ftxt(x)}, ${ftxt(y)})`;
   }
   const yes = intersect ? `Yes, at ${hit}` : "Yes, at exactly one point";
-  const par = `No; both have slope ${slopeText(s1)} with different y-intercepts, so they are parallel`;
+  const par = `No; both have slope ${slopeText(s1)} with different $y$-intercepts, so they are parallel`;
   const ident = "They are the same line, so every point is shared";
   const correct = intersect ? yes : parallel ? par : ident;
   const rows = [
@@ -738,7 +736,7 @@ export function linesThroughPoints(
       correct: intersect,
       feedback: intersect
         ? ""
-        : "Same slope does not give one crossing. Compare the y-intercepts.",
+        : "Same slope does not give one crossing. Compare the $y$-intercepts.",
     },
     {
       label: par,
@@ -774,14 +772,14 @@ export function linesThroughPoints(
     },
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
-    hint: `The first line passes through ${pair(p1)} and ${pair(p2)}. The second line passes through ${pair(q1)} and ${pair(q2)}. Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
+    hint: `The first line passes through ${pair(p1)} and ${pair(p2)}. The second line passes through ${pair(q1)} and ${pair(q2)}. Subtract the $y$-coordinates and the $x$-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
     explanation: [
-      `Slope of line 1: (${p2[1]} − ${term(p1[1])}) / (${p2[0]} − ${term(p1[0])}) = ${slopeText(s1)}.`,
-      `Slope of line 2: (${q2[1]} − ${term(q1[1])}) / (${q2[0]} − ${term(q1[0])}) = ${slopeText(s2)}.`,
+      `Slope of line 1: ${tex(`(${p2[1]} − ${term(p1[1])}) / (${p2[0]} − ${term(p1[0])}) = ${slopeText(s1)}`)}.`,
+      `Slope of line 2: ${tex(`(${q2[1]} − ${term(q1[1])}) / (${q2[0]} − ${term(q1[0])}) = ${slopeText(s2)}`)}.`,
       same
-        ? `The slopes match and the y-intercepts both equal ${ftxt(i1)}, so the lines are the same.`
+        ? `The slopes match and the $y$-intercepts both equal ${ftxt(i1)}, so the lines are the same.`
         : parallel
-          ? `The slopes match, but the y-intercepts are ${ftxt(i1)} and ${ftxt(i2)}. The lines are parallel and do not meet.`
+          ? `The slopes match, but the $y$-intercepts are ${ftxt(i1)} and ${ftxt(i2)}. The lines are parallel and do not meet.`
           : `The slopes differ, so the lines meet once, at ${hit}. That point is on both lines.`,
     ],
   });
@@ -917,55 +915,55 @@ export function variableRole(seed: string): GeneratedProblem {
   const left = r(2, 40);
   const start = gave + left;
   const letter = "s";
-  const fixed = `${name} has ${letter} ${thing}. ${name} gives away ${gave} and has ${left} left.`;
-  const fixedKey = `one unknown number: ${letter} = ${start}`;
+  const fixed = `${name} has $${letter}$ ${thing}. ${name} gives away ${gave} and has ${left} left.`;
+  const fixedKey = `one unknown number: $${letter} = ${start}$`;
   const fixedWrongValue = left;
   const formula = r(0, 4) === 0;
   const bound = r(5, 200);
   const setLetter = "h";
   const conditions = [
     {
-      text: `Riders must be at least ${bound} inches tall. Let ${setLetter} be the height in inches of any rider allowed on.`,
-      key: `any number in a set: ${setLetter} ≥ ${bound}`,
-      strict: `any number in a set: ${setLetter} > ${bound}`,
-      other: `one unknown number: ${setLetter} = ${bound + 1}`,
+      text: `Riders must be at least ${bound} inches tall. Let $${setLetter}$ be the height in inches of any rider allowed on.`,
+      key: `any number in a set: $${setLetter} ≥ ${bound}$`,
+      strict: `any number in a set: $${setLetter} > ${bound}$`,
+      other: `one unknown number: $${setLetter} = ${bound + 1}$`,
     },
     {
-      text: `A bag holds at most ${bound} books. Let ${setLetter} be how many books are in an allowed bag.`,
-      key: `any number in a set: ${setLetter} ≤ ${bound}`,
-      strict: `any number in a set: ${setLetter} < ${bound}`,
-      other: `one unknown number: ${setLetter} = ${bound - 1}`,
+      text: `A bag holds at most ${bound} books. Let $${setLetter}$ be how many books are in an allowed bag.`,
+      key: `any number in a set: $${setLetter} ≤ ${bound}$`,
+      strict: `any number in a set: $${setLetter} < ${bound}$`,
+      other: `one unknown number: $${setLetter} = ${bound - 1}$`,
     },
     {
-      text: `The temperature must be more than ${bound} degrees. Let ${setLetter} be an allowed temperature.`,
-      key: `any number in a set: ${setLetter} > ${bound}`,
-      strict: `any number in a set: ${setLetter} ≥ ${bound}`,
-      other: `one unknown number: ${setLetter} = ${bound + 1}`,
+      text: `The temperature must be more than ${bound} degrees. Let $${setLetter}$ be an allowed temperature.`,
+      key: `any number in a set: $${setLetter} > ${bound}$`,
+      strict: `any number in a set: $${setLetter} ≥ ${bound}$`,
+      other: `one unknown number: $${setLetter} = ${bound + 1}$`,
     },
     {
-      text: `Fewer than ${bound} people may enter. Let ${setLetter} be an allowed number of people.`,
-      key: `any number in a set: ${setLetter} < ${bound}`,
-      strict: `any number in a set: ${setLetter} ≤ ${bound}`,
-      other: `one unknown number: ${setLetter} = ${Math.max(0, bound - 1)}`,
+      text: `Fewer than ${bound} people may enter. Let $${setLetter}$ be an allowed number of people.`,
+      key: `any number in a set: $${setLetter} < ${bound}$`,
+      strict: `any number in a set: $${setLetter} ≤ ${bound}$`,
+      other: `one unknown number: $${setLetter} = ${Math.max(0, bound - 1)}$`,
     },
   ] as const;
   const cond = formula
     ? {
-        text: `A square with side ${setLetter} has perimeter 4${setLetter}.`,
-        key: `any positive number: ${setLetter} > 0`,
-        boundary: `one unknown number: ${setLetter} = 4`,
-        strict: `any number in a set: ${setLetter} ≥ 4`,
-        other: `one unknown number: ${setLetter} = 16`,
+        text: `A square with side $${setLetter}$ has perimeter $4${setLetter}$.`,
+        key: `any positive number: $${setLetter} > 0$`,
+        boundary: `one unknown number: $${setLetter} = 4$`,
+        strict: `any number in a set: $${setLetter} ≥ 4$`,
+        other: `one unknown number: $${setLetter} = 16$`,
       }
     : {
         ...pick(r, conditions),
-        boundary: `one unknown number: ${setLetter} = ${bound}`,
+        boundary: `one unknown number: $${setLetter} = ${bound}$`,
       };
   const fixedChoices = [
     fixedKey,
-    `one unknown number: ${letter} = ${fixedWrongValue}`,
-    `any number in a set: ${letter} ≥ ${left}`,
-    `any number in a set: ${letter} > ${gave}`,
+    `one unknown number: $${letter} = ${fixedWrongValue}$`,
+    `any number in a set: $${letter} ≥ ${left}$`,
+    `any number in a set: $${letter} > ${gave}$`,
   ];
   const setChoices = [cond.key, cond.boundary, cond.strict, cond.other];
   const parts = shuffle(r, [
@@ -990,7 +988,7 @@ export function variableRole(seed: string): GeneratedProblem {
     answer: built.answer,
     hint: `${name} gives away ${gave} ${thing} and has ${left} left. If a fact pins the letter to one number, it is one unknown. ${formula ? "A side length can be any positive number." : `The other sentence uses ${bound}.`} If every number that meets a condition is allowed, the letter stands for that whole set.`,
     explanation: [
-      `${fixed} Giving away ${gave} and having ${left} left pins ${letter} at ${start}, one number.`,
+      `${fixed} Giving away ${gave} and having ${left} left pins $${letter}$ at ${start}, one number.`,
       formula
         ? `A side length can be any positive number. The 4 in the perimeter formula is not the side.`
         : `${cond.text} The boundary is included or excluded by the words, and it is not the only allowed number.`,
@@ -1020,8 +1018,8 @@ export function arithmeticAlgebra(seed: string): GeneratedProblem {
   }
   const noun = grouped ? "width" : "months";
   const story = grouped
-    ? `A rectangle has perimeter ${total} cm and length ${q} cm. The width is w cm, and ${p}(w + ${q}) = ${total}.`
-    : `A gym charges ${q} dollars to join and ${p} dollars each month. After ${noun} m, the total paid is ${total} dollars: ${p}m + ${q} = ${total}.`;
+    ? `A rectangle has perimeter ${total} cm and length ${q} cm. The width is $w$ cm, and $${p}(w + ${q}) = ${total}$.`
+    : `A gym charges ${q} dollars to join and ${p} dollars each month. After ${noun} $m$, the total paid is ${total} dollars: $${p}m + ${q} = ${total}$.`;
   const keySteps = grouped
     ? `Divide ${total} by ${p}, then subtract ${q}`
     : `Subtract ${q} from ${total}, then divide by ${p}`;
@@ -1052,18 +1050,18 @@ export function arithmeticAlgebra(seed: string): GeneratedProblem {
   if (sequences.filter((text) => value(text) === x).length !== 1)
     throw new Error("Distractor matches the key");
   const algKey = grouped
-    ? `${p}(w + ${q}) = ${total}; divide both sides by ${p}`
-    : `${p}m + ${q} = ${total}; subtract ${q} from both sides`;
+    ? `$${p}(w + ${q}) = ${total}$; divide both sides by ${p}`
+    : `$${p}m + ${q} = ${total}$; subtract ${q} from both sides`;
   const algWrong = grouped
     ? [
-        `${p}(w + ${q}) = ${total}; subtract ${q} first`,
-        `${p}w + ${q} = ${total}; subtract ${q}`,
-        `w + ${q} = ${total}; divide by ${p}`,
+        `$${p}(w + ${q}) = ${total}$; subtract ${q} first`,
+        `$${p}w + ${q} = ${total}$; subtract ${q}`,
+        `$w + ${q} = ${total}$; divide by ${p}`,
       ]
     : [
-        `${p}(m + ${q}) = ${total}; divide both sides by ${p}`,
-        `${p}m − ${q} = ${total}; add ${q}`,
-        `${q}m + ${p} = ${total}; subtract ${p}`,
+        `$${p}(m + ${q}) = ${total}$; divide both sides by ${p}`,
+        `$${p}m − ${q} = ${total}$; add ${q}`,
+        `$${q}m + ${p} = ${total}$; subtract ${p}`,
       ];
   const compare = grouped
     ? `Both divide by ${p} then subtract ${q}, in that order; the algebra steps match`
@@ -1106,7 +1104,7 @@ export function arithmeticAlgebra(seed: string): GeneratedProblem {
         ]
       : [
           `${total} − ${q} = ${total - q}. Then ${total - q} ÷ ${p} = ${x}.`,
-          `On ${p}m + ${q} = ${total}, subtract ${q} from both sides, then divide by ${p}.`,
+          `On $${p}m + ${q} = ${total}$, subtract ${q} from both sides, then divide by ${p}.`,
           "The algebra steps are the arithmetic steps done to both sides.",
         ],
   });
@@ -1188,7 +1186,9 @@ export function feeGraph(seed: string): GeneratedProblem {
       label: `${open ? "An open" : "A filled"} circle at ${Math.abs(forgottenFee - m.b) > 0.2 ? forgottenFee : forgottenRate} with the ray shaded ${left ? "left" : "right"}.`,
     },
   ];
-  if (new Set(scenes.map((s) => JSON.stringify([s.b, s.left, s.open]))).size < 4)
+  if (
+    new Set(scenes.map((s) => JSON.stringify([s.b, s.left, s.open]))).size < 4
+  )
     throw new Error("Need distinct graphs");
   const order = shuffle(r, scenes);
   const options = order.map((s, i) => ({
@@ -1200,11 +1200,12 @@ export function feeGraph(seed: string): GeneratedProblem {
   const feedback: Record<string, string> = {};
   order.forEach((s, i) => {
     if (!s.correct)
-      feedback[figureOptionIds[i]!] = s.open !== open
-        ? "The circle does not match the sign. A strict sign is open."
-        : s.left !== left
-          ? "Test 0 in the original inequality before shading."
-          : "That boundary drops the fee or the rate.";
+      feedback[figureOptionIds[i]!] =
+        s.open !== open
+          ? "The circle does not match the sign. A strict sign is open."
+          : s.left !== left
+            ? "Test 0 in the original inequality before shading."
+            : "That boundary drops the fee or the rate.";
   });
   const response: FigureChoiceResponse = {
     kind: "figure-choice",
@@ -1321,7 +1322,7 @@ export function makeExample(seed: string): GeneratedProblem {
       rows: [
         {
           id: "r1",
-          label: `The number that gives ${k}(x − ${h}) = ${k}x − □ infinitely many solutions`,
+          label: `The number that gives $${k}(x − ${h}) = ${k}x − □$ infinitely many solutions`,
           fields: [{ kind: "number", label: "Number", maxLength: 8 }],
         },
       ],
@@ -1340,9 +1341,9 @@ export function makeExample(seed: string): GeneratedProblem {
       workGrading,
       hint: `Expand the left side $${k}(x − ${h})$. Infinitely many solutions means the two sides are the same expression, including the plain number.`,
       explanation: [
-        `${k}(x − ${h}) = ${k}x − ${box}.`,
-        `The right side ${k}x − □ matches when the box is ${box}.`,
-        "Same x-count and the same constant: every number is a solution.",
+        `$${k}(x − ${h}) = ${k}x − ${box}$.`,
+        `The right side $${k}x − □$ matches when the box is ${box}.`,
+        "Same $x$-count and the same constant: every number is a solution.",
       ],
     });
   }
@@ -1414,16 +1415,16 @@ export function makeExample(seed: string): GeneratedProblem {
   if (!gradeStructuredWork(response, workGrading, answer))
     throw new Error("Example key");
   return stamp(meta, seed, "make-an-example", {
-    prompt: `Complete the right side of $${axb(p, q)} = ____$ so the equation has 1. no solution, 2. infinitely many solutions, 3. exactly one solution.`,
+    prompt: `Complete the right side of $${axb(p, q)} =$ ____ so the equation has 1. no solution, 2. infinitely many solutions, 3. exactly one solution.`,
     response,
     answer,
     workGrading,
-    hint: `The left side is $${axb(p, q)}$, so compare its x-count ${p} first. The same count with a different plain number has no solution. The same expression has every number. A different x count has one number.`,
+    hint: `The left side is $${axb(p, q)}$, so compare its $x$-count ${p} first. The same count with a different plain number has no solution. The same expression has every number. A different $x$ count has one number.`,
     explanation: [
-      `The left side is $${axb(p, q)}$. Its x-count is ${p} and its plain number is ${q}.`,
-      "Same x-count and a different plain number: no number works.",
+      `The left side is $${axb(p, q)}$. Its $x$-count is ${p} and its plain number is ${q}.`,
+      "Same $x$-count and a different plain number: no number works.",
       "The same expression, in any equivalent form: every number works.",
-      "A different x-count: the x terms do not cancel, so exactly one number works.",
+      "A different $x$-count: the $x$ terms do not cancel, so exactly one number works.",
     ],
   });
 }
@@ -1453,7 +1454,11 @@ export function intersectionReason(seed: string): GeneratedProblem {
   const r = clauseStream(meta.id, seed);
   const m1 = pick(r, SLOPES);
   let m2 = pick(r, SLOPES);
-  if (feq(m1, m2)) m2 = pick(r, SLOPES.filter((m) => !feq(m, m1)));
+  if (feq(m1, m2))
+    m2 = pick(
+      r,
+      SLOPES.filter((m) => !feq(m, m1)),
+    );
   const qx = r(-1, 1) * m1.d * m2.d;
   if (Math.abs(qx) > 8) throw new Error("Crossing off the grid");
   const qy = r(-4, 4);
@@ -1464,9 +1469,7 @@ export function intersectionReason(seed: string): GeneratedProblem {
   const candidates = [-6, -4, -2, 2, 4, 6]
     .map((step) => latticeLine(m1, b1, qx + step * m1.d))
     .filter((p): p is [number, number] => !!p);
-  const P = candidates.find(
-    (p) => p[1] !== b2 + (m2.n * p[0]) / m2.d,
-  );
+  const P = candidates.find((p) => p[1] !== b2 + (m2.n * p[0]) / m2.d);
   const others = [-6, -4, -2, 2, 4, 6]
     .map((step) => latticeLine(m2, b2, qx + step * m2.d))
     .filter((p): p is [number, number] => !!p);
@@ -1495,33 +1498,33 @@ export function intersectionReason(seed: string): GeneratedProblem {
     .point(R[0], R[1], "R")
     .scene({ title: "Two lines" });
   const yOf = (m: Fr, b: number, x: number) => b + (m.n * x) / m.d;
-  const check = `At Q, line 1 gives ${yOf(m1, b1, qx)} and line 2 gives ${yOf(m2, b2, qx)}`;
+  const check = `At $Q$, line 1 gives ${yOf(m1, b1, qx)} and line 2 gives ${yOf(m2, b2, qx)}`;
   const built = multi(r, [
     {
       id: "who",
       label: "Which point is a solution of the system?",
-      choices: ["P", "Q", "R"],
-      correct: "Q",
+      choices: ["$P$", "$Q$", "$R$"],
+      correct: "$Q$",
     },
     {
       id: "why",
       label: "Why?",
       choices: [
-        "Q is on both lines, so it makes both equations true",
-        "Q is on the first line, so the first equation is enough",
-        "A crossing has equal x and y",
-        "P and R are solutions because each is on one line",
+        "$Q$ is on both lines, so it makes both equations true",
+        "$Q$ is on the first line, so the first equation is enough",
+        "A crossing has equal $x$ and $y$",
+        "$P$ and $R$ are solutions because each is on one line",
       ],
-      correct: "Q is on both lines, so it makes both equations true",
+      correct: "$Q$ is on both lines, so it makes both equations true",
     },
     {
       id: "chk",
-      label: "Which check is correct for Q?",
+      label: "Which check is correct for $Q$?",
       choices: [
         check,
-        `At Q, both lines give ${yOf(m1, b1, qx) + 1}`,
-        `At P, both lines give ${P[1]}`,
-        `At R, line 1 gives ${R[1]}`,
+        `At $Q$, both lines give ${yOf(m1, b1, qx) + 1}`,
+        `At $P$, both lines give ${P[1]}`,
+        `At $R$, line 1 gives ${R[1]}`,
       ],
       correct: check,
     },
@@ -1530,15 +1533,15 @@ export function intersectionReason(seed: string): GeneratedProblem {
     prompt: `${shownSystem([
       [lineText(m1, b1), "Line 1"],
       [lineText(m2, b2), "Line 2"],
-    ])} P is (${P[0]}, ${P[1]}), Q is (${qx}, ${qy}), and R is (${R[0]}, ${R[1]}).`,
+    ])} $P$ is $(${P[0]}, ${P[1]})$, $Q$ is $(${qx}, ${qy})$, and $R$ is $(${R[0]}, ${R[1]})$.`,
     response: built.response,
     answer: built.answer,
     figure: { kind: "scene", scene },
-    hint: `Line 1 is ${tex(lineText(m1, b1))} and line 2 is ${tex(lineText(m2, b2))}. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R $(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
+    hint: `Line 1 is ${tex(lineText(m1, b1))} and line 2 is ${tex(lineText(m2, b2))}. A solution of the system is on both lines. Test $P(${P[0]}, ${P[1]})$, $Q(${qx}, ${qy})$ and $R(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
     explanation: [
-      `Q (${qx}, ${qy}) is on both lines, so both equations are true there.`,
-      `P is on line 1 only: ${P[1]} equals the first line and not the second.`,
-      `R is on line 2 only.`,
+      `$Q(${qx}, ${qy})$ is on both lines, so both equations are true there.`,
+      `$P$ is on line 1 only: ${P[1]} equals the first line and not the second.`,
+      `$R$ is on line 2 only.`,
       check + ".",
     ],
   });
@@ -1547,7 +1550,10 @@ export function intersectionReason(seed: string): GeneratedProblem {
 export function plotLine(seed: string): GeneratedProblem {
   const meta = metaOf("system-line-points");
   const r = clauseStream(meta.id, seed);
-  const m = pick(r, SLOPES.filter((s) => s.d <= 2));
+  const m = pick(
+    r,
+    SLOPES.filter((s) => s.d <= 2),
+  );
   const b = r(-3, 3);
   const grid = {
     xMin: -8,
@@ -1573,7 +1579,10 @@ export function plotLine(seed: string): GeneratedProblem {
     ordered: false,
     connect: "line",
   };
-  const m2 = pick(r, SLOPES.filter((s) => !feq(s, m)));
+  const m2 = pick(
+    r,
+    SLOPES.filter((s) => !feq(s, m)),
+  );
   const b2 = b + nz(r, 1, 3);
   return stamp(meta, seed, "plot-and-estimate", {
     prompt: `The system is ${shownSystem([
@@ -1589,10 +1598,10 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: `The first line is ${tex(lineText(m, b))}. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
+    hint: `The first line is ${tex(lineText(m, b))}. Pick two $x$-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
     explanation: [
-      `On ${tex(lineText(m, b))}, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
-      `One such point is (${answerPoints[0]![0]}, ${answerPoints[0]![1]}). Another is (${answerPoints[1]![0]}, ${answerPoints[1]![1]}).`,
+      `On ${tex(lineText(m, b))}, an $x$ that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer $y$.`,
+      `One such point is $(${answerPoints[0]![0]}, ${answerPoints[0]![1]})$. Another is $(${answerPoints[1]![0]}, ${answerPoints[1]![1]})$.`,
       "Any two distinct lattice points on that line are accepted. Line 2 is already drawn and is not part of this plot.",
     ],
   });
@@ -1605,7 +1614,10 @@ export function crossingEstimate(seed: string): GeneratedProblem {
   const meta = metaOf("system-crossing-estimate");
   const r = clauseStream(meta.id, seed);
   const m1 = pick(r, SLOPES);
-  let m2 = pick(r, SLOPES.filter((m) => !feq(m, m1)));
+  let m2 = pick(
+    r,
+    SLOPES.filter((m) => !feq(m, m1)),
+  );
   const b1 = r(-3, 3);
   const b2 = r(-3, 3);
   const x = fdiv(fsub(fr(b2), fr(b1)), fsub(m1, m2));
@@ -1633,7 +1645,8 @@ export function crossingEstimate(seed: string): GeneratedProblem {
         ) > 0.5),
   );
   const unique = [...new Set(far)];
-  if (!unique.includes(key) || unique.length < 4) throw new Error("Distractors");
+  if (!unique.includes(key) || unique.length < 4)
+    throw new Error("Distractors");
   const rows = unique.slice(0, 4).map((label) => ({
     label,
     correct: label === key,
@@ -1660,10 +1673,10 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
     figure: { kind: "scene", scene },
-    hint: `The lines are ${tex(lineText(m1, b1))} and ${tex(lineText(m2, b2))}. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
+    hint: `The lines are ${tex(lineText(m1, b1))} and ${tex(lineText(m2, b2))}. Follow them to where they meet. Read $x$ and $y$ to the nearest half unit. A $y$-intercept and a swapped pair are not the crossing.`,
     explanation: [
-      `Exactly, x = ${ftxt(x)} and y = ${ftxt(y)}.`,
-      `The nearest half-unit pair is ${key}, within a quarter unit of the exact crossing.`,
+      `Exactly, $x = ${ftxt(x)}$ and $y = ${ftxt(y)}$.`,
+      `The nearest half-unit pair is $${key}$, within a quarter unit of the exact crossing.`,
       "The other choices are a swapped pair, a mirror, an intercept, or a point on only one line.",
     ],
   });
@@ -1691,12 +1704,12 @@ export function assumeCheck(seed: string): GeneratedProblem {
       id: "why",
       label: "What justifies the opening supposition?",
       choices: [
-        "We assume a solution exists; later lines are true for that x",
+        "We assume a solution exists; later lines are true for that $x$",
         "Addition property of equality",
         "Definition of a variable",
-        "It is given, so it is true for every x",
+        "It is given, so it is true for every $x$",
       ],
-      correct: "We assume a solution exists; later lines are true for that x",
+      correct: "We assume a solution exists; later lines are true for that $x$",
     },
     {
       id: "shown",
@@ -1704,15 +1717,15 @@ export function assumeCheck(seed: string): GeneratedProblem {
       choices: none
         ? [
             "The assumption led to a false statement, so no number is a solution",
-            "x = 0",
-            `x = ${Math.abs(d - leftConst)}`,
+            "$x = 0$",
+            `$x = ${Math.abs(d - leftConst)}$`,
             "The distributive step was wrong",
           ]
         : [
             `If there is a solution, it must be ${x}`,
             `${x} is a solution`,
             "Every number is a solution",
-            `The equation has two solutions, x and ${x}`,
+            `The equation has two solutions, $x$ and ${x}`,
           ],
       correct: none
         ? "The assumption led to a false statement, so no number is a solution"
@@ -1723,7 +1736,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
       label: "What completes the argument?",
       choices: none
         ? [
-            `${leftConst} = ${d} is false, so the supposition is impossible`,
+            `$${leftConst} = ${d}$ is false, so the supposition is impossible`,
             "Nothing more; the steps already prove a solution",
             "Check the last line only",
             "Solve again by a different method",
@@ -1735,7 +1748,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
             "Solve again by a different method",
           ],
       correct: none
-        ? `${leftConst} = ${d} is false, so the supposition is impossible`
+        ? `$${leftConst} = ${d}$ is false, so the supposition is impossible`
         : `Substitute ${x}: both sides equal ${sideL}`,
     },
   ]);
@@ -1743,20 +1756,20 @@ export function assumeCheck(seed: string): GeneratedProblem {
   if (!none && expandedLeft !== sideL) throw new Error("Expansion");
   return stamp(meta, seed, "assume-then-check", {
     prompt: none
-      ? `Suppose x is a number with ${eq}. Expanding and subtracting ${c}x from both sides leaves ${leftConst} = ${d}.`
-      : `Suppose x is a number with ${eq}. The chain reaches x = ${x}.`,
+      ? `Suppose $x$ is a number with $${eq}$. Expanding and subtracting $${c}x$ from both sides leaves $${leftConst} = ${d}$.`
+      : `Suppose $x$ is a number with $${eq}$. The chain reaches $x = ${x}$.`,
     response: built.response,
     answer: built.answer,
-    hint: `The first line assumes a solution of ${eq}. It is an assumption, not a property and not an identity. Follow what must be true, then test the result in that equation.`,
+    hint: `The first line assumes a solution of $${eq}$. It is an assumption, not a property and not an identity. Follow what must be true, then test the result in that equation.`,
     explanation: none
       ? [
           "We supposed a solution exists. Each step keeps the truth of the line before it.",
-          `The chain ends at ${leftConst} = ${d}, which is false.`,
+          `The chain ends at $${leftConst} = ${d}$, which is false.`,
           "The supposition is impossible, so no number is a solution.",
         ]
       : [
           "We supposed a solution exists, so if there is one it must be the number the chain reached.",
-          `Substitute ${x} in the original: ${a}(${checkX}${plus(b)}) = ${sideL} and ${c}(${checkX})${plus(d)} = ${sideR}.`,
+          `Substitute ${x} in the original: ${tex(`${a}(${checkX}${plus(b)}) = ${sideL}`)} and ${tex(`${c}(${checkX})${plus(d)} = ${sideR}`)}.`,
           "The two sides match, so the number really is a solution.",
         ],
   });
@@ -1794,10 +1807,10 @@ export function scaledElimination(seed: string): GeneratedProblem {
     throw new Error("Need a clean elimination");
   const left1 = side(a, b);
   const left2 = side(d, e);
-  const key = equation(nx, 0, nr);
-  const unscaled = equation(nx, 0, f + c);
-  const subtracted = equation(d - k * a, e - k * b, f - k * c);
-  const scaledE2 = equation(k * d, k * e, k * f);
+  const key = tex(equation(nx, 0, nr));
+  const unscaled = tex(equation(nx, 0, f + c));
+  const subtracted = tex(equation(d - k * a, e - k * b, f - k * c));
+  const scaledE2 = tex(equation(k * d, k * e, k * f));
   const labels = [key, unscaled, subtracted, scaledE2];
   if (new Set(labels).size !== 4) throw new Error("Elimination labels");
   const general = r(0, 1) === 0;
@@ -1825,21 +1838,29 @@ export function scaledElimination(seed: string): GeneratedProblem {
     parts.push({
       id: "gen",
       label: "What is $(d + ka)x + (e + kb)y$ at a solution?",
-      choices: [`${nr}, because it equals $f + kc$`, `${f + c}`, `${k * f + k * c}`, "It cannot be known without numbers"],
+      choices: [
+        `${nr}, because it equals $f + kc$`,
+        `${f + c}`,
+        `${k * f + k * c}`,
+        "It cannot be known without numbers",
+      ],
       correct: `${nr}, because it equals $f + kc$`,
     });
   const built = multi(r, parts);
   return stamp(meta, seed, "scaled-multiple", {
-    prompt: `${shownSystem([
-      [`${left1} = ${c}`, "E1"],
-      [`${left2} = ${f}`, "E2"],
-    ], true)}\n\nThe system is replaced by $E1$ and ${addedToE2(k)}.`,
+    prompt: `${shownSystem(
+      [
+        [`${left1} = ${c}`, "E1"],
+        [`${left2} = ${f}`, "E2"],
+      ],
+      true,
+    )}\n\nThe system is replaced by $E1$ and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
     hint: `$E1$ is ${tex(`${left1} = ${c}`)}, and the new system uses ${addedToE2(k)}. Multiply every term of $E1$ by ${term(k)}, then add matching terms to $E2$. The new equation is reversible: subtract ${scaledE1(k)} to get $E2$ back.`,
     explanation: [
-      `${scaledE1(k)} is ${termText(k * a, "x")} and ${termText(k * b, "y")} equal to ${k * c}.`,
-      `Add $E2$: ${termText(nx, "x")} = ${n(nr)}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
+      `${scaledE1(k)} is ${tex(termText(k * a, "x"))} and ${tex(termText(k * b, "y"))} equal to ${k * c}.`,
+      `Add $E2$: ${tex(`${termText(nx, "x")} = ${n(nr)}`)}. The $y$ terms are ${tex(`${e} + ${term(k)}(${b}) = 0`)}.`,
       `The unscaled right side would be ${f + c}, which is not ${nr}.`,
       general
         ? `At a solution, $E2$ contributes ${f} and ${scaledE1(k)} contributes ${k * c}, so the sum is ${nr}.`
