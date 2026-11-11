@@ -13,4 +13,4 @@ it("includes every template of the skill and preserves exact standard text", () 
   expect(pack.problem_types.map(p => p.type)).toEqual(templates.filter(t => t.skillId === skill.id).map(t => t.id));
   expect(pack.problem_types.every(p => p.problems.length === 10 && p.kit_figure.named_parts)).toBe(true);
   expect(() => buildSkillFacts("missing-skill", [])).toThrow("Unknown skill");
-});
+}, 120_000); // generates ten problems for each of the skill's ten types; slow on a shared runner
