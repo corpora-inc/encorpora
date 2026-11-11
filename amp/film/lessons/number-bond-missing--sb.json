@@ -1,0 +1,1944 @@
+{
+ "id": "number-bond-missing--sb",
+ "title": "Two parts make the whole",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -3.4,
+     15.8,
+     11.8
+    ],
+    "points": {
+     "Pa": [
+      -0.705,
+      8.275
+     ],
+     "Pb": [
+      1.545,
+      8.275
+     ],
+     "Pc": [
+      3.795,
+      8.275
+     ],
+     "Pd": [
+      6.045,
+      8.275
+     ],
+     "Pe": [
+      8.295,
+      8.275
+     ],
+     "Pf": [
+      10.545,
+      8.275
+     ],
+     "Pg": [
+      12.795,
+      8.275
+     ],
+     "W": [
+      7.5,
+      9.6
+     ],
+     "L": [
+      3.6,
+      7.3
+     ],
+     "R": [
+      11.4,
+      7.3
+     ],
+     "A": [
+      0,
+      6.3
+     ],
+     "B": [
+      7.2,
+      6.3
+     ],
+     "C": [
+      7.2,
+      -3.1
+     ],
+     "D": [
+      0,
+      -3.1
+     ],
+     "E": [
+      7.8,
+      6.3
+     ],
+     "F": [
+      15,
+      6.3
+     ],
+     "G": [
+      15,
+      -3.1
+     ],
+     "H": [
+      7.8,
+      -3.1
+     ],
+     "Qa": [
+      1.92,
+      3.3
+     ],
+     "Qb": [
+      8.12,
+      6.4
+     ],
+     "Qc": [
+      11.32,
+      6.4
+     ],
+     "Qd": [
+      8.12,
+      3.3
+     ],
+     "Qe": [
+      11.32,
+      3.3
+     ],
+     "Qf": [
+      8.12,
+      0.2
+     ],
+     "Qg": [
+      11.32,
+      0.2
+     ],
+     "Bx1": [
+      11.13,
+      7.57
+     ],
+     "Bx2": [
+      11.67,
+      7.57
+     ],
+     "Bx3": [
+      11.67,
+      7.029999999999999
+     ],
+     "Bx4": [
+      11.13,
+      7.029999999999999
+     ]
+    },
+    "parts": [
+     {
+      "id": "blueBank",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1
+     },
+     {
+      "id": "warmBank",
+      "poly": [
+       "E",
+       "F",
+       "G",
+       "H"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "wl",
+      "seg": [
+       "W",
+       "L"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "wr",
+      "seg": [
+       "W",
+       "R"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "wc",
+      "circle": "W",
+      "r": 0.62,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "lc",
+      "circle": "L",
+      "r": 0.62,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "rc",
+      "circle": "R",
+      "r": 0.62,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "whole",
+      "label": "7",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "a",
+      "things": "duck",
+      "n": 1,
+      "at": "Pa",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "b",
+      "things": "duck",
+      "n": 1,
+      "at": "Pb",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "c",
+      "things": "duck",
+      "n": 1,
+      "at": "Pc",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "d",
+      "things": "duck",
+      "n": 1,
+      "at": "Pd",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "e",
+      "things": "duck",
+      "n": 1,
+      "at": "Pe",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "f",
+      "things": "duck",
+      "n": 1,
+      "at": "Pf",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "g",
+      "things": "duck",
+      "n": 1,
+      "at": "Pg",
+      "size": 2.35,
+      "start": false
+     },
+     {
+      "id": "l1",
+      "label": "1",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r6",
+      "label": "6",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "2",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r5",
+      "label": "5",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l3",
+      "label": "3",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r4",
+      "label": "4",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "box",
+      "poly": [
+       "Bx1",
+       "Bx2",
+       "Bx3",
+       "Bx4"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "landa",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qa",
+      "size": 2.8
+     },
+     {
+      "id": "landb",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qb",
+      "size": 2.8
+     },
+     {
+      "id": "landc",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qc",
+      "size": 2.8
+     },
+     {
+      "id": "landd",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qd",
+      "size": 2.8
+     },
+     {
+      "id": "lande",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qe",
+      "size": 2.8
+     },
+     {
+      "id": "landf",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qf",
+      "size": 2.8
+     },
+     {
+      "id": "landg",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qg",
+      "size": 2.8
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here come seven ducks.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "text",
+       "text": "7 ducks"
+      },
+      {
+       "do": "arrive",
+       "target": [
+        "a1",
+        "b1",
+        "c1",
+        "d1",
+        "e1",
+        "f1",
+        "g1"
+       ],
+       "at": "come"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "All seven ducks are the whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "wc",
+        "whole"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "text",
+       "text": "Whole: all 7 ducks.",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Watch them split.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "wl",
+        "wr",
+        "lc",
+        "rc",
+        "blueBank",
+        "warmBank"
+       ],
+       "at": "them"
+      },
+      {
+       "do": "send",
+       "target": "a1",
+       "to": "landa",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "b1",
+       "to": "landb",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "c1",
+       "to": "landc",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "d1",
+       "to": "landd",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "e1",
+       "to": "lande",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "f1",
+       "to": "landf",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "g1",
+       "to": "landg",
+       "at": "them",
+       "dur": 1.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here, one duck.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "duck"
+      },
+      {
+       "do": "highlight",
+       "target": "a1",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And six over here!",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "show",
+       "target": "r6",
+       "at": "here"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "b1",
+        "c1",
+        "d1",
+        "e1",
+        "f1",
+        "g1"
+       ],
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each group is a part. This picture is a number bond.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Two parts make the whole.",
+       "at": "group"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One plus six equals seven. Plus puts parts together. Equals means the same amount.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{1}+\\ca{6}=7",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Back together. All seven ducks.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "l1",
+        "r6",
+        "blueBank",
+        "warmBank",
+        "wl",
+        "wr",
+        "lc",
+        "rc"
+       ],
+       "at": "Back"
+      },
+      {
+       "do": "send",
+       "target": "a1",
+       "to": "a",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "b1",
+       "to": "b",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "c1",
+       "to": "c",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "d1",
+       "to": "d",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "e1",
+       "to": "e",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "f1",
+       "to": "f",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "g1",
+       "to": "g",
+       "at": "Back",
+       "dur": 1.5
+      },
+      {
+       "do": "move",
+       "points": {
+        "Qa": [
+         0.32,
+         4.85
+        ],
+        "Qb": [
+         3.52,
+         4.85
+        ],
+        "Qc": [
+         9.72,
+         6.4
+        ],
+        "Qd": [
+         8.12,
+         3.3
+        ],
+        "Qe": [
+         11.32,
+         3.3
+        ],
+        "Qf": [
+         8.12,
+         0.2
+        ],
+        "Qg": [
+         11.32,
+         0.2
+        ]
+       },
+       "at": "ducks",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Split them another way.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "blueBank",
+        "warmBank",
+        "wl",
+        "wr",
+        "lc",
+        "rc"
+       ],
+       "at": "them"
+      },
+      {
+       "do": "send",
+       "target": "a1",
+       "to": "landa",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "b1",
+       "to": "landb",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "c1",
+       "to": "landc",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "d1",
+       "to": "landd",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "e1",
+       "to": "lande",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "f1",
+       "to": "landf",
+       "at": "them",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "g1",
+       "to": "landg",
+       "at": "them",
+       "dur": 1.5
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Here are two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "a1",
+        "b1"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "l2",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "And here are five.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "c1",
+        "d1",
+        "e1",
+        "f1",
+        "g1"
+       ],
+       "at": "here"
+      },
+      {
+       "do": "show",
+       "target": "r5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two plus five equals seven.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{2}+\\ca{5}=7",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One duck walks across.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "Qc": [
+         1.92,
+         1.75
+        ]
+       },
+       "at": "duck",
+       "dur": 1.5
+      },
+      {
+       "do": "hide",
+       "target": [
+        "l2",
+        "r5"
+       ],
+       "at": "duck"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three plus four equals seven. Different parts, same whole.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "l3",
+        "r4"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{3}+\\ca{4}=7",
+       "at": "Three"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "What about four plus three?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{4}+\\cb{3}=7",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The same two parts turned around. That is the same split.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{3}+\\ca{4}=7",
+       "at": "same"
+      },
+      {
+       "do": "text",
+       "text": "Same two parts.",
+       "at": "That"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -3.4,
+     15.8,
+     11.8
+    ],
+    "points": {
+     "Pa": [
+      1.92,
+      3.3
+     ],
+     "Pb": [
+      8.12,
+      6.4
+     ],
+     "Pc": [
+      11.32,
+      6.4
+     ],
+     "Pd": [
+      8.12,
+      3.3
+     ],
+     "Pe": [
+      11.32,
+      3.3
+     ],
+     "Pf": [
+      8.12,
+      0.2
+     ],
+     "Pg": [
+      11.32,
+      0.2
+     ],
+     "W": [
+      7.5,
+      9.6
+     ],
+     "L": [
+      3.6,
+      7.3
+     ],
+     "R": [
+      11.4,
+      7.3
+     ],
+     "A": [
+      0,
+      6.3
+     ],
+     "B": [
+      7.2,
+      6.3
+     ],
+     "C": [
+      7.2,
+      -3.1
+     ],
+     "D": [
+      0,
+      -3.1
+     ],
+     "E": [
+      7.8,
+      6.3
+     ],
+     "F": [
+      15,
+      6.3
+     ],
+     "G": [
+      15,
+      -3.1
+     ],
+     "H": [
+      7.8,
+      -3.1
+     ],
+     "Bx1": [
+      11.13,
+      7.57
+     ],
+     "Bx2": [
+      11.67,
+      7.57
+     ],
+     "Bx3": [
+      11.67,
+      7.029999999999999
+     ],
+     "Bx4": [
+      11.13,
+      7.029999999999999
+     ],
+     "Bal": [
+      0.324,
+      3.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "blueBank",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "warmBank",
+      "poly": [
+       "E",
+       "F",
+       "G",
+       "H"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "wl",
+      "seg": [
+       "W",
+       "L"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "wr",
+      "seg": [
+       "W",
+       "R"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "wc",
+      "circle": "W",
+      "r": 0.62,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "lc",
+      "circle": "L",
+      "r": 0.62,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rc",
+      "circle": "R",
+      "r": 0.62,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "whole",
+      "label": "7",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a",
+      "things": "duck",
+      "n": 1,
+      "at": "Pa",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "b",
+      "things": "duck",
+      "n": 1,
+      "at": "Pb",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "c",
+      "things": "duck",
+      "n": 1,
+      "at": "Pc",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "d",
+      "things": "duck",
+      "n": 1,
+      "at": "Pd",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "duck",
+      "n": 1,
+      "at": "Pe",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "f",
+      "things": "duck",
+      "n": 1,
+      "at": "Pf",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "g",
+      "things": "duck",
+      "n": 1,
+      "at": "Pg",
+      "size": 2.8,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "1",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "r6",
+      "label": "6",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "l2",
+      "label": "2",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r5",
+      "label": "5",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l3",
+      "label": "3",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r4",
+      "label": "4",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "box",
+      "poly": [
+       "Bx1",
+       "Bx2",
+       "Bx3",
+       "Bx4"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "bal",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Bal",
+      "size": 2.8
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Seven ducks. Some swim away to the pond. One stays.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "7 ducks. 1 stays."
+      },
+      {
+       "do": "leave",
+       "target": [
+        "b1",
+        "c1",
+        "d1",
+        "e1",
+        "f1",
+        "g1"
+       ],
+       "at": "swim"
+      },
+      {
+       "do": "hide",
+       "target": "r6",
+       "at": "swim"
+      },
+      {
+       "do": "show",
+       "target": "box",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The box stands for the number of ducks out of sight.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "box",
+       "at": "box"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Box plus one equals seven. What number belongs in the box?",
+     "pause": 2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\square+1=7",
+       "at": "Box"
+      },
+      {
+       "do": "problem",
+       "text": "What number belongs in the box?",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six! One stayed, so six must have swum away.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "a1",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I'll count them back. Start with one. Two, three, four, five, six, seven.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "count",
+       "target": [
+        "b1",
+        "c1",
+        "d1",
+        "e1",
+        "f1",
+        "g1"
+       ],
+       "from": 2,
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six came back. Six plus one equals seven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Six"
+      },
+      {
+       "do": "hide",
+       "target": "box",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "r6",
+       "at": "Six"
+      },
+      {
+       "do": "answer",
+       "tex": "6",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{6}+\\cb{1}=7",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven equals one plus box. They ask the same thing.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{gathered}\\square+1=7\\\\[0.5em]7=1+\\square\\end{gathered}"
+      },
+      {
+       "do": "answer",
+       "tex": "6",
+       "at": "same"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.1,
+     -3.4,
+     16.1,
+     11.8
+    ],
+    "points": {
+     "Pa": [
+      -1.005,
+      8.175
+     ],
+     "Pb": [
+      1.045,
+      8.175
+     ],
+     "Pc": [
+      3.095,
+      8.175
+     ],
+     "Pd": [
+      5.145,
+      8.175
+     ],
+     "Pe": [
+      7.195,
+      8.175
+     ],
+     "Pf": [
+      9.245,
+      8.175
+     ],
+     "Pg": [
+      11.295,
+      8.175
+     ],
+     "Ph": [
+      13.345,
+      8.175
+     ],
+     "W": [
+      7.5,
+      9.6
+     ],
+     "L": [
+      3.6,
+      7.3
+     ],
+     "R": [
+      11.4,
+      7.3
+     ],
+     "A": [
+      0,
+      6.3
+     ],
+     "B": [
+      7.2,
+      6.3
+     ],
+     "C": [
+      7.2,
+      -3.1
+     ],
+     "D": [
+      0,
+      -3.1
+     ],
+     "E": [
+      7.8,
+      6.3
+     ],
+     "F": [
+      15,
+      6.3
+     ],
+     "G": [
+      15,
+      -3.1
+     ],
+     "H": [
+      7.8,
+      -3.1
+     ],
+     "Qa": [
+      0.32,
+      6.4
+     ],
+     "Qb": [
+      3.52,
+      6.4
+     ],
+     "Qc": [
+      0.32,
+      3.3
+     ],
+     "Qd": [
+      3.52,
+      3.3
+     ],
+     "Qe": [
+      1.92,
+      0.2
+     ],
+     "Qf": [
+      8.12,
+      4.85
+     ],
+     "Qg": [
+      11.32,
+      4.85
+     ],
+     "Qh": [
+      9.72,
+      1.75
+     ],
+     "Bx1": [
+      11.13,
+      7.57
+     ],
+     "Bx2": [
+      11.67,
+      7.57
+     ],
+     "Bx3": [
+      11.67,
+      7.029999999999999
+     ],
+     "Bx4": [
+      11.13,
+      7.029999999999999
+     ]
+    },
+    "parts": [
+     {
+      "id": "blueBank",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1
+     },
+     {
+      "id": "warmBank",
+      "poly": [
+       "E",
+       "F",
+       "G",
+       "H"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "wl",
+      "seg": [
+       "W",
+       "L"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "wr",
+      "seg": [
+       "W",
+       "R"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "wc",
+      "circle": "W",
+      "r": 0.62,
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "lc",
+      "circle": "L",
+      "r": 0.62,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "rc",
+      "circle": "R",
+      "r": 0.62,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 3,
+      "start": false
+     },
+     {
+      "id": "whole",
+      "label": "8",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": false
+     },
+     {
+      "id": "a",
+      "things": "duck",
+      "n": 1,
+      "at": "Pa",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "b",
+      "things": "duck",
+      "n": 1,
+      "at": "Pb",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "c",
+      "things": "duck",
+      "n": 1,
+      "at": "Pc",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "d",
+      "things": "duck",
+      "n": 1,
+      "at": "Pd",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "duck",
+      "n": 1,
+      "at": "Pe",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "f",
+      "things": "duck",
+      "n": 1,
+      "at": "Pf",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "g",
+      "things": "duck",
+      "n": 1,
+      "at": "Pg",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "h",
+      "things": "duck",
+      "n": 1,
+      "at": "Ph",
+      "size": 2.15,
+      "start": true
+     },
+     {
+      "id": "l1",
+      "label": "5",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r6",
+      "label": "3",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l2",
+      "label": "2",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r5",
+      "label": "5",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "l3",
+      "label": "3",
+      "at": "L",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "r4",
+      "label": "4",
+      "at": "R",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "box",
+      "poly": [
+       "Bx1",
+       "Bx2",
+       "Bx3",
+       "Bx4"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 3
+     },
+     {
+      "id": "landa",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qa",
+      "size": 2.8
+     },
+     {
+      "id": "landb",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qb",
+      "size": 2.8
+     },
+     {
+      "id": "landc",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qc",
+      "size": 2.8
+     },
+     {
+      "id": "landd",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qd",
+      "size": 2.8
+     },
+     {
+      "id": "lande",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qe",
+      "size": 2.8
+     },
+     {
+      "id": "landf",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qf",
+      "size": 2.8
+     },
+     {
+      "id": "landg",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qg",
+      "size": 2.8
+     },
+     {
+      "id": "landh",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Qh",
+      "size": 2.8
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Eight ducks. Five swim. The rest stay on the grass. How many stay on the grass?",
+     "pause": 3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "8 ducks. 5 swim. The rest stay on the grass. How many stay on the grass?"
+      },
+      {
+       "do": "show",
+       "target": [
+        "wc",
+        "whole"
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "blueBank",
+       "at": "swim"
+      },
+      {
+       "do": "show",
+       "target": "l1",
+       "at": "grass"
+      },
+      {
+       "do": "show",
+       "target": [
+        "warmBank",
+        "box"
+       ],
+       "at": "grass"
+      },
+      {
+       "do": "send",
+       "target": "a1",
+       "to": "landa",
+       "at": "swim",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "b1",
+       "to": "landb",
+       "at": "swim",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "c1",
+       "to": "landc",
+       "at": "swim",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "d1",
+       "to": "landd",
+       "at": "swim",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "e1",
+       "to": "lande",
+       "at": "swim",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "f1",
+       "to": "landf",
+       "at": "stay",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "g1",
+       "to": "landg",
+       "at": "stay",
+       "dur": 1.5
+      },
+      {
+       "do": "send",
+       "target": "h1",
+       "to": "landh",
+       "at": "stay",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": [
+        "wl",
+        "wr",
+        "lc",
+        "rc"
+       ],
+       "at": "grass"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I start with five. Six, seven, eight.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{5}+\\square=8",
+       "at": "five"
+      },
+      {
+       "do": "count",
+       "target": [
+        "f1",
+        "g1",
+        "h1"
+       ],
+       "from": 6,
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three more ducks. Three stay on the grass.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": "box",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "r6",
+       "at": "Three"
+      },
+      {
+       "do": "answer",
+       "tex": "3\\text{ ducks}",
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five plus three equals eight.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{5}+\\ca{3}=8",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two parts make the whole. Know one part, find the other.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Two parts make the whole."
+      },
+      {
+       "do": "text",
+       "text": "Know one part, find the other.",
+       "at": "Know"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

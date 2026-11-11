@@ -212,7 +212,7 @@
       "beats": [
         {
           "speaker": "teacher",
-          "say": "Apples, all over. Count each one once.",
+          "say": "Apples, all over. Count each apple once.",
           "do": [
             {
               "do": "clear"
