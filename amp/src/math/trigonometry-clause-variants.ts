@@ -589,7 +589,7 @@ export function trigonometryClause(
       interior = 180 - phi,
       bearing1 = r(0, 17) * 10,
       bearing2 = bearing1 + phi;
-    const unit = context === 1 ? "$N$" : "km";
+    const unit = context === 1 ? "N" : "km";
     const u: Point = [first, 0],
       end: Point = [
         first + second * Math.cos(rad(phi)),

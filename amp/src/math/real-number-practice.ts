@@ -1713,8 +1713,6 @@ function calculatorProductCase(r: Random): Case {
   throw new Error("Could not build a calculator product");
 }
 
-/** A one-letter unit symbol (t, g, m, s, B) is still a unit, not a variable. */
-const unitToken = (u: string) => (u.length === 1 ? `$${u}$` : u);
 const LADDERS = {
   length: ["km", "m", "mm", "µm", "nm"],
   mass: ["t", "kg", "g", "mg"],
@@ -1901,7 +1899,7 @@ function chooseUnitCase(r: Random): Case {
   const expText =
     exp === 10 ? "ten" : exp === -10 ? "negative ten" : String(exp);
   return {
-    prompt: `${context.tell(`$${sciTex(coef, exp)}$`, givenName)} Each step on this ladder is 1,000: ${units.map(unitToken).join(", ")}. ${LADDER_NOTE[context.ladder]}`,
+    prompt: `${context.tell(`$${sciTex(coef, exp)}$`, givenName)} Each step on this ladder is 1,000: ${units.join(", ")}. ${LADDER_NOTE[context.ladder]}`,
     answer: serializeMultiPart(response, {
       unit: unitOptions.find((o) => o.label === `${context.unit}${context.per}`)!.id,
       value: numberOptions.find((o) => o.label === plain(value))!.id,
@@ -1916,7 +1914,7 @@ function chooseUnitCase(r: Random): Case {
         ? `Each step to a smaller unit multiplies by 1,000. After ${off === 1 ? "one step" : `${off} steps`}, the number is ${plain(value)}.`
         : `Each step to a larger unit divides by 1,000. After ${-off === 1 ? "one step" : `${-off} steps`}, the number is ${plain(value)}.`,
       `${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} is at least 1 and under 1,000. One step past that is ${plain(shift(value, off > 0 ? 3 : -3))}, which is the wrong size to picture.`,
-      `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${unitToken(units[gIdx]!)}.`,
+      `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${units[gIdx]!}.`,
     ],
     hint: `The measure starts as ${coefText} times ten to the power ${expText}, in ${givenName}. Each step on the ladder changes the number by a factor of 1,000. Stop at the step whose number is at least 1 and under 1,000.`,
     tags: [context.ladder, "choose-unit-size"],

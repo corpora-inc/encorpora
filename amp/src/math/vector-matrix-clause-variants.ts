@@ -500,15 +500,14 @@ export function vectorMatrixClause(
       ["A drone makes two successive flight displacements", "km"],
       ["A surveyor walks two successive displacements", "m"],
     ]);
-    const unitText = unit === "N" ? "$N$" : unit;
     const g = arrows([0, 0], [u, v], result)
       .segment(u, result, { arrow: true, dash: "dash", color: "warm" })
       .segment([0, 0], result, { arrow: true, color: "gold" });
     return b.parts(
       {
         figure: sceneFigure(g.scene()),
-        prompt: `${story}: the first vector has magnitude ${a} ${unitText} and direction ${first}°; the second has magnitude ${c} ${unitText} and direction ${second}°. Directions are counterclockwise from east. Their smaller angle is ${theta}°. Find the exact resultant magnitude and its direction to the nearest tenth of a degree.`,
-        hint: `Convert the ${a} ${unitText} vector to components using cosine horizontally and sine vertically. Do the same for the second, then add.`,
+        prompt: `${story}: the first vector has magnitude ${a} ${unit} and direction ${first}°; the second has magnitude ${c} ${unit} and direction ${second}°. Directions are counterclockwise from east. Their smaller angle is ${theta}°. Find the exact resultant magnitude and its direction to the nearest tenth of a degree.`,
+        hint: `Convert the ${a} ${unit} vector to components using cosine horizontally and sine vertically. Do the same for the second, then add.`,
         explanation: [
           `The tip-to-tail triangle has included angle ${180 - theta}°. The cosine law gives $R^2=${a}^2+${c}^2+2(${a})(${c})\\cos ${theta}^\\circ=${magnitude ** 2}$, so $R=${magnitude}$.`,
           `The component sum is (${round(result[0], 4)}, ${round(result[1], 4)}). Its direction, using both component signs, is ${normalized}°.`,
@@ -518,7 +517,7 @@ export function vectorMatrixClause(
       },
       [
         {
-          label: `Magnitude (${unitText})`,
+          label: `Magnitude (${unit})`,
           correct: `${magnitude}`,
           wrong: [
             `${a + c}`,
