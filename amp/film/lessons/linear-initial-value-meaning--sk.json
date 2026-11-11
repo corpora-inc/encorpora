@@ -675,7 +675,7 @@
             "at": "GC0",
             "dir": "c",
             "ink": "gold",
-            "size": "s",
+            "size": "m",
             "group": "golds"
           },
           {
@@ -693,7 +693,7 @@
             "at": "GC1",
             "dir": "c",
             "ink": "gold",
-            "size": "s",
+            "size": "m",
             "group": "golds"
           },
           {
@@ -702,7 +702,7 @@
             "at": "SC1_1",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -720,7 +720,7 @@
             "at": "GC2",
             "dir": "c",
             "ink": "gold",
-            "size": "s",
+            "size": "m",
             "group": "golds"
           },
           {
@@ -729,7 +729,7 @@
             "at": "SC2_1",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -738,7 +738,7 @@
             "at": "SC2_2",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -756,7 +756,7 @@
             "at": "GC3",
             "dir": "c",
             "ink": "gold",
-            "size": "s",
+            "size": "m",
             "group": "golds"
           },
           {
@@ -765,7 +765,7 @@
             "at": "SC3_1",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -774,7 +774,7 @@
             "at": "SC3_2",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -783,7 +783,7 @@
             "at": "SC3_3",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -801,7 +801,7 @@
             "at": "GC4",
             "dir": "c",
             "ink": "gold",
-            "size": "s",
+            "size": "m",
             "group": "golds"
           },
           {
@@ -810,7 +810,7 @@
             "at": "SC4_1",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -819,7 +819,7 @@
             "at": "SC4_2",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -828,7 +828,7 @@
             "at": "SC4_3",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -837,7 +837,7 @@
             "at": "SC4_4",
             "dir": "c",
             "ink": "warm",
-            "size": "s",
+            "size": "m",
             "group": "steps"
           },
           {
@@ -1090,7 +1090,7 @@
             },
             {
               "do": "text",
-              "text": "Where it starts, plus the same step every\u00a0time.",
+              "text": "Where it starts, plus the same step every time.",
               "at": "where",
               "id": "tPhrase"
             },
@@ -3346,7 +3346,7 @@
           "do": [
             {
               "do": "text",
-              "text": "Where it starts, plus the same step every\u00a0time.",
+              "text": "Where it starts, plus the same step every time.",
               "at": "Where",
               "id": "zPhrase"
             },
