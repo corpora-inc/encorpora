@@ -1399,8 +1399,61 @@ export const router = createRouter({
       ...next,
       resetScroll:
         next.resetScroll ??
-        (next.pathname === router.state.location.pathname ? false : undefined),
+        (next.pathname === router.state.location.pathname ||
+        overList(router.state.location.pathname, next.pathname)
+          ? false
+          : undefined),
     });
+}
+// A detail over a list (a class map's student, a class's standing drill, a
+// student from the list) keeps the list's view: its sort, its area, its year,
+// its chart. Opening carries them into the detail's address, closing carries
+// them back, and Back finds them in history. Only the view keys move, only
+// between a list and a detail one step below it, and only where the
+// destination does not set them itself.
+{
+  const build = router.buildLocation;
+  router.buildLocation = ((options: Parameters<typeof build>[0]) => {
+    const next = build(options);
+    const here = router.state.location;
+    if (!overList(here.pathname, next.pathname)) return next;
+    const from = here.search as Record<string, unknown>;
+    const to = next.search as Record<string, unknown>;
+    const carried = Object.fromEntries(
+      VIEW_KEYS.filter(
+        (key) => from[key] !== undefined && to[key] === undefined,
+      ).map((key) => [key, from[key]]),
+    );
+    return Object.keys(carried).length
+      ? build({ ...options, search: { ...to, ...carried } } as never)
+      : next;
+  }) as typeof build;
+}
+/** The address keys that hold a list's view, not an action. */
+const VIEW_KEYS = [
+  "sort",
+  "lens",
+  "area",
+  "strand",
+  "year",
+  "chart",
+  "rows",
+  "dot",
+  "status",
+  "period",
+  "view",
+] as const;
+/** One address is the other one step deeper: a detail over its list. */
+function overList(a: string, b: string) {
+  const [short, long] = a.length < b.length ? [a, b] : [b, a];
+  const trimmed = short.replace(/\/+$/, "");
+  return (
+    long.startsWith(`${trimmed}/`) &&
+    !long
+      .slice(trimmed.length + 1)
+      .replace(/\/+$/, "")
+      .includes("/")
+  );
 }
 /** Learning screens, which a practice profile never makes a place. */
 const PROFILE_PRACTICE_PATHS = [
