@@ -107,7 +107,15 @@ test(
             gifts.activate(owner, gift.id, child),
             /consent_required/,
           );
-          await assert.rejects(learning.create(owner, "No consent"), /consent/);
+          // A parent names their own child with no consent step
+          // (docs/parent-consent.md#childrens-names): the child learns on the
+          // restricted basis, and the gift still waits for consent.
+          const named = await learning.create(owner, "No consent", 2015);
+          assert.equal(named.namePending, true);
+          await assert.rejects(
+            gifts.activate(owner, gift.id, named.id),
+            /consent_required/,
+          );
           assert.equal(
             (await db.query("SELECT count(*) FROM amp_grants")).rows[0].count,
             "0",

@@ -625,7 +625,10 @@ test(
         (todo: { kind: string }) => todo.kind === "shared-gap",
       );
       assert.ok(gap, JSON.stringify(body.todos));
-      assert.match(gap.title, /3 students are stuck on multidigit quotients/);
+      assert.match(
+        gap.title,
+        /3 students are stuck on dividing by a two-digit number/,
+      );
       assert.deepEqual(
         new Set(gap.students.map((entry: { id: string }) => entry.id)),
         new Set([amara.personId, diego.personId, late.personId]),
