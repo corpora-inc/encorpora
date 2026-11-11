@@ -404,6 +404,31 @@ function exportTables(
       key: "surface||'/'||skill_id",
     }),
     dayTable(pool, org, {
+      name: "help_days.csv",
+      header: ["person_id", "day", "kind", "skill_id", "opened"],
+      from: "amp_help_days",
+      columns: "kind::text AS kind,skill_id,opened",
+      key: "kind::text||'/'||skill_id",
+    }),
+    dayTable(pool, org, {
+      name: "help_events.csv",
+      header: [
+        "person_id",
+        "day",
+        "at",
+        "kind",
+        "source",
+        "skill_id",
+        "ref",
+        "problem_id",
+        "step",
+      ],
+      from: "amp_help_events",
+      columns:
+        "to_char(\"at\" AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.MS\"Z\"') AS at,kind::text AS kind,source::text AS source,skill_id,ref,problem_id,step",
+      key: "to_char(\"at\" AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US')||'/'||kind::text||'/'||ref||'/'||COALESCE(problem_id,'')",
+    }),
+    dayTable(pool, org, {
       name: "level_days.csv",
       header: [
         "person_id",

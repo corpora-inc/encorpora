@@ -1254,9 +1254,19 @@ const fallback = createRoute({
 const lessonFilm = createRoute({
   getParentRoute: () => appScreen,
   path: "/lessons/$templateId/watch",
-  validateSearch: (search) => ({
-    from: z.string().max(2048).optional().catch(undefined).parse(search.from),
-  }),
+  validateSearch: (search): { from: string | undefined; problem?: string } => {
+    /** The problem the film was opened from, so watching it is help for it. */
+    const problem = z
+      .string()
+      .max(160)
+      .optional()
+      .catch(undefined)
+      .parse(search.problem);
+    return {
+      from: z.string().max(2048).optional().catch(undefined).parse(search.from),
+      ...(problem ? { problem } : {}),
+    };
+  },
   component: lazyRouteComponent(
     () => import("../features/films/FilmScreen"),
     "FilmScreen",

@@ -29,6 +29,7 @@ import {
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { TimeDetail } from "./ProgressRecord";
+import { HelpUsed } from "./HelpUsed";
 import {
   downloadTime,
   failureMessage,
@@ -669,6 +670,7 @@ export function TimeScreen() {
                   </ul>
                 </section>
               )}
+              <HelpUsed weeks={data.help} className={styles.timeSkills} />
             </>
           )}
         </div>

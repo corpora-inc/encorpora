@@ -55,6 +55,7 @@ import {
   type Repository,
   type SavedProblem,
 } from "./repository";
+import { answerHelpKinds, type AnswerHelp } from "../schools/help-events.js";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
@@ -117,6 +118,12 @@ const attemptSchema = z
     requestId: idSchema,
     response: z.string().trim().min(1).max(4000),
     hintViewed: z.boolean().optional(),
+    /** Help the learner opened for this problem before answering, as the
+     * client saw it. Adds to what the server recorded; never clears it. */
+    help: z
+      .array(z.enum(["hint", "lesson", "video", "example"]))
+      .max(4)
+      .optional(),
   })
   .strict();
 /** Strips one-time secrets (password-reset and verification tokens, OAuth
@@ -794,6 +801,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const filename = `${lessonId}-${kind}-${format}.pdf`;
       try {
         const pdf = await readFile(publicationFile(filename));
+        await options.repository
+          .recordPrint?.(learnerId, lessonId, kind)
+          .catch((error) =>
+            request.log.error({ err: error }, "Print not recorded"),
+          );
         return reply
           .type("application/pdf")
           .header("Content-Disposition", `attachment; filename="${filename}"`)
@@ -1106,8 +1118,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
         );
       // Persist locally revealed help with the answer, in this transaction.
       // A false or missing client flag can never clear server-recorded help.
-      if (input.hintViewed && !problem.hintViewed) {
-        problem.hintViewed = true;
+      const claimedHint = input.hintViewed || !!input.help?.includes("hint");
+      const claimedLesson = !!input.help?.includes("lesson");
+      if (
+        (claimedHint && !problem.hintViewed) ||
+        (claimedLesson && !problem.lessonViewed)
+      ) {
+        if (claimedHint) problem.hintViewed = true;
+        if (claimedLesson) problem.lessonViewed = true;
         await tx.saveProblem(problem);
       }
       // A multi-part answer earns credit only when every part is right; the
@@ -1148,6 +1166,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
               response,
             )
           : [];
+      // Which kinds of help: assisted stays one flag for the engine; these
+      // let a report tell a hint from a lesson from working with someone.
+      const togetherNow =
+        !!problem.workingTogether ||
+        (await tx.practiceSettings()).workingTogether;
+      const help = answerHelp(problem, input.help, togetherNow);
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,
@@ -1159,8 +1183,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
         assisted:
           !!problem.hintViewed ||
           !!problem.lessonViewed ||
-          !!problem.workingTogether ||
-          (await tx.practiceSettings()).workingTogether,
+          togetherNow,
+        ...(help.length ? { help } : {}),
         explanation:
           problem.public.response.kind === "line-plot-build" &&
           !gradeAnswer(problem, response)
@@ -1266,6 +1290,20 @@ function routes(app: FastifyInstance, options: AppOptions) {
   });
 }
 
+/** The help an answer had, in a fixed order: what the server recorded (a
+ * hint, the lesson, working together) and what the client adds (a video, a
+ * worked explanation). */
+export function answerHelp(
+  problem: Pick<SavedProblem, "hintViewed" | "lessonViewed">,
+  claimed: readonly string[] | undefined,
+  together: boolean,
+): AnswerHelp[] {
+  const used = new Set<string>(claimed ?? []);
+  if (problem.hintViewed) used.add("hint");
+  if (problem.lessonViewed) used.add("lesson");
+  if (together) used.add("person");
+  return answerHelpKinds.filter((kind) => used.has(kind));
+}
 /** A problem's hint, with the term cards its words open. */
 export function hintSupport(problem: GeneratedProblem): ProblemHint {
   return {

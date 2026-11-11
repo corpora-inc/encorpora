@@ -117,15 +117,38 @@ export async function sumWeeks(
   params: unknown[] = [],
 ) {
   await client.query(
-    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts,assisted)
-       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int,sum(assisted)::int FROM (
-         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts,0 AS assisted FROM amp_active_days
-           WHERE learner_id IN (${learners})
+    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts,assisted,
+         lessons,hints,videos,examples,prints,lesson_ms,hint_ms,video_ms,example_ms,
+         with_hint,with_lesson,with_video,with_example,with_person)
+       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int,sum(assisted)::int,
+         sum(lessons)::int,sum(hints)::int,sum(videos)::int,sum(examples)::int,sum(prints)::int,
+         sum(lesson_ms)::bigint,sum(hint_ms)::bigint,sum(video_ms)::bigint,sum(example_ms)::bigint,
+         sum(with_hint)::int,sum(with_lesson)::int,sum(with_video)::int,sum(with_example)::int,sum(with_person)::int
+       FROM (
+         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts,0 AS assisted,
+           0 AS lessons,0 AS hints,0 AS videos,0 AS examples,0 AS prints,
+           CASE WHEN surface='lesson' THEN active_ms ELSE 0 END AS lesson_ms,
+           CASE WHEN surface='hint' THEN active_ms ELSE 0 END AS hint_ms,
+           CASE WHEN surface='video' THEN active_ms ELSE 0 END AS video_ms,
+           CASE WHEN surface='example' THEN active_ms ELSE 0 END AS example_ms,
+           0 AS with_hint,0 AS with_lesson,0 AS with_video,0 AS with_example,0 AS with_person
+         FROM amp_active_days WHERE learner_id IN (${learners})
          UNION ALL
-         SELECT learner_id,date_trunc('week',day)::date,0,attempts,assisted FROM amp_skill_days
-           WHERE learner_id IN (${learners})
+         SELECT learner_id,date_trunc('week',day)::date,0,attempts,assisted,0,0,0,0,0,0,0,0,0,
+           with_hint,with_lesson,with_video,with_example,with_person
+         FROM amp_skill_days WHERE learner_id IN (${learners})
+         UNION ALL
+         SELECT learner_id,date_trunc('week',day)::date,0,0,0,
+           CASE WHEN kind='lesson' THEN opened ELSE 0 END,CASE WHEN kind='hint' THEN opened ELSE 0 END,
+           CASE WHEN kind='video' THEN opened ELSE 0 END,CASE WHEN kind='example' THEN opened ELSE 0 END,
+           CASE WHEN kind='print' THEN opened ELSE 0 END,0,0,0,0,0,0,0,0,0
+         FROM amp_help_days WHERE learner_id IN (${learners})
        ) facts GROUP BY learner_id,week
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts,assisted=EXCLUDED.assisted`,
+       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts,assisted=EXCLUDED.assisted,
+         lessons=EXCLUDED.lessons,hints=EXCLUDED.hints,videos=EXCLUDED.videos,examples=EXCLUDED.examples,prints=EXCLUDED.prints,
+         lesson_ms=EXCLUDED.lesson_ms,hint_ms=EXCLUDED.hint_ms,video_ms=EXCLUDED.video_ms,example_ms=EXCLUDED.example_ms,
+         with_hint=EXCLUDED.with_hint,with_lesson=EXCLUDED.with_lesson,with_video=EXCLUDED.with_video,
+         with_example=EXCLUDED.with_example,with_person=EXCLUDED.with_person`,
     params,
   );
 }

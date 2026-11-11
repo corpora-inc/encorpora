@@ -19,6 +19,7 @@ import {
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
+import { recordPrint } from "../schools/help-events.js";
 import {
   estimateFrontier,
   initialLevel,
@@ -135,6 +136,9 @@ export type Outcome = {
   skipped?: true;
   /** The instance's realized variant and axis values, for per-axis evidence. */
   variant?: ProblemVariant;
+  /** The kinds of help the answer had (`answerHelp`); absent for none and
+   * for answers stored before it was recorded. */
+  help?: ("hint" | "lesson" | "video" | "example" | "person")[];
   /** Where the answer came from; absent for in-app answers. */
   evidenceSource?: "paper";
   /** Below 1 for evidence weaker than a graded answer (a parent's mark
@@ -244,6 +248,9 @@ export interface LearnerTransaction {
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
+  /** Records a lesson PDF sent to an authorized learner, when their help is
+   * recorded (`help-events.ts`). */
+  recordPrint?(learnerId: string, lessonId: string, kind: string): Promise<void>;
   /** Whether learning is allowed: for the account, or for one of its
    * learners, where the account's adult learner needs no parental consent. */
   hasConsent(accountId: string, learnerId?: string): Promise<boolean>;
@@ -288,6 +295,9 @@ export interface Repository {
 }
 export class PostgresRepository implements Repository {
   readonly pool: Pool;
+  recordPrint(learnerId: string, lessonId: string, kind: string) {
+    return recordPrint(this.pool, learnerId, lessonId, kind);
+  }
   constructor(
     connectionString: string,
     private readonly options: {

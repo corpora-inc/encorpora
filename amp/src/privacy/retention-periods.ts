@@ -40,6 +40,10 @@ export const RETENTION = {
   advertisingContextDays: 7,
   /** Purchase-measurement preparation records, from the payment evidence date. */
   advertisingPaymentDays: 90,
+  /** Individual help events (a lesson, hint, video or worked explanation
+   * opened, a lesson PDF printed), from when they happened. Their day and
+   * week counts stay with the learner's learning records. */
+  helpEventDays: 400,
   /** Privacy activity log. */
   privacyAuditDays: 90,
   /** A demo class or school (all synthetic) after its owner last opened it. */

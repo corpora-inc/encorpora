@@ -10,6 +10,7 @@ import {
   RecordWork,
 } from "./ProgressRecord";
 import { classUrl, number } from "./teacher-shared";
+import { HelpUsed } from "./HelpUsed";
 import styles from "./Teacher.module.css";
 
 const lastSeenWords = (iso: string) => {
@@ -94,6 +95,7 @@ export function StudentSections({
           {weeks.length >= 2 && <RecordWeeks record={data} />}
         </section>
       )}
+      <HelpUsed weeks={data.help} className={styles.recordSection} />
       {data.objectives.length > 0 && (
         <section className={styles.recordSection}>
           <h2>Skills shown on their own</h2>

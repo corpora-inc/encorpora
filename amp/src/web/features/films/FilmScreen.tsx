@@ -9,6 +9,8 @@ import {
 import { request } from "../../lib/api";
 import { mountFilmPlayer } from "../../../../film/player";
 import { Loading } from "../../ui/Loading";
+import { noteHelp } from "../../lib/help-events";
+import { attendWhilePlaying, useHelpSurface } from "../../lib/use-help";
 import "./film-route.css";
 
 /** Only lesson/practice paths can be a return destination, never an external URL. */
@@ -41,10 +43,28 @@ export function FilmScreen() {
   // The current server decides which edition is published, even in an older open tab.
   const film = metadata.data?.lesson.film;
   const back = filmReturn(search.from, templateId);
+  const problemId = back.startsWith("/practice") ? search.problem : undefined;
+  // A film is help: opening it is recorded, and its time is video time,
+  // counted while it plays even without a touch.
+  useHelpSurface(!!film, "video", problemId);
+  useEffect(() => {
+    if (film)
+      noteHelp({
+        kind: "video",
+        source: back.startsWith("/practice")
+          ? "practice"
+          : back.startsWith("/lessons")
+            ? "lessons"
+            : "pathways",
+        ref: templateId,
+        problemId,
+      });
+  }, [!!film, templateId, problemId]);
   useEffect(() => {
     if (!film || !host.current) return;
     const previous = document.title;
     document.title = `${film.title} · AMP`;
+    let attending: (() => void) | null = null;
     const dispose = mountFilmPlayer(host.current, {
       ...film,
       backHref: back,
@@ -54,8 +74,13 @@ export function FilmScreen() {
       onBack: () => {
         void router.navigate({ href: back });
       },
+      onPlayingChange: (playing) => {
+        attending?.();
+        attending = playing ? attendWhilePlaying() : null;
+      },
     });
     return () => {
+      attending?.();
       dispose();
       document.title = previous;
     };

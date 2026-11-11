@@ -1,6 +1,8 @@
 import { CheckboxControl } from "./ui/Checkbox";
 import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
+import { noteHelp } from "./lib/help-events";
+import { useHelpSurface } from "./lib/use-help";
 import { Glossary } from "./ui/Glossary";
 import type { HintedProblem } from "./lib/problem-hints";
 import { MathText, spokenMath } from "./MathText";
@@ -506,6 +508,9 @@ export function PracticeWorkspace(props: Props) {
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
+  // Time on a hint or a worked explanation is its own (lessons record theirs).
+  useHelpSurface(panel === "hint", "hint", problem.id);
+  useHelpSurface(showWhy, "example", problem.id);
   // A lesson opened before answering counts as support for this attempt.
   const [lessonBeforeAnswer, setLessonBeforeAnswer] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
@@ -1418,7 +1423,18 @@ export function PracticeWorkspace(props: Props) {
       <div className="practice-tools">
         {outcome ? (
           !stepsInline && (
-            <button className="text-button" onClick={() => setShowWhy(true)}>
+            <button
+              className="text-button"
+              onClick={() => {
+                noteHelp({
+                  kind: "example",
+                  source: "practice",
+                  ref: problem.templateId,
+                  problemId: problem.id,
+                });
+                setShowWhy(true);
+              }}
+            >
               See why
             </button>
           )
@@ -1427,6 +1443,13 @@ export function PracticeWorkspace(props: Props) {
             className="text-button"
             disabled={busy || props.pending}
             onClick={() => {
+              noteHelp({
+                kind: "hint",
+                source: "practice",
+                ref: problem.templateId,
+                problemId: problem.id,
+                step: 1,
+              });
               setPanel("hint");
               if (!hint) props.requestHint();
             }}
@@ -2187,6 +2210,7 @@ export function PracticeWorkspace(props: Props) {
               <ProblemLesson
                 lesson={problemLessonView}
                 onWatchFilm={() => setPanel(null)}
+                help={{ source: "practice", problemId: problem.id }}
               />
               <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem
