@@ -141,7 +141,7 @@ export function ProblemLesson({
             video={lesson.video}
           />
         )}
-        <section className="lesson-example">
+        <section className="lesson-example" data-template={lesson.templateId}>
           <h3>Example</h3>
           <GlossaryBlock texts={blocks.example}>
             <p className="lesson-example-prompt">

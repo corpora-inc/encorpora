@@ -228,9 +228,13 @@ nav button {
 }
 /* A two-line system is a display, not a word in the sentence. On a phone the
    following line otherwise sits beside the brace. Same own-row rule as a
-   table that follows its question, for the prompt and its review summary. */
+   table that follows its question, for the prompt, its review summary and
+   the lesson's example. */
 .problem-content[data-template="scaled-elimination"]
   :is(.question, .answer-prompt-summary)
+  > .math:has(.mtable),
+.lesson-example[data-template="scaled-elimination"]
+  .lesson-example-prompt
   > .math:has(.mtable) {
   display: block;
   width: fit-content;
