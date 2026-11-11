@@ -1824,9 +1824,9 @@ export function scaledElimination(seed: string): GeneratedProblem {
   if (general)
     parts.push({
       id: "gen",
-      label: "What is (d + ka)x + (e + kb)y at a solution?",
-      choices: [`${nr}, because it equals f + kc`, `${f + c}`, `${k * f + k * c}`, "It cannot be known without numbers"],
-      correct: `${nr}, because it equals f + kc`,
+      label: "What is $(d + ka)x + (e + kb)y$ at a solution?",
+      choices: [`${nr}, because it equals $f + kc$`, `${f + c}`, `${k * f + k * c}`, "It cannot be known without numbers"],
+      correct: `${nr}, because it equals $f + kc$`,
     });
   const built = multi(r, parts);
   return stamp(meta, seed, "scaled-multiple", {

@@ -402,7 +402,7 @@ def elimination(public):
         "why": "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
     }
     if any(blank["id"] == "gen" for blank in public["response"]["blanks"]):
-        expected["gen"] = f"{right}, because it equals f + kc"
+        expected["gen"] = f"{right}, because it equals $f + kc$"
     return slots(public, expected)
 
 
