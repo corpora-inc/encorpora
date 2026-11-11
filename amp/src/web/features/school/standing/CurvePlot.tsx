@@ -189,11 +189,14 @@ export function GradeAxis({
   const ticks: number[] = [];
   for (let x = Math.ceil(grid.from); x <= grid.to; x++)
     if (x % every === 0) ticks.push(x);
+  // On a narrow axis every other tick steps aside (Standing.module.css).
+  const minor = (x: number) => (x / every) % 2 !== 0;
   return (
     <div className={styles.axis} aria-hidden="true">
       {ticks.map((x) => (
         <span
           key={x}
+          data-minor={minor(x) ? "" : undefined}
           style={{ left: `${across(grid, x)}%` }}
           data-edge={
             across(grid, x) < 3 ? "start" : across(grid, x) > 97 ? "end" : undefined
@@ -201,7 +204,16 @@ export function GradeAxis({
         >
           <b>{x === 0 ? "0" : signed(x, 0)}</b>
           {grade !== null && grade !== undefined && (
-            <i>{x + grade > 13 ? "" : `Gr ${gradeName(x + grade)}`}</i>
+            <i>
+              {x + grade > 13 ? (
+                ""
+              ) : (
+                <>
+                  <small>Gr </small>
+                  {gradeName(x + grade)}
+                </>
+              )}
+            </i>
           )}
         </span>
       ))}

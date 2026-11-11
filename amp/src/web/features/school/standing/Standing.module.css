@@ -79,6 +79,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-5);
   }
+  /* Growth, the fifth, reads across both columns with its range. */
+  .leadFacts > dl > :nth-child(5) {
+    grid-column: 1 / -1;
+  }
 }
 .figure {
   position: relative;
@@ -225,6 +229,7 @@
    group is one grade. Fixed height either way. */
 .axis {
   position: relative;
+  container-type: inline-size;
   height: 1.5em;
   margin-top: var(--space-1);
   color: var(--color-subtle-text);
@@ -250,6 +255,20 @@
 .axis span[data-edge="end"] {
   justify-items: end;
   transform: translateX(-100%);
+}
+/* Too narrow for every tick: every other one. */
+@container (max-width: 360px) {
+  .axis span[data-minor] {
+    display: none;
+  }
+}
+@container (max-width: 520px) {
+  .axis i small {
+    display: none;
+  }
+}
+.axis i small {
+  font-size: inherit;
 }
 .axis b {
   font-weight: 500;
@@ -447,15 +466,18 @@
 }
 
 /* Each student: a band of where they likely are, a dot at the estimate. */
+/* On a phone each row is the name over a full-width band; from 720px the
+   name sits beside it. */
 .bands {
-  --name: 112px;
-  --gutter: var(--space-3);
+  --name: 0px;
+  --gutter: 0px;
   display: grid;
   min-width: 0;
 }
 @media (min-width: 720px) {
   .bands {
     --name: 200px;
+    --gutter: var(--space-3);
   }
 }
 .bandAxis,
@@ -487,6 +509,21 @@
   top: 0;
   bottom: 0;
   background: var(--color-course-band);
+}
+@media (max-width: 719px) {
+  .bandAxis,
+  .bandRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bandAxis > span:first-child {
+    display: none;
+  }
+  .bandRow {
+    padding-top: var(--space-2);
+  }
+  .bandRow .bandTrack {
+    height: 28px;
+  }
 }
 .bandRow {
   align-items: center;

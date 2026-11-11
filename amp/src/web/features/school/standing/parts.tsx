@@ -9,7 +9,7 @@ import styles from "./Standing.module.css";
 export function AxisEnds() {
   return (
     <div className={styles.ends} aria-hidden="true">
-      <span>Grades behind their own</span>
+      <span>Grades behind</span>
       <span>Grades ahead</span>
     </div>
   );

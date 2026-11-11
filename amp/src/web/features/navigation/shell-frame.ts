@@ -79,6 +79,8 @@ export function shellFrame(
         {
           students: "classes",
           import: "classes",
+          // The drill from the overview's standing curves.
+          standing: "overview",
           "sign-in-help": "staff",
           // One configuration home (docs/design/ia.md).
           calendar: "settings",
