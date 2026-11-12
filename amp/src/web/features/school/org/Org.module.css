@@ -269,6 +269,7 @@
 }
 .standingFacts {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   gap: var(--space-4);
 }
@@ -328,10 +329,12 @@
 }
 .attention {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   margin-top: calc(-1 * var(--space-2));
 }
 .attention > li {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-1);
   justify-items: start;
   padding-block: var(--space-4);
