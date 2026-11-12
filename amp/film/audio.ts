@@ -21,7 +21,7 @@ export const SR = 44100;
 export const FLOOR = 0.0035;
 /**
  * An edit or an edge of digital silence louder than this is a fault: about -42 dBFS,
- * 21 dB under speech. A cut into a word measures -35 dBFS or louder. The gap
+ * about 21 dB under speech. A cut into a word measures -35 dBFS or louder. The gap
  * between FLOOR and EDGE keeps room tone near the floor from raising false alarms.
  */
 export const EDGE = 0.008;
@@ -34,12 +34,12 @@ export const TAKE_FADE = Math.round(SR * 0.02);
  * A sound in a pause is heard when it stays at or above EDGE (-42 dBFS, the level
  * the edge check already treats as audible against digital silence) for
  * AUDIBLE_FOR, or reaches SPEECH even briefly (a click). Measured at the narration's
- * speaking level (-21 dBFS, see `even`), the stray sounds heard in finished films
+ * speaking level (about -21 dBFS, see `even`), the stray sounds heard in finished films
  * stayed at or above -42 dBFS for 40 to 90 ms and peaked at -36 to -39 dBFS
  * (sample peaks 1,400 to 1,900); room tone and the decay of a word stay under it.
  */
 export const AUDIBLE_FOR = 0.03;
-/** A 10 ms window this loud (-30 dBFS, 9 dB under the speaking level) is as loud as speech. */
+/** A 10 ms window this loud (-30 dBFS, about 9 dB under the speaking level) is as loud as speech. */
 export const SPEECH = 0.0316;
 /**
  * A 10 ms window with at least this share of its energy under about 1 kHz is
@@ -62,14 +62,79 @@ export function envelope(pcm: Int16Array) {
   return env;
 }
 
-/** One speaking level for every take: -21 dBFS while speaking, peaks under -1 dBFS. */
+/**
+ * The signal as the ear weighs it, as a fraction of full scale: the K-weighting of
+ * ITU-R BS.1770, a high shelf (about +4 dB above 1.7 kHz) and then a 38 Hz
+ * high-pass. The standard prints coefficients for 48 kHz; these are the same two
+ * filters derived for SR.
+ */
+export function kWeighted(pcm: Int16Array) {
+  const biquad = (f0: number, q: number, shelfDb?: number) => {
+    const k = Math.tan((Math.PI * f0) / SR), a0 = 1 + k / q + k * k;
+    const a = [(2 * (k * k - 1)) / a0, (1 - k / q + k * k) / a0];
+    if (shelfDb === undefined) return { b: [1, -2, 1], a };
+    const vh = 10 ** (shelfDb / 20), vb = vh ** 0.4996667741545416;
+    return { b: [(vh + (vb * k) / q + k * k) / a0, (2 * (k * k - vh)) / a0, (vh - (vb * k) / q + k * k) / a0], a };
+  };
+  const out = Float64Array.from(pcm, (v) => v / 32768);
+  for (const { b, a } of [biquad(1681.974450955533, 0.7071752369554196, 3.999843853973347), biquad(38.13547087602444, 0.5003270373238773)]) {
+    let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    for (let i = 0; i < out.length; i++) {
+      const x = out[i]!, y = b[0]! * x + b[1]! * x1 + b[2]! * x2 - a[0]! * y1 - a[1]! * y2;
+      x2 = x1; x1 = x; y2 = y1; y1 = y;
+      out[i] = y;
+    }
+  }
+  return out;
+}
+
+/**
+ * How loud a take sounds: its integrated loudness in LUFS, measured the way
+ * ITU-R BS.1770 does. The K-weighted mean square of every 400 ms block (a new
+ * block each 100 ms) is taken; blocks under -70 LUFS are silence and are dropped;
+ * then blocks more than 10 LU under the mean of the rest are dropped as pauses,
+ * and the loudness is the mean of what is left. Both gates follow the take's own
+ * level, so a take measures the same however loud it arrives. A take shorter
+ * than one block is measured whole. -Infinity when there is nothing to hear.
+ */
+export function loudness(pcm: Int16Array) {
+  const k = kWeighted(pcm), step = SR / 10, lufs = (ms: number) => -0.691 + 10 * Math.log10(ms);
+  const tenths = new Float64Array(Math.floor(k.length / step));
+  for (let i = 0; i < tenths.length; i++) for (let j = i * step; j < (i + 1) * step; j++) tenths[i]! += k[j]! * k[j]!;
+  let blocks: number[] = [];
+  for (let i = 0; i + 4 <= tenths.length; i++) blocks.push((tenths[i]! + tenths[i + 1]! + tenths[i + 2]! + tenths[i + 3]!) / (4 * step));
+  if (!blocks.length && k.length) blocks = [k.reduce((s, v) => s + v * v, 0) / k.length];
+  const mean = (a: number[]) => a.reduce((s, v) => s + v, 0) / a.length;
+  blocks = blocks.filter((ms) => lufs(ms) > -70);
+  if (!blocks.length) return -Infinity;
+  const floor = lufs(mean(blocks)) - 10;
+  return lufs(mean(blocks.filter((ms) => lufs(ms) > floor)));
+}
+
+/**
+ * The loudness every take is brought to, in LUFS. Takes were once matched by
+ * the plain RMS of their speaking windows, at -21 dBFS, and the edge and stray
+ * limits above were tuned at the teachers' level, so this keeps the teachers as
+ * near to it as one value can. Matched that way their takes measured -24.0
+ * (Paul) and -23.3 LUFS (Madeline) on average: -23.6 sits between, and moves
+ * them up 0.4 and down 0.3 dB. The learner's takes measured -22.4, the loud
+ * voice: they come down 1.25 dB.
+ */
+export const SPEAKING_LUFS = -23.6;
+
+/**
+ * One loudness for every take: SPEAKING_LUFS, about -21 dBFS RMS while speaking,
+ * with peaks under -1 dBFS (a take whose peaks would pass that is left quieter:
+ * 5 of 542 measured takes, by 0.1 to 0.4 dB). Voices are matched by how loud
+ * they sound, not by plain RMS: at equal RMS a brighter voice is the louder one,
+ * and so is the voice that pauses less.
+ */
 export function even(src: Int16Array) {
-  const env = envelope(src), loud = [...env].filter((x) => x > 0.02);
-  if (!loud.length) return Int16Array.from(src);
-  const level = Math.sqrt(loud.reduce((a, x) => a + x * x, 0) / loud.length);
+  const level = loudness(src);
+  if (level === -Infinity) return Int16Array.from(src);
   let peak = 1;
   for (const v of src) peak = Math.max(peak, Math.abs(v));
-  const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
+  const gain = Math.min(10 ** ((SPEAKING_LUFS - level) / 20), (10 ** (-1 / 20) * 32767) / peak);
   return Int16Array.from(src, (v) => Math.round(v * gain));
 }
 

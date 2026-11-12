@@ -379,7 +379,7 @@ Parts:
 
 | Part | Fields |
 |---|---|
-| `poly` | Corner names, `fill`, `back` (fill when flipped), `ink`, `w`, `solid` (a physical tile that lifts and casts a shadow) |
+| `poly` | Corner names, `fill`, `back` (fill when flipped), `ink`, `w`, `solid` (a physical tile that lifts and casts a shadow), `sheer` (see-through: what it slides over shows through its fill) |
 | `seg` | Two point names, `ink`, `w`, `dash`, `arrows` (parallel marks), `ticks` (equal marks), `tickAt`, `extend` (a line, not a segment) |
 | `dot` | A point name, `ink`, `r` |
 | `angle` | Three point names with the corner in the middle, `fill`, `ink`, `r`, `right` |
