@@ -52,6 +52,7 @@
     "test:workbooks-ui": "tsx scripts/verify-workbooks-ui.ts",
     "test:workbook-paper-ui": "tsx scripts/verify-workbook-layout.ts",
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
+    "demo:terms": "tsx scripts/demo-terms.ts",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run lint:controls && npm run tsc && vite build && npm run build:public-pathways",
     "build:public-pathways": "tsx scripts/build-public-pathways.ts && tsx scripts/build-site-icons.ts && tsx scripts/build-home-document.ts",

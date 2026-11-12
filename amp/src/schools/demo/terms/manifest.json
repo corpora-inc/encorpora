@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "weekdays": [
+    {
+      "weekday": 0,
+      "key": "school:v2:w0:8caa8bc4a500c1c7dd6789229af4bf78",
+      "bytes": 2011667,
+      "sha256": "1548861c9c7db412ab4fe1519ae1e39d02b91c1575bc6bbce2ba5a69c80aeaf3",
+      "textBytes": 37241758
+    },
+    {
+      "weekday": 1,
+      "key": "school:v2:w1:8748c8aa16242d716dc9259c7e26e7c3",
+      "bytes": 2042362,
+      "sha256": "315f2cb79f1e8b3837637d64f8140912f4e6f8febc08ed8f3838c26ae5eed59c",
+      "textBytes": 37661730
+    },
+    {
+      "weekday": 2,
+      "key": "school:v2:w2:05a987a5e7853905c1e1bc02b94fc6cd",
+      "bytes": 2067036,
+      "sha256": "7c7276f08fe9afbb3553c06a3331673bf2c7e55f3a6c902bdb3c44ff3880638f",
+      "textBytes": 38141628
+    },
+    {
+      "weekday": 3,
+      "key": "school:v2:w3:1671bf99c95054b19fa85dc1770ed425",
+      "bytes": 2091482,
+      "sha256": "6ee6ecfb9ac45e33ede05e5af4a311a5f44636c9005b1d4cb754b5f741a33294",
+      "textBytes": 38499737
+    },
+    {
+      "weekday": 4,
+      "key": "school:v2:w4:a519e9c3b29281cdbb8d7f2b259e8d93",
+      "bytes": 2115442,
+      "sha256": "5ee60c1c86d36c23f2d42a86b60eb111dd2b9a33a7aa83a113b0c07fa4a416fb",
+      "textBytes": 38782463
+    },
+    {
+      "weekday": 5,
+      "key": "school:v2:w5:e172f88cb1b164b5d699c6a2481617a4",
+      "bytes": 2123251,
+      "sha256": "6c65133571e766bdc0647ac7d95dd423a2574e5e04a0348b3490fa63ca486ae1",
+      "textBytes": 38852883
+    },
+    {
+      "weekday": 6,
+      "key": "school:v2:w6:fcb439a98037c0e6f9c86756f063911c",
+      "bytes": 2120793,
+      "sha256": "e0d1031aadff57fd0bd0f5cdcef8ad79358eec186a142c284085c5365d1a4bee",
+      "textBytes": 38796580
+    }
+  ]
+}
