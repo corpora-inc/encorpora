@@ -1,0 +1,4170 @@
+{
+ "id": "hundred-chart-missing--sh",
+ "title": "Follow the hundred chart",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.7,
+     -1.7,
+     10.7,
+     0.7
+    ],
+    "points": {
+     "G0": [
+      0,
+      0
+     ],
+     "G1": [
+      0,
+      -1
+     ],
+     "G2": [
+      0,
+      -1
+     ],
+     "G3": [
+      0,
+      -1
+     ],
+     "G4": [
+      0,
+      -1
+     ],
+     "G5": [
+      0,
+      -1
+     ],
+     "G6": [
+      0,
+      -1
+     ],
+     "G7": [
+      0,
+      -1
+     ],
+     "G8": [
+      0,
+      -1
+     ],
+     "G9": [
+      0,
+      -1
+     ],
+     "k3a": [
+      2,
+      0
+     ],
+     "k3b": [
+      3,
+      0
+     ],
+     "k3c": [
+      3,
+      -1
+     ],
+     "k3d": [
+      2,
+      -1
+     ],
+     "k4a": [
+      3,
+      0
+     ],
+     "k4b": [
+      4,
+      0
+     ],
+     "k4c": [
+      4,
+      -1
+     ],
+     "k4d": [
+      3,
+      -1
+     ],
+     "k5a": [
+      4,
+      0
+     ],
+     "k5b": [
+      5,
+      0
+     ],
+     "k5c": [
+      5,
+      -1
+     ],
+     "k5d": [
+      4,
+      -1
+     ],
+     "k6a": [
+      5,
+      0
+     ],
+     "k6b": [
+      6,
+      0
+     ],
+     "k6c": [
+      6,
+      -1
+     ],
+     "k6d": [
+      5,
+      -1
+     ],
+     "k13a": [
+      2,
+      -1
+     ],
+     "k13b": [
+      3,
+      -1
+     ],
+     "k13c": [
+      3,
+      -2
+     ],
+     "k13d": [
+      2,
+      -2
+     ],
+     "k14a": [
+      3,
+      -1
+     ],
+     "k14b": [
+      4,
+      -1
+     ],
+     "k14c": [
+      4,
+      -2
+     ],
+     "k14d": [
+      3,
+      -2
+     ],
+     "k15a": [
+      4,
+      -1
+     ],
+     "k15b": [
+      5,
+      -1
+     ],
+     "k15c": [
+      5,
+      -2
+     ],
+     "k15d": [
+      4,
+      -2
+     ],
+     "k16a": [
+      5,
+      -1
+     ],
+     "k16b": [
+      6,
+      -1
+     ],
+     "k16c": [
+      6,
+      -2
+     ],
+     "k16d": [
+      5,
+      -2
+     ],
+     "k23a": [
+      2,
+      -2
+     ],
+     "k23b": [
+      3,
+      -2
+     ],
+     "k23c": [
+      3,
+      -3
+     ],
+     "k23d": [
+      2,
+      -3
+     ],
+     "k24a": [
+      3,
+      -2
+     ],
+     "k24b": [
+      4,
+      -2
+     ],
+     "k24c": [
+      4,
+      -3
+     ],
+     "k24d": [
+      3,
+      -3
+     ],
+     "k25a": [
+      4,
+      -2
+     ],
+     "k25b": [
+      5,
+      -2
+     ],
+     "k25c": [
+      5,
+      -3
+     ],
+     "k25d": [
+      4,
+      -3
+     ],
+     "k26a": [
+      5,
+      -2
+     ],
+     "k26b": [
+      6,
+      -2
+     ],
+     "k26c": [
+      6,
+      -3
+     ],
+     "k26d": [
+      5,
+      -3
+     ],
+     "k33a": [
+      2,
+      -3
+     ],
+     "k33b": [
+      3,
+      -3
+     ],
+     "k33c": [
+      3,
+      -4
+     ],
+     "k33d": [
+      2,
+      -4
+     ],
+     "k34a": [
+      3,
+      -3
+     ],
+     "k34b": [
+      4,
+      -3
+     ],
+     "k34c": [
+      4,
+      -4
+     ],
+     "k34d": [
+      3,
+      -4
+     ],
+     "k35a": [
+      4,
+      -3
+     ],
+     "k35b": [
+      5,
+      -3
+     ],
+     "k35c": [
+      5,
+      -4
+     ],
+     "k35d": [
+      4,
+      -4
+     ],
+     "k36a": [
+      5,
+      -3
+     ],
+     "k36b": [
+      6,
+      -3
+     ],
+     "k36c": [
+      6,
+      -4
+     ],
+     "k36d": [
+      5,
+      -4
+     ],
+     "p1": {
+      "cell": [
+       "row0",
+       1
+      ]
+     },
+     "p2": {
+      "cell": [
+       "row0",
+       2
+      ]
+     },
+     "p3": {
+      "cell": [
+       "row0",
+       3
+      ]
+     },
+     "p4": {
+      "cell": [
+       "row0",
+       4
+      ]
+     },
+     "p5": {
+      "cell": [
+       "row0",
+       5
+      ]
+     },
+     "p6": {
+      "cell": [
+       "row0",
+       6
+      ]
+     },
+     "p7": {
+      "cell": [
+       "row0",
+       7
+      ]
+     },
+     "p8": {
+      "cell": [
+       "row0",
+       8
+      ]
+     },
+     "p9": {
+      "cell": [
+       "row0",
+       9
+      ]
+     },
+     "p10": {
+      "cell": [
+       "row0",
+       10
+      ]
+     },
+     "p11": {
+      "cell": [
+       "row1",
+       1
+      ]
+     },
+     "p12": {
+      "cell": [
+       "row1",
+       2
+      ]
+     },
+     "p13": {
+      "cell": [
+       "row1",
+       3
+      ]
+     },
+     "p14": {
+      "cell": [
+       "row1",
+       4
+      ]
+     },
+     "p15": {
+      "cell": [
+       "row1",
+       5
+      ]
+     },
+     "p16": {
+      "cell": [
+       "row1",
+       6
+      ]
+     },
+     "p17": {
+      "cell": [
+       "row1",
+       7
+      ]
+     },
+     "p18": {
+      "cell": [
+       "row1",
+       8
+      ]
+     },
+     "p19": {
+      "cell": [
+       "row1",
+       9
+      ]
+     },
+     "p20": {
+      "cell": [
+       "row1",
+       10
+      ]
+     },
+     "p21": {
+      "cell": [
+       "row2",
+       1
+      ]
+     },
+     "p22": {
+      "cell": [
+       "row2",
+       2
+      ]
+     },
+     "p23": {
+      "cell": [
+       "row2",
+       3
+      ]
+     },
+     "p24": {
+      "cell": [
+       "row2",
+       4
+      ]
+     },
+     "p25": {
+      "cell": [
+       "row2",
+       5
+      ]
+     },
+     "p26": {
+      "cell": [
+       "row2",
+       6
+      ]
+     },
+     "p27": {
+      "cell": [
+       "row2",
+       7
+      ]
+     },
+     "p28": {
+      "cell": [
+       "row2",
+       8
+      ]
+     },
+     "p29": {
+      "cell": [
+       "row2",
+       9
+      ]
+     },
+     "p30": {
+      "cell": [
+       "row2",
+       10
+      ]
+     },
+     "p31": {
+      "cell": [
+       "row3",
+       1
+      ]
+     },
+     "p32": {
+      "cell": [
+       "row3",
+       2
+      ]
+     },
+     "p33": {
+      "cell": [
+       "row3",
+       3
+      ]
+     },
+     "p34": {
+      "cell": [
+       "row3",
+       4
+      ]
+     },
+     "p35": {
+      "cell": [
+       "row3",
+       5
+      ]
+     },
+     "p36": {
+      "cell": [
+       "row3",
+       6
+      ]
+     },
+     "p37": {
+      "cell": [
+       "row3",
+       7
+      ]
+     },
+     "p38": {
+      "cell": [
+       "row3",
+       8
+      ]
+     },
+     "p39": {
+      "cell": [
+       "row3",
+       9
+      ]
+     },
+     "p40": {
+      "cell": [
+       "row3",
+       10
+      ]
+     },
+     "p41": {
+      "cell": [
+       "row4",
+       1
+      ]
+     },
+     "p42": {
+      "cell": [
+       "row4",
+       2
+      ]
+     },
+     "p43": {
+      "cell": [
+       "row4",
+       3
+      ]
+     },
+     "p44": {
+      "cell": [
+       "row4",
+       4
+      ]
+     },
+     "p45": {
+      "cell": [
+       "row4",
+       5
+      ]
+     },
+     "p46": {
+      "cell": [
+       "row4",
+       6
+      ]
+     },
+     "p47": {
+      "cell": [
+       "row4",
+       7
+      ]
+     },
+     "p48": {
+      "cell": [
+       "row4",
+       8
+      ]
+     },
+     "p49": {
+      "cell": [
+       "row4",
+       9
+      ]
+     },
+     "p50": {
+      "cell": [
+       "row4",
+       10
+      ]
+     },
+     "p51": {
+      "cell": [
+       "row5",
+       1
+      ]
+     },
+     "p52": {
+      "cell": [
+       "row5",
+       2
+      ]
+     },
+     "p53": {
+      "cell": [
+       "row5",
+       3
+      ]
+     },
+     "p54": {
+      "cell": [
+       "row5",
+       4
+      ]
+     },
+     "p55": {
+      "cell": [
+       "row5",
+       5
+      ]
+     },
+     "p56": {
+      "cell": [
+       "row5",
+       6
+      ]
+     },
+     "p57": {
+      "cell": [
+       "row5",
+       7
+      ]
+     },
+     "p58": {
+      "cell": [
+       "row5",
+       8
+      ]
+     },
+     "p59": {
+      "cell": [
+       "row5",
+       9
+      ]
+     },
+     "p60": {
+      "cell": [
+       "row5",
+       10
+      ]
+     },
+     "p61": {
+      "cell": [
+       "row6",
+       1
+      ]
+     },
+     "p62": {
+      "cell": [
+       "row6",
+       2
+      ]
+     },
+     "p63": {
+      "cell": [
+       "row6",
+       3
+      ]
+     },
+     "p64": {
+      "cell": [
+       "row6",
+       4
+      ]
+     },
+     "p65": {
+      "cell": [
+       "row6",
+       5
+      ]
+     },
+     "p66": {
+      "cell": [
+       "row6",
+       6
+      ]
+     },
+     "p67": {
+      "cell": [
+       "row6",
+       7
+      ]
+     },
+     "p68": {
+      "cell": [
+       "row6",
+       8
+      ]
+     },
+     "p69": {
+      "cell": [
+       "row6",
+       9
+      ]
+     },
+     "p70": {
+      "cell": [
+       "row6",
+       10
+      ]
+     },
+     "p71": {
+      "cell": [
+       "row7",
+       1
+      ]
+     },
+     "p72": {
+      "cell": [
+       "row7",
+       2
+      ]
+     },
+     "p73": {
+      "cell": [
+       "row7",
+       3
+      ]
+     },
+     "p74": {
+      "cell": [
+       "row7",
+       4
+      ]
+     },
+     "p75": {
+      "cell": [
+       "row7",
+       5
+      ]
+     },
+     "p76": {
+      "cell": [
+       "row7",
+       6
+      ]
+     },
+     "p77": {
+      "cell": [
+       "row7",
+       7
+      ]
+     },
+     "p78": {
+      "cell": [
+       "row7",
+       8
+      ]
+     },
+     "p79": {
+      "cell": [
+       "row7",
+       9
+      ]
+     },
+     "p80": {
+      "cell": [
+       "row7",
+       10
+      ]
+     },
+     "p81": {
+      "cell": [
+       "row8",
+       1
+      ]
+     },
+     "p82": {
+      "cell": [
+       "row8",
+       2
+      ]
+     },
+     "p83": {
+      "cell": [
+       "row8",
+       3
+      ]
+     },
+     "p84": {
+      "cell": [
+       "row8",
+       4
+      ]
+     },
+     "p85": {
+      "cell": [
+       "row8",
+       5
+      ]
+     },
+     "p86": {
+      "cell": [
+       "row8",
+       6
+      ]
+     },
+     "p87": {
+      "cell": [
+       "row8",
+       7
+      ]
+     },
+     "p88": {
+      "cell": [
+       "row8",
+       8
+      ]
+     },
+     "p89": {
+      "cell": [
+       "row8",
+       9
+      ]
+     },
+     "p90": {
+      "cell": [
+       "row8",
+       10
+      ]
+     },
+     "p91": {
+      "cell": [
+       "row9",
+       1
+      ]
+     },
+     "p92": {
+      "cell": [
+       "row9",
+       2
+      ]
+     },
+     "p93": {
+      "cell": [
+       "row9",
+       3
+      ]
+     },
+     "p94": {
+      "cell": [
+       "row9",
+       4
+      ]
+     },
+     "p95": {
+      "cell": [
+       "row9",
+       5
+      ]
+     },
+     "p96": {
+      "cell": [
+       "row9",
+       6
+      ]
+     },
+     "p97": {
+      "cell": [
+       "row9",
+       7
+      ]
+     },
+     "p98": {
+      "cell": [
+       "row9",
+       8
+      ]
+     },
+     "p99": {
+      "cell": [
+       "row9",
+       9
+      ]
+     },
+     "p100": {
+      "cell": [
+       "row9",
+       10
+      ]
+     },
+     "c3": [
+      2.5,
+      -0.5
+     ],
+     "c4": [
+      3.5,
+      -0.5
+     ],
+     "c5": [
+      4.5,
+      -0.5
+     ],
+     "c6": [
+      5.5,
+      -0.5
+     ],
+     "c13": [
+      2.5,
+      -1.5
+     ],
+     "c14": [
+      3.5,
+      -1.5
+     ],
+     "c15": [
+      4.5,
+      -1.5
+     ],
+     "c16": [
+      5.5,
+      -1.5
+     ],
+     "c23": [
+      2.5,
+      -2.5
+     ],
+     "c24": [
+      3.5,
+      -2.5
+     ],
+     "c25": [
+      4.5,
+      -2.5
+     ],
+     "c26": [
+      5.5,
+      -2.5
+     ],
+     "c33": [
+      2.5,
+      -3.5
+     ],
+     "c34": [
+      3.5,
+      -3.5
+     ],
+     "c35": [
+      4.5,
+      -3.5
+     ],
+     "c36": [
+      5.5,
+      -3.5
+     ],
+     "W": [
+      4,
+      -2
+     ]
+    },
+    "parts": [
+     {
+      "id": "row0",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G0",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "row1",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G1",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row2",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G2",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row3",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G3",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row4",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G4",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row5",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G5",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row6",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G6",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row7",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G7",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row8",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G8",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "row9",
+      "grid": [
+       10,
+       1
+      ],
+      "at": "G9",
+      "size": 1,
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q3",
+      "poly": [
+       "k3a",
+       "k3b",
+       "k3c",
+       "k3d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q4",
+      "poly": [
+       "k4a",
+       "k4b",
+       "k4c",
+       "k4d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q5",
+      "poly": [
+       "k5a",
+       "k5b",
+       "k5c",
+       "k5d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q6",
+      "poly": [
+       "k6a",
+       "k6b",
+       "k6c",
+       "k6d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q13",
+      "poly": [
+       "k13a",
+       "k13b",
+       "k13c",
+       "k13d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q14",
+      "poly": [
+       "k14a",
+       "k14b",
+       "k14c",
+       "k14d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q15",
+      "poly": [
+       "k15a",
+       "k15b",
+       "k15c",
+       "k15d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q16",
+      "poly": [
+       "k16a",
+       "k16b",
+       "k16c",
+       "k16d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q23",
+      "poly": [
+       "k23a",
+       "k23b",
+       "k23c",
+       "k23d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q24",
+      "poly": [
+       "k24a",
+       "k24b",
+       "k24c",
+       "k24d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q25",
+      "poly": [
+       "k25a",
+       "k25b",
+       "k25c",
+       "k25d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q26",
+      "poly": [
+       "k26a",
+       "k26b",
+       "k26c",
+       "k26d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q33",
+      "poly": [
+       "k33a",
+       "k33b",
+       "k33c",
+       "k33d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q34",
+      "poly": [
+       "k34a",
+       "k34b",
+       "k34c",
+       "k34d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q35",
+      "poly": [
+       "k35a",
+       "k35b",
+       "k35c",
+       "k35d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "q36",
+      "poly": [
+       "k36a",
+       "k36b",
+       "k36c",
+       "k36d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2
+     },
+     {
+      "id": "lit4",
+      "poly": [
+       "k4a",
+       "k4b",
+       "k4c",
+       "k4d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "lit14",
+      "poly": [
+       "k14a",
+       "k14b",
+       "k14c",
+       "k14d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "lit24",
+      "poly": [
+       "k24a",
+       "k24b",
+       "k24c",
+       "k24d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "lit34",
+      "poly": [
+       "k34a",
+       "k34b",
+       "k34c",
+       "k34d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "s1",
+      "label": "1",
+      "at": "p1",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s2",
+      "label": "2",
+      "at": "p2",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s3",
+      "label": "3",
+      "at": "p3",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s4",
+      "label": "4",
+      "at": "p4",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s5",
+      "label": "5",
+      "at": "p5",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s6",
+      "label": "6",
+      "at": "p6",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s7",
+      "label": "7",
+      "at": "p7",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s8",
+      "label": "8",
+      "at": "p8",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s9",
+      "label": "9",
+      "at": "p9",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s10",
+      "label": "10",
+      "at": "p10",
+      "dir": "c",
+      "size": "s"
+     },
+     {
+      "id": "s11",
+      "label": "11",
+      "at": "p11",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s12",
+      "label": "12",
+      "at": "p12",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s13",
+      "label": "13",
+      "at": "p13",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s14",
+      "label": "14",
+      "at": "p14",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s15",
+      "label": "15",
+      "at": "p15",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s16",
+      "label": "16",
+      "at": "p16",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s17",
+      "label": "17",
+      "at": "p17",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s18",
+      "label": "18",
+      "at": "p18",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s19",
+      "label": "19",
+      "at": "p19",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s20",
+      "label": "20",
+      "at": "p20",
+      "dir": "c",
+      "size": "s",
+      "group": "lab1"
+     },
+     {
+      "id": "s21",
+      "label": "21",
+      "at": "p21",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s22",
+      "label": "22",
+      "at": "p22",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s23",
+      "label": "23",
+      "at": "p23",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s24",
+      "label": "24",
+      "at": "p24",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s25",
+      "label": "25",
+      "at": "p25",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s26",
+      "label": "26",
+      "at": "p26",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s27",
+      "label": "27",
+      "at": "p27",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s28",
+      "label": "28",
+      "at": "p28",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s29",
+      "label": "29",
+      "at": "p29",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s30",
+      "label": "30",
+      "at": "p30",
+      "dir": "c",
+      "size": "s",
+      "group": "lab2"
+     },
+     {
+      "id": "s31",
+      "label": "31",
+      "at": "p31",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s32",
+      "label": "32",
+      "at": "p32",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s33",
+      "label": "33",
+      "at": "p33",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s34",
+      "label": "34",
+      "at": "p34",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s35",
+      "label": "35",
+      "at": "p35",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s36",
+      "label": "36",
+      "at": "p36",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s37",
+      "label": "37",
+      "at": "p37",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s38",
+      "label": "38",
+      "at": "p38",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s39",
+      "label": "39",
+      "at": "p39",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s40",
+      "label": "40",
+      "at": "p40",
+      "dir": "c",
+      "size": "s",
+      "group": "lab3"
+     },
+     {
+      "id": "s41",
+      "label": "41",
+      "at": "p41",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s42",
+      "label": "42",
+      "at": "p42",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s43",
+      "label": "43",
+      "at": "p43",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s44",
+      "label": "44",
+      "at": "p44",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s45",
+      "label": "45",
+      "at": "p45",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s46",
+      "label": "46",
+      "at": "p46",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s47",
+      "label": "47",
+      "at": "p47",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s48",
+      "label": "48",
+      "at": "p48",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s49",
+      "label": "49",
+      "at": "p49",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s50",
+      "label": "50",
+      "at": "p50",
+      "dir": "c",
+      "size": "s",
+      "group": "lab4"
+     },
+     {
+      "id": "s51",
+      "label": "51",
+      "at": "p51",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s52",
+      "label": "52",
+      "at": "p52",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s53",
+      "label": "53",
+      "at": "p53",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s54",
+      "label": "54",
+      "at": "p54",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s55",
+      "label": "55",
+      "at": "p55",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s56",
+      "label": "56",
+      "at": "p56",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s57",
+      "label": "57",
+      "at": "p57",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s58",
+      "label": "58",
+      "at": "p58",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s59",
+      "label": "59",
+      "at": "p59",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s60",
+      "label": "60",
+      "at": "p60",
+      "dir": "c",
+      "size": "s",
+      "group": "lab5"
+     },
+     {
+      "id": "s61",
+      "label": "61",
+      "at": "p61",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s62",
+      "label": "62",
+      "at": "p62",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s63",
+      "label": "63",
+      "at": "p63",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s64",
+      "label": "64",
+      "at": "p64",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s65",
+      "label": "65",
+      "at": "p65",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s66",
+      "label": "66",
+      "at": "p66",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s67",
+      "label": "67",
+      "at": "p67",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s68",
+      "label": "68",
+      "at": "p68",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s69",
+      "label": "69",
+      "at": "p69",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s70",
+      "label": "70",
+      "at": "p70",
+      "dir": "c",
+      "size": "s",
+      "group": "lab6"
+     },
+     {
+      "id": "s71",
+      "label": "71",
+      "at": "p71",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s72",
+      "label": "72",
+      "at": "p72",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s73",
+      "label": "73",
+      "at": "p73",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s74",
+      "label": "74",
+      "at": "p74",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s75",
+      "label": "75",
+      "at": "p75",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s76",
+      "label": "76",
+      "at": "p76",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s77",
+      "label": "77",
+      "at": "p77",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s78",
+      "label": "78",
+      "at": "p78",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s79",
+      "label": "79",
+      "at": "p79",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s80",
+      "label": "80",
+      "at": "p80",
+      "dir": "c",
+      "size": "s",
+      "group": "lab7"
+     },
+     {
+      "id": "s81",
+      "label": "81",
+      "at": "p81",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s82",
+      "label": "82",
+      "at": "p82",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s83",
+      "label": "83",
+      "at": "p83",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s84",
+      "label": "84",
+      "at": "p84",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s85",
+      "label": "85",
+      "at": "p85",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s86",
+      "label": "86",
+      "at": "p86",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s87",
+      "label": "87",
+      "at": "p87",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s88",
+      "label": "88",
+      "at": "p88",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s89",
+      "label": "89",
+      "at": "p89",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s90",
+      "label": "90",
+      "at": "p90",
+      "dir": "c",
+      "size": "s",
+      "group": "lab8"
+     },
+     {
+      "id": "s91",
+      "label": "91",
+      "at": "p91",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s92",
+      "label": "92",
+      "at": "p92",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s93",
+      "label": "93",
+      "at": "p93",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s94",
+      "label": "94",
+      "at": "p94",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s95",
+      "label": "95",
+      "at": "p95",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s96",
+      "label": "96",
+      "at": "p96",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s97",
+      "label": "97",
+      "at": "p97",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s98",
+      "label": "98",
+      "at": "p98",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s99",
+      "label": "99",
+      "at": "p99",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "s100",
+      "label": "100",
+      "at": "p100",
+      "dir": "c",
+      "size": "s",
+      "group": "lab9"
+     },
+     {
+      "id": "L3",
+      "label": "3",
+      "at": "c3",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L4",
+      "label": "\\cw{4}",
+      "at": "c4",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L5",
+      "label": "5",
+      "at": "c5",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L6",
+      "label": "6",
+      "at": "c6",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L13",
+      "label": "13",
+      "at": "c13",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L14",
+      "label": "1\\cw{4}",
+      "at": "c14",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L15",
+      "label": "15",
+      "at": "c15",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L16",
+      "label": "16",
+      "at": "c16",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L23",
+      "label": "23",
+      "at": "c23",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L24",
+      "label": "2\\cw{4}",
+      "at": "c24",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L25",
+      "label": "25",
+      "at": "c25",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L26",
+      "label": "26",
+      "at": "c26",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L33",
+      "label": "33",
+      "at": "c33",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L34",
+      "label": "3\\cw{4}",
+      "at": "c34",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L35",
+      "label": "35",
+      "at": "c35",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "L36",
+      "label": "36",
+      "at": "c36",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The hundred chart is counting, in rows of ten.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Ten in every row",
+       "at": "rows"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six, seven, eight, nine, ten.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "s2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "s3",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "s4",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "s5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "s6",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "s7",
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "s8",
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": "s9",
+       "at": "nine"
+      },
+      {
+       "do": "show",
+       "target": "s10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eleven starts the next row, right under one.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "view",
+       "to": [
+        -0.7,
+        -2.7,
+        10.7,
+        0.7
+       ],
+       "at": "Eleven",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "row1",
+        "lab1"
+       ],
+       "at": "Eleven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the rest pours in: thirty, forty, fifty, sixty, seventy, eighty, ninety, one hundred.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "G2": [
+         0,
+         -2
+        ],
+        "G3": [
+         0,
+         -3
+        ],
+        "G4": [
+         0,
+         -4
+        ],
+        "G5": [
+         0,
+         -5
+        ],
+        "G6": [
+         0,
+         -6
+        ],
+        "G7": [
+         0,
+         -7
+        ],
+        "G8": [
+         0,
+         -8
+        ],
+        "G9": [
+         0,
+         -9
+        ]
+       },
+       "at": "Then",
+       "dur": 0.05
+      },
+      {
+       "do": "view",
+       "to": [
+        -0.7,
+        -10.7,
+        10.7,
+        0.7
+       ],
+       "at": "rest",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "row2",
+        "lab2"
+       ],
+       "at": "thirty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row3",
+        "lab3"
+       ],
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row4",
+        "lab4"
+       ],
+       "at": "fifty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row5",
+        "lab5"
+       ],
+       "at": "sixty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row6",
+        "lab6"
+       ],
+       "at": "seventy"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row7",
+        "lab7"
+       ],
+       "at": "eighty"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row8",
+        "lab8"
+       ],
+       "at": "ninety"
+      },
+      {
+       "do": "show",
+       "target": [
+        "row9",
+        "lab9"
+       ],
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look down one column.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q13",
+        "q14",
+        "q15",
+        "q16",
+        "q23",
+        "q24",
+        "q25",
+        "q26",
+        "q33",
+        "q34",
+        "q35",
+        "q36"
+       ],
+       "at": "Look",
+       "dur": 0.3
+      },
+      {
+       "do": "hide",
+       "target": [
+        "row0",
+        "row1",
+        "row2",
+        "row3",
+        "row4",
+        "row5",
+        "row6",
+        "row7",
+        "row8",
+        "row9",
+        "s1",
+        "s2",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31",
+        "s32",
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41",
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46",
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51",
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56",
+        "s57",
+        "s58",
+        "s59",
+        "s60",
+        "s61",
+        "s62",
+        "s63",
+        "s64",
+        "s65",
+        "s66",
+        "s67",
+        "s68",
+        "s69",
+        "s70",
+        "s71",
+        "s72",
+        "s73",
+        "s74",
+        "s75",
+        "s76",
+        "s77",
+        "s78",
+        "s79",
+        "s80",
+        "s81",
+        "s82",
+        "s83",
+        "s84",
+        "s85",
+        "s86",
+        "s87",
+        "s88",
+        "s89",
+        "s90",
+        "s91",
+        "s92",
+        "s93",
+        "s94",
+        "s95",
+        "s96",
+        "s97",
+        "s98",
+        "s99",
+        "s100"
+       ],
+       "at": "Look",
+       "dur": 0.4
+      },
+      {
+       "do": "hide",
+       "target": [
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s23",
+        "s24",
+        "s25",
+        "s26",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+       ],
+       "at": "column",
+       "dur": 0.4
+      },
+      {
+       "do": "show",
+       "target": [
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L13",
+        "L14",
+        "L15",
+        "L16",
+        "L23",
+        "L24",
+        "L25",
+        "L26",
+        "L33",
+        "L34",
+        "L35",
+        "L36"
+       ],
+       "at": "column",
+       "dur": 0.4
+      },
+      {
+       "do": "view",
+       "to": [
+        1.7000000000000002,
+        -4.3,
+        6.3,
+        0.2999999999999998
+       ],
+       "at": "column",
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four, fourteen, twenty-four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "G0": "W",
+        "G1": "W",
+        "G2": "W",
+        "G3": "W",
+        "G4": "W",
+        "G5": "W",
+        "G6": "W",
+        "G7": "W",
+        "G8": "W",
+        "G9": "W",
+        "p1": "W",
+        "p2": "W",
+        "p3": "W",
+        "p4": "W",
+        "p5": "W",
+        "p6": "W",
+        "p7": "W",
+        "p8": "W",
+        "p9": "W",
+        "p10": "W",
+        "p11": "W",
+        "p12": "W",
+        "p13": "W",
+        "p14": "W",
+        "p15": "W",
+        "p16": "W",
+        "p17": "W",
+        "p18": "W",
+        "p19": "W",
+        "p20": "W",
+        "p21": "W",
+        "p22": "W",
+        "p23": "W",
+        "p24": "W",
+        "p25": "W",
+        "p26": "W",
+        "p27": "W",
+        "p28": "W",
+        "p29": "W",
+        "p30": "W",
+        "p31": "W",
+        "p32": "W",
+        "p33": "W",
+        "p34": "W",
+        "p35": "W",
+        "p36": "W",
+        "p37": "W",
+        "p38": "W",
+        "p39": "W",
+        "p40": "W",
+        "p41": "W",
+        "p42": "W",
+        "p43": "W",
+        "p44": "W",
+        "p45": "W",
+        "p46": "W",
+        "p47": "W",
+        "p48": "W",
+        "p49": "W",
+        "p50": "W",
+        "p51": "W",
+        "p52": "W",
+        "p53": "W",
+        "p54": "W",
+        "p55": "W",
+        "p56": "W",
+        "p57": "W",
+        "p58": "W",
+        "p59": "W",
+        "p60": "W",
+        "p61": "W",
+        "p62": "W",
+        "p63": "W",
+        "p64": "W",
+        "p65": "W",
+        "p66": "W",
+        "p67": "W",
+        "p68": "W",
+        "p69": "W",
+        "p70": "W",
+        "p71": "W",
+        "p72": "W",
+        "p73": "W",
+        "p74": "W",
+        "p75": "W",
+        "p76": "W",
+        "p77": "W",
+        "p78": "W",
+        "p79": "W",
+        "p80": "W",
+        "p81": "W",
+        "p82": "W",
+        "p83": "W",
+        "p84": "W",
+        "p85": "W",
+        "p86": "W",
+        "p87": "W",
+        "p88": "W",
+        "p89": "W",
+        "p90": "W",
+        "p91": "W",
+        "p92": "W",
+        "p93": "W",
+        "p94": "W",
+        "p95": "W",
+        "p96": "W",
+        "p97": "W",
+        "p98": "W",
+        "p99": "W",
+        "p100": "W"
+       },
+       "at": "Four",
+       "dur": 0.05
+      },
+      {
+       "do": "show",
+       "target": "lit4",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "lit14",
+       "at": "fourteen"
+      },
+      {
+       "do": "show",
+       "target": "lit24",
+       "at": "twenty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Thirty-four! They all end in four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "lit34",
+       "at": "Thirty-four"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{4},\\ 1\\cw{4},\\ 2\\cw{4},\\ 3\\cw{4}",
+       "at": "end"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step down is ten more. The ones stay, and the tens count up.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "One step down: ten more",
+       "at": "down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "k52a": [
+      -2,
+      1
+     ],
+     "k52b": [
+      -1,
+      1
+     ],
+     "k52c": [
+      -1,
+      0
+     ],
+     "k52d": [
+      -2,
+      0
+     ],
+     "p52": [
+      -1.5,
+      0.5
+     ],
+     "k53a": [
+      -1,
+      1
+     ],
+     "k53b": [
+      0,
+      1
+     ],
+     "k53c": [
+      0,
+      0
+     ],
+     "k53d": [
+      -1,
+      0
+     ],
+     "p53": [
+      -0.5,
+      0.5
+     ],
+     "k54a": [
+      0,
+      1
+     ],
+     "k54b": [
+      1,
+      1
+     ],
+     "k54c": [
+      1,
+      0
+     ],
+     "k54d": [
+      0,
+      0
+     ],
+     "p54": [
+      0.5,
+      0.5
+     ],
+     "k55a": [
+      1,
+      1
+     ],
+     "k55b": [
+      2,
+      1
+     ],
+     "k55c": [
+      2,
+      0
+     ],
+     "k55d": [
+      1,
+      0
+     ],
+     "p55": [
+      1.5,
+      0.5
+     ],
+     "k62a": [
+      -2,
+      0
+     ],
+     "k62b": [
+      -1,
+      0
+     ],
+     "k62c": [
+      -1,
+      -1
+     ],
+     "k62d": [
+      -2,
+      -1
+     ],
+     "p62": [
+      -1.5,
+      -0.5
+     ],
+     "k63a": [
+      -1,
+      0
+     ],
+     "k63b": [
+      0,
+      0
+     ],
+     "k63c": [
+      0,
+      -1
+     ],
+     "k63d": [
+      -1,
+      -1
+     ],
+     "p63": [
+      -0.5,
+      -0.5
+     ],
+     "k64a": [
+      0,
+      0
+     ],
+     "k64b": [
+      1,
+      0
+     ],
+     "k64c": [
+      1,
+      -1
+     ],
+     "k64d": [
+      0,
+      -1
+     ],
+     "p64": [
+      0.5,
+      -0.5
+     ],
+     "k65a": [
+      1,
+      0
+     ],
+     "k65b": [
+      2,
+      0
+     ],
+     "k65c": [
+      2,
+      -1
+     ],
+     "k65d": [
+      1,
+      -1
+     ],
+     "p65": [
+      1.5,
+      -0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "q52",
+      "poly": [
+       "k52a",
+       "k52b",
+       "k52c",
+       "k52d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q53",
+      "poly": [
+       "k53a",
+       "k53b",
+       "k53c",
+       "k53d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q54",
+      "poly": [
+       "k54a",
+       "k54b",
+       "k54c",
+       "k54d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q55",
+      "poly": [
+       "k55a",
+       "k55b",
+       "k55c",
+       "k55d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q62",
+      "poly": [
+       "k62a",
+       "k62b",
+       "k62c",
+       "k62d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q63",
+      "poly": [
+       "k63a",
+       "k63b",
+       "k63c",
+       "k63d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q65",
+      "poly": [
+       "k65a",
+       "k65b",
+       "k65c",
+       "k65d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "lit63",
+      "poly": [
+       "k63a",
+       "k63b",
+       "k63c",
+       "k63d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "lit54",
+      "poly": [
+       "k54a",
+       "k54b",
+       "k54c",
+       "k54d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "q64",
+      "poly": [
+       "k64a",
+       "k64b",
+       "k64c",
+       "k64d"
+      ],
+      "ink": "gold",
+      "fill": "gold-fill",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n52",
+      "label": "52",
+      "at": "p52",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n53",
+      "label": "53",
+      "at": "p53",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n54",
+      "label": "54",
+      "at": "p54",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n55",
+      "label": "55",
+      "at": "p55",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n62",
+      "label": "62",
+      "at": "p62",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n63",
+      "label": "63",
+      "at": "p63",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n64",
+      "label": "64",
+      "at": "p64",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "n65",
+      "label": "65",
+      "at": "p65",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This is part of the hundred chart. What number belongs in the empty square?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "This is part of the hundred chart. What number belongs in the empty square?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start at sixty-three.",
+     "pause": 0.15,
+     "do": [
+      {
+       "do": "show",
+       "target": "lit63",
+       "at": "sixty-three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step right is one more.",
+     "pause": 0.15,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "q64",
+       "at": "right"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Sixty-three, sixty-four. The square is sixty-four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "n64",
+       "at": "sixty-four"
+      },
+      {
+       "do": "answer",
+       "tex": "64",
+       "at": "sixty-four",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check from above: fifty-four.",
+     "pause": 0.15,
+     "do": [
+      {
+       "do": "show",
+       "target": "lit54",
+       "at": "fifty-four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step down is ten more: sixty-four.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "54+10=64",
+       "at": "ten"
+      },
+      {
+       "do": "highlight",
+       "target": "n64",
+       "at": "sixty-four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "k31a": [
+      -2,
+      1
+     ],
+     "k31b": [
+      -1,
+      1
+     ],
+     "k31c": [
+      -1,
+      0
+     ],
+     "k31d": [
+      -2,
+      0
+     ],
+     "p31": [
+      -1.5,
+      0.5
+     ],
+     "k32a": [
+      -1,
+      1
+     ],
+     "k32b": [
+      0,
+      1
+     ],
+     "k32c": [
+      0,
+      0
+     ],
+     "k32d": [
+      -1,
+      0
+     ],
+     "p32": [
+      -0.5,
+      0.5
+     ],
+     "k33a": [
+      0,
+      1
+     ],
+     "k33b": [
+      1,
+      1
+     ],
+     "k33c": [
+      1,
+      0
+     ],
+     "k33d": [
+      0,
+      0
+     ],
+     "p33": [
+      0.5,
+      0.5
+     ],
+     "k34a": [
+      1,
+      1
+     ],
+     "k34b": [
+      2,
+      1
+     ],
+     "k34c": [
+      2,
+      0
+     ],
+     "k34d": [
+      1,
+      0
+     ],
+     "p34": [
+      1.5,
+      0.5
+     ],
+     "k41a": [
+      -2,
+      0
+     ],
+     "k41b": [
+      -1,
+      0
+     ],
+     "k41c": [
+      -1,
+      -1
+     ],
+     "k41d": [
+      -2,
+      -1
+     ],
+     "p41": [
+      -1.5,
+      -0.5
+     ],
+     "k42a": [
+      -1,
+      0
+     ],
+     "k42b": [
+      0,
+      0
+     ],
+     "k42c": [
+      0,
+      -1
+     ],
+     "k42d": [
+      -1,
+      -1
+     ],
+     "p42": [
+      -0.5,
+      -0.5
+     ],
+     "k43a": [
+      0,
+      0
+     ],
+     "k43b": [
+      1,
+      0
+     ],
+     "k43c": [
+      1,
+      -1
+     ],
+     "k43d": [
+      0,
+      -1
+     ],
+     "p43": [
+      0.5,
+      -0.5
+     ],
+     "k44a": [
+      1,
+      0
+     ],
+     "k44b": [
+      2,
+      0
+     ],
+     "k44c": [
+      2,
+      -1
+     ],
+     "k44d": [
+      1,
+      -1
+     ],
+     "p44": [
+      1.5,
+      -0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "q31",
+      "poly": [
+       "k31a",
+       "k31b",
+       "k31c",
+       "k31d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q32",
+      "poly": [
+       "k32a",
+       "k32b",
+       "k32c",
+       "k32d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q33",
+      "poly": [
+       "k33a",
+       "k33b",
+       "k33c",
+       "k33d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q34",
+      "poly": [
+       "k34a",
+       "k34b",
+       "k34c",
+       "k34d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q42",
+      "poly": [
+       "k42a",
+       "k42b",
+       "k42c",
+       "k42d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q43",
+      "poly": [
+       "k43a",
+       "k43b",
+       "k43c",
+       "k43d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q44",
+      "poly": [
+       "k44a",
+       "k44b",
+       "k44c",
+       "k44d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "lit31",
+      "poly": [
+       "k31a",
+       "k31b",
+       "k31c",
+       "k31d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "q41",
+      "poly": [
+       "k41a",
+       "k41b",
+       "k41c",
+       "k41d"
+      ],
+      "ink": "gold",
+      "fill": "gold-fill",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n31",
+      "label": "31",
+      "at": "p31",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n32",
+      "label": "32",
+      "at": "p32",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n33",
+      "label": "33",
+      "at": "p33",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n34",
+      "label": "34",
+      "at": "p34",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n41",
+      "label": "41",
+      "at": "p41",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "n42",
+      "label": "42",
+      "at": "p42",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n43",
+      "label": "43",
+      "at": "p43",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n44",
+      "label": "44",
+      "at": "p44",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This empty square starts a row. Nothing is on its left.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "This"
+      },
+      {
+       "do": "text",
+       "text": "At the start of a row",
+       "at": "This"
+      },
+      {
+       "do": "highlight",
+       "target": "q41",
+       "at": "starts"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So look up.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "lit31",
+       "at": "up"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Thirty-one, and ten more is forty-one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "31+10=41",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "n41",
+       "at": "forty-one"
+      },
+      {
+       "do": "answer",
+       "tex": "41",
+       "at": "forty-one"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "k37a": [
+      -2,
+      1
+     ],
+     "k37b": [
+      -1,
+      1
+     ],
+     "k37c": [
+      -1,
+      0
+     ],
+     "k37d": [
+      -2,
+      0
+     ],
+     "p37": [
+      -1.5,
+      0.5
+     ],
+     "k38a": [
+      -1,
+      1
+     ],
+     "k38b": [
+      0,
+      1
+     ],
+     "k38c": [
+      0,
+      0
+     ],
+     "k38d": [
+      -1,
+      0
+     ],
+     "p38": [
+      -0.5,
+      0.5
+     ],
+     "k39a": [
+      0,
+      1
+     ],
+     "k39b": [
+      1,
+      1
+     ],
+     "k39c": [
+      1,
+      0
+     ],
+     "k39d": [
+      0,
+      0
+     ],
+     "p39": [
+      0.5,
+      0.5
+     ],
+     "k40a": [
+      1,
+      1
+     ],
+     "k40b": [
+      2,
+      1
+     ],
+     "k40c": [
+      2,
+      0
+     ],
+     "k40d": [
+      1,
+      0
+     ],
+     "p40": [
+      1.5,
+      0.5
+     ],
+     "k47a": [
+      -2,
+      0
+     ],
+     "k47b": [
+      -1,
+      0
+     ],
+     "k47c": [
+      -1,
+      -1
+     ],
+     "k47d": [
+      -2,
+      -1
+     ],
+     "p47": [
+      -1.5,
+      -0.5
+     ],
+     "k48a": [
+      -1,
+      0
+     ],
+     "k48b": [
+      0,
+      0
+     ],
+     "k48c": [
+      0,
+      -1
+     ],
+     "k48d": [
+      -1,
+      -1
+     ],
+     "p48": [
+      -0.5,
+      -0.5
+     ],
+     "k49a": [
+      0,
+      0
+     ],
+     "k49b": [
+      1,
+      0
+     ],
+     "k49c": [
+      1,
+      -1
+     ],
+     "k49d": [
+      0,
+      -1
+     ],
+     "p49": [
+      0.5,
+      -0.5
+     ],
+     "k50a": [
+      1,
+      0
+     ],
+     "k50b": [
+      2,
+      0
+     ],
+     "k50c": [
+      2,
+      -1
+     ],
+     "k50d": [
+      1,
+      -1
+     ],
+     "p50": [
+      1.5,
+      -0.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "q37",
+      "poly": [
+       "k37a",
+       "k37b",
+       "k37c",
+       "k37d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q38",
+      "poly": [
+       "k38a",
+       "k38b",
+       "k38c",
+       "k38d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q39",
+      "poly": [
+       "k39a",
+       "k39b",
+       "k39c",
+       "k39d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q40",
+      "poly": [
+       "k40a",
+       "k40b",
+       "k40c",
+       "k40d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q47",
+      "poly": [
+       "k47a",
+       "k47b",
+       "k47c",
+       "k47d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q48",
+      "poly": [
+       "k48a",
+       "k48b",
+       "k48c",
+       "k48d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "q49",
+      "poly": [
+       "k49a",
+       "k49b",
+       "k49c",
+       "k49d"
+      ],
+      "ink": "muted",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "lit49",
+      "poly": [
+       "k49a",
+       "k49b",
+       "k49c",
+       "k49d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "lit40",
+      "poly": [
+       "k40a",
+       "k40b",
+       "k40c",
+       "k40d"
+      ],
+      "ink": "accent",
+      "fill": "accent-fill",
+      "w": 3
+     },
+     {
+      "id": "q50",
+      "poly": [
+       "k50a",
+       "k50b",
+       "k50c",
+       "k50d"
+      ],
+      "ink": "gold",
+      "fill": "gold-fill",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n37",
+      "label": "37",
+      "at": "p37",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n38",
+      "label": "38",
+      "at": "p38",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n39",
+      "label": "39",
+      "at": "p39",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n40",
+      "label": "40",
+      "at": "p40",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n47",
+      "label": "47",
+      "at": "p47",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n48",
+      "label": "48",
+      "at": "p48",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n49",
+      "label": "49",
+      "at": "p49",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "n50",
+      "label": "50",
+      "at": "p50",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This empty square ends a row.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "This"
+      },
+      {
+       "do": "text",
+       "text": "At the end of a row",
+       "at": "This"
+      },
+      {
+       "do": "highlight",
+       "target": "q50",
+       "at": "ends"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Forty-seven, forty-eight, forty-nine, forty-ten.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n49",
+       "at": "forty-nine"
+      },
+      {
+       "do": "write",
+       "tex": "\\cancel{\\cw{\\text{forty-ten}}}",
+       "fresh": true,
+       "at": "forty-ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "After nine ones comes a new ten. Look up: forty.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n40",
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ten more than forty is fifty. Forty-nine, then fifty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "n50",
+       "at": "fifty"
+      },
+      {
+       "do": "answer",
+       "tex": "50",
+       "at": "fifty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step right is one more.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "text",
+       "text": "One step right is one more.",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "lit49",
+       "at": "right"
+      },
+      {
+       "do": "highlight",
+       "target": "n50",
+       "at": "more"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step down is ten more.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "text",
+       "text": "One step down is ten more.",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "lit40",
+       "at": "down"
+      },
+      {
+       "do": "highlight",
+       "target": "n50",
+       "at": "more"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
