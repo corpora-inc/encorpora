@@ -2,6 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   associationWords,
+  findingWords,
+  fitWords,
   fitLine,
   normalQuantile,
   quartiles,
@@ -125,6 +127,26 @@ test("an association is worded only as far as its interval allows", () => {
   assert.doesNotMatch(
     [up, down, flat].map((fit) => associationWords(fit, "Learners")).join(" "),
     /because|caus|effect|led to|drives/i,
+  );
+});
+
+test("the finding stands alone; its numbers are said apart", () => {
+  const up = fitLine(anscombe)!;
+  assert.equal(findingWords(up, "Students"), "Students who practiced more grew more.");
+  assert.equal(fitWords(up), "r = 0.82, 95% CI 0.42 to 0.95, n = 11");
+  const down = fitLine(anscombe.map(([x, y]) => [x, -y] as const))!;
+  assert.equal(findingWords(down, "Classes"), "Classes who practiced more grew less.");
+  const flat = fitLine([
+    [1, 2],
+    [2, 1],
+    [3, 3],
+    [4, 1],
+    [5, 2],
+    [6, 3],
+  ])!;
+  assert.equal(
+    findingWords(flat, "Schools"),
+    "No clear association between practice time and growth.",
   );
 });
 

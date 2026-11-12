@@ -1,0 +1,76 @@
+/* A reading with its details a tap away. The reading and the button share a
+   row; the details float over the page in the menus' cream, so opening them
+   moves nothing. */
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.reading {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Centred on the button's 44 px when the reading is one line. */
+  padding-block: 10px;
+}
+.trigger {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-inline-end: calc(-1 * var(--space-2));
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.trigger:hover {
+  background: var(--color-surface-sunken);
+}
+.trigger:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.trigger[aria-expanded="true"] {
+  background: var(--color-surface-sunken);
+}
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.icon .dot {
+  fill: currentColor;
+}
+.panel {
+  position: fixed;
+  z-index: 50;
+  display: grid;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  width: min(360px, calc(100vw - 16px));
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  font-size: var(--text-table);
+  line-height: 1.4;
+  font-variant-numeric: var(--numeric);
+  text-wrap: pretty;
+}
+.panel:focus {
+  outline: none;
+}

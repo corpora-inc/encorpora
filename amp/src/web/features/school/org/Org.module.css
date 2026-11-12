@@ -1220,8 +1220,31 @@ button.danger:disabled {
   font-variant-numeric: var(--numeric);
   text-wrap: pretty;
 }
-.doseSlope {
+/* The numbers behind a figure, in its Details (ui/InfoPopover). */
+.doseDetail {
+  margin: 0;
+}
+.doseStats {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-block: 1px solid var(--color-border);
+}
+.doseNote {
+  margin: 0;
   color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.doseDetailKey {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 0 var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  list-style: none;
+}
+.doseDetailKey b {
+  font-weight: 600;
 }
 .doseKey {
   display: grid;
