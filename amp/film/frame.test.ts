@@ -159,8 +159,33 @@ const strikeFilm = (id: string, strikes: boolean) => {
 const struckFilm = strikeFilm(STRIKE_FILM_ID, true);
 /** When each strike's word is said, in board order: the line of working, then the line of words. */
 const STRIKE_CUES = ["missing", "note"].map((word) => struckFilm.timing.shots[0]![1]!.words.find((w) => w.text.replace(/\W/g, "") === word)!.start);
+/**
+ * A header pinned beside a figure: it arrives on an empty board, stays through a
+ * clear, is replaced, and leaves with "off". Built here, not under lessons/.
+ */
+const HEADER_FILM_ID = "board-header";
+const headerScript = scriptSchema.parse({
+  id: HEADER_FILM_ID,
+  title: "A header over the work",
+  shots: [{
+    figure: { view: [-1, -1, 9, 9], points: { A: [0, 0], B: [8, 8] }, parts: [{ id: "ax", axes: true, step: 1, every: 2, start: true }, { id: "l", seg: ["A", "B"], ink: "accent", w: 6, start: true }] },
+    beats: [
+      { say: "Point-slope form names one point and the slope.", do: [{ do: "header", tex: "y-y_1=m(x-x_1)", label: "Point-slope form", at: "names" }] },
+      { say: "Start from the original equation.", do: [{ do: "write", tex: "y+1=3(x-2)", at: "Start" }] },
+      { say: "Its point is two, negative one.", do: [{ do: "write", tex: "(2,\\ -1)", fresh: true, at: "point" }] },
+      { say: "A new column keeps the same header.", do: [{ do: "clear" }, { do: "write", tex: "y+1=3(x-2)", fresh: true, at: "new" }, { do: "write", tex: "\\text{slope}=3", fresh: true, at: "same" }] },
+      { say: "Standard form comes next.", do: [{ do: "clear" }, { do: "header", tex: "Ax+By=C", label: "Standard form", at: "Standard" }] },
+      { say: "Put zero in for x, and five y is ten.", do: [{ do: "write", tex: "x+5y=10", at: "Put" }, { do: "write", tex: "0+5y=10", fresh: true, at: "five" }] },
+      { say: "The header goes away now.", do: [{ do: "clear" }, { do: "header", off: true, at: "away" }] },
+      { say: "So y is two.", do: [{ do: "write", tex: "5y=10", at: "So" }, { do: "write", tex: "y=2", at: "two" }] },
+    ],
+  }],
+});
+const headerFilm = { id: HEADER_FILM_ID, title: headerScript.title, script: headerScript, timing: dryTiming(headerScript), figure: null };
+/** When a word of a beat of the header film is said. */
+const headerCue = (beat: number, word: string) => headerFilm.timing.shots[0]![beat]!.words.find((w) => w.text.replace(/\W/g, "") === word)!.start;
 /** Films built here rather than exported: shots that draw a scene spec of their own. */
-const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm, [STRIKE_FILM_ID]: struckFilm, [PLAIN_FILM_ID]: strikeFilm(PLAIN_FILM_ID, false) };
+const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm, [STRIKE_FILM_ID]: struckFilm, [PLAIN_FILM_ID]: strikeFilm(PLAIN_FILM_ID, false), [HEADER_FILM_ID]: headerFilm };
 const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
@@ -818,6 +843,134 @@ test("a strike goes through the middle of its line, a little past both ends, and
     }
   }
 }, 180_000);
+
+test("a header stays put through a clear, is replaced, leaves with off, and nothing overlaps it", async () => {
+  type Box = { x: number; y: number; w: number; h: number };
+  type Shot = { error?: string; heads: (Box & { name: string })[]; lines: (Box & { name: string })[]; board: Box; figure: Box | null };
+  /** The headers that show at `time`, every board line that shows (cut to the board's window), the window and the figure card. */
+  const shoot = (page: Page, time: number) => page.evaluate((t): Shot => {
+    const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+    const none = { x: 0, y: 0, w: 0, h: 0 };
+    if (!scrub) return { error: "no scrubber", heads: [], lines: [], board: none, figure: null };
+    scrub.value = String(t);
+    scrub.dispatchEvent(new Event("input", { bubbles: true }));
+    const box = (r: { left: number; top: number; right: number; bottom: number }) => ({ x: r.left, y: r.top, w: r.right - r.left, h: r.bottom - r.top });
+    const shown = (el: Element) => {
+      let o = 1;
+      for (let n: Element | null = el; n && n !== document.body; n = n.parentElement) {
+        const cs = getComputedStyle(n);
+        if (cs.display === "none" || cs.visibility === "hidden") return 0;
+        o *= Number.parseFloat(cs.opacity) || 0;
+      }
+      return o;
+    };
+    const win = document.querySelector("#film .film-board")!.getBoundingClientRect();
+    const card = [...document.querySelectorAll("#film .film-figure")].find((el) => shown(el) > 0.5);
+    const lines = [...document.querySelectorAll<HTMLElement>("#film .film-line .film-math")].flatMap((el) => {
+      if (shown(el) < 0.05) return [];
+      const r = el.getBoundingClientRect();
+      const c = { left: Math.max(r.left, win.left), top: Math.max(r.top, win.top), right: Math.min(r.right, win.right), bottom: Math.min(r.bottom, win.bottom) };
+      return c.right - c.left > 2 && c.bottom - c.top > 2 ? [{ ...box(c), name: el.textContent ?? "" }] : [];
+    });
+    const heads = [...document.querySelectorAll<HTMLElement>("#film .film-head")].filter((el) => shown(el) > 0.05).map((el) => ({ ...box(el.getBoundingClientRect()), name: el.querySelector(".film-head-label")?.textContent ?? "" }));
+    return { heads, lines, board: box(win), figure: card ? box(card.getBoundingClientRect()) : null };
+  }, time);
+  const open = async (page: Page, layout: string) => {
+    await page.goto(`${origin}/live.html?id=${HEADER_FILM_ID}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    await page.waitForFunction((name) => document.querySelector("#film")?.getAttribute("data-layout") === name, layout);
+  };
+  const same = (a: Box, b: Box) => Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y), Math.abs(a.w - b.w), Math.abs(a.h - b.h));
+  const meets = (a: Box, b: Box) => Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > 1 && Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > 1;
+  const settled = (beat: number) => headerFilm.timing.shots[0]![beat]!.end + 0.2;
+  for (const view of VIEWS) {
+    const page = await browser.newPage({ viewport: { width: view.width, height: view.height } });
+    try {
+      await open(page, view.layout);
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        const where = (what: string) => `${view.layout} ${theme}: ${what}`;
+        // up on its word, over the lines written under it, and in one place through a clear
+        expect((await shoot(page, headerCue(0, "names") - 0.05)).heads, where("before its word")).toEqual([]);
+        const first = await shoot(page, settled(1));
+        expect(first.heads.map((h) => h.name), where("first header")).toEqual(["Point-slope form"]);
+        const pinned = first.heads[0]!;
+        for (const beat of [0, 2, 3]) {
+          const now = await shoot(page, settled(beat));
+          expect(now.heads.length, where(`beat ${beat + 1}`)).toBe(1);
+          expect(same(now.heads[0]!, pinned), where(`header moved by beat ${beat + 1}`)).toBeLessThan(0.5);
+          // the work is laid out in the window under the header
+          expect(now.board.y, where(`window under the header, beat ${beat + 1}`)).toBeGreaterThanOrEqual(pinned.y + pinned.h - 1);
+        }
+        expect((await shoot(page, settled(3))).lines.length, where("the new column under the header")).toBe(2);
+        // inside the frame, off the figure card (above it on a phone, beside it on the 16:9 film)
+        expect(pinned.y, where("header in the frame")).toBeGreaterThanOrEqual(0);
+        if (first.figure) expect(meets(pinned, first.figure), where("header meets the figure")).toBe(false);
+        // replaced: the second header alone, in the same place at the top of the board
+        const second = await shoot(page, settled(5));
+        expect(second.heads.map((h) => h.name), where("second header")).toEqual(["Standard form"]);
+        expect(Math.abs(second.heads[0]!.y - pinned.y), where("second header's top")).toBeLessThan(0.5);
+        expect(second.lines.length, where("work under the second header")).toBe(2);
+        // off: no header, and the board has its whole window back
+        const after = await shoot(page, settled(7));
+        expect(after.heads, where("after off")).toEqual([]);
+        expect(after.board.y, where("window after off")).toBeLessThan(pinned.y + 1);
+        expect(after.lines.length, where("work after off")).toBe(2);
+        // no line of work ever lies under a header, at any moment, arrivals and clears included
+        const end = settled(7) + 1;
+        for (let t = 0.2; t < end; t += 0.1) {
+          const got = await shoot(page, t);
+          expect(got.error, where(`t=${t.toFixed(1)}`)).toBeUndefined();
+          for (const h of got.heads) for (const l of got.lines)
+            expect(meets(h, l), where(`"${l.name}" under the header "${h.name}" at t=${t.toFixed(1)}`)).toBe(false);
+        }
+      }
+    } finally {
+      await page.close();
+    }
+  }
+}, 240_000);
+
+test("a header fits both layouts, and a column too full under it is reported", async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  try {
+    await page.goto(`${origin}/live.html?id=${HEADER_FILM_ID}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const crowded = scriptSchema.parse({
+      id: "board-header-crowded",
+      title: "Too much under a header",
+      shots: [{
+        figure: headerScript.shots[0]!.figure,
+        beats: [
+          { say: "Point-slope form names one point and the slope.", do: [{ do: "header", tex: "y-y_1=m(x-x_1)", label: "Point-slope form", at: "names" }] },
+          { say: "Graph the line through two points.", do: [{ do: "problem", text: "Graph $y + 1 = 3(x - 2)$ by placing 2 points on its line. Each gridline is one unit.", at: "Graph" }] },
+          { say: "Start from the original equation.", do: [{ do: "write", tex: "y+1=3(x-2)", fresh: true, at: "Start" }] },
+          { say: "Its point is two, negative one.", do: [{ do: "write", tex: "(2,\\ -1)", fresh: true, at: "point" }] },
+          { say: "The slope is three.", do: [{ do: "write", tex: "\\text{slope}=3", fresh: true, at: "slope" }] },
+        ],
+      }],
+    });
+    await page.evaluate((films) => { (window as unknown as { __headerFilms: unknown }).__headerFilms = films; }, [headerFilm, { script: crowded, timing: dryTiming(crowded) }]);
+    // Built in the page with the stage the player draws with, served by the same dev server.
+    // A string, so the test runner leaves the page's own import alone.
+    const issues = (await page.evaluate(`(async () => {
+      const { Film, TALL, WIDE } = await import("/stage.ts");
+      return window.__headerFilms.map(({ script, timing }) => [WIDE, TALL].map((layout) => {
+        const host = document.createElement("div");
+        host.style.cssText = "position:absolute;left:-5000px;top:0";
+        document.body.appendChild(host);
+        const f = new Film(host, script, timing, undefined, { checks: false, layout });
+        host.remove();
+        return f.issues;
+      }));
+    })()`)) as string[][][];
+    expect(issues[0], "the header film, wide and tall").toEqual([[], []]);
+    // on a phone the board under a figure and a header is short: the card and the work under it no longer fit, and the author is told
+    expect(issues[1]![1]!.some((m: string) => /under the header "Point-slope form"/.test(m)), issues[1]![1]!.join("\n")).toBe(true);
+  } finally {
+    await page.close();
+  }
+}, 60_000);
 
 test("elements stay put unless a motion is authored, and a highlight does not cover a neighbour", async () => {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });

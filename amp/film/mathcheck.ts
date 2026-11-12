@@ -64,12 +64,20 @@ const substitute = (tex: string, v: string, value: number) =>
  * Every false line in a screenplay. Arithmetic lines must be true; in a worked
  * example, every line in one letter must hold for that example's answer (for one
  * of its answers, when there are two). Struck-out work (\cancel, or a line a
- * "strike" action names) is a mistake on purpose and is skipped.
+ * "strike" action names) is a mistake on purpose and is skipped. A header's
+ * formula is a line of the board too: its arithmetic must be true, and it is
+ * held to the answer of each column written under it. A general form
+ * (y - y_1 = m(x - x_1), Ax + By = C) has more than one letter and is left alone,
+ * as any such line is.
  */
 export function mathProblems(script: Script) {
   const out: string[] = [];
   let col: { tex: string; si: number }[] = [];
+  /** The header up now, and the one the column being written is under (taken with its first line). */
+  type Head = { tex?: string; si: number; keep?: boolean };
+  let head: Head | null = null, colHead: Head | null = null;
   const flush = () => {
+    if (col.length && colHead?.tex) col.push({ tex: colHead.tex, si: colHead.si });
     // the column's answers: lines like "x=-6" or "x=2 or x=-3"
     const answers = new Map<string, number[]>();
     for (const { tex } of col) {
@@ -89,12 +97,21 @@ export function mathProblems(script: Script) {
       if (!values.some((x) => checkLine(substitute(tex, v, x)) === null)) out.push(`Shot ${si + 1}: the board line "${tex}" is false for ${v} = ${values.join(" or ")}, the answer it leads to. Fix the step.`);
     }
     col = [];
+    colHead = null;
   };
   const struck = new Set<string>(script.shots.flatMap((shot) => shot.beats.flatMap((b) => ((b.do ?? []) as any[]).filter((a) => a.do === "strike").map((a) => a.target))));
   script.shots.forEach((shot, si) => {
+    // a header ends with its shot, unless it keeps
+    if (head && !head.keep) head = null;
     for (const b of shot.beats) for (const a of (b.do ?? []) as any[]) {
       if (a.do === "clear") flush();
+      if (a.do === "header") {
+        head = a.off ? null : { tex: a.tex, si, keep: a.keep };
+        const p = a.tex ? checkLine(a.tex) : null;
+        if (p) out.push(`Shot ${si + 1}: the header ${p}. Fix the arithmetic.`);
+      }
       if ((a.do === "write" || a.do === "answer") && !/\\cancel/.test(a.tex) && !(a.id && struck.has(a.id))) {
+        if (!col.length) colHead = head;
         const p = checkLine(a.tex);
         if (p) out.push(`Shot ${si + 1}: the board line ${p}. Fix the arithmetic.`);
         col.push({ tex: a.tex, si });
