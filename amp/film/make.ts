@@ -214,7 +214,8 @@ async function voice(): Promise<Timing> {
     // checks every one of them.
     const sameShot = runs[ri + 1]?.shot === si;
     const gap = sameShot ? TURN_GAP : gapBetweenShots;
-    if (sameShot) edits.push({ at: clockT, what: `turn from ${run.role.role} to ${runs[ri + 1]!.role.role}` });
+    // Name the line: the fault is the end of this run's last line, which is what to reword.
+    if (sameShot) edits.push({ at: clockT, what: `turn from ${run.role.role} to ${runs[ri + 1]!.role.role} after "${beats[beats.length - 1]!.say}"` });
     chunks.push(new Int16Array(Math.round(SR * gap)));
     clockT += gap;
   }
