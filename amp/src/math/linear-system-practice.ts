@@ -380,7 +380,7 @@ function generateCase(
       ? data.points.map((point, i) => ({
           label: pair(point),
           correct: i === data.target,
-          feedback: `${checkLine(rows[0], point, "first")} ${checkLine(rows[1], point, "second")} A solution must satisfy both equations.`,
+          feedback: `${checkLine(rows[0], point, "first")} ${checkLine(rows[1], point, "second")} The solution must make both equations true.`,
         }))
       : countLabels.map((label, i) => ({
           label,

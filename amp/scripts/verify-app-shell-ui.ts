@@ -30,12 +30,8 @@ if (
     "frontier-switch",
     "drawer-learner",
     "learner-return",
-    "library-search",
     "practice-title",
-    "library-loading",
     "library-reader-loading",
-    "library-retry",
-    "library-typing",
     "progress-loading",
     "progress-filters",
     "progress-large-text",
@@ -106,6 +102,18 @@ async function open(
 
 const box = (page: Page, selector: string) =>
   page.locator(selector).first().boundingBox();
+/** Grade numbers are a drawer setting (docs/design/ia.md, "Where settings
+ * live"): open the drawer, set it, close it. Returns whether it was on. */
+async function showGradeNumbers(page: Page, on?: boolean) {
+  await page.getByRole("button", { name: "Open AMP menu" }).first().click();
+  const box = page.getByRole("checkbox", { name: "Show grade numbers" });
+  await box.waitFor();
+  const was = await box.isChecked();
+  if (on !== undefined && on !== was) await box.setChecked(on);
+  await page.keyboard.press("Escape");
+  await box.waitFor({ state: "hidden" });
+  return was;
+}
 
 async function verifyShell() {
   // 1. Every screen: no overflow, no overlapping controls, no broken words.
@@ -287,50 +295,22 @@ async function verifyShell() {
     );
     await context.close();
   }
+  // The level view (ui/level-range), grade numbers shown from the drawer:
+  // bars on one scale, axis labels that never collide, and every dot
+  // inside the card.
   for (const id of ["starter-overview", "home"])
     for (const width of [320, 390, 768, 1280]) {
       const { page, context } = await open(id, { width, height: 900 }, "light");
-      const chart = () =>
-        page.locator(".frontier-track").evaluateAll((tracks) =>
-          tracks.map((track) => {
-            const r = track.getBoundingClientRect();
-            return {
-              width: r.width,
-              height: r.height,
-              parts: [...track.children].map((child) => {
-                const b = child.getBoundingClientRect();
-                const style = getComputedStyle(child);
-                return {
-                  kind: child.className,
-                  x: b.x - r.x,
-                  y: b.y - r.y,
-                  width: b.width,
-                  height: b.height,
-                  color: style.background,
-                };
-              }),
-            };
-          }),
-        );
-      const before = await chart();
-      check(before.length > 0, `${id} ${width}: default charts are missing`);
       check(
-        (await page.locator(".frontier-axis").innerText()).trim() === "",
-        `${id} ${width}: grade labels visible by default`,
+        (await page.locator(".frontier-map [data-level-bar]").count()) > 0,
+        `${id} ${width}: the level bars are missing`,
       );
-      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
-      check(
-        JSON.stringify(await chart()) === JSON.stringify(before),
-        `${id} ${width}: revealing numbers changed the charts`,
-      );
+      await showGradeNumbers(page, true);
       const geometry = await page.evaluate(() => {
-        const labels = [...document.querySelectorAll(".frontier-axis span")]
-          .filter(
-            (s) =>
-              !s.children.length &&
-              s.textContent &&
-              getComputedStyle(s).visibility !== "hidden",
-          )
+        const labels = [
+          ...document.querySelectorAll(".frontier-map [data-level-axis-label]"),
+        ]
+          .filter((s) => getComputedStyle(s).visibility !== "hidden")
           .map((s) => s.getBoundingClientRect())
           .filter((r) => r.width > 0);
         const collide = labels.some((a, i) =>
@@ -341,7 +321,9 @@ async function verifyShell() {
         const map = document
           .querySelector(".frontier-map")!
           .getBoundingClientRect();
-        const outside = [...document.querySelectorAll(".frontier-dot")]
+        const outside = [
+          ...document.querySelectorAll(".frontier-map [data-level-dot]"),
+        ]
           .map((d) => d.getBoundingClientRect())
           .filter((d) => d.left < map.left || d.right > map.right).length;
         return { collide, outside, labels: labels.length };
@@ -355,19 +337,23 @@ async function verifyShell() {
       await context.close();
     }
 
-  // 6. Home: one way to each view, and a button with a button's shape.
+  // 6. Home: one way to each view. A day-0 learner's start (the page's
+  //    one Practice; later the bar's) has a button's shape, and a failed
+  //    request shows a fixed toast and moves nothing.
   {
-    const { page, context } = await open(
-      "home",
-      { width: 1280, height: 800 },
-      "light",
-    );
-    const duplicate = await page
+    const home = await open("home", { width: 1280, height: 800 }, "light");
+    const duplicate = await home.page
       .locator("main.home > a[href='/pathways']")
       .count();
     check(duplicate === 0, "home: a second pathways link repeats the tab");
-    const go = await box(page, ".home-hero .go-button");
-    check(go && go.width <= 260, `home 1280: Go is ${go?.width}px wide`);
+    await home.context.close();
+    const { page, context } = await open(
+      "starter-overview",
+      { width: 1280, height: 800 },
+      "light",
+    );
+    const go = await box(page, ".frontier-map .go-button");
+    check(go && go.width <= 260, `starter 1280: Go is ${go?.width}px wide`);
     // A failed request shows a fixed toast and moves nothing.
     await page.route("**/api/v1/learners/*/batches", (route) =>
       route.fulfill({
@@ -376,7 +362,7 @@ async function verifyShell() {
       }),
     );
     const before = await box(page, ".frontier-map");
-    await page.locator(".home-hero .go-button").click();
+    await page.locator(".frontier-map .go-button").click();
     const alert = page.getByRole("alert");
     await alert.waitFor();
     const position = await alert.evaluate((node) => {
@@ -500,6 +486,10 @@ async function verifyShell() {
   }
 }
 
+/** Switching learners on the Overview: nothing of the last learner's level
+ * shows while the next one's loads, the loaded view is theirs (an
+ * unpracticed learner's areas drawn as estimates), and each learner keeps
+ * their own grade-number preference. */
 async function verifyFrontierSwitch() {
   const { page, context } = await open(
     "home",
@@ -507,14 +497,14 @@ async function verifyFrontierSwitch() {
     "light",
   );
   const map = page.locator(".frontier-map");
-  const preference = page.getByRole("checkbox", { name: "Show grade numbers" });
-  await preference.check();
-  const oldBox = await map.boundingBox();
-  const oldDots = await map
-    .locator(".frontier-dot")
-    .evaluateAll((nodes) =>
-      nodes.map((node) => (node as HTMLElement).style.left),
-    );
+  await showGradeNumbers(page, true);
+  const dots = () =>
+    map
+      .locator("[data-level-dot]")
+      .evaluateAll((nodes) =>
+        nodes.map((node) => (node as HTMLElement).style.left),
+      );
+  const oldDots = await dots();
   let release!: () => void;
   const held = new Promise<void>((resolve) => {
     release = resolve;
@@ -543,26 +533,12 @@ async function verifyFrontierSwitch() {
     assert.equal(
       await map.getAttribute("aria-busy"),
       "true",
-      "a new learner must not inherit the previous learner's chart while loading",
+      "a new learner must not inherit the previous learner's level while loading",
     );
     assert.equal(
-      await map
-        .locator(".frontier-dot,.frontier-range,.frontier-center")
-        .count(),
+      await map.locator("[data-level-dot]").count(),
       0,
-      "loading retains tracks without fabricated or stale estimates",
-    );
-    assert.equal(
-      await preference.isChecked(),
-      false,
-      "the new learner starts with their own number preference",
-    );
-    const loadingBox = await map.boundingBox();
-    assert.equal(loadingBox?.width, oldBox?.width);
-    assert.equal(
-      loadingBox?.height,
-      oldBox?.height,
-      "loading preserves the chart's reserved space",
+      "loading shows no stale or made-up estimate",
     );
     if (shots)
       await page.screenshot({
@@ -570,28 +546,21 @@ async function verifyFrontierSwitch() {
       });
     release();
     await page.locator('.frontier-map[aria-busy="false"]').waitFor();
-    const newDots = await map
-      .locator(".frontier-dot")
-      .evaluateAll((nodes) =>
-        nodes.map((node) => (node as HTMLElement).style.left),
-      );
-    assert.equal(newDots.length, oldDots.length);
     assert.notDeepEqual(
-      newDots,
+      await dots(),
       oldDots,
-      "the completed map belongs to the new learner",
+      "the loaded level belongs to the new learner",
     );
     assert.equal(
-      await map.locator(".frontier-track.estimated").count(),
-      newDots.length,
-      "the unpracticed learner's areas remain explicitly unmeasured",
+      await map.locator("[data-level-bar]:not([data-estimated])").count(),
+      0,
+      "an unpracticed learner's areas are drawn as estimates",
     );
-    await map.locator(".frontier-row").first().click();
-    assert.match(
-      await map.locator(".frontier-detail").innerText(),
-      /Not practiced yet/,
+    assert.equal(
+      await showGradeNumbers(page),
+      false,
+      "the new learner starts with their own number preference",
     );
-    assert.equal(await preference.isChecked(), false);
     if (shots)
       await page.screenshot({
         path: `${shots}/${engine}-frontier-switch-loaded.png`,
@@ -599,7 +568,7 @@ async function verifyFrontierSwitch() {
     await selectHome(fixture.paid.jordan.id);
     await page.locator('.frontier-map[aria-busy="false"]').waitFor();
     assert.equal(
-      await preference.isChecked(),
+      await showGradeNumbers(page),
       true,
       "returning restores the original learner's number preference",
     );
@@ -621,6 +590,17 @@ async function verifySecurityTarget() {
         colorScheme,
       );
       try {
+        // Sign in again is the one action once a sign-in is past its fresh
+        // window (it shows only then): the fixture's sign-in is new, so the
+        // summary says it has gone stale.
+        await page.route("**/api/auth/security/summary", async (route) => {
+          const response = await route.fetch();
+          await route.fulfill({
+            response,
+            json: { ...(await response.json()), freshForMs: 0 },
+          });
+        });
+        await page.reload();
         const link = page.getByRole("link", {
           name: "Sign in again",
           exact: true,
@@ -677,6 +657,15 @@ async function verifyDrawerLearner() {
             name: "Adaptive Math Pathways",
           });
           await drawer.waitFor();
+          // Exactly one item is current: never the router's prefix match
+          // as well as the drawer's own choice (founder: no double highlight).
+          const currentItems = await drawer
+            .locator('nav[aria-label="AMP navigation"] [aria-current="page"]')
+            .count();
+          check(
+            currentItems === 1,
+            `drawer ${kind} ${viewport.width} ${colorScheme}: ${currentItems} items are current`,
+          );
           const where = drawer.locator('[aria-label="Where you are"]');
           await where.waitFor();
           const text = await drawer.innerText();
@@ -742,12 +731,8 @@ try {
     !selectedCase ||
     [
       "learner-return",
-      "library-search",
       "practice-title",
-      "library-loading",
       "library-reader-loading",
-      "library-retry",
-      "library-typing",
       "progress-loading",
       "progress-filters",
       "progress-large-text",

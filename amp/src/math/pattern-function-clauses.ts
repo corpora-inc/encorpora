@@ -987,7 +987,7 @@ function quadraticPlot(r: Random): ClauseSurface {
     },
     [
       `The factors vanish at ${p} and ${q}.`,
-      `The vertex input is halfway: $(${p}+${q})/2=${h}$. Substitution gives ${k}.`,
+      `The vertex input is halfway: $(${p} ${q < 0 ? "-" : "+"} ${Math.abs(q)})/2=${h}$. Substitution gives ${k}.`,
       `At $x=0$, $y=${a * p * q}$.`,
     ],
     `Set each factor equal to 0; $x-${term(p)}=0$ means $x=${p}$.`,

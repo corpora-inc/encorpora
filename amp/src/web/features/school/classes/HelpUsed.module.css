@@ -1,0 +1,63 @@
+/* Help used, a week to a row. Counts lead; minutes sit under them, muted. */
+.table {
+  width: 100%;
+  max-width: 40rem;
+  border-collapse: collapse;
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+  table-layout: fixed;
+}
+.table th,
+.table td {
+  padding: var(--space-2) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: right;
+  vertical-align: top;
+}
+.table th:first-child {
+  padding-left: 0;
+  text-align: left;
+  width: 22%;
+}
+.table td:last-child,
+.table th:last-child {
+  padding-right: 0;
+}
+.table thead th {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.table tbody th {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.count {
+  display: block;
+}
+.minutes {
+  display: block;
+  min-height: 1.2em;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  white-space: nowrap;
+}
+.none {
+  color: var(--color-muted-text);
+}
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) 0;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.answers > span {
+  white-space: nowrap;
+}
+.answers > span + span::before {
+  content: "\00a0\00b7\00a0";
+}

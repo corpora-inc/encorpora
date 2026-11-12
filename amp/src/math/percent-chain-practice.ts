@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
@@ -143,7 +144,7 @@ const percentChain = chainFamily({
     if (m.ask === "original-cost") {
       const { first: cut, second: rise, middle, end, start } = m;
       return numberSurface({
-        prompt: `The price of a ${m.noun} was reduced by ${cut}% for a sale. Later the sale price was increased by ${rise}%, and the ${m.noun} now costs ${money(end * 100)}. What was the price before the sale? Enter the number of dollars.`,
+        prompt: `The price of ${withArticle(m.noun)} was reduced by ${cut}% for a sale. Later the sale price was increased by ${rise}%, and the ${m.noun} now costs ${money(end * 100)}. What was the price before the sale? Enter the number of dollars.`,
         answer: String(start),
         hint: `Work backward from the last change. The final price of ${end} dollars is the sale price plus ${rise}% of the sale price, so it equals ${factor(rise)} times the sale price. Find the sale price first.`,
         explanation: [
@@ -166,7 +167,7 @@ const percentChain = chainFamily({
         start: paid,
       } = m;
       return numberSurface({
-        prompt: `A store marks a ${m.noun} at ${money(marked * 100)} and then lowers the price by ${cut}%. The new price is ${rise}% more than the price the store paid for the ${m.noun}. What did the store pay? Enter the number of dollars.`,
+        prompt: `A store marks ${withArticle(m.noun)} at ${money(marked * 100)} and then lowers the price by ${cut}%. The new price is ${rise}% more than the price the store paid for the ${m.noun}. What did the store pay? Enter the number of dollars.`,
         answer: String(paid),
         hint: `Find the new price first: lowering ${marked} dollars by ${cut}% means multiplying ${marked} by ${keep(cut)}. The ${rise}% comparison comes after that.`,
         explanation: [
@@ -198,7 +199,7 @@ const percentChain = chainFamily({
     }
     const { first: rise, second: cut, start, middle, end } = m;
     return numberSurface({
-      prompt: `A ${m.noun} starts at ${start}. In the first month it increases by ${rise}%. In the second month it decreases by ${cut}% of the new amount. What is it at the end of the second month?`,
+      prompt: `${withArticle(m.noun, true)} starts at ${start}. In the first month it increases by ${rise}%. In the second month it decreases by ${cut}% of the new amount. What is it at the end of the second month?`,
       answer: String(end),
       hint: `The first change is an increase of ${rise}% on ${start}, so multiply ${start} by ${factor(rise)}. Use that new amount, not ${start}, for the ${cut}% decrease.`,
       explanation: [

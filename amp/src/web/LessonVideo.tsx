@@ -1,10 +1,26 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { LessonVideo as Video } from "../content/lesson-videos";
 import { useLoggedError } from "./feedback";
+import { noteHelp } from "./lib/help-events";
+import { attendWhilePlaying, useHelpSurface } from "./lib/use-help";
+import type { LessonHelp } from "./ProblemLesson";
 
-export function LessonVideo({ video }: { video: Video }) {
+export function LessonVideo({
+  video,
+  templateId,
+  help,
+}: {
+  video: Video;
+  /** The lesson's problem type, which the video belongs to. */
+  templateId?: string;
+  /** Where the lesson was opened; opening the video is recorded with it. */
+  help?: LessonHelp;
+}) {
   const heading = useId();
   const [open, setOpen] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  useHelpSurface(!!help && open, "video", help?.problemId);
+  useEffect(() => (playing ? attendWhilePlaying() : undefined), [playing]);
   const [attempt, setAttempt] = useState(0);
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -14,7 +30,17 @@ export function LessonVideo({ video }: { video: Video }) {
     <section className="lesson-video" aria-labelledby={heading}>
       <button
         className="lesson-video-toggle"
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          if (!open && help)
+            noteHelp({
+              kind: "video",
+              source: help.source,
+              ref: templateId,
+              problemId: help.problemId,
+            });
+          if (open) setPlaying(false);
+          setOpen(!open);
+        }}
         aria-expanded={open}
       >
         <span id={heading}>{open ? "Close video" : "Watch an example"}</span>
@@ -33,6 +59,9 @@ export function LessonVideo({ video }: { video: Video }) {
               poster={video.assets.poster.url}
               src={video.assets.video.url}
               aria-label={video.title}
+              onPlaying={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+              onEnded={() => setPlaying(false)}
               onError={() =>
                 setError(
                   "The video could not load. Try again or read the transcript below.",

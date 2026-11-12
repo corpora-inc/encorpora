@@ -144,15 +144,18 @@
 }
 
 /* One segmented row; on a phone it scrolls sideways rather than wrapping. */
+/* The shared segmented look (ui/Segmented): a bordered track on the page,
+   44 px segments, the chosen one the accent's edge over a faint tint. */
 .filterRow {
   display: inline-flex;
   max-width: 100%;
-  gap: 2px;
+  gap: var(--space-1);
   margin: calc(-1 * var(--space-2)) 0 var(--space-5);
-  padding: 3px;
-  border-radius: var(--radius-control);
-  background: var(--color-surface-sunken);
-  color: var(--color-on-surface-sunken);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: transparent;
+  color: var(--color-on-surface);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -164,11 +167,12 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 42px;
+  box-sizing: border-box;
+  min-height: 44px;
   margin: 0;
   padding: 0 var(--space-4);
-  border: 0;
-  border-radius: calc(var(--radius-control) - 3px);
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
   background: transparent;
   color: var(--color-muted-text);
   font-size: var(--text-label);
@@ -177,14 +181,17 @@
   box-shadow: none;
   cursor: pointer;
 }
-.filterRow button:hover {
-  color: var(--color-on-surface);
-  background: transparent;
+@media (hover: hover) {
+  .filterRow button:hover {
+    color: var(--color-on-surface);
+    background: var(--color-surface-hover);
+  }
 }
-.filterRow button[aria-pressed="true"] {
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  box-shadow: 0 1px 2px var(--color-shadow);
+.filterRow button[aria-pressed="true"],
+.filterRow button[aria-pressed="true"]:hover {
+  border-color: var(--color-primary);
+  background: var(--color-selected-tint);
+  color: var(--color-on-surface);
 }
 .filterRow button:focus-visible {
   outline: 2px solid var(--color-focus-ring);

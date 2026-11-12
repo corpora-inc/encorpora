@@ -130,7 +130,9 @@ try {
       page.on("request", (request) => {
         if (request.url().includes("/amp/films/")) mediaRequests++;
       });
+      // An old short-lesson link: it opens the lesson in Pathways.
       await page.goto(`${fixture.origin}/lessons?topic=count-objects`);
+      await page.waitForURL(/\/pathways\?lesson=count-objects/);
       const watch = page.getByRole("link", { name: /Watch lesson/ });
       await watch.waitFor();
       assert.equal(
@@ -200,8 +202,9 @@ try {
         await page
           .getByRole("link", { name: "Back to lesson", exact: true })
           .click();
+        // The short lesson (Pathways' sheet, its own address) practises it.
         await page
-          .getByRole("button", { name: "Practice this", exact: true })
+          .getByRole("link", { name: /^Try this problem type/ })
           .click();
         await page.waitForURL(/\/practice/);
         const problem = page.locator("[data-problem-id]");

@@ -85,6 +85,10 @@ const previewPrices: Plugin = {
 };
 
 export default defineConfig({
+  // A long-running server can keep its prebundled dependencies to itself.
+  // Two dev servers sharing one cache rewrite each other's chunks, and pages
+  // then load two copies of React.
+  cacheDir: process.env.AMP_VITE_CACHE_DIR || undefined,
   plugins: [serverOnlyCrypto, devFixtures, previewPrices, react()],
   optimizeDeps: {
     entries: ["index.html"],

@@ -270,7 +270,7 @@ function featureCase(r: Random): Case {
         feedback: parityFeedback(key),
       });
     explanation.push(
-      `The start is ${start} = ${factor} × ${start / factor}, and the rule adds ${step} = ${factor} × ${step / factor}. A multiple of ${factor} plus a multiple of ${factor} is again a multiple of ${factor}, so every number is a multiple of ${factor}.`,
+      `The start is $${start} = ${factor} × ${start / factor}$, and the rule adds $${step} = ${factor} × ${step / factor}$. A multiple of ${factor} plus a multiple of ${factor} is again a multiple of ${factor}, so every number is a multiple of ${factor}.`,
     );
   } else {
     const ones = start % 10,
@@ -810,7 +810,7 @@ function linearRule(r: Random, kind: string): Rule {
       text: `y = ${c}`,
       linear: true,
       kind,
-      note: `y = ${c} is y = 0x + ${c}: its rate of change is 0, and its graph is a horizontal line`,
+      note: `$y = ${c}$ does not change with $x$, so its rate of change is 0 and its graph is a horizontal line`,
     };
   }
   if (kind === "factored") {

@@ -692,20 +692,29 @@ export function SignInScreen() {
               {(step === "sign-in" ||
                 step === "create" ||
                 step === "reset") && (
-                <label>
-                  {step === "reset" ? "New password" : "Password"}
-                  <input
-                    required
-                    type="password"
-                    minLength={step === "sign-in" ? 1 : 10}
-                    autoComplete={
-                      step === "sign-in" ? "current-password" : "new-password"
-                    }
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  {step !== "sign-in" && <small>At least 10 characters.</small>}
-                </label>
+                // The rule describes the field and isn't part of its name,
+                // which stays "Password".
+                <div className="account-field">
+                  <label>
+                    {step === "reset" ? "New password" : "Password"}
+                    <input
+                      required
+                      type="password"
+                      minLength={step === "sign-in" ? 1 : 10}
+                      autoComplete={
+                        step === "sign-in" ? "current-password" : "new-password"
+                      }
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      aria-describedby={
+                        step !== "sign-in" ? "password-rule" : undefined
+                      }
+                    />
+                  </label>
+                  {step !== "sign-in" && (
+                    <small id="password-rule">At least 10 characters.</small>
+                  )}
+                </div>
               )}
               {step === "two-factor" && (
                 <label>

@@ -78,6 +78,9 @@ start_api() {
 start_web() {
   running web && return 0
   set -m
+  # Its own dependency cache: another Vite on this checkout (a check, a
+  # second worktree sharing node_modules) never rewrites what it serves.
+  AMP_VITE_CACHE_DIR="$RUN/vite-cache" \
   AMP_WEB_PORT="$WEB_PORT" AMP_API_PORT="$API_PORT" AMP_PREVIEW_PRICES=1 \
     AMP_DATABASE_URL="$DB_URL" nohup npx vite --host 127.0.0.1 --port "$WEB_PORT" --strictPort >"$RUN/web.log" 2>&1 &
   echo $! >"$RUN/web.pid"

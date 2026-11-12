@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { random } from "./distribution-practice";
@@ -194,7 +195,7 @@ export function successivePercentChangeCase(seed: string): {
   const secondOperator = input.second === 1 ? "+" : "-";
   const item = itemNames[r(0, itemNames.length - 1)]!;
   const prompt =
-    `A ${item} has a starting price of $${original}. ` +
+    `${withArticle(item, true)} has a starting price of $${original}. ` +
     `First, the price ${firstVerb} by ${firstRate}%. ` +
     `Then, the price ${secondVerb} by ${secondRate}% of the price after the first change. ` +
     (input.tax ? "The second increase is sales tax. " : "") +

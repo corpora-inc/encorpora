@@ -10,6 +10,7 @@ import {
 } from "../src/web/PracticeWorkspace";
 import "../src/web/app/styles";
 import type { GeneratedProblem, TemplateMetadata } from "../src/math/contracts";
+import { markStructuredWork } from "../src/math/structured-work";
 
 import type { Outcome } from "../src/server/repository";
 
@@ -18,7 +19,9 @@ declare global {
   interface Window {
     layoutCase: (value: Case) => void;
     layoutReady: string;
-    layoutFeedback: (correct: boolean, skipped?: boolean) => void;
+    /** `typed`: grade this structured-work response as the server would,
+     * marks and all, instead of a synthetic right or wrong answer. */
+    layoutFeedback: (correct: boolean, skipped?: boolean, typed?: string) => void;
   }
 }
 function App() {
@@ -43,8 +46,15 @@ function CaseView({ value }: { value: Case }) {
   const { problem, meta, seed } = value;
   const skill = skills.find((skill) => skill.id === meta.skillId);
   window.layoutReady = problem.public.id;
-  window.layoutFeedback = (correct, skipped = false) => {
+  window.layoutFeedback = (correct, skipped = false, typed) => {
     const format = problem.public.response;
+    const marks =
+      typed !== undefined &&
+      format.kind === "structured-work" &&
+      problem.workGrading
+        ? markStructuredWork(format, problem.workGrading, typed)
+        : null;
+    if (marks) correct = marks.correct;
     // Zero may be written as a decimal or a fraction in a generated answer.
     const zero = /^[+-]?0+(?:\.0+)?(?:\s*\/\s*[+-]?\d+)?$/.test(
       problem.answer.trim().replaceAll("−", "-"),
@@ -61,7 +71,7 @@ function CaseView({ value }: { value: Case }) {
         ].sort(),
       );
     }
-    const response = correct ? problem.answer : wrong;
+    const response = marks ? typed! : correct ? problem.answer : wrong;
     setResponse(response);
     setOutcome({
       id: `synthetic-${correct}-${skipped}`,
@@ -73,6 +83,7 @@ function CaseView({ value }: { value: Case }) {
       correct,
       assisted: false,
       response,
+      ...(marks ? { parts: marks.rows } : {}),
       explanation: problem.explanation,
       answer: problem.answer,
       createdAt: new Date(0).toISOString(),

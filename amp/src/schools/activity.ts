@@ -103,6 +103,10 @@ export function describeEvent({
       return after.value === null || after.value === undefined
         ? `${who} cleared ${possessive(student)} final grade${nameOf(after.classId) ? ` in ${nameOf(after.classId)}` : ""}`
         : `${who} set ${possessive(student)} grade to ${String(after.value)}${nameOf(after.classId) ? ` in ${nameOf(after.classId)}` : ""}`;
+    case "grade.curve-set":
+      return after.curve === null || after.curve === undefined
+        ? `${who} returned ${klass} to the standard scale for ${nameOf(after.sessionId) ?? "a term"}`
+        : `${who} set the grade curve for ${klass} in ${nameOf(after.sessionId) ?? "a term"}`;
     case "term.closed":
       return `${who} closed ${nameOf(after.sessionId) ?? "a term"} for ${klass}, freezing ${words(after.students as number, "grade", "grades")}`;
     case "student.added":
@@ -173,6 +177,8 @@ export function describeEvent({
       return `${who} updated ${possessive(person ?? "a staff member")} details`;
     case "calendar.set":
       return `${who} set the calendar`;
+    case "calendar.grading":
+      return `${who} set the school’s grading periods`;
     case "calendar.session-changed":
       return `${who} changed the dates of ${sessionName ?? "a term"}`;
     case "year.rolled-over":

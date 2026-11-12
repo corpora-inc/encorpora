@@ -1,5 +1,10 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
-import type { GeneratedProblem, SemanticFigure, TemplateMetadata } from "./contracts.js";
+import type {
+  GeneratedProblem,
+  SemanticFigure,
+  TemplateMetadata,
+} from "./contracts.js";
 import { geometryScene } from "./geometry-scenes.js";
 import { visiblePrismCubes } from "./volume-coordinate-practice.js";
 
@@ -103,7 +108,7 @@ export function generateNamedUnitCubeChoice(
           : "A trailer is packed with hay bales that have 1-foot edges, with no gaps.";
     prompt = `${lead} Which describes its volume, in cubic feet?`;
   } else if (unit === "improvised") {
-    prompt = `Maya packs a ${object.held} with identical ${object.many}, no gaps. Which describes the volume of the ${object.held}, in ${object.many}?`;
+    prompt = `Maya packs ${withArticle(object.held)} with identical ${object.many}, no gaps. Which describes the volume of the ${object.held}, in ${object.many}?`;
   } else if (unit === "in" && context === 0) {
     prompt =
       "Each block is 1 cubic inch. The blocks fill this rectangular prism with no gaps. Which describes its volume, in cubic inches?";

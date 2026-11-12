@@ -22,6 +22,7 @@ import {
   semanticFigureSchema,
 } from "../src/math/contracts.js";
 import { EqualGroupsFigure } from "../src/web/EqualGroupsFigure.js";
+import { asCurrent } from "./fixtures/recorded-version";
 
 test("twenty bounded families have registry, component, and exact book support without mastery promotion", () => {
   validateEqualGroupsCoverage();
@@ -29,7 +30,7 @@ test("twenty bounded families have registry, component, and exact book support w
     assert.equal(templates.filter((x) => x.id === t.id).length, 1);
     assert.deepEqual(
       generateProblem(t.id, "registry"),
-      polishProblem(generateEqualGroupsProblem(t.id, "registry")),
+      asCurrent(polishProblem(generateEqualGroupsProblem(t.id, "registry"))),
     );
   }
   assert.ok(

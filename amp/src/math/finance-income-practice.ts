@@ -185,7 +185,7 @@ export function profitCase(seed: string) {
         `Revenue is the money taken in from sales: ${n} × ${price} = ${wd(revenue)}.`,
         `Fixed costs are paid once: ${f1} + ${f2} = ${wd(fixedTotal)}.`,
         `Variable costs are paid for each one made: ${n} × ${unitCost} = ${wd(n * unitCost)}. Total cost: ${fixedTotal} + ${n * unitCost} = ${wd(costOf(n))}.`,
-        `Profit is revenue minus total cost: ${revenue} − ${costOf(n)} = ${profit}. ${profit > 0 ? "A positive result is a profit." : profit < 0 ? "A negative result is a loss." : "Zero means the sales exactly pay the costs."}`,
+        `Profit is revenue minus total cost: $${revenue} − ${costOf(n)} = ${profit}$. ${profit > 0 ? "A positive result is a profit." : profit < 0 ? "A negative result is a loss." : "Zero means the sales exactly pay the costs."}`,
         `The result is ${/^(loss|profit)/i.test(ok) ? "a " : ""}${ok[0]!.toLowerCase()}${ok.slice(1)}.`,
       ],
       choices: options(ok, [

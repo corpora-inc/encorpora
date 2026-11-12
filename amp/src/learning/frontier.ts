@@ -44,8 +44,12 @@ export type FrontierObservation = {
    * band on its own. */
   evidenceWeight?: number;
 };
-/** Curriculum coordinate, uncertainty width, and evidence counts. Overall sd
- * includes a bounded surprise reserve; it is not calibrated confidence. */
+/** Curriculum coordinate, uncertainty width, and evidence counts. `sd` is
+ * the posterior width, including a bounded surprise reserve, and it is what
+ * scheduling reads. The width stored and shown is `reportedSd`
+ * (`frontier-report.ts`, sd-cal-v1), fit to a misspecified synthetic learner.
+ * Item difficulties are not fitted to real students, and there is no external
+ * norm. */
 export type Estimate = {
   level: number;
   sd: number;
@@ -129,24 +133,34 @@ type ResponseCurve = {
 };
 type ResponseModel = (grade: number, guess: number) => ResponseCurve;
 const responseModels = new WeakMap<FrontierPolicy["response"], ResponseModel>();
-function responseModel(response: FrontierPolicy["response"]): ResponseModel {
-  const known = responseModels.get(response);
-  if (known) return known;
+/** P(correct) under a frontier response curve. The grid posterior and the
+ * production-calibration harness both use this, so a well-specified synthetic
+ * learner is drawn from the estimator's own likelihood. */
+export function productionSuccessProbability(
+  theta: number,
+  grade: number,
+  guess: number,
+  response: FrontierPolicy["response"],
+): number {
   const { typedGuess, slip, discrimination, atLevelSuccess } = response;
   const offset =
     Math.log((atLevelSuccess - typedGuess) / (1 - slip - atLevelSuccess)) /
     discrimination;
+  const latent = 1 / (1 + Math.exp(-discrimination * (theta - grade + offset)));
+  return guess + (1 - guess) * (typedGuess + (1 - typedGuess - slip) * latent);
+}
+function responseModel(response: FrontierPolicy["response"]): ResponseModel {
+  const known = responseModels.get(response);
+  if (known) return known;
   // A catalog has few grade and guess pairs, and every answer repeats one.
   const curves = new Map<string, ResponseCurve>();
   const model: ResponseModel = (grade, guess) => {
     const key = `${grade}|${guess}`;
     let curve = curves.get(key);
     if (!curve) {
-      const success = Float64Array.from(GRID, (theta) => {
-        const p =
-          1 / (1 + Math.exp(-discrimination * (theta - grade + offset)));
-        return guess + (1 - guess) * (typedGuess + (1 - typedGuess - slip) * p);
-      });
+      const success = Float64Array.from(GRID, (theta) =>
+        productionSuccessProbability(theta, grade, guess, response),
+      );
       curve = {
         success,
         hit: success.map((p) => Math.log(p)),

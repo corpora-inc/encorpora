@@ -47,6 +47,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -242,14 +243,11 @@ async function journey(
   await teacherFamily(teacherAccount);
   await teacher.goto(`${origin}/`);
   await teacher.waitForURL(CLASS_TODAY);
-  await heading(
-    teacher,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
-  // Children from other families live on Students, beside the family’s own.
+  await todayTitle(teacher);
+  // Children from other families live on People, beside the family’s own.
   const classUrl = teacher.url().replace(/\/today$/, "/roster");
   await teacher.goto(classUrl);
-  await heading(teacher, "Students");
+  await heading(teacher, "People");
   await teacher
     .getByRole("button", { name: "Add a child from another family" })
     .click();
@@ -344,7 +342,7 @@ async function journey(
   ]);
   last.page = teacher;
   await teacher.reload();
-  await heading(teacher, "Students");
+  await heading(teacher, "People");
   await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);

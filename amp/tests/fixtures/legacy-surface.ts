@@ -3,7 +3,9 @@
  * scenes), but not its teaching text. Explanations, hints and choice feedback
  * are rewritten as the curriculum improves (#1781); the grammar, typography
  * and instance-hint gates check that text, so a digest need not pin it. The
- * realized variant is recorded beside the problem and is left out too. */
+ * realized variant is recorded beside the problem and is left out too. So is
+ * the version it records: every golden was frozen when problems recorded 1
+ * (all but count-objects), so the surface holds 1 there. */
 export function legacySurface<T extends object>(problem: T) {
   const { variant, explanation, hint, choiceFeedback, ...surface } =
     problem as T & {
@@ -16,5 +18,8 @@ export function legacySurface<T extends object>(problem: T) {
   void explanation;
   void hint;
   void choiceFeedback;
-  return surface;
+  const recorded = surface as { public?: { templateVersion?: number } };
+  return recorded.public?.templateVersion == null
+    ? surface
+    : { ...surface, public: { ...recorded.public, templateVersion: 1 } };
 }

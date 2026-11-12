@@ -23,6 +23,7 @@ import {
   validateFractionPracticeCoverage,
 } from "../src/content/fraction-practice-coverage.js";
 import { Figure } from "../src/web/Figure.js";
+import { asCurrent } from "./fixtures/recorded-version";
 
 function value(answer: string) {
   const [n, d = "1"] = answer.split("/");
@@ -40,7 +41,7 @@ test("fraction practice families have stable public engine and book/skill/compon
     );
     assert.deepEqual(
       generateProblem(template.id, "binding"),
-      polishProblem(generateFractionPracticeProblem(template.id, "binding")),
+      asCurrent(polishProblem(generateFractionPracticeProblem(template.id, "binding"))),
     );
     assert.ok(
       fractionPracticeBindings.find((b) => b.templateId === template.id)!

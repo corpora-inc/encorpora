@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -466,7 +467,7 @@ export const elevationDepression = chainFamily({
     const thing = ["cliff", "tower", "building"][m.thing]!;
     const unit = ax.place === "whole" ? "foot" : "tenth of a foot";
     return numberSurface({
-      prompt: `A lookout is $${m.d}$ feet from a ${thing}, measured along level ground. From the lookout, the angle of elevation to the top of the ${thing} is $${m.up}^\\circ$ and the angle of depression to its base is $${m.down}^\\circ$. What is the height of the ${thing}, to the nearest ${unit}?`,
+      prompt: `A lookout is $${m.d}$ feet from ${withArticle(thing)}, measured along level ground. From the lookout, the angle of elevation to the top of the ${thing} is $${m.up}^\\circ$ and the angle of depression to its base is $${m.down}^\\circ$. What is the height of the ${thing}, to the nearest ${unit}?`,
       answer: roundText(h, places),
       label: "Height in feet",
       hint: `Draw a level line from the lookout to the ${thing}. It splits the height into a part above the line and a part below it. Each part is a leg of a right triangle with the ${m.d}-foot distance as the other leg.`,

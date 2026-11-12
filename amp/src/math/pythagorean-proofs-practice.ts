@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -548,10 +549,10 @@ function proofArea(seed: string): GeneratedProblem {
         arrangementOne("f", a, b, [0, 0], labels, { grid: true }),
         `The square is drawn on a unit grid. Each side is split into ${a} and ${b}, and a triangle sits at each corner. The uncovered middle is a tilted square.`,
       ),
-      hint: `Find the area of the whole square of side ${s}. Then take away the four triangles; each is half of a ${a} by ${b} rectangle.`,
+      hint: `Find the area of the whole square of side ${s}. Then take away the four triangles; each is half of ${withArticle(a)} by ${b} rectangle.`,
       explanation: [
         `The big square has side $${a} + ${b} = ${s}$, so its area is $${s}^2 = ${big}$.`,
-        `Each triangle is half of a ${a} by ${b} rectangle, so its area is $\\tfrac{1}{2} \\times ${a} \\times ${b} = ${one}$. The four triangles cover $4 \\times ${one} = ${four}$.`,
+        `Each triangle is half of ${withArticle(a)} by ${b} rectangle, so its area is $\\tfrac{1}{2} \\times ${a} \\times ${b} = ${one}$. The four triangles cover $4 \\times ${one} = ${four}$.`,
         `The tilted square is the part the triangles leave uncovered: $${big} - ${four} = ${leftover}$.`,
         `Check: $${a}^2 + ${b}^2 = ${a * a} + ${b * b} = ${leftover}$. The tilted square's area equals the two leg lengths squared and added.`,
         wrong,
@@ -568,9 +569,9 @@ function proofArea(seed: string): GeneratedProblem {
       arrangementTwo("f", a, b, [0, 0], labels, { grid: true }),
       `The square is drawn on a unit grid. The rectangles fill opposite corners and leave a square of side ${a} and a square of side ${b} uncovered.`,
     ),
-    hint: `Two triangles with legs ${a} and ${b} fit together as a ${a} by ${b} rectangle. Which two squares do the rectangles leave uncovered?`,
+    hint: `Two triangles with legs ${a} and ${b} fit together as ${withArticle(a)} by ${b} rectangle. Which two squares do the rectangles leave uncovered?`,
     explanation: [
-      `Each pair of triangles makes a ${a} by ${b} rectangle. The two rectangles fill opposite corners of the square of side ${s}.`,
+      `Each pair of triangles makes ${withArticle(a)} by ${b} rectangle. The two rectangles fill opposite corners of the square of side ${s}.`,
       `They leave a square of side ${a} and a square of side ${b} uncovered.`,
       `Their areas are $${a}^2 = ${a * a}$ and $${b}^2 = ${b * b}$, so together $${a * a} + ${b * b} = ${leftover}$.`,
       `Check: the whole square is $${s}^2 = ${big}$, the four triangles cover $4 \\times \\tfrac{1}{2} \\times ${a} \\times ${b} = ${four}$, and $${big} - ${four} = ${leftover}$.`,

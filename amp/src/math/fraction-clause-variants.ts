@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { count, isAre } from "./agreement";
 import type {
@@ -233,7 +234,9 @@ export function shuffleScalingPool<T>(seed: string, pool: readonly T[]): T[] {
 }
 
 const hashId = (id: string, seed: string) =>
-  createHash("sha256").update(JSON.stringify([id, 1, seed])).digest("hex");
+  createHash("sha256")
+    .update(JSON.stringify([id, 1, seed]))
+    .digest("hex");
 
 type Choice = { label: string; correct?: true; feedback: string };
 
@@ -253,7 +256,10 @@ function choiceProblem(
   const correct = draft.choices.filter((c) => c.correct);
   need(correct.length === 1, "one correct choice");
   const labels = new Set(draft.choices.map((c) => c.label));
-  need(labels.size === draft.choices.length && draft.choices.length >= 2, "distinct choices");
+  need(
+    labels.size === draft.choices.length && draft.choices.length >= 2,
+    "distinct choices",
+  );
   need(draft.choices.length <= 4, "at most four choices");
   const order = [...draft.choices];
   for (let i = order.length - 1; i > 0; i--) {
@@ -287,7 +293,10 @@ function choiceProblem(
   };
 }
 
-function withVariant(problem: GeneratedProblem, task: string): GeneratedProblem {
+function withVariant(
+  problem: GeneratedProblem,
+  task: string,
+): GeneratedProblem {
   return { ...problem, variant: { id: task, axes: { task } } };
 }
 
@@ -300,7 +309,11 @@ function shareFigure(
   shaded: number[],
 ): SemanticFigure {
   const cut =
-    shape === "circle" ? "sectors" : n === 4 && shape === "square" ? "grid" : "columns";
+    shape === "circle"
+      ? "sectors"
+      : n === 4 && shape === "square"
+        ? "grid"
+        : "columns";
   return {
     kind: "partitioned-shapes",
     shapes: [
@@ -321,7 +334,12 @@ const SHARE_WORD: Record<number, [string, string]> = {
   4: ["fourth", "fourths"],
 };
 
-function phraseChoice(k: number, n: number, shape: ShapeName, quarterWord: boolean) {
+function phraseChoice(
+  k: number,
+  n: number,
+  shape: ShapeName,
+  quarterWord: boolean,
+) {
   const whole = `the ${shape}`;
   const part = "the shaded part";
   const name =
@@ -348,7 +366,9 @@ function phraseChoice(k: number, n: number, shape: ShapeName, quarterWord: boole
     `${k === 1 ? "two" : "one"} of ${whole}`,
     `four of ${whole}`,
   ];
-  const wrong = [...new Set(pool)].filter((label) => label !== correct).slice(0, 3);
+  const wrong = [...new Set(pool)]
+    .filter((label) => label !== correct)
+    .slice(0, 3);
   need(wrong.length === 3, "three phrase distractors");
   return { correct, wrong };
 }
@@ -367,7 +387,8 @@ export function phraseIsTrue(
   if (shaded === 2 && n === 3) return sentence.startsWith("two thirds of ");
   if (shaded === 1 && n === 4)
     return (
-      sentence.startsWith("a fourth of ") || sentence.startsWith("a quarter of ")
+      sentence.startsWith("a fourth of ") ||
+      sentence.startsWith("a quarter of ")
     );
   if (shaded === 3 && n === 4)
     return (
@@ -427,11 +448,16 @@ function nameWhole(
   const n = thirds ? pick(r, [2, 3, 3, 4]) : pick(r, [2, 4]);
   const shape = pick(r, SHAPES);
   const fourths = n === 4 && r(0, 1) === 1;
-  const share = n === 2 ? "halves" : n === 3 ? "thirds" : fourths ? "fourths" : "quarters";
+  const share =
+    n === 2 ? "halves" : n === 3 ? "thirds" : fourths ? "fourths" : "quarters";
   const countWord = n === 2 ? "two" : n === 3 ? "three" : "four";
   const correct = `${countWord} ${share}, the whole ${shape}`;
-  const wrongShares = ["halves", "thirds", "fourths", "quarters"].filter((s) => s !== share);
-  const wrongCounts = ["one", "two", "three", "four"].filter((c) => c !== countWord);
+  const wrongShares = ["halves", "thirds", "fourths", "quarters"].filter(
+    (s) => s !== share,
+  );
+  const wrongCounts = ["one", "two", "three", "four"].filter(
+    (c) => c !== countWord,
+  );
   const oneShare = (name: string) =>
     name === "halves" ? "half" : name.replace(/s$/, "");
   const countedShare = (word: string, name: string) =>
@@ -443,7 +469,9 @@ function nameWhole(
     `${countWord} ${wrongShares[0]}`,
     `one half`,
   ];
-  const wrong = [...new Set(pool)].filter((label) => label !== correct).slice(0, 3);
+  const wrong = [...new Set(pool)]
+    .filter((label) => label !== correct)
+    .slice(0, 3);
   need(wrong.length === 3, "three whole distractors");
   return choiceProblem(meta, seed, "whole", {
     r,
@@ -463,17 +491,23 @@ function nameWhole(
       { label: correct, correct: true, feedback: "" },
       ...wrong.map((label) => ({
         label,
-        feedback: label === countWord
-          ? "The count needs the share name. Four alone is not four fourths."
-          : "The count and the share name have to match the cut.",
+        feedback:
+          label === countWord
+            ? "The count needs the share name. Four alone is not four fourths."
+            : "The count and the share name have to match the cut.",
       })),
     ],
   });
 }
 
 /** "fourths" beside "quarters" in the grade-1 equal-share prompt. */
-export function fourthsWording(prompt: string, hint: string, explanation: string[]) {
-  const swap = (s: string) => s.replaceAll("quarters", "fourths").replaceAll("quarter", "fourth");
+export function fourthsWording(
+  prompt: string,
+  hint: string,
+  explanation: string[],
+) {
+  const swap = (s: string) =>
+    s.replaceAll("quarters", "fourths").replaceAll("quarter", "fourth");
   return {
     prompt: swap(prompt),
     hint: swap(hint),
@@ -521,8 +555,14 @@ function grade3Symbols(
     const sameNum = r(0, 1) === 0;
     if (sameNum) {
       const n = r(1, 3);
-      let d1 = pick(r, DENS3.filter((d) => d > n));
-      let d2 = pick(r, DENS3.filter((d) => d > n && d !== d1));
+      let d1 = pick(
+        r,
+        DENS3.filter((d) => d > n),
+      );
+      let d2 = pick(
+        r,
+        DENS3.filter((d) => d > n && d !== d1),
+      );
       need(d1 !== d2, "two denominators");
       return { left: [n, d1] as const, right: [n, d2] as const };
     }
@@ -554,8 +594,16 @@ function grade3Symbols(
   ]);
   const figure = barsFigure(
     pairs.flatMap((p) => [
-      { parts: p.left[1], shaded: p.left[0], label: `${p.left[0]}/${p.left[1]}` },
-      { parts: p.right[1], shaded: p.right[0], label: `${p.right[0]}/${p.right[1]}` },
+      {
+        parts: p.left[1],
+        shaded: p.left[0],
+        label: `${p.left[0]}/${p.left[1]}`,
+      },
+      {
+        parts: p.right[1],
+        shaded: p.right[0],
+        label: `${p.right[0]}/${p.right[1]}`,
+      },
     ]),
   );
   return withVariant(
@@ -573,7 +621,12 @@ function grade3Symbols(
         const multiple = lcm(p.left[1], p.right[1]);
         const lt = p.left[0] * (multiple / p.left[1]);
         const rt = p.right[0] * (multiple / p.right[1]);
-        const word = lt === rt ? "the same amount" : lt < rt ? "less than" : "greater than";
+        const word =
+          lt === rt
+            ? "the same amount"
+            : lt < rt
+              ? "less than"
+              : "greater than";
         return `Over the common denominator ${multiple}, the top numbers are ${lt} and ${rt}. ${lt} is ${word} ${rt}.`;
       }),
     }),
@@ -590,8 +643,14 @@ function grade3Reason(
   let a: number, b: number, c: number, d: number;
   if (sameNum) {
     a = c = r(1, 3);
-    b = pick(r, DENS3.filter((x) => x > a));
-    d = pick(r, DENS3.filter((x) => x > a && x !== b));
+    b = pick(
+      r,
+      DENS3.filter((x) => x > a),
+    );
+    d = pick(
+      r,
+      DENS3.filter((x) => x > a && x !== b),
+    );
   } else {
     b = d = pick(r, DENS3);
     a = r(1, b - 1);
@@ -608,22 +667,26 @@ function grade3Reason(
     {
       label: "same size pieces, more of them",
       holds: !sameNum,
-      feedback: "The pieces are the same size only when the denominators match.",
+      feedback:
+        "The pieces are the same size only when the denominators match.",
     },
     {
       label: "same number of pieces, bigger pieces",
       holds: sameNum,
-      feedback: "The numerators match only when both fractions count the same number of pieces.",
+      feedback:
+        "The numerators match only when both fractions count the same number of pieces.",
     },
     {
       label: `${bigDen} is more than ${smallDen}, so bigger bottoms are bigger`,
       holds: false,
-      feedback: "A greater denominator cuts the same whole into smaller pieces.",
+      feedback:
+        "A greater denominator cuts the same whole into smaller pieces.",
     },
     {
       label: `${Math.max(a, c)} is more than ${Math.min(a, c) === Math.max(a, c) ? 0 : Math.min(a, c)}, so compare tops`,
       holds: false,
-      feedback: "Comparing only the top numbers ignores the size of the pieces.",
+      feedback:
+        "Comparing only the top numbers ignores the size of the pieces.",
     },
   ];
   // The tops distractor must stay false when the numerators differ and the
@@ -692,10 +755,16 @@ function unlikeReason(
   r: Random,
 ): GeneratedProblem {
   const benchmark = r(0, 3) === 0;
-  let a = 1, b = 2, c = 1, d = 3;
+  let a = 1,
+    b = 2,
+    c = 1,
+    d = 3;
   for (let guard = 0; guard < 40; guard++) {
     b = pick(r, UNLIKE_D);
-    d = pick(r, UNLIKE_D.filter((x) => x !== b));
+    d = pick(
+      r,
+      UNLIKE_D.filter((x) => x !== b),
+    );
     a = r(1, b - 1);
     c = r(1, d - 1);
     if (a === c && b === d) continue;
@@ -734,13 +803,19 @@ function unlikeReason(
         { label: lcdLabel, holds: true },
         { label: benchLabel, holds: false },
         { label: bigBottom, holds: false },
-        { label: `${Math.min(a, c)} is more than ${Math.max(a, c)}, so it is greater`, holds: false },
+        {
+          label: `${Math.min(a, c)} is more than ${Math.max(a, c)}, so it is greater`,
+          holds: false,
+        },
       ];
   // The tops line above is forced false. Say so in the feedback.
   const trueOnes = options.filter((o) => o.holds);
   need(trueOnes.length === 1, "one unlike reason");
   need(new Set(options.map((o) => o.label)).size === 4, "distinct reasons");
-  need(options.every((o) => o.label.length <= 80), "reason length");
+  need(
+    options.every((o) => o.label.length <= 80),
+    "reason length",
+  );
   const correct = trueOnes[0]!.label;
   const built = inlineSentence([
     `${tex(greater[0]!, greater[1]!)} is greater because `,
@@ -827,8 +902,14 @@ function pictureDecomposition(
       stroke: "ink",
       width: 2,
     });
-  const eq = (n1: number, d1: number, n2: number, d2: number, n3: number, d3: number) =>
-    `$${frac(n1, d1)}+${frac(n2, d2)}=${frac(n3, d3)}$`;
+  const eq = (
+    n1: number,
+    d1: number,
+    n2: number,
+    d2: number,
+    n3: number,
+    d3: number,
+  ) => `$${frac(n1, d1)}+${frac(n2, d2)}=${frac(n3, d3)}$`;
   const unit = `$${t}\\times${frac(1, b)}+${frac(rust, b)}=${frac(a, b)}$`;
   const options = [
     { label: eq(t, b, rust, b, a, b), holds: true },
@@ -837,7 +918,10 @@ function pictureDecomposition(
     { label: eq(t, b, rust, b, a, 2 * b), holds: false },
     { label: eq(b - a, b, t, b, a, b), holds: false },
   ];
-  need(new Set(options.map((o) => o.label)).size === options.length, "distinct equations");
+  need(
+    new Set(options.map((o) => o.label)).size === options.length,
+    "distinct equations",
+  );
   const trueCount = options.filter((o) => o.holds).length;
   need(trueCount === 2, "two true equations");
   const cards = options
@@ -890,7 +974,9 @@ function betweenWhole(
   r: Random,
 ): GeneratedProblem {
   const dens = [2, 3, 4, 5, 6, 8, 10, 12];
-  let n = 2, a = 1, b = 2;
+  let n = 2,
+    a = 1,
+    b = 2;
   for (let guard = 0; guard < 40; guard++) {
     n = r(2, 6);
     b = pick(r, dens);
@@ -958,7 +1044,11 @@ function stepFractions(
   r: Random,
 ): GeneratedProblem {
   const kind = r(0, 3);
-  let b = 2, d = 3, a = 1, c = 1, w = 0;
+  let b = 2,
+    d = 3,
+    a = 1,
+    c = 1,
+    w = 0;
   for (let guard = 0; guard < 60; guard++) {
     b = r(2, 12);
     d = r(2, 12);
@@ -1001,7 +1091,12 @@ function stepFractions(
       id: "sum",
       label: "Result numerator",
       correct: `${sum}`,
-      wrong: [`${a + c}`, `${A + C + (kind === 1 ? 1 : 0)}`, `${b + d}`, `${a}`],
+      wrong: [
+        `${a + c}`,
+        `${A + C + (kind === 1 ? 1 : 0)}`,
+        `${b + d}`,
+        `${a}`,
+      ],
     },
   ];
   const built = inlineSentence([
@@ -1042,7 +1137,12 @@ function judgeChoice(
   const mode = r(0, 9);
   const wrongSum = mode < 5;
   const rightSum = mode >= 7;
-  let a = 1, b = 2, c = 1, d = 3, claimN = 1, claimD = 2;
+  let a = 1,
+    b = 2,
+    c = 1,
+    d = 3,
+    claimN = 1,
+    claimD = 2;
   const addendHalf = () => 2 * a >= b || 2 * c >= d;
   for (let guard = 0; guard < 80; guard++) {
     b = r(2, 12);
@@ -1095,7 +1195,8 @@ function judgeChoice(
       },
       {
         label: `Wrong: the answer is ${product}.`,
-        feedback: "That multiplies the fractions. The claim is the sum, and it is right.",
+        feedback:
+          "That multiplies the fractions. The claim is the sum, and it is right.",
       },
     ];
   } else if (wrongSum) {
@@ -1107,7 +1208,8 @@ function judgeChoice(
       },
       {
         label: `Right: ${claim} is about 1/2.`,
-        feedback: "Near 1/2 is not the test. The sum of a fraction at least 1/2 and a positive fraction is more than 1/2.",
+        feedback:
+          "Near 1/2 is not the test. The sum of a fraction at least 1/2 and a positive fraction is more than 1/2.",
       },
       {
         label: `Wrong: the answer is ${product}.`,
@@ -1123,7 +1225,8 @@ function judgeChoice(
       },
       {
         label: `Right: ${claim} is about ${a}/${b}.`,
-        feedback: "The claimed difference is larger than the amount you start with, so it cannot be right.",
+        feedback:
+          "The claimed difference is larger than the amount you start with, so it cannot be right.",
       },
       {
         label: `Wrong: the answer is ${product}.`,
@@ -1131,33 +1234,35 @@ function judgeChoice(
       },
     ];
   }
-  need(new Set([correct, ...wrongs.map((w) => w.label)]).size === 4, "four judge statements");
-  const spoken = wrongSum || rightSum
-    ? `${a}/${b} + ${c}/${d} = ${claim}`
-    : `${a}/${b} − ${c}/${d} = ${claim}`;
+  need(
+    new Set([correct, ...wrongs.map((w) => w.label)]).size === 4,
+    "four judge statements",
+  );
+  const spoken =
+    wrongSum || rightSum
+      ? `${a}/${b} + ${c}/${d} = ${claim}`
+      : `${a}/${b} − ${c}/${d} = ${claim}`;
   return choiceProblem(meta, seed, "judge", {
     r,
     prompt: `Rio says ${spoken}. Choose the statement that is right.`,
     hint: rightSum
       ? `One addend is at least 1/2, so the sum ${a}/${b} + ${c}/${d} is more than 1/2. Check whether Rio's result agrees.`
       : wrongSum
-        ? `One addend is at least 1/2. A sum of that and a positive fraction is more than 1/2. Where does ${claim} sit?`
+        ? `One addend is at least $1/2$. A sum of that and a positive fraction is more than $1/2$. Where does ${claim} sit?`
         : `You start with ${a}/${b} and take away ${c}/${d}. Can the result be greater than ${a}/${b}?`,
-    explanation: wrongSum || rightSum
-      ? [
-          `${a}/${b} + ${c}/${d} is more than 1/2, because one addend is already at least 1/2 and the other is positive.`,
-          rightSum
-            ? `The true sum is ${trueSum}, which is more than 1/2. Rio's result matches it.`
-            : `${claim} is less than 1/2, so it cannot be the sum. The true sum is ${trueSum}.`,
-        ]
-      : [
-          `A difference is what is left, so it is less than the amount you start with.`,
-          `${claim} is greater than ${a}/${b}, so it cannot be ${a}/${b} − ${c}/${d}.`,
-        ],
-    choices: [
-      { label: correct, correct: true, feedback: "" },
-      ...wrongs,
-    ],
+    explanation:
+      wrongSum || rightSum
+        ? [
+            `${a}/${b} + ${c}/${d} is more than 1/2, because one addend is already at least 1/2 and the other is positive.`,
+            rightSum
+              ? `The true sum is ${trueSum}, which is more than 1/2. Rio's result matches it.`
+              : `${claim} is less than 1/2, so it cannot be the sum. The true sum is ${trueSum}.`,
+          ]
+        : [
+            `A difference is what is left, so it is less than the amount you start with.`,
+            `${claim} is greater than ${a}/${b}, so it cannot be ${a}/${b} − ${c}/${d}.`,
+          ],
+    choices: [{ label: correct, correct: true, feedback: "" }, ...wrongs],
   });
 }
 
@@ -1181,7 +1286,9 @@ export function judgeSurface(r: Random) {
       answer: problem.answer,
       hint: problem.hint,
       explanation: problem.explanation,
-      ...(problem.choiceFeedback ? { choiceFeedback: problem.choiceFeedback } : {}),
+      ...(problem.choiceFeedback
+        ? { choiceFeedback: problem.choiceFeedback }
+        : {}),
     };
   } catch (error) {
     if (error instanceof Error && error.message.startsWith("Need")) return null;
@@ -1194,7 +1301,8 @@ function riceShare(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  let a = 10, b = 3;
+  let a = 10,
+    b = 3;
   for (let guard = 0; guard < 20; guard++) {
     a = r(10, 60);
     b = r(2, 12);
@@ -1207,7 +1315,11 @@ function riceShare(
   const shareWrongs = [`${b}/${a}`, `${w}`, `${w} remainder ${rem}`];
   need(new Set([share, ...shareWrongs]).size === 4, "share labels");
   const bounds = `${w} and ${w + 1}`;
-  const boundWrongs = [`${w - 1} and ${w}`, `${a} and ${a + 1}`, `${b} and ${b + 1}`];
+  const boundWrongs = [
+    `${w - 1} and ${w}`,
+    `${a} and ${a + 1}`,
+    `${b} and ${b + 1}`,
+  ];
   need(!boundWrongs.includes(bounds), "bound labels");
   const checkWrongs = [`${w * b}`, `${a + b}`, `${w}`];
   need(new Set([`${a}`, ...checkWrongs]).size === 4, "check labels");
@@ -1215,16 +1327,26 @@ function riceShare(
     "Each person gets ",
     { id: "share", label: "Each share", correct: share, wrong: shareWrongs },
     " pounds, between ",
-    { id: "bounds", label: "The two whole numbers", correct: bounds, wrong: boundWrongs },
+    {
+      id: "bounds",
+      label: "The two whole numbers",
+      correct: bounds,
+      wrong: boundWrongs,
+    },
     ". Check: the share × ",
     `${b}`,
     " = ",
-    { id: "check", label: "The check product", correct: `${a}`, wrong: checkWrongs },
+    {
+      id: "check",
+      label: "The check product",
+      correct: `${a}`,
+      wrong: checkWrongs,
+    },
     ".",
   ]);
   return withVariant(
     multiPartProblem(meta, seed, r, {
-      prompt: `${b} people share a ${a}-pound sack equally. Choose each share, the wholes it lies between, and the check.`,
+      prompt: `${b} people share ${withArticle(a)}-pound sack equally. Choose each share, the wholes it lies between, and the check.`,
       layout: "inline",
       label: "Choose the share, the bounds, and the check",
       slots: built.slots,
@@ -1265,7 +1387,10 @@ function barScene(
   return scene(...elements).build(CARD);
 }
 
-export function pictureValue(elements: { fill?: string }[], parts: number): number {
+export function pictureValue(
+  elements: { fill?: string }[],
+  parts: number,
+): number {
   const shaded = elements.filter(
     (e) => e.fill === "accent-fill" || e.fill === "gold-fill",
   ).length;
@@ -1300,7 +1425,10 @@ function storyOfQuantity(
     },
   ];
   need(new Set(stories.map((s) => s.value)).size === 4, "one story value");
-  need(stories.filter((s) => Math.abs(s.value - product) < 1e-9).length === 1, "one product");
+  need(
+    stories.filter((s) => Math.abs(s.value - product) < 1e-9).length === 1,
+    "one product",
+  );
   const correct = stories[0]!;
   return choiceProblem(meta, seed, "story", {
     r,
@@ -1333,7 +1461,9 @@ function modelOfQuantity(
   const pictures = [
     {
       description: `${total} bars, each cut into ${d}, with ${count(n, "piece")} shaded.`,
-      scene: barScene(Array.from({ length: total }, () => ({ parts: d, shaded: n }))),
+      scene: barScene(
+        Array.from({ length: total }, () => ({ parts: d, shaded: n })),
+      ),
       value: (total * n) / d,
     },
     {
@@ -1356,8 +1486,14 @@ function modelOfQuantity(
     },
   ];
   const product = (total * n) / d;
-  need(pictures.filter((p) => Math.abs(p.value - product) < 1e-9).length === 1, "one model");
-  need(new Set(pictures.map((p) => JSON.stringify(p.scene.elements))).size === 4, "distinct pictures");
+  need(
+    pictures.filter((p) => Math.abs(p.value - product) < 1e-9).length === 1,
+    "one model",
+  );
+  need(
+    new Set(pictures.map((p) => JSON.stringify(p.scene.elements))).size === 4,
+    "distinct pictures",
+  );
   return {
     ...problemOf(meta, seed, r, {
       prompt: `Which picture shows ${n}/${d} × ${total}?`,
@@ -1370,7 +1506,8 @@ function modelOfQuantity(
       distractors: pictures.slice(1).map((p) => ({
         description: p.description,
         scene: p.scene,
-        feedback: () => "That picture is one bar, an added whole, or a division.",
+        feedback: () =>
+          "That picture is one bar, an added whole, or a division.",
       })),
       hint: `Draw ${total} wholes. Cut each into ${d} equal pieces and shade ${n} pieces on each.`,
       explanation: () => [
@@ -1506,7 +1643,8 @@ function representProduct(
       { label: correct, correct: true, feedback: "" },
       {
         label: choices[1]!,
-        feedback: "Dividing swaps the 'of'. Sam makes a fraction of the recipe.",
+        feedback:
+          "Dividing swaps the 'of'. Sam makes a fraction of the recipe.",
       },
       {
         label: choices[2]!,
@@ -1514,7 +1652,8 @@ function representProduct(
       },
       {
         label: wholeOnly,
-        feedback: "The fraction part of the mixed number is multiplied too, not added after.",
+        feedback:
+          "The fraction part of the mixed number is multiplied too, not added after.",
       },
     ],
   });
@@ -1535,9 +1674,17 @@ function unitStory(
     `${fractionText(1, b)} of ${n} lb`,
   ];
   const values = [1 / (b * n), n / b, n * b, n / b];
-  need(values.filter((v) => Math.abs(v - values[0]!) < 1e-12).length === 1, "one story quotient");
+  need(
+    values.filter((v) => Math.abs(v - values[0]!) < 1e-12).length === 1,
+    "one story quotient",
+  );
   const tray = [...new Set(stories)];
-  const quotients = [card(1, b * n), card(n, b), card(1, b + n), card(n * b, 1)];
+  const quotients = [
+    card(1, b * n),
+    card(n, b),
+    card(1, b + n),
+    card(n * b, 1),
+  ];
   need(new Set(quotients).size === 4, "quotient cards");
   const qTray = cardTray(quotients);
   const built = inlineSentence([
@@ -1590,7 +1737,10 @@ function unitModel(
     `${n} strips each cut into ${b}, every piece counted`,
   ];
   const values = [1 / (b * n), n / b, n / b, n * b];
-  need(values.filter((v) => Math.abs(v - 1 / (b * n)) < 1e-12).length === 1, "one model");
+  need(
+    values.filter((v) => Math.abs(v - 1 / (b * n)) < 1e-12).length === 1,
+    "one model",
+  );
   const built = inlineSentence([
     "The picture is ",
     {
@@ -1640,7 +1790,11 @@ function unitCheck(
     const got = card(1, b);
     const qLabels = cardTray([q, multiplied, added]);
     const gotLabels = cardTray([got, `${n + b}`, `${b * n + 1}`]);
-    need(new Set([...qLabels, ...gotLabels]).size === qLabels.length + gotLabels.length, "labels once");
+    need(
+      new Set([...qLabels, ...gotLabels]).size ===
+        qLabels.length + gotLabels.length,
+      "labels once",
+    );
     const num = (label: string) => {
       const frac = label.match(/frac\{(\d+)\}\{(\d+)\}/);
       return frac ? Number(frac[1]) / Number(frac[2]) : Number(label);
@@ -1678,7 +1832,10 @@ function unitCheck(
   const q = w * d;
   const otherWay = card(w, d);
   const flipped = card(1, q);
-  need(otherWay !== `${q}` && flipped !== `${q}` && otherWay !== flipped, "whole quotient distractors");
+  need(
+    otherWay !== `${q}` && flipped !== `${q}` && otherWay !== flipped,
+    "whole quotient distractors",
+  );
   const qLabels = cardTray([`${q}`, otherWay, flipped]);
   const by = card(1, d);
   const byLabels = cardTray([by, `${w * d + 1}`, `${w + d + 3}`]);
@@ -1699,9 +1856,19 @@ function unitCheck(
     `${w} ÷ ${fractionText(1, d)} = `,
     { id: "q", label: "The quotient", correct: `${q}`, fixed: qLabels },
     " because the quotient × ",
-    { id: "by", label: "What the check multiplies by", correct: by, fixed: byLabels },
+    {
+      id: "by",
+      label: "What the check multiplies by",
+      correct: by,
+      fixed: byLabels,
+    },
     " = ",
-    { id: "got", label: "The check product", correct: `${w}`, fixed: gotLabels },
+    {
+      id: "got",
+      label: "The check product",
+      correct: `${w}`,
+      fixed: gotLabels,
+    },
     ".",
   ]);
   return withVariant(
@@ -1730,12 +1897,16 @@ function groupsModel(
   const d = pick(r, [2, 3, 4]);
   const correct = {
     description: `${total} bars, each cut into ${d} equal pieces, all ${total * d} pieces counted.`,
-    scene: barScene(Array.from({ length: total }, () => ({ parts: d, shaded: d }))),
+    scene: barScene(
+      Array.from({ length: total }, () => ({ parts: d, shaded: d })),
+    ),
     value: total * d,
   };
   const half = {
     description: `${total} bars, each with 1 of ${d} pieces shaded.`,
-    scene: barScene(Array.from({ length: total }, () => ({ parts: d, shaded: 1 }))),
+    scene: barScene(
+      Array.from({ length: total }, () => ({ parts: d, shaded: 1 })),
+    ),
     value: total / d,
   };
   const split = {
@@ -1754,7 +1925,10 @@ function groupsModel(
     value: total * (d === 3 ? 4 : 3),
   };
   const pictures = [correct, half, split, thirds];
-  need(pictures.filter((p) => p.value === correct.value).length === 1, "one groups picture");
+  need(
+    pictures.filter((p) => p.value === correct.value).length === 1,
+    "one groups picture",
+  );
   return {
     ...problemOf(meta, seed, r, {
       prompt: `Which picture shows how many 1/${d}-cup scoops are in ${total} cups?`,
@@ -1764,7 +1938,8 @@ function groupsModel(
       distractors: pictures.slice(1).map((p) => ({
         description: p.description,
         scene: p.scene,
-        feedback: () => "That picture multiplies by 1/d, divides, or cuts into a different size.",
+        feedback: () =>
+          "That picture multiplies by 1/d, divides, or cuts into a different size.",
       })),
       hint: `Each cup holds ${d} scoops of 1/${d} cup. Count the scoops in ${total} cups.`,
       explanation: () => [
@@ -1782,7 +1957,10 @@ function groupStory(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  let a = 1, b = 2, c = 1, d = 3;
+  let a = 1,
+    b = 2,
+    c = 1,
+    d = 3;
   for (let guard = 0; guard < 30; guard++) {
     b = r(2, 12);
     d = r(2, 12);
@@ -1792,11 +1970,12 @@ function groupStory(
   }
   need(a * d !== c * b, "quotient not 1");
   const product = (a / b) * (c / d);
-  const swapped = (c / d) / (a / b);
-  const quotient = (a / b) / (c / d);
+  const swapped = c / d / (a / b);
+  const quotient = a / b / (c / d);
   const added = a / b + c / d;
   need(
-    new Set([quotient, swapped, product, added].map((v) => v.toFixed(6))).size === 4,
+    new Set([quotient, swapped, product, added].map((v) => v.toFixed(6)))
+      .size === 4,
     "one question value",
   );
   const stories = [
@@ -1816,7 +1995,10 @@ function groupStory(
     choices: stories.map((label, i) => ({
       label,
       ...(i === 0 ? { correct: true as const } : {}),
-      feedback: i === 0 ? "" : "That question reverses the division, multiplies, or adds.",
+      feedback:
+        i === 0
+          ? ""
+          : "That question reverses the division, multiplies, or adds.",
     })),
   });
 }
@@ -1826,7 +2008,10 @@ function groupEquation(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  let a = 2, b = 3, c = 3, d = 4;
+  let a = 2,
+    b = 3,
+    c = 3,
+    d = 4;
   for (let guard = 0; guard < 20; guard++) {
     b = r(2, 12);
     d = r(2, 12);
@@ -1853,7 +2038,8 @@ function groupEquation(
     choices: equations.map((label, i) => ({
       label,
       ...(i === 0 ? { correct: true as const } : {}),
-      feedback: i === 0 ? "" : "That reverses the division, multiplies, or adds.",
+      feedback:
+        i === 0 ? "" : "That reverses the division, multiplies, or adds.",
     })),
   });
 }
@@ -1863,7 +2049,10 @@ function groupModel(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  let a = 2, b = 3, c = 3, d = 4;
+  let a = 2,
+    b = 3,
+    c = 3,
+    d = 4;
   for (let guard = 0; guard < 20; guard++) {
     b = pick(r, [2, 3, 4, 6]);
     d = pick(r, [2, 3, 4, 6]);
@@ -1875,7 +2064,7 @@ function groupModel(
   const quotient = (a * d) / (b * c);
   const pictures = [
     {
-      description: `A ${a}/${b} bar with a ${c}/${d} bar laid on it.`,
+      description: `${withArticle(a, true)}/${b} bar with ${withArticle(c)}/${d} bar laid on it.`,
       scene: barScene([
         { parts: b, shaded: a },
         { parts: d, shaded: c },
@@ -1883,7 +2072,7 @@ function groupModel(
       value: quotient,
     },
     {
-      description: `A ${c}/${d} bar with a ${a}/${b} bar laid on it.`,
+      description: `${withArticle(c, true)}/${d} bar with ${withArticle(a)}/${b} bar laid on it.`,
       scene: barScene([
         { parts: d, shaded: c },
         { parts: b, shaded: a },
@@ -1891,12 +2080,12 @@ function groupModel(
       value: 1 / quotient,
     },
     {
-      description: `A ${a}/${b} of a ${c}/${d} bar, cross-cut.`,
+      description: `${withArticle(a, true)}/${b} of ${withArticle(c)}/${d} bar, cross-cut.`,
       scene: barScene([{ parts: b * d, shaded: a * c }]),
       value: (a * c) / (b * d),
     },
     {
-      description: `A ${a}/${b} bar joined to a ${c}/${d} bar.`,
+      description: `${withArticle(a, true)}/${b} bar joined to ${withArticle(c)}/${d} bar.`,
       scene: barScene([
         { parts: b, shaded: a },
         { parts: d, shaded: d },
@@ -1914,15 +2103,19 @@ function groupModel(
       prompt: `Which picture shows ${a}/${b} ÷ ${c}/${d}?`,
       label: "Choose the picture",
       noun: "Picture",
-      correct: { description: pictures[0]!.description, scene: pictures[0]!.scene },
+      correct: {
+        description: pictures[0]!.description,
+        scene: pictures[0]!.scene,
+      },
       distractors: pictures.slice(1).map((p) => ({
         description: p.description,
         scene: p.scene,
-        feedback: () => "That picture swaps the bars, multiplies, or joins them.",
+        feedback: () =>
+          "That picture swaps the bars, multiplies, or joins them.",
       })),
       hint: `The amount is the ${a}/${b} bar. The serving is the ${c}/${d} bar laid on it. The question is how much of the serving fits.`,
       explanation: () => [
-        `${a}/${b} ÷ ${c}/${d} asks how many ${c}/${d} bars fit on a ${a}/${b} bar.`,
+        `${a}/${b} ÷ ${c}/${d} asks how many ${c}/${d} bars fit on ${withArticle(a)}/${b} bar.`,
         `The quotient is ${fractionText(a * d, b * c)}.`,
       ],
       walkthrough: pictures[0]!.scene,
@@ -1936,7 +2129,11 @@ function areaSide(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  let a = 1, b = 2, c = 1, d = 2, w = 0;
+  let a = 1,
+    b = 2,
+    c = 1,
+    d = 2,
+    w = 0;
   for (let guard = 0; guard < 40; guard++) {
     b = r(2, 12);
     d = r(2, 12);
@@ -1980,15 +2177,16 @@ function areaSide(
   };
 }
 
-function reciprocalCheck(
-  r: Random,
-): {
+function reciprocalCheck(r: Random): {
   prompt: string;
   hint: string;
   explanation: string[];
   choices: Choice[];
 } {
-  let a = 1, b = 2, c = 1, d = 3;
+  let a = 1,
+    b = 2,
+    c = 1,
+    d = 3;
   for (let guard = 0; guard < 30; guard++) {
     b = r(2, 12);
     d = r(2, 12);
@@ -2014,7 +2212,10 @@ function reciprocalCheck(
     label: `${a}/${b} ÷ ${c}/${d} = ${label} because ${c}/${d} × ${label} = ${a}/${b}`,
     feedback: `${c}/${d} × ${label} is not ${a}/${b}.`,
   }));
-  need(new Set([correct, ...wrongs.map((w) => w.label)]).size === 4, "distinct checks");
+  need(
+    new Set([correct, ...wrongs.map((w) => w.label)]).size === 4,
+    "distinct checks",
+  );
   return {
     prompt: `Which check shows ${a}/${b} ÷ ${c}/${d}?`,
     hint: `The quotient times the divisor ${c}/${d} has to give the dividend ${a}/${b} back.`,
@@ -2053,7 +2254,8 @@ export function scalingExplain(
       },
       {
         label: `${a}/${b} × ${n}/${n} is greater than ${second} because ${n} is greater than 1`,
-        feedback: "The comparison is with the original fraction, and multiplying by 1 leaves it equal.",
+        feedback:
+          "The comparison is with the original fraction, and multiplying by 1 leaves it equal.",
       },
     ];
     return {
@@ -2065,10 +2267,7 @@ export function scalingExplain(
         `Multiplying by 1 does not change a number, so ${a}/${b} × ${n}/${n} = ${a * n}/${b * n} = ${a}/${b}.`,
         `This is the rule ${a}/${b} = (${n} × ${a})/(${n} × ${b}).`,
       ],
-      choices: [
-        { label: correct, correct: true, feedback: "" },
-        ...wrongs,
-      ],
+      choices: [{ label: correct, correct: true, feedback: "" }, ...wrongs],
     };
   }
   let a = 1;
@@ -2095,15 +2294,22 @@ export function scalingExplain(
     },
     {
       label: `${a}/${b} × ${whole} is ${direction} ${whole} because ${a}/${b} is greater than ${a}`,
-      feedback: "Compare the fraction with 1, not its numerator with the other number.",
+      feedback:
+        "Compare the fraction with 1, not its numerator with the other number.",
     },
     {
       label: `${a}/${b} × ${whole} is equal to ${whole} because ${a}/${b} is a fraction`,
       feedback: "A fraction can be less than 1, equal to 1, or greater than 1.",
     },
   ];
-  need(new Set([correct, ...wrongs.map((w) => w.label)]).size === 4, "explain labels");
-  need([correct, ...wrongs.map((w) => w.label)].every((l) => l.length <= 120), "label length");
+  need(
+    new Set([correct, ...wrongs.map((w) => w.label)]).size === 4,
+    "explain labels",
+  );
+  need(
+    [correct, ...wrongs.map((w) => w.label)].every((l) => l.length <= 120),
+    "label length",
+  );
   return {
     task: "explain",
     prompt: `Without calculating the product, how does ${a}/${b} × ${whole} compare with ${whole}?`,
@@ -2140,7 +2346,8 @@ function attempt(
         return { ...problem, variant: { id: task, axes: { task } } };
       return problem;
     } catch (error) {
-      if (!(error instanceof Error) || !error.message.startsWith("Need")) throw error;
+      if (!(error instanceof Error) || !error.message.startsWith("Need"))
+        throw error;
       last = error.message;
     }
   throw new Error(`${meta.id} ${task}: ${last}`);

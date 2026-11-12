@@ -40,6 +40,9 @@ export function LevelBar({
     <span
       className={`${styles.bar} ${styles[size]} ${estimated ? styles.estimated : ""}`}
       aria-hidden="true"
+      // Stable hooks for the browser checks (module class names are hashed).
+      data-level-bar=""
+      data-estimated={estimated || undefined}
     >
       {gridlines &&
         scaleGrades(scale).map((g) => (
@@ -76,6 +79,7 @@ export function LevelBar({
       />
       <span
         className={styles.dot}
+        data-level-dot=""
         style={{ left: percent(scaleAt(scale, estimate.level)) }}
       />
     </span>
@@ -126,6 +130,7 @@ export function LevelAxis({ scale }: { scale: RangeScale }) {
           <span
             key={g}
             className={styles.axisLabel}
+            data-level-axis-label=""
             data-end={
               index === 0 ? "start" : index === last ? "end" : undefined
             }

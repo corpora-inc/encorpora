@@ -182,10 +182,7 @@ export function WorkbookStackScreen() {
       loading={query.isPending}
       tab="workbooks"
     >
-      <PageHead
-        title="Workbooks"
-        detail={`A different workbook for each ${who}, made from their own work.`}
-      />
+      <PageHead title="Workbooks" />
       {!data ? (
         <EmptyState
           title="This class’s workbooks didn’t load"
@@ -369,7 +366,7 @@ function Stack({
         : `Stopped at ${ready} of ${printable}.`;
     if (!eligible.length) return "No student here can get a new workbook.";
     if (!selected) return "Choose at least one student.";
-    return `${count(selected, "workbook")}, about ${minutes} minutes each.${reprint ? " The same ones as last time." : ""}`;
+    return `About ${minutes} minutes each.${reprint ? " The same ones as last time." : ""}`;
   })();
   const firstFile = here?.files[0];
 
@@ -429,20 +426,9 @@ function Stack({
       </div>
       <section aria-labelledby="stack-students" className={styles.students}>
         <div className={styles.studentsHead}>
+          {/* Who gets one: the boxes show it, and Print says how many. */}
           <h2 id="stack-students">
-            {toggles
-              ? selected === eligible.length
-                ? count(
-                    eligible.length,
-                    who,
-                    who === "child" ? "children" : "students",
-                  )
-                : `${selected} of ${eligible.length} ${who === "child" ? "children" : "students"}`
-              : count(
-                  ids.length,
-                  who,
-                  who === "child" ? "children" : "students",
-                )}
+            {who === "child" ? "Children" : "Students"}
           </h2>
           {data.canPrint &&
             (status === "done" ? (
@@ -506,9 +492,8 @@ function Stack({
                           ? tile.state === "ready" && tile.problems
                             ? count(tile.problems, "problem")
                             : statusWord[tile.state]
-                          : on
-                            ? "Will print"
-                            : "Left out"}
+                          : // The box says whether it prints: no word for it.
+                            ""}
                     </span>
                   </span>
                 </button>

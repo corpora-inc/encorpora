@@ -41,7 +41,7 @@ export const productScreens = {
   },
   evidence: {
     id: "evidence",
-    alt: "One student’s grade opened: why the suggested range, the four things behind it, and the objectives gained with their dates.",
+    alt: "One student’s grade opened: why the suggested range, the four things behind it, and the skills shown on their own, with their dates.",
     wide: { width: 500, height: 900 },
     narrow: { width: 780, height: 1688 },
   },

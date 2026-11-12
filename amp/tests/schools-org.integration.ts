@@ -7,6 +7,8 @@ import { migrate } from "../scripts/migrate.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { ERASE_BATCH } from "../src/schools/privacy.js";
+import { weeklyTargetsFor } from "../src/schools/term-grades.js";
+import { readOverview } from "../src/schools/org-reads.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
@@ -164,6 +166,15 @@ test(
     const senior = await add(alder.id, "Gia", "Lane", 8, grade5.id);
     const waiting = await add(alder.id, "Wen", "Liu", 4, untaught.id);
     await add(birch.id, "Bo", "Birch", 5, birchClass.id);
+    const rostered = [amara, caleb, senior, waiting].map((student) => student.personId);
+    await db.query(
+      `UPDATE amp_org_roles SET begin_on=$1 WHERE person_id=ANY($2::uuid[])`,
+      [iso(-120), rostered],
+    );
+    await db.query(
+      `UPDATE amp_enrollments SET begin_on=$1 WHERE person_id=ANY($2::uuid[])`,
+      [iso(-120), rostered],
+    );
 
     const week = (() => {
       const now = new Date();
@@ -176,9 +187,9 @@ test(
       new Date(Date.parse(`${base}T00:00:00Z`) + days * DAY)
         .toISOString()
         .slice(0, 10);
-    const frontier = (level: number) =>
+    const frontier = (level: number, answered = 40) =>
       JSON.stringify({
-        overall: { level, sd: 0.4, answered: 40, independent: 30 },
+        overall: { level, sd: 0.4, answered, independent: 30 },
         strands: {},
       });
     // Day rows through the same statements practice uses, so the triggers run.
@@ -192,8 +203,14 @@ test(
       [amara.learnerId, week],
     );
     await db.query(
-      `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent) VALUES($1,$2,'s1',4,3,3)`,
+      `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted) VALUES($1,$2,'s1',5,3,3,2)`,
       [caleb.learnerId, week],
+    );
+    // Gia's only level is the starting guess before any answer: her grade
+    // exactly, which must never read as "at grade level".
+    await db.query(
+      `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version) VALUES($1,$2,$3,'v')`,
+      [senior.learnerId, iso(-1), frontier(8, 0)],
     );
     await db.query(
       `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version) VALUES
@@ -220,8 +237,23 @@ test(
           assert.deepEqual(rows, [
             { week: plus(week, -7), active_ms: 1200000, attempts: 0 },
             { week, active_ms: 1260000, attempts: 0 },
-            { week, active_ms: 0, attempts: 4 },
+            { week, active_ms: 0, attempts: 5 },
           ]);
+          const assisted = await db.query(
+            `SELECT assisted FROM amp_learner_weeks WHERE learner_id=$1 AND week=$2`,
+            [caleb.learnerId, week],
+          );
+          assert.equal(assisted.rows[0].assisted, 2);
+          // An answer added later adds to both.
+          await db.query(
+            `UPDATE amp_skill_days SET attempts=attempts+1,assisted=assisted+1 WHERE learner_id=$1 AND day=$2`,
+            [caleb.learnerId, week],
+          );
+          const after = await db.query(
+            `SELECT attempts,assisted FROM amp_learner_weeks WHERE learner_id=$1 AND week=$2`,
+            [caleb.learnerId, week],
+          );
+          assert.deepEqual(after.rows[0], { attempts: 6, assisted: 3 });
         },
       );
 
@@ -244,17 +276,14 @@ test(
             lastActive: 1,
             lastMinutes: 20,
           });
-          assert.equal(view.standing.at, 0);
-          assert.equal(view.standing.ahead, 1);
-          assert.equal(view.standing.behind, 1);
-          assert.equal(view.standing.unplaced, 2);
-          assert.equal(
-            view.standing.bins.reduce(
-              (sum: number, bin: { students: number }) => sum + bin.students,
-              0,
-            ),
-            2,
+          assert.equal(view.standing, undefined);
+          // This week's problems, split by help, beside its minutes.
+          const thisWeek = view.trend.find(
+            (row: { week: string }) => row.week === week,
           );
+          assert.equal(thisWeek.problems, 6);
+          assert.equal(thisWeek.assisted, 3);
+          assert.equal(thisWeek.students, 2);
           const math = view.classes.find(
             (row: { name: string }) => row.name === "Grade 5 Math",
           );
@@ -262,14 +291,145 @@ test(
           assert.equal(math.students, 3);
           assert.equal(math.active, 2);
           assert.equal(math.minutes, 21);
-          // Amara went from 5.2 to 5.8 in the window; only she has two readings.
+          // Amara settled across two days. Caleb and Gia have one reading each,
+          // so they have no growth figure rather than a zero.
+          assert.equal(math.placed, 1);
+          assert.ok(math.growth > 0.6 && math.growth < 1);
+          assert.ok(math.growthLow < math.growth && math.growthHigh > math.growth);
           assert.equal(view.schools, null);
           const ids = view.attention.map((item: { id: string }) => item.id);
           assert.ok(ids.includes("seats"));
           assert.ok(ids.includes("no-teacher"));
           assert.ok(ids.includes("never-signed-in"));
-          for (const item of view.attention)
+          for (const item of view.attention) {
             assert.ok(item.action.label && item.action.org);
+            assert.ok(item.rule, item.id);
+          }
+        },
+      );
+
+      await t.test(
+        "every rostered student is on the standing curves, unanswered ones wide",
+        async () => {
+          const response = await get(`/orgs/${alder.id}/standing`, HEAD);
+          assert.equal(response.statusCode, 200, response.body);
+          const view = response.json();
+          // Amara, Caleb, Gia's unanswered guess and Wen with no level: all four.
+          assert.equal(view.all.n, 4);
+          assert.equal(view.all.settling, 2);
+          const total = view.all.behind + view.all.within + view.all.ahead;
+          assert.ok(Math.abs(total - 4) < 0.01, `${total}`);
+          // The curve integrates to one over its axis.
+          const area =
+            view.all.density.reduce((sum: number, y: number) => sum + y, 0) *
+            view.grid.step;
+          assert.ok(Math.abs(area - 1) < 0.02, `${area}`);
+          const math = view.groups.find(
+            (group: { name: string }) => group.name === "Grade 5 Math",
+          );
+          assert.equal(math.curve.n, 3);
+          assert.deepEqual(math.grades, [5, 8]);
+          const drill = await get(`/classes/${grade5.id}/standing`, HEAD);
+          assert.equal(drill.statusCode, 200, drill.body);
+          const klass = drill.json();
+          assert.deepEqual(
+            klass.students.map((row: { name: string }) => row.name),
+            ["Caleb Ortiz", "Gia Lane", "Amara Osei"],
+          );
+          assert.equal(klass.growth.n, 1);
+          assert.ok(klass.growth.low < klass.growth.median);
+          assert.ok(klass.growth.high > klass.growth.median);
+        },
+      );
+
+      await t.test(
+        "the overview reads the clock it is given, and never flags practice",
+        async () => {
+          // Noon UTC on this week's Tuesday and Wednesday: the rows above are
+          // in this week whatever day the suite runs.
+          const at = (days: number) =>
+            new Date(`${plus(week, days)}T12:00:00Z`);
+          // Practice is data on the heat map, never a flag: Tuesday or
+          // Wednesday, Gia's empty week adds nothing to the list.
+          for (const day of [1, 2, 4]) {
+            const items = (
+              await readOverview(db, alder.id, null, true, at(day))
+            ).attention;
+            assert.ok(
+              items.every((item) => !/practice/i.test(item.id + item.title)),
+              JSON.stringify(items),
+            );
+          }
+          const view = await readOverview(db, alder.id, null, true, at(2));
+          assert.equal(view.today, plus(week, 2));
+        },
+      );
+
+      await t.test(
+        "a school's weekly target: AMP's 60 until set, set once, followed by its classes",
+        async () => {
+          const path = `/orgs/${alder.id}/weekly-target`;
+          assert.deepEqual((await get(path, HEAD)).json(), {
+            minutes: 60,
+            own: false,
+            inherited: 60,
+            setBy: null,
+            lockedBy: null,
+            canEdit: true,
+          });
+          const saved = await post(path, HEAD, { minutes: 90 });
+          assert.equal(saved.statusCode, 200, saved.body);
+          assert.equal(saved.json().minutes, 90);
+          assert.equal(saved.json().setBy, "Alder Street School");
+          // A viewer reads it and can't change it.
+          assert.equal((await get(path, VIEWER)).json().canEdit, false);
+          assert.equal(
+            (await post(path, VIEWER, { minutes: 30 })).statusCode,
+            404,
+          );
+          // Not a raw number: the stepper's range only.
+          assert.equal(
+            (await post(path, HEAD, { minutes: 7 })).statusCode,
+            400,
+          );
+          const targets = await weeklyTargetsFor(db, [grade5.id]);
+          assert.deepEqual(targets.get(grade5.id), {
+            minutes: 90,
+            locked: false,
+            own: false,
+            inherited: 90,
+          });
+          // A district lock above holds the school's own value out.
+          await db.query(
+            `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values",locked)
+             VALUES('org',$1,'{"weeklyTargetMinutes":45}','{weeklyTargetMinutes}')`,
+            [district.id],
+          );
+          const locked = (await get(path, HEAD)).json();
+          assert.equal(locked.minutes, 45);
+          assert.equal(locked.lockedBy, "Juniper Valley Schools");
+          assert.equal(
+            (await post(path, HEAD, { minutes: 60 })).statusCode,
+            409,
+          );
+          await db.query(
+            "DELETE FROM amp_scope_settings WHERE scope_kind='org' AND scope_id=$1",
+            [district.id],
+          );
+          const cleared = await post(path, HEAD, { minutes: null });
+          assert.deepEqual(cleared.json(), {
+            minutes: 60,
+            own: false,
+            inherited: 60,
+            setBy: null,
+            lockedBy: null,
+            canEdit: true,
+          });
+          const logged = await db.query(
+            "SELECT count(*)::int AS n FROM amp_school_events WHERE action='settings.changed' AND target_id=$1",
+            [alder.id],
+          );
+          assert.equal(logged.rows[0].n, 2);
         },
       );
 
@@ -701,6 +861,8 @@ test(
             "active_days.csv",
             "enrollments.csv",
             "grades.csv",
+            "help_days.csv",
+            "help_events.csv",
             "level_days.csv",
             "roster.csv",
             "skill_days.csv",
@@ -708,9 +870,10 @@ test(
           assert.match(exported["roster.csv"]!, /Amara,Osei/);
           assert.match(exported["roster.csv"]!, /Gia,Lane.*left/);
           assert.match(exported["grades.csv"]!, /B\+/);
+          // A header, Amara's two, Caleb's one and Gia's starting guess.
           assert.equal(
             exported["level_days.csv"]!.trim().split("\r\n").length,
-            4,
+            5,
           );
           assert.equal(
             exported["active_days.csv"]!.trim().split("\r\n").length,

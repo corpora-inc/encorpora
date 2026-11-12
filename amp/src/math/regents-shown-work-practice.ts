@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { chainFamily, decimalText, dispatch, pick } from "./chain-kit";
 import { cosD, sinD, tanD } from "./regents-geometry-kit";
@@ -445,7 +446,7 @@ const elevation = chainFamily({
       },
     ];
     return workSurface(rowsWork(rows, axes.mode, r, "Your work"), {
-      prompt: `A lookout is ${tex(m.d)} feet from a ${m.thing}, measured along level ground. From the lookout, the angle of elevation to the top of the ${m.thing} is ${tex(`${m.up}^\\circ`)} and the angle of depression to its base is ${tex(`${m.down}^\\circ`)}. What is the height of the ${m.thing}, to the nearest foot? ${task(axes.mode)}`,
+      prompt: `A lookout is ${tex(m.d)} feet from ${withArticle(m.thing)}, measured along level ground. From the lookout, the angle of elevation to the top of the ${m.thing} is ${tex(`${m.up}^\\circ`)} and the angle of depression to its base is ${tex(`${m.down}^\\circ`)}. What is the height of the ${m.thing}, to the nearest foot? ${task(axes.mode)}`,
       hint: `A horizontal line through the lookout splits the ${m.thing} into a part above it and a part below it. Each part is the opposite side of a right triangle whose adjacent side is the ${m.d} feet along the ground, so use the tangent of ${m.up}° for the upper part and of ${m.down}° for the lower part.`,
       explanation: [
         "Angles of elevation and depression are measured from a horizontal line. Each makes a right triangle, so the tangent ratio, opposite leg over adjacent leg, gives the height of each part.",

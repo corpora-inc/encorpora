@@ -64,6 +64,7 @@ import {
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { preload } from "../features/school/api";
+import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
@@ -637,6 +638,12 @@ const startVerify = createRoute({
 });
 /** Screens on the app frame know who is signed in before they paint, so
  * the frame's bar is there from their first frame and nothing moves under it. */
+/** A learning screen's data before it renders (lib/learning-view), its code
+ * loaded only when one is visited. */
+async function preloadLearning() {
+  const { preloadLearningView } = await import("../lib/learning-view");
+  await preloadLearningView();
+}
 async function framedScreen() {
   if (nativeRuntime) throw redirect({ to: "/" });
   await queryClient.ensureQueryData(sessionOptions).catch(() => undefined);
@@ -653,19 +660,30 @@ const inventory = createRoute({
         search: continuationSearch(location.search),
       });
   },
+  // Its record and level arrive with it: one paint, whole.
+  loader: preloadLearning,
   component: lazyRouteComponent(
     () => import("../features/inventory/InventoryScreen"),
     "InventoryScreen",
   ),
 });
+/** One map for the whole curriculum and each skill in it: choosing or
+ * closing a skill changes the URL, never the map (its camera, full screen
+ * and orbit stay as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   beforeLoad: framedScreen,
+  // The curriculum and the learner's record arrive with it: one paint.
+  loader: preloadLearning,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
   ),
+});
+const pathwaysIndex = createRoute({
+  getParentRoute: () => pathways,
+  path: "/",
 });
 /** The lessons library is no destination of its own (docs/design/ia.md):
  * `/lessons` opens Pathways, its search carrying any query. A lesson's own
@@ -674,22 +692,23 @@ const lessonsHome = createRoute({
   getParentRoute: () => root,
   path: "/lessons",
   beforeLoad: ({ location }) => {
-    const query = new URLSearchParams(location.searchStr).get("q")?.trim();
+    const params = new URLSearchParams(location.searchStr);
+    const query = params.get("q")?.trim();
+    // `?topic=` named a problem type's short lesson: Pathways opens it.
+    const lesson = params.get("topic")?.trim();
     throw redirect({
       to: "/pathways",
-      search: (query ? { topic: query } : {}) as never,
+      search: {
+        ...(query ? { topic: query } : {}),
+        ...(lesson ? { lesson } : {}),
+      } as never,
       replace: true,
     });
   },
 });
 const pathwaySkill = createRoute({
-  getParentRoute: () => root,
-  path: "/pathways/$skillId",
-  beforeLoad: framedScreen,
-  component: lazyRouteComponent(
-    () => import("../features/pathways/PathwaysScreen"),
-    "PathwaysScreen",
-  ),
+  getParentRoute: () => pathways,
+  path: "$skillId",
 });
 /** A learner's workbooks are a tab of their Progress: arriving chooses
  * that learner (the account's own, never a practice profile), so the
@@ -877,16 +896,68 @@ const schoolClassToday = createRoute({
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
+/** The map with everything its first paint shows: a small class's map
+ * (six or fewer, ClassMap.tsx) carries each learner's grade line, so its
+ * gradebook loads with it rather than pushing the page down after. */
+async function mapLoader({
+  context,
+  params,
+}: {
+  context: unknown;
+  params: { org: string; class: string };
+}) {
+  const session = (context as { session: AuthSession }).session;
+  const { mapOptions, gradebookOptions } =
+    await import("../features/school/classes/teacher-api");
+  const place = { org: params.org, class: params.class };
+  const map = (await preload(mapOptions(session, place))) as
+    { students?: unknown[] } | undefined;
+  if (map && (map.students?.length ?? Infinity) <= SMALL_CLASS)
+    await preload(gradebookOptions(session, place, undefined));
+}
 const schoolClassMap = createRoute({
   getParentRoute: () => schoolClass,
   path: "map",
+  loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
-/** One student, in a sheet over the class map: the class's tabs stay. */
+/** One student, in a sheet over the class map: the class's tabs stay. A
+ * child of the map, so the map under it stays mounted, with its scroll and
+ * its table's place; the map draws the sheet from this route's param. */
 const schoolClassMapStudent = createRoute({
-  getParentRoute: () => schoolClass,
-  path: "map/$student",
-  component: lazyRouteComponent(classScreens, "MapScreen"),
+  getParentRoute: () => schoolClassMap,
+  path: "$student",
+  staticData: { overList: true },
+  component: () => null,
+});
+/** One of that student's answers, replayed over the map (WorkReplay.tsx):
+ * Back returns to their sheet. Its data and the practice screen it draws
+ * with arrive before it paints. */
+/** A student's answer, replayed over the class map: under the student's
+ * sheet, so the map under it stays mounted with its view. */
+const schoolClassMapWork = createRoute({
+  getParentRoute: () => schoolClassMapStudent,
+  path: "work/$work",
+  staticData: { overList: true },
+  loader: async (input) => {
+    const session = (input.context as { session: AuthSession }).session;
+    const { workReplayOptions } =
+      await import("../features/school/classes/teacher-api");
+    const skill = new URLSearchParams(input.location.searchStr).get("skill");
+    await Promise.all([
+      mapLoader(input),
+      preload(
+        workReplayOptions(
+          session,
+          input.params.student,
+          input.params.work,
+          skill ?? undefined,
+        ),
+      ),
+      import("../features/school/classes/WorkReplay"),
+    ]);
+  },
+  component: () => null,
 });
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
@@ -906,6 +977,44 @@ const schoolClassReportCards = createRoute({
 const schoolClassSettings = createRoute({
   getParentRoute: () => schoolClass,
   path: "settings",
+  // Every section's data before the page renders, so it paints once, whole
+  // (docs/design/ia.md, "Smoothness"): a small class's year and grades, and
+  // what its children see.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const [school, { experienceOptions }, { gradebookOptions }] =
+      await Promise.all([
+        import("../features/school/api"),
+        import("../features/school/classroom/api"),
+        import("../features/school/classes/teacher-api"),
+      ]);
+    const org = (await preload(school.orgOptions(session, params.org))) as
+      { kind?: string; solo?: boolean } | undefined;
+    const small = org?.kind === "family" || org?.solo === true;
+    await Promise.all([
+      preload(experienceOptions(session, { kind: "class", id: params.class })),
+      small && preload(school.calendarOptions(session, params.org)),
+      org?.kind === "family" &&
+        preload(gradebookOptions(session, params, undefined)),
+      // The class's students, first page (the roster pages on from there).
+      queryClient
+        .ensureInfiniteQueryData({
+          queryKey: school.studentsKey(session, params.org, ""),
+          initialPageParam: 0,
+          queryFn: ({
+            pageParam,
+            signal,
+          }: {
+            pageParam: number;
+            signal: AbortSignal;
+          }) =>
+            school.fetchStudents(session, params.org, "", pageParam, signal),
+          getNextPageParam: (last: { nextOffset?: number | null }) =>
+            last.nextOffset,
+        } as never)
+        .catch(() => undefined),
+    ]);
+  },
   component: lazyRouteComponent(
     () => import("../features/school/ClassesScreen"),
     "ClassScreen",
@@ -930,6 +1039,15 @@ const schoolClassCards = createRoute({
   component: lazyRouteComponent(classScreens, "CardsScreen"),
 });
 const classroomScreens = () => import("../features/school/classroom");
+/** Any other address inside a class: not found, in the class's frame. */
+const schoolClassMissing = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "$",
+  component: lazyRouteComponent(
+    () => import("../features/school/MissingScreen"),
+    "SchoolMissingScreen",
+  ),
+});
 const schoolClassExperience = createRoute({
   getParentRoute: () => schoolClass,
   path: "experience",
@@ -1152,17 +1270,34 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The app screen is rendered by the layout, so load its chunk here, as the
-  // route's own component would have been.
-  loader: async () => {
-    await legacy.preload?.();
+  // route's own component would have been. The Overview's level too, so it
+  // paints in its final layout (a learner's first day has its own).
+  loader: async ({ location }) => {
+    await Promise.all([
+      legacy.preload?.(),
+      location.pathname === "/overview" &&
+        import("../lib/learning-view").then((view) =>
+          view.preloadOverviewLevel(),
+        ),
+    ]);
   },
 });
 const lessonFilm = createRoute({
   getParentRoute: () => appScreen,
   path: "/lessons/$templateId/watch",
-  validateSearch: (search) => ({
-    from: z.string().max(2048).optional().catch(undefined).parse(search.from),
-  }),
+  validateSearch: (search): { from: string | undefined; problem?: string } => {
+    /** The problem the film was opened from, so watching it is help for it. */
+    const problem = z
+      .string()
+      .max(160)
+      .optional()
+      .catch(undefined)
+      .parse(search.problem);
+    return {
+      from: z.string().max(2048).optional().catch(undefined).parse(search.from),
+      ...(problem ? { problem } : {}),
+    };
+  },
   component: lazyRouteComponent(
     () => import("../features/films/FilmScreen"),
     "FilmScreen",
@@ -1209,8 +1344,9 @@ export const router = createRouter({
     schoolClass.addChildren([
       schoolClassHome,
       schoolClassToday,
-      schoolClassMap,
-      schoolClassMapStudent,
+      schoolClassMap.addChildren([
+        schoolClassMapStudent.addChildren([schoolClassMapWork]),
+      ]),
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,
@@ -1221,6 +1357,7 @@ export const router = createRouter({
       schoolClassExperience,
       schoolClassWorkbooks,
       schoolClassMarks,
+      schoolClassMissing,
     ]),
     standings,
     ownRecord,
@@ -1254,9 +1391,8 @@ export const router = createRouter({
     tryStart,
     tryAnything,
     inventory,
-    pathways,
+    pathways.addChildren([pathwaysIndex, pathwaySkill]),
     lessonsHome,
-    pathwaySkill,
     workbookHistory,
     workbookDay,
     workbookResults,
@@ -1272,10 +1408,86 @@ export const router = createRouter({
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,
+  // One change per navigation (docs/design/ia.md, "Smoothness"): a link
+  // preloads its screen's code and data on intent (hover, focus, touch), and
+  // the screen on show stays until the next one can render whole. Only a
+  // wait longer than a second shows the wave, so a short one never flashes
+  // the page to a loader and back.
+  defaultPreload: "intent",
+  defaultPreloadDelay: 0,
   defaultPendingComponent: LoadingScreen,
-  defaultPendingMs: 250,
+  defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// A control that only changes the address's search (a toggle, a segmented
+// control, a sort, a filter, a year) keeps the page where it is: the reader
+// stays on what they were looking at. Going to another screen starts at its
+// top, as before, and a navigation that says otherwise still wins. One rule
+// for every link and navigate(), at the one place they all commit.
+{
+  const commit = router.commitLocation;
+  router.commitLocation = (next) =>
+    commit({
+      ...next,
+      resetScroll:
+        next.resetScroll ??
+        (next.pathname === router.state.location.pathname ||
+        overList(router.state.location.pathname, next.pathname)
+          ? false
+          : undefined),
+    });
+}
+// A detail over a list (a class map's student, a class's standing drill, a
+// student from the list) keeps the list's view: its sort, its area, its year,
+// its chart. Opening carries them into the detail's address, closing carries
+// them back, and Back finds them in history. Only the view keys move, only
+// between a list and a detail one step below it, and only where the
+// destination does not set them itself.
+{
+  const build = router.buildLocation;
+  router.buildLocation = ((options: Parameters<typeof build>[0]) => {
+    const next = build(options);
+    const here = router.state.location;
+    if (!overList(here.pathname, next.pathname)) return next;
+    const from = here.search as Record<string, unknown>;
+    const to = next.search as Record<string, unknown>;
+    const carried = Object.fromEntries(
+      VIEW_KEYS.filter(
+        (key) => from[key] !== undefined && to[key] === undefined,
+      ).map((key) => [key, from[key]]),
+    );
+    return Object.keys(carried).length
+      ? build({ ...options, search: { ...to, ...carried } } as never)
+      : next;
+  }) as typeof build;
+}
+/** The address keys that hold a list's view, not an action. */
+const VIEW_KEYS = [
+  "sort",
+  "lens",
+  "area",
+  "strand",
+  "year",
+  "chart",
+  "rows",
+  "dot",
+  "status",
+  "period",
+  "view",
+] as const;
+/** A detail over a list (a route marked `staticData.overList`: a student's
+ * sheet, an answer replayed over it, a class's standing drill, a student
+ * from the list) and the list it opened from, at an ancestor address. Only
+ * those carry a list's view; a move between tabs never does. */
+function overList(a: string, b: string) {
+  const [short, long] = a.length < b.length ? [a, b] : [b, a];
+  const trimmed = short.replace(/\/+$/, "");
+  if (!long.startsWith(`${trimmed}/`)) return false;
+  const leaf = router.getMatchedRoutes(long)[2] as
+    { options?: { staticData?: { overList?: boolean } } } | undefined;
+  return leaf?.options?.staticData?.overList === true;
+}
+
 /** Learning screens, which a practice profile never makes a place. */
 const PROFILE_PRACTICE_PATHS = [
   "/practice",

@@ -176,15 +176,26 @@ export async function preparePracticeAnswer(
               .nth(fieldIndex);
             if (field.kind === "choice") {
               const bank = schema.banks.find((bank) => bank.id === field.bank)!;
+              const at = bank.options.findIndex(
+                (option) => option.id === values[fieldIndex],
+              );
               await cell.locator(".work-choice").click();
               await page
                 .locator('.work-menu [role="menuitemradio"]')
-                .nth(
-                  bank.options.findIndex(
-                    (option) => option.id === values[fieldIndex],
-                  ),
-                )
+                .nth(at)
                 .click();
+              // The blank shows the option picked, and only that one.
+              const shown = cell.locator(
+                ".work-choice-value:not(.work-choice-placeholder)",
+              );
+              if ((await shown.nth(at).getAttribute("data-shown")) === null) {
+                await page.screenshot({
+                  path: "artifacts/work-choice-mismatch.png",
+                });
+                assert.fail(
+                  `Row ${index + 1}, field ${fieldIndex + 1}: picked ${values[fieldIndex]}, the blank shows option ${await shown.evaluateAll((spans) => spans.findIndex((s) => s.hasAttribute("data-shown")))}`,
+                );
+              }
             } else {
               await cell.locator(".work-input").fill(values[fieldIndex]!);
             }
@@ -231,10 +242,15 @@ export async function preparePracticeAnswer(
           .check();
       await page.locator(".choice-submit:visible").click();
     } else if (schema.kind === "choice") {
-      await page
-        .locator(".choice-option:visible")
-        .nth(schema.options.findIndex((o) => o.id === response))
-        .click();
+      // A choice among the figure's lettered panels is made on the figure.
+      const panels = page.locator(".figure-panel");
+      await (
+        (await panels.count())
+          ? page.locator(`.figure-panel:has(input[value="${response}"])`)
+          : page
+              .locator(".choice-option:visible")
+              .nth(schema.options.findIndex((o) => o.id === response))
+      ).click();
       await page.locator(".choice-submit:visible").click();
     } else if (schema.kind === "multi-part-choice") {
       const draft = parseMultiPartDraft(response)!;
@@ -305,6 +321,7 @@ export async function answerOne(
   ]);
   assert.equal(outcome.status(), 200, await outcome.text());
   const result = await outcome.json();
+  const sent = outcome.request().postData();
   assert.equal(
     result.problemId,
     problem.id,
@@ -313,7 +330,7 @@ export async function answerOne(
   assert.equal(
     result.correct,
     correct,
-    `${template}/${problem.seed}: actual attempt grading`,
+    `${template}/${problem.seed}: actual attempt grading (sent ${sent})`,
   );
   servedProblems.get(page)!.delete(problem.id);
   await page.locator(".next-action").waitFor();

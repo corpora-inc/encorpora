@@ -149,14 +149,18 @@ export function MenuItem({
   children,
   onSelect,
   disabled,
+  selected,
 }: {
   children: ReactNode;
   onSelect: () => void;
   disabled?: boolean;
+  /** The menu's current choice, when it picks one: the accent tint. */
+  selected?: boolean;
 }) {
   return (
     <DropdownMenu.Item
       className={styles.item}
+      data-selected={selected ? "" : undefined}
       disabled={disabled}
       onSelect={onSelect}
     >

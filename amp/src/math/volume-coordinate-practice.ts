@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count } from "./agreement";
 import { createHash } from "node:crypto";
 import { geometryScene } from "./geometry-scenes.js";
@@ -126,9 +127,7 @@ export function visiblePrismCubes(
   width: number,
   height: number,
 ): number {
-  return (
-    length * width * height - (length - 1) * (width - 1) * (height - 1)
-  );
+  return length * width * height - (length - 1) * (width - 1) * (height - 1);
 }
 
 /** Same three faces on a stepped solid. `columns` run from back to front. */
@@ -215,9 +214,7 @@ function namedUnitVolume(
     do {
       depth = cr(2, 4);
       const n = cr(3, 5);
-      columns = Array.from({ length: n }, () => cr(1, 5)).sort(
-        (a, b) => b - a,
-      );
+      columns = Array.from({ length: n }, () => cr(1, 5)).sort((a, b) => b - a);
     } while (
       columns[0] === columns.at(-1) ||
       depth * columns.reduce((a, b) => a + b, 0) < 12 ||
@@ -226,8 +223,7 @@ function namedUnitVolume(
     const front = columns.reduce((a, b) => a + b, 0),
       total = depth * front;
     const object = IMPROVISED[cr(0, IMPROVISED.length - 1)]!;
-    const unitPhrase =
-      unit === "improvised" ? object.many : NAMED_CUBIC[unit];
+    const unitPhrase = unit === "improvised" ? object.many : NAMED_CUBIC[unit];
     const things = unit === "improvised" ? object.many : "cubes";
     let lead: string;
     if (unit === "ft") {
@@ -292,7 +288,7 @@ function namedUnitVolume(
           : "A trailer is packed with hay bales that have 1-foot edges, with no gaps.";
     prompt = `${lead} What is its volume, in cubic feet?`;
   } else if (unit === "improvised") {
-    prompt = `Maya packs a ${object.held} with identical ${object.many}, no gaps. What is the volume of the ${object.held}, in ${object.many}?`;
+    prompt = `Maya packs ${withArticle(object.held)} with identical ${object.many}, no gaps. What is the volume of the ${object.held}, in ${object.many}?`;
   } else if (bridge) {
     prompt = `Each block is 1 cubic inch. The blocks fill this rectangular prism with no gaps. What is its volume, in cubic inches?`;
   } else {
@@ -349,11 +345,7 @@ export function generateVolumeCoordinateProblem(
           ? sweepChoose("unit-cube-volume", seed)
           : undefined;
       if (axes)
-        variant = recordedSweepVariant(
-          "unit-cube-volume",
-          axes.solid,
-          axes,
-        );
+        variant = recordedSweepVariant("unit-cube-volume", axes.solid, axes);
       if (
         templateId === "unit-cube-volume" &&
         axes &&

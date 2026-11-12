@@ -58,7 +58,40 @@
   color: var(--color-on-surface);
 }
 .work-rows[data-mode="order"] .work-row {
-  grid-template-columns: 28px minmax(0, 1fr) auto 24px;
+  grid-template-columns: 36px minmax(0, 1fr) auto 24px;
+}
+/* An ordering's row drags (useTileDrag): by its grip on touch, anywhere but
+   its arrows with a mouse or pen. The grip holds the row's number and spans
+   the row's height and its left padding, a full 44 px target. */
+.work-row[data-draggable] {
+  cursor: grab;
+}
+.work-grip {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin: calc(-1 * var(--space-2)) 0 calc(-1 * var(--space-2))
+    calc(-1 * var(--space-2));
+  padding: 0 0 var(--space-2) var(--space-2);
+}
+.work-grip-dots {
+  width: 12px;
+  height: 16px;
+  fill: var(--color-subtle-text);
+}
+.work-rows[data-reordering] > .work-row {
+  transition: transform 240ms cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+/* The lifted row's place: the others slide into it to show the landing. */
+.work-row[data-drag-source] {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-rows[data-reordering] > .work-row {
+    transition: none;
+  }
 }
 .work-row[data-mark="correct"] {
   border-color: var(--color-success-accent);

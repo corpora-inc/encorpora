@@ -23,6 +23,9 @@ export type PlayerOptions = {
   backLabel: string;
   fullscreen?: boolean;
   onBack?: () => void;
+  /** Called as playback starts and stops (the learner route counts it as
+   * attention). */
+  onPlayingChange?: (playing: boolean) => void;
 };
 export const filmClock = (s: number) =>
   `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -204,8 +207,13 @@ export function mountFilmPlayer(
     time.textContent = `${filmClock(t)} / ${filmClock(duration)}`;
     shell.classList.toggle("moved", t > 0.05);
   };
+  let wasPlaying = false;
   const state = () => {
     const playing = !audio.paused && !audio.ended;
+    if (playing !== wasPlaying) {
+      wasPlaying = playing;
+      options.onPlayingChange?.(playing);
+    }
     shell.classList.toggle("playing", playing);
     if (playing) shell.classList.add("started");
     toggle.setAttribute("aria-label", playing ? "Pause" : "Play");

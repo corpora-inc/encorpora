@@ -41,7 +41,11 @@ const engines = (argument("engines") ?? "chromium,webkit").split(",");
 const widths = (argument("widths") ?? "320,390,768,1280")
   .split(",")
   .map(Number);
-const themes = ["light", "dark"] as const;
+const themes = (argument("themes") ?? "light,dark").split(",") as (
+  "light" | "dark"
+)[];
+// Only these screens (ids), for working on one; the tab walks run in full.
+const only = argument("screens")?.split(",");
 const shots = argument("shots");
 if (shots) await mkdir(shots, { recursive: true });
 
@@ -128,8 +132,8 @@ const screens: Screen[] = [
     path: "/inventory",
     state: "paid",
     group: "progress",
-    ready: (p) =>
-      p.locator('[aria-label="Inventory totals"][aria-busy="false"]').waitFor(),
+    // The totals show once the learner's skills have loaded.
+    ready: (p) => p.locator('section[aria-label="Totals"]').waitFor(),
   },
   {
     id: "security",
@@ -158,7 +162,8 @@ const screens: Screen[] = [
     path: "/family/privacy",
     state: "paid",
     group: "account",
-    ready: (p) => p.locator(".family-body section").first().waitFor(),
+    ready: (p) =>
+      p.locator("[data-account-body] [data-privacy-choice]").first().waitFor(),
   },
   {
     id: "practice",
@@ -243,16 +248,17 @@ const check = (ok: unknown, message: string) => {
 async function tabBoxes(page: Page) {
   return page.evaluate(() =>
     Object.fromEntries(
-      [
-        ...document.querySelectorAll<HTMLElement>("[data-app-bar] [data-tab]"),
-      ].map((tab) => {
-        const r = tab.getBoundingClientRect();
-        const scroll = tab.parentElement!.scrollLeft;
-        return [
-          tab.dataset.tab!,
-          { x: r.x + scroll, y: r.y, width: r.width, height: r.height },
-        ];
-      }),
+      [...document.querySelectorAll<HTMLElement>("[data-app-bar] [data-tab]")]
+        // A tab held in More (a phone row too wide for the bar) has no box.
+        .filter((tab) => tab.getClientRects().length > 0)
+        .map((tab) => {
+          const r = tab.getBoundingClientRect();
+          const scroll = tab.parentElement!.scrollLeft;
+          return [
+            tab.dataset.tab!,
+            { x: r.x + scroll, y: r.y, width: r.width, height: r.height },
+          ];
+        }),
     ),
   );
 }
@@ -294,7 +300,9 @@ for (const engine of engines) {
       const where = `${engine} ${width} ${theme}`;
       let logo: Box | null = null;
       const tabs: Record<string, Record<string, Box>> = {};
-      for (const screen of screens) {
+      for (const screen of screens.filter(
+        (s) => !only || only.includes(s.id),
+      )) {
         const tag = `${screen.id} ${where}`;
         // A screen that moved or flickered loads once more: a load-order
         // accident on a busy machine shows once, a real flicker every time,
@@ -371,9 +379,12 @@ for (const engine of engines) {
           const here = await tabBoxes(page);
           const key = `${screen.group}:${screen.state}`;
           const first = (tabs[key] ??= here);
+          // Tabs shown on both screens hold their place. On a phone row
+          // with More, the open tab takes the last slot: the tab it
+          // replaces is simply not shown.
           for (const [id, box] of Object.entries(here))
             check(
-              same(box, first[id] ?? null),
+              !(id in first) || same(box, first[id] ?? null),
               `${tag}: tab ${id} at ${show(box)}, elsewhere ${show(first[id] ?? null)}`,
             );
           check(
@@ -462,18 +473,36 @@ for (const engine of engines) {
           ).__mark = 1;
         });
         const before = await tabBoxes(page);
+        // The tabs this frame offers: a family's small class has no Grades.
+        const offered = await page
+          .locator("[data-app-bar] [data-tab]")
+          .evaluateAll((tabs) =>
+            tabs.map((tab) => tab.getAttribute("data-tab")),
+          );
         const logoBefore = await page
           .locator("[data-app-logo]")
           .first()
           .boundingBox();
-        for (const id of order) {
+        for (const id of order.filter((id) => offered.includes(id))) {
           const accountReads = requests.filter(
             (r) => r === "GET /api/v1/me",
           ).length;
           const refreshed = page.waitForResponse(
             (response) => new URL(response.url()).pathname === "/api/v1/me",
           );
-          await page.locator(`[data-app-bar] [data-tab="${id}"]`).click();
+          const tab = page.locator(`[data-app-bar] [data-tab="${id}"]`);
+          if (await tab.isVisible()) await tab.click();
+          else {
+            // Held in More on a phone row too wide for the bar.
+            const label = (await tab.textContent())!.trim();
+            await page
+              .locator("[data-app-bar]")
+              .getByRole("button", { name: /^More .* tabs$/ })
+              .click();
+            await page
+              .getByRole("menuitem", { name: label, exact: true })
+              .click();
+          }
           await refreshed;
           await page
             .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
@@ -496,7 +525,7 @@ for (const engine of engines) {
           const after = await tabBoxes(page);
           for (const [tab, box] of Object.entries(before))
             check(
-              same(after[tab] ?? null, box),
+              !(tab in after) || same(after[tab] ?? null, box),
               `${group} → ${id} ${where}: tab ${tab} moved to ${show(after[tab] ?? null)}`,
             );
           check(

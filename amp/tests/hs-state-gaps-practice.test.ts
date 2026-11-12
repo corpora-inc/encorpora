@@ -6,6 +6,7 @@ import {
   hsStateGapTemplates,
 } from "../src/math/hs-state-gaps-practice";
 import { problemLesson } from "../src/content/problem-lessons";
+import { asCurrent } from "./fixtures/recorded-version";
 
 const SEEDS = 400;
 const ids = hsStateGapTemplates.map((t) => t.id);
@@ -28,7 +29,7 @@ test("every high-school gap template is deterministic, registered and reaches th
     for (let seed = 0; seed < SEEDS; seed++) {
       const a = generateProblem(id, `hs:${seed}`);
       const b = generateHsStateGapProblem(id, `hs:${seed}`);
-      assert.deepEqual(a.public, b.public);
+      assert.deepEqual(a.public, asCurrent(b).public);
       assert.equal(a.answer, b.answer);
       assert.deepEqual(a, generateProblem(id, `hs:${seed}`));
     }

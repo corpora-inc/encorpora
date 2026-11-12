@@ -1,5 +1,7 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import {
+  useLayoutEffect,
+  useRef,
   useState,
   type FocusEvent,
   type PointerEvent,
@@ -9,7 +11,7 @@ import type {
   ClassTabId,
   WorkItem,
 } from "../../../../schools/teacher-contracts";
-import { MathText } from "../../../MathText";
+import { spokenMath } from "../../../MathText";
 import { Badge, type BadgeTone } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import type { GridSort } from "../../../ui/DataGrid";
@@ -76,8 +78,76 @@ export const fullDay = (iso: string) => WEEKDAY.format(dayAt(iso));
 export const dayRange = (from: string, to: string) =>
   `${longDay(from)} to ${longDay(to)}`;
 export const number = (value: number) => value.toLocaleString("en-US");
-/** A hover and focus readout for anything inside with `data-tip`. It overlays
- * the page, so it moves nothing. */
+/** A tip that is a small designed card rather than a line of text: a title,
+ * one large figure, the distribution behind it, and a share with its bar.
+ * Every part is optional; the same card serves every heat map. */
+export type TipCard = {
+  title: string;
+  figure?: string;
+  /** Under the figure: what it counts ("minutes per student, mean"). */
+  unit?: string;
+  stats?: { label: string; value: string }[];
+  share?: { done: number; of: number; label: string };
+  note?: string;
+};
+const cardText = (card: TipCard) =>
+  [
+    card.title,
+    card.figure ? `${card.figure} ${card.unit ?? ""}`.trim() : "",
+    card.stats?.map((stat) => `${stat.label} ${stat.value}`).join(" · ") ?? "",
+    card.share?.label ?? "",
+    card.note ?? "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+/** The attributes that give an element a tip: a line, or a card. */
+export const tipAttributes = (tip: string | TipCard | undefined) =>
+  tip === undefined
+    ? {}
+    : typeof tip === "string"
+      ? { "data-tip": tip }
+      : { "data-tip": cardText(tip), "data-tip-card": JSON.stringify(tip) };
+
+function TipCardView({ card }: { card: TipCard }) {
+  return (
+    <>
+      <span className={styles.tipTitle}>{card.title}</span>
+      {card.figure && (
+        <span className={styles.tipFigure}>
+          <b>{card.figure}</b>
+          {card.unit && <span>{card.unit}</span>}
+        </span>
+      )}
+      {card.stats && (
+        <span className={styles.tipStats}>
+          {card.stats.map((stat) => (
+            <span key={stat.label}>
+              <span>{stat.label}</span>
+              <b>{stat.value}</b>
+            </span>
+          ))}
+        </span>
+      )}
+      {card.share && (
+        <span className={styles.tipShare}>
+          <span>{card.share.label}</span>
+          <span className={styles.tipBar} aria-hidden="true">
+            <span
+              style={{
+                width: `${card.share.of ? (100 * card.share.done) / card.share.of : 0}%`,
+              }}
+            />
+          </span>
+        </span>
+      )}
+      {card.note && <span className={styles.tipNote}>{card.note}</span>}
+    </>
+  );
+}
+
+/** Hover (a mouse), tap (a finger) or focus shows an element's `data-tip`,
+ * floating over the content without moving it: above the element, or below
+ * it near the top of the screen, and always inside the viewport. */
 export function TipZone({
   className,
   children,
@@ -87,26 +157,62 @@ export function TipZone({
 }) {
   const [tip, setTip] = useState<{
     text: string;
-    x: number;
-    y: number;
+    card: TipCard | null;
+    box: { left: number; top: number; bottom: number; width: number };
   } | null>(null);
+  const floating = useRef<HTMLDivElement>(null);
+  const [place, setPlace] = useState<{ x: number; y: number } | null>(null);
   const show = (element: Element | null) => {
     const target = element?.closest<HTMLElement>("[data-tip]");
     if (!target) return setTip(null);
     const box = target.getBoundingClientRect();
+    const card = target.dataset.tipCard;
+    setPlace(null);
     setTip({
       text: target.dataset.tip!,
-      x: Math.min(innerWidth - 150, Math.max(150, box.left + box.width / 2)),
-      y: box.top,
+      card: card ? (JSON.parse(card) as TipCard) : null,
+      box: {
+        left: box.left,
+        top: box.top,
+        bottom: box.bottom,
+        width: box.width,
+      },
     });
   };
+  // Placed once its size is known, so it never shows anywhere else first.
+  useLayoutEffect(() => {
+    const element = floating.current;
+    if (!tip || !element) return;
+    const gap = 6;
+    const edge = 8;
+    const { width, height } = element.getBoundingClientRect();
+    const centre = tip.box.left + tip.box.width / 2;
+    const x = Math.min(
+      innerWidth - edge - width,
+      Math.max(edge, centre - width / 2),
+    );
+    const above = tip.box.top - gap - height;
+    const y = above >= edge ? above : tip.box.bottom + gap;
+    setPlace({ x, y });
+  }, [tip]);
   return (
     <div
       className={className}
       onPointerOver={(event: PointerEvent) =>
         event.pointerType === "mouse" && show(event.target as Element | null)
       }
-      onPointerLeave={() => setTip(null)}
+      onPointerDown={(event: PointerEvent) => {
+        if (event.pointerType === "mouse") return;
+        const target = (event.target as Element | null)?.closest<HTMLElement>(
+          "[data-tip]",
+        );
+        if (target && tip?.text === target.dataset.tip) setTip(null);
+        else show(target ?? null);
+      }}
+      // A finger lifting also "leaves": only a mouse leaving puts it away.
+      onPointerLeave={(event: PointerEvent) =>
+        event.pointerType === "mouse" && setTip(null)
+      }
       onFocus={(event: FocusEvent) =>
         show(
           (event.target as HTMLElement).querySelector?.("[data-tip]") ?? null,
@@ -117,11 +223,16 @@ export function TipZone({
       {children}
       {tip && (
         <div
-          className={styles.tip}
-          style={{ left: tip.x, top: tip.y }}
+          ref={floating}
+          className={tip.card ? styles.tipCard : styles.tip}
+          style={{
+            left: place?.x ?? 0,
+            top: place?.y ?? 0,
+            visibility: place ? undefined : "hidden",
+          }}
           aria-hidden="true"
         >
-          {tip.text}
+          {tip.card ? <TipCardView card={tip.card} /> : tip.text}
         </div>
       )}
     </div>
@@ -161,6 +272,7 @@ const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
     paper: { label: "Marked on paper", tone: "neutral" },
     missed: { label: "Missed", tone: "danger" },
   };
+export const resultTone = (result: WorkItem["result"]) => RESULTS[result].tone;
 export function resultLabel(
   result: WorkItem["result"],
   reader: RecordReader = "other",
@@ -169,44 +281,96 @@ export function resultLabel(
     ? "On your own"
     : RESULTS[result].label;
 }
-/** Real problems a student worked, as they read them. */
+/** The time of day an answer was given, in the reader's clock. */
+export const clockTime = (iso: string) =>
+  iso
+    ? new Date(iso).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "";
+/** A prompt as one line of plain text: TeX read out, lines joined. */
+export const promptLine = (prompt: string) =>
+  spokenMath(prompt).replace(/\s+/g, " ").trim();
+
+/** Real problems a student worked, newest first: when, the skill, the prompt
+ * on one line, the answer and how it went. With `href`, each row opens its
+ * replay (`WorkReplay`). */
 export function WorkList({
   work,
   reader = "other",
+  href,
 }: {
   work: readonly WorkItem[];
   reader?: RecordReader;
+  /** Where a row's replay lives, as a splat path and search. */
+  href?: (item: WorkItem) => { path: string; search?: Record<string, string> };
 }) {
   return (
     <ul className={styles.problems}>
-      {work.map((item) => (
-        <li key={item.id}>
-          <span className={styles.when}>{shortDay(item.day)}</span>
-          <span className={styles.problem}>
-            <span className={styles.prompt}>
-              <MathText text={item.prompt} />
+      {work.map((item) => {
+        const answered =
+          item.answer === null
+            ? null
+            : `Answered ${promptLine(
+                item.result === "missed" && item.response !== null
+                  ? `${item.response}, correct answer ${item.answer}`
+                  : item.answer,
+              )}${item.review ? ", spaced review" : ""}`;
+        const body = (
+          <>
+            <span className={styles.when}>
+              <span>{shortDay(item.day)}</span>
+              <span>{clockTime(item.at)}</span>
             </span>
-            {item.answer !== null && (
-              <span className={styles.answered}>
-                {item.result === "missed" && item.response !== null ? (
-                  <>
-                    Answered <MathText text={item.response} />, correct answer{" "}
-                    <MathText text={item.answer} />
-                  </>
-                ) : (
-                  <>
-                    Answered <MathText text={item.answer} />
-                  </>
-                )}
-                {item.review ? ", spaced review" : ""}
+            <span className={styles.workSkill}>{item.skill}</span>
+            <span className={styles.workResult}>
+              <Badge tone={RESULTS[item.result].tone}>
+                {resultLabel(item.result, reader)}
+              </Badge>
+            </span>
+            {item.prompt ? (
+              <span className={styles.prompt} title={promptLine(item.prompt)}>
+                {promptLine(item.prompt)}
+              </span>
+            ) : (
+              <span className={styles.promptMissing}>
+                Problem text not stored
               </span>
             )}
-          </span>
-          <Badge tone={RESULTS[item.result].tone}>
-            {resultLabel(item.result, reader)}
-          </Badge>
-        </li>
-      ))}
+            {answered && (
+              <span className={styles.answered} title={answered}>
+                {answered}
+              </span>
+            )}
+          </>
+        );
+        const target = href?.(item);
+        return (
+          <li key={item.id}>
+            {target ? (
+              <Link
+                to="/$"
+                params={{ _splat: target.path }}
+                search={(target.search ?? {}) as never}
+                className={styles.workRow}
+                data-work-item={item.id}
+              >
+                {body}
+                <svg
+                  className={styles.workChevron}
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                >
+                  <path d="M6 3.5 10.5 8 6 12.5" />
+                </svg>
+              </Link>
+            ) : (
+              <div className={styles.workRow}>{body}</div>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }

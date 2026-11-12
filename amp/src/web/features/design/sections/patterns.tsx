@@ -7,7 +7,16 @@ import { PlanChoice } from "../../billing/PlanChoice";
 import { Progress } from "../../onboarding/Progress";
 import { GradePicker as ProfileGradePicker } from "../../profiles/GradePicker";
 import { LoadFailed } from "../../school/classes/teacher-shared";
-import { TrendChart, StandingChart } from "../../school/org/charts";
+import { TrendChart } from "../../school/org/charts";
+import {
+  CurveLegend,
+  CurvePlot,
+  GradeAxis,
+  peakOf,
+} from "../../school/standing/CurvePlot";
+import { AxisEnds, CurveFacts } from "../../school/standing/parts";
+import { curveOf } from "../../../../schools/standing-curve";
+import { gridFor, random } from "../../../../schools/standing-math";
 import {
   CopyButton,
   FormNote,
@@ -48,23 +57,55 @@ const trend: OverviewResponse["trend"] = Array.from(
     week: week(11 - index),
     minutes: [0, 120, 340, 410, 380, 520, 610, 480, 700, 760, 690, 820][index]!,
     students: [0, 4, 9, 11, 10, 14, 15, 13, 17, 18, 17, 19][index]!,
+    problems: [0, 90, 260, 300, 290, 400, 470, 360, 540, 590, 520, 640][index]!,
+    assisted: [0, 20, 50, 52, 44, 60, 66, 50, 70, 71, 62, 70][index]!,
   }),
 );
-/** Half-grade columns from three behind to three ahead, as the server
- * counts them (schools/org-reads.ts). */
-const edges = Array.from({ length: 13 }, (_, index) => -3 + index / 2);
-const counts = [1, 0, 2, 3, 4, 6, 12, 15, 7, 4, 2, 1, 0, 1];
-const standing: OverviewResponse["standing"] = {
-  bins: counts.map((students, index) => ({
-    from: index === 0 ? null : edges[index - 1]!,
-    to: index === edges.length ? null : edges[index]!,
-    students,
-  })),
-  behind: 16,
-  at: 27,
-  ahead: 15,
-  unplaced: 4,
-};
+/** Standing curves through the server's own pass (schools/standing-curve.ts):
+ * a school on day one, every student a wide starting guess, and the same
+ * school weeks later. */
+const standingSpecimens = (() => {
+  const next = random(5);
+  const gauss = () =>
+    Math.sqrt(-2 * Math.log(1 - next())) * Math.cos(2 * Math.PI * next());
+  const grades = Array.from({ length: 60 }, (_, index) => 3 + (index % 3));
+  const fresh = grades.map((grade, index) => ({
+    mu: 0,
+    sd: index % 2 ? 2.5 : [1.1, 1.6, 1.9][grade - 3]!,
+  }));
+  const settled = grades.map(() => ({
+    mu: 0.1 + 1.1 * gauss(),
+    sd: 0.25 + next() * 0.3,
+  }));
+  const grid = gridFor([...fresh, ...settled]);
+  return {
+    grid,
+    fresh: curveOf(fresh, grades, 60, grid, "fresh"),
+    settled: curveOf(settled, grades, 4, grid, "settled"),
+  };
+})();
+function StandingSpecimen({ which }: { which: "fresh" | "settled" }) {
+  const { grid } = standingSpecimens;
+  const curve = standingSpecimens[which];
+  return (
+    <figure style={{ margin: 0 }}>
+      <CurvePlot
+        grid={grid}
+        curve={curve}
+        top={peakOf([standingSpecimens.settled])}
+        bandLabel="Their grade"
+        label="Specimen"
+        hover
+      />
+      <GradeAxis grid={grid} />
+      <AxisEnds />
+      <CurveLegend />
+      <div style={{ marginTop: 16 }}>
+        <CurveFacts curve={curve} label="Specimen" />
+      </div>
+    </figure>
+  );
+}
 
 function Grades({ school }: { school?: boolean }) {
   const [grade, setGrade] = useState<number | null>(4);
@@ -221,6 +262,7 @@ export function PatternSections() {
         title="School charts and the year ribbon"
         source={[
           "features/school/org/charts.tsx",
+          "features/school/standing/CurvePlot.tsx",
           "features/school/YearRibbon.tsx",
         ]}
       >
@@ -229,9 +271,14 @@ export function PatternSections() {
             <TrendChart weeks={trend} today={week(0)} />
           </div>
         </Specimen>
-        <Specimen label="Where students stand against their grade" wide>
+        <Specimen label="Where students stand: a new school" wide>
           <div data-dense>
-            <StandingChart standing={standing} />
+            <StandingSpecimen which="fresh" />
+          </div>
+        </Specimen>
+        <Specimen label="Where students stand: weeks later" wide>
+          <div data-dense>
+            <StandingSpecimen which="settled" />
           </div>
         </Specimen>
         <Specimen label="A year in semesters" wide>

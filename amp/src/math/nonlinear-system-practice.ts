@@ -193,7 +193,7 @@ function plotIntersections(
     ? `$x^2+y^2=${radius * radius}$ and $y = ${line}$`
     : `$y = ${quadratic}$ and $y = ${line}$`;
   const listed = points
-    .map((pt) => `\\left(${n(pt.x)}, ${n(pt.y)}\\right)`)
+    .map((pt) => `$\\left(${n(pt.x)}, ${n(pt.y)}\\right)$`)
     .join(" and ");
   const built = assemble(
     meta,

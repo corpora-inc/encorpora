@@ -197,7 +197,7 @@ export function generateAlgebraProblem(
         b === 0
           ? `Nothing is added, so only the fraction multiplies $x$: (${coefficient})x = ${c}.`
           : `First undo the ${signed(b)}: ${b > 0 ? `subtract ${b} from` : `add ${-b} to`} both sides. That gives (${coefficient})x = ${c - b}.`,
-        `The reciprocal of a fraction is the fraction flipped over: the reciprocal of ${coefficient} is ${fraction(q, p)}. A number times its reciprocal is 1.`,
+        `The reciprocal of a fraction is the fraction flipped over: the reciprocal of ${coefficient} is $${fraction(q, p)}$. A number times its reciprocal is 1.`,
         `So multiplying both sides by ${fraction(q, p)} leaves $x$ alone: x = ${c - b} × ${paren(fraction(q, p))} = ${answer}.`,
         `Check: (${coefficient}) × ${paren(answer)} ${signed(b)} = ${c - b} ${signed(b)} = ${c}. So x = ${answer}.`,
       ];
@@ -275,7 +275,7 @@ export function generateAlgebraProblem(
         h === 1
           ? `The input moved exactly 1, so the rate is ${fraction(p * h, q)} ÷ 1 = ${answer}.`
           : `The input moved ${h}, not 1, so share the change over ${h} units: ${fraction(p * h, q)} ÷ ${h} = ${answer}.`,
-        `Check with the next pair: ${fraction(p * k, q)} ÷ ${k} = ${answer}. A linear rule keeps one rate.`,
+        `Check with the next pair: $${fraction(p * k, q)} ÷ ${k} = ${answer}$. A linear rule keeps one rate.`,
         `The output changes by ${answer} per input unit.`,
       ];
       break;
@@ -348,7 +348,7 @@ export function generateAlgebraProblem(
             [x, y + 1],
             [x + 1, y + 1],
           ]),
-          feedback: `Input ${x} is paired with two different outputs, ${y} and ${y + 1}. A function gives each input only one output.`,
+          feedback: `Input ${x} is paired with two different outputs, $${y}$ and $${y + 1}$. A function gives each input only one output.`,
         },
         {
           label: pairs([
@@ -356,7 +356,7 @@ export function generateAlgebraProblem(
             [x + 1, y],
             [x + 1, y + 2],
           ]),
-          feedback: `Input ${x + 1} is paired with two different outputs, ${y} and ${y + 2}. A function gives each input only one output.`,
+          feedback: `Input ${x + 1} is paired with two different outputs, $${y}$ and $${y + 2}$. A function gives each input only one output.`,
         },
       ];
       prompt = "Which list of (input, output) pairs represents a function?";
@@ -482,7 +482,7 @@ export function generateAlgebraProblem(
       answer = whole ? String(Math.floor(fee / delta) + 1) : cross;
       label = whole ? "First whole input" : "Shared input";
       hint = whole
-        ? `First find the tie: ${fee} + ${low}x = ${high}x. A is strictly cheaper only for inputs after the tie.`
+        ? `First find the tie: $${fee} + ${low}x = ${high}x$. A is strictly cheaper only for inputs after the tie.`
         : `Set the costs equal, ${fee} + ${low}x = ${high}x, then collect the $x$ terms on one side.`;
       explanation = [
         `The plans cost the same when their cost expressions are equal: ${fee} + ${low}x = ${high}x.`,

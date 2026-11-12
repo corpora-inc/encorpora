@@ -1,199 +1,40 @@
 /**
- * A demo class's term, written in a few bulk statements: every school day of
- * the term for each student, from their persona. Older days go straight to the
- * rollups; the last two weeks are real problems and real answers, so the
- * database's own triggers build skill evidence and skill days from them, and
- * Today, the evidence sheet and practice read exactly what a real class leaves.
- * Deterministic for a given class and day. Every name is made up.
+ * A demo class's term, written in bulk. Every practiced day is the production
+ * planner and the misspecified learner (`simulate.ts`); the stored level is
+ * the production estimator after those answers. Deterministic for a given
+ * class and day. Every name is made up.
  */
-import { randomBytes, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
-import { skills } from "../../curriculum/catalog.js";
-import { generateProblem, templates } from "../../math/engine.js";
+import { DEFAULT_FRONTIER_POLICY } from "../../learning/frontier-policy.js";
+import { DAY, type Persona } from "./personas.js";
 import {
-  chanceOfRight,
-  DAY,
-  hash,
-  SHARED_GAP,
-  STUCK,
-  wrongResponse,
-  type Persona,
-} from "./personas.js";
-import { skillsNear } from "./term.js";
+  projectSkillEvidence,
+  type PracticeObservation,
+} from "../../server/evidence.js";
+import {
+  answerIds,
+  type SimActive,
+  type SimAnswer,
+  type SimHelp,
+  type SimJob,
+  type Simulation,
+} from "./simulate.js";
+import { simulateJobs } from "./simulate-pool.js";
 
 export type DemoStudent = {
   personId: string;
   learnerId: string;
   persona: Persona;
+  /** Roster grade. Falls back to `gradeLevel` on the call. */
+  grade?: number;
 };
-type GeneratedProblem = ReturnType<typeof generateProblem>;
-
-const skillById = new Map(skills.map((skill) => [skill.id, skill]));
-const strandOf = (skillId: string) =>
-  skillById.get(skillId)?.strand ?? "number";
-// At most two problem types a skill: enough variety for a demo's last week.
-const templatesFor = new Map<string, string[]>();
-for (const template of templates)
-  if (
-    !template.requiredResponseCapability &&
-    !template.requiredFigureCapability &&
-    (templatesFor.get(template.skillId)?.length ?? 0) < 2
-  )
-    templatesFor.set(template.skillId, [
-      ...(templatesFor.get(template.skillId) ?? []),
-      template.id,
-    ]);
-const skillOfTemplate = new Map(
-  templates.map((template) => [template.id, template.skillId]),
-);
-
-/** A few problems per problem type, made once per process: an answer stores
- * its own copy under a fresh id, so two students can share a prompt but never
- * an instance. */
-const pool = new Map<string, GeneratedProblem[]>();
-function problemFor(templateId: string, pick: number): GeneratedProblem {
-  let found = pool.get(templateId);
-  if (!found) {
-    found = [];
-    for (let seed = 0; seed < 2; seed++)
-      try {
-        found.push(generateProblem(templateId, `demo-${templateId}-${seed}`));
-      } catch {
-        // A problem type that can't make this seed: the others stand in.
-      }
-    pool.set(templateId, found);
-  }
-  if (!found.length) throw new Error(`No demo problem for ${templateId}`);
-  return found[pick % found.length]!;
-}
-/** A stored copy of a problem, under its own id. */
-function instance(problem: GeneratedProblem, review: boolean) {
-  const copy = structuredClone(problem) as GeneratedProblem & {
-    selection?: { reason: string };
-  };
-  copy.public.id = randomBytes(32).toString("hex");
-  if (review) copy.selection = { reason: "review" };
-  return copy;
-}
 
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10);
-const weekday = (day: string) => new Date(`${day}T12:00:00Z`).getUTCDay();
 
-type DayPlan = {
-  day: string;
-  ago: number;
-  week: number;
-  level: number;
-  problems: number;
-  minutes: number;
-  skills: string[];
-};
-/** The days a persona worked, from the term's start through today, and what
- * each held. */
-function planStudent(
-  student: DemoStudent,
-  options: {
-    termStart: string;
-    today: string;
-    weekShape: readonly number[];
-    gradeLevel: number;
-    /** The school day has begun, so some have worked today already. */
-    workToday: boolean;
-  },
-): DayPlan[] {
-  const { persona } = student;
-  const name = persona.name.join(" ");
-  const todayTime = Date.parse(`${options.today}T12:00:00Z`);
-  const startTime = Date.parse(`${options.termStart}T12:00:00Z`);
-  const span = Math.round((todayTime - startTime) / DAY);
-  const last = persona.lastActive ?? 0;
-  const first = Math.min(span, persona.joined ?? span);
-  const shortWeek = options.weekShape.length - 2;
-  const days: Omit<DayPlan, "problems" | "skills">[] = [];
-  for (let ago = first; ago >= last; ago--) {
-    const time = todayTime - ago * DAY;
-    const day = iso(time);
-    const dow = weekday(day);
-    if (dow === 0 || dow === 6) continue;
-    const week = Math.floor((time - startTime) / (7 * DAY));
-    // The long weekend: last week's Thursday and Friday off for everyone.
-    if (week === shortWeek && dow >= 4) continue;
-    const worked =
-      persona.every >= 40
-        ? ago === last || ago === last + 1
-        : ago === last ||
-          hash(`${persona.name[1]}${ago}`) > 1 / persona.every ||
-          (persona.every <= 2 && ago % 2 === 0);
-    // Some of the class has practiced already today.
-    if (
-      !worked ||
-      (ago === 0 && (!options.workToday || hash(`${name} today`) > 0.62))
-    )
-      continue;
-    const factor =
-      options.weekShape[Math.min(week, options.weekShape.length - 1)]!;
-    const progress = span ? (span - ago) / span : 1;
-    days.push({
-      day,
-      ago,
-      week,
-      level: persona.ability + (persona.growth ?? 0) * progress,
-      minutes:
-        persona.minutes * factor * (0.75 + 0.5 * hash(`${name}${day}min`)),
-    });
-  }
-  const weight = days.reduce((sum, day) => sum + day.minutes, 0) || 1;
-  return days.map((day) => {
-    const problems = Math.max(
-      2,
-      Math.round((persona.answers * day.minutes) / weight),
-    );
-    // A class works through its grade a few skills a week; a student's level
-    // moves them a grade up or down.
-    const grade = Math.max(
-      0,
-      Math.min(
-        12,
-        Math.round(day.level * 0.55 + options.gradeLevel * 0.45 - 0.3),
-      ),
-    );
-    const list = skillsNear(grade);
-    const count = Math.min(list.length, problems >= 8 ? 3 : 2);
-    const picked = Array.from(
-      { length: count },
-      (_, k) =>
-        list[
-          (day.week * 2 + k + Math.floor(hash(`${name}${day.day}${k}`) * 2)) %
-            list.length
-        ]!,
-    );
-    return { ...day, problems, skills: [...new Set(picked)] };
-  });
-}
-
-type SkillDayRow = [
-  string,
-  string,
-  string,
-  number,
-  number,
-  number,
-  number,
-  number,
-  number,
-];
-type ActiveDayRow = [string, string, string, number];
-type LevelDayRow = [string, string, string];
-type AttemptRow = {
-  learner: string;
-  instance: string;
-  content: string;
-  outcome: string;
-  at: string;
-};
-
-/** Writes a demo class's term for its students. Their roster rows exist
- * already, so the answer triggers build skill days in the school's zone. */
+/** Writes a demo class's term. Roster rows exist already, so the answer
+ * triggers build skill days in the school's zone. Week rollups stay deferred
+ * for the caller, who sums them once. `simulations`, when given, are the
+ * students' terms already computed for these options, in student order. */
 export async function seedClassHistory(
   client: Pick<PoolClient, "query">,
   options: {
@@ -204,254 +45,418 @@ export async function seedClassHistory(
     today: string;
     gradeLevel: number;
     weekShape: readonly number[];
-    /** The clock: today's answers were given in the last hour. */
+    /** The clock: today's answers were given in the last sitting. */
     now: number;
     /** The school day has begun in the school's zone. */
     workToday: boolean;
-    /** Days back whose work is real answers, not rollups. */
+    /** `dose` is a demo class. `persona` is a family or adult fixture. */
+    model?: "dose" | "persona";
+    simulations?: readonly Simulation[];
+    /** Unused. Kept so older callers still type-check. Gaps are not forced. */
     recentDays?: number;
     sharedGap?: { people: readonly string[]; template: string } | null;
     stuck?: { person: string; template: string } | null;
   },
 ) {
-  const recent = options.recentDays ?? 8;
-  const gap = options.sharedGap === undefined ? SHARED_GAP : options.sharedGap;
-  const stuck = options.stuck === undefined ? STUCK : options.stuck;
-  const skillDays: SkillDayRow[] = [];
-  const activeDays: ActiveDayRow[] = [];
-  const levelDays: LevelDayRow[] = [];
-  const attempts: AttemptRow[] = [];
-  const todayTime = Date.parse(`${options.today}T12:00:00Z`);
-  for (const student of options.students) {
-    const { persona, learnerId } = student;
-    const name = persona.name.join(" ");
-    const plan = planStudent(student, options);
-    const held = new Set<string>();
-    const misses: { template: string; days: number[] }[] = [];
-    if (gap?.people.includes(persona.name[0]))
-      misses.push({ template: gap.template, days: [3, 2, 1] });
-    if (stuck?.person === persona.name[0])
-      misses.push({ template: stuck.template, days: [4, 2, 1] });
-    for (const miss of misses) held.add(skillOfTemplate.get(miss.template)!);
-    let answered = 0;
-    let independent = 0;
-    const byStrand = new Map<
-      string,
-      { answered: number; independent: number }
-    >();
-    const strandOffset = (strand: string) =>
-      (hash(`${name}${strand}`) - 0.5) * 0.7 -
-      (gap?.people.includes(persona.name[0]) && strand === "fractions"
-        ? 0.5
-        : 0);
-    let serial = 0;
-    // One slip a skill lately: only a persona's designed misses add up.
-    const slips = new Map<string, number>();
-    for (const [index, day] of plan.entries()) {
-      const lastDay = index === plan.length - 1;
-      const share = day.problems / day.skills.length;
-      for (const [k, skill] of day.skills.entries()) {
-        const n = Math.max(
-          1,
-          Math.round(share * (0.8 + 0.4 * hash(`${name}${day.day}${k}n`))),
-        );
-        const ms = Math.round((day.minutes * 60_000) / day.skills.length);
-        activeDays.push([learnerId, day.day, skill, ms]);
-        const p = chanceOfRight(day.level, skill);
-        let right = 0;
-        let alone = 0;
-        let helped = 0;
-        let review = 0;
-        let reviewAlone = 0;
-        if (day.ago < recent && !held.has(skill)) {
-          const kinds = templatesFor.get(skill) ?? [];
-          for (let item = 0; item < n && kinds.length; item++) {
-            serial++;
-            const template = kinds[(serial + item) % kinds.length]!;
-            const problem = problemFor(template, serial);
-            const isReview = serial % 8 === 7 && index > 3;
-            // Spaced review is what sticks: it comes back right more often.
-            // A skill's last answer each day is right and it slips once at
-            // most, so only the misses a persona has (`misses`) read as stuck.
-            const correct =
-              item === n - 1 ||
-              (slips.get(skill) ?? 0) >= 1 ||
-              hash(`${name}${day.day}${skill}${item}`) <
-                (isReview ? Math.min(0.97, p + 0.2) : p);
-            if (!correct) slips.set(skill, (slips.get(skill) ?? 0) + 1);
-            const assisted =
-              correct && item < n - 1 && hash(`${name}${serial}hint`) < 0.08;
-            const wrong = correct ? null : wrongResponse(problem as never);
-            const start =
-              day.ago === 0
-                ? options.now - 50 * 60_000
-                : Date.parse(`${day.day}T15:10:00Z`);
-            const at = new Date(start + (k * n + item) * 75_000).toISOString();
-            const copy = instance(problem, isReview);
-            attempts.push({
-              learner: learnerId,
-              instance: copy.public.id,
-              content: JSON.stringify(copy),
-              at,
-              outcome: JSON.stringify({
-                id: randomUUID(),
-                requestId: randomUUID(),
-                problemId: copy.public.id,
-                skillId: copy.public.skillId,
-                templateId: template,
-                response: correct ? problem.answer : wrong,
-                correct,
-                assisted,
-                answer: problem.answer,
-                explanation: problem.explanation,
-                createdAt: at,
-              }),
-            });
-            if (correct && !assisted) alone++;
-          }
-          answered += n;
-          independent += alone;
-        } else {
-          right = Math.min(
-            n,
-            Math.round(n * p + (hash(`${name}${day.day}${skill}r`) - 0.5)),
+  const simulated =
+    options.simulations ?? (await simulateJobs(historyJobs(options)));
+  if (simulated.length !== options.students.length)
+    throw new Error("One simulated term is needed for each student");
+  return writeClassHistory(
+    client,
+    options.students.map((student) => student.learnerId),
+    simulated,
+  );
+}
+
+/** The simulation jobs for `seedClassHistory`'s students, in their order. */
+export function historyJobs(options: {
+  students: readonly DemoStudent[];
+  termStart: string;
+  today: string;
+  gradeLevel: number;
+  weekShape: readonly number[];
+  now: number;
+  workToday: boolean;
+  model?: "dose" | "persona";
+}): SimJob[] {
+  const model = options.model ?? "dose";
+  return options.students.map((student) => {
+    const grade = student.grade ?? options.gradeLevel;
+    const name = student.persona.name.join(" ");
+    const joined =
+      student.persona.joined === undefined
+        ? undefined
+        : iso(
+            Date.parse(`${options.today}T12:00:00Z`) -
+              student.persona.joined * DAY,
           );
-          helped = Math.round(n * 0.08);
-          alone = Math.max(0, right - helped);
-          review = index > 3 ? Math.round(n * 0.14) : 0;
-          reviewAlone = Math.min(review, Math.round(review * p));
-          skillDays.push([
-            learnerId,
-            day.day,
-            skill,
-            n,
-            right,
-            alone,
-            helped,
-            review,
-            reviewAlone,
-          ]);
-          answered += n;
-          independent += alone;
+    return model === "persona"
+      ? {
+          kind: "persona" as const,
+          options: {
+            name,
+            grade,
+            persona: student.persona,
+            termStart: options.termStart,
+            today: options.today,
+            weekShape: options.weekShape,
+            now: options.now,
+            workToday: options.workToday,
+          },
         }
-        const strand = strandOf(skill);
-        const entry = byStrand.get(strand) ?? { answered: 0, independent: 0 };
-        entry.answered += n;
-        entry.independent += alone;
-        byStrand.set(strand, entry);
-      }
-      // The stored level: early in each week, and on their latest day.
-      if (weekday(day.day) <= 2 || lastDay) {
-        const sd = Math.max(0.28, 1.1 / Math.sqrt(1 + answered / 12));
-        levelDays.push([
-          learnerId,
-          day.day,
-          JSON.stringify({
-            overall: {
-              level: Math.round(day.level * 100) / 100,
-              sd: Math.round(sd * 100) / 100,
-              answered,
-              independent,
-            },
-            strands: Object.fromEntries(
-              [...byStrand].map(([strand, counts]) => [
-                strand,
-                {
-                  level:
-                    Math.round((day.level + strandOffset(strand)) * 100) / 100,
-                  sd:
-                    Math.round(
-                      Math.max(0.32, 1.2 / Math.sqrt(1 + counts.answered / 8)) *
-                        100,
-                    ) / 100,
-                  ...counts,
-                },
-              ]),
-            ),
-          }),
-        ]);
-      }
-    }
-    // What they keep missing lately, as their latest answers on that skill.
-    for (const miss of misses)
-      for (const [item, ago] of miss.days.entries()) {
-        const problem = problemFor(miss.template, item);
-        const day = iso(todayTime - ago * DAY);
-        const at = new Date(
-          Date.parse(`${day}T14:30:00Z`) + item * 60_000,
-        ).toISOString();
-        const copy = instance(problem, false);
-        attempts.push({
-          learner: learnerId,
-          instance: copy.public.id,
-          content: JSON.stringify(copy),
-          at,
-          outcome: JSON.stringify({
-            id: randomUUID(),
-            requestId: randomUUID(),
-            problemId: copy.public.id,
-            skillId: copy.public.skillId,
-            templateId: miss.template,
-            response: wrongResponse(problem as never),
-            correct: false,
-            assisted: false,
-            answer: problem.answer,
-            explanation: problem.explanation,
-            createdAt: at,
-          }),
-        });
-      }
+      : {
+          kind: "dose" as const,
+          options: {
+            name,
+            grade,
+            termStart: options.termStart,
+            today: options.today,
+            weekShape: options.weekShape,
+            now: options.now,
+            workToday: options.workToday,
+            joined,
+          },
+        };
+  });
+}
+
+/** Writes simulated terms for these learners, one term each, in order.
+ *
+ * A term's problems and outcomes repeat, so each distinct one is sent once and
+ * every answer is assembled from it in the database with its own ids. For
+ * learners with no answers yet, skill days and skill evidence are written
+ * once from the whole set (`amp.bulk_answers`, migration 0113) instead of one
+ * answer at a time: the same rows the per-answer triggers write, as
+ * `tests/school-demo-terms.integration.ts` checks. */
+export async function writeClassHistory(
+  client: Pick<PoolClient, "query">,
+  learnerIds: readonly string[],
+  simulated: readonly Simulation[],
+  /** `false` writes one answer at a time through the triggers, as a test of
+   * the bulk path does. */
+  options: { bulk?: boolean } = {},
+) {
+  await client.query("SET LOCAL statement_timeout='180s'");
+  await client.query("SET LOCAL idle_in_transaction_session_timeout='0'");
+  const fresh =
+    options.bulk !== false &&
+    !(
+      await client.query(
+        "SELECT 1 FROM amp_attempts WHERE learner_id=ANY($1::text[]) LIMIT 1",
+        [learnerIds],
+      )
+    ).rowCount;
+  if (fresh) {
+    // The lock the ordering trigger takes for each answer, once a learner.
+    await client.query(
+      "SELECT 1 FROM amp_learners WHERE id=ANY($1::text[]) ORDER BY id FOR NO KEY UPDATE",
+      [learnerIds],
+    );
+    await client.query("SET LOCAL amp.bulk_answers='deferred'");
   }
-  const column = <T, K extends keyof T>(rows: readonly T[], key: K) =>
-    rows.map((row) => row[key]);
-  await client.query(
-    `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
-     SELECT * FROM unnest($1::text[],$2::date[],$3::text[],$4::int[],$5::int[],$6::int[],$7::int[],$8::int[],$9::int[])
-     ON CONFLICT DO NOTHING`,
-    Array.from({ length: 9 }, (_, index) =>
-      column(skillDays, index as keyof SkillDayRow),
+
+  const bodies: string[] = [];
+  const bodyIndex = new Map<string, number>();
+  const body = (text: string) => {
+    let found = bodyIndex.get(text);
+    if (found === undefined) {
+      found = bodies.length;
+      bodies.push(text);
+      bodyIndex.set(text, found);
+    }
+    return found;
+  };
+  type Row = {
+    learnerId: string;
+    ids: ReturnType<typeof answerIds>;
+    content: number;
+    outcome: number;
+    answer: SimAnswer;
+  };
+  const answers: Row[] = [];
+  const active: (SimActive & { learnerId: string })[] = [];
+  const help: (Omit<SimHelp, "serial"> & {
+    learnerId: string;
+    problemId: string;
+  })[] = [];
+  const levels: { learnerId: string; day: string; frontier: string }[] = [];
+  for (const [index, term] of simulated.entries()) {
+    const learnerId = learnerIds[index]!;
+    const ids = new Map<number, ReturnType<typeof answerIds>>();
+    for (const answer of term.answers) {
+      const own = answerIds(learnerId, answer.serial);
+      ids.set(answer.serial, own);
+      answers.push({
+        learnerId,
+        ids: own,
+        content: body(answer.content),
+        outcome: body(answer.outcome),
+        answer,
+      });
+    }
+    for (const row of term.active) active.push({ learnerId, ...row });
+    for (const { serial, ...row } of term.help)
+      help.push({
+        learnerId,
+        ...row,
+        problemId: (ids.get(serial) ?? answerIds(learnerId, serial)).instanceId,
+      });
+    for (const row of term.levels) levels.push({ learnerId, ...row });
+  }
+  answers.sort(
+    (a, b) =>
+      a.answer.at.localeCompare(b.answer.at) ||
+      a.ids.instanceId.localeCompare(b.ids.instanceId),
+  );
+  await insertChunks(client, active, 5000, (slice) =>
+    client.query(
+      `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
+       SELECT l,d::date,s,k,m FROM unnest($1::text[],$2::text[],$3::text[],$4::text[],$5::bigint[]) AS t(l,d,s,k,m)
+       ON CONFLICT DO NOTHING`,
+      [
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.day),
+        slice.map((row) => row.surface),
+        slice.map((row) => row.skillId),
+        slice.map((row) => row.ms),
+      ],
+    ),
+  );
+  await insertChunks(client, levels, 2000, (slice) =>
+    client.query(
+      `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
+       SELECT l,d::date,f::jsonb,$4 FROM unnest($1::text[],$2::text[],$3::text[]) AS t(l,d,f)
+       ON CONFLICT DO NOTHING`,
+      [
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.day),
+        slice.map((row) => row.frontier),
+        DEFAULT_FRONTIER_POLICY.version,
+      ],
     ),
   );
   await client.query(
-    `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-     SELECT l,d,'practice',s,m FROM unnest($1::text[],$2::date[],$3::text[],$4::bigint[]) AS t(l,d,s,m)
-     ON CONFLICT DO NOTHING`,
-    Array.from({ length: 4 }, (_, index) =>
-      column(activeDays, index as keyof ActiveDayRow),
+    `CREATE TEMP TABLE IF NOT EXISTS amp_demo_body(i int PRIMARY KEY,body jsonb NOT NULL) ON COMMIT DROP;
+     TRUNCATE amp_demo_body`,
+  );
+  await insertChunks(client, bodies, 2000, (slice, from) =>
+    client.query(
+      `INSERT INTO amp_demo_body(i,body)
+       SELECT $2::int+n::int-1,b::jsonb FROM unnest($1::text[]) WITH ORDINALITY AS t(b,n)`,
+      [slice, from],
     ),
   );
-  await client.query(
-    `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-     SELECT l,d,f::jsonb,'demo' FROM unnest($1::text[],$2::date[],$3::text[]) AS t(l,d,f)
-     ON CONFLICT DO NOTHING`,
-    Array.from({ length: 3 }, (_, index) =>
-      column(levelDays, index as keyof LevelDayRow),
+  // Each problem and outcome as stored for this learner: its own ids and,
+  // for the outcome, its time (`identify` does the same to the text).
+  await insertChunks(client, answers, 10_000, (slice) =>
+    client.query(
+      `INSERT INTO amp_instances(id,learner_id,content,created_at)
+       SELECT t.i,t.l,jsonb_set(b.body,'{public,id}',to_jsonb(t.i)),t.a::timestamptz-interval '40 seconds'
+       FROM unnest($1::text[],$2::text[],$3::int[],$4::text[]) AS t(i,l,c,a)
+       JOIN amp_demo_body b ON b.i=t.c`,
+      [
+        slice.map((row) => row.ids.instanceId),
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.content),
+        slice.map((row) => row.answer.at),
+      ],
     ),
   );
-  // In the order they were given, so evidence order is answer order.
-  attempts.sort((a, b) => a.at.localeCompare(b.at));
+  // In bulk, answers are numbered here in the order the triggers would
+  // have numbered them; otherwise the ordering trigger does it.
+  const sequences = new Map<string, string>();
+  await insertChunks(client, answers, 10_000, async (slice) => {
+    const { rows } = await client.query<{ id: string; sequence: string }>(
+      `INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome,created_at,evidence_sequence)
+       SELECT o,l,i,r,body,a::timestamptz,CASE WHEN $7 THEN nextval('amp_attempt_evidence_sequence') ELSE 0 END
+       FROM (
+         SELECT t.o,t.l,t.i,t.r,b.body||jsonb_build_object('id',t.o,'problemId',t.i,'requestId',t.r,'createdAt',t.a) AS body,t.a
+         FROM unnest($1::text[],$2::text[],$3::text[],$4::text[],$5::int[],$6::text[]) WITH ORDINALITY AS t(o,l,i,r,c,a,n)
+         JOIN amp_demo_body b ON b.i=t.c
+         ORDER BY t.n
+       ) ordered
+       RETURNING id,evidence_sequence::text AS sequence`,
+      [
+        slice.map((row) => row.ids.attemptId),
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.ids.instanceId),
+        slice.map((row) => row.ids.requestId),
+        slice.map((row) => row.outcome),
+        slice.map((row) => row.answer.at),
+        fresh,
+      ],
+    );
+    for (const row of rows) sequences.set(row.id, row.sequence);
+  });
+  if (fresh) {
+    await writeSkillDays(client, answers, bodies);
+    await writeSkillEvidence(client, answers, sequences);
+    await client.query("RESET amp.bulk_answers");
+  }
+  await insertChunks(client, help, 5000, (slice) =>
+    client.query(
+      `INSERT INTO amp_help_events(learner_id,"at",day,kind,source,skill_id,ref,problem_id,step)
+       SELECT l,a::timestamptz,d::date,k::amp_help_kind,'practice',s,r,p,t
+       FROM unnest($1::text[],$2::text[],$3::text[],$4::text[],$5::text[],$6::text[],$7::text[],$8::smallint[])
+         AS t(l,a,d,k,s,r,p,t)`,
+      [
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.at),
+        slice.map((row) => row.day),
+        slice.map((row) => row.kind),
+        slice.map((row) => row.skillId),
+        slice.map((row) => row.ref),
+        slice.map((row) => row.problemId),
+        slice.map((row) => row.step),
+      ],
+    ),
+  );
+  return { answers: answers.length, days: active.length };
+}
+
+/** Skill days for these learners' answers, as `amp_update_skill_days`
+ * (migration 0111) adds them one at a time: by the learner's day in their
+ * roster zone, or an adult's own; a family learner has none. */
+async function writeSkillDays(
+  client: Pick<PoolClient, "query">,
+  answers: readonly { learnerId: string; content: number; outcome: number; answer: SimAnswer }[],
+  bodies: readonly string[],
+) {
+  // What the trigger reads from a stored problem and outcome, once a body.
+  const review = new Map<number, boolean>();
+  const helped = new Map<number, string[]>();
+  const facts = answers.map(({ learnerId, content, outcome, answer }) => {
+    if (!review.has(content))
+      review.set(
+        content,
+        JSON.parse(bodies[content]!).selection?.reason === "review",
+      );
+    if (!helped.has(outcome)) {
+      const parsed = JSON.parse(bodies[outcome]!) as {
+        help?: unknown;
+        evidenceWeight?: number;
+      };
+      if ((parsed.evidenceWeight ?? 1) < 1)
+        throw new Error("A simulated answer is never a paper mark");
+      helped.set(
+        outcome,
+        Array.isArray(parsed.help) ? parsed.help.map(String) : [],
+      );
+    }
+    const help = helped.get(outcome)!;
+    return {
+      learnerId,
+      at: answer.at,
+      skillId: answer.skillId,
+      correct: answer.correct,
+      assisted: answer.assisted,
+      review: review.get(content)!,
+      help: help.join(","),
+    };
+  });
   await client.query(
-    `INSERT INTO amp_instances(id,learner_id,content,created_at)
-     SELECT i,l,c::jsonb,a::timestamptz-interval '40 seconds'
-     FROM unnest($1::text[],$2::text[],$3::text[],$4::text[]) AS t(i,l,c,a)`,
+    `WITH zones AS (
+       SELECT l.id,CASE WHEN p.learner_id IS NOT NULL THEN p.timezone
+         WHEN l.adult THEN COALESCE(l.timezone,'America/New_York') END AS zone
+       FROM amp_learners l
+       LEFT JOIN LATERAL (SELECT learner_id,timezone FROM amp_people WHERE learner_id=l.id LIMIT 1) p ON true
+       WHERE l.id IN (SELECT DISTINCT unnest($1::text[]))
+     ),facts AS (
+       SELECT t.l AS learner_id,(t.a::timestamptz AT TIME ZONE z.zone)::date AS day,t.s AS skill_id,
+         t.c AS correct,t.x AS assisted,t.c AND NOT t.x AS independent,t.v AS review,
+         string_to_array(t.h,',') AS help
+       FROM unnest($1::text[],$2::text[],$3::text[],$4::bool[],$5::bool[],$6::bool[],$7::text[]) AS t(l,a,s,c,x,v,h)
+       JOIN zones z ON z.id=t.l AND z.zone IS NOT NULL
+     )
+     INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent,
+       with_hint,with_lesson,with_video,with_example,with_person)
+     SELECT learner_id,day,skill_id,count(*),count(*) FILTER (WHERE correct),count(*) FILTER (WHERE independent),
+       count(*) FILTER (WHERE assisted),count(*) FILTER (WHERE review),count(*) FILTER (WHERE review AND independent),
+       count(*) FILTER (WHERE 'hint'=ANY(help)),count(*) FILTER (WHERE 'lesson'=ANY(help)),
+       count(*) FILTER (WHERE 'video'=ANY(help)),count(*) FILTER (WHERE 'example'=ANY(help)),
+       count(*) FILTER (WHERE 'person'=ANY(help))
+     FROM facts GROUP BY learner_id,day,skill_id
+     ON CONFLICT(learner_id,day,skill_id) DO UPDATE SET
+       attempts=amp_skill_days.attempts+EXCLUDED.attempts,
+       correct=amp_skill_days.correct+EXCLUDED.correct,
+       independent=amp_skill_days.independent+EXCLUDED.independent,
+       assisted=amp_skill_days.assisted+EXCLUDED.assisted,
+       review=amp_skill_days.review+EXCLUDED.review,
+       review_independent=amp_skill_days.review_independent+EXCLUDED.review_independent,
+       with_hint=amp_skill_days.with_hint+EXCLUDED.with_hint,
+       with_lesson=amp_skill_days.with_lesson+EXCLUDED.with_lesson,
+       with_video=amp_skill_days.with_video+EXCLUDED.with_video,
+       with_example=amp_skill_days.with_example+EXCLUDED.with_example,
+       with_person=amp_skill_days.with_person+EXCLUDED.with_person`,
     [
-      column(attempts, "instance"),
-      column(attempts, "learner"),
-      column(attempts, "content"),
-      column(attempts, "at"),
+      facts.map((row) => row.learnerId),
+      facts.map((row) => row.at),
+      facts.map((row) => row.skillId),
+      facts.map((row) => row.correct),
+      facts.map((row) => row.assisted),
+      facts.map((row) => row.review),
+      facts.map((row) => row.help),
     ],
   );
-  await client.query(
-    `INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome,created_at)
-     SELECT o::jsonb->>'id',l,i,o::jsonb->>'requestId',o::jsonb,a::timestamptz
-     FROM unnest($1::text[],$2::text[],$3::text[],$4::text[]) WITH ORDINALITY AS t(l,i,o,a,n)
-     ORDER BY n`,
-    [
-      column(attempts, "learner"),
-      column(attempts, "instance"),
-      column(attempts, "outcome"),
-      column(attempts, "at"),
-    ],
+}
+
+/** Each learner's skill evidence after all of their answers, in the order the
+ * database took them: the same fold as `amp_project_skill_observation`
+ * (migration 0079), which `projectSkillEvidence` mirrors. */
+async function writeSkillEvidence(
+  client: Pick<PoolClient, "query">,
+  answers: readonly {
+    learnerId: string;
+    ids: { attemptId: string };
+    answer: SimAnswer;
+  }[],
+  sequences: ReadonlyMap<string, string>,
+) {
+  const byLearner = new Map<string, PracticeObservation[]>();
+  for (const { learnerId, ids, answer } of answers) {
+    const sequence = sequences.get(ids.attemptId);
+    if (!sequence) throw new Error("An answer was not stored");
+    const list = byLearner.get(learnerId) ?? [];
+    list.push({
+      id: ids.attemptId,
+      skillId: answer.skillId,
+      templateId: answer.templateId,
+      correct: answer.correct,
+      assisted: answer.assisted,
+      createdAt: answer.at,
+      ingestionSequence: sequence,
+    });
+    byLearner.set(learnerId, list);
+  }
+  const rows: { learnerId: string; skillId: string; state: string }[] = [];
+  for (const [learnerId, observations] of byLearner) {
+    observations.sort((a, b) =>
+      Number(BigInt(a.ingestionSequence!) - BigInt(b.ingestionSequence!)),
+    );
+    for (const state of projectSkillEvidence(observations))
+      rows.push({ learnerId, skillId: state.skillId, state: JSON.stringify(state) });
+  }
+  await insertChunks(client, rows, 5000, (slice) =>
+    client.query(
+      `INSERT INTO amp_skill_evidence(learner_id,skill_id,state)
+       SELECT l,k,s::jsonb FROM unnest($1::text[],$2::text[],$3::text[]) AS t(l,k,s)
+       ON CONFLICT(learner_id,skill_id) DO UPDATE SET state=EXCLUDED.state`,
+      [
+        slice.map((row) => row.learnerId),
+        slice.map((row) => row.skillId),
+        slice.map((row) => row.state),
+      ],
+    ),
   );
-  return { answers: attempts.length, days: skillDays.length };
+}
+
+async function insertChunks<T>(
+  _client: Pick<PoolClient, "query">,
+  rows: readonly T[],
+  size: number,
+  write: (slice: readonly T[], from: number) => Promise<unknown>,
+) {
+  for (let index = 0; index < rows.length; index += size)
+    await write(rows.slice(index, index + size), index);
 }

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { nounFor } from "./agreement";
 
@@ -1603,9 +1604,10 @@ function bestFitChoice(seed: string): GeneratedProblem {
         tag,
         Math.max(1.9 * saeCorrect, 1.05 * c.n * ctx.yStep),
       );
-      if (!l || !hasTag(c, tag, l)) throw new Error(`Need a ${tag} line`);
+      if (!l || !hasTag(c, tag, l))
+        throw new Error(`Need ${withArticle(tag)} line`);
       if (sae(c.points, l) < 1.8 * saeCorrect)
-        throw new Error(`Need a ${tag} line far from the points`);
+        throw new Error(`Need ${withArticle(tag)} line far from the points`);
       return { tag, line: l };
     });
     const all = [correct, ...lines.map((x) => x.line)];

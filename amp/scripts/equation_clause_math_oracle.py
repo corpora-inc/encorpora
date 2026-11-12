@@ -33,8 +33,10 @@ def require(condition, message):
 
 
 def plain(text):
-    """Typesetting wraps a name or an equation in $...$. The sentence shape is the same."""
-    return text.replace("$", "")
+    """Typesetting wraps a name or an equation in $...$, and math writes a
+    minus as a hyphen (KaTeX rejects the typographic one). The sentence shape
+    is the same."""
+    return text.replace("$", "").replace("−", "-")
 
 
 def dumps(value):
@@ -78,12 +80,20 @@ def slope_text(text):
 
 
 def lines(prompt):
-    found = re.findall(r"y = (-?\d+(?:/\d+)?)x \+ (-?\d+)", prompt)
+    # A unit slope is "x" or "−x". A negative intercept uses a minus, not "+ −".
+    found = re.findall(
+        r"y = ([−-]?)(\d+(?:/\d+)?)?x (?:[−-] (\d+)|\+ (-?\d+))",
+        prompt,
+    )
     require(len(found) == 2, "two lines")
     parsed = []
-    for slope, intercept in found:
-        numer, denom = slope_text(slope)
-        parsed.append((numer, denom, int(intercept)))
+    for sign, number, minus, plus in found:
+        if number:
+            numer, denom = slope_text(("-" if sign in ("-", "−") else "") + number)
+        else:
+            numer, denom = (-1 if sign in ("-", "−") else 1), 1
+        intercept = -int(minus) if minus else int(plus)
+        parsed.append((numer, denom, intercept))
     return parsed
 
 
@@ -325,7 +335,7 @@ def assume(public):
     prompt = plain(public["prompt"])
     why = "We assume a solution exists; later lines are true for that x"
     none = re.fullmatch(
-        r"Suppose x is a number with (\d+)\(x([+-]\d+)\) = (\d+)x([+-]\d+)\. Expanding and subtracting \d+x from both sides leaves (-?\d+) = (-?\d+)\.",
+        r"Suppose x is a number with (\d+)\(x([+-]\d+)\) = (\d*)x([+-]\d+)\. Expanding and subtracting \d+x from both sides leaves (-?\d+) = (-?\d+)\.",
         prompt,
     )
     if none:
@@ -336,7 +346,7 @@ def assume(public):
             "chk": f"{left} = {right} is false, so the supposition is impossible",
         })
     found = re.fullmatch(
-        r"Suppose x is a number with (\d+)\(x([+-]\d+)\) = (\d+)x([+-]\d+)\. The chain reaches x = (-?\d+)\.",
+        r"Suppose x is a number with (\d+)\(x([+-]\d+)\) = (\d*)x([+-]\d+)\. The chain reaches x = (-?\d+)\.",
         prompt,
     )
     require(found is not None, "assumption")
@@ -351,35 +361,60 @@ def assume(public):
     })
 
 
-def coef(value, letter):
-    if value == 1:
-        return letter
-    if value == -1:
-        return f"-{letter}"
-    return f"{value}{letter}"
+def term_text(value, letter, first=True):
+    if value == 0:
+        return ""
+    body = letter if abs(value) == 1 else f"{abs(value)}{letter}"
+    if first:
+        return f"−{body}" if value < 0 else body
+    return f" − {body}" if value < 0 else f" + {body}"
+
+
+def two_term(x_coef, y_coef):
+    if x_coef == 0:
+        return term_text(y_coef, "y")
+    return term_text(x_coef, "x") + term_text(y_coef, "y", False)
+
+
+def signed_number(value):
+    return f"−{-value}" if value < 0 else str(value)
+
+
+def read_linear(match):
+    x_sign, x_digits, op, y_digits, right = match.groups()
+    x_coef = int(x_digits) if x_digits else 1
+    if x_sign in ("-", "−"):
+        x_coef = -x_coef
+    y_coef = int(y_digits) if y_digits else 1
+    if op in ("-", "−"):
+        y_coef = -y_coef
+    return x_coef, y_coef, int(right)
 
 
 def elimination(public):
-    found = re.fullmatch(
-        r"E1: (-?\d+)x([+-]\d+)y = (-?\d+)\. E2: (-?\d+)x([+-]\d+)y = (-?\d+)\. "
-        r"The system is replaced by E1 and E2 \+ (-?\d+)·E1\.",
-        plain(public["prompt"]),
+    prompt = public["prompt"]
+    equations = list(re.finditer(
+        r"([−-]?)(\d+)?x\s*([+−-])\s*(\d+)?y\s*=\s*(-?\d+)",
+        prompt,
+    ))
+    require(len(equations) == 2, "elimination")
+    a, b, c = read_linear(equations[0])
+    d, e, f = read_linear(equations[1])
+    found = re.search(
+        r"The system is replaced by \$E1\$ and \$E2 ([+-]) (\d+)\\cdot E1\$\.",
+        prompt,
     )
-    require(found is not None, "elimination")
-    a, b = int(found[1]), int(found[2])
-    c = int(found[3])
-    d, e = int(found[4]), int(found[5])
-    f = int(found[6])
-    k = int(found[7])
+    require(found is not None, "elimination step")
+    k = int(found[2]) * (-1 if found[1] == "-" else 1)
     combined = d + k * a
     right = f + k * c
     require(e + k * b == 0 and combined != 0, "y cancels")
     expected = {
-        "sum": f"{coef(combined, 'x')} = {right}",
-        "why": "Adding k·E1 keeps solutions, and subtracting k·E1 brings E2 back",
+        "sum": f"{two_term(combined, 0)} = {signed_number(right)}",
+        "why": "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
     }
     if any(blank["id"] == "gen" for blank in public["response"]["blanks"]):
-        expected["gen"] = f"{right}, because it equals f + kc"
+        expected["gen"] = f"{right}, because it equals $f + kc$"
     return slots(public, expected)
 
 

@@ -8,6 +8,7 @@ import {
   type FormEvent,
 } from "react";
 import { MathText, spokenMath } from "./MathText";
+import { useTileDrag } from "./useTileDrag";
 import {
   cardRows,
   chooseOption,
@@ -180,7 +181,14 @@ function SentenceText({ text }: { text: string }) {
 /** An equation with boxes and a tray of cards under it. Tapping a card puts
  * it in the selected box, or else the first empty box its row fills; tapping
  * a filled box takes its card back and selects the box. A placed card leaves
- * its outline in the tray unless cards are reused. */
+ * its outline in the tray unless cards are reused.
+ *
+ * Cards also drag (useTileDrag): from the tray into a box, from box to box
+ * (the two swap), and from a box back to the tray. From the keyboard, the
+ * arrow keys on a card aim it at a box and Enter places it. */
+type CardSource =
+  | { from: "tray"; option: string; row: number }
+  | { from: "box"; blank: string };
 function CardEquation({
   response,
   value,
@@ -195,6 +203,7 @@ function CardEquation({
   review: PartMark[] | null;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
+  const [aim, setAim] = useState("");
   const tray = useRef<HTMLDivElement>(null);
   // A placed card is disabled under the keyboard; focus moves to the next
   // card that can be placed, or to the box it filled.
@@ -215,12 +224,88 @@ function CardEquation({
   const chosen = draftChoices(response, value);
   const rows = cardRows(response);
   const empty = (b: MultiPartBlank) => chosen[b.id] === undefined;
+  // The box aimed at (a tapped box, or one aimed at from the keyboard, which
+  // may hold a card to replace), else the first empty one.
   const current =
-    (selected && response.blanks.find((b) => b.id === selected && empty(b))) ||
+    (selected && response.blanks.find((b) => b.id === selected)) ||
     response.blanks.find(empty);
   const targetIn = (row: (typeof rows)[number]) =>
     current && row.blanks.includes(current) ? current : row.blanks.find(empty);
   const total = response.blanks.length;
+  const rowOf = (blankId: string) =>
+    rows.findIndex((x) => x.blanks.some((b) => b.id === blankId));
+  const drag = useTileDrag<CardSource>({
+    disabled: locked,
+    accepts: (source, zone) => {
+      if (zone === "tray") return source.from === "box";
+      const blank = zone.slice("box:".length);
+      return source.from === "tray"
+        ? rowOf(blank) === source.row
+        : blank !== source.blank && rowOf(blank) === rowOf(source.blank);
+    },
+    drop: (source, zone) => {
+      setSelected(null);
+      if (source.from === "box" && zone === "tray") {
+        const option = chosen[source.blank];
+        onChange(clearChoice(response, value, source.blank));
+        // The card settles back into its place in the tray.
+        return tray.current
+          ?.querySelector(
+            `.multi-part-tray-row:nth-child(${rowOf(source.blank) + 1}) [data-option="${option}"]`,
+          )
+          ?.getBoundingClientRect();
+      }
+      const blank = zone.slice("box:".length);
+      if (source.from === "tray") {
+        onChange(chooseOption(response, value, blank, source.option));
+        return;
+      }
+      // Box to box: the two cards swap; into an empty box, the card moves.
+      const moving = chosen[source.blank]!,
+        staying = chosen[blank];
+      let next = chooseOption(response, value, blank, moving);
+      next = staying
+        ? chooseOption(response, next, source.blank, staying)
+        : clearChoice(response, next, source.blank);
+      onChange(next);
+    },
+    // A card lifted from a box looks like the card it is, at its size.
+    ghost: (source, element) => {
+      if (source.from === "tray")
+        return { item: element.cloneNode(true) as HTMLElement };
+      const card = tray.current?.querySelector<HTMLElement>(
+        `.multi-part-tray-row:nth-child(${rowOf(source.blank) + 1}) [data-option="${chosen[source.blank]}"]`,
+      );
+      if (!card) return { item: element.cloneNode(true) as HTMLElement };
+      const copy = card.cloneNode(true) as HTMLElement;
+      copy.removeAttribute("data-used");
+      const { width, height } = card.getBoundingClientRect();
+      return { item: copy, size: { width, height } };
+    },
+  });
+  // Arrow keys on a card aim it at the row's boxes; Enter places it there.
+  const aimFrom = (
+    row: (typeof rows)[number],
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    const step =
+      event.key === "ArrowRight" || event.key === "ArrowDown"
+        ? 1
+        : event.key === "ArrowLeft" || event.key === "ArrowUp"
+          ? -1
+          : 0;
+    if (!step || locked) return;
+    event.preventDefault();
+    const at = row.blanks.findIndex((b) => b.id === targetIn(row)?.id);
+    const next =
+      row.blanks[(at + step + row.blanks.length) % row.blanks.length]!;
+    setSelected(next.id);
+    const n = response.blanks.indexOf(next) + 1;
+    const pick = row.options.find((o) => o.id === chosen[next.id]);
+    setAim(
+      `Box ${n} of ${total}${pick ? `, holding ${spokenMath(pick.label)}` : ", empty"}`,
+    );
+  };
   const place = (
     row: (typeof rows)[number],
     optionId: string,
@@ -263,9 +348,15 @@ function CardEquation({
         data-filled={pick ? "" : undefined}
         data-current={!locked && blank === current ? "" : undefined}
         data-mark={state}
+        data-drop={locked ? undefined : `box:${blank.id}`}
+        data-drag-tile={!locked && pick ? "" : undefined}
         disabled={locked}
         aria-label={name}
+        onPointerDown={(event) => {
+          if (pick) drag.start({ from: "box", blank: blank.id }, event);
+        }}
         onClick={() => {
+          if (!drag.tapped()) return;
           if (pick) onChange(clearChoice(response, value, blank.id));
           setSelected(blank.id);
         }}
@@ -314,7 +405,14 @@ function CardEquation({
             .replace(/\s*\n\s*/g, ". "),
         )}
       </p>
-      <div className="multi-part-tray" ref={tray}>
+      <p className="sr-only" aria-live="polite">
+        {aim}
+      </p>
+      <div
+        className="multi-part-tray"
+        ref={tray}
+        data-drop={locked ? undefined : "tray"}
+      >
         {rows.map((row, r) => (
           <div
             key={r}
@@ -332,10 +430,20 @@ function CardEquation({
                   key={o.id}
                   type="button"
                   className="multi-part-card"
+                  data-option={o.id}
                   data-used={used ? "" : undefined}
+                  data-drag-tile={locked || used ? undefined : ""}
                   disabled={locked || used || !target}
-                  aria-label={`${spokenMath(o.label)}${used ? ", placed" : target ? `, place in box ${response.blanks.indexOf(target) + 1}` : ""}`}
-                  onClick={(event) => place(row, o.id, event.currentTarget)}
+                  aria-label={`${spokenMath(o.label)}${used ? ", placed" : target ? `, place in box ${response.blanks.indexOf(target) + 1}. Arrow keys choose another box` : ""}`}
+                  onPointerDown={(event) => {
+                    if (!used)
+                      drag.start({ from: "tray", option: o.id, row: r }, event);
+                  }}
+                  onKeyDown={(event) => aimFrom(row, event)}
+                  onClick={(event) => {
+                    if (!drag.tapped()) return;
+                    place(row, o.id, event.currentTarget);
+                  }}
                 >
                   <span className="multi-part-card-label" aria-hidden="true">
                     <MathText text={o.label} />

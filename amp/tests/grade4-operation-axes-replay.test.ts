@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { generateProblem } from "../src/math/engine";
+import { asFrozen } from "./fixtures/recorded-version";
 
 /**
  * Instances saved before the grade-4 operation axes.
@@ -65,7 +66,9 @@ const onLegacy = (
   });
 
 const digestOf = (problem: ReturnType<typeof generateProblem>): string =>
-  createHash("sha256").update(JSON.stringify(problem)).digest("hex");
+  createHash("sha256")
+    .update(JSON.stringify(asFrozen(problem)))
+    .digest("hex");
 
 test("stored operation instances replay byte-identical on the legacy axis value", () => {
   assert.deepEqual(Object.keys(golden).sort(), Object.keys(legacyAxis).sort());

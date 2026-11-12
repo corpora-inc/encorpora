@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import type {
   GeneratedProblem,
@@ -1207,7 +1208,7 @@ export function budgetCase(seed: string) {
         explanation: [
           `Total expenses: ${plus(all)} = ${dollars(total)}.`,
           `Income is ${dollars(income)}, which is ${deficit ? "less" : "more"} than the expenses.`,
-          `${dollars(Math.max(income, total))} − ${dollars(Math.min(income, total))} = ${dollars(gap)}, so the budget has a ${name.toLowerCase()} of ${money(gap)}.`,
+          `${dollars(Math.max(income, total))} − ${dollars(Math.min(income, total))} = ${dollars(gap)}, so the budget has ${withArticle(name.toLowerCase())} of ${money(gap)}.`,
         ],
         choices: options(ok, [
           {

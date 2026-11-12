@@ -1,4 +1,4 @@
-/** Bundles the API and its workbook worker as production runs them. Guessing
+/** Bundles the API and its workbook and demo workers as production runs them. Guessing
  * chances are computed here, once per image, so no pod pays for them while a
  * learner waits. Both come from the same source, so they cannot disagree. */
 import { build } from "esbuild";
@@ -7,7 +7,11 @@ import { guessChanceTable } from "../src/math/guess-chance";
 const started = performance.now();
 const table = guessChanceTable();
 await build({
-  entryPoints: ["src/server/main.ts", "src/workbook/compute-worker.ts"],
+  entryPoints: [
+    "src/server/main.ts",
+    "src/workbook/compute-worker.ts",
+    "src/schools/demo/simulate-worker.ts",
+  ],
   bundle: true,
   platform: "node",
   format: "esm",

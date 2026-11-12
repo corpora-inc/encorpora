@@ -364,7 +364,7 @@ function graphDomainRange(r: Random): Case {
     explanation: steps,
     hint:
       ask === "domain"
-        ? `Run along the $x$-axis under the graph from its left end, (${n(a!)}, ${n(fa)}), to its right end, (${n(b!)}, ${n(fb)}). A filled dot includes its $x$-value; an open dot leaves it out.`
+        ? `Run along the $x$-axis under the graph from its left end, $(${n(a!)}, ${n(fa)})$, to its right end, $(${n(b!)}, ${n(fb)})$. A filled dot includes its $x$-value; an open dot leaves it out.`
         : `Scan up the $y$-axis from the graph's lowest point to its highest. The ends are (${n(a!)}, ${n(fa)}) and (${n(b!)}, ${n(fb)})${turn ? "; compare them with the turning point" : ""}, and an open dot leaves its $y$-value out.`,
     tags: [shape, ask, ends!.join("-")],
   };
@@ -1052,7 +1052,7 @@ function linearModelValue(r: Random): Case {
         `Check: the length is ${l} cm, and 2(${l} + ${w}) = ${P}.`,
         `The width is ${w} cm.`,
       ],
-      hint: `Write the length in terms of the width $w$, as ${linearText(c, d, "w")}. A perimeter adds each side twice: 2(length + width) = ${P}.`,
+      hint: `Write the length in terms of the width $w$, as $${linearText(c, d, "w")}$. A perimeter adds each side twice: 2(length + width) = ${P}.`,
       tags: [frame, c === 1 ? "plus" : "times-plus"],
     };
   }

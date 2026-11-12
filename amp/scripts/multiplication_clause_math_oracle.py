@@ -140,20 +140,19 @@ def solve(public):
         ones, tens = b % 10, b // 10 * 10
         return dumps([[str(a * ones)], [str(a * tens)], [str(a * b)]])
     if template == "partial-products-by-place":
-        m = re.match(
-            r"([\d,]+) × (\d+) = \(([\d,]+) × \d+\) \+ \(([\d,]+) × \d+\) \+ \((\d+) × \d+\) \+ \((\d+) × \d+\)",
-            prompt,
-        )
+        m = re.match(r"Multiply ([\d,]+) by (\d+) one place at a time", prompt)
         require(m is not None, "no partials")
-        factor = int(m[2])
-        places = [int(m[i].replace(",", "")) for i in range(3, 7)]
+        n, factor = int(m[1].replace(",", "")), int(m[2])
+        require(1000 <= n <= 9999, "four places")
+        # Every place, a 0 place included, is its own partial product.
+        places = [n // 10**k % 10 * 10**k for k in (3, 2, 1, 0)]
         parts = [p * factor for p in places]
         require(sum(places) * factor == sum(parts), "partials disagree")
         return dumps(
             [[str(parts[0]), str(parts[1])], [str(parts[2]), str(parts[3])], [str(sum(parts))]]
         )
     if template == "complete-area-model":
-        m = re.search(r"(\d+) × (\d+)", prompt)
+        m = re.match(r"Multiply (\d+) by (\d+) with an area model", prompt)
         require(m is not None, "no area product")
         a, b = int(m[1]), int(m[2])
         at, ao = a // 10 * 10, a % 10
@@ -165,21 +164,27 @@ def solve(public):
         m = re.search(r"find (\d+) × (\d+)", prompt)
         require(m is not None, "no array")
         rows, cols = int(m[1]), int(m[2])
-        found = re.findall(r"(\d+) × (\d+) = __", prompt)
-        require(len(found) >= 2, "regions not named")
-        a = int(found[0][0]) * int(found[0][1])
-        b = int(found[1][0]) * int(found[1][1])
+        # The cut is a mark already drawn: the array's split column.
+        figure = public.get("figure")
+        require(figure and figure["kind"] == "scene", "array required")
+        arrays = [e for e in figure["scene"]["elements"] if e.get("type") == "array"]
+        require(len(arrays) == 1, "one array")
+        grid = arrays[0]
+        require(grid["rows"] == rows and grid["columns"] == cols, "array is not the product")
+        cut = grid["splitAfterColumn"]
+        require(0 < cut < cols, "cut")
+        a, b = rows * cut, rows * (cols - cut)
         require(a + b == rows * cols, "regions do not make the product")
         return dumps([[str(a), str(b)], [str(a), str(b)], [str(rows * cols)]])
     if template == "split-the-dividend":
-        m = re.match(r"(\d+) ÷ (\d+): split \d+ into (\d+) \+ (\d+)", prompt)
+        m = re.match(r"Divide (\d+) by (\d+) by splitting \d+ into (\d+) \+ (\d+)", prompt)
         require(m is not None, "no split")
         n, d, left, right = (int(m[i]) for i in range(1, 5))
         require(left + right == n and left % d == 0 and right % d == 0, "split is not exact")
         q1, q2 = left // d, right // d
         return dumps([[str(q1), str(q2)], [str(q1 + q2)]])
     if template == "associative-compute":
-        m = re.match(r"(\d+) × (\d+) × (\d+)", prompt)
+        m = re.match(r"Find (\d+) × (\d+) × (\d+) two ways", prompt)
         require(m is not None, "no triple")
         a, b, c = int(m[1]), int(m[2]), int(m[3])
         return dumps([[str(a * b), str(a * b * c)], [str(b * c), str(a * b * c)]])
@@ -192,14 +197,17 @@ def solve(public):
         require(rows >= 2 and cols >= 2, "marks")
         return dumps([[str(rows), str(cols)], [str(rows * cols)]])
     if template in ("complete-division-model", "chunk-model"):
-        m = re.search(r"([\d,]+) ÷ (\d+)", prompt)
+        m = re.match(r"Divide ([\d,]+) by (\d+) with an area model", prompt)
         require(m is not None, "no quotient")
         n, d = int(m[1].replace(",", "")), int(m[2])
         q, rem = divmod(n, d)
         places = 3 if q >= 100 else 2
         parts, left = chunks(n, d, places)
         require(left == rem and sum(w for w, _ in parts) == q, "chunks disagree")
-        if template == "chunk-model" and "tens width (0" in prompt:
+        # The remainder-only form asks for the tens width beside the ones
+        # width, and no quotient (its rows' labels say so).
+        labels = [row.get("label", "") for row in public["response"]["rows"]]
+        if template == "chunk-model" and "Tens width and ones width" in labels:
             h, t, o = parts
             require(t[0] == 0, "tens width is not 0")
             values = [h[0], h[1], 0, o[0], o[1], rem]

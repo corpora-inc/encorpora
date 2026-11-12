@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { lineTable } from "./scene/author";
 import { defineAxis } from "./variation/axes";
@@ -758,7 +759,7 @@ const priceCountChain = chainFamily({
       const each = m.first + m.second;
       const total = each * m.people;
       return numberSurface({
-        prompt: `At ${g.where}, a ${g.a} costs ${money(m.first)} and a ${g.b} costs ${money(m.second)}. Each of ${m.people} people buys one ${g.a} and one ${g.b}. How much do they spend in all? Enter the answer in dollars.`,
+        prompt: `At ${g.where}, ${withArticle(g.a)} costs ${money(m.first)} and ${withArticle(g.b)} costs ${money(m.second)}. Each of ${m.people} people buys one ${g.a} and one ${g.b}. How much do they spend in all? Enter the answer in dollars.`,
         answer: d(total),
         hint: `Find what one person spends first: add ${d(m.first)} and ${d(m.second)}. Then think about ${m.people} people each spending that amount.`,
         explanation: [
@@ -775,7 +776,7 @@ const priceCountChain = chainFamily({
     const costB = m.second * m.others;
     const total = costA + costB;
     return numberSurface({
-      prompt: `At ${g.where}, a ${g.a} costs ${money(m.first)} and a ${g.b} costs ${money(m.second)}. A group buys ${m.people} ${g.as} and ${m.others} ${g.bs}. How much do they spend in all? Enter the answer in dollars.`,
+      prompt: `At ${g.where}, ${withArticle(g.a)} costs ${money(m.first)} and ${withArticle(g.b)} costs ${money(m.second)}. A group buys ${m.people} ${g.as} and ${m.others} ${g.bs}. How much do they spend in all? Enter the answer in dollars.`,
       answer: d(total),
       hint: `The two kinds cost different amounts. Multiply ${d(m.first)} by ${m.people} for the ${g.as}, and ${d(m.second)} by ${m.others} for the ${g.bs}, then combine.`,
       explanation: [

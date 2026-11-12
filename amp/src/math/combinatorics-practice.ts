@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { chooseAxes, defineAxis } from "./variation/axes";
@@ -283,7 +284,7 @@ function permutationCase(r: Random): Case {
     n = r(5, 12);
     k = r(2, 4);
     const slots = offices.slice(0, k);
-    prompt = `A club with ${n} members will choose ${list(slots.map((s) => `a ${s}`))}. No member can hold more than one office. In how many different ways can the offices be filled?`;
+    prompt = `A club with ${n} members will choose ${list(slots.map((s) => `${withArticle(s)}`))}. No member can hold more than one office. In how many different ways can the offices be filled?`;
     reason =
       "Order matters: swapping two members between offices gives a different result.";
     hint = `Order matters here. The ${slots[0]} can be any of the ${n} members; then how many members are left for the ${slots[1]}?`;
@@ -406,21 +407,18 @@ const selectionTaskAxes = {
   }),
 } as const;
 const expectedTaskAxes = {
-  task: defineAxis(
-    "task",
-    ["standard", "mean-of-the-distribution"] as const,
-    {
-      legacy: "standard",
-      weights: [1, 1],
-      silentLegacy: true,
-      since: 2,
-    },
-  ),
+  task: defineAxis("task", ["standard", "mean-of-the-distribution"] as const, {
+    legacy: "standard",
+    weights: [1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
 } as const;
 const taskFor = (id: string, seed: string) => {
   if (id === "combination-probability")
     return chooseAxes(id, seed, selectionTaskAxes).task;
-  if (id === "expected-value") return chooseAxes(id, seed, expectedTaskAxes).task;
+  if (id === "expected-value")
+    return chooseAxes(id, seed, expectedTaskAxes).task;
   return "standard" as const;
 };
 function orderedProbability(r: Random): Case {

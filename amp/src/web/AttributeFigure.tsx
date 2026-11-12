@@ -1,3 +1,4 @@
+import { PanelFrame } from "./PanelFrame";
 import type { AttributeFigure as Data } from "../math/attribute-models";
 
 const ink = "var(--color-figure-ink)",
@@ -146,6 +147,15 @@ export function UnitMeasureFigure({ figure }: { figure: Units }) {
         const y = 8 + i * panelHeight;
         return (
           <g key={i} data-panel={panel.label ?? i}>
+            {figure.panels.length > 1 && (
+              <PanelFrame
+                label={panel.label}
+                x={2}
+                y={y - 3}
+                width={356}
+                height={panelHeight - 1}
+              />
+            )}
             {panel.label && (
               <text
                 x="22"

@@ -6,6 +6,7 @@ import {
   eraseResponse,
   integrationsResponse,
   overviewResponse,
+  practiceResponse,
   privacyResponse,
   rolloverOptionsResponse,
   rolloverResponse,
@@ -25,6 +26,14 @@ export const overviewOptions = (session: AuthSession, orgId: string) =>
     queryKey: keyFor(session, "org", orgId, "overview"),
     queryFn: ({ signal }) =>
       call(`/orgs/${orgId}/overview`, overviewResponse, session, { signal }),
+  });
+/** The heat map and dose-response, beside the overview: its own read, so the
+ * overview never waits on the term's weeks. */
+export const practiceOptions = (session: AuthSession, orgId: string) =>
+  queryOptions({
+    queryKey: keyFor(session, "org", orgId, "practice"),
+    queryFn: ({ signal }) =>
+      call(`/orgs/${orgId}/practice`, practiceResponse, session, { signal }),
   });
 export const schoolsOptions = (session: AuthSession, orgId: string) =>
   queryOptions({

@@ -14,6 +14,7 @@ const klass = (id: string, org: string, teachers: string[], minutes = 900) => ({
   active: 20,
   minutes,
   growth: 0.3,
+  placed: 20,
 });
 const rollup = (kind: "district" | "school") => ({
   org: {
@@ -58,9 +59,6 @@ test("a district's attention list says which school each class is at", () => {
     untaught?.detail,
     "Precalculus · Period 3 at North High School and Precalculus · Period 3 at South High School.",
   );
-  const quiet = items.find((item) => item.id === "little-practice");
-  assert.match(quiet?.detail ?? "", /at South High School/);
-  assert.match(quiet?.detail ?? "", /at North High School/);
 });
 
 test("a school's attention list names its own classes plainly", () => {
@@ -69,6 +67,26 @@ test("a school's attention list names its own classes plainly", () => {
     items.find((item) => item.id === "no-teacher")?.detail ?? "",
     / at /,
   );
+});
+
+test("needs attention holds only facts with an admin action, never practice", () => {
+  // Classes with 10 and 12 minutes a week, on a Friday: shown as data on the
+  // overview's heat map, never flagged.
+  const items = attentionFor(rollup("school") as never);
+  assert.deepEqual(
+    items.map((item) => item.id),
+    ["no-teacher"],
+  );
+  for (const item of items) assert.ok(item.rule, item.id);
+  assert.doesNotMatch(
+    JSON.stringify(items),
+    /little practice|usually sorts it out|check-in/i,
+  );
+  const quiet = attentionFor({
+    ...rollup("school"),
+    classes: [klass("20", north, ["Ms. Okafor"], 0)],
+  } as never);
+  assert.deepEqual(quiet, []);
 });
 
 test("the activity log has a sentence for every family link, standings and marking event", async () => {

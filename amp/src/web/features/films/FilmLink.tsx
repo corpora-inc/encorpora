@@ -5,10 +5,13 @@ export function FilmLink({
   templateId,
   film,
   onOpen,
+  problemId,
 }: {
   templateId: string;
   film: LessonFilm;
   onOpen?: () => void;
+  /** The problem the lesson was opened for: the film is help for it. */
+  problemId?: string;
 }) {
   const from = useLocation({ select: (location) => location.href });
   return (
@@ -16,7 +19,7 @@ export function FilmLink({
       className="lesson-film-link"
       to="/lessons/$templateId/watch"
       params={{ templateId }}
-      search={{ from }}
+      search={{ from, ...(problemId ? { problem: problemId } : {}) }}
       onClick={onOpen}
     >
       <span aria-hidden="true">▶</span>

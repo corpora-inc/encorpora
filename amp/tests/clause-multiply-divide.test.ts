@@ -106,14 +106,15 @@ test("clause families grade the spec keys and reject the named mistakes", () => 
         assert.ok(choice.options.some((o) => o.label === "8 × 5 and 8 × 3"));
         assert.notEqual(correct, "8 × 5 and 8 × 3");
       }
-      if (id === "complete-area-model" && prompt.includes("46 × 56")) {
+      if (id === "complete-area-model" && prompt.startsWith("Multiply 46 by 56")) {
+        hits.add("46x56");
         assert.deepEqual(values, ["2000", "240", "300", "36", "2576"]);
         assert.equal(Number(values[4]), 46 * 56);
       }
-      if (id === "partial-products-by-place" && prompt.startsWith("7,339 × 6")) {
+      if (id === "partial-products-by-place" && prompt.startsWith("Multiply 7,339 by 6")) {
         assert.deepEqual(values, ["42000", "1800", "180", "54", "44034"]);
       }
-      if (id === "partial-products-by-place" && prompt.startsWith("7,039 × 6")) {
+      if (id === "partial-products-by-place" && prompt.startsWith("Multiply 7,039 by 6")) {
         assert.equal(values[1], "0");
       }
       if (id === "standard-algorithm-rows" && prompt.includes("842 × 69")) {
@@ -128,18 +129,29 @@ test("clause families grade the spec keys and reject the named mistakes", () => 
           );
         }
       }
-      if (id === "complete-division-model" && prompt.includes("1,089 ÷ 3")) {
+      if (id === "complete-division-model" && prompt.startsWith("Divide 1,089 by 3")) {
         assert.deepEqual(values, ["300", "900", "60", "180", "3", "9", "363"]);
       }
-      if (id === "complete-division-model" && prompt.includes("2,416 ÷ 4")) {
+      if (id === "complete-division-model" && prompt.startsWith("Divide 2,416 by 4")) {
         assert.equal(values[2], "0");
         assert.notEqual(values[2], "4");
       }
-      if (id === "chunk-model" && prompt.includes("899 ÷ 31")) {
+      if (id === "chunk-model" && prompt.startsWith("Divide 899 by 31")) {
+        hits.add("899/31");
         assert.deepEqual(values, ["20", "620", "9", "279", "29"]);
       }
-      if (id === "chunk-model" && prompt.includes("1,726 ÷ 16")) {
+      if (id === "chunk-model" && prompt.startsWith("Divide 1,726 by 16")) {
+        hits.add("1726/16");
         assert.deepEqual(values, ["100", "1600", "0", "7", "112", "14"]);
+        // The tens place does not fit: it is not drawn, and the page enters
+        // its 0, so the stored response keeps every field.
+        const r = problem.public.response;
+        assert.equal(r.kind === "structured-work" && r.diagram?.kind, "area");
+        if (r.kind === "structured-work" && r.diagram?.kind === "area") {
+          assert.equal(r.diagram.across.length, 2);
+          assert.deepEqual(r.diagram.zeros, [[1, 0]]);
+          assert.ok(!r.diagram.across.some((p) => "given" in p && p.given !== undefined));
+        }
       }
       if (id === "bracket-steps" && prompt.includes("15,312 ÷ 48")) {
         assert.deepEqual(values.map(Number), bracketCells(15312, 48));
@@ -210,10 +222,10 @@ test("clause families grade the spec keys and reject the named mistakes", () => 
           assert.equal(truth, picked.has(option.id), option.label);
         }
       }
-      if (id === "associative-compute" && prompt.startsWith("3 × 5 × 2")) {
+      if (id === "associative-compute" && prompt.startsWith("Find 3 × 5 × 2")) {
         assert.deepEqual(values, ["15", "30", "10", "30"]);
       }
-      if (id === "split-the-dividend" && prompt.startsWith("72 ÷ 6")) {
+      if (id === "split-the-dividend" && prompt.startsWith("Divide 72 by 6")) {
         assert.deepEqual(values, ["10", "2", "12"]);
       }
       if (id === "first-chunk-choice" && prompt.includes("899 ÷ 31")) {
@@ -277,6 +289,9 @@ test("clause families grade the spec keys and reject the named mistakes", () => 
   assert.ok(seen["story-for-expression"]! >= 3);
   for (const hit of [
     "8x7",
+    "899/31",
+    "1726/16",
+    "46x56",
   ])
     assert.ok(hits.has(hit), hit);
 });

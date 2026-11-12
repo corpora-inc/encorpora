@@ -40,6 +40,7 @@ import { workbookWorker } from "../src/workbook/off-thread";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -227,10 +228,7 @@ async function demo(
 
   // 2. Today, the map, the gradebook and the roster are alive.
   await page.goto(`${origin}/${path}`);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   await page
     .getByText(/Noor|Diego|Lena/)
     .first()
@@ -341,10 +339,7 @@ async function demo(
 
   // 4. The real class comes from the real onboarding.
   await page.goto(`${origin}/${path}`);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   const action = page.locator("[data-demo-action]").filter({ visible: true });
   check(
     `${label} the action names the real class`,

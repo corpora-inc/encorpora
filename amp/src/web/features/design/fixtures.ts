@@ -274,6 +274,7 @@ const work: WorkItem[] = [
   {
     id: "w1",
     day: day(0),
+    at: `${day(0)}T14:42:00.000Z`,
     prompt:
       "A baker fills 3 trays with 12 muffins on each tray. How many muffins?",
     answer: "36",
@@ -286,6 +287,7 @@ const work: WorkItem[] = [
   {
     id: "w2",
     day: day(0),
+    at: `${day(0)}T14:40:00.000Z`,
     prompt: "Which fraction is equal to $\\frac{3}{4}$?",
     answer: "$\\frac{6}{8}$",
     response: "$\\frac{3}{8}$",
@@ -297,6 +299,7 @@ const work: WorkItem[] = [
   {
     id: "w3",
     day: day(1),
+    at: `${day(1)}T15:05:00.000Z`,
     prompt: "Round 4,862 to the nearest hundred.",
     answer: "4,900",
     response: "4,900",
@@ -308,6 +311,7 @@ const work: WorkItem[] = [
   {
     id: "w4",
     day: day(2),
+    at: `${day(2)}T09:30:00.000Z`,
     prompt:
       "A rectangular garden is 14 feet long and 9 feet wide. A path 2 feet wide runs around the outside of the garden. What is the area of the path alone, in square feet?",
     answer: "108",

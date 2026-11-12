@@ -1,3 +1,5 @@
+import { Reveal } from "../../../ui/Reveal";
+import { LockMark, SettingMeta } from "./SettingMeta";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import {
@@ -42,9 +44,24 @@ const presets: Record<ExperiencePreset, { title: string; detail: string }> = {
   },
 };
 
+/** A setting that only means something while another one is on: its row
+ * shows only then (and folds away, its value kept, when that one is off). */
+type DependsOn = { key: ExperienceKey; on: (value: string) => boolean };
+/** Boards exist only while Standings is on, for a class or the school. */
+const STANDINGS_ON: DependsOn = {
+  key: "standings",
+  on: (value) => value !== "off",
+};
+/** Whether a row that depends on another shows, from the value in effect
+ * here (a Standings locked Off from above hides its dependents too). */
+const shows = (dependsOn: DependsOn | undefined, experience: Experience) =>
+  !dependsOn ||
+  dependsOn.on(experience.settings[dependsOn.key].value as string);
+
 type Row<K extends ExperienceKey> = {
   key: K;
   title: string;
+  dependsOn?: DependsOn;
   options: { value: Experience["settings"][K]["value"]; label: string }[];
   describe: Record<Experience["settings"][K]["value"], string>;
 };
@@ -81,6 +98,7 @@ const standingsRow: Row<"standings"> = {
 };
 const measureRow: Row<"measure"> = {
   key: "measure",
+  dependsOn: STANDINGS_ON,
   title: "What a board counts",
   options: [
     { value: "growth", label: "Growth" },
@@ -112,27 +130,6 @@ const rowOf: { [K in ExperienceKey]: Row<K> } = {
   measure: measureRow,
   deviceMode: deviceRow,
 };
-
-const whoSet = (setting: {
-  setBy: NamedScope | null;
-  lockedBy: NamedScope | null;
-}) =>
-  setting.lockedBy
-    ? `Locked by ${setting.lockedBy.name}`
-    : setting.setBy
-      ? `Set by ${setting.setBy.name}`
-      : "AMP’s starting point";
-
-function LockMark({ open = false }: { open?: boolean }) {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" className={styles.lockMark}>
-      <rect x="3" y="7" width="10" height="7" rx="1.6" />
-      <path
-        d={open ? "M5 7V4.8a3 3 0 0 1 5.6-1.4" : "M5 7V4.8a3 3 0 0 1 6 0V7"}
-      />
-    </svg>
-  );
-}
 
 function SettingRow<K extends ExperienceKey>({
   row,
@@ -183,18 +180,26 @@ function SettingRow<K extends ExperienceKey>({
             if (next !== value) onValue(next);
           }}
         />
-        <div className={styles.rowMeta}>
-          <span className={styles.who} data-locked={lockedAbove || undefined}>
-            {lockedAbove && <LockMark />}
-            {whoSet(setting)}
-          </span>
-          {!fixed && setting.own && experience.scope.kind === "class" && (
-            <Button variant="quiet" disabled={disabled} onClick={onFollow}>
-              {setting.inherited.from
-                ? `Follow ${setting.inherited.from.name}`
-                : "Use AMP’s starting point"}
-            </Button>
-          )}
+        <SettingMeta
+          scope={experience.scope.kind === "class" ? "class" : "org"}
+          own={setting.own}
+          setBy={setting.setBy?.name ?? null}
+          lockedAbove={lockedAbove ? (setting.lockedBy?.name ?? null) : null}
+          disabled={disabled}
+          reset={
+            !fixed && setting.own
+              ? {
+                  label: `Use ${
+                    options.find(
+                      (option) =>
+                        option.value === (setting.inherited.value as string),
+                    )?.label ?? "the default"
+                  }`,
+                  onClick: onFollow,
+                }
+              : undefined
+          }
+        >
           {experience.canLock && !lockedAbove && (
             <Button
               variant="quiet"
@@ -209,7 +214,7 @@ function SettingRow<K extends ExperienceKey>({
                 : "Lock for everyone below"}
             </Button>
           )}
-        </div>
+        </SettingMeta>
       </div>
     </section>
   );
@@ -264,30 +269,40 @@ export function ExperienceSettings({
     });
   };
   const levelsShown = settings.levels.value === "shown";
-  const row = (key: ExperienceKey) => (
-    <SettingRow
-      key={key}
-      row={rowOf[key] as Row<ExperienceKey>}
-      experience={experience}
-      disabled={false}
-      {...(key === "measure" &&
-      settings.measure.value === "level" &&
-      !levelsShown
-        ? { note: "Levels aren’t shown here, so boards count growth." }
-        : {})}
-      onValue={(value) => send({ values: { [key]: value } })}
-      onFollow={() => send({ values: { [key]: null } })}
-      onLock={(locked) =>
-        send({
-          locks: { [key]: locked },
-          // A lock holds this scope's own choice, whatever it's showing.
-          ...(locked && !settings[key].own
-            ? { values: { [key]: settings[key].value } }
-            : {}),
-        })
-      }
-    />
-  );
+  const row = (key: ExperienceKey) => {
+    const dependsOn = (rowOf[key] as Row<ExperienceKey>).dependsOn;
+    const setting = (
+      <SettingRow
+        key={key}
+        row={rowOf[key] as Row<ExperienceKey>}
+        experience={experience}
+        disabled={false}
+        {...(key === "measure" &&
+        settings.measure.value === "level" &&
+        !levelsShown
+          ? { note: "Levels aren’t shown here, so boards count growth." }
+          : {})}
+        onValue={(value) => send({ values: { [key]: value } })}
+        onFollow={() => send({ values: { [key]: null } })}
+        onLock={(locked) =>
+          send({
+            locks: { [key]: locked },
+            // A lock holds this scope's own choice, whatever it's showing.
+            ...(locked && !settings[key].own
+              ? { values: { [key]: settings[key].value } }
+              : {}),
+          })
+        }
+      />
+    );
+    return dependsOn ? (
+      <Reveal key={key} open={shows(dependsOn, experience)}>
+        {setting}
+      </Reveal>
+    ) : (
+      setting
+    );
+  };
   /** One line whatever it's set to, so switching never moves what's below. */
   const teacherRow = experience.teacherLine && (
     <section
@@ -368,46 +383,48 @@ export function ExperienceSettings({
         {row("deviceMode")}
       </div>
       {experience.students && (
-        <section className={styles.leftOff} aria-labelledby="left-off">
-          <div className={styles.rowText}>
-            <h2 id="left-off">Leave off standings</h2>
-            <p>
-              A student left off isn’t on any board and doesn’t see one. Their
-              practice and grades don’t change.
-            </p>
-          </div>
-          {experience.students.length ? (
-            <Chips
-              label="Students left off standings"
-              disabled={!experience.canEdit}
-              options={experience.students.map((student) => ({
-                value: student.id,
-                label: student.name,
-              }))}
-              value={experience.students
-                .filter((student) => student.leftOff)
-                .map((student) => student.id)}
-              onChange={(next) => {
-                const chosen = new Set(next);
-                const changed = experience.students!.find(
-                  (student) => student.leftOff !== chosen.has(student.id),
-                );
-                if (changed)
-                  leaveOff.mutate(
-                    { id: changed.id, leftOff: chosen.has(changed.id) },
-                    {
-                      onError: (failure) =>
-                        setError(say(failure, "That change didn’t save.")),
-                    },
+        <Reveal open={shows(STANDINGS_ON, experience)}>
+          <section className={styles.leftOff} aria-labelledby="left-off">
+            <div className={styles.rowText}>
+              <h2 id="left-off">Leave off standings</h2>
+              <p>
+                A student left off isn’t on any board and doesn’t see one. Their
+                practice and grades don’t change.
+              </p>
+            </div>
+            {experience.students.length ? (
+              <Chips
+                label="Students left off standings"
+                disabled={!experience.canEdit}
+                options={experience.students.map((student) => ({
+                  value: student.id,
+                  label: student.name,
+                }))}
+                value={experience.students
+                  .filter((student) => student.leftOff)
+                  .map((student) => student.id)}
+                onChange={(next) => {
+                  const chosen = new Set(next);
+                  const changed = experience.students!.find(
+                    (student) => student.leftOff !== chosen.has(student.id),
                   );
-              }}
-            />
-          ) : (
-            <p className={styles.none}>
-              Students added to this class show here.
-            </p>
-          )}
-        </section>
+                  if (changed)
+                    leaveOff.mutate(
+                      { id: changed.id, leftOff: chosen.has(changed.id) },
+                      {
+                        onError: (failure) =>
+                          setError(say(failure, "That change didn’t save.")),
+                      },
+                    );
+                }}
+              />
+            ) : (
+              <p className={styles.none}>
+                Students added to this class show here.
+              </p>
+            )}
+          </section>
+        </Reveal>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </div>

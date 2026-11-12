@@ -19,6 +19,7 @@ import {
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { migrate } from "./migrate";
+import { todayTitle } from "./today-title";
 
 /** AMP's own parent accounts in the browser: create an account, sign out,
  * sign in, recover a forgotten password. */
@@ -119,11 +120,7 @@ async function signedIn(page: Page, email: string) {
         /^\/school\/[^/]+\/classes\/[^/]+\/today$/.test(url.pathname)),
   );
   if (new URL(page.url()).pathname.startsWith("/school/")) {
-    await page
-      .getByRole("heading", {
-        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-      })
-      .waitFor();
+    await todayTitle(page);
   }
   await page
     .getByRole("button", { name: "Open AMP menu" })

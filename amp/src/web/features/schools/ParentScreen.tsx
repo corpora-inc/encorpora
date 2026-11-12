@@ -107,14 +107,14 @@ function Progress({ view }: { view: ParentView }) {
               <dd>{hours(term.activeMinutes)}</dd>
             </div>
             <div>
-              <dt>Objectives gained</dt>
+              <dt>Skills shown on their own</dt>
               <dd>{term.objectives}</dd>
             </div>
           </dl>
         </section>
       )}
       <section className={styles.section} aria-labelledby="family-recent">
-        <h2 id="family-recent">Recent objectives</h2>
+        <h2 id="family-recent">Recently shown on their own</h2>
         {objectives.length ? (
           <ul className={styles.objectives}>
             {objectives.map((objective) => (

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -1116,7 +1117,7 @@ export function whyParts(m: WhyModel) {
           ? "every real number"
           : `every value from ${mx(ends(fn, I)[0])} to ${mx(ends(fn, I)[1])}`;
       const monotone: Tagged = {
-        label: `${sym} is ${dir} on $I$: if $a < b$ in $I$, then $\\${fn} a ${dir === "increasing" ? "<" : ">"} \\${fn} b$, so no output repeats.`,
+        label: `${sym} is ${dir} on $I$: if $a < b$ in $I$, then $\\${fn} ${withArticle(dir === "increasing" ? "<" : ">")} \\${fn} b$, so no output repeats.`,
         tag: "correct",
       };
       const onto: Tagged = {

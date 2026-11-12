@@ -1,3 +1,4 @@
+import { withArticle } from "../agreement";
 import type { ProblemResponse, ResponseCapability } from "../contracts";
 import { serializeSelection } from "../selection-response";
 import { defineAxis, type Random } from "./axes";
@@ -201,7 +202,9 @@ export function renderStatementSet(
   const want = format === "single-true";
   const keyed = statements.filter((s) => s.holds === want);
   if (keyed.length !== 1 || n < 2 || n > 4)
-    throw new Error(`A ${format} set needs exactly one keyed statement`);
+    throw new Error(
+      `${withArticle(format, true)} set needs exactly one keyed statement`,
+    );
   const options = statements.map((s, i) => ({
     id: `option-${ids[i]}`,
     label: s.label,

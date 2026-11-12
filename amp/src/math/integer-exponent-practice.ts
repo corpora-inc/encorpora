@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 
@@ -100,7 +101,7 @@ export function integerExponentPrintCase(
       `Take the reciprocal and make the exponent positive: ${power(base, -magnitude)} = ${power(reciprocal, magnitude)}.`,
       `Raise the numerator and denominator to that power: ${power(reciprocal, magnitude)} = ${answer.replace("-", "−")}.`,
       n < 0
-        ? `The base is negative. ${magnitude % 2 ? "An odd" : "An even"} number of negative factors gives a ${magnitude % 2 ? "negative" : "positive"} result.`
+        ? `The base is negative. ${magnitude % 2 ? "An odd" : "An even"} number of negative factors gives ${withArticle(magnitude % 2 ? "negative" : "positive")} result.`
         : "The reciprocal of a positive number is positive.",
       `Check the reciprocal: ${answer.replace("-", "−")} × ${positivePower.startsWith("−") ? `(${positivePower})` : positivePower} = 1.`,
     ];

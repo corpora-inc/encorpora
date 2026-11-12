@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis, type Random } from "./variation/axes";
 import {
@@ -160,8 +161,8 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
   if (m.ask === "end-time") {
     const known =
       m.shown === "analog-clock"
-        ? `A ${e.noun} ${e.verbStart} at the time shown on the clock, in the ${when}.`
-        : `A ${e.noun} ${e.verbStart} at ${labelOf(m.start)}.`;
+        ? `${withArticle(e.noun, true)} ${e.verbStart} at the time shown on the clock, in the ${when}.`
+        : `${withArticle(e.noun, true)} ${e.verbStart} at ${labelOf(m.start)}.`;
     if (m.shown === "analog-clock") figure = clock(m.start);
     prompt = `${known} It lasts ${dur}. At what time does it ${e.verbEnd.replace(/s$/, "")}?`;
     options = times(end, [
@@ -205,8 +206,8 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
   } else if (m.ask === "start-time") {
     const known =
       m.shown === "analog-clock"
-        ? `A ${e.noun} ${e.verbEnd} at the time shown on the clock, in the ${period(end)}.`
-        : `A ${e.noun} ${e.verbEnd} at ${labelOf(end)}.`;
+        ? `${withArticle(e.noun, true)} ${e.verbEnd} at the time shown on the clock, in the ${period(end)}.`
+        : `${withArticle(e.noun, true)} ${e.verbEnd} at ${labelOf(end)}.`;
     if (m.shown === "analog-clock") figure = clock(end);
     prompt = `${known} It lasted ${dur}. At what time did it ${e.verbStart.replace(/s$/, "")}?`;
     options = times(m.start, [
@@ -253,8 +254,8 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
     label = "Choose the elapsed time";
     const known =
       m.shown === "analog-clock"
-        ? `A ${e.noun} ${e.verbStart} at the time shown on the clock, in the ${when}, and ${e.verbEnd} at ${labelOf(end)}.`
-        : `A ${e.noun} ${e.verbStart} at ${labelOf(m.start)} and ${e.verbEnd} at ${labelOf(end)}.`;
+        ? `${withArticle(e.noun, true)} ${e.verbStart} at the time shown on the clock, in the ${when}, and ${e.verbEnd} at ${labelOf(end)}.`
+        : `${withArticle(e.noun, true)} ${e.verbStart} at ${labelOf(m.start)} and ${e.verbEnd} at ${labelOf(end)}.`;
     if (m.shown === "analog-clock") figure = clock(m.start);
     prompt = `${known} How long does it last?`;
     const sh = Math.floor(m.start / 60) % 24,

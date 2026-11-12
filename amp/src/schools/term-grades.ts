@@ -10,7 +10,9 @@ import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import {
   DEFAULT_GRADE_POLICY,
+  letterFor,
   rangeLetters,
+  shownComponents,
   suggestGrade,
   weeklyMinutes,
   type GradeActivity,
@@ -33,7 +35,17 @@ import type {
   TermResource,
   WorkItem,
 } from "./teacher-contracts.js";
+import { growthArraySql, type TermGrowth } from "./growth.js";
 import { startLevelSql } from "./start-level.js";
+import { applyCurve } from "./curve-grades.js";
+import {
+  defaultCurve,
+  gradeCurveSchema,
+  letterFamily,
+  type CurveLetter,
+  type GradeCurve,
+} from "./grade-curve.js";
+import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 
 type Database = Pick<PoolClient, "query">;
 const catalog = new Map(skills.map((skill) => [skill.id, skill]));
@@ -58,19 +70,20 @@ export type ClassContext = {
   orgKind: string;
 };
 
-/** What a class is and when "today" is, in one read. */
+/** What a class is and when "today" is, as of `now`, in one read. */
 export async function classContext(
   db: Database,
   classId: string,
+  now: Date = new Date(),
 ): Promise<ClassContext> {
   const row = (
     await db.query(
       `SELECT c.id,c.org_id AS "orgId",o.path,c.name,c.course_bands AS "courseBands",
          c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,o.kind AS "orgKind",
-         to_char(now() AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
-         extract(hour FROM now() AT TIME ZONE o.timezone)::int AS hour
+         to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
+         extract(hour FROM $2::timestamptz AT TIME ZONE o.timezone)::int AS hour
        FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,
-      [classId],
+      [classId, now.toISOString()],
     )
   ).rows[0];
   if (!row) throw new SchoolError(404, "not_found");
@@ -277,24 +290,41 @@ export async function activityBySpan(
   );
 }
 
-/** Each student's level where their span starts, once placement settled
- * (`start-level.ts`), and the latest inside it. */
+/** Each student's settled start (`start-level.ts`), their latest level inside
+ * the span, and the shared growth pace over it. */
 export async function levelsBySpan(
   db: Database,
   students: readonly TermStudent[],
 ): Promise<
-  Map<string, { start: StudentLevel | null; end: StudentLevel | null }>
+  Map<
+    string,
+    {
+      start: StudentLevel | null;
+      end: StudentLevel | null;
+      growth: TermGrowth | null;
+    }
+  >
 > {
   if (!students.length) return new Map();
   const { rows } = await db.query(
     `SELECT r.person_id AS "personId",
        ${startLevelSql({ select: "d.frontier", learner: "r.learner_id", from: "r.day_from", to: "r.day_to" })} AS start,
-       (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day BETWEEN r.day_from AND r.day_to ORDER BY d.day DESC LIMIT 1) AS "end"
+       (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day BETWEEN r.day_from AND r.day_to ORDER BY d.day DESC LIMIT 1) AS "end",
+       ${growthArraySql({ learner: "r.learner_id", from: "r.day_from", to: "r.day_to" })} AS growth
      FROM ${SPANS}`,
     spans(students),
   );
   return new Map(
-    rows.map(({ personId, start, end }) => [personId, { start, end }]),
+    rows.map(({ personId, start, end, growth }) => [
+      personId,
+      {
+        start,
+        end,
+        growth: growth
+          ? { mu: Number(growth[0]), sd: Number(growth[1]) }
+          : null,
+      },
+    ]),
   );
 }
 
@@ -353,29 +383,108 @@ export const middleOf = (values: readonly number[]): number | null => {
     : (sorted[half - 1]! + sorted[half]!) / 2;
 };
 
-export type WeeklyTarget = { minutes: number | null; locked: boolean };
+export type WeeklyTarget = {
+  /** What counts: the class's own, else its school's, else the default. Null
+   * only for a family that hasn't set one. */
+  minutes: number | null;
+  /** Locked above this class, so it can't be changed here. */
+  locked: boolean;
+  /** The class set its own. */
+  own: boolean;
+  /** What it follows without its own. */
+  inherited: number | null;
+};
+type ScopeRow = {
+  scope_kind: string;
+  scope_id: string;
+  values: Record<string, unknown>;
+  locked: string[];
+};
+const scopeOf = (
+  rows: readonly ScopeRow[],
+  kind: "org" | "class",
+  id: string,
+): SettingsScope[] => {
+  const row = rows.find((r) => r.scope_kind === kind && r.scope_id === id);
+  return row ? [{ kind, id, values: row.values, locked: row.locked }] : [];
+};
+/** One class's target from its settings chain. A school or district class
+ * always has one; a family's has one only once a parent sets it. */
+export function resolveWeeklyTarget(
+  rows: readonly ScopeRow[],
+  classId: string | null,
+  path: readonly string[],
+  family: boolean,
+): WeeklyTarget {
+  const above = path.flatMap((id) => scopeOf(rows, "org", id));
+  const here = classId ? scopeOf(rows, "class", classId) : [];
+  const fallback = family ? null : DEFAULT_WEEKLY_TARGET_MINUTES;
+  const inherited = resolveSettings(above).weeklyTargetMinutes;
+  const resolved = resolveSettings([...above, ...here]).weeklyTargetMinutes;
+  return {
+    minutes: resolved.value ?? fallback,
+    locked: resolved.lockedBy !== null,
+    own: resolved.setBy?.kind === "class",
+    inherited: inherited.value ?? fallback,
+  };
+}
+const SCOPE_ROWS = `SELECT scope_kind,scope_id,"values",locked FROM amp_scope_settings
+     WHERE (scope_kind='org' AND scope_id=ANY($1::uuid[])) OR (scope_kind='class' AND scope_id=ANY($2::uuid[]))`;
 /** A class's weekly target through the settings chain. */
 export async function weeklyTargetFor(
   db: Database,
-  context: Pick<ClassContext, "id" | "path">,
+  context: Pick<ClassContext, "id" | "path" | "orgKind">,
 ): Promise<WeeklyTarget> {
-  const { rows } = await db.query(
-    `SELECT scope_kind,scope_id,"values",locked FROM amp_scope_settings
-     WHERE (scope_kind='org' AND scope_id=ANY($1::uuid[])) OR (scope_kind='class' AND scope_id=$2)`,
-    [context.path, context.id],
+  const { rows } = await db.query(SCOPE_ROWS, [context.path, [context.id]]);
+  return resolveWeeklyTarget(
+    rows,
+    context.id,
+    context.path,
+    context.orgKind === "family",
   );
-  const scope = (kind: "org" | "class", id: string): SettingsScope[] => {
-    const row = rows.find((r) => r.scope_kind === kind && r.scope_id === id);
-    return row ? [{ kind, id, values: row.values, locked: row.locked }] : [];
-  };
-  const resolved = resolveSettings([
-    ...context.path.flatMap((id) => scope("org", id)),
-    ...scope("class", context.id),
-  ]).weeklyTargetMinutes;
-  return {
-    minutes: resolved.value ?? null,
-    locked: resolved.lockedBy !== null,
-  };
+}
+/** Many classes' targets in one read, for an overview. */
+export async function weeklyTargetsFor(
+  db: Database,
+  classIds: readonly string[],
+): Promise<Map<string, WeeklyTarget>> {
+  if (!classIds.length) return new Map();
+  const classes = (
+    await db.query(
+      `SELECT c.id,o.path,o.kind FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=ANY($1::uuid[])`,
+      [classIds],
+    )
+  ).rows as { id: string; path: string[]; kind: string }[];
+  const { rows } = await db.query(SCOPE_ROWS, [
+    [...new Set(classes.flatMap((row) => row.path))],
+    classIds,
+  ]);
+  return new Map(
+    classes.map((row) => [
+      row.id,
+      resolveWeeklyTarget(rows, row.id, row.path, row.kind === "family"),
+    ]),
+  );
+}
+
+/** Schools' targets in one read, for a district's practice views: what each
+ * school's classes follow unless they set their own. */
+export async function orgWeeklyTargets(
+  db: Database,
+  orgs: readonly { id: string; path: readonly string[] }[],
+): Promise<Map<string, number>> {
+  if (!orgs.length) return new Map();
+  const { rows } = await db.query(SCOPE_ROWS, [
+    [...new Set(orgs.flatMap((org) => org.path))],
+    [],
+  ]);
+  return new Map(
+    orgs.map((org) => [
+      org.id,
+      resolveWeeklyTarget(rows, null, org.path, false).minutes ??
+        DEFAULT_WEEKLY_TARGET_MINUTES,
+    ]),
+  );
 }
 
 export type ComputedStudent = {
@@ -388,7 +497,7 @@ export type ComputedStudent = {
 export async function computeTerm(
   db: Database,
   context: ClassContext,
-  term: Pick<Term, "startsOn" | "endsOn">,
+  term: Pick<Term, "id" | "startsOn" | "endsOn">,
   target: WeeklyTarget,
   policy: GradePolicy = DEFAULT_GRADE_POLICY,
 ): Promise<ComputedStudent[]> {
@@ -398,11 +507,12 @@ export async function computeTerm(
   };
   const students = await termRoster(db, context.id, range);
   if (!students.length) return [];
-  const [year, activity, level, objectives] = await Promise.all([
+  const [year, activity, level, objectives, curve] = await Promise.all([
     yearFor(db, context.sessionId),
     activityBySpan(db, students),
     levelsBySpan(db, students),
     objectivesBySpan(db, students, policy),
+    curveFor(db, context.id, term.id),
   ]);
   const course = courseBand(context.courseBands);
   const counted = new Map(
@@ -424,25 +534,171 @@ export async function computeTerm(
       gradeLevel: student.gradeLevel,
       start: stored?.start ?? null,
       end: stored?.end ?? null,
+      termGrowth: stored?.growth ?? null,
       objectivesGained: counted.get(student.id)!.length,
       activity: activity.get(student.id) ?? emptyActivity,
       weeklyTargetMinutes: target.minutes,
       classMedianWeeklyMinutes: null,
     };
   });
-  const median = middleOf(
-    inputs
-      .filter((input) => input.activity.daysActive > 0)
-      .map((input) => weeklyMinutes(input, policy)),
-  );
-  return students.map((student, index) => ({
+  // One child alone, or a class of one with no target: there's no one to
+  // compare with, so no letter. A median of one is that student.
+  const factsOnly =
+    students.length < 2 &&
+    (context.orgKind === "family" || target.minutes === null);
+  const median = factsOnly
+    ? null
+    : middleOf(
+        inputs
+          .filter((input) => input.activity.daysActive > 0)
+          .map((input) => weeklyMinutes(input, policy)),
+      );
+  const graded = students.map((student, index) => {
+    const input = {
+      ...inputs[index]!,
+      classMedianWeeklyMinutes: median,
+      factsOnly,
+    };
+    return { student, input, suggestion: suggestGrade(input, policy) };
+  });
+  // The teacher's curve, where there is one and a letter to give.
+  const curved =
+    curve && !factsOnly
+      ? applyCurve(
+          graded.map(({ student, input, suggestion }) => ({
+            id: student.id,
+            input,
+            suggestion,
+          })),
+          curve,
+          policy,
+        )
+      : null;
+  return graded.map(({ student, suggestion }) => ({
     student,
-    suggestion: suggestGrade(
-      { ...inputs[index]!, classMedianWeeklyMinutes: median },
-      policy,
-    ),
+    suggestion: curved?.get(student.id) ?? suggestion,
     objectives: counted.get(student.id)!,
   }));
+}
+
+/** The class-scope key holding the teacher's curve for each term, by term id.
+ * It sits beside the settings in `amp_scope_settings`, as `leftOff` does;
+ * `resolveSettings` only reads its own keys. A closed term's curve is frozen
+ * in its grades, so this one is only read while a term is open. */
+export const GRADE_CURVES_KEY = "gradeCurves";
+/** The curve a teacher set for this class and term, or null. A stored value the
+ * schema no longer accepts is logged and ignored, so the standard scale stands. */
+export async function curveFor(
+  db: Database,
+  classId: string,
+  termId: string,
+): Promise<GradeCurve | null> {
+  const stored = (
+    await db.query(
+      `SELECT "values"->'${GRADE_CURVES_KEY}'->$2 AS curve FROM amp_scope_settings
+       WHERE scope_kind='class' AND scope_id=$1`,
+      [classId, termId],
+    )
+  ).rows[0]?.curve;
+  if (stored === null || stored === undefined) return null;
+  const parsed = gradeCurveSchema.safeParse(stored);
+  if (!parsed.success) {
+    console.error("Ignoring a stored grade curve the schema refuses", {
+      classId,
+      termId,
+      issues: parsed.error.issues,
+    });
+    return null;
+  }
+  return parsed.data;
+}
+
+/** Each student with a range, at its letter on the standard scale: the middle
+ * of the range the curve replaced, where one did. */
+export function standardLetters(rows: readonly GradebookRow[]): CurveLetter[] {
+  return rows.flatMap(({ suggestion }) => {
+    const range = suggestion.curve?.standard ?? suggestion;
+    if (suggestion.status !== "ready" || range.low === null) return [];
+    const family = letterFamily(
+      letterFor(Math.round((range.low + range.high!) / 2)),
+    );
+    return family ? [family] : [];
+  });
+}
+/** A starting curve from the class's own work, for the whole roster. */
+export const proposedCurve = (rows: readonly GradebookRow[]): GradeCurve =>
+  defaultCurve(standardLetters(rows), Math.max(1, rows.length));
+/** The curve a term's grades used: what was frozen with a closed term, else
+ * what is set now. */
+export async function termCurve(
+  db: Database,
+  context: Pick<ClassContext, "id">,
+  term: Term,
+  rows: readonly GradebookRow[],
+): Promise<GradeCurve | null> {
+  if (term.state === "closed")
+    return (
+      rows.find((row) => row.suggestion.curve)?.suggestion.curve?.teacher ??
+      null
+    );
+  if (term.state === "upcoming") return null;
+  return curveFor(db, context.id, term.id);
+}
+
+/** Sets or clears the teacher's curve for one open term. Closing the term
+ * freezes it with the grades, so a closed term refuses a change. */
+export async function setGradeCurve(
+  repository: SchoolRepository,
+  context: ClassContext,
+  term: Term,
+  curve: GradeCurve | null,
+  actorPersonId: string | null,
+): Promise<{ curve: GradeCurve | null }> {
+  if (term.state === "upcoming") throw new SchoolError(404, "not_found");
+  if (term.state === "closed") throw new SchoolError(409, "term_closed");
+  return repository.transaction(async (client) => {
+    await lockTerm(client, context.id, term.id);
+    await assertTermOpen(client, context.id, term.id);
+    const before =
+      (
+        await client.query(
+          `SELECT "values"->'${GRADE_CURVES_KEY}'->$2 AS curve FROM amp_scope_settings
+           WHERE scope_kind='class' AND scope_id=$1 FOR UPDATE`,
+          [context.id, term.id],
+        )
+      ).rows[0]?.curve ?? null;
+    if (JSON.stringify(before) === JSON.stringify(curve)) return { curve };
+    if (curve)
+      await client.query(
+        `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values")
+         VALUES('class',$1,jsonb_build_object('${GRADE_CURVES_KEY}',jsonb_build_object($2::text,$3::jsonb)))
+         ON CONFLICT(scope_kind,scope_id) DO UPDATE
+         SET "values"=jsonb_set(amp_scope_settings."values",'{${GRADE_CURVES_KEY}}',
+           COALESCE(amp_scope_settings."values"->'${GRADE_CURVES_KEY}','{}'::jsonb)||jsonb_build_object($2::text,$3::jsonb)),
+           updated_at=now()`,
+        [context.id, term.id, JSON.stringify(curve)],
+      );
+    else
+      await client.query(
+        `UPDATE amp_scope_settings
+         SET "values"=jsonb_set("values",'{${GRADE_CURVES_KEY}}',COALESCE("values"->'${GRADE_CURVES_KEY}','{}'::jsonb)-$2::text),
+           updated_at=now()
+         WHERE scope_kind='class' AND scope_id=$1`,
+        [context.id, term.id],
+      );
+    await recordEvent(client, {
+      orgId: context.orgId,
+      actorPersonId,
+      action: "grade.curve-set",
+      targetKind: "class",
+      targetId: context.id,
+      detail: {
+        before: { curve: before },
+        after: { curve, sessionId: term.id },
+      },
+    });
+    return { curve };
+  });
 }
 
 export const toSuggestionResource = (
@@ -452,7 +708,18 @@ export const toSuggestionResource = (
   low: suggestion.low,
   high: suggestion.high,
   letters: rangeLetters(suggestion),
-  components: suggestion.components.map(({ id, score }) => ({ id, score })),
+  components: shownComponents(suggestion).map(({ id, score }) => ({
+    id,
+    score,
+  })),
+  curve: suggestion.curve
+    ? {
+        ranked: suggestion.curve.ranked,
+        rankLow: suggestion.curve.rankLow,
+        rankHigh: suggestion.curve.rankHigh,
+        letters: suggestion.curve.letters,
+      }
+    : null,
 });
 
 export type GradebookRow = {
@@ -639,7 +906,10 @@ export async function closeTerm(
         after: {
           sessionId: term.id,
           students: computed.length,
-          policyVersion: policy.version,
+          // A curved term records the curve policy; its curve is frozen inside each grade.
+          policyVersion:
+            computed.find(({ suggestion }) => suggestion.curve)?.suggestion
+              .policyVersion ?? policy.version,
         },
       },
     });
@@ -647,7 +917,7 @@ export async function closeTerm(
   });
 }
 
-/** The one number a teacher sets. Null clears it, back to the class median. */
+/** The one number a teacher sets. Null clears it, back to the school's. */
 export async function setWeeklyTarget(
   repository: SchoolRepository,
   context: ClassContext,
@@ -705,7 +975,7 @@ export async function setWeeklyTarget(
         after: { weeklyTargetMinutes: minutes },
       },
     });
-    return { minutes, locked: false };
+    return weeklyTargetFor(client, context);
   });
 }
 
@@ -713,7 +983,7 @@ export const skillTitleOf = (id: string) => catalog.get(id)?.title ?? id;
 export const skillStrandOf = (id: string) =>
   catalog.get(id)?.strand ?? "number";
 
-function readable(
+export function readable(
   response: ProblemResponse | undefined,
   raw: unknown,
   strand: string,
@@ -730,6 +1000,17 @@ function readable(
     return null;
   }
 }
+/** How an answer counts: right on their own, right with help, right on
+ * paper (a mark without the answer), or missed. */
+export function workResult(outcome: {
+  correct?: boolean;
+  assisted?: boolean;
+  evidenceWeight?: number;
+}): WorkItem["result"] {
+  if (!outcome.correct) return "missed";
+  if ((outcome.evidenceWeight ?? 1) < 1) return "paper";
+  return outcome.assisted ? "hint" : "independent";
+}
 /** Real problems a student worked: prompt and answer from the immutable instance
  * and attempt, in a single read that never opens a learner transaction. */
 export async function workSamples(
@@ -741,7 +1022,7 @@ export async function workSamples(
   offset = 0,
 ): Promise<WorkItem[]> {
   const { rows } = await db.query(
-    `SELECT a.problem_id AS id,a.outcome,i.content->'public' AS problem,
+    `SELECT a.id,a.outcome,i.content->'public' AS problem,
        i.content->'selection'->>'reason' AS reason,
        ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE $4)::date::text AS day
      FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=a.learner_id
@@ -754,17 +1035,11 @@ export async function workSamples(
     const { outcome, problem } = row;
     const skillId: string = outcome.skillId ?? problem?.skillId ?? "";
     const strand = skillStrandOf(skillId);
-    const paper = (outcome.evidenceWeight ?? 1) < 1;
-    const result: WorkItem["result"] = !outcome.correct
-      ? "missed"
-      : paper
-        ? "paper"
-        : outcome.assisted
-          ? "hint"
-          : "independent";
+    const result = workResult(outcome);
     return {
       id: row.id,
       day: row.day,
+      at: outcome.createdAt ?? "",
       prompt: problem?.prompt ?? "",
       answer: readable(problem?.response, outcome.answer, strand),
       response: readable(problem?.response, outcome.response, strand),

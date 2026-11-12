@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { triangle } from "./scene/author";
 import { place, type Pt, type ShapeItem } from "./shape-figures";
@@ -219,10 +220,10 @@ export const congruentFigures = chainFamily({
         prompt:
           "Four figures are drawn at the same scale. Which two figures are congruent?",
         options: sorted,
-        hint: `Congruent figures have exactly the same size and shape, so one would fit on the other after a ${m.move === "turn" ? "turn" : "flip or turn"}. Each figure has ${m.sides} sides, and one figure is clearly ${m.larger ? "larger" : "smaller"} than the others. Compare side lengths, and see which figure has a corner in a different place.`,
+        hint: `Congruent figures have exactly the same size and shape, so one would fit on the other after ${withArticle(m.move === "turn" ? "turn" : "flip or turn")}. Each figure has ${m.sides} sides, and one figure is clearly ${m.larger ? "larger" : "smaller"} than the others. Compare side lengths, and see which figure has a corner in a different place.`,
         explanation: [
           `Congruent figures can be matched exactly by ${m.move === "turn" ? "turning" : "flipping and turning"} one of them: same side lengths, same angles.`,
-          `Figures ${letters[at("target")]} and ${letters[at("copy")]} match exactly; one is a ${m.move === "turn" ? "turn" : "flip"} of the other.`,
+          `Figures ${letters[at("target")]} and ${letters[at("copy")]} match exactly; one is ${withArticle(m.move === "turn" ? "turn" : "flip")} of the other.`,
           `Figure ${letters[at("bigger")]} has the same shape but is ${size}, and figure ${letters[at("changed")]} has a corner moved, so neither is congruent to the others.`,
           `So figures ${letters[at("target")]} and ${letters[at("copy")]} are congruent.`,
         ],
@@ -362,7 +363,7 @@ export const classifyTriangle = chainFamily({
           ? { label: typeName[k], correct: true as const }
           : {
               label: typeName[k],
-              feedback: `A ${k} triangle has ${typeRule[k]}. This triangle has sides ${s[0]}, ${s[1]} and ${s[2]} cm, so it does not match.`,
+              feedback: `${withArticle(k, true)} triangle has ${typeRule[k]}. This triangle has sides ${s[0]}, ${s[1]} and ${s[2]} cm, so it does not match.`,
             },
       );
       options.push({
@@ -409,9 +410,9 @@ export const classifyTriangle = chainFamily({
     const surface = orderedChoiceSurface({
       prompt: `Matching tick marks show sides of equal length. Which triangle is ${m.target} (${typeRule[m.target]})?`,
       options,
-      hint: `Count the tick marks on the sides of each triangle: sides with the same number of ticks are equal. Here ${matching} of the 4 triangles ${matching === 1 ? "shows" : "show"} matching sides. A ${m.target} triangle has ${typeRule[m.target]}.`,
+      hint: `Count the tick marks on the sides of each triangle: sides with the same number of ticks are equal. Here ${matching} of the 4 triangles ${matching === 1 ? "shows" : "show"} matching sides. ${withArticle(m.target, true)} triangle has ${typeRule[m.target]}.`,
       explanation: [
-        `A ${m.target} triangle has ${typeRule[m.target]}. Matching ticks mark equal sides.`,
+        `${withArticle(m.target, true)} triangle has ${typeRule[m.target]}. Matching ticks mark equal sides.`,
         kinds
           .map((k, i) => `Triangle $${letters[i]}$ has ${typeRule[k]}`)
           .join("; ") + ".",
@@ -458,7 +459,7 @@ export function describePieces(names: PieceName[]): string {
     .filter((n) => counts.has(n))
     .map((n) => {
       const c = counts.get(n)!;
-      return c === 1 ? `a ${n}` : `${c} ${plural[n]}`;
+      return c === 1 ? `${withArticle(n)}` : `${c} ${plural[n]}`;
     });
   return words.join(" and ");
 }

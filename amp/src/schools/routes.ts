@@ -1,3 +1,4 @@
+import { PERSON_NAME } from "./term-grades.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
 import type { Pool } from "pg";
@@ -17,6 +18,7 @@ import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
+import { defineStandingRoutes } from "./standing-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -46,6 +48,7 @@ import {
   perDay,
   perSkill,
   rangeSchema,
+  HEARTBEAT_BODY_LIMIT,
   recordHeartbeat,
   studentRoster,
   totals,
@@ -88,6 +91,11 @@ export type SchoolServices = {
   /** The learning store and PDF renderer behind a teacher's workbook stack. */
   learning?: Repository;
   renderer?: WorkbookRenderer | null;
+  /** The clock school reads count "today" and "this week" from. Absent: the
+   * wall clock. A test or a local preview pins it (main.ts, never in
+   * production), so a rule that depends on the weekday can be shown on any
+   * day. */
+  now?: () => Date;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -262,7 +270,7 @@ export async function registerSchoolRoutes(
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
-      { bodyLimit: 4096 },
+      { bodyLimit: HEARTBEAT_BODY_LIMIT },
       async (request, reply) => {
         const token = studentBearer(request);
         if (
@@ -352,11 +360,21 @@ defineSchoolRoute({
   url: "/api/v1/school/orgs/:org",
   action: "org.read",
   target: orgParam,
-  handler: async ({ actor, target, repository }) => {
+  handler: async ({ actor, target, repository, pool }) => {
     const org = await repository.orgFor(actor.accountId, target.orgId);
+    const person = actorPerson(actor, target);
     return {
       org: org && {
         ...org,
+        // The caller's own name here, so a list of teachers can say "You".
+        personName: person
+          ? (((
+              await pool.query(
+                `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+                [person],
+              )
+            ).rows[0]?.name as string | undefined) ?? null)
+          : null,
         can: canList({ actor, target }),
         teaches: actor.classes
           .filter((c) => c.role === "teacher" && c.path.includes(target.orgId))
@@ -494,6 +512,7 @@ defineSignInRoutes(defineSchoolRoute);
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
+defineStandingRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
 defineDemoRoutes(defineSchoolRoute);

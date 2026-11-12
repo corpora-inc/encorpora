@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { count, isAre, plural } from "./agreement.js";
 import { grouped } from "./multi-part-support.js";
@@ -109,7 +110,9 @@ export function generateEqualGroupsProblem(
   const counted = (n: number, noun: string) =>
     `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
   const article = (phrase: string) =>
-    /^[aeiou]/i.test(phrase) ? `an ${phrase}` : `a ${phrase}`;
+    /^[aeiou]/i.test(phrase)
+      ? `${withArticle(phrase)}`
+      : `${withArticle(phrase)}`;
   switch (templateId) {
     case "full-kits":
     case "seats-needed":
@@ -652,8 +655,7 @@ export function generateEqualGroupsProblem(
         .update(JSON.stringify([templateId, 1, seed]))
         .digest("hex"),
       templateId,
-      templateVersion:
-        templateId === "pairing-leftover" ? pairingVersion : 1,
+      templateVersion: templateId === "pairing-leftover" ? pairingVersion : 1,
       seed,
       prompt,
       skillId: template.skillId,

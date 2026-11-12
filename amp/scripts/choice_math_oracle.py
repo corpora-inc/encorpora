@@ -70,7 +70,7 @@ def solve_choice(public):
             if option['label'] == correct:
                 valid.append(option['id'])
     else:
-        require(prompt == 'Which equation matches the line through A and B?', 'Ambiguous graph question')
+        require(prompt.replace('$', '') == 'Which equation matches the line through A and B?', 'Ambiguous graph question')
         figure = public['figure']
         require(figure['kind'] == 'coordinate-plane', 'Coordinate plane required')
         bounds = [figure[key] for key in ('xMin', 'xMax', 'yMin', 'yMax')]
@@ -89,9 +89,12 @@ def solve_choice(public):
         require(len(lines) == 1 and Fraction(str(lines[0]['m'])) == slope and
                 Fraction(str(lines[0]['b'])) == intercept, 'Rendered line contradicts public points')
         for option in options:
-            match = re.fullmatch(r'y = (-?[0-9]+)x(?: \+ ([0-9]+))?', option['label'].replace('−', '-'))
+            match = re.fullmatch(r'y = (-?)([0-9]+)?x(?: \+ ([0-9]+))?', option['label'].replace('−', '-'))
             require(match is not None, 'Option is not a supported linear equation')
-            m, b = int(match[1]), int(match[2] or 0)
+            m = int(match[2]) if match[2] else 1
+            if match[1] == '-':
+                m = -m
+            b = int(match[3] or 0)
             require(0 < abs(m) <= 10 and 0 <= b <= 10, 'Implausible graph option scale')
             values.append((m, b))
             if all(Fraction(m) * point['x'] + b == point['y'] for point in points):

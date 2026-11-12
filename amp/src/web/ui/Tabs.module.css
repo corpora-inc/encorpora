@@ -52,11 +52,14 @@
   background: transparent;
   transition: background var(--motion-fast);
 }
-.tab:hover {
-  color: var(--color-on-surface);
-}
-.tab:hover::before {
-  background: var(--color-surface-hover);
+/* Hover only where a pointer hovers: a tapped tab keeps no fill. */
+@media (hover: hover) {
+  .tab:hover {
+    color: var(--color-on-surface);
+  }
+  .tab:hover::before {
+    background: var(--color-surface-hover);
+  }
 }
 .tab:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -71,7 +74,7 @@
 .tabs {
   isolation: isolate;
 }
-/* A phone fits the four Account tabs at 390 px: tighter labels, no gaps. */
+/* A phone: tighter labels, no gaps. */
 @media (max-width: 639px) {
   .tabs {
     gap: 0;
@@ -80,11 +83,58 @@
     padding: 0 var(--space-3);
   }
 }
-/* Keep all four Account tabs visible on the narrowest supported phones. */
-@media (max-width: 359px) {
-  .tabs[aria-label="Account"] .tab {
-    padding-inline: var(--space-1);
-  }
+/* A row that would otherwise scroll keeps every label in view: Tabs.tsx
+   steps the padding down until it fits (the Account, family and school rows
+   on a 320 px phone). Each tab stays a 44 px target. */
+.tabs[data-fit] .tab {
+  min-width: 44px;
+}
+.tabs[data-fit="snug"] .tab {
+  padding-inline: var(--space-2);
+}
+.tabs[data-fit="tight"] .tab {
+  padding-inline: var(--space-1);
+}
+/* A row too wide even at its tightest: the tabs that fit, whole, then More
+   with the rest (Tabs.tsx). More is a tab: same size, type and fill. */
+.tab[data-hidden] {
+  display: none;
+}
+/* The row fills its cell, so the strip keeps one box whichever tabs it
+   shows. */
+.tabs[data-overflow] {
+  flex: 1 1 auto;
+}
+.moreSlot {
+  display: none;
+  flex: none;
+}
+.tabs[data-overflow] .moreSlot {
+  display: inline-flex;
+}
+.tabs .more {
+  gap: var(--space-1);
+  height: 44px;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+.tabs .more:hover:not(:disabled),
+.tabs .more[data-state="open"],
+.tabs .more:active:not(:disabled) {
+  background: transparent;
+  color: var(--color-on-surface);
+}
+.tabs .more[data-state="open"]::before {
+  background: var(--color-surface-hover);
+}
+.tabs .more:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
 }
 @media (prefers-reduced-motion: reduce) {
   .tab,

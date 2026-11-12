@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -192,7 +193,7 @@ const endRules = (degree: number, a: number) => [
   degree % 2 === 0
     ? `An even power is positive on both sides of 0, so both ends go the same way.`
     : `An odd power changes sign from one side of 0 to the other, so the two ends go opposite ways.`,
-  `A ${a > 0 ? "positive" : "negative"} leading coefficient, the number in front of that term, sends the right end ${a > 0 ? "up" : "down"}.`,
+  `${withArticle(a > 0 ? "positive" : "negative", true)} leading coefficient, the number in front of that term, sends the right end ${a > 0 ? "up" : "down"}.`,
 ];
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
 
@@ -927,7 +928,7 @@ export function polynomialIdentityCase(seed: string) {
         hint: `Write $${v}$ as $${m}${up ? "+" : "-"}${s}$, then square it with $(a${up ? "+" : "-"}b)^2=a^2${up ? "+" : "-"}2ab+b^2$.`,
         explanation: [
           `An identity is an equation that is true for every value of its letters, so it can turn a hard square into easy pieces.`,
-          `Squaring a ${up ? "sum" : "difference"} gives three terms: the first number squared, ${up ? "plus" : "minus"} twice the product of the two numbers, plus the second number squared.`,
+          `Squaring ${withArticle(up ? "sum" : "difference")} gives three terms: the first number squared, ${up ? "plus" : "minus"} twice the product of the two numbers, plus the second number squared.`,
           `$${v}=${m}${up ? "+" : "-"}${s}$, so $a=${m}$ and $b=${s}$.`,
           `$a^2=${m * m}$, $2ab=${mid}$, $b^2=${s * s}$.`,
           `$${v}^2=${m * m}${up ? "+" : "-"}${mid}+${s * s}=${good}$.`,

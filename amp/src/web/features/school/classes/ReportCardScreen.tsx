@@ -80,7 +80,7 @@ function Card({
           <dd>{number(student.minutes)}</dd>
         </div>
         <div>
-          <dt>Objectives gained</dt>
+          <dt>Skills shown on their own</dt>
           <dd>{number(student.objectivesGained)}</dd>
         </div>
         <div>

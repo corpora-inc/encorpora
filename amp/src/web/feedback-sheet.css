@@ -544,6 +544,18 @@
   .practice-surface > .feedback > [data-answer-feedback] {
     margin-top: auto;
   }
+  /* A replay's facts (help, source, lesson) read whole: when the column is
+     short they scroll in their own place above Previous and Next, which
+     never shrink, rather than slipping under them. */
+  .practice-surface > .feedback > [data-replay-facts] {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .practice-surface > .feedback .review-actions {
+    flex-shrink: 0;
+  }
 
   /* Beside a work or figure editor, the sheet keeps the editor's footer
      height; its details scroll and Next stays put. */

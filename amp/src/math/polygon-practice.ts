@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { geometryScene } from "./geometry-scenes.js";
 import type {
@@ -694,7 +695,7 @@ export function generatePolygonProblem(
       hint = `For each statement, try to picture ${an(cx)} that is not ${an(cy)}. If you can, that statement is false.`;
       explanation = [
         `Each shape name is a group with rules. One group sits inside another when its shapes always meet the bigger group's rules.`,
-        `Every ${tx} has all the properties a ${ty} needs, so every ${tx} is ${an(ty)}.`,
+        `Every ${tx} has all the properties ${withArticle(ty)} needs, so every ${tx} is ${an(ty)}.`,
         `The reverse is not true: not every ${ty} is ${an(tx)}.`,
         `The true statement: every ${tx} is ${an(ty)}.`,
       ];

@@ -121,11 +121,12 @@ export function modulusParts(a: number, b: number): ModulusParts {
   const productWrongs = [signedSquares, unevaluated];
   const modulusWrongs = [math(String(n)), asLength, legs];
   for (const group of [conjugateWrongs, productWrongs, modulusWrongs]) {
-    const labels = group === conjugateWrongs
-      ? [conjugate, ...group]
-      : group === productWrongs
-        ? [product, ...group]
-        : [modulus, ...group];
+    const labels =
+      group === conjugateWrongs
+        ? [conjugate, ...group]
+        : group === productWrongs
+          ? [product, ...group]
+          : [modulus, ...group];
     if (new Set(labels).size !== labels.length)
       throw new Error(`Modulus choices collide for ${a}+${b}i`);
   }
@@ -170,13 +171,7 @@ export function buildModulusViaConjugate(
   const item = modulusParts(a, b);
   const r = random(meta.id, seed);
   const built = [
-    blank(
-      "conj",
-      "Conjugate of z",
-      item.conjugate,
-      item.conjugateWrongs,
-      r,
-    ),
+    blank("conj", "Conjugate of z", item.conjugate, item.conjugateWrongs, r),
     blank(
       "prod",
       "Product of z and its conjugate",
@@ -201,9 +196,8 @@ export function buildModulusViaConjugate(
   );
   const n = a * a + b * b;
   const root = radTex(n);
-  const hint =
-    "The conjugate keeps the real part and flips only the sign of the imaginary part. When you multiply, the cross terms cancel, and the $i$ squared corner is the one to watch. The product is the square of the length, so the length is its square root.";
-  if (/\d/.test(hint)) throw new Error("Modulus hint contains a digit");
+  // From this z's own givens, never its conjugate, product or length.
+  const hint = `For $z=${cxInt(a, b)}$, the conjugate keeps the real part, $${a}$, and flips only the sign of the imaginary part. When you multiply, the cross terms cancel, and the $i^2$ corner is the one to watch. The product is the square of the length, so the length is its square root.`;
   return {
     public: {
       id: createHash("sha256")

@@ -24,6 +24,7 @@ import {
   classContext,
   gradebookRows,
   setFinalGrade,
+  setGradeCurve,
   setWeeklyTarget,
   termById,
   termRoster,
@@ -34,6 +35,7 @@ import {
   closeTermSchema,
   evidenceQuerySchema,
   finalGradeSchema,
+  gradeCurveWriteSchema,
   gradebookExportSchema,
   gradebookQuerySchema,
   oneRosterExportSchema,
@@ -51,10 +53,17 @@ import {
   readTime,
   readToday,
 } from "./teacher-reads.js";
+import { readWorkReplay } from "./work-replay.js";
 
 const reportCardsPdfQuery = paperQuery.extend({
   term: z.uuid(),
   student: z.uuid().optional(),
+});
+const workParams = z.object({
+  attempt: z.string().min(1).max(160),
+});
+const workQuery = z.object({
+  skill: z.string().min(1).max(100).optional(),
 });
 const classParam = ({ params }: { params: Record<string, string> }) =>
   ({ kind: "class", classId: params.class! }) as const;
@@ -82,7 +91,7 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     handler: async ({ actor, target, pool, services }) => ({
       ...(await readToday(
         pool,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         actorPerson(actor, target),
       )),
       canPrint: can(actor, "workbooks.write", target) && !!services.learning,
@@ -93,19 +102,23 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/map`,
     action: "students.read",
     target: classParam,
-    handler: async ({ actor, target, pool }) =>
-      readMap(pool, await classContext(pool, target.classId), actor.accountId),
+    handler: async ({ actor, target, pool, services }) =>
+      readMap(
+        pool,
+        await classContext(pool, target.classId, services.now?.()),
+        actor.accountId,
+      ),
   });
   define({
     method: "GET",
     url: `${CLASS}/gradebook`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, actor, target, pool }) => {
+    handler: async ({ request, actor, target, pool, services }) => {
       const { term } = gradebookQuerySchema.parse(request.query);
       return readGradebook(
         pool,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         term,
         can(actor, "grades.write", target),
       );
@@ -117,11 +130,38 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "grades.write",
     target: classParam,
     bodyLimit: 1024,
-    handler: async ({ request, actor, target, pool, repository }) => {
+    handler: async ({ request, actor, target, pool, repository, services }) => {
       const { term: termId } = closeTermSchema.parse(request.body);
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const term = termById(await termsFor(pool, context), termId);
       return closeTerm(repository, context, term, actorPerson(actor, target));
+    },
+  });
+  define({
+    method: "POST",
+    url: `${CLASS}/gradebook/curve`,
+    action: "grades.write",
+    target: classParam,
+    bodyLimit: 2048,
+    handler: async ({ request, actor, target, pool, repository, services }) => {
+      const body = gradeCurveWriteSchema.parse(request.body);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
+      const term = termById(await termsFor(pool, context), body.term);
+      return setGradeCurve(
+        repository,
+        context,
+        term,
+        body.curve,
+        actorPerson(actor, target),
+      );
     },
   });
   define({
@@ -130,11 +170,11 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "grades.write",
     target: classParam,
     bodyLimit: 1024,
-    handler: async ({ request, actor, target, pool, repository }) => {
+    handler: async ({ request, actor, target, pool, repository, services }) => {
       const { minutes } = weeklyTargetSchema.parse(request.body);
       return setWeeklyTarget(
         repository,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         minutes,
         actorPerson(actor, target),
       );
@@ -146,10 +186,14 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "grades.write",
     target: classParam,
     bodyLimit: 1024,
-    handler: async ({ request, actor, target, pool, repository }) => {
+    handler: async ({ request, actor, target, pool, repository, services }) => {
       const body = finalGradeSchema.parse(request.body);
       const { student } = request.params as { student: string };
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const term = termById(await termsFor(pool, context), body.term);
       return setFinalGrade(
         repository,
@@ -166,12 +210,12 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/students/:student/evidence`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, actor, target, pool }) => {
+    handler: async ({ request, actor, target, pool, services }) => {
       const { term, offset } = evidenceQuerySchema.parse(request.query);
       const { student } = request.params as { student: string };
       const evidence = await readEvidence(
         pool,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         term,
         student,
         offset,
@@ -186,9 +230,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/time`,
     action: "students.read",
     target: classParam,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, target, pool, services }) => {
       const { period } = timeQuerySchema.parse(request.query);
-      return readTime(pool, await classContext(pool, target.classId), period);
+      return readTime(
+        pool,
+        await classContext(pool, target.classId, services.now?.()),
+        period,
+      );
     },
   });
   define({
@@ -196,12 +244,12 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/students/:student/time`,
     action: "students.read",
     target: classParam,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, target, pool, services }) => {
       const { period } = timeQuerySchema.parse(request.query);
       const { student } = request.params as { student: string };
       const time = await readStudentTime(
         pool,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         period,
         student,
       );
@@ -214,11 +262,11 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/report-cards`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, target, pool, services }) => {
       const { term } = oneRosterExportSchema.parse(request.query);
       return readReportCards(
         pool,
-        await classContext(pool, target.classId),
+        await classContext(pool, target.classId, services.now?.()),
         term,
       );
     },
@@ -231,7 +279,11 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     target: classParam,
     handler: async ({ request, reply, target, pool, services }) => {
       const query = reportCardsPdfQuery.parse(request.query);
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const data = await readReportCards(pool, context, query.term);
       const students = data.students.filter(
         (student) => !query.student || student.id === query.student,
@@ -267,11 +319,15 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/exports/gradebook.csv`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, reply, target, pool }) => {
+    handler: async ({ request, reply, target, pool, services }) => {
       const { term: termId, columns } = gradebookExportSchema.parse(
         request.query,
       );
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const term = termById(await termsFor(pool, context), termId);
       const rows = await gradebookRows(
         pool,
@@ -292,9 +348,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/exports/time.csv`,
     action: "students.read",
     target: classParam,
-    handler: async ({ request, reply, target, pool }) => {
+    handler: async ({ request, reply, target, pool, services }) => {
       const { period } = timeQuerySchema.parse(request.query);
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const range = await periodRange(pool, context, period);
       const students = await termRoster(pool, context.id, range);
       const days = await perDay(
@@ -330,9 +390,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/exports/oneroster.zip`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, reply, target, pool }) => {
+    handler: async ({ request, reply, target, pool, services }) => {
       const { term: termId } = oneRosterExportSchema.parse(request.query);
-      const context = await classContext(pool, target.classId);
+      const context = await classContext(
+        pool,
+        target.classId,
+        services.now?.(),
+      );
       const term = termById(await termsFor(pool, context), termId);
       const rows = await gradebookRows(
         pool,
@@ -361,6 +425,27 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
     handler: ({ actor, target, pool }) => studentRecord(pool, actor, target),
+  });
+  // One answer replayed as the student saw it: whoever can read the record
+  // can open its work. The attempt must be this student's.
+  define({
+    method: "GET",
+    url: "/api/v1/school/students/:student/work/:attempt",
+    action: "students.read",
+    target: ({ params }) =>
+      ({ kind: "student", personId: params.student! }) as const,
+    handler: async ({ request, target, pool }) => {
+      const { attempt } = workParams.parse(request.params);
+      const { skill } = workQuery.parse(request.query);
+      const replay = await readWorkReplay(
+        pool,
+        target.personId,
+        attempt,
+        skill,
+      );
+      if (!replay) throw new SchoolError(404, "not_found");
+      return replay;
+    },
   });
   // The record as a printed progress report, rendered for this request and
   // never stored: it names the student.

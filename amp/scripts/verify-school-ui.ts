@@ -39,6 +39,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { SchoolRepository } from "../src/schools/repository";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { schoolAdmin } from "./school-admin";
+import { todayTitle } from "./today-title";
 import {
   accountsAuth,
   accountsConfiguration,
@@ -434,7 +435,7 @@ async function journey(browser: Browser, engine: string, width: number) {
 
     // Today before anyone works this week.
     await teacher.goto(`${klass}/today`);
-    await heading(teacher, /^Good /);
+    await todayTitle(teacher);
     const working = async () =>
       Number(
         (
@@ -479,7 +480,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     await heading(pictures, "Remember these 3");
     await pictures.getByRole("button", { name: "These are mine" }).click();
     await pictures.waitForURL("**/practice");
-    await answerSome(pictures, 4);
+    // Five problems: practiced this week means 5 active minutes or 5
+    // problems (src/schools/teacher-reads.ts).
+    await answerSome(pictures, 5);
 
     const card = await phone();
     last = card;
@@ -495,12 +498,12 @@ async function journey(browser: Browser, engine: string, width: number) {
       !card.url().includes(token),
       card.url(),
     );
-    await answerSome(card, 4);
+    await answerSome(card, 5);
 
     // 4. Today shows them; the gradebook suggests; the teacher decides.
     last = teacher;
     await teacher.reload();
-    await heading(teacher, /^Good /);
+    await todayTitle(teacher);
     const after = await working();
     check(`${label} Today counts both students`, after === before + 2, {
       before,
@@ -637,8 +640,9 @@ async function journey(browser: Browser, engine: string, width: number) {
     );
     check(`${label} the seat is free`, gone.seats === 0, gone.seats);
     check(`${label} the answers are gone`, gone.attempts === 0, gone.attempts);
+    // The license lives in Settings: its old address opens that section.
     await head.goto(`${origin}/school/${orgId}/license`);
-    await heading(head, "License");
+    await head.getByRole("heading", { name: "License", level: 2 }).waitFor();
     await head.getByText("in use").first().waitFor();
     const license = await head.locator("main").innerText();
     check(

@@ -1,0 +1,228 @@
+/* The teacher's grade curve: a strip above the gradebook and its editor. */
+[data-letter="A"] {
+  --letter: var(--color-grade-a);
+}
+[data-letter="B"] {
+  --letter: var(--color-grade-b);
+}
+[data-letter="C"] {
+  --letter: var(--color-grade-c);
+}
+[data-letter="D"] {
+  --letter: var(--color-grade-d);
+}
+[data-letter="F"] {
+  --letter: var(--color-grade-f);
+}
+
+.strip {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.stripHead {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "title legend action";
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: 44px;
+}
+.stripTitle {
+  grid-area: title;
+  font-size: var(--text-heading-4);
+  font-weight: 650;
+  white-space: nowrap;
+}
+.stripLegend {
+  grid-area: legend;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+/* A phone: the title and its action share a row, the counts go under them. */
+@media (max-width: 640px) {
+  .stripHead {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "title action" "legend legend";
+  }
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.legendItem i,
+.rowLetter i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--letter);
+}
+.stripAction {
+  grid-area: action;
+}
+.frozen {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+
+/* The picture: places best to worst, each a column of its letters' chances. */
+.picture {
+  position: relative;
+  margin: 0;
+  padding-bottom: 20px;
+}
+.bars {
+  display: block;
+  width: 100%;
+  height: 20px;
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+  shape-rendering: crispEdges;
+}
+.picture[data-tall] .bars {
+  height: 44px;
+}
+.bars rect {
+  fill: var(--letter);
+}
+.letters {
+  position: absolute;
+  inset: auto 0 0;
+  height: 18px;
+}
+.letters span {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  color: var(--color-on-surface);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 18px;
+}
+
+/* The editor */
+.editor {
+  display: grid;
+  gap: var(--space-5);
+  font-size: var(--text-table);
+}
+.intro {
+  max-width: 60ch;
+  color: var(--color-muted-text);
+  line-height: 1.45;
+}
+.preview {
+  display: grid;
+  gap: 2px;
+}
+.previewBlank {
+  height: 64px;
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+}
+.axis {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+/* One grid for the head and every row, so the columns line up. */
+.rows {
+  display: grid;
+  grid-template-columns: 40px auto 24px auto;
+  align-items: center;
+  justify-content: start;
+  gap: var(--space-2);
+}
+.row,
+.rowHead {
+  display: contents;
+}
+.rowHead {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.rowHead span {
+  justify-self: center;
+}
+.rowLetter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-heading-4);
+  font-weight: 650;
+}
+.to {
+  color: var(--color-muted-text);
+  text-align: center;
+}
+/* Two lines held, so a longer message never moves the buttons. */
+.check {
+  min-height: calc(2 * 1.4em);
+  color: var(--color-muted-text);
+  line-height: 1.4;
+}
+.check[data-tone="danger"] {
+  color: var(--color-danger-accent);
+  font-weight: 600;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+@media (max-width: 400px) {
+  .rows {
+    grid-template-columns: 32px auto 18px auto;
+    column-gap: 6px;
+  }
+}
+
+/* One student's place on the curve, in the evidence sheet. */
+.place {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  line-height: 1.4;
+}
+.shares {
+  display: flex;
+  gap: 2px;
+  height: 24px;
+}
+.shares span {
+  display: grid;
+  flex-basis: 0;
+  min-width: 4px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--letter) 18%, var(--color-surface));
+  box-shadow: inset 0 -3px 0 var(--letter);
+  color: var(--color-on-surface);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* The narrowest phones: each letter over its pair of steppers. */
+@media (max-width: 360px) {
+  .rows {
+    grid-template-columns: auto 14px auto;
+    column-gap: 2px;
+  }
+  .rowHead > span:first-child {
+    display: none;
+  }
+  .rowLetter {
+    grid-column: 1 / -1;
+    margin-top: var(--space-1);
+  }
+}

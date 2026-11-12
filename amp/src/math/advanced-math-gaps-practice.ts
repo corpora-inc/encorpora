@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -578,7 +579,7 @@ function compoundGrowth(r: Random): Built {
           },
           {
             label: text(wrongRoot),
-            feedback: `Raise the ${unit} factor to the power ${per}; do not take a ${per}th root.`,
+            feedback: `Raise the ${unit} factor to the power ${per}; do not take ${withArticle(per)}th root.`,
           },
           {
             label: text(
@@ -1214,14 +1215,14 @@ function residualFunctionFit(r: Random): Built {
     hint: `Find the predicted value, then compare it with the observed value ${observed}. Is the prediction larger or smaller than what was observed?`,
     explanation: [
       `Predicted value at $x=${x}$ is ${predicted}; the observed value is ${observed}.`,
-      `Residual = observed − predicted = ${e}. ${over ? "A negative residual means the prediction is above the observed value" : "A positive residual means the prediction is below the observed value"}.`,
+      `Residual = observed − predicted = $${e}$. ${over ? "A negative residual means the prediction is above the observed value" : "A positive residual means the prediction is below the observed value"}.`,
       correct,
     ],
     correct,
     wrong: pickWrong(r, correct, [
       {
         label: stmt(!over, gap),
-        feedback: `A ${over ? "negative" : "positive"} residual means observed minus predicted is ${over ? "below" : "above"} 0, so the prediction is ${over ? "too high" : "too low"}.`,
+        feedback: `${withArticle(over ? "negative" : "positive", true)} residual means observed minus predicted is ${over ? "below" : "above"} 0, so the prediction is ${over ? "too high" : "too low"}.`,
       },
       {
         label: stmt(over, predicted),

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -1047,12 +1048,12 @@ function polynomialBuild(r: Random): Built {
       });
     return {
       variant,
-      prompt: `Which polynomial is a ${termWords[t]} of degree ${d} with a leading coefficient of ${tex(String(lead))} and a constant term of ${tex(String(konst))}?`,
+      prompt: `Which polynomial is ${withArticle(termWords[t])} of degree ${d} with a leading coefficient of ${tex(String(lead))} and a constant term of ${tex(String(konst))}?`,
       answer: "",
-      hint: `Check one property at a time. Degree ${d} means the highest exponent is ${d}, the leading coefficient ${lead} multiplies that term, the constant term ${konst} has no variable, and a ${termWords[t]} has ${t} terms added.`,
+      hint: `Check one property at a time. Degree ${d} means the highest exponent is ${d}, the leading coefficient ${lead} multiplies that term, the constant term ${konst} has no variable, and ${withArticle(termWords[t])} has ${t} terms added.`,
       explanation: [
         `Degree ${d} means the highest exponent is ${d}, and the leading coefficient ${lead} multiplies ${tex(`x^{${d}}`)}.`,
-        `The constant term is ${konst}. A ${termWords[t]} has ${t} terms, so ${t - 2} more ${t - 2 === 1 ? "term sits" : "terms sit"} between them${t === 2 ? "" : ", each with an exponent below " + d}.`,
+        `The constant term is $${konst}$. ${withArticle(termWords[t], true)} has ${t} terms, so ${t - 2} more ${t - 2 === 1 ? "term sits" : "terms sit"} between them${t === 2 ? "" : ", each with an exponent below " + d}.`,
         `${correct} has all four properties.`,
       ],
       choices: choicesFrom(r, correct, wrongs),
@@ -1257,7 +1258,7 @@ function quadrilateralChoice(r: Random): Built {
     const shape = rhombus ? "rhombus" : "rectangle";
     return {
       variant,
-      prompt: `Quadrilateral ${tex(name)} is a parallelogram. Which additional fact is enough to prove that ${tex(name)} is a ${shape}?`,
+      prompt: `Quadrilateral ${tex(name)} is a parallelogram. Which additional fact is enough to prove that ${tex(name)} is ${withArticle(shape)}?`,
       answer: "",
       hint: rhombus
         ? `Parallelogram ${tex(name)} is a rhombus when all four sides are equal. Test each fact: does it make the sides equal, or is it already true of every parallelogram?`

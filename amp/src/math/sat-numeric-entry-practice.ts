@@ -1111,8 +1111,8 @@ function equationThenSolve(r: R): Case {
         ? `Check: $${tex(answer)}\\cdot\\frac{${b - a}}{${a * b}}=1$.`
         : `Check: $${tex(answer)}\\cdot\\frac{${a + b}}{${a * b}}=1$.`,
       drain
-        ? `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives ${tex(averaged)}; $\\frac{1}{${a}}-\\frac{1}{${b}}=t$ gives ${tex(mistaken)}. None equals $${tex(answer)}$.`
-        : `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives ${tex(averaged)}; $\\frac{1}{${a}}+\\frac{1}{${b}}=t$ gives ${tex(mistaken)}. None equals $${tex(answer)}$.`,
+        ? `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives $${tex(averaged)}$; $\\frac{1}{${a}}-\\frac{1}{${b}}=t$ gives $${tex(mistaken)}$. None equals $${tex(answer)}$.`
+        : `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives $${tex(averaged)}$; $\\frac{1}{${a}}+\\frac{1}{${b}}=t$ gives $${tex(mistaken)}$. None equals $${tex(answer)}$.`,
     ],
     data: { kind: drain ? "fill-drain" : "combined", a, b },
   };

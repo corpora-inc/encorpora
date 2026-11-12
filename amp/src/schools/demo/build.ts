@@ -9,7 +9,7 @@
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import type { Repository } from "../../server/repository.js";
-import { generateProblem, templates } from "../../math/engine.js";
+import { generateProblem } from "../../math/engine.js";
 import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
 import type { WorkbookRecord } from "../../workbook/contracts.js";
@@ -23,42 +23,24 @@ import {
 import { schoolAccountId } from "../principal.js";
 import { AGREEMENT_VERSION } from "../agreement.js";
 import { hashPictures } from "../sign-in.js";
-import { seedClassHistory, type DemoStudent } from "./history.js";
-import { namePairs, TEACHER_NAMES } from "./names.js";
+import { writeClassHistory } from "./history.js";
+import { TEACHER_NAMES } from "./names.js";
+import { DAY, hash, wrongResponse, type Persona } from "./personas.js";
 import {
-  DAY,
-  GRADE_5_CLASS,
-  hash,
-  persona,
-  SHARED_GAP,
-  STUCK,
-  wrongResponse,
-  type Persona,
-} from "./personas.js";
-import {
-  seedCalendar,
-  seedStaffEvents,
-  seedTermEvidence,
-  SHORT_LAST_WEEK,
-  sumWeeks,
-} from "./term.js";
+  demoDay,
+  demoRoster,
+  joinedOn,
+  SCHOOL_NAME,
+  type DemoDay,
+  type DemoKind,
+} from "./roster.js";
+import { demoTerms } from "./snapshot.js";
+import type { Simulation } from "./simulate.js";
+import { seedCalendar, seedStaffEvents, sumWeeks } from "./term.js";
 
-export const demoKinds = ["class", "school"] as const;
-export type DemoKind = (typeof demoKinds)[number];
+export { demoKinds, type DemoKind } from "./roster.js";
 export type DemoPlace = { orgId: string; classId: string; created: boolean };
 
-const SCHOOL_NAME = "Brightwater Elementary";
-const HERO = { name: "Grade 5 Math", grade: 5 };
-/** The other classes of a demo school: who teaches them is only a name. */
-const SCHOOL_CLASSES = [
-  { name: "Grade 1 Math", grade: 1, teacher: 0, size: 21 },
-  { name: "Grade 2 Math", grade: 2, teacher: 0, size: 23 },
-  { name: "Grade 3 Math", grade: 3, teacher: 1, size: 22 },
-  { name: "Grade 4 Math", grade: 4, teacher: 1, size: 25 },
-  { name: "Grade 6 Math", grade: 6, teacher: 2, size: 24 },
-] as const;
-/** The demo school's quiet class. */
-const QUIET_GRADE = 3;
 const DEMO_TEACHERS = [
   TEACHER_NAMES[4]!,
   TEACHER_NAMES[2]!,
@@ -124,6 +106,13 @@ export async function createDemo(
   now = Date.now(),
 ): Promise<DemoPlace> {
   const timezone = input.timezone ?? "America/New_York";
+  const day = demoDay(now, timezone);
+  // The day's terms are computed ahead (`snapshot.ts`), so this is a read.
+  // A returning owner needs none; a new demo waits here, holding no lock or
+  // connection, if they are still being computed.
+  const terms = (await hasDemo(pool, input))
+    ? null
+    : await demoTerms(pool, input.kind, day);
   // The workbook worker starts while the class is written.
   const warming = learning
     ? workbookWorker()
@@ -133,7 +122,8 @@ export async function createDemo(
   const place = await transaction(pool, async (client) => {
     // A second request (a double-click) waits for the first to finish,
     // then returns what it made.
-    await client.query("SET LOCAL lock_timeout='30s'");
+    await client.query("SET LOCAL lock_timeout='180s'");
+    await client.query("SET LOCAL statement_timeout='180s'");
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-demo:${input.accountId}:${input.kind}`,
     ]);
@@ -149,7 +139,13 @@ export async function createDemo(
     ).rows[0];
     if (existing)
       return { orgId: existing.id, classId: existing.class_id, created: false };
-    return build(client, { ...input, timezone }, now);
+    return build(
+      client,
+      { ...input, timezone },
+      now,
+      day,
+      terms ?? (await demoTerms(pool, input.kind, day)),
+    );
   });
   await warming;
   if (place.created && learning)
@@ -158,6 +154,18 @@ export async function createDemo(
       console.error(JSON.stringify({ demoWorkbooks: String(error) })),
     );
   return place;
+}
+
+async function hasDemo(
+  pool: Pool,
+  input: { accountId: string; kind: DemoKind },
+) {
+  return !!(
+    await pool.query(
+      "SELECT 1 FROM amp_orgs WHERE demo AND created_by=$1 AND demo_kind=$2 LIMIT 1",
+      [input.accountId, input.kind],
+    )
+  ).rowCount;
 }
 
 async function transaction<T>(
@@ -184,6 +192,8 @@ async function build(
   client: PoolClient,
   input: { accountId: string; kind: DemoKind; timezone: string },
   now: number,
+  day: DemoDay,
+  terms: readonly Simulation[],
 ): Promise<DemoPlace> {
   const school = input.kind === "school";
   const orgId = randomUUID();
@@ -192,7 +202,7 @@ async function build(
      VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,$4,false,$5,true,$6,now(),now()-interval '84 days')`,
     [
       orgId,
-      school ? SCHOOL_NAME : HERO.name,
+      school ? SCHOOL_NAME : demoRoster("class")[0]!.name,
       input.timezone,
       !school,
       input.accountId,
@@ -208,14 +218,6 @@ async function build(
      VALUES($1,$2,$3,'AMP','for this demo',$4::date+interval '8 hours')`,
     [randomUUID(), orgId, AGREEMENT_VERSION, year.start],
   );
-  const clock = (
-    await client.query(
-      "SELECT ((now() AT TIME ZONE $1)::date)::text AS day,extract(hour FROM now() AT TIME ZONE $1)::int AS hour",
-      [input.timezone],
-    )
-  ).rows[0] as { day: string; hour: number };
-  const today = clock.day;
-
   // The owner, and the teachers who are only names.
   const owner = randomUUID();
   await client.query(
@@ -259,72 +261,38 @@ async function build(
     ],
   );
 
-  // Classes and their students: the hero class is the owner's.
-  const heroId = await insertClass(client, {
-    orgId,
-    sessionId: year.year,
-    ...HERO,
-  });
+  // Classes and their students, in roster order: the hero class, the
+  // owner's, first. Each student's term is `terms` at the same place.
   const classes: Planned[] = [];
-  const plan = (
-    classId: string,
-    grade: number,
-    personas: readonly Persona[],
-  ): Planned => ({
-    classId,
-    grade,
-    people: personas.map((entry) => ({
-      personId: randomUUID(),
-      learnerId: randomUUID(),
-      persona: entry,
-      joined:
-        entry.joined === undefined
-          ? year.start
-          : new Date(Date.parse(`${today}T12:00:00Z`) - entry.joined * DAY)
-              .toISOString()
-              .slice(0, 10),
-    })),
-  });
-  classes.push(plan(heroId, HERO.grade, GRADE_5_CLASS));
-  const enrollments: [string, string, string, string][] = [
-    [heroId, owner, "teacher", year.start],
-  ];
-  if (school) {
-    const taken = new Set(GRADE_5_CLASS.map((entry) => entry.name.join(" ")));
-    let offset = 3;
-    for (const klass of SCHOOL_CLASSES) {
-      const classId = await insertClass(client, {
-        orgId,
-        sessionId: year.year,
-        ...klass,
-      });
-      const names = namePairs(klass.size, offset, taken);
-      offset += klass.size * 5;
-      for (const name of names) taken.add(name.join(" "));
-      classes.push(
-        plan(
-          classId,
-          klass.grade,
-          names.map(([given, family], index) =>
-            persona(
-              given,
-              family,
-              klass.grade + (hash(`${given}${family}`) - 0.55) * 1.8,
-              {
-                identifier: `S-${20410 + offset + index}`,
-              },
-            ),
-          ),
-        ),
-      );
-      enrollments.push([
-        classId,
-        teachers[klass.teacher]!,
-        "teacher",
-        year.start,
-      ]);
-    }
+  const enrollments: [string, string, string, string][] = [];
+  for (const klass of demoRoster(input.kind)) {
+    const classId = await insertClass(client, {
+      orgId,
+      sessionId: year.year,
+      name: klass.name,
+      grade: klass.grade,
+    });
+    classes.push({
+      classId,
+      grade: klass.grade,
+      people: klass.personas.map((entry) => ({
+        personId: randomUUID(),
+        learnerId: randomUUID(),
+        persona: entry,
+        joined:
+          entry.joined === undefined
+            ? year.start
+            : joinedOn(day.today, entry.joined),
+      })),
+    });
+    enrollments.push([
+      classId,
+      klass.teacher === null ? owner : teachers[klass.teacher]!,
+      "teacher",
+      year.start,
+    ]);
   }
+  const heroId = classes[0]!.classId;
   const people = classes.flatMap((klass) =>
     klass.people.map((person) => ({
       ...person,
@@ -463,27 +431,18 @@ async function build(
     [carded.map((person) => person.personId), year.start],
   );
 
-  // Twelve weeks of practice: the hero class from its personas, with real
-  // answers lately; every other class straight to the rollups.
-  const hero = classes[0]!;
-  // The week triggers wait; each week is summed once below.
+  // Twelve weeks for every class, from the one dose model. The week
+  // triggers wait; each week is summed once below.
   await client.query("SET LOCAL amp.rollup_weeks='deferred'");
-  await seedClassHistory(client, {
-    students: hero.people.map((person): DemoStudent => ({
-      personId: person.personId,
-      learnerId: person.learnerId,
-      persona: person.persona,
-    })),
-    timezone: input.timezone,
-    termStart: year.start,
-    today,
-    gradeLevel: hero.grade,
-    weekShape: SHORT_LAST_WEEK,
-    now,
-    workToday: clock.hour >= 9,
-  });
+  if (year.start !== day.termStart || terms.length !== people.length)
+    throw new Error("The demo's terms are for another day or roster");
+  await writeClassHistory(
+    client,
+    people.map((person) => person.learnerId),
+    terms,
+  );
   await sumWeeks(client, "SELECT unnest($1::text[])", [
-    hero.people.map((person) => person.learnerId),
+    people.map((person) => person.learnerId),
   ]);
   await client.query(
     `CREATE TEMP TABLE seed_class(id uuid,org uuid,teacher uuid) ON COMMIT DROP;
@@ -497,38 +456,14 @@ async function build(
       enrollments.filter((row) => row[2] === "teacher").map((row) => row[1]),
     ],
   );
-  const others = people.filter((person) => person.classId !== heroId);
   await client.query(
-    `INSERT INTO seed_student SELECT p,l,c,g,a,d,0.4+d*0.5,n
-     FROM unnest($1::uuid[],$2::text[],$3::uuid[],$4::int[],$5::float8[],$6::float8[]) WITH ORDINALITY AS t(p,l,c,g,a,d,n)`,
+    `INSERT INTO seed_student SELECT p,l,c,g,0,1,1,n
+     FROM unnest($1::uuid[],$2::text[],$3::uuid[],$4::int[]) WITH ORDINALITY AS t(p,l,c,g,n)`,
     [
-      others.map((person) => person.personId),
-      others.map((person) => person.learnerId),
-      others.map((person) => person.classId),
-      others.map((person) => person.grade),
-      others.map((person) => person.persona.ability - person.grade),
-      others.map((person) => {
-        const roll = hash(`${person.persona.name.join(" ")} drive`);
-        // One class barely practices, so the overview has something to say.
-        if (person.grade === QUIET_GRADE) return roll * 0.08;
-        return roll < 0.06 ? 0 : 0.5 + roll * 0.85;
-      }),
-    ],
-  );
-  if (others.length)
-    await seedTermEvidence(client, {
-      yearStart: year.start,
-      skillsPerDay: 2,
-      weekShape: SHORT_LAST_WEEK,
-    });
-  // The hero class's students join the event log's sample too.
-  await client.query(
-    `INSERT INTO seed_student SELECT p,l,$3::uuid,$4,0,1,1,n FROM unnest($1::uuid[],$2::text[]) WITH ORDINALITY AS t(p,l,n)`,
-    [
-      hero.people.map((person) => person.personId),
-      hero.people.map((person) => person.learnerId),
-      heroId,
-      hero.grade,
+      people.map((person) => person.personId),
+      people.map((person) => person.learnerId),
+      people.map((person) => person.classId),
+      people.map((person) => person.grade),
     ],
   );
   await seedStaffEvents(client, input.timezone);
@@ -539,21 +474,6 @@ async function build(
     [orgId, owner, classes.map((klass) => klass.classId), year.start],
   );
   return { orgId, classId: heroId, created: true };
-}
-
-/** The skills a demo student keeps missing (`SHARED_GAP`, `STUCK`). */
-const skillOfTemplate = new Map(
-  templates.map((template) => [template.id, template.skillId]),
-);
-function missedSkills(given: string): Set<string> {
-  return new Set(
-    [
-      SHARED_GAP.people.includes(given) ? SHARED_GAP.template : null,
-      STUCK.person === given ? STUCK.template : null,
-    ].flatMap((template) =>
-      template ? [skillOfTemplate.get(template) ?? ""] : [],
-    ),
-  );
 }
 
 /** A printed problem, made once per process: students share a workbook. */
@@ -693,7 +613,6 @@ async function seedWorkbooks(
         .filter((row) => row.learner_id === student.learner_id)
         .map((row) => row.skill_id),
     );
-    const missing = missedSkills(student.given_name);
     const slipped = new Set<string>();
     const items = record.spec.sections.flatMap((section) =>
       section.items.map((item) => ({ item, section: section.kind })),
@@ -701,18 +620,16 @@ async function seedWorkbooks(
     for (const [index, { item }] of items.entries()) {
       const problem = printed(item);
       const slip =
-        missing.has(item.skillId) ||
-        (!shown.has(item.skillId) &&
-          !slipped.has(item.skillId) &&
-          hash(`${student.given_name}${index}`) > 0.72);
+        !shown.has(item.skillId) &&
+        !slipped.has(item.skillId) &&
+        hash(`${student.given_name}${index}`) > 0.72;
       if (slip) slipped.add(item.skillId);
       const kind = problem.public.response.kind;
       const graded =
         kind === "number" || kind === "fraction" || kind === "choice";
       // A mark counts half, so on a skill they've shown it would follow their
       // screen work weaker; those wait to be marked.
-      if (!graded && shown.has(item.skillId) && !missing.has(item.skillId))
-        continue;
+      if (!graded && shown.has(item.skillId)) continue;
       const id = paperProblemId(record.id, index + 1);
       papers.push({
         learner: student.learner_id,
@@ -774,10 +691,12 @@ async function seedWorkbooks(
       recordedAt,
     ],
   );
-  // Recording results stores today's level from the few answers on file; the
-  // term's stored levels are the class's real story, so they stand.
+  // Paper marks are answers. A level day the estimator already wrote from
+  // the term's answers stays. A row from an older writer, with no reported-sd
+  // version, does not.
   await pool.query(
-    "DELETE FROM amp_level_days WHERE learner_id=ANY($1::text[]) AND policy_version<>'demo'",
+    `DELETE FROM amp_level_days WHERE learner_id=ANY($1::text[])
+       AND NOT (frontier ? 'sdVersion')`,
     [rows.map((row) => row.learner_id)],
   );
 }

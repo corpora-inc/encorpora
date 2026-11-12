@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count, term } from "./agreement";
 import {
   choice,
@@ -63,7 +64,7 @@ function degreeCount(r: Rng): Item {
         : form === 1
           ? `An angle turns through $${n}/360$ of a full circle. What is its measure in degrees?`
           : form === 2
-            ? `A ${n}° angle is what fraction of a full circle?`
+            ? `${withArticle(n, true)}° angle is what fraction of a full circle?`
             : r(0, 1)
               ? `An angle consists of ${n} one-degree angles side by side, with no gaps or overlaps. What is its measure in degrees?`
               : `An angle measures ${n}°. How many one-degree angles does it turn through?`,
@@ -548,7 +549,7 @@ function triangleStory(r: Rng, missing: boolean): Item {
     value = whole ? target : Math.round(target * 10) / 10;
   const story = missing
     ? {
-        ladder: `A ${c}-foot ladder leans against a vertical wall, with its base ${a} feet from the wall on level ground. How high up the wall does it reach`,
+        ladder: `${withArticle(c, true)}-foot ladder leans against a vertical wall, with its base ${a} feet from the wall on level ground. How high up the wall does it reach`,
         screen: `A rectangular screen has diagonal ${c} inches and width ${a} inches. What is its height`,
         park: `A rectangular park has a straight corner-to-corner path ${c} meters long and one side ${a} meters long. What is the other side's length`,
         ramp: `A straight ramp is ${c} feet long and has horizontal run ${a} feet. What is its vertical rise`,
@@ -559,7 +560,7 @@ function triangleStory(r: Rng, missing: boolean): Item {
         screen: `A rectangular screen is ${a} inches wide and ${b} inches high. What is its diagonal length`,
         park: `A rectangular park is ${a} meters by ${b} meters. ${saving ? "How much shorter is the straight path between opposite corners than walking along the two sides" : "How long is the straight path between opposite corners"}`,
         ramp: `A straight ramp has horizontal run ${a} feet and vertical rise ${b} feet. How long is the ramp surface`,
-        wire: `A taut wire connects the top of a ${b}-meter vertical pole to level ground ${a} meters from its base. How long is the wire`,
+        wire: `A taut wire connects the top of ${withArticle(b)}-meter vertical pole to level ground ${a} meters from its base. How long is the wire`,
       }[s.name];
   const unit = s.unit === "ft" ? "feet" : s.unit === "in" ? "inches" : "meters";
   const points: Point[] = [

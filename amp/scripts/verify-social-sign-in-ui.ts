@@ -25,6 +25,7 @@ import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { openMenu } from "./ui-controls";
 import { migrate } from "./migrate";
 import { fill, socialCopyFor } from "../src/web/features/auth/social-copy";
+import { todayTitle } from "./today-title";
 
 /** Provider sign-in in the browser: the brand button stack on sign-in and
  * "Create your account" at phone, small-phone and desktop sizes in
@@ -750,11 +751,7 @@ try {
   );
   async function familyHome(tab: Page) {
     await tab.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
-    await tab
-      .getByRole("heading", {
-        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-      })
-      .waitFor();
+    await todayTitle(tab);
     await tab
       .getByRole("button", {
         name: "Let Test Learner practice here",

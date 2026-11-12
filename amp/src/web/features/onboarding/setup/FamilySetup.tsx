@@ -32,6 +32,7 @@ import {
   secondParentOptions,
 } from "../../second-parent/api";
 import { useStartPlace } from "../starter-api";
+import { StepFrame } from "./StepFrame";
 import styles from "./Setup.module.css";
 
 /* A parent's or a tutor's first run (docs/product-model.md): a few calm steps,
@@ -123,63 +124,17 @@ type StepProps = {
   index: number;
 };
 
-/** One step: where it sits in the setup, its title, its content, and Back
- * and Next at the foot. The reason Next waits keeps its line beneath it. */
+/** One step of a parent's or tutor's setup, in the shared step frame. */
 function Frame({
   kind,
   index,
-  title,
-  lede,
-  children,
-  next,
-  hint = "",
   back = index === 0 ? "/start" : stepUrl(kind, STEPS[kind][index - 1]!.id),
-}: {
+  ...rest
+}: Omit<Parameters<typeof StepFrame>[0], "steps" | "back"> & {
   kind: SetupKind;
-  index: number;
-  title: string;
-  lede?: ReactNode;
-  children: ReactNode;
-  next?: ReactNode;
-  hint?: string;
   back?: string;
 }) {
-  const steps = STEPS[kind];
-  return (
-    <main className={styles.page}>
-      <nav className={styles.progress} aria-label="Setup">
-        <p className={styles.count}>
-          Step {index + 1} of {steps.length}
-        </p>
-        <ol>
-          {steps.map((entry, at) => (
-            <li
-              key={entry.id}
-              data-state={at < index ? "done" : at === index ? "now" : "next"}
-              aria-current={at === index ? "step" : undefined}
-            >
-              <span className={styles.bar} aria-hidden="true" />
-              <span className={styles.stepName}>{entry.label}</span>
-            </li>
-          ))}
-        </ol>
-      </nav>
-      <h1 className={styles.title}>{title}</h1>
-      {lede && <p className={styles.lede}>{lede}</p>}
-      <div className={styles.body}>{children}</div>
-      <div className={styles.foot}>
-        <div className={styles.actions}>
-          <Link to={back as never} className={buttonClass("quiet")}>
-            Back
-          </Link>
-          {next}
-        </div>
-        <p className={styles.hint} aria-live="polite">
-          {hint}
-        </p>
-      </div>
-    </main>
-  );
+  return <StepFrame steps={STEPS[kind]} index={index} back={back} {...rest} />;
 }
 
 const why = (failure: unknown, fallback: string) => {
@@ -275,7 +230,9 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
       draft.set(session.accountId, { rows: [], renames: {} });
       await navigate({ href: stepUrl(kind, STEPS[kind][index + 1]!.id) });
     } catch (failure) {
-      setError(why(failure, "That didn’t save. Check your connection and try again."));
+      setError(
+        why(failure, "That didn’t save. Check your connection and try again."),
+      );
     } finally {
       setSaving(false);
     }
@@ -399,7 +356,9 @@ function StudentsStep({ session, me, kind, index }: StepProps) {
       draft.set(session.accountId, { rows: [] });
       await navigate({ href: stepUrl(kind, STEPS[kind][index + 1]!.id) });
     } catch (failure) {
-      setError(why(failure, "That didn’t save. Check your connection and try again."));
+      setError(
+        why(failure, "That didn’t save. Check your connection and try again."),
+      );
     } finally {
       setSaving(false);
     }
@@ -623,7 +582,11 @@ function JoinStep({ session, me, kind, index }: StepProps) {
       <div className={styles.ways}>
         {parent && (
           <section className={styles.way} aria-labelledby="way-here">
-            <svg viewBox="0 0 24 24" className={styles.wayIcon} aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              className={styles.wayIcon}
+              aria-hidden="true"
+            >
               <path d="M7 3h10v18H7zM11 18h2" />
             </svg>
             <h2 id="way-here">On this device</h2>

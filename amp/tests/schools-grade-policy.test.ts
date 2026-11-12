@@ -8,6 +8,7 @@ import {
   gradeParameters,
   letterFor,
   rangeLetters,
+  shownComponents,
   suggestGrade,
   weeklyMinutes,
   type GradeActivity,
@@ -406,6 +407,71 @@ test("practice falls back to the class median, and to a typical week", () => {
   assert.equal(typical.id === "practice" && typical.against, "typical");
 });
 
+test("a class median is named as one, never as most of the class", () => {
+  const median = suggestGrade(
+    persona({ weeklyTargetMinutes: null, classMedianWeeklyMinutes: 76 }),
+  );
+  const sentence = componentSentence(median.components[2]!);
+  assert.match(sentence, /against a class median of 76/);
+  assert.doesNotMatch(sentence, /most of the class/);
+  // A target, once set, is what practice counts against.
+  const target = suggestGrade(
+    persona({ weeklyTargetMinutes: 60, classMedianWeeklyMinutes: 5 }),
+  ).components[2]!;
+  assert.equal(target.id === "practice" && target.against, "target");
+  assert.equal(target.id === "practice" && target.targetMinutes, 60);
+});
+
+test("a few spaced reviews don't count, and any share says x of n", () => {
+  const few = suggestGrade(
+    persona({ activity: activity({ review: 9, reviewIndependent: 0 }) }),
+  );
+  assert.equal(scoreOf(few, "retention"), null);
+  assert.equal(
+    componentSentence(few.components[3]!),
+    "0 of 9 spaced reviews right without help: too few yet to count toward the range.",
+  );
+  // So 0 right of 9 can't drag a range down as a zero would.
+  assert.ok(middle(few) >= middle(suggestGrade(persona())) - 2);
+  const enough = suggestGrade(
+    persona({ activity: activity({ review: 10, reviewIndependent: 2 }) }),
+  );
+  assert.notEqual(scoreOf(enough, "retention"), null);
+  assert.equal(
+    componentSentence(enough.components[3]!),
+    "2 of 10 spaced reviews right without help (20%).",
+  );
+});
+
+test("facts only: no letter or range, and every fact still stated", () => {
+  const alone = suggestGrade(
+    persona({
+      factsOnly: true,
+      weeklyTargetMinutes: null,
+      classMedianWeeklyMinutes: null,
+    }),
+  );
+  assert.equal(alone.status, "facts-only");
+  assert.equal(alone.low, null);
+  assert.equal(alone.letterLow, null);
+  assert.equal(rangeLetters(alone), null);
+  const sentences = alone.components.map((component) =>
+    componentSentence(component),
+  );
+  assert.match(sentences[0]!, /Working around grade/);
+  assert.match(sentences[2]!, /^\d+ active minutes a week, 1,500 problems/);
+  assert.doesNotMatch(sentences.join(" "), /class median|most of the class/);
+  assert.equal(
+    shownComponents(alone).every((component) => component.score === null),
+    true,
+  );
+  // Not enough work stays not enough work.
+  const idle = suggestGrade(
+    persona({ factsOnly: true, activity: activity({ daysActive: 1 }) }),
+  );
+  assert.equal(idle.status, "not-enough-work");
+});
+
 test("uncertain estimates widen the range, and evidence narrows it", () => {
   const width = (suggestion: GradeSuggestion) =>
     suggestion.high! - suggestion.low!;
@@ -468,22 +534,36 @@ test("a few days' noise in a level isn't a huge multiple of the pace", () => {
   assert.ok(scoreOf(flat, "growth")! < 45, JSON.stringify(flat.components));
 });
 
-test("a stored level that went down reads as no growth, not negative", () => {
+test("a level that went down shows as it is, and scores as no gain", () => {
   const result = suggestGrade(persona({ start: level(5.4), end: level(5.0) }));
   const growth = result.components[1]!;
-  assert.equal(growth.id === "growth" && growth.levelsGained, 0);
+  assert.equal(growth.id === "growth" && growth.levelsGained, -0.4);
+  assert.match(
+    componentSentence(growth),
+    /a level 0\.4 grades lower than at the start/,
+  );
+  // The overview shows the same sign (org-reads.ts usageOf), and a level that
+  // went down never scores below one that stayed put.
+  const flat = suggestGrade(persona({ start: level(5.4), end: level(5.4) }));
+  assert.equal(scoreOf(result, "growth"), scoreOf(flat, "growth"));
 });
 
 test("the sentences state their numbers and never gender a student", () => {
   const result = suggestGrade(persona());
   const sentences = result.components.map(componentSentence);
   assert.match(sentences[0]!, /grade 5\.\d, against grade \d\.\d/);
-  assert.match(sentences[1]!, /10 new objectives and 0\.5 grades/);
+  assert.match(
+    sentences[1]!,
+    /10 skills shown twice on their own, and 0\.5 grades gained/,
+  );
   assert.match(
     sentences[2]!,
     /active minutes a week, against a target of 60, 1,500 problems/,
   );
-  assert.match(sentences[3]!, /83% of spaced reviews/);
+  assert.match(
+    sentences[3]!,
+    /33 of 40 spaced reviews right without help \(83%\)/,
+  );
   for (const sentence of sentences)
     assert.doesNotMatch(sentence, /\b(he|she|his|her|him|hers)\b/i);
   // A small count of problems isn't stated.

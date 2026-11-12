@@ -9,6 +9,7 @@ import { Loading } from "../../../ui/Loading";
 import { Meter } from "../../../ui/Meter";
 import { Sheet } from "../../../ui/Sheet";
 import { FinalField, Suggested } from "./grade-parts";
+import { CurvePlace } from "./GradeCurve";
 import { evidenceOptions, type Place } from "./teacher-api";
 import {
   buttonClass,
@@ -115,6 +116,12 @@ export function EvidenceSheet({
           )}
           <section>
             <h3>{data.question}</h3>
+            {data.basis && data.suggestion.curve && (
+              <CurvePlace
+                basis={data.basis}
+                letters={data.suggestion.curve.letters}
+              />
+            )}
             <dl className={styles.lines}>
               {data.lines.map((line) => (
                 <div key={line.id} className={styles.line}>
@@ -132,11 +139,11 @@ export function EvidenceSheet({
             </dl>
           </section>
           <section>
-            <h3>Objectives gained</h3>
+            <h3>Skills shown on their own</h3>
             {data.objectives.length === 0 ? (
               <p className={styles.quietLine}>
-                None yet this term. An objective counts once{" "}
-                {data.student.first} gets it right without help, more than once.
+                None yet this term. A skill counts once {data.student.first}{" "}
+                gets it right twice without help.
               </p>
             ) : (
               <ul className={styles.objectives}>
@@ -227,12 +234,18 @@ function EvidenceWork({
       .finally(() => setBusy(false));
   };
   return (
-    <section>
+    // The problems as the student saw them: their own words, not ours.
+    <section data-evidence-problems="">
       <h3>Problems</h3>
       {shown.length === 0 ? (
         <p className={styles.quietLine}>No problems in this term yet.</p>
       ) : (
-        <WorkList work={shown} />
+        <WorkList
+          work={shown}
+          href={(item) => ({
+            path: `${classUrl(place.org, place.class, "map")}/${student}/work/${item.id}`,
+          })}
+        />
       )}
       {offset !== null && (
         <div className={styles.moreWork}>

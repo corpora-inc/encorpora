@@ -38,7 +38,11 @@ export type PlaceEntry = {
  * (docs/design/ia.md). Practice profiles live on /me/profiles; children and
  * students are reached from their class. */
 export function placeEntries(me: SignedInMe): PlaceEntry[] {
-  return placesFor(me).map((id) => place(me, id));
+  // Their own practice shows once it exists; starting it is an option of
+  // "Add a place", not a row of its own.
+  return placesFor(me)
+    .filter((id) => id !== "me" || !!me.adultPractice?.learner)
+    .map((id) => place(me, id));
 }
 
 function place(me: SignedInMe, id: PlaceId): PlaceEntry {
@@ -94,7 +98,13 @@ function place(me: SignedInMe, id: PlaceId): PlaceEntry {
 }
 
 /** The same switcher also lists the classes returned by each permitted org. */
-export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
+export function usePlaceEntries(
+  me: SignedInMe | null,
+  currentOrg?: string,
+  /** The class on screen: the drawer names it even for an admin who
+   * doesn't teach it, while the switcher lists only taught classes. */
+  currentClass?: string,
+) {
   const session = useQuery(sessionOptions).data;
   const auth = session ?? { accountId: "", token: "" };
   const orgsQuery = useQuery({
@@ -146,6 +156,15 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
       refetchOnMount: false,
     })),
   });
+  // A class is a place of its own only for someone who teaches it; a
+  // school's admin reaches every class from the school.
+  const reads = useQueries({
+    queries: classOrgs.map((org) => ({
+      ...orgOptions(auth, org.id),
+      enabled: !!session,
+      refetchOnMount: false,
+    })),
+  });
   const entries =
     me && me.account.kind !== "student"
       ? placeEntries(me).filter(
@@ -165,15 +184,13 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
         ...("demo" in org && org.demo ? { demo: true as const } : {}),
       });
   }
+  const classes: PlaceEntry[] = [];
+  let classHere: PlaceEntry | undefined;
   for (const [index, org] of classOrgs.entries()) {
+    const taught = new Set(reads[index]?.data?.teaches ?? []);
     for (const klass of lists[index]?.data ?? []) {
       const id = `class:${klass.orgId}:${klass.id}` as const;
-      if (
-        klass.id === me?.familyClass?.classId ||
-        entries.some((entry) => entry.id === id)
-      )
-        continue;
-      entries.push({
+      const entry: PlaceEntry = {
         id,
         name: klass.name,
         detail:
@@ -181,19 +198,71 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
           org.name,
         path: `school/${klass.orgId}/classes/${klass.id}/today`,
         ...(org.demo ? { demo: true as const } : {}),
-      });
+      };
+      if (klass.id === currentClass) classHere = entry;
+      if (
+        !taught.has(klass.id) ||
+        klass.id === me?.familyClass?.classId ||
+        classes.some((known) => known.id === id)
+      )
+        continue;
+      classes.push(entry);
     }
   }
+  // A lone teacher's school with one class is that class: the school layer
+  // stays out of sight, as it does in the drawer and the class's tabs. A
+  // second class brings the school back (docs/design/ia.md).
+  const places = [...entries];
+  for (const [index, org] of classOrgs.entries()) {
+    const lone =
+      reads[index]?.data?.solo === true &&
+      (lists[index]?.data?.length ?? 0) <= 1;
+    const klass = classes.findIndex((entry) =>
+      entry.id.startsWith(`class:${org.id}:`),
+    );
+    const school = places.findIndex((entry) => entry.id === `school:${org.id}`);
+    if (!lone || klass < 0 || school < 0) continue;
+    // They teach it: its own school's "Admin" says nothing they'd recognise.
+    places.splice(school, 1, { ...classes[klass]!, detail: "Teacher" });
+    classes.splice(klass, 1);
+  }
   return {
-    entries,
+    entries: orderPlaces(places, classes),
+    classHere,
     currentOrg: current,
     loading:
       orgsQuery.isLoading ||
       currentQuery.isLoading ||
-      [...permissions, ...descendantQueries, ...lists].some(
+      [...permissions, ...descendantQueries, ...lists, ...reads].some(
         (query) => query.isLoading,
       ),
   };
+}
+
+/** The switcher's order (docs/design/ia.md): their own practice, their
+ * family, then each school followed by the classes they teach there. */
+export function orderPlaces(
+  places: readonly PlaceEntry[],
+  classes: readonly PlaceEntry[],
+): PlaceEntry[] {
+  const first = (["me", "home"] as const).flatMap((id) =>
+    places.filter((entry) => entry.id === id),
+  );
+  const schools = places.filter(
+    (entry) => entry.id !== "me" && entry.id !== "home",
+  );
+  const orgOf = (entry: PlaceEntry) => entry.id.split(":")[1];
+  const placed = new Set<string>();
+  const ordered = [...first];
+  for (const school of schools) {
+    ordered.push(school);
+    for (const klass of classes)
+      if (orgOf(klass) === orgOf(school)) {
+        ordered.push(klass);
+        placed.add(klass.id);
+      }
+  }
+  return [...ordered, ...classes.filter((klass) => !placed.has(klass.id))];
 }
 
 /** Choosing a place chooses its learner: the adult's own for their practice,

@@ -143,7 +143,7 @@ const OPENERS: Record<string, string> = {
   "complex-quadratic-solve":
     "No real number squares to a negative number. The imaginary unit $i$ is the number whose square is −1, so the square root of a negative number is a real number times $i$.",
   "complex-parts":
-    "The imaginary unit $i$ is the number whose square is −1. A complex number has a real part and an imaginary part, the real number multiplying $i$.",
+    "The imaginary unit $i$ is the number whose square is $−1$. A complex number has a real part and an imaginary part, the real number multiplying $i$.",
   "interpret-linear-parameters":
     "In a linear model, the number multiplying the variable is the rate of change, the change for each one-unit step in the input. The constant term is the initial value, the output when the input is 0.",
   "quadratic-form-conversion":

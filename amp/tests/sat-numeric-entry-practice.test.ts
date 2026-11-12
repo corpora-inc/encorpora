@@ -296,7 +296,7 @@ for (const template of satNumericEntryTemplates) {
       const s = `oracle:${seed}`;
       const c = satNumericEntryCase(id, s);
       const generated = generateProblem(id, s);
-      assert.deepEqual(generated.public, c.problem.public);
+      assert.deepEqual(generated.public, asCurrent(c.problem).public);
       assert.equal(generated.answer, c.problem.answer);
       assert.deepEqual(satNumericEntryCase(id, s).problem, c.problem);
       assert.equal(generated.public.response.kind, "fraction");
@@ -355,7 +355,10 @@ for (const template of satNumericEntryTemplates) {
   test(`${id}: skill, instruction and SAT binding`, () => {
     const registered = templates.find((t) => t.id === id);
     assert.equal(registered?.skillId, template.skillId);
-    assert.ok(curriculumSkills.some((s) => s.id === template.skillId), id);
+    assert.ok(
+      curriculumSkills.some((s) => s.id === template.skillId),
+      id,
+    );
     assert.equal(registered?.requiredResponseCapability, undefined);
     const lesson = problemLesson(id, "library");
     assert.ok((lesson.intuition ?? "").length > 40);
@@ -386,6 +389,7 @@ test("numeric entry covers negative, fractional and zero answers", () => {
 
 import { satSprDecimalAccepted } from "../src/math/sat-spr-entry";
 import type { GeneratedProblem } from "../src/math/contracts";
+import { asCurrent } from "./fixtures/recorded-version";
 
 const withAnswer = (
   id: string,

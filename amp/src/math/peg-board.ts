@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { z } from "zod";
 
 export type Peg = [number, number];
@@ -196,7 +197,7 @@ export function pegBoardFeedback(
     }
   if (n !== r.check.sides)
     return r.check.name
-      ? `This shape has ${n} sides; a ${r.check.name} has ${r.check.sides}.`
+      ? `This shape has ${n} sides; ${withArticle(r.check.name)} has ${r.check.sides}.`
       : `This shape has ${n} corners; it needs ${r.check.sides}.`;
   const edges = p.map((at, i) => vector(at, p[(i + 1) % n]!));
   if (

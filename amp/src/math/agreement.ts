@@ -48,12 +48,40 @@ export function count(n: number, noun: string, many = plural(noun)): string {
   return `${n} ${n === 1 ? noun : many}`;
 }
 
-/** "a" or "an" before a number as it is said (`capital`: "A" or "An"): an 8, an 11, an 18, an 80,
- * an 800, an 8,000, an 11,000 and an 18,000; a for every other number. */
+/** "a" or "an" before a number or a word as it is said (`capital`: "A" or
+ * "An"). A number: an 8, an 11, an 18, an 80, an 800, an 8,000, an 11,000
+ * and an 18,000; a for every other number. A word by its first sound: an
+ * apple, an hour, an equilateral triangle; a unit, a one-digit number, a
+ * European. A single letter by its name: an L shape, an x-value, a B. Math
+ * set in $…$ is read for what it says ("$85^\circ$" is eighty-five). */
 export function article(n: number | string, capital = false): string {
-  const digits = String(n).replace(/[,\s]/g, "").replace(/^\$/, "");
-  const an = /^8/.test(digits) || /^1[18](\d{3})*(?!\d)/.test(digits);
+  const said = String(n)
+    .trim()
+    .replace(/^[\s"'“‘([{*_$]+|\\(?:text|mathrm|mathit)\{/g, "")
+    .replace(/^[\s"'“‘([{*_$]+/, "");
+  let an: boolean;
+  if (/^[−-]\s?\d/.test(said))
+    an = false; // "a negative 8"
+  else if (/^\d/.test(said)) {
+    const digits = said.replace(/[,\s]/g, "");
+    an = /^8/.test(digits) || /^1[18](\d{3})*(?!\d)/.test(digits);
+  } else {
+    const word = said.toLowerCase();
+    if (/^[a-z](?![a-z])/.test(word)) an = /^[aefhilmnorsx]/.test(word);
+    else if (
+      /^(uni|use|usu|uti|ur[aeio]|eu|ewe|one(?![a-z])|once|ubiq)/.test(word)
+    )
+      an = false;
+    else if (/^(hour|honest|honou?r|heir)/.test(word)) an = true;
+    else an = /^[aeiou]/.test(word);
+  }
   return capital ? (an ? "An" : "A") : an ? "an" : "a";
+}
+
+/** The word with its article: withArticle("apple") is "an apple",
+ * withArticle(8) is "an 8", withArticle("cube", true) is "A cube". */
+export function withArticle(word: number | string, capital = false): string {
+  return `${article(word, capital)} ${word}`;
 }
 
 /** The noun alone, in agreement with a count written elsewhere (a typeset

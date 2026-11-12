@@ -139,8 +139,13 @@ export function itemPrims(
           ),
         );
     });
-  return prims;
+  return item.label ? inPanel(prims, item.label) : prims;
 }
+
+/** Tag a lettered item's drawing with its letter (`data-panel`), so a
+ * screen can find the panel a choice names (math/figure-panels.ts). */
+const inPanel = (prims: Prim[], label: string): Prim[] =>
+  prims.map((p) => ({ ...p, data: { ...p.data, panel: label } }));
 
 /** Standard marks measured from the vertices, sized in figure pixels. */
 export function markPrims(
@@ -275,10 +280,13 @@ export function cellPrims(
   prefix: string,
 ): Prim[] {
   const inset = 3 / s;
-  return [
+  const prims: Prim[] = [
     {
       type: "rect",
       id: `${prefix}.cell`,
+      // The cell is the panel's own outline: a tappable panel draws its
+      // states on this box.
+      ...(label && { data: { "panel-frame": label } }),
       at: [box.x0 + inset, box.y0 + inset],
       size: [box.x1 - box.x0 - 2 * inset, box.y1 - box.y0 - 2 * inset],
       radius: 10,
@@ -301,6 +309,7 @@ export function cellPrims(
         ]
       : []),
   ];
+  return label ? inPanel(prims, label) : prims;
 }
 
 registerComponent("shapes", {

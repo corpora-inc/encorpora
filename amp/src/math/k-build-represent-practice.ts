@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { count } from "./agreement";
 import type {
@@ -563,18 +564,18 @@ const flawReason = (shape: ShapeName, flaw: Flaw, d: Drawing): string =>
     open: "It does not close: there is a gap at one corner. A shape must close.",
     curved:
       "One side is curved. Every side of a shape like this must be straight.",
-    count: `It has ${d.sides} sides. A ${shape} has ${SIDES[shape]}.`,
-    corners: `Its corners are not square corners. A ${shape} needs 4 square corners.`,
+    count: `It has ${d.sides} sides. ${withArticle(shape, true)} has ${SIDES[shape]}.`,
+    corners: `Its corners are not square corners. ${withArticle(shape, true)} needs 4 square corners.`,
     unequal:
       "Its sides are not all the same length. A square needs 4 sides of the same length.",
   })[flaw];
 
 const flawFeedback = (shape: ShapeName, flaw: Flaw): string =>
   ({
-    open: `This drawing has a gap, so it is not closed. A ${shape} closes.`,
-    curved: `This drawing has a curved side. A ${shape} has only straight sides.`,
-    count: `Count the sides of this drawing: it does not have ${SIDES[shape]}. A ${shape} has ${SIDES[shape]} sides.`,
-    corners: `The corners of this drawing lean, so they are not square corners. A ${shape} needs 4 square corners.`,
+    open: `This drawing has a gap, so it is not closed. ${withArticle(shape, true)} closes.`,
+    curved: `This drawing has a curved side. ${withArticle(shape, true)} has only straight sides.`,
+    count: `Count the sides of this drawing: it does not have ${SIDES[shape]}. ${withArticle(shape, true)} has ${SIDES[shape]} sides.`,
+    corners: `The corners of this drawing lean, so they are not square corners. ${withArticle(shape, true)} needs 4 square corners.`,
     unequal:
       "Two sides of this drawing are longer than the other two. A square has 4 sides of the same length.",
   })[flaw];
@@ -612,8 +613,8 @@ function checkTheDrawing(seed: string, r: Random): GeneratedProblem {
     toCandidate(d.drawing, i + 1, flawFeedback(shape, d.flaw)),
   );
   return finish("check-the-drawing", seed, r, {
-    prompt: `Which drawing is a ${shape}?`,
-    hint: `Check each drawing three ways. Does it close? Are all its sides straight? Does it have ${SIDES[shape]} sides, as a ${shape} does?`,
+    prompt: `Which drawing is ${withArticle(shape)}?`,
+    hint: `Check each drawing three ways. Does it close? Are all its sides straight? Does it have ${SIDES[shape]} sides, as ${withArticle(shape)} does?`,
     explanation: [
       shapeRule[shape],
       "Check each drawing: does it close, are all its sides straight, and does it have the right number of sides and corners?",
@@ -621,7 +622,7 @@ function checkTheDrawing(seed: string, r: Random): GeneratedProblem {
     ],
     variant: `${shape}-${unusual ? "turned" : "usual"}`,
     figureChoice: {
-      label: `Choose the drawing that is a ${shape}`,
+      label: `Choose the drawing that is ${withArticle(shape)}`,
       correct,
       distractors,
       explain: (name) => [
@@ -629,7 +630,7 @@ function checkTheDrawing(seed: string, r: Random): GeneratedProblem {
           (d, i) =>
             `${name(distractors[i]!)}: ${flawReason(shape, d.flaw, d.drawing)}`,
         ),
-        `${name(correct)} closes, has only straight sides and fits every rule for a ${shape}${turn ? ", even though it is turned" : ""}. It is the ${shape}.`,
+        `${name(correct)} closes, has only straight sides and fits every rule for ${withArticle(shape)}${turn ? ", even though it is turned" : ""}. It is the ${shape}.`,
       ],
     },
   });
@@ -665,21 +666,21 @@ function drawingMistake(seed: string, r: Random): GeneratedProblem {
         : n + 1;
   const textOf = (f: Flaw | "turned" | "nothing"): string =>
     f === "nothing"
-      ? `Nothing is wrong. It is a ${shape}.`
+      ? `Nothing is wrong. It is ${withArticle(shape)}.`
       : f === "count"
         ? `It has ${wrongCount} sides, not ${n}.`
         : MISTAKE_TEXT[f as keyof typeof MISTAKE_TEXT];
   const feedbackOf = (f: Flaw | "turned" | "nothing"): string =>
     f === "nothing"
       ? flaw === "count"
-        ? `Count the sides again: there are ${drawing.sides}, and a ${shape} has ${n}.`
+        ? `Count the sides again: there are ${drawing.sides}, and ${withArticle(shape)} has ${n}.`
         : flaw === "open"
           ? `Look at every corner: there is a gap, so the drawing is not closed.`
           : flaw === "curved"
             ? "Look at every side: one of them bends, so it is not straight."
             : "Look at the corners: they lean, so they are not square corners."
       : f === "turned"
-        ? `A shape can be turned any way. Turning does not change a ${shape} into another shape.`
+        ? `A shape can be turned any way. Turning does not change ${withArticle(shape)} into another shape.`
         : f === "open"
           ? "Follow the drawing all the way around: it comes back to where it started, so it is closed."
           : f === "curved"
@@ -714,7 +715,7 @@ function drawingMistake(seed: string, r: Random): GeneratedProblem {
       ? [
           shapeRule[shape],
           `Go around ${name}'s drawing: it closes, every side is straight, and there are ${n} sides.`,
-          `It is turned, but turning does not change a ${shape}. Nothing is wrong.`,
+          `It is turned, but turning does not change ${withArticle(shape)}. Nothing is wrong.`,
         ]
       : [
           shapeRule[shape],
@@ -726,16 +727,16 @@ function drawingMistake(seed: string, r: Random): GeneratedProblem {
                 ? `Count the sides: there are ${drawing.sides}, not ${n}.`
                 : "Look at the corners: the sides lean, so the corners are not square corners.",
           flaw === "open"
-            ? `It is not closed, so it is not yet a ${shape}. Join the gap and it is.`
+            ? `It is not closed, so it is not yet ${withArticle(shape)}. Join the gap and it is.`
             : flaw === "curved"
-              ? `With a curved side it is not a ${shape}. Make that side straight and it is.`
+              ? `With a curved side it is not ${withArticle(shape)}. Make that side straight and it is.`
               : flaw === "count"
-                ? `With ${drawing.sides} sides it is not a ${shape}.`
-                : `Without square corners it is not a ${shape}.`,
+                ? `With ${drawing.sides} sides it is not ${withArticle(shape)}.`
+                : `Without square corners it is not ${withArticle(shape)}.`,
         ];
   return finish("drawing-mistake", seed, r, {
-    prompt: `${name} drew a ${shape}. What is wrong with ${name}'s drawing?`,
-    hint: `${name}'s drawing should be a ${shape}. Check three things: does it close, are all its sides straight, and does it have ${n} sides?`,
+    prompt: `${name} drew ${withArticle(shape)}. What is wrong with ${name}'s drawing?`,
+    hint: `${name}'s drawing should be ${withArticle(shape)}. Check three things: does it close, are all its sides straight, and does it have ${n} sides?`,
     explanation: steps,
     figure: figure(
       sceneOf(...drawing.elements).build({
@@ -871,13 +872,13 @@ function sticksAndBalls(seed: string, r: Random): GeneratedProblem {
       },
     ];
     return finish("sticks-and-balls-needed", seed, r, {
-      prompt: `${name} builds a model of a ${object} with sticks and clay balls. The picture shows the shape of the ${object}. How many ${asks} does ${name} need?`,
+      prompt: `${name} builds a model of ${withArticle(object)} with sticks and clay balls. The picture shows the shape of the ${object}. How many ${asks} does ${name} need?`,
       hint:
         asks === "sticks"
           ? `Each side of the ${object} is one stick. Count the sides of the shape.`
           : `Each corner of the ${object} is one clay ball. Count the corners of the shape.`,
       explanation: [
-        `The ${object} is a ${shape}: ${count(n, "straight side")} and ${corners}.`,
+        `The ${object} is ${withArticle(shape)}: ${count(n, "straight side")} and ${corners}.`,
         "A model uses one stick for each side and one clay ball for each corner.",
         asks === "sticks"
           ? `Count the sides: ${n}. ${name} needs ${count(n, "stick")}.`
@@ -888,7 +889,7 @@ function sticksAndBalls(seed: string, r: Random): GeneratedProblem {
         sceneOf(...elements).build({
           ...PROBLEM,
           title: `The shape of the ${object}`,
-          note: `A ${shape} outline.`,
+          note: `${withArticle(shape, true)} outline.`,
         }),
       ),
       label: asks,
@@ -904,10 +905,10 @@ function sticksAndBalls(seed: string, r: Random): GeneratedProblem {
     const elements = stickModel(pts, edges, { balls: true });
     const missing = n - placed;
     return finish("sticks-and-balls-needed", seed, r, {
-      prompt: `${name} is building a ${shape} with sticks and clay balls. All the clay balls are placed. How many more sticks are needed to finish the ${shape}?`,
+      prompt: `${name} is building ${withArticle(shape)} with sticks and clay balls. All the clay balls are placed. How many more sticks are needed to finish the ${shape}?`,
       hint: `Look at the ${shape} ${name} is building. Find two clay balls next to each other with no stick between them, and count those gaps.`,
       explanation: [
-        `A ${shape} has ${corners}, so it has ${n} clay balls. Count them: ${n}.`,
+        `${withArticle(shape, true)} has ${corners}, so it has ${n} clay balls. Count them: ${n}.`,
         `Count the sticks already placed: ${placed}.`,
         `Find the clay balls next to each other with no stick between them: ${count(missing, "gap")}. So ${count(missing, "more stick")} ${missing === 1 ? "is" : "are"} needed.`,
         `Check: $${placed} + ${missing} = ${n}$, one stick for each side.`,
@@ -916,7 +917,7 @@ function sticksAndBalls(seed: string, r: Random): GeneratedProblem {
         sceneOf(...elements).build({
           ...PROBLEM,
           title: `${name}'s ${shape}, not finished`,
-          note: `Clay balls at all the corners of a ${shape}. Some sides have sticks and some do not.`,
+          note: `Clay balls at all the corners of ${withArticle(shape)}. Some sides have sticks and some do not.`,
         }),
       ),
       label: "more sticks",
@@ -929,19 +930,19 @@ function sticksAndBalls(seed: string, r: Random): GeneratedProblem {
     gapAtCorners: true,
   });
   return finish("sticks-and-balls-needed", seed, r, {
-    prompt: `${name} has ${n} sticks for a ${shape}. How many clay balls does ${name} need to join them?`,
+    prompt: `${name} has ${n} sticks for ${withArticle(shape)}. How many clay balls does ${name} need to join them?`,
     hint: `${name}'s ${n} sticks go around the ${shape}. One clay ball joins 2 sticks at each corner, so count the corners.`,
     explanation: [
       `The ${n} sticks go around the ${shape}, one stick for each side.`,
       "Two sticks meet at each corner, and one clay ball joins them there.",
-      `A ${shape} has ${corners}, so ${name} needs ${count(n, "clay ball")}.`,
+      `${withArticle(shape, true)} has ${corners}, so ${name} needs ${count(n, "clay ball")}.`,
       "A closed shape always has as many corners as sides.",
     ],
     figure: figure(
       sceneOf(...elements).build({
         ...PROBLEM,
-        title: `${name}'s sticks for a ${shape}`,
-        note: `Sticks laid out as a ${shape}, with an empty space at each corner.`,
+        title: `${name}'s sticks for ${withArticle(shape)}`,
+        note: `Sticks laid out as ${withArticle(shape)}, with an empty space at each corner.`,
       }),
     ),
     label: "clay balls",
@@ -964,7 +965,7 @@ function cubeSticks(
     const asks = r(0, 1) ? "sticks" : "clay balls";
     const answer = asks === "sticks" ? 12 : 8;
     return finish("sticks-and-balls-needed", seed, r, {
-      prompt: `${name} builds a model of a ${object} with sticks and clay balls. The ${object} is a cube. The picture shows a finished model of a cube. How many ${asks} does ${name} need?`,
+      prompt: `${name} builds a model of ${withArticle(object)} with sticks and clay balls. The ${object} is a cube. The picture shows a finished model of a cube. How many ${asks} does ${name} need?`,
       hint:
         asks === "sticks"
           ? "Count the sticks in parts: the square on the bottom, the square on top, then the posts that stand at the corners."
@@ -1342,7 +1343,7 @@ function pictureToSentence(seed: string, r: Random): GeneratedProblem {
         },
       ];
       return finish(id, seed, r, {
-        prompt: `Each teal counter and each rust counter is a ${t.one}. Which one tells what happened?`,
+        prompt: `Each teal counter and each rust counter is ${withArticle(t.one)}. Which one tells what happened?`,
         hint: `Say the picture out loud: first there ${isAre(a)} ${things(a, t)}. What happens in the middle: do more come, or do some go away?`,
         explanation: [
           `First there ${isAre(a)} ${count(a, "teal counter")}: ${things(a, t)}.`,
@@ -1387,7 +1388,7 @@ function pictureToSentence(seed: string, r: Random): GeneratedProblem {
       },
     ];
     return finish(id, seed, r, {
-      prompt: `Each counter is a ${t.one}. Which one tells what happened?`,
+      prompt: `Each counter is ${withArticle(t.one)}. Which one tells what happened?`,
       hint: `Say the picture out loud: first there are ${things(total, t)}, the solid ones and the faded ones. What happens in the middle?`,
       explanation: [
         `At first there are ${total} counters, solid and faded: ${things(total, t)}.`,

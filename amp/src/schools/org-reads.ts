@@ -5,26 +5,28 @@ import type {
   OverviewResponse,
   SchoolUsage,
 } from "./org-contracts.js";
-import { joinNames, weekStart, dayOfWeek } from "./today.js";
+import { joinNames, weekStart } from "./today.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { YEAR_IN_USE } from "./years.js";
+import { growthArraySql } from "./growth.js";
 import { startLevelSql } from "./start-level.js";
+import { medianInterval } from "./standing-math.js";
+import { levelSdSql } from "./student-sd.js";
+import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
+import { medianOf, practiced, practicedSql } from "./practice-rules.js";
 
 type Database = Pick<PoolClient, "query">;
 const DAY = 86_400_000;
-const shift = (iso: string, days: number) =>
+export const shift = (iso: string, days: number) =>
   new Date(Date.parse(`${iso}T00:00:00Z`) + days * DAY)
     .toISOString()
     .slice(0, 10);
 
-/** What a head needs flagged, and when. */
+/** What a head is asked to act on, and when. Only facts with an admin action:
+ * practice is shown as data (`practice-views.ts`), never flagged. */
 export const ATTENTION = {
   /** A license this close to its end says so. */
   licenseDays: 45,
-  /** A class this far under, per student per school day so far this week. */
-  minutesPerDay: 2,
-  /** Not on a Monday morning: the week has to have happened. */
-  practiceAfterDay: 1,
   /** The year this close to its end asks for next year. */
   yearDays: 30,
 } as const;
@@ -38,13 +40,19 @@ export type OrgScope = {
   today: string;
   hour: number;
 };
-export async function orgScope(db: Database, orgId: string): Promise<OrgScope> {
+/** The org and its "today", in its own timezone, as of `now`: the clock is an
+ * input, so a weekday rule can be tested and shown on any day. */
+export async function orgScope(
+  db: Database,
+  orgId: string,
+  now: Date = new Date(),
+): Promise<OrgScope> {
   return (
     await db.query(
-      `SELECT id,name,kind,path,timezone,to_char(now() AT TIME ZONE timezone,'YYYY-MM-DD') AS today,
-         extract(hour FROM now() AT TIME ZONE timezone)::int AS hour
+      `SELECT id,name,kind,path,timezone,to_char($2::timestamptz AT TIME ZONE timezone,'YYYY-MM-DD') AS today,
+         extract(hour FROM $2::timestamptz AT TIME ZONE timezone)::int AS hour
        FROM amp_orgs WHERE id=$1`,
-      [orgId],
+      [orgId, now.toISOString()],
     )
   ).rows[0];
 }
@@ -93,11 +101,19 @@ export type StudentFact = {
   lastAttempts: number;
   level: number | null;
   startLevel: number | null;
+  /** Each reading's sd. Growth's own interval is `growthSd`. */
+  levelSd: number | null;
+  startSd: number | null;
+  /** The shared term-growth figure. Null until the estimate has settled. */
+  growthMu: number | null;
+  growthSd: number | null;
   seated: boolean;
   signedIn: boolean;
+  /** On the roster here since. */
+  since: string;
 };
-const SQL_ACTIVE_STUDENTS = `
-  SELECT DISTINCT ON (p.id) p.id,p.learner_id,p.grade_level,r.org_id
+export const SQL_ACTIVE_STUDENTS = `
+  SELECT DISTINCT ON (p.id) p.id,p.learner_id,p.grade_level,r.org_id,r.begin_on
   FROM amp_orgs o
   JOIN amp_org_roles r ON r.org_id=o.id AND r.role='student'
     AND r.begin_on<=(now() AT TIME ZONE o.timezone)::date
@@ -105,9 +121,9 @@ const SQL_ACTIVE_STUDENTS = `
   JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
   WHERE o.path @> ARRAY[$1]::uuid[]
   ORDER BY p.id,r.begin_on DESC`;
-/** One row per student here today: this week, last week, where they stand and
- * where they stood when the term began (once placement settled). Read from the learner's week, and from
- * two stored level days, never from replaying the frontier. */
+/** One row per student here today: this week, last week, where they stand,
+ * and growth this term from the shared pace (`growth.ts`). Read from the
+ * learner's week and from stored level days, never from replaying the frontier. */
 export async function studentFacts(
   db: Database,
   orgId: string,
@@ -115,31 +131,50 @@ export async function studentFacts(
   today: string,
 ): Promise<StudentFact[]> {
   const thisWeek = weekStart(today);
+  const through = term.endsOn < today ? term.endsOn : today;
   const { rows } = await db.query(
     `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
      SELECT r.id,r.learner_id AS learner,r.org_id AS org,r.grade_level AS grade,
        COALESCE(w."thisMs",0)::float8 AS "thisMs",COALESCE(w."lastMs",0)::float8 AS "lastMs",
        COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
        latest.overall_level::float8 AS level,first.overall_level::float8 AS "startLevel",
-       seat.person_id IS NOT NULL AS seated,
+       latest.sd AS "levelSd",first.sd AS "startSd",
+       growth.mu AS "growthMu",growth.sd AS "growthSd",
+       r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
        session.id IS NOT NULL AS "signedIn"
      FROM roster r
-     LEFT JOIN (
-       SELECT w.learner_id,
+     LEFT JOIN LATERAL (
+       -- Two rows by the learner's own key: a grouped join over the whole
+       -- roster was planned as a nested loop, 10,000 × 5,000 rows.
+       SELECT
          sum(w.active_ms) FILTER (WHERE w.week=$3::date) AS "thisMs",
          sum(w.active_ms) FILTER (WHERE w.week=$4::date) AS "lastMs",
          sum(w.attempts) FILTER (WHERE w.week=$3::date) AS "thisAttempts",
          sum(w.attempts) FILTER (WHERE w.week=$4::date) AS "lastAttempts"
-       FROM amp_learner_weeks w JOIN roster s ON s.learner_id=w.learner_id
-       WHERE w.week=ANY(ARRAY[$3::date,$4::date])
-       GROUP BY w.learner_id
-     ) w ON w.learner_id=r.learner_id
+       FROM amp_learner_weeks w
+       WHERE w.learner_id=r.learner_id AND w.week=ANY(ARRAY[$3::date,$4::date])
+     ) w ON true
      LEFT JOIN LATERAL (
-       SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=r.learner_id ORDER BY d.day DESC LIMIT 1
+       SELECT d.overall_level,${levelSdSql("d")} AS sd FROM amp_level_days d
+       WHERE d.learner_id=r.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
+       ORDER BY d.day DESC LIMIT 1
      ) latest ON true
      LEFT JOIN LATERAL (
-       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "$2::date" })} AS overall_level
+       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS overall_level,
+         ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS sd
      ) first ON true
+     LEFT JOIN LATERAL (
+       -- One fit per student, read off amp_level_days_growth_idx alone:
+       -- OFFSET 0 keeps the planner from copying the fit into each place its
+       -- two numbers are read.
+       SELECT raw.pair[1] AS mu, raw.pair[2] AS sd FROM (
+         SELECT ${growthArraySql({
+           learner: "r.learner_id",
+           from: "GREATEST($2::date, r.begin_on)",
+           to: "$5::date",
+         })} AS pair OFFSET 0
+       ) raw
+     ) growth ON true
      LEFT JOIN (
        SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
        WHERE s.released_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
@@ -147,72 +182,52 @@ export async function studentFacts(
      LEFT JOIN LATERAL (
        SELECT n.id FROM amp_student_sessions n WHERE n.person_id=r.id LIMIT 1
      ) session ON true`,
-    [orgId, term.startsOn, thisWeek, shift(thisWeek, -7)],
+    [orgId, term.startsOn, thisWeek, shift(thisWeek, -7), through],
   );
-  return rows;
+  return rows.map((row) => ({
+    ...row,
+    growthMu: row.growthMu === null ? null : Number(row.growthMu),
+    growthSd: row.growthSd === null ? null : Number(row.growthSd),
+  }));
 }
 
 const minutesOf = (ms: number) => ms / 60_000;
-const isActive = (ms: number, attempts: number) => ms > 0 || attempts > 0;
-export const middle = (values: number[]): number | null => {
-  if (!values.length) return null;
-  const sorted = [...values].sort((a, b) => a - b);
-  const half = sorted.length >> 1;
-  return sorted.length % 2
-    ? sorted[half]!
-    : (sorted[half - 1]! + sorted[half]!) / 2;
-};
-export function usageOf(students: readonly StudentFact[]) {
+/** Practiced this week, by the one rule (`practice-rules.ts`). */
+const isActive = (ms: number, attempts: number) =>
+  practiced(minutesOf(ms), attempts);
+export const middle = (values: number[]): number | null => medianOf(values);
+/** `interval: false` skips the growth median's bootstrap, for rows nobody
+ * sees: a district's classes, which only count toward its schools. Across
+ * 386 classes it was most of a district Overview's time. */
+export function usageOf(
+  students: readonly StudentFact[],
+  { interval: withInterval = true }: { interval?: boolean } = {},
+) {
   let active = 0;
   let minutes = 0;
-  const gains: number[] = [];
+  const gains: { mu: number; sd: number }[] = [];
   for (const student of students) {
     if (isActive(student.thisMs, student.thisAttempts)) active++;
     minutes += minutesOf(student.thisMs);
-    if (student.level !== null && student.startLevel !== null)
-      gains.push(student.level - student.startLevel);
+    if (student.growthMu !== null && student.growthSd !== null)
+      gains.push({ mu: student.growthMu, sd: student.growthSd });
   }
-  const growth = middle(gains);
+  const growth = middle(gains.map((gain) => gain.mu));
+  // Where that median sits (95%): students resampled, each drawn from the
+  // pace's own N(μ, σ²) (`growth.ts`).
+  const interval = withInterval
+    ? medianInterval(gains, { mode: "bootstrap" })
+    : null;
+  const hundredth = (value: number) => Math.round(value * 100) / 100;
   return {
     students: students.length,
     active,
     minutes: Math.round(minutes),
-    growth: growth === null ? null : Math.round(growth * 100) / 100,
-  };
-}
-
-/** Half-grade columns from three grades behind to three ahead, either side of
- * the student's own grade: "at grade" is -0.5 up to +0.5, the same band a class
- * map shows a grade as. */
-export function standingOf(students: readonly StudentFact[]) {
-  const edges = Array.from({ length: 13 }, (_, index) => -3 + index / 2);
-  const counts = new Array<number>(edges.length + 1).fill(0);
-  let behind = 0;
-  let at = 0;
-  let ahead = 0;
-  let unplaced = 0;
-  for (const student of students) {
-    if (student.level === null || student.grade === null) {
-      unplaced++;
-      continue;
-    }
-    const gap = student.level - student.grade;
-    if (gap < -0.5) behind++;
-    else if (gap < 0.5) at++;
-    else ahead++;
-    const index = edges.findIndex((edge) => gap < edge);
-    counts[index === -1 ? edges.length : index]!++;
-  }
-  return {
-    bins: counts.map((count, index) => ({
-      from: index === 0 ? null : edges[index - 1]!,
-      to: index === edges.length ? null : edges[index]!,
-      students: count,
-    })),
-    behind,
-    at,
-    ahead,
-    unplaced,
+    growth: growth === null ? null : hundredth(growth),
+    growthLow: interval ? hundredth(interval.low) : null,
+    growthHigh: interval ? hundredth(interval.high) : null,
+    /** How many students the growth median is over. */
+    placed: gains.length,
   };
 }
 
@@ -227,7 +242,8 @@ export async function trendOf(
   const { rows } = students.length
     ? await db.query(
         `SELECT week::text AS week,round(sum(active_ms)/60000.0)::int AS minutes,
-           count(*) FILTER (WHERE active_ms>0 OR attempts>0)::int AS students
+           count(*) FILTER (WHERE ${practicedSql("active_ms", "attempts")})::int AS students,
+           sum(attempts)::int AS problems,sum(assisted)::int AS assisted
          FROM amp_learner_weeks
          WHERE learner_id=ANY($1::text[]) AND week BETWEEN $2::date AND $3::date
          GROUP BY week`,
@@ -235,18 +251,26 @@ export async function trendOf(
       )
     : { rows: [] };
   const byWeek = new Map(rows.map((row) => [row.week as string, row]));
-  const weeks: { week: string; minutes: number; students: number }[] = [];
+  const weeks: {
+    week: string;
+    minutes: number;
+    students: number;
+    problems: number;
+    assisted: number;
+  }[] = [];
   for (let week = first; week <= last; week = shift(week, 7))
     weeks.push({
       week,
       minutes: byWeek.get(week)?.minutes ?? 0,
       students: byWeek.get(week)?.students ?? 0,
+      problems: byWeek.get(week)?.problems ?? 0,
+      assisted: byWeek.get(week)?.assisted ?? 0,
     });
   return weeks;
 }
 
 /** Classes in the year in use at this org and below, each with its teachers. */
-async function classesHere(db: Database, orgId: string) {
+export async function classesHere(db: Database, orgId: string) {
   const { rows } = await db.query(
     `SELECT c.id,c.name,c.org_id AS org,
        ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
@@ -267,17 +291,17 @@ async function classesHere(db: Database, orgId: string) {
     teachers: string[];
   }[];
 }
-async function classMembers(db: Database, classIds: readonly string[]) {
+export async function classMembers(db: Database, classIds: readonly string[]) {
   if (!classIds.length) return [];
   const { rows } = await db.query(
-    `SELECT e.class_id AS class,e.person_id AS person
+    `SELECT e.class_id AS class,e.person_id AS person,e.begin_on::text AS since
      FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
      WHERE e.class_id=ANY($1::uuid[]) AND e.role='student'
        AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
        AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)`,
     [classIds],
   );
-  return rows as { class: string; person: string }[];
+  return rows as { class: string; person: string; since: string }[];
 }
 
 /** Seats and dates: this org's licenses, ones held above it, and at a district
@@ -378,6 +402,7 @@ export function attentionFor({
         org: district ? unsigned[0]!.id : org.id,
         path: "privacy",
       },
+      rule: "Shown while a school here has no accepted data agreement.",
     });
   const licenseEnd = seats.endsAt?.slice(0, 10) ?? null;
   const daysLeft = licenseEnd
@@ -393,6 +418,7 @@ export function attentionFor({
       title: "There’s no license here yet",
       detail: "Students can’t practice until there is one with seats.",
       action: { label: "Open the license", org: org.id, path: "license" },
+      rule: "Shown while there’s no license here.",
     });
   if (daysLeft !== null && daysLeft <= ATTENTION.licenseDays)
     items.push({
@@ -403,9 +429,10 @@ export function attentionFor({
           : `The license ends ${shortDate(licenseEnd!)}`,
       detail:
         daysLeft <= 0
-          ? "Practice has stopped until it’s renewed. Student data is kept."
-          : "Ask about renewing now, so practice doesn’t stop.",
+          ? "Practice is stopped until it’s renewed. Student data is kept."
+          : "Practice stops on that date unless it’s renewed.",
       action: { label: "Open the license", org: org.id, path: "license" },
+      rule: `Shown from ${ATTENTION.licenseDays} days before the license ends.`,
     });
   if (seats.waiting > 0)
     items.push({
@@ -417,6 +444,7 @@ export function attentionFor({
         org: org.id,
         path: "license",
       },
+      rule: "Shown while a student on the roster has no seat.",
     });
   if (year) {
     const days = Math.ceil(
@@ -434,6 +462,7 @@ export function attentionFor({
         detail:
           "Set next year’s dates, carry classes over and move students up a grade.",
         action: { label: "Start next year", org: org.id, path: "year" },
+        rule: `Shown to admins from ${ATTENTION.yearDays} days before the year ends, until next year’s dates are set.`,
       });
   }
   const untaught = classes.filter((row) => row.teachers.length === 0);
@@ -450,49 +479,21 @@ export function attentionFor({
         org: district ? worst(untaught) : org.id,
         path: "staff",
       },
+      rule: "Shown while a class this year has no teacher.",
     });
-  const weekday = dayOfWeek(org.today);
-  if (weekday >= ATTENTION.practiceAfterDay) {
-    const schoolDays = Math.min(5, weekday + 1);
-    const quiet = classes
-      .filter(
-        (row) =>
-          row.students > 0 &&
-          row.minutes / row.students < ATTENTION.minutesPerDay * schoolDays,
-      )
-      .sort((a, b) => a.minutes / a.students - b.minutes / b.students);
-    if (quiet.length)
-      items.push({
-        id: "little-practice",
-        title: `${plural(quiet.length, "class", "classes")} had little practice this week`,
-        detail: district
-          ? `${joinNames(quiet.map(classLabel), NAMES_SHOWN)}.`
-          : `${joinNames(
-              quiet.map((row) => row.name),
-              NAMES_SHOWN,
-            )}. A check-in with the teacher usually sorts it out.`,
-        action: {
-          label: district
-            ? openLabel(worst(quiet), "")
-            : `Open ${quiet[0]!.name}`,
-          org: district ? worst(quiet) : org.id,
-          path: district ? "" : `classes/${quiet[0]!.id}/today`,
-        },
-      });
-  }
   const neverSignedIn = students.filter((student) => !student.signedIn).length;
   if (neverSignedIn > 0)
     items.push({
       id: "never-signed-in",
       title: `${plural(neverSignedIn, "student hasn’t", "students haven’t")} signed in yet`,
-      detail:
-        "Their cards or class code are waiting. Teachers can print cards from each roster.",
+      detail: "Sign-in cards print from each class roster.",
       action: {
         label: "See who",
         org: org.id,
         path: "students",
         search: { status: "never-signed-in" },
       },
+      rule: "Shown while a student on the roster has never signed in.",
     });
   return items;
 }
@@ -579,8 +580,9 @@ export async function readOverview(
   orgId: string,
   actorPersonId: string | null,
   manages: boolean,
+  now: Date = new Date(),
 ): Promise<OverviewResponse> {
-  const org = await orgScope(pool, orgId);
+  const org = await orgScope(pool, orgId, now);
   const term = await termInUse(pool, org);
   const students = await studentFacts(pool, orgId, term, org.today);
   const [trend, classList, schools, unsigned, year, person] = await Promise.all(
@@ -620,11 +622,11 @@ export async function readOverview(
     if (list) list.push(fact);
     else enrolled.set(classId, [fact]);
   }
+  const isSchool = org.kind === "school";
   const classes = classList.map((row) => ({
     ...row,
-    ...usageOf(enrolled.get(row.id) ?? []),
+    ...usageOf(enrolled.get(row.id) ?? [], { interval: isSchool }),
   }));
-  const isSchool = org.kind === "school";
   const week = students.reduce(
     (sum, student) => {
       sum.thisMs += student.thisMs;
@@ -655,7 +657,6 @@ export async function readOverview(
       lastMinutes: Math.round(minutesOf(week.lastMs)),
     },
     trend,
-    standing: standingOf(students),
     classes: isSchool ? classes.map(({ org: _org, ...row }) => row) : null,
     schools: isSchool ? null : schoolRows(schools, students, classes),
     attention: attentionFor({
@@ -672,8 +673,12 @@ export async function readOverview(
 }
 
 /** A district's schools, with this week's use. */
-export async function readSchools(pool: Pool, orgId: string) {
-  const org = await orgScope(pool, orgId);
+export async function readSchools(
+  pool: Pool,
+  orgId: string,
+  now: Date = new Date(),
+) {
+  const org = await orgScope(pool, orgId, now);
   const term = await termInUse(pool, org);
   const [students, schools, classes] = await Promise.all([
     studentFacts(pool, orgId, term, org.today),

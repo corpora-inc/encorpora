@@ -1,3 +1,4 @@
+import { classColumn, teacherColumn } from "./class-columns";
 import { canAddStudents } from "./permissions";
 import {
   AddChildSheet,
@@ -16,7 +17,7 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { divisionLabels } from "../../../schools/calendar";
+import { divisionLabels, formatDay } from "../../../schools/calendar";
 import type {
   ClassResource,
   GradingKind,
@@ -35,14 +36,17 @@ import { Loading } from "../../ui/Loading";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import {
+  calendarOptions,
   classesOptions,
   currentSession,
   fetchStudents,
   orgOptions,
   refreshSchool,
   school,
+  schoolGradingOptions,
   studentsKey,
 } from "./api";
+import { SettingMeta } from "./classroom/SettingMeta";
 import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
 import { JoinClass } from "./join/JoinClass";
@@ -50,7 +54,6 @@ import { ClassExperienceSection } from "./classroom/ExperienceScreens";
 import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
-import { compareClassNames } from "./sort";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
@@ -101,6 +104,13 @@ function AddClassSheet({
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
   const [grading, setGrading] = useState<GradingKind>("semester");
+  // A new class starts on the school's periods, until someone picks others.
+  const schoolGrading = useQuery(schoolGradingOptions(session, orgId)).data;
+  const [pickedGrading, setPickedGrading] = useState(false);
+  useEffect(() => {
+    if (schoolGrading && !pickedGrading && schoolGrading.kind !== "custom")
+      setGrading(schoolGrading.kind);
+  }, [schoolGrading, pickedGrading]);
   const [busy, setBusy] = useState(false);
   const [nameError, setNameError] = useState("");
   const [error, setError] = useState("");
@@ -169,7 +179,10 @@ function AddClassSheet({
             label="Grading periods"
             compact
             value={grading}
-            onChange={setGrading}
+            onChange={(next) => {
+              setPickedGrading(true);
+              setGrading(next);
+            }}
             options={GRADING.map((value) => ({
               value,
               label: gradingLabel(value),
@@ -194,22 +207,11 @@ function AddClassSheet({
 const classColumns = (
   orgId: string,
   earlier: boolean,
+  self: string | null | undefined,
 ): DataGridColumn<ClassResource>[] => [
-  {
-    id: "name",
-    header: "Class",
-    width: 220,
-    compare: (a, b) => compareClassNames(a.name, b.name),
-    cell: (row) => (
-      <Link
-        to="/$"
-        params={{ _splat: classHome(orgId, row.id, earlier) }}
-        className={styles.rowLink}
-      >
-        {row.name}
-      </Link>
-    ),
-  },
+  // The same Class and Teacher columns as the Overview's table.
+  classColumn<ClassResource>((row) => classHome(orgId, row.id, earlier)),
+  teacherColumn<ClassResource>(self),
   {
     id: "students",
     header: "Students",
@@ -244,11 +246,17 @@ export function ClassesScreen() {
   const search = useSearch({ strict: false }) as {
     add?: unknown;
     year?: unknown;
+    periods?: unknown;
   };
   const navigate = useNavigate();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const years = useQuery(yearsOptions(session, orgId)).data ?? [];
+  // From the school's Settings: only the classes with their own periods.
+  const grading = useQuery({
+    ...schoolGradingOptions(session, orgId),
+    enabled: search.periods === "own",
+  }).data;
   const inUse = years.find((entry) => entry.inUse);
   const asked = years.find((entry) => entry.id === search.year);
   // The year in use is the plain address; anything else is a year someone chose.
@@ -257,7 +265,10 @@ export function ClassesScreen() {
     ...classesOptions(session, orgId, year?.id),
     placeholderData: keepPreviousData,
   });
-  const rows = classes.data ?? [];
+  const ownPeriods = search.periods === "own" && !!grading;
+  const rows = (classes.data ?? []).filter(
+    (row) => !ownPeriods || row.gradingKind !== grading!.kind,
+  );
   const earlier = !!year && !!inUse && year.endsOn < inUse.startsOn;
   const canAdd = org?.can?.includes("classes.create") && !year;
   const adding = search.add === 1 || search.add === "1";
@@ -273,10 +284,17 @@ export function ClassesScreen() {
     <OrgFrame orgId={orgId} nav="classes" title="Classes">
       <PageHead
         title="Classes"
+        // A count only for a list that runs past the first screen; the
+        // year when it is not the one in use.
         detail={
-          rows.length
-            ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}${year ? `, ${year.name}` : ""}`
-            : undefined
+          [
+            rows.length > SMALL_CLASS
+              ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}`
+              : "",
+            year ? year.name : "",
+          ]
+            .filter(Boolean)
+            .join(", ") || undefined
         }
         action={
           canAdd ? (
@@ -310,6 +328,18 @@ export function ClassesScreen() {
           />
         </div>
       )}
+      {ownPeriods && (
+        <p className={styles.quiet} data-own-periods="">
+          Classes with their own grading periods ·{" "}
+          <Link
+            to="/$"
+            params={{ _splat: orgPath(orgId, "classes") }}
+            search={{} as never}
+          >
+            Show all classes
+          </Link>
+        </p>
+      )}
       {classes.isError ? (
         <EmptyState
           title="Your classes didn’t load"
@@ -322,7 +352,7 @@ export function ClassesScreen() {
       ) : rows.length ? (
         <DataGrid
           label="Classes"
-          columns={classColumns(orgId, earlier)}
+          columns={classColumns(orgId, earlier, org?.personName)}
           rows={rows}
           rowKey={(row) => row.id}
           defaultSort={{ column: "name", direction: "ascending" }}
@@ -632,7 +662,7 @@ export function ClassScreen() {
           title="Settings"
           detail={
             family
-              ? "Each child works at their own grade"
+              ? undefined
               : klass.studentCount
                 ? `${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`
                 : courseLabel(klass.courseBands)
@@ -659,21 +689,14 @@ export function ClassScreen() {
               org?.teaches?.includes(classId)
             }
           />
-          {canEdit && !small && (
-            <div className={styles.field}>
-              <span className={styles.fieldLabel}>Grading periods</span>
-              <Segmented
-                label="Grading periods"
-                compact
-                dense
-                value={klass.gradingKind}
-                onChange={pick}
-                options={GRADING.map((value) => ({
-                  value,
-                  label: gradingLabel(value),
-                }))}
-              />
-            </div>
+          {!small && (
+            <ClassGrading
+              orgId={orgId}
+              orgName={org?.name ?? "the school"}
+              kind={klass.gradingKind}
+              canEdit={!!canEdit}
+              onChange={pick}
+            />
           )}
         </section>
         {small && org?.can?.includes("calendar.read") && (
@@ -793,5 +816,97 @@ export function ClassScreen() {
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />
     </OrgFrame>
+  );
+}
+
+/** A school's class: its grading periods are the school's, said in one line
+ * with their dates; a quiet action reveals the picker for the rare class that
+ * needs its own (a split calendar, a semester block). A class that has its
+ * own shows them, with the way back to the school's (Q-43). */
+function ClassGrading({
+  orgId,
+  orgName,
+  kind,
+  canEdit,
+  onChange,
+}: {
+  orgId: string;
+  orgName: string;
+  kind: GradingKind;
+  canEdit: boolean;
+  onChange: (kind: GradingKind) => void;
+}) {
+  const session = currentSession();
+  const grading = useQuery(schoolGradingOptions(session, orgId)).data;
+  const sessions = useQuery(calendarOptions(session, orgId)).data ?? [];
+  const [choosing, setChoosing] = useState(false);
+  if (!grading) return null;
+  const follows = kind === grading.kind;
+  const terms = sessions
+    .filter((term) => term.kind === kind)
+    .sort((a, b) => a.startsOn.localeCompare(b.startsOn))
+    .map(
+      (term) =>
+        `${formatDay(term.startsOn, false)}–${formatDay(term.endsOn, false)}`,
+    )
+    .join(", ");
+  if (follows && !choosing)
+    return (
+      <div className={styles.field} data-class-grading="follows">
+        <span className={styles.fieldLabel}>Grading periods</span>
+        <p className={styles.gradingLine}>
+          {gradingLabel(kind)}, from {orgName}
+          {terms && <span className={styles.quiet}> · {terms}</span>}
+        </p>
+        {canEdit && (
+          <Button
+            variant="quiet"
+            align="start"
+            onClick={() => setChoosing(true)}
+          >
+            Use different periods for this class
+          </Button>
+        )}
+      </div>
+    );
+  return (
+    <div
+      className={styles.field}
+      data-class-grading={follows ? "choosing" : "own"}
+    >
+      <span className={styles.fieldLabel}>Grading periods</span>
+      <Segmented
+        label="Grading periods"
+        compact
+        dense
+        disabled={!canEdit}
+        value={kind}
+        onChange={(next) => {
+          onChange(next);
+          if (next === grading.kind) setChoosing(false);
+        }}
+        options={GRADING.map((value) => ({
+          value,
+          label: gradingLabel(value),
+        }))}
+      />
+      <SettingMeta
+        scope="class"
+        own={!follows}
+        setBy={null}
+        lockedAbove={null}
+        reset={
+          canEdit && !follows
+            ? {
+                label: `Use ${orgName}’s`,
+                onClick: () => {
+                  onChange(grading.kind);
+                  setChoosing(false);
+                },
+              }
+            : undefined
+        }
+      />
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { generateProblem } from "../src/math/engine";
+import { asFrozen } from "./fixtures/recorded-version";
 
 /**
  * times-as-many-comparison before the story19 axis.
@@ -12,6 +13,11 @@ import { generateProblem } from "../src/math/engine";
  * newer story records story19 and may change only the wording.
  * origin/main used skill multiplicative-stories; this branch already serves
  * multiplicative-comparison, so the fixture is the branch surface, not main.
+ *
+ * 2026-11-11: 19 classic digests updated for one display-only change, the
+ * addition in the "7 more" choice's feedback typeset as math ("$15 + 7$",
+ * 786aeaa81). Every other byte, the draw and the variant are unchanged: each
+ * new digest was checked to equal the old one with that typesetting undone.
  */
 const golden = JSON.parse(
   readFileSync(
@@ -21,7 +27,9 @@ const golden = JSON.parse(
 ) as { digest: string; variantId: string | null }[];
 
 const digestOf = (problem: ReturnType<typeof generateProblem>): string =>
-  createHash("sha256").update(JSON.stringify(problem)).digest("hex");
+  createHash("sha256")
+    .update(JSON.stringify(asFrozen(problem)))
+    .digest("hex");
 
 test("times-as-many comparison replays the stored wording on the classic story", () => {
   assert.equal(golden.length, 200);

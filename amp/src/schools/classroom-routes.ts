@@ -11,6 +11,8 @@ import {
 } from "./classroom-contracts.js";
 import {
   experienceView,
+  orgWeeklyTargetView,
+  writeOrgWeeklyTarget,
   setLeftOff,
   setTeacherShown,
   writeExperience,
@@ -59,6 +61,31 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
     bodyLimit: 1024,
     handler: ({ request, actor, target, repository }) =>
       writeExperience(
+        repository,
+        actor,
+        target,
+        request.body,
+        actorPerson(actor, target),
+      ),
+  });
+  /* A school's weekly practice target, which its classes follow unless they
+     set their own (term-grades.ts). */
+  define({
+    method: "GET",
+    url: "/api/v1/school/orgs/:org/weekly-target",
+    action: "settings.read",
+    target: orgParam,
+    handler: ({ actor, target, pool }) =>
+      orgWeeklyTargetView(pool, actor, target),
+  });
+  define({
+    method: "POST",
+    url: "/api/v1/school/orgs/:org/weekly-target",
+    action: "settings.write",
+    target: orgParam,
+    bodyLimit: 256,
+    handler: ({ request, actor, target, repository }) =>
+      writeOrgWeeklyTarget(
         repository,
         actor,
         target,

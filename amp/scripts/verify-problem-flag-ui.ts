@@ -391,7 +391,7 @@ try {
     await chooseLearner(page, adult.id);
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
     await page
-      .getByRole("button", { name: "Practice this", exact: true })
+      .getByRole("link", { name: /^Try this problem type/ })
       .click();
     await page.locator(".question").waitFor();
     await flagFlow(page, `adult-390x844-${colorScheme}`, {
