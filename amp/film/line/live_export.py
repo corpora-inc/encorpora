@@ -87,7 +87,8 @@ def export_worker(config, row, workspace):
     emitted = read_json(stage/(row['id']+'.json'))
     if emitted['script'] != read_json(Path(workspace)/'screenplay.json'):
         raise RuntimeError('Export does not contain the checked screenplay')
-    expected = {'teacher': row['teacher'], 'learner': 'SYXbTJsLE7zmSjr1DchT'}
+    assigned = {'teacher': row['teacher'], 'learner': 'SYXbTJsLE7zmSjr1DchT'}
+    expected = {role: assigned[role] for role in emitted['script'].get('cast', {})}
     if emitted['timing'].get('voices') != expected:
         raise RuntimeError('Exported voices differ from the production assignment')
     payload = player_copy(emitted)

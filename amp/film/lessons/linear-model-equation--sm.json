@@ -1,0 +1,92 @@
+{
+  "id": "linear-model-equation--sm",
+  "title": "From a story to a linear equation",
+  "teaches": ["interpret-linear-parameters", "fee-rule-choice"],
+  "cast": {"teacher":{}},
+  "shots": [
+    {
+      "figure": {
+        "stretch":true,"view":[-1.5,-6,11.5,26.8],
+        "points":{"S":[0,20],"P":{"on":"line","x":0},"A":[1,18],"K":[2,18],"B":[2,16],"N":[2.15,17.3],"X":[5,-4.7],"Y":[2,25.5]},
+        "parts":[
+          {"id":"axes","axes":true,"step":1,"every":2,"ystep":2,"yevery":10,"xrange":[0,10.5],"yrange":[0,21],"size":"l","start":true},
+          {"id":"xname","label":"\\text{Time }t\\text{ (hours)}","at":"X","dir":"c","size":"m"},
+          {"id":"yname","label":"\\text{Height }H\\text{ (cm)}","at":"Y","dir":"c","size":"m"},
+          {"id":"line","plot":"20-2*x","from":0,"to":10,"upto":"P","ink":"accent","w":5,"start":true},
+          {"id":"start","dot":"S","ink":"blue","r":9},
+          {"id":"startLabel","label":"(0,20)","at":"S","dir":"ne","far":1.2,"size":"m","ink":"blue"},
+          {"id":"rider","dot":"P","r":9,"ink":"accent"},
+          {"id":"run","vector":["A","K"],"ink":"blue","w":4},
+          {"id":"drop","vector":["K","B"],"ink":"warm","w":5},
+          {"id":"dropLabel","label":"\\text{2 cm each hour}","at":"N","dir":"e","size":"m","ink":"warm"}
+        ]
+      },
+      "beats":[
+        {"speaker":"teacher","say":"Here is how to turn a starting amount and a steady change into an equation.","do":[{"do":"text","text":"From a story to an equation"}]},
+        {"speaker":"teacher","say":"A candle is twenty centimeters tall and burns down two centimeters each hour.","do":[{"do":"clear"},{"do":"problem","text":"A candle is 20 centimeters tall and burns down 2 centimeters each hour."}],"pause":0.5},
+        {"speaker":"teacher","say":"Time t, in hours since lighting, runs across; height H, in centimeters, runs up.","do":[{"do":"show","target":"xname","at":"Time"},{"do":"show","target":"yname","at":"height"}],"pause":0.3},
+        {"speaker":"teacher","say":"At zero hours, the moment it is lit, the height is twenty: the start.","pause":0.5,"do":[{"do":"show","target":["start","startLabel"],"at":"zero"},{"do":"highlight","target":"startLabel","at":"twenty"},{"do":"write","tex":"H=\\cb{20}","note":"\\text{start}","fresh":true,"at":"twenty"}]},
+        {"speaker":"teacher","say":"Each hour, it burns down two centimeters.","pause":0.4,"do":[{"do":"show","target":"rider"},{"do":"glide","point":"P","x":1,"at":"Each","dur":0.9},{"do":"draw","target":"run","at":"hour"},{"do":"draw","target":"drop","at":"two"},{"do":"show","target":"dropLabel","at":"two"},{"do":"glide","point":"P","x":2,"at":"two","dur":0.9}]},
+        {"speaker":"teacher","say":"Another hour, the same drop.","pause":0.3,"do":[{"do":"move","points":{"A":[2,16],"K":[3,16],"B":[3,14],"N":[3.15,15.3]},"at":"Another","dur":1.2},{"do":"glide","point":"P","x":3,"at":"same","dur":1}]},
+        {"speaker":"teacher","say":"Repeating that drop makes a straight line.","pause":0.9,"do":[{"do":"glide","point":"P","x":10,"at":"Repeating","dur":3.2}]},
+        {"speaker":"teacher","say":"After t hours it has lost two t, so H equals twenty minus two t.","pause":0.8,"do":[{"do":"highlight","target":"drop","at":"lost"},{"do":"write","tex":"H=\\cb{20}\\cw{-2}t","note":"\\text{each hour}","at":"two"}]}
+      ]
+    },
+    {
+      "figure": {
+        "stretch":true,"view":[-1.5,-6,11.5,26.8],
+        "points":{"P":{"on":"line","x":0},"L":[0,6],"R":[10,6],"Q":[7,6],"F":[7,0],"X":[5,-4.7],"Y":[2,25.5]},
+        "parts":[
+          {"id":"axes","axes":true,"step":1,"every":1,"ystep":2,"yevery":10,"xrange":[0,10.5],"yrange":[0,21],"size":"l","start":true},
+          {"id":"xname","label":"\\text{Time }t\\text{ (hours)}","at":"X","dir":"c","size":"m","start":true},
+          {"id":"yname","label":"\\text{Height }H\\text{ (cm)}","at":"Y","dir":"c","size":"m","start":true},
+          {"id":"line","plot":"20-2*x","from":0,"to":10,"ink":"accent","w":5,"start":true},
+          {"id":"level","seg":["L","R"],"ink":"warm","dash":true,"w":3},
+          {"id":"six","label":"6","at":"L","dir":"w","ink":"warm","size":"m"},
+          {"id":"rider","dot":"P","r":10,"ink":"accent","start":true},
+          {"id":"down","seg":["Q","F"],"ink":"blue","dash":true,"w":3},
+          {"id":"coordinates","label":"(7,6)","at":"Q","dir":"ne","far":1.5,"size":"m"}
+        ]
+      },
+      "beats":[
+        {"speaker":"teacher","say":"When is the candle six centimeters tall?","pause":0.6,"do":[{"do":"clear"},{"do":"problem","text":"When is the candle 6 centimeters tall?"},{"do":"draw","target":["level","six"],"at":"six"}]},
+        {"speaker":"teacher","say":"Ride the point down the line to a height of six: seven hours.","pause":0.8,"do":[{"do":"glide","point":"P","x":7,"at":"Ride","dur":2.6},{"do":"show","target":["down","coordinates"],"at":"seven"}]},
+        {"speaker":"teacher","say":"In the equation, H is six: twenty minus two t equals six.","do":[{"do":"clear","at":"twenty"},{"do":"write","tex":"20-2t=6","note":"H=6","fresh":true,"at":"twenty"}],"pause":0.3},
+        {"speaker":"teacher","say":"Subtract twenty from both sides, then divide by negative two: t is seven.","pause":0.8,"do":[{"do":"write","tex":"-2t=-14","note":"-20","at":"Subtract"},{"do":"write","tex":"t=7","note":"\\div(-2)","at":"divide"}]}
+      ]
+    },
+    {
+      "figure": {
+        "stretch":true,"view":[-1.5,-23,9,117],
+        "points":{"O":[0,60],"A":[3,60],"G":[6,60],"B":[6,84],"Z":[5,100],"P":{"on":"extra","x":3},"X":[4,-17],"Y":[1.7,111.5]},
+        "parts":[
+          {"id":"axes","axes":true,"step":1,"every":1,"ystep":20,"yevery":20,"xrange":[0,8.4],"yrange":[0,101],"size":"m","start":true},
+          {"id":"xname","label":"\\text{Hours }h","at":"X","dir":"c","size":"m","start":true},
+          {"id":"yname","label":"\\text{Cost }C\\text{ (dollars)}","at":"Y","dir":"c","size":"m","start":true},
+          {"id":"slip","seg":["O","Z"],"ink":"muted","dash":true,"w":4},
+          {"id":"base","seg":["O","A"],"ink":"blue","w":6},
+          {"id":"anchor","dot":"A","ink":"blue","r":9},
+          {"id":"anchorLabel","label":"(3,60)","at":"A","dir":"nw","far":1.4,"size":"m","ink":"blue"},
+          {"id":"extra","plot":"60+8*(x-3)","from":3,"to":8,"ink":"warm","w":5},
+          {"id":"rider","dot":"P","ink":"warm","r":10},
+          {"id":"totalLabel","label":"(6,84)","at":"B","dir":"nw","far":1.4,"size":"m"},
+          {"id":"hours","dim":["A","G"],"side":"s","tex":"\\text{3 extra hours}","ink":"warm","far":2}
+        ]
+      },
+      "beats":[
+        {"speaker":"teacher","say":"A boat rental costs sixty dollars for the first three hours, then eight dollars per extra hour.","pause":0.6,"do":[{"do":"clear"},{"do":"problem","text":"A boat rental costs 60 dollars for the first 3 hours, then 8 dollars per extra hour."},{"do":"draw","target":"base","at":"sixty"},{"do":"show","target":["anchor","anchorLabel"],"at":"three"},{"do":"draw","target":"extra","at":"eight"}]},
+        {"speaker":"teacher","say":"Here h counts every hour. A common slip is C equals sixty plus eight h, which charges the first three hours twice.","pause":0.5,"do":[{"do":"hide","target":"anchorLabel","at":"common"},{"do":"clear","at":"C"},{"do":"write","tex":"C=\\cb{60}+\\cw{8}h","note":"\\text{common slip}","fresh":true,"at":"C"},{"do":"draw","target":"slip","at":"C"},{"do":"highlight","target":"base","at":"first"}]},
+        {"speaker":"teacher","say":"Only the hours after the third cost extra: h minus three of them. So C equals sixty plus eight times h minus three.","pause":0.7,"do":[{"do":"hide","target":"slip","at":"Only"},{"do":"show","target":"anchorLabel","at":"Only"},{"do":"highlight","target":"extra","at":"after"},{"do":"write","tex":"C=\\cb{60}+\\cw{8}(h-3)","note":"\\text{extra hours}","at":"C"}]},
+        {"speaker":"teacher","say":"Six hours means three extra: sixty plus eight times three is eighty-four dollars.","pause":0.9,"do":[{"do":"show","target":"rider","at":"Six"},{"do":"glide","point":"P","x":6,"at":"Six","dur":2},{"do":"clear","at":"sixty"},{"do":"show","target":"hours","at":"three"},{"do":"write","tex":"60+8\\times3=84","note":"\\text{6 hours}","fresh":true,"at":"sixty"},{"do":"show","target":"totalLabel","at":"eighty-four"}]}
+      ]
+    },
+    {
+      "beats":[
+        {"speaker":"teacher","say":"The candle starts at twenty and changes by negative two each hour.","pause":0.3,"do":[{"do":"clear"},{"do":"text","text":"Candle: start $\\cb{20}$, change $\\cw{-2}$ each hour"}]},
+        {"speaker":"teacher","say":"Its equation told us when it is six centimeters tall: at seven hours.","pause":0.3,"do":[{"do":"text","text":"Height $6$ cm at $t=7$ hours","at":"equation"}]},
+        {"speaker":"teacher","say":"The boat starts at sixty, then changes by eight for each extra hour.","pause":0.6,"do":[{"do":"text","text":"Boat: start $\\cb{60}$, change $\\cw{8}$ each extra hour","at":"boat"}]},
+        {"speaker":"teacher","say":"Find the start and the change for each step. Start, plus change times steps.","pause":1,"do":[{"do":"clear","at":"start"},{"do":"write","tex":"\\cb{\\text{start}}+\\cw{\\text{change}}\\times\\text{steps}","fresh":true,"at":"start"}]}
+      ]
+    }
+  ]
+}

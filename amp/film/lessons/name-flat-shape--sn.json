@@ -1,0 +1,4387 @@
+{
+ "id": "name-flat-shape--sn",
+ "title": "Shapes: names, flat and solid",
+ "teaches": [
+  "find-named-shape",
+  "name-solid-shape",
+  "flat-or-solid-name",
+  "pick-flat-or-solid",
+  "count-flat-or-solid"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "triangleP0": [
+      0,
+      1.3
+     ],
+     "triangleP1": [
+      -1.5,
+      -1.3
+     ],
+     "triangleP2": [
+      1.5,
+      -1.3
+     ],
+     "purpleP0": [
+      -0.65,
+      0
+     ],
+     "purpleP1": [
+      0.65,
+      -0.75
+     ],
+     "purpleP2": [
+      0.65,
+      0.75
+     ]
+    },
+    "parts": [
+     {
+      "id": "triangle",
+      "poly": [
+       "triangleP0",
+       "triangleP1",
+       "triangleP2"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "triangle"
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "triangleP0",
+       "triangleP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "triangleP1",
+       "triangleP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "triangleP2",
+       "triangleP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "corner",
+      "dot": "triangleP0",
+      "r": 20,
+      "ink": "warm"
+     },
+     {
+      "id": "purple",
+      "poly": [
+       "purpleP0",
+       "purpleP1",
+       "purpleP2"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "group": "purple"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Shapes have names. Flat shapes lie on the page.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{triangle}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A side is straight. A corner is where sides meet.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "side"
+      },
+      {
+       "do": "show",
+       "target": "corner",
+       "at": "corner"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One, two, three sides. Triangle.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "hide",
+       "target": "corner"
+      },
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e2",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e3",
+       "at": "three",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Bigger. Smaller. Turn it. Change its color.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "e1",
+        "e2",
+        "e3"
+       ]
+      },
+      {
+       "do": "move",
+       "at": "Bigger",
+       "dur": 0.55,
+       "points": {
+        "triangleP0": [
+         0,
+         1.6640000000000001
+        ],
+        "triangleP1": [
+         -1.92,
+         -1.6640000000000001
+        ],
+        "triangleP2": [
+         1.92,
+         -1.6640000000000001
+        ]
+       }
+      },
+      {
+       "do": "move",
+       "at": "Smaller",
+       "dur": 0.55,
+       "points": {
+        "triangleP0": [
+         0,
+         0.65
+        ],
+        "triangleP1": [
+         -0.75,
+         -0.65
+        ],
+        "triangleP2": [
+         0.75,
+         -0.65
+        ]
+       }
+      },
+      {
+       "do": "turn",
+       "target": "triangle",
+       "at": "Turn",
+       "about": "O",
+       "deg": 90,
+       "dur": 0.8
+      },
+      {
+       "do": "hide",
+       "target": "triangle",
+       "at": "color"
+      },
+      {
+       "do": "show",
+       "target": "purple",
+       "at": "color"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three sides, whatever its size or direction.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "purple",
+       "at": "Three"
+      },
+      {
+       "do": "move",
+       "at": "size",
+       "dur": 0.7,
+       "points": {
+        "purpleP0": [
+         -1.3,
+         0
+        ],
+        "purpleP1": [
+         1.3,
+         -1.5
+        ],
+        "purpleP2": [
+         1.3,
+         1.5
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "tip": {
+      "on": "c",
+      "deg": 90
+     }
+    },
+    "parts": [
+     {
+      "id": "c",
+      "circle": "O",
+      "r": 1.5,
+      "ink": "ink",
+      "w": 3,
+      "fill": "blue-fill"
+     },
+     {
+      "id": "tipDot",
+      "dot": "tip",
+      "r": 20,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Circle. It is round, with no straight sides and no corners.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{circle}"
+      },
+      {
+       "do": "draw",
+       "target": "c",
+       "at": "Circle",
+       "dur": 1.1
+      },
+      {
+       "do": "show",
+       "target": "tipDot",
+       "at": "round"
+      },
+      {
+       "do": "glide",
+       "point": "tip",
+       "deg": -270,
+       "at": "round",
+       "dur": 2.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "sqP0": [
+      0,
+      1.6971
+     ],
+     "sqP1": [
+      1.6971,
+      0
+     ],
+     "sqP2": [
+      0,
+      -1.6971
+     ],
+     "sqP3": [
+      -1.6971,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "sq",
+      "poly": [
+       "sqP0",
+       "sqP1",
+       "sqP2",
+       "sqP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "sq"
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "sqP0",
+       "sqP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges",
+      "ticks": 1
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "sqP1",
+       "sqP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges",
+      "ticks": 1
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "sqP2",
+       "sqP3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges",
+      "ticks": 1
+     },
+     {
+      "id": "e4",
+      "seg": [
+       "sqP3",
+       "sqP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges",
+      "ticks": 1
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "sqP3",
+       "sqP0",
+       "sqP1"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "sqP0",
+       "sqP1",
+       "sqP2"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "sqP1",
+       "sqP2",
+       "sqP3"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "sqP2",
+       "sqP3",
+       "sqP0"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "That looks like a diamond to me.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\cm{\\text{diamond}}",
+       "at": "diamond"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count its sides.",
+     "pause": 0.25
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four. All the same length.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e2",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e3",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e4",
+       "at": "four",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Its corners are square, like the corners of a book.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "corners"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Turn it. It's a square.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "turn",
+       "target": [
+        "sq",
+        "edges",
+        "corners"
+       ],
+       "at": "Turn",
+       "about": "O",
+       "deg": 45,
+       "dur": 1.0
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{square}",
+       "fresh": true,
+       "at": "square"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "rectP0": [
+      -1.8,
+      -1.0
+     ],
+     "rectP1": [
+      1.8,
+      -1.0
+     ],
+     "rectP2": [
+      1.8,
+      1.0
+     ],
+     "rectP3": [
+      -1.8,
+      1.0
+     ]
+    },
+    "parts": [
+     {
+      "id": "rect",
+      "poly": [
+       "rectP0",
+       "rectP1",
+       "rectP2",
+       "rectP3"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "rect"
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "rectP0",
+       "rectP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "rectP1",
+       "rectP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "rectP2",
+       "rectP3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e4",
+      "seg": [
+       "rectP3",
+       "rectP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "r0",
+      "angle": [
+       "rectP3",
+       "rectP0",
+       "rectP1"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r1",
+      "angle": [
+       "rectP0",
+       "rectP1",
+       "rectP2"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r2",
+      "angle": [
+       "rectP1",
+       "rectP2",
+       "rectP3"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     },
+     {
+      "id": "r3",
+      "angle": [
+       "rectP2",
+       "rectP3",
+       "rectP0"
+      ],
+      "right": true,
+      "r": 62,
+      "ink": "warm",
+      "group": "corners"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Rectangle. One, two, three, four sides. Four square corners.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{rectangle}"
+      },
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e2",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e3",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e4",
+       "at": "four",
+       "dur": 0.35
+      },
+      {
+       "do": "show",
+       "target": "corners",
+       "at": "corners"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A square is a special rectangle: all four sides match.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "at": "square",
+       "dur": 0.9,
+       "points": {
+        "rectP0": [
+         -1.2,
+         -1.2
+        ],
+        "rectP1": [
+         1.2,
+         -1.2
+        ],
+        "rectP2": [
+         1.2,
+         1.2
+        ],
+        "rectP3": [
+         -1.2,
+         1.2
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "hexP0": [
+      1.6,
+      0.0
+     ],
+     "hexP1": [
+      0.8,
+      1.3856
+     ],
+     "hexP2": [
+      -0.8,
+      1.3856
+     ],
+     "hexP3": [
+      -1.6,
+      0.0
+     ],
+     "hexP4": [
+      -0.8,
+      -1.3856
+     ],
+     "hexP5": [
+      0.8,
+      -1.3856
+     ]
+    },
+    "parts": [
+     {
+      "id": "hex",
+      "poly": [
+       "hexP0",
+       "hexP1",
+       "hexP2",
+       "hexP3",
+       "hexP4",
+       "hexP5"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "hex"
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "hexP0",
+       "hexP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "hexP1",
+       "hexP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "hexP2",
+       "hexP3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e4",
+      "seg": [
+       "hexP3",
+       "hexP4"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e5",
+      "seg": [
+       "hexP4",
+       "hexP5"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e6",
+      "seg": [
+       "hexP5",
+       "hexP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Hexagon. One, two, three, four, five, six straight sides.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{hexagon}"
+      },
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e2",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e3",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e4",
+       "at": "four",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e5",
+       "at": "five",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e6",
+       "at": "six",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Stretch it out. Still six sides, still a hexagon.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "move",
+       "at": "Stretch",
+       "dur": 0.9,
+       "points": {
+        "hexP0": [
+         1.95,
+         0
+        ],
+        "hexP1": [
+         1.15,
+         1.15
+        ],
+        "hexP2": [
+         -1.15,
+         1.15
+        ],
+        "hexP3": [
+         -1.95,
+         0
+        ],
+        "hexP4": [
+         -1.15,
+         -1.15
+        ],
+        "hexP5": [
+         1.15,
+         -1.15
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "cubeTopP0": [
+      -1.05,
+      1.05
+     ],
+     "cubeTopP1": [
+      1.05,
+      1.05
+     ],
+     "cubeTopP2": [
+      1.05,
+      1.05
+     ],
+     "cubeTopP3": [
+      -1.05,
+      1.05
+     ],
+     "cubeSideP0": [
+      1.05,
+      -1.05
+     ],
+     "cubeSideP1": [
+      1.05,
+      -1.05
+     ],
+     "cubeSideP2": [
+      1.05,
+      1.05
+     ],
+     "cubeSideP3": [
+      1.05,
+      1.05
+     ],
+     "cubeFrontP0": [
+      -1.05,
+      -1.05
+     ],
+     "cubeFrontP1": [
+      1.05,
+      -1.05
+     ],
+     "cubeFrontP2": [
+      1.05,
+      1.05
+     ],
+     "cubeFrontP3": [
+      -1.05,
+      1.05
+     ],
+     "stampP0": [
+      -1.365,
+      -1.365
+     ],
+     "stampP1": [
+      0.735,
+      -1.365
+     ],
+     "stampP2": [
+      0.735,
+      0.735
+     ],
+     "stampP3": [
+      -1.365,
+      0.735
+     ]
+    },
+    "parts": [
+     {
+      "id": "cubeTop",
+      "poly": [
+       "cubeTopP0",
+       "cubeTopP1",
+       "cubeTopP2",
+       "cubeTopP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     },
+     {
+      "id": "cubeSide",
+      "poly": [
+       "cubeSideP0",
+       "cubeSideP1",
+       "cubeSideP2",
+       "cubeSideP3"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     },
+     {
+      "id": "cubeFront",
+      "poly": [
+       "cubeFrontP0",
+       "cubeFrontP1",
+       "cubeFrontP2",
+       "cubeFrontP3"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     },
+     {
+      "id": "stamp",
+      "poly": [
+       "stampP0",
+       "stampP1",
+       "stampP2",
+       "stampP3"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 3,
+      "group": "stamp"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A cube is a solid. It takes up space.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{cube}",
+       "at": "cube"
+      },
+      {
+       "do": "move",
+       "at": "solid",
+       "dur": 1.0,
+       "points": {
+        "cubeTopP0": [
+         -1.365,
+         0.735
+        ],
+        "cubeTopP1": [
+         0.735,
+         0.735
+        ],
+        "cubeTopP2": [
+         1.365,
+         1.365
+        ],
+        "cubeTopP3": [
+         -0.735,
+         1.365
+        ],
+        "cubeSideP0": [
+         0.735,
+         -1.365
+        ],
+        "cubeSideP1": [
+         1.365,
+         -0.735
+        ],
+        "cubeSideP2": [
+         1.365,
+         1.365
+        ],
+        "cubeSideP3": [
+         0.735,
+         0.735
+        ],
+        "cubeFrontP0": [
+         -1.365,
+         -1.365
+        ],
+        "cubeFrontP1": [
+         0.735,
+         -1.365
+        ],
+        "cubeFrontP2": [
+         0.735,
+         0.735
+        ],
+        "cubeFrontP3": [
+         -1.365,
+         0.735
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A sugar cube has this shape.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "cube",
+       "at": "sugar"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Its flat faces are squares.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "cubeFront",
+       "at": "faces"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Trace one face. The square is flat; the cube is solid.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "view",
+       "to": [
+        -3.7,
+        -2.3,
+        3.7,
+        2.3
+       ],
+       "at": "Trace",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "stamp",
+       "at": "Trace"
+      },
+      {
+       "do": "slide",
+       "target": "cube",
+       "by": [
+        1.8,
+        0
+       ],
+       "at": "Trace",
+       "dur": 1.0
+      },
+      {
+       "do": "slide",
+       "target": "stamp",
+       "by": [
+        -1.8,
+        0
+       ],
+       "at": "Trace",
+       "dur": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.7,
+     -2.3,
+     3.7,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "cL": [
+      -3.1500000000000004,
+      0
+     ],
+     "cR": [
+      -0.55,
+      0
+     ],
+     "sphereO": [
+      1.85,
+      0
+     ],
+     "beltP0": [
+      0.55,
+      0.0
+     ],
+     "merP0": [
+      1.85,
+      -1.3
+     ],
+     "beltP1": [
+      0.5563,
+      -0.0357
+     ],
+     "merP1": [
+      1.8984,
+      -1.2937
+     ],
+     "beltP2": [
+      0.575,
+      -0.071
+     ],
+     "merP2": [
+      1.9464,
+      -1.275
+     ],
+     "beltP3": [
+      0.606,
+      -0.1057
+     ],
+     "merP3": [
+      1.9934,
+      -1.244
+     ],
+     "beltP4": [
+      0.649,
+      -0.1393
+     ],
+     "merP4": [
+      2.039,
+      -1.201
+     ],
+     "beltP5": [
+      0.7035,
+      -0.1716
+     ],
+     "merP5": [
+      2.0829,
+      -1.1465
+     ],
+     "beltP6": [
+      0.7691,
+      -0.2022
+     ],
+     "merP6": [
+      2.1245,
+      -1.0809
+     ],
+     "beltP7": [
+      0.8451,
+      -0.2309
+     ],
+     "merP7": [
+      2.1634,
+      -1.0049
+     ],
+     "beltP8": [
+      0.9308,
+      -0.2574
+     ],
+     "merP8": [
+      2.1993,
+      -0.9192
+     ],
+     "beltP9": [
+      1.0253,
+      -0.2814
+     ],
+     "merP9": [
+      2.2319,
+      -0.8247
+     ],
+     "beltP10": [
+      1.1278,
+      -0.3027
+     ],
+     "merP10": [
+      2.2607,
+      -0.7222
+     ],
+     "beltP11": [
+      1.2372,
+      -0.321
+     ],
+     "merP11": [
+      2.2857,
+      -0.6128
+     ],
+     "beltP12": [
+      1.3525,
+      -0.3363
+     ],
+     "merP12": [
+      2.3064,
+      -0.4975
+     ],
+     "beltP13": [
+      1.4726,
+      -0.3483
+     ],
+     "merP13": [
+      2.3227,
+      -0.3774
+     ],
+     "beltP14": [
+      1.5964,
+      -0.357
+     ],
+     "merP14": [
+      2.3345,
+      -0.2536
+     ],
+     "beltP15": [
+      1.7226,
+      -0.3622
+     ],
+     "merP15": [
+      2.3416,
+      -0.1274
+     ],
+     "beltP16": [
+      1.85,
+      -0.364
+     ],
+     "merP16": [
+      2.344,
+      0.0
+     ],
+     "beltP17": [
+      1.9774,
+      -0.3622
+     ],
+     "merP17": [
+      2.3416,
+      0.1274
+     ],
+     "beltP18": [
+      2.1036,
+      -0.357
+     ],
+     "merP18": [
+      2.3345,
+      0.2536
+     ],
+     "beltP19": [
+      2.2274,
+      -0.3483
+     ],
+     "merP19": [
+      2.3227,
+      0.3774
+     ],
+     "beltP20": [
+      2.3475,
+      -0.3363
+     ],
+     "merP20": [
+      2.3064,
+      0.4975
+     ],
+     "beltP21": [
+      2.4628,
+      -0.321
+     ],
+     "merP21": [
+      2.2857,
+      0.6128
+     ],
+     "beltP22": [
+      2.5722,
+      -0.3027
+     ],
+     "merP22": [
+      2.2607,
+      0.7222
+     ],
+     "beltP23": [
+      2.6747,
+      -0.2814
+     ],
+     "merP23": [
+      2.2319,
+      0.8247
+     ],
+     "beltP24": [
+      2.7692,
+      -0.2574
+     ],
+     "merP24": [
+      2.1993,
+      0.9192
+     ],
+     "beltP25": [
+      2.8549,
+      -0.2309
+     ],
+     "merP25": [
+      2.1634,
+      1.0049
+     ],
+     "beltP26": [
+      2.9309,
+      -0.2022
+     ],
+     "merP26": [
+      2.1245,
+      1.0809
+     ],
+     "beltP27": [
+      2.9965,
+      -0.1716
+     ],
+     "merP27": [
+      2.0829,
+      1.1465
+     ],
+     "beltP28": [
+      3.051,
+      -0.1393
+     ],
+     "merP28": [
+      2.039,
+      1.201
+     ],
+     "beltP29": [
+      3.094,
+      -0.1057
+     ],
+     "merP29": [
+      1.9934,
+      1.244
+     ],
+     "beltP30": [
+      3.125,
+      -0.071
+     ],
+     "merP30": [
+      1.9464,
+      1.275
+     ],
+     "beltP31": [
+      3.1437,
+      -0.0357
+     ],
+     "merP31": [
+      1.8984,
+      1.2937
+     ],
+     "beltP32": [
+      3.15,
+      -0.0
+     ],
+     "merP32": [
+      1.85,
+      1.3
+     ],
+     "disc0": [
+      -0.55,
+      0.0
+     ],
+     "disc1": [
+      -0.5549,
+      0.1133
+     ],
+     "disc2": [
+      -0.5697,
+      0.2257
+     ],
+     "disc3": [
+      -0.5943,
+      0.3365
+     ],
+     "disc4": [
+      -0.6284,
+      0.4446
+     ],
+     "disc5": [
+      -0.6718,
+      0.5494
+     ],
+     "disc6": [
+      -0.7242,
+      0.65
+     ],
+     "disc7": [
+      -0.7851,
+      0.7456
+     ],
+     "disc8": [
+      -0.8541,
+      0.8356
+     ],
+     "disc9": [
+      -0.9308,
+      0.9192
+     ],
+     "disc10": [
+      -1.0144,
+      0.9959
+     ],
+     "disc11": [
+      -1.1044,
+      1.0649
+     ],
+     "disc12": [
+      -1.2,
+      1.1258
+     ],
+     "disc13": [
+      -1.3006,
+      1.1782
+     ],
+     "disc14": [
+      -1.4054,
+      1.2216
+     ],
+     "disc15": [
+      -1.5135,
+      1.2557
+     ],
+     "disc16": [
+      -1.6243,
+      1.2803
+     ],
+     "disc17": [
+      -1.7367,
+      1.2951
+     ],
+     "disc18": [
+      -1.85,
+      1.3
+     ],
+     "disc19": [
+      -1.9633,
+      1.2951
+     ],
+     "disc20": [
+      -2.0757,
+      1.2803
+     ],
+     "disc21": [
+      -2.1865,
+      1.2557
+     ],
+     "disc22": [
+      -2.2946,
+      1.2216
+     ],
+     "disc23": [
+      -2.3994,
+      1.1782
+     ],
+     "disc24": [
+      -2.5,
+      1.1258
+     ],
+     "disc25": [
+      -2.5956,
+      1.0649
+     ],
+     "disc26": [
+      -2.6856,
+      0.9959
+     ],
+     "disc27": [
+      -2.7692,
+      0.9192
+     ],
+     "disc28": [
+      -2.8459,
+      0.8356
+     ],
+     "disc29": [
+      -2.9149,
+      0.7456
+     ],
+     "disc30": [
+      -2.9758,
+      0.65
+     ],
+     "disc31": [
+      -3.0282,
+      0.5494
+     ],
+     "disc32": [
+      -3.0716,
+      0.4446
+     ],
+     "disc33": [
+      -3.1057,
+      0.3365
+     ],
+     "disc34": [
+      -3.1303,
+      0.2257
+     ],
+     "disc35": [
+      -3.1451,
+      0.1133
+     ],
+     "disc36": [
+      -3.15,
+      0.0
+     ],
+     "disc37": [
+      -3.1451,
+      -0.1133
+     ],
+     "disc38": [
+      -3.1303,
+      -0.2257
+     ],
+     "disc39": [
+      -3.1057,
+      -0.3365
+     ],
+     "disc40": [
+      -3.0716,
+      -0.4446
+     ],
+     "disc41": [
+      -3.0282,
+      -0.5494
+     ],
+     "disc42": [
+      -2.9758,
+      -0.65
+     ],
+     "disc43": [
+      -2.9149,
+      -0.7456
+     ],
+     "disc44": [
+      -2.8459,
+      -0.8356
+     ],
+     "disc45": [
+      -2.7692,
+      -0.9192
+     ],
+     "disc46": [
+      -2.6856,
+      -0.9959
+     ],
+     "disc47": [
+      -2.5956,
+      -1.0649
+     ],
+     "disc48": [
+      -2.5,
+      -1.1258
+     ],
+     "disc49": [
+      -2.3994,
+      -1.1782
+     ],
+     "disc50": [
+      -2.2946,
+      -1.2216
+     ],
+     "disc51": [
+      -2.1865,
+      -1.2557
+     ],
+     "disc52": [
+      -2.0757,
+      -1.2803
+     ],
+     "disc53": [
+      -1.9633,
+      -1.2951
+     ],
+     "disc54": [
+      -1.85,
+      -1.3
+     ],
+     "disc55": [
+      -1.7367,
+      -1.2951
+     ],
+     "disc56": [
+      -1.6243,
+      -1.2803
+     ],
+     "disc57": [
+      -1.5135,
+      -1.2557
+     ],
+     "disc58": [
+      -1.4054,
+      -1.2216
+     ],
+     "disc59": [
+      -1.3006,
+      -1.1782
+     ],
+     "disc60": [
+      -1.2,
+      -1.1258
+     ],
+     "disc61": [
+      -1.1044,
+      -1.0649
+     ],
+     "disc62": [
+      -1.0144,
+      -0.9959
+     ],
+     "disc63": [
+      -0.9308,
+      -0.9192
+     ],
+     "disc64": [
+      -0.8541,
+      -0.8356
+     ],
+     "disc65": [
+      -0.7851,
+      -0.7456
+     ],
+     "disc66": [
+      -0.7242,
+      -0.65
+     ],
+     "disc67": [
+      -0.6718,
+      -0.5494
+     ],
+     "disc68": [
+      -0.6284,
+      -0.4446
+     ],
+     "disc69": [
+      -0.5943,
+      -0.3365
+     ],
+     "disc70": [
+      -0.5697,
+      -0.2257
+     ],
+     "disc71": [
+      -0.5549,
+      -0.1133
+     ]
+    },
+    "parts": [
+     {
+      "id": "circle",
+      "poly": [
+       "disc0",
+       "disc1",
+       "disc2",
+       "disc3",
+       "disc4",
+       "disc5",
+       "disc6",
+       "disc7",
+       "disc8",
+       "disc9",
+       "disc10",
+       "disc11",
+       "disc12",
+       "disc13",
+       "disc14",
+       "disc15",
+       "disc16",
+       "disc17",
+       "disc18",
+       "disc19",
+       "disc20",
+       "disc21",
+       "disc22",
+       "disc23",
+       "disc24",
+       "disc25",
+       "disc26",
+       "disc27",
+       "disc28",
+       "disc29",
+       "disc30",
+       "disc31",
+       "disc32",
+       "disc33",
+       "disc34",
+       "disc35",
+       "disc36",
+       "disc37",
+       "disc38",
+       "disc39",
+       "disc40",
+       "disc41",
+       "disc42",
+       "disc43",
+       "disc44",
+       "disc45",
+       "disc46",
+       "disc47",
+       "disc48",
+       "disc49",
+       "disc50",
+       "disc51",
+       "disc52",
+       "disc53",
+       "disc54",
+       "disc55",
+       "disc56",
+       "disc57",
+       "disc58",
+       "disc59",
+       "disc60",
+       "disc61",
+       "disc62",
+       "disc63",
+       "disc64",
+       "disc65",
+       "disc66",
+       "disc67",
+       "disc68",
+       "disc69",
+       "disc70",
+       "disc71"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "disc"
+     },
+     {
+      "id": "sphere",
+      "circle": "sphereO",
+      "r": 1.3,
+      "ink": "ink",
+      "w": 3,
+      "fill": "gold-fill",
+      "start": true,
+      "group": "ball"
+     },
+     {
+      "id": "belt",
+      "curve": [
+       "beltP0",
+       "beltP1",
+       "beltP2",
+       "beltP3",
+       "beltP4",
+       "beltP5",
+       "beltP6",
+       "beltP7",
+       "beltP8",
+       "beltP9",
+       "beltP10",
+       "beltP11",
+       "beltP12",
+       "beltP13",
+       "beltP14",
+       "beltP15",
+       "beltP16",
+       "beltP17",
+       "beltP18",
+       "beltP19",
+       "beltP20",
+       "beltP21",
+       "beltP22",
+       "beltP23",
+       "beltP24",
+       "beltP25",
+       "beltP26",
+       "beltP27",
+       "beltP28",
+       "beltP29",
+       "beltP30",
+       "beltP31",
+       "beltP32"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": true,
+      "group": "ball"
+     },
+     {
+      "id": "meridian",
+      "curve": [
+       "merP0",
+       "merP1",
+       "merP2",
+       "merP3",
+       "merP4",
+       "merP5",
+       "merP6",
+       "merP7",
+       "merP8",
+       "merP9",
+       "merP10",
+       "merP11",
+       "merP12",
+       "merP13",
+       "merP14",
+       "merP15",
+       "merP16",
+       "merP17",
+       "merP18",
+       "merP19",
+       "merP20",
+       "merP21",
+       "merP22",
+       "merP23",
+       "merP24",
+       "merP25",
+       "merP26",
+       "merP27",
+       "merP28",
+       "merP29",
+       "merP30",
+       "merP31",
+       "merP32"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "start": true,
+      "group": "ball"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A circle is flat.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{circle}"
+      },
+      {
+       "do": "flip",
+       "target": "circle",
+       "over": [
+        "cL",
+        "cR"
+       ],
+       "at": "flat",
+       "dur": 1.3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A sphere is round every way, like an orange.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\huge\\text{sphere}",
+       "fresh": true,
+       "at": "sphere"
+      },
+      {
+       "do": "turn",
+       "target": "ball",
+       "about": "sphereO",
+       "deg": -360,
+       "at": "round",
+       "dur": 2.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.3,
+     -2.3,
+     2.3,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "apex": [
+      0,
+      1.57
+     ],
+     "rim0": [
+      -1.15,
+      -1.225
+     ],
+     "rim1": [
+      -1.1402,
+      -1.27
+     ],
+     "rim2": [
+      -1.1108,
+      -1.3143
+     ],
+     "rim3": [
+      -1.0625,
+      -1.357
+     ],
+     "rim4": [
+      -0.9959,
+      -1.3975
+     ],
+     "rim5": [
+      -0.9124,
+      -1.435
+     ],
+     "rim6": [
+      -0.8132,
+      -1.469
+     ],
+     "rim7": [
+      -0.7001,
+      -1.4987
+     ],
+     "rim8": [
+      -0.575,
+      -1.5238
+     ],
+     "rim9": [
+      -0.4401,
+      -1.5437
+     ],
+     "rim10": [
+      -0.2976,
+      -1.5582
+     ],
+     "rim11": [
+      -0.1501,
+      -1.567
+     ],
+     "rim12": [
+      -0.0,
+      -1.57
+     ],
+     "rim13": [
+      0.1501,
+      -1.567
+     ],
+     "rim14": [
+      0.2976,
+      -1.5582
+     ],
+     "rim15": [
+      0.4401,
+      -1.5437
+     ],
+     "rim16": [
+      0.575,
+      -1.5238
+     ],
+     "rim17": [
+      0.7001,
+      -1.4987
+     ],
+     "rim18": [
+      0.8132,
+      -1.469
+     ],
+     "rim19": [
+      0.9124,
+      -1.435
+     ],
+     "rim20": [
+      0.9959,
+      -1.3975
+     ],
+     "rim21": [
+      1.0625,
+      -1.357
+     ],
+     "rim22": [
+      1.1108,
+      -1.3143
+     ],
+     "rim23": [
+      1.1402,
+      -1.27
+     ],
+     "rim24": [
+      1.15,
+      -1.225
+     ],
+     "bk0": [
+      1.15,
+      -1.225
+     ],
+     "bk1": [
+      1.1402,
+      -1.18
+     ],
+     "bk2": [
+      1.1108,
+      -1.1357
+     ],
+     "bk3": [
+      1.0625,
+      -1.093
+     ],
+     "bk4": [
+      0.9959,
+      -1.0525
+     ],
+     "bk5": [
+      0.9124,
+      -1.015
+     ],
+     "bk6": [
+      0.8132,
+      -0.981
+     ],
+     "bk7": [
+      0.7001,
+      -0.9513
+     ],
+     "bk8": [
+      0.575,
+      -0.9262
+     ],
+     "bk9": [
+      0.4401,
+      -0.9063
+     ],
+     "bk10": [
+      0.2976,
+      -0.8918
+     ],
+     "bk11": [
+      0.1501,
+      -0.883
+     ],
+     "bk12": [
+      0.0,
+      -0.88
+     ],
+     "bk13": [
+      -0.1501,
+      -0.883
+     ],
+     "bk14": [
+      -0.2976,
+      -0.8918
+     ],
+     "bk15": [
+      -0.4401,
+      -0.9063
+     ],
+     "bk16": [
+      -0.575,
+      -0.9262
+     ],
+     "bk17": [
+      -0.7001,
+      -0.9513
+     ],
+     "bk18": [
+      -0.8132,
+      -0.981
+     ],
+     "bk19": [
+      -0.9124,
+      -1.015
+     ],
+     "bk20": [
+      -0.9959,
+      -1.0525
+     ],
+     "bk21": [
+      -1.0625,
+      -1.093
+     ],
+     "bk22": [
+      -1.1108,
+      -1.1357
+     ],
+     "bk23": [
+      -1.1402,
+      -1.18
+     ],
+     "bk24": [
+      -1.15,
+      -1.225
+     ],
+     "up0": [
+      1.15,
+      -1.225
+     ],
+     "up1": [
+      1.1402,
+      -1.18
+     ],
+     "up2": [
+      1.1108,
+      -1.1357
+     ],
+     "up3": [
+      1.0625,
+      -1.093
+     ],
+     "up4": [
+      0.9959,
+      -1.0525
+     ],
+     "up5": [
+      0.9124,
+      -1.015
+     ],
+     "up6": [
+      0.8132,
+      -0.981
+     ],
+     "up7": [
+      0.7001,
+      -0.9513
+     ],
+     "up8": [
+      0.575,
+      -0.9262
+     ],
+     "up9": [
+      0.4401,
+      -0.9063
+     ],
+     "up10": [
+      0.2976,
+      -0.8918
+     ],
+     "up11": [
+      0.1501,
+      -0.883
+     ],
+     "up12": [
+      0.0,
+      -0.88
+     ],
+     "up13": [
+      -0.1501,
+      -0.883
+     ],
+     "up14": [
+      -0.2976,
+      -0.8918
+     ],
+     "up15": [
+      -0.4401,
+      -0.9063
+     ],
+     "up16": [
+      -0.575,
+      -0.9262
+     ],
+     "up17": [
+      -0.7001,
+      -0.9513
+     ],
+     "up18": [
+      -0.8132,
+      -0.981
+     ],
+     "up19": [
+      -0.9124,
+      -1.015
+     ],
+     "up20": [
+      -0.9959,
+      -1.0525
+     ],
+     "up21": [
+      -1.0625,
+      -1.093
+     ],
+     "up22": [
+      -1.1108,
+      -1.1357
+     ],
+     "up23": [
+      -1.1402,
+      -1.18
+     ],
+     "up24": [
+      -1.15,
+      -1.225
+     ],
+     "top0": [
+      1.15,
+      -1.225
+     ],
+     "top1": [
+      1.1402,
+      -1.18
+     ],
+     "top2": [
+      1.1108,
+      -1.1357
+     ],
+     "top3": [
+      1.0625,
+      -1.093
+     ],
+     "top4": [
+      0.9959,
+      -1.0525
+     ],
+     "top5": [
+      0.9124,
+      -1.015
+     ],
+     "top6": [
+      0.8132,
+      -0.981
+     ],
+     "top7": [
+      0.7001,
+      -0.9513
+     ],
+     "top8": [
+      0.575,
+      -0.9262
+     ],
+     "top9": [
+      0.4401,
+      -0.9063
+     ],
+     "top10": [
+      0.2976,
+      -0.8918
+     ],
+     "top11": [
+      0.1501,
+      -0.883
+     ],
+     "top12": [
+      0.0,
+      -0.88
+     ],
+     "top13": [
+      -0.1501,
+      -0.883
+     ],
+     "top14": [
+      -0.2976,
+      -0.8918
+     ],
+     "top15": [
+      -0.4401,
+      -0.9063
+     ],
+     "top16": [
+      -0.575,
+      -0.9262
+     ],
+     "top17": [
+      -0.7001,
+      -0.9513
+     ],
+     "top18": [
+      -0.8132,
+      -0.981
+     ],
+     "top19": [
+      -0.9124,
+      -1.015
+     ],
+     "top20": [
+      -0.9959,
+      -1.0525
+     ],
+     "top21": [
+      -1.0625,
+      -1.093
+     ],
+     "top22": [
+      -1.1108,
+      -1.1357
+     ],
+     "top23": [
+      -1.1402,
+      -1.18
+     ],
+     "top24": [
+      -1.15,
+      -1.225
+     ],
+     "top25": [
+      -1.1402,
+      -1.27
+     ],
+     "top26": [
+      -1.1108,
+      -1.3143
+     ],
+     "top27": [
+      -1.0625,
+      -1.357
+     ],
+     "top28": [
+      -0.9959,
+      -1.3975
+     ],
+     "top29": [
+      -0.9124,
+      -1.435
+     ],
+     "top30": [
+      -0.8132,
+      -1.469
+     ],
+     "top31": [
+      -0.7001,
+      -1.4987
+     ],
+     "top32": [
+      -0.575,
+      -1.5238
+     ],
+     "top33": [
+      -0.4401,
+      -1.5437
+     ],
+     "top34": [
+      -0.2976,
+      -1.5582
+     ],
+     "top35": [
+      -0.1501,
+      -1.567
+     ],
+     "top36": [
+      -0.0,
+      -1.57
+     ],
+     "top37": [
+      0.1501,
+      -1.567
+     ],
+     "top38": [
+      0.2976,
+      -1.5582
+     ],
+     "top39": [
+      0.4401,
+      -1.5437
+     ],
+     "top40": [
+      0.575,
+      -1.5238
+     ],
+     "top41": [
+      0.7001,
+      -1.4987
+     ],
+     "top42": [
+      0.8132,
+      -1.469
+     ],
+     "top43": [
+      0.9124,
+      -1.435
+     ],
+     "top44": [
+      0.9959,
+      -1.3975
+     ],
+     "top45": [
+      1.0625,
+      -1.357
+     ],
+     "top46": [
+      1.1108,
+      -1.3143
+     ],
+     "top47": [
+      1.1402,
+      -1.27
+     ]
+    },
+    "parts": [
+     {
+      "id": "canBody",
+      "poly": [
+       "rim0",
+       "rim1",
+       "rim2",
+       "rim3",
+       "rim4",
+       "rim5",
+       "rim6",
+       "rim7",
+       "rim8",
+       "rim9",
+       "rim10",
+       "rim11",
+       "rim12",
+       "rim13",
+       "rim14",
+       "rim15",
+       "rim16",
+       "rim17",
+       "rim18",
+       "rim19",
+       "rim20",
+       "rim21",
+       "rim22",
+       "rim23",
+       "rim24",
+       "up0",
+       "up1",
+       "up2",
+       "up3",
+       "up4",
+       "up5",
+       "up6",
+       "up7",
+       "up8",
+       "up9",
+       "up10",
+       "up11",
+       "up12",
+       "up13",
+       "up14",
+       "up15",
+       "up16",
+       "up17",
+       "up18",
+       "up19",
+       "up20",
+       "up21",
+       "up22",
+       "up23",
+       "up24"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "can"
+     },
+     {
+      "id": "coneBack",
+      "curve": [
+       "bk0",
+       "bk1",
+       "bk2",
+       "bk3",
+       "bk4",
+       "bk5",
+       "bk6",
+       "bk7",
+       "bk8",
+       "bk9",
+       "bk10",
+       "bk11",
+       "bk12",
+       "bk13",
+       "bk14",
+       "bk15",
+       "bk16",
+       "bk17",
+       "bk18",
+       "bk19",
+       "bk20",
+       "bk21",
+       "bk22",
+       "bk23",
+       "bk24"
+      ],
+      "ink": "muted",
+      "w": 2.5
+     },
+     {
+      "id": "canTop",
+      "poly": [
+       "top0",
+       "top1",
+       "top2",
+       "top3",
+       "top4",
+       "top5",
+       "top6",
+       "top7",
+       "top8",
+       "top9",
+       "top10",
+       "top11",
+       "top12",
+       "top13",
+       "top14",
+       "top15",
+       "top16",
+       "top17",
+       "top18",
+       "top19",
+       "top20",
+       "top21",
+       "top22",
+       "top23",
+       "top24",
+       "top25",
+       "top26",
+       "top27",
+       "top28",
+       "top29",
+       "top30",
+       "top31",
+       "top32",
+       "top33",
+       "top34",
+       "top35",
+       "top36",
+       "top37",
+       "top38",
+       "top39",
+       "top40",
+       "top41",
+       "top42",
+       "top43",
+       "top44",
+       "top45",
+       "top46",
+       "top47"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "can"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A cylinder is shaped like a soup can.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{cylinder}"
+      },
+      {
+       "do": "move",
+       "at": "cylinder",
+       "dur": 1.1,
+       "points": {
+        "up0": [
+         1.15,
+         1.225
+        ],
+        "up1": [
+         1.1402,
+         1.27
+        ],
+        "up2": [
+         1.1108,
+         1.3143
+        ],
+        "up3": [
+         1.0625,
+         1.357
+        ],
+        "up4": [
+         0.9959,
+         1.3975
+        ],
+        "up5": [
+         0.9124,
+         1.435
+        ],
+        "up6": [
+         0.8132,
+         1.469
+        ],
+        "up7": [
+         0.7001,
+         1.4987
+        ],
+        "up8": [
+         0.575,
+         1.5238
+        ],
+        "up9": [
+         0.4401,
+         1.5437
+        ],
+        "up10": [
+         0.2976,
+         1.5582
+        ],
+        "up11": [
+         0.1501,
+         1.567
+        ],
+        "up12": [
+         0.0,
+         1.57
+        ],
+        "up13": [
+         -0.1501,
+         1.567
+        ],
+        "up14": [
+         -0.2976,
+         1.5582
+        ],
+        "up15": [
+         -0.4401,
+         1.5437
+        ],
+        "up16": [
+         -0.575,
+         1.5238
+        ],
+        "up17": [
+         -0.7001,
+         1.4987
+        ],
+        "up18": [
+         -0.8132,
+         1.469
+        ],
+        "up19": [
+         -0.9124,
+         1.435
+        ],
+        "up20": [
+         -0.9959,
+         1.3975
+        ],
+        "up21": [
+         -1.0625,
+         1.357
+        ],
+        "up22": [
+         -1.1108,
+         1.3143
+        ],
+        "up23": [
+         -1.1402,
+         1.27
+        ],
+        "up24": [
+         -1.15,
+         1.225
+        ],
+        "top0": [
+         1.15,
+         1.225
+        ],
+        "top1": [
+         1.1402,
+         1.27
+        ],
+        "top2": [
+         1.1108,
+         1.3143
+        ],
+        "top3": [
+         1.0625,
+         1.357
+        ],
+        "top4": [
+         0.9959,
+         1.3975
+        ],
+        "top5": [
+         0.9124,
+         1.435
+        ],
+        "top6": [
+         0.8132,
+         1.469
+        ],
+        "top7": [
+         0.7001,
+         1.4987
+        ],
+        "top8": [
+         0.575,
+         1.5238
+        ],
+        "top9": [
+         0.4401,
+         1.5437
+        ],
+        "top10": [
+         0.2976,
+         1.5582
+        ],
+        "top11": [
+         0.1501,
+         1.567
+        ],
+        "top12": [
+         0.0,
+         1.57
+        ],
+        "top13": [
+         -0.1501,
+         1.567
+        ],
+        "top14": [
+         -0.2976,
+         1.5582
+        ],
+        "top15": [
+         -0.4401,
+         1.5437
+        ],
+        "top16": [
+         -0.575,
+         1.5238
+        ],
+        "top17": [
+         -0.7001,
+         1.4987
+        ],
+        "top18": [
+         -0.8132,
+         1.469
+        ],
+        "top19": [
+         -0.9124,
+         1.435
+        ],
+        "top20": [
+         -0.9959,
+         1.3975
+        ],
+        "top21": [
+         -1.0625,
+         1.357
+        ],
+        "top22": [
+         -1.1108,
+         1.3143
+        ],
+        "top23": [
+         -1.1402,
+         1.27
+        ],
+        "top24": [
+         -1.15,
+         1.225
+        ],
+        "top25": [
+         -1.1402,
+         1.18
+        ],
+        "top26": [
+         -1.1108,
+         1.1357
+        ],
+        "top27": [
+         -1.0625,
+         1.093
+        ],
+        "top28": [
+         -0.9959,
+         1.0525
+        ],
+        "top29": [
+         -0.9124,
+         1.015
+        ],
+        "top30": [
+         -0.8132,
+         0.981
+        ],
+        "top31": [
+         -0.7001,
+         0.9513
+        ],
+        "top32": [
+         -0.575,
+         0.9262
+        ],
+        "top33": [
+         -0.4401,
+         0.9063
+        ],
+        "top34": [
+         -0.2976,
+         0.8918
+        ],
+        "top35": [
+         -0.1501,
+         0.883
+        ],
+        "top36": [
+         -0.0,
+         0.88
+        ],
+        "top37": [
+         0.1501,
+         0.883
+        ],
+        "top38": [
+         0.2976,
+         0.8918
+        ],
+        "top39": [
+         0.4401,
+         0.9063
+        ],
+        "top40": [
+         0.575,
+         0.9262
+        ],
+        "top41": [
+         0.7001,
+         0.9513
+        ],
+        "top42": [
+         0.8132,
+         0.981
+        ],
+        "top43": [
+         0.9124,
+         1.015
+        ],
+        "top44": [
+         0.9959,
+         1.0525
+        ],
+        "top45": [
+         1.0625,
+         1.093
+        ],
+        "top46": [
+         1.1108,
+         1.1357
+        ],
+        "top47": [
+         1.1402,
+         1.18
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The top is a flat circle.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "canTop",
+       "at": "flat"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Squeeze the top to a point. Now it's a cone, like a party hat.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "at": "Squeeze",
+       "dur": 1.2,
+       "points": {
+        "up0": "apex",
+        "up1": "apex",
+        "up2": "apex",
+        "up3": "apex",
+        "up4": "apex",
+        "up5": "apex",
+        "up6": "apex",
+        "up7": "apex",
+        "up8": "apex",
+        "up9": "apex",
+        "up10": "apex",
+        "up11": "apex",
+        "up12": "apex",
+        "up13": "apex",
+        "up14": "apex",
+        "up15": "apex",
+        "up16": "apex",
+        "up17": "apex",
+        "up18": "apex",
+        "up19": "apex",
+        "up20": "apex",
+        "up21": "apex",
+        "up22": "apex",
+        "up23": "apex",
+        "up24": "apex",
+        "top0": "apex",
+        "top1": "apex",
+        "top2": "apex",
+        "top3": "apex",
+        "top4": "apex",
+        "top5": "apex",
+        "top6": "apex",
+        "top7": "apex",
+        "top8": "apex",
+        "top9": "apex",
+        "top10": "apex",
+        "top11": "apex",
+        "top12": "apex",
+        "top13": "apex",
+        "top14": "apex",
+        "top15": "apex",
+        "top16": "apex",
+        "top17": "apex",
+        "top18": "apex",
+        "top19": "apex",
+        "top20": "apex",
+        "top21": "apex",
+        "top22": "apex",
+        "top23": "apex",
+        "top24": "apex",
+        "top25": "apex",
+        "top26": "apex",
+        "top27": "apex",
+        "top28": "apex",
+        "top29": "apex",
+        "top30": "apex",
+        "top31": "apex",
+        "top32": "apex",
+        "top33": "apex",
+        "top34": "apex",
+        "top35": "apex",
+        "top36": "apex",
+        "top37": "apex",
+        "top38": "apex",
+        "top39": "apex",
+        "top40": "apex",
+        "top41": "apex",
+        "top42": "apex",
+        "top43": "apex",
+        "top44": "apex",
+        "top45": "apex",
+        "top46": "apex",
+        "top47": "apex"
+       }
+      },
+      {
+       "do": "clear",
+       "at": "cone"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{cone}",
+       "at": "cone"
+      },
+      {
+       "do": "show",
+       "target": "coneBack",
+       "at": "cone"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.7,
+     -2.3,
+     3.7,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "flatP0": [
+      -3.075,
+      -0.65
+     ],
+     "flatP1": [
+      -1.475,
+      -0.65
+     ],
+     "flatP2": [
+      -1.475,
+      0.65
+     ],
+     "flatP3": [
+      -3.075,
+      0.65
+     ],
+     "fL": [
+      -3.075,
+      0
+     ],
+     "fR": [
+      -1.475,
+      0
+     ],
+     "boxTopP0": [
+      -1.025,
+      0.425
+     ],
+     "boxTopP1": [
+      0.575,
+      0.425
+     ],
+     "boxTopP2": [
+      1.025,
+      0.775
+     ],
+     "boxTopP3": [
+      -0.575,
+      0.775
+     ],
+     "boxSideP0": [
+      0.575,
+      -0.775
+     ],
+     "boxSideP1": [
+      1.025,
+      -0.425
+     ],
+     "boxSideP2": [
+      1.025,
+      0.775
+     ],
+     "boxSideP3": [
+      0.575,
+      0.425
+     ],
+     "boxFrontP0": [
+      -1.025,
+      -0.775
+     ],
+     "boxFrontP1": [
+      0.575,
+      -0.775
+     ],
+     "boxFrontP2": [
+      0.575,
+      0.425
+     ],
+     "boxFrontP3": [
+      -1.025,
+      0.425
+     ],
+     "m1At": [
+      -0.225,
+      -0.175
+     ],
+     "coneApex": [
+      2.275,
+      1.0
+     ],
+     "cb0": [
+      1.475,
+      -0.8
+     ],
+     "cb1": [
+      1.4818,
+      -0.8313
+     ],
+     "cb2": [
+      1.5023,
+      -0.8621
+     ],
+     "cb3": [
+      1.5359,
+      -0.8918
+     ],
+     "cb4": [
+      1.5822,
+      -0.92
+     ],
+     "cb5": [
+      1.6403,
+      -0.9461
+     ],
+     "cb6": [
+      1.7093,
+      -0.9697
+     ],
+     "cb7": [
+      1.788,
+      -0.9904
+     ],
+     "cb8": [
+      1.875,
+      -1.0078
+     ],
+     "cb9": [
+      1.9689,
+      -1.0217
+     ],
+     "cb10": [
+      2.0679,
+      -1.0318
+     ],
+     "cb11": [
+      2.1706,
+      -1.0379
+     ],
+     "cb12": [
+      2.275,
+      -1.04
+     ],
+     "cb13": [
+      2.3794,
+      -1.0379
+     ],
+     "cb14": [
+      2.4821,
+      -1.0318
+     ],
+     "cb15": [
+      2.5811,
+      -1.0217
+     ],
+     "cb16": [
+      2.675,
+      -1.0078
+     ],
+     "cb17": [
+      2.762,
+      -0.9904
+     ],
+     "cb18": [
+      2.8407,
+      -0.9697
+     ],
+     "cb19": [
+      2.9097,
+      -0.9461
+     ],
+     "cb20": [
+      2.9678,
+      -0.92
+     ],
+     "cb21": [
+      3.0141,
+      -0.8918
+     ],
+     "cb22": [
+      3.0477,
+      -0.8621
+     ],
+     "cb23": [
+      3.0682,
+      -0.8313
+     ],
+     "cb24": [
+      3.075,
+      -0.8
+     ],
+     "ck0": [
+      3.075,
+      -0.8
+     ],
+     "ck1": [
+      3.0682,
+      -0.7687
+     ],
+     "ck2": [
+      3.0477,
+      -0.7379
+     ],
+     "ck3": [
+      3.0141,
+      -0.7082
+     ],
+     "ck4": [
+      2.9678,
+      -0.68
+     ],
+     "ck5": [
+      2.9097,
+      -0.6539
+     ],
+     "ck6": [
+      2.8407,
+      -0.6303
+     ],
+     "ck7": [
+      2.762,
+      -0.6096
+     ],
+     "ck8": [
+      2.675,
+      -0.5922
+     ],
+     "ck9": [
+      2.5811,
+      -0.5783
+     ],
+     "ck10": [
+      2.4821,
+      -0.5682
+     ],
+     "ck11": [
+      2.3794,
+      -0.5621
+     ],
+     "ck12": [
+      2.275,
+      -0.56
+     ],
+     "ck13": [
+      2.1706,
+      -0.5621
+     ],
+     "ck14": [
+      2.0679,
+      -0.5682
+     ],
+     "ck15": [
+      1.9689,
+      -0.5783
+     ],
+     "ck16": [
+      1.875,
+      -0.5922
+     ],
+     "ck17": [
+      1.788,
+      -0.6096
+     ],
+     "ck18": [
+      1.7093,
+      -0.6303
+     ],
+     "ck19": [
+      1.6403,
+      -0.6539
+     ],
+     "ck20": [
+      1.5822,
+      -0.68
+     ],
+     "ck21": [
+      1.5359,
+      -0.7082
+     ],
+     "ck22": [
+      1.5023,
+      -0.7379
+     ],
+     "ck23": [
+      1.4818,
+      -0.7687
+     ],
+     "ck24": [
+      1.475,
+      -0.8
+     ],
+     "m2At": [
+      2.275,
+      -0.12
+     ]
+    },
+    "parts": [
+     {
+      "id": "flat",
+      "poly": [
+       "flatP0",
+       "flatP1",
+       "flatP2",
+       "flatP3"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "flat"
+     },
+     {
+      "id": "boxTop",
+      "poly": [
+       "boxTopP0",
+       "boxTopP1",
+       "boxTopP2",
+       "boxTopP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "box"
+     },
+     {
+      "id": "boxSide",
+      "poly": [
+       "boxSideP0",
+       "boxSideP1",
+       "boxSideP2",
+       "boxSideP3"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "box"
+     },
+     {
+      "id": "boxFront",
+      "poly": [
+       "boxFrontP0",
+       "boxFrontP1",
+       "boxFrontP2",
+       "boxFrontP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "box"
+     },
+     {
+      "id": "coneBody",
+      "poly": [
+       "coneApex",
+       "cb0",
+       "cb1",
+       "cb2",
+       "cb3",
+       "cb4",
+       "cb5",
+       "cb6",
+       "cb7",
+       "cb8",
+       "cb9",
+       "cb10",
+       "cb11",
+       "cb12",
+       "cb13",
+       "cb14",
+       "cb15",
+       "cb16",
+       "cb17",
+       "cb18",
+       "cb19",
+       "cb20",
+       "cb21",
+       "cb22",
+       "cb23",
+       "cb24"
+      ],
+      "fill": "warm-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cone"
+     },
+     {
+      "id": "coneBack",
+      "curve": [
+       "ck0",
+       "ck1",
+       "ck2",
+       "ck3",
+       "ck4",
+       "ck5",
+       "ck6",
+       "ck7",
+       "ck8",
+       "ck9",
+       "ck10",
+       "ck11",
+       "ck12",
+       "ck13",
+       "ck14",
+       "ck15",
+       "ck16",
+       "ck17",
+       "ck18",
+       "ck19",
+       "ck20",
+       "ck21",
+       "ck22",
+       "ck23",
+       "ck24"
+      ],
+      "ink": "muted",
+      "w": 2.5,
+      "start": true,
+      "group": "cone"
+     },
+     {
+      "id": "m1",
+      "label": "1",
+      "at": "m1At",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "m2",
+      "label": "2",
+      "at": "m2At",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How many of these shapes are solid?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "How many of these shapes are solid?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The rectangle is flat. It lies on the page.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "flat",
+       "at": "rectangle"
+      },
+      {
+       "do": "flip",
+       "target": "flat",
+       "over": [
+        "fL",
+        "fR"
+       ],
+       "at": "flat",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The shoebox shape takes up space. One.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "box",
+       "at": "shoebox"
+      },
+      {
+       "do": "show",
+       "target": "m1",
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The cone, too. Two solids.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "cone",
+       "at": "cone"
+      },
+      {
+       "do": "show",
+       "target": "m2",
+       "at": "Two"
+      },
+      {
+       "do": "answer",
+       "tex": "2",
+       "at": "Two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.0,
+     -2.3,
+     5.0,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "fiveP0": [
+      -3.2,
+      1.3
+     ],
+     "fiveP1": [
+      -4.4364,
+      0.4017
+     ],
+     "fiveP2": [
+      -3.9641,
+      -1.0517
+     ],
+     "fiveP3": [
+      -2.4359,
+      -1.0517
+     ],
+     "fiveP4": [
+      -1.9636,
+      0.4017
+     ],
+     "sixP0": [
+      0.0,
+      1.3
+     ],
+     "sixP1": [
+      -1.1258,
+      0.65
+     ],
+     "sixP2": [
+      -1.1258,
+      -0.65
+     ],
+     "sixP3": [
+      -0.0,
+      -1.3
+     ],
+     "sixP4": [
+      1.1258,
+      -0.65
+     ],
+     "sixP5": [
+      1.1258,
+      0.65
+     ],
+     "eightP0": [
+      4.401,
+      0.4975
+     ],
+     "eightP1": [
+      3.6975,
+      1.201
+     ],
+     "eightP2": [
+      2.7025,
+      1.201
+     ],
+     "eightP3": [
+      1.999,
+      0.4975
+     ],
+     "eightP4": [
+      1.999,
+      -0.4975
+     ],
+     "eightP5": [
+      2.7025,
+      -1.201
+     ],
+     "eightP6": [
+      3.6975,
+      -1.201
+     ],
+     "eightP7": [
+      4.401,
+      -0.4975
+     ],
+     "fiveName": [
+      -3.2,
+      -1.6
+     ],
+     "sixName": [
+      0.0,
+      -1.6
+     ],
+     "eightName": [
+      3.2,
+      -1.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "five",
+      "poly": [
+       "fiveP0",
+       "fiveP1",
+       "fiveP2",
+       "fiveP3",
+       "fiveP4"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "five"
+     },
+     {
+      "id": "six",
+      "poly": [
+       "sixP0",
+       "sixP1",
+       "sixP2",
+       "sixP3",
+       "sixP4",
+       "sixP5"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "six"
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "sixP0",
+       "sixP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "sixP1",
+       "sixP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "sixP2",
+       "sixP3"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e4",
+      "seg": [
+       "sixP3",
+       "sixP4"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e5",
+      "seg": [
+       "sixP4",
+       "sixP5"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "e6",
+      "seg": [
+       "sixP5",
+       "sixP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "edges"
+     },
+     {
+      "id": "eight",
+      "poly": [
+       "eightP0",
+       "eightP1",
+       "eightP2",
+       "eightP3",
+       "eightP4",
+       "eightP5",
+       "eightP6",
+       "eightP7"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "eight"
+     },
+     {
+      "id": "startDot",
+      "dot": "sixP0",
+      "r": 16,
+      "ink": "warm"
+     },
+     {
+      "id": "fiveName",
+      "label": "\\text{pentagon}",
+      "at": "fiveName",
+      "dir": "s",
+      "size": "m"
+     },
+     {
+      "id": "eightName",
+      "label": "\\text{octagon}",
+      "at": "eightName",
+      "dir": "s",
+      "size": "m"
+     },
+     {
+      "id": "sixName",
+      "label": "\\text{hexagon}",
+      "at": "sixName",
+      "dir": "s",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which shape is a hexagon?",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which shape is a hexagon?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "A hexagon has six sides. I'll count the middle one.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "show",
+       "target": "startDot",
+       "at": "middle"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six. The middle shape is a hexagon.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "e1",
+       "at": "One",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e2",
+       "at": "two",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e3",
+       "at": "three",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e4",
+       "at": "four",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e5",
+       "at": "five",
+       "dur": 0.35
+      },
+      {
+       "do": "draw",
+       "target": "e6",
+       "at": "six",
+       "dur": 0.35
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{hexagon}",
+       "at": "hexagon"
+      },
+      {
+       "do": "show",
+       "target": "sixName",
+       "at": "hexagon"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five sides make a pentagon. Eight sides make an octagon.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "show",
+       "target": "fiveName",
+       "at": "pentagon"
+      },
+      {
+       "do": "show",
+       "target": "eightName",
+       "at": "octagon"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.7,
+     -2.3,
+     3.7,
+     2.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "triC": [
+      -1.85,
+      0
+     ],
+     "tL": [
+      -3.05,
+      0
+     ],
+     "tR": [
+      -0.6500000000000001,
+      0
+     ],
+     "triP0": [
+      -1.85,
+      1.05
+     ],
+     "triP1": [
+      -3.05,
+      -1.05
+     ],
+     "triP2": [
+      -0.6500000000000001,
+      -1.05
+     ],
+     "kTopP0": [
+      0.65,
+      1.2
+     ],
+     "kTopP1": [
+      3.05,
+      1.2
+     ],
+     "kTopP2": [
+      3.05,
+      1.2
+     ],
+     "kTopP3": [
+      0.65,
+      1.2
+     ],
+     "kSideP0": [
+      3.05,
+      -1.2
+     ],
+     "kSideP1": [
+      3.05,
+      -1.2
+     ],
+     "kSideP2": [
+      3.05,
+      1.2
+     ],
+     "kSideP3": [
+      3.05,
+      1.2
+     ],
+     "kFrontP0": [
+      0.65,
+      -1.2
+     ],
+     "kFrontP1": [
+      3.05,
+      -1.2
+     ],
+     "kFrontP2": [
+      3.05,
+      1.2
+     ],
+     "kFrontP3": [
+      0.65,
+      1.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "tri",
+      "poly": [
+       "triP0",
+       "triP1",
+       "triP2"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "tri"
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "triP0",
+       "triP1"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "triEdges"
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "triP1",
+       "triP2"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "triEdges"
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "triP2",
+       "triP0"
+      ],
+      "ink": "warm",
+      "w": 7,
+      "group": "triEdges"
+     },
+     {
+      "id": "kTop",
+      "poly": [
+       "kTopP0",
+       "kTopP1",
+       "kTopP2",
+       "kTopP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     },
+     {
+      "id": "kSide",
+      "poly": [
+       "kSideP0",
+       "kSideP1",
+       "kSideP2",
+       "kSideP3"
+      ],
+      "fill": "violet-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     },
+     {
+      "id": "kFront",
+      "poly": [
+       "kFrontP0",
+       "kFrontP1",
+       "kFrontP2",
+       "kFrontP3"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 3,
+      "start": true,
+      "group": "cube"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Turn a shape over, or change its size: its name stays the same.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\huge\\text{triangle}"
+      },
+      {
+       "do": "flip",
+       "target": [
+        "tri",
+        "triEdges"
+       ],
+       "over": [
+        "tL",
+        "tR"
+       ],
+       "at": "Turn",
+       "dur": 1.0
+      },
+      {
+       "do": "move",
+       "at": "change",
+       "dur": 0.45,
+       "points": {
+        "triP0": [
+         -1.85,
+         0.63
+        ],
+        "triP1": [
+         -2.5700000000000003,
+         -0.63
+        ],
+        "triP2": [
+         -1.1300000000000001,
+         -0.63
+        ]
+       }
+      },
+      {
+       "do": "move",
+       "at": "name",
+       "dur": 0.45,
+       "points": {
+        "triP0": [
+         -1.85,
+         1.05
+        ],
+        "triP1": [
+         -3.05,
+         -1.05
+        ],
+        "triP2": [
+         -0.6500000000000001,
+         -1.05
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the sides. Flat lies on the page.",
+     "pause": 0.25,
+     "do": [
+      {
+       "do": "draw",
+       "target": "t1",
+       "at": "Count",
+       "dur": 0.3
+      },
+      {
+       "do": "draw",
+       "target": "t2",
+       "at": "the",
+       "dur": 0.3
+      },
+      {
+       "do": "draw",
+       "target": "t3",
+       "at": "sides",
+       "dur": 0.3
+      },
+      {
+       "do": "flip",
+       "target": [
+        "tri",
+        "triEdges"
+       ],
+       "over": [
+        "tL",
+        "tR"
+       ],
+       "at": "Flat",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Solid takes up space.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\huge\\text{cube}",
+       "fresh": true,
+       "at": "Solid"
+      },
+      {
+       "do": "move",
+       "at": "Solid",
+       "dur": 1.0,
+       "points": {
+        "kTopP0": [
+         0.6,
+         0.65
+        ],
+        "kTopP1": [
+         2.5,
+         0.65
+        ],
+        "kTopP2": [
+         3.1,
+         1.25
+        ],
+        "kTopP3": [
+         1.2,
+         1.25
+        ],
+        "kSideP0": [
+         2.5,
+         -1.25
+        ],
+        "kSideP1": [
+         3.1,
+         -0.65
+        ],
+        "kSideP2": [
+         3.1,
+         1.25
+        ],
+        "kSideP3": [
+         2.5,
+         0.65
+        ],
+        "kFrontP0": [
+         0.6,
+         -1.25
+        ],
+        "kFrontP1": [
+         2.5,
+         -1.25
+        ],
+        "kFrontP2": [
+         2.5,
+         0.65
+        ],
+        "kFrontP3": [
+         0.6,
+         0.65
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

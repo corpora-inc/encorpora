@@ -1,0 +1,128 @@
+{
+  "id": "picture-graph-questions--sp",
+  "title": "One picture, one answer",
+  "teaches": ["tally-and-t-chart"],
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [-1.2, 0.9, 14.7, 8.9],
+        "points": {
+          "PA": [-0.23, 7.15], "PB": [0.67, 4.45],
+          "Rb": [4.2, 8.32], "Rs": [4.2, 5.62], "Ro": [4.2, 2.92],
+          "Lb": [3.45, 7.6], "Ls": [3.45, 4.9], "Lo": [3.45, 2.2],
+          "Nb": [14.05, 7.6], "Ns": [14.05, 4.9], "No": [14.05, 2.2],
+          "Ba": [3.95, 8.45], "Bb": [3.95, 1.35]
+        },
+        "parts": [
+          { "id": "pr1", "seg": ["pb2", "pb1"], "ink": "blue", "w": 4, "group": "pairs" },
+          { "id": "pr2", "seg": ["pa3", "pa2"], "ink": "blue", "w": 4, "group": "pairs" },
+          { "id": "pr3", "seg": ["pb5", "pa4"], "ink": "blue", "w": 4, "group": "pairs" },
+          { "id": "pr4", "seg": ["pa7", "pb4"], "ink": "blue", "w": 4, "group": "pairs" },
+          { "id": "pa", "things": ["orange", "banana", "strawberry", "banana", "orange", "banana", "strawberry", "orange"], "at": "PA", "arrange": "scatter", "perRow": 8, "size": 1.2, "seed": "fruit-a", "start": true },
+          { "id": "pb", "things": ["banana", "strawberry", "orange", "banana", "strawberry", "banana", "orange"], "at": "PB", "arrange": "scatter", "perRow": 7, "size": 1.2, "seed": "fruit-b", "start": true },
+          { "id": "bn", "things": "banana", "n": 0, "slots": 6, "at": "Rb", "size": 1.2 },
+          { "id": "st", "things": "strawberry", "n": 0, "slots": 6, "at": "Rs", "size": 1.2 },
+          { "id": "or", "things": "orange", "n": 0, "slots": 6, "at": "Ro", "size": 1.2 },
+          { "id": "base", "seg": ["Ba", "Bb"], "ink": "muted", "w": 2 },
+          { "id": "lbB", "label": "\\text{banana}", "at": "Lb", "dir": "w", "far": 0, "size": "m", "ink": "ink" },
+          { "id": "lbS", "label": "\\text{strawberry}", "at": "Ls", "dir": "w", "far": 0, "size": "m", "ink": "ink" },
+          { "id": "lbO", "label": "\\text{orange}", "at": "Lo", "dir": "w", "far": 0, "size": "m", "ink": "ink" },
+          { "id": "numB", "label": "6", "at": "Nb", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "numS", "label": "4", "at": "Ns", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "numO", "label": "5", "at": "No", "dir": "c", "size": "xl", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        { "speaker": "teacher", "say": "A class chose a favorite fruit. Each picture is one child's answer.", "do": [{ "do": "text", "text": "One picture, one answer", "at": "Each" }] },
+        { "speaker": "teacher", "say": "Give each fruit its own row. Bananas go in the top row.", "do": [{ "do": "highlight", "target": ["pb1", "pa2", "pa4", "pb4", "pa6", "pb6"], "at": "Bananas" }] },
+        { "speaker": "learner", "say": "One, two, three, four, five, six bananas in a row.", "do": [{ "do": "count", "target": ["pb1", "pa2", "pa4", "pb4", "pa6", "pb6"], "into": "bn" }, { "do": "show", "target": "lbB", "at": "One" }, { "do": "show", "target": "numB", "at": "bananas" }] },
+        { "speaker": "teacher", "say": "Strawberries go in the middle row: four.", "do": [{ "do": "show", "target": "lbS", "at": "Strawberries" }, { "do": "send", "target": ["pb2", "pa3", "pb5", "pa7"], "to": "st", "at": "Strawberries" }, { "do": "show", "target": "numS", "at": "four" }] },
+        { "speaker": "teacher", "say": "Oranges go in the bottom row: five.", "pause": 0.3, "do": [{ "do": "show", "target": "lbO", "at": "Oranges" }, { "do": "send", "target": ["pa1", "pb3", "pa5", "pb7", "pa8"], "to": "or", "at": "Oranges" }, { "do": "show", "target": "numO", "at": "five" }] },
+        { "speaker": "teacher", "say": "Every row starts at the same line. This is a picture graph.", "do": [{ "do": "draw", "target": "base", "at": "starts" }, { "do": "term", "word": "picture graph", "meaning": "One picture for each answer, in rows that start at the same line.", "at": "picture" }] },
+        { "speaker": "teacher", "say": "The picture graph shows each student's favorite fruit. How many students are shown in all?", "do": [{ "do": "clear" }, { "do": "problem", "text": "The picture graph shows each student's favorite fruit. How many students are shown in all?", "at": "The" }, { "do": "highlight", "target": ["bn", "st", "or"], "at": "all" }] },
+        { "speaker": "teacher", "say": "In all means add the rows. Six plus four plus five is fifteen.", "pause": 0.4, "do": [{ "do": "answer", "tex": "6+4+5=15", "at": "Six" }] },
+        { "speaker": "teacher", "say": "The picture graph shows each student's favorite fruit. How many more students chose banana than strawberry?", "pause": 0.3, "do": [{ "do": "clear" }, { "do": "problem", "text": "The picture graph shows each student's favorite fruit. How many more students chose banana than strawberry?", "at": "The" }, { "do": "highlight", "target": ["bn", "st"], "at": "banana" }] },
+        { "speaker": "teacher", "say": "Pair each strawberry with a banana, starting at the line.", "do": [{ "do": "draw", "target": "pr1", "at": "Pair" }, { "do": "draw", "target": "pr2", "at": "strawberry" }, { "do": "draw", "target": "pr3", "at": "banana" }, { "do": "draw", "target": "pr4", "at": "starting" }] },
+        { "speaker": "teacher", "say": "The bananas with no partner are the difference. One, two.", "do": [{ "do": "count", "target": ["pa6", "pb6"] }] },
+        { "speaker": "teacher", "say": "Six take away four is two. Two more students chose banana.", "pause": 0.4, "do": [{ "do": "answer", "tex": "6-4=2", "at": "Six" }] },
+        { "speaker": "teacher", "say": "Fewer works the same way. Two fewer students chose strawberry.", "pause": 0.3, "do": [{ "do": "highlight", "target": "pairs", "at": "same" }] }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.2, 0.6, 12.2, 9.8],
+        "points": {
+          "dv1": [3.8, 1.3], "dv2": [3.8, 9.1],
+          "Lt": [3.3, 7.8], "Lh": [3.3, 5.2], "Lr": [3.3, 2.6],
+
+          "tg1a": [4.6, 7.0], "tg1b": [4.6, 8.6], "tg2a": [5.2, 7.0], "tg2b": [5.2, 8.6],
+          "tg3a": [5.8, 7.0], "tg3b": [5.8, 8.6], "tg4a": [6.4, 7.0], "tg4b": [6.4, 8.6],
+          "tx1a": [4.4, 7.3], "tx1b": [6.6, 8.3],
+          "tg5a": [7.6, 7.0], "tg5b": [7.6, 8.6], "tg6a": [8.2, 7.0], "tg6b": [8.2, 8.6],
+          "tg7a": [8.8, 7.0], "tg7b": [8.8, 8.6], "tg8a": [9.4, 7.0], "tg8b": [9.4, 8.6],
+          "tx2a": [7.4, 7.3], "tx2b": [9.6, 8.3],
+          "tg9a": [10.6, 7.0], "tg9b": [10.6, 8.6], "tg10a": [11.2, 7.0], "tg10b": [11.2, 8.6],
+
+          "hp1a": [4.6, 4.4], "hp1b": [4.6, 6.0], "hp2a": [5.2, 4.4], "hp2b": [5.2, 6.0],
+          "hp3a": [5.8, 4.4], "hp3b": [5.8, 6.0], "hp4a": [6.4, 4.4], "hp4b": [6.4, 6.0],
+          "hx1a": [4.4, 4.7], "hx1b": [6.6, 5.7],
+          "hp5a": [7.6, 4.4], "hp5b": [7.6, 6.0], "hp6a": [8.2, 4.4], "hp6b": [8.2, 6.0],
+
+          "rp1a": [4.6, 1.8], "rp1b": [4.6, 3.4], "rp2a": [5.2, 1.8], "rp2b": [5.2, 3.4],
+          "rp3a": [5.8, 1.8], "rp3b": [5.8, 3.4], "rp4a": [6.4, 1.8], "rp4b": [6.4, 3.4],
+          "rx1a": [4.4, 2.1], "rx1b": [6.6, 3.1]
+        },
+        "parts": [
+          { "id": "div", "seg": ["dv1", "dv2"], "ink": "muted", "w": 2, "start": true },
+          { "id": "lbT", "label": "\\text{tag}", "at": "Lt", "dir": "w", "far": 0, "size": "m", "ink": "ink", "start": true },
+          { "id": "lbH", "label": "\\text{hopscotch}", "at": "Lh", "dir": "w", "far": 0, "size": "m", "ink": "ink", "start": true },
+          { "id": "lbR", "label": "\\text{rope}", "at": "Lr", "dir": "w", "far": 0, "size": "m", "ink": "ink", "start": true },
+
+          { "id": "tg1", "seg": ["tg1a", "tg1b"], "ink": "ink", "w": 4, "group": "tgB1" },
+          { "id": "tg2", "seg": ["tg2a", "tg2b"], "ink": "ink", "w": 4, "group": "tgB1" },
+          { "id": "tg3", "seg": ["tg3a", "tg3b"], "ink": "ink", "w": 4, "group": "tgB1" },
+          { "id": "tg4", "seg": ["tg4a", "tg4b"], "ink": "ink", "w": 4, "group": "tgB1" },
+          { "id": "tx1", "seg": ["tx1a", "tx1b"], "ink": "warm", "w": 4, "group": "tgB1" },
+          { "id": "tg5", "seg": ["tg5a", "tg5b"], "ink": "ink", "w": 4, "group": "tgB2" },
+          { "id": "tg6", "seg": ["tg6a", "tg6b"], "ink": "ink", "w": 4, "group": "tgB2" },
+          { "id": "tg7", "seg": ["tg7a", "tg7b"], "ink": "ink", "w": 4, "group": "tgB2" },
+          { "id": "tg8", "seg": ["tg8a", "tg8b"], "ink": "ink", "w": 4, "group": "tgB2" },
+          { "id": "tx2", "seg": ["tx2a", "tx2b"], "ink": "warm", "w": 4, "group": "tgB2" },
+          { "id": "tg9", "seg": ["tg9a", "tg9b"], "ink": "ink", "w": 4, "group": "tgL" },
+          { "id": "tg10", "seg": ["tg10a", "tg10b"], "ink": "ink", "w": 4, "group": "tgL" },
+
+          { "id": "hp1", "seg": ["hp1a", "hp1b"], "ink": "ink", "w": 4, "group": "hpB" },
+          { "id": "hp2", "seg": ["hp2a", "hp2b"], "ink": "ink", "w": 4, "group": "hpB" },
+          { "id": "hp3", "seg": ["hp3a", "hp3b"], "ink": "ink", "w": 4, "group": "hpB" },
+          { "id": "hp4", "seg": ["hp4a", "hp4b"], "ink": "ink", "w": 4, "group": "hpB" },
+          { "id": "hx1", "seg": ["hx1a", "hx1b"], "ink": "warm", "w": 4, "group": "hpB" },
+          { "id": "hp5", "seg": ["hp5a", "hp5b"], "ink": "ink", "w": 4, "group": "hpL" },
+          { "id": "hp6", "seg": ["hp6a", "hp6b"], "ink": "ink", "w": 4, "group": "hpL" },
+
+          { "id": "rp1", "seg": ["rp1a", "rp1b"], "ink": "ink", "w": 4, "group": "rpB" },
+          { "id": "rp2", "seg": ["rp2a", "rp2b"], "ink": "ink", "w": 4, "group": "rpB" },
+          { "id": "rp3", "seg": ["rp3a", "rp3b"], "ink": "ink", "w": 4, "group": "rpB" },
+          { "id": "rp4", "seg": ["rp4a", "rp4b"], "ink": "ink", "w": 4, "group": "rpB" },
+          { "id": "rx1", "seg": ["rx1a", "rx1b"], "ink": "warm", "w": 4, "group": "rpB" }
+        ]
+      },
+      "beats": [
+        { "speaker": "teacher", "say": "A tally chart gives each child one mark. Here are four.", "do": [{ "do": "clear", "at": "tally" }, { "do": "term", "word": "tally chart", "meaning": "One mark for each answer.", "at": "tally" }, { "do": "draw", "target": ["rp1", "rp2", "rp3", "rp4"], "at": "four" }] },
+        { "speaker": "teacher", "say": "The fifth mark goes across the four. That is a bundle of five.", "do": [{ "do": "draw", "target": "rx1", "at": "across" }, { "do": "highlight", "target": "rpB", "at": "bundle" }] },
+        { "speaker": "teacher", "say": "The tally chart shows each child's favorite game. How many children chose tag?", "pause": 0.3, "do": [{ "do": "clear" }, { "do": "problem", "text": "The tally chart shows each child's favorite game. How many children chose tag?", "at": "The" }, { "do": "draw", "target": ["tgB1", "tgB2", "tgL", "hpB", "hpL"], "at": "shows" }, { "do": "highlight", "target": "lbT", "at": "tag" }] },
+        { "speaker": "learner", "say": "I count the marks. Four in the first bundle.", "do": [{ "do": "highlight", "target": ["tg1", "tg2", "tg3", "tg4"], "at": "Four" }] },
+        { "speaker": "learner", "say": "Four in the second bundle.", "do": [{ "do": "highlight", "target": ["tg5", "tg6", "tg7", "tg8"], "at": "Four" }] },
+        { "speaker": "learner", "say": "And two loose marks. Four, eight, ten. So tag has ten.", "do": [{ "do": "highlight", "target": "tgL", "at": "two" }, { "do": "write", "tex": "4+4+2=10", "fresh": true, "at": "Four" }] },
+        { "speaker": "teacher", "say": "Look again at the mark across each bundle. It is one more child.", "do": [{ "do": "highlight", "target": ["tx1", "tx2"], "at": "across" }] },
+        { "speaker": "learner", "say": "Oh, the mark across is the fifth. One bundle is five.", "do": [{ "do": "highlight", "target": "tgB1", "at": "bundle" }] },
+        { "speaker": "learner", "say": "The next bundle makes ten.", "do": [{ "do": "highlight", "target": "tgB2", "at": "next" }] },
+        { "speaker": "learner", "say": "Then eleven, twelve. So tag has twelve.", "pause": 0.3, "do": [{ "do": "highlight", "target": "tgL", "at": "eleven" }, { "do": "answer", "tex": "5+5+2=12", "at": "Then" }] },
+        { "speaker": "teacher", "say": "Count each row. For in all, add the rows.", "do": [{ "do": "clear", "at": "Count" }, { "do": "text", "text": "Count each row. In all: add.", "at": "Count" }] },
+        { "speaker": "teacher", "say": "For more or fewer, pair them off and count what is left.", "do": [{ "do": "text", "text": "More or fewer: pair them off.", "at": "pair" }] },
+        { "speaker": "teacher", "say": "On a tally chart, each bundle is five.", "do": [{ "do": "text", "text": "Tally: each bundle is 5.", "at": "bundle" }] },
+        { "speaker": "teacher", "say": "One picture, one answer. Line up the rows.", "pause": 0.5, "do": [{ "do": "clear", "at": "One" }, { "do": "text", "text": "One picture, one answer.", "at": "One" }, { "do": "text", "text": "Line up the rows.", "at": "Line" }] }
+      ]
+    }
+  ]
+}

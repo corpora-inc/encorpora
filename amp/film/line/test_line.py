@@ -250,3 +250,28 @@ def test_facts_command_reads_configured_standards_and_all_types(tmp_path):
         assert {'kind', 'components', 'named_parts'} <= problem['kit_figure'].keys()
     with pytest.raises(ValueError, match='separate trees'):
         line.facts(config, 'slope', worktree/'amp/film/line/private')
+
+
+def test_cast_is_teacher_with_learner_or_teacher_alone(tmp_path):
+    path = tmp_path/'screenplay.json'
+    beat = lambda who: {'speaker': who, 'say': 'Two.'}
+    def script(cast, speakers):
+        providers.write_json(path, {'id': 'example--a', 'title': 'Example', 'cast': cast,
+                                    'shots': [{'beats': [beat(who) for who in speakers]}]})
+    script({'teacher': {}, 'learner': {}}, ['teacher', 'learner'])
+    assert runtime.validate_cast(path, 'example--a')['cast'] == {'teacher': {}, 'learner': {}}
+    script({'teacher': {}}, ['teacher', 'teacher'])
+    assert runtime.validate_cast(path, 'example--a')['cast'] == {'teacher': {}}
+    script({'teacher': {}}, ['teacher', 'learner'])
+    with pytest.raises(ValueError, match='every role in the cast must speak'):
+        runtime.validate_cast(path, 'example--a')
+    script({'teacher': {}, 'learner': {}}, ['teacher'])
+    with pytest.raises(ValueError, match='every role in the cast must speak'):
+        runtime.validate_cast(path, 'example--a')
+    script({'learner': {}}, ['learner'])
+    with pytest.raises(ValueError, match='teacher alone'):
+        runtime.validate_cast(path, 'example--a')
+    script({'teacher': {'voice': 'x'}}, ['teacher'])
+    with pytest.raises(ValueError, match='empty voice bindings'):
+        runtime.validate_cast(path, 'example--a')
+

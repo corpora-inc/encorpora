@@ -1,0 +1,2481 @@
+{
+ "id": "measure-with-units--sm",
+ "title": "Measuring length with equal units",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0.0,
+     0.4,
+     16.0,
+     8.7
+    ],
+    "points": {
+     "brush_0": [
+      2,
+      6.2
+     ],
+     "brush_1": [
+      9.2,
+      6.2
+     ],
+     "brush_2": [
+      10.2,
+      6.4
+     ],
+     "brush_3": [
+      14,
+      6.4
+     ],
+     "brush_4": [
+      14,
+      7.0
+     ],
+     "brush_5": [
+      10.2,
+      7.0
+     ],
+     "brush_6": [
+      9.2,
+      7.2
+     ],
+     "brush_7": [
+      2,
+      7.2
+     ],
+     "bt0_a": [
+      10.6,
+      7.05
+     ],
+     "bt0_b": [
+      10.6,
+      7.95
+     ],
+     "bt1_a": [
+      11.0,
+      7.05
+     ],
+     "bt1_b": [
+      11.0,
+      7.95
+     ],
+     "bt2_a": [
+      11.4,
+      7.05
+     ],
+     "bt2_b": [
+      11.4,
+      7.95
+     ],
+     "bt3_a": [
+      11.8,
+      7.05
+     ],
+     "bt3_b": [
+      11.8,
+      7.95
+     ],
+     "bt4_a": [
+      12.2,
+      7.05
+     ],
+     "bt4_b": [
+      12.2,
+      7.95
+     ],
+     "bt5_a": [
+      12.6,
+      7.05
+     ],
+     "bt5_b": [
+      12.6,
+      7.95
+     ],
+     "bt6_a": [
+      13.0,
+      7.05
+     ],
+     "bt6_b": [
+      13.0,
+      7.95
+     ],
+     "bt7_a": [
+      13.4,
+      7.05
+     ],
+     "bt7_b": [
+      13.4,
+      7.95
+     ],
+     "name_at": [
+      5.6,
+      7.2
+     ],
+     "s0_a": [
+      2,
+      7.6
+     ],
+     "s0_b": [
+      2,
+      2.6
+     ],
+     "s1_a": [
+      14,
+      7.6
+     ],
+     "s1_b": [
+      14,
+      2.6
+     ],
+     "k1_0": [
+      2,
+      1.4
+     ],
+     "k1_1": [
+      4,
+      1.4
+     ],
+     "k1_2": [
+      4,
+      3.4
+     ],
+     "k1_3": [
+      2,
+      3.4
+     ],
+     "k2_0": [
+      4,
+      1.4
+     ],
+     "k2_1": [
+      6,
+      1.4
+     ],
+     "k2_2": [
+      6,
+      3.4
+     ],
+     "k2_3": [
+      4,
+      3.4
+     ],
+     "k3_0": [
+      6,
+      1.4
+     ],
+     "k3_1": [
+      8,
+      1.4
+     ],
+     "k3_2": [
+      8,
+      3.4
+     ],
+     "k3_3": [
+      6,
+      3.4
+     ],
+     "k4_0": [
+      8,
+      1.4
+     ],
+     "k4_1": [
+      10,
+      1.4
+     ],
+     "k4_2": [
+      10,
+      3.4
+     ],
+     "k4_3": [
+      8,
+      3.4
+     ],
+     "k5_0": [
+      10,
+      1.4
+     ],
+     "k5_1": [
+      12,
+      1.4
+     ],
+     "k5_2": [
+      12,
+      3.4
+     ],
+     "k5_3": [
+      10,
+      3.4
+     ],
+     "k6_0": [
+      12,
+      1.4
+     ],
+     "k6_1": [
+      14,
+      1.4
+     ],
+     "k6_2": [
+      14,
+      3.4
+     ],
+     "k6_3": [
+      12,
+      3.4
+     ],
+     "n1_at": [
+      3,
+      2.4
+     ],
+     "n2_at": [
+      5,
+      2.4
+     ],
+     "n3_at": [
+      7,
+      2.4
+     ],
+     "n4_at": [
+      9,
+      2.4
+     ],
+     "n5_at": [
+      11,
+      2.4
+     ],
+     "n6_at": [
+      13,
+      2.4
+     ],
+     "total_at": [
+      8,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "brush",
+      "poly": [
+       "brush_0",
+       "brush_1",
+       "brush_2",
+       "brush_3",
+       "brush_4",
+       "brush_5",
+       "brush_6",
+       "brush_7"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "bt0",
+      "seg": [
+       "bt0_a",
+       "bt0_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt1",
+      "seg": [
+       "bt1_a",
+       "bt1_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt2",
+      "seg": [
+       "bt2_a",
+       "bt2_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt3",
+      "seg": [
+       "bt3_a",
+       "bt3_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt4",
+      "seg": [
+       "bt4_a",
+       "bt4_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt5",
+      "seg": [
+       "bt5_a",
+       "bt5_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt6",
+      "seg": [
+       "bt6_a",
+       "bt6_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "bt7",
+      "seg": [
+       "bt7_a",
+       "bt7_b"
+      ],
+      "ink": "accent",
+      "w": 3.5,
+      "start": true,
+      "group": "bristles"
+     },
+     {
+      "id": "name",
+      "label": "\\text{toothbrush}",
+      "at": "name_at",
+      "dir": "n",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "s0",
+      "seg": [
+       "s0_a",
+       "s0_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "s1_a",
+       "s1_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "k1",
+      "poly": [
+       "k1_0",
+       "k1_1",
+       "k1_2",
+       "k1_3"
+      ],
+      "group": "c1",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "k2",
+      "poly": [
+       "k2_0",
+       "k2_1",
+       "k2_2",
+       "k2_3"
+      ],
+      "group": "c2",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "k3",
+      "poly": [
+       "k3_0",
+       "k3_1",
+       "k3_2",
+       "k3_3"
+      ],
+      "group": "c3",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "k4",
+      "poly": [
+       "k4_0",
+       "k4_1",
+       "k4_2",
+       "k4_3"
+      ],
+      "group": "c4",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "k5",
+      "poly": [
+       "k5_0",
+       "k5_1",
+       "k5_2",
+       "k5_3"
+      ],
+      "group": "c5",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "k6",
+      "poly": [
+       "k6_0",
+       "k6_1",
+       "k6_2",
+       "k6_3"
+      ],
+      "group": "c6",
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "n1_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c1"
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "n2_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c2"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "n3_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c3"
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "n4_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c4"
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "n5_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c5"
+     },
+     {
+      "id": "n6",
+      "label": "6",
+      "at": "n6_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "group": "c6"
+     },
+     {
+      "id": "total",
+      "label": "6\\text{ cubes long}",
+      "at": "total_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a toothbrush. Let us measure it with cubes.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Measure it with cubes.",
+       "at": "Here"
+      },
+      {
+       "do": "highlight",
+       "target": "brush",
+       "at": "toothbrush"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each cube is one unit, all the same size. The first cube lines up with the end.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "term",
+       "word": "unit",
+       "meaning": "one cube we measure with",
+       "at": "unit"
+      },
+      {
+       "do": "show",
+       "target": "c1",
+       "at": "first"
+      },
+      {
+       "do": "slide",
+       "target": "c1",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "first",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "s0",
+       "at": "lines"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The next cube touches it. No gap, no overlap.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "c2",
+       "at": "next"
+      },
+      {
+       "do": "slide",
+       "target": "c2",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "next",
+       "dur": 0.7
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three, four, five, six cubes.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "show",
+       "target": "c3",
+       "at": "Three"
+      },
+      {
+       "do": "slide",
+       "target": "c3",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "Three",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "c4",
+       "at": "four"
+      },
+      {
+       "do": "slide",
+       "target": "c4",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "four",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "c5",
+       "at": "five"
+      },
+      {
+       "do": "slide",
+       "target": "c5",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "five",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "c6",
+       "at": "six"
+      },
+      {
+       "do": "slide",
+       "target": "c6",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "six",
+       "dur": 0.7
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The last cube meets the other end. The toothbrush is six cubes long.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "meets"
+      },
+      {
+       "do": "show",
+       "target": "total",
+       "at": "six"
+      },
+      {
+       "do": "answer",
+       "tex": "6\\text{ cubes}",
+       "at": "six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.0,
+     0.4,
+     16.0,
+     8.7
+    ],
+    "points": {
+     "handle_0": [
+      3,
+      6.3
+     ],
+     "handle_1": [
+      10.4,
+      6.3
+     ],
+     "handle_2": [
+      10.4,
+      6.9
+     ],
+     "handle_3": [
+      3,
+      6.9
+     ],
+     "bowl_0": [
+      13.0,
+      6.6
+     ],
+     "bowl_1": [
+      12.93,
+      6.89
+     ],
+     "bowl_2": [
+      12.73,
+      7.16
+     ],
+     "bowl_3": [
+      12.42,
+      7.37
+     ],
+     "bowl_4": [
+      12.03,
+      7.5
+     ],
+     "bowl_5": [
+      11.6,
+      7.55
+     ],
+     "bowl_6": [
+      11.17,
+      7.5
+     ],
+     "bowl_7": [
+      10.78,
+      7.37
+     ],
+     "bowl_8": [
+      10.47,
+      7.16
+     ],
+     "bowl_9": [
+      10.27,
+      6.89
+     ],
+     "bowl_10": [
+      10.2,
+      6.6
+     ],
+     "bowl_11": [
+      10.27,
+      6.31
+     ],
+     "bowl_12": [
+      10.47,
+      6.04
+     ],
+     "bowl_13": [
+      10.78,
+      5.83
+     ],
+     "bowl_14": [
+      11.17,
+      5.7
+     ],
+     "bowl_15": [
+      11.6,
+      5.65
+     ],
+     "bowl_16": [
+      12.03,
+      5.7
+     ],
+     "bowl_17": [
+      12.42,
+      5.83
+     ],
+     "bowl_18": [
+      12.73,
+      6.04
+     ],
+     "bowl_19": [
+      12.93,
+      6.31
+     ],
+     "spname_at": [
+      6.6,
+      6.9
+     ],
+     "sp0_a": [
+      3,
+      7.6
+     ],
+     "sp0_b": [
+      3,
+      2.6
+     ],
+     "sp1_a": [
+      13,
+      7.6
+     ],
+     "sp1_b": [
+      13,
+      2.6
+     ],
+     "tube_0": [
+      1,
+      6.3
+     ],
+     "tube_1": [
+      15,
+      6.3
+     ],
+     "tube_2": [
+      15,
+      6.9
+     ],
+     "tube_3": [
+      1,
+      6.9
+     ],
+     "ring0_a": [
+      11.9,
+      6.3
+     ],
+     "ring0_b": [
+      11.9,
+      6.9
+     ],
+     "ring1_a": [
+      12.2,
+      6.3
+     ],
+     "ring1_b": [
+      12.2,
+      6.9
+     ],
+     "ring2_a": [
+      12.5,
+      6.3
+     ],
+     "ring2_b": [
+      12.5,
+      6.9
+     ],
+     "ring3_a": [
+      12.8,
+      6.3
+     ],
+     "ring3_b": [
+      12.8,
+      6.9
+     ],
+     "ring4_a": [
+      13.1,
+      6.3
+     ],
+     "ring4_b": [
+      13.1,
+      6.9
+     ],
+     "stname_at": [
+      5,
+      6.9
+     ],
+     "st0_a": [
+      1,
+      7.6
+     ],
+     "st0_b": [
+      1,
+      2.6
+     ],
+     "st1_a": [
+      15,
+      7.6
+     ],
+     "st1_b": [
+      15,
+      2.6
+     ],
+     "body_0": [
+      4,
+      6.1
+     ],
+     "body_1": [
+      10.8,
+      6.1
+     ],
+     "body_2": [
+      10.8,
+      7.1
+     ],
+     "body_3": [
+      4,
+      7.1
+     ],
+     "cone_0": [
+      10.8,
+      6.1
+     ],
+     "cone_1": [
+      11.5,
+      6.35
+     ],
+     "cone_2": [
+      11.5,
+      6.85
+     ],
+     "cone_3": [
+      10.8,
+      7.1
+     ],
+     "tip_0": [
+      11.5,
+      6.35
+     ],
+     "tip_1": [
+      12,
+      6.5
+     ],
+     "tip_2": [
+      12,
+      6.7
+     ],
+     "tip_3": [
+      11.5,
+      6.85
+     ],
+     "band1_a": [
+      4.8,
+      6.1
+     ],
+     "band1_b": [
+      4.8,
+      7.1
+     ],
+     "band2_a": [
+      10.0,
+      6.1
+     ],
+     "band2_b": [
+      10.0,
+      7.1
+     ],
+     "crname_at": [
+      7.5,
+      7.1
+     ],
+     "cr0_a": [
+      4,
+      7.6
+     ],
+     "cr0_b": [
+      4,
+      2.6
+     ],
+     "cr1_a": [
+      12,
+      7.6
+     ],
+     "cr1_b": [
+      12,
+      2.6
+     ],
+     "g1_0": [
+      3,
+      3
+     ],
+     "g1_1": [
+      5,
+      3
+     ],
+     "g1_2": [
+      5,
+      5
+     ],
+     "g1_3": [
+      3,
+      5
+     ],
+     "g2_0": [
+      5,
+      3
+     ],
+     "g2_1": [
+      7,
+      3
+     ],
+     "g2_2": [
+      7,
+      5
+     ],
+     "g2_3": [
+      5,
+      5
+     ],
+     "g3_0": [
+      8,
+      3
+     ],
+     "g3_1": [
+      10,
+      3
+     ],
+     "g3_2": [
+      10,
+      5
+     ],
+     "g3_3": [
+      8,
+      5
+     ],
+     "g4_0": [
+      10,
+      3
+     ],
+     "g4_1": [
+      12,
+      3
+     ],
+     "g4_2": [
+      12,
+      5
+     ],
+     "g4_3": [
+      10,
+      5
+     ],
+     "g5_0": [
+      11,
+      1.4
+     ],
+     "g5_1": [
+      13,
+      1.4
+     ],
+     "g5_2": [
+      13,
+      3.4
+     ],
+     "g5_3": [
+      11,
+      3.4
+     ],
+     "hole1_0": [
+      7,
+      3
+     ],
+     "hole1_1": [
+      8,
+      3
+     ],
+     "hole1_2": [
+      8,
+      5
+     ],
+     "hole1_3": [
+      7,
+      5
+     ],
+     "o1_0": [
+      1,
+      3
+     ],
+     "o1_1": [
+      3,
+      3
+     ],
+     "o1_2": [
+      3,
+      5
+     ],
+     "o1_3": [
+      1,
+      5
+     ],
+     "o3_0": [
+      4,
+      3
+     ],
+     "o3_1": [
+      6,
+      3
+     ],
+     "o3_2": [
+      6,
+      5
+     ],
+     "o3_3": [
+      4,
+      5
+     ],
+     "o4_0": [
+      6,
+      3
+     ],
+     "o4_1": [
+      8,
+      3
+     ],
+     "o4_2": [
+      8,
+      5
+     ],
+     "o4_3": [
+      6,
+      5
+     ],
+     "o5_0": [
+      8,
+      3
+     ],
+     "o5_1": [
+      10,
+      3
+     ],
+     "o5_2": [
+      10,
+      5
+     ],
+     "o5_3": [
+      8,
+      5
+     ],
+     "o7_0": [
+      11,
+      3
+     ],
+     "o7_1": [
+      13,
+      3
+     ],
+     "o7_2": [
+      13,
+      5
+     ],
+     "o7_3": [
+      11,
+      5
+     ],
+     "o8_0": [
+      13,
+      3
+     ],
+     "o8_1": [
+      15,
+      3
+     ],
+     "o8_2": [
+      15,
+      5
+     ],
+     "o8_3": [
+      13,
+      5
+     ],
+     "o2_0": [
+      2,
+      3.5
+     ],
+     "o2_1": [
+      4,
+      3.5
+     ],
+     "o2_2": [
+      4,
+      5.5
+     ],
+     "o2_3": [
+      2,
+      5.5
+     ],
+     "o6_0": [
+      9,
+      3.5
+     ],
+     "o6_1": [
+      11,
+      3.5
+     ],
+     "o6_2": [
+      11,
+      5.5
+     ],
+     "o6_3": [
+      9,
+      5.5
+     ],
+     "l1_0": [
+      6,
+      3
+     ],
+     "l1_1": [
+      8,
+      3
+     ],
+     "l1_2": [
+      8,
+      5
+     ],
+     "l1_3": [
+      6,
+      5
+     ],
+     "l2_0": [
+      8,
+      3
+     ],
+     "l2_1": [
+      10,
+      3
+     ],
+     "l2_2": [
+      10,
+      5
+     ],
+     "l2_3": [
+      8,
+      5
+     ],
+     "l3_0": [
+      10,
+      3
+     ],
+     "l3_1": [
+      12,
+      3
+     ],
+     "l3_2": [
+      12,
+      5
+     ],
+     "l3_3": [
+      10,
+      5
+     ],
+     "l4_0": [
+      10,
+      1.4
+     ],
+     "l4_1": [
+      12,
+      1.4
+     ],
+     "l4_2": [
+      12,
+      3.4
+     ],
+     "l4_3": [
+      10,
+      3.4
+     ],
+     "hole2_0": [
+      4,
+      3
+     ],
+     "hole2_1": [
+      6,
+      3
+     ],
+     "hole2_2": [
+      6,
+      5
+     ],
+     "hole2_3": [
+      4,
+      5
+     ],
+     "t5_at": [
+      8,
+      1.5
+     ],
+     "t7_at": [
+      8,
+      1.5
+     ],
+     "t4_at": [
+      8,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "handle",
+      "poly": [
+       "handle_0",
+       "handle_1",
+       "handle_2",
+       "handle_3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2.5,
+      "group": "spoon",
+      "start": true
+     },
+     {
+      "id": "bowl",
+      "poly": [
+       "bowl_0",
+       "bowl_1",
+       "bowl_2",
+       "bowl_3",
+       "bowl_4",
+       "bowl_5",
+       "bowl_6",
+       "bowl_7",
+       "bowl_8",
+       "bowl_9",
+       "bowl_10",
+       "bowl_11",
+       "bowl_12",
+       "bowl_13",
+       "bowl_14",
+       "bowl_15",
+       "bowl_16",
+       "bowl_17",
+       "bowl_18",
+       "bowl_19"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 2.5,
+      "group": "spoon",
+      "start": true
+     },
+     {
+      "id": "spname",
+      "label": "\\text{spoon}",
+      "at": "spname_at",
+      "dir": "n",
+      "size": "l",
+      "ink": "ink",
+      "group": "spoon",
+      "start": true
+     },
+     {
+      "id": "sp0",
+      "seg": [
+       "sp0_a",
+       "sp0_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "spoon",
+      "start": true
+     },
+     {
+      "id": "sp1",
+      "seg": [
+       "sp1_a",
+       "sp1_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "spoon",
+      "start": true
+     },
+     {
+      "id": "tube",
+      "poly": [
+       "tube_0",
+       "tube_1",
+       "tube_2",
+       "tube_3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "group": "straw"
+     },
+     {
+      "id": "ring0",
+      "seg": [
+       "ring0_a",
+       "ring0_b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "straw"
+     },
+     {
+      "id": "ring1",
+      "seg": [
+       "ring1_a",
+       "ring1_b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "straw"
+     },
+     {
+      "id": "ring2",
+      "seg": [
+       "ring2_a",
+       "ring2_b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "straw"
+     },
+     {
+      "id": "ring3",
+      "seg": [
+       "ring3_a",
+       "ring3_b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "straw"
+     },
+     {
+      "id": "ring4",
+      "seg": [
+       "ring4_a",
+       "ring4_b"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "group": "straw"
+     },
+     {
+      "id": "stname",
+      "label": "\\text{straw}",
+      "at": "stname_at",
+      "dir": "n",
+      "size": "l",
+      "ink": "ink",
+      "group": "straw"
+     },
+     {
+      "id": "st0",
+      "seg": [
+       "st0_a",
+       "st0_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "straw"
+     },
+     {
+      "id": "st1",
+      "seg": [
+       "st1_a",
+       "st1_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "straw"
+     },
+     {
+      "id": "body",
+      "poly": [
+       "body_0",
+       "body_1",
+       "body_2",
+       "body_3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5,
+      "group": "crayon"
+     },
+     {
+      "id": "cone",
+      "poly": [
+       "cone_0",
+       "cone_1",
+       "cone_2",
+       "cone_3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5,
+      "group": "crayon"
+     },
+     {
+      "id": "tip",
+      "poly": [
+       "tip_0",
+       "tip_1",
+       "tip_2",
+       "tip_3"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2.5,
+      "group": "crayon"
+     },
+     {
+      "id": "band1",
+      "seg": [
+       "band1_a",
+       "band1_b"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "group": "crayon"
+     },
+     {
+      "id": "band2",
+      "seg": [
+       "band2_a",
+       "band2_b"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "group": "crayon"
+     },
+     {
+      "id": "crname",
+      "label": "\\text{crayon}",
+      "at": "crname_at",
+      "dir": "n",
+      "size": "l",
+      "ink": "ink",
+      "group": "crayon"
+     },
+     {
+      "id": "cr0",
+      "seg": [
+       "cr0_a",
+       "cr0_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "crayon"
+     },
+     {
+      "id": "cr1",
+      "seg": [
+       "cr1_a",
+       "cr1_b"
+      ],
+      "ink": "muted",
+      "w": 2,
+      "dash": true,
+      "group": "crayon"
+     },
+     {
+      "id": "g1",
+      "poly": [
+       "g1_0",
+       "g1_1",
+       "g1_2",
+       "g1_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "g2",
+      "poly": [
+       "g2_0",
+       "g2_1",
+       "g2_2",
+       "g2_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "g3",
+      "poly": [
+       "g3_0",
+       "g3_1",
+       "g3_2",
+       "g3_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "g4",
+      "poly": [
+       "g4_0",
+       "g4_1",
+       "g4_2",
+       "g4_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "g5",
+      "poly": [
+       "g5_0",
+       "g5_1",
+       "g5_2",
+       "g5_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "hole1",
+      "poly": [
+       "hole1_0",
+       "hole1_1",
+       "hole1_2",
+       "hole1_3"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "o1",
+      "poly": [
+       "o1_0",
+       "o1_1",
+       "o1_2",
+       "o1_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o3",
+      "poly": [
+       "o3_0",
+       "o3_1",
+       "o3_2",
+       "o3_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o4",
+      "poly": [
+       "o4_0",
+       "o4_1",
+       "o4_2",
+       "o4_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o5",
+      "poly": [
+       "o5_0",
+       "o5_1",
+       "o5_2",
+       "o5_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o7",
+      "poly": [
+       "o7_0",
+       "o7_1",
+       "o7_2",
+       "o7_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o8",
+      "poly": [
+       "o8_0",
+       "o8_1",
+       "o8_2",
+       "o8_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o2",
+      "poly": [
+       "o2_0",
+       "o2_1",
+       "o2_2",
+       "o2_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "o6",
+      "poly": [
+       "o6_0",
+       "o6_1",
+       "o6_2",
+       "o6_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "l1",
+      "poly": [
+       "l1_0",
+       "l1_1",
+       "l1_2",
+       "l1_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "l2",
+      "poly": [
+       "l2_0",
+       "l2_1",
+       "l2_2",
+       "l2_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "l3",
+      "poly": [
+       "l3_0",
+       "l3_1",
+       "l3_2",
+       "l3_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "l4",
+      "poly": [
+       "l4_0",
+       "l4_1",
+       "l4_2",
+       "l4_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2.5,
+      "solid": true
+     },
+     {
+      "id": "hole2",
+      "poly": [
+       "hole2_0",
+       "hole2_1",
+       "hole2_2",
+       "hole2_3"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 3
+     },
+     {
+      "id": "t5",
+      "label": "5\\text{ cubes long}",
+      "at": "t5_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink"
+     },
+     {
+      "id": "t7",
+      "label": "7\\text{ cubes long}",
+      "at": "t7_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink"
+     },
+     {
+      "id": "t4",
+      "label": "4\\text{ cubes long}",
+      "at": "t4_at",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a spoon. Something is wrong with this row.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Here"
+      },
+      {
+       "do": "text",
+       "text": "Fix each row.",
+       "at": "Here"
+      },
+      {
+       "do": "show",
+       "target": [
+        "g1",
+        "g2",
+        "g3",
+        "g4"
+       ],
+       "at": "row"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "There is a gap.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "hole1",
+       "at": "gap"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Slide the cubes together, and one more fits. Five cubes.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": [
+        "g3",
+        "g4"
+       ],
+       "by": [
+        -1,
+        0
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "hide",
+       "target": "hole1",
+       "at": "Slide"
+      },
+      {
+       "do": "watch",
+       "text": "Close the gap.",
+       "at": "together"
+      },
+      {
+       "do": "show",
+       "target": "g5",
+       "at": "more"
+      },
+      {
+       "do": "slide",
+       "target": "g5",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "more",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "t5",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now a straw.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "spoon",
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5",
+        "t5"
+       ],
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": [
+        "straw",
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5",
+        "o6",
+        "o7",
+        "o8"
+       ],
+       "at": "straw"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "These cubes overlap.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "o2",
+       "at": "overlap"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Pull them apart. One has no room. Seven cubes.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": "o8",
+       "by": [
+        0,
+        -1.6
+       ],
+       "at": "Pull",
+       "dur": 0.8
+      },
+      {
+       "do": "slide",
+       "target": "o2",
+       "by": [
+        1,
+        -0.5
+       ],
+       "at": "Pull"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "o3",
+        "o4",
+        "o5"
+       ],
+       "by": [
+        1,
+        0
+       ],
+       "at": "Pull"
+      },
+      {
+       "do": "slide",
+       "target": "o6",
+       "by": [
+        2,
+        -0.5
+       ],
+       "at": "Pull"
+      },
+      {
+       "do": "slide",
+       "target": "o7",
+       "by": [
+        2,
+        0
+       ],
+       "at": "Pull"
+      },
+      {
+       "do": "watch",
+       "text": "Pull them apart.",
+       "at": "apart"
+      },
+      {
+       "do": "hide",
+       "target": "o8",
+       "at": "room"
+      },
+      {
+       "do": "show",
+       "target": "t7",
+       "at": "Seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Last, a crayon.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "straw",
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5",
+        "o6",
+        "o7",
+        "t7"
+       ],
+       "at": "Last"
+      },
+      {
+       "do": "show",
+       "target": [
+        "crayon",
+        "l1",
+        "l2",
+        "l3"
+       ],
+       "at": "crayon"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "This row starts late.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "hole2",
+       "at": "late"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Slide it back to the end, and one more fits. Four cubes.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "slide",
+       "target": [
+        "l1",
+        "l2",
+        "l3"
+       ],
+       "by": [
+        -2,
+        0
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "hide",
+       "target": "hole2",
+       "at": "Slide"
+      },
+      {
+       "do": "watch",
+       "text": "Start at one end.",
+       "at": "back"
+      },
+      {
+       "do": "show",
+       "target": "l4",
+       "at": "more"
+      },
+      {
+       "do": "slide",
+       "target": "l4",
+       "by": [
+        0,
+        1.6
+       ],
+       "at": "more",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "t4",
+       "at": "Four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.2,
+     -0.4,
+     16.8,
+     9.6
+    ],
+    "points": {
+     "ribbon_0": [
+      0.8,
+      7.6
+     ],
+     "ribbon_1": [
+      16.2,
+      7.6
+     ],
+     "ribbon_2": [
+      16.2,
+      8.6
+     ],
+     "ribbon_3": [
+      0.8,
+      8.6
+     ],
+     "name_at": [
+      8.5,
+      8.6
+     ],
+     "G": [
+      0.8,
+      7.2
+     ],
+     "dim8_a": [
+      0.8,
+      5.9
+     ],
+     "dim8_b": [
+      16.2,
+      5.9
+     ],
+     "u1_0": [
+      0.8,
+      0.3
+     ],
+     "u1_1": [
+      8.5,
+      0.3
+     ],
+     "u1_2": [
+      8.5,
+      1.6
+     ],
+     "u1_3": [
+      0.8,
+      1.6
+     ],
+     "u2_0": [
+      8.5,
+      0.3
+     ],
+     "u2_1": [
+      16.2,
+      0.3
+     ],
+     "u2_2": [
+      16.2,
+      1.6
+     ],
+     "u2_3": [
+      8.5,
+      1.6
+     ],
+     "dim4_a": [
+      0.8,
+      1.6
+     ],
+     "dim4_b": [
+      8.5,
+      1.6
+     ],
+     "n1_at": [
+      4.65,
+      2.25
+     ],
+     "n2_at": [
+      12.35,
+      2.25
+     ]
+    },
+    "parts": [
+     {
+      "id": "ribbon",
+      "poly": [
+       "ribbon_0",
+       "ribbon_1",
+       "ribbon_2",
+       "ribbon_3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2.5,
+      "start": true
+     },
+     {
+      "id": "name",
+      "label": "\\text{ribbon}",
+      "at": "name_at",
+      "dir": "n",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "small",
+      "grid": [
+       8,
+       1
+      ],
+      "at": "G",
+      "size": [
+       1.925,
+       1.3
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2
+     },
+     {
+      "id": "dim8",
+      "dim": [
+       "dim8_a",
+       "dim8_b"
+      ],
+      "side": "s",
+      "tex": "8\\text{ small units}",
+      "ink": "ink",
+      "far": 0.8
+     },
+     {
+      "id": "u1",
+      "poly": [
+       "u1_0",
+       "u1_1",
+       "u1_2",
+       "u1_3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "u2",
+      "poly": [
+       "u2_0",
+       "u2_1",
+       "u2_2",
+       "u2_3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2.5,
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "dim4",
+      "dim": [
+       "dim4_a",
+       "dim4_b"
+      ],
+      "side": "s",
+      "tex": "4\\text{ small units}",
+      "ink": "ink",
+      "far": 0.8
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "n1_at",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "n2_at",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The ribbon is eight small units long.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "The ribbon is 8 small units long. One long unit is as long as 4 small units. How many long units cover the ribbon?",
+       "at": "The"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "small",
+        "dim8"
+       ],
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One long unit is as long as four small units. How many long units cover the ribbon?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "slide",
+       "target": "u1",
+       "by": [
+        0,
+        1.3
+       ],
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "n1",
+        "dim4"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "ribbon",
+       "at": "cover"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Lay a second long unit beside the first one.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "slide",
+       "target": "u2",
+       "by": [
+        0,
+        1.3
+       ],
+       "at": "second"
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "beside"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four, then eight. Two long units cover the ribbon.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "2",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight small units, or two long ones. A longer unit needs fewer copies.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "text",
+       "text": "Longer unit, fewer copies.",
+       "at": "longer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Start at one end and count. A longer unit takes fewer copies.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Start at one end and count.}",
+       "fresh": true,
+       "at": "Start"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Longer unit, fewer copies.}",
+       "fresh": true,
+       "at": "longer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same-size units, end to end, no gaps.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\text{Same-size units, end to end, no gaps.}",
+       "fresh": true,
+       "at": "Same-size"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

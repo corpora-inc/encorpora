@@ -23,11 +23,11 @@
   },
   "add-within-20": {
     "id": "add-within-20--sm",
-    "version": "5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4",
+    "version": "e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b",
     "title": "Fill the ten first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4/audio.m4a",
-    "duration": 113.84,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b/audio.m4a",
+    "duration": 113.74,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -36,20 +36,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4/audio.m4a",
-        "version": "5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4",
-        "duration": 113.84
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-within-20--sm/e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b/audio.m4a",
+        "version": "e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b",
+        "duration": 113.74
       }
     ]
   },
   "arithmetic-distant-term": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -58,20 +58,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
   "arithmetic-sequence-as-function": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -80,20 +80,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
   "arithmetic-term": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -102,20 +102,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
   "average-rate-display": {
     "id": "average-rate-display--sa",
-    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
     "title": "Average rate of change: the slope between two points",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-    "duration": 166.59,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+    "duration": 166.68,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -124,20 +124,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
-        "duration": 166.59
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+        "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
+        "duration": 166.68
       }
     ]
   },
   "average-rate-formula": {
     "id": "average-rate-display--sa",
-    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
     "title": "Average rate of change: the slope between two points",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-    "duration": 166.59,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+    "duration": 166.68,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -146,20 +146,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
-        "duration": 166.59
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+        "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
+        "duration": 166.68
       }
     ]
   },
   "average-rate-steps": {
     "id": "average-rate-display--sa",
-    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
     "title": "Average rate of change: the slope between two points",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-    "duration": 166.59,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+    "duration": 166.68,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -168,20 +168,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
-        "duration": 166.59
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+        "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
+        "duration": 166.68
       }
     ]
   },
   "average-rate-table-rounded": {
     "id": "average-rate-display--sa",
-    "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
+    "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
     "title": "Average rate of change: the slope between two points",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-    "duration": 166.59,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+    "duration": 166.68,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -190,20 +190,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2/audio.m4a",
-        "version": "c3cf237cddb85366cd9c62b8684ab574d5e620d89887484da761f24e3c864ff2",
-        "duration": 166.59
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/average-rate-display--sa/3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f/audio.m4a",
+        "version": "3ed344785a68bcbb25b994e40a492226bb0981ca49c76a621e297f8e7273d23f",
+        "duration": 166.68
       }
     ]
   },
   "balanced-addition": {
     "id": "balanced-addition--se",
-    "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
+    "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
     "title": "Equals means the same amount",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-    "duration": 122.07,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+    "duration": 122.06,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -212,10 +212,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-        "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
-        "duration": 122.07
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+        "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
+        "duration": 122.06
       }
     ]
   },
@@ -241,13 +241,34 @@
       }
     ]
   },
+  "both-sides-linear-equation": {
+    "id": "linear-equation--sb",
+    "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+    "title": "Keep the balance: solve a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+    "duration": 121.85,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+        "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+        "duration": 121.85
+      }
+    ]
+  },
   "build-the-number-sentence": {
     "id": "picture-to-number-sentence--sj",
-    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+    "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
     "title": "A story in pictures and numbers",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-    "duration": 91.18,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+    "duration": 90.92,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -256,20 +277,41 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
-        "duration": 91.18
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+        "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
+        "duration": 90.92
+      }
+    ]
+  },
+  "check-equation-candidate": {
+    "id": "linear-equation--sb",
+    "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+    "title": "Keep the balance: solve a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+    "duration": 121.85,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+        "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+        "duration": 121.85
       }
     ]
   },
   "clock-hour-read": {
     "id": "read-clock-hour-half--sc",
-    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
     "title": "Read the hour and half hour",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-    "duration": 96.89,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+    "duration": 96.72,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -278,20 +320,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
-        "duration": 96.89
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+        "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
+        "duration": 96.72
       }
     ]
   },
   "compare-capacity": {
     "id": "compare-lengths--sm",
-    "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
+    "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
     "title": "Pick what to measure",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-    "duration": 111.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+    "duration": 111.39,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -300,10 +342,10 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-        "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
-        "duration": 111.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+        "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
+        "duration": 111.39
       }
     ]
   },
@@ -374,11 +416,11 @@
   },
   "compare-lengths": {
     "id": "compare-lengths--sm",
-    "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
+    "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
     "title": "Pick what to measure",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-    "duration": 111.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+    "duration": 111.39,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -387,20 +429,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-        "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
-        "duration": 111.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+        "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
+        "duration": 111.39
       }
     ]
   },
   "compare-two-digit": {
     "id": "compare-two-digit--sc",
-    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+    "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
     "title": "Tens first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-    "duration": 91.67,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+    "duration": 91.55,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -409,10 +451,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
-        "duration": 91.67
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+        "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
+        "duration": 91.55
       }
     ]
   },
@@ -439,11 +481,11 @@
   },
   "compare-weights": {
     "id": "compare-lengths--sm",
-    "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
+    "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
     "title": "Pick what to measure",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-    "duration": 111.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+    "duration": 111.39,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -452,20 +494,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-        "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
-        "duration": 111.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+        "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
+        "duration": 111.39
       }
     ]
   },
   "complete-the-shape": {
     "id": "compose-shape-name--sc",
-    "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
+    "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
     "title": "Put them together, count the sides",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-    "duration": 125.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+    "duration": 125.38,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -474,10 +516,10 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-        "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
-        "duration": 125.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+        "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
+        "duration": 125.38
       }
     ]
   },
@@ -504,11 +546,11 @@
   },
   "compose-shape-name": {
     "id": "compose-shape-name--sc",
-    "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
+    "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
     "title": "Put them together, count the sides",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-    "duration": 125.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+    "duration": 125.38,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -517,20 +559,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-        "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
-        "duration": 125.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+        "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
+        "duration": 125.38
       }
     ]
   },
   "continue-count-to-120": {
     "id": "tens-ones-model--st",
-    "version": "96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8",
+    "version": "de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f",
     "title": "Tens and ones",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/audio.m4a",
-    "duration": 91.24,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/audio.m4a",
+    "duration": 91.26,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -539,10 +581,32 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/audio.m4a",
-        "version": "96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8",
-        "duration": 91.24
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/audio.m4a",
+        "version": "de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f",
+        "duration": 91.26
+      }
+    ]
+  },
+  "count-flat-or-solid": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
       }
     ]
   },
@@ -586,6 +650,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-sequence-missing--fn/7241795a364e2d4cc194db6149ec098d611ff4004ab074d756a09d7c468fd1e2/audio.m4a",
         "version": "7241795a364e2d4cc194db6149ec098d611ff4004ab074d756a09d7c468fd1e2",
         "duration": 138.01
+      }
+    ]
+  },
+  "count-sides-corners": {
+    "id": "defining-attribute--sd",
+    "version": "b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f",
+    "title": "What makes a shape that shape",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/audio.m4a",
+    "duration": 121.46004535147392,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/audio.m4a",
+        "version": "b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f",
+        "duration": 121.46004535147392
       }
     ]
   },
@@ -675,11 +761,11 @@
   },
   "decompose-flat-shape": {
     "id": "compose-shape-name--sc",
-    "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
+    "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
     "title": "Put them together, count the sides",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-    "duration": 125.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+    "duration": 125.38,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -688,10 +774,32 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23/audio.m4a",
-        "version": "199fdd76416717af82ae4cf8074ff5e465c2835b4bc998270ba03404ec029c23",
-        "duration": 125.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compose-shape-name--sc/f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96/audio.m4a",
+        "version": "f20bf4d0c462f669cf12591bd6714accc06268e6ba2cb563e4540448193a6a96",
+        "duration": 125.38
+      }
+    ]
+  },
+  "defining-attribute": {
+    "id": "defining-attribute--sd",
+    "version": "b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f",
+    "title": "What makes a shape that shape",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/audio.m4a",
+    "duration": 121.46004535147392,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/defining-attribute--sd/b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f/audio.m4a",
+        "version": "b2aeceadaa3ad4f62c919bb3fa0f1aa96ed5c376e07522f0d75608e70c67415f",
+        "duration": 121.46004535147392
       }
     ]
   },
@@ -717,13 +825,34 @@
       }
     ]
   },
+  "equation-solution-count": {
+    "id": "linear-equation--sb",
+    "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+    "title": "Keep the balance: solve a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+    "duration": 121.85,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+        "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+        "duration": 121.85
+      }
+    ]
+  },
   "facts-to-five": {
     "id": "facts-to-five--sf",
-    "version": "3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950",
+    "version": "60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9",
     "title": "Plus hops forward, minus hops back",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/audio.m4a",
-    "duration": 116.26,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9/audio.m4a",
+    "duration": 116.21,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -732,20 +861,85 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950/audio.m4a",
-        "version": "3e513ece93b3bde021d64ab7b8b25183ca21474424d66b42ac1e75dfa5a81950",
-        "duration": 116.26
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/facts-to-five--sf/60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9/audio.m4a",
+        "version": "60c6c6f73b27fb5a8291e76e1ad9a7114ca28458970c7c50b805356eca1927e9",
+        "duration": 116.21
+      }
+    ]
+  },
+  "fee-rule-choice": {
+    "id": "linear-model-equation--sm",
+    "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+    "title": "From a story to a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+    "duration": 116.86,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+        "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+        "duration": 116.86
+      }
+    ]
+  },
+  "find-equal-shares": {
+    "id": "name-equal-share--sh",
+    "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+    "title": "Halves and quarters of a whole",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+    "duration": 96.42993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+        "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+        "duration": 96.42993197278912
+      }
+    ]
+  },
+  "find-named-shape": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
       }
     ]
   },
   "fl-equation-truth-100": {
     "id": "balanced-addition--se",
-    "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
+    "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
     "title": "Equals means the same amount",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-    "duration": 122.07,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+    "duration": 122.06,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -754,20 +948,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-        "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
-        "duration": 122.07
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+        "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
+        "duration": 122.06
       }
     ]
   },
   "fl-equation-truth-20": {
     "id": "balanced-addition--se",
-    "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
+    "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
     "title": "Equals means the same amount",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-    "duration": 122.07,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+    "duration": 122.06,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -776,10 +970,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373/audio.m4a",
-        "version": "d45dfb0e121e1762722464425d9feefbce6c69f8916aec46dfa699cba5dc4373",
-        "duration": 122.07
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/balanced-addition--se/d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc/audio.m4a",
+        "version": "d4244f820b9fd9037bd8c64ae16306907695183dd82eeba45b45b48cb59d55fc",
+        "duration": 122.06
       }
     ]
   },
@@ -801,6 +995,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fl-trapezoid-consequences/b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b/audio.m4a",
         "version": "b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b",
         "duration": 277.99
+      }
+    ]
+  },
+  "flat-or-solid-name": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
       }
     ]
   },
@@ -849,11 +1065,11 @@
   },
   "function-missing-input": {
     "id": "relation-function-choice--sl",
-    "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
+    "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
     "title": "One input, one output",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-    "duration": 171.26997732426304,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+    "duration": 171.20997732426304,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -862,20 +1078,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-        "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
-        "duration": 171.26997732426304
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+        "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
+        "duration": 171.20997732426304
       }
     ]
   },
   "function-pair-select": {
     "id": "relation-function-choice--sl",
-    "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
+    "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
     "title": "One input, one output",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-    "duration": 171.26997732426304,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+    "duration": 171.20997732426304,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -884,10 +1100,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-        "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
-        "duration": 171.26997732426304
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+        "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
+        "duration": 171.20997732426304
       }
     ]
   },
@@ -915,11 +1131,11 @@
   },
   "graph-estimate-system-solution": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -928,10 +1144,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
@@ -959,11 +1175,11 @@
   },
   "graphed-line-slope": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -972,20 +1188,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
   "greater-numeral": {
     "id": "greater-numeral--sl",
-    "version": "c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4",
+    "version": "0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd",
     "title": "Greater or less, through ten",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4/audio.m4a",
-    "duration": 111.51,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd/audio.m4a",
+    "duration": 111.39,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -994,10 +1210,10 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4/audio.m4a",
-        "version": "c52809123976d7b264404caf257d2f135ad3fe0d54e7d6c079fafd0c8b512ef4",
-        "duration": 111.51
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/greater-numeral--sl/0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd/audio.m4a",
+        "version": "0629975e6248269c1da7676043a8d2276a7c17a90cc8ffa4abfb9370035dc7dd",
+        "duration": 111.39
       }
     ]
   },
@@ -1044,6 +1260,27 @@
       }
     ]
   },
+  "interpret-linear-parameters": {
+    "id": "linear-model-equation--sm",
+    "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+    "title": "From a story to a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+    "duration": 116.86,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+        "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+        "duration": 116.86
+      }
+    ]
+  },
   "join-within-10": {
     "id": "join-within-10",
     "version": "895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06",
@@ -1062,6 +1299,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/join-within-10/895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06/audio.m4a",
         "version": "895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06",
         "duration": 64.95
+      }
+    ]
+  },
+  "larger-share": {
+    "id": "name-equal-share--sh",
+    "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+    "title": "Halves and quarters of a whole",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+    "duration": 96.42993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+        "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+        "duration": 96.42993197278912
       }
     ]
   },
@@ -1105,6 +1364,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-slope/f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a/audio.m4a",
         "version": "f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a",
         "duration": 137.11
+      }
+    ]
+  },
+  "linear-equation": {
+    "id": "linear-equation--sb",
+    "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+    "title": "Keep the balance: solve a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+    "duration": 121.85,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-equation--sb/ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83/audio.m4a",
+        "version": "ca617d1848631cd9eb6fe7b18192f2994255c1deefb5cb71c9b70e0a7c67eb83",
+        "duration": 121.85
       }
     ]
   },
@@ -1152,6 +1432,27 @@
       }
     ]
   },
+  "linear-model-equation": {
+    "id": "linear-model-equation--sm",
+    "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+    "title": "From a story to a linear equation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+    "duration": 116.86,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-model-equation--sm/bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f/audio.m4a",
+        "version": "bf6e8269a75a6200d6a0d47fb5f46fff774a88e2ee5ecf42d8a8e4fe3bc3e68f",
+        "duration": 116.86
+      }
+    ]
+  },
   "linear-system-pair": {
     "id": "linear-system-x--se",
     "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
@@ -1175,11 +1476,11 @@
   },
   "linear-system-solution-count": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1188,10 +1489,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
@@ -1239,11 +1540,11 @@
   },
   "make-ten-grouping": {
     "id": "three-addend-story--st",
-    "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
+    "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
     "title": "Find the ten first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-    "duration": 102.32002267573696,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+    "duration": 102.26002267573696,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1252,10 +1553,10 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-        "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
-        "duration": 102.32002267573696
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+        "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
+        "duration": 102.26002267573696
       }
     ]
   },
@@ -1282,11 +1583,11 @@
   },
   "make-ten-step": {
     "id": "three-addend-story--st",
-    "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
+    "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
     "title": "Find the ten first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-    "duration": 102.32002267573696,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+    "duration": 102.26002267573696,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1295,20 +1596,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-        "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
-        "duration": 102.32002267573696
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+        "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
+        "duration": 102.26002267573696
       }
     ]
   },
   "match-clock-half-hour": {
     "id": "read-clock-hour-half--sc",
-    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
     "title": "Read the hour and half hour",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-    "duration": 96.89,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+    "duration": 96.72,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1317,20 +1618,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
-        "duration": 96.89
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+        "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
+        "duration": 96.72
       }
     ]
   },
   "mcas-slope-sign-description": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1339,10 +1640,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
@@ -1391,11 +1692,11 @@
   },
   "measurable-attribute-choice": {
     "id": "compare-lengths--sm",
-    "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
+    "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
     "title": "Pick what to measure",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-    "duration": 111.52,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+    "duration": 111.39,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1404,20 +1705,42 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
-        "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
-        "duration": 111.52
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
+        "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
+        "duration": 111.39
+      }
+    ]
+  },
+  "measure-with-units": {
+    "id": "measure-with-units--sm",
+    "version": "297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171",
+    "title": "Measuring length with equal units",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/measure-with-units--sm/297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/measure-with-units--sm/297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171/audio.m4a",
+    "duration": 91.04,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/measure-with-units--sm/297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/measure-with-units--sm/297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171/audio.m4a",
+        "version": "297ad9aecf8b16f120f90a7f1ead24c18be35cd814781187fa6b530f3e9fb171",
+        "duration": 91.04
       }
     ]
   },
   "missing-start-story": {
     "id": "missing-start-story--ss",
-    "version": "ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f",
+    "version": "ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06",
     "title": "Where the box goes",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/audio.m4a",
-    "duration": 109.69002267573696,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06/audio.m4a",
+    "duration": 109.62002267573696,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1426,20 +1749,86 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/audio.m4a",
-        "version": "ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f",
-        "duration": 109.69002267573696
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06/audio.m4a",
+        "version": "ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06",
+        "duration": 109.62002267573696
+      }
+    ]
+  },
+  "name-equal-share": {
+    "id": "name-equal-share--sh",
+    "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+    "title": "Halves and quarters of a whole",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+    "duration": 96.42993197278912,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-equal-share--sh/155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db/audio.m4a",
+        "version": "155effc3692bd249de6b8626bd1e9a4d710b39b95973ce6d6e9c48ed29d903db",
+        "duration": 96.42993197278912
+      }
+    ]
+  },
+  "name-flat-shape": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
+      }
+    ]
+  },
+  "name-solid-shape": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
       }
     ]
   },
   "nonlinear-recursion-term": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1448,20 +1837,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
   "number-bond-missing": {
     "id": "number-bond-missing--sb",
-    "version": "a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3",
+    "version": "92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3",
     "title": "Two parts make the whole",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3/audio.m4a",
-    "duration": 123.3,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3/audio.m4a",
+    "duration": 123.31,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1470,20 +1859,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3/audio.m4a",
-        "version": "a25138ae16bf43fd5365ab72e2c316c5f22aee1710cc70a2a01cf112110e74f3",
-        "duration": 123.3
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3/audio.m4a",
+        "version": "92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3",
+        "duration": 123.31
       }
     ]
   },
   "number-sentence-to-picture": {
     "id": "picture-to-number-sentence--sj",
-    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
+    "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
     "title": "A story in pictures and numbers",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-    "duration": 91.18,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+    "duration": 90.92,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1492,20 +1881,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
-        "duration": 91.18
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+        "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
+        "duration": 90.92
       }
     ]
   },
   "numeral-for-quantity": {
     "id": "numeral-for-quantity--sn",
-    "version": "142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063",
+    "version": "55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b",
     "title": "Write the number",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063/audio.m4a",
-    "duration": 188.94,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b/audio.m4a",
+    "duration": 189.01,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1514,20 +1903,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063/audio.m4a",
-        "version": "142c36bd8881ed509707fa00a2e8aff707e2ce8d78fa00aec7e316b5fc8ec063",
-        "duration": 188.94
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/numeral-for-quantity--sn/55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b/audio.m4a",
+        "version": "55ddde076d192e4e6066a7cac147d87820a78d1719134f1ee651e9e8cd7f8c5b",
+        "duration": 189.01
       }
     ]
   },
   "open-number-line-to-120": {
     "id": "compare-two-digit--sc",
-    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+    "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
     "title": "Tens first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-    "duration": 91.67,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+    "duration": 91.55,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1536,10 +1925,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
-        "duration": 91.67
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+        "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
+        "duration": 91.55
       }
     ]
   },
@@ -1564,13 +1953,35 @@
       }
     ]
   },
-  "picture-to-number-sentence": {
-    "id": "picture-to-number-sentence--sj",
-    "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
-    "title": "A story in pictures and numbers",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-    "duration": 91.18,
+  "pick-flat-or-solid": {
+    "id": "name-flat-shape--sn",
+    "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+    "title": "Shapes: names, flat and solid",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+    "duration": 144.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0/audio.m4a",
+        "version": "51ef55f5c8d0cc02a9d2d695d5dae5d5ed2b8a63605c1a1cd803d99ba4070fd0",
+        "duration": 144.59
+      }
+    ]
+  },
+  "picture-graph-questions": {
+    "id": "picture-graph-questions--sp",
+    "version": "6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d",
+    "title": "One picture, one answer",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/audio.m4a",
+    "duration": 118.99,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1579,10 +1990,32 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65/audio.m4a",
-        "version": "aafbdafb9bb1a02abf7213ec066f4a0c8c86202b60ce82fc717f165b90b3ac65",
-        "duration": 91.18
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/audio.m4a",
+        "version": "6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d",
+        "duration": 118.99
+      }
+    ]
+  },
+  "picture-to-number-sentence": {
+    "id": "picture-to-number-sentence--sj",
+    "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
+    "title": "A story in pictures and numbers",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+    "duration": 90.92,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-to-number-sentence--sj/b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f/audio.m4a",
+        "version": "b3613fd83850b79a9af32b3ebe08282209bcfcd4ad8ba6496b05b79d4f69056f",
+        "duration": 90.92
       }
     ]
   },
@@ -1652,11 +2085,11 @@
   },
   "read-clock-hour-half": {
     "id": "read-clock-hour-half--sc",
-    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
     "title": "Read the hour and half hour",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-    "duration": 96.89,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+    "duration": 96.72,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1665,10 +2098,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
-        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
-        "duration": 96.89
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c/audio.m4a",
+        "version": "b06b242d8a8ddd67857251d6e33b2ab609cbe0818c47b3b7c3fb50a3aa9b0c7c",
+        "duration": 96.72
       }
     ]
   },
@@ -1717,11 +2150,11 @@
   },
   "recursion-term-steps": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1730,20 +2163,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
   "relation-function-choice": {
     "id": "relation-function-choice--sl",
-    "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
+    "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
     "title": "One input, one output",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-    "duration": 171.26997732426304,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+    "duration": 171.20997732426304,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1752,20 +2185,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-        "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
-        "duration": 171.26997732426304
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+        "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
+        "duration": 171.20997732426304
       }
     ]
   },
   "relation-point-removal": {
     "id": "relation-function-choice--sl",
-    "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
+    "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
     "title": "One input, one output",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-    "duration": 171.26997732426304,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+    "duration": 171.20997732426304,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1774,10 +2207,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18/audio.m4a",
-        "version": "c37190d3fc9332a49e4f1e6f4ff01492425835dcef37311c5ab38121764caf18",
-        "duration": 171.26997732426304
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
+        "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
+        "duration": 171.20997732426304
       }
     ]
   },
@@ -1891,11 +2324,11 @@
   },
   "series-recursion": {
     "id": "arithmetic-distant-term--sq",
-    "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
+    "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
     "title": "An arithmetic sequence is a staircase",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-    "duration": 165.95,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+    "duration": 166.13,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1904,10 +2337,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b/audio.m4a",
-        "version": "b5507ed61506c00ed3f9fbef1d2f5eda7a2a3b6a06bff1cbf8d525a25a301c6b",
-        "duration": 165.95
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/arithmetic-distant-term--sq/7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1/audio.m4a",
+        "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
+        "duration": 166.13
       }
     ]
   },
@@ -1956,11 +2389,11 @@
   },
   "slope-argument-order": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1969,20 +2402,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
   "slope-constant-similar-triangles": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -1991,20 +2424,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
   "slope-triangle-statements": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2013,20 +2446,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
   "sort-shapes-count": {
     "id": "sort-shapes-count--sc",
-    "version": "2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb",
+    "version": "9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7",
     "title": "Sort first. Then count.",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb/audio.m4a",
-    "duration": 101.44993197278912,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7/audio.m4a",
+    "duration": 101.53995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2035,10 +2468,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb/audio.m4a",
-        "version": "2bb3f05c6d5357923dda0be174fc10ee68a646dbbdfac35618f58948ea2b3aeb",
-        "duration": 101.44993197278912
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sort-shapes-count--sc/9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7/audio.m4a",
+        "version": "9d213ad241610f30f0ad392149aaaaa1be34b30f432604841521304b8a437ce7",
+        "duration": 101.53995464852608
       }
     ]
   },
@@ -2087,11 +2520,11 @@
   },
   "subtract-through-ten": {
     "id": "subtract-through-ten--ss",
-    "version": "fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f",
+    "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
     "title": "Down to ten, then the rest",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/audio.m4a",
-    "duration": 95.66,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/audio.m4a",
+    "duration": 95.77,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2100,20 +2533,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/audio.m4a",
-        "version": "fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f",
-        "duration": 95.66
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/audio.m4a",
+        "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
+        "duration": 95.77
       }
     ]
   },
   "subtract-whole-tens": {
     "id": "ten-more-or-less--st",
-    "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+    "version": "b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e",
     "title": "Change one ten",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
-    "duration": 107.16004535147393,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/audio.m4a",
+    "duration": 107.07004535147392,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2122,20 +2555,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
-        "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
-        "duration": 107.16004535147393
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/audio.m4a",
+        "version": "b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e",
+        "duration": 107.07004535147392
       }
     ]
   },
   "subtract-within-20": {
     "id": "subtract-through-ten--ss",
-    "version": "fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f",
+    "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
     "title": "Down to ten, then the rest",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/audio.m4a",
-    "duration": 95.66,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/audio.m4a",
+    "duration": 95.77,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2144,20 +2577,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f/audio.m4a",
-        "version": "fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f",
-        "duration": 95.66
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/audio.m4a",
+        "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
+        "duration": 95.77
       }
     ]
   },
   "system-crossing-estimate": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2166,20 +2599,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
   "system-intersection-reason": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2188,20 +2621,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
   "system-line-points": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2210,20 +2643,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
   "system-second-equation": {
     "id": "system-intersection-reason--sg",
-    "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
+    "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
     "title": "On both lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-    "duration": 183,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+    "duration": 183.08,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2232,10 +2665,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
-        "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
-        "duration": 183
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79/audio.m4a",
+        "version": "4e94b9496526153c42f7b5ab8756d1d3f3f61db8c549335a8ba2946b0a2f2d79",
+        "duration": 183.08
       }
     ]
   },
@@ -2261,13 +2694,35 @@
       }
     ]
   },
+  "tally-and-t-chart": {
+    "id": "picture-graph-questions--sp",
+    "version": "6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d",
+    "title": "One picture, one answer",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/audio.m4a",
+    "duration": 118.99,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/picture-graph-questions--sp/6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d/audio.m4a",
+        "version": "6f05347b4c57fe801c22919aabf22cf906e0fd2c5a719352ba23fec4c5b6bc5d",
+        "duration": 118.99
+      }
+    ]
+  },
   "teen-frame-compose": {
     "id": "teen-frame-compose--st",
-    "version": "5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0",
+    "version": "5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc",
     "title": "A teen number is ten and some more",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/audio.m4a",
-    "duration": 135.59002267573698,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc/audio.m4a",
+    "duration": 135.72002267573697,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2276,20 +2731,20 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0/audio.m4a",
-        "version": "5767df0dc2b707f002e7f0692ca6122800bd3a5fa98bcdf8fff1f1c7d84093b0",
-        "duration": 135.59002267573698
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/teen-frame-compose--st/5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc/audio.m4a",
+        "version": "5145bb5404366387c992e93100e4c5166000b3b8cfdc97c245e131cbf1d5e3bc",
+        "duration": 135.72002267573697
       }
     ]
   },
   "ten-frame-complement": {
     "id": "ten-frame-complement--sm",
-    "version": "6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd",
+    "version": "16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d",
     "title": "How many more to fill the ten?",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/audio.m4a",
-    "duration": 120.76,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d/audio.m4a",
+    "duration": 120.52,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2298,20 +2753,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd/audio.m4a",
-        "version": "6500af6b58ae0ae7969619f1e33b9e61c8e55c7f18f55f441caa675a5e5a40fd",
-        "duration": 120.76
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-frame-complement--sm/16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d/audio.m4a",
+        "version": "16aafcb7fd38056c88141eaaebca42942a932384e893d6bfa46d3b167f97bd1d",
+        "duration": 120.52
       }
     ]
   },
   "ten-more-or-less": {
     "id": "ten-more-or-less--st",
-    "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+    "version": "b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e",
     "title": "Change one ten",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
-    "duration": 107.16004535147393,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/audio.m4a",
+    "duration": 107.07004535147392,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2320,20 +2775,20 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
-        "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
-        "duration": 107.16004535147393
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e/audio.m4a",
+        "version": "b269708cd5552def21af890717f55e4fbe13336348754fd8633eb040474cb79e",
+        "duration": 107.07004535147392
       }
     ]
   },
   "tens-ones-model": {
     "id": "tens-ones-model--st",
-    "version": "96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8",
+    "version": "de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f",
     "title": "Tens and ones",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/audio.m4a",
-    "duration": 91.24,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/audio.m4a",
+    "duration": 91.26,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2342,10 +2797,10 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8/audio.m4a",
-        "version": "96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8",
-        "duration": 91.24
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tens-ones-model--st/de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f/audio.m4a",
+        "version": "de619b0a7fcfafec8eb4b298a62b8fbf0f337211af81db017126623c0b989b8f",
+        "duration": 91.26
       }
     ]
   },
@@ -2372,11 +2827,11 @@
   },
   "three-addend-story": {
     "id": "three-addend-story--st",
-    "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
+    "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
     "title": "Find the ten first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-    "duration": 102.32002267573696,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+    "duration": 102.26002267573696,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2385,10 +2840,10 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c/audio.m4a",
-        "version": "62bca2d06979096fc7c8aaabf93d8255b62d51e4a548db8342ec7f8110c1027c",
-        "duration": 102.32002267573696
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/three-addend-story--st/fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a/audio.m4a",
+        "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
+        "duration": 102.26002267573696
       }
     ]
   },
@@ -2413,13 +2868,13 @@
       }
     ]
   },
-  "two-digit-symbol": {
-    "id": "compare-two-digit--sc",
-    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
-    "title": "Tens first",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-    "duration": 91.67,
+  "turn-around-fact": {
+    "id": "turn-around-fact--st",
+    "version": "3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4",
+    "title": "Turn an addition fact around",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/audio.m4a",
+    "duration": 83.15,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2428,10 +2883,54 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
-        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
-        "duration": 91.67
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/audio.m4a",
+        "version": "3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4",
+        "duration": 83.15
+      }
+    ]
+  },
+  "turn-around-sum": {
+    "id": "turn-around-fact--st",
+    "version": "3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4",
+    "title": "Turn an addition fact around",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/audio.m4a",
+    "duration": 83.15,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/turn-around-fact--st/3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4/audio.m4a",
+        "version": "3b56fb9626ad325dad4b19ab8d87deceafd5e16dd017f7da8964240e4252e0c4",
+        "duration": 83.15
+      }
+    ]
+  },
+  "two-digit-symbol": {
+    "id": "compare-two-digit--sc",
+    "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
+    "title": "Tens first",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+    "duration": 91.55,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
+        "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
+        "duration": 91.55
       }
     ]
   },
@@ -2458,11 +2957,11 @@
   },
   "unequal-step-rate": {
     "id": "graphed-line-slope--sl",
-    "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
+    "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
     "title": "Any two points, same slope",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-    "duration": 189.09995464852608,
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+    "duration": 189.18995464852608,
     "teacher": "Paul",
     "capability": "lesson-film-v2",
     "editions": [
@@ -2471,19 +2970,19 @@
           "teacher": "J3Ei0Lj6fAobhIqY5ySH",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947/audio.m4a",
-        "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
-        "duration": 189.09995464852608
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graphed-line-slope--sl/e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db/audio.m4a",
+        "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
+        "duration": 189.18995464852608
       }
     ]
   },
   "unknown-addend-story": {
     "id": "unknown-addend-story--su",
-    "version": "9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6",
+    "version": "b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02",
     "title": "The missing part: whole and one part, find the gap",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02/audio.m4a",
     "duration": 90.36,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v2",
@@ -2493,9 +2992,9 @@
           "teacher": "XescS24CsOySAkKrLAO3",
           "learner": "SYXbTJsLE7zmSjr1DchT"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6/audio.m4a",
-        "version": "9fc4a39449d52c645601adf84fbb386512bb3dc36ce5add52c9dc2d52d5fb8d6",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/unknown-addend-story--su/b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02/audio.m4a",
+        "version": "b5b5ceec5e11fad9b78b865459498cbcfd209b8ee8378bcab6c32bc900eb8e02",
         "duration": 90.36
       }
     ]
