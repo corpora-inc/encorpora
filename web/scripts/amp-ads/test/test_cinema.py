@@ -12,7 +12,8 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from cinema import gallery, graph, plan, spec, voice, youtube  # noqa: E402
+from cinema import gallery, graph, passes, plan, spec, voice, youtube  # noqa: E402
+from cinema.scene3d import geometry  # noqa: E402
 
 EXAMPLES = Path(__file__).resolve().parents[1] / 'cinema' / 'examples'
 ENV = {'AMP_MEDIA_ROOT': '/media', 'AMP_MUSIC_POOL': '/music'}
@@ -204,7 +205,7 @@ class Plan(unittest.TestCase):
         return json.loads((EXAMPLES / 'shotlist.json').read_text())
 
     def test_round_robin_plan(self):
-        jobs, prompts, env = plan.build(self.shotlist(), '/gpu/amp-cinema', '/gpu/env/bin/python', '/gpu/outputs')
+        jobs, prompts, env, files = plan.build(self.shotlist(), '/gpu/amp-cinema', '/gpu/env/bin/python', '/gpu/outputs')
         # click-faceon: 4 seeds x 2 framings; heaven: 2 seeds x 2 framings.
         self.assertEqual(len(jobs), 12)
         self.assertEqual([j['name'] for j in jobs[:4]], ['mp4-click-faceon-portrait-101', 'mp4-click-faceon-wide-101',
@@ -240,6 +241,96 @@ class Plan(unittest.TestCase):
             self.assertIn("AMP_SPARK_ROOT='/gpu/amp cinema'", (out / 'batch.env').read_text())
             with self.assertRaisesRegex(spec.SpecError, 'already holds a plan'):
                 plan.write(EXAMPLES / 'shotlist.json', out, '/r', '/p', '/o')
+
+    def test_control_inputs_travel_with_the_batch(self):
+        data = self.shotlist()
+        data['model'].update(runner='control.py', args=['--control-video', '{depth}', '--strength', '0.8'])
+        data['shots'] = [{'id': 'hatbox', 'prompt': 'A glass planet.', 'inputs': {'depth': 'passes-{framing}/depth.mp4'}}]
+        jobs, _, _, files = plan.build(data, '/gpu/amp-cinema', '/py', '/out')
+        remote = '/gpu/amp-cinema/missing-piece-v4/hatbox-wide-depth.mp4'
+        job = next(j for j in jobs if j['meta']['framing'] == 'wide')
+        self.assertEqual(job['command'][-4:], ['--control-video', remote, '--strength', '0.8'])
+        self.assertIn(remote, job['requiredFiles'])
+        self.assertEqual(files['hatbox-wide-depth.mp4'], 'passes-wide/depth.mp4')
+        data['shots'][0]['args'] = ['--control-video', '{edge}']
+        with self.assertRaisesRegex(spec.SpecError, 'does not have'):
+            plan.build(data, '/r', '/p', '/o')
+        del data['shots'][0]['args']
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / 'shotlist.json'
+            src.write_text(json.dumps(data))
+            with self.assertRaisesRegex(spec.SpecError, 'missing shot inputs'):
+                plan.write(src, Path(tmp) / 'batch', '/r', '/p', '/o')
+            for framing in ('portrait', 'wide'):
+                (Path(tmp) / f'passes-{framing}').mkdir()
+                (Path(tmp) / f'passes-{framing}' / 'depth.mp4').write_bytes(framing.encode())
+            plan.write(src, Path(tmp) / 'batch', '/r', '/p', '/o')
+            self.assertEqual((Path(tmp) / 'batch' / 'hatbox-portrait-depth.mp4').read_bytes(), b'portrait')
+
+
+class Passes(unittest.TestCase):
+    """The proof's geometry, and the pass/composite plumbing on synthetic frames (no Blender in CI)."""
+
+    def test_every_band_keeps_its_area_from_sphere_to_sheet(self):
+        report = passes.geometry_check()
+        self.assertAlmostEqual(report['exactTotal'], 4 * 3.141592653589793)
+        self.assertLess(report['states']['sphere']['maxBandError'], 0.005)
+        self.assertLess(report['states']['flat']['maxBandError'], 1e-12)
+        # Refining the mesh converges on the theorem rather than on something nearby.
+        fine = passes.geometry_check(geometry.Grid(bands=12, segments=384, rows_per_band=16))
+        self.assertLess(fine['states']['sphere']['maxBandError'], report['states']['sphere']['maxBandError'] / 10)
+
+    def test_unrolling_is_an_isometry_and_the_push_is_radial(self):
+        grid = geometry.Grid()
+        lengths = []
+        for unroll in (0.0, 0.3, 0.8, 1.0):
+            a, b = geometry.vertex(0.3, 0.5, 1, unroll), geometry.vertex(0.3, 0.5 + 1e-4, 1, unroll)
+            lengths.append(sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5)
+        for n in lengths:
+            self.assertAlmostEqual(n, 1e-4, places=9)
+        for push in (0.0, 0.4, 1.0):
+            x, y, z = geometry.vertex(0.6, 1.1, push, 0)
+            self.assertAlmostEqual(z, 0.6)
+            self.assertAlmostEqual(x / -y, __import__('math').tan(1.1))
+        self.assertAlmostEqual(geometry.vertex(0, grid.theta(grid.segments), 1, 1)[0], 3.141592653589793)
+        self.assertEqual(geometry.state(0)[:2], (0.0, 0.0))
+        self.assertEqual(geometry.state(1)[:3], (1.0, 1.0, 0.0))
+
+    def test_encodes_controls_and_composites_exact_frames(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp) / 'p'
+            lavfi = lambda src, dst: subprocess.run(  # noqa: E731
+                ['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i', src, '-frames:v', '12', '-start_number', '0', str(dst)], check=True)
+            for name in ('depth', 'normal', 'beauty'):
+                (d / name).mkdir(parents=True)
+            lavfi('testsrc2=s=160x90:r=12', d / 'depth' / '%04d.png')
+            lavfi('testsrc2=s=160x90:r=12', d / 'normal' / '%04d.png')
+            # A white disc with alpha on a transparent frame stands in for the beauty render.
+            lavfi("color=white:s=160x90:r=12,format=rgba,geq=r=255:g=255:b=255:a='255*lt(hypot(X-80,Y-45),30)'",
+                  d / 'beauty' / '%04d.png')
+            commands = passes.encode_commands(d, (160, 90), 12)
+            self.assertEqual(sorted(commands), ['depth.mp4', 'edge.mp4', 'matte.mp4', 'normal.mp4', 'preview.mp4'])
+            for cmd in commands.values():
+                subprocess.run(cmd, check=True, capture_output=True)
+            (d / 'passes.json').write_text(json.dumps(
+                {'size': [160, 90], 'frames': 12, 'fps': 12, 'beautyFrames': 'beauty/%04d.png'}))
+            bg = Path(tmp) / 'bg.mp4'
+            subprocess.run(['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i', 'color=red:s=320x320:r=24:d=0.2', str(bg)], check=True)
+            out = Path(tmp) / 'out' / 'c.mp4'
+            receipt = passes.composite(d, bg, out)  # background is short and square: looped and cropped
+            self.assertEqual(receipt['output']['size'], [160, 90])
+            self.assertEqual(receipt['output']['frames'], 12)
+            px = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(out), '-frames:v', '1', '-f', 'rawvideo',
+                                 '-pix_fmt', 'rgb24', '-'], check=True, capture_output=True).stdout
+            centre, corner = px[(45 * 160 + 80) * 3:][:3], px[:3]
+            self.assertTrue(all(c > 220 for c in centre), centre)              # exact geometry on top
+            self.assertTrue(corner[0] > 200 and corner[1] < 60, corner)        # generated world behind
+            with self.assertRaisesRegex(spec.SpecError, 'never overwritten'):
+                passes.composite(d, bg, out)
+            with self.assertRaisesRegex(spec.SpecError, 'aspect ratio'):
+                passes.composite(d, bg, Path(tmp) / 'out' / 'tall.mp4', (90, 160))
+            with self.assertRaisesRegex(spec.SpecError, 'never overwritten'):
+                passes.render('hatbox', d)
 
 
 FAKE_RUNNER = """import argparse, json, sys
@@ -309,7 +400,7 @@ class Pages(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             d = Path(tmp)
             (d / 'clips').mkdir()
-            jobs, _, _ = plan.build(json.loads((EXAMPLES / 'shotlist.json').read_text()), '/r', '/p', '/o')
+            jobs, _, _, _ = plan.build(json.loads((EXAMPLES / 'shotlist.json').read_text()), '/r', '/p', '/o')
             (d / 'plan.json').write_text(json.dumps(jobs))
             for j in jobs[:3]:
                 (d / 'clips' / f'{j["name"]}.mp4').write_bytes(b'')

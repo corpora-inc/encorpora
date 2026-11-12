@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-from . import delivery, gallery, plan, render, spec, voice, youtube
+from . import delivery, gallery, passes, plan, render, spec, voice, youtube
 
 
 def main(argv=None):
@@ -33,6 +33,19 @@ def main(argv=None):
     r.add_argument('--replace', action='store_true', help='move changed artifacts to superseded/ and rerender')
     rv = sub.add_parser('review', help='build review.html for finished ads under an output root')
     rv.add_argument('out_root')
+    ps = sub.add_parser('passes', help='Blender scene -> beauty/depth/normal/edge/matte passes for one framing')
+    ps.add_argument('scene', choices=sorted(passes.SCENES))
+    ps.add_argument('out_dir')
+    ps.add_argument('--width', type=int, default=1344)
+    ps.add_argument('--height', type=int, default=768)
+    ps.add_argument('--frames', type=int, default=121)
+    ps.add_argument('--fps', type=int, default=24)
+    ps.add_argument('--samples', type=int, default=24)
+    co = sub.add_parser('composite', help='exact beauty frames over a background video')
+    co.add_argument('passes_dir')
+    co.add_argument('background')
+    co.add_argument('out')
+    co.add_argument('--size', help='WxH, same aspect as the passes (default: the passes size)')
     d = sub.add_parser('delivery-check', help='verify full-format paid exports, hashes and actual media')
     d.add_argument('manifest')
     u = sub.add_parser('upload', help='upload one finished video to YouTube as PRIVATE')
@@ -76,6 +89,12 @@ def main(argv=None):
             print(gallery.ads(a.out_root))
         elif a.cmd == 'upload':
             print(youtube.upload(a.video, a.title, a.description, a.tag, delivery_manifest=a.delivery_manifest))
+        elif a.cmd == 'passes':
+            m = passes.render(a.scene, a.out_dir, a.width, a.height, a.frames, a.fps, a.samples)
+            print(json.dumps({'passes': a.out_dir, 'videos': sorted(m['videos']), 'geometry': m['geometry']}, indent=2))
+        elif a.cmd == 'composite':
+            frame = tuple(int(n) for n in a.size.lower().split('x')) if a.size else None
+            print(json.dumps(passes.composite(a.passes_dir, a.background, a.out, frame), indent=2))
         elif a.cmd == 'delivery-check':
             print(json.dumps(delivery.check(a.manifest), indent=2))
     except spec.SpecError as e:

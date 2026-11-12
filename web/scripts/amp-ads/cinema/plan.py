@@ -1,6 +1,12 @@
 """Shot list (prompt x seeds x framings) -> a GPU-host batch: prompt files,
-plan.json for the guarded batch runner, batch.env and the supervisor."""
+plan.json for the guarded batch runner, batch.env and the supervisor.
+
+A shot may carry `inputs` (control videos or reference images, e.g. the depth
+pass from `cinema passes`) and `args`; both go to the runner named in `model`.
+`{name}` in an arg becomes that input's path on the host."""
 import json
+import os
+import re
 import shlex
 import shutil
 from pathlib import Path
@@ -8,6 +14,7 @@ from pathlib import Path
 from .spec import SLUG, SpecError
 
 HERE = Path(__file__).resolve().parent
+INPUT = re.compile(r'^[a-z][a-z0-9_]*$')
 # LTX-2.5 distilled generates natively at these sizes (multiples of 64).
 FRAMINGS = {
     'portrait': ('Vertical 9:16 composition, the key action in the exact centre of frame. ', 768, 1344),
@@ -46,7 +53,7 @@ def build(shotlist, remote_root, remote_python, remote_outputs):
     if len({s['id'] for s in shots}) != len(shots):
         raise SpecError('shot ids must be unique')
     base = f'{remote_root}/{batch}'
-    plan, prompts = [], {}
+    plan, prompts, files = [], {}, {}
     for seed in seeds:
         for s in shots:
             if seed not in s.get('seeds', seeds):
@@ -56,32 +63,50 @@ def build(shotlist, remote_root, remote_python, remote_outputs):
                 fname = f'{s["id"]}-{framing}.txt'
                 prompts[fname] = (lead + s['prompt'].strip() + ' ' + s.get('extra', '') + ' ' + style).strip()
                 name = f'{prefix}-{s["id"]}-{framing}-{seed}'
+                remote = {}
+                for key, src in (s.get('inputs') or {}).items():
+                    src = str(src).replace('{framing}', framing)
+                    if not INPUT.match(key) or not Path(src).suffix:
+                        raise SpecError(f'{s["id"]}: input names are lowercase words and paths need an extension')
+                    target = f'{s["id"]}-{framing}-{key}{Path(src).suffix}'
+                    files[target] = src
+                    remote[key] = f'{base}/{target}'
+                try:
+                    extra = [str(x).format(**remote) for x in s.get('args', model.get('args', []))]
+                except (KeyError, IndexError, ValueError) as e:
+                    raise SpecError(f'{s["id"]}: args name an input the shot does not have ({e})') from None
                 plan.append({
                     'name': name,
                     'meta': {'shot': s['id'], 'framing': framing, 'seed': seed},
                     'downloads': model['downloads'],
-                    'requiredFiles': [f'{base}/{fname}'],
+                    'requiredFiles': [f'{base}/{fname}', *remote.values()],
                     'command': [remote_python, f'{remote_root}/{model["runner"]}', '--variant', model['variant'],
                                 '--name', name, '--width', str(w), '--height', str(h),
                                 '--frames', str(model['frames']), '--seed', str(seed),
-                                '--prompt-file', f'{base}/{fname}'],
+                                '--prompt-file', f'{base}/{fname}', *extra],
                 })
     if len({j['name'] for j in plan}) != len(plan):
         raise SpecError('duplicate job names')
     env = {'BATCH': batch, 'PREFIX': prefix, 'AMP_SPARK_ROOT': remote_root, 'AMP_SPARK_OUTPUTS': remote_outputs,
            **{k: shotlist.get('guard', {}).get(k, v) for k, v in GUARD_DEFAULTS.items()}}
-    return plan, prompts, env
+    return plan, prompts, env, files
 
 
 def write(shotlist_path, out_dir, remote_root, remote_python, remote_outputs):
     shotlist = json.loads(Path(shotlist_path).read_text())
-    plan, prompts, env = build(shotlist, remote_root, remote_python, remote_outputs)
+    plan, prompts, env, files = build(shotlist, remote_root, remote_python, remote_outputs)
     out = Path(out_dir)
+    sources = {name: (Path(shotlist_path).parent / os.path.expandvars(src)) for name, src in files.items()}
+    missing = [str(p) for p in sources.values() if not p.is_file()]
+    if missing:
+        raise SpecError(f'missing shot inputs: {missing}')
     if (out / 'plan.json').exists():
         raise SpecError(f'{out} already holds a plan; use a new batch name (batches are append-only evidence)')
     out.mkdir(parents=True, exist_ok=True)
     for name, text in prompts.items():
         (out / name).write_text(text + '\n')
+    for name, src in sources.items():
+        shutil.copyfile(src, out / name)
     (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
     (out / 'batch.env').write_text(''.join(f'{k}={shlex.quote(str(v))}\n' for k, v in env.items()))
     (out / 'shotlist.json').write_text(json.dumps(shotlist, indent=2) + '\n')

@@ -45,3 +45,8 @@ Creative direction learned from founder review (October 2026):
 - Product shots must be smooth: frame-by-frame captures, no jerks, no flashes.
 
 8. **Complete paid delivery.** Every concept includes `wide`, `square` and `portrait` at Full HD or higher; `feed` does not replace square. Run `delivery-check` on the exact exports before upload. Review every orientation and follow the shared policy for live eligibility, Excellent ad strength and recommendation resolution within approved budgets.
+
+9. **Mathematics is rendered, never generated.** Geometry, proportions, numbers
+   and labels come from Blender and text cards. A video model may restyle or
+   surround them, guided by the scene's passes; the exact render is composited
+   on top. Each scene's geometry module carries assertions for its theorem.

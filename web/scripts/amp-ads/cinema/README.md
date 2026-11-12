@@ -11,7 +11,9 @@ spec.py      ad spec validation, formats, safe zones, edit timeline
 graph.py     FFmpeg argv builders (video stitch, premix + ducking, loudnorm)
 render.py    cards -> mix -> video per format -> QC, receipts, reuse/supersede
 cards.mjs    Playwright text-card renderer (centred, auto-fit)
-plan.py      shot list -> GPU batch (prompt files, plan.json, batch.env)
+plan.py      shot list -> GPU batch (prompt files, control inputs, plan.json, batch.env)
+passes.py    Blender scene -> beauty/depth/normal/edge/matte passes; exact composite
+scene3d/     geometry.py (tested mathematics), hatbox.py (the Blender scene)
 spark/       supervise.sh (runs on the GPU host), spark.sh (local helper)
 gallery.py   grading page for raw clips; review page for finished ads
 voice.py     take checks, transcript check, optional ElevenLabs REST takes
@@ -205,6 +207,76 @@ follows the [shared YouTube operating policy](../../../../docs/youtube-publishin
 private preparation, reviewed settings, and scheduled release normally about 24 hours later.
 For Meta and Google Ads, upload the 1080 deliverables in each aspect ratio and
 keep every asset group filled.
+
+## Exact 3D scenes with generated looks
+
+Blender decides what is true (geometry, camera, timing); a video model only
+decides how it looks. One scene renders registered passes; the passes guide
+generation on the GPU host; the exact render is composited back on top, so no
+mathematical edge, proportion or label is ever left to a generative model.
+
+```sh
+P=$B/passes/hatbox-wide
+
+# 1. Laptop: render passes at the generator's native size (Blender 4.2+ on PATH or
+#    AMP_BLENDER, or `pip install bpy`). About 15 min on 4 CPU cores; far less on Apple silicon.
+python3 -m cinema passes hatbox "$P" --width 1344 --height 768 --frames 121 --fps 24
+
+# 2. GPU host: a shot list whose shots carry the passes as inputs (below), through the
+#    same guarded queue as every other batch.
+python3 -m cinema plan "$B/control-shotlist.json" "$B/spark-control"
+cinema/spark/spark.sh preflight && cinema/spark/spark.sh launch "$B/spark-control"
+
+# 3. Laptop: exact geometry over the chosen generated clip, then use it as an ad shot.
+python3 -m cinema composite "$P" "$B/clips/<chosen>.mp4" "$B/shots/hatbox-wide.mp4"
+```
+
+`passes` writes `beauty/`, `depth/`, `normal/` PNG frames, `depth.mp4` (near is
+white), `normal.mp4` (camera space), `edge.mp4`, `matte.mp4`, `preview.mp4` (the
+plain render, for comparison) and `passes.json` with hashes and the geometry
+check. Depth and normal are noise-free emission renders of the same mesh and
+camera, so every pass lines up with the beauty frames pixel for pixel. Render
+each framing separately (`--width 768 --height 1344` for portrait): a crop of
+the wide passes is not a portrait composition. For a delivery-size composite,
+render the same scene again at 1920x1080 and pass `--size`; the scene is
+deterministic, so it registers with the clip generated from the smaller passes.
+
+`hatbox` is Archimedes' hat-box theorem: a sphere pushed straight out onto its
+enclosing cylinder, then unrolled into a 2&pi;R by 2R sheet, every band keeping
+its area. `scene3d/geometry.py` is the only source of vertex positions and is
+unit tested (band areas against 2&pi;R&middot;&Delta;z, the unrolling as an isometry). A new
+scene gets its own geometry module, its own assertions and an entry in
+`passes.SCENES`; changing numbers in an existing scene does not make a new proof.
+
+Three ways to combine a scene with generation, all from the same passes:
+
+| Use | How | Exactness |
+| --- | --- | --- |
+| Generated world behind exact geometry | generate a background clip (ordinary shot list), then `composite` | geometry exact |
+| Geometry-guided restyle | shot `inputs` carry `depth.mp4`/`edge.mp4` to a control-capable runner; `composite` the exact beauty over it, or use `matte.mp4` to blend | exact where composited |
+| Generated surface textures | generate one texture per object, bake it onto the UV map in Blender, re-render | geometry exact; texture fixed across frames |
+
+Never generate a texture or restyle per frame with an image model: surfaces
+flicker and crawl. Bake a texture once, or use a video model conditioned on the
+whole control clip.
+
+Control shots add two fields to the shot list. `inputs` maps a name to a file
+(relative to the shot list, `{framing}` allowed); `plan` copies each into the
+batch and lists it in the job's `requiredFiles`. `args` (per shot, or
+`model.args` for the batch) are appended to the runner command, with `{name}`
+replaced by that input's path on the host:
+
+```json
+{"model": {"runner": "<control runner on the host>", "frames": 121, "args": ["--control-video", "{depth}"]},
+ "shots": [{"id": "hatbox", "prompt": "...", "framings": ["wide"],
+            "inputs": {"depth": "passes/hatbox-{framing}/depth.mp4"}}]}
+```
+
+The control runner itself lives on the GPU host beside `ltx-benchmark.py`; its
+flags are whatever that script defines. Installing a new model there is a
+download: do it alone, never alongside generation (AGENTS.md rule 4), and check
+the model's licence permits advertising use before any generated frame reaches
+an ad.
 
 ## Tests
 
