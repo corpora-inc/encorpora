@@ -17,7 +17,8 @@ One model, from one child to a district. A family uses the same classes, sign-in
 ## Adults learn too
 
 - **Every adult can start their own learner with a free allowance.** A parent of a paid child (the account holder or the family's second parent) or a teacher at a licensed school also receives access for their own practice.
-- **An adult learner** is a learner owned by the adult's account, marked adult. It has no birth year: the adult chooses where to start, and always sees their levels.
+- **An adult learner** is a learner owned by the adult's account, marked adult. It has no birth year: the year they give when they start sets where practice starts (an adult's year starts mid-scale), and they always see their levels. They correct it in Account → Learners → Your practice by giving the year again (`POST /api/v1/me/practice/birth-year`).
+- **A child's birth year** sets where their practice starts and the grade their family class shows. The account holder corrects it in Account → Learners, or in setup's "Your children" (`POST /api/v1/family/learners/:id/birth-year`). The class grade follows in every family class that rosters the child; the answers stay, and the level is read again from them with the new start.
 - **In their class,** the adult appears as a separate member, apart from the students. Standings can show them, so a child can overtake their parent or teacher; the class map shows the students only. Grades, seats and rosters never count them.
 
 ### How adult practice works

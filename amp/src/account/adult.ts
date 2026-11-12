@@ -44,6 +44,11 @@ export const ownBirthYear = z
  * the scale, the shortest climb in either direction. */
 export const UNCHOSEN_ADULT_START: AdultStart = "middle-school";
 
+/** Where an account holder's own practice starts from the year they give:
+ * a school-age year's nearest start, and mid-scale for an adult's. */
+export const adultStartFromYear = (birthYear: number, now?: number) =>
+  adultStartFor(birthYear, now) ?? UNCHOSEN_ADULT_START;
+
 export const startPracticeSchema = z.strictObject({
   /** Where they begin. Without one, a school-age birth year sets it
    * (`adultStartFor`) and an adult's starts mid-scale; without either,
@@ -94,7 +99,7 @@ export async function startAdultPractice(
     input.start ??
     (input.birthYear === undefined
       ? undefined
-      : (adultStartFor(input.birthYear) ?? UNCHOSEN_ADULT_START));
+      : adultStartFromYear(input.birthYear));
   return families.transaction(accountId, async (client) => {
     const existing = await client.query<{ id: string }>(
       "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
@@ -136,6 +141,34 @@ export async function startAdultPractice(
     );
     await refreshAdultAccess(client, accountId, learnerId);
     return { learnerId };
+  });
+}
+
+/** A correction to where the adult's own practice starts: the year they
+ * were born, given again, sets it as it did when they began
+ * (`adultStartFromYear`). Their learner still keeps no birth year. Their
+ * answers stay; the level is read again from them with the new start. */
+export const ownStartSchema = z.strictObject({ birthYear: ownBirthYear });
+
+export async function changeOwnStart(
+  families: FamilyRepository,
+  accountId: string,
+  input: z.infer<typeof ownStartSchema>,
+): Promise<{ start: AdultStart }> {
+  if (!ownPracticeAllowed(input.birthYear, new Date().getUTCFullYear()))
+    throw new FamilyError(403, "own_practice_too_young");
+  const start = adultStartFromYear(input.birthYear);
+  return families.transaction(accountId, async (client) => {
+    const updated = await client.query(
+      `UPDATE amp_learners SET starting_band=$2,starting_policy=1,
+         starting_excluded_strands=COALESCE(starting_excluded_strands,'{}'::text[])
+       WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL
+       RETURNING id`,
+      [accountId, start],
+    );
+    if (!updated.rowCount)
+      throw new FamilyError(404, "adult_practice_not_started");
+    return { start };
   });
 }
 

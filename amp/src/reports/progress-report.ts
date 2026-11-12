@@ -42,15 +42,7 @@ export type ProgressReportInput = {
 };
 
 /** Where an adult chose to begin, in words. */
-export const adultStartNames: Record<AdultStart, string> = {
-  counting: "Counting",
-  elementary: "Elementary",
-  "middle-school": "Middle school",
-  "algebra-1": "Algebra",
-  geometry: "Geometry",
-  "algebra-2": "Algebra 2",
-  precalculus: "Precalculus",
-};
+export { adultStartNames } from "../learning/starting-point";
 
 type Estimate = { level: number; sd: number };
 const fixed = (value: number) => value.toFixed(1);

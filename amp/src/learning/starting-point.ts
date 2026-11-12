@@ -13,6 +13,16 @@ export const adultStarts = [
   "precalculus",
 ] as const;
 export type AdultStart = (typeof adultStarts)[number];
+/** Where an adult's own practice starts, in words. */
+export const adultStartNames: Record<AdultStart, string> = {
+  counting: "Counting",
+  elementary: "Elementary",
+  "middle-school": "Middle school",
+  "algebra-1": "Algebra",
+  geometry: "Geometry",
+  "algebra-2": "Algebra 2",
+  precalculus: "Precalculus",
+};
 export type StartingChoice = StartingBand | AdultStart;
 /** The youngest age at which an account holder practices as themselves;
  * anyone younger starts with a parent. A birth year alone can't rule out a

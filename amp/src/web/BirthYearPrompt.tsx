@@ -34,6 +34,8 @@ export const gradeOrder = [
 type Props = {
   name: string;
   birthYear: number | null;
+  /** Offer "Adult" after the school years (the default). */
+  adult?: boolean;
   busy: boolean;
   saveBirthYear: (year: number) => void;
   cancel?: () => void;
@@ -80,13 +82,15 @@ export function BirthYearPrompt(props: Props) {
               {year}
             </button>
           ))}
-          <button
-            className="adult"
-            disabled={props.busy}
-            onClick={() => props.saveBirthYear(thisYear - 25)}
-          >
-            Adult
-          </button>
+          {props.adult !== false && (
+            <button
+              className="adult"
+              disabled={props.busy}
+              onClick={() => props.saveBirthYear(thisYear - 25)}
+            >
+              Adult
+            </button>
+          )}
         </div>
         {props.embedded?.footer}
         {props.cancel && (

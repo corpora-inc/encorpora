@@ -4,7 +4,13 @@ import { ownPracticeResponse } from "../../../account/adult-contracts";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
-import { ownPracticeKey, queryClient, refreshMe } from "../../lib/query";
+import {
+  invalidateAccount,
+  ownPracticeKey,
+  queryClient,
+  refreshMe,
+} from "../../lib/query";
+import { adultStarts } from "../../../learning/starting-point";
 import { rememberPlace } from "../onboarding/place-memory";
 
 /** The adult's own record. Under the account's key, so any change to the
@@ -53,5 +59,20 @@ export function useStartOwnPractice(session: AuthSession) {
       });
       return learnerId;
     },
+  });
+}
+
+/** Corrects where the adult's own practice starts, from the year they were
+ * born, given again. The account's one store refreshes everywhere: the start
+ * in Account → Learners, the level on `/me` and in practice. */
+export function useChangeOwnStart(session: AuthSession) {
+  return useMutation({
+    mutationFn: (birthYear: number) =>
+      request(
+        "/me/practice/birth-year",
+        z.object({ start: z.enum(adultStarts) }),
+        { token: session.token, body: { birthYear } },
+      ),
+    onSuccess: () => invalidateAccount(session.accountId),
   });
 }

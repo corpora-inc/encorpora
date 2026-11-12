@@ -294,10 +294,13 @@ test(
         }
         const moved = (
           await f.db.query(
-            "SELECT account_id,name,adult,birth_year,name_pending,label_number FROM amp_learners WHERE id=$1",
+            "SELECT account_id,name,adult,birth_year,name_pending,label_number,starting_band,starting_policy FROM amp_learners WHERE id=$1",
             [trial.learnerId],
           )
         ).rows[0];
+        // The year it gave becomes where their practice starts, as the
+        // starter's "for myself" does: an adult's mid-scale, not the scale's
+        // default once the year is gone (Q-57).
         assert.deepEqual(moved, {
           account_id: account,
           name: "Casey Fixture",
@@ -305,6 +308,8 @@ test(
           birth_year: null,
           name_pending: false,
           label_number: null,
+          starting_band: "middle-school",
+          starting_policy: 1,
         });
         assert.deepEqual(await counts(f.db, trial.learnerId), before);
         assert.equal(

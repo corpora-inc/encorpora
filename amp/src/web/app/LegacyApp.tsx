@@ -359,8 +359,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // A school student's level starts from their grade, and an adult's from
   // where they chose to begin, so neither has a prompt.
   const birthYearKnown = learner?.birthYear != null || student || ownLearner;
+  // An adult's own practice (and a practice profile) has no birth year: it
+  // starts where they chose, corrected in Account → Learners.
   const changingBirthYear =
-    !student && route.location.pathname === "/profile/birth-year";
+    !student &&
+    !ownLearner &&
+    route.location.pathname === "/profile/birth-year";
   // On the web the birth year belongs to the Overview it is changed from.
   const setChangingBirthYear = (open: boolean) =>
     navigate(open ? "/profile/birth-year" : nativeRuntime ? "/" : "/overview");
@@ -2123,7 +2127,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 problem ? setExploring(false) : void action(() => loadBatch(""))
               }
               changeBirthYear={
-                student ? undefined : () => setChangingBirthYear(true)
+                student || ownLearner
+                  ? undefined
+                  : () => setChangingBirthYear(true)
               }
               freeLeft={freeLeft(learnerEntry)}
             />
@@ -2133,6 +2139,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             key={learner.id}
             name={learner.name}
             birthYear={learner.birthYear ?? null}
+            // Correcting a child's year offers school years only: an adult
+            // practices on their own account (Q-57).
+            adult={learner.birthYear == null}
             busy={busy}
             cancel={
               learner.birthYear == null
