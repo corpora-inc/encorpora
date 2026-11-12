@@ -22,23 +22,18 @@
  * Screenshots of the path, at 1280 and 390, go to artifacts/close-context/.
  */
 import assert from "node:assert/strict";
-import { spawn } from "node:child_process";
-import { randomBytes, randomUUID } from "node:crypto";
-import { mkdir, open as openFile } from "node:fs/promises";
-import pg from "pg";
+import { mkdir } from "node:fs/promises";
 import {
   chromium as rawChromium,
   type BrowserContext,
   type Page,
 } from "playwright";
-import { createServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
+import { startPersonaStack } from "./persona-stack";
 import {
   PERSONA_PASSPHRASE,
   personaEmail,
 } from "../src/web/features/dev/persona-list";
-import { migrate } from "./migrate";
-import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -48,85 +43,13 @@ const argument = (name: string) => {
 const OUT = argument("out") ?? "artifacts/close-context";
 const stack = argument("origin")
   ? null
-  : await startStack(Number(argument("port") ?? 4936));
+  : await startPersonaStack({
+      webPort: Number(argument("port") ?? 4936),
+      personas: ["teacher"],
+      name: "close_ui",
+      out: OUT,
+    });
 const origin = argument("origin") ?? stack!.origin;
-
-/** The real API on a fresh schema, Vite in front of it, the teacher seeded. */
-async function startStack(webPort: number) {
-  const url = process.env.AMP_TEST_DATABASE_URL;
-  if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
-  assertTestDatabaseTarget(url);
-  const apiPort = webPort + 1;
-  const origin = `http://127.0.0.1:${webPort}`;
-  const schema = `amp_close_ui_${randomUUID().replaceAll("-", "")}`;
-  const admin = new pg.Pool({ connectionString: url, max: 1 });
-  await admin.query(`CREATE SCHEMA ${schema}`);
-  const scoped = new URL(url);
-  scoped.searchParams.set("options", `-c search_path=${schema}`);
-  await migrate(scoped.href);
-  await mkdir(OUT, { recursive: true });
-  const log = await openFile(`${OUT}/api.log`, "w");
-  const api = spawn("npx", ["tsx", "src/server/main.ts"], {
-    env: {
-      ...process.env,
-      AMP_DATABASE_URL: scoped.href,
-      AMP_AUTH_MODE: "accounts",
-      AMP_HOSTED_PILOT_READY: "true",
-      AMP_ACCOUNTS_URL: origin,
-      // A fresh secret each run: nothing here outlives the process.
-      AMP_ACCOUNTS_SECRET: randomBytes(32).toString("hex"),
-      AMP_PORT: String(apiPort),
-      AMP_HOST: "127.0.0.1",
-      NODE_ENV: "development",
-    },
-    stdio: ["ignore", log.fd, log.fd],
-    // Its own process group, so stopping it stops npx's children too.
-    detached: true,
-  });
-  for (let i = 0; ; i++) {
-    const up = await fetch(`http://127.0.0.1:${apiPort}/api/v1/auth-config`)
-      .then((response) => response.ok)
-      .catch(() => false);
-    if (up) break;
-    if (i > 120 || api.exitCode !== null)
-      throw new Error(`The API did not start: ${OUT}/api.log`);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  }
-  const vite = await createServer({
-    cacheDir: "node_modules/.vite-close-context",
-    server: {
-      host: "127.0.0.1",
-      port: webPort,
-      strictPort: true,
-      proxy: { "/api": `http://127.0.0.1:${apiPort}` },
-    },
-  });
-  await vite.listen();
-  // Asynchronously: Vite answers the seeder's requests from this process.
-  const seeder = spawn("npx", ["tsx", "scripts/design-personas.ts"], {
-    env: {
-      ...process.env,
-      AMP_DATABASE_URL: scoped.href,
-      AMP_PREVIEW_ORIGIN: origin,
-      AMP_PERSONAS: "teacher",
-    },
-    stdio: ["ignore", "inherit", "inherit"],
-  });
-  const code = await new Promise<number | null>((resolve) =>
-    seeder.on("exit", resolve),
-  );
-  if (code !== 0) throw new Error(`Seeding the teacher failed (${code})`);
-  return {
-    origin,
-    async stop() {
-      await vite.close();
-      if (api.pid && api.exitCode === null) process.kill(-api.pid, "SIGTERM");
-      await log.close();
-      await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);
-      await admin.end();
-    },
-  };
-}
 
 type Chain = {
   /** The class map, a student's sheet over it, their answer, its lesson,
