@@ -15,7 +15,7 @@ export const PLACES = [
 ] as const;
 export type Place = (typeof PLACES)[number];
 export type Kind = "square" | "rod" | "flat";
-export type Piece = { id: string; kind: Kind; ink: string; /** The piece it was cut from, when a split made it. */ from?: string };
+export type Piece = { id: string; kind: Kind; ink: string; /** The piece it was cut from, when a split made it. */ from?: string; /** The ten pieces it was fused from, when a join made it. */ of?: string[] };
 export type State = Record<string, Piece[]>;
 /** Bottom-left corner and size, in chart units, y up. */
 export type Box = { x: number; y: number; w: number; h: number };
@@ -102,6 +102,8 @@ export type ChartOpts = {
   /** Where the name row and the digit row sit, in units below the baseline. */
   headY?: number;
   digitY?: number;
+  /** Room kept above the baseline (units) for a pile this chart will hold later, so the chart is one height in every state. */
+  top?: number;
 };
 
 /** How many units a place's name needs under its column when one unit is `pxPerUnit` pixels wide (30 px spaced capitals). */
@@ -122,7 +124,7 @@ export function layoutChart(places: readonly Place[], state: State, opts: ChartO
     x += colW + COL_GAP;
   }
   const width = x - COL_GAP;
-  const top = Math.max(10, ...columns.map((c) => c.pile.h));
+  const top = Math.max(10, opts.top ?? 0, ...columns.map((c) => c.pile.h));
   const ones = columns.find((c) => c.place === "ones"), tenths = columns.find((c) => c.place === "tenths");
   const pointX = opts.point !== false && ones && tenths ? (ones.x1 + tenths.x0) / 2 : undefined;
   const digitY = opts.digitY ?? DIGIT_Y;
@@ -230,10 +232,45 @@ export function tiles(from: Box, kind: Kind): Box[] {
   return Array.from({ length: 10 }, (_, j) => (kind === "rod" ? { x: from.x, y: from.y + j, w: 1, h: 1 } : { x: from.x + j, y: from.y, w: 1, h: 10 }));
 }
 
+export type Join = { parts: Piece[]; made: Piece; state: State };
+/**
+ * Fuse the ten leftmost pieces of a place into one of the place to its left,
+ * which joins that pile at its right: the reverse of `splitOne`. The amount
+ * never changes; the pieces do.
+ */
+export function joinTen(places: readonly Place[], state: State, place: Place, seq: Record<string, number>): Join {
+  const i = places.indexOf(place);
+  const up = places[i - 1];
+  if (i < 0 || !up) throw new Error(`blocks: to join the ${place} the chart needs the place to its left.`);
+  const list = state[place] ?? [];
+  if (list.length < 10) throw new Error(`blocks: a join fuses ten pieces, and the ${place} pile holds ${list.length} at that moment.`);
+  const kind = kindOf(up, unitPlace(places));
+  const parts = list.slice(0, 10);
+  const chart = parts[0]!.id.split(".").slice(0, 2).join(".");
+  const made: Piece = { id: `${chart}.${up}.${++seq[up]!}`, kind, ink: parts[0]!.ink, of: parts.map((p) => p.id) };
+  return { parts, made, state: { ...state, [place]: list.slice(10), [up]: [...(state[up] ?? []), made] } };
+}
+/**
+ * A join's three moves, as fractions of its time. The ten pieces close up into
+ * the shape of the piece they make and fuse (`fuse`); that piece travels to its
+ * pile and lands as the join ends (`land`); the pieces left behind settle into
+ * the room it left, starting once it is clear of them (`settle`). Pieces
+ * already in the pile it joins make room while the ten close up. `rise` is how
+ * far along its way the fused piece starts to climb to a higher row: it leaves
+ * its own column along the baseline first.
+ */
+export const JOIN = { fuse: 0.4, land: 1, settle: 0.7, rise: 0.45 };
+const overlap = (a: Box, b: Box) => Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > 1e-6 && Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > 1e-6;
+
 const ease = (u: number) => { u = u < 0 ? 0 : u > 1 ? 1 : u; return u * u * u * (u * (u * 6 - 15) + 10); };
 const lerpBox = (a: Box, b: Box, u: number): Box => ({ x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, w: a.w + (b.w - a.w) * u, h: a.h + (b.h - a.h) * u });
 
-export type Transition = { t0: number; dur: number; from: Piece; born: Piece[] };
+/**
+ * One trade: `from` is the one piece of the higher place and `born` the ten of
+ * the place below it. A split cuts `from` into `born`; a join (`join: true`)
+ * fuses `born` into `from`.
+ */
+export type Transition = { t0: number; dur: number; from: Piece; born: Piece[]; join?: boolean };
 /**
  * A chart through time: its states in order, with the moment each trade
  * starts. Positions, counts and the pieces that exist are all functions of t.
@@ -244,6 +281,8 @@ export class BlocksModel {
   transitions: Transition[] = [];
   seq: Record<string, number> = {};
   cuts: { t0: number; dur: number; axis: "v" | "h" }[] = [];
+  /** Where each join's ten pieces close up, worked out from the layouts when first asked for. */
+  private gathers = new Map<number, Box>();
   /** The least width of each column, from the room its name needs. */
   minCol: Record<string, number> = {};
   /** The name row and the digit row, in units below the baseline, set from the chart's scale. */
@@ -269,7 +308,12 @@ export class BlocksModel {
     for (const place of this.places) {
       colW[place] = Math.max(COL_MIN, this.minCol[place] ?? 0, ...this.states.map((s) => layoutPile(s[place] ?? [], this.opts.squares).w));
     }
-    this.layouts = this.states.map((s) => layoutChart(this.places, s, { ...this.opts, colW, headY: this.headY, digitY: this.digitY }));
+    // a join can leave a pile taller than any before it: the chart keeps that room from its first state
+    const top = this.transitions.some((tr) => tr.join)
+      ? Math.max(...this.states.flatMap((s) => this.places.map((place) => layoutPile(s[place] ?? [], this.opts.squares).h)))
+      : undefined;
+    this.layouts = this.states.map((s) => layoutChart(this.places, s, { ...this.opts, colW, headY: this.headY, digitY: this.digitY, top }));
+    this.gathers.clear();
   }
   /** Give each column at least the room its name needs, and put the name and digit rows at their pixel offsets; `pxPerUnit` is the chart's scale when pulled back. */
   fitHeaders(pxPerUnit: number) {
@@ -301,6 +345,45 @@ export class BlocksModel {
     }
     this.relayout();
   }
+  /** Add `n` joins of ten pieces each, one after another: the first at t0, each taking `each` seconds. */
+  join(place: Place, n: number, t0: number, each: number) {
+    try {
+      for (let k = 0; k < n; k++) {
+        const cur = this.states[this.states.length - 1]!;
+        const j = joinTen(this.places, cur, place, this.seq);
+        this.states.push(j.state);
+        this.transitions.push({ t0: t0 + k * each, dur: each, from: j.made, born: j.parts, join: true });
+      }
+    } finally {
+      // a run that stops short (fewer than ten left) keeps the joins it made
+      this.relayout();
+    }
+  }
+  /**
+   * Where join `j`'s ten pieces close up: a box the shape of the piece they
+   * make, standing on their own row at the end nearest the place it is going
+   * to, so nothing of its own pile is in its way. It stands further that way
+   * only when a piece that stays behind would otherwise be under it.
+   */
+  gatherBox(j: number): Box {
+    const known = this.gathers.get(j);
+    if (known) return known;
+    const tr = this.transitions[j]!;
+    const at = tr.t0 - 1e-6;
+    const where = (p: Piece) => this.positionAt(p.id, at) ?? this.layouts[j]!.pieces.get(p.id)!;
+    const boxes = tr.born.map(where);
+    const ids = new Set(tr.born.map((p) => p.id));
+    const stay = (this.states[j]![this.placeOf(tr.born[0]!.id)] ?? []).filter((p) => !ids.has(p.id)).map(where);
+    const x0 = Math.min(...boxes.map((b) => b.x)), y = Math.min(...boxes.map((b) => b.y));
+    const [w, h] = SIZE[tr.from.kind];
+    const air = GAP.piece / 2;
+    const clear = (x: number) => !stay.some((o) => overlap({ x: x - air, y, w: w + 2 * air, h }, o));
+    let x = x0;
+    for (let d = 0; d <= w + 1; d += 0.25) if (clear(x0 - d)) { x = x0 - d; break; }
+    const box = { x, y, w, h };
+    this.gathers.set(j, box);
+    return box;
+  }
   /** Draw the unit lines of every block as a cut: vertical lines for the place one down from the flat, horizontal for the square. */
   cut(into: Place, t0: number, dur: number) {
     const kind = kindOf(into, this.unit);
@@ -321,6 +404,29 @@ export class BlocksModel {
       const tr = this.transitions[j]!;
       if (t < tr.t0) break;
       const target = this.layouts[j + 1]!.pieces.get(id);
+      if (tr.join) {
+        const u = (t - tr.t0) / tr.dur;
+        const k = tr.born.findIndex((p) => p.id === id);
+        if (k >= 0) {
+          // one of the ten: it closes up into the piece they make, and at the fuse it is that piece
+          if (!pos || u >= JOIN.fuse) return undefined;
+          return lerpBox(pos, tiles(this.gatherBox(j), tr.from.kind)[k]!, ease(u / JOIN.fuse));
+        }
+        if (id === tr.from.id) {
+          // the piece they make: it exists from the fuse, and travels to where its pile keeps it
+          if (u < JOIN.fuse) return undefined;
+          const g = this.gatherBox(j), home = target!, v = (u - JOIN.fuse) / (JOIN.land - JOIN.fuse);
+          // along the baseline out of its own column, then up to its row if its place is a higher one
+          pos = v >= 1 ? home : { x: g.x + (home.x - g.x) * ease(v), y: g.y + (home.y - g.y) * ease((v - JOIN.rise) / (1 - JOIN.rise)), w: home.w, h: home.h };
+          continue;
+        }
+        if (!target) { if (pos) return undefined; continue; }
+        if (!pos) continue;
+        // the pile it joins makes room first; the pieces left behind settle once it has gone
+        const [a, b] = this.placeOf(id) === this.placeOf(tr.born[0]!.id) ? [JOIN.settle, 1] : [0, JOIN.fuse];
+        pos = lerpBox(pos, target, ease((u - a) / (b - a)));
+        continue;
+      }
       // gone (cut up), or not born yet
       if (!target) { if (pos) return undefined; continue; }
       const u = ease((t - tr.t0) / tr.dur);
@@ -335,10 +441,10 @@ export class BlocksModel {
     }
     return pos;
   }
-  /** The state in force at t: a trade counts from its midpoint. */
+  /** The state in force at t: a split counts from its midpoint, a join from the moment its motion ends. */
   stateIndexAt(t: number) {
     let i = 0;
-    for (const tr of this.transitions) if (t >= tr.t0 + tr.dur * 0.5) i++;
+    for (const tr of this.transitions) if (t >= tr.t0 + tr.dur * (tr.join ? 1 : 0.5)) i++;
     return i;
   }
   countAt(place: Place, t: number) { return (this.states[this.stateIndexAt(t)]![place] ?? []).length; }
@@ -349,7 +455,20 @@ export class BlocksModel {
   }
   /** The pile's box at t, from its pieces as they stand. */
   pileAt(place: Place, t: number): Box | undefined {
-    const boxes = (this.states[this.states.length - 1]![place] ?? []).concat(this.states[0]![place] ?? [])
+    // through a join, ten pieces of one pile become one piece of another: the two piles' boxes glide
+    // from the pile before to the pile after, so a count or a label riding on one never jumps
+    for (let j = 0; j < this.transitions.length; j++) {
+      const tr = this.transitions[j]!;
+      if (!tr.join || t < tr.t0 || t > tr.t0 + tr.dur) continue;
+      if (place !== this.placeOf(tr.from.id) && place !== this.placeOf(tr.born[0]!.id)) continue;
+      const still = (i: number) => { const c = this.layouts[i]!.columns.find((x) => x.place === place); return c && c.count ? c.pile : undefined; };
+      const a = still(j), b = still(j + 1);
+      if (!a || !b) return a ?? b;
+      // the pile that gains a piece opens up as it comes along the baseline, before it climbs; the pile that lost ten closes after it has gone
+      const [from, to] = place === this.placeOf(tr.from.id) ? [JOIN.fuse, JOIN.fuse + (JOIN.land - JOIN.fuse) * JOIN.rise] : [JOIN.settle, 1];
+      return lerpBox(a, b, ease(((t - tr.t0) / tr.dur - from) / (to - from)));
+    }
+    const boxes = this.pieces().filter((p) => this.placeOf(p.id) === place)
       .map((p) => this.positionAt(p.id, t)).filter((b): b is Box => !!b);
     if (!boxes.length) return undefined;
     const x0 = Math.min(...boxes.map((b) => b.x)), x1 = Math.max(...boxes.map((b) => b.x + b.w));

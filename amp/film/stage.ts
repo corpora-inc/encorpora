@@ -45,6 +45,8 @@ const ease = (u: number) => {
 const EMPH_GROW = 0.15;
 const EMPH_IN = 0.2;
 const EMPH_OUT = 0.22;
+/** How far a lit base-ten block's fill deepens toward the ink, in percent. */
+const LIT_FILL = 22;
 /** Air a grown highlight keeps between itself and a label it did not already cover. */
 const LABEL_AIR = 8;
 /**
@@ -156,12 +158,15 @@ const FILL: Record<string, string> = {
 const DEFAULT_DUR: Record<string, number> = {
   glide: 1.4, overview: 1.6, recap: 0.5,
   show: 0.4, hide: 0.35, draw: 0.8, highlight: 0.3, move: 1.2, turn: 2.2, flip: 2.2, slide: 1.1, view: 1.3,
-  cut: 1.0, split: 0.9, zoom: 1.4, given: 0.7,
+  cut: 1.0, split: 0.9, join: 1.4, zoom: 1.4, given: 0.7,
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
   strike: 0.35,
 };
+
+/** The longest one trade of base-ten blocks may take, when a screenplay asks for a slow one. */
+const TRADE_MAX = 2.5;
 
 /** `words`: later moments of the same action, by the words that name them (a stack column's trade and its written digit). */
 type Entry = {
@@ -291,7 +296,7 @@ type BlocksView = {
   p: Blocks;
   pointLine: SVGElement;
   point: SVGElement;
-  pieces: Map<string, { body: SVGElement; lines: SVGElement; overlays: Map<string, SVGElement> }>;
+  pieces: Map<string, { body: SVGElement; lines: SVGElement; ring: SVGElement; overlays: Map<string, SVGElement> }>;
   heads: Map<Place, HTMLElement>;
   digits: Map<Place, HTMLElement>;
   counts: Map<Place, HTMLElement>;
@@ -721,6 +726,8 @@ class GeoStage {
   parts: { p: Part; el: SVGElement; shadow?: SVGElement; side?: SVGElement; sideCut?: SVGElement; html?: HTMLElement; extra?: SVGElement[]; extraHtml?: HTMLElement[]; blocks?: BlocksView; table?: TableView; mosaic?: MosaicView; bar?: BarView; a0: number }[] = [];
   barCuts = new Map<string, BarCut[]>();
   barShades = new Map<string, BarShade[]>();
+  /** What an action asked for that the figure cannot do; the film reports each under its shot. */
+  issues: string[] = [];
   /** Each place-value chart's model, by the part's id. */
   blocks = new Map<string, BlocksModel>();
   /** Things to count: the plan, each group's places, and each thing's elements (in one layer above the other parts). */
@@ -1081,9 +1088,19 @@ class GeoStage {
       const m = this.blockModel(a.target, "split");
       const parts = a.target.split(".");
       if (parts.length !== 3 || parts[1] !== m.rowId) throw new Error(`split "${a.target}": name a pile, like ${m.chartId}.${m.rowId}.tenths.`);
-      const n = a.n ?? 1, each = Math.min(0.9, e.dur), step = n > 1 ? (a.dur === undefined ? 0.45 : Math.max(0, (e.dur - each) / (n - 1))) : 0;
+      // one split may be slowed with `dur`; a run of `n` keeps its quick cuts and spends `dur` on the whole run
+      const n = a.n ?? 1, each = Math.min(n > 1 ? 0.9 : TRADE_MAX, e.dur), step = n > 1 ? (a.dur === undefined ? 0.45 : Math.max(0, (e.dur - each) / (n - 1))) : 0;
       if (a.dur === undefined) e.dur = each + step * (n - 1);
       m.split(parts[2] as Place, n, e.t0, each, step);
+    } else if (a.do === "join") {
+      const m = this.blockModel(a.target, "join");
+      const parts = a.target.split(".");
+      if (parts.length !== 3 || parts[1] !== m.rowId) throw new Error(`join "${a.target}": name a pile, like ${m.chartId}.${m.rowId}.tens.`);
+      // each join finishes before the next begins; `dur` is the whole run
+      const n = a.n ?? 1, each = Math.min(TRADE_MAX, a.dur === undefined ? e.dur : e.dur / n);
+      e.dur = each * n;
+      // a join that cannot be made is left out and reported: the chart still draws, so the author sees what is there
+      try { m.join(parts[2] as Place, n, e.t0, each); } catch (err) { this.issues.push(`join "${a.target}": ${(err as Error).message.replace(/^blocks: /, "")}`); }
     } else if (a.do === "zoom") {
       const p = this.geo.parts.find((x) => "blocks" in x && x.id === a.target.split(".")[0]) as Blocks | undefined;
       if (!p) throw new Error(`zoom "${a.target}": no blocks part is named ${a.target.split(".")[0]}.`);
@@ -1319,7 +1336,8 @@ class GeoStage {
       const pieces: BlocksView["pieces"] = new Map();
       const fadeIds = [...this.fades.keys()];
       for (const piece of model.pieces()) {
-        const body = svg("path", "film-block"), lines = svg("path", "film-block-lines");
+        const body = svg("path", "film-block"), lines = svg("path", "film-block-lines"), ring = svg("path", "film-block-ring film-em");
+        body.dataset.piece = piece.id;
         g.appendChild(body);
         const overlays = new Map<string, SVGElement>();
         // a strip or a cell of this piece that some beat highlights gets its own gold overlay
@@ -1331,20 +1349,24 @@ class GeoStage {
           overlays.set(sub, ov);
         }
         g.appendChild(lines);
-        pieces.set(piece.id, { body, lines, overlays });
+        // a light is drawn inside the piece, over its unit lines: it never reaches a neighbour
+        g.appendChild(ring);
+        pieces.set(piece.id, { body, lines, ring, overlays });
       }
       const heads = new Map<Place, HTMLElement>(), digits = new Map<Place, HTMLElement>(), counts = new Map<Place, HTMLElement>();
       const { digit, placeholder } = model.digits;
       for (const place of model.places) {
         const h = div("film-label film-blocks-head", this.labels);
         h.textContent = place.replace("-", " ");
+        h.dataset.place = place;
         heads.set(place, h);
         if (p.digits) {
           const d = div(`film-label size-l film-blocks-digit${placeholder[place] ? " pad" : ""}`, this.labels);
           d.innerHTML = tex(String(digit[place]));
+          d.dataset.digit = place;
           digits.set(place, d);
         }
-        if (p.counts) counts.set(place, div("film-label size-l film-blocks-count", this.labels));
+        if (p.counts) { const n = div("film-label size-l film-blocks-count", this.labels); n.dataset.count = place; counts.set(place, n); }
       }
       const labels = (p.labels ?? []).map((spec) => {
         const el = div(`film-label size-${spec.size ?? "m"}`, this.labels);
@@ -2475,11 +2497,13 @@ class GeoStage {
     for (const piece of m.pieces()) {
       const el = v.pieces.get(piece.id)!;
       const box = m.positionAt(piece.id, t);
-      const hideAll = () => { el.body.style.display = "none"; el.lines.style.display = "none"; for (const ov of el.overlays.values()) ov.style.display = "none"; };
+      const hideAll = () => { el.body.style.display = "none"; el.lines.style.display = "none"; el.ring.style.display = "none"; for (const ov of el.overlays.values()) ov.style.display = "none"; };
       if (!box) { hideAll(); continue; }
       const own = this.chainState(prefixes(piece.id), startOf(piece.id), t);
       let o = own.o;
       if (piece.from) o = Math.max(o, this.chainState(prefixes(piece.from), startOf(piece.from), t).o);
+      // and a piece fused from ten is as visible as they were
+      for (const part of piece.of ?? []) o = Math.max(o, this.chainState(prefixes(part), startOf(part), t).o);
       o *= chartO;
       pieceO.set(piece.id, o);
       if (o < 0.002) { hideAll(); continue; }
@@ -2488,11 +2512,22 @@ class GeoStage {
       const w = box.w * s, h = box.h * s;
       el.body.setAttribute("d", roundRect(tl[0], tl[1], w, h, 0.07 * s));
       const base = INK[piece.ink] ?? INK.accent!;
-      el.body.style.fill = base;
-      el.body.style.stroke = own.em > 0.02 ? emphInk("var(--color-figure-ink)", own.em) : "var(--color-figure-ink)";
+      // A lit piece keeps its size and its place: a gold outline drawn inside its own edge, and a deeper fill.
+      // Every piece of a lit pile lights the same way, so none pushes into the piece beside it.
+      const lit = own.em > 0.02 ? clamp(own.em) : 0;
+      el.body.style.fill = lit ? `color-mix(in srgb, ${base} ${Math.round(100 - LIT_FILL * lit)}%, var(--color-figure-ink))` : base;
+      el.body.style.stroke = lit ? emphInk("var(--color-figure-ink)", own.em) : "var(--color-figure-ink)";
       el.body.style.strokeWidth = String(bodyW);
-      if (own.em > 0.02) { this.markEm(el.body, own.em); this.markEm(el.lines, own.em); }
       el.body.style.opacity = String(o);
+      if (lit) {
+        // thin enough on a rod or a cube that its own color still shows through the middle
+        const rw = Math.min(Math.max(3.5, 0.2 * s), 7, 0.2 * Math.min(w, h)) * lit;
+        el.ring.style.display = "";
+        el.ring.setAttribute("d", roundRect(tl[0] + rw / 2, tl[1] + rw / 2, w - rw, h - rw, Math.max(0, 0.07 * s - rw / 2)));
+        el.ring.style.strokeWidth = rw.toFixed(2);
+        el.ring.style.opacity = String(o);
+        el.body.dataset.lit = lit.toFixed(3);
+      } else { el.ring.style.display = "none"; delete el.body.dataset.lit; }
       // unit lines: the cuts that make a flat ten rods and a rod ten squares
       let d = "";
       const cell = s * (box.h / (piece.kind === "square" ? 1 : 10));
@@ -2541,10 +2576,13 @@ class GeoStage {
       if (dcell) {
         const ph = m.digits.placeholder[c.place];
         const own = this.chainState([`${p.id}.digit.${c.place}`], false, t);
-        const o = ph ? own.o * frameO : rowO;
+        // digits that wait come in one at a time on their own `show`, or all at once on the numeral's
+        const o = p.digits === "later" ? this.chainState([`${p.id}.digit.${c.place}`, `${p.id}.digits`], false, t).o * frameO : ph ? own.o * frameO : rowO;
         const em = Math.max(own.em, this.chainState([`${p.id}.digits`], false, t).em);
         dcell.style.display = o < 0.002 ? "none" : "";
-        place(dcell, map([c.cx, m.digitY]), "c", 0, o, em);
+        // the label is placed as at rest; a light changes only the glyph inside it
+        place(dcell, map([c.cx, m.digitY]), "c", 0, o, 0);
+        lightDigit(dcell, em, ph ? "var(--color-figure-accent)" : "var(--color-figure-ink)");
       }
       const count = v.counts.get(c.place);
       if (count) {
@@ -2598,6 +2636,34 @@ function emphInk(ink: string, em: number): string {
   if (em <= 0.001 || ink === "none") return ink;
   const keep = Math.round((1 - Math.min(1, em)) * 100);
   return `color-mix(in srgb, ${ink} ${keep}%, var(--color-figure-gold))`;
+}
+/**
+ * A lit digit of a place-value chart turns gold, thickens, and grows a little
+ * from its own baseline, inside the room its label already has. The label's
+ * box does not change, so its foot, the digits beside it and the row all stay
+ * where they are; the stroke thickens the glyph without widening it.
+ */
+function lightDigit(el: HTMLElement, em: number, ink: string) {
+  const glyph = el.querySelector<HTMLElement>(".base");
+  if (em <= 0.02) {
+    el.style.color = "";
+    el.style.removeProperty("-webkit-text-stroke");
+    if (glyph) glyph.style.transform = "";
+    delete el.dataset.lit;
+    return;
+  }
+  const lit = clamp(em);
+  el.style.color = emphInk(ink, lit);
+  el.style.setProperty("-webkit-text-stroke", `${(0.028 * lit).toFixed(4)}em currentColor`);
+  el.dataset.lit = lit.toFixed(3);
+  if (!glyph) return;
+  // KaTeX's strut stands on the baseline; where that is in the glyph's box does not change with the scale
+  if (!el.dataset.base) {
+    const strut = glyph.querySelector<HTMLElement>(".strut"), box = glyph.getBoundingClientRect();
+    if (strut && box.height > 0.5) el.dataset.base = (((strut.getBoundingClientRect().bottom - box.top) / box.height) * 100).toFixed(2);
+  }
+  glyph.style.transformOrigin = `50% ${el.dataset.base ?? "100"}%`;
+  glyph.style.transform = `scale(${(1 + EMPH_GROW * lit).toFixed(4)})`;
 }
 function place(el: HTMLElement, at: P, dir: string, far: number, o: number, em: number) {
   const d = DIRS[dir]!; const gap = LABEL_GAP * far;
@@ -3657,6 +3723,7 @@ export class Film {
         const host = div("film-fit", card);
         if (shot.figure && "parts" in shot.figure) geo = new GeoStage(host, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
         else mount = mountFigure?.(host, shot, list);
+        for (const m of geo?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
       }
       this.shots.push({ el, t0, t1: Infinity, geo, list, extern: mount?.seek, mount, hasFig, pose: null, fill: 0 });
     });
@@ -3688,7 +3755,7 @@ export class Film {
    * place. Between shots the pose eases from the previous shot's frame.
    */
   lockFrames() {
-    const motion = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "draw", "partition", "shade", "cut"]);
+    const motion = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "join", "draw", "partition", "shade", "cut"]);
     for (const s of this.shots) {
       const root = s.el.querySelector<HTMLElement>(".film-fit");
       if (!root || (!s.geo && !s.extern)) continue;
