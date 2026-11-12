@@ -43,6 +43,28 @@
       }
     ]
   },
+  "add-with-regrouping": {
+    "id": "add-with-regrouping--sa",
+    "version": "257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd",
+    "title": "Add three-digit numbers: ten of a place trade up",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-with-regrouping--sa/257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-with-regrouping--sa/257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd/audio.m4a",
+    "duration": 130.06997732426305,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-with-regrouping--sa/257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-with-regrouping--sa/257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd/audio.m4a",
+        "version": "257a51eee99206508224ce1478075e24f49180cce86471462fe85786e2ef56bd",
+        "duration": 130.06997732426305
+      }
+    ]
+  },
   "add-within-20": {
     "id": "add-within-20--sm",
     "version": "e7f5bb3624b612c2425332fd16f6605f44feb1a04ca9d55790e286724aff9e2b",
@@ -455,6 +477,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/array-add-rows-total--sa/ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5/audio.m4a",
         "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
         "duration": 109.33
+      }
+    ]
+  },
+  "clock-am-pm": {
+    "id": "read-clock-five-minutes--sr",
+    "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+    "title": "Two hands tell the time",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+    "duration": 119.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+        "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+        "duration": 119.94
       }
     ]
   },
@@ -1153,6 +1197,48 @@
       }
     ]
   },
+  "derive-line-equation": {
+    "id": "derive-line-equation--sd",
+    "version": "04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3",
+    "title": "Why a line has the equation y = mx + b",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/derive-line-equation--sd/04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/derive-line-equation--sd/04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3/audio.m4a",
+    "duration": 111.8,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/derive-line-equation--sd/04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/derive-line-equation--sd/04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3/audio.m4a",
+        "version": "04ff2ee62a221d152039992063a869e9d1fe9b1711535c2dfab07638f08438d3",
+        "duration": 111.8
+      }
+    ]
+  },
+  "distance-graph-meaning": {
+    "id": "story-graph-match--sg",
+    "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",
+    "title": "Read a graph as a story",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/audio.m4a",
+    "duration": 147.78,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/audio.m4a",
+        "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",
+        "duration": 147.78
+      }
+    ]
+  },
   "dot-group-compared-to-number": {
     "id": "compare-groups--sk",
     "version": "4bfc6d4452f8718f1bcc4954e45d02aabbb5532d374688802d461f518dc4859b",
@@ -1657,21 +1743,21 @@
   },
   "graph-linear-equation": {
     "id": "graph-linear-equation--sg",
-    "version": "ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302",
+    "version": "92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec",
     "title": "Graph a line from its equation",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/audio.m4a",
     "duration": 141.77,
     "teacher": "Paul",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/audio.m4a",
-        "version": "ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/audio.m4a",
+        "version": "92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec",
         "duration": 141.77
       }
     ]
@@ -2022,21 +2108,21 @@
   },
   "line-relationship-equations": {
     "id": "line-relationship-equations--sp",
-    "version": "d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4",
+    "version": "dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057",
     "title": "Parallel and perpendicular lines",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057/audio.m4a",
     "duration": 155.18,
     "teacher": "Paul",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4/audio.m4a",
-        "version": "d3ce7397c5cc49fb5df237ae2c1743d56d99cdc4bac86eb6d6d7fb911ca531e4",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-relationship-equations--sp/dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057/audio.m4a",
+        "version": "dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057",
         "duration": 155.18
       }
     ]
@@ -2451,6 +2537,28 @@
       }
     ]
   },
+  "minutes-past-hour": {
+    "id": "read-clock-five-minutes--sr",
+    "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+    "title": "Two hands tell the time",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+    "duration": 119.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+        "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+        "duration": 119.94
+      }
+    ]
+  },
   "missing-start-story": {
     "id": "missing-start-story--ss",
     "version": "ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06",
@@ -2601,6 +2709,72 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-bond-missing--sb/92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3/audio.m4a",
         "version": "92634ebd1ccf23b106cc20797109b71dbd79f3973853580616aec25b2d2c57b3",
         "duration": 123.31
+      }
+    ]
+  },
+  "number-line-hops": {
+    "id": "number-line-hops--sh",
+    "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+    "title": "Add and subtract with number-line hops",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+    "duration": 124.40997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+        "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+        "duration": 124.40997732426304
+      }
+    ]
+  },
+  "number-line-jump-story": {
+    "id": "number-line-hops--sh",
+    "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+    "title": "Add and subtract with number-line hops",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+    "duration": 124.40997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+        "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+        "duration": 124.40997732426304
+      }
+    ]
+  },
+  "number-line-missing-hop": {
+    "id": "number-line-hops--sh",
+    "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+    "title": "Add and subtract with number-line hops",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+    "duration": 124.40997732426304,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/number-line-hops--sh/1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3/audio.m4a",
+        "version": "1d9d462b4d0c8858e2cf5a71e9c77e3d3dfe9346f45e7e2753a8fc30b4b9bad3",
+        "duration": 124.40997732426304
       }
     ]
   },
@@ -2948,6 +3122,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rational-two-denominators/9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c/audio.m4a",
         "version": "9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c",
         "duration": 146.85
+      }
+    ]
+  },
+  "read-clock-five-minutes": {
+    "id": "read-clock-five-minutes--sr",
+    "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+    "title": "Two hands tell the time",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+    "duration": 119.94,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-five-minutes--sr/0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9/audio.m4a",
+        "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
+        "duration": 119.94
       }
     ]
   },
@@ -3496,21 +3692,21 @@
   },
   "staar-line-from-points": {
     "id": "graph-linear-equation--sg",
-    "version": "ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302",
+    "version": "92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec",
     "title": "Graph a line from its equation",
-    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/data.json",
-    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/audio.m4a",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/audio.m4a",
     "duration": 141.77,
     "teacher": "Paul",
-    "capability": "lesson-film-v2",
+    "capability": "lesson-film-v4",
     "editions": [
       {
         "voices": {
           "teacher": "J3Ei0Lj6fAobhIqY5ySH"
         },
-        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/data.json",
-        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302/audio.m4a",
-        "version": "ca903c43ca5a6b17c79e9d266216c8b3ea4ff617b4720a1c0fd35ed0568c4302",
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/graph-linear-equation--sg/92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec/audio.m4a",
+        "version": "92e2e2fcc55341a583dcd80528204ec9baf4268710153cb460d656cd74d46fec",
         "duration": 141.77
       }
     ]
@@ -3555,6 +3751,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/build-shape-sticks-balls--sb/3a2c1f1492c586106dc1f88999c3952e58f73d05292772695d6ec152203b42f1/audio.m4a",
         "version": "3a2c1f1492c586106dc1f88999c3952e58f73d05292772695d6ec152203b42f1",
         "duration": 84.52
+      }
+    ]
+  },
+  "story-graph-match": {
+    "id": "story-graph-match--sg",
+    "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",
+    "title": "Read a graph as a story",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/audio.m4a",
+    "duration": 147.78,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/story-graph-match--sg/a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f/audio.m4a",
+        "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",
+        "duration": 147.78
       }
     ]
   },
@@ -3620,6 +3837,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-through-ten--ss/90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc/audio.m4a",
         "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
         "duration": 95.77
+      }
+    ]
+  },
+  "subtract-two-digit-regroup": {
+    "id": "subtract-two-digit-regroup--ss",
+    "version": "8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423",
+    "title": "Not enough ones? Break a ten",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-two-digit-regroup--ss/8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-two-digit-regroup--ss/8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423/audio.m4a",
+    "duration": 132.32,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-two-digit-regroup--ss/8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-two-digit-regroup--ss/8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423/audio.m4a",
+        "version": "8c2efa9646056751f2a14ee3a08120adc2e37914f8984bb5a04e71a3e9c85423",
+        "duration": 132.32
       }
     ]
   },
