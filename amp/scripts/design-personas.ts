@@ -3,7 +3,7 @@
  * `src/web/features/dev/persona-list.ts`, through the real API where a person
  * would act (sign-up, "What brings you to AMP?", the demo places, inviting and
  * accepting a second parent) and through the demo history generator for their
- * practice (`src/schools/demo/history.ts`). `/dev/personas` then signs in as
+ * practice (`src/schools/demo/seed-history.ts`). `/dev/personas` then signs in as
  * any of them in one click. Every name is made up.
  *
  *     AMP_DATABASE_URL=postgres://amp:amp@127.0.0.1:55490/amp_design_pass \
@@ -19,7 +19,7 @@ import pg from "pg";
 import {
   seedClassHistory,
   type DemoStudent,
-} from "../src/schools/demo/history";
+} from "../src/schools/demo/seed-history";
 import { sumWeeks } from "../src/schools/demo/term";
 import { buildFixtureClass } from "../src/schools/demo/build";
 import { persona, type Persona } from "../src/schools/demo/personas";
