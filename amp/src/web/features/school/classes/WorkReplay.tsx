@@ -1,5 +1,10 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useRouter,
+  useSearch,
+} from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import type { PublicProblem } from "../../../../math/contracts";
@@ -17,6 +22,11 @@ import { useStaffSession } from "./api";
 import { workReplayOptions } from "./teacher-api";
 import { clockTime, resultLabel, resultTone, shortDay } from "./teacher-shared";
 import styles from "./WorkReplay.module.css";
+import { closeSearch, closeTo } from "../../../lib/return-to";
+import {
+  LessonDialog,
+  lessonParam,
+} from "../../pathways/LessonDialog";
 
 const HELP_WORDS: Record<string, string> = {
   hint: "Hint",
@@ -100,6 +110,12 @@ export function WorkReplay({
   const session = useStaffSession();
   const client = useQueryClient();
   const navigate = useNavigate();
+  const router = useRouter();
+  // The skill's lesson opens over the answer (`?lesson=`): closing it, and
+  // its film, comes back to this answer in its class (lib/return-to.ts).
+  const lesson = lessonParam(
+    (useSearch({ strict: false }) as { lesson?: unknown }).lesson,
+  );
   const query = useQuery(workReplayOptions(session, student, attempt, skill));
   const replay = query.data;
   usePracticeViewport(true);
@@ -112,12 +128,15 @@ export function WorkReplay({
           .catch(() => undefined);
   }, [replay?.previous, replay?.next]);
   const search: Record<string, string> = skill ? { skill } : {};
-  const close = () =>
-    void navigate({ to: "/$", params: { _splat: closePath } });
+  // Back to where it was opened: the record, Today, a gradebook's evidence.
+  const close = () => closeTo(router, `/${closePath}`);
+  const closeLesson = () => closeSearch(router, "lesson");
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.target instanceof HTMLInputElement)
         return;
+      // The lesson over it handles its own keys: Escape closes only it.
+      if (lesson) return;
       if (event.key === "Escape" && !document.querySelector("dialog[open]"))
         close();
       const step =
@@ -126,11 +145,14 @@ export function WorkReplay({
           : event.key === "ArrowRight"
             ? replay?.next
             : null;
+      // Stepping replaces the answer: the replay is one layer, so Back and
+      // X both close it.
       if (step)
         void navigate({
           to: "/$",
           params: { _splat: workPath(step) },
           search: search as never,
+          replace: true,
         });
     };
     addEventListener("keydown", onKey);
@@ -141,6 +163,11 @@ export function WorkReplay({
     <Link
       to="/$"
       params={{ _splat: closePath }}
+      onClick={(event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+        event.preventDefault();
+        close();
+      }}
       className="workspace-level"
       aria-label={who ? `Close, back to ${who}` : "Close"}
       data-replay-close=""
@@ -280,6 +307,12 @@ export function WorkReplay({
       }
     >
       {body}
+      <LessonDialog
+        lesson={lesson}
+        onClose={closeLesson}
+        backLabel="Back to the answer"
+        aboveLayers
+      />
     </div>,
     document.body,
   );
@@ -360,6 +393,7 @@ function Step({
       to="/$"
       params={{ _splat: workPath(to) }}
       search={search as never}
+      replace
       className={styles.step}
       data-step={label}
       aria-label={`${label} answer`}
@@ -394,9 +428,6 @@ function Facts({
 }) {
   const { item } = replay;
   const help = helpWords(replay.help, replay.outcome.assisted);
-  const lessonSearch = replay.lesson.templateId
-    ? `?lesson=${encodeURIComponent(replay.lesson.templateId)}`
-    : "";
   return (
     <dl className={styles.facts} data-replay-facts="">
       {answers && (
@@ -461,6 +492,7 @@ function Facts({
                         to="/$"
                         params={{ _splat: workPath(entry.id) }}
                         search={search as never}
+                        replace
                       >
                         {label}
                       </Link>
@@ -493,12 +525,31 @@ function Facts({
       <div>
         <dt>Lesson</dt>
         <dd>
-          <a
-            className={styles.lesson}
-            href={`/pathways/${encodeURIComponent(replay.lesson.skillId)}${lessonSearch}`}
-          >
-            {item.skill}
-          </a>
+          {replay.lesson.templateId ? (
+            // Over this answer, so closing it comes back here.
+            <Link
+              className={styles.lesson}
+              to="/$"
+              params={{ _splat: workPath(item.id) }}
+              search={
+                ((current: Record<string, unknown>) => ({
+                  ...current,
+                  lesson: replay.lesson.templateId,
+                })) as never
+              }
+              data-replay-lesson=""
+            >
+              {item.skill}
+            </Link>
+          ) : (
+            <Link
+              className={styles.lesson}
+              to="/pathways/$skillId"
+              params={{ skillId: replay.lesson.skillId }}
+            >
+              {item.skill}
+            </Link>
+          )}
         </dd>
       </div>
     </dl>

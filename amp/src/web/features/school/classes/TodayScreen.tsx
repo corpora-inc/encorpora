@@ -1,6 +1,7 @@
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { Link, useParams, useRouter } from "@tanstack/react-router";
+import { closeSearch, closeTo } from "../../../lib/return-to";
 import { lazy, Suspense } from "react";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -137,6 +138,8 @@ export function TodayScreen() {
     presence.isPending ||
     (holder && secondParent.isPending);
   const onLesson = (templateId: string) => set({ lesson: templateId });
+  const router = useRouter();
+  const closeLesson = () => closeSearch(router, "lesson");
   return (
     <ClassFrame
       org={place.org}
@@ -198,7 +201,7 @@ export function TodayScreen() {
         tall
         open={!!lesson}
         onOpenChange={(open) => {
-          if (!open) set({ lesson: undefined });
+          if (!open) closeLesson();
         }}
         title={lessonTodo?.title ?? "Lesson"}
         description={
@@ -210,12 +213,14 @@ export function TodayScreen() {
         {lesson && (
           <LessonBoundary
             key={lesson}
-            onBack={() => set({ lesson: undefined })}
+            onBack={closeLesson}
+            backLabel="Back to Today"
           >
             <Suspense fallback={<Loading>Loading lesson…</Loading>}>
               <SkillLesson
                 templateId={lesson}
-                onBack={() => set({ lesson: undefined })}
+                onBack={closeLesson}
+                backLabel="Back to Today"
               />
             </Suspense>
           </LessonBoundary>
@@ -240,7 +245,7 @@ export function MapScreen() {
   const studentPath = params.student
     ? `${classUrl(place.org, place.class, "map")}/${params.student}`
     : "";
-  const navigate = useNavigate();
+  const router = useRouter();
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({
@@ -286,12 +291,9 @@ export function MapScreen() {
             student={params.student}
             // Under an open answer the sheet waits closed: Back reopens it.
             open={!params.work}
+            // Back to where it was opened: the map, Today, the gradebook…
             onClose={() =>
-              void navigate({
-                to: "/$",
-                params: { _splat: classUrl(place.org, place.class, "map") },
-                replace: true,
-              })
+              closeTo(router, `/${classUrl(place.org, place.class, "map")}`)
             }
           />
           <ClassMap
@@ -361,7 +363,7 @@ function MapStudentSheet({
           <Loading />
         )
       ) : (
-        <div className={styles.sheetRecord}>
+        <div className={styles.sheetRecord} data-map-student-record={student}>
           <div className={styles.recordAction}>
             <TryAsStudent
               session={currentSession()}

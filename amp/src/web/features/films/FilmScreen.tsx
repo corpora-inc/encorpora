@@ -11,19 +11,22 @@ import { mountFilmPlayer } from "../../../../film/player";
 import { Loading } from "../../ui/Loading";
 import { noteHelp } from "../../lib/help-events";
 import { attendWhilePlaying, useHelpSurface } from "../../lib/use-help";
+import { closeTo, returnTarget } from "../../lib/return-to";
 import "./film-route.css";
 
-/** Only lesson/practice paths can be a return destination, never an external URL. */
+/** Where the film was opened (`?from=`): a path inside this app, never a
+ * film itself (lib/return-to.ts). */
+export function filmFrom(value: unknown) {
+  const from = returnTarget(value);
+  return from && !/^\/lessons\/[^/?#]+\/watch(?:[?#]|$)/.test(from)
+    ? from
+    : undefined;
+}
+/** Where closing the film goes: where it was opened, or else its lesson. */
 export function filmReturn(value: unknown, templateId: string) {
-  if (
-    typeof value === "string" &&
-    value.length <= 2048 &&
-    /^\/(?:practice|lessons|pathways)(?:[/?]|$)/.test(value) &&
-    !value.includes("/watch") &&
-    !/[\\\r\n]/.test(value)
-  )
-    return value;
-  return `/pathways?lesson=${encodeURIComponent(templateId)}`;
+  return (
+    filmFrom(value) ?? `/pathways?lesson=${encodeURIComponent(templateId)}`
+  );
 }
 export function FilmScreen() {
   const { templateId } = useParams({ from: "/app/lessons/$templateId/watch" });
@@ -71,9 +74,9 @@ export function FilmScreen() {
       backLabel: back.startsWith("/practice")
         ? "Back to problem"
         : "Back to lesson",
-      onBack: () => {
-        void router.navigate({ href: back });
-      },
+      // Back to the lesson or problem it was opened from: X and the
+      // browser's Back do the same thing.
+      onBack: () => closeTo(router, back, filmFrom(search.from)),
       onPlayingChange: (playing) => {
         attending?.();
         attending = playing ? attendWhilePlaying() : null;
@@ -84,7 +87,7 @@ export function FilmScreen() {
       dispose();
       document.title = previous;
     };
-  }, [film, back, router]);
+  }, [film, back, search.from, router]);
   return (
     <main className="film-route" ref={host}>
       {metadata.isPending || film ? (
@@ -100,7 +103,16 @@ export function FilmScreen() {
           {metadata.isError && (
             <button onClick={() => void metadata.refetch()}>Retry</button>
           )}
-          <a href={back}>Back to lesson</a>
+          <a
+            href={back}
+            onClick={(event) => {
+              if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+              event.preventDefault();
+              closeTo(router, back, filmFrom(search.from));
+            }}
+          >
+            {back.startsWith("/practice") ? "Back to problem" : "Back to lesson"}
+          </a>
         </div>
       )}
     </main>
