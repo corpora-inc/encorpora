@@ -123,7 +123,9 @@ export const SQL_ACTIVE_STUDENTS = `
   ORDER BY p.id,r.begin_on DESC`;
 /** One row per student here today: this week, last week, where they stand,
  * and growth this term from the shared pace (`growth.ts`). Read from the
- * learner's week and from stored level days, never from replaying the frontier. */
+ * learner's week and from stored level days, never from replaying the frontier.
+ * Two queries over the same roster, run side by side: the term's window over
+ * each student's level days (start level and growth) is the heavier half. */
 export async function studentFacts(
   db: Database,
   orgId: string,
@@ -132,63 +134,82 @@ export async function studentFacts(
 ): Promise<StudentFact[]> {
   const thisWeek = weekStart(today);
   const through = term.endsOn < today ? term.endsOn : today;
-  const { rows } = await db.query(
-    `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
-     SELECT r.id,r.learner_id AS learner,r.org_id AS org,r.grade_level AS grade,
-       COALESCE(w."thisMs",0)::float8 AS "thisMs",COALESCE(w."lastMs",0)::float8 AS "lastMs",
-       COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
-       latest.overall_level::float8 AS level,first.overall_level::float8 AS "startLevel",
-       latest.sd AS "levelSd",first.sd AS "startSd",
-       growth.mu AS "growthMu",growth.sd AS "growthSd",
-       r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
-       session.id IS NOT NULL AS "signedIn"
-     FROM roster r
-     LEFT JOIN LATERAL (
-       -- Two rows by the learner's own key: a grouped join over the whole
-       -- roster was planned as a nested loop, 10,000 × 5,000 rows.
-       SELECT
-         sum(w.active_ms) FILTER (WHERE w.week=$3::date) AS "thisMs",
-         sum(w.active_ms) FILTER (WHERE w.week=$4::date) AS "lastMs",
-         sum(w.attempts) FILTER (WHERE w.week=$3::date) AS "thisAttempts",
-         sum(w.attempts) FILTER (WHERE w.week=$4::date) AS "lastAttempts"
-       FROM amp_learner_weeks w
-       WHERE w.learner_id=r.learner_id AND w.week=ANY(ARRAY[$3::date,$4::date])
-     ) w ON true
-     LEFT JOIN LATERAL (
-       SELECT d.overall_level,${levelSdSql("d")} AS sd FROM amp_level_days d
-       WHERE d.learner_id=r.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
-       ORDER BY d.day DESC LIMIT 1
-     ) latest ON true
-     LEFT JOIN LATERAL (
-       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS overall_level,
-         ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS sd
-     ) first ON true
-     LEFT JOIN LATERAL (
-       -- One fit per student, read off amp_level_days_growth_idx alone:
-       -- OFFSET 0 keeps the planner from copying the fit into each place its
-       -- two numbers are read.
-       SELECT raw.pair[1] AS mu, raw.pair[2] AS sd FROM (
-         SELECT ${growthArraySql({
-           learner: "r.learner_id",
-           from: "GREATEST($2::date, r.begin_on)",
-           to: "$5::date",
-         })} AS pair OFFSET 0
-       ) raw
-     ) growth ON true
-     LEFT JOIN (
-       SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-       WHERE s.released_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
-     ) seat ON seat.person_id=r.id
-     LEFT JOIN LATERAL (
-       SELECT n.id FROM amp_student_sessions n WHERE n.person_id=r.id LIMIT 1
-     ) session ON true`,
-    [orgId, term.startsOn, thisWeek, shift(thisWeek, -7), through],
-  );
-  return rows.map((row) => ({
-    ...row,
-    growthMu: row.growthMu === null ? null : Number(row.growthMu),
-    growthSd: row.growthSd === null ? null : Number(row.growthSd),
-  }));
+  const [{ rows }, { rows: windows }] = await Promise.all([
+    db.query(
+      `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
+       SELECT r.id,r.learner_id AS learner,r.org_id AS org,r.grade_level AS grade,
+         COALESCE(w."thisMs",0)::float8 AS "thisMs",COALESCE(w."lastMs",0)::float8 AS "lastMs",
+         COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
+         latest.overall_level::float8 AS level,latest.sd AS "levelSd",
+         r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
+         session.id IS NOT NULL AS "signedIn"
+       FROM roster r
+       LEFT JOIN LATERAL (
+         -- Two rows by the learner's own key: a grouped join over the whole
+         -- roster was planned as a nested loop, 10,000 × 5,000 rows.
+         SELECT
+           sum(w.active_ms) FILTER (WHERE w.week=$2::date) AS "thisMs",
+           sum(w.active_ms) FILTER (WHERE w.week=$3::date) AS "lastMs",
+           sum(w.attempts) FILTER (WHERE w.week=$2::date) AS "thisAttempts",
+           sum(w.attempts) FILTER (WHERE w.week=$3::date) AS "lastAttempts"
+         FROM amp_learner_weeks w
+         WHERE w.learner_id=r.learner_id AND w.week=ANY(ARRAY[$2::date,$3::date])
+       ) w ON true
+       LEFT JOIN LATERAL (
+         SELECT d.overall_level,${levelSdSql("d")} AS sd FROM amp_level_days d
+         WHERE d.learner_id=r.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
+         ORDER BY d.day DESC LIMIT 1
+       ) latest ON true
+       LEFT JOIN (
+         SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
+         WHERE s.released_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
+       ) seat ON seat.person_id=r.id
+       LEFT JOIN LATERAL (
+         SELECT n.id FROM amp_student_sessions n WHERE n.person_id=r.id LIMIT 1
+       ) session ON true`,
+      [orgId, thisWeek, shift(thisWeek, -7)],
+    ),
+    db.query(
+      `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
+       SELECT r.id,first.overall_level::float8 AS "startLevel",first.sd AS "startSd",
+         growth.mu AS "growthMu",growth.sd AS "growthSd"
+       FROM roster r
+       -- The start level and its sd off one row: the first settled day.
+       LEFT JOIN LATERAL ${startLevelSql({
+         select: `d.overall_level,${levelSdSql("d")} AS sd`,
+         learner: "r.learner_id",
+         from: "GREATEST($2::date, r.begin_on)",
+         to: "$3::date",
+       })} first ON true
+       LEFT JOIN LATERAL (
+         -- One fit per student, read off amp_level_days_growth_idx alone:
+         -- OFFSET 0 keeps the planner from copying the fit into each place its
+         -- two numbers are read.
+         SELECT raw.pair[1] AS mu, raw.pair[2] AS sd FROM (
+           SELECT ${growthArraySql({
+             learner: "r.learner_id",
+             from: "GREATEST($2::date, r.begin_on)",
+             to: "$3::date",
+           })} AS pair OFFSET 0
+         ) raw
+       ) growth ON true`,
+      [orgId, term.startsOn, through],
+    ),
+  ]);
+  const byPerson = new Map(windows.map((row) => [row.id as string, row]));
+  return rows.map((row) => {
+    const window = byPerson.get(row.id);
+    return {
+      ...row,
+      // The roster is read twice at the same moment: a student only one
+      // read saw (a start date passing midnight between them) has no
+      // window yet.
+      startLevel: window?.startLevel ?? null,
+      startSd: window?.startSd ?? null,
+      growthMu: window?.growthMu == null ? null : Number(window.growthMu),
+      growthSd: window?.growthSd == null ? null : Number(window.growthSd),
+    };
+  });
 }
 
 const minutesOf = (ms: number) => ms / 60_000;
@@ -231,33 +252,22 @@ export function usageOf(
   };
 }
 
-export async function trendOf(
-  db: Database,
-  students: readonly StudentFact[],
-  from: string,
-  to: string,
-) {
+type TrendRow = {
+  week: string;
+  minutes: number;
+  students: number;
+  problems: number;
+  assisted: number;
+};
+const TREND_COLUMNS = `week::text AS week,round(sum(active_ms)/60000.0)::int AS minutes,
+           count(*) FILTER (WHERE ${practicedSql("active_ms", "attempts")})::int AS students,
+           sum(attempts)::int AS problems,sum(assisted)::int AS assisted`;
+/** Every week from `from` to `to`, zero where nobody practiced. */
+function trendWeeks(rows: readonly TrendRow[], from: string, to: string) {
   const first = weekStart(from);
   const last = weekStart(to);
-  const { rows } = students.length
-    ? await db.query(
-        `SELECT week::text AS week,round(sum(active_ms)/60000.0)::int AS minutes,
-           count(*) FILTER (WHERE ${practicedSql("active_ms", "attempts")})::int AS students,
-           sum(attempts)::int AS problems,sum(assisted)::int AS assisted
-         FROM amp_learner_weeks
-         WHERE learner_id=ANY($1::text[]) AND week BETWEEN $2::date AND $3::date
-         GROUP BY week`,
-        [students.map((student) => student.learner), first, last],
-      )
-    : { rows: [] };
-  const byWeek = new Map(rows.map((row) => [row.week as string, row]));
-  const weeks: {
-    week: string;
-    minutes: number;
-    students: number;
-    problems: number;
-    assisted: number;
-  }[] = [];
+  const byWeek = new Map(rows.map((row) => [row.week, row]));
+  const weeks: TrendRow[] = [];
   for (let week = first; week <= last; week = shift(week, 7))
     weeks.push({
       week,
@@ -267,6 +277,28 @@ export async function trendOf(
       assisted: byWeek.get(week)?.assisted ?? 0,
     });
   return weeks;
+}
+
+/** Minutes, students who practiced, problems and assisted problems by week,
+ * for the students here today: the roster `studentFacts` reads
+ * (`SQL_ACTIVE_STUDENTS`), so the two run side by side. As an array, the
+ * roster is one bitmap scan of the weeks' key and a hashed sum by week; as a
+ * join it was a sort of every learner-week. */
+export async function trendHere(
+  db: Database,
+  orgId: string,
+  from: string,
+  to: string,
+) {
+  const { rows } = await db.query(
+    `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
+     SELECT ${TREND_COLUMNS}
+     FROM amp_learner_weeks
+     WHERE learner_id=ANY(ARRAY(SELECT learner_id FROM roster)) AND week BETWEEN $2::date AND $3::date
+     GROUP BY week`,
+    [orgId, weekStart(from), weekStart(to)],
+  );
+  return trendWeeks(rows, from, to);
 }
 
 /** Classes in the year in use at this org and below, each with its teachers.
@@ -313,7 +345,10 @@ export async function classMembers(db: Database, classIds: readonly string[]) {
 
 /** Seats and dates: this org's licenses, ones held above it, and at a district
  * every school's own. A school drawing on a district pool says so. */
-async function seatsHere(db: Database, org: OrgScope, waiting: number) {
+async function seatsHere(
+  db: Database,
+  org: OrgScope,
+): Promise<Omit<OverviewResponse["seats"], "waiting">> {
   const { rows } = await db.query(
     `SELECT l.seats,l.starts_at,l.ends_at,l.reference,l.org_id,lo.name AS org_name,
        l.starts_at<=now() AND l.ends_at>now() AND l.status='active' AS in_force,
@@ -328,7 +363,6 @@ async function seatsHere(db: Database, org: OrgScope, waiting: number) {
   return {
     seats: inForce.reduce((sum, row) => sum + row.seats, 0),
     used: inForce.reduce((sum, row) => sum + row.used, 0),
-    waiting,
     startsAt: shown?.starts_at.toISOString() ?? null,
     endsAt: shown?.ends_at.toISOString() ?? null,
     evaluation: shown?.reference === "Evaluation",
@@ -591,35 +625,49 @@ export async function readOverview(
 ): Promise<OverviewResponse> {
   const org = await orgScope(pool, orgId, now);
   const term = await termInUse(pool, org);
-  const students = await studentFacts(pool, orgId, term, org.today);
-  const [trend, classList, schools, unsigned, year, person] = await Promise.all(
-    [
-      trendOf(pool, students, term.startsOn, term.endsOn),
-      classesHere(pool, orgId, actorPersonId),
-      schoolsBelow(pool, orgId),
-      unsignedSchools(pool, orgId),
-      yearHere(pool, org),
-      actorPersonId
-        ? pool
-            .query(
-              `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
-              [actorPersonId],
-            )
-            .then((result) => (result.rows[0]?.name as string) ?? null)
-        : null,
-    ],
-  );
-  const [members, seatRows] = await Promise.all([
-    classMembers(
-      pool,
-      classList.map((row) => row.id),
+  // Every read at once: none waits on the students' facts.
+  const [
+    students,
+    trend,
+    [classList, members],
+    seats,
+    schools,
+    unsigned,
+    year,
+    person,
+  ] = await Promise.all([
+    studentFacts(pool, orgId, term, org.today),
+    trendHere(pool, orgId, term.startsOn, term.endsOn),
+    classesHere(pool, orgId, actorPersonId).then(
+      async (rows) =>
+        [
+          rows,
+          await classMembers(
+            pool,
+            rows.map((row) => row.id),
+          ),
+        ] as const,
     ),
-    seatsHere(
-      pool,
-      org,
-      students.reduce((sum, student) => sum + (student.seated ? 0 : 1), 0),
-    ),
+    seatsHere(pool, org),
+    schoolsBelow(pool, orgId),
+    unsignedSchools(pool, orgId),
+    yearHere(pool, org),
+    actorPersonId
+      ? pool
+          .query(
+            `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+            [actorPersonId],
+          )
+          .then((result) => (result.rows[0]?.name as string) ?? null)
+      : null,
   ]);
+  const seatRows = {
+    ...seats,
+    waiting: students.reduce(
+      (sum, student) => sum + (student.seated ? 0 : 1),
+      0,
+    ),
+  };
   const byPerson = new Map(students.map((student) => [student.id, student]));
   const enrolled = new Map<string, StudentFact[]>();
   for (const { class: classId, person: personId } of members) {

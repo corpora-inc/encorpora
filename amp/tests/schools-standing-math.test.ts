@@ -16,6 +16,7 @@ import {
 } from "../src/schools/standing-math";
 import { standingNormal } from "../src/schools/standing-curve";
 import { withinGradeSd } from "../src/schools/norms-prior";
+import { referenceMedianInterval } from "./helpers/median-interval-reference";
 
 const near = (actual: number, expected: number, tolerance: number) =>
   assert.ok(
@@ -98,10 +99,11 @@ test("the axis spans every student's curve in whole grades, within its limits", 
     step: 0.1,
   });
   // A grade 5 class: nothing below K (−1 − 5) or past 13.
-  assert.deepEqual(
-    gridFor([{ mu: 0, sd: 2.5 }], { limits: [-6, 8] }),
-    { from: -6, to: 7, step: 0.1 },
-  );
+  assert.deepEqual(gridFor([{ mu: 0, sd: 2.5 }], { limits: [-6, 8] }), {
+    from: -6,
+    to: 7,
+    step: 0.1,
+  });
 });
 
 test("a new learner's curve is wide and honest, and narrows with answers", () => {
@@ -225,9 +227,7 @@ test("a class median's 95% band holds the class's true median about 95% of the t
         .map((student) => student.mu + student.sd * gauss())
         .sort((a, b) => a - b);
       const truth =
-        n % 2
-          ? truths[n >> 1]!
-          : (truths[n / 2 - 1]! + truths[n / 2]!) / 2;
+        n % 2 ? truths[n >> 1]! : (truths[n / 2 - 1]! + truths[n / 2]!) / 2;
       const interval = medianInterval(students, {
         seed: trial + 1,
         draws: 400,
@@ -296,4 +296,27 @@ test("a mixture quantile inverts its CDF", () => {
   ];
   for (const p of [0.1, 0.5, 0.9])
     near(mixtureCdf(students, mixtureQuantile(students, p)!), p, 1e-3);
+});
+
+test("a big bootstrap reads its seed's kept stream and gives exactly the drawn numbers", () => {
+  const next = random(20261112);
+  // Sizes either side of what's kept, a district's schools among them, and
+  // seeds interleaved so streams are made, grown and dropped between calls.
+  const cases: { n: number; seed: number; draws?: number }[] = [];
+  for (const n of [40, 300, 700, 834, 830, 1100, 1310, 20, 2500])
+    for (const seed of [1, 7, 1, 99])
+      cases.push({ n, seed }, { n, seed, draws: 250 });
+  for (const { n, seed, draws } of cases) {
+    const students: Normal[] = Array.from({ length: n }, (_, index) => ({
+      // Ties included: flat students all at zero.
+      mu: index % 9 === 0 ? 0 : next() * 2 - 0.5,
+      sd: [0.12, 0.3, 0.35, 0.6][index % 4]!,
+    }));
+    const options = { seed, mode: "bootstrap" as const, draws };
+    assert.deepEqual(
+      medianInterval(students, options),
+      referenceMedianInterval(students, options),
+      `${n} students, seed ${seed}, ${draws ?? "default"} draws`,
+    );
+  }
 });

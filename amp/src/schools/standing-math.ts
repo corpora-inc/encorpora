@@ -255,6 +255,45 @@ const quantileOfSorted = (sorted: Float64Array, p: number) => {
   return sorted[below]! + (sorted[above]! - sorted[below]!) * (at - below);
 };
 
+/**
+ * A bootstrap's random numbers depend on its seed alone, not on the students:
+ * each sample takes one uniform for its pick, then one normal. A district
+ * Overview draws about two million of them for its twelve schools on every
+ * read, so a big draw keeps its seed's stream: the picks as the generator's
+ * 32-bit integers, the normals as they came. At most `STREAM_SEEDS` streams of
+ * `STREAM_LIMIT` samples, 3 MiB each. Reading one gives exactly the numbers
+ * drawing again would.
+ */
+const STREAM_LIMIT = 1 << 18;
+const STREAM_FROM = 1 << 16;
+const STREAM_SEEDS = 2;
+const TWO_32 = 4294967296;
+type Stream = { picks: Uint32Array; normals: Float64Array };
+const streams = new Map<number, Stream>();
+function bootstrapStream(seed: number, samples: number): Stream | null {
+  if (samples < STREAM_FROM || samples > STREAM_LIMIT) return null;
+  const kept = streams.get(seed);
+  streams.delete(seed);
+  let stream = kept;
+  if (!stream || stream.picks.length < samples) {
+    const size = Math.min(
+      STREAM_LIMIT,
+      Math.max(samples, 2 * (kept?.picks.length ?? 0)),
+    );
+    const next = random(seed);
+    const normal = gaussian(next);
+    stream = { picks: new Uint32Array(size), normals: new Float64Array(size) };
+    for (let index = 0; index < size; index++) {
+      stream.picks[index] = next() * TWO_32;
+      stream.normals[index] = normal();
+    }
+  }
+  streams.set(seed, stream);
+  while (streams.size > STREAM_SEEDS)
+    streams.delete(streams.keys().next().value!);
+  return stream;
+}
+
 /** Draws per interval: a thousand for a class, fewer for a big group, whose
  * median moves little between draws; at most a few million normal draws. */
 export const drawsFor = (n: number) =>
@@ -293,16 +332,28 @@ export function medianInterval(
   const mus = Float64Array.from(sorted, (student) => student.mu);
   const sds = Float64Array.from(sorted, sdOf);
   const point = medianInPlace(Float64Array.from(mus), n);
-  const next = random(seed);
-  const normal = gaussian(next);
   const sample = new Float64Array(n);
   const medians = new Float64Array(draws);
-  for (let draw = 0; draw < draws; draw++) {
-    for (let index = 0; index < n; index++) {
-      const pick = mode === "bootstrap" ? Math.floor(next() * n) : index;
-      sample[index] = mus[pick]! + sds[pick]! * normal();
+  const stream = mode === "bootstrap" ? bootstrapStream(seed, n * draws) : null;
+  if (stream) {
+    const { picks, normals } = stream;
+    for (let draw = 0, at = 0; draw < draws; draw++) {
+      for (let index = 0; index < n; index++, at++) {
+        const pick = Math.floor((picks[at]! / TWO_32) * n);
+        sample[index] = mus[pick]! + sds[pick]! * normals[at]!;
+      }
+      medians[draw] = medianInPlace(sample, n);
     }
-    medians[draw] = medianInPlace(sample, n);
+  } else {
+    const next = random(seed);
+    const normal = gaussian(next);
+    for (let draw = 0; draw < draws; draw++) {
+      for (let index = 0; index < n; index++) {
+        const pick = mode === "bootstrap" ? Math.floor(next() * n) : index;
+        sample[index] = mus[pick]! + sds[pick]! * normal();
+      }
+      medians[draw] = medianInPlace(sample, n);
+    }
   }
   medians.sort();
   const tail = (1 - level) / 2;

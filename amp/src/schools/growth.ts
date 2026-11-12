@@ -88,6 +88,9 @@ export const growthArraySql = ({
              AND d.day >= ${from}::date AND d.day <= ${to}::date
              AND ${levelSdSql("d")} > 0
              AND ${levelSdSql("d")} <= ${SETTLED_SD}
+           -- Each day's x and w once: pulled up, each sum recomputed them,
+           -- five powers and five window offsets a day. Same sums, same order.
+           OFFSET 0
          ) points
        ) sums
        WHERE sw > 0
