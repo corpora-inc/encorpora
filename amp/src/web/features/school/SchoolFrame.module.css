@@ -160,8 +160,10 @@
   white-space: nowrap;
   box-shadow: inset 0 -2px 0 transparent;
 }
-.links a:hover {
-  color: var(--color-on-surface);
+@media (hover: hover) {
+  .links a:hover {
+    color: var(--color-on-surface);
+  }
 }
 .links a[aria-current="page"] {
   color: var(--color-on-surface);

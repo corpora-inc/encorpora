@@ -104,7 +104,8 @@ test("class sub-screens retain their tab and existing URLs", () => {
     ["start", "today"],
     ["report-cards", "gradebook"],
     ["cards", "roster"],
-    ["experience", "roster"],
+    // What children see is a section of the class's Settings (ia.md).
+    ["experience", "settings"],
     ["workbooks/2026-11-09", "workbooks"],
   ]) {
     expect(shellFrame(`/school/org/classes/class/${leaf}`)).toMatchObject({
@@ -123,8 +124,8 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
-  // A learner's workbooks are on the Progress frame (My practice's
-  // Workbooks tab for the adult's own).
+  // A learner's workbooks open from Overview, so their pages keep the
+  // Progress tabs with Overview marked (ia.md: no Workbooks tab).
   for (const path of [
     "/learners/child/workbooks",
     "/learners/child/workbooks/2026-11-09",
@@ -132,7 +133,7 @@ test("class sub-screens retain their tab and existing URLs", () => {
   ])
     expect(shellFrame(path), path).toEqual({
       kind: "progress",
-      active: "workbooks",
+      active: "overview",
     });
   // A family's or tutor's class: Grades only past six learners.
   expect(
@@ -164,18 +165,22 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Overview",
     "Pathways",
     "Inventory",
-    "Workbooks",
   ]);
   expect(progressTabs("learner", "adult-1")).toHaveLength(3);
 });
 
-test("school sub-screens map to seven tabs and respect capabilities", () => {
+test("school sub-screens map to their tabs and respect capabilities", () => {
+  // One Settings home (ia.md): the year, terms, experience, license,
+  // privacy and integrations are all its sections or sub-pages.
   for (const [leaf, active] of [
     ["import", "classes"],
     ["students/id", "classes"],
-    ["experience", "classes"],
-    ["integrations", "staff"],
-    ["year", "calendar"],
+    ["experience", "settings"],
+    ["integrations", "settings"],
+    ["year", "settings"],
+    ["calendar", "settings"],
+    ["license", "settings"],
+    ["privacy", "settings"],
     ["schools", "schools"],
   ]) {
     expect(shellFrame(`/school/org/${leaf}`)).toMatchObject({
@@ -194,7 +199,7 @@ test("school sub-screens map to seven tabs and respect capabilities", () => {
   };
   expect(
     schoolTabs({ ...org, can: [...org.can] }, 2).map((tab) => tab.label),
-  ).toEqual(["Classes", "Calendar"]);
+  ).toEqual(["Classes", "Settings"]);
   const family = {
     ...org,
     kind: "family" as const,
@@ -202,7 +207,7 @@ test("school sub-screens map to seven tabs and respect capabilities", () => {
   };
   expect(
     schoolTabs({ ...family, can: [...family.can] }, 1).map((tab) => tab.label),
-  ).toEqual(["Classes", "Calendar"]);
+  ).toEqual(["Classes"]);
   expect(classTabs("org", "class", true).map((tab) => tab.id)).toEqual([
     "gradebook",
     "time",
@@ -261,15 +266,11 @@ test("review regression: a lone school hides Overview, Staff and Activity", () =
       "privacy.read",
     ],
   };
-  expect(schoolTabs(org, 1).map((tab) => tab.id)).toEqual([
-    "calendar",
-    "privacy",
-  ]);
+  expect(schoolTabs(org, 1).map((tab) => tab.id)).toEqual(["settings"]);
   expect(schoolTabs(org, 2).map((tab) => tab.id)).toEqual([
     "overview",
     "staff",
-    "calendar",
-    "privacy",
     "activity",
+    "settings",
   ]);
 });

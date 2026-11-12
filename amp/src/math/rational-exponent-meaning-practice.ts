@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -131,7 +132,9 @@ const same = (a: number, b: number) =>
 /** Redraw unless every value is unequal to the true one. */
 function allDiffer(truth: number, values: number[], what: string) {
   if (values.some((v) => same(v, truth)))
-    throw new Error(`Need three retry: a ${what} distractor is true here`);
+    throw new Error(
+      `Need three retry: ${withArticle(what)} distractor is true here`,
+    );
 }
 function pairwiseDistinct(values: number[], what: string) {
   for (let i = 0; i < values.length; i++)
@@ -374,7 +377,7 @@ export const rationalExponentDerivation = chainFamily({
               { label: `$${u}=${root(n, b)}$`, correct: true },
               {
                 label: `$${u}=${frac(b, n)}$`,
-                feedback: `Dividing by the index does not undo a ${powerWord(n)}: $\\left(${frac(b, n)}\\right)^${n}=${frac(`${b}^${n}`, `${n}^${n}`)}$, not $${b}$.`,
+                feedback: `Dividing by the index does not undo ${withArticle(powerWord(n))}: $\\left(${frac(b, n)}\\right)^${n}=${frac(`${b}^${n}`, `${n}^${n}`)}$, not $${b}$.`,
               },
               {
                 label: `$${u}=${frac(1, `${b}^${n}`)}$`,
@@ -527,7 +530,7 @@ function scriptLines(m: DefinitionModel): ArgLine[] {
         {
           text: `so $${v}=\\sqrt{${num(bm)}}$`,
           holds: false,
-          why: `Line 3 is false: lines 1 and 2 say the ${powerWord(n)} of $${v}$ is $${num(bm)}$, so $${v}$ is the ${rootWord(n)} of $${num(bm)}$, which is $${m.r! ** k}$. The square root $\\sqrt{${num(bm)}}${Number.isInteger(Math.sqrt(bm)) ? `=${num(Math.sqrt(bm))}` : ""}$ is not $${m.r! ** k}$: the denominator $${n}$ calls for a ${rootWord(n)}.`,
+          why: `Line 3 is false: lines 1 and 2 say the ${powerWord(n)} of $${v}$ is $${num(bm)}$, so $${v}$ is the ${rootWord(n)} of $${num(bm)}$, which is $${m.r! ** k}$. The square root $\\sqrt{${num(bm)}}${Number.isInteger(Math.sqrt(bm)) ? `=${num(Math.sqrt(bm))}` : ""}$ is not $${m.r! ** k}$: the denominator $${n}$ calls for ${withArticle(rootWord(n))}.`,
         },
       ];
     }
@@ -767,7 +770,7 @@ export const radicalExponentNotationReason = chainFamily({
           },
           {
             label: `The index of the root goes in the exponent's denominator, so $${rt}=${u}$. Roots always work this way.`,
-            feedback: `The rule is true, but this only restates it. It gives no reason why the exponent $${frac(1, n)}$ should mean a ${rootWord(n)}.`,
+            feedback: `The rule is true, but this only restates it. It gives no reason why the exponent $${frac(1, n)}$ should mean ${withArticle(rootWord(n))}.`,
           },
           {
             label: `By the product law, $${u}\\cdot${b}^${n}=${b}^{${frac(1, n)}+${n}}=${b}$, so $${u}$ undoes $${b}^${n}$ and is the ${rootWord(n)}.`,

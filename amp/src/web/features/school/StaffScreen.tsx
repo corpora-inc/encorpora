@@ -1,9 +1,6 @@
+import { SMALL_CLASS } from "../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
-import {
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import type { StaffResource } from "../../../schools/setup-contracts";
 import { AppError } from "../../lib/AppError";
@@ -240,7 +237,13 @@ function StaffRow({
     <li className={styles.staffRow}>
       <div className={styles.staffText}>
         <strong>
-          {person.self ? "You" : onlyAddress ? <Address email={shown} /> : shown}
+          {person.self ? (
+            "You"
+          ) : onlyAddress ? (
+            <Address email={shown} />
+          ) : (
+            shown
+          )}
         </strong>
         {!onlyAddress && person.email && (
           <span>
@@ -410,7 +413,12 @@ export function StaffScreen() {
     <OrgFrame orgId={orgId} nav="staff" title="Staff">
       <PageHead
         title="Staff"
-        detail={`${rows.length} ${rows.length === 1 ? "person" : "people"}`}
+        // A count only for a list that runs past the first screen.
+        detail={
+          rows.length > SMALL_CLASS
+            ? `${rows.length} ${rows.length === 1 ? "person" : "people"}`
+            : undefined
+        }
       />
       <div className={manages ? styles.staffLayout : undefined}>
         {manages && <InviteForm orgId={orgId} />}

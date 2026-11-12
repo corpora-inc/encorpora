@@ -7,10 +7,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { shuffle } from "./distribution-practice";
-import {
-  figureOptionIds,
-  type FigureChoiceResponse,
-} from "./figure-choice";
+import { figureOptionIds, type FigureChoiceResponse } from "./figure-choice";
 import {
   serializeMultiPart,
   type MultiPartChoiceResponse,
@@ -35,6 +32,7 @@ import {
   type PointPlotResponse,
 } from "./point-plot";
 import { chooseAxes, defineAxis, type Random } from "./variation/axes";
+import { n, termText, twoTerm } from "./algebra-one-kit";
 
 /**
  * Common Core clause families for equations and inequalities.
@@ -125,6 +123,35 @@ const fdiv = (a: Fr, b: Fr) => fr(a.n * b.d, a.d * b.n);
 const feq = (a: Fr, b: Fr) => a.n === b.n && a.d === b.d;
 const fnum = (a: Fr) => a.n / a.d;
 const ftxt = (a: Fr) => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);
+/** Add n, folding a negative into the operator: 3 + −2 is 3 − 2. */
+const plus = (value: number) => (value < 0 ? ` − ${-value}` : ` + ${value}`);
+/** Explicit TeX. KaTeX rejects a typographic minus, so that sign becomes a hyphen. */
+const tex = (expression: string) => `$${expression.replaceAll("−", "-")}$`;
+const lineText = (m: Fr, b: number) => {
+  const slope =
+    m.d === 1 && Math.abs(m.n) === 1 ? termText(m.n, "x") : `${ftxt(m)}x`;
+  return `y = ${slope}${plus(b)}`;
+};
+/** Two labeled equations, each on its own line.
+ * `mathLabels` sets the tags in math, the same face as `$E1$` in a sentence.
+ * Other captions stay upright text. */
+function shownSystem(rows: readonly [string, string][], mathLabels = false) {
+  const body = rows
+    .map(([equation, label]) => {
+      const tag = mathLabels ? label : `\\text{${label}}`;
+      return `${equation.replaceAll("−", "-")} & ${tag}`;
+    })
+    .join(" \\\\ ");
+  return `$\\begin{cases} ${body} \\end{cases}$`;
+}
+/** E2 + k·E1 as math. A negative k reads E2 − |k|·E1. k is never 0. */
+const addedToE2 = (k: number) => {
+  const mag = Math.abs(k);
+  const factor = mag === 1 ? "E1" : `${mag}\\cdot E1`;
+  return `$E2 ${k < 0 ? "-" : "+"} ${factor}$`;
+};
+/** k·E1 as math, including a negative k. */
+const scaledE1 = (k: number) => `$${k}\\cdot E1$`;
 const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
 
 const instanceId = (templateId: string, seed: string) =>
@@ -344,19 +371,22 @@ export function valuesFromSet(
   while (pool.size < count && guard < 80) {
     guard++;
     const roll = r(0, 2);
-    const k = roll === 0 ? r(0, 20) * 10 : roll === 1 ? r(0, 40) * 5 : r(0, 200);
+    const k =
+      roll === 0 ? r(0, 20) * 10 : roll === 1 ? r(0, 40) * 5 : r(0, 200);
     if (wantNone && holdsTenths(useP, useQ, right, op, k)) continue;
     if (!inequality && wantNone && k === solutionK) continue;
     add(k);
   }
   if (pool.size < count) throw new Error("Need a value set");
   const values = [...pool].slice(0, count).sort((a, b) => a - b);
-  const truths = values.map((k) =>
-    holdsTenths(useP, useQ, right, op, k),
-  );
+  const truths = values.map((k) => holdsTenths(useP, useQ, right, op, k));
   const trueCount = truths.filter(Boolean).length;
   const countLabel =
-    trueCount === 0 ? "none" : trueCount === 1 ? "exactly one" : "more than one";
+    trueCount === 0
+      ? "none"
+      : trueCount === 1
+        ? "exactly one"
+        : "more than one";
   const sym = op === "=" ? "=" : op === "<=" ? "≤" : op === ">=" ? "≥" : op;
   const coef = useP === 1 ? "x" : `${useP}x`;
   const expr =
@@ -417,11 +447,7 @@ export function strictInequality(
   const r = clauseStream(meta.id, seed);
   const sign: "<" | ">" = r(0, 1) ? "<" : ">";
   const c =
-    r(0, 9) < 6
-      ? r(-12, 12)
-      : r(0, 1)
-        ? r(-24, 24) / 2
-        : r(-120, 120) / 10;
+    r(0, 9) < 6 ? r(-12, 12) : r(0, 1) ? r(-24, 24) / 2 : r(-120, 120) / 10;
   const word = sign === "<" ? "less than" : "greater than";
   const back = sign === "<" ? "greater than" : "less than";
   const cText = signed(c);
@@ -472,7 +498,7 @@ export function strictInequality(
       })
         .mark(c, { open: true, label: true })
         .interval(sign === ">" ? c : null, sign === ">" ? null : c, [
-          sign === ">" ,
+          sign === ">",
           sign === "<",
         ])
         .scene({ width: 280, title: `x ${sign} ${cText}` }),
@@ -542,13 +568,17 @@ export function solutionCountSteps(
     throw new Error("Equation does not match its solution count");
   // "One solution, x = 0" is a distractor; at x0 = 0 it would also be true.
   if (kind === 0 && x0 === 0) throw new Error("Two true conclusions");
+  const added = c === 1 ? "+x" : c === -1 ? "-x" : c > 0 ? `+${c}x` : `${c}x`;
   const leftConst = a * b;
-  const expand = `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
-    .replace(/\+\-/, "-")
-    .replace(/\+\+/, "+");
+  const expand =
+    `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
+      .replace(/\+\-/, "-")
+      .replace(/\+\+/, "+");
   const combined = eqn(a + c, leftConst, d, e);
   const closed =
-    kind === 0 ? `x=${Number.isInteger(x0) ? x0 : `${x0 * 2}/2`}` : eqn(0, leftConst, 0, e);
+    kind === 0
+      ? `x=${Number.isInteger(x0) ? x0 : `${x0 * 2}/2`}`
+      : eqn(0, leftConst, 0, e);
   const lines = [expand, combined, closed];
   const infinite = `Infinitely many: $${leftConst} = ${leftConst}$ is true for every $x$`;
   const noneText = "No solution";
@@ -556,8 +586,7 @@ export function solutionCountSteps(
   const zeroText = "One solution, $x = 0$";
   const diff = e - leftConst;
   const fake = `One solution, $x = ${diff}$`;
-  const correct =
-    kind === 1 ? infinite : kind === 2 ? noneText : oneText;
+  const correct = kind === 1 ? infinite : kind === 2 ? noneText : oneText;
   const bank = [infinite, noneText, oneText, kind === 2 ? fake : zeroText];
   if (new Set(bank).size !== 4) throw new Error("Need four conclusions");
   const order = shuffle(r, bank);
@@ -568,7 +597,7 @@ export function solutionCountSteps(
     label: "Show each stage, then how many solutions",
     layout: "steps",
     mode: "build",
-    start: `$${a}(x${b >= 0 ? "+" : ""}${b})${c >= 0 ? "+" : ""}${c}x=${lin(d, e)}$`,
+    start: `$${a}(x${b >= 0 ? "+" : ""}${b})${added}=${lin(d, e)}$`,
     banks: [
       {
         id: "count",
@@ -577,21 +606,23 @@ export function solutionCountSteps(
       },
     ],
     rows: [
-      ...["After expanding", "After combining like terms", "After the $x$ terms cancel or the equation is solved"].map(
-        (label, i) => ({
-          id: `r${i + 1}`,
-          label,
-          fields: [
-            {
-              kind: "expression" as const,
-              label: "Equation",
-              variables: ["x"],
-              relations: true,
-              maxLength: 32,
-            },
-          ],
-        }),
-      ),
+      ...[
+        "After expanding",
+        "After combining like terms",
+        "After the $x$ terms cancel or the equation is solved",
+      ].map((label, i) => ({
+        id: `r${i + 1}`,
+        label,
+        fields: [
+          {
+            kind: "expression" as const,
+            label: "Equation",
+            variables: ["x"],
+            relations: true,
+            maxLength: 32,
+          },
+        ],
+      })),
       {
         id: "r4",
         label: "How many solutions the last line shows",
@@ -624,7 +655,7 @@ export function solutionCountSteps(
     throw new Error("Key is not credited");
   if (kind === 2 && leftConst === e) throw new Error("a = b collapsed");
   return stamp(meta, seed, "solution-count-steps", {
-    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${c >= 0 ? "+" : ""}${c}x = ${lin(d, e)}$ one stage at a time until you reach $x = a$, $a = a$, or $a = b$. Then say how many solutions it has.`,
+    prompt: `Transform $${a}(x${b >= 0 ? "+" : ""}${b})${added} = ${lin(d, e)}$ one stage at a time until you reach $x = a$, $a = a$, or $a = b$. Then say how many solutions it has.`,
     response,
     answer,
     workGrading,
@@ -656,10 +687,7 @@ export function linesThroughPoints(
   const den = r(1, 4);
   const num = nz(r, 1, 6);
   const m1 = fr(num, den);
-  const m2 =
-    kind === "intersect"
-      ? fr(num + nz(r, 1, 3), den)
-      : m1;
+  const m2 = kind === "intersect" ? fr(num + nz(r, 1, 3), den) : m1;
   const b1 = r(-4, 4);
   const b2 = kind === "same" ? b1 : b1 + nz(r, 1, 4);
   const on = (m: Fr, b: number, t: number) => fadd(fmul(m, fr(t)), fr(b));
@@ -670,7 +698,9 @@ export function linesThroughPoints(
     if (Math.abs(x) > 10 || Math.abs(y.n) > 10) return null;
     return [x, y.n];
   };
-  const ts = [-3, -2, -1, 1, 2, 3].filter((t) => point(m1, b1, t) && point(m2, b2, t));
+  const ts = [-3, -2, -1, 1, 2, 3].filter(
+    (t) => point(m1, b1, t) && point(m2, b2, t),
+  );
   if (ts.length < 4) throw new Error("Need four parameters");
   const p1 = point(m1, b1, ts[0]!);
   const p2 = point(m1, b1, ts[1]!);
@@ -744,8 +774,8 @@ export function linesThroughPoints(
     choiceFeedback: chosen.feedback,
     hint: `The first line passes through ${pair(p1)} and ${pair(p2)}. The second line passes through ${pair(q1)} and ${pair(q2)}. Subtract the $y$-coordinates and the $x$-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
     explanation: [
-      `Slope of line 1: $(${p2[1]} - ${p1[1]}) / (${p2[0]} - ${p1[0]}) = ${slopeText(s1)}$.`,
-      `Slope of line 2: $(${q2[1]} - ${q1[1]}) / (${q2[0]} - ${q1[0]}) = ${slopeText(s2)}$.`,
+      `Slope of line 1: ${tex(`(${p2[1]} − ${term(p1[1])}) / (${p2[0]} − ${term(p1[0])}) = ${slopeText(s1)}`)}.`,
+      `Slope of line 2: ${tex(`(${q2[1]} − ${term(q1[1])}) / (${q2[0]} − ${term(q1[0])}) = ${slopeText(s2)}`)}.`,
       same
         ? `The slopes match and the $y$-intercepts both equal ${ftxt(i1)}, so the lines are the same.`
         : parallel
@@ -1156,7 +1186,9 @@ export function feeGraph(seed: string): GeneratedProblem {
       label: `${open ? "An open" : "A filled"} circle at ${Math.abs(forgottenFee - m.b) > 0.2 ? forgottenFee : forgottenRate} with the ray shaded ${left ? "left" : "right"}.`,
     },
   ];
-  if (new Set(scenes.map((s) => JSON.stringify([s.b, s.left, s.open]))).size < 4)
+  if (
+    new Set(scenes.map((s) => JSON.stringify([s.b, s.left, s.open]))).size < 4
+  )
     throw new Error("Need distinct graphs");
   const order = shuffle(r, scenes);
   const options = order.map((s, i) => ({
@@ -1168,11 +1200,12 @@ export function feeGraph(seed: string): GeneratedProblem {
   const feedback: Record<string, string> = {};
   order.forEach((s, i) => {
     if (!s.correct)
-      feedback[figureOptionIds[i]!] = s.open !== open
-        ? "The circle does not match the sign. A strict sign is open."
-        : s.left !== left
-          ? "Test 0 in the original inequality before shading."
-          : "That boundary drops the fee or the rate.";
+      feedback[figureOptionIds[i]!] =
+        s.open !== open
+          ? "The circle does not match the sign. A strict sign is open."
+          : s.left !== left
+            ? "Test 0 in the original inequality before shading."
+            : "That boundary drops the fee or the rate.";
   });
   const response: FigureChoiceResponse = {
     kind: "figure-choice",
@@ -1421,7 +1454,11 @@ export function intersectionReason(seed: string): GeneratedProblem {
   const r = clauseStream(meta.id, seed);
   const m1 = pick(r, SLOPES);
   let m2 = pick(r, SLOPES);
-  if (feq(m1, m2)) m2 = pick(r, SLOPES.filter((m) => !feq(m, m1)));
+  if (feq(m1, m2))
+    m2 = pick(
+      r,
+      SLOPES.filter((m) => !feq(m, m1)),
+    );
   const qx = r(-1, 1) * m1.d * m2.d;
   if (Math.abs(qx) > 8) throw new Error("Crossing off the grid");
   const qy = r(-4, 4);
@@ -1432,9 +1469,7 @@ export function intersectionReason(seed: string): GeneratedProblem {
   const candidates = [-6, -4, -2, 2, 4, 6]
     .map((step) => latticeLine(m1, b1, qx + step * m1.d))
     .filter((p): p is [number, number] => !!p);
-  const P = candidates.find(
-    (p) => p[1] !== b2 + (m2.n * p[0]) / m2.d,
-  );
+  const P = candidates.find((p) => p[1] !== b2 + (m2.n * p[0]) / m2.d);
   const others = [-6, -4, -2, 2, 4, 6]
     .map((step) => latticeLine(m2, b2, qx + step * m2.d))
     .filter((p): p is [number, number] => !!p);
@@ -1495,11 +1530,14 @@ export function intersectionReason(seed: string): GeneratedProblem {
     },
   ]);
   return stamp(meta, seed, "intersection-reason", {
-    prompt: `Line 1 is $y = ${ftxt(m1)}x + ${b1}$. Line 2 is $y = ${ftxt(m2)}x + ${b2}$. $P$ is $(${P[0]}, ${P[1]})$, $Q$ is $(${qx}, ${qy})$, and $R$ is $(${R[0]}, ${R[1]})$.`,
+    prompt: `${shownSystem([
+      [lineText(m1, b1), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} $P$ is $(${P[0]}, ${P[1]})$, $Q$ is $(${qx}, ${qy})$, and $R$ is $(${R[0]}, ${R[1]})$.`,
     response: built.response,
     answer: built.answer,
     figure: { kind: "scene", scene },
-    hint: `Line 1 is $y = ${ftxt(m1)}x + ${b1}$ and line 2 is $y = ${ftxt(m2)}x + ${b2}$. A solution of the system is on both lines. Test $P(${P[0]}, ${P[1]})$, $Q(${qx}, ${qy})$ and $R(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
+    hint: `Line 1 is ${tex(lineText(m1, b1))} and line 2 is ${tex(lineText(m2, b2))}. A solution of the system is on both lines. Test $P(${P[0]}, ${P[1]})$, $Q(${qx}, ${qy})$ and $R(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
     explanation: [
       `$Q(${qx}, ${qy})$ is on both lines, so both equations are true there.`,
       `$P$ is on line 1 only: ${P[1]} equals the first line and not the second.`,
@@ -1512,7 +1550,10 @@ export function intersectionReason(seed: string): GeneratedProblem {
 export function plotLine(seed: string): GeneratedProblem {
   const meta = metaOf("system-line-points");
   const r = clauseStream(meta.id, seed);
-  const m = pick(r, SLOPES.filter((s) => s.d <= 2));
+  const m = pick(
+    r,
+    SLOPES.filter((s) => s.d <= 2),
+  );
   const b = r(-3, 3);
   const grid = {
     xMin: -8,
@@ -1538,10 +1579,16 @@ export function plotLine(seed: string): GeneratedProblem {
     ordered: false,
     connect: "line",
   };
-  const m2 = pick(r, SLOPES.filter((s) => !feq(s, m)));
+  const m2 = pick(
+    r,
+    SLOPES.filter((s) => !feq(s, m)),
+  );
   const b2 = b + nz(r, 1, 3);
   return stamp(meta, seed, "plot-and-estimate", {
-    prompt: `The system is $y = ${ftxt(m)}x + ${b}$ and $y = ${ftxt(m2)}x + ${b2}$. Plot two lattice points on the first line. The line through your points is the first equation; the crossing is a separate question.`,
+    prompt: `The system is ${shownSystem([
+      [lineText(m, b), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} Plot two lattice points on the first line. The line through your points is the first equation; the crossing is a separate question.`,
     response,
     answer: serializePlot(answerPoints, false),
     pointGrading: { mode: "on-line", ...line },
@@ -1551,9 +1598,9 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: `The first line is $y = ${ftxt(m)}x + ${b}$. Pick two $x$-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${b}. Those points are on the first line.`,
+    hint: `The first line is ${tex(lineText(m, b))}. Pick two $x$-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
     explanation: [
-      `On $y = ${ftxt(m)}x + ${b}$, an $x$ that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer $y$.`,
+      `On ${tex(lineText(m, b))}, an $x$ that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer $y$.`,
       `One such point is $(${answerPoints[0]![0]}, ${answerPoints[0]![1]})$. Another is $(${answerPoints[1]![0]}, ${answerPoints[1]![1]})$.`,
       "Any two distinct lattice points on that line are accepted. Line 2 is already drawn and is not part of this plot.",
     ],
@@ -1567,7 +1614,10 @@ export function crossingEstimate(seed: string): GeneratedProblem {
   const meta = metaOf("system-crossing-estimate");
   const r = clauseStream(meta.id, seed);
   const m1 = pick(r, SLOPES);
-  let m2 = pick(r, SLOPES.filter((m) => !feq(m, m1)));
+  let m2 = pick(
+    r,
+    SLOPES.filter((m) => !feq(m, m1)),
+  );
   const b1 = r(-3, 3);
   const b2 = r(-3, 3);
   const x = fdiv(fsub(fr(b2), fr(b1)), fsub(m1, m2));
@@ -1595,7 +1645,8 @@ export function crossingEstimate(seed: string): GeneratedProblem {
         ) > 0.5),
   );
   const unique = [...new Set(far)];
-  if (!unique.includes(key) || unique.length < 4) throw new Error("Distractors");
+  if (!unique.includes(key) || unique.length < 4)
+    throw new Error("Distractors");
   const rows = unique.slice(0, 4).map((label) => ({
     label,
     correct: label === key,
@@ -1610,7 +1661,10 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
     .scene({ title: "Estimate the crossing" });
   return stamp(meta, seed, "plot-and-estimate", {
-    prompt: `The lines are $y = ${ftxt(m1)}x + ${b1}$ and $y = ${ftxt(m2)}x + ${b2}$. Which ordered pair best estimates where they cross?`,
+    prompt: `The lines are ${shownSystem([
+      [lineText(m1, b1), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} Which ordered pair best estimates where they cross?`,
     response: {
       kind: "choice",
       label: "Choose the estimate",
@@ -1619,7 +1673,7 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
     figure: { kind: "scene", scene },
-    hint: `The lines are $y = ${ftxt(m1)}x + ${b1}$ and $y = ${ftxt(m2)}x + ${b2}$. Follow them to where they meet. Read $x$ and $y$ to the nearest half unit. A $y$-intercept and a swapped pair are not the crossing.`,
+    hint: `The lines are ${tex(lineText(m1, b1))} and ${tex(lineText(m2, b2))}. Follow them to where they meet. Read $x$ and $y$ to the nearest half unit. A $y$-intercept and a swapped pair are not the crossing.`,
     explanation: [
       `Exactly, $x = ${ftxt(x)}$ and $y = ${ftxt(y)}$.`,
       `The nearest half-unit pair is $${key}$, within a quarter unit of the exact crossing.`,
@@ -1640,7 +1694,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
   const x = r(-6, 8);
   const leftConst = a * b;
   const d = none ? leftConst + nz(r, 1, 5) : (a - c) * x + leftConst;
-  const eq = `${a}(x${b >= 0 ? "+" : ""}${b}) = ${c}x${d >= 0 ? "+" : ""}${d}`;
+  const eq = `${a}(x${b >= 0 ? "+" : ""}${b}) = ${c === 1 ? "x" : `${c}x`}${d >= 0 ? "+" : ""}${d}`;
   const expandedLeft = a * x + leftConst;
   const checkX = none ? 0 : x;
   const sideL = a * (checkX + b);
@@ -1715,16 +1769,16 @@ export function assumeCheck(seed: string): GeneratedProblem {
         ]
       : [
           "We supposed a solution exists, so if there is one it must be the number the chain reached.",
-          `Substitute ${x} in the original: $${a}(${checkX} + ${b}) = ${sideL}$ and $${c}(${checkX}) + ${d} = ${sideR}$.`,
+          `Substitute ${x} in the original: ${tex(`${a}(${checkX}${plus(b)}) = ${sideL}`)} and ${tex(`${c}(${checkX})${plus(d)} = ${sideR}`)}.`,
           "The two sides match, so the number really is a solution.",
         ],
   });
 }
 
-const coef = (n: number, v: string) =>
-  n === 1 ? v : n === -1 ? `-${v}` : `${n}${v}`;
-const plus = (n: number) => (n < 0 ? ` - ${-n}` : ` + ${n}`);
-
+/** ax + by, dropping a coefficient of 1 or a zero term: "x", "−x", " + y", " − y". */
+const side = (xCoef: number, yCoef: number) => twoTerm(xCoef, yCoef);
+const equation = (xCoef: number, yCoef: number, right: number) =>
+  `${side(xCoef, yCoef)} = ${n(right)}`;
 export function scaledElimination(seed: string): GeneratedProblem {
   const meta = metaOf("scaled-elimination");
   const r = clauseStream(meta.id, seed);
@@ -1751,21 +1805,19 @@ export function scaledElimination(seed: string): GeneratedProblem {
     Math.abs(f) > 40
   )
     throw new Error("Need a clean elimination");
-  const side = (x: number, y: number) =>
-    `${x}x${y < 0 ? "" : "+"}${y}y`;
   const left1 = side(a, b);
   const left2 = side(d, e);
-  const key = `$${coef(nx, "x")} = ${nr}$`;
-  const unscaled = `$${coef(nx, "x")} = ${f + c}$`;
-  const subtracted = `$${coef(d - k * a, "x")}${e - k * b >= 0 ? "+" : ""}${e - k * b}y = ${f - k * c}$`;
-  const scaledE2 = `$${coef(k * d, "x")}${k * e >= 0 ? "+" : ""}${k * e}y = ${k * f}$`;
+  const key = tex(equation(nx, 0, nr));
+  const unscaled = tex(equation(nx, 0, f + c));
+  const subtracted = tex(equation(d - k * a, e - k * b, f - k * c));
+  const scaledE2 = tex(equation(k * d, k * e, k * f));
   const labels = [key, unscaled, subtracted, scaledE2];
   if (new Set(labels).size !== 4) throw new Error("Elimination labels");
   const general = r(0, 1) === 0;
   const parts = [
     {
       id: "sum",
-      label: "Which equation is $E2 + k·E1$?",
+      label: "Which equation is $E2 + k\\cdot E1$?",
       choices: labels,
       correct: key,
     },
@@ -1773,35 +1825,46 @@ export function scaledElimination(seed: string): GeneratedProblem {
       id: "why",
       label: "Why does the new system have the same solutions?",
       choices: [
-        "Adding $k·E1$ keeps solutions, and subtracting $k·E1$ brings $E2$ back",
+        "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
         "Scaling $E1$ does not change the system",
         "An equation in only $x$ has the same solutions as $E2$",
         "Two systems that share one equation share every solution",
       ],
       correct:
-        "Adding $k·E1$ keeps solutions, and subtracting $k·E1$ brings $E2$ back",
+        "Adding $k\\cdot E1$ keeps solutions, and subtracting $k\\cdot E1$ brings $E2$ back",
     },
   ];
   if (general)
     parts.push({
       id: "gen",
       label: "What is $(d + ka)x + (e + kb)y$ at a solution?",
-      choices: [`${nr}, because it equals $f + kc$`, `${f + c}`, `${k * f + k * c}`, "It cannot be known without numbers"],
+      choices: [
+        `${nr}, because it equals $f + kc$`,
+        `${f + c}`,
+        `${k * f + k * c}`,
+        "It cannot be known without numbers",
+      ],
       correct: `${nr}, because it equals $f + kc$`,
     });
   const built = multi(r, parts);
   return stamp(meta, seed, "scaled-multiple", {
-    prompt: `$E1$: $${left1} = ${c}$. $E2$: $${left2} = ${f}$. The system is replaced by $E1$ and $E2 + ${k}·E1$.`,
+    prompt: `${shownSystem(
+      [
+        [`${left1} = ${c}`, "E1"],
+        [`${left2} = ${f}`, "E2"],
+      ],
+      true,
+    )}\n\nThe system is replaced by $E1$ and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
-    hint: `$E1$ is $${left1} = ${c}$, and the new system uses $E2 + ${k}·E1$. Multiply every term of $E1$ by ${k}, then add matching terms to $E2$. The new equation is reversible: subtract $${k}·E1$ to get $E2$ back.`,
+    hint: `$E1$ is ${tex(`${left1} = ${c}`)}, and the new system uses ${addedToE2(k)}. Multiply every term of $E1$ by ${term(k)}, then add matching terms to $E2$. The new equation is reversible: subtract ${scaledE1(k)} to get $E2$ back.`,
     explanation: [
-      `$${k}·E1$ is $${coef(k * a, "x")}$ and $${coef(k * b, "y")}$ equal to ${k * c}.`,
-      `Add $E2$: ${key}. The $y$ terms are $${e} + ${term(k)}(${b}) = 0$.`,
+      `${scaledE1(k)} is ${tex(termText(k * a, "x"))} and ${tex(termText(k * b, "y"))} equal to ${k * c}.`,
+      `Add $E2$: ${tex(`${termText(nx, "x")} = ${n(nr)}`)}. The $y$ terms are ${tex(`${e} + ${term(k)}(${b}) = 0`)}.`,
       `The unscaled right side would be ${f + c}, which is not ${nr}.`,
       general
-        ? `At a solution, $E2$ contributes ${f} and $k·E1$ contributes ${k * c}, so the sum is ${nr}.`
-        : "Subtracting $k·E1$ from the new equation returns $E2$, so nothing was gained or lost.",
+        ? `At a solution, $E2$ contributes ${f} and ${scaledE1(k)} contributes ${k * c}, so the sum is ${nr}.`
+        : "Subtracting $k\\cdot E1$ from the new equation returns $E2$, so nothing was gained or lost.",
     ],
   });
 }

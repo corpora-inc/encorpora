@@ -151,7 +151,7 @@ try {
       const [issued] = await Promise.all([
         batch,
         page
-          .getByRole("button", { name: "Practice this", exact: true })
+          .getByRole("link", { name: /^Try this problem type/ })
           .click(),
       ]);
       assert.equal(issued.status(), 200);
@@ -413,7 +413,7 @@ try {
         const [correctIssued] = await Promise.all([
           correctBatch,
           page
-            .getByRole("button", { name: "Practice this", exact: true })
+            .getByRole("link", { name: /^Try this problem type/ })
             .click(),
         ]);
         assert.equal(
@@ -446,7 +446,7 @@ try {
         const [skippedIssued] = await Promise.all([
           skippedBatch,
           page
-            .getByRole("button", { name: "Practice this", exact: true })
+            .getByRole("link", { name: /^Try this problem type/ })
             .click(),
         ]);
         assert.equal(
@@ -535,7 +535,7 @@ try {
     const [graphIssued] = await Promise.all([
       graphBatch,
       graphPage
-        .getByRole("button", { name: "Practice this", exact: true })
+        .getByRole("link", { name: /^Try this problem type/ })
         .click(),
     ]);
     assert.equal(graphIssued.status(), 200);
@@ -635,7 +635,7 @@ try {
       response.request().postDataJSON()?.templateId === templateId,
   );
   await page
-    .getByRole("button", { name: "Practice this", exact: true })
+    .getByRole("link", { name: /^Try this problem type/ })
     .click();
   const draftBatch = await focused;
   assert.ok(

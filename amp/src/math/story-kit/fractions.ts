@@ -1,3 +1,4 @@
+import { withArticle } from "../agreement";
 // Grade-4 fraction contexts. Numbers stay in the caller's model; this file
 // only chooses a realistic object, unit, and sentence. Money is never written
 // with "$" (that character opens TeX). Names come from ./names.
@@ -613,8 +614,8 @@ export function renameStory(
     pieces
       ? `${name} cuts each of the ${b} equal pieces of a chocolate bar into ${k} smaller bites.`
       : "",
-    `${name} has ${a}/${b} of a ${whole}. ${name} cuts each 1/${b} piece into ${k} equal smaller pieces.`,
-    `${name} shades ${a}/${b} of a ${whole}, then splits each shaded piece into ${k} equal smaller pieces.`,
+    `${name} has ${a}/${b} of ${withArticle(whole)}. ${name} cuts each 1/${b} piece into ${k} equal smaller pieces.`,
+    `${name} shades ${a}/${b} of ${withArticle(whole)}, then splits each shaded piece into ${k} equal smaller pieces.`,
   ].filter(Boolean);
   return endsWith(pick(r, frames), equation);
 }
@@ -646,7 +647,7 @@ export function multiplierStory(
           : "",
         ...SPLIT_WHOLES.map(
           (whole) =>
-            `${name} has ${a}/${b} of a ${whole}. ${name} cuts each piece into ${k} equal smaller pieces.`,
+            `${name} has ${a}/${b} of ${withArticle(whole)}. ${name} cuts each piece into ${k} equal smaller pieces.`,
         ),
       ].filter(Boolean);
   return endsWith(pick(r, frames), equation);

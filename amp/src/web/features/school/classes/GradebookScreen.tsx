@@ -27,6 +27,7 @@ import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
+import { CurveSheet, CurveStrip } from "./GradeCurve";
 import {
   downloadGradebook,
   downloadOneRoster,
@@ -187,8 +188,9 @@ function ExportSheet({
   );
 }
 
-/** The one number a teacher sets. Zero is no target, which reads as the class's
- * usual week. Changes settle before they save, so stepping isn't a stream of
+/** The one number a teacher sets. A school class starts at its school's target,
+ * and stepping back to it follows the school again; a family's starts at "Not
+ * set". Changes settle before they save, so stepping isn't a stream of
  * writes. */
 /** Exported for Settings, where a small class sets it. */
 export function WeeklyTarget({
@@ -204,6 +206,7 @@ export function WeeklyTarget({
 }) {
   const save = useSetTarget(session, place);
   const stored = book.weeklyTargetMinutes ?? 0;
+  const inherited = book.inheritedTargetMinutes;
   const [value, setValue] = useState(stored);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
@@ -220,7 +223,7 @@ export function WeeklyTarget({
     <Stepper
       label="Weekly target"
       value={value}
-      min={0}
+      min={inherited === null ? 0 : 15}
       max={300}
       step={15}
       format={(minutes) => (minutes === 0 ? "Not set" : `${minutes} min`)}
@@ -229,7 +232,7 @@ export function WeeklyTarget({
         clearTimeout(timer.current);
         timer.current = setTimeout(() => {
           timer.current = undefined;
-          save.mutate(next === 0 ? null : next, {
+          save.mutate(next === 0 || next === inherited ? null : next, {
             onError: (error) => {
               setValue(stored);
               onError(
@@ -266,6 +269,7 @@ function ExampleGrade() {
             high: 90,
             letters: "B to A−",
             components: [],
+            curve: null,
           }}
         />
       </div>
@@ -421,11 +425,20 @@ export function GradebookScreen() {
     </div>
   );
   const missing = rows.length - entered;
+  // A curve ranks a class, so it needs one with a letter to give.
+  const curved =
+    !!data?.curve &&
+    rows.length > 1 &&
+    !rows.some((row) => row.suggestion.status === "facts-only");
+  const curveOpen =
+    curved && editable && (search.curve === 1 || search.curve === "1");
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
     rows.length > 0 &&
-    rows.every((row) => row.suggestion.status !== "ready" && !row.final);
+    rows.every(
+      (row) => row.suggestion.status === "not-enough-work" && !row.final,
+    );
   return (
     <ClassFrame
       org={place.org}
@@ -577,7 +590,10 @@ export function GradebookScreen() {
                       _splat: classUrl(place.org, place.class, "report-cards"),
                     }}
                     search={{ term: term.id } as never}
-                    className={buttonClass("quiet", "", "start")}
+                    // Beside Export, never pulled over it: a start-aligned
+                    // quiet button lines up with a column, and this one sits
+                    // in a row.
+                    className={buttonClass("quiet")}
                   >
                     Report cards
                   </Link>
@@ -591,6 +607,13 @@ export function GradebookScreen() {
                   )}
                 </div>
               </div>
+              {curved && (
+                <CurveStrip
+                  book={data}
+                  term={term}
+                  onEdit={editable ? () => set({ curve: 1 }) : null}
+                />
+              )}
               <DataGrid
                 label={`${term.name} grades`}
                 columns={columns}
@@ -632,6 +655,20 @@ export function GradebookScreen() {
             onError={setError}
             onSaved={setAnnouncement}
           />
+          {curved && editable && (
+            <CurveSheet
+              open={curveOpen}
+              onOpenChange={(next) => {
+                if (!next) set({ curve: undefined });
+              }}
+              session={session}
+              place={place}
+              book={data}
+              term={term}
+              onSaved={setMessage}
+              onError={setError}
+            />
+          )}
           <ExportSheet
             open={search.export === 1 || search.export === "1"}
             onOpenChange={(next) => {

@@ -2,6 +2,13 @@ import { touchDemoOfPersonSql } from "./demo/sql.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { ACTIVE_STUDENT, activeToday, hashStudentToken } from "./principal.js";
+import {
+  helpEventSchema,
+  helpEventsCte,
+  helpRows,
+  isKnownSkill,
+  MAX_HELP_EVENTS,
+} from "./help-events.js";
 
 /** Evidence read model: rollups written by the `amp_attempts` trigger, level
  * days written by `/batches`, and the student heartbeat. Every read takes a
@@ -15,10 +22,16 @@ export const activitySurfaces = [
   "feedback",
   "map",
   "other",
+  // Help showing over the route: its time is its own (migration 0111).
+  "hint",
+  "video",
+  "example",
 ] as const;
 /** Longest time one heartbeat can claim, and the slack over wall time. */
 export const HEARTBEAT_MAX_MS = 90_000;
 export const HEARTBEAT_SLACK_MS = 5_000;
+/** Ten deltas and twenty help events, with room. */
+export const HEARTBEAT_BODY_LIMIT = 8192;
 
 export const heartbeatSchema = z.strictObject({
   deltas: z
@@ -26,11 +39,29 @@ export const heartbeatSchema = z.strictObject({
       z.strictObject({
         surface: z.enum(activitySurfaces),
         problemId: z.string().min(1).max(160).optional(),
+        /** The lesson's skill when no problem is showing; a skill the
+         * catalog doesn't know counts with none. */
+        skillId: z.string().min(1).max(100).optional(),
         activeMs: z.number().int().min(0).max(HEARTBEAT_MAX_MS),
       }),
     )
     .max(10),
+  /** Help opened since the last heartbeat (`help-events.ts`). */
+  events: z.array(helpEventSchema).max(MAX_HELP_EVENTS).optional(),
 });
+/** The deltas as SQL reads them: a skill only when the catalog knows it. */
+export const heartbeatDeltas = (
+  deltas: z.infer<typeof heartbeatSchema>["deltas"],
+) =>
+  JSON.stringify(
+    deltas.map(({ skillId, ...delta }) =>
+      skillId && isKnownSkill(skillId) ? { ...delta, skillId } : delta,
+    ),
+  );
+/** The deltas' skill: the problem's when it is the learner's, else the one
+ * the delta names. Shared by the student and adult heartbeats. */
+export const CREDITED_SKILL =
+  "COALESCE(i.content->'public'->>'skillId',raw.skill_id,'')";
 
 /** Credits a student's heartbeat in one statement, outside the learner lock.
  * The deltas' total is scaled down to the time since the session was last
@@ -42,7 +73,7 @@ export async function recordHeartbeat(
   token: string,
   body: unknown,
 ): Promise<boolean> {
-  const { deltas } = heartbeatSchema.parse(body);
+  const { deltas, events } = heartbeatSchema.parse(body);
   if (!/^st_[A-Za-z0-9_-]{43}$/.test(token)) return false;
   const { rows } = await pool.query(
     `WITH live AS (
@@ -57,12 +88,12 @@ export async function recordHeartbeat(
        SELECT LEAST($3::bigint,
          floor(GREATEST(0,extract(epoch FROM now()-previous))*1000)::bigint+$4::bigint) AS ms FROM live
      ), raw AS (
-       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,(d->>'activeMs')::bigint AS ms
+       SELECT d->>'surface' AS surface,d->>'problemId' AS problem_id,d->>'skillId' AS skill_id,(d->>'activeMs')::bigint AS ms
        FROM jsonb_array_elements($2::jsonb) d
      ), scale AS (
        SELECT LEAST(1,room.ms::numeric/NULLIF((SELECT sum(ms) FROM raw),0)) AS factor FROM room
      ), credited AS (
-       SELECT raw.surface,COALESCE(i.content->'public'->>'skillId','') AS skill_id,
+       SELECT raw.surface,${CREDITED_SKILL} AS skill_id,
          floor(raw.ms*COALESCE(scale.factor,1))::bigint AS ms
        FROM raw CROSS JOIN scale CROSS JOIN live
        LEFT JOIN amp_instances i ON i.id=raw.problem_id AND i.learner_id=live.learner_id
@@ -75,13 +106,14 @@ export async function recordHeartbeat(
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
      ), demo_seen AS (
        ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
-     )
+     ), ${helpEventsCte(5)}
      SELECT count(*)::int AS live FROM live`,
     [
       hashStudentToken(token),
-      JSON.stringify(deltas),
+      heartbeatDeltas(deltas),
       HEARTBEAT_MAX_MS,
       HEARTBEAT_SLACK_MS,
+      helpRows(events),
     ],
   );
   return rows[0].live === 1;

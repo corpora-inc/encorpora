@@ -141,3 +141,9 @@
   font-weight: 600;
   overflow-wrap: anywhere;
 }
+/* The chosen item of a menu that picks one: the accent tint. */
+.item[data-selected] {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  font-weight: 700;
+}

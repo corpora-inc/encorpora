@@ -31,7 +31,9 @@ test("version 1 reprints the classic complex bytes", () => {
       const problem = generateProblem(id, `classic-snap:${i}`, 1);
       assert.equal(problem.public.templateVersion, 1);
       assert.equal(problem.variant, undefined);
-      hashes.push(createHash("sha256").update(JSON.stringify(problem)).digest("hex"));
+      hashes.push(
+        createHash("sha256").update(JSON.stringify(problem)).digest("hex"),
+      );
     }
     const all = createHash("sha256").update(hashes.join("")).digest("hex");
     assert.equal(all, expected, id);
@@ -54,7 +56,11 @@ test("modulus via conjugate matches the spec seeds and never uses a zero part", 
   const joined = pyth.explanation.join("\n");
   assert.ok(joined.includes("z\\bar z=|z|^2"));
   assert.ok(joined.includes("\\sqrt{169}=13"));
-  assert.equal(/\d/.test(pyth.hint), false);
+  // The hint names this z (every hint is written from its own givens:
+  // tests/instance-hints.test.ts) and never its conjugate, product or length.
+  assert.ok(pyth.hint.includes("5"));
+  for (const part of ["169", "13", "5 + 12i", "5+12i"])
+    assert.equal(pyth.hint.includes(part), false, part);
 
   const radical = modulusParts(2, -4);
   assert.equal(radical.modulus, "$2\\sqrt{5}$");
@@ -88,7 +94,17 @@ test("modulus via conjugate matches the spec seeds and never uses a zero part", 
       (option) => option.id === JSON.parse(problem.answer).mod,
     )!.label;
     if (correct.includes("\\sqrt")) radicalCount += 1;
-    assert.equal(/\d/.test(problem.hint), false);
+    // The hint names this z, and never the product or the length.
+    assert.ok(problem.hint.includes(`$z=${body}$`), problem.hint);
+    const product = mod.options.find((option) =>
+      /^\$\d+\$$/.test(option.label),
+    )?.label;
+    assert.equal(
+      product ? problem.hint.includes(product) : false,
+      false,
+      problem.hint,
+    );
+    assert.equal(problem.hint.includes(correct), false, problem.hint);
     assert.equal(problem.answer.includes("undefined"), false);
   }
   assert.ok(radicalCount > 40, `radical family ${radicalCount}`);
@@ -99,7 +115,10 @@ test("same-number check marks both parts, not length or arctan", () => {
   assert.match(match.correct, /6\\cos \\frac\{5\\pi\}\{3\}=3/);
   assert.match(match.correct, /6\\sin \\frac\{5\\pi\}\{3\}=-3\\sqrt\{3\}/);
   assert.match(match.correct, /both name the point/);
-  assert.equal(match.wrong.some(([label]) => label.includes("\\tan")), true);
+  assert.equal(
+    match.wrong.some(([label]) => label.includes("\\tan")),
+    true,
+  );
   assert.equal(match.correct.includes("\\tan"), false);
   assert.equal(match.correct.includes("length"), false);
   const joined = match.explanation.join("\n");
@@ -125,7 +144,9 @@ test("same-number check marks both parts, not length or arctan", () => {
     if (response.kind !== "choice") continue;
     const labels = response.options.map((option) => option.label);
     assert.equal(new Set(labels).size, 4);
-    const correct = response.options.find((option) => option.id === problem.answer)!;
+    const correct = response.options.find(
+      (option) => option.id === problem.answer,
+    )!;
     assert.equal(problem.public.prompt.includes(correct.label), false);
     assert.equal(problem.hint.includes(correct.label), false);
     const family = problem.variant?.axes?.clause;
@@ -166,7 +187,9 @@ test("axis numbers keep a positive length and plot only the one point", () => {
     const response = problem.public.response;
     assert.equal(response.kind, "choice");
     if (response.kind !== "choice") continue;
-    const correct = response.options.find((option) => option.id === problem.answer)!.label;
+    const correct = response.options.find(
+      (option) => option.id === problem.answer,
+    )!.label;
     if (correct.includes("\\cos")) {
       positive += 1;
       assert.match(correct, /^\$[1-9]\d*\(/);
@@ -195,11 +218,7 @@ test("axis numbers keep a positive length and plot only the one point", () => {
     plots += 1;
     assert.equal(problem.public.response.kind, "point-plot");
     const swap = problem.answer === "[[0,-3]]" ? "[[-3,0]]" : null;
-    if (swap)
-      assert.equal(
-        gradeAnswer(problem, swap),
-        false,
-      );
+    if (swap) assert.equal(gradeAnswer(problem, swap), false);
     for (const line of problem.explanation)
       assert.equal(line.toLowerCase().includes("tan"), false);
   }
@@ -214,11 +233,16 @@ test("midpoint ask stays common and the widened axis has a non-integer midpoint"
     const problem = generateProblem("complex-distance-midpoint", `mid:${seed}`);
     if (!problem.public.prompt.startsWith("Find the midpoint")) continue;
     mid += 1;
-    if (problem.answer && /\\frac/.test(
-      problem.public.response.kind === "choice"
-        ? problem.public.response.options.find((option) => option.id === problem.answer)!.label
-        : "",
-    ))
+    if (
+      problem.answer &&
+      /\\frac/.test(
+        problem.public.response.kind === "choice"
+          ? problem.public.response.options.find(
+              (option) => option.id === problem.answer,
+            )!.label
+          : "",
+      )
+    )
       odd += 1;
   }
   assert.ok(mid / n >= 0.2, `midpoint rate ${mid}/${n}`);
@@ -226,21 +250,31 @@ test("midpoint ask stays common and the widened axis has a non-integer midpoint"
 
   let classicOdd = 0;
   for (let seed = 0; seed < 200; seed++) {
-    const problem = generateProblem("complex-distance-midpoint", `mid:${seed}`, 1);
+    const problem = generateProblem(
+      "complex-distance-midpoint",
+      `mid:${seed}`,
+      1,
+    );
     if (!problem.public.prompt.startsWith("Find the midpoint")) continue;
     const response = problem.public.response;
     if (response.kind !== "choice") continue;
-    const label = response.options.find((option) => option.id === problem.answer)!.label;
+    const label = response.options.find(
+      (option) => option.id === problem.answer,
+    )!.label;
     if (label.includes("\\frac")) classicOdd += 1;
   }
   assert.equal(classicOdd, 0);
 });
 
 test("complex clause oracle agrees on the spec fixtures", () => {
-  const run = spawnSync("python3", ["scripts/complex_clause_items_math_oracle.py"], {
-    cwd: process.cwd(),
-    encoding: "utf8",
-  });
+  const run = spawnSync(
+    "python3",
+    ["scripts/complex_clause_items_math_oracle.py"],
+    {
+      cwd: process.cwd(),
+      encoding: "utf8",
+    },
+  );
   assert.equal(run.status, 0, run.stderr || run.stdout);
   const host = spawnSync("python3", ["scripts/complex_conics_math_oracle.py"], {
     cwd: process.cwd(),

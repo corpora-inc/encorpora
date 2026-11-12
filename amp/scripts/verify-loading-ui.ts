@@ -14,6 +14,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
 import { shellScenarios, startShellFixture } from "./app-shell-fixture";
+import { todayTitle } from "./today-title";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
@@ -204,21 +205,22 @@ async function pressed(page: Page, name: RegExp, id: string) {
   const signingIn = await watch(page, () => undefined);
   alive("sign-in", signingIn);
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
-  await page
-    .getByRole("heading", {
-      name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-    })
-    .waitFor();
+  await todayTitle(page);
   await page.goto(`${fixture.origin}/overview`);
   await page.locator('.frontier-map[aria-busy="false"]').waitFor();
-  await page.locator(".go-button:not([disabled])").waitFor();
-  await pressed(page, /^(Go|Continue)$/, "go-button");
+  // A practiced learner's Overview has one Practice, the bar's: a link to
+  // practice, whose own loading shows there.
+  await page
+    .getByRole("link", { name: "Practice", exact: true })
+    .filter({ visible: true })
+    .first()
+    .click();
   await page
     .getByRole("button", { name: /^Skip/ })
     .waitFor({ timeout: 30_000 });
   check(
     new URL(page.url()).pathname === "/practice",
-    "Go opens the practice route",
+    "Practice opens the practice route",
   );
   await page.waitForTimeout(SLOW * 3);
   await pressed(page, /^Skip/, "skip-button");

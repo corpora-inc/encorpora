@@ -171,18 +171,7 @@ export function OwnRecordScreen() {
                 </Link>
               ) : undefined
             }
-            secondary={
-              <>
-                {freeLine}
-                <Link
-                  to="/learners/$learnerId/workbooks"
-                  params={{ learnerId: data.learner.id }}
-                  className={styles.quietLink}
-                >
-                  Workbooks
-                </Link>
-              </>
-            }
+            secondary={freeLine}
           />
         </div>
       </OwnPage>
@@ -195,22 +184,13 @@ export function OwnRecordScreen() {
         data-own-page
         data-wide={side ? "" : undefined}
       >
-        {/* The title, with Workbooks as one quiet button beside it
-            (docs/design/ia.md). Practicing as someone else is in the drawer,
+        {/* The title alone: where you are. Workbooks and Practicing as
+            someone else are in the drawer under Practice (docs/design/ia.md),
             the page prints itself (Cmd+P), and the bar holds the one
-            Practice. The free count is one quiet line, on a wide screen. */}
+            Practice. The free count is one quiet line. */}
         <header className={styles.titleRow}>
           <h1 id="me-title">Where you are</h1>
-          <span className={styles.titleTools}>
-            {freeLine}
-            <Link
-              to="/learners/$learnerId/workbooks"
-              params={{ learnerId: data.learner.id }}
-              className={buttonClass("quiet")}
-            >
-              Workbooks
-            </Link>
-          </span>
+          {freeLine && <span className={styles.titleTools}>{freeLine}</span>}
         </header>
         {pause}
         {/* From 1024 px with something beside it: the level on the left,
@@ -241,7 +221,7 @@ export function OwnRecordScreen() {
               )}
               {shown.objectives && (
                 <section className={teacher.recordSection}>
-                  <h2>Objectives gained</h2>
+                  <h2>Skills shown on their own</h2>
                   <RecordObjectives record={data.record} />
                 </section>
               )}

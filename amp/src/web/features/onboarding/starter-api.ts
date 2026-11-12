@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
-import type { AdultStart } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
@@ -9,7 +8,8 @@ import { rememberPlace } from "./place-memory";
 
 /** Where their own practice starts: a school-age birth year, or, past
  * school age, the start they chose (`pastSchoolAge`). */
-export type OwnStart = { birthYear: number } | { start: AdultStart };
+/** Their own practice starts from the year they were born: always enough. */
+export type OwnStart = { birthYear: number };
 /** What the starter sends: one answer and only what that answer needs. */
 export type StarterAnswer =
   | ({ as: "myself"; timezone: string } & OwnStart)

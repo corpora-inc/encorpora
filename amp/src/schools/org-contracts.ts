@@ -15,8 +15,13 @@ export const usageResource = z.object({
   students: count,
   active: count,
   minutes: count,
-  /** Median grades gained this term among students with two readings. */
+  /** Median grades gained this term among placed students, either sign. */
   growth: z.number().nullable(),
+  /** Where that median sits, 95%; null with it. */
+  growthLow: z.number().nullable().default(null),
+  growthHigh: z.number().nullable().default(null),
+  /** How many placed students that median is over. */
+  placed: count.default(0),
 });
 export const attentionAction = z.object({
   label: z.string(),
@@ -31,13 +36,8 @@ export const attentionItem = z.object({
   title: z.string(),
   detail: z.string(),
   action: attentionAction,
-});
-export const standingBin = z.object({
-  /** Grades from the student's own, low edge. Null: everything below `to`. */
-  from: z.number().nullable(),
-  /** High edge. Null: everything at or above `from`. */
-  to: z.number().nullable(),
-  students: count,
+  /** How this is decided, in one sentence. */
+  rule: z.string().optional(),
 });
 export const overviewResponse = z.object({
   org: z.object({
@@ -72,16 +72,16 @@ export const overviewResponse = z.object({
     lastMinutes: count,
   }),
   trend: z.array(
-    z.object({ week: z.string(), minutes: count, students: count }),
+    z.object({
+      week: z.string(),
+      minutes: count,
+      /** Practiced that week (`practice-rules.ts`). */
+      students: count,
+      /** Problems answered, and of those, with a hint or lesson. */
+      problems: count.default(0),
+      assisted: count.default(0),
+    }),
   ),
-  standing: z.object({
-    bins: z.array(standingBin),
-    behind: count,
-    at: count,
-    ahead: count,
-    /** Rostered with no grade on file, or no work to read yet. */
-    unplaced: count,
-  }),
   classes: z
     .array(
       usageResource.extend({
@@ -106,6 +106,99 @@ export type OverviewResponse = z.infer<typeof overviewResponse>;
 export type AttentionItem = z.infer<typeof attentionItem>;
 export type SchoolUsage = NonNullable<OverviewResponse["schools"]>[number];
 export type ClassUsage = NonNullable<OverviewResponse["classes"]>[number];
+
+/* Practice views: the heat map and dose-response. Every distribution carries
+ * its n, mean, median and sd. */
+const stat = z.object({
+  mean: z.number(),
+  median: z.number(),
+  sd: z.number(),
+});
+const fit = z.object({
+  n: count,
+  slope: z.number(),
+  intercept: z.number(),
+  r: z.number(),
+  rLow: z.number(),
+  rHigh: z.number(),
+  band: z.array(
+    z.object({
+      x: z.number(),
+      fit: z.number(),
+      low: z.number(),
+      high: z.number(),
+    }),
+  ),
+});
+export const practiceCell = z.object({
+  /** Students counted that week: on the roster by its Sunday. */
+  n: count,
+  /** Active minutes and problems per student that week. */
+  minutes: stat,
+  problems: stat,
+  /** Practiced that week, by the one rule (`practice-rules.ts`). */
+  practiced: count,
+});
+export const practiceResponse = z.object({
+  term: z.object({ name: z.string(), startsOn: isoDate, endsOn: isoDate }),
+  today: isoDate,
+  /** Every Monday of the term; a row's cells line up with them. */
+  weeks: z.array(isoDate),
+  /** This week's Monday: its cells are the week so far. */
+  current: isoDate,
+  /** Classes at a school, schools in a district. */
+  rowKind: z.enum(["class", "school"]),
+  rows: z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      /** Weekly target, minutes per student: the scale's midpoint. */
+      target: z.number().positive(),
+      /** On the roster today. */
+      students: count,
+      /** Null for weeks still to come. */
+      cells: z.array(practiceCell.nullable()),
+    }),
+  ),
+  /** Problems a week: the median student-week with any problems, over
+   * finished weeks of the term; null before there is one. */
+  problemsMidpoint: z.number().positive().nullable(),
+  dose: z.object({
+    /** Students with a growth reading this term, and those among them. */
+    placed: count,
+    /** Each placed student: [active minutes a week this term, growth in
+     * grade levels]. */
+    students: z.array(z.tuple([z.number(), z.number()])),
+    studentFit: fit.nullable(),
+    /** Each row with enough placed students: their means. */
+    groups: z.array(
+      z.object({
+        id: z.uuid(),
+        name: z.string(),
+        n: count,
+        minutes: z.number(),
+        growth: z.number(),
+      }),
+    ),
+    groupFit: fit.nullable(),
+    /** Placed students in four groups by minutes a week, each with its
+     * growth by the end of every week so far; null with too few. */
+    quartiles: z
+      .array(
+        z.object({
+          n: count,
+          from: z.number(),
+          to: z.number(),
+          weeks: z.array(stat.extend({ n: count }).nullable()),
+        }),
+      )
+      .nullable(),
+    /** The fewest points each view draws from. */
+    minimum: z.object({ students: count, groups: count }),
+  }),
+});
+export type PracticeResponse = z.infer<typeof practiceResponse>;
+export type PracticeCell = z.infer<typeof practiceCell>;
 
 export const schoolsResponse = z.object({
   schools: z.array(

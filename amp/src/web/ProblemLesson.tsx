@@ -1,4 +1,7 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import type { HelpSource } from "../schools/help-contracts";
+import { noteHelp } from "./lib/help-events";
+import { useHelpSurface } from "./lib/use-help";
 import { AnimationBoundary } from "./lesson-animation/AnimationBoundary";
 import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
@@ -100,13 +103,28 @@ function ExamplePartsView({ parts }: { parts: ExampleParts }) {
 }
 
 /** Build from a plain explanation and example to the general rule. */
+/** Where a lesson was opened, recorded with it (`help-events.ts`). */
+export type LessonHelp = { source: HelpSource; problemId?: string };
 export function ProblemLesson({
   lesson,
   onWatchFilm,
+  help,
 }: {
   lesson: ProblemLessonView;
   onWatchFilm?: () => void;
+  /** Records the lesson as opened, and its time as lesson time. */
+  help?: LessonHelp;
 }) {
+  useEffect(() => {
+    if (help)
+      noteHelp({
+        kind: "lesson",
+        source: help.source,
+        ref: lesson.templateId,
+        problemId: help.problemId,
+      });
+  }, [lesson.templateId, help?.source, help?.problemId]);
+  useHelpSurface(!!help, "lesson", help?.problemId);
   const figure = lesson.example.figure;
   // A scene with a walkthrough plays it, revealed, on the example's numbers.
   // Data displays still travel as legacy kinds; their walkthroughs are
@@ -127,6 +145,7 @@ export function ProblemLesson({
             templateId={lesson.templateId}
             film={lesson.film}
             onOpen={onWatchFilm}
+            problemId={help?.problemId}
           />
         )}
         <KeyWords key={lesson.templateId} ids={lesson.keyWords ?? []} />
@@ -139,9 +158,11 @@ export function ProblemLesson({
           <LessonVideo
             key={`${lesson.video.id}:${lesson.video.version}`}
             video={lesson.video}
+            templateId={lesson.templateId}
+            help={help}
           />
         )}
-        <section className="lesson-example">
+        <section className="lesson-example" data-template={lesson.templateId}>
           <h3>Example</h3>
           <GlossaryBlock texts={blocks.example}>
             <p className="lesson-example-prompt">

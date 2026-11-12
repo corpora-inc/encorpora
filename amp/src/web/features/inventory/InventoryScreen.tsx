@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../ui/ScreenTitle";
 import {
   CurriculumDetailsControl,
   useCurriculumDetails,
@@ -164,7 +165,7 @@ export function InventoryScreen() {
       {/* The app frame's bar holds the logo, the Progress tabs and the way to
           practice; whose record this is shows in the drawer. */}
       <div className={styles.heading}>
-        <h1>Inventory</h1>
+        <ScreenTitle>Inventory</ScreenTitle>
         {/* With grade numbers on, held while the estimate loads, so the
             title row never moves. */}
         {shown && (
@@ -204,19 +205,8 @@ export function InventoryScreen() {
         <>
           {triedAnything ? (
             <section className={styles.summary} aria-label="Totals">
+              {/* Earned and strong are counted once, on their filters. */}
               <Stat value={xp} label="XP" />
-              <Stat
-                value={earnedInArea.length}
-                label={
-                  earnedInArea.length === 1 ? "skill earned" : "skills earned"
-                }
-              />
-              <Stat
-                value={strongInArea.length}
-                label={
-                  strongInArea.length === 1 ? "strong skill" : "strong skills"
-                }
-              />
             </section>
           ) : (
             <p className={styles.lead}>

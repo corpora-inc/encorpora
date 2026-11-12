@@ -27,7 +27,9 @@
   --color-answer: #ffffff;
   --color-on-answer: #183e3a;
   --color-answer-border: #78887f;
-  --color-menu: #fffefa;
+  /* Menus and popovers too: the page cream, with a border and a shadow
+     (founder: "cream, not white"). */
+  --color-menu: #f7f6f0;
   --color-on-menu: #183e3a;
   --color-primary: #1f5f55;
   --color-on-primary: #fffefa;
@@ -85,6 +87,12 @@
   --color-on-rail: #183e3a;
   --color-course-band: #1f5f551c;
   --color-meter: #1f5f55;
+  /* A grade curve's letters, cold to hot: marks, never text fills. */
+  --color-grade-a: #1f6f5c;
+  --color-grade-b: #2f6c9c;
+  --color-grade-c: #8a6a10;
+  --color-grade-d: #b0561f;
+  --color-grade-f: #a8343a;
   /* Avatars: eight quiet identity tints. Never a status, never a strand. */
   --color-avatar-0: #dde6f0;
   --color-on-avatar-0: #2b4a6b;
@@ -117,6 +125,24 @@
   --color-brand-microsoft-green: #7fba00;
   --color-brand-microsoft-blue: #00a4ef;
   --color-brand-microsoft-yellow: #ffb900;
+  /* Practice heat: a diverging scale, cold blue (no practice) through a
+     neutral at the weekly target to hot red (twice it and more). Nine stops,
+     mixed between neighbours in OKLab (heat-scale.ts); blue against red stays
+     apart under protanopia and deuteranopia. The four dose lines are the
+     practice-time quartiles, coldest to hottest. */
+  --color-heat-0: #1d4f91;
+  --color-heat-1: #2f69b3;
+  --color-heat-2: #5f93d3;
+  --color-heat-3: #a9c6e8;
+  --color-heat-4: #e6e3da;
+  --color-heat-5: #f2c4ab;
+  --color-heat-6: #e2895f;
+  --color-heat-7: #c2502f;
+  --color-heat-8: #942b22;
+  --color-dose-1: #1d4f91;
+  --color-dose-2: #4d86cc;
+  --color-dose-3: #d9744c;
+  --color-dose-4: #942b22;
 }
 @media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -187,6 +213,11 @@
     --color-on-rail: #e9f0e8;
     --color-course-band: #8bd1b521;
     --color-meter: #6db59a;
+    --color-grade-a: #7fcfb0;
+    --color-grade-b: #8db8e3;
+    --color-grade-c: #d8b45a;
+    --color-grade-d: #eea06c;
+    --color-grade-f: #f08f8f;
     /* Avatars, stepped for the dark surface. */
     --color-avatar-0: #25384c;
     --color-on-avatar-0: #cfe0f2;
@@ -217,6 +248,19 @@
     --color-brand-microsoft-green: #7fba00;
     --color-brand-microsoft-blue: #00a4ef;
     --color-brand-microsoft-yellow: #ffb900;
+    --color-heat-0: #8fbdf0;
+    --color-heat-1: #5e98de;
+    --color-heat-2: #3d72b8;
+    --color-heat-3: #2c4a6e;
+    --color-heat-4: #2a3633;
+    --color-heat-5: #5e3a2e;
+    --color-heat-6: #b55f3c;
+    --color-heat-7: #e3784f;
+    --color-heat-8: #f5a27f;
+    --color-dose-1: #6aa6ea;
+    --color-dose-2: #3d72b8;
+    --color-dose-3: #b55f3c;
+    --color-dose-4: #ef8a63;
   }
 }
 :root[data-theme="dark"] {
@@ -287,6 +331,11 @@
   --color-on-rail: #e9f0e8;
   --color-course-band: #8bd1b521;
   --color-meter: #6db59a;
+  --color-grade-a: #7fcfb0;
+  --color-grade-b: #8db8e3;
+  --color-grade-c: #d8b45a;
+  --color-grade-d: #eea06c;
+  --color-grade-f: #f08f8f;
   /* Avatars, stepped for the dark surface. */
   --color-avatar-0: #25384c;
   --color-on-avatar-0: #cfe0f2;
@@ -317,6 +366,19 @@
   --color-brand-microsoft-green: #7fba00;
   --color-brand-microsoft-blue: #00a4ef;
   --color-brand-microsoft-yellow: #ffb900;
+  --color-heat-0: #8fbdf0;
+  --color-heat-1: #5e98de;
+  --color-heat-2: #3d72b8;
+  --color-heat-3: #2c4a6e;
+  --color-heat-4: #2a3633;
+  --color-heat-5: #5e3a2e;
+  --color-heat-6: #b55f3c;
+  --color-heat-7: #e3784f;
+  --color-heat-8: #f5a27f;
+  --color-dose-1: #6aa6ea;
+  --color-dose-2: #3d72b8;
+  --color-dose-3: #b55f3c;
+  --color-dose-4: #ef8a63;
 }
 
 /*
@@ -430,6 +492,24 @@
   /* The trailing edge of a strip that scrolls: its last pixels fade, so a cut
      label reads as "more", not as clipped. */
   --scroll-edge: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  /* A choice list that scrolls: the hidden side fades to a faint edge. */
+  --scroll-fade-down: linear-gradient(
+    to bottom,
+    #000 calc(100% - 36px),
+    rgb(0 0 0 / 0.18)
+  );
+  --scroll-fade-up: linear-gradient(
+    to top,
+    #000 calc(100% - 28px),
+    rgb(0 0 0 / 0.18)
+  );
+  --scroll-fade-both: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.18),
+    #000 28px,
+    #000 calc(100% - 36px),
+    rgb(0 0 0 / 0.18)
+  );
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;

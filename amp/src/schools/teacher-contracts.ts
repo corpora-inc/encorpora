@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { gradeCurveSchema, isValidCurve } from "./grade-curve.js";
+import { helpWeekResource } from "./help-contracts.js";
 
 /* What the teacher's screens read: the reference for these routes, and what the
    client checks every response against. */
@@ -80,6 +82,12 @@ export const todayTodoResource = z.object({
   action: todoAction,
   /** A shared gap can also go on paper: this skill, for these students. */
   groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
+  /** How this item is decided, in one sentence. */
+  rule: z.string().optional(),
+  /** "Keeps missing": each student's latest miss on the skill, to replay. */
+  misses: z
+    .array(z.object({ personId: id, attempt: z.string(), skillId: z.string() }))
+    .optional(),
 });
 export type TodayTodo = z.infer<typeof todayTodoResource>;
 /** One student's day at a glance: where they work and what they did today. */
@@ -174,7 +182,8 @@ export const termResource = z.object({
 export type TermResource = z.infer<typeof termResource>;
 const componentId = z.enum(["course", "growth", "practice", "retention"]);
 export const suggestionResource = z.object({
-  status: z.enum(["ready", "not-enough-work"]),
+  /** "facts-only": enough work, and nothing to measure a letter against. */
+  status: z.enum(["ready", "not-enough-work", "facts-only"]),
   low: z.number().nullable(),
   high: z.number().nullable(),
   /** "B to A−"; null without enough work. */
@@ -182,6 +191,23 @@ export const suggestionResource = z.object({
   components: z.array(
     z.object({ id: componentId, score: z.number().nullable() }),
   ),
+  /** Set by the teacher's curve: the 80% interval of the student's place, and
+   * the share of draws at each letter. */
+  curve: z
+    .object({
+      ranked: z.number(),
+      rankLow: z.number(),
+      rankHigh: z.number(),
+      letters: z.object({
+        A: z.number(),
+        B: z.number(),
+        C: z.number(),
+        D: z.number(),
+        F: z.number(),
+      }),
+    })
+    .nullable()
+    .default(null),
 });
 export type SuggestionResource = z.infer<typeof suggestionResource>;
 export const gradeRowResource = z.object({
@@ -200,8 +226,28 @@ export const gradebookResponse = z.object({
   weeklyTargetMinutes: z.number().nullable(),
   /** Set above this class, so it can't be changed here. */
   targetLocked: z.boolean(),
+  /** The class set its own; otherwise it follows `inheritedTargetMinutes`. */
+  targetOwn: z.boolean().default(false),
+  inheritedTargetMinutes: z.number().nullable().default(null),
   canEdit: z.boolean(),
   students: z.array(gradeRowResource),
+  /** The teacher's curve for this term (frozen with a closed one), and a
+   * starting curve from the class's own work for the whole roster. */
+  curve: z
+    .object({
+      own: gradeCurveSchema.nullable(),
+      proposed: gradeCurveSchema,
+      /** How many students the standard scale puts at each letter now. */
+      standard: z.object({
+        A: z.number(),
+        B: z.number(),
+        C: z.number(),
+        D: z.number(),
+        F: z.number(),
+      }),
+    })
+    .nullable()
+    .default(null),
 });
 export type GradebookResponse = z.infer<typeof gradebookResponse>;
 
@@ -212,8 +258,11 @@ export const workResultIds = [
   "paper",
 ] as const;
 export const workItemResource = z.object({
+  /** The attempt's id: where its replay lives (`work/<id>`). */
   id: z.string(),
   day,
+  /** When it was answered (ISO). */
+  at: z.string(),
   prompt: z.string(),
   answer: z.string().nullable(),
   response: z.string().nullable(),
@@ -223,6 +272,66 @@ export const workItemResource = z.object({
   strand: z.string(),
 });
 export type WorkItem = z.infer<typeof workItemResource>;
+export const answerHelpKinds = [
+  "hint",
+  "lesson",
+  "video",
+  "example",
+  "person",
+] as const;
+/** One answer replayed as the student saw it (`work-replay.ts`): the served
+ * problem for the practice renderer, the answer marked as after Check, and
+ * what surrounded it. Staff who can read the student, and a family's parent,
+ * read it; a student never does. */
+export const workReplayResponse = z.object({
+  student: z.object({ id, first: z.string() }),
+  item: workItemResource,
+  skillId: z.string(),
+  /** The problem as it was served (`served`), rebuilt from its template,
+   * version and seed when the stored copy is incomplete (`rebuilt`), or not
+   * drawable at all (`unavailable`): then only `item`'s text is shown. */
+  source: z.enum(["served", "rebuilt", "unavailable"]),
+  /** A `PublicProblem`, checked by the renderer's own types. */
+  problem: z.record(z.string(), z.unknown()).nullable(),
+  /** Where the problem came from: its template, version and seed, and a
+   * digest of what was drawn. Null when the stored attempt lacks them. */
+  origin: z
+    .object({
+      templateId: z.string(),
+      version: z.number().nullable(),
+      seed: z.string(),
+      digest: z.string(),
+    })
+    .nullable(),
+  outcome: z.object({
+    correct: z.boolean(),
+    assisted: z.boolean(),
+    response: z.string(),
+    answer: z.string(),
+    explanation: z.array(z.string()),
+    parts: z.array(z.boolean()).optional(),
+    /** A paper mark entered by an adult, not an answer in the app. */
+    paper: z.boolean(),
+  }),
+  /** The help this answer had; null for answers stored before it was
+   * recorded. */
+  help: z.array(z.enum(answerHelpKinds)).nullable(),
+  /** Seconds since the student's answer before, when that was in the same
+   * sitting; null otherwise. */
+  seconds: z.number().nullable(),
+  /** Every answer to this same problem (template and seed), oldest first. */
+  tries: z.array(
+    z.object({ id: z.string(), at: z.string(), result: z.enum(workResultIds) }),
+  ),
+  /** The student's answer before and after this one (in `skill` when the
+   * replay is narrowed to one skill). */
+  previous: z.string().nullable(),
+  next: z.string().nullable(),
+  /** The skill's lesson on Pathways, with this problem type's short lesson
+   * when it has one. */
+  lesson: z.object({ skillId: z.string(), templateId: z.string().nullable() }),
+});
+export type WorkReplayResponse = z.infer<typeof workReplayResponse>;
 export const evidenceResponse = z.object({
   student: person.extend({ first: z.string() }),
   class: classSummary,
@@ -232,6 +341,8 @@ export const evidenceResponse = z.object({
   suggestion: suggestionResource,
   /** "Why a B?" */
   question: z.string(),
+  /** Where the teacher's curve put the student, in one sentence. */
+  basis: z.string().nullable().default(null),
   lines: z.array(
     z.object({
       id: componentId,
@@ -266,6 +377,8 @@ export const timeResponse = z.object({
   /** Each Monday in the range. */
   weeks: z.array(day),
   weeklyTargetMinutes: z.number().nullable(),
+  /** Help the class used, a week at a time (`help-events.ts`). */
+  help: z.array(helpWeekResource),
   students: z.array(
     z.object({
       id,
@@ -273,7 +386,12 @@ export const timeResponse = z.object({
       first: z.string(),
       minutes: z.number(),
       problems: z.number(),
-      days: z.array(z.object({ day, minutes: z.number() })),
+      /** In this class over these days: before `from`, not on its roster. */
+      from: day.optional(),
+      to: day.optional(),
+      days: z.array(
+        z.object({ day, minutes: z.number(), problems: z.number().default(0) }),
+      ),
     }),
   ),
   skills: z.array(
@@ -363,6 +481,8 @@ export const studentRecordResponse = progressRecordResource.extend({
       final: z.string().nullable(),
     }),
   ),
+  /** Help the student used over the record's 12 weeks. */
+  help: z.array(helpWeekResource),
   signIn: z.object({
     cardIssuedAt: z.string().nullable(),
     picturesSet: z.boolean(),
@@ -385,6 +505,13 @@ export const finalGradeSchema = z.strictObject({
 export const closeTermSchema = z.strictObject({ term: id });
 export const weeklyTargetSchema = z.strictObject({
   minutes: z.number().int().min(1).max(10_080).nullable(),
+});
+/** A curve for one open term, or null for the standard scale. */
+export const gradeCurveWriteSchema = z.strictObject({
+  term: id,
+  curve: gradeCurveSchema
+    .refine(isValidCurve, { message: "The ranges can't hold the class" })
+    .nullable(),
 });
 export const gradebookQuerySchema = z.strictObject({ term: id.optional() });
 export const evidenceQuerySchema = z.strictObject({

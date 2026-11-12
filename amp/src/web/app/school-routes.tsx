@@ -28,6 +28,10 @@ import {
   yearsOptions,
 } from "../features/school/org/org-api";
 import {
+  classStandingOptions,
+  orgStandingOptions,
+} from "../features/school/standing/standing-api";
+import {
   markSchoolSignup,
   orgHome,
   setupSteps,
@@ -82,8 +86,10 @@ export function schoolRoutes(root: AnyRoute) {
     path: string,
     component: ReturnType<typeof screen>,
     load?: (session: AuthSession, orgId: string) => unknown[],
+    staticData?: { overList?: boolean },
   ) =>
     createRoute({
+      staticData,
       getParentRoute: () => root,
       path: `/school/$org${path}`,
       beforeLoad: staffScreen,
@@ -97,12 +103,24 @@ export function schoolRoutes(root: AnyRoute) {
       },
       component,
     });
+  const orgPlace = createRoute({
+    getParentRoute: () => root,
+    path: "/school/$org",
+  });
+  // Any other address in a school: not found, in the school's frame.
+  const missing = screen(
+    () => import("../features/school/MissingScreen"),
+    "SchoolMissingScreen",
+  );
   const setup = screen(
     () => import("../features/school/SetupScreen"),
     "SetupScreen",
   );
   const org = () => import("../features/school/org");
+  const standing = () => import("../features/school/standing");
   const screens = {
+    standing: screen(standing, "StandingScreen"),
+    classStanding: screen(standing, "ClassStandingScreen"),
     overview: screen(org, "OverviewScreen"),
     schools: screen(org, "SchoolsScreen"),
     rollover: screen(org, "RolloverScreen"),
@@ -240,46 +258,85 @@ export function schoolRoutes(root: AnyRoute) {
         "InviteScreen",
       ),
     }),
+    // A school's own address, /school/<org>: the overview at its index, and
+    // the in-frame not found for any other single unknown segment. The
+    // catch-all is a child, so it never matches the bare address itself.
+    orgPlace.addChildren([
+      createRoute({
+        getParentRoute: () => orgPlace,
+        path: "/",
+        // A head or district reads the overview here. A teacher, and a lone
+        // teacher's one-class school, go straight to their classes: no admin weight.
+        beforeLoad: async ({ location, params }) => {
+          const session = await staffSession(location);
+          const orgId = (params as unknown as { org: string }).org;
+          const org = await queryClient
+            .fetchQuery(orgOptions(session, orgId))
+            .catch(() => null);
+          if (!org) throw redirect({ to: "/school", replace: true } as never);
+          if (org.setupPending)
+            throw redirect({ ...orgHome(org), replace: true } as never);
+          const classes = await queryClient
+            .ensureQueryData(classesOptions(session, orgId))
+            .catch(() => []);
+          if (
+            !org.can?.includes("overview.read") ||
+            (org.solo === true && classes.length <= 1)
+          )
+            throw redirect({
+              // One class opens on its Today, never on a list of one.
+              to:
+                classes.length === 1
+                  ? `/school/${orgId}/classes/${classes[0]!.id}/today`
+                  : `/school/${orgId}/classes`,
+              replace: true,
+            } as never);
+          return { session };
+        },
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const orgId = (params as unknown as { org: string }).org;
+          await Promise.all([
+            frameData(session, orgId),
+            preload(overviewOptions(session, orgId)),
+            preload(orgStandingOptions(session, orgId)),
+          ]);
+        },
+        component: screens.overview,
+      }),
+      createRoute({
+        getParentRoute: () => orgPlace,
+        path: "$",
+        beforeLoad: staffScreen,
+        loader: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          await frameData(session, (params as unknown as { org: string }).org);
+        },
+        component: missing,
+      }),
+    ]),
+    // Where students stand: the school's curves, then one class's students.
+    orgScreen("/standing", screens.standing, (session, orgId) => [
+      preload(orgStandingOptions(session, orgId)),
+    ]),
     createRoute({
       getParentRoute: () => root,
-      path: "/school/$org",
-      // A head or district reads the overview here. A teacher, and a lone
-      // teacher's one-class school, go straight to their classes: no admin weight.
-      beforeLoad: async ({ location, params }) => {
-        const session = await staffSession(location);
-        const orgId = (params as unknown as { org: string }).org;
-        const org = await queryClient
-          .fetchQuery(orgOptions(session, orgId))
-          .catch(() => null);
-        if (!org) throw redirect({ to: "/school", replace: true } as never);
-        if (org.setupPending)
-          throw redirect({ ...orgHome(org), replace: true } as never);
-        const classes = await queryClient
-          .ensureQueryData(classesOptions(session, orgId))
-          .catch(() => []);
-        if (
-          !org.can?.includes("overview.read") ||
-          (org.solo === true && classes.length <= 1)
-        )
-          throw redirect({
-            // One class opens on its Today, never on a list of one.
-            to:
-              classes.length === 1
-                ? `/school/${orgId}/classes/${classes[0]!.id}/today`
-                : `/school/${orgId}/classes`,
-            replace: true,
-          } as never);
-        return { session };
-      },
+      path: "/school/$org/standing/$class",
+      // A class's drill over the school's curves: it keeps their view.
+      staticData: { overList: true },
+      beforeLoad: staffScreen,
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
-        const orgId = (params as unknown as { org: string }).org;
+        const { org: orgId, class: classId } = params as unknown as {
+          org: string;
+          class: string;
+        };
         await Promise.all([
           frameData(session, orgId),
-          preload(overviewOptions(session, orgId)),
+          preload(classStandingOptions(session, classId)),
         ]);
       },
-      component: screens.overview,
+      component: screens.classStanding,
     }),
     orgScreen("/schools", screens.schools, (session, orgId) => [
       preload(schoolsOptions(session, orgId)),
@@ -298,7 +355,36 @@ export function schoolRoutes(root: AnyRoute) {
       preload(yearsOptions(session, orgId)),
     ]),
     orgScreen("/students", screens.students),
-    orgScreen("/students/$student", screens.student),
+    // A student from the school's list keeps the list's view.
+    orgScreen("/students/$student", screens.student, undefined, {
+      overList: true,
+    }),
+    // One of the student's answers, replayed over their page (WorkReplay.tsx).
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/$org/students/$student/work/$work",
+      staticData: { overList: true },
+      beforeLoad: staffScreen,
+      loader: async ({ context, params, location }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        const { org, student, work } = params as unknown as {
+          org: string;
+          student: string;
+          work: string;
+        };
+        const { workReplayOptions } =
+          await import("../features/school/classes/teacher-api");
+        const skill = new URLSearchParams(location.searchStr).get("skill");
+        await Promise.all([
+          frameData(session, org),
+          preload(
+            workReplayOptions(session, student, work, skill ?? undefined),
+          ),
+          import("../features/school/classes/WorkReplay"),
+        ]);
+      },
+      component: screens.student,
+    }),
     orgScreen("/staff", screens.staff, (session, orgId) => [
       preload(staffOptions(session, orgId)),
     ]),
@@ -308,9 +394,14 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/calendar", screens.calendar, (session, orgId) => [
       preload(calendarOptions(session, orgId)),
     ]),
+    // Every section before the page paints, so a section never arrives
+    // late and pushes the ones below it (the license, opened by its hash).
     orgScreen("/settings", screens.settings, (session, orgId) => [
       preload(calendarOptions(session, orgId)),
       preload(licenseOptions(session, orgId)),
+      import("../features/school/classroom/api").then(({ experienceOptions }) =>
+        preload(experienceOptions(session, { kind: "org", id: orgId })),
+      ),
     ]),
     toSettings("/license", "license"),
     orgScreen("/import", screens.importer),

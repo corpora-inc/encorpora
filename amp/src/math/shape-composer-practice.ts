@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { random, shuffle } from "./distribution-practice";
@@ -460,7 +461,7 @@ export function generateShapeComposer(
     explanation: [
       "The outline shows the outside edge of the shape to make.",
       "Turn the pieces so their sides meet. Cover every part inside the outline without covering another piece.",
-      `The pieces together make a ${recipe.name}.`,
+      `The pieces together make ${withArticle(recipe.name)}.`,
       ...(variant === "from-composite"
         ? [
             "A shape made from smaller pieces is a composite shape. Use each copy as one whole piece to make the bigger shape.",

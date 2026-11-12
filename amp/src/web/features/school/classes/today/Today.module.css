@@ -347,6 +347,21 @@
   line-height: 1.5;
   text-wrap: pretty;
 }
+.todoLinks {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-3);
+  margin: 0;
+  font-size: var(--text-table-small);
+}
+.todoLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
 .todoPeople {
   display: flex;
   align-items: center;
@@ -378,4 +393,20 @@
     justify-content: flex-end;
     margin-inline-start: var(--space-5);
   }
+}
+.spread {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+.spreadTitle {
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  color: var(--color-on-surface);
+}
+.spreadStrip {
+  display: grid;
+  grid-template-columns: repeat(var(--spread-columns), minmax(0, 1fr));
+  gap: 2px;
+  max-width: calc(var(--spread-columns) * 32px);
 }

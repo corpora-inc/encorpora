@@ -1,0 +1,328 @@
+{
+  "id": "unknown-addend-story--su",
+  "title": "The missing part: whole and one part, find the gap",
+  "cast": { "teacher": {}, "learner": {} },
+  "shots": [
+    {
+      "figure": {
+        "view": [-1, 0.3, 16, 10.6],
+        "points": {
+          "B1": [0, 6.6], "B2": [15, 6.6], "B3": [15, 9.0], "B4": [0, 9.0],
+          "K2": [12, 6.6], "K3": [12, 9.0],
+          "W0": [0, 9.0], "W1": [15, 9.0],
+          "MK": [6, 7.8], "MG": [13.5, 7.8],
+          "FL0": [12, 6.6], "FL1": [1.5, 3.5], "FR0": [15, 6.6], "FR1": [13.5, 3.5],
+          "AX0": [1.5, 3.4], "AX1": [13.5, 3.4],
+          "X12": [1.5, 3.4], "X13": [5.5, 3.4], "X14": [9.5, 3.4], "X15": [13.5, 3.4],
+          "A1a": [1.5, 3.2], "A1b": [3.5, 2.2], "A1c": [5.5, 3.2],
+          "A2a": [5.5, 3.2], "A2b": [7.5, 2.2], "A2c": [9.5, 3.2],
+          "A3a": [9.5, 3.2], "A3b": [11.5, 2.2], "A3c": [13.5, 3.2],
+          "L12": [1.5, 1.4], "L13": [5.5, 1.4], "L14": [9.5, 1.4], "L15": [13.5, 1.4]
+        },
+        "parts": [
+          { "id": "whole", "poly": ["B1", "B2", "B3", "B4"], "fill": "paper", "ink": "ink", "w": 2.5, "start": true },
+          { "id": "known", "poly": ["B1", "K2", "K3", "B4"], "fill": "accent-fill", "ink": "accent", "w": 2.5 },
+          { "id": "gapbar", "poly": ["K2", "B2", "B3", "K3"], "fill": "warm-fill", "ink": "warm", "w": 2.5 },
+          { "id": "dimW", "dim": ["W0", "W1"], "side": "n", "tex": "\\text{whole } 15", "ink": "ink", "far": 0.6 },
+          { "id": "lk", "label": "12", "at": "MK", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg", "label": "\\square", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg3", "label": "3", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "fl", "group": "funnel", "seg": ["FL0", "FL1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "fr", "group": "funnel", "seg": ["FR0", "FR1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "axis", "seg": ["AX0", "AX1"], "ink": "muted", "w": 2.5 },
+          { "id": "d12", "dot": "X12", "ink": "accent", "r": 8 },
+          { "id": "d13", "dot": "X13", "ink": "warm", "r": 8 },
+          { "id": "d14", "dot": "X14", "ink": "warm", "r": 8 },
+          { "id": "d15", "dot": "X15", "ink": "warm", "r": 8 },
+          { "id": "hop1", "curve": ["A1a", "A1b", "A1c"], "ink": "warm", "w": 4 },
+          { "id": "hop2", "curve": ["A2a", "A2b", "A2c"], "ink": "warm", "w": 4 },
+          { "id": "hop3", "curve": ["A3a", "A3b", "A3c"], "ink": "warm", "w": 4 },
+          { "id": "n12", "label": "12", "at": "L12", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "n13", "label": "13", "at": "L13", "dir": "c", "size": "l", "ink": "warm" },
+          { "id": "n14", "label": "14", "at": "L14", "dir": "c", "size": "l", "ink": "warm" },
+          { "id": "n15", "label": "15", "at": "L15", "dir": "c", "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Mia has twelve shells. How many more does she need to have fifteen?",
+          "pause": 0.5,
+          "do": [
+            { "do": "problem", "text": "Mia has 12 shells. How many more does she need to have 15?", "at": "Mia" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Fifteen is the whole.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "dimW", "at": "Fifteen" },
+            { "do": "highlight", "target": "whole", "at": "whole" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Mia has twelve. That is one part.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": ["known", "lk"], "at": "twelve" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The rest is the missing part. Twelve plus box equals fifteen.",
+          "pause": 0.5,
+          "do": [
+            { "do": "show", "target": ["gapbar", "lg"], "at": "rest" },
+            { "do": "write", "tex": "12+\\square=15", "at": "Twelve" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zoom in on the gap. Start at twelve and count up to fifteen.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": ["funnel", "axis"], "at": "Zoom" },
+            { "do": "show", "target": ["d12", "n12"], "at": "twelve" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Thirteen, fourteen, fifteen.",
+          "pause": 0.5,
+          "do": [
+            { "do": "draw", "target": "hop1", "at": "Thirteen" },
+            { "do": "show", "target": ["d13", "n13"], "at": "Thirteen" },
+            { "do": "draw", "target": "hop2", "at": "fourteen" },
+            { "do": "show", "target": ["d14", "n14"], "at": "fourteen" },
+            { "do": "draw", "target": "hop3", "at": "fifteen" },
+            { "do": "show", "target": ["d15", "n15"], "at": "fifteen" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three hops. Three more shells.",
+          "pause": 0.4,
+          "do": [
+            { "do": "hide", "target": "lg", "at": "Three" },
+            { "do": "show", "target": "lg3", "at": "Three" },
+            { "do": "answer", "tex": "12+3=15", "at": "shells" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Whole and one part: find the gap.",
+          "pause": 1,
+          "do": [
+            { "do": "highlight", "target": "gapbar", "at": "gap" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1, 0.3, 16, 10.6],
+        "points": {
+          "B1": [0, 6.6], "B2": [15, 6.6], "B3": [15, 9.0], "B4": [0, 9.0],
+          "K2": [12.75, 6.6], "K3": [12.75, 9.0],
+          "W0": [0, 9.0], "W1": [15, 9.0],
+          "MG": [6.375, 7.8], "MK": [13.875, 7.8],
+          "FL0": [12.75, 6.6], "FL1": [1.5, 3.5], "FR0": [15, 6.6], "FR1": [13.5, 3.5],
+          "AX0": [1.5, 3.4], "AX1": [13.5, 3.4],
+          "X17": [1.5, 3.4], "X18": [5.5, 3.4], "X19": [9.5, 3.4], "X20": [13.5, 3.4],
+          "A1a": [13.5, 3.2], "A1b": [11.5, 2.2], "A1c": [9.5, 3.2],
+          "A2a": [9.5, 3.2], "A2b": [7.5, 2.2], "A2c": [5.5, 3.2],
+          "A3a": [5.5, 3.2], "A3b": [3.5, 2.2], "A3c": [1.5, 3.2],
+          "L17": [1.5, 1.4], "L18": [5.5, 1.4], "L19": [9.5, 1.4], "L20": [13.5, 1.4]
+        },
+        "parts": [
+          { "id": "whole", "poly": ["B1", "B2", "B3", "B4"], "fill": "paper", "ink": "ink", "w": 2.5, "start": true },
+          { "id": "gapbar", "poly": ["B1", "K2", "K3", "B4"], "fill": "warm-fill", "ink": "warm", "w": 2.5 },
+          { "id": "known", "poly": ["K2", "B2", "B3", "K3"], "fill": "accent-fill", "ink": "accent", "w": 2.5 },
+          { "id": "dimW", "dim": ["W0", "W1"], "side": "n", "tex": "\\text{whole } 20", "ink": "ink", "far": 0.6 },
+          { "id": "lk", "label": "3", "at": "MK", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg", "label": "\\square", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg17", "label": "17", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "fl", "group": "funnel", "seg": ["FL0", "FL1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "fr", "group": "funnel", "seg": ["FR0", "FR1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "axis", "seg": ["AX0", "AX1"], "ink": "muted", "w": 2.5 },
+          { "id": "d20", "dot": "X20", "ink": "accent", "r": 8 },
+          { "id": "d19", "dot": "X19", "ink": "accent", "r": 8 },
+          { "id": "d18", "dot": "X18", "ink": "accent", "r": 8 },
+          { "id": "d17", "dot": "X17", "ink": "warm", "r": 8 },
+          { "id": "hop1", "curve": ["A1a", "A1b", "A1c"], "ink": "accent", "w": 4 },
+          { "id": "hop2", "curve": ["A2a", "A2b", "A2c"], "ink": "accent", "w": 4 },
+          { "id": "hop3", "curve": ["A3a", "A3b", "A3c"], "ink": "accent", "w": 4 },
+          { "id": "n20", "label": "20", "at": "L20", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "n19", "label": "19", "at": "L19", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "n18", "label": "18", "at": "L18", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "n17", "label": "17", "at": "L17", "dir": "c", "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What goes in the box? Box plus three equals twenty.",
+          "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What goes in the box? $\\square+3=20$", "at": "What" },
+            { "do": "show", "target": "dimW", "at": "twenty" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "In a sum, order does not matter. So the three can sit at the end of the bar.",
+          "pause": 0.5,
+          "do": [
+            { "do": "show", "target": ["known", "lk"], "at": "three" },
+            { "do": "show", "target": ["gapbar", "lg"], "at": "end" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zoom in on the three, and count back from twenty. Nineteen, eighteen, seventeen.",
+          "pause": 0.5,
+          "do": [
+            { "do": "show", "target": ["funnel", "axis"], "at": "Zoom" },
+            { "do": "show", "target": ["d20", "n20"], "at": "twenty" },
+            { "do": "draw", "target": "hop1", "at": "Nineteen" },
+            { "do": "show", "target": ["d19", "n19"], "at": "Nineteen" },
+            { "do": "draw", "target": "hop2", "at": "eighteen" },
+            { "do": "show", "target": ["d18", "n18"], "at": "eighteen" },
+            { "do": "draw", "target": "hop3", "at": "seventeen" },
+            { "do": "show", "target": ["d17", "n17"], "at": "seventeen" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The gap is what is left. Seventeen.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": "gapbar", "at": "left" },
+            { "do": "hide", "target": "lg", "at": "Seventeen" },
+            { "do": "show", "target": "lg17", "at": "Seventeen" },
+            { "do": "answer", "tex": "\\square=17", "at": "Seventeen" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check. Seventeen plus three equals twenty.",
+          "pause": 1,
+          "do": [
+            { "do": "write", "tex": "17+3=20", "fresh": true, "at": "Seventeen" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-7, -0.2, 15.25, 11.0],
+        "points": {
+          "B1": [0, 6.6], "B2": [8.25, 6.6], "B3": [8.25, 9.4], "B4": [0, 9.4],
+          "K2": [6, 6.6], "K3": [6, 9.4],
+          "S1": [0, 3.5], "S2": [14.25, 3.5], "S3": [14.25, 6.3], "S4": [0, 6.3],
+          "W0": [0, 9.4], "W1": [8.25, 9.4],
+          "MK": [3, 8.0], "MG": [7.125, 8.0], "M19": [7.125, 4.9],
+          "FL0": [6, 6.6], "FL1": [-6.2, 2.7], "FR0": [8.25, 6.6], "FR1": [14.05, 2.7],
+          "AX0": [-6.2, 2.6], "AX1": [14.05, 2.6],
+          "X8": [-6.2, 2.6], "X9": [0.55, 2.6], "X10": [7.3, 2.6], "X11": [14.05, 2.6],
+          "A1a": [-6.2, 2.4], "A1b": [-2.825, 1.4], "A1c": [0.55, 2.4],
+          "A2a": [0.55, 2.4], "A2b": [3.925, 1.4], "A2c": [7.3, 2.4],
+          "A3a": [7.3, 2.4], "A3b": [10.675, 1.4], "A3c": [14.05, 2.4],
+          "L8": [-6.2, 0.6], "L9": [0.55, 0.6], "L10": [7.3, 0.6], "L11": [14.05, 0.6]
+        },
+        "parts": [
+          { "id": "whole", "poly": ["B1", "B2", "B3", "B4"], "fill": "paper", "ink": "ink", "w": 2.5, "start": true },
+          { "id": "known", "poly": ["B1", "K2", "K3", "B4"], "fill": "accent-fill", "ink": "accent", "w": 2.5 },
+          { "id": "gapbar", "poly": ["K2", "B2", "B3", "K3"], "fill": "warm-fill", "ink": "warm", "w": 2.5 },
+          { "id": "spill", "poly": ["S1", "S2", "S3", "S4"], "fill": "warm-fill", "ink": "warm", "w": 2.5 },
+          { "id": "dimW", "dim": ["W0", "W1"], "side": "n", "tex": "\\text{whole } 11", "ink": "ink", "far": 0.6 },
+          { "id": "lk", "label": "8", "at": "MK", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg", "label": "\\square", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "lg3", "label": "3", "at": "MG", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "l19", "label": "19", "at": "M19", "dir": "c", "size": "xl", "ink": "ink" },
+          { "id": "fl", "group": "funnel", "seg": ["FL0", "FL1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "fr", "group": "funnel", "seg": ["FR0", "FR1"], "ink": "muted", "w": 1.5, "dash": true },
+          { "id": "axis", "seg": ["AX0", "AX1"], "ink": "muted", "w": 2.5 },
+          { "id": "d8", "dot": "X8", "ink": "accent", "r": 8 },
+          { "id": "d9", "dot": "X9", "ink": "warm", "r": 8 },
+          { "id": "d10", "dot": "X10", "ink": "warm", "r": 8 },
+          { "id": "d11", "dot": "X11", "ink": "warm", "r": 8 },
+          { "id": "hop1", "curve": ["A1a", "A1b", "A1c"], "ink": "warm", "w": 4 },
+          { "id": "hop2", "curve": ["A2a", "A2b", "A2c"], "ink": "warm", "w": 4 },
+          { "id": "hop3", "curve": ["A3a", "A3b", "A3c"], "ink": "warm", "w": 4 },
+          { "id": "n8", "label": "8", "at": "L8", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "n9", "label": "9", "at": "L9", "dir": "c", "size": "l", "ink": "warm" },
+          { "id": "n10", "label": "10", "at": "L10", "dir": "c", "size": "l", "ink": "warm" },
+          { "id": "n11", "label": "11", "at": "L11", "dir": "c", "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What goes in the box? Eight plus box equals eleven.",
+          "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What goes in the box? $8+\\square=11$", "at": "What" },
+            { "do": "show", "target": ["known", "lk"], "at": "Eight" },
+            { "do": "show", "target": "dimW", "at": "eleven" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I see eight and eleven. Eight plus eleven is nineteen.",
+          "pause": 0.5,
+          "do": [
+            { "do": "show", "target": ["spill", "l19"], "at": "nineteen" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Wait. Nineteen sticks out past the whole. That cannot be a part.",
+          "pause": 0.6,
+          "do": [
+            { "do": "highlight", "target": "spill", "at": "sticks" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The gap is small. Count up from eight. Nine, ten, eleven.",
+          "pause": 0.5,
+          "do": [
+            { "do": "hide", "target": ["spill", "l19"], "at": "gap" },
+            { "do": "show", "target": ["gapbar", "lg"], "at": "gap" },
+            { "do": "show", "target": ["funnel", "axis"], "at": "Count" },
+            { "do": "show", "target": ["d8", "n8"], "at": "eight" },
+            { "do": "draw", "target": "hop1", "at": "Nine" },
+            { "do": "show", "target": ["d9", "n9"], "at": "Nine" },
+            { "do": "draw", "target": "hop2", "at": "ten" },
+            { "do": "show", "target": ["d10", "n10"], "at": "ten" },
+            { "do": "draw", "target": "hop3", "at": "eleven" },
+            { "do": "show", "target": ["d11", "n11"], "at": "eleven" }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three hops. Eight plus three equals eleven.",
+          "pause": 0.6,
+          "do": [
+            { "do": "hide", "target": "lg", "at": "Three" },
+            { "do": "show", "target": "lg3", "at": "Three" },
+            { "do": "answer", "tex": "8+3=11", "at": "Eight" }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Whole and one part: find the gap.",
+          "pause": 1.5,
+          "do": [
+            { "do": "text", "text": "Whole and one part: find the gap.", "at": "Whole" }
+          ]
+        }
+      ]
+    }
+  ]
+}

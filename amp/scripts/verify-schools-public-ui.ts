@@ -506,7 +506,9 @@ async function journeys(browser: Browser, engine: string) {
     await talk.getByLabel("Your email").fill("head@fixture-academy.example");
     await talk.getByLabel("School or organization").fill("Fixture Academy");
     await talk.getByLabel("Approximate number of students").fill("1,200");
-    await talk.getByLabel("What you’d like to talk about (optional)").fill("Two campuses.");
+    await talk
+      .getByLabel("What you’d like to talk about (optional)")
+      .fill("Two campuses.");
     const sentBefore = mailed.length;
     await talk.getByRole("button", { name: "Send" }).click();
     await talk.getByRole("heading", { name: "Thank you." }).waitFor();
@@ -722,8 +724,8 @@ async function journeys(browser: Browser, engine: string) {
       "Grade 5 Math",
       "Where Amara is",
       "Active time",
-      "Objectives gained",
-      "Recent objectives",
+      "Skills shown on their own",
+      "Recently shown on their own",
       "Final grades",
       "A-",
     ])

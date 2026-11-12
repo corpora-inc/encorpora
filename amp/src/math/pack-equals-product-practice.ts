@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -86,7 +87,10 @@ function clauseDraw(id: string, seed: string) {
   };
 }
 
-function shuffle<T>(r: (lo: number, hi: number) => number, items: readonly T[]): T[] {
+function shuffle<T>(
+  r: (lo: number, hi: number) => number,
+  items: readonly T[],
+): T[] {
   const out = [...items];
   for (let i = out.length - 1; i > 0; i--) {
     const j = r(0, i);
@@ -114,9 +118,7 @@ function prismFigure(l: number, w: number, h: number): SemanticFigure {
       steps: [
         {
           caption: "The bottom layer covers the base.",
-          actions: [
-            { do: "fill", target: "prism.layer.0", fill: "warm-fill" },
-          ],
+          actions: [{ do: "fill", target: "prism.layer.0", fill: "warm-fill" }],
         },
       ],
     }),
@@ -293,7 +295,7 @@ function selectProblem(seed: string): GeneratedProblem {
     hint: `This prism is ${l} cubes long, ${w} wide and ${h} high. A product of all three edges counts the cubes, in any grouping. Adding an edge, or stopping after two edges, does not.`,
     explanation: [
       `One layer is $${l} \\times ${w} = ${layer}$ cubes, and ${h} layers make $${layer} \\times ${h} = ${volume}$.`,
-      `${h} × (${l} × ${w}) is ${h} layers of ${layer}. ${l} × (${w} × ${h}) turns the box onto a ${w} by ${h} face. (${l} × ${h}) × ${w} makes ${w} layers of ${l * h}.`,
+      `${h} × (${l} × ${w}) is ${h} layers of ${layer}. ${l} × (${w} × ${h}) turns the box onto ${withArticle(w)} by ${h} face. (${l} × ${h}) × ${w} makes ${w} layers of ${l * h}.`,
       `Each product is ${volume}. ${l} + ${w} + ${h} adds the edges, ${l} × ${w} is only the bottom layer, and ${l} × ${w} + ${h} adds the height instead of multiplying by it.`,
     ],
     variant: { id: "groupings" },
@@ -362,18 +364,8 @@ function pictureProblem(seed: string): GeneratedProblem {
   };
   const taller = layers === 6 ? 5 : layers + 1;
   const shorter = layers === 2 ? 3 : layers - 1;
-  add(
-    bl,
-    bw,
-    taller,
-    `This picture has ${taller} layers, not ${layers}.`,
-  ) ||
-    add(
-      bl,
-      bw,
-      shorter,
-      `This picture has ${shorter} layers, not ${layers}.`,
-    );
+  add(bl, bw, taller, `This picture has ${taller} layers, not ${layers}.`) ||
+    add(bl, bw, shorter, `This picture has ${shorter} layers, not ${layers}.`);
   const wider = bl === 6 ? 5 : bl + 1;
   const narrower = bl === 2 ? 3 : bl - 1;
   add(
@@ -402,7 +394,7 @@ function pictureProblem(seed: string): GeneratedProblem {
     square,
     square,
     layers,
-    `This base is a ${square} by ${square} square. The layer you want holds ${base} cubes, not ${square * square}.`,
+    `This base is ${withArticle(square)} by ${square} square. The layer you want holds ${base} cubes, not ${square * square}.`,
   );
   for (let a = 2; a <= 6 && wrong.length < 3; a++)
     for (let b = 2; b <= 6 && wrong.length < 3; b++)
@@ -443,7 +435,7 @@ function pictureProblem(seed: string): GeneratedProblem {
     hint: `Count the cubes in one layer of each picture, then count its layers. You want ${layers} layers, and ${base} cubes in a layer.`,
     explanation: [
       `${layers} layers of ${base} is a base of ${bl} by ${bw}, stacked ${layers} high: $${bl} \\times ${bw} \\times ${layers} = ${volume}$.`,
-      `Picture ${letter} shows ${layers} layers on a ${bl} by ${bw} base.`,
+      `Picture ${letter} shows ${layers} layers on ${withArticle(bl)} by ${bw} base.`,
       `The other pictures change the layer count or the base, so their layer count times their base count is not ${base} × ${layers}.`,
     ],
     variant: { id: "layers" },

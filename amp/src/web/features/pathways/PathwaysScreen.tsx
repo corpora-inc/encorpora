@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import {
   CurriculumDetailsControl,
@@ -19,6 +20,7 @@ import {
   Link,
   useNavigate,
   useParams,
+  useRouter,
   useSearch,
 } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
@@ -30,10 +32,7 @@ import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { fitScale, LevelRows } from "../../ui/level-range";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import {
-  SearchResults,
-  type SearchActions,
-} from "../search/SearchResults";
+import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
@@ -48,6 +47,7 @@ import {
   progressSchema,
   frontierSchema,
   frontierRange,
+  levelRegion,
   type Frontier,
   type Evidence,
   type MapSkill,
@@ -84,6 +84,36 @@ function matchesQuery(text: string, query: string) {
     haystack.includes(q) ||
     (synonyms[q] ?? []).some((w) => haystack.includes(w))
   );
+}
+
+/** A lesson, problem type or film a search found, offered first in its
+ * skill's panel. */
+type SearchFound = {
+  kind: "lesson" | "type" | "film" | "term";
+  id: string;
+  title: string;
+  skill: string;
+};
+
+/** A problem type's id, as `?lesson=` carries it. */
+const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
+
+/** On a phone a long list of results can leave the page scrolled past the
+ * map, under the bar. A chosen skill shows on the map, so bring the map's
+ * top back into view (a cut under reduced motion). */
+function showMap() {
+  requestAnimationFrame(() => {
+    const map = document.querySelector<HTMLElement>(".pathways-viewport");
+    if (!map || !matchMedia("(max-width: 650px)").matches) return;
+    const margin = parseFloat(getComputedStyle(map).scrollMarginTop) || 0;
+    if (map.getBoundingClientRect().top >= margin) return;
+    map.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+  });
 }
 
 export function PathwaysScreen() {
@@ -190,6 +220,10 @@ function LearnerMap({ session }: { session: AuthSession }) {
         !learner || me.isError || progress.isError || progress.isPending
       }
       frontier={frontier.data}
+      frontierLoading={
+        me.isPending ||
+        (!!learner && (frontier.isPending || progress.isPending))
+      }
       learnerName={learner?.name}
       birthYear={learner?.birthYear}
       controls={
@@ -244,6 +278,7 @@ export function MapView({
   canPractice = false,
   controls,
   frontier,
+  frontierLoading = false,
   learnerName,
   birthYear,
   guestMode = false,
@@ -258,6 +293,8 @@ export function MapView({
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
+  /** The learner's estimate or record is on its way: "My level" waits. */
+  frontierLoading?: boolean;
   learnerName?: string;
   birthYear?: number | null;
   guestMode?: boolean;
@@ -286,42 +323,88 @@ export function MapView({
       ? search.filter
       : "";
   const navigate = useNavigate();
+  const router = useRouter();
   const { shown } = useCurriculumDetails();
   // Arriving with a search (a link, or /lessons?q=) opens its results.
-  const [browse, setBrowse] = useState(() => urlQuery.trim().length > 0);
-  const [lesson, setLesson] = useState<string | null>(null);
-  useEffect(() => setLesson(null), [selectedId]);
+  // A shared search opens its results, unless the link names a skill: then
+  // the skill is what it shows, its search kept in the field.
+  const [browse, setBrowse] = useState(
+    () => urlQuery.trim().length > 0 && !selectedId,
+  );
+  // A problem type's short lesson has its own address (`?lesson=`), so a
+  // link, a refresh or Back opens it again. Opened here, closing goes back;
+  // arrived at by a link, closing leaves the address without it.
+  const lesson =
+    typeof search.lesson === "string" && LESSON_ID.test(search.lesson)
+      ? search.lesson
+      : null;
   const lessonTrigger = useRef<HTMLElement | null>(null);
+  const openedHere = useRef(false);
+  // Closed any way (Back, a link), the next close starts afresh.
+  useEffect(() => {
+    if (!lesson) openedHere.current = false;
+  }, [lesson]);
   const openLesson = (id: string, trigger: HTMLElement) => {
     lessonTrigger.current = trigger;
-    setLesson(id);
+    openedHere.current = true;
+    update({ lesson: id });
+  };
+  const closeLesson = () => {
+    if (!lesson) return;
+    if (openedHere.current) {
+      openedHere.current = false;
+      router.history.back();
+    } else update({ lesson: null }, true);
   };
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
   const docs = useSearchCorpus(searching);
   const found = useLessonSearch(docs, searching ? query.trim() : "", "");
+  // On Pathways every result selects its skill in the map, as the list
+  // without a search does (founder): the camera frames it, its panel opens,
+  // the search closes with the query kept. A lesson, problem type or film is
+  // then offered first in the panel, as found.
+  const [picked, setPicked] = useState<SearchFound | null>(null);
   const searchActionsFor = (): SearchActions => {
+    // An older server's result carries no skill: this page's own corpus
+    // knows every document's.
+    const skillOf = (result: SearchResult) =>
+      result.skill || docs?.find((doc) => doc.id === result.id)?.skill || "";
     const href = (result: SearchResult) =>
-      result.kind === "lesson"
-        ? `/lessons/${encodeURIComponent(result.target)}`
-        : result.kind === "film"
-          ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
-          : result.kind === "skill"
-            ? `/pathways/${encodeURIComponent(result.target)}`
-            : `/pathways${window.location.search}`;
+      skillOf(result)
+        ? `/pathways/${encodeURIComponent(skillOf(result))}${window.location.search}`
+        : `/pathways${window.location.search}`;
     return {
       href,
-      open: (result, trigger) => {
-        if (result.kind === "type") openLesson(result.target, trigger);
-        else if (result.kind === "skill") select(result.target);
-        else if (result.kind !== "term")
-          void navigate({ href: href(result) } as never);
+      open: (result) => {
+        const skill = skillOf(result);
+        if (!skill) return;
+        setPicked(
+          result.kind === "skill"
+            ? null
+            : {
+                kind: result.kind,
+                id: result.target,
+                title: result.title,
+                skill,
+              },
+        );
+        select(skill);
       },
     };
   };
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
+  // What a search found, while its skill is the one selected.
+  const fromSearch =
+    picked && selected && picked.skill === selected.id ? picked : null;
+  // The skill a short lesson practices: the selected one, or its own when
+  // the lesson was opened by its address.
+  const lessonSkill = lesson
+    ? (selected?.id ??
+      catalog.data?.templates.find((t) => t.id === lesson)?.skillId)
+    : undefined;
   const unknownSkill = !!skills && !!selectedId && !selected;
   usePathwaysMetadata(
     selected,
@@ -346,6 +429,8 @@ export function MapView({
       skill?: string;
       topic?: string;
       filter?: string;
+      /** A short lesson to open; any other change closes it. */
+      lesson?: string | null;
     },
     replace = false,
   ) => {
@@ -355,6 +440,7 @@ export function MapView({
         (values.topic === undefined ? field.carry() : values.topic) ||
         undefined,
       filter: (values.filter === undefined ? band : values.filter) || undefined,
+      lesson: values.lesson || undefined,
     };
     if (skillId)
       void navigate({
@@ -375,6 +461,7 @@ export function MapView({
   const select = (id: string) => {
     setBrowse(false);
     update({ skill: id });
+    showMap();
   };
   const filtered =
     skills?.filter(
@@ -383,6 +470,13 @@ export function MapView({
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
+  const level = useMemo(
+    () =>
+      skills && !frontierLoading
+        ? levelRegion(skills, frontier, evidence)
+        : null,
+    [skills, frontier, evidence, frontierLoading],
+  );
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
   const families =
     catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
@@ -427,7 +521,7 @@ export function MapView({
       )}
       <div className="pathways-heading">
         <div>
-          <h1>Pathways</h1>
+          <ScreenTitle>Pathways</ScreenTitle>
         </div>
         {/* The counts paint once, when both the map and the learner's
             record are in: their line is held until then, never rewritten. */}
@@ -577,7 +671,10 @@ export function MapView({
                       params={{ skillId: s.id }}
                       search={linkSearch()}
                       aria-current={selectedId === s.id ? "page" : undefined}
-                      onClick={() => setBrowse(false)}
+                      onClick={() => {
+                        setBrowse(false);
+                        showMap();
+                      }}
                     >
                       <span
                         className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
@@ -611,6 +708,8 @@ export function MapView({
               onSelect={select}
               range={range}
               rangeStrand={selected?.strand}
+              level={level}
+              levelLoading={frontierLoading}
             />
             {selected && (
               <section
@@ -664,6 +763,45 @@ export function MapView({
                     }}
                   />
                 </div>
+                {fromSearch && fromSearch.kind !== "term" && (
+                  <div className="pathways-found" data-found={fromSearch.kind}>
+                    <span className="pathways-found-kind">
+                      {fromSearch.kind === "lesson"
+                        ? "Lesson"
+                        : fromSearch.kind === "film"
+                          ? "Lesson film"
+                          : "Problem type"}
+                    </span>
+                    <strong>{fromSearch.title}</strong>
+                    {fromSearch.kind === "type" ? (
+                      <button
+                        onClick={(e) =>
+                          openLesson(fromSearch.id, e.currentTarget)
+                        }
+                      >
+                        View lesson
+                      </button>
+                    ) : fromSearch.kind === "film" ? (
+                      <Link
+                        to="/lessons/$templateId/watch"
+                        params={{ templateId: fromSearch.id }}
+                        search={{
+                          from:
+                            window.location.pathname + window.location.search,
+                        }}
+                      >
+                        Watch
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/$"
+                        params={{ _splat: `lessons/${fromSearch.id}` }}
+                      >
+                        Read the lesson
+                      </Link>
+                    )}
+                  </div>
+                )}
                 {families.length ? (
                   <>
                     <div className="pathways-detail-actions">
@@ -672,7 +810,14 @@ export function MapView({
                           className="pathways-go"
                           to="/$"
                           params={{ _splat: "practice" }}
-                          search={{ skill: selected.id }}
+                          search={{
+                            skill: selected.id,
+                            // A problem type the search found: that one.
+                            ...(fromSearch?.kind === "type" ||
+                            fromSearch?.kind === "film"
+                              ? { template: fromSearch.id }
+                              : {}),
+                          }}
                         >
                           Try a problem
                         </Link>
@@ -791,7 +936,7 @@ export function MapView({
       <Dialog
         open={!!lesson}
         onOpenChange={(open) => {
-          if (!open) setLesson(null);
+          if (!open) closeLesson();
         }}
         title="Explore a problem type"
         fullOnPhone
@@ -800,20 +945,20 @@ export function MapView({
           if (lessonTrigger.current?.isConnected) lessonTrigger.current.focus();
         }}
       >
-        {canPractice && selected && lesson && (
+        {canPractice && lessonSkill && lesson && (
           <Link
             className="pathways-lesson-practice"
             to="/$"
             params={{ _splat: "practice" }}
-            search={{ skill: selected.id, template: lesson }}
+            search={{ skill: lessonSkill, template: lesson }}
           >
             Try this problem type →
           </Link>
         )}
         {lesson && (
-          <LessonBoundary key={lesson} onBack={() => setLesson(null)}>
+          <LessonBoundary key={lesson} onBack={closeLesson}>
             <Suspense fallback={<Loading>Loading lesson…</Loading>}>
-              <SkillLesson templateId={lesson} onBack={() => setLesson(null)} />
+              <SkillLesson templateId={lesson} onBack={closeLesson} />
             </Suspense>
           </LessonBoundary>
         )}
@@ -827,7 +972,10 @@ export function MapView({
 function PathwayLevels({
   frontier,
 }: {
-  frontier: { overall: { level: number; sd: number }; strands: Record<string, { level: number; sd: number; answered?: number }> };
+  frontier: {
+    overall: { level: number; sd: number };
+    strands: Record<string, { level: number; sd: number; answered?: number }>;
+  };
 }) {
   const areas = Object.entries(frontier.strands)
     .filter(([, estimate]) => (estimate.answered ?? 1) > 0)

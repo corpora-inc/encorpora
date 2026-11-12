@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -352,7 +353,7 @@ export const polygonRotation = chainFamily({
         const bad = m.angles.find((t) => (t * k) % 360 !== 0)!;
         return {
           label: polyName(k),
-          feedback: `A ${polyName(k).toLowerCase()} has ${k} equal sides, so its smallest self-matching turn is $360^\\circ\\div${k}=${360 / k}^\\circ$. $${bad}^\\circ$ is not a whole number of those turns, so it does not land on itself.`,
+          feedback: `${withArticle(polyName(k).toLowerCase(), true)} has ${k} equal sides, so its smallest self-matching turn is $360^\\circ\\div${k}=${360 / k}^\\circ$. $${bad}^\\circ$ is not a whole number of those turns, so it does not land on itself.`,
         };
       }),
     ];
@@ -363,12 +364,12 @@ export const polygonRotation = chainFamily({
       explanation: [
         `A regular polygon has all sides equal and all angles equal. "Maps onto itself" means after the turn it covers exactly the same spot.`,
         `A regular polygon with $n$ sides does this after a turn of $\\frac{360^\\circ}{n}$, one full turn shared among its $n$ corners. Any whole multiple of that turn also works.`,
-        `For a ${polyName(m.n).toLowerCase()}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$. Then ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}, a whole number of those turns.`,
+        `For ${withArticle(polyName(m.n).toLowerCase())}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$. Then ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}, a whole number of those turns.`,
         `The other choices fail. ${others
           .slice(0, 3)
           .map((k) => {
             const bad = m.angles.find((t) => (t * k) % 360 !== 0)!;
-            return `A ${polyName(k).toLowerCase()} lands on itself after turns of $360^\\circ\\div${k}=${360 / k}^\\circ$, and $${bad}^\\circ$ is not a whole number of those turns.`;
+            return `${withArticle(polyName(k).toLowerCase(), true)} lands on itself after turns of $360^\\circ\\div${k}=${360 / k}^\\circ$, and $${bad}^\\circ$ is not a whole number of those turns.`;
           })
           .join(" ")}`,
         `The polygon that maps onto itself is the ${polyName(m.n).toLowerCase()}.`,
@@ -902,12 +903,12 @@ export const parallelogramSpecial = chainFamily({
     const wrongs = shuffle(r, bad).slice(0, 3);
     const cap = (s: string) => `${s[0]!.toUpperCase()}${s.slice(1)}`;
     return choiceSurface(r, {
-      prompt: `Parallelogram $ABCD$ is given. Which added condition is enough to prove that $ABCD$ is a ${a.target}?`,
+      prompt: `Parallelogram $ABCD$ is given. Which added condition is enough to prove that $ABCD$ is ${withArticle(a.target)}?`,
       options: [
         { label: `${cap(g)}.`, correct: true },
         ...wrongs.map(([l, f]) => ({ label: `${cap(l)}.`, feedback: f })),
       ],
-      hint: `A ${a.target} is a parallelogram with an extra property. Cross out any option that every parallelogram already has; for example, ask whether "${wrongs[0]![0]}" is true of every parallelogram. Check what remains against the definition of a ${a.target}.`,
+      hint: `${withArticle(a.target, true)} is a parallelogram with an extra property. Cross out any option that every parallelogram already has; for example, ask whether "${wrongs[0]![0]}" is true of every parallelogram. Check what remains against the definition of ${withArticle(a.target)}.`,
       explanation: [
         "A parallelogram has two pairs of parallel sides. Its opposite sides are equal, its opposite angles are equal, and its diagonals cut each other in half.",
         rhombus
@@ -915,7 +916,7 @@ export const parallelogramSpecial = chainFamily({
           : "A rectangle is a parallelogram with four right angles.",
         "A condition true of every parallelogram cannot prove anything special. A condition that proves only the other special shape is not enough either.",
         `The condition "${g}" works. ${why}`,
-        `So the added condition that proves $ABCD$ is a ${a.target} is: ${g}.`,
+        `So the added condition that proves $ABCD$ is ${withArticle(a.target)} is: ${g}.`,
       ],
     });
   },

@@ -180,6 +180,27 @@ export const calendarOptions = (session: AuthSession, orgId: string) =>
         { signal },
       ).then((data) => data.sessions),
   });
+/** The school's grading periods, set once for every class
+ * (schools/grading-default.ts): what they are, whether the school chose
+ * them, and how many classes use their own. */
+const schoolGradingSchema = z.object({
+  kind: z.enum(["year", "semester", "trimester", "quarter", "custom"]),
+  chosen: z.boolean(),
+  classes: z.number().int(),
+  own: z.number().int(),
+});
+export type SchoolGrading = z.infer<typeof schoolGradingSchema>;
+export const schoolGradingOptions = (session: AuthSession, orgId: string) =>
+  queryOptions({
+    queryKey: keyFor(session, "org", orgId, "grading"),
+    queryFn: ({ signal }) =>
+      call(
+        `/orgs/${orgId}/grading`,
+        z.object({ grading: schoolGradingSchema }),
+        session,
+        { signal },
+      ).then((data) => data.grading),
+  });
 export const licenseOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId, "license"),
@@ -212,6 +233,17 @@ export const school = {
     orgId: string,
     body: { name: string; shape: "class" | "school"; timezone: string },
   ) => call(`/orgs/${orgId}/setup/school`, setupStateSchema, session, { body }),
+  setSchoolGrading: (
+    session: AuthSession,
+    orgId: string,
+    kind: "year" | "semester" | "trimester" | "quarter",
+  ) =>
+    call(
+      `/orgs/${orgId}/grading`,
+      z.object({ grading: schoolGradingSchema }),
+      session,
+      { body: { kind } },
+    ),
   setCalendar: (
     session: AuthSession,
     orgId: string,

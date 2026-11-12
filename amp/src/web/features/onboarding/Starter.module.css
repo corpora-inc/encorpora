@@ -103,33 +103,6 @@
   font-size: var(--text-label);
   line-height: 1.4;
 }
-.followUp {
-  scroll-margin-top: calc(
-    56px + env(safe-area-inset-top, 0px) + var(--space-4)
-  );
-}
-.followUp:empty {
-  display: none;
-}
-.panel {
-  display: grid;
-  gap: var(--space-4);
-  justify-items: start;
-}
-.panel > * {
-  max-width: 100%;
-}
-.question {
-  margin: 0;
-  font-size: var(--text-heading-2);
-  font-weight: 700;
-  line-height: 1.25;
-}
-/* Focus lands on the question after a choice, for screen readers and the
-   next Tab; it isn't a control, so it draws no ring. */
-.question:focus {
-  outline: none;
-}
 .note,
 .lede {
   margin: 0;
@@ -171,66 +144,19 @@
   font-size: var(--text-label);
   line-height: 1.4;
 }
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
 .talk {
   display: grid;
   gap: var(--space-3);
   width: 100%;
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
-  scroll-margin-top: calc(
-    56px + env(safe-area-inset-top, 0px) + var(--space-4)
-  );
 }
-.talk h3 {
+.talk h2 {
   margin: 0;
   font-size: var(--text-heading-3);
-}
-.go {
-  display: grid;
-  gap: var(--space-2);
-  width: 100%;
-}
-.goButton {
-  width: 100%;
-  transition: opacity var(--motion-fast) var(--ease-standard);
-}
-.goButton[data-waiting] {
-  opacity: 0.38;
-  filter: none;
-}
-@media (min-width: 560px) {
-  .goButton {
-    width: auto;
-    min-width: 240px;
-    justify-self: start;
-  }
-}
-/* The reason an action waits keeps its line, so nothing moves when it goes. */
-.hint {
-  min-height: 1.45em;
-  margin: 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  line-height: 1.45;
-}
-/* A longer reason, such as the note for a learner under 13, keeps two lines
-   from the start. */
-.hint[data-lines="2"] {
-  min-height: 2.9em;
 }
 /* "What year were you born?": the years in one designed group, newest first,
    with "Adult" across the last row. Four to a row on a phone, eight wider. */
 /* The years are the shared tile grid (ui/TileChoice.module.css). */
 /* "Where do you want to begin?", under the years once an adult year is
    chosen. */
-.where {
-  display: grid;
-  gap: var(--space-3);
-  width: 100%;
-  margin-top: var(--space-4);
-}

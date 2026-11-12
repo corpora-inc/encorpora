@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -305,7 +306,7 @@ export const repeatedZeroRule = chainFamily({
         },
         {
           label: f(a, b, -1, 1, 2),
-          feedback: `The graph touches the $x$-axis at ${a} and crosses at ${b}. A factor that is squared gives a zero where the graph touches without crossing, so the square belongs to the factor for ${a}.`,
+          feedback: `The graph touches the $x$-axis at $${a}$ and crosses at $${b}$. A factor that is squared gives a zero where the graph touches without crossing, so the square belongs to the factor for $${a}$.`,
         },
         {
           label: f(-a, -b, -1, 2, 1),
@@ -353,7 +354,7 @@ export const sinusoidCompareRule = chainFamily({
     const gFreqGreater = Q < P;
     const rule = `g(x) = ${C}\\sin\\left(\\frac{2\\pi}{${Q}}x\\right)`;
     const stmt = (maxG: boolean, freqG: boolean) =>
-      `$g$ has a ${maxG ? "greater" : "smaller"} maximum value and a ${freqG ? "greater" : "smaller"} frequency than $f$`;
+      `$g$ has ${withArticle(maxG ? "greater" : "smaller")} maximum value and ${withArticle(freqG ? "greater" : "smaller")} frequency than $f$`;
     const plot = plane(-0.5, 2 * P, -5, 5).curve(fn.sin(A, (2 * Math.PI) / P), {
       color: "accent",
     });
@@ -381,7 +382,7 @@ export const sinusoidCompareRule = chainFamily({
         `A periodic graph repeats. Its period is the length of one full cycle, and its frequency is how many cycles fit in a fixed length, so a shorter period means a greater frequency.`,
         `The graph of $f$ reaches a maximum of ${A} and repeats every ${P} units, so its period is ${P}.`,
         `For $g$ the maximum is ${C}, and the period is $2\\pi \\div \\frac{2\\pi}{${Q}} = ${Q}$.`,
-        `${C} is ${gMaxGreater ? "greater" : "smaller"} than ${A}, and a period of ${Q} compared with ${P} gives $g$ a ${gFreqGreater ? "greater" : "smaller"} frequency.`,
+        `${C} is ${gMaxGreater ? "greater" : "smaller"} than ${A}, and a period of ${Q} compared with ${P} gives $g$ ${withArticle(gFreqGreater ? "greater" : "smaller")} frequency.`,
       ],
     });
     return (
@@ -430,7 +431,7 @@ export const tideCosineEquation = chainFamily({
         },
         {
           label: eq(-sign * A, "cos", "\\pi", D),
-          feedback: `At $t = 0$ the graph is at a ${sign > 0 ? "maximum" : "minimum"}, so the cosine is ${sign > 0 ? "positive" : "negated, with a negative amplitude"}. This reflection starts at the ${sign > 0 ? "minimum" : "maximum"}.`,
+          feedback: `At $t = 0$ the graph is at ${withArticle(sign > 0 ? "maximum" : "minimum")}, so the cosine is ${sign > 0 ? "positive" : "negated, with a negative amplitude"}. This reflection starts at the ${sign > 0 ? "minimum" : "maximum"}.`,
         },
         {
           label: eq(D * sign, "cos", "\\pi", A),
@@ -447,7 +448,7 @@ export const tideCosineEquation = chainFamily({
         `In $y = A\\cos(Bt) + D$, the midline $y = D$ is the level halfway between the highest and lowest values, and the amplitude $A$ is the distance from the midline to a peak.`,
         `The maximum is ${D + A} and the minimum is ${D - A}. Halfway between is ${D}, and each is ${A} away, so the amplitude is ${A} and the midline is $y = ${D}$.`,
         `One full cycle of cosine covers $2\\pi$ of its input. One cycle here takes ${P} hours, so $B = \\frac{2\\pi}{${P}} = \\frac{\\pi}{${half}}$.`,
-        `The graph starts at a ${sign > 0 ? "maximum" : "minimum"} at $t = 0$, so it is ${sign > 0 ? "a cosine" : "a negative cosine"}: ${eq(sign * A, "cos", "\\pi", D)}.`,
+        `The graph starts at ${withArticle(sign > 0 ? "maximum" : "minimum")} at $t = 0$, so it is ${sign > 0 ? "a cosine" : "a negative cosine"}: ${eq(sign * A, "cos", "\\pi", D)}.`,
       ],
     });
     return (

@@ -1,3 +1,4 @@
+import { PERSON_NAME } from "./term-grades.js";
 import { randomInt, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -786,6 +787,7 @@ export class SchoolRepository {
           gradingKind,
           joinCode,
           studentCount: 0,
+          teachers: [],
         };
       }
       if (attempt >= 5) throw new Error("No unused class code was found");
@@ -833,7 +835,10 @@ export class SchoolRepository {
         `SELECT c.id,c.org_id AS "orgId",c.session_id AS "sessionId",c.name,c.course_bands AS "courseBands",
            c.grading_kind AS "gradingKind",c.join_code AS "joinCode",
            (SELECT count(*)::int FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
-             WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount"
+             WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount",
+           ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+             WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+             ORDER BY e.begin_on,p.id) AS teachers
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          JOIN amp_academic_sessions cs ON cs.id=c.session_id
          WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL

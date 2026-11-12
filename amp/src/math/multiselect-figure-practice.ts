@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem } from "./contracts";
 import { dispatch, pick } from "./chain-kit";
 import {
@@ -1315,24 +1316,24 @@ const solidProps = {
     test: (d: SolidDef) => d.kind === "prism",
     why: (d: SolidDef) =>
       d.kind === "prism"
-        ? `a ${d.name} has two congruent bases that are parallel.`
-        : `a ${d.name} has one base, so it has no two parallel congruent faces.`,
+        ? `${withArticle(d.name)} has two congruent bases that are parallel.`
+        : `${withArticle(d.name)} has one base, so it has no two parallel congruent faces.`,
   },
   "curved-surface": {
     phrase: "a curved surface",
     test: (d: SolidDef) => ["cylinder", "cone", "sphere"].includes(d.kind),
     why: (d: SolidDef) =>
       ["cylinder", "cone", "sphere"].includes(d.kind)
-        ? `a ${d.name} has a curved surface.`
-        : `a ${d.name} has only flat faces.`,
+        ? `${withArticle(d.name)} has a curved surface.`
+        : `${withArticle(d.name)} has only flat faces.`,
   },
   "flat-faces": {
     phrase: "only flat surfaces",
     test: (d: SolidDef) => d.kind === "prism" || d.kind === "pyramid",
     why: (d: SolidDef) =>
       d.kind === "prism" || d.kind === "pyramid"
-        ? `every surface of a ${d.name} is flat.`
-        : `a ${d.name} has a curved surface.`,
+        ? `every surface of ${withArticle(d.name)} is flat.`
+        : `${withArticle(d.name)} has a curved surface.`,
   },
   "triangle-face": {
     phrase: "at least one triangular face",
@@ -1340,10 +1341,10 @@ const solidProps = {
       d.kind === "pyramid" || (d.kind === "prism" && d.n === 3),
     why: (d: SolidDef) =>
       d.kind === "pyramid"
-        ? `the side faces of a ${d.name} are triangles.`
+        ? `the side faces of ${withArticle(d.name)} are triangles.`
         : d.kind === "prism" && d.n === 3
           ? "a triangular prism has triangles for its two bases."
-          : `a ${d.name} has no triangular face.`,
+          : `${withArticle(d.name)} has no triangular face.`,
   },
   "many-faces": {
     phrase: "6 or more flat faces",
@@ -1352,10 +1353,10 @@ const solidProps = {
       (d.kind === "pyramid" && d.n! + 1 >= 6),
     why: (d: SolidDef) =>
       d.kind === "prism"
-        ? `a ${d.name} has ${d.n! + 2} faces.`
+        ? `${withArticle(d.name)} has ${d.n! + 2} faces.`
         : d.kind === "pyramid"
-          ? `a ${d.name} has ${d.n! + 1} faces.`
-          : `a ${d.name} does not have 6 or more flat faces.`,
+          ? `${withArticle(d.name)} has ${d.n! + 1} faces.`
+          : `${withArticle(d.name)} does not have 6 or more flat faces.`,
   },
 } as const;
 

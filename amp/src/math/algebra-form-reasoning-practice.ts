@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -690,7 +691,7 @@ function ticketContext(r: Random): FormContext {
       ],
       [`${b}n`, `This is only the fees, not the total cost.`],
     ],
-    tryText: `Put $n = 2$ into each choice: two tickets at ${a} dollars plus a ${b}-dollar fee each cost ${2 * (a + b)} dollars.`,
+    tryText: `Put $n = 2$ into each choice: two tickets at ${a} dollars plus ${withArticle(b)}-dollar fee each cost ${2 * (a + b)} dollars.`,
     term: `${b}n`,
     terms: [`${a}n`, `${b}n`],
     termMeaning: "the fees for all $n$ tickets",

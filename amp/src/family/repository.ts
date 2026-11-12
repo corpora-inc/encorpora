@@ -450,6 +450,10 @@ export class FamilyRepository {
     const roster = !!(
       await client.query("SELECT to_regclass('amp_people') AS relation")
     ).rows[0]?.relation;
+    // Help events and their day rollup (migration 0111).
+    const help = !!(
+      await client.query("SELECT to_regclass('amp_help_events') AS relation")
+    ).rows[0]?.relation;
     let retained = 0,
       linked =
         !learnerId && stripe
@@ -530,6 +534,16 @@ export class FamilyRepository {
       await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
         row.id,
       ]);
+      // Help names the problems and lessons opened; a retained tombstone
+      // keeps none of it.
+      if (help) {
+        await client.query("DELETE FROM amp_help_events WHERE learner_id=$1", [
+          row.id,
+        ]);
+        await client.query("DELETE FROM amp_help_days WHERE learner_id=$1", [
+          row.id,
+        ]);
+      }
       // Reports outlive the learner only as notes-free reports on content.
       if (flags)
         await client.query(
@@ -675,6 +689,23 @@ export class FamilyRepository {
             `SELECT to_jsonb(p) AS value FROM ${table} p JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY ${order}`,
           ]);
       }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_help_events') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push(
+          [
+            "help-event",
+            "SELECT jsonb_build_object('learnerId',h.learner_id,'at',h.at,'day',h.day,'kind',h.kind,'source',h.source,'skillId',h.skill_id,'ref',h.ref,'problemId',h.problem_id,'step',h.step) AS value FROM amp_help_events h JOIN amp_learners l ON l.id=h.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY h.learner_id,h.at",
+          ],
+          [
+            "help-day",
+            "SELECT jsonb_build_object('learnerId',h.learner_id,'day',h.day,'kind',h.kind,'skillId',h.skill_id,'opened',h.opened) AS value FROM amp_help_days h JOIN amp_learners l ON l.id=h.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY h.learner_id,h.day,h.kind,h.skill_id",
+          ],
+        );
       if (
         (await client.query("SELECT to_regclass('amp_workbooks') AS relation"))
           .rows[0]?.relation

@@ -22,25 +22,16 @@ const boxOf = async (page: Page, selector: string) => {
   const found = page.locator(selector).first();
   return (await found.count()) ? found.boundingBox() : null;
 };
-/** "870 lessons · 1,189 problem types": every count uses en-US grouping. */
-const groupedCatalog =
-  /^\d{1,3}(?:,\d{3})* lessons · \d{1,3}(?:,\d{3})* problem types$/;
-async function assertGroupedCatalog(page: Page, tag: string) {
-  const text = (await page.locator(".lesson-index [role=status]").innerText())
-    .replace(/\s+/g, " ")
-    .trim();
-  assert.match(
-    text,
-    groupedCatalog,
-    `${tag}: lesson counts are not grouped (${text})`,
-  );
-}
 const channel = (v: number) => {
   const c = v / 255;
   return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
 };
 const contrastRatio = (a: string, b: string) => {
-  const parse = (css: string) => css.match(/[\d.]+/g)?.slice(0, 3).map(Number);
+  const parse = (css: string) =>
+    css
+      .match(/[\d.]+/g)
+      ?.slice(0, 3)
+      .map(Number);
   const left = parse(a),
     right = parse(b);
   if (!left || !right || left.length < 3 || right.length < 3) return 0;
@@ -85,12 +76,18 @@ export async function assertProgressPolish(page: Page, tag: string) {
   await page.getByRole("dialog", { name: "Math area" }).waitFor({
     state: "hidden",
   });
-  const longest = await picker.locator("span").first().evaluate((el) => ({
-    text: el.textContent ?? "",
-    clipped: el.scrollWidth > el.clientWidth + 1,
-    wide: window.innerWidth >= 1000,
-  }));
-  if (longest.wide && (longest.clipped || longest.text !== "Mathematical models"))
+  const longest = await picker
+    .locator("span")
+    .first()
+    .evaluate((el) => ({
+      text: el.textContent ?? "",
+      clipped: el.scrollWidth > el.clientWidth + 1,
+      wide: window.innerWidth >= 1000,
+    }));
+  if (
+    longest.wide &&
+    (longest.clipped || longest.text !== "Mathematical models")
+  )
     problems.push(
       `longest area “${longest.text}” ${longest.clipped ? "is clipped" : "was not selected"}`,
     );
@@ -166,26 +163,18 @@ export async function verifyShellReview({
     for (const colorScheme of ["light", "dark"] as const)
       for (const kind of [
         "learner-return",
-        "library-search",
         "practice-title",
-        "library-loading",
         "library-reader-loading",
-        "library-retry",
-        "library-typing",
         "progress-loading",
         "progress-filters",
         "progress-large-text",
       ] as const) {
-        const polish = [
-          "library-search",
-          "library-loading",
-          "library-retry",
-          "library-typing",
-          "progress-filters",
-        ];
+        // The lessons library is no destination (docs/design/ia.md): its
+        // search, typing and retry live in Pathways' own check.
+        const polish = ["progress-filters"];
         if (
           only === "review-edges"
-            ? !["library-search", "progress-large-text"].includes(kind)
+            ? kind !== "progress-large-text"
             : only === "polish"
               ? !polish.includes(kind)
               : only && only !== kind
@@ -240,200 +229,6 @@ export async function verifyShellReview({
             assert.ok(
               sameBox(await map.boundingBox(), before),
               `${tag}: the refreshed map moved`,
-            );
-          } else if (kind === "library-search") {
-            await page.goto(`${fixture.origin}/lessons`);
-            const field = page.getByRole("searchbox", {
-              name: "Search lessons",
-            });
-            await field.waitFor();
-            await page.locator("[data-lesson-id]").first().waitFor();
-            await assertGroupedCatalog(page, tag);
-            assert.equal(
-              await page.evaluate(() =>
-                Number.parseFloat(
-                  getComputedStyle(document.documentElement).scrollPaddingTop,
-                ),
-              ),
-              (await page.locator("[data-app-bar]").boundingBox())!.height,
-              `${tag}: the focus inset must match the actual app bar`,
-            );
-            await page.evaluate(() => window.scrollTo(0, 300));
-            await settle(page, 100);
-            const before = (await field.boundingBox())!.y;
-            await field.click();
-            for (const value of [
-              "fraction",
-              "fract",
-              "zzzxq-nothing",
-              "how to find a percent of a number",
-              "hypotenuse",
-              "",
-            ]) {
-              const beforeFilter = await page.evaluate(() => {
-                const bar = document.querySelector('[role="search"]')!;
-                return {
-                  scroll: scrollY,
-                  body: bar.parentElement!.getBoundingClientRect().top,
-                  bar: bar.getBoundingClientRect().top,
-                  height: document.documentElement.scrollHeight,
-                };
-              });
-              await page.keyboard.press("ControlOrMeta+A");
-              if (value) await page.keyboard.insertText(value);
-              else await page.keyboard.press("Backspace");
-              await page.waitForURL(
-                (url) => (url.searchParams.get("q") ?? "") === value,
-              );
-              await settle(page, 200);
-              assert.equal(
-                (await field.boundingBox())!.y,
-                before,
-                `${tag} (${value}): typing moved the pinned search; before ${JSON.stringify(beforeFilter)}; after ${JSON.stringify(
-                  await page.evaluate(() => {
-                    const bar = document.querySelector('[role="search"]')!;
-                    return {
-                      scroll: scrollY,
-                      body: bar.parentElement!.getBoundingClientRect().top,
-                      bar: bar.getBoundingClientRect().top,
-                      height: document.documentElement.scrollHeight,
-                    };
-                  }),
-                )}`,
-              );
-              assert.equal(
-                await field.evaluate((el) => document.activeElement === el),
-                true,
-              );
-              const controls = await page.getByRole("search").boundingBox();
-              const summary = await page
-                .locator(".lesson-index [role=status]")
-                .boundingBox();
-              assert.ok(
-                controls &&
-                  summary &&
-                  summary.y >= controls.y + controls.height - 1,
-                `${tag}: the filtered result summary must be below the pinned controls`,
-              );
-              // A long query never clips the count or its advice.
-              assert.equal(
-                await page
-                  .locator(".lesson-index [role=status]")
-                  .evaluate(
-                    (line) =>
-                      line.scrollHeight <= line.clientHeight + 1 &&
-                      getComputedStyle(line).overflow === "visible",
-                  ),
-                true,
-                `${tag} (${value}): the result summary is clipped`,
-              );
-              if (shots && value === "zzzxq-nothing")
-                await page.screenshot({
-                  path: `${shots}/${engine}-library-empty-${viewport.width}-${colorScheme}.png`,
-                });
-            }
-          } else if (kind === "library-typing") {
-            // Typing a word letter by letter: once a query's results paint,
-            // nothing under the field moves until the next letter. Every
-            // frame records the summary line and the first result card.
-            await page.goto(`${fixture.origin}/lessons`);
-            const field = page.getByRole("searchbox", {
-              name: "Search lessons",
-            });
-            await field.waitFor();
-            await page.locator("[data-lesson-id]").first().waitFor();
-            await assertGroupedCatalog(page, tag);
-            await settle(page, 300);
-            await page.evaluate(() => {
-              const record = window as unknown as {
-                __frames: unknown[];
-                __stop?: boolean;
-              };
-              record.__frames = [];
-              const tick = () => {
-                const summary = document.querySelector(
-                  ".lesson-index [role=status]",
-                );
-                let first: Element | null = null;
-                for (const row of document.querySelectorAll(
-                  ".lesson-index [data-lesson-id], .lesson-index [data-template]",
-                ))
-                  if (row.getClientRects().length) {
-                    first = row;
-                    break;
-                  }
-                const s = summary?.getBoundingClientRect();
-                const f = first?.getBoundingClientRect();
-                const text = summary?.textContent ?? "";
-                record.__frames.push({
-                  // The query whose results are painted, as the count names it.
-                  query: /“(.*)”/.exec(text)?.[1] ?? "",
-                  summary: s ? [s.y, s.height] : null,
-                  first: first
-                    ? `${first.getAttribute("data-lesson-id") ?? first.getAttribute("data-template")}`
-                    : null,
-                  card: f ? [f.x, f.y, f.width, f.height] : null,
-                  scroll: scrollY,
-                });
-                if (!record.__stop) requestAnimationFrame(tick);
-              };
-              requestAnimationFrame(tick);
-            });
-            await field.click();
-            await page.keyboard.type("fraction", { delay: 90 });
-            await page.waitForURL(
-              (url) => url.searchParams.get("q") === "fraction",
-            );
-            // Well past the glossary's late arrival (about 470 ms on main).
-            await settle(page, 1500);
-            type Frame = {
-              query: string;
-              summary: number[] | null;
-              first: string | null;
-              card: number[] | null;
-              scroll: number;
-            };
-            const frames = await page.evaluate(() => {
-              const record = window as unknown as {
-                __frames: unknown[];
-                __stop?: boolean;
-              };
-              record.__stop = true;
-              return record.__frames as Frame[];
-            });
-            const problems: string[] = [];
-            assert.ok(frames.length > 30, `${tag}: too few frames recorded`);
-            // The settled page, read directly: WebKit can stop running
-            // animation frames before the last one is recorded.
-            const settled = await page
-              .locator(".lesson-index [role=status]")
-              .textContent();
-            assert.equal(
-              /“(.*)”/.exec(settled ?? "")?.[1],
-              "fraction",
-              `${tag}: the result summary names the typed query`,
-            );
-            for (let i = 1; i < frames.length; i++) {
-              const [a, b] = [frames[i - 1]!, frames[i]!];
-              if (JSON.stringify(a.summary) !== JSON.stringify(b.summary))
-                problems.push(
-                  `frame ${i}: the result summary moved or changed height ${JSON.stringify(a.summary)} → ${JSON.stringify(b.summary)} (“${b.query}”)`,
-                );
-              if (a.scroll !== b.scroll)
-                problems.push(`frame ${i}: the page scrolled while typing`);
-              if (
-                a.query === b.query &&
-                (a.first !== b.first ||
-                  JSON.stringify(a.card) !== JSON.stringify(b.card))
-              )
-                problems.push(
-                  `frame ${i}: results for “${b.query}” moved after they painted: ${a.first} ${JSON.stringify(a.card)} → ${b.first} ${JSON.stringify(b.card)}`,
-                );
-            }
-            assert.deepEqual(
-              problems.slice(0, 6),
-              [],
-              `${tag}: ${problems.length} movement(s) while typing`,
             );
           } else if (kind === "library-reader-loading") {
             // A refresh of one lesson: the reader's frame paints at once and
@@ -499,136 +294,24 @@ export async function verifyShellReview({
                 `${fixture.origin}/lessons?topic=${encodeURIComponent(templates[0]!.id)}`,
                 { waitUntil: "domcontentloaded" },
               );
+              // It opens in Pathways' sheet: the sheet's title, then the
+              // lesson's own heading.
               await page
-                .locator(".lesson-sheet h2")
-                .waitFor({ timeout: 8000 })
+                .waitForFunction(
+                  () =>
+                    document.querySelectorAll('[role="dialog"] h2').length >= 2,
+                  undefined,
+                  { timeout: 8000 },
+                )
                 .catch(() =>
                   problems.push(
                     "a refreshed short lesson waits for the catalog",
                   ),
                 );
-              if (
-                await page
-                  .getByRole("heading", { name: "Lessons", exact: true })
-                  .count()
-              )
-                problems.push(
-                  "a refreshed short lesson paints the library frame first",
-                );
             } finally {
               releaseTopic();
             }
             assert.deepEqual(problems, [], tag);
-          } else if (kind === "library-retry") {
-            // A failed catalog: Lessons says so in place and offers Try
-            // again, even after the family load re-runs on navigation.
-            let allow = false,
-              requests = 0;
-            await page.route("**/api/v1/catalog", async (route) => {
-              requests++;
-              if (allow) await route.continue();
-              else
-                await route.fulfill({
-                  status: 503,
-                  json: { error: "temporarily_unavailable" },
-                });
-            });
-            const logged: string[] = [];
-            page.on("console", (message) => {
-              if (
-                message.type() === "error" &&
-                !/Failed to load resource/.test(message.text())
-              )
-                logged.push(message.text());
-            });
-            const failed = page.waitForResponse(
-              (response) =>
-                response.url().endsWith("/api/v1/catalog") &&
-                response.status() === 503,
-            );
-            await page.goto(`${fixture.origin}/lessons`, {
-              waitUntil: "domcontentloaded",
-            });
-            await (await failed).finished();
-            await settle(page, 400);
-            const problems: string[] = [];
-            const retry = page
-              .locator("main.library-main")
-              .getByRole("button", { name: "Try again", exact: true });
-            const title = page.getByRole("heading", {
-              name: "Lessons",
-              exact: true,
-              level: 1,
-            });
-            const titleBox = await title.boundingBox();
-            const prefixed = await page.getByText(/\bError:/).count();
-            if (prefixed)
-              problems.push(`a message shows a raw “Error:” prefix`);
-            if (!logged.some((text) => /catalog/i.test(text)))
-              problems.push(
-                `the catalog failure is not logged: ${JSON.stringify(logged)}`,
-              );
-            if (!(await retry.isVisible()))
-              problems.push("Lessons offers no Try again after a failure");
-            if (
-              !(await page
-                .locator("main.library-main [role=alert]")
-                .filter({ hasText: /Lessons/ })
-                .isVisible())
-            )
-              problems.push("Lessons does not say what failed, in place");
-            // Any navigation re-runs the family load; it must not turn the
-            // failure back into a wait that never ends.
-            await navigateApp(page, "Practice");
-            await page.waitForURL((url) => url.pathname === "/practice");
-            await settle(page, 300);
-            await navigateApp(page, "Lessons");
-            await page.waitForURL((url) => url.pathname === "/lessons");
-            await settle(page, 800);
-            if (await page.locator('.library-main[aria-busy="true"]').count())
-              problems.push(
-                "after navigating, Lessons waits forever (aria-busy) on a failed catalog",
-              );
-            if (!(await retry.isVisible()))
-              problems.push("after navigating, Lessons offers no Try again");
-            // A retry that fails too says so, rather than looking unpressed.
-            if (await retry.isVisible()) {
-              await retry.click();
-              await page
-                .locator("main.library-main [role=alert]")
-                .filter({ hasText: "Lessons still didn’t load." })
-                .waitFor({ timeout: 5000 })
-                .catch(() =>
-                  problems.push("a failed Try again shows no sign that it ran"),
-                );
-            }
-            if (problems.length) assert.deepEqual(problems, [], tag);
-            allow = true;
-            const seen = requests;
-            await retry.click();
-            await page
-              .getByRole("searchbox", { name: "Search lessons" })
-              .waitFor();
-            await page
-              .locator(".lesson-index [role=status]")
-              .filter({ hasText: /[1-9]\d* lessons/ })
-              .waitFor();
-            await assertGroupedCatalog(page, tag);
-            await settle(page, 150);
-            assert.ok(
-              requests > seen,
-              `${tag}: Try again requests the catalog`,
-            );
-            assert.ok(
-              sameBox(titleBox, await title.boundingBox()),
-              `${tag}: the title moved when the retried catalog arrived`,
-            );
-            assert.equal(
-              await page.locator("main.library-main [role=alert]").count(),
-              0,
-              `${tag}: the failure message clears once the catalog arrives`,
-            );
-            if (shots) await settle(page, 200);
           } else if (kind === "practice-title") {
             await page.goto(
               `${fixture.origin}/practice?skill=coordinate-polygons&template=coordinate-rectangle-measure`,
@@ -717,124 +400,64 @@ export async function verifyShellReview({
               );
             }
           } else {
-            const library = kind === "library-loading";
             // Every idea practiced and due: a three-digit review count is the
             // widest label the filter row has to hold.
             const crowded = kind === "progress-filters";
-            await page.route(
-              library ? "**/api/v1/catalog" : "**/api/v1/learners/*/progress",
-              async (route) => {
-                await held;
-                if (!crowded) return route.continue();
-                const response = await route.fetch();
-                const snapshot = await response.json();
-                const practiced = snapshot.skills.find(
-                  (skill: { attempts: number }) => skill.attempts > 0,
-                );
-                snapshot.skills = snapshot.skills.map(
-                  (skill: { skillId: string }) => ({
-                    ...practiced,
-                    skillId: skill.skillId,
-                    reviewDueAt: snapshot.asOf,
-                  }),
-                );
-                await route.fulfill({ response, json: snapshot });
-              },
-            );
-            await page.goto(
-              `${fixture.origin}/${library ? "lessons" : "progress"}`,
-              { waitUntil: "domcontentloaded" },
-            );
+            await page.route("**/api/v1/learners/*/progress", async (route) => {
+              await held;
+              if (!crowded) return route.continue();
+              const response = await route.fetch();
+              const snapshot = await response.json();
+              const practiced = snapshot.skills.find(
+                (skill: { attempts: number }) => skill.attempts > 0,
+              );
+              snapshot.skills = snapshot.skills.map(
+                (skill: { skillId: string }) => ({
+                  ...practiced,
+                  skillId: skill.skillId,
+                  reviewDueAt: snapshot.asOf,
+                }),
+              );
+              await route.fulfill({ response, json: snapshot });
+            });
+            await page.goto(`${fixture.origin}/progress`, {
+              waitUntil: "domcontentloaded",
+            });
             await page
               .getByRole("heading", {
-                name: library ? "Lessons" : "Progress",
+                name: "Progress",
                 exact: true,
               })
               .waitFor();
             await settle(page, 150);
-            if (library) {
-              assert.equal(
-                await page
-                  .getByText("0 lessons · 0 problem types", { exact: true })
-                  .count(),
-                0,
-                `${tag}: unknown catalog is not empty`,
+            const geometry = () =>
+              page.locator(".progress-controls").evaluate((root) =>
+                [root, ...root.querySelectorAll("button")].map((el) => {
+                  const { x, y, width, height } = el.getBoundingClientRect();
+                  return { x, y, width, height };
+                }),
               );
-              await page.locator('.library-main[aria-busy="true"]').waitFor();
-              // The title paints at its final size and place, and the search
-              // row and the count line hold theirs, before the catalog lands.
-              const title = page.getByRole("heading", {
-                name: "Lessons",
-                exact: true,
-                level: 1,
-              });
-              const before = {
-                title: await title.boundingBox(),
-                bar: await boxOf(
-                  page,
-                  'section.lesson-index [data-placeholder="search"]',
-                ),
-                line: await boxOf(page, "section.lesson-index [role=status]"),
-              };
-              release();
-              await page
-                .getByRole("searchbox", { name: "Search lessons" })
-                .waitFor();
-              await page
-                .locator(".lesson-index [role=status]")
-                .filter({ hasText: /[1-9]\d* lessons/ })
-                .waitFor();
-              await assertGroupedCatalog(page, tag);
-              await settle(page, 150);
-              const after = {
-                title: await title.boundingBox(),
-                bar: await page.getByRole("search").boundingBox(),
-                line: await boxOf(page, "section.lesson-index [role=status]"),
-              };
-              const problems: string[] = [];
-              if (!sameBox(before.title, after.title))
-                problems.push(
-                  `the title moved when the catalog arrived: ${JSON.stringify(before.title)} → ${JSON.stringify(after.title)}`,
-                );
-              if (!sameBox(before.bar, after.bar))
-                problems.push(
-                  `the search row was not reserved: ${JSON.stringify(before.bar)} → ${JSON.stringify(after.bar)}`,
-                );
-              if (!sameBox(before.line, after.line))
-                problems.push(
-                  `the count line moved: ${JSON.stringify(before.line)} → ${JSON.stringify(after.line)}`,
-                );
-              assert.deepEqual(problems, [], tag);
-            } else {
-              const geometry = () =>
-                page.locator(".progress-controls").evaluate((root) =>
-                  [root, ...root.querySelectorAll("button")].map((el) => {
-                    const { x, y, width, height } = el.getBoundingClientRect();
-                    return { x, y, width, height };
-                  }),
-                );
-              const before = await geometry();
-              release();
-              await page.locator(".progress-skill-card").first().waitFor();
-              await settle(page, 150);
-              assert.deepEqual(
-                await geometry(),
-                before,
-                `${tag}: controls moved after history arrived`,
-              );
-              // Each filter reads on one line, its count beside its label.
-              assert.match(
-                await page.locator(".progress-filters").innerText(),
-                crowded ? /Review · \d{3}/ : /Review · \d+/,
-                `${tag}: the fixture has ideas to review`,
-              );
-              assert.deepEqual(
-                await wrappedLabels(page, ".progress-filters button"),
-                [],
-                `${tag}: a filter label wraps or leaves its button`,
-              );
-              await assertProgressPolish(page, tag);
-            }
+            const before = await geometry();
+            release();
+            await page.locator(".progress-skill-card").first().waitFor();
+            await settle(page, 150);
+            assert.deepEqual(
+              await geometry(),
+              before,
+              `${tag}: controls moved after history arrived`,
+            );
+            // Each filter reads on one line, its count beside its label.
+            assert.match(
+              await page.locator(".progress-filters").innerText(),
+              crowded ? /Review · \d{3}/ : /Review · \d+/,
+              `${tag}: the fixture has ideas to review`,
+            );
+            assert.deepEqual(
+              await wrappedLabels(page, ".progress-filters button"),
+              [],
+              `${tag}: a filter label wraps or leaves its button`,
+            );
+            await assertProgressPolish(page, tag);
           }
           if (shots) {
             await settle(page, 350);

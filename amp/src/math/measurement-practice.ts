@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { measurementDefinitions } from "../content/measurement-definitions.js";
 import type {
@@ -383,18 +384,18 @@ export function generateMeasurementProblem(
       hint = reverse
         ? `Every ${factor} ${small} make 1 ${large}. How many groups of ${factor} are in ${n}?`
         : n === 1
-          ? `How many ${word[small]}s make 1 ${word[large]}? ${length ? `A ${word[small]} is much shorter, so the count is large.` : `A ${word[small]} is much smaller than a ${word[large]}, so the count is large.`}`
+          ? `How many ${word[small]}s make 1 ${word[large]}? ${length ? `${withArticle(word[small], true)} is much shorter, so the count is large.` : `${withArticle(word[small], true)} is much smaller than ${withArticle(word[large])}, so the count is large.`}`
           : `Each ${large} is ${factor} ${small}, and you have ${n} of them: ${n} groups of ${factor}.`;
       explanation = reverse
         ? [
             `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
-            `A ${word[large]} is the bigger unit, so the amount takes fewer of them. Divide by ${factor}.`,
+            `${withArticle(word[large], true)} is the bigger unit, so the amount takes fewer of them. Divide by ${factor}.`,
             `${n} ÷ ${factor} = ${answer}, which is ${n / factor} as a decimal.`,
             `The quantity itself stays the same size. Only the unit changes, and with it the number of units: ${n} ${from} = ${answer} ${to}.`,
           ]
         : [
             `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
-            `A ${word[small]} is the smaller unit, so it takes more of them. Each ${large} becomes ${factor} ${small}, so multiply by ${factor}.`,
+            `${withArticle(word[small], true)} is the smaller unit, so it takes more of them. Each ${large} becomes ${factor} ${small}, so multiply by ${factor}.`,
             `${n} × ${factor} = ${answer}.`,
             `The quantity itself stays the same size. Only the unit changes, and with it the number of units: ${n} ${from} = ${answer} ${to}.`,
           ];

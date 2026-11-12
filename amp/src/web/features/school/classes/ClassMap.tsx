@@ -200,6 +200,7 @@ export function ClassMap({
           {lenses.map((id) => (
             <MenuItem
               key={id}
+              selected={id === lens}
               onSelect={() => set({ lens: id }, { replace: true })}
             >
               {label(id)}

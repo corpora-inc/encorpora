@@ -398,7 +398,7 @@ const pack = formatLessons([
     summary:
       "Add a chosen multiple of one equation to the other and explain why the new system has the same solutions.",
     objectives: [
-      "Compute $E2 + k·E1$ exactly, including the right side.",
+      "Compute $E2 + k\\cdot E1$ exactly, including the right side.",
       "Explain why the step is reversible.",
     ],
     intuition:
@@ -407,15 +407,16 @@ const pack = formatLessons([
     method: [
       "Multiply every term of $E1$ by $k$.",
       "Add those terms to $E2$, including the right side.",
-      "Check that one variable cancelled and that subtracting $k·E1$ returns $E2$.",
+      "Check that one variable cancelled and that subtracting $k\\cdot E1$ returns $E2$.",
     ],
     watch: "Forgetting to multiply the right side by $k$ makes a different equation.",
     principle:
-      "If a pair satisfies $E1$ and $E2$, it satisfies $k·E1$ and therefore $E2 + k·E1$. Subtracting $k·E1$ recovers $E2$, so the systems have the same solutions. At a solution, the new left side equals $f + kc$.",
+      "If a pair satisfies $E1$ and $E2$, it satisfies $k\\cdot E1$ and therefore $E2 + k\\cdot E1$. Subtracting $k\\cdot E1$ recovers $E2$, so the systems have the same solutions. At a solution, the new left side equals $f + kc$.",
     example: {
-      prompt: "$E1$ is $2x + 3y = 7$ and $E2$ is $5x − 6y = 4$. Replace the system by $E1$ and $E2 + 2·E1$.",
+      prompt:
+        "$\\begin{cases} 2x + 3y = 7 & E1 \\\\ 5x - 6y = 4 & E2 \\end{cases}$\n\nThe system is replaced by $E1$ and $E2 + 2\\cdot E1$.",
       steps: [
-        "$2·E1$ is $4x + 6y = 14$.",
+        "$2\\cdot E1$ is $4x + 6y = 14$.",
         "Add $E2$: $9x = 18$. The $y$ terms cancel, and the right side was scaled.",
       ],
       answer: "$9x = 18$",
@@ -426,9 +427,9 @@ const pack = formatLessons([
       "Add to both sides of $E2$.",
     ],
     formal:
-      "$E2 + k·E1$ has left side $(d + ka)x + (e + kb)y$ and right side $f + kc$. Choosing $k$ so one coefficient is zero eliminates that variable. The step reverses by subtracting $k·E1$.",
+      "$E2 + k\\cdot E1$ has left side $(d + ka)x + (e + kb)y$ and right side $f + kc$. Choosing $k$ so one coefficient is zero eliminates that variable. The step reverses by subtracting $k\\cdot E1$.",
     pitfalls: [
-      "Adding without scaling the right side is not $E2 + k·E1$.",
+      "Adding without scaling the right side is not $E2 + k\\cdot E1$.",
       "An equation in only $x$ is not automatically equivalent to $E2$.",
     ],
     parentGuide:

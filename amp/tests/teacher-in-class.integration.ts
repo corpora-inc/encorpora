@@ -10,6 +10,7 @@ import { clearStandingsCache } from "../src/schools/standings.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { alignGrowthStart } from "./helpers/growth-window.js";
 import { schoolDay } from "./helpers/school-day.js";
 
 /* The teacher in their class (docs/families.md): each teacher of a class who
@@ -211,6 +212,7 @@ test(
          ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier`,
         [learnerId, day(3), estimate(from), day(0), estimate(to)],
       );
+      await alignGrowthStart(db, learnerId, day(3), period.id);
     };
 
     // 24 students, growth 5 to 120 points; one alone in the club.
@@ -230,6 +232,8 @@ test(
       `UPDATE amp_enrollments SET begin_on=begin_on-30 WHERE role='student';
        UPDATE amp_org_roles SET begin_on=begin_on-30 WHERE role='student'`,
     );
+    for (const student of roster)
+      await alignGrowthStart(db, student.learnerId, day(3), period.id);
     const first = roster[23]!;
     const last = roster[0]!;
     const alone = await enroll(club.id, "Solo");
@@ -587,9 +591,9 @@ test(
         assert.deepEqual(after.seats, before.seats);
         for (const learner of [riveraLearner, chenLearner])
           assert.ok(!after.oneRoster.includes(learner));
-        // The class's practice median is the students' alone: no weekly
-        // target is set, so the gradebook's practice score stands on it.
-        assert.equal(after.gradebook.weeklyTargetMinutes, null);
+        // No target is set here, so the class counts against the school's
+        // default; the teacher's own line changes no student's suggestion.
+        assert.equal(after.gradebook.weeklyTargetMinutes, 60);
         assert.ok(
           after.gradebook.students.every(
             (row: { suggestion: { status: string } }) =>

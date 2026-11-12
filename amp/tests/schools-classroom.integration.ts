@@ -12,6 +12,7 @@ import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { alignGrowthStart } from "./helpers/growth-window.js";
 import { schoolDay } from "./helpers/school-day.js";
 
 const YEAR_AHEAD = new Date(Date.now() + 365 * 86_400_000).toISOString();
@@ -200,6 +201,7 @@ test(
          ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier`,
         [learnerId, day(3), estimate(from), day(0), estimate(to)],
       );
+      await alignGrowthStart(db, learnerId, day(3));
     };
     const board = (student: Student, classId: string) =>
       app.inject({
@@ -451,7 +453,10 @@ test(
         );
         assert.equal(low.you.rank, null);
         assert.equal(low.you.value, 5);
-        assert.equal(low.you.thisWeek, 5);
+        // This week's growth is the week's pace over its elapsed days
+        // (growth.ts): 5 points in the last 3 days, over the 6 the week has
+        // run so far.
+        assert.equal(low.you.thisWeek, 10);
         assert.equal(JSON.stringify(low).includes("Student0 F."), true);
         assert.equal(
           low.top.some((row: { name: string }) => row.name === "Student0 F."),

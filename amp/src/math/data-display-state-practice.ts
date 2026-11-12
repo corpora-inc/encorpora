@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1243,14 +1244,14 @@ export function bestDisplayCase(seed: string) {
         " Ask which display is built for that kind of data and goal.",
       explanation: [
         scenario.cue,
-        `A ${displayName[answer].toLowerCase()} ${displayJob[answer]}.`,
+        `${withArticle(displayName[answer].toLowerCase(), true)} ${displayJob[answer]}.`,
         `The best display is the ${displayName[answer].toLowerCase()}.`,
       ],
       choices: options(
         displayName[answer],
         wrong.map((d) => ({
           label: displayName[d],
-          feedback: `A ${displayName[d].toLowerCase()} ${displayJob[d]}. That is not what this situation asks for.`,
+          feedback: `${withArticle(displayName[d].toLowerCase(), true)} ${displayJob[d]}. That is not what this situation asks for.`,
         })),
       ),
     }),

@@ -35,8 +35,12 @@
   font-size: var(--text-label);
   font-weight: 650;
 }
-.navLink:hover {
-  background: var(--color-surface-raised-hover);
+/* Hover only where a pointer hovers: on touch a tapped item keeps no fill,
+   so the current item is the only one filled. */
+@media (hover: hover) {
+  .navLink:hover {
+    background: var(--color-surface-raised-hover);
+  }
 }
 .navLink[aria-current="page"] {
   background: var(--color-secondary);
@@ -214,9 +218,11 @@
   font-size: var(--text-label);
   font-weight: 650;
 }
-.learnerList.learnerList [role="option"]:hover {
-  background: var(--color-surface-raised-hover);
-  color: var(--color-on-surface-raised);
+@media (hover: hover) {
+  .learnerList.learnerList [role="option"]:hover {
+    background: var(--color-surface-raised-hover);
+    color: var(--color-on-surface-raised);
+  }
 }
 .learnerList.learnerList [role="option"][aria-selected="true"] {
   border-color: transparent;

@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -421,7 +422,7 @@ function combineModel(r: Random): ReportModel {
     windows: [
       `$${aText}$ ${c.a.unit} could be off by up to $${fixed(ha, c.a.u / 10)}$ ${c.a.unit}, and $${bText}$ ${c.b.unit} by up to $${fixed(c.b.u / 2, c.b.u / 10)}$ ${c.b.unit}, which is $${fixed(hb, (c.b.u * c.b.scale) / 10)}$ ${c.unit}.`,
     ],
-    carry: `In a ${c.subtract ? "difference" : "sum"} the half-widths add: the result could be off by up to $${fixed(ha + hb, (c.b.u * c.b.scale) / 10)}$ ${c.unit}`,
+    carry: `In ${withArticle(c.subtract ? "difference" : "sum")} the half-widths add: the result could be off by up to $${fixed(ha + hb, (c.b.u * c.b.scale) / 10)}$ ${c.unit}`,
     rule: "decimal-places",
     ...(slip ? { slip } : {}),
   };
@@ -916,7 +917,7 @@ function reportMeaningModel(r: Random) {
       false,
       rep.stated
         ? `Such a display rounds to the nearest $${coarser}$ ${u}, so it could not report $${text}$ ${u} ${rep.stated}.`
-        : `Such a display never shows a ${placeWord(rep.e)} digit, so it could not report $${text}$ to the ${placeWord(rep.e)}.`,
+        : `Such a display never shows ${withArticle(placeWord(rep.e))} digit, so it could not report $${text}$ to the ${placeWord(rep.e)}.`,
     ),
     st(
       `The true value could be $${near}$ ${u}.`,

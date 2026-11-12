@@ -67,7 +67,7 @@ export const family = {
       id,
       method(
         id === "list-all-pairs" || id === "complete-list-choice"
-          ? "List every factor pair of a whole number from 1 to 100, smaller factor first."
+          ? "List every factor pair of a whole number from 1 to 100, smallest first, each pair once."
           : id === "bracket-steps" || id === "spot-the-error"
             ? "Divide with the standard algorithm, one place at a time, and keep each difference smaller than the divisor."
             : "Use place value, equal groups, or an area model to complete the product or the quotient.",
@@ -202,7 +202,7 @@ export const family = {
       facetId: "factors-multiples.core",
       extent: "partial",
       rationale:
-        "List every factor pair of a number from 12 to 100, smaller factor first. Does not assess primes or the greatest common factor of two numbers.",
+        "List every factor pair of a number from 12 to 100, smallest first, each pair once. Does not assess primes or the greatest common factor of two numbers.",
     },
     {
       templateId: "complete-list-choice",

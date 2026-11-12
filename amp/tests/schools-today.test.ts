@@ -160,7 +160,7 @@ test("a family's Today speaks of children and never asks to start a class", () =
     }),
   );
   assert.ok(all.some((todo) => todo.title === "Both children worked today"));
-  // Stuck at home: teach the lesson, then a sheet on paper.
+  // Repeated misses at home: the lesson, and a sheet on paper.
   const stuck = todayTodos(
     input({
       family: true,
@@ -168,8 +168,12 @@ test("a family's Today speaks of children and never asks to start a class", () =
       skills: [gap("ada", [miss(4), miss(2), miss(1)])],
     }),
   ).find((todo) => todo.kind === "stuck");
-  assert.equal(stuck?.title, "Ada is stuck on fraction addition");
-  assert.equal(stuck?.action.label, "Teach this lesson");
+  assert.equal(stuck?.title, "Ada keeps missing fraction addition");
+  assert.equal(
+    stuck?.detail,
+    "3 misses without help in the last 14 days, and no right answer since.",
+  );
+  assert.equal(stuck?.action.label, "Open the lesson");
   assert.equal(stuck?.groupSheet?.label, "Print a sheet");
 });
 
@@ -193,13 +197,17 @@ test("a shared gap names the skill and the students, and opens the lesson", () =
   );
   const [first] = todos;
   assert.equal(first!.kind, "shared-gap");
-  assert.equal(first!.title, "3 students are stuck on fraction addition");
-  assert.match(first!.detail, /Amara, Diego and Lena keep missing it/);
+  assert.equal(first!.title, "3 students keep missing fraction addition");
+  assert.equal(
+    first!.detail,
+    "Amara, Diego and Lena: each has 2 or more misses without help in the last 14 days, and no right answer since.",
+  );
+  assert.doesNotMatch(first!.detail, /should|together|try/i);
   assert.deepEqual(first!.action, {
     kind: "lesson",
     templateId: "fraction-add",
     skillId: "fraction-addition",
-    label: "Teach this lesson",
+    label: "Open the lesson",
   });
   assert.deepEqual(
     first!.students.map((entry) => entry.id),
@@ -272,7 +280,8 @@ test("one student stuck, with the action on their work", () => {
     }),
   );
   const stuck = todos.find((todo) => todo.kind === "stuck")!;
-  assert.equal(stuck.title, "Noor is stuck on fraction addition");
+  assert.equal(stuck.title, "Noor keeps missing fraction addition");
+  assert.doesNotMatch(stuck.detail, /should|side by side/i);
   assert.deepEqual(stuck.action, {
     kind: "student",
     personId: "noor",
@@ -288,72 +297,25 @@ test("a student in a shared gap isn't also listed as stuck on it", () => {
   assert.equal(kinds(todos).includes("stuck"), false);
 });
 
-test("a quiet week names the student, and says when they last worked", () => {
-  const todos = todayTodos(
-    input({
-      students: [
-        student("Amara"),
-        student("Marcus", {
-          weekMinutes: 0,
-          weekProblems: 0,
-          lastActive: "2026-10-29",
-          usualWeeklyMinutes: 44,
-        }),
-      ],
-    }),
-  );
-  const quiet = todos.find((todo) => todo.kind === "no-practice")!;
-  assert.equal(quiet.title, "Marcus hasn’t practiced this week");
-  assert.match(quiet.detail, /Marcus last worked on Thursday, October 29/);
-  assert.match(quiet.detail, /about 44 minutes/);
-  assert.doesNotMatch(quiet.detail, /\b(he|she|his|her|him)\b/i);
-});
-
-test("several behind reads as a group, against the target", () => {
-  const todos = todayTodos(
-    input({
-      students: [
-        student("Amara"),
-        student("Diego", { weekMinutes: 0, weekProblems: 0 }),
-        student("Lena", { weekMinutes: 3, weekProblems: 5 }),
-      ],
-    }),
-  );
-  const quiet = todos.find((todo) => todo.kind === "no-practice")!;
-  assert.equal(quiet.title, "2 students are behind this week’s target");
-  assert.deepEqual(quiet.action, {
-    kind: "tab",
-    tab: "time",
-    label: "See the time report",
-  });
-});
-
-test("early in the week an empty row means nothing", () => {
-  const monday = "2026-11-02";
-  const todos = todayTodos(
-    input({
-      today: monday,
-      students: [student("Marcus", { weekMinutes: 0, weekProblems: 0 })],
-    }),
-  );
-  assert.equal(kinds(todos).includes("no-practice"), false);
-  const wednesday = todayTodos(
-    input({
-      today: "2026-11-04",
-      students: [student("Marcus", { weekMinutes: 0, weekProblems: 0 })],
-    }),
-  );
-  assert.equal(kinds(wednesday).includes("no-practice"), true);
-});
-
-test("without a target, only an empty week counts as behind", () => {
-  const todos = todayTodos(
-    input({
-      weeklyTargetMinutes: null,
-      students: [student("Lena", { weekMinutes: 3, weekProblems: 5 })],
-    }),
-  );
-  assert.equal(kinds(todos).includes("no-practice"), false);
+test("Today makes no practice judgement: an empty week is data on Time, not an item", () => {
+  for (const today of ["2026-11-02", "2026-11-04", "2026-11-06"])
+    for (const weeklyTargetMinutes of [60, null])
+      assert.equal(
+        kinds(
+          todayTodos(
+            input({
+              today,
+              weeklyTargetMinutes,
+              students: [
+                student("Amara"),
+                student("Diego", { weekMinutes: 0, weekProblems: 0 }),
+                student("Lena", { weekMinutes: 3, weekProblems: 5 }),
+              ],
+            }),
+          ),
+        ).includes("no-practice"),
+        false,
+      );
 });
 
 test("students who never started get a next step, apart from those who stopped", () => {
@@ -383,8 +345,11 @@ test("ready for more means past the course in every strand, and holding it", () 
     student("Sam", past),
     student("Lena"),
   ])!;
-  assert.equal(both.title, "Priya and Sam are ready for more");
-  assert.match(both.detail, /Both are past Grade 5 in every strand/);
+  assert.equal(both.title, "Priya and Sam: above Grade 5 in every strand");
+  assert.equal(
+    both.detail,
+    "Spaced review right without help in 80% or more of at least 3 reviews.",
+  );
   assert.equal(both.action.kind, "tab");
   const one = ready([student("Priya", past), student("Lena")])!;
   assert.equal(one.action.kind, "student");
@@ -420,10 +385,10 @@ test("ready for more means past the course in every strand, and holding it", () 
       students: [student("Priya", { ...past, gradeLevel: 5 })],
     }),
   ).find((todo) => todo.kind === "ready")!;
-  assert.match(mixed.detail, /past their own grade/);
+  assert.match(mixed.title, /above their own grade/);
 });
 
-test("a good day says so", () => {
+test("a day with most of the class working says how many, without a verdict", () => {
   const worked = { workedToday: true, todayMinutes: 20, objectivesThisWeek: 2 };
   const todos = todayTodos(
     input({
@@ -436,8 +401,11 @@ test("a good day says so", () => {
     }),
   );
   const good = todos.find((todo) => todo.kind === "good-day")!;
-  assert.equal(good.title, "A good day: 3 of 4 students worked today");
-  assert.match(good.detail, /60 active minutes so far, and 6 new objectives/);
+  assert.equal(good.title, "3 of 4 students practiced today");
+  assert.equal(
+    good.detail,
+    "60 active minutes so far; 6 skills shown twice on their own this week.",
+  );
   // Too few for a good day, but what's going well still shows.
   const quiet = todayTodos(
     input({
@@ -451,7 +419,8 @@ test("a good day says so", () => {
   );
   const going = quiet.find((todo) => todo.kind === "good-day")!;
   assert.equal(going.id, "going-well");
-  assert.equal(going.title, "3 new objectives this week");
+  assert.equal(going.title, "3 skills shown twice on their own this week");
+  assert.equal(going.detail, "Amara 3.");
 });
 
 test("never a wall of deficits: what's going well keeps its place", () => {
@@ -492,7 +461,7 @@ test("never a wall of deficits: what's going well keeps its place", () => {
   assert.equal(list.includes("good-day"), true);
   assert.equal(list[0], "shared-gap");
   // One of each kind before a second of any.
-  assert.deepEqual(list.slice(0, 3), ["shared-gap", "stuck", "no-practice"]);
+  assert.deepEqual(list.slice(0, 3), ["shared-gap", "stuck", "start"]);
   assert.equal(new Set(todos.map((todo) => todo.id)).size, todos.length);
 });
 
@@ -522,5 +491,38 @@ test("thresholds come from the versioned policy", () => {
   assert.equal(
     kinds(todayTodos(input({ skills }), policy)).includes("shared-gap"),
     true,
+  );
+});
+
+test("keeps missing links each student's latest miss without help", () => {
+  const withIds = (id: string) => [
+    miss(4, { id: `${id}-1` }),
+    miss(3, { id: `${id}-2` }),
+    miss(2, { id: `${id}-3` }),
+    // A miss with a hint since: not the one to open.
+    miss(1, { id: `${id}-4`, assisted: true }),
+  ];
+  const stuck = todayTodos(
+    input({
+      skills: [{ ...gap("noor", withIds("noor")) }],
+    }),
+  ).find((todo) => todo.kind === "stuck")!;
+  assert.deepEqual(stuck.misses, [
+    { personId: "noor", attempt: "noor-3", skillId: "fraction-addition" },
+  ]);
+  assert.equal(stuck.action.label, "See Noor’s misses");
+  const shared = todayTodos(
+    input({
+      skills: [
+        gap("amara", withIds("amara")),
+        gap("diego", withIds("diego")),
+        gap("lena"),
+      ],
+    }),
+  ).find((todo) => todo.kind === "shared-gap")!;
+  // Evidence folded before attempt ids were kept links nothing.
+  assert.deepEqual(
+    shared.misses?.map((entry) => entry.attempt),
+    ["amara-3", "diego-3"],
   );
 });

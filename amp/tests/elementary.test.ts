@@ -24,6 +24,7 @@ import { elementaryRequirements } from "../src/content/elementary-coverage.js";
 import { skills, standards } from "../src/curriculum/catalog.js";
 import { Figure } from "../src/web/Figure.js";
 import { publicationHtml } from "../src/content/publications.js";
+import { asCurrent } from "./fixtures/recorded-version";
 
 test("elementary families have grade-specific catalog, lesson and public engine bindings", () => {
   assert.equal(
@@ -41,7 +42,9 @@ test("elementary families have grade-specific catalog, lesson and public engine 
     );
     assert.deepEqual(
       generateProblem(template.id, "registry"),
-      polishProblem(generateElementaryProblem(template.id, "registry")),
+      asCurrent(
+        polishProblem(generateElementaryProblem(template.id, "registry")),
+      ),
     );
   }
 });

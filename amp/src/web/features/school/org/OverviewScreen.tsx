@@ -1,5 +1,11 @@
+import { classColumn, teacherColumn, teacherNames } from "../class-columns";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { useMemo } from "react";
 import { formatDay } from "../../../../schools/calendar";
 import type {
@@ -11,15 +17,22 @@ import type {
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { Segmented } from "../../../ui/Segmented";
 import { Loading } from "../../../ui/Loading";
-import { StatRow, StatTile } from "../../../ui/StatTile";
 import { currentSession, orgOptions } from "../api";
 import { fullDay, number } from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
 import { classPath, orgPath } from "../paths";
-import { StandingChart, TrendChart } from "./charts";
+import { TrendChart, type TrendMeasure } from "./charts";
+import { StandingCurves } from "../standing/StandingCurves";
+import { withInterval } from "../standing/format";
+import { RuleNote } from "../RuleNote";
 import { compareClassNames } from "../sort";
-import { overviewOptions } from "./org-api";
+import { summarize } from "../../../../schools/practice-stats";
+import { measureOf, MEASURES } from "../practice/heat";
+import { DoseResponse, type DoseDots } from "./DoseResponse";
+import { overviewOptions, practiceOptions } from "./org-api";
+import { PracticeMap } from "./PracticeMap";
 import styles from "./Org.module.css";
 
 const DAY = 86_400_000;
@@ -74,7 +87,35 @@ type Usage = {
   active: number;
   minutes: number;
   growth: number | null;
+  growthLow: number | null;
+  growthHigh: number | null;
+  placed: number;
 };
+/** Growth with where its median sits: "+0.3 (−0.1 to +0.7)". */
+const growthFull = (row: Usage) =>
+  row.growth === null || row.growthLow === null || row.growthHigh === null
+    ? growthWords(row.growth)
+    : withInterval({
+        median: row.growth,
+        low: row.growthLow,
+        high: row.growthHigh,
+      });
+function GrowthCell({ row }: { row: Usage }) {
+  const full = growthFull(row);
+  const split = full.indexOf(" (");
+  return split === -1 ? (
+    <span title={growthTip(row)}>{full}</span>
+  ) : (
+    <span title={growthTip(row)} className={styles.growthCell}>
+      {full.slice(0, split)}
+      <span>{full.slice(split)}</span>
+    </span>
+  );
+}
+const growthTip = (row: Usage) =>
+  row.placed
+    ? `Median of ${number(row.placed)} ${row.placed === 1 ? "student" : "students"} whose estimate has settled`
+    : "Not settled yet";
 const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "students",
@@ -87,7 +128,7 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   },
   {
     id: "active",
-    header: "Active this week",
+    header: "Practiced this week",
     width: 170,
     firstSort: "descending",
     compare: (a, b) =>
@@ -107,11 +148,12 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "growth",
     header: "Growth this term",
-    width: 104,
+    width: 176,
     align: "end",
     firstSort: "descending",
     compare: (a, b) => (a.growth ?? -99) - (b.growth ?? -99),
-    cell: (row) => growthWords(row.growth),
+    cell: (row) => <GrowthCell row={row} />,
+    cellLabel: (row) => `${growthFull(row)}. ${growthTip(row)}`,
   },
 ];
 
@@ -135,15 +177,15 @@ function UsageCard({
       <span className={styles.usageFacts}>
         <ActiveCell active={row.active} students={row.students} />
         <span>{number(row.minutes)} min</span>
-        <span>{growthWords(row.growth)} grades</span>
+        <span>
+          <GrowthCell row={row} /> grades
+        </span>
       </span>
     </Link>
   );
 }
 
 /** Teachers by name, with the person reading it as "You". */
-const teacherNames = (teachers: readonly string[], self: string | null) =>
-  teachers.map((name) => (self && name === self ? "You" : name)).join(", ");
 
 function ClassTable({
   orgId,
@@ -157,34 +199,9 @@ function ClassTable({
   const navigate = useNavigate();
   const columns = useMemo<DataGridColumn<ClassUsage>[]>(
     () => [
-      {
-        id: "name",
-        header: "Class",
-        width: 190,
-        compare: (a, b) => compareClassNames(a.name, b.name),
-        cell: (row) => (
-          <Link
-            to="/$"
-            params={{ _splat: classPath(orgId, row.id) }}
-            className={styles.rowLink}
-          >
-            {row.name}
-          </Link>
-        ),
-      },
-      {
-        id: "teacher",
-        header: "Teacher",
-        width: 150,
-        compare: (a, b) =>
-          (a.teachers[0] ?? "").localeCompare(b.teachers[0] ?? "", "en"),
-        cell: (row) =>
-          row.teachers.length ? (
-            teacherNames(row.teachers, self)
-          ) : (
-            <span className={styles.none}>No teacher</span>
-          ),
-      },
+      // The same Class and Teacher columns as the Classes tab's table.
+      classColumn<ClassUsage>((row) => classPath(orgId, row.id)),
+      teacherColumn<ClassUsage>(self),
       ...usageColumns<ClassUsage>(),
     ],
     [orgId, self],
@@ -283,6 +300,7 @@ function Attention({ items }: { items: readonly AttentionItem[] }) {
         <li key={item.id}>
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
+          {item.rule && <RuleNote>{item.rule}</RuleNote>}
           <Link
             to="/$"
             params={{ _splat: orgPath(item.action.org, item.action.path) }}
@@ -336,6 +354,87 @@ function Seats({
   );
 }
 
+/** The term's practice as data: classes by week, cold to hot against the
+ * weekly target, then whether more practice went with more growth. Its own
+ * read; until it lands, a block the size of what it will draw. */
+function Practice({
+  part,
+  orgId,
+  rows,
+  measure,
+  sort,
+  dots,
+  onDots,
+}: {
+  /** "map": classes by week, under Weekly practice and governed by its
+   * toggle. "dose": practice against growth, a section of its own. */
+  part: "map" | "dose";
+  orgId: string;
+  rows: number;
+  measure: TrendMeasure;
+  sort: unknown;
+  dots: DoseDots;
+  onDots: (dots: DoseDots) => void;
+}) {
+  const session = currentSession();
+  const practice = useQuery(practiceOptions(session, orgId));
+  const data = practice.data;
+  if (rows === 0) return null;
+  const target =
+    summarize(data?.rows.map((row) => row.target) ?? [])?.median ?? 60;
+  if (part === "map")
+    return (
+      <div className={styles.practiceMapBlock}>
+        {/* The Weekly practice toggle above governs this map as well. */}
+        <h3 id="overview-practice" className={styles.sectionTitle}>
+          Practice by week
+        </h3>
+        {data ? (
+          <PracticeMap
+            data={data}
+            orgId={orgId}
+            measure={measure}
+            sort={sort}
+          />
+        ) : practice.isError ? (
+          <div className={styles.practiceFailed} role="alert">
+            <p>
+              The practice map didn’t load. Check your connection, then try
+              again.
+            </p>
+            <Button variant="secondary" onClick={() => void practice.refetch()}>
+              Try again
+            </Button>
+          </div>
+        ) : (
+          <div
+            className={styles.practiceSkeleton}
+            style={{ height: 120 + rows * 44 }}
+            aria-busy="true"
+          />
+        )}
+      </div>
+    );
+  return (
+    <section aria-labelledby="overview-dose">
+      <h2 id="overview-dose" className={styles.sectionTitle}>
+        Practice and growth
+      </h2>
+      {data ? (
+        <DoseResponse data={data} dots={dots} onDots={onDots} target={target} />
+      ) : (
+        !practice.isError && (
+          <div
+            className={styles.practiceSkeleton}
+            style={{ height: 420 }}
+            aria-busy="true"
+          />
+        )
+      )}
+    </section>
+  );
+}
+
 function FirstRun({ orgId, canImport }: { orgId: string; canImport: boolean }) {
   return (
     <EmptyState
@@ -370,6 +469,30 @@ export function OverviewScreen() {
   const canImport = org?.can?.includes("roster.import") === true;
   const view = overview.data;
   const district = view ? view.org.kind !== "school" : false;
+  const search = useSearch({ strict: false }) as {
+    chart?: unknown;
+    rows?: unknown;
+    dot?: unknown;
+  };
+  const measure: TrendMeasure = measureOf(search.chart);
+  const dots: DoseDots = search.dot === "classes" ? "classes" : "students";
+  const navigate = useNavigate();
+  const setSearch = (patch: Record<string, string | undefined>) =>
+    void navigate({
+      to: ".",
+      replace: true,
+      resetScroll: false,
+      search: ((previous: Record<string, unknown>) => ({
+        ...previous,
+        ...patch,
+      })) as never,
+    });
+  const setMeasure = (next: TrendMeasure) =>
+    setSearch({ chart: next === "problems" ? "problems" : undefined });
+  const placed = [...(view?.classes ?? []), ...(view?.schools ?? [])].reduce(
+    (sum, row) => sum + row.placed,
+    0,
+  );
   return (
     <OrgFrame orgId={orgId} nav="overview" title="Overview">
       {overview.isPending ? (
@@ -415,13 +538,38 @@ export function OverviewScreen() {
                   aria-labelledby="overview-trend"
                   className={styles.trend}
                 >
-                  <h2 id="overview-trend" className={styles.sectionTitle}>
-                    Weekly active minutes
-                    {view.term.name === "Last 12 weeks"
-                      ? ", last 12 weeks"
-                      : `, ${view.term.name}`}
-                  </h2>
-                  <TrendChart weeks={view.trend} today={view.today} />
+                  <div className={styles.trendHead}>
+                    <h2 id="overview-trend" className={styles.sectionTitle}>
+                      Weekly practice
+                      {view.term.name === "Last 12 weeks"
+                        ? ", last 12 weeks"
+                        : `, ${view.term.name}`}
+                    </h2>
+                    <div className={styles.trendToggle}>
+                      <Segmented
+                        label="Show"
+                        options={MEASURES}
+                        value={measure}
+                        compact
+                        dense
+                        onChange={setMeasure}
+                      />
+                    </div>
+                  </div>
+                  <TrendChart
+                    weeks={view.trend}
+                    today={view.today}
+                    measure={measure}
+                  />
+                  <Practice
+                    part="map"
+                    orgId={orgId}
+                    rows={(view.classes ?? view.schools ?? []).length}
+                    measure={measure}
+                    sort={search.rows}
+                    dots={dots}
+                    onDots={() => undefined}
+                  />
                 </section>
                 {view.attention.length > 0 && (
                   <section
@@ -434,35 +582,24 @@ export function OverviewScreen() {
                     <Attention items={view.attention} />
                   </section>
                 )}
-                <section
-                  aria-labelledby="overview-standing"
-                  className={styles.standingSection}
-                >
-                  <h2 id="overview-standing" className={styles.sectionTitle}>
-                    Where students stand against grade level
-                  </h2>
-                  <StandingChart standing={view.standing} />
-                </section>
-                <div className={styles.standingFacts}>
-                  <StatRow label="Students by standing">
-                    <StatTile
-                      value={number(view.standing.at)}
-                      label="at grade level"
-                    />
-                    <StatTile value={number(view.standing.ahead)} label="ahead" />
-                    <StatTile
-                      value={number(view.standing.behind)}
-                      label="behind"
-                    />
-                    {view.standing.unplaced > 0 && (
-                      <StatTile
-                        value={number(view.standing.unplaced)}
-                        label="not placed yet"
-                      />
-                    )}
-                  </StatRow>
-                </div>
+                <StandingCurves
+                  orgId={orgId}
+                  sectionClass={styles.standingSection}
+                  factsClass={styles.standingFacts}
+                  titleClass={styles.sectionTitle}
+                />
               </div>
+              <Practice
+                part="dose"
+                orgId={orgId}
+                rows={(view.classes ?? view.schools ?? []).length}
+                measure={measure}
+                sort={search.rows}
+                dots={dots}
+                onDots={(next) =>
+                  setSearch({ dot: next === "classes" ? "classes" : undefined })
+                }
+              />
               <section aria-labelledby="overview-usage">
                 <h2 id="overview-usage" className={styles.sectionTitle}>
                   {district ? "Schools" : "Classes"}
@@ -499,7 +636,14 @@ export function OverviewScreen() {
                   </p>
                 )}
                 <p className={styles.tableNote}>
-                  Growth is the middle student’s grades gained this term.
+                  Growth is each {district ? "school" : "class"}’s median pace of
+                  level on the days its uncertainty was at most 0.6 grades,
+                  across the days the term has run, with its 95% range, from{" "}
+                  {number(placed)}{" "}
+                  {placed === 1 ? "student" : "students"}. Not settled yet
+                  shows as —.
+                  Practiced means at least 5 active minutes or 5 problems this
+                  week.
                 </p>
               </section>
             </>

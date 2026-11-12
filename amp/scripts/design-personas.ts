@@ -12,9 +12,15 @@
  * The API must be running in accounts mode behind that origin
  * (`scripts/design-preview.sh`). Loopback only; it refuses anything else.
  * Run it on an empty database: a persona that already exists is skipped.
+ * `AMP_PERSONAS=adult-3wk,family` seeds only those (a browser check's
+ * fixture, scripts/verify-smooth-load-ui.ts).
  */
 import pg from "pg";
-import { seedClassHistory, type DemoStudent } from "../src/schools/demo/history";
+import {
+  seedClassHistory,
+  type DemoStudent,
+} from "../src/schools/demo/history";
+import { sumWeeks } from "../src/schools/demo/term";
 import { persona, type Persona } from "../src/schools/demo/personas";
 import { PostgresRepository } from "../src/server/repository";
 import {
@@ -94,17 +100,22 @@ async function signUp(slug: string): Promise<Session | null> {
     }),
   });
   if (!response.ok)
-    throw new Error(`sign-up ${slug} ${response.status} ${await response.text()}`);
+    throw new Error(
+      `sign-up ${slug} ${response.status} ${await response.text()}`,
+    );
   const cookie = response.headers
     .getSetCookie()
     .map((line) => line.split(";")[0])
     .join("; ");
   const session = (await (
-    await fetch(`${origin}/api/auth/get-session`, { headers: { Cookie: cookie } })
+    await fetch(`${origin}/api/auth/get-session`, {
+      headers: { Cookie: cookie },
+    })
   ).json()) as { user: { id: string }; session: { token: string } };
-  await pool.query('UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1', [
-    session.user.id,
-  ]);
+  await pool.query(
+    'UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1',
+    [session.user.id],
+  );
   return {
     account: `amp|${session.user.id}`,
     token: session.session.token,
@@ -125,7 +136,10 @@ async function grant(learnerId: string, startedDaysAgo = 30) {
  * first session yesterday and nothing since. */
 async function history(
   learners: { learnerId: string; persona: Persona }[],
-  { weeks, grade, recentDays }: { weeks: number; grade: number; recentDays?: number },
+  {
+    weeks,
+    grade,
+  }: { weeks: number; grade: number; recentDays?: number },
 ) {
   const students: DemoStudent[] = learners.map((learner) => ({
     personId: learner.learnerId,
@@ -148,19 +162,12 @@ async function history(
       weekShape: shape,
       now: Date.now(),
       workToday: true,
-      recentDays: recentDays ?? span + 1,
-      sharedGap: null,
-      stuck: null,
+      model: "persona",
     });
     // The weekly rollups, summed once, as a demo's bulk writer does.
-    const ids = learners.map((l) => l.learnerId);
-    await client.query(
-      `INSERT INTO amp_learner_weeks(learner_id,week,active_ms)
-       SELECT learner_id,date_trunc('week',day)::date,sum(active_ms) FROM amp_active_days
-       WHERE learner_id=ANY($1) GROUP BY 1,2
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms`,
-      [ids],
-    );
+    await sumWeeks(client, "SELECT unnest($1::text[])", [
+      learners.map((learner) => learner.learnerId),
+    ]);
     await client.query("COMMIT");
     return written.answers;
   } catch (error) {
@@ -262,9 +269,10 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
       ],
       { weeks: 1, grade: 6 },
     );
-    await pool.query("UPDATE amp_learners SET free_online_used=100 WHERE id=$1", [
-      learnerId,
-    ]);
+    await pool.query(
+      "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+      [learnerId],
+    );
   },
   "parent-new": async (session) => {
     await start(session, {
@@ -302,8 +310,16 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
       [session.account],
     );
     const pip = await repository.create(session.account, "Pip", thisYear - 6);
-    const wren = await repository.create(session.account, "Wren", thisYear - 10);
-    const theo = await repository.create(session.account, "Theo", thisYear - 16);
+    const wren = await repository.create(
+      session.account,
+      "Wren",
+      thisYear - 10,
+    );
+    const theo = await repository.create(
+      session.account,
+      "Theo",
+      thisYear - 16,
+    );
     await start(session, {
       as: "parent",
       children: [pip, wren, theo].map(() => ({ birthYear: thisYear - 10 })),
@@ -425,9 +441,11 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
   },
 };
 
+const only = process.env.AMP_PERSONAS?.split(",").map((slug) => slug.trim());
 for (const person of PREVIEW_PERSONAS) {
   const seed = seeds[person.slug];
   if (!seed || person.slug === "second-parent") continue;
+  if (only && !only.includes(person.slug)) continue;
   const begun = Date.now();
   const session = await signUp(person.slug);
   if (!session) continue;

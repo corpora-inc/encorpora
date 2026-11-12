@@ -1,3 +1,4 @@
+import { article as sharedArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -190,8 +191,7 @@ export function quotient(num: number, den: number) {
 /** A value substituted into an expression, always in parentheses. */
 export const sub = (v: number) => `(${n(v)})`;
 /** "a" or "an" before a number as it is read aloud: an 8-, an 11-, an 18-. */
-export const article = (v: number) =>
-  /^8/.test(String(v)) || v === 11 || v === 18 ? "An" : "A";
+export const article = (v: number) => sharedArticle(v, true);
 /** c times a substituted value: "3(4)", "−2(−5)", "−4", "+ 7", " − (−3)". */
 export function scaled(c: number, v: number, first = true) {
   const mag = Math.abs(c) === 1 ? p(v) : `${Math.abs(c)}(${n(v)})`;

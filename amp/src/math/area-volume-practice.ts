@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { article } from "./agreement";
 import type {
@@ -119,7 +120,15 @@ const clauseTemplates: readonly TemplateMetadata[] = [
     reprintsFrom: 1,
     gradeBand: "6–8",
     requiredResponseCapability: "multi-part-choice-v1",
-    glossaryNoLink: ["base", "bases", "side", "part", "parts", "whole", "square"],
+    glossaryNoLink: [
+      "base",
+      "bases",
+      "side",
+      "part",
+      "parts",
+      "whole",
+      "square",
+    ],
   },
   {
     id: "polygon-which-expression",
@@ -385,7 +394,7 @@ function triangleCase(r: Random): Case {
         : `The slanted ${unused.length === 1 ? "side" : "sides"}, ${list(unused.map((s) => len(s, u)))}, ${unused.length === 1 ? "is" : "are"} not perpendicular to the base, so ${unused.length === 1 ? "it is" : "they are"} not used.`,
     );
   explanation.push(
-    `A copy of the triangle, turned halfway around, fits against it to make a ${isRight ? "rectangle" : "parallelogram"} with the same base and height. Its area is base × height: ${b} × ${h} = ${b * h} ${square(u)}.`,
+    `A copy of the triangle, turned halfway around, fits against it to make ${withArticle(isRight ? "rectangle" : "parallelogram")} with the same base and height. Its area is base × height: ${b} × ${h} = ${b * h} ${square(u)}.`,
     `The triangle is half of that ${isRight ? "rectangle" : "parallelogram"}: ${b * h} ÷ 2 = ${plain(area)}. The area is ${plain(area)} ${square(u)}.`,
   );
   return {
@@ -1309,7 +1318,7 @@ function coneSphereCase(r: Random): Case {
   const given =
     solid === "cone"
       ? `A cone has ${size} and a height of ${len(h, u)}.`
-      : `A ${name} has ${size}.`;
+      : `${withArticle(name, true)} has ${size}.`;
   if (wantApprox) {
     const v = approx(coefficient);
     steps.push(
@@ -1444,10 +1453,25 @@ function inContextPolygon(r: Random): Case {
   const shape = base.tags[0]!;
   const skin =
     shape === "parallelogram"
-      ? { thing: "sign", goods: "Paint", asked: "the paint", word: "parallelogram" }
+      ? {
+          thing: "sign",
+          goods: "Paint",
+          asked: "the paint",
+          word: "parallelogram",
+        }
       : shape === "pentagon"
-        ? { thing: "barn end", goods: "Siding", asked: "the siding", word: "pentagon" }
-        : { thing: "garden", goods: "Sod", asked: "the sod", word: "trapezoid" };
+        ? {
+            thing: "barn end",
+            goods: "Siding",
+            asked: "the siding",
+            word: "pentagon",
+          }
+        : {
+            thing: "garden",
+            goods: "Sod",
+            asked: "the sod",
+            word: "trapezoid",
+          };
   const steps: string[] = [];
   if (shape === "parallelogram") {
     const b = f.sides[0]!,
@@ -1496,7 +1520,7 @@ function inContextPolygon(r: Random): Case {
         ? `Add the rectangle and half the roof's base times the roof's own height. ${priceStep}`
         : `Average the two parallel sides, multiply by the height between them. ${priceStep}`;
   return {
-    prompt: `A ${skin.thing} is the ${skin.word} shown. ${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}. What does ${skin.asked} cost, in dollars?`,
+    prompt: `${withArticle(skin.thing, true)} is the ${skin.word} shown. ${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}. What does ${skin.asked} cost, in dollars?`,
     answer: cost,
     explanation: steps,
     hint,
@@ -1536,9 +1560,7 @@ function houseCase(r: Random, u: LengthUnit): Case {
         [0, wall],
       ],
       sides: [w, wall, null, null, wall],
-      heights: [
-        { from: [w / 2, wall + roof], to: [w / 2, wall], value: roof },
-      ],
+      heights: [{ from: [w / 2, wall + roof], to: [w / 2, wall], value: roof }],
       guides: [{ from: [0, wall], to: [w, wall] }],
       rightAngles: [0, 1],
     },
@@ -1631,7 +1653,11 @@ function rectTrapCase(r: Random, u: LengthUnit): Case {
 function withTriangles(r: Random): Case {
   const u = pick(r, units);
   const kind = r(0, 2);
-  return kind === 0 ? houseCase(r, u) : kind === 1 ? cutTriangleCase(r, u) : rectTrapCase(r, u);
+  return kind === 0
+    ? houseCase(r, u)
+    : kind === 1
+      ? cutTriangleCase(r, u)
+      : rectTrapCase(r, u);
 }
 
 function stackedCubes(r: Random): Case {
@@ -1725,7 +1751,7 @@ function fractionalBase(r: Random): Case {
             `Adding the base area and the height gives $${frac(sum)}$, not the volume.`,
           ];
     return {
-      prompt: `A ${thing} has a rectangular base with area $${mixed(B)}$ square ${plural}. The ${fill} is $${mixed(h)}$ ${word(h, u)} deep. How many cubic ${plural} of ${fill} does it hold?`,
+      prompt: `${withArticle(thing, true)} has a rectangular base with area $${mixed(B)}$ square ${plural}. The ${fill} is $${mixed(h)}$ ${word(h, u)} deep. How many cubic ${plural} of ${fill} does it hold?`,
       answer: volume,
       explanation: [
         `Write the measures as improper fractions: $${mixed(B)} = ${frac(B)}$ and $${mixed(h)} = ${frac(h)}$.`,
@@ -1741,7 +1767,7 @@ function fractionalBase(r: Random): Case {
     };
   }
   return {
-    prompt: `A ${thing} has a base of $${mixed(B)}$ square ${plural} and holds $${mixed(volume)}$ cubic ${word(volume, u)} of ${fill}. How deep is the ${fill}, in ${plural}?`,
+    prompt: `${withArticle(thing, true)} has a base of $${mixed(B)}$ square ${plural} and holds $${mixed(volume)}$ cubic ${word(volume, u)} of ${fill}. How deep is the ${fill}, in ${plural}?`,
     answer: h,
     explanation: [
       `The depth is the volume divided by the base area. Adding the base area to the volume does not give the depth.`,
@@ -1835,7 +1861,10 @@ function choiceProblem(
       response: {
         kind: "choice",
         label,
-        options: options.map((o, i) => ({ id: CHOICE_IDS[i]!, label: o.label })),
+        options: options.map((o, i) => ({
+          id: CHOICE_IDS[i]!,
+          label: o.label,
+        })),
       },
       figure,
     },
@@ -1933,7 +1962,8 @@ function cardsProblem(
   const key = Object.fromEntries(
     blanks.map((b) => {
       const id = options.find((o) => o.label === b.correct)?.id;
-      if (!id) throw new Error(`${meta.id} correct card ${b.correct} is missing`);
+      if (!id)
+        throw new Error(`${meta.id} correct card ${b.correct} is missing`);
       return [b.id, id];
     }),
   );
@@ -1964,7 +1994,11 @@ function wrongLabels(correct: number[], candidates: number[]): string[] {
   }
   throw new Error("Need two distractor cards");
 }
-function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedProblem {
+function showPieces(
+  r: Random,
+  meta: TemplateMetadata,
+  seed: string,
+): GeneratedProblem {
   const shape = r(0, 2);
   if (shape === 0) {
     const t = trapDims(r);
@@ -2013,7 +2047,13 @@ function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedP
     const correct = [b, h, area];
     const tray = shuffle(r, [
       ...correct.map(String),
-      ...wrongLabels(correct, [area + b, b + h, 2 * (b + h), area + h, slant ?? 0]),
+      ...wrongLabels(correct, [
+        area + b,
+        b + h,
+        2 * (b + h),
+        area + h,
+        slant ?? 0,
+      ]),
     ]);
     return cardsProblem(
       meta,
@@ -2295,7 +2335,13 @@ function nameTheSolid(
     let l: number, w: number, h: number;
     do [l, w, h] = [r(2, 6), r(2, 6), r(2, 6)];
     while (new Set([l, w, h]).size < 3);
-    figure = { kind: "rectangular-prism-net", unit: u, length: l, width: w, height: h };
+    figure = {
+      kind: "rectangular-prism-net",
+      unit: u,
+      length: l,
+      width: w,
+      height: h,
+    };
     name = "rectangular prism";
     explanation = [
       `The net has six rectangles in three pairs: ${l} by ${w}, ${l} by ${h}, and ${w} by ${h}.`,
@@ -2344,7 +2390,7 @@ function nameTheSolid(
       feedback:
         label === name
           ? undefined
-          : `A ${label} has a different set of faces than this net.`,
+          : `${withArticle(label, true)} has a different set of faces than this net.`,
     })),
   );
   return choiceProblem(
@@ -2368,12 +2414,20 @@ function clauseTemplateProblem(
   if (id === "polygon-show-the-pieces")
     return { problem: showPieces(r, meta, seed), tags: ["show-the-pieces"] };
   if (id === "polygon-which-expression")
-    return { problem: whichExpression(r, meta, seed), tags: ["which-expression"] };
+    return {
+      problem: whichExpression(r, meta, seed),
+      tags: ["which-expression"],
+    };
   if (id === "count-then-size-then-check") {
     const problem = countThenSize(r, meta, seed);
     const figure = problem.public.figure;
-    if (figure?.kind !== "fraction-box-prism" || !figure.cubeEdge ||
-        !figure.length || !figure.width || !figure.height)
+    if (
+      figure?.kind !== "fraction-box-prism" ||
+      !figure.cubeEdge ||
+      !figure.length ||
+      !figure.width ||
+      !figure.height
+    )
       throw new Error("Packing worksheet needs the box and cube edges");
     const edges = [figure.length, figure.width, figure.height];
     const numerator = edges.reduce((product, edge) => product * edge.n, 1);
@@ -2390,11 +2444,16 @@ function clauseTemplateProblem(
   if (id === "net-name-the-solid") {
     const problem = nameTheSolid(r, meta, seed);
     const figure = problem.public.figure;
-    const solid = figure?.kind === "rectangular-prism-net"
-      ? (figure.length === figure.width && figure.width === figure.height
-        ? "cube" : "rectangular-prism")
-      : figure?.kind === "triangular-prism-net" ? "triangular-prism"
-      : figure?.kind === "square-pyramid-net" ? "square-pyramid" : null;
+    const solid =
+      figure?.kind === "rectangular-prism-net"
+        ? figure.length === figure.width && figure.width === figure.height
+          ? "cube"
+          : "rectangular-prism"
+        : figure?.kind === "triangular-prism-net"
+          ? "triangular-prism"
+          : figure?.kind === "square-pyramid-net"
+            ? "square-pyramid"
+            : null;
     if (!solid) throw new Error("Net worksheet needs a supported solid");
     return { problem, tags: ["name-the-solid", solid] };
   }

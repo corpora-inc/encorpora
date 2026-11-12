@@ -1,0 +1,129 @@
+/* Practice views: the cold-to-hot heat cells, their legend, and the
+   dose-response figures. Colours are the heat and dose tokens only. */
+.cell {
+  display: block;
+  min-width: 0;
+  height: 22px;
+  border-radius: 3px;
+  /* A hairline keeps a neutral cell (at the target) visible on the page. */
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+.cell[data-empty] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 4px,
+    var(--color-border) 4px 5px
+  );
+}
+.cell[data-future] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--color-border) 60%, transparent);
+}
+/* The week in hand is the week so far: a dashed edge says so. */
+.cell[data-current] {
+  outline: 1.5px dashed var(--color-border-strong);
+  outline-offset: 1px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: minmax(0, 420px);
+  column-gap: var(--space-5);
+  row-gap: var(--space-1);
+  min-width: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.legend > * {
+  grid-column: 1;
+}
+.legendCaption {
+  color: var(--color-on-surface);
+}
+.legendBar {
+  height: 10px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+  background: linear-gradient(
+    to right in oklab,
+    var(--color-heat-0),
+    var(--color-heat-1),
+    var(--color-heat-2),
+    var(--color-heat-3),
+    var(--color-heat-4),
+    var(--color-heat-5),
+    var(--color-heat-6),
+    var(--color-heat-7),
+    var(--color-heat-8)
+  );
+}
+.legendTicks {
+  position: relative;
+  height: 1.3em;
+}
+.legendTicks span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.legendTicks span:first-child {
+  transform: none;
+}
+.legendTicks span:last-child {
+  transform: translateX(-100%);
+}
+.legendTicks span[data-mid] {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.legendNote {
+  margin-top: var(--space-1);
+}
+/* The keys are the map's own cells in miniature, beside the scale on a wide
+   screen and under it on a narrow one. */
+.legendKeys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-1);
+}
+@media (min-width: 640px) {
+  .legend {
+    grid-template-columns: minmax(0, 420px) auto;
+  }
+  .legendKeys {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    flex-direction: column;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+.legendKeys > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+.legendKeys .cell {
+  flex: none;
+  width: 18px;
+  height: 14px;
+}
+.legendKeys .cell[data-current] {
+  background: var(--color-heat-4);
+}
+.stats {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.stats b {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}

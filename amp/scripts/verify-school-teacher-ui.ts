@@ -443,40 +443,41 @@ async function journey(browser: Browser, engine: string, width: number) {
     if (!CANCELLED_BY_NAVIGATION.test(error.message))
       failures.push(`${label} page error: ${error.message}`);
   });
-  await open(
-    page,
-    classUrl("today"),
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
-  const greeting = await page.getByRole("heading", { level: 1 }).textContent();
+  // Titled by the class, never a greeting or the teacher's own name
+  // (docs/design/ia.md).
+  await open(page, classUrl("today"), "Grade 5 Math");
+  const title = await page.getByRole("heading", { level: 1 }).textContent();
   check(
-    `${label} greets by name`,
-    /Ms\. Okafor/.test(greeting ?? ""),
-    greeting,
+    `${label} titled by the class, no name`,
+    title?.trim() === "Grade 5 Math" &&
+      !/Okafor/.test(await page.locator("main").innerText()),
+    title,
   );
 
   // A shared gap, named, with its students and the lesson.
   const gap = page.getByRole("heading", {
-    name: /\d+ students are stuck on fraction addition/,
+    name: /\d+ students keep missing adding and subtracting unlike fractions/i,
   });
   await gap.waitFor();
   const body = await page.locator("main").innerText();
   check(`${label} gap names students`, /Noor|Diego|Lena/.test(body));
-  // The product waits until Wednesday before calling a week quiet.
-  const schoolDay = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    timeZone: "America/New_York",
-  }).format(new Date());
-  const quiet =
-    /(behind this week’s target|practiced this week)[^]*Marcus/.test(body);
+  // Practice is data, never a verdict: no quiet-week item on any day, and
+  // the week's minutes for every student with their distribution.
   check(
-    `${label} quiet-week warning follows the school day`,
-    schoolDay === "Mon" || schoolDay === "Tue" ? !quiet : quiet,
-    { schoolDay, quiet },
+    `${label} no practice judgement on Today`,
+    !/little practice|behind this week’s target|haven’t practiced this week/i.test(
+      body,
+    ),
+  );
+  check(
+    `${label} the week's spread states n, median, mean and sd`,
+    /n \d+ · median [\d.]+ · mean [\d.]+ · sd [\d.]+/.test(body),
   );
   check(
     `${label} what's going well shows`,
-    /ready for more|good day/i.test(body),
+    /above Grade \d in every strand|practiced today|shown twice on their own this week/i.test(
+      body,
+    ),
   );
   check(
     `${label} no gendered pronouns on Today`,
@@ -484,7 +485,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     body.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
   const lesson = page
-    .getByRole("button", { name: "Teach this lesson" })
+    .getByRole("button", { name: "Open the lesson" })
     .first();
   await lesson.click();
   const sheet = page.getByRole("dialog");
@@ -499,7 +500,7 @@ async function journey(browser: Browser, engine: string, width: number) {
 
   // Checking off survives a reload, today.
   const box = page.getByRole("checkbox", {
-    name: /Done: \d+ students are stuck on fraction addition/,
+    name: /Done: \d+ students keep missing adding and subtracting unlike fractions/i,
   });
   await box.check();
   await page.reload();
@@ -535,7 +536,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     "Growth",
     "Practice",
     "Retention",
-    "Objectives gained",
+    "Skills shown on their own",
   ])
     check(`${label} evidence has ${expected}`, sheetText.includes(expected));
   check(
@@ -546,10 +547,19 @@ async function journey(browser: Browser, engine: string, width: number) {
     `${label} evidence has real math`,
     (await sheet.locator(".katex").count()) >= 0 && /Answered/.test(sheetText),
   );
+  // How the sheet speaks of the student, not a word problem's own people
+  // (a problem's "She buys…" is the problem, shown as it was).
+  const ownWords = await sheet.evaluate((root) => {
+    const copy = root.cloneNode(true) as HTMLElement;
+    copy
+      .querySelectorAll("[data-evidence-problems]")
+      .forEach((n) => n.remove());
+    return copy.innerText || copy.textContent || "";
+  });
   check(
     `${label} no gendered pronouns in evidence`,
-    !/\b(he|she|his|her|hers|him)\b/i.test(sheetText),
-    sheetText.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
+    !/\b(he|she|his|her|hers|him)\b/i.test(ownWords),
+    ownWords.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
   await page.keyboard.press("Escape");
   await sheet.waitFor({ state: "detached" });
@@ -651,7 +661,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     "Ms. Okafor",
     "Final grade",
     "Active minutes",
-    "Objectives gained",
+    "Skills shown on their own",
     "Working level",
   ])
     check(`${label} report card has ${expected}`, cardText.includes(expected));
@@ -728,7 +738,8 @@ async function journey(browser: Browser, engine: string, width: number) {
 async function sweep(browser: Browser, engine: string) {
   const amara = people.get("Amara")!.personId;
   const screens = [
-    { id: "today", path: classUrl("today"), heading: /^Good / },
+    // Titled by the class (docs/design/ia.md), never a greeting.
+    { id: "today", path: classUrl("today"), heading: "Grade 5 Math" },
     { id: "map", path: classUrl("map"), heading: "Class map" },
     {
       id: "gradebook",
@@ -760,12 +771,12 @@ async function sweep(browser: Browser, engine: string) {
       path: `${classUrl("report-cards")}?term=${terms.q2}&student=${amara}`,
       heading: "Amara Osei",
     },
-    { id: "settings", path: classUrl("settings"), heading: "Grade 5 Math" },
-    { id: "roster", path: classUrl("roster"), heading: "Roster" },
+    { id: "settings", path: classUrl("settings"), heading: "Settings" },
+    { id: "roster", path: classUrl("roster"), heading: "Students" },
     {
       id: "today-empty",
       path: `/school/${orgId}/classes/${emptyClassId}/today`,
-      heading: /^Good /,
+      heading: "Math Support",
     },
     {
       id: "gradebook-empty",

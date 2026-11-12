@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { isAre, article } from "./agreement";
 import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
@@ -2486,7 +2487,7 @@ function dotPlotThreshold(r: Random): Built {
   };
   return {
     variant: mode,
-    prompt: `${intro(n)} Each dot is one of the ${people}. How many of the ${people} had a ${measure} ${phrase}?`,
+    prompt: `${intro(n)} Each dot is one of the ${people}. How many of the ${people} had ${withArticle(measure)} ${phrase}?`,
     figure,
     answer: String(count),
     hint: `Decide which values count: those ${phrase}. Count the dots above each of those values, not just the values themselves.`,
@@ -2494,12 +2495,12 @@ function dotPlotThreshold(r: Random): Built {
       ...(matched.length === 1
         ? [
             `The only value ${phrase} is ${matched[0]}.`,
-            `There are ${count} dots above ${matched[0]}. So ${count} of the ${people} had a ${measure} ${phrase}.`,
+            `There are ${count} dots above ${matched[0]}. So ${count} of the ${people} had ${withArticle(measure)} ${phrase}.`,
           ]
         : [
             `The values ${phrase} are ${matched.slice(0, -1).join(", ")} and ${matched[matched.length - 1]}.`,
             `Count the dots above each: ${matched.map((v, i) => `${counts[i]} above ${v}`).join(", ")}.`,
-            `Add: ${counts.join(" + ")} = ${count}. So ${count} of the ${people} had a ${measure} ${phrase}.`,
+            `Add: ${counts.join(" + ")} = ${count}. So ${count} of the ${people} had ${withArticle(measure)} ${phrase}.`,
           ]),
     ],
   };
@@ -2631,7 +2632,7 @@ function moneyVocabulary(r: Random): Built {
     hint: `Compare the three amounts in each row. A fixed expense has the same amount every month, and a variable expense has amounts that differ.`,
     explanation: [
       `${target.name} is ${target.amounts.join(", ")} dollars in the three months, so it is ${wantVariable ? "different each month" : "the same each month"}.`,
-      `That makes ${target.name} a ${word} expense.`,
+      `That makes ${target.name} ${withArticle(word)} expense.`,
     ],
     choices: choicesFrom(
       r,
@@ -2907,7 +2908,7 @@ function experimentProbability(r: Random): Built {
     return {
       variant: "experimental",
       model: { colors, counts, i, j, trials },
-      prompt: `A bag has tiles of four colors. A tile is drawn, its color is recorded and it is put back, ${trials} times. The table shows the results. Based on the results, what is the experimental probability of drawing a ${colors[i]} tile or a ${colors[j]} tile? Give a fraction in simplest form.`,
+      prompt: `A bag has tiles of four colors. A tile is drawn, its color is recorded and it is put back, ${trials} times. The table shows the results. Based on the results, what is the experimental probability of drawing ${withArticle(colors[i])} tile or ${withArticle(colors[j])} tile? Give a fraction in simplest form.`,
       figure,
       answer: reduce(wanted, trials),
       fraction: true,

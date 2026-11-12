@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -420,8 +421,8 @@ function explainSurface(m: ReasonModel, r: Random) {
   const v = fn === "cos" ? Math.cos(t.value) : Math.sin(t.value);
   const pool: ChoiceOption[] = [
     {
-      label: `$t$ radians is about $${d}^\\circ$, and every angle has a ${fn === "cos" ? "cosine" : "sine"}, so ${sym} is defined.`,
-      feedback: `This assumes what it should explain: that every angle, even $${d}^\\circ$, already has a ${fn === "cos" ? "cosine" : "sine"}. The point on the unit circle is what gives it one.`,
+      label: `$t$ radians is about $${d}^\\circ$, and every angle has ${withArticle(fn === "cos" ? "cosine" : "sine")}, so ${sym} is defined.`,
+      feedback: `This assumes what it should explain: that every angle, even $${d}^\\circ$, already has ${withArticle(fn === "cos" ? "cosine" : "sine")}. The point on the unit circle is what gives it one.`,
     },
     {
       label: `A calculator shows $\\${fn} t \\approx ${v.toFixed(3)}$, so it is defined.`,

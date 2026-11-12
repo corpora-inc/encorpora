@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
@@ -19,6 +20,7 @@ import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, studentRecordOptions, todayOptions } from "./teacher-api";
 import { StudentSections } from "./StudentSections";
+import { WorkReplaySlot, workSkill } from "./WorkReplaySlot";
 import { TryAsStudent } from "../../profiles/TryAsStudent";
 import {
   classUrl,
@@ -89,6 +91,7 @@ function ClassToday({
         week={data.week}
         family={false}
         target={data.weeklyTargetMinutes}
+        students={data.students}
       />
     </>
   );
@@ -149,11 +152,13 @@ export function TodayScreen() {
       ) : (
         <div className={todayStyles.today}>
           <header className={todayStyles.head}>
+            {/* The title is the day for a family and the class's name for
+                a class: never a greeting or the viewer's own name. */}
             {family ? (
-              <h1>{fullDay(data.today)}</h1>
+              <h1 data-today-title="">{fullDay(data.today)}</h1>
             ) : (
               <div className={todayStyles.title}>
-                <h1>{data.class.name}</h1>
+                <h1 data-today-title="">{data.class.name}</h1>
                 <p>{fullDay(data.today)}</p>
               </div>
             )}
@@ -226,10 +231,15 @@ export function MapScreen() {
     org: string;
     class: string;
     student?: string;
+    work?: string;
   };
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  const [search] = useClassSearch();
+  const studentPath = params.student
+    ? `${classUrl(place.org, place.class, "map")}/${params.student}`
+    : "";
   const navigate = useNavigate();
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
@@ -252,19 +262,30 @@ export function MapScreen() {
         <LoadFailed what="The class map" onRetry={() => void map.refetch()} />
       ) : map.data.students.length === 0 ? (
         <div className={styles.page}>
-          <h1>Class map</h1>
+          <ScreenTitle>Class map</ScreenTitle>
           <EmptyMap org={place.org} classId={place.class} />
         </div>
       ) : (
         <div>
           <div className={styles.mapHead}>
-            <h1>Class map</h1>
+            <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} />
           </div>
+          {params.student && params.work && (
+            <WorkReplaySlot
+              student={params.student}
+              attempt={params.work}
+              skill={workSkill(search.skill)}
+              workPath={(attempt) => `${studentPath}/work/${attempt}`}
+              closePath={studentPath}
+            />
+          )}
           <MapStudentSheet
             org={place.org}
             classId={place.class}
             student={params.student}
+            // Under an open answer the sheet waits closed: Back reopens it.
+            open={!params.work}
             onClose={() =>
               void navigate({
                 to: "/$",
@@ -300,11 +321,13 @@ function MapStudentSheet({
   org,
   classId,
   student,
+  open,
   onClose,
 }: {
   org: string;
   classId: string;
   student: string | undefined;
+  open: boolean;
   onClose: () => void;
 }) {
   const session = useStaffSession();
@@ -315,7 +338,7 @@ function MapStudentSheet({
   const data = record.data;
   return (
     <Sheet
-      open={!!student}
+      open={!!student && open}
       tall
       onOpenChange={(open) => {
         if (!open) onClose();
@@ -357,7 +380,14 @@ function MapStudentSheet({
               Print progress report
             </PrintButton>
           </div>
-          <StudentSections data={data} org={org} single />
+          <StudentSections
+            data={data}
+            org={org}
+            single
+            workPath={(attempt) =>
+              `${classUrl(org, classId, "map")}/${data.student.id}/work/${attempt}`
+            }
+          />
         </div>
       )}
     </Sheet>

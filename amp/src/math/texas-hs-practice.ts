@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { article, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -407,6 +408,10 @@ const qKey = (a: Q) => `${a.n}/${a.d}`;
 const qAbsTex = (a: Q) =>
   a.d === 1 ? `${Math.abs(a.n)}` : `\\frac{${Math.abs(a.n)}}{${a.d}}`;
 const qTex = (a: Q) => `${a.n < 0 ? "-" : ""}${qAbsTex(a)}`;
+/** Coefficient of x in TeX: 1x is x and -1x is -x. */
+const ix = (n: number) => (n === 1 ? "x" : n === -1 ? "-x" : `${n}x`);
+const qx = (m: Q) =>
+  m.d === 1 && Math.abs(m.n) === 1 ? ix(m.n) : `${qTex(m)}x`;
 const qPar = (a: Q) => (a.n < 0 ? `(${qTex(a)})` : qTex(a));
 
 /** y = mx + b, with unit and zero terms omitted. */
@@ -517,7 +522,7 @@ export function lineEquationFormsCase(seed: string): TexasHsCase {
       prompt: `${given} Which equation of the line is in slope-intercept form, $y=mx+b$?`,
       hint: `Put $m=${m.n}$ into $y=mx+b$, then substitute $x=${x1}$ and $y=${y1}$ and solve for $b$.`,
       explanation: [
-        `Start with $y=${m.n}x+b$ and substitute the point: $${y1}=${m.n}(${x1})+b$.`,
+        `Start with $y=${ix(m.n)}+b$ and substitute the point: $${y1}=${m.n}(${x1})+b$.`,
         `Multiply: $${y1}=${m.n * x1}+b$, so $b=${y1}-${par(m.n * x1)}=${b.n}$.`,
         `The equation is ${right.label}.`,
       ],
@@ -566,7 +571,7 @@ export function lineEquationFormsCase(seed: string): TexasHsCase {
         hint: `First find the slope: the change in $y$ from ${y1} to ${y2} divided by the change in $x$ from ${x1} to ${x2}. Then use one point to find $b$.`,
         explanation: [
           `The slope is ${slopeStep}.`,
-          `Substitute $(${x1}, ${y1})$ into $y=${m.n}x+b$: $${y1}=${m.n * x1}+b$, so $b=${b.n}$.`,
+          `Substitute $(${x1}, ${y1})$ into $y=${ix(m.n)}+b$: $${y1}=${m.n * x1}+b$, so $b=${b.n}$.`,
           `The equation is ${right.label}.`,
         ],
         correct: right.label,
@@ -776,11 +781,11 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
           },
           {
             ...si(q(1, mag), interceptThrough(q(1, mag), x1, y1)),
-            feedback: `The reciprocal ${qTex(q(1, mag))} has the wrong sign. A perpendicular slope is the negative reciprocal.`,
+            feedback: `The reciprocal $${qTex(q(1, mag))}$ has the wrong sign. A perpendicular slope is the negative reciprocal.`,
           },
           {
             ...si(target, q(y1)),
-            feedback: `${y1} is the point's $y$-coordinate, not the intercept. Substitute $(${x1}, ${y1})$ into $y=${qTex(target)}x+b$.`,
+            feedback: `${y1} is the point's $y$-coordinate, not the intercept. Substitute $(${x1}, ${y1})$ into $y=${qx(target)}+b$.`,
           },
         ];
     return finish(meta, seed, r, {
@@ -795,7 +800,7 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
         parallel
           ? `Parallel lines have the same slope, so the slope is ${m.n}.`
           : `Perpendicular slopes multiply to $-1$, so the slope is the negative reciprocal of ${m.n}, which is $${qTex(target)}$.`,
-        `Substitute $(${x1}, ${y1})$ into $y=${qTex(target)}x+b$: $b=${y1}-${qPar(target)}\\cdot${par(x1)}=${qTex(b)}$.`,
+        `Substitute $(${x1}, ${y1})$ into $y=${qx(target)}+b$: $b=${y1}-${qPar(target)}\\cdot${par(x1)}=${qTex(b)}$.`,
         `The equation is ${right.label}.`,
       ],
       correct: right.label,
@@ -997,11 +1002,11 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "axis-parallel-relationship",
     prompt: `Which equation is the line through $(${a}, ${bv})$ that is ${parallel ? "parallel" : "perpendicular"} to $${given}$?`,
-    hint: `The line $${given}$ is ${givenHorizontal ? "horizontal" : "vertical"}. A ${parallel ? "parallel" : "perpendicular"} line is ${resultHorizontal ? "horizontal" : "vertical"}, so one coordinate of $(${a}, ${bv})$ stays fixed.`,
+    hint: `The line $${given}$ is ${givenHorizontal ? "horizontal" : "vertical"}. ${withArticle(parallel ? "parallel" : "perpendicular", true)} line is ${resultHorizontal ? "horizontal" : "vertical"}, so one coordinate of $(${a}, ${bv})$ stays fixed.`,
     explanation: [
-      `$${given}$ is a ${givenHorizontal ? "horizontal" : "vertical"} line.`,
-      `A ${parallel ? "parallel" : "perpendicular"} line to it is ${resultHorizontal ? "horizontal" : "vertical"}${parallel ? "" : ", since lines perpendicular to a horizontal line are vertical and the reverse"}.`,
-      `A ${resultHorizontal ? "horizontal" : "vertical"} line through $(${a}, ${bv})$ holds ${resultHorizontal ? `$y=${bv}$` : `$x=${a}$`}. The equation is ${ans.label}.`,
+      `$${given}$ is ${withArticle(givenHorizontal ? "horizontal" : "vertical")} line.`,
+      `${withArticle(parallel ? "parallel" : "perpendicular", true)} line to it is ${resultHorizontal ? "horizontal" : "vertical"}${parallel ? "" : ", since lines perpendicular to a horizontal line are vertical and the reverse"}.`,
+      `${withArticle(resultHorizontal ? "horizontal" : "vertical", true)} line through $(${a}, ${bv})$ holds ${resultHorizontal ? `$y=${bv}$` : `$x=${a}$`}. The equation is ${ans.label}.`,
     ],
     correct: ans.label,
     wrong: [
@@ -1061,10 +1066,12 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
   const goal = money <= 1 ? 1 : r(1, money - 1);
   if (money <= goal || goal === cap || x + y >= cap)
     return inequalityStory(meta, `${seed}~`);
-  const signs = `x+y\\le ${cap}\\text{ and }${small}x+${large}y\\ge ${goal}`;
-  const flipped = `x+y\\ge ${cap}\\text{ and }${small}x+${large}y\\le ${goal}`;
-  const prices = `x+y\\le ${cap}\\text{ and }${large}x+${small}y\\ge ${goal}`;
-  const totals = `x+y\\le ${goal}\\text{ and }${small}x+${large}y\\ge ${cap}`;
+  const xv = (c: number) => (c === 1 ? "x" : `${c}x`);
+  const yv = (c: number) => (c === 1 ? "y" : `${c}y`);
+  const signs = `x+y\\le ${cap}\\text{ and }${xv(small)}+${yv(large)}\\ge ${goal}`;
+  const flipped = `x+y\\ge ${cap}\\text{ and }${xv(small)}+${yv(large)}\\le ${goal}`;
+  const prices = `x+y\\le ${cap}\\text{ and }${xv(large)}+${yv(small)}\\ge ${goal}`;
+  const totals = `x+y\\le ${goal}\\text{ and }${xv(small)}+${yv(large)}\\ge ${cap}`;
   const bounds = r(0, 3) === 0 ? "\\text{, }x\\ge 0\\text{, }y\\ge 0" : "";
   const label = (body: string) => tex(`${body}${bounds}`);
   const countFirst = r(0, 1) === 0;
@@ -1092,9 +1099,18 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
         : context === "pages"
           ? `Reading uses $x$ hours of notes at ${small} ${nounFor(small, "page")} an hour and $y$ hours of a book at ${large} ${nounFor(large, "page")} an hour.`
           : `A shipment packs $x$ light crates at ${small} ${nounFor(small, "kilogram")} and $y$ heavy crates at ${large} ${nounFor(large, "kilogram")}.`;
-  const limits = countFirst ? `${countBit} ${valueBit}.` : `${valueBit.replace(/^and /, "It needs ").replace(/^and the /, "The ")} ${countBit.replace(/^It |^The |^There /, (w) => w.toLowerCase())}.`;
+  const limits = countFirst
+    ? `${countBit} ${valueBit}.`
+    : `${valueBit.replace(/^and /, "It needs ").replace(/^and the /, "The ")} ${countBit.replace(/^It |^The |^There /, (w) => w.toLowerCase())}.`;
   // Keep the limit sentence simple and in a fixed shape the oracle can read.
-  const unit = context === "bakery" ? "dollar" : context === "pages" ? "page" : context === "cargo" ? "kilogram" : "gram";
+  const unit =
+    context === "bakery"
+      ? "dollar"
+      : context === "pages"
+        ? "page"
+        : context === "cargo"
+          ? "kilogram"
+          : "gram";
   const value = `${goal} ${unit}${goal === 1 ? "" : "s"}`;
   const limitSentence = countFirst
     ? `${countBit}, and it needs at least ${value}.`
@@ -1119,7 +1135,8 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
       {
         label: label(flipped),
         key: flipped + bounds,
-        feedback: "At most was written as ≥ and at least as ≤. The signs are reversed.",
+        feedback:
+          "At most was written as ≥ and at least as ≤. The signs are reversed.",
       },
       {
         label: label(prices),
@@ -1726,7 +1743,7 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
     const right = lab(`\\frac{1}{${a}}+\\frac{1}{${b}}=\\frac{1}{x}`);
     return finish(meta, seed, r, {
       variant: "work-together",
-      prompt: `One ${worker[0]} ${worker[1]} a ${worker[2]} in ${a} hours working alone. A second ${worker[0]} does the same job in ${b} hours working alone. Working together they take $x$ hours. Which equation models this?`,
+      prompt: `One ${worker[0]} ${worker[1]} ${withArticle(worker[2])} in ${a} hours working alone. A second ${worker[0]} does the same job in ${b} hours working alone. Working together they take $x$ hours. Which equation models this?`,
       hint: `Each worker's rate is the part of the job done in one hour, which is 1 divided by the hours alone, ${a} or ${b}. Together the rates add to the rate for the whole team, $\\frac{1}{x}$.`,
       explanation: [
         `The first ${worker[0]} does $\\frac{1}{${a}}$ of the job per hour and the second does $\\frac{1}{${b}}$ of the job per hour.`,
@@ -3058,7 +3075,7 @@ export function oneSidedBehaviorCase(seed: string): TexasHsCase {
       prompt: `For $${fn}$, there is a vertical asymptote at $x=${c}$. Which statement describes $f(x)$ as $x$ approaches ${c} from the left and from the right?`,
       hint: `Test a number just left of ${c} and one just right, such as ${(c - 0.1).toFixed(1)} and ${(c + 0.1).toFixed(1)}. Decide whether each factor is positive or negative there; the factor $x ${minus(c)}$ is the one that is close to 0.`,
       explanation: [
-        `Near $x=${c}$ the factors other than $x ${minus(c)}$ keep a fixed sign: at $x=${c}$ they give a ${s0 > 0 ? "positive" : "negative"} value together with the constant.`,
+        `Near $x=${c}$ the factors other than $x ${minus(c)}$ keep a fixed sign: at $x=${c}$ they give ${withArticle(s0 > 0 ? "positive" : "negative")} value together with the constant.`,
         `Just right of ${c}, $x ${minus(c)}$ is positive, so $f$ is ${right > 0 ? "positive" : "negative"} and large: $f\\to${infText(right)}$. Just left of ${c}, $x ${minus(c)}$ is negative${e === 2 ? " but squared, which is positive" : ""}, so $f$ is ${left > 0 ? "positive" : "negative"}: $f\\to${infText(left)}$.`,
         `The behavior is: from the left $f\\to${infText(left)}$, from the right $f\\to${infText(right)}$.`,
       ],
@@ -3300,9 +3317,9 @@ export function parametricRectangularCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "write-parametric",
     prompt: `A line has the rectangular equation $${slopeIntercept(q(m), q(b))}$. Which pair of parametric equations describes this line, using $x=${xText}$?`,
-    hint: `The $x$ equation is given. Replace $x$ in $y=${m}x ${plus(b)}$ with $${xText}$ and simplify to get $y$ in terms of $t$.`,
+    hint: `The $x$ equation is given. Replace $x$ in $${slopeIntercept(q(m), q(b))}$ with $${xText}$ and simplify to get $y$ in terms of $t$.`,
     explanation: [
-      `Substitute $x=${xText}$ into $y=${m}x ${plus(b)}$: $y=${m}(${xText}) ${plus(b)}$.`,
+      `Substitute $x=${xText}$ into $${slopeIntercept(q(m), q(b))}$: $y=${m === 1 ? "" : m === -1 ? "-" : m}(${xText}) ${plus(b)}$.`,
       `Distribute: $y=${m * a}t ${plus(m * h)} ${plus(b)}=${ytt(m * a, m * h + b)}$.`,
       `The parametric equations are ${right.label}.`,
     ],
@@ -3342,7 +3359,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const n = r(2, 15) * 5;
     return finish(meta, seed, r, {
       variant: "angular-speed-from-rpm",
-      prompt: `A ${wheel} turns at ${n} revolutions per minute. What is its angular speed in radians per minute?`,
+      prompt: `${withArticle(wheel, true)} turns at ${n} revolutions per minute. What is its angular speed in radians per minute?`,
       hint: `One full revolution is an angle of $2\\pi$ radians. Multiply the ${n} revolutions per minute by the radians in one revolution.`,
       explanation: [
         `One revolution is $2\\pi$ radians.`,
@@ -3371,7 +3388,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const n = r(2, 10) * 5;
     return finish(meta, seed, r, {
       variant: "linear-speed-of-rim",
-      prompt: `A ${wheel} with radius ${rad} cm turns at ${n} revolutions per minute. How fast, in centimeters per minute, does a point on its rim move?`,
+      prompt: `${withArticle(wheel, true)} with radius ${rad} cm turns at ${n} revolutions per minute. How fast, in centimeters per minute, does a point on its rim move?`,
       hint: `In one revolution a point on the rim travels once around the circle, a distance of $2\\pi r$, with $r=${rad}$ cm. Multiply that distance by the ${n} revolutions per minute.`,
       explanation: [
         `In one revolution a point on the rim travels the circumference, $2\\pi r=2\\pi(${rad})=${2 * rad}\\pi$ cm.`,
@@ -3402,7 +3419,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const revs = `\\dfrac{${w}}{2\\pi}`;
     return finish(meta, seed, r, {
       variant: "angular-speed-from-linear",
-      prompt: `A point on the rim of a ${wheel} with radius ${rad} cm moves at ${v} centimeters per second. What is the ${wheel}'s angular speed in radians per second?`,
+      prompt: `A point on the rim of ${withArticle(wheel)} with radius ${rad} cm moves at ${v} centimeters per second. What is the ${wheel}'s angular speed in radians per second?`,
       hint: `Arc length is radius times angle, so the rim speed ${v} cm per second is the radius ${rad} cm times the angular speed. Divide the rim speed by the radius.`,
       explanation: [
         `For a point at distance $r$ from the center, $v=r\\omega$, where $\\omega$ is angular speed in radians per second.`,
@@ -3432,7 +3449,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     const t = r(2, 10);
     return finish(meta, seed, r, {
       variant: "distance-in-time",
-      prompt: `A point on the rim of a ${wheel} with radius ${rad} cm turns at an angular speed of ${w} radians per second. How far along the rim, in centimeters, does the point travel in ${t} seconds?`,
+      prompt: `A point on the rim of ${withArticle(wheel)} with radius ${rad} cm turns at an angular speed of ${w} radians per second. How far along the rim, in centimeters, does the point travel in ${t} seconds?`,
       hint: `First find the angle the ${wheel} turns in ${t} seconds at ${w} radians per second. Then use arc length equals radius times angle in radians.`,
       explanation: [
         `In ${t} seconds the ${wheel} turns through $${w}\\times${t}=${w * t}$ radians.`,
@@ -3766,7 +3783,7 @@ export function bearingTrigCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "compass-bearing-component",
       prompt: `A plane flies ${dist} km on a bearing of $\\mathrm{${north ? "N" : "S"}}\\,${degTex(base)}\\,\\mathrm{${east ? "E" : "W"}}$, which means $${degTex(base)}$ from ${north ? "north" : "south"} toward ${east ? "east" : "west"}. How many kilometers ${word} of its starting point is it?`,
-      hint: `Draw a right triangle with the flight path as the hypotenuse and a ${north ? "north" : "south"}-pointing leg along the ${north ? "north" : "south"} line. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
+      hint: `Draw a right triangle with the flight path as the hypotenuse and ${withArticle(north ? "north" : "south")}-pointing leg along the ${north ? "north" : "south"} line. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
       explanation: [
         `The path is the hypotenuse, ${dist} km. The $${degTex(base)}$ angle is between the ${north ? "north" : "south"} direction and the path.`,
         askNS
@@ -3968,7 +3985,7 @@ export function sigmaNotationCase(seed: string): TexasHsCase {
     ),
   ].filter((w) => JSON.stringify(w.terms) !== JSON.stringify(correct.terms));
   const fb = [
-    `At $k=1$ this gives ${a1 * ratio}, not the first term ${a1}. A geometric term multiplies by the ratio once fewer times than its position.`,
+    `At $k=1$ this gives ${a1 * ratio}, not the first term $${a1}$. A geometric term multiplies by the ratio once fewer times than its position.`,
     `This stops at $k=${nmax - 1}$, so it has ${nmax - 1} terms. The series has ${nmax}.`,
     `The first term ${a1} is the multiplier, and only the ratio ${ratio} is raised to the power. Here the first term and ratio were combined.`,
     `The ratio ${ratio} is raised to a power and the first term ${a1} multiplies it. The two numbers were exchanged.`,

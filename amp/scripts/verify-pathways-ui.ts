@@ -576,16 +576,26 @@ async function verifyLessonRecovery() {
       await dialog.getByText("Example", { exact: true }).waitFor();
     } else {
       await page.unroute(modulePattern);
+      // The lesson has its own address, so the reload reopens it.
       await dialog
         .getByRole("button", { name: "Reload page", exact: true })
-        .click();
-      await page
-        .getByRole("button", { name: "View lesson", exact: true })
         .click();
       await page
         .getByRole("dialog")
         .getByText("Example", { exact: true })
         .waitFor();
+    }
+    if (failure === "api") {
+      // Real routes: opening writes ?lesson=, Back closes, Forward reopens.
+      assert.match(page.url(), /[?&]lesson=[a-z0-9-]+/);
+      await page.goBack();
+      await dialog.waitFor({ state: "detached" });
+      assert.doesNotMatch(page.url(), /[?&]lesson=/);
+      await page.goForward();
+      await dialog.getByText("Example", { exact: true }).waitFor();
+      await dialog.getByRole("button", { name: "Close", exact: true }).click();
+      await dialog.waitFor({ state: "detached" });
+      assert.doesNotMatch(page.url(), /[?&]lesson=/);
     }
     await page.close();
   }
@@ -601,6 +611,16 @@ async function choose(page: Page, label: string, value: string) {
   await list.waitFor({ state: "detached" });
   assert.equal(await button.getAttribute("data-value"), value);
 }
+/** The one search's field (docs/design/ia.md): skills, lessons, films and
+ * math words, grouped once something is typed. */
+const SEARCH = "Search skills, lessons and math words";
+/** A skill among the grouped search results. */
+const skillResult = (page: Page, id: string) =>
+  page
+    .locator(
+      `[data-search-results] a[href="/pathways/${encodeURIComponent(id)}"]`,
+    )
+    .first();
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -617,7 +637,7 @@ async function verifySearchFilters() {
       await fixture(page, { signedIn: width !== 390 });
       await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
       const input = page.getByRole("searchbox", {
-        name: "Find a skill",
+        name: SEARCH,
         exact: true,
       });
       await input.waitFor();
@@ -727,6 +747,19 @@ async function verifySearchFilters() {
         (url) => url.searchParams.get("topic") === "linear",
       );
       assert.equal(await input.inputValue(), "linear");
+      // Founder (phone, "Lo"): results open never widen the page, and the
+      // panel holding them ends inside the screen (an ancestor's clip hides
+      // the page's own overflow from scrollWidth).
+      await page
+        .locator("[data-search-results] [data-result]")
+        .first()
+        .waitFor();
+      await noOverflow(page);
+      const panel = await page.locator("#pathways-browser").boundingBox();
+      assert(
+        !!panel && panel.x >= 0 && panel.x + panel.width <= width + 1,
+        `the results panel stays on screen at ${width}: ${JSON.stringify(panel)}`,
+      );
       await input.press("Escape");
       assert.equal(await page.locator("#pathways-browser").isVisible(), false);
       assert.equal(
@@ -791,7 +824,7 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === countingTitle,
       );
-      await page.getByRole("link", { name: countingTitle }).click();
+      await skillResult(page, "count-to-20").click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
@@ -826,8 +859,116 @@ async function verifySearchFilters() {
   );
 }
 
+/** Typing a word letter by letter (premium rule 1): the field and the page
+ * never move, and once the results settle nothing in them moves again. Every
+ * animation frame records the field, the first result and the scroll. */
+async function verifySearchTyping() {
+  for (const [width, colorScheme] of [
+    [390, "light"],
+    [1280, "dark"],
+  ] as const) {
+    const tag = `search typing ${width} ${colorScheme}`;
+    const page = await browser.newPage({
+      viewport: { width, height: 844 },
+      colorScheme,
+    });
+    try {
+      // The frame recorder below names its function; tsx's keep-names helper
+      // must exist in the page too.
+      await page.addInitScript({ content: "window.__name = (f) => f;" });
+      await fixture(page, { signedIn: true });
+      await page.goto(`${origin}/pathways`);
+      const input = page.getByRole("searchbox", { name: SEARCH, exact: true });
+      await input.waitFor();
+      await page.locator(".pathways-canvas canvas").waitFor();
+      await page.waitForTimeout(300);
+      await page.evaluate(() => {
+        const record = window as unknown as {
+          __frames: unknown[];
+          __stop?: boolean;
+        };
+        record.__frames = [];
+        const tick = () => {
+          const field = document
+            .querySelector(".pathways-search input")
+            ?.getBoundingClientRect();
+          const first = document.querySelector(
+            "[data-search-results] [data-result]",
+          );
+          const box = first?.getBoundingClientRect();
+          record.__frames.push({
+            at: performance.now(),
+            field: field ? [field.x, field.y, field.width, field.height] : null,
+            first: first?.getAttribute("href") ?? null,
+            box: box ? [box.x, box.y, box.width, box.height] : null,
+            scroll: scrollY,
+          });
+          if (!record.__stop) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      await input.click();
+      await page.keyboard.type("fraction", { delay: 90 });
+      const typed = await page.evaluate(() => performance.now());
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "fraction",
+      );
+      // Well past the search corpus's late arrival.
+      await page.waitForTimeout(1500);
+      type Frame = {
+        at: number;
+        field: number[] | null;
+        first: string | null;
+        box: number[] | null;
+        scroll: number;
+      };
+      const frames = await page.evaluate(() => {
+        const record = window as unknown as {
+          __frames: unknown[];
+          __stop?: boolean;
+        };
+        record.__stop = true;
+        return record.__frames as Frame[];
+      });
+      assert(frames.length > 30, `${tag}: too few frames recorded`);
+      assert(
+        await page.locator("[data-search-results] [data-result]").count(),
+        `${tag}: "fraction" finds results`,
+      );
+      const problems: string[] = [];
+      for (let i = 1; i < frames.length; i++) {
+        const [a, b] = [frames[i - 1]!, frames[i]!];
+        if (JSON.stringify(a.field) !== JSON.stringify(b.field))
+          problems.push(`frame ${i}: the search field moved`);
+        if (a.scroll !== b.scroll)
+          problems.push(`frame ${i}: the page scrolled while typing`);
+        // Settled: a quarter second after the last key, the results hold.
+        if (
+          a.at > typed + 250 &&
+          (a.first !== b.first ||
+            JSON.stringify(a.box) !== JSON.stringify(b.box))
+        )
+          problems.push(
+            `frame ${i}: the results moved after they settled: ${a.first} ${JSON.stringify(a.box)} → ${b.first} ${JSON.stringify(b.box)}`,
+          );
+      }
+      assert.deepEqual(
+        problems.slice(0, 6),
+        [],
+        `${tag}: ${problems.length} movement(s) while typing`,
+      );
+    } finally {
+      await page.close();
+    }
+  }
+  console.log(
+    "Pathways search: typing moves neither the field nor the page, and settled results hold still, at 390 and 1280.",
+  );
+}
+
 try {
   await verifySearchFilters();
+  if (!process.env.AMP_MAP_FOCUS) await verifySearchTyping();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
   for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
@@ -855,6 +996,11 @@ try {
           mapBox.y < 250,
           "phone overview is visible without scrolling through a hero",
         );
+        // The map opens on the learner's level, named; Whole map shows the areas.
+        await page.locator(".skill-label").first().waitFor();
+        await page
+          .getByRole("button", { name: "Whole map", exact: true })
+          .click();
         await page.locator(".area-label").first().waitFor();
         assert.equal(await page.locator(".area-label").count(), 6);
         assert(
@@ -883,12 +1029,9 @@ try {
         "no simulated learner progress in the product",
       );
       await page
-        .getByRole("searchbox", { name: "Find a skill", exact: true })
+        .getByRole("searchbox", { name: SEARCH, exact: true })
         .fill(target.title);
-      const button = page
-        .locator(".pathways-skill-list a")
-        .filter({ hasText: target.title });
-      await button.click();
+      await skillResult(page, target.id).click();
       await page
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
@@ -935,7 +1078,17 @@ try {
         await page.getByRole("dialog").waitFor();
         await page.goBack();
         await page.getByRole("dialog").waitFor({ state: "hidden" });
+        // The lesson is a real route: Forward opens it again.
         await page.goForward();
+        await page
+          .getByRole("dialog")
+          .getByText("Example", { exact: true })
+          .waitFor();
+        await page
+          .getByRole("dialog")
+          .getByRole("button", { name: "Close", exact: true })
+          .click();
+        await page.getByRole("dialog").waitFor({ state: "hidden" });
         await page
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
@@ -991,7 +1144,7 @@ try {
         .waitFor();
       assert.equal(
         await page
-          .getByRole("searchbox", { name: "Find a skill", exact: true })
+          .getByRole("searchbox", { name: SEARCH, exact: true })
           .inputValue(),
         target.title,
       );
@@ -1011,15 +1164,27 @@ try {
     await page.locator(".pathways-canvas canvas").waitFor();
     await noOverflow(page);
     await page
-      .getByRole("searchbox", { name: "Find a skill", exact: true })
+      .getByRole("searchbox", { name: SEARCH, exact: true })
       .fill(target.title);
-    await page
-      .locator(".pathways-skill-list a")
-      .filter({ hasText: target.title })
-      .click();
+    // Reading results can scroll a phone's page past the map; choosing one
+    // brings the map back into view below the bar.
+    await page.evaluate(() =>
+      window.scrollTo(0, document.documentElement.scrollHeight),
+    );
+    await skillResult(page, target.id).click();
     await page
       .getByRole("heading", { name: target.title, exact: true })
       .waitFor();
+    if (viewport.width <= 650)
+      await page.waitForFunction(
+        () => {
+          const map = document.querySelector(".pathways-viewport")!;
+          const margin = parseFloat(getComputedStyle(map).scrollMarginTop);
+          return map.getBoundingClientRect().top >= margin - 1;
+        },
+        undefined,
+        { timeout: 3000 },
+      );
     await noOverflow(page);
     {
       const map = page.locator(".pathways-viewport");
@@ -1107,7 +1272,7 @@ try {
   await linked.getByRole("heading", { name: target.title }).waitFor();
   const related = linked
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   await related.click();
   await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
   await linked.goBack();
@@ -1171,7 +1336,7 @@ try {
   );
   const parentLink = guest
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
   assert.equal(parentUrl.searchParams.get("topic"), "systems");
@@ -1430,8 +1595,10 @@ try {
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
   await evolving.goto(`${origin}/pathways?skill=${target.id}`);
-  // Selecting does not move the camera, so an area label is the witness.
-  const label = evolving.locator(".area-label").first();
+  // A deep link frames its skill; that skill's name is the witness.
+  const label = evolving
+    .locator(".skill-label")
+    .filter({ hasText: target.title });
   await label.waitFor();
   await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
   const before = (await label.boundingBox())!;
@@ -1442,7 +1609,8 @@ try {
   });
   await evolving.clock.fastForward(300_100);
   await evolving
-    .getByText(`${skills.length + 1} mapped skills`, { exact: false })
+    .locator(".pathways-summary")
+    .filter({ hasText: `of ${skills.length + 1} skills earned` })
     .waitFor({ state: "attached" });
   await label.waitFor();
   const after = (await label.boundingBox())!;
@@ -1543,7 +1711,9 @@ try {
           1,
         );
 
-      const application = related.getByRole("link", { name: /Event sets/ });
+      const application = related.getByRole("link", {
+        name: skillTitle("event-sets"),
+      });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
@@ -1563,7 +1733,7 @@ try {
       await application.click();
       await parity.waitForURL("**/pathways/event-sets");
       await parity
-        .getByRole("heading", { name: "Event sets", exact: true })
+        .getByRole("heading", { name: skillTitle("event-sets"), exact: true })
         .waitFor();
       await parity
         .locator(".pathways-connections")
@@ -1571,7 +1741,10 @@ try {
         .click();
       await parity.waitForURL("**/pathways/odd-and-even");
       await parity
-        .getByRole("heading", { name: "Odd and even", exact: true })
+        .getByRole("heading", {
+          name: skillTitle("odd-and-even"),
+          exact: true,
+        })
         .waitFor();
       await parity.close();
     }

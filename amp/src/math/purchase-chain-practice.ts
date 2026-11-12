@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -108,7 +109,7 @@ export const walletPurchase = chainFamily({
       const subtotal = m.first + m.second;
       const pay = subtotal - m.third;
       return numberSurface({
-        prompt: `Mia buys a ${x} for ${money(m.first)} and a ${y} for ${money(m.second)}. She has a coupon for ${money(m.third)} off her total. How much does Mia pay? Enter the amount in dollars.`,
+        prompt: `Mia buys ${withArticle(x)} for ${money(m.first)} and ${withArticle(y)} for ${money(m.second)}. She has a coupon for ${money(m.third)} off her total. How much does Mia pay? Enter the amount in dollars.`,
         answer: dollarsShort(pay),
         hint: `Add the two prices first: ${dollars(m.first)} + ${dollars(m.second)}. The coupon of ${dollars(m.third)} comes off that total.`,
         explanation: [
@@ -201,10 +202,10 @@ function partCost(m: DiscountModel) {
   const price = dollars(m.cents);
   const part =
     m.quarters === 2
-      ? `Half a ${unit} costs $${price}\\div2=${dollars(partCents)}$ dollars.`
+      ? `Half ${withArticle(unit)} costs $${price}\\div2=${dollars(partCents)}$ dollars.`
       : m.quarters === 1
-        ? `A fourth of a ${unit} costs $${price}\\div4=${dollars(partCents)}$ dollars.`
-        : `A fourth of a ${unit} costs $${price}\\div4=${dollars(m.cents / 4)}$ dollars, so three fourths cost $3\\times${dollars(m.cents / 4)}=${dollars(partCents)}$ dollars.`;
+        ? `A fourth of ${withArticle(unit)} costs $${price}\\div4=${dollars(partCents)}$ dollars.`
+        : `A fourth of ${withArticle(unit)} costs $${price}\\div4=${dollars(m.cents / 4)}$ dollars, so three fourths cost $3\\times${dollars(m.cents / 4)}=${dollars(partCents)}$ dollars.`;
   return `${m.whole === 1 ? `1 ${unit} costs` : `${m.whole} ${unit}s cost`} $${m.whole}\\times${price}=${dollars(wholeCost)}$ dollars. ${part} Together: $${dollars(wholeCost)}+${dollars(partCents)}=${dollars(m.before)}$ dollars.`;
 }
 export const mixedQuantityDiscount = chainFamily({

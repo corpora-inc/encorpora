@@ -412,10 +412,15 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: (p) => p.locator("[data-app-bar] [data-tabs]").waitFor(),
     },
     {
-      id: "lessons",
-      path: "/lessons",
+      // The lessons library is no destination (docs/design/ia.md): a
+      // problem type's short lesson opens in Pathways, at its own address.
+      id: "pathway-lesson",
+      path: "/pathways?lesson=count-objects",
       state: "paid",
-      ready: heading(/^Lessons$/),
+      ready: (p) =>
+        p.waitForFunction(
+          () => document.querySelectorAll('[role="dialog"] h2').length >= 2,
+        ),
     },
     {
       id: "lesson-reader",

@@ -1,0 +1,206 @@
+/* A replay covers the record it opened from, as practice covers the app: the
+   practice screen's own fixed shell, over everything but toasts. */
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: var(--color-surface);
+}
+.layer :global(.shell.app-shell) {
+  z-index: 1;
+}
+
+/* Who and when, quiet in the bar, then how it counted. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.when {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+
+/* Previous and Next, where Next stands after Check. A missing end keeps its
+   place, greyed, so the row never moves. */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  width: 100%;
+}
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 52px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a.step:hover {
+  background: var(--color-surface-hover);
+}
+a.step:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.step[aria-disabled="true"] {
+  border-color: var(--color-border);
+  color: var(--color-subtle-text);
+}
+
+/* Around the answer: label and value, one dense line each. */
+.facts {
+  margin-top: var(--space-3);
+  display: grid;
+  gap: 0;
+  margin: 0;
+  font-size: var(--text-table-small);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-block: 5px;
+  border-top: 1px solid var(--color-border);
+}
+.facts dt {
+  color: var(--color-muted-text);
+}
+.facts dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+  min-width: 0;
+}
+.answerText {
+  line-height: 1.45;
+}
+.tries {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tries [aria-current] {
+  font-weight: 650;
+}
+.tries a,
+.lesson {
+  color: var(--color-primary);
+  text-underline-offset: 2px;
+}
+
+/* When the practice screen can't draw it: the bar, then a centred column. */
+.frame {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+}
+.bar {
+  flex: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 6px var(--space-4);
+}
+.topic {
+  overflow: hidden;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 650;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.barStatus {
+  justify-self: end;
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .bar {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: var(--space-2);
+  }
+  .topic {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+.column {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  align-content: start;
+  justify-items: stretch;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--width-form);
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-4) var(--space-8);
+  box-sizing: border-box;
+}
+.fallback {
+  display: grid;
+  gap: var(--space-3);
+}
+.fallback h2 {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.fallbackNote {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.storedPrompt {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.retry {
+  justify-self: start;
+  min-height: var(--target-size);
+  padding-inline: var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-weight: 650;
+}
+.wait {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+/* Beside a work editor the sheet is a short footer for Next; a replay's
+   sheet also holds what surrounded the answer, so the footer is taller and
+   the editor above gives it the room (it scrolls if it must). */
+@media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
+  :global([data-work-replay]) :global(.editor-footer) {
+    flex-basis: 300px;
+  }
+  :global([data-work-replay])
+    :global(.practice-surface:has(> .editor-dock) > .feedback) {
+    height: calc(300px + var(--space-5) + env(safe-area-inset-bottom, 0px));
+    max-height: calc(300px + var(--space-5) + env(safe-area-inset-bottom, 0px));
+  }
+}

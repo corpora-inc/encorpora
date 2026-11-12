@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import {
@@ -298,11 +299,12 @@ const COIN_TELLS: Record<Coin, string> = {
 };
 /** Why a coin is not another: the first feature that differs. */
 function notCoin(seen: Coin, named: Coin): string {
-  if (seen === "penny") return `A ${named} is silver; this coin is copper.`;
+  if (seen === "penny")
+    return `${withArticle(named, true)} is silver; this coin is copper.`;
   if (named === "penny") return "A penny is copper; this coin is silver.";
   if ((seen === "nickel") !== (named === "nickel"))
     return seen === "nickel"
-      ? `A ${named} has a ridged edge; this coin's edge is smooth.`
+      ? `${withArticle(named, true)} has a ridged edge; this coin's edge is smooth.`
       : "A nickel has a smooth edge; this coin's edge is ridged.";
   return seen === "dime"
     ? "A quarter is the largest coin; this ridged coin is the smallest."
@@ -333,7 +335,7 @@ function coinNameAndValue(
       hint: "Look at three things: the coin's color (copper or silver), its size (small or large) and its edge (smooth or ridged). Then match those features to the coin you know.",
       explanation: [
         `This coin is ${COIN_LOOKS[coin]}.`,
-        `It is a ${coin}: ${COIN_TELLS[coin]}.`,
+        `It is ${withArticle(coin)}: ${COIN_TELLS[coin]}.`,
       ],
       choices: choicesFrom(
         r,
@@ -353,14 +355,14 @@ function coinNameAndValue(
       hint: "Read the number of cents written on the coin. The four coin values, from least to greatest, are 1¢, 5¢, 10¢ and 25¢. Match the value to the name you know.",
       explanation: [
         `The coin shows ${v}¢.`,
-        `The coin worth ${v}¢ is called a ${coin}.`,
+        `The coin worth ${v}¢ is called ${withArticle(coin)}.`,
       ],
       choices: choicesFrom(
         r,
         coin,
         COINS.filter((c) => c !== coin).map((c) => ({
           label: c,
-          feedback: `A ${c} is worth ${COIN_CENTS[c]}¢. This coin is worth ${v}¢.`,
+          feedback: `${withArticle(c, true)} is worth ${COIN_CENTS[c]}¢. This coin is worth ${v}¢.`,
         })),
       ),
     };
@@ -374,12 +376,12 @@ function coinNameAndValue(
     if (drawn)
       return {
         variant,
-        prompt: `Which picture shows a ${coin}?`,
+        prompt: `Which picture shows ${withArticle(coin)}?`,
         figure: drawnCoins(...order),
         answer: "",
-        hint: `Compare the coins' color, size and edge. A ${coin} is ${COIN_LOOKS[coin]}.`,
+        hint: `Compare the coins' color, size and edge. ${withArticle(coin, true)} is ${COIN_LOOKS[coin]}.`,
         explanation: [
-          `A ${coin} is ${COIN_LOOKS[coin]}.`,
+          `${withArticle(coin, true)} is ${COIN_LOOKS[coin]}.`,
           `Coin $${letters[order.indexOf(coin)]}$ is the ${coin}: ${COIN_TELLS[coin]}.`,
         ],
         choices: [
@@ -390,7 +392,7 @@ function coinNameAndValue(
               : [
                   {
                     label: `$${letters[i]}$`,
-                    feedback: `Coin $${letters[i]}$ is not a ${coin}. ${notCoin(c, coin)}`,
+                    feedback: `Coin $${letters[i]}$ is not ${withArticle(coin)}. ${notCoin(c, coin)}`,
                   },
                 ],
           ),
@@ -398,12 +400,12 @@ function coinNameAndValue(
       };
     return {
       variant,
-      prompt: `Which picture shows a ${coin}?`,
+      prompt: `Which picture shows ${withArticle(coin)}?`,
       figure: coinSet(...order),
       answer: "",
-      hint: `Remember the value of a ${coin}. Look for the coin with that many cents written on it.`,
+      hint: `Remember the value of ${withArticle(coin)}. Look for the coin with that many cents written on it.`,
       explanation: [
-        `A ${coin} is worth ${v}¢.`,
+        `${withArticle(coin, true)} is worth ${v}¢.`,
         `Coin $${letters[order.indexOf(coin)]}$ shows ${v}¢, so it is the ${coin}.`,
       ],
       choices: [
@@ -414,7 +416,7 @@ function coinNameAndValue(
             : [
                 {
                   label: `$${letters[i]}$`,
-                  feedback: `Coin $${letters[i]}$ shows ${COIN_CENTS[c]}¢. A ${coin} is worth ${v}¢.`,
+                  feedback: `Coin $${letters[i]}$ shows ${COIN_CENTS[c]}¢. ${withArticle(coin, true)} is worth ${v}¢.`,
                 },
               ],
         ),
@@ -444,8 +446,8 @@ function coinNameAndValue(
       answer: "",
       hint: "First name the coin from its color, size and edge, and remember what it is worth. The cent symbol is ¢. It goes after the number, like 3¢ for three cents.",
       explanation: [
-        `This coin is ${COIN_LOOKS[coin]}, so it is a ${coin}.`,
-        `A ${coin} is worth ${count(v, "cent")}.`,
+        `This coin is ${COIN_LOOKS[coin]}, so it is ${withArticle(coin)}.`,
+        `${withArticle(coin, true)} is worth ${count(v, "cent")}.`,
         `Write the number, then the cent symbol after it: ${correct}.`,
       ],
       choices: choicesFrom(r, correct, wrongs),
@@ -465,7 +467,7 @@ function coinNameAndValue(
       }
     : {
         variant,
-        prompt: `A ${coin} is worth ${CENT_WORDS[coin]}. How do you write that value with the cent symbol?`,
+        prompt: `${withArticle(coin, true)} is worth ${CENT_WORDS[coin]}. How do you write that value with the cent symbol?`,
         answer: "",
         hint: "The cent symbol is ¢. It goes after the number, like 3¢ for three cents.",
         explanation: [
@@ -592,17 +594,17 @@ function solidBottomFace(r: Random): Built {
       "A solid stands on a table. What is the shape of its flat face that touches the table?",
     figure: { kind: "solid-shape", solid },
     answer: "",
-    hint: `The solid is a ${SOLID_NAME[kind]}. Look at the face of the ${SOLID_NAME[kind]} that touches the table. Is it round or does it have straight sides? Count its straight sides and corners.`,
+    hint: `The solid is ${withArticle(SOLID_NAME[kind])}. Look at the face of the ${SOLID_NAME[kind]} that touches the table. Is it round or does it have straight sides? Count its straight sides and corners.`,
     explanation: [
       `The face on the table has ${faceDesc(correct)}.`,
-      `A ${correct} has ${SHAPE_DESC[correct]}, so the bottom face is a ${correct}.${correct === "rectangle" ? " Its sides are not all the same length, so it is not a square." : ""}`,
+      `${withArticle(correct, true)} has ${SHAPE_DESC[correct]}, so the bottom face is ${withArticle(correct)}.${correct === "rectangle" ? " Its sides are not all the same length, so it is not a square." : ""}`,
     ],
     choices: choicesFrom(
       r,
       correct,
       pool.map((s) => ({
         label: s,
-        feedback: `A ${s} has ${SHAPE_DESC[s]}. The face on the table has ${faceDesc(correct)}.`,
+        feedback: `${withArticle(s, true)} has ${SHAPE_DESC[s]}. The face on the table has ${faceDesc(correct)}.`,
       })),
     ),
   };
@@ -1351,7 +1353,7 @@ function decomposeFlatShape(r: Random): Built {
   };
   return {
     variant,
-    prompt: `A ${shape} is cut into equal parts. What are the new shapes?`,
+    prompt: `${withArticle(shape, true)} is cut into equal parts. What are the new shapes?`,
     figure: {
       kind: "partitioned-shapes",
       shapes: [{ shape, cut, sizes, shaded: [] }],
@@ -2111,7 +2113,7 @@ function tallyAndTChart(r: Random): Built {
     const total = counts.reduce((x, y) => x + y, 0);
     return {
       variant,
-      prompt: `${a} asked ${total} children for a ${topic.asked}. The answers were: ${list.join(", ")}. Which T-chart shows how many children chose each?`,
+      prompt: `${a} asked ${total} children for ${withArticle(topic.asked)}. The answers were: ${list.join(", ")}. Which T-chart shows how many children chose each?`,
       answer: "",
       hint: `Go through the list of ${total} answers and make one tally mark for each, one column per ${topic.header.toLowerCase()}. Then count the marks for each.`,
       explanation: [
@@ -2437,7 +2439,7 @@ function earlyMoneyDecisions(r: Random): Built {
           },
           {
             label: dollars(start * weeks),
-            feedback: `${dollars(start)} is not added each week. Only ${dollars(week)} is added each week.`,
+            feedback: `${start} dollars is not added each week. Only ${week} dollars is added each week.`,
           },
           {
             label: dollars(start + week * (weeks - 1)),

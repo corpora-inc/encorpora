@@ -112,6 +112,11 @@ and `needs-human` (the rare item parked for the device/CDP sweep). That's it.
    unmerged or a preflight check fails, inspect and preserve useful work on its
    branch or a clearly named recovery branch, or ask the owner.
 
+This loop is the default for every independent change. For broad UAT, where
+feedback touches many screens faster than separate PRs can land, run a
+**QA round** instead: one round branch, a live local preview, one batch PR to
+`main`. See [the QA round procedure](.claude/skills/qa-round/SKILL.md).
+
 ## The gates (what green means)
 
 Every PR to `main` must pass, as required status checks:

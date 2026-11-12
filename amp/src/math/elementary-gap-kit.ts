@@ -1,3 +1,4 @@
+import { article as sharedArticle } from "./agreement";
 import type { Surface } from "./variation/compose";
 import type { Random } from "./variation/axes";
 import type { ChoiceOption } from "./chain-kit";
@@ -63,4 +64,5 @@ export function shuffled<T>(r: Random, items: readonly T[]): T[] {
 }
 
 export const letters = ["A", "B", "C", "D"] as const;
-export const an = (word: string) => (/^[aeiou]/i.test(word) ? "an" : "a");
+/** "a" or "an" for a word: the shared rule (agreement.ts). */
+export const an = (word: string) => sharedArticle(word);

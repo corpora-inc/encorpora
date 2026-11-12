@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { generateProblem } from "../src/math/engine";
+import { asFrozen } from "./fixtures/recorded-version";
 
 /**
  * Instances saved before the grade-4 place-value axes.
@@ -47,7 +48,7 @@ const digestOf = (
   id: string,
   problem: ReturnType<typeof generateProblem>,
 ): string => {
-  const copy = structuredClone(problem);
+  const copy = structuredClone(asFrozen(problem));
   if (id === "digit-value-ratio") copy.public.skillId = "powers-of-ten";
   return createHash("sha256").update(JSON.stringify(copy)).digest("hex");
 };

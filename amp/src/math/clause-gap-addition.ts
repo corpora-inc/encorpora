@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count } from "./agreement.js";
 import type { ClauseCtx } from "./clause-gap-kit.js";
 import {
@@ -86,14 +87,23 @@ function addTens(ctx: ClauseCtx) {
   });
 }
 
-function onesStack(start: number, add: number, why: boolean, r: ClauseCtx["r"]) {
+function onesStack(
+  start: number,
+  add: number,
+  why: boolean,
+  r: ClauseCtx["r"],
+) {
   const ones = (start % 10) + add;
   const carry = ones >= 10 ? 1 : 0;
   const onesDigit = ones % 10;
   const tensDigit = Math.floor(start / 10) + carry;
   const rows = [
     { label: "Ones digit", values: [String(onesDigit)], fieldLabels: ["Ones"] },
-    { label: "Carry to the tens", values: [String(carry)], fieldLabels: ["Carry"] },
+    {
+      label: "Carry to the tens",
+      values: [String(carry)],
+      fieldLabels: ["Carry"],
+    },
     { label: "Tens digit", values: [String(tensDigit)], fieldLabels: ["Tens"] },
   ];
   if (!why) return numberStack(rows, "Fill the stack");
@@ -104,11 +114,16 @@ function onesStack(start: number, add: number, why: boolean, r: ClauseCtx["r"]) 
       { id: "ten", label: "Ten of the ones made a new ten." },
       { id: "digit", label: "To remember a digit from the ones total." },
       { id: "less", label: "Because a digit is one less than 10." },
-      { id: "label", label: `To show ${start} has ${Math.floor(start / 10)} tens and ${start % 10} ones.` },
+      {
+        id: "label",
+        label: `To show ${start} has ${Math.floor(start / 10)} tens and ${start % 10} ones.`,
+      },
     ]).map((option, i) => ({ ...option, id: "abcd"[i]! })),
   };
   // Re-find the correct option after the shuffle assigned fresh ids.
-  const correct = bank.options.find((o) => o.label.startsWith("Ten of the ones"))!;
+  const correct = bank.options.find((o) =>
+    o.label.startsWith("Ten of the ones"),
+  )!;
   const response: StructuredWorkResponse = {
     kind: "structured-work",
     label: "Fill the stack",
@@ -143,7 +158,10 @@ function onesStack(start: number, add: number, why: boolean, r: ClauseCtx["r"]) 
     [String(tensDigit)],
     [correct.id],
   ]);
-  if (!gradingFits(response, workGrading) || !gradeStructuredWork(response, workGrading, answer))
+  if (
+    !gradingFits(response, workGrading) ||
+    !gradeStructuredWork(response, workGrading, answer)
+  )
     throw new Error("Why-stack key");
   return { response, workGrading, answer };
 }
@@ -166,7 +184,12 @@ function blocksToStack(ctx: ClauseCtx) {
     add = extra;
     if (start >= 15 && start <= 89) break;
   }
-  const built = onesStack(start, add, (start % 10) + add >= 10 && r(0, 2) === 0, r);
+  const built = onesStack(
+    start,
+    add,
+    (start % 10) + add >= 10 && r(0, 2) === 0,
+    r,
+  );
   const total = start + add;
   return problem({
     id: ctx.id,
@@ -182,7 +205,7 @@ function blocksToStack(ctx: ClauseCtx) {
     explanation: [
       `${start % 10} ones and ${add} ones are ${(start % 10) + add} ones.`,
       (start % 10) + add >= 10
-        ? `Ten of them make a new ten. Write ${(start % 10 + add) % 10} in the ones and a small 1 above the tens. That 1 means ten ones made a new ten.`
+        ? `Ten of them make a new ten. Write ${((start % 10) + add) % 10} in the ones and a small 1 above the tens. That 1 means ten ones made a new ten.`
         : `That is less than 10, so the carry is 0 and the ones digit is ${(start % 10) + add}.`,
       `The tens digit becomes ${Math.floor(total / 10)}. The total is ${total}.`,
       `Check: ${total} − ${add} = ${start}.`,
@@ -192,16 +215,24 @@ function blocksToStack(ctx: ClauseCtx) {
 
 function whichEquation(ctx: ClauseCtx) {
   const { r } = ctx;
-  let a = 2, b = 3, c = 4;
+  let a = 2,
+    b = 3,
+    c = 4;
   for (let i = 0; i < 30; i++) {
-    const xs = shuffle(r, [2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3) as [number, number, number];
+    const xs = shuffle(r, [2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3) as [
+      number,
+      number,
+      number,
+    ];
     if (xs[0] + xs[1] + xs[2] <= 20 && new Set(xs).size === 3) {
       [a, b, c] = xs;
       break;
     }
   }
   const boxFirst = r(0, 3) === 0;
-  const correct = boxFirst ? `□ = ${a} + ${b} + ${c}` : `${a} + ${b} + ${c} = □`;
+  const correct = boxFirst
+    ? `□ = ${a} + ${b} + ${c}`
+    : `${a} + ${b} + ${c} = □`;
   const choice = singleChoice(r, [
     { label: correct, correct: true },
     {
@@ -251,13 +282,23 @@ function nearDouble(ctx: ClauseCtx) {
       {
         id: "dbl",
         label: `The double: ${a} + ${a}`,
-        options: [String(double), String(sum), String(double + gap + 1), String(a)],
+        options: [
+          String(double),
+          String(sum),
+          String(double + gap + 1),
+          String(a),
+        ],
         correct: String(double),
       },
       {
         id: "sum",
         label: `${left} + ${right}`,
-        options: [String(sum), String(double), String((a + gap) * 2), String(sum + 1)],
+        options: [
+          String(sum),
+          String(double),
+          String((a + gap) * 2),
+          String(sum + 1),
+        ],
         correct: String(sum),
       },
     ],
@@ -285,7 +326,8 @@ function nearDouble(ctx: ClauseCtx) {
 function withinAdd(ctx: ClauseCtx) {
   const { r } = ctx;
   const allowZero = r(0, 9) === 0;
-  let a = 1, b = 1;
+  let a = 1,
+    b = 1;
   for (let i = 0; i < 20; i++) {
     a = allowZero ? r(0, 9) : r(1, 9);
     b = allowZero ? r(0, 10 - a) : r(1, 10 - a);
@@ -301,11 +343,11 @@ function withinAdd(ctx: ClauseCtx) {
     figure: { kind: "scene", scene: makeTenHops(a, b) },
     response: { kind: "number", label: "Sum" },
     answer: String(sum),
-    hint: a + b === 10 ? `${a} and ${b} partner to make ten.` : `Put ${a} and ${b} together. The total is at most 10.`,
-    explanation: [
-      `${a} and ${b} make ${sum}.`,
-      `${sum} hides ${a} and ${b}.`,
-    ],
+    hint:
+      a + b === 10
+        ? `${a} and ${b} partner to make ten.`
+        : `Put ${a} and ${b} together. The total is at most 10.`,
+    explanation: [`${a} and ${b} make ${sum}.`, `${sum} hides ${a} and ${b}.`],
   });
 }
 
@@ -329,14 +371,24 @@ function withinSub(ctx: ClauseCtx) {
   });
 }
 
-const lengthObjects = ["ribbon", "rope", "string", "path", "fence", "board"] as const;
+const lengthObjects = [
+  "ribbon",
+  "rope",
+  "string",
+  "path",
+  "fence",
+  "board",
+] as const;
 
 function lengthStory(ctx: ClauseCtx) {
   const { r } = ctx;
   const shape = (["join", "remove", "compare"] as const)[r(0, 2)]!;
   const unit = r(0, 1) === 0 ? "cm" : "m";
   const object = pick(r, lengthObjects);
-  let a = 30, b = 20, answer = 50, prompt = "";
+  let a = 30,
+    b = 20,
+    answer = 50,
+    prompt = "";
   if (shape === "join") {
     a = r(12, 70);
     const maxB = Math.min(85, 99 - a);
@@ -344,16 +396,17 @@ function lengthStory(ctx: ClauseCtx) {
     if (r(0, 2) !== 0) {
       // Prefer a sum that regroups.
       const ones = a % 10;
-      if (ones !== 0 && 10 - ones + 10 <= maxB) b = Math.min(maxB, b - (b % 10) + (10 - ones));
+      if (ones !== 0 && 10 - ones + 10 <= maxB)
+        b = Math.min(maxB, b - (b % 10) + (10 - ones));
       if (b < 12) b = 12;
     }
     answer = a + b;
-    prompt = `A ${object} is ${a} ${unit} long. Nia ties a ${b} ${unit} ${object} to its end. How long is it now?`;
+    prompt = `${withArticle(object, true)} is ${a} ${unit} long. Nia ties ${withArticle(b)} ${unit} ${object} to its end. How long is it now?`;
   } else if (shape === "remove") {
     a = r(30, 85);
     b = r(12, a - 12);
     answer = a - b;
-    prompt = `A ${object} is ${a} ${unit}. Nia cuts off ${b} ${unit}. How long is the piece that is left?`;
+    prompt = `${withArticle(object, true)} is ${a} ${unit}. Nia cuts off ${b} ${unit}. How long is the piece that is left?`;
   } else {
     a = r(30, 85);
     b = r(12, a - 12);
@@ -369,7 +422,10 @@ function lengthStory(ctx: ClauseCtx) {
     task: ctx.task,
     skillId: skills[ctx.id]!,
     prompt,
-    response: { kind: "number", label: unit === "cm" ? "Centimeters" : "Meters" },
+    response: {
+      kind: "number",
+      label: unit === "cm" ? "Centimeters" : "Meters",
+    },
     answer: String(answer),
     hint: `Both lengths are in ${unit}. ${shape === "join" ? `Join ${a} and ${b}.` : `The difference of ${Math.max(a, b)} and ${Math.min(a, b)} is what the question asks.`}`,
     explanation: [
@@ -442,7 +498,8 @@ function fromZero(ctx: ClauseCtx) {
     });
   }
   const target = r(20, 90);
-  const backBy = r(0, 1) === 0 ? 10 * r(1, Math.floor(target / 10) - 1) : r(1, 9);
+  const backBy =
+    r(0, 1) === 0 ? 10 * r(1, Math.floor(target / 10) - 1) : r(1, 9);
   const land = target - backBy;
   return problem({
     id: ctx.id,
@@ -463,7 +520,10 @@ function fromZero(ctx: ClauseCtx) {
 
 /** Four distinct, non-negative options: the listed distractors first, then the
  * nearest unused values, so a coincidence never leaves a blank easy to guess. */
-function fourOptions(correct: number, distractors: readonly number[]): string[] {
+function fourOptions(
+  correct: number,
+  distractors: readonly number[],
+): string[] {
   const out: number[] = [correct];
   for (const d of distractors) if (d >= 0 && !out.includes(d)) out.push(d);
   for (let k = 1; out.length < 4; k++)
@@ -480,7 +540,11 @@ function tensThenOnes(ctx: ClauseCtx) {
   // Push the ones total into 10–29 most of the time.
   if (r(0, 3) !== 0) {
     const ones = values.reduce((s, v) => s + (v % 10), 0);
-    if (ones < 10) values[0] = values[0]! - (values[0]! % 10) + Math.min(9, (values[0]! % 10) + (10 - ones));
+    if (ones < 10)
+      values[0] =
+        values[0]! -
+        (values[0]! % 10) +
+        Math.min(9, (values[0]! % 10) + (10 - ones));
   }
   const tens = values.reduce((s, v) => s + Math.floor(v / 10) * 10, 0);
   const ones = values.reduce((s, v) => s + (v % 10), 0);
@@ -549,7 +613,7 @@ function columnSub(a: number, b: number): number[] {
   let borrow = 0;
   const n = String(a).length;
   for (let i = 0; i < n; i++) {
-    let da = Math.floor(a / 10 ** i) % 10 - borrow;
+    let da = (Math.floor(a / 10 ** i) % 10) - borrow;
     const db = Math.floor(b / 10 ** i) % 10;
     borrow = 0;
     if (da < db) {
@@ -563,7 +627,8 @@ function columnSub(a: number, b: number): number[] {
 
 function hundredsStack(ctx: ClauseCtx) {
   const { r } = ctx;
-  let a = 257, b = 256;
+  let a = 257,
+    b = 256;
   for (let i = 0; i < 20; i++) {
     a = 100 * r(1, 4) + 10 * r(0, 8) + r(0, 9);
     b = 100 * r(1, 4) + 10 * r(0, 8) + r(0, 9);
@@ -573,7 +638,10 @@ function hundredsStack(ctx: ClauseCtx) {
   const names = ["Ones", "Tens", "Hundreds", "Thousands"];
   const rows = cols.slice(0, 5).map((col, i) => ({
     label: names[i] ?? "Next",
-    values: i === cols.length - 1 ? [String(col.digit)] : [String(col.digit), String(col.carry)],
+    values:
+      i === cols.length - 1
+        ? [String(col.digit)]
+        : [String(col.digit), String(col.carry)],
     fieldLabels: i === cols.length - 1 ? ["Digit"] : ["Digit", "Carry"],
   }));
   const built = numberStack(rows, "Fill the stack");
@@ -598,7 +666,8 @@ function hundredsStack(ctx: ClauseCtx) {
 function openWhich(ctx: ClauseCtx) {
   const { r } = ctx;
   const tensZero = r(0, 2) === 0;
-  let a = 302, b = 117;
+  let a = 302,
+    b = 117;
   for (let i = 0; i < 30; i++) {
     const hundreds = r(2, 9);
     const tens = tensZero ? 0 : r(1, 8);
@@ -619,18 +688,22 @@ function openWhich(ctx: ClauseCtx) {
     [
       { label: correct, correct: true },
       {
-        label: openHundred ? "A ten, into ten ones" : "A hundred, into ten tens",
+        label: openHundred
+          ? "A ten, into ten ones"
+          : "A hundred, into ten tens",
         feedback: openHundred
           ? "There is no ten to open. The tens digit is 0, so a hundred has to be opened first."
           : "There is a ten to open. A hundred does not need to be opened yet.",
       },
       {
         label: "Nothing; take the smaller digit from the larger one",
-        feedback: "Taking the smaller digit from the larger one in the same place changes the number.",
+        feedback:
+          "Taking the smaller digit from the larger one in the same place changes the number.",
       },
       {
         label: "A one, into ten smaller pieces",
-        feedback: "A one is already the smallest place. It does not break into ten of a smaller place here.",
+        feedback:
+          "A one is already the smallest place. It does not break into ten of a smaller place here.",
       },
     ],
     "Which block is opened first?",
@@ -641,7 +714,9 @@ function openWhich(ctx: ClauseCtx) {
     id: "abcd"[i]!,
     label: option.label,
   }));
-  const correctId = options[choice.response.options.findIndex((o) => o.id === choice.answer)]!.id;
+  const correctId =
+    options[choice.response.options.findIndex((o) => o.id === choice.answer)]!
+      .id;
   const response: StructuredWorkResponse = {
     kind: "structured-work",
     label: "Open a block, then fill the difference",
@@ -665,11 +740,19 @@ function openWhich(ctx: ClauseCtx) {
     mode: "fields",
     fields: [
       [{ kind: "choice", accept: [correctId] }],
-      ...digits.slice(0, 3).map((digit) => [{ kind: "number" as const, value: String(digit) }]),
+      ...digits
+        .slice(0, 3)
+        .map((digit) => [{ kind: "number" as const, value: String(digit) }]),
     ],
   };
-  const answer = JSON.stringify([[correctId], ...digits.slice(0, 3).map((d) => [String(d)])]);
-  if (!gradingFits(response, workGrading) || !gradeStructuredWork(response, workGrading, answer))
+  const answer = JSON.stringify([
+    [correctId],
+    ...digits.slice(0, 3).map((d) => [String(d)]),
+  ]);
+  if (
+    !gradingFits(response, workGrading) ||
+    !gradeStructuredWork(response, workGrading, answer)
+  )
     throw new Error("Open-which key");
   return problem({
     id: ctx.id,
@@ -709,7 +792,10 @@ function oneDigitSums(ctx: ClauseCtx) {
     ...(figure ? { figure } : {}),
     response: { kind: "number", label: "Sum" },
     answer: String(a + b),
-    hint: a + b === 10 ? `${a} and ${b} make ten.` : `Add the one-digit numbers ${a} and ${b}.`,
+    hint:
+      a + b === 10
+        ? `${a} and ${b} make ten.`
+        : `Add the one-digit numbers ${a} and ${b}.`,
     explanation: [
       a === b
         ? `${a} + ${a} is the double ${a + a}.`
@@ -761,25 +847,45 @@ function roundAndAdjust(ctx: ClauseCtx) {
       {
         id: "near",
         label: `${near} is close to`,
-        options: [String(base), String(near), String(base + 10), String(distance)],
+        options: [
+          String(base),
+          String(near),
+          String(base + 10),
+          String(distance),
+        ],
         correct: String(base),
       },
       {
         id: "round",
         label: `${safeOther} + ${base}`,
-        options: [String(safeRounded), String(safeAnswer), String(safeRounded + distance), String(safeOther)],
+        options: [
+          String(safeRounded),
+          String(safeAnswer),
+          String(safeRounded + distance),
+          String(safeOther),
+        ],
         correct: String(safeRounded),
       },
       {
         id: "off",
         label: "You were off by",
-        options: [String(distance), String(near % 10), String(distance + 1), "10"],
+        options: [
+          String(distance),
+          String(near % 10),
+          String(distance + 1),
+          "10",
+        ],
         correct: String(distance),
       },
       {
         id: "sum",
         label: `${safeOther} + ${near}`,
-        options: [String(safeAnswer), String(safeRounded), String(below ? safeRounded + distance : safeRounded - distance), String(safeAnswer + 10)],
+        options: [
+          String(safeAnswer),
+          String(safeRounded),
+          String(below ? safeRounded + distance : safeRounded - distance),
+          String(safeAnswer + 10),
+        ],
         correct: String(safeAnswer),
       },
     ],
@@ -832,25 +938,45 @@ function countUp(ctx: ClauseCtx) {
       {
         id: "h1",
         label: `${sub} up to the next ten`,
-        options: [String(shown[0]), String(shown[0]! + 1), "10", String(sub % 10)],
+        options: [
+          String(shown[0]),
+          String(shown[0]! + 1),
+          "10",
+          String(sub % 10),
+        ],
         correct: String(shown[0]),
       },
       {
         id: "h2",
         label: "On to the next hundred",
-        options: [String(shown[1]), String(Math.max(0, shown[1]! - 10)), "100", String(shown[1]! + 10)],
+        options: [
+          String(shown[1]),
+          String(Math.max(0, shown[1]! - 10)),
+          "100",
+          String(shown[1]! + 10),
+        ],
         correct: String(shown[1]),
       },
       {
         id: "h3",
         label: `On to ${minuend}`,
-        options: [String(shown[2]), String(minuend), "10", String(Math.max(0, shown[2]! - 100))],
+        options: [
+          String(shown[2]),
+          String(minuend),
+          "10",
+          String(Math.max(0, shown[2]! - 100)),
+        ],
         correct: String(shown[2]),
       },
       {
         id: "diff",
         label: `${minuend} − ${sub}`,
-        options: [String(answer), String(answer + 10), String(answer + (sub % 10)), String(answer + 1000)],
+        options: [
+          String(answer),
+          String(answer + 10),
+          String(answer + (sub % 10)),
+          String(answer + 1000),
+        ],
         correct: String(answer),
       },
     ],
@@ -916,11 +1042,21 @@ function multiStack(ctx: ClauseCtx, subtract: boolean) {
     });
   }
   const cols = columnAdd(a, b);
-  const names = ["Ones", "Tens", "Hundreds", "Thousands", "Ten-thousands", "Hundred-thousands"];
+  const names = [
+    "Ones",
+    "Tens",
+    "Hundreds",
+    "Thousands",
+    "Ten-thousands",
+    "Hundred-thousands",
+  ];
   const built = numberStack(
     cols.slice(0, 6).map((col, i) => ({
       label: names[i] ?? "Next",
-      values: i === cols.length - 1 ? [String(col.digit)] : [String(col.digit), String(col.carry)],
+      values:
+        i === cols.length - 1
+          ? [String(col.digit)]
+          : [String(col.digit), String(col.carry)],
       fieldLabels: i === cols.length - 1 ? ["Digit"] : ["Digit", "Carry out"],
     })),
     "Fill each digit",
@@ -971,7 +1107,9 @@ function tenFrameRecord(ctx: ClauseCtx) {
   const filled = r(1, 9);
   const empty = 10 - filled;
   const flipped = r(0, 2) === 0;
-  const correct = flipped ? `10 = ${filled} + ${empty}` : `${filled} + ${empty} = 10`;
+  const correct = flipped
+    ? `10 = ${filled} + ${empty}`
+    : `${filled} + ${empty} = 10`;
   const choice = singleChoice(r, [
     { label: correct, correct: true },
     {

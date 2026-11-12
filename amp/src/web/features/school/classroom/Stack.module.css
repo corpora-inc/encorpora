@@ -211,6 +211,9 @@ button.tile[data-state="failed"] {
   line-height: 1.25;
 }
 .tileStatus {
+  /* Its line is held when it has nothing to say (a chosen child before
+     printing), so the name never moves when a status arrives. */
+  min-height: 1.25em;
   font-size: var(--text-table-small);
   font-variant-numeric: var(--numeric);
   line-height: 1.25;

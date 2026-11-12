@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { count } from "./agreement";
 import type {
@@ -1195,7 +1196,7 @@ function improvisedCount(
   const figure: SemanticFigure = {
     kind: "scene",
     scene: scene(...elements).build({
-      title: `A ${spec.name} covered by ${t.many}, with no gaps and no overlaps`,
+      title: `${withArticle(spec.name, true)} covered by ${t.many}, with no gaps and no overlaps`,
       note: `${t.many[0]!.toUpperCase()}${t.many.slice(1)} in each row, from the top: ${counts.join(", ")}.`,
       width: 360,
       maxHeight: 320,
@@ -1443,14 +1444,14 @@ function improvisedChange(seed: string, r: Random): GeneratedProblem {
   const figure: SemanticFigure = {
     kind: "scene",
     scene: scene(...elements).build({
-      title: `A ${surface} covered by ${n} ${firstMany}, with one ${first} and one ${second} drawn below it to the same scale`,
+      title: `${withArticle(surface, true)} covered by ${n} ${firstMany}, with one ${first} and one ${second} drawn below it to the same scale`,
       width: 360,
       maxHeight: 320,
     }),
   };
   const relation = toSmaller
-    ? `Each side of a ${second} is half as long as a side of a ${first}.`
-    : `Each side of a ${second} is twice as long as a side of a ${first}.`;
+    ? `Each side of ${withArticle(second)} is half as long as a side of ${withArticle(first)}.`
+    : `Each side of ${withArticle(second)} is twice as long as a side of ${withArticle(first)}.`;
   const more = `More than ${n}`,
     fewer = `Fewer than ${n}`,
     same = `Exactly ${n}`;
@@ -1465,7 +1466,7 @@ function improvisedChange(seed: string, r: Random): GeneratedProblem {
         ...(toSmaller
           ? { correct: true as const }
           : {
-              feedback: `A ${second} is bigger, so each one covers more of the ${surface}. Bigger units take fewer pieces, not more.`,
+              feedback: `${withArticle(second, true)} is bigger, so each one covers more of the ${surface}. Bigger units take fewer pieces, not more.`,
             }),
       },
       {
@@ -1473,7 +1474,7 @@ function improvisedChange(seed: string, r: Random): GeneratedProblem {
         ...(!toSmaller
           ? { correct: true as const }
           : {
-              feedback: `A ${second} is smaller, so each one covers less of the ${surface}. Smaller units take more pieces, not fewer.`,
+              feedback: `${withArticle(second, true)} is smaller, so each one covers less of the ${surface}. Smaller units take more pieces, not fewer.`,
             }),
       },
       {
@@ -1484,7 +1485,7 @@ function improvisedChange(seed: string, r: Random): GeneratedProblem {
     hint: `Picture how many ${pair.small}s fit on one ${pair.large}. Then think about what that means for the ${n} ${firstMany}.`,
     explanation: [
       `The ${surface} does not change, so its area does not change. Only the unit changes.`,
-      `Two ${pair.small}s fit along each side of a ${pair.large}, so $2 \\times 2 = 4$ ${pair.small}s cover one ${pair.large}.`,
+      `Two ${pair.small}s fit along each side of ${withArticle(pair.large)}, so $2 \\times 2 = 4$ ${pair.small}s cover one ${pair.large}.`,
       toSmaller
         ? `Each ${first} the ${surface} needed is replaced by 4 ${secondMany}: $4 \\times ${n} = ${4 * n}$ ${secondMany}. That is more than ${n}.`
         : `Every 4 ${firstMany} are replaced by 1 ${second}: $${n} \\div 4 = ${n / 4}$ ${secondMany}. That is fewer than ${n}.`,

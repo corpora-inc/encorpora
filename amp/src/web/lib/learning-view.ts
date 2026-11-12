@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useQuery, queryOptions } from "@tanstack/react-query";
-import { meOptions, sessionOptions } from "./query";
+import { meOptions, queryClient, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import {
   adultLearner,
@@ -52,6 +52,110 @@ export const learnerFrontierOptions = (
       ),
   });
 
+type SignedIn = Extract<
+  Awaited<ReturnType<NonNullable<ReturnType<typeof meOptions>["queryFn"]>>>,
+  { signedIn: true }
+>;
+
+/** Whose record a learning screen shows, from the account and the learner this
+ * device chose: the adult's own (or one of their profiles), the chosen child
+ * (theirs or a second parent's family's), else the first child. Pure, so a
+ * route can load that record before its screen renders. */
+export function chooseLearner(
+  account: SignedIn | null,
+  selectedId: string | null,
+) {
+  const learners = account?.learners ?? [];
+  const shared = secondParentChildren(account);
+  const profile = practiceProfile(account, selectedId);
+  const solo =
+    !learners.length && !shared.length ? adultLearner(account) : null;
+  const own = practicingAsAdult(account, selectedId)
+    ? adultLearner(account)
+    : profile
+      ? profileLearner(account, selectedId)
+      : solo;
+  const learner =
+    own ??
+    learners.find((l) => l.id === selectedId) ??
+    shared.find((l) => l.id === selectedId) ??
+    learners[0];
+  return { learners, shared, profile, solo, own, learner };
+}
+
+/** A learning screen's data (who, the curriculum, and the chosen learner's
+ * record and level), loaded before it renders so it paints once, whole
+ * (docs/design/ia.md, "Smoothness"). A failure is left for the screen to
+ * show in place. */
+/** The Overview's level only, before it paints: its layout (a learner's
+ * first day, or their record) depends on it. Its areas hold their rows while
+ * the catalog loads, so the catalog is not needed first. */
+export async function preloadOverviewLevel() {
+  const session = await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch(() => undefined);
+  if (!session) return;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => undefined);
+  const account =
+    me?.signedIn && me.account.id === session.accountId ? me : null;
+  const { learner } = chooseLearner(
+    account as SignedIn | null,
+    useLearnerStore.getState().learnerId,
+  );
+  if (learner)
+    await queryClient
+      .ensureQueryData(learnerFrontierOptions(session, learner.id))
+      .catch((error: unknown) =>
+        console.error("The level did not preload", error),
+      );
+}
+
+export async function preloadLearningView() {
+  const quiet = <T>(promise: Promise<T>, what: string) =>
+    promise.catch((error: unknown) => {
+      console.error(`${what} did not preload`, error);
+      return undefined;
+    });
+  const catalog = quiet(
+    queryClient.ensureQueryData(skillCatalogOptions),
+    "The curriculum",
+  );
+  const session = await quiet(
+    queryClient.ensureQueryData(sessionOptions),
+    "The session",
+  );
+  if (!session) return void (await catalog);
+  const me = await quiet(
+    queryClient.ensureQueryData(meOptions(session)),
+    "The account",
+  );
+  const account =
+    me?.signedIn && me.account.id === session.accountId ? me : null;
+  const { learner } = chooseLearner(
+    account as SignedIn | null,
+    useLearnerStore.getState().learnerId,
+  );
+  await Promise.all([
+    catalog,
+    learner &&
+      quiet(
+        queryClient.ensureQueryData(
+          learnerEvidenceOptions(session, learner.id),
+        ),
+        "The record",
+      ),
+    learner &&
+      quiet(
+        queryClient.ensureQueryData(
+          learnerFrontierOptions(session, learner.id),
+        ),
+        "The level",
+      ),
+  ]);
+}
+
 /** One explicit learning context for navigation and inventory: the chosen
  * learner of the signed-in account, or the adult's own.
  * `records: false` (the drawer) asks only who and where, never the learner's
@@ -68,29 +172,14 @@ export function useLearningView({
     me.data?.signedIn && me.data.account.id === session.data?.accountId
       ? me.data
       : null;
-  const learners = account?.learners ?? [];
-  // A second parent's family's children: their progress, read-only.
-  const shared = secondParentChildren(account);
   const selectedId = useLearnerStore((s) => s.learnerId);
-  // The adult's own learner, when it's the one chosen: their own practice.
-  // One of their practice profiles is their own practice too, as someone else.
-  const profile = practiceProfile(account, selectedId);
-  // An adult who practices only as themselves has no one else to choose:
-  // their own record, whatever this device last chose.
-  const solo =
-    !learners.length && !shared.length ? adultLearner(account) : null;
-  const own = practicingAsAdult(account, selectedId)
-    ? adultLearner(account)
-    : profile
-      ? profileLearner(account, selectedId)
-      : solo;
-  const learner =
-    own ??
-    learners.find((l) => l.id === selectedId) ??
-    shared.find((l) => l.id === selectedId) ??
-    // Nobody chosen on this device yet: the first child, as practice
-    // (LegacyApp) already takes it, so every screen and the drawer agree.
-    learners[0];
+  // The adult's own (or a profile of theirs), the chosen child, a second
+  // parent's family's child (read-only), else the first child, as practice
+  // (LegacyApp) already takes it, so every screen and the drawer agree.
+  const { learners, shared, profile, solo, own, learner } = chooseLearner(
+    account,
+    selectedId,
+  );
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
     if (solo && own === solo && selectedId !== solo.id)

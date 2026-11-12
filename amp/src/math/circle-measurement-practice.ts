@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -111,7 +112,7 @@ export function circleMeasurementPrintCase(
           templateVersion: 1,
           seed,
           skillId: metadata.skillId,
-          prompt: `A circle has a ${dimension} of ${shown} cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?`,
+          prompt: `A circle has ${withArticle(dimension)} of ${shown} cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?`,
           response: { kind: "number", label: "Area in square centimeters" },
         },
         answer: area,
@@ -143,7 +144,7 @@ export function circleMeasurementPrintCase(
     coefficient = multiply(full, part);
   const dimension = isRadius ? "radius" : "diameter",
     unit = isArea ? "square centimeters" : "cm";
-  const opening = `A circle has a ${dimension} of ${plain(given)} cm.`;
+  const opening = `A circle has ${withArticle(dimension)} of ${plain(given)} cm.`;
   const prompt =
     angle === null
       ? `${opening} Its ${isArea ? "area" : "circumference"} is $a\\pi$ ${unit}. What is $a$?`

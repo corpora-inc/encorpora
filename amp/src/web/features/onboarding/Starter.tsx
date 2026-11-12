@@ -1,27 +1,15 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Link, Navigate, useNavigate, useParams } from "@tanstack/react-router";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode,
-} from "react";
+import { useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
-import {
-  ownPracticeAllowed,
-  pastSchoolAge,
-  type AdultStart,
-} from "../../../learning/starting-point";
+import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
-import { Button, buttonClass } from "../../ui/Button";
-import { Segmented } from "../../ui/Segmented";
+import { Button } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
-import { adultStartOptions } from "../me/start-options";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
 import { isStarterChoice, type StarterChoice } from "./guard";
@@ -33,17 +21,16 @@ import {
   type StarterAnswer,
 } from "./starter-api";
 import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
-import tiles from "../../ui/TileChoice.module.css";
+import { OwnYearTiles } from "./OwnYearTiles";
+import { StepFrame } from "./setup/StepFrame";
 import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
-  /** "I'm learning for myself": the year they were born, and, past school
-   * age, where they chose to begin. */
+  /** "I'm learning for myself": the year they were born. */
   ownYear: number | null;
-  ownStart: AdultStart | null;
 };
-const emptyDraft: StarterDraft = { ownYear: null, ownStart: null };
+const emptyDraft: StarterDraft = { ownYear: null };
 const useStarterDraft = create<
   StarterDraft & {
     owner: string | null;
@@ -102,13 +89,10 @@ const choices: {
   },
 ];
 
-/** Set when a choice is tapped on this screen, so its question scrolls into
- * view once the answer's URL is open. */
-let chosenHere = false;
-
-/** `/start` and `/start/<choice>`: "What brings you to AMP?". The answer
- * decides what is created and the words used; the next question shows on
- * the same screen, under the five choices, which never move. */
+/** `/start`: "What brings you to AMP?". The answer decides what is created
+ * and the words used. Each answer opens its own steps at its own URL
+ * (`/start/<choice>`), the way a parent's setup does; a teacher's opens a
+ * demo class at once. */
 export function Starter() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   const params = useParams({ strict: false }) as { choice?: string };
@@ -116,6 +100,9 @@ export function Starter() {
   // A parent or a tutor is walked through setting up their class.
   if (isSetup(params.choice))
     return <FamilySetup session={session} kind={params.choice} step="" />;
+  // Learning for yourself, or a school: a step page of its own.
+  if (params.choice === "myself") return <MyselfStep session={session} />;
+  if (params.choice === "school") return <SchoolStep session={session} />;
   return <StarterScreen session={session} />;
 }
 
@@ -143,88 +130,13 @@ export function StarterStep() {
 function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
-  const navigate = useNavigate();
-  const start = useStartPlace(session);
-  const demo = useStartDemo(session);
-  const busy = start.isPending || demo.isPending;
-  const [error, setError] = useState("");
-  const followUp = useRef<HTMLDivElement>(null);
-  // A choice made here brings its question into view and moves focus to its
-  // heading; a choice the page opened with (a refresh, a link, Back) leaves
-  // the page where it is. The choice's link keeps the router from resetting
-  // the scroll to the top afterwards (`resetScroll={false}`).
-  useEffect(() => {
-    if (!choice || !chosenHere) return;
-    chosenHere = false;
-    const step = followUp.current;
-    step?.scrollIntoView({
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "nearest",
-    });
-    step?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
-  }, [choice]);
-  /** A teacher or a school explores a demo first: nothing real is made
-   * until an agreement or a purchase. */
-  const explore = (kind: "class" | "school") => {
-    if (busy) return;
-    setError("");
-    demo.mutate(kind, {
-      onSuccess: (home) => void navigate({ href: `/${home}` }),
-      onError: (failure) => {
-        console.error("The demo didn’t open", failure);
-        setError(
-          failure instanceof AppError &&
-            (failure.status === 404 || failure.status === 405)
-            ? "The demo isn’t open yet. Try again soon."
-            : failure instanceof AppError
-              ? failure.message
-              : "That didn’t go through. Check your connection and try again.",
-        );
-      },
-    });
-  };
-  const begin = (answer: StarterAnswer) => {
-    if (busy) return;
-    setError("");
-    start.mutate(answer, {
-      onSuccess: (result) => {
-        // A plan chosen on the pitch before signing up opens for the learner
-        // just made; otherwise the new place opens.
-        const plan = chosenPlan();
-        if (plan && result.learnerId && answer.as === "myself")
-          void navigate({
-            to: "/continue/$learnerId",
-            params: { learnerId: result.learnerId },
-            search: { interval: plan },
-          });
-        // Their own practice opens on its first problem; `/me` is where
-        // they come back to.
-        else if (answer.as === "myself")
-          void navigate({
-            to: "/$",
-            params: { _splat: "practice" },
-            replace: true,
-          });
-        else void navigate({ href: `/${result.home}` });
-      },
-      onError: (failure) => {
-        console.error("The starter didn’t finish", failure);
-        setError(
-          failure instanceof AppError
-            ? failure.message
-            : "That didn’t go through. Check your connection and try again.",
-        );
-      },
-    });
-  };
+  const { explore, demo, error, setError } = useExplore(session);
+  const busy = demo.isPending;
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
       <h1 className={styles.title}>What brings you to AMP?</h1>
       <ul className={styles.choices}>
         {choices.map((entry) => {
-          const selected = entry.id === choice;
           const content = (
             <>
               <svg
@@ -265,13 +177,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   params={{ choice: entry.id }}
                   className={styles.choice}
                   data-choice={entry.id}
-                  aria-current={selected ? "step" : undefined}
                   disabled={busy}
-                  resetScroll={false}
-                  onClick={() => {
-                    chosenHere = true;
-                    track("starter_choice", { answer: entry.id });
-                  }}
+                  onClick={() => track("starter_choice", { answer: entry.id })}
                 >
                   {content}
                 </Link>
@@ -280,45 +187,123 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
         })}
       </ul>
-      <div ref={followUp} className={styles.followUp}>
-        {choice === "myself" ? (
-          <Myself
-            session={session}
-            busy={busy}
-            onParent={() =>
-              void navigate({
-                to: "/start/$choice",
-                params: { choice: "parent" },
-              })
-            }
-            onStart={(start) =>
-              begin({ as: "myself", timezone: deviceTimeZone(), ...start })
-            }
-          />
-        ) : choice === "school" ? (
-          <School
-            busy={busy}
-            exploring={demo.isPending && demo.variables === "school"}
-            onExplore={() => explore("school")}
-          />
-        ) : null}
-      </div>
       <Toast message={error} onDismiss={() => setError("")} />
     </main>
   );
 }
 
-/** The years the grid offers, newest first, then "Adult" for anyone older:
- * the old free trial's picker, starting at age 7. */
-const OWN_YEARS = 16;
-const OWN_YOUNGEST = 7;
-const ADULT_AGE = 25;
+/** A teacher or a school explores a demo first: nothing real is made until
+ * an agreement or a purchase. */
+function useExplore(session: AuthSession) {
+  const navigate = useNavigate();
+  const demo = useStartDemo(session);
+  const [error, setError] = useState("");
+  const explore = (kind: "class" | "school") => {
+    if (demo.isPending) return;
+    setError("");
+    demo.mutate(kind, {
+      onSuccess: (home) => void navigate({ href: `/${home}` }),
+      onError: (failure) => {
+        console.error("The demo didn’t open", failure);
+        setError(
+          failure instanceof AppError &&
+            (failure.status === 404 || failure.status === 405)
+            ? "The demo isn’t open yet. Try again soon."
+            : failure instanceof AppError
+              ? failure.message
+              : "That didn’t go through. Check your connection and try again.",
+        );
+      },
+    });
+  };
+  return { explore, demo, error, setError };
+}
 
-/** "What year were you born?" for their own practice. A school-age year sets
- * where it starts (the server turns it into the nearest starting point). Past
- * school age a year says little about someone's math, so the next tap is
- * where they want to begin. Under 13, a parent sets AMP up, and that way in is
- * one tap away. */
+/** One step, the whole of it: what starting means for each answer that
+ * needs no more than one question. */
+const ONE_STEP = {
+  myself: [{ id: "", label: "Your practice" }],
+  school: [{ id: "", label: "Your school" }],
+} as const;
+
+/** `/start/myself`: the year they were born, then straight into practice. */
+function MyselfStep({ session }: { session: AuthSession }) {
+  const navigate = useNavigate();
+  const start = useStartPlace(session);
+  const [error, setError] = useState("");
+  const begin = (own: OwnStart) => {
+    if (start.isPending) return;
+    setError("");
+    const answer: StarterAnswer = {
+      as: "myself",
+      timezone: deviceTimeZone(),
+      ...own,
+    };
+    start.mutate(answer, {
+      onSuccess: (result) => {
+        // A plan chosen on the pitch before signing up opens for the learner
+        // just made; otherwise their practice opens on its first problem,
+        // and `/me` is where they come back to.
+        const plan = chosenPlan();
+        if (plan && result.learnerId)
+          void navigate({
+            to: "/continue/$learnerId",
+            params: { learnerId: result.learnerId },
+            search: { interval: plan },
+          });
+        else
+          void navigate({
+            to: "/$",
+            params: { _splat: "practice" },
+            replace: true,
+          });
+      },
+      onError: (failure) => {
+        console.error("The starter didn’t finish", failure);
+        setError(
+          failure instanceof AppError
+            ? failure.message
+            : "That didn’t go through. Check your connection and try again.",
+        );
+      },
+    });
+  };
+  return (
+    <>
+      <Myself
+        session={session}
+        busy={start.isPending}
+        onParent={() =>
+          void navigate({ to: "/start/$choice", params: { choice: "parent" } })
+        }
+        onStart={begin}
+      />
+      <Toast message={error} onDismiss={() => setError("")} />
+    </>
+  );
+}
+
+/** `/start/school`: the school pitch, a demo to explore and a person to set
+ * up the real one with. */
+function SchoolStep({ session }: { session: AuthSession }) {
+  const { explore, demo, error, setError } = useExplore(session);
+  return (
+    <>
+      <School
+        exploring={demo.isPending && demo.variables === "school"}
+        onExplore={() => explore("school")}
+      />
+      <Toast message={error} onDismiss={() => setError("")} />
+    </>
+  );
+}
+
+/** "What year were you born?" for their own practice, and nothing else: the
+ * year is always enough. A school-age year sets where it starts (the server
+ * turns it into the nearest starting point); an adult's starts mid-scale, and
+ * practice finds their level within a few problems (Reset and Try easier
+ * cover the rest). Under 13, a parent sets AMP up, and that way in is one
+ * tap away. */
 function Myself({
   session,
   busy,
@@ -333,145 +318,58 @@ function Myself({
   const draft = useStarterDraft();
   const mine = draft.owner === session.accountId;
   const picked = mine ? draft.ownYear : null;
-  const chosenStart = mine ? draft.ownStart : null;
-  const thisYear = new Date().getFullYear();
-  const years = Array.from(
-    { length: OWN_YEARS },
-    (_, i) => thisYear - OWN_YOUNGEST - i,
-  );
-  const options = [
-    ...years.map((year) => ({ year, label: String(year) })),
-    { year: thisYear - ADULT_AGE, label: "Adult" },
-  ];
-  const young = picked !== null && !ownPracticeAllowed(picked, thisYear);
-  const adult = picked !== null && pastSchoolAge(picked);
-  const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  const current = Math.max(
-    0,
-    options.findIndex((option) => option.year === picked),
-  );
-  // A tap that opens "Where do you want to begin?" scrolls only as far as
-  // its action, so the choices above it are in view; arrowing through the
-  // years leaves the page still.
-  const where = useRef<HTMLDivElement>(null);
-  const reveal = useRef(false);
-  useEffect(() => {
-    if (!adult || !reveal.current) return;
-    reveal.current = false;
-    where.current?.nextElementSibling?.scrollIntoView({
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "nearest",
-    });
-  }, [adult]);
-  const pick = (index: number, tapped = false) => {
-    const year = options[index]!.year;
-    reveal.current = tapped && !adult && pastSchoolAge(year);
-    draft.set(session.accountId, { ownYear: year });
-    refs.current[index]?.focus();
-  };
+  const young =
+    picked !== null && !ownPracticeAllowed(picked, new Date().getFullYear());
   return (
-    <section className={styles.panel} aria-labelledby="starter-myself">
-      <h2 id="starter-myself" className={styles.question} tabIndex={-1}>
-        What year were you born?
-      </h2>
-      <p className={styles.note}>
-        Practice starts at the level for your age, then adjusts with every
-        answer.
-      </p>
-      <div
-        role="radiogroup"
-        aria-labelledby="starter-myself"
-        className={tiles.grid}
-        style={{ "--tiles-narrow": 4, "--tiles-wide": 8 } as CSSProperties}
-      >
-        {options.map((option, index) => (
-          <button
-            key={option.label}
-            ref={(node) => {
-              refs.current[index] = node;
-            }}
-            type="button"
-            role="radio"
-            aria-checked={option.year === picked}
-            tabIndex={index === current ? 0 : -1}
-            data-span={option.label === "Adult" ? "row" : undefined}
-            className={tiles.tile}
-            disabled={busy}
-            onClick={() => pick(index, true)}
-            onKeyDown={(event) => {
-              const step =
-                event.key === "ArrowRight" || event.key === "ArrowDown"
-                  ? 1
-                  : event.key === "ArrowLeft" || event.key === "ArrowUp"
-                    ? -1
-                    : 0;
-              if (!step) return;
-              event.preventDefault();
-              pick((index + step + options.length) % options.length);
+    <StepFrame
+      steps={ONE_STEP.myself}
+      index={0}
+      back="/start"
+      title="What year were you born?"
+      titleId="starter-myself"
+      hintLines={2}
+      lede="Practice starts at the level for your age, then adjusts with every answer."
+      hint={
+        young
+          ? "Under 13, a parent sets up AMP for you. Ask yours to choose “I’m a parent”."
+          : ""
+      }
+      next={
+        young ? (
+          <Button variant="primary" onClick={onParent}>
+            Set up as a parent
+          </Button>
+        ) : (
+          <Button
+            variant="primary"
+            aria-busy={busy || undefined}
+            data-waiting={(picked === null && !busy) || undefined}
+            disabled={busy || picked === null}
+            onClick={() => {
+              if (picked !== null) onStart({ birthYear: picked });
             }}
           >
-            {option.label}
-          </button>
-        ))}
-      </div>
-      {adult && (
-        <div ref={where} className={styles.where}>
-          <h2 id="starter-where" className={styles.question}>
-            Where do you want to begin?
-          </h2>
-          <p className={styles.note}>
-            Practice adjusts to you from your first answer, so any start works.
-          </p>
-          <Segmented
-            stacked
-            label="Where to begin"
-            options={adultStartOptions}
-            value={chosenStart}
-            disabled={busy}
-            onChange={(start) =>
-              draft.set(session.accountId, { ownStart: start })
-            }
-          />
-        </div>
-      )}
-      <Start
-        busy={busy}
-        ready={picked !== null && (!adult || chosenStart !== null)}
-        // The question says what is needed; a hint appears only for the
-        // second step it can't see yet.
-        missing={picked === null ? "" : "Choose where to begin."}
-        lines={2}
-        already={
-          young
-            ? {
-                label: "Set up as a parent",
-                note: "Under 13, a parent sets up AMP for you. Ask yours to choose “I’m a parent”.",
-                open: onParent,
-              }
-            : null
-        }
-        onClick={() => {
-          if (picked === null) return;
-          if (!adult) onStart({ birthYear: picked });
-          else if (chosenStart) onStart({ start: chosenStart });
-        }}
-      >
-        Start practicing
-      </Start>
-    </section>
+            Start practicing
+          </Button>
+        )
+      }
+    >
+      <OwnYearTiles
+        value={picked}
+        onChange={(year) => draft.set(session.accountId, { ownYear: year })}
+        labelledBy="starter-myself"
+        disabled={busy}
+      />
+    </StepFrame>
   );
 }
 
-/** The school pitch, inline: a demo school to explore now, and a person to set
- * up the real one with. */
+/** The school pitch: a demo school to explore now, and a person to set up
+ * the real one with. */
 function School({
-  busy,
   exploring,
   onExplore,
 }: {
-  busy: boolean;
   exploring: boolean;
   onExplore: () => void;
 }) {
@@ -482,16 +380,23 @@ function School({
   });
   const count = (value: number) => value.toLocaleString("en-US");
   return (
-    <section className={styles.panel} aria-labelledby="starter-school">
-      <h2 id="starter-school" className={styles.question} tabIndex={-1}>
-        AMP for your school
-      </h2>
-      <p className={styles.lede}>
-        Every student works at their own level in every area of math, from
-        counting to precalculus, with unlimited problems and personalized
-        workbooks. Teachers see who needs them today, and they decide every
-        grade.
-      </p>
+    <StepFrame
+      steps={ONE_STEP.school}
+      index={0}
+      back="/start"
+      title="AMP for your school"
+      lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
+      next={
+        <Button
+          variant="primary"
+          aria-busy={exploring || undefined}
+          disabled={exploring}
+          onClick={onExplore}
+        >
+          Explore a demo school
+        </Button>
+      }
+    >
       <ul className={styles.facts} aria-busy={summary.isPending || undefined}>
         {summary.data ? (
           <>
@@ -516,72 +421,13 @@ function School({
           ))
         )}
       </ul>
-      <div className={styles.actions}>
-        <Button
-          variant="primary"
-          aria-busy={exploring || undefined}
-          disabled={busy}
-          onClick={onExplore}
-        >
-          Explore a demo school
-        </Button>
-        <a href="#starter-talk" className={buttonClass("secondary")}>
-          Talk to us
-        </a>
-      </div>
-      <div id="starter-talk" className={styles.talk}>
-        <h3>Talk to us</h3>
+      <section className={styles.talk} aria-labelledby="starter-talk">
+        <h2 id="starter-talk">Talk to us</h2>
         <p className={styles.note}>
           Tell us about your school, and we’ll set AMP up with you.
         </p>
         <TalkToUs />
-      </div>
-    </section>
-  );
-}
-
-/** The one action under a question. Until it can succeed it waits, with the
- * reason beneath in space that is always kept. */
-function Start({
-  busy,
-  ready,
-  missing = "",
-  already,
-  lines = 1,
-  onClick,
-  children,
-}: {
-  busy: boolean;
-  ready: boolean;
-  missing?: string;
-  /** Everyone named is already there, or the answer leads elsewhere: that
-   * opens instead, with its own label (by default, "Open your class"). */
-  already?: { note: string; open: () => void; label?: string } | null;
-  /** Lines the reason keeps, so a longer one doesn't move anything. */
-  lines?: 1 | 2;
-  onClick: () => void;
-  children: ReactNode;
-}) {
-  return (
-    <div className={styles.go}>
-      <Button
-        variant="primary"
-        className={styles.goButton}
-        // Waits faintly in its place until the answer is whole, then comes up.
-        data-waiting={(!ready && !already && !busy) || undefined}
-        disabled={busy || (!ready && !already)}
-        aria-busy={busy || undefined}
-        onClick={already ? already.open : onClick}
-      >
-        {already ? (already.label ?? "Open your class") : children}
-      </Button>
-      <p
-        className={styles.hint}
-        data-lines={lines === 2 ? 2 : undefined}
-        aria-live="polite"
-      >
-        {already ? already.note : ready ? "" : missing}
-      </p>
-    </div>
+      </section>
+    </StepFrame>
   );
 }

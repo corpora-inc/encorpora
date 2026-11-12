@@ -47,6 +47,7 @@ import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { choose as chooseOption } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -294,10 +295,7 @@ async function familyThenSchool(
   );
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   await settle(page, 300);
   const account = await accountOf(context);
   const family = await familyClass(account);

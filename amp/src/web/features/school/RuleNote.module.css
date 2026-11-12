@@ -1,0 +1,33 @@
+.rule {
+  max-width: 60ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.45;
+}
+.rule summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  color: var(--color-muted-text);
+  cursor: pointer;
+  list-style: none;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}
+.rule summary::-webkit-details-marker {
+  display: none;
+}
+.rule summary:hover {
+  color: var(--color-on-surface);
+}
+.rule summary:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.rule p {
+  padding-bottom: var(--space-2);
+  text-wrap: pretty;
+}

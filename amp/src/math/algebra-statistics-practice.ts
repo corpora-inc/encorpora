@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -865,7 +866,7 @@ function relativeFrequency(r: Random): Case {
       explanation: [
         conditional
           ? `This is a conditional percent: the whole is only the ${frame === "row" ? noun : `${c.who} who ${phrase}`}, ${den} ${c.who}.`
-          : `This is a ${kind} percent: the whole is everyone surveyed, ${n} ${c.who}.`,
+          : `This is ${withArticle(kind)} percent: the whole is everyone surveyed, ${n} ${c.who}.`,
         `${cap(what)}.`,
         `$${num} \\div ${den} = ${t(num / den)} = ${p}\\%$.`,
       ],

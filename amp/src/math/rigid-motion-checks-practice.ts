@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -501,7 +502,7 @@ function measureVerify(seed: string, salt: string): GeneratedProblem {
     const word = motionNoun[c];
     const claims: Claim[] = [
       {
-        label: `$A'B' = AB$. A ${word} keeps the length of every segment.`,
+        label: `$A'B' = AB$. ${withArticle(word, true)} keeps the length of every segment.`,
         correct: true,
       },
       {
@@ -786,7 +787,7 @@ function measureVerify(seed: string, salt: string): GeneratedProblem {
       `The square of a side length is (change in $x$)$^2$ + (change in $y$)$^2$, by the Pythagorean theorem: in a right triangle, the squares of the two legs add up to the square of the longest side.`,
       `${sq("A'", "B'", A1, B1)}, ${sq("B'", "C'", B1, C1)} and ${sq("A'", "C'", A1, C1)}.`,
       `$${ab} + ${bc} = ${ac}$. The converse of the Pythagorean theorem says that when the squares of two sides add up to the square of the third, the angle across from the third side is a right angle. So $\\angle A'B'C'$ is a right angle.`,
-      `The right angle at $B$ went to a right angle at $B'$. A ${motionNoun[c]} keeps every angle's measure; it does not add its own turn to the angle.`,
+      `The right angle at $B$ went to a right angle at $B'$. ${withArticle(motionNoun[c], true)} keeps every angle's measure; it does not add its own turn to the angle.`,
     ],
     variant: `${check}-${c}`,
     axes,
@@ -980,21 +981,21 @@ function propertyClaims(seed: string, salt: string): GeneratedProblem {
   const why = (s: Statement): string => {
     switch (s.row) {
       case 1:
-        return `${s.label} is true: a ${word} keeps every length, and $AD = ${lengthAD}$ (from $A$ to $D$ go ${legsText(A0, D0)}).`;
+        return `${s.label} is true: ${withArticle(word)} keeps every length, and $AD = ${lengthAD}$ (from $A$ to $D$ go ${legsText(A0, D0)}).`;
       case 2:
-        return `${s.label} is false: ${AD[0] !== 0 && AD[1] !== 0 ? `${taxicab} adds the two legs; by the Pythagorean theorem $A'D' = ${lengthAD}$.` : `$A'B' = AB = ${m1}$, and a ${word} never changes a length.`}`;
+        return `${s.label} is false: ${AD[0] !== 0 && AD[1] !== 0 ? `${taxicab} adds the two legs; by the Pythagorean theorem $A'D' = ${lengthAD}$.` : `$A'B' = AB = ${m1}$, and ${withArticle(word)} never changes a length.`}`;
       case 3:
-        return `${s.label} is true: a ${word} keeps every angle's measure.`;
+        return `${s.label} is true: ${withArticle(word)} keeps every angle's measure.`;
       case 4:
         return s.label.includes("B'C'D'")
           ? `${s.label} is false: that is the angle at $C'$, not at $B'$. Because $AB \\parallel DC$, the angles at $B$ and $C$ add to $180^\\circ$, so $m\\angle B'C'D' = ${180 - angle}^\\circ$.`
-          : `${s.label} is false: a ${word} does not add its own turn to an angle or open it the other way. The angle at $B'$ still measures $${angle}^\\circ$.`;
+          : `${s.label} is false: ${withArticle(word)} does not add its own turn to an angle or open it the other way. The angle at $B'$ still measures $${angle}^\\circ$.`;
       case 5:
-        return `${s.label} is true: $AB$ and $DC$ are parallel, and a ${word} keeps parallel lines parallel to each other.`;
+        return `${s.label} is true: $AB$ and $DC$ are parallel, and ${withArticle(word)} keeps parallel lines parallel to each other.`;
       case 6:
         return s.truth
           ? `${s.label} is true: $ABCD$ is a parallelogram, so $AD \\parallel BC$, and that pair stays parallel.`
-          : `${s.label} is false: $AD$ and $BC$ were not parallel (only one pair of sides of $ABCD$ is parallel), and a ${word} does not make them parallel.`;
+          : `${s.label} is false: $AD$ and $BC$ were not parallel (only one pair of sides of $ABCD$ is parallel), and ${withArticle(word)} does not make them parallel.`;
       case 7:
         return s.truth
           ? `${s.label} is true here: $AB$ is horizontal, and this ${word} leaves $A'B'$ horizontal too.`
@@ -1004,7 +1005,7 @@ function propertyClaims(seed: string, salt: string): GeneratedProblem {
           ? `${s.label} is true: only a reflection reverses the order the corners go around.`
           : `${s.label} is false: a reflection reverses the order, so the letters go around the other way.`;
       default:
-        return `${s.label} is true: a ${word} keeps every length and angle, so the area stays the same.`;
+        return `${s.label} is true: ${withArticle(word)} keeps every length and angle, so the area stays the same.`;
     }
   };
   return finish(id, seed, {
@@ -1012,7 +1013,7 @@ function propertyClaims(seed: string, salt: string): GeneratedProblem {
     response,
     answer,
     figure,
-    hint: `A ${word} cannot change a length, an angle's measure or whether two lines are parallel. Check every other claim with the coordinates: for example, find $A'D'$ from $A'(${A1[0]}, ${A1[1]})$ and $D'$.`,
+    hint: `${withArticle(word, true)} cannot change a length, an angle's measure or whether two lines are parallel. Check every other claim with the coordinates: for example, find $A'D'$ from $A'(${A1[0]}, ${A1[1]})$ and $D'$.`,
     explanation: [
       `A rigid motion, such as this ${word}, keeps every length, every angle's measure and every pair of parallel lines. Slopes, positions and the order the corners go around can change, so check those with the coordinates.`,
       ...all.map(why),

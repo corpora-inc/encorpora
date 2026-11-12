@@ -1,20 +1,21 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Navigate, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import type { AdultStart } from "../../../learning/starting-point";
+import { ownPracticeAllowed } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { sessionOptions } from "../../lib/query";
 import { Button } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
-import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
+import { OwnYearTiles } from "../onboarding/OwnYearTiles";
 import { useStartOwnPractice } from "./api";
-import { adultStartOptions } from "./start-options";
 import styles from "../onboarding/Start.module.css";
 
-/** `/me/start`: an adult who teaches, or whose child practices, chooses where
- * to begin, then goes straight into practice. */
+/** `/me/start`: an adult who teaches, or whose child practices, gives the
+ * year they were born and goes straight into practice. The year is always
+ * enough: an adult's starts mid-scale and practice finds the level within a
+ * few problems. */
 export function OwnStartScreen() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   return session ? <StartCard session={session} /> : <Navigate to="/sign-in" />;
@@ -22,8 +23,10 @@ export function OwnStartScreen() {
 
 function StartCard({ session }: { session: AuthSession }) {
   const navigate = useNavigate();
-  const [choice, setChoice] = useState<AdultStart | null>(null);
+  const [year, setYear] = useState<number | null>(null);
   const start = useStartOwnPractice(session);
+  const young =
+    year !== null && !ownPracticeAllowed(year, new Date().getFullYear());
   const failure =
     start.error instanceof AppError
       ? start.error.code === "adult_practice_unavailable"
@@ -37,15 +40,16 @@ function StartCard({ session }: { session: AuthSession }) {
       <Toast message={failure} onDismiss={() => start.reset()} takeFocus />
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />
-        <h1>Where do you want to begin?</h1>
+        <h1 id="own-start-year">What year were you born?</h1>
         <p>
-          Practice adjusts to you from your first answer, so any start works.
+          Practice starts at the level for your age, then adjusts with every
+          answer.
         </p>
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            if (!choice || start.isPending) return;
-            start.mutate(choice, {
+            if (year === null || young || start.isPending) return;
+            start.mutate(year, {
               onSuccess: () =>
                 void navigate({
                   to: "/$",
@@ -57,20 +61,21 @@ function StartCard({ session }: { session: AuthSession }) {
             });
           }}
         >
-          <Segmented
-            stacked
-            label="Where to begin"
-            options={adultStartOptions}
-            value={choice}
-            onChange={(value) => {
+          <OwnYearTiles
+            value={year}
+            onChange={(next) => {
               start.reset();
-              setChoice(value);
+              setYear(next);
             }}
+            labelledBy="own-start-year"
             disabled={start.isPending}
           />
+          <p className={styles.hint} aria-live="polite">
+            {young ? "Own practice starts at 13." : ""}
+          </p>
           <Button
             variant="primary"
-            disabled={!choice}
+            disabled={year === null || young}
             aria-busy={start.isPending || undefined}
           >
             Start practicing

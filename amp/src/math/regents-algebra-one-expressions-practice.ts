@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -202,7 +203,7 @@ export const negativeMonomialPower = chainFamily({
       explanation: [
         `An exponent, the small raised number, counts repeated multiplication. A power outside brackets applies to every factor inside: the sign, the number and the variable.`,
         `Raise each factor to the power ${m.k}: $(-${m.c})^{${m.k}}\\cdot(${v}^{${m.m}})^{${m.k}}$.`,
-        `A negative number multiplied by itself an ${m.k % 2 ? "odd" : "even"} number of times is ${sign < 0 ? "negative" : "positive"}, because the minus signs ${m.k % 2 ? "leave one unpaired" : "cancel in pairs"}. So $(-${m.c})^{${m.k}}=${sign * coef}$.`,
+        `A negative number multiplied by itself ${withArticle(m.k % 2 ? "odd" : "even")} number of times is ${sign < 0 ? "negative" : "positive"}, because the minus signs ${m.k % 2 ? "leave one unpaired" : "cancel in pairs"}. So $(-${m.c})^{${m.k}}=${sign * coef}$.`,
         `A power of a power multiplies the exponents: ${m.k} groups of ${m.m} factors of $${v}$ make ${m.m * m.k}. So $(${v}^{${m.m}})^{${m.k}}=${v}^{${m.m * m.k}}$.`,
         `The result is $${term(sign * coef, m.m * m.k)}$.`,
       ],
@@ -269,7 +270,7 @@ export const combineUnlikeRadicals = chainFamily({
       hint: `Look for a perfect square factor in ${m.p * m.s * m.s}: simplify $${rad(m.p * m.s * m.s)}$ so it has the same radicand as another term, then add only the like radicals.`,
       explanation: [
         `Square roots can be added only when the numbers under the root, the radicands, are the same. Then add the numbers in front, like adding $3x + 2x$.`,
-        `${m.p * m.s * m.s} has a perfect square factor: ${m.p * m.s * m.s} = ${m.s * m.s} × ${m.p}. A square root of a product splits into a product of roots.`,
+        `${m.p * m.s * m.s} has a perfect square factor: $${m.p * m.s * m.s} = ${m.s * m.s} × ${m.p}$. A square root of a product splits into a product of roots.`,
         m.c === 1
           ? `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$.`
           : `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$, and $${third} = ${m.c * m.s}${rad(m.p)}$.`,
@@ -309,8 +310,7 @@ const rqTex = (q: RQ) => {
   return q.n < 0 ? `-${body}` : body;
 };
 const sqLabel = (h: number, q: RQ) => {
-  const left =
-    h === 0 ? "x^2" : `(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2`;
+  const left = h === 0 ? "x^2" : `(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2`;
   return `$${left} = ${rqTex(q)}$`;
 };
 /** Same real solution set for two completed squares. A negative right side
@@ -339,7 +339,7 @@ function nonmonicModel(r: R): CsModel {
             if (c === 0 || (c % aAbs === 0) === fraction) continue;
             const qNum = a * p * p - c;
             // q = qNum/a is negative when the two factors have opposite signs.
-            const qNeg = qNum !== 0 && (qNum < 0) !== (a < 0);
+            const qNeg = qNum !== 0 && qNum < 0 !== a < 0;
             if (qNum === 0 || qNeg !== negative) continue;
             feasible.push({ a, p, c });
           }
@@ -403,8 +403,7 @@ function nonmonicSurface(
   const correct = sqLabel(p, correctQ);
   const seen = new Set([correct]);
   const wrong = spec.filter((item) => {
-    if (rqNeg(item.q) || sameRealSet(p, correctQ, item.h, item.q))
-      return false;
+    if (rqNeg(item.q) || sameRealSet(p, correctQ, item.h, item.q)) return false;
     if (item.q.n === 0 && a * item.h * item.h - b * item.h + c === 0)
       return false;
     const label = sqLabel(item.h, item.q);
@@ -414,9 +413,7 @@ function nonmonicSurface(
   });
   if (wrong.length < 3) fail();
   const eq =
-    form === "zero-form"
-      ? `${quad(a, b, c)} = 0`
-      : `${quad(a, b, 0)} = ${-c}`;
+    form === "zero-form" ? `${quad(a, b, c)} = 0` : `${quad(a, b, 0)} = ${-c}`;
   const dividedB = 2 * p;
   const corner = p * p;
   const moved = rq(-c, a);

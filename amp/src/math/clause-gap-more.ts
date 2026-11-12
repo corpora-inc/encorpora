@@ -260,9 +260,9 @@ function braces(ctx: ClauseCtx) {
     explanation: [
       "Parentheses, brackets and braces all mean the same thing: make this one number. Three shapes so you can see which group is inside which.",
       `(${left}+${right}) is ${left + right}.`,
-      `[${times}\\times${left + right}] is ${times * (left + right)}.`,
-      `\\{${outer}-${times * (left + right)}\\} is ${outer - times * (left + right)}.`,
-      `${factor}\\times${outer - times * (left + right)} = ${value}. Innermost group first, then out one shape at a time.`,
+      `$[${times}\\times${left + right}]$ is ${times * (left + right)}.`,
+      `$\\{${outer}-${times * (left + right)}\\}$ is ${outer - times * (left + right)}.`,
+      `$${factor}\\times${outer - times * (left + right)} = ${value}$. Innermost group first, then out one shape at a time.`,
     ],
   });
 }

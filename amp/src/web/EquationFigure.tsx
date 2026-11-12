@@ -1,3 +1,4 @@
+import { PanelFrame } from "./PanelFrame";
 import React from "react";
 import type { SemanticFigure } from "../math/contracts.js";
 
@@ -270,6 +271,15 @@ function InequalityLinesFigure({ figure: f }: { figure: Lines }) {
             data-included={l.included}
             data-relation={relation(l)}
           >
+            {labeled && (
+              <PanelFrame
+                label={l.label}
+                x={2}
+                y={row * ROW + 2}
+                width={356}
+                height={ROW - 2}
+              />
+            )}
             {l.label && (
               <text
                 x="14"

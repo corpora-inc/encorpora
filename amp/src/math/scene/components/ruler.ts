@@ -1,3 +1,4 @@
+import { withArticle } from "../../agreement";
 import { z } from "zod";
 import { base, label } from "../base";
 import { registerComponent, type Prim } from "../layout";
@@ -236,9 +237,10 @@ registerComponent("ruler", {
   },
   describe(r) {
     const unit = r.unit === "in" ? "inch" : "centimeter";
-    const ruler = `A ${r.style === "tape" ? "measuring tape" : "ruler"} numbered from 0 to ${r.length} ${unit === "inch" ? "inches" : "centimeters"}, marked in ${partName(r.parts, r.unit)}.`;
+    const ruler = `${withArticle(r.style === "tape" ? "measuring tape" : "ruler", true)} numbered from 0 to ${r.length} ${unit === "inch" ? "inches" : "centimeters"}, marked in ${partName(r.parts, r.unit)}.`;
     if (!r.object) return ruler;
-    const what = r.object.label ?? `A ${r.object.shape ?? "bar"}`;
+    const what =
+      r.object.label ?? `${withArticle(r.object.shape ?? "bar", true)}`;
     // The description gives the ends as tick counts, never the length.
     const at = (k: number) =>
       !Number.isInteger(k)

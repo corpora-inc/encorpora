@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
@@ -408,7 +409,7 @@ function rectangleCase(r: Random): Case {
     answer: String(value),
     explanation: [
       `Side $AB$ joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the $y$-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
-      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
+      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between $${n(y1)}$ and $${n(y2)}$. ${h.text}`,
       area
         ? `The rectangle is ${w.gap} units wide and ${h.gap} units tall. Area = width × height = ${w.gap} × ${h.gap} = ${value} square units.`
         : `Opposite sides of a rectangle are equal, so the perimeter is ${w.gap} + ${h.gap} + ${w.gap} + ${h.gap} = 2 × (${w.gap} + ${h.gap}) = ${value} units.`,
@@ -1005,7 +1006,7 @@ function dilationImageCase(r: Random): Case {
     if ((p.x * den) % num === 0 && (p.y * den) % num === 0)
       wrong.push([
         { x: (p.x * den) / num, y: (p.y * den) / num },
-        `That divides by ${kText}. A dilation multiplies each coordinate by the scale factor.`,
+        `That divides by $${kText}$. A dilation multiplies each coordinate by the scale factor.`,
       ]);
     if (den === 1)
       wrong.push([
@@ -1241,7 +1242,7 @@ function scaleCase(r: Random): Case {
     return {
       prompt: map
         ? `On a map, ${scaleText}. Two towns are ${half(drawn)} ${many} apart on the map. What is the actual distance between them, in ${actualMany}?`
-        : `On a ${s.what}, ${scaleText}. ${sub.length[0]!.toUpperCase()}${sub.length.slice(1)} is ${half(drawn)} ${many} long on the plan. What is its actual length, in ${actualMany}?`,
+        : `On ${withArticle(s.what)}, ${scaleText}. ${sub.length[0]!.toUpperCase()}${sub.length.slice(1)} is ${half(drawn)} ${many} long on the plan. What is its actual length, in ${actualMany}?`,
       answer: actual,
       explanation: [
         `The scale says ${scaleText}, so each ${one} on the ${s.what} stands for ${k} ${actualMany}. Multiply the length on the ${s.what} by ${k}.`,
@@ -1262,7 +1263,7 @@ function scaleCase(r: Random): Case {
     return {
       prompt: map
         ? `On a map, ${scaleText}. Two towns are ${actual} ${actualMany} apart. How far apart are they on the map, in ${many}?`
-        : `On a ${s.what}, ${scaleText}. ${sub.length[0]!.toUpperCase()}${sub.length.slice(1)} is actually ${actual} ${actualMany} long. How long is it on the plan, in ${many}?`,
+        : `On ${withArticle(s.what)}, ${scaleText}. ${sub.length[0]!.toUpperCase()}${sub.length.slice(1)} is actually ${actual} ${actualMany} long. How long is it on the plan, in ${many}?`,
       answer: drawn,
       explanation: [
         `The scale says ${scaleText}. Going from an actual length back to the ${s.what}, divide by ${k}, which is the same as multiplying by ${back}.`,
@@ -1283,7 +1284,7 @@ function scaleCase(r: Random): Case {
       ah = decimal(h2 * a, 2 * d);
     const region = sub.region.replace(/^a /, "");
     return {
-      prompt: `On a ${s.what}, ${scaleText}. A rectangular ${region} is ${half(w2 / 2)} ${many} by ${half(h2 / 2)} ${many} on the ${map ? "map" : "plan"}. What is its actual area, in ${actualSquared}?`,
+      prompt: `On ${withArticle(s.what)}, ${scaleText}. A rectangular ${region} is ${half(w2 / 2)} ${many} by ${half(h2 / 2)} ${many} on the ${map ? "map" : "plan"}. What is its actual area, in ${actualSquared}?`,
       answer: area,
       explanation: [
         `Convert each side with the scale by multiplying by ${k}: ${half(w2 / 2)} × ${k} = ${aw} and ${half(h2 / 2)} × ${k} = ${ah}. The ${region} is ${aw} ${actualMany} by ${ah} ${actualMany}.`,
@@ -1299,7 +1300,7 @@ function scaleCase(r: Random): Case {
   const area = decimal(drawnArea * a * a, d * d);
   const region = `${sub.region[0]!.toUpperCase()}${sub.region.slice(1)}`;
   return {
-    prompt: `On a ${s.what}, ${scaleText}. ${region} covers ${drawnArea} ${squared} on the ${map ? "map" : "plan"}. What is its actual area, in ${actualSquared}?`,
+    prompt: `On ${withArticle(s.what)}, ${scaleText}. ${region} covers ${drawnArea} ${squared} on the ${map ? "map" : "plan"}. What is its actual area, in ${actualSquared}?`,
     answer: area,
     explanation: [
       `A square 1 ${one} on each side on the ${s.what} is ${k} ${actualMany} on each side in reality, so its actual area is ${k} × ${k} = ${k2} ${actualSquared}.`,

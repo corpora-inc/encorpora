@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { count as plural, article as numberArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
@@ -831,7 +832,7 @@ function decimalMoneyChange(r: Random): Built {
     const thing = pick(r, THINGS)[0];
     return {
       variant,
-      prompt: `${name} pays for a ${thing} with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill and gets ${dl(bill - price)} dollars in change. How many dollars did the ${thing} cost? ${unit}`,
+      prompt: `${name} pays for ${withArticle(thing)} with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill and gets ${dl(bill - price)} dollars in change. How many dollars did the ${thing} cost? ${unit}`,
       answer: dl(price),
       responseLabel: label,
       hint: `The price and the change together make the amount paid. To find the missing price, take the change away from the ${bill / 100} dollars paid.`,

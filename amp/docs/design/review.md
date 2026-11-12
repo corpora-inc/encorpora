@@ -11,7 +11,7 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 | Pitch `/` | guest | done | prices show in the preview; "100 free problems and 5 workbooks" |
 | Sign in, sign up | guest | done | "Password" label; top-aligned on phones |
 | What brings you to AMP? `/start` | signed-up | done | tiles hover alike; birth years as tiles, the chosen one filled; the action waits faintly |
-| Myself, Parent, Tutor steps | signed-up | merged | guided setup and the adult start merged; element pass next |
+| Myself, Parent, Tutor steps | signed-up | done | the birth year is always enough (Myself and /me/start, one year grid); no level chooser anywhere; under 13 to a parent |
 | Schools page `/schools` | guest | open | |
 
 ## My practice (adult)
@@ -19,7 +19,7 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 | Screen | Person | Status | Notes |
 |---|---|---|---|
 | Overview `/me` | adult-new, adult-day1, adult-3wk | open | merged (centred, compact, one Practice); day 0 still a two-column block, not the centred hero |
-| Pathways | adult-day1, adult-3wk | done | skills, no own name, plain counts, level rows from level-range |
+| Pathways | adult-day1, adult-3wk | done | skills, no own name, plain counts, level rows from level-range; the camera moves only when it helps; one search; a chosen skill brings the phone's map back; a short lesson has its own address (?lesson=) |
 | Inventory | adult-new, adult-3wk | done | flat rows, counts follow filters, plurals; day 0 is a centred hero |
 | Practice | adult-day1 | merged | edge to edge; figure problems top-aligned on phones |
 | Allowance pause and Continue | adult-paused | done | recap and included items; plain frame; specific errors |
@@ -55,7 +55,7 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 |---|---|---|---|
 | Teacher demo lands on Today | teacher | done | was a list of one class |
 | Today | tutor, teacher | merged | the feed, as the product shot; title is the class |
-| Map, Grades, Time, Workbooks, Students, Settings | teacher | open | merged; element pass to follow |
+| Map, Grades, Time, Workbooks, Students, Settings | teacher-class | done | Students/People titles match their tabs; Final grade in the field style; an unknown address says "This page isn't here" in the class frame |
 | Start class board | teacher | open | |
 
 ## School
@@ -74,5 +74,8 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 
 | Screen | Person | Status | Notes |
 |---|---|---|---|
-| Drawer and place switcher | adult-3wk, family, school | done | places only; learners as quiet rows; no own name or email |
+| Drawer and place switcher | adult-3wk, family, school | done | places only; learners as quiet rows; no own name or email; exactly one current item (no router prefix match); hover fills only where a pointer hovers |
+| Smoothness (every route) | adult-3wk, family | done | preload on intent and on drawer open; no wave under a second; route loaders for Pathways, Inventory and class Settings; `npm run test:smooth-load-ui`: 8 routes, 0 changes after the wave, CLS 0 |
+| Workbooks for an adult | adult-3wk | done | a drawer item under Practice; its pages have the plain frame; the one current item there |
+| Pathways search | adult-3wk | done | results select their skill (found item first in the panel); no phone overflow; formula-safe snippets; semantic search live in the preview |
 | Generic errors | all | done | `lib/api.ts` names what failed |

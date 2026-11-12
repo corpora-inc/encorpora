@@ -939,9 +939,17 @@ export function generateProblem(
   const meta = templateById.get(templateId);
   const at = version ?? meta?.version;
   const run = () => {
-    const problem = stripVersionGatedAxes(
+    const drawn = stripVersionGatedAxes(
       polishProblem(generateRawProblem(templateId, seed)),
     );
+    // The record is the version this problem was generated at, so
+    // `generateProblem(templateId, seed, problem.public.templateVersion)`
+    // reproduces it. Generators' own stamps (mostly a literal 1) are not
+    // that version and are overwritten here.
+    const problem =
+      at == null || drawn.public.templateVersion === at
+        ? drawn
+        : { ...drawn, public: { ...drawn.public, templateVersion: at } };
     if (
       !meta?.previousSkillId ||
       at == null ||

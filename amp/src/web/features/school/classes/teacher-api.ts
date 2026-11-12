@@ -14,11 +14,16 @@ import {
   studentTimeResponse,
   timeResponse,
   todayResponse,
+  workReplayResponse,
   type EvidenceResponse,
   type GradebookResponse,
   type GradebookColumn,
   type TimePeriod,
 } from "../../../../schools/teacher-contracts";
+import {
+  gradeCurveSchema,
+  type GradeCurve,
+} from "../../../../schools/grade-curve";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
 import { request } from "../../../lib/api";
@@ -128,6 +133,27 @@ export const reportCardsOptions = (
       reportCardsResponse,
     ),
   });
+/** One answer replayed (`work-replay.ts`), under the student's record so a
+ * change to the record refreshes it too. `skill` narrows Previous and Next. */
+export const workReplayOptions = (
+  session: Session,
+  student: string,
+  attempt: string,
+  skill?: string,
+) =>
+  queryOptions({
+    queryKey: [...recordKey(session, student), "work", attempt, skill ?? null],
+    enabled: !!session,
+    // An answer never changes once given.
+    staleTime: Infinity,
+    queryFn: read(
+      session,
+      `/school/students/${student}/work/${encodeURIComponent(attempt)}${
+        skill ? `?skill=${encodeURIComponent(skill)}` : ""
+      }`,
+      workReplayResponse,
+    ),
+  });
 export const studentRecordOptions = (session: Session, student: string) =>
   queryOptions({
     queryKey: recordKey(session, student),
@@ -212,6 +238,20 @@ export function useSetTarget(session: Session, place: Place) {
         `${CLASS(place)}/target`,
         z.object({ minutes: z.number().nullable(), locked: z.boolean() }),
         { token: session?.token, body: { minutes } },
+      ),
+    onSettled: () => refresh(),
+  });
+}
+/** Sets the teacher's curve for one term, or null for the standard scale. The
+ * whole class refetches: every suggested range moves with it. */
+export function useSetCurve(session: Session, place: Place) {
+  const refresh = useClassRefresh(session, place);
+  return useMutation({
+    mutationFn: (input: { term: string; curve: GradeCurve | null }) =>
+      request(
+        `${CLASS(place)}/gradebook/curve`,
+        z.object({ curve: gradeCurveSchema.nullable() }),
+        { token: session?.token, body: input },
       ),
     onSettled: () => refresh(),
   });

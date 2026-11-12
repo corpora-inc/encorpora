@@ -11,8 +11,7 @@ import {
   type SettingsScope,
 } from "./settings.js";
 import { STUDENT_NAME } from "./sign-in.js";
-import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
-import { startLevelSql } from "./start-level.js";
+import { growthArraySql } from "./growth.js";
 import { shownTeachers } from "./teacher-line.js";
 
 /** Standings read from `amp_skill_days` and `amp_level_days`, independent work
@@ -183,10 +182,47 @@ const shiftDays = (day: string, days: number) =>
     .toISOString()
     .slice(0, 10);
 
+/** Where a learner's term growth starts: the term's start, or the day they
+ * joined as a student if later. SQL expressions in, a date out. */
+const termStartSql = (learner: string, from: string, to: string) =>
+  `GREATEST(${from}::date, COALESCE((
+     SELECT min(r.begin_on) FROM amp_org_roles r
+     JOIN amp_people p ON p.id=r.person_id
+     WHERE p.learner_id=${learner} AND r.role='student' AND r.begin_on<=${to}::date
+   ), ${from}::date))`;
+
+/** The term a class's boards read today (see `termFor`). */
+export async function classTerm(db: Database, classId: string): Promise<Term> {
+  const klass = (
+    await db.query(
+      "SELECT id,name,org_id,session_id,grading_kind,ARRAY[]::text[] AS path FROM amp_classes WHERE id=$1",
+      [classId],
+    )
+  ).rows[0] as StudentClass;
+  return termFor(db, klass);
+}
+
+/** The first day of a learner's growth window on a class's term board: the
+ * term's start, or the day they joined as a student if later (`measured`). */
+export async function growthWindowStart(
+  db: Database,
+  learnerId: string,
+  classId: string,
+): Promise<string> {
+  const term = await classTerm(db, classId);
+  return (
+    await db.query(`SELECT ${termStartSql("$1", "$2", "$3")}::text AS day`, [
+      learnerId,
+      term.from,
+      term.to,
+    ])
+  ).rows[0].day as string;
+}
+
 /** One number per student, for students with something to show. Growth is a
  * hundredth of a grade per point, so it reads as a whole number and says nothing
- * of the level itself. A term's growth starts where the teacher's does
- * (`start-level.ts`); a week's runs from the last settled level before it. */
+ * of the level itself. A term and a week both use the shared pace (`growth.ts`)
+ * over that window. No settled pace is absent, not a zero. */
 async function measured(
   db: Database,
   roster: Roster[],
@@ -229,29 +265,21 @@ async function measured(
   const worked = new Set(independent.rows.map((row) => row.learner_id));
   const ends = await db.query(
     `SELECT l.learner_id,
-       (SELECT d.overall_level::float8 FROM amp_level_days d
-        WHERE d.learner_id=l.learner_id AND d.day<=$3::date ORDER BY d.day DESC LIMIT 1) AS latest,
-       ${
-         span === "term"
-           ? startLevelSql({
-               select: "d.overall_level::float8",
-               learner: "l.learner_id",
-               from: "$2::date",
-               to: "$3::date",
-             })
-           : `COALESCE(
-         (SELECT d.overall_level::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day<$2::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS} ORDER BY d.day DESC LIMIT 1),
-         ${startLevelSql({ select: "d.overall_level::float8", learner: "l.learner_id", from: "$2::date", to: "$3::date" })}
-       )`
-       } AS start
+       ${growthArraySql({
+         learner: "l.learner_id",
+         from:
+           span === "term"
+             ? termStartSql("l.learner_id", "$2", "$3")
+             : "$2::date",
+         to: "$3::date",
+       })} AS growth
      FROM unnest($1::text[]) AS l(learner_id)`,
     [[...worked], from, to],
   );
   for (const row of ends.rows) {
-    // Still placing: no start, so nothing to show rather than a zero.
-    if (row.start === null || row.latest === null) continue;
-    const points = Math.round((row.latest - row.start) * 100);
+    const pair = row.growth as [number, number] | null;
+    if (!pair) continue;
+    const points = Math.round(Number(pair[0]) * 100);
     if (points > 0) values.set(person.get(row.learner_id)!, points);
   }
   return values;

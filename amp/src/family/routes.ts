@@ -8,6 +8,7 @@ import { optionalChildName } from "../learning/nickname.js";
 import { accountSummary } from "../account/repository.js";
 import { addClassStudent, startPlace } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
+import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import {
   createProfile,
   deleteProfile,
@@ -238,7 +239,7 @@ export async function registerFamilyRoutes(
     );
     scope.post(
       "/api/v1/me/practice/activity",
-      { bodyLimit: 4096 },
+      { bodyLimit: HEARTBEAT_BODY_LIMIT },
       async (request, reply) => {
         const account = await options.authenticate(request);
         if (!(await recordAdultActivity(options.pool, account, request.body)))

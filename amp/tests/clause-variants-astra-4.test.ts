@@ -223,7 +223,25 @@ test("legacy response clients receive original surfaces; capable clients receive
         [],
       );
       assert.equal(old.variant?.axes?.clause, undefined, id);
-      assert.deepEqual(old, generateProblem(id, seed, 1), id);
+      // The original surface, recorded at the version it was generated at:
+      // version 1 when a clause draw fell back, else the current version.
+      const original = generateProblem(id, seed, 1);
+      assert.deepEqual(
+        old,
+        {
+          ...original,
+          public: {
+            ...original.public,
+            templateVersion: old.public.templateVersion,
+          },
+        },
+        id,
+      );
+      assert.deepEqual(
+        generateProblem(id, seed, old.public.templateVersion),
+        old,
+        id,
+      );
       const current = generateProblemFor(
         id,
         seed,

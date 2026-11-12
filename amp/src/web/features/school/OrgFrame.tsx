@@ -8,6 +8,7 @@ import { Loading } from "../../ui/Loading";
 import { currentSession, orgOptions } from "./api";
 import type { SchoolCrumb } from "./SchoolFrame";
 import frame from "./SchoolFrame.module.css";
+import { SubTabsShown } from "./parts";
 
 export type NavId =
   | "overview"
@@ -94,7 +95,7 @@ export function OrgFrame({
   const related =
     nav === "classes" || nav === "students" || nav === "import"
       ? [
-          ["classes", "Classes", "classes.read"],
+          ["classes", "All classes", "classes.read"],
           ...(org.data.kind !== "family"
             ? [["students", "Students", "students.read"]]
             : []),
@@ -104,18 +105,19 @@ export function OrgFrame({
         ]
       : nav === "staff" || nav === "sign-in-help"
         ? [
-            ["staff", "Staff", "staff.read"],
+            ["staff", "All staff", "staff.read"],
             ["sign-in-help", "Sign-in help", "staff.read"],
           ]
         : nav === "settings" || nav === "privacy" || nav === "integrations"
           ? [
-              ["settings", "Settings", "classes.read"],
+              ["settings", "General", "classes.read"],
               ["privacy", "Privacy and data", "privacy.read"],
               ["integrations", "Integrations", "integrations.read"],
             ]
           : [];
   // The group's screens as one row of sub-tabs, the open one marked, so the
-  // row never changes shape between them.
+  // row never changes shape between them. The top tab names the area; the
+  // first sub-tab names its own page, never the area again.
   const links = related.filter(([, , permission]) =>
     can.has(permission as never),
   );
@@ -146,6 +148,10 @@ export function OrgFrame({
               key={path}
               to="/$"
               params={{ _splat: `school/${orgId}/${path}` }}
+              // One current sub-tab, decided here: never the router's
+              // prefix match as well.
+              activeOptions={{ exact: true, includeSearch: false }}
+              activeProps={{}}
               aria-current={
                 pathname.replace(/\/+$/, "") === `/school/${orgId}/${path}`
                   ? "page"
@@ -157,7 +163,9 @@ export function OrgFrame({
           ))}
         </nav>
       )}
-      {children}
+      <SubTabsShown.Provider value={links.length > 1}>
+        {children}
+      </SubTabsShown.Provider>
     </main>
   );
 }

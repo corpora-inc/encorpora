@@ -664,7 +664,7 @@ export const factorLargeTrinomial = chainFamily({
       ? [
           {
             label: `$${factorPair(m.m, -m.n)}$`,
-            feedback: `The signs are reversed: this expands to a middle term of $+${m.m - m.n}x$, not $-${m.m - m.n}x$.`,
+            feedback: `The signs are reversed: this expands to a middle term of $+${Math.abs(m.m - m.n) === 1 ? "x" : `${m.m - m.n}x`}$, not $-${Math.abs(m.m - m.n) === 1 ? "x" : `${m.m - m.n}x`}$.`,
           },
           {
             label: `$${factorPair(-m.m, -m.n)}$`,

@@ -19,6 +19,9 @@ import {
 } from "./clause-variant-kit";
 import { graph } from "./scene/author";
 
+/** A negative factor in parentheses, so "+ -2" does not appear. */
+const signedFactor = (n: number) => (n < 0 ? `(${n})` : String(n));
+
 export const vectorMatrixClauses: Record<string, readonly string[]> = {
   "matrix-linear-system": ["three-by-three-tool-inverse"],
   "vector-components": [
@@ -546,7 +549,8 @@ export function vectorMatrixClause(
     if (ask === 0)
       return b.choice(
         {
-          prompt: "Which matrix $Z$ satisfies $A+Z=A$ for every 2×2 matrix $A$?",
+          prompt:
+            "Which matrix $Z$ satisfies $A+Z=A$ for every 2×2 matrix $A$?",
           hint: "Each entry added to $A$ must leave that entry unchanged.",
           explanation,
         },
@@ -647,7 +651,7 @@ export function vectorMatrixClause(
     return b.parts(
       {
         prompt: `Let $A=$ ${matrix(A)} and $B=$ ${matrix(B)}. Compute both orders and distinguish this example from the general rule.`,
-        hint: `For the top-left entry of $AB$, use ${A[0]![0]} × ${B[0]![0]} + ${A[0]![1]} × ${B[1]![0]}.`,
+        hint: `For the top-left entry of $AB$, use ${signedFactor(A[0]![0]!)} × ${signedFactor(B[0]![0]!)} + ${signedFactor(A[0]![1]!)} × ${signedFactor(B[1]![0]!)}.`,
         explanation: [
           `Row by column gives $AB=$ ${matrix(AB)} and $BA=$ ${matrix(BA)}.`,
           commuting
@@ -657,8 +661,16 @@ export function vectorMatrixClause(
         ],
       },
       [
-        { label: "$AB$", correct: matrix(AB), wrong: [matrix(BA), ...slips(AB)] },
-        { label: "$BA$", correct: matrix(BA), wrong: [matrix(AB), ...slips(BA)] },
+        {
+          label: "$AB$",
+          correct: matrix(AB),
+          wrong: [matrix(BA), ...slips(AB)],
+        },
+        {
+          label: "$BA$",
+          correct: matrix(BA),
+          wrong: [matrix(AB), ...slips(BA)],
+        },
         {
           label: "Is $AB = BA$ for this pair?",
           correct: commuting ? "Yes" : "No",
@@ -719,11 +731,12 @@ export function vectorMatrixClause(
       const copy = {
         prompt: `Each arrow is a one-way road. Rows are FROM towns and columns are TO towns, both in order ${townList("A, B, C, D")}. ${ask === 0 ? "Which matrix represents the network?" : ask === 1 ? "How many roads leave $C$?" : "Which town or towns have the most incoming roads?"}`,
         figure: sceneFigure(g.scene()),
-        hint: ask === 0
-          ? "Follow an arrow from its tail town to its head town; put 1 at that row and column."
-          : ask === 1
-            ? "Follow each arrow that leaves $C$. Count those arrows; put 1 at each row and column where an arrow runs."
-            : "Follow each arrow into a town. The town with the most incoming arrows is the one to name.",
+        hint:
+          ask === 0
+            ? "Follow an arrow from its tail town to its head town; put 1 at that row and column."
+            : ask === 1
+              ? "Follow each arrow that leaves $C$. Count those arrows; put 1 at each row and column where an arrow runs."
+              : "Follow each arrow into a town. The town with the most incoming arrows is the one to name.",
         explanation: [
           `The network matrix is ${matrix(M)}.`,
           `Row $C$ sums to ${sum(M[2]!)}. The column totals are ${totals.join(", ")}, so the maximum is ${max}, for ${townList(towns)}.`,

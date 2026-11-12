@@ -1,6 +1,8 @@
 import { CheckboxControl } from "./ui/Checkbox";
 import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
+import { noteHelp } from "./lib/help-events";
+import { useHelpSurface } from "./lib/use-help";
 import { Glossary } from "./ui/Glossary";
 import type { HintedProblem } from "./lib/problem-hints";
 import { MathText, spokenMath } from "./MathText";
@@ -59,9 +61,13 @@ import { multiPartAnswerText } from "../math/multi-part-choice";
 import {
   FigureChoiceAnswer,
   FigureChoiceInput,
+  PickedAnswer,
   figureReview,
 } from "./FigureChoiceInput";
 import { figureChoiceName } from "../math/figure-choice";
+import { panelChoice } from "../math/figure-panels";
+import { FigurePanelChoice } from "./FigurePanelChoice";
+import { ChoiceList } from "./ChoiceList";
 import {
   StructuredWorkAnswer,
   StructuredWorkInput,
@@ -76,6 +82,7 @@ import {
   useEffect,
   useId,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -249,6 +256,18 @@ type Props = {
   reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
   /** The report offers its optional note (see `noteAllowed`). */
   reportNote?: boolean;
+  /** An answer already given, read as it looked after Check (a teacher's
+   * replay of a student's work): nothing is recorded or answered, the
+   * sheet's sentences name `who`, and `actions` stand where Next would. */
+  review?: {
+    who: string;
+    actions: ReactNode;
+    /** What surrounded the answer, at the end of the feedback (it scrolls
+     * with the explanation where the sheet is short). */
+    facts?: ReactNode;
+    /** The help it had, as the head says it ("with a hint"), when known. */
+    support?: string;
+  };
 };
 
 /** Phones too short to keep the keypad docked under the problem. Taller
@@ -270,7 +289,9 @@ export function PracticeWorkspace(props: Props) {
     busy,
     pending,
   } = props;
+  const review = props.review;
   useEffect(() => {
+    if (review) return;
     let frame = 0,
       sent = false;
     const visible = () => {
@@ -334,6 +355,10 @@ export function PracticeWorkspace(props: Props) {
   // selection readout and Check.
   const figures =
     problem.response.kind === "figure-choice" ? problem.response : null;
+  // A choice among lettered panels of the problem's own figure ("Which
+  // triangle is isosceles?") is made by tapping the panels; the dock holds
+  // the selection readout and Check, as for figure cards.
+  const panels = useMemo(() => panelChoice(problem), [problem.id]);
   // Structured work is built in the problem: steps or proof lines, with
   // the keypad over the dock; the dock holds progress, Clear and Check.
   const work =
@@ -420,6 +445,7 @@ export function PracticeWorkspace(props: Props) {
     !!lineBuild ||
     !!parts ||
     !!figures ||
+    !!panels ||
     !!work ||
     !!equalAddends ||
     !!counters ||
@@ -470,6 +496,7 @@ export function PracticeWorkspace(props: Props) {
       !!lineBuild ||
       !!trend ||
       !!figures ||
+      !!panels ||
       !!work ||
       !!marking ||
       !!equalAddends ||
@@ -495,6 +522,9 @@ export function PracticeWorkspace(props: Props) {
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
+  // Time on a hint or a worked explanation is its own (lessons record theirs).
+  useHelpSurface(!review && panel === "hint", "hint", problem.id);
+  useHelpSurface(!review && showWhy, "example", problem.id);
   // A lesson opened before answering counts as support for this attempt.
   const [lessonBeforeAnswer, setLessonBeforeAnswer] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
@@ -604,6 +634,14 @@ export function PracticeWorkspace(props: Props) {
       );
       const content = host.querySelector(".problem-stage .problem-content");
       const stageBox = host.querySelector(".problem-stage");
+      // `--stage-need`: the problem's own height with its figure at its
+      // legible floor. A choice dock takes every pixel the problem does not
+      // need (practice.css), so options fit without scrolling when they can.
+      if (content)
+        host.style.setProperty(
+          "--stage-need",
+          `${Math.ceil(content.scrollHeight)}px`,
+        );
       if (content && stageBox) {
         const end = Math.min(
           content.getBoundingClientRect().bottom -
@@ -637,6 +675,7 @@ export function PracticeWorkspace(props: Props) {
     trend ||
     parts ||
     figures ||
+    panels ||
     work ||
     shapes
   );
@@ -691,7 +730,9 @@ export function PracticeWorkspace(props: Props) {
     };
     update();
     if (counters || equalAddends) host.scrollTop = 0;
+    // A replay opens at its prompt: the reader hasn't just worked it.
     if (
+      !review &&
       reviewInProblem &&
       !lineBuild &&
       !trend &&
@@ -910,16 +951,31 @@ export function PracticeWorkspace(props: Props) {
           submit={props.submit}
         />
       );
+    if (panels) {
+      const value = outcome ? outcome.response : response;
+      return (
+        <PickedAnswer
+          label={problem.response.label}
+          chosen={panels.options.find((o) => o.id === value)?.label ?? null}
+          noun={panels.noun}
+          count={panels.options.length}
+          busy={busy}
+          sending={sending}
+          resolved={!!outcome}
+          submit={submitAnswer}
+        />
+      );
+    }
     if (problem.response.kind === "multi-select") {
       const selected = selectedIds;
       const complete = selected.length === problem.response.selectionCount;
       const optionFields = (
         <fieldset disabled={locked}>
-          <legend>
-            <MathText text={problem.response.label} />
-          </legend>
-          <div className="choice-options">
-            {problem.response.options.map((option, index) => (
+          <ChoiceList
+            legend={problem.response.label}
+            count={problem.response.options.length}
+          >
+            {problem.response.options.map((option) => (
               <label
                 key={option.id}
                 className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
@@ -939,15 +995,12 @@ export function PracticeWorkspace(props: Props) {
                     )
                   }
                 />
-                <span className="choice-letter" aria-hidden="true">
-                  {"ABCDEFGH"[index]}
-                </span>
                 <span className="choice-content">
                   <MathText text={option.label} />
                 </span>
               </label>
             ))}
-          </div>
+          </ChoiceList>
         </fieldset>
       );
       return (
@@ -985,6 +1038,13 @@ export function PracticeWorkspace(props: Props) {
         </form>
       );
     }
+    // Options that are themselves letters ("A", "B") need no second letter
+    // beside them, which could name a different one.
+    const letterOptions =
+      problem.response.kind === "choice" &&
+      problem.response.options.every((o) =>
+        /^\$?[A-Z]\$?$/.test(o.label.trim()),
+      );
     if (problem.response.kind === "choice")
       return (
         <form
@@ -997,10 +1057,10 @@ export function PracticeWorkspace(props: Props) {
           }}
         >
           <fieldset disabled={locked}>
-            <legend>
-              <MathText text={problem.response.label} />
-            </legend>
-            <div className="choice-options">
+            <ChoiceList
+              legend={problem.response.label}
+              count={problem.response.options.length}
+            >
               {problem.response.options.map((option, index) => (
                 <label
                   key={option.id}
@@ -1014,15 +1074,17 @@ export function PracticeWorkspace(props: Props) {
                     checked={response === option.id}
                     onChange={() => setResponse(option.id)}
                   />
-                  <span className="choice-letter" aria-hidden="true">
-                    {"ABCD"[index]}
-                  </span>
+                  {!letterOptions && (
+                    <span className="choice-letter" aria-hidden="true">
+                      {"ABCD"[index]}
+                    </span>
+                  )}
                   <span className="choice-content">
                     <MathText text={option.label} />
                   </span>
                 </label>
               ))}
-            </div>
+            </ChoiceList>
           </fieldset>
           <button
             className="choice-submit"
@@ -1169,6 +1231,7 @@ export function PracticeWorkspace(props: Props) {
             onChange={setResponse}
             locked={locked}
             marks={outcome && !outcome.skipped ? (outcome.parts ?? null) : null}
+            answer={outcome && !outcome.skipped ? outcome.answer : undefined}
             small={small}
           />
         )}
@@ -1281,9 +1344,14 @@ export function PracticeWorkspace(props: Props) {
                   // Each step is marked in the problem; the work stays
                   // readable for screen readers.
                   <small>
-                    {workSummary(work, outcome.parts)}
+                    {workSummary(
+                      work,
+                      outcome.parts,
+                      outcome.response,
+                      outcome.answer,
+                    )}
                     <span className="sr-only">
-                      . Your last line:{" "}
+                      . {review ? `${review.who}’s` : "Your"} last line:{" "}
                       {spokenMath(displayResponse(outcome.response))}
                     </span>
                     {support && `, ${support}`}
@@ -1294,7 +1362,7 @@ export function PracticeWorkspace(props: Props) {
                   <small>
                     {partsSummary(parts, outcome)}
                     <span className="sr-only">
-                      . You chose:{" "}
+                      . {review ? `${review.who} chose` : "You chose"}:{" "}
                       {spokenMath(displayResponse(outcome.response))}
                     </span>
                     {support && `, ${support}`}
@@ -1302,7 +1370,8 @@ export function PracticeWorkspace(props: Props) {
                 ) : equalAddends ? (
                   <small>
                     <span className="sr-only">
-                      You entered {displayResponse(outcome.response)}.
+                      {review ? `${review.who} entered` : "You entered"}{" "}
+                      {displayResponse(outcome.response)}.
                     </span>
                     {support && capitalize(support)}
                   </small>
@@ -1313,7 +1382,8 @@ export function PracticeWorkspace(props: Props) {
                       : `Show groups of ${counterKey.groups[0]} and ${counterKey.groups[1]}.`}
                     <span className="sr-only">
                       {" "}
-                      You entered {displayResponse(outcome.response)}.
+                      {review ? `${review.who} entered` : "You entered"}{" "}
+                      {displayResponse(outcome.response)}.
                     </span>
                     {support && ` ${capitalize(support)}.`}
                   </small>
@@ -1322,18 +1392,21 @@ export function PracticeWorkspace(props: Props) {
                   // correct ones; the sentence stays for screen readers.
                   <small>
                     <span className="sr-only">
-                      You placed {spokenMath(displayResponse(outcome.response))}
+                      {review ? `${review.who} placed` : "You placed"}{" "}
+                      {spokenMath(displayResponse(outcome.response))}
                       {support ? ", " : "."}
                     </span>
                     {support && capitalize(support)}
                   </small>
                 ) : (
                   <small>
-                    {problem.response.kind === "multi-select"
-                      ? "You selected "
-                      : figures || problem.response.kind === "choice"
-                        ? "You chose "
-                        : "You entered "}
+                    {`${review?.who ?? "You"} ${
+                      problem.response.kind === "multi-select"
+                        ? "selected"
+                        : figures || problem.response.kind === "choice"
+                          ? "chose"
+                          : "entered"
+                    } `}
                     <MathText text={displayResponse(outcome.response)} />
                     {support && `, ${support}`}
                   </small>
@@ -1363,6 +1436,7 @@ export function PracticeWorkspace(props: Props) {
           !trendCompact &&
           !pegCompact &&
           progressFeedback()}
+        {review?.facts}
       </>
     );
   }
@@ -1371,7 +1445,19 @@ export function PracticeWorkspace(props: Props) {
       <div className="practice-tools">
         {outcome ? (
           !stepsInline && (
-            <button className="text-button" onClick={() => setShowWhy(true)}>
+            <button
+              className="text-button"
+              onClick={() => {
+                if (!review)
+                  noteHelp({
+                    kind: "example",
+                    source: "practice",
+                    ref: problem.templateId,
+                    problemId: problem.id,
+                  });
+                setShowWhy(true);
+              }}
+            >
               See why
             </button>
           )
@@ -1380,6 +1466,13 @@ export function PracticeWorkspace(props: Props) {
             className="text-button"
             disabled={busy || props.pending}
             onClick={() => {
+              noteHelp({
+                kind: "hint",
+                source: "practice",
+                ref: problem.templateId,
+                problemId: problem.id,
+                step: 1,
+              });
               setPanel("hint");
               if (!hint) props.requestHint();
             }}
@@ -1410,40 +1503,42 @@ export function PracticeWorkspace(props: Props) {
             Skip
           </button>
         )}
-        <button
-          className="text-button"
-          disabled={lessonLoading}
-          aria-busy={lessonLoading}
-          onClick={async (event) => {
-            lessonTrigger.current = event.currentTarget;
-            const requestedProblem = problem.id;
-            const request = ++lessonRequest.current;
-            const current = () =>
-              alive.current &&
-              lessonRequest.current === request &&
-              currentProblem.current === requestedProblem;
-            setLessonLoading(true);
-            setLessonError("");
-            try {
-              const view = await props.requestLesson();
-              if (current()) {
-                setProblemLessonView(view);
-                setPanel("lesson");
-                if (!outcome) setLessonBeforeAnswer(true);
+        {!review && (
+          <button
+            className="text-button"
+            disabled={lessonLoading}
+            aria-busy={lessonLoading}
+            onClick={async (event) => {
+              lessonTrigger.current = event.currentTarget;
+              const requestedProblem = problem.id;
+              const request = ++lessonRequest.current;
+              const current = () =>
+                alive.current &&
+                lessonRequest.current === request &&
+                currentProblem.current === requestedProblem;
+              setLessonLoading(true);
+              setLessonError("");
+              try {
+                const view = await props.requestLesson();
+                if (current()) {
+                  setProblemLessonView(view);
+                  setPanel("lesson");
+                  if (!outcome) setLessonBeforeAnswer(true);
+                }
+              } catch (failure) {
+                console.error("AMP lesson failed to open:", failure);
+                if (current())
+                  setLessonError(
+                    "The lesson could not be opened. Check your connection and try again.",
+                  );
+              } finally {
+                if (current()) setLessonLoading(false);
               }
-            } catch (failure) {
-              console.error("AMP lesson failed to open:", failure);
-              if (current())
-                setLessonError(
-                  "The lesson could not be opened. Check your connection and try again.",
-                );
-            } finally {
-              if (current()) setLessonLoading(false);
-            }
-          }}
-        >
-          {lessonLoading ? "Opening…" : "Lesson"}
-        </button>
+            }}
+          >
+            {lessonLoading ? "Opening…" : "Lesson"}
+          </button>
+        )}
         {feedback && props.reportProblem && (
           <ReportProblemButton
             reported={reported}
@@ -1463,13 +1558,15 @@ export function PracticeWorkspace(props: Props) {
   // workspace did not see (a lesson opened from Progress) stays general.
   const support = !outcome?.assisted
     ? ""
-    : hint && lessonBeforeAnswer
-      ? "with a hint and the lesson"
-      : hint
-        ? "with a hint"
-        : lessonBeforeAnswer
-          ? "with the lesson"
-          : "with a hint or lesson";
+    : review?.support
+      ? review.support
+      : hint && lessonBeforeAnswer
+        ? "with a hint and the lesson"
+        : hint
+          ? "with a hint"
+          : lessonBeforeAnswer
+            ? "with the lesson"
+            : "with a hint or lesson";
   const skipped = !!outcome?.skipped;
   /** The worked explanation shows in the sheet itself: a miss explains
    * itself unless its answer is marked in the problem, a full answer column
@@ -1633,15 +1730,15 @@ export function PracticeWorkspace(props: Props) {
       {props.status && <span className="workspace-status">{props.status}</span>}
       {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-      {props.calculator &&
-      !plot &&
-      !lineBuild &&
-      !trend &&
-      !parts &&
-      !figures &&
-      !work &&
-      !pegs &&
-      !shapes ? (
+      {review ? null : props.calculator &&
+        !plot &&
+        !lineBuild &&
+        !trend &&
+        !parts &&
+        !figures &&
+        !work &&
+        !pegs &&
+        !shapes ? (
         <button
           ref={calculatorToggle}
           className="calculator-toggle"
@@ -1725,6 +1822,8 @@ export function PracticeWorkspace(props: Props) {
             </h2>
             {problem.figure &&
               !marking &&
+              // An area model drawn by the work replaces the figure.
+              work?.diagram?.kind !== "area" &&
               (choice ||
               plot ||
               trend ||
@@ -1746,6 +1845,22 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {panels && (
+              <FigurePanelChoice
+                problemId={problem.id}
+                choice={panels}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome && !outcome.skipped
+                    ? { correct: outcome.answer, chosen: outcome.response }
+                    : outcome
+                      ? { correct: outcome.answer, chosen: null }
+                      : null
+                }
+              />
+            )}
             {marking && (
               <UnitSquareMarkingInput
                 key={problem.id}
@@ -1959,27 +2074,31 @@ export function PracticeWorkspace(props: Props) {
               feedbackDetails()
             )}
             {props.feedbackAside}
-            <div className="next-row">
-              {props.returnToMixed && (
+            {review ? (
+              <div className="next-row review-actions">{review.actions}</div>
+            ) : (
+              <div className="next-row">
+                {props.returnToMixed && (
+                  <button
+                    className="mixed-action"
+                    disabled={busy || pending}
+                    onClick={props.returnToMixed}
+                  >
+                    Mixed practice
+                  </button>
+                )}
                 <button
-                  className="mixed-action"
-                  disabled={busy || pending}
-                  onClick={props.returnToMixed}
+                  className="next-action"
+                  ref={continueButton}
+                  aria-busy={busy}
+                  onClick={() => {
+                    if (!busy) advance();
+                  }}
                 >
-                  Mixed practice
+                  Next <span aria-hidden="true">→</span>
                 </button>
-              )}
-              <button
-                className="next-action"
-                ref={continueButton}
-                aria-busy={busy}
-                onClick={() => {
-                  if (!busy) advance();
-                }}
-              >
-                Next <span aria-hidden="true">→</span>
-              </button>
-            </div>
+              </div>
+            )}
             {tools(true)}
           </div>
         )}
@@ -2122,6 +2241,7 @@ export function PracticeWorkspace(props: Props) {
               <ProblemLesson
                 lesson={problemLessonView}
                 onWatchFilm={() => setPanel(null)}
+                help={{ source: "practice", problemId: problem.id }}
               />
               <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem

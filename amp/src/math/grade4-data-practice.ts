@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { count, plural } from "./agreement";
@@ -220,7 +221,7 @@ function generateOne(
       last = error;
     }
   }
-  throw last ?? new Error(`Need a ${meta.id} problem`);
+  throw last ?? new Error(`Need ${withArticle(meta.id)} problem`);
 }
 
 function finish(

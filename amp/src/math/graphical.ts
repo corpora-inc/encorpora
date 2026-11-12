@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -165,7 +166,8 @@ function clauseGraphical(
   if (family === "add-intervals") {
     const parts = [r(10, 50), r(10, 50)];
     if (r(0, 1) === 0) parts.push(r(10, 40));
-    while (parts.reduce((a, b) => a + b, 0) > 150) parts[0] = Math.max(10, parts[0]! - 5);
+    while (parts.reduce((a, b) => a + b, 0) > 150)
+      parts[0] = Math.max(10, parts[0]! - 5);
     const clipped = parts;
     const sum = clipped.reduce((a, b) => a + b, 0);
     return {
@@ -194,10 +196,9 @@ function clauseGraphical(
     shape === 0
       ? `Band practice lasts ${whole} minutes. The band spends ${part} minutes on scales and the rest on songs. How many minutes on songs?`
       : shape === 1
-        ? `A ${whole}-minute class has used ${part} minutes. How many minutes are left?`
+        ? `${withArticle(whole, true)}-minute class has used ${part} minutes. How many minutes are left?`
         : `Lunch is ${Math.max(whole, part)} minutes and recess is ${Math.min(whole, part)} minutes. How many minutes longer is the longer one?`;
-  const answer =
-    shape === 2 ? Math.abs(whole - part) : left;
+  const answer = shape === 2 ? Math.abs(whole - part) : left;
   const big = Math.max(whole, part);
   const small = Math.min(whole, part);
   return {
@@ -251,7 +252,9 @@ export function generateGraphicalProblem(
         )
       : "legacy";
   const r =
-    family === "legacy" ? random(templateId, seed) : random(`${templateId}#${family}`, seed);
+    family === "legacy"
+      ? random(templateId, seed)
+      : random(`${templateId}#${family}`, seed);
   if (family !== "legacy") {
     const built = clauseGraphical(templateId, seed, family, r);
     // The public contract accepts only templateVersion 1. The id still

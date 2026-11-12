@@ -54,6 +54,7 @@ function navigation({
       gradingKind: "year" as const,
       joinCode: "ABCDEF",
       studentCount: 0,
+      teachers: [],
     })),
   );
   if (past !== null)

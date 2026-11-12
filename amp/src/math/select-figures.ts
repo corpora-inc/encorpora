@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { Element, Scene } from "./scene/spec";
 import { sceneSchema } from "./scene/spec";
 
@@ -33,7 +34,7 @@ export function shift(el: Element, dx: number, dy: number): Element {
       return { ...el, at: mv(at as Pt) };
     }
     default:
-      throw new Error(`Cannot place a ${el.type} in a panel`);
+      throw new Error(`Cannot place ${withArticle(el.type)} in a panel`);
   }
 }
 

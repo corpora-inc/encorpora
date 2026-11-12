@@ -1,3 +1,4 @@
+import { withArticle } from "../agreement";
 // Grade-4 geometry contexts. Names come from names.ts. A trailing number in
 // the seed (book-0, book-1, …) walks the list, so twelve samples cover it.
 
@@ -30,13 +31,13 @@ const deg = (k: number) => `$${k}^\\circ$`;
 export function protractorPrompt(seed: string, k: number): string {
   const angle = deg(k);
   const frames = [
-    `On this protractor, ray $BA$ is the zero line. Which other ray makes a ${angle} angle with ray $BA$?`,
+    `On this protractor, ray $BA$ is the zero line. Which other ray makes ${withArticle(angle)} angle with ray $BA$?`,
     `Which ray is ${angle} from ray $BA$?`,
     `Find the ray that opens ${angle} from ray $BA$.`,
-    `Ray $BA$ is the ray at zero. Which ray makes a ${angle} angle with ray $BA$?`,
+    `Ray $BA$ is the ray at zero. Which ray makes ${withArticle(angle)} angle with ray $BA$?`,
     `Read the scale that starts at zero on ray $BA$. Which ray shows ${angle}?`,
-    `One of these rays makes a ${angle} angle with ray $BA$. Which ray is it?`,
-    `Ray $BA$ is the zero line. Which ray makes a ${angle} angle with it?`,
+    `One of these rays makes ${withArticle(angle)} angle with ray $BA$. Which ray is it?`,
+    `Ray $BA$ is the zero line. Which ray makes ${withArticle(angle)} angle with it?`,
     `Which of the labeled rays is ${angle} from ray $BA$?`,
     `Start at ray $BA$ and find the ray at ${angle}. Which ray is that?`,
     `Ray $BA$ reads zero. Follow that scale to ${angle}. Which ray is there?`,

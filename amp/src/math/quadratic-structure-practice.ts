@@ -933,7 +933,7 @@ function zerosFromFactors(r: Random): Case {
       const choices = options(form(sorted), [
         {
           label: form(sorted.map((z) => -z)),
-          feedback: `This flips every sign. It is 0 at ${set(sorted.map((z) => -z))}. A zero at $r$ needs the factor (x − r).`,
+          feedback: `This flips every sign. It is 0 at $${set(sorted.map((z) => -z))}$. A zero at $r$ needs the factor (x − r).`,
         },
         {
           label: form([sorted[0]!, sorted[1]!, -sorted[2]!]),

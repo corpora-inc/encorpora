@@ -219,7 +219,7 @@ const family = chainFamily({
       ];
       route = [
         `First $\\times$ first: $${tex([first, 0, 0])}$. Outer: $${tex([outer, 0])}$. Inner: $${tex([inner, 0])}$. Last $\\times$ last: $${last}$, the constant term.`,
-        `Add the $x$ terms: $${outer}x${inner < 0 ? "" : "+"}${inner}x=${outer + inner}x$.`,
+        `Add the $x$ terms: $${tex([outer, 0])}${inner < 0 ? "" : inner === 0 ? "" : "+"}${inner === 0 ? "" : tex([inner, 0])}=${tex([outer + inner, 0])}$.`,
         `In standard form the product is $${tex(product)}$, so the coefficients from the highest power down are $${product.join(", ")}$.`,
       ];
     }

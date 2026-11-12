@@ -7,6 +7,7 @@ import {
 } from "../features/practice/practice-settings";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
+import { learnerFrontierOptions } from "../lib/learning-view";
 import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import type { ProblemHint } from "../../math/contracts";
@@ -40,6 +41,7 @@ import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
 import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
+import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
 import { Navigate, useRouter } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
@@ -564,6 +566,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       requestId: string;
       response: string;
       hintViewed?: boolean;
+      help?: ("hint" | "lesson" | "video" | "example")[];
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -1096,6 +1099,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     )
       return;
     progressLessonReturn.current = skillId;
+    noteHelp({
+      kind: "lesson",
+      source: "progress",
+      ref: selected.id,
+      ...(problem &&
+      !outcome &&
+      selected.templateIds.includes(problem.templateId)
+        ? { problemId: problem.id }
+        : {}),
+    });
     setReadingLesson(selected);
   }
   function showProblem(p: HintedProblem) {
@@ -1256,10 +1269,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   async function submit() {
     if (!learner || !problem) return;
+    // The kinds of help opened before this answer (a native shell's older
+    // attempt contract has no field for it).
+    const help = nativeRuntime ? [] : helpUsedBefore(problem.id);
     const attempt = pending ?? {
       requestId: crypto.randomUUID(),
       response,
       ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
+      ...(help.length ? { help } : {}),
     };
     setPending(attempt);
     try {
@@ -1269,6 +1286,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       });
       if (learnerRef.current !== learner.id) return;
       rememberOpenProblem(learner.id, null);
+      forgetHelp(problem.id);
       setOutcome(result);
       setPending(null);
       track("practice_answer", { index: practiceAnswers.current });
@@ -1410,7 +1428,22 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: string;
     birthYear: number | null | undefined;
     map: FrontierMap;
-  } | null>(null);
+  } | null>(() => {
+    // The route preloads the Overview's level (router.tsx): start from it,
+    // so the first paint is already the learner's layout. The refresh below
+    // still runs.
+    if (!session || !learner) return null;
+    const map = queryClient.getQueryData(
+      learnerFrontierOptions(session, learner.id).queryKey,
+    );
+    return map
+      ? {
+          learnerId: learner.id,
+          birthYear: learner.birthYear,
+          map: map as unknown as FrontierMap,
+        }
+      : null;
+  });
   const frontierMap =
     loadedFrontier?.learnerId === learner?.id &&
     loadedFrontier?.birthYear === learner?.birthYear
@@ -1432,7 +1465,15 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const id = learner.id;
     let active = true;
     void loadFrontier(
-      () => api<FrontierMap>(`/learners/${id}/frontier`),
+      // On the web, through the level's one cache entry: the route's preload
+      // of the same level counts, so it is not requested twice.
+      () =>
+        nativeRuntime || !session
+          ? api<FrontierMap>(`/learners/${id}/frontier`)
+          : queryClient.fetchQuery({
+              ...learnerFrontierOptions(session, id),
+              staleTime: 10_000,
+            }),
       () => active && learnerRef.current === id,
       (map) =>
         setLoadedFrontier({ learnerId: id, birthYear: learner.birthYear, map }),
@@ -1902,7 +1943,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <h1>
             <Loading inline>Opening your book…</Loading>
           </h1>
-          <button onClick={() => navigate("/pathways")}>Back to Pathways</button>
+          <button onClick={() => navigate("/pathways")}>
+            Back to Pathways
+          </button>
         </main>
       ) : tab === "practice" ? (
         paused && route.parts[0] === "practice" ? (
@@ -2228,9 +2271,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                     // (rememberLibraryCard), as browser Back does.
                   }}
                 >
-                  {progressLessonReturn.current
-                    ? "← Your idea"
-                    : "← Pathways"}
+                  {progressLessonReturn.current ? "← Your idea" : "← Pathways"}
                 </button>
                 {/* One compact control for the lesson's typeset PDFs. A
                     lesson without them on this server offers none. */}

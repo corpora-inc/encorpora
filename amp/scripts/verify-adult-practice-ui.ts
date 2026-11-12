@@ -45,6 +45,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -412,17 +413,18 @@ async function teacherStarts(
   await measured(page, `${label} school switcher`);
   await shot(page, "switcher-start", width, theme, engine);
   await choose(page, fromSchool, /Start my own practice/);
-  await heading(page, "Where do you want to begin?");
+  // The year is all it asks (founder: birth year is always enough).
+  await heading(page, "What year were you born?");
   check(`${label} start has a URL`, path(page) === "/me/start", path(page));
   const start = page.getByRole("button", { name: "Start practicing" });
-  check(`${label} start waits for a choice`, await start.isDisabled());
+  check(`${label} start waits for a year`, await start.isDisabled());
   await measured(page, `${label} start`);
-  await page.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   await shot(page, "start", width, theme, engine);
   // Reload keeps the screen; Back returns to the school.
   await page.reload();
-  await heading(page, "Where do you want to begin?");
-  await page.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await heading(page, "What year were you born?");
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   const box = await start.boundingBox();
   await start.click();
   const after = await start.boundingBox().catch(() => null);
@@ -480,7 +482,7 @@ async function teacherStarts(
     /Where you are/.test(record) &&
       /Time, last 12 weeks/.test(record) &&
       /Time by day and skill/.test(record) &&
-      /Objectives gained/.test(record) &&
+      /Skills shown on their own/.test(record) &&
       /Recent work/.test(record) &&
       /Began at Algebra/.test(record),
     record.slice(0, 600),
@@ -572,10 +574,7 @@ async function parentStarts(
   const inClass = /\/school\/[^/]+\/classes\/[^/]+\/today$/;
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   const fromHome = await openSwitcher(page, family, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
@@ -587,18 +586,15 @@ async function parentStarts(
   await measured(page, `${label} family switcher`);
   await shot(page, "family-switcher", width, theme);
   await choose(page, fromHome, /Start my own practice/);
-  await heading(page, "Where do you want to begin?");
-  await page.getByRole("radio", { name: /^Geometry/ }).click();
+  await heading(page, "What year were you born?");
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await practicing(page);
   // Back to the family: its class, with the child in it.
   const fromOwn = await openSwitcher(page, "My practice", true);
   await choose(page, fromOwn, new RegExp(family));
   await page.waitForURL(inClass);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   check(
     `${label} the family side is the child's class`,
     (await page
@@ -614,10 +610,7 @@ async function parentStarts(
   await page.evaluate(() => localStorage.clear());
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   check(
     `${label} a new device stays on the family side`,
     inClass.test(path(page)),
@@ -641,7 +634,7 @@ async function nobody(browser: Browser) {
     "Quinn",
   );
   await page.goto(`${origin}/me/start`);
-  await heading(page, "Where do you want to begin?");
+  await heading(page, "What year were you born?");
   check("no place yet, /me/start opens", path(page) === "/me/start");
   await page.goto(`${origin}/me`);
   await page.waitForURL((at) => at.pathname === "/me/start");

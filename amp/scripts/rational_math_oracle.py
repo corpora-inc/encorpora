@@ -183,7 +183,8 @@ def braces(source, start):
 def expression_of(public):
     template = public.get('templateId')
     require(template in RATIONAL_TYPES, 'Unknown rational family')
-    require(public.get('templateVersion') == 1 and public.get('skillId') == SKILLS[template],
+    version = public.get('templateVersion')
+    require(isinstance(version, int) and version >= 1 and public.get('skillId') == SKILLS[template],
             'Wrong rational version or skill')
     require(public.get('response') == {'kind': 'fraction', 'label': 'Exact value'}, 'Wrong rational response')
     prompt = public.get('prompt', '')

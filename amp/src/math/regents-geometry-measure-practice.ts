@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import { chainFamily, dispatch, numberSurface, pick } from "./chain-kit";
@@ -320,7 +321,7 @@ export const isoscelesTrig = chainFamily({
         [
           `An isosceles triangle has two equal sides. The apex is the corner where those two sides meet.`,
           `The altitude is the height line from the apex, meeting the base at a right angle. In an isosceles triangle it cuts the apex angle and the base exactly in half.`,
-          `That makes two matching right triangles. Each has a ${tex(`${half}^\\circ`)} angle at the apex and a leg of ${tex(m.height)} cm next to it.`,
+          `That makes two matching right triangles. Each has ${withArticle(tex(`${half}^\\circ`))} angle at the apex and a leg of ${tex(m.height)} cm next to it.`,
           `The tangent of an angle is the opposite side divided by the adjacent side. The half-base is opposite the ${half}° angle: ${tex(`${m.height}\\tan ${half}^\\circ\\approx${roundText(base / 2, 3)}`)} cm.`,
           `Cosine is adjacent ÷ hypotenuse. Each equal side is a hypotenuse, so it is ${tex(`\\frac{${m.height}}{\\cos ${half}^\\circ}\\approx${roundText(leg, 3)}`)} cm.`,
           `The perimeter is the distance around: the full base plus the two equal sides. ${tex(`${roundText(base, 3)}+2(${roundText(leg, 3)})\\approx${roundText(p, 3)}`)}.`,

@@ -46,6 +46,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -296,10 +297,7 @@ async function journey(
   const maya = await family(holderAccount);
   await go(holder, `${origin}/`);
   await holder.waitForURL(CLASS_TODAY);
-  await heading(
-    holder,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(holder);
   const classUrl = holder.url();
   const add = holder.getByRole("button", { name: "Add a second parent" });
   await add.waitFor();
@@ -323,7 +321,7 @@ async function journey(
     .locator('[data-feed="second-parent"]')
     .waitFor({ state: "detached" });
   await go(holder, holder.url().replace(/\/today$/, "/roster"));
-  await heading(holder, "Students");
+  await heading(holder, "People");
   const waiting = holder.locator('[data-second-parent-row="invited"]');
   await waiting.getByText("Waiting for r…@…").waitFor();
   for (const name of [/Copy link/, /^Send again$/, /^Remove$/])
@@ -407,10 +405,7 @@ async function journey(
     rowan.url() === classUrl,
     rowan.url(),
   );
-  await heading(
-    rowan,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(rowan);
   const handOver = rowan.getByRole("button", {
     name: "Let Maya practice here",
   });
@@ -433,10 +428,7 @@ async function journey(
   await shot(rowan, "second-parent-today", width, theme, engine);
   await noParentLinks(rowan, classUrl, `${label} second parent`);
   await go(rowan, classUrl);
-  await heading(
-    rowan,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(rowan);
 
   // 4. Maya's progress, then her own practice.
   const toMaya = await openSwitcher(rowan, "Fern’s class");
@@ -493,8 +485,8 @@ async function journey(
     .getByRole("menuitem")
     .filter({ has: rowan.locator('[data-place="me"]') })
     .click();
-  await heading(rowan, "Where do you want to begin?");
-  await rowan.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await heading(rowan, "What year were you born?");
+  await rowan.getByRole("radio", { name: "Adult", exact: true }).click();
   await rowan.getByRole("button", { name: "Start practicing" }).click();
   await rowan.waitForURL(/\/practice/);
   await rowan.locator("[data-problem-id]").first().waitFor();
@@ -523,7 +515,7 @@ async function journey(
   // 5. The holder sees her joined.
   last.page = holder;
   await go(holder, classUrl.replace(/\/today$/, "/roster"));
-  await heading(holder, "Students");
+  await heading(holder, "People");
   const active = holder.locator('[data-second-parent-row="active"]');
   await active.getByText("Rowan Fixture").waitFor();
   check(

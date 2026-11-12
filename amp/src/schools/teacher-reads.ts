@@ -14,6 +14,7 @@ import {
   DEFAULT_GRADE_POLICY,
   rangeLetters,
   type GradeComponentId,
+  type GradeSuggestion,
 } from "./grade-policy.js";
 import {
   classContext,
@@ -24,10 +25,13 @@ import {
   gradebookRows,
   objectivesBySpan,
   PERSON_FIRST,
+  proposedCurve,
+  standardLetters,
   PERSON_NAME,
   skillStrandOf,
   skillTitleOf,
   termById,
+  termCurve,
   termRoster,
   termsFor,
   toSuggestionResource,
@@ -52,6 +56,13 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
+import {
+  curveLetters,
+  curveSentence,
+  type CurveLetter,
+} from "./grade-curve.js";
+import { helpWeeks } from "./help-events.js";
+import { practiced } from "./practice-rules.js";
 import {
   todayTodos,
   weekStart,
@@ -280,7 +291,7 @@ export async function readToday(
         (sum, student) => sum + student.objectivesThisWeek,
         0,
       ),
-      working: week.filter((row) => row.problems > 0 || row.activeMinutes > 0)
+      working: week.filter((row) => practiced(row.activeMinutes, row.problems))
         .length,
       students: named.length,
     },
@@ -389,12 +400,15 @@ export async function readGradebook(
     : currentTerm(terms, context.today);
   const target = await weeklyTargetFor(pool, context);
   const rows = term ? await gradebookRows(pool, context, term, target) : [];
+  const own = term ? await termCurve(pool, context, term, rows) : null;
   return {
     class: classSummaryOf(context),
     terms,
     term,
     weeklyTargetMinutes: target.minutes,
     targetLocked: target.locked,
+    targetOwn: target.own,
+    inheritedTargetMinutes: target.inherited,
     canEdit,
     students: rows.map(({ student, suggestion, final }) => ({
       id: student.id,
@@ -404,6 +418,20 @@ export async function readGradebook(
       suggestion: toSuggestionResource(suggestion),
       final,
     })),
+    curve:
+      term && rows.length
+        ? {
+            own,
+            proposed: proposedCurve(rows),
+            standard: Object.fromEntries(
+              curveLetters.map((letter) => [
+                letter,
+                standardLetters(rows).filter((found) => found === letter)
+                  .length,
+              ]),
+            ) as Record<CurveLetter, number>,
+          }
+        : null,
   };
 }
 
@@ -415,7 +443,11 @@ const COMPONENT_LABELS: Record<GradeComponentId, string> = {
 };
 const WORK_PAGE = 12;
 /** "Why a B?", or "Why B to A−?" when the range spans letters. */
-function whyQuestion(letters: string | null): string {
+function whyQuestion(
+  letters: string | null,
+  status: GradeSuggestion["status"],
+): string {
+  if (status === "facts-only") return "What the work shows";
   if (!letters) return "Why no range yet?";
   if (letters.includes(" to ")) return `Why ${letters}?`;
   return `Why ${/^[AF]/.test(letters) ? "an" : "a"} ${letters}?`;
@@ -474,12 +506,20 @@ export async function readEvidence(
     canEdit: canEdit && term.state === "open",
     final: row.final,
     suggestion: resource,
-    question: whyQuestion(rangeLetters(row.suggestion)),
-    lines: row.suggestion.components.map((component) => ({
+    question: whyQuestion(rangeLetters(row.suggestion), row.suggestion.status),
+    basis:
+      row.suggestion.curve && row.suggestion.status === "ready"
+        ? curveSentence({
+            ...row.suggestion.curve,
+            letterHigh: row.suggestion.letterHigh!,
+            letterLow: row.suggestion.letterLow!,
+          })
+        : null,
+    lines: row.suggestion.components.map((component, index) => ({
       id: component.id,
       label: COMPONENT_LABELS[component.id],
       weight: component.weight,
-      score: component.score,
+      score: resource.components[index]!.score,
       sentence: componentSentence(component),
     })),
     joined: row.beginOn && row.beginOn > term.startsOn ? row.beginOn : null,
@@ -537,10 +577,20 @@ export async function readTime(
   const range = await periodRange(pool, context, period);
   const students = await termRoster(pool, context.id, range);
   const roster = asMembers(students);
-  const [days, skills, target] = await Promise.all([
+  const weeks = mondays(range);
+  const [days, skills, target, help] = await Promise.all([
     perDay(pool, roster, range),
     perSkill(pool, roster, range),
     weeklyTargetFor(pool, context),
+    helpWeeks(
+      pool,
+      students.map((student) => ({
+        learnerId: student.learnerId,
+        from: student.from,
+        to: student.to,
+      })),
+      weeks,
+    ),
   ]);
   const spanOf = new Map(students.map((student) => [student.id, student]));
   const enrolled = days.filter((row) => {
@@ -559,8 +609,9 @@ export async function readTime(
     class: classSummaryOf(context),
     period,
     range,
-    weeks: mondays(range),
+    weeks,
     weeklyTargetMinutes: target.minutes,
+    help,
     students: students.map((student) => {
       const rows = enrolled.filter((row) => row.personId === student.id);
       return {
@@ -571,7 +622,13 @@ export async function readTime(
           rows.reduce((sum, row) => sum + row.activeMinutes, 0),
         ),
         problems: rows.reduce((sum, row) => sum + row.problems, 0),
-        days: rows.map((row) => ({ day: row.day, minutes: row.activeMinutes })),
+        from: student.from,
+        to: student.to,
+        days: rows.map((row) => ({
+          day: row.day,
+          minutes: row.activeMinutes,
+          problems: row.problems,
+        })),
       };
     }),
     skills: [...skillTotals.entries()]
@@ -800,7 +857,11 @@ export async function readStudentRecord(
   const course =
     contexts.map((context) => courseBand(context.courseBands)).find(Boolean) ??
     null;
-  const [progress, signIn, gradeRows] = await Promise.all([
+  const helpWeekList = mondays({
+    from: shift(weekStart(today), -7 * 11),
+    to: today,
+  });
+  const [progress, signIn, gradeRows, help] = await Promise.all([
     readProgress(
       pool,
       {
@@ -857,6 +918,11 @@ export async function readStudentRecord(
           );
         }),
     ),
+    helpWeeks(
+      pool,
+      [{ learnerId: person.learnerId, from: helpWeekList[0]!, to: today }],
+      helpWeekList,
+    ),
   ]);
   const flags = signIn.rows[0];
   return {
@@ -875,6 +941,7 @@ export async function readStudentRecord(
     })),
     ...progress,
     grades: gradeRows.flat(2),
+    help,
     signIn: {
       cardIssuedAt: flags.cardIssuedAt?.toISOString() ?? null,
       picturesSet: flags.picturesSet,

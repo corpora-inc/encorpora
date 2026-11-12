@@ -10,7 +10,7 @@ import { schoolShellReview } from "./school-shell-review";
  * docs/reviews/school-org/ for a person to look at.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-org-ui.ts \
- *       [--engine chromium|webkit] [--widths 390,1280] [--themes light,dark] [--skip-sweep] [--skip-journey] [--measure-only] [--small]
+ *       [--engine chromium|webkit] [--widths 390,1280] [--themes light,dark] [--skip-sweep] [--skip-journey] [--measure-only] [--small] [--keep]
  */
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
@@ -508,7 +508,8 @@ async function sweep(
       width,
       theme,
       `/school/${school}`,
-      /^Good /,
+      // An overview's heading is the school's own name.
+      /^Alder Street School$/,
     );
     const logoBefore = await boxes(page, "[data-app-bar] [data-app-logo]");
     await page.getByRole("button", { name: "Open AMP menu" }).click();
@@ -535,7 +536,9 @@ async function sweep(
     releasePlaces!();
     const readyDrawer = page.getByRole("dialog");
     await readyDrawer.waitFor();
-    await readyDrawer.getByRole("link", { name: /^Class,/ }).waitFor();
+    // The drawer names the place on screen: a school shows its School item,
+    // never a class (docs/design/ia.md).
+    await readyDrawer.getByRole("link", { name: /^School,/ }).waitFor();
     await readyDrawer.getByRole("button", { name: /switch place$/ }).click();
     await settled(page);
     const menuBefore = await boxes(page, '[role="menu"]');
@@ -557,7 +560,7 @@ async function sweep(
       width,
       theme,
       `/school/${district}`,
-      /^Good /,
+      /^Juniper Valley Schools$/,
     );
     await viewScreen(
       page,
@@ -567,7 +570,7 @@ async function sweep(
       width,
       theme,
       `/school/${districtSchool}`,
-      /^Good /,
+      / (Elementary|Middle School|High School)$/,
     );
     await page.getByRole("button", { name: "Open AMP menu" }).click();
     const drawer = page.getByRole("dialog");
@@ -809,19 +812,19 @@ async function journey(browser: Browser, engine: string) {
 
     // The overview: a head's morning read, with one action on each item.
     await page.goto(`${origin}/school/${north.id}`);
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     await page.getByText(/students practiced this week/).waitFor();
     await page.getByRole("heading", { name: "Needs attention" }).waitFor();
     await page.getByRole("link", { name: "See who" }).click();
     await page.waitForURL(/status=never-signed-in/);
     await page.getByText("who haven’t signed in yet").waitFor();
     await page.goBack();
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     // The class row opens the class.
     await page.getByRole("link", { name: "Grade 5 Math" }).first().click();
     await page.waitForURL(`**/classes/${math.id}/today`);
     await page.goBack();
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     // A one-class solo school never sees any of it.
     const solo = await schools.createOrg(
       { kind: "school", name: "Just One Class", timezone: "UTC" },
@@ -960,7 +963,9 @@ async function journey(browser: Browser, engine: string) {
       .getByRole("radiogroup", { name: "Google sign-in" })
       .getByRole("radio", { name: "On" })
       .click();
-    await page.getByText("Google sign-in is on").waitFor();
+    await page
+      .getByText("Google sign-in is on.", { exact: true })
+      .waitFor();
     const student = await browser.newContext({
       viewport: { width: 390, height: 844 },
     });
@@ -1167,7 +1172,9 @@ try {
   await api.close();
   await new Promise((done) => providerServer.close(done));
   await learning.pool.end();
-  await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+  // `--keep` leaves the district for profiling its reads.
+  if (process.argv.includes("--keep")) console.log(`Kept schema ${schema}`);
+  else await admin.query(`DROP SCHEMA ${schema} CASCADE`);
   await admin.end();
 }
 process.exit(exit);

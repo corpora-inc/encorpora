@@ -1,7 +1,6 @@
 import { queryOptions, useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { ownPracticeResponse } from "../../../account/adult-contracts";
-import type { AdultStart } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
@@ -35,13 +34,15 @@ function deviceTimeZone() {
  * they are and the learner practicing, with `/me` refreshed everywhere. */
 export function useStartOwnPractice(session: AuthSession) {
   return useMutation({
-    mutationFn: async (start: AdultStart) => {
+    // The year is enough: the server sets where it starts (an adult's
+    // mid-scale) and practice finds the level from the first answers.
+    mutationFn: async (birthYear: number) => {
       const { learnerId } = await request(
         "/me/practice",
         z.object({ learnerId: z.string() }),
         {
           token: session.token,
-          body: { start, timezone: deviceTimeZone() },
+          body: { birthYear, timezone: deviceTimeZone() },
         },
       );
       useLearnerStore.getState().select(learnerId);

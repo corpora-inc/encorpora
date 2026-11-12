@@ -1,3 +1,4 @@
+import { schoolGrading, setSchoolGrading } from "./grading-default.js";
 import type { FastifyInstance } from "fastify";
 import { schoolActions, SchoolError, type SchoolAction } from "./contracts.js";
 import { can, type SchoolTarget } from "./authz.js";
@@ -226,6 +227,31 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
   });
 
   /* Calendar. */
+  // The school's grading periods, set once for every class (grading-default).
+  define({
+    method: "GET",
+    url: "/api/v1/school/orgs/:org/grading",
+    action: "calendar.read",
+    target: orgParam,
+    handler: async ({ target, repository }) => ({
+      grading: await schoolGrading(repository.pool, target.orgId),
+    }),
+  });
+  define({
+    method: "POST",
+    url: "/api/v1/school/orgs/:org/grading",
+    action: "calendar.write",
+    target: orgParam,
+    bodyLimit: 256,
+    handler: async (context) => ({
+      grading: await setSchoolGrading(
+        context.repository,
+        context.target.orgId,
+        context.request.body,
+        who(context),
+      ),
+    }),
+  });
   define({
     method: "GET",
     url: "/api/v1/school/orgs/:org/calendar",
