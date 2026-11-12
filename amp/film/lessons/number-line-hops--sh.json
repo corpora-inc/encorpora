@@ -1,0 +1,4080 @@
+{
+  "id": "number-line-hops--sh",
+  "title": "Add and subtract with number-line hops",
+  "teaches": [
+    "number-line-missing-hop",
+    "number-line-jump-story"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          58.1,
+          -5.3999999999999995,
+          91.9,
+          10.65
+        ],
+        "points": {
+          "L": [
+            59.3,
+            0
+          ],
+          "R": [
+            90.7,
+            0
+          ],
+          "t60a": [
+            60,
+            0.85
+          ],
+          "t60b": [
+            60,
+            -0.85
+          ],
+          "ten60p": [
+            60,
+            -2.0
+          ],
+          "t61a": [
+            61,
+            0.35
+          ],
+          "t61b": [
+            61,
+            -0.35
+          ],
+          "t62a": [
+            62,
+            0.35
+          ],
+          "t62b": [
+            62,
+            -0.35
+          ],
+          "t63a": [
+            63,
+            0.35
+          ],
+          "t63b": [
+            63,
+            -0.35
+          ],
+          "t64a": [
+            64,
+            0.35
+          ],
+          "t64b": [
+            64,
+            -0.35
+          ],
+          "t65a": [
+            65,
+            0.55
+          ],
+          "t65b": [
+            65,
+            -0.55
+          ],
+          "t66a": [
+            66,
+            0.35
+          ],
+          "t66b": [
+            66,
+            -0.35
+          ],
+          "t67a": [
+            67,
+            0.35
+          ],
+          "t67b": [
+            67,
+            -0.35
+          ],
+          "t68a": [
+            68,
+            0.35
+          ],
+          "t68b": [
+            68,
+            -0.35
+          ],
+          "t69a": [
+            69,
+            0.35
+          ],
+          "t69b": [
+            69,
+            -0.35
+          ],
+          "t70a": [
+            70,
+            0.85
+          ],
+          "t70b": [
+            70,
+            -0.85
+          ],
+          "ten70p": [
+            70,
+            -2.0
+          ],
+          "t71a": [
+            71,
+            0.35
+          ],
+          "t71b": [
+            71,
+            -0.35
+          ],
+          "t72a": [
+            72,
+            0.35
+          ],
+          "t72b": [
+            72,
+            -0.35
+          ],
+          "t73a": [
+            73,
+            0.35
+          ],
+          "t73b": [
+            73,
+            -0.35
+          ],
+          "t74a": [
+            74,
+            0.35
+          ],
+          "t74b": [
+            74,
+            -0.35
+          ],
+          "t75a": [
+            75,
+            0.55
+          ],
+          "t75b": [
+            75,
+            -0.55
+          ],
+          "t76a": [
+            76,
+            0.35
+          ],
+          "t76b": [
+            76,
+            -0.35
+          ],
+          "t77a": [
+            77,
+            0.35
+          ],
+          "t77b": [
+            77,
+            -0.35
+          ],
+          "t78a": [
+            78,
+            0.35
+          ],
+          "t78b": [
+            78,
+            -0.35
+          ],
+          "t79a": [
+            79,
+            0.35
+          ],
+          "t79b": [
+            79,
+            -0.35
+          ],
+          "t80a": [
+            80,
+            0.85
+          ],
+          "t80b": [
+            80,
+            -0.85
+          ],
+          "ten80p": [
+            80,
+            -2.0
+          ],
+          "t81a": [
+            81,
+            0.35
+          ],
+          "t81b": [
+            81,
+            -0.35
+          ],
+          "t82a": [
+            82,
+            0.35
+          ],
+          "t82b": [
+            82,
+            -0.35
+          ],
+          "t83a": [
+            83,
+            0.35
+          ],
+          "t83b": [
+            83,
+            -0.35
+          ],
+          "t84a": [
+            84,
+            0.35
+          ],
+          "t84b": [
+            84,
+            -0.35
+          ],
+          "t85a": [
+            85,
+            0.55
+          ],
+          "t85b": [
+            85,
+            -0.55
+          ],
+          "t86a": [
+            86,
+            0.35
+          ],
+          "t86b": [
+            86,
+            -0.35
+          ],
+          "t87a": [
+            87,
+            0.35
+          ],
+          "t87b": [
+            87,
+            -0.35
+          ],
+          "t88a": [
+            88,
+            0.35
+          ],
+          "t88b": [
+            88,
+            -0.35
+          ],
+          "t89a": [
+            89,
+            0.35
+          ],
+          "t89b": [
+            89,
+            -0.35
+          ],
+          "t90a": [
+            90,
+            0.85
+          ],
+          "t90b": [
+            90,
+            -0.85
+          ],
+          "ten90p": [
+            90,
+            -2.0
+          ],
+          "p63": [
+            63,
+            0
+          ],
+          "n63p": [
+            63,
+            -4.1
+          ],
+          "tens0": [
+            63.0,
+            0.0
+          ],
+          "tens1": [
+            63.0856,
+            0.3355
+          ],
+          "tens2": [
+            63.3407,
+            0.9455
+          ],
+          "tens3": [
+            63.7612,
+            1.7253
+          ],
+          "tens4": [
+            64.3397,
+            2.6264
+          ],
+          "tens5": [
+            65.0665,
+            3.6074
+          ],
+          "tens6": [
+            65.9289,
+            4.6235
+          ],
+          "tens7": [
+            66.9124,
+            5.6244
+          ],
+          "tens8": [
+            68.0,
+            6.5544
+          ],
+          "tens9": [
+            69.1732,
+            7.356
+          ],
+          "tens10": [
+            70.4118,
+            7.9749
+          ],
+          "tens11": [
+            71.6947,
+            8.3661
+          ],
+          "tens12": [
+            73.0,
+            8.5
+          ],
+          "tens13": [
+            74.3053,
+            8.3661
+          ],
+          "tens14": [
+            75.5882,
+            7.9749
+          ],
+          "tens15": [
+            76.8268,
+            7.356
+          ],
+          "tens16": [
+            78.0,
+            6.5544
+          ],
+          "tens17": [
+            79.0876,
+            5.6244
+          ],
+          "tens18": [
+            80.0711,
+            4.6235
+          ],
+          "tens19": [
+            80.9335,
+            3.6074
+          ],
+          "tens20": [
+            81.6603,
+            2.6264
+          ],
+          "tens21": [
+            82.2388,
+            1.7253
+          ],
+          "tens22": [
+            82.6593,
+            0.9455
+          ],
+          "tens23": [
+            82.9144,
+            0.3355
+          ],
+          "tens24": [
+            83.0,
+            0.0
+          ],
+          "tensw1": [
+            83.2396,
+            0.8912
+          ],
+          "tensw2": [
+            82.3503,
+            0.6554
+          ],
+          "tenslab": [
+            73.0,
+            9.75
+          ],
+          "p83": [
+            83,
+            0
+          ],
+          "n83p": [
+            83,
+            -4.1
+          ],
+          "ones0": [
+            83.0,
+            0.0
+          ],
+          "ones1": [
+            83.0214,
+            0.1263
+          ],
+          "ones2": [
+            83.0852,
+            0.356
+          ],
+          "ones3": [
+            83.1903,
+            0.6495
+          ],
+          "ones4": [
+            83.3349,
+            0.9888
+          ],
+          "ones5": [
+            83.5166,
+            1.3581
+          ],
+          "ones6": [
+            83.7322,
+            1.7406
+          ],
+          "ones7": [
+            83.9781,
+            2.1174
+          ],
+          "ones8": [
+            84.25,
+            2.4675
+          ],
+          "ones9": [
+            84.5433,
+            2.7693
+          ],
+          "ones10": [
+            84.853,
+            3.0023
+          ],
+          "ones11": [
+            85.1737,
+            3.1496
+          ],
+          "ones12": [
+            85.5,
+            3.2
+          ],
+          "ones13": [
+            85.8263,
+            3.1496
+          ],
+          "ones14": [
+            86.147,
+            3.0023
+          ],
+          "ones15": [
+            86.4567,
+            2.7693
+          ],
+          "ones16": [
+            86.75,
+            2.4675
+          ],
+          "ones17": [
+            87.0219,
+            2.1174
+          ],
+          "ones18": [
+            87.2678,
+            1.7406
+          ],
+          "ones19": [
+            87.4834,
+            1.3581
+          ],
+          "ones20": [
+            87.6651,
+            0.9888
+          ],
+          "ones21": [
+            87.8097,
+            0.6495
+          ],
+          "ones22": [
+            87.9148,
+            0.356
+          ],
+          "ones23": [
+            87.9786,
+            0.1263
+          ],
+          "ones24": [
+            88.0,
+            0.0
+          ],
+          "onesw1": [
+            88.3143,
+            0.8676
+          ],
+          "onesw2": [
+            87.4082,
+            0.7081
+          ],
+          "oneslab": [
+            85.5,
+            4.45
+          ],
+          "p88": [
+            88,
+            0
+          ],
+          "n88p": [
+            88,
+            -4.1
+          ],
+          "markerP": [
+            63,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tick60",
+            "seg": [
+              "t60a",
+              "t60b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten60",
+            "label": "60",
+            "at": "ten60p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick61",
+            "seg": [
+              "t61a",
+              "t61b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick62",
+            "seg": [
+              "t62a",
+              "t62b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick63",
+            "seg": [
+              "t63a",
+              "t63b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick64",
+            "seg": [
+              "t64a",
+              "t64b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick65",
+            "seg": [
+              "t65a",
+              "t65b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick66",
+            "seg": [
+              "t66a",
+              "t66b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick67",
+            "seg": [
+              "t67a",
+              "t67b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick68",
+            "seg": [
+              "t68a",
+              "t68b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick69",
+            "seg": [
+              "t69a",
+              "t69b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick70",
+            "seg": [
+              "t70a",
+              "t70b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten70",
+            "label": "70",
+            "at": "ten70p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick71",
+            "seg": [
+              "t71a",
+              "t71b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick72",
+            "seg": [
+              "t72a",
+              "t72b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick73",
+            "seg": [
+              "t73a",
+              "t73b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick74",
+            "seg": [
+              "t74a",
+              "t74b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick75",
+            "seg": [
+              "t75a",
+              "t75b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick76",
+            "seg": [
+              "t76a",
+              "t76b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick77",
+            "seg": [
+              "t77a",
+              "t77b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick78",
+            "seg": [
+              "t78a",
+              "t78b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick79",
+            "seg": [
+              "t79a",
+              "t79b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick80",
+            "seg": [
+              "t80a",
+              "t80b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten80",
+            "label": "80",
+            "at": "ten80p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick81",
+            "seg": [
+              "t81a",
+              "t81b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick82",
+            "seg": [
+              "t82a",
+              "t82b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick83",
+            "seg": [
+              "t83a",
+              "t83b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick84",
+            "seg": [
+              "t84a",
+              "t84b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick85",
+            "seg": [
+              "t85a",
+              "t85b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick86",
+            "seg": [
+              "t86a",
+              "t86b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick87",
+            "seg": [
+              "t87a",
+              "t87b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick88",
+            "seg": [
+              "t88a",
+              "t88b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick89",
+            "seg": [
+              "t89a",
+              "t89b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick90",
+            "seg": [
+              "t90a",
+              "t90b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten90",
+            "label": "90",
+            "at": "ten90p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dot63",
+            "dot": "p63",
+            "r": 7,
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "n63",
+            "label": "63",
+            "at": "n63p",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "tens",
+            "curve": [
+              "tens0",
+              "tens1",
+              "tens2",
+              "tens3",
+              "tens4",
+              "tens5",
+              "tens6",
+              "tens7",
+              "tens8",
+              "tens9",
+              "tens10",
+              "tens11",
+              "tens12",
+              "tens13",
+              "tens14",
+              "tens15",
+              "tens16",
+              "tens17",
+              "tens18",
+              "tens19",
+              "tens20",
+              "tens21",
+              "tens22",
+              "tens23",
+              "tens24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tensh1",
+            "seg": [
+              "tensw1",
+              "tens24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tensh2",
+            "seg": [
+              "tensw2",
+              "tens24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tenslabel",
+            "label": "+20",
+            "at": "tenslab",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "dot83",
+            "dot": "p83",
+            "r": 7,
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "n83",
+            "label": "83",
+            "at": "n83p",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "ones",
+            "curve": [
+              "ones0",
+              "ones1",
+              "ones2",
+              "ones3",
+              "ones4",
+              "ones5",
+              "ones6",
+              "ones7",
+              "ones8",
+              "ones9",
+              "ones10",
+              "ones11",
+              "ones12",
+              "ones13",
+              "ones14",
+              "ones15",
+              "ones16",
+              "ones17",
+              "ones18",
+              "ones19",
+              "ones20",
+              "ones21",
+              "ones22",
+              "ones23",
+              "ones24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "onesh1",
+            "seg": [
+              "onesw1",
+              "ones24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "onesh2",
+            "seg": [
+              "onesw2",
+              "ones24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "oneslabel",
+            "label": "+5",
+            "at": "oneslab",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "dot88",
+            "dot": "p88",
+            "r": 7,
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "n88",
+            "label": "88",
+            "at": "n88p",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "marker",
+            "dot": "markerP",
+            "r": 13,
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Adding and taking away become hops on a number line. The numbers are one step apart, and they get bigger to the right.",
+          "do": [
+            {
+              "do": "text",
+              "at": "step",
+              "text": "Numbers one step apart"
+            },
+            {
+              "do": "text",
+              "at": "bigger",
+              "text": "Bigger to the right $\\rightarrow$"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "A hop's length is how many steps it covers. Forward hops go to the right and add. Back hops go to the left and take away.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "hop's"
+            },
+            {
+              "do": "text",
+              "at": "hop's",
+              "text": "Length: the steps a hop covers"
+            },
+            {
+              "do": "text",
+              "at": "Forward",
+              "text": "Forward: to the right, add"
+            },
+            {
+              "do": "text",
+              "at": "Back",
+              "text": "Back: to the left, take away"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start at sixty-three. Hop forward twenty, then forward five. Where do you land?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Start"
+            },
+            {
+              "do": "problem",
+              "at": "Start",
+              "text": "Start at $63$. Hop forward $20$, then forward $5$. Where do you land?"
+            },
+            {
+              "do": "show",
+              "at": "sixty-three",
+              "target": [
+                "dot63",
+                "n63",
+                "marker"
+              ]
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Hop the tens first: twenty is two tens. Sixty-three hops to eighty-three. Only the tens digit changes, and the three ones stay the same.",
+          "do": [
+            {
+              "do": "highlight",
+              "at": "tens",
+              "target": "n63"
+            },
+            {
+              "do": "draw",
+              "at": "Sixty-three",
+              "target": "tens",
+              "dur": 1.0
+            },
+            {
+              "do": "move",
+              "at": "Sixty-three",
+              "points": {
+                "markerP": [
+                  83,
+                  0
+                ]
+              },
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "eighty-three",
+              "target": [
+                "tensh1",
+                "tensh2",
+                "tenslabel",
+                "dot83",
+                "n83"
+              ]
+            },
+            {
+              "do": "write",
+              "at": "eighty-three",
+              "tex": "63+\\cb{20}=83"
+            },
+            {
+              "do": "highlight",
+              "at": "Only",
+              "target": "n83"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Then the five ones take us from eighty-three to eighty-eight, the landing number.",
+          "do": [
+            {
+              "do": "draw",
+              "at": "five",
+              "target": "ones",
+              "dur": 1.0
+            },
+            {
+              "do": "move",
+              "at": "five",
+              "points": {
+                "markerP": [
+                  88,
+                  0
+                ]
+              },
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "eighty-eight",
+              "target": [
+                "onesh1",
+                "onesh2",
+                "oneslabel",
+                "dot88",
+                "n88"
+              ]
+            },
+            {
+              "do": "write",
+              "at": "eighty-eight",
+              "tex": "83+\\cv{5}=88"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty and five make twenty-five, so sixty-three plus twenty-five is eighty-eight in all.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Twenty"
+            },
+            {
+              "do": "write",
+              "at": "Twenty",
+              "tex": "\\cb{20}+\\cv{5}=25",
+              "note": "\\text{both hops}"
+            },
+            {
+              "do": "answer",
+              "at": "sixty-three",
+              "tex": "63+25=88"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          23.1,
+          -5.3999999999999995,
+          61.9,
+          12.65
+        ],
+        "points": {
+          "L": [
+            24.3,
+            0
+          ],
+          "R": [
+            61.300000000000004,
+            0
+          ],
+          "t25a": [
+            25,
+            0.55
+          ],
+          "t25b": [
+            25,
+            -0.55
+          ],
+          "t26a": [
+            26,
+            0.35
+          ],
+          "t26b": [
+            26,
+            -0.35
+          ],
+          "t27a": [
+            27,
+            0.35
+          ],
+          "t27b": [
+            27,
+            -0.35
+          ],
+          "t28a": [
+            28,
+            0.35
+          ],
+          "t28b": [
+            28,
+            -0.35
+          ],
+          "t29a": [
+            29,
+            0.35
+          ],
+          "t29b": [
+            29,
+            -0.35
+          ],
+          "t30a": [
+            30,
+            0.85
+          ],
+          "t30b": [
+            30,
+            -0.85
+          ],
+          "ten30p": [
+            30,
+            -2.0
+          ],
+          "t31a": [
+            31,
+            0.35
+          ],
+          "t31b": [
+            31,
+            -0.35
+          ],
+          "t32a": [
+            32,
+            0.35
+          ],
+          "t32b": [
+            32,
+            -0.35
+          ],
+          "t33a": [
+            33,
+            0.35
+          ],
+          "t33b": [
+            33,
+            -0.35
+          ],
+          "t34a": [
+            34,
+            0.35
+          ],
+          "t34b": [
+            34,
+            -0.35
+          ],
+          "t35a": [
+            35,
+            0.55
+          ],
+          "t35b": [
+            35,
+            -0.55
+          ],
+          "t36a": [
+            36,
+            0.35
+          ],
+          "t36b": [
+            36,
+            -0.35
+          ],
+          "t37a": [
+            37,
+            0.35
+          ],
+          "t37b": [
+            37,
+            -0.35
+          ],
+          "t38a": [
+            38,
+            0.35
+          ],
+          "t38b": [
+            38,
+            -0.35
+          ],
+          "t39a": [
+            39,
+            0.35
+          ],
+          "t39b": [
+            39,
+            -0.35
+          ],
+          "t40a": [
+            40,
+            0.85
+          ],
+          "t40b": [
+            40,
+            -0.85
+          ],
+          "ten40p": [
+            40,
+            -2.0
+          ],
+          "t41a": [
+            41,
+            0.35
+          ],
+          "t41b": [
+            41,
+            -0.35
+          ],
+          "t42a": [
+            42,
+            0.35
+          ],
+          "t42b": [
+            42,
+            -0.35
+          ],
+          "t43a": [
+            43,
+            0.35
+          ],
+          "t43b": [
+            43,
+            -0.35
+          ],
+          "t44a": [
+            44,
+            0.35
+          ],
+          "t44b": [
+            44,
+            -0.35
+          ],
+          "t45a": [
+            45,
+            0.55
+          ],
+          "t45b": [
+            45,
+            -0.55
+          ],
+          "t46a": [
+            46,
+            0.35
+          ],
+          "t46b": [
+            46,
+            -0.35
+          ],
+          "t47a": [
+            47,
+            0.35
+          ],
+          "t47b": [
+            47,
+            -0.35
+          ],
+          "t48a": [
+            48,
+            0.35
+          ],
+          "t48b": [
+            48,
+            -0.35
+          ],
+          "t49a": [
+            49,
+            0.35
+          ],
+          "t49b": [
+            49,
+            -0.35
+          ],
+          "t50a": [
+            50,
+            0.85
+          ],
+          "t50b": [
+            50,
+            -0.85
+          ],
+          "ten50p": [
+            50,
+            -2.0
+          ],
+          "t51a": [
+            51,
+            0.35
+          ],
+          "t51b": [
+            51,
+            -0.35
+          ],
+          "t52a": [
+            52,
+            0.35
+          ],
+          "t52b": [
+            52,
+            -0.35
+          ],
+          "t53a": [
+            53,
+            0.35
+          ],
+          "t53b": [
+            53,
+            -0.35
+          ],
+          "t54a": [
+            54,
+            0.35
+          ],
+          "t54b": [
+            54,
+            -0.35
+          ],
+          "t55a": [
+            55,
+            0.55
+          ],
+          "t55b": [
+            55,
+            -0.55
+          ],
+          "t56a": [
+            56,
+            0.35
+          ],
+          "t56b": [
+            56,
+            -0.35
+          ],
+          "t57a": [
+            57,
+            0.35
+          ],
+          "t57b": [
+            57,
+            -0.35
+          ],
+          "t58a": [
+            58,
+            0.35
+          ],
+          "t58b": [
+            58,
+            -0.35
+          ],
+          "t59a": [
+            59,
+            0.35
+          ],
+          "t59b": [
+            59,
+            -0.35
+          ],
+          "t60a": [
+            60,
+            0.85
+          ],
+          "t60b": [
+            60,
+            -0.85
+          ],
+          "ten60p": [
+            60,
+            -2.0
+          ],
+          "p56": [
+            56,
+            0
+          ],
+          "n56p": [
+            56,
+            -4.1
+          ],
+          "back0": [
+            56.0,
+            0.0
+          ],
+          "back1": [
+            55.8802,
+            0.791
+          ],
+          "back2": [
+            55.523,
+            1.8121
+          ],
+          "back3": [
+            54.9343,
+            2.9318
+          ],
+          "back4": [
+            54.1244,
+            4.1034
+          ],
+          "back5": [
+            53.1069,
+            5.2894
+          ],
+          "back6": [
+            51.8995,
+            6.451
+          ],
+          "back7": [
+            50.5227,
+            7.5459
+          ],
+          "back8": [
+            49.0,
+            8.5287
+          ],
+          "back9": [
+            47.3576,
+            9.3534
+          ],
+          "back10": [
+            45.6235,
+            9.9778
+          ],
+          "back11": [
+            43.8274,
+            10.3675
+          ],
+          "back12": [
+            42.0,
+            10.5
+          ],
+          "back13": [
+            40.1726,
+            10.3675
+          ],
+          "back14": [
+            38.3765,
+            9.9778
+          ],
+          "back15": [
+            36.6424,
+            9.3534
+          ],
+          "back16": [
+            35.0,
+            8.5287
+          ],
+          "back17": [
+            33.4773,
+            7.5459
+          ],
+          "back18": [
+            32.1005,
+            6.451
+          ],
+          "back19": [
+            30.8931,
+            5.2894
+          ],
+          "back20": [
+            29.8756,
+            4.1034
+          ],
+          "back21": [
+            29.0657,
+            2.9318
+          ],
+          "back22": [
+            28.477,
+            1.8121
+          ],
+          "back23": [
+            28.1198,
+            0.791
+          ],
+          "back24": [
+            28.0,
+            0.0
+          ],
+          "backw1": [
+            28.5814,
+            0.7166
+          ],
+          "backw2": [
+            27.6732,
+            0.863
+          ],
+          "backlab": [
+            42.0,
+            11.75
+          ],
+          "p28": [
+            28,
+            0
+          ],
+          "n28p": [
+            28,
+            -4.1
+          ],
+          "earn0": [
+            28.0,
+            0.0
+          ],
+          "earn1": [
+            28.0342,
+            0.0947
+          ],
+          "earn2": [
+            28.1363,
+            0.267
+          ],
+          "earn3": [
+            28.3045,
+            0.4871
+          ],
+          "earn4": [
+            28.5359,
+            0.7416
+          ],
+          "earn5": [
+            28.8266,
+            1.0185
+          ],
+          "earn6": [
+            29.1716,
+            1.3054
+          ],
+          "earn7": [
+            29.565,
+            1.5881
+          ],
+          "earn8": [
+            30.0,
+            1.8507
+          ],
+          "earn9": [
+            30.4693,
+            2.077
+          ],
+          "earn10": [
+            30.9647,
+            2.2517
+          ],
+          "earn11": [
+            31.4779,
+            2.3622
+          ],
+          "earn12": [
+            32.0,
+            2.4
+          ],
+          "earn13": [
+            32.5221,
+            2.3622
+          ],
+          "earn14": [
+            33.0353,
+            2.2517
+          ],
+          "earn15": [
+            33.5307,
+            2.077
+          ],
+          "earn16": [
+            34.0,
+            1.8507
+          ],
+          "earn17": [
+            34.435,
+            1.5881
+          ],
+          "earn18": [
+            34.8284,
+            1.3054
+          ],
+          "earn19": [
+            35.1734,
+            1.0185
+          ],
+          "earn20": [
+            35.4641,
+            0.7416
+          ],
+          "earn21": [
+            35.6955,
+            0.4871
+          ],
+          "earn22": [
+            35.8637,
+            0.267
+          ],
+          "earn23": [
+            35.9658,
+            0.0947
+          ],
+          "earn24": [
+            36.0,
+            0.0
+          ],
+          "earnw1": [
+            36.1493,
+            0.9107
+          ],
+          "earnw2": [
+            35.2881,
+            0.5871
+          ],
+          "earnlab": [
+            32.8,
+            3.6
+          ],
+          "p36": [
+            36,
+            0
+          ],
+          "n36p": [
+            36,
+            -4.1
+          ],
+          "markerP": [
+            56,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tick25",
+            "seg": [
+              "t25a",
+              "t25b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick26",
+            "seg": [
+              "t26a",
+              "t26b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick27",
+            "seg": [
+              "t27a",
+              "t27b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick28",
+            "seg": [
+              "t28a",
+              "t28b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick29",
+            "seg": [
+              "t29a",
+              "t29b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick30",
+            "seg": [
+              "t30a",
+              "t30b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten30",
+            "label": "30",
+            "at": "ten30p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick31",
+            "seg": [
+              "t31a",
+              "t31b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick32",
+            "seg": [
+              "t32a",
+              "t32b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick33",
+            "seg": [
+              "t33a",
+              "t33b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick34",
+            "seg": [
+              "t34a",
+              "t34b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick35",
+            "seg": [
+              "t35a",
+              "t35b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick36",
+            "seg": [
+              "t36a",
+              "t36b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick37",
+            "seg": [
+              "t37a",
+              "t37b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick38",
+            "seg": [
+              "t38a",
+              "t38b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick39",
+            "seg": [
+              "t39a",
+              "t39b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick40",
+            "seg": [
+              "t40a",
+              "t40b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten40",
+            "label": "40",
+            "at": "ten40p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick41",
+            "seg": [
+              "t41a",
+              "t41b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick42",
+            "seg": [
+              "t42a",
+              "t42b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick43",
+            "seg": [
+              "t43a",
+              "t43b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick44",
+            "seg": [
+              "t44a",
+              "t44b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick45",
+            "seg": [
+              "t45a",
+              "t45b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick46",
+            "seg": [
+              "t46a",
+              "t46b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick47",
+            "seg": [
+              "t47a",
+              "t47b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick48",
+            "seg": [
+              "t48a",
+              "t48b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick49",
+            "seg": [
+              "t49a",
+              "t49b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick50",
+            "seg": [
+              "t50a",
+              "t50b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten50",
+            "label": "50",
+            "at": "ten50p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick51",
+            "seg": [
+              "t51a",
+              "t51b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick52",
+            "seg": [
+              "t52a",
+              "t52b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick53",
+            "seg": [
+              "t53a",
+              "t53b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick54",
+            "seg": [
+              "t54a",
+              "t54b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick55",
+            "seg": [
+              "t55a",
+              "t55b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick56",
+            "seg": [
+              "t56a",
+              "t56b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick57",
+            "seg": [
+              "t57a",
+              "t57b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick58",
+            "seg": [
+              "t58a",
+              "t58b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick59",
+            "seg": [
+              "t59a",
+              "t59b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick60",
+            "seg": [
+              "t60a",
+              "t60b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten60",
+            "label": "60",
+            "at": "ten60p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dot56",
+            "dot": "p56",
+            "r": 7,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "n56",
+            "label": "56",
+            "at": "n56p",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "back",
+            "curve": [
+              "back0",
+              "back1",
+              "back2",
+              "back3",
+              "back4",
+              "back5",
+              "back6",
+              "back7",
+              "back8",
+              "back9",
+              "back10",
+              "back11",
+              "back12",
+              "back13",
+              "back14",
+              "back15",
+              "back16",
+              "back17",
+              "back18",
+              "back19",
+              "back20",
+              "back21",
+              "back22",
+              "back23",
+              "back24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "backh1",
+            "seg": [
+              "backw1",
+              "back24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "backh2",
+            "seg": [
+              "backw2",
+              "back24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "backlabel",
+            "label": "28",
+            "at": "backlab",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "dot28",
+            "dot": "p28",
+            "r": 7,
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "n28",
+            "label": "28",
+            "at": "n28p",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "earn",
+            "curve": [
+              "earn0",
+              "earn1",
+              "earn2",
+              "earn3",
+              "earn4",
+              "earn5",
+              "earn6",
+              "earn7",
+              "earn8",
+              "earn9",
+              "earn10",
+              "earn11",
+              "earn12",
+              "earn13",
+              "earn14",
+              "earn15",
+              "earn16",
+              "earn17",
+              "earn18",
+              "earn19",
+              "earn20",
+              "earn21",
+              "earn22",
+              "earn23",
+              "earn24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "earnh1",
+            "seg": [
+              "earnw1",
+              "earn24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "earnh2",
+            "seg": [
+              "earnw2",
+              "earn24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "earnlabel",
+            "label": "8",
+            "at": "earnlab",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "dot36",
+            "dot": "p36",
+            "r": 7,
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "n36",
+            "label": "36",
+            "at": "n36p",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "marker",
+            "dot": "markerP",
+            "r": 13,
+            "ink": "accent",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The number line shows two jumps that start at fifty-six. Which story matches the jumps?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "The"
+            },
+            {
+              "do": "problem",
+              "at": "The",
+              "text": "The number line shows two jumps that start at $56$. Which story matches the jumps?"
+            },
+            {
+              "do": "draw",
+              "at": "shows",
+              "target": "back",
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "start",
+              "target": [
+                "backh1",
+                "backh2",
+                "backlabel"
+              ]
+            },
+            {
+              "do": "draw",
+              "at": "start",
+              "target": "earn",
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "Which",
+              "target": [
+                "earnh1",
+                "earnh2",
+                "earnlabel"
+              ]
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "She earns twenty-eight, then earns eight more.",
+          "do": [
+            {
+              "do": "text",
+              "at": "earns",
+              "text": "She earns $28$, then earns $8$ more.",
+              "id": "slip"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The first jump goes to the left, toward the smaller numbers, so it takes away. She spends twenty-eight.",
+          "do": [
+            {
+              "do": "highlight",
+              "at": "first",
+              "target": "back"
+            },
+            {
+              "do": "strike",
+              "at": "left",
+              "target": "slip"
+            },
+            {
+              "do": "move",
+              "at": "takes",
+              "points": {
+                "markerP": [
+                  28,
+                  0
+                ]
+              }
+            },
+            {
+              "do": "show",
+              "at": "away",
+              "target": [
+                "dot28",
+                "n28"
+              ]
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The second jump goes to the right, so it adds. She earns eight more.",
+          "do": [
+            {
+              "do": "highlight",
+              "at": "second",
+              "target": "earn"
+            },
+            {
+              "do": "move",
+              "at": "adds",
+              "points": {
+                "markerP": [
+                  36,
+                  0
+                ]
+              }
+            },
+            {
+              "do": "show",
+              "at": "adds",
+              "target": [
+                "dot36",
+                "n36"
+              ]
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Maya has fifty-six dollars. She spends twenty-eight, then earns eight more. Same start, same amounts, same order.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Maya"
+            },
+            {
+              "do": "text",
+              "at": "Maya",
+              "text": "Maya has $56$ dollars. She spends $28$, then earns $8$ more."
+            },
+            {
+              "do": "text",
+              "at": "Same",
+              "text": "Same start, amounts and order"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          73.1,
+          -5.3999999999999995,
+          101.9,
+          13.15
+        ],
+        "points": {
+          "L": [
+            74.3,
+            0
+          ],
+          "R": [
+            101.60000000000001,
+            0
+          ],
+          "t75a": [
+            75,
+            0.55
+          ],
+          "t75b": [
+            75,
+            -0.55
+          ],
+          "t76a": [
+            76,
+            0.35
+          ],
+          "t76b": [
+            76,
+            -0.35
+          ],
+          "t77a": [
+            77,
+            0.35
+          ],
+          "t77b": [
+            77,
+            -0.35
+          ],
+          "t78a": [
+            78,
+            0.35
+          ],
+          "t78b": [
+            78,
+            -0.35
+          ],
+          "t79a": [
+            79,
+            0.35
+          ],
+          "t79b": [
+            79,
+            -0.35
+          ],
+          "t80a": [
+            80,
+            0.85
+          ],
+          "t80b": [
+            80,
+            -0.85
+          ],
+          "ten80p": [
+            80,
+            -2.0
+          ],
+          "t81a": [
+            81,
+            0.35
+          ],
+          "t81b": [
+            81,
+            -0.35
+          ],
+          "t82a": [
+            82,
+            0.35
+          ],
+          "t82b": [
+            82,
+            -0.35
+          ],
+          "t83a": [
+            83,
+            0.35
+          ],
+          "t83b": [
+            83,
+            -0.35
+          ],
+          "t84a": [
+            84,
+            0.35
+          ],
+          "t84b": [
+            84,
+            -0.35
+          ],
+          "t85a": [
+            85,
+            0.55
+          ],
+          "t85b": [
+            85,
+            -0.55
+          ],
+          "t86a": [
+            86,
+            0.35
+          ],
+          "t86b": [
+            86,
+            -0.35
+          ],
+          "t87a": [
+            87,
+            0.35
+          ],
+          "t87b": [
+            87,
+            -0.35
+          ],
+          "t88a": [
+            88,
+            0.35
+          ],
+          "t88b": [
+            88,
+            -0.35
+          ],
+          "t89a": [
+            89,
+            0.35
+          ],
+          "t89b": [
+            89,
+            -0.35
+          ],
+          "t90a": [
+            90,
+            0.85
+          ],
+          "t90b": [
+            90,
+            -0.85
+          ],
+          "ten90p": [
+            90,
+            -2.0
+          ],
+          "t91a": [
+            91,
+            0.35
+          ],
+          "t91b": [
+            91,
+            -0.35
+          ],
+          "t92a": [
+            92,
+            0.35
+          ],
+          "t92b": [
+            92,
+            -0.35
+          ],
+          "t93a": [
+            93,
+            0.35
+          ],
+          "t93b": [
+            93,
+            -0.35
+          ],
+          "t94a": [
+            94,
+            0.35
+          ],
+          "t94b": [
+            94,
+            -0.35
+          ],
+          "t95a": [
+            95,
+            0.55
+          ],
+          "t95b": [
+            95,
+            -0.55
+          ],
+          "t96a": [
+            96,
+            0.35
+          ],
+          "t96b": [
+            96,
+            -0.35
+          ],
+          "t97a": [
+            97,
+            0.35
+          ],
+          "t97b": [
+            97,
+            -0.35
+          ],
+          "t98a": [
+            98,
+            0.35
+          ],
+          "t98b": [
+            98,
+            -0.35
+          ],
+          "t99a": [
+            99,
+            0.35
+          ],
+          "t99b": [
+            99,
+            -0.35
+          ],
+          "t100a": [
+            100,
+            0.85
+          ],
+          "t100b": [
+            100,
+            -0.85
+          ],
+          "ten100p": [
+            100,
+            -2.0
+          ],
+          "p95": [
+            95,
+            0
+          ],
+          "n95p": [
+            95,
+            -4.1
+          ],
+          "whole0": [
+            95.0,
+            0.0
+          ],
+          "whole1": [
+            94.9316,
+            1.2751
+          ],
+          "whole2": [
+            94.7274,
+            2.5443
+          ],
+          "whole3": [
+            94.391,
+            3.7991
+          ],
+          "whole4": [
+            93.9282,
+            5.0276
+          ],
+          "whole5": [
+            93.3468,
+            6.2121
+          ],
+          "whole6": [
+            92.6569,
+            7.3298
+          ],
+          "whole7": [
+            91.8701,
+            8.3527
+          ],
+          "whole8": [
+            91.0,
+            9.2499
+          ],
+          "whole9": [
+            90.0615,
+            9.9895
+          ],
+          "whole10": [
+            89.0706,
+            10.5422
+          ],
+          "whole11": [
+            88.0442,
+            10.8842
+          ],
+          "whole12": [
+            87.0,
+            11.0
+          ],
+          "whole13": [
+            85.9558,
+            10.8842
+          ],
+          "whole14": [
+            84.9294,
+            10.5422
+          ],
+          "whole15": [
+            83.9385,
+            9.9895
+          ],
+          "whole16": [
+            83.0,
+            9.2499
+          ],
+          "whole17": [
+            82.1299,
+            8.3527
+          ],
+          "whole18": [
+            81.3431,
+            7.3298
+          ],
+          "whole19": [
+            80.6532,
+            6.2121
+          ],
+          "whole20": [
+            80.0718,
+            5.0276
+          ],
+          "whole21": [
+            79.609,
+            3.7991
+          ],
+          "whole22": [
+            79.2726,
+            2.5443
+          ],
+          "whole23": [
+            79.0684,
+            1.2751
+          ],
+          "whole24": [
+            79.0,
+            0.0
+          ],
+          "wholew1": [
+            79.5056,
+            0.772
+          ],
+          "wholew2": [
+            78.5871,
+            0.8253
+          ],
+          "wholelab": [
+            87.0,
+            12.25
+          ],
+          "p79": [
+            79,
+            0
+          ],
+          "n79p": [
+            79,
+            -4.1
+          ],
+          "one0": [
+            79.0,
+            0.0
+          ],
+          "one1": [
+            79.0043,
+            0.0789
+          ],
+          "one2": [
+            79.017,
+            0.2225
+          ],
+          "one3": [
+            79.0381,
+            0.4059
+          ],
+          "one4": [
+            79.067,
+            0.618
+          ],
+          "one5": [
+            79.1033,
+            0.8488
+          ],
+          "one6": [
+            79.1464,
+            1.0879
+          ],
+          "one7": [
+            79.1956,
+            1.3234
+          ],
+          "one8": [
+            79.25,
+            1.5422
+          ],
+          "one9": [
+            79.3087,
+            1.7308
+          ],
+          "one10": [
+            79.3706,
+            1.8764
+          ],
+          "one11": [
+            79.4347,
+            1.9685
+          ],
+          "one12": [
+            79.5,
+            2.0
+          ],
+          "one13": [
+            79.5653,
+            1.9685
+          ],
+          "one14": [
+            79.6294,
+            1.8764
+          ],
+          "one15": [
+            79.6913,
+            1.7308
+          ],
+          "one16": [
+            79.75,
+            1.5422
+          ],
+          "one17": [
+            79.8044,
+            1.3234
+          ],
+          "one18": [
+            79.8536,
+            1.0879
+          ],
+          "one19": [
+            79.8967,
+            0.8488
+          ],
+          "one20": [
+            79.933,
+            0.618
+          ],
+          "one21": [
+            79.9619,
+            0.4059
+          ],
+          "one22": [
+            79.983,
+            0.2225
+          ],
+          "one23": [
+            79.9957,
+            0.0789
+          ],
+          "one24": [
+            80.0,
+            0.0
+          ],
+          "onew1": [
+            80.2848,
+            0.5669
+          ],
+          "onew2": [
+            79.6533,
+            0.5313
+          ],
+          "onelab": [
+            77.0,
+            2.4
+          ],
+          "ten0": [
+            80.0,
+            0.0
+          ],
+          "ten1": [
+            80.0428,
+            0.1737
+          ],
+          "ten2": [
+            80.1704,
+            0.4894
+          ],
+          "ten3": [
+            80.3806,
+            0.8931
+          ],
+          "ten4": [
+            80.6699,
+            1.3596
+          ],
+          "ten5": [
+            81.0332,
+            1.8673
+          ],
+          "ten6": [
+            81.4645,
+            2.3933
+          ],
+          "ten7": [
+            81.9562,
+            2.9114
+          ],
+          "ten8": [
+            82.5,
+            3.3929
+          ],
+          "ten9": [
+            83.0866,
+            3.8078
+          ],
+          "ten10": [
+            83.7059,
+            4.1282
+          ],
+          "ten11": [
+            84.3474,
+            4.3307
+          ],
+          "ten12": [
+            85.0,
+            4.4
+          ],
+          "ten13": [
+            85.6526,
+            4.3307
+          ],
+          "ten14": [
+            86.2941,
+            4.1282
+          ],
+          "ten15": [
+            86.9134,
+            3.8078
+          ],
+          "ten16": [
+            87.5,
+            3.3929
+          ],
+          "ten17": [
+            88.0438,
+            2.9114
+          ],
+          "ten18": [
+            88.5355,
+            2.3933
+          ],
+          "ten19": [
+            88.9668,
+            1.8673
+          ],
+          "ten20": [
+            89.3301,
+            1.3596
+          ],
+          "ten21": [
+            89.6194,
+            0.8931
+          ],
+          "ten22": [
+            89.8296,
+            0.4894
+          ],
+          "ten23": [
+            89.9572,
+            0.1737
+          ],
+          "ten24": [
+            90.0,
+            0.0
+          ],
+          "tenw1": [
+            90.2471,
+            0.8891
+          ],
+          "tenw2": [
+            89.3559,
+            0.6609
+          ],
+          "tenlab": [
+            85.0,
+            5.65
+          ],
+          "five0": [
+            90.0,
+            0.0
+          ],
+          "five1": [
+            90.0214,
+            0.0829
+          ],
+          "five2": [
+            90.0852,
+            0.2336
+          ],
+          "five3": [
+            90.1903,
+            0.4262
+          ],
+          "five4": [
+            90.3349,
+            0.6489
+          ],
+          "five5": [
+            90.5166,
+            0.8912
+          ],
+          "five6": [
+            90.7322,
+            1.1423
+          ],
+          "five7": [
+            90.9781,
+            1.3895
+          ],
+          "five8": [
+            91.25,
+            1.6193
+          ],
+          "five9": [
+            91.5433,
+            1.8174
+          ],
+          "five10": [
+            91.853,
+            1.9703
+          ],
+          "five11": [
+            92.1737,
+            2.0669
+          ],
+          "five12": [
+            92.5,
+            2.1
+          ],
+          "five13": [
+            92.8263,
+            2.0669
+          ],
+          "five14": [
+            93.147,
+            1.9703
+          ],
+          "five15": [
+            93.4567,
+            1.8174
+          ],
+          "five16": [
+            93.75,
+            1.6193
+          ],
+          "five17": [
+            94.0219,
+            1.3895
+          ],
+          "five18": [
+            94.2678,
+            1.1423
+          ],
+          "five19": [
+            94.4834,
+            0.8912
+          ],
+          "five20": [
+            94.6651,
+            0.6489
+          ],
+          "five21": [
+            94.8097,
+            0.4262
+          ],
+          "five22": [
+            94.9148,
+            0.2336
+          ],
+          "five23": [
+            94.9786,
+            0.0829
+          ],
+          "five24": [
+            95.0,
+            0.0
+          ],
+          "fivew1": [
+            95.237,
+            0.8919
+          ],
+          "fivew2": [
+            94.3484,
+            0.6535
+          ],
+          "fivelab": [
+            91.9,
+            3.35
+          ],
+          "markerP": [
+            79,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tick75",
+            "seg": [
+              "t75a",
+              "t75b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick76",
+            "seg": [
+              "t76a",
+              "t76b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick77",
+            "seg": [
+              "t77a",
+              "t77b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick78",
+            "seg": [
+              "t78a",
+              "t78b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick79",
+            "seg": [
+              "t79a",
+              "t79b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick80",
+            "seg": [
+              "t80a",
+              "t80b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten80",
+            "label": "80",
+            "at": "ten80p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick81",
+            "seg": [
+              "t81a",
+              "t81b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick82",
+            "seg": [
+              "t82a",
+              "t82b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick83",
+            "seg": [
+              "t83a",
+              "t83b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick84",
+            "seg": [
+              "t84a",
+              "t84b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick85",
+            "seg": [
+              "t85a",
+              "t85b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick86",
+            "seg": [
+              "t86a",
+              "t86b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick87",
+            "seg": [
+              "t87a",
+              "t87b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick88",
+            "seg": [
+              "t88a",
+              "t88b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick89",
+            "seg": [
+              "t89a",
+              "t89b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick90",
+            "seg": [
+              "t90a",
+              "t90b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten90",
+            "label": "90",
+            "at": "ten90p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "tick91",
+            "seg": [
+              "t91a",
+              "t91b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick92",
+            "seg": [
+              "t92a",
+              "t92b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick93",
+            "seg": [
+              "t93a",
+              "t93b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick94",
+            "seg": [
+              "t94a",
+              "t94b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick95",
+            "seg": [
+              "t95a",
+              "t95b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick96",
+            "seg": [
+              "t96a",
+              "t96b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick97",
+            "seg": [
+              "t97a",
+              "t97b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick98",
+            "seg": [
+              "t98a",
+              "t98b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick99",
+            "seg": [
+              "t99a",
+              "t99b"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tick100",
+            "seg": [
+              "t100a",
+              "t100b"
+            ],
+            "ink": "ink",
+            "w": 4.5,
+            "start": true
+          },
+          {
+            "id": "ten100",
+            "label": "100",
+            "at": "ten100p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dot95",
+            "dot": "p95",
+            "r": 7,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "n95",
+            "label": "95",
+            "at": "n95p",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "whole",
+            "curve": [
+              "whole0",
+              "whole1",
+              "whole2",
+              "whole3",
+              "whole4",
+              "whole5",
+              "whole6",
+              "whole7",
+              "whole8",
+              "whole9",
+              "whole10",
+              "whole11",
+              "whole12",
+              "whole13",
+              "whole14",
+              "whole15",
+              "whole16",
+              "whole17",
+              "whole18",
+              "whole19",
+              "whole20",
+              "whole21",
+              "whole22",
+              "whole23",
+              "whole24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "wholeh1",
+            "seg": [
+              "wholew1",
+              "whole24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "wholeh2",
+            "seg": [
+              "wholew2",
+              "whole24"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "wholelabel",
+            "label": "16",
+            "at": "wholelab",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "dot79",
+            "dot": "p79",
+            "r": 7,
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "n79",
+            "label": "79",
+            "at": "n79p",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "one",
+            "curve": [
+              "one0",
+              "one1",
+              "one2",
+              "one3",
+              "one4",
+              "one5",
+              "one6",
+              "one7",
+              "one8",
+              "one9",
+              "one10",
+              "one11",
+              "one12",
+              "one13",
+              "one14",
+              "one15",
+              "one16",
+              "one17",
+              "one18",
+              "one19",
+              "one20",
+              "one21",
+              "one22",
+              "one23",
+              "one24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "oneh1",
+            "seg": [
+              "onew1",
+              "one24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "oneh2",
+            "seg": [
+              "onew2",
+              "one24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "onelabel",
+            "label": "+1",
+            "at": "onelab",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "ten",
+            "curve": [
+              "ten0",
+              "ten1",
+              "ten2",
+              "ten3",
+              "ten4",
+              "ten5",
+              "ten6",
+              "ten7",
+              "ten8",
+              "ten9",
+              "ten10",
+              "ten11",
+              "ten12",
+              "ten13",
+              "ten14",
+              "ten15",
+              "ten16",
+              "ten17",
+              "ten18",
+              "ten19",
+              "ten20",
+              "ten21",
+              "ten22",
+              "ten23",
+              "ten24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tenh1",
+            "seg": [
+              "tenw1",
+              "ten24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tenh2",
+            "seg": [
+              "tenw2",
+              "ten24"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "tenlabel",
+            "label": "+10",
+            "at": "tenlab",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "five",
+            "curve": [
+              "five0",
+              "five1",
+              "five2",
+              "five3",
+              "five4",
+              "five5",
+              "five6",
+              "five7",
+              "five8",
+              "five9",
+              "five10",
+              "five11",
+              "five12",
+              "five13",
+              "five14",
+              "five15",
+              "five16",
+              "five17",
+              "five18",
+              "five19",
+              "five20",
+              "five21",
+              "five22",
+              "five23",
+              "five24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "fiveh1",
+            "seg": [
+              "fivew1",
+              "five24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "fiveh2",
+            "seg": [
+              "fivew2",
+              "five24"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "start": false
+          },
+          {
+            "id": "fivelabel",
+            "label": "+5",
+            "at": "fivelab",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "marker",
+            "dot": "markerP",
+            "r": 13,
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A hop goes from ninety-five to seventy-nine. How long is the hop?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "A"
+            },
+            {
+              "do": "problem",
+              "at": "A",
+              "text": "A hop goes from $95$ to $79$. How long is the hop?"
+            },
+            {
+              "do": "draw",
+              "at": "goes",
+              "target": "whole",
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "seventy-nine",
+              "target": [
+                "wholeh1",
+                "wholeh2",
+                "dot79",
+                "n79"
+              ]
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its length is the steps it covers, whichever way it goes. So count up from seventy-nine, first to the next ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "at": "steps",
+              "target": "whole"
+            },
+            {
+              "do": "show",
+              "at": "seventy-nine",
+              "target": "marker"
+            },
+            {
+              "do": "highlight",
+              "at": "ten",
+              "target": "ten80"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Seventy-nine to eighty is one. Eighty to ninety is ten. Ninety to ninety-five is five.",
+          "do": [
+            {
+              "do": "draw",
+              "at": "Seventy-nine",
+              "target": "one",
+              "dur": 1.0
+            },
+            {
+              "do": "move",
+              "at": "Seventy-nine",
+              "points": {
+                "markerP": [
+                  80,
+                  0
+                ]
+              },
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "one",
+              "target": [
+                "oneh1",
+                "oneh2",
+                "onelabel"
+              ]
+            },
+            {
+              "do": "draw",
+              "at": "Eighty",
+              "nth": 2,
+              "target": "ten",
+              "dur": 1.0
+            },
+            {
+              "do": "move",
+              "at": "Eighty",
+              "nth": 2,
+              "points": {
+                "markerP": [
+                  90,
+                  0
+                ]
+              },
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "ten",
+              "target": [
+                "tenh1",
+                "tenh2",
+                "tenlabel"
+              ]
+            },
+            {
+              "do": "draw",
+              "at": "Ninety",
+              "nth": 2,
+              "target": "five",
+              "dur": 1.0
+            },
+            {
+              "do": "move",
+              "at": "Ninety",
+              "nth": 2,
+              "points": {
+                "markerP": [
+                  95,
+                  0
+                ]
+              },
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "at": "five",
+              "target": [
+                "fiveh1",
+                "fiveh2",
+                "fivelabel"
+              ]
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "One plus ten plus five is sixteen, so the hop is sixteen long.",
+          "do": [
+            {
+              "do": "answer",
+              "at": "sixteen",
+              "tex": "\\cv{1}+\\cb{10}+\\cv{5}=16"
+            },
+            {
+              "do": "show",
+              "at": "long",
+              "target": "wholelabel"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check: seventy-nine plus sixteen is ninety-five.",
+          "do": [
+            {
+              "do": "write",
+              "at": "seventy-nine",
+              "tex": "79+16=95",
+              "note": "\\text{check}",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "To find a landing, follow the hops. To find a length, count the steps between the ends.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "To"
+            },
+            {
+              "do": "text",
+              "at": "To",
+              "text": "Landing: follow the hops"
+            },
+            {
+              "do": "text",
+              "at": "length",
+              "text": "Length: count the steps"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Right adds, left takes away. Hop the tens, then the ones.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Right"
+            },
+            {
+              "do": "text",
+              "at": "Right",
+              "text": "Right adds. Left takes away."
+            },
+            {
+              "do": "text",
+              "at": "Hop",
+              "text": "Hop the tens, then the ones."
+            }
+          ],
+          "pause": 1
+        }
+      ]
+    }
+  ]
+}
