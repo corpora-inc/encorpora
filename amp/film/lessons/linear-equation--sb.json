@@ -1,0 +1,8024 @@
+{
+  "id": "linear-equation--sb",
+  "title": "Keep the balance: solve a linear equation",
+  "teaches": [
+    "both-sides-linear-equation",
+    "check-equation-candidate",
+    "equation-solution-count"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -5.9,
+          -1.95,
+          5.9,
+          3.25
+        ],
+        "points": {
+          "baseL": [
+            -1.0,
+            -1.7
+          ],
+          "baseR": [
+            1.0,
+            -1.7
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "beamL": [
+            -3.35,
+            0
+          ],
+          "beamR": [
+            3.35,
+            0
+          ],
+          "postL0": [
+            -3.35,
+            0
+          ],
+          "postL1": [
+            -3.35,
+            0.35
+          ],
+          "postR0": [
+            3.35,
+            0
+          ],
+          "postR1": [
+            3.35,
+            0.35
+          ],
+          "strut0": [
+            -0.01,
+            3.7
+          ],
+          "strut1": [
+            0.01,
+            3.7
+          ],
+          "panL0": [
+            -5.6,
+            0.35
+          ],
+          "panL1": [
+            -1.1,
+            0.35
+          ],
+          "panL2": [
+            -1.1,
+            0.51
+          ],
+          "panL3": [
+            -5.6,
+            0.51
+          ],
+          "panR0": [
+            1.1,
+            0.35
+          ],
+          "panR1": [
+            5.6,
+            0.35
+          ],
+          "panR2": [
+            5.6,
+            0.51
+          ],
+          "panR3": [
+            1.1,
+            0.51
+          ],
+          "bag0P0": [
+            -5.3219,
+            0.51
+          ],
+          "bag0P1": [
+            -4.4181,
+            0.51
+          ],
+          "bag0P2": [
+            -4.37,
+            0.7792
+          ],
+          "bag0P3": [
+            -4.6008,
+            1.3081
+          ],
+          "bag0P4": [
+            -4.5238,
+            1.4908
+          ],
+          "bag0P5": [
+            -5.2162,
+            1.4908
+          ],
+          "bag0P6": [
+            -5.1392,
+            1.3081
+          ],
+          "bag0P7": [
+            -5.37,
+            0.7792
+          ],
+          "bag0TL": [
+            -5.1585,
+            1.3081
+          ],
+          "bag0TR": [
+            -4.5815,
+            1.3081
+          ],
+          "bag0A": [
+            -4.87,
+            0.8946
+          ],
+          "bag1P0": [
+            -4.2619,
+            0.51
+          ],
+          "bag1P1": [
+            -3.3581,
+            0.51
+          ],
+          "bag1P2": [
+            -3.31,
+            0.7792
+          ],
+          "bag1P3": [
+            -3.5408,
+            1.3081
+          ],
+          "bag1P4": [
+            -3.4638,
+            1.4908
+          ],
+          "bag1P5": [
+            -4.1562,
+            1.4908
+          ],
+          "bag1P6": [
+            -4.0792,
+            1.3081
+          ],
+          "bag1P7": [
+            -4.31,
+            0.7792
+          ],
+          "bag1TL": [
+            -4.0985,
+            1.3081
+          ],
+          "bag1TR": [
+            -3.5215,
+            1.3081
+          ],
+          "bag1A": [
+            -3.81,
+            0.8946
+          ],
+          "bag2P0": [
+            -3.2019,
+            0.51
+          ],
+          "bag2P1": [
+            -2.2981,
+            0.51
+          ],
+          "bag2P2": [
+            -2.25,
+            0.7792
+          ],
+          "bag2P3": [
+            -2.4808,
+            1.3081
+          ],
+          "bag2P4": [
+            -2.4038,
+            1.4908
+          ],
+          "bag2P5": [
+            -3.0962,
+            1.4908
+          ],
+          "bag2P6": [
+            -3.0192,
+            1.3081
+          ],
+          "bag2P7": [
+            -3.25,
+            0.7792
+          ],
+          "bag2TL": [
+            -3.0385,
+            1.3081
+          ],
+          "bag2TR": [
+            -2.4615,
+            1.3081
+          ],
+          "bag2A": [
+            -2.75,
+            0.8946
+          ],
+          "ltu0P0": [
+            -1.97,
+            0.51
+          ],
+          "ltu0P1": [
+            -1.67,
+            0.51
+          ],
+          "ltu0P2": [
+            -1.67,
+            0.81
+          ],
+          "ltu0P3": [
+            -1.97,
+            0.81
+          ],
+          "ltu1P0": [
+            -1.63,
+            0.51
+          ],
+          "ltu1P1": [
+            -1.33,
+            0.51
+          ],
+          "ltu1P2": [
+            -1.33,
+            0.81
+          ],
+          "ltu1P3": [
+            -1.63,
+            0.81
+          ],
+          "ltu2P0": [
+            -1.97,
+            0.85
+          ],
+          "ltu2P1": [
+            -1.67,
+            0.85
+          ],
+          "ltu2P2": [
+            -1.67,
+            1.15
+          ],
+          "ltu2P3": [
+            -1.97,
+            1.15
+          ],
+          "ltu3P0": [
+            -1.63,
+            0.85
+          ],
+          "ltu3P1": [
+            -1.33,
+            0.85
+          ],
+          "ltu3P2": [
+            -1.33,
+            1.15
+          ],
+          "ltu3P3": [
+            -1.63,
+            1.15
+          ],
+          "ltu4P0": [
+            -1.97,
+            1.19
+          ],
+          "ltu4P1": [
+            -1.67,
+            1.19
+          ],
+          "ltu4P2": [
+            -1.67,
+            1.49
+          ],
+          "ltu4P3": [
+            -1.97,
+            1.49
+          ],
+          "ltu5P0": [
+            -1.63,
+            1.19
+          ],
+          "ltu5P1": [
+            -1.33,
+            1.19
+          ],
+          "ltu5P2": [
+            -1.33,
+            1.49
+          ],
+          "ltu5P3": [
+            -1.63,
+            1.49
+          ],
+          "ltu6P0": [
+            -1.97,
+            1.53
+          ],
+          "ltu6P1": [
+            -1.67,
+            1.53
+          ],
+          "ltu6P2": [
+            -1.67,
+            1.83
+          ],
+          "ltu6P3": [
+            -1.97,
+            1.83
+          ],
+          "ltu7P0": [
+            -1.63,
+            1.53
+          ],
+          "ltu7P1": [
+            -1.33,
+            1.53
+          ],
+          "ltu7P2": [
+            -1.33,
+            1.83
+          ],
+          "ltu7P3": [
+            -1.63,
+            1.83
+          ],
+          "ltu8P0": [
+            -1.97,
+            1.87
+          ],
+          "ltu8P1": [
+            -1.67,
+            1.87
+          ],
+          "ltu8P2": [
+            -1.67,
+            2.17
+          ],
+          "ltu8P3": [
+            -1.97,
+            2.17
+          ],
+          "ltu9P0": [
+            -1.63,
+            1.87
+          ],
+          "ltu9P1": [
+            -1.33,
+            1.87
+          ],
+          "ltu9P2": [
+            -1.33,
+            2.17
+          ],
+          "ltu9P3": [
+            -1.63,
+            2.17
+          ],
+          "ltu10P0": [
+            -1.97,
+            2.21
+          ],
+          "ltu10P1": [
+            -1.67,
+            2.21
+          ],
+          "ltu10P2": [
+            -1.67,
+            2.51
+          ],
+          "ltu10P3": [
+            -1.97,
+            2.51
+          ],
+          "ltu11P0": [
+            -1.63,
+            2.21
+          ],
+          "ltu11P1": [
+            -1.33,
+            2.21
+          ],
+          "ltu11P2": [
+            -1.33,
+            2.51
+          ],
+          "ltu11P3": [
+            -1.63,
+            2.51
+          ],
+          "left12A": [
+            -1.65,
+            2.96
+          ],
+          "rtu0P0": [
+            1.33,
+            0.51
+          ],
+          "rtu0P1": [
+            1.63,
+            0.51
+          ],
+          "rtu0P2": [
+            1.63,
+            0.81
+          ],
+          "rtu0P3": [
+            1.33,
+            0.81
+          ],
+          "rtu1P0": [
+            1.67,
+            0.51
+          ],
+          "rtu1P1": [
+            1.97,
+            0.51
+          ],
+          "rtu1P2": [
+            1.97,
+            0.81
+          ],
+          "rtu1P3": [
+            1.67,
+            0.81
+          ],
+          "rtu2P0": [
+            1.33,
+            0.85
+          ],
+          "rtu2P1": [
+            1.63,
+            0.85
+          ],
+          "rtu2P2": [
+            1.63,
+            1.15
+          ],
+          "rtu2P3": [
+            1.33,
+            1.15
+          ],
+          "rtu3P0": [
+            1.67,
+            0.85
+          ],
+          "rtu3P1": [
+            1.97,
+            0.85
+          ],
+          "rtu3P2": [
+            1.97,
+            1.15
+          ],
+          "rtu3P3": [
+            1.67,
+            1.15
+          ],
+          "rtu4P0": [
+            1.33,
+            1.19
+          ],
+          "rtu4P1": [
+            1.63,
+            1.19
+          ],
+          "rtu4P2": [
+            1.63,
+            1.49
+          ],
+          "rtu4P3": [
+            1.33,
+            1.49
+          ],
+          "rtu5P0": [
+            1.67,
+            1.19
+          ],
+          "rtu5P1": [
+            1.97,
+            1.19
+          ],
+          "rtu5P2": [
+            1.97,
+            1.49
+          ],
+          "rtu5P3": [
+            1.67,
+            1.49
+          ],
+          "rtu6P0": [
+            1.33,
+            1.53
+          ],
+          "rtu6P1": [
+            1.63,
+            1.53
+          ],
+          "rtu6P2": [
+            1.63,
+            1.83
+          ],
+          "rtu6P3": [
+            1.33,
+            1.83
+          ],
+          "rtu7P0": [
+            1.67,
+            1.53
+          ],
+          "rtu7P1": [
+            1.97,
+            1.53
+          ],
+          "rtu7P2": [
+            1.97,
+            1.83
+          ],
+          "rtu7P3": [
+            1.67,
+            1.83
+          ],
+          "rtu8P0": [
+            1.33,
+            1.87
+          ],
+          "rtu8P1": [
+            1.63,
+            1.87
+          ],
+          "rtu8P2": [
+            1.63,
+            2.17
+          ],
+          "rtu8P3": [
+            1.33,
+            2.17
+          ],
+          "rtu9P0": [
+            1.67,
+            1.87
+          ],
+          "rtu9P1": [
+            1.97,
+            1.87
+          ],
+          "rtu9P2": [
+            1.97,
+            2.17
+          ],
+          "rtu9P3": [
+            1.67,
+            2.17
+          ],
+          "rtu10P0": [
+            1.33,
+            2.21
+          ],
+          "rtu10P1": [
+            1.63,
+            2.21
+          ],
+          "rtu10P2": [
+            1.63,
+            2.51
+          ],
+          "rtu10P3": [
+            1.33,
+            2.51
+          ],
+          "rtu11P0": [
+            1.67,
+            2.21
+          ],
+          "rtu11P1": [
+            1.97,
+            2.21
+          ],
+          "rtu11P2": [
+            1.97,
+            2.51
+          ],
+          "rtu11P3": [
+            1.67,
+            2.51
+          ],
+          "rau0P0": [
+            2.25,
+            0.51
+          ],
+          "rau0P1": [
+            2.55,
+            0.51
+          ],
+          "rau0P2": [
+            2.55,
+            0.81
+          ],
+          "rau0P3": [
+            2.25,
+            0.81
+          ],
+          "rau1P0": [
+            2.59,
+            0.51
+          ],
+          "rau1P1": [
+            2.89,
+            0.51
+          ],
+          "rau1P2": [
+            2.89,
+            0.81
+          ],
+          "rau1P3": [
+            2.59,
+            0.81
+          ],
+          "rau2P0": [
+            2.25,
+            0.85
+          ],
+          "rau2P1": [
+            2.55,
+            0.85
+          ],
+          "rau2P2": [
+            2.55,
+            1.15
+          ],
+          "rau2P3": [
+            2.25,
+            1.15
+          ],
+          "rau3P0": [
+            2.59,
+            0.85
+          ],
+          "rau3P1": [
+            2.89,
+            0.85
+          ],
+          "rau3P2": [
+            2.89,
+            1.15
+          ],
+          "rau3P3": [
+            2.59,
+            1.15
+          ],
+          "rau4P0": [
+            2.25,
+            1.19
+          ],
+          "rau4P1": [
+            2.55,
+            1.19
+          ],
+          "rau4P2": [
+            2.55,
+            1.49
+          ],
+          "rau4P3": [
+            2.25,
+            1.49
+          ],
+          "rau5P0": [
+            2.59,
+            1.19
+          ],
+          "rau5P1": [
+            2.89,
+            1.19
+          ],
+          "rau5P2": [
+            2.89,
+            1.49
+          ],
+          "rau5P3": [
+            2.59,
+            1.49
+          ],
+          "rau6P0": [
+            2.25,
+            1.53
+          ],
+          "rau6P1": [
+            2.55,
+            1.53
+          ],
+          "rau6P2": [
+            2.55,
+            1.83
+          ],
+          "rau6P3": [
+            2.25,
+            1.83
+          ],
+          "rau7P0": [
+            2.59,
+            1.53
+          ],
+          "rau7P1": [
+            2.89,
+            1.53
+          ],
+          "rau7P2": [
+            2.89,
+            1.83
+          ],
+          "rau7P3": [
+            2.59,
+            1.83
+          ],
+          "rau8P0": [
+            2.25,
+            1.87
+          ],
+          "rau8P1": [
+            2.55,
+            1.87
+          ],
+          "rau8P2": [
+            2.55,
+            2.17
+          ],
+          "rau8P3": [
+            2.25,
+            2.17
+          ],
+          "rau9P0": [
+            2.59,
+            1.87
+          ],
+          "rau9P1": [
+            2.89,
+            1.87
+          ],
+          "rau9P2": [
+            2.89,
+            2.17
+          ],
+          "rau9P3": [
+            2.59,
+            2.17
+          ],
+          "rbu0P0": [
+            2.99,
+            0.51
+          ],
+          "rbu0P1": [
+            3.29,
+            0.51
+          ],
+          "rbu0P2": [
+            3.29,
+            0.81
+          ],
+          "rbu0P3": [
+            2.99,
+            0.81
+          ],
+          "rbu1P0": [
+            3.33,
+            0.51
+          ],
+          "rbu1P1": [
+            3.63,
+            0.51
+          ],
+          "rbu1P2": [
+            3.63,
+            0.81
+          ],
+          "rbu1P3": [
+            3.33,
+            0.81
+          ],
+          "rbu2P0": [
+            2.99,
+            0.85
+          ],
+          "rbu2P1": [
+            3.29,
+            0.85
+          ],
+          "rbu2P2": [
+            3.29,
+            1.15
+          ],
+          "rbu2P3": [
+            2.99,
+            1.15
+          ],
+          "rbu3P0": [
+            3.33,
+            0.85
+          ],
+          "rbu3P1": [
+            3.63,
+            0.85
+          ],
+          "rbu3P2": [
+            3.63,
+            1.15
+          ],
+          "rbu3P3": [
+            3.33,
+            1.15
+          ],
+          "rbu4P0": [
+            2.99,
+            1.19
+          ],
+          "rbu4P1": [
+            3.29,
+            1.19
+          ],
+          "rbu4P2": [
+            3.29,
+            1.49
+          ],
+          "rbu4P3": [
+            2.99,
+            1.49
+          ],
+          "rbu5P0": [
+            3.33,
+            1.19
+          ],
+          "rbu5P1": [
+            3.63,
+            1.19
+          ],
+          "rbu5P2": [
+            3.63,
+            1.49
+          ],
+          "rbu5P3": [
+            3.33,
+            1.49
+          ],
+          "rbu6P0": [
+            2.99,
+            1.53
+          ],
+          "rbu6P1": [
+            3.29,
+            1.53
+          ],
+          "rbu6P2": [
+            3.29,
+            1.83
+          ],
+          "rbu6P3": [
+            2.99,
+            1.83
+          ],
+          "rbu7P0": [
+            3.33,
+            1.53
+          ],
+          "rbu7P1": [
+            3.63,
+            1.53
+          ],
+          "rbu7P2": [
+            3.63,
+            1.83
+          ],
+          "rbu7P3": [
+            3.33,
+            1.83
+          ],
+          "rbu8P0": [
+            2.99,
+            1.87
+          ],
+          "rbu8P1": [
+            3.29,
+            1.87
+          ],
+          "rbu8P2": [
+            3.29,
+            2.17
+          ],
+          "rbu8P3": [
+            2.99,
+            2.17
+          ],
+          "rbu9P0": [
+            3.33,
+            1.87
+          ],
+          "rbu9P1": [
+            3.63,
+            1.87
+          ],
+          "rbu9P2": [
+            3.63,
+            2.17
+          ],
+          "rbu9P3": [
+            3.33,
+            2.17
+          ],
+          "rcu0P0": [
+            3.79,
+            0.51
+          ],
+          "rcu0P1": [
+            4.09,
+            0.51
+          ],
+          "rcu0P2": [
+            4.09,
+            0.81
+          ],
+          "rcu0P3": [
+            3.79,
+            0.81
+          ],
+          "rcu1P0": [
+            4.13,
+            0.51
+          ],
+          "rcu1P1": [
+            4.43,
+            0.51
+          ],
+          "rcu1P2": [
+            4.43,
+            0.81
+          ],
+          "rcu1P3": [
+            4.13,
+            0.81
+          ],
+          "rcu2P0": [
+            4.47,
+            0.51
+          ],
+          "rcu2P1": [
+            4.77,
+            0.51
+          ],
+          "rcu2P2": [
+            4.77,
+            0.81
+          ],
+          "rcu2P3": [
+            4.47,
+            0.81
+          ],
+          "rcu3P0": [
+            3.79,
+            0.85
+          ],
+          "rcu3P1": [
+            4.09,
+            0.85
+          ],
+          "rcu3P2": [
+            4.09,
+            1.15
+          ],
+          "rcu3P3": [
+            3.79,
+            1.15
+          ],
+          "rcu4P0": [
+            4.13,
+            0.85
+          ],
+          "rcu4P1": [
+            4.43,
+            0.85
+          ],
+          "rcu4P2": [
+            4.43,
+            1.15
+          ],
+          "rcu4P3": [
+            4.13,
+            1.15
+          ],
+          "rcu5P0": [
+            4.47,
+            0.85
+          ],
+          "rcu5P1": [
+            4.77,
+            0.85
+          ],
+          "rcu5P2": [
+            4.77,
+            1.15
+          ],
+          "rcu5P3": [
+            4.47,
+            1.15
+          ],
+          "rcu6P0": [
+            3.79,
+            1.19
+          ],
+          "rcu6P1": [
+            4.09,
+            1.19
+          ],
+          "rcu6P2": [
+            4.09,
+            1.49
+          ],
+          "rcu6P3": [
+            3.79,
+            1.49
+          ],
+          "right39A": [
+            3.05,
+            2.96
+          ],
+          "right27A": [
+            3.51,
+            2.62
+          ],
+          "pile0A": [
+            2.03,
+            1.94
+          ],
+          "pile1A": [
+            3.35,
+            1.94
+          ],
+          "pile2A": [
+            4.67,
+            1.94
+          ]
+        },
+        "parts": [
+          {
+            "id": "stand",
+            "poly": [
+              "baseL",
+              "baseR",
+              "pivot"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "postL",
+            "seg": [
+              "postL0",
+              "postL1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "postR",
+            "seg": [
+              "postR0",
+              "postR1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "beam",
+            "seg": [
+              "beamL",
+              "beamR"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "pin",
+            "dot": "pivot",
+            "ink": "gold",
+            "r": 7,
+            "start": true
+          },
+          {
+            "id": "strut",
+            "seg": [
+              "strut0",
+              "strut1"
+            ],
+            "ink": "paper",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "panL",
+            "poly": [
+              "panL0",
+              "panL1",
+              "panL2",
+              "panL3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "panR",
+            "poly": [
+              "panR0",
+              "panR1",
+              "panR2",
+              "panR3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bag0",
+            "poly": [
+              "bag0P0",
+              "bag0P1",
+              "bag0P2",
+              "bag0P3",
+              "bag0P4",
+              "bag0P5",
+              "bag0P6",
+              "bag0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag0Tie",
+            "seg": [
+              "bag0TL",
+              "bag0TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag0X",
+            "label": "x",
+            "at": "bag0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagX",
+            "start": true
+          },
+          {
+            "id": "bag0N",
+            "label": "9",
+            "at": "bag0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagNine"
+          },
+          {
+            "id": "bag1",
+            "poly": [
+              "bag1P0",
+              "bag1P1",
+              "bag1P2",
+              "bag1P3",
+              "bag1P4",
+              "bag1P5",
+              "bag1P6",
+              "bag1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag1Tie",
+            "seg": [
+              "bag1TL",
+              "bag1TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag1X",
+            "label": "x",
+            "at": "bag1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagX",
+            "start": true
+          },
+          {
+            "id": "bag1N",
+            "label": "9",
+            "at": "bag1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagNine"
+          },
+          {
+            "id": "bag2",
+            "poly": [
+              "bag2P0",
+              "bag2P1",
+              "bag2P2",
+              "bag2P3",
+              "bag2P4",
+              "bag2P5",
+              "bag2P6",
+              "bag2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag2Tie",
+            "seg": [
+              "bag2TL",
+              "bag2TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "bag2X",
+            "label": "x",
+            "at": "bag2A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagX",
+            "start": true
+          },
+          {
+            "id": "bag2N",
+            "label": "9",
+            "at": "bag2A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bagNine"
+          },
+          {
+            "id": "ltu0",
+            "poly": [
+              "ltu0P0",
+              "ltu0P1",
+              "ltu0P2",
+              "ltu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu1",
+            "poly": [
+              "ltu1P0",
+              "ltu1P1",
+              "ltu1P2",
+              "ltu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu2",
+            "poly": [
+              "ltu2P0",
+              "ltu2P1",
+              "ltu2P2",
+              "ltu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu3",
+            "poly": [
+              "ltu3P0",
+              "ltu3P1",
+              "ltu3P2",
+              "ltu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu4",
+            "poly": [
+              "ltu4P0",
+              "ltu4P1",
+              "ltu4P2",
+              "ltu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu5",
+            "poly": [
+              "ltu5P0",
+              "ltu5P1",
+              "ltu5P2",
+              "ltu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu6",
+            "poly": [
+              "ltu6P0",
+              "ltu6P1",
+              "ltu6P2",
+              "ltu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu7",
+            "poly": [
+              "ltu7P0",
+              "ltu7P1",
+              "ltu7P2",
+              "ltu7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu8",
+            "poly": [
+              "ltu8P0",
+              "ltu8P1",
+              "ltu8P2",
+              "ltu8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu9",
+            "poly": [
+              "ltu9P0",
+              "ltu9P1",
+              "ltu9P2",
+              "ltu9P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu10",
+            "poly": [
+              "ltu10P0",
+              "ltu10P1",
+              "ltu10P2",
+              "ltu10P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "ltu11",
+            "poly": [
+              "ltu11P0",
+              "ltu11P1",
+              "ltu11P2",
+              "ltu11P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftTwelve",
+            "start": true
+          },
+          {
+            "id": "left12",
+            "label": "12",
+            "at": "left12A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true,
+            "group": "leftTwelve"
+          },
+          {
+            "id": "rtu0",
+            "poly": [
+              "rtu0P0",
+              "rtu0P1",
+              "rtu0P2",
+              "rtu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu1",
+            "poly": [
+              "rtu1P0",
+              "rtu1P1",
+              "rtu1P2",
+              "rtu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu2",
+            "poly": [
+              "rtu2P0",
+              "rtu2P1",
+              "rtu2P2",
+              "rtu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu3",
+            "poly": [
+              "rtu3P0",
+              "rtu3P1",
+              "rtu3P2",
+              "rtu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu4",
+            "poly": [
+              "rtu4P0",
+              "rtu4P1",
+              "rtu4P2",
+              "rtu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu5",
+            "poly": [
+              "rtu5P0",
+              "rtu5P1",
+              "rtu5P2",
+              "rtu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu6",
+            "poly": [
+              "rtu6P0",
+              "rtu6P1",
+              "rtu6P2",
+              "rtu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu7",
+            "poly": [
+              "rtu7P0",
+              "rtu7P1",
+              "rtu7P2",
+              "rtu7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu8",
+            "poly": [
+              "rtu8P0",
+              "rtu8P1",
+              "rtu8P2",
+              "rtu8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu9",
+            "poly": [
+              "rtu9P0",
+              "rtu9P1",
+              "rtu9P2",
+              "rtu9P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu10",
+            "poly": [
+              "rtu10P0",
+              "rtu10P1",
+              "rtu10P2",
+              "rtu10P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rtu11",
+            "poly": [
+              "rtu11P0",
+              "rtu11P1",
+              "rtu11P2",
+              "rtu11P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightTwelve",
+            "start": true
+          },
+          {
+            "id": "rau0",
+            "poly": [
+              "rau0P0",
+              "rau0P1",
+              "rau0P2",
+              "rau0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau1",
+            "poly": [
+              "rau1P0",
+              "rau1P1",
+              "rau1P2",
+              "rau1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau2",
+            "poly": [
+              "rau2P0",
+              "rau2P1",
+              "rau2P2",
+              "rau2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau3",
+            "poly": [
+              "rau3P0",
+              "rau3P1",
+              "rau3P2",
+              "rau3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau4",
+            "poly": [
+              "rau4P0",
+              "rau4P1",
+              "rau4P2",
+              "rau4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau5",
+            "poly": [
+              "rau5P0",
+              "rau5P1",
+              "rau5P2",
+              "rau5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau6",
+            "poly": [
+              "rau6P0",
+              "rau6P1",
+              "rau6P2",
+              "rau6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau7",
+            "poly": [
+              "rau7P0",
+              "rau7P1",
+              "rau7P2",
+              "rau7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau8",
+            "poly": [
+              "rau8P0",
+              "rau8P1",
+              "rau8P2",
+              "rau8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rau9",
+            "poly": [
+              "rau9P0",
+              "rau9P1",
+              "rau9P2",
+              "rau9P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu0",
+            "poly": [
+              "rbu0P0",
+              "rbu0P1",
+              "rbu0P2",
+              "rbu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu1",
+            "poly": [
+              "rbu1P0",
+              "rbu1P1",
+              "rbu1P2",
+              "rbu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu2",
+            "poly": [
+              "rbu2P0",
+              "rbu2P1",
+              "rbu2P2",
+              "rbu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu3",
+            "poly": [
+              "rbu3P0",
+              "rbu3P1",
+              "rbu3P2",
+              "rbu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu4",
+            "poly": [
+              "rbu4P0",
+              "rbu4P1",
+              "rbu4P2",
+              "rbu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu5",
+            "poly": [
+              "rbu5P0",
+              "rbu5P1",
+              "rbu5P2",
+              "rbu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu6",
+            "poly": [
+              "rbu6P0",
+              "rbu6P1",
+              "rbu6P2",
+              "rbu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu7",
+            "poly": [
+              "rbu7P0",
+              "rbu7P1",
+              "rbu7P2",
+              "rbu7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu8",
+            "poly": [
+              "rbu8P0",
+              "rbu8P1",
+              "rbu8P2",
+              "rbu8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rbu9",
+            "poly": [
+              "rbu9P0",
+              "rbu9P1",
+              "rbu9P2",
+              "rbu9P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu0",
+            "poly": [
+              "rcu0P0",
+              "rcu0P1",
+              "rcu0P2",
+              "rcu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu1",
+            "poly": [
+              "rcu1P0",
+              "rcu1P1",
+              "rcu1P2",
+              "rcu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu2",
+            "poly": [
+              "rcu2P0",
+              "rcu2P1",
+              "rcu2P2",
+              "rcu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu3",
+            "poly": [
+              "rcu3P0",
+              "rcu3P1",
+              "rcu3P2",
+              "rcu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu4",
+            "poly": [
+              "rcu4P0",
+              "rcu4P1",
+              "rcu4P2",
+              "rcu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu5",
+            "poly": [
+              "rcu5P0",
+              "rcu5P1",
+              "rcu5P2",
+              "rcu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "rcu6",
+            "poly": [
+              "rcu6P0",
+              "rcu6P1",
+              "rcu6P2",
+              "rcu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rest",
+            "start": true
+          },
+          {
+            "id": "right39",
+            "label": "39",
+            "at": "right39A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "right27",
+            "label": "27",
+            "at": "right27A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "pile0",
+            "label": "9",
+            "at": "pile0A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false,
+            "group": "piles"
+          },
+          {
+            "id": "pile1",
+            "label": "9",
+            "at": "pile1A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false,
+            "group": "piles"
+          },
+          {
+            "id": "pile2",
+            "label": "9",
+            "at": "pile2A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false,
+            "group": "piles"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An equation works like a balance scale. Solving it means finding the x that keeps it level.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "Find the $x$ that keeps it level.",
+              "at": "Solving"
+            },
+            {
+              "do": "highlight",
+              "target": "beam",
+              "at": "level"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Solve for x: three x plus twelve equals thirty-nine.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Solve for $x$: $3x+12=39$",
+              "id": "firstProblem"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each bag holds the same unknown, x.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "bags",
+              "at": "bag"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each square is one.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "leftTwelve",
+                "rightTwelve",
+                "rest"
+              ],
+              "at": "square"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Undo the plus twelve first.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "leftTwelve",
+                "rightTwelve"
+              ],
+              "at": "twelve"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take twelve off both pans.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "leftTwelve",
+                "rightTwelve"
+              ],
+              "by": [
+                0,
+                0.7
+              ],
+              "at": "Take",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "leftTwelve",
+                "rightTwelve"
+              ],
+              "at": "Take",
+              "dur": 0.7
+            },
+            {
+              "do": "hide",
+              "target": "right39",
+              "at": "Take"
+            },
+            {
+              "do": "write",
+              "tex": "3\\cb{x}=27",
+              "note": "-12",
+              "at": "Take",
+              "id": "threeBags"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Still level. Three bags balance twenty-seven.",
+          "do": [
+            {
+              "do": "show",
+              "target": "right27",
+              "at": "twenty-seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now divide both sides by three: share the twenty-seven into three equal piles, one for each bag.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": "right27",
+              "at": "share"
+            },
+            {
+              "do": "move",
+              "points": {
+                "rau0P0": [
+                  1.54,
+                  0.51
+                ],
+                "rau0P1": [
+                  1.84,
+                  0.51
+                ],
+                "rau0P2": [
+                  1.84,
+                  0.81
+                ],
+                "rau0P3": [
+                  1.54,
+                  0.81
+                ],
+                "rau2P0": [
+                  1.54,
+                  0.85
+                ],
+                "rau2P1": [
+                  1.84,
+                  0.85
+                ],
+                "rau2P2": [
+                  1.84,
+                  1.15
+                ],
+                "rau2P3": [
+                  1.54,
+                  1.15
+                ],
+                "rau4P0": [
+                  1.54,
+                  1.19
+                ],
+                "rau4P1": [
+                  1.84,
+                  1.19
+                ],
+                "rau4P2": [
+                  1.84,
+                  1.49
+                ],
+                "rau4P3": [
+                  1.54,
+                  1.49
+                ],
+                "rau6P0": [
+                  1.88,
+                  0.51
+                ],
+                "rau6P1": [
+                  2.18,
+                  0.51
+                ],
+                "rau6P2": [
+                  2.18,
+                  0.81
+                ],
+                "rau6P3": [
+                  1.88,
+                  0.81
+                ],
+                "rau8P0": [
+                  1.88,
+                  0.85
+                ],
+                "rau8P1": [
+                  2.18,
+                  0.85
+                ],
+                "rau8P2": [
+                  2.18,
+                  1.15
+                ],
+                "rau8P3": [
+                  1.88,
+                  1.15
+                ],
+                "rau1P0": [
+                  1.88,
+                  1.19
+                ],
+                "rau1P1": [
+                  2.18,
+                  1.19
+                ],
+                "rau1P2": [
+                  2.18,
+                  1.49
+                ],
+                "rau1P3": [
+                  1.88,
+                  1.49
+                ],
+                "rau3P0": [
+                  2.22,
+                  0.51
+                ],
+                "rau3P1": [
+                  2.52,
+                  0.51
+                ],
+                "rau3P2": [
+                  2.52,
+                  0.81
+                ],
+                "rau3P3": [
+                  2.22,
+                  0.81
+                ],
+                "rau5P0": [
+                  2.22,
+                  0.85
+                ],
+                "rau5P1": [
+                  2.52,
+                  0.85
+                ],
+                "rau5P2": [
+                  2.52,
+                  1.15
+                ],
+                "rau5P3": [
+                  2.22,
+                  1.15
+                ],
+                "rau7P0": [
+                  2.22,
+                  1.19
+                ],
+                "rau7P1": [
+                  2.52,
+                  1.19
+                ],
+                "rau7P2": [
+                  2.52,
+                  1.49
+                ],
+                "rau7P3": [
+                  2.22,
+                  1.49
+                ],
+                "rau9P0": [
+                  2.86,
+                  0.51
+                ],
+                "rau9P1": [
+                  3.16,
+                  0.51
+                ],
+                "rau9P2": [
+                  3.16,
+                  0.81
+                ],
+                "rau9P3": [
+                  2.86,
+                  0.81
+                ],
+                "rbu0P0": [
+                  2.86,
+                  0.85
+                ],
+                "rbu0P1": [
+                  3.16,
+                  0.85
+                ],
+                "rbu0P2": [
+                  3.16,
+                  1.15
+                ],
+                "rbu0P3": [
+                  2.86,
+                  1.15
+                ],
+                "rbu2P0": [
+                  2.86,
+                  1.19
+                ],
+                "rbu2P1": [
+                  3.16,
+                  1.19
+                ],
+                "rbu2P2": [
+                  3.16,
+                  1.49
+                ],
+                "rbu2P3": [
+                  2.86,
+                  1.49
+                ],
+                "rbu4P0": [
+                  3.2,
+                  0.51
+                ],
+                "rbu4P1": [
+                  3.5,
+                  0.51
+                ],
+                "rbu4P2": [
+                  3.5,
+                  0.81
+                ],
+                "rbu4P3": [
+                  3.2,
+                  0.81
+                ],
+                "rbu6P0": [
+                  3.2,
+                  0.85
+                ],
+                "rbu6P1": [
+                  3.5,
+                  0.85
+                ],
+                "rbu6P2": [
+                  3.5,
+                  1.15
+                ],
+                "rbu6P3": [
+                  3.2,
+                  1.15
+                ],
+                "rbu8P0": [
+                  3.2,
+                  1.19
+                ],
+                "rbu8P1": [
+                  3.5,
+                  1.19
+                ],
+                "rbu8P2": [
+                  3.5,
+                  1.49
+                ],
+                "rbu8P3": [
+                  3.2,
+                  1.49
+                ],
+                "rbu1P0": [
+                  3.54,
+                  0.51
+                ],
+                "rbu1P1": [
+                  3.84,
+                  0.51
+                ],
+                "rbu1P2": [
+                  3.84,
+                  0.81
+                ],
+                "rbu1P3": [
+                  3.54,
+                  0.81
+                ],
+                "rbu3P0": [
+                  3.54,
+                  0.85
+                ],
+                "rbu3P1": [
+                  3.84,
+                  0.85
+                ],
+                "rbu3P2": [
+                  3.84,
+                  1.15
+                ],
+                "rbu3P3": [
+                  3.54,
+                  1.15
+                ],
+                "rbu5P0": [
+                  3.54,
+                  1.19
+                ],
+                "rbu5P1": [
+                  3.84,
+                  1.19
+                ],
+                "rbu5P2": [
+                  3.84,
+                  1.49
+                ],
+                "rbu5P3": [
+                  3.54,
+                  1.49
+                ],
+                "rbu7P0": [
+                  4.18,
+                  0.51
+                ],
+                "rbu7P1": [
+                  4.48,
+                  0.51
+                ],
+                "rbu7P2": [
+                  4.48,
+                  0.81
+                ],
+                "rbu7P3": [
+                  4.18,
+                  0.81
+                ],
+                "rbu9P0": [
+                  4.18,
+                  0.85
+                ],
+                "rbu9P1": [
+                  4.48,
+                  0.85
+                ],
+                "rbu9P2": [
+                  4.48,
+                  1.15
+                ],
+                "rbu9P3": [
+                  4.18,
+                  1.15
+                ],
+                "rcu0P0": [
+                  4.18,
+                  1.19
+                ],
+                "rcu0P1": [
+                  4.48,
+                  1.19
+                ],
+                "rcu0P2": [
+                  4.48,
+                  1.49
+                ],
+                "rcu0P3": [
+                  4.18,
+                  1.49
+                ],
+                "rcu3P0": [
+                  4.52,
+                  0.51
+                ],
+                "rcu3P1": [
+                  4.82,
+                  0.51
+                ],
+                "rcu3P2": [
+                  4.82,
+                  0.81
+                ],
+                "rcu3P3": [
+                  4.52,
+                  0.81
+                ],
+                "rcu6P0": [
+                  4.52,
+                  0.85
+                ],
+                "rcu6P1": [
+                  4.82,
+                  0.85
+                ],
+                "rcu6P2": [
+                  4.82,
+                  1.15
+                ],
+                "rcu6P3": [
+                  4.52,
+                  1.15
+                ],
+                "rcu1P0": [
+                  4.52,
+                  1.19
+                ],
+                "rcu1P1": [
+                  4.82,
+                  1.19
+                ],
+                "rcu1P2": [
+                  4.82,
+                  1.49
+                ],
+                "rcu1P3": [
+                  4.52,
+                  1.49
+                ],
+                "rcu4P0": [
+                  4.86,
+                  0.51
+                ],
+                "rcu4P1": [
+                  5.16,
+                  0.51
+                ],
+                "rcu4P2": [
+                  5.16,
+                  0.81
+                ],
+                "rcu4P3": [
+                  4.86,
+                  0.81
+                ],
+                "rcu2P0": [
+                  4.86,
+                  0.85
+                ],
+                "rcu2P1": [
+                  5.16,
+                  0.85
+                ],
+                "rcu2P2": [
+                  5.16,
+                  1.15
+                ],
+                "rcu2P3": [
+                  4.86,
+                  1.15
+                ],
+                "rcu5P0": [
+                  4.86,
+                  1.19
+                ],
+                "rcu5P1": [
+                  5.16,
+                  1.19
+                ],
+                "rcu5P2": [
+                  5.16,
+                  1.49
+                ],
+                "rcu5P3": [
+                  4.86,
+                  1.49
+                ]
+              },
+              "at": "share",
+              "dur": 2.2
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{x}=9",
+              "note": "\\div 3",
+              "at": "share",
+              "id": "firstAnswer"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each bag balances nine. x equals nine.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": "piles",
+              "at": "Each"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check: three nines plus twelve make thirty-nine.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Check"
+            },
+            {
+              "do": "write",
+              "tex": "3\\cdot\\cb{9}+12=39",
+              "note": "\\text{check}",
+              "fresh": true,
+              "at": "three",
+              "id": "firstCheck"
+            },
+            {
+              "do": "hide",
+              "target": "bagX",
+              "at": "nines"
+            },
+            {
+              "do": "show",
+              "target": "bagNine",
+              "at": "nines"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.9,
+          -1.95,
+          5.9,
+          3.25
+        ],
+        "points": {
+          "baseL": [
+            -1.0,
+            -1.7
+          ],
+          "baseR": [
+            1.0,
+            -1.7
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "beamL": [
+            -3.35,
+            0
+          ],
+          "beamR": [
+            3.35,
+            0
+          ],
+          "postL0": [
+            -3.35,
+            0
+          ],
+          "postL1": [
+            -3.35,
+            0.35
+          ],
+          "postR0": [
+            3.35,
+            0
+          ],
+          "postR1": [
+            3.35,
+            0.35
+          ],
+          "strut0": [
+            -0.01,
+            3.7
+          ],
+          "strut1": [
+            0.01,
+            3.7
+          ],
+          "panL0": [
+            -5.6,
+            0.35
+          ],
+          "panL1": [
+            -1.1,
+            0.35
+          ],
+          "panL2": [
+            -1.1,
+            0.51
+          ],
+          "panL3": [
+            -5.6,
+            0.51
+          ],
+          "panR0": [
+            1.1,
+            0.35
+          ],
+          "panR1": [
+            5.6,
+            0.35
+          ],
+          "panR2": [
+            5.6,
+            0.51
+          ],
+          "panR3": [
+            1.1,
+            0.51
+          ],
+          "lb00P0": [
+            -5.1519,
+            0.51
+          ],
+          "lb00P1": [
+            -4.2481,
+            0.51
+          ],
+          "lb00P2": [
+            -4.2,
+            0.7792
+          ],
+          "lb00P3": [
+            -4.4308,
+            1.3081
+          ],
+          "lb00P4": [
+            -4.3538,
+            1.4908
+          ],
+          "lb00P5": [
+            -5.0462,
+            1.4908
+          ],
+          "lb00P6": [
+            -4.9692,
+            1.3081
+          ],
+          "lb00P7": [
+            -5.2,
+            0.7792
+          ],
+          "lb00TL": [
+            -4.9885,
+            1.3081
+          ],
+          "lb00TR": [
+            -4.4115,
+            1.3081
+          ],
+          "lb00A": [
+            -4.7,
+            0.8946
+          ],
+          "lb01P0": [
+            -4.0919,
+            0.51
+          ],
+          "lb01P1": [
+            -3.1881,
+            0.51
+          ],
+          "lb01P2": [
+            -3.14,
+            0.7792
+          ],
+          "lb01P3": [
+            -3.3708,
+            1.3081
+          ],
+          "lb01P4": [
+            -3.2938,
+            1.4908
+          ],
+          "lb01P5": [
+            -3.9862,
+            1.4908
+          ],
+          "lb01P6": [
+            -3.9092,
+            1.3081
+          ],
+          "lb01P7": [
+            -4.14,
+            0.7792
+          ],
+          "lb01TL": [
+            -3.9285,
+            1.3081
+          ],
+          "lb01TR": [
+            -3.3515,
+            1.3081
+          ],
+          "lb01A": [
+            -3.64,
+            0.8946
+          ],
+          "lb02P0": [
+            -3.0319,
+            0.51
+          ],
+          "lb02P1": [
+            -2.1281,
+            0.51
+          ],
+          "lb02P2": [
+            -2.08,
+            0.7792
+          ],
+          "lb02P3": [
+            -2.3108,
+            1.3081
+          ],
+          "lb02P4": [
+            -2.2338,
+            1.4908
+          ],
+          "lb02P5": [
+            -2.9262,
+            1.4908
+          ],
+          "lb02P6": [
+            -2.8492,
+            1.3081
+          ],
+          "lb02P7": [
+            -3.08,
+            0.7792
+          ],
+          "lb02TL": [
+            -2.8685,
+            1.3081
+          ],
+          "lb02TR": [
+            -2.2915,
+            1.3081
+          ],
+          "lb02A": [
+            -2.58,
+            0.8946
+          ],
+          "lb10P0": [
+            -5.1519,
+            1.51
+          ],
+          "lb10P1": [
+            -4.2481,
+            1.51
+          ],
+          "lb10P2": [
+            -4.2,
+            1.7792
+          ],
+          "lb10P3": [
+            -4.4308,
+            2.3081
+          ],
+          "lb10P4": [
+            -4.3538,
+            2.4908
+          ],
+          "lb10P5": [
+            -5.0462,
+            2.4908
+          ],
+          "lb10P6": [
+            -4.9692,
+            2.3081
+          ],
+          "lb10P7": [
+            -5.2,
+            1.7792
+          ],
+          "lb10TL": [
+            -4.9885,
+            2.3081
+          ],
+          "lb10TR": [
+            -4.4115,
+            2.3081
+          ],
+          "lb10A": [
+            -4.7,
+            1.8946
+          ],
+          "lb11P0": [
+            -4.0919,
+            1.51
+          ],
+          "lb11P1": [
+            -3.1881,
+            1.51
+          ],
+          "lb11P2": [
+            -3.14,
+            1.7792
+          ],
+          "lb11P3": [
+            -3.3708,
+            2.3081
+          ],
+          "lb11P4": [
+            -3.2938,
+            2.4908
+          ],
+          "lb11P5": [
+            -3.9862,
+            2.4908
+          ],
+          "lb11P6": [
+            -3.9092,
+            2.3081
+          ],
+          "lb11P7": [
+            -4.14,
+            1.7792
+          ],
+          "lb11TL": [
+            -3.9285,
+            2.3081
+          ],
+          "lb11TR": [
+            -3.3515,
+            2.3081
+          ],
+          "lb11A": [
+            -3.64,
+            1.8946
+          ],
+          "lb12P0": [
+            -3.0319,
+            1.51
+          ],
+          "lb12P1": [
+            -2.1281,
+            1.51
+          ],
+          "lb12P2": [
+            -2.08,
+            1.7792
+          ],
+          "lb12P3": [
+            -2.3108,
+            2.3081
+          ],
+          "lb12P4": [
+            -2.2338,
+            2.4908
+          ],
+          "lb12P5": [
+            -2.9262,
+            2.4908
+          ],
+          "lb12P6": [
+            -2.8492,
+            2.3081
+          ],
+          "lb12P7": [
+            -3.08,
+            1.7792
+          ],
+          "lb12TL": [
+            -2.8685,
+            2.3081
+          ],
+          "lb12TR": [
+            -2.2915,
+            2.3081
+          ],
+          "lb12A": [
+            -2.58,
+            1.8946
+          ],
+          "loneP0": [
+            -1.8,
+            0.51
+          ],
+          "loneP1": [
+            -1.5,
+            0.51
+          ],
+          "loneP2": [
+            -1.5,
+            0.81
+          ],
+          "loneP3": [
+            -1.8,
+            0.81
+          ],
+          "rtu0P0": [
+            1.33,
+            0.51
+          ],
+          "rtu0P1": [
+            1.63,
+            0.51
+          ],
+          "rtu0P2": [
+            1.63,
+            0.81
+          ],
+          "rtu0P3": [
+            1.33,
+            0.81
+          ],
+          "rtu1P0": [
+            1.67,
+            0.51
+          ],
+          "rtu1P1": [
+            1.97,
+            0.51
+          ],
+          "rtu1P2": [
+            1.97,
+            0.81
+          ],
+          "rtu1P3": [
+            1.67,
+            0.81
+          ],
+          "rtu2P0": [
+            1.33,
+            0.85
+          ],
+          "rtu2P1": [
+            1.63,
+            0.85
+          ],
+          "rtu2P2": [
+            1.63,
+            1.15
+          ],
+          "rtu2P3": [
+            1.33,
+            1.15
+          ],
+          "rtu3P0": [
+            1.67,
+            0.85
+          ],
+          "rtu3P1": [
+            1.97,
+            0.85
+          ],
+          "rtu3P2": [
+            1.97,
+            1.15
+          ],
+          "rtu3P3": [
+            1.67,
+            1.15
+          ],
+          "rtu4P0": [
+            1.33,
+            1.19
+          ],
+          "rtu4P1": [
+            1.63,
+            1.19
+          ],
+          "rtu4P2": [
+            1.63,
+            1.49
+          ],
+          "rtu4P3": [
+            1.33,
+            1.49
+          ],
+          "rtu5P0": [
+            1.67,
+            1.19
+          ],
+          "rtu5P1": [
+            1.97,
+            1.19
+          ],
+          "rtu5P2": [
+            1.97,
+            1.49
+          ],
+          "rtu5P3": [
+            1.67,
+            1.49
+          ],
+          "rtu6P0": [
+            1.33,
+            1.53
+          ],
+          "rtu6P1": [
+            1.63,
+            1.53
+          ],
+          "rtu6P2": [
+            1.63,
+            1.83
+          ],
+          "rtu6P3": [
+            1.33,
+            1.83
+          ],
+          "rtu7P0": [
+            1.67,
+            1.53
+          ],
+          "rtu7P1": [
+            1.97,
+            1.53
+          ],
+          "rtu7P2": [
+            1.97,
+            1.83
+          ],
+          "rtu7P3": [
+            1.67,
+            1.83
+          ],
+          "rtu8P0": [
+            1.33,
+            1.87
+          ],
+          "rtu8P1": [
+            1.63,
+            1.87
+          ],
+          "rtu8P2": [
+            1.63,
+            2.17
+          ],
+          "rtu8P3": [
+            1.33,
+            2.17
+          ],
+          "rtu9P0": [
+            1.67,
+            1.87
+          ],
+          "rtu9P1": [
+            1.97,
+            1.87
+          ],
+          "rtu9P2": [
+            1.97,
+            2.17
+          ],
+          "rtu9P3": [
+            1.67,
+            2.17
+          ],
+          "rtu10P0": [
+            1.33,
+            2.21
+          ],
+          "rtu10P1": [
+            1.63,
+            2.21
+          ],
+          "rtu10P2": [
+            1.63,
+            2.51
+          ],
+          "rtu10P3": [
+            1.33,
+            2.51
+          ],
+          "rtopP0": [
+            1.67,
+            2.21
+          ],
+          "rtopP1": [
+            1.97,
+            2.21
+          ],
+          "rtopP2": [
+            1.97,
+            2.51
+          ],
+          "rtopP3": [
+            1.67,
+            2.51
+          ],
+          "rb00P0": [
+            2.2981,
+            0.51
+          ],
+          "rb00P1": [
+            3.2019,
+            0.51
+          ],
+          "rb00P2": [
+            3.25,
+            0.7792
+          ],
+          "rb00P3": [
+            3.0192,
+            1.3081
+          ],
+          "rb00P4": [
+            3.0962,
+            1.4908
+          ],
+          "rb00P5": [
+            2.4038,
+            1.4908
+          ],
+          "rb00P6": [
+            2.4808,
+            1.3081
+          ],
+          "rb00P7": [
+            2.25,
+            0.7792
+          ],
+          "rb00TL": [
+            2.4615,
+            1.3081
+          ],
+          "rb00TR": [
+            3.0385,
+            1.3081
+          ],
+          "rb00A": [
+            2.75,
+            0.8946
+          ],
+          "rb01P0": [
+            3.3581,
+            0.51
+          ],
+          "rb01P1": [
+            4.2619,
+            0.51
+          ],
+          "rb01P2": [
+            4.31,
+            0.7792
+          ],
+          "rb01P3": [
+            4.0792,
+            1.3081
+          ],
+          "rb01P4": [
+            4.1562,
+            1.4908
+          ],
+          "rb01P5": [
+            3.4638,
+            1.4908
+          ],
+          "rb01P6": [
+            3.5408,
+            1.3081
+          ],
+          "rb01P7": [
+            3.31,
+            0.7792
+          ],
+          "rb01TL": [
+            3.5215,
+            1.3081
+          ],
+          "rb01TR": [
+            4.0985,
+            1.3081
+          ],
+          "rb01A": [
+            3.81,
+            0.8946
+          ],
+          "rb02P0": [
+            4.4181,
+            0.51
+          ],
+          "rb02P1": [
+            5.3219,
+            0.51
+          ],
+          "rb02P2": [
+            5.37,
+            0.7792
+          ],
+          "rb02P3": [
+            5.1392,
+            1.3081
+          ],
+          "rb02P4": [
+            5.2162,
+            1.4908
+          ],
+          "rb02P5": [
+            4.5238,
+            1.4908
+          ],
+          "rb02P6": [
+            4.6008,
+            1.3081
+          ],
+          "rb02P7": [
+            4.37,
+            0.7792
+          ],
+          "rb02TL": [
+            4.5815,
+            1.3081
+          ],
+          "rb02TR": [
+            5.1585,
+            1.3081
+          ],
+          "rb02A": [
+            4.87,
+            0.8946
+          ],
+          "rb10P0": [
+            2.8281,
+            1.51
+          ],
+          "rb10P1": [
+            3.7319,
+            1.51
+          ],
+          "rb10P2": [
+            3.78,
+            1.7792
+          ],
+          "rb10P3": [
+            3.5492,
+            2.3081
+          ],
+          "rb10P4": [
+            3.6262,
+            2.4908
+          ],
+          "rb10P5": [
+            2.9338,
+            2.4908
+          ],
+          "rb10P6": [
+            3.0108,
+            2.3081
+          ],
+          "rb10P7": [
+            2.78,
+            1.7792
+          ],
+          "rb10TL": [
+            2.9915,
+            2.3081
+          ],
+          "rb10TR": [
+            3.5685,
+            2.3081
+          ],
+          "rb10A": [
+            3.28,
+            1.8946
+          ],
+          "rb11P0": [
+            3.8881,
+            1.51
+          ],
+          "rb11P1": [
+            4.7919,
+            1.51
+          ],
+          "rb11P2": [
+            4.84,
+            1.7792
+          ],
+          "rb11P3": [
+            4.6092,
+            2.3081
+          ],
+          "rb11P4": [
+            4.6862,
+            2.4908
+          ],
+          "rb11P5": [
+            3.9938,
+            2.4908
+          ],
+          "rb11P6": [
+            4.0708,
+            2.3081
+          ],
+          "rb11P7": [
+            3.84,
+            1.7792
+          ],
+          "rb11TL": [
+            4.0515,
+            2.3081
+          ],
+          "rb11TR": [
+            4.6285,
+            2.3081
+          ],
+          "rb11A": [
+            4.34,
+            1.8946
+          ],
+          "right12A": [
+            1.65,
+            2.96
+          ],
+          "right11A": [
+            1.65,
+            2.96
+          ]
+        },
+        "parts": [
+          {
+            "id": "stand",
+            "poly": [
+              "baseL",
+              "baseR",
+              "pivot"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "postL",
+            "seg": [
+              "postL0",
+              "postL1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "postR",
+            "seg": [
+              "postR0",
+              "postR1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "beam",
+            "seg": [
+              "beamL",
+              "beamR"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "pin",
+            "dot": "pivot",
+            "ink": "gold",
+            "r": 7,
+            "start": true
+          },
+          {
+            "id": "strut",
+            "seg": [
+              "strut0",
+              "strut1"
+            ],
+            "ink": "paper",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "panL",
+            "poly": [
+              "panL0",
+              "panL1",
+              "panL2",
+              "panL3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "panR",
+            "poly": [
+              "panR0",
+              "panR1",
+              "panR2",
+              "panR3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "lb00",
+            "poly": [
+              "lb00P0",
+              "lb00P1",
+              "lb00P2",
+              "lb00P3",
+              "lb00P4",
+              "lb00P5",
+              "lb00P6",
+              "lb00P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb00Tie",
+            "seg": [
+              "lb00TL",
+              "lb00TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb00X",
+            "label": "x",
+            "at": "lb00A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb01",
+            "poly": [
+              "lb01P0",
+              "lb01P1",
+              "lb01P2",
+              "lb01P3",
+              "lb01P4",
+              "lb01P5",
+              "lb01P6",
+              "lb01P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb01Tie",
+            "seg": [
+              "lb01TL",
+              "lb01TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb01X",
+            "label": "x",
+            "at": "lb01A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb02",
+            "poly": [
+              "lb02P0",
+              "lb02P1",
+              "lb02P2",
+              "lb02P3",
+              "lb02P4",
+              "lb02P5",
+              "lb02P6",
+              "lb02P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftKeep",
+            "start": true
+          },
+          {
+            "id": "lb02Tie",
+            "seg": [
+              "lb02TL",
+              "lb02TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftKeep",
+            "start": true
+          },
+          {
+            "id": "lb02X",
+            "label": "x",
+            "at": "lb02A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftKeep",
+            "start": true
+          },
+          {
+            "id": "lb10",
+            "poly": [
+              "lb10P0",
+              "lb10P1",
+              "lb10P2",
+              "lb10P3",
+              "lb10P4",
+              "lb10P5",
+              "lb10P6",
+              "lb10P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb10Tie",
+            "seg": [
+              "lb10TL",
+              "lb10TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb10X",
+            "label": "x",
+            "at": "lb10A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb11",
+            "poly": [
+              "lb11P0",
+              "lb11P1",
+              "lb11P2",
+              "lb11P3",
+              "lb11P4",
+              "lb11P5",
+              "lb11P6",
+              "lb11P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb11Tie",
+            "seg": [
+              "lb11TL",
+              "lb11TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb11X",
+            "label": "x",
+            "at": "lb11A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb12",
+            "poly": [
+              "lb12P0",
+              "lb12P1",
+              "lb12P2",
+              "lb12P3",
+              "lb12P4",
+              "lb12P5",
+              "lb12P6",
+              "lb12P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb12Tie",
+            "seg": [
+              "lb12TL",
+              "lb12TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lb12X",
+            "label": "x",
+            "at": "lb12A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "leftFive",
+            "start": true
+          },
+          {
+            "id": "lone",
+            "poly": [
+              "loneP0",
+              "loneP1",
+              "loneP2",
+              "loneP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftOne",
+            "start": true
+          },
+          {
+            "id": "rtu0",
+            "poly": [
+              "rtu0P0",
+              "rtu0P1",
+              "rtu0P2",
+              "rtu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu1",
+            "poly": [
+              "rtu1P0",
+              "rtu1P1",
+              "rtu1P2",
+              "rtu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu2",
+            "poly": [
+              "rtu2P0",
+              "rtu2P1",
+              "rtu2P2",
+              "rtu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu3",
+            "poly": [
+              "rtu3P0",
+              "rtu3P1",
+              "rtu3P2",
+              "rtu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu4",
+            "poly": [
+              "rtu4P0",
+              "rtu4P1",
+              "rtu4P2",
+              "rtu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu5",
+            "poly": [
+              "rtu5P0",
+              "rtu5P1",
+              "rtu5P2",
+              "rtu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu6",
+            "poly": [
+              "rtu6P0",
+              "rtu6P1",
+              "rtu6P2",
+              "rtu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu7",
+            "poly": [
+              "rtu7P0",
+              "rtu7P1",
+              "rtu7P2",
+              "rtu7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu8",
+            "poly": [
+              "rtu8P0",
+              "rtu8P1",
+              "rtu8P2",
+              "rtu8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu9",
+            "poly": [
+              "rtu9P0",
+              "rtu9P1",
+              "rtu9P2",
+              "rtu9P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtu10",
+            "poly": [
+              "rtu10P0",
+              "rtu10P1",
+              "rtu10P2",
+              "rtu10P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightEleven",
+            "start": true
+          },
+          {
+            "id": "rtop",
+            "poly": [
+              "rtopP0",
+              "rtopP1",
+              "rtopP2",
+              "rtopP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightOne",
+            "start": true
+          },
+          {
+            "id": "rb00",
+            "poly": [
+              "rb00P0",
+              "rb00P1",
+              "rb00P2",
+              "rb00P3",
+              "rb00P4",
+              "rb00P5",
+              "rb00P6",
+              "rb00P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb00Tie",
+            "seg": [
+              "rb00TL",
+              "rb00TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb00X",
+            "label": "x",
+            "at": "rb00A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb01",
+            "poly": [
+              "rb01P0",
+              "rb01P1",
+              "rb01P2",
+              "rb01P3",
+              "rb01P4",
+              "rb01P5",
+              "rb01P6",
+              "rb01P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb01Tie",
+            "seg": [
+              "rb01TL",
+              "rb01TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb01X",
+            "label": "x",
+            "at": "rb01A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb02",
+            "poly": [
+              "rb02P0",
+              "rb02P1",
+              "rb02P2",
+              "rb02P3",
+              "rb02P4",
+              "rb02P5",
+              "rb02P6",
+              "rb02P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb02Tie",
+            "seg": [
+              "rb02TL",
+              "rb02TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb02X",
+            "label": "x",
+            "at": "rb02A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb10",
+            "poly": [
+              "rb10P0",
+              "rb10P1",
+              "rb10P2",
+              "rb10P3",
+              "rb10P4",
+              "rb10P5",
+              "rb10P6",
+              "rb10P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb10Tie",
+            "seg": [
+              "rb10TL",
+              "rb10TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb10X",
+            "label": "x",
+            "at": "rb10A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb11",
+            "poly": [
+              "rb11P0",
+              "rb11P1",
+              "rb11P2",
+              "rb11P3",
+              "rb11P4",
+              "rb11P5",
+              "rb11P6",
+              "rb11P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb11Tie",
+            "seg": [
+              "rb11TL",
+              "rb11TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "rb11X",
+            "label": "x",
+            "at": "rb11A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "rightFive",
+            "start": true
+          },
+          {
+            "id": "right12",
+            "label": "12",
+            "at": "right12A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "right11",
+            "label": "11",
+            "at": "right11A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Solve six x plus one equals five x plus twelve.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Solve $6x+1=5x+12$",
+              "id": "bothProblem"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now x is on both sides.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "leftFive",
+                "leftKeep",
+                "rightFive"
+              ],
+              "at": "both"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take five bags off both pans at once.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "leftFive",
+                "rightFive"
+              ],
+              "by": [
+                0,
+                0.7
+              ],
+              "at": "Take",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "leftFive",
+                "rightFive"
+              ],
+              "at": "Take",
+              "dur": 0.7
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{x}+1=12",
+              "note": "-5\\cb{x}",
+              "at": "Take"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Still level: one bag and one square balance twelve.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "leftKeep",
+                "leftOne"
+              ],
+              "at": "bag"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then take one square off both pans.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "leftOne",
+                "rightOne"
+              ],
+              "by": [
+                0,
+                0.7
+              ],
+              "at": "take",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "leftOne",
+                "rightOne"
+              ],
+              "at": "take",
+              "dur": 0.7
+            },
+            {
+              "do": "hide",
+              "target": "right12",
+              "at": "take"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{x}=11",
+              "note": "-1",
+              "at": "take",
+              "id": "bothAnswer"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One bag balances eleven. x equals eleven.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "right11",
+              "at": "eleven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.9,
+          -1.95,
+          5.9,
+          3.25
+        ],
+        "points": {
+          "baseL": [
+            -1.0,
+            -1.7
+          ],
+          "baseR": [
+            1.0,
+            -1.7
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "beamL": [
+            -3.35,
+            0
+          ],
+          "beamR": [
+            3.35,
+            0
+          ],
+          "postL0": [
+            -3.35,
+            0
+          ],
+          "postL1": [
+            -3.35,
+            0.35
+          ],
+          "postR0": [
+            3.35,
+            0
+          ],
+          "postR1": [
+            3.35,
+            0.35
+          ],
+          "strut0": [
+            -0.01,
+            3.7
+          ],
+          "strut1": [
+            0.01,
+            3.7
+          ],
+          "panL0": [
+            -5.6,
+            0.35
+          ],
+          "panL1": [
+            -1.1,
+            0.35
+          ],
+          "panL2": [
+            -1.1,
+            0.51
+          ],
+          "panL3": [
+            -5.6,
+            0.51
+          ],
+          "panR0": [
+            1.1,
+            0.35
+          ],
+          "panR1": [
+            5.6,
+            0.35
+          ],
+          "panR2": [
+            5.6,
+            0.51
+          ],
+          "panR3": [
+            1.1,
+            0.51
+          ],
+          "lb0P0": [
+            -4.9619,
+            0.51
+          ],
+          "lb0P1": [
+            -4.0581,
+            0.51
+          ],
+          "lb0P2": [
+            -4.01,
+            0.7792
+          ],
+          "lb0P3": [
+            -4.2408,
+            1.3081
+          ],
+          "lb0P4": [
+            -4.1638,
+            1.4908
+          ],
+          "lb0P5": [
+            -4.8562,
+            1.4908
+          ],
+          "lb0P6": [
+            -4.7792,
+            1.3081
+          ],
+          "lb0P7": [
+            -5.01,
+            0.7792
+          ],
+          "lb0TL": [
+            -4.7985,
+            1.3081
+          ],
+          "lb0TR": [
+            -4.2215,
+            1.3081
+          ],
+          "lb0A": [
+            -4.51,
+            0.8946
+          ],
+          "lb1P0": [
+            -3.9019,
+            0.51
+          ],
+          "lb1P1": [
+            -2.9981,
+            0.51
+          ],
+          "lb1P2": [
+            -2.95,
+            0.7792
+          ],
+          "lb1P3": [
+            -3.1808,
+            1.3081
+          ],
+          "lb1P4": [
+            -3.1038,
+            1.4908
+          ],
+          "lb1P5": [
+            -3.7962,
+            1.4908
+          ],
+          "lb1P6": [
+            -3.7192,
+            1.3081
+          ],
+          "lb1P7": [
+            -3.95,
+            0.7792
+          ],
+          "lb1TL": [
+            -3.7385,
+            1.3081
+          ],
+          "lb1TR": [
+            -3.1615,
+            1.3081
+          ],
+          "lb1A": [
+            -3.45,
+            0.8946
+          ],
+          "lsu0P0": [
+            -2.67,
+            0.51
+          ],
+          "lsu0P1": [
+            -2.37,
+            0.51
+          ],
+          "lsu0P2": [
+            -2.37,
+            0.81
+          ],
+          "lsu0P3": [
+            -2.67,
+            0.81
+          ],
+          "lsu1P0": [
+            -2.33,
+            0.51
+          ],
+          "lsu1P1": [
+            -2.03,
+            0.51
+          ],
+          "lsu1P2": [
+            -2.03,
+            0.81
+          ],
+          "lsu1P3": [
+            -2.33,
+            0.81
+          ],
+          "lsu2P0": [
+            -1.99,
+            0.51
+          ],
+          "lsu2P1": [
+            -1.69,
+            0.51
+          ],
+          "lsu2P2": [
+            -1.69,
+            0.81
+          ],
+          "lsu2P3": [
+            -1.99,
+            0.81
+          ],
+          "lsu3P0": [
+            -2.67,
+            0.85
+          ],
+          "lsu3P1": [
+            -2.37,
+            0.85
+          ],
+          "lsu3P2": [
+            -2.37,
+            1.15
+          ],
+          "lsu3P3": [
+            -2.67,
+            1.15
+          ],
+          "lsu4P0": [
+            -2.33,
+            0.85
+          ],
+          "lsu4P1": [
+            -2.03,
+            0.85
+          ],
+          "lsu4P2": [
+            -2.03,
+            1.15
+          ],
+          "lsu4P3": [
+            -2.33,
+            1.15
+          ],
+          "lsu5P0": [
+            -1.99,
+            0.85
+          ],
+          "lsu5P1": [
+            -1.69,
+            0.85
+          ],
+          "lsu5P2": [
+            -1.69,
+            1.15
+          ],
+          "lsu5P3": [
+            -1.99,
+            1.15
+          ],
+          "rsu0P0": [
+            1.69,
+            0.51
+          ],
+          "rsu0P1": [
+            1.99,
+            0.51
+          ],
+          "rsu0P2": [
+            1.99,
+            0.81
+          ],
+          "rsu0P3": [
+            1.69,
+            0.81
+          ],
+          "rsu1P0": [
+            2.03,
+            0.51
+          ],
+          "rsu1P1": [
+            2.33,
+            0.51
+          ],
+          "rsu1P2": [
+            2.33,
+            0.81
+          ],
+          "rsu1P3": [
+            2.03,
+            0.81
+          ],
+          "rsu2P0": [
+            2.37,
+            0.51
+          ],
+          "rsu2P1": [
+            2.67,
+            0.51
+          ],
+          "rsu2P2": [
+            2.67,
+            0.81
+          ],
+          "rsu2P3": [
+            2.37,
+            0.81
+          ],
+          "rsu3P0": [
+            1.69,
+            0.85
+          ],
+          "rsu3P1": [
+            1.99,
+            0.85
+          ],
+          "rsu3P2": [
+            1.99,
+            1.15
+          ],
+          "rsu3P3": [
+            1.69,
+            1.15
+          ],
+          "rsu4P0": [
+            2.03,
+            0.85
+          ],
+          "rsu4P1": [
+            2.33,
+            0.85
+          ],
+          "rsu4P2": [
+            2.33,
+            1.15
+          ],
+          "rsu4P3": [
+            2.03,
+            1.15
+          ],
+          "rsu5P0": [
+            2.37,
+            0.85
+          ],
+          "rsu5P1": [
+            2.67,
+            0.85
+          ],
+          "rsu5P2": [
+            2.67,
+            1.15
+          ],
+          "rsu5P3": [
+            2.37,
+            1.15
+          ],
+          "rsu6P0": [
+            1.69,
+            1.19
+          ],
+          "rsu6P1": [
+            1.99,
+            1.19
+          ],
+          "rsu6P2": [
+            1.99,
+            1.49
+          ],
+          "rsu6P3": [
+            1.69,
+            1.49
+          ],
+          "rsu7P0": [
+            2.03,
+            1.19
+          ],
+          "rsu7P1": [
+            2.33,
+            1.19
+          ],
+          "rsu7P2": [
+            2.33,
+            1.49
+          ],
+          "rsu7P3": [
+            2.03,
+            1.49
+          ],
+          "rsu8P0": [
+            2.37,
+            1.19
+          ],
+          "rsu8P1": [
+            2.67,
+            1.19
+          ],
+          "rsu8P2": [
+            2.67,
+            1.49
+          ],
+          "rsu8P3": [
+            2.37,
+            1.49
+          ],
+          "left6A": [
+            -2.18,
+            1.94
+          ],
+          "right9A": [
+            2.18,
+            1.94
+          ],
+          "rb0P0": [
+            2.9981,
+            0.51
+          ],
+          "rb0P1": [
+            3.9019,
+            0.51
+          ],
+          "rb0P2": [
+            3.95,
+            0.7792
+          ],
+          "rb0P3": [
+            3.7192,
+            1.3081
+          ],
+          "rb0P4": [
+            3.7962,
+            1.4908
+          ],
+          "rb0P5": [
+            3.1038,
+            1.4908
+          ],
+          "rb0P6": [
+            3.1808,
+            1.3081
+          ],
+          "rb0P7": [
+            2.95,
+            0.7792
+          ],
+          "rb0TL": [
+            3.1615,
+            1.3081
+          ],
+          "rb0TR": [
+            3.7385,
+            1.3081
+          ],
+          "rb0A": [
+            3.45,
+            0.8946
+          ],
+          "rb1P0": [
+            4.0581,
+            0.51
+          ],
+          "rb1P1": [
+            4.9619,
+            0.51
+          ],
+          "rb1P2": [
+            5.01,
+            0.7792
+          ],
+          "rb1P3": [
+            4.7792,
+            1.3081
+          ],
+          "rb1P4": [
+            4.8562,
+            1.4908
+          ],
+          "rb1P5": [
+            4.1638,
+            1.4908
+          ],
+          "rb1P6": [
+            4.2408,
+            1.3081
+          ],
+          "rb1P7": [
+            4.01,
+            0.7792
+          ],
+          "rb1TL": [
+            4.2215,
+            1.3081
+          ],
+          "rb1TR": [
+            4.7985,
+            1.3081
+          ],
+          "rb1A": [
+            4.51,
+            0.8946
+          ]
+        },
+        "parts": [
+          {
+            "id": "stand",
+            "poly": [
+              "baseL",
+              "baseR",
+              "pivot"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "postL",
+            "seg": [
+              "postL0",
+              "postL1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "postR",
+            "seg": [
+              "postR0",
+              "postR1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "beam",
+            "seg": [
+              "beamL",
+              "beamR"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "pin",
+            "dot": "pivot",
+            "ink": "gold",
+            "r": 7,
+            "start": true
+          },
+          {
+            "id": "strut",
+            "seg": [
+              "strut0",
+              "strut1"
+            ],
+            "ink": "paper",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "panL",
+            "poly": [
+              "panL0",
+              "panL1",
+              "panL2",
+              "panL3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "panR",
+            "poly": [
+              "panR0",
+              "panR1",
+              "panR2",
+              "panR3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "lb0",
+            "poly": [
+              "lb0P0",
+              "lb0P1",
+              "lb0P2",
+              "lb0P3",
+              "lb0P4",
+              "lb0P5",
+              "lb0P6",
+              "lb0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb0Tie",
+            "seg": [
+              "lb0TL",
+              "lb0TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb0X",
+            "label": "x",
+            "at": "lb0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1",
+            "poly": [
+              "lb1P0",
+              "lb1P1",
+              "lb1P2",
+              "lb1P3",
+              "lb1P4",
+              "lb1P5",
+              "lb1P6",
+              "lb1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1Tie",
+            "seg": [
+              "lb1TL",
+              "lb1TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1X",
+            "label": "x",
+            "at": "lb1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lsu0",
+            "poly": [
+              "lsu0P0",
+              "lsu0P1",
+              "lsu0P2",
+              "lsu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu1",
+            "poly": [
+              "lsu1P0",
+              "lsu1P1",
+              "lsu1P2",
+              "lsu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu2",
+            "poly": [
+              "lsu2P0",
+              "lsu2P1",
+              "lsu2P2",
+              "lsu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu3",
+            "poly": [
+              "lsu3P0",
+              "lsu3P1",
+              "lsu3P2",
+              "lsu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu4",
+            "poly": [
+              "lsu4P0",
+              "lsu4P1",
+              "lsu4P2",
+              "lsu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu5",
+            "poly": [
+              "lsu5P0",
+              "lsu5P1",
+              "lsu5P2",
+              "lsu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "rsu0",
+            "poly": [
+              "rsu0P0",
+              "rsu0P1",
+              "rsu0P2",
+              "rsu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu1",
+            "poly": [
+              "rsu1P0",
+              "rsu1P1",
+              "rsu1P2",
+              "rsu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu2",
+            "poly": [
+              "rsu2P0",
+              "rsu2P1",
+              "rsu2P2",
+              "rsu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu3",
+            "poly": [
+              "rsu3P0",
+              "rsu3P1",
+              "rsu3P2",
+              "rsu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu4",
+            "poly": [
+              "rsu4P0",
+              "rsu4P1",
+              "rsu4P2",
+              "rsu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu5",
+            "poly": [
+              "rsu5P0",
+              "rsu5P1",
+              "rsu5P2",
+              "rsu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu6",
+            "poly": [
+              "rsu6P0",
+              "rsu6P1",
+              "rsu6P2",
+              "rsu6P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightThree",
+            "start": true
+          },
+          {
+            "id": "rsu7",
+            "poly": [
+              "rsu7P0",
+              "rsu7P1",
+              "rsu7P2",
+              "rsu7P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightThree",
+            "start": true
+          },
+          {
+            "id": "rsu8",
+            "poly": [
+              "rsu8P0",
+              "rsu8P1",
+              "rsu8P2",
+              "rsu8P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightThree",
+            "start": true
+          },
+          {
+            "id": "left6",
+            "label": "6",
+            "at": "left6A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "right9",
+            "label": "9",
+            "at": "right9A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "rb0",
+            "poly": [
+              "rb0P0",
+              "rb0P1",
+              "rb0P2",
+              "rb0P3",
+              "rb0P4",
+              "rb0P5",
+              "rb0P6",
+              "rb0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb0Tie",
+            "seg": [
+              "rb0TL",
+              "rb0TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb0X",
+            "label": "x",
+            "at": "rb0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1",
+            "poly": [
+              "rb1P0",
+              "rb1P1",
+              "rb1P2",
+              "rb1P3",
+              "rb1P4",
+              "rb1P5",
+              "rb1P6",
+              "rb1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1Tie",
+            "seg": [
+              "rb1TL",
+              "rb1TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1X",
+            "label": "x",
+            "at": "rb1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Next, two x plus six equals two x plus nine.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2\\cb{x}+6=2\\cb{x}+9",
+              "fresh": true,
+              "id": "noneProblem"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The right pan has three more, so it sinks.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "rightThree",
+              "at": "three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "beamL": [
+                  -3.325,
+                  0.4083
+                ],
+                "beamR": [
+                  3.325,
+                  -0.4083
+                ],
+                "postL0": [
+                  -3.325,
+                  0.4083
+                ],
+                "postL1": [
+                  -3.325,
+                  0.7583
+                ],
+                "postR0": [
+                  3.325,
+                  -0.4083
+                ],
+                "postR1": [
+                  3.325,
+                  -0.0583
+                ],
+                "panL0": [
+                  -5.575,
+                  0.7583
+                ],
+                "panL1": [
+                  -1.075,
+                  0.7583
+                ],
+                "panL2": [
+                  -1.075,
+                  0.9183
+                ],
+                "panL3": [
+                  -5.575,
+                  0.9183
+                ],
+                "panR0": [
+                  1.075,
+                  -0.0583
+                ],
+                "panR1": [
+                  5.575,
+                  -0.0583
+                ],
+                "panR2": [
+                  5.575,
+                  0.1017
+                ],
+                "panR3": [
+                  1.075,
+                  0.1017
+                ],
+                "lb0P0": [
+                  -4.9369,
+                  0.9183
+                ],
+                "lb0P1": [
+                  -4.0331,
+                  0.9183
+                ],
+                "lb0P2": [
+                  -3.985,
+                  1.1875
+                ],
+                "lb0P3": [
+                  -4.2158,
+                  1.7164
+                ],
+                "lb0P4": [
+                  -4.1388,
+                  1.8991
+                ],
+                "lb0P5": [
+                  -4.8312,
+                  1.8991
+                ],
+                "lb0P6": [
+                  -4.7542,
+                  1.7164
+                ],
+                "lb0P7": [
+                  -4.985,
+                  1.1875
+                ],
+                "lb0TL": [
+                  -4.7735,
+                  1.7164
+                ],
+                "lb0TR": [
+                  -4.1965,
+                  1.7164
+                ],
+                "lb0A": [
+                  -4.485,
+                  1.3029
+                ],
+                "lb1P0": [
+                  -3.8769,
+                  0.9183
+                ],
+                "lb1P1": [
+                  -2.9731,
+                  0.9183
+                ],
+                "lb1P2": [
+                  -2.925,
+                  1.1875
+                ],
+                "lb1P3": [
+                  -3.1558,
+                  1.7164
+                ],
+                "lb1P4": [
+                  -3.0788,
+                  1.8991
+                ],
+                "lb1P5": [
+                  -3.7712,
+                  1.8991
+                ],
+                "lb1P6": [
+                  -3.6942,
+                  1.7164
+                ],
+                "lb1P7": [
+                  -3.925,
+                  1.1875
+                ],
+                "lb1TL": [
+                  -3.7135,
+                  1.7164
+                ],
+                "lb1TR": [
+                  -3.1365,
+                  1.7164
+                ],
+                "lb1A": [
+                  -3.425,
+                  1.3029
+                ],
+                "lsu0P0": [
+                  -2.645,
+                  0.9183
+                ],
+                "lsu0P1": [
+                  -2.345,
+                  0.9183
+                ],
+                "lsu0P2": [
+                  -2.345,
+                  1.2183
+                ],
+                "lsu0P3": [
+                  -2.645,
+                  1.2183
+                ],
+                "lsu1P0": [
+                  -2.305,
+                  0.9183
+                ],
+                "lsu1P1": [
+                  -2.005,
+                  0.9183
+                ],
+                "lsu1P2": [
+                  -2.005,
+                  1.2183
+                ],
+                "lsu1P3": [
+                  -2.305,
+                  1.2183
+                ],
+                "lsu2P0": [
+                  -1.965,
+                  0.9183
+                ],
+                "lsu2P1": [
+                  -1.665,
+                  0.9183
+                ],
+                "lsu2P2": [
+                  -1.665,
+                  1.2183
+                ],
+                "lsu2P3": [
+                  -1.965,
+                  1.2183
+                ],
+                "lsu3P0": [
+                  -2.645,
+                  1.2583
+                ],
+                "lsu3P1": [
+                  -2.345,
+                  1.2583
+                ],
+                "lsu3P2": [
+                  -2.345,
+                  1.5583
+                ],
+                "lsu3P3": [
+                  -2.645,
+                  1.5583
+                ],
+                "lsu4P0": [
+                  -2.305,
+                  1.2583
+                ],
+                "lsu4P1": [
+                  -2.005,
+                  1.2583
+                ],
+                "lsu4P2": [
+                  -2.005,
+                  1.5583
+                ],
+                "lsu4P3": [
+                  -2.305,
+                  1.5583
+                ],
+                "lsu5P0": [
+                  -1.965,
+                  1.2583
+                ],
+                "lsu5P1": [
+                  -1.665,
+                  1.2583
+                ],
+                "lsu5P2": [
+                  -1.665,
+                  1.5583
+                ],
+                "lsu5P3": [
+                  -1.965,
+                  1.5583
+                ],
+                "rsu0P0": [
+                  1.665,
+                  0.1017
+                ],
+                "rsu0P1": [
+                  1.965,
+                  0.1017
+                ],
+                "rsu0P2": [
+                  1.965,
+                  0.4017
+                ],
+                "rsu0P3": [
+                  1.665,
+                  0.4017
+                ],
+                "rsu1P0": [
+                  2.005,
+                  0.1017
+                ],
+                "rsu1P1": [
+                  2.305,
+                  0.1017
+                ],
+                "rsu1P2": [
+                  2.305,
+                  0.4017
+                ],
+                "rsu1P3": [
+                  2.005,
+                  0.4017
+                ],
+                "rsu2P0": [
+                  2.345,
+                  0.1017
+                ],
+                "rsu2P1": [
+                  2.645,
+                  0.1017
+                ],
+                "rsu2P2": [
+                  2.645,
+                  0.4017
+                ],
+                "rsu2P3": [
+                  2.345,
+                  0.4017
+                ],
+                "rsu3P0": [
+                  1.665,
+                  0.4417
+                ],
+                "rsu3P1": [
+                  1.965,
+                  0.4417
+                ],
+                "rsu3P2": [
+                  1.965,
+                  0.7417
+                ],
+                "rsu3P3": [
+                  1.665,
+                  0.7417
+                ],
+                "rsu4P0": [
+                  2.005,
+                  0.4417
+                ],
+                "rsu4P1": [
+                  2.305,
+                  0.4417
+                ],
+                "rsu4P2": [
+                  2.305,
+                  0.7417
+                ],
+                "rsu4P3": [
+                  2.005,
+                  0.7417
+                ],
+                "rsu5P0": [
+                  2.345,
+                  0.4417
+                ],
+                "rsu5P1": [
+                  2.645,
+                  0.4417
+                ],
+                "rsu5P2": [
+                  2.645,
+                  0.7417
+                ],
+                "rsu5P3": [
+                  2.345,
+                  0.7417
+                ],
+                "rsu6P0": [
+                  1.665,
+                  0.7817
+                ],
+                "rsu6P1": [
+                  1.965,
+                  0.7817
+                ],
+                "rsu6P2": [
+                  1.965,
+                  1.0817
+                ],
+                "rsu6P3": [
+                  1.665,
+                  1.0817
+                ],
+                "rsu7P0": [
+                  2.005,
+                  0.7817
+                ],
+                "rsu7P1": [
+                  2.305,
+                  0.7817
+                ],
+                "rsu7P2": [
+                  2.305,
+                  1.0817
+                ],
+                "rsu7P3": [
+                  2.005,
+                  1.0817
+                ],
+                "rsu8P0": [
+                  2.345,
+                  0.7817
+                ],
+                "rsu8P1": [
+                  2.645,
+                  0.7817
+                ],
+                "rsu8P2": [
+                  2.645,
+                  1.0817
+                ],
+                "rsu8P3": [
+                  2.345,
+                  1.0817
+                ],
+                "left6A": [
+                  -2.155,
+                  2.3483
+                ],
+                "right9A": [
+                  2.155,
+                  1.5317
+                ],
+                "rb0P0": [
+                  2.9731,
+                  0.1017
+                ],
+                "rb0P1": [
+                  3.8769,
+                  0.1017
+                ],
+                "rb0P2": [
+                  3.925,
+                  0.3709
+                ],
+                "rb0P3": [
+                  3.6942,
+                  0.8998
+                ],
+                "rb0P4": [
+                  3.7712,
+                  1.0825
+                ],
+                "rb0P5": [
+                  3.0788,
+                  1.0825
+                ],
+                "rb0P6": [
+                  3.1558,
+                  0.8998
+                ],
+                "rb0P7": [
+                  2.925,
+                  0.3709
+                ],
+                "rb0TL": [
+                  3.1365,
+                  0.8998
+                ],
+                "rb0TR": [
+                  3.7135,
+                  0.8998
+                ],
+                "rb0A": [
+                  3.425,
+                  0.4863
+                ],
+                "rb1P0": [
+                  4.0331,
+                  0.1017
+                ],
+                "rb1P1": [
+                  4.9369,
+                  0.1017
+                ],
+                "rb1P2": [
+                  4.985,
+                  0.3709
+                ],
+                "rb1P3": [
+                  4.7542,
+                  0.8998
+                ],
+                "rb1P4": [
+                  4.8312,
+                  1.0825
+                ],
+                "rb1P5": [
+                  4.1388,
+                  1.0825
+                ],
+                "rb1P6": [
+                  4.2158,
+                  0.8998
+                ],
+                "rb1P7": [
+                  3.985,
+                  0.3709
+                ],
+                "rb1TL": [
+                  4.1965,
+                  0.8998
+                ],
+                "rb1TR": [
+                  4.7735,
+                  0.8998
+                ],
+                "rb1A": [
+                  4.485,
+                  0.4863
+                ]
+              },
+              "at": "sinks",
+              "dur": 1.5
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Let x grow. Let it shrink. The right pan stays down.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9369,
+                  0.9183
+                ],
+                "lb0P1": [
+                  -4.0331,
+                  0.9183
+                ],
+                "lb0P2": [
+                  -3.985,
+                  1.3086
+                ],
+                "lb0P3": [
+                  -4.2158,
+                  2.0755
+                ],
+                "lb0P4": [
+                  -4.1388,
+                  2.3405
+                ],
+                "lb0P5": [
+                  -4.8312,
+                  2.3405
+                ],
+                "lb0P6": [
+                  -4.7542,
+                  2.0755
+                ],
+                "lb0P7": [
+                  -4.985,
+                  1.3086
+                ],
+                "lb0TL": [
+                  -4.7735,
+                  2.0755
+                ],
+                "lb0TR": [
+                  -4.1965,
+                  2.0755
+                ],
+                "lb0A": [
+                  -4.485,
+                  1.476
+                ],
+                "lb1P0": [
+                  -3.8769,
+                  0.9183
+                ],
+                "lb1P1": [
+                  -2.9731,
+                  0.9183
+                ],
+                "lb1P2": [
+                  -2.925,
+                  1.3086
+                ],
+                "lb1P3": [
+                  -3.1558,
+                  2.0755
+                ],
+                "lb1P4": [
+                  -3.0788,
+                  2.3405
+                ],
+                "lb1P5": [
+                  -3.7712,
+                  2.3405
+                ],
+                "lb1P6": [
+                  -3.6942,
+                  2.0755
+                ],
+                "lb1P7": [
+                  -3.925,
+                  1.3086
+                ],
+                "lb1TL": [
+                  -3.7135,
+                  2.0755
+                ],
+                "lb1TR": [
+                  -3.1365,
+                  2.0755
+                ],
+                "lb1A": [
+                  -3.425,
+                  1.476
+                ],
+                "rb0P0": [
+                  2.9731,
+                  0.1017
+                ],
+                "rb0P1": [
+                  3.8769,
+                  0.1017
+                ],
+                "rb0P2": [
+                  3.925,
+                  0.492
+                ],
+                "rb0P3": [
+                  3.6942,
+                  1.2589
+                ],
+                "rb0P4": [
+                  3.7712,
+                  1.5239
+                ],
+                "rb0P5": [
+                  3.0788,
+                  1.5239
+                ],
+                "rb0P6": [
+                  3.1558,
+                  1.2589
+                ],
+                "rb0P7": [
+                  2.925,
+                  0.492
+                ],
+                "rb0TL": [
+                  3.1365,
+                  1.2589
+                ],
+                "rb0TR": [
+                  3.7135,
+                  1.2589
+                ],
+                "rb0A": [
+                  3.425,
+                  0.6594
+                ],
+                "rb1P0": [
+                  4.0331,
+                  0.1017
+                ],
+                "rb1P1": [
+                  4.9369,
+                  0.1017
+                ],
+                "rb1P2": [
+                  4.985,
+                  0.492
+                ],
+                "rb1P3": [
+                  4.7542,
+                  1.2589
+                ],
+                "rb1P4": [
+                  4.8312,
+                  1.5239
+                ],
+                "rb1P5": [
+                  4.1388,
+                  1.5239
+                ],
+                "rb1P6": [
+                  4.2158,
+                  1.2589
+                ],
+                "rb1P7": [
+                  3.985,
+                  0.492
+                ],
+                "rb1TL": [
+                  4.1965,
+                  1.2589
+                ],
+                "rb1TR": [
+                  4.7735,
+                  1.2589
+                ],
+                "rb1A": [
+                  4.485,
+                  0.6594
+                ]
+              },
+              "at": "grow",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9369,
+                  0.9183
+                ],
+                "lb0P1": [
+                  -4.0331,
+                  0.9183
+                ],
+                "lb0P2": [
+                  -3.985,
+                  1.1067
+                ],
+                "lb0P3": [
+                  -4.2158,
+                  1.477
+                ],
+                "lb0P4": [
+                  -4.1388,
+                  1.6049
+                ],
+                "lb0P5": [
+                  -4.8312,
+                  1.6049
+                ],
+                "lb0P6": [
+                  -4.7542,
+                  1.477
+                ],
+                "lb0P7": [
+                  -4.985,
+                  1.1067
+                ],
+                "lb0TL": [
+                  -4.7735,
+                  1.477
+                ],
+                "lb0TR": [
+                  -4.1965,
+                  1.477
+                ],
+                "lb0A": [
+                  -4.485,
+                  1.1875
+                ],
+                "lb1P0": [
+                  -3.8769,
+                  0.9183
+                ],
+                "lb1P1": [
+                  -2.9731,
+                  0.9183
+                ],
+                "lb1P2": [
+                  -2.925,
+                  1.1067
+                ],
+                "lb1P3": [
+                  -3.1558,
+                  1.477
+                ],
+                "lb1P4": [
+                  -3.0788,
+                  1.6049
+                ],
+                "lb1P5": [
+                  -3.7712,
+                  1.6049
+                ],
+                "lb1P6": [
+                  -3.6942,
+                  1.477
+                ],
+                "lb1P7": [
+                  -3.925,
+                  1.1067
+                ],
+                "lb1TL": [
+                  -3.7135,
+                  1.477
+                ],
+                "lb1TR": [
+                  -3.1365,
+                  1.477
+                ],
+                "lb1A": [
+                  -3.425,
+                  1.1875
+                ],
+                "rb0P0": [
+                  2.9731,
+                  0.1017
+                ],
+                "rb0P1": [
+                  3.8769,
+                  0.1017
+                ],
+                "rb0P2": [
+                  3.925,
+                  0.2901
+                ],
+                "rb0P3": [
+                  3.6942,
+                  0.6604
+                ],
+                "rb0P4": [
+                  3.7712,
+                  0.7883
+                ],
+                "rb0P5": [
+                  3.0788,
+                  0.7883
+                ],
+                "rb0P6": [
+                  3.1558,
+                  0.6604
+                ],
+                "rb0P7": [
+                  2.925,
+                  0.2901
+                ],
+                "rb0TL": [
+                  3.1365,
+                  0.6604
+                ],
+                "rb0TR": [
+                  3.7135,
+                  0.6604
+                ],
+                "rb0A": [
+                  3.425,
+                  0.3709
+                ],
+                "rb1P0": [
+                  4.0331,
+                  0.1017
+                ],
+                "rb1P1": [
+                  4.9369,
+                  0.1017
+                ],
+                "rb1P2": [
+                  4.985,
+                  0.2901
+                ],
+                "rb1P3": [
+                  4.7542,
+                  0.6604
+                ],
+                "rb1P4": [
+                  4.8312,
+                  0.7883
+                ],
+                "rb1P5": [
+                  4.1388,
+                  0.7883
+                ],
+                "rb1P6": [
+                  4.2158,
+                  0.6604
+                ],
+                "rb1P7": [
+                  3.985,
+                  0.2901
+                ],
+                "rb1TL": [
+                  4.1965,
+                  0.6604
+                ],
+                "rb1TR": [
+                  4.7735,
+                  0.6604
+                ],
+                "rb1A": [
+                  4.485,
+                  0.3709
+                ]
+              },
+              "at": "shrink",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9369,
+                  0.9183
+                ],
+                "lb0P1": [
+                  -4.0331,
+                  0.9183
+                ],
+                "lb0P2": [
+                  -3.985,
+                  1.1875
+                ],
+                "lb0P3": [
+                  -4.2158,
+                  1.7164
+                ],
+                "lb0P4": [
+                  -4.1388,
+                  1.8991
+                ],
+                "lb0P5": [
+                  -4.8312,
+                  1.8991
+                ],
+                "lb0P6": [
+                  -4.7542,
+                  1.7164
+                ],
+                "lb0P7": [
+                  -4.985,
+                  1.1875
+                ],
+                "lb0TL": [
+                  -4.7735,
+                  1.7164
+                ],
+                "lb0TR": [
+                  -4.1965,
+                  1.7164
+                ],
+                "lb0A": [
+                  -4.485,
+                  1.3029
+                ],
+                "lb1P0": [
+                  -3.8769,
+                  0.9183
+                ],
+                "lb1P1": [
+                  -2.9731,
+                  0.9183
+                ],
+                "lb1P2": [
+                  -2.925,
+                  1.1875
+                ],
+                "lb1P3": [
+                  -3.1558,
+                  1.7164
+                ],
+                "lb1P4": [
+                  -3.0788,
+                  1.8991
+                ],
+                "lb1P5": [
+                  -3.7712,
+                  1.8991
+                ],
+                "lb1P6": [
+                  -3.6942,
+                  1.7164
+                ],
+                "lb1P7": [
+                  -3.925,
+                  1.1875
+                ],
+                "lb1TL": [
+                  -3.7135,
+                  1.7164
+                ],
+                "lb1TR": [
+                  -3.1365,
+                  1.7164
+                ],
+                "lb1A": [
+                  -3.425,
+                  1.3029
+                ],
+                "rb0P0": [
+                  2.9731,
+                  0.1017
+                ],
+                "rb0P1": [
+                  3.8769,
+                  0.1017
+                ],
+                "rb0P2": [
+                  3.925,
+                  0.3709
+                ],
+                "rb0P3": [
+                  3.6942,
+                  0.8998
+                ],
+                "rb0P4": [
+                  3.7712,
+                  1.0825
+                ],
+                "rb0P5": [
+                  3.0788,
+                  1.0825
+                ],
+                "rb0P6": [
+                  3.1558,
+                  0.8998
+                ],
+                "rb0P7": [
+                  2.925,
+                  0.3709
+                ],
+                "rb0TL": [
+                  3.1365,
+                  0.8998
+                ],
+                "rb0TR": [
+                  3.7135,
+                  0.8998
+                ],
+                "rb0A": [
+                  3.425,
+                  0.4863
+                ],
+                "rb1P0": [
+                  4.0331,
+                  0.1017
+                ],
+                "rb1P1": [
+                  4.9369,
+                  0.1017
+                ],
+                "rb1P2": [
+                  4.985,
+                  0.3709
+                ],
+                "rb1P3": [
+                  4.7542,
+                  0.8998
+                ],
+                "rb1P4": [
+                  4.8312,
+                  1.0825
+                ],
+                "rb1P5": [
+                  4.1388,
+                  1.0825
+                ],
+                "rb1P6": [
+                  4.2158,
+                  0.8998
+                ],
+                "rb1P7": [
+                  3.985,
+                  0.3709
+                ],
+                "rb1TL": [
+                  4.1965,
+                  0.8998
+                ],
+                "rb1TR": [
+                  4.7735,
+                  0.8998
+                ],
+                "rb1A": [
+                  4.485,
+                  0.4863
+                ]
+              },
+              "at": "stays",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take two bags off both pans: six against nine.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": "bags",
+              "by": [
+                0,
+                0.7
+              ],
+              "at": "Take",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": "bags",
+              "at": "Take",
+              "dur": 0.7
+            },
+            {
+              "do": "write",
+              "tex": "6\\ne9",
+              "note": "-2\\cb{x}",
+              "at": "Take"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "leftSix",
+                "rightSix",
+                "rightThree"
+              ],
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip is to call nine the answer, but x is gone, and nothing can level these pans.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cancel{\\cb{x}=9}",
+              "note": "\\text{slip}",
+              "fresh": true,
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "There is no solution.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{No solution}",
+              "at": "no",
+              "id": "noneAnswer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.9,
+          -1.95,
+          5.9,
+          3.25
+        ],
+        "points": {
+          "baseL": [
+            -1.0,
+            -1.7
+          ],
+          "baseR": [
+            1.0,
+            -1.7
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "beamL": [
+            -3.35,
+            0
+          ],
+          "beamR": [
+            3.35,
+            0
+          ],
+          "postL0": [
+            -3.35,
+            0
+          ],
+          "postL1": [
+            -3.35,
+            0.35
+          ],
+          "postR0": [
+            3.35,
+            0
+          ],
+          "postR1": [
+            3.35,
+            0.35
+          ],
+          "strut0": [
+            -0.01,
+            3.7
+          ],
+          "strut1": [
+            0.01,
+            3.7
+          ],
+          "panL0": [
+            -5.6,
+            0.35
+          ],
+          "panL1": [
+            -1.1,
+            0.35
+          ],
+          "panL2": [
+            -1.1,
+            0.51
+          ],
+          "panL3": [
+            -5.6,
+            0.51
+          ],
+          "panR0": [
+            1.1,
+            0.35
+          ],
+          "panR1": [
+            5.6,
+            0.35
+          ],
+          "panR2": [
+            5.6,
+            0.51
+          ],
+          "panR3": [
+            1.1,
+            0.51
+          ],
+          "lb0P0": [
+            -4.9619,
+            0.51
+          ],
+          "lb0P1": [
+            -4.0581,
+            0.51
+          ],
+          "lb0P2": [
+            -4.01,
+            0.7792
+          ],
+          "lb0P3": [
+            -4.2408,
+            1.3081
+          ],
+          "lb0P4": [
+            -4.1638,
+            1.4908
+          ],
+          "lb0P5": [
+            -4.8562,
+            1.4908
+          ],
+          "lb0P6": [
+            -4.7792,
+            1.3081
+          ],
+          "lb0P7": [
+            -5.01,
+            0.7792
+          ],
+          "lb0TL": [
+            -4.7985,
+            1.3081
+          ],
+          "lb0TR": [
+            -4.2215,
+            1.3081
+          ],
+          "lb0A": [
+            -4.51,
+            0.8946
+          ],
+          "lb1P0": [
+            -3.9019,
+            0.51
+          ],
+          "lb1P1": [
+            -2.9981,
+            0.51
+          ],
+          "lb1P2": [
+            -2.95,
+            0.7792
+          ],
+          "lb1P3": [
+            -3.1808,
+            1.3081
+          ],
+          "lb1P4": [
+            -3.1038,
+            1.4908
+          ],
+          "lb1P5": [
+            -3.7962,
+            1.4908
+          ],
+          "lb1P6": [
+            -3.7192,
+            1.3081
+          ],
+          "lb1P7": [
+            -3.95,
+            0.7792
+          ],
+          "lb1TL": [
+            -3.7385,
+            1.3081
+          ],
+          "lb1TR": [
+            -3.1615,
+            1.3081
+          ],
+          "lb1A": [
+            -3.45,
+            0.8946
+          ],
+          "lsu0P0": [
+            -2.67,
+            0.51
+          ],
+          "lsu0P1": [
+            -2.37,
+            0.51
+          ],
+          "lsu0P2": [
+            -2.37,
+            0.81
+          ],
+          "lsu0P3": [
+            -2.67,
+            0.81
+          ],
+          "lsu1P0": [
+            -2.33,
+            0.51
+          ],
+          "lsu1P1": [
+            -2.03,
+            0.51
+          ],
+          "lsu1P2": [
+            -2.03,
+            0.81
+          ],
+          "lsu1P3": [
+            -2.33,
+            0.81
+          ],
+          "lsu2P0": [
+            -1.99,
+            0.51
+          ],
+          "lsu2P1": [
+            -1.69,
+            0.51
+          ],
+          "lsu2P2": [
+            -1.69,
+            0.81
+          ],
+          "lsu2P3": [
+            -1.99,
+            0.81
+          ],
+          "lsu3P0": [
+            -2.67,
+            0.85
+          ],
+          "lsu3P1": [
+            -2.37,
+            0.85
+          ],
+          "lsu3P2": [
+            -2.37,
+            1.15
+          ],
+          "lsu3P3": [
+            -2.67,
+            1.15
+          ],
+          "lsu4P0": [
+            -2.33,
+            0.85
+          ],
+          "lsu4P1": [
+            -2.03,
+            0.85
+          ],
+          "lsu4P2": [
+            -2.03,
+            1.15
+          ],
+          "lsu4P3": [
+            -2.33,
+            1.15
+          ],
+          "lsu5P0": [
+            -1.99,
+            0.85
+          ],
+          "lsu5P1": [
+            -1.69,
+            0.85
+          ],
+          "lsu5P2": [
+            -1.69,
+            1.15
+          ],
+          "lsu5P3": [
+            -1.99,
+            1.15
+          ],
+          "rsu0P0": [
+            1.69,
+            0.51
+          ],
+          "rsu0P1": [
+            1.99,
+            0.51
+          ],
+          "rsu0P2": [
+            1.99,
+            0.81
+          ],
+          "rsu0P3": [
+            1.69,
+            0.81
+          ],
+          "rsu1P0": [
+            2.03,
+            0.51
+          ],
+          "rsu1P1": [
+            2.33,
+            0.51
+          ],
+          "rsu1P2": [
+            2.33,
+            0.81
+          ],
+          "rsu1P3": [
+            2.03,
+            0.81
+          ],
+          "rsu2P0": [
+            2.37,
+            0.51
+          ],
+          "rsu2P1": [
+            2.67,
+            0.51
+          ],
+          "rsu2P2": [
+            2.67,
+            0.81
+          ],
+          "rsu2P3": [
+            2.37,
+            0.81
+          ],
+          "rsu3P0": [
+            1.69,
+            0.85
+          ],
+          "rsu3P1": [
+            1.99,
+            0.85
+          ],
+          "rsu3P2": [
+            1.99,
+            1.15
+          ],
+          "rsu3P3": [
+            1.69,
+            1.15
+          ],
+          "rsu4P0": [
+            2.03,
+            0.85
+          ],
+          "rsu4P1": [
+            2.33,
+            0.85
+          ],
+          "rsu4P2": [
+            2.33,
+            1.15
+          ],
+          "rsu4P3": [
+            2.03,
+            1.15
+          ],
+          "rsu5P0": [
+            2.37,
+            0.85
+          ],
+          "rsu5P1": [
+            2.67,
+            0.85
+          ],
+          "rsu5P2": [
+            2.67,
+            1.15
+          ],
+          "rsu5P3": [
+            2.37,
+            1.15
+          ],
+          "left6A": [
+            -2.18,
+            1.94
+          ],
+          "right6A": [
+            2.18,
+            1.94
+          ],
+          "rb0P0": [
+            2.9981,
+            0.51
+          ],
+          "rb0P1": [
+            3.9019,
+            0.51
+          ],
+          "rb0P2": [
+            3.95,
+            0.7792
+          ],
+          "rb0P3": [
+            3.7192,
+            1.3081
+          ],
+          "rb0P4": [
+            3.7962,
+            1.4908
+          ],
+          "rb0P5": [
+            3.1038,
+            1.4908
+          ],
+          "rb0P6": [
+            3.1808,
+            1.3081
+          ],
+          "rb0P7": [
+            2.95,
+            0.7792
+          ],
+          "rb0TL": [
+            3.1615,
+            1.3081
+          ],
+          "rb0TR": [
+            3.7385,
+            1.3081
+          ],
+          "rb0A": [
+            3.45,
+            0.8946
+          ],
+          "rb1P0": [
+            4.0581,
+            0.51
+          ],
+          "rb1P1": [
+            4.9619,
+            0.51
+          ],
+          "rb1P2": [
+            5.01,
+            0.7792
+          ],
+          "rb1P3": [
+            4.7792,
+            1.3081
+          ],
+          "rb1P4": [
+            4.8562,
+            1.4908
+          ],
+          "rb1P5": [
+            4.1638,
+            1.4908
+          ],
+          "rb1P6": [
+            4.2408,
+            1.3081
+          ],
+          "rb1P7": [
+            4.01,
+            0.7792
+          ],
+          "rb1TL": [
+            4.2215,
+            1.3081
+          ],
+          "rb1TR": [
+            4.7985,
+            1.3081
+          ],
+          "rb1A": [
+            4.51,
+            0.8946
+          ]
+        },
+        "parts": [
+          {
+            "id": "stand",
+            "poly": [
+              "baseL",
+              "baseR",
+              "pivot"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "postL",
+            "seg": [
+              "postL0",
+              "postL1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "postR",
+            "seg": [
+              "postR0",
+              "postR1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "beam",
+            "seg": [
+              "beamL",
+              "beamR"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "pin",
+            "dot": "pivot",
+            "ink": "gold",
+            "r": 7,
+            "start": true
+          },
+          {
+            "id": "strut",
+            "seg": [
+              "strut0",
+              "strut1"
+            ],
+            "ink": "paper",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "panL",
+            "poly": [
+              "panL0",
+              "panL1",
+              "panL2",
+              "panL3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "panR",
+            "poly": [
+              "panR0",
+              "panR1",
+              "panR2",
+              "panR3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "lb0",
+            "poly": [
+              "lb0P0",
+              "lb0P1",
+              "lb0P2",
+              "lb0P3",
+              "lb0P4",
+              "lb0P5",
+              "lb0P6",
+              "lb0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb0Tie",
+            "seg": [
+              "lb0TL",
+              "lb0TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb0X",
+            "label": "x",
+            "at": "lb0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1",
+            "poly": [
+              "lb1P0",
+              "lb1P1",
+              "lb1P2",
+              "lb1P3",
+              "lb1P4",
+              "lb1P5",
+              "lb1P6",
+              "lb1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1Tie",
+            "seg": [
+              "lb1TL",
+              "lb1TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lb1X",
+            "label": "x",
+            "at": "lb1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "lsu0",
+            "poly": [
+              "lsu0P0",
+              "lsu0P1",
+              "lsu0P2",
+              "lsu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu1",
+            "poly": [
+              "lsu1P0",
+              "lsu1P1",
+              "lsu1P2",
+              "lsu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu2",
+            "poly": [
+              "lsu2P0",
+              "lsu2P1",
+              "lsu2P2",
+              "lsu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu3",
+            "poly": [
+              "lsu3P0",
+              "lsu3P1",
+              "lsu3P2",
+              "lsu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu4",
+            "poly": [
+              "lsu4P0",
+              "lsu4P1",
+              "lsu4P2",
+              "lsu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "lsu5",
+            "poly": [
+              "lsu5P0",
+              "lsu5P1",
+              "lsu5P2",
+              "lsu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "leftSix",
+            "start": true
+          },
+          {
+            "id": "rsu0",
+            "poly": [
+              "rsu0P0",
+              "rsu0P1",
+              "rsu0P2",
+              "rsu0P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu1",
+            "poly": [
+              "rsu1P0",
+              "rsu1P1",
+              "rsu1P2",
+              "rsu1P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu2",
+            "poly": [
+              "rsu2P0",
+              "rsu2P1",
+              "rsu2P2",
+              "rsu2P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu3",
+            "poly": [
+              "rsu3P0",
+              "rsu3P1",
+              "rsu3P2",
+              "rsu3P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu4",
+            "poly": [
+              "rsu4P0",
+              "rsu4P1",
+              "rsu4P2",
+              "rsu4P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "rsu5",
+            "poly": [
+              "rsu5P0",
+              "rsu5P1",
+              "rsu5P2",
+              "rsu5P3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "group": "rightSix",
+            "start": true
+          },
+          {
+            "id": "left6",
+            "label": "6",
+            "at": "left6A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "right6",
+            "label": "6",
+            "at": "right6A",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "rb0",
+            "poly": [
+              "rb0P0",
+              "rb0P1",
+              "rb0P2",
+              "rb0P3",
+              "rb0P4",
+              "rb0P5",
+              "rb0P6",
+              "rb0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb0Tie",
+            "seg": [
+              "rb0TL",
+              "rb0TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb0X",
+            "label": "x",
+            "at": "rb0A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1",
+            "poly": [
+              "rb1P0",
+              "rb1P1",
+              "rb1P2",
+              "rb1P3",
+              "rb1P4",
+              "rb1P5",
+              "rb1P6",
+              "rb1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1Tie",
+            "seg": [
+              "rb1TL",
+              "rb1TR"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "group": "bags",
+            "start": true
+          },
+          {
+            "id": "rb1X",
+            "label": "x",
+            "at": "rb1A",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "group": "bags",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Last, two x plus six equals two x plus six.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2\\cb{x}+6=2\\cb{x}+6",
+              "fresh": true,
+              "id": "everyProblem"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Let x grow. Let it shrink. The pans stay level.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9619,
+                  0.51
+                ],
+                "lb0P1": [
+                  -4.0581,
+                  0.51
+                ],
+                "lb0P2": [
+                  -4.01,
+                  0.9003
+                ],
+                "lb0P3": [
+                  -4.2408,
+                  1.6672
+                ],
+                "lb0P4": [
+                  -4.1638,
+                  1.9322
+                ],
+                "lb0P5": [
+                  -4.8562,
+                  1.9322
+                ],
+                "lb0P6": [
+                  -4.7792,
+                  1.6672
+                ],
+                "lb0P7": [
+                  -5.01,
+                  0.9003
+                ],
+                "lb0TL": [
+                  -4.7985,
+                  1.6672
+                ],
+                "lb0TR": [
+                  -4.2215,
+                  1.6672
+                ],
+                "lb0A": [
+                  -4.51,
+                  1.0677
+                ],
+                "lb1P0": [
+                  -3.9019,
+                  0.51
+                ],
+                "lb1P1": [
+                  -2.9981,
+                  0.51
+                ],
+                "lb1P2": [
+                  -2.95,
+                  0.9003
+                ],
+                "lb1P3": [
+                  -3.1808,
+                  1.6672
+                ],
+                "lb1P4": [
+                  -3.1038,
+                  1.9322
+                ],
+                "lb1P5": [
+                  -3.7962,
+                  1.9322
+                ],
+                "lb1P6": [
+                  -3.7192,
+                  1.6672
+                ],
+                "lb1P7": [
+                  -3.95,
+                  0.9003
+                ],
+                "lb1TL": [
+                  -3.7385,
+                  1.6672
+                ],
+                "lb1TR": [
+                  -3.1615,
+                  1.6672
+                ],
+                "lb1A": [
+                  -3.45,
+                  1.0677
+                ],
+                "rb0P0": [
+                  2.9981,
+                  0.51
+                ],
+                "rb0P1": [
+                  3.9019,
+                  0.51
+                ],
+                "rb0P2": [
+                  3.95,
+                  0.9003
+                ],
+                "rb0P3": [
+                  3.7192,
+                  1.6672
+                ],
+                "rb0P4": [
+                  3.7962,
+                  1.9322
+                ],
+                "rb0P5": [
+                  3.1038,
+                  1.9322
+                ],
+                "rb0P6": [
+                  3.1808,
+                  1.6672
+                ],
+                "rb0P7": [
+                  2.95,
+                  0.9003
+                ],
+                "rb0TL": [
+                  3.1615,
+                  1.6672
+                ],
+                "rb0TR": [
+                  3.7385,
+                  1.6672
+                ],
+                "rb0A": [
+                  3.45,
+                  1.0677
+                ],
+                "rb1P0": [
+                  4.0581,
+                  0.51
+                ],
+                "rb1P1": [
+                  4.9619,
+                  0.51
+                ],
+                "rb1P2": [
+                  5.01,
+                  0.9003
+                ],
+                "rb1P3": [
+                  4.7792,
+                  1.6672
+                ],
+                "rb1P4": [
+                  4.8562,
+                  1.9322
+                ],
+                "rb1P5": [
+                  4.1638,
+                  1.9322
+                ],
+                "rb1P6": [
+                  4.2408,
+                  1.6672
+                ],
+                "rb1P7": [
+                  4.01,
+                  0.9003
+                ],
+                "rb1TL": [
+                  4.2215,
+                  1.6672
+                ],
+                "rb1TR": [
+                  4.7985,
+                  1.6672
+                ],
+                "rb1A": [
+                  4.51,
+                  1.0677
+                ]
+              },
+              "at": "grow",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9619,
+                  0.51
+                ],
+                "lb0P1": [
+                  -4.0581,
+                  0.51
+                ],
+                "lb0P2": [
+                  -4.01,
+                  0.6984
+                ],
+                "lb0P3": [
+                  -4.2408,
+                  1.0687
+                ],
+                "lb0P4": [
+                  -4.1638,
+                  1.1966
+                ],
+                "lb0P5": [
+                  -4.8562,
+                  1.1966
+                ],
+                "lb0P6": [
+                  -4.7792,
+                  1.0687
+                ],
+                "lb0P7": [
+                  -5.01,
+                  0.6984
+                ],
+                "lb0TL": [
+                  -4.7985,
+                  1.0687
+                ],
+                "lb0TR": [
+                  -4.2215,
+                  1.0687
+                ],
+                "lb0A": [
+                  -4.51,
+                  0.7792
+                ],
+                "lb1P0": [
+                  -3.9019,
+                  0.51
+                ],
+                "lb1P1": [
+                  -2.9981,
+                  0.51
+                ],
+                "lb1P2": [
+                  -2.95,
+                  0.6984
+                ],
+                "lb1P3": [
+                  -3.1808,
+                  1.0687
+                ],
+                "lb1P4": [
+                  -3.1038,
+                  1.1966
+                ],
+                "lb1P5": [
+                  -3.7962,
+                  1.1966
+                ],
+                "lb1P6": [
+                  -3.7192,
+                  1.0687
+                ],
+                "lb1P7": [
+                  -3.95,
+                  0.6984
+                ],
+                "lb1TL": [
+                  -3.7385,
+                  1.0687
+                ],
+                "lb1TR": [
+                  -3.1615,
+                  1.0687
+                ],
+                "lb1A": [
+                  -3.45,
+                  0.7792
+                ],
+                "rb0P0": [
+                  2.9981,
+                  0.51
+                ],
+                "rb0P1": [
+                  3.9019,
+                  0.51
+                ],
+                "rb0P2": [
+                  3.95,
+                  0.6984
+                ],
+                "rb0P3": [
+                  3.7192,
+                  1.0687
+                ],
+                "rb0P4": [
+                  3.7962,
+                  1.1966
+                ],
+                "rb0P5": [
+                  3.1038,
+                  1.1966
+                ],
+                "rb0P6": [
+                  3.1808,
+                  1.0687
+                ],
+                "rb0P7": [
+                  2.95,
+                  0.6984
+                ],
+                "rb0TL": [
+                  3.1615,
+                  1.0687
+                ],
+                "rb0TR": [
+                  3.7385,
+                  1.0687
+                ],
+                "rb0A": [
+                  3.45,
+                  0.7792
+                ],
+                "rb1P0": [
+                  4.0581,
+                  0.51
+                ],
+                "rb1P1": [
+                  4.9619,
+                  0.51
+                ],
+                "rb1P2": [
+                  5.01,
+                  0.6984
+                ],
+                "rb1P3": [
+                  4.7792,
+                  1.0687
+                ],
+                "rb1P4": [
+                  4.8562,
+                  1.1966
+                ],
+                "rb1P5": [
+                  4.1638,
+                  1.1966
+                ],
+                "rb1P6": [
+                  4.2408,
+                  1.0687
+                ],
+                "rb1P7": [
+                  4.01,
+                  0.6984
+                ],
+                "rb1TL": [
+                  4.2215,
+                  1.0687
+                ],
+                "rb1TR": [
+                  4.7985,
+                  1.0687
+                ],
+                "rb1A": [
+                  4.51,
+                  0.7792
+                ]
+              },
+              "at": "shrink",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "lb0P0": [
+                  -4.9619,
+                  0.51
+                ],
+                "lb0P1": [
+                  -4.0581,
+                  0.51
+                ],
+                "lb0P2": [
+                  -4.01,
+                  0.7792
+                ],
+                "lb0P3": [
+                  -4.2408,
+                  1.3081
+                ],
+                "lb0P4": [
+                  -4.1638,
+                  1.4908
+                ],
+                "lb0P5": [
+                  -4.8562,
+                  1.4908
+                ],
+                "lb0P6": [
+                  -4.7792,
+                  1.3081
+                ],
+                "lb0P7": [
+                  -5.01,
+                  0.7792
+                ],
+                "lb0TL": [
+                  -4.7985,
+                  1.3081
+                ],
+                "lb0TR": [
+                  -4.2215,
+                  1.3081
+                ],
+                "lb0A": [
+                  -4.51,
+                  0.8946
+                ],
+                "lb1P0": [
+                  -3.9019,
+                  0.51
+                ],
+                "lb1P1": [
+                  -2.9981,
+                  0.51
+                ],
+                "lb1P2": [
+                  -2.95,
+                  0.7792
+                ],
+                "lb1P3": [
+                  -3.1808,
+                  1.3081
+                ],
+                "lb1P4": [
+                  -3.1038,
+                  1.4908
+                ],
+                "lb1P5": [
+                  -3.7962,
+                  1.4908
+                ],
+                "lb1P6": [
+                  -3.7192,
+                  1.3081
+                ],
+                "lb1P7": [
+                  -3.95,
+                  0.7792
+                ],
+                "lb1TL": [
+                  -3.7385,
+                  1.3081
+                ],
+                "lb1TR": [
+                  -3.1615,
+                  1.3081
+                ],
+                "lb1A": [
+                  -3.45,
+                  0.8946
+                ],
+                "rb0P0": [
+                  2.9981,
+                  0.51
+                ],
+                "rb0P1": [
+                  3.9019,
+                  0.51
+                ],
+                "rb0P2": [
+                  3.95,
+                  0.7792
+                ],
+                "rb0P3": [
+                  3.7192,
+                  1.3081
+                ],
+                "rb0P4": [
+                  3.7962,
+                  1.4908
+                ],
+                "rb0P5": [
+                  3.1038,
+                  1.4908
+                ],
+                "rb0P6": [
+                  3.1808,
+                  1.3081
+                ],
+                "rb0P7": [
+                  2.95,
+                  0.7792
+                ],
+                "rb0TL": [
+                  3.1615,
+                  1.3081
+                ],
+                "rb0TR": [
+                  3.7385,
+                  1.3081
+                ],
+                "rb0A": [
+                  3.45,
+                  0.8946
+                ],
+                "rb1P0": [
+                  4.0581,
+                  0.51
+                ],
+                "rb1P1": [
+                  4.9619,
+                  0.51
+                ],
+                "rb1P2": [
+                  5.01,
+                  0.7792
+                ],
+                "rb1P3": [
+                  4.7792,
+                  1.3081
+                ],
+                "rb1P4": [
+                  4.8562,
+                  1.4908
+                ],
+                "rb1P5": [
+                  4.1638,
+                  1.4908
+                ],
+                "rb1P6": [
+                  4.2408,
+                  1.3081
+                ],
+                "rb1P7": [
+                  4.01,
+                  0.7792
+                ],
+                "rb1TL": [
+                  4.2215,
+                  1.3081
+                ],
+                "rb1TR": [
+                  4.7985,
+                  1.3081
+                ],
+                "rb1A": [
+                  4.51,
+                  0.8946
+                ]
+              },
+              "at": "stay",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take two bags off both pans: six against six.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": "bags",
+              "by": [
+                0,
+                0.7
+              ],
+              "at": "Take",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": "bags",
+              "at": "Take",
+              "dur": 0.7
+            },
+            {
+              "do": "write",
+              "tex": "6=6",
+              "note": "-2\\cb{x}",
+              "at": "Take"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Every number works: infinitely many solutions in all.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{Every number}",
+              "at": "Every",
+              "id": "everyAnswer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "x alone against a number means one solution.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "$x$ alone against a number: one solution.",
+              "at": "x"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Never level, like six and nine, means no solution.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Never level, like $6$ and $9$: no solution.",
+              "at": "Never"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Always level, like six and six, means every number works.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Always level, like $6$ and $6$: every number.",
+              "at": "Always"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Same thing to both sides. Undo until x stands alone.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Same thing to both sides."
+            },
+            {
+              "do": "text",
+              "text": "Undo until $x$ stands alone.",
+              "at": "Undo"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
