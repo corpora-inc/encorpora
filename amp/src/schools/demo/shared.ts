@@ -8,9 +8,9 @@
  * So nothing a visitor sees is later than now; before 9:00 they see
  * yesterday's school, where nobody has practiced today. An hour before the
  * switch the warmer writes the coming day's school as a new org from the
- * static term
- * (`roster.ts`, `shift.ts`), and after a grace period removes the old one
- * through the tree removal. One pod writes a zone's day: it claims the row.
+ * static term shipped in the image (`snapshot.ts`, `roster.ts`, `shift.ts`),
+ * and after a grace period removes the old one through the tree removal. One
+ * pod writes a zone's day: it claims the row. No pod ever simulates a term.
  *
  * A visitor joins the current school as its admin (a school) or as the hero
  * class's teacher (a class). On their next request after the switch, their
@@ -31,8 +31,8 @@ import {
 } from "./build.js";
 import { removeDemoOrg } from "./remove.js";
 import { sharedDay, switchAt, type SharedDay } from "./roster.js";
-import { shiftTerms } from "./shift.js";
-import { demoTerms, warmDemoTerms } from "./snapshot.js";
+import { shiftedTerms } from "./shift.js";
+import { shippedTerms } from "./snapshot.js";
 
 export const DEFAULT_DEMO_ZONE = "America/New_York";
 /** How long an old school stays after the switch, for requests in flight
@@ -144,8 +144,8 @@ async function writeSchool(
   try {
     // A pod that stopped mid-write left an org nobody points at.
     if (stale) await removeDemoOrg(pool, stale);
-    const terms = shiftTerms(
-      await demoTerms(pool, "school", day.weekday),
+    const terms = shiftedTerms(
+      await shippedTerms("school", day.weekday),
       day.shiftDays,
       day.timezone,
     );
@@ -492,8 +492,8 @@ export async function demoZones(pool: Pick<Pool, "query">) {
   return [...new Set([DEFAULT_DEMO_ZONE, ...rows.map((row) => row.timezone)])];
 }
 
-/** The zones' schools for now and for the day that begins within `ahead`:
- * their terms first (computed once a version), then the schools. */
+/** The zones' schools for now and for the day that begins within `ahead`,
+ * each written from its weekday's shipped term. */
 export async function warmDemoSchools(
   pool: Pool,
   options: {
@@ -512,9 +512,11 @@ export async function warmDemoSchools(
       const day = sharedDay(at, timezone);
       days.set(`${timezone}\0${day.day}`, day);
     }
-  await warmDemoTerms(
-    pool,
-    [...days.values()].map((day) => day.weekday),
+  // Terms are no longer kept in the database (`snapshot.ts`): what an older
+  // release stored goes after a week, so a rollback within it still finds
+  // its own.
+  await pool.query(
+    "DELETE FROM amp_demo_snapshots WHERE created_at<now()-interval '7 days'",
   );
   for (const day of days.values())
     await ensureSchool(pool, day, options.learning);
@@ -592,8 +594,12 @@ type Log = {
   warn: (details: object, message: string) => void;
 };
 
-/** Keeps each zone's school written ahead of its day on this pod: now, and
- * every ten minutes. */
+/** The warmer's first run waits this long after the server listens, so a
+ * school write never adds to the boot's own memory peak. */
+const FIRST_WARM_MS = 60_000;
+
+/** Keeps each zone's school written ahead of its day on this pod: a minute
+ * after it starts, and every ten minutes. */
 export function startDemoWarmer(pool: Pool, log: Log, learning?: Repository) {
   let running = false;
   const tick = async () => {
@@ -614,8 +620,12 @@ export function startDemoWarmer(pool: Pool, log: Log, learning?: Repository) {
       running = false;
     }
   };
+  const first = setTimeout(() => void tick(), FIRST_WARM_MS);
   const timer = setInterval(() => void tick(), 10 * 60_000);
+  first.unref();
   timer.unref();
-  void tick();
-  return () => clearInterval(timer);
+  return () => {
+    clearTimeout(first);
+    clearInterval(timer);
+  };
 }

@@ -14,6 +14,7 @@ const messages: Record<string, string> = {
   invalid_school_request: "Check the details and try again.",
   school_service_unavailable:
     "School details could not be loaded. Try again in a moment.",
+  demo_preparing: "The demo is being prepared. Try again in a few minutes.",
   too_many_requests:
     "Too many requests from this network. Wait a minute, then try again.",
   gift_unavailable:

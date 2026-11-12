@@ -1,21 +1,16 @@
 /**
- * Simulating a term is seconds of pure CPU a student, so a class or a school
- * runs on worker threads, never on the thread that answers requests. A few
- * students run inline.
+ * Simulating a term is seconds of pure CPU a student, and each thread loads
+ * the whole engine (hundreds of megabytes), so a class or a school runs on
+ * worker threads; a few students run inline. Scripts, tests and the term
+ * generator only (`scripts/demo-terms.ts`, `seed-history.ts`): the API
+ * bundle never contains this file, and the server's terms are shipped
+ * (`snapshot.ts`). `tests/demo-terms.test.ts` checks both.
  */
 import { availableParallelism } from "node:os";
 import { Worker } from "node:worker_threads";
 import { runSimulation, type SimJob, type Simulation } from "./simulate.js";
 
-// Compiled, this file is inside src/server/main.mjs and the worker is bundled
-// beside the source (`build:server`); run from source, it is a sibling.
-const compiled = import.meta.url.endsWith(".mjs");
-const workerUrl = new URL(
-  compiled
-    ? "../schools/demo/simulate-worker.mjs"
-    : "./simulate-worker.ts",
-  import.meta.url,
-);
+const workerUrl = new URL("./simulate-worker.ts", import.meta.url);
 
 /** Threads for one simulation: `AMP_DEMO_WORKERS`, else up to eight. */
 function threads(jobs: number) {
@@ -30,16 +25,16 @@ function threads(jobs: number) {
 export async function simulateJobs(
   jobs: readonly SimJob[],
 ): Promise<Simulation[]> {
+  // Bundled into a compiled server by mistake: refuse rather than run.
+  if (import.meta.url.endsWith(".mjs"))
+    throw new Error("A demo term is never simulated in the server");
   if (jobs.length < 8) return jobs.map((job) => runSimulation(job));
-  // From source, the worker needs the loader the process runs under, not the
-  // test runner. Compiled, it inherits the process's flags.
-  const options = compiled
-    ? {}
-    : {
-        execArgv: process.execArgv.filter(
-          (arg) => arg !== "--test" && !arg.startsWith("--test-"),
-        ),
-      };
+  // The worker needs the loader the process runs under, not the test runner.
+  const options = {
+    execArgv: process.execArgv.filter(
+      (arg) => arg !== "--test" && !arg.startsWith("--test-"),
+    ),
+  };
   const pool = Array.from(
     { length: threads(jobs.length) },
     () => new Worker(workerUrl, options),
