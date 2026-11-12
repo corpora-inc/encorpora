@@ -135,8 +135,32 @@ const CARD_HELD = [
   { t: heldWord("Frame A sits beside its letter.", "A"), part: "f", letter: true },
   { t: heldWord("Seventeen is a full frame and seven more.", "full"), part: "fa", letter: false },
 ] as const;
+/**
+ * A slip and its note are struck, each on its own word, long after the camera
+ * has settled; then the mended line. The same film without the strikes is the
+ * board the strikes must not move. Built here, not under lessons/.
+ */
+const STRIKE_FILM_ID = "strike-a-line", PLAIN_FILM_ID = "strike-a-line-plain";
+const STRIKE_SAY = "Count the sides again, slowly. One side is missing here, so that line is out, and the note goes with it, crossed out in the same way.";
+const strikeFilm = (id: string, strikes: boolean) => {
+  const script = scriptSchema.parse({
+    id,
+    title: "A struck line",
+    shots: [{
+      beats: [
+        { say: "Four plus four plus two is ten.", do: [{ do: "write", tex: "4+4+2=10", id: "slip", at: "Four" }, { do: "text", text: "Add three sides.", id: "note", at: "ten" }] },
+        { say: STRIKE_SAY, do: strikes ? [{ do: "strike", target: "slip", at: "missing" }, { do: "strike", target: "note", at: "note" }] : [] },
+        { say: "Four plus four plus two plus two is twelve.", do: [{ do: "write", tex: "4+4+2+2=12", fresh: true, at: "Four" }] },
+      ],
+    }],
+  });
+  return { id, title: script.title, script, timing: dryTiming(script), figure: null };
+};
+const struckFilm = strikeFilm(STRIKE_FILM_ID, true);
+/** When each strike's word is said, in board order: the line of working, then the line of words. */
+const STRIKE_CUES = ["missing", "note"].map((word) => struckFilm.timing.shots[0]![1]!.words.find((w) => w.text.replace(/\W/g, "") === word)!.start);
 /** Films built here rather than exported: shots that draw a scene spec of their own. */
-const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm };
+const BUILT: Record<string, unknown> = { [SCENE_FILM_ID]: sceneFilm(), [CARD_FILM_ID]: cardFilm, [STRIKE_FILM_ID]: struckFilm, [PLAIN_FILM_ID]: strikeFilm(PLAIN_FILM_ID, false) };
 const lessonOf = (id: string) => (BUILT[id] ?? JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")));
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things", SCENE_FILM_ID];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
@@ -691,6 +715,109 @@ function shotSpans(id: string) {
   });
   return spans;
 }
+
+test("a strike goes through the middle of its line, a little past both ends, and moves nothing", async () => {
+  type Box = { x: number; y: number; w: number; h: number };
+  type Shot = {
+    error?: string;
+    lines: Box[];
+    strokes: { on: boolean; drawn: number; ink: number; paint: string; box: Box; text: Box; board: Box }[];
+  };
+  /** Every board line's place at `time`, and each stroke with the text it lies over. */
+  const shoot = (page: Page, time: number) => page.evaluate((t): Shot => {
+    const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+    if (!scrub) return { error: "no scrubber", lines: [], strokes: [] };
+    scrub.value = String(t);
+    scrub.dispatchEvent(new Event("input", { bubbles: true }));
+    const box = (r: DOMRect) => ({ x: r.x, y: r.y, w: r.width, h: r.height });
+    const union = (rs: DOMRect[]) => {
+      const l = Math.min(...rs.map((r) => r.left)), top = Math.min(...rs.map((r) => r.top));
+      return { x: l, y: top, w: Math.max(...rs.map((r) => r.right)) - l, h: Math.max(...rs.map((r) => r.bottom)) - top };
+    };
+    const board = document.querySelector("#film .film-board")!.getBoundingClientRect();
+    return {
+      lines: [...document.querySelectorAll("#film .film-line, #film .film-line .film-math")].map((el) => box(el.getBoundingClientRect())),
+      strokes: [...document.querySelectorAll<HTMLElement>("#film .film-struck")].map((el) => {
+        const line = el.parentElement!;
+        const math = [...line.querySelectorAll(".film-math .katex-html .base")].map((b) => b.getBoundingClientRect());
+        const words = line.querySelector(".film-struck-words");
+        const ink = line.querySelector<HTMLElement>(".film-math") ?? (words as HTMLElement);
+        return {
+          on: getComputedStyle(el).visibility !== "hidden",
+          drawn: new DOMMatrix(getComputedStyle(el).transform).a,
+          ink: Number.parseFloat(getComputedStyle(ink).opacity),
+          paint: getComputedStyle(el).backgroundColor,
+          box: box(el.getBoundingClientRect()),
+          text: math.length ? union(math) : union([...words!.getClientRects()]),
+          board: box(board),
+        };
+      }),
+    };
+  }, time);
+  const open = async (page: Page, id: string, layout: string) => {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    await page.waitForFunction((name) => document.querySelector("#film")?.getAttribute("data-layout") === name, layout);
+  };
+  const shift = (a: Box[], b: Box[]) => Math.max(...a.map((r, i) => Math.max(Math.abs(r.x - b[i]!.x), Math.abs(r.y - b[i]!.y), Math.abs(r.w - b[i]!.w), Math.abs(r.h - b[i]!.h))));
+  for (const view of VIEWS) {
+    const page = await browser.newPage({ viewport: { width: view.width, height: view.height } });
+    try {
+      // the same board with no strike on it, after both words
+      const end = STRIKE_CUES[1]! + 0.5;
+      await open(page, PLAIN_FILM_ID, view.layout);
+      const plain = await shoot(page, end);
+      expect(plain.error, view.layout).toBeUndefined();
+      expect(plain.strokes, view.layout).toEqual([]);
+      await open(page, STRIKE_FILM_ID, view.layout);
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        for (const [k, cue] of STRIKE_CUES.entries()) {
+          const where = `${view.layout} ${theme} strike ${k + 1}`;
+          const before = await shoot(page, cue - 0.05), part = await shoot(page, cue + 0.12), after = await shoot(page, cue + 0.45);
+          expect(after.strokes.length, where).toBe(2);
+          const was = before.strokes[k]!, mid = part.strokes[k]!, now = after.strokes[k]!;
+          // not before its word; afterwards one whole stroke, in ink that shows, over text that has dimmed a little
+          expect(was.on, where).toBe(false);
+          expect(was.ink, where).toBe(1);
+          expect(now.on, where).toBe(true);
+          expect(now.drawn, where).toBe(1);
+          expect(now.paint, where).toMatch(/^rgb\(/);
+          expect(now.ink, where).toBeGreaterThan(0.4);
+          expect(now.ink, where).toBeLessThan(0.7);
+          // through the vertical middle of the text, the same small distance past it at each end
+          const past = [now.text.x - now.box.x, now.box.x + now.box.w - (now.text.x + now.text.w)];
+          expect(Math.abs(now.box.y + now.box.h / 2 - (now.text.y + now.text.h / 2)), where).toBeLessThan(0.75);
+          expect(Math.abs(past[0]! - past[1]!), where).toBeLessThan(0.75);
+          expect(past[0]!, where).toBeGreaterThan(now.text.h * 0.05);
+          expect(past[0]!, where).toBeLessThan(now.text.h * 0.4);
+          expect(now.box.h, where).toBeGreaterThan(1.2);
+          expect(now.box.h, where).toBeLessThan(now.text.h * 0.2);
+          // whole inside the board's window
+          expect(now.box.x, where).toBeGreaterThan(now.board.x);
+          expect(now.box.x + now.box.w, where).toBeLessThan(now.board.x + now.board.w);
+          expect(now.box.y, where).toBeGreaterThan(now.board.y);
+          expect(now.box.y + now.box.h, where).toBeLessThan(now.board.y + now.board.h);
+          // drawn from its left end
+          expect(mid.on, where).toBe(true);
+          expect(Math.abs(mid.box.x - now.box.x), where).toBeLessThan(0.05);
+          expect(mid.box.w, where).toBeGreaterThan(now.box.w * 0.05);
+          expect(mid.box.w, where).toBeLessThan(now.box.w * 0.95);
+          // no line moves or changes size as it is struck
+          expect(before.lines.length, where).toBe(after.lines.length);
+          expect(shift(before.lines, after.lines), where).toBeLessThan(0.05);
+          expect(shift(before.lines, part.lines), where).toBeLessThan(0.05);
+        }
+      }
+      // and the struck board is the plain board, line for line
+      const struck = await shoot(page, end);
+      expect(struck.lines.length, view.layout).toBe(plain.lines.length);
+      expect(shift(plain.lines, struck.lines), view.layout).toBeLessThan(0.05);
+    } finally {
+      await page.close();
+    }
+  }
+}, 180_000);
 
 test("elements stay put unless a motion is authored, and a highlight does not cover a neighbour", async () => {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });

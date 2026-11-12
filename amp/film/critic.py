@@ -53,6 +53,7 @@ def facts(i):
 def script_text(path):
     d = json.load(open(path))
     lines = []
+    named = {}
     for si, s in enumerate(d["shots"]):
         lines.append(f"-- shot {si + 1}" + (" (with a figure)" if s.get("figure") else " (board only)"))
         for b in s["beats"]:
@@ -63,6 +64,10 @@ def script_text(path):
                 if a["do"] in ("write", "answer", "problem", "term", "watch", "text", "recap"):
                     body = a.get("tex") or a.get("text") or a.get("word")
                     lines.append(f"     board {a['do']}: {body}" + (f"   [margin: {a['note']}]" if a.get("note") else ""))
+                    if a.get("id"):
+                        named[a["id"]] = body
+                if a["do"] == "strike":
+                    lines.append(f"     board strike: the line \"{named.get(a['target'], a['target'])}\" is struck out")
     return d.get("title", ""), "\n".join(lines)
 
 

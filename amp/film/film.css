@@ -66,6 +66,8 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-note .katex { font-size: 1em; }
 .film-line .katex { font-size: 1.08em; }
 .film-line.text.muted { color: var(--color-muted-text); }
+/* A struck line: the stroke lies over the text and takes no room; it is drawn from its left end. */
+.film-struck { position: absolute; border-radius: 999px; background: var(--color-figure-warm); transform-origin: 0 50%; transform: scaleX(0); visibility: hidden; pointer-events: none; }
 .film-line.answer {
   /* Half a line of the math inside, equal on every side. */
   padding: calc(0.5 * 1.35 * var(--film-math));

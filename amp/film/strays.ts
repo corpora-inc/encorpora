@@ -17,6 +17,10 @@
  *     back instead, by cutting the silence between them down to JOIN (only silence
  *     is cut). The same for a word's first hiss ("six"). A breath is no hiss
  *     (SIBILANT) and is never joined;
+ *   - but a noise within WORD_TAIL of such a word that the word's own timing covers
+ *     (TAIL_CLAIM of it, in every timing there is) is the word's last sound even
+ *     when it does not measure as a clean hiss: the "ce" of "balance", the "th" of
+ *     "tenth". It is kept as it is, never removed and never a fault;
  *   - anything else heard, with at least GAP of silence to the sound on both
  *     sides, is a stray: it is made digital silence, with short fades;
  *   - a stray closer than GAP to a word cannot be removed without touching the
@@ -60,6 +64,23 @@ export const SIBILANT = 0.025;
  * well inside GAP, so the joined hiss reads as part of the word on any 10 ms grid.
  */
 export const JOIN = 0.01;
+/**
+ * A word's own last sound that does not measure as a clean hiss. The "ce" of
+ * "balance" and the "th" of "tenth" stood 80 ms after the voiced part of the word
+ * with 3.4 % and 2.6 % of their energy low, so they were taken for a breath and
+ * removed: the film said "balan-". What tells them from a breath is the word's own
+ * timing. The service and the transcript both ran 60 to 120 ms into them (60 to
+ * 80 % of the noise). Of the other 56 sounds removed from some 2,550 cached takes
+ * the word before covered nothing, in either timing, but for one hiss half a second
+ * out that the service's timing was stretched over.
+ *
+ * So a noise that begins within WORD_TAIL of the sound of a word that does not end
+ * open, and of which every timing of that word covers at least TAIL_CLAIM, is that
+ * word's ending and stays as it is. A timing that runs over less of it ("squares"
+ * and a breath), or a noise further out, is judged as before.
+ */
+export const WORD_TAIL = 0.25;
+export const TAIL_CLAIM = 0.5;
 /** An island counts as inside a word when it ends this long before the word's timed end. */
 const EDGE_SLACK = 0.02;
 /** Room tone kept before a take's first sound and after its last; the rest becomes digital silence. */
@@ -202,6 +223,13 @@ export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[
   const judged = all.filter((s) => isHeard(s) && isNoise(s) && !inside(s));
   const out: Stray[] = [];
   const sorted = [...spans].sort((a, b) => a.start - b.start);
+  // The word before a sound claims it when, in every timing given, the last word that starts
+  // before the sound does not end open and its span covers at least TAIL_CLAIM of the sound.
+  const timings = [words, heard].filter((timed) => timed.length > 0);
+  const claimed = (s: Sound) => timings.length > 0 && timings.every((timed) => {
+    const w = timed.reduce<TimedWord | undefined>((last, x) => (x.start < s.start && (!last || x.start >= last.start) ? x : last), undefined);
+    return !!w && endingOf(w.text) !== "open" && Math.min(w.end, s.end) - s.start >= TAIL_CLAIM * (s.end - s.start) - 1e-6;
+  });
   for (const s of judged) {
     const prevSound = stays.filter((x) => x.end <= s.start).at(-1), nextSound = stays.find((x) => x.start >= s.end);
     const gapP = prevSound ? s.start - prevSound.end : Infinity, gapN = nextSound ? nextSound.start - s.end : Infinity;
@@ -219,6 +247,8 @@ export function strayPlan(pcm: Int16Array, words: TimedWord[], heard: TimedWord[
     const toBefore = sibilant && before && prevSound && end !== "open" && end !== "stop" && within(gapP, DETACHED);
     const toAfter = sibilant && after && nextSound && begin !== "open" && begin !== "stop" && within(gapN, DETACHED);
     if (toBefore && (!toAfter || gapP <= gapN)) { out.push({ kind: "join", sound: s, word: before!.text, side: "after", gap: gapP }); keep(); continue; }
+    // the last sound of the word before, by that word's own timing: it stays as it is
+    if (prevSound && within(gapP, WORD_TAIL) && claimed(s)) { keep(); continue; }
     if (toAfter) { out.push({ kind: "join", sound: s, word: after!.text, side: "before", gap: gapN }); keep(); continue; }
     const towardBefore = gapP <= gapN, gap = Math.min(gapP, gapN);
     const word = (towardBefore ? before ?? after : after ?? before)?.text ?? "";

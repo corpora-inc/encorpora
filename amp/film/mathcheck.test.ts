@@ -10,4 +10,12 @@ describe("mathProblems", () => {
   it("passes a right chain", () => expect(mathProblems(col("11x+16=-50", "11x=-66", "x=-6"))).toEqual([]));
   it("catches a slip", () => expect(mathProblems(col("11x+16=-50", "11x=-34", "x=-6")).length).toBe(1));
   it("handles two roots", () => expect(mathProblems(col("(x-2)(x+3)=0", "x-2=0", "x+3=0", "x=2\\ \\text{or}\\ x=-3"))).toEqual([]));
+  it("skips a line that is struck out, and still catches the same line left standing", () => {
+    const beats = (strike: boolean) => [
+      { say: "a", do: [{ do: "write", tex: "4+4+2=12", id: "slip" }] },
+      { say: "b", do: [...(strike ? [{ do: "strike", target: "slip" }] : []), { do: "write", tex: "4+4+2=10" }] },
+    ];
+    expect(mathProblems({ id: "t", title: "t", shots: [{ beats: beats(true) }] } as any)).toEqual([]);
+    expect(mathProblems({ id: "t", title: "t", shots: [{ beats: beats(false) }] } as any).length).toBe(1);
+  });
 });
