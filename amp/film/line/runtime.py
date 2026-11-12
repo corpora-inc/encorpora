@@ -223,7 +223,10 @@ def _make(config, row, workspace, *, voice=False, tall=False):
         command += ['--import', str(HERE/'quota-hook.mjs')]
     command += ['--import', 'tsx', str(runtime/'film/make.ts'), row['id'],
                 '--check' if voice else '--dry', '--res', '1080', '--out', str(out),
-                '--voice', 'teacher='+row['teacher'], '--voice', 'learner='+CHAMP]
+                '--voice', 'teacher='+row['teacher']]
+    # a teacher-alone film has no learner role to bind a voice to
+    if 'learner' in read_json(Path(workspace)/'screenplay.json').get('cast', {}):
+        command += ['--voice', 'learner='+CHAMP]
     if tall:
         command += ['--tall']
     result = _run(command, runtime, env)
