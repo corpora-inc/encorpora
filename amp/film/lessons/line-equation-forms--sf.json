@@ -1,0 +1,1509 @@
+{
+  "id": "line-equation-forms--sf",
+  "title": "One line, three forms",
+  "teaches": [
+    "point-slope-two-points"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.9,
+          -5,
+          6.7,
+          15
+        ],
+        "points": {
+          "X": [
+            6.56,
+            0
+          ],
+          "Y": [
+            0,
+            14.3
+          ],
+          "D": [
+            4.8,
+            1.5
+          ],
+          "S0": [
+            0,
+            12
+          ],
+          "T0": [
+            1,
+            12
+          ],
+          "S1": [
+            1,
+            9
+          ],
+          "T1": [
+            2,
+            9
+          ],
+          "S2": [
+            2,
+            6
+          ],
+          "T2": [
+            3,
+            6
+          ],
+          "A": [
+            3,
+            3
+          ],
+          "K": [
+            4,
+            3
+          ],
+          "P": {
+            "on": "line",
+            "x": 4
+          },
+          "XI": [
+            4,
+            0
+          ],
+          "EQ": [
+            1.75,
+            11.2
+          ],
+          "EQ2": [
+            1.8,
+            7.6
+          ],
+          "EQ3": [
+            0.55,
+            -3.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 3,
+            "ystep": 3,
+            "yevery": 6,
+            "xrange": [
+              0,
+              6.3
+            ],
+            "yrange": [
+              -4,
+              13.2
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xl",
+            "label": "x",
+            "at": "X",
+            "dir": "s",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yl",
+            "label": "y",
+            "at": "Y",
+            "dir": "w",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "line",
+            "plot": "-3*x+12",
+            "from": -0.3,
+            "to": 5.1,
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "r1",
+            "vector": [
+              "S0",
+              "T0"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "d1",
+            "vector": [
+              "T0",
+              "S1"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "r2",
+            "vector": [
+              "S1",
+              "T1"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "d2",
+            "vector": [
+              "T1",
+              "S2"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "r3",
+            "vector": [
+              "S2",
+              "T2"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "d3",
+            "vector": [
+              "T2",
+              "A"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "r1L",
+            "label": "+1",
+            "at": "r1",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "d1L",
+            "label": "-3",
+            "at": "d1",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "K"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "group": "step"
+          },
+          {
+            "id": "drop",
+            "vector": [
+              "K",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "group": "step"
+          },
+          {
+            "id": "yint",
+            "dot": "S0",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "yintL",
+            "label": "(0,12)",
+            "at": "S0",
+            "dir": "ne",
+            "ink": "gold",
+            "size": "l",
+            "start": false,
+            "far": 0.6
+          },
+          {
+            "id": "p1",
+            "dot": "S1",
+            "ink": "violet",
+            "r": 12
+          },
+          {
+            "id": "p2",
+            "dot": "S2",
+            "ink": "violet",
+            "r": 12
+          },
+          {
+            "id": "p2L",
+            "label": "(2,6)",
+            "at": "S2",
+            "dir": "w",
+            "ink": "violet",
+            "size": "l",
+            "start": false,
+            "far": 0.5
+          },
+          {
+            "id": "anchor",
+            "dot": "A",
+            "r": 12,
+            "ink": "violet",
+            "start": false
+          },
+          {
+            "id": "anchorLabel",
+            "label": "(3,3)",
+            "at": "A",
+            "dir": "w",
+            "ink": "violet",
+            "size": "l",
+            "start": false,
+            "far": 0.5
+          },
+          {
+            "id": "rider",
+            "dot": "P",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "riderLabel",
+            "label": "(x,y)",
+            "at": "P",
+            "dir": "sw",
+            "ink": "gold",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "dx",
+            "label": "x-3",
+            "at": "run",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "dy",
+            "label": "y-3",
+            "at": "D",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "xint",
+            "dot": "XI",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "xintL",
+            "label": "(4,0)",
+            "at": "XI",
+            "dir": "ne",
+            "ink": "gold",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "eq",
+            "label": "y=-3x+12",
+            "at": "EQ",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "eqPS",
+            "label": "y-3=-3(x-3)",
+            "at": "EQ2",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "eqSF",
+            "label": "3x+y=12",
+            "at": "EQ3",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A line is all the points that make one equation true. That equation has three forms, and each shows something different about the line.",
+          "do": [
+            {
+              "do": "text",
+              "text": "One line, three forms"
+            },
+            {
+              "do": "show",
+              "target": "rider",
+              "at": "all"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 0.6,
+              "at": "all",
+              "dur": 2.2
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 4,
+              "at": "equation",
+              "dur": 2.2
+            },
+            {
+              "do": "hide",
+              "target": "rider",
+              "at": "different"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "This line crosses the y-axis at twelve. Each step across one takes it down three.",
+          "do": [
+            {
+              "do": "show",
+              "target": "yint",
+              "at": "twelve"
+            },
+            {
+              "do": "draw",
+              "target": "r1",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "r1L",
+              "at": "one"
+            },
+            {
+              "do": "draw",
+              "target": "d1",
+              "at": "down"
+            },
+            {
+              "do": "show",
+              "target": "d1L",
+              "at": "three"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "One step: twelve less three is nine. Two steps: six. Three steps: three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "One"
+            },
+            {
+              "do": "write",
+              "tex": "12-3(\\cb{1})=9",
+              "at": "One",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "p1",
+              "at": "nine"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "r2",
+                "d2"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "12-3(\\cb{2})=6",
+              "at": "Two",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "p2",
+              "at": "six"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "r3",
+                "d3"
+              ],
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "12-3(\\cb{3})=3",
+              "at": "three",
+              "nth": 2,
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": [
+                "anchor",
+                "anchorLabel"
+              ],
+              "at": "three",
+              "nth": 3
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "So y is twelve, less three for every x: y equals negative three x plus twelve.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "r1L",
+                "d1L"
+              ],
+              "at": "So"
+            },
+            {
+              "do": "clear",
+              "at": "So"
+            },
+            {
+              "do": "write",
+              "tex": "y=12-3\\cb{x}",
+              "at": "So",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x+\\cg{12}",
+              "at": "equals",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "twelve",
+              "nth": 2
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is slope-intercept form, y equals m x plus b: m is the slope, and b is where the line crosses the y-axis.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "slope-intercept"
+            },
+            {
+              "do": "text",
+              "text": "Slope-intercept form",
+              "at": "slope-intercept"
+            },
+            {
+              "do": "write",
+              "tex": "y=mx+\\cg{b}",
+              "at": "equals",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x+\\cg{12}",
+              "at": "slope",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "yintL",
+              "at": "crosses"
+            },
+            {
+              "do": "highlight",
+              "target": "yint",
+              "at": "crosses"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now start from a point instead of the axis: three, three. Let a point x, y ride along the line.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "r1",
+                "d1",
+                "r2",
+                "d2",
+                "r3",
+                "d3",
+                "r1L",
+                "d1L",
+                "p1",
+                "p2"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "anchor",
+                "anchorLabel"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "rider",
+              "at": "Let"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "run",
+                "drop"
+              ],
+              "at": "ride"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 4.8,
+              "at": "ride",
+              "dur": 1.8
+            },
+            {
+              "do": "move",
+              "points": {
+                "K": [
+                  4.8,
+                  3
+                ]
+              },
+              "at": "ride",
+              "dur": 1.8
+            },
+            {
+              "do": "show",
+              "target": "riderLabel",
+              "at": "line"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "The change in y, y minus three, is always negative three times the change in x, x minus three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "change"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{y-3}=-3(\\cb{x-3})",
+              "at": "change",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "dy",
+              "at": "minus"
+            },
+            {
+              "do": "show",
+              "target": "dx",
+              "at": "minus",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "eqPS",
+              "at": "three",
+              "nth": 3
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is point-slope form, y minus y one equals m times x minus x one: one point and the slope.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "point-slope"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope form",
+              "at": "point-slope"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{y-y_1}=m(\\cb{x-x_1})",
+              "at": "minus",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{y-3}=-3(\\cb{x-3})",
+              "at": "one",
+              "nth": 2,
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "anchor",
+                "anchorLabel"
+              ],
+              "at": "point"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiply it out, then add three to both sides: y equals negative three x plus twelve, the same line.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "step",
+                "dx",
+                "dy",
+                "rider",
+                "riderLabel"
+              ],
+              "at": "Multiply"
+            },
+            {
+              "do": "clear",
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y-3=-3(x-3)",
+              "at": "Multiply",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y-3=-3x+9",
+              "at": "out",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x+\\cg{12}",
+              "at": "add",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": "eq",
+              "at": "same"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now gather x and y on one side: add three x to both sides, and three x plus y equals twelve.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Now"
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x+12",
+              "at": "Now",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "3x+y=12",
+              "at": "three",
+              "nth": 2,
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "eqSF",
+              "at": "twelve"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is standard form, A x plus B y equals C, with whole numbers.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "standard"
+            },
+            {
+              "do": "text",
+              "text": "Standard form",
+              "at": "standard"
+            },
+            {
+              "do": "write",
+              "tex": "Ax+By=C",
+              "at": "x",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "3x+y=12",
+              "at": "whole",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "It shows both intercepts: zero for x gives y equals twelve; zero for y gives three x equals twelve, so x is four.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "yint",
+                "yintL"
+              ],
+              "at": "twelve"
+            },
+            {
+              "do": "show",
+              "target": "xint",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "xintL",
+              "at": "four"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Point-slope, slope-intercept and standard: three equations, one line.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Point-slope"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope",
+              "tone": "muted",
+              "at": "Point-slope"
+            },
+            {
+              "do": "write",
+              "tex": "y-3=-3(x-3)",
+              "at": "Point-slope",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "Slope-intercept",
+              "tone": "muted",
+              "at": "slope-intercept"
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x+12",
+              "at": "slope-intercept",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "Standard",
+              "tone": "muted",
+              "at": "standard"
+            },
+            {
+              "do": "write",
+              "tex": "3x+y=12",
+              "at": "standard",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "One more point, two, six, makes all three true: three ways to write the same line.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "p2",
+                "p2L"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "clear",
+              "at": "makes"
+            },
+            {
+              "do": "write",
+              "tex": "6-3=-3(2-3)",
+              "at": "makes",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "6=-3(2)+12",
+              "at": "all",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "3(2)+6=12",
+              "at": "true",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -1.2,
+          -12.6,
+          9.4,
+          22.5
+        ],
+        "points": {
+          "A": [
+            4,
+            4
+          ],
+          "B": [
+            7,
+            -8
+          ],
+          "K": [
+            7,
+            4
+          ],
+          "X": [
+            9,
+            0
+          ],
+          "Y": [
+            0,
+            21.8
+          ],
+          "D": [
+            7,
+            -5.5
+          ],
+          "EQ": [
+            4.0,
+            18.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "ystep": 3,
+            "yevery": 6,
+            "xrange": [
+              0,
+              9
+            ],
+            "yrange": [
+              -11,
+              21.3
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xl",
+            "label": "x",
+            "at": "X",
+            "dir": "n",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yl",
+            "label": "y",
+            "at": "Y",
+            "dir": "w",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "line",
+            "plot": "-4*x+20",
+            "from": 0,
+            "to": 8,
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "K"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "drop",
+            "vector": [
+              "K",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "da",
+            "dot": "A",
+            "ink": "violet",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "db",
+            "dot": "B",
+            "ink": "violet",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "la",
+            "label": "(4,4)",
+            "at": "A",
+            "dir": "w",
+            "ink": "violet",
+            "size": "l",
+            "start": true,
+            "far": 0.5
+          },
+          {
+            "id": "lb",
+            "label": "(7,-8)",
+            "at": "B",
+            "dir": "sw",
+            "ink": "violet",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "rl",
+            "label": "+3",
+            "at": "run",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "dl",
+            "label": "-12",
+            "at": "D",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "eq",
+            "label": "y=-4x+20",
+            "at": "EQ",
+            "dir": "e",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Point-slope form at work. A line passes through the points four, four and seven, negative eight. Which equation is an equation of this line?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A line passes through the points $(4,4)$ and $(7,-8)$. Which equation is an equation of this line?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "db",
+                "lb"
+              ],
+              "at": "seven"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Across three and down twelve: the slope is negative twelve over three, negative four.",
+          "do": [
+            {
+              "do": "draw",
+              "target": [
+                "run",
+                "rl"
+              ],
+              "at": "Across"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "drop",
+                "dl"
+              ],
+              "at": "down"
+            },
+            {
+              "do": "clear",
+              "at": "slope"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\frac{-12}{3}=-4",
+              "note": "\\text{slope}",
+              "at": "slope",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip puts the seven where the slope goes.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "common"
+            },
+            {
+              "do": "write",
+              "tex": "y-4=7(x-4)",
+              "id": "slip",
+              "at": "common",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "db",
+                "lb"
+              ],
+              "at": "seven"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven is a coordinate of the point, not the slope of this line. Use negative four, with four, four.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "not"
+            },
+            {
+              "do": "write",
+              "tex": "y-4=-4(x-4)",
+              "at": "Use",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "da",
+                "la"
+              ],
+              "at": "with"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Either point works: seven, negative eight gives y plus eight. Both simplify to y equals negative four x plus twenty.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Either"
+            },
+            {
+              "do": "write",
+              "tex": "y-4=-4(x-4)",
+              "at": "Either",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "db",
+                "lb"
+              ],
+              "at": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "y+8=-4(x-7)",
+              "at": "gives",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y=-4x+20",
+              "at": "Both",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "twenty"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Point-slope form shows a point and the slope.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope: a point, the slope",
+              "tone": "muted",
+              "at": "Point-slope"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{y-y_1}=m(\\cb{x-x_1})",
+              "fresh": true,
+              "at": "Point-slope"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "anchor",
+                "anchorLabel"
+              ],
+              "at": "point"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "run",
+                "drop"
+              ],
+              "at": "slope"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slope-intercept form shows the slope and the y-intercept, b.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Slope-intercept: slope and $\\cg{b}$",
+              "tone": "muted",
+              "at": "Slope-intercept"
+            },
+            {
+              "do": "write",
+              "tex": "y=mx+\\cg{b}",
+              "fresh": true,
+              "at": "Slope-intercept"
+            },
+            {
+              "do": "show",
+              "target": [
+                "yint",
+                "yintL"
+              ],
+              "at": "y-intercept"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Standard form shows both intercepts. Pick the form that shows what you need.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "run",
+                "drop"
+              ],
+              "at": "Standard"
+            },
+            {
+              "do": "text",
+              "text": "Standard: both intercepts",
+              "tone": "muted",
+              "at": "Standard"
+            },
+            {
+              "do": "write",
+              "tex": "Ax+By=C",
+              "fresh": true,
+              "at": "Standard"
+            },
+            {
+              "do": "show",
+              "target": [
+                "xint",
+                "xintL"
+              ],
+              "at": "both"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "yint",
+                "yintL",
+                "xint",
+                "xintL"
+              ],
+              "at": "intercepts"
+            }
+          ],
+          "pause": 1
+        }
+      ],
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.9,
+          -5,
+          6.7,
+          15
+        ],
+        "points": {
+          "A": [
+            3,
+            3
+          ],
+          "X": [
+            6.56,
+            0
+          ],
+          "Y": [
+            0,
+            14.3
+          ],
+          "EQ": [
+            1.75,
+            11.2
+          ],
+          "XI": [
+            4,
+            0
+          ],
+          "K": [
+            4,
+            3
+          ],
+          "YI": [
+            0,
+            12
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 3,
+            "ystep": 3,
+            "yevery": 6,
+            "xrange": [
+              0,
+              6.3
+            ],
+            "yrange": [
+              -4,
+              13.2
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xl",
+            "label": "x",
+            "at": "X",
+            "dir": "s",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yl",
+            "label": "y",
+            "at": "Y",
+            "dir": "w",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "line",
+            "plot": "-3*x+12",
+            "from": -0.3,
+            "to": 5.1,
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "eq",
+            "label": "y=-3x+12",
+            "at": "EQ",
+            "dir": "e",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "K"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "drop",
+            "vector": [
+              "K",
+              "XI"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "yint",
+            "dot": "YI",
+            "r": 14,
+            "ink": "gold"
+          },
+          {
+            "id": "yintL",
+            "label": "(0,12)",
+            "at": "YI",
+            "dir": "ne",
+            "ink": "gold",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "xint",
+            "dot": "XI",
+            "r": 14,
+            "ink": "gold"
+          },
+          {
+            "id": "xintL",
+            "label": "(4,0)",
+            "at": "XI",
+            "dir": "ne",
+            "ink": "gold",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "anchor",
+            "dot": "A",
+            "r": 12,
+            "ink": "violet",
+            "start": true
+          },
+          {
+            "id": "anchorLabel",
+            "label": "(3,3)",
+            "at": "A",
+            "dir": "w",
+            "ink": "violet",
+            "size": "l",
+            "start": true,
+            "far": 0.5
+          }
+        ]
+      }
+    }
+  ]
+}
