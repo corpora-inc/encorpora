@@ -10,12 +10,21 @@ import {
 } from "../src/acquisition/evidence.js";
 import { insightsReport } from "../src/analytics/insights.js";
 import { purgeIdleDemos, removeDemoOrg } from "../src/schools/demo/remove.js";
+import { demoDay } from "../src/schools/demo/roster.js";
+import { demoTerms, warmDemoTerms } from "../src/schools/demo/snapshot.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { workbookWorker } from "../src/workbook/off-thread.js";
+
+/** With the day's terms computed, a demo is only written: about 3 s for a
+ * class and 10 to 15 s for a school's 250,000 rows on a laptop. A request
+ * that had to simulate them took 24 s and 150 s. The bounds leave a CI
+ * runner room and still fail if a request simulates again. */
+const CLASS_MS = Number(process.env.AMP_DEMO_CLASS_MS ?? 12_000);
+const SCHOOL_MS = Number(process.env.AMP_DEMO_SCHOOL_MS ?? 60_000);
 
 test(
   "Demo places: alive in seconds, the owner's only, never counted, gone on removal",
@@ -43,8 +52,19 @@ test(
       services: { secret: "fixture-secret", origin: "", learning },
     });
     await app.ready();
-    // As the production server does at boot (runtime-health).
+    // As the production server does at boot (runtime-health), and as its
+    // demo warmer does ahead of each day (snapshot.ts): the school's terms,
+    // which give the class, and a class in another zone.
     await workbookWorker().warm();
+    const warmed = performance.now();
+    await warmDemoTerms(db, {
+      timezones: ["America/New_York"],
+      ahead: 10 * 60_000,
+    });
+    await demoTerms(db, "class", demoDay(Date.now(), "America/Chicago"));
+    console.log(
+      `  demo terms computed in ${Math.round(performance.now() - warmed)} ms`,
+    );
     t.after(async () => {
       await app.close();
       await db.end();
@@ -130,9 +150,10 @@ test(
       const elapsed = performance.now() - started;
       assert.equal(made.statusCode, 201, made.body);
       demo = made.json().demo;
-      // A term of real answers: the production planner, then the estimator.
-      assert.ok(elapsed < 90_000, `built in ${Math.round(elapsed)} ms`);
+      // A term of real answers, the production planner's and estimator's,
+      // computed ahead: writing them is all that is left.
       console.log(`  demo class built in ${Math.round(elapsed)} ms`);
+      assert.ok(elapsed < CLASS_MS, `built in ${Math.round(elapsed)} ms`);
       const again = await call("POST", "/api/v1/school/demo", owner, {
         kind: "class",
       });
@@ -396,10 +417,10 @@ test(
         const made = await call("POST", "/api/v1/school/demo", owner, {
           kind: "school",
         });
+        const elapsed = performance.now() - started;
         assert.equal(made.statusCode, 201, made.body);
-        console.log(
-          `  demo school built in ${Math.round(performance.now() - started)} ms`,
-        );
+        console.log(`  demo school built in ${Math.round(elapsed)} ms`);
+        assert.ok(elapsed < SCHOOL_MS, `built in ${Math.round(elapsed)} ms`);
         const school = made.json().demo;
         const classes = (
           await call(
