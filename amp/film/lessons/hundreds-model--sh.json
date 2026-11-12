@@ -1,0 +1,615 @@
+{
+  "id": "hundreds-model--sh",
+  "title": "Hundreds, tens, and ones",
+  "teaches": [
+    "place-value-digit",
+    "expanded-form-missing",
+    "exchange-base-ten",
+    "three-digit-number-names"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -5.82,
+          -13.65,
+          46.18,
+          25.35
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 3,
+                  "tens": 2,
+                  "ones": 6
+                },
+                "ink": "blue"
+              }
+            ],
+            "digits": "later",
+            "start": true,
+            "squares": "rows"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A small cube is one.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones.1",
+              "at": "cube"
+            },
+            {
+              "do": "text",
+              "text": "cube is $1$",
+              "at": "cube"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A rod is ten cubes joined in a row.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "rod"
+            },
+            {
+              "do": "text",
+              "text": "rod is $10$",
+              "at": "joined"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A flat is ten rods side by side, so a flat is one hundred.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds.1",
+              "at": "flat"
+            },
+            {
+              "do": "text",
+              "text": "flat is $100$",
+              "at": "so"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "What number does this base-ten model show?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "What"
+            },
+            {
+              "do": "problem",
+              "text": "What number does this base-ten model show?",
+              "at": "What"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three flats make three hundreds.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.digit.hundreds",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.hundreds",
+                "b.place.hundreds",
+                "b.digit.hundreds"
+              ],
+              "at": "hundreds"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two rods make two tens.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.digit.tens",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.tens",
+                "b.place.tens",
+                "b.digit.tens"
+              ],
+              "at": "tens"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six cubes make six ones.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.digit.ones",
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.ones",
+                "b.place.ones",
+                "b.digit.ones"
+              ],
+              "at": "ones"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three, two, six. Three hundred twenty-six is the number we made.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.digits",
+              "at": "Three"
+            },
+            {
+              "do": "answer",
+              "tex": "326",
+              "at": "hundred"
+            },
+            {
+              "do": "text",
+              "text": "three hundred twenty-six",
+              "at": "number"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The two sits in the tens place, so it is worth twenty. In parts, that is three hundred plus twenty plus six.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.digit.tens",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "300+20+6",
+              "note": "\\text{in parts}",
+              "at": "parts"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.82,
+          -13.65,
+          46.18,
+          25.35
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 4,
+                  "tens": 0,
+                  "ones": 6
+                },
+                "ink": "blue"
+              }
+            ],
+            "digits": "later",
+            "start": true,
+            "squares": "rows"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "learner",
+          "say": "Four flats and six cubes. So I write forty-six for the number.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "flats"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "cubes"
+            },
+            {
+              "do": "write",
+              "tex": "46",
+              "note": "\\text{my answer}",
+              "id": "slip",
+              "at": "forty-six"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-six would need four rods in the tens.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.place.tens",
+              "at": "rods"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "These four are flats, so they make four hundreds.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.digit.hundreds",
+              "at": "four",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.hundreds",
+                "b.place.hundreds",
+                "b.digit.hundreds"
+              ],
+              "at": "hundreds"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The tens place is empty, so it gets a zero.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "empty"
+            },
+            {
+              "do": "show",
+              "target": "b.digit.tens",
+              "at": "empty"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.place.tens",
+                "b.digit.tens"
+              ],
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "400+0+6",
+              "note": "\\text{0 tens}",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six cubes make six ones.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.digit.ones",
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.ones",
+                "b.place.ones",
+                "b.digit.ones"
+              ],
+              "at": "ones"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four, zero, six. Four hundred six is the number.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.digits",
+              "at": "Four"
+            },
+            {
+              "do": "answer",
+              "tex": "406",
+              "at": "hundred"
+            },
+            {
+              "do": "text",
+              "text": "four hundred six",
+              "at": "number"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Without the zero, the four would slip into the tens place.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b.digit.tens",
+                "b.place.tens"
+              ],
+              "at": "zero"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.26,
+          -12.0,
+          49.74,
+          27.0
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 2,
+                  "tens": 13,
+                  "ones": 0
+                },
+                "ink": "blue"
+              }
+            ],
+            "digits": "later",
+            "start": true,
+            "counts": true,
+            "squares": "rows"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here are two flats and thirteen rods.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Here"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "flats"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "rods"
+            },
+            {
+              "do": "text",
+              "text": "$2$ flats and $13$ rods",
+              "at": "flats"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Trade ten tens for one hundred. How many hundreds will there be?",
+          "do": [
+            {
+              "do": "problem",
+              "text": "Trade ten tens for one hundred. How many hundreds will there be?",
+              "at": "Trade"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Ten rods slide together into one flat. Two flats and the new one make three in all.",
+          "do": [
+            {
+              "do": "join",
+              "target": "b.n.tens",
+              "at": "slide",
+              "dur": 2.2
+            },
+            {
+              "do": "answer",
+              "tex": "3",
+              "at": "three"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Before, two hundred plus one hundred thirty. After, three hundred plus thirty. Both are three hundred thirty.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Before"
+            },
+            {
+              "do": "write",
+              "tex": "200+130=330",
+              "note": "\\text{before}",
+              "at": "Before"
+            },
+            {
+              "do": "write",
+              "tex": "300+30=330",
+              "note": "\\text{after}",
+              "fresh": true,
+              "at": "After"
+            },
+            {
+              "do": "show",
+              "target": "b.digits",
+              "at": "Both"
+            },
+            {
+              "do": "highlight",
+              "target": "b.digits",
+              "at": "thirty",
+              "nth": 3
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten tens make one hundred, so nothing is added and nothing is lost. Only the groups change.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Ten"
+            },
+            {
+              "do": "text",
+              "text": "$10$ tens make $1$ hundred",
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "groups"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.66,
+          -13.65,
+          46.34,
+          25.35
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 4,
+                  "tens": 0,
+                  "ones": 6
+                },
+                "ink": "blue"
+              }
+            ],
+            "digits": true,
+            "start": true,
+            "squares": "rows"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Hundreds, tens, ones. Every place has its job, and an empty place gets a zero.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Hundreds, tens, ones",
+              "at": "Hundreds"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.place.tens",
+                "b.digit.tens"
+              ],
+              "at": "empty"
+            },
+            {
+              "do": "text",
+              "text": "An empty place gets a zero.",
+              "at": "empty"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    }
+  ]
+}
