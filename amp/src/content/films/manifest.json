@@ -1,4 +1,26 @@
 {
+  "add-ones-regroup": {
+    "id": "add-ones-regroup--sa",
+    "version": "aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11",
+    "title": "Ten ones make a new ten",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-ones-regroup--sa/aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-ones-regroup--sa/aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11/audio.m4a",
+    "duration": 105.25997732426303,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-ones-regroup--sa/aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-ones-regroup--sa/aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11/audio.m4a",
+        "version": "aeb95e78951604ba5e5d98505567facb84ed721354829cfc69a6e28da9fd7c11",
+        "duration": 105.25997732426303
+      }
+    ]
+  },
   "add-within-20": {
     "id": "add-within-20--sm",
     "version": "5533853b8d8a7fd33093278411bf3e4038efc20355e973fa3d8533e020c2d3c4",
@@ -347,6 +369,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
         "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
         "duration": 111.52
+      }
+    ]
+  },
+  "compare-two-digit": {
+    "id": "compare-two-digit--sc",
+    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+    "title": "Tens first",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+    "duration": 91.67,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+        "duration": 91.67
       }
     ]
   },
@@ -1369,6 +1413,28 @@
       }
     ]
   },
+  "open-number-line-to-120": {
+    "id": "compare-two-digit--sc",
+    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+    "title": "Tens first",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+    "duration": 91.67,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+        "duration": 91.67
+      }
+    ]
+  },
   "percent-amounts-blanks": {
     "id": "percent-amounts-blanks",
     "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
@@ -1869,6 +1935,28 @@
       }
     ]
   },
+  "subtract-whole-tens": {
+    "id": "ten-more-or-less--st",
+    "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+    "title": "Change one ten",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
+    "duration": 107.16004535147393,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
+        "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+        "duration": 107.16004535147393
+      }
+    ]
+  },
   "subtract-within-20": {
     "id": "subtract-through-ten--ss",
     "version": "fc999d256d589be2f7154c02e231f81e835a07cc359d5a6dc36641a7c6bf805f",
@@ -2045,6 +2133,28 @@
       }
     ]
   },
+  "ten-more-or-less": {
+    "id": "ten-more-or-less--st",
+    "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+    "title": "Change one ten",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
+    "duration": 107.16004535147393,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ten-more-or-less--st/2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd/audio.m4a",
+        "version": "2ba5a359d586d03837d298896cc987409683279b1d83cfc36b309c6875348dfd",
+        "duration": 107.16004535147393
+      }
+    ]
+  },
   "tens-ones-model": {
     "id": "tens-ones-model--st",
     "version": "96c2cbcdec3a0b2bdd3b2987c42211987498778d50e081fc2d182f5718069fc8",
@@ -2128,6 +2238,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-area-base-height/08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268/audio.m4a",
         "version": "08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268",
         "duration": 118.81
+      }
+    ]
+  },
+  "two-digit-symbol": {
+    "id": "compare-two-digit--sc",
+    "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+    "title": "Tens first",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+    "duration": 91.67,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172/audio.m4a",
+        "version": "ec33426454a9001bee796865b895d77b9c169006dc097c88db5d3ff99fecd172",
+        "duration": 91.67
       }
     ]
   },
