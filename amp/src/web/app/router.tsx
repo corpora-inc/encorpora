@@ -35,6 +35,7 @@ import type { Me } from "../../account/contracts";
 import { useLearnerStore } from "../learner-store";
 import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
+import { closeAllPopovers } from "../ui/popover-owner";
 import {
   familyClassPath,
   homePlace,
@@ -1527,6 +1528,10 @@ const PROFILE_PRACTICE_PATHS = [
   "/pathways",
   "/inventory",
 ];
+// A new screen closes any open tip, menu or picker (ui/popover-owner).
+router.subscribe("onBeforeNavigate", ({ pathChanged }) => {
+  if (pathChanged) closeAllPopovers("navigate");
+});
 // Each screen a signed-in person settles on records its place, so `/` can
 // return to it next time.
 router.subscribe("onResolved", ({ toLocation }) => {

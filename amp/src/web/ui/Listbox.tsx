@@ -7,6 +7,7 @@ import {
   type KeyboardEvent,
   type Ref,
 } from "react";
+import { usePopover } from "./popover-owner";
 import styles from "./Listbox.module.css";
 
 export type ListboxOption = {
@@ -194,28 +195,16 @@ export function ListboxDisclosure({
     trigger.current?.focus();
   };
   useEffect(() => {
-    if (!open) return;
     // Opening lays the list over the page; it never scrolls the page.
-    list.current?.focus({ preventScroll: true });
-    // A surrounding modal (the navigation drawer) listens for Escape on the
-    // document in the capture phase. The window sees the key first, so Escape
-    // closes only this list.
-    const onKey = (event: globalThis.KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      event.stopPropagation();
-      event.preventDefault();
-      dismiss();
-    };
-    const onPointer = (event: PointerEvent) => {
-      if (!root.current?.contains(event.target as Node)) setOpen(false);
-    };
-    window.addEventListener("keydown", onKey, true);
-    document.addEventListener("pointerdown", onPointer, true);
-    return () => {
-      window.removeEventListener("keydown", onKey, true);
-      document.removeEventListener("pointerdown", onPointer, true);
-    };
+    if (open) list.current?.focus({ preventScroll: true });
   }, [open]);
+  // The app's popover layer closes it on a press outside, a scroll, Escape
+  // (only this list, never a drawer beneath it) or a route change.
+  usePopover(open, {
+    contains: (node) => !!root.current?.contains(node),
+    anchor: () => root.current,
+    close: (reason) => (reason === "escape" ? dismiss() : setOpen(false)),
+  });
   return (
     <div
       className={styles.disclosure}

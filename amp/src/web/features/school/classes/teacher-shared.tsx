@@ -1,9 +1,12 @@
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import {
+  useEffect,
+  useId,
   useLayoutEffect,
   useRef,
   useState,
   type FocusEvent,
+  type MouseEvent,
   type PointerEvent,
   type ReactNode,
 } from "react";
@@ -16,6 +19,7 @@ import { Badge, type BadgeTone } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import type { GridSort } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { usePopover } from "../../../ui/popover-owner";
 import "katex/dist/katex.min.css";
 import styles from "./Teacher.module.css";
 
@@ -145,9 +149,26 @@ function TipCardView({ card }: { card: TipCard }) {
   );
 }
 
-/** Hover (a mouse), tap (a finger) or focus shows an element's `data-tip`,
- * floating over the content without moving it: above the element, or below
- * it near the top of the screen, and always inside the viewport. */
+type OpenTip = {
+  target: HTMLElement;
+  text: string;
+  card: TipCard | null;
+  box: { left: number; top: number; bottom: number; width: number };
+  /** A finger or mouse opened it, or keyboard focus. */
+  via: "pointer" | "focus";
+};
+const boxOf = (target: HTMLElement) => {
+  const box = target.getBoundingClientRect();
+  return { left: box.left, top: box.top, bottom: box.bottom, width: box.width };
+};
+
+/** Hover (a mouse), tap (a finger) or keyboard focus shows an element's
+ * `data-tip`, floating over the content without moving it: above the element,
+ * or below it when there's more room there, never over it when either side
+ * fits, and always inside the viewport. It is the app's one open popover
+ * (`ui/popover-owner`): opening it closes any other, and a tap anywhere
+ * outside, a scroll, Escape or Back closes it. A tap on the same element
+ * again closes it; a tap on another moves it. */
 export function TipZone({
   className,
   children,
@@ -155,28 +176,46 @@ export function TipZone({
   className?: string;
   children: ReactNode;
 }) {
-  const [tip, setTip] = useState<{
-    text: string;
-    card: TipCard | null;
-    box: { left: number; top: number; bottom: number; width: number };
-  } | null>(null);
+  const zone = useRef<HTMLDivElement>(null);
+  const [tip, setTip] = useState<OpenTip | null>(null);
+  const shown = useRef<OpenTip | null>(null);
+  shown.current = tip;
   const floating = useRef<HTMLDivElement>(null);
   const [place, setPlace] = useState<{ x: number; y: number } | null>(null);
-  const show = (element: Element | null) => {
-    const target = element?.closest<HTMLElement>("[data-tip]");
-    if (!target) return setTip(null);
-    const box = target.getBoundingClientRect();
+  // The last press's pointer: a tap's click opens a tip, a mouse's hover does.
+  const pressedWith = useRef("mouse");
+  const tipId = useId();
+  const open = tip !== null;
+  usePopover(open, {
+    contains: (node) => !!zone.current?.contains(node),
+    anchor: () => zone.current,
+    close: () => setTip(null),
+    // Opened by focus, it follows its target as a keyboard walk scrolls.
+    keepOnScroll: () => {
+      const shownTip = shown.current;
+      if (shownTip?.via !== "focus") return false;
+      setPlace(null);
+      setTip({ ...shownTip, box: boxOf(shownTip.target) });
+      return true;
+    },
+  });
+  // A tip opened by focus describes its target to a screen reader.
+  const described = tip?.via === "focus" ? tip.target : null;
+  useEffect(() => {
+    if (!described) return;
+    described.setAttribute("aria-describedby", tipId);
+    return () => described.removeAttribute("aria-describedby");
+  }, [described, tipId]);
+  const show = (target: HTMLElement | null, via: OpenTip["via"]) => {
+    if (!target?.dataset.tip) return setTip(null);
     const card = target.dataset.tipCard;
     setPlace(null);
     setTip({
-      text: target.dataset.tip!,
+      target,
+      text: target.dataset.tip,
       card: card ? (JSON.parse(card) as TipCard) : null,
-      box: {
-        left: box.left,
-        top: box.top,
-        bottom: box.bottom,
-        width: box.width,
-      },
+      box: boxOf(target),
+      via,
     });
   };
   // Placed once its size is known, so it never shows anywhere else first.
@@ -192,33 +231,54 @@ export function TipZone({
       Math.max(edge, centre - width / 2),
     );
     const above = tip.box.top - gap - height;
-    const y = above >= edge ? above : tip.box.bottom + gap;
+    const below = tip.box.bottom + gap;
+    const y =
+      above >= edge
+        ? above
+        : below + height <= innerHeight - edge
+          ? below
+          : // Neither side fits: the roomier one, kept on screen.
+            tip.box.top > innerHeight - tip.box.bottom
+            ? Math.max(edge, above)
+            : Math.min(below, innerHeight - edge - height);
     setPlace({ x, y });
   }, [tip]);
+  const tipOf = (element: Element | null) =>
+    element?.closest<HTMLElement>("[data-tip]") ?? null;
   return (
     <div
+      ref={zone}
       className={className}
-      onPointerOver={(event: PointerEvent) =>
-        event.pointerType === "mouse" && show(event.target as Element | null)
-      }
       onPointerDown={(event: PointerEvent) => {
-        if (event.pointerType === "mouse") return;
-        const target = (event.target as Element | null)?.closest<HTMLElement>(
-          "[data-tip]",
-        );
-        if (target && tip?.text === target.dataset.tip) setTip(null);
-        else show(target ?? null);
+        pressedWith.current = event.pointerType;
       }}
+      onPointerOver={(event: PointerEvent) =>
+        event.pointerType === "mouse" &&
+        show(tipOf(event.target as Element), "pointer")
+      }
       // A finger lifting also "leaves": only a mouse leaving puts it away.
       onPointerLeave={(event: PointerEvent) =>
         event.pointerType === "mouse" && setTip(null)
       }
-      onFocus={(event: FocusEvent) =>
+      // A tap, not a press: a finger that goes on to scroll never opens one.
+      onClick={(event: MouseEvent) => {
+        if (pressedWith.current === "mouse" || event.detail === 0) return;
+        const target = tipOf(event.target as Element);
+        if (target && shown.current?.target === target) setTip(null);
+        else show(target, "pointer");
+      }}
+      onFocus={(event: FocusEvent) => {
+        const element = event.target as HTMLElement;
+        // A tap focuses too; only the keyboard shows a tip by focus.
+        if (!element.matches?.(":focus-visible")) return;
         show(
-          (event.target as HTMLElement).querySelector?.("[data-tip]") ?? null,
-        )
-      }
-      onBlur={() => setTip(null)}
+          element.matches("[data-tip]")
+            ? element
+            : element.querySelector<HTMLElement>("[data-tip]"),
+          "focus",
+        );
+      }}
+      onBlur={() => shown.current?.via === "focus" && setTip(null)}
     >
       {children}
       {tip && (
@@ -230,7 +290,10 @@ export function TipZone({
             top: place?.y ?? 0,
             visibility: place ? undefined : "hidden",
           }}
-          aria-hidden="true"
+          id={tipId}
+          role="tooltip"
+          aria-hidden={tip.via === "focus" ? undefined : true}
+          data-tip-open=""
         >
           {tip.card ? <TipCardView card={tip.card} /> : tip.text}
         </div>
