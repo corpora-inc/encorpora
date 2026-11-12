@@ -1,0 +1,5664 @@
+{
+ "id": "balanced-addition--se",
+ "title": "Equals means the same amount",
+ "teaches": [
+  "fl-equation-truth-20",
+  "fl-equation-truth-100"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -5.4,
+     -2,
+     5.4,
+     4.8
+    ],
+    "points": {
+     "pivot": [
+      0,
+      -0.3
+     ],
+     "baseL": [
+      -0.9,
+      -1.35
+     ],
+     "baseR": [
+      0.9,
+      -1.35
+     ],
+     "beamL": [
+      -2.8,
+      -0.3
+     ],
+     "beamR": [
+      2.8,
+      -0.3
+     ],
+     "leftPan0": [
+      -4.75,
+      0.4
+     ],
+     "leftPan1": [
+      -0.8500000000000001,
+      0.4
+     ],
+     "leftPan2": [
+      -0.8500000000000001,
+      0.56
+     ],
+     "leftPan3": [
+      -4.75,
+      0.56
+     ],
+     "leftLabelP": [
+      -2.8,
+      3.55
+     ],
+     "leftBlock10": [
+      -4.449999999999999,
+      0.66
+     ],
+     "leftBlock11": [
+      -4.049999999999999,
+      0.66
+     ],
+     "leftBlock12": [
+      -4.049999999999999,
+      1.06
+     ],
+     "leftBlock13": [
+      -4.449999999999999,
+      1.06
+     ],
+     "leftBlock20": [
+      -3.9799999999999995,
+      0.66
+     ],
+     "leftBlock21": [
+      -3.5799999999999996,
+      0.66
+     ],
+     "leftBlock22": [
+      -3.5799999999999996,
+      1.06
+     ],
+     "leftBlock23": [
+      -3.9799999999999995,
+      1.06
+     ],
+     "leftBlock30": [
+      -3.5099999999999993,
+      0.66
+     ],
+     "leftBlock31": [
+      -3.1099999999999994,
+      0.66
+     ],
+     "leftBlock32": [
+      -3.1099999999999994,
+      1.06
+     ],
+     "leftBlock33": [
+      -3.5099999999999993,
+      1.06
+     ],
+     "leftBlock40": [
+      -4.449999999999999,
+      1.13
+     ],
+     "leftBlock41": [
+      -4.049999999999999,
+      1.13
+     ],
+     "leftBlock42": [
+      -4.049999999999999,
+      1.5299999999999998
+     ],
+     "leftBlock43": [
+      -4.449999999999999,
+      1.5299999999999998
+     ],
+     "leftBlock50": [
+      -3.9799999999999995,
+      1.13
+     ],
+     "leftBlock51": [
+      -3.5799999999999996,
+      1.13
+     ],
+     "leftBlock52": [
+      -3.5799999999999996,
+      1.5299999999999998
+     ],
+     "leftBlock53": [
+      -3.9799999999999995,
+      1.5299999999999998
+     ],
+     "leftBlock60": [
+      -2.5,
+      0.66
+     ],
+     "leftBlock61": [
+      -2.1,
+      0.66
+     ],
+     "leftBlock62": [
+      -2.1,
+      1.06
+     ],
+     "leftBlock63": [
+      -2.5,
+      1.06
+     ],
+     "leftBlock70": [
+      -2.0300000000000002,
+      0.66
+     ],
+     "leftBlock71": [
+      -1.6300000000000003,
+      0.66
+     ],
+     "leftBlock72": [
+      -1.6300000000000003,
+      1.06
+     ],
+     "leftBlock73": [
+      -2.0300000000000002,
+      1.06
+     ],
+     "rightPan0": [
+      0.8499999999999999,
+      0.4
+     ],
+     "rightPan1": [
+      4.75,
+      0.4
+     ],
+     "rightPan2": [
+      4.75,
+      0.56
+     ],
+     "rightPan3": [
+      0.8499999999999999,
+      0.56
+     ],
+     "rightLabelP": [
+      2.8,
+      3.55
+     ],
+     "rightBlock10": [
+      1.15,
+      0.66
+     ],
+     "rightBlock11": [
+      1.5499999999999998,
+      0.66
+     ],
+     "rightBlock12": [
+      1.5499999999999998,
+      1.06
+     ],
+     "rightBlock13": [
+      1.15,
+      1.06
+     ],
+     "rightBlock20": [
+      1.6199999999999999,
+      0.66
+     ],
+     "rightBlock21": [
+      2.02,
+      0.66
+     ],
+     "rightBlock22": [
+      2.02,
+      1.06
+     ],
+     "rightBlock23": [
+      1.6199999999999999,
+      1.06
+     ],
+     "rightBlock30": [
+      3.0999999999999996,
+      0.66
+     ],
+     "rightBlock31": [
+      3.4999999999999996,
+      0.66
+     ],
+     "rightBlock32": [
+      3.4999999999999996,
+      1.06
+     ],
+     "rightBlock33": [
+      3.0999999999999996,
+      1.06
+     ],
+     "rightBlock40": [
+      3.5699999999999994,
+      0.66
+     ],
+     "rightBlock41": [
+      3.9699999999999993,
+      0.66
+     ],
+     "rightBlock42": [
+      3.9699999999999993,
+      1.06
+     ],
+     "rightBlock43": [
+      3.5699999999999994,
+      1.06
+     ],
+     "rightBlock50": [
+      4.039999999999999,
+      0.66
+     ],
+     "rightBlock51": [
+      4.4399999999999995,
+      0.66
+     ],
+     "rightBlock52": [
+      4.4399999999999995,
+      1.06
+     ],
+     "rightBlock53": [
+      4.039999999999999,
+      1.06
+     ],
+     "rightBlock60": [
+      3.0999999999999996,
+      1.13
+     ],
+     "rightBlock61": [
+      3.4999999999999996,
+      1.13
+     ],
+     "rightBlock62": [
+      3.4999999999999996,
+      1.5299999999999998
+     ],
+     "rightBlock63": [
+      3.0999999999999996,
+      1.5299999999999998
+     ],
+     "rightBlock70": [
+      3.5699999999999994,
+      1.13
+     ],
+     "rightBlock71": [
+      3.9699999999999993,
+      1.13
+     ],
+     "rightBlock72": [
+      3.9699999999999993,
+      1.5299999999999998
+     ],
+     "rightBlock73": [
+      3.5699999999999994,
+      1.5299999999999998
+     ],
+     "leftSupportTop": [
+      -2.8,
+      0.4
+     ],
+     "leftSupportBottom": [
+      -2.8,
+      -0.3
+     ],
+     "rightSupportTop": [
+      2.8,
+      0.4
+     ],
+     "rightSupportBottom": [
+      2.8,
+      -0.3
+     ]
+    },
+    "parts": [
+     {
+      "id": "stand",
+      "poly": [
+       "baseL",
+       "baseR",
+       "pivot"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rightSupport",
+      "seg": [
+       "rightSupportBottom",
+       "rightSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "leftSupport",
+      "seg": [
+       "leftSupportBottom",
+       "leftSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "beam",
+      "seg": [
+       "beamL",
+       "beamR"
+      ],
+      "ink": "ink",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "pivot",
+      "ink": "gold",
+      "r": 7,
+      "start": true
+     },
+     {
+      "id": "leftPan",
+      "poly": [
+       "leftPan0",
+       "leftPan1",
+       "leftPan2",
+       "leftPan3"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftLabel",
+      "label": "5+2",
+      "at": "leftLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock1",
+      "poly": [
+       "leftBlock10",
+       "leftBlock11",
+       "leftBlock12",
+       "leftBlock13"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock2",
+      "poly": [
+       "leftBlock20",
+       "leftBlock21",
+       "leftBlock22",
+       "leftBlock23"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock3",
+      "poly": [
+       "leftBlock30",
+       "leftBlock31",
+       "leftBlock32",
+       "leftBlock33"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock4",
+      "poly": [
+       "leftBlock40",
+       "leftBlock41",
+       "leftBlock42",
+       "leftBlock43"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock5",
+      "poly": [
+       "leftBlock50",
+       "leftBlock51",
+       "leftBlock52",
+       "leftBlock53"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock6",
+      "poly": [
+       "leftBlock60",
+       "leftBlock61",
+       "leftBlock62",
+       "leftBlock63"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock7",
+      "poly": [
+       "leftBlock70",
+       "leftBlock71",
+       "leftBlock72",
+       "leftBlock73"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "rightPan",
+      "poly": [
+       "rightPan0",
+       "rightPan1",
+       "rightPan2",
+       "rightPan3"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightLabel",
+      "label": "2+5",
+      "at": "rightLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock1",
+      "poly": [
+       "rightBlock10",
+       "rightBlock11",
+       "rightBlock12",
+       "rightBlock13"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock2",
+      "poly": [
+       "rightBlock20",
+       "rightBlock21",
+       "rightBlock22",
+       "rightBlock23"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock3",
+      "poly": [
+       "rightBlock30",
+       "rightBlock31",
+       "rightBlock32",
+       "rightBlock33"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock4",
+      "poly": [
+       "rightBlock40",
+       "rightBlock41",
+       "rightBlock42",
+       "rightBlock43"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock5",
+      "poly": [
+       "rightBlock50",
+       "rightBlock51",
+       "rightBlock52",
+       "rightBlock53"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock6",
+      "poly": [
+       "rightBlock60",
+       "rightBlock61",
+       "rightBlock62",
+       "rightBlock63"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock7",
+      "poly": [
+       "rightBlock70",
+       "rightBlock71",
+       "rightBlock72",
+       "rightBlock73"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This balance sits level. Each block weighs the same.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{5+2}=\\cw{2+5}",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five plus two on the left.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "leftLabel",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two plus five on the right.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rightLabel",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven on each side. Equals means the same amount on both sides.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{7}=\\cw{7}",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "text": "Same amount on both sides.",
+       "at": "Equals"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A number sentence with an equal sign is an equation. This one is true: both sides have the same amount.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Equation",
+       "meaning": "A number sentence with an equal sign."
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{5+2}=\\cw{2+5}",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "true"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.4,
+     -2,
+     5.4,
+     4.8
+    ],
+    "points": {
+     "pivot": [
+      0,
+      -0.3
+     ],
+     "baseL": [
+      -0.9,
+      -1.35
+     ],
+     "baseR": [
+      0.9,
+      -1.35
+     ],
+     "beamL": [
+      -2.8,
+      0.05
+     ],
+     "beamR": [
+      2.8,
+      -0.65
+     ],
+     "leftPan0": [
+      -4.75,
+      0.75
+     ],
+     "leftPan1": [
+      -0.85,
+      0.75
+     ],
+     "leftPan2": [
+      -0.85,
+      0.91
+     ],
+     "leftPan3": [
+      -4.75,
+      0.91
+     ],
+     "leftLabelP": [
+      -2.8,
+      3.55
+     ],
+     "leftBlock10": [
+      -3.46,
+      1.01
+     ],
+     "leftBlock11": [
+      -3.06,
+      1.01
+     ],
+     "leftBlock12": [
+      -3.06,
+      1.41
+     ],
+     "leftBlock13": [
+      -3.46,
+      1.41
+     ],
+     "leftBlock20": [
+      -2.99,
+      1.01
+     ],
+     "leftBlock21": [
+      -2.59,
+      1.01
+     ],
+     "leftBlock22": [
+      -2.59,
+      1.41
+     ],
+     "leftBlock23": [
+      -2.99,
+      1.41
+     ],
+     "leftBlock30": [
+      -2.52,
+      1.01
+     ],
+     "leftBlock31": [
+      -2.12,
+      1.01
+     ],
+     "leftBlock32": [
+      -2.12,
+      1.41
+     ],
+     "leftBlock33": [
+      -2.52,
+      1.41
+     ],
+     "leftBlock40": [
+      -3.46,
+      1.48
+     ],
+     "leftBlock41": [
+      -3.06,
+      1.48
+     ],
+     "leftBlock42": [
+      -3.06,
+      1.88
+     ],
+     "leftBlock43": [
+      -3.46,
+      1.88
+     ],
+     "leftBlock50": [
+      -2.99,
+      1.48
+     ],
+     "leftBlock51": [
+      -2.59,
+      1.48
+     ],
+     "leftBlock52": [
+      -2.59,
+      1.88
+     ],
+     "leftBlock53": [
+      -2.99,
+      1.88
+     ],
+     "leftBlock60": [
+      -2.52,
+      1.48
+     ],
+     "leftBlock61": [
+      -2.12,
+      1.48
+     ],
+     "leftBlock62": [
+      -2.12,
+      1.88
+     ],
+     "leftBlock63": [
+      -2.52,
+      1.88
+     ],
+     "leftBlock70": [
+      -3.46,
+      1.95
+     ],
+     "leftBlock71": [
+      -3.06,
+      1.95
+     ],
+     "leftBlock72": [
+      -3.06,
+      2.35
+     ],
+     "leftBlock73": [
+      -3.46,
+      2.35
+     ],
+     "rightPan0": [
+      0.85,
+      0.05
+     ],
+     "rightPan1": [
+      4.75,
+      0.05
+     ],
+     "rightPan2": [
+      4.75,
+      0.21
+     ],
+     "rightPan3": [
+      0.85,
+      0.21
+     ],
+     "rightLabelP": [
+      2.8,
+      3.55
+     ],
+     "rightBlock10": [
+      2.14,
+      0.31
+     ],
+     "rightBlock11": [
+      2.54,
+      0.31
+     ],
+     "rightBlock12": [
+      2.54,
+      0.71
+     ],
+     "rightBlock13": [
+      2.14,
+      0.71
+     ],
+     "rightBlock20": [
+      2.61,
+      0.31
+     ],
+     "rightBlock21": [
+      3.01,
+      0.31
+     ],
+     "rightBlock22": [
+      3.01,
+      0.71
+     ],
+     "rightBlock23": [
+      2.61,
+      0.71
+     ],
+     "rightBlock30": [
+      3.08,
+      0.31
+     ],
+     "rightBlock31": [
+      3.48,
+      0.31
+     ],
+     "rightBlock32": [
+      3.48,
+      0.71
+     ],
+     "rightBlock33": [
+      3.08,
+      0.71
+     ],
+     "rightBlock40": [
+      2.14,
+      0.78
+     ],
+     "rightBlock41": [
+      2.54,
+      0.78
+     ],
+     "rightBlock42": [
+      2.54,
+      1.18
+     ],
+     "rightBlock43": [
+      2.14,
+      1.18
+     ],
+     "rightBlock50": [
+      2.61,
+      0.78
+     ],
+     "rightBlock51": [
+      3.01,
+      0.78
+     ],
+     "rightBlock52": [
+      3.01,
+      1.18
+     ],
+     "rightBlock53": [
+      2.61,
+      1.18
+     ],
+     "rightBlock60": [
+      3.08,
+      0.78
+     ],
+     "rightBlock61": [
+      3.48,
+      0.78
+     ],
+     "rightBlock62": [
+      3.48,
+      1.18
+     ],
+     "rightBlock63": [
+      3.08,
+      1.18
+     ],
+     "rightBlock70": [
+      2.14,
+      1.25
+     ],
+     "rightBlock71": [
+      2.54,
+      1.25
+     ],
+     "rightBlock72": [
+      2.54,
+      1.65
+     ],
+     "rightBlock73": [
+      2.14,
+      1.65
+     ],
+     "rightBlock80": [
+      2.61,
+      1.25
+     ],
+     "rightBlock81": [
+      3.01,
+      1.25
+     ],
+     "rightBlock82": [
+      3.01,
+      1.65
+     ],
+     "rightBlock83": [
+      2.61,
+      1.65
+     ],
+     "leftSupportTop": [
+      -2.8,
+      0.75
+     ],
+     "leftSupportBottom": [
+      -2.8,
+      0.05
+     ],
+     "rightSupportTop": [
+      2.8,
+      0.05
+     ],
+     "rightSupportBottom": [
+      2.8,
+      -0.65
+     ]
+    },
+    "parts": [
+     {
+      "id": "stand",
+      "poly": [
+       "baseL",
+       "baseR",
+       "pivot"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rightSupport",
+      "seg": [
+       "rightSupportBottom",
+       "rightSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "leftSupport",
+      "seg": [
+       "leftSupportBottom",
+       "leftSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "beam",
+      "seg": [
+       "beamL",
+       "beamR"
+      ],
+      "ink": "ink",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "pivot",
+      "ink": "gold",
+      "r": 7,
+      "start": true
+     },
+     {
+      "id": "leftPan",
+      "poly": [
+       "leftPan0",
+       "leftPan1",
+       "leftPan2",
+       "leftPan3"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftLabel",
+      "label": "7",
+      "at": "leftLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock1",
+      "poly": [
+       "leftBlock10",
+       "leftBlock11",
+       "leftBlock12",
+       "leftBlock13"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock2",
+      "poly": [
+       "leftBlock20",
+       "leftBlock21",
+       "leftBlock22",
+       "leftBlock23"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock3",
+      "poly": [
+       "leftBlock30",
+       "leftBlock31",
+       "leftBlock32",
+       "leftBlock33"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock4",
+      "poly": [
+       "leftBlock40",
+       "leftBlock41",
+       "leftBlock42",
+       "leftBlock43"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock5",
+      "poly": [
+       "leftBlock50",
+       "leftBlock51",
+       "leftBlock52",
+       "leftBlock53"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock6",
+      "poly": [
+       "leftBlock60",
+       "leftBlock61",
+       "leftBlock62",
+       "leftBlock63"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock7",
+      "poly": [
+       "leftBlock70",
+       "leftBlock71",
+       "leftBlock72",
+       "leftBlock73"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "rightPan",
+      "poly": [
+       "rightPan0",
+       "rightPan1",
+       "rightPan2",
+       "rightPan3"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightLabel",
+      "label": "8-1",
+      "at": "rightLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock1",
+      "poly": [
+       "rightBlock10",
+       "rightBlock11",
+       "rightBlock12",
+       "rightBlock13"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock2",
+      "poly": [
+       "rightBlock20",
+       "rightBlock21",
+       "rightBlock22",
+       "rightBlock23"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock3",
+      "poly": [
+       "rightBlock30",
+       "rightBlock31",
+       "rightBlock32",
+       "rightBlock33"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock4",
+      "poly": [
+       "rightBlock40",
+       "rightBlock41",
+       "rightBlock42",
+       "rightBlock43"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock5",
+      "poly": [
+       "rightBlock50",
+       "rightBlock51",
+       "rightBlock52",
+       "rightBlock53"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock6",
+      "poly": [
+       "rightBlock60",
+       "rightBlock61",
+       "rightBlock62",
+       "rightBlock63"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock7",
+      "poly": [
+       "rightBlock70",
+       "rightBlock71",
+       "rightBlock72",
+       "rightBlock73"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock8",
+      "poly": [
+       "rightBlock80",
+       "rightBlock81",
+       "rightBlock82",
+       "rightBlock83"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Seven equals eight minus one. Is it true or false?",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\cb{7}=\\cw{8-1}$ Is it true or false?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with eight on the right. Take one away.",
+     "pause": 1.3,
+     "do": [
+      {
+       "do": "slide",
+       "target": "rightBlock8",
+       "by": [
+        0.6,
+        1.1
+       ],
+       "at": "Take"
+      },
+      {
+       "do": "hide",
+       "target": "rightBlock8",
+       "at": "away"
+      },
+      {
+       "do": "move",
+       "points": {
+        "beamL": [
+         -2.8,
+         -0.3
+        ],
+        "beamR": [
+         2.8,
+         -0.3
+        ],
+        "leftPan0": [
+         -4.75,
+         0.4
+        ],
+        "leftPan1": [
+         -0.85,
+         0.4
+        ],
+        "leftPan2": [
+         -0.85,
+         0.56
+        ],
+        "leftPan3": [
+         -4.75,
+         0.56
+        ],
+        "leftBlock10": [
+         -3.46,
+         0.66
+        ],
+        "leftBlock11": [
+         -3.06,
+         0.66
+        ],
+        "leftBlock12": [
+         -3.06,
+         1.06
+        ],
+        "leftBlock13": [
+         -3.46,
+         1.06
+        ],
+        "leftBlock20": [
+         -2.99,
+         0.66
+        ],
+        "leftBlock21": [
+         -2.59,
+         0.66
+        ],
+        "leftBlock22": [
+         -2.59,
+         1.06
+        ],
+        "leftBlock23": [
+         -2.99,
+         1.06
+        ],
+        "leftBlock30": [
+         -2.52,
+         0.66
+        ],
+        "leftBlock31": [
+         -2.12,
+         0.66
+        ],
+        "leftBlock32": [
+         -2.12,
+         1.06
+        ],
+        "leftBlock33": [
+         -2.52,
+         1.06
+        ],
+        "leftBlock40": [
+         -3.46,
+         1.13
+        ],
+        "leftBlock41": [
+         -3.06,
+         1.13
+        ],
+        "leftBlock42": [
+         -3.06,
+         1.53
+        ],
+        "leftBlock43": [
+         -3.46,
+         1.53
+        ],
+        "leftBlock50": [
+         -2.99,
+         1.13
+        ],
+        "leftBlock51": [
+         -2.59,
+         1.13
+        ],
+        "leftBlock52": [
+         -2.59,
+         1.53
+        ],
+        "leftBlock53": [
+         -2.99,
+         1.53
+        ],
+        "leftBlock60": [
+         -2.52,
+         1.13
+        ],
+        "leftBlock61": [
+         -2.12,
+         1.13
+        ],
+        "leftBlock62": [
+         -2.12,
+         1.53
+        ],
+        "leftBlock63": [
+         -2.52,
+         1.53
+        ],
+        "leftBlock70": [
+         -3.46,
+         1.6
+        ],
+        "leftBlock71": [
+         -3.06,
+         1.6
+        ],
+        "leftBlock72": [
+         -3.06,
+         2.0
+        ],
+        "leftBlock73": [
+         -3.46,
+         2.0
+        ],
+        "rightPan0": [
+         0.85,
+         0.4
+        ],
+        "rightPan1": [
+         4.75,
+         0.4
+        ],
+        "rightPan2": [
+         4.75,
+         0.56
+        ],
+        "rightPan3": [
+         0.85,
+         0.56
+        ],
+        "rightBlock10": [
+         2.14,
+         0.66
+        ],
+        "rightBlock11": [
+         2.54,
+         0.66
+        ],
+        "rightBlock12": [
+         2.54,
+         1.06
+        ],
+        "rightBlock13": [
+         2.14,
+         1.06
+        ],
+        "rightBlock20": [
+         2.61,
+         0.66
+        ],
+        "rightBlock21": [
+         3.01,
+         0.66
+        ],
+        "rightBlock22": [
+         3.01,
+         1.06
+        ],
+        "rightBlock23": [
+         2.61,
+         1.06
+        ],
+        "rightBlock30": [
+         3.08,
+         0.66
+        ],
+        "rightBlock31": [
+         3.48,
+         0.66
+        ],
+        "rightBlock32": [
+         3.48,
+         1.06
+        ],
+        "rightBlock33": [
+         3.08,
+         1.06
+        ],
+        "rightBlock40": [
+         2.14,
+         1.13
+        ],
+        "rightBlock41": [
+         2.54,
+         1.13
+        ],
+        "rightBlock42": [
+         2.54,
+         1.53
+        ],
+        "rightBlock43": [
+         2.14,
+         1.53
+        ],
+        "rightBlock50": [
+         2.61,
+         1.13
+        ],
+        "rightBlock51": [
+         3.01,
+         1.13
+        ],
+        "rightBlock52": [
+         3.01,
+         1.53
+        ],
+        "rightBlock53": [
+         2.61,
+         1.53
+        ],
+        "rightBlock60": [
+         3.08,
+         1.13
+        ],
+        "rightBlock61": [
+         3.48,
+         1.13
+        ],
+        "rightBlock62": [
+         3.48,
+         1.53
+        ],
+        "rightBlock63": [
+         3.08,
+         1.53
+        ],
+        "rightBlock70": [
+         2.14,
+         1.6
+        ],
+        "rightBlock71": [
+         2.54,
+         1.6
+        ],
+        "rightBlock72": [
+         2.54,
+         2.0
+        ],
+        "rightBlock73": [
+         2.14,
+         2.0
+        ],
+        "leftSupportTop": [
+         -2.8,
+         0.4
+        ],
+        "leftSupportBottom": [
+         -2.8,
+         -0.3
+        ],
+        "rightSupportTop": [
+         2.8,
+         0.4
+        ],
+        "rightSupportBottom": [
+         2.8,
+         -0.3
+        ]
+       },
+       "at": "away",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven on the left, seven on the right. True! A single number can be on either side of the equal sign.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{7}=\\cw{7}",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "True"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.4,
+     -2,
+     5.4,
+     4.8
+    ],
+    "points": {
+     "pivot": [
+      0,
+      -0.3
+     ],
+     "baseL": [
+      -0.9,
+      -1.35
+     ],
+     "baseR": [
+      0.9,
+      -1.35
+     ],
+     "beamL": [
+      -2.8,
+      -0.65
+     ],
+     "beamR": [
+      2.8,
+      0.05
+     ],
+     "leftPan0": [
+      -4.75,
+      0.05
+     ],
+     "leftPan1": [
+      -0.85,
+      0.05
+     ],
+     "leftPan2": [
+      -0.85,
+      0.21
+     ],
+     "leftPan3": [
+      -4.75,
+      0.21
+     ],
+     "leftLabelP": [
+      -2.8,
+      3.55
+     ],
+     "leftBlock10": [
+      -4.45,
+      0.31
+     ],
+     "leftBlock11": [
+      -4.05,
+      0.31
+     ],
+     "leftBlock12": [
+      -4.05,
+      0.71
+     ],
+     "leftBlock13": [
+      -4.45,
+      0.71
+     ],
+     "leftBlock20": [
+      -3.98,
+      0.31
+     ],
+     "leftBlock21": [
+      -3.58,
+      0.31
+     ],
+     "leftBlock22": [
+      -3.58,
+      0.71
+     ],
+     "leftBlock23": [
+      -3.98,
+      0.71
+     ],
+     "leftBlock30": [
+      -2.5,
+      0.31
+     ],
+     "leftBlock31": [
+      -2.1,
+      0.31
+     ],
+     "leftBlock32": [
+      -2.1,
+      0.71
+     ],
+     "leftBlock33": [
+      -2.5,
+      0.71
+     ],
+     "leftBlock40": [
+      -2.03,
+      0.31
+     ],
+     "leftBlock41": [
+      -1.63,
+      0.31
+     ],
+     "leftBlock42": [
+      -1.63,
+      0.71
+     ],
+     "leftBlock43": [
+      -2.03,
+      0.71
+     ],
+     "leftBlock50": [
+      -1.56,
+      0.31
+     ],
+     "leftBlock51": [
+      -1.16,
+      0.31
+     ],
+     "leftBlock52": [
+      -1.16,
+      0.71
+     ],
+     "leftBlock53": [
+      -1.56,
+      0.71
+     ],
+     "leftBlock60": [
+      -2.5,
+      0.78
+     ],
+     "leftBlock61": [
+      -2.1,
+      0.78
+     ],
+     "leftBlock62": [
+      -2.1,
+      1.18
+     ],
+     "leftBlock63": [
+      -2.5,
+      1.18
+     ],
+     "leftBlock70": [
+      -2.03,
+      0.78
+     ],
+     "leftBlock71": [
+      -1.63,
+      0.78
+     ],
+     "leftBlock72": [
+      -1.63,
+      1.18
+     ],
+     "leftBlock73": [
+      -2.03,
+      1.18
+     ],
+     "leftBlock80": [
+      -1.56,
+      0.78
+     ],
+     "leftBlock81": [
+      -1.16,
+      0.78
+     ],
+     "leftBlock82": [
+      -1.16,
+      1.18
+     ],
+     "leftBlock83": [
+      -1.56,
+      1.18
+     ],
+     "rightPan0": [
+      0.85,
+      0.75
+     ],
+     "rightPan1": [
+      4.75,
+      0.75
+     ],
+     "rightPan2": [
+      4.75,
+      0.91
+     ],
+     "rightPan3": [
+      0.85,
+      0.91
+     ],
+     "rightLabelP": [
+      2.8,
+      3.55
+     ],
+     "rightBlock10": [
+      2.14,
+      1.01
+     ],
+     "rightBlock11": [
+      2.54,
+      1.01
+     ],
+     "rightBlock12": [
+      2.54,
+      1.41
+     ],
+     "rightBlock13": [
+      2.14,
+      1.41
+     ],
+     "rightBlock20": [
+      2.61,
+      1.01
+     ],
+     "rightBlock21": [
+      3.01,
+      1.01
+     ],
+     "rightBlock22": [
+      3.01,
+      1.41
+     ],
+     "rightBlock23": [
+      2.61,
+      1.41
+     ],
+     "rightBlock30": [
+      3.08,
+      1.01
+     ],
+     "rightBlock31": [
+      3.48,
+      1.01
+     ],
+     "rightBlock32": [
+      3.48,
+      1.41
+     ],
+     "rightBlock33": [
+      3.08,
+      1.41
+     ],
+     "rightBlock40": [
+      2.14,
+      1.48
+     ],
+     "rightBlock41": [
+      2.54,
+      1.48
+     ],
+     "rightBlock42": [
+      2.54,
+      1.88
+     ],
+     "rightBlock43": [
+      2.14,
+      1.88
+     ],
+     "rightBlock50": [
+      2.61,
+      1.48
+     ],
+     "rightBlock51": [
+      3.01,
+      1.48
+     ],
+     "rightBlock52": [
+      3.01,
+      1.88
+     ],
+     "rightBlock53": [
+      2.61,
+      1.88
+     ],
+     "rightBlock60": [
+      3.08,
+      1.48
+     ],
+     "rightBlock61": [
+      3.48,
+      1.48
+     ],
+     "rightBlock62": [
+      3.48,
+      1.88
+     ],
+     "rightBlock63": [
+      3.08,
+      1.88
+     ],
+     "rightBlock70": [
+      2.14,
+      1.95
+     ],
+     "rightBlock71": [
+      2.54,
+      1.95
+     ],
+     "rightBlock72": [
+      2.54,
+      2.35
+     ],
+     "rightBlock73": [
+      2.14,
+      2.35
+     ],
+     "leftSupportTop": [
+      -2.8,
+      0.05
+     ],
+     "leftSupportBottom": [
+      -2.8,
+      -0.65
+     ],
+     "rightSupportTop": [
+      2.8,
+      0.75
+     ],
+     "rightSupportBottom": [
+      2.8,
+      0.05
+     ]
+    },
+    "parts": [
+     {
+      "id": "stand",
+      "poly": [
+       "baseL",
+       "baseR",
+       "pivot"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rightSupport",
+      "seg": [
+       "rightSupportBottom",
+       "rightSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "leftSupport",
+      "seg": [
+       "leftSupportBottom",
+       "leftSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "beam",
+      "seg": [
+       "beamL",
+       "beamR"
+      ],
+      "ink": "ink",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "pivot",
+      "ink": "gold",
+      "r": 7,
+      "start": true
+     },
+     {
+      "id": "leftPan",
+      "poly": [
+       "leftPan0",
+       "leftPan1",
+       "leftPan2",
+       "leftPan3"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftLabel",
+      "label": "2+6",
+      "at": "leftLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock1",
+      "poly": [
+       "leftBlock10",
+       "leftBlock11",
+       "leftBlock12",
+       "leftBlock13"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock2",
+      "poly": [
+       "leftBlock20",
+       "leftBlock21",
+       "leftBlock22",
+       "leftBlock23"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock3",
+      "poly": [
+       "leftBlock30",
+       "leftBlock31",
+       "leftBlock32",
+       "leftBlock33"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock4",
+      "poly": [
+       "leftBlock40",
+       "leftBlock41",
+       "leftBlock42",
+       "leftBlock43"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock5",
+      "poly": [
+       "leftBlock50",
+       "leftBlock51",
+       "leftBlock52",
+       "leftBlock53"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock6",
+      "poly": [
+       "leftBlock60",
+       "leftBlock61",
+       "leftBlock62",
+       "leftBlock63"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock7",
+      "poly": [
+       "leftBlock70",
+       "leftBlock71",
+       "leftBlock72",
+       "leftBlock73"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock8",
+      "poly": [
+       "leftBlock80",
+       "leftBlock81",
+       "leftBlock82",
+       "leftBlock83"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "rightPan",
+      "poly": [
+       "rightPan0",
+       "rightPan1",
+       "rightPan2",
+       "rightPan3"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightLabel",
+      "label": "7-1",
+      "at": "rightLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock1",
+      "poly": [
+       "rightBlock10",
+       "rightBlock11",
+       "rightBlock12",
+       "rightBlock13"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock2",
+      "poly": [
+       "rightBlock20",
+       "rightBlock21",
+       "rightBlock22",
+       "rightBlock23"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock3",
+      "poly": [
+       "rightBlock30",
+       "rightBlock31",
+       "rightBlock32",
+       "rightBlock33"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock4",
+      "poly": [
+       "rightBlock40",
+       "rightBlock41",
+       "rightBlock42",
+       "rightBlock43"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock5",
+      "poly": [
+       "rightBlock50",
+       "rightBlock51",
+       "rightBlock52",
+       "rightBlock53"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock6",
+      "poly": [
+       "rightBlock60",
+       "rightBlock61",
+       "rightBlock62",
+       "rightBlock63"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock7",
+      "poly": [
+       "rightBlock70",
+       "rightBlock71",
+       "rightBlock72",
+       "rightBlock73"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two plus six equals seven minus one. Is it true or false?",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\cb{2+6}=\\cw{7-1}$ Is it true or false?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two plus six is eight, so it is true.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "leftLabel",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That checks the left side. What is seven minus one?",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": "rightBlock7",
+       "by": [
+        0.6,
+        1.1
+       ],
+       "at": "minus"
+      },
+      {
+       "do": "hide",
+       "target": "rightBlock7",
+       "at": "one"
+      },
+      {
+       "do": "move",
+       "points": {
+        "beamL": [
+         -2.8,
+         -1.0
+        ],
+        "beamR": [
+         2.8,
+         0.4
+        ],
+        "leftPan0": [
+         -4.75,
+         -0.3
+        ],
+        "leftPan1": [
+         -0.85,
+         -0.3
+        ],
+        "leftPan2": [
+         -0.85,
+         -0.14
+        ],
+        "leftPan3": [
+         -4.75,
+         -0.14
+        ],
+        "leftBlock10": [
+         -4.45,
+         -0.04
+        ],
+        "leftBlock11": [
+         -4.05,
+         -0.04
+        ],
+        "leftBlock12": [
+         -4.05,
+         0.36
+        ],
+        "leftBlock13": [
+         -4.45,
+         0.36
+        ],
+        "leftBlock20": [
+         -3.98,
+         -0.04
+        ],
+        "leftBlock21": [
+         -3.58,
+         -0.04
+        ],
+        "leftBlock22": [
+         -3.58,
+         0.36
+        ],
+        "leftBlock23": [
+         -3.98,
+         0.36
+        ],
+        "leftBlock30": [
+         -2.5,
+         -0.04
+        ],
+        "leftBlock31": [
+         -2.1,
+         -0.04
+        ],
+        "leftBlock32": [
+         -2.1,
+         0.36
+        ],
+        "leftBlock33": [
+         -2.5,
+         0.36
+        ],
+        "leftBlock40": [
+         -2.03,
+         -0.04
+        ],
+        "leftBlock41": [
+         -1.63,
+         -0.04
+        ],
+        "leftBlock42": [
+         -1.63,
+         0.36
+        ],
+        "leftBlock43": [
+         -2.03,
+         0.36
+        ],
+        "leftBlock50": [
+         -1.56,
+         -0.04
+        ],
+        "leftBlock51": [
+         -1.16,
+         -0.04
+        ],
+        "leftBlock52": [
+         -1.16,
+         0.36
+        ],
+        "leftBlock53": [
+         -1.56,
+         0.36
+        ],
+        "leftBlock60": [
+         -2.5,
+         0.43
+        ],
+        "leftBlock61": [
+         -2.1,
+         0.43
+        ],
+        "leftBlock62": [
+         -2.1,
+         0.83
+        ],
+        "leftBlock63": [
+         -2.5,
+         0.83
+        ],
+        "leftBlock70": [
+         -2.03,
+         0.43
+        ],
+        "leftBlock71": [
+         -1.63,
+         0.43
+        ],
+        "leftBlock72": [
+         -1.63,
+         0.83
+        ],
+        "leftBlock73": [
+         -2.03,
+         0.83
+        ],
+        "leftBlock80": [
+         -1.56,
+         0.43
+        ],
+        "leftBlock81": [
+         -1.16,
+         0.43
+        ],
+        "leftBlock82": [
+         -1.16,
+         0.83
+        ],
+        "leftBlock83": [
+         -1.56,
+         0.83
+        ],
+        "rightPan0": [
+         0.85,
+         1.1
+        ],
+        "rightPan1": [
+         4.75,
+         1.1
+        ],
+        "rightPan2": [
+         4.75,
+         1.26
+        ],
+        "rightPan3": [
+         0.85,
+         1.26
+        ],
+        "rightBlock10": [
+         2.14,
+         1.36
+        ],
+        "rightBlock11": [
+         2.54,
+         1.36
+        ],
+        "rightBlock12": [
+         2.54,
+         1.76
+        ],
+        "rightBlock13": [
+         2.14,
+         1.76
+        ],
+        "rightBlock20": [
+         2.61,
+         1.36
+        ],
+        "rightBlock21": [
+         3.01,
+         1.36
+        ],
+        "rightBlock22": [
+         3.01,
+         1.76
+        ],
+        "rightBlock23": [
+         2.61,
+         1.76
+        ],
+        "rightBlock30": [
+         3.08,
+         1.36
+        ],
+        "rightBlock31": [
+         3.48,
+         1.36
+        ],
+        "rightBlock32": [
+         3.48,
+         1.76
+        ],
+        "rightBlock33": [
+         3.08,
+         1.76
+        ],
+        "rightBlock40": [
+         2.14,
+         1.83
+        ],
+        "rightBlock41": [
+         2.54,
+         1.83
+        ],
+        "rightBlock42": [
+         2.54,
+         2.23
+        ],
+        "rightBlock43": [
+         2.14,
+         2.23
+        ],
+        "rightBlock50": [
+         2.61,
+         1.83
+        ],
+        "rightBlock51": [
+         3.01,
+         1.83
+        ],
+        "rightBlock52": [
+         3.01,
+         2.23
+        ],
+        "rightBlock53": [
+         2.61,
+         2.23
+        ],
+        "rightBlock60": [
+         3.08,
+         1.83
+        ],
+        "rightBlock61": [
+         3.48,
+         1.83
+        ],
+        "rightBlock62": [
+         3.48,
+         2.23
+        ],
+        "rightBlock63": [
+         3.08,
+         2.23
+        ],
+        "leftSupportTop": [
+         -2.8,
+         -0.3
+        ],
+        "leftSupportBottom": [
+         -2.8,
+         -1.0
+        ],
+        "rightSupportTop": [
+         2.8,
+         1.1
+        ],
+        "rightSupportBottom": [
+         2.8,
+         0.4
+        ]
+       },
+       "at": "one",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six! Eight and six are different, so it is false. I need to check both sides.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{2+6=8},\\ \\cw{7-1=6}",
+       "fresh": true,
+       "at": "Eight"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{False}",
+       "at": "false"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -5.4,
+     -2,
+     5.4,
+     4.8
+    ],
+    "points": {
+     "pivot": [
+      0,
+      -0.3
+     ],
+     "baseL": [
+      -0.9,
+      -1.35
+     ],
+     "baseR": [
+      0.9,
+      -1.35
+     ],
+     "beamL": [
+      -2.8,
+      -1.0
+     ],
+     "beamR": [
+      2.8,
+      0.4
+     ],
+     "leftPan0": [
+      -4.75,
+      -0.3
+     ],
+     "leftPan1": [
+      -0.85,
+      -0.3
+     ],
+     "leftPan2": [
+      -0.85,
+      -0.14
+     ],
+     "leftPan3": [
+      -4.75,
+      -0.14
+     ],
+     "leftLabelP": [
+      -2.8,
+      3.55
+     ],
+     "leftBlock10": [
+      -4.45,
+      -0.04
+     ],
+     "leftBlock11": [
+      -4.05,
+      -0.04
+     ],
+     "leftBlock12": [
+      -4.05,
+      0.36
+     ],
+     "leftBlock13": [
+      -4.45,
+      0.36
+     ],
+     "leftBlock20": [
+      -3.98,
+      -0.04
+     ],
+     "leftBlock21": [
+      -3.58,
+      -0.04
+     ],
+     "leftBlock22": [
+      -3.58,
+      0.36
+     ],
+     "leftBlock23": [
+      -3.98,
+      0.36
+     ],
+     "leftBlock30": [
+      -3.51,
+      -0.04
+     ],
+     "leftBlock31": [
+      -3.11,
+      -0.04
+     ],
+     "leftBlock32": [
+      -3.11,
+      0.36
+     ],
+     "leftBlock33": [
+      -3.51,
+      0.36
+     ],
+     "leftBlock40": [
+      -4.45,
+      0.43
+     ],
+     "leftBlock41": [
+      -4.05,
+      0.43
+     ],
+     "leftBlock42": [
+      -4.05,
+      0.83
+     ],
+     "leftBlock43": [
+      -4.45,
+      0.83
+     ],
+     "leftBlock50": [
+      -2.5,
+      -0.04
+     ],
+     "leftBlock51": [
+      -2.1,
+      -0.04
+     ],
+     "leftBlock52": [
+      -2.1,
+      0.36
+     ],
+     "leftBlock53": [
+      -2.5,
+      0.36
+     ],
+     "leftBlock60": [
+      -2.03,
+      -0.04
+     ],
+     "leftBlock61": [
+      -1.63,
+      -0.04
+     ],
+     "leftBlock62": [
+      -1.63,
+      0.36
+     ],
+     "leftBlock63": [
+      -2.03,
+      0.36
+     ],
+     "leftBlock70": [
+      -1.56,
+      -0.04
+     ],
+     "leftBlock71": [
+      -1.16,
+      -0.04
+     ],
+     "leftBlock72": [
+      -1.16,
+      0.36
+     ],
+     "leftBlock73": [
+      -1.56,
+      0.36
+     ],
+     "leftBlock80": [
+      -2.5,
+      0.43
+     ],
+     "leftBlock81": [
+      -2.1,
+      0.43
+     ],
+     "leftBlock82": [
+      -2.1,
+      0.83
+     ],
+     "leftBlock83": [
+      -2.5,
+      0.83
+     ],
+     "leftBlock90": [
+      -2.03,
+      0.43
+     ],
+     "leftBlock91": [
+      -1.63,
+      0.43
+     ],
+     "leftBlock92": [
+      -1.63,
+      0.83
+     ],
+     "leftBlock93": [
+      -2.03,
+      0.83
+     ],
+     "leftBlock100": [
+      -1.56,
+      0.43
+     ],
+     "leftBlock101": [
+      -1.16,
+      0.43
+     ],
+     "leftBlock102": [
+      -1.16,
+      0.83
+     ],
+     "leftBlock103": [
+      -1.56,
+      0.83
+     ],
+     "leftBlock110": [
+      -2.5,
+      0.9
+     ],
+     "leftBlock111": [
+      -2.1,
+      0.9
+     ],
+     "leftBlock112": [
+      -2.1,
+      1.3
+     ],
+     "leftBlock113": [
+      -2.5,
+      1.3
+     ],
+     "leftBlock120": [
+      -2.03,
+      0.9
+     ],
+     "leftBlock121": [
+      -1.63,
+      0.9
+     ],
+     "leftBlock122": [
+      -1.63,
+      1.3
+     ],
+     "leftBlock123": [
+      -2.03,
+      1.3
+     ],
+     "leftBlock130": [
+      -1.56,
+      0.9
+     ],
+     "leftBlock131": [
+      -1.16,
+      0.9
+     ],
+     "leftBlock132": [
+      -1.16,
+      1.3
+     ],
+     "leftBlock133": [
+      -1.56,
+      1.3
+     ],
+     "rightPan0": [
+      0.85,
+      1.1
+     ],
+     "rightPan1": [
+      4.75,
+      1.1
+     ],
+     "rightPan2": [
+      4.75,
+      1.26
+     ],
+     "rightPan3": [
+      0.85,
+      1.26
+     ],
+     "rightLabelP": [
+      2.8,
+      3.55
+     ],
+     "rightBlock10": [
+      1.15,
+      1.36
+     ],
+     "rightBlock11": [
+      1.55,
+      1.36
+     ],
+     "rightBlock12": [
+      1.55,
+      1.76
+     ],
+     "rightBlock13": [
+      1.15,
+      1.76
+     ],
+     "rightBlock20": [
+      1.62,
+      1.36
+     ],
+     "rightBlock21": [
+      2.02,
+      1.36
+     ],
+     "rightBlock22": [
+      2.02,
+      1.76
+     ],
+     "rightBlock23": [
+      1.62,
+      1.76
+     ],
+     "rightBlock30": [
+      2.09,
+      1.36
+     ],
+     "rightBlock31": [
+      2.49,
+      1.36
+     ],
+     "rightBlock32": [
+      2.49,
+      1.76
+     ],
+     "rightBlock33": [
+      2.09,
+      1.76
+     ],
+     "rightBlock40": [
+      1.15,
+      1.83
+     ],
+     "rightBlock41": [
+      1.55,
+      1.83
+     ],
+     "rightBlock42": [
+      1.55,
+      2.23
+     ],
+     "rightBlock43": [
+      1.15,
+      2.23
+     ],
+     "rightBlock50": [
+      1.62,
+      1.83
+     ],
+     "rightBlock51": [
+      2.02,
+      1.83
+     ],
+     "rightBlock52": [
+      2.02,
+      2.23
+     ],
+     "rightBlock53": [
+      1.62,
+      2.23
+     ],
+     "rightBlock60": [
+      2.09,
+      1.83
+     ],
+     "rightBlock61": [
+      2.49,
+      1.83
+     ],
+     "rightBlock62": [
+      2.49,
+      2.23
+     ],
+     "rightBlock63": [
+      2.09,
+      2.23
+     ],
+     "rightBlock70": [
+      1.15,
+      2.3
+     ],
+     "rightBlock71": [
+      1.55,
+      2.3
+     ],
+     "rightBlock72": [
+      1.55,
+      2.7
+     ],
+     "rightBlock73": [
+      1.15,
+      2.7
+     ],
+     "rightBlock80": [
+      3.1,
+      1.36
+     ],
+     "rightBlock81": [
+      3.5,
+      1.36
+     ],
+     "rightBlock82": [
+      3.5,
+      1.76
+     ],
+     "rightBlock83": [
+      3.1,
+      1.76
+     ],
+     "rightBlock90": [
+      3.57,
+      1.36
+     ],
+     "rightBlock91": [
+      3.97,
+      1.36
+     ],
+     "rightBlock92": [
+      3.97,
+      1.76
+     ],
+     "rightBlock93": [
+      3.57,
+      1.76
+     ],
+     "rightBlock100": [
+      4.04,
+      1.36
+     ],
+     "rightBlock101": [
+      4.44,
+      1.36
+     ],
+     "rightBlock102": [
+      4.44,
+      1.76
+     ],
+     "rightBlock103": [
+      4.04,
+      1.76
+     ],
+     "rightBlock110": [
+      3.1,
+      1.83
+     ],
+     "rightBlock111": [
+      3.5,
+      1.83
+     ],
+     "rightBlock112": [
+      3.5,
+      2.23
+     ],
+     "rightBlock113": [
+      3.1,
+      2.23
+     ],
+     "rightBlock120": [
+      3.57,
+      1.83
+     ],
+     "rightBlock121": [
+      3.97,
+      1.83
+     ],
+     "rightBlock122": [
+      3.97,
+      2.23
+     ],
+     "rightBlock123": [
+      3.57,
+      2.23
+     ],
+     "rightBlock130": [
+      4.04,
+      1.83
+     ],
+     "rightBlock131": [
+      4.44,
+      1.83
+     ],
+     "rightBlock132": [
+      4.44,
+      2.23
+     ],
+     "rightBlock133": [
+      4.04,
+      2.23
+     ],
+     "rightSolvedP": [
+      2.8,
+      3.55
+     ],
+     "leftSupportTop": [
+      -2.8,
+      -0.3
+     ],
+     "leftSupportBottom": [
+      -2.8,
+      -1.0
+     ],
+     "rightSupportTop": [
+      2.8,
+      1.1
+     ],
+     "rightSupportBottom": [
+      2.8,
+      0.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "stand",
+      "poly": [
+       "baseL",
+       "baseR",
+       "pivot"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rightSupport",
+      "seg": [
+       "rightSupportBottom",
+       "rightSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "leftSupport",
+      "seg": [
+       "leftSupportBottom",
+       "leftSupportTop"
+      ],
+      "ink": "ink",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "beam",
+      "seg": [
+       "beamL",
+       "beamR"
+      ],
+      "ink": "ink",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "pivot",
+      "ink": "gold",
+      "r": 7,
+      "start": true
+     },
+     {
+      "id": "leftPan",
+      "poly": [
+       "leftPan0",
+       "leftPan1",
+       "leftPan2",
+       "leftPan3"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftLabel",
+      "label": "4+9",
+      "at": "leftLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock1",
+      "poly": [
+       "leftBlock10",
+       "leftBlock11",
+       "leftBlock12",
+       "leftBlock13"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock2",
+      "poly": [
+       "leftBlock20",
+       "leftBlock21",
+       "leftBlock22",
+       "leftBlock23"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock3",
+      "poly": [
+       "leftBlock30",
+       "leftBlock31",
+       "leftBlock32",
+       "leftBlock33"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock4",
+      "poly": [
+       "leftBlock40",
+       "leftBlock41",
+       "leftBlock42",
+       "leftBlock43"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock5",
+      "poly": [
+       "leftBlock50",
+       "leftBlock51",
+       "leftBlock52",
+       "leftBlock53"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock6",
+      "poly": [
+       "leftBlock60",
+       "leftBlock61",
+       "leftBlock62",
+       "leftBlock63"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock7",
+      "poly": [
+       "leftBlock70",
+       "leftBlock71",
+       "leftBlock72",
+       "leftBlock73"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock8",
+      "poly": [
+       "leftBlock80",
+       "leftBlock81",
+       "leftBlock82",
+       "leftBlock83"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock9",
+      "poly": [
+       "leftBlock90",
+       "leftBlock91",
+       "leftBlock92",
+       "leftBlock93"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock10",
+      "poly": [
+       "leftBlock100",
+       "leftBlock101",
+       "leftBlock102",
+       "leftBlock103"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock11",
+      "poly": [
+       "leftBlock110",
+       "leftBlock111",
+       "leftBlock112",
+       "leftBlock113"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock12",
+      "poly": [
+       "leftBlock120",
+       "leftBlock121",
+       "leftBlock122",
+       "leftBlock123"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "leftBlock13",
+      "poly": [
+       "leftBlock130",
+       "leftBlock131",
+       "leftBlock132",
+       "leftBlock133"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "left"
+     },
+     {
+      "id": "rightPan",
+      "poly": [
+       "rightPan0",
+       "rightPan1",
+       "rightPan2",
+       "rightPan3"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightLabel",
+      "label": "\\square+6",
+      "at": "rightLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock1",
+      "poly": [
+       "rightBlock10",
+       "rightBlock11",
+       "rightBlock12",
+       "rightBlock13"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock2",
+      "poly": [
+       "rightBlock20",
+       "rightBlock21",
+       "rightBlock22",
+       "rightBlock23"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock3",
+      "poly": [
+       "rightBlock30",
+       "rightBlock31",
+       "rightBlock32",
+       "rightBlock33"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock4",
+      "poly": [
+       "rightBlock40",
+       "rightBlock41",
+       "rightBlock42",
+       "rightBlock43"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock5",
+      "poly": [
+       "rightBlock50",
+       "rightBlock51",
+       "rightBlock52",
+       "rightBlock53"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock6",
+      "poly": [
+       "rightBlock60",
+       "rightBlock61",
+       "rightBlock62",
+       "rightBlock63"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock7",
+      "poly": [
+       "rightBlock70",
+       "rightBlock71",
+       "rightBlock72",
+       "rightBlock73"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": false,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock8",
+      "poly": [
+       "rightBlock80",
+       "rightBlock81",
+       "rightBlock82",
+       "rightBlock83"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock9",
+      "poly": [
+       "rightBlock90",
+       "rightBlock91",
+       "rightBlock92",
+       "rightBlock93"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock10",
+      "poly": [
+       "rightBlock100",
+       "rightBlock101",
+       "rightBlock102",
+       "rightBlock103"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock11",
+      "poly": [
+       "rightBlock110",
+       "rightBlock111",
+       "rightBlock112",
+       "rightBlock113"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock12",
+      "poly": [
+       "rightBlock120",
+       "rightBlock121",
+       "rightBlock122",
+       "rightBlock123"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightBlock13",
+      "poly": [
+       "rightBlock130",
+       "rightBlock131",
+       "rightBlock132",
+       "rightBlock133"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true,
+      "group": "right"
+     },
+     {
+      "id": "rightSolved",
+      "label": "7+6",
+      "at": "rightSolvedP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": false
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Four plus nine equals box plus six. What goes in the box?",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\cb{4+9}=\\cw{\\square+6}$ What goes in the box?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four plus nine makes thirteen.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "leftLabel",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4+9=13}",
+       "fresh": true,
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The whole right side must make thirteen too.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rightLabel",
+       "at": "right"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six blocks are already there. Thirteen minus six leaves seven to add.",
+     "pause": 1.6,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{13-6=7}",
+       "fresh": true,
+       "at": "Thirteen"
+      },
+      {
+       "do": "show",
+       "target": [
+        "rightBlock1",
+        "rightBlock2",
+        "rightBlock3",
+        "rightBlock4",
+        "rightBlock5",
+        "rightBlock6",
+        "rightBlock7"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "hide",
+       "target": "rightLabel",
+       "at": "seven"
+      },
+      {
+       "do": "move",
+       "points": {
+        "beamL": [
+         -2.8,
+         -0.3
+        ],
+        "beamR": [
+         2.8,
+         -0.3
+        ],
+        "leftPan0": [
+         -4.75,
+         0.4
+        ],
+        "leftPan1": [
+         -0.85,
+         0.4
+        ],
+        "leftPan2": [
+         -0.85,
+         0.56
+        ],
+        "leftPan3": [
+         -4.75,
+         0.56
+        ],
+        "leftBlock10": [
+         -4.45,
+         0.66
+        ],
+        "leftBlock11": [
+         -4.05,
+         0.66
+        ],
+        "leftBlock12": [
+         -4.05,
+         1.06
+        ],
+        "leftBlock13": [
+         -4.45,
+         1.06
+        ],
+        "leftBlock20": [
+         -3.98,
+         0.66
+        ],
+        "leftBlock21": [
+         -3.58,
+         0.66
+        ],
+        "leftBlock22": [
+         -3.58,
+         1.06
+        ],
+        "leftBlock23": [
+         -3.98,
+         1.06
+        ],
+        "leftBlock30": [
+         -3.51,
+         0.66
+        ],
+        "leftBlock31": [
+         -3.11,
+         0.66
+        ],
+        "leftBlock32": [
+         -3.11,
+         1.06
+        ],
+        "leftBlock33": [
+         -3.51,
+         1.06
+        ],
+        "leftBlock40": [
+         -4.45,
+         1.13
+        ],
+        "leftBlock41": [
+         -4.05,
+         1.13
+        ],
+        "leftBlock42": [
+         -4.05,
+         1.53
+        ],
+        "leftBlock43": [
+         -4.45,
+         1.53
+        ],
+        "leftBlock50": [
+         -2.5,
+         0.66
+        ],
+        "leftBlock51": [
+         -2.1,
+         0.66
+        ],
+        "leftBlock52": [
+         -2.1,
+         1.06
+        ],
+        "leftBlock53": [
+         -2.5,
+         1.06
+        ],
+        "leftBlock60": [
+         -2.03,
+         0.66
+        ],
+        "leftBlock61": [
+         -1.63,
+         0.66
+        ],
+        "leftBlock62": [
+         -1.63,
+         1.06
+        ],
+        "leftBlock63": [
+         -2.03,
+         1.06
+        ],
+        "leftBlock70": [
+         -1.56,
+         0.66
+        ],
+        "leftBlock71": [
+         -1.16,
+         0.66
+        ],
+        "leftBlock72": [
+         -1.16,
+         1.06
+        ],
+        "leftBlock73": [
+         -1.56,
+         1.06
+        ],
+        "leftBlock80": [
+         -2.5,
+         1.13
+        ],
+        "leftBlock81": [
+         -2.1,
+         1.13
+        ],
+        "leftBlock82": [
+         -2.1,
+         1.53
+        ],
+        "leftBlock83": [
+         -2.5,
+         1.53
+        ],
+        "leftBlock90": [
+         -2.03,
+         1.13
+        ],
+        "leftBlock91": [
+         -1.63,
+         1.13
+        ],
+        "leftBlock92": [
+         -1.63,
+         1.53
+        ],
+        "leftBlock93": [
+         -2.03,
+         1.53
+        ],
+        "leftBlock100": [
+         -1.56,
+         1.13
+        ],
+        "leftBlock101": [
+         -1.16,
+         1.13
+        ],
+        "leftBlock102": [
+         -1.16,
+         1.53
+        ],
+        "leftBlock103": [
+         -1.56,
+         1.53
+        ],
+        "leftBlock110": [
+         -2.5,
+         1.6
+        ],
+        "leftBlock111": [
+         -2.1,
+         1.6
+        ],
+        "leftBlock112": [
+         -2.1,
+         2.0
+        ],
+        "leftBlock113": [
+         -2.5,
+         2.0
+        ],
+        "leftBlock120": [
+         -2.03,
+         1.6
+        ],
+        "leftBlock121": [
+         -1.63,
+         1.6
+        ],
+        "leftBlock122": [
+         -1.63,
+         2.0
+        ],
+        "leftBlock123": [
+         -2.03,
+         2.0
+        ],
+        "leftBlock130": [
+         -1.56,
+         1.6
+        ],
+        "leftBlock131": [
+         -1.16,
+         1.6
+        ],
+        "leftBlock132": [
+         -1.16,
+         2.0
+        ],
+        "leftBlock133": [
+         -1.56,
+         2.0
+        ],
+        "rightPan0": [
+         0.85,
+         0.4
+        ],
+        "rightPan1": [
+         4.75,
+         0.4
+        ],
+        "rightPan2": [
+         4.75,
+         0.56
+        ],
+        "rightPan3": [
+         0.85,
+         0.56
+        ],
+        "rightBlock10": [
+         1.15,
+         0.66
+        ],
+        "rightBlock11": [
+         1.55,
+         0.66
+        ],
+        "rightBlock12": [
+         1.55,
+         1.06
+        ],
+        "rightBlock13": [
+         1.15,
+         1.06
+        ],
+        "rightBlock20": [
+         1.62,
+         0.66
+        ],
+        "rightBlock21": [
+         2.02,
+         0.66
+        ],
+        "rightBlock22": [
+         2.02,
+         1.06
+        ],
+        "rightBlock23": [
+         1.62,
+         1.06
+        ],
+        "rightBlock30": [
+         2.09,
+         0.66
+        ],
+        "rightBlock31": [
+         2.49,
+         0.66
+        ],
+        "rightBlock32": [
+         2.49,
+         1.06
+        ],
+        "rightBlock33": [
+         2.09,
+         1.06
+        ],
+        "rightBlock40": [
+         1.15,
+         1.13
+        ],
+        "rightBlock41": [
+         1.55,
+         1.13
+        ],
+        "rightBlock42": [
+         1.55,
+         1.53
+        ],
+        "rightBlock43": [
+         1.15,
+         1.53
+        ],
+        "rightBlock50": [
+         1.62,
+         1.13
+        ],
+        "rightBlock51": [
+         2.02,
+         1.13
+        ],
+        "rightBlock52": [
+         2.02,
+         1.53
+        ],
+        "rightBlock53": [
+         1.62,
+         1.53
+        ],
+        "rightBlock60": [
+         2.09,
+         1.13
+        ],
+        "rightBlock61": [
+         2.49,
+         1.13
+        ],
+        "rightBlock62": [
+         2.49,
+         1.53
+        ],
+        "rightBlock63": [
+         2.09,
+         1.53
+        ],
+        "rightBlock70": [
+         1.15,
+         1.6
+        ],
+        "rightBlock71": [
+         1.55,
+         1.6
+        ],
+        "rightBlock72": [
+         1.55,
+         2.0
+        ],
+        "rightBlock73": [
+         1.15,
+         2.0
+        ],
+        "rightBlock80": [
+         3.1,
+         0.66
+        ],
+        "rightBlock81": [
+         3.5,
+         0.66
+        ],
+        "rightBlock82": [
+         3.5,
+         1.06
+        ],
+        "rightBlock83": [
+         3.1,
+         1.06
+        ],
+        "rightBlock90": [
+         3.57,
+         0.66
+        ],
+        "rightBlock91": [
+         3.97,
+         0.66
+        ],
+        "rightBlock92": [
+         3.97,
+         1.06
+        ],
+        "rightBlock93": [
+         3.57,
+         1.06
+        ],
+        "rightBlock100": [
+         4.04,
+         0.66
+        ],
+        "rightBlock101": [
+         4.44,
+         0.66
+        ],
+        "rightBlock102": [
+         4.44,
+         1.06
+        ],
+        "rightBlock103": [
+         4.04,
+         1.06
+        ],
+        "rightBlock110": [
+         3.1,
+         1.13
+        ],
+        "rightBlock111": [
+         3.5,
+         1.13
+        ],
+        "rightBlock112": [
+         3.5,
+         1.53
+        ],
+        "rightBlock113": [
+         3.1,
+         1.53
+        ],
+        "rightBlock120": [
+         3.57,
+         1.13
+        ],
+        "rightBlock121": [
+         3.97,
+         1.13
+        ],
+        "rightBlock122": [
+         3.97,
+         1.53
+        ],
+        "rightBlock123": [
+         3.57,
+         1.53
+        ],
+        "rightBlock130": [
+         4.04,
+         1.13
+        ],
+        "rightBlock131": [
+         4.44,
+         1.13
+        ],
+        "rightBlock132": [
+         4.44,
+         1.53
+        ],
+        "rightBlock133": [
+         4.04,
+         1.53
+        ],
+        "leftSupportTop": [
+         -2.8,
+         0.4
+        ],
+        "leftSupportBottom": [
+         -2.8,
+         -0.3
+        ],
+        "rightSupportTop": [
+         2.8,
+         0.4
+        ],
+        "rightSupportBottom": [
+         2.8,
+         -0.3
+        ]
+       },
+       "at": "add",
+       "dur": 1.4
+      },
+      {
+       "do": "show",
+       "target": "rightSolved",
+       "at": "add",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven plus six is thirteen. Both sides match, so the box holds seven.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4+9}=\\cw{7+6}",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{13}=\\cw{13}",
+       "fresh": true,
+       "at": "Both"
+      },
+      {
+       "do": "answer",
+       "tex": "\\square=7",
+       "at": "seven",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.9,
+     -1.45,
+     6.86,
+     9.75
+    ],
+    "points": {
+     "aMat0": [
+      -0.2,
+      -0.2
+     ],
+     "aMat1": [
+      2.84,
+      -0.2
+     ],
+     "aMat2": [
+      2.84,
+      9.28
+     ],
+     "aMat3": [
+      -0.2,
+      9.28
+     ],
+     "bMat0": [
+      4.04,
+      -0.2
+     ],
+     "bMat1": [
+      6.16,
+      -0.2
+     ],
+     "bMat2": [
+      6.16,
+      9.28
+     ],
+     "bMat3": [
+      4.04,
+      9.28
+     ],
+     "a10": [
+      0,
+      0.0
+     ],
+     "a11": [
+      0.8,
+      0.0
+     ],
+     "a12": [
+      0.8,
+      0.8
+     ],
+     "a13": [
+      0,
+      0.8
+     ],
+     "a20": [
+      0,
+      0.92
+     ],
+     "a21": [
+      0.8,
+      0.92
+     ],
+     "a22": [
+      0.8,
+      1.72
+     ],
+     "a23": [
+      0,
+      1.72
+     ],
+     "a30": [
+      0,
+      1.84
+     ],
+     "a31": [
+      0.8,
+      1.84
+     ],
+     "a32": [
+      0.8,
+      2.64
+     ],
+     "a33": [
+      0,
+      2.64
+     ],
+     "a40": [
+      0,
+      2.76
+     ],
+     "a41": [
+      0.8,
+      2.76
+     ],
+     "a42": [
+      0.8,
+      3.56
+     ],
+     "a43": [
+      0,
+      3.56
+     ],
+     "a50": [
+      0,
+      3.68
+     ],
+     "a51": [
+      0.8,
+      3.68
+     ],
+     "a52": [
+      0.8,
+      4.48
+     ],
+     "a53": [
+      0,
+      4.48
+     ],
+     "a60": [
+      0,
+      4.6
+     ],
+     "a61": [
+      0.8,
+      4.6
+     ],
+     "a62": [
+      0.8,
+      5.4
+     ],
+     "a63": [
+      0,
+      5.4
+     ],
+     "a70": [
+      0,
+      5.52
+     ],
+     "a71": [
+      0.8,
+      5.52
+     ],
+     "a72": [
+      0.8,
+      6.32
+     ],
+     "a73": [
+      0,
+      6.32
+     ],
+     "a80": [
+      0,
+      6.44
+     ],
+     "a81": [
+      0.8,
+      6.44
+     ],
+     "a82": [
+      0.8,
+      7.24
+     ],
+     "a83": [
+      0,
+      7.24
+     ],
+     "a90": [
+      0,
+      7.36
+     ],
+     "a91": [
+      0.8,
+      7.36
+     ],
+     "a92": [
+      0.8,
+      8.16
+     ],
+     "a93": [
+      0,
+      8.16
+     ],
+     "a100": [
+      0,
+      8.28
+     ],
+     "a101": [
+      0.8,
+      8.28
+     ],
+     "a102": [
+      0.8,
+      9.08
+     ],
+     "a103": [
+      0,
+      9.08
+     ],
+     "a110": [
+      0.92,
+      0.0
+     ],
+     "a111": [
+      1.72,
+      0.0
+     ],
+     "a112": [
+      1.72,
+      0.8
+     ],
+     "a113": [
+      0.92,
+      0.8
+     ],
+     "a120": [
+      0.92,
+      0.92
+     ],
+     "a121": [
+      1.72,
+      0.92
+     ],
+     "a122": [
+      1.72,
+      1.72
+     ],
+     "a123": [
+      0.92,
+      1.72
+     ],
+     "a130": [
+      0.92,
+      1.84
+     ],
+     "a131": [
+      1.72,
+      1.84
+     ],
+     "a132": [
+      1.72,
+      2.64
+     ],
+     "a133": [
+      0.92,
+      2.64
+     ],
+     "a140": [
+      0.92,
+      2.76
+     ],
+     "a141": [
+      1.72,
+      2.76
+     ],
+     "a142": [
+      1.72,
+      3.56
+     ],
+     "a143": [
+      0.92,
+      3.56
+     ],
+     "a150": [
+      0.92,
+      3.68
+     ],
+     "a151": [
+      1.72,
+      3.68
+     ],
+     "a152": [
+      1.72,
+      4.48
+     ],
+     "a153": [
+      0.92,
+      4.48
+     ],
+     "a160": [
+      0.92,
+      4.6
+     ],
+     "a161": [
+      1.72,
+      4.6
+     ],
+     "a162": [
+      1.72,
+      5.4
+     ],
+     "a163": [
+      0.92,
+      5.4
+     ],
+     "a170": [
+      0.92,
+      5.52
+     ],
+     "a171": [
+      1.72,
+      5.52
+     ],
+     "a172": [
+      1.72,
+      6.32
+     ],
+     "a173": [
+      0.92,
+      6.32
+     ],
+     "a180": [
+      0.92,
+      6.44
+     ],
+     "a181": [
+      1.72,
+      6.44
+     ],
+     "a182": [
+      1.72,
+      7.24
+     ],
+     "a183": [
+      0.92,
+      7.24
+     ],
+     "a190": [
+      0.92,
+      7.36
+     ],
+     "a191": [
+      1.72,
+      7.36
+     ],
+     "a192": [
+      1.72,
+      8.16
+     ],
+     "a193": [
+      0.92,
+      8.16
+     ],
+     "a200": [
+      0.92,
+      8.28
+     ],
+     "a201": [
+      1.72,
+      8.28
+     ],
+     "a202": [
+      1.72,
+      9.08
+     ],
+     "a203": [
+      0.92,
+      9.08
+     ],
+     "a210": [
+      1.84,
+      0.0
+     ],
+     "a211": [
+      2.64,
+      0.0
+     ],
+     "a212": [
+      2.64,
+      0.8
+     ],
+     "a213": [
+      1.84,
+      0.8
+     ],
+     "a220": [
+      1.84,
+      0.92
+     ],
+     "a221": [
+      2.64,
+      0.92
+     ],
+     "a222": [
+      2.64,
+      1.72
+     ],
+     "a223": [
+      1.84,
+      1.72
+     ],
+     "a230": [
+      1.84,
+      1.84
+     ],
+     "a231": [
+      2.64,
+      1.84
+     ],
+     "a232": [
+      2.64,
+      2.64
+     ],
+     "a233": [
+      1.84,
+      2.64
+     ],
+     "a240": [
+      1.84,
+      2.76
+     ],
+     "a241": [
+      2.64,
+      2.76
+     ],
+     "a242": [
+      2.64,
+      3.56
+     ],
+     "a243": [
+      1.84,
+      3.56
+     ],
+     "a250": [
+      1.84,
+      3.68
+     ],
+     "a251": [
+      2.64,
+      3.68
+     ],
+     "a252": [
+      2.64,
+      4.48
+     ],
+     "a253": [
+      1.84,
+      4.48
+     ],
+     "a260": [
+      1.84,
+      4.6
+     ],
+     "a261": [
+      2.64,
+      4.6
+     ],
+     "a262": [
+      2.64,
+      5.4
+     ],
+     "a263": [
+      1.84,
+      5.4
+     ],
+     "a270": [
+      1.84,
+      5.52
+     ],
+     "a271": [
+      2.64,
+      5.52
+     ],
+     "a272": [
+      2.64,
+      6.32
+     ],
+     "a273": [
+      1.84,
+      6.32
+     ],
+     "b10": [
+      4.24,
+      0.0
+     ],
+     "b11": [
+      5.04,
+      0.0
+     ],
+     "b12": [
+      5.04,
+      0.8
+     ],
+     "b13": [
+      4.24,
+      0.8
+     ],
+     "b20": [
+      4.24,
+      0.92
+     ],
+     "b21": [
+      5.04,
+      0.92
+     ],
+     "b22": [
+      5.04,
+      1.72
+     ],
+     "b23": [
+      4.24,
+      1.72
+     ],
+     "b30": [
+      4.24,
+      1.84
+     ],
+     "b31": [
+      5.04,
+      1.84
+     ],
+     "b32": [
+      5.04,
+      2.64
+     ],
+     "b33": [
+      4.24,
+      2.64
+     ],
+     "b40": [
+      5.16,
+      0.0
+     ],
+     "b41": [
+      5.96,
+      0.0
+     ],
+     "b42": [
+      5.96,
+      0.8
+     ],
+     "b43": [
+      5.16,
+      0.8
+     ],
+     "b50": [
+      5.16,
+      0.92
+     ],
+     "b51": [
+      5.96,
+      0.92
+     ],
+     "b52": [
+      5.96,
+      1.72
+     ],
+     "b53": [
+      5.16,
+      1.72
+     ],
+     "b60": [
+      5.16,
+      1.84
+     ],
+     "b61": [
+      5.96,
+      1.84
+     ],
+     "b62": [
+      5.96,
+      2.64
+     ],
+     "b63": [
+      5.16,
+      2.64
+     ],
+     "b70": [
+      5.16,
+      2.76
+     ],
+     "b71": [
+      5.96,
+      2.76
+     ],
+     "b72": [
+      5.96,
+      3.56
+     ],
+     "b73": [
+      5.16,
+      3.56
+     ],
+     "b80": [
+      5.16,
+      3.68
+     ],
+     "b81": [
+      5.96,
+      3.68
+     ],
+     "b82": [
+      5.96,
+      4.48
+     ],
+     "b83": [
+      5.16,
+      4.48
+     ],
+     "b90": [
+      5.16,
+      4.6
+     ],
+     "b91": [
+      5.96,
+      4.6
+     ],
+     "b92": [
+      5.96,
+      5.4
+     ],
+     "b93": [
+      5.16,
+      5.4
+     ],
+     "b100": [
+      5.16,
+      5.52
+     ],
+     "b101": [
+      5.96,
+      5.52
+     ],
+     "b102": [
+      5.96,
+      6.32
+     ],
+     "b103": [
+      5.16,
+      6.32
+     ],
+     "b110": [
+      5.16,
+      6.44
+     ],
+     "b111": [
+      5.96,
+      6.44
+     ],
+     "b112": [
+      5.96,
+      7.24
+     ],
+     "b113": [
+      5.16,
+      7.24
+     ],
+     "b120": [
+      5.16,
+      7.36
+     ],
+     "b121": [
+      5.96,
+      7.36
+     ],
+     "b122": [
+      5.96,
+      8.16
+     ],
+     "b123": [
+      5.16,
+      8.16
+     ],
+     "b130": [
+      5.16,
+      8.28
+     ],
+     "b131": [
+      5.96,
+      8.28
+     ],
+     "b132": [
+      5.96,
+      9.08
+     ],
+     "b133": [
+      5.16,
+      9.08
+     ],
+     "aLabelP": [
+      1.32,
+      -0.75
+     ],
+     "bLabelP": [
+      5.1,
+      -0.75
+     ],
+     "plusP": [
+      3.21,
+      -0.75
+     ]
+    },
+    "parts": [
+     {
+      "id": "aMat",
+      "poly": [
+       "aMat0",
+       "aMat1",
+       "aMat2",
+       "aMat3"
+      ],
+      "ink": "blue",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bMat",
+      "poly": [
+       "bMat0",
+       "bMat1",
+       "bMat2",
+       "bMat3"
+      ],
+      "ink": "warm",
+      "fill": "paper",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a1",
+      "poly": [
+       "a10",
+       "a11",
+       "a12",
+       "a13"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a2",
+      "poly": [
+       "a20",
+       "a21",
+       "a22",
+       "a23"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a3",
+      "poly": [
+       "a30",
+       "a31",
+       "a32",
+       "a33"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a4",
+      "poly": [
+       "a40",
+       "a41",
+       "a42",
+       "a43"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a5",
+      "poly": [
+       "a50",
+       "a51",
+       "a52",
+       "a53"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a6",
+      "poly": [
+       "a60",
+       "a61",
+       "a62",
+       "a63"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a7",
+      "poly": [
+       "a70",
+       "a71",
+       "a72",
+       "a73"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a8",
+      "poly": [
+       "a80",
+       "a81",
+       "a82",
+       "a83"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a9",
+      "poly": [
+       "a90",
+       "a91",
+       "a92",
+       "a93"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a10",
+      "poly": [
+       "a100",
+       "a101",
+       "a102",
+       "a103"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true,
+      "group": "tenTower"
+     },
+     {
+      "id": "a11",
+      "poly": [
+       "a110",
+       "a111",
+       "a112",
+       "a113"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a12",
+      "poly": [
+       "a120",
+       "a121",
+       "a122",
+       "a123"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a13",
+      "poly": [
+       "a130",
+       "a131",
+       "a132",
+       "a133"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a14",
+      "poly": [
+       "a140",
+       "a141",
+       "a142",
+       "a143"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a15",
+      "poly": [
+       "a150",
+       "a151",
+       "a152",
+       "a153"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a16",
+      "poly": [
+       "a160",
+       "a161",
+       "a162",
+       "a163"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a17",
+      "poly": [
+       "a170",
+       "a171",
+       "a172",
+       "a173"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a18",
+      "poly": [
+       "a180",
+       "a181",
+       "a182",
+       "a183"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a19",
+      "poly": [
+       "a190",
+       "a191",
+       "a192",
+       "a193"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a20",
+      "poly": [
+       "a200",
+       "a201",
+       "a202",
+       "a203"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a21",
+      "poly": [
+       "a210",
+       "a211",
+       "a212",
+       "a213"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a22",
+      "poly": [
+       "a220",
+       "a221",
+       "a222",
+       "a223"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a23",
+      "poly": [
+       "a230",
+       "a231",
+       "a232",
+       "a233"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a24",
+      "poly": [
+       "a240",
+       "a241",
+       "a242",
+       "a243"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a25",
+      "poly": [
+       "a250",
+       "a251",
+       "a252",
+       "a253"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "a26",
+      "poly": [
+       "a260",
+       "a261",
+       "a262",
+       "a263"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b1",
+      "poly": [
+       "b10",
+       "b11",
+       "b12",
+       "b13"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b2",
+      "poly": [
+       "b20",
+       "b21",
+       "b22",
+       "b23"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b3",
+      "poly": [
+       "b30",
+       "b31",
+       "b32",
+       "b33"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b4",
+      "poly": [
+       "b40",
+       "b41",
+       "b42",
+       "b43"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b5",
+      "poly": [
+       "b50",
+       "b51",
+       "b52",
+       "b53"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b6",
+      "poly": [
+       "b60",
+       "b61",
+       "b62",
+       "b63"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b7",
+      "poly": [
+       "b70",
+       "b71",
+       "b72",
+       "b73"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b8",
+      "poly": [
+       "b80",
+       "b81",
+       "b82",
+       "b83"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b9",
+      "poly": [
+       "b90",
+       "b91",
+       "b92",
+       "b93"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b10",
+      "poly": [
+       "b100",
+       "b101",
+       "b102",
+       "b103"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b11",
+      "poly": [
+       "b110",
+       "b111",
+       "b112",
+       "b113"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b12",
+      "poly": [
+       "b120",
+       "b121",
+       "b122",
+       "b123"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "b13",
+      "poly": [
+       "b130",
+       "b131",
+       "b132",
+       "b133"
+      ],
+      "ink": "warm",
+      "fill": "warm-fill",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "aLabel",
+      "label": "27",
+      "at": "aLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "aNew",
+      "label": "26",
+      "at": "aLabelP",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l"
+     },
+     {
+      "id": "bLabel",
+      "label": "13",
+      "at": "bLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "bNew",
+      "label": "14",
+      "at": "bLabelP",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l"
+     },
+     {
+      "id": "plus",
+      "label": "+",
+      "at": "plusP",
+      "dir": "c",
+      "ink": "ink",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "a27",
+      "poly": [
+       "a270",
+       "a271",
+       "a272",
+       "a273"
+      ],
+      "ink": "blue",
+      "fill": "blue-fill",
+      "w": 2,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Twenty-seven plus thirteen equals twenty-six plus fourteen. Is it true or false?",
+     "pause": 2.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$\\cb{27}+\\cw{13}=\\cb{26}+\\cw{14}$ Is it true or false?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Each full tower has ten blocks.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tenTower",
+       "at": "tower"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I move one block from the twenty-seven pile to the thirteen pile.",
+     "pause": 1.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "a27",
+       "at": "move"
+      },
+      {
+       "do": "slide",
+       "target": "a27",
+       "by": [
+        2.4,
+        -2.76
+       ],
+       "at": "move",
+       "dur": 2.0
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aLabel",
+        "bLabel"
+       ],
+       "at": "pile",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "aNew",
+        "bNew"
+       ],
+       "at": "pile",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twenty-seven becomes twenty-six. Thirteen becomes fourteen. No blocks came in or went away.",
+     "pause": 0.45,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{27}+\\cw{13}",
+       "fresh": true,
+       "note": "\\text{before the move}"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{26}+\\cw{14}",
+       "fresh": true,
+       "note": "\\text{after the move}",
+       "at": "Thirteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The total stays forty. So the equation is true!",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "write",
+       "tex": "40=40",
+       "fresh": true,
+       "at": "forty"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{True}",
+       "at": "true"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Equals means the same amount on both sides.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{27}+\\cw{13}=\\cb{26}+\\cw{14}",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "text": "Same amount on both sides."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
