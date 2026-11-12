@@ -272,8 +272,11 @@ const blocks = z.object({
     )
     .length(1),
   point: z.boolean().optional(),
-  /** The numeral under the chart, a digit under each pile. Placeholder zeros wait for `show b.digit.<place>`. */
-  digits: z.boolean().optional(),
+  /**
+   * The numeral under the chart, a digit under each pile. Placeholder zeros wait for `show b.digit.<place>`.
+   * `"later"`: every digit waits, for `show b.digit.<place>` or, all at once, `show b.digits`; the row's room is kept from the start.
+   */
+  digits: z.union([z.boolean(), z.literal("later")]).optional(),
   /** A live count above each pile, ticking as pieces are traded. */
   counts: z.boolean().optional(),
   /** Which unit lines the blocks show at the start: `none` for a plain whole that the lesson cuts live. Default `all`. */
@@ -456,6 +459,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("cut"), target: dotted, into: place, ...timing }).strict(),
   /** Trade down: the rightmost piece of a pile (`b.n.tenths`) becomes ten pieces of the next place, which slide into that pile. `n` pieces, one after another. The amount never changes. */
   z.object({ do: z.literal("split"), target: dotted, n: z.number().int().min(1).max(10).optional(), ...timing }).strict(),
+  /** Trade up, the reverse of `split`: the ten leftmost pieces of a pile (`b.n.tens`) slide together and fuse into one piece of the place to its left, which takes its place at the end of that pile. `n` joins, one after another. The amount never changes. */
+  z.object({ do: z.literal("join"), target: dotted, n: z.number().int().min(1).max(9).optional(), ...timing }).strict(),
   /** Push the camera in on one piece of a chart (`b.n.ones.1`), or pull back to the whole chart (`b`). */
   z.object({ do: z.literal("zoom"), target: dotted, ...timing }).strict(),
   /** "Given": restrict a table to one row or column (`t.row.1`, `t.col.2`) or a mosaic to one slab (`m.slab.1`); the rest dims. The part's own id (`t`) releases it. */

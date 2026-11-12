@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { BlocksModel, chartView, digitsOf, initialState, kindOf, layoutChart, layoutPile, splitOne, subBox, unitPlace, zoomView, type Place } from "./blocks";
+import { BlocksModel, chartView, digitsOf, GAP, initialState, JOIN, joinTen, kindOf, layoutChart, layoutPile, splitOne, subBox, unitPlace, zoomView, type Box, type Place } from "./blocks";
+import { actionSchema, geoSchema } from "./schema";
 
 const places: Place[] = ["ones", "tenths", "hundredths"];
 const value = (m: BlocksModel, i: number) => {
@@ -210,5 +211,185 @@ describe("cuts", () => {
   });
   it("lines are drawn from the start unless the chart says otherwise", () => {
     expect(new BlocksModel("b", "n", places, { tenths: 3 }).linesAt(0)).toEqual({ v: 1, h: 1 });
+  });
+});
+
+describe("joins", () => {
+  const whole: Place[] = ["hundreds", "tens", "ones"];
+  const meet = (a: Box, b: Box) => Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > 1e-6 && Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > 1e-6;
+  /** Two flats and thirteen rods; ten rods join into a flat from t = 5, over 1.4 s. */
+  const traded = () => { const m = new BlocksModel("b", "n", whole, { hundreds: 2, tens: 13 }, { counts: true }); m.join("tens", 1, 5, 1.4); return m; };
+  const flat3 = "b.n.hundreds.3";
+
+  it("the screenplay names the pile whose ten pieces fuse, as a split names the pile it cuts", () => {
+    expect(actionSchema.safeParse({ do: "join", target: "b.n.tens", at: "Join" }).success).toBe(true);
+    expect(actionSchema.safeParse({ do: "join", target: "b.n.ones", n: 2, dur: 2.5 }).success).toBe(true);
+    expect(actionSchema.safeParse({ do: "join", at: "Join" }).success).toBe(false);
+    expect(actionSchema.safeParse({ do: "join", target: "b.n.tens", n: 0 }).success).toBe(false);
+    expect(actionSchema.safeParse({ do: "join", target: "b.n.tens", into: "hundreds" }).success).toBe(false);
+  });
+  it("fuses the ten leftmost rods into one flat at the end of the hundreds, and the amount does not change", () => {
+    const s0 = initialState("b", "n", whole, { hundreds: 2, tens: 13 }, { tens: "warm" }, "accent");
+    const r = joinTen(whole, s0, "tens", { hundreds: 2, tens: 13, ones: 0 });
+    expect(r.parts.map((p) => p.id)).toEqual(Array.from({ length: 10 }, (_, k) => `b.n.tens.${k + 1}`));
+    expect(r.made).toMatchObject({ id: flat3, kind: "flat", ink: "warm", of: r.parts.map((p) => p.id) });
+    expect(r.state.hundreds!.map((p) => p.id)).toEqual(["b.n.hundreds.1", "b.n.hundreds.2", flat3]);
+    expect(r.state.tens!.map((p) => p.id)).toEqual(["b.n.tens.11", "b.n.tens.12", "b.n.tens.13"]);
+    expect(r.state.hundreds!.length * 100 + r.state.tens!.length * 10).toBe(330);
+  });
+  it("refuses a join of fewer than ten pieces, or with no place to the left", () => {
+    const few = initialState("b", "n", whole, { tens: 9 }, {}, "accent");
+    expect(() => joinTen(whole, few, "tens", { hundreds: 0, tens: 9, ones: 0 })).toThrow(/a join fuses ten pieces, and the tens pile holds 9/);
+    expect(() => joinTen(whole, initialState("b", "n", whole, { hundreds: 12 }, {}, "accent"), "hundreds", { hundreds: 12 })).toThrow(/place to its left/);
+    // the second of two joins finds only three rods left
+    const m = new BlocksModel("b", "n", whole, { tens: 13 });
+    expect(() => m.join("tens", 2, 0, 1)).toThrow(/holds 3/);
+  });
+  it("is the reverse of a split: ten cubes fuse into a rod, ten rods into a flat", () => {
+    const m = new BlocksModel("b", "n", whole, { hundreds: 1 });
+    m.split("hundreds", 1, 0, 1, 1);
+    m.join("tens", 1, 10, 1);
+    expect(m.countAt("hundreds", 20)).toBe(1);
+    expect(m.countAt("tens", 20)).toBe(0);
+    expect(m.positionAt("b.n.hundreds.2", 20)).toEqual(m.layouts[0]!.pieces.get("b.n.hundreds.1"));
+    const c = new BlocksModel("b", "n", ["tens", "ones"], { tens: 1, ones: 14 });
+    c.join("ones", 1, 0, 1);
+    expect(c.piece("b.n.tens.2")).toMatchObject({ kind: "rod" });
+    expect(c.positionAt("b.n.tens.2", 5)).toMatchObject({ w: 1, h: 10 });
+    expect(c.countAt("ones", 5)).toBe(4);
+  });
+  it("the fused flat ends exactly where a third flat of the hundreds belongs", () => {
+    const m = traded();
+    const col = m.column("hundreds", 100);
+    const slot = layoutPile(m.states[1]!.hundreds!).boxes[2]!;
+    expect(slot).toMatchObject({ x: 0, y: 10 + GAP.flat });
+    const end = m.positionAt(flat3, 5 + 1.4)!;
+    expect(end.x).toBeCloseTo(col.pile.x + slot.x, 9);
+    expect(end.y).toBeCloseTo(slot.y, 9);
+    expect(end).toMatchObject({ w: 10, h: 10 });
+    expect(m.positionAt(flat3, 100)).toEqual(m.layouts[1]!.pieces.get(flat3));
+  });
+  it("nothing else in the chart moves: columns, the chart's room and the flats already there are the same before, during and after", () => {
+    const m = traded();
+    expect(m.layouts[1]!.columns.map((c) => [c.x0, c.x1])).toEqual(m.layouts[0]!.columns.map((c) => [c.x0, c.x1]));
+    // the room for the taller pile of three flats is kept from the first state
+    expect(m.layouts[0]!.bounds).toEqual(m.layouts[1]!.bounds);
+    expect(m.layouts[0]!.top).toBeCloseTo(20 + GAP.row);
+    expect(chartView(m.layouts[0]!)).toEqual(chartView(m.layouts[1]!));
+    for (const id of ["b.n.hundreds.1", "b.n.hundreds.2"]) {
+      const home = m.layouts[0]!.pieces.get(id);
+      for (let t = 4; t <= 8; t += 0.05) expect(m.positionAt(id, t), `${id} at ${t.toFixed(2)}`).toEqual(home);
+    }
+    // a chart with no join keeps the height of each state, as before
+    const plain = new BlocksModel("b", "n", whole, { hundreds: 2, tens: 13 });
+    expect(plain.layouts[0]!.top).toBeCloseTo(20 + GAP.row);
+    const split = new BlocksModel("b", "n", ["ones", "tenths", "hundredths"], { tenths: 7 });
+    split.split("tenths", 7, 0, 1, 1);
+    expect(split.layouts[0]!.top).toBe(10);
+    expect(split.layouts[7]!.top).toBeGreaterThan(10);
+  });
+  it("the ten rods travel and close up, then are one flat: never a rod and the flat at once", () => {
+    const m = traded();
+    const fuse = 5 + 1.4 * JOIN.fuse;
+    const rods = Array.from({ length: 10 }, (_, k) => `b.n.tens.${k + 1}`);
+    const xs = (t: number) => rods.map((id) => m.positionAt(id, t)!.x);
+    // standing apart before, half a unit between rods
+    const before = xs(4.9);
+    expect(before[1]! - before[0]!).toBeCloseTo(1 + GAP.piece);
+    // closing up: every gap shrinks from moment to moment
+    let last = before[9]! - before[0]!;
+    for (let t = 5.05; t < fuse - 0.01; t += 0.05) { const x = xs(t); const span = x[9]! - x[0]!; expect(span).toBeLessThan(last); last = span; }
+    // at the fuse the ten tile one flat exactly, side by side
+    const closed = rods.map((id) => m.positionAt(id, fuse - 1e-7)!);
+    for (let k = 1; k < 10; k++) expect(closed[k]!.x - closed[k - 1]!.x).toBeCloseTo(1, 4);
+    const born = m.positionAt(flat3, fuse + 1e-7)!;
+    expect(born.x).toBeCloseTo(closed[0]!.x, 4);
+    expect(born.y).toBeCloseTo(closed[0]!.y, 4);
+    for (let t = 4; t <= 8; t += 0.01) {
+      if (Math.abs(t - fuse) < 1e-6) continue;
+      const rodsThere = rods.filter((id) => m.positionAt(id, t)).length;
+      const flatThere = m.positionAt(flat3, t) ? 1 : 0;
+      expect([rodsThere, flatThere], `at ${t.toFixed(2)}`).toEqual(t < fuse ? [10, 0] : [0, 1]);
+    }
+    // the flat is still on its way after the fuse, and home when the join ends
+    const mid = m.positionAt(flat3, fuse + 0.3)!;
+    expect(mid.x).toBeLessThan(born.x);
+    expect(mid.x).toBeGreaterThan(m.layouts[1]!.pieces.get(flat3)!.x);
+  });
+  it("the rods left behind wait until the flat is clear, then settle on the baseline", () => {
+    const m = traded();
+    const left = ["b.n.tens.11", "b.n.tens.12", "b.n.tens.13"];
+    for (const id of left) {
+      expect(m.positionAt(id, 5 + 1.4 * JOIN.settle - 0.01)).toEqual(m.layouts[0]!.pieces.get(id));
+      expect(m.positionAt(id, 5 + 1.4)).toEqual(m.layouts[1]!.pieces.get(id));
+      expect(m.layouts[1]!.pieces.get(id)!.y).toBe(0);
+    }
+    // while they come down, they never meet the flat that is leaving
+    for (let t = 5 + 1.4 * JOIN.settle; t <= 6.5; t += 0.01) {
+      const flat = m.positionAt(flat3, t)!;
+      for (const id of left) expect(meet(m.positionAt(id, t)!, flat), `${id} at ${t.toFixed(2)}`).toBe(false);
+    }
+  });
+  it("the counts change when the motion ends, and the box a count rides on never jumps", () => {
+    const m = traded();
+    expect([m.countAt("hundreds", 4.9), m.countAt("tens", 4.9)]).toEqual([2, 13]);
+    expect([m.countAt("hundreds", 6.39), m.countAt("tens", 6.39)]).toEqual([2, 13]);
+    expect([m.countAt("hundreds", 6.4), m.countAt("tens", 6.4)]).toEqual([3, 3]);
+    for (const place of ["hundreds", "tens"] as Place[]) {
+      let prev = m.pileAt(place, 4.9)!;
+      for (let t = 4.91; t <= 6.6; t += 0.01) {
+        const b = m.pileAt(place, t)!;
+        for (const k of ["x", "y", "w", "h"] as const) expect(Math.abs(b[k] - prev[k]), `${place}.${k} at ${t.toFixed(2)}`).toBeLessThan(0.6);
+        prev = b;
+      }
+      const after = m.layouts[1]!.columns.find((c) => c.place === place)!.pile;
+      for (const k of ["x", "y", "w", "h"] as const) expect(m.pileAt(place, 7)![k]).toBeCloseTo(after[k], 9);
+    }
+  });
+  it("the ten close up at the end of their row nearest the hundreds, and the flat leaves along the baseline under the rods that stay", () => {
+    const m = traded();
+    const pile = m.layouts[0]!.columns.find((c) => c.place === "tens")!.pile;
+    expect(m.gatherBox(0)).toEqual({ x: pile.x, y: 0, w: 10, h: 10 });
+    const left = ["b.n.tens.11", "b.n.tens.12", "b.n.tens.13"];
+    for (let t = 5; t <= 6.5; t += 0.01) {
+      const flat = m.positionAt(flat3, t);
+      if (flat) for (const id of left) expect(meet(m.positionAt(id, t)!, flat), `${id} at ${t.toFixed(2)}`).toBe(false);
+    }
+    // it has not begun to climb while it is still under them
+    const under = m.positionAt(flat3, 5 + 1.4 * (JOIN.fuse + (JOIN.land - JOIN.fuse) * JOIN.rise) - 0.001)!;
+    expect(under.y).toBe(0);
+    expect(under.x).toBeLessThan(pile.x - 4);
+  });
+  it("ten cubes in rows of five close up beside the cubes that stay, on the side the rod leaves by", () => {
+    const m = new BlocksModel("b", "n", ["tens", "ones"], { ones: 13 }, { squares: "rows" });
+    m.join("ones", 1, 0, 1);
+    const rod = m.gatherBox(0);
+    expect(rod).toMatchObject({ w: 1, h: 10, y: 0 });
+    const left = ["b.n.ones.11", "b.n.ones.12", "b.n.ones.13"];
+    for (const id of left) {
+      const cube = m.layouts[0]!.pieces.get(id)!;
+      expect(meet(rod, cube)).toBe(false);
+      expect(rod.x + rod.w).toBeLessThan(cube.x);
+    }
+    // and it never crosses them on its way to the tens
+    for (let t = 0; t <= 1.1; t += 0.01) {
+      const at = m.positionAt("b.n.tens.1", t);
+      if (at) for (const id of left) expect(meet(m.positionAt(id, t)!, at), `${id} at ${t.toFixed(2)}`).toBe(false);
+    }
+    // the rod does not reach into the tens column while it stands there
+    expect(rod.x).toBeGreaterThan(m.layouts[0]!.columns[0]!.x1);
+  });
+});
+
+describe("digits that wait", () => {
+  const chart = (digits: unknown) => ({ points: {}, parts: [{ id: "b", blocks: ["hundreds", "tens", "ones"], rows: [{ id: "n", pieces: { hundreds: 2, tens: 13 } }], digits }] });
+  it("a chart's digits are on from the start, or wait for their `show`", () => {
+    expect(geoSchema.safeParse(chart(true)).success).toBe(true);
+    expect(geoSchema.safeParse(chart("later")).success).toBe(true);
+    expect(geoSchema.safeParse(chart("soon")).success).toBe(false);
+  });
+  it("the chart keeps the digit row's room whether or not its digits are showing", () => {
+    const m = new BlocksModel("b", "n", ["hundreds", "tens", "ones"], { hundreds: 2, tens: 13 });
+    expect(m.layouts[0]!.bounds[1]).toBeLessThan(m.digitY);
   });
 });

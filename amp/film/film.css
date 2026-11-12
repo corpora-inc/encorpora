@@ -125,6 +125,7 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-block { stroke: var(--color-figure-ink); stroke-linejoin: round; }
 .film-block-lines { fill: none; stroke: var(--color-figure-paper); stroke-linecap: butt; }
 .film-block-overlay { fill: none; stroke: var(--color-figure-gold); stroke-width: 3.5; }
+.film-block-ring { fill: none; stroke: var(--color-figure-gold); stroke-linejoin: round; }
 .film-block-pointline { fill: none; stroke: var(--color-muted-text); stroke-width: 2.5; stroke-dasharray: 7 9; stroke-linecap: round; }
 .film-blocks-head { font-size: 30px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted-text); font-weight: 600; }
 .film-blocks-digit { color: var(--color-figure-ink); }
