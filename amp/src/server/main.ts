@@ -32,6 +32,7 @@ import {
   registerClassWalletPayByRoutes,
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
+import { registerDeleteAccountRoutes } from "../account/delete-account-routes.js";
 import { randomBytes } from "node:crypto";
 import { startDemoWarmer } from "../schools/demo/shared.js";
 import { shippedTermsProblem } from "../schools/demo/snapshot.js";
@@ -173,6 +174,10 @@ await registerFamilyRoutes(app, {
     origin: accounts?.config.baseURL ?? "",
     ...(accounts ? { mail: accounts.send } : {}),
   },
+});
+await registerDeleteAccountRoutes(app, {
+  pool: repository.pool,
+  authenticate,
 });
 const schoolNow = schoolClock(process.env);
 await registerSchoolRoutes(app, {

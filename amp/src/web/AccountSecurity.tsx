@@ -4,6 +4,7 @@ import { notifyAccountSessionChanged } from "./auth";
 import { accountClient } from "./account-client";
 import { buttonClass } from "./ui/Button";
 import "./account-security.css";
+import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
 
 type Summary = {
   email: string;
@@ -706,6 +707,7 @@ export function AccountSecurity() {
               </div>
             </div>
           )}
+          <DeleteAccountEntry continues />
         </>
       )}
     </section>

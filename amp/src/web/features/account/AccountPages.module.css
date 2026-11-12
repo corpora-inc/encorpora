@@ -187,6 +187,13 @@
 .linkItem {
   border-bottom: 1px solid var(--color-border);
 }
+/* A list that carries on the rows above it (Sign-in's panels, then
+   "Delete my account"): one hairline between them, not two, and no gap
+   (the settings section spaces its children by --space-4). */
+.list.continues {
+  margin: calc(-1 * var(--space-4)) 0 0;
+  border-top: 0;
+}
 
 /* A learner's settings, opened under their row. */
 .detail {

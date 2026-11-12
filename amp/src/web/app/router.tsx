@@ -520,6 +520,35 @@ const accountReady = createRoute({
     "AccountReady",
   ),
 });
+/** Account → Sign-in → Delete my account (features/account/DeleteAccount):
+ * what goes, then a typed confirmation; and the page after it. */
+const deleteAccountScreens = () => import("../features/account/DeleteAccount");
+const deleteAccount = createRoute({
+  getParentRoute: () => root,
+  path: "/family/security/delete",
+  beforeLoad: async () => {
+    notForStudents();
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (!session) throw redirect({ to: "/sign-in" });
+    return { session };
+  },
+  // What the account holds arrives with the screen, so the list paints whole.
+  loader: async ({ context: { session } }) => {
+    const { deletionPreviewOptions } =
+      await import("../features/account/delete-api");
+    await queryClient
+      .ensureQueryData(deletionPreviewOptions(session))
+      .catch((error) =>
+        console.warn("What the account holds didn’t load ahead", error),
+      );
+  },
+  component: lazyRouteComponent(deleteAccountScreens, "DeleteAccountScreen"),
+});
+const accountDeleted = createRoute({
+  getParentRoute: () => root,
+  path: "/account/deleted",
+  component: lazyRouteComponent(deleteAccountScreens, "AccountDeletedScreen"),
+});
 const signInStep = createRoute({
   getParentRoute: () => root,
   path: "/sign-in/$step",
@@ -1375,6 +1404,8 @@ export const router = createRouter({
     signIn,
     signUp,
     accountReady,
+    deleteAccount,
+    accountDeleted,
     accessGift,
     signInStep,
     reset,
