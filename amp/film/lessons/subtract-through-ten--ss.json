@@ -1,0 +1,601 @@
+{
+ "id": "subtract-through-ten--ss",
+ "title": "Down to ten, then the rest",
+ "teaches": [
+  "subtract-within-20"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1,
+     -5.8,
+     11,
+     6.2
+    ],
+    "points": {
+     "T": [
+      0,
+      5
+     ],
+     "E": [
+      0,
+      -1
+     ]
+    },
+    "parts": [
+     {
+      "id": "ten",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "T",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "extra",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "E",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "p",
+      "things": "pencil",
+      "n": 10,
+      "in": "ten",
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "pencil",
+      "n": 6,
+      "in": "extra",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Ten pencils fill the top frame.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "10",
+       "fresh": true,
+       "at": "Ten"
+      },
+      {
+       "do": "highlight",
+       "target": "ten",
+       "at": "fill"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six extras sit below. That makes sixteen.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "extra",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "10+6=16",
+       "at": "sixteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now take away eight. That is more than the six extras.",
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "To find sixteen minus eight, first take away six to reach ten. How many more must you take away?",
+     "pause": 1.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "To"
+      },
+      {
+       "do": "problem",
+       "text": "To find $16-8$, first take away $6$ to reach ten. How many more must you take away?",
+       "at": "To"
+      },
+      {
+       "do": "highlight",
+       "target": "ten",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two more. Six and two make eight together.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "2",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So sixteen minus eight is sixteen minus six, minus two.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "sixteen",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "16-8=16-6-2",
+       "fresh": true,
+       "at": "sixteen",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Down to ten first. The six extras go: one, two, three, four, five, six.",
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "e6"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "e5"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "e4"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "e3"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "e2"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "e1"
+       ],
+       "at": "six",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten are left, a full frame.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "=10-2",
+       "at": "Ten"
+      },
+      {
+       "do": "highlight",
+       "target": "ten",
+       "at": "full"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the rest. Two go from the ten: one, two. Eight are left.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "p10"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "p9"
+       ],
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "=8",
+       "at": "Eight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -5.8,
+     11,
+     6.2
+    ],
+    "points": {
+     "T": [
+      0,
+      5
+     ],
+     "E": [
+      0,
+      -1
+     ]
+    },
+    "parts": [
+     {
+      "id": "ten",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "T",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "extra",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "E",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "p",
+      "things": "pencil",
+      "n": 10,
+      "in": "ten",
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "pencil",
+      "n": 7,
+      "in": "extra",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What is seventeen minus three?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $17-3$?",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "There are seven extras, so all three come from below.",
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "e7",
+        "e6",
+        "e5"
+       ],
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The full ten stays. Ten and four make fourteen.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ten",
+       "at": "full"
+      },
+      {
+       "do": "write",
+       "tex": "17-3=10+4",
+       "fresh": true,
+       "at": "Ten",
+       "nth": 2
+      },
+      {
+       "do": "answer",
+       "tex": "17-3=14",
+       "at": "fourteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take away zero, and nothing goes. Fourteen minus zero is fourteen.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Take"
+      },
+      {
+       "do": "write",
+       "tex": "14-0=14",
+       "fresh": true,
+       "at": "Take"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take away all fourteen, and none are left. Fourteen minus fourteen is zero.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "e4",
+        "e3",
+        "e2",
+        "e1",
+        "p10",
+        "p9",
+        "p8",
+        "p7",
+        "p6",
+        "p5",
+        "p4",
+        "p3",
+        "p2",
+        "p1"
+       ],
+       "at": "Take"
+      },
+      {
+       "do": "write",
+       "tex": "14-14=0",
+       "fresh": true,
+       "at": "Fourteen"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1,
+     -5.8,
+     11,
+     6.2
+    ],
+    "points": {
+     "T": [
+      0,
+      5
+     ],
+     "E": [
+      0,
+      -1
+     ]
+    },
+    "parts": [
+     {
+      "id": "ten",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "T",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "extra",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "E",
+      "size": 2,
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "p",
+      "things": "pencil",
+      "n": 10,
+      "in": "ten",
+      "start": true
+     },
+     {
+      "id": "e",
+      "things": "pencil",
+      "n": 3,
+      "in": "extra",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Your turn. What is thirteen minus five?",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $13-5$?",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "First, take away three. Ten are left. So the answer is ten.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "e3",
+        "e2",
+        "e1"
+       ],
+       "at": "take"
+      },
+      {
+       "do": "write",
+       "tex": "13-3=10",
+       "fresh": true,
+       "at": "Ten"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Wait. Five must go, and only three went.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "extra",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two more go from the ten: one, two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "p10"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "leave",
+       "target": [
+        "p9"
+       ],
+       "at": "two",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ten minus two is eight. So thirteen minus five is eight.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "10-2=8",
+       "fresh": true,
+       "at": "Ten"
+      },
+      {
+       "do": "answer",
+       "tex": "13-5=8",
+       "at": "thirteen"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Check by adding. Eight left and five taken make thirteen.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Eight"
+      },
+      {
+       "do": "write",
+       "tex": "8+5=13",
+       "fresh": true,
+       "at": "Eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Down to ten, then the rest.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Down to ten, then the rest.",
+       "at": "Down"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
