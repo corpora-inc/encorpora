@@ -1,0 +1,2527 @@
+{
+ "id": "linear-system-x--se",
+ "title": "Make one unknown disappear",
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -0.35,
+     6.6,
+     5.4
+    ],
+    "points": {
+     "extraLP0": [
+      0.32999999999999996,
+      3.83
+     ],
+     "extraLP1": [
+      0.39999999999999997,
+      4.1000000000000005
+     ],
+     "extraLP2": [
+      0.58,
+      3.9800000000000004
+     ],
+     "extraLP3": [
+      0.7,
+      4.19
+     ],
+     "extraLP4": [
+      0.84,
+      3.9800000000000004
+     ],
+     "extraLP5": [
+      1.04,
+      4.1000000000000005
+     ],
+     "extraLP6": [
+      1.0899999999999999,
+      3.79
+     ],
+     "extraTP0": [
+      0.31999999999999995,
+      3.85
+     ],
+     "extraTP1": [
+      1.08,
+      3.85
+     ],
+     "extraTP2": [
+      0.94,
+      2.8800000000000003
+     ],
+     "extraTP3": [
+      0.5499999999999999,
+      2.81
+     ],
+     "extraTP4": [
+      0.39999999999999997,
+      3.0500000000000003
+     ],
+     "extraFP0": [
+      0.31999999999999995,
+      3.85
+     ],
+     "extraFP1": [
+      0.97,
+      2.9800000000000004
+     ],
+     "extraFP2": [
+      0.5499999999999999,
+      2.81
+     ],
+     "extraFP3": [
+      0.39999999999999997,
+      3.0500000000000003
+     ],
+     "extraSP0": [
+      0.49999999999999994,
+      3.33
+     ],
+     "extraSP1": [
+      0.7999999999999999,
+      3.25
+     ],
+     "topWrapLP0": [
+      1.6799999999999997,
+      3.83
+     ],
+     "topWrapLP1": [
+      1.7499999999999998,
+      4.1000000000000005
+     ],
+     "topWrapLP2": [
+      1.9299999999999997,
+      3.9800000000000004
+     ],
+     "topWrapLP3": [
+      2.05,
+      4.19
+     ],
+     "topWrapLP4": [
+      2.19,
+      3.9800000000000004
+     ],
+     "topWrapLP5": [
+      2.3899999999999997,
+      4.1000000000000005
+     ],
+     "topWrapLP6": [
+      2.44,
+      3.79
+     ],
+     "topWrapTP0": [
+      1.67,
+      3.85
+     ],
+     "topWrapTP1": [
+      2.4299999999999997,
+      3.85
+     ],
+     "topWrapTP2": [
+      2.29,
+      2.8800000000000003
+     ],
+     "topWrapTP3": [
+      1.9,
+      2.81
+     ],
+     "topWrapTP4": [
+      1.7499999999999998,
+      3.0500000000000003
+     ],
+     "topWrapFP0": [
+      1.67,
+      3.85
+     ],
+     "topWrapFP1": [
+      2.32,
+      2.9800000000000004
+     ],
+     "topWrapFP2": [
+      1.9,
+      2.81
+     ],
+     "topWrapFP3": [
+      1.7499999999999998,
+      3.0500000000000003
+     ],
+     "topWrapSP0": [
+      1.8499999999999999,
+      3.33
+     ],
+     "topWrapSP1": [
+      2.15,
+      3.25
+     ],
+     "topJuiceCP0": [
+      3.05,
+      3.8800000000000003
+     ],
+     "topJuiceCP1": [
+      3.75,
+      3.8800000000000003
+     ],
+     "topJuiceCP2": [
+      3.65,
+      2.85
+     ],
+     "topJuiceCP3": [
+      3.15,
+      2.85
+     ],
+     "topJuiceJP0": [
+      3.1,
+      3.58
+     ],
+     "topJuiceJP1": [
+      3.6999999999999997,
+      3.58
+     ],
+     "topJuiceJP2": [
+      3.6399999999999997,
+      2.92
+     ],
+     "topJuiceJP3": [
+      3.16,
+      2.92
+     ],
+     "topJuiceSP0": [
+      3.44,
+      3.35
+     ],
+     "topJuiceSP1": [
+      3.55,
+      4.25
+     ],
+     "topJuiceSP2": [
+      3.8,
+      4.33
+     ],
+     "topJuiceRP0": [
+      3.02,
+      3.8800000000000003
+     ],
+     "topJuiceRP1": [
+      3.78,
+      3.8800000000000003
+     ],
+     "lowWrapLP0": [
+      1.6799999999999997,
+      1.63
+     ],
+     "lowWrapLP1": [
+      1.7499999999999998,
+      1.9
+     ],
+     "lowWrapLP2": [
+      1.9299999999999997,
+      1.78
+     ],
+     "lowWrapLP3": [
+      2.05,
+      1.99
+     ],
+     "lowWrapLP4": [
+      2.19,
+      1.78
+     ],
+     "lowWrapLP5": [
+      2.3899999999999997,
+      1.9
+     ],
+     "lowWrapLP6": [
+      2.44,
+      1.59
+     ],
+     "lowWrapTP0": [
+      1.67,
+      1.65
+     ],
+     "lowWrapTP1": [
+      2.4299999999999997,
+      1.65
+     ],
+     "lowWrapTP2": [
+      2.29,
+      0.68
+     ],
+     "lowWrapTP3": [
+      1.9,
+      0.61
+     ],
+     "lowWrapTP4": [
+      1.7499999999999998,
+      0.85
+     ],
+     "lowWrapFP0": [
+      1.67,
+      1.65
+     ],
+     "lowWrapFP1": [
+      2.32,
+      0.78
+     ],
+     "lowWrapFP2": [
+      1.9,
+      0.61
+     ],
+     "lowWrapFP3": [
+      1.7499999999999998,
+      0.85
+     ],
+     "lowWrapSP0": [
+      1.8499999999999999,
+      1.13
+     ],
+     "lowWrapSP1": [
+      2.15,
+      1.05
+     ],
+     "lowJuiceCP0": [
+      3.05,
+      1.68
+     ],
+     "lowJuiceCP1": [
+      3.75,
+      1.68
+     ],
+     "lowJuiceCP2": [
+      3.65,
+      0.65
+     ],
+     "lowJuiceCP3": [
+      3.15,
+      0.65
+     ],
+     "lowJuiceJP0": [
+      3.1,
+      1.38
+     ],
+     "lowJuiceJP1": [
+      3.6999999999999997,
+      1.38
+     ],
+     "lowJuiceJP2": [
+      3.6399999999999997,
+      0.72
+     ],
+     "lowJuiceJP3": [
+      3.16,
+      0.72
+     ],
+     "lowJuiceSP0": [
+      3.44,
+      1.15
+     ],
+     "lowJuiceSP1": [
+      3.55,
+      2.05
+     ],
+     "lowJuiceSP2": [
+      3.8,
+      2.13
+     ],
+     "lowJuiceRP0": [
+      3.02,
+      1.68
+     ],
+     "lowJuiceRP1": [
+      3.78,
+      1.68
+     ],
+     "totalAP": [
+      5.1,
+      3.45
+     ],
+     "totalBP": [
+      5.1,
+      1.25
+     ],
+     "titleP": [
+      3.03,
+      4.85
+     ],
+     "differenceP": [
+      3.52,
+      2.6
+     ],
+     "diffWorkP": [
+      4.45,
+      2.6
+     ],
+     "wrapPriceP": [
+      2.5,
+      1
+     ],
+     "juicePriceP": [
+      4.7,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "extraL",
+      "poly": [
+       "extraLP0",
+       "extraLP1",
+       "extraLP2",
+       "extraLP3",
+       "extraLP4",
+       "extraLP5",
+       "extraLP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "extra",
+      "start": true
+     },
+     {
+      "id": "extraT",
+      "poly": [
+       "extraTP0",
+       "extraTP1",
+       "extraTP2",
+       "extraTP3",
+       "extraTP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "extra",
+      "start": true
+     },
+     {
+      "id": "extraF",
+      "poly": [
+       "extraFP0",
+       "extraFP1",
+       "extraFP2",
+       "extraFP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "extra",
+      "start": true
+     },
+     {
+      "id": "extraS",
+      "seg": [
+       "extraSP0",
+       "extraSP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "extra",
+      "start": true
+     },
+     {
+      "id": "topWrapL",
+      "poly": [
+       "topWrapLP0",
+       "topWrapLP1",
+       "topWrapLP2",
+       "topWrapLP3",
+       "topWrapLP4",
+       "topWrapLP5",
+       "topWrapLP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "topWrap",
+      "start": true
+     },
+     {
+      "id": "topWrapT",
+      "poly": [
+       "topWrapTP0",
+       "topWrapTP1",
+       "topWrapTP2",
+       "topWrapTP3",
+       "topWrapTP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "topWrap",
+      "start": true
+     },
+     {
+      "id": "topWrapF",
+      "poly": [
+       "topWrapFP0",
+       "topWrapFP1",
+       "topWrapFP2",
+       "topWrapFP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "topWrap",
+      "start": true
+     },
+     {
+      "id": "topWrapS",
+      "seg": [
+       "topWrapSP0",
+       "topWrapSP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "topWrap",
+      "start": true
+     },
+     {
+      "id": "topJuiceC",
+      "poly": [
+       "topJuiceCP0",
+       "topJuiceCP1",
+       "topJuiceCP2",
+       "topJuiceCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "topJuice",
+      "start": true
+     },
+     {
+      "id": "topJuiceJ",
+      "poly": [
+       "topJuiceJP0",
+       "topJuiceJP1",
+       "topJuiceJP2",
+       "topJuiceJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "topJuice",
+      "start": true
+     },
+     {
+      "id": "topJuiceS",
+      "ink": "blue",
+      "w": 3,
+      "group": "topJuice",
+      "start": true,
+      "curve": [
+       "topJuiceSP0",
+       "topJuiceSP1",
+       "topJuiceSP2"
+      ]
+     },
+     {
+      "id": "topJuiceR",
+      "seg": [
+       "topJuiceRP0",
+       "topJuiceRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "topJuice",
+      "start": true
+     },
+     {
+      "id": "lowWrapL",
+      "poly": [
+       "lowWrapLP0",
+       "lowWrapLP1",
+       "lowWrapLP2",
+       "lowWrapLP3",
+       "lowWrapLP4",
+       "lowWrapLP5",
+       "lowWrapLP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "lowWrap"
+     },
+     {
+      "id": "lowWrapT",
+      "poly": [
+       "lowWrapTP0",
+       "lowWrapTP1",
+       "lowWrapTP2",
+       "lowWrapTP3",
+       "lowWrapTP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "lowWrap"
+     },
+     {
+      "id": "lowWrapF",
+      "poly": [
+       "lowWrapFP0",
+       "lowWrapFP1",
+       "lowWrapFP2",
+       "lowWrapFP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "lowWrap"
+     },
+     {
+      "id": "lowWrapS",
+      "seg": [
+       "lowWrapSP0",
+       "lowWrapSP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "lowWrap"
+     },
+     {
+      "id": "lowJuiceC",
+      "poly": [
+       "lowJuiceCP0",
+       "lowJuiceCP1",
+       "lowJuiceCP2",
+       "lowJuiceCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "lowJuice"
+     },
+     {
+      "id": "lowJuiceJ",
+      "poly": [
+       "lowJuiceJP0",
+       "lowJuiceJP1",
+       "lowJuiceJP2",
+       "lowJuiceJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "lowJuice"
+     },
+     {
+      "id": "lowJuiceS",
+      "ink": "blue",
+      "w": 3,
+      "group": "lowJuice",
+      "curve": [
+       "lowJuiceSP0",
+       "lowJuiceSP1",
+       "lowJuiceSP2"
+      ]
+     },
+     {
+      "id": "lowJuiceR",
+      "seg": [
+       "lowJuiceRP0",
+       "lowJuiceRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "lowJuice"
+     },
+     {
+      "id": "totalA",
+      "label": "=\\$11",
+      "at": "totalAP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "totalB",
+      "label": "=\\$7",
+      "at": "totalBP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "title",
+      "label": "\\text{Two orders, same prices}",
+      "at": "titleP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "difference",
+      "label": "=\\$4",
+      "at": "differenceP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two unknowns at once are too many, so we make one disappear.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Make one unknown disappear"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let x be one wrap’s price and y one juice’s price, in dollars.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "$\\cw{x}$: wrap price; $\\cb{y}$: juice price"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two wraps and one juice cost eleven dollars.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{2x}+\\cb{y}=11"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One wrap and one juice cost seven dollars.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "lowWrap",
+        "lowJuice",
+        "totalB"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{x}+\\cb{y}=7",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To subtract, lay the second order under the first.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{aligned}\\cw{2x}+\\cb{y}&=11\\\\-(\\cw{x}+\\cb{y})&=-7\\end{aligned}",
+       "at": "subtract"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "lowWrap",
+        "lowJuice",
+        "totalB"
+       ],
+       "by": [
+        0,
+        0.65
+       ],
+       "at": "lay",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each matching wrap and juice pairs off and leaves.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "topWrap",
+        "lowWrap"
+       ],
+       "at": "wrap",
+       "dur": 1.0
+      },
+      {
+       "do": "hide",
+       "target": [
+        "topJuice",
+        "lowJuice"
+       ],
+       "at": "juice",
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eleven minus seven leaves four dollars for the one wrap left over.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{x}=11-7=4",
+       "at": "Eleven"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "totalA",
+        "totalB"
+       ],
+       "at": "leaves",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "difference",
+       "at": "four",
+       "dur": 0.8
+      },
+      {
+       "do": "slide",
+       "target": "extra",
+       "by": [
+        1.42,
+        -0.85
+       ],
+       "at": "wrap",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is elimination: make one unknown disappear.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "term",
+       "word": "Elimination",
+       "meaning": "Make one unknown disappear."
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put x equals four into the second equation: four plus y equals seven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{4}+\\cb{y}=7",
+       "note": "\\text{put }x\\text{ back}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtract four: y equals three.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{y}=3",
+       "note": "-4"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check the first order: two times four plus three equals eleven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2(\\cw{4})+\\cb{3}=11",
+       "note": "\\text{first}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check the second: four plus three equals seven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{4}+\\cb{3}=7",
+       "note": "\\text{second}",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Both are true, so the solution is four, three.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "(x,y)=(\\cw{4},\\cb{3})"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.2,
+     -0.3,
+     8.3,
+     5.6
+    ],
+    "points": {
+     "a1LP0": [
+      0.18000000000000005,
+      4.08
+     ],
+     "a1LP1": [
+      0.25000000000000006,
+      4.3500000000000005
+     ],
+     "a1LP2": [
+      0.43000000000000005,
+      4.23
+     ],
+     "a1LP3": [
+      0.55,
+      4.44
+     ],
+     "a1LP4": [
+      0.6900000000000001,
+      4.23
+     ],
+     "a1LP5": [
+      0.8900000000000001,
+      4.3500000000000005
+     ],
+     "a1LP6": [
+      0.9400000000000001,
+      4.04
+     ],
+     "a1TP0": [
+      0.17000000000000004,
+      4.1000000000000005
+     ],
+     "a1TP1": [
+      0.93,
+      4.1000000000000005
+     ],
+     "a1TP2": [
+      0.79,
+      3.1300000000000003
+     ],
+     "a1TP3": [
+      0.4,
+      3.06
+     ],
+     "a1TP4": [
+      0.25000000000000006,
+      3.3000000000000003
+     ],
+     "a1FP0": [
+      0.17000000000000004,
+      4.1000000000000005
+     ],
+     "a1FP1": [
+      0.8200000000000001,
+      3.2300000000000004
+     ],
+     "a1FP2": [
+      0.4,
+      3.06
+     ],
+     "a1FP3": [
+      0.25000000000000006,
+      3.3000000000000003
+     ],
+     "a1SP0": [
+      0.35000000000000003,
+      3.58
+     ],
+     "a1SP1": [
+      0.65,
+      3.5
+     ],
+     "a2LP0": [
+      1.2799999999999998,
+      4.08
+     ],
+     "a2LP1": [
+      1.3499999999999999,
+      4.3500000000000005
+     ],
+     "a2LP2": [
+      1.5299999999999998,
+      4.23
+     ],
+     "a2LP3": [
+      1.65,
+      4.44
+     ],
+     "a2LP4": [
+      1.79,
+      4.23
+     ],
+     "a2LP5": [
+      1.99,
+      4.3500000000000005
+     ],
+     "a2LP6": [
+      2.04,
+      4.04
+     ],
+     "a2TP0": [
+      1.27,
+      4.1000000000000005
+     ],
+     "a2TP1": [
+      2.03,
+      4.1000000000000005
+     ],
+     "a2TP2": [
+      1.89,
+      3.1300000000000003
+     ],
+     "a2TP3": [
+      1.5,
+      3.06
+     ],
+     "a2TP4": [
+      1.3499999999999999,
+      3.3000000000000003
+     ],
+     "a2FP0": [
+      1.27,
+      4.1000000000000005
+     ],
+     "a2FP1": [
+      1.92,
+      3.2300000000000004
+     ],
+     "a2FP2": [
+      1.5,
+      3.06
+     ],
+     "a2FP3": [
+      1.3499999999999999,
+      3.3000000000000003
+     ],
+     "a2SP0": [
+      1.45,
+      3.58
+     ],
+     "a2SP1": [
+      1.75,
+      3.5
+     ],
+     "a3LP0": [
+      2.38,
+      4.08
+     ],
+     "a3LP1": [
+      2.45,
+      4.3500000000000005
+     ],
+     "a3LP2": [
+      2.63,
+      4.23
+     ],
+     "a3LP3": [
+      2.75,
+      4.44
+     ],
+     "a3LP4": [
+      2.89,
+      4.23
+     ],
+     "a3LP5": [
+      3.09,
+      4.3500000000000005
+     ],
+     "a3LP6": [
+      3.14,
+      4.04
+     ],
+     "a3TP0": [
+      2.37,
+      4.1000000000000005
+     ],
+     "a3TP1": [
+      3.13,
+      4.1000000000000005
+     ],
+     "a3TP2": [
+      2.99,
+      3.1300000000000003
+     ],
+     "a3TP3": [
+      2.6,
+      3.06
+     ],
+     "a3TP4": [
+      2.45,
+      3.3000000000000003
+     ],
+     "a3FP0": [
+      2.37,
+      4.1000000000000005
+     ],
+     "a3FP1": [
+      3.02,
+      3.2300000000000004
+     ],
+     "a3FP2": [
+      2.6,
+      3.06
+     ],
+     "a3FP3": [
+      2.45,
+      3.3000000000000003
+     ],
+     "a3SP0": [
+      2.55,
+      3.58
+     ],
+     "a3SP1": [
+      2.85,
+      3.5
+     ],
+     "ajCP0": [
+      3.7499999999999996,
+      4.13
+     ],
+     "ajCP1": [
+      4.449999999999999,
+      4.13
+     ],
+     "ajCP2": [
+      4.35,
+      3.1
+     ],
+     "ajCP3": [
+      3.8499999999999996,
+      3.1
+     ],
+     "ajJP0": [
+      3.8,
+      3.83
+     ],
+     "ajJP1": [
+      4.3999999999999995,
+      3.83
+     ],
+     "ajJP2": [
+      4.34,
+      3.17
+     ],
+     "ajJP3": [
+      3.8599999999999994,
+      3.17
+     ],
+     "ajSP0": [
+      4.14,
+      3.6
+     ],
+     "ajSP1": [
+      4.25,
+      4.5
+     ],
+     "ajSP2": [
+      4.5,
+      4.58
+     ],
+     "ajRP0": [
+      3.7199999999999998,
+      4.13
+     ],
+     "ajRP1": [
+      4.4799999999999995,
+      4.13
+     ],
+     "b1LP0": [
+      0.18000000000000005,
+      1.83
+     ],
+     "b1LP1": [
+      0.25000000000000006,
+      2.1
+     ],
+     "b1LP2": [
+      0.43000000000000005,
+      1.98
+     ],
+     "b1LP3": [
+      0.55,
+      2.19
+     ],
+     "b1LP4": [
+      0.6900000000000001,
+      1.98
+     ],
+     "b1LP5": [
+      0.8900000000000001,
+      2.1
+     ],
+     "b1LP6": [
+      0.9400000000000001,
+      1.79
+     ],
+     "b1TP0": [
+      0.17000000000000004,
+      1.85
+     ],
+     "b1TP1": [
+      0.93,
+      1.85
+     ],
+     "b1TP2": [
+      0.79,
+      0.88
+     ],
+     "b1TP3": [
+      0.4,
+      0.8099999999999999
+     ],
+     "b1TP4": [
+      0.25000000000000006,
+      1.0499999999999998
+     ],
+     "b1FP0": [
+      0.17000000000000004,
+      1.85
+     ],
+     "b1FP1": [
+      0.8200000000000001,
+      0.98
+     ],
+     "b1FP2": [
+      0.4,
+      0.8099999999999999
+     ],
+     "b1FP3": [
+      0.25000000000000006,
+      1.0499999999999998
+     ],
+     "b1SP0": [
+      0.35000000000000003,
+      1.33
+     ],
+     "b1SP1": [
+      0.65,
+      1.25
+     ],
+     "bjCP0": [
+      3.7499999999999996,
+      1.88
+     ],
+     "bjCP1": [
+      4.449999999999999,
+      1.88
+     ],
+     "bjCP2": [
+      4.35,
+      0.85
+     ],
+     "bjCP3": [
+      3.8499999999999996,
+      0.85
+     ],
+     "bjJP0": [
+      3.8,
+      1.58
+     ],
+     "bjJP1": [
+      4.3999999999999995,
+      1.58
+     ],
+     "bjJP2": [
+      4.34,
+      0.9199999999999999
+     ],
+     "bjJP3": [
+      3.8599999999999994,
+      0.9199999999999999
+     ],
+     "bjSP0": [
+      4.14,
+      1.3499999999999999
+     ],
+     "bjSP1": [
+      4.25,
+      2.25
+     ],
+     "bjSP2": [
+      4.5,
+      2.33
+     ],
+     "bjRP0": [
+      3.7199999999999998,
+      1.88
+     ],
+     "bjRP1": [
+      4.4799999999999995,
+      1.88
+     ],
+     "copyWrapLP0": [
+      0.18,
+      1.83
+     ],
+     "copyWrapLP1": [
+      0.25,
+      2.1
+     ],
+     "copyWrapLP2": [
+      0.43,
+      1.98
+     ],
+     "copyWrapLP3": [
+      0.55,
+      2.19
+     ],
+     "copyWrapLP4": [
+      0.69,
+      1.98
+     ],
+     "copyWrapLP5": [
+      0.89,
+      2.1
+     ],
+     "copyWrapLP6": [
+      0.94,
+      1.79
+     ],
+     "copyWrapTP0": [
+      0.17,
+      1.85
+     ],
+     "copyWrapTP1": [
+      0.93,
+      1.85
+     ],
+     "copyWrapTP2": [
+      0.79,
+      0.88
+     ],
+     "copyWrapTP3": [
+      0.4,
+      0.8099999999999999
+     ],
+     "copyWrapTP4": [
+      0.25,
+      1.0499999999999998
+     ],
+     "copyWrapFP0": [
+      0.17,
+      1.85
+     ],
+     "copyWrapFP1": [
+      0.82,
+      0.98
+     ],
+     "copyWrapFP2": [
+      0.4,
+      0.8099999999999999
+     ],
+     "copyWrapFP3": [
+      0.25,
+      1.0499999999999998
+     ],
+     "copyWrapSP0": [
+      0.35,
+      1.33
+     ],
+     "copyWrapSP1": [
+      0.65,
+      1.25
+     ],
+     "copyJuiceCP0": [
+      3.75,
+      1.88
+     ],
+     "copyJuiceCP1": [
+      4.45,
+      1.88
+     ],
+     "copyJuiceCP2": [
+      4.35,
+      0.85
+     ],
+     "copyJuiceCP3": [
+      3.85,
+      0.85
+     ],
+     "copyJuiceJP0": [
+      3.8,
+      1.58
+     ],
+     "copyJuiceJP1": [
+      4.4,
+      1.58
+     ],
+     "copyJuiceJP2": [
+      4.34,
+      0.9199999999999999
+     ],
+     "copyJuiceJP3": [
+      3.86,
+      0.9199999999999999
+     ],
+     "copyJuiceSP0": [
+      4.14,
+      1.3499999999999999
+     ],
+     "copyJuiceSP1": [
+      4.25,
+      2.25
+     ],
+     "copyJuiceSP2": [
+      4.5,
+      2.33
+     ],
+     "copyJuiceRP0": [
+      3.72,
+      1.88
+     ],
+     "copyJuiceRP1": [
+      4.48,
+      1.88
+     ],
+     "taP": [
+      7,
+      3.7
+     ],
+     "tbP": [
+      7,
+      1.45
+     ],
+     "tdP": [
+      7,
+      1.45
+     ],
+     "headP": [
+      3.98,
+      5.05
+     ],
+     "ajSecondCP0": [
+      4.8500000000000005,
+      4.13
+     ],
+     "ajSecondCP1": [
+      5.55,
+      4.13
+     ],
+     "ajSecondCP2": [
+      5.45,
+      3.1
+     ],
+     "ajSecondCP3": [
+      4.95,
+      3.1
+     ],
+     "ajSecondJP0": [
+      4.9,
+      3.83
+     ],
+     "ajSecondJP1": [
+      5.5,
+      3.83
+     ],
+     "ajSecondJP2": [
+      5.44,
+      3.17
+     ],
+     "ajSecondJP3": [
+      4.96,
+      3.17
+     ],
+     "ajSecondSP0": [
+      5.24,
+      3.5999999999999996
+     ],
+     "ajSecondSP1": [
+      5.3500000000000005,
+      4.5
+     ],
+     "ajSecondSP2": [
+      5.6000000000000005,
+      4.58
+     ],
+     "ajSecondRP0": [
+      4.82,
+      4.13
+     ],
+     "ajSecondRP1": [
+      5.58,
+      4.13
+     ],
+     "diffP": [
+      4.47,
+      2.65
+     ],
+     "timesTwoP": [
+      2.5,
+      0.25
+     ]
+    },
+    "parts": [
+     {
+      "id": "a1L",
+      "poly": [
+       "a1LP0",
+       "a1LP1",
+       "a1LP2",
+       "a1LP3",
+       "a1LP4",
+       "a1LP5",
+       "a1LP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "a1",
+      "start": true
+     },
+     {
+      "id": "a1T",
+      "poly": [
+       "a1TP0",
+       "a1TP1",
+       "a1TP2",
+       "a1TP3",
+       "a1TP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "a1",
+      "start": true
+     },
+     {
+      "id": "a1F",
+      "poly": [
+       "a1FP0",
+       "a1FP1",
+       "a1FP2",
+       "a1FP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "a1",
+      "start": true
+     },
+     {
+      "id": "a1S",
+      "seg": [
+       "a1SP0",
+       "a1SP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "a1",
+      "start": true
+     },
+     {
+      "id": "a2L",
+      "poly": [
+       "a2LP0",
+       "a2LP1",
+       "a2LP2",
+       "a2LP3",
+       "a2LP4",
+       "a2LP5",
+       "a2LP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "a2",
+      "start": true
+     },
+     {
+      "id": "a2T",
+      "poly": [
+       "a2TP0",
+       "a2TP1",
+       "a2TP2",
+       "a2TP3",
+       "a2TP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "a2",
+      "start": true
+     },
+     {
+      "id": "a2F",
+      "poly": [
+       "a2FP0",
+       "a2FP1",
+       "a2FP2",
+       "a2FP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "a2",
+      "start": true
+     },
+     {
+      "id": "a2S",
+      "seg": [
+       "a2SP0",
+       "a2SP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "a2",
+      "start": true
+     },
+     {
+      "id": "a3L",
+      "poly": [
+       "a3LP0",
+       "a3LP1",
+       "a3LP2",
+       "a3LP3",
+       "a3LP4",
+       "a3LP5",
+       "a3LP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "a3",
+      "start": true
+     },
+     {
+      "id": "a3T",
+      "poly": [
+       "a3TP0",
+       "a3TP1",
+       "a3TP2",
+       "a3TP3",
+       "a3TP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "a3",
+      "start": true
+     },
+     {
+      "id": "a3F",
+      "poly": [
+       "a3FP0",
+       "a3FP1",
+       "a3FP2",
+       "a3FP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "a3",
+      "start": true
+     },
+     {
+      "id": "a3S",
+      "seg": [
+       "a3SP0",
+       "a3SP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "a3",
+      "start": true
+     },
+     {
+      "id": "ajC",
+      "poly": [
+       "ajCP0",
+       "ajCP1",
+       "ajCP2",
+       "ajCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "aj",
+      "start": true
+     },
+     {
+      "id": "ajJ",
+      "poly": [
+       "ajJP0",
+       "ajJP1",
+       "ajJP2",
+       "ajJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "aj",
+      "start": true
+     },
+     {
+      "id": "ajS",
+      "ink": "blue",
+      "w": 3,
+      "group": "aj",
+      "start": true,
+      "curve": [
+       "ajSP0",
+       "ajSP1",
+       "ajSP2"
+      ]
+     },
+     {
+      "id": "ajR",
+      "seg": [
+       "ajRP0",
+       "ajRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "aj",
+      "start": true
+     },
+     {
+      "id": "b1L",
+      "poly": [
+       "b1LP0",
+       "b1LP1",
+       "b1LP2",
+       "b1LP3",
+       "b1LP4",
+       "b1LP5",
+       "b1LP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "b1"
+     },
+     {
+      "id": "b1T",
+      "poly": [
+       "b1TP0",
+       "b1TP1",
+       "b1TP2",
+       "b1TP3",
+       "b1TP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "b1"
+     },
+     {
+      "id": "b1F",
+      "poly": [
+       "b1FP0",
+       "b1FP1",
+       "b1FP2",
+       "b1FP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "b1"
+     },
+     {
+      "id": "b1S",
+      "seg": [
+       "b1SP0",
+       "b1SP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "b1"
+     },
+     {
+      "id": "bjC",
+      "poly": [
+       "bjCP0",
+       "bjCP1",
+       "bjCP2",
+       "bjCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "bj"
+     },
+     {
+      "id": "bjJ",
+      "poly": [
+       "bjJP0",
+       "bjJP1",
+       "bjJP2",
+       "bjJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "bj"
+     },
+     {
+      "id": "bjS",
+      "ink": "blue",
+      "w": 3,
+      "group": "bj",
+      "curve": [
+       "bjSP0",
+       "bjSP1",
+       "bjSP2"
+      ]
+     },
+     {
+      "id": "bjR",
+      "seg": [
+       "bjRP0",
+       "bjRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "bj"
+     },
+     {
+      "id": "copyWrapL",
+      "poly": [
+       "copyWrapLP0",
+       "copyWrapLP1",
+       "copyWrapLP2",
+       "copyWrapLP3",
+       "copyWrapLP4",
+       "copyWrapLP5",
+       "copyWrapLP6"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 2,
+      "group": "copyWrap"
+     },
+     {
+      "id": "copyWrapT",
+      "poly": [
+       "copyWrapTP0",
+       "copyWrapTP1",
+       "copyWrapTP2",
+       "copyWrapTP3",
+       "copyWrapTP4"
+      ],
+      "fill": "gold-fill",
+      "ink": "warm",
+      "w": 2,
+      "group": "copyWrap"
+     },
+     {
+      "id": "copyWrapF",
+      "poly": [
+       "copyWrapFP0",
+       "copyWrapFP1",
+       "copyWrapFP2",
+       "copyWrapFP3"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 2,
+      "group": "copyWrap"
+     },
+     {
+      "id": "copyWrapS",
+      "seg": [
+       "copyWrapSP0",
+       "copyWrapSP1"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "group": "copyWrap"
+     },
+     {
+      "id": "copyJuiceC",
+      "poly": [
+       "copyJuiceCP0",
+       "copyJuiceCP1",
+       "copyJuiceCP2",
+       "copyJuiceCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "copyJuice"
+     },
+     {
+      "id": "copyJuiceJ",
+      "poly": [
+       "copyJuiceJP0",
+       "copyJuiceJP1",
+       "copyJuiceJP2",
+       "copyJuiceJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "copyJuice"
+     },
+     {
+      "id": "copyJuiceS",
+      "ink": "blue",
+      "w": 3,
+      "group": "copyJuice",
+      "curve": [
+       "copyJuiceSP0",
+       "copyJuiceSP1",
+       "copyJuiceSP2"
+      ]
+     },
+     {
+      "id": "copyJuiceR",
+      "seg": [
+       "copyJuiceRP0",
+       "copyJuiceRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "copyJuice"
+     },
+     {
+      "id": "ta",
+      "label": "=\\$18",
+      "at": "taP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tb",
+      "label": "=\\$7",
+      "at": "tbP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "td",
+      "label": "=\\$14",
+      "at": "tdP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "head",
+      "label": "\\text{Create a matching amount}",
+      "at": "headP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "ajSecondC",
+      "poly": [
+       "ajSecondCP0",
+       "ajSecondCP1",
+       "ajSecondCP2",
+       "ajSecondCP3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "group": "ajSecond",
+      "start": true
+     },
+     {
+      "id": "ajSecondJ",
+      "poly": [
+       "ajSecondJP0",
+       "ajSecondJP1",
+       "ajSecondJP2",
+       "ajSecondJP3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 2,
+      "group": "ajSecond",
+      "start": true
+     },
+     {
+      "id": "ajSecondS",
+      "ink": "blue",
+      "w": 3,
+      "group": "ajSecond",
+      "start": true,
+      "curve": [
+       "ajSecondSP0",
+       "ajSecondSP1",
+       "ajSecondSP2"
+      ]
+     },
+     {
+      "id": "ajSecondR",
+      "seg": [
+       "ajSecondRP0",
+       "ajSecondRP1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "group": "ajSecond",
+      "start": true
+     },
+     {
+      "id": "diff",
+      "label": "=\\$4",
+      "at": "diffP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "timesTwo",
+      "label": "\\times 2",
+      "at": "timesTwoP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try three wraps and two juices for eighteen dollars.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{3x}+\\cb{2y}=18"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One wrap and one juice cost seven: nothing matches yet.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "b1",
+        "bj",
+        "tb"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{x}+\\cb{y}=7",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Double the whole second order, including its total.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2(\\cw{x}+\\cb{y})=2(7)",
+       "note": "\\text{double}"
+      },
+      {
+       "do": "show",
+       "target": [
+        "copyWrap",
+        "copyJuice",
+        "timesTwo"
+       ],
+       "at": "Double",
+       "dur": 0.2
+      },
+      {
+       "do": "slide",
+       "target": [
+        "copyWrap",
+        "copyJuice"
+       ],
+       "by": [
+        1.1,
+        0
+       ],
+       "at": "second",
+       "dur": 1.4
+      },
+      {
+       "do": "hide",
+       "target": "tb",
+       "at": "total"
+      },
+      {
+       "do": "show",
+       "target": "td",
+       "at": "total"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two wraps, two juices, fourteen dollars.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{2x}+\\cb{2y}=14"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now the juices match, so subtract.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\begin{aligned}\\cw{3x}+\\cb{2y}&=18\\\\-(\\cw{2x}+\\cb{2y})&=-14\\end{aligned}"
+      },
+      {
+       "do": "hide",
+       "target": "timesTwo"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "b1",
+        "bj",
+        "copyWrap",
+        "copyJuice",
+        "td"
+       ],
+       "by": [
+        0,
+        0.6
+       ],
+       "at": "subtract",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Matching juices pair off, then matching wraps.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "aj",
+        "ajSecond",
+        "bj",
+        "copyJuice"
+       ],
+       "at": "juices",
+       "dur": 1.0
+      },
+      {
+       "do": "hide",
+       "target": [
+        "a1",
+        "a2",
+        "b1",
+        "copyWrap"
+       ],
+       "at": "wraps",
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eighteen minus fourteen: the wrap left costs four dollars.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{x}=4",
+       "note": "18-14",
+       "at": "Eighteen"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "ta",
+        "td"
+       ],
+       "at": "minus",
+       "dur": 0.8
+      },
+      {
+       "do": "slide",
+       "target": "a3",
+       "by": [
+        0.12,
+        -1.05
+       ],
+       "at": "wrap",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "diff",
+       "at": "four",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put four back: four plus y equals seven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{4}+\\cb{y}=7",
+       "note": "\\text{put }x\\text{ back}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So y equals three.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{y}=3"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check: three times four plus two times three equals eighteen.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "write",
+       "tex": "3(\\cw{4})+2(\\cb{3})=18",
+       "note": "\\text{check}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.8,
+     0.7,
+     5.2,
+     5.1
+    ],
+    "points": {
+     "hP": [
+      3,
+      4.6
+     ],
+     "firstP": [
+      3,
+      3.15
+     ],
+     "secondP": [
+      3,
+      1.5
+     ],
+     "equalP": [
+      3,
+      1.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "h",
+      "label": "\\text{The system}",
+      "at": "hP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "first",
+      "label": "5x+\\cb{2y}=28",
+      "at": "firstP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "second",
+      "label": "4x-\\cb{y}=5",
+      "at": "secondP",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink"
+     },
+     {
+      "id": "equal",
+      "label": "\\cb{y=4x-5}",
+      "at": "equalP",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now five x plus two y equals twenty-eight, and four x minus y equals five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Substitution"
+      },
+      {
+       "do": "show",
+       "target": "second",
+       "at": "and"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which equation results from solving the second equation for y and substituting into the first?",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which equation results from solving the second equation for $y$ and substituting into the first?"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add y to both sides.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "4x=5+\\cb{y}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then subtract five: y equals four x minus five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{y=4x-5}"
+      },
+      {
+       "do": "hide",
+       "target": "second",
+       "at": "equals"
+      },
+      {
+       "do": "show",
+       "target": "equal",
+       "at": "equals"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now replace y with four x minus five.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Replace $y$ with $\\cb{4x-5}$"
+      },
+      {
+       "do": "highlight",
+       "target": "equal",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip is to write five x plus two times four x minus five equals twenty-eight.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cancel{5x+2\\cdot\\cb{4x-5}=28}"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But two times y needs all of four x minus five, so it gets brackets.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5x+2\\cb{(4x-5)}=28",
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Doubling all of it gives eight x minus ten.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5x+\\cb{8x-10}=28"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The resulting equation is five x plus two times the quantity four x minus five equals twenty-eight.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "answer",
+       "tex": "5x+2\\cb{(4x-5)}=28"
+      },
+      {
+       "do": "text",
+       "text": "Two times all of $\\cb{y}$",
+       "at": "quantity"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "When a term matches, subtract.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "A term matches: subtract"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "When nothing matches, double an order first.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Nothing matches: double an order"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or swap in what one unknown equals.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "$\\cb{y}=4x-5$: swap it in"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Make one unknown disappear.",
+     "pause": 1.8,
+     "do": [
+      {
+       "do": "text",
+       "text": "Make one unknown disappear."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "teaches": [
+  "sat-entry-system-solve",
+  "linear-system-pair",
+  "substitute-into-equation"
+ ]
+}

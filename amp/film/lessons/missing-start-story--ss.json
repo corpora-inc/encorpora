@@ -1,0 +1,1291 @@
+{
+ "id": "missing-start-story--ss",
+ "title": "Where the box goes",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.9,
+     14.2,
+     12.4
+    ],
+    "points": {
+     "s1": [
+      0,
+      10.4
+     ],
+     "s2": [
+      4,
+      10.4
+     ],
+     "s3": [
+      4,
+      1.3
+     ],
+     "s4": [
+      0,
+      1.3
+     ],
+     "c1": [
+      4.8,
+      10.4
+     ],
+     "c2": [
+      8.8,
+      10.4
+     ],
+     "c3": [
+      8.8,
+      1.3
+     ],
+     "c4": [
+      4.8,
+      1.3
+     ],
+     "e1": [
+      9.6,
+      10.4
+     ],
+     "e2": [
+      13.6,
+      10.4
+     ],
+     "e3": [
+      13.6,
+      1.3
+     ],
+     "e4": [
+      9.6,
+      1.3
+     ],
+     "pS": [
+      2,
+      11.3
+     ],
+     "pC": [
+      6.8,
+      11.3
+     ],
+     "pE": [
+      11.6,
+      11.3
+     ],
+     "nS": [
+      2,
+      0.2
+     ],
+     "nC": [
+      6.8,
+      0.2
+     ],
+     "nE": [
+      11.6,
+      0.2
+     ],
+     "gs": [
+      0.26,
+      10.1
+     ],
+     "gc": [
+      5.06,
+      10.1
+     ],
+     "ge": [
+      9.86,
+      10.1
+     ],
+     "ve1": [
+      9.9,
+      10.1
+     ],
+     "ve2": [
+      13.3,
+      10.1
+     ],
+     "ve3": [
+      13.3,
+      1.6
+     ],
+     "ve4": [
+      9.9,
+      1.6
+     ],
+     "mE": [
+      11.6,
+      5.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "boxS",
+      "poly": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ],
+      "fill": "paper",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxC",
+      "poly": [
+       "c1",
+       "c2",
+       "c3",
+       "c4"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxE",
+      "poly": [
+       "e1",
+       "e2",
+       "e3",
+       "e4"
+      ],
+      "fill": "paper",
+      "ink": "violet",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "gS",
+      "things": "balloon",
+      "n": 5,
+      "at": "gs",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "gC",
+      "things": "balloon",
+      "n": 3,
+      "at": "gc",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "gE",
+      "things": "balloon",
+      "n": 0,
+      "at": "ge",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 8
+     },
+     {
+      "id": "coverE",
+      "poly": [
+       "ve1",
+       "ve2",
+       "ve3",
+       "ve4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "qE",
+      "label": "?",
+      "at": "mE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "nameS",
+      "label": "\\text{start}",
+      "at": "pS",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "nameC",
+      "label": "\\text{change}",
+      "at": "pC",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "nameE",
+      "label": "\\text{end}",
+      "at": "pE",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "lblS",
+      "label": "5",
+      "at": "nS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "lblC",
+      "label": "+3",
+      "at": "nC",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "lblE",
+      "label": "\\square",
+      "at": "nE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "lblE8",
+      "label": "8",
+      "at": "nE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which number sentence tells the story?",
+     "do": [
+      {
+       "do": "text",
+       "text": "Which number sentence tells the story?",
+       "at": "Which"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every story has a start,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "boxS",
+        "nameS"
+       ],
+       "at": "start"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "a change,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "boxC",
+        "nameC"
+       ],
+       "at": "change"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "and an end.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "boxE",
+        "nameE"
+       ],
+       "at": "end"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ana has five balloons. She gets three more. How many balloons does she have now?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Ana"
+      },
+      {
+       "do": "problem",
+       "text": "Ana has $5$ balloons. She gets $3$ more. How many balloons does she have now?",
+       "at": "Ana"
+      },
+      {
+       "do": "arrive",
+       "target": "gS",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "lblS",
+       "at": "five"
+      },
+      {
+       "do": "arrive",
+       "target": "gC",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "lblC",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "coverE",
+        "qE",
+        "lblE"
+       ],
+       "at": "now"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start five, change plus three. The end is unknown, so the box goes at the end.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "coverE",
+        "qE",
+        "lblE"
+       ],
+       "at": "box"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Write it in that order: five plus three equals the box.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5+3=\\square",
+       "at": "Write"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now join them at the end. Five and three make eight.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "coverE",
+        "qE",
+        "lblE"
+       ],
+       "at": "join"
+      },
+      {
+       "do": "send",
+       "target": [
+        "gS",
+        "gC"
+       ],
+       "to": "gE",
+       "at": "join"
+      },
+      {
+       "do": "show",
+       "target": "lblE8",
+       "at": "eight"
+      },
+      {
+       "do": "answer",
+       "tex": "5+3=8",
+       "at": "eight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.9,
+     14.2,
+     12.4
+    ],
+    "points": {
+     "s1": [
+      0,
+      10.4
+     ],
+     "s2": [
+      4,
+      10.4
+     ],
+     "s3": [
+      4,
+      1.3
+     ],
+     "s4": [
+      0,
+      1.3
+     ],
+     "c1": [
+      4.8,
+      10.4
+     ],
+     "c2": [
+      8.8,
+      10.4
+     ],
+     "c3": [
+      8.8,
+      1.3
+     ],
+     "c4": [
+      4.8,
+      1.3
+     ],
+     "e1": [
+      9.6,
+      10.4
+     ],
+     "e2": [
+      13.6,
+      10.4
+     ],
+     "e3": [
+      13.6,
+      1.3
+     ],
+     "e4": [
+      9.6,
+      1.3
+     ],
+     "pS": [
+      2,
+      11.3
+     ],
+     "pC": [
+      6.8,
+      11.3
+     ],
+     "pE": [
+      11.6,
+      11.3
+     ],
+     "nS": [
+      2,
+      0.2
+     ],
+     "nC": [
+      6.8,
+      0.2
+     ],
+     "nE": [
+      11.6,
+      0.2
+     ],
+     "gs": [
+      0.26,
+      10.1
+     ],
+     "gc": [
+      5.06,
+      10.1
+     ],
+     "ge": [
+      9.86,
+      10.1
+     ],
+     "vs1": [
+      0.3,
+      10.1
+     ],
+     "vs2": [
+      3.7,
+      10.1
+     ],
+     "vs3": [
+      3.7,
+      1.6
+     ],
+     "vs4": [
+      0.3,
+      1.6
+     ],
+     "mS": [
+      2,
+      5.85
+     ]
+    },
+    "parts": [
+     {
+      "id": "boxS",
+      "poly": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ],
+      "fill": "paper",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxC",
+      "poly": [
+       "c1",
+       "c2",
+       "c3",
+       "c4"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxE",
+      "poly": [
+       "e1",
+       "e2",
+       "e3",
+       "e4"
+      ],
+      "fill": "paper",
+      "ink": "violet",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "gH",
+      "things": "block",
+      "n": 6,
+      "at": "gs",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "gG",
+      "things": "block",
+      "n": 2,
+      "at": "gs",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45
+     },
+     {
+      "id": "gC",
+      "things": "block",
+      "n": 0,
+      "at": "gc",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 6
+     },
+     {
+      "id": "gE",
+      "things": "block",
+      "n": 4,
+      "at": "ge",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "coverS",
+      "poly": [
+       "vs1",
+       "vs2",
+       "vs3",
+       "vs4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "qS",
+      "label": "?",
+      "at": "mS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "nameS",
+      "label": "\\text{start}",
+      "at": "pS",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "nameC",
+      "label": "\\text{change}",
+      "at": "pC",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "nameE",
+      "label": "\\text{end}",
+      "at": "pE",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "lblS",
+      "label": "\\square",
+      "at": "nS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "lblS2",
+      "label": "2",
+      "at": "nS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "lblS10",
+      "label": "10",
+      "at": "nS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "lblC",
+      "label": "-6",
+      "at": "nC",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "lblE",
+      "label": "4",
+      "at": "nE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the unknown hides at the start.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Now"
+      },
+      {
+       "do": "text",
+       "text": "The unknown hides at the start",
+       "at": "Now"
+      },
+      {
+       "do": "show",
+       "target": [
+        "coverS",
+        "qS",
+        "lblS"
+       ],
+       "at": "hides"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Some blocks were in a box. Six were taken out and four stayed. How many were in the box at first?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "problem",
+       "text": "Some blocks were in a box. $6$ were taken out and $4$ stayed. How many were in the box at first?",
+       "at": "Some"
+      },
+      {
+       "do": "show",
+       "target": "gH",
+       "at": "Six"
+      },
+      {
+       "do": "send",
+       "target": [
+        "gH1",
+        "gH2",
+        "gH3",
+        "gH4",
+        "gH5",
+        "gH6"
+       ],
+       "to": "gC",
+       "at": "taken"
+      },
+      {
+       "do": "show",
+       "target": "lblC",
+       "at": "taken"
+      },
+      {
+       "do": "arrive",
+       "target": "gE",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "lblE",
+       "at": "stayed"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Taken out, so I take away. Six minus four is two.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gC",
+       "at": "Taken"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "coverS",
+        "qS",
+        "lblS"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "gG",
+        "lblS2"
+       ],
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look. Six came out of the box.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gC",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Could it have started with two?",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "gG",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "No. You cannot take six from two. It started with more.",
+     "do": [
+      {
+       "do": "text",
+       "text": "$6$ cannot come out of $2$",
+       "at": "No"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Put the six back, with the four that stayed.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "gG",
+        "lblS2"
+       ],
+       "at": "Yes"
+      },
+      {
+       "do": "send",
+       "target": "gC",
+       "to": "gH",
+       "at": "Put"
+      },
+      {
+       "do": "send",
+       "target": "gE",
+       "to": "gH",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six and four make ten.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "6+4=10",
+       "at": "Six"
+      },
+      {
+       "do": "show",
+       "target": "lblS10",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now write the story in order. The box, take away six, equals four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\square-6=4",
+       "fresh": true,
+       "at": "The"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check it. Ten minus six is four.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "10-6=4",
+       "at": "Ten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -0.9,
+     14.2,
+     12.4
+    ],
+    "points": {
+     "s1": [
+      0,
+      10.4
+     ],
+     "s2": [
+      4,
+      10.4
+     ],
+     "s3": [
+      4,
+      1.3
+     ],
+     "s4": [
+      0,
+      1.3
+     ],
+     "c1": [
+      4.8,
+      10.4
+     ],
+     "c2": [
+      8.8,
+      10.4
+     ],
+     "c3": [
+      8.8,
+      1.3
+     ],
+     "c4": [
+      4.8,
+      1.3
+     ],
+     "e1": [
+      9.6,
+      10.4
+     ],
+     "e2": [
+      13.6,
+      10.4
+     ],
+     "e3": [
+      13.6,
+      1.3
+     ],
+     "e4": [
+      9.6,
+      1.3
+     ],
+     "pS": [
+      2,
+      11.3
+     ],
+     "pC": [
+      6.8,
+      11.3
+     ],
+     "pE": [
+      11.6,
+      11.3
+     ],
+     "nS": [
+      2,
+      0.2
+     ],
+     "nC": [
+      6.8,
+      0.2
+     ],
+     "nE": [
+      11.6,
+      0.2
+     ],
+     "gs": [
+      0.26,
+      10.1
+     ],
+     "gc": [
+      5.06,
+      10.1
+     ],
+     "ge": [
+      9.86,
+      10.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "boxS",
+      "poly": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ],
+      "fill": "paper",
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxC",
+      "poly": [
+       "c1",
+       "c2",
+       "c3",
+       "c4"
+      ],
+      "fill": "paper",
+      "ink": "warm",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "boxE",
+      "poly": [
+       "e1",
+       "e2",
+       "e3",
+       "e4"
+      ],
+      "fill": "paper",
+      "ink": "violet",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "rS",
+      "things": "block",
+      "n": 0,
+      "at": "gs",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "rC",
+      "things": "block",
+      "n": 0,
+      "at": "gc",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "rE",
+      "things": "block",
+      "n": 0,
+      "at": "ge",
+      "arrange": "grid",
+      "perRow": 2,
+      "size": 1.45,
+      "slots": 10
+     },
+     {
+      "id": "nameS",
+      "label": "\\text{start}",
+      "at": "pS",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "nameC",
+      "label": "\\text{change}",
+      "at": "pC",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "nameE",
+      "label": "\\text{end}",
+      "at": "pE",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "lblS",
+      "label": "\\square",
+      "at": "nS",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold"
+     },
+     {
+      "id": "lblC",
+      "label": "-3",
+      "at": "nC",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "lblE",
+      "label": "10",
+      "at": "nE",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the other way round.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Now"
+      },
+      {
+       "do": "problem",
+       "text": "Which story matches $\\square-3=10$",
+       "at": "Now"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which story matches box minus three equals ten",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "lblS",
+       "at": "box"
+      },
+      {
+       "do": "show",
+       "target": "lblC",
+       "at": "minus"
+      },
+      {
+       "do": "show",
+       "target": "lblE",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Sam had some stamps. He gave away three. Now he has ten.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Sam had some stamps. He gave away 3. Now he has 10.",
+       "at": "Sam",
+       "id": "storyA"
+      },
+      {
+       "do": "highlight",
+       "target": "lblC",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Or: Sam had thirteen stamps. He gave away three. How many are left?",
+     "do": [
+      {
+       "do": "text",
+       "text": "Sam had 13 stamps. He gave away 3. How many are left?",
+       "at": "Sam",
+       "id": "storyB"
+      },
+      {
+       "do": "highlight",
+       "target": "lblC",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The box comes first, so the start is the unknown.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "lblS",
+       "at": "box"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The first story hides the start.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "nameS",
+       "at": "start"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The second story hides the end.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "nameE",
+       "at": "end"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the first story matches.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{The first story}",
+       "at": "So"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ana's story hid the end. The blocks story hid the start.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "story"
+      },
+      {
+       "do": "text",
+       "text": "End unknown: $5+3=\\square$",
+       "at": "story"
+      },
+      {
+       "do": "text",
+       "text": "Start unknown: $\\square-6=4$",
+       "at": "blocks"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start, change, end. The box goes where the unknown is.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{Start, change, end}",
+       "at": "Start"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
