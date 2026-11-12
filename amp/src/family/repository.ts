@@ -295,7 +295,10 @@ export class FamilyRepository {
             ? {
                 number: learner.label_number,
                 scope: learner.identity_scope,
-                name: numberedName(learner.identity_scope, learner.label_number),
+                name: numberedName(
+                  learner.identity_scope,
+                  learner.label_number,
+                ),
               }
             : await allocateLabel(client, `family:${accountId}`);
       }
@@ -454,6 +457,21 @@ export class FamilyRepository {
     const help = !!(
       await client.query("SELECT to_regclass('amp_help_events') AS relation")
     ).rows[0]?.relation;
+    // Practice rollups by day and week. A deleted learner's go by cascade; a
+    // retained billing reference keeps none of them either.
+    const rollups: string[] = [];
+    for (const table of [
+      "amp_active_days",
+      "amp_adult_activity",
+      "amp_learner_weeks",
+      "amp_level_days",
+      "amp_skill_days",
+    ])
+      if (
+        (await client.query("SELECT to_regclass($1) AS relation", [table]))
+          .rows[0]?.relation
+      )
+        rollups.push(table);
     let retained = 0,
       linked =
         !learnerId && stripe
@@ -544,6 +562,10 @@ export class FamilyRepository {
           row.id,
         ]);
       }
+      for (const table of rollups)
+        await client.query(`DELETE FROM ${table} WHERE learner_id=$1`, [
+          row.id,
+        ]);
       // Reports outlive the learner only as notes-free reports on content.
       if (flags)
         await client.query(

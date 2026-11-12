@@ -2,7 +2,7 @@ import type { PoolClient } from "pg";
 import { SchoolError } from "./contracts.js";
 
 /** A license with one of these references is a free pilot, not a contract. */
-const FREE_REFERENCES = ["pilot", "evaluation", "demo"];
+export const FREE_LICENSE_REFERENCES = ["pilot", "evaluation", "demo"];
 
 /** Removes a root org with its whole tree, inside the caller's transaction:
  * the operator's `delete-org` command and removing a demo place
@@ -53,7 +53,7 @@ export async function removeOrgTree(
     licenses.some(
       (license) =>
         license.active &&
-        !FREE_REFERENCES.includes(
+        !FREE_LICENSE_REFERENCES.includes(
           (license.reference ?? "").trim().toLowerCase(),
         ),
     )
