@@ -93,7 +93,7 @@ import {
 } from "./trials";
 import type { Pool, PoolClient } from "pg";
 import { createDatabasePool } from "./database.js";
-import { ensureFamilyClass } from "../family/family-class.js";
+import { ensureFamilyClass, syncFamilyGrade } from "../family/family-class.js";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
@@ -250,7 +250,11 @@ export interface Repository {
   readonly limits?: TrialLimits;
   /** Records a lesson PDF sent to an authorized learner, when their help is
    * recorded (`help-events.ts`). */
-  recordPrint?(learnerId: string, lessonId: string, kind: string): Promise<void>;
+  recordPrint?(
+    learnerId: string,
+    lessonId: string,
+    kind: string,
+  ): Promise<void>;
   /** Whether learning is allowed: for the account, or for one of its
    * learners, where the account's adult learner needs no parental consent. */
   hasConsent(accountId: string, learnerId?: string): Promise<boolean>;
@@ -767,6 +771,8 @@ export class PgTransaction implements LearnerTransaction {
       this.learnerId,
       birthYear,
     ]);
+    // A family class shows the grade the year implies.
+    await syncFamilyGrade(this.db, this.learnerId);
   }
   async frontier(
     now = Date.now(),

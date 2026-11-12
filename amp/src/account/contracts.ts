@@ -3,6 +3,7 @@ import { purchaseMeasurementSchema } from "../advertising/permission-contracts.j
 import { z } from "zod";
 import { freeAllowanceSchema } from "../learning/free-allowance.js";
 import { practiceProfileSchema } from "../learning/practice-profiles.js";
+import { adultStarts } from "../learning/starting-point.js";
 export const familySummarySchema = z.object({
   purchaseMeasurement: purchaseMeasurementSchema.optional(),
   metaPurchaseMeasurement: purchaseMeasurementSchema.optional(),
@@ -38,6 +39,8 @@ export const familySummarySchema = z.object({
       freeAllowance: freeAllowanceSchema.optional(),
       /** The account holder's own learner (docs/families.md), not a child. */
       adult: z.literal(true).optional(),
+      /** The adult's own learner: where their practice starts. */
+      start: z.enum(adultStarts).nullable().optional(),
       /** A practice profile: the adult practicing as someone else. */
       simulation: z.literal(true).optional(),
     }),
