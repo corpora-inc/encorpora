@@ -1,0 +1,2643 @@
+{
+  "id": "line-relationship-equations--sp",
+  "title": "Parallel and perpendicular lines",
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -5.6,
+          -7.6,
+          8.6,
+          5.9
+        ],
+        "points": {
+          "GX0A": [
+            -5,
+            -7
+          ],
+          "GX0B": [
+            -5,
+            5
+          ],
+          "GX1A": [
+            -4,
+            -7
+          ],
+          "GX1B": [
+            -4,
+            5
+          ],
+          "GX2A": [
+            -3,
+            -7
+          ],
+          "GX2B": [
+            -3,
+            5
+          ],
+          "GX3A": [
+            -2,
+            -7
+          ],
+          "GX3B": [
+            -2,
+            5
+          ],
+          "GX4A": [
+            -1,
+            -7
+          ],
+          "GX4B": [
+            -1,
+            5
+          ],
+          "GX5A": [
+            0,
+            -7
+          ],
+          "GX5B": [
+            0,
+            5
+          ],
+          "GX6A": [
+            1,
+            -7
+          ],
+          "GX6B": [
+            1,
+            5
+          ],
+          "GX7A": [
+            2,
+            -7
+          ],
+          "GX7B": [
+            2,
+            5
+          ],
+          "GX8A": [
+            3,
+            -7
+          ],
+          "GX8B": [
+            3,
+            5
+          ],
+          "GX9A": [
+            4,
+            -7
+          ],
+          "GX9B": [
+            4,
+            5
+          ],
+          "GX10A": [
+            5,
+            -7
+          ],
+          "GX10B": [
+            5,
+            5
+          ],
+          "GX11A": [
+            6,
+            -7
+          ],
+          "GX11B": [
+            6,
+            5
+          ],
+          "GX12A": [
+            7,
+            -7
+          ],
+          "GX12B": [
+            7,
+            5
+          ],
+          "GX13A": [
+            8,
+            -7
+          ],
+          "GX13B": [
+            8,
+            5
+          ],
+          "GY0A": [
+            -5,
+            -7
+          ],
+          "GY0B": [
+            8,
+            -7
+          ],
+          "GY1A": [
+            -5,
+            -6
+          ],
+          "GY1B": [
+            8,
+            -6
+          ],
+          "GY2A": [
+            -5,
+            -5
+          ],
+          "GY2B": [
+            8,
+            -5
+          ],
+          "GY3A": [
+            -5,
+            -4
+          ],
+          "GY3B": [
+            8,
+            -4
+          ],
+          "GY4A": [
+            -5,
+            -3
+          ],
+          "GY4B": [
+            8,
+            -3
+          ],
+          "GY5A": [
+            -5,
+            -2
+          ],
+          "GY5B": [
+            8,
+            -2
+          ],
+          "GY6A": [
+            -5,
+            -1
+          ],
+          "GY6B": [
+            8,
+            -1
+          ],
+          "GY7A": [
+            -5,
+            0
+          ],
+          "GY7B": [
+            8,
+            0
+          ],
+          "GY8A": [
+            -5,
+            1
+          ],
+          "GY8B": [
+            8,
+            1
+          ],
+          "GY9A": [
+            -5,
+            2
+          ],
+          "GY9B": [
+            8,
+            2
+          ],
+          "GY10A": [
+            -5,
+            3
+          ],
+          "GY10B": [
+            8,
+            3
+          ],
+          "GY11A": [
+            -5,
+            4
+          ],
+          "GY11B": [
+            8,
+            4
+          ],
+          "GY12A": [
+            -5,
+            5
+          ],
+          "GY12B": [
+            8,
+            5
+          ],
+          "L": [
+            -4,
+            -6
+          ],
+          "R": [
+            -1,
+            3
+          ],
+          "A": [
+            -3,
+            -3
+          ],
+          "C": [
+            -2,
+            -3
+          ],
+          "B": [
+            -2,
+            0
+          ],
+          "P": [
+            5,
+            -1
+          ],
+          "PL": [
+            2.1,
+            -2.1
+          ],
+          "X": [
+            7.6,
+            0.6
+          ],
+          "Y": [
+            -0.55,
+            5.45
+          ],
+          "EQg": [
+            0.3,
+            2.95
+          ],
+          "EQn": [
+            1.5,
+            4.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "gx0",
+            "seg": [
+              "GX0A",
+              "GX0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "GX1A",
+              "GX1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "GX2A",
+              "GX2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "GX3A",
+              "GX3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "GX4A",
+              "GX4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "GX5A",
+              "GX5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "GX6A",
+              "GX6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "GX7A",
+              "GX7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "GX8A",
+              "GX8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "GX9A",
+              "GX9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "GX10A",
+              "GX10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "GX11A",
+              "GX11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "GX12A",
+              "GX12B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx13",
+            "seg": [
+              "GX13A",
+              "GX13B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "GY0A",
+              "GY0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "GY1A",
+              "GY1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "GY2A",
+              "GY2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "GY3A",
+              "GY3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "GY4A",
+              "GY4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy5",
+            "seg": [
+              "GY5A",
+              "GY5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy6",
+            "seg": [
+              "GY6A",
+              "GY6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy7",
+            "seg": [
+              "GY7A",
+              "GY7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy8",
+            "seg": [
+              "GY8A",
+              "GY8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy9",
+            "seg": [
+              "GY9A",
+              "GY9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy10",
+            "seg": [
+              "GY10A",
+              "GY10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy11",
+            "seg": [
+              "GY11A",
+              "GY11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy12",
+            "seg": [
+              "GY12A",
+              "GY12B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 4,
+            "ystep": 1,
+            "yevery": 4,
+            "size": "l",
+            "xrange": [
+              -5,
+              8
+            ],
+            "yrange": [
+              -7,
+              5
+            ],
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "X",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "Y",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "given",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "eqGiven",
+            "label": "y=3x+6",
+            "at": "EQg",
+            "dir": "e",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "copy",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "violet",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "one",
+            "label": "1",
+            "at": "run",
+            "dir": "s",
+            "size": "l",
+            "ink": "blue",
+            "group": "moving",
+            "flies": true
+          },
+          {
+            "id": "three",
+            "label": "3",
+            "at": "rise",
+            "dir": "e",
+            "size": "l",
+            "ink": "warm",
+            "group": "moving",
+            "flies": true
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "violet",
+            "r": 12
+          },
+          {
+            "id": "pointLabel",
+            "label": "(5,-1)",
+            "at": "PL",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet"
+          },
+          {
+            "id": "eqNew",
+            "label": "y=3x-16",
+            "at": "EQn",
+            "dir": "e",
+            "size": "l",
+            "ink": "violet"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Parallel or perpendicular, a line through a point is fixed by its slope and that point.",
+          "do": [
+            {
+              "do": "text",
+              "text": "slope + one point = one line"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which equation is the line through five, negative one that is parallel to y equals three x plus six?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which equation is the line through $(5,-1)$ that is parallel to $y=3x+6$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "point",
+                "pointLabel"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "eqGiven",
+              "at": "equals"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its step goes across one, up three. Rise over run: three over one is three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y=3x+6",
+              "note": "\\text{given line}",
+              "fresh": true
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "one",
+              "at": "one"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "three",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\frac{\\cw{3}}{\\cb{1}}=3",
+              "note": "\\text{slope}",
+              "at": "Rise"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Parallel lines never meet. Slide a copy, step and all, without turning, to the point.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "pointLabel",
+              "at": "Slide"
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "moving",
+              "by": [
+                7,
+                -1
+              ],
+              "at": "Slide",
+              "dur": 2.2
+            },
+            {
+              "do": "show",
+              "target": "pointLabel",
+              "at": "point"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Same step, same slope: three.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "three",
+              "at": "slope"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now write its equation in point-slope form. It needs one point on the line, x one, y one, and the slope, m: y minus y one equals m times x minus x one.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Now"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope form",
+              "tone": "muted",
+              "at": "form"
+            },
+            {
+              "do": "write",
+              "tex": "y-y_1=m(x-x_1)",
+              "at": "minus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Here the point is five, negative one, and the slope is three. So the rise, y plus one, is three times the run, x minus five.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "pointLabel",
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=3(x-5)",
+              "at": "rise"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiply out, then subtract one: y equals three x minus sixteen.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=3(x-5)",
+              "fresh": true,
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=3x-15",
+              "at": "out"
+            },
+            {
+              "do": "answer",
+              "tex": "y=3x-16",
+              "at": "sixteen"
+            },
+            {
+              "do": "show",
+              "target": "eqNew",
+              "at": "sixteen"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.7,
+          -10.7,
+          9.7,
+          3.6
+        ],
+        "points": {
+          "GX0A": [
+            -4,
+            -10
+          ],
+          "GX0B": [
+            -4,
+            3
+          ],
+          "GX1A": [
+            -3,
+            -10
+          ],
+          "GX1B": [
+            -3,
+            3
+          ],
+          "GX2A": [
+            -2,
+            -10
+          ],
+          "GX2B": [
+            -2,
+            3
+          ],
+          "GX3A": [
+            -1,
+            -10
+          ],
+          "GX3B": [
+            -1,
+            3
+          ],
+          "GX4A": [
+            0,
+            -10
+          ],
+          "GX4B": [
+            0,
+            3
+          ],
+          "GX5A": [
+            1,
+            -10
+          ],
+          "GX5B": [
+            1,
+            3
+          ],
+          "GX6A": [
+            2,
+            -10
+          ],
+          "GX6B": [
+            2,
+            3
+          ],
+          "GX7A": [
+            3,
+            -10
+          ],
+          "GX7B": [
+            3,
+            3
+          ],
+          "GX8A": [
+            4,
+            -10
+          ],
+          "GX8B": [
+            4,
+            3
+          ],
+          "GX9A": [
+            5,
+            -10
+          ],
+          "GX9B": [
+            5,
+            3
+          ],
+          "GX10A": [
+            6,
+            -10
+          ],
+          "GX10B": [
+            6,
+            3
+          ],
+          "GX11A": [
+            7,
+            -10
+          ],
+          "GX11B": [
+            7,
+            3
+          ],
+          "GX12A": [
+            8,
+            -10
+          ],
+          "GX12B": [
+            8,
+            3
+          ],
+          "GX13A": [
+            9,
+            -10
+          ],
+          "GX13B": [
+            9,
+            3
+          ],
+          "GY0A": [
+            -4,
+            -10
+          ],
+          "GY0B": [
+            9,
+            -10
+          ],
+          "GY1A": [
+            -4,
+            -9
+          ],
+          "GY1B": [
+            9,
+            -9
+          ],
+          "GY2A": [
+            -4,
+            -8
+          ],
+          "GY2B": [
+            9,
+            -8
+          ],
+          "GY3A": [
+            -4,
+            -7
+          ],
+          "GY3B": [
+            9,
+            -7
+          ],
+          "GY4A": [
+            -4,
+            -6
+          ],
+          "GY4B": [
+            9,
+            -6
+          ],
+          "GY5A": [
+            -4,
+            -5
+          ],
+          "GY5B": [
+            9,
+            -5
+          ],
+          "GY6A": [
+            -4,
+            -4
+          ],
+          "GY6B": [
+            9,
+            -4
+          ],
+          "GY7A": [
+            -4,
+            -3
+          ],
+          "GY7B": [
+            9,
+            -3
+          ],
+          "GY8A": [
+            -4,
+            -2
+          ],
+          "GY8B": [
+            9,
+            -2
+          ],
+          "GY9A": [
+            -4,
+            -1
+          ],
+          "GY9B": [
+            9,
+            -1
+          ],
+          "GY10A": [
+            -4,
+            0
+          ],
+          "GY10B": [
+            9,
+            0
+          ],
+          "GY11A": [
+            -4,
+            1
+          ],
+          "GY11B": [
+            9,
+            1
+          ],
+          "GY12A": [
+            -4,
+            2
+          ],
+          "GY12B": [
+            9,
+            2
+          ],
+          "GY13A": [
+            -4,
+            3
+          ],
+          "GY13B": [
+            9,
+            3
+          ],
+          "L": [
+            -2.1667,
+            2.5
+          ],
+          "R": [
+            1.8667,
+            -9.6
+          ],
+          "CL": [
+            -2.1667,
+            2.5
+          ],
+          "CR": [
+            1.5,
+            -8.5
+          ],
+          "A": [
+            0,
+            -4
+          ],
+          "C": [
+            1,
+            -4
+          ],
+          "B": [
+            1,
+            -7
+          ],
+          "OneL": [
+            0.55,
+            -3.4
+          ],
+          "ThreeL": [
+            1.55,
+            -5.5
+          ],
+          "P": [
+            3,
+            -5
+          ],
+          "I": [
+            0.6,
+            -5.8
+          ],
+          "Q": [
+            0.7581,
+            -6.2743
+          ],
+          "S": [
+            1.0743,
+            -5.6419
+          ],
+          "X": [
+            8.6,
+            0.6
+          ],
+          "Y": [
+            -0.55,
+            2.75
+          ],
+          "PL2": [
+            4.95,
+            -5.95
+          ],
+          "EQg": [
+            0.6,
+            1.9
+          ],
+          "EQn": [
+            2.0,
+            -8.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "gx0",
+            "seg": [
+              "GX0A",
+              "GX0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "GX1A",
+              "GX1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "GX2A",
+              "GX2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "GX3A",
+              "GX3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "GX4A",
+              "GX4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "GX5A",
+              "GX5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "GX6A",
+              "GX6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "GX7A",
+              "GX7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "GX8A",
+              "GX8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "GX9A",
+              "GX9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "GX10A",
+              "GX10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "GX11A",
+              "GX11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx12",
+            "seg": [
+              "GX12A",
+              "GX12B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx13",
+            "seg": [
+              "GX13A",
+              "GX13B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "GY0A",
+              "GY0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "GY1A",
+              "GY1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "GY2A",
+              "GY2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "GY3A",
+              "GY3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "GY4A",
+              "GY4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy5",
+            "seg": [
+              "GY5A",
+              "GY5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy6",
+            "seg": [
+              "GY6A",
+              "GY6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy7",
+            "seg": [
+              "GY7A",
+              "GY7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy8",
+            "seg": [
+              "GY8A",
+              "GY8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy9",
+            "seg": [
+              "GY9A",
+              "GY9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy10",
+            "seg": [
+              "GY10A",
+              "GY10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy11",
+            "seg": [
+              "GY11A",
+              "GY11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy12",
+            "seg": [
+              "GY12A",
+              "GY12B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy13",
+            "seg": [
+              "GY13A",
+              "GY13B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 3,
+            "ystep": 1,
+            "yevery": 5,
+            "size": "l",
+            "xrange": [
+              -4,
+              9
+            ],
+            "yrange": [
+              -10,
+              3
+            ],
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "X",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "Y",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "given",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "eqGiven",
+            "label": "y=-3x-4",
+            "at": "EQg",
+            "dir": "e",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "copy",
+            "seg": [
+              "CL",
+              "CR"
+            ],
+            "ink": "violet",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "group": "moving"
+          },
+          {
+            "id": "one",
+            "label": "1",
+            "at": "OneL",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "group": "moving",
+            "flies": true
+          },
+          {
+            "id": "three",
+            "label": "3",
+            "at": "ThreeL",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "group": "moving",
+            "flies": true
+          },
+          {
+            "id": "right",
+            "angle": [
+              "Q",
+              "I",
+              "S"
+            ],
+            "right": true,
+            "r": 26,
+            "ink": "gold"
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "violet",
+            "r": 12
+          },
+          {
+            "id": "pointLabel",
+            "label": "(3,-5)",
+            "at": "P",
+            "dir": "e",
+            "size": "l",
+            "ink": "violet"
+          },
+          {
+            "id": "pointLabel2",
+            "label": "(3,-5)",
+            "at": "PL2",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet"
+          },
+          {
+            "id": "eqNew",
+            "label": "y=\\frac13x-6",
+            "at": "EQn",
+            "dir": "e",
+            "size": "l",
+            "ink": "violet"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which equation is the line through three, negative five that is perpendicular to y equals negative three x minus four?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which equation is the line through $(3,-5)$ that is perpendicular to $y=-3x-4$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "point",
+                "pointLabel"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "eqGiven",
+              "at": "equals"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its step goes across one, down three: slope negative three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x-4",
+              "note": "\\text{given line}",
+              "fresh": true
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "one",
+              "at": "one"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "three",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\frac{\\cw{-3}}{\\cb{1}}=-3",
+              "note": "\\text{slope}",
+              "at": "slope"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Perpendicular means meeting at a right angle. Carry a copy to the point, then give it a quarter turn.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "pointLabel",
+              "at": "Carry"
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "Carry"
+            },
+            {
+              "do": "slide",
+              "target": "moving",
+              "by": [
+                3,
+                -1
+              ],
+              "at": "Carry",
+              "dur": 1.4
+            },
+            {
+              "do": "turn",
+              "target": "moving",
+              "about": "P",
+              "deg": 90,
+              "at": "quarter",
+              "dur": 2.2
+            }
+          ],
+          "pause": 0.7
+        },
+        {
+          "speaker": "teacher",
+          "say": "The step turned with it: now up one for every three across. The slope is one third.",
+          "do": [
+            {
+              "do": "show",
+              "target": "right",
+              "at": "turned"
+            },
+            {
+              "do": "show",
+              "target": "pointLabel2",
+              "at": "turned"
+            },
+            {
+              "do": "clear",
+              "at": "slope"
+            },
+            {
+              "do": "write",
+              "tex": "y=-3x-4",
+              "note": "\\text{given line}",
+              "fresh": true,
+              "at": "slope"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\frac{\\cb{1}}{\\cw{3}}",
+              "note": "\\text{turned slope}",
+              "at": "third"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip writes negative one third. But the turned line rises, so its slope is positive.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=-\\frac13",
+              "note": "\\text{common slip}",
+              "id": "wrongSlope",
+              "at": "negative"
+            },
+            {
+              "do": "strike",
+              "target": "wrongSlope",
+              "at": "rises"
+            },
+            {
+              "do": "highlight",
+              "target": "copy",
+              "at": "rises"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Use point-slope form again, with the point three, negative five and the slope one third: y plus five is one third of x minus three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Use"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope form",
+              "tone": "muted",
+              "at": "form"
+            },
+            {
+              "do": "write",
+              "tex": "y-y_1=m(x-x_1)",
+              "at": "form"
+            },
+            {
+              "do": "highlight",
+              "target": "pointLabel2",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "y+5=\\frac13(x-3)",
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiply out, then subtract five: y equals one third x minus six, the perpendicular line.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y+5=\\frac13(x-3)",
+              "fresh": true,
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y+5=\\frac13x-1",
+              "at": "out"
+            },
+            {
+              "do": "answer",
+              "tex": "y=\\frac13x-6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "eqNew",
+              "at": "six"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.3,
+          -2.8,
+          10.7,
+          8.7
+        ],
+        "points": {
+          "GX0A": [
+            0,
+            -2
+          ],
+          "GX0B": [
+            0,
+            8
+          ],
+          "GX1A": [
+            1,
+            -2
+          ],
+          "GX1B": [
+            1,
+            8
+          ],
+          "GX2A": [
+            2,
+            -2
+          ],
+          "GX2B": [
+            2,
+            8
+          ],
+          "GX3A": [
+            3,
+            -2
+          ],
+          "GX3B": [
+            3,
+            8
+          ],
+          "GX4A": [
+            4,
+            -2
+          ],
+          "GX4B": [
+            4,
+            8
+          ],
+          "GX5A": [
+            5,
+            -2
+          ],
+          "GX5B": [
+            5,
+            8
+          ],
+          "GX6A": [
+            6,
+            -2
+          ],
+          "GX6B": [
+            6,
+            8
+          ],
+          "GX7A": [
+            7,
+            -2
+          ],
+          "GX7B": [
+            7,
+            8
+          ],
+          "GX8A": [
+            8,
+            -2
+          ],
+          "GX8B": [
+            8,
+            8
+          ],
+          "GX9A": [
+            9,
+            -2
+          ],
+          "GX9B": [
+            9,
+            8
+          ],
+          "GX10A": [
+            10,
+            -2
+          ],
+          "GX10B": [
+            10,
+            8
+          ],
+          "GY0A": [
+            0,
+            -2
+          ],
+          "GY0B": [
+            10,
+            -2
+          ],
+          "GY1A": [
+            0,
+            -1
+          ],
+          "GY1B": [
+            10,
+            -1
+          ],
+          "GY2A": [
+            0,
+            0
+          ],
+          "GY2B": [
+            10,
+            0
+          ],
+          "GY3A": [
+            0,
+            1
+          ],
+          "GY3B": [
+            10,
+            1
+          ],
+          "GY4A": [
+            0,
+            2
+          ],
+          "GY4B": [
+            10,
+            2
+          ],
+          "GY5A": [
+            0,
+            3
+          ],
+          "GY5B": [
+            10,
+            3
+          ],
+          "GY6A": [
+            0,
+            4
+          ],
+          "GY6B": [
+            10,
+            4
+          ],
+          "GY7A": [
+            0,
+            5
+          ],
+          "GY7B": [
+            10,
+            5
+          ],
+          "GY8A": [
+            0,
+            6
+          ],
+          "GY8B": [
+            10,
+            6
+          ],
+          "GY9A": [
+            0,
+            7
+          ],
+          "GY9B": [
+            10,
+            7
+          ],
+          "GY10A": [
+            0,
+            8
+          ],
+          "GY10B": [
+            10,
+            8
+          ],
+          "P": [
+            7,
+            2
+          ],
+          "L": [
+            0,
+            2
+          ],
+          "R": [
+            10,
+            2
+          ],
+          "D": [
+            7,
+            -2
+          ],
+          "U": [
+            7,
+            8
+          ],
+          "X": [
+            9.6,
+            0.6
+          ],
+          "Y": [
+            0.55,
+            7.75
+          ],
+          "H1": [
+            2,
+            2
+          ],
+          "H2": [
+            5,
+            2
+          ],
+          "PLc": [
+            8.5,
+            2.75
+          ],
+          "V1": [
+            7,
+            5
+          ],
+          "V2": [
+            7,
+            7
+          ],
+          "EQh": [
+            0.5,
+            3.0
+          ],
+          "EQv": [
+            6.4,
+            6.0
+          ]
+        },
+        "parts": [
+          {
+            "id": "gx0",
+            "seg": [
+              "GX0A",
+              "GX0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "GX1A",
+              "GX1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "GX2A",
+              "GX2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "GX3A",
+              "GX3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "GX4A",
+              "GX4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "GX5A",
+              "GX5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "GX6A",
+              "GX6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "GX7A",
+              "GX7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "GX8A",
+              "GX8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "GX9A",
+              "GX9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "GX10A",
+              "GX10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "GY0A",
+              "GY0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "GY1A",
+              "GY1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "GY2A",
+              "GY2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "GY3A",
+              "GY3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "GY4A",
+              "GY4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy5",
+            "seg": [
+              "GY5A",
+              "GY5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy6",
+            "seg": [
+              "GY6A",
+              "GY6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy7",
+            "seg": [
+              "GY7A",
+              "GY7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy8",
+            "seg": [
+              "GY8A",
+              "GY8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy9",
+            "seg": [
+              "GY9A",
+              "GY9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy10",
+            "seg": [
+              "GY10A",
+              "GY10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "ystep": 1,
+            "yevery": 2,
+            "size": "l",
+            "xrange": [
+              0,
+              10
+            ],
+            "yrange": [
+              -2,
+              8
+            ],
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "X",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "Y",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "horizontal",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "vertical",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "dh1",
+            "dot": "H1",
+            "ink": "blue",
+            "r": 11,
+            "group": "hdots"
+          },
+          {
+            "id": "dh2",
+            "dot": "H2",
+            "ink": "blue",
+            "r": 11,
+            "group": "hdots"
+          },
+          {
+            "id": "lh1",
+            "label": "(2,2)",
+            "at": "H1",
+            "dir": "s",
+            "size": "l",
+            "ink": "blue",
+            "group": "hdots"
+          },
+          {
+            "id": "lh2",
+            "label": "(5,2)",
+            "at": "H2",
+            "dir": "s",
+            "size": "l",
+            "ink": "blue",
+            "group": "hdots"
+          },
+          {
+            "id": "dv1",
+            "dot": "V1",
+            "ink": "warm",
+            "r": 11,
+            "group": "vdots"
+          },
+          {
+            "id": "dv2",
+            "dot": "V2",
+            "ink": "warm",
+            "r": 11,
+            "group": "vdots"
+          },
+          {
+            "id": "lv1",
+            "label": "(7,5)",
+            "at": "V1",
+            "dir": "e",
+            "size": "l",
+            "ink": "warm",
+            "group": "vdots"
+          },
+          {
+            "id": "lv2",
+            "label": "(7,7)",
+            "at": "V2",
+            "dir": "e",
+            "size": "l",
+            "ink": "warm",
+            "group": "vdots"
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "violet",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "pointLabel",
+            "label": "(7,2)",
+            "at": "PLc",
+            "dir": "c",
+            "size": "l",
+            "ink": "violet",
+            "start": true
+          },
+          {
+            "id": "hLabel",
+            "label": "y=2",
+            "at": "EQh",
+            "dir": "e",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "vLabel",
+            "label": "x=7",
+            "at": "EQv",
+            "dir": "w",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "right",
+            "angle": [
+              "L",
+              "P",
+              "D"
+            ],
+            "right": true,
+            "r": 26,
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which equation describes the horizontal line through seven, two?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which equation describes the horizontal line through $(7,2)$"
+            },
+            {
+              "do": "draw",
+              "target": "horizontal",
+              "at": "horizontal"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Horizontal means flat: every point on it has y equal to two. No rise, so its slope is zero.",
+          "do": [
+            {
+              "do": "show",
+              "target": "hdots",
+              "at": "every"
+            },
+            {
+              "do": "show",
+              "target": "hLabel",
+              "at": "two"
+            },
+            {
+              "do": "answer",
+              "tex": "y=2",
+              "at": "two"
+            },
+            {
+              "do": "clear",
+              "at": "No"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\frac{0}{\\text{run}}=0",
+              "at": "No",
+              "note": "\\text{slope}"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which equation describes the vertical line through seven, two?",
+          "do": [
+            {
+              "do": "hide",
+              "target": "hdots"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which equation describes the vertical line through $(7,2)$"
+            },
+            {
+              "do": "draw",
+              "target": "vertical",
+              "at": "vertical"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Vertical means upright: every point on it has x equal to seven. There is no run to divide by, so the slope is undefined.",
+          "do": [
+            {
+              "do": "show",
+              "target": "vdots",
+              "at": "every"
+            },
+            {
+              "do": "show",
+              "target": "vLabel",
+              "at": "seven"
+            },
+            {
+              "do": "answer",
+              "tex": "x=7",
+              "at": "seven"
+            },
+            {
+              "do": "clear",
+              "at": "There"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\text{rise}}{0}\\;\\text{is undefined}",
+              "at": "There",
+              "note": "\\text{slope}"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Flat and upright meet at a right angle.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "vdots"
+            },
+            {
+              "do": "show",
+              "target": "right",
+              "at": "right"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A slide keeps the step, so parallel lines share one slope.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Slide: same step, same slope"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A quarter turn trades rise and run and changes one sign.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Quarter turn: $\\dfrac{\\text{rise}}{\\text{run}}$ becomes $-\\dfrac{\\text{run}}{\\text{rise}}$",
+              "at": "quarter"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then the point places the line.",
+          "do": [
+            {
+              "do": "text",
+              "text": "The point places the line",
+              "at": "point"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Parallel: same slope. Perpendicular: flip the slope and change its sign.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Parallel: same slope",
+              "at": "Parallel"
+            },
+            {
+              "do": "text",
+              "text": "Perpendicular: flip the slope",
+              "at": "Perpendicular"
+            },
+            {
+              "do": "text",
+              "text": "and change its sign",
+              "at": "change"
+            }
+          ],
+          "pause": 1
+        }
+      ]
+    }
+  ]
+}
