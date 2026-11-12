@@ -11,7 +11,11 @@ import {
 import { insightsReport } from "../src/analytics/insights.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { purgeIdleDemos } from "../src/schools/demo/remove.js";
-import { sharedDay, zonedInstant } from "../src/schools/demo/roster.js";
+import {
+  sharedDay,
+  switchAt,
+  zonedInstant,
+} from "../src/schools/demo/roster.js";
 import {
   currentSchool,
   ensureSchool,
@@ -33,7 +37,7 @@ const DAY = 86_400_000;
 const ZONE = "America/New_York";
 
 test(
-  "The shared demo school: joined in under a second, visitors invisible to each other, rebuilt each night, never counted",
+  "The shared demo school: joined in under a second, visitors invisible to each other, rewritten each day, never counted",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -83,6 +87,8 @@ test(
     );
     const today = (await currentSchool(db, ZONE))!;
     assert.ok(today, "the zone has a school");
+    // A week on: the same weekday, so the same term moved seven days.
+    const next = sharedDay(clock + 7 * DAY, ZONE);
 
     const call = (
       method: "GET" | "POST" | "DELETE",
@@ -418,19 +424,37 @@ test(
         true,
       );
       assert.equal(await adultPracticeEnd(db, visitors.head.account), null);
-      // Both act, so the activity log has something of each.
-      for (const visitor of Object.values(visitors))
+      // One visitor's new class code would be everyone's: never offered,
+      // and refused.
+      const base = `/api/v1/school/classes/${today.heroClassId}`;
+      for (const visitor of Object.values(visitors)) {
+        const presence = (await call("GET", `${base}/presence`, visitor.account)).json();
+        assert.equal(presence.canManage, false, "no New code on Today");
+        const roster = (await call("GET", `${base}/roster`, visitor.account)).json();
+        assert.equal(roster.canManage, true, "Practice as and cards stay");
+        assert.equal(roster.canNewCode, false, "no New code on the roster");
         assert.equal(
-          (
-            await call(
-              "POST",
-              `/api/v1/school/classes/${today.heroClassId}/rotate-code`,
-              visitor.account,
-              {},
-            )
-          ).statusCode,
-          200,
+          (await call("POST", `${base}/rotate-code`, visitor.account, {})).statusCode,
+          404,
         );
+      }
+      // Both act, so the activity log has something of each.
+      const students = (
+        await db.query(
+          `SELECT p.id FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+           WHERE e.class_id=$1 AND p.given_name<>'Priya' ORDER BY p.given_name LIMIT 2`,
+          [today.heroClassId],
+        )
+      ).rows.map((row) => row.id as string);
+      for (const [index, visitor] of Object.values(visitors).entries()) {
+        const reset = await call(
+          "POST",
+          `${base}/students/${students[index]}/reset-pictures`,
+          visitor.account,
+          {},
+        );
+        assert.ok(reset.statusCode < 300, reset.body);
+      }
     });
 
     await t.test("two visitors never appear in each other's responses", async () => {
@@ -505,6 +529,12 @@ test(
               .sort(),
             [viewer.name, "Ms. Kowalski", "Ms. Rivera", "Ms. Tanaka"].sort(),
           );
+          // The made-up teachers are the school's running staff, not
+          // invitations waiting.
+          assert.deepEqual(
+            [...new Set(staff.json().staff.map((row: { status: string }) => row.status))],
+            ["active"],
+          );
           const activity = await call("GET", `${org}/activity`, viewer.account);
           assert.ok(activity.body.includes(viewer.name.split(" ")[0]!), "their own action shows");
         }
@@ -533,8 +563,6 @@ test(
     });
 
     await t.test("the same school every day, its dates moved by whole weeks", async () => {
-      // A week on is the same weekday, so the same term moved seven days.
-      const next = sharedDay(clock + 7 * DAY, ZONE);
       const written = performance.now();
       await ensureSchool(db, next, learning);
       console.log(
@@ -555,7 +583,8 @@ test(
                (SELECT json_agg(json_build_object(
                   'at',(a.created_at AT TIME ZONE $2)-make_interval(days=>$3),
                   'outcome',a.outcome-'id'-'problemId'-'requestId'-'createdAt',
-                  'problem',i.content#-'{public,id}') ORDER BY a.created_at,a.id)
+                  'problem',i.content#-'{public,id}'#-'{selection,workbookId}'#-'{selection,workbookDate}')
+                  ORDER BY a.created_at,i.content->'public'->>'seed',i.content->'selection'->>'problemNumber')
                 FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
                 WHERE a.learner_id=p.learner_id) AS answers,
                (SELECT json_agg(json_build_object('day',d.day-$3,'frontier',d.frontier) ORDER BY d.day)
@@ -573,30 +602,90 @@ test(
         story(nextOrg, 7),
       ]);
       assert.equal(now_.length, 139);
-      // As written: paper marks come from the day's printed workbooks, and
-      // Priya practiced in this test, so her term is compared by count.
+      // Paper marks too: the printed workbooks roll as on the anchor day.
+      // Priya practiced in this test, so her term is left out.
       const written_ = (rows: typeof now_) =>
-        rows.map((row) => ({
-          ...row,
-          levels: row.student.startsWith("Priya ") ? null : row.levels,
-          answers:
-            row.student.startsWith("Priya ")
-              ? null
-              : (row.answers ?? []).filter(
-                  (answer: { problem: { selection?: { reason?: string } } }) =>
-                    answer.problem.selection?.reason !== "paper",
-                ),
-        }));
+        rows.map((row) =>
+          row.student.startsWith("Priya ")
+            ? { ...row, levels: null, answers: null }
+            : row,
+        );
+      const paper = (rows: typeof now_) =>
+        rows.flatMap((row) =>
+          (row.answers ?? []).filter(
+            (answer: { problem: { selection?: { reason?: string } } }) =>
+              answer.problem.selection?.reason === "paper",
+          ),
+        ).length;
+      assert.ok(paper(now_) > 100, `paper marks: ${paper(now_)}`);
       assert.deepEqual(written_(now_), written_(later));
       assert.ok(
         later.reduce((sum, row) => sum + (row.answers?.length ?? 0), 0) > 10_000,
       );
     });
 
-    await t.test("after the nightly switch a visitor lands in the new school; the old one goes after the grace period", async () => {
-      const next = sharedDay(clock + 7 * DAY, ZONE);
+    /** The latest moment anything in a school happened: answers, help,
+     * active time and level days (each day as its end, midnight after). */
+    const latest = async (orgId: string) =>
+      (
+        await db.query(
+          `WITH l AS (SELECT learner_id AS id FROM amp_people WHERE tenant_id=$1 AND learner_id IS NOT NULL)
+           SELECT (SELECT max(created_at) FROM amp_attempts WHERE learner_id IN (SELECT id FROM l)) AS answer,
+             (SELECT max("at") FROM amp_help_events WHERE learner_id IN (SELECT id FROM l)) AS help,
+             (SELECT max(day)::text FROM amp_active_days WHERE learner_id IN (SELECT id FROM l)) AS active,
+             (SELECT max(day)::text FROM amp_level_days WHERE learner_id IN (SELECT id FROM l)) AS level`,
+          [orgId],
+        )
+      ).rows[0] as { answer: Date; help: Date; active: string; level: string };
+    const nothingLater = async (orgId: string, now: number, label: string) => {
+      const last = await latest(orgId);
+      const localToday = new Intl.DateTimeFormat("en-CA", {
+        timeZone: ZONE,
+      }).format(now);
+      assert.ok(last.answer.getTime() <= now, `${label}: an answer at ${last.answer.toISOString()}`);
+      assert.ok(last.help.getTime() <= now, `${label}: help at ${last.help.toISOString()}`);
+      assert.ok(last.active <= localToday, `${label}: active time on ${last.active}`);
+      assert.ok(last.level <= localToday, `${label}: a level day on ${last.level}`);
+    };
+
+    await t.test("a visitor never sees the future: the school switches when the day's sitting ends", async () => {
+      // The school being shown now has nothing later than now.
+      const served = (await currentSchool(db, ZONE, Date.now()))!;
+      await nothingLater(served.orgId, Date.now(), "now");
+      // At 01:00 and 08:59 of the new day, the day before's school is shown:
+      // the new one's sitting is still to come.
+      const nextOrg = (
+        await db.query(
+          "SELECT org_id FROM amp_demo_schools WHERE timezone=$1 AND day=$2::date",
+          [ZONE, next.day],
+        )
+      ).rows[0].org_id as string;
+      for (const hour of [1, 8 + 59 / 60]) {
+        const at = zonedInstant(next.day, 0, ZONE) + hour * 3_600_000;
+        const shown = (await currentSchool(db, ZONE, at))!;
+        assert.equal(shown.orgId, today.orgId, `at ${hour}h the day before's school`);
+        await nothingLater(shown.orgId, at, `${hour}h`);
+        // Showing the new day's school then would have shown the future.
+        assert.ok((await latest(nextOrg)).answer.getTime() > at);
+      }
+      // At 09:00 it switches, and still nothing is later than now.
+      const nine = switchAt(next.day, ZONE);
+      assert.equal(nine, zonedInstant(next.day, 9, ZONE));
+      assert.equal((await currentSchool(db, ZONE, nine - 1))!.orgId, today.orgId);
+      const switched = (await currentSchool(db, ZONE, nine))!;
+      assert.equal(switched.orgId, nextOrg);
+      await nothingLater(switched.orgId, nine, "09:00");
+      // A visitor's request at 08:59 stays in the day before's school.
+      clock = nine - 60_000;
+      const places = (
+        await call("GET", "/api/v1/school/orgs", visitors.teacher.account)
+      ).json().orgs.map((org: { id: string }) => org.id);
+      assert.ok(places.includes(today.orgId) && !places.includes(nextOrg));
+    });
+
+    await t.test("after the switch a visitor lands in the new school; the old one goes after the grace period", async () => {
       const old = today;
-      // The new day has begun.
+      // The new day's sitting has ended.
       clock = zonedInstant(next.day, 10, ZONE);
       const moved = (await currentSchool(db, ZONE, clock))!;
       assert.equal(moved.day, next.day);
@@ -630,7 +719,7 @@ test(
 
       // Within the grace period the old school stays; after it, it goes
       // through the tree removal.
-      const switched = zonedInstant(next.day, 0, ZONE);
+      const switched = switchAt(next.day, ZONE);
       assert.deepEqual(
         await retireSchools(db, { now: switched + GRACE_MS - 60_000, timezones: [ZONE] }),
         { removed: 0 },

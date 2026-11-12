@@ -2,10 +2,13 @@
  * One shared demo school per demo time zone (docs/schools.md#demo-places).
  *
  * A zone's school for a day is a row of `amp_demo_schools`. The current one is
- * the newest fully written row whose day has begun in the zone: the pointer
- * moves at the zone's midnight, on every pod at once, and only to a school
- * whose rows are all committed (`built_at`). Before that midnight the warmer
- * writes the coming day's school as a new org from the static term
+ * the newest fully written row whose school day has begun in the zone: the
+ * pointer moves when the day's sitting ends (9:00, `switchAt`), on every pod
+ * at once, and only to a school whose rows are all committed (`built_at`).
+ * So nothing a visitor sees is later than now; before 9:00 they see
+ * yesterday's school, where nobody has practiced today. An hour before the
+ * switch the warmer writes the coming day's school as a new org from the
+ * static term
  * (`roster.ts`, `shift.ts`), and after a grace period removes the old one
  * through the tree removal. One pod writes a zone's day: it claims the row.
  *
@@ -27,7 +30,7 @@ import {
   type DemoKind,
 } from "./build.js";
 import { removeDemoOrg } from "./remove.js";
-import { sharedDay, zonedInstant, type SharedDay } from "./roster.js";
+import { sharedDay, switchAt, type SharedDay } from "./roster.js";
 import { shiftTerms } from "./shift.js";
 import { demoTerms, warmDemoTerms } from "./snapshot.js";
 
@@ -457,14 +460,17 @@ export async function leaveDemo(pool: Pool, accountId: string) {
   });
 }
 
-/** The hero class's "here today" moves with the clock: the written sessions'
- * last visits keep their distance from now. At most every five minutes;
- * sessions opened since (Practice as) are their own. */
+/** The hero class's "here today" moves with the clock on the school's own
+ * day: the written sessions' last visits keep their distance from now. At
+ * most every five minutes; sessions opened since (Practice as) are their
+ * own. Yesterday's school, shown before 9:00, is left as it was: nobody is
+ * here yet. */
 export async function refreshPresence(pool: Pick<Pool, "query">, orgId: string) {
   await pool.query(
     `WITH old AS (
        SELECT built_at,presence_at FROM amp_demo_schools
-       WHERE org_id=$1 AND presence_at<now()-interval '5 minutes' FOR UPDATE
+       WHERE org_id=$1 AND presence_at<now()-interval '5 minutes'
+         AND day=(now() AT TIME ZONE timezone)::date FOR UPDATE
      ), moved AS (
        UPDATE amp_demo_schools d SET presence_at=now() FROM old
        WHERE d.org_id=$1 RETURNING old.built_at,now()-old.presence_at AS gap
@@ -521,7 +527,7 @@ export async function warmDemoSchools(
 
 /** Removes the schools nobody is sent to any more, through the tree removal:
  * one older than its zone's current school, once the grace period after the
- * switch has passed, and every school of a zone no longer written. */
+ * switch (9:00) has passed, and every school of a zone no longer written. */
 export async function retireSchools(
   pool: Pool,
   options: { now?: number; timezones: readonly string[] },
@@ -554,9 +560,9 @@ export async function retireSchools(
       (row.built &&
         current !== undefined &&
         row.day < current &&
-        now >= zonedInstant(current, 0, row.timezone) + GRACE_MS) ||
+        now >= switchAt(current, row.timezone) + GRACE_MS) ||
       (row.built && !active.has(row.timezone) && row.day === current &&
-        now >= zonedInstant(current, 0, row.timezone) + 86_400_000);
+        now >= switchAt(current, row.timezone) + 86_400_000);
     if (!retired) continue;
     try {
       await removeDemoOrg(pool, row.org_id!);

@@ -156,10 +156,17 @@ export function variantDay(weekday: number): DemoDay {
   return demoDay(zonedInstant(today, 12, ANCHOR_ZONE), ANCHOR_ZONE);
 }
 
-/** The shared school a zone shows on its day at `now`: today's, from the
- * anchor variant of today's weekday, moved by `shiftDays` (whole weeks). */
+/** The shared school a zone shows at `now`: the school day's whose sitting
+ * has ended, so nothing in it is later than now. From the school day's start
+ * (9:00) that is today's; before it, yesterday's, where nobody has practiced
+ * today yet. It is the anchor variant of that day's weekday, moved by
+ * `shiftDays` (whole weeks). */
 export function sharedDay(now: number, timezone: string) {
-  const day = parts(now, timezone).day;
+  const local = parts(now, timezone);
+  const day =
+    local.hour >= SCHOOL_DAY_HOUR
+      ? local.day
+      : iso(Date.parse(`${local.day}T12:00:00Z`) - DAY);
   const weekday = weekdayOf(day);
   const shiftDays = Math.round(
     (Date.parse(`${day}T12:00:00Z`) -
@@ -169,6 +176,9 @@ export function sharedDay(now: number, timezone: string) {
   return { timezone, day, weekday, shiftDays };
 }
 export type SharedDay = ReturnType<typeof sharedDay>;
+/** When a zone's school for `day` becomes the one it shows. */
+export const switchAt = (day: string, timezone: string) =>
+  zonedInstant(day, SCHOOL_DAY_HOUR, timezone);
 
 /** The day a student who joined `daysAgo` days before today joined. */
 export const joinedOn = (today: string, daysAgo: number) =>

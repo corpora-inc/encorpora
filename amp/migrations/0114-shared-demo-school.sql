@@ -2,12 +2,13 @@
 -- Every visitor who asks for a demo class or school joins the zone's current
 -- school instead of getting one of their own. Its content is static: the
 -- same students and answers every day, with the dates moved so it ends today.
--- Each night a new school is written for the coming day and the old one goes
--- through the tree removal after a grace period.
+-- Each day a new school is written an hour before the day's sitting ends and
+-- the old one goes through the tree removal after a grace period.
 
 -- A zone's school for one day. The current one is the newest built row whose
--- day has begun in the zone, so the pointer moves at the zone's midnight, on
--- every pod at once, and only to a school that is fully written: `built_at`
+-- sitting has ended in the zone (9:00), so nothing shown is later than now and
+-- the pointer moves on every pod at once, only to a school that is fully
+-- written: `built_at`
 -- is set in the transaction that writes it. A pod claims a day by setting
 -- `building_until`. `org_id` and `class_ids` stay after the org is removed,
 -- so a visitor holding an old link is sent to the current school.
