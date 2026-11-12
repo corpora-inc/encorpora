@@ -27,7 +27,16 @@ import { hashPictures } from "../sign-in.js";
 import { writeClassHistory } from "./history.js";
 import { TEACHER_NAMES } from "./names.js";
 import { DAY, hash, wrongResponse, type Persona } from "./personas.js";
-import { demoRoster, joinedOn, SCHOOL_NAME, zonedInstant } from "./roster.js";
+import {
+  demoRoster,
+  joinedOn,
+  SCHOOL_NAME,
+  sharedDay,
+  zonedInstant,
+  type DemoKind,
+} from "./roster.js";
+import { shiftTerms } from "./shift.js";
+import { demoTerms } from "./snapshot.js";
 import type { Simulation } from "./simulate.js";
 import { seedCalendar, seedStaffEvents, sumWeeks } from "./term.js";
 
@@ -101,18 +110,31 @@ export type SharedPlace = {
  * teaches the hero class until visitors join it. */
 export async function buildSharedSchool(
   client: PoolClient,
-  input: { timezone: string; day: string },
+  input: {
+    timezone: string;
+    day: string;
+    /** "class" is the hero class alone, for a fixture (`buildFixtureClass`). */
+    kind?: DemoKind;
+  },
   terms: readonly Simulation[],
 ): Promise<SharedPlace> {
   const { timezone } = input;
+  const kind = input.kind ?? "school";
+  const school = kind === "school";
   const orgId = randomUUID();
   // Midday of the school's today: the calendar's term starts on the Monday
   // twelve weeks before this one, as the term does.
   const noon = Date.parse(`${input.day}T12:00:00Z`);
   await client.query(
     `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by,demo,demo_kind,demo_seen_at,created_at)
-     VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,false,false,'amp-demo:'||$1,true,'school',now(),now()-interval '84 days')`,
-    [orgId, SCHOOL_NAME, timezone],
+     VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,$4,false,'amp-demo:'||$1,true,$5,now(),now()-interval '84 days')`,
+    [
+      orgId,
+      school ? SCHOOL_NAME : demoRoster("class")[0]!.name,
+      timezone,
+      !school,
+      kind,
+    ],
   );
   const year = await seedCalendar(client, orgId, noon);
   // Its students are made up, and nothing can add a real one, so AMP itself
@@ -124,7 +146,7 @@ export async function buildSharedSchool(
     [randomUUID(), orgId, AGREEMENT_VERSION, year.start],
   );
   // The teachers who are only names.
-  const teachers = DEMO_TEACHERS.map(() => randomUUID());
+  const teachers = school ? DEMO_TEACHERS.map(() => randomUUID()) : [];
   for (const [index, id] of teachers.entries()) {
     const [title, family] = DEMO_TEACHERS[index]!.split(" ") as [
       string,
@@ -146,7 +168,7 @@ export async function buildSharedSchool(
   const classes: Planned[] = [];
   const enrollments: [string, string, string, string][] = [];
   const teacherOf = new Map<string, string | null>();
-  for (const klass of demoRoster("school")) {
+  for (const klass of demoRoster(kind)) {
     const classId = await insertClass(client, {
       orgId,
       sessionId: year.year,
@@ -229,7 +251,7 @@ export async function buildSharedSchool(
 
   // A demo license, every student seated on a `demo` grant.
   const licenseId = randomUUID();
-  const seats = Math.ceil((people.length + 20) / 10) * 10;
+  const seats = school ? Math.ceil((people.length + 20) / 10) * 10 : 30;
   await client.query(
     `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,reference)
      VALUES($1,$2,$3,$4::date,$5::date,'Demo')`,
@@ -344,7 +366,7 @@ export async function buildSharedSchool(
       people.map((person) => person.grade),
     ],
   );
-  await seedStaffEvents(client, timezone, input.day);
+  if (teachers.length) await seedStaffEvents(client, timezone, input.day);
   await client.query(
     `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
      SELECT gen_random_uuid(),$1,NULL,'class.created','class',c::text,'{}'::jsonb,$3::date+interval '8 hours'
@@ -356,6 +378,70 @@ export async function buildSharedSchool(
     heroClassId: heroId,
     classIds: classes.map((klass) => klass.classId),
   };
+}
+
+/** A fixture's own copy of the demo's hero class, alone, with `accountId`
+ * its admin and teacher, written now (`scripts/design-personas.ts` makes it
+ * a real class). Never served to visitors: they join the shared school. */
+export async function buildFixtureClass(
+  pool: Pool,
+  input: { accountId: string; timezone: string; now?: number },
+  learning?: Repository,
+) {
+  const day = sharedDay(input.now ?? Date.now(), input.timezone);
+  const terms = shiftTerms(
+    await demoTerms(pool, "class", day.weekday),
+    day.shiftDays,
+    day.timezone,
+  );
+  const client = await pool.connect();
+  let place: SharedPlace;
+  try {
+    await client.query("BEGIN");
+    place = await buildSharedSchool(
+      client,
+      { timezone: day.timezone, day: day.day, kind: "class" },
+      terms,
+    );
+    const owner = randomUUID();
+    await client.query(
+      `INSERT INTO amp_people(id,tenant_id,given_name,handle,account_id,timezone) VALUES($1,$2,$3,$4,$5,$6)`,
+      [
+        owner,
+        place.orgId,
+        (await ownerName(client, input.accountId)) ?? "Teacher",
+        generateHandle(),
+        input.accountId,
+        day.timezone,
+      ],
+    );
+    await client.query(
+      `WITH year AS (SELECT starts_on FROM amp_academic_sessions WHERE org_id=$2 AND kind='year' LIMIT 1)
+       INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
+       SELECT gen_random_uuid(),$1,$2,r,(SELECT starts_on FROM year) FROM unnest(ARRAY['admin','teacher']) AS t(r)`,
+      [owner, place.orgId],
+    );
+    await client.query(
+      `INSERT INTO amp_enrollments(id,class_id,person_id,role,begin_on)
+       SELECT gen_random_uuid(),$1,$2,'teacher',starts_on FROM amp_academic_sessions WHERE org_id=$3 AND kind='year' LIMIT 1`,
+      [place.heroClassId, owner, place.orgId],
+    );
+    await client.query("COMMIT");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+  if (learning)
+    await seedWorkbooks(
+      pool,
+      learning,
+      { classId: place.heroClassId },
+      day.timezone,
+      day.day,
+    );
+  return place;
 }
 
 /** A printed problem, made once per process: students share a workbook. */
