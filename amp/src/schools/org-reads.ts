@@ -174,10 +174,13 @@ export async function studentFacts(
        SELECT r.id,first.overall_level::float8 AS "startLevel",first.sd AS "startSd",
          growth.mu AS "growthMu",growth.sd AS "growthSd"
        FROM roster r
-       LEFT JOIN LATERAL (
-         SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$3::date" })} AS overall_level,
-           ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$3::date" })} AS sd
-       ) first ON true
+       -- The start level and its sd off one row: the first settled day.
+       LEFT JOIN LATERAL ${startLevelSql({
+         select: `d.overall_level,${levelSdSql("d")} AS sd`,
+         learner: "r.learner_id",
+         from: "GREATEST($2::date, r.begin_on)",
+         to: "$3::date",
+       })} first ON true
        LEFT JOIN LATERAL (
          -- One fit per student, read off amp_level_days_growth_idx alone:
          -- OFFSET 0 keeps the planner from copying the fit into each place its
