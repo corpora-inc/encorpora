@@ -76,7 +76,7 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
     handler: ({ actor, target, repository }) =>
       new SchoolSignIn(repository).presence(
         target.classId,
-        can(actor, "signin.manage", target),
+        can(actor, "signin.code", target),
       ),
   });
   define({
@@ -89,12 +89,13 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
         target.classId,
         can(actor, "signin.manage", target),
         can(actor, "share.manage", target),
+        can(actor, "signin.code", target),
       ),
   });
   define({
     method: "POST",
     url: `${CLASS}/rotate-code`,
-    action: "signin.manage",
+    action: "signin.code",
     target: classParam,
     bodyLimit: 1024,
     handler: ({ actor, target, repository }) =>
