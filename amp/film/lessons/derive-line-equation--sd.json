@@ -1,0 +1,887 @@
+{
+  "id": "derive-line-equation--sd",
+  "title": "Why a line has the equation y = mx + b",
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.3,
+          -1.8,
+          9.1,
+          8.9
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "S": [
+            2,
+            0
+          ],
+          "T": [
+            2,
+            1
+          ],
+          "C": [
+            2,
+            0
+          ],
+          "P": [
+            2,
+            1
+          ],
+          "L": [
+            -1,
+            -0.5
+          ],
+          "H": [
+            7.8,
+            3.9
+          ],
+          "G": [
+            -1,
+            8
+          ],
+          "X": [
+            8.5,
+            0
+          ],
+          "Y": [
+            0,
+            8.5
+          ],
+          "E": [
+            1.0,
+            3.4
+          ],
+          "E2": [
+            0.3,
+            7.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              9,
+              10
+            ],
+            "at": "G",
+            "ink": "muted",
+            "w": 0.6,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "ystep": 1,
+            "yevery": 2,
+            "xrange": [
+              -0.8,
+              8.5
+            ],
+            "yrange": [
+              -1.5,
+              8.5
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xl",
+            "label": "x",
+            "at": "X",
+            "dir": "n",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yl",
+            "label": "y",
+            "at": "Y",
+            "dir": "w",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tri",
+            "poly": [
+              "O",
+              "C",
+              "P"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2
+          },
+          {
+            "id": "small",
+            "poly": [
+              "O",
+              "S",
+              "T"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "run",
+            "vector": [
+              "O",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 5
+          },
+          {
+            "id": "origin",
+            "dot": "O",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "rn",
+            "label": "@x",
+            "at": "run",
+            "of": "P",
+            "dir": "s",
+            "far": 2.2,
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "hn",
+            "label": "@y",
+            "at": "rise",
+            "of": "P",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "walker",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "pl",
+            "label": "(x,y)",
+            "at": "P",
+            "dir": "nw",
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "rx",
+            "label": "x",
+            "at": "run",
+            "dir": "s",
+            "far": 2.2,
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "hy",
+            "label": "y",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "rx4",
+            "label": "x",
+            "at": "run",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "hb",
+            "label": "y-4",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "al",
+            "label": "(0,4)",
+            "at": "O",
+            "dir": "se",
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "eq",
+            "label": "y=\\frac12x",
+            "at": "E",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "eq2",
+            "label": "y=\\frac12x+4",
+            "at": "E2",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A straight line climbs at the same rate everywhere, and that one fact gives its equation.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Why a line is $y=mx+b$"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "From the origin, go across two and up one to the line. Across is the run; up is the rise.",
+          "do": [
+            {
+              "do": "show",
+              "target": "origin",
+              "at": "origin"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "rn",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "hn",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "run",
+              "at": "run"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Together they make a slope triangle. Its slope is rise divided by run: one half.",
+          "do": [
+            {
+              "do": "show",
+              "target": "small",
+              "at": "triangle"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{slope}=\\frac{\\cw{\\text{rise}}}{\\cb{\\text{run}}}=\\frac{\\cw{1}}{\\cb{2}}",
+              "at": "slope",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Stretch the triangle along the line: the run grows to six, the rise to three.",
+          "do": [
+            {
+              "do": "show",
+              "target": "tri",
+              "at": "Stretch"
+            },
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  6,
+                  0
+                ],
+                "P": [
+                  6,
+                  3
+                ]
+              },
+              "at": "Stretch",
+              "dur": 2.6
+            },
+            {
+              "do": "highlight",
+              "target": "rn",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three times the run, three times the rise: the same slope, one half.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tri",
+              "at": "Three"
+            },
+            {
+              "do": "clear",
+              "at": "same"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{3}}{\\cb{6}}=\\frac{\\cw{1}}{\\cb{2}}",
+              "at": "same",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Triangles like these are similar: the same shape at a new size, so their sides keep one ratio.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Similar: same shape, new size",
+              "at": "similar"
+            },
+            {
+              "do": "highlight",
+              "target": "small",
+              "at": "shape"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the slope is one half everywhere. Let the far corner ride along the line, and call it x, y.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "small",
+                "rn",
+                "hn"
+              ],
+              "at": "Let"
+            },
+            {
+              "do": "show",
+              "target": "walker",
+              "at": "far"
+            },
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  3,
+                  0
+                ],
+                "P": [
+                  3,
+                  1.5
+                ]
+              },
+              "at": "ride",
+              "dur": 1.6
+            },
+            {
+              "do": "clear",
+              "at": "call"
+            },
+            {
+              "do": "text",
+              "text": "$(x,y)$: any point on the line",
+              "at": "call"
+            },
+            {
+              "do": "show",
+              "target": "pl",
+              "at": "x"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It stands for any point. Its run is x; its rise is y.",
+          "do": [
+            {
+              "do": "show",
+              "target": "rx",
+              "at": "run"
+            },
+            {
+              "do": "show",
+              "target": "hy",
+              "at": "rise"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide it anywhere: the shape holds, so y over x stays one half.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  6.0,
+                  0
+                ],
+                "P": [
+                  6.0,
+                  3.0
+                ]
+              },
+              "at": "Slide",
+              "dur": 2.4
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{y}}{\\cb{x}}=\\frac12",
+              "at": "so"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiply by x: y equals one half x, the equation of this line.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "y=\\frac12x",
+              "at": "equals"
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "equation"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "With any slope m, that is y equals m x.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "With"
+            },
+            {
+              "do": "write",
+              "tex": "y=mx",
+              "note": "\\text{through }(0,0)",
+              "at": "With",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now lift the line up four, so it crosses the y-axis at four.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "eq",
+                "hy",
+                "rx"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  -1,
+                  3.5
+                ],
+                "H": [
+                  7.8,
+                  7.9
+                ],
+                "O": [
+                  0,
+                  4
+                ],
+                "C": [
+                  6.0,
+                  4
+                ],
+                "P": [
+                  6.0,
+                  7.0
+                ]
+              },
+              "at": "lift",
+              "dur": 2
+            },
+            {
+              "do": "clear",
+              "at": "crosses"
+            },
+            {
+              "do": "text",
+              "text": "Crosses the $y$-axis at $(0,4)$",
+              "at": "crosses"
+            },
+            {
+              "do": "show",
+              "target": "al",
+              "at": "four",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The triangle stands on the level y equals four. Its run is still x; its rise is y minus four.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "run",
+              "at": "level"
+            },
+            {
+              "do": "show",
+              "target": "rx4",
+              "at": "run"
+            },
+            {
+              "do": "show",
+              "target": "hb",
+              "at": "minus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The slope is still one half, so y minus four over x is one half.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "slope"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{y-4}}{\\cb{x}}=\\frac12",
+              "at": "slope",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Multiply by x, then add four: y equals one half x plus four.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "pl",
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y-4=\\frac12x",
+              "at": "Multiply"
+            },
+            {
+              "do": "write",
+              "tex": "y=\\frac12x+4",
+              "at": "add"
+            },
+            {
+              "do": "show",
+              "target": "eq2",
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four is the y-intercept, b, where the line crosses the y-axis. With slope m, every such line is y equals m x plus b.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "y=\\frac12x+\\cg{4}",
+              "at": "Four",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "origin",
+                "al"
+              ],
+              "at": "crosses"
+            },
+            {
+              "do": "write",
+              "tex": "y=mx+\\cg{b}",
+              "at": "every",
+              "fresh": true
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.3,
+          -1.8,
+          9.1,
+          8.9
+        ],
+        "points": {
+          "L1": [
+            -1,
+            -0.5
+          ],
+          "H1": [
+            7.4,
+            3.7
+          ],
+          "L2": [
+            -1,
+            3.5
+          ],
+          "H2": [
+            7.4,
+            7.7
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "B": [
+            0,
+            4
+          ],
+          "G": [
+            -1,
+            8
+          ],
+          "X": [
+            8.5,
+            0
+          ],
+          "Y": [
+            0,
+            8.5
+          ],
+          "E": [
+            3.4,
+            0.9
+          ],
+          "E2": [
+            0.3,
+            7.7
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              9,
+              10
+            ],
+            "at": "G",
+            "ink": "muted",
+            "w": 0.6,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "ystep": 1,
+            "yevery": 2,
+            "xrange": [
+              -0.8,
+              8.5
+            ],
+            "yrange": [
+              -1.5,
+              8.5
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xl",
+            "label": "x",
+            "at": "X",
+            "dir": "n",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yl",
+            "label": "y",
+            "at": "Y",
+            "dir": "w",
+            "ink": "ink",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "line1",
+            "seg": [
+              "L1",
+              "H1"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "line2",
+            "seg": [
+              "L2",
+              "H2"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "dO",
+            "dot": "O",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "eq1",
+            "label": "y=\\frac12x",
+            "at": "E",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "eq2",
+            "label": "y=\\frac12x+4",
+            "at": "E2",
+            "dir": "e",
+            "ink": "accent",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Through the origin, a line is y equals m x.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y=mx",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": "line1",
+              "at": "origin"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Crossing at b, it is y equals m x plus b, with m the slope and b the y-intercept.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "y=mx+\\cg{b}",
+              "at": "Crossing",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "$m$: the slope; $\\cg{b}$: the $y$-intercept",
+              "at": "with"
+            },
+            {
+              "do": "highlight",
+              "target": "line2",
+              "at": "Crossing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The slope is the same between any two points. Write that down, and you have the equation.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "line1",
+                "line2"
+              ],
+              "at": "same"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

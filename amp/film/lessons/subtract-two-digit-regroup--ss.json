@@ -1,0 +1,640 @@
+{
+  "id": "subtract-two-digit-regroup--ss",
+  "title": "Not enough ones? Break a ten",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -6.6,
+          21.4,
+          11.6
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 7,
+                  "ones": 4
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is seventy-four minus sixteen?",
+          "do": [
+            {
+              "do": "problem",
+              "text": "What is $74 − 16$",
+              "at": "What"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each cube is one, and each rod is ten cubes joined in a row.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones.4",
+              "at": "cube"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "rod"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventy-four is seven tens and four ones. We take away sixteen.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Seventy-four"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "74",
+                "16"
+              ],
+              "op": "-",
+              "headers": true,
+              "id": "s1",
+              "at": "Seventy-four"
+            },
+            {
+              "do": "places",
+              "of": "s1",
+              "at": "Seventy-four"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n",
+              "at": "seven"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start with the ones: if they run short, we break a ten. Six must leave, and only four are here.",
+          "do": [
+            {
+              "do": "places",
+              "of": "s1",
+              "place": "ones",
+              "at": "ones"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "Six"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Four cubes are too few, but a rod holds ten of them.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens.7",
+              "at": "rod"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One ten is the same amount as ten ones, so trade: break one rod into ten cubes.",
+          "do": [
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "break",
+              "dur": 2.5
+            }
+          ],
+          "pause": 0.8
+        },
+        {
+          "speaker": "learner",
+          "say": "Six rods and fourteen cubes, still seventy-four. Six leave, and eight remain.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s1",
+              "at": "Six",
+              "trade": "Six",
+              "write": "eight"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.13",
+                "b.n.ones.14",
+                "b.n.tens.7"
+              ],
+              "at": "leave",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One rod leaves, and five tens stay.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s1",
+              "at": "One",
+              "write": "five"
+            },
+            {
+              "do": "hide",
+              "target": "b.n.tens.6",
+              "at": "leaves",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventy-four minus sixteen is fifty-eight. Addition undoes subtraction, so add back to check.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Seventy-four"
+            },
+            {
+              "do": "answer",
+              "tex": "74-16=58",
+              "at": "Seventy-four"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Fifty-eight plus sixteen is seventy-four, where we began.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "58+16=74",
+              "note": "\\text{add back}",
+              "fresh": true,
+              "at": "Fifty-eight"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -6.6,
+          21.4,
+          11.6
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 8,
+                  "ones": 3
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is eighty-three minus sixteen?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "What"
+            },
+            {
+              "do": "problem",
+              "text": "What is $83 − 16$",
+              "at": "What"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Eight minus one is seven, six minus three is three: seventy-three.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "six"
+            },
+            {
+              "do": "text",
+              "text": "$8-1=7$ and $6-3=3$, so $73$",
+              "id": "slip",
+              "at": "seventy-three"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six cubes must leave, and only three are there.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "three"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six is taken from three, not three from six, so seventy-three is wrong.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "not"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Trade first: break one rod into ten cubes.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Trade"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "83",
+                "16"
+              ],
+              "op": "-",
+              "headers": true,
+              "id": "s2",
+              "at": "Trade"
+            },
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "break",
+              "dur": 2.5
+            }
+          ],
+          "pause": 0.8
+        },
+        {
+          "speaker": "learner",
+          "say": "Seven rods and thirteen cubes. Six leave, and seven stay.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s2",
+              "at": "Seven",
+              "trade": "Seven",
+              "write": "stay"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.11",
+                "b.n.ones.12",
+                "b.n.ones.13",
+                "b.n.tens.8"
+              ],
+              "at": "leave",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One rod leaves, and six tens stay.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s2",
+              "at": "One",
+              "write": "six"
+            },
+            {
+              "do": "hide",
+              "target": "b.n.tens.7",
+              "at": "leaves",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eighty-three minus sixteen is sixty-seven.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Eighty-three"
+            },
+            {
+              "do": "answer",
+              "tex": "83-16=67",
+              "at": "Eighty-three"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.5,
+          -6.6,
+          38.4,
+          11.6
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 1
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is one hundred minus twenty-one?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "What"
+            },
+            {
+              "do": "problem",
+              "text": "What is $100 − 21$",
+              "at": "What"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One hundred is one flat. Break it into ten rods, then one rod into ten cubes.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "One"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "100",
+                "21"
+              ],
+              "op": "-",
+              "headers": true,
+              "id": "s3",
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "flat"
+            },
+            {
+              "do": "split",
+              "target": "b.n.hundreds",
+              "at": "Break",
+              "dur": 1.6
+            },
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "one",
+              "nth": 3,
+              "dur": 1.8
+            }
+          ],
+          "pause": 1.4
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine rods and ten cubes. One leaves, and nine stay.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s3",
+              "at": "Nine",
+              "trade": "Nine",
+              "write": "stay"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.ones.10",
+                "b.n.tens.10"
+              ],
+              "at": "leaves",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Two rods leave, and seven tens remain.",
+          "do": [
+            {
+              "do": "column",
+              "of": "s3",
+              "at": "Two",
+              "write": "seven"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.tens.8",
+                "b.n.tens.9",
+                "b.n.hundreds.1"
+              ],
+              "at": "leave",
+              "dur": 0.8
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One hundred minus twenty-one is seventy-nine.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "One"
+            },
+            {
+              "do": "answer",
+              "tex": "100-21=79",
+              "at": "One"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -6.6,
+          21.4,
+          11.6
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 7,
+                  "ones": 4
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Ones first, then tens.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Ones"
+            },
+            {
+              "do": "text",
+              "text": "Ones first, then tens.",
+              "at": "Ones"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "When the ones run short, trade one ten for ten ones. That is regrouping.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Trade one ten for ten ones.",
+              "at": "trade"
+            },
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "trade",
+              "dur": 2.5
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Not enough ones? Break a ten. Then take away.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Not enough ones? Break a ten. Then take away.",
+              "at": "Not"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    }
+  ]
+}
