@@ -120,3 +120,16 @@
   align-items: center;
   gap: var(--space-3);
 }
+
+/* Account → Learners: "What year were you born?" to correct the start. */
+.yearDialog {
+  display: grid;
+  gap: var(--space-4);
+}
+.yearHint {
+  min-height: 1.45em;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  line-height: 1.45;
+}
