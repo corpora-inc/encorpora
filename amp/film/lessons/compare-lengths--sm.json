@@ -1,0 +1,2470 @@
+{
+  "id": "compare-lengths--sm",
+  "title": "Pick what to measure",
+  "teaches": [
+    "measurable-attribute-choice",
+    "compare-weights",
+    "compare-capacity"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -3.0,
+          -1.2,
+          3.0,
+          5.8
+        ],
+        "points": {
+          "j0": [
+            -2.05,
+            0.0
+          ],
+          "j1": [
+            0.95,
+            0.0
+          ],
+          "j2": [
+            1.3,
+            0.35
+          ],
+          "j3": [
+            1.3,
+            3.7
+          ],
+          "j4": [
+            0.75,
+            4.15
+          ],
+          "j5": [
+            0.75,
+            4.6
+          ],
+          "j6": [
+            -1.85,
+            4.6
+          ],
+          "j7": [
+            -1.85,
+            4.15
+          ],
+          "j8": [
+            -2.4,
+            3.7
+          ],
+          "j9": [
+            -2.4,
+            0.35
+          ],
+          "rimA": [
+            -1.95,
+            4.65
+          ],
+          "rimB": [
+            0.85,
+            4.65
+          ],
+          "hA": [
+            2.15,
+            0
+          ],
+          "hB": [
+            2.15,
+            4.65
+          ],
+          "hTa": [
+            1.9,
+            4.65
+          ],
+          "hTb": [
+            2.4,
+            4.65
+          ],
+          "hBa": [
+            1.9,
+            0
+          ],
+          "hBb": [
+            2.4,
+            0
+          ],
+          "aT": [
+            0,
+            0.55
+          ],
+          "aH": [
+            0,
+            -0.75
+          ],
+          "w0": [
+            -1.5,
+            0
+          ],
+          "w1": [
+            1.5,
+            0
+          ],
+          "w2": [
+            1.85,
+            0.35
+          ],
+          "wAr": [
+            1.85,
+            0.35
+          ],
+          "wBr": [
+            1.85,
+            0.35
+          ],
+          "wBl": [
+            -1.85,
+            0.35
+          ],
+          "wAl": [
+            -1.85,
+            0.35
+          ],
+          "w9": [
+            -1.85,
+            0.35
+          ]
+        },
+        "parts": [
+          {
+            "id": "water",
+            "poly": [
+              "w0",
+              "w1",
+              "w2",
+              "wAr",
+              "wBr",
+              "wBl",
+              "wAl",
+              "w9"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "jar",
+            "poly": [
+              "j0",
+              "j1",
+              "j2",
+              "j3",
+              "j4",
+              "j5",
+              "j6",
+              "j7",
+              "j8",
+              "j9"
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "rim",
+            "seg": [
+              "rimA",
+              "rimB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "height",
+            "seg": [
+              "hA",
+              "hB"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "heightTop",
+            "seg": [
+              "hTa",
+              "hTb"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "heightBottom",
+            "seg": [
+              "hBa",
+              "hBb"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "pull",
+            "vector": [
+              "aT",
+              "aH"
+            ],
+            "ink": "warm",
+            "w": 7
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "How tall is it?",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "problem",
+              "text": "How tall is it?"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "height",
+                "heightTop",
+                "heightBottom"
+              ],
+              "at": "tall"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is its length, from bottom to top.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Length}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How heavy is it?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How heavy is it?"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "height",
+                "heightTop",
+                "heightBottom"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "j0": [
+                  -1.5,
+                  0.75
+                ],
+                "j1": [
+                  1.5,
+                  0.75
+                ],
+                "j2": [
+                  1.85,
+                  1.1
+                ],
+                "j3": [
+                  1.85,
+                  4.45
+                ],
+                "j4": [
+                  1.3,
+                  4.9
+                ],
+                "j5": [
+                  1.3,
+                  5.35
+                ],
+                "j6": [
+                  -1.3,
+                  5.35
+                ],
+                "j7": [
+                  -1.3,
+                  4.9
+                ],
+                "j8": [
+                  -1.85,
+                  4.45
+                ],
+                "j9": [
+                  -1.85,
+                  1.1
+                ],
+                "rimA": [
+                  -1.4,
+                  5.4
+                ],
+                "rimB": [
+                  1.4,
+                  5.4
+                ]
+              },
+              "at": "heavy",
+              "dur": 0.9
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It pulls down. That is its weight.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Weight}"
+            },
+            {
+              "do": "draw",
+              "target": "pull",
+              "at": "pulls",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How much can it hold?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How much can it hold?"
+            },
+            {
+              "do": "hide",
+              "target": "pull"
+            },
+            {
+              "do": "move",
+              "points": {
+                "j0": [
+                  -1.5,
+                  0.0
+                ],
+                "j1": [
+                  1.5,
+                  0.0
+                ],
+                "j2": [
+                  1.85,
+                  0.35
+                ],
+                "j3": [
+                  1.85,
+                  3.7
+                ],
+                "j4": [
+                  1.3,
+                  4.15
+                ],
+                "j5": [
+                  1.3,
+                  4.6
+                ],
+                "j6": [
+                  -1.3,
+                  4.6
+                ],
+                "j7": [
+                  -1.3,
+                  4.15
+                ],
+                "j8": [
+                  -1.85,
+                  3.7
+                ],
+                "j9": [
+                  -1.85,
+                  0.35
+                ],
+                "rimA": [
+                  -1.4,
+                  4.65
+                ],
+                "rimB": [
+                  1.4,
+                  4.65
+                ]
+              },
+              "at": "much",
+              "dur": 0.9
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Fill it up, all the way. That is its capacity.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Capacity}"
+            },
+            {
+              "do": "show",
+              "target": "water",
+              "at": "Fill",
+              "dur": 0.3
+            },
+            {
+              "do": "move",
+              "points": {
+                "wAr": [
+                  1.85,
+                  3.7
+                ],
+                "wBr": [
+                  1.85,
+                  3.7
+                ],
+                "wBl": [
+                  -1.85,
+                  3.7
+                ],
+                "wAl": [
+                  -1.85,
+                  3.7
+                ]
+              },
+              "at": "Fill",
+              "dur": 1.482
+            },
+            {
+              "do": "move",
+              "points": {
+                "wBr": [
+                  1.3,
+                  4.15
+                ],
+                "wBl": [
+                  -1.3,
+                  4.15
+                ]
+              },
+              "at": "way",
+              "dur": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.65,
+          -0.4,
+          8.35,
+          4.6
+        ],
+        "points": {
+          "b0": [
+            0,
+            2.65
+          ],
+          "b1": [
+            6.4,
+            2.65
+          ],
+          "b2": [
+            6.4,
+            3.5
+          ],
+          "b3": [
+            0,
+            3.5
+          ],
+          "g0": [
+            3.2,
+            0.75
+          ],
+          "g1": [
+            7.7,
+            0.75
+          ],
+          "g2": [
+            7.7,
+            1.6
+          ],
+          "g3": [
+            3.2,
+            1.6
+          ],
+          "sA": [
+            0,
+            0.3
+          ],
+          "sB": [
+            0,
+            3.95
+          ],
+          "beA": [
+            6.4,
+            2.45
+          ],
+          "beB": [
+            6.4,
+            3.7
+          ],
+          "geA": [
+            4.5,
+            0.55
+          ],
+          "geB": [
+            4.5,
+            1.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "blueStrip",
+            "poly": [
+              "b0",
+              "b1",
+              "b2",
+              "b3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "goldStrip",
+            "poly": [
+              "g0",
+              "g1",
+              "g2",
+              "g3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "startLine",
+            "seg": [
+              "sA",
+              "sB"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "dash": true
+          },
+          {
+            "id": "blueEnd",
+            "seg": [
+              "beA",
+              "beB"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "goldEnd",
+            "seg": [
+              "geA",
+              "geB"
+            ],
+            "ink": "gold",
+            "w": 6
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which strip is longer?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which strip is longer?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The gold one! It goes farther.",
+          "pause": 0.4,
+          "do": []
+        },
+        {
+          "speaker": "teacher",
+          "say": "Look where they start.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "draw",
+              "target": "startLine",
+              "at": "start"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Oh! The gold one starts later. I'll slide it back, so the left ends match.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "g0": [
+                  0,
+                  0.75
+                ],
+                "g1": [
+                  4.5,
+                  0.75
+                ],
+                "g2": [
+                  4.5,
+                  1.6
+                ],
+                "g3": [
+                  0,
+                  1.6
+                ]
+              },
+              "at": "slide",
+              "dur": 1.5
+            },
+            {
+              "do": "highlight",
+              "target": "startLine",
+              "at": "match"
+            },
+            {
+              "do": "view",
+              "to": [
+                -1.3,
+                -0.4,
+                7.7,
+                4.6
+              ],
+              "at": "match",
+              "dur": 1.0
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Now the blue one is longer!",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Longer}"
+            },
+            {
+              "do": "show",
+              "target": "blueEnd",
+              "at": "blue"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sliding a strip does not change its length.",
+          "pause": 0.4,
+          "do": []
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which strip is shorter?",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which strip is shorter?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The gold one.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Shorter}"
+            },
+            {
+              "do": "hide",
+              "target": "blueEnd"
+            },
+            {
+              "do": "show",
+              "target": "goldEnd",
+              "at": "gold"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.3,
+          -0.4,
+          7.7,
+          4.6
+        ],
+        "points": {
+          "b0": [
+            0,
+            2.65
+          ],
+          "b1": [
+            6.4,
+            2.65
+          ],
+          "b2": [
+            6.4,
+            3.5
+          ],
+          "b3": [
+            0,
+            3.5
+          ],
+          "g0": [
+            0,
+            0.75
+          ],
+          "g1": [
+            6.4,
+            0.75
+          ],
+          "g2": [
+            6.4,
+            1.6
+          ],
+          "g3": [
+            0,
+            1.6
+          ],
+          "lA": [
+            0,
+            0.3
+          ],
+          "lB": [
+            0,
+            3.95
+          ],
+          "rA": [
+            6.4,
+            0.3
+          ],
+          "rB": [
+            6.4,
+            3.95
+          ]
+        },
+        "parts": [
+          {
+            "id": "blueStrip",
+            "poly": [
+              "b0",
+              "b1",
+              "b2",
+              "b3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "goldStrip",
+            "poly": [
+              "g0",
+              "g1",
+              "g2",
+              "g3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "leftEnd",
+            "seg": [
+              "lA",
+              "lB"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "dash": true
+          },
+          {
+            "id": "rightEnd",
+            "seg": [
+              "rA",
+              "rB"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "dash": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which strip is longer?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which strip is longer?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Neither! Same start, same end. They are equal.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "draw",
+              "target": "leftEnd",
+              "at": "start"
+            },
+            {
+              "do": "draw",
+              "target": "rightEnd",
+              "at": "end"
+            },
+            {
+              "do": "clear",
+              "at": "equal"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Equal}",
+              "at": "equal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.5,
+          -1.3,
+          6.5,
+          5.0
+        ],
+        "points": {
+          "f0": [
+            -1.6,
+            -0.8
+          ],
+          "f1": [
+            1.6,
+            -0.8
+          ],
+          "f2": [
+            1.3,
+            -0.4
+          ],
+          "f3": [
+            -1.3,
+            -0.4
+          ],
+          "st0": [
+            -0.38,
+            -0.4
+          ],
+          "st1": [
+            0.38,
+            -0.4
+          ],
+          "st2": [
+            0,
+            3.3
+          ],
+          "pivotC": [
+            0,
+            3.25
+          ],
+          "ha": [
+            5.65,
+            1.9
+          ],
+          "hb": [
+            5.65,
+            0.25
+          ],
+          "la": [
+            -5.65,
+            2.35
+          ],
+          "lb": [
+            -5.65,
+            4.0
+          ],
+          "beamA": [
+            -3.5,
+            3.25
+          ],
+          "beamB": [
+            3.5,
+            3.25
+          ],
+          "lcA": [
+            -3.5,
+            3.25
+          ],
+          "lcAb": [
+            -5.1,
+            1.25
+          ],
+          "lcB": [
+            -3.5,
+            3.25
+          ],
+          "lcBb": [
+            -1.9,
+            1.25
+          ],
+          "lp0": [
+            -5.1,
+            1.25
+          ],
+          "lp1": [
+            -1.9,
+            1.25
+          ],
+          "lp2": [
+            -2.3,
+            0.95
+          ],
+          "lp3": [
+            -4.7,
+            0.95
+          ],
+          "pi0": [
+            -4.7,
+            1.3
+          ],
+          "pi1": [
+            -4.55,
+            1.7
+          ],
+          "pi2": [
+            -4.7,
+            2.6
+          ],
+          "pi3": [
+            -4.3,
+            2.45
+          ],
+          "pi4": [
+            -2.7,
+            2.45
+          ],
+          "pi5": [
+            -2.3,
+            2.6
+          ],
+          "pi6": [
+            -2.45,
+            1.7
+          ],
+          "pi7": [
+            -2.3,
+            1.3
+          ],
+          "pi8": [
+            -2.7,
+            1.4
+          ],
+          "pi9": [
+            -4.3,
+            1.4
+          ],
+          "rcA": [
+            3.5,
+            3.25
+          ],
+          "rcAb": [
+            1.9,
+            1.25
+          ],
+          "rcB": [
+            3.5,
+            3.25
+          ],
+          "rcBb": [
+            5.1,
+            1.25
+          ],
+          "rp0": [
+            1.9,
+            1.25
+          ],
+          "rp1": [
+            5.1,
+            1.25
+          ],
+          "rp2": [
+            4.7,
+            0.95
+          ],
+          "rp3": [
+            2.3,
+            0.95
+          ],
+          "ro0": [
+            2.95,
+            1.28
+          ],
+          "ro1": [
+            4.05,
+            1.28
+          ],
+          "ro2": [
+            4.15,
+            1.6
+          ],
+          "ro3": [
+            3.9,
+            2.13
+          ],
+          "ro4": [
+            3.35,
+            2.2
+          ],
+          "ro5": [
+            2.9,
+            1.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "foot",
+            "poly": [
+              "f0",
+              "f1",
+              "f2",
+              "f3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "stand",
+            "poly": [
+              "st0",
+              "st1",
+              "st2"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "beam",
+            "seg": [
+              "beamA",
+              "beamB"
+            ],
+            "ink": "gold",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "pivot",
+            "circle": "pivotC",
+            "r": 0.18,
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "leftCordA",
+            "seg": [
+              "lcA",
+              "lcAb"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "leftCordB",
+            "seg": [
+              "lcB",
+              "lcBb"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "leftPan",
+            "poly": [
+              "lp0",
+              "lp1",
+              "lp2",
+              "lp3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "rightCordA",
+            "seg": [
+              "rcA",
+              "rcAb"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "rightCordB",
+            "seg": [
+              "rcB",
+              "rcBb"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "rightPan",
+            "poly": [
+              "rp0",
+              "rp1",
+              "rp2",
+              "rp3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "pillow",
+            "poly": [
+              "pi0",
+              "pi1",
+              "pi2",
+              "pi3",
+              "pi4",
+              "pi5",
+              "pi6",
+              "pi7",
+              "pi8",
+              "pi9"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "rock",
+            "poly": [
+              "ro0",
+              "ro1",
+              "ro2",
+              "ro3",
+              "ro4",
+              "ro5"
+            ],
+            "fill": "walnut",
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "heavyArrow",
+            "vector": [
+              "ha",
+              "hb"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "lightArrow",
+            "vector": [
+              "la",
+              "lb"
+            ],
+            "ink": "blue",
+            "w": 6
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now weight. A big pillow and a little rock.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Weight}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "On a balance, the heavier side goes down.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "beamA": [
+                  -3.36,
+                  4.23
+                ],
+                "beamB": [
+                  3.36,
+                  2.27
+                ],
+                "lcA": [
+                  -3.36,
+                  4.23
+                ],
+                "lcAb": [
+                  -4.96,
+                  2.23
+                ],
+                "lcB": [
+                  -3.36,
+                  4.23
+                ],
+                "lcBb": [
+                  -1.76,
+                  2.23
+                ],
+                "lp0": [
+                  -4.96,
+                  2.23
+                ],
+                "lp1": [
+                  -1.76,
+                  2.23
+                ],
+                "lp2": [
+                  -2.16,
+                  1.93
+                ],
+                "lp3": [
+                  -4.56,
+                  1.93
+                ],
+                "pi0": [
+                  -4.56,
+                  2.28
+                ],
+                "pi1": [
+                  -4.41,
+                  2.68
+                ],
+                "pi2": [
+                  -4.56,
+                  3.58
+                ],
+                "pi3": [
+                  -4.16,
+                  3.43
+                ],
+                "pi4": [
+                  -2.56,
+                  3.43
+                ],
+                "pi5": [
+                  -2.16,
+                  3.58
+                ],
+                "pi6": [
+                  -2.31,
+                  2.68
+                ],
+                "pi7": [
+                  -2.16,
+                  2.28
+                ],
+                "pi8": [
+                  -2.56,
+                  2.38
+                ],
+                "pi9": [
+                  -4.16,
+                  2.38
+                ],
+                "rcA": [
+                  3.36,
+                  2.27
+                ],
+                "rcAb": [
+                  1.76,
+                  0.27
+                ],
+                "rcB": [
+                  3.36,
+                  2.27
+                ],
+                "rcBb": [
+                  4.96,
+                  0.27
+                ],
+                "rp0": [
+                  1.76,
+                  0.27
+                ],
+                "rp1": [
+                  4.96,
+                  0.27
+                ],
+                "rp2": [
+                  4.56,
+                  -0.03
+                ],
+                "rp3": [
+                  2.16,
+                  -0.03
+                ],
+                "ro0": [
+                  2.81,
+                  0.3
+                ],
+                "ro1": [
+                  3.91,
+                  0.3
+                ],
+                "ro2": [
+                  4.01,
+                  0.62
+                ],
+                "ro3": [
+                  3.76,
+                  1.15
+                ],
+                "ro4": [
+                  3.21,
+                  1.22
+                ],
+                "ro5": [
+                  2.76,
+                  0.87
+                ]
+              },
+              "at": "heavier",
+              "dur": 1.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which is heavier?",
+          "pause": 1.0,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which is heavier?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The little rock! Its side went down.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Heavier}"
+            },
+            {
+              "do": "draw",
+              "target": "heavyArrow",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The big pillow is lighter. Its side went up.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Lighter}"
+            },
+            {
+              "do": "draw",
+              "target": "lightArrow",
+              "at": "up"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Bigger does not always mean heavier.",
+          "pause": 0.8,
+          "do": []
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          -2.0,
+          8.7,
+          5.5
+        ],
+        "points": {
+          "gTL": [
+            0.4,
+            3.45
+          ],
+          "gBL": [
+            0.4,
+            0.0
+          ],
+          "gBR": [
+            2.1,
+            0.0
+          ],
+          "gTR": [
+            2.1,
+            3.45
+          ],
+          "gw0": [
+            0.4,
+            0
+          ],
+          "gw1": [
+            2.1,
+            0
+          ],
+          "gw2": [
+            2.1,
+            3.1
+          ],
+          "gw3": [
+            0.4,
+            3.1
+          ],
+          "pivot": [
+            2.1,
+            0.0
+          ],
+          "pivotUp": [
+            1.608,
+            4.23
+          ],
+          "mL": [
+            4.3,
+            2.55
+          ],
+          "mBL": [
+            4.3,
+            0
+          ],
+          "mBR": [
+            7.3,
+            0
+          ],
+          "mR": [
+            7.3,
+            2.55
+          ],
+          "mw0": [
+            4.3,
+            0
+          ],
+          "mw1": [
+            7.3,
+            0
+          ],
+          "mw2": [
+            7.3,
+            0
+          ],
+          "mw3": [
+            4.3,
+            0
+          ],
+          "h0": [
+            7.3,
+            2.1
+          ],
+          "h1": [
+            7.95,
+            2.0
+          ],
+          "h2": [
+            8.02,
+            0.8
+          ],
+          "h3": [
+            7.3,
+            0.55
+          ],
+          "s0": [
+            4.85,
+            3.05
+          ],
+          "s1": [
+            4.97,
+            2.7
+          ],
+          "s2": [
+            5.05,
+            2.0
+          ],
+          "s3": [
+            5.05,
+            0.08
+          ],
+          "rA": [
+            5.8,
+            1.837
+          ],
+          "rB": [
+            5.8,
+            2.47
+          ],
+          "rTa": [
+            5.6,
+            2.47
+          ],
+          "rTb": [
+            6.0,
+            2.47
+          ],
+          "rBa": [
+            5.6,
+            1.837
+          ],
+          "rBb": [
+            6.0,
+            1.837
+          ]
+        },
+        "parts": [
+          {
+            "id": "glassWater",
+            "poly": [
+              "gw0",
+              "gw1",
+              "gw2",
+              "gw3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "glass",
+            "poly": [
+              "gTL",
+              "gBL",
+              "gBR",
+              "gTR",
+              "gBR",
+              "gBL"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "glassGold",
+            "poly": [
+              "gTL",
+              "gBL",
+              "gBR",
+              "gTR",
+              "gBR",
+              "gBL"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "stream",
+            "curve": [
+              "s0",
+              "s1",
+              "s2",
+              "s3"
+            ],
+            "ink": "blue",
+            "w": 8
+          },
+          {
+            "id": "mugWater",
+            "poly": [
+              "mw0",
+              "mw1",
+              "mw2",
+              "mw3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "mug",
+            "poly": [
+              "mL",
+              "mBL",
+              "mBR",
+              "mR",
+              "mBR",
+              "mBL"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "handle",
+            "curve": [
+              "h0",
+              "h1",
+              "h2",
+              "h3"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "mugGold",
+            "poly": [
+              "mL",
+              "mBL",
+              "mBR",
+              "mR",
+              "mBR",
+              "mBL"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "roomStem",
+            "seg": [
+              "rA",
+              "rB"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "roomTop",
+            "seg": [
+              "rTa",
+              "rTb"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "roomBottom",
+            "seg": [
+              "rBa",
+              "rBb"
+            ],
+            "ink": "gold",
+            "w": 3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now capacity. A full glass and an empty mug.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Capacity}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Pour all the water into the mug.",
+          "pause": 1.6,
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -0.3,
+                -0.8,
+                8.7,
+                6.7
+              ],
+              "at": "Pour",
+              "dur": 1.0
+            },
+            {
+              "do": "turn",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "about": "pivot",
+              "deg": -110.0,
+              "at": "Pour",
+              "dur": 1.0
+            },
+            {
+              "do": "slide",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "by": [
+                -0.492,
+                4.23
+              ],
+              "at": "Pour",
+              "dur": 1.2
+            },
+            {
+              "do": "draw",
+              "target": "stream",
+              "at": "into",
+              "dur": 0.35
+            },
+            {
+              "do": "show",
+              "target": "mugWater",
+              "at": "into",
+              "dur": 0.2
+            },
+            {
+              "do": "move",
+              "points": {
+                "mw2": [
+                  7.3,
+                  1.757
+                ],
+                "mw3": [
+                  4.3,
+                  1.757
+                ]
+              },
+              "at": "into",
+              "dur": 1.8
+            },
+            {
+              "do": "move",
+              "points": {
+                "gw0": [
+                  2.1,
+                  3.45
+                ],
+                "gw1": [
+                  2.1,
+                  3.45
+                ],
+                "gw2": [
+                  2.1,
+                  3.45
+                ],
+                "gw3": [
+                  2.1,
+                  3.45
+                ]
+              },
+              "at": "into",
+              "dur": 1.8
+            },
+            {
+              "do": "hide",
+              "target": "stream",
+              "at": "mug",
+              "dur": 1.2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It all fits, with room to spare.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "stream",
+                "glassWater"
+              ],
+              "at": "It",
+              "dur": 0.3
+            },
+            {
+              "do": "turn",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "about": "pivotUp",
+              "deg": 110.0,
+              "at": "It",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "by": [
+                0.492,
+                -4.23
+              ],
+              "at": "It",
+              "dur": 1.0
+            },
+            {
+              "do": "view",
+              "to": [
+                -0.3,
+                -2.0,
+                8.7,
+                5.5
+              ],
+              "at": "It",
+              "dur": 1.4
+            },
+            {
+              "do": "draw",
+              "target": [
+                "roomStem",
+                "roomTop",
+                "roomBottom"
+              ],
+              "at": "room",
+              "dur": 0.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The glass is taller, but the mug holds more.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear",
+              "at": "mug"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{More}",
+              "at": "mug"
+            },
+            {
+              "do": "show",
+              "target": "mugGold",
+              "at": "more",
+              "dur": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          -2.0,
+          8.7,
+          5.5
+        ],
+        "points": {
+          "gTL": [
+            0.4,
+            3.45
+          ],
+          "gBL": [
+            0.4,
+            0.0
+          ],
+          "gBR": [
+            2.1,
+            0.0
+          ],
+          "gTR": [
+            2.1,
+            3.45
+          ],
+          "gw0": [
+            0.4,
+            0
+          ],
+          "gw1": [
+            2.1,
+            0
+          ],
+          "gw2": [
+            2.1,
+            3.1
+          ],
+          "gw3": [
+            0.4,
+            3.1
+          ],
+          "pivot": [
+            2.1,
+            0.0
+          ],
+          "pivotUp": [
+            1.608,
+            4.23
+          ],
+          "mL": [
+            4.3,
+            2.55
+          ],
+          "mBL": [
+            4.3,
+            0
+          ],
+          "mBR": [
+            5.85,
+            0
+          ],
+          "mR": [
+            5.85,
+            2.55
+          ],
+          "mw0": [
+            4.3,
+            0
+          ],
+          "mw1": [
+            5.85,
+            0
+          ],
+          "mw2": [
+            5.85,
+            0
+          ],
+          "mw3": [
+            4.3,
+            0
+          ],
+          "h0": [
+            5.85,
+            2.1
+          ],
+          "h1": [
+            6.5,
+            2.0
+          ],
+          "h2": [
+            6.57,
+            0.8
+          ],
+          "h3": [
+            5.85,
+            0.55
+          ],
+          "s0": [
+            4.85,
+            3.05
+          ],
+          "s1": [
+            4.97,
+            2.7
+          ],
+          "s2": [
+            5.05,
+            2.0
+          ],
+          "s3": [
+            5.05,
+            0.08
+          ],
+          "sp0": [
+            4.3,
+            2.58
+          ],
+          "sp1": [
+            4.0,
+            2.45
+          ],
+          "sp2": [
+            3.78,
+            1.5
+          ],
+          "sp3": [
+            3.72,
+            0.14
+          ],
+          "pu0": [
+            2.9,
+            0.0
+          ],
+          "pu1": [
+            3.05,
+            0.1
+          ],
+          "pu2": [
+            3.4,
+            0.16
+          ],
+          "pu3": [
+            3.85,
+            0.17
+          ],
+          "pu4": [
+            4.2,
+            0.12
+          ],
+          "pu5": [
+            4.3,
+            0.06
+          ],
+          "pu6": [
+            4.3,
+            0.0
+          ]
+        },
+        "parts": [
+          {
+            "id": "glassWater",
+            "poly": [
+              "gw0",
+              "gw1",
+              "gw2",
+              "gw3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "glass",
+            "poly": [
+              "gTL",
+              "gBL",
+              "gBR",
+              "gTR",
+              "gBR",
+              "gBL"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "glassGold",
+            "poly": [
+              "gTL",
+              "gBL",
+              "gBR",
+              "gTR",
+              "gBR",
+              "gBL"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "stream",
+            "curve": [
+              "s0",
+              "s1",
+              "s2",
+              "s3"
+            ],
+            "ink": "blue",
+            "w": 8
+          },
+          {
+            "id": "mugWater",
+            "poly": [
+              "mw0",
+              "mw1",
+              "mw2",
+              "mw3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "mug",
+            "poly": [
+              "mL",
+              "mBL",
+              "mBR",
+              "mR",
+              "mBR",
+              "mBL"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "handle",
+            "curve": [
+              "h0",
+              "h1",
+              "h2",
+              "h3"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "mugGold",
+            "poly": [
+              "mL",
+              "mBL",
+              "mBR",
+              "mR",
+              "mBR",
+              "mBL"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "spill",
+            "curve": [
+              "sp0",
+              "sp1",
+              "sp2",
+              "sp3"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "puddle",
+            "poly": [
+              "pu0",
+              "pu1",
+              "pu2",
+              "pu3",
+              "pu4",
+              "pu5",
+              "pu6"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Your turn. A full glass and a smaller mug.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{Capacity}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which holds more?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which holds more?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I'll pour it all in. Oh no, it spills over!",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -0.3,
+                -0.8,
+                8.7,
+                6.7
+              ],
+              "at": "pour",
+              "dur": 1.0
+            },
+            {
+              "do": "turn",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "about": "pivot",
+              "deg": -110.0,
+              "at": "pour",
+              "dur": 1.0
+            },
+            {
+              "do": "slide",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "by": [
+                -0.492,
+                4.23
+              ],
+              "at": "pour",
+              "dur": 1.2
+            },
+            {
+              "do": "draw",
+              "target": "stream",
+              "at": "Oh",
+              "dur": 0.35
+            },
+            {
+              "do": "show",
+              "target": "mugWater",
+              "at": "Oh",
+              "dur": 0.2
+            },
+            {
+              "do": "move",
+              "points": {
+                "mw2": [
+                  5.85,
+                  2.5
+                ],
+                "mw3": [
+                  4.3,
+                  2.5
+                ]
+              },
+              "at": "Oh",
+              "dur": 0.798
+            },
+            {
+              "do": "move",
+              "points": {
+                "gw0": [
+                  2.1,
+                  3.45
+                ],
+                "gw1": [
+                  2.1,
+                  3.45
+                ],
+                "gw2": [
+                  2.1,
+                  3.45
+                ],
+                "gw3": [
+                  2.1,
+                  3.45
+                ]
+              },
+              "at": "Oh",
+              "dur": 1.212
+            },
+            {
+              "do": "hide",
+              "target": "stream",
+              "at": "over",
+              "dur": 0.5
+            },
+            {
+              "do": "hide",
+              "target": "spill",
+              "at": "over",
+              "dur": 1.1
+            },
+            {
+              "do": "draw",
+              "target": "spill",
+              "at": "spills",
+              "dur": 0.5
+            },
+            {
+              "do": "show",
+              "target": "puddle",
+              "at": "over",
+              "dur": 0.6
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The mug could not hold it all. So the glass holds more.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "stream",
+                "glassWater"
+              ],
+              "at": "The",
+              "dur": 0.3
+            },
+            {
+              "do": "turn",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "about": "pivotUp",
+              "deg": 110.0,
+              "at": "The",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": [
+                "glassWater",
+                "glass"
+              ],
+              "by": [
+                0.492,
+                -4.23
+              ],
+              "at": "The",
+              "dur": 1.0
+            },
+            {
+              "do": "view",
+              "to": [
+                -0.3,
+                -2.0,
+                8.7,
+                5.5
+              ],
+              "at": "The",
+              "dur": 1.4
+            },
+            {
+              "do": "clear",
+              "at": "glass"
+            },
+            {
+              "do": "write",
+              "tex": "\\huge\\text{More}",
+              "at": "glass"
+            },
+            {
+              "do": "show",
+              "target": "glassGold",
+              "at": "holds",
+              "dur": 0.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Pick what to measure. Then compare side by side.",
+          "pause": 1.5,
+          "do": []
+        }
+      ]
+    }
+  ]
+}
