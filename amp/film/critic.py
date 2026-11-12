@@ -66,6 +66,8 @@ def script_text(path):
                     lines.append(f"     board {a['do']}: {body}" + (f"   [margin: {a['note']}]" if a.get("note") else ""))
                     if a.get("id"):
                         named[a["id"]] = body
+                if a["do"] == "header":
+                    lines.append("     board header off" if a.get("off") else f"     board header (pinned at the top of the board until replaced, removed or the shot ends): " + (f"{a['label']}: " if a.get("label") else "") + str(a.get("tex") or a.get("text")))
                 if a["do"] == "strike":
                     lines.append(f"     board strike: the line \"{named.get(a['target'], a['target'])}\" is struck out")
     return d.get("title", ""), "\n".join(lines)

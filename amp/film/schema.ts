@@ -526,6 +526,25 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("answer"), tex: z.string().min(1), ...lineId, ...timing }).strict(),
   /** Strike out a line already on the board (a "write", "text" or "answer", by its id): one stroke through it, and its text dims. The line stays where it is, struck. */
   z.object({ do: z.literal("strike"), target: name, ...timing }).strict(),
+  /**
+   * A header: one formula (`tex`) or short line of words (`text`), under an
+   * optional fine-print name (`label`), pinned at the top of the board. It stays
+   * through every "clear" until another header replaces it, `"off": true`
+   * removes it, or a later shot starts (`"keep": true` carries it into the next
+   * shots). It may arrive, change or leave only while the column being written
+   * is empty: at the start, or after a "clear" before the column's first line.
+   */
+  z.object({
+    do: z.literal("header"),
+    tex: z.string().min(1).optional(),
+    text: z.string().min(1).optional(),
+    label: z.string().min(1).optional(),
+    off: z.literal(true).optional(),
+    keep: z.boolean().optional(),
+    ...timing,
+  }).strict().refine((a) => (a.off ? a.tex === undefined && a.text === undefined && a.label === undefined && a.keep === undefined : (a.tex === undefined) !== (a.text === undefined)), {
+    message: 'A header is a "tex" or a "text" (with an optional "label" and "keep"), or "off": true alone',
+  }),
   /** Start a new column on the whiteboard, to the right. The old column stays on the board for the overview. */
   z.object({ do: z.literal("clear"), ...timing }).strict(),
   /** Pull back to show the whole whiteboard: every example from problem to answer. */
