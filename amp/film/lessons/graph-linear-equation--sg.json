@@ -1,0 +1,2200 @@
+{
+  "id": "graph-linear-equation--sg",
+  "title": "Graph a line from its equation",
+  "teaches": [
+    "staar-line-from-points"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -3.6,
+          -4.6,
+          8.6,
+          6.6
+        ],
+        "points": {
+          "GX0A": [
+            -3,
+            -4
+          ],
+          "GX0B": [
+            -3,
+            6
+          ],
+          "GX1A": [
+            -2,
+            -4
+          ],
+          "GX1B": [
+            -2,
+            6
+          ],
+          "GX2A": [
+            -1,
+            -4
+          ],
+          "GX2B": [
+            -1,
+            6
+          ],
+          "GX3A": [
+            0,
+            -4
+          ],
+          "GX3B": [
+            0,
+            6
+          ],
+          "GX4A": [
+            1,
+            -4
+          ],
+          "GX4B": [
+            1,
+            6
+          ],
+          "GX5A": [
+            2,
+            -4
+          ],
+          "GX5B": [
+            2,
+            6
+          ],
+          "GX6A": [
+            3,
+            -4
+          ],
+          "GX6B": [
+            3,
+            6
+          ],
+          "GX7A": [
+            4,
+            -4
+          ],
+          "GX7B": [
+            4,
+            6
+          ],
+          "GX8A": [
+            5,
+            -4
+          ],
+          "GX8B": [
+            5,
+            6
+          ],
+          "GX9A": [
+            6,
+            -4
+          ],
+          "GX9B": [
+            6,
+            6
+          ],
+          "GX10A": [
+            7,
+            -4
+          ],
+          "GX10B": [
+            7,
+            6
+          ],
+          "GX11A": [
+            8,
+            -4
+          ],
+          "GX11B": [
+            8,
+            6
+          ],
+          "GY0A": [
+            -3,
+            -4
+          ],
+          "GY0B": [
+            8,
+            -4
+          ],
+          "GY1A": [
+            -3,
+            -3
+          ],
+          "GY1B": [
+            8,
+            -3
+          ],
+          "GY2A": [
+            -3,
+            -2
+          ],
+          "GY2B": [
+            8,
+            -2
+          ],
+          "GY3A": [
+            -3,
+            -1
+          ],
+          "GY3B": [
+            8,
+            -1
+          ],
+          "GY4A": [
+            -3,
+            0
+          ],
+          "GY4B": [
+            8,
+            0
+          ],
+          "GY5A": [
+            -3,
+            1
+          ],
+          "GY5B": [
+            8,
+            1
+          ],
+          "GY6A": [
+            -3,
+            2
+          ],
+          "GY6B": [
+            8,
+            2
+          ],
+          "GY7A": [
+            -3,
+            3
+          ],
+          "GY7B": [
+            8,
+            3
+          ],
+          "GY8A": [
+            -3,
+            4
+          ],
+          "GY8B": [
+            8,
+            4
+          ],
+          "GY9A": [
+            -3,
+            5
+          ],
+          "GY9B": [
+            8,
+            5
+          ],
+          "GY10A": [
+            -3,
+            6
+          ],
+          "GY10B": [
+            8,
+            6
+          ],
+          "P1": [
+            2,
+            -1
+          ],
+          "C": [
+            3,
+            -1
+          ],
+          "P2": [
+            3,
+            2
+          ],
+          "C2": [
+            4,
+            2
+          ],
+          "P3": [
+            4,
+            5
+          ],
+          "L": [
+            1.2,
+            -3.4
+          ],
+          "H": [
+            4.33,
+            6.0
+          ],
+          "E": [
+            5.45,
+            -3.45
+          ],
+          "LP1": [
+            3.3,
+            -1.85
+          ],
+          "LR": [
+            2.76,
+            -0.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "gx0",
+            "seg": [
+              "GX0A",
+              "GX0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "GX1A",
+              "GX1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "GX2A",
+              "GX2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "GX3A",
+              "GX3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "GX4A",
+              "GX4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "GX5A",
+              "GX5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "GX6A",
+              "GX6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "GX7A",
+              "GX7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "GX8A",
+              "GX8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "GX9A",
+              "GX9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "GX10A",
+              "GX10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "GX11A",
+              "GX11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "GY0A",
+              "GY0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "GY1A",
+              "GY1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "GY2A",
+              "GY2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "GY3A",
+              "GY3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "GY4A",
+              "GY4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy5",
+            "seg": [
+              "GY5A",
+              "GY5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy6",
+            "seg": [
+              "GY6A",
+              "GY6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy7",
+            "seg": [
+              "GY7A",
+              "GY7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy8",
+            "seg": [
+              "GY8A",
+              "GY8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy9",
+            "seg": [
+              "GY9A",
+              "GY9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy10",
+            "seg": [
+              "GY10A",
+              "GY10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 4,
+            "ystep": 1,
+            "yevery": 2,
+            "size": "l",
+            "xrange": [
+              -3,
+              8
+            ],
+            "yrange": [
+              -4,
+              6
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run",
+            "vector": [
+              "P1",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "run2",
+            "vector": [
+              "P2",
+              "C2"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise2",
+            "vector": [
+              "C2",
+              "P3"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "dP1",
+            "dot": "P1",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "dP2",
+            "dot": "P2",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "dP3",
+            "dot": "P3",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lr",
+            "label": "1",
+            "at": "LR",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "3",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "l1",
+            "label": "(2,-1)",
+            "at": "LP1",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "l2",
+            "label": "(3,2)",
+            "at": "P2",
+            "dir": "w",
+            "size": "l"
+          },
+          {
+            "id": "l3",
+            "label": "(4,5)",
+            "at": "P3",
+            "dir": "w",
+            "size": "l"
+          },
+          {
+            "id": "eq",
+            "label": "y+1=3(x-2)",
+            "at": "E",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "To graph a line, find two points that make its equation true.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Find two points that make it true."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Graph y plus one equals three times x minus two by placing two points on its line.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Graph $y + 1 = 3(x - 2)$ by placing 2 points on its line."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This is point-slope form: one point on the line, and the slope.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Point-slope form",
+              "tone": "muted",
+              "at": "point-slope"
+            },
+            {
+              "do": "write",
+              "tex": "y-y_1=m(x-x_1)",
+              "fresh": true,
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "y plus one is y minus negative one, so the point is two, negative one.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=3(x-\\cg{2})",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "y+1=y-(\\cg{-1})",
+              "fresh": true,
+              "at": "minus"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP1",
+                "l1"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip copies the signs as printed: negative two, one. That point is off this line.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "(-2,\\ 1)",
+              "id": "slip",
+              "note": "\\text{common slip}",
+              "fresh": true,
+              "at": "negative"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "off"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The slope is three, so the step goes across one and up three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=\\cw{3}(x-2)",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "\\text{slope}=\\frac{\\cw{3}}{\\cb{1}}",
+              "fresh": true,
+              "at": "step"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "one"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "three",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The step lands on three, two, the second point.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dP2",
+                "l2"
+              ],
+              "at": "lands"
+            },
+            {
+              "do": "write",
+              "tex": "(3,\\ 2)",
+              "note": "\\text{second point}",
+              "fresh": true,
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Draw the line through both, with its equation beside it.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "Draw"
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "Draw"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Repeat the step and it lands on four, five, on the same line.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "draw",
+              "target": "run2",
+              "at": "Repeat"
+            },
+            {
+              "do": "draw",
+              "target": "rise2",
+              "at": "lands"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP3",
+                "l3"
+              ],
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check three, two in the original: both sides come to three.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "y+1=3(x-2)",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": "dP2",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "2+1=3(3-2)",
+              "fresh": true,
+              "at": "both"
+            },
+            {
+              "do": "write",
+              "tex": "3=3",
+              "at": "three",
+              "nth": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.6,
+          -4.6,
+          8.6,
+          6.6
+        ],
+        "points": {
+          "GX0A": [
+            -3,
+            -4
+          ],
+          "GX0B": [
+            -3,
+            6
+          ],
+          "GX1A": [
+            -2,
+            -4
+          ],
+          "GX1B": [
+            -2,
+            6
+          ],
+          "GX2A": [
+            -1,
+            -4
+          ],
+          "GX2B": [
+            -1,
+            6
+          ],
+          "GX3A": [
+            0,
+            -4
+          ],
+          "GX3B": [
+            0,
+            6
+          ],
+          "GX4A": [
+            1,
+            -4
+          ],
+          "GX4B": [
+            1,
+            6
+          ],
+          "GX5A": [
+            2,
+            -4
+          ],
+          "GX5B": [
+            2,
+            6
+          ],
+          "GX6A": [
+            3,
+            -4
+          ],
+          "GX6B": [
+            3,
+            6
+          ],
+          "GX7A": [
+            4,
+            -4
+          ],
+          "GX7B": [
+            4,
+            6
+          ],
+          "GX8A": [
+            5,
+            -4
+          ],
+          "GX8B": [
+            5,
+            6
+          ],
+          "GX9A": [
+            6,
+            -4
+          ],
+          "GX9B": [
+            6,
+            6
+          ],
+          "GX10A": [
+            7,
+            -4
+          ],
+          "GX10B": [
+            7,
+            6
+          ],
+          "GX11A": [
+            8,
+            -4
+          ],
+          "GX11B": [
+            8,
+            6
+          ],
+          "GY0A": [
+            -3,
+            -4
+          ],
+          "GY0B": [
+            8,
+            -4
+          ],
+          "GY1A": [
+            -3,
+            -3
+          ],
+          "GY1B": [
+            8,
+            -3
+          ],
+          "GY2A": [
+            -3,
+            -2
+          ],
+          "GY2B": [
+            8,
+            -2
+          ],
+          "GY3A": [
+            -3,
+            -1
+          ],
+          "GY3B": [
+            8,
+            -1
+          ],
+          "GY4A": [
+            -3,
+            0
+          ],
+          "GY4B": [
+            8,
+            0
+          ],
+          "GY5A": [
+            -3,
+            1
+          ],
+          "GY5B": [
+            8,
+            1
+          ],
+          "GY6A": [
+            -3,
+            2
+          ],
+          "GY6B": [
+            8,
+            2
+          ],
+          "GY7A": [
+            -3,
+            3
+          ],
+          "GY7B": [
+            8,
+            3
+          ],
+          "GY8A": [
+            -3,
+            4
+          ],
+          "GY8B": [
+            8,
+            4
+          ],
+          "GY9A": [
+            -3,
+            5
+          ],
+          "GY9B": [
+            8,
+            5
+          ],
+          "GY10A": [
+            -3,
+            6
+          ],
+          "GY10B": [
+            8,
+            6
+          ],
+          "P1": [
+            0,
+            2
+          ],
+          "C": [
+            5,
+            2
+          ],
+          "P2": [
+            5,
+            1
+          ],
+          "L": [
+            -3,
+            2.6
+          ],
+          "H": [
+            8,
+            0.4
+          ],
+          "E": [
+            3.6,
+            4.7
+          ],
+          "LP1": [
+            1.15,
+            2.8
+          ],
+          "LP2": [
+            6.4,
+            1.6
+          ],
+          "LR": [
+            3.3,
+            2.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "gx0",
+            "seg": [
+              "GX0A",
+              "GX0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx1",
+            "seg": [
+              "GX1A",
+              "GX1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "GX2A",
+              "GX2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx3",
+            "seg": [
+              "GX3A",
+              "GX3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "GX4A",
+              "GX4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx5",
+            "seg": [
+              "GX5A",
+              "GX5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "GX6A",
+              "GX6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx7",
+            "seg": [
+              "GX7A",
+              "GX7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "GX8A",
+              "GX8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx9",
+            "seg": [
+              "GX9A",
+              "GX9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "GX10A",
+              "GX10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gx11",
+            "seg": [
+              "GX11A",
+              "GX11B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy0",
+            "seg": [
+              "GY0A",
+              "GY0B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy1",
+            "seg": [
+              "GY1A",
+              "GY1B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy2",
+            "seg": [
+              "GY2A",
+              "GY2B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy3",
+            "seg": [
+              "GY3A",
+              "GY3B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy4",
+            "seg": [
+              "GY4A",
+              "GY4B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy5",
+            "seg": [
+              "GY5A",
+              "GY5B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy6",
+            "seg": [
+              "GY6A",
+              "GY6B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy7",
+            "seg": [
+              "GY7A",
+              "GY7B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy8",
+            "seg": [
+              "GY8A",
+              "GY8B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy9",
+            "seg": [
+              "GY9A",
+              "GY9B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "gy10",
+            "seg": [
+              "GY10A",
+              "GY10B"
+            ],
+            "ink": "muted",
+            "w": 0.5,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 4,
+            "ystep": 1,
+            "yevery": 2,
+            "size": "l",
+            "xrange": [
+              -3,
+              8
+            ],
+            "yrange": [
+              -4,
+              6
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run",
+            "vector": [
+              "P1",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "dP1",
+            "dot": "P1",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "dP2",
+            "dot": "P2",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lr",
+            "label": "5",
+            "at": "LR",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "-1",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "l1",
+            "label": "(0,2)",
+            "at": "LP1",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "l2",
+            "label": "(5,1)",
+            "at": "LP2",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "eq",
+            "label": "x+5y=10",
+            "at": "E",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Graph x plus five y equals ten by placing two points on its line.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Graph $x + 5y = 10$ by placing 2 points on its line."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This is standard form: x and y on one side. Each x you put in gives a y.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Standard form",
+              "tone": "muted",
+              "at": "standard"
+            },
+            {
+              "do": "write",
+              "tex": "ax+by=c",
+              "fresh": true,
+              "at": "x"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put zero in for x: five y is ten, so y is two.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "x+5y=10",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "0+5y=10",
+              "note": "x=0",
+              "fresh": true,
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "y=2",
+              "at": "so"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP1",
+                "l1"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put five in for x: five y is five, so y is one.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "x+5y=10",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "5+5y=10",
+              "note": "x=5",
+              "fresh": true,
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "y=1",
+              "at": "so"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP2",
+                "l2"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Draw the line through both, with its equation beside it.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "Draw"
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "Draw"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The step between them is across five, down one: a slope of negative one fifth.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(0,2)\\to(5,1)",
+              "note": "\\text{two points}",
+              "fresh": true
+            },
+            {
+              "do": "hide",
+              "target": "l2",
+              "at": "step"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "five"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "down"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\text{slope}=\\frac{\\cw{-1}}{\\cb{5}}",
+              "fresh": true,
+              "at": "slope"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -3.2,
+          8.8,
+          16.6
+        ],
+        "stretch": true,
+        "points": {
+          "GT": [
+            0,
+            14
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "X2": [
+            2,
+            0
+          ],
+          "Y2": [
+            0,
+            2
+          ],
+          "P1": [
+            0,
+            4
+          ],
+          "C": [
+            2,
+            4
+          ],
+          "P2": [
+            2,
+            8
+          ],
+          "C2": [
+            4,
+            8
+          ],
+          "P3": [
+            4,
+            12
+          ],
+          "T": [
+            5.2,
+            14.4
+          ],
+          "B": [
+            -0.5,
+            3
+          ],
+          "XT": [
+            4,
+            0
+          ],
+          "YT": [
+            0,
+            14
+          ],
+          "RL": [
+            1.45,
+            2.95
+          ],
+          "E": [
+            6.2,
+            4.9
+          ],
+          "x2": [
+            2,
+            0
+          ],
+          "x4": [
+            4,
+            0
+          ],
+          "x6": [
+            6,
+            0
+          ],
+          "x8": [
+            8,
+            0
+          ],
+          "y2": [
+            0,
+            2
+          ],
+          "y4": [
+            0,
+            4
+          ],
+          "y6": [
+            0,
+            6
+          ],
+          "y8": [
+            0,
+            8
+          ],
+          "y10": [
+            0,
+            10
+          ],
+          "y12": [
+            0,
+            12
+          ],
+          "y14": [
+            0,
+            14
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              4,
+              7
+            ],
+            "at": "GT",
+            "size": 2,
+            "ink": "muted",
+            "w": 0.7,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 2,
+            "every": 100,
+            "xrange": [
+              0,
+              8
+            ],
+            "yrange": [
+              0,
+              14
+            ],
+            "start": true
+          },
+          {
+            "id": "sx",
+            "seg": [
+              "O",
+              "X2"
+            ],
+            "ink": "blue",
+            "w": 10
+          },
+          {
+            "id": "sy",
+            "seg": [
+              "O",
+              "Y2"
+            ],
+            "ink": "warm",
+            "w": 10
+          },
+          {
+            "id": "nx2",
+            "label": "2",
+            "at": "x2",
+            "dir": "s",
+            "size": "l",
+            "group": "xn",
+            "start": true
+          },
+          {
+            "id": "nx4",
+            "label": "4",
+            "at": "x4",
+            "dir": "s",
+            "size": "l",
+            "group": "xn",
+            "start": true
+          },
+          {
+            "id": "nx6",
+            "label": "6",
+            "at": "x6",
+            "dir": "s",
+            "size": "l",
+            "group": "xn",
+            "start": true
+          },
+          {
+            "id": "nx8",
+            "label": "8",
+            "at": "x8",
+            "dir": "s",
+            "size": "l",
+            "group": "xn",
+            "start": true
+          },
+          {
+            "id": "ny2",
+            "label": "2",
+            "at": "y2",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny4",
+            "label": "4",
+            "at": "y4",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny6",
+            "label": "6",
+            "at": "y6",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny8",
+            "label": "8",
+            "at": "y8",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny10",
+            "label": "10",
+            "at": "y10",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny12",
+            "label": "12",
+            "at": "y12",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "ny14",
+            "label": "14",
+            "at": "y14",
+            "dir": "w",
+            "size": "l",
+            "group": "yn",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{weeks}",
+            "at": "XT",
+            "dir": "s",
+            "size": "l",
+            "far": 2.6,
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{height (cm)}",
+            "at": "YT",
+            "dir": "n",
+            "size": "l",
+            "far": 1.6,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "P1",
+              "T"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "run",
+            "vector": [
+              "P1",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "run2",
+            "vector": [
+              "P2",
+              "C2"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise2",
+            "vector": [
+              "C2",
+              "P3"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "dP1",
+            "dot": "P1",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "dP2",
+            "dot": "P2",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "dP3",
+            "dot": "P3",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lr",
+            "label": "\\text{2 weeks}",
+            "at": "RL",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "\\text{4 cm}",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "l2",
+            "label": "(2,8)",
+            "at": "P2",
+            "dir": "nw",
+            "size": "l"
+          },
+          {
+            "id": "l3",
+            "label": "(4,12)",
+            "at": "P3",
+            "dir": "nw",
+            "size": "l"
+          },
+          {
+            "id": "eq",
+            "label": "H=4+2w",
+            "at": "E",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A plant starts four centimeters tall and grows two centimeters a week.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A plant starts 4 centimeters tall and grows 2 centimeters a week. The relationship is $H = 4 + 2w.$ Graph it by placing 2 points on its line. Each horizontal gridline is 2 weeks. Each vertical gridline is 2 centimeters."
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "tall"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The relationship is H equals four plus two w. Graph it by placing two points on its line.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "xt",
+              "at": "w"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each horizontal gridline is two weeks.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "sx",
+              "at": "gridline"
+            },
+            {
+              "do": "highlight",
+              "target": "xn",
+              "at": "weeks"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each vertical gridline is two centimeters.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "draw",
+              "target": "sy",
+              "at": "gridline"
+            },
+            {
+              "do": "highlight",
+              "target": "yn",
+              "at": "centimeters"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "At zero weeks the height is four. A common slip counts four gridlines up: eight centimeters.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "H=4+2w",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "\\text{up 4 gridlines}",
+              "id": "slip",
+              "note": "\\text{common slip}",
+              "fresh": true,
+              "at": "slip"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each gridline is two, so four is two gridlines up: the point zero, four.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "(0,\\ 4)",
+              "note": "\\text{2 gridlines up}",
+              "fresh": true,
+              "at": "so"
+            },
+            {
+              "do": "show",
+              "target": "dP1",
+              "at": "point"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One gridline across is two weeks. Two weeks add four centimeters: two gridlines up.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "H=4+2w",
+              "note": "\\text{the original}",
+              "fresh": true
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "weeks"
+            },
+            {
+              "do": "write",
+              "tex": "4+2(2)=8",
+              "note": "\\text{after 2 weeks}",
+              "fresh": true,
+              "at": "add"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "centimeters"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That lands on two, eight. The line goes through both, and the same step reaches four, twelve.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dP2",
+                "l2"
+              ],
+              "at": "lands"
+            },
+            {
+              "do": "write",
+              "tex": "(2,\\ 8)",
+              "fresh": true,
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "line"
+            },
+            {
+              "do": "show",
+              "target": "eq",
+              "at": "line"
+            },
+            {
+              "do": "draw",
+              "target": "run2",
+              "at": "same"
+            },
+            {
+              "do": "draw",
+              "target": "rise2",
+              "at": "step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP3",
+                "l3"
+              ],
+              "at": "reaches"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Point-slope form hands you a point and a step. Standard form gives a y for each x. On scaled axes, read each gridline first.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Point-slope form: a point and a step",
+              "at": "Point-slope"
+            },
+            {
+              "do": "text",
+              "text": "Standard form: put in $x$, find $y$",
+              "at": "Standard"
+            },
+            {
+              "do": "text",
+              "text": "Scaled axes: read each gridline",
+              "at": "scaled"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Find two points that make it true. The line goes through both.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Find two points that make it true."
+            },
+            {
+              "do": "text",
+              "text": "The line goes through both.",
+              "at": "line"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
