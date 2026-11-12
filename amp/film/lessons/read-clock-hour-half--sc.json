@@ -1,0 +1,1847 @@
+{
+ "id": "read-clock-hour-half--sc",
+ "title": "Read the hour and half hour",
+ "teaches": [
+  "clock-hour-read",
+  "match-clock-half-hour"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "points": {
+     "O": [
+      0,
+      0.5
+     ],
+     "H": {
+      "on": "hourPath",
+      "deg": 0
+     },
+     "M": {
+      "on": "minutePath",
+      "deg": 90
+     },
+     "N1": [
+      1.4875000000000003,
+      3.0764255762587047
+     ],
+     "N2": [
+      2.576425576258705,
+      1.9874999999999998
+     ],
+     "N3": [
+      2.975,
+      0.5
+     ],
+     "N4": [
+      2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N5": [
+      1.4875000000000003,
+      -2.0764255762587047
+     ],
+     "N6": [
+      1.821662113731688e-16,
+      -2.475
+     ],
+     "N7": [
+      -1.4874999999999994,
+      -2.076425576258705
+     ],
+     "N8": [
+      -2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N9": [
+      -2.975,
+      0.4999999999999996
+     ],
+     "N10": [
+      -2.5764255762587047,
+      1.9875000000000003
+     ],
+     "N11": [
+      -1.4875000000000014,
+      3.0764255762587043
+     ],
+     "N12": [
+      -5.464986341195063e-16,
+      3.475
+     ],
+     "D": [
+      0,
+      -3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "face",
+      "circle": "O",
+      "r": 3.5,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "minutePath",
+      "circle": "O",
+      "r": 2.4499999999999997
+     },
+     {
+      "id": "hourPath",
+      "circle": "O",
+      "r": 1.505
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number3",
+      "label": "3",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number4",
+      "label": "4",
+      "at": "N4",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number5",
+      "label": "5",
+      "at": "N5",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number6",
+      "label": "6",
+      "at": "N6",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number7",
+      "label": "7",
+      "at": "N7",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number8",
+      "label": "8",
+      "at": "N8",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number9",
+      "label": "9",
+      "at": "N9",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number10",
+      "label": "10",
+      "at": "N10",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number11",
+      "label": "11",
+      "at": "N11",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number12",
+      "label": "12",
+      "at": "N12",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "minute",
+      "vector": [
+       "O",
+       "M"
+      ],
+      "ink": "accent",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "hour",
+      "vector": [
+       "O",
+       "H"
+      ],
+      "ink": "warm",
+      "w": 10,
+      "start": true
+     },
+     {
+      "id": "hub",
+      "dot": "O",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "d300",
+      "label": "\\cw{3}{:}\\ca{00}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     },
+     {
+      "id": "d330",
+      "label": "\\cw{3}{:}\\ca{30}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     },
+     {
+      "id": "d400",
+      "label": "\\cw{4}{:}\\ca{00}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     }
+    ],
+    "view": [
+     -4.2,
+     -4.5,
+     4.2,
+     4.7
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How do these hands tell the time?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Read the clock"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The short hand tells the hour.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "short"
+      },
+      {
+       "do": "text",
+       "text": "Short hand: hour",
+       "at": "short"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The long hand shows how far through the hour we are.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "minute",
+       "at": "long"
+      },
+      {
+       "do": "text",
+       "text": "Long hand: minutes",
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Here, the short hand is on three.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "short"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The long hand points up at twelve. The hour has just begun: three o'clock.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "minute",
+       "at": "long"
+      },
+      {
+       "do": "clear",
+       "at": "up"
+      },
+      {
+       "do": "text",
+       "text": "Long hand up: o'clock",
+       "at": "up"
+      },
+      {
+       "do": "text",
+       "text": "Three o'clock",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "We write three o'clock like this.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "d300",
+       "at": "write"
+      },
+      {
+       "do": "write",
+       "tex": "\\underbrace{\\cw{3}}_{\\text{hour}}:\\underbrace{\\ca{00}}_{\\text{minutes}}",
+       "at": "write"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hour is sixty minutes. Watch both hands move together.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "1 hour = 60 minutes"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": -15,
+       "at": "Watch",
+       "dur": 3.0
+      },
+      {
+       "do": "glide",
+       "point": "M",
+       "deg": -90,
+       "at": "Watch",
+       "dur": 3.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Halfway around is thirty minutes: half past three, or three thirty.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "d300",
+       "at": "Halfway"
+      },
+      {
+       "do": "show",
+       "target": "d330",
+       "at": "Halfway"
+      },
+      {
+       "do": "highlight",
+       "target": "minute",
+       "at": "Halfway"
+      },
+      {
+       "do": "text",
+       "text": "Half an hour = 30 minutes",
+       "at": "thirty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The short hand is halfway from three to four.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "short"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Finish the turn. One whole hour has passed: four o'clock.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One full turn: 1 hour"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": -30,
+       "at": "Finish",
+       "dur": 3.0
+      },
+      {
+       "do": "glide",
+       "point": "M",
+       "deg": -270,
+       "at": "Finish",
+       "dur": 3.0
+      },
+      {
+       "do": "hide",
+       "target": "d330",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "d400",
+       "at": "four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "O": [
+      0,
+      0.5
+     ],
+     "H": {
+      "on": "hourPath",
+      "deg": -165
+     },
+     "M": {
+      "on": "minutePath",
+      "deg": -90
+     },
+     "N1": [
+      1.4875000000000003,
+      3.0764255762587047
+     ],
+     "N2": [
+      2.576425576258705,
+      1.9874999999999998
+     ],
+     "N3": [
+      2.975,
+      0.5
+     ],
+     "N4": [
+      2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N5": [
+      1.4875000000000003,
+      -2.0764255762587047
+     ],
+     "N6": [
+      1.821662113731688e-16,
+      -2.475
+     ],
+     "N7": [
+      -1.4874999999999994,
+      -2.076425576258705
+     ],
+     "N8": [
+      -2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N9": [
+      -2.975,
+      0.4999999999999996
+     ],
+     "N10": [
+      -2.5764255762587047,
+      1.9875000000000003
+     ],
+     "N11": [
+      -1.4875000000000014,
+      3.0764255762587043
+     ],
+     "N12": [
+      -5.464986341195063e-16,
+      3.475
+     ],
+     "D": [
+      0,
+      -3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "face",
+      "circle": "O",
+      "r": 3.5,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "minutePath",
+      "circle": "O",
+      "r": 2.4499999999999997
+     },
+     {
+      "id": "hourPath",
+      "circle": "O",
+      "r": 1.505
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number3",
+      "label": "3",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number4",
+      "label": "4",
+      "at": "N4",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number5",
+      "label": "5",
+      "at": "N5",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number6",
+      "label": "6",
+      "at": "N6",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number7",
+      "label": "7",
+      "at": "N7",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number8",
+      "label": "8",
+      "at": "N8",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number9",
+      "label": "9",
+      "at": "N9",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number10",
+      "label": "10",
+      "at": "N10",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number11",
+      "label": "11",
+      "at": "N11",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number12",
+      "label": "12",
+      "at": "N12",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "minute",
+      "vector": [
+       "O",
+       "M"
+      ],
+      "ink": "accent",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "hour",
+      "vector": [
+       "O",
+       "H"
+      ],
+      "ink": "warm",
+      "w": 10,
+      "start": true
+     },
+     {
+      "id": "hub",
+      "dot": "O",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "d800",
+      "label": "\\cw{8}{:}\\ca{00}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     },
+     {
+      "id": "d830",
+      "label": "\\cw{8}{:}\\ca{30}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     }
+    ],
+    "view": [
+     -4.2,
+     -4.5,
+     4.2,
+     4.7
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What time is it?",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "What time is it?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The short hand is heading toward nine. I'll say nine thirty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "short"
+      },
+      {
+       "do": "write",
+       "tex": "9{:}30\\;?",
+       "note": "\\text{Champ's guess}",
+       "fresh": true,
+       "at": "nine",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Let's rewind the long hand to twelve.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": -150,
+       "at": "rewind",
+       "dur": 3.0
+      },
+      {
+       "do": "glide",
+       "point": "M",
+       "deg": 90,
+       "at": "rewind",
+       "dur": 3.0
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It came from eight. I'll move forward half an hour.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "show",
+       "target": "d800",
+       "at": "eight"
+      },
+      {
+       "do": "hide",
+       "target": "d800",
+       "at": "move"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": -165,
+       "at": "move",
+       "dur": 2.6
+      },
+      {
+       "do": "glide",
+       "point": "M",
+       "deg": -90,
+       "at": "move",
+       "dur": 2.6
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Past eight, before nine. The hour is eight, so it's eight thirty.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "Past"
+      },
+      {
+       "do": "show",
+       "target": "d830",
+       "at": "thirty"
+      },
+      {
+       "do": "answer",
+       "tex": "8{:}30",
+       "at": "thirty"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4.7,
+     4.5,
+     4.7
+    ],
+    "points": {
+     "aO": [
+      -2.2,
+      2.3
+     ],
+     "aH": {
+      "on": "ahourPath",
+      "deg": -75
+     },
+     "aM": {
+      "on": "aminutePath",
+      "deg": -90
+     },
+     "aN1": [
+      -1.4,
+      3.6856
+     ],
+     "aN2": [
+      -0.8144,
+      3.1
+     ],
+     "aN3": [
+      -0.6,
+      2.3
+     ],
+     "aN4": [
+      -0.8144,
+      1.5
+     ],
+     "aN5": [
+      -1.4,
+      0.9144
+     ],
+     "aN6": [
+      -2.2,
+      0.7
+     ],
+     "aN7": [
+      -3.0,
+      0.9144
+     ],
+     "aN8": [
+      -3.5856,
+      1.5
+     ],
+     "aN9": [
+      -3.8,
+      2.3
+     ],
+     "aN10": [
+      -3.5856,
+      3.1
+     ],
+     "aN11": [
+      -3.0,
+      3.6856
+     ],
+     "aN12": [
+      -2.2,
+      3.9
+     ],
+     "aL": [
+      -2.2,
+      -0.12
+     ],
+     "bO": [
+      2.2,
+      2.3
+     ],
+     "bH": {
+      "on": "bhourPath",
+      "deg": -90
+     },
+     "bM": {
+      "on": "bminutePath",
+      "deg": -45
+     },
+     "bN1": [
+      3.0,
+      3.6856
+     ],
+     "bN2": [
+      3.5856,
+      3.1
+     ],
+     "bN3": [
+      3.8,
+      2.3
+     ],
+     "bN4": [
+      3.5856,
+      1.5
+     ],
+     "bN5": [
+      3.0,
+      0.9144
+     ],
+     "bN6": [
+      2.2,
+      0.7
+     ],
+     "bN7": [
+      1.4,
+      0.9144
+     ],
+     "bN8": [
+      0.8144,
+      1.5
+     ],
+     "bN9": [
+      0.6,
+      2.3
+     ],
+     "bN10": [
+      0.8144,
+      3.1
+     ],
+     "bN11": [
+      1.4,
+      3.6856
+     ],
+     "bN12": [
+      2.2,
+      3.9
+     ],
+     "bL": [
+      2.2,
+      -0.12
+     ],
+     "cO": [
+      0.0,
+      -2.05
+     ],
+     "cH": {
+      "on": "chourPath",
+      "deg": -45
+     },
+     "cM": {
+      "on": "cminutePath",
+      "deg": -90
+     },
+     "cN1": [
+      0.8,
+      -0.6644
+     ],
+     "cN2": [
+      1.3856,
+      -1.25
+     ],
+     "cN3": [
+      1.6,
+      -2.05
+     ],
+     "cN4": [
+      1.3856,
+      -2.85
+     ],
+     "cN5": [
+      0.8,
+      -3.4356
+     ],
+     "cN6": [
+      0.0,
+      -3.65
+     ],
+     "cN7": [
+      -0.8,
+      -3.4356
+     ],
+     "cN8": [
+      -1.3856,
+      -2.85
+     ],
+     "cN9": [
+      -1.6,
+      -2.05
+     ],
+     "cN10": [
+      -1.3856,
+      -1.25
+     ],
+     "cN11": [
+      -0.8,
+      -0.6644
+     ],
+     "cN12": [
+      -0.0,
+      -0.45
+     ],
+     "cL": [
+      0.0,
+      -4.47
+     ]
+    },
+    "parts": [
+     {
+      "id": "aface",
+      "circle": "aO",
+      "r": 2.0,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "aminutePath",
+      "circle": "aO",
+      "r": 1.24
+     },
+     {
+      "id": "ahourPath",
+      "circle": "aO",
+      "r": 0.8
+     },
+     {
+      "id": "anumber1",
+      "label": "1",
+      "at": "aN1",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber2",
+      "label": "2",
+      "at": "aN2",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber3",
+      "label": "3",
+      "at": "aN3",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber4",
+      "label": "4",
+      "at": "aN4",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber5",
+      "label": "5",
+      "at": "aN5",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber6",
+      "label": "6",
+      "at": "aN6",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber7",
+      "label": "7",
+      "at": "aN7",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber8",
+      "label": "8",
+      "at": "aN8",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber9",
+      "label": "9",
+      "at": "aN9",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber10",
+      "label": "10",
+      "at": "aN10",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber11",
+      "label": "11",
+      "at": "aN11",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "anumber12",
+      "label": "12",
+      "at": "aN12",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "aminute",
+      "vector": [
+       "aO",
+       "aM"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "ahour",
+      "vector": [
+       "aO",
+       "aH"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "ahub",
+      "dot": "aO",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "aname",
+      "label": "\\text{A}",
+      "at": "aL",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "bface",
+      "circle": "bO",
+      "r": 2.0,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "bminutePath",
+      "circle": "bO",
+      "r": 1.24
+     },
+     {
+      "id": "bhourPath",
+      "circle": "bO",
+      "r": 0.8
+     },
+     {
+      "id": "bnumber1",
+      "label": "1",
+      "at": "bN1",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber2",
+      "label": "2",
+      "at": "bN2",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber3",
+      "label": "3",
+      "at": "bN3",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber4",
+      "label": "4",
+      "at": "bN4",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber5",
+      "label": "5",
+      "at": "bN5",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber6",
+      "label": "6",
+      "at": "bN6",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber7",
+      "label": "7",
+      "at": "bN7",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber8",
+      "label": "8",
+      "at": "bN8",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber9",
+      "label": "9",
+      "at": "bN9",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber10",
+      "label": "10",
+      "at": "bN10",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber11",
+      "label": "11",
+      "at": "bN11",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bnumber12",
+      "label": "12",
+      "at": "bN12",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "bminute",
+      "vector": [
+       "bO",
+       "bM"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "bhour",
+      "vector": [
+       "bO",
+       "bH"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "bhub",
+      "dot": "bO",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "bname",
+      "label": "\\text{B}",
+      "at": "bL",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "cface",
+      "circle": "cO",
+      "r": 2.0,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "cminutePath",
+      "circle": "cO",
+      "r": 1.24
+     },
+     {
+      "id": "chourPath",
+      "circle": "cO",
+      "r": 0.8
+     },
+     {
+      "id": "cnumber1",
+      "label": "1",
+      "at": "cN1",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber2",
+      "label": "2",
+      "at": "cN2",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber3",
+      "label": "3",
+      "at": "cN3",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber4",
+      "label": "4",
+      "at": "cN4",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber5",
+      "label": "5",
+      "at": "cN5",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber6",
+      "label": "6",
+      "at": "cN6",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber7",
+      "label": "7",
+      "at": "cN7",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber8",
+      "label": "8",
+      "at": "cN8",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber9",
+      "label": "9",
+      "at": "cN9",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber10",
+      "label": "10",
+      "at": "cN10",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber11",
+      "label": "11",
+      "at": "cN11",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cnumber12",
+      "label": "12",
+      "at": "cN12",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "cminute",
+      "vector": [
+       "cO",
+       "cM"
+      ],
+      "ink": "accent",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "chour",
+      "vector": [
+       "cO",
+       "cH"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "start": true
+     },
+     {
+      "id": "chub",
+      "dot": "cO",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "cname",
+      "label": "\\text{C}",
+      "at": "cL",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which clock shows four thirty?",
+     "pause": 3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which clock shows four thirty?"
+      },
+      {
+       "do": "write",
+       "tex": "4{:}30",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Clock A's short hand has passed five. That's five thirty.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ahour",
+       "at": "short"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Clock B has the hands swapped.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "bminute",
+       "at": "hands"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Clock C has the long hand down at six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "cminute",
+       "at": "long"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Its short hand is between four and five. Four thirty. I choose C.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "chour",
+       "at": "short"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{C}\\quad 4{:}30",
+       "at": "choose"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "points": {
+     "O": [
+      0,
+      0.5
+     ],
+     "H": {
+      "on": "hourPath",
+      "deg": -30
+     },
+     "M": {
+      "on": "minutePath",
+      "deg": 90
+     },
+     "N1": [
+      1.4875000000000003,
+      3.0764255762587047
+     ],
+     "N2": [
+      2.576425576258705,
+      1.9874999999999998
+     ],
+     "N3": [
+      2.975,
+      0.5
+     ],
+     "N4": [
+      2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N5": [
+      1.4875000000000003,
+      -2.0764255762587047
+     ],
+     "N6": [
+      1.821662113731688e-16,
+      -2.475
+     ],
+     "N7": [
+      -1.4874999999999994,
+      -2.076425576258705
+     ],
+     "N8": [
+      -2.576425576258705,
+      -0.9874999999999998
+     ],
+     "N9": [
+      -2.975,
+      0.4999999999999996
+     ],
+     "N10": [
+      -2.5764255762587047,
+      1.9875000000000003
+     ],
+     "N11": [
+      -1.4875000000000014,
+      3.0764255762587043
+     ],
+     "N12": [
+      -5.464986341195063e-16,
+      3.475
+     ],
+     "D": [
+      0,
+      -3.8
+     ]
+    },
+    "parts": [
+     {
+      "id": "face",
+      "circle": "O",
+      "r": 3.5,
+      "fill": "paper",
+      "ink": "muted",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "minutePath",
+      "circle": "O",
+      "r": 2.4499999999999997
+     },
+     {
+      "id": "hourPath",
+      "circle": "O",
+      "r": 1.505
+     },
+     {
+      "id": "number1",
+      "label": "1",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number2",
+      "label": "2",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number3",
+      "label": "3",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number4",
+      "label": "4",
+      "at": "N4",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number5",
+      "label": "5",
+      "at": "N5",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number6",
+      "label": "6",
+      "at": "N6",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number7",
+      "label": "7",
+      "at": "N7",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number8",
+      "label": "8",
+      "at": "N8",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number9",
+      "label": "9",
+      "at": "N9",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number10",
+      "label": "10",
+      "at": "N10",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number11",
+      "label": "11",
+      "at": "N11",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "number12",
+      "label": "12",
+      "at": "N12",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "minute",
+      "vector": [
+       "O",
+       "M"
+      ],
+      "ink": "accent",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "hour",
+      "vector": [
+       "O",
+       "H"
+      ],
+      "ink": "warm",
+      "w": 10,
+      "start": true
+     },
+     {
+      "id": "hub",
+      "dot": "O",
+      "ink": "ink",
+      "r": 6,
+      "start": true
+     },
+     {
+      "id": "d430",
+      "label": "\\cw{4}{:}\\ca{30}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": false
+     },
+     {
+      "id": "d400",
+      "label": "\\cw{4}{:}\\ca{00}",
+      "at": "D",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     }
+    ],
+    "view": [
+     -4.2,
+     -4.5,
+     4.2,
+     4.7
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Long hand up: o'clock. Long hand down: half past.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Long hand up: o'clock"
+      },
+      {
+       "do": "glide",
+       "point": "H",
+       "deg": -45,
+       "at": "Long",
+       "dur": 1.4,
+       "nth": 2
+      },
+      {
+       "do": "glide",
+       "point": "M",
+       "deg": -90,
+       "at": "Long",
+       "dur": 1.4,
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Long hand down: half past",
+       "at": "down"
+      },
+      {
+       "do": "hide",
+       "target": "d400",
+       "at": "past"
+      },
+      {
+       "do": "show",
+       "target": "d430",
+       "at": "past"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For the hour, use the number the short hand has passed.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "hour",
+       "at": "short"
+      },
+      {
+       "do": "text",
+       "text": "Hour: the number it has passed",
+       "at": "hour"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Short hand, the hour. Long hand down, half past.",
+     "pause": 1,
+     "do": []
+    }
+   ]
+  }
+ ]
+}
