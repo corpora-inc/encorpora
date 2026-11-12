@@ -10,12 +10,12 @@ import {
   type MultiPartChoiceResponse,
 } from "./multi-part-choice.js";
 import { quad } from "./polygon-practice.js";
-import { angle, protractor, scene } from "./scene/author.js";
+import { angle, protractor, scene, triangle } from "./scene/author.js";
 import type { Element } from "./scene/spec.js";
 import { selectFamily, selectModel, selectTemplate, st } from "./select-kit.js";
 import { posed, pick, random, shuffle, type Rand } from "./shape-practice.js";
 import type { Pt } from "./shape-figures.js";
-import type { Random } from "./variation/axes.js";
+import { generatingVersion, type Random } from "./variation/axes.js";
 import {
   adjacentPrompt,
   benchmarkPrompt,
@@ -79,12 +79,13 @@ export const grade4GeometryTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "triangle-sides-angles-blanks",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Classify a triangle by sides and angles",
     skillId: "lines-symmetry",
     gradeBand: band,
     description:
-      "Name one triangle twice: scalene, isosceles or equilateral from its side lengths, and acute, right or obtuse from its angles. A right isosceles triangle is included.",
+      "Name one triangle twice: scalene, isosceles or equilateral from its tick marks, and acute, right or obtuse from its angles. A square mark shows a right angle. When there is no square mark, the widest angle is labeled. A right isosceles triangle is included.",
     ...parts,
     ...scenes,
   },
@@ -121,6 +122,13 @@ export const grade4GeometryTemplates: readonly TemplateMetadata[] = [
 
 const metaOf = (id: string) =>
   grade4GeometryTemplates.find((t) => t.id === id)!;
+/** Version 2 labels the widest angle. Version 1 is the saved figure, which
+ * asks the learner to compare a corner with the corner of a page. */
+function triangleVersion(): 1 | 2 {
+  const version =
+    generatingVersion() ?? metaOf("triangle-sides-angles-blanks").version;
+  return version >= 2 ? 2 : 1;
+}
 const letters = [
   ["A", "B", "C", "D"],
   ["P", "Q", "R", "S"],
@@ -225,7 +233,8 @@ function finish(
         .update(JSON.stringify([id, 1, seed]))
         .digest("hex"),
       templateId: id,
-      templateVersion: 1,
+      templateVersion:
+        id === "triangle-sides-angles-blanks" ? triangleVersion() : 1,
       seed,
       prompt: built.prompt,
       skillId: meta.skillId,
@@ -592,8 +601,9 @@ function classesOf(pts: readonly Pt[]): {
   return { sides, angles: kind };
 }
 
-/** Marks as `markPrims` draws them. The hint names those marks and does not
- * name the side class, the angle class, or the quadrilateral. */
+/** Marks as the figure draws them. A hint names those marks and does not
+ * name the side class or the quadrilateral. A labeled angle measure is the
+ * given that names the angle class. */
 const MARK_COUNT = ["no", "one", "two", "three", "four"] as const;
 function markCount(n: number): string {
   return MARK_COUNT[n] ?? String(n);
@@ -627,15 +637,16 @@ function drawnTickCounts(pts: readonly Pt[]): number[] {
   }
   return group;
 }
-function drawnRightAngles(pts: readonly Pt[]): number {
+function vertexIsRight(pts: readonly Pt[], i: number): boolean {
   const n = pts.length;
+  const incoming = edgeDir(pts, (i + n - 1) % n);
+  const outgoing = edgeDir(pts, i);
+  const dot = -incoming[0] * outgoing[0] + -incoming[1] * outgoing[1];
+  return Math.abs(dot) <= 1e-3;
+}
+function drawnRightAngles(pts: readonly Pt[]): number {
   let count = 0;
-  for (let i = 0; i < n; i++) {
-    const incoming = edgeDir(pts, (i + n - 1) % n);
-    const outgoing = edgeDir(pts, i);
-    const dot = -incoming[0] * outgoing[0] + -incoming[1] * outgoing[1];
-    if (Math.abs(dot) <= 1e-3) count++;
-  }
+  for (let i = 0; i < pts.length; i++) if (vertexIsRight(pts, i)) count++;
   return count;
 }
 /** Parallel pairs that receive matching arrows. Adjacent sides that wrap
@@ -674,12 +685,20 @@ function sideMarkSentence(ticks: readonly number[]): string {
   if (rest.length === 0) return `${head}.`;
   return `${head}, and ${rest.join(", and ")}.`;
 }
-function triangleFigureHint(pts: readonly Pt[]): string {
+function triangleFigureHint(pts: readonly Pt[], shown?: number): string {
   const sides = sideMarkSentence(drawnTickCounts(pts)).replace(/\.$/, "");
   const squares = drawnRightAngles(pts);
   if (squares === 1) return `${sides}, and one corner has a square mark.`;
   if (squares > 1)
     return `${sides}, and ${markCount(squares)} corners have a square mark.`;
+  if (shown != null) {
+    const relation = shown > 90 ? "more than" : "less than";
+    const conclusion =
+      shown > 90
+        ? "so the triangle is obtuse."
+        : "so every angle is acute and the triangle is acute.";
+    return `${sides}. The widest angle is $${shown}^\\circ$, ${relation} $90^\\circ$, ${conclusion}`;
+  }
   return `${sides}. No corner has a square mark. Compare the widest corner with the corner of a page.`;
 }
 function cornerMarkSentence(squares: number, corners: number): string {
@@ -698,13 +717,73 @@ function quadrilateralFigureHint(pts: readonly Pt[]): string {
   return `${arrows} ${sideMarkSentence(drawnTickCounts(pts))} ${cornerMarkSentence(drawnRightAngles(pts), pts.length)}`;
 }
 
+/** The widest corner, and the whole-degree label that matches it. */
+function widestCorner(pts: readonly Pt[]): {
+  at: number;
+  degrees: number;
+  shown: number;
+} {
+  const angles = interiors(pts);
+  let at = 0;
+  for (let i = 1; i < angles.length; i++)
+    if (angles[i]! > angles[at]!) at = i;
+  const degrees = angles[at]!;
+  return { at, degrees, shown: Math.round(degrees) };
+}
+/** The labeled measure is the angle class: over 90 is obtuse, under 90 is
+ * acute, and the number stays clear of 90 and within 1° of the drawing. */
+function labelAgrees(
+  pts: readonly Pt[],
+  kind: AngleClass,
+  shown: number,
+  at: number,
+): boolean {
+  const angles = interiors(pts);
+  const fromLabel = shown > 90 ? "obtuse" : shown < 90 ? "acute" : "right";
+  return (
+    Math.abs(angles[at]! - shown) <= 1 &&
+    Math.abs(Math.max(...angles) - shown) <= 1 &&
+    fromLabel === kind &&
+    (kind === "obtuse" ? shown >= 105 : kind === "acute" && shown <= 80)
+  );
+}
+/** Tick marks, a square at each right angle, and the catalog's angle label
+ * on the widest corner when the triangle is not right. */
+function labelledTriangle(
+  points: readonly Pt[],
+  label: { at: number; shown: number } | null,
+): SemanticFigure {
+  const ticks = drawnTickCounts(points);
+  const [p0, p1, p2] = points as [Pt, Pt, Pt];
+  let drawn = triangle([p0, p1, p2], { fill: "accent-fill" });
+  for (const i of [0, 1, 2] as const) {
+    const count = ticks[i] ?? 0;
+    if (count > 0) drawn = drawn.side(i, { ticks: count });
+    if (vertexIsRight(points, i)) drawn = drawn.angle(i, { mark: "right" });
+    else if (label && label.at === i)
+      drawn = drawn.angle(i, { mark: "arc", label: `${label.shown}°` });
+  }
+  return { kind: "scene", scene: scene(drawn).build({ width: 320 }) };
+}
+
 function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
+  const version = triangleVersion();
   const built = spreadPick(seed, "triangle-shape", TRIANGLES);
   const shape = posed(built.points, pick(r, TURNS), pick(r, [0.85, 1, 1.15]));
   if (shape.type !== "polygon") throw new Error("triangle: expected a polygon");
   const points = shape.points;
   const found = classesOf(points);
-  if (found.sides !== built.sides || found.angles !== built.angles)
+  const label =
+    version >= 2 && found.angles !== "right" ? widestCorner(points) : null;
+  if (
+    found.sides !== built.sides ||
+    found.angles !== built.angles ||
+    (label != null &&
+      !labelAgrees(points, found.angles, label.shown, label.at)) ||
+    (version >= 2 &&
+      found.angles === "right" &&
+      drawnRightAngles(points) !== 1)
+  )
     throw new Error("triangle-sides-angles-blanks: classification drifted");
   const sideOptions = [
     { id: "a", label: "scalene" },
@@ -742,26 +821,36 @@ function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
     obtuse: "the largest corner is wider than a square corner",
     acute: "every corner is narrower than a square corner",
   }[found.angles];
+  const angleLine = label
+    ? label.shown > 90
+      ? `The widest angle is $${label.shown}^\\circ$, more than $90^\\circ$, so the triangle is obtuse.`
+      : `The widest angle is $${label.shown}^\\circ$, less than $90^\\circ$, so every angle is acute and the triangle is acute.`
+    : `A square mark shows a right angle. Here ${angleWhy}, so by its angles the triangle is ${found.angles}.`;
   const closing =
     found.sides === "equilateral"
       ? "In this lesson, isosceles means exactly 2 equal sides, so an equilateral triangle is named equilateral."
       : `Name the sides and the angles separately. This triangle is ${found.sides} by its sides and ${found.angles} by its angles.`;
   return finish("triangle-sides-angles-blanks", seed, r, {
-    prompt: trianglePrompt(seed),
+    prompt: trianglePrompt(seed, version),
     answer: serializeMultiPart(response, {
       sides: sideOptions.find((o) => o.label === found.sides)!.id,
       angles: angleOptions.find((o) => o.label === found.angles)!.id,
     }),
-    hint: triangleFigureHint(points),
+    hint: triangleFigureHint(points, label?.shown),
     explanation: [
       `Tick marks show equal sides. Here ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
-      `A square mark shows a right angle. Here ${angleWhy}, so by its angles the triangle is ${found.angles}.`,
+      angleLine,
       closing,
     ],
-    figure: geometryScene({
-      kind: "plane-shapes",
-      items: [{ pieces: [{ type: "polygon", points }], marks: "sides-angles" }],
-    }),
+    figure:
+      version >= 2
+        ? labelledTriangle(points, label)
+        : geometryScene({
+            kind: "plane-shapes",
+            items: [
+              { pieces: [{ type: "polygon", points }], marks: "sides-angles" },
+            ],
+          }),
     response,
   });
 }

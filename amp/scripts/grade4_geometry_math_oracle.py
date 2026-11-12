@@ -303,9 +303,44 @@ def blank_answer(public, picks):
     return json.dumps(out, separators=(',', ':'))
 
 
+def triangle_givens(triangle):
+    """The classes the marks state: tick marks for matching sides, a square
+    for a right angle, and the widest angle's labelled measure otherwise."""
+    ticks = [side.get('ticks') for side in triangle.get('sides') or [{}, {}, {}]]
+    marked = [t for t in ticks if t]
+    pairs = sum(1 for i in range(3) for j in range(i + 1, 3) if ticks[i] and ticks[i] == ticks[j])
+    require(len(marked) in (0, 2, 3) and pairs == {0: 0, 2: 1, 3: 3}[len(marked)], 'Tick marks pair the sides')
+    sides = {0: 'scalene', 1: 'isosceles', 3: 'equilateral'}[pairs]
+    angles = triangle.get('angles') or [{}, {}, {}]
+    if any(a.get('mark') == 'right' for a in angles):
+        require(not any(a.get('label') for a in angles), 'A right triangle needs no measure')
+        return sides, 'right', None
+    labelled = [(i, a['label']) for i, a in enumerate(angles) if a.get('label')]
+    require(len(labelled) == 1, 'The widest angle is labelled')
+    (index, label), = labelled
+    require(label.endswith('°'), 'The label is in degrees')
+    degrees = float(label[:-1])
+    return sides, 'obtuse' if degrees > 90 else 'acute', (index, degrees)
+
+
 def triangle_blanks(public):
     require('tick marks' in public['prompt'].lower(), 'Triangle wording')
-    sides, angles = triangle_classes(shape_points(public))
+    triangles = [e for e in elements(public) if e.get('type') == 'triangle']
+    if not triangles:
+        sides, angles = triangle_classes(shape_points(public))
+        return blank_answer(public, {'sides': sides, 'angles': angles})
+    require(len(triangles) == 1, 'Expected one triangle')
+    triangle = triangles[0]
+    sides, angles, widest = triangle_givens(triangle)
+    # The drawing must agree with what its marks state.
+    drawn_sides, drawn_angles = triangle_classes(triangle['points'])
+    require((drawn_sides, drawn_angles) == (sides, angles), f'Marks say {sides} {angles}, drawing is {drawn_sides} {drawn_angles}')
+    if widest:
+        interior = interiors(triangle['points'])
+        index, degrees = widest
+        require(abs(interior[index] - degrees) <= 1, 'The label matches the drawn angle')
+        require(interior[index] == max(interior), 'The labelled angle is the widest')
+        require(degrees >= 105 or degrees <= 80, 'The measure is clearly not right')
     return blank_answer(public, {'sides': sides, 'angles': angles})
 
 

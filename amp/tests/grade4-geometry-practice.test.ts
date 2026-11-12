@@ -192,12 +192,19 @@ function parallelPairs(points: readonly (readonly number[])[]): number {
 }
 
 function shapePoints(problem: GeneratedProblem): number[][] {
-  const shapes = one(sceneOf(problem), "shapes");
-  assert.equal(shapes.items.length, 1);
-  const piece = shapes.items[0]!.pieces[0]!;
-  assert.equal(piece.type, "polygon");
-  if (piece.type !== "polygon") throw new Error("polygon");
-  return piece.points.map((p) => [p[0], p[1]]);
+  const items = sceneOf(problem);
+  const shapes = items.find((item) => item.type === "shapes");
+  if (shapes && shapes.type === "shapes") {
+    assert.equal(shapes.items.length, 1);
+    const piece = shapes.items[0]!.pieces[0]!;
+    assert.equal(piece.type, "polygon");
+    if (piece.type !== "polygon") throw new Error("polygon");
+    return piece.points.map((p) => [p[0], p[1]]);
+  }
+  const tri = items.find((item) => item.type === "triangle");
+  assert.ok(tri && tri.type === "triangle");
+  if (!tri || tri.type !== "triangle") throw new Error("triangle");
+  return tri.points.map((p) => [p[0], p[1]]);
 }
 
 type SideClass = "scalene" | "isosceles" | "equilateral";
@@ -443,6 +450,7 @@ function benchmarkAnswer(problem: GeneratedProblem): {
 function triangleAnswer(problem: GeneratedProblem): string {
   assert.match(problem.public.prompt, /tick marks/i);
   const found = triangleClasses(shapePoints(problem));
+  if (problem.public.templateVersion >= 2) assertTriangleLabel(problem, found);
   const response = problem.public.response;
   assert.equal(response.kind, "multi-part-choice");
   if (response.kind !== "multi-part-choice") throw new Error("parts");
@@ -454,6 +462,60 @@ function triangleAnswer(problem: GeneratedProblem): string {
     out[blank.id] = match[0]!.id;
   }
   return JSON.stringify(out);
+}
+
+/** Version 2: a non-right triangle labels its widest angle, and that label
+ * is the angle class. A right triangle keeps the square mark and no degree. */
+function assertTriangleLabel(
+  problem: GeneratedProblem,
+  found: { sides: SideClass; angles: AngleClass },
+) {
+  assert.match(problem.public.prompt, /labeled/i);
+  assert.equal(problem.public.prompt.includes("corner of a page"), false);
+  const items = sceneOf(problem);
+  const tri = items.find((item) => item.type === "triangle");
+  assert.ok(tri && tri.type === "triangle");
+  if (!tri || tri.type !== "triangle") return;
+  const points = tri.points;
+  const angles = interiors(points);
+  const widest = Math.max(...angles);
+  const labelled = (tri.angles ?? []).flatMap((angle, index) =>
+    typeof angle.label === "string" ? [{ index, label: angle.label }] : [],
+  );
+  const rights = (tri.angles ?? []).filter((angle) => angle.mark === "right");
+  if (found.angles === "right") {
+    assert.equal(labelled.length, 0);
+    assert.equal(rights.length, 1);
+    assert.equal(problem.hint.includes("square mark"), true);
+    assert.equal(problem.hint.includes("°"), false);
+    return;
+  }
+  assert.equal(rights.length, 0);
+  assert.equal(labelled.length, 1);
+  const match = /^(\d+)°$/.exec(labelled[0]!.label);
+  assert.ok(match);
+  const shown = Number(match![1]);
+  assert.ok(Math.abs(shown - widest) <= 1, `${shown} vs ${widest}`);
+  assert.ok(Math.abs(angles[labelled[0]!.index]! - shown) <= 1);
+  if (found.angles === "obtuse") {
+    assert.ok(shown >= 105, String(shown));
+    assert.match(problem.hint, new RegExp(`\\$${shown}\\^\\\\circ\\$`));
+    assert.match(problem.explanation.join(" "), /obtuse/);
+  } else {
+    assert.ok(shown <= 80, String(shown));
+    assert.match(problem.explanation.join(" "), /acute/);
+  }
+  assert.match(problem.hint, /more than|less than/);
+  assert.equal(problem.hint.includes("corner of a page"), false);
+  const scene = problem.public.figure;
+  assert.equal(scene?.kind, "scene");
+  if (scene?.kind !== "scene") return;
+  const laid = layoutScene(scene.scene);
+  assert.equal(
+    laid.items.some((item) => item.k === "text" && item.plain === `${shown}°`),
+    true,
+    problem.public.seed,
+  );
 }
 
 function quadrilateralAnswer(problem: GeneratedProblem): string {
@@ -728,6 +790,33 @@ test("grade-4 geometry answers match the figure over 200 seeds", () => {
   assert.ok(perimeters >= 0.4 * SEEDS, `perimeter seeds ${perimeters}`);
   assert.deepEqual([...units].sort(), ["cm", "ft", "in", "m"]);
   assert.deepEqual([...formulaKinds].sort(), ["area", "perimeter"]);
+});
+
+test("triangle blanks version 1 replays the unlabeled figure", () => {
+  const meta = templates.find((t) => t.id === "triangle-sides-angles-blanks");
+  assert.equal(meta?.version, 2);
+  assert.equal(meta?.reprintsFrom, 1);
+  const hash = createHash("sha256");
+  for (let i = 0; i < 32; i++) {
+    const problem = generateProblem(
+      "triangle-sides-angles-blanks",
+      `replay:${i}`,
+      1,
+    );
+    hash.update(JSON.stringify(problem) + "\n");
+    assert.equal(problem.public.templateVersion, 1);
+    assert.equal(JSON.stringify(problem.public.figure).includes('"triangle"'), false);
+    assert.equal(problem.public.prompt.includes("labeled"), false);
+    assert.equal(independent(problem), problem.answer, `replay:${i}`);
+  }
+  assert.equal(
+    hash.digest("hex"),
+    "f169f94b653ed46b174b04f565ea3a5d5b49fdea05b5ccac9c3268dc3cb43cb0",
+  );
+  const current = generateProblem("triangle-sides-angles-blanks", "replay:0");
+  const stored = generateProblem("triangle-sides-angles-blanks", "replay:0", 1);
+  assert.equal(current.public.templateVersion, 2);
+  assert.notEqual(JSON.stringify(current), JSON.stringify(stored));
 });
 
 function angleKind(problem: GeneratedProblem): string {

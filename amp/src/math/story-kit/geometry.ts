@@ -276,23 +276,45 @@ export function benchmarkPrompt(seed: string, measure: number): string {
   return `${opening.line} ${spreadPick(seed, "benchmark-question", asks)}`;
 }
 
+/** Version 1 names the marks and leaves a non-right corner to be compared
+ * with the corner of a page. Version 2 names the labeled widest angle too. */
+const legacyTriangleFrames = [
+  "Tick marks show equal sides. A square mark shows a right angle when one is there. Name this triangle by its sides and by its angles.",
+  "Look at the tick marks and the corner marks. Fill in the two blanks: one for the sides and one for the angles.",
+  "Equal sides share tick marks. A square mark means a right angle. How should the two blanks be filled?",
+  "The tick marks show which sides match. A square mark shows a right angle. What names fill the two blanks?",
+  "Name the triangle by its sides and by its angles. Tick marks show equal sides, and a square mark shows a right angle.",
+  "Count the matching tick marks, then check for a square right-angle mark. Fill in both blanks.",
+  "The triangle is marked with tick marks for equal sides. A square mark, if there is one, shows a right angle. Fill in the two blanks.",
+  "Use the tick marks to name the sides, and the corner marks to name the angles. Fill in both blanks.",
+  "Which names fit? Tick marks show equal sides, and a square mark shows a right angle.",
+  "Fill in the side name and the angle name. Matching tick marks mean equal sides.",
+  "Read the tick marks first. Then see whether any corner has a square right-angle mark. Fill in the two blanks.",
+  "Two blanks name this triangle. Tick marks show the equal sides, and a square mark shows a right angle.",
+] as const;
+
+const triangleFrames = [
+  "Tick marks show equal sides. A square mark shows a right angle when one is there. If there is no square mark, the widest angle's measure is labeled. Name this triangle by its sides and by its angles.",
+  "Look at the tick marks and the corner marks. If there is no square mark, the widest angle is labeled. Fill in the two blanks: one for the sides and one for the angles.",
+  "Equal sides share tick marks. A square mark means a right angle. Otherwise the widest angle's measure is labeled. How should the two blanks be filled?",
+  "The tick marks show which sides match. A square mark shows a right angle, and the widest angle's measure is labeled when the triangle is not right. What names fill the two blanks?",
+  "Name the triangle by its sides and by its angles. Tick marks show equal sides, a square mark shows a right angle, and the widest angle is labeled when it is not a right angle.",
+  "Count the matching tick marks, then check for a square right-angle mark. If there is none, read the labeled measure of the widest angle. Fill in both blanks.",
+  "The triangle is marked with tick marks for equal sides. A square mark shows a right angle. When there is no square mark, the widest angle's measure is labeled. Fill in the two blanks.",
+  "Use the tick marks to name the sides. Use a square mark, or the labeled widest angle, to name the angles. Fill in both blanks.",
+  "Which names fit? Tick marks show equal sides. A square mark shows a right angle, and the widest angle's measure is labeled when the triangle is not right.",
+  "Fill in the side name and the angle name. Matching tick marks mean equal sides. The angle name comes from a square mark or from the labeled widest angle.",
+  "Read the tick marks first. Then read the angle given: a square mark, or the labeled measure of the widest angle. Fill in the two blanks.",
+  "Two blanks name this triangle. Tick marks show the equal sides. A square mark shows a right angle, and the widest angle's measure is labeled when there is no square mark.",
+] as const;
+
 /** The figure is a marked triangle, so the prompt stays on the marks. */
-export function trianglePrompt(seed: string): string {
-  const frames = [
-    "Tick marks show equal sides. A square mark shows a right angle when one is there. Name this triangle by its sides and by its angles.",
-    "Look at the tick marks and the corner marks. Fill in the two blanks: one for the sides and one for the angles.",
-    "Equal sides share tick marks. A square mark means a right angle. How should the two blanks be filled?",
-    "The tick marks show which sides match. A square mark shows a right angle. What names fill the two blanks?",
-    "Name the triangle by its sides and by its angles. Tick marks show equal sides, and a square mark shows a right angle.",
-    "Count the matching tick marks, then check for a square right-angle mark. Fill in both blanks.",
-    "The triangle is marked with tick marks for equal sides. A square mark, if there is one, shows a right angle. Fill in the two blanks.",
-    "Use the tick marks to name the sides, and the corner marks to name the angles. Fill in both blanks.",
-    "Which names fit? Tick marks show equal sides, and a square mark shows a right angle.",
-    "Fill in the side name and the angle name. Matching tick marks mean equal sides.",
-    "Read the tick marks first. Then see whether any corner has a square right-angle mark. Fill in the two blanks.",
-    "Two blanks name this triangle. Tick marks show the equal sides, and a square mark shows a right angle.",
-  ];
-  return spreadPick(seed, "triangle-frame", frames);
+export function trianglePrompt(seed: string, version = 2): string {
+  return spreadPick(
+    seed,
+    "triangle-frame",
+    version >= 2 ? triangleFrames : legacyTriangleFrames,
+  );
 }
 
 /** The figure is a marked quadrilateral. The prompt must not name the answer. */
