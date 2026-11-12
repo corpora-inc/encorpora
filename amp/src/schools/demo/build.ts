@@ -477,12 +477,13 @@ export async function seedWorkbooks(
     id: string;
     learner_id: string;
     given_name: string;
+    family_name: string | null;
     level: number | null;
   }>(
-    `SELECT p.id,p.learner_id,p.given_name,
+    `SELECT p.id,p.learner_id,p.given_name,p.family_name,
        (SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=p.learner_id ORDER BY d.day DESC LIMIT 1) AS level
      FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
-     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY 4 NULLS FIRST,p.given_name`,
+     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY 5 NULLS FIRST,p.given_name`,
     [place.classId],
   );
   if (!rows.length) return;
@@ -501,6 +502,14 @@ export async function seedWorkbooks(
   }
   // Printed that morning.
   const at = zonedInstant(date, 8, timezone);
+  // The static school's workbooks roll as on its anchor day, so every day's
+  // are the same (`roster.ts`).
+  const day = sharedDay(zonedInstant(today, 12, timezone), timezone);
+  const anchorDate = new Date(
+    Date.parse(`${date}T12:00:00Z`) - day.shiftDays * DAY,
+  )
+    .toISOString()
+    .slice(0, 10);
   const picks = [
     ...new Set([Math.floor(rows.length * 0.25), Math.floor(rows.length * 0.8)]),
   ].map((index) => rows[index]!);
@@ -516,7 +525,16 @@ export async function seedWorkbooks(
             await findOrMakeWorkbook(
               tx,
               pick.learner_id,
-              { date, minutes: 30, paper: "letter", number: 1 },
+              {
+                date,
+                minutes: 30,
+                paper: "letter",
+                number: 1,
+                seedKey: {
+                  learnerKey: `demo:${pick.given_name} ${pick.family_name ?? ""}`,
+                  date: anchorDate,
+                },
+              },
               at,
               { allowed: () => undefined },
             )

@@ -149,6 +149,8 @@ async function compose(
     number: number;
     choices?: WorkbookChoicesInput;
     focusSkill?: string;
+    /** A fixed roll for the static demo school (`compose.ts` `seedDate`). */
+    seedKey?: { learnerKey: string; date: string };
   },
   now: number,
 ) {
@@ -174,7 +176,8 @@ async function compose(
     date: input.date,
     number: input.number,
     minutes: input.minutes,
-    learnerKey: learnerId,
+    learnerKey: input.seedKey?.learnerKey ?? learnerId,
+    ...(input.seedKey ? { seedDate: input.seedKey.date } : {}),
     now,
   });
 }
@@ -193,6 +196,7 @@ export async function findOrMakeWorkbook(
     number?: number;
     choices?: WorkbookChoicesInput;
     focusSkill?: string;
+    seedKey?: { learnerKey: string; date: string };
   },
   at: number,
   rules: {
@@ -226,6 +230,7 @@ export async function findOrMakeWorkbook(
       number,
       ...(input.choices ? { choices: input.choices } : {}),
       ...(input.focusSkill ? { focusSkill: input.focusSkill } : {}),
+      ...(input.seedKey ? { seedKey: input.seedKey } : {}),
     },
     at,
   );

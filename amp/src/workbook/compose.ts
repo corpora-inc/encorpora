@@ -170,6 +170,9 @@ export function composeWorkbook(options: {
   /** Stable per learner; with date, number, choices and history it fixes
    * every choice. */
   learnerKey: string;
+  /** Rolls as on this date instead of `date`: the static demo school's
+   * workbooks, written on any day, are its anchor day's (`schools/demo`). */
+  seedDate?: string;
   now?: number;
 }): WorkbookSpec {
   const minutes = options.minutes ?? 45;
@@ -202,7 +205,7 @@ export function composeWorkbook(options: {
       )
     : [];
   const focusSkill = focusable.length ? options.focusSkill : undefined;
-  const seed = `workbook:${options.learnerKey}:${options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}${focusSkill ? `:${focusSkill}` : ""}`;
+  const seed = `workbook:${options.learnerKey}:${options.seedDate ?? options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}${focusSkill ? `:${focusSkill}` : ""}`;
   const nodes = new Map(options.skills.map((s) => [s.id, s]));
   const strandOf = (t: TemplateMetadata) =>
     nodes.get(t.skillId)?.strand ?? t.skillId;
