@@ -48,6 +48,28 @@ const EMPH_OUT = 0.22;
 /** Air a grown highlight keeps between itself and a label it did not already cover. */
 const LABEL_AIR = 8;
 /**
+ * A sheer polygon is a sheet of tinted glass: its fill is painted at SHEER of
+ * the piece's opacity, so what it slides over shows through; its outline stays
+ * whole. A sheer tile's shadow is lightened to SHEER_SHADOW of a tile's, since
+ * it lies under the face and would grey it, and its thickness is drawn only
+ * where it shows below the face (`sheerSide`), never as a dark slab behind it.
+ */
+export const SHEER = 0.55;
+export const SHEER_SHADOW = 0.3;
+/** How a polygon's fill and a tile's shadow are painted when the piece is at opacity `o`. */
+export function polyPaint(p: { sheer?: boolean }, o: number) {
+  return p.sheer ? { fill: o * SHEER, shadow: SHEER_SHADOW } : { fill: o, shadow: 1 };
+}
+/**
+ * The clip (an even-odd path) that keeps a sheer tile's thickness out from under
+ * its face: everything except the face (`pts`), which sits `up` px above the side.
+ * The side tucks 1 px under the face so no seam opens between them.
+ */
+export function sheerSide(pts: readonly (readonly [number, number])[], up: number) {
+  const hole = pts.map((q) => `${q[0].toFixed(2)} ${(q[1] - up - 1).toFixed(2)}`).join("L");
+  return `M-99999 -99999H99999V99999H-99999ZM${hole}Z`;
+}
+/**
  * The moment a highlight is fully held: the ease-in has finished, and the
  * ease-out (which starts just after the beat) has not. A light that is still
  * rising at the end of the beat is sampled at its fullest, just before it fades.
@@ -695,7 +717,7 @@ class GeoStage {
   layer: SVGGElement;
   viewRect: SVGElement;
   labels: HTMLElement;
-  parts: { p: Part; el: SVGElement; shadow?: SVGElement; side?: SVGElement; html?: HTMLElement; extra?: SVGElement[]; extraHtml?: HTMLElement[]; blocks?: BlocksView; table?: TableView; mosaic?: MosaicView; bar?: BarView; a0: number }[] = [];
+  parts: { p: Part; el: SVGElement; shadow?: SVGElement; side?: SVGElement; sideCut?: SVGElement; html?: HTMLElement; extra?: SVGElement[]; extraHtml?: HTMLElement[]; blocks?: BlocksView; table?: TableView; mosaic?: MosaicView; bar?: BarView; a0: number }[] = [];
   barCuts = new Map<string, BarCut[]>();
   barShades = new Map<string, BarShade[]>();
   /** Each place-value chart's model, by the part's id. */
@@ -1402,6 +1424,17 @@ class GeoStage {
       if (p.solid) {
         entry.shadow = svg("path", "film-shadow"); this.layer.appendChild(entry.shadow);
         entry.side = svg("path", "film-side"); this.layer.appendChild(entry.side);
+        if (p.sheer) {
+          const cut = svg("clipPath");
+          cut.id = `film-clip-${++clipSeq}`;
+          cut.setAttribute("clipPathUnits", "userSpaceOnUse");
+          // a clip is not ink: `film-em` keeps it out of the figure's measured box
+          entry.sideCut = svg("path", "film-em");
+          entry.sideCut.setAttribute("clip-rule", "evenodd");
+          cut.appendChild(entry.sideCut);
+          this.svg.appendChild(cut);
+          entry.side.setAttribute("clip-path", `url(${new URL("#" + cut.id, document.baseURI).href})`);
+        }
       }
       entry.el = svg("path");
       entry.el.setAttribute("stroke-linejoin", "round");
@@ -1773,8 +1806,9 @@ class GeoStage {
         const d = "M" + pts.map((q) => `${q[0].toFixed(2)} ${q[1].toFixed(2)}`).join("L") + "Z";
         const f = back && p.back ? p.back : (p.fill ?? "none");
         e.el.setAttribute("d", d);
+        const paint = polyPaint(p, o);
         e.el.style.fill = FILL[f]!;
-        e.el.style.fillOpacity = String(o);
+        e.el.style.fillOpacity = String(paint.fill);
         const w = p.w ?? (p.ink ? 5 : 0);
         e.el.style.stroke = emphInk(p.ink ? INK[p.ink]! : "none", em);
         e.el.style.strokeWidth = String(w);
@@ -1784,11 +1818,12 @@ class GeoStage {
           const off = 6 + lift * 46; const blur = 8 + lift * 26;
           e.shadow!.setAttribute("d", d);
           e.shadow!.setAttribute("transform", `translate(${off * 0.55} ${off})`);
-          (e.shadow as SVGElement).style.opacity = String(o * (0.26 - lift * 0.1));
+          (e.shadow as SVGElement).style.opacity = String(o * (0.26 - lift * 0.1) * paint.shadow);
           (e.shadow as SVGElement).style.filter = `blur(${blur.toFixed(1)}px)`;
           e.side!.setAttribute("d", d);
           (e.side as SVGElement).style.opacity = String(o);
           (e.side as SVGElement).style.fill = `color-mix(in srgb, ${FILL[f]} 62%, #1b2b28)`;
+          e.sideCut?.setAttribute("d", sheerSide(pts, th * (1 - lift * 0.3)));
           const topLift = `translate(${(-lift * 4).toFixed(2)} ${(-lift * 14).toFixed(2)})`;
           const sideLift = `translate(${(-lift * 4).toFixed(2)} ${(th * (1 - lift * 0.3) - lift * 14).toFixed(2)})`;
           this.markEm(e.el, em, topLift);

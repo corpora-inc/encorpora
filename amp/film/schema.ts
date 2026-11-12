@@ -48,6 +48,8 @@ const poly = z.object({
   w: num.optional(),
   /** Draw it as a physical tile: thickness and a shadow that grows when it lifts. */
   solid: z.boolean().optional(),
+  /** See-through: what it slides over shows through its fill. */
+  sheer: z.boolean().optional(),
 });
 const seg = z.object({
   ...common,
