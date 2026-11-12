@@ -1,0 +1,1878 @@
+{
+ "id": "name-equal-share--sh",
+ "title": "Halves and quarters of a whole",
+ "teaches": [
+  "find-equal-shares",
+  "larger-share"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     1.35,
+     1.35,
+     8.65,
+     6.4
+    ],
+    "points": {
+     "wholea": [
+      2,
+      2
+     ],
+     "wholeb": [
+      8,
+      2
+     ],
+     "wholec": [
+      8,
+      5
+     ],
+     "wholed": [
+      2,
+      5
+     ],
+     "biga": [
+      3.5,
+      2
+     ],
+     "bigb": [
+      8,
+      2
+     ],
+     "bigc": [
+      8,
+      5
+     ],
+     "bigd": [
+      3.5,
+      5
+     ],
+     "smalla": [
+      2,
+      2
+     ],
+     "smallb": [
+      3.5,
+      2
+     ],
+     "smallc": [
+      3.5,
+      5
+     ],
+     "smalld": [
+      2,
+      5
+     ],
+     "badCuta": [
+      3.5,
+      5
+     ],
+     "badCutb": [
+      3.5,
+      2
+     ],
+     "righta": [
+      5,
+      2
+     ],
+     "rightb": [
+      8,
+      2
+     ],
+     "rightc": [
+      8,
+      5
+     ],
+     "rightd": [
+      5,
+      5
+     ],
+     "lefta": [
+      2,
+      2
+     ],
+     "leftb": [
+      5,
+      2
+     ],
+     "leftc": [
+      5,
+      5
+     ],
+     "leftd": [
+      2,
+      5
+     ],
+     "midCuta": [
+      5,
+      5
+     ],
+     "midCutb": [
+      5,
+      2
+     ],
+     "q1a": [
+      2,
+      3.5
+     ],
+     "q1b": [
+      5,
+      3.5
+     ],
+     "q1c": [
+      5,
+      5
+     ],
+     "q1d": [
+      2,
+      5
+     ],
+     "q2a": [
+      5,
+      3.5
+     ],
+     "q2b": [
+      8,
+      3.5
+     ],
+     "q2c": [
+      8,
+      5
+     ],
+     "q2d": [
+      5,
+      5
+     ],
+     "q3a": [
+      5,
+      2
+     ],
+     "q3b": [
+      8,
+      2
+     ],
+     "q3c": [
+      8,
+      3.5
+     ],
+     "q3d": [
+      5,
+      3.5
+     ],
+     "q4a": [
+      2,
+      2
+     ],
+     "q4b": [
+      5,
+      2
+     ],
+     "q4c": [
+      5,
+      3.5
+     ],
+     "q4d": [
+      2,
+      3.5
+     ],
+     "crossCuta": [
+      2,
+      3.5
+     ],
+     "crossCutb": [
+      8,
+      3.5
+     ],
+     "n1p": [
+      3.5,
+      4.25
+     ],
+     "n2p": [
+      6.5,
+      4.25
+     ],
+     "n3p": [
+      6.5,
+      2.75
+     ],
+     "n4p": [
+      3.5,
+      2.75
+     ],
+     "paperp": [
+      5,
+      5.9
+     ],
+     "q1sa": [
+      2,
+      3.5
+     ],
+     "q1sb": [
+      5,
+      3.5
+     ],
+     "q1sc": [
+      5,
+      5
+     ],
+     "q1sd": [
+      2,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "poly": [
+       "wholea",
+       "wholeb",
+       "wholec",
+       "wholed"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "big",
+      "poly": [
+       "biga",
+       "bigb",
+       "bigc",
+       "bigd"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "small",
+      "poly": [
+       "smalla",
+       "smallb",
+       "smallc",
+       "smalld"
+      ],
+      "fill": "warm-fill",
+      "ink": "ink",
+      "w": 2,
+      "solid": true,
+      "sheer": true
+     },
+     {
+      "id": "badCut",
+      "seg": [
+       "badCuta",
+       "badCutb"
+      ],
+      "w": 3
+     },
+     {
+      "id": "right",
+      "poly": [
+       "righta",
+       "rightb",
+       "rightc",
+       "rightd"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "left",
+      "poly": [
+       "lefta",
+       "leftb",
+       "leftc",
+       "leftd"
+      ],
+      "fill": "warm-fill",
+      "ink": "ink",
+      "w": 2,
+      "solid": true,
+      "sheer": true
+     },
+     {
+      "id": "midCut",
+      "seg": [
+       "midCuta",
+       "midCutb"
+      ],
+      "w": 3
+     },
+     {
+      "id": "q1",
+      "poly": [
+       "q1a",
+       "q1b",
+       "q1c",
+       "q1d"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "q2",
+      "poly": [
+       "q2a",
+       "q2b",
+       "q2c",
+       "q2d"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "q3",
+      "poly": [
+       "q3a",
+       "q3b",
+       "q3c",
+       "q3d"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "q4",
+      "poly": [
+       "q4a",
+       "q4b",
+       "q4c",
+       "q4d"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "q1s",
+      "poly": [
+       "q1sa",
+       "q1sb",
+       "q1sc",
+       "q1sd"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "crossCut",
+      "seg": [
+       "crossCuta",
+       "crossCutb"
+      ],
+      "w": 3
+     },
+     {
+      "id": "n1",
+      "label": "\\text{1}",
+      "at": "n1p",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n2",
+      "label": "\\text{2}",
+      "at": "n2p",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n3",
+      "label": "\\text{3}",
+      "at": "n3p",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "n4",
+      "label": "\\text{4}",
+      "at": "n4p",
+      "dir": "c",
+      "size": "m"
+     },
+     {
+      "id": "paper",
+      "label": "\\text{One sheet of paper}",
+      "at": "paperp",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How can we share one whole fairly?",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "text",
+       "text": "Equal shares",
+       "at": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This whole is one sheet of paper. Cut it into two pieces.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "draw",
+       "target": "badCut",
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole",
+        "badCut"
+       ],
+       "at": "pieces"
+      },
+      {
+       "do": "show",
+       "target": [
+        "big",
+        "small"
+       ],
+       "at": "pieces"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Lay one piece over the other.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "slide",
+       "target": "small",
+       "by": [
+        1.5,
+        0
+       ],
+       "at": "Lay"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One is bigger. These are not halves.",
+     "pause": 0.35,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut through the middle instead.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "big",
+        "small"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "Cut"
+      },
+      {
+       "do": "draw",
+       "target": "midCut",
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole",
+        "midCut"
+       ],
+       "at": "instead"
+      },
+      {
+       "do": "show",
+       "target": [
+        "right",
+        "left"
+       ],
+       "at": "instead"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide one piece over the other.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "slide",
+       "target": "left",
+       "by": [
+        3,
+        0
+       ],
+       "at": "Slide"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "They match. Equal means the same size.",
+     "pause": 0.35,
+     "do": []
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two equal shares are halves. Each piece is one half of the whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "slide",
+       "target": "left",
+       "by": [
+        -3,
+        0
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{one half}",
+       "at": "half"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two halves make the whole. Cut each half into two equal pieces.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "right",
+        "left"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "whole",
+        "midCut"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "draw",
+       "target": "crossCut",
+       "at": "Cut"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "whole",
+        "midCut",
+        "crossCut"
+       ],
+       "at": "pieces"
+      },
+      {
+       "do": "show",
+       "target": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+       ],
+       "at": "pieces"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One, two, three, four equal shares.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "n2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "n3",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "n4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal shares are quarters. The shaded piece is one quarter of the whole.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "n1",
+        "n2",
+        "n3",
+        "n4"
+       ],
+       "at": "shaded"
+      },
+      {
+       "do": "show",
+       "target": "q1s",
+       "at": "shaded"
+      },
+      {
+       "do": "clear",
+       "at": "quarter"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{one quarter}",
+       "at": "quarter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A quarter is also called a fourth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "also called a fourth",
+       "at": "also"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     2.4,
+     0.9,
+     7.6,
+     6.1
+    ],
+    "points": {
+     "c1c": [
+      5,
+      3.5
+     ],
+     "c1p0": [
+      7,
+      3.5
+     ],
+     "c1p1": [
+      6.99572,
+      3.63081
+     ],
+     "c1p2": [
+      6.98289,
+      3.76105
+     ],
+     "c1p3": [
+      6.96157,
+      3.89018
+     ],
+     "c1p4": [
+      6.93185,
+      4.01764
+     ],
+     "c1p5": [
+      6.89386,
+      4.14288
+     ],
+     "c1p6": [
+      6.84776,
+      4.26537
+     ],
+     "c1p7": [
+      6.79375,
+      4.38458
+     ],
+     "c1p8": [
+      6.73205,
+      4.5
+     ],
+     "c1p9": [
+      6.66294,
+      4.61114
+     ],
+     "c1p10": [
+      6.58671,
+      4.71752
+     ],
+     "c1p11": [
+      6.50368,
+      4.81869
+     ],
+     "c1p12": [
+      6.41421,
+      4.91421
+     ],
+     "c1p13": [
+      6.31869,
+      5.00368
+     ],
+     "c1p14": [
+      6.21752,
+      5.08671
+     ],
+     "c1p15": [
+      6.11114,
+      5.16294
+     ],
+     "c1p16": [
+      6,
+      5.23205
+     ],
+     "c1p17": [
+      5.88458,
+      5.29375
+     ],
+     "c1p18": [
+      5.76537,
+      5.34776
+     ],
+     "c1p19": [
+      5.64288,
+      5.39386
+     ],
+     "c1p20": [
+      5.51764,
+      5.43185
+     ],
+     "c1p21": [
+      5.39018,
+      5.46157
+     ],
+     "c1p22": [
+      5.26105,
+      5.48289
+     ],
+     "c1p23": [
+      5.13081,
+      5.49572
+     ],
+     "c1p24": [
+      5,
+      5.5
+     ],
+     "c2c": [
+      5,
+      3.5
+     ],
+     "c2p0": [
+      5,
+      5.5
+     ],
+     "c2p1": [
+      4.86919,
+      5.49572
+     ],
+     "c2p2": [
+      4.73895,
+      5.48289
+     ],
+     "c2p3": [
+      4.60982,
+      5.46157
+     ],
+     "c2p4": [
+      4.48236,
+      5.43185
+     ],
+     "c2p5": [
+      4.35712,
+      5.39386
+     ],
+     "c2p6": [
+      4.23463,
+      5.34776
+     ],
+     "c2p7": [
+      4.11542,
+      5.29375
+     ],
+     "c2p8": [
+      4,
+      5.23205
+     ],
+     "c2p9": [
+      3.88886,
+      5.16294
+     ],
+     "c2p10": [
+      3.78248,
+      5.08671
+     ],
+     "c2p11": [
+      3.68131,
+      5.00368
+     ],
+     "c2p12": [
+      3.58579,
+      4.91421
+     ],
+     "c2p13": [
+      3.49632,
+      4.81869
+     ],
+     "c2p14": [
+      3.41329,
+      4.71752
+     ],
+     "c2p15": [
+      3.33706,
+      4.61114
+     ],
+     "c2p16": [
+      3.26795,
+      4.5
+     ],
+     "c2p17": [
+      3.20625,
+      4.38458
+     ],
+     "c2p18": [
+      3.15224,
+      4.26537
+     ],
+     "c2p19": [
+      3.10614,
+      4.14288
+     ],
+     "c2p20": [
+      3.06815,
+      4.01764
+     ],
+     "c2p21": [
+      3.03843,
+      3.89018
+     ],
+     "c2p22": [
+      3.01711,
+      3.76105
+     ],
+     "c2p23": [
+      3.00428,
+      3.63081
+     ],
+     "c2p24": [
+      3,
+      3.5
+     ],
+     "c3c": [
+      5,
+      3.5
+     ],
+     "c3p0": [
+      3,
+      3.5
+     ],
+     "c3p1": [
+      3.00428,
+      3.36919
+     ],
+     "c3p2": [
+      3.01711,
+      3.23895
+     ],
+     "c3p3": [
+      3.03843,
+      3.10982
+     ],
+     "c3p4": [
+      3.06815,
+      2.98236
+     ],
+     "c3p5": [
+      3.10614,
+      2.85712
+     ],
+     "c3p6": [
+      3.15224,
+      2.73463
+     ],
+     "c3p7": [
+      3.20625,
+      2.61542
+     ],
+     "c3p8": [
+      3.26795,
+      2.5
+     ],
+     "c3p9": [
+      3.33706,
+      2.38886
+     ],
+     "c3p10": [
+      3.41329,
+      2.28248
+     ],
+     "c3p11": [
+      3.49632,
+      2.18131
+     ],
+     "c3p12": [
+      3.58579,
+      2.08579
+     ],
+     "c3p13": [
+      3.68131,
+      1.99632
+     ],
+     "c3p14": [
+      3.78248,
+      1.91329
+     ],
+     "c3p15": [
+      3.88886,
+      1.83706
+     ],
+     "c3p16": [
+      4,
+      1.76795
+     ],
+     "c3p17": [
+      4.11542,
+      1.70625
+     ],
+     "c3p18": [
+      4.23463,
+      1.65224
+     ],
+     "c3p19": [
+      4.35712,
+      1.60614
+     ],
+     "c3p20": [
+      4.48236,
+      1.56815
+     ],
+     "c3p21": [
+      4.60982,
+      1.53843
+     ],
+     "c3p22": [
+      4.73895,
+      1.51711
+     ],
+     "c3p23": [
+      4.86919,
+      1.50428
+     ],
+     "c3p24": [
+      5,
+      1.5
+     ],
+     "c4c": [
+      5,
+      3.5
+     ],
+     "c4p0": [
+      5,
+      1.5
+     ],
+     "c4p1": [
+      5.13081,
+      1.50428
+     ],
+     "c4p2": [
+      5.26105,
+      1.51711
+     ],
+     "c4p3": [
+      5.39018,
+      1.53843
+     ],
+     "c4p4": [
+      5.51764,
+      1.56815
+     ],
+     "c4p5": [
+      5.64288,
+      1.60614
+     ],
+     "c4p6": [
+      5.76537,
+      1.65224
+     ],
+     "c4p7": [
+      5.88458,
+      1.70625
+     ],
+     "c4p8": [
+      6,
+      1.76795
+     ],
+     "c4p9": [
+      6.11114,
+      1.83706
+     ],
+     "c4p10": [
+      6.21752,
+      1.91329
+     ],
+     "c4p11": [
+      6.31869,
+      1.99632
+     ],
+     "c4p12": [
+      6.41421,
+      2.08579
+     ],
+     "c4p13": [
+      6.50368,
+      2.18131
+     ],
+     "c4p14": [
+      6.58671,
+      2.28248
+     ],
+     "c4p15": [
+      6.66294,
+      2.38886
+     ],
+     "c4p16": [
+      6.73205,
+      2.5
+     ],
+     "c4p17": [
+      6.79375,
+      2.61542
+     ],
+     "c4p18": [
+      6.84776,
+      2.73463
+     ],
+     "c4p19": [
+      6.89386,
+      2.85712
+     ],
+     "c4p20": [
+      6.93185,
+      2.98236
+     ],
+     "c4p21": [
+      6.96157,
+      3.10982
+     ],
+     "c4p22": [
+      6.98289,
+      3.23895
+     ],
+     "c4p23": [
+      6.99572,
+      3.36919
+     ],
+     "c4p24": [
+      7,
+      3.5
+     ],
+     "shade1c": [
+      5,
+      3.5
+     ],
+     "shade1p0": [
+      7,
+      3.5
+     ],
+     "shade1p1": [
+      6.99572,
+      3.63081
+     ],
+     "shade1p2": [
+      6.98289,
+      3.76105
+     ],
+     "shade1p3": [
+      6.96157,
+      3.89018
+     ],
+     "shade1p4": [
+      6.93185,
+      4.01764
+     ],
+     "shade1p5": [
+      6.89386,
+      4.14288
+     ],
+     "shade1p6": [
+      6.84776,
+      4.26537
+     ],
+     "shade1p7": [
+      6.79375,
+      4.38458
+     ],
+     "shade1p8": [
+      6.73205,
+      4.5
+     ],
+     "shade1p9": [
+      6.66294,
+      4.61114
+     ],
+     "shade1p10": [
+      6.58671,
+      4.71752
+     ],
+     "shade1p11": [
+      6.50368,
+      4.81869
+     ],
+     "shade1p12": [
+      6.41421,
+      4.91421
+     ],
+     "shade1p13": [
+      6.31869,
+      5.00368
+     ],
+     "shade1p14": [
+      6.21752,
+      5.08671
+     ],
+     "shade1p15": [
+      6.11114,
+      5.16294
+     ],
+     "shade1p16": [
+      6,
+      5.23205
+     ],
+     "shade1p17": [
+      5.88458,
+      5.29375
+     ],
+     "shade1p18": [
+      5.76537,
+      5.34776
+     ],
+     "shade1p19": [
+      5.64288,
+      5.39386
+     ],
+     "shade1p20": [
+      5.51764,
+      5.43185
+     ],
+     "shade1p21": [
+      5.39018,
+      5.46157
+     ],
+     "shade1p22": [
+      5.26105,
+      5.48289
+     ],
+     "shade1p23": [
+      5.13081,
+      5.49572
+     ],
+     "shade1p24": [
+      5,
+      5.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "c1",
+      "poly": [
+       "c1c",
+       "c1p0",
+       "c1p1",
+       "c1p2",
+       "c1p3",
+       "c1p4",
+       "c1p5",
+       "c1p6",
+       "c1p7",
+       "c1p8",
+       "c1p9",
+       "c1p10",
+       "c1p11",
+       "c1p12",
+       "c1p13",
+       "c1p14",
+       "c1p15",
+       "c1p16",
+       "c1p17",
+       "c1p18",
+       "c1p19",
+       "c1p20",
+       "c1p21",
+       "c1p22",
+       "c1p23",
+       "c1p24"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c2",
+      "poly": [
+       "c2c",
+       "c2p0",
+       "c2p1",
+       "c2p2",
+       "c2p3",
+       "c2p4",
+       "c2p5",
+       "c2p6",
+       "c2p7",
+       "c2p8",
+       "c2p9",
+       "c2p10",
+       "c2p11",
+       "c2p12",
+       "c2p13",
+       "c2p14",
+       "c2p15",
+       "c2p16",
+       "c2p17",
+       "c2p18",
+       "c2p19",
+       "c2p20",
+       "c2p21",
+       "c2p22",
+       "c2p23",
+       "c2p24"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c3",
+      "poly": [
+       "c3c",
+       "c3p0",
+       "c3p1",
+       "c3p2",
+       "c3p3",
+       "c3p4",
+       "c3p5",
+       "c3p6",
+       "c3p7",
+       "c3p8",
+       "c3p9",
+       "c3p10",
+       "c3p11",
+       "c3p12",
+       "c3p13",
+       "c3p14",
+       "c3p15",
+       "c3p16",
+       "c3p17",
+       "c3p18",
+       "c3p19",
+       "c3p20",
+       "c3p21",
+       "c3p22",
+       "c3p23",
+       "c3p24"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c4",
+      "poly": [
+       "c4c",
+       "c4p0",
+       "c4p1",
+       "c4p2",
+       "c4p3",
+       "c4p4",
+       "c4p5",
+       "c4p6",
+       "c4p7",
+       "c4p8",
+       "c4p9",
+       "c4p10",
+       "c4p11",
+       "c4p12",
+       "c4p13",
+       "c4p14",
+       "c4p15",
+       "c4p16",
+       "c4p17",
+       "c4p18",
+       "c4p19",
+       "c4p20",
+       "c4p21",
+       "c4p22",
+       "c4p23",
+       "c4p24"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "shade1",
+      "poly": [
+       "shade1c",
+       "shade1p0",
+       "shade1p1",
+       "shade1p2",
+       "shade1p3",
+       "shade1p4",
+       "shade1p5",
+       "shade1p6",
+       "shade1p7",
+       "shade1p8",
+       "shade1p9",
+       "shade1p10",
+       "shade1p11",
+       "shade1p12",
+       "shade1p13",
+       "shade1p14",
+       "shade1p15",
+       "shade1p16",
+       "shade1p17",
+       "shade1p18",
+       "shade1p19",
+       "shade1p20",
+       "shade1p21",
+       "shade1p22",
+       "shade1p23",
+       "shade1p24"
+      ],
+      "fill": "accent-fill",
+      "ink": "ink",
+      "w": 2
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How much of the circle is shaded?",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "clear",
+       "at": "How"
+      },
+      {
+       "do": "problem",
+       "text": "How much of the circle is shaded?",
+       "at": "How"
+      },
+      {
+       "do": "show",
+       "target": "shade1",
+       "at": "How"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four equal parts. One is shaded. One quarter of the circle.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\text{one quarter}",
+       "at": "quarter"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four quarters make the whole circle.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "slide",
+       "target": [
+        "c1",
+        "shade1"
+       ],
+       "by": [
+        0.15,
+        0.15
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "c2",
+       "by": [
+        -0.15,
+        0.15
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "c3",
+       "by": [
+        -0.15,
+        -0.15
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "c4",
+       "by": [
+        0.15,
+        -0.15
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": [
+        "c1",
+        "shade1"
+       ],
+       "by": [
+        -0.15,
+        -0.15
+       ],
+       "at": "whole"
+      },
+      {
+       "do": "slide",
+       "target": "c2",
+       "by": [
+        0.15,
+        -0.15
+       ],
+       "at": "whole"
+      },
+      {
+       "do": "slide",
+       "target": "c3",
+       "by": [
+        0.15,
+        0.15
+       ],
+       "at": "whole"
+      },
+      {
+       "do": "slide",
+       "target": "c4",
+       "by": [
+        -0.15,
+        0.15
+       ],
+       "at": "whole"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0.412,
+     0.4,
+     9.612,
+     5.6
+    ],
+    "points": {
+     "ara": [
+      1.0,
+      1.0
+     ],
+     "arb": [
+      4.6,
+      1.0
+     ],
+     "arc": [
+      4.6,
+      4.6
+     ],
+     "ard": [
+      1.0,
+      4.6
+     ],
+     "bra": [
+      5.4,
+      1.0
+     ],
+     "brb": [
+      9.0,
+      1.0
+     ],
+     "brc": [
+      9.0,
+      4.6
+     ],
+     "brd": [
+      5.4,
+      4.6
+     ],
+     "aha": [
+      1.0,
+      1.0
+     ],
+     "ahb": [
+      2.8,
+      1.0
+     ],
+     "ahc": [
+      2.8,
+      4.6
+     ],
+     "ahd": [
+      1.0,
+      4.6
+     ],
+     "bqa": [
+      5.4,
+      1.0
+     ],
+     "bqb": [
+      7.2,
+      1.0
+     ],
+     "bqc": [
+      7.2,
+      2.8
+     ],
+     "bqd": [
+      5.4,
+      2.8
+     ],
+     "qca": [
+      5.4,
+      1.0
+     ],
+     "qcb": [
+      7.2,
+      1.0
+     ],
+     "qcc": [
+      7.2,
+      2.8
+     ],
+     "qcd": [
+      5.4,
+      2.8
+     ],
+     "aca": [
+      2.8,
+      1.0
+     ],
+     "acb": [
+      2.8,
+      4.6
+     ],
+     "bca": [
+      7.2,
+      1.0
+     ],
+     "bcb": [
+      7.2,
+      4.6
+     ],
+     "bda": [
+      5.4,
+      2.8
+     ],
+     "bdb": [
+      9.0,
+      2.8
+     ],
+     "Ap": [
+      2.8,
+      5.2
+     ],
+     "Bp": [
+      7.2,
+      5.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "ar",
+      "poly": [
+       "ara",
+       "arb",
+       "arc",
+       "ard"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "br",
+      "poly": [
+       "bra",
+       "brb",
+       "brc",
+       "brd"
+      ],
+      "fill": "paper",
+      "ink": "ink",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "ah",
+      "poly": [
+       "aha",
+       "ahb",
+       "ahc",
+       "ahd"
+      ],
+      "fill": "blue-fill",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "bq",
+      "poly": [
+       "bqa",
+       "bqb",
+       "bqc",
+       "bqd"
+      ],
+      "fill": "warm-fill",
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "ac",
+      "seg": [
+       "aca",
+       "acb"
+      ],
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "bc",
+      "seg": [
+       "bca",
+       "bcb"
+      ],
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "bd",
+      "seg": [
+       "bda",
+       "bdb"
+      ],
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "qc",
+      "poly": [
+       "qca",
+       "qcb",
+       "qcc",
+       "qcd"
+      ],
+      "fill": "warm-fill",
+      "ink": "ink",
+      "w": 3,
+      "solid": true,
+      "sheer": true
+     },
+     {
+      "id": "A",
+      "label": "\\text{A}",
+      "at": "Ap",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "B",
+      "label": "\\text{B}",
+      "at": "Bp",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Shapes A and B are the same size. Which shaded piece is larger?",
+     "pause": 1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Shapes"
+      },
+      {
+       "do": "problem",
+       "text": "Shapes A and B are the same size. Which shaded piece is larger?",
+       "at": "Shapes"
+      },
+      {
+       "do": "show",
+       "target": "A",
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "B",
+       "at": "B"
+      },
+      {
+       "do": "show",
+       "target": [
+        "ah",
+        "bq"
+       ],
+       "at": "shaded"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The quarter, because four is more than two.",
+     "pause": 0.5,
+     "do": []
+    },
+    {
+     "speaker": "learner",
+     "say": "Wait. I'll lay the quarter on the half.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "show",
+       "target": "qc",
+       "at": "Wait"
+      },
+      {
+       "do": "slide",
+       "target": "qc",
+       "by": [
+        -4.4,
+        0
+       ],
+       "at": "quarter"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "It covers only part of the half. The half is larger.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ah",
+       "at": "part"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{one half is larger}",
+       "at": "larger"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "More equal shares means smaller shares.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "qc",
+       "at": "smaller"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Halves are two equal shares.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ar",
+       "at": "Halves"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Quarters are four equal shares.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "br",
+       "at": "Quarters"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Equal shares. More shares, smaller shares.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Equal"
+      },
+      {
+       "do": "text",
+       "text": "Equal shares",
+       "at": "Equal"
+      },
+      {
+       "do": "text",
+       "text": "More shares, smaller shares.",
+       "at": "More"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

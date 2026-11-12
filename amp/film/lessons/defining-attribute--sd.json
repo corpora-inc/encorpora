@@ -1,0 +1,1834 @@
+{
+ "id": "defining-attribute--sd",
+ "title": "What makes a shape that shape",
+ "teaches": [
+  "count-sides-corners"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "a": [
+      0,
+      1.85
+     ],
+     "b": [
+      -2.078,
+      -1.75
+     ],
+     "c": [
+      2.078,
+      -1.75
+     ],
+     "g": [
+      0,
+      -0.55
+     ],
+     "lbName": [
+      0,
+      -3.65
+     ],
+     "lbTally": [
+      0,
+      3.65
+     ],
+     "balT": [
+      0,
+      4.38
+     ],
+     "balB": [
+      0,
+      -4.38
+     ]
+    },
+    "parts": [
+     {
+      "id": "balanceT",
+      "dot": "balT",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "balanceB",
+      "dot": "balB",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "tri",
+      "poly": [
+       "a",
+       "b",
+       "c"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "triW",
+      "poly": [
+       "a",
+       "b",
+       "c"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 4
+     },
+     {
+      "id": "edge",
+      "poly": [
+       "a",
+       "b",
+       "c"
+      ],
+      "fill": "none",
+      "ink": "accent",
+      "w": 8
+     },
+     {
+      "id": "da",
+      "dot": "a",
+      "ink": "accent",
+      "r": 12,
+      "group": "cnt"
+     },
+     {
+      "id": "db",
+      "dot": "b",
+      "ink": "accent",
+      "r": 12,
+      "group": "cnt"
+     },
+     {
+      "id": "dc",
+      "dot": "c",
+      "ink": "accent",
+      "r": 12,
+      "group": "cnt"
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "a",
+      "dir": "n",
+      "size": "l",
+      "ink": "accent",
+      "group": "cnt"
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "b",
+      "dir": "sw",
+      "size": "l",
+      "ink": "accent",
+      "group": "cnt"
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "c",
+      "dir": "se",
+      "size": "l",
+      "ink": "accent",
+      "group": "cnt"
+     },
+     {
+      "id": "name",
+      "label": "\\text{triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tally",
+      "label": "\\text{3 sides, 3 corners}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What makes a triangle a triangle.",
+     "do": [
+      {
+       "do": "text",
+       "text": "What makes a triangle a triangle",
+       "at": "What"
+      },
+      {
+       "do": "highlight",
+       "target": "tri",
+       "at": "triangle"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A triangle has a closed edge made of straight sides.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "edge",
+       "at": "closed",
+       "dur": 1.4
+      },
+      {
+       "do": "term",
+       "word": "side",
+       "meaning": "a straight part of the edge",
+       "at": "sides"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A corner is where two sides meet.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "edge",
+       "at": "corner"
+      },
+      {
+       "do": "show",
+       "target": "da",
+       "at": "corner"
+      },
+      {
+       "do": "term",
+       "word": "corner",
+       "meaning": "where two sides meet",
+       "at": "meet"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the corners: one, two, three. Three corners, and three sides.",
+     "do": [
+      {
+       "do": "show",
+       "target": "n1",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "db",
+        "n2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dc",
+        "n3"
+       ],
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "tally",
+       "at": "sides"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Change its color.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "cnt",
+       "at": "Change"
+      },
+      {
+       "do": "show",
+       "target": "triW",
+       "at": "color"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Still a triangle.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "name",
+       "at": "triangle"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Make it bigger. Now smaller.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "a": [
+         0,
+         2.57
+        ],
+        "b": [
+         -2.701,
+         -2.11
+        ],
+        "c": [
+         2.701,
+         -2.11
+        ]
+       },
+       "at": "bigger",
+       "dur": 0.8
+      },
+      {
+       "do": "move",
+       "points": {
+        "a": [
+         0,
+         0.77
+        ],
+        "b": [
+         -1.143,
+         -1.21
+        ],
+        "c": [
+         1.143,
+         -1.21
+        ]
+       },
+       "at": "smaller",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Turn it round.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "turn",
+       "target": [
+        "tri",
+        "triW"
+       ],
+       "about": "g",
+       "deg": 180,
+       "at": "Turn",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Still three sides and three corners.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tally",
+       "at": "three",
+       "nth": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "a": [
+      0,
+      1.85
+     ],
+     "b": [
+      -2.078,
+      -1.75
+     ],
+     "c": [
+      2.078,
+      -1.75
+     ],
+     "p1": [
+      0,
+      -1.75
+     ],
+     "p2": [
+      0,
+      -1.75
+     ],
+     "lbName": [
+      0,
+      -3.65
+     ],
+     "lbTally": [
+      0,
+      3.65
+     ],
+     "balT": [
+      0,
+      4.38
+     ],
+     "balB": [
+      0,
+      -4.38
+     ]
+    },
+    "parts": [
+     {
+      "id": "balanceT",
+      "dot": "balT",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "balanceB",
+      "dot": "balB",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "a",
+       "b"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s2a",
+      "seg": [
+       "b",
+       "p1"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s2b",
+      "seg": [
+       "p2",
+       "c"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "c",
+       "a"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tally",
+      "label": "\\text{3 sides, 3 corners}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "tOpen",
+      "label": "\\text{open}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "name",
+      "label": "\\text{triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nameX",
+      "label": "\\text{not a triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now break one rule at a time. Open a side.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "p1": [
+         -0.75,
+         -1.75
+        ],
+        "p2": [
+         0.75,
+         -1.75
+        ]
+       },
+       "at": "Open",
+       "dur": 1.0
+      },
+      {
+       "do": "hide",
+       "target": "tally",
+       "at": "side"
+      },
+      {
+       "do": "show",
+       "target": "tOpen",
+       "at": "side"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The edge must be closed, so this is not a triangle.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "text",
+       "text": "The edge must be closed.",
+       "at": "The"
+      },
+      {
+       "do": "hide",
+       "target": "name",
+       "at": "not"
+      },
+      {
+       "do": "show",
+       "target": "nameX",
+       "at": "not"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "a": [
+      0,
+      1.85
+     ],
+     "b": [
+      -2.078,
+      -1.75
+     ],
+     "c": [
+      2.078,
+      -1.75
+     ],
+     "q1": [
+      -1.039,
+      -1.75
+     ],
+     "m": [
+      0,
+      -1.75
+     ],
+     "q2": [
+      1.039,
+      -1.75
+     ],
+     "lbName": [
+      0,
+      -3.65
+     ],
+     "lbTally": [
+      0,
+      3.65
+     ],
+     "balT": [
+      0,
+      4.38
+     ],
+     "balB": [
+      0,
+      -4.38
+     ]
+    },
+    "parts": [
+     {
+      "id": "balanceT",
+      "dot": "balT",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "balanceB",
+      "dot": "balB",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "a",
+       "b"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "bend",
+      "curve": [
+       "b",
+       "q1",
+       "m",
+       "q2",
+       "c"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "c",
+       "a"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "tally",
+      "label": "\\text{3 sides, 3 corners}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "tCurve",
+      "label": "\\text{a curved side}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "name",
+      "label": "\\text{triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nameX",
+      "label": "\\text{not a triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Bend a side into a curve.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "q1": [
+         -1.039,
+         -2.35
+        ],
+        "m": [
+         0,
+         -2.55
+        ],
+        "q2": [
+         1.039,
+         -2.35
+        ]
+       },
+       "at": "Bend",
+       "dur": 1.2
+      },
+      {
+       "do": "hide",
+       "target": "tally",
+       "at": "curve"
+      },
+      {
+       "do": "show",
+       "target": "tCurve",
+       "at": "curve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The sides must be straight. Not a triangle either.",
+     "do": [
+      {
+       "do": "text",
+       "text": "The sides must be straight.",
+       "at": "The"
+      },
+      {
+       "do": "hide",
+       "target": "name",
+       "at": "Not"
+      },
+      {
+       "do": "show",
+       "target": "nameX",
+       "at": "Not"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "a": [
+      0,
+      1.85
+     ],
+     "b": [
+      -2.078,
+      -1.75
+     ],
+     "c": [
+      2.078,
+      -1.75
+     ],
+     "m": [
+      0,
+      -1.75
+     ],
+     "lbName": [
+      0,
+      -3.65
+     ],
+     "lbTally": [
+      0,
+      3.65
+     ],
+     "balT": [
+      0,
+      4.38
+     ],
+     "balB": [
+      0,
+      -4.38
+     ]
+    },
+    "parts": [
+     {
+      "id": "balanceT",
+      "dot": "balT",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "balanceB",
+      "dot": "balB",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "a",
+       "b"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s2a",
+      "seg": [
+       "b",
+       "m"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s2b",
+      "seg": [
+       "m",
+       "c"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "c",
+       "a"
+      ],
+      "ink": "blue",
+      "w": 6,
+      "start": true
+     },
+     {
+      "id": "dm",
+      "dot": "m",
+      "ink": "warm",
+      "r": 14
+     },
+     {
+      "id": "tally",
+      "label": "\\text{3 sides, 3 corners}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "t4",
+      "label": "\\text{4 sides, 4 corners}",
+      "at": "lbTally",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "name",
+      "label": "\\text{triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "nameX",
+      "label": "\\text{not a triangle}",
+      "at": "lbName",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Pull out a fourth corner.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "m": [
+         0,
+         -2.55
+        ]
+       },
+       "at": "Pull",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "dm",
+       "at": "corner"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now it has four sides and four corners.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "tally",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "t4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A triangle must have three sides and three corners, so this is not a triangle.",
+     "do": [
+      {
+       "do": "text",
+       "text": "It must have 3 sides, 3 corners.",
+       "at": "A"
+      },
+      {
+       "do": "hide",
+       "target": "name",
+       "at": "not"
+      },
+      {
+       "do": "show",
+       "target": "nameX",
+       "at": "not"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "a1": [
+      -2.7,
+      3.15
+     ],
+     "a2": [
+      2.7,
+      3.15
+     ],
+     "a3": [
+      2.7,
+      1.71
+     ],
+     "a4": [
+      -2.7,
+      1.71
+     ],
+     "b1": [
+      -3.6,
+      -0.18
+     ],
+     "b2": [
+      -1.62,
+      -0.18
+     ],
+     "b3": [
+      -1.62,
+      -2.52
+     ],
+     "b4": [
+      -3.6,
+      -2.52
+     ],
+     "c1": [
+      3.059,
+      -0.3215
+     ],
+     "c2": [
+      0.721,
+      -1.6715
+     ],
+     "c3": [
+      1.441,
+      -2.9185
+     ],
+     "c4": [
+      3.779,
+      -1.5685
+     ],
+     "pA": [
+      0,
+      2.43
+     ],
+     "pB": [
+      -2.61,
+      -1.35
+     ],
+     "cc": [
+      2.25,
+      -1.62
+     ],
+     "f1": [
+      0.55,
+      -2.9185
+     ],
+     "f2": [
+      3.6,
+      -2.9185
+     ],
+     "balL": [
+      -3.99,
+      -1.35
+     ],
+     "balT": [
+      0,
+      3.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "balanceL",
+      "dot": "balL",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "balanceT",
+      "dot": "balT",
+      "ink": "paper",
+      "r": 2,
+      "start": true
+     },
+     {
+      "id": "floor",
+      "seg": [
+       "f1",
+       "f2"
+      ],
+      "ink": "muted",
+      "w": 4,
+      "dash": true
+     },
+     {
+      "id": "rA",
+      "poly": [
+       "a1",
+       "a2",
+       "a3",
+       "a4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "rB",
+      "poly": [
+       "b1",
+       "b2",
+       "b3",
+       "b4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "rC",
+      "poly": [
+       "c1",
+       "c2",
+       "c3",
+       "c4"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "lA",
+      "label": "\\text{A}",
+      "at": "pA",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lB",
+      "label": "\\text{B}",
+      "at": "pB",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "lC",
+      "label": "\\text{C}",
+      "at": "cc",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "angle": [
+       "a4",
+       "a1",
+       "a2"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qa1"
+     },
+     {
+      "angle": [
+       "a1",
+       "a2",
+       "a3"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qa2"
+     },
+     {
+      "angle": [
+       "a2",
+       "a3",
+       "a4"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qa3"
+     },
+     {
+      "angle": [
+       "a3",
+       "a4",
+       "a1"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qa4"
+     },
+     {
+      "angle": [
+       "b4",
+       "b1",
+       "b2"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qb1"
+     },
+     {
+      "angle": [
+       "b1",
+       "b2",
+       "b3"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qb2"
+     },
+     {
+      "angle": [
+       "b2",
+       "b3",
+       "b4"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qb3"
+     },
+     {
+      "angle": [
+       "b3",
+       "b4",
+       "b1"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qb4"
+     },
+     {
+      "angle": [
+       "c4",
+       "c1",
+       "c2"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qc1"
+     },
+     {
+      "angle": [
+       "c1",
+       "c2",
+       "c3"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qc2"
+     },
+     {
+      "angle": [
+       "c2",
+       "c3",
+       "c4"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qc3"
+     },
+     {
+      "angle": [
+       "c3",
+       "c4",
+       "c1"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink",
+      "group": "sq",
+      "id": "qc4"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Shapes A, B and C are all rectangles.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Shapes"
+      },
+      {
+       "do": "problem",
+       "text": "Shapes A, B and C are all rectangles. Which sentence is true for every rectangle?",
+       "choices": [
+        "It is wider than it is tall.",
+        "It is taller than it is wide.",
+        "It has a side that lies flat along the bottom.",
+        "It has 4 straight sides and 4 square corners."
+       ],
+       "at": "Shapes"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which sentence is true for every rectangle?",
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "C is tilted. It has no side that lies flat along the bottom.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "rC",
+       "at": "tilted"
+      },
+      {
+       "do": "draw",
+       "target": "floor",
+       "at": "flat"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Turn it level, and it is the same rectangle.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "floor",
+       "at": "Turn"
+      },
+      {
+       "do": "turn",
+       "target": [
+        "rC",
+        "qc1",
+        "qc2",
+        "qc3",
+        "qc4"
+       ],
+       "about": "cc",
+       "deg": -30,
+       "at": "level",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every rectangle has four straight sides and four square corners.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Every"
+      },
+      {
+       "do": "text",
+       "text": "Every rectangle has",
+       "at": "Every"
+      },
+      {
+       "do": "show",
+       "target": "sq",
+       "at": "square"
+      },
+      {
+       "do": "answer",
+       "tex": "\\begin{array}{c}\\text{4 straight sides,}\\\\ \\text{4 square corners}\\end{array}",
+       "at": "four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.6,
+     -4.6,
+     4.6,
+     4.6
+    ],
+    "points": {
+     "A": [
+      -0.75,
+      2.89
+     ],
+     "B": [
+      1.56,
+      2.54
+     ],
+     "C": [
+      2.84,
+      -0.19
+     ],
+     "D": [
+      1.46,
+      -2.25
+     ],
+     "E": [
+      -0.5,
+      -3.04
+     ],
+     "F": [
+      -2.51,
+      -1.47
+     ],
+     "G": [
+      -2.76,
+      1.03
+     ]
+    },
+    "parts": [
+     {
+      "id": "hep",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E",
+       "F",
+       "G"
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "mark",
+      "circle": "A",
+      "r": 0.5,
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "id": "dA",
+      "dot": "A",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dB",
+      "dot": "B",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dC",
+      "dot": "C",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dD",
+      "dot": "D",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dE",
+      "dot": "E",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dF",
+      "dot": "F",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "dG",
+      "dot": "G",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "f1",
+      "label": "1",
+      "at": "A",
+      "dir": "nw",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f2",
+      "label": "2",
+      "at": "B",
+      "dir": "ne",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f3",
+      "label": "3",
+      "at": "C",
+      "dir": "e",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f4",
+      "label": "4",
+      "at": "D",
+      "dir": "se",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f5",
+      "label": "5",
+      "at": "E",
+      "dir": "s",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f6",
+      "label": "6",
+      "at": "F",
+      "dir": "sw",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f7",
+      "label": "7",
+      "at": "G",
+      "dir": "w",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "f8",
+      "label": "8",
+      "at": "A",
+      "dir": "ne",
+      "size": "l",
+      "ink": "warm",
+      "group": "first"
+     },
+     {
+      "id": "s1",
+      "label": "1",
+      "at": "A",
+      "dir": "nw",
+      "size": "l",
+      "ink": "blue",
+      "far": 1.6
+     },
+     {
+      "id": "s2",
+      "label": "2",
+      "at": "B",
+      "dir": "ne",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "s3",
+      "label": "3",
+      "at": "C",
+      "dir": "e",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "s4",
+      "label": "4",
+      "at": "D",
+      "dir": "se",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "s5",
+      "label": "5",
+      "at": "E",
+      "dir": "s",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "s6",
+      "label": "6",
+      "at": "F",
+      "dir": "sw",
+      "size": "l",
+      "ink": "blue"
+     },
+     {
+      "id": "s7",
+      "label": "7",
+      "at": "G",
+      "dir": "w",
+      "size": "l",
+      "ink": "blue"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How many corners, or vertices, does this shape have?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "How"
+      },
+      {
+       "do": "problem",
+       "text": "How many corners, or vertices, does this shape have?",
+       "at": "How"
+      },
+      {
+       "do": "highlight",
+       "target": "hep",
+       "at": "corners"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six, seven, eight. That makes eight corners in all.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "dA",
+        "f1"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dB",
+        "f2"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dC",
+        "f3"
+       ],
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dD",
+        "f4"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dE",
+        "f5"
+       ],
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dF",
+        "f6"
+       ],
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dG",
+        "f7"
+       ],
+       "at": "seven"
+      },
+      {
+       "do": "show",
+       "target": "f8",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two numbers sit on the top corner now.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "f8"
+       ],
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I counted it twice. Mark the start, then go round once.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "first",
+       "at": "Mark"
+      },
+      {
+       "do": "show",
+       "target": "mark",
+       "at": "Mark"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six, seven. Back at the mark, so I stop at seven.",
+     "do": [
+      {
+       "do": "show",
+       "target": "s1",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "s2",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "s3",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "s4",
+       "at": "four"
+      },
+      {
+       "do": "show",
+       "target": "s5",
+       "at": "five"
+      },
+      {
+       "do": "show",
+       "target": "s6",
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "s7",
+       "at": "seven"
+      },
+      {
+       "do": "highlight",
+       "target": "mark",
+       "at": "Back"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven corners. Each side ends at a corner, so there are seven sides too.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "7",
+       "at": "Seven"
+      },
+      {
+       "do": "text",
+       "text": "7 corners, so 7 sides",
+       "at": "sides"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A triangle has three straight sides and three corners.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Triangle: 3 sides, 3 corners",
+       "at": "A"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A rectangle has four straight sides and four square corners.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Rectangle: 4 sides, 4 square corners",
+       "at": "rectangle"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the sides and corners. Color, size and turning do not change the name.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\begin{array}{c}\\text{Count the sides}\\\\ \\text{and corners.}\\end{array}",
+       "at": "Count"
+      },
+      {
+       "do": "text",
+       "text": "Color, size and turning",
+       "at": "Color"
+      },
+      {
+       "do": "text",
+       "text": "do not change the name.",
+       "at": "change"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
