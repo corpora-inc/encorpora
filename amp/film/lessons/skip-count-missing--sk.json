@@ -1,0 +1,1597 @@
+{
+  "id": "skip-count-missing--sk",
+  "title": "Skip-counting: watch the digit that moves",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2.65,
+          -2.55,
+          2.65,
+          2.75
+        ],
+        "points": {
+          "h0P": [
+            -1.55,
+            2.1
+          ],
+          "h1P": [
+            0.0,
+            2.1
+          ],
+          "h2P": [
+            1.55,
+            2.1
+          ],
+          "r0d0P": [
+            -1.55,
+            1.2
+          ],
+          "r0d1P": [
+            0.0,
+            1.2
+          ],
+          "r0d2P": [
+            1.55,
+            1.2
+          ],
+          "K1C0": [
+            -1.55,
+            0.78
+          ],
+          "K1T1": [
+            0.0,
+            0.78
+          ],
+          "K1C2": [
+            1.55,
+            0.78
+          ],
+          "K2C0": [
+            -1.55,
+            -0.16999999999999998
+          ],
+          "K2T1": [
+            0.0,
+            -0.16999999999999998
+          ],
+          "K2C2": [
+            1.55,
+            -0.16999999999999998
+          ],
+          "K3C0": [
+            -1.55,
+            -1.1199999999999999
+          ],
+          "K3T1": [
+            0.0,
+            -1.1199999999999999
+          ],
+          "K3C2": [
+            1.55,
+            -1.1199999999999999
+          ],
+          "fA": [
+            -0.3,
+            -2.08
+          ],
+          "fB": [
+            0.3,
+            -2.08
+          ],
+          "fC": [
+            0.3,
+            1.62
+          ],
+          "fD": [
+            -0.3,
+            1.62
+          ],
+          "blankP": [
+            0.0,
+            -1.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "head0",
+            "label": "\\text{hundreds}",
+            "at": "h0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": false
+          },
+          {
+            "id": "head1",
+            "label": "\\text{tens}",
+            "at": "h1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "head2",
+            "label": "\\text{ones}",
+            "at": "h2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": false
+          },
+          {
+            "id": "r0d0",
+            "label": "6",
+            "at": "r0d0P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0d1",
+            "label": "4",
+            "at": "r0d1P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "r0d2",
+            "label": "8",
+            "at": "r0d2P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "k1c0",
+            "label": "6",
+            "at": "K1C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k1n1",
+            "label": "5",
+            "at": "K1T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k1c2",
+            "label": "8",
+            "at": "K1C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2c0",
+            "label": "6",
+            "at": "K2C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2n1",
+            "label": "6",
+            "at": "K2T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k2c2",
+            "label": "8",
+            "at": "K2C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3c0",
+            "label": "6",
+            "at": "K3C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3n1",
+            "label": "7",
+            "at": "K3T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k3c2",
+            "label": "8",
+            "at": "K3C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "focus",
+            "poly": [
+              "fA",
+              "fB",
+              "fC",
+              "fD"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "blank",
+            "label": "\\square",
+            "at": "blankP",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Skip-counting means adding the same amount each time. Watch the hundreds, tens and ones.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Add the same amount each time."
+            },
+            {
+              "do": "show",
+              "target": "head0",
+              "at": "hundreds"
+            },
+            {
+              "do": "show",
+              "target": "head1",
+              "at": "tens"
+            },
+            {
+              "do": "show",
+              "target": "head2",
+              "at": "ones"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count by ten: six hundred forty-eight, six hundred fifty-eight, six hundred sixty-eight, an empty square. What comes next?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by $10$: $648,\\ 658,\\ 668,\\ \\square.$ What comes next?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k1c0",
+                "k1c2",
+                "k1n1"
+              ],
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "K1C0": [
+                  -1.55,
+                  0.25
+                ],
+                "K1C2": [
+                  1.55,
+                  0.25
+                ],
+                "K1T1": [
+                  0.0,
+                  0.25
+                ]
+              },
+              "dur": 0.7,
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "k2c0",
+                "k2c2",
+                "k2n1"
+              ],
+              "at": "six",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "K2C0": [
+                  -1.55,
+                  -0.7
+                ],
+                "K2C2": [
+                  1.55,
+                  -0.7
+                ],
+                "K2T1": [
+                  0.0,
+                  -0.7
+                ]
+              },
+              "dur": 0.7,
+              "at": "six",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "blank",
+              "at": "square"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Only the tens digit moves: four, five, six. The eight stays the same.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "focus",
+              "at": "tens"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "r0d2",
+                "k1c2",
+                "k2c2"
+              ],
+              "at": "eight"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Add one more ten: the tens go from six to seven. Six hundred seventy-eight.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "blank",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k3c0",
+                "k3c2",
+                "k3n1"
+              ],
+              "at": "seven"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K3C0": [
+                  -1.55,
+                  -1.65
+                ],
+                "K3C2": [
+                  1.55,
+                  -1.65
+                ],
+                "K3T1": [
+                  0.0,
+                  -1.65
+                ]
+              },
+              "dur": 0.7,
+              "at": "seven"
+            },
+            {
+              "do": "answer",
+              "tex": "678",
+              "at": "seventy-eight"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.65,
+          -2.55,
+          2.65,
+          2.75
+        ],
+        "points": {
+          "h0P": [
+            -1.55,
+            2.1
+          ],
+          "h1P": [
+            0.0,
+            2.1
+          ],
+          "h2P": [
+            1.55,
+            2.1
+          ],
+          "r0d0P": [
+            -1.55,
+            1.2
+          ],
+          "r0d1P": [
+            0.0,
+            1.2
+          ],
+          "r0d2P": [
+            1.55,
+            1.2
+          ],
+          "K1T0": [
+            -1.55,
+            0.78
+          ],
+          "K1C1": [
+            0.0,
+            0.78
+          ],
+          "K1C2": [
+            1.55,
+            0.78
+          ],
+          "K2T0": [
+            -1.55,
+            -0.16999999999999998
+          ],
+          "K2C1": [
+            0.0,
+            -0.16999999999999998
+          ],
+          "K2C2": [
+            1.55,
+            -0.16999999999999998
+          ],
+          "K3T0": [
+            -1.55,
+            -1.1199999999999999
+          ],
+          "K3C1": [
+            0.0,
+            -1.1199999999999999
+          ],
+          "K3C2": [
+            1.55,
+            -1.1199999999999999
+          ],
+          "fA": [
+            -1.85,
+            -2.08
+          ],
+          "fB": [
+            -1.25,
+            -2.08
+          ],
+          "fC": [
+            -1.25,
+            1.62
+          ],
+          "fD": [
+            -1.85,
+            1.62
+          ],
+          "blankP": [
+            0.0,
+            -1.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "head0",
+            "label": "\\text{hundreds}",
+            "at": "h0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "head1",
+            "label": "\\text{tens}",
+            "at": "h1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "head2",
+            "label": "\\text{ones}",
+            "at": "h2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r0d0",
+            "label": "3",
+            "at": "r0d0P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "r0d1",
+            "label": "8",
+            "at": "r0d1P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0d2",
+            "label": "8",
+            "at": "r0d2P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "k1n0",
+            "label": "4",
+            "at": "K1T0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k1c1",
+            "label": "8",
+            "at": "K1C1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k1c2",
+            "label": "8",
+            "at": "K1C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2n0",
+            "label": "5",
+            "at": "K2T0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k2c1",
+            "label": "8",
+            "at": "K2C1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2c2",
+            "label": "8",
+            "at": "K2C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3n0",
+            "label": "6",
+            "at": "K3T0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k3c1",
+            "label": "8",
+            "at": "K3C1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3c2",
+            "label": "8",
+            "at": "K3C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "focus",
+            "poly": [
+              "fA",
+              "fB",
+              "fC",
+              "fD"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "blank",
+            "label": "\\square",
+            "at": "blankP",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Count by one hundred: three hundred eighty-eight, four hundred eighty-eight, five hundred eighty-eight, an empty square. What comes next?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by $100$: $388,\\ 488,\\ 588,\\ \\square.$ What comes next?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k1c1",
+                "k1c2",
+                "k1n0"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K1C1": [
+                  0.0,
+                  0.25
+                ],
+                "K1C2": [
+                  1.55,
+                  0.25
+                ],
+                "K1T0": [
+                  -1.55,
+                  0.25
+                ]
+              },
+              "dur": 0.7,
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k2c1",
+                "k2c2",
+                "k2n0"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K2C1": [
+                  0.0,
+                  -0.7
+                ],
+                "K2C2": [
+                  1.55,
+                  -0.7
+                ],
+                "K2T0": [
+                  -1.55,
+                  -0.7
+                ]
+              },
+              "dur": 0.7,
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "blank",
+              "at": "square"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Now the hundreds digit moves: three, four, five, then six. Six hundred eighty-eight goes in the empty row.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "focus",
+              "at": "hundreds"
+            },
+            {
+              "do": "hide",
+              "target": "blank",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k3c1",
+                "k3c2",
+                "k3n0"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K3C1": [
+                  0.0,
+                  -1.65
+                ],
+                "K3C2": [
+                  1.55,
+                  -1.65
+                ],
+                "K3T0": [
+                  -1.55,
+                  -1.65
+                ]
+              },
+              "dur": 0.7,
+              "at": "six"
+            },
+            {
+              "do": "answer",
+              "tex": "688",
+              "at": "eighty-eight"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.65,
+          -2.55,
+          2.65,
+          2.75
+        ],
+        "points": {
+          "h0P": [
+            -1.55,
+            2.1
+          ],
+          "h1P": [
+            0.0,
+            2.1
+          ],
+          "h2P": [
+            1.55,
+            2.1
+          ],
+          "r0d0P": [
+            -1.55,
+            1.2
+          ],
+          "r0d1P": [
+            0.0,
+            1.2
+          ],
+          "r0d2P": [
+            1.55,
+            1.2
+          ],
+          "K1C0": [
+            -1.55,
+            0.78
+          ],
+          "K1T1": [
+            0.0,
+            0.78
+          ],
+          "K1C2": [
+            1.55,
+            0.78
+          ],
+          "K2C0": [
+            -1.55,
+            -0.16999999999999998
+          ],
+          "K2T1": [
+            0.0,
+            -0.16999999999999998
+          ],
+          "K2C2": [
+            1.55,
+            -0.16999999999999998
+          ],
+          "K3C0": [
+            -1.55,
+            -1.1199999999999999
+          ],
+          "K3T0": [
+            -1.55,
+            -2.15
+          ],
+          "K3T1": [
+            0.0,
+            -2.15
+          ],
+          "K3C2": [
+            1.55,
+            -1.1199999999999999
+          ],
+          "SP": [
+            0.0,
+            -1.1199999999999999
+          ],
+          "fA": [
+            -0.3,
+            -2.08
+          ],
+          "fB": [
+            0.3,
+            -2.08
+          ],
+          "fC": [
+            0.3,
+            1.62
+          ],
+          "fD": [
+            -0.3,
+            1.62
+          ],
+          "blankP": [
+            0.0,
+            -1.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "head0",
+            "label": "\\text{hundreds}",
+            "at": "h0P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "head1",
+            "label": "\\text{tens}",
+            "at": "h1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "head2",
+            "label": "\\text{ones}",
+            "at": "h2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r0d0",
+            "label": "6",
+            "at": "r0d0P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0d1",
+            "label": "7",
+            "at": "r0d1P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "r0d2",
+            "label": "8",
+            "at": "r0d2P",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "k1c0",
+            "label": "6",
+            "at": "K1C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k1n1",
+            "label": "8",
+            "at": "K1T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k1c2",
+            "label": "8",
+            "at": "K1C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2c0",
+            "label": "6",
+            "at": "K2C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k2n1",
+            "label": "9",
+            "at": "K2T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k2c2",
+            "label": "8",
+            "at": "K2C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3c0",
+            "label": "6",
+            "at": "K3C0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "k3n0",
+            "label": "7",
+            "at": "K3T0",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k3n1",
+            "label": "0",
+            "at": "K3T1",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "k3c2",
+            "label": "8",
+            "at": "K3C2",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "flies": true
+          },
+          {
+            "id": "slipd",
+            "label": "10",
+            "at": "SP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "warm",
+            "flies": true
+          },
+          {
+            "id": "focus",
+            "poly": [
+              "fA",
+              "fB",
+              "fC",
+              "fD"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "blank",
+            "label": "\\square",
+            "at": "blankP",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Count by ten: six hundred seventy-eight, six hundred eighty-eight, six hundred ninety-eight, an empty square. What comes next?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by $10$: $678,\\ 688,\\ 698,\\ \\square.$ What comes next?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k1c0",
+                "k1c2",
+                "k1n1"
+              ],
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "K1C0": [
+                  -1.55,
+                  0.25
+                ],
+                "K1C2": [
+                  1.55,
+                  0.25
+                ],
+                "K1T1": [
+                  0.0,
+                  0.25
+                ]
+              },
+              "dur": 0.7,
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "k2c0",
+                "k2c2",
+                "k2n1"
+              ],
+              "at": "six",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "K2C0": [
+                  -1.55,
+                  -0.7
+                ],
+                "K2C2": [
+                  1.55,
+                  -0.7
+                ],
+                "K2T1": [
+                  0.0,
+                  -0.7
+                ]
+              },
+              "dur": 0.7,
+              "at": "six",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "blank",
+              "at": "square"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine and one make ten, so I put ten in the tens column.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "focus",
+              "at": "Nine"
+            },
+            {
+              "do": "hide",
+              "target": "blank",
+              "at": "ten"
+            },
+            {
+              "do": "text",
+              "id": "slip",
+              "text": "$\\Large 698+10=6\\ \\cw{10}\\ 8$",
+              "at": "tens"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k3c0",
+                "slipd",
+                "k3c2"
+              ],
+              "at": "ten"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K3C0": [
+                  -1.55,
+                  -1.65
+                ],
+                "SP": [
+                  0.0,
+                  -1.65
+                ],
+                "K3C2": [
+                  1.55,
+                  -1.65
+                ]
+              },
+              "dur": 0.7,
+              "at": "ten"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "A place holds only one digit. Ten tens make one hundred.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "digit"
+            },
+            {
+              "do": "highlight",
+              "target": "slipd",
+              "at": "Ten"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "So the tens roll back to zero, and the hundreds go up one. Seven hundred eight is the next number.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "k3c0",
+                "slipd"
+              ],
+              "at": "roll"
+            },
+            {
+              "do": "show",
+              "target": [
+                "k3n0",
+                "k3n1"
+              ],
+              "at": "roll"
+            },
+            {
+              "do": "move",
+              "points": {
+                "K3T0": [
+                  -1.55,
+                  -1.65
+                ],
+                "K3T1": [
+                  0.0,
+                  -1.65
+                ],
+                "K3C0": [
+                  -1.55,
+                  -1.15
+                ],
+                "SP": [
+                  0.0,
+                  -1.15
+                ]
+              },
+              "at": "roll",
+              "dur": 0.6
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k3n0",
+                "k3n1"
+              ],
+              "at": "hundreds"
+            },
+            {
+              "do": "clear",
+              "at": "So"
+            },
+            {
+              "do": "text",
+              "text": "Ten tens make one hundred.",
+              "at": "So"
+            },
+            {
+              "do": "answer",
+              "tex": "708",
+              "at": "Seven"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.65,
+          -2.55,
+          2.65,
+          2.75
+        ],
+        "points": {
+          "titleP": [
+            0,
+            2.1
+          ],
+          "n0P": [
+            0.45,
+            1.2
+          ],
+          "n1P": [
+            0.45,
+            0.4
+          ],
+          "n2P": [
+            0.45,
+            -0.4
+          ],
+          "n3P": [
+            0.45,
+            -1.2
+          ],
+          "a1": [
+            1.0,
+            1.08
+          ],
+          "z1": [
+            1.0,
+            0.52
+          ],
+          "p1P": [
+            1.65,
+            0.8
+          ],
+          "a2": [
+            1.0,
+            0.28
+          ],
+          "z2": [
+            1.0,
+            -0.28
+          ],
+          "p2P": [
+            1.65,
+            0.0
+          ],
+          "a3": [
+            1.0,
+            -0.52
+          ],
+          "z3": [
+            1.0,
+            -1.08
+          ],
+          "p3P": [
+            1.65,
+            -0.8
+          ],
+          "blankP": [
+            0.12,
+            -1.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "label": "\\text{Add five each time}",
+            "at": "titleP",
+            "dir": "c",
+            "size": "m",
+            "start": true,
+            "ink": "muted"
+          },
+          {
+            "id": "v0",
+            "label": "8\\cw{5}",
+            "at": "n0P",
+            "dir": "w",
+            "far": 0,
+            "size": "xl",
+            "start": true
+          },
+          {
+            "id": "v1",
+            "label": "9\\cw{0}",
+            "at": "n1P",
+            "dir": "w",
+            "far": 0,
+            "size": "xl",
+            "start": true
+          },
+          {
+            "id": "v2",
+            "label": "9\\cw{5}",
+            "at": "n2P",
+            "dir": "w",
+            "far": 0,
+            "size": "xl",
+            "start": true
+          },
+          {
+            "id": "v3",
+            "label": "10\\cw{0}",
+            "at": "n3P",
+            "dir": "w",
+            "far": 0,
+            "size": "xl",
+            "start": false
+          },
+          {
+            "id": "j1",
+            "vector": [
+              "a1",
+              "z1"
+            ],
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "p1",
+            "label": "+5",
+            "at": "p1P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "j2",
+            "vector": [
+              "a2",
+              "z2"
+            ],
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "p2",
+            "label": "+5",
+            "at": "p2P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "j3",
+            "vector": [
+              "a3",
+              "z3"
+            ],
+            "ink": "warm",
+            "w": 2
+          },
+          {
+            "id": "p3",
+            "label": "+5",
+            "at": "p3P",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "blank",
+            "label": "\\square",
+            "at": "blankP",
+            "dir": "c",
+            "size": "xl",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Count by five: eighty-five, ninety, ninety-five, an empty square. What comes next?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by $5$: $85,\\ 90,\\ 95,\\ \\square.$ What comes next?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "p1"
+              ],
+              "at": "ninety"
+            },
+            {
+              "do": "draw",
+              "target": "j1",
+              "at": "ninety"
+            },
+            {
+              "do": "show",
+              "target": [
+                "p2"
+              ],
+              "at": "ninety-five"
+            },
+            {
+              "do": "draw",
+              "target": "j2",
+              "at": "ninety-five"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "square"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "The ones digit goes five, zero, five, zero: two fives make a ten. Five more than ninety-five makes one hundred.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "v0",
+                "v1",
+                "v2"
+              ],
+              "at": "ones"
+            },
+            {
+              "do": "hide",
+              "target": "blank",
+              "at": "Five",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": [
+                "v3",
+                "p3"
+              ],
+              "at": "Five",
+              "nth": 3
+            },
+            {
+              "do": "draw",
+              "target": "j3",
+              "at": "Five",
+              "nth": 3
+            },
+            {
+              "do": "answer",
+              "tex": "100",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "After nine, a digit rolls back to zero, and the next place goes up.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "After $9$: roll to $0$, the next place goes up."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count by tens, the tens digit moves. Count by hundreds, the hundreds digit moves, and the rest stay the same.",
+          "do": [
+            {
+              "do": "text",
+              "text": "By tens: the tens digit moves.",
+              "at": "Count"
+            },
+            {
+              "do": "text",
+              "text": "By hundreds: the hundreds digit moves.",
+              "at": "Count",
+              "nth": 2
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1622 @@
+{
+  "id": "negative-coefficient-equation--su",
+  "title": "Undo the last thing first",
+  "teaches": [
+    "grouped-linear-equation",
+    "rational-coefficient-equation",
+    "sat-entry-fn-related-value"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -3.0,
+          -4.2,
+          15.8,
+          11.8
+        ],
+        "points": {
+          "l0": [
+            -2.1,
+            0
+          ],
+          "l1": [
+            2.1,
+            0
+          ],
+          "l2": [
+            2.1,
+            7.6
+          ],
+          "l3": [
+            -2.1,
+            7.6
+          ],
+          "m0": [
+            4.300000000000001,
+            0
+          ],
+          "m1": [
+            8.5,
+            0
+          ],
+          "m2": [
+            8.5,
+            7.6
+          ],
+          "m3": [
+            4.300000000000001,
+            7.6
+          ],
+          "r0": [
+            10.700000000000001,
+            0
+          ],
+          "r1": [
+            14.9,
+            0
+          ],
+          "r2": [
+            14.9,
+            7.6
+          ],
+          "r3": [
+            10.700000000000001,
+            7.6
+          ],
+          "LE": [
+            0.0,
+            5.75
+          ],
+          "ME": [
+            6.4,
+            5.75
+          ],
+          "LV": [
+            0.0,
+            2.05
+          ],
+          "MV": [
+            6.4,
+            2.05
+          ],
+          "R": [
+            12.8,
+            3.8
+          ],
+          "F0a": [
+            2.25,
+            5.75
+          ],
+          "F0b": [
+            4.15,
+            5.75
+          ],
+          "F1a": [
+            8.65,
+            5.75
+          ],
+          "F1b": [
+            10.55,
+            5.75
+          ],
+          "R1a": [
+            10.55,
+            2.05
+          ],
+          "R1b": [
+            8.65,
+            2.05
+          ],
+          "R0a": [
+            4.15,
+            2.05
+          ],
+          "R0b": [
+            2.25,
+            2.05
+          ],
+          "T1": [
+            3.2,
+            7.8
+          ],
+          "T2": [
+            9.600000000000001,
+            7.8
+          ],
+          "B1": [
+            3.2,
+            -0.2
+          ],
+          "B2": [
+            9.600000000000001,
+            -0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftBox",
+            "poly": [
+              "l0",
+              "l1",
+              "l2",
+              "l3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "middleBox",
+            "poly": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "rightBox",
+            "poly": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "leftLabel",
+            "label": "x",
+            "at": "LE",
+            "dir": "c",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "middleLabel",
+            "label": "-5x",
+            "at": "ME",
+            "dir": "c",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "rightLabel",
+            "label": "{11}",
+            "at": "R",
+            "dir": "c",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "f0",
+            "vector": [
+              "F0a",
+              "F0b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl0",
+            "label": "\\times(-5)",
+            "at": "T1",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "f1",
+            "vector": [
+              "F1a",
+              "F1b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl1",
+            "label": "+4",
+            "at": "T2",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "r1",
+            "vector": [
+              "R1a",
+              "R1b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl1",
+            "label": "-4",
+            "at": "B2",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "r0",
+            "vector": [
+              "R0a",
+              "R0b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl0",
+            "label": "\\div(-5)",
+            "at": "B1",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "middleValue",
+            "label": "7",
+            "at": "MV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "leftValue",
+            "label": "-\\frac{7}{5}",
+            "at": "LV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "To solve an equation, run its steps backward. Solve negative five x plus four equals eleven.",
+          "do": [
+            {
+              "do": "problem",
+              "text": "Solve $-5x+4={11}$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "leftBox",
+                "leftLabel",
+                "middleBox",
+                "middleLabel",
+                "rightBox",
+                "rightLabel"
+              ],
+              "at": "steps"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "First x is multiplied by negative five. Then four is added.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "f0",
+              "at": "multiplied"
+            },
+            {
+              "do": "show",
+              "target": "fl0",
+              "at": "negative"
+            },
+            {
+              "do": "draw",
+              "target": "f1",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "fl1",
+              "at": "added"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Adding four came last, so undo it first: subtract four from both sides.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "r1",
+              "at": "subtract"
+            },
+            {
+              "do": "write",
+              "tex": "-5x+4-4={11}-4",
+              "at": "subtract"
+            },
+            {
+              "do": "show",
+              "target": "rl1",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Negative five x equals seven.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "-5x=7",
+              "at": "Negative"
+            },
+            {
+              "do": "show",
+              "target": "middleValue",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now divide by the multiplier, negative five, sign and all.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "divide"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{-5x}{-5}=\\frac{7}{-5}",
+              "at": "divide"
+            },
+            {
+              "do": "draw",
+              "target": "r0",
+              "at": "divide"
+            },
+            {
+              "do": "show",
+              "target": "rl0",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So x is negative seven fifths.",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "x=-\\frac{7}{5}",
+              "at": "negative"
+            },
+            {
+              "do": "show",
+              "target": "leftValue",
+              "at": "negative"
+            }
+          ],
+          "pause": 0.9
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check in the original equation. A common slip drops the sign: seven fifths gives negative three, not eleven.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Check"
+            },
+            {
+              "do": "write",
+              "tex": "-5x+4={11}",
+              "note": "\\text{the original}",
+              "fresh": true,
+              "at": "Check"
+            },
+            {
+              "do": "write",
+              "tex": "-5\\left(\\frac{7}{5}\\right)+4=-3",
+              "id": "slip",
+              "fresh": true,
+              "at": "seven"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "not"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Negative seven fifths gives back eleven.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "-5\\left(-\\frac{7}{5}\\right)+4={11}",
+              "fresh": true,
+              "at": "Negative"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.0,
+          -4.2,
+          15.8,
+          11.8
+        ],
+        "points": {
+          "l0": [
+            -2.1,
+            0
+          ],
+          "l1": [
+            2.1,
+            0
+          ],
+          "l2": [
+            2.1,
+            7.6
+          ],
+          "l3": [
+            -2.1,
+            7.6
+          ],
+          "m0": [
+            4.300000000000001,
+            0
+          ],
+          "m1": [
+            8.5,
+            0
+          ],
+          "m2": [
+            8.5,
+            7.6
+          ],
+          "m3": [
+            4.300000000000001,
+            7.6
+          ],
+          "r0": [
+            10.700000000000001,
+            0
+          ],
+          "r1": [
+            14.9,
+            0
+          ],
+          "r2": [
+            14.9,
+            7.6
+          ],
+          "r3": [
+            10.700000000000001,
+            7.6
+          ],
+          "LE": [
+            0.0,
+            5.75
+          ],
+          "ME": [
+            6.4,
+            5.75
+          ],
+          "LV": [
+            0.0,
+            2.05
+          ],
+          "MV": [
+            6.4,
+            2.05
+          ],
+          "R": [
+            12.8,
+            3.8
+          ],
+          "F0a": [
+            2.25,
+            5.75
+          ],
+          "F0b": [
+            4.15,
+            5.75
+          ],
+          "F1a": [
+            8.65,
+            5.75
+          ],
+          "F1b": [
+            10.55,
+            5.75
+          ],
+          "R1a": [
+            10.55,
+            2.05
+          ],
+          "R1b": [
+            8.65,
+            2.05
+          ],
+          "R0a": [
+            4.15,
+            2.05
+          ],
+          "R0b": [
+            2.25,
+            2.05
+          ],
+          "T1": [
+            3.2,
+            7.8
+          ],
+          "T2": [
+            9.600000000000001,
+            7.8
+          ],
+          "B1": [
+            3.2,
+            -0.2
+          ],
+          "B2": [
+            9.600000000000001,
+            -0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftBox",
+            "poly": [
+              "l0",
+              "l1",
+              "l2",
+              "l3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "middleBox",
+            "poly": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "rightBox",
+            "poly": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "leftLabel",
+            "label": "x",
+            "at": "LE",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "middleLabel",
+            "label": "\\frac{3}{4}x",
+            "at": "ME",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "rightLabel",
+            "label": "9",
+            "at": "R",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "f0",
+            "vector": [
+              "F0a",
+              "F0b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl0",
+            "label": "\\times\\frac{3}{4}",
+            "at": "T1",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "f1",
+            "vector": [
+              "F1a",
+              "F1b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl1",
+            "label": "+2",
+            "at": "T2",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "r1",
+            "vector": [
+              "R1a",
+              "R1b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl1",
+            "label": "-2",
+            "at": "B2",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "r0",
+            "vector": [
+              "R0a",
+              "R0b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl0",
+            "label": "\\times\\frac{4}{3}",
+            "at": "B1",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "middleValue",
+            "label": "7",
+            "at": "MV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "leftValue",
+            "label": "\\frac{28}{3}",
+            "at": "LV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Solve three fourths x plus two equals nine.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Solve $\\frac{3}{4}x+2=9$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "f0",
+                "fl0"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "f1",
+                "fl1"
+              ],
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Subtract two from both sides. Three fourths x equals seven.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "r1",
+              "at": "Subtract"
+            },
+            {
+              "do": "show",
+              "target": "rl1",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{3}{4}x=7",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "middleValue",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Next, multiply by four thirds, the fraction flipped.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "multiply"
+            },
+            {
+              "do": "draw",
+              "target": "r0",
+              "at": "multiply"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{3}{4}\\cdot\\frac{4}{3}",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "rl0",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three fourths times four thirds is one.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\frac{\\cancel{3}}{\\cancel{4}}\\cdot\\frac{\\cancel{4}}{\\cancel{3}}=1",
+              "at": "Three"
+            }
+          ],
+          "pause": 0.8
+        },
+        {
+          "speaker": "teacher",
+          "say": "So x is seven times four thirds: twenty-eight over three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "seven"
+            },
+            {
+              "do": "answer",
+              "tex": "x=7\\cdot\\frac{4}{3}=\\frac{28}{3}",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "leftValue",
+              "at": "twenty-eight"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.0,
+          -4.2,
+          15.8,
+          11.8
+        ],
+        "points": {
+          "l0": [
+            -2.1,
+            0
+          ],
+          "l1": [
+            2.1,
+            0
+          ],
+          "l2": [
+            2.1,
+            7.6
+          ],
+          "l3": [
+            -2.1,
+            7.6
+          ],
+          "m0": [
+            4.300000000000001,
+            0
+          ],
+          "m1": [
+            8.5,
+            0
+          ],
+          "m2": [
+            8.5,
+            7.6
+          ],
+          "m3": [
+            4.300000000000001,
+            7.6
+          ],
+          "r0": [
+            10.700000000000001,
+            0
+          ],
+          "r1": [
+            14.9,
+            0
+          ],
+          "r2": [
+            14.9,
+            7.6
+          ],
+          "r3": [
+            10.700000000000001,
+            7.6
+          ],
+          "LE": [
+            0.0,
+            5.75
+          ],
+          "ME": [
+            6.4,
+            5.75
+          ],
+          "LV": [
+            0.0,
+            2.05
+          ],
+          "MV": [
+            6.4,
+            2.05
+          ],
+          "R": [
+            12.8,
+            3.8
+          ],
+          "F0a": [
+            2.25,
+            5.75
+          ],
+          "F0b": [
+            4.15,
+            5.75
+          ],
+          "F1a": [
+            8.65,
+            5.75
+          ],
+          "F1b": [
+            10.55,
+            5.75
+          ],
+          "R1a": [
+            10.55,
+            2.05
+          ],
+          "R1b": [
+            8.65,
+            2.05
+          ],
+          "R0a": [
+            4.15,
+            2.05
+          ],
+          "R0b": [
+            2.25,
+            2.05
+          ],
+          "T1": [
+            3.2,
+            7.8
+          ],
+          "T2": [
+            9.600000000000001,
+            7.8
+          ],
+          "B1": [
+            3.2,
+            -0.2
+          ],
+          "B2": [
+            9.600000000000001,
+            -0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftBox",
+            "poly": [
+              "l0",
+              "l1",
+              "l2",
+              "l3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "middleBox",
+            "poly": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "rightBox",
+            "poly": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "leftLabel",
+            "label": "x",
+            "at": "LE",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "middleLabel",
+            "label": "x-2",
+            "at": "ME",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "rightLabel",
+            "label": "5",
+            "at": "R",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "f0",
+            "vector": [
+              "F0a",
+              "F0b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl0",
+            "label": "-2",
+            "at": "T1",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "f1",
+            "vector": [
+              "F1a",
+              "F1b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl1",
+            "label": "\\times(-4)",
+            "at": "T2",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "r1",
+            "vector": [
+              "R1a",
+              "R1b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl1",
+            "label": "\\div(-4)",
+            "at": "B2",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "r0",
+            "vector": [
+              "R0a",
+              "R0b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl0",
+            "label": "+2",
+            "at": "B1",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "middleValue",
+            "label": "-\\frac{5}{4}",
+            "at": "MV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "leftValue",
+            "label": "\\frac{3}{4}",
+            "at": "LV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Solve negative four times the quantity x minus two equals five.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Solve $-4(x-2)=5$"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Inside the parentheses, two is taken from x. Then the whole group is multiplied by negative four.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "f0",
+                "fl0"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "f1",
+                "fl1"
+              ],
+              "at": "whole"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That came last, so undo it first: divide by negative four.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "r1",
+              "at": "divide"
+            },
+            {
+              "do": "show",
+              "target": "rl1",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The group, x minus two, is negative five fourths.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "x-2=-\\frac{5}{4}",
+              "at": "group"
+            },
+            {
+              "do": "show",
+              "target": "middleValue",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then add two, which is eight fourths. x is three fourths.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "add"
+            },
+            {
+              "do": "draw",
+              "target": "r0",
+              "at": "add"
+            },
+            {
+              "do": "show",
+              "target": "rl0",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "x=-\\frac{5}{4}+\\frac{8}{4}",
+              "at": "add"
+            },
+            {
+              "do": "answer",
+              "tex": "x=\\frac{3}{4}",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "leftValue",
+              "at": "three"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.0,
+          -4.2,
+          15.8,
+          11.8
+        ],
+        "points": {
+          "l0": [
+            -2.1,
+            0
+          ],
+          "l1": [
+            2.1,
+            0
+          ],
+          "l2": [
+            2.1,
+            7.6
+          ],
+          "l3": [
+            -2.1,
+            7.6
+          ],
+          "m0": [
+            4.300000000000001,
+            0
+          ],
+          "m1": [
+            8.5,
+            0
+          ],
+          "m2": [
+            8.5,
+            7.6
+          ],
+          "m3": [
+            4.300000000000001,
+            7.6
+          ],
+          "r0": [
+            10.700000000000001,
+            0
+          ],
+          "r1": [
+            14.9,
+            0
+          ],
+          "r2": [
+            14.9,
+            7.6
+          ],
+          "r3": [
+            10.700000000000001,
+            7.6
+          ],
+          "LE": [
+            0.0,
+            5.75
+          ],
+          "ME": [
+            6.4,
+            5.75
+          ],
+          "LV": [
+            0.0,
+            2.05
+          ],
+          "MV": [
+            6.4,
+            2.05
+          ],
+          "R": [
+            12.8,
+            3.8
+          ],
+          "F0a": [
+            2.25,
+            5.75
+          ],
+          "F0b": [
+            4.15,
+            5.75
+          ],
+          "F1a": [
+            8.65,
+            5.75
+          ],
+          "F1b": [
+            10.55,
+            5.75
+          ],
+          "R1a": [
+            10.55,
+            2.05
+          ],
+          "R1b": [
+            8.65,
+            2.05
+          ],
+          "R0a": [
+            4.15,
+            2.05
+          ],
+          "R0b": [
+            2.25,
+            2.05
+          ],
+          "T1": [
+            3.2,
+            7.8
+          ],
+          "T2": [
+            9.600000000000001,
+            7.8
+          ],
+          "B1": [
+            3.2,
+            -0.2
+          ],
+          "B2": [
+            9.600000000000001,
+            -0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftBox",
+            "poly": [
+              "l0",
+              "l1",
+              "l2",
+              "l3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "middleBox",
+            "poly": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "rightBox",
+            "poly": [
+              "r0",
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "leftLabel",
+            "label": "x",
+            "at": "LE",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "middleLabel",
+            "label": "x+3",
+            "at": "ME",
+            "dir": "c",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "rightLabel",
+            "label": "-{42}",
+            "at": "R",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "f0",
+            "vector": [
+              "F0a",
+              "F0b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl0",
+            "label": "+3",
+            "at": "T1",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "f1",
+            "vector": [
+              "F1a",
+              "F1b"
+            ],
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "fl1",
+            "label": "\\times 7",
+            "at": "T2",
+            "dir": "n",
+            "far": 0,
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "r1",
+            "vector": [
+              "R1a",
+              "R1b"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "rl1",
+            "label": "\\div 7",
+            "at": "B2",
+            "dir": "s",
+            "far": 0,
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "middleValue",
+            "label": "-6",
+            "at": "MV",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "If seven x plus twenty-one equals negative forty-two, what is the value of x plus three",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "If $7x+{21}=-{42}$ what is the value of $x+3$"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven x plus twenty-one is seven times the group x plus three.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "7(x+3)=-{42}",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "f1",
+                "fl1"
+              ],
+              "at": "times"
+            },
+            {
+              "do": "show",
+              "target": [
+                "middleLabel",
+                "f0",
+                "fl0"
+              ],
+              "at": "group"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Divide by seven: x plus three is negative six. Finding x was never needed.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "r1",
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": "rl1",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "middleValue",
+              "at": "negative"
+            },
+            {
+              "do": "answer",
+              "tex": "x+3=-6",
+              "at": "three"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A fraction is undone by its flip. A group is undone from the outside in.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "A fraction: multiply by its flip.",
+              "at": "fraction"
+            },
+            {
+              "do": "text",
+              "text": "A group: undo the outside first.",
+              "at": "group"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Undo the last thing first. Divide by the whole multiplier, sign and all.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Undo"
+            },
+            {
+              "do": "text",
+              "text": "Undo the last thing first.",
+              "at": "Undo"
+            },
+            {
+              "do": "text",
+              "text": "Divide by the whole multiplier.",
+              "at": "Divide"
+            },
+            {
+              "do": "text",
+              "text": "Sign and all.",
+              "at": "sign"
+            }
+          ],
+          "pause": 1.2
+        }
+      ]
+    }
+  ]
+}
