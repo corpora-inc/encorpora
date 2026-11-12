@@ -273,12 +273,14 @@ def validate_cast(path, identifier):
     script = read_json(path)
     if not script or script.get('id') != identifier:
         raise ValueError('Screenplay is missing or uses the wrong ID')
-    if script.get('cast') != {'teacher': {}, 'learner': {}}:
-        raise ValueError('Use exactly teacher and learner roles with empty voice bindings')
+    cast = script.get('cast')
+    # a teacher with a learner, or the teacher alone (films for older learners)
+    if cast not in ({'teacher': {}, 'learner': {}}, {'teacher': {}}):
+        raise ValueError('Use teacher and learner roles, or the teacher alone, with empty voice bindings')
     beats = [beat for shot in script.get('shots', []) for beat in shot.get('beats', [])]
     speakers = {beat.get('speaker') for beat in beats}
-    if speakers != {'teacher', 'learner'}:
-        raise ValueError('Every beat must name its teacher or learner speaker, and both roles must speak')
+    if speakers != set(cast):
+        raise ValueError('Every beat must name its speaker, and every role in the cast must speak')
     visible = script.get('title', '')+'\n'+'\n'.join(beat.get('say', '') for beat in beats)
     if re.search(r'\b(?:claude|fable|opus|sonnet|grok|astra|sol|study-opus|write-opus)\b', visible, re.I):
         raise ValueError('Remove model attribution from the visible screenplay')
