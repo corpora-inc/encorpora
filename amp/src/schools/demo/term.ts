@@ -254,6 +254,8 @@ export async function seedTermEvidence(
 export async function seedStaffEvents(
   client: Pick<PoolClient, "query">,
   timezone: string,
+  /** Today in `timezone`, when the place is written ahead of its day. */
+  today: string | null = null,
 ) {
   await client.query(
     `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
@@ -263,7 +265,7 @@ export async function seedStaffEvents(
            WHEN 'grade.final-set' THEN jsonb_build_object('after',jsonb_build_object('value',(ARRAY['A','A-','B+','B','B-','C+','Pass'])[1+floor(random()*7)::int],'classId',c.id))
            WHEN 'student.updated' THEN jsonb_build_object('after',jsonb_build_object('gradeLevel',s.grade))
            ELSE '{}'::jsonb END,
-         ((now() AT TIME ZONE $1)::date-1-(g/6)+interval '8 hours 20 minutes'+(g%6)*interval '71 minutes') AT TIME ZONE $1
+         ((COALESCE($2::date,(now() AT TIME ZONE $1)::date))-1-(g/6)+interval '8 hours 20 minutes'+(g%6)*interval '71 minutes') AT TIME ZONE $1
        FROM generate_series(1,40) g
        CROSS JOIN LATERAL (SELECT * FROM seed_class c WHERE c.teacher IS NOT NULL ORDER BY c.id OFFSET (g*7)%(SELECT count(*) FROM seed_class WHERE teacher IS NOT NULL) LIMIT 1) c
        CROSS JOIN LATERAL (SELECT * FROM seed_student s WHERE s.class=c.id ORDER BY s.index OFFSET g%5 LIMIT 1) s
@@ -271,6 +273,6 @@ export async function seedStaffEvents(
            ('grade.final-set','person'),('grade.final-set','person'),('student.card-issued','person'),
            ('student.pictures-reset','person'),('class.code-rotated','class'),('student.updated','person')
          ) AS v(action,kind) OFFSET g%6 LIMIT 1) e`,
-    [timezone],
+    [timezone, today],
   );
 }

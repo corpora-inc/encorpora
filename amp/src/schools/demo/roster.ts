@@ -135,6 +135,41 @@ export function demoDay(now: number, timezone: string): DemoDay {
   };
 }
 
+/* The shared demo school is static: the same students, answers and levels
+   every day, so someone presenting it can know them by heart. Its term is
+   computed once, at a fixed anchor week, for each weekday (a Tuesday's term
+   has Tuesday's sitting), and written each night with every date moved by
+   whole weeks so it ends on the zone's today. The anchor is in New York
+   during standard time, so its clock is UTC-5 throughout (`anchorWall`). */
+export const ANCHOR_MONDAY = "2026-02-02";
+export const ANCHOR_ZONE = "America/New_York";
+/** New York's offset from UTC through the anchor term (EST). */
+export const ANCHOR_OFFSET_MS = -5 * 3_600_000;
+
+const weekdayOf = (day: string) =>
+  (new Date(`${day}T12:00:00Z`).getUTCDay() + 6) % 7;
+
+/** The anchor day of weekday `weekday` (0 is Monday): the school day under
+ * way in New York, so its sitting is done. */
+export function variantDay(weekday: number): DemoDay {
+  const today = iso(Date.parse(`${ANCHOR_MONDAY}T12:00:00Z`) + weekday * DAY);
+  return demoDay(zonedInstant(today, 12, ANCHOR_ZONE), ANCHOR_ZONE);
+}
+
+/** The shared school a zone shows on its day at `now`: today's, from the
+ * anchor variant of today's weekday, moved by `shiftDays` (whole weeks). */
+export function sharedDay(now: number, timezone: string) {
+  const day = parts(now, timezone).day;
+  const weekday = weekdayOf(day);
+  const shiftDays = Math.round(
+    (Date.parse(`${day}T12:00:00Z`) -
+      Date.parse(`${variantDay(weekday).today}T12:00:00Z`)) /
+      DAY,
+  );
+  return { timezone, day, weekday, shiftDays };
+}
+export type SharedDay = ReturnType<typeof sharedDay>;
+
 /** The day a student who joined `daysAgo` days before today joined. */
 export const joinedOn = (today: string, daysAgo: number) =>
   iso(Date.parse(`${today}T12:00:00Z`) - daysAgo * DAY);
