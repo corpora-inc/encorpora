@@ -263,6 +263,28 @@
       }
     ]
   },
+  "clock-hour-read": {
+    "id": "read-clock-hour-half--sc",
+    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "title": "Read the hour and half hour",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+    "duration": 96.89,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+        "duration": 96.89
+      }
+    ]
+  },
   "compare-capacity": {
     "id": "compare-lengths--sm",
     "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
@@ -1130,6 +1152,27 @@
       }
     ]
   },
+  "linear-system-pair": {
+    "id": "linear-system-x--se",
+    "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+    "title": "Make one unknown disappear",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+    "duration": 162.82,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+        "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+        "duration": 162.82
+      }
+    ]
+  },
   "linear-system-solution-count": {
     "id": "system-intersection-reason--sg",
     "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
@@ -1149,6 +1192,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/system-intersection-reason--sg/33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e/audio.m4a",
         "version": "33dde3e9d9b1f9cd313871da3084602da2308664dc5d5ad1671b607045ced84e",
         "duration": 183
+      }
+    ]
+  },
+  "linear-system-x": {
+    "id": "linear-system-x--se",
+    "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+    "title": "Make one unknown disappear",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+    "duration": 162.82,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+        "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+        "duration": 162.82
       }
     ]
   },
@@ -1238,6 +1302,28 @@
       }
     ]
   },
+  "match-clock-half-hour": {
+    "id": "read-clock-hour-half--sc",
+    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "title": "Read the hour and half hour",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+    "duration": 96.89,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+        "duration": 96.89
+      }
+    ]
+  },
   "mcas-slope-sign-description": {
     "id": "graphed-line-slope--sl",
     "version": "d8171b80f6e2a996af67abaf5abe7fc3a6d6761a791aacaacb37d29a41c06947",
@@ -1322,6 +1408,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d/audio.m4a",
         "version": "31f2a7bbd0b74b8cdc55fce887fabfab7384e49a9b061686f46734c45bb9603d",
         "duration": 111.52
+      }
+    ]
+  },
+  "missing-start-story": {
+    "id": "missing-start-story--ss",
+    "version": "ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f",
+    "title": "Where the box goes",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/audio.m4a",
+    "duration": 109.69002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f/audio.m4a",
+        "version": "ddcfccd22791c3c61e09c5ead9e73e1fa3be1163b633e4b3143a130b7702446f",
+        "duration": 109.69002267573696
       }
     ]
   },
@@ -1542,6 +1650,28 @@
       }
     ]
   },
+  "read-clock-hour-half": {
+    "id": "read-clock-hour-half--sc",
+    "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+    "title": "Read the hour and half hour",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+    "duration": 96.89,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/read-clock-hour-half--sc/4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738/audio.m4a",
+        "version": "4e550f52462791ad430da0bbd869c9b3f2aac1e146f2767390ff04411b1d6738",
+        "duration": 96.89
+      }
+    ]
+  },
   "recover-linear-intercept": {
     "id": "linear-initial-value-meaning--sk",
     "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
@@ -1691,6 +1821,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ruler-read-nearest-unit--ws/0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c/audio.m4a",
         "version": "0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c",
         "duration": 287.97
+      }
+    ]
+  },
+  "sat-entry-system-solve": {
+    "id": "linear-system-x--se",
+    "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+    "title": "Make one unknown disappear",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+    "duration": 162.82,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+        "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+        "duration": 162.82
       }
     ]
   },
@@ -1910,6 +2061,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/staar-dot-plot-threshold--rr/28b5ddd0e286f1145f11acc5b3dd031f62beccb0b52a9d6d2903a208eddba475/audio.m4a",
         "version": "28b5ddd0e286f1145f11acc5b3dd031f62beccb0b52a9d6d2903a208eddba475",
         "duration": 313.76
+      }
+    ]
+  },
+  "substitute-into-equation": {
+    "id": "linear-system-x--se",
+    "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+    "title": "Make one unknown disappear",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+    "duration": 162.82,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-system-x--se/5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2/audio.m4a",
+        "version": "5f1e41a11cdc3529aa6607ae4739041862b6707cd859aaa27f972eeb284f45a2",
+        "duration": 162.82
       }
     ]
   },
