@@ -1,6 +1,7 @@
 {
   "id": "sort-shapes-count--sc",
   "title": "Sort first. Then count.",
+  "teaches": ["sort-shapes-most"],
   "cast": {
     "teacher": {},
     "learner": {}

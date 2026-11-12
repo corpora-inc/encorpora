@@ -1,0 +1,2349 @@
+{
+ "id": "grouped-both-sides-solve--sg",
+ "title": "Tidy, gather, undo: brackets and x on both sides",
+ "teaches": [
+  "grouped-both-sides-steps",
+  "staar-multistep-equations",
+  "both-sides-situation-equation",
+  "decimal-both-sides-equation"
+ ],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1.5,
+     -2.8,
+     28.5,
+     19
+    ],
+    "points": {
+     "Ta0": [
+      0,
+      16
+     ],
+     "Tb0": [
+      0,
+      10
+     ],
+     "Ta3": [
+      3,
+      16
+     ],
+     "Tb3": [
+      3,
+      10
+     ],
+     "Ta7": [
+      7,
+      16
+     ],
+     "Tb7": [
+      7,
+      10
+     ],
+     "Ta10": [
+      10,
+      16
+     ],
+     "Tb10": [
+      10,
+      10
+     ],
+     "Ta14": [
+      14,
+      16
+     ],
+     "Tb14": [
+      14,
+      10
+     ],
+     "Ta15": [
+      15,
+      16
+     ],
+     "Tb15": [
+      15,
+      10
+     ],
+     "Ta17": [
+      17,
+      16
+     ],
+     "Tb17": [
+      17,
+      10
+     ],
+     "Ta21": [
+      21,
+      16
+     ],
+     "Tb21": [
+      21,
+      10
+     ],
+     "Ta24": [
+      24,
+      16
+     ],
+     "Tb24": [
+      24,
+      10
+     ],
+     "Ta27": [
+      27,
+      16
+     ],
+     "Tb27": [
+      27,
+      10
+     ],
+     "Ba0": [
+      0,
+      6
+     ],
+     "Bb0": [
+      0,
+      0
+     ],
+     "Ba3": [
+      3,
+      6
+     ],
+     "Bb3": [
+      3,
+      0
+     ],
+     "Ba6": [
+      6,
+      6
+     ],
+     "Bb6": [
+      6,
+      0
+     ],
+     "Ba9": [
+      9,
+      6
+     ],
+     "Bb9": [
+      9,
+      0
+     ],
+     "Ba12": [
+      12,
+      6
+     ],
+     "Bb12": [
+      12,
+      0
+     ],
+     "Ba24": [
+      24,
+      6
+     ],
+     "Bb24": [
+      24,
+      0
+     ],
+     "Ba27": [
+      27,
+      6
+     ],
+     "Bb27": [
+      27,
+      0
+     ],
+     "Cxa": [
+      1.5,
+      13.0
+     ],
+     "Cfa": [
+      5,
+      13.0
+     ],
+     "Cxb": [
+      8.5,
+      13.0
+     ],
+     "Cfb": [
+      12,
+      13.0
+     ],
+     "Cxc": [
+      15.5,
+      13.0
+     ],
+     "Cfc": [
+      19,
+      13.0
+     ],
+     "Cxd": [
+      22.5,
+      13.0
+     ],
+     "Cxe": [
+      25.5,
+      13.0
+     ],
+     "Ct12": [
+      21,
+      13.0
+     ],
+     "Cbx": [
+      1.5,
+      3.0
+     ],
+     "Cn24": [
+      15,
+      3.0
+     ],
+     "Cb12a": [
+      6,
+      3.0
+     ],
+     "Cb12b": [
+      18,
+      3.0
+     ],
+     "LS": [
+      13.5,
+      16
+     ],
+     "RS": [
+      13.5,
+      0
+     ],
+     "EQ": [
+      13.5,
+      8.0
+     ],
+     "Le1": [
+      0,
+      16.3
+     ],
+     "Le2": [
+      0,
+      -0.3
+     ],
+     "Re1": [
+      27,
+      16.3
+     ],
+     "Re2": [
+      27,
+      -0.3
+     ],
+     "K1a": [
+      10.5,
+      6
+     ],
+     "K1b": [
+      10.5,
+      0
+     ],
+     "K2a": [
+      13.5,
+      6
+     ],
+     "K2b": [
+      13.5,
+      0
+     ],
+     "K3a": [
+      16.5,
+      6
+     ],
+     "K3b": [
+      16.5,
+      0
+     ],
+     "D0": [
+      7.5,
+      16
+     ],
+     "D1": [
+      10.5,
+      16
+     ],
+     "M0": [
+      7.5,
+      0
+     ],
+     "M1": [
+      19.5,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "xa",
+      "poly": [
+       "Ta0",
+       "Ta3",
+       "Tb3",
+       "Tb0"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gxa",
+      "start": true
+     },
+     {
+      "id": "xb",
+      "poly": [
+       "Ta7",
+       "Ta10",
+       "Tb10",
+       "Tb7"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gxb",
+      "start": true
+     },
+     {
+      "id": "xc",
+      "poly": [
+       "Ta14",
+       "Ta17",
+       "Tb17",
+       "Tb14"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gxc",
+      "start": true
+     },
+     {
+      "id": "xd",
+      "poly": [
+       "Ta21",
+       "Ta24",
+       "Tb24",
+       "Tb21"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gxd",
+      "start": true
+     },
+     {
+      "id": "xe",
+      "poly": [
+       "Ta24",
+       "Ta27",
+       "Tb27",
+       "Tb24"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gxe",
+      "start": true
+     },
+     {
+      "id": "bx",
+      "poly": [
+       "Ba0",
+       "Ba3",
+       "Bb3",
+       "Bb0"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "gbx",
+      "start": true
+     },
+     {
+      "id": "fa",
+      "poly": [
+       "Ta3",
+       "Ta7",
+       "Tb7",
+       "Tb3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "sheer": true,
+      "group": "gfa",
+      "start": true
+     },
+     {
+      "id": "fb",
+      "poly": [
+       "Ta10",
+       "Ta14",
+       "Tb14",
+       "Tb10"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "sheer": true,
+      "group": "gfb",
+      "start": true
+     },
+     {
+      "id": "fc",
+      "poly": [
+       "Ta17",
+       "Ta21",
+       "Tb21",
+       "Tb17"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "sheer": true,
+      "group": "gfc",
+      "start": true
+     },
+     {
+      "id": "t12",
+      "poly": [
+       "Ta15",
+       "Ta27",
+       "Tb27",
+       "Tb15"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gt12"
+     },
+     {
+      "id": "n24",
+      "poly": [
+       "Ba3",
+       "Ba27",
+       "Bb27",
+       "Bb3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gn24",
+      "start": true
+     },
+     {
+      "id": "b12a",
+      "poly": [
+       "Ba0",
+       "Ba12",
+       "Bb12",
+       "Bb0"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gb12a"
+     },
+     {
+      "id": "b12b",
+      "poly": [
+       "Ba12",
+       "Ba24",
+       "Bb24",
+       "Bb12"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gb12b"
+     },
+     {
+      "id": "lxa",
+      "label": "x",
+      "at": "Cxa",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "gxa",
+      "start": true
+     },
+     {
+      "id": "lxb",
+      "label": "x",
+      "at": "Cxb",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "group": "gxb",
+      "start": true
+     },
+     {
+      "id": "lxc",
+      "label": "x",
+      "at": "Cxc",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "group": "gxc",
+      "start": true
+     },
+     {
+      "id": "lxd",
+      "label": "x",
+      "at": "Cxd",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "group": "gxd",
+      "start": true
+     },
+     {
+      "id": "lxe",
+      "label": "x",
+      "at": "Cxe",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "flies": true,
+      "group": "gxe",
+      "start": true
+     },
+     {
+      "id": "lbx",
+      "label": "x",
+      "at": "Cbx",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "gbx",
+      "start": true
+     },
+     {
+      "id": "lfa",
+      "label": "4",
+      "at": "Cfa",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "flies": true,
+      "group": "gfa",
+      "start": true
+     },
+     {
+      "id": "lfb",
+      "label": "4",
+      "at": "Cfb",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "flies": true,
+      "group": "gfb",
+      "start": true
+     },
+     {
+      "id": "lfc",
+      "label": "4",
+      "at": "Cfc",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "flies": true,
+      "group": "gfc",
+      "start": true
+     },
+     {
+      "id": "lt12",
+      "label": "12",
+      "at": "Ct12",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gt12"
+     },
+     {
+      "id": "ln24",
+      "label": "24",
+      "at": "Cn24",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gn24",
+      "start": true
+     },
+     {
+      "id": "lb12a",
+      "label": "12",
+      "at": "Cb12a",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gb12a"
+     },
+     {
+      "id": "lb12b",
+      "label": "12",
+      "at": "Cb12b",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gb12b"
+     },
+     {
+      "id": "tk3",
+      "seg": [
+       "K1a",
+       "K1b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "tk6",
+      "seg": [
+       "K2a",
+       "K2b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "tk9",
+      "seg": [
+       "K3a",
+       "K3b"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "dimx",
+      "dim": [
+       "D0",
+       "D1"
+      ],
+      "side": "n",
+      "tex": "x=3",
+      "ink": "warm"
+     },
+     {
+      "id": "dim12",
+      "dim": [
+       "M0",
+       "M1"
+      ],
+      "side": "s",
+      "tex": "12",
+      "ink": "blue"
+     },
+     {
+      "id": "endL",
+      "seg": [
+       "Le1",
+       "Le2"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true,
+      "group": "ends"
+     },
+     {
+      "id": "endR",
+      "seg": [
+       "Re1",
+       "Re2"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true,
+      "group": "ends"
+     },
+     {
+      "id": "eq",
+      "label": "=",
+      "at": "EQ",
+      "dir": "c",
+      "ink": "muted",
+      "size": "xl",
+      "group": "ends"
+     },
+     {
+      "id": "ls",
+      "label": "\\text{left side}",
+      "at": "LS",
+      "dir": "n",
+      "ink": "muted",
+      "size": "m"
+     },
+     {
+      "id": "rs",
+      "label": "\\text{right side}",
+      "at": "RS",
+      "dir": "s",
+      "ink": "muted",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is how to solve an equation with brackets, and x on both sides.",
+     "do": [
+      {
+       "do": "problem",
+       "text": "Solve for $x$.",
+       "at": "Here",
+       "id": "p1"
+      },
+      {
+       "do": "write",
+       "tex": "3(\\cw{x}+\\cb{4})+2\\cw{x}=\\cw{x}+\\cb{24}",
+       "fresh": true,
+       "at": "equation",
+       "id": "p1e"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Solve for x: three times x plus four, plus two x, equals x plus twenty-four.",
+     "do": [
+      {
+       "do": "show",
+       "target": "ls",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "rs",
+       "at": "equals"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The two sides are equal, so the tapes are the same length.",
+     "do": [
+      {
+       "do": "show",
+       "target": "ends",
+       "at": "same"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every x piece has the same length.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gxa",
+        "gxb",
+        "gxc",
+        "gxd",
+        "gxe",
+        "gbx"
+       ],
+       "at": "x"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A number piece is as long as its number.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "gfa",
+        "gfb",
+        "gfc",
+        "gn24"
+       ],
+       "at": "number"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tidy each side. Open the brackets: the fours slide right, and the x pieces close up.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "3\\cw{x}+\\cb{12}+2\\cw{x}=\\cw{x}+\\cb{24}",
+       "note": "\\text{expand}",
+       "fresh": true,
+       "at": "Tidy",
+       "id": "l1"
+      },
+      {
+       "do": "slide",
+       "target": "fa",
+       "by": [
+        12,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "fb",
+       "by": [
+        9,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "fc",
+       "by": [
+        6,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "xb",
+       "by": [
+        -4,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "xc",
+       "by": [
+        -8,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "xd",
+       "by": [
+        -12,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "slide",
+       "target": "xe",
+       "by": [
+        -12,
+        0
+       ],
+       "at": "slide",
+       "dur": 1.8
+      },
+      {
+       "do": "move",
+       "points": {
+        "Cfa": [
+         17,
+         13.0
+        ],
+        "Cfb": [
+         21,
+         13.0
+        ],
+        "Cfc": [
+         25,
+         13.0
+        ],
+        "Cxb": [
+         4.5,
+         13.0
+        ],
+        "Cxc": [
+         7.5,
+         13.0
+        ],
+        "Cxd": [
+         10.5,
+         13.0
+        ],
+        "Cxe": [
+         13.5,
+         13.0
+        ]
+       },
+       "at": "slide",
+       "dur": 1.8
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three fours make twelve, so the left side is five x plus twelve.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gfa",
+        "gfb",
+        "gfc"
+       ],
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": "gt12",
+       "at": "twelve"
+      },
+      {
+       "do": "write",
+       "tex": "5\\cw{x}+\\cb{12}=\\cw{x}+\\cb{24}",
+       "note": "\\text{like terms}",
+       "fresh": true,
+       "at": "twelve",
+       "id": "l2"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Gather the x's. Take one x from both sides, and the ends still line up.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "ls",
+        "rs"
+       ],
+       "at": "Gather"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gxe",
+        "gbx"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "write",
+       "tex": "4\\cw{x}+\\cb{12}=\\cb{24}",
+       "note": "-x\\text{ both sides}",
+       "at": "both",
+       "id": "l4"
+      },
+      {
+       "do": "slide",
+       "target": "gt12",
+       "by": [
+        -3,
+        0
+       ],
+       "at": "sides",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "gn24",
+       "by": [
+        -3,
+        0
+       ],
+       "at": "sides",
+       "dur": 1.2
+      },
+      {
+       "do": "move",
+       "points": {
+        "Re1": [
+         24,
+         16.3
+        ],
+        "Re2": [
+         24,
+         -0.3
+        ],
+        "EQ": [
+         12,
+         8
+        ]
+       },
+       "at": "ends",
+       "dur": 1.2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "The twenty-four is two twelves. Take a twelve from each tape.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "gn24",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "gb12a",
+        "gb12b"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gt12",
+        "gb12b"
+       ],
+       "at": "Take"
+      },
+      {
+       "do": "write",
+       "tex": "4\\cw{x}=\\cb{12}",
+       "note": "-12\\text{ both sides}",
+       "at": "Take",
+       "id": "l5"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Re1": [
+         12,
+         16.3
+        ],
+        "Re2": [
+         12,
+         -0.3
+        ],
+        "EQ": [
+         6,
+         8
+        ]
+       },
+       "at": "each",
+       "dur": 1.2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Undo the four: four equal pieces make twelve, so each x piece is three.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "ends",
+       "at": "Undo"
+      },
+      {
+       "do": "write",
+       "tex": "4\\cw{x}=\\cb{12}",
+       "fresh": true,
+       "at": "Undo",
+       "id": "l6"
+      },
+      {
+       "do": "slide",
+       "target": "gxa",
+       "by": [
+        7.5,
+        0
+       ],
+       "at": "Undo",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "gxb",
+       "by": [
+        7.5,
+        0
+       ],
+       "at": "Undo",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "gxc",
+       "by": [
+        7.5,
+        0
+       ],
+       "at": "Undo",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "gxd",
+       "by": [
+        7.5,
+        0
+       ],
+       "at": "Undo",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "gb12a",
+       "by": [
+        7.5,
+        0
+       ],
+       "at": "Undo",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": [
+        "tk3",
+        "tk6",
+        "tk9"
+       ],
+       "at": "equal"
+      },
+      {
+       "do": "hide",
+       "target": "lb12a",
+       "at": "equal"
+      },
+      {
+       "do": "show",
+       "target": "dim12",
+       "at": "equal"
+      },
+      {
+       "do": "show",
+       "target": "dimx",
+       "at": "each"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{x}=\\cb{3}",
+       "note": "\\div 4\\text{ both sides}",
+       "at": "three",
+       "id": "l7"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check in the original: the left side is twenty-seven, and so is the right side.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "3(\\cw{x}+\\cb{4})+2\\cw{x}=\\cw{x}+\\cb{24}",
+       "note": "\\text{the original}",
+       "fresh": true,
+       "at": "Check",
+       "id": "c0"
+      },
+      {
+       "do": "write",
+       "tex": "3(\\cw{3}+4)+2\\cdot\\cw{3}=27",
+       "note": "\\text{left side}",
+       "at": "left",
+       "id": "c1"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{3}+24=27",
+       "note": "\\text{right side}",
+       "at": "right",
+       "id": "c2"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.0,
+     -7.47,
+     76.0,
+     50.67
+    ],
+    "points": {
+     "Ta0": [
+      0,
+      42.67
+     ],
+     "Tb0": [
+      0,
+      26.67
+     ],
+     "Ta8": [
+      8,
+      42.67
+     ],
+     "Tb8": [
+      8,
+      26.67
+     ],
+     "Ta40": [
+      40,
+      42.67
+     ],
+     "Tb40": [
+      40,
+      26.67
+     ],
+     "Ta48": [
+      48,
+      42.67
+     ],
+     "Tb48": [
+      48,
+      26.67
+     ],
+     "Ta56": [
+      56,
+      42.67
+     ],
+     "Tb56": [
+      56,
+      26.67
+     ],
+     "Ta64": [
+      64,
+      42.67
+     ],
+     "Tb64": [
+      64,
+      26.67
+     ],
+     "Ta72": [
+      72,
+      42.67
+     ],
+     "Tb72": [
+      72,
+      26.67
+     ],
+     "Ba0": [
+      0,
+      16.0
+     ],
+     "Bb0": [
+      0,
+      0
+     ],
+     "Ba8": [
+      8,
+      16.0
+     ],
+     "Bb8": [
+      8,
+      0
+     ],
+     "Ba16": [
+      16,
+      16.0
+     ],
+     "Bb16": [
+      16,
+      0
+     ],
+     "Ba24": [
+      24,
+      16.0
+     ],
+     "Bb24": [
+      24,
+      0
+     ],
+     "Ba32": [
+      32,
+      16.0
+     ],
+     "Bb32": [
+      32,
+      0
+     ],
+     "Ba40": [
+      40,
+      16.0
+     ],
+     "Bb40": [
+      40,
+      0
+     ],
+     "Ba48": [
+      48,
+      16.0
+     ],
+     "Bb48": [
+      48,
+      0
+     ],
+     "Ba56": [
+      56,
+      16.0
+     ],
+     "Bb56": [
+      56,
+      0
+     ],
+     "Ba64": [
+      64,
+      16.0
+     ],
+     "Bb64": [
+      64,
+      0
+     ],
+     "Ba72": [
+      72,
+      16.0
+     ],
+     "Bb72": [
+      72,
+      0
+     ],
+     "Cp40": [
+      20,
+      34.67
+     ],
+     "Cq8": [
+      4,
+      34.67
+     ],
+     "Cq32": [
+      24,
+      34.67
+     ],
+     "Cv1": [
+      44,
+      34.67
+     ],
+     "Cv2": [
+      52,
+      34.67
+     ],
+     "Cv3": [
+      60,
+      34.67
+     ],
+     "Cv4": [
+      68,
+      34.67
+     ],
+     "Cp8": [
+      4,
+      8.0
+     ],
+     "Cw1": [
+      12,
+      8.0
+     ],
+     "Cw2": [
+      20,
+      8.0
+     ],
+     "Cw3": [
+      28,
+      8.0
+     ],
+     "Cw4": [
+      36,
+      8.0
+     ],
+     "Cw5": [
+      44,
+      8.0
+     ],
+     "Cw6": [
+      52,
+      8.0
+     ],
+     "Cw7": [
+      60,
+      8.0
+     ],
+     "Cw8": [
+      68,
+      8.0
+     ],
+     "GA": [
+      36,
+      42.67
+     ],
+     "GB": [
+      36,
+      0
+     ],
+     "EQ": [
+      36,
+      21.34
+     ],
+     "Le1": [
+      0,
+      43.47
+     ],
+     "Le2": [
+      0,
+      -0.8
+     ],
+     "Re1": [
+      72,
+      43.47
+     ],
+     "Re2": [
+      72,
+      -0.8
+     ],
+     "E20": [
+      20,
+      0
+     ],
+     "E28": [
+      28,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "p40",
+      "poly": [
+       "Ta0",
+       "Ta40",
+       "Tb40",
+       "Tb0"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gp40"
+     },
+     {
+      "id": "q8",
+      "poly": [
+       "Ta0",
+       "Ta8",
+       "Tb8",
+       "Tb0"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gq8"
+     },
+     {
+      "id": "q32",
+      "poly": [
+       "Ta8",
+       "Ta40",
+       "Tb40",
+       "Tb8"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gq32"
+     },
+     {
+      "id": "v1",
+      "poly": [
+       "Ta40",
+       "Ta48",
+       "Tb48",
+       "Tb40"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "vtop"
+     },
+     {
+      "id": "v2",
+      "poly": [
+       "Ta48",
+       "Ta56",
+       "Tb56",
+       "Tb48"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "vtop"
+     },
+     {
+      "id": "v3",
+      "poly": [
+       "Ta56",
+       "Ta64",
+       "Tb64",
+       "Tb56"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "vtop"
+     },
+     {
+      "id": "v4",
+      "poly": [
+       "Ta64",
+       "Ta72",
+       "Tb72",
+       "Tb64"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "vtop"
+     },
+     {
+      "id": "p8",
+      "poly": [
+       "Ba0",
+       "Ba8",
+       "Bb8",
+       "Bb0"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "group": "gp8"
+     },
+     {
+      "id": "w1",
+      "poly": [
+       "Ba8",
+       "Ba16",
+       "Bb16",
+       "Bb8"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wkeep"
+     },
+     {
+      "id": "w2",
+      "poly": [
+       "Ba16",
+       "Ba24",
+       "Bb24",
+       "Bb16"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wkeep"
+     },
+     {
+      "id": "w3",
+      "poly": [
+       "Ba24",
+       "Ba32",
+       "Bb32",
+       "Bb24"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wkeep"
+     },
+     {
+      "id": "w4",
+      "poly": [
+       "Ba32",
+       "Ba40",
+       "Bb40",
+       "Bb32"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wkeep"
+     },
+     {
+      "id": "w5",
+      "poly": [
+       "Ba40",
+       "Ba48",
+       "Bb48",
+       "Bb40"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wlast"
+     },
+     {
+      "id": "w6",
+      "poly": [
+       "Ba48",
+       "Ba56",
+       "Bb56",
+       "Bb48"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wlast"
+     },
+     {
+      "id": "w7",
+      "poly": [
+       "Ba56",
+       "Ba64",
+       "Bb64",
+       "Bb56"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wlast"
+     },
+     {
+      "id": "w8",
+      "poly": [
+       "Ba64",
+       "Ba72",
+       "Bb72",
+       "Bb64"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 3,
+      "group": "wlast"
+     },
+     {
+      "id": "lp40",
+      "label": "40",
+      "at": "Cp40",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gp40"
+     },
+     {
+      "id": "lq8",
+      "label": "8",
+      "at": "Cq8",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gq8"
+     },
+     {
+      "id": "lq32",
+      "label": "32",
+      "at": "Cq32",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gq32"
+     },
+     {
+      "id": "lv1",
+      "label": "v",
+      "at": "Cv1",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "vtop"
+     },
+     {
+      "id": "lv2",
+      "label": "v",
+      "at": "Cv2",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "vtop"
+     },
+     {
+      "id": "lv3",
+      "label": "v",
+      "at": "Cv3",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "vtop"
+     },
+     {
+      "id": "lv4",
+      "label": "v",
+      "at": "Cv4",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "vtop"
+     },
+     {
+      "id": "lp8",
+      "label": "8",
+      "at": "Cp8",
+      "dir": "c",
+      "ink": "blue",
+      "size": "l",
+      "group": "gp8"
+     },
+     {
+      "id": "lw1",
+      "label": "v",
+      "at": "Cw1",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wkeep"
+     },
+     {
+      "id": "lw2",
+      "label": "v",
+      "at": "Cw2",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wkeep"
+     },
+     {
+      "id": "lw3",
+      "label": "v",
+      "at": "Cw3",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wkeep"
+     },
+     {
+      "id": "lw4",
+      "label": "v",
+      "at": "Cw4",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wkeep"
+     },
+     {
+      "id": "lw5",
+      "label": "v",
+      "at": "Cw5",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wlast"
+     },
+     {
+      "id": "lw6",
+      "label": "v",
+      "at": "Cw6",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wlast"
+     },
+     {
+      "id": "lw7",
+      "label": "v",
+      "at": "Cw7",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wlast"
+     },
+     {
+      "id": "lw8",
+      "label": "v",
+      "at": "Cw8",
+      "dir": "c",
+      "ink": "warm",
+      "size": "l",
+      "group": "wlast"
+     },
+     {
+      "id": "dimv",
+      "dim": [
+       "E20",
+       "E28"
+      ],
+      "side": "s",
+      "tex": "v=8",
+      "ink": "warm"
+     },
+     {
+      "id": "endL",
+      "seg": [
+       "Le1",
+       "Le2"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true,
+      "group": "ends"
+     },
+     {
+      "id": "endR",
+      "seg": [
+       "Re1",
+       "Re2"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true,
+      "group": "ends"
+     },
+     {
+      "id": "eq",
+      "label": "=",
+      "at": "EQ",
+      "dir": "c",
+      "ink": "muted",
+      "size": "xl",
+      "group": "ends"
+     },
+     {
+      "id": "gla",
+      "label": "\\text{Gym A}",
+      "at": "GA",
+      "dir": "n",
+      "ink": "muted",
+      "size": "m"
+     },
+     {
+      "id": "glb",
+      "label": "\\text{Gym B}",
+      "at": "GB",
+      "dir": "s",
+      "ink": "muted",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Gym A: forty to join, four a visit. Gym B: eight to join, eight a visit.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Gym A: 40 to join, 4 a visit",
+       "at": "Gym",
+       "id": "gA"
+      },
+      {
+       "do": "show",
+       "target": "gla",
+       "at": "Gym"
+      },
+      {
+       "do": "show",
+       "target": [
+        "p40",
+        "lp40"
+       ],
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "vtop",
+       "at": "four"
+      },
+      {
+       "do": "text",
+       "text": "Gym B: 8 to join, 8 a visit",
+       "at": "Gym",
+       "nth": 2,
+       "id": "gB"
+      },
+      {
+       "do": "show",
+       "target": "glb",
+       "at": "Gym",
+       "nth": 2
+      },
+      {
+       "do": "show",
+       "target": [
+        "p8",
+        "lp8"
+       ],
+       "at": "eight"
+      },
+      {
+       "do": "show",
+       "target": [
+        "wkeep",
+        "wlast"
+       ],
+       "at": "eight",
+       "nth": 2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "For what number of visits, v, do they cost the same?",
+     "do": [
+      {
+       "do": "problem",
+       "text": "For what number of visits, $v$, do they cost the same?",
+       "at": "For",
+       "id": "p2"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Forty plus four v equals eight plus eight v, so the tapes are the same length.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{40}+\\cw{4v}=\\cb{8}+\\cw{8v}",
+       "note": "\\text{same cost}",
+       "fresh": true,
+       "at": "Forty",
+       "id": "g1"
+      },
+      {
+       "do": "show",
+       "target": "ends",
+       "at": "same"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take four v from both sides. Both tapes are forty long.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{40}=\\cb{8}+\\cw{4v}",
+       "note": "-4v\\text{ both sides}",
+       "at": "Take",
+       "id": "g2"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "vtop",
+        "wlast"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Re1": [
+         40,
+         43.47
+        ],
+        "Re2": [
+         40,
+         -0.8
+        ],
+        "EQ": [
+         20,
+         21.34
+        ]
+       },
+       "at": "forty",
+       "dur": 1.2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Take eight from both sides, and thirty-two equals four v.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "gp40",
+       "at": "Take"
+      },
+      {
+       "do": "show",
+       "target": [
+        "gq8",
+        "gq32"
+       ],
+       "at": "Take"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gq8",
+        "gp8"
+       ],
+       "at": "both"
+      },
+      {
+       "do": "move",
+       "points": {
+        "Le1": [
+         8,
+         43.47
+        ],
+        "Le2": [
+         8,
+         -0.8
+        ],
+        "EQ": [
+         24,
+         21.34
+        ]
+       },
+       "at": "both",
+       "dur": 1.2
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{32}=\\cw{4v}",
+       "note": "-8\\text{ both sides}",
+       "at": "thirty-two",
+       "id": "g3"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four equal pieces make thirty-two, so each v piece is eight.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "ends",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{32}=\\cw{4v}",
+       "fresh": true,
+       "at": "Four",
+       "id": "g4"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "gla",
+        "glb"
+       ],
+       "at": "Four"
+      },
+      {
+       "do": "slide",
+       "target": "gq32",
+       "by": [
+        12,
+        0
+       ],
+       "at": "Four",
+       "dur": 1.2
+      },
+      {
+       "do": "slide",
+       "target": "wkeep",
+       "by": [
+        12,
+        0
+       ],
+       "at": "Four",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "dimv",
+       "at": "each"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{v}=\\cb{8}",
+       "note": "\\div 4\\text{ both sides}",
+       "at": "eight",
+       "id": "g5"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check: at eight visits, Gym A costs seventy-two dollars, and so does Gym B.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{40}+\\cw{4v}=\\cb{8}+\\cw{8v}",
+       "note": "\\text{the original}",
+       "fresh": true,
+       "at": "Check",
+       "id": "k0"
+      },
+      {
+       "do": "write",
+       "tex": "40+4\\cdot\\cw{8}=72",
+       "note": "\\text{Gym A}",
+       "at": "Gym",
+       "id": "k1"
+      },
+      {
+       "do": "write",
+       "tex": "8+8\\cdot\\cw{8}=72",
+       "note": "\\text{Gym B}",
+       "at": "so",
+       "id": "k2"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Solve point eight x minus one point nine equals negative point three x minus nine point six.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Solve $0.8x-1.9=-0.3x-9.6$",
+       "at": "Solve",
+       "id": "p3"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply both sides by ten, so every number is whole.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{8x}-\\cb{19}=\\cw{-3x}-\\cb{96}",
+       "note": "\\times 10",
+       "at": "Multiply",
+       "id": "d1"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Gather the x's.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{8x}-\\cb{19}=\\cw{-3x}-\\cb{96}",
+       "fresh": true,
+       "at": "Gather",
+       "id": "d2"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip leaves negative three x unchanged and gets five x; adding three x to each side gives eleven x.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cm{5x-19=-96}",
+       "note": "\\text{common slip}",
+       "at": "slip",
+       "id": "d3w"
+      },
+      {
+       "do": "strike",
+       "target": "d3w",
+       "at": "adding"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{11x}-\\cb{19}=\\cb{-96}",
+       "note": "+3x\\text{ both sides}",
+       "at": "each",
+       "id": "d3"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add nineteen to each side.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{11x}-\\cb{19}=\\cb{-96}",
+       "fresh": true,
+       "at": "Add",
+       "id": "d5"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{11x}=\\cb{-77}",
+       "note": "+19\\text{ both sides}",
+       "at": "side",
+       "id": "d6"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide both sides by eleven, and x is negative seven.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{x}=\\cb{-7}",
+       "note": "\\div 11\\text{ both sides}",
+       "at": "Divide",
+       "id": "d7"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Check in the original: both sides come to negative seven point five.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.8\\cw{x}-1.9=-0.3\\cw{x}-9.6",
+       "note": "\\text{the original}",
+       "fresh": true,
+       "at": "Check",
+       "id": "e0"
+      },
+      {
+       "do": "write",
+       "tex": "0.8(\\cw{-7})-1.9=-7.5",
+       "note": "\\text{left side}",
+       "at": "both",
+       "id": "e1"
+      },
+      {
+       "do": "write",
+       "tex": "-0.3(\\cw{-7})-9.6=-7.5",
+       "note": "\\text{right side}",
+       "at": "negative",
+       "id": "e2"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Whatever you do to one side, do to the other, and check in the original equation.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Do the same to both sides.",
+       "at": "Whatever",
+       "id": "s1"
+      },
+      {
+       "do": "text",
+       "text": "Check in the original equation.",
+       "at": "check",
+       "id": "s2"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tidy each side. Gather the x's. Undo what is left.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Tidy each side.",
+       "at": "Tidy",
+       "id": "z1"
+      },
+      {
+       "do": "text",
+       "text": "Gather the $x$'s.",
+       "at": "Gather",
+       "id": "z2"
+      },
+      {
+       "do": "text",
+       "text": "Undo what is left.",
+       "at": "Undo",
+       "id": "z3"
+      }
+     ],
+     "pause": 1.0
+    }
+   ]
+  }
+ ]
+}

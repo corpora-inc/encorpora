@@ -1,0 +1,1584 @@
+{
+ "id": "build-shape-sticks-balls--sb",
+ "title": "Build it. Close it.",
+ "teaches": [
+  "sticks-and-balls-needed",
+  "build-shape-by-count",
+  "drawing-mistake"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -2.25,
+     -2.1,
+     2.25,
+     2.1
+    ],
+    "points": {
+     "A": [
+      -1.5,
+      -1.3
+     ],
+     "B": [
+      1.5,
+      -1.3
+     ],
+     "C": [
+      0,
+      1.298
+     ],
+     "E": [
+      -1.5,
+      1.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "gap",
+      "seg": [
+       "C",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 6,
+      "dash": true
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "A",
+       "E"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "g0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "g1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "g2",
+      "seg": [
+       "C",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "h0",
+      "dot": "A",
+      "ink": "gold",
+      "r": 31
+     },
+     {
+      "id": "h1",
+      "dot": "B",
+      "ink": "gold",
+      "r": 31
+     },
+     {
+      "id": "h2",
+      "dot": "C",
+      "ink": "gold",
+      "r": 31
+     },
+     {
+      "id": "b0",
+      "dot": "A",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b1",
+      "dot": "B",
+      "ink": "violet",
+      "r": 21
+     },
+     {
+      "id": "b2",
+      "dot": "C",
+      "ink": "violet",
+      "r": 21
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Build a triangle from sticks and balls of clay. A stick, a ball, a stick, a ball.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Triangle",
+       "at": "Build"
+      },
+      {
+       "do": "draw",
+       "target": "s0",
+       "at": "stick",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "b1",
+       "at": "ball"
+      },
+      {
+       "do": "draw",
+       "target": "s1",
+       "at": "stick",
+       "nth": 2,
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "b2",
+       "at": "ball",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two sticks leave a gap.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "draw",
+       "target": "gap",
+       "at": "gap",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The last stick swings down and closes it.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "s2",
+       "at": "last"
+      },
+      {
+       "do": "turn",
+       "target": "s2",
+       "about": "A",
+       "deg": -30,
+       "at": "swings",
+       "dur": 1.3
+      },
+      {
+       "do": "hide",
+       "target": "gap",
+       "at": "closes",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each stick is a side.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "g0",
+       "at": "stick",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each ball is a corner.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "g0",
+       "at": "Each",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "h1",
+       "at": "ball",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the sticks. One, two, three.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "h1",
+       "at": "Count",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "g0",
+       "at": "One",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "g0",
+       "at": "two",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "g1",
+       "at": "two",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "g1",
+       "at": "three",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "g2",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "write",
+       "tex": "3\\text{ sticks}",
+       "fresh": true,
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Now the balls. One, two, three. Three sticks and three balls make a triangle.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "g2",
+       "at": "Now",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "h0",
+       "at": "One",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "h0",
+       "at": "two",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "h1",
+       "at": "two",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "h1",
+       "at": "three",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "h2",
+       "at": "three",
+       "dur": 0.15
+      },
+      {
+       "do": "write",
+       "tex": "3\\text{ balls}",
+       "fresh": true,
+       "at": "three"
+      },
+      {
+       "do": "hide",
+       "target": "h2",
+       "at": "Three",
+       "dur": 0.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.25,
+     -2.1,
+     2.25,
+     2.1
+    ],
+    "points": {
+     "A": [
+      -1.7,
+      -1
+     ],
+     "B": [
+      1.7,
+      -1
+     ],
+     "C": [
+      1.7,
+      1
+     ],
+     "D": [
+      -1.7,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "s0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "s1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "s2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "gap",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 6,
+      "dash": true
+     },
+     {
+      "id": "s3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "t0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "t1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "t2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "t3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 17
+     },
+     {
+      "id": "h0",
+      "dot": "A",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "h1",
+      "dot": "B",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "h2",
+      "dot": "C",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "h3",
+      "dot": "D",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "b0",
+      "dot": "A",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b1",
+      "dot": "B",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b2",
+      "dot": "C",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b3",
+      "dot": "D",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now you build a rectangle.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Rectangle",
+       "at": "rectangle"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Stick, stick, stick. My rectangle is done.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "draw",
+       "target": "s0",
+       "at": "Stick",
+       "dur": 0.5
+      },
+      {
+       "do": "draw",
+       "target": "s1",
+       "at": "stick",
+       "nth": 2,
+       "dur": 0.5
+      },
+      {
+       "do": "draw",
+       "target": "s2",
+       "at": "stick",
+       "nth": 3,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Follow it around: across, up, across, and down.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": "t0",
+       "at": "across",
+       "dur": 0.5
+      },
+      {
+       "do": "draw",
+       "target": "t1",
+       "at": "up",
+       "dur": 0.5
+      },
+      {
+       "do": "draw",
+       "target": "t2",
+       "at": "across",
+       "nth": 2,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Oh, a gap. One more stick goes here.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "t0",
+        "t1",
+        "t2"
+       ],
+       "at": "Oh",
+       "dur": 0.2
+      },
+      {
+       "do": "draw",
+       "target": "gap",
+       "at": "gap",
+       "dur": 0.5
+      },
+      {
+       "do": "draw",
+       "target": "s3",
+       "at": "stick",
+       "dur": 0.6
+      },
+      {
+       "do": "hide",
+       "target": "gap",
+       "at": "here",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now it is closed. Four sticks, four balls.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "draw",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "closed",
+       "dur": 0.6
+      },
+      {
+       "do": "write",
+       "tex": "4\\text{ sticks}",
+       "fresh": true,
+       "at": "sticks"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "t0",
+        "t1",
+        "t2",
+        "t3"
+       ],
+       "at": "balls",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": "halos",
+       "at": "balls",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "4\\text{ balls}",
+       "fresh": true,
+       "at": "balls"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.25,
+     -2.1,
+     2.25,
+     2.1
+    ],
+    "points": {
+     "a": [
+      -1.6,
+      -1.6
+     ],
+     "b": [
+      0.7,
+      -1.6
+     ],
+     "c": [
+      1.6,
+      -0.7
+     ],
+     "d": [
+      -0.7,
+      -0.7
+     ],
+     "A": [
+      -1.6,
+      -1.6
+     ],
+     "B": [
+      0.7,
+      -1.6
+     ],
+     "C": [
+      1.6,
+      -0.7
+     ],
+     "D": [
+      -0.7,
+      -0.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "low0",
+      "seg": [
+       "a",
+       "b"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "low1",
+      "seg": [
+       "b",
+       "c"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "low2",
+      "seg": [
+       "c",
+       "d"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "low3",
+      "seg": [
+       "d",
+       "a"
+      ],
+      "ink": "wood",
+      "w": 11
+     },
+     {
+      "id": "top0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "top"
+     },
+     {
+      "id": "top1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "top"
+     },
+     {
+      "id": "top2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "top"
+     },
+     {
+      "id": "top3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "top"
+     },
+     {
+      "id": "post0",
+      "seg": [
+       "a",
+       "A"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "posts"
+     },
+     {
+      "id": "post1",
+      "seg": [
+       "b",
+       "B"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "posts"
+     },
+     {
+      "id": "post2",
+      "seg": [
+       "c",
+       "C"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "posts"
+     },
+     {
+      "id": "post3",
+      "seg": [
+       "d",
+       "D"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "group": "posts"
+     },
+     {
+      "id": "gl0",
+      "seg": [
+       "a",
+       "b"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "glow"
+     },
+     {
+      "id": "gl1",
+      "seg": [
+       "b",
+       "c"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "glow"
+     },
+     {
+      "id": "gl2",
+      "seg": [
+       "c",
+       "d"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "glow"
+     },
+     {
+      "id": "gl3",
+      "seg": [
+       "d",
+       "a"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "glow"
+     },
+     {
+      "id": "gt0",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gtop"
+     },
+     {
+      "id": "gt1",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gtop"
+     },
+     {
+      "id": "gt2",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gtop"
+     },
+     {
+      "id": "gt3",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gtop"
+     },
+     {
+      "id": "gp0",
+      "seg": [
+       "a",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gpost"
+     },
+     {
+      "id": "gp1",
+      "seg": [
+       "b",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gpost"
+     },
+     {
+      "id": "gp2",
+      "seg": [
+       "c",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gpost"
+     },
+     {
+      "id": "gp3",
+      "seg": [
+       "d",
+       "D"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "gpost"
+     },
+     {
+      "id": "hla",
+      "dot": "a",
+      "ink": "gold",
+      "r": 31,
+      "group": "hlow"
+     },
+     {
+      "id": "hlb",
+      "dot": "b",
+      "ink": "gold",
+      "r": 31,
+      "group": "hlow"
+     },
+     {
+      "id": "hlc",
+      "dot": "c",
+      "ink": "gold",
+      "r": 31,
+      "group": "hlow"
+     },
+     {
+      "id": "hld",
+      "dot": "d",
+      "ink": "gold",
+      "r": 31,
+      "group": "hlow"
+     },
+     {
+      "id": "huA",
+      "dot": "A",
+      "ink": "gold",
+      "r": 31,
+      "group": "hup"
+     },
+     {
+      "id": "huB",
+      "dot": "B",
+      "ink": "gold",
+      "r": 31,
+      "group": "hup"
+     },
+     {
+      "id": "huC",
+      "dot": "C",
+      "ink": "gold",
+      "r": 31,
+      "group": "hup"
+     },
+     {
+      "id": "huD",
+      "dot": "D",
+      "ink": "gold",
+      "r": 31,
+      "group": "hup"
+     },
+     {
+      "id": "lba",
+      "dot": "a",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "lbb",
+      "dot": "b",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "lbc",
+      "dot": "c",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "lbd",
+      "dot": "d",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "ubA",
+      "dot": "A",
+      "ink": "violet",
+      "r": 21,
+      "group": "top"
+     },
+     {
+      "id": "ubB",
+      "dot": "B",
+      "ink": "violet",
+      "r": 21,
+      "group": "top"
+     },
+     {
+      "id": "ubC",
+      "dot": "C",
+      "ink": "violet",
+      "r": 21,
+      "group": "top"
+     },
+     {
+      "id": "ubD",
+      "dot": "D",
+      "ink": "violet",
+      "r": 21,
+      "group": "top"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now build a cube. It starts as a flat square.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Cube",
+       "at": "cube"
+      },
+      {
+       "do": "draw",
+       "target": "low0",
+       "at": "starts",
+       "dur": 0.4
+      },
+      {
+       "do": "draw",
+       "target": "low1",
+       "at": "as",
+       "dur": 0.4
+      },
+      {
+       "do": "draw",
+       "target": "low2",
+       "at": "flat",
+       "dur": 0.4
+      },
+      {
+       "do": "draw",
+       "target": "low3",
+       "at": "square",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A second square rises straight up, and four posts grow under it.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "top",
+        "posts"
+       ],
+       "at": "second",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -1.6,
+         0.6999999999999997
+        ],
+        "B": [
+         0.7,
+         0.6999999999999997
+        ],
+        "C": [
+         1.6,
+         1.5999999999999999
+        ],
+        "D": [
+         -0.7,
+         1.5999999999999999
+        ]
+       },
+       "at": "rises",
+       "dur": 2.6
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Sticks: four below, four above, four posts. That makes twelve.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "glow",
+       "at": "below",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "glow",
+       "at": "above",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "gtop",
+       "at": "above",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "gtop",
+       "at": "posts",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "gpost",
+       "at": "posts",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "gpost",
+       "at": "twelve",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "12\\text{ sticks}",
+       "fresh": true,
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Balls: four below, four above. That makes eight.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "hlow",
+       "at": "below",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "hlow",
+       "at": "above",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "hup",
+       "at": "above",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "hup",
+       "at": "eight",
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "tex": "8\\text{ balls}",
+       "fresh": true,
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Twelve sticks, but only eight balls of clay.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "glow",
+        "gtop",
+        "gpost"
+       ],
+       "at": "Twelve",
+       "dur": 0.2
+      },
+      {
+       "do": "hide",
+       "target": [
+        "glow",
+        "gtop",
+        "gpost"
+       ],
+       "at": "only",
+       "dur": 0.15
+      },
+      {
+       "do": "show",
+       "target": [
+        "hlow",
+        "hup"
+       ],
+       "at": "eight",
+       "dur": 0.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -2.25,
+     -2.1,
+     2.25,
+     2.1
+    ],
+    "points": {
+     "H0": [
+      1.8,
+      0.0
+     ],
+     "H1": [
+      0.9,
+      1.559
+     ],
+     "H2": [
+      -0.9,
+      1.559
+     ],
+     "H3": [
+      -1.8,
+      0.0
+     ],
+     "H4": [
+      -0.9,
+      -1.559
+     ],
+     "H5": [
+      0.9,
+      -1.559
+     ],
+     "E": [
+      -0.9,
+      0.241
+     ]
+    },
+    "parts": [
+     {
+      "id": "e0",
+      "seg": [
+       "H4",
+       "H5"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "e1",
+      "seg": [
+       "H5",
+       "H0"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "e2",
+      "seg": [
+       "H0",
+       "H1"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "e3",
+      "seg": [
+       "H1",
+       "H2"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "e4",
+      "seg": [
+       "H2",
+       "H3"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "last",
+      "seg": [
+       "H4",
+       "E"
+      ],
+      "ink": "wood",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "l0",
+      "seg": [
+       "H4",
+       "H5"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "lights"
+     },
+     {
+      "id": "l1",
+      "seg": [
+       "H5",
+       "H0"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "lights"
+     },
+     {
+      "id": "l2",
+      "seg": [
+       "H0",
+       "H1"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "lights"
+     },
+     {
+      "id": "l3",
+      "seg": [
+       "H1",
+       "H2"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "lights"
+     },
+     {
+      "id": "l4",
+      "seg": [
+       "H2",
+       "H3"
+      ],
+      "ink": "gold",
+      "w": 17,
+      "group": "lights"
+     },
+     {
+      "id": "hh0",
+      "dot": "H0",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "hh1",
+      "dot": "H1",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "hh2",
+      "dot": "H2",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "hh3",
+      "dot": "H3",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "hh4",
+      "dot": "H4",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "hh5",
+      "dot": "H5",
+      "ink": "gold",
+      "r": 31,
+      "group": "halos"
+     },
+     {
+      "id": "b0",
+      "dot": "H0",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b1",
+      "dot": "H1",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b2",
+      "dot": "H2",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b3",
+      "dot": "H3",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b4",
+      "dot": "H4",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     },
+     {
+      "id": "b5",
+      "dot": "H5",
+      "ink": "violet",
+      "r": 21,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Last, a hexagon. One stick for each side.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One stick for each side.",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "lights",
+       "at": "stick",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One ball for each corner.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "lights",
+       "at": "One",
+       "dur": 0.15
+      },
+      {
+       "do": "text",
+       "text": "One ball for each corner.",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "halos",
+       "at": "ball",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Close the shape.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "hide",
+       "target": "halos",
+       "at": "Close",
+       "dur": 0.15
+      },
+      {
+       "do": "text",
+       "text": "Close the shape.",
+       "at": "Close"
+      },
+      {
+       "do": "turn",
+       "target": "last",
+       "about": "H4",
+       "deg": 30,
+       "at": "Close",
+       "dur": 1.1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
