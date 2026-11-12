@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { audioProblems, cutOut, EDGE, envelope, even, loneSounds, loudness, silence, SPEAKING_K, SR } from "./audio";
+import { audioProblems, cutOut, EDGE, envelope, even, loneSounds, loudness, silence, SPEAKING_LUFS, SR } from "./audio";
 import { inSilence, Voice } from "./fixtures/voice-signals";
 
 /** The loudest 2.5 ms (RMS) touching any stretch of digital silence: what the edge scan measures. */
@@ -21,30 +21,36 @@ function edgeLevel(pcm: Int16Array) {
 }
 
 const dB = (x: number) => 20 * Math.log10(x);
-/** Two seconds of steady tones (`[Hz, amplitude]`), at `level` dBFS RMS. */
-function tones(parts: [number, number][], level = -24) {
-  const x = new Float64Array(2 * SR);
+/** Steady tones (`[Hz, amplitude]`), at `level` dBFS RMS. */
+function tones(parts: [number, number][], level = -24, dur = 2) {
+  const x = new Float64Array(Math.round(dur * SR));
   for (let i = 0; i < x.length; i++) for (const [f, a] of parts) x[i]! += a * Math.sin((2 * Math.PI * f * i) / SR);
   const g = (10 ** (level / 20) * 32768) / Math.sqrt(x.reduce((s, v) => s + v * v, 0) / x.length);
   return Int16Array.from(x, (v) => Math.round(v * g));
 }
-/** Plain RMS over the speaking windows, in dBFS: what takes were once matched by. */
+/** Plain RMS over the speaking windows, in dBFS: what takes were once matched by, at -21. */
 function plain(pcm: Int16Array) {
   const loud = [...envelope(pcm)].filter((v) => v > 0.02);
   return dB(Math.sqrt(loud.reduce((s, v) => s + v * v, 0) / loud.length));
 }
 const peak = (pcm: Int16Array) => dB(pcm.reduce((m, v) => Math.max(m, Math.abs(v)), 0) / 32768);
+/** Eight words with short gaps and a longer pause after every fourth: the rhythm of a spoken line. */
+function line() {
+  const v = new Voice().rest(0.2);
+  for (let i = 0; i < 8; i++) v.say(0.3 + (i % 3) * 0.08).rest(i % 4 === 3 ? 0.48 : 0.16);
+  return v.rest(0.2).pcm();
+}
 
-describe("one speaking loudness for every take", () => {
+describe("one loudness for every take", () => {
   it("brings a bright voice and a dull one to the same loudness, not the same RMS", () => {
     // the same RMS going in; the bright take has strong sound at 3 kHz, where the ear is keen
     const dull = tones([[200, 1], [400, 0.6]]), bright = tones([[200, 1], [400, 0.6], [3000, 0.8]]);
     expect(Math.abs(plain(dull) - plain(bright))).toBeLessThan(0.05);
-    const louder = dB(loudness(bright)) - dB(loudness(dull));
+    const louder = loudness(bright) - loudness(dull);
     expect(louder).toBeGreaterThan(1.5);
     const d = even(dull), b = even(bright);
-    expect(Math.abs(dB(loudness(d)) - dB(loudness(b)))).toBeLessThan(0.2);
-    expect(Math.abs(dB(loudness(d)) - SPEAKING_K)).toBeLessThan(0.1);
+    expect(Math.abs(loudness(d) - loudness(b))).toBeLessThan(0.2);
+    expect(Math.abs(loudness(d) - SPEAKING_LUFS)).toBeLessThan(0.1);
     // the bright take is turned down by what the weighting hears in it
     expect(plain(d) - plain(b)).toBeGreaterThan(louder - 0.2);
     expect(plain(d) - plain(b)).toBeLessThan(louder + 0.2);
@@ -52,23 +58,38 @@ describe("one speaking loudness for every take", () => {
     expect(peak(b)).toBeLessThan(-1);
   });
 
-  it("keeps a teacher's take at the level plain RMS gave it: about -21 dBFS", () => {
-    // a little sound at 3 kHz: K-weighted 0.45 dB above its RMS, as the teachers' takes measure (0.2 and 0.6 dB)
-    const teacher = tones([[200, 1], [400, 0.6], [3000, 0.4]]);
-    expect(dB(loudness(teacher)) - plain(teacher)).toBeCloseTo(0.45, 1);
-    expect(Math.abs(plain(even(teacher)) - -21)).toBeLessThan(0.3);
-    // with nothing up there at all it stays within the 0.6 dB the two teachers span
-    expect(Math.abs(plain(even(tones([[200, 1], [400, 0.6]]))) - -21)).toBeLessThan(0.7);
+  it("gives a take the same level however loud it arrives", () => {
+    // the voices arrive 8 dB apart; a fixed speaking gate would count more of the loud one
+    const loud = line(), quiet = Int16Array.from(loud, (v) => Math.round(v * 0.4));
+    expect(loudness(loud) - loudness(quiet)).toBeCloseTo(7.96, 1);
+    const a = even(loud), b = even(quiet);
+    expect(Math.abs(loudness(a) - SPEAKING_LUFS)).toBeLessThan(0.05);
+    expect(Math.abs(loudness(a) - loudness(b))).toBeLessThan(0.05);
+    expect(Math.abs(peak(a) - peak(b))).toBeLessThan(0.05);
   });
 
-  it("keeps peaks under -1 dBFS, and leaves a take with no speech alone", () => {
+  it("keeps a spoken line near the level plain RMS gave it: -21 dBFS while speaking", () => {
+    expect(Math.abs(plain(even(line())) - -21)).toBeLessThan(0.5);
+  });
+
+  it("measures a take shorter than one 400 ms block whole", () => {
+    const word = tones([[200, 1], [400, 0.6]], -24, 0.25);
+    expect(loudness(word)).toBeCloseTo(loudness(tones([[200, 1], [400, 0.6]])), 1);
+    expect(Math.abs(loudness(even(word)) - SPEAKING_LUFS)).toBeLessThan(0.1);
+  });
+
+  it("keeps peaks under -1 dBFS, and leaves a take with nothing to hear alone", () => {
     // quiet speech with one loud click: reaching the loudness would clip it
     const peaky = tones([[200, 1], [400, 0.6]], -30);
     peaky.fill(30000, SR, SR + 4);
     expect(peak(even(peaky))).toBeLessThan(-1);
     expect(peak(even(peaky))).toBeGreaterThan(-1.1);
-    const hush = tones([[200, 1]], -50);
-    expect([...even(hush)]).toEqual([...hush]);
+    expect(loudness(even(peaky))).toBeLessThan(SPEAKING_LUFS - 3);
+    const room = new Voice().rest(1).pcm();
+    expect(loudness(room)).toBe(-Infinity);
+    expect([...even(room)]).toEqual([...room]);
+    expect(loudness(new Int16Array(0))).toBe(-Infinity);
+    expect(even(new Int16Array(0))).toHaveLength(0);
   });
 });
 

@@ -89,43 +89,52 @@ export function kWeighted(pcm: Int16Array) {
 }
 
 /**
- * How loud a take sounds while speaking: the K-weighted level, as a fraction of
- * full scale, over its speaking windows (10 ms windows whose plain RMS is above
- * 0.02, so the weighting never changes which windows count). 0 when nothing speaks.
+ * How loud a take sounds: its integrated loudness in LUFS, measured the way
+ * ITU-R BS.1770 does. The K-weighted mean square of every 400 ms block (a new
+ * block each 100 ms) is taken; blocks under -70 LUFS are silence and are dropped;
+ * then blocks more than 10 LU under the mean of the rest are dropped as pauses,
+ * and the loudness is the mean of what is left. Both gates follow the take's own
+ * level, so a take measures the same however loud it arrives. A take shorter
+ * than one block is measured whole. -Infinity when there is nothing to hear.
  */
 export function loudness(pcm: Int16Array) {
-  const env = envelope(pcm), k = kWeighted(pcm);
-  let sum = 0, n = 0;
-  for (let i = 0; i < env.length; i++) {
-    if (env[i]! <= 0.02) continue;
-    for (let j = i * HOP; j < (i + 1) * HOP; j++) sum += k[j]! * k[j]!;
-    n += HOP;
-  }
-  return n ? Math.sqrt(sum / n) : 0;
+  const k = kWeighted(pcm), step = SR / 10, lufs = (ms: number) => -0.691 + 10 * Math.log10(ms);
+  const tenths = new Float64Array(Math.floor(k.length / step));
+  for (let i = 0; i < tenths.length; i++) for (let j = i * step; j < (i + 1) * step; j++) tenths[i]! += k[j]! * k[j]!;
+  let blocks: number[] = [];
+  for (let i = 0; i + 4 <= tenths.length; i++) blocks.push((tenths[i]! + tenths[i + 1]! + tenths[i + 2]! + tenths[i + 3]!) / (4 * step));
+  if (!blocks.length && k.length) blocks = [k.reduce((s, v) => s + v * v, 0) / k.length];
+  const mean = (a: number[]) => a.reduce((s, v) => s + v, 0) / a.length;
+  blocks = blocks.filter((ms) => lufs(ms) > -70);
+  if (!blocks.length) return -Infinity;
+  const floor = lufs(mean(blocks)) - 10;
+  return lufs(mean(blocks.filter((ms) => lufs(ms) > floor)));
 }
 
 /**
- * The loudness every take is brought to: `loudness` in dB of full scale.
- * Takes were once matched by plain RMS, at -21 dBFS, and the edge and stray
- * limits above were tuned at that level, so this keeps the teachers there. Over
- * the same speaking windows their takes measure 0.2 dB (Paul) and 0.6 dB
- * (Madeline) hotter K-weighted than plain; -20.6 sits between, and moves each by
- * about 0.2 dB. The learner's brighter voice measures 1.05 dB hotter, and at
- * equal RMS was the loud one: it comes down about 0.65 dB.
+ * The loudness every take is brought to, in LUFS. Takes were once matched by
+ * the plain RMS of their speaking windows, at -21 dBFS, and the edge and stray
+ * limits above were tuned at the teachers' level, so this keeps the teachers as
+ * near to it as one value can. Matched that way their takes measured -24.0
+ * (Paul) and -23.3 LUFS (Madeline) on average: -23.6 sits between, and moves
+ * them up 0.4 and down 0.3 dB. The learner's takes measured -22.4, the loud
+ * voice: they come down 1.25 dB.
  */
-export const SPEAKING_K = -20.6;
+export const SPEAKING_LUFS = -23.6;
 
 /**
- * One speaking loudness for every take: SPEAKING_K while speaking (about -21 dBFS
- * RMS for a teacher's voice), peaks under -1 dBFS. Voices are matched by how loud
- * they sound, not by plain RMS: at equal RMS a brighter voice is the louder one.
+ * One loudness for every take: SPEAKING_LUFS, about -21 dBFS RMS while speaking,
+ * with peaks under -1 dBFS (a take whose peaks would pass that is left quieter:
+ * 5 of 542 measured takes, by 0.1 to 0.4 dB). Voices are matched by how loud
+ * they sound, not by plain RMS: at equal RMS a brighter voice is the louder one,
+ * and so is the voice that pauses less.
  */
 export function even(src: Int16Array) {
   const level = loudness(src);
-  if (!level) return Int16Array.from(src);
+  if (level === -Infinity) return Int16Array.from(src);
   let peak = 1;
   for (const v of src) peak = Math.max(peak, Math.abs(v));
-  const gain = Math.min(10 ** (SPEAKING_K / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
+  const gain = Math.min(10 ** ((SPEAKING_LUFS - level) / 20), (10 ** (-1 / 20) * 32767) / peak);
   return Int16Array.from(src, (v) => Math.round(v * gain));
 }
 
