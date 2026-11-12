@@ -1,6 +1,7 @@
 import type { PurchaseMeasurement } from "../advertising/permission-contracts.js";
 import { RETENTION } from "../privacy/retention-periods.js";
 import type { FreeAllowance } from "../learning/free-allowance.js";
+import type { AdultStart } from "../learning/starting-point.js";
 export interface FamilyLearner {
   id: string;
   name: string;
@@ -26,6 +27,8 @@ export interface FamilyLearner {
   freeAllowance?: FreeAllowance;
   /** The account holder's own learner (docs/families.md), not a child. */
   adult?: true;
+  /** The adult's own learner: where their practice starts. */
+  start?: AdultStart | null;
   /** One of the adult's practice profiles (docs/families.md): marked adult as
    * well, never a child and never the adult's own learner. */
   simulation?: true;

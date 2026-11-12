@@ -162,7 +162,7 @@ const DEFAULT_DUR: Record<string, number> = {
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
-  strike: 0.35,
+  strike: 0.35, header: 0.45,
 };
 
 /** The longest one trade of base-ten blocks may take, when a screenplay asks for a slow one. */
@@ -2928,8 +2928,29 @@ type BoardItem = {
 export const STRIKE_PAST = 0.12, STRIKE_THICK = 0.065, STRUCK = 0.55;
 /** Board lines a strike can go through: one row of working. A card or a stack is not struck. */
 const STRIKABLE = ["write", "text", "answer"];
-/** `tall`: the zoom came from a line taller than the window (a long problem card) shown whole, not from a wide line. */
-type Cam = { cx: number; cy: number; s: number; win: Rect; tall?: boolean };
+/**
+ * A header: a formula or a short line of words, under its fine-print name,
+ * pinned at the top of the board while the lines under it are written, cleared
+ * and replaced. It shows from t0 until t1 (the next header, an "off", or a later
+ * shot). Its band, `h` pixels at the top of the board's window, is the room it
+ * takes: a column written under it is laid out and framed in the window below.
+ */
+type Head = { el: HTMLElement; t0: number; dur: number; t1: number; shot: number; keep: boolean; name: string; w: number; h: number };
+/** How a message names a header: its fine-print name, or the start of what it says. */
+const headName = (a: { tex?: string; text?: string; label?: string }) => `"${(a.label ?? a.tex ?? a.text ?? "").replace(/\s+/g, " ").slice(0, 40)}"`;
+/** A header's type at full size, like the board's own math; it is set smaller only when it would be wider than the board. */
+export const HEAD_TYPE = 76;
+/** A header taller than this share of the board's window leaves too little room for the work under it. */
+export const HEAD_MAX = 0.32;
+/** A header fades out over this many seconds when it leaves. */
+const HEAD_OUT = 0.35;
+/** The room a header takes from the top of a window: the window below it. */
+const under = (w: Rect, hh: number): Rect => (hh > 0 ? { x: w.x, y: w.y + hh, w: w.w, h: Math.max(0, w.h - hh) } : w);
+/**
+ * `tall`: the zoom came from a line taller than the window (a long problem card) shown whole, not from a wide line.
+ * `hh`: the header's band above `win` (the window holds the lines under it). `headless`: no room for the header on this frame.
+ */
+type Cam = { cx: number; cy: number; s: number; win: Rect; tall?: boolean; hh?: number; headless?: boolean };
 /** `cut`: a jump of more than one column dissolves in place instead of whipping across the board. */
 type CamKey = { t0: number; dur: number; to: Cam; cols: Set<number>; cut?: boolean };
 const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
@@ -3011,6 +3032,10 @@ class Board {
   starts: Cam[] = [];
   colFades: { t0: number; dur: number; from: number[]; to: number[] }[] = [];
   issues: string[] = [];
+  /** Every header, in time. */
+  heads: Head[] = [];
+  /** The header each column is written under (null: none). It is fixed for the column, so nothing in it moves. */
+  colHead: (Head | null)[] = [];
   /** When the last word is said: the camera pulls back to the whole example and every line lights up, held to the end. */
   finale = Infinity;
   constructor(root: HTMLElement, shots: { list: Entry[]; t0: number; hasFig: boolean }[], public duration: number, lastWord = Infinity, public L: Layout = WIDE) {
@@ -3023,10 +3048,27 @@ class Board {
     const recapList = this.recapList = div("film-recap-list", this.recapCard);
     let col = this.newCol();
     const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[] = [];
+    let head: Head | null = null;
+    const mixed = new Set<number>();
     shots.forEach((sh, si) => {
       events.push({ t: sh.t0, kind: "shot", shot: si });
+      // a header ends with its shot, unless it keeps
+      if (head && !head.keep) { head.t1 = sh.t0; head = null; }
       for (const e of sh.list) {
         const a = e.a as any;
+        if (a.do === "header") {
+          const what = `Shot ${si + 1}: ${a.off ? "a header off" : `the header ${headName(a)}`}`;
+          if (this.items.some((i) => i.col === col)) {
+            this.issues.push(`${what} comes while the column under it already holds work, so the work would have to move. A header arrives, changes or leaves only on an empty column: put it right after a "clear", before the column's first line.`);
+            continue;
+          }
+          if (a.off && !head) { this.issues.push(`${what}, but no header is up.`); continue; }
+          if (head) head.t1 = e.t0;
+          head = a.off ? null : this.makeHead(root, a, e.t0, e.dur, si);
+          if (head) this.heads.push(head);
+          events.push({ t: e.t0, kind: "header", shot: si, col });
+          continue;
+        }
         if (a.do === "clear") {
           if (this.items.some((i) => i.col === col)) col = this.newCol();
           events.push({ t: e.t0, kind: "clear", shot: si, col });
@@ -3109,6 +3151,15 @@ class Board {
           el = r.el; stack = r.view;
         }
         if (!el) continue;
+        if (!this.items.some((i) => i.col === col)) this.colHead[col] = head;
+        else if ((this.colHead[col] ?? null) !== head && !mixed.has(col)) {
+          // only a later shot can change the header over a column: every other change needs an empty one
+          mixed.add(col);
+          const was = this.colHead[col];
+          this.issues.push(was && !head
+            ? `Shot ${si + 1}: this shot goes on writing in the column begun under the header ${was.name} (shot ${was.shot + 1}), but a header ends with its shot. Start this shot with a "clear" (and the header again if it should stay), or give the header "keep": true.`
+            : `Shot ${si + 1}: a line is written under a different header from the lines above it. Put a "clear" before the header.`);
+        }
         const item: BoardItem = { kind: a.do, el, t0: e.t0, dur: e.dur, col, shot: si, top: 0, bottom: 0, note, standalone: !!a.fresh, id: a.id, stack };
         this.items.push(item);
         events.push({ t: e.t0, kind: "item", item, shot: si });
@@ -3119,12 +3170,59 @@ class Board {
       if (v && v.times.length !== v.plan.steps.length)
         this.issues.push(`Shot ${it.shot + 1}: the stack "${it.id}" has ${v.plan.steps.length} columns to work but ${v.times.length} "column" beats. Give each column its own beat, right to left, and say what happens in it.`);
     }
+    this.fitHeads(shots);
     this.layout();
     if (this.recapItems.length && Number.isFinite(lastWord)) {
       this.finale = lastWord + 0.15;
       events.push({ t: this.finale, kind: "finale" });
     }
     this.camera(events.sort((x, y) => x.t - y.t), shots);
+  }
+  /** A header's element: its fine-print name, then the formula or the words, over a quiet rule. Placed on every frame by `drawHeads`. */
+  makeHead(root: HTMLElement, a: { tex?: string; text?: string; label?: string; keep?: boolean }, t0: number, dur: number, shot: number): Head {
+    const el = div("film-head", root);
+    if (a.label) div("film-head-label", el).innerHTML = prose(a.label);
+    const body = div(`film-head-body${a.tex === undefined ? " words" : ""}`, el);
+    body.innerHTML = a.tex !== undefined ? `<span class="film-math">${tex(a.tex, true)}</span>` : prose(a.text!);
+    el.style.visibility = "hidden";
+    return { el, t0, dur, t1: Infinity, shot, keep: !!a.keep, name: headName(a), w: 0, h: 0 };
+  }
+  /**
+   * Each header is as wide as the narrowest board it shows over (beside a
+   * figure, or the whole frame), its type as large as fits that width, and its
+   * height the band it keeps at the top of the board for as long as it is up.
+   */
+  fitHeads(shots: { t0: number; hasFig: boolean }[]) {
+    for (const h of this.heads) {
+      const wins = shots.filter((s, i) => s.t0 < h.t1 && (shots[i + 1]?.t0 ?? Infinity) > h.t0).map((s) => (s.hasFig ? this.L.panel : this.L.full));
+      const win = wins.reduce((a, b) => (b.w < a.w ? b : a), wins[0] ?? this.L.full);
+      h.w = win.w;
+      h.el.style.width = `${h.w}px`;
+      const body = h.el.querySelector<HTMLElement>(".film-head-body")!;
+      const ink = body.querySelector<HTMLElement>(".film-math");
+      const room = body.clientWidth;
+      let size = HEAD_TYPE;
+      h.el.style.setProperty("--film-math", `${size}px`);
+      // a formula stays on one line: smaller type, down to the board's floor; words wrap
+      while (ink && ink.getBoundingClientRect().width > room + 0.5 && size > this.L.minType) {
+        size -= 4;
+        h.el.style.setProperty("--film-math", `${size}px`);
+      }
+      if (ink && ink.getBoundingClientRect().width > room + 0.5)
+        this.issues.push(`Shot ${h.shot + 1}: the header ${h.name} is ${Math.round(ink.getBoundingClientRect().width)}px wide, more than the ${Math.round(room)}px of the board, even at ${size}px type. Use a shorter form.`);
+      h.h = h.el.offsetHeight;
+      if (h.h > win.h * HEAD_MAX)
+        this.issues.push(`Shot ${h.shot + 1}: the header ${h.name} is ${h.h}px tall, more than a third of the board (${Math.round(win.h * HEAD_MAX)}px), so the work under it has too little room. Make it one short line.`);
+    }
+  }
+  /** The band a camera key keeps for the header: the column's own header once it holds work, otherwise the header up at t. */
+  band(col: number | undefined, t: number) {
+    const h = col !== undefined && this.colHead[col] !== undefined ? this.colHead[col] : this.headAt(t);
+    return h ? h.h : 0;
+  }
+  /** The header that is up at t, if any. */
+  headAt(t: number) {
+    return [...this.heads].reverse().find((h) => h.t0 <= t + 1e-6 && t < h.t1 - 1e-6) ?? null;
   }
   newCol() {
     const c = div("film-col", this.surface);
@@ -3161,16 +3259,24 @@ class Board {
         fit();
       }
       // A card taller than the window shrinks its type. The padding stays in pixels, so the camera does not have to scale that padding down to a sliver.
-      const winH = (this.home[ci] ?? this.L.full).h - 2 * EDGE_PAD;
+      // Under a header the window starts below its band.
+      const head = this.colHead[ci];
+      const winH = (this.home[ci] ?? this.L.full).h - 2 * EDGE_PAD - (head?.h ?? 0);
       const settle = () => {
         this.fitEquations(ci, room, size);
         ext = this.measure(ci);
       };
-      const tooTall = () => Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight)) > winH;
+      const tallest = () => Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight));
+      const tooTall = () => tallest() > winH;
+      const wide = size;
       while (size > this.L.minType && tooTall()) {
         size -= 4;
         c.style.setProperty("--film-math", `${size}px`);
         ext = this.measure(ci);
+      }
+      if (head && size < wide) {
+        const card = this.items.filter((i) => i.col === ci).sort((x, y) => y.el.offsetHeight - x.el.offsetHeight)[0];
+        this.issues.push(`Shot ${(card?.shot ?? 0) + 1}: under the header ${head.name} the board has ${Math.round(winH)}px for the work, and "${(card?.el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 50)}" needs more: its column's type shrinks to ${size}px. Shorten it, or clear the header before it.`);
       }
       // A line that is still wider than the window scales down, and breaks at its equals sign rather than wrapping.
       settle();
@@ -3408,7 +3514,7 @@ class Board {
     let newest: BoardItem | undefined;
     let cols = new Set<number>([0]);
     const same = (a: Cam, b: Cam) =>
-      Math.abs(a.cx - b.cx) < 0.5 && Math.abs(a.cy - b.cy) < 0.5 && Math.abs(a.s - b.s) < 1e-3 &&
+      Math.abs(a.cx - b.cx) < 0.5 && Math.abs(a.cy - b.cy) < 0.5 && Math.abs(a.s - b.s) < 1e-3 && Math.abs((a.hh ?? 0) - (b.hh ?? 0)) < 0.5 &&
       a.win.x === b.win.x && a.win.y === b.win.y && a.win.w === b.win.w && a.win.h === b.win.h;
     const push = (t: number, to: Cam) => {
       // a key that goes where the camera is already going would restart its ease: a visible hitch
@@ -3421,8 +3527,9 @@ class Board {
       const ev = events[ei]!;
       if (ev.kind === "finale") {
         // pull back to the whole example only if it can still be read; otherwise hold the last step
-        const w = this.whole(this.L.side, ev.t, all ? undefined : col);
-        if (mode === "overview" && recap && w.s >= 0.42) push(ev.t, w);
+        const hh = this.band(undefined, ev.t);
+        const w = this.whole(under(this.L.side, hh), ev.t, all ? undefined : col);
+        if (mode === "overview" && recap && w.s >= 0.42) push(ev.t, { ...w, hh });
         continue;
       }
       if (ev.kind === "shot") {
@@ -3439,25 +3546,43 @@ class Board {
       }
       if (ev.kind === "clear") {
         col = ev.col!; bottom = 0; mode = "focus"; recap = false; cols = new Set([col]); newest = undefined;
-        // the column's first line follows at once: one move straight to it, not two
+        // the column's first line (or its header) follows at once: one move straight to it, not two
         const nx = events[ei + 1];
-        if (nx && nx.kind === "item" && nx.item!.col === col && nx.t - ev.t < 1.5) continue;
+        if (nx && ((nx.kind === "item" && nx.item!.col === col) || (nx.kind === "header" && nx.col === col)) && nx.t - ev.t < 1.5) continue;
       }
+      // A header arrives, changes or leaves on an empty column: the board turns to that column as it does, and its band opens or closes.
+      if (ev.kind === "header") { col = ev.col!; bottom = 0; mode = "focus"; recap = false; cols = new Set([col]); newest = undefined; all = false; }
       if (ev.kind === "overview" || ev.kind === "overview-all") { mode = "overview"; all = ev.kind === "overview-all"; if (ev.col !== undefined) col = ev.col; }
       if (ev.kind === "item") all = false;
       if (ev.kind === "recap") { mode = "overview"; recap = true; }
       if (mode === "overview") {
         cols = all ? new Set(this.items.filter((i) => i.t0 <= ev.t).map((i) => i.col)) : new Set([col]);
         const marks = ev.kind === "recap" ? this.recapItems[ev.idx!]?.marks : undefined;
-        push(ev.t - 0.1, recap && !all && marks ? this.framed(this.L.side, ev.t, col, marks) : this.whole(recap ? this.L.side : this.L.full, ev.t, all ? undefined : col));
-      } else push(ev.t - 0.15, this.focus(col, Math.max(bottom, 1), fig ? this.L.panel : this.L.full, newest));
+        // an overview keeps the band of the header that is up as it starts
+        const hh = this.band(undefined, ev.t);
+        const to = recap && !all && marks ? this.framed(under(this.L.side, hh), ev.t, col, marks) : this.whole(under(recap ? this.L.side : this.L.full, hh), ev.t, all ? undefined : col);
+        push(ev.t - 0.1, { ...to, hh });
+      } else {
+        const hh = this.band(col, ev.t);
+        push(ev.t - 0.15, { ...this.focus(col, Math.max(bottom, 1), under(fig ? this.L.panel : this.L.full, hh), newest), hh });
+      }
     }
     // where each move starts from: wherever the camera is when it begins
     for (const k of this.keys) this.starts.push(this.camAt(k.t0));
+    // the window a key frames, below any header band: beside a figure, or the whole frame
+    const inPanel = (w: Rect) => Math.abs(w.x - this.L.panel.x) < 1 && Math.abs(w.w - this.L.panel.w) < 1 && Math.abs(w.y + w.h - (this.L.panel.y + this.L.panel.h)) < 1;
+    const crowded = new Set<number>();
     for (const it of this.items) {
       const k = this.keys.find((x) => x.t0 >= it.t0 - 0.2);
-      if (k && !k.to.tall && k.to.s < (k.to.win === this.L.panel ? this.L.tight.panel : this.L.tight.full))
+      if (!k || k.to.s >= (inPanel(k.to.win) ? this.L.tight.panel : this.L.tight.full)) continue;
+      const head = this.colHead[it.col];
+      if (!k.to.tall)
         this.issues.push(`A line in column ${it.col + 1} is too wide: the board shrinks to ${Math.round(k.to.s * 100)}%. Break the line or use a shorter form.`);
+      else if (head && !crowded.has(it.col)) {
+        // a card and the work under it are shown whole; under a header there is less room, and the shrinking is the author's to know about
+        crowded.add(it.col);
+        this.issues.push(`Shot ${it.shot + 1}: under the header ${head.name}, column ${it.col + 1} holds more than the board can show whole: it shrinks to ${Math.round(k.to.s * 100)}%. Clear sooner, or shorten the card.`);
+      }
     }
   }
   camAt(t: number, first?: Cam): Cam {
@@ -3468,7 +3593,7 @@ class Board {
       const from = this.starts[i] ?? v;
       // a dissolve: hold, then jump at the midpoint while the columns cross-fade
       const u = k.cut ? (t - k.t0 < k.dur / 2 ? 0 : 1) : ease((t - k.t0) / k.dur);
-      v = { cx: lerp(from.cx, k.to.cx, u), cy: lerp(from.cy, k.to.cy, u), s: lerp(from.s, k.to.s, u), win: lerpRect(from.win, k.to.win, u) };
+      v = { cx: lerp(from.cx, k.to.cx, u), cy: lerp(from.cy, k.to.cy, u), s: lerp(from.s, k.to.s, u), win: lerpRect(from.win, k.to.win, u), hh: lerp(from.hh ?? 0, k.to.hh ?? 0, u) };
     }
     return v;
   }
@@ -3488,6 +3613,8 @@ class Board {
   /** Is anything on the board visible at t? */
   showing(t: number) {
     if (this.recapItems.some((r) => r.t0 <= t)) return true;
+    // a header is on the board: the screen is not empty while it is up
+    if (this.headAt(t)) return true;
     return this.items.some((i) => i.t0 <= t && this.colOpacity(i.col, t) > 0.5);
   }
   moving(): [number, number][] {
@@ -3495,6 +3622,10 @@ class Board {
     for (const r of this.recapItems) out.push([r.t0 - 0.02, r.t0 + r.dur + 0.02]);
     if (Number.isFinite(this.finale)) out.push([this.finale - 0.02, this.finale + 0.75]);
     for (const it of this.items) if (it.stack) out.push(...stackMoves(it.stack, it.t0));
+    for (const h of this.heads) {
+      out.push([h.t0 - 0.02, h.t0 + h.dur + 0.02]);
+      if (Number.isFinite(h.t1)) out.push([h.t1 - 0.02, h.t1 + HEAD_OUT + 0.02]);
+    }
     return out;
   }
   /** A figure shot is still on screen, including while it fades out, so the notes stay below it. */
@@ -3544,6 +3675,8 @@ class Board {
     const L = this.L;
     const edge = 40;
     const fig = this.figureShowing(t);
+    // the header's band sits at the top of the notes, above the lines' window
+    const hh = cam.hh ?? 0;
     const below = fig ? L.fig.y + L.fig.h + REGION_GAP : edge;
     const floor = L.h - edge;
     const root = this.win.parentElement;
@@ -3551,9 +3684,9 @@ class Board {
     if (!recapOn) {
       if (root) delete root.dataset.cardTakeover;
       for (const r of this.recapItems) r.el.style.display = "";
-      if (!fig || cam.win.y >= L.fig.y + L.fig.h - 1) return cam;
+      if (!fig || cam.win.y - hh >= L.fig.y + L.fig.h - 1) return cam;
       const bottom = cam.win.y + cam.win.h;
-      const win: Rect = { x: cam.win.x, y: below, w: cam.win.w, h: Math.max(0, bottom - below) };
+      const win: Rect = { x: cam.win.x, y: below + hh, w: cam.win.w, h: Math.max(0, bottom - below - hh) };
       const k = cam.win.h > 1 ? win.h / cam.win.h : 1;
       return { ...cam, win, s: cam.s * k };
     }
@@ -3570,10 +3703,11 @@ class Board {
     const cardH = Math.min(h, takeover ? floor - edge : Math.max(h, 0));
     const cardTop = takeover ? edge : floor - cardH;
     this.recapCard.style.cssText = `left:${edge}px;top:${cardTop}px;width:${L.w - 2 * edge}px;height:${cardH}px`;
-    if (takeover) return { ...cam, win: { x: edge, y: below, w: L.w - 2 * edge, h: 0 } };
+    if (takeover) return { ...cam, win: { x: edge, y: below, w: L.w - 2 * edge, h: 0 }, headless: true };
     const notesH = cardTop - REGION_GAP - below;
-    const notes: Rect = { x: edge, y: below, w: L.w - 2 * edge, h: Math.max(0, notesH) };
-    if (notes.h < 48) return { ...cam, win: { ...notes, h: 0 } };
+    // a header keeps its band at the top of the notes; when the notes have no room under it, it steps aside with them
+    const notes: Rect = { x: edge, y: below + hh, w: L.w - 2 * edge, h: Math.max(0, notesH - hh) };
+    if (notes.h < 48) return { ...cam, win: { ...notes, h: 0 }, headless: true };
     return this.pinAbove(cam, notes, t);
   }
   /** Keep the newest lines that fit, oldest dropped first, sitting just above the card. */
@@ -3602,6 +3736,21 @@ class Board {
     if (span * s > inner) s = inner / span;
     const cy = bot - (win.h / 2 - margin) / s;
     return { cx: cam.cx, cy, s, win };
+  }
+  /**
+   * Each header at t: fading in on its word, out as it leaves, and pinned to
+   * the top of the board, in the band above the lines' window. The band is part
+   * of the camera, so the header moves only when the board's window does.
+   */
+  drawHeads(t: number, c: Cam, fade: number) {
+    for (const h of this.heads) {
+      const o = (t < h.t0 ? 0 : ease((t - h.t0) / h.dur)) * (1 - ease((t - h.t1) / HEAD_OUT)) * fade * (c.headless ? 0 : 1);
+      h.el.style.opacity = String(o);
+      h.el.style.visibility = o < 0.002 ? "hidden" : "visible";
+      if (o < 0.002) continue;
+      h.el.style.left = `${c.win.x + (c.win.w - h.w) / 2}px`;
+      h.el.style.top = `${c.win.y - (c.hh ?? 0)}px`;
+    }
   }
   /** A line that would be sliced by the notes band is hidden whole. What remains is fully on screen. */
   concealCut(c: Cam) {
@@ -3672,6 +3821,7 @@ class Board {
       if (it.stack) drawStack(it.stack, it.t0, t);
     }
     if (this.L.name === "tall") this.concealCut(c);
+    this.drawHeads(t, c, fade);
     const r0 = this.recapItems[0];
     const ro = r0 ? ease((t - r0.t0) / 0.5) : 0;
     this.recapCard.style.opacity = String(ro * fade);

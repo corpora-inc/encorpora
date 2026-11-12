@@ -26,7 +26,7 @@ const FAMILY_TIMEZONE = "America/New_York";
 const isParentAccount = (accountId: string) =>
   !accountId.startsWith("school:") && !accountId.startsWith("trial:");
 /** The grade a child of this birth year is in now; K is 0. */
-const gradeFor = (birthYear: number | null) =>
+export const gradeFor = (birthYear: number | null) =>
   birthYear === null
     ? null
     : Math.min(13, Math.max(0, completedGrade(birthYear) + 1));
@@ -184,6 +184,29 @@ export async function ensureFamilyClass(
     enrolled++;
   }
   return { ...view(family), created, enrolled };
+}
+
+/**
+ * A child's grade in every family class that rosters them (their own
+ * family's, and a tutor's or another family's that took them in), after
+ * their birth year changed. A family's grades come from the birth year; a
+ * school's are the school's to set, so school rosters are left alone.
+ */
+export async function syncFamilyGrade(db: Database, learnerId: string) {
+  if (!(await familiesExist(db))) return;
+  const learner = (
+    await db.query<{ birth_year: number | null }>(
+      "SELECT birth_year FROM amp_learners WHERE id=$1",
+      [learnerId],
+    )
+  ).rows[0];
+  if (!learner) return;
+  await db.query(
+    `UPDATE amp_people p SET grade_level=$2
+     FROM amp_families f WHERE f.org_id=p.tenant_id AND p.learner_id=$1
+       AND p.grade_level IS DISTINCT FROM $2`,
+    [learnerId, gradeFor(learner.birth_year)],
+  );
 }
 
 /** The parent's own name, for their class and their line on its map. */

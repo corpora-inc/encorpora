@@ -1,5 +1,5 @@
 import type { Pool, PoolClient } from "pg";
-import { adultLearnerName } from "../account/adult.js";
+import { adultLearnerName, adultStartFromYear } from "../account/adult.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
 import { ensureFamilyClass } from "../family/family-class.js";
 import { familyHasLearnerRoom } from "../learning/free-allowance.js";
@@ -81,10 +81,12 @@ export async function absorbLiveTrial(
     // 0101 refuses an unnamed learner without one) and an adult's trial when
     // the account already has its adult learner.
     for (const trial of found.rows) {
-      if (trial.birth_year == null) continue;
+      const birthYear = trial.birth_year;
+      if (birthYear == null) continue;
       if (!(await familyHasLearnerRoom(client, ownerAccountId))) break;
-      if (new Date().getUTCFullYear() - trial.birth_year >= ADULT_AGE) {
-        if (await moveAdultTrial(client, ownerAccountId, trial)) moved++;
+      if (new Date().getUTCFullYear() - birthYear >= ADULT_AGE) {
+        if (await moveAdultTrial(client, ownerAccountId, trial, birthYear))
+          moved++;
         continue;
       }
       // The parent never named a trial: it goes by its number ("Child 2")
@@ -95,7 +97,13 @@ export async function absorbLiveTrial(
            identity_scope=$3,name=$4
          WHERE id=$5 AND deleted_at IS NULL AND birth_year IS NOT NULL AND NOT adult
          RETURNING id`,
-        [ownerAccountId, label.number, label.scope, label.name, trial.learner_id],
+        [
+          ownerAccountId,
+          label.number,
+          label.scope,
+          label.name,
+          trial.learner_id,
+        ],
       );
       if (!updated.rowCount) continue;
       await client.query(
@@ -122,12 +130,15 @@ export async function absorbLiveTrial(
 const ADULT_AGE = 18;
 
 /** An adult's trial becomes the account's one adult learner, in place (an
- * adult learner has no birth year). With an adult learner already there, the
- * trial is left to expire as before. */
+ * adult learner has no birth year). The year it gave becomes where their
+ * practice starts, as the starter's "for myself" does (`adultStartFromYear`),
+ * so the level doesn't fall back to the scale's default when the year goes.
+ * With an adult learner already there, the trial is left to expire as before. */
 async function moveAdultTrial(
   client: PoolClient,
   ownerAccountId: string,
   trial: { id: string; learner_id: string },
+  birthYear: number,
 ) {
   const existing = await client.query(
     "SELECT 1 FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
@@ -135,13 +146,16 @@ async function moveAdultTrial(
   );
   if (existing.rowCount) return false;
   const updated = await client.query(
-    `UPDATE amp_learners SET account_id=$1,adult=true,birth_year=NULL,name=$2
+    `UPDATE amp_learners SET account_id=$1,adult=true,birth_year=NULL,name=$2,
+       starting_band=$4,starting_policy=1,
+       starting_excluded_strands=COALESCE(starting_excluded_strands,'{}'::text[])
      WHERE id=$3 AND deleted_at IS NULL AND NOT name_pending AND NOT adult
      RETURNING id`,
     [
       ownerAccountId,
       await adultLearnerName(client, ownerAccountId),
       trial.learner_id,
+      adultStartFromYear(birthYear),
     ],
   );
   if (!updated.rowCount) return false;

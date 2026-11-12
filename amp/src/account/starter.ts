@@ -27,7 +27,7 @@ export const MAX_STARTER_CHILDREN = 6;
 export const MAX_STARTER_STUDENTS = 30;
 
 /** A school-age birth year: the starter's picker offers ages 4 to 19. */
-const childBirthYear = z
+export const childBirthYear = z
   .number()
   .int()
   .refine((year) => {

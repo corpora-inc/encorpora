@@ -15,7 +15,7 @@ import { studentGrantResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { request } from "../../../lib/api";
 import { AppError } from "../../../lib/AppError";
-import { meOptions } from "../../../lib/query";
+import { invalidateAccount, meOptions } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
@@ -68,6 +68,8 @@ type Draft = {
   rows: { name: string; year: string }[];
   /** New names for children already in the class, by learner. */
   renames: Record<string, string>;
+  /** Corrected birth years for children already in the class, by learner. */
+  years: Record<string, string>;
 };
 const useDraft = create<
   Draft & { set: (owner: string, change: Partial<Draft>) => void }
@@ -75,11 +77,12 @@ const useDraft = create<
   owner: null,
   rows: [],
   renames: {},
+  years: {},
   set: (owner, change) =>
     set((state) =>
       state.owner === owner
         ? change
-        : { owner, rows: [], renames: {}, ...change },
+        : { owner, rows: [], renames: {}, years: {}, ...change },
     ),
 }));
 
@@ -159,6 +162,9 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
       ? []
       : [{ name: "", year: "" }];
   const renames = mine ? draft.renames : {};
+  const years = mine ? draft.years : {};
+  const yearOf = (child: (typeof existing)[number]) =>
+    years[child.id] ?? (child.birthYear ? String(child.birthYear) : "");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const total = existing.length + rows.length;
@@ -181,7 +187,7 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
   const missingYear = rows.some((row) => !row.year);
   const [asked, setAsked] = useState(false);
   const setRows = (next: Draft["rows"]) =>
-    draft.set(session.accountId, { rows: next, renames });
+    draft.set(session.accountId, { rows: next, renames, years });
   const next = async () => {
     if (missingYear) return setAsked(true);
     if (hint || saving) return;
@@ -198,6 +204,18 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
           { token: session.token, body: { name } },
         );
       }
+      // A year corrected here (Q-56): the child's start and class grade
+      // follow, and their answers stay.
+      for (const child of existing) {
+        const year = years[child.id];
+        if (!year || Number(year) === child.birthYear) continue;
+        await request(
+          `/family/learners/${encodeURIComponent(child.id)}/birth-year`,
+          z.unknown(),
+          { token: session.token, body: { birthYear: Number(year) } },
+        );
+      }
+      if (Object.keys(years).length) void invalidateAccount(session.accountId);
       if (rows.length || !me.familyClass) {
         const year = new Date().getFullYear();
         // The starter's answer is the family's whole count: the children
@@ -206,7 +224,7 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
           as: "parent",
           children: [
             ...existing.map((child) => ({
-              birthYear: child.birthYear ?? year - 8,
+              birthYear: Number(yearOf(child)) || year - 8,
             })),
             ...rows.map((row) => ({
               birthYear: Number(row.year),
@@ -218,7 +236,7 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
         // child; setup's next steps wait on Today.
         const plan = chosenPlan();
         if (plan && made.learnerId) {
-          draft.set(session.accountId, { rows: [], renames: {} });
+          draft.set(session.accountId, { rows: [], renames: {}, years: {} });
           await navigate({
             to: "/continue/$learnerId",
             params: { learnerId: made.learnerId },
@@ -227,7 +245,7 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
           return;
         }
       }
-      draft.set(session.accountId, { rows: [], renames: {} });
+      draft.set(session.accountId, { rows: [], renames: {}, years: {} });
       await navigate({ href: stepUrl(kind, STEPS[kind][index + 1]!.id) });
     } catch (failure) {
       setError(
@@ -270,12 +288,19 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
             key: child.id,
             label: label(at),
             name: nameOf(child),
-            year: child.birthYear ? String(child.birthYear) : "",
+            year: yearOf(child),
             fixed: true,
             onName: (name: string) =>
               draft.set(session.accountId, {
                 rows,
+                years,
                 renames: { ...renames, [child.id]: name },
+              }),
+            onYear: (value: string) =>
+              draft.set(session.accountId, {
+                rows,
+                renames,
+                years: { ...years, [child.id]: value },
               }),
           })),
           ...rows.map((row, at) => ({
@@ -438,7 +463,8 @@ type Row = {
   label: string;
   name: string;
   year: string;
-  /** Already in the class: the year shows, and the row stays. */
+  /** Already in the class: the row stays (no Remove). Its year shows, and
+   * can be corrected when the row takes `onYear`. */
   fixed?: boolean;
   onName: (name: string) => void;
   onYear?: (year: string) => void;
@@ -506,7 +532,7 @@ function People({
                 <span className={styles.cellLabel} aria-hidden="true">
                   Birth year
                 </span>
-                {row.fixed ? (
+                {row.fixed && !row.onYear ? (
                   <span className={styles.fixedYear}>{row.year || "—"}</span>
                 ) : (
                   <YearField

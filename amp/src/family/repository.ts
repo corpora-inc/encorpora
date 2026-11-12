@@ -4,13 +4,18 @@ import {
 } from "../advertising/permission.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
-import { ensureFamilyClass, practiceHere } from "./family-class.js";
+import {
+  ensureFamilyClass,
+  practiceHere,
+  syncFamilyGrade,
+} from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import {
   learningConsentActive,
   namingConsentActive,
 } from "../server/account-access.js";
 import { freeAllowance } from "../learning/free-allowance.js";
+import { adultStarts } from "../learning/starting-point.js";
 import {
   goesByNumber,
   numberedName,
@@ -107,7 +112,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.starting_band,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -216,6 +221,14 @@ export class FamilyRepository {
             permitted.has(row.id) &&
             (this.development || row.has_access || row.free_online_used < 100),
           ...(row.adult ? { adult: true as const } : {}),
+          // Where the adult's own practice starts: theirs to correct.
+          ...(row.adult && !row.simulation
+            ? {
+                start:
+                  adultStarts.find((start) => start === row.starting_band) ??
+                  null,
+              }
+            : {}),
           ...(row.simulation ? { simulation: true as const } : {}),
           access: grants
             .filter((g) => g.learner_id === row.id)
@@ -295,7 +308,10 @@ export class FamilyRepository {
             ? {
                 number: learner.label_number,
                 scope: learner.identity_scope,
-                name: numberedName(learner.identity_scope, learner.label_number),
+                name: numberedName(
+                  learner.identity_scope,
+                  learner.label_number,
+                ),
               }
             : await allocateLabel(client, `family:${accountId}`);
       }
@@ -330,6 +346,43 @@ export class FamilyRepository {
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
       // The class roster follows by trigger (migration 0098).
       await this.audit(client, accountId, "learner.renamed", learnerId, 1);
+    });
+  }
+  /**
+   * Corrects a child's birth year (docs/families.md). The year sets where
+   * practice starts (`initialLevel`) and the grade every family class shows
+   * for them, so the roster follows here. Their answers, evidence and
+   * workbooks are untouched: the level is read again from the same answers
+   * with the new start. An adult's own learner has no birth year.
+   */
+  async setBirthYear(
+    accountId: string,
+    learnerId: string,
+    birthYear: number,
+  ): Promise<{ birthYear: number }> {
+    return this.transaction(accountId, async (client) => {
+      const learner = (
+        await client.query<{ adult: boolean; birth_year: number | null }>(
+          "SELECT adult,birth_year FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+          [learnerId, accountId],
+        )
+      ).rows[0];
+      if (!learner) throw new FamilyError(404, "learner_not_found");
+      if (learner.adult) throw new FamilyError(409, "adult_has_no_birth_year");
+      if (learner.birth_year === birthYear) return { birthYear };
+      await client.query("UPDATE amp_learners SET birth_year=$2 WHERE id=$1", [
+        learnerId,
+        birthYear,
+      ]);
+      await syncFamilyGrade(client, learnerId);
+      await this.audit(
+        client,
+        accountId,
+        "learner.birth-year-changed",
+        learnerId,
+        1,
+      );
+      return { birthYear };
     });
   }
   private async withdrawInside(

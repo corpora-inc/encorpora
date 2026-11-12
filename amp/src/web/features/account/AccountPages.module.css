@@ -244,3 +244,15 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
+
+/* A child's birth year in their settings: its label, then the year field
+   that opens the year tiles (ui/YearField). */
+.yearRow {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 200px);
+  justify-content: start;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-label);
+  font-weight: 600;
+}

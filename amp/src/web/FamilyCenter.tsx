@@ -8,7 +8,8 @@ import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
 import { useAccountCache, useFamilyCache } from "./lib/family-cache";
-import { BirthYearPicker } from "./PremiumControls";
+import { YearField } from "./ui/YearField";
+import { OwnStartSetting } from "./features/me/OwnStartSetting";
 import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
@@ -35,7 +36,7 @@ import {
   PARENT_ENTRY_LINE,
 } from "../learning/nickname";
 import { useLearnerStore } from "./learner-store";
-import { refreshMe } from "./lib/query";
+import { invalidateAccount, refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
 import { deviceTimeZone } from "./features/onboarding/starter-api";
 import { SecondParent } from "./features/second-parent/SecondParent";
@@ -159,7 +160,9 @@ export function FamilyCenter({
       family.learners.some((entry) => !entry.deletedAt && !entry.adult));
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
-    [notice, setNotice] = useState("");
+    [notice, setNotice] = useState(""),
+    /** A corrected birth year, said over the page so nothing moves. */
+    [yearSaved, setYearSaved] = useState("");
   useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
@@ -493,6 +496,30 @@ export function FamilyCenter({
       : null;
   const addChild = () =>
     consentActive ? setAdding(true) : route.navigate("/start/parent");
+  /** The account holder corrects a child's year; a second parent reads it. */
+  const canChangeYear = !secondOnly;
+  const saveBirthYear = (learner: FamilyLearner, birthYear: number) =>
+    void action(async () => {
+      if (learner.birthYear === birthYear) return;
+      try {
+        await api(
+          `/family/learners/${encodeURIComponent(learner.id)}/birth-year`,
+          { birthYear },
+        );
+      } catch (failure) {
+        console.error("The birth year did not save", failure);
+        throw new Error(
+          failure instanceof Error &&
+            failure.message !== messages.invalid_family_request
+            ? failure.message
+            : "That year didn’t save. Choose it again from the list.",
+        );
+      }
+      await refresh();
+      // The level, the class's grade and practice read the year: one store.
+      void invalidateAccount(identity);
+      setYearSaved(`${learner.name}’s birth year is ${birthYear}.`);
+    });
   /** One child's settings, opened under their row in Learners. */
   const learnerDetail = (learner: FamilyLearner) => {
     const age = learner.birthYear
@@ -555,32 +582,46 @@ export function FamilyCenter({
             </div>
           </form>
         ) : (
-          <div className={pages.detailActions}>
-            {!nativeRuntime &&
-              workbooksEnabled &&
-              canReadWorkbooks(learner) && (
-                <Link
-                  to="/learners/$learnerId/workbooks"
-                  params={{ learnerId: learner.id }}
-                  className={buttonClass("secondary")}
+          <>
+            {/* The year sets where practice starts and the grade the class
+                shows; a parent corrects it here (Q-56). Answers stay. */}
+            <div className={pages.yearRow}>
+              <span id={`birth-year-${learner.id}`}>Birth year</span>
+              <YearField
+                label={`Birth year, ${learner.name}`}
+                value={learner.birthYear ? String(learner.birthYear) : ""}
+                placeholder="Choose a year"
+                disabled={busy || !canChangeYear}
+                onChange={(year) => saveBirthYear(learner, Number(year))}
+              />
+            </div>
+            <div className={pages.detailActions}>
+              {!nativeRuntime &&
+                workbooksEnabled &&
+                canReadWorkbooks(learner) && (
+                  <Link
+                    to="/learners/$learnerId/workbooks"
+                    params={{ learnerId: learner.id }}
+                    className={buttonClass("secondary")}
+                  >
+                    Workbooks
+                  </Link>
+                )}
+              {canName && (
+                <Button
+                  variant="secondary"
+                  data-rename-id={learner.id}
+                  disabled={busy}
+                  onClick={() => {
+                    setRename(learner.id);
+                    setName(learner.namePending ? "" : learner.name);
+                  }}
                 >
-                  Workbooks
-                </Link>
+                  {learner.namePending ? "Add their name" : "Edit name"}
+                </Button>
               )}
-            {canName && (
-              <Button
-                variant="secondary"
-                data-rename-id={learner.id}
-                disabled={busy}
-                onClick={() => {
-                  setRename(learner.id);
-                  setName(learner.namePending ? "" : learner.name);
-                }}
-              >
-                {learner.namePending ? "Add their name" : "Edit name"}
-              </Button>
-            )}
-          </div>
+            </div>
+          </>
         )}
         {rename !== learner.id && (
           <div>
@@ -673,6 +714,11 @@ export function FamilyCenter({
         </FocusDialog>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
+      <Toast
+        message={yearSaved}
+        tone="status"
+        onDismiss={() => setYearSaved("")}
+      />
       <div className={pages.column} ref={body} data-account-body>
         {back && family && <BackRow onClick={back.go}>{back.label}</BackRow>}
         {/* The open tab already says Sign-in, Learners, Billing or
@@ -810,11 +856,21 @@ export function FamilyCenter({
                 ) : null}
                 <LearnerList
                   own={ownLearner}
+                  ownDetail={
+                    ownLearner && !nativeRuntime ? (
+                      <OwnStartSetting
+                        session={session}
+                        start={ownLearner.start}
+                      />
+                    ) : undefined
+                  }
                   children={family.learners}
                   selectedId={openLearner ?? undefined}
                   onSelect={(id) => {
                     setOpenLearner(id || null);
-                    if (id) selectLearner(id);
+                    // The adult's own practice opens its settings here; it
+                    // isn't chosen as the family's learner.
+                    if (id && id !== ownLearner?.id) selectLearner(id);
                   }}
                   detail={learnerDetail}
                 />
@@ -867,14 +923,17 @@ export function FamilyCenter({
                       placeholder="First name or nickname"
                       onChange={(event) => setNewName(event.target.value)}
                     />
-                    <label className={pages.fieldLabel}>
+                    <div className={pages.fieldLabel}>
                       <span>Birth year</span>
-                      <BirthYearPicker
+                      <YearField
+                        label="Birth year"
                         value={newBirthYear}
+                        placeholder="Choose a year"
                         onChange={setNewBirthYear}
                         disabled={busy}
+                        adult
                       />
-                    </label>
+                    </div>
                     {/* The birth year sets where practice starts. */}
                     <div className={pages.detailActions}>
                       <Button

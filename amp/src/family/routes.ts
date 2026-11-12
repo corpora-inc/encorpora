@@ -1,4 +1,6 @@
 import {
+  changeOwnStart,
+  ownStartSchema,
   readOwnPractice,
   recordAdultActivity,
   startAdultPractice,
@@ -6,7 +8,11 @@ import {
 } from "../account/adult.js";
 import { optionalChildName } from "../learning/nickname.js";
 import { accountSummary } from "../account/repository.js";
-import { addClassStudent, startPlace } from "../account/starter.js";
+import {
+  addClassStudent,
+  childBirthYear,
+  startPlace,
+} from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
 import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import {
@@ -173,6 +179,18 @@ export async function registerFamilyRoutes(
       return reply
         .code(201)
         .send(await startAdultPractice(repository, account, input));
+    });
+    // Where the adult's own practice starts, corrected from the year they
+    // were born, as it was set when they began.
+    scope.post("/api/v1/me/practice/birth-year", async (request) => {
+      const account = await options.authenticate(request);
+      if (isSchoolAccount(account))
+        throw new FamilyError(404, "adult_practice_not_started");
+      return changeOwnStart(
+        repository,
+        account,
+        ownStartSchema.parse(request.body),
+      );
     });
     // Practice profiles (docs/families.md): the adult practicing as someone
     // else. Any adult account; never a student's session or a school's.
@@ -439,6 +457,19 @@ export async function registerFamilyRoutes(
       await repository.rename(account, learnerId, name);
       return { renamed: true };
     });
+    // A parent corrects their own child's birth year (docs/families.md).
+    scope.post(
+      "/api/v1/family/learners/:learnerId/birth-year",
+      async (request) => {
+        const account = await options.authenticate(request);
+        const { learnerId } = learnerParams.parse(request.params);
+        await refuseSecondParentFor(options.pool, account, learnerId);
+        const { birthYear } = z
+          .strictObject({ birthYear: childBirthYear })
+          .parse(request.body);
+        return repository.setBirthYear(account, learnerId, birthYear);
+      },
+    );
     scope.post(
       "/api/v1/family/learners/:learnerId/delete-learning-data",
       async (request) => {
