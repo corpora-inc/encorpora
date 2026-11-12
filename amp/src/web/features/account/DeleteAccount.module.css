@@ -1,0 +1,38 @@
+/* Delete my account: the page geometry is AccountPages'. */
+
+/* Held while what the account holds loads: the height of a short list, so
+   the confirmation never jumps when it arrives. */
+.reserve {
+  display: grid;
+  align-content: start;
+  min-height: 280px;
+}
+
+/* The typed confirmation and its one action, a reading column wide. */
+.confirm {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 420px;
+  padding-top: var(--space-2);
+}
+/* The field reserves its error line; the action sits right under it. */
+.confirm > label {
+  margin: 0;
+}
+
+/* The one irreversible action: the danger accent, never the brand colour. */
+.delete.delete {
+  justify-self: start;
+  min-width: 220px;
+  background: var(--color-danger-accent);
+  color: var(--color-on-primary);
+}
+.delete.delete:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+@media (max-width: 479px) {
+  .delete.delete {
+    justify-self: stretch;
+  }
+}

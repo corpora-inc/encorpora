@@ -104,6 +104,19 @@ A child before verified consent has the name their parent entered (or "Child 2")
 - **Family student:** the verified consent of a parent of that child. For the teacher's own children that is the teacher. For another family's child it is that child's parent, recorded through the approval link.
 - **Adult learner:** the adult's own account; no parental consent applies.
 
+## Deleting an account
+
+Account → Sign-in → "Delete my account" (`/family/security/delete`) lists what goes, then asks the person to type "delete". `POST /api/v1/account/delete` and the operator's `scripts/delete-account.ts --email … --dry-run|--commit` share one function, `src/account/delete-account.ts`, which runs in one transaction:
+
+- **Places this person alone runs** go whole through the operator's tree removal: their family class, a school or class with no other admin, their own demos.
+- **Shared places stay.** The person's staff roles end as an admin's "Remove" would end them, and their row there becomes a nameless tombstone, so the school's grades and history still add up.
+- **A family's second parent** keeps her own account and practice when the account holder deletes: the children, consent and billing were the holder's, so the family goes and her place in it with it. When she deletes her own account, she only leaves the family, and it can invite another second parent.
+- **Learners** go through the learning-data deletion, with every answer, help event, workbook and rollup.
+- **What stays:** payment records for the financial retention period under the account's opaque id (a learner they name becomes a "Deleted learner" reference), completed consent evidence until its own purge date, and one row in `amp_account_deletions`: the account id, when, and counts per table.
+- **A renewing card plan** is cancelled in billing first. The screen offers "Manage plan" instead of the delete button until the plan no longer renews; a paid school license with no other admin asks for another admin first.
+
+Every table has a stated handling in `ACCOUNT_TABLES`; `tests/delete-account.integration.ts` checks that list against the schema and that nothing else mentions the deleted ids. The same address signs up afterwards as a new person.
+
 ## Existing families
 
 Every family from before is converted automatically, one transaction per family, adding only roster rows:

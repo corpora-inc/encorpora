@@ -699,6 +699,30 @@ export function FamilyCenter({
           </div>
         )}
         {section === "security" && accountsEnabled && <AccountSecurity />}
+        {section === "security" && (
+          <ul
+            className={`${pages.list} ${accountsEnabled ? pages.continues : ""}`}
+            aria-label="Your account"
+          >
+            <li className={pages.linkItem}>
+              <Link
+                to="/family/security/delete"
+                className={pages.linkRow}
+                data-delete-account-entry
+              >
+                <span className={pages.rowText}>
+                  <span className={`${pages.rowTitle} ${pages.danger}`}>
+                    Delete my account
+                  </span>
+                  <span className={pages.rowMeta}>
+                    Your account, learners and practice, for good
+                  </span>
+                </span>
+                <Chevron />
+              </Link>
+            </li>
+          </ul>
+        )}
         {notice && (
           <p className="family-notice" role="status">
             {notice}
