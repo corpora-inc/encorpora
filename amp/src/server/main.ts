@@ -34,6 +34,7 @@ import {
 import { registerFamilyRoutes } from "../family/routes.js";
 import { randomBytes } from "node:crypto";
 import { startDemoWarmer } from "../schools/demo/shared.js";
+import { shippedTermsProblem } from "../schools/demo/snapshot.js";
 import { registerSchoolRoutes } from "../schools/routes.js";
 import { schoolClock } from "../schools/clock.js";
 import { schoolOidcProviders } from "../schools/oidc.js";
@@ -281,9 +282,18 @@ app.addHook("onClose", async () => stopWatching());
 // Warm before listening: readiness passes only once the first parent is fast.
 await warmServer(app, repository.pool);
 await app.listen({ host, port: Number(process.env.AMP_PORT ?? 4311) });
-// Each demo zone's shared school is written ahead of its day, so a visitor
-// never waits for it (src/schools/demo/shared.ts). Outside production it is
-// off unless AMP_DEMO_WARM=on; there the first demo request writes it.
+// The demo's terms ship in the image; a pod never simulates one
+// (src/schools/demo/snapshot.ts). Missing terms are a build bug: say so now.
+const demoTermsProblem = shippedTermsProblem();
+if (demoTermsProblem)
+  app.log.error(
+    { problem: demoTermsProblem },
+    "demo terms are missing from this image; demos answer demo_preparing",
+  );
+// Each demo zone's shared school is written ahead of its day from those
+// terms, so a visitor never waits for it (src/schools/demo/shared.ts): a
+// bulk write once a night per zone. Outside production it is off unless
+// AMP_DEMO_WARM=on; there the first demo request writes it.
 const demoWarm = process.env.AMP_DEMO_WARM;
 if (
   demoWarm === "on" ||

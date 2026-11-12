@@ -157,6 +157,12 @@ The API never downloads the model. Without the model or the vectors it answers l
 
 Run `npm run build:search` locally (it fetches the model the first time), then `npm run search:relevance` to score the fixed relevance set.
 
+### Demo school terms
+
+The shared demo school ([schools](schools.md#demo-places)) is written each night from one simulated term per weekday. Simulating a weekday's term is the production planner and estimator over about 60,000 answers: 700 to 900 CPU seconds, with several hundred megabytes for each thread that loads the engine (6.6 GB peak with eight threads). That is too much for an API pod (it was an out-of-memory kill) and for the image build: the seven weekdays are about 100 CPU minutes, at least 50 minutes of a two-CPU builder on every version change. So the terms are made on a developer machine (`npm run demo:terms`) and checked in under `src/schools/demo/terms/`: about 14 MB for the seven weekdays, in the API image as part of `src`. The build computes nothing for them, and the server bundle contains no simulation (`tests/demo-terms.test.ts`).
+
+A pod reads a weekday's term only to write that day's school, in one transaction, twelve students at a time, and holds nothing between writes. Measured on Linux with the heap limit Node sets under a 768 MiB limit, the write adds about 130 MiB at peak to an idle API process (decompressed text about 38 MB, the rest batch work); the warmer's first run waits a minute after boot, so it never adds to the boot's own peak. Reading the manifest and checking every file at boot takes about 17 ms and 20 MB. `AMP_DEMO_WARM` controls only that nightly write: on by default in production, `off` to stop it (the first demo request then writes the school). A deployment that set `AMP_DEMO_WARM=off` to keep pods from simulating terms under an earlier release should remove it once this release is live. If an image lacks a current term, the API logs an error at boot and on each demo request, and the demo answers `503 demo_preparing`; it never computes one.
+
 ### Workbook render service
 
 Workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. Rendered PDFs are not stored anywhere: each download renders afresh (about 0.4–1 s) and streams to the parent. Only the workbook spec, which is practice data, is kept.

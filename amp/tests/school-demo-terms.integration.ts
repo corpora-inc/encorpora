@@ -11,23 +11,17 @@ import {
   zonedInstant,
 } from "../src/schools/demo/roster.js";
 import { shiftTerms } from "../src/schools/demo/shift.js";
-import { simulateJobs } from "../src/schools/demo/simulate-pool.js";
-import {
-  demoTerms,
-  forgetDemoTerms,
-  snapshotKey,
-  variantJobs,
-} from "../src/schools/demo/snapshot.js";
+import { demoTerms, variantJobs } from "../src/schools/demo/snapshot.js";
 import { sumWeeks } from "../src/schools/demo/term.js";
 import { generateHandle } from "../src/schools/repository.js";
 
 /* The shared demo school's term is static: computed once a version for each
-   weekday at a fixed anchor week, and moved by whole weeks to the day it is
-   written for. Computed here, read back by another pod, or moved to any day,
-   it is the same term; and the bulk writer leaves the same rows the
-   per-answer triggers do. Every name is made up. */
+   weekday at a fixed anchor week and shipped with the image
+   (`tests/demo-terms.test.ts`), and moved by whole weeks to the day it is
+   written for. Moved to any day, it is the same term; and the bulk writer
+   leaves the same rows the per-answer triggers do. Every name is made up. */
 test(
-  "Demo terms: static, cached or not, moved by whole weeks, bulk or one at a time",
+  "Demo terms: static, moved by whole weeks, bulk or one at a time",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -69,32 +63,11 @@ test(
       }
     }
 
-    // A Wednesday's term for the hero class.
+    // A Wednesday's term for the hero class, as the image ships it.
     const weekday = 2;
     const jobs = variantJobs("class", weekday);
-    const key = snapshotKey("class", weekday, jobs);
-    assert.ok(key.startsWith("class:v"), key);
-    const uncached = await simulateJobs(jobs);
-    const computed = await demoTerms(db, "class", weekday);
-    const stored = (
-      await db.query("SELECT built_at FROM amp_demo_snapshots WHERE key=$1", [
-        key,
-      ])
-    ).rows[0];
-    assert.ok(stored?.built_at, "the term is shared with other pods");
-    forgetDemoTerms();
-    const read = await demoTerms(db, "class", weekday);
-    assert.deepEqual(
-      (
-        await db.query("SELECT built_at FROM amp_demo_snapshots WHERE key=$1", [
-          key,
-        ])
-      ).rows[0].built_at,
-      stored.built_at,
-      "a pod reads the term instead of computing it again",
-    );
-    assert.deepEqual(computed, uncached, "computed ahead = computed now");
-    assert.deepEqual(read, uncached, "read back = computed now");
+    const read = await demoTerms("class", weekday);
+    assert.equal(read.length, jobs.length);
 
     // Two Wednesdays a year apart, and in two zones: the same answers and
     // levels, with only the dates moved by whole weeks, each at the same
@@ -263,7 +236,7 @@ test(
     }
     assert.equal(
       answers,
-      uncached.reduce((sum, term) => sum + term.answers.length, 0),
+      read.reduce((sum, term) => sum + term.answers.length, 0),
     );
   },
 );

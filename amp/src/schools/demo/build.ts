@@ -37,7 +37,7 @@ import {
 } from "./roster.js";
 import { shiftTerms } from "./shift.js";
 import { demoTerms } from "./snapshot.js";
-import type { Simulation } from "./simulate.js";
+import type { TermSource } from "./snapshot.js";
 import { seedCalendar, seedStaffEvents, sumWeeks } from "./term.js";
 
 export { demoKinds, type DemoKind } from "./roster.js";
@@ -105,9 +105,14 @@ export type SharedPlace = {
   classIds: string[];
 };
 
+/** Students written together. A smaller batch does not lower the peak
+ * (measured), and a larger one holds more rows at once. */
+const WRITE_BATCH = 12;
+
 /** Writes a zone's shared school for `day` (today in `timezone`) from its
- * terms, already moved to that day, one per student in roster order. Nobody
- * teaches the hero class until visitors join it. */
+ * terms, already moved to that day, one per student in roster order (an
+ * array, or a shipped school read a slice at a time). Nobody teaches the
+ * hero class until visitors join it. */
 export async function buildSharedSchool(
   client: PoolClient,
   input: {
@@ -116,7 +121,7 @@ export async function buildSharedSchool(
     /** "class" is the hero class alone, for a fixture (`buildFixtureClass`). */
     kind?: DemoKind;
   },
-  terms: readonly Simulation[],
+  terms: TermSource,
 ): Promise<SharedPlace> {
   const { timezone } = input;
   const kind = input.kind ?? "school";
@@ -336,11 +341,14 @@ export async function buildSharedSchool(
   await client.query("SET LOCAL amp.rollup_weeks='deferred'");
   if (terms.length !== people.length)
     throw new Error("The demo's terms are for another roster");
-  await writeClassHistory(
-    client,
-    people.map((person) => person.learnerId),
-    terms,
-  );
+  // A few students at a time: a pod holds only their terms and rows, never
+  // the whole school's (`snapshot.ts`).
+  for (let from = 0; from < people.length; from += WRITE_BATCH)
+    await writeClassHistory(
+      client,
+      people.slice(from, from + WRITE_BATCH).map((person) => person.learnerId),
+      terms.slice(from, from + WRITE_BATCH),
+    );
   await sumWeeks(client, "SELECT unnest($1::text[])", [
     people.map((person) => person.learnerId),
   ]);
@@ -390,7 +398,7 @@ export async function buildFixtureClass(
 ) {
   const day = sharedDay(input.now ?? Date.now(), input.timezone);
   const terms = shiftTerms(
-    await demoTerms(pool, "class", day.weekday),
+    await demoTerms("class", day.weekday),
     day.shiftDays,
     day.timezone,
   );

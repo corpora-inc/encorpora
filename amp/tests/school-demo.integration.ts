@@ -83,7 +83,7 @@ test(
     const warmed = performance.now();
     await warmDemoSchools(db, { timezones: [ZONE], ahead: 0, learning });
     console.log(
-      `  term computed and school written in ${Math.round(performance.now() - warmed)} ms`,
+      `  school written from the shipped term in ${Math.round(performance.now() - warmed)} ms`,
     );
     const today = (await currentSchool(db, ZONE))!;
     assert.ok(today, "the zone has a school");
