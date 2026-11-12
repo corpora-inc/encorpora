@@ -1,0 +1,2620 @@
+{
+  "id": "composite-shape-name--sc",
+  "title": "Shapes made from shapes",
+  "teaches": [
+    "composite-which-pieces",
+    "composite-which-solids",
+    "compose-flat-shape"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2.75,
+          -2.75,
+          2.75,
+          2.75
+        ],
+        "points": {
+          "blueP0": [
+            -2.4,
+            -2.4
+          ],
+          "blueP1": [
+            -0.3999999999999999,
+            -2.4
+          ],
+          "blueP2": [
+            -2.4,
+            -0.3999999999999999
+          ],
+          "goldP0": [
+            2.4,
+            0.3999999999999999
+          ],
+          "goldP1": [
+            2.4,
+            2.4
+          ],
+          "goldP2": [
+            0.3999999999999999,
+            2.4
+          ],
+          "pivot": [
+            -0.5,
+            0.5
+          ],
+          "seamA": [
+            -1,
+            1
+          ],
+          "seamB": [
+            1,
+            -1
+          ],
+          "side0A": [
+            -1,
+            -1
+          ],
+          "side0B": [
+            1,
+            -1
+          ],
+          "side1A": [
+            1,
+            -1
+          ],
+          "side1B": [
+            1,
+            1
+          ],
+          "side2A": [
+            1,
+            1
+          ],
+          "side2B": [
+            -1,
+            1
+          ],
+          "side3A": [
+            -1,
+            1
+          ],
+          "side3B": [
+            -1,
+            -1
+          ],
+          "triangleEdgeP0": [
+            -2,
+            -1
+          ],
+          "triangleEdgeP1": [
+            2,
+            -1
+          ],
+          "triangleEdgeP2": [
+            0,
+            1
+          ],
+          "baseP0": [
+            -2,
+            -2
+          ],
+          "baseP1": [
+            2,
+            -2
+          ],
+          "baseP2": [
+            2,
+            0
+          ],
+          "baseP3": [
+            -2,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "base",
+            "poly": [
+              "baseP0",
+              "baseP1",
+              "baseP2",
+              "baseP3"
+            ],
+            "fill": "accent-fill",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "blue",
+            "poly": [
+              "blueP0",
+              "blueP1",
+              "blueP2"
+            ],
+            "fill": "blue-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true,
+            "group": "made"
+          },
+          {
+            "id": "gold",
+            "poly": [
+              "goldP0",
+              "goldP1",
+              "goldP2"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true,
+            "group": "made"
+          },
+          {
+            "id": "seam",
+            "seg": [
+              "seamA",
+              "seamB"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "side0",
+            "seg": [
+              "side0A",
+              "side0B"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "side1",
+            "seg": [
+              "side1A",
+              "side1B"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "side2",
+            "seg": [
+              "side2A",
+              "side2B"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "side3",
+            "seg": [
+              "side3A",
+              "side3B"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "triangleEdge",
+            "poly": [
+              "triangleEdgeP0",
+              "triangleEdgeP1",
+              "triangleEdgeP2"
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Put shapes together to make a new shape. These two triangles slide together, long side to long side.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Put shapes together.",
+              "at": "Put"
+            },
+            {
+              "do": "slide",
+              "target": "blue",
+              "by": [
+                1.4,
+                1.4
+              ],
+              "at": "slide",
+              "dur": 1.6
+            },
+            {
+              "do": "slide",
+              "target": "gold",
+              "by": [
+                -1.4,
+                -1.4
+              ],
+              "at": "slide",
+              "dur": 1.6
+            },
+            {
+              "do": "text",
+              "text": "Long side to long side.",
+              "at": "long"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Their sides touch all the way along. No gaps, and no overlaps.",
+          "do": [
+            {
+              "do": "text",
+              "text": "No gaps. No overlaps.",
+              "at": "No"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The line inside is a seam, where the pieces meet. Name the new shape by its outside edge.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "seam",
+              "meaning": "Where pieces meet."
+            },
+            {
+              "do": "show",
+              "target": "seam",
+              "at": "seam"
+            },
+            {
+              "do": "hide",
+              "target": "seam",
+              "at": "Name"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four equal sides. It's a square.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "side0",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "side1",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "side2",
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "side3",
+              "at": "four"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{square}",
+              "at": "square"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now turn one triangle as the other slides over, so the short sides meet.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Same pieces, new shape."
+            },
+            {
+              "do": "hide",
+              "target": [
+                "side0",
+                "side1",
+                "side2",
+                "side3"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "slide",
+              "target": "blue",
+              "by": [
+                1,
+                0
+              ],
+              "at": "turn",
+              "dur": 1.8
+            },
+            {
+              "do": "turn",
+              "target": "gold",
+              "about": "pivot",
+              "deg": -90,
+              "at": "turn",
+              "dur": 1.8
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "learner",
+          "say": "Three sides around the outside. We made a triangle.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "triangleEdge",
+              "at": "Three"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{triangle}",
+              "at": "triangle"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Lift the whole triangle as one piece. A rectangle goes underneath, and the triangle settles on top.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "A made shape can be a piece."
+            },
+            {
+              "do": "hide",
+              "target": "triangleEdge",
+              "at": "Lift"
+            },
+            {
+              "do": "slide",
+              "target": "made",
+              "by": [
+                0,
+                1.4
+              ],
+              "at": "Lift",
+              "dur": 1.2
+            },
+            {
+              "do": "show",
+              "target": "base",
+              "at": "rectangle"
+            },
+            {
+              "do": "slide",
+              "target": "made",
+              "by": [
+                0,
+                -0.4
+              ],
+              "at": "settles",
+              "dur": 1.0
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.5,
+          -3.5,
+          3.5,
+          3.5
+        ],
+        "points": {
+          "gridTop": [
+            -2,
+            1
+          ],
+          "borderP0": [
+            -2,
+            -1
+          ],
+          "borderP1": [
+            2,
+            -1
+          ],
+          "borderP2": [
+            2,
+            1
+          ],
+          "borderP3": [
+            -2,
+            1
+          ],
+          "smallBlueP0": [
+            -2,
+            -2.3
+          ],
+          "smallBlueP1": [
+            -1,
+            -2.3
+          ],
+          "smallBlueP2": [
+            -1,
+            -1.2999999999999998
+          ],
+          "smallBlueP3": [
+            -2,
+            -1.2999999999999998
+          ],
+          "smallGoldP0": [
+            -1,
+            1.3
+          ],
+          "smallGoldP1": [
+            0,
+            1.3
+          ],
+          "smallGoldP2": [
+            0,
+            2.3
+          ],
+          "smallGoldP3": [
+            -1,
+            2.3
+          ],
+          "gapP0": [
+            0,
+            1
+          ],
+          "gapP1": [
+            2,
+            1
+          ],
+          "gapP2": [
+            2,
+            -1
+          ],
+          "gapP3": [
+            -2,
+            -1
+          ],
+          "gapP4": [
+            -2,
+            0
+          ],
+          "gapP5": [
+            0,
+            0
+          ],
+          "bigBlueP0": [
+            -2,
+            -3.3
+          ],
+          "bigBlueP1": [
+            0,
+            -3.3
+          ],
+          "bigBlueP2": [
+            0,
+            -1.2999999999999998
+          ],
+          "bigBlueP3": [
+            -2,
+            -1.2999999999999998
+          ],
+          "bigGoldP0": [
+            0,
+            1.3
+          ],
+          "bigGoldP1": [
+            2,
+            1.3
+          ],
+          "bigGoldP2": [
+            2,
+            3.3
+          ],
+          "bigGoldP3": [
+            0,
+            3.3
+          ],
+          "bigBlueVA": [
+            -1,
+            -3.3
+          ],
+          "bigBlueVB": [
+            -1,
+            -1.3
+          ],
+          "bigBlueHA": [
+            -2,
+            -2.3
+          ],
+          "bigBlueHB": [
+            0,
+            -2.3
+          ],
+          "bigGoldVA": [
+            1,
+            1.3
+          ],
+          "bigGoldVB": [
+            1,
+            3.3
+          ],
+          "bigGoldHA": [
+            0,
+            2.3
+          ],
+          "bigGoldHB": [
+            2,
+            2.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              4,
+              2
+            ],
+            "at": "gridTop",
+            "size": 1,
+            "ink": "muted",
+            "w": 1.5,
+            "start": true,
+            "group": "target"
+          },
+          {
+            "id": "border",
+            "poly": [
+              "borderP0",
+              "borderP1",
+              "borderP2",
+              "borderP3"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 3
+          },
+          {
+            "id": "smallBlue",
+            "poly": [
+              "smallBlueP0",
+              "smallBlueP1",
+              "smallBlueP2",
+              "smallBlueP3"
+            ],
+            "fill": "blue-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "smallGold",
+            "poly": [
+              "smallGoldP0",
+              "smallGoldP1",
+              "smallGoldP2",
+              "smallGoldP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "gap",
+            "poly": [
+              "gapP0",
+              "gapP1",
+              "gapP2",
+              "gapP3",
+              "gapP4",
+              "gapP5"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "bigBlue",
+            "poly": [
+              "bigBlueP0",
+              "bigBlueP1",
+              "bigBlueP2",
+              "bigBlueP3"
+            ],
+            "fill": "blue-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "group": "bigBlueGroup"
+          },
+          {
+            "id": "bigGold",
+            "poly": [
+              "bigGoldP0",
+              "bigGoldP1",
+              "bigGoldP2",
+              "bigGoldP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "group": "bigGoldGroup"
+          },
+          {
+            "id": "bigBlueV",
+            "seg": [
+              "bigBlueVA",
+              "bigBlueVB"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "group": "bigBlueGroup"
+          },
+          {
+            "id": "bigBlueH",
+            "seg": [
+              "bigBlueHA",
+              "bigBlueHB"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "group": "bigBlueGroup"
+          },
+          {
+            "id": "bigGoldV",
+            "seg": [
+              "bigGoldVA",
+              "bigGoldVB"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "group": "bigGoldGroup"
+          },
+          {
+            "id": "bigGoldH",
+            "seg": [
+              "bigGoldHA",
+              "bigGoldHB"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "group": "bigGoldGroup"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which pieces can be put together to make this shape? Use every piece in the set.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which pieces can be put together to make this shape? Use every piece in the set."
+            },
+            {
+              "do": "draw",
+              "target": "border",
+              "at": "shape"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I'll use these two little squares to fill the rectangle.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "smallBlue",
+              "by": [
+                0,
+                2.3
+              ],
+              "at": "two",
+              "dur": 1.1
+            },
+            {
+              "do": "slide",
+              "target": "smallGold",
+              "by": [
+                0,
+                -1.3
+              ],
+              "at": "squares",
+              "dur": 1.0
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "They leave a gap: empty space inside the outline.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "gap",
+              "at": "gap"
+            },
+            {
+              "do": "text",
+              "text": "A gap is empty space.",
+              "at": "gap"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I need bigger squares. Each one should be two grid spaces wide.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Match the size to the grid."
+            },
+            {
+              "do": "hide",
+              "target": [
+                "smallBlue",
+                "smallGold",
+                "gap"
+              ],
+              "at": "bigger"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bigBlueGroup",
+                "bigGoldGroup"
+              ],
+              "at": "bigger"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide them in. Every piece stays inside the outline.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "bigBlueGroup",
+              "by": [
+                0,
+                2.3
+              ],
+              "at": "Slide",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": "bigGoldGroup",
+              "by": [
+                0,
+                -2.3
+              ],
+              "at": "in",
+              "dur": 1.2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Both squares are used, and they cover the whole rectangle.",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{two big squares}",
+              "at": "cover"
+            }
+          ],
+          "pause": 0.6
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.6,
+          -2.35,
+          2.6,
+          2.85
+        ],
+        "points": {
+          "cylinderSideP0": [
+            -1,
+            0.14999999999999997
+          ],
+          "cylinderSideP1": [
+            -1,
+            -1.95
+          ],
+          "cylinderSideP2": [
+            -0.9914448613738105,
+            -1.9891578576660154
+          ],
+          "cylinderSideP3": [
+            -0.9659258262890683,
+            -2.0276457135307564
+          ],
+          "cylinderSideP4": [
+            -0.9238795325112868,
+            -2.064805029709527
+          ],
+          "cylinderSideP5": [
+            -0.8660254037844388,
+            -2.1
+          ],
+          "cylinderSideP6": [
+            -0.7933533402912352,
+            -2.1326284287026165
+          ],
+          "cylinderSideP7": [
+            -0.7071067811865477,
+            -2.1621320343559645
+          ],
+          "cylinderSideP8": [
+            -0.6087614290087209,
+            -2.1880060020873704
+          ],
+          "cylinderSideP9": [
+            -0.5000000000000004,
+            -2.2098076211353317
+          ],
+          "cylinderSideP10": [
+            -0.38268343236509034,
+            -2.227163859753386
+          ],
+          "cylinderSideP11": [
+            -0.25881904510252063,
+            -2.2397777478867207
+          ],
+          "cylinderSideP12": [
+            -0.13052619222005163,
+            -2.2474334584121434
+          ],
+          "cylinderSideP13": [
+            -1.8369701987210297e-16,
+            -2.25
+          ],
+          "cylinderSideP14": [
+            0.13052619222005127,
+            -2.2474334584121434
+          ],
+          "cylinderSideP15": [
+            0.2588190451025203,
+            -2.2397777478867207
+          ],
+          "cylinderSideP16": [
+            0.38268343236508917,
+            -2.2271638597533863
+          ],
+          "cylinderSideP17": [
+            0.49999999999999933,
+            -2.2098076211353317
+          ],
+          "cylinderSideP18": [
+            0.6087614290087205,
+            -2.188006002087371
+          ],
+          "cylinderSideP19": [
+            0.7071067811865474,
+            -2.1621320343559645
+          ],
+          "cylinderSideP20": [
+            0.7933533402912349,
+            -2.1326284287026165
+          ],
+          "cylinderSideP21": [
+            0.8660254037844388,
+            -2.1
+          ],
+          "cylinderSideP22": [
+            0.9238795325112865,
+            -2.064805029709527
+          ],
+          "cylinderSideP23": [
+            0.9659258262890683,
+            -2.0276457135307564
+          ],
+          "cylinderSideP24": [
+            0.9914448613738103,
+            -1.9891578576660158
+          ],
+          "cylinderSideP25": [
+            1,
+            -1.95
+          ],
+          "cylinderSideP26": [
+            1,
+            0.14999999999999997
+          ],
+          "cylinderTopP0": [
+            1,
+            0.14999999999999997
+          ],
+          "cylinderTopP1": [
+            0.9914448613738104,
+            0.1891578576660154
+          ],
+          "cylinderTopP2": [
+            0.9659258262890683,
+            0.2276457135307562
+          ],
+          "cylinderTopP3": [
+            0.9238795325112867,
+            0.26480502970952685
+          ],
+          "cylinderTopP4": [
+            0.8660254037844387,
+            0.3
+          ],
+          "cylinderTopP5": [
+            0.7933533402912352,
+            0.33262842870261616
+          ],
+          "cylinderTopP6": [
+            0.7071067811865476,
+            0.36213203435596414
+          ],
+          "cylinderTopP7": [
+            0.6087614290087207,
+            0.3880060020873705
+          ],
+          "cylinderTopP8": [
+            0.5000000000000001,
+            0.4098076211353316
+          ],
+          "cylinderTopP9": [
+            0.38268343236508984,
+            0.42716385975338594
+          ],
+          "cylinderTopP10": [
+            0.25881904510252074,
+            0.43977774788672047
+          ],
+          "cylinderTopP11": [
+            0.1305261922200517,
+            0.44743345841214305
+          ],
+          "cylinderTopP12": [
+            6.123233995736766e-17,
+            0.4499999999999999
+          ],
+          "cylinderTopP13": [
+            -0.1305261922200516,
+            0.44743345841214305
+          ],
+          "cylinderTopP14": [
+            -0.25881904510252063,
+            0.43977774788672047
+          ],
+          "cylinderTopP15": [
+            -0.3826834323650895,
+            0.42716385975338594
+          ],
+          "cylinderTopP16": [
+            -0.4999999999999998,
+            0.4098076211353316
+          ],
+          "cylinderTopP17": [
+            -0.6087614290087207,
+            0.3880060020873705
+          ],
+          "cylinderTopP18": [
+            -0.7071067811865475,
+            0.36213203435596425
+          ],
+          "cylinderTopP19": [
+            -0.793353340291235,
+            0.33262842870261616
+          ],
+          "cylinderTopP20": [
+            -0.8660254037844387,
+            0.3
+          ],
+          "cylinderTopP21": [
+            -0.9238795325112867,
+            0.26480502970952696
+          ],
+          "cylinderTopP22": [
+            -0.9659258262890682,
+            0.2276457135307563
+          ],
+          "cylinderTopP23": [
+            -0.9914448613738104,
+            0.1891578576660155
+          ],
+          "cylinderTopP24": [
+            -1,
+            0.14999999999999997
+          ],
+          "cylinderTopP25": [
+            -0.9914448613738104,
+            0.11084214233398443
+          ],
+          "cylinderTopP26": [
+            -0.9659258262890683,
+            0.07235428646924374
+          ],
+          "cylinderTopP27": [
+            -0.9238795325112868,
+            0.03519497029047308
+          ],
+          "cylinderTopP28": [
+            -0.8660254037844388,
+            5.551115123125783e-17
+          ],
+          "cylinderTopP29": [
+            -0.7933533402912352,
+            -0.03262842870261623
+          ],
+          "cylinderTopP30": [
+            -0.7071067811865479,
+            -0.062132034355964205
+          ],
+          "cylinderTopP31": [
+            -0.6087614290087209,
+            -0.08800600208737047
+          ],
+          "cylinderTopP32": [
+            -0.5000000000000004,
+            -0.10980762113533155
+          ],
+          "cylinderTopP33": [
+            -0.3826834323650895,
+            -0.12716385975338607
+          ],
+          "cylinderTopP34": [
+            -0.25881904510252063,
+            -0.13977774788672054
+          ],
+          "cylinderTopP35": [
+            -0.13052619222005163,
+            -0.14743345841214311
+          ],
+          "cylinderTopP36": [
+            -1.8369701987210297e-16,
+            -0.15000000000000002
+          ],
+          "cylinderTopP37": [
+            0.13052619222005127,
+            -0.14743345841214317
+          ],
+          "cylinderTopP38": [
+            0.2588190451025203,
+            -0.13977774788672054
+          ],
+          "cylinderTopP39": [
+            0.38268343236508917,
+            -0.12716385975338612
+          ],
+          "cylinderTopP40": [
+            0.5000000000000001,
+            -0.1098076211353316
+          ],
+          "cylinderTopP41": [
+            0.6087614290087199,
+            -0.08800600208737075
+          ],
+          "cylinderTopP42": [
+            0.7071067811865474,
+            -0.062132034355964316
+          ],
+          "cylinderTopP43": [
+            0.7933533402912349,
+            -0.032628428702616286
+          ],
+          "cylinderTopP44": [
+            0.8660254037844384,
+            -1.6653345369377348e-16
+          ],
+          "cylinderTopP45": [
+            0.9238795325112868,
+            0.03519497029047308
+          ],
+          "cylinderTopP46": [
+            0.9659258262890681,
+            0.07235428646924352
+          ],
+          "cylinderTopP47": [
+            0.9914448613738104,
+            0.11084214233398443
+          ],
+          "coneSideP0": [
+            0,
+            2.75
+          ],
+          "coneSideP1": [
+            1,
+            1.05
+          ],
+          "coneSideP2": [
+            0.9914448613738104,
+            1.0108421423339846
+          ],
+          "coneSideP3": [
+            0.9659258262890683,
+            0.9723542864692438
+          ],
+          "coneSideP4": [
+            0.9238795325112867,
+            0.9351949702904732
+          ],
+          "coneSideP5": [
+            0.8660254037844387,
+            0.9000000000000001
+          ],
+          "coneSideP6": [
+            0.7933533402912352,
+            0.867371571297384
+          ],
+          "coneSideP7": [
+            0.7071067811865476,
+            0.8378679656440358
+          ],
+          "coneSideP8": [
+            0.6087614290087207,
+            0.8119939979126296
+          ],
+          "coneSideP9": [
+            0.5000000000000001,
+            0.7901923788646685
+          ],
+          "coneSideP10": [
+            0.38268343236508984,
+            0.772836140246614
+          ],
+          "coneSideP11": [
+            0.25881904510252074,
+            0.7602222521132795
+          ],
+          "coneSideP12": [
+            0.1305261922200517,
+            0.7525665415878571
+          ],
+          "coneSideP13": [
+            6.123233995736766e-17,
+            0.75
+          ],
+          "coneSideP14": [
+            -0.1305261922200516,
+            0.7525665415878571
+          ],
+          "coneSideP15": [
+            -0.25881904510252063,
+            0.7602222521132795
+          ],
+          "coneSideP16": [
+            -0.3826834323650895,
+            0.772836140246614
+          ],
+          "coneSideP17": [
+            -0.4999999999999998,
+            0.7901923788646683
+          ],
+          "coneSideP18": [
+            -0.6087614290087207,
+            0.8119939979126296
+          ],
+          "coneSideP19": [
+            -0.7071067811865475,
+            0.8378679656440358
+          ],
+          "coneSideP20": [
+            -0.793353340291235,
+            0.8673715712973837
+          ],
+          "coneSideP21": [
+            -0.8660254037844387,
+            0.9000000000000001
+          ],
+          "coneSideP22": [
+            -0.9238795325112867,
+            0.9351949702904732
+          ],
+          "coneSideP23": [
+            -0.9659258262890682,
+            0.9723542864692438
+          ],
+          "coneSideP24": [
+            -0.9914448613738104,
+            1.0108421423339844
+          ],
+          "coneSideP25": [
+            -1,
+            1.05
+          ],
+          "coneBaseP0": [
+            1,
+            1.55
+          ],
+          "coneBaseP1": [
+            0.9914448613738104,
+            1.5891578576660155
+          ],
+          "coneBaseP2": [
+            0.9659258262890683,
+            1.6276457135307563
+          ],
+          "coneBaseP3": [
+            0.9238795325112867,
+            1.664805029709527
+          ],
+          "coneBaseP4": [
+            0.8660254037844387,
+            1.7
+          ],
+          "coneBaseP5": [
+            0.7933533402912352,
+            1.7326284287026161
+          ],
+          "coneBaseP6": [
+            0.7071067811865476,
+            1.7621320343559643
+          ],
+          "coneBaseP7": [
+            0.6087614290087207,
+            1.7880060020873705
+          ],
+          "coneBaseP8": [
+            0.5000000000000001,
+            1.8098076211353316
+          ],
+          "coneBaseP9": [
+            0.38268343236508984,
+            1.8271638597533861
+          ],
+          "coneBaseP10": [
+            0.25881904510252074,
+            1.8397777478867205
+          ],
+          "coneBaseP11": [
+            0.1305261922200517,
+            1.847433458412143
+          ],
+          "coneBaseP12": [
+            6.123233995736766e-17,
+            1.85
+          ],
+          "coneBaseP13": [
+            -0.1305261922200516,
+            1.847433458412143
+          ],
+          "coneBaseP14": [
+            -0.25881904510252063,
+            1.8397777478867205
+          ],
+          "coneBaseP15": [
+            -0.3826834323650895,
+            1.8271638597533861
+          ],
+          "coneBaseP16": [
+            -0.4999999999999998,
+            1.8098076211353318
+          ],
+          "coneBaseP17": [
+            -0.6087614290087207,
+            1.7880060020873705
+          ],
+          "coneBaseP18": [
+            -0.7071067811865475,
+            1.7621320343559643
+          ],
+          "coneBaseP19": [
+            -0.793353340291235,
+            1.7326284287026164
+          ],
+          "coneBaseP20": [
+            -0.8660254037844387,
+            1.7
+          ],
+          "coneBaseP21": [
+            -0.9238795325112867,
+            1.664805029709527
+          ],
+          "coneBaseP22": [
+            -0.9659258262890682,
+            1.6276457135307563
+          ],
+          "coneBaseP23": [
+            -0.9914448613738104,
+            1.5891578576660157
+          ],
+          "coneBaseP24": [
+            -1,
+            1.55
+          ],
+          "coneBaseP25": [
+            -0.9914448613738104,
+            1.5108421423339846
+          ],
+          "coneBaseP26": [
+            -0.9659258262890683,
+            1.4723542864692438
+          ],
+          "coneBaseP27": [
+            -0.9238795325112868,
+            1.4351949702904732
+          ],
+          "coneBaseP28": [
+            -0.8660254037844388,
+            1.4000000000000001
+          ],
+          "coneBaseP29": [
+            -0.7933533402912352,
+            1.367371571297384
+          ],
+          "coneBaseP30": [
+            -0.7071067811865479,
+            1.337867965644036
+          ],
+          "coneBaseP31": [
+            -0.6087614290087209,
+            1.3119939979126296
+          ],
+          "coneBaseP32": [
+            -0.5000000000000004,
+            1.2901923788646685
+          ],
+          "coneBaseP33": [
+            -0.3826834323650895,
+            1.272836140246614
+          ],
+          "coneBaseP34": [
+            -0.25881904510252063,
+            1.2602222521132795
+          ],
+          "coneBaseP35": [
+            -0.13052619222005163,
+            1.252566541587857
+          ],
+          "coneBaseP36": [
+            -1.8369701987210297e-16,
+            1.25
+          ],
+          "coneBaseP37": [
+            0.13052619222005127,
+            1.2525665415878569
+          ],
+          "coneBaseP38": [
+            0.2588190451025203,
+            1.2602222521132795
+          ],
+          "coneBaseP39": [
+            0.38268343236508917,
+            1.272836140246614
+          ],
+          "coneBaseP40": [
+            0.5000000000000001,
+            1.2901923788646685
+          ],
+          "coneBaseP41": [
+            0.6087614290087199,
+            1.3119939979126294
+          ],
+          "coneBaseP42": [
+            0.7071067811865474,
+            1.3378679656440358
+          ],
+          "coneBaseP43": [
+            0.7933533402912349,
+            1.3673715712973837
+          ],
+          "coneBaseP44": [
+            0.8660254037844384,
+            1.4
+          ],
+          "coneBaseP45": [
+            0.9238795325112868,
+            1.4351949702904732
+          ],
+          "coneBaseP46": [
+            0.9659258262890681,
+            1.4723542864692436
+          ],
+          "coneBaseP47": [
+            0.9914448613738104,
+            1.5108421423339846
+          ],
+          "joinP0": [
+            1,
+            0.6
+          ],
+          "joinP1": [
+            0.9659258262890683,
+            0.5223542864692438
+          ],
+          "joinP2": [
+            0.8660254037844387,
+            0.45
+          ],
+          "joinP3": [
+            0.7071067811865476,
+            0.38786796564403575
+          ],
+          "joinP4": [
+            0.5000000000000001,
+            0.3401923788646684
+          ],
+          "joinP5": [
+            0.25881904510252074,
+            0.3102222521132795
+          ],
+          "joinP6": [
+            6.123233995736766e-17,
+            0.3
+          ],
+          "joinP7": [
+            -0.25881904510252063,
+            0.3102222521132795
+          ],
+          "joinP8": [
+            -0.4999999999999998,
+            0.34019237886466835
+          ],
+          "joinP9": [
+            -0.7071067811865475,
+            0.3878679656440357
+          ],
+          "joinP10": [
+            -0.8660254037844387,
+            0.45
+          ],
+          "joinP11": [
+            -0.9659258262890682,
+            0.5223542864692436
+          ],
+          "joinP12": [
+            -1,
+            0.6
+          ],
+          "joinP13": [
+            -0.1305261922200516,
+            0.8974334584121431
+          ],
+          "joinP14": [
+            -0.25881904510252063,
+            0.8897777478867205
+          ],
+          "joinP15": [
+            -0.3826834323650895,
+            0.877163859753386
+          ],
+          "joinP16": [
+            -0.4999999999999998,
+            0.8598076211353316
+          ],
+          "joinP17": [
+            -0.6087614290087207,
+            0.8380060020873705
+          ],
+          "joinP18": [
+            -0.7071067811865475,
+            0.8121320343559643
+          ],
+          "joinP19": [
+            -0.793353340291235,
+            0.7826284287026162
+          ],
+          "joinP20": [
+            -0.8660254037844387,
+            0.75
+          ],
+          "joinP21": [
+            -0.9238795325112867,
+            0.714805029709527
+          ],
+          "joinP22": [
+            -0.9659258262890682,
+            0.6776457135307563
+          ],
+          "joinP23": [
+            -0.9914448613738104,
+            0.6391578576660155
+          ],
+          "joinP24": [
+            -1,
+            0.6
+          ],
+          "joinP25": [
+            -0.9914448613738104,
+            0.5608421423339844
+          ],
+          "joinP26": [
+            -0.9659258262890683,
+            0.5223542864692438
+          ],
+          "joinP27": [
+            -0.9238795325112868,
+            0.4851949702904731
+          ],
+          "joinP28": [
+            -0.8660254037844388,
+            0.45000000000000007
+          ],
+          "joinP29": [
+            -0.7933533402912352,
+            0.4173715712973838
+          ],
+          "joinP30": [
+            -0.7071067811865479,
+            0.3878679656440358
+          ],
+          "joinP31": [
+            -0.6087614290087209,
+            0.36199399791262954
+          ],
+          "joinP32": [
+            -0.5000000000000004,
+            0.34019237886466847
+          ],
+          "joinP33": [
+            -0.3826834323650895,
+            0.32283614024661395
+          ],
+          "joinP34": [
+            -0.25881904510252063,
+            0.3102222521132795
+          ],
+          "joinP35": [
+            -0.13052619222005163,
+            0.3025665415878569
+          ],
+          "joinP36": [
+            -1.8369701987210297e-16,
+            0.3
+          ],
+          "joinP37": [
+            0.13052619222005127,
+            0.30256654158785684
+          ],
+          "joinP38": [
+            0.2588190451025203,
+            0.3102222521132795
+          ],
+          "joinP39": [
+            0.38268343236508917,
+            0.3228361402466139
+          ],
+          "joinP40": [
+            0.5000000000000001,
+            0.3401923788646684
+          ],
+          "joinP41": [
+            0.6087614290087199,
+            0.36199399791262926
+          ],
+          "joinP42": [
+            0.7071067811865474,
+            0.3878679656440357
+          ],
+          "joinP43": [
+            0.7933533402912349,
+            0.4173715712973837
+          ],
+          "joinP44": [
+            0.8660254037844384,
+            0.44999999999999984
+          ],
+          "joinP45": [
+            0.9238795325112868,
+            0.4851949702904731
+          ],
+          "joinP46": [
+            0.9659258262890681,
+            0.5223542864692435
+          ],
+          "joinP47": [
+            0.9914448613738104,
+            0.5608421423339844
+          ],
+          "cylinderFocusP0": [
+            -1,
+            0.6
+          ],
+          "cylinderFocusP1": [
+            -1,
+            -1.5
+          ],
+          "cylinderFocusP2": [
+            -0.9914448613738105,
+            -1.5391578576660154
+          ],
+          "cylinderFocusP3": [
+            -0.9659258262890683,
+            -1.5776457135307562
+          ],
+          "cylinderFocusP4": [
+            -0.9238795325112868,
+            -1.6148050297095269
+          ],
+          "cylinderFocusP5": [
+            -0.8660254037844388,
+            -1.65
+          ],
+          "cylinderFocusP6": [
+            -0.7933533402912352,
+            -1.6826284287026163
+          ],
+          "cylinderFocusP7": [
+            -0.7071067811865477,
+            -1.7121320343559643
+          ],
+          "cylinderFocusP8": [
+            -0.6087614290087209,
+            -1.7380060020873704
+          ],
+          "cylinderFocusP9": [
+            -0.5000000000000004,
+            -1.7598076211353315
+          ],
+          "cylinderFocusP10": [
+            -0.38268343236509034,
+            -1.7771638597533859
+          ],
+          "cylinderFocusP11": [
+            -0.25881904510252063,
+            -1.7897777478867205
+          ],
+          "cylinderFocusP12": [
+            -0.13052619222005163,
+            -1.7974334584121432
+          ],
+          "cylinderFocusP13": [
+            -1.8369701987210297e-16,
+            -1.8
+          ],
+          "cylinderFocusP14": [
+            0.13052619222005127,
+            -1.7974334584121432
+          ],
+          "cylinderFocusP15": [
+            0.2588190451025203,
+            -1.7897777478867205
+          ],
+          "cylinderFocusP16": [
+            0.38268343236508917,
+            -1.777163859753386
+          ],
+          "cylinderFocusP17": [
+            0.49999999999999933,
+            -1.7598076211353317
+          ],
+          "cylinderFocusP18": [
+            0.6087614290087205,
+            -1.7380060020873707
+          ],
+          "cylinderFocusP19": [
+            0.7071067811865474,
+            -1.7121320343559643
+          ],
+          "cylinderFocusP20": [
+            0.7933533402912349,
+            -1.6826284287026163
+          ],
+          "cylinderFocusP21": [
+            0.8660254037844388,
+            -1.65
+          ],
+          "cylinderFocusP22": [
+            0.9238795325112865,
+            -1.614805029709527
+          ],
+          "cylinderFocusP23": [
+            0.9659258262890683,
+            -1.5776457135307562
+          ],
+          "cylinderFocusP24": [
+            0.9914448613738103,
+            -1.5391578576660159
+          ],
+          "cylinderFocusP25": [
+            1,
+            -1.5
+          ],
+          "cylinderFocusP26": [
+            1,
+            0.6
+          ],
+          "coneFocusP0": [
+            0,
+            2.75
+          ],
+          "coneFocusP1": [
+            1,
+            1.05
+          ],
+          "coneFocusP2": [
+            0.9914448613738104,
+            1.0108421423339846
+          ],
+          "coneFocusP3": [
+            0.9659258262890683,
+            0.9723542864692438
+          ],
+          "coneFocusP4": [
+            0.9238795325112867,
+            0.9351949702904732
+          ],
+          "coneFocusP5": [
+            0.8660254037844387,
+            0.9000000000000001
+          ],
+          "coneFocusP6": [
+            0.7933533402912352,
+            0.867371571297384
+          ],
+          "coneFocusP7": [
+            0.7071067811865476,
+            0.8378679656440358
+          ],
+          "coneFocusP8": [
+            0.6087614290087207,
+            0.8119939979126296
+          ],
+          "coneFocusP9": [
+            0.5000000000000001,
+            0.7901923788646685
+          ],
+          "coneFocusP10": [
+            0.38268343236508984,
+            0.772836140246614
+          ],
+          "coneFocusP11": [
+            0.25881904510252074,
+            0.7602222521132795
+          ],
+          "coneFocusP12": [
+            0.1305261922200517,
+            0.7525665415878571
+          ],
+          "coneFocusP13": [
+            6.123233995736766e-17,
+            0.75
+          ],
+          "coneFocusP14": [
+            -0.1305261922200516,
+            0.7525665415878571
+          ],
+          "coneFocusP15": [
+            -0.25881904510252063,
+            0.7602222521132795
+          ],
+          "coneFocusP16": [
+            -0.3826834323650895,
+            0.772836140246614
+          ],
+          "coneFocusP17": [
+            -0.4999999999999998,
+            0.7901923788646683
+          ],
+          "coneFocusP18": [
+            -0.6087614290087207,
+            0.8119939979126296
+          ],
+          "coneFocusP19": [
+            -0.7071067811865475,
+            0.8378679656440358
+          ],
+          "coneFocusP20": [
+            -0.793353340291235,
+            0.8673715712973837
+          ],
+          "coneFocusP21": [
+            -0.8660254037844387,
+            0.9000000000000001
+          ],
+          "coneFocusP22": [
+            -0.9238795325112867,
+            0.9351949702904732
+          ],
+          "coneFocusP23": [
+            -0.9659258262890682,
+            0.9723542864692438
+          ],
+          "coneFocusP24": [
+            -0.9914448613738104,
+            1.0108421423339844
+          ],
+          "coneFocusP25": [
+            -1,
+            1.05
+          ]
+        },
+        "parts": [
+          {
+            "id": "cylinderSide",
+            "poly": [
+              "cylinderSideP0",
+              "cylinderSideP1",
+              "cylinderSideP2",
+              "cylinderSideP3",
+              "cylinderSideP4",
+              "cylinderSideP5",
+              "cylinderSideP6",
+              "cylinderSideP7",
+              "cylinderSideP8",
+              "cylinderSideP9",
+              "cylinderSideP10",
+              "cylinderSideP11",
+              "cylinderSideP12",
+              "cylinderSideP13",
+              "cylinderSideP14",
+              "cylinderSideP15",
+              "cylinderSideP16",
+              "cylinderSideP17",
+              "cylinderSideP18",
+              "cylinderSideP19",
+              "cylinderSideP20",
+              "cylinderSideP21",
+              "cylinderSideP22",
+              "cylinderSideP23",
+              "cylinderSideP24",
+              "cylinderSideP25",
+              "cylinderSideP26"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "cylinder"
+          },
+          {
+            "id": "cylinderTop",
+            "poly": [
+              "cylinderTopP0",
+              "cylinderTopP1",
+              "cylinderTopP2",
+              "cylinderTopP3",
+              "cylinderTopP4",
+              "cylinderTopP5",
+              "cylinderTopP6",
+              "cylinderTopP7",
+              "cylinderTopP8",
+              "cylinderTopP9",
+              "cylinderTopP10",
+              "cylinderTopP11",
+              "cylinderTopP12",
+              "cylinderTopP13",
+              "cylinderTopP14",
+              "cylinderTopP15",
+              "cylinderTopP16",
+              "cylinderTopP17",
+              "cylinderTopP18",
+              "cylinderTopP19",
+              "cylinderTopP20",
+              "cylinderTopP21",
+              "cylinderTopP22",
+              "cylinderTopP23",
+              "cylinderTopP24",
+              "cylinderTopP25",
+              "cylinderTopP26",
+              "cylinderTopP27",
+              "cylinderTopP28",
+              "cylinderTopP29",
+              "cylinderTopP30",
+              "cylinderTopP31",
+              "cylinderTopP32",
+              "cylinderTopP33",
+              "cylinderTopP34",
+              "cylinderTopP35",
+              "cylinderTopP36",
+              "cylinderTopP37",
+              "cylinderTopP38",
+              "cylinderTopP39",
+              "cylinderTopP40",
+              "cylinderTopP41",
+              "cylinderTopP42",
+              "cylinderTopP43",
+              "cylinderTopP44",
+              "cylinderTopP45",
+              "cylinderTopP46",
+              "cylinderTopP47"
+            ],
+            "fill": "accent-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true,
+            "group": "cylinder"
+          },
+          {
+            "id": "coneSide",
+            "poly": [
+              "coneSideP0",
+              "coneSideP1",
+              "coneSideP2",
+              "coneSideP3",
+              "coneSideP4",
+              "coneSideP5",
+              "coneSideP6",
+              "coneSideP7",
+              "coneSideP8",
+              "coneSideP9",
+              "coneSideP10",
+              "coneSideP11",
+              "coneSideP12",
+              "coneSideP13",
+              "coneSideP14",
+              "coneSideP15",
+              "coneSideP16",
+              "coneSideP17",
+              "coneSideP18",
+              "coneSideP19",
+              "coneSideP20",
+              "coneSideP21",
+              "coneSideP22",
+              "coneSideP23",
+              "coneSideP24",
+              "coneSideP25"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true,
+            "group": "cone"
+          },
+          {
+            "id": "cylinderFocus",
+            "poly": [
+              "cylinderFocusP0",
+              "cylinderFocusP1",
+              "cylinderFocusP2",
+              "cylinderFocusP3",
+              "cylinderFocusP4",
+              "cylinderFocusP5",
+              "cylinderFocusP6",
+              "cylinderFocusP7",
+              "cylinderFocusP8",
+              "cylinderFocusP9",
+              "cylinderFocusP10",
+              "cylinderFocusP11",
+              "cylinderFocusP12",
+              "cylinderFocusP13",
+              "cylinderFocusP14",
+              "cylinderFocusP15",
+              "cylinderFocusP16",
+              "cylinderFocusP17",
+              "cylinderFocusP18",
+              "cylinderFocusP19",
+              "cylinderFocusP20",
+              "cylinderFocusP21",
+              "cylinderFocusP22",
+              "cylinderFocusP23",
+              "cylinderFocusP24",
+              "cylinderFocusP25",
+              "cylinderFocusP26",
+              "joinP1",
+              "joinP2",
+              "joinP3",
+              "joinP4",
+              "joinP5",
+              "joinP6",
+              "joinP7",
+              "joinP8",
+              "joinP9",
+              "joinP10",
+              "joinP11"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "coneFocus",
+            "poly": [
+              "coneFocusP0",
+              "coneFocusP1",
+              "coneFocusP2",
+              "coneFocusP3",
+              "coneFocusP4",
+              "coneFocusP5",
+              "coneFocusP6",
+              "coneFocusP7",
+              "coneFocusP8",
+              "coneFocusP9",
+              "coneFocusP10",
+              "coneFocusP11",
+              "coneFocusP12",
+              "coneFocusP13",
+              "coneFocusP14",
+              "coneFocusP15",
+              "coneFocusP16",
+              "coneFocusP17",
+              "coneFocusP18",
+              "coneFocusP19",
+              "coneFocusP20",
+              "coneFocusP21",
+              "coneFocusP22",
+              "coneFocusP23",
+              "coneFocusP24",
+              "coneFocusP25"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "group": "cone"
+          },
+          {
+            "id": "join",
+            "curve": [
+              "joinP0",
+              "joinP1",
+              "joinP2",
+              "joinP3",
+              "joinP4",
+              "joinP5",
+              "joinP6",
+              "joinP7",
+              "joinP8",
+              "joinP9",
+              "joinP10",
+              "joinP11",
+              "joinP12"
+            ],
+            "ink": "warm",
+            "w": 4
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Solids can be pieces too. A cone settles onto a cylinder.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Solids can be pieces too."
+            },
+            {
+              "do": "slide",
+              "target": "cone",
+              "by": [
+                0,
+                -0.45
+              ],
+              "at": "settles",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": "cylinder",
+              "by": [
+                0,
+                0.45
+              ],
+              "at": "settles",
+              "dur": 1.2
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which solids were used to build this shape?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which solids were used to build this shape?"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "learner",
+          "say": "The seam is where they meet. A cone sits on a cylinder.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "join",
+              "at": "seam"
+            },
+            {
+              "do": "draw",
+              "target": "coneFocus",
+              "at": "cone"
+            },
+            {
+              "do": "hide",
+              "target": "coneFocus",
+              "at": "cylinder"
+            },
+            {
+              "do": "draw",
+              "target": "cylinderFocus",
+              "at": "cylinder"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{cone + cylinder}",
+              "at": "cylinder"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.4,
+          -2,
+          3.4,
+          2.6
+        ],
+        "points": {
+          "leftFrontP0": [
+            -2.75,
+            -0.8
+          ],
+          "leftFrontP1": [
+            -1.15,
+            -0.8
+          ],
+          "leftFrontP2": [
+            -1.15,
+            0.8
+          ],
+          "leftFrontP3": [
+            -2.75,
+            0.8
+          ],
+          "leftTopP0": [
+            -2.75,
+            0.8
+          ],
+          "leftTopP1": [
+            -1.15,
+            0.8
+          ],
+          "leftTopP2": [
+            -0.5,
+            1.3
+          ],
+          "leftTopP3": [
+            -2.1,
+            1.3
+          ],
+          "leftRightP0": [
+            -1.15,
+            -0.8
+          ],
+          "leftRightP1": [
+            -0.5,
+            -0.30000000000000004
+          ],
+          "leftRightP2": [
+            -0.5,
+            1.3
+          ],
+          "leftRightP3": [
+            -1.15,
+            0.8
+          ],
+          "rightFrontP0": [
+            0.5,
+            -0.8
+          ],
+          "rightFrontP1": [
+            2.1,
+            -0.8
+          ],
+          "rightFrontP2": [
+            2.1,
+            0.8
+          ],
+          "rightFrontP3": [
+            0.5,
+            0.8
+          ],
+          "rightTopP0": [
+            0.5,
+            0.8
+          ],
+          "rightTopP1": [
+            2.1,
+            0.8
+          ],
+          "rightTopP2": [
+            2.75,
+            1.3
+          ],
+          "rightTopP3": [
+            1.15,
+            1.3
+          ],
+          "rightRightP0": [
+            2.1,
+            -0.8
+          ],
+          "rightRightP1": [
+            2.75,
+            -0.30000000000000004
+          ],
+          "rightRightP2": [
+            2.75,
+            1.3
+          ],
+          "rightRightP3": [
+            2.1,
+            0.8
+          ],
+          "faceSeamA": [
+            -0.325,
+            -0.8
+          ],
+          "faceSeamB": [
+            -0.325,
+            0.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftFront",
+            "poly": [
+              "leftFrontP0",
+              "leftFrontP1",
+              "leftFrontP2",
+              "leftFrontP3"
+            ],
+            "fill": "blue-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "left"
+          },
+          {
+            "id": "leftTop",
+            "poly": [
+              "leftTopP0",
+              "leftTopP1",
+              "leftTopP2",
+              "leftTopP3"
+            ],
+            "fill": "accent-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "left"
+          },
+          {
+            "id": "leftRight",
+            "poly": [
+              "leftRightP0",
+              "leftRightP1",
+              "leftRightP2",
+              "leftRightP3"
+            ],
+            "fill": "blue-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "left"
+          },
+          {
+            "id": "rightFront",
+            "poly": [
+              "rightFrontP0",
+              "rightFrontP1",
+              "rightFrontP2",
+              "rightFrontP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "right"
+          },
+          {
+            "id": "rightTop",
+            "poly": [
+              "rightTopP0",
+              "rightTopP1",
+              "rightTopP2",
+              "rightTopP3"
+            ],
+            "fill": "accent-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "right"
+          },
+          {
+            "id": "rightRight",
+            "poly": [
+              "rightRightP0",
+              "rightRightP1",
+              "rightRightP2",
+              "rightRightP3"
+            ],
+            "fill": "gold-fill",
+            "ink": "ink",
+            "w": 1.5,
+            "start": true,
+            "group": "right"
+          },
+          {
+            "id": "faceSeam",
+            "seg": [
+              "faceSeamA",
+              "faceSeamB"
+            ],
+            "ink": "muted",
+            "w": 2
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two cubes slide together, face to face.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "cube + cube"
+            },
+            {
+              "do": "slide",
+              "target": "left",
+              "by": [
+                0.825,
+                0
+              ],
+              "at": "slide",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": "right",
+              "by": [
+                -0.825,
+                0
+              ],
+              "at": "slide",
+              "dur": 1.2
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The whole solid is longer now. It's a rectangular prism.",
+          "do": [
+            {
+              "do": "show",
+              "target": "faceSeam",
+              "at": "whole"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{rectangular prism}",
+              "at": "rectangular"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.75,
+          -2.75,
+          2.75,
+          2.75
+        ],
+        "points": {
+          "leftRoofP0": [
+            -2,
+            0
+          ],
+          "leftRoofP1": [
+            0,
+            0
+          ],
+          "leftRoofP2": [
+            0,
+            2
+          ],
+          "rightRoofP0": [
+            0,
+            0
+          ],
+          "rightRoofP1": [
+            2,
+            0
+          ],
+          "rightRoofP2": [
+            0,
+            2
+          ],
+          "baseP0": [
+            -2,
+            -2
+          ],
+          "baseP1": [
+            2,
+            -2
+          ],
+          "baseP2": [
+            2,
+            0
+          ],
+          "baseP3": [
+            -2,
+            0
+          ],
+          "outsideP0": [
+            -2,
+            -2
+          ],
+          "outsideP1": [
+            2,
+            -2
+          ],
+          "outsideP2": [
+            2,
+            0
+          ],
+          "outsideP3": [
+            0,
+            2
+          ],
+          "outsideP4": [
+            -2,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "leftRoof",
+            "poly": [
+              "leftRoofP0",
+              "leftRoofP1",
+              "leftRoofP2"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "rightRoof",
+            "poly": [
+              "rightRoofP0",
+              "rightRoofP1",
+              "rightRoofP2"
+            ],
+            "fill": "blue-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "base",
+            "poly": [
+              "baseP0",
+              "baseP1",
+              "baseP2",
+              "baseP3"
+            ],
+            "fill": "accent-fill",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "outside",
+            "poly": [
+              "outsideP0",
+              "outsideP1",
+              "outsideP2",
+              "outsideP3",
+              "outsideP4"
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Use every piece and cover the whole outline. A shape you make can be a piece of a bigger one.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Use every piece. Cover it all."
+            },
+            {
+              "do": "draw",
+              "target": "outside",
+              "at": "outline"
+            },
+            {
+              "do": "text",
+              "text": "A made shape can be a piece.",
+              "at": "shape"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sides touching, no gaps, no overlaps. Name the new shape by its outside edge.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Sides touching."
+            },
+            {
+              "do": "text",
+              "text": "No gaps, no overlaps.",
+              "at": "no"
+            },
+            {
+              "do": "text",
+              "text": "Name it by its outside edge.",
+              "at": "Name"
+            },
+            {
+              "do": "hide",
+              "target": "outside",
+              "at": "Sides"
+            },
+            {
+              "do": "draw",
+              "target": "outside",
+              "at": "outside"
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}

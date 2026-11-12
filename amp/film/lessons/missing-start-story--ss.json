@@ -1,6 +1,7 @@
 {
  "id": "missing-start-story--ss",
  "title": "Where the box goes",
+ "teaches": ["story-sentence-match-20"],
  "cast": {
   "teacher": {},
   "learner": {}
