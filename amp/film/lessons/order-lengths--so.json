@@ -1,0 +1,3305 @@
+{
+  "id": "order-lengths--so",
+  "title": "Line up the ends, then put three in order",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.0,
+          -1.0,
+          14.2,
+          11.2
+        ],
+        "points": {
+          "rail_ra": [
+            -0.7,
+            6.6
+          ],
+          "rail_rb": [
+            13.9,
+            6.6
+          ],
+          "rail_ya": [
+            -0.7,
+            3.3
+          ],
+          "rail_yb": [
+            13.9,
+            3.3
+          ],
+          "rail_ga": [
+            -0.7,
+            0.0
+          ],
+          "rail_gb": [
+            13.9,
+            0.0
+          ],
+          "r_cp0a": [
+            10.65,
+            7.55
+          ],
+          "r_cp0b": [
+            11.05,
+            7.55
+          ],
+          "r_car0a": [
+            11.0,
+            7.22
+          ],
+          "r_car0b": [
+            13.4,
+            7.22
+          ],
+          "r_car0c": [
+            13.4,
+            8.85
+          ],
+          "r_car0d": [
+            11.0,
+            8.85
+          ],
+          "r_wa0a": [
+            11.3,
+            7.9
+          ],
+          "r_wa0b": [
+            12.05,
+            7.9
+          ],
+          "r_wa0c": [
+            12.05,
+            8.55
+          ],
+          "r_wa0d": [
+            11.3,
+            8.55
+          ],
+          "r_wb0a": [
+            12.35,
+            7.9
+          ],
+          "r_wb0b": [
+            13.1,
+            7.9
+          ],
+          "r_wb0c": [
+            13.1,
+            8.55
+          ],
+          "r_wb0d": [
+            12.35,
+            8.55
+          ],
+          "r_chim0": [
+            8.05,
+            8.4
+          ],
+          "r_chim1": [
+            8.55,
+            8.4
+          ],
+          "r_chim2": [
+            8.67,
+            9.2
+          ],
+          "r_chim3": [
+            7.93,
+            9.2
+          ],
+          "r_boila": [
+            7.7,
+            7.22
+          ],
+          "r_boilb": [
+            9.65,
+            7.22
+          ],
+          "r_boilc": [
+            9.65,
+            8.45
+          ],
+          "r_boild": [
+            7.7,
+            8.45
+          ],
+          "r_caba": [
+            9.65,
+            7.22
+          ],
+          "r_cabb": [
+            10.7,
+            7.22
+          ],
+          "r_cabc": [
+            10.7,
+            9.2
+          ],
+          "r_cabd": [
+            9.65,
+            9.2
+          ],
+          "r_roofa": [
+            9.5,
+            9.2
+          ],
+          "r_roofb": [
+            10.85,
+            9.2
+          ],
+          "r_roofc": [
+            10.85,
+            9.48
+          ],
+          "r_roofd": [
+            9.5,
+            9.48
+          ],
+          "r_wina": [
+            9.9,
+            8.25
+          ],
+          "r_winb": [
+            10.45,
+            8.25
+          ],
+          "r_winc": [
+            10.45,
+            8.9
+          ],
+          "r_wind": [
+            9.9,
+            8.9
+          ],
+          "r_wh0o": [
+            8.35,
+            7.05
+          ],
+          "r_wh1o": [
+            10.1,
+            7.05
+          ],
+          "r_wh2o": [
+            11.55,
+            7.05
+          ],
+          "r_wh3o": [
+            12.85,
+            7.05
+          ],
+          "y_cp0a": [
+            7.15,
+            4.25
+          ],
+          "y_cp0b": [
+            7.55,
+            4.25
+          ],
+          "y_car0a": [
+            7.5,
+            3.92
+          ],
+          "y_car0b": [
+            9.9,
+            3.92
+          ],
+          "y_car0c": [
+            9.9,
+            5.55
+          ],
+          "y_car0d": [
+            7.5,
+            5.55
+          ],
+          "y_wa0a": [
+            7.8,
+            4.6
+          ],
+          "y_wa0b": [
+            8.55,
+            4.6
+          ],
+          "y_wa0c": [
+            8.55,
+            5.25
+          ],
+          "y_wa0d": [
+            7.8,
+            5.25
+          ],
+          "y_wb0a": [
+            8.85,
+            4.6
+          ],
+          "y_wb0b": [
+            9.6,
+            4.6
+          ],
+          "y_wb0c": [
+            9.6,
+            5.25
+          ],
+          "y_wb0d": [
+            8.85,
+            5.25
+          ],
+          "y_cp1a": [
+            9.85,
+            4.25
+          ],
+          "y_cp1b": [
+            10.25,
+            4.25
+          ],
+          "y_car1a": [
+            10.2,
+            3.92
+          ],
+          "y_car1b": [
+            12.6,
+            3.92
+          ],
+          "y_car1c": [
+            12.6,
+            5.55
+          ],
+          "y_car1d": [
+            10.2,
+            5.55
+          ],
+          "y_wa1a": [
+            10.5,
+            4.6
+          ],
+          "y_wa1b": [
+            11.25,
+            4.6
+          ],
+          "y_wa1c": [
+            11.25,
+            5.25
+          ],
+          "y_wa1d": [
+            10.5,
+            5.25
+          ],
+          "y_wb1a": [
+            11.55,
+            4.6
+          ],
+          "y_wb1b": [
+            12.3,
+            4.6
+          ],
+          "y_wb1c": [
+            12.3,
+            5.25
+          ],
+          "y_wb1d": [
+            11.55,
+            5.25
+          ],
+          "y_chim0": [
+            4.55,
+            5.1
+          ],
+          "y_chim1": [
+            5.05,
+            5.1
+          ],
+          "y_chim2": [
+            5.17,
+            5.9
+          ],
+          "y_chim3": [
+            4.43,
+            5.9
+          ],
+          "y_boila": [
+            4.2,
+            3.92
+          ],
+          "y_boilb": [
+            6.15,
+            3.92
+          ],
+          "y_boilc": [
+            6.15,
+            5.15
+          ],
+          "y_boild": [
+            4.2,
+            5.15
+          ],
+          "y_caba": [
+            6.15,
+            3.92
+          ],
+          "y_cabb": [
+            7.2,
+            3.92
+          ],
+          "y_cabc": [
+            7.2,
+            5.9
+          ],
+          "y_cabd": [
+            6.15,
+            5.9
+          ],
+          "y_roofa": [
+            6.0,
+            5.9
+          ],
+          "y_roofb": [
+            7.35,
+            5.9
+          ],
+          "y_roofc": [
+            7.35,
+            6.18
+          ],
+          "y_roofd": [
+            6.0,
+            6.18
+          ],
+          "y_wina": [
+            6.4,
+            4.95
+          ],
+          "y_winb": [
+            6.95,
+            4.95
+          ],
+          "y_winc": [
+            6.95,
+            5.6
+          ],
+          "y_wind": [
+            6.4,
+            5.6
+          ],
+          "y_wh0o": [
+            4.85,
+            3.75
+          ],
+          "y_wh1o": [
+            6.6,
+            3.75
+          ],
+          "y_wh2o": [
+            8.05,
+            3.75
+          ],
+          "y_wh3o": [
+            9.35,
+            3.75
+          ],
+          "y_wh4o": [
+            10.75,
+            3.75
+          ],
+          "y_wh5o": [
+            12.05,
+            3.75
+          ],
+          "g_cp0a": [
+            3.95,
+            0.95
+          ],
+          "g_cp0b": [
+            4.35,
+            0.95
+          ],
+          "g_car0a": [
+            4.3,
+            0.62
+          ],
+          "g_car0b": [
+            6.7,
+            0.62
+          ],
+          "g_car0c": [
+            6.7,
+            2.25
+          ],
+          "g_car0d": [
+            4.3,
+            2.25
+          ],
+          "g_wa0a": [
+            4.6,
+            1.3
+          ],
+          "g_wa0b": [
+            5.35,
+            1.3
+          ],
+          "g_wa0c": [
+            5.35,
+            1.95
+          ],
+          "g_wa0d": [
+            4.6,
+            1.95
+          ],
+          "g_wb0a": [
+            5.65,
+            1.3
+          ],
+          "g_wb0b": [
+            6.4,
+            1.3
+          ],
+          "g_wb0c": [
+            6.4,
+            1.95
+          ],
+          "g_wb0d": [
+            5.65,
+            1.95
+          ],
+          "g_cp1a": [
+            6.65,
+            0.95
+          ],
+          "g_cp1b": [
+            7.05,
+            0.95
+          ],
+          "g_car1a": [
+            7.0,
+            0.62
+          ],
+          "g_car1b": [
+            9.4,
+            0.62
+          ],
+          "g_car1c": [
+            9.4,
+            2.25
+          ],
+          "g_car1d": [
+            7.0,
+            2.25
+          ],
+          "g_wa1a": [
+            7.3,
+            1.3
+          ],
+          "g_wa1b": [
+            8.05,
+            1.3
+          ],
+          "g_wa1c": [
+            8.05,
+            1.95
+          ],
+          "g_wa1d": [
+            7.3,
+            1.95
+          ],
+          "g_wb1a": [
+            8.35,
+            1.3
+          ],
+          "g_wb1b": [
+            9.1,
+            1.3
+          ],
+          "g_wb1c": [
+            9.1,
+            1.95
+          ],
+          "g_wb1d": [
+            8.35,
+            1.95
+          ],
+          "g_cp2a": [
+            9.35,
+            0.95
+          ],
+          "g_cp2b": [
+            9.75,
+            0.95
+          ],
+          "g_car2a": [
+            9.7,
+            0.62
+          ],
+          "g_car2b": [
+            12.1,
+            0.62
+          ],
+          "g_car2c": [
+            12.1,
+            2.25
+          ],
+          "g_car2d": [
+            9.7,
+            2.25
+          ],
+          "g_wa2a": [
+            10.0,
+            1.3
+          ],
+          "g_wa2b": [
+            10.75,
+            1.3
+          ],
+          "g_wa2c": [
+            10.75,
+            1.95
+          ],
+          "g_wa2d": [
+            10.0,
+            1.95
+          ],
+          "g_wb2a": [
+            11.05,
+            1.3
+          ],
+          "g_wb2b": [
+            11.8,
+            1.3
+          ],
+          "g_wb2c": [
+            11.8,
+            1.95
+          ],
+          "g_wb2d": [
+            11.05,
+            1.95
+          ],
+          "g_chim0": [
+            1.35,
+            1.8
+          ],
+          "g_chim1": [
+            1.85,
+            1.8
+          ],
+          "g_chim2": [
+            1.97,
+            2.6
+          ],
+          "g_chim3": [
+            1.23,
+            2.6
+          ],
+          "g_boila": [
+            1.0,
+            0.62
+          ],
+          "g_boilb": [
+            2.95,
+            0.62
+          ],
+          "g_boilc": [
+            2.95,
+            1.85
+          ],
+          "g_boild": [
+            1.0,
+            1.85
+          ],
+          "g_caba": [
+            2.95,
+            0.62
+          ],
+          "g_cabb": [
+            4.0,
+            0.62
+          ],
+          "g_cabc": [
+            4.0,
+            2.6
+          ],
+          "g_cabd": [
+            2.95,
+            2.6
+          ],
+          "g_roofa": [
+            2.8,
+            2.6
+          ],
+          "g_roofb": [
+            4.15,
+            2.6
+          ],
+          "g_roofc": [
+            4.15,
+            2.88
+          ],
+          "g_roofd": [
+            2.8,
+            2.88
+          ],
+          "g_wina": [
+            3.2,
+            1.65
+          ],
+          "g_winb": [
+            3.75,
+            1.65
+          ],
+          "g_winc": [
+            3.75,
+            2.3
+          ],
+          "g_wind": [
+            3.2,
+            2.3
+          ],
+          "g_wh0o": [
+            1.65,
+            0.45
+          ],
+          "g_wh1o": [
+            3.4,
+            0.45
+          ],
+          "g_wh2o": [
+            4.85,
+            0.45
+          ],
+          "g_wh3o": [
+            6.15,
+            0.45
+          ],
+          "g_wh4o": [
+            7.55,
+            0.45
+          ],
+          "g_wh5o": [
+            8.85,
+            0.45
+          ],
+          "g_wh6o": [
+            10.25,
+            0.45
+          ],
+          "g_wh7o": [
+            11.55,
+            0.45
+          ],
+          "stlinea": [
+            0,
+            -0.7
+          ],
+          "stlineb": [
+            0,
+            9.9
+          ],
+          "stlabp": [
+            0,
+            9.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "rail_r",
+            "seg": [
+              "rail_ra",
+              "rail_rb"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "rail_y",
+            "seg": [
+              "rail_ya",
+              "rail_yb"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "rail_g",
+            "seg": [
+              "rail_ga",
+              "rail_gb"
+            ],
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "r_cp0",
+            "seg": [
+              "r_cp0a",
+              "r_cp0b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_car0",
+            "poly": [
+              "r_car0a",
+              "r_car0b",
+              "r_car0c",
+              "r_car0d"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wa0",
+            "poly": [
+              "r_wa0a",
+              "r_wa0b",
+              "r_wa0c",
+              "r_wa0d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wb0",
+            "poly": [
+              "r_wb0a",
+              "r_wb0b",
+              "r_wb0c",
+              "r_wb0d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_chim",
+            "poly": [
+              "r_chim0",
+              "r_chim1",
+              "r_chim2",
+              "r_chim3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_boil",
+            "poly": [
+              "r_boila",
+              "r_boilb",
+              "r_boilc",
+              "r_boild"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_cab",
+            "poly": [
+              "r_caba",
+              "r_cabb",
+              "r_cabc",
+              "r_cabd"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_roof",
+            "poly": [
+              "r_roofa",
+              "r_roofb",
+              "r_roofc",
+              "r_roofd"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_win",
+            "poly": [
+              "r_wina",
+              "r_winb",
+              "r_winc",
+              "r_wind"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wh0",
+            "circle": "r_wh0o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wh1",
+            "circle": "r_wh1o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wh2",
+            "circle": "r_wh2o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "r_wh3",
+            "circle": "r_wh3o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tr",
+            "start": true
+          },
+          {
+            "id": "y_cp0",
+            "seg": [
+              "y_cp0a",
+              "y_cp0b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_car0",
+            "poly": [
+              "y_car0a",
+              "y_car0b",
+              "y_car0c",
+              "y_car0d"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wa0",
+            "poly": [
+              "y_wa0a",
+              "y_wa0b",
+              "y_wa0c",
+              "y_wa0d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wb0",
+            "poly": [
+              "y_wb0a",
+              "y_wb0b",
+              "y_wb0c",
+              "y_wb0d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_cp1",
+            "seg": [
+              "y_cp1a",
+              "y_cp1b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_car1",
+            "poly": [
+              "y_car1a",
+              "y_car1b",
+              "y_car1c",
+              "y_car1d"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wa1",
+            "poly": [
+              "y_wa1a",
+              "y_wa1b",
+              "y_wa1c",
+              "y_wa1d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wb1",
+            "poly": [
+              "y_wb1a",
+              "y_wb1b",
+              "y_wb1c",
+              "y_wb1d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_chim",
+            "poly": [
+              "y_chim0",
+              "y_chim1",
+              "y_chim2",
+              "y_chim3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_boil",
+            "poly": [
+              "y_boila",
+              "y_boilb",
+              "y_boilc",
+              "y_boild"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_cab",
+            "poly": [
+              "y_caba",
+              "y_cabb",
+              "y_cabc",
+              "y_cabd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_roof",
+            "poly": [
+              "y_roofa",
+              "y_roofb",
+              "y_roofc",
+              "y_roofd"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_win",
+            "poly": [
+              "y_wina",
+              "y_winb",
+              "y_winc",
+              "y_wind"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh0",
+            "circle": "y_wh0o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh1",
+            "circle": "y_wh1o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh2",
+            "circle": "y_wh2o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh3",
+            "circle": "y_wh3o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh4",
+            "circle": "y_wh4o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "y_wh5",
+            "circle": "y_wh5o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "ty",
+            "start": true
+          },
+          {
+            "id": "g_cp0",
+            "seg": [
+              "g_cp0a",
+              "g_cp0b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_car0",
+            "poly": [
+              "g_car0a",
+              "g_car0b",
+              "g_car0c",
+              "g_car0d"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wa0",
+            "poly": [
+              "g_wa0a",
+              "g_wa0b",
+              "g_wa0c",
+              "g_wa0d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wb0",
+            "poly": [
+              "g_wb0a",
+              "g_wb0b",
+              "g_wb0c",
+              "g_wb0d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_cp1",
+            "seg": [
+              "g_cp1a",
+              "g_cp1b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_car1",
+            "poly": [
+              "g_car1a",
+              "g_car1b",
+              "g_car1c",
+              "g_car1d"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wa1",
+            "poly": [
+              "g_wa1a",
+              "g_wa1b",
+              "g_wa1c",
+              "g_wa1d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wb1",
+            "poly": [
+              "g_wb1a",
+              "g_wb1b",
+              "g_wb1c",
+              "g_wb1d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_cp2",
+            "seg": [
+              "g_cp2a",
+              "g_cp2b"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_car2",
+            "poly": [
+              "g_car2a",
+              "g_car2b",
+              "g_car2c",
+              "g_car2d"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wa2",
+            "poly": [
+              "g_wa2a",
+              "g_wa2b",
+              "g_wa2c",
+              "g_wa2d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wb2",
+            "poly": [
+              "g_wb2a",
+              "g_wb2b",
+              "g_wb2c",
+              "g_wb2d"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_chim",
+            "poly": [
+              "g_chim0",
+              "g_chim1",
+              "g_chim2",
+              "g_chim3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_boil",
+            "poly": [
+              "g_boila",
+              "g_boilb",
+              "g_boilc",
+              "g_boild"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_cab",
+            "poly": [
+              "g_caba",
+              "g_cabb",
+              "g_cabc",
+              "g_cabd"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_roof",
+            "poly": [
+              "g_roofa",
+              "g_roofb",
+              "g_roofc",
+              "g_roofd"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_win",
+            "poly": [
+              "g_wina",
+              "g_winb",
+              "g_winc",
+              "g_wind"
+            ],
+            "fill": "paper",
+            "ink": "accent",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh0",
+            "circle": "g_wh0o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh1",
+            "circle": "g_wh1o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh2",
+            "circle": "g_wh2o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh3",
+            "circle": "g_wh3o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh4",
+            "circle": "g_wh4o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh5",
+            "circle": "g_wh5o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh6",
+            "circle": "g_wh6o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "g_wh7",
+            "circle": "g_wh7o",
+            "r": 0.42,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "tg",
+            "start": true
+          },
+          {
+            "id": "stline",
+            "seg": [
+              "stlinea",
+              "stlineb"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "stlab",
+            "label": "\\text{start line}",
+            "at": "stlabp",
+            "dir": "ne",
+            "size": "m",
+            "ink": "ink"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Put the trains in order from shortest to longest.",
+          "do": [
+            {
+              "do": "problem",
+              "text": "Put the trains in order from shortest to longest.",
+              "at": "Put"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The red train goes the farthest to the right, so red is the longest one.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "goes"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Line up the ends first. Draw a start line, and slide each train up to it.",
+          "pause": 1.0,
+          "do": [
+            {
+              "do": "draw",
+              "target": "stline",
+              "at": "Draw"
+            },
+            {
+              "do": "show",
+              "target": "stlab",
+              "at": "line",
+              "nth": 1
+            },
+            {
+              "do": "slide",
+              "target": "tr",
+              "by": [
+                -7.7,
+                0
+              ],
+              "at": "slide",
+              "dur": 2.4
+            },
+            {
+              "do": "slide",
+              "target": "ty",
+              "by": [
+                -4.2,
+                0
+              ],
+              "at": "slide",
+              "dur": 2.4
+            },
+            {
+              "do": "slide",
+              "target": "tg",
+              "by": [
+                -1.0,
+                0
+              ],
+              "at": "slide",
+              "dur": 2.4
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Oh, now green goes past the other two. Green is the longest train.",
+          "do": []
+        },
+        {
+          "speaker": "learner",
+          "say": "Red only looked long because it started farther to the right.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Red"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Shortest to longest: red, yellow, green.",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{red, yellow, green}",
+              "at": "Shortest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.0,
+          -2.0,
+          13.4,
+          10.0
+        ],
+        "points": {
+          "linea": [
+            0,
+            -1.6
+          ],
+          "lineb": [
+            0,
+            9.6
+          ],
+          "p1b0": [
+            0,
+            8.0
+          ],
+          "p1b1": [
+            1.8,
+            8.55
+          ],
+          "p1b2": [
+            3.0,
+            8.55
+          ],
+          "p1b3": [
+            3.11,
+            8.0
+          ],
+          "p1b4": [
+            3.173,
+            8.274
+          ],
+          "p1b5": [
+            3.354,
+            8.514
+          ],
+          "p1b6": [
+            3.633,
+            8.693
+          ],
+          "p1b7": [
+            3.974,
+            8.788
+          ],
+          "p1b8": [
+            4.336,
+            8.788
+          ],
+          "p1b9": [
+            4.678,
+            8.693
+          ],
+          "p1b10": [
+            4.956,
+            8.514
+          ],
+          "p1b11": [
+            5.137,
+            8.274
+          ],
+          "p1b12": [
+            5.2,
+            8.0
+          ],
+          "p1b13": [
+            5.137,
+            7.726
+          ],
+          "p1b14": [
+            4.956,
+            7.486
+          ],
+          "p1b15": [
+            4.678,
+            7.307
+          ],
+          "p1b16": [
+            4.336,
+            7.212
+          ],
+          "p1b17": [
+            3.974,
+            7.212
+          ],
+          "p1b18": [
+            3.633,
+            7.307
+          ],
+          "p1b19": [
+            3.354,
+            7.486
+          ],
+          "p1b20": [
+            3.173,
+            7.726
+          ],
+          "p1b21": [
+            3.0,
+            7.45
+          ],
+          "p1b22": [
+            1.8,
+            7.45
+          ],
+          "p1wo": [
+            4.55,
+            8.3
+          ],
+          "p1eo": [
+            4.65,
+            8.3
+          ],
+          "p1t0a": [
+            5.2,
+            7.9
+          ],
+          "p1t0b": [
+            5.65,
+            7.9
+          ],
+          "p1t1a": [
+            5.65,
+            7.9
+          ],
+          "p1t1b": [
+            5.95,
+            8.12
+          ],
+          "p1t2a": [
+            5.65,
+            7.9
+          ],
+          "p1t2b": [
+            5.95,
+            7.68
+          ],
+          "p1lp": [
+            6.15,
+            8.0
+          ],
+          "b1b0": [
+            0,
+            4.0
+          ],
+          "b1b1": [
+            1.8,
+            4.55
+          ],
+          "b1b2": [
+            5.4,
+            4.55
+          ],
+          "b1b3": [
+            5.51,
+            4.0
+          ],
+          "b1b4": [
+            5.573,
+            4.274
+          ],
+          "b1b5": [
+            5.754,
+            4.514
+          ],
+          "b1b6": [
+            6.032,
+            4.693
+          ],
+          "b1b7": [
+            6.374,
+            4.788
+          ],
+          "b1b8": [
+            6.736,
+            4.788
+          ],
+          "b1b9": [
+            7.077,
+            4.693
+          ],
+          "b1b10": [
+            7.356,
+            4.514
+          ],
+          "b1b11": [
+            7.537,
+            4.274
+          ],
+          "b1b12": [
+            7.6,
+            4.0
+          ],
+          "b1b13": [
+            7.537,
+            3.726
+          ],
+          "b1b14": [
+            7.356,
+            3.486
+          ],
+          "b1b15": [
+            7.077,
+            3.307
+          ],
+          "b1b16": [
+            6.736,
+            3.212
+          ],
+          "b1b17": [
+            6.374,
+            3.212
+          ],
+          "b1b18": [
+            6.032,
+            3.307
+          ],
+          "b1b19": [
+            5.754,
+            3.486
+          ],
+          "b1b20": [
+            5.573,
+            3.726
+          ],
+          "b1b21": [
+            5.4,
+            3.45
+          ],
+          "b1b22": [
+            1.8,
+            3.45
+          ],
+          "b1wo": [
+            6.95,
+            4.3
+          ],
+          "b1eo": [
+            7.05,
+            4.3
+          ],
+          "b1t0a": [
+            7.6,
+            3.9
+          ],
+          "b1t0b": [
+            8.05,
+            3.9
+          ],
+          "b1t1a": [
+            8.05,
+            3.9
+          ],
+          "b1t1b": [
+            8.35,
+            4.12
+          ],
+          "b1t2a": [
+            8.05,
+            3.9
+          ],
+          "b1t2b": [
+            8.35,
+            3.68
+          ],
+          "b1lp": [
+            8.55,
+            4.0
+          ],
+          "g1b0": [
+            0,
+            0.0
+          ],
+          "g1b1": [
+            1.8,
+            0.55
+          ],
+          "g1b2": [
+            7.8,
+            0.55
+          ],
+          "g1b3": [
+            7.91,
+            0.0
+          ],
+          "g1b4": [
+            7.973,
+            0.274
+          ],
+          "g1b5": [
+            8.154,
+            0.514
+          ],
+          "g1b6": [
+            8.432,
+            0.693
+          ],
+          "g1b7": [
+            8.774,
+            0.788
+          ],
+          "g1b8": [
+            9.136,
+            0.788
+          ],
+          "g1b9": [
+            9.477,
+            0.693
+          ],
+          "g1b10": [
+            9.756,
+            0.514
+          ],
+          "g1b11": [
+            9.937,
+            0.274
+          ],
+          "g1b12": [
+            10.0,
+            0.0
+          ],
+          "g1b13": [
+            9.937,
+            -0.274
+          ],
+          "g1b14": [
+            9.756,
+            -0.514
+          ],
+          "g1b15": [
+            9.477,
+            -0.693
+          ],
+          "g1b16": [
+            9.136,
+            -0.788
+          ],
+          "g1b17": [
+            8.774,
+            -0.788
+          ],
+          "g1b18": [
+            8.432,
+            -0.693
+          ],
+          "g1b19": [
+            8.154,
+            -0.514
+          ],
+          "g1b20": [
+            7.973,
+            -0.274
+          ],
+          "g1b21": [
+            7.8,
+            -0.55
+          ],
+          "g1b22": [
+            1.8,
+            -0.55
+          ],
+          "g1wo": [
+            9.35,
+            0.3
+          ],
+          "g1eo": [
+            9.45,
+            0.3
+          ],
+          "g1t0a": [
+            10.0,
+            -0.1
+          ],
+          "g1t0b": [
+            10.45,
+            -0.1
+          ],
+          "g1t1a": [
+            10.45,
+            -0.1
+          ],
+          "g1t1b": [
+            10.75,
+            0.12
+          ],
+          "g1t2a": [
+            10.45,
+            -0.1
+          ],
+          "g1t2b": [
+            10.75,
+            -0.32
+          ],
+          "g1lp": [
+            10.95,
+            0.0
+          ],
+          "slot1p": [
+            -0.5,
+            8.0
+          ],
+          "slot2p": [
+            -0.5,
+            4.0
+          ],
+          "slot3p": [
+            -0.5,
+            0.0
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "linea",
+              "lineb"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "p1b",
+            "poly": [
+              "p1b0",
+              "p1b1",
+              "p1b2",
+              "p1b3",
+              "p1b4",
+              "p1b5",
+              "p1b6",
+              "p1b7",
+              "p1b8",
+              "p1b9",
+              "p1b10",
+              "p1b11",
+              "p1b12",
+              "p1b13",
+              "p1b14",
+              "p1b15",
+              "p1b16",
+              "p1b17",
+              "p1b18",
+              "p1b19",
+              "p1b20",
+              "p1b21",
+              "p1b22"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "w": 3,
+            "group": "p1"
+          },
+          {
+            "id": "p1w",
+            "circle": "p1wo",
+            "r": 0.3,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "p1"
+          },
+          {
+            "id": "p1e",
+            "dot": "p1eo",
+            "ink": "ink",
+            "r": 6,
+            "group": "p1"
+          },
+          {
+            "id": "p1t0",
+            "seg": [
+              "p1t0a",
+              "p1t0b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "p1"
+          },
+          {
+            "id": "p1t1",
+            "seg": [
+              "p1t1a",
+              "p1t1b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "p1"
+          },
+          {
+            "id": "p1t2",
+            "seg": [
+              "p1t2a",
+              "p1t2b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "p1"
+          },
+          {
+            "id": "p1l",
+            "label": "\\text{purple}",
+            "at": "p1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "violet",
+            "group": "p1"
+          },
+          {
+            "id": "b1b",
+            "poly": [
+              "b1b0",
+              "b1b1",
+              "b1b2",
+              "b1b3",
+              "b1b4",
+              "b1b5",
+              "b1b6",
+              "b1b7",
+              "b1b8",
+              "b1b9",
+              "b1b10",
+              "b1b11",
+              "b1b12",
+              "b1b13",
+              "b1b14",
+              "b1b15",
+              "b1b16",
+              "b1b17",
+              "b1b18",
+              "b1b19",
+              "b1b20",
+              "b1b21",
+              "b1b22"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "group": "b1"
+          },
+          {
+            "id": "b1w",
+            "circle": "b1wo",
+            "r": 0.3,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "b1"
+          },
+          {
+            "id": "b1e",
+            "dot": "b1eo",
+            "ink": "ink",
+            "r": 6,
+            "group": "b1"
+          },
+          {
+            "id": "b1t0",
+            "seg": [
+              "b1t0a",
+              "b1t0b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "b1"
+          },
+          {
+            "id": "b1t1",
+            "seg": [
+              "b1t1a",
+              "b1t1b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "b1"
+          },
+          {
+            "id": "b1t2",
+            "seg": [
+              "b1t2a",
+              "b1t2b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "b1"
+          },
+          {
+            "id": "b1l",
+            "label": "\\text{blue}",
+            "at": "b1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "blue",
+            "group": "b1"
+          },
+          {
+            "id": "g1b",
+            "poly": [
+              "g1b0",
+              "g1b1",
+              "g1b2",
+              "g1b3",
+              "g1b4",
+              "g1b5",
+              "g1b6",
+              "g1b7",
+              "g1b8",
+              "g1b9",
+              "g1b10",
+              "g1b11",
+              "g1b12",
+              "g1b13",
+              "g1b14",
+              "g1b15",
+              "g1b16",
+              "g1b17",
+              "g1b18",
+              "g1b19",
+              "g1b20",
+              "g1b21",
+              "g1b22"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "group": "g1"
+          },
+          {
+            "id": "g1w",
+            "circle": "g1wo",
+            "r": 0.3,
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "group": "g1"
+          },
+          {
+            "id": "g1e",
+            "dot": "g1eo",
+            "ink": "ink",
+            "r": 6,
+            "group": "g1"
+          },
+          {
+            "id": "g1t0",
+            "seg": [
+              "g1t0a",
+              "g1t0b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "g1"
+          },
+          {
+            "id": "g1t1",
+            "seg": [
+              "g1t1a",
+              "g1t1b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "g1"
+          },
+          {
+            "id": "g1t2",
+            "seg": [
+              "g1t2a",
+              "g1t2b"
+            ],
+            "ink": "warm",
+            "w": 3,
+            "group": "g1"
+          },
+          {
+            "id": "g1l",
+            "label": "\\text{green}",
+            "at": "g1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "accent",
+            "group": "g1"
+          },
+          {
+            "id": "slot1",
+            "label": "\\text{shortest}",
+            "at": "slot1p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          },
+          {
+            "id": "slot2",
+            "label": "\\text{middle}",
+            "at": "slot2p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          },
+          {
+            "id": "slot3",
+            "label": "\\text{longest}",
+            "at": "slot3p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The purple snake is shorter than the blue snake.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The purple snake is shorter than the blue snake. The blue snake is shorter than the green snake. Put the snakes in order from shortest to longest.",
+              "at": "The"
+            },
+            {
+              "do": "show",
+              "target": "p1",
+              "at": "purple"
+            },
+            {
+              "do": "show",
+              "target": "b1",
+              "at": "blue"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The blue snake is shorter than the green snake.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "p1",
+              "at": "blue"
+            },
+            {
+              "do": "show",
+              "target": "g1",
+              "at": "green"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put the snakes in order from shortest to longest.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "slots",
+              "at": "order"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Blue is longer than purple, and blue is shorter than green.",
+          "do": [
+            {
+              "do": "show",
+              "target": "p1",
+              "at": "purple"
+            },
+            {
+              "do": "highlight",
+              "target": "b1l",
+              "at": "Blue"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So blue goes between them. Purple is the shortest, and green is the longest.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "slot2",
+              "at": "between"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the order is purple, blue, green.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "order"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{purple, blue, green}",
+              "at": "order"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.0,
+          -2.0,
+          13.4,
+          10.0
+        ],
+        "points": {
+          "linea": [
+            0,
+            -1.6
+          ],
+          "lineb": [
+            0,
+            9.6
+          ],
+          "r1b0": [
+            4.0,
+            9.0
+          ],
+          "r1b1": [
+            4.6,
+            8.8
+          ],
+          "r1b2": [
+            4.0,
+            8.6
+          ],
+          "r1b3": [
+            4.6,
+            8.4
+          ],
+          "r1b4": [
+            4.0,
+            8.2
+          ],
+          "r1b5": [
+            4.6,
+            8.0
+          ],
+          "r1b6": [
+            4.0,
+            7.8
+          ],
+          "r1b7": [
+            4.6,
+            7.6
+          ],
+          "r1b8": [
+            4.0,
+            7.4
+          ],
+          "r1b9": [
+            4.6,
+            7.2
+          ],
+          "r1b10": [
+            4.0,
+            7.0
+          ],
+          "r1b11": [
+            0.6,
+            7.0
+          ],
+          "r1b12": [
+            0,
+            7.2
+          ],
+          "r1b13": [
+            0.6,
+            7.4
+          ],
+          "r1b14": [
+            0,
+            7.6
+          ],
+          "r1b15": [
+            0.6,
+            7.8
+          ],
+          "r1b16": [
+            0,
+            8.0
+          ],
+          "r1b17": [
+            0.6,
+            8.2
+          ],
+          "r1b18": [
+            0,
+            8.4
+          ],
+          "r1b19": [
+            0.6,
+            8.6
+          ],
+          "r1b20": [
+            0,
+            8.8
+          ],
+          "r1b21": [
+            0.6,
+            9.0
+          ],
+          "r1s0a": [
+            1.0,
+            7.0
+          ],
+          "r1s0b": [
+            1.35,
+            7.0
+          ],
+          "r1s0c": [
+            1.35,
+            9.0
+          ],
+          "r1s0d": [
+            1.0,
+            9.0
+          ],
+          "r1s1a": [
+            1.55,
+            7.0
+          ],
+          "r1s1b": [
+            1.9,
+            7.0
+          ],
+          "r1s1c": [
+            1.9,
+            9.0
+          ],
+          "r1s1d": [
+            1.55,
+            9.0
+          ],
+          "r1s2a": [
+            2.7,
+            7.0
+          ],
+          "r1s2b": [
+            3.05,
+            7.0
+          ],
+          "r1s2c": [
+            3.05,
+            9.0
+          ],
+          "r1s2d": [
+            2.7,
+            9.0
+          ],
+          "r1s3a": [
+            3.25,
+            7.0
+          ],
+          "r1s3b": [
+            3.6,
+            7.0
+          ],
+          "r1s3c": [
+            3.6,
+            9.0
+          ],
+          "r1s3d": [
+            3.25,
+            9.0
+          ],
+          "r1lp": [
+            4.8,
+            8.0
+          ],
+          "y1b0": [
+            6.6,
+            5.0
+          ],
+          "y1b1": [
+            7.2,
+            4.8
+          ],
+          "y1b2": [
+            6.6,
+            4.6
+          ],
+          "y1b3": [
+            7.2,
+            4.4
+          ],
+          "y1b4": [
+            6.6,
+            4.2
+          ],
+          "y1b5": [
+            7.2,
+            4.0
+          ],
+          "y1b6": [
+            6.6,
+            3.8
+          ],
+          "y1b7": [
+            7.2,
+            3.6
+          ],
+          "y1b8": [
+            6.6,
+            3.4
+          ],
+          "y1b9": [
+            7.2,
+            3.2
+          ],
+          "y1b10": [
+            6.6,
+            3.0
+          ],
+          "y1b11": [
+            0.6,
+            3.0
+          ],
+          "y1b12": [
+            0,
+            3.2
+          ],
+          "y1b13": [
+            0.6,
+            3.4
+          ],
+          "y1b14": [
+            0,
+            3.6
+          ],
+          "y1b15": [
+            0.6,
+            3.8
+          ],
+          "y1b16": [
+            0,
+            4.0
+          ],
+          "y1b17": [
+            0.6,
+            4.2
+          ],
+          "y1b18": [
+            0,
+            4.4
+          ],
+          "y1b19": [
+            0.6,
+            4.6
+          ],
+          "y1b20": [
+            0,
+            4.8
+          ],
+          "y1b21": [
+            0.6,
+            5.0
+          ],
+          "y1s0a": [
+            1.0,
+            3.0
+          ],
+          "y1s0b": [
+            1.35,
+            3.0
+          ],
+          "y1s0c": [
+            1.35,
+            5.0
+          ],
+          "y1s0d": [
+            1.0,
+            5.0
+          ],
+          "y1s1a": [
+            1.55,
+            3.0
+          ],
+          "y1s1b": [
+            1.9,
+            3.0
+          ],
+          "y1s1c": [
+            1.9,
+            5.0
+          ],
+          "y1s1d": [
+            1.55,
+            5.0
+          ],
+          "y1s2a": [
+            5.3,
+            3.0
+          ],
+          "y1s2b": [
+            5.65,
+            3.0
+          ],
+          "y1s2c": [
+            5.65,
+            5.0
+          ],
+          "y1s2d": [
+            5.3,
+            5.0
+          ],
+          "y1s3a": [
+            5.85,
+            3.0
+          ],
+          "y1s3b": [
+            6.2,
+            3.0
+          ],
+          "y1s3c": [
+            6.2,
+            5.0
+          ],
+          "y1s3d": [
+            5.85,
+            5.0
+          ],
+          "y1lp": [
+            7.4,
+            4.0
+          ],
+          "u1b0": [
+            9.2,
+            1.0
+          ],
+          "u1b1": [
+            9.8,
+            0.8
+          ],
+          "u1b2": [
+            9.2,
+            0.6
+          ],
+          "u1b3": [
+            9.8,
+            0.4
+          ],
+          "u1b4": [
+            9.2,
+            0.2
+          ],
+          "u1b5": [
+            9.8,
+            0.0
+          ],
+          "u1b6": [
+            9.2,
+            -0.2
+          ],
+          "u1b7": [
+            9.8,
+            -0.4
+          ],
+          "u1b8": [
+            9.2,
+            -0.6
+          ],
+          "u1b9": [
+            9.8,
+            -0.8
+          ],
+          "u1b10": [
+            9.2,
+            -1.0
+          ],
+          "u1b11": [
+            0.6,
+            -1.0
+          ],
+          "u1b12": [
+            0,
+            -0.8
+          ],
+          "u1b13": [
+            0.6,
+            -0.6
+          ],
+          "u1b14": [
+            0,
+            -0.4
+          ],
+          "u1b15": [
+            0.6,
+            -0.2
+          ],
+          "u1b16": [
+            0,
+            0.0
+          ],
+          "u1b17": [
+            0.6,
+            0.2
+          ],
+          "u1b18": [
+            0,
+            0.4
+          ],
+          "u1b19": [
+            0.6,
+            0.6
+          ],
+          "u1b20": [
+            0,
+            0.8
+          ],
+          "u1b21": [
+            0.6,
+            1.0
+          ],
+          "u1s0a": [
+            1.0,
+            -1.0
+          ],
+          "u1s0b": [
+            1.35,
+            -1.0
+          ],
+          "u1s0c": [
+            1.35,
+            1.0
+          ],
+          "u1s0d": [
+            1.0,
+            1.0
+          ],
+          "u1s1a": [
+            1.55,
+            -1.0
+          ],
+          "u1s1b": [
+            1.9,
+            -1.0
+          ],
+          "u1s1c": [
+            1.9,
+            1.0
+          ],
+          "u1s1d": [
+            1.55,
+            1.0
+          ],
+          "u1s2a": [
+            7.9,
+            -1.0
+          ],
+          "u1s2b": [
+            8.25,
+            -1.0
+          ],
+          "u1s2c": [
+            8.25,
+            1.0
+          ],
+          "u1s2d": [
+            7.9,
+            1.0
+          ],
+          "u1s3a": [
+            8.45,
+            -1.0
+          ],
+          "u1s3b": [
+            8.8,
+            -1.0
+          ],
+          "u1s3c": [
+            8.8,
+            1.0
+          ],
+          "u1s3d": [
+            8.45,
+            1.0
+          ],
+          "u1lp": [
+            10.0,
+            0.0
+          ],
+          "slot1p": [
+            -0.5,
+            8.0
+          ],
+          "slot2p": [
+            -0.5,
+            4.0
+          ],
+          "slot3p": [
+            -0.5,
+            0.0
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "linea",
+              "lineb"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "r1b",
+            "poly": [
+              "r1b0",
+              "r1b1",
+              "r1b2",
+              "r1b3",
+              "r1b4",
+              "r1b5",
+              "r1b6",
+              "r1b7",
+              "r1b8",
+              "r1b9",
+              "r1b10",
+              "r1b11",
+              "r1b12",
+              "r1b13",
+              "r1b14",
+              "r1b15",
+              "r1b16",
+              "r1b17",
+              "r1b18",
+              "r1b19",
+              "r1b20",
+              "r1b21"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 3,
+            "group": "r1"
+          },
+          {
+            "id": "r1s0",
+            "poly": [
+              "r1s0a",
+              "r1s0b",
+              "r1s0c",
+              "r1s0d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 2,
+            "group": "r1"
+          },
+          {
+            "id": "r1s1",
+            "poly": [
+              "r1s1a",
+              "r1s1b",
+              "r1s1c",
+              "r1s1d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 2,
+            "group": "r1"
+          },
+          {
+            "id": "r1s2",
+            "poly": [
+              "r1s2a",
+              "r1s2b",
+              "r1s2c",
+              "r1s2d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 2,
+            "group": "r1"
+          },
+          {
+            "id": "r1s3",
+            "poly": [
+              "r1s3a",
+              "r1s3b",
+              "r1s3c",
+              "r1s3d"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 2,
+            "group": "r1"
+          },
+          {
+            "id": "r1l",
+            "label": "\\text{red}",
+            "at": "r1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "warm",
+            "group": "r1"
+          },
+          {
+            "id": "y1b",
+            "poly": [
+              "y1b0",
+              "y1b1",
+              "y1b2",
+              "y1b3",
+              "y1b4",
+              "y1b5",
+              "y1b6",
+              "y1b7",
+              "y1b8",
+              "y1b9",
+              "y1b10",
+              "y1b11",
+              "y1b12",
+              "y1b13",
+              "y1b14",
+              "y1b15",
+              "y1b16",
+              "y1b17",
+              "y1b18",
+              "y1b19",
+              "y1b20",
+              "y1b21"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "group": "y1"
+          },
+          {
+            "id": "y1s0",
+            "poly": [
+              "y1s0a",
+              "y1s0b",
+              "y1s0c",
+              "y1s0d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 2,
+            "group": "y1"
+          },
+          {
+            "id": "y1s1",
+            "poly": [
+              "y1s1a",
+              "y1s1b",
+              "y1s1c",
+              "y1s1d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 2,
+            "group": "y1"
+          },
+          {
+            "id": "y1s2",
+            "poly": [
+              "y1s2a",
+              "y1s2b",
+              "y1s2c",
+              "y1s2d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 2,
+            "group": "y1"
+          },
+          {
+            "id": "y1s3",
+            "poly": [
+              "y1s3a",
+              "y1s3b",
+              "y1s3c",
+              "y1s3d"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 2,
+            "group": "y1"
+          },
+          {
+            "id": "y1l",
+            "label": "\\text{yellow}",
+            "at": "y1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "gold",
+            "group": "y1"
+          },
+          {
+            "id": "u1b",
+            "poly": [
+              "u1b0",
+              "u1b1",
+              "u1b2",
+              "u1b3",
+              "u1b4",
+              "u1b5",
+              "u1b6",
+              "u1b7",
+              "u1b8",
+              "u1b9",
+              "u1b10",
+              "u1b11",
+              "u1b12",
+              "u1b13",
+              "u1b14",
+              "u1b15",
+              "u1b16",
+              "u1b17",
+              "u1b18",
+              "u1b19",
+              "u1b20",
+              "u1b21"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "group": "u1"
+          },
+          {
+            "id": "u1s0",
+            "poly": [
+              "u1s0a",
+              "u1s0b",
+              "u1s0c",
+              "u1s0d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "u1"
+          },
+          {
+            "id": "u1s1",
+            "poly": [
+              "u1s1a",
+              "u1s1b",
+              "u1s1c",
+              "u1s1d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "u1"
+          },
+          {
+            "id": "u1s2",
+            "poly": [
+              "u1s2a",
+              "u1s2b",
+              "u1s2c",
+              "u1s2d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "u1"
+          },
+          {
+            "id": "u1s3",
+            "poly": [
+              "u1s3a",
+              "u1s3b",
+              "u1s3c",
+              "u1s3d"
+            ],
+            "fill": "paper",
+            "ink": "blue",
+            "w": 2,
+            "group": "u1"
+          },
+          {
+            "id": "u1l",
+            "label": "\\text{blue}",
+            "at": "u1lp",
+            "dir": "e",
+            "size": "m",
+            "ink": "blue",
+            "group": "u1"
+          },
+          {
+            "id": "slot1",
+            "label": "\\text{shortest}",
+            "at": "slot1p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          },
+          {
+            "id": "slot2",
+            "label": "\\text{middle}",
+            "at": "slot2p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          },
+          {
+            "id": "slot3",
+            "label": "\\text{longest}",
+            "at": "slot3p",
+            "dir": "w",
+            "size": "m",
+            "ink": "muted",
+            "group": "slots",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The yellow scarf is longer than the red scarf.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The yellow scarf is longer than the red scarf. The blue scarf is longer than the yellow scarf. Which scarf is the longest?",
+              "at": "The"
+            },
+            {
+              "do": "show",
+              "target": "y1",
+              "at": "yellow"
+            },
+            {
+              "do": "show",
+              "target": "r1",
+              "at": "red"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The blue scarf is longer than the yellow scarf.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "r1",
+              "at": "blue"
+            },
+            {
+              "do": "show",
+              "target": "u1",
+              "at": "blue"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which scarf is the longest?",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "slot3",
+              "at": "longest"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Blue is longer than yellow, and yellow is longer than red.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "u1l",
+              "at": "Blue"
+            },
+            {
+              "do": "show",
+              "target": "r1",
+              "at": "red"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So blue is longer than both. Blue is the longest scarf.",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{the blue scarf}",
+              "at": "longest"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. And red is shorter than yellow, so red is the shortest.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "slot1",
+              "at": "shortest"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Line up the ends. Then find the one that goes in between.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Line up the ends.",
+              "at": "Line"
+            },
+            {
+              "do": "text",
+              "text": "Find the one in between.",
+              "at": "find"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
