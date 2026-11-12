@@ -805,15 +805,20 @@
               "at": "Now"
             },
             {
-              "do": "text",
-              "text": "Point-slope form",
-              "tone": "muted",
+              "do": "header",
+              "tex": "y-y_1=m(x-x_1)",
+              "label": "Point-slope form",
               "at": "form"
             },
             {
-              "do": "write",
-              "tex": "y-y_1=m(x-x_1)",
-              "at": "minus"
+              "do": "highlight",
+              "target": "pointLabel",
+              "at": "needs"
+            },
+            {
+              "do": "highlight",
+              "target": "three",
+              "at": "slope"
             }
           ]
         },
@@ -1770,14 +1775,9 @@
               "at": "Use"
             },
             {
-              "do": "text",
-              "text": "Point-slope form",
-              "tone": "muted",
-              "at": "form"
-            },
-            {
-              "do": "write",
+              "do": "header",
               "tex": "y-y_1=m(x-x_1)",
+              "label": "Point-slope form",
               "at": "form"
             },
             {

@@ -631,16 +631,13 @@
           "say": "This is point-slope form: one point on the line, and the slope.",
           "do": [
             {
-              "do": "text",
-              "text": "Point-slope form",
-              "tone": "muted",
-              "at": "point-slope"
+              "do": "clear"
             },
             {
-              "do": "write",
+              "do": "header",
               "tex": "y-y_1=m(x-x_1)",
-              "fresh": true,
-              "at": "one"
+              "label": "Point-slope form",
+              "at": "point-slope"
             }
           ]
         },
@@ -649,9 +646,6 @@
           "say": "y plus one is y minus negative one, so the point is two, negative one.",
           "pause": 0.3,
           "do": [
-            {
-              "do": "clear"
-            },
             {
               "do": "write",
               "tex": "y+1=3(x-\\cg{2})",
@@ -1412,16 +1406,13 @@
           "say": "This is standard form: x and y on one side. Each x you put in gives a y.",
           "do": [
             {
-              "do": "text",
-              "text": "Standard form",
-              "tone": "muted",
-              "at": "standard"
+              "do": "clear"
             },
             {
-              "do": "write",
-              "tex": "ax+by=c",
-              "fresh": true,
-              "at": "x"
+              "do": "header",
+              "tex": "Ax+By=C",
+              "label": "Standard form",
+              "at": "standard"
             }
           ]
         },
@@ -1430,9 +1421,6 @@
           "say": "Put zero in for x: five y is ten, so y is two.",
           "pause": 0.3,
           "do": [
-            {
-              "do": "clear"
-            },
             {
               "do": "write",
               "tex": "x+5y=10",
