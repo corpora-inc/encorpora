@@ -1,0 +1,1394 @@
+{
+  "id": "three-addend-story--st",
+  "title": "Find the ten first",
+  "teaches": [
+    "make-ten-grouping",
+    "make-ten-step"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -1.4,
+          14.7,
+          9.8
+        ],
+        "points": {
+          "F": [
+            3.4,
+            9.2
+          ],
+          "pa": [
+            1.3,
+            3.6
+          ],
+          "pb": [
+            4.1,
+            3.6
+          ],
+          "pc": [
+            11.1,
+            2.9
+          ],
+          "la": [
+            2.0,
+            -0.1
+          ],
+          "lb": [
+            6.9,
+            -0.1
+          ],
+          "lc": [
+            11.8,
+            -0.1
+          ],
+          "lf": [
+            6.9,
+            5.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "fr",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "ha",
+            "grid": [
+              1,
+              2
+            ],
+            "at": "pa",
+            "size": 1.4
+          },
+          {
+            "id": "hb",
+            "grid": [
+              4,
+              2
+            ],
+            "at": "pb",
+            "size": 1.4
+          },
+          {
+            "id": "hc",
+            "grid": [
+              1,
+              1
+            ],
+            "at": "pc",
+            "size": 1.4
+          },
+          {
+            "id": "a",
+            "things": "star",
+            "n": 2,
+            "in": "ha"
+          },
+          {
+            "id": "b",
+            "things": "star",
+            "n": 8,
+            "in": "hb"
+          },
+          {
+            "id": "c",
+            "things": "star",
+            "n": 1,
+            "in": "hc"
+          },
+          {
+            "id": "top",
+            "things": "star",
+            "n": 0,
+            "in": "fr",
+            "from": 1,
+            "slots": 5
+          },
+          {
+            "id": "bot",
+            "things": "star",
+            "n": 0,
+            "in": "fr",
+            "from": 6,
+            "slots": 5
+          },
+          {
+            "id": "ta",
+            "label": "2",
+            "at": "la",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "tb",
+            "label": "8",
+            "at": "lb",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "tc",
+            "label": "1",
+            "at": "lc",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "tf",
+            "label": "10",
+            "at": "lf",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A team scored two points, then eight points, then one point.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "problem",
+              "text": "A team scored 2 points, then 8 points, then 1 point. How many points did the team score?"
+            },
+            {
+              "do": "show",
+              "target": "a",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "ta",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "b",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "tb",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "c",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "tc",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "How many points did the team score?",
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each star is one point. Add them in any order; the total stays the same.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "a",
+                "b",
+                "c"
+              ],
+              "at": "star"
+            },
+            {
+              "do": "write",
+              "tex": "2+8+1",
+              "at": "order"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So look for two that make ten.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fr",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Two and eight make ten.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "send",
+              "target": "a1",
+              "to": "top",
+              "at": "Two"
+            },
+            {
+              "do": "send",
+              "target": "a2",
+              "to": "bot",
+              "at": "Two"
+            },
+            {
+              "do": "hide",
+              "target": "ta",
+              "at": "Two"
+            },
+            {
+              "do": "hide",
+              "target": "tb",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b1",
+              "to": "top",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b2",
+              "to": "top",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b3",
+              "to": "top",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b4",
+              "to": "top",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b5",
+              "to": "bot",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b6",
+              "to": "bot",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b7",
+              "to": "bot",
+              "at": "eight"
+            },
+            {
+              "do": "send",
+              "target": "b8",
+              "to": "bot",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "They fill the ten frame.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "tf",
+              "at": "fill"
+            },
+            {
+              "do": "write",
+              "tex": "2+8+1=10+1",
+              "at": "frame"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten, and one more.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c",
+                "tc"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten plus one is eleven.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "11",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The team scored eleven points.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fr",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Find the ten first.",
+          "pause": 0.8
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -5.9,
+          14.7,
+          9.3
+        ],
+        "points": {
+          "F": [
+            3.4,
+            8.8
+          ],
+          "pa": [
+            -0.2,
+            2.8
+          ],
+          "pb": [
+            3.4,
+            2.8
+          ],
+          "pc": [
+            9.8,
+            2.8
+          ],
+          "la": [
+            1.2,
+            -0.7
+          ],
+          "lb": [
+            6.2,
+            -0.7
+          ],
+          "lc": [
+            11.9,
+            -0.7
+          ],
+          "lf": [
+            6.9,
+            5.0
+          ]
+        },
+        "parts": [
+          {
+            "id": "fr",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "ga",
+            "group": "GA",
+            "grid": [
+              2,
+              2
+            ],
+            "at": "pa",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "a",
+            "counters": "ga",
+            "n": 4,
+            "ink": "accent"
+          },
+          {
+            "id": "ta",
+            "group": "GA",
+            "label": "4",
+            "at": "la",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "gb",
+            "group": "GB",
+            "grid": [
+              4,
+              2
+            ],
+            "at": "pb",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b",
+            "counters": "gb",
+            "n": 8,
+            "ink": "warm"
+          },
+          {
+            "id": "tb",
+            "group": "GB",
+            "label": "8",
+            "at": "lb",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "gc",
+            "group": "GC",
+            "grid": [
+              3,
+              2
+            ],
+            "at": "pc",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "c",
+            "counters": "gc",
+            "n": 6,
+            "ink": "blue"
+          },
+          {
+            "id": "tc",
+            "group": "GC",
+            "label": "6",
+            "at": "lc",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "tf",
+            "label": "10",
+            "at": "lf",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What goes in the box? Four plus eight plus six equals eight plus box.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What goes in the box? $4 + 8 + 6 = 8 + \\square$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ga",
+                "a",
+                "ta"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gc",
+                "c",
+                "tc"
+              ],
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The eight is on both sides.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the box holds four and six.",
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "But the eight sits between them.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Swap places. Eight steps down, six slides over, eight steps back up.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "pb": [
+                  3.4,
+                  -1.6
+                ],
+                "lb": [
+                  6.2,
+                  -5.1
+                ],
+                "b1": [
+                  4.1,
+                  -2.3
+                ],
+                "b2": [
+                  5.5,
+                  -2.3
+                ],
+                "b3": [
+                  6.9,
+                  -2.3
+                ],
+                "b4": [
+                  8.3,
+                  -2.3
+                ],
+                "b5": [
+                  4.1,
+                  -3.7
+                ],
+                "b6": [
+                  5.5,
+                  -3.7
+                ],
+                "b7": [
+                  6.9,
+                  -3.7
+                ],
+                "b8": [
+                  8.3,
+                  -3.7
+                ]
+              },
+              "at": "down"
+            },
+            {
+              "do": "move",
+              "points": {
+                "pc": [
+                  3.4,
+                  2.8
+                ],
+                "lc": [
+                  5.5,
+                  -0.7
+                ],
+                "c1": [
+                  4.1,
+                  2.1
+                ],
+                "c2": [
+                  5.5,
+                  2.1
+                ],
+                "c3": [
+                  6.9,
+                  2.1
+                ],
+                "c4": [
+                  4.1,
+                  0.7
+                ],
+                "c5": [
+                  5.5,
+                  0.7
+                ],
+                "c6": [
+                  6.9,
+                  0.7
+                ],
+                "pb": [
+                  8.4,
+                  -1.6
+                ],
+                "lb": [
+                  11.2,
+                  -5.1
+                ],
+                "b1": [
+                  9.1,
+                  -2.3
+                ],
+                "b2": [
+                  10.5,
+                  -2.3
+                ],
+                "b3": [
+                  11.9,
+                  -2.3
+                ],
+                "b4": [
+                  13.3,
+                  -2.3
+                ],
+                "b5": [
+                  9.1,
+                  -3.7
+                ],
+                "b6": [
+                  10.5,
+                  -3.7
+                ],
+                "b7": [
+                  11.9,
+                  -3.7
+                ],
+                "b8": [
+                  13.3,
+                  -3.7
+                ]
+              },
+              "at": "slides"
+            },
+            {
+              "do": "move",
+              "points": {
+                "pb": [
+                  8.4,
+                  2.8
+                ],
+                "lb": [
+                  11.2,
+                  -0.7
+                ],
+                "b1": [
+                  9.1,
+                  2.1
+                ],
+                "b2": [
+                  10.5,
+                  2.1
+                ],
+                "b3": [
+                  11.9,
+                  2.1
+                ],
+                "b4": [
+                  13.3,
+                  2.1
+                ],
+                "b5": [
+                  9.1,
+                  0.7
+                ],
+                "b6": [
+                  10.5,
+                  0.7
+                ],
+                "b7": [
+                  11.9,
+                  0.7
+                ],
+                "b8": [
+                  13.3,
+                  0.7
+                ]
+              },
+              "at": "up"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The order changed. The total did not.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "4+8+6=4+6+8",
+              "at": "order"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four and six lift up and join. A full ten frame.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "pa": [
+                  -0.2,
+                  5.4
+                ],
+                "la": [
+                  1.2,
+                  1.9
+                ],
+                "a1": [
+                  0.5,
+                  4.7
+                ],
+                "a2": [
+                  1.9,
+                  4.7
+                ],
+                "a3": [
+                  0.5,
+                  3.3
+                ],
+                "a4": [
+                  1.9,
+                  3.3
+                ],
+                "pc": [
+                  3.4,
+                  5.4
+                ],
+                "lc": [
+                  5.5,
+                  1.9
+                ],
+                "c1": [
+                  4.1,
+                  4.7
+                ],
+                "c2": [
+                  5.5,
+                  4.7
+                ],
+                "c3": [
+                  6.9,
+                  4.7
+                ],
+                "c4": [
+                  4.1,
+                  3.3
+                ],
+                "c5": [
+                  5.5,
+                  3.3
+                ],
+                "c6": [
+                  6.9,
+                  3.3
+                ]
+              },
+              "at": "lift"
+            },
+            {
+              "do": "move",
+              "points": {
+                "a1": {
+                  "cell": [
+                    "fr",
+                    1
+                  ]
+                },
+                "a2": {
+                  "cell": [
+                    "fr",
+                    2
+                  ]
+                },
+                "a3": {
+                  "cell": [
+                    "fr",
+                    6
+                  ]
+                },
+                "a4": {
+                  "cell": [
+                    "fr",
+                    7
+                  ]
+                },
+                "c1": {
+                  "cell": [
+                    "fr",
+                    3
+                  ]
+                },
+                "c2": {
+                  "cell": [
+                    "fr",
+                    4
+                  ]
+                },
+                "c3": {
+                  "cell": [
+                    "fr",
+                    5
+                  ]
+                },
+                "c4": {
+                  "cell": [
+                    "fr",
+                    8
+                  ]
+                },
+                "c5": {
+                  "cell": [
+                    "fr",
+                    9
+                  ]
+                },
+                "c6": {
+                  "cell": [
+                    "fr",
+                    10
+                  ]
+                }
+              },
+              "at": "join"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "ta",
+                "tc",
+                "ga",
+                "gc"
+              ],
+              "at": "join"
+            },
+            {
+              "do": "show",
+              "target": "tf",
+              "at": "frame"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four plus eight plus six equals eight plus ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "4+8+6=8+10",
+              "at": "equals"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The box holds ten.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "10",
+              "at": "ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -3.3,
+          14.7,
+          9.8
+        ],
+        "points": {
+          "F": [
+            3.4,
+            9.2
+          ],
+          "pa": [
+            0.3,
+            1.5
+          ],
+          "pb": [
+            6.9,
+            2.9
+          ],
+          "pc": [
+            12.1,
+            1.5
+          ],
+          "la": [
+            3.1,
+            -2.0
+          ],
+          "lb": [
+            9.0,
+            -2.0
+          ],
+          "lc": [
+            12.8,
+            -2.0
+          ],
+          "lf": [
+            6.9,
+            5.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "fr",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1.5,
+            "start": true
+          },
+          {
+            "id": "ga",
+            "group": "GA",
+            "grid": [
+              4,
+              2
+            ],
+            "at": "pa",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "a",
+            "counters": "ga",
+            "n": 8,
+            "ink": "accent"
+          },
+          {
+            "id": "ta",
+            "group": "GA",
+            "label": "8",
+            "at": "la",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "gb",
+            "group": "GB",
+            "grid": [
+              3,
+              3
+            ],
+            "at": "pb",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b",
+            "counters": "gb",
+            "n": 9,
+            "ink": "warm"
+          },
+          {
+            "id": "tb",
+            "group": "GB",
+            "label": "9",
+            "at": "lb",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "gc",
+            "group": "GC",
+            "grid": [
+              1,
+              2
+            ],
+            "at": "pc",
+            "size": 1.4,
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "c",
+            "counters": "gc",
+            "n": 2,
+            "ink": "blue"
+          },
+          {
+            "id": "tc",
+            "group": "GC",
+            "label": "2",
+            "at": "lc",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "tf",
+            "label": "10",
+            "at": "lf",
+            "dir": "c",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Add eight plus nine plus two. Which two numbers make ten?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Add $8 + 9 + 2$. Which two numbers make ten?"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ga",
+                "a",
+                "ta"
+              ],
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gc",
+                "c",
+                "tc"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I'll go in order. Eight plus nine is a big one, and I'm not sure of it.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "ga",
+                "a",
+                "ta"
+              ],
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine and two make eleven, so that is not ten.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "Nine"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Wait. Eight and two make ten! They are partners.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "pa": [
+                  0.3,
+                  6.0
+                ],
+                "la": [
+                  3.1,
+                  2.5
+                ],
+                "a1": [
+                  1.0,
+                  5.3
+                ],
+                "a2": [
+                  2.4,
+                  5.3
+                ],
+                "a3": [
+                  3.8,
+                  5.3
+                ],
+                "a4": [
+                  5.2,
+                  5.3
+                ],
+                "a5": [
+                  1.0,
+                  3.9
+                ],
+                "a6": [
+                  2.4,
+                  3.9
+                ],
+                "a7": [
+                  3.8,
+                  3.9
+                ],
+                "a8": [
+                  5.2,
+                  3.9
+                ]
+              },
+              "at": "Eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "pc": [
+                  12.1,
+                  6.0
+                ],
+                "lc": [
+                  12.8,
+                  2.5
+                ],
+                "c1": [
+                  12.8,
+                  5.3
+                ],
+                "c2": [
+                  12.8,
+                  3.9
+                ]
+              },
+              "at": "two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "a1": {
+                  "cell": [
+                    "fr",
+                    1
+                  ]
+                },
+                "a2": {
+                  "cell": [
+                    "fr",
+                    2
+                  ]
+                },
+                "a3": {
+                  "cell": [
+                    "fr",
+                    3
+                  ]
+                },
+                "a4": {
+                  "cell": [
+                    "fr",
+                    4
+                  ]
+                },
+                "a5": {
+                  "cell": [
+                    "fr",
+                    6
+                  ]
+                },
+                "a6": {
+                  "cell": [
+                    "fr",
+                    7
+                  ]
+                },
+                "a7": {
+                  "cell": [
+                    "fr",
+                    8
+                  ]
+                },
+                "a8": {
+                  "cell": [
+                    "fr",
+                    9
+                  ]
+                },
+                "c1": {
+                  "cell": [
+                    "fr",
+                    5
+                  ]
+                },
+                "c2": {
+                  "cell": [
+                    "fr",
+                    10
+                  ]
+                }
+              },
+              "at": "partners"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "ta",
+                "tc",
+                "ga",
+                "gc"
+              ],
+              "at": "partners"
+            },
+            {
+              "do": "show",
+              "target": "tf",
+              "at": "partners"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The nine waits. So it is ten plus nine.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "gb",
+                "b",
+                "tb"
+              ],
+              "at": "nine"
+            },
+            {
+              "do": "write",
+              "tex": "8+9+2=10+9",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Ten plus nine is nineteen.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "19",
+              "at": "nineteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nineteen. Find the ten first.",
+          "pause": 1.0,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Find the ten first.",
+              "at": "Find"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
