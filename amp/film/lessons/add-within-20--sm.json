@@ -1,0 +1,874 @@
+{
+  "id": "add-within-20--sm",
+  "title": "Fill the ten first",
+  "teaches": [
+    "make-ten-remainder"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -4.9,
+          8.8,
+          6.7
+        ],
+        "points": {
+          "T": [
+            0,
+            5
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "Gul": [
+            4.8,
+            3.4
+          ],
+          "Gur": [
+            8,
+            3.4
+          ],
+          "Glr": [
+            8,
+            1.8
+          ],
+          "Gll": [
+            4.8,
+            1.8
+          ],
+          "NT": [
+            4,
+            5.9
+          ],
+          "NB": [
+            4,
+            -4.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": 1.6,
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "B",
+            "size": 1.6,
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "ball",
+            "n": 8,
+            "in": "top",
+            "slots": 10,
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "ball",
+            "n": 6,
+            "in": "bottom",
+            "slots": 10,
+            "start": true
+          },
+          {
+            "id": "na",
+            "label": "@n",
+            "at": "NT",
+            "of": "top",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "nb",
+            "label": "@n",
+            "at": "NB",
+            "of": "bottom",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "gaps",
+            "poly": [
+              "Gul",
+              "Gur",
+              "Glr",
+              "Gll"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Eight balls,",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "8+6",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and six more.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each frame holds ten: two rows of five.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "top",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight leaves two empty spaces. Fill the ten first.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "target": "gaps",
+              "at": "empty"
+            },
+            {
+              "do": "text",
+              "text": "Fill the ten first.",
+              "at": "Fill"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "To add eight plus six, move two from six to make ten. How much of six is left?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "To add $8+6$, move $2$ from $6$ to make ten. How much of $6$ is left?"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Move one ball.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "hide",
+              "target": "gaps",
+              "at": "one"
+            },
+            {
+              "do": "send",
+              "target": "b6",
+              "to": "a",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And one more. Eight and two make ten.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "send",
+              "target": "b5",
+              "to": "a",
+              "at": "one"
+            },
+            {
+              "do": "write",
+              "tex": "8+2=10",
+              "fresh": true,
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "count",
+              "target": "b"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four is left from the six.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "4",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So eight plus six is eight plus two plus four.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear",
+              "at": "So"
+            },
+            {
+              "do": "write",
+              "tex": "8+6=8+2+4",
+              "fresh": true,
+              "at": "So"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight and two make ten.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "=10+4",
+              "at": "Eight"
+            },
+            {
+              "do": "highlight",
+              "target": "top",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten and four make fourteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "write",
+              "tex": "=14",
+              "at": "fourteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A full ten and four more. We see fourteen without counting every ball.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          15.1,
+          -1.4,
+          20.9,
+          2.1
+        ],
+        "points": {
+          "P": [
+            16,
+            0
+          ],
+          "HoneA": [
+            16,
+            0
+          ],
+          "HoneB": [
+            16.5,
+            0.8
+          ],
+          "HoneC": [
+            17,
+            0
+          ],
+          "HtwoA": [
+            17,
+            0
+          ],
+          "HtwoB": [
+            17.5,
+            0.8
+          ],
+          "HtwoC": [
+            18,
+            0
+          ],
+          "HthreeA": [
+            18,
+            0
+          ],
+          "HthreeB": [
+            18.5,
+            0.8
+          ],
+          "HthreeC": [
+            19,
+            0
+          ],
+          "Title": [
+            18,
+            1.65
+          ],
+          "Nsf": [
+            16,
+            -0.45
+          ],
+          "Nsv": [
+            17,
+            -0.45
+          ],
+          "Neg": [
+            18,
+            -0.45
+          ],
+          "Nnt": [
+            19,
+            -0.45
+          ],
+          "Ntw": [
+            20,
+            -0.45
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "axes": true,
+            "y": false,
+            "step": 1,
+            "every": 100,
+            "xrange": [
+              15.7,
+              20.3
+            ],
+            "start": true
+          },
+          {
+            "id": "sixteen",
+            "label": "16",
+            "at": "Nsf",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "seventeen",
+            "label": "17",
+            "at": "Nsv",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "eighteen",
+            "label": "18",
+            "at": "Neg",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "nineteen",
+            "label": "19",
+            "at": "Nnt",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "twenty",
+            "label": "20",
+            "at": "Ntw",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "marker",
+            "dot": "P",
+            "r": 16,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "hopOne",
+            "curve": [
+              "HoneA",
+              "HoneB",
+              "HoneC"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "hopTwo",
+            "curve": [
+              "HtwoA",
+              "HtwoB",
+              "HtwoC"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "hopThree",
+            "curve": [
+              "HthreeA",
+              "HthreeB",
+              "HthreeC"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "label": "\\text{Each hop adds 1}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is sixteen plus three?",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What is $16+3$?"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixteen is already past ten.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "sixteen",
+              "at": "Sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start at the bigger number, sixteen, and count on three.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "text",
+              "text": "Count on $3$.",
+              "at": "count"
+            },
+            {
+              "do": "highlight",
+              "target": "marker",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seventeen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "draw",
+              "target": "hopOne",
+              "at": "Seventeen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  17,
+                  0
+                ]
+              },
+              "at": "Seventeen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eighteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "draw",
+              "target": "hopTwo",
+              "at": "Eighteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  18,
+                  0
+                ]
+              },
+              "at": "Eighteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nineteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "draw",
+              "target": "hopThree",
+              "at": "Nineteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  19,
+                  0
+                ]
+              },
+              "at": "Nineteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixteen plus three equals nineteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "16+3=19",
+              "at": "nineteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three plus sixteen is the same sum; still start at sixteen.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "3+16=16+3=19",
+              "fresh": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -4.9,
+          8.8,
+          6.7
+        ],
+        "points": {
+          "T": [
+            0,
+            5
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "Gap": {
+            "cell": [
+              "top",
+              10
+            ]
+          },
+          "NT": [
+            4,
+            5.9
+          ],
+          "NB": [
+            4,
+            -4.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "T",
+            "size": 1.6,
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "B",
+            "size": 1.6,
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "a",
+            "things": "ball",
+            "n": 7,
+            "in": "top",
+            "slots": 10,
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "ball",
+            "n": 8,
+            "in": "bottom",
+            "slots": 10,
+            "start": true
+          },
+          {
+            "id": "na",
+            "label": "@n",
+            "at": "NT",
+            "of": "top",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "nb",
+            "label": "@n",
+            "at": "NB",
+            "of": "bottom",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "gap",
+            "circle": "Gap",
+            "r": 0.5,
+            "ink": "gold",
+            "w": 4
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is seven plus eight?",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What is $7+8$?"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I'll fill the ten. I think seven needs two.",
+          "pause": 0.6,
+          "do": []
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "count",
+              "target": [
+                "b7",
+                "b8"
+              ],
+              "into": "a"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Wait. There is an empty space! I only made nine.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": "gap",
+              "at": "empty"
+            },
+            {
+              "do": "write",
+              "tex": "7+2=9",
+              "fresh": true,
+              "at": "only"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Seven needs three. One more ball fills it.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "hide",
+              "target": "gap",
+              "at": "One"
+            },
+            {
+              "do": "send",
+              "target": "b6",
+              "to": "a",
+              "at": "One"
+            },
+            {
+              "do": "write",
+              "tex": "7+3=10",
+              "fresh": true,
+              "at": "fills"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four, five.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "count",
+              "target": "b"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Five is left. So seven plus eight is seven plus three plus five.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear",
+              "at": "So"
+            },
+            {
+              "do": "write",
+              "tex": "7+8=7+3+5",
+              "fresh": true,
+              "at": "So"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Seven and three make ten. Ten and five make fifteen.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "=10+5",
+              "at": "Seven"
+            },
+            {
+              "do": "answer",
+              "tex": "15",
+              "at": "fifteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Fill the ten first. Then add what is left.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Fill the ten first."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
