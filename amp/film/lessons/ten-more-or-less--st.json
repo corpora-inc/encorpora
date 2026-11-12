@@ -1,0 +1,4731 @@
+{
+ "id": "ten-more-or-less--st",
+ "title": "Change one ten",
+ "teaches": [
+  "ten-more-or-less",
+  "subtract-whole-tens"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.5,
+     -1.6,
+     14.5,
+     12.7
+    ],
+    "points": {
+     "R1": [
+      0,
+      10
+     ],
+     "R2": [
+      1.5,
+      10
+     ],
+     "R3": [
+      3,
+      10
+     ],
+     "R4": [
+      4.5,
+      10
+     ],
+     "R5": [
+      8,
+      10
+     ],
+     "U1": [
+      10,
+      6.25
+     ],
+     "U2": [
+      11.5,
+      6.25
+     ],
+     "U3": [
+      13,
+      6.25
+     ],
+     "U4": [
+      10,
+      4.75
+     ],
+     "U5": [
+      11.5,
+      4.75
+     ],
+     "U6": [
+      13,
+      4.75
+     ],
+     "N": [
+      7,
+      12
+     ],
+     "T": [
+      3.5,
+      -1.1
+     ],
+     "O": [
+      11.5,
+      -1.1
+     ],
+     "r1tl": [
+      0,
+      10
+     ],
+     "r1tr": [
+      1,
+      10
+     ],
+     "r1br": [
+      1,
+      0
+     ],
+     "r1bl": [
+      0,
+      0
+     ],
+     "r1l1": [
+      0,
+      9
+     ],
+     "r1r1": [
+      1,
+      9
+     ],
+     "r1l2": [
+      0,
+      8
+     ],
+     "r1r2": [
+      1,
+      8
+     ],
+     "r1l3": [
+      0,
+      7
+     ],
+     "r1r3": [
+      1,
+      7
+     ],
+     "r1l4": [
+      0,
+      6
+     ],
+     "r1r4": [
+      1,
+      6
+     ],
+     "r1l5": [
+      0,
+      5
+     ],
+     "r1r5": [
+      1,
+      5
+     ],
+     "r1l6": [
+      0,
+      4
+     ],
+     "r1r6": [
+      1,
+      4
+     ],
+     "r1l7": [
+      0,
+      3
+     ],
+     "r1r7": [
+      1,
+      3
+     ],
+     "r1l8": [
+      0,
+      2
+     ],
+     "r1r8": [
+      1,
+      2
+     ],
+     "r1l9": [
+      0,
+      1
+     ],
+     "r1r9": [
+      1,
+      1
+     ],
+     "r2tl": [
+      1.5,
+      10
+     ],
+     "r2tr": [
+      2.5,
+      10
+     ],
+     "r2br": [
+      2.5,
+      0
+     ],
+     "r2bl": [
+      1.5,
+      0
+     ],
+     "r2l1": [
+      1.5,
+      9
+     ],
+     "r2r1": [
+      2.5,
+      9
+     ],
+     "r2l2": [
+      1.5,
+      8
+     ],
+     "r2r2": [
+      2.5,
+      8
+     ],
+     "r2l3": [
+      1.5,
+      7
+     ],
+     "r2r3": [
+      2.5,
+      7
+     ],
+     "r2l4": [
+      1.5,
+      6
+     ],
+     "r2r4": [
+      2.5,
+      6
+     ],
+     "r2l5": [
+      1.5,
+      5
+     ],
+     "r2r5": [
+      2.5,
+      5
+     ],
+     "r2l6": [
+      1.5,
+      4
+     ],
+     "r2r6": [
+      2.5,
+      4
+     ],
+     "r2l7": [
+      1.5,
+      3
+     ],
+     "r2r7": [
+      2.5,
+      3
+     ],
+     "r2l8": [
+      1.5,
+      2
+     ],
+     "r2r8": [
+      2.5,
+      2
+     ],
+     "r2l9": [
+      1.5,
+      1
+     ],
+     "r2r9": [
+      2.5,
+      1
+     ],
+     "r3tl": [
+      3,
+      10
+     ],
+     "r3tr": [
+      4,
+      10
+     ],
+     "r3br": [
+      4,
+      0
+     ],
+     "r3bl": [
+      3,
+      0
+     ],
+     "r3l1": [
+      3,
+      9
+     ],
+     "r3r1": [
+      4,
+      9
+     ],
+     "r3l2": [
+      3,
+      8
+     ],
+     "r3r2": [
+      4,
+      8
+     ],
+     "r3l3": [
+      3,
+      7
+     ],
+     "r3r3": [
+      4,
+      7
+     ],
+     "r3l4": [
+      3,
+      6
+     ],
+     "r3r4": [
+      4,
+      6
+     ],
+     "r3l5": [
+      3,
+      5
+     ],
+     "r3r5": [
+      4,
+      5
+     ],
+     "r3l6": [
+      3,
+      4
+     ],
+     "r3r6": [
+      4,
+      4
+     ],
+     "r3l7": [
+      3,
+      3
+     ],
+     "r3r7": [
+      4,
+      3
+     ],
+     "r3l8": [
+      3,
+      2
+     ],
+     "r3r8": [
+      4,
+      2
+     ],
+     "r3l9": [
+      3,
+      1
+     ],
+     "r3r9": [
+      4,
+      1
+     ],
+     "r4tl": [
+      4.5,
+      10
+     ],
+     "r4tr": [
+      5.5,
+      10
+     ],
+     "r4br": [
+      5.5,
+      0
+     ],
+     "r4bl": [
+      4.5,
+      0
+     ],
+     "r4l1": [
+      4.5,
+      9
+     ],
+     "r4r1": [
+      5.5,
+      9
+     ],
+     "r4l2": [
+      4.5,
+      8
+     ],
+     "r4r2": [
+      5.5,
+      8
+     ],
+     "r4l3": [
+      4.5,
+      7
+     ],
+     "r4r3": [
+      5.5,
+      7
+     ],
+     "r4l4": [
+      4.5,
+      6
+     ],
+     "r4r4": [
+      5.5,
+      6
+     ],
+     "r4l5": [
+      4.5,
+      5
+     ],
+     "r4r5": [
+      5.5,
+      5
+     ],
+     "r4l6": [
+      4.5,
+      4
+     ],
+     "r4r6": [
+      5.5,
+      4
+     ],
+     "r4l7": [
+      4.5,
+      3
+     ],
+     "r4r7": [
+      5.5,
+      3
+     ],
+     "r4l8": [
+      4.5,
+      2
+     ],
+     "r4r8": [
+      5.5,
+      2
+     ],
+     "r4l9": [
+      4.5,
+      1
+     ],
+     "r4r9": [
+      5.5,
+      1
+     ],
+     "r5tl": [
+      8,
+      10
+     ],
+     "r5tr": [
+      9,
+      10
+     ],
+     "r5br": [
+      9,
+      0
+     ],
+     "r5bl": [
+      8,
+      0
+     ],
+     "r5l1": [
+      8,
+      9
+     ],
+     "r5r1": [
+      9,
+      9
+     ],
+     "r5l2": [
+      8,
+      8
+     ],
+     "r5r2": [
+      9,
+      8
+     ],
+     "r5l3": [
+      8,
+      7
+     ],
+     "r5r3": [
+      9,
+      7
+     ],
+     "r5l4": [
+      8,
+      6
+     ],
+     "r5r4": [
+      9,
+      6
+     ],
+     "r5l5": [
+      8,
+      5
+     ],
+     "r5r5": [
+      9,
+      5
+     ],
+     "r5l6": [
+      8,
+      4
+     ],
+     "r5r6": [
+      9,
+      4
+     ],
+     "r5l7": [
+      8,
+      3
+     ],
+     "r5r7": [
+      9,
+      3
+     ],
+     "r5l8": [
+      8,
+      2
+     ],
+     "r5r8": [
+      9,
+      2
+     ],
+     "r5l9": [
+      8,
+      1
+     ],
+     "r5r9": [
+      9,
+      1
+     ],
+     "u1tl": [
+      10,
+      6.25
+     ],
+     "u1tr": [
+      11,
+      6.25
+     ],
+     "u1br": [
+      11,
+      5.25
+     ],
+     "u1bl": [
+      10,
+      5.25
+     ],
+     "u2tl": [
+      11.5,
+      6.25
+     ],
+     "u2tr": [
+      12.5,
+      6.25
+     ],
+     "u2br": [
+      12.5,
+      5.25
+     ],
+     "u2bl": [
+      11.5,
+      5.25
+     ],
+     "u3tl": [
+      13,
+      6.25
+     ],
+     "u3tr": [
+      14,
+      6.25
+     ],
+     "u3br": [
+      14,
+      5.25
+     ],
+     "u3bl": [
+      13,
+      5.25
+     ],
+     "u4tl": [
+      10,
+      4.75
+     ],
+     "u4tr": [
+      11,
+      4.75
+     ],
+     "u4br": [
+      11,
+      3.75
+     ],
+     "u4bl": [
+      10,
+      3.75
+     ],
+     "u5tl": [
+      11.5,
+      4.75
+     ],
+     "u5tr": [
+      12.5,
+      4.75
+     ],
+     "u5br": [
+      12.5,
+      3.75
+     ],
+     "u5bl": [
+      11.5,
+      3.75
+     ],
+     "u6tl": [
+      13,
+      4.75
+     ],
+     "u6tr": [
+      14,
+      4.75
+     ],
+     "u6br": [
+      14,
+      3.75
+     ],
+     "u6bl": [
+      13,
+      3.75
+     ]
+    },
+    "parts": [
+     {
+      "id": "r1body",
+      "group": "r1",
+      "poly": [
+       "r1tl",
+       "r1tr",
+       "r1br",
+       "r1bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r1line1",
+      "group": "r1",
+      "seg": [
+       "r1l1",
+       "r1r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line2",
+      "group": "r1",
+      "seg": [
+       "r1l2",
+       "r1r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line3",
+      "group": "r1",
+      "seg": [
+       "r1l3",
+       "r1r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line4",
+      "group": "r1",
+      "seg": [
+       "r1l4",
+       "r1r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line5",
+      "group": "r1",
+      "seg": [
+       "r1l5",
+       "r1r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line6",
+      "group": "r1",
+      "seg": [
+       "r1l6",
+       "r1r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line7",
+      "group": "r1",
+      "seg": [
+       "r1l7",
+       "r1r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line8",
+      "group": "r1",
+      "seg": [
+       "r1l8",
+       "r1r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line9",
+      "group": "r1",
+      "seg": [
+       "r1l9",
+       "r1r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2body",
+      "group": "r2",
+      "poly": [
+       "r2tl",
+       "r2tr",
+       "r2br",
+       "r2bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r2line1",
+      "group": "r2",
+      "seg": [
+       "r2l1",
+       "r2r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line2",
+      "group": "r2",
+      "seg": [
+       "r2l2",
+       "r2r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line3",
+      "group": "r2",
+      "seg": [
+       "r2l3",
+       "r2r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line4",
+      "group": "r2",
+      "seg": [
+       "r2l4",
+       "r2r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line5",
+      "group": "r2",
+      "seg": [
+       "r2l5",
+       "r2r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line6",
+      "group": "r2",
+      "seg": [
+       "r2l6",
+       "r2r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line7",
+      "group": "r2",
+      "seg": [
+       "r2l7",
+       "r2r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line8",
+      "group": "r2",
+      "seg": [
+       "r2l8",
+       "r2r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line9",
+      "group": "r2",
+      "seg": [
+       "r2l9",
+       "r2r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3body",
+      "group": "r3",
+      "poly": [
+       "r3tl",
+       "r3tr",
+       "r3br",
+       "r3bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r3line1",
+      "group": "r3",
+      "seg": [
+       "r3l1",
+       "r3r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line2",
+      "group": "r3",
+      "seg": [
+       "r3l2",
+       "r3r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line3",
+      "group": "r3",
+      "seg": [
+       "r3l3",
+       "r3r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line4",
+      "group": "r3",
+      "seg": [
+       "r3l4",
+       "r3r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line5",
+      "group": "r3",
+      "seg": [
+       "r3l5",
+       "r3r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line6",
+      "group": "r3",
+      "seg": [
+       "r3l6",
+       "r3r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line7",
+      "group": "r3",
+      "seg": [
+       "r3l7",
+       "r3r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line8",
+      "group": "r3",
+      "seg": [
+       "r3l8",
+       "r3r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line9",
+      "group": "r3",
+      "seg": [
+       "r3l9",
+       "r3r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4body",
+      "group": "r4",
+      "poly": [
+       "r4tl",
+       "r4tr",
+       "r4br",
+       "r4bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r4line1",
+      "group": "r4",
+      "seg": [
+       "r4l1",
+       "r4r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line2",
+      "group": "r4",
+      "seg": [
+       "r4l2",
+       "r4r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line3",
+      "group": "r4",
+      "seg": [
+       "r4l3",
+       "r4r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line4",
+      "group": "r4",
+      "seg": [
+       "r4l4",
+       "r4r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line5",
+      "group": "r4",
+      "seg": [
+       "r4l5",
+       "r4r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line6",
+      "group": "r4",
+      "seg": [
+       "r4l6",
+       "r4r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line7",
+      "group": "r4",
+      "seg": [
+       "r4l7",
+       "r4r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line8",
+      "group": "r4",
+      "seg": [
+       "r4l8",
+       "r4r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line9",
+      "group": "r4",
+      "seg": [
+       "r4l9",
+       "r4r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5body",
+      "group": "r5",
+      "poly": [
+       "r5tl",
+       "r5tr",
+       "r5br",
+       "r5bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": false
+     },
+     {
+      "id": "r5line1",
+      "group": "r5",
+      "seg": [
+       "r5l1",
+       "r5r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line2",
+      "group": "r5",
+      "seg": [
+       "r5l2",
+       "r5r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line3",
+      "group": "r5",
+      "seg": [
+       "r5l3",
+       "r5r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line4",
+      "group": "r5",
+      "seg": [
+       "r5l4",
+       "r5r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line5",
+      "group": "r5",
+      "seg": [
+       "r5l5",
+       "r5r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line6",
+      "group": "r5",
+      "seg": [
+       "r5l6",
+       "r5r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line7",
+      "group": "r5",
+      "seg": [
+       "r5l7",
+       "r5r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line8",
+      "group": "r5",
+      "seg": [
+       "r5l8",
+       "r5r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "r5line9",
+      "group": "r5",
+      "seg": [
+       "r5l9",
+       "r5r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": false
+     },
+     {
+      "id": "u1body",
+      "group": "u1",
+      "poly": [
+       "u1tl",
+       "u1tr",
+       "u1br",
+       "u1bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u2body",
+      "group": "u2",
+      "poly": [
+       "u2tl",
+       "u2tr",
+       "u2br",
+       "u2bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u3body",
+      "group": "u3",
+      "poly": [
+       "u3tl",
+       "u3tr",
+       "u3br",
+       "u3bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u4body",
+      "group": "u4",
+      "poly": [
+       "u4tl",
+       "u4tr",
+       "u4br",
+       "u4bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u5body",
+      "group": "u5",
+      "poly": [
+       "u5tl",
+       "u5tr",
+       "u5br",
+       "u5bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u6body",
+      "group": "u6",
+      "poly": [
+       "u6tl",
+       "u6tr",
+       "u6br",
+       "u6bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "n46",
+      "label": "\\color{#2563eb}4\\color{#c25e32}6",
+      "at": "N",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n56",
+      "label": "\\color{#2563eb}5\\color{#c25e32}6",
+      "at": "N",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "n36",
+      "label": "\\color{#2563eb}3\\color{#c25e32}6",
+      "at": "N",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "tens",
+      "label": "\\text{tens}",
+      "at": "T",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "oneslabel",
+      "label": "\\text{ones}",
+      "at": "O",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How do you find ten more or ten less than a number? Start with forty-six.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Ten more or ten less",
+       "at": "How"
+      },
+      {
+       "do": "highlight",
+       "target": "n46",
+       "at": "forty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each small square is one.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "u1",
+       "at": "square"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each rod is ten ones.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "r1",
+       "at": "rod"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ rod}=10\\text{ ones}",
+       "at": "rod"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four tens and six ones make forty-six.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "46=40+6",
+       "fresh": true,
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is ten more than forty-six?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is ten more than $46$?",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add one rod. Five tens and the same six ones make fifty-six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "show",
+       "target": "r5",
+       "at": "Add"
+      },
+      {
+       "do": "slide",
+       "target": "r5",
+       "by": [
+        -2,
+        0
+       ],
+       "at": "Add"
+      },
+      {
+       "do": "hide",
+       "target": "n46",
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "n56",
+       "at": "Five"
+      },
+      {
+       "do": "answer",
+       "tex": "46+10=56",
+       "at": "fifty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide that rod away. Back to forty-six.",
+     "do": [
+      {
+       "do": "slide",
+       "target": "r5",
+       "by": [
+        2,
+        0
+       ],
+       "at": "Slide"
+      },
+      {
+       "do": "hide",
+       "target": "r5",
+       "at": "Back"
+      },
+      {
+       "do": "hide",
+       "target": "n56",
+       "at": "Back"
+      },
+      {
+       "do": "show",
+       "target": "n46",
+       "at": "Back"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is ten less than forty-six?",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is ten less than $46$?",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Remove one rod. Three tens and the same six ones make thirty-six. Only the tens digit changes.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "slide",
+       "target": "r4",
+       "by": [
+        3.5,
+        0
+       ],
+       "at": "Remove"
+      },
+      {
+       "do": "hide",
+       "target": "r4",
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": "n46",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "n36",
+       "at": "Three"
+      },
+      {
+       "do": "answer",
+       "tex": "46-10=36",
+       "at": "thirty-six"
+      },
+      {
+       "do": "text",
+       "text": "Only the tens digit changes.",
+       "at": "Only"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     1,
+     0.6,
+     13,
+     13.2
+    ],
+    "points": {
+     "A": [
+      2.5,
+      10.5
+     ],
+     "N": [
+      7,
+      12
+     ],
+     "C35": [
+      4,
+      9
+     ],
+     "C36": [
+      7,
+      9
+     ],
+     "C37": [
+      10,
+      9
+     ],
+     "C45": [
+      4,
+      6
+     ],
+     "C46": [
+      7,
+      6
+     ],
+     "C47": [
+      10,
+      6
+     ],
+     "C55": [
+      4,
+      3
+     ],
+     "C56": [
+      7,
+      3
+     ],
+     "C57": [
+      10,
+      3
+     ],
+     "B1": [
+      5.65,
+      4.65
+     ],
+     "B2": [
+      8.35,
+      4.65
+     ],
+     "B3": [
+      8.35,
+      7.35
+     ],
+     "B4": [
+      5.65,
+      7.35
+     ],
+     "K1": [
+      5.5,
+      1.5
+     ],
+     "K2": [
+      8.5,
+      1.5
+     ],
+     "K3": [
+      8.5,
+      10.5
+     ],
+     "K4": [
+      5.5,
+      10.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "chart",
+      "grid": [
+       3,
+       3
+      ],
+      "at": "A",
+      "size": 3,
+      "ink": "muted",
+      "fill": "paper",
+      "start": true
+     },
+     {
+      "id": "cursor",
+      "poly": [
+       "B1",
+       "B2",
+       "B3",
+       "B4"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "title",
+      "label": "\\text{Hundred chart}",
+      "at": "N",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "c35",
+      "label": "35",
+      "at": "C35",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c36",
+      "label": "\\color{#2563eb}3\\color{#c25e32}6",
+      "at": "C36",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c37",
+      "label": "37",
+      "at": "C37",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c45",
+      "label": "45",
+      "at": "C45",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c46",
+      "label": "\\color{#2563eb}4\\color{#c25e32}6",
+      "at": "C46",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c47",
+      "label": "47",
+      "at": "C47",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c55",
+      "label": "55",
+      "at": "C55",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "c56",
+      "label": "\\color{#2563eb}5\\color{#c25e32}6",
+      "at": "C56",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c57",
+      "label": "57",
+      "at": "C57",
+      "dir": "c",
+      "size": "l",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "column",
+      "poly": [
+       "K1",
+       "K2",
+       "K3",
+       "K4"
+      ],
+      "fill": "none",
+      "ink": "warm",
+      "w": 5
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "On a hundred chart, ten more is one step down: forty-six to fifty-six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear",
+       "at": "On"
+      },
+      {
+       "do": "text",
+       "text": "Ten more: one step down",
+       "at": "On"
+      },
+      {
+       "do": "slide",
+       "target": "cursor",
+       "by": [
+        0,
+        -3
+       ],
+       "at": "down"
+      },
+      {
+       "do": "write",
+       "tex": "46+10=56",
+       "fresh": true,
+       "at": "fifty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Back to forty-six. Ten less is one step up: thirty-six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "slide",
+       "target": "cursor",
+       "by": [
+        0,
+        3
+       ],
+       "at": "Back"
+      },
+      {
+       "do": "clear",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "Ten less: one step up",
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "cursor",
+       "by": [
+        0,
+        3
+       ],
+       "at": "up"
+      },
+      {
+       "do": "write",
+       "tex": "46-10=36",
+       "fresh": true,
+       "at": "thirty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Down this column, the ones digit is always six.",
+     "do": [
+      {
+       "do": "show",
+       "target": "column",
+       "at": "column"
+      },
+      {
+       "do": "text",
+       "text": "The ones digit stays $6$",
+       "at": "always"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.5,
+     -1.6,
+     14.5,
+     12.7
+    ],
+    "points": {
+     "R1": [
+      3.5,
+      10
+     ],
+     "R2": [
+      5,
+      10
+     ],
+     "R3": [
+      6.5,
+      10
+     ],
+     "R4": [
+      8,
+      10
+     ],
+     "R5": [
+      9.5,
+      10
+     ],
+     "N": [
+      7,
+      12
+     ],
+     "T": [
+      7,
+      -1.1
+     ],
+     "r1tl": [
+      3.5,
+      10
+     ],
+     "r1tr": [
+      4.5,
+      10
+     ],
+     "r1br": [
+      4.5,
+      0
+     ],
+     "r1bl": [
+      3.5,
+      0
+     ],
+     "r1l1": [
+      3.5,
+      9
+     ],
+     "r1r1": [
+      4.5,
+      9
+     ],
+     "r1l2": [
+      3.5,
+      8
+     ],
+     "r1r2": [
+      4.5,
+      8
+     ],
+     "r1l3": [
+      3.5,
+      7
+     ],
+     "r1r3": [
+      4.5,
+      7
+     ],
+     "r1l4": [
+      3.5,
+      6
+     ],
+     "r1r4": [
+      4.5,
+      6
+     ],
+     "r1l5": [
+      3.5,
+      5
+     ],
+     "r1r5": [
+      4.5,
+      5
+     ],
+     "r1l6": [
+      3.5,
+      4
+     ],
+     "r1r6": [
+      4.5,
+      4
+     ],
+     "r1l7": [
+      3.5,
+      3
+     ],
+     "r1r7": [
+      4.5,
+      3
+     ],
+     "r1l8": [
+      3.5,
+      2
+     ],
+     "r1r8": [
+      4.5,
+      2
+     ],
+     "r1l9": [
+      3.5,
+      1
+     ],
+     "r1r9": [
+      4.5,
+      1
+     ],
+     "r2tl": [
+      5,
+      10
+     ],
+     "r2tr": [
+      6,
+      10
+     ],
+     "r2br": [
+      6,
+      0
+     ],
+     "r2bl": [
+      5,
+      0
+     ],
+     "r2l1": [
+      5,
+      9
+     ],
+     "r2r1": [
+      6,
+      9
+     ],
+     "r2l2": [
+      5,
+      8
+     ],
+     "r2r2": [
+      6,
+      8
+     ],
+     "r2l3": [
+      5,
+      7
+     ],
+     "r2r3": [
+      6,
+      7
+     ],
+     "r2l4": [
+      5,
+      6
+     ],
+     "r2r4": [
+      6,
+      6
+     ],
+     "r2l5": [
+      5,
+      5
+     ],
+     "r2r5": [
+      6,
+      5
+     ],
+     "r2l6": [
+      5,
+      4
+     ],
+     "r2r6": [
+      6,
+      4
+     ],
+     "r2l7": [
+      5,
+      3
+     ],
+     "r2r7": [
+      6,
+      3
+     ],
+     "r2l8": [
+      5,
+      2
+     ],
+     "r2r8": [
+      6,
+      2
+     ],
+     "r2l9": [
+      5,
+      1
+     ],
+     "r2r9": [
+      6,
+      1
+     ],
+     "r3tl": [
+      6.5,
+      10
+     ],
+     "r3tr": [
+      7.5,
+      10
+     ],
+     "r3br": [
+      7.5,
+      0
+     ],
+     "r3bl": [
+      6.5,
+      0
+     ],
+     "r3l1": [
+      6.5,
+      9
+     ],
+     "r3r1": [
+      7.5,
+      9
+     ],
+     "r3l2": [
+      6.5,
+      8
+     ],
+     "r3r2": [
+      7.5,
+      8
+     ],
+     "r3l3": [
+      6.5,
+      7
+     ],
+     "r3r3": [
+      7.5,
+      7
+     ],
+     "r3l4": [
+      6.5,
+      6
+     ],
+     "r3r4": [
+      7.5,
+      6
+     ],
+     "r3l5": [
+      6.5,
+      5
+     ],
+     "r3r5": [
+      7.5,
+      5
+     ],
+     "r3l6": [
+      6.5,
+      4
+     ],
+     "r3r6": [
+      7.5,
+      4
+     ],
+     "r3l7": [
+      6.5,
+      3
+     ],
+     "r3r7": [
+      7.5,
+      3
+     ],
+     "r3l8": [
+      6.5,
+      2
+     ],
+     "r3r8": [
+      7.5,
+      2
+     ],
+     "r3l9": [
+      6.5,
+      1
+     ],
+     "r3r9": [
+      7.5,
+      1
+     ],
+     "r4tl": [
+      8,
+      10
+     ],
+     "r4tr": [
+      9,
+      10
+     ],
+     "r4br": [
+      9,
+      0
+     ],
+     "r4bl": [
+      8,
+      0
+     ],
+     "r4l1": [
+      8,
+      9
+     ],
+     "r4r1": [
+      9,
+      9
+     ],
+     "r4l2": [
+      8,
+      8
+     ],
+     "r4r2": [
+      9,
+      8
+     ],
+     "r4l3": [
+      8,
+      7
+     ],
+     "r4r3": [
+      9,
+      7
+     ],
+     "r4l4": [
+      8,
+      6
+     ],
+     "r4r4": [
+      9,
+      6
+     ],
+     "r4l5": [
+      8,
+      5
+     ],
+     "r4r5": [
+      9,
+      5
+     ],
+     "r4l6": [
+      8,
+      4
+     ],
+     "r4r6": [
+      9,
+      4
+     ],
+     "r4l7": [
+      8,
+      3
+     ],
+     "r4r7": [
+      9,
+      3
+     ],
+     "r4l8": [
+      8,
+      2
+     ],
+     "r4r8": [
+      9,
+      2
+     ],
+     "r4l9": [
+      8,
+      1
+     ],
+     "r4r9": [
+      9,
+      1
+     ],
+     "r5tl": [
+      9.5,
+      10
+     ],
+     "r5tr": [
+      10.5,
+      10
+     ],
+     "r5br": [
+      10.5,
+      0
+     ],
+     "r5bl": [
+      9.5,
+      0
+     ],
+     "r5l1": [
+      9.5,
+      9
+     ],
+     "r5r1": [
+      10.5,
+      9
+     ],
+     "r5l2": [
+      9.5,
+      8
+     ],
+     "r5r2": [
+      10.5,
+      8
+     ],
+     "r5l3": [
+      9.5,
+      7
+     ],
+     "r5r3": [
+      10.5,
+      7
+     ],
+     "r5l4": [
+      9.5,
+      6
+     ],
+     "r5r4": [
+      10.5,
+      6
+     ],
+     "r5l5": [
+      9.5,
+      5
+     ],
+     "r5r5": [
+      10.5,
+      5
+     ],
+     "r5l6": [
+      9.5,
+      4
+     ],
+     "r5r6": [
+      10.5,
+      4
+     ],
+     "r5l7": [
+      9.5,
+      3
+     ],
+     "r5r7": [
+      10.5,
+      3
+     ],
+     "r5l8": [
+      9.5,
+      2
+     ],
+     "r5r8": [
+      10.5,
+      2
+     ],
+     "r5l9": [
+      9.5,
+      1
+     ],
+     "r5r9": [
+      10.5,
+      1
+     ]
+    },
+    "parts": [
+     {
+      "id": "r1body",
+      "group": "r1",
+      "poly": [
+       "r1tl",
+       "r1tr",
+       "r1br",
+       "r1bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r1line1",
+      "group": "r1",
+      "seg": [
+       "r1l1",
+       "r1r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line2",
+      "group": "r1",
+      "seg": [
+       "r1l2",
+       "r1r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line3",
+      "group": "r1",
+      "seg": [
+       "r1l3",
+       "r1r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line4",
+      "group": "r1",
+      "seg": [
+       "r1l4",
+       "r1r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line5",
+      "group": "r1",
+      "seg": [
+       "r1l5",
+       "r1r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line6",
+      "group": "r1",
+      "seg": [
+       "r1l6",
+       "r1r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line7",
+      "group": "r1",
+      "seg": [
+       "r1l7",
+       "r1r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line8",
+      "group": "r1",
+      "seg": [
+       "r1l8",
+       "r1r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line9",
+      "group": "r1",
+      "seg": [
+       "r1l9",
+       "r1r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2body",
+      "group": "r2",
+      "poly": [
+       "r2tl",
+       "r2tr",
+       "r2br",
+       "r2bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r2line1",
+      "group": "r2",
+      "seg": [
+       "r2l1",
+       "r2r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line2",
+      "group": "r2",
+      "seg": [
+       "r2l2",
+       "r2r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line3",
+      "group": "r2",
+      "seg": [
+       "r2l3",
+       "r2r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line4",
+      "group": "r2",
+      "seg": [
+       "r2l4",
+       "r2r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line5",
+      "group": "r2",
+      "seg": [
+       "r2l5",
+       "r2r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line6",
+      "group": "r2",
+      "seg": [
+       "r2l6",
+       "r2r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line7",
+      "group": "r2",
+      "seg": [
+       "r2l7",
+       "r2r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line8",
+      "group": "r2",
+      "seg": [
+       "r2l8",
+       "r2r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line9",
+      "group": "r2",
+      "seg": [
+       "r2l9",
+       "r2r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3body",
+      "group": "r3",
+      "poly": [
+       "r3tl",
+       "r3tr",
+       "r3br",
+       "r3bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r3line1",
+      "group": "r3",
+      "seg": [
+       "r3l1",
+       "r3r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line2",
+      "group": "r3",
+      "seg": [
+       "r3l2",
+       "r3r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line3",
+      "group": "r3",
+      "seg": [
+       "r3l3",
+       "r3r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line4",
+      "group": "r3",
+      "seg": [
+       "r3l4",
+       "r3r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line5",
+      "group": "r3",
+      "seg": [
+       "r3l5",
+       "r3r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line6",
+      "group": "r3",
+      "seg": [
+       "r3l6",
+       "r3r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line7",
+      "group": "r3",
+      "seg": [
+       "r3l7",
+       "r3r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line8",
+      "group": "r3",
+      "seg": [
+       "r3l8",
+       "r3r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line9",
+      "group": "r3",
+      "seg": [
+       "r3l9",
+       "r3r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4body",
+      "group": "r4",
+      "poly": [
+       "r4tl",
+       "r4tr",
+       "r4br",
+       "r4bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r4line1",
+      "group": "r4",
+      "seg": [
+       "r4l1",
+       "r4r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line2",
+      "group": "r4",
+      "seg": [
+       "r4l2",
+       "r4r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line3",
+      "group": "r4",
+      "seg": [
+       "r4l3",
+       "r4r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line4",
+      "group": "r4",
+      "seg": [
+       "r4l4",
+       "r4r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line5",
+      "group": "r4",
+      "seg": [
+       "r4l5",
+       "r4r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line6",
+      "group": "r4",
+      "seg": [
+       "r4l6",
+       "r4r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line7",
+      "group": "r4",
+      "seg": [
+       "r4l7",
+       "r4r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line8",
+      "group": "r4",
+      "seg": [
+       "r4l8",
+       "r4r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line9",
+      "group": "r4",
+      "seg": [
+       "r4l9",
+       "r4r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5body",
+      "group": "r5",
+      "poly": [
+       "r5tl",
+       "r5tr",
+       "r5br",
+       "r5bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r5line1",
+      "group": "r5",
+      "seg": [
+       "r5l1",
+       "r5r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line2",
+      "group": "r5",
+      "seg": [
+       "r5l2",
+       "r5r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line3",
+      "group": "r5",
+      "seg": [
+       "r5l3",
+       "r5r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line4",
+      "group": "r5",
+      "seg": [
+       "r5l4",
+       "r5r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line5",
+      "group": "r5",
+      "seg": [
+       "r5l5",
+       "r5r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line6",
+      "group": "r5",
+      "seg": [
+       "r5l6",
+       "r5r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line7",
+      "group": "r5",
+      "seg": [
+       "r5l7",
+       "r5r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line8",
+      "group": "r5",
+      "seg": [
+       "r5l8",
+       "r5r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line9",
+      "group": "r5",
+      "seg": [
+       "r5l9",
+       "r5r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "n50",
+      "label": "\\color{#2563eb}5\\color{#c25e32}0",
+      "at": "N",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n30",
+      "label": "\\color{#2563eb}3\\color{#c25e32}0",
+      "at": "N",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "tens",
+      "label": "\\text{tens}",
+      "at": "T",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The model shows fifty. Take away twenty. What number is left?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "problem",
+       "text": "The model shows $50$. Take away $20$. What number is left?",
+       "at": "The"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fifty is five tens. Twenty is two tens, so take two rods away.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "n50",
+       "at": "Fifty"
+      },
+      {
+       "do": "slide",
+       "target": "r1",
+       "by": [
+        -3,
+        0
+       ],
+       "at": "take"
+      },
+      {
+       "do": "slide",
+       "target": "r5",
+       "by": [
+        3,
+        0
+       ],
+       "at": "take"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "r1",
+        "r5"
+       ],
+       "at": "away"
+      },
+      {
+       "do": "hide",
+       "target": "n50",
+       "at": "away"
+      },
+      {
+       "do": "show",
+       "target": "n30",
+       "at": "away"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five tens minus two tens is three tens, so fifty minus twenty is thirty.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "5\\text{ tens}-2\\text{ tens}=3\\text{ tens}",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "answer",
+       "tex": "50-20=30",
+       "at": "so"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.5,
+     -1.6,
+     14.5,
+     12.7
+    ],
+    "points": {
+     "R1": [
+      0,
+      10
+     ],
+     "R2": [
+      1.5,
+      10
+     ],
+     "R3": [
+      3,
+      10
+     ],
+     "R4": [
+      4.5,
+      10
+     ],
+     "R5": [
+      6,
+      10
+     ],
+     "R6": [
+      7.5,
+      10
+     ],
+     "U1": [
+      10,
+      7
+     ],
+     "U2": [
+      11.5,
+      7
+     ],
+     "U3": [
+      13,
+      7
+     ],
+     "U4": [
+      10,
+      5.5
+     ],
+     "U5": [
+      11.5,
+      5.5
+     ],
+     "U6": [
+      13,
+      5.5
+     ],
+     "U7": [
+      10,
+      4
+     ],
+     "U8": [
+      11.5,
+      4
+     ],
+     "U9": [
+      13,
+      4
+     ],
+     "N": [
+      7,
+      12
+     ],
+     "T": [
+      3.5,
+      -1.1
+     ],
+     "O": [
+      11.5,
+      -1.1
+     ],
+     "r1tl": [
+      0,
+      10
+     ],
+     "r1tr": [
+      1,
+      10
+     ],
+     "r1br": [
+      1,
+      0
+     ],
+     "r1bl": [
+      0,
+      0
+     ],
+     "r1l1": [
+      0,
+      9
+     ],
+     "r1r1": [
+      1,
+      9
+     ],
+     "r1l2": [
+      0,
+      8
+     ],
+     "r1r2": [
+      1,
+      8
+     ],
+     "r1l3": [
+      0,
+      7
+     ],
+     "r1r3": [
+      1,
+      7
+     ],
+     "r1l4": [
+      0,
+      6
+     ],
+     "r1r4": [
+      1,
+      6
+     ],
+     "r1l5": [
+      0,
+      5
+     ],
+     "r1r5": [
+      1,
+      5
+     ],
+     "r1l6": [
+      0,
+      4
+     ],
+     "r1r6": [
+      1,
+      4
+     ],
+     "r1l7": [
+      0,
+      3
+     ],
+     "r1r7": [
+      1,
+      3
+     ],
+     "r1l8": [
+      0,
+      2
+     ],
+     "r1r8": [
+      1,
+      2
+     ],
+     "r1l9": [
+      0,
+      1
+     ],
+     "r1r9": [
+      1,
+      1
+     ],
+     "r2tl": [
+      1.5,
+      10
+     ],
+     "r2tr": [
+      2.5,
+      10
+     ],
+     "r2br": [
+      2.5,
+      0
+     ],
+     "r2bl": [
+      1.5,
+      0
+     ],
+     "r2l1": [
+      1.5,
+      9
+     ],
+     "r2r1": [
+      2.5,
+      9
+     ],
+     "r2l2": [
+      1.5,
+      8
+     ],
+     "r2r2": [
+      2.5,
+      8
+     ],
+     "r2l3": [
+      1.5,
+      7
+     ],
+     "r2r3": [
+      2.5,
+      7
+     ],
+     "r2l4": [
+      1.5,
+      6
+     ],
+     "r2r4": [
+      2.5,
+      6
+     ],
+     "r2l5": [
+      1.5,
+      5
+     ],
+     "r2r5": [
+      2.5,
+      5
+     ],
+     "r2l6": [
+      1.5,
+      4
+     ],
+     "r2r6": [
+      2.5,
+      4
+     ],
+     "r2l7": [
+      1.5,
+      3
+     ],
+     "r2r7": [
+      2.5,
+      3
+     ],
+     "r2l8": [
+      1.5,
+      2
+     ],
+     "r2r8": [
+      2.5,
+      2
+     ],
+     "r2l9": [
+      1.5,
+      1
+     ],
+     "r2r9": [
+      2.5,
+      1
+     ],
+     "r3tl": [
+      3,
+      10
+     ],
+     "r3tr": [
+      4,
+      10
+     ],
+     "r3br": [
+      4,
+      0
+     ],
+     "r3bl": [
+      3,
+      0
+     ],
+     "r3l1": [
+      3,
+      9
+     ],
+     "r3r1": [
+      4,
+      9
+     ],
+     "r3l2": [
+      3,
+      8
+     ],
+     "r3r2": [
+      4,
+      8
+     ],
+     "r3l3": [
+      3,
+      7
+     ],
+     "r3r3": [
+      4,
+      7
+     ],
+     "r3l4": [
+      3,
+      6
+     ],
+     "r3r4": [
+      4,
+      6
+     ],
+     "r3l5": [
+      3,
+      5
+     ],
+     "r3r5": [
+      4,
+      5
+     ],
+     "r3l6": [
+      3,
+      4
+     ],
+     "r3r6": [
+      4,
+      4
+     ],
+     "r3l7": [
+      3,
+      3
+     ],
+     "r3r7": [
+      4,
+      3
+     ],
+     "r3l8": [
+      3,
+      2
+     ],
+     "r3r8": [
+      4,
+      2
+     ],
+     "r3l9": [
+      3,
+      1
+     ],
+     "r3r9": [
+      4,
+      1
+     ],
+     "r4tl": [
+      4.5,
+      10
+     ],
+     "r4tr": [
+      5.5,
+      10
+     ],
+     "r4br": [
+      5.5,
+      0
+     ],
+     "r4bl": [
+      4.5,
+      0
+     ],
+     "r4l1": [
+      4.5,
+      9
+     ],
+     "r4r1": [
+      5.5,
+      9
+     ],
+     "r4l2": [
+      4.5,
+      8
+     ],
+     "r4r2": [
+      5.5,
+      8
+     ],
+     "r4l3": [
+      4.5,
+      7
+     ],
+     "r4r3": [
+      5.5,
+      7
+     ],
+     "r4l4": [
+      4.5,
+      6
+     ],
+     "r4r4": [
+      5.5,
+      6
+     ],
+     "r4l5": [
+      4.5,
+      5
+     ],
+     "r4r5": [
+      5.5,
+      5
+     ],
+     "r4l6": [
+      4.5,
+      4
+     ],
+     "r4r6": [
+      5.5,
+      4
+     ],
+     "r4l7": [
+      4.5,
+      3
+     ],
+     "r4r7": [
+      5.5,
+      3
+     ],
+     "r4l8": [
+      4.5,
+      2
+     ],
+     "r4r8": [
+      5.5,
+      2
+     ],
+     "r4l9": [
+      4.5,
+      1
+     ],
+     "r4r9": [
+      5.5,
+      1
+     ],
+     "r5tl": [
+      6,
+      10
+     ],
+     "r5tr": [
+      7,
+      10
+     ],
+     "r5br": [
+      7,
+      0
+     ],
+     "r5bl": [
+      6,
+      0
+     ],
+     "r5l1": [
+      6,
+      9
+     ],
+     "r5r1": [
+      7,
+      9
+     ],
+     "r5l2": [
+      6,
+      8
+     ],
+     "r5r2": [
+      7,
+      8
+     ],
+     "r5l3": [
+      6,
+      7
+     ],
+     "r5r3": [
+      7,
+      7
+     ],
+     "r5l4": [
+      6,
+      6
+     ],
+     "r5r4": [
+      7,
+      6
+     ],
+     "r5l5": [
+      6,
+      5
+     ],
+     "r5r5": [
+      7,
+      5
+     ],
+     "r5l6": [
+      6,
+      4
+     ],
+     "r5r6": [
+      7,
+      4
+     ],
+     "r5l7": [
+      6,
+      3
+     ],
+     "r5r7": [
+      7,
+      3
+     ],
+     "r5l8": [
+      6,
+      2
+     ],
+     "r5r8": [
+      7,
+      2
+     ],
+     "r5l9": [
+      6,
+      1
+     ],
+     "r5r9": [
+      7,
+      1
+     ],
+     "r6tl": [
+      7.5,
+      10
+     ],
+     "r6tr": [
+      8.5,
+      10
+     ],
+     "r6br": [
+      8.5,
+      0
+     ],
+     "r6bl": [
+      7.5,
+      0
+     ],
+     "r6l1": [
+      7.5,
+      9
+     ],
+     "r6r1": [
+      8.5,
+      9
+     ],
+     "r6l2": [
+      7.5,
+      8
+     ],
+     "r6r2": [
+      8.5,
+      8
+     ],
+     "r6l3": [
+      7.5,
+      7
+     ],
+     "r6r3": [
+      8.5,
+      7
+     ],
+     "r6l4": [
+      7.5,
+      6
+     ],
+     "r6r4": [
+      8.5,
+      6
+     ],
+     "r6l5": [
+      7.5,
+      5
+     ],
+     "r6r5": [
+      8.5,
+      5
+     ],
+     "r6l6": [
+      7.5,
+      4
+     ],
+     "r6r6": [
+      8.5,
+      4
+     ],
+     "r6l7": [
+      7.5,
+      3
+     ],
+     "r6r7": [
+      8.5,
+      3
+     ],
+     "r6l8": [
+      7.5,
+      2
+     ],
+     "r6r8": [
+      8.5,
+      2
+     ],
+     "r6l9": [
+      7.5,
+      1
+     ],
+     "r6r9": [
+      8.5,
+      1
+     ],
+     "u1tl": [
+      10,
+      7
+     ],
+     "u1tr": [
+      11,
+      7
+     ],
+     "u1br": [
+      11,
+      6
+     ],
+     "u1bl": [
+      10,
+      6
+     ],
+     "u2tl": [
+      11.5,
+      7
+     ],
+     "u2tr": [
+      12.5,
+      7
+     ],
+     "u2br": [
+      12.5,
+      6
+     ],
+     "u2bl": [
+      11.5,
+      6
+     ],
+     "u3tl": [
+      13,
+      7
+     ],
+     "u3tr": [
+      14,
+      7
+     ],
+     "u3br": [
+      14,
+      6
+     ],
+     "u3bl": [
+      13,
+      6
+     ],
+     "u4tl": [
+      10,
+      5.5
+     ],
+     "u4tr": [
+      11,
+      5.5
+     ],
+     "u4br": [
+      11,
+      4.5
+     ],
+     "u4bl": [
+      10,
+      4.5
+     ],
+     "u5tl": [
+      11.5,
+      5.5
+     ],
+     "u5tr": [
+      12.5,
+      5.5
+     ],
+     "u5br": [
+      12.5,
+      4.5
+     ],
+     "u5bl": [
+      11.5,
+      4.5
+     ],
+     "u6tl": [
+      13,
+      5.5
+     ],
+     "u6tr": [
+      14,
+      5.5
+     ],
+     "u6br": [
+      14,
+      4.5
+     ],
+     "u6bl": [
+      13,
+      4.5
+     ],
+     "u7tl": [
+      10,
+      4
+     ],
+     "u7tr": [
+      11,
+      4
+     ],
+     "u7br": [
+      11,
+      3
+     ],
+     "u7bl": [
+      10,
+      3
+     ],
+     "u8tl": [
+      11.5,
+      4
+     ],
+     "u8tr": [
+      12.5,
+      4
+     ],
+     "u8br": [
+      12.5,
+      3
+     ],
+     "u8bl": [
+      11.5,
+      3
+     ],
+     "u9tl": [
+      13,
+      4
+     ],
+     "u9tr": [
+      14,
+      4
+     ],
+     "u9br": [
+      14,
+      3
+     ],
+     "u9bl": [
+      13,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "r1body",
+      "group": "r1",
+      "poly": [
+       "r1tl",
+       "r1tr",
+       "r1br",
+       "r1bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r1line1",
+      "group": "r1",
+      "seg": [
+       "r1l1",
+       "r1r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line2",
+      "group": "r1",
+      "seg": [
+       "r1l2",
+       "r1r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line3",
+      "group": "r1",
+      "seg": [
+       "r1l3",
+       "r1r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line4",
+      "group": "r1",
+      "seg": [
+       "r1l4",
+       "r1r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line5",
+      "group": "r1",
+      "seg": [
+       "r1l5",
+       "r1r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line6",
+      "group": "r1",
+      "seg": [
+       "r1l6",
+       "r1r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line7",
+      "group": "r1",
+      "seg": [
+       "r1l7",
+       "r1r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line8",
+      "group": "r1",
+      "seg": [
+       "r1l8",
+       "r1r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r1line9",
+      "group": "r1",
+      "seg": [
+       "r1l9",
+       "r1r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2body",
+      "group": "r2",
+      "poly": [
+       "r2tl",
+       "r2tr",
+       "r2br",
+       "r2bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r2line1",
+      "group": "r2",
+      "seg": [
+       "r2l1",
+       "r2r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line2",
+      "group": "r2",
+      "seg": [
+       "r2l2",
+       "r2r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line3",
+      "group": "r2",
+      "seg": [
+       "r2l3",
+       "r2r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line4",
+      "group": "r2",
+      "seg": [
+       "r2l4",
+       "r2r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line5",
+      "group": "r2",
+      "seg": [
+       "r2l5",
+       "r2r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line6",
+      "group": "r2",
+      "seg": [
+       "r2l6",
+       "r2r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line7",
+      "group": "r2",
+      "seg": [
+       "r2l7",
+       "r2r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line8",
+      "group": "r2",
+      "seg": [
+       "r2l8",
+       "r2r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r2line9",
+      "group": "r2",
+      "seg": [
+       "r2l9",
+       "r2r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3body",
+      "group": "r3",
+      "poly": [
+       "r3tl",
+       "r3tr",
+       "r3br",
+       "r3bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r3line1",
+      "group": "r3",
+      "seg": [
+       "r3l1",
+       "r3r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line2",
+      "group": "r3",
+      "seg": [
+       "r3l2",
+       "r3r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line3",
+      "group": "r3",
+      "seg": [
+       "r3l3",
+       "r3r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line4",
+      "group": "r3",
+      "seg": [
+       "r3l4",
+       "r3r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line5",
+      "group": "r3",
+      "seg": [
+       "r3l5",
+       "r3r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line6",
+      "group": "r3",
+      "seg": [
+       "r3l6",
+       "r3r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line7",
+      "group": "r3",
+      "seg": [
+       "r3l7",
+       "r3r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line8",
+      "group": "r3",
+      "seg": [
+       "r3l8",
+       "r3r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r3line9",
+      "group": "r3",
+      "seg": [
+       "r3l9",
+       "r3r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4body",
+      "group": "r4",
+      "poly": [
+       "r4tl",
+       "r4tr",
+       "r4br",
+       "r4bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r4line1",
+      "group": "r4",
+      "seg": [
+       "r4l1",
+       "r4r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line2",
+      "group": "r4",
+      "seg": [
+       "r4l2",
+       "r4r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line3",
+      "group": "r4",
+      "seg": [
+       "r4l3",
+       "r4r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line4",
+      "group": "r4",
+      "seg": [
+       "r4l4",
+       "r4r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line5",
+      "group": "r4",
+      "seg": [
+       "r4l5",
+       "r4r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line6",
+      "group": "r4",
+      "seg": [
+       "r4l6",
+       "r4r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line7",
+      "group": "r4",
+      "seg": [
+       "r4l7",
+       "r4r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line8",
+      "group": "r4",
+      "seg": [
+       "r4l8",
+       "r4r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r4line9",
+      "group": "r4",
+      "seg": [
+       "r4l9",
+       "r4r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5body",
+      "group": "r5",
+      "poly": [
+       "r5tl",
+       "r5tr",
+       "r5br",
+       "r5bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r5line1",
+      "group": "r5",
+      "seg": [
+       "r5l1",
+       "r5r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line2",
+      "group": "r5",
+      "seg": [
+       "r5l2",
+       "r5r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line3",
+      "group": "r5",
+      "seg": [
+       "r5l3",
+       "r5r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line4",
+      "group": "r5",
+      "seg": [
+       "r5l4",
+       "r5r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line5",
+      "group": "r5",
+      "seg": [
+       "r5l5",
+       "r5r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line6",
+      "group": "r5",
+      "seg": [
+       "r5l6",
+       "r5r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line7",
+      "group": "r5",
+      "seg": [
+       "r5l7",
+       "r5r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line8",
+      "group": "r5",
+      "seg": [
+       "r5l8",
+       "r5r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r5line9",
+      "group": "r5",
+      "seg": [
+       "r5l9",
+       "r5r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6body",
+      "group": "r6",
+      "poly": [
+       "r6tl",
+       "r6tr",
+       "r6br",
+       "r6bl"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "r6line1",
+      "group": "r6",
+      "seg": [
+       "r6l1",
+       "r6r1"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line2",
+      "group": "r6",
+      "seg": [
+       "r6l2",
+       "r6r2"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line3",
+      "group": "r6",
+      "seg": [
+       "r6l3",
+       "r6r3"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line4",
+      "group": "r6",
+      "seg": [
+       "r6l4",
+       "r6r4"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line5",
+      "group": "r6",
+      "seg": [
+       "r6l5",
+       "r6r5"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line6",
+      "group": "r6",
+      "seg": [
+       "r6l6",
+       "r6r6"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line7",
+      "group": "r6",
+      "seg": [
+       "r6l7",
+       "r6r7"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line8",
+      "group": "r6",
+      "seg": [
+       "r6l8",
+       "r6r8"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "r6line9",
+      "group": "r6",
+      "seg": [
+       "r6l9",
+       "r6r9"
+      ],
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "u1body",
+      "group": "u1",
+      "poly": [
+       "u1tl",
+       "u1tr",
+       "u1br",
+       "u1bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u2body",
+      "group": "u2",
+      "poly": [
+       "u2tl",
+       "u2tr",
+       "u2br",
+       "u2bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u3body",
+      "group": "u3",
+      "poly": [
+       "u3tl",
+       "u3tr",
+       "u3br",
+       "u3bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u4body",
+      "group": "u4",
+      "poly": [
+       "u4tl",
+       "u4tr",
+       "u4br",
+       "u4bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u5body",
+      "group": "u5",
+      "poly": [
+       "u5tl",
+       "u5tr",
+       "u5br",
+       "u5bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u6body",
+      "group": "u6",
+      "poly": [
+       "u6tl",
+       "u6tr",
+       "u6br",
+       "u6bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u7body",
+      "group": "u7",
+      "poly": [
+       "u7tl",
+       "u7tr",
+       "u7br",
+       "u7bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u8body",
+      "group": "u8",
+      "poly": [
+       "u8tl",
+       "u8tr",
+       "u8br",
+       "u8bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "u9body",
+      "group": "u9",
+      "poly": [
+       "u9tl",
+       "u9tr",
+       "u9br",
+       "u9bl"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "n69",
+      "label": "\\color{#2563eb}6\\color{#c25e32}9",
+      "at": "N",
+      "dir": "c",
+      "size": "xl",
+      "start": true
+     },
+     {
+      "id": "n59",
+      "label": "\\color{#2563eb}5\\color{#c25e32}9",
+      "at": "N",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "tens",
+      "label": "\\text{tens}",
+      "at": "T",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "oneslabel",
+      "label": "\\text{ones}",
+      "at": "O",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What is ten less than sixty-nine? Explain why.",
+     "pause": 2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is ten less than $69$? Explain why.",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Sixty-eight, sixty-seven... I've lost how many ones I took away.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "68,\\ 67,\\ \\ldots",
+       "note": "\\text{by ones}",
+       "fresh": true,
+       "at": "Sixty-eight"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "I'll use tens. Remove one rod. Five tens and nine ones. Fifty-nine.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear",
+       "at": "I'll"
+      },
+      {
+       "do": "text",
+       "text": "Remove one ten. Keep nine ones.",
+       "at": "I'll"
+      },
+      {
+       "do": "slide",
+       "target": "r6",
+       "by": [
+        1,
+        0
+       ],
+       "at": "Remove"
+      },
+      {
+       "do": "hide",
+       "target": "r6",
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": "n69",
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "n59",
+       "at": "Five"
+      },
+      {
+       "do": "answer",
+       "tex": "69-10=59",
+       "at": "Fifty-nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten more adds a rod, so the tens digit goes up by one.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "Ten more: tens digit up one",
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "r6",
+       "at": "adds"
+      },
+      {
+       "do": "slide",
+       "target": "r6",
+       "by": [
+        -1,
+        0
+       ],
+       "at": "adds"
+      },
+      {
+       "do": "hide",
+       "target": "n59",
+       "at": "digit"
+      },
+      {
+       "do": "show",
+       "target": "n69",
+       "at": "digit"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten less takes a rod away, so it goes down by one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "text",
+       "text": "Ten less: tens digit down one",
+       "at": "Ten"
+      },
+      {
+       "do": "slide",
+       "target": "r6",
+       "by": [
+        1,
+        0
+       ],
+       "at": "takes"
+      },
+      {
+       "do": "hide",
+       "target": "r6",
+       "at": "away"
+      },
+      {
+       "do": "hide",
+       "target": "n69",
+       "at": "down"
+      },
+      {
+       "do": "show",
+       "target": "n59",
+       "at": "down"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten more, one more rod. The ones stay.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "Ten more, one more rod.",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "The ones stay.",
+       "at": "The"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
