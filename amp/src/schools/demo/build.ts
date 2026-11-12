@@ -1,10 +1,11 @@
 /**
- * Demo places (docs/schools.md#demo-places): a class or a whole school, fully
- * alive, for a signed-in account to explore before any agreement or payment.
- * One transaction writes the place, its people and twelve weeks of believable
- * practice; then the hero class gets a stack of real workbooks. Everything in
- * a demo org is synthetic: made-up students, `demo` grants that are never
- * revenue, no mail, and no way to add a real student.
+ * The shared demo school (docs/schools.md#demo-places): a whole school, fully
+ * alive, written once a day per demo zone from the static term (`roster.ts`,
+ * `shift.ts`). One transaction writes the place, its made-up people and twelve
+ * weeks of practice; then the hero class gets a stack of real workbooks.
+ * Visitors join it (`shared.ts`). Everything in it is synthetic: made-up
+ * students, `demo` grants that are never revenue, no mail, and no way to add
+ * a real student.
  */
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
@@ -27,19 +28,19 @@ import { writeClassHistory } from "./history.js";
 import { TEACHER_NAMES } from "./names.js";
 import { DAY, hash, wrongResponse, type Persona } from "./personas.js";
 import {
-  demoDay,
   demoRoster,
   joinedOn,
   SCHOOL_NAME,
-  type DemoDay,
+  sharedDay,
+  zonedInstant,
   type DemoKind,
 } from "./roster.js";
+import { shiftTerms } from "./shift.js";
 import { demoTerms } from "./snapshot.js";
 import type { Simulation } from "./simulate.js";
 import { seedCalendar, seedStaffEvents, sumWeeks } from "./term.js";
 
 export { demoKinds, type DemoKind } from "./roster.js";
-export type DemoPlace = { orgId: string; classId: string; created: boolean };
 
 const DEMO_TEACHERS = [
   TEACHER_NAMES[4]!,
@@ -48,7 +49,7 @@ const DEMO_TEACHERS = [
 ];
 
 /** The name a demo greets its owner by: the account's own, else none. */
-async function ownerName(client: PoolClient, accountId: string) {
+export async function ownerName(client: PoolClient, accountId: string) {
   if (!accountId.startsWith("amp|")) return null;
   const table = await client.query(
     "SELECT to_regclass('amp_auth_users') IS NOT NULL AS present",
@@ -98,118 +99,44 @@ type Planned = {
   }[];
 };
 
-/** The caller's demo of this kind: the one they have, or a new one. */
-export async function createDemo(
-  pool: Pool,
-  input: { accountId: string; kind: DemoKind; timezone?: string },
-  learning?: Repository,
-  now = Date.now(),
-): Promise<DemoPlace> {
-  const timezone = input.timezone ?? "America/New_York";
-  const day = demoDay(now, timezone);
-  // The day's terms are computed ahead (`snapshot.ts`), so this is a read.
-  // A returning owner needs none; a new demo waits here, holding no lock or
-  // connection, if they are still being computed.
-  const terms = (await hasDemo(pool, input))
-    ? null
-    : await demoTerms(pool, input.kind, day);
-  // The workbook worker starts while the class is written.
-  const warming = learning
-    ? workbookWorker()
-        .warm()
-        .catch(() => undefined)
-    : null;
-  const place = await transaction(pool, async (client) => {
-    // A second request (a double-click) waits for the first to finish,
-    // then returns what it made.
-    await client.query("SET LOCAL lock_timeout='180s'");
-    await client.query("SET LOCAL statement_timeout='180s'");
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      `school-demo:${input.accountId}:${input.kind}`,
-    ]);
-    await client.query("SET LOCAL lock_timeout='5s'");
-    const existing = (
-      await client.query(
-        `UPDATE amp_orgs SET demo_seen_at=now() WHERE demo AND created_by=$1 AND demo_kind=$2
-         RETURNING id,(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
-           JOIN amp_people p ON p.id=e.person_id
-           WHERE c.org_id=amp_orgs.id AND e.role='teacher' AND p.account_id=$1 ORDER BY c.created_at LIMIT 1) AS class_id`,
-        [input.accountId, input.kind],
-      )
-    ).rows[0];
-    if (existing)
-      return { orgId: existing.id, classId: existing.class_id, created: false };
-    return build(
-      client,
-      { ...input, timezone },
-      now,
-      day,
-      terms ?? (await demoTerms(pool, input.kind, day)),
-    );
-  });
-  await warming;
-  if (place.created && learning)
-    await seedWorkbooks(pool, learning, place, timezone, now).catch((error) =>
-      // The class stands without them; the stack is one tap to make.
-      console.error(JSON.stringify({ demoWorkbooks: String(error) })),
-    );
-  return place;
-}
+export type SharedPlace = {
+  orgId: string;
+  heroClassId: string;
+  classIds: string[];
+};
 
-async function hasDemo(
-  pool: Pool,
-  input: { accountId: string; kind: DemoKind },
-) {
-  return !!(
-    await pool.query(
-      "SELECT 1 FROM amp_orgs WHERE demo AND created_by=$1 AND demo_kind=$2 LIMIT 1",
-      [input.accountId, input.kind],
-    )
-  ).rowCount;
-}
-
-async function transaction<T>(
-  pool: Pool,
-  run: (client: PoolClient) => Promise<T>,
-) {
-  const client = await pool.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SET LOCAL lock_timeout='5s'");
-    await client.query("SET LOCAL statement_timeout='30s'");
-    const result = await run(client);
-    await client.query("COMMIT");
-    return result;
-  } catch (error) {
-    await client.query("ROLLBACK");
-    throw error;
-  } finally {
-    client.release();
-  }
-}
-
-async function build(
+/** Writes a zone's shared school for `day` (today in `timezone`) from its
+ * terms, already moved to that day, one per student in roster order. Nobody
+ * teaches the hero class until visitors join it. */
+export async function buildSharedSchool(
   client: PoolClient,
-  input: { accountId: string; kind: DemoKind; timezone: string },
-  now: number,
-  day: DemoDay,
+  input: {
+    timezone: string;
+    day: string;
+    /** "class" is the hero class alone, for a fixture (`buildFixtureClass`). */
+    kind?: DemoKind;
+  },
   terms: readonly Simulation[],
-): Promise<DemoPlace> {
-  const school = input.kind === "school";
+): Promise<SharedPlace> {
+  const { timezone } = input;
+  const kind = input.kind ?? "school";
+  const school = kind === "school";
   const orgId = randomUUID();
+  // Midday of the school's today: the calendar's term starts on the Monday
+  // twelve weeks before this one, as the term does.
+  const noon = Date.parse(`${input.day}T12:00:00Z`);
   await client.query(
     `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by,demo,demo_kind,demo_seen_at,created_at)
-     VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,$4,false,$5,true,$6,now(),now()-interval '84 days')`,
+     VALUES($1,'school',ARRAY[$1]::uuid[],$2,$3,$4,false,'amp-demo:'||$1,true,$5,now(),now()-interval '84 days')`,
     [
       orgId,
       school ? SCHOOL_NAME : demoRoster("class")[0]!.name,
-      input.timezone,
+      timezone,
       !school,
-      input.accountId,
-      input.kind,
+      kind,
     ],
   );
-  const year = await seedCalendar(client, orgId, now);
+  const year = await seedCalendar(client, orgId, noon);
   // Its students are made up, and nothing can add a real one, so AMP itself
   // stands behind the data agreement here; a real class's comes from its
   // school (docs/schools.md#demo-places).
@@ -218,19 +145,7 @@ async function build(
      VALUES($1,$2,$3,'AMP','for this demo',$4::date+interval '8 hours')`,
     [randomUUID(), orgId, AGREEMENT_VERSION, year.start],
   );
-  // The owner, and the teachers who are only names.
-  const owner = randomUUID();
-  await client.query(
-    `INSERT INTO amp_people(id,tenant_id,given_name,handle,account_id,timezone) VALUES($1,$2,$3,$4,$5,$6)`,
-    [
-      owner,
-      orgId,
-      (await ownerName(client, input.accountId)) ?? "Teacher",
-      generateHandle(),
-      input.accountId,
-      input.timezone,
-    ],
-  );
+  // The teachers who are only names.
   const teachers = school ? DEMO_TEACHERS.map(() => randomUUID()) : [];
   for (const [index, id] of teachers.entries()) {
     const [title, family] = DEMO_TEACHERS[index]!.split(" ") as [
@@ -239,33 +154,21 @@ async function build(
     ];
     await client.query(
       `INSERT INTO amp_people(id,tenant_id,given_name,family_name,display_name,handle,timezone) VALUES($1,$2,$3,$4,$5,$6,$7)`,
-      [
-        id,
-        orgId,
-        title,
-        family,
-        `${title} ${family}`,
-        generateHandle(),
-        input.timezone,
-      ],
+      [id, orgId, title, family, `${title} ${family}`, generateHandle(), timezone],
     );
   }
   await client.query(
     `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
-     SELECT gen_random_uuid(),p,$2,r,$3 FROM unnest($1::uuid[],$4::text[]) AS t(p,r)`,
-    [
-      [owner, owner, ...teachers],
-      orgId,
-      year.start,
-      ["admin", "teacher", ...teachers.map(() => "teacher")],
-    ],
+     SELECT gen_random_uuid(),p,$2,'teacher',$3 FROM unnest($1::uuid[]) AS t(p)`,
+    [teachers, orgId, year.start],
   );
 
-  // Classes and their students, in roster order: the hero class, the
-  // owner's, first. Each student's term is `terms` at the same place.
+  // Classes and their students, in roster order: the hero class first. Each
+  // student's term is `terms` at the same place.
   const classes: Planned[] = [];
   const enrollments: [string, string, string, string][] = [];
-  for (const klass of demoRoster(input.kind)) {
+  const teacherOf = new Map<string, string | null>();
+  for (const klass of demoRoster(kind)) {
     const classId = await insertClass(client, {
       orgId,
       sessionId: year.year,
@@ -282,15 +185,12 @@ async function build(
         joined:
           entry.joined === undefined
             ? year.start
-            : joinedOn(day.today, entry.joined),
+            : joinedOn(input.day, entry.joined),
       })),
     });
-    enrollments.push([
-      classId,
-      klass.teacher === null ? owner : teachers[klass.teacher]!,
-      "teacher",
-      year.start,
-    ]);
+    const teacher = klass.teacher === null ? null : teachers[klass.teacher]!;
+    teacherOf.set(classId, teacher);
+    if (teacher) enrollments.push([classId, teacher, "teacher", year.start]);
   }
   const heroId = classes[0]!.classId;
   const people = classes.flatMap((klass) =>
@@ -300,7 +200,6 @@ async function build(
       grade: klass.grade,
     })),
   );
-  const date = new Date(now);
   await client.query(
     `INSERT INTO amp_learners(id,account_id,name,birth_year,created_at)
      SELECT l,'school:'||p,n,y,$5::date FROM unnest($1::text[],$2::uuid[],$3::text[],$4::int[]) AS t(l,p,n,y)`,
@@ -308,7 +207,7 @@ async function build(
       people.map((person) => person.learnerId),
       people.map((person) => person.personId),
       people.map((person) => person.persona.name.join(" ")),
-      people.map((person) => birthYearForGrade(person.grade, date)),
+      people.map((person) => birthYearForGrade(person.grade, new Date(noon))),
       year.start,
     ],
   );
@@ -317,7 +216,7 @@ async function build(
      SELECT p,$1,g,f,h,i,gr,l,$2,j::date FROM unnest($3::uuid[],$4::text[],$5::text[],$6::text[],$7::text[],$8::int[],$9::text[],$10::text[]) AS t(p,g,f,h,i,gr,l,j)`,
     [
       orgId,
-      input.timezone,
+      timezone,
       people.map((person) => person.personId),
       people.map((person) => person.persona.name[0]),
       people.map((person) => person.persona.name[1]),
@@ -386,7 +285,8 @@ async function build(
   );
   // Signed in this term, most of the hero class here today; pictures chosen
   // and cards printed, apart from a late joiner and a few still to do it.
-  // Every demo student's pictures are fox, boat and kite.
+  // Every demo student's pictures are fox, boat and kite. Presence moves
+  // with the clock (`shared.ts`), so "here today" stays true all day.
   const notYet = new Set(["Zara", "Elias", "Theo", "Tomas"]);
   const pictured = people.filter(
     (person) =>
@@ -434,8 +334,8 @@ async function build(
   // Twelve weeks for every class, from the one dose model. The week
   // triggers wait; each week is summed once below.
   await client.query("SET LOCAL amp.rollup_weeks='deferred'");
-  if (year.start !== day.termStart || terms.length !== people.length)
-    throw new Error("The demo's terms are for another day or roster");
+  if (terms.length !== people.length)
+    throw new Error("The demo's terms are for another roster");
   await writeClassHistory(
     client,
     people.map((person) => person.learnerId),
@@ -451,9 +351,9 @@ async function build(
   await client.query(
     `INSERT INTO seed_class SELECT c,$2,t FROM unnest($1::uuid[],$3::uuid[]) AS x(c,t)`,
     [
-      enrollments.filter((row) => row[2] === "teacher").map((row) => row[0]),
+      classes.map((klass) => klass.classId),
       orgId,
-      enrollments.filter((row) => row[2] === "teacher").map((row) => row[1]),
+      classes.map((klass) => teacherOf.get(klass.classId) ?? null),
     ],
   );
   await client.query(
@@ -466,14 +366,82 @@ async function build(
       people.map((person) => person.grade),
     ],
   );
-  await seedStaffEvents(client, input.timezone);
+  if (teachers.length) await seedStaffEvents(client, timezone, input.day);
   await client.query(
     `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
-     SELECT gen_random_uuid(),$1,$2,'class.created','class',c::text,'{}'::jsonb,$4::date+interval '8 hours'
-     FROM unnest($3::uuid[]) AS t(c)`,
-    [orgId, owner, classes.map((klass) => klass.classId), year.start],
+     SELECT gen_random_uuid(),$1,NULL,'class.created','class',c::text,'{}'::jsonb,$3::date+interval '8 hours'
+     FROM unnest($2::uuid[]) AS t(c)`,
+    [orgId, classes.map((klass) => klass.classId), year.start],
   );
-  return { orgId, classId: heroId, created: true };
+  return {
+    orgId,
+    heroClassId: heroId,
+    classIds: classes.map((klass) => klass.classId),
+  };
+}
+
+/** A fixture's own copy of the demo's hero class, alone, with `accountId`
+ * its admin and teacher, written now (`scripts/design-personas.ts` makes it
+ * a real class). Never served to visitors: they join the shared school. */
+export async function buildFixtureClass(
+  pool: Pool,
+  input: { accountId: string; timezone: string; now?: number },
+  learning?: Repository,
+) {
+  const day = sharedDay(input.now ?? Date.now(), input.timezone);
+  const terms = shiftTerms(
+    await demoTerms(pool, "class", day.weekday),
+    day.shiftDays,
+    day.timezone,
+  );
+  const client = await pool.connect();
+  let place: SharedPlace;
+  try {
+    await client.query("BEGIN");
+    place = await buildSharedSchool(
+      client,
+      { timezone: day.timezone, day: day.day, kind: "class" },
+      terms,
+    );
+    const owner = randomUUID();
+    await client.query(
+      `INSERT INTO amp_people(id,tenant_id,given_name,handle,account_id,timezone) VALUES($1,$2,$3,$4,$5,$6)`,
+      [
+        owner,
+        place.orgId,
+        (await ownerName(client, input.accountId)) ?? "Teacher",
+        generateHandle(),
+        input.accountId,
+        day.timezone,
+      ],
+    );
+    await client.query(
+      `WITH year AS (SELECT starts_on FROM amp_academic_sessions WHERE org_id=$2 AND kind='year' LIMIT 1)
+       INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on)
+       SELECT gen_random_uuid(),$1,$2,r,(SELECT starts_on FROM year) FROM unnest(ARRAY['admin','teacher']) AS t(r)`,
+      [owner, place.orgId],
+    );
+    await client.query(
+      `INSERT INTO amp_enrollments(id,class_id,person_id,role,begin_on)
+       SELECT gen_random_uuid(),$1,$2,'teacher',starts_on FROM amp_academic_sessions WHERE org_id=$3 AND kind='year' LIMIT 1`,
+      [place.heroClassId, owner, place.orgId],
+    );
+    await client.query("COMMIT");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+  if (learning)
+    await seedWorkbooks(
+      pool,
+      learning,
+      { classId: place.heroClassId },
+      day.timezone,
+      day.day,
+    );
+  return place;
 }
 
 /** A printed problem, made once per process: students share a workbook. */
@@ -498,31 +466,30 @@ const printed = (item: {
  * one workbook worker, so two are composed, for the class's lower and upper
  * levels, and each student gets the one nearest their level; marks go
  * through the real paper-results path, a few students at a time. */
-async function seedWorkbooks(
+export async function seedWorkbooks(
   pool: Pool,
   learning: Repository,
-  place: DemoPlace,
+  place: { classId: string },
   timezone: string,
-  now: number,
+  today: string,
 ) {
   const { rows } = await pool.query<{
     id: string;
     learner_id: string;
     given_name: string;
+    family_name: string | null;
     level: number | null;
   }>(
-    `SELECT p.id,p.learner_id,p.given_name,
+    `SELECT p.id,p.learner_id,p.given_name,p.family_name,
        (SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=p.learner_id ORDER BY d.day DESC LIMIT 1) AS level
      FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
-     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY 4 NULLS FIRST,p.given_name`,
+     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY 5 NULLS FIRST,p.given_name`,
     [place.classId],
   );
   if (!rows.length) return;
-  const today: string = (
-    await pool.query("SELECT ((now() AT TIME ZONE $1)::date)::text AS day", [
-      timezone,
-    ])
-  ).rows[0].day;
+  await workbookWorker()
+    .warm()
+    .catch(() => undefined);
   let back = 0;
   let date = today;
   for (let found = 0; found < 2;) {
@@ -533,7 +500,16 @@ async function seedWorkbooks(
     const dow = new Date(`${date}T12:00:00Z`).getUTCDay();
     if (dow !== 0 && dow !== 6) found++;
   }
-  const at = now - back * DAY;
+  // Printed that morning.
+  const at = zonedInstant(date, 8, timezone);
+  // The static school's workbooks roll as on its anchor day, so every day's
+  // are the same (`roster.ts`).
+  const day = sharedDay(zonedInstant(today, 12, timezone), timezone);
+  const anchorDate = new Date(
+    Date.parse(`${date}T12:00:00Z`) - day.shiftDays * DAY,
+  )
+    .toISOString()
+    .slice(0, 10);
   const picks = [
     ...new Set([Math.floor(rows.length * 0.25), Math.floor(rows.length * 0.8)]),
   ].map((index) => rows[index]!);
@@ -549,7 +525,16 @@ async function seedWorkbooks(
             await findOrMakeWorkbook(
               tx,
               pick.learner_id,
-              { date, minutes: 30, paper: "letter", number: 1 },
+              {
+                date,
+                minutes: 30,
+                paper: "letter",
+                number: 1,
+                seedKey: {
+                  learnerKey: `demo:${pick.given_name} ${pick.family_name ?? ""}`,
+                  date: anchorDate,
+                },
+              },
               at,
               { allowed: () => undefined },
             )

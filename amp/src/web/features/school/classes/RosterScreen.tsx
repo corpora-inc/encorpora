@@ -375,7 +375,7 @@ export function RosterScreen() {
               family={family}
               boardLink={family}
               label={false}
-              manage={canManage}
+              manage={data.canNewCode ?? canManage}
               locked={!!data.class.joinLockedUntil}
             />
           </section>

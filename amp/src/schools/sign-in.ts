@@ -387,6 +387,7 @@ export class SchoolSignIn {
     classId: string,
     canManage: boolean,
     canShare = canManage,
+    canNewCode = canManage,
   ): Promise<SignInRoster> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
@@ -409,6 +410,7 @@ export class SchoolSignIn {
       },
       canManage,
       canShare,
+      canNewCode,
       students: rows.map((row) => ({
         ...row,
         cardIssuedAt: row.cardIssuedAt?.toISOString() ?? null,

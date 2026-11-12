@@ -311,7 +311,7 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     url: `${ORG}/activity`,
     action: "activity.read",
     target: orgParam,
-    handler: async ({ request, target, pool }) => {
+    handler: async ({ request, actor, target, pool }) => {
       const { timezone } = (
         await pool.query("SELECT timezone FROM amp_orgs WHERE id=$1", [
           target.orgId,
@@ -321,6 +321,7 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
         pool,
         { ...target, timezone },
         activityQuerySchema.parse(request.query),
+        actor.accountId,
       );
     },
   });
@@ -331,9 +332,9 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     action: "activity.read",
     target: orgParam,
     bodyLimit: 512,
-    handler: ({ request, target, pool }) => {
+    handler: ({ request, actor, target, pool }) => {
       const { q } = activityPeopleSchema.parse(request.body);
-      return activityPeople(pool, target, q);
+      return activityPeople(pool, target, q, actor.accountId);
     },
   });
 }

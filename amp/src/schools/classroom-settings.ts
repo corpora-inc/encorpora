@@ -149,7 +149,7 @@ async function ownLine(
   )?.personId;
   if (!personId) return null;
   return (
-    (await classTeachers(db, target.classId)).find(
+    (await classTeachers(db, target.classId, actor.accountId)).find(
       (teacher) => teacher.personId === personId,
     ) ?? null
   );

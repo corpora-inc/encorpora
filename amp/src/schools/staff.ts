@@ -1,3 +1,4 @@
+import { visibleToSql } from "./demo/sql.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { activeToday } from "./principal.js";
@@ -271,16 +272,20 @@ export async function listStaff(
            WHERE e.person_id=p.id AND e.role<>'student' AND c.archived_at IS NULL AND ${activeToday("e", "eo")}) AS "classIds",
          (SELECT row_to_json(i) FROM (SELECT c.id,c.lookup_hash,c.expires_at FROM amp_person_credentials c
            WHERE c.person_id=p.id AND c.kind='invite' AND c.revoked_at IS NULL ORDER BY c.created_at DESC,c.id LIMIT 1) i) AS invite,
-         EXISTS(SELECT 1 FROM amp_families f WHERE f.second_parent=p.id) AS second_parent
+         EXISTS(SELECT 1 FROM amp_families f WHERE f.second_parent=p.id) AS second_parent,
+         bool_or(o.demo) AS demo
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE o.path @> ARRAY[$1]::uuid[] AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND ${visibleToSql("p", "$2::text")}
        GROUP BY p.id ORDER BY p.account_id IS NOT NULL,lower(p.given_name),p.id LIMIT 2000`,
-      [orgId],
+      [orgId, options.accountId],
     )
   ).rows;
   return rows.map((row) => {
-    const pending = !row.account_id;
+    // A demo's made-up teachers have no account and are its running staff,
+    // never an invitation waiting.
+    const pending = !row.account_id && !row.demo;
     const token = row.invite ? inviteToken(keys, row.invite.id) : null;
     const live =
       !!row.invite &&

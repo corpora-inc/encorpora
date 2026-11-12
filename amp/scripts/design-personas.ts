@@ -21,6 +21,7 @@ import {
   type DemoStudent,
 } from "../src/schools/demo/history";
 import { sumWeeks } from "../src/schools/demo/term";
+import { buildFixtureClass } from "../src/schools/demo/build";
 import { persona, type Persona } from "../src/schools/demo/personas";
 import { PostgresRepository } from "../src/server/repository";
 import {
@@ -424,16 +425,16 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
   },
   // The teacher's demo class, made real: what a licensed teacher sees, with
   // the same twelve weeks, and no demo bar.
+  // Its own copy, never the shared demo school that visitors join.
   "teacher-class": async (session) => {
-    const { demo } = await call<{ demo: { orgId: string } }>(
-      session,
-      "POST",
-      "/api/v1/school/demo",
-      { kind: "class" },
+    const own = await buildFixtureClass(
+      pool,
+      { accountId: session!.account, timezone: ZONE },
+      repository,
     );
     await pool.query(
       "UPDATE amp_orgs SET demo=false,demo_kind=NULL,demo_seen_at=NULL,name='Alder Street School' WHERE id=$1",
-      [demo.orgId],
+      [own.orgId],
     );
   },
   school: async (session) => {
