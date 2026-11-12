@@ -8,6 +8,7 @@ import {
   type ReactElement,
 } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { usePopover } from "./popover-owner";
 import styles from "./Controls.module.css";
 
 /** A bounded, keyboard-accessible picker shared by family and purchase forms. */
@@ -39,6 +40,14 @@ export function Select({
     trigger.current?.focus();
   };
   const label = props["aria-label"] ?? props.name ?? "Choose an option";
+  // A picker is modal: it dismisses itself, and joins the app's popover
+  // layer so opening it closes a tip or menu elsewhere.
+  usePopover(open, {
+    contains: (node) => !!dialog.current?.contains(node),
+    anchor: () => trigger.current,
+    close: () => setOpen(false),
+    modal: true,
+  });
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>

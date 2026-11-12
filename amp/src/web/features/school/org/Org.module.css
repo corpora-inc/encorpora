@@ -1,8 +1,11 @@
 /* The school and district layer. Hierarchy comes from type and space, not boxes:
    a sentence, two charts, a column of what needs doing, one table. Sizes and
    colors are tokens. */
+/* Every column here is minmax(0, 1fr): an implicit grid column is as wide as
+   its widest child's content, so one wide row would widen the page. */
 .overview {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   min-width: 0;
 }
@@ -31,12 +34,14 @@
    sentence beside the seats, the charts beside what needs doing. */
 .read {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   min-width: 0;
 }
 .mainColumn,
 .sideColumn {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   min-width: 0;
 }
@@ -264,6 +269,7 @@
 }
 .standingFacts {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   gap: var(--space-4);
 }
@@ -276,6 +282,7 @@
 /* Seats and what needs attention, a quiet column beside the charts. */
 .seats {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-2);
   justify-items: start;
 }
@@ -322,10 +329,12 @@
 }
 .attention {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   margin-top: calc(-1 * var(--space-2));
 }
 .attention > li {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-1);
   justify-items: start;
   padding-block: var(--space-4);
@@ -1211,8 +1220,31 @@ button.danger:disabled {
   font-variant-numeric: var(--numeric);
   text-wrap: pretty;
 }
-.doseSlope {
+/* The numbers behind a figure, in its Details (ui/InfoPopover). */
+.doseDetail {
+  margin: 0;
+}
+.doseStats {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-block: 1px solid var(--color-border);
+}
+.doseNote {
+  margin: 0;
   color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.doseDetailKey {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 0 var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  list-style: none;
+}
+.doseDetailKey b {
+  font-weight: 600;
 }
 .doseKey {
   display: grid;

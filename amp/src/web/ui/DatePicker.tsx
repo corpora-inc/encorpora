@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
+import { usePopover } from "./popover-owner";
 import styles from "./DatePicker.module.css";
 
 const DAY = 86_400_000;
@@ -46,6 +47,15 @@ export function DatePicker({
   const startingDay = () => value || toIso(Date.now());
   const [active, setActive] = useState(startingDay);
   const grid = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  // A picker is modal: it dismisses itself, and joins the app's popover
+  // layer so opening it closes a tip or menu elsewhere.
+  usePopover(open, {
+    contains: (node) => !!grid.current?.closest("[role=dialog]")?.contains(node),
+    anchor: () => trigger.current,
+    close: () => setOpen(false),
+    modal: true,
+  });
   useEffect(() => {
     if (open) setActive(startingDay());
   }, [open, value]);
@@ -109,6 +119,7 @@ export function DatePicker({
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Trigger asChild>
           <button
+            ref={trigger}
             type="button"
             className={styles.trigger}
             aria-labelledby={`${id}-label ${id}-value`}

@@ -175,11 +175,17 @@ export function fitLine(
 
 /** How an r reads, only as far as its interval allows. No causal words. */
 export function associationWords(fit: Fit, who: string): string {
-  const r = `r = ${signed(fit.r)}, 95% CI ${signed(fit.rLow)} to ${signed(fit.rHigh)}, n = ${fit.n.toLocaleString("en-US")}`;
-  if (fit.rLow > 0) return `${who} who practiced more grew more (${r}).`;
-  if (fit.rHigh < 0) return `${who} who practiced more grew less (${r}).`;
-  return `No clear association between practice time and growth (${r}).`;
+  return `${findingWords(fit, who).slice(0, -1)} (${fitWords(fit)}).`;
 }
+/** The finding alone, one short sentence: what the interval allows saying. */
+export function findingWords(fit: Fit, who: string): string {
+  if (fit.rLow > 0) return `${who} who practiced more grew more.`;
+  if (fit.rHigh < 0) return `${who} who practiced more grew less.`;
+  return "No clear association between practice time and growth.";
+}
+/** The correlation behind the finding: r, its 95% interval and n. */
+export const fitWords = (fit: Fit) =>
+  `r = ${signed(fit.r)}, 95% CI ${signed(fit.rLow)} to ${signed(fit.rHigh)}, n = ${fit.n.toLocaleString("en-US")}`;
 const signed = (value: number) =>
   `${value < 0 ? "−" : ""}${Math.abs(value).toFixed(2)}`;
 

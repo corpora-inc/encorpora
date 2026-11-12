@@ -4,6 +4,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type MouseEvent,
   type PointerEvent,
   type ReactNode,
 } from "react";
@@ -11,6 +12,7 @@ import type {
   StandingCurve,
   StandingGrid,
 } from "../../../../schools/standing-contracts";
+import { usePopover } from "../../../ui/popover-owner";
 import { gradeName, signed } from "./format";
 import styles from "./Standing.module.css";
 
@@ -118,11 +120,30 @@ export function CurvePlot({
     named && showTypical
       ? apart(grid, curve.typical, curve.density, top)
       : null;
-  const move = (event: PointerEvent<HTMLDivElement>) => {
+  // The readout is the app's one open popover (ui/popover-owner): a mouse
+  // shows it while it hovers; a finger taps or drags it to a grade and it
+  // stays until a tap elsewhere, a scroll, Escape or a second tap there.
+  const plot = useRef<HTMLDivElement>(null);
+  const pressedWith = useRef("mouse");
+  usePopover(at !== null, {
+    contains: (node) => !!plot.current?.contains(node),
+    anchor: () => plot.current,
+    close: () => setAt(null),
+  });
+  const gradeAt = (event: { clientX: number; currentTarget: Element }) => {
     const box = event.currentTarget.getBoundingClientRect();
     const share = (event.clientX - box.left) / box.width;
     const x = grid.from + share * (grid.to - grid.from);
-    setAt(Math.round(x / grid.step) * grid.step);
+    return Math.round(x / grid.step) * grid.step;
+  };
+  const move = (event: PointerEvent<HTMLDivElement>) => {
+    // A finger only scrubs once a tap has opened the readout.
+    if (event.pointerType === "mouse" || at !== null) setAt(gradeAt(event));
+  };
+  const tap = (event: MouseEvent<HTMLDivElement>) => {
+    if (pressedWith.current === "mouse" || event.detail === 0) return;
+    const x = gradeAt(event);
+    setAt(at === x ? null : x);
   };
   // Of these students, the expected share within half a grade of the pointer.
   const near =
@@ -138,8 +159,22 @@ export function CurvePlot({
       data-size={size}
       role="img"
       aria-label={label}
+      ref={plot}
+      onPointerDown={
+        hover
+          ? (event) => {
+              pressedWith.current = event.pointerType;
+            }
+          : undefined
+      }
       onPointerMove={hover ? move : undefined}
-      onPointerLeave={hover ? () => setAt(null) : undefined}
+      onClick={hover ? tap : undefined}
+      // A finger lifting also "leaves": only a mouse leaving puts it away.
+      onPointerLeave={
+        hover
+          ? (event) => event.pointerType === "mouse" && setAt(null)
+          : undefined
+      }
     >
       <span
         className={styles.gradeBand}
@@ -209,6 +244,7 @@ export function CurvePlot({
           />
           <span
             className={styles.readout}
+            data-tip-open=""
             data-edge={
               across(grid, at) < 20
                 ? "start"

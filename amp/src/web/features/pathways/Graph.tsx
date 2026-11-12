@@ -1,5 +1,6 @@
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useEffect, useRef, useState } from "react";
+import { usePopover } from "../../ui/popover-owner";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
@@ -148,6 +149,13 @@ export function Graph({
   const [labels, setLabels] = useState<Label[]>([]);
   const [labelsMoving, setLabelsMoving] = useState(false);
   const [hover, setHover] = useState("");
+  // The hovered skill's label is a popover in the app's layer: a press
+  // elsewhere, a scroll or Escape puts it away.
+  usePopover(hover !== "", {
+    contains: (node) => !!host.current?.contains(node),
+    anchor: () => host.current,
+    close: () => setHover(""),
+  });
   const [motion, setMotion] = useState(
     () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
   );

@@ -2,9 +2,12 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import type { PracticeResponse } from "../../../../schools/org-contracts";
 import {
   associationWords,
+  findingWords,
+  fitWords,
   summarize,
   type Fit,
 } from "../../../../schools/practice-stats";
+import { InfoPopover } from "../../../ui/InfoPopover";
 import { Segmented } from "../../../ui/Segmented";
 import { number, shortDay, TipZone } from "../classes/teacher-shared";
 import { heatColor, heatPosition } from "../heat-scale";
@@ -413,6 +416,12 @@ export function DoseResponse({
   const { dose } = data;
   const rowWord = data.rowKind;
   const fit = dots === "students" ? dose.studentFit : dose.groupFit;
+  const who =
+    dots === "students"
+      ? "Students"
+      : rowWord === "class"
+        ? "Classes"
+        : "Schools";
   const x = summarize(dose.students.map(([minutes]) => minutes));
   const y = summarize(dose.students.map(([, growth]) => growth));
   const last = data.weeks.indexOf(data.current);
@@ -442,29 +451,41 @@ export function DoseResponse({
           <Scatter dose={dose} dots={dots} target={target} rowWord={rowWord} />
         </TipZone>
         <figcaption className={styles.doseCaption}>
-          <p className={styles.doseFinding}>
-            {fit
-              ? associationWords(
-                  fit,
-                  dots === "students"
-                    ? "Students"
-                    : rowWord === "class"
-                      ? "Classes"
-                      : "Schools",
-                )
-              : "No line yet."}{" "}
-            {fit && (
-              <span className={styles.doseSlope}>
-                Slope {signedGrades(fit.slope * 60)} grade levels per extra hour
-                a week. An association, not a measured effect.
-              </span>
-            )}
-          </p>
-          {x && y && (
-            <>
-              <StatsLine label="Minutes a week" {...x} />
-              <StatsLine label="Growth, grade levels" {...y} places={2} />
-            </>
+          {fit || (x && y) ? (
+            <InfoPopover
+              title="Minutes a week and growth, the numbers"
+              details={
+                <>
+                  {fit && (
+                    <p className={styles.doseDetail}>
+                      {fitWords(fit)}. Slope {signedGrades(fit.slope * 60)}{" "}
+                      grade levels per extra hour a week.
+                    </p>
+                  )}
+                  {x && y && (
+                    <div className={styles.doseStats}>
+                      <StatsLine label="Minutes a week" {...x} />
+                      <StatsLine
+                        label="Growth, grade levels"
+                        {...y}
+                        places={2}
+                      />
+                    </div>
+                  )}
+                  {fit && (
+                    <p className={styles.doseNote}>
+                      An association, not a measured effect.
+                    </p>
+                  )}
+                </>
+              }
+            >
+              <p className={styles.doseFinding}>
+                {fit ? findingWords(fit, who) : "No line yet."}
+              </p>
+            </InfoPopover>
+          ) : (
+            <p className={styles.doseFinding}>No line yet.</p>
           )}
         </figcaption>
       </figure>
@@ -479,10 +500,37 @@ export function DoseResponse({
         </TipZone>
         {dose.quartiles && (
           <figcaption className={styles.doseCaption}>
-            <ul className={styles.doseKey}>
-              {dose.quartiles.map((quarter, index) => {
-                const now = quarter.weeks[last] ?? quarter.weeks[last - 1];
-                return (
+            <InfoPopover
+              title="Growth by practice time, the numbers"
+              details={
+                <>
+                  <ul className={styles.doseDetailKey}>
+                    {dose.quartiles.map((quarter, index) => {
+                      const now =
+                        quarter.weeks[last] ?? quarter.weeks[last - 1];
+                      return (
+                        <li key={index}>
+                          <b>{QUARTER_NAMES[index]}</b> · n {quarter.n}
+                          {now
+                            ? ` · now ${signedGrades(now.mean)} (median ${signedGrades(now.median)}, sd ${now.sd.toFixed(2)})`
+                            : ""}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <p className={styles.doseNote}>
+                    Growth is the pace of each student’s level on the days its
+                    uncertainty was at most 0.6 grades, across the days the
+                    term has run. Quarters are by active minutes a week this
+                    term. A week shows once ten students, or three in five of a
+                    smaller quarter, have a reading, and their mean is sure to
+                    half a grade.
+                  </p>
+                </>
+              }
+            >
+              <ul className={styles.doseKey}>
+                {dose.quartiles.map((quarter, index) => (
                   <li key={index}>
                     <span
                       className={styles.doseSwatch}
@@ -490,21 +538,11 @@ export function DoseResponse({
                       aria-hidden="true"
                     />
                     <b>{QUARTER_NAMES[index]}</b> · {figure(quarter.from)}–
-                    {figure(quarter.to)} min a week · n {quarter.n}
-                    {now
-                      ? ` · now ${signedGrades(now.mean)} (median ${signedGrades(now.median)}, sd ${now.sd.toFixed(2)})`
-                      : ""}
+                    {figure(quarter.to)} min a week
                   </li>
-                );
-              })}
-            </ul>
-            <p className={styles.tableNote}>
-              Growth is the pace of each student’s level on the days its
-              uncertainty was at most 0.6 grades, across the days the term has
-              run. Quarters are by active minutes a week this term. A week shows
-              once ten students, or three in five of a smaller quarter, have a
-              reading, and their mean is sure to half a grade.
-            </p>
+                ))}
+              </ul>
+            </InfoPopover>
           </figcaption>
         )}
       </figure>
