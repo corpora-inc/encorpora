@@ -275,3 +275,20 @@ def test_cast_is_teacher_with_learner_or_teacher_alone(tmp_path):
     with pytest.raises(ValueError, match='empty voice bindings'):
         runtime.validate_cast(path, 'example--a')
 
+
+
+def test_make_binds_a_learner_voice_only_when_the_cast_has_a_learner(tmp_path, monkeypatch):
+    workspace = tmp_path/'workspace'
+    workspace.mkdir()
+    seen = []
+    monkeypatch.setattr(runtime, 'verify_runtime', lambda *a: None)
+    monkeypatch.setattr(runtime, '_run', lambda command, cwd, env: seen.append(command) or {'stdout': ''})
+    config = {'root': str(tmp_path/'root'), 'voice_cache': str(tmp_path/'voices')}
+    row = {'id': 'example--a', 'teacher': next(iter(runtime.TEACHERS))}
+    def voices(cast):
+        providers.write_json(workspace/'screenplay.json', {'id': 'example--a', 'cast': cast})
+        runtime._make(config, row, workspace)
+        command = seen[-1]
+        return [command[i + 1].split('=')[0] for i, part in enumerate(command) if part == '--voice']
+    assert voices({'teacher': {}, 'learner': {}}) == ['teacher', 'learner']
+    assert voices({'teacher': {}}) == ['teacher']
