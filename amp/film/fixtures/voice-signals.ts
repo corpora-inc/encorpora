@@ -1,6 +1,6 @@
 /**
  * Synthesized voice for the audio tests, at the narration's speaking level
- * (`even`: -21 dBFS while speaking). Levels are the 10 ms RMS peak of each part,
+ * (`even`: about -21 dBFS while speaking). Levels are the 10 ms RMS peak of each part,
  * in dBFS. A take is built left to right: `say` a voiced word, `hiss` a burst of
  * noise (a stray, a loose "s", the release of a "t"), `breathe` a breath, `rest`
  * silence with room tone under it.

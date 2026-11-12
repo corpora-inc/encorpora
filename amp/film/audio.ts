@@ -21,7 +21,7 @@ export const SR = 44100;
 export const FLOOR = 0.0035;
 /**
  * An edit or an edge of digital silence louder than this is a fault: about -42 dBFS,
- * 21 dB under speech. A cut into a word measures -35 dBFS or louder. The gap
+ * about 21 dB under speech. A cut into a word measures -35 dBFS or louder. The gap
  * between FLOOR and EDGE keeps room tone near the floor from raising false alarms.
  */
 export const EDGE = 0.008;
@@ -34,12 +34,12 @@ export const TAKE_FADE = Math.round(SR * 0.02);
  * A sound in a pause is heard when it stays at or above EDGE (-42 dBFS, the level
  * the edge check already treats as audible against digital silence) for
  * AUDIBLE_FOR, or reaches SPEECH even briefly (a click). Measured at the narration's
- * speaking level (-21 dBFS, see `even`), the stray sounds heard in finished films
+ * speaking level (about -21 dBFS, see `even`), the stray sounds heard in finished films
  * stayed at or above -42 dBFS for 40 to 90 ms and peaked at -36 to -39 dBFS
  * (sample peaks 1,400 to 1,900); room tone and the decay of a word stay under it.
  */
 export const AUDIBLE_FOR = 0.03;
-/** A 10 ms window this loud (-30 dBFS, 9 dB under the speaking level) is as loud as speech. */
+/** A 10 ms window this loud (-30 dBFS, about 9 dB under the speaking level) is as loud as speech. */
 export const SPEECH = 0.0316;
 /**
  * A 10 ms window with at least this share of its energy under about 1 kHz is
@@ -62,14 +62,70 @@ export function envelope(pcm: Int16Array) {
   return env;
 }
 
-/** One speaking level for every take: -21 dBFS while speaking, peaks under -1 dBFS. */
+/**
+ * The signal as the ear weighs it, as a fraction of full scale: the K-weighting of
+ * ITU-R BS.1770, a high shelf (about +4 dB above 1.7 kHz) and then a 38 Hz
+ * high-pass. The standard prints coefficients for 48 kHz; these are the same two
+ * filters derived for SR.
+ */
+export function kWeighted(pcm: Int16Array) {
+  const biquad = (f0: number, q: number, shelfDb?: number) => {
+    const k = Math.tan((Math.PI * f0) / SR), a0 = 1 + k / q + k * k;
+    const a = [(2 * (k * k - 1)) / a0, (1 - k / q + k * k) / a0];
+    if (shelfDb === undefined) return { b: [1, -2, 1], a };
+    const vh = 10 ** (shelfDb / 20), vb = vh ** 0.4996667741545416;
+    return { b: [(vh + (vb * k) / q + k * k) / a0, (2 * (k * k - vh)) / a0, (vh - (vb * k) / q + k * k) / a0], a };
+  };
+  const out = Float64Array.from(pcm, (v) => v / 32768);
+  for (const { b, a } of [biquad(1681.974450955533, 0.7071752369554196, 3.999843853973347), biquad(38.13547087602444, 0.5003270373238773)]) {
+    let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    for (let i = 0; i < out.length; i++) {
+      const x = out[i]!, y = b[0]! * x + b[1]! * x1 + b[2]! * x2 - a[0]! * y1 - a[1]! * y2;
+      x2 = x1; x1 = x; y2 = y1; y1 = y;
+      out[i] = y;
+    }
+  }
+  return out;
+}
+
+/**
+ * How loud a take sounds while speaking: the K-weighted level, as a fraction of
+ * full scale, over its speaking windows (10 ms windows whose plain RMS is above
+ * 0.02, so the weighting never changes which windows count). 0 when nothing speaks.
+ */
+export function loudness(pcm: Int16Array) {
+  const env = envelope(pcm), k = kWeighted(pcm);
+  let sum = 0, n = 0;
+  for (let i = 0; i < env.length; i++) {
+    if (env[i]! <= 0.02) continue;
+    for (let j = i * HOP; j < (i + 1) * HOP; j++) sum += k[j]! * k[j]!;
+    n += HOP;
+  }
+  return n ? Math.sqrt(sum / n) : 0;
+}
+
+/**
+ * The loudness every take is brought to: `loudness` in dB of full scale.
+ * Takes were once matched by plain RMS, at -21 dBFS, and the edge and stray
+ * limits above were tuned at that level, so this keeps the teachers there. Over
+ * the same speaking windows their takes measure 0.2 dB (Paul) and 0.6 dB
+ * (Madeline) hotter K-weighted than plain; -20.6 sits between, and moves each by
+ * about 0.2 dB. The learner's brighter voice measures 1.05 dB hotter, and at
+ * equal RMS was the loud one: it comes down about 0.65 dB.
+ */
+export const SPEAKING_K = -20.6;
+
+/**
+ * One speaking loudness for every take: SPEAKING_K while speaking (about -21 dBFS
+ * RMS for a teacher's voice), peaks under -1 dBFS. Voices are matched by how loud
+ * they sound, not by plain RMS: at equal RMS a brighter voice is the louder one.
+ */
 export function even(src: Int16Array) {
-  const env = envelope(src), loud = [...env].filter((x) => x > 0.02);
-  if (!loud.length) return Int16Array.from(src);
-  const level = Math.sqrt(loud.reduce((a, x) => a + x * x, 0) / loud.length);
+  const level = loudness(src);
+  if (!level) return Int16Array.from(src);
   let peak = 1;
   for (const v of src) peak = Math.max(peak, Math.abs(v));
-  const gain = Math.min(10 ** (-21 / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
+  const gain = Math.min(10 ** (SPEAKING_K / 20) / level, (10 ** (-1 / 20) * 32767) / peak);
   return Int16Array.from(src, (v) => Math.round(v * gain));
 }
 
