@@ -8,14 +8,21 @@ import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from 
 import {
   FILM_CAPABILITY,
   FILM_CAPABILITY_V2,
+  FILM_CAPABILITY_V3,
   FILM_CDN,
   type LessonFilm,
 } from "../src/content/lesson-films";
 
-/** The oldest player that can draw the film: a shot with its own app figure ({scene}) needs v3. */
+/**
+ * The oldest player that can draw the film: a board header needs v4, a shot
+ * with its own app figure ({scene}) v3. An older player would skip a header it
+ * does not know and play the film without it, so such a film never reaches one.
+ */
 export function filmCapability(script: Script): LessonFilm["capability"] {
+  if (script.shots.some((shot) => shot.beats.some((b) => (b.do ?? []).some((a) => a.do === "header"))))
+    return FILM_CAPABILITY;
   return script.shots.some((shot) => shot.figure && "scene" in shot.figure)
-    ? FILM_CAPABILITY
+    ? FILM_CAPABILITY_V3
     : FILM_CAPABILITY_V2;
 }
 
