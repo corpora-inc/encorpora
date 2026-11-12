@@ -115,9 +115,6 @@
   width: 18px;
   height: 14px;
 }
-.legendKeys .cell[data-current] {
-  background: var(--color-heat-4);
-}
 .stats {
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
