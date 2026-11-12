@@ -149,7 +149,7 @@ export function PracticeMap({
     },
     {
       id: "mean",
-      header: "Mean a week",
+      header: "Mean per week",
       width: 96,
       align: "end",
       firstSort: "descending",
@@ -169,7 +169,7 @@ export function PracticeMap({
       width: Math.max(360, data.weeks.length * 18),
       cell: strip,
       cellLabel: (row) =>
-        `${row.name}: ${row.mean === null ? "no finished week" : `${figure(row.mean)} ${unit} per student a week`}`,
+        `${row.name}: ${row.mean === null ? "no finished week" : `${figure(row.mean)} ${unit} per student per week`}`,
     },
   ];
   const sort = parseSort(rawSort) ?? {
