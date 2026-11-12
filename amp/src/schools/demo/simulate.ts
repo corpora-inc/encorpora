@@ -7,7 +7,6 @@
  * are the production estimator replayed over those answers.
  */
 import { createHash } from "node:crypto";
-import { isMainThread, parentPort } from "node:worker_threads";
 import { skills } from "../../curriculum/catalog.js";
 import type { AnswerHelp } from "../help-contracts.js";
 import { problemDigest } from "../work-replay.js";
@@ -65,9 +64,6 @@ function drawn(templateId: string, seed: string): GeneratedProblem | null {
   }
 }
 
-const hexId = (text: string) =>
-  createHash("sha256").update(text).digest("hex");
-
 /** A wrong answer in the shape the problem asked for. Choice and numeric
  * items use the shared distractor; anything else moves one part. */
 export function plausibleWrong(problem: GeneratedProblem): string {
@@ -103,41 +99,101 @@ function nudge(value: unknown): unknown {
   return value;
 }
 
+/**
+ * A simulation has no identity: the same job gives the same term for any
+ * learner. Ids are placeholders here and become the learner's own in
+ * `identify`, from (learner id, serial), so a computed term can be cached and
+ * written for a fresh roster (`snapshot.ts`).
+ */
+export const INSTANCE_ID = "@amp-demo-instance@";
+export const ATTEMPT_ID = "@amp-demo-attempt@";
+export const REQUEST_ID = "@amp-demo-request@";
+/** The outcome's `createdAt`, which is the answer's `at`: without it, the
+ * outcomes of a term repeat, and a snapshot stores each once. */
+export const ANSWERED_AT = "@amp-demo-at@";
+
 export type SimAnswer = {
-  learnerId: string;
-  instanceId: string;
+  serial: number;
+  /** The stored problem, with `INSTANCE_ID` for its id. */
   content: string;
+  /** The stored outcome, with the placeholder ids. */
   outcome: string;
   at: string;
   day: string;
   skillId: string;
+  templateId: string;
   correct: boolean;
   assisted: boolean;
 };
 export type SimActive = {
-  learnerId: string;
   day: string;
   surface: "practice" | "hint" | "lesson";
   skillId: string;
   ms: number;
 };
 export type SimHelp = {
-  learnerId: string;
+  serial: number;
   at: string;
   day: string;
   kind: "hint" | "lesson";
   skillId: string;
   ref: string;
-  problemId: string;
   step: number | null;
 };
 export type Simulation = {
   answers: SimAnswer[];
   active: SimActive[];
   help: SimHelp[];
-  levels: { learnerId: string; day: string; frontier: string }[];
+  levels: { day: string; frontier: string }[];
   truth: Pick<LearnerTruth, "startOffset" | "growth" | "hoursPerWeek">;
 };
+
+const hexId = (text: string) =>
+  createHash("sha256").update(text).digest("hex");
+/** The ids a learner's answer `serial` is stored under. */
+export const answerIds = (learnerId: string, serial: number) => ({
+  instanceId: hexId(`${learnerId}:${serial}`),
+  attemptId: hexId(`${learnerId}:${serial}:a`),
+  requestId: hexId(`${learnerId}:${serial}:r`),
+});
+
+/** One learner's rows from a simulation, under that learner's own ids. */
+export function identify(simulation: Simulation, learnerId: string) {
+  const ids = new Map<number, ReturnType<typeof answerIds>>();
+  const idsOf = (serial: number) => {
+    let found = ids.get(serial);
+    if (!found) ids.set(serial, (found = answerIds(learnerId, serial)));
+    return found;
+  };
+  return {
+    answers: simulation.answers.map((row) => {
+      const { instanceId, attemptId, requestId } = idsOf(row.serial);
+      return {
+        learnerId,
+        instanceId,
+        content: row.content.replaceAll(INSTANCE_ID, instanceId),
+        outcome: row.outcome
+          .replaceAll(ATTEMPT_ID, attemptId)
+          .replaceAll(INSTANCE_ID, instanceId)
+          .replaceAll(REQUEST_ID, requestId)
+          .replaceAll(ANSWERED_AT, row.at),
+        at: row.at,
+        day: row.day,
+        skillId: row.skillId,
+        templateId: row.templateId,
+        correct: row.correct,
+        assisted: row.assisted,
+      };
+    }),
+    active: simulation.active.map((row) => ({ learnerId, ...row })),
+    help: simulation.help.map(({ serial, ...row }) => ({
+      learnerId,
+      ...row,
+      problemId: idsOf(serial).instanceId,
+    })),
+    levels: simulation.levels.map((row) => ({ learnerId, ...row })),
+  };
+}
 
 function helpFor(key: string): AnswerHelp[] | undefined {
   const roll = hash(`${key} help`);
@@ -147,11 +203,11 @@ function helpFor(key: string): AnswerHelp[] | undefined {
 }
 
 function simulateTruth(
-  learnerId: string,
   name: string,
   grade: number,
   truth: LearnerTruth,
   now: number,
+  today: string,
 ): Simulation {
   const state = newLearnerFrontier({
     epoch: 0,
@@ -173,16 +229,16 @@ function simulateTruth(
     const key = `${day}\0${surface}\0${skillId}`;
     const row = active.get(key);
     if (row) row.ms += ms;
-    else active.set(key, { learnerId, day, surface, skillId, ms });
+    else active.set(key, { day, surface, skillId, ms });
   };
   for (const sitting of truth.sittings)
     playSitting({
       sitting,
-      learnerId,
       name,
       grade,
       truth,
       now,
+      today,
       state,
       attempts,
       answers,
@@ -195,7 +251,7 @@ function simulateTruth(
     start: grade,
     answers: levelAnswers,
     days: truth.sittings.map((sitting) => sitting.day),
-  }).map((row) => ({ learnerId, day: row.day, frontier: row.frontier }));
+  });
   return {
     answers,
     active: [...active.values()],
@@ -211,11 +267,11 @@ function simulateTruth(
 
 function playSitting(bag: {
   sitting: Sitting;
-  learnerId: string;
   name: string;
   grade: number;
   truth: LearnerTruth;
   now: number;
+  today: string;
   state: ReturnType<typeof newLearnerFrontier>;
   attempts: Outcome[];
   answers: SimAnswer[];
@@ -230,8 +286,9 @@ function playSitting(bag: {
   serial: () => number;
 }) {
   const { sitting, truth, name, grade } = bag;
+  // Today's sitting ends at `now`; an earlier day's sits mid-morning.
   const origin =
-    sitting.day === new Date(bag.now).toISOString().slice(0, 10)
+    sitting.day === bag.today
       ? bag.now - sitting.problems * sitting.msEach
       : Date.parse(`${sitting.day}T14:30:00Z`);
   let placed = 0;
@@ -271,11 +328,11 @@ function playSitting(bag: {
     });
     const assistedHelp = helpFor(`${name}${serial}`);
     const assisted = !!assistedHelp;
-    const instanceId = hexId(`${bag.learnerId}:${serial}`);
+    const instanceId = INSTANCE_ID;
     const publicProblem: PublicProblem = { ...problem.public, id: instanceId };
     const response = correct ? problem.answer : plausibleWrong(problem);
-    const attemptId = hexId(`${bag.learnerId}:${serial}:a`);
-    const requestId = hexId(`${bag.learnerId}:${serial}:r`);
+    const attemptId = ATTEMPT_ID;
+    const requestId = REQUEST_ID;
     const outcome = {
       id: attemptId,
       problemId: instanceId,
@@ -288,7 +345,7 @@ function playSitting(bag: {
       ...(assistedHelp ? { help: assistedHelp } : {}),
       explanation: problem.explanation,
       answer: problem.answer,
-      createdAt: at,
+      createdAt: ANSWERED_AT,
       ...(problem.variant ? { variant: problem.variant } : {}),
     };
     const content = {
@@ -300,13 +357,13 @@ function playSitting(bag: {
       digest: problemDigest(publicProblem),
     };
     bag.answers.push({
-      learnerId: bag.learnerId,
-      instanceId,
+      serial,
       content: JSON.stringify(content),
       outcome: JSON.stringify(outcome),
       at,
       day: sitting.day,
       skillId: problem.public.skillId,
+      templateId: template.id,
       correct,
       assisted,
     });
@@ -340,26 +397,24 @@ function playSitting(bag: {
     if (assistedHelp?.includes("hint")) {
       bag.addActive(sitting.day, "hint", problem.public.skillId, 25_000);
       bag.help.push({
-        learnerId: bag.learnerId,
+        serial,
         at,
         day: sitting.day,
         kind: "hint",
         skillId: problem.public.skillId,
         ref: template.id,
-        problemId: instanceId,
         step: 1,
       });
     }
     if (assistedHelp?.includes("lesson")) {
       bag.addActive(sitting.day, "lesson", problem.public.skillId, 70_000);
       bag.help.push({
-        learnerId: bag.learnerId,
+        serial,
         at,
         day: sitting.day,
         kind: "lesson",
         skillId: problem.public.skillId,
         ref: template.id,
-        problemId: instanceId,
         step: null,
       });
     }
@@ -377,7 +432,6 @@ function playSitting(bag: {
 }
 
 export function simulateDose(options: {
-  learnerId: string;
   name: string;
   grade: number;
   termStart: string;
@@ -397,11 +451,16 @@ export function simulateDose(options: {
     workToday: options.workToday,
     joined: options.joined,
   });
-  return simulateTruth(options.learnerId, options.name, options.grade, truth, options.now);
+  return simulateTruth(
+    options.name,
+    options.grade,
+    truth,
+    options.now,
+    options.today,
+  );
 }
 
 export function simulatePersona(options: {
-  learnerId: string;
   name: string;
   grade: number;
   persona: Persona;
@@ -421,7 +480,13 @@ export function simulatePersona(options: {
     strands: strandNames,
     workToday: options.workToday,
   });
-  return simulateTruth(options.learnerId, options.name, options.grade, truth, options.now);
+  return simulateTruth(
+    options.name,
+    options.grade,
+    truth,
+    options.now,
+    options.today,
+  );
 }
 
 export type SimJob =
@@ -432,17 +497,4 @@ export function runSimulation(job: SimJob): Simulation {
   return job.kind === "persona"
     ? simulatePersona(job.options)
     : simulateDose(job.options);
-}
-
-if (!isMainThread && parentPort) {
-  parentPort.on("message", (job: SimJob) => {
-    try {
-      parentPort!.postMessage({ ok: true as const, result: runSimulation(job) });
-    } catch (error) {
-      parentPort!.postMessage({
-        ok: false as const,
-        error: error instanceof Error ? error.message : String(error),
-      });
-    }
-  });
 }

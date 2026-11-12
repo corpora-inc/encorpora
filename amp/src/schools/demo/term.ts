@@ -21,6 +21,9 @@ export const mondayOf = (time: number) => {
   );
 };
 
+/** The first day of a demo's term: twelve weeks before this Monday. */
+export const termStartFor = (now: number) => mondayOf(now) - 12 * 7 * DAY;
+
 /** A year and two semesters that began 12 weeks before this Monday, so a term
  * chart has shape. */
 export async function seedCalendar(
@@ -28,7 +31,7 @@ export async function seedCalendar(
   orgId: string,
   now = Date.now(),
 ) {
-  const start = mondayOf(now) - 12 * 7 * DAY;
+  const start = termStartFor(now);
   const year = randomUUID();
   const end = start + 300 * DAY;
   const middle = start + 150 * DAY;

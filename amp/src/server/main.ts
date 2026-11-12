@@ -33,6 +33,7 @@ import {
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
 import { randomBytes } from "node:crypto";
+import { startDemoWarmer } from "../schools/demo/snapshot.js";
 import { registerSchoolRoutes } from "../schools/routes.js";
 import { schoolClock } from "../schools/clock.js";
 import { schoolOidcProviders } from "../schools/oidc.js";
@@ -280,3 +281,13 @@ app.addHook("onClose", async () => stopWatching());
 // Warm before listening: readiness passes only once the first parent is fast.
 await warmServer(app, repository.pool);
 await app.listen({ host, port: Number(process.env.AMP_PORT ?? 4311) });
+// A demo place's term is computed ahead of the day on worker threads, so a
+// visitor never waits for it (src/schools/demo/snapshot.ts). Outside
+// production it is off unless AMP_DEMO_WARM=on; a demo made there computes
+// its own term on first use.
+const demoWarm = process.env.AMP_DEMO_WARM;
+if (
+  demoWarm === "on" ||
+  (process.env.NODE_ENV === "production" && demoWarm !== "off")
+)
+  startDemoWarmer(repository.pool, app.log);
