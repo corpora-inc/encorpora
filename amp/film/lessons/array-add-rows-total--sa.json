@@ -1,0 +1,1294 @@
+{
+  "id": "array-add-rows-total--sa",
+  "title": "Rows with the same number",
+  "teaches": [
+    "small-array-total",
+    "equal-addends-match",
+    "equal-addends-array",
+    "equal-addends-select",
+    "array-equal-addends-equation",
+    "partition-from-marks",
+    "choose-partition"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -8.1,
+          9.0,
+          2.7
+        ],
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "Ba": [
+            -0.45,
+            0.45
+          ],
+          "Bb": [
+            7.65,
+            0.45
+          ],
+          "Bc": [
+            7.65,
+            -5.85
+          ],
+          "Bd": [
+            -0.45,
+            -5.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "bed",
+            "poly": [
+              "Ba",
+              "Bb",
+              "Bc",
+              "Bd"
+            ],
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "m",
+            "things": "flower",
+            "n": 12,
+            "at": "A",
+            "arrange": "grid",
+            "perRow": 4,
+            "size": 1.5,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An array is things set out in rows, with the same number in every row.",
+          "do": [
+            {
+              "do": "term",
+              "word": "array",
+              "meaning": "things set out in equal rows",
+              "at": "array"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m1",
+                "m2",
+                "m3",
+                "m4"
+              ],
+              "at": "rows"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This garden bed is an array of flowers. Rows go across.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "m1",
+                "m2",
+                "m3",
+                "m4",
+                "m5",
+                "m6",
+                "m7",
+                "m8",
+                "m9",
+                "m10",
+                "m11",
+                "m12"
+              ],
+              "at": "flowers"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m1",
+                "m2",
+                "m3",
+                "m4"
+              ],
+              "at": "Rows"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Every row has 4 flowers. Add the rows. How many in all?",
+          "do": [
+            {
+              "do": "problem",
+              "text": "Every row has 4 flowers. Add the rows. How many in all?",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Add the rows one at a time. One row is four. Two rows, four plus four.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "m1",
+                "m2",
+                "m3",
+                "m4"
+              ],
+              "at": "One"
+            },
+            {
+              "do": "clear",
+              "at": "Add"
+            },
+            {
+              "do": "write",
+              "tex": "4",
+              "note": "\\text{1 row}",
+              "fresh": true,
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m5",
+                "m6",
+                "m7",
+                "m8"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4",
+              "note": "\\text{2 rows}",
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three rows, four plus four plus four. Twelve flowers in all.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "m9",
+                "m10",
+                "m11",
+                "m12"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4 + 4 = 12",
+              "note": "\\text{3 rows}",
+              "at": "Twelve"
+            },
+            {
+              "do": "answer",
+              "tex": "12",
+              "at": "all"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -9.0,
+          9.9,
+          1.8
+        ],
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            0.9,
+            0.9
+          ],
+          "Sa": [
+            -0.45,
+            0.45
+          ],
+          "Sb": [
+            9.45,
+            0.45
+          ],
+          "Sc": [
+            9.45,
+            -7.65
+          ],
+          "Sd": [
+            -0.45,
+            -7.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "shelf",
+            "poly": [
+              "Sa",
+              "Sb",
+              "Sc",
+              "Sd"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "b",
+            "things": "book",
+            "n": 20,
+            "at": "A",
+            "arrange": "grid",
+            "perRow": 5,
+            "size": 1.5,
+            "start": true
+          },
+          {
+            "id": "t",
+            "things": "book",
+            "n": 0,
+            "slots": 20,
+            "at": "B",
+            "arrange": "grid",
+            "perRow": 4,
+            "size": 1.5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Every row has 5 books. Add the rows. How many in all?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Every"
+            },
+            {
+              "do": "problem",
+              "text": "Every row has 5 books. Add the rows. How many in all?",
+              "at": "Every"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2",
+                "b3",
+                "b4",
+                "b5"
+              ],
+              "at": "books"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I see four rows and five books. Four plus five is nine.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "4 + 5 = 9",
+              "id": "slip",
+              "fresh": true,
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four is how many rows there are. Each row has five books in it.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "rows"
+            },
+            {
+              "do": "clear",
+              "at": "Each"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Five, ten, fifteen, twenty. Twenty books in all.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2",
+                "b3",
+                "b4",
+                "b5"
+              ],
+              "at": "Five"
+            },
+            {
+              "do": "write",
+              "tex": "5",
+              "note": "\\text{1 row}",
+              "fresh": true,
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b6",
+                "b7",
+                "b8",
+                "b9",
+                "b10"
+              ],
+              "at": "ten"
+            },
+            {
+              "do": "write",
+              "tex": "5 + 5",
+              "note": "\\text{2 rows}",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b11",
+                "b12",
+                "b13",
+                "b14",
+                "b15"
+              ],
+              "at": "fifteen"
+            },
+            {
+              "do": "write",
+              "tex": "5 + 5 + 5",
+              "note": "\\text{3 rows}",
+              "at": "fifteen"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b16",
+                "b17",
+                "b18",
+                "b19",
+                "b20"
+              ],
+              "at": "twenty",
+              "nth": 1
+            },
+            {
+              "do": "write",
+              "tex": "5 + 5 + 5 + 5 = 20",
+              "note": "\\text{4 rows}",
+              "at": "twenty",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn the shelf a quarter turn. Rows become columns, which go up and down.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Sa": [
+                  0.45,
+                  -8.55
+                ],
+                "Sb": [
+                  0.45,
+                  1.35
+                ],
+                "Sc": [
+                  8.55,
+                  1.35
+                ],
+                "Sd": [
+                  8.55,
+                  -8.55
+                ]
+              },
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b5",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b10",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b15",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b20",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b4",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b9",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b14",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b19",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b3",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b8",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b13",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b18",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b2",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b7",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b12",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b17",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b1",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b6",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b11",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "send",
+              "target": "b16",
+              "to": "t",
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2",
+                "b3",
+                "b4",
+                "b5"
+              ],
+              "at": "columns"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now there are five rows, with four in each row.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b5",
+                "b10",
+                "b15",
+                "b20"
+              ],
+              "at": "each"
+            },
+            {
+              "do": "clear",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four. Eight. Twelve. Sixteen. Twenty. Twenty again, the same as before.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b5",
+                "b10",
+                "b15",
+                "b20"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "4",
+              "fresh": true,
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b4",
+                "b9",
+                "b14",
+                "b19"
+              ],
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4",
+              "at": "Eight"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b3",
+                "b8",
+                "b13",
+                "b18"
+              ],
+              "at": "Twelve"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4 + 4",
+              "at": "Twelve"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b2",
+                "b7",
+                "b12",
+                "b17"
+              ],
+              "at": "Sixteen"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4 + 4 + 4",
+              "at": "Sixteen"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b6",
+                "b11",
+                "b16"
+              ],
+              "at": "Twenty"
+            },
+            {
+              "do": "write",
+              "tex": "4 + 4 + 4 + 4 + 4 = 20",
+              "at": "Twenty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nothing was added or taken away, so the total stays the same.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "Nothing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -4.3,
+          5.8,
+          2.3
+        ],
+        "points": {
+          "P00": [
+            0,
+            0
+          ],
+          "P50": [
+            5,
+            0
+          ],
+          "P52": [
+            5,
+            -2
+          ],
+          "P02": [
+            0,
+            -2
+          ],
+          "P01": [
+            0,
+            -1
+          ],
+          "P51": [
+            5,
+            -1
+          ],
+          "U1": [
+            1,
+            0
+          ],
+          "U2": [
+            1,
+            -1
+          ],
+          "U3": [
+            0,
+            -1
+          ],
+          "C1": [
+            1,
+            -2
+          ],
+          "T1a": [
+            1,
+            0.35
+          ],
+          "T1b": [
+            1,
+            -2.35
+          ],
+          "T2a": [
+            2,
+            0.35
+          ],
+          "T2b": [
+            2,
+            -2.35
+          ],
+          "T3a": [
+            3,
+            0.35
+          ],
+          "T3b": [
+            3,
+            -2.35
+          ],
+          "T4a": [
+            4,
+            0.35
+          ],
+          "T4b": [
+            4,
+            -2.35
+          ],
+          "L1a": [
+            -0.35,
+            -1
+          ],
+          "L1b": [
+            5.35,
+            -1
+          ],
+          "M1": [
+            1,
+            0
+          ],
+          "M1b": [
+            1,
+            -2
+          ],
+          "M2": [
+            2,
+            0
+          ],
+          "M2b": [
+            2,
+            -2
+          ],
+          "M3": [
+            3,
+            0
+          ],
+          "M3b": [
+            3,
+            -2
+          ],
+          "M4": [
+            4,
+            0
+          ],
+          "M4b": [
+            4,
+            -2
+          ],
+          "K1": [
+            -0.35,
+            -1
+          ],
+          "K2": [
+            5.35,
+            -1
+          ],
+          "Q1": [
+            1,
+            0.35
+          ],
+          "Q2": [
+            2,
+            0.35
+          ],
+          "Q3": [
+            3,
+            0.35
+          ],
+          "Q4": [
+            4,
+            0.35
+          ],
+          "R1": [
+            1,
+            -2.35
+          ],
+          "R2": [
+            2,
+            -2.35
+          ],
+          "R3": [
+            3,
+            -2.35
+          ],
+          "R4": [
+            4,
+            -2.35
+          ],
+          "CEN": [
+            2.5,
+            -1
+          ]
+        },
+        "parts": [
+          {
+            "id": "rect",
+            "poly": [
+              "P00",
+              "P50",
+              "P52",
+              "P02"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "unit",
+            "poly": [
+              "P00",
+              "U1",
+              "U2",
+              "U3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "r1",
+            "poly": [
+              "P00",
+              "P50",
+              "P51",
+              "P01"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "r2",
+            "poly": [
+              "P01",
+              "P51",
+              "P52",
+              "P02"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "c1",
+            "poly": [
+              "P00",
+              "U1",
+              "C1",
+              "P02"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "M1",
+              "Q1"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "M2",
+              "Q2"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "M3",
+              "Q3"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "M4",
+              "Q4"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "j1",
+            "seg": [
+              "M1b",
+              "R1"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "j2",
+            "seg": [
+              "M2b",
+              "R2"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "j3",
+            "seg": [
+              "M3b",
+              "R3"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "j4",
+            "seg": [
+              "M4b",
+              "R4"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "kl",
+            "seg": [
+              "P01",
+              "K1"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "kr",
+            "seg": [
+              "P51",
+              "K2"
+            ],
+            "ink": "accent",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "v1",
+            "seg": [
+              "M1",
+              "M1b"
+            ],
+            "ink": "ink",
+            "w": 2
+          },
+          {
+            "id": "v2",
+            "seg": [
+              "M2",
+              "M2b"
+            ],
+            "ink": "ink",
+            "w": 2
+          },
+          {
+            "id": "v3",
+            "seg": [
+              "M3",
+              "M3b"
+            ],
+            "ink": "ink",
+            "w": 2
+          },
+          {
+            "id": "v4",
+            "seg": [
+              "M4",
+              "M4b"
+            ],
+            "ink": "ink",
+            "w": 2
+          },
+          {
+            "id": "h1",
+            "seg": [
+              "P01",
+              "P51"
+            ],
+            "ink": "ink",
+            "w": 2
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "To partition is to cut into same-size parts.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "partition"
+            },
+            {
+              "do": "term",
+              "word": "partition",
+              "meaning": "cut into same-size parts",
+              "at": "partition"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Partition this rectangle into squares the size of the shaded one. How many rows? How many columns? How many squares in all?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Partition"
+            },
+            {
+              "do": "problem",
+              "text": "Partition this rectangle into squares the size of the shaded one. How many rows? How many columns? How many squares in all?",
+              "at": "Partition"
+            },
+            {
+              "do": "highlight",
+              "target": "unit",
+              "at": "shaded"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The marks on the edges show where to cut. Cut down from each mark, and across.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "k1",
+                "k2",
+                "k3",
+                "k4",
+                "j1",
+                "j2",
+                "j3",
+                "j4",
+                "kl",
+                "kr"
+              ],
+              "at": "marks"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "v1",
+                "v2",
+                "v3",
+                "v4"
+              ],
+              "at": "down"
+            },
+            {
+              "do": "draw",
+              "target": "h1",
+              "at": "across"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Rows go across. There are two.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "r1",
+              "at": "Rows"
+            },
+            {
+              "do": "clear",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "2 \\text{ rows}",
+              "fresh": true,
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Columns go up and down. There are five.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "c1",
+              "at": "Columns"
+            },
+            {
+              "do": "write",
+              "tex": "5 \\text{ columns}",
+              "fresh": true,
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Five squares in the top row.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "r1",
+              "at": "top"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Five more in the bottom row. Five plus five is ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "r2",
+              "at": "bottom"
+            },
+            {
+              "do": "write",
+              "tex": "5 + 5 = 10",
+              "note": "\\text{squares}",
+              "fresh": true,
+              "at": "ten"
+            },
+            {
+              "do": "answer",
+              "tex": "10",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "In an array, every row has the same number. Turn it, and the columns give the same total.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "every"
+            },
+            {
+              "do": "text",
+              "text": "Every row has the same number.",
+              "at": "every"
+            },
+            {
+              "do": "turn",
+              "target": [
+                "rect",
+                "unit",
+                "k1",
+                "k2",
+                "k3",
+                "k4",
+                "j1",
+                "j2",
+                "j3",
+                "j4",
+                "kl",
+                "kr",
+                "v1",
+                "v2",
+                "v3",
+                "v4",
+                "h1"
+              ],
+              "about": "CEN",
+              "deg": 90,
+              "at": "Turn",
+              "dur": 2.0
+            },
+            {
+              "do": "write",
+              "tex": "2 + 2 + 2 + 2 + 2 = 10",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Equal rows: add the number in a row once for every row.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Equal rows: add the number in a row once for every row.",
+              "at": "Equal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
