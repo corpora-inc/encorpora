@@ -4,14 +4,11 @@ import { currentSession } from "../api";
 import { orgPath } from "../paths";
 import { Button } from "../../../ui/Button";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
-import { plain, signed } from "./format";
 import {
   AxisEnds,
   CurveFacts,
   curveSentence,
   SettlingNote,
-  ShareRows,
-  TableDisclosure,
 } from "./parts";
 import { orgStandingOptions } from "./standing-api";
 import styles from "./Standing.module.css";
@@ -69,32 +66,6 @@ export function StandingCurves({
             <GradeAxis grid={data.grid} />
             <AxisEnds />
             <CurveLegend />
-            <TableDisclosure caption="Students against their own grade">
-              <thead>
-                <tr>
-                  <th scope="col">Where</th>
-                  <th scope="col">Students</th>
-                  <th scope="col">Share</th>
-                </tr>
-              </thead>
-              <tbody>
-                <ShareRows curve={data.all} />
-                {data.groups.map((group) => (
-                  <tr key={group.id}>
-                    <th scope="row">{group.name}</th>
-                    <td>{group.curve.n}</td>
-                    <td>
-                      median{" "}
-                      {group.curve.median === null
-                        ? "—"
-                        : signed(group.curve.median)}
-                      , sd{" "}
-                      {group.curve.sd === null ? "—" : plain(group.curve.sd)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </TableDisclosure>
           </figure>
         ) : (
           <div className={styles.figure}>

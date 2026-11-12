@@ -9,13 +9,12 @@ import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
 import { compareClassNames } from "../sort";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
-import { gradesWords, intervalWords, plain, signed, students } from "./format";
+import { gradesWords, intervalWords, signed, students } from "./format";
 import {
   AxisEnds,
   CurveFacts,
   curveSentence,
   SettlingNote,
-  TableDisclosure,
   UpLink,
 } from "./parts";
 import { orgStandingOptions } from "./standing-api";
@@ -126,7 +125,7 @@ export function StandingScreen() {
                         curve={group.curve}
                         top={top}
                         size="compact"
-                        label={`${group.name}. ${curveSentence(group.curve)}`}
+                        label={`${group.name}. ${curveSentence(group.curve, data.settleAt)}`}
                       />
                     </Link>
                   </li>
@@ -141,49 +140,6 @@ export function StandingScreen() {
               </div>
             </section>
           )}
-          <TableDisclosure
-            caption={`Where students stand, ${district ? "by school" : "by class"}`}
-          >
-            <thead>
-              <tr>
-                <th scope="col">{district ? "School" : "Class"}</th>
-                <th scope="col">Students</th>
-                <th scope="col">Median (95%)</th>
-                <th scope="col">Mean</th>
-                <th scope="col">sd</th>
-                <th scope="col">Within half a grade</th>
-                <th scope="col">Fewer than {data.settleAt} answers</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { id: "all", name: "Everyone", curve: data.all },
-                ...groups,
-              ].map((group) => (
-                <tr key={group.id}>
-                  <th scope="row">{group.name}</th>
-                  <td>{group.curve.n}</td>
-                  <td>
-                    {group.curve.middle
-                      ? `${signed(group.curve.middle.median)} (${intervalWords(group.curve.middle)})`
-                      : "—"}
-                  </td>
-                  <td>
-                    {group.curve.mean === null ? "—" : signed(group.curve.mean)}
-                  </td>
-                  <td>
-                    {group.curve.sd === null ? "—" : plain(group.curve.sd)}
-                  </td>
-                  <td>
-                    {group.curve.n
-                      ? `${Math.round((group.curve.within / group.curve.n) * 100)}%`
-                      : "—"}
-                  </td>
-                  <td>{group.curve.settling}</td>
-                </tr>
-              ))}
-            </tbody>
-          </TableDisclosure>
         </div>
       )}
     </OrgFrame>

@@ -1,8 +1,11 @@
 /* The school and district layer. Hierarchy comes from type and space, not boxes:
    a sentence, two charts, a column of what needs doing, one table. Sizes and
    colors are tokens. */
+/* Every column here is minmax(0, 1fr): an implicit grid column is as wide as
+   its widest child's content, so one wide row would widen the page. */
 .overview {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   min-width: 0;
 }
@@ -31,12 +34,14 @@
    sentence beside the seats, the charts beside what needs doing. */
 .read {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   min-width: 0;
 }
 .mainColumn,
 .sideColumn {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   min-width: 0;
 }
@@ -276,6 +281,7 @@
 /* Seats and what needs attention, a quiet column beside the charts. */
 .seats {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-2);
   justify-items: start;
 }

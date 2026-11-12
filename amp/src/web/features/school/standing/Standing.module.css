@@ -3,8 +3,13 @@
    national reference. Every frame has a fixed size, so data arriving or a
    pointer passing never moves the page. */
 
+/* One column that is never wider than the frame: a grid's implicit column
+   is as wide as its widest child's content, so without minmax(0, 1fr) one
+   wide row (a table, a long figure) widens every row and the whole page
+   scrolls sideways on a phone. */
 .screen {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   min-width: 0;
 }
@@ -61,6 +66,7 @@
 /* The lead: a large curve, its numbers beside it when there's room. */
 .lead {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
   min-width: 0;
 }
@@ -351,55 +357,6 @@
   text-wrap: pretty;
 }
 
-/* The table, closed until asked for. Opening it pushes only what's below. */
-.disclosure {
-  margin-top: var(--space-4);
-}
-.disclosure summary {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-  font-weight: 600;
-  cursor: pointer;
-}
-.disclosure summary:hover {
-  color: var(--color-on-surface);
-}
-.tableScroll {
-  overflow-x: auto;
-}
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--text-table);
-  font-variant-numeric: var(--numeric);
-}
-.table caption {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-.table th,
-.table td {
-  padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--color-border);
-  text-align: start;
-  white-space: nowrap;
-}
-.table thead th {
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-  font-weight: 600;
-}
-.table tbody th {
-  font-weight: 500;
-}
-
 /* By class: one row each, on one axis and one scale. */
 .ridge {
   display: grid;
@@ -639,4 +596,50 @@
 }
 .curveName[data-side="end"] {
   transform: translate(calc(var(--space-2) + var(--shift, 0px)), -100%);
+}
+
+/* Each student's numbers: a table where it fits, two lines a student on a
+   phone (DataGrid's list), the estimate leading. */
+.numbersName {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.numbersName:hover {
+  text-decoration: underline;
+}
+.numbersRange {
+  color: var(--color-muted-text);
+}
+.numbersCard {
+  display: grid;
+  gap: var(--space-1);
+  font-variant-numeric: var(--numeric);
+}
+.numbersTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.numbersWho {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.numbersWho small {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}
+.numbersEstimate {
+  flex: none;
+  font-weight: 600;
+}
+.numbersEstimate .numbersRange {
+  font-weight: 400;
+}
+.numbersMeta {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
 }

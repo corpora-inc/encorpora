@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import type {
   ClassStandingResponse,
   StandingGrid,
 } from "../../../../schools/standing-contracts";
 import { AppError } from "../../../lib/AppError";
 import { Button, buttonClass } from "../../../ui/Button";
+import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { StatTile } from "../../../ui/StatTile";
@@ -27,7 +28,6 @@ import {
   CurveFacts,
   curveSentence,
   SettlingNote,
-  TableDisclosure,
   UpLink,
 } from "./parts";
 import { classStandingOptions } from "./standing-api";
@@ -93,6 +93,136 @@ function StudentBand({
         </span>
       </Link>
     </li>
+  );
+}
+
+/** A student's growth this term with its 95% range, or a dash until it has
+ * settled. */
+const growthWords = (student: Student) =>
+  student.growth
+    ? withInterval({
+        median: student.growth.mu,
+        low: student.growth.mu - 1.96 * student.growth.sd,
+        high: student.growth.mu + 1.96 * student.growth.sd,
+      })
+    : null;
+
+/**
+ * The numbers the bands draw but don't print: each student's estimate with
+ * its range, sd, answers and growth. A table where it fits; on a phone each
+ * student is one row of two lines, the estimate on the first and the rest
+ * under it, so every number is in view and the page never scrolls sideways.
+ * Each row opens the student's page.
+ */
+function StudentNumbers({
+  students,
+  orgId,
+  label,
+  showGrade,
+  term,
+}: {
+  students: readonly Student[];
+  orgId: string;
+  label: string;
+  showGrade: boolean;
+  term: string;
+}) {
+  const navigate = useNavigate();
+  const pathOf = (student: Student) => orgPath(orgId, `students/${student.id}`);
+  const name = (student: Student) => (
+    <Link
+      to="/$"
+      params={{ _splat: pathOf(student) }}
+      className={styles.numbersName}
+    >
+      {student.name}
+    </Link>
+  );
+  const estimate = (student: Student) => {
+    const { low, high } = rangeOf(student);
+    return (
+      <>
+        {signed(student.mu)}{" "}
+        <span className={styles.numbersRange}>
+          ({signed(low)} to {signed(high)})
+        </span>
+      </>
+    );
+  };
+  const growth = (student: Student) => growthWords(student) ?? "—";
+  const columns: DataGridColumn<Student>[] = [
+    { id: "name", header: "Student", width: 168, cell: name },
+    ...(showGrade
+      ? [
+          {
+            id: "grade",
+            header: "Grade",
+            width: 64,
+            cell: (student: Student) =>
+              student.grade === null ? "—" : gradeName(student.grade),
+          },
+        ]
+      : []),
+    {
+      id: "estimate",
+      header: "Estimate (95%)",
+      width: 168,
+      cell: estimate,
+    },
+    {
+      id: "sd",
+      header: "sd",
+      width: 56,
+      align: "end",
+      cell: (student) => plain(student.sd),
+    },
+    {
+      id: "answers",
+      header: "Answers",
+      width: 80,
+      align: "end",
+      cell: (student) => student.answered.toLocaleString("en-US"),
+    },
+    {
+      id: "growth",
+      header: `Growth, ${term} (95%)`,
+      width: 184,
+      cell: growth,
+      cellLabel: (student) => growthWords(student) ?? "Not settled yet",
+    },
+  ];
+  return (
+    <DataGrid
+      label={label}
+      columns={columns}
+      rows={students}
+      rowKey={(student) => student.id}
+      onRowActivate={(student) =>
+        void navigate({ to: "/$", params: { _splat: pathOf(student) } })
+      }
+      rules={false}
+      cardLayout="list"
+      cardEstimate={64}
+      card={(student) => (
+        <div className={styles.numbersCard}>
+          <span className={styles.numbersTop}>
+            <span className={styles.numbersWho}>
+              {name(student)}
+              {showGrade && student.grade !== null && (
+                <small>Gr {gradeName(student.grade)}</small>
+              )}
+            </span>
+            <span className={styles.numbersEstimate}>{estimate(student)}</span>
+          </span>
+          <span className={styles.numbersMeta}>
+            sd {plain(student.sd)} ·{" "}
+            {student.answered.toLocaleString("en-US")}{" "}
+            {student.answered === 1 ? "answer" : "answers"} · growth{" "}
+            {growthWords(student) ?? "not settled yet"}
+          </span>
+        </div>
+      )}
+    />
   );
 }
 
@@ -259,49 +389,18 @@ export function ClassStandingScreen() {
                   </span>
                 </p>
               </section>
-              <TableDisclosure caption={`${data.class.name}, each student`}>
-                <thead>
-                  <tr>
-                    <th scope="col">Student</th>
-                    <th scope="col">Grade</th>
-                    <th scope="col">Estimate (95%)</th>
-                    <th scope="col">sd</th>
-                    <th scope="col">Answers</th>
-                    <th scope="col">Growth this term (95%)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.students.map((student) => {
-                    const { low, high } = rangeOf(student);
-                    return (
-                      <tr key={student.id}>
-                        <th scope="row">{student.name}</th>
-                        <td>
-                          {student.grade === null
-                            ? "—"
-                            : gradeName(student.grade)}
-                        </td>
-                        <td>
-                          {signed(student.mu)} ({signed(low)} to {signed(high)})
-                        </td>
-                        <td>{plain(student.sd)}</td>
-                        <td>{student.answered.toLocaleString("en-US")}</td>
-                        <td>
-                          {student.growth
-                            ? withInterval({
-                                median: student.growth.mu,
-                                low:
-                                  student.growth.mu - 1.96 * student.growth.sd,
-                                high:
-                                  student.growth.mu + 1.96 * student.growth.sd,
-                              })
-                            : <span title="Not settled yet">—</span>}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </TableDisclosure>
+              <section aria-labelledby="standing-numbers">
+                <h2 id="standing-numbers" className={styles.sectionTitle}>
+                  Estimates and growth
+                </h2>
+                <StudentNumbers
+                  students={data.students}
+                  orgId={data.class.org}
+                  label={`${data.class.name}, each student`}
+                  showGrade={data.grades.length > 1}
+                  term={data.term.name}
+                />
+              </section>
             </>
           )}
         </div>
