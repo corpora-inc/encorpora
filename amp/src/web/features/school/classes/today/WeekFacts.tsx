@@ -113,7 +113,6 @@ function Spread({
         midpoint={target}
         midpointWord="target"
         unit="minutes"
-        current={false}
       />
     </div>
   );
