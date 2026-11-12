@@ -1,0 +1,846 @@
+{
+  "id": "add-two-digit-regroup--sa",
+  "title": "Add by place: ten ones make one ten",
+  "teaches": [
+    "make-hundred"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2.9,
+          -7,
+          21.1,
+          13
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 3,
+                  "ones": 14
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "digits": "later"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is twenty-nine plus fifteen?",
+          "do": [
+            {
+              "do": "problem",
+              "text": "What is $29 + 15$",
+              "at": "What"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.5",
+                "b.n.ones.6",
+                "b.n.ones.7",
+                "b.n.ones.8",
+                "b.n.ones.9"
+              ],
+              "at": "What",
+              "dur": 0.01
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each cube is one, and each rod is ten cubes joined in a row.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones.9",
+              "at": "cube"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "rod"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty-nine is two tens and nine ones.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Twenty-nine"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "29",
+                "15"
+              ],
+              "op": "+",
+              "headers": true,
+              "id": "sumA",
+              "at": "Twenty-nine"
+            },
+            {
+              "do": "places",
+              "of": "sumA",
+              "at": "Twenty-nine"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "tens"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "ones"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Fifteen adds one more ten and five more ones.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.n.tens.3",
+              "at": "ten"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.ones.10",
+                "b.n.ones.11",
+                "b.n.ones.12",
+                "b.n.ones.13",
+                "b.n.ones.14"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.ones.10",
+                "b.n.ones.11",
+                "b.n.ones.12",
+                "b.n.ones.13",
+                "b.n.ones.14"
+              ],
+              "at": "ones"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start with the ones, because ten of them can make a new ten. Nine plus five is fourteen.",
+          "do": [
+            {
+              "do": "places",
+              "of": "sumA",
+              "place": "ones",
+              "at": "ones"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "fourteen"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten ones join into one rod, and it moves to the tens. Four ones stay.",
+          "do": [
+            {
+              "do": "join",
+              "target": "b.n.ones",
+              "at": "Ten",
+              "dur": 2.5
+            },
+            {
+              "do": "column",
+              "of": "sumA",
+              "at": "Ten",
+              "write": "tens"
+            },
+            {
+              "do": "show",
+              "target": "b.digit.ones",
+              "at": "Four"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "The small one above the tens records that new ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens.4",
+              "at": "new"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is a trade: ten ones for one ten, the same amount. It is also called regrouping.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens.4",
+              "at": "trade"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Two tens, one ten, and the new ten make four tens. So the sum is forty-four.",
+          "do": [
+            {
+              "do": "column",
+              "of": "sumA",
+              "at": "Two",
+              "write": "four"
+            },
+            {
+              "do": "show",
+              "target": "b.digit.tens",
+              "at": "four"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -7,
+          23.6,
+          13
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 8,
+                  "ones": 10
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "digits": "later"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What is fifty-one plus thirty-nine?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "What"
+            },
+            {
+              "do": "problem",
+              "text": "What is $51 + 39$",
+              "at": "What"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.3",
+                "b.n.tens.4",
+                "b.n.tens.5",
+                "b.n.ones.1"
+              ],
+              "at": "What",
+              "dur": 0.01
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.tens.6",
+                "b.n.tens.7",
+                "b.n.tens.8",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.5",
+                "b.n.ones.6",
+                "b.n.ones.7",
+                "b.n.ones.8",
+                "b.n.ones.9",
+                "b.n.ones.10"
+              ],
+              "at": "thirty-nine"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Eight tens and ten ones. I'll write eight, then ten: eight hundred ten.",
+          "do": [
+            {
+              "do": "text",
+              "text": "$8$ tens and $10$ ones",
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "810",
+              "id": "slip",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "A place holds one digit, so ten cannot stay in the ones place.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "ones"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "cannot"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten ones are the same amount as one ten, so trade them. They join into a rod, and it moves to the tens.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Ten"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "51",
+                "39"
+              ],
+              "op": "+",
+              "headers": true,
+              "id": "sumB",
+              "at": "Ten"
+            },
+            {
+              "do": "join",
+              "target": "b.n.ones",
+              "at": "join",
+              "dur": 2.2
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "No ones are left, so the ones digit is zero.",
+          "do": [
+            {
+              "do": "column",
+              "of": "sumB",
+              "at": "No",
+              "write": "zero"
+            },
+            {
+              "do": "show",
+              "target": "b.digit.ones",
+              "at": "zero"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Five tens, three tens, and the new ten make nine tens, so the sum is ninety.",
+          "do": [
+            {
+              "do": "column",
+              "of": "sumB",
+              "at": "Five",
+              "write": "nine"
+            },
+            {
+              "do": "show",
+              "target": "b.digit.tens",
+              "at": "nine"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          69.44,
+          -5,
+          105.44,
+          11
+        ],
+        "points": {
+          "L": [
+            70,
+            0
+          ],
+          "R": [
+            102.3,
+            0
+          ],
+          "a": [
+            72,
+            0
+          ],
+          "aTop": [
+            72,
+            0.6
+          ],
+          "aBot": [
+            72,
+            -0.6
+          ],
+          "b": [
+            80,
+            0
+          ],
+          "bTop": [
+            80,
+            0.6
+          ],
+          "bBot": [
+            80,
+            -0.6
+          ],
+          "c": [
+            100,
+            0
+          ],
+          "cTop": [
+            100,
+            0.6
+          ],
+          "cBot": [
+            100,
+            -0.6
+          ],
+          "m1": [
+            76,
+            4
+          ],
+          "m2": [
+            90,
+            8
+          ],
+          "tip1": [
+            79.1,
+            0.9
+          ],
+          "tip2": [
+            99.06,
+            0.75
+          ],
+          "lab1": [
+            76,
+            5.5
+          ],
+          "lab2": [
+            90,
+            9.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tick72",
+            "seg": [
+              "aTop",
+              "aBot"
+            ],
+            "start": true
+          },
+          {
+            "id": "tick80",
+            "seg": [
+              "bTop",
+              "bBot"
+            ],
+            "start": true
+          },
+          {
+            "id": "tick100",
+            "seg": [
+              "cTop",
+              "cBot"
+            ],
+            "start": true
+          },
+          {
+            "id": "n72",
+            "label": "72",
+            "at": "a",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "n80",
+            "label": "80",
+            "at": "b",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "n100",
+            "label": "100",
+            "at": "c",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "jump8",
+            "curve": [
+              "a",
+              "m1",
+              "b"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "arrow8",
+            "vector": [
+              "tip1",
+              "b"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "plus8",
+            "label": "+8",
+            "at": "lab1",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "jump20",
+            "curve": [
+              "b",
+              "m2",
+              "c"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "arrow20",
+            "vector": [
+              "tip2",
+              "c"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "plus20",
+            "label": "+20",
+            "at": "lab2",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Seventy-two plus an empty box equals one hundred. What number goes in the box?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Seventy-two"
+            },
+            {
+              "do": "problem",
+              "text": "$72 + \\square = 100$\nWhat number goes in the box?",
+              "at": "Seventy-two"
+            },
+            {
+              "do": "highlight",
+              "target": "n100",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count up from seventy-two. First, add ones to reach the next ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n72",
+              "at": "seventy-two"
+            },
+            {
+              "do": "highlight",
+              "target": "n80",
+              "at": "next"
+            }
+          ],
+          "pause": 0.8
+        },
+        {
+          "speaker": "learner",
+          "say": "Eight more takes seventy-two to eighty.",
+          "do": [
+            {
+              "do": "draw",
+              "target": [
+                "jump8",
+                "arrow8"
+              ],
+              "at": "Eight"
+            },
+            {
+              "do": "show",
+              "target": "plus8",
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "72+8=80",
+              "at": "eighty"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "From eighty, add whole tens to reach one hundred.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n100",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Two more tens make one hundred, so that jump is twenty.",
+          "do": [
+            {
+              "do": "draw",
+              "target": [
+                "jump20",
+                "arrow20"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "plus20",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "80+20=100",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Together the jumps are eight plus twenty, which is twenty-eight.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Together"
+            },
+            {
+              "do": "write",
+              "tex": "72+\\square=100",
+              "note": "\\text{the question}",
+              "at": "Together"
+            },
+            {
+              "do": "highlight",
+              "target": "plus8",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "plus20",
+              "at": "twenty"
+            },
+            {
+              "do": "answer",
+              "tex": "8+20=28",
+              "at": "twenty-eight"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check: seventy-two plus twenty-eight equals one hundred.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "72+28=100",
+              "note": "\\text{check}",
+              "fresh": true,
+              "at": "seventy-two"
+            }
+          ],
+          "pause": 0.6
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.9,
+          -7,
+          21.1,
+          13
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 3,
+                  "ones": 14
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "counts": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A place holds one digit, so ten ones always become one ten.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "A"
+            },
+            {
+              "do": "text",
+              "text": "A place holds one digit.",
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "ones"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ones with ones, tens with tens. Ten ones trade for one ten.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Ones with ones. Tens with tens.",
+              "at": "Ones"
+            },
+            {
+              "do": "text",
+              "text": "Ten ones trade for one ten.",
+              "at": "Ten",
+              "nth": 1
+            },
+            {
+              "do": "join",
+              "target": "b.n.ones",
+              "at": "trade",
+              "dur": 2.0
+            }
+          ],
+          "pause": 1.4
+        }
+      ]
+    }
+  ]
+}
