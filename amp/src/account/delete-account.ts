@@ -626,7 +626,7 @@ export async function deleteAccount(
       if (plan.userId) {
         await client.query(
           `DELETE FROM amp_auth_verifications WHERE value=$1
-             OR ($2::text IS NOT NULL AND lower(identifier) LIKE '%' || lower($2) || '%')`,
+             OR lower(identifier)=lower($2)`,
           [plan.userId, plan.email],
         );
         await client.query("DELETE FROM amp_auth_users WHERE id=$1", [

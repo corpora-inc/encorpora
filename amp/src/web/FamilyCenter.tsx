@@ -28,6 +28,7 @@ import { TextField } from "./ui/TextField";
 import { Link, useLocation } from "@tanstack/react-router";
 import { BackRow, BillingList, Chevron } from "./features/account/BillingList";
 import { LearnerList } from "./features/account/LearnerList";
+import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
 import pages from "./features/account/AccountPages.module.css";
 import {
   CHILD_NAME_MAX,
@@ -699,30 +700,9 @@ export function FamilyCenter({
           </div>
         )}
         {section === "security" && accountsEnabled && <AccountSecurity />}
-        {section === "security" && (
-          <ul
-            className={`${pages.list} ${accountsEnabled ? pages.continues : ""}`}
-            aria-label="Your account"
-          >
-            <li className={pages.linkItem}>
-              <Link
-                to="/family/security/delete"
-                className={pages.linkRow}
-                data-delete-account-entry
-              >
-                <span className={pages.rowText}>
-                  <span className={`${pages.rowTitle} ${pages.danger}`}>
-                    Delete my account
-                  </span>
-                  <span className={pages.rowMeta}>
-                    Your account, learners and practice, for good
-                  </span>
-                </span>
-                <Chevron />
-              </Link>
-            </li>
-          </ul>
-        )}
+        {/* With AMP accounts, the row follows Sign-in's settings once they
+            load (AccountSecurity), so nothing below them moves. */}
+        {section === "security" && !accountsEnabled && <DeleteAccountEntry />}
         {notice && (
           <p className="family-notice" role="status">
             {notice}
