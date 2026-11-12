@@ -1,0 +1,3042 @@
+{
+  "id": "story-graph-match--sg",
+  "title": "Read a graph as a story",
+  "teaches": [
+    "distance-graph-meaning"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -6.1,
+          -1.75,
+          10.2,
+          10.6
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            9.8,
+            0
+          ],
+          "Y": [
+            0,
+            9.6
+          ],
+          "XT": [
+            4.9,
+            -1.15
+          ],
+          "YT": [
+            0.2,
+            10.05
+          ],
+          "TL": [
+            -4.9,
+            8.7
+          ],
+          "TR": [
+            -1.3,
+            8.7
+          ],
+          "BL": [
+            -4.9,
+            0
+          ],
+          "BR": [
+            -1.3,
+            0
+          ],
+          "TubName": [
+            -3.1,
+            -1.15
+          ],
+          "F1": [
+            -5.9,
+            9.45
+          ],
+          "F2": [
+            -3.1,
+            9.45
+          ],
+          "F3": [
+            -3.1,
+            8.95
+          ],
+          "Handle": [
+            -4.8,
+            9.45
+          ],
+          "H1": [
+            -5.15,
+            9.8
+          ],
+          "H2": [
+            -4.45,
+            9.8
+          ],
+          "Plug": [
+            -3.1,
+            0.17
+          ],
+          "PlugEnd": [
+            -2.5,
+            0.9
+          ],
+          "WLBase": [
+            -4.78,
+            0.0
+          ],
+          "WLFoot": {
+            "foot": "P"
+          },
+          "WLHalf": {
+            "mid": [
+              "P",
+              "WLBase"
+            ]
+          },
+          "WL": {
+            "along": [
+              "WLFoot",
+              "WLHalf"
+            ],
+            "t": 2
+          },
+          "WRBase": [
+            -1.42,
+            0.0
+          ],
+          "WRFoot": {
+            "foot": "P"
+          },
+          "WRHalf": {
+            "mid": [
+              "P",
+              "WRBase"
+            ]
+          },
+          "WR": {
+            "along": [
+              "WRFoot",
+              "WRHalf"
+            ],
+            "t": 2
+          },
+          "SBBase": [
+            -3.1,
+            0.0
+          ],
+          "SBFoot": {
+            "foot": "P"
+          },
+          "SBHalf": {
+            "mid": [
+              "P",
+              "SBBase"
+            ]
+          },
+          "SB": {
+            "along": [
+              "SBFoot",
+              "SBHalf"
+            ],
+            "t": 2
+          },
+          "P": {
+            "on": "up",
+            "x": 0
+          },
+          "LI": [
+            2.85,
+            7.25
+          ],
+          "LC": [
+            7.1,
+            8.95
+          ],
+          "LD": [
+            5.95,
+            3.5
+          ],
+          "S": [
+            3,
+            0
+          ],
+          "M": [
+            3,
+            4
+          ],
+          "N": [
+            6,
+            4
+          ],
+          "A": [
+            6,
+            8
+          ],
+          "FS0": [
+            0,
+            -0.3
+          ],
+          "FS1": [
+            6,
+            -0.3
+          ],
+          "DS0": [
+            8.2,
+            -0.3
+          ],
+          "DS1": [
+            9,
+            -0.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{time}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{water level}",
+            "at": "YT",
+            "dir": "e",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "water",
+            "poly": [
+              "BL",
+              "BR",
+              "WR",
+              "WL"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "tubLeft",
+            "seg": [
+              "BL",
+              "TL"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubRight",
+            "seg": [
+              "BR",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubBottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "rim",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tap",
+            "curve": [
+              "F1",
+              "F2",
+              "F3"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "handle",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "surface",
+            "seg": [
+              "WL",
+              "WR"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "link",
+            "seg": [
+              "WR",
+              "P"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "plug",
+            "dot": "Plug",
+            "ink": "ink",
+            "r": 8,
+            "start": true
+          },
+          {
+            "id": "plugCord",
+            "seg": [
+              "Plug",
+              "PlugEnd"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tubName",
+            "label": "\\text{Tub}",
+            "at": "TubName",
+            "dir": "c",
+            "size": "l",
+            "start": true,
+            "ink": "muted"
+          },
+          {
+            "id": "stream",
+            "seg": [
+              "F3",
+              "SB"
+            ],
+            "ink": "blue",
+            "w": 5
+          },
+          {
+            "id": "up",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 0,
+            "to": 6,
+            "upto": "P",
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "hold",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 6,
+            "to": 8.2,
+            "upto": "P",
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "down",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 8.2,
+            "to": 9,
+            "upto": "P",
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "lInc",
+            "label": "\\text{increasing}",
+            "at": "LI",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "lCon",
+            "label": "\\text{constant}",
+            "at": "LC",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "lDec",
+            "label": "\\text{decreasing}",
+            "at": "LD",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "runOne",
+            "vector": [
+              "O",
+              "S"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "riseOne",
+            "vector": [
+              "S",
+              "M"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "runTwo",
+            "vector": [
+              "M",
+              "N"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "riseTwo",
+            "vector": [
+              "N",
+              "A"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "fillSpan",
+            "seg": [
+              "FS0",
+              "FS1"
+            ],
+            "ink": "blue",
+            "w": 8
+          },
+          {
+            "id": "drainSpan",
+            "seg": [
+              "DS0",
+              "DS1"
+            ],
+            "ink": "warm",
+            "w": 8
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A graph over time tells a story, read from left to right.",
+          "do": [
+            {
+              "do": "text",
+              "text": "A graph over time tells a story"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This tub holds water. Time runs across the graph, and the water level runs up.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tubName",
+              "at": "tub"
+            },
+            {
+              "do": "highlight",
+              "target": "xt",
+              "at": "Time"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "level"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The gold point's height is always the water level.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "point",
+                "link"
+              ],
+              "at": "height"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn on the tap. As time passes, the water rises, and the point climbs with it.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "stream",
+              "at": "tap"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 6,
+              "at": "time",
+              "dur": 4.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The water level is increasing: it is getting higher.",
+          "do": [
+            {
+              "do": "show",
+              "target": "lInc",
+              "at": "increasing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The rate is how fast the level changes. Each equal step of time adds the same rise, so this rate is steady.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear",
+              "at": "rate"
+            },
+            {
+              "do": "text",
+              "text": "Rate: how fast it changes",
+              "at": "rate"
+            },
+            {
+              "do": "draw",
+              "target": "runOne",
+              "at": "equal"
+            },
+            {
+              "do": "draw",
+              "target": "riseOne",
+              "at": "time"
+            },
+            {
+              "do": "draw",
+              "target": "runTwo",
+              "at": "same"
+            },
+            {
+              "do": "draw",
+              "target": "riseTwo",
+              "at": "rise"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn the tap off. Time keeps passing, so the point moves right, but the level holds.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "runOne",
+                "riseOne",
+                "runTwo",
+                "riseTwo"
+              ],
+              "at": "Turn"
+            },
+            {
+              "do": "hide",
+              "target": "stream",
+              "at": "off"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 8.2,
+              "at": "Time",
+              "dur": 2.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The level is constant: it stays the same.",
+          "do": [
+            {
+              "do": "show",
+              "target": "lCon",
+              "at": "constant"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Pull the plug. The level is decreasing: it is getting lower.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "plug",
+                "plugCord"
+              ],
+              "at": "plug"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 9,
+              "at": "level",
+              "dur": 1.0
+            },
+            {
+              "do": "show",
+              "target": "lDec",
+              "at": "decreasing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Filling took this long; draining took much less time for the same change in height.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "fillSpan",
+              "at": "Filling"
+            },
+            {
+              "do": "draw",
+              "target": "drainSpan",
+              "at": "Draining"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "up",
+                "down"
+              ],
+              "at": "same"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So draining was faster, and its piece is steeper.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "down",
+              "at": "steeper"
+            },
+            {
+              "do": "text",
+              "text": "Steeper means faster",
+              "at": "steeper"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.1,
+          -1.75,
+          10.2,
+          10.6
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            9.8,
+            0
+          ],
+          "Y": [
+            0,
+            9.6
+          ],
+          "XT": [
+            4.9,
+            -1.15
+          ],
+          "YT": [
+            0.2,
+            10.05
+          ],
+          "TL": [
+            -4.9,
+            8.7
+          ],
+          "TR": [
+            -1.3,
+            8.7
+          ],
+          "BL": [
+            -4.9,
+            0
+          ],
+          "BR": [
+            -1.3,
+            0
+          ],
+          "TubName": [
+            -3.1,
+            -1.15
+          ],
+          "F1": [
+            -5.9,
+            9.45
+          ],
+          "F2": [
+            -3.1,
+            9.45
+          ],
+          "F3": [
+            -3.1,
+            8.95
+          ],
+          "Handle": [
+            -4.8,
+            9.45
+          ],
+          "H1": [
+            -5.15,
+            9.8
+          ],
+          "H2": [
+            -4.45,
+            9.8
+          ],
+          "Plug": [
+            -3.1,
+            0.17
+          ],
+          "PlugEnd": [
+            -2.5,
+            0.9
+          ],
+          "WLBase": [
+            -4.78,
+            0.0
+          ],
+          "WLFoot": {
+            "foot": "P"
+          },
+          "WLHalf": {
+            "mid": [
+              "P",
+              "WLBase"
+            ]
+          },
+          "WL": {
+            "along": [
+              "WLFoot",
+              "WLHalf"
+            ],
+            "t": 2
+          },
+          "WRBase": [
+            -1.42,
+            0.0
+          ],
+          "WRFoot": {
+            "foot": "P"
+          },
+          "WRHalf": {
+            "mid": [
+              "P",
+              "WRBase"
+            ]
+          },
+          "WR": {
+            "along": [
+              "WRFoot",
+              "WRHalf"
+            ],
+            "t": 2
+          },
+          "SBBase": [
+            -3.1,
+            0.0
+          ],
+          "SBFoot": {
+            "foot": "P"
+          },
+          "SBHalf": {
+            "mid": [
+              "P",
+              "SBBase"
+            ]
+          },
+          "SB": {
+            "along": [
+              "SBFoot",
+              "SBHalf"
+            ],
+            "t": 2
+          },
+          "P": {
+            "on": "up",
+            "x": 0
+          },
+          "STLF": [
+            -3.03883,
+            8.68932
+          ],
+          "PF": {
+            "foot": "P"
+          },
+          "STL": {
+            "along": [
+              "STLF",
+              "PF"
+            ],
+            "t": -0.03
+          },
+          "STRF": [
+            -3.16495,
+            9.2268
+          ],
+          "STR": {
+            "along": [
+              "STRF",
+              "PF"
+            ],
+            "t": 0.03
+          },
+          "SBLF0": [
+            -3.03883,
+            0
+          ],
+          "SBLG": {
+            "along": [
+              "PF",
+              "SBLF0"
+            ],
+            "t": 1.03
+          },
+          "SBLH": {
+            "mid": [
+              "P",
+              "SBLG"
+            ]
+          },
+          "SBL": {
+            "along": [
+              "PF",
+              "SBLH"
+            ],
+            "t": 2
+          },
+          "SBRF0": [
+            -3.16495,
+            0
+          ],
+          "SBRG": {
+            "along": [
+              "PF",
+              "SBRF0"
+            ],
+            "t": 0.97
+          },
+          "SBRH": {
+            "mid": [
+              "P",
+              "SBRG"
+            ]
+          },
+          "SBR": {
+            "along": [
+              "PF",
+              "SBRH"
+            ],
+            "t": 2
+          },
+          "R": [
+            4,
+            0
+          ],
+          "Q": [
+            4,
+            2
+          ],
+          "S2": [
+            8,
+            2
+          ],
+          "E": [
+            8,
+            8
+          ]
+        },
+        "parts": [
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{time}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{water level}",
+            "at": "YT",
+            "dir": "e",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "water",
+            "poly": [
+              "BL",
+              "BR",
+              "WR",
+              "WL"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "tubLeft",
+            "seg": [
+              "BL",
+              "TL"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubRight",
+            "seg": [
+              "BR",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubBottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "rim",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tap",
+            "curve": [
+              "F1",
+              "F2",
+              "F3"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "handle",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "surface",
+            "seg": [
+              "WL",
+              "WR"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "link",
+            "seg": [
+              "WR",
+              "P"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "plug",
+            "dot": "Plug",
+            "ink": "ink",
+            "r": 8,
+            "start": true
+          },
+          {
+            "id": "plugCord",
+            "seg": [
+              "Plug",
+              "PlugEnd"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tubName",
+            "label": "\\text{Tub}",
+            "at": "TubName",
+            "dir": "c",
+            "size": "l",
+            "start": true,
+            "ink": "muted"
+          },
+          {
+            "id": "stream",
+            "poly": [
+              "STL",
+              "STR",
+              "SBR",
+              "SBL"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "steady",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "accent",
+            "w": 4,
+            "dash": true
+          },
+          {
+            "id": "up",
+            "plot": "x^2/8",
+            "from": 0,
+            "to": 8,
+            "upto": "P",
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "equalFirst",
+            "vector": [
+              "O",
+              "R"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "smallRise",
+            "vector": [
+              "R",
+              "Q"
+            ],
+            "ink": "violet",
+            "w": 5
+          },
+          {
+            "id": "equalSecond",
+            "vector": [
+              "Q",
+              "S2"
+            ],
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "bigRise",
+            "vector": [
+              "S2",
+              "E"
+            ],
+            "ink": "violet",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now empty the tub and fill it again, opening the tap wider and wider.",
+          "do": [
+            {
+              "do": "show",
+              "target": "stream",
+              "at": "fill"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 8,
+              "at": "fill",
+              "dur": 6.4
+            },
+            {
+              "do": "turn",
+              "target": "handle",
+              "about": "Handle",
+              "deg": 40,
+              "at": "opening",
+              "dur": 4.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The level rises faster and faster, so the graph bends upward.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "up",
+              "at": "bends"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take two equal steps of time: the first gives a small rise, the second a much bigger one.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": "stream",
+              "at": "Take"
+            },
+            {
+              "do": "draw",
+              "target": "equalFirst",
+              "at": "equal"
+            },
+            {
+              "do": "draw",
+              "target": "smallRise",
+              "at": "small"
+            },
+            {
+              "do": "draw",
+              "target": "equalSecond",
+              "at": "second"
+            },
+            {
+              "do": "draw",
+              "target": "bigRise",
+              "at": "bigger"
+            },
+            {
+              "do": "clear",
+              "at": "small"
+            },
+            {
+              "do": "text",
+              "text": "Equal times, growing rises",
+              "at": "small"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A steady rate draws a straight line: linear.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "steady",
+              "at": "straight"
+            },
+            {
+              "do": "text",
+              "text": "Linear: a steady rate",
+              "at": "linear"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A changing rate draws a curve: nonlinear.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "up",
+              "at": "curve"
+            },
+            {
+              "do": "text",
+              "text": "Nonlinear: a changing rate",
+              "at": "nonlinear"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.1,
+          -1.75,
+          10.2,
+          10.6
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            9.8,
+            0
+          ],
+          "Y": [
+            0,
+            9.6
+          ],
+          "XT": [
+            4.9,
+            -1.15
+          ],
+          "YT": [
+            0.2,
+            10.05
+          ],
+          "P": {
+            "on": "up",
+            "x": 0
+          },
+          "D1Base": [
+            -5.15,
+            -0.22
+          ],
+          "D1Foot": {
+            "foot": "P"
+          },
+          "D1Half": {
+            "mid": [
+              "P",
+              "D1Base"
+            ]
+          },
+          "D1": {
+            "along": [
+              "D1Foot",
+              "D1Half"
+            ],
+            "t": 2
+          },
+          "D2Base": [
+            -3.75,
+            -0.22
+          ],
+          "D2Foot": {
+            "foot": "P"
+          },
+          "D2Half": {
+            "mid": [
+              "P",
+              "D2Base"
+            ]
+          },
+          "D2": {
+            "along": [
+              "D2Foot",
+              "D2Half"
+            ],
+            "t": 2
+          },
+          "D3Base": [
+            -3.75,
+            0.22
+          ],
+          "D3Foot": {
+            "foot": "P"
+          },
+          "D3Half": {
+            "mid": [
+              "P",
+              "D3Base"
+            ]
+          },
+          "D3": {
+            "along": [
+              "D3Foot",
+              "D3Half"
+            ],
+            "t": 2
+          },
+          "D4Base": [
+            -5.15,
+            0.22
+          ],
+          "D4Foot": {
+            "foot": "P"
+          },
+          "D4Half": {
+            "mid": [
+              "P",
+              "D4Base"
+            ]
+          },
+          "D4": {
+            "along": [
+              "D4Foot",
+              "D4Half"
+            ],
+            "t": 2
+          },
+          "L1Base": [
+            -5.9,
+            0.62
+          ],
+          "L1Foot": {
+            "foot": "P"
+          },
+          "L1Half": {
+            "mid": [
+              "P",
+              "L1Base"
+            ]
+          },
+          "L1": {
+            "along": [
+              "L1Foot",
+              "L1Half"
+            ],
+            "t": 2
+          },
+          "L2Base": [
+            -4.85,
+            0.62
+          ],
+          "L2Foot": {
+            "foot": "P"
+          },
+          "L2Half": {
+            "mid": [
+              "P",
+              "L2Base"
+            ]
+          },
+          "L2": {
+            "along": [
+              "L2Foot",
+              "L2Half"
+            ],
+            "t": 2
+          },
+          "R1Base": [
+            -4.05,
+            0.62
+          ],
+          "R1Foot": {
+            "foot": "P"
+          },
+          "R1Half": {
+            "mid": [
+              "P",
+              "R1Base"
+            ]
+          },
+          "R1": {
+            "along": [
+              "R1Foot",
+              "R1Half"
+            ],
+            "t": 2
+          },
+          "R2Base": [
+            -3.0,
+            0.62
+          ],
+          "R2Foot": {
+            "foot": "P"
+          },
+          "R2Half": {
+            "mid": [
+              "P",
+              "R2Base"
+            ]
+          },
+          "R2": {
+            "along": [
+              "R2Foot",
+              "R2Half"
+            ],
+            "t": 2
+          },
+          "ALBase": [
+            -5.37,
+            0.62
+          ],
+          "ALFoot": {
+            "foot": "P"
+          },
+          "ALHalf": {
+            "mid": [
+              "P",
+              "ALBase"
+            ]
+          },
+          "AL": {
+            "along": [
+              "ALFoot",
+              "ALHalf"
+            ],
+            "t": 2
+          },
+          "ARBase": [
+            -3.53,
+            0.62
+          ],
+          "ARFoot": {
+            "foot": "P"
+          },
+          "ARHalf": {
+            "mid": [
+              "P",
+              "ARBase"
+            ]
+          },
+          "AR": {
+            "along": [
+              "ARFoot",
+              "ARHalf"
+            ],
+            "t": 2
+          },
+          "BCBase": [
+            -4.45,
+            0
+          ],
+          "BCFoot": {
+            "foot": "P"
+          },
+          "BCHalf": {
+            "mid": [
+              "P",
+              "BCBase"
+            ]
+          },
+          "BC": {
+            "along": [
+              "BCFoot",
+              "BCHalf"
+            ],
+            "t": 2
+          },
+          "DNBase": [
+            -4.45,
+            -1.0
+          ],
+          "DNFoot": {
+            "foot": "P"
+          },
+          "DNHalf": {
+            "mid": [
+              "P",
+              "DNBase"
+            ]
+          },
+          "DN": {
+            "along": [
+              "DNFoot",
+              "DNHalf"
+            ],
+            "t": 2
+          },
+          "I1": [
+            2.6,
+            1.35
+          ],
+          "DD": [
+            5.4,
+            8.3
+          ],
+          "I3": [
+            7.75,
+            1.35
+          ]
+        },
+        "parts": [
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{time}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{height above the ground}",
+            "at": "YT",
+            "dir": "e",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "up",
+            "plot": "2+2.8*x-2.7*(x-2.5+abs(x-2.5))+2.1125*(x-5+abs(x-5))",
+            "from": 0,
+            "to": 2.5,
+            "upto": "P",
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "down",
+            "plot": "2+2.8*x-2.7*(x-2.5+abs(x-2.5))+2.1125*(x-5+abs(x-5))",
+            "from": 2.5,
+            "to": 5,
+            "upto": "P",
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "last",
+            "plot": "2+2.8*x-2.7*(x-2.5+abs(x-2.5))+2.1125*(x-5+abs(x-5))",
+            "from": 5,
+            "to": 9,
+            "upto": "P",
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "droneLink",
+            "seg": [
+              "D2",
+              "P"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "body",
+            "poly": [
+              "D1",
+              "D2",
+              "D3",
+              "D4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "armLeft",
+            "seg": [
+              "BC",
+              "AL"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "armRight",
+            "seg": [
+              "BC",
+              "AR"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "rotorLeft",
+            "seg": [
+              "L1",
+              "L2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "rotorRight",
+            "seg": [
+              "R1",
+              "R2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "droneName",
+            "label": "\\text{Drone}",
+            "at": "DN",
+            "dir": "c",
+            "size": "l",
+            "start": true,
+            "ink": "muted",
+            "flies": true
+          },
+          {
+            "id": "inc1",
+            "label": "\\text{increasing}",
+            "at": "I1",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          },
+          {
+            "id": "dec",
+            "label": "\\text{decreasing}",
+            "at": "DD",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm"
+          },
+          {
+            "id": "inc2",
+            "label": "\\text{increasing}",
+            "at": "I3",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A drone climbs, then descends, then climbs. Which description fits the graph of the height above the ground over time, read from left to right?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A drone climbs, then descends, then climbs. Which description fits the graph of the height above the ground over time, read from left to right?",
+              "id": "droneQuestion"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "height"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Climbs: the height is increasing.",
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 2.5,
+              "at": "Climbs",
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "target": "inc1",
+              "at": "increasing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Descends: it is decreasing.",
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 5,
+              "at": "Descends",
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "target": "dec",
+              "at": "decreasing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Climbs again: increasing.",
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 9,
+              "at": "Climbs",
+              "dur": 1.6
+            },
+            {
+              "do": "show",
+              "target": "inc2",
+              "at": "increasing"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Increasing, then decreasing, then increasing.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Increasing, then decreasing,",
+              "at": "Increasing"
+            },
+            {
+              "do": "text",
+              "text": "then increasing.",
+              "at": "increasing",
+              "nth": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.1,
+          -1.75,
+          10.2,
+          10.6
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            9.8,
+            0
+          ],
+          "Y": [
+            0,
+            9.6
+          ],
+          "XT": [
+            3.6,
+            -1.15
+          ],
+          "YT": [
+            0.2,
+            10.05
+          ],
+          "P": {
+            "on": "dist",
+            "x": 0
+          },
+          "A": [
+            0,
+            8
+          ],
+          "B": [
+            8,
+            4.8
+          ],
+          "Stop": [
+            9.4,
+            4.8
+          ],
+          "T0": [
+            0,
+            0
+          ],
+          "HomeL": [
+            -5.35,
+            0
+          ],
+          "HomeR": [
+            -4.5,
+            0
+          ],
+          "HomeTR": [
+            -4.5,
+            1.7
+          ],
+          "HomeTL": [
+            -5.35,
+            1.7
+          ],
+          "RoofL": [
+            -5.5,
+            1.7
+          ],
+          "Roof": [
+            -4.925,
+            2.7
+          ],
+          "RoofR": [
+            -4.35,
+            1.7
+          ],
+          "DoorL": [
+            -5.12,
+            0
+          ],
+          "DoorR": [
+            -4.73,
+            0
+          ],
+          "DoorTR": [
+            -4.73,
+            0.95
+          ],
+          "DoorTL": [
+            -5.12,
+            0.95
+          ],
+          "HomeName": [
+            -4.8,
+            -1.15
+          ],
+          "Wall": [
+            -4.5,
+            0
+          ],
+          "ya1": [
+            -0.15,
+            1.6
+          ],
+          "yb1": [
+            0.15,
+            1.6
+          ],
+          "ya2": [
+            -0.15,
+            3.2
+          ],
+          "yb2": [
+            0.15,
+            3.2
+          ],
+          "ya3": [
+            -0.15,
+            4.800000000000001
+          ],
+          "yb3": [
+            0.15,
+            4.800000000000001
+          ],
+          "ya4": [
+            -0.15,
+            6.4
+          ],
+          "yb4": [
+            0.15,
+            6.4
+          ],
+          "ya5": [
+            -0.15,
+            8.0
+          ],
+          "yb5": [
+            0.15,
+            8.0
+          ],
+          "xa1": [
+            2,
+            -0.15
+          ],
+          "xb1": [
+            2,
+            0.15
+          ],
+          "xa2": [
+            4,
+            -0.15
+          ],
+          "xb2": [
+            4,
+            0.15
+          ],
+          "xa3": [
+            6,
+            -0.15
+          ],
+          "xb3": [
+            6,
+            0.15
+          ],
+          "xa4": [
+            8,
+            -0.15
+          ],
+          "xb4": [
+            8,
+            0.15
+          ],
+          "HeadF": [
+            -2.47706,
+            2.01835
+          ],
+          "PF": {
+            "foot": "P"
+          },
+          "Head": {
+            "along": [
+              "HeadF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "NeckF": [
+            -2.47706,
+            1.72477
+          ],
+          "Neck": {
+            "along": [
+              "NeckF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "HipF": [
+            -2.47706,
+            0.87156
+          ],
+          "Hip": {
+            "along": [
+              "HipF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "HandLF": [
+            -2.84404,
+            1.14679
+          ],
+          "HandL": {
+            "along": [
+              "HandLF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "HandRF": [
+            -2.11009,
+            1.14679
+          ],
+          "HandR": {
+            "along": [
+              "HandRF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "FootLF": [
+            -2.75229,
+            0.0
+          ],
+          "FootL": {
+            "along": [
+              "FootLF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "FootRF": [
+            -2.20183,
+            0.0
+          ],
+          "FootR": {
+            "along": [
+              "FootRF",
+              "PF"
+            ],
+            "t": -0.09
+          },
+          "TfootF": [
+            -2.47706,
+            0.0
+          ],
+          "Tfoot": {
+            "along": [
+              "TfootF",
+              "PF"
+            ],
+            "t": -0.09
+          }
+        },
+        "parts": [
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x\\!:\\ \\text{minutes}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y\\!:\\ \\text{meters from home}",
+            "at": "YT",
+            "dir": "e",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "ytick1",
+            "seg": [
+              "ya1",
+              "yb1"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "ynum1",
+            "label": "1",
+            "at": "ya1",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ytick2",
+            "seg": [
+              "ya2",
+              "yb2"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "ynum2",
+            "label": "2",
+            "at": "ya2",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ytick3",
+            "seg": [
+              "ya3",
+              "yb3"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "ynum3",
+            "label": "3",
+            "at": "ya3",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ytick4",
+            "seg": [
+              "ya4",
+              "yb4"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "ynum4",
+            "label": "4",
+            "at": "ya4",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ytick5",
+            "seg": [
+              "ya5",
+              "yb5"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "ynum5",
+            "label": "5",
+            "at": "ya5",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xtick1",
+            "seg": [
+              "xa1",
+              "xb1"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xtick2",
+            "seg": [
+              "xa2",
+              "xb2"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xtick3",
+            "seg": [
+              "xa3",
+              "xb3"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xtick4",
+            "seg": [
+              "xa4",
+              "xb4"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xnum4",
+            "label": "4",
+            "at": "xa4",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "dist",
+            "plot": "8-0.4*x",
+            "from": 0,
+            "to": 8,
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "hBar",
+            "seg": [
+              "PF",
+              "P"
+            ],
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "dBar",
+            "seg": [
+              "Wall",
+              "Tfoot"
+            ],
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "dotB",
+            "dot": "B",
+            "ink": "blue",
+            "r": 10,
+            "start": true
+          },
+          {
+            "id": "labelA",
+            "label": "A",
+            "at": "A",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "labelB",
+            "label": "B",
+            "at": "B",
+            "dir": "ne",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "T0",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "stopPiece",
+            "seg": [
+              "B",
+              "Stop"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "dash": true
+          },
+          {
+            "id": "home",
+            "poly": [
+              "HomeL",
+              "HomeR",
+              "HomeTR",
+              "HomeTL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "roof",
+            "curve": [
+              "RoofL",
+              "Roof",
+              "RoofR"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "door",
+            "poly": [
+              "DoorL",
+              "DoorR",
+              "DoorTR",
+              "DoorTL"
+            ],
+            "fill": "paper",
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "homeName",
+            "label": "\\text{Home}",
+            "at": "HomeName",
+            "dir": "c",
+            "size": "l",
+            "start": true,
+            "ink": "muted"
+          },
+          {
+            "id": "head",
+            "circle": "Head",
+            "r": 0.3,
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "torso",
+            "seg": [
+              "Neck",
+              "Hip"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "leftArm",
+            "seg": [
+              "Neck",
+              "HandL"
+            ],
+            "ink": "blue",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "rightArm",
+            "seg": [
+              "Neck",
+              "HandR"
+            ],
+            "ink": "blue",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "leftLeg",
+            "seg": [
+              "Hip",
+              "FootL"
+            ],
+            "ink": "blue",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "rightLeg",
+            "seg": [
+              "Hip",
+              "FootR"
+            ],
+            "ink": "blue",
+            "w": 4,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "x, minutes; y, meters from home. From A to B, how does y change?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "$x$: minutes; $y$: meters from home. From $A$ to $B$, how does $y$ change?",
+              "id": "distanceQuestion"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "meters"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip reads the falling line as walking downhill.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Falling line: walking downhill",
+              "id": "downhillSlip",
+              "at": "falling"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "But the graph is not a picture of the path. Its height is the traveler's distance from home: five meters at A.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "downhillSlip",
+              "at": "not"
+            },
+            {
+              "do": "show",
+              "target": "hBar",
+              "at": "height"
+            },
+            {
+              "do": "show",
+              "target": "dBar",
+              "at": "distance"
+            },
+            {
+              "do": "highlight",
+              "target": "ynum5",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "From A to B, the height falls to three: the traveler gets closer to home.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 8,
+              "at": "falls",
+              "dur": 2.6
+            },
+            {
+              "do": "highlight",
+              "target": "ynum3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The distance from home decreases.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Distance from home decreases.",
+              "at": "distance"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A level piece would mean the distance stays the same, usually because the traveler stopped.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "draw",
+              "target": "stopPiece",
+              "at": "level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.1,
+          -1.75,
+          10.2,
+          10.6
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            9.8,
+            0
+          ],
+          "Y": [
+            0,
+            9.6
+          ],
+          "XT": [
+            4.9,
+            -1.15
+          ],
+          "YT": [
+            0.2,
+            10.05
+          ],
+          "TL": [
+            -4.9,
+            8.7
+          ],
+          "TR": [
+            -1.3,
+            8.7
+          ],
+          "BL": [
+            -4.9,
+            0
+          ],
+          "BR": [
+            -1.3,
+            0
+          ],
+          "TubName": [
+            -3.1,
+            -1.15
+          ],
+          "F1": [
+            -5.9,
+            9.45
+          ],
+          "F2": [
+            -3.1,
+            9.45
+          ],
+          "F3": [
+            -3.1,
+            8.95
+          ],
+          "Handle": [
+            -4.8,
+            9.45
+          ],
+          "H1": [
+            -5.15,
+            9.8
+          ],
+          "H2": [
+            -4.45,
+            9.8
+          ],
+          "Plug": [
+            -2.5,
+            0.9
+          ],
+          "PlugEnd": [
+            -2.5,
+            0.9
+          ],
+          "WLBase": [
+            -4.78,
+            0.0
+          ],
+          "WLFoot": {
+            "foot": "P"
+          },
+          "WLHalf": {
+            "mid": [
+              "P",
+              "WLBase"
+            ]
+          },
+          "WL": {
+            "along": [
+              "WLFoot",
+              "WLHalf"
+            ],
+            "t": 2
+          },
+          "WRBase": [
+            -1.42,
+            0.0
+          ],
+          "WRFoot": {
+            "foot": "P"
+          },
+          "WRHalf": {
+            "mid": [
+              "P",
+              "WRBase"
+            ]
+          },
+          "WR": {
+            "along": [
+              "WRFoot",
+              "WRHalf"
+            ],
+            "t": 2
+          },
+          "SBBase": [
+            -3.1,
+            0.0
+          ],
+          "SBFoot": {
+            "foot": "P"
+          },
+          "SBHalf": {
+            "mid": [
+              "P",
+              "SBBase"
+            ]
+          },
+          "SB": {
+            "along": [
+              "SBFoot",
+              "SBHalf"
+            ],
+            "t": 2
+          },
+          "P": {
+            "on": "up",
+            "x": 9
+          },
+          "LI": [
+            2.85,
+            7.25
+          ],
+          "LC": [
+            7.1,
+            8.95
+          ],
+          "LD": [
+            5.95,
+            3.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{time}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{water level}",
+            "at": "YT",
+            "dir": "e",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "water",
+            "poly": [
+              "BL",
+              "BR",
+              "WR",
+              "WL"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "tubLeft",
+            "seg": [
+              "BL",
+              "TL"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubRight",
+            "seg": [
+              "BR",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "tubBottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "rim",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "ink": "muted",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "tap",
+            "curve": [
+              "F1",
+              "F2",
+              "F3"
+            ],
+            "ink": "ink",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "handle",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "surface",
+            "seg": [
+              "WL",
+              "WR"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "link",
+            "seg": [
+              "WR",
+              "P"
+            ],
+            "ink": "blue",
+            "w": 2,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "plug",
+            "dot": "Plug",
+            "ink": "ink",
+            "r": 8,
+            "start": false
+          },
+          {
+            "id": "plugCord",
+            "seg": [
+              "Plug",
+              "PlugEnd"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "tubName",
+            "label": "\\text{Tub}",
+            "at": "TubName",
+            "dir": "c",
+            "size": "l",
+            "start": true,
+            "ink": "muted"
+          },
+          {
+            "id": "up",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 0,
+            "to": 6,
+            "upto": "P",
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "hold",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 6,
+            "to": 8.2,
+            "upto": "P",
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "down",
+            "plot": "4*x/3-2*(x-6+abs(x-6))/3-5*(x-8.2+abs(x-8.2))",
+            "from": 8.2,
+            "to": 9,
+            "upto": "P",
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "point",
+            "dot": "P",
+            "ink": "gold",
+            "r": 12,
+            "start": true
+          },
+          {
+            "id": "lInc",
+            "label": "\\text{increasing}",
+            "at": "LI",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "lCon",
+            "label": "\\text{constant}",
+            "at": "LC",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lDec",
+            "label": "\\text{decreasing}",
+            "at": "LD",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Up is increasing, level is constant, and down is decreasing.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Up"
+            },
+            {
+              "do": "text",
+              "text": "Up: increasing",
+              "at": "Up"
+            },
+            {
+              "do": "text",
+              "text": "Level: constant",
+              "at": "level"
+            },
+            {
+              "do": "text",
+              "text": "Down: decreasing",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Straight is a steady rate; curved, a changing rate.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "straight"
+            },
+            {
+              "do": "text",
+              "text": "Straight: a steady rate",
+              "at": "straight"
+            },
+            {
+              "do": "text",
+              "text": "Curved: a changing rate",
+              "at": "curved"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Read left to right. The height is how much; the steepness is how fast.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Read"
+            },
+            {
+              "do": "text",
+              "text": "Read left to right.",
+              "at": "Read"
+            },
+            {
+              "do": "text",
+              "text": "Height: how much",
+              "at": "height"
+            },
+            {
+              "do": "text",
+              "text": "Steepness: how fast",
+              "at": "steepness"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "height"
+            },
+            {
+              "do": "highlight",
+              "target": "down",
+              "at": "steepness"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

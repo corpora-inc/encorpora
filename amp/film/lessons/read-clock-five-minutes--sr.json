@@ -1,0 +1,7028 @@
+{
+  "id": "read-clock-five-minutes--sr",
+  "title": "Two hands tell the time",
+  "teaches": [
+    "minutes-past-hour",
+    "clock-am-pm"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -4,
+          -4,
+          4,
+          4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "t0a": [
+            0.0,
+            2.76
+          ],
+          "t0b": [
+            0.0,
+            2.52
+          ],
+          "t1a": [
+            0.2885,
+            2.7449
+          ],
+          "t1b": [
+            0.276,
+            2.6255
+          ],
+          "t2a": [
+            0.5738,
+            2.6997
+          ],
+          "t2b": [
+            0.5489,
+            2.5823
+          ],
+          "t3a": [
+            0.8529,
+            2.6249
+          ],
+          "t3b": [
+            0.8158,
+            2.5108
+          ],
+          "t4a": [
+            1.1226,
+            2.5214
+          ],
+          "t4b": [
+            1.0738,
+            2.4118
+          ],
+          "t5a": [
+            1.38,
+            2.3902
+          ],
+          "t5b": [
+            1.26,
+            2.1824
+          ],
+          "t6a": [
+            1.6223,
+            2.2329
+          ],
+          "t6b": [
+            1.5518,
+            2.1358
+          ],
+          "t7a": [
+            1.8468,
+            2.0511
+          ],
+          "t7b": [
+            1.7665,
+            1.9619
+          ],
+          "t8a": [
+            2.0511,
+            1.8468
+          ],
+          "t8b": [
+            1.9619,
+            1.7665
+          ],
+          "t9a": [
+            2.2329,
+            1.6223
+          ],
+          "t9b": [
+            2.1358,
+            1.5518
+          ],
+          "t10a": [
+            2.3902,
+            1.38
+          ],
+          "t10b": [
+            2.1824,
+            1.26
+          ],
+          "t11a": [
+            2.5214,
+            1.1226
+          ],
+          "t11b": [
+            2.4118,
+            1.0738
+          ],
+          "t12a": [
+            2.6249,
+            0.8529
+          ],
+          "t12b": [
+            2.5108,
+            0.8158
+          ],
+          "t13a": [
+            2.6997,
+            0.5738
+          ],
+          "t13b": [
+            2.5823,
+            0.5489
+          ],
+          "t14a": [
+            2.7449,
+            0.2885
+          ],
+          "t14b": [
+            2.6255,
+            0.276
+          ],
+          "t15a": [
+            2.76,
+            0.0
+          ],
+          "t15b": [
+            2.52,
+            0.0
+          ],
+          "t16a": [
+            2.7449,
+            -0.2885
+          ],
+          "t16b": [
+            2.6255,
+            -0.276
+          ],
+          "t17a": [
+            2.6997,
+            -0.5738
+          ],
+          "t17b": [
+            2.5823,
+            -0.5489
+          ],
+          "t18a": [
+            2.6249,
+            -0.8529
+          ],
+          "t18b": [
+            2.5108,
+            -0.8158
+          ],
+          "t19a": [
+            2.5214,
+            -1.1226
+          ],
+          "t19b": [
+            2.4118,
+            -1.0738
+          ],
+          "t20a": [
+            2.3902,
+            -1.38
+          ],
+          "t20b": [
+            2.1824,
+            -1.26
+          ],
+          "t21a": [
+            2.2329,
+            -1.6223
+          ],
+          "t21b": [
+            2.1358,
+            -1.5518
+          ],
+          "t22a": [
+            2.0511,
+            -1.8468
+          ],
+          "t22b": [
+            1.9619,
+            -1.7665
+          ],
+          "t23a": [
+            1.8468,
+            -2.0511
+          ],
+          "t23b": [
+            1.7665,
+            -1.9619
+          ],
+          "t24a": [
+            1.6223,
+            -2.2329
+          ],
+          "t24b": [
+            1.5518,
+            -2.1358
+          ],
+          "t25a": [
+            1.38,
+            -2.3902
+          ],
+          "t25b": [
+            1.26,
+            -2.1824
+          ],
+          "t26a": [
+            1.1226,
+            -2.5214
+          ],
+          "t26b": [
+            1.0738,
+            -2.4118
+          ],
+          "t27a": [
+            0.8529,
+            -2.6249
+          ],
+          "t27b": [
+            0.8158,
+            -2.5108
+          ],
+          "t28a": [
+            0.5738,
+            -2.6997
+          ],
+          "t28b": [
+            0.5489,
+            -2.5823
+          ],
+          "t29a": [
+            0.2885,
+            -2.7449
+          ],
+          "t29b": [
+            0.276,
+            -2.6255
+          ],
+          "t30a": [
+            0.0,
+            -2.76
+          ],
+          "t30b": [
+            0.0,
+            -2.52
+          ],
+          "t31a": [
+            -0.2885,
+            -2.7449
+          ],
+          "t31b": [
+            -0.276,
+            -2.6255
+          ],
+          "t32a": [
+            -0.5738,
+            -2.6997
+          ],
+          "t32b": [
+            -0.5489,
+            -2.5823
+          ],
+          "t33a": [
+            -0.8529,
+            -2.6249
+          ],
+          "t33b": [
+            -0.8158,
+            -2.5108
+          ],
+          "t34a": [
+            -1.1226,
+            -2.5214
+          ],
+          "t34b": [
+            -1.0738,
+            -2.4118
+          ],
+          "t35a": [
+            -1.38,
+            -2.3902
+          ],
+          "t35b": [
+            -1.26,
+            -2.1824
+          ],
+          "t36a": [
+            -1.6223,
+            -2.2329
+          ],
+          "t36b": [
+            -1.5518,
+            -2.1358
+          ],
+          "t37a": [
+            -1.8468,
+            -2.0511
+          ],
+          "t37b": [
+            -1.7665,
+            -1.9619
+          ],
+          "t38a": [
+            -2.0511,
+            -1.8468
+          ],
+          "t38b": [
+            -1.9619,
+            -1.7665
+          ],
+          "t39a": [
+            -2.2329,
+            -1.6223
+          ],
+          "t39b": [
+            -2.1358,
+            -1.5518
+          ],
+          "t40a": [
+            -2.3902,
+            -1.38
+          ],
+          "t40b": [
+            -2.1824,
+            -1.26
+          ],
+          "t41a": [
+            -2.5214,
+            -1.1226
+          ],
+          "t41b": [
+            -2.4118,
+            -1.0738
+          ],
+          "t42a": [
+            -2.6249,
+            -0.8529
+          ],
+          "t42b": [
+            -2.5108,
+            -0.8158
+          ],
+          "t43a": [
+            -2.6997,
+            -0.5738
+          ],
+          "t43b": [
+            -2.5823,
+            -0.5489
+          ],
+          "t44a": [
+            -2.7449,
+            -0.2885
+          ],
+          "t44b": [
+            -2.6255,
+            -0.276
+          ],
+          "t45a": [
+            -2.76,
+            -0.0
+          ],
+          "t45b": [
+            -2.52,
+            -0.0
+          ],
+          "t46a": [
+            -2.7449,
+            0.2885
+          ],
+          "t46b": [
+            -2.6255,
+            0.276
+          ],
+          "t47a": [
+            -2.6997,
+            0.5738
+          ],
+          "t47b": [
+            -2.5823,
+            0.5489
+          ],
+          "t48a": [
+            -2.6249,
+            0.8529
+          ],
+          "t48b": [
+            -2.5108,
+            0.8158
+          ],
+          "t49a": [
+            -2.5214,
+            1.1226
+          ],
+          "t49b": [
+            -2.4118,
+            1.0738
+          ],
+          "t50a": [
+            -2.3902,
+            1.38
+          ],
+          "t50b": [
+            -2.1824,
+            1.26
+          ],
+          "t51a": [
+            -2.2329,
+            1.6223
+          ],
+          "t51b": [
+            -2.1358,
+            1.5518
+          ],
+          "t52a": [
+            -2.0511,
+            1.8468
+          ],
+          "t52b": [
+            -1.9619,
+            1.7665
+          ],
+          "t53a": [
+            -1.8468,
+            2.0511
+          ],
+          "t53b": [
+            -1.7665,
+            1.9619
+          ],
+          "t54a": [
+            -1.6223,
+            2.2329
+          ],
+          "t54b": [
+            -1.5518,
+            2.1358
+          ],
+          "t55a": [
+            -1.38,
+            2.3902
+          ],
+          "t55b": [
+            -1.26,
+            2.1824
+          ],
+          "t56a": [
+            -1.1226,
+            2.5214
+          ],
+          "t56b": [
+            -1.0738,
+            2.4118
+          ],
+          "t57a": [
+            -0.8529,
+            2.6249
+          ],
+          "t57b": [
+            -0.8158,
+            2.5108
+          ],
+          "t58a": [
+            -0.5738,
+            2.6997
+          ],
+          "t58b": [
+            -0.5489,
+            2.5823
+          ],
+          "t59a": [
+            -0.2885,
+            2.7449
+          ],
+          "t59b": [
+            -0.276,
+            2.6255
+          ],
+          "n1p": [
+            1.1,
+            1.9053
+          ],
+          "n2p": [
+            1.9053,
+            1.1
+          ],
+          "n3p": [
+            2.2,
+            0.0
+          ],
+          "n4p": [
+            1.9053,
+            -1.1
+          ],
+          "n5p": [
+            1.1,
+            -1.9053
+          ],
+          "n6p": [
+            0.0,
+            -2.2
+          ],
+          "n7p": [
+            -1.1,
+            -1.9053
+          ],
+          "n8p": [
+            -1.9053,
+            -1.1
+          ],
+          "n9p": [
+            -2.2,
+            -0.0
+          ],
+          "n10p": [
+            -1.9053,
+            1.1
+          ],
+          "n11p": [
+            -1.1,
+            1.9053
+          ],
+          "n12p": [
+            -0.0,
+            2.2
+          ],
+          "v1p": [
+            1.725,
+            2.9878
+          ],
+          "v2p": [
+            2.9878,
+            1.725
+          ],
+          "v3p": [
+            3.45,
+            0.0
+          ],
+          "v4p": [
+            2.9878,
+            -1.725
+          ],
+          "v5p": [
+            1.725,
+            -2.9878
+          ],
+          "v6p": [
+            0.0,
+            -3.45
+          ],
+          "v7p": [
+            -1.725,
+            -2.9878
+          ],
+          "v8p": [
+            -2.9878,
+            -1.725
+          ],
+          "v9p": [
+            -3.45,
+            -0.0
+          ],
+          "v10p": [
+            -2.9878,
+            1.725
+          ],
+          "v11p": [
+            -1.725,
+            2.9878
+          ],
+          "v12p": [
+            -0.0,
+            3.45
+          ],
+          "M": {
+            "on": "minuteOrbit",
+            "deg": 90
+          },
+          "H": {
+            "on": "hourOrbit",
+            "deg": 30.0
+          }
+        },
+        "parts": [
+          {
+            "id": "face",
+            "circle": "O",
+            "r": 3.0,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick0",
+            "seg": [
+              "t0a",
+              "t0b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick1",
+            "seg": [
+              "t1a",
+              "t1b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick2",
+            "seg": [
+              "t2a",
+              "t2b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick3",
+            "seg": [
+              "t3a",
+              "t3b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick4",
+            "seg": [
+              "t4a",
+              "t4b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick5",
+            "seg": [
+              "t5a",
+              "t5b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick6",
+            "seg": [
+              "t6a",
+              "t6b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick7",
+            "seg": [
+              "t7a",
+              "t7b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick8",
+            "seg": [
+              "t8a",
+              "t8b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick9",
+            "seg": [
+              "t9a",
+              "t9b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick10",
+            "seg": [
+              "t10a",
+              "t10b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick11",
+            "seg": [
+              "t11a",
+              "t11b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick12",
+            "seg": [
+              "t12a",
+              "t12b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick13",
+            "seg": [
+              "t13a",
+              "t13b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick14",
+            "seg": [
+              "t14a",
+              "t14b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick15",
+            "seg": [
+              "t15a",
+              "t15b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick16",
+            "seg": [
+              "t16a",
+              "t16b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick17",
+            "seg": [
+              "t17a",
+              "t17b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick18",
+            "seg": [
+              "t18a",
+              "t18b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick19",
+            "seg": [
+              "t19a",
+              "t19b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick20",
+            "seg": [
+              "t20a",
+              "t20b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick21",
+            "seg": [
+              "t21a",
+              "t21b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick22",
+            "seg": [
+              "t22a",
+              "t22b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick23",
+            "seg": [
+              "t23a",
+              "t23b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick24",
+            "seg": [
+              "t24a",
+              "t24b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick25",
+            "seg": [
+              "t25a",
+              "t25b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick26",
+            "seg": [
+              "t26a",
+              "t26b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick27",
+            "seg": [
+              "t27a",
+              "t27b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick28",
+            "seg": [
+              "t28a",
+              "t28b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick29",
+            "seg": [
+              "t29a",
+              "t29b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick30",
+            "seg": [
+              "t30a",
+              "t30b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick31",
+            "seg": [
+              "t31a",
+              "t31b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick32",
+            "seg": [
+              "t32a",
+              "t32b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick33",
+            "seg": [
+              "t33a",
+              "t33b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick34",
+            "seg": [
+              "t34a",
+              "t34b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick35",
+            "seg": [
+              "t35a",
+              "t35b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick36",
+            "seg": [
+              "t36a",
+              "t36b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick37",
+            "seg": [
+              "t37a",
+              "t37b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick38",
+            "seg": [
+              "t38a",
+              "t38b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick39",
+            "seg": [
+              "t39a",
+              "t39b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick40",
+            "seg": [
+              "t40a",
+              "t40b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick41",
+            "seg": [
+              "t41a",
+              "t41b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick42",
+            "seg": [
+              "t42a",
+              "t42b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick43",
+            "seg": [
+              "t43a",
+              "t43b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick44",
+            "seg": [
+              "t44a",
+              "t44b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick45",
+            "seg": [
+              "t45a",
+              "t45b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick46",
+            "seg": [
+              "t46a",
+              "t46b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick47",
+            "seg": [
+              "t47a",
+              "t47b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick48",
+            "seg": [
+              "t48a",
+              "t48b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick49",
+            "seg": [
+              "t49a",
+              "t49b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick50",
+            "seg": [
+              "t50a",
+              "t50b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick51",
+            "seg": [
+              "t51a",
+              "t51b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick52",
+            "seg": [
+              "t52a",
+              "t52b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick53",
+            "seg": [
+              "t53a",
+              "t53b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick54",
+            "seg": [
+              "t54a",
+              "t54b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick55",
+            "seg": [
+              "t55a",
+              "t55b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick56",
+            "seg": [
+              "t56a",
+              "t56b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick57",
+            "seg": [
+              "t57a",
+              "t57b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick58",
+            "seg": [
+              "t58a",
+              "t58b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick59",
+            "seg": [
+              "t59a",
+              "t59b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "n1p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "n2p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "n3p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "n4p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n5",
+            "label": "5",
+            "at": "n5p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "at": "n6p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n7",
+            "label": "7",
+            "at": "n7p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "at": "n8p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n9",
+            "label": "9",
+            "at": "n9p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "n10p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n11",
+            "label": "11",
+            "at": "n11p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "at": "n12p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "v1",
+            "label": "5",
+            "at": "v1p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v2",
+            "label": "10",
+            "at": "v2p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v3",
+            "label": "15",
+            "at": "v3p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v4",
+            "label": "20",
+            "at": "v4p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v5",
+            "label": "25",
+            "at": "v5p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v6",
+            "label": "30",
+            "at": "v6p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v7",
+            "label": "35",
+            "at": "v7p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v8",
+            "label": "40",
+            "at": "v8p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v9",
+            "label": "45",
+            "at": "v9p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v10",
+            "label": "50",
+            "at": "v10p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v11",
+            "label": "55",
+            "at": "v11p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v12",
+            "label": "60",
+            "at": "v12p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "room",
+            "circle": "O",
+            "r": 3.72,
+            "fill": "none",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "ring1",
+            "circle": "n1p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring2",
+            "circle": "n2p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring3",
+            "circle": "n3p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring4",
+            "circle": "n4p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring5",
+            "circle": "n5p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring6",
+            "circle": "n6p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring7",
+            "circle": "n7p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring8",
+            "circle": "n8p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring9",
+            "circle": "n9p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring10",
+            "circle": "n10p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring11",
+            "circle": "n11p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring12",
+            "circle": "n12p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "minuteOrbit",
+            "circle": "O",
+            "r": 1.75
+          },
+          {
+            "id": "hourOrbit",
+            "circle": "O",
+            "r": 1.2
+          },
+          {
+            "id": "minute",
+            "vector": [
+              "O",
+              "M"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": false
+          },
+          {
+            "id": "hour",
+            "vector": [
+              "O",
+              "H"
+            ],
+            "ink": "warm",
+            "w": 8,
+            "start": false
+          },
+          {
+            "id": "hub",
+            "dot": "O",
+            "r": 6,
+            "ink": "ink",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A clock shows the time with two hands. The long hand is the minute hand.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Long hand: minutes"
+            },
+            {
+              "do": "show",
+              "target": [
+                "minute",
+                "hour"
+              ],
+              "at": "hands"
+            },
+            {
+              "do": "highlight",
+              "target": "minute",
+              "at": "long"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "It starts at the twelve, and each number it reaches is five more minutes: five, ten, fifteen, twenty.",
+          "do": [
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 60,
+              "dur": 0.4,
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 27.5,
+              "dur": 0.4,
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "v1",
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 30,
+              "dur": 0.4,
+              "at": "ten"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 25.0,
+              "dur": 0.4,
+              "at": "ten"
+            },
+            {
+              "do": "show",
+              "target": "v2",
+              "at": "ten"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 0,
+              "dur": 0.4,
+              "at": "fifteen"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 22.5,
+              "dur": 0.4,
+              "at": "fifteen"
+            },
+            {
+              "do": "show",
+              "target": "v3",
+              "at": "fifteen"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -30,
+              "dur": 0.4,
+              "at": "twenty"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 20.0,
+              "dur": 0.4,
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "v4",
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "ring12",
+              "at": "twelve"
+            },
+            {
+              "do": "hide",
+              "target": "ring12",
+              "at": "fifteen"
+            },
+            {
+              "do": "write",
+              "tex": "20\\text{ minutes}",
+              "at": "twenty"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "The short hand is the hour hand. Watch it while the long hand counts those twenty minutes again.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Short hand: hour",
+              "at": "short"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 90,
+              "dur": 0.9,
+              "at": "Watch"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 30.0,
+              "dur": 0.9,
+              "at": "Watch"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -30,
+              "dur": 2.4,
+              "at": "counts"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": 20.0,
+              "dur": 2.4,
+              "at": "counts"
+            },
+            {
+              "do": "highlight",
+              "target": "hour",
+              "at": "counts"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Twenty minutes is only part of an hour, so it moves only part of the way toward the three, the next number.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "hour",
+              "at": "moves"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "So the last number it reached is the two, and the hour is two.",
+          "do": [
+            {
+              "do": "show",
+              "target": "ring2",
+              "at": "two"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "We write the hour, then two dots called a colon, then the minutes: two twenty.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "hour"
+            },
+            {
+              "do": "write",
+              "tex": "\\underbrace{\\cw{2}}_{\\text{hour}}{:}\\underbrace{\\cb{20}}_{\\text{minutes}}",
+              "at": "hour"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -4,
+          4,
+          4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "t0a": [
+            0.0,
+            2.76
+          ],
+          "t0b": [
+            0.0,
+            2.52
+          ],
+          "t1a": [
+            0.2885,
+            2.7449
+          ],
+          "t1b": [
+            0.276,
+            2.6255
+          ],
+          "t2a": [
+            0.5738,
+            2.6997
+          ],
+          "t2b": [
+            0.5489,
+            2.5823
+          ],
+          "t3a": [
+            0.8529,
+            2.6249
+          ],
+          "t3b": [
+            0.8158,
+            2.5108
+          ],
+          "t4a": [
+            1.1226,
+            2.5214
+          ],
+          "t4b": [
+            1.0738,
+            2.4118
+          ],
+          "t5a": [
+            1.38,
+            2.3902
+          ],
+          "t5b": [
+            1.26,
+            2.1824
+          ],
+          "t6a": [
+            1.6223,
+            2.2329
+          ],
+          "t6b": [
+            1.5518,
+            2.1358
+          ],
+          "t7a": [
+            1.8468,
+            2.0511
+          ],
+          "t7b": [
+            1.7665,
+            1.9619
+          ],
+          "t8a": [
+            2.0511,
+            1.8468
+          ],
+          "t8b": [
+            1.9619,
+            1.7665
+          ],
+          "t9a": [
+            2.2329,
+            1.6223
+          ],
+          "t9b": [
+            2.1358,
+            1.5518
+          ],
+          "t10a": [
+            2.3902,
+            1.38
+          ],
+          "t10b": [
+            2.1824,
+            1.26
+          ],
+          "t11a": [
+            2.5214,
+            1.1226
+          ],
+          "t11b": [
+            2.4118,
+            1.0738
+          ],
+          "t12a": [
+            2.6249,
+            0.8529
+          ],
+          "t12b": [
+            2.5108,
+            0.8158
+          ],
+          "t13a": [
+            2.6997,
+            0.5738
+          ],
+          "t13b": [
+            2.5823,
+            0.5489
+          ],
+          "t14a": [
+            2.7449,
+            0.2885
+          ],
+          "t14b": [
+            2.6255,
+            0.276
+          ],
+          "t15a": [
+            2.76,
+            0.0
+          ],
+          "t15b": [
+            2.52,
+            0.0
+          ],
+          "t16a": [
+            2.7449,
+            -0.2885
+          ],
+          "t16b": [
+            2.6255,
+            -0.276
+          ],
+          "t17a": [
+            2.6997,
+            -0.5738
+          ],
+          "t17b": [
+            2.5823,
+            -0.5489
+          ],
+          "t18a": [
+            2.6249,
+            -0.8529
+          ],
+          "t18b": [
+            2.5108,
+            -0.8158
+          ],
+          "t19a": [
+            2.5214,
+            -1.1226
+          ],
+          "t19b": [
+            2.4118,
+            -1.0738
+          ],
+          "t20a": [
+            2.3902,
+            -1.38
+          ],
+          "t20b": [
+            2.1824,
+            -1.26
+          ],
+          "t21a": [
+            2.2329,
+            -1.6223
+          ],
+          "t21b": [
+            2.1358,
+            -1.5518
+          ],
+          "t22a": [
+            2.0511,
+            -1.8468
+          ],
+          "t22b": [
+            1.9619,
+            -1.7665
+          ],
+          "t23a": [
+            1.8468,
+            -2.0511
+          ],
+          "t23b": [
+            1.7665,
+            -1.9619
+          ],
+          "t24a": [
+            1.6223,
+            -2.2329
+          ],
+          "t24b": [
+            1.5518,
+            -2.1358
+          ],
+          "t25a": [
+            1.38,
+            -2.3902
+          ],
+          "t25b": [
+            1.26,
+            -2.1824
+          ],
+          "t26a": [
+            1.1226,
+            -2.5214
+          ],
+          "t26b": [
+            1.0738,
+            -2.4118
+          ],
+          "t27a": [
+            0.8529,
+            -2.6249
+          ],
+          "t27b": [
+            0.8158,
+            -2.5108
+          ],
+          "t28a": [
+            0.5738,
+            -2.6997
+          ],
+          "t28b": [
+            0.5489,
+            -2.5823
+          ],
+          "t29a": [
+            0.2885,
+            -2.7449
+          ],
+          "t29b": [
+            0.276,
+            -2.6255
+          ],
+          "t30a": [
+            0.0,
+            -2.76
+          ],
+          "t30b": [
+            0.0,
+            -2.52
+          ],
+          "t31a": [
+            -0.2885,
+            -2.7449
+          ],
+          "t31b": [
+            -0.276,
+            -2.6255
+          ],
+          "t32a": [
+            -0.5738,
+            -2.6997
+          ],
+          "t32b": [
+            -0.5489,
+            -2.5823
+          ],
+          "t33a": [
+            -0.8529,
+            -2.6249
+          ],
+          "t33b": [
+            -0.8158,
+            -2.5108
+          ],
+          "t34a": [
+            -1.1226,
+            -2.5214
+          ],
+          "t34b": [
+            -1.0738,
+            -2.4118
+          ],
+          "t35a": [
+            -1.38,
+            -2.3902
+          ],
+          "t35b": [
+            -1.26,
+            -2.1824
+          ],
+          "t36a": [
+            -1.6223,
+            -2.2329
+          ],
+          "t36b": [
+            -1.5518,
+            -2.1358
+          ],
+          "t37a": [
+            -1.8468,
+            -2.0511
+          ],
+          "t37b": [
+            -1.7665,
+            -1.9619
+          ],
+          "t38a": [
+            -2.0511,
+            -1.8468
+          ],
+          "t38b": [
+            -1.9619,
+            -1.7665
+          ],
+          "t39a": [
+            -2.2329,
+            -1.6223
+          ],
+          "t39b": [
+            -2.1358,
+            -1.5518
+          ],
+          "t40a": [
+            -2.3902,
+            -1.38
+          ],
+          "t40b": [
+            -2.1824,
+            -1.26
+          ],
+          "t41a": [
+            -2.5214,
+            -1.1226
+          ],
+          "t41b": [
+            -2.4118,
+            -1.0738
+          ],
+          "t42a": [
+            -2.6249,
+            -0.8529
+          ],
+          "t42b": [
+            -2.5108,
+            -0.8158
+          ],
+          "t43a": [
+            -2.6997,
+            -0.5738
+          ],
+          "t43b": [
+            -2.5823,
+            -0.5489
+          ],
+          "t44a": [
+            -2.7449,
+            -0.2885
+          ],
+          "t44b": [
+            -2.6255,
+            -0.276
+          ],
+          "t45a": [
+            -2.76,
+            -0.0
+          ],
+          "t45b": [
+            -2.52,
+            -0.0
+          ],
+          "t46a": [
+            -2.7449,
+            0.2885
+          ],
+          "t46b": [
+            -2.6255,
+            0.276
+          ],
+          "t47a": [
+            -2.6997,
+            0.5738
+          ],
+          "t47b": [
+            -2.5823,
+            0.5489
+          ],
+          "t48a": [
+            -2.6249,
+            0.8529
+          ],
+          "t48b": [
+            -2.5108,
+            0.8158
+          ],
+          "t49a": [
+            -2.5214,
+            1.1226
+          ],
+          "t49b": [
+            -2.4118,
+            1.0738
+          ],
+          "t50a": [
+            -2.3902,
+            1.38
+          ],
+          "t50b": [
+            -2.1824,
+            1.26
+          ],
+          "t51a": [
+            -2.2329,
+            1.6223
+          ],
+          "t51b": [
+            -2.1358,
+            1.5518
+          ],
+          "t52a": [
+            -2.0511,
+            1.8468
+          ],
+          "t52b": [
+            -1.9619,
+            1.7665
+          ],
+          "t53a": [
+            -1.8468,
+            2.0511
+          ],
+          "t53b": [
+            -1.7665,
+            1.9619
+          ],
+          "t54a": [
+            -1.6223,
+            2.2329
+          ],
+          "t54b": [
+            -1.5518,
+            2.1358
+          ],
+          "t55a": [
+            -1.38,
+            2.3902
+          ],
+          "t55b": [
+            -1.26,
+            2.1824
+          ],
+          "t56a": [
+            -1.1226,
+            2.5214
+          ],
+          "t56b": [
+            -1.0738,
+            2.4118
+          ],
+          "t57a": [
+            -0.8529,
+            2.6249
+          ],
+          "t57b": [
+            -0.8158,
+            2.5108
+          ],
+          "t58a": [
+            -0.5738,
+            2.6997
+          ],
+          "t58b": [
+            -0.5489,
+            2.5823
+          ],
+          "t59a": [
+            -0.2885,
+            2.7449
+          ],
+          "t59b": [
+            -0.276,
+            2.6255
+          ],
+          "n1p": [
+            1.1,
+            1.9053
+          ],
+          "n2p": [
+            1.9053,
+            1.1
+          ],
+          "n3p": [
+            2.2,
+            0.0
+          ],
+          "n4p": [
+            1.9053,
+            -1.1
+          ],
+          "n5p": [
+            1.1,
+            -1.9053
+          ],
+          "n6p": [
+            0.0,
+            -2.2
+          ],
+          "n7p": [
+            -1.1,
+            -1.9053
+          ],
+          "n8p": [
+            -1.9053,
+            -1.1
+          ],
+          "n9p": [
+            -2.2,
+            -0.0
+          ],
+          "n10p": [
+            -1.9053,
+            1.1
+          ],
+          "n11p": [
+            -1.1,
+            1.9053
+          ],
+          "n12p": [
+            -0.0,
+            2.2
+          ],
+          "v1p": [
+            1.725,
+            2.9878
+          ],
+          "v2p": [
+            2.9878,
+            1.725
+          ],
+          "v3p": [
+            3.45,
+            0.0
+          ],
+          "v4p": [
+            2.9878,
+            -1.725
+          ],
+          "v5p": [
+            1.725,
+            -2.9878
+          ],
+          "v6p": [
+            0.0,
+            -3.45
+          ],
+          "v7p": [
+            -1.725,
+            -2.9878
+          ],
+          "v8p": [
+            -2.9878,
+            -1.725
+          ],
+          "v9p": [
+            -3.45,
+            -0.0
+          ],
+          "v10p": [
+            -2.9878,
+            1.725
+          ],
+          "v11p": [
+            -1.725,
+            2.9878
+          ],
+          "v12p": [
+            -0.0,
+            3.45
+          ],
+          "M": {
+            "on": "minuteOrbit",
+            "deg": -210
+          },
+          "H": {
+            "on": "hourOrbit",
+            "deg": -205.0
+          }
+        },
+        "parts": [
+          {
+            "id": "face",
+            "circle": "O",
+            "r": 3.0,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick0",
+            "seg": [
+              "t0a",
+              "t0b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick1",
+            "seg": [
+              "t1a",
+              "t1b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick2",
+            "seg": [
+              "t2a",
+              "t2b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick3",
+            "seg": [
+              "t3a",
+              "t3b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick4",
+            "seg": [
+              "t4a",
+              "t4b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick5",
+            "seg": [
+              "t5a",
+              "t5b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick6",
+            "seg": [
+              "t6a",
+              "t6b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick7",
+            "seg": [
+              "t7a",
+              "t7b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick8",
+            "seg": [
+              "t8a",
+              "t8b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick9",
+            "seg": [
+              "t9a",
+              "t9b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick10",
+            "seg": [
+              "t10a",
+              "t10b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick11",
+            "seg": [
+              "t11a",
+              "t11b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick12",
+            "seg": [
+              "t12a",
+              "t12b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick13",
+            "seg": [
+              "t13a",
+              "t13b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick14",
+            "seg": [
+              "t14a",
+              "t14b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick15",
+            "seg": [
+              "t15a",
+              "t15b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick16",
+            "seg": [
+              "t16a",
+              "t16b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick17",
+            "seg": [
+              "t17a",
+              "t17b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick18",
+            "seg": [
+              "t18a",
+              "t18b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick19",
+            "seg": [
+              "t19a",
+              "t19b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick20",
+            "seg": [
+              "t20a",
+              "t20b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick21",
+            "seg": [
+              "t21a",
+              "t21b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick22",
+            "seg": [
+              "t22a",
+              "t22b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick23",
+            "seg": [
+              "t23a",
+              "t23b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick24",
+            "seg": [
+              "t24a",
+              "t24b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick25",
+            "seg": [
+              "t25a",
+              "t25b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick26",
+            "seg": [
+              "t26a",
+              "t26b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick27",
+            "seg": [
+              "t27a",
+              "t27b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick28",
+            "seg": [
+              "t28a",
+              "t28b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick29",
+            "seg": [
+              "t29a",
+              "t29b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick30",
+            "seg": [
+              "t30a",
+              "t30b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick31",
+            "seg": [
+              "t31a",
+              "t31b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick32",
+            "seg": [
+              "t32a",
+              "t32b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick33",
+            "seg": [
+              "t33a",
+              "t33b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick34",
+            "seg": [
+              "t34a",
+              "t34b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick35",
+            "seg": [
+              "t35a",
+              "t35b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick36",
+            "seg": [
+              "t36a",
+              "t36b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick37",
+            "seg": [
+              "t37a",
+              "t37b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick38",
+            "seg": [
+              "t38a",
+              "t38b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick39",
+            "seg": [
+              "t39a",
+              "t39b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick40",
+            "seg": [
+              "t40a",
+              "t40b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick41",
+            "seg": [
+              "t41a",
+              "t41b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick42",
+            "seg": [
+              "t42a",
+              "t42b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick43",
+            "seg": [
+              "t43a",
+              "t43b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick44",
+            "seg": [
+              "t44a",
+              "t44b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick45",
+            "seg": [
+              "t45a",
+              "t45b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick46",
+            "seg": [
+              "t46a",
+              "t46b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick47",
+            "seg": [
+              "t47a",
+              "t47b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick48",
+            "seg": [
+              "t48a",
+              "t48b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick49",
+            "seg": [
+              "t49a",
+              "t49b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick50",
+            "seg": [
+              "t50a",
+              "t50b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick51",
+            "seg": [
+              "t51a",
+              "t51b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick52",
+            "seg": [
+              "t52a",
+              "t52b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick53",
+            "seg": [
+              "t53a",
+              "t53b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick54",
+            "seg": [
+              "t54a",
+              "t54b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick55",
+            "seg": [
+              "t55a",
+              "t55b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick56",
+            "seg": [
+              "t56a",
+              "t56b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick57",
+            "seg": [
+              "t57a",
+              "t57b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick58",
+            "seg": [
+              "t58a",
+              "t58b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick59",
+            "seg": [
+              "t59a",
+              "t59b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "n1p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "n2p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "n3p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "n4p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n5",
+            "label": "5",
+            "at": "n5p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "at": "n6p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n7",
+            "label": "7",
+            "at": "n7p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "at": "n8p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n9",
+            "label": "9",
+            "at": "n9p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "n10p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n11",
+            "label": "11",
+            "at": "n11p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "at": "n12p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "v1",
+            "label": "5",
+            "at": "v1p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v2",
+            "label": "10",
+            "at": "v2p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v3",
+            "label": "15",
+            "at": "v3p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v4",
+            "label": "20",
+            "at": "v4p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v5",
+            "label": "25",
+            "at": "v5p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v6",
+            "label": "30",
+            "at": "v6p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v7",
+            "label": "35",
+            "at": "v7p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v8",
+            "label": "40",
+            "at": "v8p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v9",
+            "label": "45",
+            "at": "v9p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v10",
+            "label": "50",
+            "at": "v10p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v11",
+            "label": "55",
+            "at": "v11p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v12",
+            "label": "60",
+            "at": "v12p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "room",
+            "circle": "O",
+            "r": 3.72,
+            "fill": "none",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "ring1",
+            "circle": "n1p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring2",
+            "circle": "n2p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring3",
+            "circle": "n3p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring4",
+            "circle": "n4p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring5",
+            "circle": "n5p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring6",
+            "circle": "n6p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring7",
+            "circle": "n7p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring8",
+            "circle": "n8p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring9",
+            "circle": "n9p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring10",
+            "circle": "n10p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring11",
+            "circle": "n11p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring12",
+            "circle": "n12p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "minuteOrbit",
+            "circle": "O",
+            "r": 1.75
+          },
+          {
+            "id": "hourOrbit",
+            "circle": "O",
+            "r": 1.2
+          },
+          {
+            "id": "minute",
+            "vector": [
+              "O",
+              "M"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "hour",
+            "vector": [
+              "O",
+              "H"
+            ],
+            "ink": "warm",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "hub",
+            "dot": "O",
+            "r": 6,
+            "ink": "ink",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What time does the clock show?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What time does the clock show?"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The short hand is almost on the ten. I say ten fifty.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "hour",
+              "at": "short"
+            },
+            {
+              "do": "text",
+              "text": "$10{:}50$",
+              "id": "slip",
+              "at": "ten",
+              "nth": 2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start again at nine o'clock, and count: five, ten, fifteen, twenty, twenty-five, thirty, thirty-five, forty, forty-five, fifty.",
+          "do": [
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 90,
+              "dur": 1.4,
+              "at": "Start"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -180.0,
+              "dur": 1.4,
+              "at": "Start"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 60,
+              "dur": 0.4,
+              "at": "five"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -182.5,
+              "dur": 0.4,
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "v1",
+              "at": "five"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 30,
+              "dur": 0.4,
+              "at": "ten"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -185.0,
+              "dur": 0.4,
+              "at": "ten"
+            },
+            {
+              "do": "show",
+              "target": "v2",
+              "at": "ten"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": 0,
+              "dur": 0.4,
+              "at": "fifteen"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -187.5,
+              "dur": 0.4,
+              "at": "fifteen"
+            },
+            {
+              "do": "show",
+              "target": "v3",
+              "at": "fifteen"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -30,
+              "dur": 0.4,
+              "at": "twenty"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -190.0,
+              "dur": 0.4,
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "v4",
+              "at": "twenty"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -60,
+              "dur": 0.4,
+              "at": "twenty-five"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -192.5,
+              "dur": 0.4,
+              "at": "twenty-five"
+            },
+            {
+              "do": "show",
+              "target": "v5",
+              "at": "twenty-five"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -90,
+              "dur": 0.4,
+              "at": "thirty"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -195.0,
+              "dur": 0.4,
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "v6",
+              "at": "thirty"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -120,
+              "dur": 0.4,
+              "at": "thirty-five"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -197.5,
+              "dur": 0.4,
+              "at": "thirty-five"
+            },
+            {
+              "do": "show",
+              "target": "v7",
+              "at": "thirty-five"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -150,
+              "dur": 0.4,
+              "at": "forty"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -200.0,
+              "dur": 0.4,
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "v8",
+              "at": "forty"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -180,
+              "dur": 0.4,
+              "at": "forty-five"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -202.5,
+              "dur": 0.4,
+              "at": "forty-five"
+            },
+            {
+              "do": "show",
+              "target": "v9",
+              "at": "forty-five"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -210,
+              "dur": 0.4,
+              "at": "fifty"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -205.0,
+              "dur": 0.4,
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "v10",
+              "at": "fifty"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Fifty minutes is most of the hour, so the short hand has gone most of the way from the nine toward the ten. It has not reached the ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "hour",
+              "at": "short"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "not"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "The last number it reached is the nine. Nine fifty.",
+          "do": [
+            {
+              "do": "show",
+              "target": "ring9",
+              "at": "nine"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cw{9}{:}\\cb{50}",
+              "at": "fifty"
+            }
+          ],
+          "pause": 0.6
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -4,
+          4,
+          4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "t0a": [
+            0.0,
+            2.76
+          ],
+          "t0b": [
+            0.0,
+            2.52
+          ],
+          "t1a": [
+            0.2885,
+            2.7449
+          ],
+          "t1b": [
+            0.276,
+            2.6255
+          ],
+          "t2a": [
+            0.5738,
+            2.6997
+          ],
+          "t2b": [
+            0.5489,
+            2.5823
+          ],
+          "t3a": [
+            0.8529,
+            2.6249
+          ],
+          "t3b": [
+            0.8158,
+            2.5108
+          ],
+          "t4a": [
+            1.1226,
+            2.5214
+          ],
+          "t4b": [
+            1.0738,
+            2.4118
+          ],
+          "t5a": [
+            1.38,
+            2.3902
+          ],
+          "t5b": [
+            1.26,
+            2.1824
+          ],
+          "t6a": [
+            1.6223,
+            2.2329
+          ],
+          "t6b": [
+            1.5518,
+            2.1358
+          ],
+          "t7a": [
+            1.8468,
+            2.0511
+          ],
+          "t7b": [
+            1.7665,
+            1.9619
+          ],
+          "t8a": [
+            2.0511,
+            1.8468
+          ],
+          "t8b": [
+            1.9619,
+            1.7665
+          ],
+          "t9a": [
+            2.2329,
+            1.6223
+          ],
+          "t9b": [
+            2.1358,
+            1.5518
+          ],
+          "t10a": [
+            2.3902,
+            1.38
+          ],
+          "t10b": [
+            2.1824,
+            1.26
+          ],
+          "t11a": [
+            2.5214,
+            1.1226
+          ],
+          "t11b": [
+            2.4118,
+            1.0738
+          ],
+          "t12a": [
+            2.6249,
+            0.8529
+          ],
+          "t12b": [
+            2.5108,
+            0.8158
+          ],
+          "t13a": [
+            2.6997,
+            0.5738
+          ],
+          "t13b": [
+            2.5823,
+            0.5489
+          ],
+          "t14a": [
+            2.7449,
+            0.2885
+          ],
+          "t14b": [
+            2.6255,
+            0.276
+          ],
+          "t15a": [
+            2.76,
+            0.0
+          ],
+          "t15b": [
+            2.52,
+            0.0
+          ],
+          "t16a": [
+            2.7449,
+            -0.2885
+          ],
+          "t16b": [
+            2.6255,
+            -0.276
+          ],
+          "t17a": [
+            2.6997,
+            -0.5738
+          ],
+          "t17b": [
+            2.5823,
+            -0.5489
+          ],
+          "t18a": [
+            2.6249,
+            -0.8529
+          ],
+          "t18b": [
+            2.5108,
+            -0.8158
+          ],
+          "t19a": [
+            2.5214,
+            -1.1226
+          ],
+          "t19b": [
+            2.4118,
+            -1.0738
+          ],
+          "t20a": [
+            2.3902,
+            -1.38
+          ],
+          "t20b": [
+            2.1824,
+            -1.26
+          ],
+          "t21a": [
+            2.2329,
+            -1.6223
+          ],
+          "t21b": [
+            2.1358,
+            -1.5518
+          ],
+          "t22a": [
+            2.0511,
+            -1.8468
+          ],
+          "t22b": [
+            1.9619,
+            -1.7665
+          ],
+          "t23a": [
+            1.8468,
+            -2.0511
+          ],
+          "t23b": [
+            1.7665,
+            -1.9619
+          ],
+          "t24a": [
+            1.6223,
+            -2.2329
+          ],
+          "t24b": [
+            1.5518,
+            -2.1358
+          ],
+          "t25a": [
+            1.38,
+            -2.3902
+          ],
+          "t25b": [
+            1.26,
+            -2.1824
+          ],
+          "t26a": [
+            1.1226,
+            -2.5214
+          ],
+          "t26b": [
+            1.0738,
+            -2.4118
+          ],
+          "t27a": [
+            0.8529,
+            -2.6249
+          ],
+          "t27b": [
+            0.8158,
+            -2.5108
+          ],
+          "t28a": [
+            0.5738,
+            -2.6997
+          ],
+          "t28b": [
+            0.5489,
+            -2.5823
+          ],
+          "t29a": [
+            0.2885,
+            -2.7449
+          ],
+          "t29b": [
+            0.276,
+            -2.6255
+          ],
+          "t30a": [
+            0.0,
+            -2.76
+          ],
+          "t30b": [
+            0.0,
+            -2.52
+          ],
+          "t31a": [
+            -0.2885,
+            -2.7449
+          ],
+          "t31b": [
+            -0.276,
+            -2.6255
+          ],
+          "t32a": [
+            -0.5738,
+            -2.6997
+          ],
+          "t32b": [
+            -0.5489,
+            -2.5823
+          ],
+          "t33a": [
+            -0.8529,
+            -2.6249
+          ],
+          "t33b": [
+            -0.8158,
+            -2.5108
+          ],
+          "t34a": [
+            -1.1226,
+            -2.5214
+          ],
+          "t34b": [
+            -1.0738,
+            -2.4118
+          ],
+          "t35a": [
+            -1.38,
+            -2.3902
+          ],
+          "t35b": [
+            -1.26,
+            -2.1824
+          ],
+          "t36a": [
+            -1.6223,
+            -2.2329
+          ],
+          "t36b": [
+            -1.5518,
+            -2.1358
+          ],
+          "t37a": [
+            -1.8468,
+            -2.0511
+          ],
+          "t37b": [
+            -1.7665,
+            -1.9619
+          ],
+          "t38a": [
+            -2.0511,
+            -1.8468
+          ],
+          "t38b": [
+            -1.9619,
+            -1.7665
+          ],
+          "t39a": [
+            -2.2329,
+            -1.6223
+          ],
+          "t39b": [
+            -2.1358,
+            -1.5518
+          ],
+          "t40a": [
+            -2.3902,
+            -1.38
+          ],
+          "t40b": [
+            -2.1824,
+            -1.26
+          ],
+          "t41a": [
+            -2.5214,
+            -1.1226
+          ],
+          "t41b": [
+            -2.4118,
+            -1.0738
+          ],
+          "t42a": [
+            -2.6249,
+            -0.8529
+          ],
+          "t42b": [
+            -2.5108,
+            -0.8158
+          ],
+          "t43a": [
+            -2.6997,
+            -0.5738
+          ],
+          "t43b": [
+            -2.5823,
+            -0.5489
+          ],
+          "t44a": [
+            -2.7449,
+            -0.2885
+          ],
+          "t44b": [
+            -2.6255,
+            -0.276
+          ],
+          "t45a": [
+            -2.76,
+            -0.0
+          ],
+          "t45b": [
+            -2.52,
+            -0.0
+          ],
+          "t46a": [
+            -2.7449,
+            0.2885
+          ],
+          "t46b": [
+            -2.6255,
+            0.276
+          ],
+          "t47a": [
+            -2.6997,
+            0.5738
+          ],
+          "t47b": [
+            -2.5823,
+            0.5489
+          ],
+          "t48a": [
+            -2.6249,
+            0.8529
+          ],
+          "t48b": [
+            -2.5108,
+            0.8158
+          ],
+          "t49a": [
+            -2.5214,
+            1.1226
+          ],
+          "t49b": [
+            -2.4118,
+            1.0738
+          ],
+          "t50a": [
+            -2.3902,
+            1.38
+          ],
+          "t50b": [
+            -2.1824,
+            1.26
+          ],
+          "t51a": [
+            -2.2329,
+            1.6223
+          ],
+          "t51b": [
+            -2.1358,
+            1.5518
+          ],
+          "t52a": [
+            -2.0511,
+            1.8468
+          ],
+          "t52b": [
+            -1.9619,
+            1.7665
+          ],
+          "t53a": [
+            -1.8468,
+            2.0511
+          ],
+          "t53b": [
+            -1.7665,
+            1.9619
+          ],
+          "t54a": [
+            -1.6223,
+            2.2329
+          ],
+          "t54b": [
+            -1.5518,
+            2.1358
+          ],
+          "t55a": [
+            -1.38,
+            2.3902
+          ],
+          "t55b": [
+            -1.26,
+            2.1824
+          ],
+          "t56a": [
+            -1.1226,
+            2.5214
+          ],
+          "t56b": [
+            -1.0738,
+            2.4118
+          ],
+          "t57a": [
+            -0.8529,
+            2.6249
+          ],
+          "t57b": [
+            -0.8158,
+            2.5108
+          ],
+          "t58a": [
+            -0.5738,
+            2.6997
+          ],
+          "t58b": [
+            -0.5489,
+            2.5823
+          ],
+          "t59a": [
+            -0.2885,
+            2.7449
+          ],
+          "t59b": [
+            -0.276,
+            2.6255
+          ],
+          "n1p": [
+            1.1,
+            1.9053
+          ],
+          "n2p": [
+            1.9053,
+            1.1
+          ],
+          "n3p": [
+            2.2,
+            0.0
+          ],
+          "n4p": [
+            1.9053,
+            -1.1
+          ],
+          "n5p": [
+            1.1,
+            -1.9053
+          ],
+          "n6p": [
+            0.0,
+            -2.2
+          ],
+          "n7p": [
+            -1.1,
+            -1.9053
+          ],
+          "n8p": [
+            -1.9053,
+            -1.1
+          ],
+          "n9p": [
+            -2.2,
+            -0.0
+          ],
+          "n10p": [
+            -1.9053,
+            1.1
+          ],
+          "n11p": [
+            -1.1,
+            1.9053
+          ],
+          "n12p": [
+            -0.0,
+            2.2
+          ],
+          "v1p": [
+            1.725,
+            2.9878
+          ],
+          "v2p": [
+            2.9878,
+            1.725
+          ],
+          "v3p": [
+            3.45,
+            0.0
+          ],
+          "v4p": [
+            2.9878,
+            -1.725
+          ],
+          "v5p": [
+            1.725,
+            -2.9878
+          ],
+          "v6p": [
+            0.0,
+            -3.45
+          ],
+          "v7p": [
+            -1.725,
+            -2.9878
+          ],
+          "v8p": [
+            -2.9878,
+            -1.725
+          ],
+          "v9p": [
+            -3.45,
+            -0.0
+          ],
+          "v10p": [
+            -2.9878,
+            1.725
+          ],
+          "v11p": [
+            -1.725,
+            2.9878
+          ],
+          "v12p": [
+            -0.0,
+            3.45
+          ],
+          "M": {
+            "on": "minuteOrbit",
+            "deg": 30
+          },
+          "H": {
+            "on": "hourOrbit",
+            "deg": -65.0
+          }
+        },
+        "parts": [
+          {
+            "id": "face",
+            "circle": "O",
+            "r": 3.0,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick0",
+            "seg": [
+              "t0a",
+              "t0b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick1",
+            "seg": [
+              "t1a",
+              "t1b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick2",
+            "seg": [
+              "t2a",
+              "t2b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick3",
+            "seg": [
+              "t3a",
+              "t3b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick4",
+            "seg": [
+              "t4a",
+              "t4b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick5",
+            "seg": [
+              "t5a",
+              "t5b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick6",
+            "seg": [
+              "t6a",
+              "t6b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick7",
+            "seg": [
+              "t7a",
+              "t7b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick8",
+            "seg": [
+              "t8a",
+              "t8b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick9",
+            "seg": [
+              "t9a",
+              "t9b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick10",
+            "seg": [
+              "t10a",
+              "t10b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick11",
+            "seg": [
+              "t11a",
+              "t11b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick12",
+            "seg": [
+              "t12a",
+              "t12b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick13",
+            "seg": [
+              "t13a",
+              "t13b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick14",
+            "seg": [
+              "t14a",
+              "t14b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick15",
+            "seg": [
+              "t15a",
+              "t15b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick16",
+            "seg": [
+              "t16a",
+              "t16b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick17",
+            "seg": [
+              "t17a",
+              "t17b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick18",
+            "seg": [
+              "t18a",
+              "t18b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick19",
+            "seg": [
+              "t19a",
+              "t19b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick20",
+            "seg": [
+              "t20a",
+              "t20b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick21",
+            "seg": [
+              "t21a",
+              "t21b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick22",
+            "seg": [
+              "t22a",
+              "t22b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick23",
+            "seg": [
+              "t23a",
+              "t23b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick24",
+            "seg": [
+              "t24a",
+              "t24b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick25",
+            "seg": [
+              "t25a",
+              "t25b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick26",
+            "seg": [
+              "t26a",
+              "t26b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick27",
+            "seg": [
+              "t27a",
+              "t27b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick28",
+            "seg": [
+              "t28a",
+              "t28b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick29",
+            "seg": [
+              "t29a",
+              "t29b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick30",
+            "seg": [
+              "t30a",
+              "t30b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick31",
+            "seg": [
+              "t31a",
+              "t31b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick32",
+            "seg": [
+              "t32a",
+              "t32b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick33",
+            "seg": [
+              "t33a",
+              "t33b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick34",
+            "seg": [
+              "t34a",
+              "t34b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick35",
+            "seg": [
+              "t35a",
+              "t35b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick36",
+            "seg": [
+              "t36a",
+              "t36b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick37",
+            "seg": [
+              "t37a",
+              "t37b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick38",
+            "seg": [
+              "t38a",
+              "t38b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick39",
+            "seg": [
+              "t39a",
+              "t39b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick40",
+            "seg": [
+              "t40a",
+              "t40b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick41",
+            "seg": [
+              "t41a",
+              "t41b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick42",
+            "seg": [
+              "t42a",
+              "t42b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick43",
+            "seg": [
+              "t43a",
+              "t43b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick44",
+            "seg": [
+              "t44a",
+              "t44b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick45",
+            "seg": [
+              "t45a",
+              "t45b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick46",
+            "seg": [
+              "t46a",
+              "t46b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick47",
+            "seg": [
+              "t47a",
+              "t47b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick48",
+            "seg": [
+              "t48a",
+              "t48b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick49",
+            "seg": [
+              "t49a",
+              "t49b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick50",
+            "seg": [
+              "t50a",
+              "t50b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick51",
+            "seg": [
+              "t51a",
+              "t51b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick52",
+            "seg": [
+              "t52a",
+              "t52b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick53",
+            "seg": [
+              "t53a",
+              "t53b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick54",
+            "seg": [
+              "t54a",
+              "t54b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick55",
+            "seg": [
+              "t55a",
+              "t55b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick56",
+            "seg": [
+              "t56a",
+              "t56b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick57",
+            "seg": [
+              "t57a",
+              "t57b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick58",
+            "seg": [
+              "t58a",
+              "t58b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick59",
+            "seg": [
+              "t59a",
+              "t59b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "n1p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "n2p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "n3p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "n4p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n5",
+            "label": "5",
+            "at": "n5p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "at": "n6p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n7",
+            "label": "7",
+            "at": "n7p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "at": "n8p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n9",
+            "label": "9",
+            "at": "n9p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "n10p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n11",
+            "label": "11",
+            "at": "n11p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "at": "n12p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "v1",
+            "label": "5",
+            "at": "v1p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v2",
+            "label": "10",
+            "at": "v2p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v3",
+            "label": "15",
+            "at": "v3p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v4",
+            "label": "20",
+            "at": "v4p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v5",
+            "label": "25",
+            "at": "v5p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v6",
+            "label": "30",
+            "at": "v6p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v7",
+            "label": "35",
+            "at": "v7p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v8",
+            "label": "40",
+            "at": "v8p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v9",
+            "label": "45",
+            "at": "v9p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v10",
+            "label": "50",
+            "at": "v10p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v11",
+            "label": "55",
+            "at": "v11p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "v12",
+            "label": "60",
+            "at": "v12p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "room",
+            "circle": "O",
+            "r": 3.72,
+            "fill": "none",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "ring1",
+            "circle": "n1p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring2",
+            "circle": "n2p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring3",
+            "circle": "n3p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring4",
+            "circle": "n4p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring5",
+            "circle": "n5p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring6",
+            "circle": "n6p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring7",
+            "circle": "n7p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring8",
+            "circle": "n8p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring9",
+            "circle": "n9p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring10",
+            "circle": "n10p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring11",
+            "circle": "n11p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring12",
+            "circle": "n12p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "minuteOrbit",
+            "circle": "O",
+            "r": 1.75
+          },
+          {
+            "id": "hourOrbit",
+            "circle": "O",
+            "r": 1.2
+          },
+          {
+            "id": "minute",
+            "vector": [
+              "O",
+              "M"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "hour",
+            "vector": [
+              "O",
+              "H"
+            ],
+            "ink": "warm",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "hub",
+            "dot": "O",
+            "r": 6,
+            "ink": "ink",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Priya eats dinner at the time on the clock. Which time is it?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Priya eats dinner at the time on the clock. Which time is it?"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The long hand is on the two: five, ten minutes. The short hand last reached the five. So it reads five ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "minute",
+              "at": "long"
+            },
+            {
+              "do": "show",
+              "target": "v1",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "v2",
+              "at": "ten"
+            },
+            {
+              "do": "show",
+              "target": "ring5",
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{5}{:}\\cb{10}",
+              "at": "reads"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.4,
+          -3.2,
+          6.4,
+          3.2
+        ],
+        "points": {
+          "La": [
+            -5.4,
+            1.3
+          ],
+          "Na": [
+            0,
+            1.3
+          ],
+          "Ra": [
+            5.4,
+            1.3
+          ],
+          "Lb": [
+            -5.4,
+            -1.3
+          ],
+          "Nb": [
+            0,
+            -1.3
+          ],
+          "Rb": [
+            5.4,
+            -1.3
+          ],
+          "amP": [
+            -2.7,
+            0
+          ],
+          "pmP": [
+            2.7,
+            0
+          ],
+          "dTop": [
+            2.325,
+            2.7
+          ],
+          "dTip": [
+            2.325,
+            1.42
+          ]
+        },
+        "parts": [
+          {
+            "id": "am",
+            "poly": [
+              "La",
+              "Na",
+              "Nb",
+              "Lb"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2
+          },
+          {
+            "id": "pm",
+            "poly": [
+              "Na",
+              "Ra",
+              "Rb",
+              "Nb"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2
+          },
+          {
+            "id": "frame",
+            "poly": [
+              "La",
+              "Ra",
+              "Rb",
+              "Lb"
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "aml",
+            "label": "\\text{a.m.}",
+            "at": "amP",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "pml",
+            "label": "\\text{p.m.}",
+            "at": "pmP",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "midnight",
+            "label": "\\text{midnight}",
+            "at": "Lb",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "noon",
+            "label": "\\text{noon}",
+            "at": "Nb",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "midnightEnd",
+            "label": "\\text{midnight}",
+            "at": "Rb",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "dinnerMark",
+            "vector": [
+              "dTop",
+              "dTip"
+            ],
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "dinner",
+            "label": "\\text{dinner}",
+            "at": "dTop",
+            "dir": "n",
+            "size": "l",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Each clock time happens twice a day. Times from midnight to noon are called A.M. Times from noon to midnight are called P.M.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "am",
+                "aml"
+              ],
+              "at": "A.M."
+            },
+            {
+              "do": "show",
+              "target": [
+                "pm",
+                "pml"
+              ],
+              "at": "P.M."
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Dinner is in the evening, after noon. So it is five ten P.M.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dinnerMark",
+                "dinner"
+              ],
+              "at": "Dinner"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cw{5}{:}\\cb{10}\\text{ p.m.}",
+              "at": "Five"
+            }
+          ],
+          "pause": 0.6
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -4,
+          4,
+          4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "t0a": [
+            0.0,
+            2.76
+          ],
+          "t0b": [
+            0.0,
+            2.52
+          ],
+          "t1a": [
+            0.2885,
+            2.7449
+          ],
+          "t1b": [
+            0.276,
+            2.6255
+          ],
+          "t2a": [
+            0.5738,
+            2.6997
+          ],
+          "t2b": [
+            0.5489,
+            2.5823
+          ],
+          "t3a": [
+            0.8529,
+            2.6249
+          ],
+          "t3b": [
+            0.8158,
+            2.5108
+          ],
+          "t4a": [
+            1.1226,
+            2.5214
+          ],
+          "t4b": [
+            1.0738,
+            2.4118
+          ],
+          "t5a": [
+            1.38,
+            2.3902
+          ],
+          "t5b": [
+            1.26,
+            2.1824
+          ],
+          "t6a": [
+            1.6223,
+            2.2329
+          ],
+          "t6b": [
+            1.5518,
+            2.1358
+          ],
+          "t7a": [
+            1.8468,
+            2.0511
+          ],
+          "t7b": [
+            1.7665,
+            1.9619
+          ],
+          "t8a": [
+            2.0511,
+            1.8468
+          ],
+          "t8b": [
+            1.9619,
+            1.7665
+          ],
+          "t9a": [
+            2.2329,
+            1.6223
+          ],
+          "t9b": [
+            2.1358,
+            1.5518
+          ],
+          "t10a": [
+            2.3902,
+            1.38
+          ],
+          "t10b": [
+            2.1824,
+            1.26
+          ],
+          "t11a": [
+            2.5214,
+            1.1226
+          ],
+          "t11b": [
+            2.4118,
+            1.0738
+          ],
+          "t12a": [
+            2.6249,
+            0.8529
+          ],
+          "t12b": [
+            2.5108,
+            0.8158
+          ],
+          "t13a": [
+            2.6997,
+            0.5738
+          ],
+          "t13b": [
+            2.5823,
+            0.5489
+          ],
+          "t14a": [
+            2.7449,
+            0.2885
+          ],
+          "t14b": [
+            2.6255,
+            0.276
+          ],
+          "t15a": [
+            2.76,
+            0.0
+          ],
+          "t15b": [
+            2.52,
+            0.0
+          ],
+          "t16a": [
+            2.7449,
+            -0.2885
+          ],
+          "t16b": [
+            2.6255,
+            -0.276
+          ],
+          "t17a": [
+            2.6997,
+            -0.5738
+          ],
+          "t17b": [
+            2.5823,
+            -0.5489
+          ],
+          "t18a": [
+            2.6249,
+            -0.8529
+          ],
+          "t18b": [
+            2.5108,
+            -0.8158
+          ],
+          "t19a": [
+            2.5214,
+            -1.1226
+          ],
+          "t19b": [
+            2.4118,
+            -1.0738
+          ],
+          "t20a": [
+            2.3902,
+            -1.38
+          ],
+          "t20b": [
+            2.1824,
+            -1.26
+          ],
+          "t21a": [
+            2.2329,
+            -1.6223
+          ],
+          "t21b": [
+            2.1358,
+            -1.5518
+          ],
+          "t22a": [
+            2.0511,
+            -1.8468
+          ],
+          "t22b": [
+            1.9619,
+            -1.7665
+          ],
+          "t23a": [
+            1.8468,
+            -2.0511
+          ],
+          "t23b": [
+            1.7665,
+            -1.9619
+          ],
+          "t24a": [
+            1.6223,
+            -2.2329
+          ],
+          "t24b": [
+            1.5518,
+            -2.1358
+          ],
+          "t25a": [
+            1.38,
+            -2.3902
+          ],
+          "t25b": [
+            1.26,
+            -2.1824
+          ],
+          "t26a": [
+            1.1226,
+            -2.5214
+          ],
+          "t26b": [
+            1.0738,
+            -2.4118
+          ],
+          "t27a": [
+            0.8529,
+            -2.6249
+          ],
+          "t27b": [
+            0.8158,
+            -2.5108
+          ],
+          "t28a": [
+            0.5738,
+            -2.6997
+          ],
+          "t28b": [
+            0.5489,
+            -2.5823
+          ],
+          "t29a": [
+            0.2885,
+            -2.7449
+          ],
+          "t29b": [
+            0.276,
+            -2.6255
+          ],
+          "t30a": [
+            0.0,
+            -2.76
+          ],
+          "t30b": [
+            0.0,
+            -2.52
+          ],
+          "t31a": [
+            -0.2885,
+            -2.7449
+          ],
+          "t31b": [
+            -0.276,
+            -2.6255
+          ],
+          "t32a": [
+            -0.5738,
+            -2.6997
+          ],
+          "t32b": [
+            -0.5489,
+            -2.5823
+          ],
+          "t33a": [
+            -0.8529,
+            -2.6249
+          ],
+          "t33b": [
+            -0.8158,
+            -2.5108
+          ],
+          "t34a": [
+            -1.1226,
+            -2.5214
+          ],
+          "t34b": [
+            -1.0738,
+            -2.4118
+          ],
+          "t35a": [
+            -1.38,
+            -2.3902
+          ],
+          "t35b": [
+            -1.26,
+            -2.1824
+          ],
+          "t36a": [
+            -1.6223,
+            -2.2329
+          ],
+          "t36b": [
+            -1.5518,
+            -2.1358
+          ],
+          "t37a": [
+            -1.8468,
+            -2.0511
+          ],
+          "t37b": [
+            -1.7665,
+            -1.9619
+          ],
+          "t38a": [
+            -2.0511,
+            -1.8468
+          ],
+          "t38b": [
+            -1.9619,
+            -1.7665
+          ],
+          "t39a": [
+            -2.2329,
+            -1.6223
+          ],
+          "t39b": [
+            -2.1358,
+            -1.5518
+          ],
+          "t40a": [
+            -2.3902,
+            -1.38
+          ],
+          "t40b": [
+            -2.1824,
+            -1.26
+          ],
+          "t41a": [
+            -2.5214,
+            -1.1226
+          ],
+          "t41b": [
+            -2.4118,
+            -1.0738
+          ],
+          "t42a": [
+            -2.6249,
+            -0.8529
+          ],
+          "t42b": [
+            -2.5108,
+            -0.8158
+          ],
+          "t43a": [
+            -2.6997,
+            -0.5738
+          ],
+          "t43b": [
+            -2.5823,
+            -0.5489
+          ],
+          "t44a": [
+            -2.7449,
+            -0.2885
+          ],
+          "t44b": [
+            -2.6255,
+            -0.276
+          ],
+          "t45a": [
+            -2.76,
+            -0.0
+          ],
+          "t45b": [
+            -2.52,
+            -0.0
+          ],
+          "t46a": [
+            -2.7449,
+            0.2885
+          ],
+          "t46b": [
+            -2.6255,
+            0.276
+          ],
+          "t47a": [
+            -2.6997,
+            0.5738
+          ],
+          "t47b": [
+            -2.5823,
+            0.5489
+          ],
+          "t48a": [
+            -2.6249,
+            0.8529
+          ],
+          "t48b": [
+            -2.5108,
+            0.8158
+          ],
+          "t49a": [
+            -2.5214,
+            1.1226
+          ],
+          "t49b": [
+            -2.4118,
+            1.0738
+          ],
+          "t50a": [
+            -2.3902,
+            1.38
+          ],
+          "t50b": [
+            -2.1824,
+            1.26
+          ],
+          "t51a": [
+            -2.2329,
+            1.6223
+          ],
+          "t51b": [
+            -2.1358,
+            1.5518
+          ],
+          "t52a": [
+            -2.0511,
+            1.8468
+          ],
+          "t52b": [
+            -1.9619,
+            1.7665
+          ],
+          "t53a": [
+            -1.8468,
+            2.0511
+          ],
+          "t53b": [
+            -1.7665,
+            1.9619
+          ],
+          "t54a": [
+            -1.6223,
+            2.2329
+          ],
+          "t54b": [
+            -1.5518,
+            2.1358
+          ],
+          "t55a": [
+            -1.38,
+            2.3902
+          ],
+          "t55b": [
+            -1.26,
+            2.1824
+          ],
+          "t56a": [
+            -1.1226,
+            2.5214
+          ],
+          "t56b": [
+            -1.0738,
+            2.4118
+          ],
+          "t57a": [
+            -0.8529,
+            2.6249
+          ],
+          "t57b": [
+            -0.8158,
+            2.5108
+          ],
+          "t58a": [
+            -0.5738,
+            2.6997
+          ],
+          "t58b": [
+            -0.5489,
+            2.5823
+          ],
+          "t59a": [
+            -0.2885,
+            2.7449
+          ],
+          "t59b": [
+            -0.276,
+            2.6255
+          ],
+          "n1p": [
+            1.1,
+            1.9053
+          ],
+          "n2p": [
+            1.9053,
+            1.1
+          ],
+          "n3p": [
+            2.2,
+            0.0
+          ],
+          "n4p": [
+            1.9053,
+            -1.1
+          ],
+          "n5p": [
+            1.1,
+            -1.9053
+          ],
+          "n6p": [
+            0.0,
+            -2.2
+          ],
+          "n7p": [
+            -1.1,
+            -1.9053
+          ],
+          "n8p": [
+            -1.9053,
+            -1.1
+          ],
+          "n9p": [
+            -2.2,
+            -0.0
+          ],
+          "n10p": [
+            -1.9053,
+            1.1
+          ],
+          "n11p": [
+            -1.1,
+            1.9053
+          ],
+          "n12p": [
+            -0.0,
+            2.2
+          ],
+          "v1p": [
+            1.725,
+            2.9878
+          ],
+          "v2p": [
+            2.9878,
+            1.725
+          ],
+          "v3p": [
+            3.45,
+            0.0
+          ],
+          "v4p": [
+            2.9878,
+            -1.725
+          ],
+          "v5p": [
+            1.725,
+            -2.9878
+          ],
+          "v6p": [
+            0.0,
+            -3.45
+          ],
+          "v7p": [
+            -1.725,
+            -2.9878
+          ],
+          "v8p": [
+            -2.9878,
+            -1.725
+          ],
+          "v9p": [
+            -3.45,
+            -0.0
+          ],
+          "v10p": [
+            -2.9878,
+            1.725
+          ],
+          "v11p": [
+            -1.725,
+            2.9878
+          ],
+          "v12p": [
+            -0.0,
+            3.45
+          ],
+          "M": {
+            "on": "minuteOrbit",
+            "deg": 90
+          },
+          "H": {
+            "on": "hourOrbit",
+            "deg": -30.0
+          }
+        },
+        "parts": [
+          {
+            "id": "face",
+            "circle": "O",
+            "r": 3.0,
+            "fill": "paper",
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick0",
+            "seg": [
+              "t0a",
+              "t0b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick1",
+            "seg": [
+              "t1a",
+              "t1b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick2",
+            "seg": [
+              "t2a",
+              "t2b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick3",
+            "seg": [
+              "t3a",
+              "t3b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick4",
+            "seg": [
+              "t4a",
+              "t4b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick5",
+            "seg": [
+              "t5a",
+              "t5b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick6",
+            "seg": [
+              "t6a",
+              "t6b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick7",
+            "seg": [
+              "t7a",
+              "t7b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick8",
+            "seg": [
+              "t8a",
+              "t8b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick9",
+            "seg": [
+              "t9a",
+              "t9b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick10",
+            "seg": [
+              "t10a",
+              "t10b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick11",
+            "seg": [
+              "t11a",
+              "t11b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick12",
+            "seg": [
+              "t12a",
+              "t12b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick13",
+            "seg": [
+              "t13a",
+              "t13b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick14",
+            "seg": [
+              "t14a",
+              "t14b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick15",
+            "seg": [
+              "t15a",
+              "t15b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick16",
+            "seg": [
+              "t16a",
+              "t16b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick17",
+            "seg": [
+              "t17a",
+              "t17b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick18",
+            "seg": [
+              "t18a",
+              "t18b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick19",
+            "seg": [
+              "t19a",
+              "t19b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick20",
+            "seg": [
+              "t20a",
+              "t20b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick21",
+            "seg": [
+              "t21a",
+              "t21b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick22",
+            "seg": [
+              "t22a",
+              "t22b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick23",
+            "seg": [
+              "t23a",
+              "t23b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick24",
+            "seg": [
+              "t24a",
+              "t24b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick25",
+            "seg": [
+              "t25a",
+              "t25b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick26",
+            "seg": [
+              "t26a",
+              "t26b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick27",
+            "seg": [
+              "t27a",
+              "t27b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick28",
+            "seg": [
+              "t28a",
+              "t28b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick29",
+            "seg": [
+              "t29a",
+              "t29b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick30",
+            "seg": [
+              "t30a",
+              "t30b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick31",
+            "seg": [
+              "t31a",
+              "t31b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick32",
+            "seg": [
+              "t32a",
+              "t32b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick33",
+            "seg": [
+              "t33a",
+              "t33b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick34",
+            "seg": [
+              "t34a",
+              "t34b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick35",
+            "seg": [
+              "t35a",
+              "t35b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick36",
+            "seg": [
+              "t36a",
+              "t36b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick37",
+            "seg": [
+              "t37a",
+              "t37b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick38",
+            "seg": [
+              "t38a",
+              "t38b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick39",
+            "seg": [
+              "t39a",
+              "t39b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick40",
+            "seg": [
+              "t40a",
+              "t40b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick41",
+            "seg": [
+              "t41a",
+              "t41b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick42",
+            "seg": [
+              "t42a",
+              "t42b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick43",
+            "seg": [
+              "t43a",
+              "t43b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick44",
+            "seg": [
+              "t44a",
+              "t44b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick45",
+            "seg": [
+              "t45a",
+              "t45b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick46",
+            "seg": [
+              "t46a",
+              "t46b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick47",
+            "seg": [
+              "t47a",
+              "t47b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick48",
+            "seg": [
+              "t48a",
+              "t48b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick49",
+            "seg": [
+              "t49a",
+              "t49b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick50",
+            "seg": [
+              "t50a",
+              "t50b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick51",
+            "seg": [
+              "t51a",
+              "t51b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick52",
+            "seg": [
+              "t52a",
+              "t52b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick53",
+            "seg": [
+              "t53a",
+              "t53b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick54",
+            "seg": [
+              "t54a",
+              "t54b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick55",
+            "seg": [
+              "t55a",
+              "t55b"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "tick56",
+            "seg": [
+              "t56a",
+              "t56b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick57",
+            "seg": [
+              "t57a",
+              "t57b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick58",
+            "seg": [
+              "t58a",
+              "t58b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tick59",
+            "seg": [
+              "t59a",
+              "t59b"
+            ],
+            "ink": "muted",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "n1p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "n2p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "n3p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "n4p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n5",
+            "label": "5",
+            "at": "n5p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "at": "n6p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n7",
+            "label": "7",
+            "at": "n7p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "at": "n8p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n9",
+            "label": "9",
+            "at": "n9p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "n10p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n11",
+            "label": "11",
+            "at": "n11p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "at": "n12p",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "v1",
+            "label": "5",
+            "at": "v1p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v2",
+            "label": "10",
+            "at": "v2p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v3",
+            "label": "15",
+            "at": "v3p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v4",
+            "label": "20",
+            "at": "v4p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v5",
+            "label": "25",
+            "at": "v5p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v6",
+            "label": "30",
+            "at": "v6p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v7",
+            "label": "35",
+            "at": "v7p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v8",
+            "label": "40",
+            "at": "v8p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v9",
+            "label": "45",
+            "at": "v9p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v10",
+            "label": "50",
+            "at": "v10p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v11",
+            "label": "55",
+            "at": "v11p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "v12",
+            "label": "60",
+            "at": "v12p",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "room",
+            "circle": "O",
+            "r": 3.72,
+            "fill": "none",
+            "w": 0,
+            "start": true
+          },
+          {
+            "id": "ring1",
+            "circle": "n1p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring2",
+            "circle": "n2p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring3",
+            "circle": "n3p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring4",
+            "circle": "n4p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring5",
+            "circle": "n5p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring6",
+            "circle": "n6p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring7",
+            "circle": "n7p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring8",
+            "circle": "n8p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring9",
+            "circle": "n9p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring10",
+            "circle": "n10p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring11",
+            "circle": "n11p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ring12",
+            "circle": "n12p",
+            "r": 0.28,
+            "fill": "none",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "minuteOrbit",
+            "circle": "O",
+            "r": 1.75
+          },
+          {
+            "id": "hourOrbit",
+            "circle": "O",
+            "r": 1.2
+          },
+          {
+            "id": "minute",
+            "vector": [
+              "O",
+              "M"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "hour",
+            "vector": [
+              "O",
+              "H"
+            ],
+            "ink": "warm",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "hub",
+            "dot": "O",
+            "r": 6,
+            "ink": "ink",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "In one hour, the long hand goes all the way round, and the short hand moves on to the next number.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "hour"
+            },
+            {
+              "do": "write",
+              "tex": "60\\text{ minutes}=1\\text{ hour}",
+              "at": "hour"
+            },
+            {
+              "do": "glide",
+              "point": "M",
+              "deg": -270,
+              "dur": 3.2,
+              "at": "goes"
+            },
+            {
+              "do": "glide",
+              "point": "H",
+              "deg": -60.0,
+              "dur": 3.2,
+              "at": "goes"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Minutes: count by fives from the twelve. Hour: the last number the short hand has reached.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Minutes"
+            },
+            {
+              "do": "text",
+              "text": "Minutes: count by fives from 12",
+              "at": "Minutes"
+            },
+            {
+              "do": "text",
+              "text": "Hour: the last number reached",
+              "at": "Hour"
+            },
+            {
+              "do": "highlight",
+              "target": "hour",
+              "at": "short"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    }
+  ]
+}
