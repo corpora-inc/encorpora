@@ -56,6 +56,7 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
+import { visibleToSql } from "./demo/sql.js";
 import {
   curveLetters,
   curveSentence,
@@ -345,7 +346,7 @@ export async function readMap(
 ): Promise<MapResponse> {
   const [named, teachers] = await Promise.all([
     namedRoster(pool, context.id),
-    shownTeachers(pool, context.id),
+    shownTeachers(pool, context.id, readerAccountId),
   ]);
   const stored = new Map(
     (await levels(pool, [...members(named), ...teachers])).map((row) => [
@@ -688,13 +689,20 @@ export async function readStudentTime(
   };
 }
 
-export async function teachersOf(pool: Pool, context: ClassContext) {
+/** The class's teachers by name; another visitor of a shared demo than
+ * `viewer` (an account) isn't named. */
+export async function teachersOf(
+  pool: Pool,
+  context: ClassContext,
+  viewer: string | null = null,
+) {
   const { rows } = await pool.query(
     `SELECT ${PERSON_NAME} AS name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
      WHERE e.class_id=$1 AND e.role='teacher' AND p.deleted_at IS NULL
        AND e.begin_on<=$2::date AND (e.end_on IS NULL OR e.end_on>$2::date)
+       AND ${visibleToSql("p", "$3::text")}
      ORDER BY e.begin_on,p.id`,
-    [context.id, context.today],
+    [context.id, context.today, viewer],
   );
   return rows.map((row) => row.name as string);
 }
@@ -703,13 +711,14 @@ export async function readReportCards(
   pool: Pool,
   context: ClassContext,
   termId: string,
+  viewer: string | null = null,
 ): Promise<ReportCardsResponse> {
   const terms = await termsFor(pool, context);
   const term = termById(terms, termId);
   const target = await weeklyTargetFor(pool, context);
   const [rows, teachers] = await Promise.all([
     gradebookRows(pool, context, term, target),
-    teachersOf(pool, context),
+    teachersOf(pool, context, viewer),
   ]);
   const course = courseBand(context.courseBands);
   return {

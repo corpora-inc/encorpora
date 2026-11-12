@@ -1,3 +1,4 @@
+import { visibleToSql } from "./demo/sql.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { activeToday } from "./principal.js";
@@ -275,8 +276,9 @@ export async function listStaff(
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE o.path @> ARRAY[$1]::uuid[] AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND ${visibleToSql("p", "$2::text")}
        GROUP BY p.id ORDER BY p.account_id IS NOT NULL,lower(p.given_name),p.id LIMIT 2000`,
-      [orgId],
+      [orgId, options.accountId],
     )
   ).rows;
   return rows.map((row) => {

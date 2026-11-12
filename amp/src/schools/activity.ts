@@ -5,6 +5,7 @@ import type {
   ActivityResponse,
 } from "./org-contracts.js";
 import { PERSON_NAME } from "./term-grades.js";
+import { visibleToSql } from "./demo/sql.js";
 
 export const ACTIVITY_PAGE = 50;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -227,6 +228,9 @@ export async function readActivity(
   pool: Pool,
   org: { orgId: string; path: string[]; timezone: string },
   query: ActivityQuery,
+  /** The reader's account: what another visitor of a shared demo did, or
+   * was done to them, isn't shown. */
+  viewer: string | null = null,
 ): Promise<ActivityResponse> {
   const [beforeAt, beforeId] = query.before?.split("_") ?? [null, null];
   const params: unknown[] = [
@@ -237,17 +241,21 @@ export async function readActivity(
     query.kind ? kindPatterns(query.kind) : null,
     query.from ?? null,
     query.to ?? null,
+    viewer,
   ];
   const filters = `($3::timestamptz IS NULL OR (e."at",e.id)<($3::timestamptz,$4::uuid))
     AND ($5::text[] IS NULL OR e.action LIKE ANY($5::text[]))
     AND ($6::date IS NULL OR e."at">=($6::date::timestamp AT TIME ZONE $2::text))
-    AND ($7::date IS NULL OR e."at"<(($7::date+1)::timestamp AT TIME ZONE $2::text))`;
+    AND ($7::date IS NULL OR e."at"<(($7::date+1)::timestamp AT TIME ZONE $2::text))
+    AND NOT EXISTS(SELECT 1 FROM amp_people vp
+      WHERE vp.id IN (e.actor_person_id,CASE WHEN e.target_kind='person' AND e.target_id ~ '^[0-9a-f-]{36}$' THEN e.target_id::uuid END)
+        AND vp.demo_visitor AND vp.account_id IS DISTINCT FROM $8::text)`;
   const select = `e.id,e.org_id,e.action,e.target_kind,e.target_id,e.detail,e.actor_person_id,${CURSOR} AS cursor,${DAY} AS day,${CLOCK} AS time`;
   const { rows } = query.person
     ? await pool.query(
         `SELECT ${select} FROM amp_school_events e
          WHERE e.org_id=ANY(ARRAY(SELECT id FROM amp_orgs WHERE path @> ARRAY[$1]::uuid[]))
-           AND (e.actor_person_id=$8::uuid OR (e.target_kind='person' AND e.target_id=$8::text))
+           AND (e.actor_person_id=$9::uuid OR (e.target_kind='person' AND e.target_id=$9::text))
            AND ${filters}
          ORDER BY e."at" DESC,e.id DESC LIMIT ${ACTIVITY_PAGE + 1}`,
         [...params, query.person],
@@ -276,8 +284,9 @@ export async function readActivity(
   const ids = [...others].filter((id) => UUID.test(id));
   const [personRows, nameRows] = await Promise.all([
     pool.query(
-      `SELECT p.id,${PERSON_NAME} AS name FROM amp_people p WHERE p.id=ANY($1::uuid[]) AND p.tenant_id=$2`,
-      [[...people], org.path[0]],
+      `SELECT p.id,${PERSON_NAME} AS name FROM amp_people p WHERE p.id=ANY($1::uuid[]) AND p.tenant_id=$2
+         AND ${visibleToSql("p", "$3::text")}`,
+      [[...people], org.path[0], viewer],
     ),
     pool.query(
       `SELECT c.id,c.name FROM amp_classes c WHERE c.id=ANY($1::uuid[])
@@ -335,6 +344,7 @@ export async function activityPeople(
   pool: Pool,
   org: { orgId: string; path: string[] },
   q: string,
+  viewer: string | null = null,
 ) {
   const needle = `%${q.toLowerCase().replace(/[\\%_]/g, "\\$&")}%`;
   const { rows } = await pool.query(
@@ -346,8 +356,9 @@ export async function activityPeople(
        AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
          WHERE r.person_id=p.id AND o.path @> ARRAY[$1]::uuid[])
        AND lower(concat_ws(' ',p.display_name,p.given_name,p.family_name)) LIKE $3
+       AND ${visibleToSql("p", "$4::text")}
      ORDER BY lower(${PERSON_NAME}),p.id LIMIT 8`,
-    [org.orgId, org.path[0], needle],
+    [org.orgId, org.path[0], needle, viewer],
   );
   return { people: rows };
 }

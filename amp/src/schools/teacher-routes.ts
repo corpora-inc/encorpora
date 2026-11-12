@@ -262,12 +262,13 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/report-cards`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, target, pool, services }) => {
+    handler: async ({ request, actor, target, pool, services }) => {
       const { term } = oneRosterExportSchema.parse(request.query);
       return readReportCards(
         pool,
         await classContext(pool, target.classId, services.now?.()),
         term,
+        actor.accountId,
       );
     },
   });
@@ -277,14 +278,19 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/report-cards.pdf`,
     action: "grades.read",
     target: classParam,
-    handler: async ({ request, reply, target, pool, services }) => {
+    handler: async ({ request, reply, actor, target, pool, services }) => {
       const query = reportCardsPdfQuery.parse(request.query);
       const context = await classContext(
         pool,
         target.classId,
         services.now?.(),
       );
-      const data = await readReportCards(pool, context, query.term);
+      const data = await readReportCards(
+        pool,
+        context,
+        query.term,
+        actor.accountId,
+      );
       const students = data.students.filter(
         (student) => !query.student || student.id === query.student,
       );

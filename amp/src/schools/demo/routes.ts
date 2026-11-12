@@ -6,8 +6,9 @@ import type { Repository } from "../../server/repository.js";
 import { SchoolError } from "../contracts.js";
 import { isSchoolAccount, studentBearer } from "../principal.js";
 import type { defineSchoolRoute } from "../routes.js";
-import { createDemo, demoKinds } from "./build.js";
+import { demoKinds } from "./build.js";
 import { removeDemos } from "./remove.js";
+import { joinDemo, leaveDemo } from "./shared.js";
 
 const timezone = z
   .string()
@@ -38,11 +39,18 @@ async function ownerOf(
   return accountId;
 }
 
-/** `POST /api/v1/school/demo` makes (or reopens) the caller's demo class or
- * school; `DELETE` removes theirs with all its data. */
+/** `POST /api/v1/school/demo` puts the caller in their zone's shared demo
+ * school (or returns their place in it); `DELETE` takes them out of it, and
+ * removes any demo made for them before there was a shared one. */
 export function registerDemoRoutes(
   scope: FastifyInstance,
-  options: { pool: Pool; authenticate: Authenticator; learning?: Repository },
+  options: {
+    pool: Pool;
+    authenticate: Authenticator;
+    learning?: Repository;
+    /** The school clock (`clock.ts`): which day's school a visitor joins. */
+    now?: () => Date;
+  },
 ) {
   scope.post(
     "/api/v1/school/demo",
@@ -50,10 +58,11 @@ export function registerDemoRoutes(
     async (request, reply) => {
       const accountId = await ownerOf(request, options.authenticate);
       const input = createDemoSchema.parse(request.body ?? {});
-      const place = await createDemo(
+      const place = await joinDemo(
         options.pool,
         { accountId, ...input },
         options.learning,
+        options.now?.().getTime(),
       );
       return reply.code(place.created ? 201 : 200).send({
         demo: {
@@ -68,13 +77,17 @@ export function registerDemoRoutes(
   scope.delete("/api/v1/school/demo", async (request) => {
     const accountId = await ownerOf(request, options.authenticate);
     const { kind } = removeDemoSchema.parse(request.query ?? {});
-    return { removed: await removeDemos(options.pool, accountId, kind) };
+    return {
+      removed:
+        (await leaveDemo(options.pool, accountId)) +
+        (await removeDemos(options.pool, accountId, kind)),
+    };
   });
 }
 
-/** "Practice as": the owner of a demo opens practice as one of its made-up
- * students, with the same session a picture sign-in issues. Only a student of
- * a demo this account owns: a real student is never found here. */
+/** "Practice as": a demo's admin or teacher opens practice as one of its
+ * made-up students, with the same session a picture sign-in issues. Only a
+ * student of a demo: a real student is never found here. */
 export function defineDemoRoutes(define: typeof defineSchoolRoute) {
   define({
     method: "POST",
@@ -83,13 +96,9 @@ export function defineDemoRoutes(define: typeof defineSchoolRoute) {
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
     bodyLimit: 256,
-    handler: async ({ actor, target, repository, reply }) => {
+    handler: async ({ target, repository, reply }) => {
+      // `can` has already allowed this account to manage her sign-in.
       if (!target.demo) throw new SchoolError(404, "not_found");
-      const owned = await repository.pool.query(
-        "SELECT 1 FROM amp_orgs WHERE id=$1 AND demo AND created_by=$2",
-        [target.path[0], actor.accountId],
-      );
-      if (!owned.rowCount) throw new SchoolError(404, "not_found");
       return reply.code(201).send(
         await repository.issueStudentSession({
           personId: target.personId,

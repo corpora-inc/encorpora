@@ -78,6 +78,8 @@ export class SchoolError extends Error {
     public readonly code: string,
     /** How many seconds until this is worth trying again. */
     public readonly retryAfter?: number,
+    /** Where to go instead: `demo_moved` names the visitor's new demo. */
+    public readonly path?: string,
   ) {
     super(code);
   }

@@ -41,6 +41,7 @@ import {
 import { activeToday, studentBearer } from "./principal.js";
 import { registerDemoRoutes, defineDemoRoutes } from "./demo/routes.js";
 import { touchDemo } from "./demo/remove.js";
+import { followDemo, movedDemoPath } from "./demo/shared.js";
 import {
   classRoster,
   levels,
@@ -227,6 +228,7 @@ export async function registerSchoolRoutes(
         return reply.code(error.statusCode).send({
           error: error.code,
           ...(error.retryAfter ? { retryAfter: error.retryAfter } : {}),
+          ...(error.path ? { path: error.path } : {}),
         });
       }
       if (error instanceof z.ZodError)
@@ -266,6 +268,7 @@ export async function registerSchoolRoutes(
       pool: options.pool,
       authenticate: options.authenticate,
       learning: services.learning,
+      ...(services.now ? { now: services.now } : {}),
     });
     // Students only: a staff or parent credential is never a student's.
     scope.post(
@@ -288,16 +291,25 @@ export async function registerSchoolRoutes(
         ...(route.bodyLimit ? { bodyLimit: route.bodyLimit } : {}),
         handler: async (request, reply) => {
           const accountId = await options.authenticate(request);
+          // A demo visitor's place follows the nightly switch first.
+          await followDemo(options.pool, accountId, services.now?.().getTime());
           const actor = await loadActor(options.pool, accountId);
-          const target = await loadTarget(
-            options.pool,
-            route.target({
-              params: request.params as Record<string, string>,
-              body: request.body,
-            }),
-          );
-          if (!target || !can(actor, route.action, target))
+          const ref = route.target({
+            params: request.params as Record<string, string>,
+            body: request.body,
+          });
+          const target = await loadTarget(options.pool, ref);
+          if (!target || !can(actor, route.action, target)) {
+            // A link into a demo school that has since been replaced opens
+            // the visitor's current one instead.
+            const moved =
+              ref.kind === "self"
+                ? null
+                : await movedDemoPath(options.pool, accountId, ref);
+            if (moved)
+              throw new SchoolError(409, "demo_moved", undefined, moved);
             throw new SchoolError(404, "not_found");
+          }
           // An opened demo stays: idle ones go after 30 days.
           if ("demo" in target && target.demo)
             void touchDemo(options.pool, target.orgId).catch((error) =>
@@ -397,6 +409,7 @@ defineSchoolRoute({
       rosterScope(actor, target),
       page,
       year ?? null,
+      actor.accountId,
     );
     return { classes, nextOffset: nextOffset(classes, page) };
   },
