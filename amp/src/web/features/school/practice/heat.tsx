@@ -64,14 +64,13 @@ export function HeatCell({
 }
 
 /** The scale, continuous, with the midpoint named: 0, half, the midpoint,
- * one and a half, twice and over. Keys for "so far" and "no one on the
- * roster" only when the map shows them. */
+ * one and a half, twice and over. A key for "no one on the roster" only
+ * when the map shows one. The current week explains itself in its tip. */
 export function HeatLegend({
   caption,
   midpoint,
   midpointWord,
   unit,
-  current = true,
   empty = false,
 }: {
   caption: string;
@@ -79,7 +78,6 @@ export function HeatLegend({
   /** What the midpoint is: "target", "median week". */
   midpointWord: string;
   unit: string;
-  current?: boolean;
   empty?: boolean;
 }) {
   const ticks = heatTicks(midpoint);
@@ -105,19 +103,11 @@ export function HeatLegend({
       <span className={styles.legendNote}>
         Cold: 0 {unit}. Neutral: the {midpointWord}. Hot: twice it or more.
       </span>
-      {(current || empty) && (
+      {empty && (
         <span className={styles.legendKeys}>
-          {current && (
-            <span>
-              <span className={styles.cell} data-current="" /> This week, so far
-            </span>
-          )}
-          {empty && (
-            <span>
-              <span className={styles.cell} data-empty="" /> Not on the roster
-              yet
-            </span>
-          )}
+          <span>
+            <span className={styles.cell} data-empty="" /> Not on the roster yet
+          </span>
         </span>
       )}
     </div>
