@@ -136,13 +136,22 @@ All writing goes on one whiteboard for the whole lesson. Each line is written un
 | `{"do":"text","text":"... $math$ ...","tone":"muted"}` | A short line of words. |
 | `{"do":"term","word":"...","meaning":"..."}` | A new word, defined in one or two plain sentences. |
 | `{"do":"watch","text":"..."}` | The most common mistake, said as what to do instead. |
+| `{"do":"strike","target":"slip","at":"missing"}` | Strike out a line already on the board, named by its `"id"`: on the cue word one stroke is drawn through it and its text dims. It stays struck. |
 | `{"do":"clear"}` | Start a new column on the board: a new example. The old column stays for the overview. |
 | `{"do":"overview"}` | Pull back to show the current example whole, from problem to answer. `"of":"g1"` shows the column holding line `g1` (recap the first full example after quick ones). `"columns":"all"` shows every column. |
 | `{"do":"recap","text":"...","marks":["id1","id2"]}` | A numbered step in a card beside the overview. The board lines named in `marks` stay bright; the rest dims. When the whole column is too tall to read, the camera moves to the marked lines by itself. |
 
 Give board lines an `"id"` when a recap step will point at them. Keep the recap short: three or four steps of a line or two each. On the 16:9 film the card is as tall as its steps, and `--dry` reports a card taller than the frame ("The recap card is taller than the frame"), because its top and bottom would be cut off.
 
-Equals signs line up and the work centers itself. Color in TeX with `\ca{}` teal, `\cw{}` rust, `\cg{}` gold, `\cb{}` blue, `\cv{}` violet, `\cm{}` muted. Give each quantity one color and keep it for the whole film: the same color on the figure and in the equation. `\cancel{x=3}` strikes out a rejected value.
+`strike` marks a line as wrong after it has been written and talked about: a learner writes a slip, the teacher questions it, and the line is struck before the mended line goes under it. The target is a `write`, `text` or `answer` of the column being written, one row long; the stroke takes no room, so nothing moves. `--dry` names a target that is not such a line, and the board's arithmetic check skips a struck line (it is wrong on purpose).
+
+```json
+{ "say": "Four plus four plus two is ten.", "speaker": "learner", "do": [ { "do": "write", "tex": "4+4+2=10", "id": "slip", "at": "Four" } ] },
+{ "say": "Count the sides again. One is missing here.", "do": [ { "do": "strike", "target": "slip", "at": "missing" } ] },
+{ "say": "Four plus four plus two plus two is twelve.", "speaker": "learner", "do": [ { "do": "write", "tex": "4+4+2+2=12", "fresh": true, "at": "Four" } ] }
+```
+
+Equals signs line up and the work centers itself. Color in TeX with `\ca{}` teal, `\cw{}` rust, `\cg{}` gold, `\cb{}` blue, `\cv{}` violet, `\cm{}` muted. Give each quantity one color and keep it for the whole film: the same color on the figure and in the equation. `\cancel{x=3}` strikes out a rejected value as it is written; to strike a whole line later, on a word, use `strike`.
 
 Show every step of the algebra. Say what you did to both sides. Never skip from the equation to the answer. After finding `x`, go back and answer what the question actually asked.
 

@@ -63,8 +63,8 @@ const substitute = (tex: string, v: string, value: number) =>
 /**
  * Every false line in a screenplay. Arithmetic lines must be true; in a worked
  * example, every line in one letter must hold for that example's answer (for one
- * of its answers, when there are two). Struck-out work (\cancel) is a mistake on
- * purpose and is skipped.
+ * of its answers, when there are two). Struck-out work (\cancel, or a line a
+ * "strike" action names) is a mistake on purpose and is skipped.
  */
 export function mathProblems(script: Script) {
   const out: string[] = [];
@@ -90,10 +90,11 @@ export function mathProblems(script: Script) {
     }
     col = [];
   };
+  const struck = new Set<string>(script.shots.flatMap((shot) => shot.beats.flatMap((b) => ((b.do ?? []) as any[]).filter((a) => a.do === "strike").map((a) => a.target))));
   script.shots.forEach((shot, si) => {
     for (const b of shot.beats) for (const a of (b.do ?? []) as any[]) {
       if (a.do === "clear") flush();
-      if ((a.do === "write" || a.do === "answer") && !/\\cancel/.test(a.tex)) {
+      if ((a.do === "write" || a.do === "answer") && !/\\cancel/.test(a.tex) && !(a.id && struck.has(a.id))) {
         const p = checkLine(a.tex);
         if (p) out.push(`Shot ${si + 1}: the board line ${p}. Fix the arithmetic.`);
         col.push({ tex: a.tex, si });

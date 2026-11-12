@@ -160,6 +160,7 @@ const DEFAULT_DUR: Record<string, number> = {
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
+  strike: 0.35,
 };
 
 /** `words`: later moments of the same action, by the words that name them (a stack column's trade and its written digit). */
@@ -2849,7 +2850,18 @@ type BoardItem = {
   kind: string; el: HTMLElement; t0: number; dur: number; col: number; shot: number; id?: string;
   top: number; bottom: number; stack?: StackView;
   fly?: { el: HTMLElement; dx: number; dy: number }[]; fresh?: HTMLElement[]; note?: HTMLElement; standalone?: boolean;
+  /** Struck out from t0: the stroke over the line and the text that dims under it (both set when the column is laid out). */
+  struck?: { t0: number; dur: number; shot: number; el?: HTMLElement; ink?: HTMLElement };
 };
+/**
+ * A struck line: one stroke through the middle of its text, drawn left to right,
+ * reaching STRIKE_PAST of the column's type size past the text at each end and
+ * STRIKE_THICK of it thick. The text under it dims to STRUCK. The stroke lies
+ * over the line and takes no room, so nothing on the board moves.
+ */
+export const STRIKE_PAST = 0.12, STRIKE_THICK = 0.065, STRUCK = 0.55;
+/** Board lines a strike can go through: one row of working. A card or a stack is not struck. */
+const STRIKABLE = ["write", "text", "answer"];
 /** `tall`: the zoom came from a line taller than the window (a long problem card) shown whole, not from a wide line. */
 type Cam = { cx: number; cy: number; s: number; win: Rect; tall?: boolean };
 /** `cut`: a jump of more than one column dissolves in place instead of whipping across the board. */
@@ -2966,6 +2978,16 @@ class Board {
           for (const m of a.marks ?? []) if (!this.items.some((i) => i.id === m)) this.issues.push(`recap marks "${m}", but no board line has that id.`);
           this.recapItems.push({ el: li, t0: e.t0, dur: e.dur, marks: a.marks ? new Set(a.marks) : undefined });
           events.push({ t: e.t0, kind: "recap", shot: si, idx: this.recapItems.length - 1 });
+          continue;
+        }
+        if (a.do === "strike") {
+          const line = [...this.items].reverse().find((i) => i.id === a.target);
+          const what = `Shot ${si + 1}: strike of "${a.target}"`;
+          if (!line) this.issues.push(`${what}, but no earlier board line has that id. Give the line an "id" and strike it after it is written.`);
+          else if (!STRIKABLE.includes(line.kind)) this.issues.push(`${what}, but that is a "${line.kind}", not a line of working. Strike a "write", a "text" or an "answer".`);
+          else if (line.col !== col) this.issues.push(`${what}, but that line is in an earlier column, before a "clear". Strike a line of the column being written.`);
+          else if (line.struck) this.issues.push(`${what}, but that line is already struck.`);
+          else line.struck = { t0: e.t0, dur: e.dur, shot: si };
           continue;
         }
         if (a.do === "column" || a.do === "zeros" || a.do === "places") {
@@ -3104,6 +3126,7 @@ class Board {
       const its = this.items.filter((i) => i.col === ci);
       for (const it of its) { it.top = it.el.offsetTop; it.bottom = it.el.offsetTop + it.el.offsetHeight; }
       this.flights(its);
+      this.strikes(ci, its);
     });
     // columns side by side, packed by what they hold
     let x = 0;
@@ -3221,6 +3244,47 @@ class Board {
         } else it.fresh = [...now, ...bars(it.el)];
         prev = it;
       }
+  }
+  /**
+   * Lay each strike over its line, through the middle of the text and a little
+   * past both ends. Measured once, when the column is laid out, and placed over
+   * the line: it takes no room and never moves.
+   */
+  strikes(ci: number, its: BoardItem[]) {
+    const type = parseFloat(this.cols[ci]!.style.getPropertyValue("--film-math")) || 84;
+    for (const it of its) {
+      const s = it.struck;
+      if (!s) continue;
+      let ink = it.el.querySelector<HTMLElement>(".film-math");
+      const math = !!ink;
+      if (!ink) {
+        // a line of words: they go into one span, so they can dim under the stroke
+        ink = document.createElement("span");
+        ink.className = "film-struck-words";
+        ink.append(...it.el.childNodes);
+        it.el.append(ink);
+      }
+      // the text itself: the math's own boxes (a line box is taller than its math), or the words' row
+      const parts = math ? [...ink.querySelectorAll(".katex-html .base")] : [];
+      const boxes = (parts.length ? parts.map((p) => p.getBoundingClientRect()) : [...ink.getClientRects()]).filter((b) => b.width > 0.5 && b.height > 0.5);
+      const rows = new Set(boxes.map((b) => Math.round((b.top + b.bottom) / type)));
+      const broken = math ? ink.dataset.split === "1" || (/\\\\|\\begin\{/.test(ink.dataset.tex ?? "") && ink.dataset.flow !== "1") : rows.size > 1;
+      if (broken) {
+        this.issues.push(`Shot ${s.shot + 1}: strike of "${it.id}", but that line takes more than one row. A strike is one stroke through one row: shorten the line.`);
+        delete it.struck;
+        continue;
+      }
+      const host = it.el.getBoundingClientRect();
+      // the board may already be scaled on screen: work in the line's own pixels
+      const k = it.el.offsetWidth && host.width ? host.width / it.el.offsetWidth : 1;
+      const l = Math.min(...boxes.map((b) => b.left)), r = Math.max(...boxes.map((b) => b.right));
+      const top = Math.min(...boxes.map((b) => b.top)), bottom = Math.max(...boxes.map((b) => b.bottom));
+      const thick = Math.max(4, Math.round(type * STRIKE_THICK)), past = type * STRIKE_PAST;
+      const el = div("film-struck", it.el);
+      if (boxes.length)
+        el.style.cssText = `left:${((l - host.left) / k - it.el.clientLeft - past).toFixed(2)}px;top:${(((top + bottom) / 2 - host.top) / k - it.el.clientTop - thick / 2).toFixed(2)}px;width:${((r - l) / k + 2 * past).toFixed(2)}px;height:${thick}px`;
+      s.el = el; s.ink = ink;
+    }
   }
   /** Half the width a column needs, measured both ways from its center: the math stays centered, notes and all. */
   half(col: number) {
@@ -3532,6 +3596,13 @@ class Board {
         it.el.style.transform = `translateY(${(1 - u) * 14}px)`;
       }
       it.el.style.opacity = String((it.fly || it.fresh ? 1 : u) * dim);
+      if (it.struck?.el) {
+        // drawn left to right from its word, then held: the state at t, whichever way the film was sought
+        const k = ease((t - it.struck.t0) / it.struck.dur);
+        it.struck.el.style.transform = `scaleX(${k})`;
+        it.struck.el.style.visibility = k > 0 ? "inherit" : "hidden";
+        it.struck.ink!.style.opacity = String(lerp(1, STRUCK, k));
+      }
       if (it.stack) drawStack(it.stack, it.t0, t);
     }
     if (this.L.name === "tall") this.concealCut(c);

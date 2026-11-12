@@ -519,6 +519,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("places"), of: name, place: z.union([z.string(), z.array(z.string()).min(1)]).optional(), ...timing }).strict(),
   /** The final answer, boxed. */
   z.object({ do: z.literal("answer"), tex: z.string().min(1), ...lineId, ...timing }).strict(),
+  /** Strike out a line already on the board (a "write", "text" or "answer", by its id): one stroke through it, and its text dims. The line stays where it is, struck. */
+  z.object({ do: z.literal("strike"), target: name, ...timing }).strict(),
   /** Start a new column on the whiteboard, to the right. The old column stays on the board for the overview. */
   z.object({ do: z.literal("clear"), ...timing }).strict(),
   /** Pull back to show the whole whiteboard: every example from problem to answer. */
