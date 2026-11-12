@@ -1,0 +1,1868 @@
+{
+  "id": "compose-shape-name--sc",
+  "title": "Put them together, count the sides",
+  "teaches": [
+    "complete-the-shape",
+    "decompose-flat-shape"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "points": {
+          "G1": [
+            -5.2,
+            -3.4
+          ],
+          "G2": [
+            5.2,
+            3.4
+          ],
+          "P1": [
+            -4.25,
+            -1.5
+          ],
+          "Q1": [
+            -0.25,
+            -1.5
+          ],
+          "R1": [
+            -4.25,
+            1.5
+          ],
+          "U": [
+            0.25,
+            -1.5
+          ],
+          "V": [
+            4.25,
+            -1.5
+          ],
+          "W": [
+            0.25,
+            1.5
+          ],
+          "M2": [
+            2.25,
+            0
+          ],
+          "A": [
+            -2,
+            -1.5
+          ],
+          "B": [
+            2,
+            -1.5
+          ],
+          "C": [
+            2,
+            1.5
+          ],
+          "D": [
+            -2,
+            1.5
+          ],
+          "PA": [
+            -0.4,
+            0.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "g1",
+            "dot": "G1",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "g2",
+            "dot": "G2",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "t1",
+            "poly": [
+              "P1",
+              "Q1",
+              "R1"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "poly": [
+              "U",
+              "V",
+              "W"
+            ],
+            "fill": "warm-fill",
+            "back": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "seam",
+            "seg": [
+              "B",
+              "D"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2
+          },
+          {
+            "id": "pt",
+            "seg": [
+              "PA",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "o1",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o2",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o3",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o4",
+            "seg": [
+              "D",
+              "A"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "o1",
+            "dir": "s",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "o2",
+            "dir": "e",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "o3",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "o4",
+            "dir": "w",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Can you join these two triangles with full sides touching to make a rectangle?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "problem",
+              "text": "Can you join these two triangles with full sides touching to make a rectangle?",
+              "id": "p1"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn this one, a half turn. Slide this one over.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "turn",
+              "target": "t2",
+              "about": "M2",
+              "deg": 180,
+              "at": "Turn"
+            },
+            {
+              "do": "slide",
+              "target": "t1",
+              "by": [
+                2.25,
+                0
+              ],
+              "at": "Slide"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide this one in. Only part of the side touches. Not enough.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": "t2",
+              "by": [
+                -0.65,
+                -1.2
+              ],
+              "at": "Slide"
+            },
+            {
+              "do": "draw",
+              "target": "pt",
+              "at": "Only"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide it along, until the full side touches.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "hide",
+              "target": "pt",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "t2",
+              "by": [
+                -1.6,
+                1.2
+              ],
+              "at": "Slide"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Skip the line inside. Count the sides around the outside.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "seam",
+              "at": "Skip"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three, four.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "draw",
+              "target": "o1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "o2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "o3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "o4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four sides. A rectangle!",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{rectangle}",
+              "at": "rectangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "G1": [
+            -5.2,
+            -3.4
+          ],
+          "G2": [
+            5.2,
+            3.4
+          ],
+          "P1": [
+            -4.25,
+            0
+          ],
+          "Q1": [
+            -0.25,
+            0
+          ],
+          "R1": [
+            -4.25,
+            3
+          ],
+          "U": [
+            0.25,
+            -3
+          ],
+          "V": [
+            4.25,
+            -3
+          ],
+          "W": [
+            0.25,
+            0
+          ],
+          "F1": [
+            0.25,
+            -1.5
+          ],
+          "F2": [
+            4.25,
+            -1.5
+          ],
+          "A": [
+            -2,
+            0
+          ],
+          "H1": [
+            -2,
+            3
+          ],
+          "H2": [
+            2,
+            0
+          ],
+          "H3": [
+            -2,
+            -3
+          ]
+        },
+        "parts": [
+          {
+            "id": "g1",
+            "dot": "G1",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "g2",
+            "dot": "G2",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "t1",
+            "poly": [
+              "P1",
+              "Q1",
+              "R1"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "poly": [
+              "U",
+              "V",
+              "W"
+            ],
+            "fill": "warm-fill",
+            "back": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "seam",
+            "seg": [
+              "A",
+              "H2"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2
+          },
+          {
+            "id": "o1",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o2",
+            "seg": [
+              "H2",
+              "H3"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o3",
+            "seg": [
+              "H3",
+              "H1"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "o1",
+            "dir": "ne",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "o2",
+            "dir": "se",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "o3",
+            "dir": "w",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Now join them a different way. What shape do they make?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Now join them a different way. What shape do they make?",
+              "id": "p2"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Flip this one over. Now slide them together.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "flip",
+              "target": "t2",
+              "over": [
+                "F1",
+                "F2"
+              ],
+              "at": "Flip",
+              "dur": 1.6
+            },
+            {
+              "do": "slide",
+              "target": "t1",
+              "by": [
+                2.25,
+                0
+              ],
+              "at": "slide"
+            },
+            {
+              "do": "slide",
+              "target": "t2",
+              "by": [
+                -2.25,
+                0
+              ],
+              "at": "slide"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Skip the line inside.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "seam",
+              "at": "Skip"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, two, three.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "draw",
+              "target": "o1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "o2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "o3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A triangle. Same two pieces, a new shape!",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{triangle}",
+              "at": "triangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.8,
+          -4.3,
+          4.8,
+          4.3
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "H0": [
+            2.8,
+            0
+          ],
+          "H1": [
+            1.4,
+            2.4249
+          ],
+          "H2": [
+            -1.4,
+            2.4249
+          ],
+          "H3": [
+            -2.8,
+            0
+          ],
+          "H4": [
+            -1.4,
+            -2.4249
+          ],
+          "H5": [
+            1.4,
+            -2.4249
+          ],
+          "p0o": [
+            0.866,
+            0.5
+          ],
+          "p0a": [
+            3.666,
+            0.5
+          ],
+          "p0b": [
+            2.266,
+            2.9249
+          ],
+          "p1o": [
+            0,
+            1
+          ],
+          "p1a": [
+            1.4,
+            3.4249
+          ],
+          "p1b": [
+            -1.4,
+            3.4249
+          ],
+          "p2o": [
+            -0.866,
+            0.5
+          ],
+          "p2a": [
+            -2.266,
+            2.9249
+          ],
+          "p2b": [
+            -3.666,
+            0.5
+          ],
+          "p3o": [
+            -0.866,
+            -0.5
+          ],
+          "p3a": [
+            -3.666,
+            -0.5
+          ],
+          "p3b": [
+            -2.266,
+            -2.9249
+          ],
+          "p4o": [
+            0,
+            -1
+          ],
+          "p4a": [
+            -1.4,
+            -3.4249
+          ],
+          "p4b": [
+            1.4,
+            -3.4249
+          ],
+          "p5o": [
+            0.866,
+            -0.5
+          ],
+          "p5a": [
+            2.266,
+            -2.9249
+          ],
+          "p5b": [
+            3.666,
+            -0.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "t0",
+            "poly": [
+              "p0o",
+              "p0a",
+              "p0b"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "poly": [
+              "p1o",
+              "p1a",
+              "p1b"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "poly": [
+              "p2o",
+              "p2a",
+              "p2b"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "poly": [
+              "p3o",
+              "p3a",
+              "p3b"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "poly": [
+              "p4o",
+              "p4a",
+              "p4b"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "poly": [
+              "p5o",
+              "p5a",
+              "p5b"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "s0",
+            "seg": [
+              "O",
+              "H0"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "s1",
+            "seg": [
+              "O",
+              "H1"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "s2",
+            "seg": [
+              "O",
+              "H2"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "s3",
+            "seg": [
+              "O",
+              "H3"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "s4",
+            "seg": [
+              "O",
+              "H4"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "s5",
+            "seg": [
+              "O",
+              "H5"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 2,
+            "group": "seams"
+          },
+          {
+            "id": "o0",
+            "seg": [
+              "H0",
+              "H1"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o1",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o2",
+            "seg": [
+              "H2",
+              "H3"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o3",
+            "seg": [
+              "H3",
+              "H4"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o4",
+            "seg": [
+              "H4",
+              "H5"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "o5",
+            "seg": [
+              "H5",
+              "H0"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "n0",
+            "label": "1",
+            "at": "o0",
+            "dir": "ne",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n1",
+            "label": "2",
+            "at": "o1",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n2",
+            "label": "3",
+            "at": "o2",
+            "dir": "nw",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n3",
+            "label": "4",
+            "at": "o3",
+            "dir": "sw",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n4",
+            "label": "5",
+            "at": "o4",
+            "dir": "s",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n5",
+            "label": "6",
+            "at": "o5",
+            "dir": "se",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "What shape do these 6 triangles make?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What shape do these 6 triangles make?",
+              "id": "p3"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Put them together. One, two, three, four, five, six.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": "t0",
+              "by": [
+                -0.866,
+                -0.5
+              ],
+              "at": "One",
+              "dur": 0.6
+            },
+            {
+              "do": "slide",
+              "target": "t1",
+              "by": [
+                0,
+                -1
+              ],
+              "at": "two",
+              "dur": 0.6
+            },
+            {
+              "do": "slide",
+              "target": "t2",
+              "by": [
+                0.866,
+                -0.5
+              ],
+              "at": "three",
+              "dur": 0.6
+            },
+            {
+              "do": "slide",
+              "target": "t3",
+              "by": [
+                0.866,
+                0.5
+              ],
+              "at": "four",
+              "dur": 0.6
+            },
+            {
+              "do": "slide",
+              "target": "t4",
+              "by": [
+                0,
+                1
+              ],
+              "at": "five",
+              "dur": 0.6
+            },
+            {
+              "do": "slide",
+              "target": "t5",
+              "by": [
+                -0.866,
+                0.5
+              ],
+              "at": "six",
+              "dur": 0.6
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Triangle! I see triangles.",
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Those are the pieces. Look at the outside.",
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "Skip the lines inside. One, two, three, four, five, six. A hexagon!",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "seams",
+              "at": "Skip"
+            },
+            {
+              "do": "draw",
+              "target": "o0",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "n0",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "o1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "o2",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "o3",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "four"
+            },
+            {
+              "do": "draw",
+              "target": "o4",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "five"
+            },
+            {
+              "do": "draw",
+              "target": "o5",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "n5",
+              "at": "six"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{hexagon}",
+              "at": "hexagon"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put them together, count the sides.",
+          "pause": 0.8
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "SA": [
+            -1.5,
+            0.8
+          ],
+          "SB": [
+            1.5,
+            0.8
+          ],
+          "SC": [
+            1.5,
+            3.8
+          ],
+          "SD": [
+            -1.5,
+            3.8
+          ],
+          "A1": [
+            -5,
+            -3.1
+          ],
+          "A2": [
+            -2.8,
+            -3.1
+          ],
+          "A3": [
+            -2.8,
+            -0.9
+          ],
+          "A4": [
+            -5,
+            -0.9
+          ],
+          "B1": [
+            1.5,
+            -3.1
+          ],
+          "B2": [
+            -1.5,
+            -3.1
+          ],
+          "B3": [
+            1.5,
+            -0.1
+          ],
+          "Mb": {
+            "mid": [
+              "B2",
+              "B3"
+            ]
+          },
+          "C1": [
+            2.9,
+            -3.1
+          ],
+          "C2": [
+            4.9,
+            -3.1
+          ],
+          "C3": [
+            2.9,
+            -1.1
+          ],
+          "LA": [
+            -3.9,
+            -4.65
+          ],
+          "LB": [
+            0,
+            -4.65
+          ],
+          "LC": [
+            3.9,
+            -4.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "g1",
+            "seg": [
+              "SA",
+              "SB"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "g2",
+            "seg": [
+              "SD",
+              "SA"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tp",
+            "poly": [
+              "SD",
+              "SC",
+              "SB"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "ca",
+            "poly": [
+              "A1",
+              "A2",
+              "A3",
+              "A4"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "cb",
+            "poly": [
+              "B1",
+              "B2",
+              "B3"
+            ],
+            "fill": "warm-fill",
+            "back": "warm-fill",
+            "ink": "warm",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "cc",
+            "poly": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "la",
+            "label": "A",
+            "at": "LA",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lb",
+            "label": "B",
+            "at": "LB",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lc",
+            "label": "C",
+            "at": "LC",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "q1",
+            "seg": [
+              "SA",
+              "SB"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "q2",
+            "seg": [
+              "SB",
+              "SC"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "q3",
+            "seg": [
+              "SC",
+              "SD"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "q4",
+            "seg": [
+              "SD",
+              "SA"
+            ],
+            "ink": "accent",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which piece completes the square? A piece may be turned.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which piece completes the square? A piece may be turned.",
+              "choices": [
+                "A",
+                "B",
+                "C"
+              ],
+              "id": "p4"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I try A.",
+          "pause": 0.2,
+          "do": [
+            {
+              "do": "slide",
+              "target": "ca",
+              "by": [
+                3.5,
+                3.9
+              ],
+              "at": "try",
+              "dur": 1.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It covers the blue piece. It does not fit.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "slide",
+              "target": "ca",
+              "by": [
+                -3.5,
+                -3.9
+              ],
+              "at": "does",
+              "dur": 1.4
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "B is the right size. Turn it. Then slide it in.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "turn",
+              "target": "cb",
+              "about": "Mb",
+              "deg": -90,
+              "at": "Turn",
+              "dur": 1.2
+            },
+            {
+              "do": "slide",
+              "target": "cb",
+              "by": [
+                0,
+                3.9
+              ],
+              "at": "slide",
+              "dur": 1.4
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It fits. The answer is B.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "B",
+              "at": "answer"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Count the sides. One, two, three, four. A square!",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "draw",
+              "target": "q1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "q2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "q3",
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "q4",
+              "at": "four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "G1": [
+            -3.4,
+            -4.5
+          ],
+          "G2": [
+            3.4,
+            4.5
+          ],
+          "E4": [
+            -2.5,
+            4.5
+          ],
+          "E3": [
+            2.5,
+            4.5
+          ],
+          "EO": [
+            0,
+            2
+          ],
+          "S1": [
+            -2.5,
+            -2.5
+          ],
+          "S2": [
+            2.5,
+            -2.5
+          ],
+          "S3": [
+            2.5,
+            2.5
+          ],
+          "S4": [
+            -2.5,
+            2.5
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "T4": [
+            -2.5,
+            2.5
+          ],
+          "T3": [
+            2.5,
+            2.5
+          ],
+          "TO": [
+            0,
+            0
+          ],
+          "GT": [
+            0,
+            1.6667
+          ],
+          "GR": [
+            1.6667,
+            0
+          ],
+          "GB": [
+            0,
+            -1.6667
+          ],
+          "GL": [
+            -1.6667,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "g1",
+            "dot": "G1",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "g2",
+            "dot": "G2",
+            "r": 1,
+            "ink": "paper",
+            "start": true
+          },
+          {
+            "id": "sq",
+            "poly": [
+              "S1",
+              "S2",
+              "S3",
+              "S4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "tt",
+            "poly": [
+              "T4",
+              "T3",
+              "TO"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true
+          },
+          {
+            "id": "tr",
+            "poly": [
+              "S3",
+              "S2",
+              "O"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true
+          },
+          {
+            "id": "tb",
+            "poly": [
+              "S2",
+              "S1",
+              "O"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true
+          },
+          {
+            "id": "tl",
+            "poly": [
+              "S1",
+              "S4",
+              "O"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "solid": true
+          },
+          {
+            "id": "d1",
+            "seg": [
+              "S1",
+              "S3"
+            ],
+            "ink": "ink",
+            "w": 3
+          },
+          {
+            "id": "d2",
+            "seg": [
+              "S2",
+              "S4"
+            ],
+            "ink": "ink",
+            "w": 3
+          },
+          {
+            "id": "k1",
+            "label": "1",
+            "at": "GT",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "halo": true
+          },
+          {
+            "id": "k2",
+            "label": "2",
+            "at": "GR",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "halo": true
+          },
+          {
+            "id": "k3",
+            "label": "3",
+            "at": "GB",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "halo": true
+          },
+          {
+            "id": "k4",
+            "label": "4",
+            "at": "GL",
+            "dir": "c",
+            "size": "xl",
+            "ink": "ink",
+            "halo": true
+          },
+          {
+            "id": "e1",
+            "seg": [
+              "E4",
+              "E3"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "e2",
+            "seg": [
+              "E3",
+              "EO"
+            ],
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "e3",
+            "seg": [
+              "EO",
+              "E4"
+            ],
+            "ink": "accent",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The square is cut. What are the new shapes?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The square is cut. What are the new shapes?",
+              "id": "p5"
+            },
+            {
+              "do": "draw",
+              "target": "d1",
+              "at": "square"
+            },
+            {
+              "do": "draw",
+              "target": "d2",
+              "at": "cut"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Your turn, Champ.",
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Count the parts. One, two, three, four.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": "tt",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "k1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "tr",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "k2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "tb",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "k3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "tl",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "k4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Now this part. Slide it out. Count its sides. One, two, three.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "k1",
+                "k2",
+                "k3",
+                "k4"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "hide",
+              "target": "sq",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "tt",
+              "by": [
+                0,
+                2
+              ],
+              "at": "Slide"
+            },
+            {
+              "do": "draw",
+              "target": "e1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "e2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "e3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "A triangle! Four triangles.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{4 triangles}",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put them together, count the sides. Cut them apart, count the parts.",
+          "pause": 0.9
+        }
+      ]
+    }
+  ]
+}

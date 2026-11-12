@@ -425,3 +425,15 @@ def test_browser_lanes_verify_configured_font_before_journeys():
         assert journeys and install < verify < min(journeys)
         assert 'if' not in steps[verify]
         assert not steps[verify].get('continue-on-error')
+
+
+def test_publishing_lesson_films_checks_the_manifest_without_runtime_suites():
+    for quick in (True, False):
+        result = plan(['amp/src/content/films/manifest.json', 'amp/film/lessons/x--sx.json'], quick=quick)
+        assert 'tests/lesson-films.test.ts' in result['core']
+        assert result['typecheck']
+        assert not result['database']
+        for key in ('build', 'colors', 'browser', 'browser_scripts', 'content', 'native'):
+            assert not result[key], key
+    assert (ROOT / 'amp/src/content/films/manifest.json').is_file()
+    assert (ROOT / 'amp/tests/lesson-films.test.ts').is_file()
