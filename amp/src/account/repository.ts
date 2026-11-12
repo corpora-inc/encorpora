@@ -1,3 +1,4 @@
+import { followDemo } from "../schools/demo/shared.js";
 import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
@@ -57,6 +58,11 @@ export async function accountSummary(
       client.release();
     }
   }
+  // A demo visitor's place follows the nightly switch (docs/schools.md).
+  if (!isSchoolAccount(accountId))
+    await followDemo(pool, accountId).catch((error: { code?: string }) => {
+      if (error.code !== "42P01") throw error;
+    });
   const family = await families.summary(accountId);
   let email: string | null = null,
     emailVerified = true;

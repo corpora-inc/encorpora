@@ -12,3 +12,10 @@ export const touchDemoOfPersonSql = (person: string) =>
   `UPDATE amp_orgs demo_org SET demo_seen_at=now() FROM amp_people demo_person
    WHERE demo_person.id=${person} AND demo_org.id=demo_person.tenant_id
      AND demo_org.demo AND demo_org.demo_seen_at<now()-interval '1 hour'`;
+
+/** SQL: the person `person` (a table alias) may be shown to the viewer whose
+ * account is `viewer` (an SQL expression; NULL for a student or nobody): not
+ * another visitor of a shared demo school. Visitors never see each other;
+ * the demo's made-up people have no account and are never visitors. */
+export const visibleToSql = (person: string, viewer: string) =>
+  `(NOT ${person}.demo_visitor OR ${person}.account_id IS NOT DISTINCT FROM ${viewer})`;

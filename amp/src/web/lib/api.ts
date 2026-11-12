@@ -219,6 +219,20 @@ export async function request<T>(
     const reloading = reloadIntoCurrentRelease();
     if (reloading) return reloading;
   }
+  // The demo school was rebuilt overnight: this link was into yesterday's.
+  // The visitor's place is already in today's, so open it there instead of
+  // failing (docs/schools.md#demo-places).
+  if (response.status === 409 && errorCode(data) === "demo_moved") {
+    const next =
+      data && typeof data === "object" && "path" in data
+        ? String(data.path)
+        : "";
+    if (/^school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/.test(next)) {
+      observe("cancelled");
+      location.replace(`/${next}`);
+      return new Promise<never>(() => {});
+    }
+  }
   // The server ended this parent's sign-in: go to sign-in instead of failing.
   if (response.status === 401 && signedOut()) {
     observe("cancelled");

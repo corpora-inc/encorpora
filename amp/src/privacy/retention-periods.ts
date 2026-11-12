@@ -46,7 +46,8 @@ export const RETENTION = {
   helpEventDays: 400,
   /** Privacy activity log. */
   privacyAuditDays: 90,
-  /** A demo class or school (all synthetic) after its owner last opened it. */
+  /** A visitor's place in the shared demo school (all synthetic) after they
+   * were last there. */
   idleDemoDays: 30,
 } as const;
 

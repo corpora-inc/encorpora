@@ -127,6 +127,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "classes.update",
   "students.update",
   "signin.manage",
+  "signin.code",
   "grades.write",
   "settings.write",
   "share.manage",
@@ -143,6 +144,7 @@ const FAMILY = new Set<SchoolAction>([
   "students.read",
   "signin.read",
   "signin.manage",
+  "signin.code",
   "grades.read",
   "grades.write",
   "calendar.read",
@@ -168,6 +170,8 @@ const NOT_IN_A_DEMO = new Set<SchoolAction>([
   "schools.add",
   "year.rollover",
   "setup.write",
+  // The demo is shared: one visitor's new class code would be everyone's.
+  "signin.code",
 ]);
 
 /** The only authorization rule for school routes. Admin covers descendants

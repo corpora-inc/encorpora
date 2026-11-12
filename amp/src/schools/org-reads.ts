@@ -269,20 +269,27 @@ export async function trendOf(
   return weeks;
 }
 
-/** Classes in the year in use at this org and below, each with its teachers. */
-export async function classesHere(db: Database, orgId: string) {
+/** Classes in the year in use at this org and below, each with its teachers.
+ * Another visitor of a shared demo isn't named; `viewerPersonId` is the
+ * reader's own person here, who is. */
+export async function classesHere(
+  db: Database,
+  orgId: string,
+  viewerPersonId: string | null = null,
+) {
   const { rows } = await db.query(
     `SELECT c.id,c.name,c.org_id AS org,
        ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
          WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL
            AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
            AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)
+           AND (NOT p.demo_visitor OR p.id IS NOT DISTINCT FROM $2::uuid)
          ORDER BY e.begin_on,p.id) AS teachers
      FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
      JOIN amp_academic_sessions cs ON cs.id=c.session_id
      WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL AND ${YEAR_IN_USE}
      ORDER BY lower(c.name),c.id`,
-    [orgId],
+    [orgId, viewerPersonId],
   );
   return rows as {
     id: string;
@@ -588,7 +595,7 @@ export async function readOverview(
   const [trend, classList, schools, unsigned, year, person] = await Promise.all(
     [
       trendOf(pool, students, term.startsOn, term.endsOn),
-      classesHere(pool, orgId),
+      classesHere(pool, orgId, actorPersonId),
       schoolsBelow(pool, orgId),
       unsignedSchools(pool, orgId),
       yearHere(pool, org),

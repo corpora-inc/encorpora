@@ -33,6 +33,8 @@ export const schoolActions = [
   "students.add",
   "signin.read",
   "signin.manage",
+  /** A class's new join code. */
+  "signin.code",
   "grades.read",
   "grades.write",
   "setup.write",
@@ -78,6 +80,8 @@ export class SchoolError extends Error {
     public readonly code: string,
     /** How many seconds until this is worth trying again. */
     public readonly retryAfter?: number,
+    /** Where to go instead: `demo_moved` names the visitor's new demo. */
+    public readonly path?: string,
   ) {
     super(code);
   }
@@ -298,6 +302,9 @@ export const signInRosterResource = z.object({
   }),
   /** Whether this person can change sign-in, or only read it. */
   canManage: z.boolean(),
+  /** Whether this person can make the class a new code (never in a shared
+   * demo, where one visitor's code would be everyone's). */
+  canNewCode: z.boolean().optional(),
   /** Whether this person can send families their progress links; a
    * family's own class has none (its parents see it themselves). */
   canShare: z.boolean().optional(),

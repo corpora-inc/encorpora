@@ -1,4 +1,5 @@
 import { PERSON_NAME } from "./term-grades.js";
+import { visibleToSql } from "./demo/sql.js";
 import { randomInt, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -92,6 +93,11 @@ function learnerName(person: {
   );
 }
 
+/** SQL, in a query grouped by org `o` with the viewer's roles `r`: a shared
+ * demo school is the viewer's own class ("solo") unless they joined it as
+ * its admin, so a teacher's demo looks like their class. */
+const SOLO = `CASE WHEN o.demo AND o.created_by LIKE 'amp-demo:%'
+  THEN NOT COALESCE(bool_or(r.role='admin'),false) ELSE o.solo END AS solo`;
 /** Only a demo says so. */
 const withDemo = ({ demo, ...org }: OrgResource & { demo?: boolean }) =>
   (demo ? { ...org, demo: true as const } : org) as OrgResource;
@@ -798,7 +804,7 @@ export class SchoolRepository {
   async myOrgs(accountId: string): Promise<OrgResource[]> {
     return (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",o.demo,
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,${SOLO},o.setup_pending AS "setupPending",o.demo,
            array_agg(DISTINCT r.role ORDER BY r.role) AS roles
          FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
          JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
@@ -811,7 +817,7 @@ export class SchoolRepository {
   async orgFor(accountId: string, orgId: string): Promise<OrgResource | null> {
     const row = (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",o.demo,
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,${SOLO},o.setup_pending AS "setupPending",o.demo,
            COALESCE(array_agg(DISTINCT r.role) FILTER (WHERE r.id IS NOT NULL),'{}') AS roles
          FROM amp_orgs o
          LEFT JOIN amp_people p ON p.account_id=$1 AND p.deleted_at IS NULL
@@ -829,6 +835,8 @@ export class SchoolRepository {
     { classIds }: { classIds: string[] | null },
     page: Page,
     year: string | null = null,
+    /** The reader: another visitor of a shared demo isn't named. */
+    viewer: string | null = null,
   ): Promise<ClassResource[]> {
     return (
       await this.pool.query(
@@ -838,6 +846,7 @@ export class SchoolRepository {
              WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount",
            ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+               AND ${visibleToSql("p", "$6::text")}
              ORDER BY e.begin_on,p.id) AS teachers
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          JOIN amp_academic_sessions cs ON cs.id=c.session_id
@@ -845,7 +854,7 @@ export class SchoolRepository {
            AND ($2::uuid[] IS NULL OR c.id=ANY($2::uuid[]))
            AND (CASE WHEN $5::uuid IS NULL THEN ${YEAR_IN_USE} ELSE COALESCE(cs.parent_id,cs.id)=$5::uuid END)
          ORDER BY c.name,c.id LIMIT $3 OFFSET $4`,
-        [orgId, classIds, page.limit, page.offset, year],
+        [orgId, classIds, page.limit, page.offset, year, viewer],
       )
     ).rows;
   }

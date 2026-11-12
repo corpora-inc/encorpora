@@ -1,10 +1,11 @@
 /**
- * A demo's term, computed once a day and written for every demo made that
- * day. The term is the production planner and estimator over every simulated
- * answer (`simulate.ts`): about eight CPU seconds a student, so a school is
- * minutes. It depends only on the jobs (`roster.ts`), never on who asked, so
- * it is computed ahead of the day on worker threads, kept in memory, and
- * shared between pods in `amp_demo_snapshots`. One pod computes a key; the
+ * The shared demo school's term, computed once per generator version. It is
+ * the production planner and estimator over every simulated answer
+ * (`simulate.ts`): about eight CPU seconds a student, so a school is minutes.
+ * It is static (`roster.ts`): one term per weekday at a fixed anchor week,
+ * moved to the day it is written for (`shift.ts`). So it is computed on worker
+ * threads at most seven times a version, kept in memory, and shared between
+ * pods and across deploys in `amp_demo_snapshots`. One pod computes a key; the
  * others read it. A request that finds no term waits for the one being
  * computed instead of starting another.
  */
@@ -14,33 +15,38 @@ import { gunzip, gzip } from "node:zlib";
 import type { Pool } from "pg";
 import { SchoolError } from "../contracts.js";
 import {
-  demoDay,
   demoJobs,
   demoRoster,
-  type DemoDay,
+  variantDay,
   type DemoKind,
 } from "./roster.js";
 import type { SimJob, Simulation } from "./simulate.js";
 import { simulateJobs } from "./simulate-pool.js";
 
-/** Bump when the demo's model changes what a job's term is, so no pod reuses
- * a term from before. Engine releases need not: a stored term is the
- * planner's and estimator's own output on the day it was made, as a real
+/** Bump when the demo's model or roster changes what a job's term is, so no
+ * pod reuses a term from before. Engine releases need not: a stored term is
+ * the planner's and estimator's own output when it was made, as a real
  * student's history is. */
-export const DEMO_TERM_VERSION = 1;
+export const DEMO_TERM_VERSION = 2;
 /** A claimed key that has not been written by then is free to claim again. */
 const CLAIM_SECONDS = 600;
 /** How long a request waits for a term being computed. */
 const WAIT_MS = 175_000;
-const KEEP_DAYS = 3;
+/** Terms of another version stay this long, for pods still running it. */
+const KEEP_OTHER_VERSIONS_DAYS = 7;
 
-export function snapshotKey(kind: DemoKind, jobs: readonly SimJob[]) {
+const versionPrefix = (kind: DemoKind) => `${kind}:v${DEMO_TERM_VERSION}:`;
+
+export function snapshotKey(
+  kind: DemoKind,
+  weekday: number,
+  jobs: readonly SimJob[],
+) {
   const digest = createHash("sha256")
     .update(JSON.stringify({ version: DEMO_TERM_VERSION, jobs }))
     .digest("hex")
     .slice(0, 32);
-  const day = jobs[0]?.options.today ?? "none";
-  return `${kind}:${day}:${digest}`;
+  return `${versionPrefix(kind)}w${weekday}:${digest}`;
 }
 
 const gzipped = promisify(gzip);
@@ -132,25 +138,35 @@ export async function decodeTerms(payload: Buffer): Promise<Simulation[]> {
 }
 
 const delay = (ms: number) => new Promise((done) => setTimeout(done, ms));
-/** Terms in this process, newest last: today's and the next few. */
+/** Terms in this process, newest last: today's and tomorrow's. */
 const memory = new Map<string, Promise<Simulation[]>>();
 /** Forgets the terms this process holds, as a new pod would start. */
 export const forgetDemoTerms = () => memory.clear();
-const MEMORY_KEYS = 6;
+const MEMORY_KEYS = 4;
 const owner = randomUUID();
 
-/** The terms of a demo of `kind` made on `day`, one per student in roster
- * order: from memory, from another pod, or computed here. */
+/** The jobs of weekday `weekday`'s anchor term (0 is Monday). */
+export const variantJobs = (kind: DemoKind, weekday: number) =>
+  demoJobs(demoRoster(kind), variantDay(weekday));
+
+/** The anchor terms of a demo of `kind` for weekday `weekday` (0 is Monday),
+ * one per student in roster order: from memory, from another pod, or
+ * computed here. `shift.ts` moves them to a day. */
 export function demoTerms(
   pool: Pool,
   kind: DemoKind,
-  day: DemoDay,
+  weekday: number,
 ): Promise<Simulation[]> {
-  const jobs = demoJobs(demoRoster(kind), day);
-  const key = snapshotKey(kind, jobs);
+  const jobs = variantJobs(kind, weekday);
+  const key = snapshotKey(kind, weekday, jobs);
   const known = memory.get(key);
-  if (known) return known;
-  const loading = loadOrCompute(pool, key, kind, day, jobs);
+  if (known) {
+    // Most recently used last, so eviction drops the oldest.
+    memory.delete(key);
+    memory.set(key, known);
+    return known;
+  }
+  const loading = loadOrCompute(pool, key, kind, weekday, jobs);
   memory.set(key, loading);
   loading.catch(() => memory.delete(key));
   for (const old of memory.keys())
@@ -162,7 +178,7 @@ async function loadOrCompute(
   pool: Pool,
   key: string,
   kind: DemoKind,
-  day: DemoDay,
+  weekday: number,
   jobs: readonly SimJob[],
 ): Promise<Simulation[]> {
   const deadline = Date.now() + WAIT_MS;
@@ -182,7 +198,7 @@ async function loadOrCompute(
        RETURNING $2::text AS owner`,
       [key, owner, CLAIM_SECONDS],
     );
-    if (claimed.rowCount) return compute(pool, key, kind, day, jobs);
+    if (claimed.rowCount) return compute(pool, key, kind, weekday, jobs);
     if (Date.now() > deadline)
       throw new SchoolError(503, "school_service_unavailable", 30);
     await delay(1_000);
@@ -193,14 +209,14 @@ async function compute(
   pool: Pool,
   key: string,
   kind: DemoKind,
-  day: DemoDay,
+  weekday: number,
   jobs: readonly SimJob[],
 ): Promise<Simulation[]> {
   try {
     // A class is the school's first class: a school's terms give it too.
     const school =
       kind === "class"
-        ? await schoolTerms(day, jobs).catch(() => null)
+        ? await schoolTerms(weekday, jobs).catch(() => null)
         : null;
     const terms = school ?? (await simulateJobs(jobs));
     const payload = await encodeTerms(terms);
@@ -221,87 +237,29 @@ async function compute(
   }
 }
 
-/** The school's terms for this day, if this process has them, cut to `jobs`. */
-async function schoolTerms(day: DemoDay, jobs: readonly SimJob[]) {
-  const schoolJobs = demoJobs(demoRoster("school"), day);
-  const known = memory.get(snapshotKey("school", schoolJobs));
+/** The school's terms for this weekday, if this process has them, cut to
+ * `jobs`. */
+async function schoolTerms(weekday: number, jobs: readonly SimJob[]) {
+  const schoolJobs = variantJobs("school", weekday);
+  const known = memory.get(snapshotKey("school", weekday, schoolJobs));
   if (!known) return null;
   const same =
     JSON.stringify(schoolJobs.slice(0, jobs.length)) === JSON.stringify(jobs);
   return same ? (await known).slice(0, jobs.length) : null;
 }
 
-/** The days a demo made in the next `ahead` ms would have, in each zone. */
-export function upcomingDays(
-  now: number,
-  timezones: readonly string[],
-  ahead = 3 * 3_600_000,
-) {
-  const days = new Map<string, DemoDay>();
-  for (const timezone of timezones)
-    for (let at = now; at <= now + ahead; at += 15 * 60_000) {
-      const day = demoDay(at, timezone);
-      days.set(JSON.stringify(day), day);
-    }
-  return [...days.values()];
-}
-
-/** Computes (or loads) every term a demo made soon would need: the school
- * first, so the class is cut from it. Removes terms older than a few days. */
-export async function warmDemoTerms(
-  pool: Pool,
-  options: { now?: number; timezones?: readonly string[]; ahead?: number } = {},
-) {
-  const now = options.now ?? Date.now();
-  const timezones = options.timezones ?? (await demoZones(pool));
-  for (const day of upcomingDays(now, timezones, options.ahead))
-    for (const kind of ["school", "class"] as const)
-      await demoTerms(pool, kind, day);
+/** Computes (or loads) the school's terms for these weekdays. Terms of other
+ * versions go after a week. */
+export async function warmDemoTerms(pool: Pool, weekdays: readonly number[]) {
+  for (const weekday of new Set(weekdays))
+    await demoTerms(pool, "school", weekday);
   await pool.query(
-    "DELETE FROM amp_demo_snapshots WHERE created_at<now()-make_interval(days=>$1)",
-    [KEEP_DAYS],
+    `DELETE FROM amp_demo_snapshots WHERE NOT (key LIKE $1 OR key LIKE $2)
+       AND created_at<now()-make_interval(days=>$3)`,
+    [
+      `${versionPrefix("school")}%`,
+      `${versionPrefix("class")}%`,
+      KEEP_OTHER_VERSIONS_DAYS,
+    ],
   );
-}
-
-/** New York, and the zones of demos opened this week. */
-async function demoZones(pool: Pool) {
-  const { rows } = await pool.query<{ timezone: string }>(
-    `SELECT timezone FROM amp_orgs WHERE demo AND demo_seen_at>now()-interval '7 days'
-     GROUP BY timezone ORDER BY count(*) DESC LIMIT 4`,
-  );
-  return [
-    ...new Set(["America/New_York", ...rows.map((row) => row.timezone)]),
-  ];
-}
-
-type Log = {
-  info: (details: object, message: string) => void;
-  warn: (details: object, message: string) => void;
-};
-
-/** Keeps the terms warm on this pod: now, and every ten minutes, so the day's
- * next terms exist before a visitor needs them. */
-export function startDemoWarmer(pool: Pool, log: Log) {
-  let running = false;
-  const tick = async () => {
-    if (running) return;
-    running = true;
-    const started = performance.now();
-    try {
-      await warmDemoTerms(pool);
-      const ms = Math.round(performance.now() - started);
-      if (ms > 1_000) log.info({ ms }, "demo terms warmed");
-    } catch (error) {
-      log.warn(
-        { reason: error instanceof Error ? error.message : "unknown" },
-        "demo terms not warmed; a demo made now waits for them",
-      );
-    } finally {
-      running = false;
-    }
-  };
-  const timer = setInterval(() => void tick(), 10 * 60_000);
-  timer.unref();
-  void tick();
-  return () => clearInterval(timer);
 }

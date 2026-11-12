@@ -1,5 +1,6 @@
 import type { PoolClient } from "pg";
 import { activeToday } from "./principal.js";
+import { visibleToSql } from "./demo/sql.js";
 import { PERSON_FIRST, PERSON_NAME } from "./term-grades.js";
 
 /* The teacher in their class (docs/families.md): a teacher of a class who
@@ -31,6 +32,8 @@ export type ClassTeacher = {
 export async function classTeachers(
   db: Database,
   classId: string,
+  /** The reader's account: another visitor of a shared demo is left out. */
+  viewer: string | null = null,
 ): Promise<ClassTeacher[]> {
   const { rows } = await db.query(
     `SELECT DISTINCT ON (lower(${PERSON_NAME}),p.id)
@@ -44,14 +47,19 @@ export async function classTeachers(
      JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.account_id IS NOT NULL
      JOIN amp_learners l ON l.account_id=p.account_id AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL
      WHERE e.class_id=$1 AND e.role='teacher' AND ${activeToday("e", "o")}
+       AND ${visibleToSql("p", "$2::text")}
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role<>'student'
          AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
      ORDER BY lower(${PERSON_NAME}),p.id`,
-    [classId],
+    [classId, viewer],
   );
   return rows;
 }
 
 /** The teachers whose line this class shows. */
-export const shownTeachers = async (db: Database, classId: string) =>
-  (await classTeachers(db, classId)).filter((teacher) => teacher.shown);
+export const shownTeachers = async (
+  db: Database,
+  classId: string,
+  viewer: string | null = null,
+) =>
+  (await classTeachers(db, classId, viewer)).filter((teacher) => teacher.shown);
