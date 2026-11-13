@@ -281,8 +281,11 @@
   .reference-lesson .worked-example .figure {
     margin-block: var(--space-4);
   }
+  /* The rule above the answer spans the example; its text keeps the
+     reading measure. */
   .reference-lesson .worked-answer {
     max-inline-size: none;
+    padding-inline-end: max(0px, calc(100% - var(--lesson-measure)));
     margin: var(--space-4) 0 0;
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-border-strong);
