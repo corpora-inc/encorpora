@@ -502,13 +502,6 @@ export function StudentsScreen() {
                 ? `${total} ${total === 1 ? "match" : "matches"}`
                 : `${total} ${total === 1 ? "student" : "students"}${total ? `, ${total - seated === 0 ? "all" : seated} with seats` : ""}`
         }
-        action={
-          canAdd || familyAdd ? (
-            <Button variant="primary" onClick={() => setSearch({ add: 1 })}>
-              {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
-            </Button>
-          ) : undefined
-        }
       />
       <div className={styles.toolbar} ref={opener}>
         <SearchField
@@ -546,6 +539,13 @@ export function StudentsScreen() {
           rowKey={(row) => row.id}
           defaultSort={{ column: "name", direction: "ascending" }}
           onRowActivate={(row) => setSearch({ student: row.id })}
+          action={
+            canAdd || familyAdd ? (
+              <Button variant="primary" onClick={() => setSearch({ add: 1 })}>
+                {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
+              </Button>
+            ) : undefined
+          }
           cardLayout="row"
           cardEstimate={72}
           card={(row) => (
@@ -580,7 +580,16 @@ export function StudentsScreen() {
           )}
         />
       ) : needle ? (
-        <EmptyState title={`No student matches “${echoed}”`}>
+        <EmptyState
+          title={`No student matches “${echoed}”`}
+          action={
+            canAdd || familyAdd ? (
+              <Button variant="secondary" onClick={() => setSearch({ add: 1 })}>
+                {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
+              </Button>
+            ) : undefined
+          }
+        >
           Check the spelling, or clear the search to see everyone.
         </EmptyState>
       ) : (

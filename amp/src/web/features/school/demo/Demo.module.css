@@ -27,9 +27,22 @@
   display: none;
 }
 @media (max-width: 639px) {
+  /* A phone's pill is the bar's quiet size: 36 px drawn, the word without
+     its arrow, and still a 44 px target. */
   .action[data-demo-action] {
+    position: relative;
     width: auto;
+    height: 36px;
     padding: 0 var(--space-4);
+    font-size: var(--text-table);
+  }
+  .action[data-demo-action]::after {
+    content: "";
+    position: absolute;
+    inset: -4px 0;
+  }
+  .action[data-demo-action] svg {
+    display: none;
   }
   .long {
     display: none;

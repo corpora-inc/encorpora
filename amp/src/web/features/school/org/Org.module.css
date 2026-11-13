@@ -273,12 +273,6 @@
   align-content: start;
   gap: var(--space-4);
 }
-/* Growth's median, then its 95% range in a quieter tone. */
-.growthCell span {
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-}
-
 /* Seats and what needs attention, a quiet column beside the charts. */
 .seats {
   display: grid;
@@ -398,39 +392,21 @@
   border-radius: 999px;
   background: var(--color-meter);
 }
+/* On a phone: the count, the share a hairline under it, so the count
+   lines up with the figures beside it. */
+.activeCompact {
+  position: relative;
+  display: block;
+}
+.activeCompact .activeTrack {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  width: auto;
+  height: 3px;
+}
 .activeWords {
-  font-variant-numeric: var(--numeric);
-}
-.usageCard {
-  display: grid;
-  gap: var(--space-1);
-  min-height: 44px;
-  padding-block: var(--space-3);
-  color: inherit;
-  text-decoration: none;
-}
-.usageCard:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: -1px;
-}
-.usageName {
-  display: grid;
-  gap: 1px;
-}
-.usageName strong {
-  font-weight: 600;
-}
-.usageName span {
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-}
-.usageFacts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-1) var(--space-4);
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
   font-variant-numeric: var(--numeric);
 }
 

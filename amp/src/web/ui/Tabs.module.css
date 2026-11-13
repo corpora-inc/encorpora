@@ -18,8 +18,16 @@
 .tabs::-webkit-scrollbar {
   display: none;
 }
-.tabs[data-more] {
+/* A strip that scrolls fades at whichever end has more past it, so a cut
+   tab always reads as "more this way". */
+.tabs[data-more][data-edges="end"] {
   mask-image: var(--scroll-edge);
+}
+.tabs[data-more][data-edges="start"] {
+  mask-image: var(--scroll-edge-start);
+}
+.tabs[data-more][data-edges="both"] {
+  mask-image: var(--scroll-edge-both);
 }
 .tab {
   position: relative;

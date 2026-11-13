@@ -3,6 +3,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { Menu, MenuItem } from "./Menu";
 import styles from "./Tabs.module.css";
 
+/** How wide a strip's fading edge is, in px. */
+const FADE = 28;
 /** Tighter paddings to try, in order, when the labels do not fit. */
 const FIT_STEPS = ["snug", "tight"] as const;
 
@@ -37,16 +39,6 @@ export function Tabs({
   const navigate = useNavigate();
   // The tabs More holds, in their order; empty while every tab fits.
   const [rest, setRest] = useState<readonly string[]>([]);
-  // The current tab starts in view; only the strip scrolls, never the page.
-  useLayoutEffect(() => {
-    const strip = list.current;
-    const tab = strip?.querySelector('[aria-current="page"]');
-    if (!strip || !tab) return;
-    const from = strip.getBoundingClientRect(),
-      box = tab.getBoundingClientRect();
-    if (box.left < from.left || box.right > from.right - 28)
-      strip.scrollLeft += box.left - from.left;
-  }, [active]);
   // Every tab in view when the labels can fit: a row too wide for its strip
   // tightens its padding a step at a time (each target stays 44 px) before
   // it scrolls. Only a row that cannot fit even then scrolls, and it fades at
@@ -68,6 +60,9 @@ export function Tabs({
       if (over()) {
         // Still too wide at the tightest padding: whole tabs, then More. The
         // room is the strip's cell, which never changes with what it shows.
+        // The tabs that stay get their room back: never the tightest
+        // padding beside a More.
+        strip.setAttribute("data-fit", FIT_STEPS[0]);
         strip.setAttribute("data-overflow", "");
         const room = strip.parentElement?.clientWidth ?? strip.clientWidth;
         const gap = parseFloat(getComputedStyle(strip).columnGap) || 0;
@@ -107,11 +102,40 @@ export function Tabs({
       const scrolls = over();
       if (scrolls !== strip.hasAttribute("data-more"))
         strip.toggleAttribute("data-more", scrolls);
+      // A row that fits starts at its start; one that scrolls brings the
+      // open tab fully into view, clear of the fades, by the least it can.
+      // Only the strip scrolls, never the page.
+      if (!scrolls) strip.scrollLeft = 0;
+      else {
+        const tab = strip.querySelector<HTMLElement>(
+          '[aria-current="page"]:not([data-hidden])',
+        );
+        if (tab) {
+          const from = strip.getBoundingClientRect(),
+            box = tab.getBoundingClientRect();
+          if (box.left < from.left + FADE)
+            strip.scrollLeft -= from.left + FADE - box.left;
+          else if (box.right > from.right - FADE)
+            strip.scrollLeft += box.right - (from.right - FADE);
+        }
+      }
+      edges();
     };
+    // Which ends have more past them: each fades only while it does.
+    const edges = () => {
+      const start = strip.scrollLeft > 1;
+      const end = strip.scrollLeft + strip.clientWidth < strip.scrollWidth - 1;
+      strip.dataset.edges =
+        start && end ? "both" : start ? "start" : end ? "end" : "none";
+    };
+    strip.addEventListener("scroll", edges, { passive: true });
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(strip.parentElement ?? strip);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      strip.removeEventListener("scroll", edges);
+    };
   }, [items, active]);
   return (
     <nav

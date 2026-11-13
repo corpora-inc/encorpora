@@ -119,11 +119,44 @@ tr[data-activates]:hover .cell {
   border: 0;
 }
 
+/* The row above the list: the sort control at the start, the list's one
+   action at the end, on one line at every width a phone has (Q-65). */
 .cardsBar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-2);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.sortMark {
+  display: none;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sortedBy {
+  white-space: pre;
+}
+/* Too narrow for both at full length: the sort says its column beside a
+   sort mark, and the action keeps its words. */
+@container (max-width: 340px) {
+  .cardsBar:has(.action) .sortedBy {
+    display: none;
+  }
+  .cardsBar:has(.action) .sortMark {
+    display: block;
+  }
+}
+.action {
+  display: flex;
+  flex: none;
+  gap: var(--space-2);
+  margin-inline-start: auto;
 }
 /* On a phone each row stacks: no card around it, a hairline between rows,
    the name first and the other columns as one wrapping line of label and

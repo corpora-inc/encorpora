@@ -9,7 +9,7 @@ import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
 import { compareClassNames } from "../sort";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
-import { gradesWords, intervalWords, signed, students } from "./format";
+import { gradesWords, signed, students } from "./format";
 import {
   AxisEnds,
   CurveFacts,
@@ -115,8 +115,7 @@ export function StandingScreen() {
                         </span>
                         {group.curve.middle && (
                           <span className={styles.ridgeFigure}>
-                            Median {signed(group.curve.middle.median)}{" "}
-                            <span>({intervalWords(group.curve.middle)})</span>
+                            Median {signed(group.curve.middle.median)}
                           </span>
                         )}
                       </span>

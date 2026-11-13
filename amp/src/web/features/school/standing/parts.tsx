@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import type { StandingCurve } from "../../../../schools/standing-contracts";
 import { StatRow, StatTile } from "../../../ui/StatTile";
+import { FigureTip, TipZone } from "../classes/teacher-shared";
 import { intervalWords, plain, signed } from "./format";
 import styles from "./Standing.module.css";
 
@@ -15,7 +16,8 @@ export function AxisEnds() {
   );
 }
 
-/** The numbers a curve is read by: n, median with where it sits, mean, sd. */
+/** The numbers a curve is read by: n, median, mean, sd. The median's 95%
+ * range is a tap away on its figure; the curve draws it too. */
 export function CurveFacts({
   curve,
   label,
@@ -27,25 +29,47 @@ export function CurveFacts({
   children?: ReactNode;
 }) {
   return (
-    <StatRow label={label}>
-      <StatTile
-        value={curve.n.toLocaleString("en-US")}
-        label={curve.n === 1 ? "student" : "students"}
-      />
-      <StatTile
-        value={curve.median === null ? "—" : signed(curve.median)}
-        label="median"
-        detail={
-          curve.middle ? `95%: ${intervalWords(curve.middle)}` : undefined
-        }
-      />
-      <StatTile
-        value={curve.mean === null ? "—" : signed(curve.mean)}
-        label="mean"
-      />
-      <StatTile value={curve.sd === null ? "—" : plain(curve.sd)} label="sd" />
-      {children}
-    </StatRow>
+    <TipZone>
+      <StatRow label={label}>
+        <StatTile
+          value={curve.n.toLocaleString("en-US")}
+          label={curve.n === 1 ? "student" : "students"}
+        />
+        <StatTile
+          value={
+            curve.median === null ? (
+              "—"
+            ) : curve.middle ? (
+              <FigureTip
+                tip={{
+                  title: "Median",
+                  figure: signed(curve.median),
+                  unit: "grades from their own",
+                  stats: [
+                    { label: "95% range", value: intervalWords(curve.middle) },
+                    { label: "n", value: curve.n.toLocaleString("en-US") },
+                  ],
+                }}
+              >
+                {signed(curve.median)}
+              </FigureTip>
+            ) : (
+              signed(curve.median)
+            )
+          }
+          label="median"
+        />
+        <StatTile
+          value={curve.mean === null ? "—" : signed(curve.mean)}
+          label="mean"
+        />
+        <StatTile
+          value={curve.sd === null ? "—" : plain(curve.sd)}
+          label="sd"
+        />
+        {children}
+      </StatRow>
+    </TipZone>
   );
 }
 

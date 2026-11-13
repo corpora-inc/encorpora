@@ -20,7 +20,8 @@
   align-items: center;
   gap: 6px;
   min-height: 44px;
-  margin-inline-end: calc(-1 * var(--space-2));
+  /* The whole button, its pressed fill too, stays inside the page gutter. */
+  margin: 0;
   padding: 0 var(--space-2);
   border: 0;
   border-radius: var(--radius-small);

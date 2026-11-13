@@ -492,6 +492,14 @@
   /* The trailing edge of a strip that scrolls: its last pixels fade, so a cut
      label reads as "more", not as clipped. */
   --scroll-edge: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  --scroll-edge-start: linear-gradient(90deg, transparent, #000 28px);
+  --scroll-edge-both: linear-gradient(
+    90deg,
+    transparent,
+    #000 28px,
+    #000 calc(100% - 28px),
+    transparent
+  );
   /* A choice list that scrolls: the hidden side fades to a faint edge. */
   --scroll-fade-down: linear-gradient(
     to bottom,
