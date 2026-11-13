@@ -56,7 +56,7 @@ const FROM_PEOPLE = `SELECT p.id,p.given_name,p.family_name,p.display_name,p.ema
   FROM amp_people p`;
 const fullName = (row: { givenName: string; familyName?: string }) =>
   nameKey(`${row.givenName} ${row.familyName ?? ""}`);
-const personName = (person: Existing) =>
+const personName = (person: Pick<Existing, "given_name" | "family_name">) =>
   nameKey(`${person.given_name} ${person.family_name ?? ""}`);
 
 async function tenantOf(repo: SchoolRepository, orgId: string) {
@@ -111,44 +111,96 @@ async function lookUp(
   source: RosterSource,
   rows: RosterRow[],
 ) {
-  const refs = new Map<string, string>(
-    (
-      await db.query(
-        `SELECT sourced_id,local_id FROM amp_external_refs
-         WHERE tenant_id=$1 AND source=$2 AND kind='person' AND sourced_id=ANY($3::text[])`,
-        [tenantId, source, rows.map((row) => row.sourcedId)],
-      )
-    ).rows.map((row) => [row.sourced_id, row.local_id]),
+  const found = (
+    await db.query(
+      `SELECT ref.sourced_id AS ref_sourced_id,ref.local_id AS ref_local_id,person.*
+       FROM amp_external_refs ref LEFT JOIN LATERAL
+       (${FROM_PEOPLE} WHERE p.id=ref.local_id) person ON true
+       WHERE ref.tenant_id=$1 AND ref.source=$2 AND ref.kind='person' AND ref.sourced_id=ANY($3::text[])`,
+      [tenantId, source, rows.map((row) => row.sourcedId)],
+    )
+  ).rows as (Existing & { ref_sourced_id: string; ref_local_id: string })[];
+  // Keep an orphaned reference too: the row must replace it before creating a
+  // new person, rather than losing the INSERT's conflict silently.
+  const refs = new Map(
+    found.map((row) => [row.ref_sourced_id, row.ref_local_id]),
   );
-  const people = new Map<string, Existing>(
-    refs.size
-      ? (
-          await db.query(`${FROM_PEOPLE} WHERE p.id=ANY($1::uuid[])`, [
-            [...refs.values()],
-            source,
-          ])
-        ).rows.map((person: Existing) => [person.id, person])
-      : [],
+  const people = new Map(
+    found.filter((row) => row.id).map((row) => [row.id, row]),
   );
   return { refs, people };
 }
 
 /** Unclaimed people can match a stable ID. CSV name-only keys may also change
- * after a class move or a legacy import; those names require review. */
+ * after a class move or a legacy import; those names require review. Read only
+ * compact identities until a name, student ID or staff address could match.
+ * Memberships and source evidence are loaded only for those candidates. */
 async function unclaimed(
   db: Pick<PoolClient, "query">,
   tenantId: string,
   source: RosterSource,
   orgId: string,
+  rows: RosterRow[],
+  taken: Set<string> = new Set(),
 ) {
-  return (
+  const students = rows.filter((row) => row.role === "student");
+  const identifiers = new Set(
+    students.flatMap((row) => (row.identifier ? [row.identifier] : [])),
+  );
+  const names = new Map<string, boolean>();
+  for (const row of students)
+    names.set(
+      fullName(row),
+      names.get(fullName(row)) === true || !row.identifier,
+    );
+  const emails = new Set(
+    rows.flatMap((row) =>
+      row.role !== "student" && row.email ? [row.email] : [],
+    ),
+  );
+  if (!students.length && !emails.size) return [];
+  // These membership IDs are NOT NULL. Uncorrelated sets avoid a repeated
+  // membership scan for each person when a new roster has no table statistics.
+  const compact = (
     await db.query(
-      `${FROM_PEOPLE} WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
-       AND (NOT EXISTS(SELECT 1 FROM amp_external_refs x WHERE x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person' AND x.local_id=p.id)
-         OR ($2='csv' AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.org_id=$3 AND r.end_on IS NULL)))`,
-      [tenantId, source, orgId],
+      `SELECT p.id,p.given_name,p.family_name,p.email,p.identifier,p.learner_id
+       FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
+       AND (($4::boolean AND p.learner_id IS NOT NULL AND ($5::boolean OR p.identifier IS NULL OR p.identifier='' OR p.identifier=ANY($6::text[])))
+         OR (p.learner_id IS NULL AND lower(p.email)=ANY($7::text[])))
+       AND (p.id NOT IN (SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='person')
+         OR ($2='csv' AND p.id IN (SELECT person_id FROM amp_org_roles WHERE org_id=$3 AND end_on IS NULL)))`,
+      [
+        tenantId,
+        source,
+        orgId,
+        !!students.length,
+        students.some((row) => !row.identifier),
+        [...identifiers],
+        [...emails],
+      ],
     )
-  ).rows as Existing[];
+  ).rows as Pick<
+    Existing,
+    "id" | "given_name" | "family_name" | "email" | "identifier" | "learner_id"
+  >[];
+  const ids = compact
+    .filter((person) => {
+      if (!person.learner_id)
+        return emails.has(person.email?.toLowerCase() ?? "");
+      if (taken.has(person.id)) return false;
+      if (person.identifier && identifiers.has(person.identifier)) return true;
+      const named = names.get(personName(person));
+      return named !== undefined && (named || !person.identifier);
+    })
+    .map((person) => person.id);
+  return ids.length
+    ? ((
+        await db.query(`${FROM_PEOPLE} WHERE p.id=ANY($1::uuid[])`, [
+          ids,
+          source,
+        ])
+      ).rows as Existing[])
+    : [];
 }
 type Match = {
   person: Existing | null;
@@ -342,7 +394,14 @@ export async function planRoster(
   const { tenantId } = await tenantOf(repo, orgId);
   const { refs, people } = await lookUp(repo.pool, tenantId, source, rows);
   const loose = rows.some((row) => !refs.has(row.sourcedId))
-    ? await unclaimed(repo.pool, tenantId, source, orgId)
+    ? await unclaimed(
+        repo.pool,
+        tenantId,
+        source,
+        orgId,
+        rows,
+        new Set(refs.values()),
+      )
     : [];
   const match = matcher(refs, people, loose, orgId, scope);
   return rows.map((row) => {
@@ -616,8 +675,14 @@ export async function applyRoster(
   const classIds = scope
     ? new Map([[`amp-class:${scope.classId}`, scope.classId]])
     : await ensureClasses(repo, tenantId, orgId, source, rows, actorPersonId);
-  const initial = await lookUp(repo.pool, tenantId, source, rows);
-  const taken = new Set<string>(initial.refs.values());
+  const taken = new Set<string>(
+    (
+      await repo.pool.query(
+        `SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='person' AND sourced_id=ANY($3::text[])`,
+        [tenantId, source, rows.map((row) => row.sourcedId)],
+      )
+    ).rows.map((ref) => ref.local_id),
+  );
   const results: ApplyResult[] = [];
   const invites: RosterInvite[] = [];
   const createdStudents = new Map<number, string>();
@@ -650,7 +715,7 @@ export async function applyRoster(
           ]);
           const loose = refs.has(row.sourcedId)
             ? []
-            : await unclaimed(client, tenantId, source, orgId);
+            : await unclaimed(client, tenantId, source, orgId, [row], taken);
           const found = matcher(refs, people, loose, orgId, scope, taken)(row);
           if (
             found.held === "outside_class" ||
@@ -672,6 +737,7 @@ export async function applyRoster(
               ...context,
               person,
               rename: found.held === "name_changed",
+              hasRef: refs.has(row.sourcedId),
             });
           return row.role === "student"
             ? addStudent(client, repo, context)
@@ -770,17 +836,19 @@ async function addStudent(
     for (const classId of more)
       await repo.enroll(client, classId, personId, "student", today);
   }
-  const org = await repo.org(client, orgId);
-  await applySourceEvidence(client, {
-    tenantId,
-    orgId,
-    personId,
-    source,
-    row,
-    classIds,
-    today: await repo.today(client, org.timezone),
-    scope,
-  });
+  if (row.sourceEvidence) {
+    const org = await repo.org(client, orgId);
+    await applySourceEvidence(client, {
+      tenantId,
+      orgId,
+      personId,
+      source,
+      row,
+      classIds,
+      today: await repo.today(client, org.timezone),
+      scope,
+    });
+  }
   createdStudents.set(row.line, personId);
   return { line: row.line, status: "created", seated: false };
 }
@@ -824,17 +892,19 @@ async function addStaff(
       `UPDATE amp_external_refs SET local_id=$4 WHERE tenant_id=$1 AND source=$2 AND kind='person' AND sourced_id=$3`,
       [tenantId, source, row.sourcedId, issued.personId],
     );
-  const org = await repo.org(client, orgId);
-  await applySourceEvidence(client, {
-    tenantId,
-    orgId,
-    personId: issued.personId,
-    source,
-    row,
-    classIds,
-    today: await repo.today(client, org.timezone),
-    scope,
-  });
+  if (row.sourceEvidence) {
+    const org = await repo.org(client, orgId);
+    await applySourceEvidence(client, {
+      tenantId,
+      orgId,
+      personId: issued.personId,
+      source,
+      row,
+      classIds,
+      today: await repo.today(client, org.timezone),
+      scope,
+    });
+  }
   invites.push(issued);
   return { line: row.line, status: "created" };
 }
@@ -850,31 +920,28 @@ async function updateExisting(
     classes,
     classIds,
     rename,
+    hasRef,
     actorPersonId,
     scope,
-  }: RowContext & { person: Existing; rename: boolean },
+  }: RowContext & { person: Existing; rename: boolean; hasRef: boolean },
 ): Promise<ApplyResult> {
-  const linked = await claimRef(
-    client,
-    tenantId,
-    source,
-    row.sourcedId,
-    person.id,
-  );
+  const linked =
+    !hasRef &&
+    (await claimRef(client, tenantId, source, row.sourcedId, person.id));
   const changes = differences(row, person, scope, orgId);
-  const sourceOrg = await repo.org(client, orgId);
-  const sourceChanged = await applySourceEvidence(client, {
-    tenantId,
-    orgId,
-    personId: person.id,
-    source,
-    row,
-    classIds,
-    today: await repo.today(client, sourceOrg.timezone),
-    scope,
-  });
-  if (sourceChanged && !changes.includes("source memberships"))
-    changes.push("source memberships");
+  if (changes.includes("source memberships")) {
+    const sourceOrg = await repo.org(client, orgId);
+    await applySourceEvidence(client, {
+      tenantId,
+      orgId,
+      personId: person.id,
+      source,
+      row,
+      classIds,
+      today: await repo.today(client, sourceOrg.timezone),
+      scope,
+    });
+  }
   if (!changes.length && !rename)
     return { line: row.line, status: linked ? "updated" : "unchanged" };
   const org = await repo.org(client, orgId);
