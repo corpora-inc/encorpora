@@ -724,16 +724,16 @@ export function StructuredWorkInput({
               aria-hidden="true"
             >
               <span className="work-number">{position + 1}</span>
-              {!locked && (
-                <svg viewBox="0 0 12 16" className="work-grip-dots">
-                  <circle cx="4" cy="3" r="1.3" />
-                  <circle cx="8" cy="3" r="1.3" />
-                  <circle cx="4" cy="8" r="1.3" />
-                  <circle cx="8" cy="8" r="1.3" />
-                  <circle cx="4" cy="13" r="1.3" />
-                  <circle cx="8" cy="13" r="1.3" />
-                </svg>
-              )}
+              {/* Kept, unseen, once the answer is locked: the grip's height
+                  sets the row's, so marking never moves a step. */}
+              <svg viewBox="0 0 12 16" className="work-grip-dots">
+                <circle cx="4" cy="3" r="1.3" />
+                <circle cx="8" cy="3" r="1.3" />
+                <circle cx="4" cy="8" r="1.3" />
+                <circle cx="8" cy="8" r="1.3" />
+                <circle cx="4" cy="13" r="1.3" />
+                <circle cx="8" cy="13" r="1.3" />
+              </svg>
             </span>
             <span className="work-fields">
               {row.label && (
