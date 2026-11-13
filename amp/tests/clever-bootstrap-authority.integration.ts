@@ -164,7 +164,11 @@ test(
       );
       assert.equal(await f.allowed(first), false);
       await runDueCleverSync(db, f.connected.connectionId, f.client);
-      assert.equal(f.snapshotCount(), 0, "staged rosters stay paused");
+      assert.equal(
+        f.snapshotCount(),
+        1,
+        "paused worker stages source without importing",
+      );
 
       await db.query(
         "UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now() WHERE id=$1",
@@ -180,7 +184,7 @@ test(
         runDueCleverSync(db, f.connected.connectionId, f.client),
         /clever_sync_failed/,
       );
-      assert.equal(f.snapshotCount(), 1);
+      assert.equal(f.snapshotCount(), 2);
       assert.equal(await f.allowed(first), false);
       assert.deepEqual(await f.deadline(first), expired);
 

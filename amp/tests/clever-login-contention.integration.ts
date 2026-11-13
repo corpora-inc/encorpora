@@ -71,14 +71,20 @@ test(
         role: "teacher",
         givenName: "Fixture",
       });
+      const runId = randomUUID();
       await db.query(
-        "INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata) VALUES($1,'user',$2,$3,$4,$5)",
+        "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,started_at,finished_at) VALUES($1,$2,'full','succeeded',now(),now())",
+        [runId, id],
+      );
+      await db.query(
+        "INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id) VALUES($1,'user',$2,$3,$4,$5,$6)",
         [
           id,
           "b".repeat(24),
           teacher.personId,
           JSON.stringify({ id: "b".repeat(24), district: districtId }),
           JSON.stringify({ roles: ["teacher"] }),
+          runId,
         ],
       );
       const request = {

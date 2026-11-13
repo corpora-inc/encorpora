@@ -249,6 +249,16 @@ test(
       })
     ).json();
     assert.notEqual(provider.accountId, `amp|${previous.user.id}`);
+    assert.equal(
+      (
+        await app.inject({
+          method: "GET",
+          url: "/adult",
+          headers: { cookie: providerCookie },
+        })
+      ).statusCode,
+      401,
+    );
 
     const schools = new SchoolRepository(pool);
     const org = await schools.createOrg({
@@ -311,7 +321,7 @@ test(
         await app.inject({
           method: "GET",
           url: "/adult",
-          headers: { cookie: providerCookie },
+          headers: { authorization: `Bearer ${provider.token}` },
         })
       ).json().accountId,
       provider.accountId,
@@ -383,12 +393,19 @@ test(
     subject = teacher;
     const renewed = await finish(await start());
     const renewedCookie = cookieOf(renewed, "amp.provider-session");
+    const renewedSession = (
+      await app.inject({
+        method: "GET",
+        url: "/api/v1/provider/session",
+        headers: { cookie: renewedCookie },
+      })
+    ).json();
     assert.equal(
       (
         await app.inject({
           method: "GET",
           url: "/adult",
-          headers: { cookie: renewedCookie },
+          headers: { authorization: `Bearer ${renewedSession.token}` },
         })
       ).statusCode,
       200,
@@ -402,7 +419,7 @@ test(
         await app.inject({
           method: "GET",
           url: "/adult",
-          headers: { cookie: renewedCookie },
+          headers: { authorization: `Bearer ${renewedSession.token}` },
         })
       ).statusCode,
       401,

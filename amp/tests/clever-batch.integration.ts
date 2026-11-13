@@ -398,10 +398,6 @@ test(
             )
               signal();
           });
-          const refused = assert.rejects(
-            importing,
-            /clever_deleted_person_requires_review/,
-          );
           try {
             await waiting;
             await privacy.query(
@@ -409,7 +405,15 @@ test(
               [victim.id],
             );
             await privacy.query("COMMIT");
-            await refused;
+            await importing;
+            const binding = (
+              await db.query(
+                "SELECT archived_at,record FROM amp_clever_bindings WHERE connection_id=$1 AND kind='user' AND clever_id=$2",
+                [connection.id, victim.clever_id],
+              )
+            ).rows[0];
+            assert.ok(binding.archived_at);
+            assert.equal(binding.record.name, undefined);
             assert.equal(
               (
                 await db.query(

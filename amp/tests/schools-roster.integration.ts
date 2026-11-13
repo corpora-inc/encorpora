@@ -11,12 +11,14 @@ import { applyRoster, planRoster } from "../src/schools/reconcile.js";
 import { registerSchoolRoutes, schoolRoutes } from "../src/schools/routes.js";
 import {
   csvRows,
+  namedStudentId,
   guessMapping,
   readTable,
 } from "../src/schools/sources/csv.js";
 import { invitationProvesAddress } from "../src/schools/staff-account.js";
 import {
   rosterRowSchema,
+  nameKey,
   type RosterRow,
 } from "../src/schools/sources/rows.js";
 import { buildApp } from "../src/server/app.js";
@@ -37,14 +39,14 @@ function fixtureRoster(count: number, prefix = "s"): RosterRow[] {
       rosterRowSchema.parse({
         line: index + 2,
         role: "student",
-        sourcedId: `${prefix}${index}`,
+        sourcedId: `${prefix.toUpperCase()}-${index}`,
         identifier: `${prefix.toUpperCase()}-${index}`,
         givenName: FIRST[index % FIRST.length],
         familyName: `${LAST[index % LAST.length]}${index}`,
         gradeLevel: 3 + (klass % 6),
         classes: [
           {
-            sourcedId: `c${klass}`,
+            sourcedId: `name:${nameKey(`Section ${klass}`)}`,
             name: `Section ${klass}`,
             courseBands: [String(3 + (klass % 6))],
           },
@@ -685,7 +687,7 @@ test(
       const typed = rosterRowSchema.parse({
         line: 50,
         role: "student",
-        sourcedId: "typed-1",
+        sourcedId: namedStudentId("Typed", "Student"),
         givenName: "Typed",
         familyName: "Student",
         classes: [],
