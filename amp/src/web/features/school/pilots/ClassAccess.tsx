@@ -28,6 +28,9 @@ export function useClassAccess(place: Place): {
   view: AccessView;
   pilot: PilotState | undefined;
   teaches: boolean;
+  /** Still learning where the class stands: screens hold their sign-in
+   * tools' place rather than show and then withdraw them. */
+  pending: boolean;
 } {
   const session = currentSession();
   const org = useQuery({
@@ -35,21 +38,30 @@ export function useClassAccess(place: Place): {
     refetchOnMount: false,
   }).data;
   const school = org?.kind === "school" && !org.demo;
-  const pilot = useQuery({
+  const query = useQuery({
     ...pilotOptions(session, place.class),
     enabled: school,
-  }).data;
+  });
+  const pilot = query.data;
   const teaches = org?.teaches?.includes(place.class) ?? false;
-  if (!school || !pilot) return { view: { kind: "none" }, pilot, teaches };
+  const pending = !org || (school && query.isPending);
+  if (!school || !pilot)
+    return { view: { kind: "none" }, pilot, teaches, pending };
   return {
     view: accessView(pilot, teaches),
     pilot,
     teaches,
+    pending,
   };
 }
 
-/** Practice is over for this class: its sign-in tools lead nowhere. */
+/** Practice is over for this class. */
 export const practiceEnded = (view: AccessView) => view.kind === "ended";
+/** No student of this class can practice: not started yet (or only its
+ * teacher can start it), or over. Its sign-in tools (the code, the link, the
+ * board, cards) lead nowhere, so no screen offers them. */
+export const practiceClosed = (view: AccessView) =>
+  view.kind === "start" || view.kind === "waiting" || view.kind === "ended";
 
 /** Starting practice: at once when the class is authorized, else through
  * the authorization sheet (a class that arrived from a roster sync). */

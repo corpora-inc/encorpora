@@ -36,6 +36,7 @@ import { useSchoolNavigation } from "../../navigation/school-navigation";
 import {
   AccessHeaderAction,
   AccessSheets,
+  practiceClosed,
   practiceEnded,
   useClassAccess,
 } from "../pilots/ClassAccess";
@@ -112,6 +113,8 @@ export function RosterScreen() {
   const access = useClassAccess(place);
   // Practice is over: sign-in tools lead nowhere until seats arrive.
   const ended = practiceEnded(access.view);
+  // Before practice starts, and after it ends, no one signs in.
+  const closed = practiceClosed(access.view);
   const flash = useFlash((state) => state.message);
   const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
@@ -327,7 +330,7 @@ export function RosterScreen() {
       org={params.org}
       classId={params.class}
       className={data?.class.name}
-      loading={roster.isPending}
+      loading={roster.isPending || access.pending}
       tab="roster"
     >
       {!data ? (
@@ -352,7 +355,7 @@ export function RosterScreen() {
             <div className={styles.actions}>
               {/* One primary slot: Start practice before the pilot, Start
                   class while it runs, Request seats after. */}
-              {!family && canStart && !ended ? (
+              {!family && canStart && !closed ? (
                 <Link
                   to="/school/$org/classes/$class/start"
                   params={params}
@@ -370,7 +373,7 @@ export function RosterScreen() {
                   />
                 )
               )}
-              {canManage && data.students.length > 0 && !ended && (
+              {canManage && data.students.length > 0 && !closed && (
                 <Link
                   to="/school/$org/classes/$class/cards"
                   params={params}
@@ -394,8 +397,8 @@ export function RosterScreen() {
           </header>
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
           {/* Day 0 of a school class is its one step; the code waits for a
-              roster, and practice that has ended takes no one in. */}
-          {!dayZero && !ended && (
+              roster, and for practice: none before it starts or after. */}
+          {!dayZero && !closed && (
             <section className={styles.code} aria-label="Class code">
               <div className={styles.codeText}>
                 <h2>Class code</h2>

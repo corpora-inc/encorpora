@@ -1,4 +1,5 @@
 import { touchDemoOfPersonSql } from "./demo/sql.js";
+import { classPracticeGate } from "./pilot-access.js";
 import {
   createHash,
   randomBytes,
@@ -120,6 +121,11 @@ export class SchoolSignIn {
 
   async lookup({ code }: { code: string }): Promise<JoinRoster> {
     const found = await this.liveClass(code);
+    // Practice isn't open for this class: say so before anyone picks a name
+    // and three pictures for nothing.
+    const practice = await classPracticeGate(this.pool, found.id);
+    if (practice)
+      return { class: { name: found.name }, practice, students: [] };
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_NAME} AS name,
          EXISTS(SELECT 1 FROM amp_person_credentials k

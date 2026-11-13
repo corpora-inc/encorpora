@@ -62,7 +62,12 @@ import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
-import { AccessLine, AccessSheets } from "./pilots/ClassAccess";
+import {
+  AccessLine,
+  AccessSheets,
+  practiceClosed,
+  useClassAccess,
+} from "./pilots/ClassAccess";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
@@ -624,6 +629,9 @@ export function ClassScreen() {
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);
+  // Before practice starts and after it ends, no one signs in: no code.
+  const access = useClassAccess({ org: orgId, class: classId });
+  const closed = practiceClosed(access.view);
   if (!klass)
     return (
       <OrgFrame orgId={orgId} nav="classes" title="Class">
@@ -699,15 +707,17 @@ export function ClassScreen() {
           }
         />
         <section className={styles.classMeta}>
-          <JoinClass
-            code={klass.joinCode}
-            place={{ org: orgId, class: classId }}
-            family={family}
-            manage={
-              org?.can?.includes("signin.manage") ||
-              org?.teaches?.includes(classId)
-            }
-          />
+          {!closed && !access.pending && (
+            <JoinClass
+              code={klass.joinCode}
+              place={{ org: orgId, class: classId }}
+              family={family}
+              manage={
+                org?.can?.includes("signin.manage") ||
+                org?.teaches?.includes(classId)
+              }
+            />
+          )}
           {!small && (
             <ClassGrading
               orgId={orgId}

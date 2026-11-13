@@ -1,5 +1,9 @@
 import type { Pool } from "pg";
-import { schoolPilotAccess, schoolAllowance } from "./pilot-access.js";
+import {
+  schoolPilotAccess,
+  schoolAllowance,
+  studentPracticeGate,
+} from "./pilot-access.js";
 import { meSchema, type SignedInMe } from "../account/contracts.js";
 import { retentionNotice } from "../family/contracts.js";
 import { ApiError } from "../server/repository.js";
@@ -77,6 +81,11 @@ export async function studentMe(
   );
   const canPractice =
     learningAllowed && (covered || allowance.problems.remaining > 0);
+  // A school's student whom nothing covers is waiting on their teacher, never
+  // on a family's free problems: the app says which, in school terms.
+  const practice = covered
+    ? null
+    : await studentPracticeGate(pool, pilot, home.path);
   const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,
@@ -146,6 +155,7 @@ export async function studentMe(
       orgName: home.name,
       ...(classes[0] ? { className: classes[0].name } : {}),
       levels: studentLevelVisibility(settings).value,
+      ...(practice ? { practice } : {}),
       standings: await hasOpenBoard(pool, personId, classes, settings),
     },
   }) as SignedInMe;

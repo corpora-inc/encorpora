@@ -1,5 +1,4 @@
 import { PracticeControls } from "../features/practice/PracticeControls";
-import { StudentSignOut } from "../features/practice/StudentSignOut";
 import {
   practiceSettingsOptions,
   usePracticeAdjustment,
@@ -131,6 +130,7 @@ import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
+import { StudentWaiting } from "../features/practice/StudentWaiting";
 import {
   LessonDownloadMenu,
   LessonPause,
@@ -425,7 +425,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   // The learner's free problems are used and no plan covers them: practice
   // shows the one pause, in place (features/continue/AllowancePause).
+  // A school's student isn't on a family's free problems: when nothing covers
+  // them, they wait on their teacher (`/me`'s school.practice) instead.
+  const schoolGate =
+    student && account?.signedIn ? account.school?.practice : undefined;
   const allowanceSpent =
+    !schoolGate &&
     !!learnerEntry &&
     learnerEntry.canPractice === false &&
     !learnerEntry.hasAccess &&
@@ -433,6 +438,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerEntry.freeAllowance?.problems.remaining === 0;
   const [pausedFor, setPausedFor] = useState<string | null>(null);
   const paused =
+    !schoolGate &&
     !!learner &&
     !learnerEntry?.hasAccess &&
     (allowanceSpent || pausedFor === learner.id);
@@ -444,7 +450,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         ? "adult"
         : "parent";
   const studentWaiting =
-    student && !allowanceSpent && learnerEntry?.canPractice === false;
+    !!schoolGate ||
+    (student && !allowanceSpent && learnerEntry?.canPractice === false);
   const [family, setFamily] = useState(""),
     [problem, setProblem] = useState<HintedProblem | null>(null),
     [queue, setQueue] = useState<HintedProblem[]>([]),
@@ -1920,10 +1927,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           strands={homeStrands}
         />
       ) : studentWaiting ? (
-        <section className="card welcome">
-          <h2>Ask your teacher about your seat.</h2>
-          <p>Practice opens here as soon as your teacher has one for you.</p>
-        </section>
+        <StudentWaiting
+          gate={schoolGate ?? "seat"}
+          className={account?.signedIn ? account.school?.className : undefined}
+        />
       ) : !learningAllowed ? (
         <section className="card welcome">
           <p className="eyebrow">PARENT ACCOUNT</p>
@@ -2006,13 +2013,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         ) : problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
-            // The logo and drawer are the app frame's; practice's bar holds
-            // only a student's one-tap sign-out beside its tools.
-            navigation={
-              nativeRuntime ? undefined : (
-                <>{student && <StudentSignOut inBar />}</>
-              )
-            }
+            // The logo, drawer and a student's sign-out are the app
+            // frame's (app/AppShell): practice adds only its tools.
+            navigation={nativeRuntime ? undefined : <></>}
             toolbarInFrame={!nativeRuntime}
             exit={() => setExploring(true)}
             exitHref="/"

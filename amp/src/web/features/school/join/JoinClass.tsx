@@ -64,6 +64,7 @@ export function JoinClass({
   label = true,
   manage = false,
   locked = false,
+  heading = true,
 }: {
   code: string;
   place: { org: string; class: string };
@@ -79,6 +80,8 @@ export function JoinClass({
   manage?: boolean;
   /** Sign-in is paused by guessing: New code is the way on, so it shows. */
   locked?: boolean;
+  /** Its own heading; off inside a sheet whose title says it. */
+  heading?: boolean;
 }) {
   const link = joinLink(code);
   const shown = formatJoinCode(code);
@@ -142,11 +145,17 @@ export function JoinClass({
       </section>
     );
   return (
-    <section className={styles.join} aria-labelledby="join-class">
+    <section
+      className={styles.join}
+      aria-labelledby={heading ? "join-class" : undefined}
+      aria-label={heading ? undefined : "Sign in on their own device"}
+    >
       <div className={styles.text}>
-        <h2 id="join-class" className={styles.title}>
-          {family ? "Sign in on their own device" : "Students sign in"}
-        </h2>
+        {heading && (
+          <h2 id="join-class" className={styles.title}>
+            {family ? "Sign in on their own device" : "Students sign in"}
+          </h2>
+        )}
         <p className={styles.lead}>
           Scan the code or open the link, then tap a name and three pictures.
         </p>

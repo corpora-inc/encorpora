@@ -105,6 +105,9 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         orgName: z.string(),
         className: z.string().optional(),
         levels: z.enum(["hidden", "choice", "shown"]),
+        /** Why this student can't practice now: their teacher hasn't
+         * started practice, it has ended, or they need a seat. */
+        practice: z.enum(["waiting", "ended", "seat"]).optional(),
         /** A current class has a board this student can open. */
         standings: z.boolean().optional(),
       })

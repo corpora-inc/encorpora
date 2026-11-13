@@ -278,6 +278,8 @@ export const ssoProviders = ["google", "microsoft"] as const;
 export type SsoProvider = (typeof ssoProviders)[number];
 export const joinRosterResource = z.object({
   class: z.object({ name: z.string() }),
+  /** Practice hasn't started, or has ended: no names to tap. */
+  practice: z.enum(["waiting", "ended"]).optional(),
   /** Outside sign-ins this class's school has turned on. */
   signIn: z.array(z.enum(ssoProviders)).optional(),
   /** All a stranger with the code can learn: no learner data of any kind. */

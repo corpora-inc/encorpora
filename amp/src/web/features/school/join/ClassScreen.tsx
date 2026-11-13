@@ -11,6 +11,7 @@ import { Avatar } from "../../../ui/Avatar";
 import { buttonClass } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { ProviderMark } from "../../auth/ProviderButtons";
+import { studentWaitingWords } from "../../practice/StudentWaiting";
 import { joinRosterOptions } from "./api";
 import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
@@ -83,6 +84,24 @@ export function ClassScreen() {
   if (roster.isError && !roster.data)
     return <JoinProblem message={roster.error.message} />;
   if (!roster.data) return <LoadingScreen />;
+  // Practice isn't open: say so here, before a name and three pictures.
+  if (roster.data.practice)
+    return (
+      <JoinFrame lead={<BackLink to="/join" label="Back to class code" />}>
+        <div
+          className={styles.column}
+          data-centered
+          data-join-practice={roster.data.practice}
+        >
+          <h1 className={styles.title}>
+            {
+              studentWaitingWords(roster.data.practice, roster.data.class.name)
+                .title
+            }
+          </h1>
+        </div>
+      </JoinFrame>
+    );
   return (
     <JoinFrame lead={<BackLink to="/join" label="Back to class code" />}>
       <div className={styles.wide}>

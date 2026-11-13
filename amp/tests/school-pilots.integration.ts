@@ -14,7 +14,12 @@ import {
   extendTeacherPilot,
 } from "../src/schools/pilots.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
-import { schoolPilotAccess } from "../src/schools/pilot-access.js";
+import {
+  classPracticeGate,
+  schoolPilotAccess,
+  studentPracticeGate,
+} from "../src/schools/pilot-access.js";
+import { studentMe } from "../src/schools/student-me.js";
 import {
   schoolConsentActive,
   schoolAccountId,
@@ -106,6 +111,16 @@ test(
         (await schoolPilotAccess(db, first.learner_id)).active,
         false,
       );
+      // Before Start: sign-in says so, in school terms, before any pictures,
+      // and a student who does sign in waits on their teacher, never on a
+      // family's free problems.
+      assert.equal(await classPracticeGate(db, created.classId), "waiting");
+      const signedIn = await repo.issueStudentSession({
+        personId: first.id,
+        mode: "shared",
+      });
+      const waiting = await studentMe(db, signedIn.token, true);
+      assert.equal(waiting.signedIn && waiting.school?.practice, "waiting");
       await learning.transaction(
         schoolAccountId(first.id),
         first.learner_id,
@@ -121,6 +136,9 @@ test(
         created.classId,
       );
       assert.equal(activation.status, "active");
+      assert.equal(await classPracticeGate(db, created.classId), null);
+      const running = await studentMe(db, signedIn.token, true);
+      assert.equal(running.signedIn && running.school?.practice, undefined);
       assert.deepEqual(
         await activateClassPilot(repo, teacher, created.classId),
         activation,
@@ -199,6 +217,15 @@ test(
       assert.equal(
         (await classPilotState(db, created.classId)).status,
         "expired",
+      );
+      assert.equal(await classPracticeGate(db, created.classId), "ended");
+      const ended = await studentMe(db, signedIn.token, true);
+      assert.equal(ended.signedIn && ended.school?.practice, "ended");
+      assert.equal(
+        await studentPracticeGate(db, { managed: false, until: null }, [
+          created.orgId,
+        ]),
+        null,
       );
       assert.equal(
         (await schoolPilotAccess(db, first.learner_id)).active,

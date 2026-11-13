@@ -14,6 +14,8 @@ import { Toast } from "../../../../ui/Toast";
 import { rememberContinuation } from "../../../continue/memory";
 import { SecondParentInviteSheet } from "../../../second-parent/SecondParent";
 import { JoinClass } from "../../join/JoinClass";
+import { useClassSearch } from "../teacher-shared";
+import { RowButton, RowList } from "../../../../ui/RowList";
 import { ChildRow, PracticeHere } from "./ChildRow";
 import { Feed, type FeedEntry } from "./Feed";
 import { todoEntries, useChecks } from "./todo-entries";
@@ -26,11 +28,6 @@ type Learner = SignedInMe["learners"][number];
 const FEW_FREE = 20;
 const SECOND_PARENT_KEY = (accountId: string) =>
   `amp.today.second-parent.${accountId}`;
-
-const names = (list: readonly string[]) =>
-  list.length < 2
-    ? (list[0] ?? "")
-    : `${list.slice(0, -1).join(", ")} and ${list.at(-1)}`;
 
 function dismissedSecondParent(accountId: string) {
   try {
@@ -49,6 +46,8 @@ export function FamilyToday({
   data,
   place,
   code,
+  manage,
+  locked,
   session,
   me,
   secondParent,
@@ -57,6 +56,10 @@ export function FamilyToday({
   place: { org: string; class: string };
   /** The class code, for the one Join element. */
   code: string | null;
+  /** This reader can make a new code. */
+  manage: boolean;
+  /** Sign-in is paused by guessing: New code is the way on. */
+  locked: boolean;
   session: AuthSession;
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
@@ -71,7 +74,9 @@ export function FamilyToday({
     dismissedSecondParent(session.accountId),
   );
   const [inviting, setInviting] = useState(false);
-  const [joining, setJoining] = useState(false);
+  // The children's own devices, by address (`?devices=1`): Back closes it.
+  const [search, setSearch, closeSearch] = useClassSearch();
+  const joining = search.devices === 1 || search.devices === "1";
   const holder = me?.familyClass?.classId === place.class;
   const learners: readonly Learner[] = holder
     ? me!.learners
@@ -170,26 +175,6 @@ export function FamilyToday({
         ];
       })
     : [];
-  // The real task is getting each child signed in on a device of their
-  // own; printing cards is one way, inside the Join element. Gone once
-  // they've practiced.
-  const signIn: FeedEntry[] =
-    fresh.length > 0 && code
-      ? [
-          {
-            id: "sign-in",
-            title: `Sign ${names(fresh.map((student) => student.name))} in on ${fresh.length === 1 ? "their own device" : "their own devices"}`,
-            detail:
-              "Scan the class’s code or open its link, then tap a name and three pictures.",
-            mark: "check",
-            actions: (
-              <Button variant="secondary" onClick={() => setJoining(true)}>
-                Sign in
-              </Button>
-            ),
-          },
-        ]
-      : [];
   const second: FeedEntry[] =
     holder && secondParent === null && !secondGone
       ? [
@@ -206,7 +191,7 @@ export function FamilyToday({
           },
         ]
       : [];
-  const entries = [...firstSteps, ...todos, ...allowance, ...signIn, ...second];
+  const entries = [...firstSteps, ...todos, ...allowance, ...second];
 
   return (
     <>
@@ -228,6 +213,18 @@ export function FamilyToday({
             />
           ))}
         </ul>
+        {/* Their own devices: an option, under the children, for a family
+            whose children sign in with the code or a printed card. */}
+        {code && (
+          <RowList label="Other ways to practice">
+            <RowButton
+              title="Their own devices"
+              meta="Sign in with a code or a printed card"
+              data-own-devices=""
+              onClick={() => setSearch({ devices: 1 })}
+            />
+          </RowList>
+        )}
       </section>
       {entries.length > 0 && (
         <section aria-labelledby="today-feed">
@@ -259,10 +256,19 @@ export function FamilyToday({
       {code && (
         <Sheet
           open={joining}
-          onOpenChange={setJoining}
-          title="Sign in on their own device"
+          onOpenChange={(open) => {
+            if (!open) closeSearch("devices");
+          }}
+          title="Their own devices"
         >
-          <JoinClass code={code} place={place} family />
+          <JoinClass
+            code={code}
+            place={place}
+            family
+            heading={false}
+            manage={manage}
+            locked={locked}
+          />
         </Sheet>
       )}
       {inviting && (

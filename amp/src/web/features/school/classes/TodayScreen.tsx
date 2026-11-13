@@ -25,7 +25,7 @@ import styles from "./Teacher.module.css";
 import {
   accessFeedEntry,
   AccessSheets,
-  practiceEnded,
+  practiceClosed,
   useClassAccess,
 } from "../pilots/ClassAccess";
 
@@ -47,7 +47,8 @@ function ClassToday({
     board: false,
   });
   const access = useClassAccess(place);
-  const ended = practiceEnded(access.view);
+  // The board and cards wait for practice, and end with it.
+  const closed = practiceClosed(access.view);
   const practice = accessFeedEntry(
     access.view,
     place,
@@ -56,7 +57,7 @@ function ClassToday({
   );
   const entries = todoEntries({
     todos: data.todos.filter(
-      (todo) => (canStart && !ended) || todo.id !== "start-class",
+      (todo) => (canStart && !closed) || todo.id !== "start-class",
     ),
     place,
     canPrint: data.canPrint,
@@ -69,7 +70,7 @@ function ClassToday({
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
-  if (starting && data.canPrint && !ended)
+  if (starting && data.canPrint && !closed)
     entries.push({
       id: "cards",
       title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
@@ -132,8 +133,10 @@ export function TodayScreen() {
   });
   const data = today.data;
   const demo = useDemoOrg(place.org);
-  const ended = practiceEnded(useClassAccess(place).view);
+  const access = useClassAccess(place);
+  const closed = practiceClosed(access.view);
   const loading =
+    access.pending ||
     org.isPending ||
     today.isPending ||
     presence.isPending ||
@@ -163,16 +166,17 @@ export function TodayScreen() {
                 <p>{fullDay(data.today)}</p>
               </div>
             )}
-            {/* The code waits for a roster, and for practice. */}
-            {code && !ended && (family || data.students.length > 0) && (
+            {/* The code waits for a roster, and for practice. A family's
+                children mostly practice on the parent's device: their code
+                is an option under the children, not the page's lead. */}
+            {code && !closed && !family && data.students.length > 0 && (
               <SignInCode
                 code={code}
                 place={place}
                 family={family}
                 // The bar's Start class opens the board, except in a demo
-                // (its bar leads to the real class) and a family (no class
-                // to start).
-                board={family || demo}
+                // (its bar leads to the real class).
+                board={demo}
                 manage={presence.data?.canManage ?? false}
                 locked={!!presence.data?.class.joinLockedUntil}
               />
@@ -186,6 +190,8 @@ export function TodayScreen() {
               data={data}
               place={place}
               code={code ?? null}
+              manage={presence.data?.canManage ?? false}
+              locked={!!presence.data?.class.joinLockedUntil}
               session={account}
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}
