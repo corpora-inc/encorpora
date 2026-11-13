@@ -534,10 +534,12 @@ async function verifyLessonRecovery() {
       await page.close();
       continue;
     }
-    const opener = page.getByRole("link", {
-      name: "View lesson",
-      exact: true,
-    });
+    const opener = page
+      .getByRole("link", {
+        name: "View lesson",
+        exact: true,
+      })
+      .first();
     await opener.waitFor();
     await opener.click();
     const dialog = page.getByRole("dialog");
@@ -615,13 +617,16 @@ async function choose(page: Page, label: string, value: string) {
 /** The one search's field (docs/design/ia.md): skills, lessons, films and
  * math words, grouped once something is typed. */
 const SEARCH = "Search skills, lessons and math words";
-/** A skill among the grouped search results. */
-const skillResult = (page: Page, id: string) =>
-  page
+/** A skill among the grouped search results (its link keeps the page's
+ * search, so it may carry `?topic=`). */
+const skillResult = (page: Page, id: string) => {
+  const path = `/pathways/${encodeURIComponent(id)}`;
+  return page
     .locator(
-      `[data-search-results] a[href="/pathways/${encodeURIComponent(id)}"]`,
+      `[data-search-results] a[href="${path}"], [data-search-results] a[href^="${path}?"]`,
     )
     .first();
+};
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -1053,10 +1058,12 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
-      const opener = page.getByRole("link", {
-        name: "View lesson",
-        exact: true,
-      });
+      const opener = page
+        .getByRole("link", {
+          name: "View lesson",
+          exact: true,
+        })
+        .first();
       await opener.click();
       await page
         .getByRole("dialog")
@@ -1278,7 +1285,10 @@ try {
   await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
   await linked.goBack();
   await linked.getByRole("heading", { name: target.title }).waitFor();
-  await linked.getByRole("link", { name: "View lesson", exact: true }).click();
+  await linked
+    .getByRole("link", { name: "View lesson", exact: true })
+    .first()
+    .click();
   await linked
     .getByRole("dialog")
     .getByRole("link", { name: "Try this problem type →", exact: true })

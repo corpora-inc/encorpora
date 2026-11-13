@@ -103,7 +103,9 @@ function Layer({
         <LessonDialog
           lesson={entity.id}
           onClose={close}
-          backLabel="Back"
+          // The recovery's way back names where closing goes: the layer
+          // under it, else the page (in own practice, the map).
+          backLabel={back ? `Back to ${back}` : org ? "Back" : undefined}
           back={back}
           aboveLayers
         >

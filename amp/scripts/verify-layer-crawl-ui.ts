@@ -17,8 +17,8 @@
  *
  * Then the addresses from before layers, each of which must open as one: the
  * school-level student page (and an answer on it), Pathways' `?lesson=` and
- * Today's `?lesson=`. And a legacy centre's close: consent, opened from
- * Privacy, comes back to Privacy.
+ * Today's `?lesson=`. And a legacy centre's close: consent goes Back to
+ * the Privacy entry it was opened from.
  *
  *   npx tsx scripts/verify-layer-crawl-ui.ts --origin http://127.0.0.1:4930
  *   AMP_TEST_DATABASE_URL=… npx tsx scripts/verify-layer-crawl-ui.ts
@@ -209,15 +209,28 @@ async function placesOf(page: Page): Promise<Place[]> {
     const pages = (await tabsUnder(page, prefix)).filter(
       (path) => !/\/(?:new|invite)$/.test(path),
     );
+    // The school's home (its logo's link resolves there), then where its
+    // students stand and one class's drill under it.
+    await page.goto(`${origin}${prefix}`);
+    await page.waitForTimeout(1200);
+    const school = view(page).path;
+    if (/^\/school\/[^/]+\/[a-z-]+$/.test(school) && !pages.includes(school))
+      pages.unshift(school);
     await page.goto(`${origin}${prefix}/standing`);
     await page.waitForTimeout(1200);
+    if (
+      view(page).path === `${prefix}/standing` &&
+      !pages.includes(view(page).path)
+    )
+      pages.push(view(page).path);
     const drill = await page
       .locator(`main a[href^="${prefix}/standing/"]`)
       .first()
       .getAttribute("href")
       .catch(() => null);
     if (drill) pages.push(new URL(drill, origin).pathname);
-    places.push({ type: "school", prefix, pages });
+    // A family's or tutor's org has no school pages of its own.
+    if (pages.length) places.push({ type: "school", prefix, pages });
   }
   return places;
 }
@@ -388,20 +401,32 @@ try {
         reachedIn.add("school:student");
       }
     }
-    // A legacy centre's close comes back to where it was opened.
+    // A legacy centre's close goes Back to where it was opened: the same
+    // history entry, not a new one at a hard-coded address.
     if (person === "family") {
-      await page.goto(`${origin}/family/privacy`);
+      await page.goto(`${origin}/family/privacy/consent`);
       const consent = page.locator("[data-consent-enrollment]");
       await consent.waitFor();
-      const opener = view(page).path;
+      const entry = () =>
+        page.evaluate(() => {
+          const state = history.state as Record<string, unknown> | null;
+          return String(state?.__TSR_key ?? state?.key ?? "");
+        });
+      const opener = { path: view(page).path, entry: await entry() };
       await consent.click();
       await page.waitForURL(/\/consent$/);
       await page
         .locator(".parent-consent-center header button", { hasText: "Back" })
         .click();
       await page.waitForURL((url) => url.pathname !== "/consent");
-      assert.equal(view(page).path, opener, "consent closes to its opener");
-      console.log(`${person}: consent closes back to ${opener}`);
+      await page.waitForTimeout(300);
+      assert.equal(
+        view(page).path,
+        opener.path,
+        "consent closes to its opener",
+      );
+      assert.equal(await entry(), opener.entry, "consent's close is Back");
+      console.log(`${person}: consent closes Back to ${opener.path}`);
     }
     await context.close();
   }

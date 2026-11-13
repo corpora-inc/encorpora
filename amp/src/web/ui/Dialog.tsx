@@ -1,5 +1,5 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import styles from "./Dialog.module.css";
 /** A modal reading sheet: fixed overlay, scrollable body, never moves the page. */
 export function Dialog({
@@ -29,6 +29,7 @@ export function Dialog({
    * quietly in place of the cross ("‹ Adding fractions"). */
   back?: string;
 }) {
+  const opener = useRef<HTMLElement | null>(null);
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
@@ -38,7 +39,19 @@ export function Dialog({
         <RadixDialog.Content
           className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""} ${tall ? styles.tall : ""}`}
           aria-describedby={undefined}
-          onCloseAutoFocus={onCloseAutoFocus}
+          // Focus goes back to what opened it, as a sheet's does, also when
+          // it closes by its address (a layer popped by Back).
+          onOpenAutoFocus={() => {
+            opener.current = document.activeElement as HTMLElement | null;
+          }}
+          onCloseAutoFocus={(event) => {
+            onCloseAutoFocus?.(event);
+            if (event.defaultPrevented) return;
+            event.preventDefault();
+            const target = opener.current;
+            if (target?.isConnected && target !== document.body)
+              target.focus({ preventScroll: true });
+          }}
         >
           <header className={styles.header}>
             <RadixDialog.Title className={styles.title}>
