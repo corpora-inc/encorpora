@@ -1,3 +1,5 @@
+import { EntityLink } from "../../../nav/links";
+import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
   StudentTimeResponse,
@@ -87,7 +89,14 @@ export function RecordWeeks({ record }: { record: ProgressRecord }) {
 }
 
 /** Objectives gained over the last year, newest first. */
-export function RecordObjectives({ record }: { record: ProgressRecord }) {
+export function RecordObjectives({
+  record,
+  openSkills = false,
+}: {
+  record: ProgressRecord;
+  /** Each skill opens over the page (a staff reader's record). */
+  openSkills?: boolean;
+}) {
   if (record.objectives.length === 0)
     return <p className={styles.quietLine}>None yet this year.</p>;
   return (
@@ -96,7 +105,16 @@ export function RecordObjectives({ record }: { record: ProgressRecord }) {
         <li key={objective.skillId} data-strand={objective.strand}>
           <span className={styles.when}>{shortDay(objective.day)}</span>
           <span className={styles.strandDot} aria-hidden="true" />
-          <span>{objective.title}</span>
+          {openSkills ? (
+            <EntityLink
+              entity={{ kind: "skill", id: objective.skillId }}
+              className={styles.objectiveLink}
+            >
+              {objective.title}
+            </EntityLink>
+          ) : (
+            <span>{objective.title}</span>
+          )}
         </li>
       ))}
     </ul>
@@ -113,7 +131,8 @@ export function RecordWork({
   record: ProgressRecord;
   reader?: RecordReader;
   /** Where one answer's replay lives, without the leading slash. */
-  workPath?: (attempt: string) => string;
+  /** Where a row's replay opens: a path, or a layer over this page. */
+  workPath?: (attempt: string) => string | Entity;
 }) {
   if (record.work.length === 0)
     return <p className={styles.quietLine}>No problems yet.</p>;
@@ -121,7 +140,15 @@ export function RecordWork({
     <WorkList
       work={record.work}
       reader={reader}
-      href={workPath && ((item) => ({ path: workPath(item.id) }))}
+      href={
+        workPath &&
+        ((item) => {
+          const target = workPath(item.id);
+          return typeof target === "string"
+            ? { path: target }
+            : { entity: target };
+        })
+      }
     />
   );
 }

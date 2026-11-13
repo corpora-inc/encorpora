@@ -1,3 +1,5 @@
+import { EntityLink } from "../../../nav/links";
+import { work } from "../../../nav/entities";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -11,13 +13,7 @@ import { Sheet } from "../../../ui/Sheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurvePlace } from "./GradeCurve";
 import { evidenceOptions, type Place } from "./teacher-api";
-import {
-  buttonClass,
-  classUrl,
-  shortDay,
-  studentUrl,
-  WorkList,
-} from "./teacher-shared";
+import { buttonClass, classUrl, shortDay, WorkList } from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
 /** "Why a B?" in one click: each component in a sentence with its number, the
@@ -169,15 +165,12 @@ export function EvidenceSheet({
             student={data.student.id}
           />
           <div className={styles.sheetLinks}>
-            <Link
-              to="/$"
-              params={{
-                _splat: studentUrl(place.org, data.student.id, place.class),
-              }}
+            <EntityLink
+              entity={{ kind: "student", id: data.student.id }}
               className={buttonClass("quiet", "", "start")}
             >
               Open {data.student.first}’s record
-            </Link>
+            </EntityLink>
             <Link
               to="/$"
               params={{
@@ -242,9 +235,7 @@ function EvidenceWork({
       ) : (
         <WorkList
           work={shown}
-          href={(item) => ({
-            path: `${classUrl(place.org, place.class, "map")}/${student}/work/${item.id}`,
-          })}
+          href={(item) => ({ entity: work(student, item.id) })}
         />
       )}
       {offset !== null && (

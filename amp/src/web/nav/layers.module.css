@@ -1,0 +1,53 @@
+/* Layers over a page (nav/LayerHost.tsx): one column, the sheet's padding. */
+.layer {
+  display: grid;
+  gap: var(--space-5);
+}
+.lede {
+  margin: 0;
+  color: var(--color-on-surface);
+  line-height: 1.5;
+}
+.heading {
+  margin: 0 0 var(--space-3);
+  color: var(--color-muted-text);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.rows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rows li + li {
+  border-top: 1px solid var(--color-border);
+}
+/* A row that opens something: the whole row, a quiet tint, never an
+   underline (docs/design/ia.md, Controls). */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--target-size);
+  padding: var(--space-2) var(--space-2);
+  margin-inline: calc(var(--space-2) * -1);
+  border-radius: var(--radius-small);
+  color: inherit;
+  text-decoration: none;
+}
+.row:hover {
+  background: var(--color-surface-hover);
+}
+.row:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.rowAction {
+  flex: none;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+}

@@ -1,3 +1,4 @@
+import { closeTo } from "../../lib/return-to";
 import {
   keepPreviousData,
   useMutation,
@@ -10,6 +11,7 @@ import {
   Navigate,
   useNavigate,
   useParams,
+  useRouter,
   useSearch,
 } from "@tanstack/react-router";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
@@ -91,7 +93,7 @@ function DaySheet({
   learner: WorkbookLearner;
   date: string;
 }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const who = whose(learner);
   return (
     <>
@@ -102,12 +104,8 @@ function DaySheet({
         title={dateLabel(date)}
         description={who.label ?? undefined}
         onOpenChange={(open) => {
-          if (!open)
-            void navigate({
-              to: "/learners/$learnerId/workbooks",
-              params: { learnerId: learner.id },
-              replace: true,
-            });
+          // Back to where the day was opened, else its workbooks.
+          if (!open) closeTo(router, `/learners/${learner.id}/workbooks`);
         }}
         returnFocus={() =>
           document.querySelector<HTMLElement>("main h1") ?? null

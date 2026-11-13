@@ -1,3 +1,4 @@
+import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import type { ReportCardsResponse } from "../../../../schools/teacher-contracts";
@@ -118,14 +119,19 @@ export function ReportCardScreen() {
     ...reportCardsOptions(session, place, term ?? ""),
     enabled: !!session && !!term,
   });
+  // Back to where it was opened: the gradebook, Settings, a student.
+  const closeClick = useCloseClick(
+    `/${classUrl(place.org, place.class, "gradebook")}${term ? `?term=${encodeURIComponent(term)}` : ""}`,
+  );
   const back = (
     <Link
       to="/$"
       params={{ _splat: classUrl(place.org, place.class, "gradebook") }}
       search={(term ? { term } : {}) as never}
       className={buttonClass("secondary")}
+      onClick={closeClick}
     >
-      Back to the gradebook
+      Back
     </Link>
   );
   if ((!asked && current.isPending) || (term && cards.isPending))

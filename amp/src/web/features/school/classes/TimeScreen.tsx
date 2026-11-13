@@ -1,3 +1,4 @@
+import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
@@ -47,7 +48,6 @@ import {
   number,
   parseSort,
   shortDay,
-  studentUrl,
   TipZone,
   useClassSearch,
 } from "./teacher-shared";
@@ -295,15 +295,12 @@ function DaySheet({
       ) : (
         <div className={styles.evidence}>
           <TimeDetail time={data} who={data.student.name} />
-          <Link
-            to="/$"
-            params={{
-              _splat: studentUrl(place.org, data.student.id, place.class),
-            }}
+          <EntityLink
+            entity={{ kind: "student", id: data.student.id }}
             className={buttonClass("quiet", "", "start")}
           >
             Open {data.student.first}’s record
-          </Link>
+          </EntityLink>
         </div>
       )}
     </Sheet>
@@ -315,7 +312,7 @@ function DaySheet({
 export function TimeScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/time" });
   const session = useStaffSession();
-  const [search, set] = useClassSearch();
+  const [search, set, close] = useClassSearch();
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
@@ -698,7 +695,7 @@ export function TimeScreen() {
         period={period}
         student={student}
         returnFocus={lastOpen.current}
-        onClose={() => set({ student: undefined })}
+        onClose={() => close("student")}
       />
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />

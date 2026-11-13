@@ -66,7 +66,9 @@ async function findMiss(context: BrowserContext) {
   const session = await (
     await context.request.get(`${origin}/api/auth/get-session`)
   ).json();
-  const auth = { headers: { Authorization: `Bearer ${session.session.token}` } };
+  const auth = {
+    headers: { Authorization: `Bearer ${session.session.token}` },
+  };
   const get = async (path: string) => {
     const response = await context.request.get(`${origin}/api/v1${path}`, auth);
     assert.ok(response.ok(), `${path}: ${response.status()}`);
@@ -99,7 +101,9 @@ async function findMiss(context: BrowserContext) {
         return { org, classId, student: student.id, work: item.id, template };
     }
   }
-  throw new Error("No missed answer with a filmed lesson in the teacher's class");
+  throw new Error(
+    "No missed answer with a filmed lesson in the teacher's class",
+  );
 }
 
 const here = (page: Page) => {
@@ -135,12 +139,9 @@ async function expectAt(page: Page, href: string, what: string) {
 const lessonDialog = (page: Page) =>
   page.getByRole("dialog", { name: "Explore a problem type" });
 const replayLayer = (page: Page) => page.locator("[data-replay-facts]").first();
-/** The student's sheet over the map: a dialog listing their work, not the
- * replay of one answer. */
-const studentSheet = (page: Page, _student: string) =>
-  page.locator(
-    '[role="dialog"]:not(:has([data-replay-facts])):has(a[href*="/work/"])',
-  );
+/** The student's sheet over the map (a layer, nav/LayerHost). */
+const studentSheet = (page: Page, student: string) =>
+  page.locator(`[role="dialog"]:has([data-map-student-record="${student}"])`);
 
 /** What each step shows, checked whenever it is reached. */
 async function shows(page: Page, step: keyof Chain, student: string) {
@@ -190,7 +191,7 @@ async function open(
   const sheet = here(page);
   if (record) await snap(page, "student-sheet");
   await studentSheet(page, miss.student)
-    .locator(`a[href*="/work/${miss.work}"]`)
+    .locator(`[data-work-item="${miss.work}"]`)
     .first()
     .click();
   await shows(page, "answer", miss.student);
@@ -277,7 +278,7 @@ try {
     // Back after the closes never reopens what was closed.
     await page.goBack();
     await page.waitForTimeout(500);
-    assert.doesNotMatch(here(page), /\/map\/|\/watch|lesson=/);
+    assert.doesNotMatch(here(page), /open=|\/watch/);
     await context.close();
     console.log(`${width}: X returns along the path`);
   }
@@ -315,7 +316,7 @@ try {
     // And Back after them never reopens what was closed.
     await page.goBack();
     await page.waitForTimeout(500);
-    assert.doesNotMatch(here(page), /\/map\/|\/watch|lesson=/);
+    assert.doesNotMatch(here(page), /open=|\/watch/);
     await context.close();
     console.log("After a refresh, X returns along the path");
   }
@@ -346,19 +347,33 @@ try {
     console.log("A shared link closes to its parent in the class");
   }
 
-  // 5. An answer opened from Today closes back to Today.
+  // 5. A miss opened from Today (the student, their answer over them)
+  //    closes one layer at a time, back to Today.
   {
     const { context, page } = await fresh(1280);
-    await page.goto(`${origin}/school/${miss.org}/classes/${miss.classId}/today`);
-    const link = page.locator('main a[href*="/work/"]').first();
+    await page.goto(
+      `${origin}/school/${miss.org}/classes/${miss.classId}/today`,
+    );
+    const link = page.locator('main a[data-entity="work"]').first();
     await link.waitFor();
     const today = here(page);
     await link.click();
     await replayLayer(page).waitFor();
     await closeAnswer(page);
-    await expectAt(page, today, "X on an answer opened from Today");
+    await page.locator("[data-map-student-record]").waitFor();
+    assert.match(
+      here(page),
+      /\/today\?.*open=student/,
+      "X pops to the student",
+    );
+    await page
+      .locator('[role="dialog"]:has([data-map-student-record])')
+      .getByRole("button", { name: /^Close/ })
+      .first()
+      .click();
+    await expectAt(page, today, "then to Today");
     await context.close();
-    console.log("An answer opened from Today closes to Today");
+    console.log("A miss opened from Today closes to Today, a layer at a time");
   }
   console.log(`close-context: ok (${shot} screenshots in ${OUT})`);
 } finally {

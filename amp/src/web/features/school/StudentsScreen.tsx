@@ -1,3 +1,4 @@
+import { closeSearch } from "../../lib/return-to";
 import { canAddStudents } from "./permissions";
 import {
   AddChildSheet,
@@ -14,6 +15,7 @@ import {
   useNavigate,
   useParams,
   useSearch,
+  useRouter,
 } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { StudentResource } from "../../../schools/contracts";
@@ -414,6 +416,7 @@ export function StudentsScreen() {
     () => new Map(classes.map((klass) => [klass.id, klass.name])),
     [classes],
   );
+  const router = useRouter();
   const setSearch = (patch: Record<string, unknown>, replace = false) =>
     void navigate({
       to: ".",
@@ -626,7 +629,7 @@ export function StudentsScreen() {
           student={open}
           canTransfer={can.includes("students.transfer")}
           canRemove={can.includes("students.remove")}
-          onClose={() => setSearch({ student: undefined })}
+          onClose={() => closeSearch(router, "student")}
         />
       )}
       {familyAdd && session ? (
@@ -634,7 +637,9 @@ export function StudentsScreen() {
           session={session}
           kind={familyAdd}
           open={adding}
-          onOpenChange={(next) => setSearch({ add: next ? 1 : undefined })}
+          onOpenChange={(next) =>
+            next ? setSearch({ add: 1 }) : closeSearch(router, "add")
+          }
         />
       ) : (
         canAdd && (
@@ -642,7 +647,9 @@ export function StudentsScreen() {
             orgId={orgId}
             open={adding}
             wholeSchool={can.includes("students.add")}
-            onOpenChange={(next) => setSearch({ add: next ? 1 : undefined })}
+            onOpenChange={(next) =>
+              next ? setSearch({ add: 1 }) : closeSearch(router, "add")
+            }
           />
         )
       )}

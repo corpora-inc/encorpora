@@ -7,6 +7,8 @@
 import { spawn } from "node:child_process";
 import { randomBytes, randomUUID } from "node:crypto";
 import { mkdir, open as openFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import pg from "pg";
 import { createServer } from "vite";
 import { migrate } from "./migrate";
@@ -66,7 +68,10 @@ export async function startPersonaStack({
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
   const vite = await createServer({
-    cacheDir: `node_modules/.vite-${name}`,
+    // Its own dependency cache, outside node_modules: another Vite on a
+    // shared checkout never rewrites what this one serves.
+    cacheDir:
+      process.env.AMP_VITE_CACHE_DIR ?? join(tmpdir(), `amp-vite-${name}`),
     server: {
       host: "127.0.0.1",
       port: webPort,
