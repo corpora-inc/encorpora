@@ -162,7 +162,7 @@ function Board({ data }: { data: StandingsBoard }) {
               key={
                 line.teacher
                   ? `teacher:${index}:${line.row.name}`
-                  : `${line.row.rank}:${line.row.name}`
+                  : `${index}:${line.row.rank}:${line.row.name}`
               }
               line={line}
               top={most}
@@ -194,12 +194,7 @@ function Board({ data }: { data: StandingsBoard }) {
           <p>{teacherSentence(board.measure, teacher)}</p>
         </section>
       ))}
-      <p className={styles.note}>
-        {measureNote[board.measure]}
-        {wide
-          ? ` ${teachers.length ? "Every student" : "Everyone"} on this board has a made-up name. Yours is ${you.name}.`
-          : ""}
-      </p>
+      <p className={styles.note}>{measureNote[board.measure]}</p>
     </>
   );
 }

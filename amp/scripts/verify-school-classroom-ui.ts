@@ -13,7 +13,7 @@ import { schoolShellReview } from "./school-shell-review";
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-classroom-ui.ts \
  *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys] \
- *       [--port 4402]
+ *       [--standings-only] [--port 4402]
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -164,7 +164,7 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-classroom",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-school-classroom",
   // Found late, inside the worker, it would otherwise reload the page mid-print.
   optimizeDeps: { include: ["pdf-lib"] },
   server: {
@@ -1117,13 +1117,92 @@ for (const [given, family] of NAMES.slice(0, 16)) {
   wide.push(member);
 }
 for (const [index, member] of wide.entries())
-  await worked(member, 6 + index * 2, 0.05 + index * 0.04);
+  await worked(
+    member,
+    6 + (index === 13 ? 14 : index) * 2,
+    0.05 + index * 0.04,
+  );
+// Two students share a board name and a rank; both must render as-is.
+for (const [index, family] of [
+  [13, "Reed"],
+  [14, "Ross"],
+] as const)
+  await db.query(
+    "UPDATE amp_people SET display_name='Maya',family_name=$2 WHERE id=$1",
+    [wide[index]!.personId, family],
+  );
 await staff(ACCOUNTS.district, "POST", `classes/${wideClass.id}/experience`, {
   values: { standings: "school", measure: "practice" },
 });
 await staff(ACCOUNTS.school, "POST", `classes/${support.id}/experience`, {
   values: { standings: "off" },
 });
+
+/** A school board read as a student, with real names and recoverable errors. */
+async function schoolBoardSweep(
+  browser: Browser,
+  engine: string,
+  width: number,
+  theme: (typeof themes)[number],
+) {
+  const label = `${engine} ${width} ${theme}`;
+  const student = await device(browser, {
+    width,
+    theme,
+    student: {
+      token: await session(wide[15]!),
+      personId: wide[15]!.personId,
+    },
+  });
+  const keyWarnings: string[] = [];
+  student.page.on("console", (message) => {
+    if (/same key|unique.*key/i.test(message.text()))
+      keyWarnings.push(message.text());
+  });
+  try {
+    await student.page.goto(`${origin}/standings`);
+    await heading(student.page, "Practice this term").waitFor();
+    await student.page.getByText("Noor H.", { exact: true }).waitFor();
+    const twins = student.page
+      .getByRole("list", { name: "Top of the board" })
+      .getByRole("listitem")
+      .filter({ hasText: "Maya R." });
+    assert.equal(await twins.count(), 2);
+    assert.deepEqual(
+      await twins.evaluateAll((rows) =>
+        rows.map((row) => row.getAttribute("data-rank")),
+      ),
+      ["2", "2"],
+    );
+    assert.equal(
+      await student.page.getByText("Maya R.", { exact: true }).count(),
+      2,
+    );
+    const text = await student.page.locator("body").innerText();
+    check(`${label} no made-up-name note`, !text.includes("made-up name"));
+    for (const { handle } of (await db.query("SELECT handle FROM amp_people"))
+      .rows)
+      check(`${label} no student handle`, !text.includes(handle));
+    await settled(student.page);
+    await settle(student.page, 900);
+    await geometry(student.page, `${label} wide board`);
+    await shoot(student.page, engine, "standings-wide", width, theme);
+    // A failed board explains itself and can try again.
+    await student.page.route("**/student/standings/**", (route) =>
+      route.abort(),
+    );
+    await student.page.reload();
+    await student.page.getByText("The board didn’t load").waitFor();
+    await settled(student.page);
+    await geometry(student.page, `${label} failed board`);
+    await student.page.unroute("**/student/standings/**");
+    await student.page.getByRole("button", { name: "Try again" }).click();
+    await heading(student.page, /this term/).waitFor();
+    assert.deepEqual(keyWarnings, []);
+  } finally {
+    await student.context.close();
+  }
+}
 
 /** Every screen at one width and theme, looked at and measured. */
 async function sweep(
@@ -1383,30 +1462,7 @@ async function sweep(
     await picking.context.close();
     contexts.splice(contexts.indexOf(picking.context), 1);
 
-    const handle = await open({
-      student: {
-        token: await session(wide[15]!),
-        personId: wide[15]!.personId,
-      },
-    });
-    await handle.page.goto(`${origin}/standings`);
-    await heading(handle.page, "Practice this term").waitFor();
-    await handle.page.getByText(/made-up name/).waitFor();
-    await settled(handle.page);
-    await settle(handle.page, 900);
-    await geometry(handle.page, `${label} wide board`);
-    await shoot(handle.page, engine, "standings-wide", width, theme);
-    // A failed board explains itself and can try again.
-    await handle.page.route("**/student/standings/**", (route) =>
-      route.abort(),
-    );
-    await handle.page.reload();
-    await handle.page.getByText("The board didn’t load").waitFor();
-    await settled(handle.page);
-    await geometry(handle.page, `${label} failed board`);
-    await handle.page.unroute("**/student/standings/**");
-    await handle.page.getByRole("button", { name: "Try again" }).click();
-    await heading(handle.page, /this term/).waitFor();
+    await schoolBoardSweep(browser, engine, width, theme);
   } catch (error) {
     let shot = 0;
     for (const context of contexts)
@@ -1432,6 +1488,12 @@ try {
       engine === "webkit" ? webkit : secureChromium(rawChromium)
     ).launch();
     try {
+      if (process.argv.includes("--standings-only")) {
+        for (const width of widths)
+          for (const theme of themes)
+            await schoolBoardSweep(browser, engine, width, theme);
+        continue;
+      }
       if (!process.argv.includes("--skip-journeys"))
         await journeys(browser, engine);
       if (!process.argv.includes("--skip-sweep"))
