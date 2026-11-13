@@ -54,7 +54,10 @@ const fixture = (): Snapshot => ({
       district: D,
       name: { first: "Teacher" },
       email: "unverified@example.test",
-      roles: { teacher: { school: S, schools: [S] }, staff: { schools: [S2] } },
+      roles: {
+        teacher: { school: S, schools: [S] },
+        staff: { schools: [S2], roles: ["SchoolTechLead"] },
+      },
     },
     {
       id: T2,
