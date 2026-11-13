@@ -1,5 +1,4 @@
-import { withArticle } from "./agreement";
-import { isAre, article } from "./agreement";
+import { withArticle, isAre, article } from "./agreement";
 import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
@@ -518,7 +517,7 @@ export function numberWords(n: number): string {
     .filter(Boolean)
     .join(", ");
 }
-const an = (noun: string) => `${/^[aeiou]/.test(noun) ? "an" : "a"} ${noun}`;
+const an = withArticle;
 const groupText = (n: number) => commas(n);
 const groupTex = (n: number) => commas(n).replace(/,/g, "{,}");
 

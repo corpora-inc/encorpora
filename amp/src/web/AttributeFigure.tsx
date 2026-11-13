@@ -1,3 +1,4 @@
+import { withArticle } from "../math/agreement";
 import { PanelFrame } from "./PanelFrame";
 import type { AttributeFigure as Data } from "../math/attribute-models";
 
@@ -379,7 +380,7 @@ function describeBalance(f: Balance) {
   const side = (item: Balance["right"]) =>
     "grams" in item
       ? `standard masses of ${item.grams.map((g) => `${g} grams`).join(", ")}`
-      : `${item.label ? `${item.label}, ` : ""}a ${["small", "medium", "large"][item.size - 1]} ${item.shape}`;
+      : `${item.label ? `${item.label}, ` : ""}${withArticle(["small", "medium", "large"][item.size - 1]!)} ${item.shape}`;
   return `A balance. Left pan: ${side(f.left)}. Right pan: ${side(f.right)}. The beam ${f.tilt === "level" ? "is level" : `is lower on the ${f.tilt}`}.`;
 }
 

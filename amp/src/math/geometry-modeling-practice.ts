@@ -1,5 +1,4 @@
-import { withArticle } from "./agreement";
-import { article } from "./agreement";
+import { withArticle, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1793,7 +1792,7 @@ function revolutionCase(
       explanation: [
         text,
         SECTION_NOTES[shape]!,
-        `So the cross-section is ${shape === "Ellipse" ? "an" : "a"} ${shape.toLowerCase()}.`,
+        `So the cross-section is ${withArticle(shape.toLowerCase())}.`,
       ],
       correct: shape,
       wrong: SECTION_SHAPES.filter((s) => s !== shape).map((s) => ({

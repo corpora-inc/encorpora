@@ -1,3 +1,4 @@
+import { withArticle } from "../../math/agreement";
 import type { SemanticFigure } from "../../math/contracts";
 import { angleFigureSchema } from "../../math/geometry-models";
 
@@ -158,7 +159,7 @@ export function geometryFrames(model: GeometryAnimationModel): Frame[] {
           ? `$${f.width}${u} \\times ${f.height}${u}$`
           : f.plane === "through-apex"
             ? `$\\text{base } ${f.length}${u},\\ \\text{height } ${f.height}${u}$`
-            : `$\\text{a ${shape}}$`;
+            : `$\\text{${withArticle(shape)}}$`;
   return [
     {
       title:
@@ -174,7 +175,7 @@ export function geometryFrames(model: GeometryAnimationModel): Frame[] {
       math: "$\\text{one side per face crossed}$",
     },
     {
-      title: `The cross-section: a ${shape}`,
+      title: `The cross-section: ${withArticle(shape)}`,
       text:
         f.plane === "off-apex"
           ? "It misses the apex, so the top side is shorter than the bottom: two parallel sides of different lengths."

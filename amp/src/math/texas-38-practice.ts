@@ -1,4 +1,4 @@
-import { withArticle } from "./agreement";
+import { withArticle, article, isAre } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -8,7 +8,6 @@ import type {
 import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
 import { operationStoryValues, timesCast } from "./story-kit/operations";
-import { isAre } from "./agreement";
 import {
   chooseAxes,
   defineAxis,
@@ -1571,10 +1570,7 @@ function fractionBenchmarkReasonable(r: Random): Built {
 /* 4.8.A Relative sizes of units                                           */
 /* ---------------------------------------------------------------------- */
 
-const art = (unit: string, capital: boolean) => {
-  const word = /^[aeiou]/.test(unit) ? "an" : "a";
-  return capital ? "A".concat(word.slice(1)) : word;
-};
+const art = article;
 type Family = { kind: "length" | "weight" | "capacity"; units: string[] };
 const FAMILIES: Family[] = [
   { kind: "length", units: ["millimeter", "centimeter", "meter", "kilometer"] },

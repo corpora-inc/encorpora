@@ -1,3 +1,4 @@
+import { withArticle } from "../math/agreement";
 import { PanelFrame } from "./PanelFrame";
 import type {
   PartWholeFigure as Data,
@@ -97,7 +98,7 @@ function describeShape(s: PartitionedShape) {
   const shaded = s.shaded.length
     ? `, ${WORDS[s.shaded.length]} shaded`
     : ", none shaded";
-  return `${s.label ? `Shape ${s.label}: ` : ""}a ${s.shape} cut ${how} into ${WORDS[n] ?? n} ${sizes}${shaded}`;
+  return `${s.label ? `Shape ${s.label}: ` : ""}${withArticle(s.shape)} cut ${how} into ${WORDS[n] ?? n} ${sizes}${shaded}`;
 }
 
 function Shapes({

@@ -613,7 +613,7 @@ function numericEvent(r: Random, device: Device): Event {
     [phrase, holds] = ["a multiple of 3", (x) => x % 3 === 0];
   else {
     const t = r(1, m);
-    [phrase, holds] = [`${t === 8 ? "an" : "a"} ${t}`, (x) => x === t];
+    [phrase, holds] = [`${withArticle(t)}`, (x) => x === t];
   }
   const favorable = (device.outcomes as number[]).filter(holds);
   return {

@@ -815,14 +815,14 @@ export function generateAngleProblem(
         `Angles are named by how wide they open compared with a right angle, a square corner that measures 90°.`,
         `Acute means less than 90°, right means exactly 90°, obtuse means between 90° and 180°, and straight means exactly 180°.`,
         `This opening is ${describe[kind]}${kind === "acute" ? ", so it is less than 90°" : kind === "obtuse" ? ", so it is between 90° and 180°" : kind === "right" ? ", so it is 90°" : ", so it is 180°"}.`,
-        `So it is ${kind === "acute" || kind === "obtuse" ? "an" : "a"} ${kind} angle.`,
+        `So it is ${withArticle(kind)} angle.`,
       ];
       choices = (["acute", "right", "obtuse", "straight"] as const).map((k) =>
         k === kind
           ? { label: k, correct: true }
           : {
               label: k,
-              feedback: `${k === "acute" || k === "obtuse" ? "An" : "A"} ${k} angle is ${describe[k]}. This angle is ${describe[kind]}.`,
+              feedback: `${withArticle(k, true)} angle is ${describe[k]}. This angle is ${describe[kind]}.`,
             },
       );
       keepOrder = true;

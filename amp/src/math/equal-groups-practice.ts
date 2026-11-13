@@ -1,6 +1,5 @@
-import { withArticle } from "./agreement";
+import { withArticle, count, isAre, plural } from "./agreement";
 import { createHash } from "node:crypto";
-import { count, isAre, plural } from "./agreement.js";
 import { grouped } from "./multi-part-support.js";
 import { partialProducts, partialProductsHint } from "./scene/explanations.js";
 import type { Step } from "./scene/timeline.js";
@@ -109,10 +108,7 @@ export function generateEqualGroupsProblem(
   const shown = (n: number) => grouped(n);
   const counted = (n: number, noun: string) =>
     `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
-  const article = (phrase: string) =>
-    /^[aeiou]/i.test(phrase)
-      ? `${withArticle(phrase)}`
-      : `${withArticle(phrase)}`;
+  const article = withArticle;
   switch (templateId) {
     case "full-kits":
     case "seats-needed":

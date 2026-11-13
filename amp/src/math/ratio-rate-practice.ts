@@ -334,7 +334,7 @@ function betterBuyCase(r: Random): Case {
       ];
   const pack = (n: number) =>
     good.key === "cereal"
-      ? `${[8, 11, 18].includes(n) || (n >= 80 && n < 90) ? "an" : "a"} ${n}-ounce box of cereal`
+      ? `${article(n)} ${n}-ounce box of cereal`
       : `a pack of ${n} ${good.many}`;
   const prompt = `Store A sells ${pack(stores[0]!.n)} for ${price(stores[0]!.n * stores[0]!.p)}. Store B sells ${pack(stores[1]!.n)} for ${price(stores[1]!.n * stores[1]!.p)}. Which is the better buy, with the lower price per ${good.one}?`;
   const unitLine = (s: (typeof stores)[number], name: string) =>

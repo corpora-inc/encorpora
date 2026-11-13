@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { count, plural } from "./agreement";
+import { count, plural, withArticle } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -122,7 +122,7 @@ const RULER_THINGS: readonly Thing[] = [
 ];
 const ANY_LENGTH = ["ribbon", "string", "paper strip", "twig"] as const;
 /** "a ribbon", "an eraser". */
-const a = (name: string) => `${/^[aeiou]/.test(name) ? "an" : "a"} ${name}`;
+const a = withArticle;
 /** Things that may be `length` long on this unit's ruler. */
 function thingsFor(length: number, unit: Unit): string[] {
   const named = RULER_THINGS.filter((t) => {

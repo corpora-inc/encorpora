@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random, type Random } from "./distribution-practice";
 import { chooseAxes, defineAxis } from "./variation/axes";
@@ -267,7 +268,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
   const word = kind === "arithmetic" ? "arithmetic" : "geometric";
   const rule = sequenceRule(seq);
   const t = (n: number) => sequenceTerm(seq, n);
-  const setup = `${kind === "arithmetic" ? "An" : "A"} ${word} sequence is defined by $a(n)=${rule}$ for $n=1,2,3,\\ldots$.`;
+  const setup = `${withArticle(word, true)} sequence is defined by $a(n)=${rule}$ for $n=1,2,3,\\ldots$.`;
   const listing = [1, 2, 3].map((n) => t(n)).join(", ");
   let spec: Spec;
   if (variant === 0) {
@@ -442,7 +443,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
       : kind === "arithmetic"
         ? lo + seq.step / 2
         : lo + (eff.first > 0 ? 1 : -1);
-    const prompt = `${kind === "arithmetic" ? "An" : "A"} ${word} sequence is defined by $a(n)=${effRule}$ for $n=1,2,3,\\ldots$. Is $${target}$ a term of this sequence?`;
+    const prompt = `${withArticle(word, true)} sequence is defined by $a(n)=${effRule}$ for $n=1,2,3,\\ldots$. Is $${target}$ a term of this sequence?`;
     spec = isTerm
       ? {
           prompt,
