@@ -26,7 +26,14 @@ export class CleverHttpError extends CleverSyncError {
     super(`clever_http_${status}`);
   }
 }
+export type CleverApiVersion = "3.0" | "3.1";
+export function cleverApiVersion(value: string | undefined): CleverApiVersion {
+  if (value === undefined) return "3.1";
+  if (value === "3.0" || value === "3.1") return value;
+  throw new CleverSyncError("clever_api_version_invalid");
+}
 type Options = {
+  apiVersion?: CleverApiVersion;
   clientId: string;
   clientSecret: string;
   fetch?: typeof fetch;
@@ -36,11 +43,13 @@ type Options = {
 
 /** Server-side only. Credentials never appear in errors, URLs or persisted data. */
 export class CleverClient {
+  readonly apiVersion: CleverApiVersion;
   private readonly fetcher: typeof fetch;
   private readonly sleep: (ms: number) => Promise<void>;
   constructor(private readonly options: Options) {
     if (!options.clientId || !options.clientSecret)
       throw new CleverSyncError("clever_credentials_missing");
+    this.apiVersion = cleverApiVersion(options.apiVersion);
     this.fetcher = options.fetch ?? fetch;
     this.sleep =
       options.sleep ??
@@ -86,7 +95,7 @@ export class CleverClient {
     const url = new URL(path, "https://api.clever.com");
     if (
       url.origin !== "https://api.clever.com" ||
-      !url.pathname.startsWith("/v3.1/") ||
+      !url.pathname.startsWith(`/v${this.apiVersion}/`) ||
       url.username ||
       url.password ||
       url.hash
@@ -94,10 +103,24 @@ export class CleverClient {
       throw new CleverSyncError("clever_unsafe_pagination_link");
     return url;
   }
+  /** Callers name the resource; provider pagination must retain the configured
+   * version. Never retry an authorization failure against a different API. */
+  private resourcePath(path: string) {
+    return /^\/(?:districts|schools|users|courses|terms|sections|events)(?:[/?]|$)/.test(
+      path,
+    )
+      ? `/v${this.apiVersion}${path}`
+      : path;
+  }
   async get<T>(path: string, token: string, schema: z.ZodType<T>): Promise<T> {
     const response = z
       .object({ data: schema })
-      .parse(await this.request(this.apiUrl(path), `Bearer ${token}`));
+      .parse(
+        await this.request(
+          this.apiUrl(this.resourcePath(path)),
+          `Bearer ${token}`,
+        ),
+      );
     return response.data;
   }
   async list<T>(
@@ -107,7 +130,7 @@ export class CleverClient {
   ): Promise<T[]> {
     const result: T[] = [];
     const seen = new Set<string>();
-    let next: string | undefined = path;
+    let next: string | undefined = this.resourcePath(path);
     while (next) {
       const url = this.apiUrl(next);
       if (seen.has(url.href) || seen.size >= 10_000)
@@ -153,26 +176,18 @@ export class CleverClient {
   }
   async snapshot(districtId: string, token: string): Promise<Snapshot> {
     const district = await this.get(
-      `/v3.1/districts/${districtId}`,
+      `/districts/${districtId}`,
       token,
       districtSchema,
     );
     // Even optional collections must complete successfully. Forbidden and failed
     // responses are not empty collections and must not archive existing data.
-    const schools = await this.list(
-      "/v3.1/schools?limit=1000",
-      token,
-      schoolSchema,
-    );
-    const users = await this.list("/v3.1/users?limit=1000", token, userSchema);
-    const courses = await this.list(
-      "/v3.1/courses?limit=1000",
-      token,
-      courseSchema,
-    );
-    const terms = await this.list("/v3.1/terms?limit=1000", token, termSchema);
+    const schools = await this.list("/schools?limit=1000", token, schoolSchema);
+    const users = await this.list("/users?limit=1000", token, userSchema);
+    const courses = await this.list("/courses?limit=1000", token, courseSchema);
+    const terms = await this.list("/terms?limit=1000", token, termSchema);
     const sections = await this.list(
-      "/v3.1/sections?limit=1000",
+      "/sections?limit=1000",
       token,
       sectionSchema,
     );
@@ -180,7 +195,7 @@ export class CleverClient {
   }
   async latestEvent(token: string): Promise<string | null> {
     const events = await this.list(
-      "/v3.1/events?ending_before=last&limit=1",
+      "/events?ending_before=last&limit=1",
       token,
       eventSchema,
     );
@@ -189,7 +204,7 @@ export class CleverClient {
   async events(token: string, after: string): Promise<CleverEvent[]> {
     cleverId.parse(after);
     return this.list(
-      `/v3.1/events?starting_after=${after}&limit=1000`,
+      `/events?starting_after=${after}&limit=1000`,
       token,
       eventSchema,
     );

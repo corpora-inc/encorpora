@@ -265,7 +265,7 @@ await registerSchoolAdoptionRoutes(app, {
           if (!connection) throw new SchoolError(404, "not_found");
           const client = new CleverClient(cleverConfig);
           return client.get(
-            `/v3.1/users/${userId}`,
+            `/users/${userId}`,
             await client.districtToken(connection.district_id),
             userSchema,
           );

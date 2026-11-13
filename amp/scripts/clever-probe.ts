@@ -1,5 +1,9 @@
 import { pathToFileURL } from "node:url";
-import { CleverClient, eventSchema } from "../src/schools/clever/client.js";
+import {
+  CleverClient,
+  cleverApiVersion,
+  eventSchema,
+} from "../src/schools/clever/client.js";
 import { schemas, cleverId } from "../src/schools/clever/model.js";
 import { safeSyncError } from "../src/schools/clever/sync.js";
 
@@ -12,6 +16,7 @@ export async function probeClever(env: NodeJS.ProcessEnv) {
   const client = new CleverClient({
     clientId: env.AMP_CLEVER_CLIENT_ID ?? "",
     clientSecret: env.AMP_CLEVER_CLIENT_SECRET ?? "",
+    apiVersion: cleverApiVersion(env.AMP_CLEVER_API_VERSION),
   });
   const token = await client.districtToken(district);
   const checks: Record<string, unknown> = { districtToken: "available" };
@@ -19,15 +24,9 @@ export async function probeClever(env: NodeJS.ProcessEnv) {
     try {
       const rows =
         kind === "district"
-          ? [
-              await client.get(
-                `/v3.1/districts/${district}`,
-                token,
-                schema as any,
-              ),
-            ]
+          ? [await client.get(`/districts/${district}`, token, schema as any)]
           : await client.list(
-              `/v3.1/${kind === "user" ? "users" : kind === "section" ? "sections" : kind === "school" ? "schools" : kind === "course" ? "courses" : "terms"}?limit=1000`,
+              `/${kind === "user" ? "users" : kind === "section" ? "sections" : kind === "school" ? "schools" : kind === "course" ? "courses" : "terms"}?limit=1000`,
               token,
               schema as any,
             );
@@ -37,11 +36,7 @@ export async function probeClever(env: NodeJS.ProcessEnv) {
     }
   }
   try {
-    await client.list(
-      "/v3.1/events?ending_before=last&limit=1",
-      token,
-      eventSchema,
-    );
+    await client.list("/events?ending_before=last&limit=1", token, eventSchema);
     checks.events = { status: "available" };
   } catch (error) {
     checks.events = { status: "unavailable", code: safeSyncError(error) };

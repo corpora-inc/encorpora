@@ -1,4 +1,8 @@
 import {
+  cleverApiVersion,
+  type CleverApiVersion,
+} from "../schools/clever/client.js";
+import {
   resolveProviderSession,
   providerToken,
   providerHash,
@@ -16,6 +20,7 @@ import { SchoolRepository } from "../schools/repository.js";
 import { SchoolSignIn } from "../schools/sign-in.js";
 
 export type CleverConfiguration = CleverAuthConfig & {
+  apiVersion: CleverApiVersion;
   districtSignupUrl?: string;
 };
 
@@ -32,6 +37,7 @@ export function cleverConfiguration(
     "AMP_CLEVER_CLIENT_SECRET",
     "AMP_CLEVER_ENVIRONMENT",
     "AMP_CLEVER_DISTRICT_SIGNUP_URL",
+    "AMP_CLEVER_API_VERSION",
   ] as const;
   if (names.every((name) => !env[name])) return null;
   const required = (name: (typeof names)[number]) => {
@@ -84,6 +90,7 @@ export function cleverConfiguration(
   return {
     clientId,
     clientSecret,
+    apiVersion: cleverApiVersion(env.AMP_CLEVER_API_VERSION),
     environment,
     origin: accounts.baseURL,
     ...(districtSignupUrl ? { districtSignupUrl } : {}),

@@ -1,7 +1,10 @@
 import { runDueCleverSync } from "../src/schools/clever/worker.js";
 import { pathToFileURL } from "node:url";
 import { createDatabasePool } from "../src/server/database.js";
-import { CleverClient } from "../src/schools/clever/client.js";
+import {
+  CleverClient,
+  cleverApiVersion,
+} from "../src/schools/clever/client.js";
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import {
   safeSyncError,
@@ -51,6 +54,7 @@ export async function cleverSyncCommand(
     const client = new CleverClient({
       clientId: env.AMP_CLEVER_CLIENT_ID ?? "",
       clientSecret: env.AMP_CLEVER_CLIENT_SECRET ?? "",
+      apiVersion: cleverApiVersion(env.AMP_CLEVER_API_VERSION),
     });
     const rows = (
       await pool.query(

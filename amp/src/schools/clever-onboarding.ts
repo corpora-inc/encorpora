@@ -22,6 +22,7 @@ import { parentAddressConfirmed } from "../server/account-access.js";
 import { can, loadActor } from "./authz.js";
 
 export type CleverOnboardingConfig = {
+  apiVersion?: import("./clever/client.js").CleverApiVersion;
   origin?: string;
   environment: "sandbox" | "production";
   clientId: string;
@@ -61,8 +62,8 @@ export async function connectCleverInstitution(
     throw new SchoolError(403, "clever_district_admin_required");
   const token = await client.districtToken(identity.districtId);
   const [district, user] = await Promise.all([
-    client.get(`/v3.1/districts/${identity.districtId}`, token, districtSchema),
-    client.get(`/v3.1/users/${identity.userId}`, token, userSchema),
+    client.get(`/districts/${identity.districtId}`, token, districtSchema),
+    client.get(`/users/${identity.userId}`, token, userSchema),
   ]);
   if (
     district.id !== identity.districtId ||
@@ -231,7 +232,7 @@ export async function registerCleverOnboarding(
         try {
           const token = await client.districtToken(identity.districtId);
           const current = await client.get(
-            `/v3.1/users/${identity.userId}`,
+            `/users/${identity.userId}`,
             token,
             userSchema,
           );
@@ -408,7 +409,7 @@ export async function registerCleverOnboarding(
           throw new SchoolError(403, "clever_district_admin_required");
         const token = await client.districtToken(identity.districtId);
         const current = await client.get(
-          `/v3.1/users/${identity.userId}`,
+          `/users/${identity.userId}`,
           token,
           userSchema,
         );
