@@ -199,8 +199,8 @@ export function IntegrationsScreen() {
               Student sign-in
             </h2>
             <p className={styles.sectionLead}>
-              Cards and class codes always work. Turn on a school account too,
-              and a button appears on your class join pages.
+              Cards and class codes always work. A school account adds a sign-in
+              button to your class join pages.
             </p>
             <ul className={styles.integrationList}>
               {data.providers.map((provider) => (

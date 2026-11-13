@@ -23,6 +23,7 @@ import type {
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { InfoPopover } from "../../../ui/InfoPopover";
 import { Segmented } from "../../../ui/Segmented";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { currentSession, orgOptions } from "../api";
@@ -436,9 +437,7 @@ function FirstRun({ orgId, canImport }: { orgId: string; canImport: boolean }) {
         ) : undefined
       }
     >
-      {canImport
-        ? "A spreadsheet or OneRoster file brings in every class at once."
-        : "Your school’s admin adds them, and this fills in from there."}
+      {canImport ? undefined : "Your school’s admin adds them."}
     </EmptyState>
   );
 }
@@ -513,10 +512,6 @@ export function OverviewScreen() {
                     students practiced this week, for{" "}
                     {number(view.week.minutes)} minutes so far.
                   </p>
-                  <p className={styles.ledeLast}>
-                    Last week, {number(view.week.lastActive)} students practiced
-                    for {number(view.week.lastMinutes)} minutes.
-                  </p>
                 </div>
                 <Seats orgId={orgId} seats={view.seats} />
                 <section
@@ -586,9 +581,28 @@ export function OverviewScreen() {
                 }
               />
               <section aria-labelledby="overview-usage">
-                <h2 id="overview-usage" className={styles.sectionTitle}>
-                  {district ? "Schools" : "Classes"}
-                </h2>
+                {/* How the list's figures are made: a tap away, never a
+                    paragraph under the table. */}
+                <div className={styles.usageHead}>
+                  <InfoPopover
+                    title={`${district ? "Schools" : "Classes"}, how the figures are made`}
+                    details={
+                      <p className={styles.doseDetail}>
+                        Growth is each {district ? "school" : "class"}’s median
+                        pace of level on the days its uncertainty was at most
+                        0.6 grades, across the days the term has run, from{" "}
+                        {number(placed)} {placed === 1 ? "student" : "students"}
+                        . Each growth figure opens its 95% range; — is not
+                        settled yet. Practiced means at least 5 active minutes
+                        or 5 problems this week.
+                      </p>
+                    }
+                  >
+                    <h2 id="overview-usage" className={styles.usageTitle}>
+                      {district ? "Schools" : "Classes"}
+                    </h2>
+                  </InfoPopover>
+                </div>
                 {view.schools?.length ? (
                   <SchoolTable rows={view.schools} />
                 ) : view.schools ? (
@@ -620,14 +634,6 @@ export function OverviewScreen() {
                     </Link>
                   </p>
                 )}
-                <p className={styles.tableNote}>
-                  Growth is each {district ? "school" : "class"}’s median pace
-                  of level on the days its uncertainty was at most 0.6 grades,
-                  across the days the term has run, from {number(placed)}{" "}
-                  {placed === 1 ? "student" : "students"}. Each growth figure
-                  opens its 95% range. Not settled yet shows as —. Practiced
-                  means at least 5 active minutes or 5 problems this week.
-                </p>
               </section>
             </>
           )}

@@ -1,3 +1,4 @@
+import { useCloseClick } from "../../../nav/links";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -95,11 +96,16 @@ export function StartClassScreen() {
     logged.current = failing;
   }, [failing, presence.error]);
 
+  // Back to where the board was opened: Today, the map, the roster.
+  const closeClick = useCloseClick(
+    `/school/${params.org}/classes/${params.class}`,
+  );
   const exit = (
     <Link
       to="/school/$org/classes/$class"
       params={params}
       className={buttonClass("secondary", styles.exit)}
+      onClick={closeClick}
     >
       Exit
     </Link>

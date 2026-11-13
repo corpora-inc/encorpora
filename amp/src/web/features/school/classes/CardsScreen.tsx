@@ -1,3 +1,4 @@
+import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
@@ -70,13 +71,18 @@ export function CardsScreen() {
   const roster = useQuery(rosterOptions(session, place));
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
+  // Back to where it was opened: the roster, Today, sign-in help.
+  const closeClick = useCloseClick(
+    `/school/${params.org}/classes/${params.class}/roster`,
+  );
   const back = (
     <Link
       to="/school/$org/classes/$class/roster"
       params={params}
       className={buttonClass("secondary")}
+      onClick={closeClick}
     >
-      Back to roster
+      Back
     </Link>
   );
   async function make(input: { personIds?: string[]; missingOnly?: boolean }) {
@@ -160,14 +166,14 @@ export function CardsScreen() {
         </h1>
         <p>
           {student
-            ? "One card opens AMP for this student with no code and no pictures."
-            : `${PER_PAGE} cards fit on a letter page. Each one opens AMP for one student with no code and no pictures.`}
+            ? "The card signs this student in with no code and no pictures."
+            : "Each card signs one student in with no code and no pictures."}
         </p>
         {holding > 0 && (
           <p className={styles.warning}>
             {student
               ? "The card this student has now stops working."
-              : `${holding === 1 ? "1 student has" : `${holding} students have`} a card already. A new card replaces it, and the old one stops working.`}
+              : `${holding === 1 ? "1 student has" : `${holding} students have`} a card already. A new card stops the old one working.`}
           </p>
         )}
         {issue.isError && (

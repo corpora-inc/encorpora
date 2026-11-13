@@ -1,3 +1,4 @@
+import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { SMALL_CLASS } from "../../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
@@ -146,10 +147,14 @@ export function RosterScreen() {
         header: family ? "Child" : "Student",
         width: 200,
         compare: (a, b) => a.name.localeCompare(b.name),
+        // A student opens over the roster, which stays (nav/entities.ts).
         cell: (row) => (
-          <span className={styles.student}>
+          <EntityLink
+            entity={{ kind: "student", id: row.id }}
+            className={`${styles.student} ${styles.studentLink}`}
+          >
             <span>{row.name}</span>
-          </span>
+          </EntityLink>
         ),
       },
       {
@@ -392,7 +397,12 @@ export function RosterScreen() {
               cardEstimate={84}
               card={(row) => (
                 <div className={styles.card}>
-                  <span className={styles.cardName}>{row.name}</span>
+                  <EntityLink
+                    entity={{ kind: "student", id: row.id }}
+                    className={`${styles.cardName} ${styles.studentLink}`}
+                  >
+                    {row.name}
+                  </EntityLink>
                   {canManage && (
                     <span className={styles.cardAction}>
                       {columns
@@ -444,11 +454,7 @@ export function RosterScreen() {
                   </Link>
                 ) : undefined
               }
-            >
-              {family
-                ? "Each child appears here with their card, their pictures and when they last signed in."
-                : "Each student appears here with their card, their pictures and when they last signed in."}
-            </EmptyState>
+            />
           )}
           {family && holder && (
             <ClassPeople

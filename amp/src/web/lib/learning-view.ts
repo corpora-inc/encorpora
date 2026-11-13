@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useQuery, queryOptions } from "@tanstack/react-query";
+import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import {
@@ -192,20 +192,38 @@ export function useLearningView({
       useLearnerStore.getState().select(learners[0].id);
   }, [account, selectedId]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
-  const evidence = useQuery({
-    ...learnerEvidenceOptions(
-      session.data ?? { accountId: "", token: "" },
-      learner?.id ?? "",
-    ),
-    enabled: records && !!session.data && !!learner,
-  });
-  const frontier = useQuery({
-    ...learnerFrontierOptions(
-      session.data ?? { accountId: "", token: "" },
-      learner?.id ?? "",
-    ),
-    enabled: records && !!session.data && !!learner,
-  });
+  // Without records (the drawer), these observe nothing: a disabled observer
+  // of the learner's level would still be its last, and unmounting it (the
+  // drawer closing on its way to the Overview) cancels the level refresh the
+  // Overview is waiting for.
+  const evidence = useQuery(
+    records
+      ? {
+          ...learnerEvidenceOptions(
+            session.data ?? { accountId: "", token: "" },
+            learner?.id ?? "",
+          ),
+          enabled: !!session.data && !!learner,
+        }
+      : {
+          queryKey: ["learning-view", "no-records", "evidence"],
+          queryFn: skipToken,
+        },
+  );
+  const frontier = useQuery(
+    records
+      ? {
+          ...learnerFrontierOptions(
+            session.data ?? { accountId: "", token: "" },
+            learner?.id ?? "",
+          ),
+          enabled: !!session.data && !!learner,
+        }
+      : {
+          queryKey: ["learning-view", "no-records", "frontier"],
+          queryFn: skipToken,
+        },
+  );
   const active = !!learner;
   const canPractice =
     !!learner &&

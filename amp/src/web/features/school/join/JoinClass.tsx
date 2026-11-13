@@ -148,9 +148,7 @@ export function JoinClass({
           {family ? "Sign in on their own device" : "Students sign in"}
         </h2>
         <p className={styles.lead}>
-          Scan the code, or open the link: it goes straight to{" "}
-          {family ? "your children’s" : "the class’s"} names. Each one taps
-          their name and their three pictures.
+          Scan the code or open the link, then tap a name and three pictures.
         </p>
         <div className={styles.codeRow}>
           <span className={styles.label}>Class code</span>

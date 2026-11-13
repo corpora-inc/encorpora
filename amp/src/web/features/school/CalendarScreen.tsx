@@ -1,3 +1,4 @@
+import { closeSearch } from "../../lib/return-to";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -5,6 +6,7 @@ import {
   useNavigate,
   useParams,
   useSearch,
+  useRouter,
 } from "@tanstack/react-router";
 import { useState } from "react";
 import {
@@ -160,6 +162,7 @@ export function YearCalendar({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
+  const router = useRouter();
   const setSearch = (patch: Record<string, unknown>) =>
     void navigate({
       to: ".",
@@ -368,7 +371,7 @@ export function YearCalendar({
             key={editing.id}
             orgId={orgId}
             session={editing}
-            onClose={() => setSearch({ edit: undefined })}
+            onClose={() => closeSearch(router, "edit")}
           />
         )}
       </section>
@@ -378,7 +381,7 @@ export function YearCalendar({
       key={editing.id}
       orgId={orgId}
       session={editing}
-      onClose={() => setSearch({ edit: undefined })}
+      onClose={() => closeSearch(router, "edit")}
     />
   );
   if (compact)
@@ -496,23 +499,19 @@ function SchoolGradingPicker({ orgId }: { orgId: string }) {
           (value) => ({ value, label: gradingWords(value) }),
         )}
       />
-      <p className={styles.fieldHelp}>
-        Classes follow these unless one is set differently.
-        {data.own > 0 && (
-          <>
-            {" "}
-            <Link
-              to="/$"
-              params={{ _splat: orgPath(orgId, "classes") }}
-              search={{ periods: "own" } as never}
-            >
-              {data.own === 1
-                ? "1 class uses its own periods"
-                : `${data.own} classes use their own periods`}
-            </Link>
-          </>
-        )}
-      </p>
+      {data.own > 0 && (
+        <p className={styles.fieldHelp}>
+          <Link
+            to="/$"
+            params={{ _splat: orgPath(orgId, "classes") }}
+            search={{ periods: "own" } as never}
+          >
+            {data.own === 1
+              ? "1 class uses its own periods"
+              : `${data.own} classes use their own periods`}
+          </Link>
+        </p>
+      )}
       <Toast message={error} onDismiss={() => setError("")} />
     </div>
   );

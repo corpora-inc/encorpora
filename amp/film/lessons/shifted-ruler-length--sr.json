@@ -1,0 +1,3037 @@
+{
+  "id": "shifted-ruler-length--sr",
+  "title": "Length is the spaces between the ends",
+  "teaches": [
+    "ruler-length-difference",
+    "compare-measured-lengths"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -2.45,
+          7.9,
+          2.6
+        ],
+        "points": {
+          "r0c0": [
+            -0.55,
+            0
+          ],
+          "r0c1": [
+            7.55,
+            0
+          ],
+          "r0c2": [
+            7.55,
+            -1.25
+          ],
+          "r0c3": [
+            -0.55,
+            -1.25
+          ],
+          "r0ta0": [
+            0,
+            0
+          ],
+          "r0tb0": [
+            0,
+            -0.38
+          ],
+          "r0np0": [
+            0,
+            -0.85
+          ],
+          "r0ta1": [
+            1,
+            0
+          ],
+          "r0tb1": [
+            1,
+            -0.38
+          ],
+          "r0np1": [
+            1,
+            -0.85
+          ],
+          "r0ta2": [
+            2,
+            0
+          ],
+          "r0tb2": [
+            2,
+            -0.38
+          ],
+          "r0np2": [
+            2,
+            -0.85
+          ],
+          "r0ta3": [
+            3,
+            0
+          ],
+          "r0tb3": [
+            3,
+            -0.38
+          ],
+          "r0np3": [
+            3,
+            -0.85
+          ],
+          "r0ta4": [
+            4,
+            0
+          ],
+          "r0tb4": [
+            4,
+            -0.38
+          ],
+          "r0np4": [
+            4,
+            -0.85
+          ],
+          "r0ta5": [
+            5,
+            0
+          ],
+          "r0tb5": [
+            5,
+            -0.38
+          ],
+          "r0np5": [
+            5,
+            -0.85
+          ],
+          "r0ta6": [
+            6,
+            0
+          ],
+          "r0tb6": [
+            6,
+            -0.38
+          ],
+          "r0np6": [
+            6,
+            -0.85
+          ],
+          "r0ta7": [
+            7,
+            0
+          ],
+          "r0tb7": [
+            7,
+            -0.38
+          ],
+          "r0np7": [
+            7,
+            -0.85
+          ],
+          "r0up": [
+            3.5,
+            -1.95
+          ],
+          "before0p0": [
+            0,
+            0.08
+          ],
+          "before0p1": [
+            1,
+            0.08
+          ],
+          "before0p2": [
+            1,
+            0.58
+          ],
+          "before0p3": [
+            0,
+            0.58
+          ],
+          "before1p0": [
+            1,
+            0.08
+          ],
+          "before1p1": [
+            2,
+            0.08
+          ],
+          "before1p2": [
+            2,
+            0.58
+          ],
+          "before1p3": [
+            1,
+            0.58
+          ],
+          "before2p0": [
+            2,
+            0.08
+          ],
+          "before2p1": [
+            3,
+            0.08
+          ],
+          "before2p2": [
+            3,
+            0.58
+          ],
+          "before2p3": [
+            2,
+            0.58
+          ],
+          "stripshapep0": [
+            0,
+            0.85
+          ],
+          "stripshapep1": [
+            3,
+            0.85
+          ],
+          "stripshapep2": [
+            3,
+            1.35
+          ],
+          "stripshapep3": [
+            0,
+            1.35
+          ],
+          "stripsa": [
+            0,
+            0.85
+          ],
+          "stripsb": [
+            0,
+            0
+          ],
+          "stripea": [
+            3,
+            0.85
+          ],
+          "stripeb": [
+            3,
+            0
+          ],
+          "stripcell1p0": [
+            0,
+            0.08
+          ],
+          "stripcell1p1": [
+            1,
+            0.08
+          ],
+          "stripcell1p2": [
+            1,
+            0.58
+          ],
+          "stripcell1p3": [
+            0,
+            0.58
+          ],
+          "stripcell2p0": [
+            1,
+            0.08
+          ],
+          "stripcell2p1": [
+            2,
+            0.08
+          ],
+          "stripcell2p2": [
+            2,
+            0.58
+          ],
+          "stripcell2p3": [
+            1,
+            0.58
+          ],
+          "stripcell3p0": [
+            2,
+            0.08
+          ],
+          "stripcell3p1": [
+            3,
+            0.08
+          ],
+          "stripcell3p2": [
+            3,
+            0.58
+          ],
+          "stripcell3p3": [
+            2,
+            0.58
+          ],
+          "stripnamep": [
+            1.5,
+            2.05
+          ],
+          "ap": [
+            0,
+            2.05
+          ],
+          "bp": [
+            3,
+            2.05
+          ]
+        },
+        "parts": [
+          {
+            "id": "r0body",
+            "poly": [
+              "r0c0",
+              "r0c1",
+              "r0c2",
+              "r0c3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r0t0",
+            "seg": [
+              "r0ta0",
+              "r0tb0"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n0",
+            "label": "0",
+            "at": "r0np0",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t1",
+            "seg": [
+              "r0ta1",
+              "r0tb1"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n1",
+            "label": "1",
+            "at": "r0np1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t2",
+            "seg": [
+              "r0ta2",
+              "r0tb2"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n2",
+            "label": "2",
+            "at": "r0np2",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t3",
+            "seg": [
+              "r0ta3",
+              "r0tb3"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n3",
+            "label": "3",
+            "at": "r0np3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t4",
+            "seg": [
+              "r0ta4",
+              "r0tb4"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n4",
+            "label": "4",
+            "at": "r0np4",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t5",
+            "seg": [
+              "r0ta5",
+              "r0tb5"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n5",
+            "label": "5",
+            "at": "r0np5",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t6",
+            "seg": [
+              "r0ta6",
+              "r0tb6"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n6",
+            "label": "6",
+            "at": "r0np6",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t7",
+            "seg": [
+              "r0ta7",
+              "r0tb7"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n7",
+            "label": "7",
+            "at": "r0np7",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0unit",
+            "label": "\\text{centimeters}",
+            "at": "r0up",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "before0",
+            "poly": [
+              "before0p0",
+              "before0p1",
+              "before0p2",
+              "before0p3"
+            ],
+            "fill": "paper",
+            "ink": "muted"
+          },
+          {
+            "id": "before1",
+            "poly": [
+              "before1p0",
+              "before1p1",
+              "before1p2",
+              "before1p3"
+            ],
+            "fill": "paper",
+            "ink": "muted"
+          },
+          {
+            "id": "before2",
+            "poly": [
+              "before2p0",
+              "before2p1",
+              "before2p2",
+              "before2p3"
+            ],
+            "fill": "paper",
+            "ink": "muted"
+          },
+          {
+            "id": "stripsguide",
+            "seg": [
+              "stripsa",
+              "stripsb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "strip",
+            "start": true
+          },
+          {
+            "id": "stripeguide",
+            "seg": [
+              "stripea",
+              "stripeb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "strip",
+            "start": true
+          },
+          {
+            "id": "stripshape",
+            "poly": [
+              "stripshapep0",
+              "stripshapep1",
+              "stripshapep2",
+              "stripshapep3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "group": "strip",
+            "start": true
+          },
+          {
+            "id": "stripcell1",
+            "poly": [
+              "stripcell1p0",
+              "stripcell1p1",
+              "stripcell1p2",
+              "stripcell1p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "strip"
+          },
+          {
+            "id": "stripcell2",
+            "poly": [
+              "stripcell2p0",
+              "stripcell2p1",
+              "stripcell2p2",
+              "stripcell2p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "strip"
+          },
+          {
+            "id": "stripcell3",
+            "poly": [
+              "stripcell3p0",
+              "stripcell3p1",
+              "stripcell3p2",
+              "stripcell3p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "strip"
+          },
+          {
+            "id": "stripname",
+            "label": "\\text{strip}",
+            "at": "stripnamep",
+            "dir": "c",
+            "size": "m",
+            "group": "strip",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "r0ring0",
+            "circle": "r0np0",
+            "r": 0.44,
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "r0ring3",
+            "circle": "r0np3",
+            "r": 0.44,
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "r0ring6",
+            "circle": "r0np6",
+            "r": 0.44,
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "aLabel",
+            "label": "A",
+            "at": "ap",
+            "dir": "c",
+            "size": "l",
+            "group": "strip",
+            "flies": true
+          },
+          {
+            "id": "bLabel",
+            "label": "B",
+            "at": "bp",
+            "dir": "c",
+            "size": "l",
+            "group": "strip",
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A strip lies on a ruler. Its length is how many equal spaces fit between its ends.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Length = spaces between ends",
+              "at": "length"
+            },
+            {
+              "do": "highlight",
+              "target": "stripshape",
+              "at": "ends"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each space on this ruler is one centimeter, written c m.",
+          "do": [
+            {
+              "do": "show",
+              "target": "stripcell1",
+              "at": "one"
+            },
+            {
+              "do": "text",
+              "text": "$1$ space $=$ $1$ cm",
+              "at": "one"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "The numbers count the spaces from zero: one, two, three.",
+          "do": [
+            {
+              "do": "show",
+              "target": "r0ring0",
+              "at": "zero"
+            },
+            {
+              "do": "hide",
+              "target": "r0ring0",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "stripcell2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "stripcell3",
+              "at": "three"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "From zero, the end mark is the length.",
+          "do": [
+            {
+              "do": "text",
+              "text": "From $0$: end mark = length",
+              "at": "From"
+            },
+            {
+              "do": "show",
+              "target": "r0ring3",
+              "at": "end"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide the strip. The same three spaces travel with it.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "r0ring3",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "strip",
+              "by": [
+                3,
+                0
+              ],
+              "at": "Slide",
+              "dur": 2.0
+            },
+            {
+              "do": "clear",
+              "at": "same"
+            },
+            {
+              "do": "text",
+              "text": "Same $3$ spaces, same length",
+              "at": "same"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The strip runs from A to B. What is its length in centimeters?",
+          "do": [
+            {
+              "do": "hide",
+              "target": "stripname",
+              "at": "The"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aLabel",
+                "bLabel"
+              ],
+              "at": "The"
+            },
+            {
+              "do": "clear",
+              "at": "The"
+            },
+            {
+              "do": "problem",
+              "text": "The strip runs from $A$ to $B$. What is its length in cm?",
+              "at": "The"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "learner",
+          "say": "It ends at the six mark, so it is six centimeters long.",
+          "do": [
+            {
+              "do": "show",
+              "target": "r0ring6",
+              "at": "six"
+            },
+            {
+              "do": "text",
+              "text": "Length: $6$ cm",
+              "id": "slip",
+              "at": "so"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "That six counts the spaces from zero. Three of them are before the strip, on the bare ruler.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "counts"
+            },
+            {
+              "do": "show",
+              "target": [
+                "before0",
+                "before1",
+                "before2"
+              ],
+              "at": "Three"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "learner",
+          "say": "Only three are under the strip. Six minus three is three.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "r0ring6",
+              "at": "Only"
+            },
+            {
+              "do": "highlight",
+              "target": "stripshape",
+              "at": "under"
+            },
+            {
+              "do": "answer",
+              "tex": "6-3=3\\text{ cm}",
+              "at": "Six"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is end mark minus start mark.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "end"
+            },
+            {
+              "do": "header",
+              "tex": "\\text{end mark}-\\text{start mark}",
+              "label": "Length",
+              "keep": true,
+              "at": "end"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "before0",
+                "before1",
+                "before2"
+              ],
+              "at": "end"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -2.45,
+          10.9,
+          4.5
+        ],
+        "points": {
+          "r0c0": [
+            -0.55,
+            0
+          ],
+          "r0c1": [
+            10.55,
+            0
+          ],
+          "r0c2": [
+            10.55,
+            -1.25
+          ],
+          "r0c3": [
+            -0.55,
+            -1.25
+          ],
+          "r0ta0": [
+            0,
+            0
+          ],
+          "r0tb0": [
+            0,
+            -0.38
+          ],
+          "r0np0": [
+            0,
+            -0.85
+          ],
+          "r0ta1": [
+            1,
+            0
+          ],
+          "r0tb1": [
+            1,
+            -0.38
+          ],
+          "r0np1": [
+            1,
+            -0.85
+          ],
+          "r0ta2": [
+            2,
+            0
+          ],
+          "r0tb2": [
+            2,
+            -0.38
+          ],
+          "r0np2": [
+            2,
+            -0.85
+          ],
+          "r0ta3": [
+            3,
+            0
+          ],
+          "r0tb3": [
+            3,
+            -0.38
+          ],
+          "r0np3": [
+            3,
+            -0.85
+          ],
+          "r0ta4": [
+            4,
+            0
+          ],
+          "r0tb4": [
+            4,
+            -0.38
+          ],
+          "r0np4": [
+            4,
+            -0.85
+          ],
+          "r0ta5": [
+            5,
+            0
+          ],
+          "r0tb5": [
+            5,
+            -0.38
+          ],
+          "r0np5": [
+            5,
+            -0.85
+          ],
+          "r0ta6": [
+            6,
+            0
+          ],
+          "r0tb6": [
+            6,
+            -0.38
+          ],
+          "r0np6": [
+            6,
+            -0.85
+          ],
+          "r0ta7": [
+            7,
+            0
+          ],
+          "r0tb7": [
+            7,
+            -0.38
+          ],
+          "r0np7": [
+            7,
+            -0.85
+          ],
+          "r0ta8": [
+            8,
+            0
+          ],
+          "r0tb8": [
+            8,
+            -0.38
+          ],
+          "r0np8": [
+            8,
+            -0.85
+          ],
+          "r0ta9": [
+            9,
+            0
+          ],
+          "r0tb9": [
+            9,
+            -0.38
+          ],
+          "r0np9": [
+            9,
+            -0.85
+          ],
+          "r0ta10": [
+            10,
+            0
+          ],
+          "r0tb10": [
+            10,
+            -0.38
+          ],
+          "r0np10": [
+            10,
+            -0.85
+          ],
+          "r0up": [
+            5.0,
+            -1.95
+          ],
+          "stringshapep0": [
+            1,
+            2.37
+          ],
+          "stringshapep1": [
+            10,
+            2.37
+          ],
+          "stringshapep2": [
+            10,
+            3.17
+          ],
+          "stringshapep3": [
+            1,
+            3.17
+          ],
+          "stringsa": [
+            1,
+            2.37
+          ],
+          "stringsb": [
+            1,
+            0
+          ],
+          "stringea": [
+            10,
+            2.37
+          ],
+          "stringeb": [
+            10,
+            0
+          ],
+          "stringcell1p0": [
+            1,
+            1.75
+          ],
+          "stringcell1p1": [
+            2,
+            1.75
+          ],
+          "stringcell1p2": [
+            2,
+            2.25
+          ],
+          "stringcell1p3": [
+            1,
+            2.25
+          ],
+          "stringcell2p0": [
+            2,
+            1.75
+          ],
+          "stringcell2p1": [
+            3,
+            1.75
+          ],
+          "stringcell2p2": [
+            3,
+            2.25
+          ],
+          "stringcell2p3": [
+            2,
+            2.25
+          ],
+          "stringcell3p0": [
+            3,
+            1.75
+          ],
+          "stringcell3p1": [
+            4,
+            1.75
+          ],
+          "stringcell3p2": [
+            4,
+            2.25
+          ],
+          "stringcell3p3": [
+            3,
+            2.25
+          ],
+          "stringcell4p0": [
+            4,
+            1.75
+          ],
+          "stringcell4p1": [
+            5,
+            1.75
+          ],
+          "stringcell4p2": [
+            5,
+            2.25
+          ],
+          "stringcell4p3": [
+            4,
+            2.25
+          ],
+          "stringcell5p0": [
+            5,
+            1.75
+          ],
+          "stringcell5p1": [
+            6,
+            1.75
+          ],
+          "stringcell5p2": [
+            6,
+            2.25
+          ],
+          "stringcell5p3": [
+            5,
+            2.25
+          ],
+          "stringcell6p0": [
+            6,
+            1.75
+          ],
+          "stringcell6p1": [
+            7,
+            1.75
+          ],
+          "stringcell6p2": [
+            7,
+            2.25
+          ],
+          "stringcell6p3": [
+            6,
+            2.25
+          ],
+          "stringcell7p0": [
+            7,
+            1.75
+          ],
+          "stringcell7p1": [
+            8,
+            1.75
+          ],
+          "stringcell7p2": [
+            8,
+            2.25
+          ],
+          "stringcell7p3": [
+            7,
+            2.25
+          ],
+          "stringcell8p0": [
+            8,
+            1.75
+          ],
+          "stringcell8p1": [
+            9,
+            1.75
+          ],
+          "stringcell8p2": [
+            9,
+            2.25
+          ],
+          "stringcell8p3": [
+            8,
+            2.25
+          ],
+          "stringcell9p0": [
+            9,
+            1.75
+          ],
+          "stringcell9p1": [
+            10,
+            1.75
+          ],
+          "stringcell9p2": [
+            10,
+            2.25
+          ],
+          "stringcell9p3": [
+            9,
+            2.25
+          ],
+          "stringnamep": [
+            5.5,
+            2.77
+          ],
+          "twigshapep0": [
+            2,
+            0.7
+          ],
+          "twigshapep1": [
+            7,
+            0.7
+          ],
+          "twigshapep2": [
+            7,
+            1.5
+          ],
+          "twigshapep3": [
+            2,
+            1.5
+          ],
+          "twigsa": [
+            2,
+            0.7
+          ],
+          "twigsb": [
+            2,
+            0
+          ],
+          "twigea": [
+            7,
+            0.7
+          ],
+          "twigeb": [
+            7,
+            0
+          ],
+          "twigcell1p0": [
+            2,
+            0.08
+          ],
+          "twigcell1p1": [
+            3,
+            0.08
+          ],
+          "twigcell1p2": [
+            3,
+            0.58
+          ],
+          "twigcell1p3": [
+            2,
+            0.58
+          ],
+          "twigcell2p0": [
+            3,
+            0.08
+          ],
+          "twigcell2p1": [
+            4,
+            0.08
+          ],
+          "twigcell2p2": [
+            4,
+            0.58
+          ],
+          "twigcell2p3": [
+            3,
+            0.58
+          ],
+          "twigcell3p0": [
+            4,
+            0.08
+          ],
+          "twigcell3p1": [
+            5,
+            0.08
+          ],
+          "twigcell3p2": [
+            5,
+            0.58
+          ],
+          "twigcell3p3": [
+            4,
+            0.58
+          ],
+          "twigcell4p0": [
+            5,
+            0.08
+          ],
+          "twigcell4p1": [
+            6,
+            0.08
+          ],
+          "twigcell4p2": [
+            6,
+            0.58
+          ],
+          "twigcell4p3": [
+            5,
+            0.58
+          ],
+          "twigcell5p0": [
+            6,
+            0.08
+          ],
+          "twigcell5p1": [
+            7,
+            0.08
+          ],
+          "twigcell5p2": [
+            7,
+            0.58
+          ],
+          "twigcell5p3": [
+            6,
+            0.58
+          ],
+          "twignamep": [
+            4.5,
+            1.1
+          ],
+          "matchA": [
+            5,
+            1.5
+          ],
+          "matchB": [
+            5,
+            2.25
+          ],
+          "extraA": [
+            5,
+            3.42
+          ],
+          "extraB": [
+            9,
+            3.42
+          ]
+        },
+        "parts": [
+          {
+            "id": "r0body",
+            "poly": [
+              "r0c0",
+              "r0c1",
+              "r0c2",
+              "r0c3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r0t0",
+            "seg": [
+              "r0ta0",
+              "r0tb0"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n0",
+            "label": "0",
+            "at": "r0np0",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t1",
+            "seg": [
+              "r0ta1",
+              "r0tb1"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n1",
+            "label": "1",
+            "at": "r0np1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t2",
+            "seg": [
+              "r0ta2",
+              "r0tb2"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n2",
+            "label": "2",
+            "at": "r0np2",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t3",
+            "seg": [
+              "r0ta3",
+              "r0tb3"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n3",
+            "label": "3",
+            "at": "r0np3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t4",
+            "seg": [
+              "r0ta4",
+              "r0tb4"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n4",
+            "label": "4",
+            "at": "r0np4",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t5",
+            "seg": [
+              "r0ta5",
+              "r0tb5"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n5",
+            "label": "5",
+            "at": "r0np5",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t6",
+            "seg": [
+              "r0ta6",
+              "r0tb6"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n6",
+            "label": "6",
+            "at": "r0np6",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t7",
+            "seg": [
+              "r0ta7",
+              "r0tb7"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n7",
+            "label": "7",
+            "at": "r0np7",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t8",
+            "seg": [
+              "r0ta8",
+              "r0tb8"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n8",
+            "label": "8",
+            "at": "r0np8",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t9",
+            "seg": [
+              "r0ta9",
+              "r0tb9"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n9",
+            "label": "9",
+            "at": "r0np9",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t10",
+            "seg": [
+              "r0ta10",
+              "r0tb10"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n10",
+            "label": "10",
+            "at": "r0np10",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0unit",
+            "label": "\\text{centimeters}",
+            "at": "r0up",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "stringsguide",
+            "seg": [
+              "stringsa",
+              "stringsb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "string",
+            "start": true
+          },
+          {
+            "id": "stringeguide",
+            "seg": [
+              "stringea",
+              "stringeb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "string",
+            "start": true
+          },
+          {
+            "id": "stringshape",
+            "poly": [
+              "stringshapep0",
+              "stringshapep1",
+              "stringshapep2",
+              "stringshapep3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "group": "string",
+            "start": true
+          },
+          {
+            "id": "stringcell1",
+            "poly": [
+              "stringcell1p0",
+              "stringcell1p1",
+              "stringcell1p2",
+              "stringcell1p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell2",
+            "poly": [
+              "stringcell2p0",
+              "stringcell2p1",
+              "stringcell2p2",
+              "stringcell2p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell3",
+            "poly": [
+              "stringcell3p0",
+              "stringcell3p1",
+              "stringcell3p2",
+              "stringcell3p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell4",
+            "poly": [
+              "stringcell4p0",
+              "stringcell4p1",
+              "stringcell4p2",
+              "stringcell4p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell5",
+            "poly": [
+              "stringcell5p0",
+              "stringcell5p1",
+              "stringcell5p2",
+              "stringcell5p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell6",
+            "poly": [
+              "stringcell6p0",
+              "stringcell6p1",
+              "stringcell6p2",
+              "stringcell6p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell7",
+            "poly": [
+              "stringcell7p0",
+              "stringcell7p1",
+              "stringcell7p2",
+              "stringcell7p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell8",
+            "poly": [
+              "stringcell8p0",
+              "stringcell8p1",
+              "stringcell8p2",
+              "stringcell8p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringcell9",
+            "poly": [
+              "stringcell9p0",
+              "stringcell9p1",
+              "stringcell9p2",
+              "stringcell9p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "string"
+          },
+          {
+            "id": "stringname",
+            "label": "\\text{string}",
+            "at": "stringnamep",
+            "dir": "c",
+            "size": "m",
+            "group": "string",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "twigsguide",
+            "seg": [
+              "twigsa",
+              "twigsb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "twig",
+            "start": true
+          },
+          {
+            "id": "twigeguide",
+            "seg": [
+              "twigea",
+              "twigeb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "twig",
+            "start": true
+          },
+          {
+            "id": "twigshape",
+            "poly": [
+              "twigshapep0",
+              "twigshapep1",
+              "twigshapep2",
+              "twigshapep3"
+            ],
+            "fill": "wood",
+            "ink": "wood",
+            "group": "twig",
+            "start": true
+          },
+          {
+            "id": "twigcell1",
+            "poly": [
+              "twigcell1p0",
+              "twigcell1p1",
+              "twigcell1p2",
+              "twigcell1p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "twig"
+          },
+          {
+            "id": "twigcell2",
+            "poly": [
+              "twigcell2p0",
+              "twigcell2p1",
+              "twigcell2p2",
+              "twigcell2p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "twig"
+          },
+          {
+            "id": "twigcell3",
+            "poly": [
+              "twigcell3p0",
+              "twigcell3p1",
+              "twigcell3p2",
+              "twigcell3p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "twig"
+          },
+          {
+            "id": "twigcell4",
+            "poly": [
+              "twigcell4p0",
+              "twigcell4p1",
+              "twigcell4p2",
+              "twigcell4p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "twig"
+          },
+          {
+            "id": "twigcell5",
+            "poly": [
+              "twigcell5p0",
+              "twigcell5p1",
+              "twigcell5p2",
+              "twigcell5p3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "group": "twig"
+          },
+          {
+            "id": "twigname",
+            "label": "\\text{twig}",
+            "at": "twignamep",
+            "dir": "c",
+            "size": "m",
+            "group": "twig",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "match",
+            "seg": [
+              "matchA",
+              "matchB"
+            ],
+            "ink": "accent",
+            "dash": true
+          },
+          {
+            "id": "extra",
+            "dim": [
+              "extraA",
+              "extraB"
+            ],
+            "side": "n",
+            "tex": "4\\text{ cm}",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A twig and a string lie along a measuring tape.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "A"
+            },
+            {
+              "do": "problem",
+              "text": "A twig and a string lie along a measuring tape. How much longer is the string than the twig? Answer in centimeters.",
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": "twigshape",
+              "at": "twig"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "How much longer is the string than the twig? Answer in centimeters.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "stringshape",
+              "at": "string"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "The twig is seven minus two, five.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "twigcell1",
+                "twigcell2",
+                "twigcell3",
+                "twigcell4",
+                "twigcell5"
+              ],
+              "at": "twig"
+            },
+            {
+              "do": "clear",
+              "at": "twig"
+            },
+            {
+              "do": "write",
+              "tex": "7-2=5\\text{ cm}",
+              "note": "\\text{twig}",
+              "at": "twig",
+              "fresh": true
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "The string is ten minus one, nine.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "stringcell1",
+                "stringcell2",
+                "stringcell3",
+                "stringcell4",
+                "stringcell5",
+                "stringcell6",
+                "stringcell7",
+                "stringcell8",
+                "stringcell9"
+              ],
+              "at": "string"
+            },
+            {
+              "do": "write",
+              "tex": "10-1=9\\text{ cm}",
+              "note": "\\text{string}",
+              "at": "string",
+              "fresh": true
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide both to zero.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "twig",
+              "by": [
+                -2,
+                0
+              ],
+              "at": "Slide",
+              "dur": 2.0
+            },
+            {
+              "do": "slide",
+              "target": "string",
+              "by": [
+                -1,
+                0
+              ],
+              "at": "Slide",
+              "dur": 2.0
+            }
+          ],
+          "pause": 1.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "The string reaches four spaces past the twig.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "match",
+              "at": "reaches"
+            },
+            {
+              "do": "show",
+              "target": "extra",
+              "at": "four"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Nine minus five: the string is four centimeters longer.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Nine"
+            },
+            {
+              "do": "write",
+              "tex": "9-5=4\\text{ cm}",
+              "note": "\\text{longer}-\\text{shorter}",
+              "at": "Nine",
+              "fresh": true
+            },
+            {
+              "do": "answer",
+              "tex": "4\\text{ cm longer}",
+              "at": "longer"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.9,
+          -6.85,
+          10.9,
+          3.0
+        ],
+        "points": {
+          "r0c0": [
+            -0.55,
+            0
+          ],
+          "r0c1": [
+            10.55,
+            0
+          ],
+          "r0c2": [
+            10.55,
+            -1.25
+          ],
+          "r0c3": [
+            -0.55,
+            -1.25
+          ],
+          "r0ta0": [
+            0,
+            0
+          ],
+          "r0tb0": [
+            0,
+            -0.38
+          ],
+          "r0np0": [
+            0,
+            -0.85
+          ],
+          "r0ta1": [
+            1,
+            0
+          ],
+          "r0tb1": [
+            1,
+            -0.38
+          ],
+          "r0np1": [
+            1,
+            -0.85
+          ],
+          "r0ta2": [
+            2,
+            0
+          ],
+          "r0tb2": [
+            2,
+            -0.38
+          ],
+          "r0np2": [
+            2,
+            -0.85
+          ],
+          "r0ta3": [
+            3,
+            0
+          ],
+          "r0tb3": [
+            3,
+            -0.38
+          ],
+          "r0np3": [
+            3,
+            -0.85
+          ],
+          "r0ta4": [
+            4,
+            0
+          ],
+          "r0tb4": [
+            4,
+            -0.38
+          ],
+          "r0np4": [
+            4,
+            -0.85
+          ],
+          "r0ta5": [
+            5,
+            0
+          ],
+          "r0tb5": [
+            5,
+            -0.38
+          ],
+          "r0np5": [
+            5,
+            -0.85
+          ],
+          "r0ta6": [
+            6,
+            0
+          ],
+          "r0tb6": [
+            6,
+            -0.38
+          ],
+          "r0np6": [
+            6,
+            -0.85
+          ],
+          "r0ta7": [
+            7,
+            0
+          ],
+          "r0tb7": [
+            7,
+            -0.38
+          ],
+          "r0np7": [
+            7,
+            -0.85
+          ],
+          "r0ta8": [
+            8,
+            0
+          ],
+          "r0tb8": [
+            8,
+            -0.38
+          ],
+          "r0np8": [
+            8,
+            -0.85
+          ],
+          "r0ta9": [
+            9,
+            0
+          ],
+          "r0tb9": [
+            9,
+            -0.38
+          ],
+          "r0np9": [
+            9,
+            -0.85
+          ],
+          "r0ta10": [
+            10,
+            0
+          ],
+          "r0tb10": [
+            10,
+            -0.38
+          ],
+          "r0np10": [
+            10,
+            -0.85
+          ],
+          "r0up": [
+            5.0,
+            -1.95
+          ],
+          "r1c0": [
+            -0.55,
+            -4.4
+          ],
+          "r1c1": [
+            10.55,
+            -4.4
+          ],
+          "r1c2": [
+            10.55,
+            -5.65
+          ],
+          "r1c3": [
+            -0.55,
+            -5.65
+          ],
+          "r1ta0": [
+            0,
+            -4.4
+          ],
+          "r1tb0": [
+            0,
+            -4.78
+          ],
+          "r1np0": [
+            0,
+            -5.25
+          ],
+          "r1ta1": [
+            1,
+            -4.4
+          ],
+          "r1tb1": [
+            1,
+            -4.78
+          ],
+          "r1np1": [
+            1,
+            -5.25
+          ],
+          "r1ta2": [
+            2,
+            -4.4
+          ],
+          "r1tb2": [
+            2,
+            -4.78
+          ],
+          "r1np2": [
+            2,
+            -5.25
+          ],
+          "r1ta3": [
+            3,
+            -4.4
+          ],
+          "r1tb3": [
+            3,
+            -4.78
+          ],
+          "r1np3": [
+            3,
+            -5.25
+          ],
+          "r1ta4": [
+            4,
+            -4.4
+          ],
+          "r1tb4": [
+            4,
+            -4.78
+          ],
+          "r1np4": [
+            4,
+            -5.25
+          ],
+          "r1ta5": [
+            5,
+            -4.4
+          ],
+          "r1tb5": [
+            5,
+            -4.78
+          ],
+          "r1np5": [
+            5,
+            -5.25
+          ],
+          "r1ta6": [
+            6,
+            -4.4
+          ],
+          "r1tb6": [
+            6,
+            -4.78
+          ],
+          "r1np6": [
+            6,
+            -5.25
+          ],
+          "r1ta7": [
+            7,
+            -4.4
+          ],
+          "r1tb7": [
+            7,
+            -4.78
+          ],
+          "r1np7": [
+            7,
+            -5.25
+          ],
+          "r1ta8": [
+            8,
+            -4.4
+          ],
+          "r1tb8": [
+            8,
+            -4.78
+          ],
+          "r1np8": [
+            8,
+            -5.25
+          ],
+          "r1ta9": [
+            9,
+            -4.4
+          ],
+          "r1tb9": [
+            9,
+            -4.78
+          ],
+          "r1np9": [
+            9,
+            -5.25
+          ],
+          "r1ta10": [
+            10,
+            -4.4
+          ],
+          "r1tb10": [
+            10,
+            -4.78
+          ],
+          "r1np10": [
+            10,
+            -5.25
+          ],
+          "r1up": [
+            5.0,
+            -6.3500000000000005
+          ],
+          "ribbonshapep0": [
+            0,
+            0.85
+          ],
+          "ribbonshapep1": [
+            8,
+            0.85
+          ],
+          "ribbonshapep2": [
+            8,
+            1.65
+          ],
+          "ribbonshapep3": [
+            0,
+            1.65
+          ],
+          "ribbonsa": [
+            0,
+            0.85
+          ],
+          "ribbonsb": [
+            0,
+            0
+          ],
+          "ribbonea": [
+            8,
+            0.85
+          ],
+          "ribboneb": [
+            8,
+            0
+          ],
+          "ribbonnamep": [
+            4.0,
+            1.25
+          ],
+          "papershapep0": [
+            3,
+            -3.55
+          ],
+          "papershapep1": [
+            10,
+            -3.55
+          ],
+          "papershapep2": [
+            10,
+            -2.75
+          ],
+          "papershapep3": [
+            3,
+            -2.75
+          ],
+          "papersa": [
+            3,
+            -3.55
+          ],
+          "papersb": [
+            3,
+            -4.4
+          ],
+          "paperea": [
+            10,
+            -3.55
+          ],
+          "papereb": [
+            10,
+            -4.4
+          ],
+          "papernamep": [
+            6.5,
+            -3.15
+          ],
+          "extraA": [
+            7,
+            1.9
+          ],
+          "extraB": [
+            8,
+            1.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "r0body",
+            "poly": [
+              "r0c0",
+              "r0c1",
+              "r0c2",
+              "r0c3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r0t0",
+            "seg": [
+              "r0ta0",
+              "r0tb0"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n0",
+            "label": "0",
+            "at": "r0np0",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t1",
+            "seg": [
+              "r0ta1",
+              "r0tb1"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n1",
+            "label": "1",
+            "at": "r0np1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t2",
+            "seg": [
+              "r0ta2",
+              "r0tb2"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n2",
+            "label": "2",
+            "at": "r0np2",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t3",
+            "seg": [
+              "r0ta3",
+              "r0tb3"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n3",
+            "label": "3",
+            "at": "r0np3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t4",
+            "seg": [
+              "r0ta4",
+              "r0tb4"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n4",
+            "label": "4",
+            "at": "r0np4",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t5",
+            "seg": [
+              "r0ta5",
+              "r0tb5"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n5",
+            "label": "5",
+            "at": "r0np5",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t6",
+            "seg": [
+              "r0ta6",
+              "r0tb6"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n6",
+            "label": "6",
+            "at": "r0np6",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t7",
+            "seg": [
+              "r0ta7",
+              "r0tb7"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n7",
+            "label": "7",
+            "at": "r0np7",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t8",
+            "seg": [
+              "r0ta8",
+              "r0tb8"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n8",
+            "label": "8",
+            "at": "r0np8",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t9",
+            "seg": [
+              "r0ta9",
+              "r0tb9"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n9",
+            "label": "9",
+            "at": "r0np9",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0t10",
+            "seg": [
+              "r0ta10",
+              "r0tb10"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r0n10",
+            "label": "10",
+            "at": "r0np10",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r0unit",
+            "label": "\\text{centimeters}",
+            "at": "r0up",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "r1body",
+            "poly": [
+              "r1c0",
+              "r1c1",
+              "r1c2",
+              "r1c3"
+            ],
+            "fill": "gold-fill",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "r1t0",
+            "seg": [
+              "r1ta0",
+              "r1tb0"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n0",
+            "label": "0",
+            "at": "r1np0",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t1",
+            "seg": [
+              "r1ta1",
+              "r1tb1"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n1",
+            "label": "1",
+            "at": "r1np1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t2",
+            "seg": [
+              "r1ta2",
+              "r1tb2"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n2",
+            "label": "2",
+            "at": "r1np2",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t3",
+            "seg": [
+              "r1ta3",
+              "r1tb3"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n3",
+            "label": "3",
+            "at": "r1np3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t4",
+            "seg": [
+              "r1ta4",
+              "r1tb4"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n4",
+            "label": "4",
+            "at": "r1np4",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t5",
+            "seg": [
+              "r1ta5",
+              "r1tb5"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n5",
+            "label": "5",
+            "at": "r1np5",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t6",
+            "seg": [
+              "r1ta6",
+              "r1tb6"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n6",
+            "label": "6",
+            "at": "r1np6",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t7",
+            "seg": [
+              "r1ta7",
+              "r1tb7"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n7",
+            "label": "7",
+            "at": "r1np7",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t8",
+            "seg": [
+              "r1ta8",
+              "r1tb8"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n8",
+            "label": "8",
+            "at": "r1np8",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t9",
+            "seg": [
+              "r1ta9",
+              "r1tb9"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n9",
+            "label": "9",
+            "at": "r1np9",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1t10",
+            "seg": [
+              "r1ta10",
+              "r1tb10"
+            ],
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "r1n10",
+            "label": "10",
+            "at": "r1np10",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "r1unit",
+            "label": "\\text{centimeters}",
+            "at": "r1up",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "ribbonsguide",
+            "seg": [
+              "ribbonsa",
+              "ribbonsb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "ribbon",
+            "start": true
+          },
+          {
+            "id": "ribboneguide",
+            "seg": [
+              "ribbonea",
+              "ribboneb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "ribbon",
+            "start": true
+          },
+          {
+            "id": "ribbonshape",
+            "poly": [
+              "ribbonshapep0",
+              "ribbonshapep1",
+              "ribbonshapep2",
+              "ribbonshapep3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "group": "ribbon",
+            "start": true
+          },
+          {
+            "id": "ribbonname",
+            "label": "\\text{ribbon}",
+            "at": "ribbonnamep",
+            "dir": "c",
+            "size": "m",
+            "group": "ribbon",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "papersguide",
+            "seg": [
+              "papersa",
+              "papersb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "paper",
+            "start": true
+          },
+          {
+            "id": "papereguide",
+            "seg": [
+              "paperea",
+              "papereb"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "group": "paper",
+            "start": true
+          },
+          {
+            "id": "papershape",
+            "poly": [
+              "papershapep0",
+              "papershapep1",
+              "papershapep2",
+              "papershapep3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "group": "paper",
+            "start": true
+          },
+          {
+            "id": "papername",
+            "label": "\\text{paper strip}",
+            "at": "papernamep",
+            "dir": "c",
+            "size": "m",
+            "group": "paper",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "r1ring3",
+            "circle": "r1np3",
+            "r": 0.44,
+            "fill": "none",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "extra",
+            "dim": [
+              "extraA",
+              "extraB"
+            ],
+            "side": "n",
+            "tex": "1\\text{ cm}",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A ribbon lies on the top ruler and a paper strip lies on the bottom ruler.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "A"
+            },
+            {
+              "do": "header",
+              "off": true,
+              "at": "A"
+            },
+            {
+              "do": "problem",
+              "text": "A ribbon lies on the top ruler and a paper strip lies on the bottom ruler. Both rulers are marked in centimeters. Measure both objects. Which is longer, and by how much?",
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": "papershape",
+              "at": "paper"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Both rulers are marked in centimeters.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "r1unit",
+              "at": "centimeters"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Measure both objects. Which is longer, and by how much?",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "ribbonshape",
+              "at": "longer"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The paper strip sticks out farther to the right, but it starts at three, not at zero.",
+          "do": [
+            {
+              "do": "show",
+              "target": "r1ring3",
+              "at": "three"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "The ribbon is eight minus zero, eight. The paper strip is ten minus three, seven.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "r1ring3",
+              "at": "ribbon"
+            },
+            {
+              "do": "clear",
+              "at": "eight"
+            },
+            {
+              "do": "header",
+              "tex": "\\text{end mark}-\\text{start mark}",
+              "label": "Length",
+              "at": "eight"
+            },
+            {
+              "do": "write",
+              "tex": "8-0=8\\text{ cm}",
+              "note": "\\text{ribbon}",
+              "at": "eight",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "10-3=7\\text{ cm}",
+              "note": "\\text{paper strip}",
+              "at": "ten",
+              "fresh": true
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Eight minus seven is one, so the ribbon is one centimeter longer.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "paper",
+              "by": [
+                -3,
+                0
+              ],
+              "at": "Eight",
+              "dur": 2.0
+            },
+            {
+              "do": "show",
+              "target": "extra",
+              "at": "centimeter"
+            },
+            {
+              "do": "clear",
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "8-7=1\\text{ cm}",
+              "note": "\\text{longer}-\\text{shorter}",
+              "at": "Eight",
+              "fresh": true
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{ribbon, }1\\text{ cm}",
+              "at": "ribbon"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "A ruler counts spaces from zero. Compare lengths, not end marks.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "ruler"
+            },
+            {
+              "do": "text",
+              "text": "A ruler counts spaces from $0$",
+              "at": "ruler"
+            },
+            {
+              "do": "text",
+              "text": "Compare lengths, not end marks",
+              "at": "Compare"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Length is the spaces between the ends: end mark minus start mark.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Length = spaces between ends",
+              "at": "Length"
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}

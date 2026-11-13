@@ -1,12 +1,10 @@
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useRouter } from "@tanstack/react-router";
-import { closeSearch, closeTo } from "../../../lib/return-to";
+import { closeSearch } from "../../../lib/return-to";
 import { lazy, Suspense } from "react";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../ui/Button";
-import { PrintButton } from "../../../ui/PrintButton";
-import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
@@ -19,10 +17,7 @@ import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
-import { mapOptions, studentRecordOptions, todayOptions } from "./teacher-api";
-import { StudentSections } from "./StudentSections";
-import { WorkReplaySlot, workSkill } from "./WorkReplaySlot";
-import { TryAsStudent } from "../../profiles/TryAsStudent";
+import { mapOptions, todayOptions } from "./teacher-api";
 import {
   classUrl,
   fullDay,
@@ -235,17 +230,10 @@ export function MapScreen() {
   const params = useParams({ strict: false }) as {
     org: string;
     class: string;
-    student?: string;
-    work?: string;
   };
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
-  const [search] = useClassSearch();
-  const studentPath = params.student
-    ? `${classUrl(place.org, place.class, "map")}/${params.student}`
-    : "";
-  const router = useRouter();
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({
@@ -276,26 +264,6 @@ export function MapScreen() {
             <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} />
           </div>
-          {params.student && params.work && (
-            <WorkReplaySlot
-              student={params.student}
-              attempt={params.work}
-              skill={workSkill(search.skill)}
-              workPath={(attempt) => `${studentPath}/work/${attempt}`}
-              closePath={studentPath}
-            />
-          )}
-          <MapStudentSheet
-            org={place.org}
-            classId={place.class}
-            student={params.student}
-            // Under an open answer the sheet waits closed: Back reopens it.
-            open={!params.work}
-            // Back to where it was opened: the map, Today, the gradebook…
-            onClose={() =>
-              closeTo(router, `/${classUrl(place.org, place.class, "map")}`)
-            }
-          />
           <ClassMap
             data={map.data}
             action={
@@ -316,86 +284,6 @@ export function MapScreen() {
   );
 }
 
-/** One student, over the map: their whole record in one column, with
- * trying their level and printing. Its own URL under the class
- * (`map/<student>`), so the class's tabs stay and Back closes it. */
-function MapStudentSheet({
-  org,
-  classId,
-  student,
-  open,
-  onClose,
-}: {
-  org: string;
-  classId: string;
-  student: string | undefined;
-  open: boolean;
-  onClose: () => void;
-}) {
-  const session = useStaffSession();
-  const record = useQuery({
-    ...studentRecordOptions(session, student ?? ""),
-    enabled: !!student,
-  });
-  const data = record.data;
-  return (
-    <Sheet
-      open={!!student && open}
-      tall
-      onOpenChange={(open) => {
-        if (!open) onClose();
-      }}
-      title={data?.student.name ?? "Student"}
-      description={
-        data ? data.classes.map((entry) => entry.name).join(", ") : undefined
-      }
-      returnFocus={() =>
-        document.querySelector<HTMLElement>(`[data-map-student="${student}"]`)
-      }
-    >
-      {!data ? (
-        record.isError ? (
-          <LoadFailed
-            what="This record"
-            onRetry={() => void record.refetch()}
-          />
-        ) : (
-          <Loading />
-        )
-      ) : (
-        <div className={styles.sheetRecord} data-map-student-record={student}>
-          <div className={styles.recordAction}>
-            <TryAsStudent
-              session={currentSession()}
-              personId={data.student.id}
-            />
-            <PrintButton
-              variant="quiet"
-              download={() =>
-                downloadPdf({
-                  path: `/school/students/${encodeURIComponent(data.student.id)}/record.pdf?format=${paperFormat()}`,
-                  token: currentSession().token,
-                  name: "amp-progress-report.pdf",
-                })
-              }
-            >
-              Print progress report
-            </PrintButton>
-          </div>
-          <StudentSections
-            data={data}
-            org={org}
-            single
-            workPath={(attempt) =>
-              `${classUrl(org, classId, "map")}/${data.student.id}/work/${attempt}`
-            }
-          />
-        </div>
-      )}
-    </Sheet>
-  );
-}
-
 function EmptyMap({ org, classId }: { org: string; classId: string }) {
   return (
     <EmptyState
@@ -410,8 +298,6 @@ function EmptyMap({ org, classId }: { org: string; classId: string }) {
           Add students
         </Link>
       }
-    >
-      Each student gets a row here, placed by the work they do.
-    </EmptyState>
+    />
   );
 }

@@ -1,3 +1,4 @@
+import { LayerHost } from "../../nav/LayerHost";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { ReactNode } from "react";
@@ -166,6 +167,8 @@ export function OrgFrame({
       <SubTabsShown.Provider value={links.length > 1}>
         {children}
       </SubTabsShown.Provider>
+      {/* Details opened over this page (?open=): it stays, they stack. */}
+      <LayerHost org={orgId} />
     </main>
   );
 }

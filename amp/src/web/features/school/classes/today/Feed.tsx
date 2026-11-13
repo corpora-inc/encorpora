@@ -59,7 +59,7 @@ function FeedItem({
       </span>
       <div className={styles.todoBody}>
         <h3 className={styles.todoTitle}>{entry.title}</h3>
-        <p className={styles.todoDetail}>{entry.detail}</p>
+        {entry.detail && <p className={styles.todoDetail}>{entry.detail}</p>}
         {entry.links && <p className={styles.todoLinks}>{entry.links}</p>}
         {entry.rule && <RuleNote>{entry.rule}</RuleNote>}
         {people.length > 0 && (

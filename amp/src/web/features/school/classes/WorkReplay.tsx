@@ -22,11 +22,15 @@ import { useStaffSession } from "./api";
 import { workReplayOptions } from "./teacher-api";
 import { clockTime, resultLabel, resultTone, shortDay } from "./teacher-shared";
 import styles from "./WorkReplay.module.css";
-import { closeSearch, closeTo } from "../../../lib/return-to";
+import { closeTo } from "../../../lib/return-to";
 import {
-  LessonDialog,
-  lessonParam,
-} from "../../pathways/LessonDialog";
+  OPEN_KEY,
+  popLayer,
+  readStack,
+  replaceTop,
+  work,
+} from "../../../nav/entities";
+import { EntityLink } from "../../../nav/links";
 
 const HELP_WORDS: Record<string, string> = {
   hint: "Hint",
@@ -97,25 +101,29 @@ export function WorkReplay({
   skill,
   workPath,
   closePath,
+  layer,
 }: {
   student: string;
   attempt: string;
   /** Narrows Previous and Next to one skill (from Today). */
   skill?: string;
-  /** Where another answer's replay lives, without the leading slash. */
-  workPath: (attempt: string) => string;
-  /** Where closing goes: the record this opened from. */
-  closePath: string;
+  /** Where another answer's replay lives, without the leading slash (an
+   * answer with its own route). */
+  workPath?: (attempt: string) => string;
+  /** Where closing goes: the record this opened from (its own route). */
+  closePath?: string;
+  /** A layer over a page (nav/LayerHost): closing pops it, stepping swaps
+   * it, and while another layer covers it, its keys rest. */
+  layer?: { close: () => void; covered: boolean };
 }) {
   const session = useStaffSession();
   const client = useQueryClient();
   const navigate = useNavigate();
   const router = useRouter();
-  // The skill's lesson opens over the answer (`?lesson=`): closing it, and
+  // The skill's lesson opens over the answer as a layer: closing it, and
   // its film, comes back to this answer in its class (lib/return-to.ts).
-  const lesson = lessonParam(
-    (useSearch({ strict: false }) as { lesson?: unknown }).lesson,
-  );
+  const raw = useSearch({ strict: false }) as Record<string, unknown>;
+  const covered = layer ? layer.covered : readStack(raw[OPEN_KEY]).length > 0;
   const query = useQuery(workReplayOptions(session, student, attempt, skill));
   const replay = query.data;
   usePracticeViewport(true);
@@ -129,40 +137,77 @@ export function WorkReplay({
   }, [replay?.previous, replay?.next]);
   const search: Record<string, string> = skill ? { skill } : {};
   // Back to where it was opened: the record, Today, a gradebook's evidence.
-  const close = () => closeTo(router, `/${closePath}`);
-  const closeLesson = () => closeSearch(router, "lesson");
+  const close = () =>
+    layer ? layer.close() : closeTo(router, `/${closePath ?? ""}`);
+  /** Swaps this answer for another (Previous, Next, a try): the replay is
+   * one layer, so Back and X both close it. */
+  const step = (to: string) =>
+    layer
+      ? void navigate({
+          to: ".",
+          search: ((current: Record<string, unknown>) => ({
+            ...current,
+            [OPEN_KEY]: replaceTop(current[OPEN_KEY], work(student, to)),
+          })) as never,
+          replace: true,
+          resetScroll: false,
+        })
+      : void navigate({
+          to: "/$",
+          params: { _splat: workPath!(to) },
+          search: search as never,
+          replace: true,
+        });
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.target instanceof HTMLInputElement)
         return;
-      // The lesson over it handles its own keys: Escape closes only it.
-      if (lesson) return;
+      // A layer over it handles its own keys: Escape closes only that.
+      if (covered) return;
       if (event.key === "Escape" && !document.querySelector("dialog[open]"))
         close();
-      const step =
+      const to =
         event.key === "ArrowLeft"
           ? replay?.previous
           : event.key === "ArrowRight"
             ? replay?.next
             : null;
-      // Stepping replaces the answer: the replay is one layer, so Back and
-      // X both close it.
-      if (step)
-        void navigate({
-          to: "/$",
-          params: { _splat: workPath(step) },
-          search: search as never,
-          replace: true,
-        });
+      if (to) step(to);
     };
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
   });
+  /** A link to another of their answers, swapping this one. */
+  const Answer: AnswerLink = ({ to, children, ...rest }) =>
+    layer ? (
+      <EntityLink entity={work(student, to)} replace {...rest}>
+        {children}
+      </EntityLink>
+    ) : (
+      <Link
+        to="/$"
+        params={{ _splat: workPath!(to) }}
+        search={search as never}
+        replace
+        {...rest}
+      >
+        {children}
+      </Link>
+    );
   const who = replay?.student.first ?? "";
   const closeLink = (
     <Link
-      to="/$"
-      params={{ _splat: closePath }}
+      {...((layer
+        ? {
+            to: ".",
+            search: (current: Record<string, unknown>) => ({
+              ...current,
+              [OPEN_KEY]: popLayer(current[OPEN_KEY]),
+            }),
+          }
+        : { to: "/$", params: { _splat: closePath } }) as unknown as {
+        to: ".";
+      })}
       onClick={(event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey) return;
         event.preventDefault();
@@ -182,18 +227,8 @@ export function WorkReplay({
   );
   const steps = (
     <div className={styles.steps} role="group" aria-label="Their work">
-      <Step
-        to={replay?.previous}
-        workPath={workPath}
-        search={search}
-        label="Previous"
-      />
-      <Step
-        to={replay?.next}
-        workPath={workPath}
-        search={search}
-        label="Next"
-      />
+      <Step to={replay?.previous} Answer={Answer} label="Previous" />
+      <Step to={replay?.next} Answer={Answer} label="Next" />
     </div>
   );
   const problem = useMemo(
@@ -253,7 +288,7 @@ export function WorkReplay({
               The problem text wasn’t stored.
             </p>
           )}
-          <Facts replay={replay} workPath={workPath} search={search} answers />
+          <Facts replay={replay} Answer={Answer} answers />
           {steps}
         </div>
       </Frame>
@@ -289,9 +324,7 @@ export function WorkReplay({
           review={{
             who,
             actions: steps,
-            facts: (
-              <Facts replay={replay} workPath={workPath} search={search} />
-            ),
+            facts: <Facts replay={replay} Answer={Answer} />,
             support: supportWords(replay.help),
           }}
         />
@@ -307,12 +340,6 @@ export function WorkReplay({
       }
     >
       {body}
-      <LessonDialog
-        lesson={lesson}
-        onClose={closeLesson}
-        backLabel="Back to the answer"
-        aboveLayers
-      />
     </div>,
     document.body,
   );
@@ -360,15 +387,21 @@ function When({ replay }: { replay: WorkReplayResponse }) {
   );
 }
 
+type AnswerLink = (props: {
+  to: string;
+  children: ReactNode;
+  className?: string;
+  "data-step"?: string;
+  "aria-label"?: string;
+}) => ReactNode;
+
 function Step({
   to,
-  workPath,
-  search,
+  Answer,
   label,
 }: {
   to: string | null | undefined;
-  workPath: (attempt: string) => string;
-  search: Record<string, string>;
+  Answer: AnswerLink;
   label: "Previous" | "Next";
 }) {
   const content =
@@ -389,17 +422,14 @@ function Step({
       </span>
     );
   return (
-    <Link
-      to="/$"
-      params={{ _splat: workPath(to) }}
-      search={search as never}
-      replace
+    <Answer
+      to={to}
       className={styles.step}
       data-step={label}
       aria-label={`${label} answer`}
     >
       {content}
-    </Link>
+    </Answer>
   );
 }
 
@@ -417,13 +447,11 @@ const answerOnlyInSteps = (replay: WorkReplayResponse) => {
  * the stored answer lines, for when the problem can't be drawn. */
 function Facts({
   replay,
-  workPath,
-  search,
+  Answer,
   answers = false,
 }: {
   replay: WorkReplayResponse;
-  workPath: (attempt: string) => string;
-  search: Record<string, string>;
+  Answer: AnswerLink;
   answers?: boolean;
 }) {
   const { item } = replay;
@@ -488,14 +516,7 @@ function Facts({
                     {entry.id === item.id ? (
                       <span aria-current="true">{label}</span>
                     ) : (
-                      <Link
-                        to="/$"
-                        params={{ _splat: workPath(entry.id) }}
-                        search={search as never}
-                        replace
-                      >
-                        {label}
-                      </Link>
+                      <Answer to={entry.id}>{label}</Answer>
                     )}
                   </li>
                 );
@@ -527,28 +548,20 @@ function Facts({
         <dd>
           {replay.lesson.templateId ? (
             // Over this answer, so closing it comes back here.
-            <Link
+            <EntityLink
               className={styles.lesson}
-              to="/$"
-              params={{ _splat: workPath(item.id) }}
-              search={
-                ((current: Record<string, unknown>) => ({
-                  ...current,
-                  lesson: replay.lesson.templateId,
-                })) as never
-              }
+              entity={{ kind: "lesson", id: replay.lesson.templateId }}
               data-replay-lesson=""
             >
               {item.skill}
-            </Link>
+            </EntityLink>
           ) : (
-            <Link
+            <EntityLink
               className={styles.lesson}
-              to="/pathways/$skillId"
-              params={{ skillId: replay.lesson.skillId }}
+              entity={{ kind: "skill", id: replay.lesson.skillId }}
             >
               {item.skill}
-            </Link>
+            </EntityLink>
           )}
         </dd>
       </div>

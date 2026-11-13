@@ -114,7 +114,7 @@ const measureRow: Row<"measure"> = {
 
 /** What each does, in one line: a teacher is choosing between the two. */
 const DEVICE_LINE =
-  "Shared signs a student out after 30 idle minutes, for a cart of devices. Personal keeps them signed in for 90 days, for a student’s own device.";
+  "Shared: signed out after 30 idle minutes. Personal: signed in for 90 days.";
 const deviceRow: Row<"deviceMode"> = {
   key: "deviceMode",
   title: "Devices",
@@ -388,8 +388,8 @@ export function ExperienceSettings({
             <div className={styles.rowText}>
               <h2 id="left-off">Leave off standings</h2>
               <p>
-                A student left off isn’t on any board and doesn’t see one. Their
-                practice and grades don’t change.
+                Students left off see no board and appear on none. Practice and
+                grades don’t change.
               </p>
             </div>
             {experience.students.length ? (

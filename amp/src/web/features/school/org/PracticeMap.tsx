@@ -191,7 +191,7 @@ export function PracticeMap({
       />
     ) : data.problemsMidpoint ? (
       <HeatLegend
-        caption="Problems per student, mean for the week. Midpoint: the median student-week with any problems this term"
+        caption="Problems per student, mean for the week"
         midpoint={data.problemsMidpoint}
         midpointWord="median"
       />
@@ -201,7 +201,7 @@ export function PracticeMap({
       {legend}
       {targets.size > 1 && measure === "minutes" && (
         <p className={styles.tableNote}>
-          Each {data.rowKind}’s cells are scaled to its own weekly target.
+          Each {data.rowKind} is scaled to its own weekly target.
         </p>
       )}
       <TipZone>

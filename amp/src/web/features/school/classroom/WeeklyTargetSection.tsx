@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { WEEKLY_TARGET_RANGE } from "../../../../schools/classroom-contracts";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
+import { InfoPopover } from "../../../ui/InfoPopover";
 import { Loading } from "../../../ui/Loading";
 import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
@@ -42,19 +43,21 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
   return (
     <section className={styles.settingsSection} aria-labelledby="weekly-target">
       <h2 id="weekly-target">Weekly practice</h2>
-      <p className={styles.sectionLead}>
-        Minutes per student per week. Every class follows it unless the class
-        sets its own.
-      </p>
       {data ? (
         <div className={rows.rows}>
           <section className={rows.row} aria-labelledby="setting-target">
             <div className={rows.rowText}>
-              <h2 id="setting-target">Weekly target per student</h2>
-              <p>
-                The midpoint of the practice heat map’s scale, and the basis for
-                practice in suggested grades.
-              </p>
+              <InfoPopover
+                title="Weekly target, what it sets"
+                details={
+                  <p className={rows.detail}>
+                    The midpoint of the practice heat map’s scale, and the basis
+                    for practice in suggested grades.
+                  </p>
+                }
+              >
+                <h2 id="setting-target">Weekly target per student</h2>
+              </InfoPopover>
             </div>
             <div className={rows.rowControl}>
               {fixed ? (

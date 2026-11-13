@@ -21,17 +21,13 @@ const problems = (n: number) => `${n} ${n === 1 ? "problem" : "problems"}`;
 const words = {
   likely: (from: string, to: string) =>
     from === to ? `Likely ${from}` : `Likely ${from} to ${to}`,
-  summary: (answered: number, from: string, to: string, who?: string) =>
-    from === to
-      ? `After ${problems(answered)}, our estimate is near ${from}.`
-      : who
-        ? `After ${problems(answered)}, we think ${who} is somewhere between ${from} and ${to}.`
-        : `After ${problems(answered)}, we think you’re somewhere between ${from} and ${to}.`,
-  /** With grade numbers hidden: what the bars mean, without a grade. */
+  /** What the estimate rests on; the likely range above already says where. */
+  summary: (answered: number) => `${problems(answered)} answered.`,
+  /** With grade numbers hidden: what the bands mean, without a grade. */
   unnumbered: (answered: number, who?: string) =>
     who
-      ? `${problems(answered)} answered. Each band is where ${who} is likely working, and it narrows with every answer.`
-      : `${problems(answered)} answered. Each band is where you’re likely working, and it narrows with every answer.`,
+      ? `${problems(answered)} answered. Each band is where ${who} is likely working.`
+      : `${problems(answered)} answered. Each band is where you’re likely working.`,
   row: (area: string, level: string, from: string, to: string) =>
     `${area}: best guess ${level}, likely ${from} to ${to}`,
   rowUnnumbered: (area: string) =>
@@ -132,9 +128,7 @@ export function LevelRange({
                 </span>
               )}
             </p>
-            <p className={styles.summary}>
-              {words.summary(answered, gradeName(from), gradeName(to), who)}
-            </p>
+            <p className={styles.summary}>{words.summary(answered)}</p>
           </div>
         ) : (
           <div className={styles.estimate}>

@@ -418,7 +418,8 @@ try {
   const heat = page.locator('[data-tip-card][data-tip*="week of"]');
   const curve = page.locator('[role="img"][data-size="large"]').first();
   await tipRules(page, "Overview heat map", heat, {
-    blank: page.locator('[class*="ledeLast"]').first(),
+    // Plain text: the week's sentence.
+    blank: page.locator('[class*="ledeFigures"]').first(),
     heading: page.locator("#overview-standing"),
     chart: curve,
   });

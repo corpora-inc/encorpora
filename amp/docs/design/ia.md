@@ -23,7 +23,7 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 - **Starting something new is one menu.** "Get started" is the drawer's first item only for an account with no place yet. Once there is any place, starting their own practice, a family, a class or a school is an option of "Add a place", never a row of its own.
 - **The drawer's Class and School items follow the place on screen.** In a class: Class (that class) and School (its school). In a school: School only. In a family: Class (the family's class). Never a class because it was the last one opened, and never "any" school; every other place is one step away in the switcher. On a class the person doesn't teach, the switcher names the school and the Class item names the class.
 - **Workbooks, for an adult's own practice,** is an item of the drawer directly under Practice: a workbook is a way to practise (on paper, at your level), not a view of progress. Its pages are a place of their own: the plain bar, no Progress tabs, the drawer item current. A family's and a class's Workbooks stay their tab.
-- **Practice as someone else** is a page (`/me/profiles`) reached from the drawer under My practice. It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps "Back to my own practice".
+- **Practice as someone else** is a page (`/me/profiles`) reached from the drawer under My practice. It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps its way back: to where the mode was started ("Back to Grade 1 Math"), else "Back to my own practice" (see Navigation below).
 - **One tab header per place.** Navigating within a place never swaps in another place's tab bar. A family, a tutor or a lone teacher never lands on a school-level page.
 
 | Place | Who | Tabs | Bar action |
@@ -39,8 +39,42 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 - **The roster tab is named by the org's kind:** "People" in a family org (a family or a tutor's class), where it holds children, the second parent and co-teachers. It is "Students" in a school's class.
 - **Tabs follow the class's size.** A family or tutor class (6 or fewer learners) has no Grades tab and no Calendar tab. Grades are a line in each learner's Map panel, and the weekly target is set in Settings with its progress on Today. A teacher's class keeps Grades.
 - **Calendar is configuration, not a place.** No place has a Calendar tab. A school's year and terms are a section of its Settings. A family's, a tutor's or a lone class's year is one compact section of the class's Settings.
-- **Opening a student never leaves the class.** From a class, a student opens inside it (the Map's drill-in route), and the class tabs stay. The school-level student page (`/school/<org>/students/<id>`) is only for an admin who came from the school.
+- **Opening a student never leaves the class.** From a class, a student opens as a layer over the page it was opened from (`?open=student:<id>`, see Navigation), and the class tabs stay. The school-level student page (`/school/<org>/students/<id>`) is only for an admin who came from the school.
 - **Account tabs follow the account:** an adult with no child sees "Your practice", not "Who's learning?" with "Add a child"; Privacy says "your data", and Learning consent appears only once a child exists. The tab label and the page title are the same words.
+
+## Navigation: places, modes and layers
+
+The founder (Q-67, Q-69, Q-70): "Almost everything should be addressable and linked everywhere, but we need an exquisite way to maintain context, so we can X out or go back to exactly where we were and not end up on some default page in some other mode." One system does this everywhere. Follow it for every new screen; don't build a screen's own.
+
+**The URL is the state.** Where someone is, what is open over it and how it's viewed all live in the address, owned by `src/web/nav` and `src/web/lib/return-to.ts`. React Query holds data, and zustand holds per-device preferences, never position. Refresh, Back, Forward and a shared link therefore always restore the same screen.
+
+1. **A place is the path prefix:** `/school/<org>/…`, `/school/<org>/classes/<class>/…` (a family's class too), or own practice (`/me`, `/practice`, `/pathways`…). Links resolve inside the current prefix. Only the place switcher changes prefix.
+2. **Entities and layers.** A student, an answer, a skill or a problem type's lesson is an entity (`nav/entities.ts`: kind, id format, and the address keys it reads). Opening one never leaves the page. It becomes a layer over it in the page's own address: `?open=student:<id>,work:<student>.<attempt>,lesson:<type>`.
+   - The page under the layers stays mounted, with its scroll, sort, filters and tabs.
+   - Each open is one history entry. X, Escape and Back each pop one layer, and refresh or a shared link restores the whole stack.
+   - `nav/LayerHost.tsx` draws the stack in every school and class frame. A student or skill is a sheet (full height on phones, a side sheet on desktop), an answer is the full-screen replay, and a lesson is the lesson dialog. A sheet under the replay waits closed, so only one layer ever holds focus.
+   - The old `map/<student>` and `map/<student>/work/<answer>` addresses redirect to their layers.
+3. **One link primitive.** Screens open details only with `<EntityLink entity={…}>`, or `useLayers()` from code. `EntityLink` takes an array to open several layers in one step (a student, then their answer). A layer's own keys, such as an answer's `skill` for Previous and Next, leave the address with it.
+4. **Every close goes through `closeTo`** (`lib/return-to.ts`). Each history entry records the address it was pushed from, and the record survives a refresh. Opened in the app, a close goes Back, so X and Back agree and Back never reopens what was closed. With no history (a shared link, a new tab), a close replaces the view with its `from`, or else its logical parent in its context. A view with an address of its own, such as a film, carries `?from=`, which is checked as an internal path. Stepping within a layer (Previous and Next) replaces the entry, so Back closes the layer.
+5. **Modes are part of the place's address.** Practicing as a student is `/practice?profile=<id>&from=<where it started>` (`features/profiles/practice-mode.ts`). Learning screens inside the mode carry both keys. Its way back ("← Grade 1 Math", in the bar and the drawer), X, Back and Forward all return to where it was started. A learning screen without `?profile=` puts a leftover profile down.
+6. **The root `/` resolves to a place,** the one last used, on arrival and on Back and Forward alike. First-run onboarding appears only for an account with no place. An account with a place and no practice of its own never sees family setup: a practice screen sends it to its place.
+7. **Banned outside the navigation module:** `navigate({ to: "/" })`, `<Link to="/">`, `redirect({ to: "/" })`, `window.location` assignment and `history.back()`. `npm run lint:navigation` (`scripts/check-navigation.ts`, part of `npm run build`) fails on any new one. The remaining uses (sign-out, payment providers, signed-out pages) are listed there, each with its reason.
+
+**Proof that grows with the app:** `scripts/verify-layer-crawl-ui.ts` reads the place's own tabs and the entity registry. As a demo school's leader, a real school's admin, a teacher, a parent and a tutor, it opens every kind of entity link on every tab, nests one more, then pops with Escape, Back, Forward, refresh and Escape again. It asserts that the prefix, the page under the layers and its view and scroll never change, that no first-run screen shows, and that every registered kind is reachable. `verify-close-context-ui.ts` (an answer's lesson and film) and `verify-place-mode-ui.ts` (practicing as a student) cover the founder's exact paths.
+
+### Phase 2: the rest of the places
+
+Done:
+- Sheets opened by a search key close with `closeSearch`: a gradebook's evidence, curve and export sheets, a Time day sheet, Students' student and add sheets, and Calendar's edit sheet. Settings → Export now comes back to Settings.
+- Pages of their own go Back to where they were opened, else to their logical parent (`useCloseClick`): Report cards, Sign-in cards, the Start-class board and a workbook day. Their labels read "Back" where the opener varies.
+- The lesson reader goes Back to Progress or to the skill it was opened from.
+- The crawler covers the family and the tutor places.
+
+Still to do:
+- Pathways' `?lesson=` and the Today lesson sheet become `lesson` layers, and Pathways' skill panel becomes a `skill` layer.
+- The school-level student page (`/school/<org>/students/<id>` and its `work/<id>`) becomes a `student` layer over Students, its route redirecting as the map's do.
+- The legacy family and purchase centres (`LegacyApp`) replace their hard-coded returns (`/family/access`, `/overview`) with `closeTo` and a `from`. Their allowed uses in `check-navigation.ts` then drop to zero.
+- The crawler's page list comes from the router's route table, and it covers own practice.
 
 ## Where settings live
 

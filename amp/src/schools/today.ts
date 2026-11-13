@@ -171,7 +171,7 @@ function familyDay(
           worked.length === 2
             ? "Both children worked today"
             : `All ${worked.length} children worked today`,
-        detail: `${plural(minutesToday, "active minute")} so far${objectives ? `; ${skillsShownWords(objectives)} this week` : ""}.`,
+        detail: `${plural(minutesToday, "active minute")}.`,
         students: people(worked),
         action: { kind: "tab", tab: "time", label: "See the time report" },
       },
@@ -219,8 +219,7 @@ export function todayTodos(
         id: "add-students",
         kind: "start",
         title: "Add your students",
-        detail:
-          "Everything here fills in once they start: who needs you, who’s ready for more, and each student’s grade range.",
+        detail: "",
         students: [],
         action: { kind: "tab", tab: "settings", label: "Add students" },
       },
@@ -232,8 +231,7 @@ export function todayTodos(
         id: "start-class",
         kind: "start",
         title: "Start class",
-        detail:
-          "Put the class code on the board. Each student signs in with a code and three pictures, then starts on real problems at their own level.",
+        detail: "Put the class code on the board.",
         students: people(students),
         action: { kind: "tab", tab: "start", label: "Start class" },
       },
@@ -282,7 +280,9 @@ export function todayTodos(
         id: `gap:${skillId}`,
         kind: "shared-gap",
         title: `${group.length} ${plural} keep missing ${skill}`,
-        detail: `${joinNames(group.map((student) => student.first))}: each has ${rules.sharedGapMisses} or more misses without help in the last ${rules.recentDays} days, and no right answer since.`,
+        // The faces and each one's misses below say who; the rule is a tap away.
+        detail: "",
+        rule: `Each has ${rules.sharedGapMisses} or more misses without help in the last ${rules.recentDays} days, and no right answer since.`,
         students: people(group),
         action: lesson
           ? {
@@ -319,7 +319,7 @@ export function todayTodos(
       const title = `${student.first} keeps missing ${inSentence(input.skillTitle(row.skillId))}`;
       const latest = latestMiss(row.studentId, row.skillId, row.recent);
       const replay = latest.length ? { misses: latest } : {};
-      const detail = `${misses} misses without help in the last ${rules.recentDays} days, and no right answer since.`;
+      const detail = `${misses} misses without help in ${rules.recentDays} days, none right since.`;
       // A parent's: the lesson, and a sheet on paper.
       if (input.family) {
         const lesson = input.lessonFor(
@@ -380,7 +380,7 @@ export function todayTodos(
               waiting.length === 1
                 ? `${waiting[0]!.first} hasn’t started yet`
                 : `${waiting.length} students haven’t started yet`,
-            detail: `${joinNames(waiting.map((student) => student.first))} can sign in with the class code and three pictures.`,
+            detail: "They sign in with the class code and three pictures.",
             students: people(waiting),
             action: { kind: "tab", tab: "start", label: "Start class" },
           },
@@ -398,7 +398,8 @@ export function todayTodos(
             id: "ready",
             kind: "ready",
             title: `${joinNames(ready.map((student) => student.first))}: above ${input.course?.label ?? "their own grade"} in every strand`,
-            detail: `Spaced review right without help in ${Math.round(rules.readyReviewShare * 100)}% or more of at least ${rules.readyMinimumReviews} reviews.`,
+            detail: "",
+            rule: `Spaced review right without help in ${Math.round(rules.readyReviewShare * 100)}% or more of at least ${rules.readyMinimumReviews} reviews.`,
             students: people(ready),
             action:
               ready.length === 1
@@ -432,7 +433,7 @@ export function todayTodos(
             id: "good-day",
             kind: "good-day",
             title: `${worked.length} of ${students.length} ${plural} practiced today`,
-            detail: `${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `; ${skillsShownWords(objectives)} this week` : ""}.`,
+            detail: `${minutesToday.toLocaleString("en-US")} active minutes.`,
             students: people(worked),
             action: { kind: "tab", tab: "time", label: "See the time report" },
           },

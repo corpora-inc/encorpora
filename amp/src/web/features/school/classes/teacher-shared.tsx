@@ -1,4 +1,12 @@
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { closeSearch } from "../../../lib/return-to";
+import { EntityLink } from "../../../nav/links";
+import type { Entity } from "../../../nav/entities";
+import {
+  Link,
+  useNavigate,
+  useRouter,
+  useSearch,
+} from "@tanstack/react-router";
 import {
   useEffect,
   useId,
@@ -56,7 +64,11 @@ export function useClassSearch() {
       replace: options.replace,
       resetScroll: false,
     });
-  return [raw, set] as const;
+  const router = useRouter();
+  /** Closes what these keys opened (a sheet): Back to where it was opened,
+   * as X and the browser's Back both do (lib/return-to.ts). */
+  const close = (...keys: string[]) => closeSearch(router, ...keys);
+  return [raw, set, close] as const;
 }
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 /** A value from the address bar that may be nonsense: it recovers, not errors. */
@@ -389,6 +401,12 @@ export const promptLine = (prompt: string) =>
 /** Real problems a student worked, newest first: when, the skill, the prompt
  * on one line, the answer and how it went. With `href`, each row opens its
  * replay (`WorkReplay`). */
+const workChevron = (
+  <svg className={styles.workChevron} viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M6 3.5 10.5 8 6 12.5" />
+  </svg>
+);
+
 export function WorkList({
   work,
   reader = "other",
@@ -397,7 +415,10 @@ export function WorkList({
   work: readonly WorkItem[];
   reader?: RecordReader;
   /** Where a row's replay lives, as a splat path and search. */
-  href?: (item: WorkItem) => { path: string; search?: Record<string, string> };
+  href?: (item: WorkItem) =>
+    | { path: string; search?: Record<string, string> }
+    /** A layer over this page (nav/entities.ts). */
+    | { entity: Entity };
 }) {
   return (
     <ul className={styles.problems}>
@@ -441,7 +462,16 @@ export function WorkList({
         const target = href?.(item);
         return (
           <li key={item.id}>
-            {target ? (
+            {target && "entity" in target ? (
+              <EntityLink
+                entity={target.entity}
+                className={styles.workRow}
+                data-work-item={item.id}
+              >
+                {body}
+                {workChevron}
+              </EntityLink>
+            ) : target ? (
               <Link
                 to="/$"
                 params={{ _splat: target.path }}
@@ -450,13 +480,7 @@ export function WorkList({
                 data-work-item={item.id}
               >
                 {body}
-                <svg
-                  className={styles.workChevron}
-                  viewBox="0 0 16 16"
-                  aria-hidden="true"
-                >
-                  <path d="M6 3.5 10.5 8 6 12.5" />
-                </svg>
+                {workChevron}
               </Link>
             ) : (
               <div className={styles.workRow}>{body}</div>
