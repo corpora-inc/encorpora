@@ -668,7 +668,7 @@ try {
     if (visit > 0) await page.goForward();
     await page.waitForURL(/\/overview(?:\?|$)/);
     await page
-      .getByRole("heading", { name: "Draft reviewer", exact: true })
+      .getByRole("heading", { name: "Where Draft reviewer is", exact: true })
       .waitFor();
     await page.goBack();
     await page.waitForURL(/\/practice(?:\?|$)/);

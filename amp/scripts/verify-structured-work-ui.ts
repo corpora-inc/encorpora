@@ -9,6 +9,7 @@ import { secureChromium } from "../browser-security.mjs";
  * and dark. Screenshots go to AMP_EVIDENCE_DIR (default
  * artifacts/structured-work-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
+import { randomBytes } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -17,6 +18,7 @@ import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { registerSchoolRoutes } from "../src/schools/routes";
 import type { GeneratedProblem } from "../src/math/engine";
 import {
   normalizeStructuredWork,
@@ -58,10 +60,18 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
+// The family and school routes the app reads on every signed-in screen (the
+// family's class, its approvals and second parent), as the server mounts
+// them: a missing one is a logged error in the page.
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate: developmentAuth(),
   development: true,
+  approvals: { secret: randomBytes(32).toString("hex"), origin: "" },
+});
+await registerSchoolRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
 });
 await app.listen({ host: "127.0.0.1", port: 4491 });
 const vite = await createServer({
