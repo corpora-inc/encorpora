@@ -608,6 +608,9 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
       await repository.transaction((client) =>
         syncSsoCredentials(client, target.path[0]!),
       );
+      // Source membership dates may have changed after provisioning. Release
+      // ineligible seats and serve waiting students using the final roster.
+      await repository.reconcileSeats(target.path[0]!);
       const name = invites.length
         ? await orgNameOf(repository, target.orgId)
         : "";
