@@ -178,6 +178,7 @@ await registerFamilyRoutes(app, {
 await registerDeleteAccountRoutes(app, {
   pool: repository.pool,
   authenticate,
+  accounts: accounts ?? undefined,
 });
 const schoolNow = schoolClock(process.env);
 await registerSchoolRoutes(app, {

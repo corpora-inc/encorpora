@@ -51,7 +51,7 @@ test(
     const info = console.info;
     console.info = () => {};
     const accounts = await createAccounts(db, {
-      baseURL: "http://127.0.0.1:4310",
+      baseURL: "http://127.0.0.1:4971",
       secret: "s".repeat(40),
       production: false,
       passwords: true,
@@ -65,7 +65,11 @@ test(
       authenticate,
       development: true,
     });
-    await registerDeleteAccountRoutes(app, { pool: db, authenticate });
+    await registerDeleteAccountRoutes(app, {
+      pool: db,
+      authenticate,
+      accounts,
+    });
     await app.ready();
     t.after(async () => {
       console.info = info;
@@ -103,7 +107,7 @@ test(
         method: "POST",
         url: "/api/auth/sign-up/email",
         payload: { email, password: "correct horse battery", name },
-        headers: { origin: "http://127.0.0.1:4310" },
+        headers: { origin: "http://127.0.0.1:4971" },
       });
       assert.equal(response.statusCode, 200, response.body);
       const token = response.headers["set-auth-token"] as string;
@@ -117,7 +121,12 @@ test(
         `UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1`,
         [me.account.id.slice(4)],
       );
-      return { token, account: me.account.id, me };
+      const setCookie = response.headers["set-cookie"];
+      const cookie = (Array.isArray(setCookie) ? setCookie : [setCookie])
+        .filter((value): value is string => typeof value === "string")
+        .map((value) => value.split(";")[0])
+        .join("; ");
+      return { token, cookie, account: me.account.id, me };
     };
     const practice = async (learnerId: string) => {
       const id = randomUUID();
@@ -373,6 +382,92 @@ test(
       });
       assert.equal(refused.statusCode, 400);
     });
+
+    await t.test(
+      "a stale sign-in cannot read the preview or delete any row; signing in again restores deletion",
+      async () => {
+        const aged = await db.query(
+          `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '10 minutes 1 second', "updatedAt"=now() WHERE "userId"=$1`,
+          [holder.account.slice(4)],
+        );
+        assert.equal(aged.rowCount, 1);
+        const snapshot = async () => {
+          const tables = (
+            await db.query<{ table_name: string }>(
+              `SELECT table_name FROM information_schema.tables WHERE table_schema=current_schema() AND table_type='BASE TABLE' ORDER BY 1`,
+            )
+          ).rows;
+          const result: Record<string, unknown> = {};
+          for (const { table_name } of tables) {
+            result[table_name] = (
+              await db.query(
+                `SELECT to_jsonb(x) AS row FROM "${table_name}" x ORDER BY to_jsonb(x)::text`,
+              )
+            ).rows;
+          }
+          return result;
+        };
+        const before = await snapshot();
+        for (const [method, path] of [
+          ["GET", "/account/deletion"],
+          ["POST", "/account/delete"],
+        ] as const) {
+          const refused = await api(
+            method,
+            path,
+            holder.token,
+            method === "POST"
+              ? { confirmation: "delete-my-account" }
+              : undefined,
+          );
+          assert.equal(refused.statusCode, 403, refused.body);
+          assert.deepEqual(refused.json(), { error: "reauth_required" });
+          assert.deepEqual(
+            await snapshot(),
+            before,
+            "every stored row is unchanged",
+          );
+        }
+        assert.ok(holder.cookie, "the browser received a session cookie");
+        for (const method of ["GET", "POST"] as const) {
+          const refused = await app.inject({
+            method,
+            url:
+              method === "GET"
+                ? "/api/v1/account/deletion"
+                : "/api/v1/account/delete",
+            headers: { cookie: holder.cookie },
+            ...(method === "POST"
+              ? { payload: { confirmation: "delete-my-account" } }
+              : {}),
+          });
+          assert.equal(refused.statusCode, 403, refused.body);
+          assert.deepEqual(refused.json(), { error: "reauth_required" });
+          assert.deepEqual(await snapshot(), before);
+        }
+        const signedIn = await app.inject({
+          method: "POST",
+          url: "/api/auth/sign-in/email",
+          headers: { origin: "http://127.0.0.1:4971" },
+          payload: { email, password: "correct horse battery" },
+        });
+        assert.equal(signedIn.statusCode, 200, signedIn.body);
+        const oldToken = holder.token;
+        holder.token = signedIn.headers["set-auth-token"] as string;
+        assert.ok(holder.token);
+        assert.notEqual(holder.token, oldToken);
+        await ok(api("GET", "/account/deletion", holder.token));
+        assert.equal(
+          (
+            await api("POST", "/account/delete", oldToken, {
+              confirmation: "delete-my-account",
+            })
+          ).statusCode,
+          403,
+          "a new sign-in does not freshen another session",
+        );
+      },
+    );
 
     const ids = {
       account: holder.account,
