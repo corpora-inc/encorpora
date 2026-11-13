@@ -236,6 +236,7 @@ export const planResultSchema = z.object({
       "possible_match",
       "ambiguous_match",
       "outside_class",
+      "outside_school",
     ])
     .optional(),
   /** The student already on the roster that this row was compared with. */

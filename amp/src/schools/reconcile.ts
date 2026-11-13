@@ -205,7 +205,11 @@ async function unclaimed(
 type Match = {
   person: Existing | null;
   held?:
-    "name_changed" | "possible_match" | "ambiguous_match" | "outside_class";
+    | "name_changed"
+    | "possible_match"
+    | "ambiguous_match"
+    | "outside_class"
+    | "outside_school";
 };
 function matcher(
   refs: Map<string, string>,
@@ -219,6 +223,12 @@ function matcher(
   return (row: RosterRow): Match => {
     const refId = refs.get(row.sourcedId);
     const person = refId ? people.get(refId) : undefined;
+    if (
+      person &&
+      !person.org_ids.includes(orgId) &&
+      !person.source_metadata?.[row.sourcedId]?.schoolImports?.[orgId]
+    )
+      return { person: null, held: "outside_school" };
     if (person && scope && !person.class_ids.includes(scope.classId))
       return { person: null, held: "outside_class" };
     if (
@@ -239,6 +249,8 @@ function matcher(
               !student(other) && other.email?.toLowerCase() === row.email,
           )
         : undefined;
+      if (staff && !staff.org_ids.includes(orgId))
+        return { person: null, held: "outside_school" };
       return { person: staff ?? null };
     }
     if (row.identifier) {
@@ -251,6 +263,8 @@ function matcher(
       if (matches.length > 1) return { person: null, held: "ambiguous_match" };
       const same = matches[0];
       if (same) {
+        if (!same.org_ids.includes(orgId))
+          return { person: null, held: "outside_school" };
         if (scope && !same.class_ids.includes(scope.classId))
           return { person: null, held: "outside_class" };
         taken.add(same.id);
@@ -289,6 +303,19 @@ async function importRows(
   scope?: ImportScope,
 ) {
   let rows = input;
+  if (source === "csv")
+    for (const row of rows) {
+      const expected =
+        row.role === "student"
+          ? (row.identifier ??
+            namedStudentId(row.givenName, row.familyName, row.classes[0]?.name))
+          : (row.email ?? `name:${fullName(row)}`);
+      if (
+        row.sourcedId !== expected ||
+        row.classes.some((c) => c.sourcedId !== `name:${nameKey(c.name)}`)
+      )
+        throw new SchoolError(400, "csv_identity_invalid");
+    }
   for (const row of rows)
     if (row.sourceEvidence) {
       if (source !== "oneroster")
@@ -340,7 +367,7 @@ async function importRows(
       ...row,
       sourcedId:
         source === "csv" && !row.identifier && row.sourcedId.startsWith("name:")
-          ? namedStudentId(row.givenName, row.familyName, klass.name)
+          ? namedStudentId(row.givenName, row.familyName, klass.id)
           : row.sourcedId,
       classes: [
         {
@@ -359,11 +386,9 @@ async function importRows(
   return scoped;
 }
 
-/** A CSV knows a class, or a person with no student ID, only by name, and a
- * name means something only inside the school the file is for: two schools in
- * a district each have a "Grade 3 Math". Those keys are kept per school; a
- * student ID or a teacher's email stays the whole tenant's, so a district-wide
- * ID finds the same student at any of its schools. */
+/** Name-only CSV keys are scoped to the importing school. Stable student IDs
+ * and staff email keys identify district records, but an existing record must
+ * belong to the importing school before that school can read or change it. */
 export function scopedRows(
   source: RosterSource,
   orgId: string,
@@ -515,7 +540,18 @@ async function ensureClasses(
         [orgId],
       )
     ).rows[0]?.kind as GradingKind | undefined;
-    for (const row of known.rows) ids.set(row.sourced_id, row.local_id);
+    for (const row of known.rows) {
+      if (
+        !(
+          await client.query(
+            "SELECT 1 FROM amp_classes WHERE id=$1 AND org_id=$2",
+            [row.local_id, orgId],
+          )
+        ).rowCount
+      )
+        throw new SchoolError(409, "source_school_scope_invalid");
+      ids.set(row.sourced_id, row.local_id);
+    }
     for (const klass of wanted.values()) {
       if (ids.has(klass.sourcedId) && source !== "oneroster") continue;
       const named =
@@ -533,7 +569,6 @@ async function ensureClasses(
         ids.get(klass.sourcedId) ?? (named?.id as string | undefined);
       if (
         classId &&
-        source === "oneroster" &&
         !(
           await client.query(
             "SELECT 1 FROM amp_classes WHERE id=$1 AND org_id=$2",
@@ -710,6 +745,15 @@ export async function applyRoster(
             "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
             [`school-roster:${tenantId}:${source}`],
           );
+          if (
+            (
+              await client.query(
+                "SELECT id FROM amp_classes WHERE id=ANY($1::uuid[]) AND org_id=$2 FOR SHARE",
+                [classes, orgId],
+              )
+            ).rowCount !== new Set(classes).size
+          )
+            throw new SchoolError(409, "source_school_scope_invalid");
           const { refs, people } = await lookUp(client, tenantId, source, [
             row,
           ]);
@@ -719,6 +763,7 @@ export async function applyRoster(
           const found = matcher(refs, people, loose, orgId, scope, taken)(row);
           if (
             found.held === "outside_class" ||
+            found.held === "outside_school" ||
             (found.held === "ambiguous_match" && decision !== "new") ||
             (found.held && !decision)
           )
