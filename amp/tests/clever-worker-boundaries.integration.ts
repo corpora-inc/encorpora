@@ -302,14 +302,24 @@ test(
       const school = "3".repeat(24),
         other = "4".repeat(24),
         student = "5".repeat(24),
-        foreign = "6".repeat(24);
+        foreign = "6".repeat(24),
+        administrator = "7".repeat(24);
       const source: Snapshot = {
         ...snapshot,
         schools: [
           { id: school, district: D, name: "First" },
           { id: other, district: D, name: "Second" },
         ],
+        courses: [
+          { id: "8".repeat(24), district: D, name: "Other school course" },
+        ],
         users: [
+          {
+            id: administrator,
+            district: D,
+            name: { first: "Administrator" },
+            roles: { district_admin: {} },
+          },
           {
             id: student,
             district: D,
@@ -346,7 +356,11 @@ test(
       assert.equal((await storedAdoptionSnapshot(db, id)).users.length, 0);
       assert.deepEqual(
         (await storedAdoptionSnapshot(db, id, school)).users.map((u) => u.id),
-        [student],
+        [student, administrator],
+      );
+      assert.equal(
+        (await storedAdoptionSnapshot(db, id, school)).courses.length,
+        0,
       );
       await runDueCleverSync(db, id, {
         districtToken: async () => {

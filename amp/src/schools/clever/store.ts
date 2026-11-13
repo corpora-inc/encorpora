@@ -976,9 +976,13 @@ export async function storedAdoptionSnapshot(
       `SELECT kind,record FROM amp_clever_bindings
     WHERE connection_id=$1 AND archived_at IS NULL AND (
       kind='district' OR kind='school' AND ($2::text IS NULL OR clever_id=$2)
-      OR $2::text IS NOT NULL AND (kind IN ('course','term')
+      OR $2::text IS NOT NULL AND (
+        kind='course' AND clever_id IN (SELECT record->>'course' FROM amp_clever_bindings
+          WHERE connection_id=$1 AND kind='section' AND archived_at IS NULL AND record->>'school'=$2)
+        OR kind='term' AND clever_id IN (SELECT record->>'term_id' FROM amp_clever_bindings
+          WHERE connection_id=$1 AND kind='section' AND archived_at IS NULL AND record->>'school'=$2)
         OR kind='section' AND record->>'school'=$2
-        OR kind='user' AND (record->'roles'->'student'->>'school'=$2 OR record->'roles'->'student'->'schools' ? $2
+        OR kind='user' AND (jsonb_typeof(record->'roles'->'district_admin')='object' OR record->'roles'->'student'->>'school'=$2 OR record->'roles'->'student'->'schools' ? $2
           OR record->'roles'->'teacher'->>'school'=$2 OR record->'roles'->'teacher'->'schools' ? $2
           OR record->'roles'->'staff'->>'school'=$2 OR record->'roles'->'staff'->'schools' ? $2
           OR clever_id IN (SELECT jsonb_array_elements_text(COALESCE(section.record->'students','[]') || COALESCE(section.record->'teachers','[]') ||
