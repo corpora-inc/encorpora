@@ -41,6 +41,8 @@ spec:
                 - secretRef:
                     name: ${AMP_CLEVER_WORKER_SECRET}
               env:
+                - name: TMPDIR
+                  value: "/tmp"
                 - name: AMP_DATABASE_POOL_MAX
                   value: "2"
               resources:
