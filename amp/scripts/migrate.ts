@@ -2,10 +2,25 @@ import { createDatabasePool } from "../src/server/database.js";
 import { readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 export async function migrate(connectionString: string) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await migrateOnce(connectionString);
+    } catch (error) {
+      if (
+        attempt >= 2 ||
+        !["55P03", "40P01"].includes((error as { code?: string }).code ?? "")
+      )
+        throw error;
+      await new Promise((resolve) => setTimeout(resolve, 250 * (attempt + 1)));
+    }
+  }
+}
+async function migrateOnce(connectionString: string) {
   const pool = createDatabasePool({ connectionString });
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
+    await client.query("SET LOCAL lock_timeout='5s'");
     await client.query("SELECT pg_advisory_xact_lock(91347022)");
     await client.query(
       "CREATE TABLE IF NOT EXISTS amp_migrations (name text PRIMARY KEY, checksum text NOT NULL)",
