@@ -245,6 +245,13 @@ for (const [given, family] of NAMES)
 async function worked(student: Student, problems: number, gained: number) {
   const day = (back: number) =>
     new Date(Date.now() - back * 86_400_000).toISOString().slice(0, 10);
+  // Term growth starts on the day a student joined (standings.ts
+  // termStartSql, since #2195): this history is theirs as a student.
+  await db.query(
+    `UPDATE amp_org_roles SET begin_on=LEAST(begin_on,$2::date)
+     WHERE person_id=$1 AND role='student'`,
+    [student.personId, day(30)],
+  );
   const level = (value: number) =>
     JSON.stringify({
       overall: { level: value, sd: 0.3, answered: 30, independent: 12 },
@@ -437,6 +444,65 @@ function sameBoxes(label: string, before: Box[], after: Box[]) {
     { moved: moved.slice(0, 3), count: [before.length, after.length] },
   );
 }
+/** Each dependent setting's fold (ui/Reveal), open or not, on the page. */
+type Fold = { top: number; height: number; open: boolean };
+const folds = (page: Page): Promise<Fold[]> =>
+  page.locator('[class*="reveal"]').evaluateAll((elements) =>
+    elements.map((element) => {
+      const { top, height } = element.getBoundingClientRect();
+      return {
+        top: top + scrollY,
+        height,
+        open: element.hasAttribute("data-open"),
+      };
+    }),
+  );
+/** A choice that turns a dependent setting on opens its fold (ui/Reveal,
+ * only ever after the person's own choice): what was above it stays put,
+ * what was below moves by exactly the fold's height, and nothing else
+ * moves. */
+function revealedBoxes(
+  label: string,
+  before: Box[],
+  after: Box[],
+  was: Fold[],
+  now: Fold[],
+) {
+  const opened = now.flatMap((fold, index) =>
+    fold.open && !was[index]?.open ? [{ ...fold, from: was[index]!.top }] : [],
+  );
+  const near = (a: number, b: number) => Math.abs(a - b) < 0.01;
+  const moved = before.flatMap((box, index) => {
+    const next = after[index];
+    // Inside a fold that opened: shown now, not moved.
+    if (
+      next &&
+      opened.some(
+        (fold) => next.top >= fold.top && next.top < fold.top + fold.height,
+      )
+    )
+      return [];
+    const shift = opened
+      .filter((fold) => fold.from <= box.top)
+      .reduce((sum, fold) => sum + fold.height, 0);
+    return next &&
+      near(next.left, box.left) &&
+      near(next.top, box.top + shift) &&
+      near(next.width, box.width) &&
+      near(next.height, box.height)
+      ? []
+      : [{ index, was: box, now: next, shift }];
+  });
+  check(
+    `${label} moved something`,
+    opened.length > 0 && !moved.length && after.length >= before.length,
+    {
+      opened: opened.length,
+      moved: moved.slice(0, 3),
+      count: [before.length, after.length],
+    },
+  );
+}
 const settled = async (page: Page) => {
   await page.mouse.move(0, 0);
   await page.evaluate(() => document.fonts.ready);
@@ -444,6 +510,17 @@ const settled = async (page: Page) => {
 };
 const heading = (page: Page, name: string | RegExp) =>
   page.getByRole("heading", { name, level: 1 });
+/** School Settings → Student experience, opened at its section. */
+async function orgExperience(page: Page, orgId: string) {
+  await page.waitForURL(
+    (url) =>
+      url.pathname === `/school/${orgId}/settings` &&
+      url.hash === "#student-experience",
+  );
+  await page
+    .getByRole("heading", { name: "Student experience", level: 2 })
+    .waitFor();
+}
 const radio = (page: Page, group: string, name: string) =>
   page.getByRole("radiogroup", { name: group }).getByRole("radio", { name });
 
@@ -566,9 +643,13 @@ async function journeys(browser: Browser, engine: string) {
 
     // An admin locks levels at the org; the teacher sees the lock.
     const head = await start({ account: adminAccount });
+    // A school's student experience is a section of its Settings
+    // (docs/design/ia.md, "Where settings live"); the old address leads there.
     await head.page.goto(`${origin}/school/${distOrg.id}/experience`);
-    await heading(head.page, "Student experience").waitFor();
-    await head.page.getByText("AMP’s starting point").first().waitFor();
+    await orgExperience(head.page, distOrg.id);
+    // Settings at AMP's default say nothing about where they come from
+    // (SettingMeta); the controls themselves are what has loaded.
+    await radio(head.page, "Show levels to students", "Hidden").waitFor();
     await settled(head.page);
     await resetRecord(head.page);
     const stable = "h1, h2, [role=radio]";
@@ -641,14 +722,23 @@ async function journeys(browser: Browser, engine: string) {
     // A teacher turns on class standings; a student sees the board.
     await settled(teacher.page);
     await resetRecord(teacher.page);
-    const teacherBefore = await boxes(teacher.page, stable);
+    const teacherBefore = await boxes(teacher.page, stable),
+      foldsBefore = await folds(teacher.page);
     await radio(teacher.page, "Standings", "Class").click();
-    await teacher.page.getByText("Set by Grade 5 Math").first().waitFor();
+    // Chosen here, the row offers the way back to what it would follow
+    // (SettingMeta); "Set by" names only a value taken from above.
+    await teacher.page
+      .locator("section[aria-labelledby='setting-standings']")
+      .getByRole("button", { name: /^Use / })
+      .waitFor();
     await settled(teacher.page);
-    sameBoxes(
+    // Standings on opens what a board counts and who is left off.
+    revealedBoxes(
       `${engine} choosing a setting`,
       teacherBefore,
       await boxes(teacher.page, stable),
+      foldsBefore,
+      await folds(teacher.page),
     );
     const write = await db.query(
       `SELECT detail FROM amp_school_events WHERE action='settings.changed' AND target_id=$1`,
@@ -737,6 +827,19 @@ async function journeys(browser: Browser, engine: string) {
       await viewer.page.goto(`${origin}/practice`);
       await answerOne(viewer.page, true);
       await viewer.page.getByRole("button", { name: "Open AMP menu" }).click();
+      // The learner's own choice, when the school leaves it to them, is a
+      // row of the drawer's settings (CurriculumDetailsControl).
+      const drawer = viewer.page.getByRole("dialog", {
+        name: "Adaptive Math Pathways",
+      });
+      await drawer
+        .getByRole("link", { name: "Progress", exact: true })
+        .waitFor();
+      const toggle = drawer.getByRole("checkbox", {
+        name: "Show grade numbers",
+      });
+      if (expected.control) await toggle.waitFor().catch(() => undefined);
+      const choiceControl = (await toggle.count()) > 0;
       await viewer.page
         .getByRole("link", { name: "Progress", exact: true })
         .click();
@@ -749,8 +852,7 @@ async function journeys(browser: Browser, engine: string) {
       );
       check(
         `${engine} ${label} choice control`,
-        (await viewer.page.getByText("Show grade numbers").count()) > 0 ===
-          expected.control,
+        choiceControl === expected.control,
       );
       await viewer.context.close();
       open.splice(open.indexOf(viewer), 1);
@@ -1168,11 +1270,23 @@ async function schoolBoardSweep(
       .getByRole("listitem")
       .filter({ hasText: "Maya R." });
     assert.equal(await twins.count(), 2);
+    // Tied, both take the place after every student listed above them (which
+    // students that is depends on who else joined this school's board:
+    // the sweep also enrols a student of another class in Math Club).
+    const above = await student.page
+      .getByRole("list", { name: "Top of the board" })
+      .getByRole("listitem")
+      .evaluateAll((rows) =>
+        rows
+          .filter((row) => !row.hasAttribute("data-teacher"))
+          .findIndex((row) => row.textContent?.includes("Maya R.")),
+      );
+    assert.ok(above >= 1, `${label}: someone practiced more than the twins`);
     assert.deepEqual(
       await twins.evaluateAll((rows) =>
         rows.map((row) => row.getAttribute("data-rank")),
       ),
-      ["2", "2"],
+      [String(above + 1), String(above + 1)],
     );
     assert.equal(
       await student.page.getByText("Maya R.", { exact: true }).count(),
@@ -1227,7 +1341,7 @@ async function sweep(
     const { page } = admin_;
     // The school's settings, under a district's lock.
     await page.goto(`${origin}/school/${school.id}/experience`);
-    await heading(page, "Student experience").waitFor();
+    await orgExperience(page, school.id);
     await page.getByText("Locked by Riverbend District").waitFor();
     await settled(page);
     await geometry(page, `${label} org experience`);
