@@ -10,6 +10,7 @@ import { OPEN_KEY, work, writeStack } from "../../../nav/entities";
 import { currentSession, orgOptions } from "../api";
 import { TransferSheet, useCanMove } from "../org/TransferSheet";
 import { ShareWithFamily } from "../../schools/ShareWithFamily";
+import { shareOptions } from "../../schools/share-api";
 import { TryAsStudent } from "../../profiles/TryAsStudent";
 import { useStaffSession } from "./api";
 import { StudentSections } from "./StudentSections";
@@ -52,6 +53,15 @@ export function StudentLayer({
     student,
     school && can?.includes("students.transfer") === true,
   );
+  // The action row's "Share with family" depends on its own query. The record
+  // waits for it, so the button is in the row when the row first paints and
+  // nothing below it moves (the same query ShareWithFamily reads from cache).
+  const share = useQuery({
+    ...shareOptions(currentSession(), student),
+    enabled: school,
+  });
+  const sharePending =
+    school && share.isPending && share.fetchStatus !== "idle";
   const [moving, setMoving] = useState(false);
   const navigate = useNavigate();
   return (
@@ -72,8 +82,8 @@ export function StudentLayer({
         )
       }
     >
-      {!data ? (
-        record.isError ? (
+      {!data || sharePending ? (
+        !data && record.isError ? (
           <LoadFailed
             what="This record"
             onRetry={() => void record.refetch()}

@@ -582,10 +582,9 @@ a.workRow:focus-visible {
 .promptMissing {
   overflow-wrap: break-word;
 }
+/* The answer wraps whole, like the prompt: nothing is cut off. */
 .answered {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 .prompt,
 .promptMissing {
