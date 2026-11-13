@@ -11,8 +11,9 @@ export async function schoolPilotAccess(
     until: Date | null;
     active: boolean;
   }>(
-    `SELECT amp_school_managed($1) AS managed, amp_school_pilot_until($1) AS until,
-      COALESCE(amp_school_pilot_until($1)>now(),false) AS active`,
+    `WITH access AS MATERIALIZED (
+      SELECT amp_school_managed($1) AS managed, amp_school_pilot_until($1) AS until
+    ) SELECT managed,until,COALESCE(until>now(),false) AS active FROM access`,
     [learnerId],
   );
   return rows[0]!;

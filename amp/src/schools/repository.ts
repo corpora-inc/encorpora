@@ -493,6 +493,18 @@ export class SchoolRepository {
   }
   /** Roster updates and scheduled license starts share one allocator. A learner
    * consumes at most one active school seat across overlapping purchased scopes. */
+  async dueSeatTenants(): Promise<string[]> {
+    return (
+      await this.pool.query(
+        `SELECT DISTINCT o.path[1] AS id FROM amp_school_licenses l JOIN amp_orgs o ON o.id=l.org_id
+       WHERE l.status='active' AND l.starts_at<=now() AND (
+         (l.ends_at>now() AND (l.seats_checked_at IS NULL OR l.seats_checked_at<l.starts_at
+           OR l.seats_checked_at<now()-interval '15 minutes'
+           OR (l.seats_checked_at AT TIME ZONE o.timezone)::date<(now() AT TIME ZONE o.timezone)::date))
+         OR (l.ends_at<=now() AND EXISTS(SELECT 1 FROM amp_seats s WHERE s.license_id=l.id AND s.released_at IS NULL)))`,
+      )
+    ).rows.map((row) => row.id);
+  }
   async reconcileSeats(tenantId: string) {
     return this.transaction(async (client) => {
       await this.lockSeats(client, tenantId);
@@ -508,6 +520,10 @@ export class SchoolRepository {
       let assigned = 0;
       for (const license of licenses)
         assigned += await this.seatWaitingStudents(client, license);
+      await client.query(
+        "UPDATE amp_school_licenses l SET seats_checked_at=now() FROM amp_orgs o WHERE o.id=l.org_id AND o.path[1]=$1 AND l.starts_at<=now()",
+        [tenantId],
+      );
       return { assigned };
     });
   }
@@ -565,12 +581,33 @@ export class SchoolRepository {
         [license.org_id, room, license.id],
       )
     ).rows;
-    for (const person of waiting) {
+    // Keep grant/seat creation on the database side in bounded batches. The
+    // tenant and license locks cover the entire allocation, so parallel school
+    // purchases cannot overbook or seat a learner twice.
+    for (let offset = 0; offset < waiting.length; offset += 1000) {
+      const batch = waiting.slice(offset, offset + 1000).map((person) => ({
+        id: randomUUID(),
+        person_id: person.id,
+        learner_id: person.learner_id,
+      }));
       await client.query(
-        "UPDATE amp_seats SET released_at=now() WHERE person_id=$1 AND released_at IS NULL",
-        [person.id],
+        `WITH released AS (
+          UPDATE amp_seats SET released_at=now() WHERE person_id=ANY($1::uuid[]) AND released_at IS NULL RETURNING grant_id
+        ) UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)`,
+        [batch.map((person) => person.person_id)],
       );
-      await this.assignSeat(client, license, person.id, person.learner_id);
+      await client.query(
+        `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+         SELECT 'school-seat:'||x.id,x.learner_id,'pilot',x.id::text,'active',now(),$2
+         FROM jsonb_to_recordset($1::jsonb) AS x(id uuid,person_id uuid,learner_id text)`,
+        [JSON.stringify(batch), license.ends_at],
+      );
+      await client.query(
+        `INSERT INTO amp_seats(id,license_id,person_id,grant_id)
+         SELECT x.id,$2,x.person_id,'school-seat:'||x.id
+         FROM jsonb_to_recordset($1::jsonb) AS x(id uuid,person_id uuid,learner_id text)`,
+        [JSON.stringify(batch), license.id],
+      );
     }
     return waiting.length;
   }
@@ -613,6 +650,10 @@ export class SchoolRepository {
     const assigned = license.in_force
       ? await this.seatWaitingStudents(client, license)
       : 0;
+    await client.query(
+      "UPDATE amp_school_licenses SET seats_checked_at=now() WHERE id=$1",
+      [license.id],
+    );
     await recordEvent(client, {
       orgId: org.id,
       action: "license.issued",

@@ -237,11 +237,14 @@ test(
         endsAt: new Date(Date.now() + 86400000 * 10).toISOString(),
       });
       assert.equal(future.assigned, 0);
+      assert.deepEqual(await repo.dueSeatTenants(), []);
       await db.query(
-        "UPDATE amp_school_licenses SET starts_at=now()-interval '1 second' WHERE id=$1",
+        "UPDATE amp_school_licenses SET starts_at=now()-interval '1 second',seats_checked_at=now()-interval '2 seconds' WHERE id=$1",
         [future.licenseId],
       );
+      assert.deepEqual(await repo.dueSeatTenants(), [first.orgId]);
       await repo.reconcileSeats(first.orgId);
+      assert.deepEqual(await repo.dueSeatTenants(), []);
       assert.equal(
         (
           await db.query(

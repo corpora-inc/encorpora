@@ -437,10 +437,8 @@ export async function registerCleverOnboarding(
     if (polling || closing) return;
     polling = true;
     try {
-      const tenants =
-        await pool.query(`SELECT DISTINCT o.path[1] AS id FROM amp_school_licenses l JOIN amp_orgs o ON o.id=l.org_id
-        WHERE l.status='active' AND l.starts_at<=now()`);
-      for (const tenant of tenants.rows) await repo.reconcileSeats(tenant.id);
+      for (const tenant of await repo.dueSeatTenants())
+        await repo.reconcileSeats(tenant);
       await refreshConnectionReviews(pool);
       if (!config) return;
       const rows = await pool.query(
