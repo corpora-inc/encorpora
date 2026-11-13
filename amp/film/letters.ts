@@ -51,7 +51,10 @@ export function heldLetterFaults(text: string, words: WordTime[]): string[] {
 export function letterNotes(script: Pick<Script, "shots">): string[] {
   return script.shots.flatMap((shot, si) => shot.beats.flatMap(({ say }) => {
     const words = [...say.matchAll(/\*([a-z])\*|[a-z0-9]+(?:[’'][a-z]+)?/gi)];
+    // another lone letter in the sentence ("a longer and b shorter") makes a lone "a" a name too
+    const others = words.some((word) => !!word[1] || /^[b-hj-z]$/i.test(word[0]));
     const likely = words.some((word, i) => !word[1] && word[0].toLowerCase() === "a" && (
+      others ||
       /^\s*[.,:;?]/.test(say.slice(word.index + word[0].length)) ||
       LETTER_AFTER.has(words[i + 1]?.[0].toLowerCase() ?? "") ||
       LETTER_BEFORE.has(words[i - 1]?.[0].toLowerCase() ?? "")

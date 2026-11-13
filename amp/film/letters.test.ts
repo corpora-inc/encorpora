@@ -122,7 +122,7 @@ describe("letter names", () => {
 });
 
 describe("dry letter notes", () => {
-  it.each(["legs a and b", "a plus b", "side a.", "a,", "a:", "a;", "a?", "leg a grows", "point A moves", "angle a grows", "length a grows", "letter a grows", "a or b", "a minus b", "a times b", "a squared", "a cubed", "a equals b", "a over b"])("notes %s", (say) => {
+  it.each(["legs a and b", "a plus b", "side a.", "a,", "a:", "a;", "a?", "leg a grows", "point A moves", "angle a grows", "length a grows", "letter a grows", "a or b", "a minus b", "a times b", "a squared", "a cubed", "a equals b", "a over b", "Make a longer and b shorter."])("notes %s", (say) => {
     expect(letterNotes(script(say))).toEqual([`shot 1: "${say}": if this is the letter a, write *a* so the voice says its name`]);
   });
   it.each(["a square of side", "a right triangle", "legs *a* and *b*", "side *A*.", "data plus b", "a1 plus b", "a's length"])("leaves %s alone", (say) => {
