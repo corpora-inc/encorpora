@@ -270,7 +270,13 @@ async function family(
   await existingFamily(account);
 
   // 1. `/` converts the family and opens its class, with one calm line.
-  await page.goto(`${origin}/`);
+  // The starter still on screen may move on by itself as its account data
+  // refreshes, cutting this load short: then load `/` again.
+  await page.goto(`${origin}/`).catch(async (error) => {
+    if (!/interrupted/i.test(String(error))) throw error;
+    await page.waitForLoadState("load");
+    await page.goto(`${origin}/`);
+  });
   await page.waitForURL(CLASS_TODAY);
   await todayTitle(page);
   const notice = page.getByText(
@@ -279,10 +285,6 @@ async function family(
   await notice.waitFor();
   const maya = page.getByRole("button", { name: "Let Maya practice here" });
   await maya.waitFor();
-  check(
-    `${label} each child's access is dated`,
-    (await page.getByText("access through", { exact: true }).count()) === 2,
-  );
   check(
     `${label} the class is named for the parent`,
     (
@@ -377,6 +379,22 @@ async function family(
   check(
     `${label} Maya's sign-in is gone`,
     (await page.evaluate(() => sessionStorage.getItem("amp.student"))) === null,
+  );
+  // Each child's access and its end date are their line in Account →
+  // Billing (BillingList's `holding`), not a line on Today.
+  await page.goto(`${origin}/family/access`);
+  const holds = page.getByRole("list", { name: "What each learner holds" });
+  await holds
+    .getByText(/ through /)
+    .first()
+    .waitFor();
+  const dated = await holds.locator("li p").allInnerTexts();
+  check(
+    `${label} each child's access is dated`,
+    dated.filter((line) =>
+      /^Card subscription, through \w+ \d+, \d{4}$/.test(line),
+    ).length === 2,
+    dated,
   );
   await context.close();
 
