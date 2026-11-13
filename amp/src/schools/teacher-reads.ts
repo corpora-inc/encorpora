@@ -972,7 +972,7 @@ const NO_EVIDENCE: SkillCounts = {
   lastPracticedAt: null,
 };
 async function skillCounts(
-  pool: Pool,
+  pool: Pick<Pool, "query">,
   learnerIds: readonly string[],
   skillId: string,
 ): Promise<Map<string, SkillCounts>> {
@@ -1015,23 +1015,29 @@ export async function readStudentSkill(
   ).rows[0] as { learnerId: string | null; timezone: string } | undefined;
   if (!person) return null;
   if (!person.learnerId) return { skillId, evidence: NO_EVIDENCE, work: [] };
-  const [counts, work] = await Promise.all([
-    skillCounts(pool, [person.learnerId], skillId),
-    workSamples(
-      pool,
-      person.learnerId,
-      { from: "2000-01-01", to: "2100-01-01" },
-      person.timezone,
-      WORK_PAGE,
-      0,
-      skillId,
-    ),
-  ]);
-  return {
+  return readLearnerSkill(pool, person.learnerId, person.timezone, skillId);
+}
+
+/** A learner on one skill, by their learner id: a student's (above), or a
+ * learner's own (a skill layer over Pathways). The counts and answers come
+ * one after the other, so a transaction's one connection can read them. */
+export async function readLearnerSkill(
+  db: Pick<Pool, "query">,
+  learnerId: string,
+  timezone: string,
+  skillId: string,
+): Promise<StudentSkillResponse> {
+  const counts = await skillCounts(db, [learnerId], skillId);
+  const work = await workSamples(
+    db,
+    learnerId,
+    { from: "2000-01-01", to: "2100-01-01" },
+    timezone,
+    WORK_PAGE,
+    0,
     skillId,
-    evidence: counts.get(person.learnerId) ?? NO_EVIDENCE,
-    work,
-  };
+  );
+  return { skillId, evidence: counts.get(learnerId) ?? NO_EVIDENCE, work };
 }
 
 /** A class on one skill (a skill layer over a class page): each student's

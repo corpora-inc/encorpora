@@ -457,6 +457,18 @@ function routes(app: FastifyInstance, options: AppOptions) {
       ),
     }));
   });
+  // One skill, for the skill layer over Pathways: this learner's counts and
+  // latest answers on it, the same shape a teacher reads for a student.
+  app.get("/api/v1/learners/:learnerId/skills/:skillId", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { skillId } = z
+      .object({ skillId: z.string().regex(/^[a-z0-9][a-z0-9-]{0,119}$/) })
+      .parse(request.params);
+    return options.repository.transaction(account, learnerId, (tx) =>
+      tx.skillWork(skillId),
+    );
+  });
   app.get("/api/v1/learners/:learnerId/frontier", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -1180,10 +1192,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         templateId: problem.public.templateId,
         response,
         correct: gradeAnswer(problem, response),
-        assisted:
-          !!problem.hintViewed ||
-          !!problem.lessonViewed ||
-          togetherNow,
+        assisted: !!problem.hintViewed || !!problem.lessonViewed || togetherNow,
         ...(help.length ? { help } : {}),
         explanation:
           problem.public.response.kind === "line-plot-build" &&
@@ -1339,6 +1348,7 @@ export function withGlossary(outcome: Outcome): Outcome {
  * holder sees. */
 const SECOND_PARENT_READS = new Set([
   "/api/v1/learners/:learnerId/progress",
+  "/api/v1/learners/:learnerId/skills/:skillId",
   "/api/v1/learners/:learnerId/frontier",
   "/api/v1/learners/:learnerId/level-trend",
 ]);
