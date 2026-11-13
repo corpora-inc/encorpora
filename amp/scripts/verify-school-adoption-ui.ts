@@ -295,9 +295,9 @@ try {
   await choose("Clever connection", "River District");
   await choose("School in Clever", "Birch School");
   await choose(
-    "Clever match for Alex Lee · Grade 3 · Oak · Pat Rivera · Student",
+    "Clever match for Alex Lee · Grade 3 · Oak · Pat Rivera",
   );
-  await choose("Clever match for Alex Lee · Grade 4 · Elm · Jo Kim · Student");
+  await choose("Clever match for Alex Lee · Grade 4 · Elm · Jo Kim");
   await choose("Clever match for Math · Grade 3 · Pat Rivera");
   await choose("Clever match for Math · Grade 4 · Jo Kim");
   await shots(leaderPage, "duplicate-name-matching");

@@ -147,9 +147,7 @@ try {
   await page.getByLabel("Class name").fill("Grade 3 Math");
   if (await page.getByLabel("Your name", { exact: true }).count())
     await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
-  // The school's agreement already covers a second class: no second tick.
-  if (await page.getByRole("checkbox").count())
-    await page.getByRole("checkbox").check();
+  await page.getByRole("checkbox").check();
   await capture("setup");
   let requests = 0;
   await page.route("**/api/v1/school/start", async (route) => {
@@ -224,9 +222,9 @@ try {
   await page.goto(`${origin}/school/start`);
   await page.getByLabel("Class name").fill("Math support");
   assert.equal(await page.getByLabel("School name").count(), 0);
-  if (await page.getByLabel("Your name", { exact: true }).count())
-    await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
-  await page.getByRole("checkbox").check();
+  // The school's agreement already covers a second class: one line, no tick.
+  await page.getByText(/^Covered by your agreement of/).waitFor();
+  assert.equal(await page.getByRole("checkbox").count(), 0);
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.waitForURL(/\/classes\/[\w-]+\/roster/);
   assert.equal(
