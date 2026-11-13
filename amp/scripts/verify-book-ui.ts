@@ -75,8 +75,9 @@ try {
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("http://127.0.0.1:4340/overview");
     await chooseLearner(page, learner.id);
-    await navigateApp(page, "Lessons");
-    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    // Books open at their own address; the lessons library that listed them
+    // is no destination any more (docs/design/ia.md).
+    await page.goto(`http://127.0.0.1:4340/books/${book.id}`);
     await page.getByRole("main", { name: book.title }).waitFor();
     const frames = readingFrames(book);
     const comparisonScales = new Map<string, number>();

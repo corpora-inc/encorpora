@@ -333,7 +333,7 @@ try {
     );
     // Lesson opens the short lesson for this exact problem type, not a book.
     const opening = page.waitForResponse((response) =>
-      response.url().endsWith("/lesson-support"),
+      new URL(response.url()).pathname.endsWith("/lesson-support"),
     );
     await page.getByRole("button", { name: "Lesson", exact: true }).click();
     const opened = await (await opening).json();

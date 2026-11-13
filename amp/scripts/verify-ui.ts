@@ -1,6 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
 import {
-  choose,
   leaveSettings,
   chooseLearner,
   currentLearner,
@@ -22,7 +21,12 @@ import {
   TABLET_LANDSCAPE_LARGE,
   TABLETS,
 } from "./ui-viewports";
-import { exitPractice, resume, startTopic } from "./ui-practice";
+import {
+  exitPractice,
+  openTopicLesson,
+  resume,
+  startTopic,
+} from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -39,6 +43,7 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
 import { uiSweepManifest, uiSweepPartition } from "./ui-sweep-partition";
 import { captureUiFailure } from "./ui-failure-receipt";
+import { readStack } from "../src/web/nav/entities";
 const inventoryIds = templates.map((template) => template.id);
 const sweep = uiSweepPartition(inventoryIds);
 const selectedIds = new Set(sweep.selectedIds);
@@ -144,6 +149,9 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  // tsx keeps function names with an `__name` helper; functions this script
+  // passes to page.evaluate carry it into the page (as app-shell-probe does).
+  await page.addInitScript("globalThis.__name ??= (f) => f");
   diagnosticPage = page;
   page.setDefaultTimeout(15_000);
   page.setDefaultNavigationTimeout(30_000);
@@ -170,7 +178,11 @@ try {
   await page
     .getByRole("link", { name: /^Try this problem type/ })
     .waitFor();
-  assert.ok(page.url().includes("topic=mean-data"));
+  // `/lessons?topic=` opens the problem type's lesson as a layer over
+  // Pathways (docs/design/ia.md), and a reload restores that layer.
+  assert.deepEqual(readStack(new URL(page.url()).searchParams.get("open")), [
+    { kind: "lesson", id: "mean-data" },
+  ]);
   await page
     .getByRole("link", { name: /^Try this problem type/ })
     .click();
@@ -376,7 +388,9 @@ try {
   const release = new Promise<void>((resolve) => {
     releaseLesson = resolve;
   });
-  await page.route("**/lesson-support", async (route) => {
+  // The request carries the client's film capability (`?film=`).
+  const lessonSupport = (url: URL) => url.pathname.endsWith("/lesson-support");
+  await page.route(lessonSupport, async (route) => {
     const result = await route.fetch();
     heldLesson();
     await release;
@@ -400,7 +414,7 @@ try {
   // requested for the answered problem must not open meanwhile.
   await page.getByRole("button", { name: "Next", exact: true }).click();
   const delivered = page.waitForResponse((response) =>
-    response.url().endsWith("/lesson-support"),
+    lessonSupport(new URL(response.url())),
   );
   releaseLesson();
   await delivered;
@@ -422,7 +436,7 @@ try {
   await nextDelivered;
   await page.locator(".problem-stage .problem-content").waitFor();
   await page.unroute("**/batches");
-  await page.unroute("**/lesson-support");
+  await page.unroute(lessonSupport);
   /** Landscape tablets put the answer beside the problem. Every state there
    * (hint, a malformed answer, feedback, the next problem) keeps the problem
    * still, stays in its own column and keeps 44 px targets. */
@@ -725,19 +739,22 @@ try {
   // Lessons: every problem type has its own short lesson.
   progress("lesson inventory and section navigation");
   await exitPractice(page);
-  await navigateApp(page, "Lessons");
-  await page.locator(".topic-list:not([hidden]) button").first().click();
-  await page.locator(".lesson-sheet .problem-lesson").waitFor();
+  // A short lesson is a layer over Pathways, not a library of its own
+  // (docs/design/ia.md); closing it leaves the map in place.
+  await openTopicLesson(page, "mean-data");
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   );
-  await page.getByRole("button", { name: "← All lessons" }).click();
+  await page.keyboard.press("Escape");
+  await page.locator(".problem-lesson").waitFor({ state: "detached" });
+  assert.equal(new URL(page.url()).pathname, "/pathways");
   // The shared logo keeps its geometry across the learning destinations.
   const sections: string[] = [];
-  for (const section of ["Lessons", "Progress", "Practice"] as const) {
-    await navigateApp(page, section);
+  for (const section of ["Pathways", "Progress", "Practice"] as const) {
+    if (section === "Pathways") await page.goto("http://127.0.0.1:4350/pathways");
+    else await navigateApp(page, section);
     await page.locator("[data-app-bar]").waitFor();
     sections.push(
       await page.locator("[data-navigation-trigger]").evaluate((element) => {
@@ -799,28 +816,35 @@ try {
     );
   }
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Add learner", exact: false }).click();
-  const form = page.locator(".family-add-learner");
+  /** Account's Learners tab, from the drawer. */
+  const openLearners = async () => {
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.getByRole("link", { name: "Account", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Learners", exact: true })
+      .click();
+    await page.getByRole("list", { name: "Learners" }).waitFor();
+  };
+  await openLearners();
+  await page.getByRole("button", { name: "Add a child", exact: true }).click();
+  const form = page.locator("#family-add-learner");
   await form.getByLabel("Name", { exact: true }).fill("LongNickname".repeat(5));
-  await choose(
-    form.getByRole("button", { name: "Birth year", exact: true }),
-    "2016",
-  );
+  await form.getByRole("button", { name: "Birth year", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("radio", { name: "2016", exact: true })
+    .click();
   const creation = page.waitForResponse(
     (response) =>
       response.url().endsWith("/learners") &&
       response.request().method() === "POST",
   );
-  await form.getByRole("button", { name: "Add learner", exact: true }).click();
+  await form.getByRole("button", { name: "Add", exact: true }).click();
   learnerIds.push((await (await creation).json()).id);
   await form.waitFor({ state: "detached" });
-  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
+  // Opening a learner's row makes them the learner on this device.
+  await page.locator(`[data-learner-row="${learnerIds.at(-1)}"]`).click();
   await leaveSettings(page);
   // A reload keeps the learner chosen on this device.
   progress("learner persistence and family controls");
@@ -829,19 +853,10 @@ try {
   assert.equal(await currentLearner(page), learnerIds.at(-1));
   // Choose outside Family, so the assertion detects a disconnected picker.
   await chooseLearner(page, learnerIds[0]!);
-  // Family opens on the current learner, and choosing one there makes them
-  // the current learner on every screen.
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  assert.equal(
-    await page.getByLabel("Family learner").getAttribute("data-value"),
-    learnerIds[0],
-  );
-  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
+  // Choosing a learner in Account makes them the current learner on every
+  // screen.
+  await openLearners();
+  await page.locator(`[data-learner-row="${learnerIds.at(-1)}"]`).click();
   await leaveSettings(page);
   assert.equal(await currentLearner(page), learnerIds.at(-1));
   await chooseLearner(page, learnerIds.at(-1)!);
@@ -857,13 +872,7 @@ try {
     "A maximum-length learner nickname must fit a phone viewport",
   );
   // The real application mounts parent controls independently of learning consent.
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  await page.locator(".family-center").waitFor();
+  await openLearners();
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },
@@ -890,7 +899,7 @@ try {
         "Family exit stays visible",
       );
       const lastChoice = await page
-        .getByRole("button", { name: "What is retained?", exact: false })
+        .getByRole("button", { name: "What is kept", exact: false })
         .boundingBox();
       assert.ok(
         lastChoice && lastChoice.y + lastChoice.height <= size.height,
@@ -931,13 +940,7 @@ try {
   await page.waitForURL((url) => url.pathname === "/overview");
   await navigateApp(page, "Practice");
   await within(familyBatchWaiting, "family batch request");
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Account", exact: true }).click();
-  await page
-    .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
-    .click();
-  await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
+  await openLearners();
   await page
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Privacy", exact: true })

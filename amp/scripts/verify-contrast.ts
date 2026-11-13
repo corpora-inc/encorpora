@@ -42,9 +42,10 @@ const learner = await repository.create(
   "Contrast sweep",
   2016,
 );
-// Four choices exercise the drawer's collapsed and expanded learner picker.
+// Seven choices exercise the drawer's collapsed and expanded learner picker:
+// up to six are quiet rows, more fold behind one button.
 const otherLearners = await Promise.all(
-  ["Jordan", "Avery", "Casey"].map((name) =>
+  ["Jordan", "Avery", "Casey", "Riley", "Quinn", "Morgan"].map((name) =>
     repository.create("development-household", name, 2016),
   ),
 );
@@ -480,23 +481,21 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     });
   await step("dialog-birth-year", async () => {
     await page.goto(`${origin}/family/learners`);
-    await page
-      .getByRole("button", { name: "Add learner", exact: false })
-      .first()
-      .click();
+    await page.getByRole("button", { name: "Add a child", exact: true }).click();
     await page.getByPlaceholder("First name or nickname").fill("Jordan");
     await page.getByRole("button", { name: "Birth year", exact: true }).click();
     await page.getByRole("dialog", { name: "Birth year" }).waitFor();
   });
   await step("toast-error", async () => {
-    await page.getByRole("option", { name: "2018", exact: true }).click();
+    await page.getByRole("radio", { name: "2018", exact: true }).click();
     await page.route("**/api/v1/learners", (r) =>
       r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
     );
+    await page.getByRole("button", { name: "Add", exact: true }).click();
     await page
-      .getByRole("button", { name: "Add learner", exact: true })
-      .click();
-    await page.getByRole("alert").waitFor();
+      .getByRole("alert")
+      .filter({ hasText: "Saving this learner failed" })
+      .waitFor();
     await page.unroute("**/api/v1/learners");
   });
   await context.close();

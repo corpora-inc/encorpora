@@ -88,7 +88,10 @@ test("the sector check reads a singular radian count", () => {
   // read both, and still check the area each one implies.
   const prompts = new Map<string, GeneratedProblem>();
   for (let i = 0; i < 256 && prompts.size < 2; i++) {
-    const problem = generateProblem("arc-sector-derivation", `independent-${i}`);
+    const problem = generateProblem(
+      "arc-sector-derivation",
+      `independent-${i}`,
+    );
     const found = /and angle \d+(?:\.\d+)? (radians?)\.$/.exec(
       problem.public.prompt,
     );

@@ -401,9 +401,11 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
     },
     {
       id: "pathway-skill",
-      path: `/pathways/${f.practisedSkill}`,
+      // A skill is a layer over the map (docs/design/ia.md).
+      path: `/pathways?open=skill:${f.practisedSkill}`,
       state: "paid",
-      ready: (p) => p.getByRole("button", { name: "Close skill" }).waitFor(),
+      ready: (p) =>
+        p.locator(`[data-skill-layer="${f.practisedSkill}"]`).waitFor(),
     },
     {
       id: "inventory",
