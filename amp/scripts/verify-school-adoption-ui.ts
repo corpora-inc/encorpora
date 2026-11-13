@@ -190,7 +190,12 @@ try {
     option = label.replace("Clever match for ", ""),
   ) => {
     await leaderPage.getByRole("button", { name: label, exact: true }).click();
-    await leaderPage.getByRole("option", { name: option, exact: true }).click();
+    await leaderPage
+      .getByRole(label.startsWith("Clever match for ") ? "button" : "option", {
+        name: option,
+        exact: true,
+      })
+      .click();
   };
   // Duplicate names are distinguished with human roster context on both sides.
   const matchingConnection = randomUUID();
@@ -296,6 +301,184 @@ try {
   await choose("Clever match for Math · Grade 3 · Pat Rivera");
   await choose("Clever match for Math · Grade 4 · Jo Kim");
   await shots(leaderPage, "duplicate-name-matching");
+  await leaderPage.unroute("**/api/v1/school/adoptions/review");
+  await leaderPage.unroute("**/api/v1/school/adoptions/clever-preview");
+  // Large rosters create one bounded candidate list, never one list per row.
+  const largeSource = Array.from({ length: 1000 }, (_, index) => ({
+    id: randomUUID(),
+    name:
+      index < 998
+        ? `Roster Student ${String(index).padStart(4, "0")}`
+        : "Unclear Student",
+    student: true,
+  }));
+  const largeCandidates = Array.from({ length: 1000 }, (_, index) => ({
+    id: index.toString(16).padStart(24, "0"),
+    name:
+      index < 998
+        ? `Clever Student ${String(index).padStart(4, "0")}`
+        : "Duplicate Name",
+    student: true,
+    ...(index < 998 ? { identifier: `S${10000 + index}` } : {}),
+  }));
+  await leaderPage.route("**/api/v1/school/adoptions/review", async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: {
+        ...(await response.json()),
+        people: 1000,
+        learners: 1000,
+        classes: 1,
+        sourcePeople: largeSource,
+        sourceClasses: [{ id: klass.id, name: "Grade 4 Math" }],
+        cleverConnections: [
+          {
+            id: matchingConnection,
+            environment: "sandbox",
+            districtName: "River District",
+          },
+        ],
+      },
+    });
+  });
+  await leaderPage.route("**/api/v1/school/adoptions/clever-preview", (route) =>
+    route.fulfill({
+      json: {
+        schools: [{ id: "a".repeat(24), name: "Birch School" }],
+        users: [
+          ...largeCandidates,
+          { id: "f".repeat(24), name: "Staff Only", student: false },
+        ],
+        sections: [{ id: "e".repeat(24), name: "Grade 4 Math" }],
+      },
+    }),
+  );
+  await leaderPage.reload();
+  await leaderPage.getByText("Match to Clever (optional)").click();
+  await choose("Clever connection", "River District");
+  await choose("School in Clever", "Birch School");
+  assert.equal(await leaderPage.locator("[data-match-source]").count(), 1001);
+  assert.equal(
+    await leaderPage.locator("[data-adoption-candidate]").count(),
+    0,
+  );
+  assert.equal(await leaderPage.getByRole("option").count(), 0);
+  const activeRow = leaderPage.locator(
+    `[data-match-source="${largeSource[500].id}"]`,
+  );
+  const untouchedRow = leaderPage.locator(
+    `[data-match-source="${largeSource[0].id}"]`,
+  );
+  await leaderPage.setViewportSize({ width: 390, height: 844 });
+  await activeRow.click();
+  const picker = leaderPage.getByRole("dialog", {
+    name: "Choose the same person",
+  });
+  await picker.waitFor();
+  assert.equal(await leaderPage.getByRole("dialog").count(), 1);
+  assert.equal(await picker.locator("[data-adoption-candidate]").count(), 50);
+  await picker
+    .getByRole("status")
+    .filter({ hasText: "Showing 50 of 1,000" })
+    .waitFor();
+  const search = picker.getByRole("textbox", { name: "Search Clever records" });
+  await search.fill("Staff Only");
+  assert.equal(
+    await picker.locator("[data-adoption-candidate]").count(),
+    0,
+    "Students cannot match staff",
+  );
+  await search.fill("Duplicate Name");
+  assert.equal(await picker.locator("[data-adoption-candidate]").count(), 2);
+  assert.equal(
+    await picker.locator("[data-adoption-candidate]:disabled").count(),
+    2,
+  );
+  await search.fill("S10997");
+  const picked = picker.getByRole("button", {
+    name: "Clever Student 0997",
+    exact: true,
+  });
+  await picked.waitFor();
+  assert.equal(await picker.locator("[data-adoption-candidate]").count(), 1);
+  assert.ok((await picked.boundingBox())!.height >= 44);
+  assert.ok((await picker.boundingBox())!.width <= 390);
+  for (const theme of ["light", "dark"] as const) {
+    await leaderPage.evaluate((value) => {
+      document.documentElement.dataset.theme = value;
+    }, theme);
+    await leaderPage.screenshot({
+      path: `artifacts/school-adoption/large-roster-picker-390-${theme}.png`,
+    });
+  }
+  await picked.focus();
+  await leaderPage.keyboard.press("Enter");
+  await picker.waitFor({ state: "hidden" });
+  assert.equal(
+    await activeRow.getAttribute("data-value"),
+    largeCandidates[997].id,
+  );
+  assert.equal(
+    await untouchedRow.getAttribute("data-value"),
+    "",
+    "Selection must update only its source row",
+  );
+  assert.equal(
+    await activeRow.evaluate((element) => document.activeElement === element),
+    true,
+  );
+  assert.equal(
+    await leaderPage.locator("[data-adoption-candidate]").count(),
+    0,
+  );
+  assert.equal(
+    await leaderPage
+      .locator(`[data-match-source="${largeSource[998].id}"]`)
+      .isDisabled(),
+    true,
+  );
+  assert.equal(
+    await leaderPage
+      .getByRole("button", { name: "Add school to district" })
+      .isDisabled(),
+    true,
+  );
+  await untouchedRow.click();
+  await search.fill("S10997");
+  assert.equal(
+    await picker
+      .getByRole("button", {
+        name: "Clever Student 0997 · Already matched",
+        exact: true,
+      })
+      .isDisabled(),
+    true,
+  );
+  await picker.getByRole("button", { name: "Close", exact: true }).click();
+  await activeRow.click();
+  await search.fill("S10997");
+  assert.equal(
+    await picker
+      .getByRole("button", { name: "Clever Student 0997", exact: true })
+      .isEnabled(),
+    true,
+  );
+  await search.fill("long filter with no match");
+  await search.press("Escape");
+  assert.equal(await search.inputValue(), "");
+  assert.equal(await picker.locator("[data-adoption-candidate]").count(), 50);
+  await search.press("Escape");
+  await picker.waitFor({ state: "hidden" });
+  assert.equal(
+    await activeRow.getAttribute("data-value"),
+    largeCandidates[997].id,
+  );
+  await activeRow.click();
+  await picker
+    .getByRole("button", { name: "Clear match", exact: true })
+    .click();
+  assert.equal(await activeRow.getAttribute("data-value"), "");
   await leaderPage.unroute("**/api/v1/school/adoptions/review");
   await leaderPage.unroute("**/api/v1/school/adoptions/clever-preview");
   await leaderPage.reload();

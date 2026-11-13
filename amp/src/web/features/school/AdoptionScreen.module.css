@@ -107,6 +107,28 @@
   gap: var(--space-1);
   font-weight: 600;
 }
+.matchRows,
+.candidates {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.match small,
+.matchCount {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 400;
+  margin: 0;
+}
+button.matchButton {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
 /* The Clever records' wait: the size of one picker. */
 .wait {
   min-height: 44px;

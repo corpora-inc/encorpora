@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
 import type { AuthSession } from "../../auth";
@@ -29,6 +29,7 @@ import {
 } from "./adoption-session";
 import { Actions, Lead, PlainPage } from "./PlainPage";
 import { adoptionLabels } from "./adoption-labels";
+import { AdoptionMatching } from "./AdoptionMatching";
 import styles from "./AdoptionScreen.module.css";
 
 const day = (value: string) =>
@@ -350,24 +351,51 @@ function ReviewDecision({
   const allMatches = data.staffMatches.every((match) =>
     matches.includes(match.sourcePersonId),
   );
-  const users = preview.data ? adoptionLabels(preview.data.users) : [];
-  const sections = preview.data ? adoptionLabels(preview.data.sections) : [];
-  const sourcePeople = adoptionLabels(data.sourcePeople);
-  const sourceClasses = adoptionLabels(data.sourceClasses);
+  const users = useMemo(
+    () => adoptionLabels(preview.data?.users ?? []),
+    [preview.data?.users],
+  );
+  const sections = useMemo(
+    () => adoptionLabels(preview.data?.sections ?? []),
+    [preview.data?.sections],
+  );
+  const sourcePeople = useMemo(
+    () => adoptionLabels(data.sourcePeople),
+    [data.sourcePeople],
+  );
+  const sourceClasses = useMemo(
+    () => adoptionLabels(data.sourceClasses),
+    [data.sourceClasses],
+  );
+  const usersById = useMemo(
+    () => new Map(users.map((user) => [user.id, user])),
+    [users],
+  );
+  const sectionsById = useMemo(
+    () => new Map(sections.map((section) => [section.id, section])),
+    [sections],
+  );
   const cleverValid =
     !connectionId ||
     (!!preview.data &&
       !!cleverSchoolId &&
-      sourcePeople.every(
-        (p) =>
-          !p.ambiguous &&
-          users.some((u) => u.id === people[p.id] && !u.ambiguous),
-      ) &&
-      sourceClasses.every(
-        (c) =>
-          !c.ambiguous &&
-          sections.some((s) => s.id === classes[c.id] && !s.ambiguous),
-      ));
+      sourcePeople.every((person) => {
+        const match = usersById.get(people[person.id]);
+        return (
+          !person.ambiguous &&
+          !!match &&
+          !match.ambiguous &&
+          match.student === person.student
+        );
+      }) &&
+      sourceClasses.every((section) => {
+        const match = sectionsById.get(classes[section.id]);
+        return !section.ambiguous && !!match && !match.ambiguous;
+      }) &&
+      new Set(sourcePeople.map((person) => people[person.id])).size ===
+        sourcePeople.length &&
+      new Set(sourceClasses.map((section) => classes[section.id])).size ===
+        sourceClasses.length);
   if (accepted)
     return (
       <PlainPage
@@ -478,84 +506,29 @@ function ReviewDecision({
                           ))}
                         </Select>
                         {cleverSchoolId && (
-                          <>
-                            <h3>People</h3>
-                            {sourcePeople.map((p) => (
-                              <label className={styles.match} key={p.id}>
-                                <span>
-                                  {p.label}
-                                  {p.ambiguous &&
-                                    " · Add distinguishing details to the roster before matching."}
-                                </span>
-                                <Select
-                                  aria-label={`Clever match for ${p.label}`}
-                                  disabled={p.ambiguous}
-                                  value={people[p.id] ?? ""}
-                                  onValueChange={(value) =>
-                                    setPeople((old) => ({
-                                      ...old,
-                                      [p.id]: value,
-                                    }))
-                                  }
-                                >
-                                  <option value="">
-                                    Choose the same person
-                                  </option>
-                                  {users
-                                    .filter((u) => u.student === p.student)
-                                    .map((u) => (
-                                      <option
-                                        key={u.id}
-                                        value={u.id}
-                                        disabled={u.ambiguous}
-                                      >
-                                        {u.label}
-                                        {u.ambiguous
-                                          ? " · Needs distinguishing details"
-                                          : ""}
-                                      </option>
-                                    ))}
-                                </Select>
-                              </label>
-                            ))}
-                            <h3>Classes</h3>
-                            {sourceClasses.map((c) => (
-                              <label className={styles.match} key={c.id}>
-                                <span>
-                                  {c.label}
-                                  {c.ambiguous &&
-                                    " · Add distinguishing details to the roster before matching."}
-                                </span>
-                                <Select
-                                  aria-label={`Clever match for ${c.label}`}
-                                  disabled={c.ambiguous}
-                                  value={classes[c.id] ?? ""}
-                                  onValueChange={(value) =>
-                                    setClasses((old) => ({
-                                      ...old,
-                                      [c.id]: value,
-                                    }))
-                                  }
-                                >
-                                  <option value="">
-                                    Choose the same class
-                                  </option>
-                                  {sections.map((s) => (
-                                    <option
-                                      key={s.id}
-                                      value={s.id}
-                                      disabled={s.ambiguous}
-                                    >
-                                      {s.label}
-                                      {s.ambiguous
-                                        ? " · Needs distinguishing details"
-                                        : ""}
-                                    </option>
-                                  ))}
-                                </Select>
-                              </label>
-                            ))}
-                          </>
+                          <AdoptionMatching
+                            people={{
+                              source: sourcePeople,
+                              candidates: users,
+                              values: people,
+                            }}
+                            classes={{
+                              source: sourceClasses,
+                              candidates: sections,
+                              values: classes,
+                            }}
+                            disabled={busy}
+                            onChange={(kind, id, value) => {
+                              const update =
+                                kind === "people" ? setPeople : setClasses;
+                              update((old) => {
+                                const next = { ...old };
+                                if (value) next[id] = value;
+                                else delete next[id];
+                                return next;
+                              });
+                            }}
+                          />
                         )}
                       </>
                     )
