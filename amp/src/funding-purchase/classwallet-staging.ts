@@ -7,7 +7,7 @@ import {
   type FundingOffer,
 } from "./contracts.js";
 import { fundingRequestRow } from "./repository.js";
-import { provisionFundingRequest } from "./provision.js";
+import { fundedTermStart, provisionFundingRequest } from "./provision.js";
 import {
   reconcilePayBySettlement,
   verifyPayByReportBinding,
@@ -207,14 +207,18 @@ export async function reconcileClassWalletPayments(
       }
       const stored = requests.rows[0],
         request = fundingRequestRow(stored);
+      const at = new Date().toISOString();
       payload =
         payment.conversion_payload ??
         prepareClassWalletProvision(
           payment.payment_row,
           request,
           payment.verified_config,
-          new Date().toISOString(),
+          at,
           stored.conversion_payload ?? undefined,
+          // A month (or year) paid before the learner's access ends starts
+          // when it ends.
+          await fundedTermStart(client, request.learnerId, at),
         );
       if (
         request.orderId &&

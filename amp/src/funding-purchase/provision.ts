@@ -1,6 +1,6 @@
-import { learningConsentActive } from "../server/account-access.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import {
   commerceEventSchema,
@@ -17,17 +17,52 @@ export const fundedProvisionSchema = z.strictObject({
   requestId: z.string().uuid(),
   events: z.array(commerceEventSchema).min(4).max(5),
 });
-/** Twelve calendar months; leap-day terms end on the last day of February. */
-export function annualTermEnd(start: string): string {
+/** A funded term's end: the same day and time `months` calendar months
+ * later, clamped to that month's last day (January 31 + 1 month is February
+ * 28; February 29 + 12 months is February 28). */
+export function fundedTermEnd(start: string, months: 1 | 12): string {
   const date = new Date(start),
-    year = date.getUTCFullYear() + 1,
-    month = date.getUTCMonth();
+    index = date.getUTCMonth() + months,
+    year = date.getUTCFullYear() + Math.floor(index / 12),
+    month = index % 12;
   const day = Math.min(
     date.getUTCDate(),
     new Date(Date.UTC(year, month + 1, 0)).getUTCDate(),
   );
   date.setUTCFullYear(year, month, day);
   return date.toISOString();
+}
+/** Twelve calendar months; leap-day terms end on the last day of February. */
+export const annualTermEnd = (start: string) => fundedTermEnd(start, 12);
+
+/** How far ahead a term paid early may be scheduled. Further than this, the
+ * learner's existing access is something an operator reconciles first. */
+const EARLY_RENEWAL_LIMIT_MS = 366 * 86_400_000;
+
+/** When a funded term activated at `activatedAt` starts: then, or, when the
+ * learner's access already runs past it (a month paid early), the moment
+ * that access ends, following back-to-back terms. Access that runs more than
+ * a year ahead isn't followed: the term starts at activation and provisioning
+ * reports the overlap for an operator to reconcile. */
+export async function fundedTermStart(
+  db: Pick<PoolClient, "query">,
+  learnerId: string,
+  activatedAt: string,
+): Promise<string> {
+  let start = activatedAt;
+  for (let step = 0; step < 24; step++) {
+    const covering = (
+      await db.query<{ ends_at: Date }>(
+        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2",
+        [learnerId, start],
+      )
+    ).rows[0]?.ends_at;
+    if (!covering) break;
+    start = new Date(covering).toISOString();
+  }
+  return Date.parse(start) - Date.parse(activatedAt) > EARLY_RENEWAL_LIMIT_MS
+    ? activatedAt
+    : start;
 }
 /** Staff-only, no HTTP endpoint. Explicit evidence events provision one complete license atomically. */
 export async function provisionFundingRequest(
@@ -63,11 +98,11 @@ export async function provisionFundingRequest(
       400,
       "complete_provisioning_events_required",
     );
-  if (
-    created.order.license.startsAt !== activation.occurredAt ||
-    created.order.license.endsAt !== annualTermEnd(activation.occurredAt)
-  )
-    throw new FundingPurchaseError(400, "annual_activation_term_required");
+  const term = created.order.license;
+  // A term starts at activation, or later when it follows access the learner
+  // already has (checked against that access below).
+  if (Date.parse(term.startsAt) < Date.parse(activation.occurredAt))
+    throw new FundingPurchaseError(400, "funded_activation_term_required");
   const repository = new FundingPurchaseRepository(pool, []);
   return repository.transaction(
     created.order.account.id,
@@ -117,7 +152,19 @@ export async function provisionFundingRequest(
           canonicalCommercePayload(request.offer)
       )
         throw new FundingPurchaseError(409, "offer_unavailable");
-      if (!(await learningConsentActive(client, request.accountId)))
+      if (
+        term.endsAt !== fundedTermEnd(term.startsAt, request.offer.termMonths)
+      )
+        throw new FundingPurchaseError(400, "funded_activation_term_required");
+      // A child needs the parent's verified consent; the account holder's own
+      // adult learner learns on their own terms.
+      if (
+        !(await purchaseConsentSatisfied(
+          client,
+          request.accountId,
+          request.learnerId,
+        ))
+      )
         throw new FundingPurchaseError(403, "verified_consent_required");
       const learner = await client.query(
         "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
@@ -144,6 +191,21 @@ export async function provisionFundingRequest(
         order.channelReference !== o.channelReference
       )
         throw new FundingPurchaseError(409, "order_quote_mismatch");
+      // A term scheduled after activation is a month (or year) paid early:
+      // it must start exactly when the learner's current access ends.
+      if (
+        order.license.startsAt !== activation.occurredAt &&
+        (Date.parse(order.license.startsAt) -
+          Date.parse(activation.occurredAt) >
+          EARLY_RENEWAL_LIMIT_MS ||
+          !(
+            await client.query(
+              "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at=$2 AND starts_at<$2 LIMIT 1",
+              [request.learnerId, order.license.startsAt],
+            )
+          ).rowCount)
+      )
+        throw new FundingPurchaseError(409, "funded_term_start_unsupported");
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
       const overlap = await client.query(

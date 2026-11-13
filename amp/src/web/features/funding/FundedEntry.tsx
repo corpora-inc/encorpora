@@ -121,19 +121,29 @@ function SignedInEntry({
   const step = startDestination(me.data, "/start", false, program.slug);
   if (step && step !== program.path)
     return <Navigate {...startNavigation(step)} search={search} replace />;
+  // The account holder's own adult learner is bought for like a child, but
+  // needs no parental consent: she acts for herself.
+  const own = me.data.adultPractice?.learner ?? null;
+  const consentActive = me.data.consent.status === "active";
   return (
     <InvoiceClaim
       session={session}
       program={program}
       learners={me.data.learners}
+      own={own}
+      consentActive={consentActive}
       preferredLearnerId={selectedLearner ?? undefined}
     >
       <FundingPurchaseCenter
         key={session.accountId}
         token={session.token}
         identity={session.accountId}
-        learners={me.data.learners}
-        consentActive={me.data.consent.status === "active"}
+        learners={[
+          ...(own ? [{ id: own.id, name: "Me" }] : []),
+          ...me.data.learners,
+        ]}
+        consentActive={consentActive}
+        ownLearnerId={own?.id}
         preferredLearnerId={selectedLearner ?? undefined}
         program={program}
         campaignSearch={search}

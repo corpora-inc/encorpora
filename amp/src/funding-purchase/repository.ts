@@ -11,7 +11,7 @@ import {
 import type { Pool, PoolClient } from "pg";
 import {
   lockLearningAccount,
-  learningConsentActive,
+  purchaseConsentSatisfied,
 } from "../server/account-access.js";
 import { readCommerceOrder } from "../commerce/postgres.js";
 import {
@@ -80,7 +80,7 @@ export class FundingPurchaseRepository {
   ): Promise<FundingRequest> {
     const data = createFundingRequestSchema.parse(input);
     return this.transaction(account, async (client) => {
-      if (!(await learningConsentActive(client, account)))
+      if (!(await purchaseConsentSatisfied(client, account, data.learnerId)))
         throw new FundingPurchaseError(403, "verified_consent_required");
       const learner = await client.query(
         // A practice profile is never bought for: the account's access covers it.

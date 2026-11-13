@@ -34,10 +34,21 @@ try {
         documentPolicy: "named-student-invoice" as const,
         subtotalMinor: 59900,
       };
+      // The same program a month at a time (monthly-offers.ts).
+      const monthly = {
+        ...offer,
+        id: "fixture-monthly",
+        productTitle: "AMP Mathematics - monthly",
+        subtotalMinor: 5900,
+        termMonths: 1 as const,
+        termPolicy: "one-month-from-verified-provisioning" as const,
+      };
       await page.route("**/api/**", async (route) => {
         const path = new URL(route.request().url()).pathname;
         if (path === "/api/v1/funding/invoice-offers")
-          return route.fulfill({ json: { offers: [presentOffer(offer)] } });
+          return route.fulfill({
+            json: { offers: [presentOffer(offer), presentOffer(monthly)] },
+          });
         if (
           path === "/api/v1/funding/invoices" &&
           route.request().method() === "POST"
@@ -45,6 +56,7 @@ try {
           posts++;
           const body = route.request().postDataJSON();
           assert.equal(body.parentEmail, "parent@example.com");
+          assert.equal(body.offerId, monthly.id);
           assert.equal(body.studentBillingName, "Sample Student");
           assert.equal(body.learnerId, undefined);
           if (key) assert.equal(body.idempotencyKey, key);
@@ -73,8 +85,22 @@ try {
         return route.fulfill({ json: {} });
       });
       await page.goto(`${origin}/invoice/arkansas-efa`);
+      // Yearly or Monthly: a designed choice, switched without moving the form.
+      const submit = page.getByRole("button", { name: "Create invoice PDF" });
+      await submit.waitFor();
+      const before = (await submit.boundingBox())!.y;
+      await page.getByRole("radio", { name: /Monthly/ }).click();
+      assert.equal(
+        await page
+          .getByRole("radio", { name: /Monthly/ })
+          .getAttribute("aria-checked"),
+        "true",
+      );
+      await page.getByText("One learner · one month").waitFor();
+      assert.equal((await submit.boundingBox())!.y, before);
+      assert.equal(await page.locator("select").count(), 0);
       await page
-        .getByLabel("Parent or guardian email")
+        .getByLabel("Email for the AMP account (parent, or the student if 18+)")
         .fill("parent@example.com");
       await page
         .getByLabel("Student name for the invoice")

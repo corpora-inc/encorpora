@@ -794,7 +794,7 @@ async function journeys(browser: Browser, engine: string) {
       .first()
       .click();
     await page.waitForURL("**/invoice/arkansas-efa?**");
-    await page.getByLabel("Parent or guardian email").waitFor();
+    await page.getByLabel("Email for the AMP account (parent, or the student if 18+)").waitFor();
     await page.getByRole("button", { name: "Create invoice PDF" }).waitFor();
     // The point of sale states the program's refund terms.
     await page.getByText("Fixture refund terms.").waitFor();
