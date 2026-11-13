@@ -274,7 +274,7 @@ nav button {
 }
 .problem-content .figure[data-kind="base-ten-pair"] {
   height: auto;
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
   min-height: 0;
 }
 .answer-dock {

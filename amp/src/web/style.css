@@ -274,10 +274,11 @@ nav button:hover {
   margin: 15px auto 28px;
 }
 /* Two rows of ten-rods need the stage width. A height cap shrinks the
-   cubes to dots and the place labels below 12 px. */
+   cubes to dots and the place labels below 12 px, so only the figure type
+   size (FigureTextCap) bounds it: on a wide stage its labels stop there. */
 .figure[data-kind="base-ten-pair"] {
   height: auto;
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
   min-height: 0;
 }
 .figure[data-kind="base-ten-pair"] .base-ten-label {

@@ -182,13 +182,14 @@
 }
 /* The figure is the answer: a figure drawn in its own view box takes the
    stage's width at its natural proportions instead of the short strip a
-   prompt figure gets, and the stage scrolls rather than shrinking it. */
+   prompt figure gets, and the stage scrolls rather than shrinking it. Its
+   letters still stop at the figure type size (FigureTextCap). */
 .problem-content:has(> .figure-panel-targets) .figure:not(.scene-figure) {
   flex: none;
   width: 100%;
   height: auto;
   min-height: 0;
-  max-height: min(56dvh, 440px);
+  max-height: min(56dvh, 440px, var(--figure-cap-height, 440px));
 }
 .figure-panel-targets {
   position: absolute;
