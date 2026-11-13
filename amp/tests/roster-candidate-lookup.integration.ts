@@ -126,7 +126,13 @@ test(
         );
         const movedKey = {
           ...named,
-          classes: [{ sourcedId: "name:next class", name: "Next Class" }],
+          classes: [
+            {
+              sourcedId: "name:next class",
+              name: "Next Class",
+              courseBands: [],
+            },
+          ],
         };
         assert.equal(
           (await apply(orgId, [movedKey])).results[0]?.status,

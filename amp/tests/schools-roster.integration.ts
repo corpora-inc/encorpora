@@ -781,14 +781,17 @@ test(
         ).length,
         1,
       );
-      // Importing someone removed brings them back as new, not as nothing.
+      // An ended school membership cannot be bypassed by reimporting a removed ID.
       const removedRow = rows.find(
         (row) => row.identifier === leaving.identifier,
       )!;
-      assert.equal((await planAll(base, head, [removedRow]))[0]!.status, "new");
+      assert.equal(
+        (await planAll(base, head, [removedRow]))[0]!.reason,
+        "outside_school",
+      );
       assert.equal(
         (await applyAll(base, head, [removedRow]))[0]!.status,
-        "created",
+        "held",
       );
       assert.equal(
         (

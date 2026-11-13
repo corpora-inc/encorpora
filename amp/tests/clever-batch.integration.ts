@@ -413,7 +413,7 @@ test(
               )
             ).rows[0];
             assert.ok(binding.archived_at);
-            assert.equal(binding.record.name, undefined);
+            assert.deepEqual(binding.record.name, {});
             assert.equal(
               (
                 await db.query(
