@@ -18,6 +18,10 @@ export type AccessView =
   /** The pilot is over and practice continues until `until`. */
   | { kind: "ending"; until: string }
   | { kind: "ended" }
+  /** Some students retain access from another license or class pilot. */
+  | { kind: "partial"; covered: number; students: number }
+  /** Another class pilot covers the whole roster. */
+  | { kind: "covered" }
   /** Every student has a paid seat. */
   | { kind: "paid" };
 
@@ -29,6 +33,7 @@ export function accessView(
   const students = pilot.coverage?.students ?? 0;
   if (students > 0 && (pilot.coverage?.paid ?? 0) >= students)
     return { kind: "paid" };
+  if (!students) return { kind: "empty" };
   // A class no one has started is its teacher's to start, whatever an
   // administrator's own pilot says.
   if (pilot.status === "ready" && students > 0 && !teaches)
@@ -37,8 +42,12 @@ export function accessView(
     return { kind: "active", until: pilot.endsAt };
   if (pilot.status === "grace" && pilot.graceEndsAt)
     return { kind: "ending", until: pilot.graceEndsAt };
-  if (pilot.status === "expired" || !pilot.eligible) return { kind: "ended" };
-  if (!students) return { kind: "empty" };
+  if (pilot.status === "expired" || !pilot.eligible) {
+    const covered = pilot.coverage?.covered ?? 0;
+    if (covered >= students) return { kind: "covered" };
+    if (covered > 0) return { kind: "partial", covered, students };
+    return { kind: "ended" };
+  }
   if (pilot.startedAt && pilot.endsAt)
     return {
       kind: "start",

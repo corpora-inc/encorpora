@@ -48,7 +48,12 @@ function ClassToday({
   });
   const access = useClassAccess(place);
   const ended = practiceEnded(access.view);
-  const practice = accessFeedEntry(access.view, place, access.pilot);
+  const practice = accessFeedEntry(
+    access.view,
+    place,
+    access.pilot,
+    access.teaches,
+  );
   const entries = todoEntries({
     todos: data.todos.filter(
       (todo) => (canStart && !ended) || todo.id !== "start-class",

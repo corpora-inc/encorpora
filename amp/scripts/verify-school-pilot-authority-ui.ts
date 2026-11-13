@@ -114,10 +114,12 @@ try {
       await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
     else await page.getByLabel("Class code").waitFor();
     assert.equal(await page.getByRole("button", { name: /^Start/ }).count(), 0);
-    if (tab === "today")
+    assert.equal(
       await page
         .getByRole("button", { name: "Request seats", exact: true })
-        .waitFor();
+        .count(),
+      0,
+    );
     await capture(`administrator-${tab}`);
   }
   assert.equal(
@@ -181,7 +183,7 @@ try {
   );
   assert.deepEqual(failures, []);
   console.info(
-    "Only an enrolled teacher can activate the pilot in Today and Students; administrator preparation and buyer actions remain available.",
+    "Only an enrolled teacher can activate the pilot in Today and Students; administrators can prepare classes without being offered teacher-only actions.",
   );
 } catch (error) {
   await page.screenshot({ path: `${artifacts}/failure.png`, fullPage: true });

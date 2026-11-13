@@ -17,24 +17,28 @@ import { deviceTimeZone, useStartDemo } from "../../onboarding/starter-api";
 import { currentSession, orgsOptions, refreshSchool } from "../api";
 import { Actions, Aside, PlainPage, plainStyles } from "../PlainPage";
 import { Authorization } from "./Authorization";
-import { pilotApi } from "./api";
+import { classAuthorizationOptions, pilotApi } from "./api";
 
 const NEW = "new";
 type Draft = {
   owner: string | null;
+  originOrg: string | null;
   school: string | null;
   schoolName: string;
   className: string;
   signerName: string;
   signerTitle: string;
+  signerChanged: boolean;
   authorized: boolean;
 };
 const blank: Omit<Draft, "owner"> = {
+  originOrg: null,
   school: null,
   schoolName: "",
   className: "",
   signerName: "",
   signerTitle: "Teacher",
+  signerChanged: false,
   authorized: false,
 };
 /** What's typed survives a trip to the agreement or the demo and back. */
@@ -82,7 +86,9 @@ export function SchoolStartScreen() {
   const navigate = useNavigate();
   const demo = useStartDemo(session);
   const draft = useDraft();
-  const mine = draft.owner === session.accountId;
+  const mine =
+    draft.owner === session.accountId &&
+    draft.originOrg === (search.org ?? null);
   const chosen = mine ? draft.school : null;
   const school =
     chosen === NEW
@@ -90,16 +96,33 @@ export function SchoolStartScreen() {
       : (schools.find((org) => org.id === (chosen ?? search.org)) ??
         (chosen === null ? schools[0] : undefined) ??
         null);
+  const prior = useQuery({
+    ...classAuthorizationOptions(session, school?.id ?? ""),
+    enabled: !!school,
+  });
+  const reused =
+    prior.data?.authorization?.version === AGREEMENT_VERSION
+      ? prior.data.authorization
+      : null;
   const value = {
     schoolName: mine ? draft.schoolName : "",
     className: mine ? draft.className : "",
-    signerName: mine ? draft.signerName : (session.name ?? ""),
-    signerTitle: mine ? draft.signerTitle : "Teacher",
+    signerName:
+      mine && draft.signerChanged
+        ? draft.signerName
+        : (reused?.signerName ??
+          (mine ? draft.signerName : (session.name ?? ""))),
+    signerTitle:
+      mine && draft.signerChanged
+        ? draft.signerTitle
+        : (reused?.signerTitle ?? (mine ? draft.signerTitle : "Teacher")),
     authorized: mine && draft.authorized,
+    signerChanged: mine && draft.signerChanged,
   };
   const edit = (change: Partial<Draft>) =>
     draft.set(session.accountId, {
       ...value,
+      originOrg: search.org ?? null,
       school: mine ? draft.school : null,
       ...change,
     });
@@ -112,8 +135,10 @@ export function SchoolStartScreen() {
     >
   >({});
   useLoggedError(error);
+  useLoggedError(prior.error?.message ?? "");
   useLoggedError(Object.values(fieldErrors).filter(Boolean).join(" "));
-  if (account.isPending || orgs.isPending) return <LoadingScreen overlay />;
+  if (account.isPending || orgs.isPending || (school && prior.isPending))
+    return <LoadingScreen overlay />;
   if (account.data?.signedIn && account.data.account.confirmationRequired)
     return (
       <PlainPage back="/start">
@@ -209,7 +234,15 @@ export function SchoolStartScreen() {
             <Select
               aria-label="School"
               value={school?.id ?? NEW}
-              onValueChange={(next) => edit({ school: next })}
+              onValueChange={(next) =>
+                edit({
+                  school: next,
+                  authorized: false,
+                  signerName: "",
+                  signerTitle: "Teacher",
+                  signerChanged: false,
+                })
+              }
               disabled={busy}
             >
               {schools.map((org) => (
@@ -242,11 +275,13 @@ export function SchoolStartScreen() {
           disabled={busy}
         />
         <Authorization
+          key={school?.id ?? NEW}
+          acceptedAt={reused?.acceptedAt}
           name={value.signerName}
           title={value.signerTitle}
           authorized={value.authorized}
-          onName={(signerName) => edit({ signerName })}
-          onTitle={(signerTitle) => edit({ signerTitle })}
+          onName={(signerName) => edit({ signerName, signerChanged: true })}
+          onTitle={(signerTitle) => edit({ signerTitle, signerChanged: true })}
           onAuthorized={(authorized) => edit({ authorized })}
           errors={{
             name: fieldErrors.signerName,

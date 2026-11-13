@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
+import { Button } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { TalkToUs } from "../../schools/TalkToUs";
@@ -26,16 +28,44 @@ export function BuyerHandoffScreen() {
         <LoadingScreen overlay />
       </PublicFrame>
     );
-  if (!data)
+  if (!data) {
+    const expired =
+      !token ||
+      (request.error instanceof AppError && request.error.status === 404);
     return (
       <PublicFrame>
-        <PlainPage title="This link has expired">
+        <PlainPage
+          title={
+            expired ? "This link has expired" : "This request couldn’t load"
+          }
+        >
           <meta name="referrer" content="no-referrer" />
-          <Lead>Ask the teacher for a new one.</Lead>
+          <Lead>
+            {expired
+              ? "Ask the teacher for a new one."
+              : "Check your connection and try again."}
+          </Lead>
+          {!expired && (
+            <Button
+              variant="primary"
+              aria-busy={request.isFetching}
+              onClick={() => void request.refetch()}
+            >
+              Try again
+            </Button>
+          )}
         </PlainPage>
       </PublicFrame>
     );
+  }
   const purchased = data.status === "active";
+  const covered =
+    data.students > 0 &&
+    data.pilots.length > 0 &&
+    data.pilots.every(
+      (pilot) =>
+        !!pilot.coverage && pilot.coverage.covered >= pilot.coverage.students,
+    );
   const ends = data.pilots
     .map((pilot) => pilot.endsAt)
     .filter((date): date is string => !!date)
@@ -55,7 +85,7 @@ export function BuyerHandoffScreen() {
         <meta name="referrer" content="no-referrer" />
         <Lead>
           {purchased
-            ? "Your seats are confirmed. Students have access."
+            ? `Your seats are confirmed.${covered ? " Students have access." : ""}`
             : `${data.classCount === 1 ? "A class is" : `${data.classCount} classes are`} ready for AMP: counting to precalculus, every student at their own level.`}
         </Lead>
         <dl className={styles.facts}>

@@ -153,17 +153,19 @@ export function SignInScreen() {
       ? "That password reset link expired or is invalid. Request a new link."
       : params.get("error") === "clever_sign_in_failed"
         ? "Clever sign-in didn’t finish."
-        : params.get("error") === "link_failed"
-          ? "That login could not be linked. Sign in again, then try linking it from Security."
-          : params.get("error") && isProvider(errorProvider)
-            ? socialErrorMessage(
-                copy,
-                params.get("error")!,
-                providerNames[errorProvider],
-              )
-            : params.get("error")
-              ? "That sign-in did not complete. Try again."
-              : "",
+        : params.get("error") === "clever_sign_in_busy"
+          ? "Clever sign-in is busy. Try again in a moment."
+          : params.get("error") === "link_failed"
+            ? "That login could not be linked. Sign in again, then try linking it from Security."
+            : params.get("error") && isProvider(errorProvider)
+              ? socialErrorMessage(
+                  copy,
+                  params.get("error")!,
+                  providerNames[errorProvider],
+                )
+              : params.get("error")
+                ? "That sign-in did not complete. Try again."
+                : "",
   );
   useLoggedError(error);
   // A notice carried from another screen (an email that already has an
@@ -661,7 +663,9 @@ export function SignInScreen() {
         {/* A Clever sign-in that didn't finish: the way to try it again. */}
         {accounts &&
           config.clever &&
-          params.get("error") === "clever_sign_in_failed" && (
+          ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
+            params.get("error") ?? "",
+          ) && (
             <a
               href="/api/v1/school/sso/clever/start"
               className={buttonClass("primary")}

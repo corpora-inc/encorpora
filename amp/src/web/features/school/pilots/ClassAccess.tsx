@@ -7,6 +7,7 @@ import { AppError } from "../../../lib/AppError";
 import { queryClient } from "../../../lib/query";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
+import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
 import { TextArea, TextField } from "../../../ui/TextField";
@@ -26,6 +27,7 @@ type Place = { org: string; class: string };
 export function useClassAccess(place: Place): {
   view: AccessView;
   pilot: PilotState | undefined;
+  teaches: boolean;
 } {
   const session = currentSession();
   const org = useQuery({
@@ -37,10 +39,12 @@ export function useClassAccess(place: Place): {
     ...pilotOptions(session, place.class),
     enabled: school,
   }).data;
-  if (!school || !pilot) return { view: { kind: "none" }, pilot };
+  const teaches = org?.teaches?.includes(place.class) ?? false;
+  if (!school || !pilot) return { view: { kind: "none" }, pilot, teaches };
   return {
-    view: accessView(pilot, org?.teaches?.includes(place.class) ?? false),
+    view: accessView(pilot, teaches),
     pilot,
+    teaches,
   };
 }
 
@@ -122,6 +126,7 @@ export function accessFeedEntry(
   view: AccessView,
   place: Place,
   pilot: PilotState | undefined,
+  canRequest: boolean,
 ): FeedEntry | null {
   const entry = (
     title: string,
@@ -148,16 +153,28 @@ export function accessFeedEntry(
       return entry(
         "Waiting for the class’s teacher to start practice",
         "",
-        <RequestSeatsButton primary={false} />,
+        null,
       );
     case "ending":
       return entry(
         `Practice ends ${practiceDate(view.until)}`,
         "",
-        <RequestSeatsButton primary />,
+        canRequest ? <RequestSeatsButton primary /> : null,
       );
     case "ended":
-      return entry("Practice has ended", "", <RequestSeatsButton primary />);
+      return entry(
+        "Practice has ended",
+        "",
+        canRequest ? <RequestSeatsButton primary /> : null,
+      );
+    case "partial":
+      return entry(
+        `${view.covered} of ${view.students} students have practice access`,
+        canRequest
+          ? "Request seats for the rest of the class."
+          : "The class’s teacher can request the remaining seats.",
+        canRequest ? <RequestSeatsButton primary={false} /> : null,
+      );
     default:
       return null;
   }
@@ -175,17 +192,18 @@ export function AccessHeaderAction({
   place: Place;
   pilot: PilotState | undefined;
 }) {
+  const { teaches } = useClassAccess(place);
   if (view.kind === "start")
     return (
       <StartPracticeButton place={place} pilot={pilot} label="Start practice" />
     );
-  if (view.kind === "ended") return <RequestSeatsButton primary />;
+  if (view.kind === "ended" && teaches) return <RequestSeatsButton primary />;
   return null;
 }
 
 /** Class Settings: practice access in one quiet line. */
 export function AccessLine({ place }: { place: Place }) {
-  const { view } = useClassAccess(place);
+  const { view, teaches } = useClassAccess(place);
   const [, setSearch] = useClassSearch();
   const text =
     view.kind === "active"
@@ -194,19 +212,23 @@ export function AccessLine({ place }: { place: Place }) {
         ? `Practice ends ${practiceDate(view.until)}`
         : view.kind === "ended"
           ? "Practice has ended"
-          : null;
+          : view.kind === "partial"
+            ? `${view.covered} of ${view.students} students have practice access`
+            : null;
   if (!text) return null;
   return (
     <div className={styles.accessLine} data-access={view.kind}>
       <span className={styles.accessLabel}>Practice</span>
       <p>{text}</p>
-      <Button
-        variant="quiet"
-        align="start"
-        onClick={() => setSearch({ seats: 1 })}
-      >
-        Request seats
-      </Button>
+      {teaches && (
+        <Button
+          variant="quiet"
+          align="start"
+          onClick={() => setSearch({ seats: 1 })}
+        >
+          Request seats
+        </Button>
+      )}
     </div>
   );
 }
@@ -214,14 +236,15 @@ export function AccessLine({ place }: { place: Place }) {
 /** The sheets practice access opens over a class page, by address
  * (`?seats=1`, `?authorize=1`), so Back and refresh keep them. */
 export function AccessSheets({ place }: { place: Place }) {
-  const { view, pilot } = useClassAccess(place);
+  const { view, pilot, teaches } = useClassAccess(place);
   const [search, , close] = useClassSearch();
   const seats = search.seats === 1 || search.seats === "1";
   const authorize = search.authorize === 1 || search.authorize === "1";
-  if (view.kind === "none") return null;
+  if (view.kind === "none" || !teaches) return null;
   return (
     <>
       <RequestSeatsSheet
+        key={`${currentSession().accountId}:${place.class}`}
         place={place}
         students={pilot?.coverage?.students ?? 0}
         open={seats}
@@ -239,21 +262,19 @@ export function AccessSheets({ place }: { place: Place }) {
   );
 }
 
-/** Who holds the open buyer link, from the server's refusal. */
+/** Who holds the overlapping request, from the server's scoped refusal. */
 function holderName(body: unknown): string {
   const parsed = z
     .object({
-      holder: z.union([z.string(), z.object({ name: z.string() })]).optional(),
-      holderName: z.string().optional(),
+      conflicts: z.array(z.object({ holderName: z.string() })),
     })
     .safeParse(body);
   if (!parsed.success) return "";
-  const holder = parsed.data.holder;
-  return (
-    (typeof holder === "string" ? holder : holder?.name) ??
-    parsed.data.holderName ??
-    ""
-  ).trim();
+  return [
+    ...new Set(
+      parsed.data.conflicts.map((row) => row.holderName.trim()).filter(Boolean),
+    ),
+  ].join(" and ");
 }
 
 function RequestSeatsSheet({
@@ -270,7 +291,10 @@ function RequestSeatsSheet({
   const session = currentSession();
   // The class's open buyer link, read from the server: it survives a
   // refresh, and asking again returns the same one.
-  const existing = useQuery(purchaseRequestOptions(session, place.class));
+  const existing = useQuery({
+    ...purchaseRequestOptions(session, place.class),
+    enabled: open,
+  });
   const request = existing.data?.request ?? null;
   const made = request?.url ?? null;
   const [count, setCount] = useState<number | null>(null);
@@ -278,13 +302,15 @@ function RequestSeatsSheet({
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [error, setError] = useState("");
   // Another teacher's open link already covers this class: say who, and
   // offer no button that would only be refused again.
   const [holder, setHolder] = useState<string | null>(null);
   useLoggedError(error);
+  useLoggedError(existing.error?.message ?? "");
   useLoggedError(
-    holder === null ? "" : `Buyer link held by ${holder || "another teacher"}`,
+    holder === null ? "" : "Another teacher’s buyer link covers this class.",
   );
   const seats = count ?? Math.max(1, students);
   async function submit(event: FormEvent) {
@@ -295,20 +321,27 @@ function RequestSeatsSheet({
     try {
       await pilotApi.purchase(session, {
         orgId: place.org,
-        classIds: [place.class],
+        classIds:
+          editing && request?.canEdit ? request.classIds : [place.class],
         seats,
         note: note.trim(),
       });
       await queryClient.invalidateQueries({
         queryKey: purchaseRequestOptions(session, place.class).queryKey,
       });
+      setEditing(false);
+      setCopied(false);
+      setCopyFailed(false);
+      setHolder(null);
     } catch (failure) {
       if (
         failure instanceof AppError &&
         failure.code === "purchase_scope_conflict"
-      )
+      ) {
         setHolder(holderName(failure.body));
-      else
+        setEditing(false);
+        await existing.refetch();
+      } else
         setError(
           failure instanceof AppError
             ? failure.message
@@ -336,14 +369,33 @@ function RequestSeatsSheet({
         title="Send to your school’s buyer"
       >
         {existing.isPending ? (
-          <div className={styles.sheetBody} aria-busy="true" />
-        ) : made ? (
+          <Loading>Opening the request</Loading>
+        ) : existing.error ? (
           <div className={styles.sheetBody}>
+            <p role="alert">The buyer request couldn’t load. Try again.</p>
+            <Button
+              variant="secondary"
+              aria-busy={existing.isFetching}
+              onClick={() => void existing.refetch()}
+            >
+              Try again
+            </Button>
+          </div>
+        ) : made && !editing ? (
+          <div className={styles.sheetBody}>
+            {holder !== null && (
+              <p className={styles.quiet} role="status">
+                {holder
+                  ? `${holder} already has a buyer link for this class. You can share it below.`
+                  : "A buyer link already covers this class. You can share it below."}
+              </p>
+            )}
             <p className={styles.quiet}>
               {request!.seats.toLocaleString()}{" "}
               {request!.seats === 1 ? "seat" : "seats"} · Expires{" "}
               {practiceDate(request!.expiresAt)}
             </p>
+            {!!request?.note && <p className={styles.quiet}>{request.note}</p>}
             <div className={styles.sheetActions}>
               <Button
                 variant="primary"
@@ -361,6 +413,19 @@ function RequestSeatsSheet({
               >
                 Preview
               </a>
+              {request?.canEdit && (
+                <Button
+                  variant="quiet"
+                  onClick={() => {
+                    setCount(request.seats);
+                    setNote(request.note);
+                    setEditing(true);
+                    setHolder(null);
+                  }}
+                >
+                  Edit request
+                </Button>
+              )}
             </div>
             {copyFailed && (
               <TextField
@@ -381,6 +446,11 @@ function RequestSeatsSheet({
           </div>
         ) : (
           <form className={styles.sheetBody} onSubmit={submit}>
+            {editing && (
+              <p className={styles.quiet}>
+                Saving creates a new link to share with your school.
+              </p>
+            )}
             <Stepper
               label="Seats"
               value={seats}
@@ -402,8 +472,17 @@ function RequestSeatsSheet({
                 aria-busy={busy}
                 disabled={busy}
               >
-                Get link
+                {editing ? "Save request" : "Get link"}
               </Button>
+              {editing && (
+                <Button
+                  variant="quiet"
+                  disabled={busy}
+                  onClick={() => setEditing(false)}
+                >
+                  Cancel
+                </Button>
+              )}
             </div>
           </form>
         )}

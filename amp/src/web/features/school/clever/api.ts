@@ -34,6 +34,12 @@ export const connectionStatusSchema = z.object({
       launchDate: z.string().nullable(),
       lastError: z.string().nullable(),
       syncing: z.boolean(),
+      syncState: z
+        .enum(["queued", "delayed", "running", "retrying", "ready", "idle"])
+        .optional(),
+      syncRequestedAt: z.iso.datetime({ offset: true }).nullable().optional(),
+      nextAttemptAt: z.iso.datetime({ offset: true }).nullable().optional(),
+      lastAttemptAt: z.iso.datetime({ offset: true }).nullable().optional(),
     })
     .nullable(),
   requests: z.array(
@@ -144,6 +150,8 @@ async function connectionCall<T>(
       response.headers.get("x-request-id"),
       code,
       response.status,
+      null,
+      { retryAfter: Number(response.headers.get("retry-after")) || 900 },
     );
   }
   const parsed = schema.safeParse(data);
@@ -172,13 +180,17 @@ export const connectionOptions = (credential: ConnectionCredential) =>
       ),
     retry: false,
     refetchInterval: (query) =>
-      query.state.data?.connection?.syncing ||
-      (query.state.data?.connection?.status === "active" &&
-        !query.state.data.connection.lastSyncAt &&
-        !query.state.data.connection.lastError &&
-        !query.state.data.connection.syncPaused)
-        ? 3000
-        : false,
+      ["delayed", "retrying"].includes(
+        query.state.data?.connection?.syncState ?? "",
+      )
+        ? 15000
+        : query.state.data?.connection?.syncing ||
+            (query.state.data?.connection?.status === "active" &&
+              !query.state.data.connection.lastSyncAt &&
+              !query.state.data.connection.lastError &&
+              !query.state.data.connection.syncPaused)
+          ? 3000
+          : false,
   });
 export const connectionApi = {
   link: (credential: ConnectionCredential) =>

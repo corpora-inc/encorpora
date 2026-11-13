@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, Navigate, useLocation, useSearch } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { AppError } from "../../../lib/AppError";
 import { authConfigOptions, sessionOptions } from "../../../lib/query";
@@ -10,6 +10,7 @@ import { Checkbox } from "../../../ui/Checkbox";
 import { Loading } from "../../../ui/Loading";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Toast } from "../../../ui/Toast";
+import { TextField } from "../../../ui/TextField";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
@@ -83,7 +84,49 @@ export function ConnectionScreen() {
     [bringExisting, setBringExisting] = useState<boolean | null>(null),
     [busy, setBusy] = useState<"connect" | "sync" | "link" | null>(null),
     [error, setError] = useState(""),
-    [throttled, setThrottled] = useState("");
+    [throttled, setThrottled] = useState(""),
+    [retryAt, setRetryAt] = useState(0),
+    [institution, setInstitution] = useState(""),
+    [contact, setContact] = useState(""),
+    [requesting, setRequesting] = useState(false);
+  const rosterRequest = data?.requests.find(
+    (r) => r.method === "anyschool" && r.status !== "closed",
+  );
+  async function requestRoster(event: FormEvent) {
+    event.preventDefault();
+    if (!session || credential?.onboarding || requesting) return;
+    setRequesting(true);
+    setError("");
+    try {
+      await connectionApi.request(session, {
+        institutionName: institution.trim(),
+        contactEmail: contact.trim(),
+        method: "anyschool",
+      });
+      await client.invalidateQueries({
+        queryKey: connectionOptions(session).queryKey,
+      });
+    } catch (failure) {
+      setError(
+        failure instanceof Error
+          ? failure.message
+          : "The request didn’t save. Try again.",
+      );
+    } finally {
+      setRequesting(false);
+    }
+  }
+  useEffect(() => {
+    if (!retryAt) return;
+    const timer = window.setTimeout(
+      () => {
+        setThrottled("");
+        setRetryAt(0);
+      },
+      Math.max(0, retryAt - Date.now()),
+    );
+    return () => window.clearTimeout(timer);
+  }, [retryAt]);
   const linkProblem = [
     "clever_identity_already_linked",
     "clever_account_link_required",
@@ -107,6 +150,8 @@ export function ConnectionScreen() {
     connection?.lastError === "clever_district_admin_required";
   const ready =
     connection?.status === "active" && !!connection.lastSyncAt && !paused;
+  const delayed = connection?.syncState === "delayed";
+  const retrying = connection?.syncState === "retrying";
   const keepExisting = bringExisting ?? !!data?.existingSchools.length;
   // Syncing is an AMP admin's, signed in to AMP (not mid-Clever-sign-in).
   const canSync =
@@ -142,9 +187,16 @@ export function ConnectionScreen() {
       if (
         failure instanceof AppError &&
         failure.code === "clever_sync_rate_limited"
-      )
+      ) {
         setThrottled(failure.message);
-      else
+        const seconds = Number(
+          (failure.body as { retryAfter?: number } | null)?.retryAfter,
+        );
+        setRetryAt(
+          Date.now() +
+            (Number.isFinite(seconds) && seconds > 0 ? seconds : 900) * 1000,
+        );
+      } else
         setError(
           failure instanceof Error
             ? failure.message
@@ -236,6 +288,60 @@ export function ConnectionScreen() {
               withClever("Continue with Clever")
             )}
           </Actions>
+          {session && !onboarding && (
+            <details
+              className={styles.disclosure}
+              open={rosterRequest ? true : undefined}
+            >
+              <summary>Connect another roster system</summary>
+              {rosterRequest ? (
+                <p role="status">
+                  {rosterRequest.status === "requested"
+                    ? "Connection requested. Watch your email for an AnySchool invitation."
+                    : rosterRequest.status === "invited"
+                      ? "Your AnySchool invitation is ready. Open the invitation in your email to connect your roster."
+                      : "Your roster connection is ready. Link Clever above to open it in AMP."}
+                </p>
+              ) : (
+                <form
+                  className={styles.form}
+                  onSubmit={(event) => void requestRoster(event)}
+                >
+                  <p>
+                    We’ll arrange an AnySchool invitation for your school. You
+                    can set up your class while you wait.
+                  </p>
+                  <TextField
+                    label="School or district"
+                    value={institution}
+                    onChange={(event) => setInstitution(event.target.value)}
+                    maxLength={200}
+                    required
+                    disabled={requesting}
+                  />
+                  <TextField
+                    label="Contact email"
+                    type="email"
+                    value={contact}
+                    onChange={(event) => setContact(event.target.value)}
+                    maxLength={254}
+                    required
+                    disabled={requesting}
+                  />
+                  <Button
+                    type="submit"
+                    variant="secondary"
+                    disabled={
+                      requesting || !institution.trim() || !contact.trim()
+                    }
+                    aria-busy={requesting}
+                  >
+                    Request a connection
+                  </Button>
+                </form>
+              )}
+            </details>
+          )}
           <Aside>
             {data?.districtSignupUrl && (
               <a
@@ -252,13 +358,15 @@ export function ConnectionScreen() {
             >
               Set up a class without Clever
             </Link>
-            <Link
-              to="/schools"
-              hash="talk"
-              className={buttonClass("quiet", "", "start")}
-            >
-              Another roster system? Tell us
-            </Link>
+            {!session && (
+              <Link
+                to="/schools"
+                hash="talk"
+                className={buttonClass("quiet", "", "start")}
+              >
+                Another roster system? Tell us
+              </Link>
+            )}
           </Aside>
         </>
       ),
@@ -388,7 +496,13 @@ export function ConnectionScreen() {
       title: "Clever",
       body: (
         <>
-          {connection.lastError ? (
+          {delayed || retrying ? (
+            <Lead>
+              {delayed
+                ? "Your connection is saved. The roster import is delayed."
+                : "The roster import will retry automatically."}
+            </Lead>
+          ) : connection.lastError ? (
             <Lead>{connectionError(connection.lastError)}</Lead>
           ) : ready ? (
             <Lead>{synced(connection.lastSyncAt!)}</Lead>
@@ -397,31 +511,45 @@ export function ConnectionScreen() {
               <Loading>Importing</Loading>
             </div>
           )}
-          {(ready || connection.lastError) && (
+          {(ready || connection.lastError || delayed || retrying) && (
             <Actions>
               {ready &&
                 (onboarding || !identity.personId ? (
                   withClever("Continue with Clever")
                 ) : (
-                  <Link
-                    to="/$"
-                    params={{ _splat: "school" }}
-                    className={buttonClass("primary")}
-                  >
+                  <Link href="/school" className={buttonClass("primary")}>
                     Open your classes
                   </Link>
                 ))}
               {canSync && (
                 <Button
                   variant="secondary"
-                  disabled={!!busy || connection.syncing || !!throttled}
-                  aria-busy={busy === "sync" || connection.syncing}
+                  disabled={
+                    !!busy || (connection.syncing && !delayed) || !!throttled
+                  }
+                  aria-busy={
+                    busy === "sync" || (connection.syncing && !delayed)
+                  }
                   onClick={() => void act("sync")}
                 >
-                  Sync now
+                  {delayed ? "Retry import" : "Sync now"}
+                </Button>
+              )}
+              {(delayed || retrying) && (
+                <Button
+                  variant="secondary"
+                  aria-busy={status.isFetching}
+                  onClick={() => void status.refetch()}
+                >
+                  Check again
                 </Button>
               )}
             </Actions>
+          )}
+          {delayed && (
+            <p className={styles.note}>
+              If the delay continues, contact support@corpora.inc.
+            </p>
           )}
           {throttled && (
             <p className={styles.note} role="status">

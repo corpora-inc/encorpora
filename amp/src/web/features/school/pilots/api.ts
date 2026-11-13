@@ -9,7 +9,40 @@ import {
 } from "../../../../schools/pilot-contracts";
 import type { AuthSession } from "../../../auth";
 import { call, keyFor, orgOptions, preload } from "../api";
+import { absoluteBuyerUrl } from "./buyer-url";
+const buyerUrlSchema = z.string().transform((value, context) => {
+  try {
+    return absoluteBuyerUrl(value, window.location.origin);
+  } catch {
+    context.addIssue({ code: "custom", message: "Invalid buyer link" });
+    return z.NEVER;
+  }
+});
 
+const classAuthorizationSchema = z.object({
+  authorization: z
+    .object({
+      signerName: z.string(),
+      signerTitle: z.string(),
+      acceptedAt: z.string(),
+      version: z.string(),
+    })
+    .nullable(),
+});
+export const classAuthorizationOptions = (
+  session: AuthSession,
+  orgId: string,
+) =>
+  queryOptions({
+    queryKey: keyFor(session, "org", orgId, "class-authorization"),
+    queryFn: ({ signal }) =>
+      call(
+        `/orgs/${orgId}/class-authorization`,
+        classAuthorizationSchema,
+        session,
+        { signal },
+      ),
+  });
 export const pilotOptions = (session: AuthSession, classId: string) =>
   queryOptions({
     queryKey: keyFor(session, "class", classId, "pilot"),
@@ -30,13 +63,14 @@ const purchaseRequestSchema = z.object({
   request: z
     .object({
       id: z.uuid(),
-      url: z.url(),
+      url: buyerUrlSchema,
       classIds: z.array(z.uuid()),
       seats: z.number().int(),
       note: z.string(),
       status: z.string(),
       createdAt: z.string(),
       expiresAt: z.string(),
+      canEdit: z.boolean().default(false),
     })
     .nullable(),
 });
@@ -94,7 +128,7 @@ export const pilotApi = {
   ) =>
     call(
       "/purchase-requests",
-      z.object({ id: z.uuid(), url: z.url() }),
+      z.object({ id: z.uuid(), url: buyerUrlSchema }),
       session,
       { body: schoolPurchaseSchema.parse(body) },
     ),

@@ -11,7 +11,12 @@ import { secureChromium } from "../browser-security.mjs";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { buildApp } from "../src/server/app";
-import { developmentAuth, refuseStudentTokens } from "../src/server/auth";
+import { refuseStudentTokens } from "../src/server/auth";
+import {
+  accountsAuth,
+  createAccounts,
+  registerAccountRoutes,
+} from "../src/server/accounts";
 import { PostgresRepository } from "../src/server/repository";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
@@ -28,15 +33,30 @@ const scoped = new URL(url);
 scoped.searchParams.set("options", `-c search_path=${schema}`);
 await migrate(scoped.href);
 const learning = new PostgresRepository(scoped.href);
-const authenticate = refuseStudentTokens(developmentAuth());
+const mail: string[] = [];
+const originalInfo = console.info;
+console.info = (...args: unknown[]) => {
+  const message = String(args[0] ?? "");
+  if (message.startsWith("[accounts] email to "))
+    mail.push(message.split("\n").at(-1)!);
+  else originalInfo(...args);
+};
+const accounts = await createAccounts(learning.pool, {
+  baseURL: origin,
+  secret: "fixture-school-browser-accounts-secret-123456",
+  production: false,
+  passwords: true,
+  trustedOrigins: [],
+});
+const authenticate = refuseStudentTokens(accountsAuth(accounts));
 const api = buildApp({ repository: learning, authenticate });
+await registerAccountRoutes(api, accounts);
 await registerFamilyRoutes(api, { pool: learning.pool, authenticate });
 await registerSchoolRoutes(api, {
   pool: learning.pool,
   authenticate,
   services: { origin, secret: "fixture-school-pilot-browser-secret" },
 });
-api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
   ...(process.env.AMP_VITE_CACHE_DIR
@@ -88,11 +108,40 @@ async function capture(name: string) {
   });
 }
 try {
-  await page.goto(`${origin}/school/start`);
+  // A school teacher can arrive without Clever and create a real verified account.
+  await page.goto(`${origin}/schools`);
+  assert.equal(await page.getByRole("link", { name: /Clever/ }).count(), 0);
+  await page
+    .getByRole("link", { name: "Start with your class", exact: true })
+    .first()
+    .click();
+  await page.waitForURL(/sign-up/);
+  assert.ok(
+    new URL(page.url()).searchParams.get("next")?.includes("school/start"),
+  );
+  const passwordChoice = page.getByRole("button", {
+    name: "Use a password instead",
+    exact: true,
+  });
+  if (await passwordChoice.count()) await passwordChoice.click();
+  await page.getByLabel("Email", { exact: true }).fill("teacher@example.test");
+  await page
+    .getByLabel("Password", { exact: true })
+    .fill("fixture-school-password-123");
+  await page
+    .getByRole("button", { name: "Create account", exact: true })
+    .click();
+  await page
+    .getByRole("heading", { name: /^(Confirm|Check) your email$/ })
+    .waitFor();
+  await capture("verify-teacher-email");
+  assert.ok(mail.length, "The local mail sink received the confirmation");
+  await page.goto(mail.at(-1)!);
   await page.getByRole("heading", { name: "Set up your class" }).waitFor();
   await page.getByLabel("School name").fill("Alder pilot school");
   await page.getByLabel("Class name").fill("Grade 3 Math");
-  await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
+  if (await page.getByLabel("Your name", { exact: true }).count())
+    await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
   await page.getByRole("checkbox").check();
   await capture("setup");
   let requests = 0;
@@ -109,15 +158,13 @@ try {
   assert.equal(
     (
       await learning.pool.query(
-        "SELECT count(*)::int AS n FROM amp_school_starts WHERE account_id='development-household'",
+        "SELECT count(*)::int AS n FROM amp_school_starts",
       )
     ).rows[0].n,
     1,
   );
   const created = (
-    await learning.pool.query(
-      "SELECT org_id,class_id FROM amp_school_starts WHERE account_id='development-household'",
-    )
+    await learning.pool.query("SELECT org_id,class_id FROM amp_school_starts")
   ).rows[0];
   assert.equal(
     (
@@ -142,7 +189,7 @@ try {
   await page.getByRole("heading", { name: "2 new students" }).waitFor();
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
-  await page.getByText("2 students added").waitFor();
+  await page.getByText("2 students added", {exact:true}).waitFor();
   await page
     .getByRole("button", { name: "Start practice", exact: true })
     .waitFor();
@@ -168,7 +215,8 @@ try {
   await page.goto(`${origin}/school/start`);
   await page.getByLabel("Class name").fill("Math support");
   assert.equal(await page.getByLabel("School name").count(), 0);
-  await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
+  if (await page.getByLabel("Your name", { exact: true }).count())
+    await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.waitForURL(/\/classes\/[\w-]+\/roster/);
@@ -207,10 +255,20 @@ try {
     .click();
   await page.waitForURL(/seats=1/);
   await page.getByRole("spinbutton", { name: "Seats" }).press("PageUp");
+  const relativeRequest = "**/api/v1/school/classes/*/purchase-request";
+  await page.route(relativeRequest, async (route) => {
+    const response = await route.fetch();
+    const result = await response.json();
+    if (result.request) {
+      const url = new URL(result.request.url);
+      result.request.url = url.pathname + url.hash;
+    }
+    await route.fulfill({ response, json: result });
+  });
   await page.getByRole("button", { name: "Get link" }).click();
   const copy = page.getByRole("button", { name: "Copy link" });
   await copy.waitFor();
-  const buyer = (await copy.getAttribute("data-share-url"))!;
+  let buyer = (await copy.getAttribute("data-share-url"))!;
   // The link is the class's: a refresh shows the same one, never a new one.
   await page.reload();
   await page.getByRole("button", { name: "Copy link" }).waitFor();
@@ -230,7 +288,65 @@ try {
   );
   assert.equal(new URL(buyer).pathname, "/schools/continue");
   assert.match(new URL(buyer).hash, /^#token=[A-Za-z0-9_-]{43}$/);
+  await page.getByRole("button", { name: "Edit request" }).click();
+  await page.getByRole("spinbutton", { name: "Seats" }).press("ArrowUp");
+  await page
+    .getByLabel("Note for the buyer (optional)")
+    .fill("Please include the whole class.");
+  await page.getByRole("button", { name: "Save request" }).click();
+  await page.getByRole("button", { name: "Copy link" }).waitFor();
+  const updatedBuyer = await page
+    .getByRole("button", { name: "Copy link" })
+    .getAttribute("data-share-url");
+  assert.notEqual(updatedBuyer, buyer, "An edit replaces the superseded link");
+  buyer = updatedBuyer!;
+  await page.reload();
+  await page.getByText("Please include the whole class.").waitFor();
+  await page.unroute(relativeRequest);
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Preview", exact: true })
+      .getAttribute("href"),
+    buyer,
+  );
   await capture("buyer-link");
+  const requestPattern = "**/api/v1/school/classes/*/purchase-request";
+  await page.route(requestPattern, (route) =>
+    route.fulfill({
+      status: 503,
+      json: { error: "school_service_unavailable" },
+    }),
+  );
+  await page.reload();
+  await page.getByText("The buyer request couldn’t load. Try again.").waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Get link", exact: true }).count(),
+    0,
+  );
+  await page.unroute(requestPattern);
+  await page.getByRole("button", { name: "Try again", exact: true }).click();
+  await page.getByRole("button", { name: "Copy link", exact: true }).waitFor();
+  await page.route(requestPattern, async (route) => {
+    const response = await route.fetch();
+    const result = await response.json();
+    await route.fulfill({
+      response,
+      json: { request: { ...result.request, canEdit: false, note: "" } },
+    });
+  });
+  await page.reload();
+  await page.getByRole("button", { name: "Copy link", exact: true }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Edit request", exact: true })
+      .count(),
+    0,
+  );
+  assert.equal(
+    await page.getByText("Please include the whole class.").count(),
+    0,
+  );
+  await page.unroute(requestPattern);
   // Another teacher's open link already covers a class: the sheet says who
   // and offers no button that would only be refused again.
   await page.route("**/api/v1/school/purchase-requests", (route) =>
@@ -238,7 +354,13 @@ try {
       status: 409,
       json: {
         error: "purchase_scope_conflict",
-        holder: { name: "Rowan Ellis" },
+        conflicts: [
+          {
+            requestId: randomUUID(),
+            holderName: "Rowan Ellis",
+            classIds: [created.class_id],
+          },
+        ],
       },
     }),
   );
@@ -247,11 +369,51 @@ try {
   );
   await page.getByRole("button", { name: "Get link" }).click();
   await page
-    .getByText("Rowan Ellis already has a buyer link for this class.")
+    .getByText(/Rowan Ellis already has a buyer link for this class/)
     .waitFor();
   assert.equal(await page.getByRole("button", { name: "Get link" }).count(), 0);
   await capture("buyer-link-held");
   await page.unroute("**/api/v1/school/purchase-requests");
+  // Import remains the first action for an empty class after this teacher's pilot.
+  await page.goto(`${origin}/school/start?org=${created.org_id}`);
+  await page.getByLabel("Class name").fill("Empty after pilot");
+  assert.equal(await page.getByLabel("Your name", { exact: true }).count(), 0);
+  await page.getByRole("checkbox").check();
+  await page.getByRole("button", { name: "Create class", exact: true }).click();
+  await page.getByRole("heading", { name: "Add your students" }).waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Request seats" }).count(),
+    0,
+  );
+  await page.getByRole("link", { name: "Add students", exact: true }).click();
+  await page
+    .getByLabel("Or paste names")
+    .fill("Name,School key\nMira Shah,007");
+  await page.getByRole("button", { name: "Use these rows" }).click();
+  await page.waitForURL(/step=map/);
+  await page.getByRole("heading", { name: "Check columns" }).waitFor();
+  await capture("unknown-column-review");
+  // Coverage from another grant or pilot keeps the working sign-in controls.
+  const pilotUrl = `**/api/v1/school/classes/${created.class_id}/pilot`;
+  await page.route(pilotUrl, async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: {
+        ...(await response.json()),
+        coverage: { students: 2, paid: 1, covered: 1 },
+      },
+    });
+  });
+  await page.goto(
+    `${origin}/school/${created.org_id}/classes/${created.class_id}/today`,
+  );
+  await page
+    .getByRole("heading", { name: "1 of 2 students have practice access" })
+    .waitFor();
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  await capture("partial-coverage");
+  await page.unroute(pilotUrl);
   const guest = await browser.newContext();
   const buyerPage = await guest.newPage();
   await buyerPage.goto(buyer);
@@ -278,6 +440,29 @@ try {
   await page.goto(buyer);
   await capture("buyer-page");
   await guest.close();
+  const returning = await browser.newContext();
+  const returningPage = await returning.newPage();
+  await returningPage.goto(
+    `${origin}/sign-in?return=school&next=${encodeURIComponent("/school/start")}`,
+  );
+  await returningPage
+    .getByLabel("Email", { exact: true })
+    .fill("teacher@example.test");
+  await returningPage
+    .getByLabel("Password", { exact: true })
+    .fill("fixture-school-password-123");
+  await returningPage
+    .getByRole("button", { name: "Sign in", exact: true })
+    .click();
+  await returningPage
+    .getByRole("heading", { name: "Set up your class" })
+    .waitFor();
+  assert.equal(await returningPage.getByLabel("School name").count(), 0);
+  assert.equal(
+    await returningPage.getByLabel("Your name", { exact: true }).count(),
+    0,
+  );
+  await returning.close();
   assert.deepEqual(failures, []);
   console.info(
     "Self-service retry, class import, one teacher pilot, expiry and private buyer handoff passed.",
@@ -286,6 +471,7 @@ try {
   await page.screenshot({ path: `${artifacts}/failure.png`, fullPage: true });
   throw error;
 } finally {
+  console.info = originalInfo;
   await context.close();
   await browser.close();
   await vite.close();

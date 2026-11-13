@@ -1499,7 +1499,16 @@ export function ImportScreen() {
       ...next,
       ...(classId ? { classId, fallbackClass: defaultClass } : {}),
     });
-    if (!classId || next.source !== "csv" || !mappingHasName(next.mapping!)) {
+    if (
+      !classId ||
+      next.source !== "csv" ||
+      !mappingHasName(next.mapping!) ||
+      next.table?.headers.some(
+        (_, index) =>
+          (!next.mapping?.[index] || next.mapping[index] === "ignore") &&
+          next.table!.rows.some((row) => row[index]?.trim()),
+      )
+    ) {
       goTo("map");
       return;
     }

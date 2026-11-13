@@ -79,7 +79,23 @@ test("paid coverage takes precedence over pilot expiry, while partial coverage d
       true,
       now,
     ),
-    { kind: "ended" },
+    { kind: "partial", covered: 19, students: 20 },
+  );
+  assert.deepEqual(
+    accessView(
+      { ...expired, coverage: { students: 20, paid: 0, covered: 20 } },
+      true,
+      now,
+    ),
+    { kind: "covered" },
+  );
+  assert.deepEqual(
+    accessView(
+      { ...expired, coverage: { students: 0, paid: 0, covered: 0 } },
+      true,
+      now,
+    ),
+    { kind: "empty" },
   );
 });
 test("practice dates drop the year only when it is this one", () => {

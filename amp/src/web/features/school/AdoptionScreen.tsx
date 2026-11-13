@@ -33,6 +33,7 @@ import {
   schoolAdoptionToken,
 } from "./adoption-session";
 import { Actions, Lead, PlainPage } from "./PlainPage";
+import { adoptionLabels } from "./adoption-labels";
 import styles from "./AdoptionScreen.module.css";
 
 const day = (value: string) =>
@@ -42,20 +43,6 @@ const day = (value: string) =>
 const address = (path: string) => `${window.location.origin}${path}`;
 const plural = (count: number, one: string, many = `${one}s`) =>
   `${count.toLocaleString()} ${count === 1 ? one : many}`;
-
-/** A name, and only when two share it, enough of the record to tell them
- * apart. */
-function labelled<T extends { id: string; name: string }>(items: T[]) {
-  const seen = new Map<string, number>();
-  for (const item of items) seen.set(item.name, (seen.get(item.name) ?? 0) + 1);
-  return items.map((item) => ({
-    ...item,
-    label:
-      (seen.get(item.name) ?? 0) > 1
-        ? `${item.name} · ${item.id.slice(-4)}`
-        : item.name,
-  }));
-}
 
 function Failed({
   error,
@@ -175,7 +162,7 @@ function AuthorizeSchool({
   const open = data.grants.filter((grant) => grant.status === "open");
   // Nothing to approve, invite or withdraw: this page has no job here.
   if (!district && !data.districts.length && !open.length)
-    return <Navigate to="/$" params={{ _splat: "school" }} replace />;
+    return <Navigate href="/school" replace />;
   const withdraw = (id: string) => {
     setBusy(true);
     setError("");
@@ -360,12 +347,24 @@ function ReviewDecision({
   const allMatches = data.staffMatches.every((match) =>
     matches.includes(match.sourcePersonId),
   );
+  const users = preview.data ? adoptionLabels(preview.data.users) : [];
+  const sections = preview.data ? adoptionLabels(preview.data.sections) : [];
+  const sourcePeople = adoptionLabels(data.sourcePeople);
+  const sourceClasses = adoptionLabels(data.sourceClasses);
   const cleverValid =
     !connectionId ||
     (!!preview.data &&
       !!cleverSchoolId &&
-      data.sourcePeople.every((p) => people[p.id]) &&
-      data.sourceClasses.every((c) => classes[c.id]));
+      sourcePeople.every(
+        (p) =>
+          !p.ambiguous &&
+          users.some((u) => u.id === people[p.id] && !u.ambiguous),
+      ) &&
+      sourceClasses.every(
+        (c) =>
+          !c.ambiguous &&
+          sections.some((s) => s.id === classes[c.id] && !s.ambiguous),
+      ));
   if (accepted)
     return (
       <PlainPage
@@ -374,8 +373,7 @@ function ReviewDecision({
       >
         <Actions>
           <Link
-            to="/$"
-            params={{ _splat: `school/${data.schoolId}` }}
+            href={`/school/${data.schoolId}`}
             className={buttonClass("primary")}
             data-primary
           >
@@ -389,8 +387,6 @@ function ReviewDecision({
         </Actions>
       </PlainPage>
     );
-  const users = preview.data ? labelled(preview.data.users) : [];
-  const sections = preview.data ? labelled(preview.data.sections) : [];
   return (
     <PlainPage
       title={`${data.schoolName} wants to join ${data.districtName}`}
@@ -481,11 +477,16 @@ function ReviewDecision({
                         {cleverSchoolId && (
                           <>
                             <h3>People</h3>
-                            {data.sourcePeople.map((p) => (
+                            {sourcePeople.map((p) => (
                               <label className={styles.match} key={p.id}>
-                                <span>{p.name}</span>
+                                <span>
+                                  {p.label}
+                                  {p.ambiguous &&
+                                    " · Add distinguishing details to the roster before matching."}
+                                </span>
                                 <Select
-                                  aria-label={`Clever match for ${p.name}`}
+                                  aria-label={`Clever match for ${p.label}`}
+                                  disabled={p.ambiguous}
                                   value={people[p.id] ?? ""}
                                   onValueChange={(value) =>
                                     setPeople((old) => ({
@@ -500,19 +501,31 @@ function ReviewDecision({
                                   {users
                                     .filter((u) => u.student === p.student)
                                     .map((u) => (
-                                      <option key={u.id} value={u.id}>
+                                      <option
+                                        key={u.id}
+                                        value={u.id}
+                                        disabled={u.ambiguous}
+                                      >
                                         {u.label}
+                                        {u.ambiguous
+                                          ? " · Needs distinguishing details"
+                                          : ""}
                                       </option>
                                     ))}
                                 </Select>
                               </label>
                             ))}
                             <h3>Classes</h3>
-                            {data.sourceClasses.map((c) => (
+                            {sourceClasses.map((c) => (
                               <label className={styles.match} key={c.id}>
-                                <span>{c.name}</span>
+                                <span>
+                                  {c.label}
+                                  {c.ambiguous &&
+                                    " · Add distinguishing details to the roster before matching."}
+                                </span>
                                 <Select
-                                  aria-label={`Clever match for ${c.name}`}
+                                  aria-label={`Clever match for ${c.label}`}
+                                  disabled={c.ambiguous}
                                   value={classes[c.id] ?? ""}
                                   onValueChange={(value) =>
                                     setClasses((old) => ({
@@ -525,8 +538,15 @@ function ReviewDecision({
                                     Choose the same class
                                   </option>
                                   {sections.map((s) => (
-                                    <option key={s.id} value={s.id}>
+                                    <option
+                                      key={s.id}
+                                      value={s.id}
+                                      disabled={s.ambiguous}
+                                    >
                                       {s.label}
+                                      {s.ambiguous
+                                        ? " · Needs distinguishing details"
+                                        : ""}
                                     </option>
                                   ))}
                                 </Select>

@@ -1175,6 +1175,7 @@ const schoolStart = createRoute({
 });
 /** Clever. Without Clever enabled there is nothing to connect here, so the
  * address opens class setup instead (no page that can only fail). */
+let pendingCleverDeviceCompletion = false;
 const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
@@ -1185,11 +1186,28 @@ const schoolConnect = createRoute({
       ? { error: String(search.error) }
       : {},
   beforeLoad: async () => {
-    if (nativeRuntime || studentSession())
-      throw redirect({ to: "/", replace: true });
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
     const config = await queryClient.ensureQueryData(authConfigOptions);
     if (config.mode === "accounts" && !config.clever)
       throw redirect({ to: "/school/start", replace: true });
+    if (studentSession()) {
+      pendingCleverDeviceCompletion ||= new URLSearchParams(
+        window.location.hash.slice(1),
+      ).has("clever-onboarding");
+      if (pendingCleverDeviceCompletion) {
+        const { cleverOnboardingSession } =
+          await import("../features/school/clever/onboarding-session");
+        // Keep only the intent to retry in memory. The helper validates the
+        // setup proof before the previous student can be cleared.
+        const proof = await cleverOnboardingSession();
+        pendingCleverDeviceCompletion = false;
+        if (proof) {
+          clearStudentDevice();
+          window.dispatchEvent(new Event("amp-account-session-changed"));
+        }
+      }
+    }
+    if (studentSession()) throw redirect({ to: "/", replace: true });
   },
   component: lazyRouteComponent(
     () => import("../features/school/clever/ConnectionScreen"),
@@ -1828,7 +1846,7 @@ onSignedOut(() => {
       checkingStudent = true;
       void studentSignInEnded(student)
         .then(async (ended) => {
-          if (!ended) return;
+          if (!ended || studentSession()?.token !== student.token) return;
           leavingStudent = true;
           clearStudentDevice();
           try {

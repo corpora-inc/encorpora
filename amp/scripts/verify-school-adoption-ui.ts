@@ -75,6 +75,7 @@ async function shots(page: Page, name: string) {
         localStorage.setItem("amp.theme", t);
       }, theme);
       await page.setViewportSize({ width, height: width < 768 ? 844 : 900 });
+      await page.evaluate(() => window.scrollTo(0, 0));
       await page.waitForTimeout(100);
       const geometry = await page.evaluate(() => ({
         width: innerWidth,
@@ -179,6 +180,120 @@ try {
   await leaderPage
     .getByRole("heading", { name: "Birch School wants to join River District" })
     .waitFor();
+  const choose = async (
+    label: string,
+    option = label.replace("Clever match for ", ""),
+  ) => {
+    await leaderPage.getByRole("button", { name: label, exact: true }).click();
+    await leaderPage.getByRole("option", { name: option, exact: true }).click();
+  };
+  // Duplicate names are distinguished with human roster context on both sides.
+  const matchingConnection = randomUUID();
+  await leaderPage.route("**/api/v1/school/adoptions/review", async (route) => {
+    const response = await route.fetch();
+    const review = await response.json();
+    await route.fulfill({
+      response,
+      json: {
+        ...review,
+        people: 2,
+        learners: 2,
+        classes: 2,
+        sourcePeople: [
+          {
+            id: randomUUID(),
+            name: "Alex Lee",
+            student: true,
+            grade: "3",
+            classNames: ["Oak"],
+            teacherNames: ["Pat Rivera"],
+          },
+          {
+            id: randomUUID(),
+            name: "Alex Lee",
+            student: true,
+            grade: "4",
+            classNames: ["Elm"],
+            teacherNames: ["Jo Kim"],
+          },
+        ],
+        sourceClasses: [
+          {
+            id: randomUUID(),
+            name: "Math",
+            grade: "3",
+            teacherNames: ["Pat Rivera"],
+          },
+          {
+            id: randomUUID(),
+            name: "Math",
+            grade: "4",
+            teacherNames: ["Jo Kim"],
+          },
+        ],
+        cleverConnections: [
+          {
+            id: matchingConnection,
+            environment: "sandbox",
+            districtName: "River District",
+          },
+        ],
+      },
+    });
+  });
+  await leaderPage.route("**/api/v1/school/adoptions/clever-preview", (route) =>
+    route.fulfill({
+      json: {
+        schools: [{ id: "a".repeat(24), name: "Birch School" }],
+        users: [
+          {
+            id: "b".repeat(24),
+            name: "Alex Lee",
+            student: true,
+            grade: "3",
+            classNames: ["Oak"],
+            teacherNames: ["Pat Rivera"],
+          },
+          {
+            id: "c".repeat(24),
+            name: "Alex Lee",
+            student: true,
+            grade: "4",
+            classNames: ["Elm"],
+            teacherNames: ["Jo Kim"],
+          },
+        ],
+        sections: [
+          {
+            id: "d".repeat(24),
+            name: "Math",
+            grade: "3",
+            teacherNames: ["Pat Rivera"],
+          },
+          {
+            id: "e".repeat(24),
+            name: "Math",
+            grade: "4",
+            teacherNames: ["Jo Kim"],
+          },
+        ],
+      },
+    }),
+  );
+  await leaderPage.reload();
+  await leaderPage.getByText("Match to Clever (optional)").click();
+  await choose("Clever connection", "River District");
+  await choose("School in Clever", "Birch School");
+  await choose(
+    "Clever match for Alex Lee · Grade 3 · Oak · Pat Rivera · Student",
+  );
+  await choose("Clever match for Alex Lee · Grade 4 · Elm · Jo Kim · Student");
+  await choose("Clever match for Math · Grade 3 · Pat Rivera");
+  await choose("Clever match for Math · Grade 4 · Jo Kim");
+  await shots(leaderPage, "duplicate-name-matching");
+  await leaderPage.unroute("**/api/v1/school/adoptions/review");
+  await leaderPage.unroute("**/api/v1/school/adoptions/clever-preview");
+  await leaderPage.reload();
   await shots(leaderPage, "district-review");
   await leaderPage.getByRole("checkbox").check();
   await leaderPage.route("**/api/v1/school/adoptions/accept", (route) =>

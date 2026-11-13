@@ -123,3 +123,31 @@
   color: var(--color-muted-text);
   font-size: var(--text-label);
 }
+
+.disclosure {
+  border-block: 1px solid var(--color-border);
+}
+.disclosure summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.disclosure summary:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.disclosure > form,
+.disclosure > p {
+  padding-bottom: var(--space-3);
+}
+
+@media (max-width: 639px) {
+  .form {
+    gap: var(--space-2);
+  }
+  .form > .actions {
+    margin-top: var(--space-2);
+  }
+}

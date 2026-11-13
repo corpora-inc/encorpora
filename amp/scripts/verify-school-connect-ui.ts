@@ -30,7 +30,8 @@ const api = buildApp({ repository: learning, authenticate });
 await registerFamilyRoutes(api, { pool: learning.pool, authenticate });
 let accountsMode = true,
   failConnect = false,
-  paidStudents = 0;
+  paidStudents = 0,
+  rosterRequests = 0;
 let state: any;
 const connectionId = randomUUID(),
   orgId = randomUUID(),
@@ -115,6 +116,7 @@ api.post("/api/v1/school/clever/sync", async () => {
   return { status: "syncing" };
 });
 api.post("/api/v1/school/connection-requests", async (request, reply) => {
+  rosterRequests++;
   assert.deepEqual(request.body, {
     institutionName: "Fixture school",
     contactEmail: "admin@example.test",
@@ -204,11 +206,33 @@ try {
       syncPaused: false,
     },
   };
+  await page.evaluate(() =>
+    localStorage.setItem(
+      "amp.student",
+      JSON.stringify({ accountId: "school:fixture", token: "st_fixture" }),
+    ),
+  );
+  const escapedProof: string[] = [];
+  page.on("request", (request) => {
+    if (
+      request.headers().authorization === `Bearer ${token}` &&
+      ![
+        "/api/v1/provider/onboarding-session",
+        "/api/v1/school/clever/status",
+        "/api/v1/school/clever/connect",
+      ].includes(new URL(request.url()).pathname)
+    )
+      escapedProof.push(new URL(request.url()).pathname);
+  });
   await page.goto(`${origin}/school/connect#clever-onboarding=${token}`);
   await page
     .getByRole("heading", { name: "Reconnect your district" })
     .waitFor();
   assert.equal(new URL(page.url()).hash, "");
+  assert.equal(
+    await page.evaluate(() => localStorage.getItem("amp.student")),
+    null,
+  );
   await page.getByLabel("Your name", { exact: true }).fill("District Admin");
   await page.getByRole("checkbox", { name: /authorized to connect/ }).check();
   assert.ok(
@@ -292,17 +316,40 @@ try {
   await page.getByText(/^Synced /).waitFor();
   await page.getByRole("link", { name: "Open your classes" }).waitFor();
   await capture("ready");
-  // A sync asked for too soon says so beside the button, not as a fault.
+  state.connection.syncState = "delayed";
+  state.connection.syncing = true;
+  state.connection.lastSyncAt = null;
+  await page.reload();
+  await page
+    .getByText("Your connection is saved. The roster import is delayed.")
+    .waitFor();
+  assert.equal(await page.getByText("Importing", { exact: true }).count(), 0);
+  assert.equal(
+    await page.getByRole("button", { name: "Retry import" }).isDisabled(),
+    false,
+  );
+  await capture("import-delayed");
+  state.connection.syncState = "ready";
+  state.connection.syncing = false;
+  state.connection.lastSyncAt = new Date().toISOString();
+  await page.reload();
+  // A sync asked for too soon recovers without a page reload.
   await page.route("**/api/v1/school/clever/sync", (route) =>
     route.fulfill({
       status: 429,
-      headers: { "Retry-After": "900" },
+      headers: { "Retry-After": "1" },
       json: { error: "clever_sync_rate_limited" },
     }),
   );
   await page.getByRole("button", { name: "Sync now" }).click();
   await page.getByText("Synced recently. Try again in 15 minutes.").waitFor();
   assert.equal(await page.getByRole("alert").count(), 0);
+  await page.waitForFunction(
+    () =>
+      !Array.from(document.querySelectorAll("button")).find(
+        (b) => b.textContent === "Sync now",
+      )?.disabled,
+  );
   await page.unroute("**/api/v1/school/clever/sync");
   state = freshState();
   await page.reload();
@@ -318,6 +365,51 @@ try {
     )?.includes("next=%2Fschool%2Fconnect"),
   );
   await capture("link-reauth");
+  await page
+    .getByText("Connect another roster system", { exact: true })
+    .click();
+  await page
+    .getByLabel("School or district", { exact: true })
+    .fill("Fixture school");
+  await page
+    .getByLabel("Contact email", { exact: true })
+    .fill("admin@example.test");
+  await page
+    .getByRole("button", { name: "Request a connection", exact: true })
+    .click();
+  await page
+    .getByText(
+      "Connection requested. Watch your email for an AnySchool invitation.",
+    )
+    .waitFor();
+  await page.reload();
+  await page
+    .getByText(
+      "Connection requested. Watch your email for an AnySchool invitation.",
+    )
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Request a connection", exact: true })
+      .count(),
+    0,
+  );
+  await page
+    .getByRole("link", { name: "Set up a class without Clever", exact: true })
+    .waitFor();
+  assert.equal(
+    rosterRequests,
+    1,
+    "Reload resumes the request without submitting twice",
+  );
+  await capture("anyschool-requested");
+  state.requests[0].status = "invited";
+  await page.reload();
+  await page
+    .getByText(
+      "Your AnySchool invitation is ready. Open the invitation in your email to connect your roster.",
+    )
+    .waitFor();
   state = {
     ...freshState(),
     identity: { districtId: "fixture", roles: ["teacher"], personId: null },
@@ -325,18 +417,44 @@ try {
   await page.reload();
   await page.getByText("Your district admin connects Clever.").waitFor();
   await page.getByRole("link", { name: "Set up your class" }).waitFor();
+  assert.equal(
+    await page
+      .getByText("Connect another roster system", { exact: true })
+      .count(),
+    0,
+  );
   await capture("teacher-waits");
   await page.goto(`${origin}/schools/continue#token=${"b".repeat(43)}`);
   await page.getByText("Your seats are confirmed.").waitFor();
   assert.equal(new URL(page.url()).hash, "");
+  assert.equal(await page.getByText(/Students have access/).count(), 0);
   assert.equal(
     await page.getByRole("heading", { name: "Get a quote" }).count(),
     0,
   );
+  await page.route("**/api/v1/school/buyer", (route) =>
+    route.fulfill({
+      status: 503,
+      json: { error: "school_service_unavailable" },
+    }),
+  );
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "This request couldn’t load" })
+    .waitFor();
+  assert.equal(
+    await page.getByRole("heading", { name: "This link has expired" }).count(),
+    0,
+  );
+  await page.unroute("**/api/v1/school/buyer");
+  await page.getByRole("button", { name: "Try again", exact: true }).click();
+  await page.getByText("Your seats are confirmed.").waitFor();
   paidStudents = 25;
   await page.reload();
   await page.getByText("Your seats are confirmed.").waitFor();
+  await page.getByText(/Students have access/).waitFor();
   await capture("purchase-active");
+  assert.deepEqual(escapedProof, []);
   assert.deepEqual(failures, []);
   console.info(
     "Clever connection, paused authority recovery, teacher hand-off and confirmed purchase browser states passed.",

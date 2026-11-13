@@ -23,6 +23,7 @@ export function Authorization({
   errors = {},
   disabled = false,
   scope = "class",
+  acceptedAt,
 }: {
   name: string;
   title: string;
@@ -33,8 +34,10 @@ export function Authorization({
   errors?: { name?: string; title?: string };
   disabled?: boolean;
   scope?: "class" | "district";
+  acceptedAt?: string;
 }) {
   const [reading, setReading] = useState(false);
+  const [editSigner, setEditSigner] = useState(false);
   const agreement = (
     <button
       type="button"
@@ -49,26 +52,47 @@ export function Authorization({
   );
   return (
     <>
-      <div className={styles.pair}>
-        <TextField
-          label="Your name"
-          value={name}
-          onChange={(event) => onName(event.target.value)}
-          autoComplete="name"
-          maxLength={100}
-          error={errors.name}
-          disabled={disabled}
-        />
-        <TextField
-          label="Your role"
-          value={title}
-          onChange={(event) => onTitle(event.target.value)}
-          autoComplete="organization-title"
-          maxLength={100}
-          error={errors.title}
-          disabled={disabled}
-        />
-      </div>
+      {acceptedAt && !editSigner ? (
+        <div className={styles.accessLine}>
+          <p>
+            {name} · {title}. Agreement accepted{" "}
+            {new Intl.DateTimeFormat(undefined, {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            }).format(new Date(acceptedAt))}
+            .
+          </p>
+          <Button
+            variant="quiet"
+            disabled={disabled}
+            onClick={() => setEditSigner(true)}
+          >
+            Edit signer
+          </Button>
+        </div>
+      ) : (
+        <div className={styles.pair}>
+          <TextField
+            label="Your name"
+            value={name}
+            onChange={(event) => onName(event.target.value)}
+            autoComplete="name"
+            maxLength={100}
+            error={errors.name}
+            disabled={disabled}
+          />
+          <TextField
+            label="Your role"
+            value={title}
+            onChange={(event) => onTitle(event.target.value)}
+            autoComplete="organization-title"
+            maxLength={100}
+            error={errors.title}
+            disabled={disabled}
+          />
+        </div>
+      )}
       <Checkbox
         checked={authorized}
         onChange={onAuthorized}
