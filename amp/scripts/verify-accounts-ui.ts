@@ -144,11 +144,28 @@ async function signedIn(page: Page, email: string) {
       .getByRole("link", { name: "Family & account", exact: true })
       .click();
     await page.waitForURL(`${origin}/family`);
-    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
+    await page
+      .getByRole("heading", { name: "Learners", exact: true, level: 1 })
+      .waitFor();
   } else {
     await page.getByRole("button", { name: "Close AMP menu" }).click();
   }
   await signOut.waitFor({ state: "hidden" });
+}
+
+/** Account's Add a child: a name and a birth year, then Add. */
+async function addChild(page: Page, name: string) {
+  await page.getByRole("button", { name: "Add a child", exact: true }).click();
+  await page.getByRole("textbox", { name: "Name", exact: true }).fill(name);
+  await page
+    .locator("#family-add-learner")
+    .getByRole("button", { name: "Birth year", exact: true })
+    .click();
+  await page
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("radio", { name: "2016", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Add", exact: true }).click();
 }
 
 try {
@@ -189,7 +206,10 @@ try {
     .waitFor();
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
   await page.getByRole("button", { name: "Birth year, Child 1" }).click();
-  await page.getByRole("option", { name: "2016", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year, Child 1" })
+    .getByRole("radio", { name: "2016", exact: true })
+    .click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await signedIn(page, email);
 
@@ -336,15 +356,7 @@ try {
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Learners", exact: true })
     .click();
-  await sibling
-    .getByRole("button", { name: "Add learner", exact: false })
-    .click();
-  await sibling
-    .getByRole("textbox", { name: "Name", exact: true })
-    .fill("Sibling");
-  await sibling
-    .getByRole("button", { name: "Add learner", exact: true })
-    .click();
+  await addChild(sibling, "Sibling");
   await sibling.getByText("Sibling added.", { exact: true }).waitFor();
   await sibling.close();
 
@@ -353,9 +365,7 @@ try {
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Learners", exact: true })
     .click();
-  await page.getByRole("button", { name: "Add learner", exact: false }).click();
-  await page.getByRole("textbox", { name: "Name", exact: true }).fill("Maya");
-  await page.getByRole("button", { name: "Add learner", exact: true }).click();
+  await addChild(page, "Maya");
   await page.getByText("Maya added.", { exact: true }).waitFor();
   await leaveSettings(page);
   await page.getByRole("button", { name: "Open AMP menu" }).click();

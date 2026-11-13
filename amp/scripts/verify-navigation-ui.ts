@@ -512,7 +512,9 @@ try {
         await page.waitForFunction(() => !location.search.includes("area="));
       }
       const searchBox = await page
-        .getByRole("searchbox", { name: "Find a skill" })
+        .getByRole("searchbox", {
+          name: "Search skills, lessons and math words",
+        })
         .evaluate((el) => {
           const box = el.closest("label")!.getBoundingClientRect();
           return { y: box.y, height: box.height };
@@ -611,7 +613,7 @@ try {
     .getByRole("option", { name: "Avery", exact: true })
     .click();
   await page
-    .getByRole("heading", { name: "Your collection starts with a problem" })
+    .getByRole("heading", { name: "Your skills fill in as you practice" })
     .waitFor();
   assert.equal(
     await page.locator('[data-strength="Strong"]').count(),
@@ -738,10 +740,16 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  await page.getByRole("searchbox", { name: "Find a skill" }).fill("L");
-  await page.getByRole("searchbox", { name: "Find a skill" }).fill("");
+  await page
+    .getByRole("searchbox", { name: "Search skills, lessons and math words" })
+    .fill("L");
+  await page
+    .getByRole("searchbox", { name: "Search skills, lessons and math words" })
+    .fill("");
   assert.equal(
-    await page.getByRole("searchbox", { name: "Find a skill" }).inputValue(),
+    await page
+      .getByRole("searchbox", { name: "Search skills, lessons and math words" })
+      .inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();

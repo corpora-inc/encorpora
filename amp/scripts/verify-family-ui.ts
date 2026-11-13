@@ -175,9 +175,8 @@ try {
   await page.goto(
     `http://127.0.0.1:${familyPort}/artifacts/family-review/index.html`,
   );
-  await page
-    .getByRole("heading", { name: "Sample learner", exact: true })
-    .waitFor();
+  // Learners lists each child as a row (features/account/LearnerList).
+  await page.locator('[data-learner-row="fixture"]').waitFor();
   // The Account group's tabs: Family, Billing and Privacy (and Profile &
   // sign-in), links in the app frame's bar.
   const tabNames: Record<string, string> = {

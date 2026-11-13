@@ -72,7 +72,9 @@ try {
       .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Learners", exact: true })
       .click();
-    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
+    await page
+      .getByRole("heading", { name: "Learners", exact: true, level: 1 })
+      .waitFor();
     await page
       .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Privacy", exact: true })
@@ -177,7 +179,9 @@ try {
       .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Learners", exact: true })
       .click();
-    await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
+    await page
+      .getByRole("heading", { name: "Learners", exact: true, level: 1 })
+      .waitFor();
     assert.deepEqual(errors, []);
     await page.close();
     console.log(

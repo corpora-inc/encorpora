@@ -130,9 +130,14 @@ try {
       page.on("request", (request) => {
         if (request.url().includes("/amp/films/")) mediaRequests++;
       });
-      // An old short-lesson link: it opens the lesson in Pathways.
+      // An old short-lesson link: it opens the lesson as a layer over
+      // Pathways (docs/design/ia.md).
       await page.goto(`${fixture.origin}/lessons?topic=count-objects`);
-      await page.waitForURL(/\/pathways\?lesson=count-objects/);
+      await page.waitForURL(
+        (url) =>
+          url.pathname === "/pathways" &&
+          url.searchParams.get("open") === "lesson:count-objects",
+      );
       const watch = page.getByRole("link", { name: /Watch lesson/ });
       await watch.waitFor();
       assert.equal(
