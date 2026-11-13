@@ -30,7 +30,6 @@
   max-inline-size: 100%;
   white-space: normal;
   cursor: pointer;
-  transition: background var(--motion-fast) ease;
 }
 .glossary-term::after {
   content: "";
@@ -41,10 +40,10 @@
   height: 44px;
   transform: translate(-50%, -50%);
 }
+/* Like a link in prose, a term answers hover with its underline, not a fill
+   hugging the word. */
 .glossary-term:hover:not(:disabled) {
   filter: none;
-  background: var(--color-secondary);
-  color: var(--color-on-secondary);
   text-decoration-style: solid;
 }
 .glossary-term:active:not(:disabled) {
