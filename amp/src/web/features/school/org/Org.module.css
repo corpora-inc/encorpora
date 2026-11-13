@@ -25,11 +25,6 @@
   line-height: 1.24;
   text-wrap: pretty;
 }
-.ledeLast {
-  margin-top: var(--space-2);
-  color: var(--color-muted-text);
-  font-variant-numeric: var(--numeric);
-}
 /* On a phone: the sentence, seats, what needs doing, then the charts. Wide: the
    sentence beside the seats, the charts beside what needs doing. */
 .read {
@@ -105,6 +100,14 @@
 }
 .sectionTitle {
   margin-bottom: var(--space-4);
+  text-wrap: balance;
+}
+/* A list's title with how its figures are made a tap away. */
+.usageHead {
+  margin-bottom: var(--space-2);
+}
+.usageTitle {
+  margin: 0;
   text-wrap: balance;
 }
 .sectionLead {

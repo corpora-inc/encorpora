@@ -72,7 +72,8 @@ export function HeatLegend({
   midpointWord,
   empty = false,
 }: {
-  caption: string;
+  /** What the scale measures; left out where a title above already says it. */
+  caption?: string;
   midpoint: number;
   /** What the midpoint is: "target", "median week". */
   midpointWord: string;
@@ -81,7 +82,7 @@ export function HeatLegend({
   const ticks = heatTicks(midpoint);
   return (
     <div className={styles.legend}>
-      <span className={styles.legendCaption}>{caption}</span>
+      {caption && <span className={styles.legendCaption}>{caption}</span>}
       <span className={styles.legendBar} aria-hidden="true" />
       <span className={styles.legendTicks} aria-hidden="true">
         {ticks.map((tick, index) => (

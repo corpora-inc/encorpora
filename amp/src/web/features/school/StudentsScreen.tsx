@@ -152,8 +152,7 @@ function StudentSheet({
           onChange={(event) => setShownName(event.target.value)}
         />
         <p className={styles.fieldHelp}>
-          What the class sees. Imports never change it, so it’s the way to tell
-          twins apart.
+          What the class sees. Imports never change it.
         </p>
         <GradePicker value={grade} onChange={setGrade} />
         <div className={styles.field}>

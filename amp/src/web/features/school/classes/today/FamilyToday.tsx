@@ -117,10 +117,7 @@ export function FamilyToday({
             Add a child
           </Link>
         }
-      >
-        Each child gets a line here with their week and a way to practice on
-        this device.
-      </EmptyState>
+      />
     ) : null;
 
   const fresh = data.students.filter((student) => !student.lastActive);
@@ -186,7 +183,7 @@ export function FamilyToday({
             id: "sign-in",
             title: `Sign ${names(fresh.map((student) => student.name))} in on ${fresh.length === 1 ? "their own device" : "their own devices"}`,
             detail:
-              "Scan the class’s QR code, or open its link: each child taps their name and three pictures.",
+              "Scan the class’s code or open its link, then tap a name and three pictures.",
             mark: "check",
             actions: (
               <Button variant="secondary" onClick={() => setJoining(true)}>

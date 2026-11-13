@@ -499,23 +499,19 @@ function SchoolGradingPicker({ orgId }: { orgId: string }) {
           (value) => ({ value, label: gradingWords(value) }),
         )}
       />
-      <p className={styles.fieldHelp}>
-        Classes follow these unless one is set differently.
-        {data.own > 0 && (
-          <>
-            {" "}
-            <Link
-              to="/$"
-              params={{ _splat: orgPath(orgId, "classes") }}
-              search={{ periods: "own" } as never}
-            >
-              {data.own === 1
-                ? "1 class uses its own periods"
-                : `${data.own} classes use their own periods`}
-            </Link>
-          </>
-        )}
-      </p>
+      {data.own > 0 && (
+        <p className={styles.fieldHelp}>
+          <Link
+            to="/$"
+            params={{ _splat: orgPath(orgId, "classes") }}
+            search={{ periods: "own" } as never}
+          >
+            {data.own === 1
+              ? "1 class uses its own periods"
+              : `${data.own} classes use their own periods`}
+          </Link>
+        </p>
+      )}
       <Toast message={error} onDismiss={() => setError("")} />
     </div>
   );

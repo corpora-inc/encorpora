@@ -274,13 +274,6 @@
   margin: 0;
   font-weight: 700;
 }
-.startingBody {
-  max-width: 52ch;
-  margin: 2px 0 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-  line-height: 1.45;
-}
 .toolbar[hidden] {
   display: none;
 }

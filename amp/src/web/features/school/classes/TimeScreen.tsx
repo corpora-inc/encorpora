@@ -11,6 +11,7 @@ import {
 import { Button } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
+import { InfoPopover } from "../../../ui/InfoPopover";
 import { Loading } from "../../../ui/Loading";
 import { Segmented } from "../../../ui/Segmented";
 import { Sheet } from "../../../ui/Sheet";
@@ -444,6 +445,17 @@ export function TimeScreen() {
     0,
   );
   const working = (data?.students ?? []).filter((row) => row.minutes > 0);
+  const facts = data && (
+    <StatRow>
+      <StatTile value={number(totalMinutes)} label="active minutes" />
+      <StatTile
+        value={`${working.length} of ${data.students.length}`}
+        label={
+          family ? "children with active time" : "students with active time"
+        }
+      />
+    </StatRow>
+  );
   const largestSkill = Math.max(
     1,
     ...(data?.skills ?? []).map((s) => s.minutes),
@@ -538,34 +550,26 @@ export function TimeScreen() {
                     {family ? "Back to Today" : "Start class"}
                   </Link>
                 }
-              >
-                {family
-                  ? "Each child’s active minutes, week by week, against the weekly target, with the skills the time went to."
-                  : "Each student’s active minutes, week by week, against the weekly target, with the skills the time went to."}
-              </EmptyState>
+              />
             </div>
           ) : (
             <>
               <div className={styles.timeFacts}>
-                <StatRow>
-                  <StatTile
-                    value={number(totalMinutes)}
-                    label="active minutes"
-                  />
-                  <StatTile
-                    value={`${working.length} of ${data.students.length}`}
-                    label={
-                      family
-                        ? "children with active time"
-                        : "students with active time"
+                {perStudent ? (
+                  // The spread per student is a tap away from the totals.
+                  <InfoPopover
+                    title="Per student, the numbers"
+                    details={
+                      <StatsLine
+                        label={`${measure === "minutes" ? "Active minutes" : "Problems"} a week per ${family ? "child" : "student"}`}
+                        {...perStudent}
+                      />
                     }
-                  />
-                </StatRow>
-                {perStudent && (
-                  <StatsLine
-                    label={`${measure === "minutes" ? "Active minutes" : "Problems"} a week per ${family ? "child" : "student"}`}
-                    {...perStudent}
-                  />
+                  >
+                    {facts}
+                  </InfoPopover>
+                ) : (
+                  facts
                 )}
               </div>
               <div className={styles.timeScale}>
@@ -573,8 +577,8 @@ export function TimeScreen() {
                   <HeatLegend
                     caption={
                       measure === "minutes"
-                        ? `Active minutes ${isDay ? "a day (a fifth of the weekly target)" : "a week"}`
-                        : `Problems ${isDay ? "a day" : "a week"}. Midpoint: the class’s median week with any problems${isDay ? ", over five days" : ""}`
+                        ? `Active minutes ${isDay ? "a day" : "a week"}`
+                        : `Problems ${isDay ? "a day" : "a week"}`
                     }
                     midpoint={isDay ? midpoint / 5 : midpoint}
                     midpointWord={measure === "minutes" ? "target" : "median"}

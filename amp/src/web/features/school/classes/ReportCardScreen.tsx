@@ -162,7 +162,7 @@ export function ReportCardScreen() {
               </h1>
               <p>
                 {data.term.name}
-                {only ? "" : `, ${students.length} students, one page each`}
+                {only ? "" : `, ${students.length} students`}
                 {blank === 0
                   ? ""
                   : only

@@ -87,7 +87,7 @@ export function SettlingNote({
       {curve.settling === curve.n
         ? `All ${curve.n.toLocaleString("en-US")}`
         : `${curve.settling.toLocaleString("en-US")} of ${curve.n.toLocaleString("en-US")}`}{" "}
-      have fewer than {settleAt} answers, so their curves are still wide.
+      have fewer than {settleAt} answers.
     </p>
   );
 }

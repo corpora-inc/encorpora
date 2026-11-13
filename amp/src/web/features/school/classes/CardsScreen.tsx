@@ -166,14 +166,14 @@ export function CardsScreen() {
         </h1>
         <p>
           {student
-            ? "One card opens AMP for this student with no code and no pictures."
-            : `${PER_PAGE} cards fit on a letter page. Each one opens AMP for one student with no code and no pictures.`}
+            ? "The card signs this student in with no code and no pictures."
+            : "Each card signs one student in with no code and no pictures."}
         </p>
         {holding > 0 && (
           <p className={styles.warning}>
             {student
               ? "The card this student has now stops working."
-              : `${holding === 1 ? "1 student has" : `${holding} students have`} a card already. A new card replaces it, and the old one stops working.`}
+              : `${holding === 1 ? "1 student has" : `${holding} students have`} a card already. A new card stops the old one working.`}
           </p>
         )}
         {issue.isError && (
