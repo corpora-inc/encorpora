@@ -354,17 +354,6 @@
   border-color: var(--atlas-accent);
   color: var(--atlas-accent);
 }
-.pathways-gesture {
-  position: absolute;
-  bottom: 12px;
-  left: 14px;
-  right: 14px;
-  margin: 0;
-  color: var(--atlas-muted);
-  font-size: 12px;
-  pointer-events: none;
-  text-align: center;
-}
 .pathways-hover {
   position: absolute;
   left: 50%;
@@ -764,9 +753,6 @@
   .pathways-camera button:last-child {
     margin-left: auto;
   }
-  .pathways-gesture {
-    font-size: 12px;
-  }
   .pathways-legend {
     gap: 6px 12px;
     justify-content: flex-start;
@@ -913,8 +899,7 @@
 .pathways .pathways-summary,
 .pathways .pathways-muted,
 .pathways .pathways-range,
-.pathways .pathways-eyebrow,
-.pathways .pathways-gesture {
+.pathways .pathways-eyebrow {
   color: var(--atlas-muted);
 }
 .pathways input {
