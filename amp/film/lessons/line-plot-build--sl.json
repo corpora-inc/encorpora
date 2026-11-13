@@ -1,0 +1,7338 @@
+{
+ "id": "line-plot-build--sl",
+ "title": "One measurement, one mark",
+ "teaches": [],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.5,
+     7,
+     5
+    ],
+    "points": {
+     "rulerP0": [
+      0.25,
+      0.8
+     ],
+     "rulerP1": [
+      6.75,
+      0.8
+     ],
+     "rulerP2": [
+      6.75,
+      1.9
+     ],
+     "rulerP3": [
+      0.25,
+      1.9
+     ],
+     "tick0A": [
+      0.5,
+      1.9
+     ],
+     "tick0B": [
+      0.5,
+      1.6
+     ],
+     "num0P": [
+      0.5,
+      1.15
+     ],
+     "tick1A": [
+      1.5,
+      1.9
+     ],
+     "tick1B": [
+      1.5,
+      1.6
+     ],
+     "num1P": [
+      1.5,
+      1.15
+     ],
+     "tick2A": [
+      2.5,
+      1.9
+     ],
+     "tick2B": [
+      2.5,
+      1.6
+     ],
+     "num2P": [
+      2.5,
+      1.15
+     ],
+     "tick3A": [
+      3.5,
+      1.9
+     ],
+     "tick3B": [
+      3.5,
+      1.6
+     ],
+     "num3P": [
+      3.5,
+      1.15
+     ],
+     "tick4A": [
+      4.5,
+      1.9
+     ],
+     "tick4B": [
+      4.5,
+      1.6
+     ],
+     "num4P": [
+      4.5,
+      1.15
+     ],
+     "rulerUnitP": [
+      3.5,
+      0.25
+     ],
+     "zeroGuideA": [
+      0.5,
+      2.28
+     ],
+     "zeroGuideB": [
+      0.5,
+      1.9
+     ],
+     "endGuideA": [
+      3.5,
+      2.28
+     ],
+     "endGuideB": [
+      3.5,
+      1.9
+     ],
+     "lengthTraceA": [
+      0.5,
+      2.5
+     ],
+     "lengthTraceB": [
+      3.5,
+      2.5
+     ],
+     "tick5A": [
+      5.5,
+      1.9
+     ],
+     "tick5B": [
+      5.5,
+      1.6
+     ],
+     "num5P": [
+      5.5,
+      1.15
+     ],
+     "tick6A": [
+      6.5,
+      1.9
+     ],
+     "tick6B": [
+      6.5,
+      1.6
+     ],
+     "num6P": [
+      6.5,
+      1.15
+     ],
+     "chalkBodyP0": [
+      0.5,
+      2.35
+     ],
+     "chalkBodyP1": [
+      0.525,
+      2.275
+     ],
+     "chalkBodyP2": [
+      0.6,
+      2.23
+     ],
+     "chalkBodyP3": [
+      3.365,
+      2.23
+     ],
+     "chalkBodyP4": [
+      3.365,
+      2.23
+     ],
+     "chalkBodyP5": [
+      3.38262,
+      2.23231
+     ],
+     "chalkBodyP6": [
+      3.39994,
+      2.2392
+     ],
+     "chalkBodyP7": [
+      3.41666,
+      2.25055
+     ],
+     "chalkBodyP8": [
+      3.4325,
+      2.26617
+     ],
+     "chalkBodyP9": [
+      3.44718,
+      2.28579
+     ],
+     "chalkBodyP10": [
+      3.46046,
+      2.30908
+     ],
+     "chalkBodyP11": [
+      3.4721,
+      2.33563
+     ],
+     "chalkBodyP12": [
+      3.48191,
+      2.365
+     ],
+     "chalkBodyP13": [
+      3.48972,
+      2.39668
+     ],
+     "chalkBodyP14": [
+      3.4954,
+      2.43012
+     ],
+     "chalkBodyP15": [
+      3.49885,
+      2.46476
+     ],
+     "chalkBodyP16": [
+      3.5,
+      2.5
+     ],
+     "chalkBodyP17": [
+      3.49885,
+      2.53524
+     ],
+     "chalkBodyP18": [
+      3.4954,
+      2.56988
+     ],
+     "chalkBodyP19": [
+      3.48972,
+      2.60332
+     ],
+     "chalkBodyP20": [
+      3.48191,
+      2.635
+     ],
+     "chalkBodyP21": [
+      3.4721,
+      2.66437
+     ],
+     "chalkBodyP22": [
+      3.46046,
+      2.69092
+     ],
+     "chalkBodyP23": [
+      3.44718,
+      2.71421
+     ],
+     "chalkBodyP24": [
+      3.4325,
+      2.73383
+     ],
+     "chalkBodyP25": [
+      3.41666,
+      2.74945
+     ],
+     "chalkBodyP26": [
+      3.39994,
+      2.7608
+     ],
+     "chalkBodyP27": [
+      3.38262,
+      2.76769
+     ],
+     "chalkBodyP28": [
+      3.365,
+      2.77
+     ],
+     "chalkBodyP29": [
+      0.63,
+      2.77
+     ],
+     "chalkBodyP30": [
+      0.57,
+      2.75
+     ],
+     "chalkBodyP31": [
+      0.525,
+      2.71
+     ],
+     "chalkBodyP32": [
+      0.5,
+      2.62
+     ],
+     "chalkBodyP33": [
+      0.518,
+      2.525
+     ],
+     "chalkTopP0": [
+      0.57,
+      2.62
+     ],
+     "chalkTopP1": [
+      0.65,
+      2.735
+     ],
+     "chalkTopP2": [
+      3.345,
+      2.735
+     ],
+     "chalkTopP3": [
+      3.38,
+      2.62
+     ],
+     "chalkTopP4": [
+      3.28,
+      2.575
+     ],
+     "chalkTopP5": [
+      0.68,
+      2.585
+     ],
+     "chalkLowerSoftP0": [
+      0.59,
+      2.35
+     ],
+     "chalkLowerSoftP1": [
+      3.32,
+      2.35
+     ],
+     "chalkLowerSoftP2": [
+      3.33,
+      2.25
+     ],
+     "chalkLowerSoftP3": [
+      0.6,
+      2.235
+     ],
+     "chalkEndP0": [
+      3.5,
+      2.5
+     ],
+     "chalkEndP1": [
+      3.49885,
+      2.53524
+     ],
+     "chalkEndP2": [
+      3.4954,
+      2.56988
+     ],
+     "chalkEndP3": [
+      3.48972,
+      2.60332
+     ],
+     "chalkEndP4": [
+      3.48191,
+      2.635
+     ],
+     "chalkEndP5": [
+      3.4721,
+      2.66437
+     ],
+     "chalkEndP6": [
+      3.46046,
+      2.69092
+     ],
+     "chalkEndP7": [
+      3.44718,
+      2.71421
+     ],
+     "chalkEndP8": [
+      3.4325,
+      2.73383
+     ],
+     "chalkEndP9": [
+      3.41666,
+      2.74945
+     ],
+     "chalkEndP10": [
+      3.39994,
+      2.7608
+     ],
+     "chalkEndP11": [
+      3.38262,
+      2.76769
+     ],
+     "chalkEndP12": [
+      3.365,
+      2.77
+     ],
+     "chalkEndP13": [
+      3.34738,
+      2.76769
+     ],
+     "chalkEndP14": [
+      3.33006,
+      2.7608
+     ],
+     "chalkEndP15": [
+      3.31334,
+      2.74945
+     ],
+     "chalkEndP16": [
+      3.2975,
+      2.73383
+     ],
+     "chalkEndP17": [
+      3.28282,
+      2.71421
+     ],
+     "chalkEndP18": [
+      3.26954,
+      2.69092
+     ],
+     "chalkEndP19": [
+      3.2579,
+      2.66437
+     ],
+     "chalkEndP20": [
+      3.24809,
+      2.635
+     ],
+     "chalkEndP21": [
+      3.24028,
+      2.60332
+     ],
+     "chalkEndP22": [
+      3.2346,
+      2.56988
+     ],
+     "chalkEndP23": [
+      3.23115,
+      2.53524
+     ],
+     "chalkEndP24": [
+      3.23,
+      2.5
+     ],
+     "chalkEndP25": [
+      3.23115,
+      2.46476
+     ],
+     "chalkEndP26": [
+      3.2346,
+      2.43012
+     ],
+     "chalkEndP27": [
+      3.24028,
+      2.39668
+     ],
+     "chalkEndP28": [
+      3.24809,
+      2.365
+     ],
+     "chalkEndP29": [
+      3.2579,
+      2.33563
+     ],
+     "chalkEndP30": [
+      3.26954,
+      2.30908
+     ],
+     "chalkEndP31": [
+      3.28282,
+      2.28579
+     ],
+     "chalkEndP32": [
+      3.2975,
+      2.26617
+     ],
+     "chalkEndP33": [
+      3.31334,
+      2.25055
+     ],
+     "chalkEndP34": [
+      3.33006,
+      2.2392
+     ],
+     "chalkEndP35": [
+      3.34738,
+      2.23231
+     ],
+     "chalkEndP36": [
+      3.365,
+      2.23
+     ],
+     "chalkEndP37": [
+      3.38262,
+      2.23231
+     ],
+     "chalkEndP38": [
+      3.39994,
+      2.2392
+     ],
+     "chalkEndP39": [
+      3.41666,
+      2.25055
+     ],
+     "chalkEndP40": [
+      3.4325,
+      2.26617
+     ],
+     "chalkEndP41": [
+      3.44718,
+      2.28579
+     ],
+     "chalkEndP42": [
+      3.46046,
+      2.30908
+     ],
+     "chalkEndP43": [
+      3.4721,
+      2.33563
+     ],
+     "chalkEndP44": [
+      3.48191,
+      2.365
+     ],
+     "chalkEndP45": [
+      3.48972,
+      2.39668
+     ],
+     "chalkEndP46": [
+      3.4954,
+      2.43012
+     ],
+     "chalkEndP47": [
+      3.49885,
+      2.46476
+     ],
+     "chalkWearTopP0": [
+      0.525,
+      2.71
+     ],
+     "chalkWearTopP1": [
+      0.57,
+      2.75
+     ],
+     "chalkWearTopP2": [
+      0.67,
+      2.742
+     ],
+     "chalkWearTopP3": [
+      0.595,
+      2.68
+     ],
+     "chalkWearBottomP0": [
+      0.52,
+      2.35
+     ],
+     "chalkWearBottomP1": [
+      0.525,
+      2.275
+     ],
+     "chalkWearBottomP2": [
+      0.605,
+      2.245
+     ],
+     "chalkWearBottomP3": [
+      0.585,
+      2.31
+     ],
+     "chalkShadeA": [
+      0.645,
+      2.2874999999999996
+     ],
+     "chalkShadeB": [
+      3.315,
+      2.2874999999999996
+     ]
+    },
+    "parts": [
+     {
+      "id": "chalk",
+      "poly": [
+       "chalkBodyP0",
+       "chalkBodyP1",
+       "chalkBodyP2",
+       "chalkBodyP3",
+       "chalkBodyP4",
+       "chalkBodyP5",
+       "chalkBodyP6",
+       "chalkBodyP7",
+       "chalkBodyP8",
+       "chalkBodyP9",
+       "chalkBodyP10",
+       "chalkBodyP11",
+       "chalkBodyP12",
+       "chalkBodyP13",
+       "chalkBodyP14",
+       "chalkBodyP15",
+       "chalkBodyP16",
+       "chalkBodyP17",
+       "chalkBodyP18",
+       "chalkBodyP19",
+       "chalkBodyP20",
+       "chalkBodyP21",
+       "chalkBodyP22",
+       "chalkBodyP23",
+       "chalkBodyP24",
+       "chalkBodyP25",
+       "chalkBodyP26",
+       "chalkBodyP27",
+       "chalkBodyP28",
+       "chalkBodyP29",
+       "chalkBodyP30",
+       "chalkBodyP31",
+       "chalkBodyP32",
+       "chalkBodyP33"
+      ],
+      "fill": "blue-fill",
+      "group": "chalk",
+      "ink": "blue",
+      "w": 1.3,
+      "start": true
+     },
+     {
+      "id": "chalkTop",
+      "poly": [
+       "chalkTopP0",
+       "chalkTopP1",
+       "chalkTopP2",
+       "chalkTopP3",
+       "chalkTopP4",
+       "chalkTopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk",
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "chalkLower",
+      "group": "chalk",
+      "ink": "blue",
+      "w": 12,
+      "start": true,
+      "seg": [
+       "chalkShadeA",
+       "chalkShadeB"
+      ]
+     },
+     {
+      "id": "chalkLowerSoft",
+      "poly": [
+       "chalkLowerSoftP0",
+       "chalkLowerSoftP1",
+       "chalkLowerSoftP2",
+       "chalkLowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk",
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "chalkEnd",
+      "poly": [
+       "chalkEndP0",
+       "chalkEndP1",
+       "chalkEndP2",
+       "chalkEndP3",
+       "chalkEndP4",
+       "chalkEndP5",
+       "chalkEndP6",
+       "chalkEndP7",
+       "chalkEndP8",
+       "chalkEndP9",
+       "chalkEndP10",
+       "chalkEndP11",
+       "chalkEndP12",
+       "chalkEndP13",
+       "chalkEndP14",
+       "chalkEndP15",
+       "chalkEndP16",
+       "chalkEndP17",
+       "chalkEndP18",
+       "chalkEndP19",
+       "chalkEndP20",
+       "chalkEndP21",
+       "chalkEndP22",
+       "chalkEndP23",
+       "chalkEndP24",
+       "chalkEndP25",
+       "chalkEndP26",
+       "chalkEndP27",
+       "chalkEndP28",
+       "chalkEndP29",
+       "chalkEndP30",
+       "chalkEndP31",
+       "chalkEndP32",
+       "chalkEndP33",
+       "chalkEndP34",
+       "chalkEndP35",
+       "chalkEndP36",
+       "chalkEndP37",
+       "chalkEndP38",
+       "chalkEndP39",
+       "chalkEndP40",
+       "chalkEndP41",
+       "chalkEndP42",
+       "chalkEndP43",
+       "chalkEndP44",
+       "chalkEndP45",
+       "chalkEndP46",
+       "chalkEndP47"
+      ],
+      "fill": "blue-fill",
+      "group": "chalk",
+      "ink": "blue",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "chalkEndLight",
+      "poly": [
+       "chalkEndP0",
+       "chalkEndP1",
+       "chalkEndP2",
+       "chalkEndP3",
+       "chalkEndP4",
+       "chalkEndP5",
+       "chalkEndP6",
+       "chalkEndP7",
+       "chalkEndP8",
+       "chalkEndP9",
+       "chalkEndP10",
+       "chalkEndP11",
+       "chalkEndP12",
+       "chalkEndP13",
+       "chalkEndP14",
+       "chalkEndP15",
+       "chalkEndP16",
+       "chalkEndP17",
+       "chalkEndP18",
+       "chalkEndP19",
+       "chalkEndP20",
+       "chalkEndP21",
+       "chalkEndP22",
+       "chalkEndP23",
+       "chalkEndP24",
+       "chalkEndP25",
+       "chalkEndP26",
+       "chalkEndP27",
+       "chalkEndP28",
+       "chalkEndP29",
+       "chalkEndP30",
+       "chalkEndP31",
+       "chalkEndP32",
+       "chalkEndP33",
+       "chalkEndP34",
+       "chalkEndP35",
+       "chalkEndP36",
+       "chalkEndP37",
+       "chalkEndP38",
+       "chalkEndP39",
+       "chalkEndP40",
+       "chalkEndP41",
+       "chalkEndP42",
+       "chalkEndP43",
+       "chalkEndP44",
+       "chalkEndP45",
+       "chalkEndP46",
+       "chalkEndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk",
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "chalkWearTop",
+      "poly": [
+       "chalkWearTopP0",
+       "chalkWearTopP1",
+       "chalkWearTopP2",
+       "chalkWearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk",
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "chalkWearBottom",
+      "poly": [
+       "chalkWearBottomP0",
+       "chalkWearBottomP1",
+       "chalkWearBottomP2",
+       "chalkWearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk",
+      "sheer": true,
+      "start": true
+     },
+     {
+      "id": "ruler",
+      "poly": [
+       "rulerP0",
+       "rulerP1",
+       "rulerP2",
+       "rulerP3"
+      ],
+      "fill": "wood",
+      "ink": "wood",
+      "start": true
+     },
+     {
+      "id": "tick0",
+      "seg": [
+       "tick0A",
+       "tick0B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num0",
+      "label": "0",
+      "at": "num0P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "tick1A",
+       "tick1B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num1",
+      "label": "1",
+      "at": "num1P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "tick2A",
+       "tick2B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num2",
+      "label": "2",
+      "at": "num2P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "tick3A",
+       "tick3B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num3",
+      "label": "3",
+      "at": "num3P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tick4",
+      "seg": [
+       "tick4A",
+       "tick4B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num4",
+      "label": "4",
+      "at": "num4P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "rulerUnit",
+      "label": "\\text{cm}",
+      "at": "rulerUnitP",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "zeroGuide",
+      "seg": [
+       "zeroGuideA",
+       "zeroGuideB"
+      ],
+      "ink": "gold",
+      "dash": true
+     },
+     {
+      "id": "endGuide",
+      "seg": [
+       "endGuideA",
+       "endGuideB"
+      ],
+      "ink": "gold",
+      "dash": true
+     },
+     {
+      "id": "lengthTrace",
+      "seg": [
+       "lengthTraceA",
+       "lengthTraceB"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "tick5",
+      "seg": [
+       "tick5A",
+       "tick5B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num5",
+      "label": "5",
+      "at": "num5P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "tick6",
+      "seg": [
+       "tick6A",
+       "tick6B"
+      ],
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "num6",
+      "label": "6",
+      "at": "num6P",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Length tells how far this chalk reaches from one end to the other.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Chalk lengths (cm)",
+       "keep": true,
+       "at": "Length"
+      },
+      {
+       "do": "text",
+       "text": "Length: end to end",
+       "at": "Length"
+      },
+      {
+       "do": "draw",
+       "target": "lengthTrace",
+       "at": "one"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "The ruler shows zero to three: three centimeters.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "lengthTrace",
+       "at": "The"
+      },
+      {
+       "do": "show",
+       "target": "zeroGuide",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "endGuide",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "3\\text{ cm}",
+       "at": "centimeters",
+       "fresh": true
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "C m means centimeters.",
+     "do": [
+      {
+       "do": "text",
+       "text": "cm means centimeters",
+       "at": "C"
+      },
+      {
+       "do": "highlight",
+       "target": "rulerUnit",
+       "at": "centimeters"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "The other pieces have been measured too. These numbers record six chalk lengths. Numbers we collect are called data.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "These"
+      },
+      {
+       "do": "write",
+       "tex": "3,\\; 5,\\; 3,\\; 2,\\; 5,\\; 5",
+       "fresh": true,
+       "at": "These"
+      },
+      {
+       "do": "text",
+       "text": "Data: numbers we collect",
+       "at": "data"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     0,
+     -1.5,
+     7,
+     5
+    ],
+    "points": {
+     "axisA": [
+      0.6,
+      0
+     ],
+     "axisB": [
+      6.4,
+      0
+     ],
+     "tick1A": [
+      1,
+      -0.1
+     ],
+     "tick1B": [
+      1,
+      0.1
+     ],
+     "num1P": [
+      1,
+      -0.45
+     ],
+     "tick2A": [
+      2,
+      -0.1
+     ],
+     "tick2B": [
+      2,
+      0.1
+     ],
+     "num2P": [
+      2,
+      -0.45
+     ],
+     "tick3A": [
+      3,
+      -0.1
+     ],
+     "tick3B": [
+      3,
+      0.1
+     ],
+     "num3P": [
+      3,
+      -0.45
+     ],
+     "tick4A": [
+      4,
+      -0.1
+     ],
+     "tick4B": [
+      4,
+      0.1
+     ],
+     "num4P": [
+      4,
+      -0.45
+     ],
+     "tick5A": [
+      5,
+      -0.1
+     ],
+     "tick5B": [
+      5,
+      0.1
+     ],
+     "num5P": [
+      5,
+      -0.45
+     ],
+     "tick6A": [
+      6,
+      -0.1
+     ],
+     "tick6B": [
+      6,
+      0.1
+     ],
+     "num6P": [
+      6,
+      -0.45
+     ],
+     "unitP": [
+      3.5,
+      -1.1
+     ],
+     "length1P": [
+      3.5,
+      4.25
+     ],
+     "mark1aA": [
+      4.27,
+      4.07
+     ],
+     "mark1aB": [
+      4.63,
+      4.43
+     ],
+     "mark1bA": [
+      4.27,
+      4.43
+     ],
+     "mark1bB": [
+      4.63,
+      4.07
+     ],
+     "length2P": [
+      3.5,
+      4.25
+     ],
+     "mark2aA": [
+      4.27,
+      4.07
+     ],
+     "mark2aB": [
+      4.63,
+      4.43
+     ],
+     "mark2bA": [
+      4.27,
+      4.43
+     ],
+     "mark2bB": [
+      4.63,
+      4.07
+     ],
+     "length3P": [
+      3.5,
+      4.25
+     ],
+     "mark3aA": [
+      4.27,
+      4.07
+     ],
+     "mark3aB": [
+      4.63,
+      4.43
+     ],
+     "mark3bA": [
+      4.27,
+      4.43
+     ],
+     "mark3bB": [
+      4.63,
+      4.07
+     ],
+     "length4P": [
+      3.5,
+      4.25
+     ],
+     "mark4aA": [
+      4.27,
+      4.07
+     ],
+     "mark4aB": [
+      4.63,
+      4.43
+     ],
+     "mark4bA": [
+      4.27,
+      4.43
+     ],
+     "mark4bB": [
+      4.63,
+      4.07
+     ],
+     "length5P": [
+      3.5,
+      4.25
+     ],
+     "mark5aA": [
+      4.27,
+      4.07
+     ],
+     "mark5aB": [
+      4.63,
+      4.43
+     ],
+     "mark5bA": [
+      4.27,
+      4.43
+     ],
+     "mark5bB": [
+      4.63,
+      4.07
+     ],
+     "length6P": [
+      3.5,
+      4.25
+     ],
+     "mark6aA": [
+      4.27,
+      4.07
+     ],
+     "mark6aB": [
+      4.63,
+      4.43
+     ],
+     "mark6bA": [
+      4.27,
+      4.43
+     ],
+     "mark6bB": [
+      4.63,
+      4.07
+     ],
+     "emptyFourP0": [
+      3.73,
+      0.25
+     ],
+     "emptyFourP1": [
+      4.27,
+      0.25
+     ],
+     "emptyFourP2": [
+      4.27,
+      2.2
+     ],
+     "emptyFourP3": [
+      3.73,
+      2.2
+     ],
+     "stepOneA": [
+      3,
+      -0.02
+     ],
+     "stepOneB": [
+      4,
+      -0.02
+     ],
+     "stepTwoA": [
+      4,
+      -0.02
+     ],
+     "stepTwoB": [
+      5,
+      -0.02
+     ],
+     "chalk1BodyP0": [
+      2.0,
+      3.3
+     ],
+     "chalk1BodyP1": [
+      2.025,
+      3.225
+     ],
+     "chalk1BodyP2": [
+      2.1,
+      3.18
+     ],
+     "chalk1BodyP3": [
+      4.865,
+      3.18
+     ],
+     "chalk1BodyP4": [
+      4.865,
+      3.18
+     ],
+     "chalk1BodyP5": [
+      4.88262,
+      3.18231
+     ],
+     "chalk1BodyP6": [
+      4.89994,
+      3.1892
+     ],
+     "chalk1BodyP7": [
+      4.91666,
+      3.20055
+     ],
+     "chalk1BodyP8": [
+      4.9325,
+      3.21617
+     ],
+     "chalk1BodyP9": [
+      4.94718,
+      3.23579
+     ],
+     "chalk1BodyP10": [
+      4.96046,
+      3.25908
+     ],
+     "chalk1BodyP11": [
+      4.9721,
+      3.28563
+     ],
+     "chalk1BodyP12": [
+      4.98191,
+      3.315
+     ],
+     "chalk1BodyP13": [
+      4.98972,
+      3.34668
+     ],
+     "chalk1BodyP14": [
+      4.9954,
+      3.38012
+     ],
+     "chalk1BodyP15": [
+      4.99885,
+      3.41476
+     ],
+     "chalk1BodyP16": [
+      5.0,
+      3.45
+     ],
+     "chalk1BodyP17": [
+      4.99885,
+      3.48524
+     ],
+     "chalk1BodyP18": [
+      4.9954,
+      3.51988
+     ],
+     "chalk1BodyP19": [
+      4.98972,
+      3.55332
+     ],
+     "chalk1BodyP20": [
+      4.98191,
+      3.585
+     ],
+     "chalk1BodyP21": [
+      4.9721,
+      3.61437
+     ],
+     "chalk1BodyP22": [
+      4.96046,
+      3.64092
+     ],
+     "chalk1BodyP23": [
+      4.94718,
+      3.66421
+     ],
+     "chalk1BodyP24": [
+      4.9325,
+      3.68383
+     ],
+     "chalk1BodyP25": [
+      4.91666,
+      3.69945
+     ],
+     "chalk1BodyP26": [
+      4.89994,
+      3.7108
+     ],
+     "chalk1BodyP27": [
+      4.88262,
+      3.71769
+     ],
+     "chalk1BodyP28": [
+      4.865,
+      3.72
+     ],
+     "chalk1BodyP29": [
+      2.13,
+      3.72
+     ],
+     "chalk1BodyP30": [
+      2.07,
+      3.7
+     ],
+     "chalk1BodyP31": [
+      2.025,
+      3.66
+     ],
+     "chalk1BodyP32": [
+      2.0,
+      3.57
+     ],
+     "chalk1BodyP33": [
+      2.018,
+      3.475
+     ],
+     "chalk1TopP0": [
+      2.07,
+      3.57
+     ],
+     "chalk1TopP1": [
+      2.15,
+      3.685
+     ],
+     "chalk1TopP2": [
+      4.845,
+      3.685
+     ],
+     "chalk1TopP3": [
+      4.88,
+      3.57
+     ],
+     "chalk1TopP4": [
+      4.78,
+      3.525
+     ],
+     "chalk1TopP5": [
+      2.18,
+      3.535
+     ],
+     "chalk1LowerSoftP0": [
+      2.09,
+      3.3
+     ],
+     "chalk1LowerSoftP1": [
+      4.82,
+      3.3
+     ],
+     "chalk1LowerSoftP2": [
+      4.83,
+      3.2
+     ],
+     "chalk1LowerSoftP3": [
+      2.1,
+      3.185
+     ],
+     "chalk1EndP0": [
+      5.0,
+      3.45
+     ],
+     "chalk1EndP1": [
+      4.99885,
+      3.48524
+     ],
+     "chalk1EndP2": [
+      4.9954,
+      3.51988
+     ],
+     "chalk1EndP3": [
+      4.98972,
+      3.55332
+     ],
+     "chalk1EndP4": [
+      4.98191,
+      3.585
+     ],
+     "chalk1EndP5": [
+      4.9721,
+      3.61437
+     ],
+     "chalk1EndP6": [
+      4.96046,
+      3.64092
+     ],
+     "chalk1EndP7": [
+      4.94718,
+      3.66421
+     ],
+     "chalk1EndP8": [
+      4.9325,
+      3.68383
+     ],
+     "chalk1EndP9": [
+      4.91666,
+      3.69945
+     ],
+     "chalk1EndP10": [
+      4.89994,
+      3.7108
+     ],
+     "chalk1EndP11": [
+      4.88262,
+      3.71769
+     ],
+     "chalk1EndP12": [
+      4.865,
+      3.72
+     ],
+     "chalk1EndP13": [
+      4.84738,
+      3.71769
+     ],
+     "chalk1EndP14": [
+      4.83006,
+      3.7108
+     ],
+     "chalk1EndP15": [
+      4.81334,
+      3.69945
+     ],
+     "chalk1EndP16": [
+      4.7975,
+      3.68383
+     ],
+     "chalk1EndP17": [
+      4.78282,
+      3.66421
+     ],
+     "chalk1EndP18": [
+      4.76954,
+      3.64092
+     ],
+     "chalk1EndP19": [
+      4.7579,
+      3.61437
+     ],
+     "chalk1EndP20": [
+      4.74809,
+      3.585
+     ],
+     "chalk1EndP21": [
+      4.74028,
+      3.55332
+     ],
+     "chalk1EndP22": [
+      4.7346,
+      3.51988
+     ],
+     "chalk1EndP23": [
+      4.73115,
+      3.48524
+     ],
+     "chalk1EndP24": [
+      4.73,
+      3.45
+     ],
+     "chalk1EndP25": [
+      4.73115,
+      3.41476
+     ],
+     "chalk1EndP26": [
+      4.7346,
+      3.38012
+     ],
+     "chalk1EndP27": [
+      4.74028,
+      3.34668
+     ],
+     "chalk1EndP28": [
+      4.74809,
+      3.315
+     ],
+     "chalk1EndP29": [
+      4.7579,
+      3.28563
+     ],
+     "chalk1EndP30": [
+      4.76954,
+      3.25908
+     ],
+     "chalk1EndP31": [
+      4.78282,
+      3.23579
+     ],
+     "chalk1EndP32": [
+      4.7975,
+      3.21617
+     ],
+     "chalk1EndP33": [
+      4.81334,
+      3.20055
+     ],
+     "chalk1EndP34": [
+      4.83006,
+      3.1892
+     ],
+     "chalk1EndP35": [
+      4.84738,
+      3.18231
+     ],
+     "chalk1EndP36": [
+      4.865,
+      3.18
+     ],
+     "chalk1EndP37": [
+      4.88262,
+      3.18231
+     ],
+     "chalk1EndP38": [
+      4.89994,
+      3.1892
+     ],
+     "chalk1EndP39": [
+      4.91666,
+      3.20055
+     ],
+     "chalk1EndP40": [
+      4.9325,
+      3.21617
+     ],
+     "chalk1EndP41": [
+      4.94718,
+      3.23579
+     ],
+     "chalk1EndP42": [
+      4.96046,
+      3.25908
+     ],
+     "chalk1EndP43": [
+      4.9721,
+      3.28563
+     ],
+     "chalk1EndP44": [
+      4.98191,
+      3.315
+     ],
+     "chalk1EndP45": [
+      4.98972,
+      3.34668
+     ],
+     "chalk1EndP46": [
+      4.9954,
+      3.38012
+     ],
+     "chalk1EndP47": [
+      4.99885,
+      3.41476
+     ],
+     "chalk1WearTopP0": [
+      2.025,
+      3.66
+     ],
+     "chalk1WearTopP1": [
+      2.07,
+      3.7
+     ],
+     "chalk1WearTopP2": [
+      2.17,
+      3.692
+     ],
+     "chalk1WearTopP3": [
+      2.095,
+      3.63
+     ],
+     "chalk1WearBottomP0": [
+      2.02,
+      3.3
+     ],
+     "chalk1WearBottomP1": [
+      2.025,
+      3.225
+     ],
+     "chalk1WearBottomP2": [
+      2.105,
+      3.195
+     ],
+     "chalk1WearBottomP3": [
+      2.085,
+      3.26
+     ],
+     "chalk2BodyP0": [
+      1.0,
+      3.3
+     ],
+     "chalk2BodyP1": [
+      1.025,
+      3.225
+     ],
+     "chalk2BodyP2": [
+      1.1,
+      3.18
+     ],
+     "chalk2BodyP3": [
+      5.865,
+      3.18
+     ],
+     "chalk2BodyP4": [
+      5.865,
+      3.18
+     ],
+     "chalk2BodyP5": [
+      5.88262,
+      3.18231
+     ],
+     "chalk2BodyP6": [
+      5.89994,
+      3.1892
+     ],
+     "chalk2BodyP7": [
+      5.91666,
+      3.20055
+     ],
+     "chalk2BodyP8": [
+      5.9325,
+      3.21617
+     ],
+     "chalk2BodyP9": [
+      5.94718,
+      3.23579
+     ],
+     "chalk2BodyP10": [
+      5.96046,
+      3.25908
+     ],
+     "chalk2BodyP11": [
+      5.9721,
+      3.28563
+     ],
+     "chalk2BodyP12": [
+      5.98191,
+      3.315
+     ],
+     "chalk2BodyP13": [
+      5.98972,
+      3.34668
+     ],
+     "chalk2BodyP14": [
+      5.9954,
+      3.38012
+     ],
+     "chalk2BodyP15": [
+      5.99885,
+      3.41476
+     ],
+     "chalk2BodyP16": [
+      6.0,
+      3.45
+     ],
+     "chalk2BodyP17": [
+      5.99885,
+      3.48524
+     ],
+     "chalk2BodyP18": [
+      5.9954,
+      3.51988
+     ],
+     "chalk2BodyP19": [
+      5.98972,
+      3.55332
+     ],
+     "chalk2BodyP20": [
+      5.98191,
+      3.585
+     ],
+     "chalk2BodyP21": [
+      5.9721,
+      3.61437
+     ],
+     "chalk2BodyP22": [
+      5.96046,
+      3.64092
+     ],
+     "chalk2BodyP23": [
+      5.94718,
+      3.66421
+     ],
+     "chalk2BodyP24": [
+      5.9325,
+      3.68383
+     ],
+     "chalk2BodyP25": [
+      5.91666,
+      3.69945
+     ],
+     "chalk2BodyP26": [
+      5.89994,
+      3.7108
+     ],
+     "chalk2BodyP27": [
+      5.88262,
+      3.71769
+     ],
+     "chalk2BodyP28": [
+      5.865,
+      3.72
+     ],
+     "chalk2BodyP29": [
+      1.13,
+      3.72
+     ],
+     "chalk2BodyP30": [
+      1.07,
+      3.7
+     ],
+     "chalk2BodyP31": [
+      1.025,
+      3.66
+     ],
+     "chalk2BodyP32": [
+      1.0,
+      3.57
+     ],
+     "chalk2BodyP33": [
+      1.018,
+      3.475
+     ],
+     "chalk2TopP0": [
+      1.07,
+      3.57
+     ],
+     "chalk2TopP1": [
+      1.15,
+      3.685
+     ],
+     "chalk2TopP2": [
+      5.845,
+      3.685
+     ],
+     "chalk2TopP3": [
+      5.88,
+      3.57
+     ],
+     "chalk2TopP4": [
+      5.78,
+      3.525
+     ],
+     "chalk2TopP5": [
+      1.18,
+      3.535
+     ],
+     "chalk2LowerSoftP0": [
+      1.09,
+      3.3
+     ],
+     "chalk2LowerSoftP1": [
+      5.82,
+      3.3
+     ],
+     "chalk2LowerSoftP2": [
+      5.83,
+      3.2
+     ],
+     "chalk2LowerSoftP3": [
+      1.1,
+      3.185
+     ],
+     "chalk2EndP0": [
+      6.0,
+      3.45
+     ],
+     "chalk2EndP1": [
+      5.99885,
+      3.48524
+     ],
+     "chalk2EndP2": [
+      5.9954,
+      3.51988
+     ],
+     "chalk2EndP3": [
+      5.98972,
+      3.55332
+     ],
+     "chalk2EndP4": [
+      5.98191,
+      3.585
+     ],
+     "chalk2EndP5": [
+      5.9721,
+      3.61437
+     ],
+     "chalk2EndP6": [
+      5.96046,
+      3.64092
+     ],
+     "chalk2EndP7": [
+      5.94718,
+      3.66421
+     ],
+     "chalk2EndP8": [
+      5.9325,
+      3.68383
+     ],
+     "chalk2EndP9": [
+      5.91666,
+      3.69945
+     ],
+     "chalk2EndP10": [
+      5.89994,
+      3.7108
+     ],
+     "chalk2EndP11": [
+      5.88262,
+      3.71769
+     ],
+     "chalk2EndP12": [
+      5.865,
+      3.72
+     ],
+     "chalk2EndP13": [
+      5.84738,
+      3.71769
+     ],
+     "chalk2EndP14": [
+      5.83006,
+      3.7108
+     ],
+     "chalk2EndP15": [
+      5.81334,
+      3.69945
+     ],
+     "chalk2EndP16": [
+      5.7975,
+      3.68383
+     ],
+     "chalk2EndP17": [
+      5.78282,
+      3.66421
+     ],
+     "chalk2EndP18": [
+      5.76954,
+      3.64092
+     ],
+     "chalk2EndP19": [
+      5.7579,
+      3.61437
+     ],
+     "chalk2EndP20": [
+      5.74809,
+      3.585
+     ],
+     "chalk2EndP21": [
+      5.74028,
+      3.55332
+     ],
+     "chalk2EndP22": [
+      5.7346,
+      3.51988
+     ],
+     "chalk2EndP23": [
+      5.73115,
+      3.48524
+     ],
+     "chalk2EndP24": [
+      5.73,
+      3.45
+     ],
+     "chalk2EndP25": [
+      5.73115,
+      3.41476
+     ],
+     "chalk2EndP26": [
+      5.7346,
+      3.38012
+     ],
+     "chalk2EndP27": [
+      5.74028,
+      3.34668
+     ],
+     "chalk2EndP28": [
+      5.74809,
+      3.315
+     ],
+     "chalk2EndP29": [
+      5.7579,
+      3.28563
+     ],
+     "chalk2EndP30": [
+      5.76954,
+      3.25908
+     ],
+     "chalk2EndP31": [
+      5.78282,
+      3.23579
+     ],
+     "chalk2EndP32": [
+      5.7975,
+      3.21617
+     ],
+     "chalk2EndP33": [
+      5.81334,
+      3.20055
+     ],
+     "chalk2EndP34": [
+      5.83006,
+      3.1892
+     ],
+     "chalk2EndP35": [
+      5.84738,
+      3.18231
+     ],
+     "chalk2EndP36": [
+      5.865,
+      3.18
+     ],
+     "chalk2EndP37": [
+      5.88262,
+      3.18231
+     ],
+     "chalk2EndP38": [
+      5.89994,
+      3.1892
+     ],
+     "chalk2EndP39": [
+      5.91666,
+      3.20055
+     ],
+     "chalk2EndP40": [
+      5.9325,
+      3.21617
+     ],
+     "chalk2EndP41": [
+      5.94718,
+      3.23579
+     ],
+     "chalk2EndP42": [
+      5.96046,
+      3.25908
+     ],
+     "chalk2EndP43": [
+      5.9721,
+      3.28563
+     ],
+     "chalk2EndP44": [
+      5.98191,
+      3.315
+     ],
+     "chalk2EndP45": [
+      5.98972,
+      3.34668
+     ],
+     "chalk2EndP46": [
+      5.9954,
+      3.38012
+     ],
+     "chalk2EndP47": [
+      5.99885,
+      3.41476
+     ],
+     "chalk2WearTopP0": [
+      1.025,
+      3.66
+     ],
+     "chalk2WearTopP1": [
+      1.07,
+      3.7
+     ],
+     "chalk2WearTopP2": [
+      1.17,
+      3.692
+     ],
+     "chalk2WearTopP3": [
+      1.095,
+      3.63
+     ],
+     "chalk2WearBottomP0": [
+      1.02,
+      3.3
+     ],
+     "chalk2WearBottomP1": [
+      1.025,
+      3.225
+     ],
+     "chalk2WearBottomP2": [
+      1.105,
+      3.195
+     ],
+     "chalk2WearBottomP3": [
+      1.085,
+      3.26
+     ],
+     "chalk3BodyP0": [
+      2.0,
+      3.3
+     ],
+     "chalk3BodyP1": [
+      2.025,
+      3.225
+     ],
+     "chalk3BodyP2": [
+      2.1,
+      3.18
+     ],
+     "chalk3BodyP3": [
+      4.865,
+      3.18
+     ],
+     "chalk3BodyP4": [
+      4.865,
+      3.18
+     ],
+     "chalk3BodyP5": [
+      4.88262,
+      3.18231
+     ],
+     "chalk3BodyP6": [
+      4.89994,
+      3.1892
+     ],
+     "chalk3BodyP7": [
+      4.91666,
+      3.20055
+     ],
+     "chalk3BodyP8": [
+      4.9325,
+      3.21617
+     ],
+     "chalk3BodyP9": [
+      4.94718,
+      3.23579
+     ],
+     "chalk3BodyP10": [
+      4.96046,
+      3.25908
+     ],
+     "chalk3BodyP11": [
+      4.9721,
+      3.28563
+     ],
+     "chalk3BodyP12": [
+      4.98191,
+      3.315
+     ],
+     "chalk3BodyP13": [
+      4.98972,
+      3.34668
+     ],
+     "chalk3BodyP14": [
+      4.9954,
+      3.38012
+     ],
+     "chalk3BodyP15": [
+      4.99885,
+      3.41476
+     ],
+     "chalk3BodyP16": [
+      5.0,
+      3.45
+     ],
+     "chalk3BodyP17": [
+      4.99885,
+      3.48524
+     ],
+     "chalk3BodyP18": [
+      4.9954,
+      3.51988
+     ],
+     "chalk3BodyP19": [
+      4.98972,
+      3.55332
+     ],
+     "chalk3BodyP20": [
+      4.98191,
+      3.585
+     ],
+     "chalk3BodyP21": [
+      4.9721,
+      3.61437
+     ],
+     "chalk3BodyP22": [
+      4.96046,
+      3.64092
+     ],
+     "chalk3BodyP23": [
+      4.94718,
+      3.66421
+     ],
+     "chalk3BodyP24": [
+      4.9325,
+      3.68383
+     ],
+     "chalk3BodyP25": [
+      4.91666,
+      3.69945
+     ],
+     "chalk3BodyP26": [
+      4.89994,
+      3.7108
+     ],
+     "chalk3BodyP27": [
+      4.88262,
+      3.71769
+     ],
+     "chalk3BodyP28": [
+      4.865,
+      3.72
+     ],
+     "chalk3BodyP29": [
+      2.13,
+      3.72
+     ],
+     "chalk3BodyP30": [
+      2.07,
+      3.7
+     ],
+     "chalk3BodyP31": [
+      2.025,
+      3.66
+     ],
+     "chalk3BodyP32": [
+      2.0,
+      3.57
+     ],
+     "chalk3BodyP33": [
+      2.018,
+      3.475
+     ],
+     "chalk3TintP0": [
+      2.0,
+      3.3
+     ],
+     "chalk3TintP1": [
+      2.025,
+      3.225
+     ],
+     "chalk3TintP2": [
+      2.1,
+      3.18
+     ],
+     "chalk3TintP3": [
+      4.865,
+      3.18
+     ],
+     "chalk3TintP4": [
+      4.865,
+      3.18
+     ],
+     "chalk3TintP5": [
+      4.88262,
+      3.18231
+     ],
+     "chalk3TintP6": [
+      4.89994,
+      3.1892
+     ],
+     "chalk3TintP7": [
+      4.91666,
+      3.20055
+     ],
+     "chalk3TintP8": [
+      4.9325,
+      3.21617
+     ],
+     "chalk3TintP9": [
+      4.94718,
+      3.23579
+     ],
+     "chalk3TintP10": [
+      4.96046,
+      3.25908
+     ],
+     "chalk3TintP11": [
+      4.9721,
+      3.28563
+     ],
+     "chalk3TintP12": [
+      4.98191,
+      3.315
+     ],
+     "chalk3TintP13": [
+      4.98972,
+      3.34668
+     ],
+     "chalk3TintP14": [
+      4.9954,
+      3.38012
+     ],
+     "chalk3TintP15": [
+      4.99885,
+      3.41476
+     ],
+     "chalk3TintP16": [
+      5.0,
+      3.45
+     ],
+     "chalk3TintP17": [
+      4.99885,
+      3.48524
+     ],
+     "chalk3TintP18": [
+      4.9954,
+      3.51988
+     ],
+     "chalk3TintP19": [
+      4.98972,
+      3.55332
+     ],
+     "chalk3TintP20": [
+      4.98191,
+      3.585
+     ],
+     "chalk3TintP21": [
+      4.9721,
+      3.61437
+     ],
+     "chalk3TintP22": [
+      4.96046,
+      3.64092
+     ],
+     "chalk3TintP23": [
+      4.94718,
+      3.66421
+     ],
+     "chalk3TintP24": [
+      4.9325,
+      3.68383
+     ],
+     "chalk3TintP25": [
+      4.91666,
+      3.69945
+     ],
+     "chalk3TintP26": [
+      4.89994,
+      3.7108
+     ],
+     "chalk3TintP27": [
+      4.88262,
+      3.71769
+     ],
+     "chalk3TintP28": [
+      4.865,
+      3.72
+     ],
+     "chalk3TintP29": [
+      2.13,
+      3.72
+     ],
+     "chalk3TintP30": [
+      2.07,
+      3.7
+     ],
+     "chalk3TintP31": [
+      2.025,
+      3.66
+     ],
+     "chalk3TintP32": [
+      2.0,
+      3.57
+     ],
+     "chalk3TintP33": [
+      2.018,
+      3.475
+     ],
+     "chalk3TopP0": [
+      2.07,
+      3.57
+     ],
+     "chalk3TopP1": [
+      2.15,
+      3.685
+     ],
+     "chalk3TopP2": [
+      4.845,
+      3.685
+     ],
+     "chalk3TopP3": [
+      4.88,
+      3.57
+     ],
+     "chalk3TopP4": [
+      4.78,
+      3.525
+     ],
+     "chalk3TopP5": [
+      2.18,
+      3.535
+     ],
+     "chalk3LowerSoftP0": [
+      2.09,
+      3.3
+     ],
+     "chalk3LowerSoftP1": [
+      4.82,
+      3.3
+     ],
+     "chalk3LowerSoftP2": [
+      4.83,
+      3.2
+     ],
+     "chalk3LowerSoftP3": [
+      2.1,
+      3.185
+     ],
+     "chalk3EndP0": [
+      5.0,
+      3.45
+     ],
+     "chalk3EndP1": [
+      4.99885,
+      3.48524
+     ],
+     "chalk3EndP2": [
+      4.9954,
+      3.51988
+     ],
+     "chalk3EndP3": [
+      4.98972,
+      3.55332
+     ],
+     "chalk3EndP4": [
+      4.98191,
+      3.585
+     ],
+     "chalk3EndP5": [
+      4.9721,
+      3.61437
+     ],
+     "chalk3EndP6": [
+      4.96046,
+      3.64092
+     ],
+     "chalk3EndP7": [
+      4.94718,
+      3.66421
+     ],
+     "chalk3EndP8": [
+      4.9325,
+      3.68383
+     ],
+     "chalk3EndP9": [
+      4.91666,
+      3.69945
+     ],
+     "chalk3EndP10": [
+      4.89994,
+      3.7108
+     ],
+     "chalk3EndP11": [
+      4.88262,
+      3.71769
+     ],
+     "chalk3EndP12": [
+      4.865,
+      3.72
+     ],
+     "chalk3EndP13": [
+      4.84738,
+      3.71769
+     ],
+     "chalk3EndP14": [
+      4.83006,
+      3.7108
+     ],
+     "chalk3EndP15": [
+      4.81334,
+      3.69945
+     ],
+     "chalk3EndP16": [
+      4.7975,
+      3.68383
+     ],
+     "chalk3EndP17": [
+      4.78282,
+      3.66421
+     ],
+     "chalk3EndP18": [
+      4.76954,
+      3.64092
+     ],
+     "chalk3EndP19": [
+      4.7579,
+      3.61437
+     ],
+     "chalk3EndP20": [
+      4.74809,
+      3.585
+     ],
+     "chalk3EndP21": [
+      4.74028,
+      3.55332
+     ],
+     "chalk3EndP22": [
+      4.7346,
+      3.51988
+     ],
+     "chalk3EndP23": [
+      4.73115,
+      3.48524
+     ],
+     "chalk3EndP24": [
+      4.73,
+      3.45
+     ],
+     "chalk3EndP25": [
+      4.73115,
+      3.41476
+     ],
+     "chalk3EndP26": [
+      4.7346,
+      3.38012
+     ],
+     "chalk3EndP27": [
+      4.74028,
+      3.34668
+     ],
+     "chalk3EndP28": [
+      4.74809,
+      3.315
+     ],
+     "chalk3EndP29": [
+      4.7579,
+      3.28563
+     ],
+     "chalk3EndP30": [
+      4.76954,
+      3.25908
+     ],
+     "chalk3EndP31": [
+      4.78282,
+      3.23579
+     ],
+     "chalk3EndP32": [
+      4.7975,
+      3.21617
+     ],
+     "chalk3EndP33": [
+      4.81334,
+      3.20055
+     ],
+     "chalk3EndP34": [
+      4.83006,
+      3.1892
+     ],
+     "chalk3EndP35": [
+      4.84738,
+      3.18231
+     ],
+     "chalk3EndP36": [
+      4.865,
+      3.18
+     ],
+     "chalk3EndP37": [
+      4.88262,
+      3.18231
+     ],
+     "chalk3EndP38": [
+      4.89994,
+      3.1892
+     ],
+     "chalk3EndP39": [
+      4.91666,
+      3.20055
+     ],
+     "chalk3EndP40": [
+      4.9325,
+      3.21617
+     ],
+     "chalk3EndP41": [
+      4.94718,
+      3.23579
+     ],
+     "chalk3EndP42": [
+      4.96046,
+      3.25908
+     ],
+     "chalk3EndP43": [
+      4.9721,
+      3.28563
+     ],
+     "chalk3EndP44": [
+      4.98191,
+      3.315
+     ],
+     "chalk3EndP45": [
+      4.98972,
+      3.34668
+     ],
+     "chalk3EndP46": [
+      4.9954,
+      3.38012
+     ],
+     "chalk3EndP47": [
+      4.99885,
+      3.41476
+     ],
+     "chalk3EndTintP0": [
+      5.0,
+      3.45
+     ],
+     "chalk3EndTintP1": [
+      4.99885,
+      3.48524
+     ],
+     "chalk3EndTintP2": [
+      4.9954,
+      3.51988
+     ],
+     "chalk3EndTintP3": [
+      4.98972,
+      3.55332
+     ],
+     "chalk3EndTintP4": [
+      4.98191,
+      3.585
+     ],
+     "chalk3EndTintP5": [
+      4.9721,
+      3.61437
+     ],
+     "chalk3EndTintP6": [
+      4.96046,
+      3.64092
+     ],
+     "chalk3EndTintP7": [
+      4.94718,
+      3.66421
+     ],
+     "chalk3EndTintP8": [
+      4.9325,
+      3.68383
+     ],
+     "chalk3EndTintP9": [
+      4.91666,
+      3.69945
+     ],
+     "chalk3EndTintP10": [
+      4.89994,
+      3.7108
+     ],
+     "chalk3EndTintP11": [
+      4.88262,
+      3.71769
+     ],
+     "chalk3EndTintP12": [
+      4.865,
+      3.72
+     ],
+     "chalk3EndTintP13": [
+      4.84738,
+      3.71769
+     ],
+     "chalk3EndTintP14": [
+      4.83006,
+      3.7108
+     ],
+     "chalk3EndTintP15": [
+      4.81334,
+      3.69945
+     ],
+     "chalk3EndTintP16": [
+      4.7975,
+      3.68383
+     ],
+     "chalk3EndTintP17": [
+      4.78282,
+      3.66421
+     ],
+     "chalk3EndTintP18": [
+      4.76954,
+      3.64092
+     ],
+     "chalk3EndTintP19": [
+      4.7579,
+      3.61437
+     ],
+     "chalk3EndTintP20": [
+      4.74809,
+      3.585
+     ],
+     "chalk3EndTintP21": [
+      4.74028,
+      3.55332
+     ],
+     "chalk3EndTintP22": [
+      4.7346,
+      3.51988
+     ],
+     "chalk3EndTintP23": [
+      4.73115,
+      3.48524
+     ],
+     "chalk3EndTintP24": [
+      4.73,
+      3.45
+     ],
+     "chalk3EndTintP25": [
+      4.73115,
+      3.41476
+     ],
+     "chalk3EndTintP26": [
+      4.7346,
+      3.38012
+     ],
+     "chalk3EndTintP27": [
+      4.74028,
+      3.34668
+     ],
+     "chalk3EndTintP28": [
+      4.74809,
+      3.315
+     ],
+     "chalk3EndTintP29": [
+      4.7579,
+      3.28563
+     ],
+     "chalk3EndTintP30": [
+      4.76954,
+      3.25908
+     ],
+     "chalk3EndTintP31": [
+      4.78282,
+      3.23579
+     ],
+     "chalk3EndTintP32": [
+      4.7975,
+      3.21617
+     ],
+     "chalk3EndTintP33": [
+      4.81334,
+      3.20055
+     ],
+     "chalk3EndTintP34": [
+      4.83006,
+      3.1892
+     ],
+     "chalk3EndTintP35": [
+      4.84738,
+      3.18231
+     ],
+     "chalk3EndTintP36": [
+      4.865,
+      3.18
+     ],
+     "chalk3EndTintP37": [
+      4.88262,
+      3.18231
+     ],
+     "chalk3EndTintP38": [
+      4.89994,
+      3.1892
+     ],
+     "chalk3EndTintP39": [
+      4.91666,
+      3.20055
+     ],
+     "chalk3EndTintP40": [
+      4.9325,
+      3.21617
+     ],
+     "chalk3EndTintP41": [
+      4.94718,
+      3.23579
+     ],
+     "chalk3EndTintP42": [
+      4.96046,
+      3.25908
+     ],
+     "chalk3EndTintP43": [
+      4.9721,
+      3.28563
+     ],
+     "chalk3EndTintP44": [
+      4.98191,
+      3.315
+     ],
+     "chalk3EndTintP45": [
+      4.98972,
+      3.34668
+     ],
+     "chalk3EndTintP46": [
+      4.9954,
+      3.38012
+     ],
+     "chalk3EndTintP47": [
+      4.99885,
+      3.41476
+     ],
+     "chalk3WearTopP0": [
+      2.025,
+      3.66
+     ],
+     "chalk3WearTopP1": [
+      2.07,
+      3.7
+     ],
+     "chalk3WearTopP2": [
+      2.17,
+      3.692
+     ],
+     "chalk3WearTopP3": [
+      2.095,
+      3.63
+     ],
+     "chalk3WearBottomP0": [
+      2.02,
+      3.3
+     ],
+     "chalk3WearBottomP1": [
+      2.025,
+      3.225
+     ],
+     "chalk3WearBottomP2": [
+      2.105,
+      3.195
+     ],
+     "chalk3WearBottomP3": [
+      2.085,
+      3.26
+     ],
+     "chalk4BodyP0": [
+      2.5,
+      3.3
+     ],
+     "chalk4BodyP1": [
+      2.525,
+      3.225
+     ],
+     "chalk4BodyP2": [
+      2.6,
+      3.18
+     ],
+     "chalk4BodyP3": [
+      4.365,
+      3.18
+     ],
+     "chalk4BodyP4": [
+      4.365,
+      3.18
+     ],
+     "chalk4BodyP5": [
+      4.38262,
+      3.18231
+     ],
+     "chalk4BodyP6": [
+      4.39994,
+      3.1892
+     ],
+     "chalk4BodyP7": [
+      4.41666,
+      3.20055
+     ],
+     "chalk4BodyP8": [
+      4.4325,
+      3.21617
+     ],
+     "chalk4BodyP9": [
+      4.44718,
+      3.23579
+     ],
+     "chalk4BodyP10": [
+      4.46046,
+      3.25908
+     ],
+     "chalk4BodyP11": [
+      4.4721,
+      3.28563
+     ],
+     "chalk4BodyP12": [
+      4.48191,
+      3.315
+     ],
+     "chalk4BodyP13": [
+      4.48972,
+      3.34668
+     ],
+     "chalk4BodyP14": [
+      4.4954,
+      3.38012
+     ],
+     "chalk4BodyP15": [
+      4.49885,
+      3.41476
+     ],
+     "chalk4BodyP16": [
+      4.5,
+      3.45
+     ],
+     "chalk4BodyP17": [
+      4.49885,
+      3.48524
+     ],
+     "chalk4BodyP18": [
+      4.4954,
+      3.51988
+     ],
+     "chalk4BodyP19": [
+      4.48972,
+      3.55332
+     ],
+     "chalk4BodyP20": [
+      4.48191,
+      3.585
+     ],
+     "chalk4BodyP21": [
+      4.4721,
+      3.61437
+     ],
+     "chalk4BodyP22": [
+      4.46046,
+      3.64092
+     ],
+     "chalk4BodyP23": [
+      4.44718,
+      3.66421
+     ],
+     "chalk4BodyP24": [
+      4.4325,
+      3.68383
+     ],
+     "chalk4BodyP25": [
+      4.41666,
+      3.69945
+     ],
+     "chalk4BodyP26": [
+      4.39994,
+      3.7108
+     ],
+     "chalk4BodyP27": [
+      4.38262,
+      3.71769
+     ],
+     "chalk4BodyP28": [
+      4.365,
+      3.72
+     ],
+     "chalk4BodyP29": [
+      2.63,
+      3.72
+     ],
+     "chalk4BodyP30": [
+      2.57,
+      3.7
+     ],
+     "chalk4BodyP31": [
+      2.525,
+      3.66
+     ],
+     "chalk4BodyP32": [
+      2.5,
+      3.57
+     ],
+     "chalk4BodyP33": [
+      2.518,
+      3.475
+     ],
+     "chalk4TopP0": [
+      2.57,
+      3.57
+     ],
+     "chalk4TopP1": [
+      2.65,
+      3.685
+     ],
+     "chalk4TopP2": [
+      4.345,
+      3.685
+     ],
+     "chalk4TopP3": [
+      4.38,
+      3.57
+     ],
+     "chalk4TopP4": [
+      4.28,
+      3.525
+     ],
+     "chalk4TopP5": [
+      2.68,
+      3.535
+     ],
+     "chalk4LowerSoftP0": [
+      2.59,
+      3.3
+     ],
+     "chalk4LowerSoftP1": [
+      4.32,
+      3.3
+     ],
+     "chalk4LowerSoftP2": [
+      4.33,
+      3.2
+     ],
+     "chalk4LowerSoftP3": [
+      2.6,
+      3.185
+     ],
+     "chalk4EndP0": [
+      4.5,
+      3.45
+     ],
+     "chalk4EndP1": [
+      4.49885,
+      3.48524
+     ],
+     "chalk4EndP2": [
+      4.4954,
+      3.51988
+     ],
+     "chalk4EndP3": [
+      4.48972,
+      3.55332
+     ],
+     "chalk4EndP4": [
+      4.48191,
+      3.585
+     ],
+     "chalk4EndP5": [
+      4.4721,
+      3.61437
+     ],
+     "chalk4EndP6": [
+      4.46046,
+      3.64092
+     ],
+     "chalk4EndP7": [
+      4.44718,
+      3.66421
+     ],
+     "chalk4EndP8": [
+      4.4325,
+      3.68383
+     ],
+     "chalk4EndP9": [
+      4.41666,
+      3.69945
+     ],
+     "chalk4EndP10": [
+      4.39994,
+      3.7108
+     ],
+     "chalk4EndP11": [
+      4.38262,
+      3.71769
+     ],
+     "chalk4EndP12": [
+      4.365,
+      3.72
+     ],
+     "chalk4EndP13": [
+      4.34738,
+      3.71769
+     ],
+     "chalk4EndP14": [
+      4.33006,
+      3.7108
+     ],
+     "chalk4EndP15": [
+      4.31334,
+      3.69945
+     ],
+     "chalk4EndP16": [
+      4.2975,
+      3.68383
+     ],
+     "chalk4EndP17": [
+      4.28282,
+      3.66421
+     ],
+     "chalk4EndP18": [
+      4.26954,
+      3.64092
+     ],
+     "chalk4EndP19": [
+      4.2579,
+      3.61437
+     ],
+     "chalk4EndP20": [
+      4.24809,
+      3.585
+     ],
+     "chalk4EndP21": [
+      4.24028,
+      3.55332
+     ],
+     "chalk4EndP22": [
+      4.2346,
+      3.51988
+     ],
+     "chalk4EndP23": [
+      4.23115,
+      3.48524
+     ],
+     "chalk4EndP24": [
+      4.23,
+      3.45
+     ],
+     "chalk4EndP25": [
+      4.23115,
+      3.41476
+     ],
+     "chalk4EndP26": [
+      4.2346,
+      3.38012
+     ],
+     "chalk4EndP27": [
+      4.24028,
+      3.34668
+     ],
+     "chalk4EndP28": [
+      4.24809,
+      3.315
+     ],
+     "chalk4EndP29": [
+      4.2579,
+      3.28563
+     ],
+     "chalk4EndP30": [
+      4.26954,
+      3.25908
+     ],
+     "chalk4EndP31": [
+      4.28282,
+      3.23579
+     ],
+     "chalk4EndP32": [
+      4.2975,
+      3.21617
+     ],
+     "chalk4EndP33": [
+      4.31334,
+      3.20055
+     ],
+     "chalk4EndP34": [
+      4.33006,
+      3.1892
+     ],
+     "chalk4EndP35": [
+      4.34738,
+      3.18231
+     ],
+     "chalk4EndP36": [
+      4.365,
+      3.18
+     ],
+     "chalk4EndP37": [
+      4.38262,
+      3.18231
+     ],
+     "chalk4EndP38": [
+      4.39994,
+      3.1892
+     ],
+     "chalk4EndP39": [
+      4.41666,
+      3.20055
+     ],
+     "chalk4EndP40": [
+      4.4325,
+      3.21617
+     ],
+     "chalk4EndP41": [
+      4.44718,
+      3.23579
+     ],
+     "chalk4EndP42": [
+      4.46046,
+      3.25908
+     ],
+     "chalk4EndP43": [
+      4.4721,
+      3.28563
+     ],
+     "chalk4EndP44": [
+      4.48191,
+      3.315
+     ],
+     "chalk4EndP45": [
+      4.48972,
+      3.34668
+     ],
+     "chalk4EndP46": [
+      4.4954,
+      3.38012
+     ],
+     "chalk4EndP47": [
+      4.49885,
+      3.41476
+     ],
+     "chalk4WearTopP0": [
+      2.525,
+      3.66
+     ],
+     "chalk4WearTopP1": [
+      2.57,
+      3.7
+     ],
+     "chalk4WearTopP2": [
+      2.67,
+      3.692
+     ],
+     "chalk4WearTopP3": [
+      2.595,
+      3.63
+     ],
+     "chalk4WearBottomP0": [
+      2.52,
+      3.3
+     ],
+     "chalk4WearBottomP1": [
+      2.525,
+      3.225
+     ],
+     "chalk4WearBottomP2": [
+      2.605,
+      3.195
+     ],
+     "chalk4WearBottomP3": [
+      2.585,
+      3.26
+     ],
+     "chalk5BodyP0": [
+      1.0,
+      3.3
+     ],
+     "chalk5BodyP1": [
+      1.025,
+      3.225
+     ],
+     "chalk5BodyP2": [
+      1.1,
+      3.18
+     ],
+     "chalk5BodyP3": [
+      5.865,
+      3.18
+     ],
+     "chalk5BodyP4": [
+      5.865,
+      3.18
+     ],
+     "chalk5BodyP5": [
+      5.88262,
+      3.18231
+     ],
+     "chalk5BodyP6": [
+      5.89994,
+      3.1892
+     ],
+     "chalk5BodyP7": [
+      5.91666,
+      3.20055
+     ],
+     "chalk5BodyP8": [
+      5.9325,
+      3.21617
+     ],
+     "chalk5BodyP9": [
+      5.94718,
+      3.23579
+     ],
+     "chalk5BodyP10": [
+      5.96046,
+      3.25908
+     ],
+     "chalk5BodyP11": [
+      5.9721,
+      3.28563
+     ],
+     "chalk5BodyP12": [
+      5.98191,
+      3.315
+     ],
+     "chalk5BodyP13": [
+      5.98972,
+      3.34668
+     ],
+     "chalk5BodyP14": [
+      5.9954,
+      3.38012
+     ],
+     "chalk5BodyP15": [
+      5.99885,
+      3.41476
+     ],
+     "chalk5BodyP16": [
+      6.0,
+      3.45
+     ],
+     "chalk5BodyP17": [
+      5.99885,
+      3.48524
+     ],
+     "chalk5BodyP18": [
+      5.9954,
+      3.51988
+     ],
+     "chalk5BodyP19": [
+      5.98972,
+      3.55332
+     ],
+     "chalk5BodyP20": [
+      5.98191,
+      3.585
+     ],
+     "chalk5BodyP21": [
+      5.9721,
+      3.61437
+     ],
+     "chalk5BodyP22": [
+      5.96046,
+      3.64092
+     ],
+     "chalk5BodyP23": [
+      5.94718,
+      3.66421
+     ],
+     "chalk5BodyP24": [
+      5.9325,
+      3.68383
+     ],
+     "chalk5BodyP25": [
+      5.91666,
+      3.69945
+     ],
+     "chalk5BodyP26": [
+      5.89994,
+      3.7108
+     ],
+     "chalk5BodyP27": [
+      5.88262,
+      3.71769
+     ],
+     "chalk5BodyP28": [
+      5.865,
+      3.72
+     ],
+     "chalk5BodyP29": [
+      1.13,
+      3.72
+     ],
+     "chalk5BodyP30": [
+      1.07,
+      3.7
+     ],
+     "chalk5BodyP31": [
+      1.025,
+      3.66
+     ],
+     "chalk5BodyP32": [
+      1.0,
+      3.57
+     ],
+     "chalk5BodyP33": [
+      1.018,
+      3.475
+     ],
+     "chalk5TopP0": [
+      1.07,
+      3.57
+     ],
+     "chalk5TopP1": [
+      1.15,
+      3.685
+     ],
+     "chalk5TopP2": [
+      5.845,
+      3.685
+     ],
+     "chalk5TopP3": [
+      5.88,
+      3.57
+     ],
+     "chalk5TopP4": [
+      5.78,
+      3.525
+     ],
+     "chalk5TopP5": [
+      1.18,
+      3.535
+     ],
+     "chalk5LowerSoftP0": [
+      1.09,
+      3.3
+     ],
+     "chalk5LowerSoftP1": [
+      5.82,
+      3.3
+     ],
+     "chalk5LowerSoftP2": [
+      5.83,
+      3.2
+     ],
+     "chalk5LowerSoftP3": [
+      1.1,
+      3.185
+     ],
+     "chalk5EndP0": [
+      6.0,
+      3.45
+     ],
+     "chalk5EndP1": [
+      5.99885,
+      3.48524
+     ],
+     "chalk5EndP2": [
+      5.9954,
+      3.51988
+     ],
+     "chalk5EndP3": [
+      5.98972,
+      3.55332
+     ],
+     "chalk5EndP4": [
+      5.98191,
+      3.585
+     ],
+     "chalk5EndP5": [
+      5.9721,
+      3.61437
+     ],
+     "chalk5EndP6": [
+      5.96046,
+      3.64092
+     ],
+     "chalk5EndP7": [
+      5.94718,
+      3.66421
+     ],
+     "chalk5EndP8": [
+      5.9325,
+      3.68383
+     ],
+     "chalk5EndP9": [
+      5.91666,
+      3.69945
+     ],
+     "chalk5EndP10": [
+      5.89994,
+      3.7108
+     ],
+     "chalk5EndP11": [
+      5.88262,
+      3.71769
+     ],
+     "chalk5EndP12": [
+      5.865,
+      3.72
+     ],
+     "chalk5EndP13": [
+      5.84738,
+      3.71769
+     ],
+     "chalk5EndP14": [
+      5.83006,
+      3.7108
+     ],
+     "chalk5EndP15": [
+      5.81334,
+      3.69945
+     ],
+     "chalk5EndP16": [
+      5.7975,
+      3.68383
+     ],
+     "chalk5EndP17": [
+      5.78282,
+      3.66421
+     ],
+     "chalk5EndP18": [
+      5.76954,
+      3.64092
+     ],
+     "chalk5EndP19": [
+      5.7579,
+      3.61437
+     ],
+     "chalk5EndP20": [
+      5.74809,
+      3.585
+     ],
+     "chalk5EndP21": [
+      5.74028,
+      3.55332
+     ],
+     "chalk5EndP22": [
+      5.7346,
+      3.51988
+     ],
+     "chalk5EndP23": [
+      5.73115,
+      3.48524
+     ],
+     "chalk5EndP24": [
+      5.73,
+      3.45
+     ],
+     "chalk5EndP25": [
+      5.73115,
+      3.41476
+     ],
+     "chalk5EndP26": [
+      5.7346,
+      3.38012
+     ],
+     "chalk5EndP27": [
+      5.74028,
+      3.34668
+     ],
+     "chalk5EndP28": [
+      5.74809,
+      3.315
+     ],
+     "chalk5EndP29": [
+      5.7579,
+      3.28563
+     ],
+     "chalk5EndP30": [
+      5.76954,
+      3.25908
+     ],
+     "chalk5EndP31": [
+      5.78282,
+      3.23579
+     ],
+     "chalk5EndP32": [
+      5.7975,
+      3.21617
+     ],
+     "chalk5EndP33": [
+      5.81334,
+      3.20055
+     ],
+     "chalk5EndP34": [
+      5.83006,
+      3.1892
+     ],
+     "chalk5EndP35": [
+      5.84738,
+      3.18231
+     ],
+     "chalk5EndP36": [
+      5.865,
+      3.18
+     ],
+     "chalk5EndP37": [
+      5.88262,
+      3.18231
+     ],
+     "chalk5EndP38": [
+      5.89994,
+      3.1892
+     ],
+     "chalk5EndP39": [
+      5.91666,
+      3.20055
+     ],
+     "chalk5EndP40": [
+      5.9325,
+      3.21617
+     ],
+     "chalk5EndP41": [
+      5.94718,
+      3.23579
+     ],
+     "chalk5EndP42": [
+      5.96046,
+      3.25908
+     ],
+     "chalk5EndP43": [
+      5.9721,
+      3.28563
+     ],
+     "chalk5EndP44": [
+      5.98191,
+      3.315
+     ],
+     "chalk5EndP45": [
+      5.98972,
+      3.34668
+     ],
+     "chalk5EndP46": [
+      5.9954,
+      3.38012
+     ],
+     "chalk5EndP47": [
+      5.99885,
+      3.41476
+     ],
+     "chalk5WearTopP0": [
+      1.025,
+      3.66
+     ],
+     "chalk5WearTopP1": [
+      1.07,
+      3.7
+     ],
+     "chalk5WearTopP2": [
+      1.17,
+      3.692
+     ],
+     "chalk5WearTopP3": [
+      1.095,
+      3.63
+     ],
+     "chalk5WearBottomP0": [
+      1.02,
+      3.3
+     ],
+     "chalk5WearBottomP1": [
+      1.025,
+      3.225
+     ],
+     "chalk5WearBottomP2": [
+      1.105,
+      3.195
+     ],
+     "chalk5WearBottomP3": [
+      1.085,
+      3.26
+     ],
+     "chalk6BodyP0": [
+      1.0,
+      3.3
+     ],
+     "chalk6BodyP1": [
+      1.025,
+      3.225
+     ],
+     "chalk6BodyP2": [
+      1.1,
+      3.18
+     ],
+     "chalk6BodyP3": [
+      5.865,
+      3.18
+     ],
+     "chalk6BodyP4": [
+      5.865,
+      3.18
+     ],
+     "chalk6BodyP5": [
+      5.88262,
+      3.18231
+     ],
+     "chalk6BodyP6": [
+      5.89994,
+      3.1892
+     ],
+     "chalk6BodyP7": [
+      5.91666,
+      3.20055
+     ],
+     "chalk6BodyP8": [
+      5.9325,
+      3.21617
+     ],
+     "chalk6BodyP9": [
+      5.94718,
+      3.23579
+     ],
+     "chalk6BodyP10": [
+      5.96046,
+      3.25908
+     ],
+     "chalk6BodyP11": [
+      5.9721,
+      3.28563
+     ],
+     "chalk6BodyP12": [
+      5.98191,
+      3.315
+     ],
+     "chalk6BodyP13": [
+      5.98972,
+      3.34668
+     ],
+     "chalk6BodyP14": [
+      5.9954,
+      3.38012
+     ],
+     "chalk6BodyP15": [
+      5.99885,
+      3.41476
+     ],
+     "chalk6BodyP16": [
+      6.0,
+      3.45
+     ],
+     "chalk6BodyP17": [
+      5.99885,
+      3.48524
+     ],
+     "chalk6BodyP18": [
+      5.9954,
+      3.51988
+     ],
+     "chalk6BodyP19": [
+      5.98972,
+      3.55332
+     ],
+     "chalk6BodyP20": [
+      5.98191,
+      3.585
+     ],
+     "chalk6BodyP21": [
+      5.9721,
+      3.61437
+     ],
+     "chalk6BodyP22": [
+      5.96046,
+      3.64092
+     ],
+     "chalk6BodyP23": [
+      5.94718,
+      3.66421
+     ],
+     "chalk6BodyP24": [
+      5.9325,
+      3.68383
+     ],
+     "chalk6BodyP25": [
+      5.91666,
+      3.69945
+     ],
+     "chalk6BodyP26": [
+      5.89994,
+      3.7108
+     ],
+     "chalk6BodyP27": [
+      5.88262,
+      3.71769
+     ],
+     "chalk6BodyP28": [
+      5.865,
+      3.72
+     ],
+     "chalk6BodyP29": [
+      1.13,
+      3.72
+     ],
+     "chalk6BodyP30": [
+      1.07,
+      3.7
+     ],
+     "chalk6BodyP31": [
+      1.025,
+      3.66
+     ],
+     "chalk6BodyP32": [
+      1.0,
+      3.57
+     ],
+     "chalk6BodyP33": [
+      1.018,
+      3.475
+     ],
+     "chalk6TopP0": [
+      1.07,
+      3.57
+     ],
+     "chalk6TopP1": [
+      1.15,
+      3.685
+     ],
+     "chalk6TopP2": [
+      5.845,
+      3.685
+     ],
+     "chalk6TopP3": [
+      5.88,
+      3.57
+     ],
+     "chalk6TopP4": [
+      5.78,
+      3.525
+     ],
+     "chalk6TopP5": [
+      1.18,
+      3.535
+     ],
+     "chalk6LowerSoftP0": [
+      1.09,
+      3.3
+     ],
+     "chalk6LowerSoftP1": [
+      5.82,
+      3.3
+     ],
+     "chalk6LowerSoftP2": [
+      5.83,
+      3.2
+     ],
+     "chalk6LowerSoftP3": [
+      1.1,
+      3.185
+     ],
+     "chalk6EndP0": [
+      6.0,
+      3.45
+     ],
+     "chalk6EndP1": [
+      5.99885,
+      3.48524
+     ],
+     "chalk6EndP2": [
+      5.9954,
+      3.51988
+     ],
+     "chalk6EndP3": [
+      5.98972,
+      3.55332
+     ],
+     "chalk6EndP4": [
+      5.98191,
+      3.585
+     ],
+     "chalk6EndP5": [
+      5.9721,
+      3.61437
+     ],
+     "chalk6EndP6": [
+      5.96046,
+      3.64092
+     ],
+     "chalk6EndP7": [
+      5.94718,
+      3.66421
+     ],
+     "chalk6EndP8": [
+      5.9325,
+      3.68383
+     ],
+     "chalk6EndP9": [
+      5.91666,
+      3.69945
+     ],
+     "chalk6EndP10": [
+      5.89994,
+      3.7108
+     ],
+     "chalk6EndP11": [
+      5.88262,
+      3.71769
+     ],
+     "chalk6EndP12": [
+      5.865,
+      3.72
+     ],
+     "chalk6EndP13": [
+      5.84738,
+      3.71769
+     ],
+     "chalk6EndP14": [
+      5.83006,
+      3.7108
+     ],
+     "chalk6EndP15": [
+      5.81334,
+      3.69945
+     ],
+     "chalk6EndP16": [
+      5.7975,
+      3.68383
+     ],
+     "chalk6EndP17": [
+      5.78282,
+      3.66421
+     ],
+     "chalk6EndP18": [
+      5.76954,
+      3.64092
+     ],
+     "chalk6EndP19": [
+      5.7579,
+      3.61437
+     ],
+     "chalk6EndP20": [
+      5.74809,
+      3.585
+     ],
+     "chalk6EndP21": [
+      5.74028,
+      3.55332
+     ],
+     "chalk6EndP22": [
+      5.7346,
+      3.51988
+     ],
+     "chalk6EndP23": [
+      5.73115,
+      3.48524
+     ],
+     "chalk6EndP24": [
+      5.73,
+      3.45
+     ],
+     "chalk6EndP25": [
+      5.73115,
+      3.41476
+     ],
+     "chalk6EndP26": [
+      5.7346,
+      3.38012
+     ],
+     "chalk6EndP27": [
+      5.74028,
+      3.34668
+     ],
+     "chalk6EndP28": [
+      5.74809,
+      3.315
+     ],
+     "chalk6EndP29": [
+      5.7579,
+      3.28563
+     ],
+     "chalk6EndP30": [
+      5.76954,
+      3.25908
+     ],
+     "chalk6EndP31": [
+      5.78282,
+      3.23579
+     ],
+     "chalk6EndP32": [
+      5.7975,
+      3.21617
+     ],
+     "chalk6EndP33": [
+      5.81334,
+      3.20055
+     ],
+     "chalk6EndP34": [
+      5.83006,
+      3.1892
+     ],
+     "chalk6EndP35": [
+      5.84738,
+      3.18231
+     ],
+     "chalk6EndP36": [
+      5.865,
+      3.18
+     ],
+     "chalk6EndP37": [
+      5.88262,
+      3.18231
+     ],
+     "chalk6EndP38": [
+      5.89994,
+      3.1892
+     ],
+     "chalk6EndP39": [
+      5.91666,
+      3.20055
+     ],
+     "chalk6EndP40": [
+      5.9325,
+      3.21617
+     ],
+     "chalk6EndP41": [
+      5.94718,
+      3.23579
+     ],
+     "chalk6EndP42": [
+      5.96046,
+      3.25908
+     ],
+     "chalk6EndP43": [
+      5.9721,
+      3.28563
+     ],
+     "chalk6EndP44": [
+      5.98191,
+      3.315
+     ],
+     "chalk6EndP45": [
+      5.98972,
+      3.34668
+     ],
+     "chalk6EndP46": [
+      5.9954,
+      3.38012
+     ],
+     "chalk6EndP47": [
+      5.99885,
+      3.41476
+     ],
+     "chalk6WearTopP0": [
+      1.025,
+      3.66
+     ],
+     "chalk6WearTopP1": [
+      1.07,
+      3.7
+     ],
+     "chalk6WearTopP2": [
+      1.17,
+      3.692
+     ],
+     "chalk6WearTopP3": [
+      1.095,
+      3.63
+     ],
+     "chalk6WearBottomP0": [
+      1.02,
+      3.3
+     ],
+     "chalk6WearBottomP1": [
+      1.025,
+      3.225
+     ],
+     "chalk6WearBottomP2": [
+      1.105,
+      3.195
+     ],
+     "chalk6WearBottomP3": [
+      1.085,
+      3.26
+     ],
+     "earlierBodyP0": [
+      2,
+      2.5
+     ],
+     "earlierBodyP1": [
+      2.025,
+      2.425
+     ],
+     "earlierBodyP2": [
+      2.1,
+      2.38
+     ],
+     "earlierBodyP3": [
+      4.865,
+      2.38
+     ],
+     "earlierBodyP4": [
+      4.865,
+      2.38
+     ],
+     "earlierBodyP5": [
+      4.88262,
+      2.38231
+     ],
+     "earlierBodyP6": [
+      4.89994,
+      2.3892
+     ],
+     "earlierBodyP7": [
+      4.91666,
+      2.40055
+     ],
+     "earlierBodyP8": [
+      4.9325,
+      2.41617
+     ],
+     "earlierBodyP9": [
+      4.94718,
+      2.43579
+     ],
+     "earlierBodyP10": [
+      4.96046,
+      2.45908
+     ],
+     "earlierBodyP11": [
+      4.9721,
+      2.48563
+     ],
+     "earlierBodyP12": [
+      4.98191,
+      2.515
+     ],
+     "earlierBodyP13": [
+      4.98972,
+      2.54668
+     ],
+     "earlierBodyP14": [
+      4.9954,
+      2.58012
+     ],
+     "earlierBodyP15": [
+      4.99885,
+      2.61476
+     ],
+     "earlierBodyP16": [
+      5.0,
+      2.65
+     ],
+     "earlierBodyP17": [
+      4.99885,
+      2.68524
+     ],
+     "earlierBodyP18": [
+      4.9954,
+      2.71988
+     ],
+     "earlierBodyP19": [
+      4.98972,
+      2.75332
+     ],
+     "earlierBodyP20": [
+      4.98191,
+      2.785
+     ],
+     "earlierBodyP21": [
+      4.9721,
+      2.81437
+     ],
+     "earlierBodyP22": [
+      4.96046,
+      2.84092
+     ],
+     "earlierBodyP23": [
+      4.94718,
+      2.86421
+     ],
+     "earlierBodyP24": [
+      4.9325,
+      2.88383
+     ],
+     "earlierBodyP25": [
+      4.91666,
+      2.89945
+     ],
+     "earlierBodyP26": [
+      4.89994,
+      2.9108
+     ],
+     "earlierBodyP27": [
+      4.88262,
+      2.91769
+     ],
+     "earlierBodyP28": [
+      4.865,
+      2.92
+     ],
+     "earlierBodyP29": [
+      2.13,
+      2.92
+     ],
+     "earlierBodyP30": [
+      2.07,
+      2.9
+     ],
+     "earlierBodyP31": [
+      2.025,
+      2.86
+     ],
+     "earlierBodyP32": [
+      2,
+      2.77
+     ],
+     "earlierBodyP33": [
+      2.018,
+      2.675
+     ],
+     "earlierTopP0": [
+      2.07,
+      2.77
+     ],
+     "earlierTopP1": [
+      2.15,
+      2.885
+     ],
+     "earlierTopP2": [
+      4.845,
+      2.885
+     ],
+     "earlierTopP3": [
+      4.88,
+      2.77
+     ],
+     "earlierTopP4": [
+      4.78,
+      2.725
+     ],
+     "earlierTopP5": [
+      2.18,
+      2.735
+     ],
+     "earlierLowerSoftP0": [
+      2.09,
+      2.5
+     ],
+     "earlierLowerSoftP1": [
+      4.82,
+      2.5
+     ],
+     "earlierLowerSoftP2": [
+      4.83,
+      2.4
+     ],
+     "earlierLowerSoftP3": [
+      2.1,
+      2.385
+     ],
+     "earlierEndP0": [
+      5.0,
+      2.65
+     ],
+     "earlierEndP1": [
+      4.99885,
+      2.68524
+     ],
+     "earlierEndP2": [
+      4.9954,
+      2.71988
+     ],
+     "earlierEndP3": [
+      4.98972,
+      2.75332
+     ],
+     "earlierEndP4": [
+      4.98191,
+      2.785
+     ],
+     "earlierEndP5": [
+      4.9721,
+      2.81437
+     ],
+     "earlierEndP6": [
+      4.96046,
+      2.84092
+     ],
+     "earlierEndP7": [
+      4.94718,
+      2.86421
+     ],
+     "earlierEndP8": [
+      4.9325,
+      2.88383
+     ],
+     "earlierEndP9": [
+      4.91666,
+      2.89945
+     ],
+     "earlierEndP10": [
+      4.89994,
+      2.9108
+     ],
+     "earlierEndP11": [
+      4.88262,
+      2.91769
+     ],
+     "earlierEndP12": [
+      4.865,
+      2.92
+     ],
+     "earlierEndP13": [
+      4.84738,
+      2.91769
+     ],
+     "earlierEndP14": [
+      4.83006,
+      2.9108
+     ],
+     "earlierEndP15": [
+      4.81334,
+      2.89945
+     ],
+     "earlierEndP16": [
+      4.7975,
+      2.88383
+     ],
+     "earlierEndP17": [
+      4.78282,
+      2.86421
+     ],
+     "earlierEndP18": [
+      4.76954,
+      2.84092
+     ],
+     "earlierEndP19": [
+      4.7579,
+      2.81437
+     ],
+     "earlierEndP20": [
+      4.74809,
+      2.785
+     ],
+     "earlierEndP21": [
+      4.74028,
+      2.75332
+     ],
+     "earlierEndP22": [
+      4.7346,
+      2.71988
+     ],
+     "earlierEndP23": [
+      4.73115,
+      2.68524
+     ],
+     "earlierEndP24": [
+      4.73,
+      2.65
+     ],
+     "earlierEndP25": [
+      4.73115,
+      2.61476
+     ],
+     "earlierEndP26": [
+      4.7346,
+      2.58012
+     ],
+     "earlierEndP27": [
+      4.74028,
+      2.54668
+     ],
+     "earlierEndP28": [
+      4.74809,
+      2.515
+     ],
+     "earlierEndP29": [
+      4.7579,
+      2.48563
+     ],
+     "earlierEndP30": [
+      4.76954,
+      2.45908
+     ],
+     "earlierEndP31": [
+      4.78282,
+      2.43579
+     ],
+     "earlierEndP32": [
+      4.7975,
+      2.41617
+     ],
+     "earlierEndP33": [
+      4.81334,
+      2.40055
+     ],
+     "earlierEndP34": [
+      4.83006,
+      2.3892
+     ],
+     "earlierEndP35": [
+      4.84738,
+      2.38231
+     ],
+     "earlierEndP36": [
+      4.865,
+      2.38
+     ],
+     "earlierEndP37": [
+      4.88262,
+      2.38231
+     ],
+     "earlierEndP38": [
+      4.89994,
+      2.3892
+     ],
+     "earlierEndP39": [
+      4.91666,
+      2.40055
+     ],
+     "earlierEndP40": [
+      4.9325,
+      2.41617
+     ],
+     "earlierEndP41": [
+      4.94718,
+      2.43579
+     ],
+     "earlierEndP42": [
+      4.96046,
+      2.45908
+     ],
+     "earlierEndP43": [
+      4.9721,
+      2.48563
+     ],
+     "earlierEndP44": [
+      4.98191,
+      2.515
+     ],
+     "earlierEndP45": [
+      4.98972,
+      2.54668
+     ],
+     "earlierEndP46": [
+      4.9954,
+      2.58012
+     ],
+     "earlierEndP47": [
+      4.99885,
+      2.61476
+     ],
+     "earlierWearTopP0": [
+      2.025,
+      2.86
+     ],
+     "earlierWearTopP1": [
+      2.07,
+      2.9
+     ],
+     "earlierWearTopP2": [
+      2.17,
+      2.892
+     ],
+     "earlierWearTopP3": [
+      2.095,
+      2.83
+     ],
+     "earlierWearBottomP0": [
+      2.02,
+      2.5
+     ],
+     "earlierWearBottomP1": [
+      2.025,
+      2.425
+     ],
+     "earlierWearBottomP2": [
+      2.105,
+      2.395
+     ],
+     "earlierWearBottomP3": [
+      2.085,
+      2.46
+     ],
+     "chalk1ShadeA": [
+      2.145,
+      3.2375
+     ],
+     "chalk1ShadeB": [
+      4.8149999999999995,
+      3.2375
+     ],
+     "chalk2ShadeA": [
+      1.1449999999999998,
+      3.2375
+     ],
+     "chalk2ShadeB": [
+      5.8149999999999995,
+      3.2375
+     ],
+     "chalk3ShadeA": [
+      2.145,
+      3.2375
+     ],
+     "chalk3ShadeB": [
+      4.8149999999999995,
+      3.2375
+     ],
+     "chalk4ShadeA": [
+      2.645,
+      3.2375
+     ],
+     "chalk4ShadeB": [
+      4.3149999999999995,
+      3.2375
+     ],
+     "chalk5ShadeA": [
+      1.1449999999999998,
+      3.2375
+     ],
+     "chalk5ShadeB": [
+      5.8149999999999995,
+      3.2375
+     ],
+     "chalk6ShadeA": [
+      1.1449999999999998,
+      3.2375
+     ],
+     "chalk6ShadeB": [
+      5.8149999999999995,
+      3.2375
+     ],
+     "earlierShadeA": [
+      2.145,
+      2.4375
+     ],
+     "earlierShadeB": [
+      4.8149999999999995,
+      2.4375
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "axisA",
+       "axisB"
+      ],
+      "start": true,
+      "ink": "ink",
+      "w": 2
+     },
+     {
+      "id": "tick1",
+      "seg": [
+       "tick1A",
+       "tick1B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num1",
+      "label": "1",
+      "at": "num1P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick2",
+      "seg": [
+       "tick2A",
+       "tick2B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num2",
+      "label": "2",
+      "at": "num2P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick3",
+      "seg": [
+       "tick3A",
+       "tick3B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num3",
+      "label": "3",
+      "at": "num3P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick4",
+      "seg": [
+       "tick4A",
+       "tick4B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num4",
+      "label": "4",
+      "at": "num4P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick5",
+      "seg": [
+       "tick5A",
+       "tick5B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num5",
+      "label": "5",
+      "at": "num5P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "tick6",
+      "seg": [
+       "tick6A",
+       "tick6B"
+      ],
+      "start": true,
+      "ink": "ink"
+     },
+     {
+      "id": "num6",
+      "label": "6",
+      "at": "num6P",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "unit",
+      "label": "\\text{Length (cm)}",
+      "at": "unitP",
+      "dir": "c",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "chalk1",
+      "poly": [
+       "chalk1BodyP0",
+       "chalk1BodyP1",
+       "chalk1BodyP2",
+       "chalk1BodyP3",
+       "chalk1BodyP4",
+       "chalk1BodyP5",
+       "chalk1BodyP6",
+       "chalk1BodyP7",
+       "chalk1BodyP8",
+       "chalk1BodyP9",
+       "chalk1BodyP10",
+       "chalk1BodyP11",
+       "chalk1BodyP12",
+       "chalk1BodyP13",
+       "chalk1BodyP14",
+       "chalk1BodyP15",
+       "chalk1BodyP16",
+       "chalk1BodyP17",
+       "chalk1BodyP18",
+       "chalk1BodyP19",
+       "chalk1BodyP20",
+       "chalk1BodyP21",
+       "chalk1BodyP22",
+       "chalk1BodyP23",
+       "chalk1BodyP24",
+       "chalk1BodyP25",
+       "chalk1BodyP26",
+       "chalk1BodyP27",
+       "chalk1BodyP28",
+       "chalk1BodyP29",
+       "chalk1BodyP30",
+       "chalk1BodyP31",
+       "chalk1BodyP32",
+       "chalk1BodyP33"
+      ],
+      "fill": "blue-fill",
+      "group": "chalk1",
+      "ink": "blue",
+      "w": 1.3
+     },
+     {
+      "id": "chalk1Top",
+      "poly": [
+       "chalk1TopP0",
+       "chalk1TopP1",
+       "chalk1TopP2",
+       "chalk1TopP3",
+       "chalk1TopP4",
+       "chalk1TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk1",
+      "sheer": true
+     },
+     {
+      "id": "chalk1Lower",
+      "group": "chalk1",
+      "ink": "blue",
+      "w": 12,
+      "seg": [
+       "chalk1ShadeA",
+       "chalk1ShadeB"
+      ]
+     },
+     {
+      "id": "chalk1LowerSoft",
+      "poly": [
+       "chalk1LowerSoftP0",
+       "chalk1LowerSoftP1",
+       "chalk1LowerSoftP2",
+       "chalk1LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk1",
+      "sheer": true
+     },
+     {
+      "id": "chalk1End",
+      "poly": [
+       "chalk1EndP0",
+       "chalk1EndP1",
+       "chalk1EndP2",
+       "chalk1EndP3",
+       "chalk1EndP4",
+       "chalk1EndP5",
+       "chalk1EndP6",
+       "chalk1EndP7",
+       "chalk1EndP8",
+       "chalk1EndP9",
+       "chalk1EndP10",
+       "chalk1EndP11",
+       "chalk1EndP12",
+       "chalk1EndP13",
+       "chalk1EndP14",
+       "chalk1EndP15",
+       "chalk1EndP16",
+       "chalk1EndP17",
+       "chalk1EndP18",
+       "chalk1EndP19",
+       "chalk1EndP20",
+       "chalk1EndP21",
+       "chalk1EndP22",
+       "chalk1EndP23",
+       "chalk1EndP24",
+       "chalk1EndP25",
+       "chalk1EndP26",
+       "chalk1EndP27",
+       "chalk1EndP28",
+       "chalk1EndP29",
+       "chalk1EndP30",
+       "chalk1EndP31",
+       "chalk1EndP32",
+       "chalk1EndP33",
+       "chalk1EndP34",
+       "chalk1EndP35",
+       "chalk1EndP36",
+       "chalk1EndP37",
+       "chalk1EndP38",
+       "chalk1EndP39",
+       "chalk1EndP40",
+       "chalk1EndP41",
+       "chalk1EndP42",
+       "chalk1EndP43",
+       "chalk1EndP44",
+       "chalk1EndP45",
+       "chalk1EndP46",
+       "chalk1EndP47"
+      ],
+      "fill": "blue-fill",
+      "group": "chalk1",
+      "ink": "blue",
+      "w": 1.5
+     },
+     {
+      "id": "chalk1EndLight",
+      "poly": [
+       "chalk1EndP0",
+       "chalk1EndP1",
+       "chalk1EndP2",
+       "chalk1EndP3",
+       "chalk1EndP4",
+       "chalk1EndP5",
+       "chalk1EndP6",
+       "chalk1EndP7",
+       "chalk1EndP8",
+       "chalk1EndP9",
+       "chalk1EndP10",
+       "chalk1EndP11",
+       "chalk1EndP12",
+       "chalk1EndP13",
+       "chalk1EndP14",
+       "chalk1EndP15",
+       "chalk1EndP16",
+       "chalk1EndP17",
+       "chalk1EndP18",
+       "chalk1EndP19",
+       "chalk1EndP20",
+       "chalk1EndP21",
+       "chalk1EndP22",
+       "chalk1EndP23",
+       "chalk1EndP24",
+       "chalk1EndP25",
+       "chalk1EndP26",
+       "chalk1EndP27",
+       "chalk1EndP28",
+       "chalk1EndP29",
+       "chalk1EndP30",
+       "chalk1EndP31",
+       "chalk1EndP32",
+       "chalk1EndP33",
+       "chalk1EndP34",
+       "chalk1EndP35",
+       "chalk1EndP36",
+       "chalk1EndP37",
+       "chalk1EndP38",
+       "chalk1EndP39",
+       "chalk1EndP40",
+       "chalk1EndP41",
+       "chalk1EndP42",
+       "chalk1EndP43",
+       "chalk1EndP44",
+       "chalk1EndP45",
+       "chalk1EndP46",
+       "chalk1EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk1",
+      "sheer": true
+     },
+     {
+      "id": "chalk1WearTop",
+      "poly": [
+       "chalk1WearTopP0",
+       "chalk1WearTopP1",
+       "chalk1WearTopP2",
+       "chalk1WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk1",
+      "sheer": true
+     },
+     {
+      "id": "chalk1WearBottom",
+      "poly": [
+       "chalk1WearBottomP0",
+       "chalk1WearBottomP1",
+       "chalk1WearBottomP2",
+       "chalk1WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk1",
+      "sheer": true
+     },
+     {
+      "id": "length1",
+      "label": "3\\text{ cm}",
+      "at": "length1P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark1a",
+      "seg": [
+       "mark1aA",
+       "mark1aB"
+      ],
+      "group": "mark1",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark1b",
+      "seg": [
+       "mark1bA",
+       "mark1bB"
+      ],
+      "group": "mark1",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "chalk2",
+      "poly": [
+       "chalk2BodyP0",
+       "chalk2BodyP1",
+       "chalk2BodyP2",
+       "chalk2BodyP3",
+       "chalk2BodyP4",
+       "chalk2BodyP5",
+       "chalk2BodyP6",
+       "chalk2BodyP7",
+       "chalk2BodyP8",
+       "chalk2BodyP9",
+       "chalk2BodyP10",
+       "chalk2BodyP11",
+       "chalk2BodyP12",
+       "chalk2BodyP13",
+       "chalk2BodyP14",
+       "chalk2BodyP15",
+       "chalk2BodyP16",
+       "chalk2BodyP17",
+       "chalk2BodyP18",
+       "chalk2BodyP19",
+       "chalk2BodyP20",
+       "chalk2BodyP21",
+       "chalk2BodyP22",
+       "chalk2BodyP23",
+       "chalk2BodyP24",
+       "chalk2BodyP25",
+       "chalk2BodyP26",
+       "chalk2BodyP27",
+       "chalk2BodyP28",
+       "chalk2BodyP29",
+       "chalk2BodyP30",
+       "chalk2BodyP31",
+       "chalk2BodyP32",
+       "chalk2BodyP33"
+      ],
+      "fill": "gold-fill",
+      "group": "chalk2",
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "chalk2Top",
+      "poly": [
+       "chalk2TopP0",
+       "chalk2TopP1",
+       "chalk2TopP2",
+       "chalk2TopP3",
+       "chalk2TopP4",
+       "chalk2TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk2",
+      "sheer": true
+     },
+     {
+      "id": "chalk2Lower",
+      "group": "chalk2",
+      "ink": "gold",
+      "w": 12,
+      "seg": [
+       "chalk2ShadeA",
+       "chalk2ShadeB"
+      ]
+     },
+     {
+      "id": "chalk2LowerSoft",
+      "poly": [
+       "chalk2LowerSoftP0",
+       "chalk2LowerSoftP1",
+       "chalk2LowerSoftP2",
+       "chalk2LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk2",
+      "sheer": true
+     },
+     {
+      "id": "chalk2End",
+      "poly": [
+       "chalk2EndP0",
+       "chalk2EndP1",
+       "chalk2EndP2",
+       "chalk2EndP3",
+       "chalk2EndP4",
+       "chalk2EndP5",
+       "chalk2EndP6",
+       "chalk2EndP7",
+       "chalk2EndP8",
+       "chalk2EndP9",
+       "chalk2EndP10",
+       "chalk2EndP11",
+       "chalk2EndP12",
+       "chalk2EndP13",
+       "chalk2EndP14",
+       "chalk2EndP15",
+       "chalk2EndP16",
+       "chalk2EndP17",
+       "chalk2EndP18",
+       "chalk2EndP19",
+       "chalk2EndP20",
+       "chalk2EndP21",
+       "chalk2EndP22",
+       "chalk2EndP23",
+       "chalk2EndP24",
+       "chalk2EndP25",
+       "chalk2EndP26",
+       "chalk2EndP27",
+       "chalk2EndP28",
+       "chalk2EndP29",
+       "chalk2EndP30",
+       "chalk2EndP31",
+       "chalk2EndP32",
+       "chalk2EndP33",
+       "chalk2EndP34",
+       "chalk2EndP35",
+       "chalk2EndP36",
+       "chalk2EndP37",
+       "chalk2EndP38",
+       "chalk2EndP39",
+       "chalk2EndP40",
+       "chalk2EndP41",
+       "chalk2EndP42",
+       "chalk2EndP43",
+       "chalk2EndP44",
+       "chalk2EndP45",
+       "chalk2EndP46",
+       "chalk2EndP47"
+      ],
+      "fill": "gold-fill",
+      "group": "chalk2",
+      "ink": "gold",
+      "w": 1.5
+     },
+     {
+      "id": "chalk2EndLight",
+      "poly": [
+       "chalk2EndP0",
+       "chalk2EndP1",
+       "chalk2EndP2",
+       "chalk2EndP3",
+       "chalk2EndP4",
+       "chalk2EndP5",
+       "chalk2EndP6",
+       "chalk2EndP7",
+       "chalk2EndP8",
+       "chalk2EndP9",
+       "chalk2EndP10",
+       "chalk2EndP11",
+       "chalk2EndP12",
+       "chalk2EndP13",
+       "chalk2EndP14",
+       "chalk2EndP15",
+       "chalk2EndP16",
+       "chalk2EndP17",
+       "chalk2EndP18",
+       "chalk2EndP19",
+       "chalk2EndP20",
+       "chalk2EndP21",
+       "chalk2EndP22",
+       "chalk2EndP23",
+       "chalk2EndP24",
+       "chalk2EndP25",
+       "chalk2EndP26",
+       "chalk2EndP27",
+       "chalk2EndP28",
+       "chalk2EndP29",
+       "chalk2EndP30",
+       "chalk2EndP31",
+       "chalk2EndP32",
+       "chalk2EndP33",
+       "chalk2EndP34",
+       "chalk2EndP35",
+       "chalk2EndP36",
+       "chalk2EndP37",
+       "chalk2EndP38",
+       "chalk2EndP39",
+       "chalk2EndP40",
+       "chalk2EndP41",
+       "chalk2EndP42",
+       "chalk2EndP43",
+       "chalk2EndP44",
+       "chalk2EndP45",
+       "chalk2EndP46",
+       "chalk2EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk2",
+      "sheer": true
+     },
+     {
+      "id": "chalk2WearTop",
+      "poly": [
+       "chalk2WearTopP0",
+       "chalk2WearTopP1",
+       "chalk2WearTopP2",
+       "chalk2WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk2",
+      "sheer": true
+     },
+     {
+      "id": "chalk2WearBottom",
+      "poly": [
+       "chalk2WearBottomP0",
+       "chalk2WearBottomP1",
+       "chalk2WearBottomP2",
+       "chalk2WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk2",
+      "sheer": true
+     },
+     {
+      "id": "length2",
+      "label": "5\\text{ cm}",
+      "at": "length2P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark2a",
+      "seg": [
+       "mark2aA",
+       "mark2aB"
+      ],
+      "group": "mark2",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark2b",
+      "seg": [
+       "mark2bA",
+       "mark2bB"
+      ],
+      "group": "mark2",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "chalk3",
+      "poly": [
+       "chalk3BodyP0",
+       "chalk3BodyP1",
+       "chalk3BodyP2",
+       "chalk3BodyP3",
+       "chalk3BodyP4",
+       "chalk3BodyP5",
+       "chalk3BodyP6",
+       "chalk3BodyP7",
+       "chalk3BodyP8",
+       "chalk3BodyP9",
+       "chalk3BodyP10",
+       "chalk3BodyP11",
+       "chalk3BodyP12",
+       "chalk3BodyP13",
+       "chalk3BodyP14",
+       "chalk3BodyP15",
+       "chalk3BodyP16",
+       "chalk3BodyP17",
+       "chalk3BodyP18",
+       "chalk3BodyP19",
+       "chalk3BodyP20",
+       "chalk3BodyP21",
+       "chalk3BodyP22",
+       "chalk3BodyP23",
+       "chalk3BodyP24",
+       "chalk3BodyP25",
+       "chalk3BodyP26",
+       "chalk3BodyP27",
+       "chalk3BodyP28",
+       "chalk3BodyP29",
+       "chalk3BodyP30",
+       "chalk3BodyP31",
+       "chalk3BodyP32",
+       "chalk3BodyP33"
+      ],
+      "fill": "warm-fill",
+      "group": "chalk3",
+      "ink": "violet",
+      "w": 1.3
+     },
+     {
+      "id": "chalk3Tint",
+      "poly": [
+       "chalk3TintP0",
+       "chalk3TintP1",
+       "chalk3TintP2",
+       "chalk3TintP3",
+       "chalk3TintP4",
+       "chalk3TintP5",
+       "chalk3TintP6",
+       "chalk3TintP7",
+       "chalk3TintP8",
+       "chalk3TintP9",
+       "chalk3TintP10",
+       "chalk3TintP11",
+       "chalk3TintP12",
+       "chalk3TintP13",
+       "chalk3TintP14",
+       "chalk3TintP15",
+       "chalk3TintP16",
+       "chalk3TintP17",
+       "chalk3TintP18",
+       "chalk3TintP19",
+       "chalk3TintP20",
+       "chalk3TintP21",
+       "chalk3TintP22",
+       "chalk3TintP23",
+       "chalk3TintP24",
+       "chalk3TintP25",
+       "chalk3TintP26",
+       "chalk3TintP27",
+       "chalk3TintP28",
+       "chalk3TintP29",
+       "chalk3TintP30",
+       "chalk3TintP31",
+       "chalk3TintP32",
+       "chalk3TintP33"
+      ],
+      "fill": "violet-fill",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3Top",
+      "poly": [
+       "chalk3TopP0",
+       "chalk3TopP1",
+       "chalk3TopP2",
+       "chalk3TopP3",
+       "chalk3TopP4",
+       "chalk3TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3Lower",
+      "group": "chalk3",
+      "ink": "violet",
+      "w": 12,
+      "seg": [
+       "chalk3ShadeA",
+       "chalk3ShadeB"
+      ]
+     },
+     {
+      "id": "chalk3LowerSoft",
+      "poly": [
+       "chalk3LowerSoftP0",
+       "chalk3LowerSoftP1",
+       "chalk3LowerSoftP2",
+       "chalk3LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3End",
+      "poly": [
+       "chalk3EndP0",
+       "chalk3EndP1",
+       "chalk3EndP2",
+       "chalk3EndP3",
+       "chalk3EndP4",
+       "chalk3EndP5",
+       "chalk3EndP6",
+       "chalk3EndP7",
+       "chalk3EndP8",
+       "chalk3EndP9",
+       "chalk3EndP10",
+       "chalk3EndP11",
+       "chalk3EndP12",
+       "chalk3EndP13",
+       "chalk3EndP14",
+       "chalk3EndP15",
+       "chalk3EndP16",
+       "chalk3EndP17",
+       "chalk3EndP18",
+       "chalk3EndP19",
+       "chalk3EndP20",
+       "chalk3EndP21",
+       "chalk3EndP22",
+       "chalk3EndP23",
+       "chalk3EndP24",
+       "chalk3EndP25",
+       "chalk3EndP26",
+       "chalk3EndP27",
+       "chalk3EndP28",
+       "chalk3EndP29",
+       "chalk3EndP30",
+       "chalk3EndP31",
+       "chalk3EndP32",
+       "chalk3EndP33",
+       "chalk3EndP34",
+       "chalk3EndP35",
+       "chalk3EndP36",
+       "chalk3EndP37",
+       "chalk3EndP38",
+       "chalk3EndP39",
+       "chalk3EndP40",
+       "chalk3EndP41",
+       "chalk3EndP42",
+       "chalk3EndP43",
+       "chalk3EndP44",
+       "chalk3EndP45",
+       "chalk3EndP46",
+       "chalk3EndP47"
+      ],
+      "fill": "warm-fill",
+      "group": "chalk3",
+      "ink": "violet",
+      "w": 1.5
+     },
+     {
+      "id": "chalk3EndTint",
+      "poly": [
+       "chalk3EndTintP0",
+       "chalk3EndTintP1",
+       "chalk3EndTintP2",
+       "chalk3EndTintP3",
+       "chalk3EndTintP4",
+       "chalk3EndTintP5",
+       "chalk3EndTintP6",
+       "chalk3EndTintP7",
+       "chalk3EndTintP8",
+       "chalk3EndTintP9",
+       "chalk3EndTintP10",
+       "chalk3EndTintP11",
+       "chalk3EndTintP12",
+       "chalk3EndTintP13",
+       "chalk3EndTintP14",
+       "chalk3EndTintP15",
+       "chalk3EndTintP16",
+       "chalk3EndTintP17",
+       "chalk3EndTintP18",
+       "chalk3EndTintP19",
+       "chalk3EndTintP20",
+       "chalk3EndTintP21",
+       "chalk3EndTintP22",
+       "chalk3EndTintP23",
+       "chalk3EndTintP24",
+       "chalk3EndTintP25",
+       "chalk3EndTintP26",
+       "chalk3EndTintP27",
+       "chalk3EndTintP28",
+       "chalk3EndTintP29",
+       "chalk3EndTintP30",
+       "chalk3EndTintP31",
+       "chalk3EndTintP32",
+       "chalk3EndTintP33",
+       "chalk3EndTintP34",
+       "chalk3EndTintP35",
+       "chalk3EndTintP36",
+       "chalk3EndTintP37",
+       "chalk3EndTintP38",
+       "chalk3EndTintP39",
+       "chalk3EndTintP40",
+       "chalk3EndTintP41",
+       "chalk3EndTintP42",
+       "chalk3EndTintP43",
+       "chalk3EndTintP44",
+       "chalk3EndTintP45",
+       "chalk3EndTintP46",
+       "chalk3EndTintP47"
+      ],
+      "fill": "violet-fill",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3EndLight",
+      "poly": [
+       "chalk3EndP0",
+       "chalk3EndP1",
+       "chalk3EndP2",
+       "chalk3EndP3",
+       "chalk3EndP4",
+       "chalk3EndP5",
+       "chalk3EndP6",
+       "chalk3EndP7",
+       "chalk3EndP8",
+       "chalk3EndP9",
+       "chalk3EndP10",
+       "chalk3EndP11",
+       "chalk3EndP12",
+       "chalk3EndP13",
+       "chalk3EndP14",
+       "chalk3EndP15",
+       "chalk3EndP16",
+       "chalk3EndP17",
+       "chalk3EndP18",
+       "chalk3EndP19",
+       "chalk3EndP20",
+       "chalk3EndP21",
+       "chalk3EndP22",
+       "chalk3EndP23",
+       "chalk3EndP24",
+       "chalk3EndP25",
+       "chalk3EndP26",
+       "chalk3EndP27",
+       "chalk3EndP28",
+       "chalk3EndP29",
+       "chalk3EndP30",
+       "chalk3EndP31",
+       "chalk3EndP32",
+       "chalk3EndP33",
+       "chalk3EndP34",
+       "chalk3EndP35",
+       "chalk3EndP36",
+       "chalk3EndP37",
+       "chalk3EndP38",
+       "chalk3EndP39",
+       "chalk3EndP40",
+       "chalk3EndP41",
+       "chalk3EndP42",
+       "chalk3EndP43",
+       "chalk3EndP44",
+       "chalk3EndP45",
+       "chalk3EndP46",
+       "chalk3EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3WearTop",
+      "poly": [
+       "chalk3WearTopP0",
+       "chalk3WearTopP1",
+       "chalk3WearTopP2",
+       "chalk3WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "chalk3WearBottom",
+      "poly": [
+       "chalk3WearBottomP0",
+       "chalk3WearBottomP1",
+       "chalk3WearBottomP2",
+       "chalk3WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk3",
+      "sheer": true
+     },
+     {
+      "id": "length3",
+      "label": "3\\text{ cm}",
+      "at": "length3P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark3a",
+      "seg": [
+       "mark3aA",
+       "mark3aB"
+      ],
+      "group": "mark3",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark3b",
+      "seg": [
+       "mark3bA",
+       "mark3bB"
+      ],
+      "group": "mark3",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "chalk4",
+      "poly": [
+       "chalk4BodyP0",
+       "chalk4BodyP1",
+       "chalk4BodyP2",
+       "chalk4BodyP3",
+       "chalk4BodyP4",
+       "chalk4BodyP5",
+       "chalk4BodyP6",
+       "chalk4BodyP7",
+       "chalk4BodyP8",
+       "chalk4BodyP9",
+       "chalk4BodyP10",
+       "chalk4BodyP11",
+       "chalk4BodyP12",
+       "chalk4BodyP13",
+       "chalk4BodyP14",
+       "chalk4BodyP15",
+       "chalk4BodyP16",
+       "chalk4BodyP17",
+       "chalk4BodyP18",
+       "chalk4BodyP19",
+       "chalk4BodyP20",
+       "chalk4BodyP21",
+       "chalk4BodyP22",
+       "chalk4BodyP23",
+       "chalk4BodyP24",
+       "chalk4BodyP25",
+       "chalk4BodyP26",
+       "chalk4BodyP27",
+       "chalk4BodyP28",
+       "chalk4BodyP29",
+       "chalk4BodyP30",
+       "chalk4BodyP31",
+       "chalk4BodyP32",
+       "chalk4BodyP33"
+      ],
+      "fill": "accent-fill",
+      "group": "chalk4",
+      "ink": "accent",
+      "w": 1.3
+     },
+     {
+      "id": "chalk4Top",
+      "poly": [
+       "chalk4TopP0",
+       "chalk4TopP1",
+       "chalk4TopP2",
+       "chalk4TopP3",
+       "chalk4TopP4",
+       "chalk4TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk4",
+      "sheer": true
+     },
+     {
+      "id": "chalk4Lower",
+      "group": "chalk4",
+      "ink": "accent",
+      "w": 12,
+      "seg": [
+       "chalk4ShadeA",
+       "chalk4ShadeB"
+      ]
+     },
+     {
+      "id": "chalk4LowerSoft",
+      "poly": [
+       "chalk4LowerSoftP0",
+       "chalk4LowerSoftP1",
+       "chalk4LowerSoftP2",
+       "chalk4LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk4",
+      "sheer": true
+     },
+     {
+      "id": "chalk4End",
+      "poly": [
+       "chalk4EndP0",
+       "chalk4EndP1",
+       "chalk4EndP2",
+       "chalk4EndP3",
+       "chalk4EndP4",
+       "chalk4EndP5",
+       "chalk4EndP6",
+       "chalk4EndP7",
+       "chalk4EndP8",
+       "chalk4EndP9",
+       "chalk4EndP10",
+       "chalk4EndP11",
+       "chalk4EndP12",
+       "chalk4EndP13",
+       "chalk4EndP14",
+       "chalk4EndP15",
+       "chalk4EndP16",
+       "chalk4EndP17",
+       "chalk4EndP18",
+       "chalk4EndP19",
+       "chalk4EndP20",
+       "chalk4EndP21",
+       "chalk4EndP22",
+       "chalk4EndP23",
+       "chalk4EndP24",
+       "chalk4EndP25",
+       "chalk4EndP26",
+       "chalk4EndP27",
+       "chalk4EndP28",
+       "chalk4EndP29",
+       "chalk4EndP30",
+       "chalk4EndP31",
+       "chalk4EndP32",
+       "chalk4EndP33",
+       "chalk4EndP34",
+       "chalk4EndP35",
+       "chalk4EndP36",
+       "chalk4EndP37",
+       "chalk4EndP38",
+       "chalk4EndP39",
+       "chalk4EndP40",
+       "chalk4EndP41",
+       "chalk4EndP42",
+       "chalk4EndP43",
+       "chalk4EndP44",
+       "chalk4EndP45",
+       "chalk4EndP46",
+       "chalk4EndP47"
+      ],
+      "fill": "accent-fill",
+      "group": "chalk4",
+      "ink": "accent",
+      "w": 1.5
+     },
+     {
+      "id": "chalk4EndLight",
+      "poly": [
+       "chalk4EndP0",
+       "chalk4EndP1",
+       "chalk4EndP2",
+       "chalk4EndP3",
+       "chalk4EndP4",
+       "chalk4EndP5",
+       "chalk4EndP6",
+       "chalk4EndP7",
+       "chalk4EndP8",
+       "chalk4EndP9",
+       "chalk4EndP10",
+       "chalk4EndP11",
+       "chalk4EndP12",
+       "chalk4EndP13",
+       "chalk4EndP14",
+       "chalk4EndP15",
+       "chalk4EndP16",
+       "chalk4EndP17",
+       "chalk4EndP18",
+       "chalk4EndP19",
+       "chalk4EndP20",
+       "chalk4EndP21",
+       "chalk4EndP22",
+       "chalk4EndP23",
+       "chalk4EndP24",
+       "chalk4EndP25",
+       "chalk4EndP26",
+       "chalk4EndP27",
+       "chalk4EndP28",
+       "chalk4EndP29",
+       "chalk4EndP30",
+       "chalk4EndP31",
+       "chalk4EndP32",
+       "chalk4EndP33",
+       "chalk4EndP34",
+       "chalk4EndP35",
+       "chalk4EndP36",
+       "chalk4EndP37",
+       "chalk4EndP38",
+       "chalk4EndP39",
+       "chalk4EndP40",
+       "chalk4EndP41",
+       "chalk4EndP42",
+       "chalk4EndP43",
+       "chalk4EndP44",
+       "chalk4EndP45",
+       "chalk4EndP46",
+       "chalk4EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk4",
+      "sheer": true
+     },
+     {
+      "id": "chalk4WearTop",
+      "poly": [
+       "chalk4WearTopP0",
+       "chalk4WearTopP1",
+       "chalk4WearTopP2",
+       "chalk4WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk4",
+      "sheer": true
+     },
+     {
+      "id": "chalk4WearBottom",
+      "poly": [
+       "chalk4WearBottomP0",
+       "chalk4WearBottomP1",
+       "chalk4WearBottomP2",
+       "chalk4WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk4",
+      "sheer": true
+     },
+     {
+      "id": "length4",
+      "label": "2\\text{ cm}",
+      "at": "length4P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark4a",
+      "seg": [
+       "mark4aA",
+       "mark4aB"
+      ],
+      "group": "mark4",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark4b",
+      "seg": [
+       "mark4bA",
+       "mark4bB"
+      ],
+      "group": "mark4",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "chalk5",
+      "poly": [
+       "chalk5BodyP0",
+       "chalk5BodyP1",
+       "chalk5BodyP2",
+       "chalk5BodyP3",
+       "chalk5BodyP4",
+       "chalk5BodyP5",
+       "chalk5BodyP6",
+       "chalk5BodyP7",
+       "chalk5BodyP8",
+       "chalk5BodyP9",
+       "chalk5BodyP10",
+       "chalk5BodyP11",
+       "chalk5BodyP12",
+       "chalk5BodyP13",
+       "chalk5BodyP14",
+       "chalk5BodyP15",
+       "chalk5BodyP16",
+       "chalk5BodyP17",
+       "chalk5BodyP18",
+       "chalk5BodyP19",
+       "chalk5BodyP20",
+       "chalk5BodyP21",
+       "chalk5BodyP22",
+       "chalk5BodyP23",
+       "chalk5BodyP24",
+       "chalk5BodyP25",
+       "chalk5BodyP26",
+       "chalk5BodyP27",
+       "chalk5BodyP28",
+       "chalk5BodyP29",
+       "chalk5BodyP30",
+       "chalk5BodyP31",
+       "chalk5BodyP32",
+       "chalk5BodyP33"
+      ],
+      "fill": "warm-fill",
+      "group": "chalk5",
+      "ink": "warm",
+      "w": 1.3
+     },
+     {
+      "id": "chalk5Top",
+      "poly": [
+       "chalk5TopP0",
+       "chalk5TopP1",
+       "chalk5TopP2",
+       "chalk5TopP3",
+       "chalk5TopP4",
+       "chalk5TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk5",
+      "sheer": true
+     },
+     {
+      "id": "chalk5Lower",
+      "group": "chalk5",
+      "ink": "warm",
+      "w": 12,
+      "seg": [
+       "chalk5ShadeA",
+       "chalk5ShadeB"
+      ]
+     },
+     {
+      "id": "chalk5LowerSoft",
+      "poly": [
+       "chalk5LowerSoftP0",
+       "chalk5LowerSoftP1",
+       "chalk5LowerSoftP2",
+       "chalk5LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk5",
+      "sheer": true
+     },
+     {
+      "id": "chalk5End",
+      "poly": [
+       "chalk5EndP0",
+       "chalk5EndP1",
+       "chalk5EndP2",
+       "chalk5EndP3",
+       "chalk5EndP4",
+       "chalk5EndP5",
+       "chalk5EndP6",
+       "chalk5EndP7",
+       "chalk5EndP8",
+       "chalk5EndP9",
+       "chalk5EndP10",
+       "chalk5EndP11",
+       "chalk5EndP12",
+       "chalk5EndP13",
+       "chalk5EndP14",
+       "chalk5EndP15",
+       "chalk5EndP16",
+       "chalk5EndP17",
+       "chalk5EndP18",
+       "chalk5EndP19",
+       "chalk5EndP20",
+       "chalk5EndP21",
+       "chalk5EndP22",
+       "chalk5EndP23",
+       "chalk5EndP24",
+       "chalk5EndP25",
+       "chalk5EndP26",
+       "chalk5EndP27",
+       "chalk5EndP28",
+       "chalk5EndP29",
+       "chalk5EndP30",
+       "chalk5EndP31",
+       "chalk5EndP32",
+       "chalk5EndP33",
+       "chalk5EndP34",
+       "chalk5EndP35",
+       "chalk5EndP36",
+       "chalk5EndP37",
+       "chalk5EndP38",
+       "chalk5EndP39",
+       "chalk5EndP40",
+       "chalk5EndP41",
+       "chalk5EndP42",
+       "chalk5EndP43",
+       "chalk5EndP44",
+       "chalk5EndP45",
+       "chalk5EndP46",
+       "chalk5EndP47"
+      ],
+      "fill": "warm-fill",
+      "group": "chalk5",
+      "ink": "warm",
+      "w": 1.5
+     },
+     {
+      "id": "chalk5EndLight",
+      "poly": [
+       "chalk5EndP0",
+       "chalk5EndP1",
+       "chalk5EndP2",
+       "chalk5EndP3",
+       "chalk5EndP4",
+       "chalk5EndP5",
+       "chalk5EndP6",
+       "chalk5EndP7",
+       "chalk5EndP8",
+       "chalk5EndP9",
+       "chalk5EndP10",
+       "chalk5EndP11",
+       "chalk5EndP12",
+       "chalk5EndP13",
+       "chalk5EndP14",
+       "chalk5EndP15",
+       "chalk5EndP16",
+       "chalk5EndP17",
+       "chalk5EndP18",
+       "chalk5EndP19",
+       "chalk5EndP20",
+       "chalk5EndP21",
+       "chalk5EndP22",
+       "chalk5EndP23",
+       "chalk5EndP24",
+       "chalk5EndP25",
+       "chalk5EndP26",
+       "chalk5EndP27",
+       "chalk5EndP28",
+       "chalk5EndP29",
+       "chalk5EndP30",
+       "chalk5EndP31",
+       "chalk5EndP32",
+       "chalk5EndP33",
+       "chalk5EndP34",
+       "chalk5EndP35",
+       "chalk5EndP36",
+       "chalk5EndP37",
+       "chalk5EndP38",
+       "chalk5EndP39",
+       "chalk5EndP40",
+       "chalk5EndP41",
+       "chalk5EndP42",
+       "chalk5EndP43",
+       "chalk5EndP44",
+       "chalk5EndP45",
+       "chalk5EndP46",
+       "chalk5EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk5",
+      "sheer": true
+     },
+     {
+      "id": "chalk5WearTop",
+      "poly": [
+       "chalk5WearTopP0",
+       "chalk5WearTopP1",
+       "chalk5WearTopP2",
+       "chalk5WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk5",
+      "sheer": true
+     },
+     {
+      "id": "chalk5WearBottom",
+      "poly": [
+       "chalk5WearBottomP0",
+       "chalk5WearBottomP1",
+       "chalk5WearBottomP2",
+       "chalk5WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk5",
+      "sheer": true
+     },
+     {
+      "id": "length5",
+      "label": "5\\text{ cm}",
+      "at": "length5P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark5a",
+      "seg": [
+       "mark5aA",
+       "mark5aB"
+      ],
+      "group": "mark5",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark5b",
+      "seg": [
+       "mark5bA",
+       "mark5bB"
+      ],
+      "group": "mark5",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "chalk6",
+      "poly": [
+       "chalk6BodyP0",
+       "chalk6BodyP1",
+       "chalk6BodyP2",
+       "chalk6BodyP3",
+       "chalk6BodyP4",
+       "chalk6BodyP5",
+       "chalk6BodyP6",
+       "chalk6BodyP7",
+       "chalk6BodyP8",
+       "chalk6BodyP9",
+       "chalk6BodyP10",
+       "chalk6BodyP11",
+       "chalk6BodyP12",
+       "chalk6BodyP13",
+       "chalk6BodyP14",
+       "chalk6BodyP15",
+       "chalk6BodyP16",
+       "chalk6BodyP17",
+       "chalk6BodyP18",
+       "chalk6BodyP19",
+       "chalk6BodyP20",
+       "chalk6BodyP21",
+       "chalk6BodyP22",
+       "chalk6BodyP23",
+       "chalk6BodyP24",
+       "chalk6BodyP25",
+       "chalk6BodyP26",
+       "chalk6BodyP27",
+       "chalk6BodyP28",
+       "chalk6BodyP29",
+       "chalk6BodyP30",
+       "chalk6BodyP31",
+       "chalk6BodyP32",
+       "chalk6BodyP33"
+      ],
+      "fill": "violet-fill",
+      "group": "chalk6",
+      "ink": "violet",
+      "w": 1.3
+     },
+     {
+      "id": "chalk6Top",
+      "poly": [
+       "chalk6TopP0",
+       "chalk6TopP1",
+       "chalk6TopP2",
+       "chalk6TopP3",
+       "chalk6TopP4",
+       "chalk6TopP5"
+      ],
+      "fill": "paper",
+      "group": "chalk6",
+      "sheer": true
+     },
+     {
+      "id": "chalk6Lower",
+      "group": "chalk6",
+      "ink": "violet",
+      "w": 12,
+      "seg": [
+       "chalk6ShadeA",
+       "chalk6ShadeB"
+      ]
+     },
+     {
+      "id": "chalk6LowerSoft",
+      "poly": [
+       "chalk6LowerSoftP0",
+       "chalk6LowerSoftP1",
+       "chalk6LowerSoftP2",
+       "chalk6LowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "chalk6",
+      "sheer": true
+     },
+     {
+      "id": "chalk6End",
+      "poly": [
+       "chalk6EndP0",
+       "chalk6EndP1",
+       "chalk6EndP2",
+       "chalk6EndP3",
+       "chalk6EndP4",
+       "chalk6EndP5",
+       "chalk6EndP6",
+       "chalk6EndP7",
+       "chalk6EndP8",
+       "chalk6EndP9",
+       "chalk6EndP10",
+       "chalk6EndP11",
+       "chalk6EndP12",
+       "chalk6EndP13",
+       "chalk6EndP14",
+       "chalk6EndP15",
+       "chalk6EndP16",
+       "chalk6EndP17",
+       "chalk6EndP18",
+       "chalk6EndP19",
+       "chalk6EndP20",
+       "chalk6EndP21",
+       "chalk6EndP22",
+       "chalk6EndP23",
+       "chalk6EndP24",
+       "chalk6EndP25",
+       "chalk6EndP26",
+       "chalk6EndP27",
+       "chalk6EndP28",
+       "chalk6EndP29",
+       "chalk6EndP30",
+       "chalk6EndP31",
+       "chalk6EndP32",
+       "chalk6EndP33",
+       "chalk6EndP34",
+       "chalk6EndP35",
+       "chalk6EndP36",
+       "chalk6EndP37",
+       "chalk6EndP38",
+       "chalk6EndP39",
+       "chalk6EndP40",
+       "chalk6EndP41",
+       "chalk6EndP42",
+       "chalk6EndP43",
+       "chalk6EndP44",
+       "chalk6EndP45",
+       "chalk6EndP46",
+       "chalk6EndP47"
+      ],
+      "fill": "violet-fill",
+      "group": "chalk6",
+      "ink": "violet",
+      "w": 1.5
+     },
+     {
+      "id": "chalk6EndLight",
+      "poly": [
+       "chalk6EndP0",
+       "chalk6EndP1",
+       "chalk6EndP2",
+       "chalk6EndP3",
+       "chalk6EndP4",
+       "chalk6EndP5",
+       "chalk6EndP6",
+       "chalk6EndP7",
+       "chalk6EndP8",
+       "chalk6EndP9",
+       "chalk6EndP10",
+       "chalk6EndP11",
+       "chalk6EndP12",
+       "chalk6EndP13",
+       "chalk6EndP14",
+       "chalk6EndP15",
+       "chalk6EndP16",
+       "chalk6EndP17",
+       "chalk6EndP18",
+       "chalk6EndP19",
+       "chalk6EndP20",
+       "chalk6EndP21",
+       "chalk6EndP22",
+       "chalk6EndP23",
+       "chalk6EndP24",
+       "chalk6EndP25",
+       "chalk6EndP26",
+       "chalk6EndP27",
+       "chalk6EndP28",
+       "chalk6EndP29",
+       "chalk6EndP30",
+       "chalk6EndP31",
+       "chalk6EndP32",
+       "chalk6EndP33",
+       "chalk6EndP34",
+       "chalk6EndP35",
+       "chalk6EndP36",
+       "chalk6EndP37",
+       "chalk6EndP38",
+       "chalk6EndP39",
+       "chalk6EndP40",
+       "chalk6EndP41",
+       "chalk6EndP42",
+       "chalk6EndP43",
+       "chalk6EndP44",
+       "chalk6EndP45",
+       "chalk6EndP46",
+       "chalk6EndP47"
+      ],
+      "fill": "paper",
+      "group": "chalk6",
+      "sheer": true
+     },
+     {
+      "id": "chalk6WearTop",
+      "poly": [
+       "chalk6WearTopP0",
+       "chalk6WearTopP1",
+       "chalk6WearTopP2",
+       "chalk6WearTopP3"
+      ],
+      "fill": "paper",
+      "group": "chalk6",
+      "sheer": true
+     },
+     {
+      "id": "chalk6WearBottom",
+      "poly": [
+       "chalk6WearBottomP0",
+       "chalk6WearBottomP1",
+       "chalk6WearBottomP2",
+       "chalk6WearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "chalk6",
+      "sheer": true
+     },
+     {
+      "id": "length6",
+      "label": "5\\text{ cm}",
+      "at": "length6P",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "mark6a",
+      "seg": [
+       "mark6aA",
+       "mark6aB"
+      ],
+      "group": "mark6",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "mark6b",
+      "seg": [
+       "mark6bA",
+       "mark6bB"
+      ],
+      "group": "mark6",
+      "ink": "accent",
+      "w": 5
+     },
+     {
+      "id": "earlier",
+      "poly": [
+       "earlierBodyP0",
+       "earlierBodyP1",
+       "earlierBodyP2",
+       "earlierBodyP3",
+       "earlierBodyP4",
+       "earlierBodyP5",
+       "earlierBodyP6",
+       "earlierBodyP7",
+       "earlierBodyP8",
+       "earlierBodyP9",
+       "earlierBodyP10",
+       "earlierBodyP11",
+       "earlierBodyP12",
+       "earlierBodyP13",
+       "earlierBodyP14",
+       "earlierBodyP15",
+       "earlierBodyP16",
+       "earlierBodyP17",
+       "earlierBodyP18",
+       "earlierBodyP19",
+       "earlierBodyP20",
+       "earlierBodyP21",
+       "earlierBodyP22",
+       "earlierBodyP23",
+       "earlierBodyP24",
+       "earlierBodyP25",
+       "earlierBodyP26",
+       "earlierBodyP27",
+       "earlierBodyP28",
+       "earlierBodyP29",
+       "earlierBodyP30",
+       "earlierBodyP31",
+       "earlierBodyP32",
+       "earlierBodyP33"
+      ],
+      "fill": "blue-fill",
+      "group": "earlier",
+      "ink": "blue",
+      "w": 1.3
+     },
+     {
+      "id": "earlierTop",
+      "poly": [
+       "earlierTopP0",
+       "earlierTopP1",
+       "earlierTopP2",
+       "earlierTopP3",
+       "earlierTopP4",
+       "earlierTopP5"
+      ],
+      "fill": "paper",
+      "group": "earlier",
+      "sheer": true
+     },
+     {
+      "id": "earlierLower",
+      "group": "earlier",
+      "ink": "blue",
+      "w": 12,
+      "seg": [
+       "earlierShadeA",
+       "earlierShadeB"
+      ]
+     },
+     {
+      "id": "earlierLowerSoft",
+      "poly": [
+       "earlierLowerSoftP0",
+       "earlierLowerSoftP1",
+       "earlierLowerSoftP2",
+       "earlierLowerSoftP3"
+      ],
+      "fill": "paper",
+      "group": "earlier",
+      "sheer": true
+     },
+     {
+      "id": "earlierEnd",
+      "poly": [
+       "earlierEndP0",
+       "earlierEndP1",
+       "earlierEndP2",
+       "earlierEndP3",
+       "earlierEndP4",
+       "earlierEndP5",
+       "earlierEndP6",
+       "earlierEndP7",
+       "earlierEndP8",
+       "earlierEndP9",
+       "earlierEndP10",
+       "earlierEndP11",
+       "earlierEndP12",
+       "earlierEndP13",
+       "earlierEndP14",
+       "earlierEndP15",
+       "earlierEndP16",
+       "earlierEndP17",
+       "earlierEndP18",
+       "earlierEndP19",
+       "earlierEndP20",
+       "earlierEndP21",
+       "earlierEndP22",
+       "earlierEndP23",
+       "earlierEndP24",
+       "earlierEndP25",
+       "earlierEndP26",
+       "earlierEndP27",
+       "earlierEndP28",
+       "earlierEndP29",
+       "earlierEndP30",
+       "earlierEndP31",
+       "earlierEndP32",
+       "earlierEndP33",
+       "earlierEndP34",
+       "earlierEndP35",
+       "earlierEndP36",
+       "earlierEndP37",
+       "earlierEndP38",
+       "earlierEndP39",
+       "earlierEndP40",
+       "earlierEndP41",
+       "earlierEndP42",
+       "earlierEndP43",
+       "earlierEndP44",
+       "earlierEndP45",
+       "earlierEndP46",
+       "earlierEndP47"
+      ],
+      "fill": "blue-fill",
+      "group": "earlier",
+      "ink": "blue",
+      "w": 1.5
+     },
+     {
+      "id": "earlierEndLight",
+      "poly": [
+       "earlierEndP0",
+       "earlierEndP1",
+       "earlierEndP2",
+       "earlierEndP3",
+       "earlierEndP4",
+       "earlierEndP5",
+       "earlierEndP6",
+       "earlierEndP7",
+       "earlierEndP8",
+       "earlierEndP9",
+       "earlierEndP10",
+       "earlierEndP11",
+       "earlierEndP12",
+       "earlierEndP13",
+       "earlierEndP14",
+       "earlierEndP15",
+       "earlierEndP16",
+       "earlierEndP17",
+       "earlierEndP18",
+       "earlierEndP19",
+       "earlierEndP20",
+       "earlierEndP21",
+       "earlierEndP22",
+       "earlierEndP23",
+       "earlierEndP24",
+       "earlierEndP25",
+       "earlierEndP26",
+       "earlierEndP27",
+       "earlierEndP28",
+       "earlierEndP29",
+       "earlierEndP30",
+       "earlierEndP31",
+       "earlierEndP32",
+       "earlierEndP33",
+       "earlierEndP34",
+       "earlierEndP35",
+       "earlierEndP36",
+       "earlierEndP37",
+       "earlierEndP38",
+       "earlierEndP39",
+       "earlierEndP40",
+       "earlierEndP41",
+       "earlierEndP42",
+       "earlierEndP43",
+       "earlierEndP44",
+       "earlierEndP45",
+       "earlierEndP46",
+       "earlierEndP47"
+      ],
+      "fill": "paper",
+      "group": "earlier",
+      "sheer": true
+     },
+     {
+      "id": "earlierWearTop",
+      "poly": [
+       "earlierWearTopP0",
+       "earlierWearTopP1",
+       "earlierWearTopP2",
+       "earlierWearTopP3"
+      ],
+      "fill": "paper",
+      "group": "earlier",
+      "sheer": true
+     },
+     {
+      "id": "earlierWearBottom",
+      "poly": [
+       "earlierWearBottomP0",
+       "earlierWearBottomP1",
+       "earlierWearBottomP2",
+       "earlierWearBottomP3"
+      ],
+      "fill": "paper",
+      "group": "earlier",
+      "sheer": true
+     },
+     {
+      "id": "emptyFour0",
+      "group": "emptyFour",
+      "seg": [
+       "emptyFourP0",
+       "emptyFourP1"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "emptyFour1",
+      "group": "emptyFour",
+      "seg": [
+       "emptyFourP1",
+       "emptyFourP2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "emptyFour2",
+      "group": "emptyFour",
+      "seg": [
+       "emptyFourP2",
+       "emptyFourP3"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "emptyFour3",
+      "group": "emptyFour",
+      "seg": [
+       "emptyFourP3",
+       "emptyFourP0"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "dash": true
+     },
+     {
+      "id": "stepOne",
+      "seg": [
+       "stepOneA",
+       "stepOneB"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "stepTwo",
+      "seg": [
+       "stepTwoA",
+       "stepTwoB"
+      ],
+      "ink": "gold",
+      "w": 5
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A number line has numbers in order with equal spaces. Each step here is one centimeter.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "write",
+       "tex": "3,\\; 5,\\; 3,\\; 2,\\; 5,\\; 5",
+       "fresh": true,
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Number line: equal steps",
+       "at": "number"
+      },
+      {
+       "do": "draw",
+       "target": "stepOne",
+       "at": "Each",
+       "dur": 0.8
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "A line plot shows measurements with marks above a number line. Each X stands for one measurement.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "stepOne",
+       "at": "A"
+      },
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{3},\\; 5,\\; 3,\\; 2,\\; 5,\\; 5",
+       "fresh": true,
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Each $X$: one measurement",
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk1",
+        "length1"
+       ],
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "mark1",
+       "at": "X"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Place the first mark above three. The number below names its length.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "mark1aA": [
+         2.82,
+         0.42
+        ],
+        "mark1aB": [
+         3.18,
+         0.78
+        ],
+        "mark1bA": [
+         2.82,
+         0.78
+        ],
+        "mark1bB": [
+         3.18,
+         0.42
+        ]
+       },
+       "at": "above",
+       "dur": 1.0
+      },
+      {
+       "do": "highlight",
+       "target": "num3",
+       "at": "number"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five centimeters. Place its mark above five.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cg{5},\\; 3,\\; 2,\\; 5,\\; 5",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "chalk1",
+        "length1"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk2",
+        "length2"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "mark2",
+       "at": "Place"
+      },
+      {
+       "do": "move",
+       "points": {
+        "mark2aA": [
+         4.82,
+         0.42
+        ],
+        "mark2aB": [
+         5.18,
+         0.78
+        ],
+        "mark2bA": [
+         4.82,
+         0.78
+        ],
+        "mark2bB": [
+         5.18,
+         0.42
+        ]
+       },
+       "at": "above",
+       "dur": 1.0
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "learner",
+     "say": "Three is already there. I'll leave this one alone.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cm{5},\\; \\cg{3},\\; 2,\\; 5,\\; 5",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "chalk2",
+        "length2"
+       ],
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk3",
+        "length3"
+       ],
+       "at": "Three"
+      }
+     ],
+     "pause": 0.7
+    },
+    {
+     "speaker": "teacher",
+     "say": "The first piece and this piece have equal lengths. Both measurements need a mark.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "earlier"
+       ],
+       "at": "first"
+      },
+      {
+       "do": "highlight",
+       "target": "length3",
+       "at": "Both"
+      },
+      {
+       "do": "show",
+       "target": "mark3",
+       "at": "mark"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "learner",
+     "say": "Same length, another piece. I need another mark above.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "mark3aA": [
+         2.82,
+         1.07
+        ],
+        "mark3aB": [
+         3.18,
+         1.43
+        ],
+        "mark3bA": [
+         2.82,
+         1.43
+        ],
+        "mark3bB": [
+         3.18,
+         1.07
+        ]
+       },
+       "at": "another",
+       "nth": 2,
+       "dur": 1.15
+      },
+      {
+       "do": "text",
+       "text": "Same length, another mark",
+       "at": "need"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Stacking keeps both marks visible above the right number.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "earlier"
+       ],
+       "at": "Stacking"
+      },
+      {
+       "do": "highlight",
+       "target": "mark3",
+       "at": "visible"
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two centimeters. One mark above two.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cm{5},\\; \\cm{3},\\; \\cg{2},\\; 5,\\; 5",
+       "fresh": true,
+       "at": "Two"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "chalk3",
+        "length3"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk4",
+        "length4"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "mark4",
+       "at": "One"
+      },
+      {
+       "do": "move",
+       "points": {
+        "mark4aA": [
+         1.82,
+         0.42
+        ],
+        "mark4aB": [
+         2.18,
+         0.78
+        ],
+        "mark4bA": [
+         1.82,
+         0.78
+        ],
+        "mark4bB": [
+         2.18,
+         0.42
+        ]
+       },
+       "at": "above",
+       "dur": 1.0
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five centimeters. Another mark above five.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cm{5},\\; \\cm{3},\\; \\cm{2},\\; \\cg{5},\\; 5",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "chalk4",
+        "length4"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk5",
+        "length5"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "mark5",
+       "at": "Another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "mark5aA": [
+         4.82,
+         1.07
+        ],
+        "mark5aB": [
+         5.18,
+         1.43
+        ],
+        "mark5bA": [
+         4.82,
+         1.43
+        ],
+        "mark5bB": [
+         5.18,
+         1.07
+        ]
+       },
+       "at": "above",
+       "dur": 1.0
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five again. This piece needs its own mark too.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cm{5},\\; \\cm{3},\\; \\cm{2},\\; \\cm{5},\\; \\cg{5}",
+       "fresh": true,
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "chalk5",
+        "length5"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": [
+        "chalk6",
+        "length6"
+       ],
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "mark6",
+       "at": "This"
+      },
+      {
+       "do": "move",
+       "points": {
+        "mark6aA": [
+         4.82,
+         1.72
+        ],
+        "mark6aB": [
+         5.18,
+         2.08
+        ],
+        "mark6bA": [
+         4.82,
+         2.08
+        ],
+        "mark6bB": [
+         5.18,
+         1.72
+        ]
+       },
+       "at": "own",
+       "dur": 1.0
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "No piece measured four centimeters. Four keeps its place, with no mark above it.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "chalk6",
+        "length6"
+       ],
+       "at": "No"
+      },
+      {
+       "do": "move",
+       "points": {
+        "axisA": [
+         0.6,
+         1.1
+        ],
+        "axisB": [
+         6.4,
+         1.1
+        ],
+        "tick1A": [
+         1,
+         1.0
+        ],
+        "tick1B": [
+         1,
+         1.2
+        ],
+        "num1P": [
+         1,
+         0.65
+        ],
+        "tick2A": [
+         2,
+         1.0
+        ],
+        "tick2B": [
+         2,
+         1.2
+        ],
+        "num2P": [
+         2,
+         0.65
+        ],
+        "tick3A": [
+         3,
+         1.0
+        ],
+        "tick3B": [
+         3,
+         1.2
+        ],
+        "num3P": [
+         3,
+         0.65
+        ],
+        "tick4A": [
+         4,
+         1.0
+        ],
+        "tick4B": [
+         4,
+         1.2
+        ],
+        "num4P": [
+         4,
+         0.65
+        ],
+        "tick5A": [
+         5,
+         1.0
+        ],
+        "tick5B": [
+         5,
+         1.2
+        ],
+        "num5P": [
+         5,
+         0.65
+        ],
+        "tick6A": [
+         6,
+         1.0
+        ],
+        "tick6B": [
+         6,
+         1.2
+        ],
+        "num6P": [
+         6,
+         0.65
+        ],
+        "unitP": [
+         3.5,
+         0.0
+        ],
+        "mark1aA": [
+         2.82,
+         1.52
+        ],
+        "mark1aB": [
+         3.18,
+         1.88
+        ],
+        "mark1bA": [
+         2.82,
+         1.88
+        ],
+        "mark1bB": [
+         3.18,
+         1.52
+        ],
+        "mark2aA": [
+         4.82,
+         1.52
+        ],
+        "mark2aB": [
+         5.18,
+         1.88
+        ],
+        "mark2bA": [
+         4.82,
+         1.88
+        ],
+        "mark2bB": [
+         5.18,
+         1.52
+        ],
+        "mark3aA": [
+         2.82,
+         2.17
+        ],
+        "mark3aB": [
+         3.18,
+         2.53
+        ],
+        "mark3bA": [
+         2.82,
+         2.53
+        ],
+        "mark3bB": [
+         3.18,
+         2.17
+        ],
+        "mark4aA": [
+         1.82,
+         1.52
+        ],
+        "mark4aB": [
+         2.18,
+         1.88
+        ],
+        "mark4bA": [
+         1.82,
+         1.88
+        ],
+        "mark4bB": [
+         2.18,
+         1.52
+        ],
+        "mark5aA": [
+         4.82,
+         2.17
+        ],
+        "mark5aB": [
+         5.18,
+         2.53
+        ],
+        "mark5bA": [
+         4.82,
+         2.53
+        ],
+        "mark5bB": [
+         5.18,
+         2.17
+        ],
+        "mark6aA": [
+         4.82,
+         2.82
+        ],
+        "mark6aB": [
+         5.18,
+         3.18
+        ],
+        "mark6bA": [
+         4.82,
+         3.18
+        ],
+        "mark6bB": [
+         5.18,
+         2.82
+        ],
+        "emptyFourP0": [
+         3.73,
+         1.35
+        ],
+        "emptyFourP1": [
+         4.27,
+         1.35
+        ],
+        "emptyFourP2": [
+         4.27,
+         3.3
+        ],
+        "emptyFourP3": [
+         3.73,
+         3.3
+        ],
+        "stepOneA": [
+         3,
+         1.08
+        ],
+        "stepOneB": [
+         4,
+         1.08
+        ],
+        "stepTwoA": [
+         4,
+         1.08
+        ],
+        "stepTwoB": [
+         5,
+         1.08
+        ]
+       },
+       "at": "No",
+       "dur": 1.0
+      },
+      {
+       "do": "clear",
+       "at": "No"
+      },
+      {
+       "do": "write",
+       "tex": "\\cm{3},\\; \\cm{5},\\; \\cm{3},\\; \\cm{2},\\; \\cm{5},\\; \\cm{5}",
+       "fresh": true,
+       "at": "No"
+      },
+      {
+       "do": "show",
+       "target": "emptyFour",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "num4",
+       "at": "Four",
+       "nth": 2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "From three to four,",
+     "do": [
+      {
+       "do": "hide",
+       "target": "emptyFour",
+       "at": "From"
+      },
+      {
+       "do": "draw",
+       "target": "stepOne",
+       "at": "three",
+       "dur": 0.65
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "then four to five: each step is one centimeter.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "stepOne",
+       "at": "then"
+      },
+      {
+       "do": "draw",
+       "target": "stepTwo",
+       "at": "four",
+       "dur": 0.65
+      }
+     ],
+     "pause": 0.25
+    },
+    {
+     "speaker": "teacher",
+     "say": "One piece.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "stepTwo",
+       "at": "One"
+      },
+      {
+       "do": "highlight",
+       "target": "mark1",
+       "at": "One"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then another. Two pieces measured three centimeters.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "mark3",
+       "at": "another"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "These six measurements make this line plot.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "These"
+      },
+      {
+       "do": "header",
+       "text": "Turning data into a line plot",
+       "keep": true,
+       "at": "These"
+      },
+      {
+       "do": "text",
+       "text": "Chalk lengths (cm)",
+       "at": "These"
+      },
+      {
+       "do": "write",
+       "tex": "3,\\; 5,\\; 3,\\; 2,\\; 5,\\; 5",
+       "at": "These"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two centimeters: one mark.",
+     "do": [
+      {
+       "do": "text",
+       "text": "2 cm: 1 mark; 3 cm: 2 marks",
+       "at": "Two"
+      },
+      {
+       "do": "highlight",
+       "target": "mark4",
+       "at": "one"
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three centimeters: two marks.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "mark1",
+        "mark3"
+       ],
+       "at": "two"
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four centimeters: no marks.",
+     "do": [
+      {
+       "do": "text",
+       "text": "4 cm: 0 marks; 5 cm: 3 marks",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "emptyFour",
+       "at": "no"
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five centimeters: three marks.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "emptyFour",
+       "at": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "mark2",
+        "mark5",
+        "mark6"
+       ],
+       "at": "three"
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Six measurements, six marks, including every repeated length.",
+     "do": [
+      {
+       "do": "text",
+       "text": "6 measurements → 6 marks",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "mark3",
+       "at": "repeated"
+      }
+     ],
+     "pause": 3
+    },
+    {
+     "speaker": "teacher",
+     "say": "One measurement, one mark, right above its number.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "num3",
+       "at": "number"
+      }
+     ],
+     "pause": 3
+    }
+   ]
+  }
+ ]
+}
