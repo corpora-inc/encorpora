@@ -1,4 +1,10 @@
-import { classColumn, teacherColumn, teacherNames } from "../class-columns";
+import {
+  ClassList,
+  classColumn,
+  teacherColumn,
+  TeacherNames,
+  type ListFigure,
+} from "../class-columns";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -6,7 +12,7 @@ import {
   useParams,
   useSearch,
 } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { formatDay } from "../../../../schools/calendar";
 import type {
   AttentionItem,
@@ -20,12 +26,17 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { Segmented } from "../../../ui/Segmented";
 import { Loading } from "../../../ui/Loading";
 import { currentSession, orgOptions } from "../api";
-import { fullDay, number } from "../classes/teacher-shared";
+import {
+  FigureTip,
+  fullDay,
+  number,
+  type TipCard,
+} from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
 import { classPath, orgPath } from "../paths";
 import { TrendChart, type TrendMeasure } from "./charts";
 import { StandingCurves } from "../standing/StandingCurves";
-import { withInterval } from "../standing/format";
+import { intervalWords } from "../standing/format";
 import { RuleNote } from "../RuleNote";
 import { compareClassNames } from "../sort";
 import { summarize } from "../../../../schools/practice-stats";
@@ -61,16 +72,20 @@ const growthWords = (growth: number | null) =>
         ? `−${Math.abs(growth).toFixed(1)}`
         : "0.0";
 
+/** Practiced this week: the share of the roster as a bar, then the count.
+ * `compact`, on a phone: the count, the bar a hairline under it. */
 function ActiveCell({
   active,
   students,
+  compact = false,
 }: {
   active: number;
   students: number;
+  compact?: boolean;
 }) {
   const share = students ? (active / students) * 100 : 0;
   return (
-    <span className={styles.activeCell}>
+    <span className={compact ? styles.activeCompact : styles.activeCell}>
       <span className={styles.activeTrack} aria-hidden="true">
         <span className={styles.activeFill} style={{ width: `${share}%` }} />
       </span>
@@ -91,31 +106,39 @@ type Usage = {
   growthHigh: number | null;
   placed: number;
 };
-/** Growth with where its median sits: "+0.3 (−0.1 to +0.7)". */
-const growthFull = (row: Usage) =>
-  row.growth === null || row.growthLow === null || row.growthHigh === null
-    ? growthWords(row.growth)
-    : withInterval({
-        median: row.growth,
-        low: row.growthLow,
-        high: row.growthHigh,
-      });
+/** Growth as its median, "+0.3"; its 95% range and n are a tap away. */
 function GrowthCell({ row }: { row: Usage }) {
-  const full = growthFull(row);
-  const split = full.indexOf(" (");
-  return split === -1 ? (
-    <span title={growthTip(row)}>{full}</span>
-  ) : (
-    <span title={growthTip(row)} className={styles.growthCell}>
-      {full.slice(0, split)}
-      <span>{full.slice(split)}</span>
-    </span>
-  );
+  if (row.growth === null || !row.placed)
+    return <span title="Not settled yet">{growthWords(row.growth)}</span>;
+  return <FigureTip tip={growthTip(row)}>{growthWords(row.growth)}</FigureTip>;
 }
-const growthTip = (row: Usage) =>
-  row.placed
-    ? `Median of ${number(row.placed)} ${row.placed === 1 ? "student" : "students"} whose estimate has settled`
-    : "Not settled yet";
+const growthTip = (row: Usage): TipCard => ({
+  title: `${row.name}, growth this term`,
+  figure: growthWords(row.growth),
+  unit: "grades, median",
+  stats: [
+    ...(row.growthLow !== null && row.growthHigh !== null
+      ? [
+          {
+            label: "95% range",
+            value: intervalWords({ low: row.growthLow, high: row.growthHigh }),
+          },
+        ]
+      : []),
+    {
+      label: "Settled",
+      value: `${number(row.placed)} of ${number(row.students)}`,
+    },
+  ],
+});
+const growthLabel = (row: Usage) =>
+  row.growth === null || !row.placed
+    ? "Not settled yet"
+    : `${growthWords(row.growth)} grades${
+        row.growthLow !== null && row.growthHigh !== null
+          ? `, 95% range ${intervalWords({ low: row.growthLow, high: row.growthHigh })}`
+          : ""
+      }, from ${number(row.placed)} settled ${row.placed === 1 ? "student" : "students"}`;
 const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "students",
@@ -148,44 +171,27 @@ const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "growth",
     header: "Growth this term",
-    width: 176,
+    width: 132,
     align: "end",
     firstSort: "descending",
     compare: (a, b) => (a.growth ?? -99) - (b.growth ?? -99),
     cell: (row) => <GrowthCell row={row} />,
-    cellLabel: (row) => `${growthFull(row)}. ${growthTip(row)}`,
+    cellLabel: growthLabel,
   },
 ];
-
-function UsageCard({
-  to,
-  name,
-  detail,
-  row,
-}: {
-  to: string;
-  name: string;
-  detail: string;
-  row: Usage;
-}) {
-  return (
-    <Link to="/$" params={{ _splat: to }} className={styles.usageCard}>
-      <span className={styles.usageName}>
-        <strong>{name}</strong>
-        <span>{detail}</span>
-      </span>
-      <span className={styles.usageFacts}>
-        <ActiveCell active={row.active} students={row.students} />
-        <span>{number(row.minutes)} min</span>
-        <span>
-          <GrowthCell row={row} /> grades
-        </span>
-      </span>
-    </Link>
-  );
-}
-
-/** Teachers by name, with the person reading it as "You". */
+/** On a phone: practiced, minutes and growth, each labelled once above. */
+const usageFigures = <Row extends Usage>(): ListFigure<Row>[] => [
+  {
+    column: "active",
+    label: "Practiced",
+    width: 64,
+    cell: (row) => (
+      <ActiveCell active={row.active} students={row.students} compact />
+    ),
+  },
+  { column: "minutes", label: "Minutes", width: 52 },
+  { column: "growth", label: "Growth", width: 46 },
+];
 
 function ClassTable({
   orgId,
@@ -196,10 +202,9 @@ function ClassTable({
   rows: ClassUsage[];
   self: string | null;
 }) {
-  const navigate = useNavigate();
   const columns = useMemo<DataGridColumn<ClassUsage>[]>(
     () => [
-      // The same Class and Teacher columns as the Classes tab's table.
+      // The same Class and Teacher columns as the Classes tab's list.
       classColumn<ClassUsage>((row) => classPath(orgId, row.id)),
       teacherColumn<ClassUsage>(self),
       ...usageColumns<ClassUsage>(),
@@ -207,35 +212,25 @@ function ClassTable({
     [orgId, self],
   );
   return (
-    <DataGrid
+    <ClassList
       label="Classes"
       columns={columns}
       rows={rows}
-      rowKey={(row) => row.id}
-      rowHeight={52}
-      defaultSort={{ column: "name", direction: "ascending" }}
-      onRowActivate={(row) =>
-        void navigate({
-          to: "/$",
-          params: { _splat: classPath(orgId, row.id) },
-        })
-      }
-      cardLayout="row"
-      cardEstimate={92}
-      card={(row) => (
-        <UsageCard
-          to={classPath(orgId, row.id)}
-          name={row.name}
-          detail={teacherNames(row.teachers, self) || "No teacher"}
-          row={row}
-        />
-      )}
+      href={(row) => classPath(orgId, row.id)}
+      detail={(row) => <TeacherNames teachers={row.teachers} self={self} />}
+      figures={usageFigures<ClassUsage>()}
     />
   );
 }
 
-export function SchoolTable({ rows }: { rows: SchoolUsage[] }) {
-  const navigate = useNavigate();
+export function SchoolTable({
+  rows,
+  action,
+}: {
+  rows: SchoolUsage[];
+  /** The list's one action, beside its sort: "Add school". */
+  action?: ReactNode;
+}) {
   const columns = useMemo<DataGridColumn<SchoolUsage>[]>(
     () => [
       {
@@ -267,26 +262,16 @@ export function SchoolTable({ rows }: { rows: SchoolUsage[] }) {
     [],
   );
   return (
-    <DataGrid
+    <ClassList
       label="Schools"
       columns={columns}
       rows={rows}
-      rowKey={(row) => row.id}
-      rowHeight={52}
-      defaultSort={{ column: "name", direction: "ascending" }}
-      onRowActivate={(row) =>
-        void navigate({ to: "/$", params: { _splat: orgPath(row.id) } })
+      href={(row) => orgPath(row.id)}
+      detail={(row) =>
+        `${number(row.classes)} ${row.classes === 1 ? "class" : "classes"}`
       }
-      cardLayout="row"
-      cardEstimate={92}
-      card={(row) => (
-        <UsageCard
-          to={orgPath(row.id)}
-          name={row.name}
-          detail={`${number(row.classes)} ${row.classes === 1 ? "class" : "classes"}`}
-          row={row}
-        />
-      )}
+      figures={usageFigures<SchoolUsage>()}
+      action={action}
     />
   );
 }
@@ -636,14 +621,12 @@ export function OverviewScreen() {
                   </p>
                 )}
                 <p className={styles.tableNote}>
-                  Growth is each {district ? "school" : "class"}’s median pace of
-                  level on the days its uncertainty was at most 0.6 grades,
-                  across the days the term has run, with its 95% range, from{" "}
-                  {number(placed)}{" "}
-                  {placed === 1 ? "student" : "students"}. Not settled yet
-                  shows as —.
-                  Practiced means at least 5 active minutes or 5 problems this
-                  week.
+                  Growth is each {district ? "school" : "class"}’s median pace
+                  of level on the days its uncertainty was at most 0.6 grades,
+                  across the days the term has run, from {number(placed)}{" "}
+                  {placed === 1 ? "student" : "students"}. Each growth figure
+                  opens its 95% range. Not settled yet shows as —. Practiced
+                  means at least 5 active minutes or 5 problems this week.
                 </p>
               </section>
             </>

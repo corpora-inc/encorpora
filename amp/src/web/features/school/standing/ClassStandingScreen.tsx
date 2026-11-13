@@ -10,6 +10,7 @@ import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { StatTile } from "../../../ui/StatTile";
+import { FigureTip } from "../classes/teacher-shared";
 import { currentSession } from "../api";
 import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
@@ -215,8 +216,7 @@ function StudentNumbers({
             <span className={styles.numbersEstimate}>{estimate(student)}</span>
           </span>
           <span className={styles.numbersMeta}>
-            sd {plain(student.sd)} ·{" "}
-            {student.answered.toLocaleString("en-US")}{" "}
+            sd {plain(student.sd)} · {student.answered.toLocaleString("en-US")}{" "}
             {student.answered === 1 ? "answer" : "answers"} · growth{" "}
             {growthWords(student) ?? "not settled yet"}
           </span>
@@ -322,13 +322,33 @@ export function ClassStandingScreen() {
                 <div className={styles.leadFacts}>
                   <CurveFacts curve={data.curve} label={data.class.name}>
                     <StatTile
-                      value={data.growth ? signed(data.growth.median) : "—"}
-                      label={`growth, ${data.term.name}`}
-                      detail={
-                        data.growth
-                          ? `95%: ${intervalWords(data.growth)}, ${studentsWord(data.growth.n)}`
-                          : "Not settled yet"
+                      value={
+                        data.growth ? (
+                          <FigureTip
+                            tip={{
+                              title: `Growth, ${data.term.name}`,
+                              figure: signed(data.growth.median),
+                              unit: "grades, median",
+                              stats: [
+                                {
+                                  label: "95% range",
+                                  value: intervalWords(data.growth),
+                                },
+                                {
+                                  label: "Settled",
+                                  value: data.growth.n.toLocaleString("en-US"),
+                                },
+                              ],
+                            }}
+                          >
+                            {signed(data.growth.median)}
+                          </FigureTip>
+                        ) : (
+                          "—"
+                        )
                       }
+                      label={`growth, ${data.term.name}`}
+                      detail={data.growth ? undefined : "Not settled yet"}
                     />
                   </CurveFacts>
                   <SettlingNote curve={data.curve} settleAt={data.settleAt} />
@@ -389,7 +409,9 @@ export function ClassStandingScreen() {
                   </span>
                 </p>
               </section>
-              <section aria-labelledby="standing-numbers">
+              {/* The record of what the bands draw: each student's estimate
+                  and growth with their ranges, kept as a detail list. */}
+              <section aria-labelledby="standing-numbers" data-keeps-ranges="">
                 <h2 id="standing-numbers" className={styles.sectionTitle}>
                   Estimates and growth
                 </h2>

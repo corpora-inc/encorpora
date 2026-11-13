@@ -29,6 +29,11 @@
 .pageHead[data-tabbed] {
   align-items: center;
 }
+@media (max-width: 639px) {
+  .pageHead {
+    margin-bottom: var(--space-4);
+  }
+}
 .pageTitle {
   flex: 1 1 180px;
   min-width: 0;
@@ -95,6 +100,12 @@
 .rowLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+/* A course on a phone's class row: one line, ending before the edge. */
+.courseFigure {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .emptyActions {
   display: flex;

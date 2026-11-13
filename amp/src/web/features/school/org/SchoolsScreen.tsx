@@ -147,13 +147,6 @@ export function SchoolsScreen() {
             ? `${data.schools.length} ${data.schools.length === 1 ? "school" : "schools"}, ${students.toLocaleString("en-US")} ${students === 1 ? "student" : "students"}`
             : " "
         }
-        action={
-          canAdd ? (
-            <Button variant="primary" onClick={() => setAdding(true)}>
-              Add school
-            </Button>
-          ) : undefined
-        }
       />
       {schools.isPending ? (
         <Loading />
@@ -167,7 +160,16 @@ export function SchoolsScreen() {
           }
         />
       ) : data.schools.length ? (
-        <SchoolTable rows={data.schools} />
+        <SchoolTable
+          rows={data.schools}
+          action={
+            canAdd ? (
+              <Button variant="primary" onClick={() => setAdding(true)}>
+                Add school
+              </Button>
+            ) : undefined
+          }
+        />
       ) : (
         <EmptyState
           title="No schools yet"

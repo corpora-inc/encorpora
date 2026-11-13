@@ -177,10 +177,16 @@ span.student[data-teacher] {
 }
 .tipStats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
   gap: var(--space-2);
   padding-block: var(--space-2);
   border-block: 1px solid var(--color-border);
+}
+/* The card's last part: no rule left under it. */
+.tipStats:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 .tipStats > span {
   display: grid;
@@ -191,6 +197,52 @@ span.student[data-teacher] {
 }
 .tipStats b {
   font-weight: 700;
+}
+/* A point value with its interval a tap away (FigureTip): the figure as it
+   reads, a dotted underline saying there is more, and a 44 px hit area that
+   never moves the line. */
+.figureTip {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: var(--numeric);
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--color-subtle-text);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+  cursor: help;
+  -webkit-tap-highlight-color: transparent;
+}
+.figureTip::after {
+  content: "";
+  position: absolute;
+  inset: max(-12px, calc((100% - 44px) / 2)) -8px;
+}
+button.figureTip:hover:not(:disabled),
+button.figureTip:active:not(:disabled) {
+  background: transparent;
+  color: inherit;
+  filter: none;
+  transform: none;
+}
+@media (hover: hover) {
+  .figureTip:hover {
+    text-decoration-color: currentColor;
+  }
+}
+.figureTip:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 .tipShare {
   display: grid;
