@@ -217,6 +217,14 @@ const progressReturn = { current: { identity: "", href: "/progress" } };
 // place, beside Try again).
 const catalogUnavailable =
   "Lesson and skill details didn’t load. Check your connection, then reload the page.";
+/** Each learner's place in each book for this page's session. It outlives
+ * this screen: Back from a book now leaves for Pathways, which unmounts it,
+ * and coming back must reopen the book where the learner left it. Cleared
+ * with the rest of the account's state on sign-out. */
+const sessionBookPositions: { current: Record<string, number> } = {
+  current: {},
+};
+
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -507,7 +515,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       scroll: 0,
     },
   );
-  const bookPositions = useRef<Record<string, number>>({});
+  const bookPositions = sessionBookPositions;
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
   const libraryReturn = useRef({ search: "", scroll: 0 });
