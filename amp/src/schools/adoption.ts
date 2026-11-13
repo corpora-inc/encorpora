@@ -79,8 +79,8 @@ async function isAdmin(db: Database, accountId: string, orgId: string) {
     )
   ).rowCount;
 }
-/** A teacher owns the school only when every live class was started by that
- * account and that account is still actively enrolled as its teacher. */
+/** Solo-school adoption requires the creator to own every class and all active
+ * staff roles, and to teach every student. Other schools require an admin. */
 async function isSourceOwner(
   db: Database,
   accountId: string,
@@ -94,7 +94,23 @@ async function isSourceOwner(
   return (
     (
       await db.query(
-        `SELECT EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        `SELECT EXISTS(SELECT 1 FROM amp_orgs o JOIN amp_school_starts s ON s.org_id=o.id
+        WHERE o.id=$2 AND o.solo AND s.account_id=$1 AND s.created_school)
+      AND NOT EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_people p ON p.id=r.person_id
+        JOIN amp_orgs o ON o.id=r.org_id WHERE o.path[1]=$2 AND r.role<>'student'
+          AND p.account_id IS DISTINCT FROM $1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")})
+      AND NOT EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+        JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+        WHERE o.path[1]=$2 AND e.role<>'student' AND p.account_id IS DISTINCT FROM $1
+          AND p.deleted_at IS NULL AND ${activeToday("e", "o")})
+      AND NOT EXISTS(SELECT 1 FROM amp_people p WHERE p.tenant_id=$2 AND p.deleted_at IS NULL
+        AND (p.learner_id IS NOT NULL OR EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'))
+        AND NOT EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+          JOIN amp_orgs o ON o.id=c.org_id JOIN amp_school_starts s ON s.class_id=c.id AND s.account_id=$1
+          WHERE e.person_id=p.id AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "o")}))
+      AND NOT EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        WHERE o.path[1]=$2 AND NOT EXISTS(SELECT 1 FROM amp_school_starts s WHERE s.class_id=c.id AND s.account_id=$1))
+      AND EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
       WHERE o.path[1]=$2 AND c.archived_at IS NULL) AND NOT EXISTS(
     SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
     WHERE o.path[1]=$2 AND c.archived_at IS NULL AND (

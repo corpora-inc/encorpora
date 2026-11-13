@@ -11,7 +11,7 @@ import {
   startSchoolClass,
   activateClassPilot,
   classPilotState,
-  requestSchoolPurchase,
+  requestSchoolPurchase as purchase,
   extendTeacherPilot,
 } from "../src/schools/pilots.js";
 import { deleteAccount } from "../src/account/delete-account.js";
@@ -728,3 +728,5 @@ test(
       }
     }),
 );
+
+function requestSchoolPurchase(...args: Parameters<typeof purchase> extends [infer R, infer A, infer B, string] ? [R,A,B] : never) { return purchase(...args, "fixture-school-token-secret-long-enough"); }

@@ -45,6 +45,7 @@ CREATE TABLE amp_pilot_extensions (
 -- A request key survives reloads and concurrent retries without duplicating a
 -- school, class or roster. School names and email domains are never identities.
 CREATE TABLE amp_school_starts (
+ created_school boolean NOT NULL DEFAULT false,
  account_id text NOT NULL,
  request_id uuid NOT NULL,
  org_id uuid NOT NULL REFERENCES amp_orgs(id),

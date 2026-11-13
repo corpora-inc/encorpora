@@ -60,7 +60,8 @@ test(
           { kind: "school", name: "School", timezone: "America/New_York" },
           agreement,
         );
-        const district = await repo.createOrg(
+        await db!.query("UPDATE amp_orgs SET solo=true WHERE id=$1", [school.id]);
+      const district = await repo.createOrg(
           { kind: "district", name: "District", timezone: "America/Chicago" },
           agreement,
         );
@@ -82,7 +83,7 @@ test(
           accountId: account,
         });
         await db!.query(
-          "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id) VALUES($1,$2,$3,$4)",
+          "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id,created_school) VALUES($1,$2,$3,$4,true)",
           [sourceAccount, randomUUID(), school.id, klass.id],
         );
         const learner = await repo.provisionStudent(school.id, {

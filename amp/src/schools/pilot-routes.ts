@@ -9,8 +9,10 @@ import {
   startSchoolClass,
   activateClassPilot,
   acceptClassAuthorization,
+  revokeClassAuthorization,
   classPilotState,
   requestSchoolPurchase,
+  classPurchaseRequest,
   buyerHandoff,
 } from "./pilots.js";
 
@@ -87,6 +89,36 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
   });
   define({
     method: "POST",
+    url: "/api/v1/school/classes/:classId/authorization/revoke",
+    action: "class.authorize",
+    target: ({ params }) => ({ kind: "class", classId: params.classId! }),
+    handler: ({ repository, actor, target }) =>
+      revokeClassAuthorization(repository, actor.accountId, target.classId),
+  });
+  define({
+    method: "GET",
+    url: "/api/v1/school/classes/:classId/purchase-request",
+    action: "pilot.read",
+    target: ({ params }) => ({ kind: "class", classId: params.classId! }),
+    handler: async ({ repository, actor, target, services }) => {
+      const request = await classPurchaseRequest(
+        repository,
+        actor.accountId,
+        target.classId,
+        services.secret,
+      );
+      if (!request) return { request: null };
+      const { token, ...fields } = request;
+      return {
+        request: {
+          ...fields,
+          url: `${services.origin}/schools/continue#token=${token}`,
+        },
+      };
+    },
+  });
+  define({
+    method: "POST",
     url: "/api/v1/school/purchase-requests",
     action: "purchase.request",
     target: () => ({ kind: "self" }),
@@ -95,6 +127,7 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
         repository,
         actor.accountId,
         request.body,
+        services.secret,
       );
       return {
         id: result.id,

@@ -5,6 +5,7 @@ export const startSchoolClassSchema = z.strictObject({
   requestId: z.uuid(),
   schoolName: z.string().trim().min(1).max(200),
   orgId: z.uuid().optional(),
+  newSchool: z.boolean().default(false),
   className: plainName,
   timezone,
   signerName: plainName,

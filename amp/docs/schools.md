@@ -44,17 +44,21 @@ It scales by collapsing. A lone teacher never sees school admin screens. A distr
 
 ## How a school starts
 
-A teacher can create a real class at `/school/start` after signing in and confirming authority to use AMP for the classroom. No card, purchase or AMP approval is required. Paste names, import CSV or Excel, or connect an authorized Clever roster. Retries reuse the same setup request and cannot create a second class.
+A teacher can create a real class at `/school/start` after signing in and confirming authority to use AMP for the classroom. No card, purchase or AMP approval is required. Paste names, import CSV or Excel, or connect an authorized Clever roster. Retries reuse the same setup request and cannot create a second class. A class start reuses the account's matching school, or its only school. Accounts with several schools choose one explicitly. School names cannot claim another account's institution.
 
-The teacher activates the pilot after the roster is ready. One teacher has one 30-day window, followed by seven days of full access. Additional classes use those dates. A class keeps its original pilot when a co-teacher joins, and verified identity aliases prevent reconnecting or recreating an account from restarting the window. School administration is separate from classroom authorization.
+The teacher activates the pilot after the roster is ready. One account has one lifetime 30-day window, followed by seven days of full access. Verified mailboxes also share a lifetime window: matching is case-insensitive, and Gmail/Googlemail addresses ignore dots and plus tags. Family organizations cannot start school pilots. Additional classes use those dates. A class keeps its original pilot when a co-teacher joins, and verified identity aliases prevent reconnecting or recreating an account from restarting the window. School administration is separate from classroom authorization.
 
 A Clever district administrator connects at `/school/connect`. The server verifies current provider authority and the district's data agreement. A new roster can import immediately. When bringing an existing AMP school, stage the connection, approve its adoption and review source-ID matches before importing. [Clever onboarding](clever-onboarding.md) covers Complete, AnySchool, mapping and sandbox requirements.
 
 An operator can also run `create-school` with a private JSON input containing the school, administrator, license dates and seat count. This assisted route creates an administrator invitation and guided setup. It is an alternative to self-service, not its prerequisite.
 
+A teacher may authorize whole-school adoption only for a solo school they created, with every class started by them, no other active staff, and every student enrolled in their classes. Other schools require a school administrator. The receiving district's administrator must also accept the move.
+
+Classroom authorization can be withdrawn without deleting the class or its learning records. An independent institutional agreement continues to govern classes it covers.
+
 ### When a school pays
 
-A teacher shares a buyer handoff with class count, learner count, participation and pilot dates. The link contains no learner names and grants no school access. Its secret lives in a URL fragment and expires after 30 days. A quote or PO request does not extend access by itself.
+A teacher shares a buyer handoff with class count, learner count, participation and pilot dates. The link contains no learner names and grants no school access. Its secret lives in a URL fragment and expires after 30 days. Each class has at most one unexpired, open buyer link. Repeated requests return that link; authorized teachers can retrieve it after refreshing. Closing the request invalidates its link. A quote or PO request does not extend access by itself.
 
 Negotiated purchases are recorded with `purchase-status` and activated with `activate-purchase`. Activation is idempotent and issues a license for the request's selected classes. `issue-license` also supports a school or district subtree. Each rostered learner consumes one school seat across overlapping scopes. Roster updates release invalid class seats; scheduled licenses and waiting learners are reconciled by the worker. Payment preserves all learner IDs and history.
 
@@ -342,3 +346,13 @@ npm run school:demo -- --size 1000 --port 4420   # 30 | 1000 | 10000; ports 4420
 On a development laptop (2026-11-07, pool 6, local PostgreSQL), 30 students answered at p50 24 ms and p95 39 ms; 300 at p50 281 ms and p95 413 ms, with no errors. A batch of problems took p95 345 ms at 30 and 2.5 s at 300. A pool of 20 changed neither, and no event-loop stall over 500 ms was logged: the limit is one process's CPU working through 300 requests that arrive in the same instant (about 1.5 ms of server time per answer and 8 ms per batch), not database connections. Real classes don't answer in lockstep, the app fetches the next batch while a student works, and the API autoscales across pods.
 
 **Gallery.** `npm run school:capture -- [--size 10000] [--product-shots]` drives the seeded demo and captures every school screen, both overviews, every class tab, the student record, the evidence sheet, sign-in and Start class, standings, the family page and the public pages, at 1280 and 390 in light and dark at device scale 2, with geometry at 320 and 768 too. Every screen must have no overflow, no clipped cells, 44 px targets and CLS at or below 0.01. It writes PNGs and an `index.html` contact sheet to `artifacts/schools-gallery/<date>/`, or wherever `--out` says, outside version control. `docs/reviews/schools-launch/` keeps the 1280 and 390 light captures at device scale 1. `--product-shots` refreshes the `/schools` page's screens, as WebP, from the same data.
+
+## Self-service API contracts
+
+- `POST /api/v1/school/start` accepts a stable `requestId`, optional `orgId`, and optional `newSchool` (default `false`), alongside the classroom and authorization fields. It returns `{orgId, classId}`. Without `orgId`, an existing matching school wins even when `newSchool` is true; otherwise the account's only school is selected unless a new one was explicitly requested. Ambiguous selection returns `409 school_selection_required`.
+- `POST /api/v1/school/purchase-requests` accepts `{orgId, classIds, seats, note?}` and returns `{id, url}`. Repeating an open request for the same class set returns its existing link and preserves its original seats and note. Overlapping requests with different class sets return `409 purchase_scope_conflict`.
+- `GET /api/v1/school/classes/:classId/purchase-request` returns `{request: null}` or `{request: {id, url, classIds, seats, note, status, createdAt, expiresAt}}`. Dates are ISO timestamps. `createdAt` records link creation, not delivery to a buyer. Access requires teaching authority over every class in the request.
+- `POST /api/v1/school/classes/:classId/authorization/revoke` withdraws classroom authorization and returns `{classId}`. The existing class-authorization permission controls access.
+- A roster preview reports `held` with `reason: "outside_school"` and no existing name when a source identity belongs to another school. Neither `same` nor `new` overrides that boundary. A district administrator must first assign that person to the destination school.
+
+Buyer URLs are derived with the deployment's stable account signing secret; only their hashes are stored. Keep that secret consistent across replicas and restarts. Rotating it requires retiring open buyer requests and issuing new links.
