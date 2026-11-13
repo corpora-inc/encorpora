@@ -31,7 +31,7 @@ Financial evidence commits independently of successful access projection using a
 
 ## Parent access and retention
 
-Web Parent Account → Access → Purchases & records → Payment records lists owned records, with cursor pagination for older purchases. The parent can download a paid purchase PDF and individual refund-observation adjustments. The current paid record identifies its last verified observation time; it is not a promise of real-time bank settlement. Pending, failed, and canceled refunds are distinguished from successful refunds. Test documents prominently state that no money moved.
+On the web, Account → Billing → Purchases and records → Payment records lists owned records, with cursor pagination for older purchases. The parent can download a paid purchase PDF and individual refund-observation adjustments. The current paid record identifies its last verified observation time; it is not a promise of real-time bank settlement. Pending, failed, and canceled refunds are distinguished from successful refunds. Test documents prominently state that no money moved.
 
 Identity authentication and account ownership apply to each list and download query. Consent withdrawal does not remove the parent’s financial records. Learning-data deletion removes the learner profile name and keeps the financial binding and opaque learner reference in these payment records. Separately, a student name required on a funded invoice linked to a verified order remains with that invoice under financial retention. Family data export includes the retained payment facts, observations, and reconciliation references. Downloads are private, `no-store` attachments without public bearer links. The API reads retained facts without requiring current Stripe credentials.
 

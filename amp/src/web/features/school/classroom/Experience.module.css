@@ -113,11 +113,13 @@ button.preset[aria-pressed="true"]:disabled {
 }
 /* The control, then where its value comes from on the same row, at its
    end (SettingMeta): two columns every row shares, so the actions line up
-   down the page. A phone stacks them. */
+   down the page. A phone stacks them. Top-aligned: when the actions need
+   another line (a way back beside Locked for everyone below), they grow
+   downward and the control stays where it was. */
 .rowControl {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   gap: var(--space-1) var(--space-3);
   min-width: 0;
 }

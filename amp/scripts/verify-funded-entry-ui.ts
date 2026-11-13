@@ -65,7 +65,9 @@ await writeFile(
 );
 await writeFile(
   `${shots}/consent.tsx`,
-  `import React from 'react';import{createRoot}from'react-dom/client';import{ParentConsentCenter}from'../../src/web/ParentConsentCenter';import'../../src/web/style.css';const identity=new URLSearchParams(location.search).get('identity')||'synthetic-parent';createRoot(document.getElementById('root')!).render(<ParentConsentCenter token="synthetic" identity={identity} onClose={()=>{}}/>);`,
+  // Consent continues a funded purchase in the app's own router (in place,
+  // never a full reload), so the screen renders inside one.
+  `import React from 'react';import{createRoot}from'react-dom/client';import{createRootRoute,createRouter,RouterProvider}from'@tanstack/react-router';import{ParentConsentCenter}from'../../src/web/ParentConsentCenter';import'../../src/web/style.css';const identity=new URLSearchParams(location.search).get('identity')||'synthetic-parent';const router=createRouter({routeTree:createRootRoute({component:()=><ParentConsentCenter token="synthetic" identity={identity} onClose={()=>{}}/>})});createRoot(document.getElementById('root')!).render(<RouterProvider router={router}/>);`,
 );
 const campaign =
   "utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=efa-facebook-feed-v1";
@@ -378,6 +380,15 @@ try {
             name: `Continue to ${entry.offer.programName}`,
           })
           .click();
+        // Consent continues to the program's purchase step; this harness
+        // holds only the consent screen, so the app opens that address.
+        await page.waitForURL(
+          (url) =>
+            url.pathname === `/purchase/${entry.slug}` &&
+            url.searchParams.get("utm_source") ===
+              new URLSearchParams(entryCampaign).get("utm_source"),
+        );
+        await page.reload();
         await original.close();
         await page.getByLabel("Learner name").fill("Sample learner");
         await page

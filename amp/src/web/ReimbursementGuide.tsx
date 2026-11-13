@@ -62,7 +62,8 @@ export function ReimbursementGuide({
       ) : !states.length ? (
         <p>
           Ask your program about its reimbursement rules. Download your receipt
-          from Family → Purchases &amp; records → Payment records after payment.
+          from Account → Billing → Purchases and records → Payment records after
+          payment.
         </p>
       ) : (
         <>
@@ -87,8 +88,8 @@ export function ReimbursementGuide({
               <article key={p.id}>
                 <h4>{p.programName}</h4>
                 <p>
-                  Pay by card, then download your receipt from Family →
-                  Purchases &amp; records → Payment records. Select your program
+                  Pay by card, then download your receipt from Account → Billing
+                  → Purchases and records → Payment records. Select your program
                   and enter the learner name if required. Submit the receipt and
                   any additional documents through your program.
                 </p>

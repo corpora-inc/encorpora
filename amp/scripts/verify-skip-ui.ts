@@ -89,6 +89,30 @@ const same = (a: Box, b: Box, label: string) =>
       Math.abs(a.height - b.height) < 0.5,
     `${label} moved: ${JSON.stringify(a)} -> ${JSON.stringify(b)}`,
   );
+/** The question's box in the problem's own scroll. An answer marked in the
+ * problem (work slots, plots, shapes) is scrolled into view above the sheet
+ * (PracticeWorkspace); that scroll is the reader's view moving, not the
+ * problem. */
+async function placed(page: Page): Promise<Box> {
+  const found = await box(page, ".question");
+  const scrolled = await page
+    .locator(".problem-stage")
+    .evaluate((stage) => stage.scrollTop);
+  return { ...found, y: found.y + scrolled };
+}
+/** Waits out a smooth scroll of the problem stage. */
+async function scrollSettled(page: Page) {
+  let last = -1;
+  for (let still = 0; still < 3;) {
+    await settle(page);
+    const now = await page
+      .locator(".problem-stage")
+      .evaluate((stage) => stage.scrollTop);
+    still = now === last ? still + 1 : 0;
+    last = now;
+  }
+  return last;
+}
 async function settle(page: Page) {
   await page.evaluate(
     () =>
@@ -202,7 +226,7 @@ try {
       }
       await noOverflow(page, `${label} open`);
       await page.screenshot({ path: `${shots}${label}-1-open.png` });
-      const question = await box(page, ".question");
+      const question = await placed(page);
       const freeBefore = await freeUsed(learnerId);
       await shifts(page);
 
@@ -251,8 +275,31 @@ try {
       });
       assert.notEqual(paints.sheet, paints.danger, `${label}: sheet is red`);
       assert.notEqual(paints.mark, paints.accent, `${label}: mark is red`);
-      // The problem never moved.
-      same(question, await box(page, ".question"), `${label}: question`);
+      // The problem never moved. When the stage scrolled, it was to show the
+      // answer marked in the problem above the sheet.
+      const reviewScroll = await scrollSettled(page);
+      if (reviewScroll) {
+        console.log(
+          `${label}: the stage scrolled ${reviewScroll}px to the marked answer`,
+        );
+        const [end, cover] = await Promise.all([
+          page
+            .locator(".problem-content")
+            .evaluate((content) =>
+              Math.max(
+                ...[...content.querySelectorAll("*")].map(
+                  (node) => node.getBoundingClientRect().bottom,
+                ),
+              ),
+            ),
+          box(page, ".feedback"),
+        ]);
+        assert.ok(
+          end <= cover.y + 0.5,
+          `${label}: the marked problem scrolled into view (${end} > ${cover.y})`,
+        );
+      }
+      same(question, await placed(page), `${label}: question`);
       assert.deepEqual(
         await shifts(page),
         [],
