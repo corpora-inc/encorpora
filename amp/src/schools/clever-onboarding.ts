@@ -162,11 +162,17 @@ export async function registerCleverOnboarding(
     userId: string;
   }) => resolveCleverPerson(pool, claims);
   const jobs = new Map<string, Promise<void>>();
+  const pending = new Set<string>();
   let closing = false;
   const kick = (id: string) => {
     // Snapshot reconciliation holds a complete district in memory. Keep one
     // automatic import per process; queued institutions retain their request.
-    if (closing || !client || jobs.has(id) || jobs.size >= 1) return;
+    if (closing || !client) return;
+    if (jobs.size >= 1) {
+      pending.add(id);
+      return;
+    }
+    pending.delete(id);
     const job = runDueCleverSync(pool, id, client)
       .catch((error) => {
         app.log.warn(
@@ -174,7 +180,16 @@ export async function registerCleverOnboarding(
           "Clever roster synchronization failed",
         );
       })
-      .finally(() => jobs.delete(id));
+      .finally(() => {
+        jobs.delete(id);
+        // Serve waiting institutions as soon as memory is available. Failed
+        // jobs return to the durable poll instead of retrying in a tight loop.
+        const next = pending.values().next().value;
+        if (next) {
+          pending.delete(next);
+          kick(next);
+        }
+      });
     jobs.set(id, job);
   };
   app.register(async (scope) => {

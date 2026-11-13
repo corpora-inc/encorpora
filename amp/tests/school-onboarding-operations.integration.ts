@@ -62,6 +62,141 @@ async function fixture(
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 
 test(
+  "queued Clever institutions continue after a provider failure",
+  enabled,
+  async () =>
+    fixture(async (db) => {
+      const { withProviderSessions } =
+        await import("../src/identity/provider-principals.js");
+      const districts = [D, "100000000000000000000002"];
+      const sources = districts.map((id): Snapshot => ({
+        district: { id, name: "Queued district" },
+        schools: [],
+        sections: [],
+        courses: [],
+        terms: [],
+        users: [
+          {
+            id: U,
+            district: id,
+            name: { first: "Administrator" },
+            roles: { district_admin: {} },
+          },
+        ],
+      }));
+      let releaseFirst!: () => void;
+      const held = new Promise<void>((resolve) => {
+        releaseFirst = resolve;
+      });
+      const started: string[] = [];
+      const client = {
+        districtToken: async (id: string) => id,
+        get: async <V>(path: string, token: string, schema: z.ZodType<V>) => {
+          const source = sources[districts.indexOf(token)];
+          return schema.parse(
+            path.includes("/districts/") ? source.district : source.users[0],
+          );
+        },
+        snapshot: async (id: string) => {
+          started.push(id);
+          if (id === districts[0]) {
+            await held;
+            throw new Error("fixture_provider_outage");
+          }
+          return sources[1];
+        },
+        latestEvent: async () => null,
+        events: async () => [],
+      };
+      const admins = await Promise.all(
+        districts.map((districtId) =>
+          establishProviderPrincipal(
+            db,
+            {
+              environment: "sandbox",
+              districtId,
+              userId: U,
+              roles: ["district_admin"],
+              schools: [],
+            },
+            null,
+          ),
+        ),
+      );
+      const app = Fastify();
+      await registerCleverOnboarding(app, {
+        pool: db,
+        worker: false,
+        client,
+        config: {
+          origin: "http://localhost:4410",
+          environment: "sandbox",
+          clientId: "fixture",
+          clientSecret: "fixture",
+        },
+        authenticate: withProviderSessions(db, async () => {
+          throw new Error("sign_in_required");
+        }),
+      });
+      await app.ready();
+      try {
+        for (const admin of admins) {
+          const response = await app.inject({
+            method: "POST",
+            url: "/api/v1/school/clever/connect",
+            headers: { authorization: `Bearer ${admin.token}` },
+            payload: {
+              signerName: "Administrator",
+              signerTitle: "Head",
+              agreementVersion: AGREEMENT_VERSION,
+              authorized: true,
+              timezone: "UTC",
+            },
+          });
+          assert.equal(response.statusCode, 202, response.body);
+        }
+        assert.deepEqual(
+          started,
+          [districts[0]],
+          "second snapshot waits for the first job",
+        );
+        releaseFirst();
+        let complete = false;
+        for (let i = 0; i < 200; i++) {
+          complete = !!(
+            await db.query(
+              "SELECT 1 FROM amp_clever_connections WHERE district_id=$1 AND last_sync_at IS NOT NULL",
+              [districts[1]],
+            )
+          ).rowCount;
+          if (complete) break;
+          await new Promise((resolve) => setTimeout(resolve, 20));
+        }
+        assert.ok(
+          complete,
+          "queued institution finishes without waiting for a poll",
+        );
+        assert.deepEqual(
+          started,
+          districts,
+          "failed institution does not loop",
+        );
+        assert.equal(
+          (
+            await db.query(
+              "SELECT 1 FROM amp_clever_sync_runs WHERE status='running'",
+            )
+          ).rowCount,
+          0,
+        );
+      } finally {
+        releaseFirst();
+        await app.close();
+      }
+    }),
+);
+
+test(
   "teacher pilot deletion removes sole classroom; shared consent is anonymous; administrator cannot consume teacher pilot",
   enabled,
   async () =>
