@@ -333,7 +333,10 @@ export function MapView({
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
-  const docs = useSearchCorpus(searching);
+  // The corpus (catalog, lessons, films, glossary) starts loading when the
+  // field takes focus, so it has arrived by the time a word is typed and
+  // the results never fill in or reorder after they settle.
+  const docs = useSearchCorpus(searching || browse);
   const found = useLessonSearch(docs, searching ? query.trim() : "", "");
   // On Pathways every result selects its skill in the map, as the list
   // without a search does (founder): the camera frames it, its panel opens,

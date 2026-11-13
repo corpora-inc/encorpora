@@ -35,6 +35,9 @@ const fixtures = [
   "3 × (3/2) + 2(−1) = 9/2 − 2 = 9/2 − 4/2 = 5/2.",
 ];
 const css = [
+  // The design tokens the stylesheets below read (widths, spacing): without
+  // them a rule such as the reader's 16 px gutter is invalid and dropped.
+  readFileSync(new URL("../src/web/ui/tokens.css", import.meta.url), "utf8"),
   readFileSync(new URL("../src/web/style.css", import.meta.url), "utf8"),
   readFileSync(new URL("../src/web/practice.css", import.meta.url), "utf8"),
   printMathCss(),
@@ -292,13 +295,31 @@ try {
       ),
   );
   // The first attempted repair glued punctuation to the whole multiline box,
-  // leaving a large gap after its shorter final line. Reject that layout too.
+  // leaving a large gap after its shorter final line. Reject that layout too,
+  // on a fixture whose punctuated math wraps at this width.
+  const multiline = await page.evaluate(
+    () =>
+      [...document.querySelectorAll<HTMLElement>("[data-fixture]")]
+        .find((fixture) => {
+          const wrapper = fixture.querySelector(".print-math-punctuation");
+          const bases = wrapper?.querySelectorAll(".katex-html > .base");
+          return (
+            !!bases &&
+            bases.length > 1 &&
+            bases[0]!.getBoundingClientRect().top <
+              bases[bases.length - 1]!.getBoundingClientRect().top - 1
+          );
+        })
+        ?.getAttribute("data-fixture") ?? null,
+  );
+  assert.ok(multiline, "a punctuated math box wraps at 320 px");
   await page.addStyleTag({
     content:
       ".print-math-punctuation>.print-math{display:inline-block!important}.print-math-punctuation .katex-html>.base:last-child{display:inline-block!important}",
   });
   const brokenGap = await page
-    .locator('[data-fixture="0"] .print-math-punctuation')
+    .locator(`[data-fixture="${multiline}"] .print-math-punctuation`)
+    .first()
     .evaluate((wrapper) => {
       const punctuation = wrapper.lastChild!;
       const range = document.createRange();
