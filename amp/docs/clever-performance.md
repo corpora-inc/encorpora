@@ -17,7 +17,7 @@ AMP_TEST_DATABASE_URL=postgresql://localhost/amp_clever_fixture \
   node --import tsx --test tests/clever-batch.integration.ts
 
 AMP_TEST_DATABASE_URL=postgresql://localhost/amp_clever_fixture \
-  node --import tsx scripts/verify-clever-scale.ts --run \
+  node --max-old-space-size=1408 --import tsx scripts/verify-clever-scale.ts --run --worker \
   --schools=100 --students-per-school=500 --classes-per-school=20
 ```
 
@@ -25,28 +25,26 @@ The focused tests cross batch boundaries, assert bounded query counts and stable
 
 ## Reference measurements
 
-One local run used Node 22.23.4 and PostgreSQL 16.14 on macOS ARM64, with one district synchronizing at a time. Both fixtures had 100 schools and approximately 25 students per class. These are measurements of synthetic workloads, not production capacity guarantees.
+A November 13, 2026 local run used Node 22.23.4 and PostgreSQL 17.10 on macOS ARM64. The synthetic district contained 100 schools, 50,000 students, 2,000 teachers and 2,000 classes. The `--worker` mode runs the actual worker entrypoint, including its claim, due check, roster application and post-sync seat reconciliation. [The measurement receipt](reviews/school-onboarding/clever-worker-50000.json) records source hashes, runtime settings and identity/access assertions.
 
-| Students | Phase | SQL calls | Elapsed time |
-| ---: | --- | ---: | ---: |
-| 10,000 | First full import | 146 | 2.03 s |
-| 10,000 | Repeated full import | 94 | 0.94 s |
-| 10,000 | Transfer through three Events | 103 | 1.00 s |
-| 50,000 | First full import | 604 | 11.25 s |
-| 50,000 | Repeated full import | 347 | 5.30 s |
-| 50,000 | Transfer through three Events | 356 | 5.29 s |
-| 50,000 | Allocate purchased seats | 162 | 2.18 s |
-| 50,000 | Reconcile existing seats | 10 | 0.22 s |
+| Phase | SQL calls | Elapsed time |
+| --- | ---: | ---: |
+| First full import | 619 | 22.80 s |
+| Repeated full import | 415 | 9.91 s |
+| Transfer through three Events | 424 | 9.29 s |
+| Empty Events poll | 29 | 0.023 s |
+| Allocate 50,000 purchased seats | 162 | 3.38 s |
+| Reconcile existing seats | 10 | 0.265 s |
 
-An empty Events poll used 14 SQL calls. The 50,000-student fixture included 2,000 teachers and 2,000 classes. Its Node process peaked at 917 MiB RSS, including the synthetic provider, complete fixtures and instrumentation. Measure the deployed worker separately and budget memory for concurrent jobs.
+The driver preserved person, learner and membership IDs on repeat import, retained learning evidence through a transfer, enforced staff scope and allocated each learner one seat. One hundred paid-access samples measured 5.56 ms at the 95th percentile; query plans used the seat and learner-grant indexes.
+
+The Node process peaked at 598.42 MiB RSS with a 1,408 MiB JavaScript heap limit. Sampled peak heap usage was 441.85 MiB. This process includes synthetic provider responses, fixtures and instrumentation. It reuses one instrumented database connection for sequential worker transactions; it does not model external network latency, simultaneous districts, container CPU limits or PostgreSQL memory. These measurements are not production capacity guarantees. Measure the deployed worker and budget memory for concurrent jobs.
 
 ## Serving-process boundary
 
 Full snapshots and nonempty Events reconciliation run in a separate worker pod. The API only queues imports and performs bounded adoption reads. Its administrator proof fetches one provider user. A stored school selector excludes users; a selected-school preview is limited to 5,000 source records. The worker also prepares paused connections for review without provisioning a roster.
 
-A local Node 22.23.4/PostgreSQL 17.10 ARM64 run with 20,000 students, 40 schools and 800 classes measured 484 MiB maximum RSS for the synthetic worker driver. First import took 7.19 seconds, repeat import 3.11 seconds, and an Events transfer 3.12 seconds. This process includes synthetic provider responses and instrumentation; it is not the serving API and does not establish a production memory limit.
-
-The API-read driver generated a 50,000-student district in PostgreSQL, then performed 20 school-list and selected-school reads. Each selected school contained 500 students. Maximum process RSS was 187 MiB, with RSS increasing from 185 to 187 MiB across the reads. This isolates the data-read path; it excludes the rest of the serving API's idle memory and PostgreSQL's memory.
+A separate API-read driver stored a 50,000-student district in PostgreSQL, then performed 20 school-list and selected-school reads. Each selected school contained 500 students. Process RSS increased from 183.41 to a peak of 184.84 MiB. This isolates the bounded data-read path; it excludes the rest of the serving API's idle memory and PostgreSQL's memory.
 
 ```sh
 AMP_TEST_DATABASE_URL=postgresql://localhost/amp_scratch_preview \
@@ -61,7 +59,7 @@ A district-wide grade promotion can change many existing learners in one transac
 
 Do not replace these transaction locks with an early-release scheme. Institution deletion acquires multiple account locks before row locks; releasing an account lock while retaining its person row can create a cycle with a later account acquisition. Preserve the shared privacy protocol when tuning import capacity.
 
-The normal fixtures used `max_connections=100` and `max_locks_per_transaction=64`. A separate PostgreSQL 16.14 test used `max_connections=100` and `max_locks_per_transaction=1024` for an atomic grade promotion of all 50,000 existing students. It completed in 7.00 seconds with 647 SQL calls, preserving person and learner identities, memberships and existing answer evidence. The driver's peak RSS was 1,293 MiB, including its fixtures and instrumentation. This configuration was tested for one bulk import at a time.
+The worker measurement used `max_connections=100` and `max_locks_per_transaction=64`. A separate importer-level PostgreSQL 16.14 test used `max_connections=100` and `max_locks_per_transaction=1024` for an atomic grade promotion of all 50,000 existing students. It completed in 7.00 seconds with 647 SQL calls, preserving person and learner identities, memberships and existing answer evidence. The driver's peak RSS was 1,293 MiB, including its fixtures and instrumentation. This importer-level measurement excludes worker scheduling and was tested for one bulk import at a time.
 
 To include that workload, run the scale driver with `--mass-update` after configuring the dedicated test server:
 
