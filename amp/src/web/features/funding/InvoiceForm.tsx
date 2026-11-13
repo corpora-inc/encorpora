@@ -14,6 +14,7 @@ import { z } from "zod";
 import { request } from "../../lib/api";
 import { fundedPrograms, type FundedProgramSlug } from "../../lib/funded-entry";
 import { Button, buttonClass } from "../../ui/Button";
+import { Segmented } from "../../ui/Segmented";
 import { TextField } from "../../ui/TextField";
 import styles from "./InvoiceForm.module.css";
 import { invoiceOffersOptions, offerRefunds } from "./invoice-offers";
@@ -60,7 +61,15 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     ...invoiceOffersOptions(program?.id ?? ""),
     enabled: !!program,
   });
-  const offer = offers.data?.offers[0];
+  // A program may sell the year, a month at a time, or both.
+  const yearly = offers.data?.offers.find((o) => (o.termMonths ?? 12) === 12);
+  const monthly = offers.data?.offers.find((o) => o.termMonths === 1);
+  const [term, setTerm] = useState<"year" | "month">("year");
+  const offer =
+    (term === "month" ? monthly : yearly) ??
+    yearly ??
+    monthly ??
+    offers.data?.offers[0];
   useLayoutEffect(() => {
     document.documentElement.dataset.frame = "card";
     return () => {
@@ -154,15 +163,54 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
             </>
           ) : (
             <form onSubmit={(event) => void submit(event)}>
+              {/* Every term's line is laid out in one cell and only the
+                  chosen one shows, so switching never moves the form. */}
               <div className={styles.price}>
-                <span>
-                  {offer.productTitle}
-                  <small>One learner · one year</small>
-                </span>
-                <strong>{currency(offer.totalMinor)}</strong>
+                {(yearly && monthly ? [yearly, monthly] : [offer]).map((o) => (
+                  <div
+                    key={o.id}
+                    className={styles.priceLine}
+                    aria-hidden={o.id !== offer.id || undefined}
+                    data-shown={o.id === offer.id || undefined}
+                  >
+                    <span>
+                      {o.productTitle}
+                      <small>
+                        One learner · one{" "}
+                        {o.termMonths === 1 ? "month" : "year"}
+                      </small>
+                    </span>
+                    <strong>{currency(o.totalMinor)}</strong>
+                  </div>
+                ))}
               </div>
+              {yearly && monthly && (
+                <div className={styles.term}>
+                  <Segmented
+                    label="Pay for"
+                    value={offer.termMonths === 1 ? "month" : "year"}
+                    onChange={(next) => {
+                      setTerm(next);
+                      setError("");
+                    }}
+                    disabled={busy}
+                    options={[
+                      {
+                        value: "year",
+                        label: "Yearly",
+                        detail: `${currency(yearly.totalMinor)} a year`,
+                      },
+                      {
+                        value: "month",
+                        label: "Monthly",
+                        detail: `${currency(monthly.totalMinor)} a month`,
+                      },
+                    ]}
+                  />
+                </div>
+              )}
               <TextField
-                label="Parent or guardian email"
+                label="Email for the AMP account (parent, or the student if 18+)"
                 type="email"
                 autoComplete="email"
                 required
@@ -204,7 +252,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
               </p>
               <p className={styles.notice}>
                 We use these details for your invoice and to match it to your
-                parent account later. This does not create a learning profile.{" "}
+                AMP account later. This does not create a learning profile.{" "}
                 <a
                   href="https://corpora.inc/legal/privacy/"
                   target="_blank"
@@ -221,7 +269,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
         <>
           <p className={styles.status}>Unpaid invoice. No card charged.</p>
           <p className={styles.notice}>
-            Parent email: <strong>{email.trim()}</strong>
+            AMP account email: <strong>{email.trim()}</strong>
             <br />
             Student: <strong>{student.trim()}</strong>
           </p>
@@ -289,8 +337,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
             <li>
               <strong>Set up your AMP learner.</strong>
               <p>
-                Use the same parent email. We match your invoice to the program
-                payment before starting paid access. Do not also pay by card.
+                Sign in with the same email. We match your invoice to the
+                program payment before starting paid access. Do not also pay by
+                card.
               </p>
               <a
                 className={buttonClass("secondary")}

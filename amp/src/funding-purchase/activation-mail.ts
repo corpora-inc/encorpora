@@ -9,7 +9,7 @@ import type {
 } from "../parent-consent/contracts.js";
 import { currentPolicy } from "../parent-consent/policy.js";
 import { digest } from "../parent-consent/crypto.js";
-import { learningConsentActive } from "../server/account-access.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { FundingPurchaseRepository } from "./repository.js";
 
 /** Preserve the reviewed account sender, including a display name. */
@@ -79,7 +79,11 @@ export async function deliverFundedActivationMail(
         Date.parse(grant.startsAt) <= Date.now() &&
         Date.parse(grant.endsAt) > Date.now() &&
         !row.deleted_at &&
-        (await learningConsentActive(client, row.account_id));
+        (await purchaseConsentSatisfied(
+          client,
+          row.account_id,
+          row.learner_id,
+        ));
       const mail = {
         idempotencyKey: `amp-funded-activation:${row.request_id}`,
         recipient: row.email ?? "",
@@ -149,7 +153,11 @@ export async function deliverFundedActivationMail(
         !check.deleted_at &&
         check.grant_state?.status === "active" &&
         Date.parse(check.grant_state.endsAt) > Date.now() &&
-        (await learningConsentActive(client, candidate.account_id));
+        (await purchaseConsentSatisfied(
+          client,
+          candidate.account_id,
+          claimed.row.learner_id,
+        ));
       return eligible
         ? Math.min(
             Number(check.remaining),

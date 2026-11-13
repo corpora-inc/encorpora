@@ -14,7 +14,7 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
-import { learningConsentActive } from "../server/account-access.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { FundingPurchaseRepository, fundingRequestRow } from "./repository.js";
 import {
   availableOffers,
@@ -228,7 +228,9 @@ export class FundingInvoiceRepository {
   ): Promise<FundingRequest> {
     return this.funding.transaction(account, async (client) => {
       const email = await this.verifiedEmail(client, account);
-      if (!(await learningConsentActive(client, account)))
+      // A child needs the parent's verified consent; an adult claiming for
+      // their own learner acts for themselves.
+      if (!(await purchaseConsentSatisfied(client, account, learnerId)))
         throw new FundingPurchaseError(403, "verified_consent_required");
       const learner = await client.query(
         "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",

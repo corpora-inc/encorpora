@@ -1,0 +1,13 @@
+/* Who the invoice is for, set apart from the invoices below it. */
+.choices {
+  margin: 0.25rem 0 1.5rem;
+}
+/* "For me" and "For my child": two full-width choices. */
+.who {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.who > * {
+  width: 100%;
+}

@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import type { FundingRequest } from "./contracts.js";
-import { annualTermEnd, fundedProvisionSchema } from "./provision.js";
+import { fundedTermEnd, fundedProvisionSchema } from "./provision.js";
 
 export const classWalletHeaders = [
   "Order ID",
@@ -183,12 +183,15 @@ export function validateClassWalletPayment(
   const evidence = `classwallet-report:${digest([row["Transaction ID"], row["Order ID"], request.id, programs[0], gross, net, fee, approved])}`;
   return { orderId, gross, approved, updated, now, evidence };
 }
+/** `termStartsAt` is when the learner's current access ends, for a term paid
+ * early (`fundedTermStart`); without it the term starts at activation. */
 export function prepareClassWalletProvision(
   row: ClassWalletRow,
   request: FundingRequest,
   config: ClassWalletConfig,
   at: string,
   previous?: unknown,
+  termStartsAt?: string,
 ) {
   const { orderId, gross, approved, updated, now, evidence } =
     validateClassWalletPayment(row, request, config, at);
@@ -199,6 +202,13 @@ export function prepareClassWalletProvision(
     old?.events.find((e) => e.type === "license.activated")?.occurredAt ?? now;
   const settled =
     old?.events.find((e) => e.type === "order.settled")?.occurredAt ?? updated;
+  const oldCreated = old?.events.find((e) => e.type === "order.created");
+  const startsAt =
+    oldCreated?.type === "order.created"
+      ? oldCreated.order.license.startsAt
+      : (termStartsAt ?? activated);
+  if (Date.parse(startsAt) < Date.parse(activated))
+    fail("term_starts_before_activation");
   const envelope = (type: string, occurredAt: string) => ({
     id: `${orderId}:${type}`,
     orderId,
@@ -219,8 +229,8 @@ export function prepareClassWalletProvision(
             accountId: request.accountId,
             learnerId: request.learnerId,
             sku: request.offer.sku,
-            startsAt: activated,
-            endsAt: annualTermEnd(activated),
+            startsAt,
+            endsAt: fundedTermEnd(startsAt, request.offer.termMonths),
           },
           channel: "esa",
           channelReference: request.offer.channelReference,

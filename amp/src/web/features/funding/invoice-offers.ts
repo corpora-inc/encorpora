@@ -44,3 +44,11 @@ export function offerRefunds(offer?: InvoiceOffer) {
     offer?.refundPolicy === "purchase-to-account"
   );
 }
+
+/** The program's annual offer, which the pitch quotes; a program may also
+ * sell a month at a time (the invoice form offers both). */
+export function annualInvoiceOffer(offers?: readonly InvoiceOffer[]) {
+  return (
+    offers?.find((offer) => (offer.termMonths ?? 12) === 12) ?? offers?.[0]
+  );
+}
