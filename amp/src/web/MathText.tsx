@@ -96,13 +96,61 @@ const BARE_SYMBOL = /(?:[<>=+\-]|\\(?:le|ge|neq|times|div|cdot))\s*$/;
 
 function render(tex: string) {
   try {
-    return katex.renderToString(tex, {
-      throwOnError: true,
-      output: "htmlAndMathml",
-    });
+    const pieces = breakable(tex);
+    // A comma keeps TeX's thin space after it; the line may break there.
+    return pieces
+      .map(
+        (piece, i) =>
+          katex.renderToString(piece, {
+            throwOnError: true,
+            output: "htmlAndMathml",
+          }) +
+          (i === pieces.length - 1
+            ? ""
+            : piece.endsWith(",")
+              ? "\u2009"
+              : "<wbr>"),
+      )
+      .join("");
   } catch {
     return escape(tex);
   }
+}
+
+/** A formula that reads as a sentence ("∠AOB, ∠BOC and ∠BOC, ∠COD are
+ * linear pairs") has no operator or relation for KaTeX to break at, so one
+ * long statement could not wrap on a phone. Such a formula (one with
+ * `\text{…}` or `\quad`) may break after a comma and before a run of
+ * words, at its top level only (never inside braces, brackets or
+ * parentheses). */
+export function breakable(tex: string): string[] {
+  if (!/\\(?:text\{|quad)/.test(tex)) return [tex];
+  const pieces: string[] = [];
+  let depth = 0,
+    start = 0;
+  for (let i = 0; i < tex.length; i++) {
+    const c = tex[i]!;
+    if (c === "\\") {
+      const word = /^\\(?:[a-zA-Z]+|.)/.exec(tex.slice(i))![0];
+      if (word === "\\{" || word === "\\left") depth++;
+      else if (word === "\\}" || word === "\\right") depth--;
+      else if (word === "\\text" && depth === 0 && i > start) {
+        pieces.push(tex.slice(start, i));
+        start = i;
+      }
+      i += word.length - 1;
+      continue;
+    }
+    if (c === "{" || c === "(" || c === "[") depth++;
+    else if (c === "}" || c === ")" || c === "]") depth--;
+    else if (c === "," && depth === 0) {
+      pieces.push(tex.slice(start, i + 1));
+      start = i + 1;
+    }
+  }
+  pieces.push(tex.slice(start));
+  const kept = pieces.filter((piece) => piece.trim());
+  return depth === 0 && kept.length ? kept : [tex];
 }
 const escape = (s: string) =>
   s.replace(
