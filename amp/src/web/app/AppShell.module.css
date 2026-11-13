@@ -46,9 +46,11 @@
   min-height: calc(100dvh - var(--shell-bar));
   padding-top: 0;
 }
-/* A wait inside the frame fills the space under the bar, wave centred. */
-.content > :global(.app-loading),
-.content :global(.shell > .app-loading) {
+/* A wait inside the frame fills the space under the bar, wave centred,
+   wherever it mounts: straight under the content, in the legacy host's
+   shell, or through the router's display-contents wrapper. (The overlay
+   variant is fixed to that space already.) */
+.content :global(.app-loading:not(.app-loading-overlay)) {
   min-height: calc(100dvh - var(--shell-bar));
 }
 

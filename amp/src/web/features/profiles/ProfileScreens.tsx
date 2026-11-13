@@ -28,7 +28,7 @@ import { meOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { EmptyState } from "../../ui/EmptyState";
-import { Loading } from "../../ui/Loading";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Segmented, type SegmentedOption } from "../../ui/Segmented";
 import { Stepper } from "../../ui/Stepper";
 import { TextField } from "../../ui/TextField";
@@ -408,7 +408,7 @@ export function EditProfileScreen() {
   if (me.isPending)
     return (
       <main className={styles.page}>
-        <Loading />
+        <LoadingScreen overlay />
       </main>
     );
   if (!profile)

@@ -3,7 +3,7 @@ import { Link, useParams } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { currentSession } from "../api";
 import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
@@ -45,7 +45,7 @@ export function StandingScreen() {
   return (
     <OrgFrame orgId={orgId} nav="overview" title="Where students stand">
       {standing.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data ? (
         <EmptyState
           title="These curves didn’t load"

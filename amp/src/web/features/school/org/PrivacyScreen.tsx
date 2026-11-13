@@ -14,7 +14,7 @@ import { useLoggedError } from "../../../feedback";
 import { Button, buttonClass } from "../../../ui/Button";
 import { CheckboxControl } from "../../../ui/Checkbox";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { SearchField } from "../../../ui/SearchField";
 import { Sheet } from "../../../ui/Sheet";
 import { TextField } from "../../../ui/TextField";
@@ -481,7 +481,7 @@ export function PrivacyScreen() {
         }
       />
       {privacy.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data || !org ? (
         <EmptyState
           title="Privacy details didn’t load"

@@ -9,7 +9,7 @@ import { AppError } from "../../../lib/AppError";
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { StatTile } from "../../../ui/StatTile";
 import { FigureTip } from "../classes/teacher-shared";
 import { currentSession } from "../api";
@@ -256,7 +256,7 @@ export function ClassStandingScreen() {
       title={data?.class.name ?? "Class"}
     >
       {standing.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data ? (
         <EmptyState
           title={

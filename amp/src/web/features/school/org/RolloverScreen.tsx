@@ -24,6 +24,7 @@ import { CheckboxControl } from "../../../ui/Checkbox";
 import { DatePicker } from "../../../ui/DatePicker";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Segmented } from "../../../ui/Segmented";
 import { Select } from "../../../ui/Select";
 import { currentSession, refreshSchool } from "../api";
@@ -538,7 +539,7 @@ export function RolloverScreen() {
         }
       />
       {options.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data || !current ? (
         <EmptyState
           title="This didn’t load"
