@@ -29,8 +29,16 @@ export function LearnerList({
 }) {
   const live = children.filter((learner) => !learner.deletedAt);
   const rows = live.length + (own && ownDetail ? 1 : 0);
+  // A choice whose learner left the list (their data was deleted) is no
+  // choice: the only row left opens, as it does on arrival.
+  const chosen =
+    selectedId &&
+    (live.some((learner) => learner.id === selectedId) ||
+      (!!ownDetail && own?.id === selectedId))
+      ? selectedId
+      : undefined;
   const open =
-    selectedId ||
+    chosen ||
     (live.length === 1 ? live[0]!.id : rows === 1 ? own?.id : undefined);
   const ownOpen = !!own && !!ownDetail && open === own.id;
   return (

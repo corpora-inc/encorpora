@@ -89,6 +89,26 @@ test("a scroll, a resize, Back and a route change close it", () => {
   }
 });
 
+test("scrolling its own list keeps it open; a scroll elsewhere closes it", () => {
+  const { container, getByText } = render(
+    <>
+      <Pop name="a">
+        <div data-list>choices</div>
+      </Pop>
+      <div data-panel>panel</div>
+    </>,
+  );
+  press(getByText("a"));
+  act(() => {
+    fireEvent.scroll(container.querySelector("[data-list]")!);
+  });
+  expect(openNames(container)).toEqual(["a"]);
+  act(() => {
+    fireEvent.scroll(container.querySelector("[data-panel]")!);
+  });
+  expect(openNames(container)).toEqual([]);
+});
+
 test("Escape closes only the top one, and nothing beneath sees it", () => {
   let beneath = 0;
   document.addEventListener("keydown", () => beneath++, true);
