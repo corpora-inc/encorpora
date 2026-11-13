@@ -1,5 +1,6 @@
 """Offline orchestration tests. No author or narration provider may run."""
 from argparse import Namespace
+import json
 from pathlib import Path
 import shutil
 
@@ -21,7 +22,7 @@ def setup(tmp_path, monkeypatch):
     for path in source.iterdir():
         if path.is_file() and path.suffix in ('.ts', '.tsx', '.css', '.html'):
             shutil.copyfile(path, kit/path.name)
-    for name in ('browser-security.mjs', 'package.json', 'src/web/ui/tokens.css'):
+    for name in ('browser-security.mjs', 'package.json', 'tsconfig.json', 'src/web/ui/tokens.css'):
         dest = worktree/'amp'/name
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source.parent/name, dest)
@@ -131,6 +132,16 @@ def test_runtime_tampering_and_stale_check_block_voice(setup):
     module = workspace/'runtime/amp/film/make.ts'; module.write_text(module.read_text()+'// altered')
     with pytest.raises(RuntimeError, match='modified the kit'):
         runtime.verify_runtime(local, local['film'], workspace)
+
+
+def test_runtime_carries_tsconfig_so_copied_tsx_uses_the_automatic_jsx_runtime(setup):
+    config, args, _, _ = setup
+    line.write_film(config, args)
+    local = read_json(line.film_root(config, args.film)/'config.json')
+    workspace = runtime.workspace_for(local, args.film)
+    copied = workspace/'runtime/amp/tsconfig.json'
+    # film/example.tsx renders JSX with no React import: without this file it compiles to React.createElement
+    assert json.loads(copied.read_text())['compilerOptions']['jsx'] == 'react-jsx'
 
 
 def test_predict_and_board_only_reveal_author_after_current_score(setup):
