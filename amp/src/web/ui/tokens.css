@@ -69,6 +69,12 @@
   --color-figure-gold-fill-strong: #f5dfc5;
   --color-figure-accent-fill-strong: #c5ded6;
   --color-figure-empty: #f6f2e8;
+  /* Coin metal (a coin is the same object in either theme): the disc
+   * under a coin's photograph and the edge drawn on its rim. */
+  --color-coin-copper: #c08668;
+  --color-coin-copper-edge: #7a4530;
+  --color-coin-silver: #bebebc;
+  --color-coin-silver-edge: #757a7d;
   --color-strand-number: #3f6fa8;
   --color-strand-operations: #6a5aa0;
   --color-strand-fractions: #b8622a;
@@ -196,6 +202,10 @@
     --color-figure-gold-fill-strong: #5e4a22;
     --color-figure-accent-fill-strong: #2f5d51;
     --color-figure-empty: #223a34;
+    --color-coin-copper: #c08668;
+    --color-coin-copper-edge: #7a4530;
+    --color-coin-silver: #bebebc;
+    --color-coin-silver-edge: #757a7d;
     --color-strand-number: #86ade3;
     --color-strand-operations: #ac9fe3;
     --color-strand-fractions: #eb9e68;
@@ -314,6 +324,10 @@
   --color-figure-gold-fill-strong: #5e4a22;
   --color-figure-accent-fill-strong: #2f5d51;
   --color-figure-empty: #223a34;
+  --color-coin-copper: #c08668;
+  --color-coin-copper-edge: #7a4530;
+  --color-coin-silver: #bebebc;
+  --color-coin-silver-edge: #757a7d;
   --color-strand-number: #86ade3;
   --color-strand-operations: #ac9fe3;
   --color-strand-fractions: #eb9e68;

@@ -1,4 +1,5 @@
 import { PanelFrame } from "./PanelFrame";
+import { CoinFace } from "./scene/CoinFace";
 import type { CSSProperties } from "react";
 import {
   handAngles,
@@ -138,20 +139,14 @@ export function ClockFace({
   );
 }
 
-const COIN_STYLE: Record<
-  Exclude<MoneyItem, "dollar" | "five">,
-  { fill: string; stroke: string; text: string }
-> = {
-  penny: {
-    fill: "var(--color-figure-gold-fill)",
-    stroke: "var(--color-figure-gold)",
-    text: "1¢",
-  },
-  nickel: { fill: "var(--color-figure-grid)", stroke: ink, text: "5¢" },
-  dime: { fill: "var(--color-figure-grid)", stroke: ink, text: "10¢" },
-  quarter: { fill: "var(--color-figure-grid)", stroke: ink, text: "25¢" },
+const COIN_VALUE: Record<Exclude<MoneyItem, "dollar" | "five">, string> = {
+  penny: "1¢",
+  nickel: "5¢",
+  dime: "10¢",
+  quarter: "25¢",
 };
-/** One generic coin or bill centred at (cx, cy). */
+/** One coin (its real face, with its value on a tag across the lower rim)
+ * or one generic bill, centred at (cx, cy). */
 export function MoneyPiece({
   item,
   cx,
@@ -198,38 +193,36 @@ export function MoneyPiece({
         </text>
       </g>
     );
-  const s = COIN_STYLE[item],
-    r = w / 2;
+  const r = w / 2,
+    value = COIN_VALUE[item];
+  // The value tag keeps "read the cents written on the coin" true. It rests
+  // on the lower rim, under the portrait, inside the coin's outline.
+  const size = 11,
+    tagW = value.length * size * 0.6 + size * 0.75,
+    tagH = size * 1.3,
+    tagY = cy + r + 1 - tagH;
   return (
     <g data-money={item}>
-      <circle
-        cx={cx}
-        cy={cy}
-        r={r}
-        fill={s.fill}
-        stroke={s.stroke}
-        strokeWidth="2.5"
-      />
-      <circle
-        cx={cx}
-        cy={cy}
-        r={r - 4}
-        fill="none"
-        stroke={s.stroke}
-        strokeWidth="0.8"
+      <CoinFace coin={item} cx={cx} cy={cy} r={r} edge={2.5} />
+      <rect
+        x={cx - tagW / 2}
+        y={tagY}
+        width={tagW}
+        height={tagH}
+        rx={tagH / 2}
+        fill="var(--color-figure-paper)"
+        fillOpacity={0.94}
+        stroke="var(--color-figure-ink)"
+        strokeOpacity={0.35}
+        strokeWidth={0.8}
       />
       <text
         x={cx}
-        y={cy + r * 0.27}
+        y={tagY + tagH / 2 + size * 0.36}
         textAnchor="middle"
-        style={{
-          fill: ink,
-          // Two-digit labels fit inside the inner ring of the smallest coin.
-          fontSize: Math.round(r * (s.text.length > 2 ? 0.64 : 0.78)),
-          fontWeight: 700,
-        }}
+        style={{ fill: ink, fontSize: size, fontWeight: 700 }}
       >
-        {s.text}
+        {value}
       </text>
     </g>
   );
