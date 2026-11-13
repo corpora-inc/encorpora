@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { birthYears } from "./lib/birth-years";
 export const strandNames: Record<string, string> = {
   number: "Numbers",
   operations: "Operations",
@@ -34,7 +35,7 @@ export const gradeOrder = [
 type Props = {
   name: string;
   birthYear: number | null;
-  /** Offer "Adult" after the school years (the default). */
+  /** Offer "Adult" before the school years (the default). */
   adult?: boolean;
   busy: boolean;
   saveBirthYear: (year: number) => void;
@@ -54,7 +55,7 @@ type Props = {
 /** The only question before practice: it sets where placement begins. */
 export function BirthYearPrompt(props: Props) {
   const thisYear = new Date().getFullYear();
-  const years = Array.from({ length: 16 }, (_, i) => thisYear - 4 - i);
+  const years = birthYears(16, 4);
   const Root = props.embedded ? "div" : "main";
   return (
     <Root
@@ -72,6 +73,15 @@ export function BirthYearPrompt(props: Props) {
             "We’ll use the birth year to find a starting point, then adapt as the learner progresses."}
         </p>
         <div className="year-grid" role="group" aria-label="Birth year">
+          {props.adult !== false && (
+            <button
+              className="adult"
+              disabled={props.busy}
+              onClick={() => props.saveBirthYear(thisYear - 25)}
+            >
+              Adult
+            </button>
+          )}
           {years.map((year) => (
             <button
               key={year}
@@ -82,15 +92,6 @@ export function BirthYearPrompt(props: Props) {
               {year}
             </button>
           ))}
-          {props.adult !== false && (
-            <button
-              className="adult"
-              disabled={props.busy}
-              onClick={() => props.saveBirthYear(thisYear - 25)}
-            >
-              Adult
-            </button>
-          )}
         </div>
         {props.embedded?.footer}
         {props.cancel && (

@@ -1,7 +1,8 @@
 import { useRef, type CSSProperties } from "react";
+import { birthYears } from "../../lib/birth-years";
 import tiles from "../../ui/TileChoice.module.css";
 
-/** The years the grid offers, newest first, then "Adult" for anyone older:
+/** The years the grid offers, "Adult" for anyone older, then oldest first:
  * the old free trial's picker, starting at age 7. */
 const OWN_YEARS = 16;
 const OWN_YOUNGEST = 7;
@@ -24,12 +25,13 @@ export function OwnYearTiles({
   disabled?: boolean;
 }) {
   const thisYear = new Date().getFullYear();
+  // Oldest first: "Adult" leads, then the years in reading order.
   const options = [
-    ...Array.from({ length: OWN_YEARS }, (_, i) => {
-      const year = thisYear - OWN_YOUNGEST - i;
-      return { year, label: String(year) };
-    }),
     { year: thisYear - ADULT_AGE, label: "Adult" },
+    ...birthYears(OWN_YEARS, OWN_YOUNGEST).map((year) => ({
+      year,
+      label: String(year),
+    })),
   ];
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const current = Math.max(

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { birthYears } from "../lib/birth-years";
 import { Dialog } from "./Dialog";
 import { TileChoice } from "./TileChoice";
 import styles from "./YearField.module.css";
@@ -29,7 +30,7 @@ export function YearField({
 }) {
   const [open, setOpen] = useState(false);
   const now = new Date().getFullYear();
-  const years = Array.from({ length: 16 }, (_, i) => now - 4 - i);
+  const years = birthYears(16, 4);
   const adultYear = now - 25;
   const shown =
     value === ""
@@ -54,14 +55,22 @@ export function YearField({
           <path d="m3 4.5 3 3 3-3" />
         </svg>
       </button>
-      <Dialog open={open} onOpenChange={setOpen} title={label} fullOnPhone>
+      <Dialog
+        open={open}
+        onOpenChange={setOpen}
+        title={label}
+        fullOnPhone
+        // The chosen year (else the first) has focus and is in view.
+        initialFocus='[role="radio"][tabindex="0"]'
+      >
         <TileChoice
           label={label}
+          // Oldest first: "Adult" leads, then the years in reading order.
           tiles={[
-            ...years.map((year) => ({ value: year, label: String(year) })),
             ...(adult
               ? [{ value: adultYear, label: "Adult", span: "row" as const }]
               : []),
+            ...years.map((year) => ({ value: year, label: String(year) })),
           ]}
           value={value ? Number(value) : null}
           onChange={(year) => {

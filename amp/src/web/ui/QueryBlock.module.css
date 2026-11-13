@@ -1,0 +1,12 @@
+.block {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-3);
+}
+.message {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  line-height: 1.45;
+}

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useNavigate } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import { z } from "zod";
 import type { SignedInMe } from "../../../../account/contracts";
@@ -18,7 +18,8 @@ import { invalidateAccount, meOptions } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
-import { Loading } from "../../../ui/Loading";
+import { QueryBlock } from "../../../ui/QueryBlock";
+import { RowButton, RowList } from "../../../ui/RowList";
 import { JoinClass } from "../../school/join/JoinClass";
 import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
@@ -494,6 +495,7 @@ function People({
   disabled: boolean;
   add: { label: string; onAdd: () => void } | null;
 }) {
+  const id = useId();
   return (
     <div className={styles.people}>
       {rows.length > 0 && (
@@ -506,11 +508,30 @@ function People({
       <ol className={styles.rows}>
         {rows.map((row, at) => {
           const needsYear = missingYear && !row.fixed && !row.year;
+          const nameId = `${id}-${row.key}`;
+          // Named by what the parent typed, else the row's own name.
+          const remove = row.onRemove && (
+            <RemoveRow
+              label={`Remove ${row.name.trim() || row.label}`}
+              disabled={disabled}
+              onRemove={row.onRemove}
+            />
+          );
           return (
             <li key={row.key} className={styles.person}>
-              <label className={styles.cell}>
-                <span className={styles.cellLabel}>{field.label}</span>
+              <div className={styles.cell}>
+                {/* On a phone, Remove sits on the name's label line, at the
+                    field's right edge: part of the child, not of the field. */}
+                <span className={styles.cellHead}>
+                  <label htmlFor={nameId} className={styles.cellLabel}>
+                    {field.label}
+                  </label>
+                  {remove && (
+                    <span className={styles.headRemove}>{remove}</span>
+                  )}
+                </span>
                 <input
+                  id={nameId}
                   className={styles.nameInput}
                   value={row.name}
                   placeholder={row.label}
@@ -526,7 +547,7 @@ function People({
                 <span className={styles.cellNote} aria-live="polite">
                   {invalid === at ? nameNote : ""}
                 </span>
-              </label>
+              </div>
               <div className={styles.cell}>
                 <span className={styles.cellLabel} aria-hidden="true">
                   Birth year
@@ -546,21 +567,7 @@ function People({
                   {needsYear ? "Choose a year" : ""}
                 </span>
               </div>
-              <span className={styles.removeCell}>
-                {row.onRemove && (
-                  <button
-                    type="button"
-                    className={styles.remove}
-                    aria-label={`Remove ${row.label}`}
-                    disabled={disabled}
-                    onClick={row.onRemove}
-                  >
-                    <svg viewBox="0 0 16 16" aria-hidden="true">
-                      <path d="m4 4 8 8m0-8-8 8" />
-                    </svg>
-                  </button>
-                )}
-              </span>
+              <span className={styles.removeCell}>{remove}</span>
             </li>
           );
         })}
@@ -568,8 +575,8 @@ function People({
       {add && (
         <Button
           type="button"
-          variant="quiet"
-          align="start"
+          variant="secondary"
+          className={styles.addRow}
           disabled={disabled}
           onClick={add.onAdd}
         >
@@ -580,6 +587,31 @@ function People({
   );
 }
 
+/** A row's Remove: a muted mark with a full-size target. */
+function RemoveRow({
+  label,
+  disabled,
+  onRemove,
+}: {
+  label: string;
+  disabled: boolean;
+  onRemove: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={styles.remove}
+      aria-label={label}
+      disabled={disabled}
+      onClick={onRemove}
+    >
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="m4 4 8 8m0-8-8 8" />
+      </svg>
+    </button>
+  );
+}
+
 /** How the children practice: handed this device, or on their own with the
  * class code and three pictures. Cards print a QR for each child. */
 function JoinStep({ session, me, kind, index }: StepProps) {
@@ -587,7 +619,6 @@ function JoinStep({ session, me, kind, index }: StepProps) {
   const presence = useQuery(
     presenceOptions(session, { org: place.orgId, class: place.classId }),
   );
-  const code = presence.data?.class.joinCode;
   const first = me.learners[0]?.name;
   const parent = kind === "parent";
   return (
@@ -623,15 +654,19 @@ function JoinStep({ session, me, kind, index }: StepProps) {
           </section>
         )}
         <section className={styles.way} aria-labelledby="join-class">
-          {code ? (
-            <JoinClass
-              code={code}
-              place={{ org: place.orgId, class: place.classId }}
-              family={parent}
-            />
-          ) : (
-            <Loading />
-          )}
+          <QueryBlock
+            query={presence}
+            what="The class code"
+            className={styles.joinWait}
+          >
+            {(data) => (
+              <JoinClass
+                code={data.class.joinCode}
+                place={{ org: place.orgId, class: place.classId }}
+                family={parent}
+              />
+            )}
+          </QueryBlock>
         </section>
       </div>
       {!parent && (
@@ -735,29 +770,68 @@ function SecondParentStep({ session, kind, index }: StepProps) {
   );
 }
 
-/** The last step: the first child's first problem, right here, or Today. */
+/** The last step: a child's first problem, right here, or Today. With one
+ * child, theirs; with several, the parent picks who goes first. */
 function ReadyStep({ session, me, kind, index }: StepProps) {
   const finish = useFinishSignIn();
   const place = me.familyClass!;
-  const first = kind === "parent" ? me.learners[0] : undefined;
-  const [starting, setStarting] = useState(false);
+  const children = kind === "parent" ? me.learners : [];
+  const first = children[0];
+  const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
   const today = todayUrl(place);
-  const begin = async () => {
-    if (!first || starting) return;
-    setStarting(true);
+  const begin = async (learnerId: string) => {
+    if (starting) return;
+    setStarting(learnerId);
     try {
       const grant = await request(
-        `/family/learners/${first.id}/practice-here`,
+        `/family/learners/${learnerId}/practice-here`,
         studentGrantResource,
         { token: session.token, body: {} },
       );
       await finish(grant, true, today);
     } catch (failure) {
       setError(why(failure, "Practice didn’t start. Try again in a moment."));
-      setStarting(false);
+      setStarting(null);
     }
   };
+  const toToday = (primary: boolean) => (
+    <Link
+      to={today as never}
+      className={buttonClass(primary ? "primary" : "secondary")}
+    >
+      Go to Today
+    </Link>
+  );
+  const ready = children.filter((child) => child.entitlement.active);
+  if (children.length > 1 && ready.length > 0)
+    return (
+      <Frame
+        kind={kind}
+        index={index}
+        title="Who’s practicing first?"
+        next={toToday(false)}
+      >
+        <RowList label="Your children">
+          {children.map((child) => (
+            <RowButton
+              key={child.id}
+              title={child.name}
+              meta={child.birthYear ? `Born ${child.birthYear}` : undefined}
+              busy={starting === child.id}
+              // A child without access can't start here; Today says why.
+              disabled={
+                !child.entitlement.active ||
+                (starting !== null && starting !== child.id)
+              }
+              data-practice-here={child.id}
+              onClick={() => void begin(child.id)}
+            />
+          ))}
+        </RowList>
+        <Toast message={error} onDismiss={() => setError("")} />
+      </Frame>
+    );
   const canStart = !!first?.entitlement.active;
   return (
     <Frame
@@ -772,28 +846,24 @@ function ReadyStep({ session, me, kind, index }: StepProps) {
       next={
         canStart ? (
           <>
-            <Link to={today as never} className={buttonClass("secondary")}>
-              Go to Today
-            </Link>
+            {toToday(false)}
             <Button
               variant="primary"
-              aria-busy={starting || undefined}
-              disabled={starting}
-              onClick={() => void begin()}
+              aria-busy={starting !== null || undefined}
+              disabled={starting !== null}
+              onClick={() => void begin(first!.id)}
             >
               Start {first!.name}’s first problem
             </Button>
           </>
         ) : (
-          <Link to={today as never} className={buttonClass("primary")}>
-            Go to Today
-          </Link>
+          toToday(true)
         )
       }
     >
-      {kind === "parent" && me.learners.length > 0 && (
+      {children.length > 0 && (
         <ul className={styles.list}>
-          {me.learners.map((child) => (
+          {children.map((child) => (
             <li key={child.id}>
               <strong>{child.name}</strong>
               {child.birthYear ? <span>Born {child.birthYear}</span> : null}

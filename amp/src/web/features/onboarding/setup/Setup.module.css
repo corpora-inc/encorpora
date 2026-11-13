@@ -232,11 +232,30 @@
   color: var(--color-muted-text);
   font-variant-numeric: tabular-nums;
 }
-/* Remove sits on the row's name line on a phone, at the row's end wider. */
+/* Remove sits on the name's label line on a phone, its mark at the field's
+   right edge and its target reaching up into the space above the row; at the
+   row's end from 560 px. Never over the field, where a cross reads as
+   "clear". */
+.cellHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.headRemove .remove {
+  margin-top: calc(var(--text-label) * 1.3 - var(--target-size));
+  padding-bottom: calc((var(--text-label) * 1.3 - 16px) / 2);
+  place-items: end;
+}
+.headRemove .remove:hover {
+  background: transparent;
+}
 .removeCell {
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: none;
+}
+.people > .addRow {
+  justify-self: start;
+  width: auto;
 }
 .remove {
   display: grid;
@@ -279,7 +298,13 @@
     gap: var(--space-2);
   }
   .removeCell {
-    position: static;
+    display: block;
+  }
+  .cellHead {
+    display: contents;
+  }
+  .headRemove {
+    display: none;
   }
   .cellLabel {
     position: absolute;
@@ -411,4 +436,15 @@
 .actions [data-waiting] {
   opacity: 0.38;
   filter: none;
+}
+
+/* The class code's wait (and its Try again) holds the code block's own
+   height, so Next doesn't move when the code lands. */
+.joinWait {
+  min-height: 532px;
+}
+@media (min-width: 768px) {
+  .joinWait {
+    min-height: 414px;
+  }
 }
