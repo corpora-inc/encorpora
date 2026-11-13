@@ -144,7 +144,7 @@
   display: grid;
   justify-items: center;
   gap: var(--space-3);
-  max-width: 420px;
+  max-width: var(--width-form);
   margin: var(--space-6) auto 0;
   text-align: center;
 }
@@ -161,28 +161,28 @@
 }
 .dayZeroRows {
   display: grid;
-  width: min(100%, 280px);
+  width: min(100%, calc(var(--width-form) * 0.6));
   margin-bottom: var(--space-2);
 }
 .dayZeroRows span {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  height: 48px;
+  height: var(--target-size);
   border-bottom: 1px solid var(--color-border);
 }
 .dayZeroRows span::before {
   content: "";
   flex: none;
-  width: 28px;
-  height: 28px;
+  width: var(--space-6);
+  height: var(--space-6);
   border-radius: 50%;
   background: var(--color-surface-sunken);
 }
 .dayZeroRows span::after {
   content: "";
-  height: 10px;
-  border-radius: 5px;
+  height: var(--space-2);
+  border-radius: var(--space-1);
   background: var(--color-surface-sunken);
   width: 62%;
 }

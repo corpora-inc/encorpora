@@ -251,6 +251,7 @@ await registerSchoolAdoptionRoutes(app, {
   pool: repository.pool,
   authenticate,
   origin: accounts?.config.baseURL,
+  secret: linkSecret,
   ...(cleverConfig
     ? {
         cleverUser: async (connectionId: string, userId: string) => {

@@ -58,17 +58,6 @@
   background: var(--color-surface-raised);
 }
 
-/* Settings: practice access in one line. */
-.accessLine {
-  display: grid;
-  gap: var(--space-1);
-  justify-items: start;
-}
-.accessLabel {
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-weight: 600;
-}
 .accessLine p {
   margin: 0;
   font-variant-numeric: var(--numeric);

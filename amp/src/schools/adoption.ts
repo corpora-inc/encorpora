@@ -1,4 +1,4 @@
-import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { createHash, createHmac, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { activeToday } from "./principal.js";
@@ -54,6 +54,13 @@ export type AdoptionPlan = {
 
 const tokenHash = (token: string) =>
   createHash("sha256").update(token).digest("hex");
+/** An approval link's token, derived from its request and the server's link
+ * secret, so the school that issued it can read it again (a refresh, another
+ * day) without the database ever holding it: only its hash is stored. */
+const adoptionToken = (id: string, secret: string) => {
+  if (secret.length < 24) throw new Error("Adoption link secret required");
+  return `adopt_${createHmac("sha256", secret).update(`amp-adoption-link-v1:${id}`).digest("base64url")}`;
+};
 async function transaction<T>(
   pool: Pool,
   work: (db: PoolClient) => Promise<T>,
@@ -161,6 +168,7 @@ export async function issueSchoolAdoption(
   sourceAccountId: string,
   raw: z.input<typeof destinations>,
   now = new Date(),
+  secret?: string,
 ) {
   const input = destinations.parse(raw);
   return transaction(pool, async (db) => {
@@ -168,7 +176,9 @@ export async function issueSchoolAdoption(
     if (!(await isSourceOwner(db, sourceAccountId, input.schoolId)))
       throw new CleverSyncError("adoption_source_authority_required");
     const id = randomUUID();
-    const token = `adopt_${randomBytes(32).toString("base64url")}`;
+    const token = secret
+      ? adoptionToken(id, secret)
+      : `adopt_${randomBytes(32).toString("base64url")}`;
     const expiresAt = new Date(now.getTime() + 7 * 86_400_000);
     await db.query(
       `INSERT INTO amp_school_adoptions(id,token_hash,source_account_id,school_id,district_id,created_at,expires_at)
@@ -315,6 +325,7 @@ export async function schoolAdoptionOptions(
   db: Database,
   accountId: string,
   districtId?: string,
+  secret?: string,
 ) {
   const candidates = (
     await db.query(
@@ -346,14 +357,29 @@ export async function schoolAdoptionOptions(
   }
   const grants = (
     await db.query(
-      `SELECT a.id,s.name AS "schoolName",d.name AS "districtName",a.expires_at AS "expiresAt",
+      `SELECT a.id,a.school_id AS "schoolId",a.token_hash AS "tokenHash",s.name AS "schoolName",d.name AS "districtName",a.expires_at AS "expiresAt",
     CASE WHEN a.consumed_at IS NOT NULL THEN 'used' WHEN a.revoked_at IS NOT NULL THEN 'revoked'
       WHEN a.expires_at<=now() THEN 'expired' ELSE 'open' END AS status
     FROM amp_school_adoptions a JOIN amp_orgs s ON s.id=a.school_id JOIN amp_orgs d ON d.id=a.district_id
     WHERE a.source_account_id=$1 ORDER BY a.created_at DESC LIMIT 100`,
       [accountId],
     )
-  ).rows.map((r) => ({ ...r, expiresAt: r.expiresAt.toISOString() }));
+  ).rows;
+  // The link of an open approval goes back only to the account that issued
+  // it, while it still speaks for that school: what it already saw.
+  const owned = new Set(schools.map((school) => school.id as string));
+  const grantsOut = grants.map(({ tokenHash: hashed, schoolId, ...r }) => {
+    const token =
+      secret && r.status === "open" && owned.has(schoolId)
+        ? adoptionToken(r.id, secret)
+        : null;
+    return {
+      ...r,
+      expiresAt: r.expiresAt.toISOString(),
+      // An older link was random: there is nothing to read back.
+      ...(token && tokenHash(token) === hashed ? { token } : {}),
+    };
+  });
   const districts = (
     await db.query(
       `SELECT DISTINCT o.id,o.name FROM amp_orgs o
@@ -364,7 +390,7 @@ export async function schoolAdoptionOptions(
       [accountId],
     )
   ).rows;
-  return { schools, districts, district, grants };
+  return { schools, districts, district, grants: grantsOut };
 }
 
 export async function schoolAdoptionDistrict(

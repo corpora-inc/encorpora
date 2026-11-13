@@ -9,7 +9,7 @@
   gap: var(--space-5);
 }
 .page[data-wide] {
-  width: min(100%, calc(720px + 2 * var(--space-4)));
+  width: min(100%, calc(var(--width-content) + 2 * var(--space-4)));
 }
 .back,
 .backSlot {
@@ -48,7 +48,7 @@
 .title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(var(--text-title-min), 6vw, 36px);
+  font-size: clamp(var(--text-title-min), 6vw, var(--text-heading-1));
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -122,25 +122,6 @@
   margin: calc(-1 * var(--space-3)) 0 0;
   color: var(--color-muted-text);
   font-size: var(--text-label);
-}
-
-.disclosure {
-  border-block: 1px solid var(--color-border);
-}
-.disclosure summary {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-}
-.disclosure summary:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.disclosure > form,
-.disclosure > p {
-  padding-bottom: var(--space-3);
 }
 
 @media (max-width: 639px) {

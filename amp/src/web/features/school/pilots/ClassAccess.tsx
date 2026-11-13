@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { CopyButton } from "../parts";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
@@ -10,7 +11,7 @@ import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
-import { TextArea, TextField } from "../../../ui/TextField";
+import { TextArea } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions, refreshSchool } from "../api";
 import { useClassSearch } from "../classes/teacher-shared";
@@ -19,6 +20,7 @@ import { Authorization } from "./Authorization";
 import { pilotApi, pilotOptions, purchaseRequestOptions } from "./api";
 import { accessView, practiceDate, type AccessView } from "./presentation";
 import styles from "./Pilot.module.css";
+import school from "../School.module.css";
 
 type Place = { org: string; class: string };
 
@@ -217,35 +219,40 @@ export function AccessHeaderAction({
   return null;
 }
 
-/** Class Settings: practice access in one quiet line. */
+/** Class Settings: practice, as a section like every other (its heading,
+ * one quiet line, and Request seats for its teacher). */
 export function AccessLine({ place }: { place: Place }) {
   const { view, teaches } = useClassAccess(place);
   const [, setSearch] = useClassSearch();
   const text =
     view.kind === "active"
-      ? `Pilot through ${practiceDate(view.until)}`
+      ? `Through ${practiceDate(view.until)}`
       : view.kind === "ending"
-        ? `Practice ends ${practiceDate(view.until)}`
+        ? `Ends ${practiceDate(view.until)}`
         : view.kind === "ended"
-          ? "Practice has ended"
+          ? "Ended"
           : view.kind === "partial"
-            ? `${view.covered} of ${view.students} students have practice access`
+            ? `${view.covered} of ${view.students} students have access`
             : null;
   if (!text) return null;
   return (
-    <div className={styles.accessLine} data-access={view.kind}>
-      <span className={styles.accessLabel}>Practice</span>
-      <p>{text}</p>
-      {teaches && (
-        <Button
-          variant="quiet"
-          align="start"
-          onClick={() => setSearch({ seats: 1 })}
-        >
-          Request seats
-        </Button>
-      )}
-    </div>
+    <section
+      className={school.settingsSection}
+      aria-labelledby="class-practice"
+      data-access={view.kind}
+    >
+      <div className={school.settingsHead}>
+        <div>
+          <h2 id="class-practice">Practice</h2>
+          <p className={school.quiet}>{text}</p>
+        </div>
+        {teaches && (
+          <Button variant="secondary" onClick={() => setSearch({ seats: 1 })}>
+            Request seats
+          </Button>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -316,8 +323,6 @@ function RequestSeatsSheet({
   const [count, setCount] = useState<number | null>(null);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [copyFailed, setCopyFailed] = useState(false);
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState("");
   // Another teacher's open link already covers this class: say who, and
@@ -346,8 +351,6 @@ function RequestSeatsSheet({
         queryKey: purchaseRequestOptions(session, place.class).queryKey,
       });
       setEditing(false);
-      setCopied(false);
-      setCopyFailed(false);
       setHolder(null);
     } catch (failure) {
       if (
@@ -367,14 +370,6 @@ function RequestSeatsSheet({
       setBusy(false);
     }
   }
-  const copy = (url: string) =>
-    void navigator.clipboard.writeText(url).then(
-      () => setCopied(true),
-      (failure) => {
-        console.error("The buyer link couldn’t be copied", failure);
-        setCopyFailed(true);
-      },
-    );
   return (
     <>
       <Sheet
@@ -418,13 +413,12 @@ function RequestSeatsSheet({
                 <p className={styles.quiet}>{request.note}</p>
               )}
               <div className={styles.sheetActions}>
-                <Button
-                  variant="primary"
-                  onClick={() => copy(made)}
-                  data-share-url={made}
-                >
-                  {copied ? "Copied" : "Copy link"}
-                </Button>
+                <CopyButton
+                  text={made}
+                  label="Copy link"
+                  primary
+                  shareUrl={made}
+                />
                 <a
                   href={made}
                   target="_blank"
@@ -448,14 +442,6 @@ function RequestSeatsSheet({
                   </Button>
                 )}
               </div>
-              {copyFailed && (
-                <TextField
-                  label="Select the link and copy it"
-                  value={made}
-                  readOnly
-                  onFocus={(event) => event.target.select()}
-                />
-              )}
             </div>
           ) : holder !== null ? (
             <div className={styles.sheetBody}>

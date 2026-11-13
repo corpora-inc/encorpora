@@ -19,6 +19,7 @@ import {
   previewSchoolAdoption,
   revokeSchoolAdoption,
   schoolAdoptionAuthority,
+  schoolAdoptionOptions,
 } from "../src/schools/adoption.js";
 import {
   cleverSource,
@@ -343,6 +344,58 @@ test(
           }
         },
       );
+      await t.test(
+        "an approval link reads back to the school that issued it, and no one else",
+        async () => {
+          const f = await fixture();
+          const secret = "fixture-link-secret-0123456789abcdef";
+          const grant = await issueSchoolAdoption(
+            db!,
+            sourceAccount,
+            { schoolId: f.school.id, districtId: f.district.id },
+            new Date(),
+            secret,
+          );
+          const mine = await schoolAdoptionOptions(
+            db!,
+            sourceAccount,
+            undefined,
+            secret,
+          );
+          const open = mine.grants.find((g) => g.id === grant.id);
+          assert.equal(open?.token, grant.token);
+          // Another account, even the district's admin, never reads it.
+          const theirs = await schoolAdoptionOptions(
+            db!,
+            targetAccount,
+            undefined,
+            secret,
+          );
+          assert.ok(theirs.grants.every((g) => !("token" in g)));
+          // Withdrawn: the link is gone with it.
+          await revokeSchoolAdoption(db!, sourceAccount, grant.id);
+          const after = await schoolAdoptionOptions(
+            db!,
+            sourceAccount,
+            undefined,
+            secret,
+          );
+          assert.equal(
+            after.grants.find((g) => g.id === grant.id)?.token,
+            undefined,
+          );
+          // The read-back link is the real one.
+          const again = await issueSchoolAdoption(
+            db!,
+            sourceAccount,
+            { schoolId: f.school.id, districtId: f.district.id },
+            new Date(),
+            secret,
+          );
+          await acceptSchoolAdoption(db!, targetAccount, again.token);
+        },
+      );
+
       await t.test(
         "independent district admin grants do not depend on Clever authority",
         async () => {

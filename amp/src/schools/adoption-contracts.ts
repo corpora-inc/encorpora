@@ -55,6 +55,8 @@ export const adoptionOptions = z.object({
       districtName: z.string(),
       expiresAt: z.string(),
       status: z.enum(["open", "expired", "used", "revoked"]),
+      /** An open approval's link, for the account that issued it. */
+      token: z.string().optional(),
     }),
   ),
 });

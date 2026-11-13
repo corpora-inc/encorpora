@@ -44,41 +44,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-label);
 }
-.details {
-  border-block: 1px solid var(--color-border);
-}
-.details summary {
-  display: flex;
-  align-items: center;
-  min-height: 48px;
-  font-weight: 600;
-  cursor: pointer;
-  list-style: none;
-}
-.details summary::-webkit-details-marker {
-  display: none;
-}
-.details summary::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  margin-inline-start: auto;
-  margin-inline-end: var(--space-2);
-  border-right: 1.8px solid currentColor;
-  border-bottom: 1.8px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform var(--motion-fast);
-}
-.details[open] summary::after {
-  transform: rotate(-135deg);
-}
-.details summary:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.details > div {
-  padding-bottom: var(--space-4);
-}
 .match {
   display: grid;
   gap: var(--space-1);
@@ -109,4 +74,13 @@ button.matchButton {
 /* The Clever records' wait: the size of one picker. */
 .wait {
   min-height: 44px;
+}
+
+/* An open approval's actions: Copy link, then Withdraw, at the row's end. */
+.rowActions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
 }

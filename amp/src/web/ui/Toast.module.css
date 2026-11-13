@@ -56,3 +56,12 @@
 .content [tabindex="-1"]:focus {
   outline: none;
 }
+
+/* A status note on a phone sits at the foot, never over the bar's tabs
+   (a class's after an import). Placed toasts keep their place. */
+@media (max-width: 639px) {
+  .viewport.statusTop {
+    top: auto;
+    bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  }
+}

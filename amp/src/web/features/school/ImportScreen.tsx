@@ -118,10 +118,13 @@ function SourceStep({
   classScope,
   checking,
   onLoaded,
+  notice = "",
 }: {
   orgId: string;
   /** A teacher adding students to their class: names, Excel or CSV. */
   classScope: boolean;
+  /** A calm line in the error's place (a review lost to a refresh). */
+  notice?: string;
   /** The rows are being checked against the roster. */
   checking: boolean;
   onLoaded: (draft: Draft) => void;
@@ -342,8 +345,12 @@ function SourceStep({
           </Button>
         </div>
       )}
-      <p className={styles.error} role={error ? "alert" : undefined}>
-        {error}
+      <p
+        className={styles.error}
+        role={error ? "alert" : undefined}
+        data-calm={!error && notice ? "" : undefined}
+      >
+        {error || notice}
       </p>
       {!classScope && (
         <p className={styles.footnote}>
@@ -962,6 +969,10 @@ function ReviewStep({
       },
     },
   ];
+  const allNew =
+    classScope &&
+    rows.length > 0 &&
+    rows.every((row) => bucketOf(planFor(row)) === "new");
   const shownRows =
     show === "all"
       ? rows
@@ -1130,6 +1141,8 @@ function ReviewStep({
             label="Roster changes"
             columns={grid}
             rows={shownRows}
+            // A class's short list reads in its own order: no sort to find.
+            cardsSort={!(classScope && shownRows.length <= 30)}
             rowKey={(row) => `${row.line}-${row.sourcedId}`}
             cardLayout="row"
             cardEstimate={72}
@@ -1153,9 +1166,13 @@ function ReviewStep({
                         .join(", ")}
                     </span>
                   </span>
-                  <Badge tone={bucketLabels[bucket][1]}>
-                    {bucketLabels[bucket][0]}
-                  </Badge>
+                  {/* Every row new (a class's first list): the title says
+                      so once, not a badge on each row. */}
+                  {!allNew && (
+                    <Badge tone={bucketLabels[bucket][1]}>
+                      {bucketLabels[bucket][0]}
+                    </Badge>
+                  )}
                 </div>
               );
             }}
@@ -1453,6 +1470,9 @@ export function ImportScreen() {
       })) as never,
       replace,
     });
+  // A roster is children's names, held in memory only: a refresh past the
+  // first step comes back here, calmly, with the class kept.
+  const [lost] = useState(() => !draft && asked !== "source");
   useEffect(() => {
     if (step !== asked) goTo(step, true);
   }, [step, asked]);
@@ -1590,6 +1610,7 @@ export function ImportScreen() {
           classScope={!!classId}
           checking={checking}
           onLoaded={(next) => void loaded(next)}
+          notice={lost ? "Choose the file again to review it." : ""}
         />
       )}
       {step === "map" && draft && (

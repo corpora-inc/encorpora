@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { Disclosure } from "../../ui/Disclosure";
+import { CopyButton } from "./parts";
 import { StatRow, StatTile } from "../../ui/StatTile";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
@@ -10,7 +12,6 @@ import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Select } from "../../ui/Select";
-import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { currentSession, refreshSchool } from "./api";
 import {
@@ -64,39 +65,13 @@ function Failed({
   );
 }
 
-/** The link copied out of AMP: one button, the address kept on it for
- * assistive tools and tests rather than shown as a field. */
+/** The link copied out of AMP: the one copy control, the address kept on it
+ * for assistive tools and tests rather than shown as a field. */
 function CopyLink({ url }: { url: string }) {
-  const [state, setState] = useState<"copied" | "failed" | null>(null);
   return (
-    <>
-      <Actions>
-        <Button
-          variant="primary"
-          data-primary
-          data-share-url={url}
-          onClick={() =>
-            void navigator.clipboard.writeText(url).then(
-              () => setState("copied"),
-              (failure) => {
-                console.error("The link could not be copied", failure);
-                setState("failed");
-              },
-            )
-          }
-        >
-          {state === "copied" ? "Copied" : "Copy link"}
-        </Button>
-      </Actions>
-      {state === "failed" && (
-        <TextField
-          label="Select the link and copy it"
-          readOnly
-          value={url}
-          onFocus={(event) => event.target.select()}
-        />
-      )}
-    </>
+    <Actions>
+      <CopyButton text={url} label="Copy link" primary shareUrl={url} />
+    </Actions>
   );
 }
 
@@ -271,13 +246,24 @@ function AuthorizeSchool({
                 {grant.schoolName} → {grant.districtName}
                 <small>Expires {day(grant.expiresAt)}</small>
               </span>
-              <Button
-                variant="quiet"
-                disabled={busy}
-                onClick={() => withdraw(grant.id)}
-              >
-                Withdraw
-              </Button>
+              {/* The link still to send, read back from the server: a refresh
+                  or another day never loses it. */}
+              <span className={styles.rowActions}>
+                {grant.token && (
+                  <CopyButton
+                    text={address(`/school/adopt#token=${grant.token}`)}
+                    label="Copy link"
+                    shareUrl={address(`/school/adopt#token=${grant.token}`)}
+                  />
+                )}
+                <Button
+                  variant="quiet"
+                  disabled={busy}
+                  onClick={() => withdraw(grant.id)}
+                >
+                  Withdraw
+                </Button>
+              </span>
             </li>
           ))}
         </ul>
@@ -456,8 +442,7 @@ function ReviewDecision({
       ) : (
         <>
           {data.cleverConnections.length > 0 && (
-            <details className={styles.details}>
-              <summary>Match to Clever (optional)</summary>
+            <Disclosure summary="Match to Clever (optional)">
               <div className={styles.section}>
                 <Select
                   aria-label="Clever connection"
@@ -529,7 +514,7 @@ function ReviewDecision({
                     )
                   ))}
               </div>
-            </details>
+            </Disclosure>
           )}
           <Checkbox checked={confirmed} onChange={setConfirmed} disabled={busy}>
             I have reviewed this school’s records and authorize it to join{" "}

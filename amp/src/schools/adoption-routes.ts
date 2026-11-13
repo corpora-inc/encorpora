@@ -32,6 +32,9 @@ export async function registerSchoolAdoptionRoutes(
     pool: Pool;
     authenticate: Authenticator;
     origin?: string;
+    /** The link secret: approval links derive from it, so they can be read
+     * again by the school that issued them. */
+    secret?: string;
     cleverUser?: (connectionId: string, userId: string) => Promise<User>;
   },
 ) {
@@ -85,7 +88,12 @@ export async function registerSchoolAdoptionRoutes(
       );
     post("options", async (account, body) => {
       const input = z.object({ districtId: z.uuid().optional() }).parse(body);
-      return schoolAdoptionOptions(options.pool, account, input.districtId);
+      return schoolAdoptionOptions(
+        options.pool,
+        account,
+        input.districtId,
+        options.secret,
+      );
     });
     post("district", async (account, body) => {
       const { districtId } = z.object({ districtId: z.uuid() }).parse(body);
@@ -103,7 +111,13 @@ export async function registerSchoolAdoptionRoutes(
       );
     });
     post("issue", async (account, body) =>
-      issueSchoolAdoption(options.pool, account, adoptionRequest.parse(body)),
+      issueSchoolAdoption(
+        options.pool,
+        account,
+        adoptionRequest.parse(body),
+        new Date(),
+        options.secret,
+      ),
     );
     post("review", async (account, body) => {
       const { token } = adoptionReviewRequest.parse(body);

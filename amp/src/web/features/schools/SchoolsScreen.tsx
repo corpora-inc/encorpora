@@ -91,7 +91,7 @@ export function SchoolsScreen() {
             </p>
             <div className={styles.heroActions}>
               <Actions />
-              <p className={styles.note}>Free 30-day pilot for your class.</p>
+              <p className={styles.note}>30 days of free practice for your class.</p>
             </div>
           </div>
           {summary && (
