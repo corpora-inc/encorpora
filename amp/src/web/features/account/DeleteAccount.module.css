@@ -5,6 +5,7 @@
 .reserve {
   display: grid;
   align-content: start;
+  gap: var(--space-3);
   min-height: 280px;
 }
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   DELETE_ACCOUNT_WORD,
   type DeletionBlocker,
@@ -8,6 +8,7 @@ import {
 } from "../../../account/deletion-contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { returnTarget } from "../../lib/return-to";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
@@ -176,10 +177,28 @@ function DeleteAccount({ session }: { session: AuthSession }) {
   const preview = useQuery(deletionPreviewOptions(session));
   const remove = useDeleteAccount(session);
   const [typed, setTyped] = useState("");
+  const [expired, setExpired] = useState(false);
+  useEffect(() => {
+    const until = preview.data?.freshUntil;
+    setExpired(until !== undefined && until <= Date.now());
+    if (until === undefined) return;
+    const timer = setTimeout(
+      () => setExpired(true),
+      Math.max(0, until - Date.now()),
+    );
+    return () => clearTimeout(timer);
+  }, [preview.data?.freshUntil]);
+  const needsSignIn =
+    expired ||
+    [preview.error, remove.error].some(
+      (error) => error instanceof AppError && error.code === "reauth_required",
+    ) ||
+    (preview.data !== undefined && preview.data.freshUntil <= Date.now());
   const confirmed = typed.trim().toLowerCase() === DELETE_ACCOUNT_WORD;
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    if (!confirmed || remove.isPending) return;
+    if (!confirmed || remove.isPending || needsSignIn || preview.isFetching)
+      return;
     remove.mutate(undefined, {
       onSuccess: () =>
         void navigate({ to: "/account/deleted", replace: true }).then(
@@ -202,10 +221,28 @@ function DeleteAccount({ session }: { session: AuthSession }) {
         <div className={pages.head}>
           <h1 className={pages.title}>Delete your account</h1>
           <p className={pages.lede}>
-            Everything below is deleted for good. It can’t be undone.
+            Deleting your account is permanent. It can’t be undone.
           </p>
         </div>
-        {!data ? (
+        {needsSignIn ? (
+          <div className={styles.reserve}>
+            <p className={pages.quietLine}>
+              For your security, sign in again before deleting your account.
+            </p>
+            <div className={pages.footActions}>
+              <Link
+                className={buttonClass("primary")}
+                to="/sign-in"
+                search={{
+                  return: "security",
+                  next: returnTarget("/family/security/delete"),
+                }}
+              >
+                Sign in again to delete
+              </Link>
+            </div>
+          </div>
+        ) : !data || preview.isFetching ? (
           <div className={styles.reserve} aria-busy={!preview.error}>
             {preview.error ? (
               <div className={pages.footActions}>

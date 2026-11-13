@@ -251,3 +251,23 @@ test("only a path inside staff screens survives a school sign-in", () => {
     );
   expect(continuationSearch({ next })).toEqual({});
 });
+
+test("security sign-in only returns to the validated deletion page", () => {
+  expect(
+    continuationUrl({ return: "security", next: "/family/security/delete" }),
+  ).toBe("/family/security/delete");
+  for (const next of [
+    "https://example.test",
+    "//example.test",
+    "/api/v1/account/delete",
+    "/school/other",
+    "/family/security/delete?unexpected=1",
+  ]) {
+    expect(continuationSearch({ return: "security", next })).toEqual({
+      return: "security",
+    });
+    expect(continuationUrl({ return: "security", next })).toBe(
+      "/family/security",
+    );
+  }
+});
