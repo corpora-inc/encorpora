@@ -806,7 +806,7 @@ async function sourceRoster(db: Database, schoolId: string) {
   const people = (
     await db.query(
       `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
-    p.grade_level, p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
+    p.identifier,p.grade_level, p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
     AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
       WHERE r.person_id=p.id AND ${activeToday("r", "o")}) ORDER BY p.learner_id IS NOT NULL,p.given_name,p.id`,
       [schoolId],
@@ -816,6 +816,7 @@ async function sourceRoster(db: Database, schoolId: string) {
     name: string;
     student: boolean;
     grade_level: number | null;
+    identifier: string | null;
   }[];
   const classes = (
     await db.query(
@@ -978,6 +979,14 @@ export function schoolAdoptionCleverPreview(
       id: u.id,
       name: nameOf(u),
       student: !!u.roles.student,
+      identifier:
+        u.roles.student?.student_number ??
+        u.roles.student?.sis_id ??
+        u.roles.teacher?.teacher_number ??
+        u.roles.teacher?.sis_id ??
+        u.roles.staff?.staff_id ??
+        u.roles.staff?.sis_id ??
+        null,
       grade: u.roles.student?.grade ?? null,
       classNames: distinctNames(
         (userSections.get(u.id) ?? []).map((s) => s.name),
@@ -992,6 +1001,8 @@ export function schoolAdoptionCleverPreview(
       id: s.id,
       name: s.name,
       grade: s.grade ?? null,
+      period: s.period ?? null,
+      sectionNumber: s.section_number ?? null,
       teacherNames: sectionTeachers.get(s.id) ?? [],
       courseName: s.course ? (coursesById.get(s.course)?.name ?? null) : null,
     })),

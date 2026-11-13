@@ -65,11 +65,14 @@ export const adoptionIssued = z.object({
   expiresAt: z.string(),
 });
 const personContext = {
+  identifier: z.string().nullable().optional(),
   grade: z.string().nullable().optional(),
   classNames: z.array(z.string()).optional(),
   teacherNames: z.array(z.string()).optional(),
 };
 const classContext = {
+  period: z.string().nullable().optional(),
+  sectionNumber: z.string().nullable().optional(),
   grade: z.string().nullable().optional(),
   teacherNames: z.array(z.string()).optional(),
   courseName: z.string().nullable().optional(),

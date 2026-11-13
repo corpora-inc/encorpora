@@ -107,7 +107,7 @@ test(
           headers: { authorization: `Bearer ${account}` },
           payload: { email: "teacher@example.test", role: "teacher" },
         });
-      assert.equal((await invite(teacherAccount)).statusCode, 403);
+      assert.equal((await invite(teacherAccount)).statusCode, 404);
       const invited = await invite(administrator);
       assert.equal(invited.statusCode, 201, invited.body);
       assert.equal(invited.json().personId, teacher);

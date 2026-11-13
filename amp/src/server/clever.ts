@@ -20,7 +20,7 @@ import { SchoolRepository } from "../schools/repository.js";
 import { SchoolSignIn } from "../schools/sign-in.js";
 
 export type CleverConfiguration = CleverAuthConfig & {
-  apiVersion: CleverApiVersion;
+  apiVersion?: CleverApiVersion;
   districtSignupUrl?: string;
 };
 
