@@ -70,9 +70,10 @@ export const staffScreen = async ({
 /** A school-level page a family org (a family's or a tutor's) doesn't have
  * (docs/design/ia.md: a family never lands on one). An old link opens the
  * family's own equivalent instead, in its one class: Students is its People,
- * Standing its Map. Layers open over it come along (a student). */
+ * Standing its Map, Staff its People and Settings its Settings. Pages with
+ * no class equivalent open Today. Student layers come along. */
 const familyEquivalent =
-  (leaf: "roster" | "map") =>
+  (leaf: "roster" | "map" | "settings" | "today") =>
   async ({
     location,
     params,
@@ -89,16 +90,18 @@ const familyEquivalent =
       .ensureQueryData(orgOptions(session, orgId))
       .catch(() => null);
     if (org?.kind !== "family") return { session };
-    const classes = await queryClient
-      .ensureQueryData(classesOptions(session, orgId))
-      .catch(() => []);
+    const classes = await queryClient.ensureQueryData(
+      classesOptions(session, orgId),
+    );
     const klass =
       classes.find((entry) => entry.id === classId) ?? classes.at(0);
+    // A failed or empty class lookup must not redirect back to /classes,
+    // which uses this same guard. Let the route's error view offer a retry.
+    if (!klass)
+      throw new Error("The class is unavailable. Reload to try again.");
     const open = (location.search as Record<string, unknown>)[OPEN_KEY];
     throw redirect({
-      to: klass
-        ? `/school/${orgId}/classes/${klass.id}/${leaf}`
-        : `/school/${orgId}/classes`,
+      to: `/school/${orgId}/classes/${klass.id}/${leaf}`,
       search: typeof open === "string" ? { [OPEN_KEY]: open } : {},
       replace: true,
     } as never);
@@ -125,12 +128,12 @@ export function schoolRoutes(root: AnyRoute) {
     component: ReturnType<typeof screen>,
     load?: (session: AuthSession, orgId: string) => unknown[],
     /** A family org's own page in place of this school-level one. */
-    family?: "roster" | "map",
+    family: "roster" | "map" | "settings" | "today" = "today",
   ) =>
     createRoute({
       getParentRoute: () => root,
       path: `/school/$org${path}`,
-      beforeLoad: family ? familyEquivalent(family) : staffScreen,
+      beforeLoad: familyEquivalent(family),
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
         const orgId = (params as unknown as { org: string }).org;
@@ -439,24 +442,36 @@ export function schoolRoutes(root: AnyRoute) {
         } as never);
       },
     }),
-    orgScreen("/staff", screens.staff, (session, orgId) => [
-      preload(staffOptions(session, orgId)),
-    ]),
+    orgScreen(
+      "/staff",
+      screens.staff,
+      (session, orgId) => [preload(staffOptions(session, orgId))],
+      "roster",
+    ),
     orgScreen("/sign-in-help", screens.help, (session, orgId) => [
       preload(signInHelpOptions(session, orgId)),
     ]),
-    orgScreen("/calendar", screens.calendar, (session, orgId) => [
-      preload(calendarOptions(session, orgId)),
-    ]),
+    orgScreen(
+      "/calendar",
+      screens.calendar,
+      (session, orgId) => [preload(calendarOptions(session, orgId))],
+      "settings",
+    ),
     // Every section before the page paints, so a section never arrives
     // late and pushes the ones below it (the license, opened by its hash).
-    orgScreen("/settings", screens.settings, (session, orgId) => [
-      preload(calendarOptions(session, orgId)),
-      preload(licenseOptions(session, orgId)),
-      import("../features/school/classroom/api").then(({ experienceOptions }) =>
-        preload(experienceOptions(session, { kind: "org", id: orgId })),
-      ),
-    ]),
+    orgScreen(
+      "/settings",
+      screens.settings,
+      (session, orgId) => [
+        preload(calendarOptions(session, orgId)),
+        preload(licenseOptions(session, orgId)),
+        import("../features/school/classroom/api").then(
+          ({ experienceOptions }) =>
+            preload(experienceOptions(session, { kind: "org", id: orgId })),
+        ),
+      ],
+      "settings",
+    ),
     toSettings("/license", "license"),
     orgScreen("/import", screens.importer),
     toSettings("/experience", "student-experience"),
