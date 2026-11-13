@@ -47,7 +47,14 @@ export function shellFrame(
       board: false,
     };
   if (path === "/school/new") return null;
-  if (["/school/invite", "/school/start", "/school/connect"].includes(path))
+  if (
+    [
+      "/school/invite",
+      "/school/start",
+      "/school/connect",
+      "/school/adopt",
+    ].includes(path)
+  )
     return { kind: "plain" };
   const klass = path.match(
     /^\/school\/([^/]+)\/classes\/([^/]+)(?:\/([^/]+))?/,

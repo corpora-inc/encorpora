@@ -50,6 +50,7 @@ test("each group's screens share one frame and name their tab", () => {
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/start")).toEqual({ kind: "plain" });
   expect(shellFrame("/school/connect")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/adopt")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {

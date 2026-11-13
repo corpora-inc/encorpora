@@ -19,6 +19,7 @@ export function Authorization({
   onTitle,
   onAuthorized,
   disabled = false,
+  scope = "class",
 }: {
   name: string;
   title: string;
@@ -27,10 +28,16 @@ export function Authorization({
   onTitle: (value: string) => void;
   onAuthorized: (value: boolean) => void;
   disabled?: boolean;
+  scope?: "class" | "district";
 }) {
   const [reading, setReading] = useState(false);
   return (
-    <section className={styles.form} aria-label="Class authorization">
+    <section
+      className={styles.form}
+      aria-label={
+        scope === "district" ? "District authorization" : "Class authorization"
+      }
+    >
       <div className={styles.pair}>
         <TextField
           label="Your name"
@@ -60,8 +67,9 @@ export function Authorization({
         onChange={onAuthorized}
         disabled={disabled}
       >
-        I am authorized by my school to use AMP with this class, share its
-        roster, and accept the student data agreement for this use.
+        {scope === "district"
+          ? "I am authorized to connect this district to AMP, share its selected roster, and accept the student data agreement for the district."
+          : "I am authorized by my school to use AMP with this class, share its roster, and accept the student data agreement for this use."}
       </Checkbox>
       <Sheet
         open={reading}

@@ -36,6 +36,8 @@ const messages: Record<string, string> = {
   agreement_required: "Accept the data agreement first, then continue.",
   confirm_email:
     "Confirm your email address, then return to finish setting up your class.",
+  pilot_teacher_required:
+    "A teacher assigned to this class starts their pilot. Ask that teacher to open the class and activate it.",
   students_required: "Add students to this class before starting the pilot.",
   real_school_required: "Open your real class to use this action.",
   class_import_students_only:

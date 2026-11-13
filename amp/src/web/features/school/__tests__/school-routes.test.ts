@@ -37,9 +37,9 @@ test("a class's own address opens the class, an unknown one says so", () => {
 
 test("self-service and buyer links resolve outside org catch-all routes", () => {
   expect(routeOf("/school/start")).toBe("/school/start");
-  expect(routeOf("/schools/continue/fixture-token")).toBe(
-    "/schools/continue/$token",
-  );
+  expect(routeOf("/school/connect")).toBe("/school/connect");
+  expect(routeOf("/school/adopt")).toBe("/school/adopt");
+  expect(routeOf("/schools/continue")).toBe("/schools/continue");
   expect(routeOf(`/school/${org}/classes/${klass}/import`)).toBe(
     "/school/$org/classes/$class/import",
   );

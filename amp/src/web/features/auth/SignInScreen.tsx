@@ -151,17 +151,19 @@ export function SignInScreen() {
   const [error, setError] = useState(
     invalidReset || params.get("error") === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
-      : params.get("error") === "link_failed"
-        ? "That login could not be linked. Sign in again, then try linking it from Security."
-        : params.get("error") && isProvider(errorProvider)
-          ? socialErrorMessage(
-              copy,
-              params.get("error")!,
-              providerNames[errorProvider],
-            )
-          : params.get("error")
-            ? "That sign-in did not complete. Try again."
-            : "",
+      : params.get("error") === "clever_sign_in_failed"
+        ? "Clever sign-in did not finish. Try Clever again. If your school has not connected AMP yet, you can sign in to AMP and set up your class directly."
+        : params.get("error") === "link_failed"
+          ? "That login could not be linked. Sign in again, then try linking it from Security."
+          : params.get("error") && isProvider(errorProvider)
+            ? socialErrorMessage(
+                copy,
+                params.get("error")!,
+                providerNames[errorProvider],
+              )
+            : params.get("error")
+              ? "That sign-in did not complete. Try again."
+              : "",
   );
   useLoggedError(error);
   // A notice carried from another screen (an email that already has an

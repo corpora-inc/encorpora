@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
+import { buttonClass } from "../../ui/Button";
 import { OrgExperienceSection } from "./classroom/ExperienceScreens";
 import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
 import { currentSession, orgOptions } from "./api";
@@ -31,6 +32,25 @@ export function OrgSettingsScreen() {
         )}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}
+        {org && !org.demo && org.kind !== "family" && (
+          <section>
+            <h2>School connections</h2>
+            <Link
+              to="/$"
+              params={{ _splat: "school/connect" }}
+              className={buttonClass("secondary")}
+            >
+              Connect a school roster
+            </Link>
+            <Link
+              to="/$"
+              params={{ _splat: "school/adopt" }}
+              className={buttonClass("quiet")}
+            >
+              Bring an existing school into a district
+            </Link>
+          </section>
+        )}
         {/* Privacy and Integrations are the sub-tabs above, not links here. */}
       </div>
     </OrgFrame>

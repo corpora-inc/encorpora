@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
-import { buttonClass } from "../../../ui/Button";
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { prepareBuyerHandoff } from "./buyer-session";
+import { Button, buttonClass } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { buyerOptions } from "./api";
 import styles from "./Pilot.module.css";
 
 export function BuyerHandoffScreen() {
-  const { token } = useParams({ strict: false }) as { token: string };
-  const request = useQuery(buyerOptions(token));
+  const [token] = useState(prepareBuyerHandoff);
+  const [copied, setCopied] = useState("");
+  const request = useQuery({ ...buyerOptions(token ?? ""), enabled: !!token });
   const data = request.data;
   const ends = [
     ...new Set(
@@ -27,7 +30,7 @@ export function BuyerHandoffScreen() {
     <PublicFrame>
       <main className={styles.page}>
         <meta name="referrer" content="no-referrer" />
-        {request.isPending ? (
+        {token && request.isPending ? (
           <Loading>Opening the school’s request</Loading>
         ) : !data ? (
           <>
@@ -73,12 +76,37 @@ export function BuyerHandoffScreen() {
               you want to include. We’ll agree on pricing and help with your
               school’s purchase order or invoice process.
             </p>
-            <a
-              href={`mailto:support@corpora.inc?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
-              className={buttonClass("primary")}
-            >
-              Discuss seats with Corpora
-            </a>
+            <div className={styles.actions}>
+              <Link
+                to="/schools"
+                hash="talk"
+                className={buttonClass("primary")}
+              >
+                Discuss seats with Corpora
+              </Link>
+              <Button
+                variant="secondary"
+                onClick={() =>
+                  void navigator.clipboard
+                    .writeText(`${subject}\n\n${body}`)
+                    .then(
+                      () =>
+                        setCopied(
+                          "Request details copied. Include them when you contact us.",
+                        ),
+                      () =>
+                        setCopied(
+                          "Copy the request reference below and include it when you contact us.",
+                        ),
+                    )
+                }
+              >
+                Copy request details
+              </Button>
+            </div>
+            <p className={styles.status} role="status">
+              {copied}
+            </p>
             <p className={styles.status}>Request reference: {data.id}</p>
           </>
         )}

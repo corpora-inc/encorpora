@@ -198,10 +198,17 @@ try {
   await page.getByRole("button", { name: "Create buyer link" }).click();
   await page.getByLabel("Buyer link").waitFor();
   const buyer = await page.getByLabel("Buyer link").inputValue();
+  assert.equal(new URL(buyer).pathname, "/schools/continue");
+  assert.match(new URL(buyer).hash, /^#token=[A-Za-z0-9_-]{43}$/);
   await capture("buyer-link");
   const guest = await browser.newContext();
   const buyerPage = await guest.newPage();
   await buyerPage.goto(buyer);
+  await buyerPage
+    .getByRole("heading", { name: "AMP for Alder pilot school", exact: true })
+    .waitFor();
+  assert.equal(new URL(buyerPage.url()).hash, "");
+  await buyerPage.reload();
   await buyerPage
     .getByRole("heading", { name: "AMP for Alder pilot school", exact: true })
     .waitFor();

@@ -10,6 +10,8 @@ import { nativeRuntime } from "../native-runtime";
 import { OPEN_KEY, work, writeStack } from "../nav/entities";
 import type { AuthSession } from "../auth";
 import { z } from "zod";
+import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
+import { prepareSchoolAdoption } from "../features/school/adoption-session";
 import {
   calendarOptions,
   classesOptions,
@@ -237,7 +239,48 @@ export function schoolRoutes(root: AnyRoute) {
     }),
     createRoute({
       getParentRoute: () => root,
-      path: "/schools/continue/$token",
+      path: "/school/connect",
+      validateSearch: (search) => ({
+        error: [
+          "clever_identity_already_linked",
+          "clever_link_expired",
+        ].includes(String(search.error))
+          ? search.error
+          : undefined,
+      }),
+      beforeLoad: () => {
+        if (nativeRuntime || studentSession())
+          throw redirect({ to: "/", replace: true });
+      },
+      component: screen(
+        () => import("../features/school/clever/ConnectionScreen"),
+        "ConnectionScreen",
+      ),
+    }),
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/adopt",
+      validateSearch: (search) => ({
+        district: z.uuid().safeParse(search.district).success
+          ? String(search.district)
+          : undefined,
+        manage: search.manage === 1 || search.manage === "1" ? 1 : undefined,
+      }),
+      beforeLoad: (context) => {
+        prepareSchoolAdoption();
+        return staffScreen(context);
+      },
+      component: screen(
+        () => import("../features/school/AdoptionScreen"),
+        "AdoptionScreen",
+      ),
+    }),
+    createRoute({
+      getParentRoute: () => root,
+      path: "/schools/continue",
+      beforeLoad: () => {
+        prepareBuyerHandoff();
+      },
       component: screen(
         () => import("../features/school/pilots/BuyerHandoffScreen"),
         "BuyerHandoffScreen",

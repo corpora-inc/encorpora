@@ -30,8 +30,9 @@ export const buyerOptions = (token: string) =>
   queryOptions({
     queryKey: ["school-buyer", token],
     queryFn: ({ signal }) =>
-      call(`/buyer/${encodeURIComponent(token)}`, buyerHandoffSchema, null, {
+      call("/buyer", buyerHandoffSchema, null, {
         signal,
+        body: { token },
       }),
     retry: false,
   });
