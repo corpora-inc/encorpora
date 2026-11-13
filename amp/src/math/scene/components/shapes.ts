@@ -391,6 +391,7 @@ export function shifted(prims: Prim[], at?: readonly [number, number]): Prim[] {
       case "point":
       case "tick":
       case "rect":
+      case "billImage":
         return { ...p, at: m(p.at) };
       case "segment":
       case "arrow":
