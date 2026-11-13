@@ -69,13 +69,7 @@
   stroke-linecap: round;
   color: var(--color-primary);
   overflow: hidden;
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 12%,
-    #000 88%,
-    transparent
-  );
+  mask-image: var(--wave-edge);
 }
 .app-loading-body {
   display: flex;
