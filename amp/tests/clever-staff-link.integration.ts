@@ -165,7 +165,9 @@ test(
           await f.prove(f.a);
           await f.prove(f.b);
           const subjects = [f.a, f.b];
-          const concurrent = await Promise.all(subjects.map(f.attach));
+          const concurrent = await Promise.all(
+            subjects.map((subject) => f.attach(subject)),
+          );
           assert.ok(
             concurrent.every(
               (r) =>
