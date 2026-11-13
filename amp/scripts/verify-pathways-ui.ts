@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { mkdir } from "node:fs/promises";
+import { mkdir, realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
 import {
@@ -29,6 +29,7 @@ import {
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `export async function accessSession(){return window.pathwaysAccount ? {token:window.pathwaysAccount,accountId:window.pathwaysAccount} : null;}export function onSessionChanged(fn){const handler=()=>accessSession().then(fn);window.addEventListener('pathways-session',handler);return()=>window.removeEventListener('pathways-session',handler);}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways",
   plugins: [
     {
       name: "pathways-proof-auth",
@@ -38,7 +39,12 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 0 },
+  server: {
+    host: "127.0.0.1",
+    port: Number(process.env.AMP_WEB_PORT ?? 0),
+    strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
+  },
 });
 await vite.listen();
 const address = vite.httpServer!.address();
@@ -610,7 +616,15 @@ async function choose(page: Page, label: string, value: string) {
   assert.equal(await button.getAttribute("aria-haspopup"), "listbox");
   await button.click();
   const list = page.getByRole("listbox", { name: label, exact: true });
-  await list.locator(`[role="option"][data-value="${value}"]`).click();
+  try {
+    await list.locator(`[role="option"][data-value="${value}"]`).click();
+  } catch (error) {
+    await page.screenshot({
+      path: `${output}/picker-failure.png`,
+      fullPage: true,
+    });
+    throw error;
+  }
   await list.waitFor({ state: "detached" });
   assert.equal(await button.getAttribute("data-value"), value);
 }
@@ -1391,7 +1405,8 @@ try {
     "/start",
   );
   await empty.close();
-  // Compact phone headers keep a pending progress notice visible.
+  // Arrival waits for the record before painting the map. Switching learners
+  // on the mounted map keeps the compact phone's progress notice visible.
   const pendingPhone = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
@@ -1400,15 +1415,31 @@ try {
   const progressGate = new Promise<void>((resolve) => {
     releaseProgress = resolve;
   });
+  let progressAsked!: () => void;
+  const progressRequested = new Promise<void>((resolve) => {
+    progressAsked = resolve;
+  });
   await pendingPhone.route("**/api/v1/learners/*/progress", async (route) => {
+    progressAsked();
     await progressGate;
     await route.fallback();
   });
+  let releaseSwitchedProgress!: () => void;
+  const switchedProgressGate = new Promise<void>((resolve) => {
+    releaseSwitchedProgress = resolve;
+  });
   try {
     await pendingPhone.goto(`${origin}/pathways`);
-    await pendingPhone
-      .getByText("Loading earned skills…", { exact: true })
-      .waitFor();
+    await progressRequested;
+    await pendingPhone.getByRole("status", { name: "Loading AMP" }).waitFor();
+    assert.equal(
+      await pendingPhone.locator(".pathways").count(),
+      0,
+      "the map waits for its initial record instead of painting empty progress",
+    );
+    await pendingPhone.screenshot({
+      path: `${output}/progress-arrival-pending.png`,
+    });
     releaseProgress();
     // The phone row's count paints once the record is in.
     await pendingPhone
@@ -1416,13 +1447,38 @@ try {
         hasText: /^2 of \d+ skills earned$/,
       })
       .waitFor();
+    await pendingPhone.route(
+      "**/api/v1/learners/parent-one-b/progress",
+      async (route) => {
+        await switchedProgressGate;
+        await route.fallback();
+      },
+    );
+    await choose(pendingPhone, "Learner", "parent-one-b");
+    await pendingPhone
+      .getByText("Loading earned skills…", { exact: true })
+      .waitFor();
+    await pendingPhone.waitForFunction(() => {
+      const loading = document.querySelector(".pathways-status .amp-loading");
+      return loading && getComputedStyle(loading).opacity === "1";
+    });
+    await pendingPhone.screenshot({
+      path: `${output}/progress-switch-pending.png`,
+    });
+    releaseSwitchedProgress();
+    await pendingPhone
+      .locator(".pathways-phone-summary", {
+        hasText: /^0 of \d+ skills earned$/,
+      })
+      .waitFor();
   } finally {
     releaseProgress();
+    releaseSwitchedProgress();
     await pendingPhone.close();
   }
 
-  // The map remounts when the family's learner arrives. The catalog is asked
-  // for once, even when its first request is still on its way then.
+  // A direct lesson opens before the map's catalog resolves. The mounted map
+  // and its background route preload must share that in-flight request.
   const once = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await fixture(once);
   let catalogRequests = 0;
@@ -1435,20 +1491,27 @@ try {
     catalogRequests++;
     catalogAsked();
   });
-  const learnersLoaded = once.waitForResponse((r) =>
-    new URL(r.url()).pathname.endsWith("/me"),
-  );
-  await once.route("**/api/v1/me", async (route) => {
-    await asked;
-    await route.fallback();
+  let releaseCatalog!: () => void;
+  const catalogGate = new Promise<void>((resolve) => {
+    releaseCatalog = resolve;
   });
   await once.route("**/api/v1/catalog", async (route) => {
-    await learnersLoaded;
-    await once.waitForTimeout(300);
+    await catalogGate;
     await route.fallback().catch(() => undefined);
   });
   try {
-    await once.goto(`${origin}/pathways`);
+    await once.goto(`${origin}/pathways?open=lesson:nonlinear-system-read`);
+    await asked;
+    await once.locator(".pathways").waitFor();
+    await once
+      .getByRole("dialog")
+      .getByText("Example", { exact: true })
+      .waitFor();
+    releaseCatalog();
+    await once
+      .getByRole("dialog")
+      .getByRole("button", { name: "Close", exact: true })
+      .click();
     await once
       .locator(".pathways-phone-summary", {
         hasText: /^2 of \d+ skills earned$/,
@@ -1457,6 +1520,7 @@ try {
     await once.waitForLoadState("networkidle");
     assert.equal(catalogRequests, 1, "the map asks for the catalog once");
   } finally {
+    releaseCatalog();
     await once.close();
   }
 
@@ -1562,13 +1626,15 @@ try {
   await fixture(page);
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
-    .getByText(/^2 of \d+ skills earned/)
-    .first()
+    .locator('.pathways-summary[aria-busy="false"]', {
+      hasText: /^2 of \d+ skills earned/,
+    })
     .waitFor({ state: "attached" });
   await choose(page, "Learner", "parent-one-b");
   await page
-    .getByText(/^0 of \d+ skills earned/)
-    .first()
+    .locator('.pathways-summary[aria-busy="false"]', {
+      hasText: /^0 of \d+ skills earned/,
+    })
     .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
@@ -1576,8 +1642,9 @@ try {
   );
   await choose(page, "Learner", "parent-one-a");
   await page
-    .getByText(/^2 of \d+ skills earned/)
-    .first()
+    .locator('.pathways-summary[aria-busy="false"]', {
+      hasText: /^2 of \d+ skills earned/,
+    })
     .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
