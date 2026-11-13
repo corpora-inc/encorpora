@@ -68,53 +68,6 @@ export function SettlingNote({
   );
 }
 
-/** The chart's numbers as a table, closed until asked for. */
-export function TableDisclosure({
-  caption,
-  children,
-}: {
-  caption: string;
-  children: ReactNode;
-}) {
-  return (
-    <details className={styles.disclosure}>
-      <summary>Show as a table</summary>
-      <div className={styles.tableScroll}>
-        <table className={styles.table}>
-          <caption>{caption}</caption>
-          {children}
-        </table>
-      </div>
-    </details>
-  );
-}
-
-/** Behind, within and ahead as rows of a table: each student's curve counted
- * where its mass falls. */
-export function ShareRows({ curve }: { curve: StandingCurve }) {
-  const share = (value: number) =>
-    curve.n ? `${Math.round((value / curve.n) * 100)}%` : "—";
-  return (
-    <>
-      <tr>
-        <th scope="row">More than half a grade behind</th>
-        <td>{plain(curve.behind)}</td>
-        <td>{share(curve.behind)}</td>
-      </tr>
-      <tr>
-        <th scope="row">Within half a grade</th>
-        <td>{plain(curve.within)}</td>
-        <td>{share(curve.within)}</td>
-      </tr>
-      <tr>
-        <th scope="row">More than half a grade ahead</th>
-        <td>{plain(curve.ahead)}</td>
-        <td>{share(curve.ahead)}</td>
-      </tr>
-    </>
-  );
-}
-
 /** Up one level of the drill. */
 export function UpLink({ to, children }: { to: string; children: ReactNode }) {
   return (
@@ -124,12 +77,17 @@ export function UpLink({ to, children }: { to: string; children: ReactNode }) {
   );
 }
 
-/** One sentence for a screen reader, the same facts the chart shows. */
-export const curveSentence = (curve: StandingCurve) =>
-  curve.median === null
-    ? "No students yet."
-    : `${curve.n} students. Median ${signed(curve.median)} grades from their own${
-        curve.middle ? `, 95% range ${intervalWords(curve.middle)}` : ""
-      }; mean ${signed(curve.mean!)}, sd ${plain(curve.sd!)}. About ${Math.round(
-        (curve.within / Math.max(1, curve.n)) * 100,
-      )}% within half a grade of their own. The table under the chart has the numbers.`;
+/** The chart in words, for a screen reader: every fact it shows, and with
+ * `settleAt`, how many of its students are still settling. */
+export const curveSentence = (curve: StandingCurve, settleAt?: number) => {
+  if (curve.median === null) return "No students yet.";
+  const share = (value: number) =>
+    `${Math.round((value / Math.max(1, curve.n)) * 100)}%`;
+  return `${curve.n} students. Median ${signed(curve.median)} grades from their own${
+    curve.middle ? `, 95% range ${intervalWords(curve.middle)}` : ""
+  }; mean ${signed(curve.mean!)}, sd ${plain(curve.sd!)}. About ${share(curve.within)} within half a grade of their own, ${share(curve.behind)} more than half a grade behind and ${share(curve.ahead)} more than half a grade ahead.${
+    settleAt && curve.settling
+      ? ` ${curve.settling} with fewer than ${settleAt} answers.`
+      : ""
+  }`;
+};

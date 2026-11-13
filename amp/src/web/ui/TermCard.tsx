@@ -15,6 +15,7 @@ import {
   GlossaryContext,
   type GlossaryValue,
 } from "./glossary-context";
+import { usePopover } from "./popover-owner";
 
 /** The step that lists a lesson's key words (never a glossary id). */
 export const KEY_WORDS = "\u0000key-words";
@@ -70,6 +71,14 @@ export function TermCard({
     closing.current = true;
     close();
   };
+  // Open while mounted, in the app's popover layer: opening it closes a tip
+  // or menu elsewhere. It is modal, so it handles its own dismissal.
+  usePopover(true, {
+    contains: (node) => !!dialog.current?.contains(node),
+    anchor: () => origin,
+    close: finish,
+    modal: true,
+  });
 
   useLayoutEffect(() => {
     const element = dialog.current!;

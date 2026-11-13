@@ -1,6 +1,14 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useEffect, useRef, useState, type ReactNode, type Ref } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MutableRefObject,
+  type ReactNode,
+  type Ref,
+} from "react";
 import { createPortal } from "react-dom";
+import { usePopover } from "./popover-owner";
 import styles from "./Menu.module.css";
 
 type Insets = { top: number; right: number; bottom: number; left: number };
@@ -92,12 +100,30 @@ export function Menu({
     setUncontrolledOpen(next);
     onOpenChange?.(next);
   };
+  const ownTrigger = useRef<HTMLButtonElement | null>(null);
+  const content = useRef<HTMLDivElement>(null);
+  const setTrigger = (node: HTMLButtonElement | null) => {
+    ownTrigger.current = node;
+    if (typeof triggerRef === "function") triggerRef(node);
+    else if (triggerRef)
+      (triggerRef as MutableRefObject<HTMLButtonElement | null>).current = node;
+  };
+  // Radix keeps it modal (outside presses, Escape, focus); in the app's
+  // popover layer, opening it closes a tip elsewhere, and a route change
+  // closes it.
+  usePopover(open, {
+    contains: (node) =>
+      !!content.current?.contains(node) || !!ownTrigger.current?.contains(node),
+    anchor: () => ownTrigger.current,
+    close: () => setOpen(false),
+    modal: true,
+  });
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger asChild>
         <button
           type="button"
-          ref={triggerRef}
+          ref={setTrigger}
           aria-label={ariaLabel}
           aria-busy={busy || undefined}
           className={`${styles.trigger} ${triggerClassName ?? ""}`}
@@ -128,6 +154,7 @@ export function Menu({
         )}
       <DropdownMenu.Portal>
         <DropdownMenu.Content
+          ref={content}
           className={styles.content}
           align={align}
           sideOffset={8}
