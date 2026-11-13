@@ -11,7 +11,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { startTopic, exitPractice } from "./ui-practice";
-import { choose, leaveSettings, navigateApp } from "./ui-controls";
+import { leaveSettings, navigateApp } from "./ui-controls";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -29,10 +29,12 @@ const learner = await repository.create(
   "SAT example learner",
   2010,
 );
+// SAT Math focus is offered from 13 (FamilyCenter's learner settings), so
+// the sibling is old enough to show the same control, unchecked.
 const sibling = await repository.create(
   "development-household",
   "General example learner",
-  2016,
+  2011,
 );
 const app = buildApp({
   repository,
@@ -70,6 +72,16 @@ async function noOverflow(page: Page) {
     "Horizontal overflow",
   );
 }
+/** Account → Learners lists each child as a row; opening one shows their
+ * settings under it and makes them the device's learner. */
+async function openLearner(page: Page, id: string) {
+  const row = page.locator(`[data-learner-row=${JSON.stringify(id)}]`);
+  if ((await row.getAttribute("aria-expanded")) !== "true") await row.click();
+  await page
+    .locator(`#learner-${id}`)
+    .getByRole("checkbox", { name: "SAT Math focus" })
+    .waitFor();
+}
 async function family(page: Page) {
   await exitPractice(page);
   await page
@@ -80,7 +92,7 @@ async function family(page: Page) {
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Learners", exact: true })
     .click();
-  await page.getByRole("checkbox", { name: "SAT Math focus" }).waitFor();
+  await openLearner(page, learner.id);
 }
 try {
   for (const width of [320, 390, 768, 1280])
@@ -99,10 +111,7 @@ try {
         async (tx) => tx.setSatMathFocus(false),
       );
       await page.goto(`${origin}/family/learners`);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        learner.id,
-      );
+      await openLearner(page, learner.id);
       await page.evaluate(
         (t) => document.documentElement.setAttribute("data-theme", t),
         theme,
@@ -126,7 +135,7 @@ try {
       await toggle.click();
       await page.waitForFunction(() =>
         document
-          .querySelector('input[type="checkbox"]')
+          .querySelector('.sat-focus-setting input[type="checkbox"]')
           ?.hasAttribute("disabled"),
       );
       const during = await toggle.boundingBox();
@@ -142,16 +151,11 @@ try {
         fullPage: true,
       });
       await page.reload();
+      await openLearner(page, learner.id);
       assert.equal(await toggle.isChecked(), true);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        sibling.id,
-      );
+      await openLearner(page, sibling.id);
       assert.equal(await toggle.isChecked(), false);
-      await choose(
-        page.getByRole("button", { name: "Family learner", exact: true }),
-        learner.id,
-      );
+      await openLearner(page, learner.id);
       await page.route(
         "**/practice-settings",
         (route) =>
