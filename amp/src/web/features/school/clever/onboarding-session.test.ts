@@ -72,3 +72,32 @@ test("a forged or rejected completion cannot replace the previous student", asyn
   expect(await cleverOnboardingSession()).toBeNull();
   expect(sessionStorage.getItem("amp.student")).toBe("retained");
 });
+
+test("a transient validation failure retains only in-memory completion intent for retry", async () => {
+  history.replaceState({}, "", `/school/connect#clever-onboarding=${token}`);
+  sessionStorage.setItem("amp.student", "previous student");
+  const valid = () =>
+    Response.json({
+      token,
+      accountId: "amp|fixture",
+      expiresAt: new Date(Date.now() + 600000).toISOString(),
+    });
+  vi.stubGlobal(
+    "fetch",
+    vi
+      .fn()
+      .mockRejectedValueOnce(new Error("offline"))
+      .mockImplementation(async () => valid()),
+  );
+  await expect(cleverOnboardingSession()).rejects.toThrow("offline");
+  expect(location.hash).toBe("");
+  expect(sessionStorage.getItem("amp.clever.onboarding")).toBeNull();
+  expect(sessionStorage.getItem("amp.student")).toBe("previous student");
+  // A route guard can join the component's retry after the fragment is gone.
+  expect((await cleverOnboardingSession())?.token).toBe(token);
+  expect(sessionStorage.getItem("amp.student")).toBeNull();
+  // A proof retained from a completed setup cannot replace a later student.
+  sessionStorage.setItem("amp.student", "later student");
+  expect((await cleverOnboardingSession())?.token).toBe(token);
+  expect(sessionStorage.getItem("amp.student")).toBe("later student");
+});

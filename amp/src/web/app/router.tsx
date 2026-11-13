@@ -1175,7 +1175,6 @@ const schoolStart = createRoute({
 });
 /** Clever. Without Clever enabled there is nothing to connect here, so the
  * address opens class setup instead (no page that can only fail). */
-let pendingCleverDeviceCompletion = false;
 const schoolConnect = createRoute({
   getParentRoute: () => root,
   path: "/school/connect",
@@ -1191,21 +1190,12 @@ const schoolConnect = createRoute({
     if (config.mode === "accounts" && !config.clever)
       throw redirect({ to: "/school/start", replace: true });
     if (studentSession()) {
-      pendingCleverDeviceCompletion ||= new URLSearchParams(
-        window.location.hash.slice(1),
-      ).has("clever-onboarding");
-      if (pendingCleverDeviceCompletion) {
-        const { cleverOnboardingSession } =
-          await import("../features/school/clever/onboarding-session");
-        // Keep only the intent to retry in memory. The helper validates the
-        // setup proof before the previous student can be cleared.
-        const proof = await cleverOnboardingSession();
-        pendingCleverDeviceCompletion = false;
-        if (proof) {
-          clearStudentDevice();
-          window.dispatchEvent(new Event("amp-account-session-changed"));
-        }
-      }
+      // The component may already have captured a hash-only completion.
+      // Await its validation; only the helper can replace a student, and
+      // only for an explicitly received completion rather than an old proof.
+      const { cleverOnboardingSession } =
+        await import("../features/school/clever/onboarding-session");
+      await cleverOnboardingSession();
     }
     if (studentSession()) throw redirect({ to: "/", replace: true });
   },
@@ -1839,6 +1829,9 @@ let leavingStudent = false;
 onSignedOut(() => {
   if (leavingStudent) return true;
   const student = studentSession();
+  // Setup handles an expired credential in place. A late response from the
+  // previous student must not replace an explicitly started Clever handoff.
+  if (window.location.pathname === "/school/connect") return false;
   if (student) {
     // A student's ended sign-in goes to /join. Any other route that refuses a
     // student fails where it stands, without signing the class out.

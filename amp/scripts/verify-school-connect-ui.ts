@@ -153,11 +153,15 @@ const browser = await secureChromium(rawChromium).launch();
 const artifacts = "artifacts/school-connect";
 await mkdir(artifacts, { recursive: true });
 const failures: string[] = [];
+const paths: string[] = [];
 const context = await browser.newContext({
     viewport: { width: 390, height: 900 },
   }),
   page = await context.newPage();
 page.on("pageerror", (error) => failures.push(error.message));
+page.on("framenavigated", (frame) => {
+  if (frame === page.mainFrame()) paths.push(new URL(frame.url()).pathname);
+});
 page.setDefaultTimeout(30000);
 async function capture(name: string) {
   for (const width of [320, 390, 768, 1280])
@@ -224,6 +228,11 @@ try {
     )
       escapedProof.push(new URL(request.url()).pathname);
   });
+  // A stale student's expiry check must not replace the incoming adult setup.
+  await page.route("**/api/v1/provider/onboarding-session", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    await route.continue();
+  });
   await page.goto(`${origin}/school/connect#clever-onboarding=${token}`);
   await page
     .getByRole("heading", { name: "Reconnect your district" })
@@ -233,6 +242,7 @@ try {
     await page.evaluate(() => localStorage.getItem("amp.student")),
     null,
   );
+  await page.unroute("**/api/v1/provider/onboarding-session");
   await page.getByLabel("Your name", { exact: true }).fill("District Admin");
   await page.getByRole("checkbox", { name: /authorized to connect/ }).check();
   assert.ok(
@@ -455,11 +465,21 @@ try {
   await page.getByText(/Students have access/).waitFor();
   await capture("purchase-active");
   assert.deepEqual(escapedProof, []);
+  accountsMode = true;
+  await page.goto(`${origin}/sign-in?error=clever_sign_in_busy`);
+  await page
+    .getByText("Clever sign-in is busy. Try again in a moment.")
+    .waitFor();
+  await page
+    .getByRole("link", { name: "Sign in with Clever", exact: true })
+    .waitFor();
+  await capture("clever-sign-in-busy");
   assert.deepEqual(failures, []);
   console.info(
     "Clever connection, paused authority recovery, teacher hand-off and confirmed purchase browser states passed.",
   );
 } catch (error) {
+  console.info("Connection navigation paths", paths);
   await page.screenshot({ path: `${artifacts}/failure.png`, fullPage: true });
   throw error;
 } finally {

@@ -8,10 +8,12 @@ export type CleverOnboardingSession = {
 const key = "amp.clever.onboarding";
 const tokenPattern = /^po_[\w-]{43}$/;
 let memoryToken: string | null = null;
+let completing = false;
 let pending: Promise<CleverOnboardingSession | null> | null = null;
 
 export function clearCleverOnboardingSession() {
   memoryToken = null;
+  completing = false;
   try {
     sessionStorage.removeItem(key);
   } catch {
@@ -41,6 +43,7 @@ async function load(): Promise<CleverOnboardingSession | null> {
     clearCleverOnboardingSession();
     if (!tokenPattern.test(completion)) return null;
     memoryToken = completion;
+    completing = true;
   }
   let token = memoryToken;
   if (!token) {
@@ -81,7 +84,8 @@ async function load(): Promise<CleverOnboardingSession | null> {
   } catch {
     /* Memory holds this tab's proof. */
   }
-  if (completion) {
+  if (completing) {
+    completing = false;
     clearStudentDevice();
     window.dispatchEvent(new Event("amp-account-session-changed"));
   }
