@@ -1,3 +1,4 @@
+import { OPEN_KEY, writeStack } from "./nav/entities";
 import {
   memo,
   useCallback,
@@ -88,7 +89,9 @@ function takeLibraryReturn(): LibraryReturn | null {
 /** The band a learner works in: their level, or where their age puts them
  * before they have answered anything. */
 function bandAt(level: number) {
-  return gradeOrder[Math.max(0, Math.min(gradeOrder.length - 1, Math.floor(level)))]!;
+  return gradeOrder[
+    Math.max(0, Math.min(gradeOrder.length - 1, Math.floor(level)))
+  ]!;
 }
 /** The library's top edge under the pinned bars: where a band or a card
  * scrolled into place should sit. */
@@ -470,7 +473,7 @@ function Library({
           ? `/lessons?topic=${encodeURIComponent(result.target)}`
           : result.kind === "film"
             ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
-            : `/pathways/${encodeURIComponent(result.target)}`;
+            : `/pathways?${new URLSearchParams({ [OPEN_KEY]: writeStack([{ kind: "skill", id: result.target }])! })}`;
     return {
       href,
       open: (result, trigger) => {

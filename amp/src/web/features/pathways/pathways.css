@@ -162,13 +162,7 @@
   gap: 24px;
   padding-top: 24px;
 }
-.pathways-eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--atlas-muted);
-  margin: 0 0 8px;
-  font-weight: 600;
-}
+
 /* The shared page title: the display serif, as on every other page. */
 .pathways h1 {
   font-family: var(--font-display);
@@ -476,114 +470,7 @@
   font-size: 25px;
   opacity: 1;
 }
-.pathways-detail {
-  width: 300px;
-  flex-shrink: 0;
-  overflow: auto;
-  border: 1px solid var(--atlas-border);
-  background: var(--atlas-panel);
-  border-radius: 16px;
-  padding: 20px;
-  line-height: 1.6;
-  font-size: 13px;
-}
-.pathways-detail-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.pathways-detail-top button {
-  font-size: 22px;
-  line-height: 1;
-  padding: 8px;
-  min-width: 44px;
-}
-.pathways-detail-top .pathways-eyebrow {
-  margin: 0;
-}
-.pathways-detail h2 {
-  font-size: 23px;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-  margin: 12px 0;
-  overflow-wrap: anywhere;
-}
-.pathways-detail h3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin: 20px 0 8px;
-  color: var(--atlas-muted);
-}
-.pathways-earned {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin: 18px 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--atlas-border);
-}
-.pathways-earned strong {
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1;
-}
-.pathways-earned span {
-  font-size: 12px;
-  line-height: 1.5;
-}
-.pathways-earned small {
-  display: block;
-  font-size: 12px;
-  color: var(--atlas-muted);
-}
-/* What a search found, first in its skill's panel: the accent's edge over a
-   faint tint, its kind, its name and its one action. */
-.pathways-found {
-  display: grid;
-  justify-items: start;
-  gap: 4px;
-  margin: 0 0 12px;
-  padding: 10px 12px;
-  border: 1px solid var(--atlas-accent);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--atlas-accent) 9%, transparent);
-  color: var(--atlas-on-panel);
-}
-.pathways-found-kind {
-  color: var(--atlas-muted);
-  font-size: 12px;
-  font-weight: 600;
-}
-.pathways-found strong {
-  font-size: 14px;
-  line-height: 1.35;
-}
-.pathways .pathways-found a,
-.pathways .pathways-found button {
-  min-height: 44px;
-  margin-top: 2px;
-  font-size: 12px;
-}
-.pathways-detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.pathways-detail-actions a,
-.pathways-detail-actions button {
-  flex: 1;
-  font-size: 12px;
-}
-.pathways-types {
-  margin-top: 12px;
-  font-size: 12px;
-}
+
 .pathways summary {
   cursor: pointer;
   min-height: 44px;
@@ -597,27 +484,12 @@
   flex-shrink: 0;
   background: var(--atlas-muted);
 }
-.pathways-dot.prerequisites {
-  background: var(--atlas-prerequisite);
-}
-.pathways-dot.dependents {
-  background: var(--atlas-dependent);
-}
-.pathways-muted,
-.pathways-range {
+
+.pathways-muted {
   color: var(--atlas-muted);
   font-size: 12px;
 }
-.pathways-range {
-  border-top: 1px solid var(--atlas-border);
-  padding-top: 12px;
-}
-.pathways-detail .pathways-connections p {
-  margin: 0 0 14px;
-  color: var(--atlas-muted);
-  font-size: 12px;
-  line-height: 1.55;
-}
+
 .pathways-footer {
   position: relative;
   padding: 14px 0 12px;
@@ -649,10 +521,6 @@
   padding: 8px;
 }
 @media (max-width: 1000px) {
-  .pathways-detail {
-    width: 270px;
-    padding: 16px;
-  }
   .pathways-browser {
     position: absolute;
     z-index: 3;
@@ -692,9 +560,7 @@
     padding-top: 18px;
     display: block;
   }
-  .pathways-eyebrow {
-    font-size: 12px;
-  }
+
   .pathways-summary {
     max-width: none;
     font-size: 12px;
@@ -726,20 +592,7 @@
     height: max(370px, calc(100dvh - 350px));
     min-height: 0;
   }
-  .pathways.has-selection .pathways-workspace {
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .pathways.has-selection .pathways-viewport {
-    height: 340px;
-  }
-  .pathways-detail {
-    width: 100%;
-    max-height: 430px;
-    padding: 16px;
-  }
+
   .pathways-camera {
     left: 8px;
     top: 8px;
@@ -837,23 +690,7 @@
   .pathways-status {
     min-height: 30px;
   }
-  .pathways.has-selection .pathways-workspace {
-    display: flex;
-    flex-direction: column;
-    min-height: 230px;
-    overflow: hidden;
-  }
-  .pathways.has-selection .pathways-viewport {
-    height: auto;
-    min-height: 140px;
-    flex: 1;
-  }
-  .pathways-detail {
-    height: 38dvh;
-    min-height: 180px;
-    max-height: 360px;
-    flex-shrink: 0;
-  }
+
   .pathways-footer {
     padding-top: 8px;
   }
@@ -874,13 +711,7 @@
     height: 360px;
     flex: none;
   }
-  .pathways.has-selection .pathways-workspace {
-    height: auto;
-  }
-  .pathways.has-selection .pathways-viewport {
-    height: 300px;
-    flex: none;
-  }
+
   .pathways-note[open] {
     position: static;
     transform: none;
@@ -897,9 +728,7 @@
   color: inherit;
 }
 .pathways .pathways-summary,
-.pathways .pathways-muted,
-.pathways .pathways-range,
-.pathways .pathways-eyebrow {
+.pathways .pathways-muted {
   color: var(--atlas-muted);
 }
 .pathways input {
@@ -914,9 +743,7 @@
 .pathways-footer > p {
   color: var(--atlas-muted);
 }
-.pathways-detail p {
-  color: var(--atlas-muted);
-}
+
 @media (max-width: 650px) {
   .pathways-header {
     height: 60px;
@@ -941,13 +768,6 @@
   display: none;
 }
 @media (max-width: 650px) {
-  .pathways.has-selection .pathways-heading,
-  .pathways.has-selection .pathways-status > p:not([data-priority="true"]) {
-    display: none;
-  }
-  .pathways.has-selection .pathways-status {
-    min-height: 0;
-  }
   .pathways-camera .camera-wide {
     display: none;
   }
@@ -976,34 +796,6 @@
 .pathways-toolbar .toolbar-narrow {
   display: none;
 }
-@media (max-width: 650px) {
-  .pathways.has-selection .pathways-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 76px;
-  }
-  .pathways.has-selection .pathways-search {
-    width: auto;
-    min-width: 0;
-  }
-  .pathways.has-selection .pathways-toolbar .toolbar-wide {
-    display: none;
-  }
-  .pathways.has-selection .pathways-toolbar .toolbar-narrow {
-    display: inline;
-  }
-  .pathways.has-selection .pathways-toolbar button {
-    min-width: 0;
-    padding: 8px 4px;
-  }
-  .pathways.has-selection .pathways-detail {
-    height: 32dvh;
-    max-height: 280px;
-  }
-}
-
-.pathways-detail h2:focus {
-  outline: none;
-}
 
 @media (max-width: 650px) {
   .pathways-camera {
@@ -1011,104 +803,11 @@
   }
 }
 
-.pathways-illumination-meter {
-  height: 4px;
-  border-radius: 99px;
-  overflow: hidden;
-  background: var(--atlas-border);
-  margin: -6px 0 20px;
-}
-.pathways-illumination-meter i {
-  display: block;
-  height: 100%;
-  background: var(--atlas-accent);
-  border-radius: inherit;
-  transition: width 0.7s ease;
-}
-.pathways-earned > strong > small {
-  display: inline;
-  font-size: 12px;
-  color: var(--atlas-muted);
-  margin-left: 4px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .pathways-illumination-meter i {
-    transition: none;
-  }
-}
-
-.pathways-dot.related {
-  background: transparent;
-  border: 1px dashed var(--atlas-muted);
-  width: 8px;
-  height: 8px;
-}
-
 .pathways-brand,
 .pathways-status > a {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-}
-
-@media (max-height: 700px) and (min-width: 651px) {
-  .pathways.has-selection .pathways-viewport {
-    flex: 1;
-    min-width: 0;
-  }
-}
-
-/* On a phone, the selected skill is read by scrolling the page, not a card. */
-@media (max-width: 650px) {
-  .pathways.has-selection {
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
-  }
-  .pathways.has-selection .pathways-workspace {
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-    flex: none;
-  }
-  .pathways.has-selection .pathways-viewport {
-    height: 320px;
-    min-height: 0;
-    flex: none;
-  }
-  .pathways.has-selection .pathways-detail {
-    height: auto;
-    min-height: 0;
-    max-height: none;
-    overflow: visible;
-    flex: none;
-  }
-}
-
-.pathways-earned > strong {
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.pathways-earned > span {
-  min-width: 0;
-}
-@media (max-height: 700px) and (min-width: 651px) {
-  .pathways.has-selection .pathways-heading,
-  .pathways.has-selection .pathways-status > p:not([data-priority="true"]) {
-    display: none;
-  }
-  .pathways.has-selection .pathways-status {
-    min-height: 0;
-  }
-  .pathways.has-selection .pathways-workspace {
-    height: max(230px, calc(100dvh - 210px));
-    flex: none;
-  }
-  .pathways.has-selection .pathways-detail,
-  .pathways.has-selection .pathways-viewport {
-    height: 100%;
-    min-height: 0;
-  }
 }
 
 .pathways-label-leaders {
@@ -1186,7 +885,7 @@
     min-width: 0;
     padding: 8px 4px;
   }
-  .pathways:not(.has-selection) .pathways-workspace {
+  .pathways .pathways-workspace {
     height: max(320px, calc(100dvh - 240px));
     flex: none;
   }
@@ -1227,43 +926,6 @@
     white-space: normal;
     text-align: center;
   }
-}
-
-.pathways-connection-group ul {
-  margin-bottom: 4px;
-}
-.pathways-detail li.is-connection a {
-  background: transparent;
-  border-style: dashed;
-}
-.pathways li a small.pathways-connection-why {
-  font-size: 12px;
-  line-height: 1.5;
-  margin-top: 6px;
-}
-.pathways-show-all {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 10px 14px;
-  border: 1px solid var(--atlas-border);
-  border-radius: 10px;
-  background: transparent;
-  color: var(--atlas-on-panel);
-  font: inherit;
-  font-size: 12px;
-  cursor: pointer;
-}
-.pathways-show-all small {
-  color: var(--atlas-muted);
-  margin-left: 4px;
-}
-.pathways-show-all:hover {
-  border-color: var(--atlas-muted);
-}
-.pathways-show-all:focus-visible {
-  outline: 2px solid var(--atlas-accent);
-  outline-offset: 2px;
 }
 
 /* The count is the full summary sentence above the views on wider screens. */
@@ -1401,21 +1063,4 @@
 }
 .pathways .pathways-results li a:hover {
   background: var(--color-surface-hover);
-}
-/* A problem type's lesson opens as a layer over the map: a real link, in
-   the look of the panel's buttons. */
-.pathways .pathways-lesson-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 10px 14px;
-  border: 1px solid var(--atlas-border);
-  border-radius: 10px;
-  background: var(--atlas-panel);
-  color: var(--atlas-on-panel);
-  text-decoration: none;
-}
-.pathways .pathways-lesson-link:hover {
-  border-color: var(--atlas-muted);
 }

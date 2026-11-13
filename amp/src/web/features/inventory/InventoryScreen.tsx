@@ -1,4 +1,6 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
+import { EntityLink } from "../../nav/links";
+import { LayerHost } from "../../nav/LayerHost";
 import {
   CurriculumDetailsControl,
   useCurriculumDetails,
@@ -22,6 +24,7 @@ import { gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import styles from "./Inventory.module.css";
+import layers from "../../nav/layers.module.css";
 import { Loading } from "../../ui/Loading";
 
 /* Inventory: every skill the learner has met, how far each has grown and how
@@ -309,6 +312,27 @@ export function InventoryScreen() {
           </div>
         </>
       )}
+      {/* A skill opens over the list, the learner's own work on it with it:
+          the list stays, scrolled where it was. */}
+      <LayerHost
+        learner={view.learner?.id}
+        skillActions={(skill) =>
+          view.canPractice &&
+          !view.viewOnly &&
+          catalog.data?.templates.some((type) => type.skillId === skill) ? (
+            <div className={layers.actions}>
+              <Link
+                className={buttonClass("primary")}
+                to="/$"
+                params={{ _splat: "practice" }}
+                search={{ skill }}
+              >
+                Try a problem
+              </Link>
+            </div>
+          ) : null
+        }
+      />
     </main>
   );
 }
@@ -346,14 +370,13 @@ function SkillRow({
         } as CSSProperties
       }
     >
-      <Link
+      <EntityLink
         className={styles.skillName}
-        to="/pathways/$skillId"
-        params={{ skillId: skill.id }}
+        entity={{ kind: "skill", id: skill.id }}
       >
         <strong>{skill.title}</strong>
         {grade && <small>{bandLabel(skill.gradeBand)}</small>}
-      </Link>
+      </EntityLink>
       <div
         className={styles.meter}
         role="meter"

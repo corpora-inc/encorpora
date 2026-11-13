@@ -79,6 +79,7 @@ import {
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
 import {
+  MAX_LAYERS,
   OPEN_KEY,
   pushLayer,
   readStack,
@@ -715,9 +716,6 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
-/** One map for the whole curriculum and each skill in it: choosing or
- * closing a skill changes the URL, never the map (its camera, full screen
- * and orbit stay as they were). */
 /** A screen's address from before lesson layers (`?lesson=<type>`): the
  * same screen with the lesson as a layer over it (nav/entities.ts). */
 function lessonAsLayer(location: {
@@ -738,11 +736,43 @@ function lessonAsLayer(location: {
     replace: true,
   });
 }
+/** Pathways' skill from before skill layers (`/pathways/<skill>`, or
+ * `?skill=<skill>`): the map with the skill as a layer over it, under any
+ * layers the address already holds (a lesson). */
+function skillAsLayer(
+  location: { search: Record<string, unknown> },
+  skill: unknown,
+) {
+  const { skill: _legacy, ...search } = location.search;
+  const below = readStack(search[OPEN_KEY]);
+  const open =
+    typeof skill === "string"
+      ? writeStack(
+          [{ kind: "skill" as const, id: skill }, ...below].slice(
+            0,
+            MAX_LAYERS,
+          ),
+        )
+      : writeStack(below);
+  throw redirect({
+    href: router.buildLocation({
+      to: "/pathways",
+      search: { ...search, [OPEN_KEY]: open } as never,
+    }).href,
+    replace: true,
+  });
+}
+/** One map for the whole curriculum: a skill opens over it as a layer
+ * (`?open=skill:<id>`), so choosing or closing one changes the address,
+ * never the map (its camera, full screen and orbit stay as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   beforeLoad: async ({ location }) => {
     lessonAsLayer(location);
+    const { skill } = location.search as { skill?: unknown };
+    if (skill !== undefined && location.pathname === "/pathways")
+      skillAsLayer(location, skill);
     await framedScreen();
     await adoptPracticeMode(location);
   },
@@ -792,6 +822,7 @@ const lessonsHome = createRoute({
 const pathwaySkill = createRoute({
   getParentRoute: () => pathways,
   path: "$skillId",
+  beforeLoad: ({ location, params }) => skillAsLayer(location, params.skillId),
 });
 /** A learner's workbooks are a tab of their Progress: arriving chooses
  * that learner (the account's own, never a practice profile), so the
@@ -1509,6 +1540,37 @@ export const router = createRouter({
   defaultPendingMs: 1000,
   defaultPendingMinMs: 0,
 });
+// Development only: the route table, as the navigation crawler reads it
+// (scripts/verify-layer-crawl-ui.ts), so a new screen is crawled without
+// anyone editing the crawler. A layout's own address is its index child's;
+// a leaf without a screen of its own (an old address) is an `address`.
+if (import.meta.env.DEV) {
+  type Entry = {
+    isRoot?: boolean;
+    fullPath: string;
+    children?: unknown;
+    parentRoute?: Entry;
+    options: { path?: string; component?: unknown };
+  };
+  Object.assign(window, {
+    ampRouteTable: () =>
+      (Object.values(router.routesById) as unknown as Entry[])
+        .filter(
+          (route) =>
+            !route.isRoot &&
+            !(route.children as Entry[] | undefined)?.some(
+              (child) => child.options.path === "/",
+            ),
+        )
+        .map((route) => ({
+          path: route.fullPath,
+          page:
+            !!route.options.component ||
+            (route.options.path === "/" &&
+              !!route.parentRoute?.options.component),
+        })),
+  });
+}
 // A control that only changes the address's search (a toggle, a segmented
 // control, a sort, a filter, a year) keeps the page where it is: the reader
 // stays on what they were looking at. Going to another screen starts at its

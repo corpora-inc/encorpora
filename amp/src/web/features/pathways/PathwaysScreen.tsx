@@ -8,18 +8,12 @@ import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   useDeferredValue,
   useMemo,
-  useRef,
   useEffect,
   useState,
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
@@ -33,8 +27,6 @@ import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
-import { ConnectionList } from "./ConnectionList";
-import { skillNeighbors, type Neighbor } from "./neighbors";
 import {
   bandLabel,
   bands,
@@ -47,11 +39,13 @@ import {
   levelRegion,
   type Frontier,
   type Evidence,
-  type MapSkill,
 } from "./model";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { LayerHost } from "../../nav/LayerHost";
 import { EntityLink, useLayers } from "../../nav/links";
+import { OPEN_KEY, pushLayer } from "../../nav/entities";
+import { buttonClass } from "../../ui/Button";
+import layers from "../../nav/layers.module.css";
 import { RootLink } from "../../nav/root";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
@@ -218,6 +212,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
         me.isPending ||
         (!!learner && (frontier.isPending || progress.isPending))
       }
+      learnerId={learner?.id}
       learnerName={learner?.name}
       birthYear={learner?.birthYear}
       controls={
@@ -273,6 +268,7 @@ export function MapView({
   controls,
   frontier,
   frontierLoading = false,
+  learnerId,
   learnerName,
   birthYear,
   guestMode = false,
@@ -289,6 +285,8 @@ export function MapView({
   frontier?: Frontier;
   /** The learner's estimate or record is on its way: "My level" waits. */
   frontierLoading?: boolean;
+  /** Whose map it is: a skill opened here shows their work on it. */
+  learnerId?: string;
   learnerName?: string;
   birthYear?: number | null;
   guestMode?: boolean;
@@ -304,10 +302,13 @@ export function MapView({
     refetchInterval: 300_000,
   });
   const search = useSearch({ strict: false });
-  const params = useParams({ strict: false });
-  const routeSkillId = typeof params.skillId === "string" ? params.skillId : "";
+  // A skill is a layer over the map (`?open=skill:<id>`, nav/entities.ts):
+  // the top one is the map's selection. Opening and closing it never moves
+  // the map; a skill found by the search or the list is framed on it.
+  const stack = useLayers().stack;
   const selectedId =
-    routeSkillId || (typeof search.skill === "string" ? search.skill : "");
+    stack.filter((layer) => layer.kind === "skill").at(-1)?.id ?? "";
+  const [frame, setFrame] = useState<{ id: string } | null>(null);
   const urlQuery = typeof search.topic === "string" ? search.topic : "";
   // The field owns its text while typing; the URL follows after a pause.
   const field = useUrlSearchText(urlQuery, (topic) => update({ topic }, true));
@@ -328,9 +329,7 @@ export function MapView({
   // `?open=lesson:<id>`): a link, a refresh or Back opens it again, and
   // closing returns to this map as it was.
   const lesson =
-    useLayers()
-      .stack.filter((layer) => layer.kind === "lesson")
-      .at(-1)?.id ?? null;
+    stack.filter((layer) => layer.kind === "lesson").at(-1)?.id ?? null;
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
@@ -346,10 +345,18 @@ export function MapView({
     // knows every document's.
     const skillOf = (result: SearchResult) =>
       result.skill || docs?.find((doc) => doc.id === result.id)?.skill || "";
-    const href = (result: SearchResult) =>
-      skillOf(result)
-        ? `/pathways/${encodeURIComponent(skillOf(result))}${window.location.search}`
-        : `/pathways${window.location.search}`;
+    const href = (result: SearchResult) => {
+      const params = new URLSearchParams(window.location.search);
+      if (skillOf(result))
+        params.set(
+          OPEN_KEY,
+          pushLayer(params.get(OPEN_KEY) ?? undefined, {
+            kind: "skill",
+            id: skillOf(result),
+          })!,
+        );
+      return `/pathways${params.size ? `?${params}` : ""}`;
+    };
     return {
       href,
       open: (result) => {
@@ -365,7 +372,7 @@ export function MapView({
                 skill,
               },
         );
-        select(skill);
+        select(skill, true);
       },
     };
   };
@@ -385,55 +392,50 @@ export function MapView({
     selected,
     !!selectedId && (unknownSkill || catalog.isError),
   );
-  const linkSearch = () => ({
-    topic: field.text.trim() || undefined,
-    filter: band || undefined,
-  });
-  const detailHeading = useRef<HTMLHeadingElement>(null);
-  useEffect(() => {
-    if (selected) detailHeading.current?.focus({ preventScroll: true });
-  }, [selected]);
   const stats = useMemo(
     () => new Map(evidence.map((s) => [s.skillId, s])),
     [evidence],
   );
   const earned = evidence.filter((s) => s.independentCorrect > 0).length;
   const countsReady = !!catalog.data && !recordLoading;
+  // The map's own view: its search and grade filter, beside any layers.
   const update = (
     values: {
-      skill?: string;
       topic?: string;
       filter?: string;
+      /** A skill to open over the map. */
+      skill?: string;
     },
     replace = false,
-  ) => {
-    const skillId = values.skill === undefined ? selectedId : values.skill;
-    const nextSearch = {
-      topic:
-        (values.topic === undefined ? field.carry() : values.topic) ||
-        undefined,
-      filter: (values.filter === undefined ? band : values.filter) || undefined,
-    };
-    if (skillId)
-      void navigate({
-        to: "/pathways/$skillId",
-        params: { skillId },
-        search: nextSearch,
-        replace,
-        resetScroll: false,
-      });
-    else
-      void navigate({
-        to: "/pathways",
-        search: nextSearch,
-        replace,
-        resetScroll: false,
-      });
-  };
-  const select = (id: string) => {
+  ) =>
+    void navigate({
+      to: "/pathways",
+      search: ((current: Record<string, unknown>) => {
+        const next: Record<string, unknown> = {
+          ...current,
+          topic:
+            (values.topic === undefined ? field.carry() : values.topic) ||
+            undefined,
+          filter:
+            (values.filter === undefined ? band : values.filter) || undefined,
+        };
+        if (values.skill)
+          next[OPEN_KEY] = pushLayer(current[OPEN_KEY], {
+            kind: "skill",
+            id: values.skill,
+          });
+        return next;
+      }) as never,
+      replace,
+      resetScroll: false,
+    });
+  /** Opens a skill over the map. Chosen on the map, the map stays where it
+   * is; found by the search or the list, the map frames it as it opens. */
+  const select = (id: string, framed = false) => {
     setBrowse(false);
+    if (framed) setFrame({ id });
     update({ skill: id });
-    showMap();
+    if (framed) showMap();
   };
   const filtered =
     skills?.filter(
@@ -449,29 +451,101 @@ export function MapView({
         : null,
     [skills, frontier, evidence, frontierLoading],
   );
-  const selectedEvidence = selected ? stats.get(selected.id) : undefined;
-  const families =
-    catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
-  const neighbors = useMemo(
-    () => skillNeighbors(skills ?? [], selected?.id ?? "", { shared: true }),
-    [skills, selected?.id],
-  );
-  const connectionList = (
-    group: "builds-on" | "leads-to" | "related",
-    items: Neighbor<MapSkill>[],
-  ) => (
-    <ConnectionList
-      key={`${selected?.id}:${group}`}
-      group={group}
-      items={items}
-      linkSearch={linkSearch()}
-      onNavigate={() => setBrowse(false)}
-    />
-  );
+  // What this map offers with a skill opened over it: what a search found
+  // in it, then practicing it (or the way in, for a visitor).
+  const skillActions = (skillId: string) => {
+    const found = picked?.skill === skillId ? picked : null;
+    const practiced = catalog.data?.templates.some(
+      (t) => t.skillId === skillId,
+    );
+    const shownFound = found && found.kind !== "term" ? found : null;
+    // With grade numbers on: the estimated range in the skill's area.
+    const strand = skills?.find((s) => s.id === skillId)?.strand;
+    const area =
+      shown && frontier && strand ? frontierRange(frontier, strand) : null;
+    if (!shownFound && !area && (readOnly || !practiced)) return null;
+    return (
+      <>
+        {shownFound && (
+          <div className={layers.row} data-found={shownFound.kind}>
+            <span>
+              <span className={layers.rowFact}>
+                {shownFound.kind === "lesson"
+                  ? "Lesson"
+                  : shownFound.kind === "film"
+                    ? "Lesson film"
+                    : "Problem type"}
+              </span>{" "}
+              {shownFound.title}
+            </span>
+            {shownFound.kind === "type" ? (
+              <EntityLink
+                entity={{ kind: "lesson", id: shownFound.id }}
+                className={layers.rowAction}
+              >
+                View lesson
+              </EntityLink>
+            ) : shownFound.kind === "film" ? (
+              <Link
+                className={layers.rowAction}
+                to="/lessons/$templateId/watch"
+                params={{ templateId: shownFound.id }}
+                search={{
+                  from: window.location.pathname + window.location.search,
+                }}
+              >
+                Watch
+              </Link>
+            ) : (
+              <Link
+                className={layers.rowAction}
+                to="/$"
+                params={{ _splat: `lessons/${shownFound.id}` }}
+              >
+                Read the lesson
+              </Link>
+            )}
+          </div>
+        )}
+        {!readOnly && practiced && (
+          <div className={layers.actions}>
+            {canPractice ? (
+              <Link
+                className={buttonClass("primary")}
+                to="/$"
+                params={{ _splat: "practice" }}
+                search={{
+                  skill: skillId,
+                  // A problem type the search found: that one.
+                  ...(found?.kind === "type" || found?.kind === "film"
+                    ? { template: found.id }
+                    : {}),
+                }}
+              >
+                Try a problem
+              </Link>
+            ) : (
+              <Link
+                className={buttonClass("primary")}
+                to="/$"
+                params={{ _splat: start.slice(1) }}
+              >
+                {actionLabel}
+              </Link>
+            )}
+          </div>
+        )}
+        {area && strand && (
+          <p className={layers.note}>
+            {strandNames[strand] ?? strand} frontier: {gradeName(area.lo)} to{" "}
+            {gradeName(area.hi)} · estimated range.
+          </p>
+        )}
+      </>
+    );
+  };
   return (
-    <main
-      className={`pathways ${selected ? "has-selection" : ""} ${browse ? "is-browsing" : ""}`}
-    >
+    <main className={`pathways ${browse ? "is-browsing" : ""}`}>
       {/* Signed in, the app frame's bar holds the logo, the Progress tabs and
           the way to practice. A visitor gets the map's own header. */}
       {guestMode && (
@@ -539,11 +613,6 @@ export function MapView({
         </p>
         {controls}
       </div>
-      {unknownSkill && (
-        <p role="alert" className="pathways-unknown">
-          This skill is not in the map. Browse the curriculum to find a skill.
-        </p>
-      )}
       <div
         className="pathways-toolbar"
         onKeyDown={(event) => {
@@ -638,13 +707,12 @@ export function MapView({
               <ul className="pathways-skill-list" hidden={searching}>
                 {filtered.map((s) => (
                   <li key={s.id}>
-                    <Link
-                      to="/pathways/$skillId"
-                      params={{ skillId: s.id }}
-                      search={linkSearch()}
+                    <EntityLink
+                      entity={{ kind: "skill", id: s.id }}
                       aria-current={selectedId === s.id ? "page" : undefined}
                       onClick={() => {
                         setBrowse(false);
+                        setFrame({ id: s.id });
                         showMap();
                       }}
                     >
@@ -665,7 +733,7 @@ export function MapView({
                           successes
                         </small>
                       </span>
-                    </Link>
+                    </EntityLink>
                   </li>
                 ))}
               </ul>
@@ -678,188 +746,12 @@ export function MapView({
               evidence={evidence}
               selected={selectedId}
               onSelect={select}
+              frame={frame}
               range={range}
               rangeStrand={selected?.strand}
               level={level}
               levelLoading={frontierLoading}
             />
-            {selected && (
-              <section
-                className="pathways-detail"
-                aria-label="Selected skill"
-                aria-live="polite"
-              >
-                <div className="pathways-detail-top">
-                  {shown && (
-                    <span className="pathways-eyebrow">
-                      Curriculum band: {bandLabel(selected.gradeBand)}
-                    </span>
-                  )}
-                  <button aria-label="Close skill" onClick={() => select("")}>
-                    ×
-                  </button>
-                </div>
-                <h2 ref={detailHeading} tabIndex={-1}>
-                  {selected.title}
-                </h2>
-                <p>{selected.description}</p>
-                <div className="pathways-earned">
-                  <strong>
-                    {skillLight(selectedEvidence).score.toFixed(1)}
-                    <small>/ 10</small>
-                  </strong>
-                  <span>
-                    Skill progress
-                    <small>
-                      {selectedEvidence?.independentCorrect ?? 0} correct
-                      without help ·{" "}
-                      {selectedEvidence?.status === "review-ready"
-                        ? "Strong"
-                        : selectedEvidence?.attempts
-                          ? "Building"
-                          : "Not practiced yet"}
-                    </small>
-                  </span>
-                </div>
-                <div
-                  className="pathways-illumination-meter"
-                  role="meter"
-                  aria-label="Skill progress"
-                  aria-valuemin={0}
-                  aria-valuemax={10}
-                  aria-valuenow={skillLight(selectedEvidence).score}
-                >
-                  <i
-                    style={{
-                      width: `${skillLight(selectedEvidence).score * 10}%`,
-                    }}
-                  />
-                </div>
-                {fromSearch && fromSearch.kind !== "term" && (
-                  <div className="pathways-found" data-found={fromSearch.kind}>
-                    <span className="pathways-found-kind">
-                      {fromSearch.kind === "lesson"
-                        ? "Lesson"
-                        : fromSearch.kind === "film"
-                          ? "Lesson film"
-                          : "Problem type"}
-                    </span>
-                    <strong>{fromSearch.title}</strong>
-                    {fromSearch.kind === "type" ? (
-                      <EntityLink
-                        entity={{ kind: "lesson", id: fromSearch.id }}
-                        className="pathways-lesson-link"
-                      >
-                        View lesson
-                      </EntityLink>
-                    ) : fromSearch.kind === "film" ? (
-                      <Link
-                        to="/lessons/$templateId/watch"
-                        params={{ templateId: fromSearch.id }}
-                        search={{
-                          from:
-                            window.location.pathname + window.location.search,
-                        }}
-                      >
-                        Watch
-                      </Link>
-                    ) : (
-                      <Link
-                        to="/$"
-                        params={{ _splat: `lessons/${fromSearch.id}` }}
-                      >
-                        Read the lesson
-                      </Link>
-                    )}
-                  </div>
-                )}
-                {families.length ? (
-                  <>
-                    <div className="pathways-detail-actions">
-                      {readOnly ? null : canPractice ? (
-                        <Link
-                          className="pathways-go"
-                          to="/$"
-                          params={{ _splat: "practice" }}
-                          search={{
-                            skill: selected.id,
-                            // A problem type the search found: that one.
-                            ...(fromSearch?.kind === "type" ||
-                            fromSearch?.kind === "film"
-                              ? { template: fromSearch.id }
-                              : {}),
-                          }}
-                        >
-                          Try a problem
-                        </Link>
-                      ) : (
-                        <Link
-                          className="pathways-go"
-                          to="/$"
-                          params={{ _splat: start.slice(1) }}
-                        >
-                          {actionLabel}
-                        </Link>
-                      )}
-                      <EntityLink
-                        entity={{ kind: "lesson", id: families[0]!.id }}
-                        className="pathways-lesson-link"
-                      >
-                        View lesson
-                      </EntityLink>
-                    </div>
-                    <details className="pathways-types">
-                      <summary>
-                        {families.length} problem{" "}
-                        {families.length === 1 ? "type" : "types"}
-                      </summary>
-                      <ul>
-                        {families.map((t) => (
-                          <li key={t.id}>
-                            <EntityLink
-                              entity={{ kind: "lesson", id: t.id }}
-                              className="pathways-lesson-link"
-                            >
-                              {t.title ?? t.id.replaceAll("-", " ")}
-                            </EntityLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  </>
-                ) : (
-                  <p>Practice for this skill is being developed.</p>
-                )}
-                <h3>
-                  <i className="pathways-dot prerequisites" />
-                  Builds on
-                </h3>
-                {connectionList("builds-on", neighbors.buildsOn)}
-                <h3>
-                  <i className="pathways-dot dependents" />
-                  Leads to
-                </h3>
-                {connectionList("leads-to", neighbors.leadsTo)}
-                <h3>
-                  <i className="pathways-dot related" />
-                  Related skills
-                </h3>
-                {connectionList("related", neighbors.related)}
-                {range && (
-                  <p className="pathways-range">
-                    {shown ? (
-                      <>
-                        {strandNames[selected.strand] ?? selected.strand}{" "}
-                        frontier: {gradeName(range.lo)} to {gradeName(range.hi)}{" "}
-                        · estimated range.
-                      </>
-                    ) : (
-                      "Faint outlines show the estimated range of skills to practice."
-                    )}
-                  </p>
-                )}
-              </section>
-            )}
           </div>
           <footer className="pathways-footer">
             <div className="pathways-legend">
@@ -904,8 +796,11 @@ export function MapView({
           </footer>
         </>
       )}
-      {/* A lesson opened here is a layer over the map: the map stays. */}
+      {/* A skill or a lesson opened here is a layer over the map: the map
+          stays, where it was. */}
       <LayerHost
+        learner={learnerId}
+        skillActions={skillActions}
         lessonActions={(type) =>
           canPractice && lessonSkill && type === lesson ? (
             <Link

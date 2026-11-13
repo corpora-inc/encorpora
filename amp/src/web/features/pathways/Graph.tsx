@@ -37,6 +37,9 @@ type Props = {
   evidence: Evidence[];
   selected: string;
   onSelect: (id: string) => void;
+  /** A skill found elsewhere (the search, the list): framed once, as asked.
+   * A new object asks again. */
+  frame?: { id: string } | null;
   range: { lo: number; hi: number; level: number } | null;
   rangeStrand?: string;
   /** The learner's level on the map ("My level"), once estimated. */
@@ -59,18 +62,21 @@ type Label = {
  * GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden
  * or reduced.
  *
- * The camera answers the person: selecting a skill that is already
- * comfortably in view leaves it still; a skill off screen, cut off or too
- * small to read gets a short eased glide that frames it with the skills it
- * builds on and leads to, never zooming out. Closing a skill, the panel
- * opening or closing and resizes leave the map where it is. A drag, wheel or
- * pinch stops any glide at once. Reduced motion cuts instead of gliding.
+ * The camera answers the person. A skill opened over the map (a layer) is
+ * marked where it is: opening and closing it never move the map, so closing
+ * returns to exactly the view it was opened from. Only arriving at a skill's
+ * address cuts to it, and a skill found by the search or the list (`frame`)
+ * glides into view when it is off screen, cut off or too small to read,
+ * framed with the skills it builds on and leads to, never zooming out.
+ * Resizes leave the map where it is. A drag, wheel or pinch stops any glide
+ * at once. Reduced motion cuts instead of gliding.
  */
 export function Graph({
   skills,
   evidence,
   selected,
   onSelect,
+  frame = null,
   range,
   rangeStrand,
   level = null,
@@ -1267,14 +1273,14 @@ export function Graph({
       rotate.current = () => {};
     };
   }, [skills, evidence, motion, range?.lo, range?.hi, rangeStrand]);
-  // The camera answers a new selection once: a deep link on arrival cuts
-  // straight to it; a selection made here glides when it needs to.
+  // A new selection is marked where it is; only a deep link on arrival
+  // cuts straight to it.
   useEffect(() => {
     const changed = selected !== answered.current;
     answered.current = selected;
     focus.current(
       selected,
-      changed && selected ? (firstView.current ? "cut" : "glide") : "none",
+      changed && selected && firstView.current ? "cut" : "none",
     );
     rotate.current(orbit);
   }, [
@@ -1287,6 +1293,10 @@ export function Graph({
     rangeStrand,
     orbit,
   ]);
+  // A skill found by the search or the list glides into view, once.
+  useEffect(() => {
+    if (frame) focus.current(frame.id, firstView.current ? "cut" : "glide");
+  }, [frame]);
   // Arriving with nothing selected, the map opens on the learner's level; if
   // the estimate arrives a moment later, it glides there, unless the person
   // has already moved the map or chosen a skill.
