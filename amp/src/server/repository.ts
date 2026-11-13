@@ -105,9 +105,10 @@ import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
 import type { WorkbookRecord } from "../workbook/contracts";
-import type {
-  StartingBand,
-  PracticeStartingPoint,
+import {
+  UNCHOSEN_ADULT_START,
+  type StartingBand,
+  type PracticeStartingPoint,
 } from "../learning/starting-point";
 export type Learner = {
   id: string;
@@ -731,7 +732,10 @@ export class PgTransaction implements LearnerTransaction {
       'SELECT starting_band AS band,starting_policy AS "policyVersion",COALESCE(starting_excluded_strands,ARRAY[]::text[]) AS "excludedStrands" FROM amp_learners WHERE id=$1',
       [this.learnerId],
     );
-    return result.rows[0];
+    const point = result.rows[0] as PracticeStartingPoint;
+    if (point.band === null && (await this.learner())?.adult === true)
+      return { ...point, band: UNCHOSEN_ADULT_START, policyVersion: 1 };
+    return point;
   }
   async setStartingPoint(band: StartingBand): Promise<void> {
     const observed = await this.db.query(
@@ -913,6 +917,7 @@ export class PgTransaction implements LearnerTransaction {
     const learner = await this.learner();
     return initialLevel({
       birthYear: learner?.birth_year as number | null | undefined,
+      adult: learner?.adult === true,
       band: learner?.starting_band as Parameters<
         typeof initialLevel
       >[0]["band"],

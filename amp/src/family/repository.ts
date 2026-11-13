@@ -15,7 +15,7 @@ import {
   namingConsentActive,
 } from "../server/account-access.js";
 import { freeAllowance } from "../learning/free-allowance.js";
-import { adultStarts } from "../learning/starting-point.js";
+import { adultStartOrDefault } from "../learning/starting-point.js";
 import {
   goesByNumber,
   numberedName,
@@ -224,9 +224,7 @@ export class FamilyRepository {
           // Where the adult's own practice starts: theirs to correct.
           ...(row.adult && !row.simulation
             ? {
-                start:
-                  adultStarts.find((start) => start === row.starting_band) ??
-                  null,
+                start: adultStartOrDefault(row.starting_band),
               }
             : {}),
           ...(row.simulation ? { simulation: true as const } : {}),
