@@ -147,7 +147,9 @@ try {
   await page.getByLabel("Class name").fill("Grade 3 Math");
   if (await page.getByLabel("Your name", { exact: true }).count())
     await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
-  await page.getByRole("checkbox").check();
+  // The school's agreement already covers a second class: no second tick.
+  if (await page.getByRole("checkbox").count())
+    await page.getByRole("checkbox").check();
   await capture("setup");
   let requests = 0;
   await page.route("**/api/v1/school/start", async (route) => {
@@ -387,7 +389,9 @@ try {
   await page.goto(`${origin}/school/start?org=${created.org_id}`);
   await page.getByLabel("Class name").fill("Empty after pilot");
   assert.equal(await page.getByLabel("Your name", { exact: true }).count(), 0);
-  await page.getByRole("checkbox").check();
+  // Covered by the agreement this school already accepted.
+  await page.getByText(/^Covered by your agreement of/).waitFor();
+  assert.equal(await page.getByRole("checkbox").count(), 0);
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.getByRole("heading", { name: "Add your students" }).waitFor();
   assert.equal(

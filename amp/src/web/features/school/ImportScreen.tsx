@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { queryClient } from "../../lib/query";
+import { pilotOptions } from "./pilots/api";
 import {
   Link,
   useNavigate,
@@ -892,6 +894,16 @@ function ReviewStep({
     }
     patch({ applied: results, invited });
     await refreshSchool(session);
+    // The class's practice state changes with its first students (no one,
+    // then Start): read it before Students opens, so its header is right
+    // from the first frame instead of gaining an action.
+    const org = queryClient.getQueryData(orgOptions(session, orgId).queryKey);
+    if (draft.classId && org?.kind === "school" && !org.demo)
+      await queryClient
+        .fetchQuery({ ...pilotOptions(session, draft.classId), staleTime: 0 })
+        .catch((failure) =>
+          console.error("The class's practice state didn't load", failure),
+        );
     onDone();
   };
   const running = progress && !progress.failed;

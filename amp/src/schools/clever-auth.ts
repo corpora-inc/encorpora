@@ -8,6 +8,7 @@ import {
   establishProviderPrincipal,
   isCleverAdult,
   PROVIDER_COOKIE,
+  PROVIDER_HINT_COOKIE,
   providerHash,
   providerToken,
   requestCookie,
@@ -152,9 +153,17 @@ function cookie(
 ) {
   const old = reply.getHeader("set-cookie");
   const added = `${name}=${value}; Path=${path}; HttpOnly; SameSite=Lax; Max-Age=${seconds}${secure ? "; Secure" : ""}`;
+  // The provider session's readable hint goes and comes with it.
+  const hint =
+    name === PROVIDER_COOKIE
+      ? [
+          `${PROVIDER_HINT_COOKIE}=${seconds > 0 ? "1" : ""}; Path=/; SameSite=Lax; Max-Age=${seconds}${secure ? "; Secure" : ""}`,
+        ]
+      : [];
   reply.header("set-cookie", [
     ...(Array.isArray(old) ? old : old ? [String(old)] : []),
     added,
+    ...hint,
   ]);
 }
 function recent(

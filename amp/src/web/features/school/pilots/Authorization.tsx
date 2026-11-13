@@ -33,7 +33,7 @@ export function Authorization({
   onAuthorized: (value: boolean) => void;
   errors?: { name?: string; title?: string };
   disabled?: boolean;
-  scope?: "class" | "district";
+  scope?: "class" | "school" | "district";
   acceptedAt?: string;
 }) {
   const [reading, setReading] = useState(false);
@@ -53,22 +53,28 @@ export function Authorization({
   return (
     <>
       {acceptedAt && !editSigner ? (
-        <div className={styles.accessLine}>
+        // Already accepted at this version: one line, and the way to change
+        // who signs (which asks for the agreement again).
+        <div className={styles.covered}>
           <p>
-            {name} · {title}. Agreement accepted{" "}
-            {new Intl.DateTimeFormat(undefined, {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            }).format(new Date(acceptedAt))}
-            .
+            Covered by your agreement of{" "}
+            <span className={styles.nowrap}>
+              {new Intl.DateTimeFormat(undefined, {
+                month: "short",
+                day: "numeric",
+              }).format(new Date(acceptedAt))}
+            </span>
           </p>
           <Button
             variant="quiet"
             disabled={disabled}
-            onClick={() => setEditSigner(true)}
+            onClick={() => {
+              setEditSigner(true);
+              // A new signer accepts for themselves.
+              onName(name);
+            }}
           >
-            Edit signer
+            Change
           </Button>
         </div>
       ) : (
@@ -93,22 +99,27 @@ export function Authorization({
           />
         </div>
       )}
-      <Checkbox
-        checked={authorized}
-        onChange={onAuthorized}
-        disabled={disabled}
-      >
-        {scope === "district" ? (
-          <>
-            I’m authorized to connect this district and accept the {agreement}.
-          </>
-        ) : (
-          <>
-            My school authorizes me to use AMP with this class, and I accept the{" "}
-            {agreement}.
-          </>
-        )}
-      </Checkbox>
+      {(!acceptedAt || editSigner) && (
+        <Checkbox
+          checked={authorized}
+          onChange={onAuthorized}
+          disabled={disabled}
+        >
+          {scope === "district" ? (
+            <>
+              I’m authorized to connect this district and accept the {agreement}
+              .
+            </>
+          ) : scope === "school" ? (
+            <>I’m authorized to accept the {agreement} for this school.</>
+          ) : (
+            <>
+              My school authorizes me to use AMP with this class, and I accept
+              the {agreement}.
+            </>
+          )}
+        </Checkbox>
+      )}
       <Sheet
         open={reading}
         onOpenChange={setReading}

@@ -13,7 +13,7 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { useMemo, type ReactNode } from "react";
-import { formatDay } from "../../../../schools/calendar";
+import { formatDay, formatLastDay } from "../../../../schools/calendar";
 import type {
   AttentionItem,
   ClassUsage,
@@ -312,6 +312,8 @@ function Seats({
     ? Math.min(100, (seats.used / seats.seats) * 100)
     : 0;
   const ended = !!seats.endsAt && Date.parse(seats.endsAt) <= Date.now();
+  const zone =
+    useQuery(orgOptions(currentSession(), orgId)).data?.timezone ?? "UTC";
   return (
     <section aria-labelledby="overview-seats" className={styles.seats}>
       <h2 id="overview-seats">Seats</h2>
@@ -324,7 +326,7 @@ function Seats({
       <div className={styles.seatFoot}>
         <p className={styles.seatDates}>
           {seats.endsAt
-            ? `${ended ? "Ended" : seats.evaluation ? "Evaluation, through" : "Through"} ${formatDay(seats.endsAt.slice(0, 10))}`
+            ? `${ended ? "Ended" : seats.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(seats.endsAt, zone)}`
             : "No license yet"}
           {seats.sharedWith ? `. Shared across ${seats.sharedWith}.` : ""}
         </p>

@@ -660,19 +660,22 @@ export function SignInScreen() {
           takeFocus
           onDismiss={() => setError("")}
         />
-        {/* A Clever sign-in that didn't finish: the way to try it again. */}
-        {accounts &&
-          config.clever &&
-          ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
-            params.get("error") ?? "",
-          ) && (
-            <a
-              href="/api/v1/school/sso/clever/start"
-              className={buttonClass("primary")}
-            >
-              Sign in with Clever
-            </a>
-          )}
+        {/* School staff signed in by Clever: always a way in from here, the
+            first choice after a Clever sign-in that didn't finish. */}
+        {accounts && config.clever && step === "sign-in" && (
+          <a
+            href="/api/v1/school/sso/clever/start"
+            className={buttonClass(
+              ["clever_sign_in_failed", "clever_sign_in_busy"].includes(
+                params.get("error") ?? "",
+              )
+                ? "primary"
+                : "secondary",
+            )}
+          >
+            Sign in with Clever
+          </a>
+        )}
         {showProviders && (
           <ProviderButtons
             providers={primaryProviders}

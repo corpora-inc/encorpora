@@ -373,51 +373,33 @@ try {
     )?.includes("next=%2Fschool%2Fconnect"),
   );
   await capture("link-reauth");
+  // Not on Clever: one quiet way to tell us, never a form or a vendor's
+  // name in the way of Link Clever.
   await page
-    .getByText("Connect another roster system", { exact: true })
-    .click();
-  await page
-    .getByLabel("School or district", { exact: true })
-    .fill("Fixture school");
-  await page
-    .getByLabel("Contact email", { exact: true })
-    .fill("admin@example.test");
-  await page
-    .getByRole("button", { name: "Request a connection", exact: true })
-    .click();
-  await page
-    .getByText(
-      "Connection requested. Watch your email for an AnySchool invitation.",
-    )
+    .getByRole("link", { name: "Another roster system? Tell us", exact: true })
     .waitFor();
-  await page.reload();
-  await page
-    .getByText(
-      "Connection requested. Watch your email for an AnySchool invitation.",
-    )
-    .waitFor();
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Request a connection", exact: true })
-      .count(),
-    0,
-  );
   await page
     .getByRole("link", { name: "Set up a class without Clever", exact: true })
     .waitFor();
-  assert.equal(
-    rosterRequests,
-    1,
-    "Reload resumes the request without submitting twice",
-  );
+  assert.equal(await page.getByText(/AnySchool/).count(), 0);
+  assert.equal(rosterRequests, 0);
+  // A connection already asked for says where it stands, in one line.
+  state.requests = [
+    {
+      id: randomUUID(),
+      method: "anyschool",
+      status: "requested",
+      createdAt: new Date().toISOString(),
+    },
+  ];
+  await page.reload();
+  await page
+    .getByText("Roster connection requested. We’ll email you the invitation.")
+    .waitFor();
   await capture("anyschool-requested");
   state.requests[0].status = "invited";
   await page.reload();
-  await page
-    .getByText(
-      "Your AnySchool invitation is ready. Open the invitation in your email to connect your roster.",
-    )
-    .waitFor();
+  await page.getByText("Your roster invitation is in your email.").waitFor();
   state = {
     ...freshState(),
     identity: { districtId: "fixture", roles: ["teacher"], personId: null },
@@ -426,9 +408,7 @@ try {
   await page.getByText("Your district admin connects Clever.").waitFor();
   await page.getByRole("link", { name: "Set up your class" }).waitFor();
   assert.equal(
-    await page
-      .getByText("Connect another roster system", { exact: true })
-      .count(),
+    await page.getByText("Your roster invitation is in your email.").count(),
     0,
   );
   await capture("teacher-waits");
@@ -472,6 +452,11 @@ try {
     .getByRole("link", { name: "Sign in with Clever", exact: true })
     .waitFor();
   await capture("clever-sign-in-busy");
+  // Clever staff always have a way in from sign-in, not only after a failure.
+  await page.goto(`${origin}/sign-in`);
+  await page
+    .getByRole("link", { name: "Sign in with Clever", exact: true })
+    .waitFor();
   assert.deepEqual(failures, []);
   console.info(
     "Clever connection, paused authority recovery, teacher hand-off and confirmed purchase browser states passed.",

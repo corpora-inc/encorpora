@@ -126,6 +126,16 @@ try {
   });
   await page.goto(`${origin}/clever-session-fixture`);
   await page.waitForFunction(() => "fixture" in window);
+  // The server sets a readable hint with a school sign-in; the app asks for
+  // the session only when it is there.
+  const hint = (on: boolean) =>
+    page.evaluate(
+      (value) => {
+        document.cookie = `amp.provider=${value}; path=/${value ? "" : "; max-age=0"}`;
+      },
+      on ? "1" : "",
+    );
+  await hint(true);
   const checked = () =>
     page.evaluate(() =>
       (window as unknown as { fixture: Fixture }).fixture.auth.accessSession(),
@@ -193,6 +203,11 @@ try {
   providerState = "none";
   assert.equal((await checked())?.accountId, "amp|parent-fixture");
   assert.equal(parentReads, 1);
+  // No school sign-in on this browser: no provider round trip at all.
+  await hint(false);
+  const reads = providerReads;
+  assert.equal((await checked())?.accountId, "amp|parent-fixture");
+  assert.equal(providerReads, reads);
   // Both session kinds are revoked before browser navigation on sign out.
   await page.route(`${origin}/`, (route) =>
     route.fulfill({ contentType: "text/html", body: "Signed out" }),

@@ -384,124 +384,130 @@ function RequestSeatsSheet({
         }}
         title="Send to your school’s buyer"
       >
-        {existing.isPending ? (
-          <Loading>Opening the request</Loading>
-        ) : existing.error ? (
-          <div className={styles.sheetBody}>
-            <p role="alert">The buyer request couldn’t load. Try again.</p>
-            <Button
-              variant="secondary"
-              aria-busy={existing.isFetching}
-              onClick={() => void existing.refetch()}
-            >
-              Try again
-            </Button>
-          </div>
-        ) : made && !editing ? (
-          <div className={styles.sheetBody}>
-            {holder !== null && (
+        {/* Every state holds the form's height, so the sheet never jumps
+            between the form, the link and a wait. */}
+        <div className={styles.seatsBody}>
+          {existing.isPending ? (
+            <Loading>Opening the request</Loading>
+          ) : existing.error ? (
+            <div className={styles.sheetBody}>
+              <p role="alert">The buyer request couldn’t load. Try again.</p>
+              <Button
+                variant="secondary"
+                aria-busy={existing.isFetching}
+                onClick={() => void existing.refetch()}
+              >
+                Try again
+              </Button>
+            </div>
+          ) : made && !editing ? (
+            <div className={styles.sheetBody}>
+              {holder !== null && (
+                <p className={styles.quiet} role="status">
+                  {holder
+                    ? `${holder} already has a buyer link for this class. You can share it below.`
+                    : "A buyer link already covers this class. You can share it below."}
+                </p>
+              )}
+              <p className={styles.quiet}>
+                {request!.seats.toLocaleString()}{" "}
+                {request!.seats === 1 ? "seat" : "seats"} · Expires{" "}
+                {practiceDate(request!.expiresAt)}
+              </p>
+              {!!request?.note && (
+                <p className={styles.quiet}>{request.note}</p>
+              )}
+              <div className={styles.sheetActions}>
+                <Button
+                  variant="primary"
+                  onClick={() => copy(made)}
+                  data-share-url={made}
+                >
+                  {copied ? "Copied" : "Copy link"}
+                </Button>
+                <a
+                  href={made}
+                  target="_blank"
+                  rel="noreferrer"
+                  referrerPolicy="no-referrer"
+                  className={styles.quietLink}
+                >
+                  Preview
+                </a>
+                {request?.canEdit && (
+                  <Button
+                    variant="quiet"
+                    onClick={() => {
+                      setCount(request.seats);
+                      setNote(request.note);
+                      setEditing(true);
+                      setHolder(null);
+                    }}
+                  >
+                    Edit request
+                  </Button>
+                )}
+              </div>
+              {copyFailed && (
+                <TextField
+                  label="Select the link and copy it"
+                  value={made}
+                  readOnly
+                  onFocus={(event) => event.target.select()}
+                />
+              )}
+            </div>
+          ) : holder !== null ? (
+            <div className={styles.sheetBody}>
               <p className={styles.quiet} role="status">
                 {holder
-                  ? `${holder} already has a buyer link for this class. You can share it below.`
-                  : "A buyer link already covers this class. You can share it below."}
+                  ? `${holder} already has a buyer link for this class. Ask ${holder} for it.`
+                  : "Another teacher already has a buyer link for this class. Ask them for it."}
               </p>
-            )}
-            <p className={styles.quiet}>
-              {request!.seats.toLocaleString()}{" "}
-              {request!.seats === 1 ? "seat" : "seats"} · Expires{" "}
-              {practiceDate(request!.expiresAt)}
-            </p>
-            {!!request?.note && <p className={styles.quiet}>{request.note}</p>}
-            <div className={styles.sheetActions}>
-              <Button
-                variant="primary"
-                onClick={() => copy(made)}
-                data-share-url={made}
-              >
-                {copied ? "Copied" : "Copy link"}
-              </Button>
-              <a
-                href={made}
-                target="_blank"
-                rel="noreferrer"
-                referrerPolicy="no-referrer"
-                className={styles.quietLink}
-              >
-                Preview
-              </a>
-              {request?.canEdit && (
-                <Button
-                  variant="quiet"
-                  onClick={() => {
-                    setCount(request.seats);
-                    setNote(request.note);
-                    setEditing(true);
-                    setHolder(null);
-                  }}
-                >
-                  Edit request
-                </Button>
-              )}
             </div>
-            {copyFailed && (
-              <TextField
-                label="Select the link and copy it"
-                value={made}
-                readOnly
-                onFocus={(event) => event.target.select()}
-              />
-            )}
-          </div>
-        ) : holder !== null ? (
-          <div className={styles.sheetBody}>
-            <p className={styles.quiet} role="status">
-              {holder
-                ? `${holder} already has a buyer link for this class. Ask ${holder} for it.`
-                : "Another teacher already has a buyer link for this class. Ask them for it."}
-            </p>
-          </div>
-        ) : (
-          <form className={styles.sheetBody} onSubmit={submit}>
-            {editing && (
-              <p className={styles.quiet}>
-                Saving creates a new link to share with your school.
-              </p>
-            )}
-            <Stepper
-              label="Seats"
-              value={seats}
-              min={1}
-              max={9999}
-              onChange={setCount}
-            />
-            <TextArea
-              label="Note for the buyer (optional)"
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-              maxLength={1000}
-              rows={3}
-            />
-            <div className={styles.sheetActions}>
-              <Button
-                type="submit"
-                variant="primary"
-                aria-busy={busy}
-                disabled={busy}
-              >
-                {editing ? "Save request" : "Get link"}
-              </Button>
+          ) : (
+            <form className={styles.sheetBody} onSubmit={submit}>
               {editing && (
-                <Button
-                  variant="quiet"
-                  disabled={busy}
-                  onClick={() => setEditing(false)}
-                >
-                  Cancel
-                </Button>
+                <p className={styles.quiet}>
+                  Saving creates a new link to share with your school.
+                </p>
               )}
-            </div>
-          </form>
-        )}
+              <Stepper
+                label="Seats"
+                value={seats}
+                min={1}
+                max={9999}
+                onChange={setCount}
+              />
+              <TextArea
+                label="Note for the buyer (optional)"
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
+                maxLength={1000}
+                rows={3}
+              />
+              <div className={styles.sheetActions}>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  aria-busy={busy}
+                  disabled={busy}
+                >
+                  {editing ? "Save request" : "Get link"}
+                </Button>
+                {editing && (
+                  <Button
+                    variant="quiet"
+                    disabled={busy}
+                    onClick={() => setEditing(false)}
+                  >
+                    Cancel
+                  </Button>
+                )}
+              </div>
+            </form>
+          )}
+        </div>
       </Sheet>
       <Toast message={error} onDismiss={() => setError("")} />
     </>

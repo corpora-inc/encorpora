@@ -116,7 +116,11 @@ export function SchoolStartScreen() {
       mine && draft.signerChanged
         ? draft.signerTitle
         : (reused?.signerTitle ?? (mine ? draft.signerTitle : "Teacher")),
-    authorized: mine && draft.authorized,
+    // An agreement this school accepted at the current version already
+    // authorizes its classes: no second tick, unless the signer changes.
+    authorized:
+      (!!reused && !(mine && draft.signerChanged)) ||
+      (mine && draft.authorized),
     signerChanged: mine && draft.signerChanged,
   };
   const edit = (change: Partial<Draft>) =>
@@ -280,8 +284,21 @@ export function SchoolStartScreen() {
           name={value.signerName}
           title={value.signerTitle}
           authorized={value.authorized}
-          onName={(signerName) => edit({ signerName, signerChanged: true })}
-          onTitle={(signerTitle) => edit({ signerTitle, signerChanged: true })}
+          // Changing who signs asks for the agreement again.
+          onName={(signerName) =>
+            edit({
+              signerName,
+              signerChanged: true,
+              ...(reused && !value.signerChanged ? { authorized: false } : {}),
+            })
+          }
+          onTitle={(signerTitle) =>
+            edit({
+              signerTitle,
+              signerChanged: true,
+              ...(reused && !value.signerChanged ? { authorized: false } : {}),
+            })
+          }
           onAuthorized={(authorized) => edit({ authorized })}
           errors={{
             name: fieldErrors.signerName,

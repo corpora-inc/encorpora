@@ -463,7 +463,13 @@ export function schoolRoutes(root: AnyRoute) {
       screens.settings,
       (session, orgId) => [
         preload(calendarOptions(session, orgId)),
-        preload(licenseOptions(session, orgId)),
+        // Only a license this person can read: a teacher's own pilot
+        // school has none to show, and asking would only be refused.
+        preload(orgOptions(session, orgId)).then((org) =>
+          (org as { can?: string[] } | undefined)?.can?.includes("license.read")
+            ? preload(licenseOptions(session, orgId))
+            : undefined,
+        ),
         import("../features/school/classroom/api").then(
           ({ experienceOptions }) =>
             preload(experienceOptions(session, { kind: "org", id: orgId })),

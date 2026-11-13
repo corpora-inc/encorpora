@@ -46,9 +46,16 @@
   margin: 0;
   font-size: var(--text-heading-3);
 }
+/* Accepting stays in reach however far the reader is: a footer that sticks
+   to the sheet's foot while the text scrolls under it. */
 .agreementAccept {
-  padding-top: var(--space-4);
+  --sheet-foot: max(var(--space-6), env(safe-area-inset-bottom));
+  position: sticky;
+  bottom: calc(-1 * var(--sheet-foot));
+  margin-bottom: calc(-1 * var(--sheet-foot));
+  padding: var(--space-3) 0 var(--sheet-foot);
   border-top: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
 }
 
 /* Settings: practice access in one line. */
@@ -142,5 +149,30 @@
   .pair {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
+  }
+}
+
+/* An agreement already in force: one line, its change at the end, both on
+   the text's own edge. */
+.covered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.covered p {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+
+/* Request seats: one height for its form, its link and its wait (the
+   editing form's, the tallest). */
+.seatsBody {
+  min-height: 345px;
+}
+@media (min-width: 641px) {
+  .seatsBody {
+    min-height: 321px;
   }
 }

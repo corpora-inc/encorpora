@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ContactAddress } from "../../support/ContactAddress";
 import { Link, Navigate, useLocation, useSearch } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { AppError } from "../../../lib/AppError";
 import { authConfigOptions, sessionOptions } from "../../../lib/query";
@@ -11,7 +11,6 @@ import { Checkbox } from "../../../ui/Checkbox";
 import { Loading } from "../../../ui/Loading";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Toast } from "../../../ui/Toast";
-import { TextField } from "../../../ui/TextField";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
@@ -84,37 +83,10 @@ export function ConnectionScreen() {
     [authorized, setAuthorized] = useState(false),
     [bringExisting, setBringExisting] = useState<boolean | null>(null),
     [busy, setBusy] = useState<"connect" | "sync" | "link" | null>(null),
-    [error, setError] = useState(""),
-    [institution, setInstitution] = useState(""),
-    [contact, setContact] = useState(""),
-    [requesting, setRequesting] = useState(false);
+    [error, setError] = useState("");
   const rosterRequest = data?.requests.find(
     (r) => r.method === "anyschool" && r.status !== "closed",
   );
-  async function requestRoster(event: FormEvent) {
-    event.preventDefault();
-    if (!session || credential?.onboarding || requesting) return;
-    setRequesting(true);
-    setError("");
-    try {
-      await connectionApi.request(session, {
-        institutionName: institution.trim(),
-        contactEmail: contact.trim(),
-        method: "anyschool",
-      });
-      await client.invalidateQueries({
-        queryKey: connectionOptions(session).queryKey,
-      });
-    } catch (failure) {
-      setError(
-        failure instanceof Error
-          ? failure.message
-          : "The request didn’t save. Try again.",
-      );
-    } finally {
-      setRequesting(false);
-    }
-  }
   const linkProblem = [
     "clever_identity_already_linked",
     "clever_account_link_required",
@@ -287,62 +259,19 @@ export function ConnectionScreen() {
               withClever("Continue with Clever")
             )}
           </Actions>
-          {session && !onboarding && (
-            <details
-              className={styles.disclosure}
-              open={rosterRequest ? true : undefined}
-            >
-              <summary>Connect another roster system</summary>
-              {rosterRequest ? (
-                <p role="status">
-                  {rosterRequest.status === "requested"
-                    ? "Connection requested. Watch your email for an AnySchool invitation."
-                    : rosterRequest.status === "invited"
-                      ? "Your AnySchool invitation is ready. Open the invitation in your email to connect your roster."
-                      : "Your roster connection is ready. Link Clever above to open it in AMP."}
-                </p>
-              ) : (
-                <form
-                  className={styles.form}
-                  onSubmit={(event) => void requestRoster(event)}
-                >
-                  <p>
-                    We’ll arrange an AnySchool invitation for your school. You
-                    can set up your class while you wait.
-                  </p>
-                  <TextField
-                    label="School or district"
-                    value={institution}
-                    onChange={(event) => setInstitution(event.target.value)}
-                    maxLength={200}
-                    required
-                    disabled={requesting}
-                  />
-                  <TextField
-                    label="Contact email"
-                    type="email"
-                    value={contact}
-                    onChange={(event) => setContact(event.target.value)}
-                    maxLength={254}
-                    required
-                    disabled={requesting}
-                  />
-                  <Button
-                    type="submit"
-                    variant="secondary"
-                    disabled={
-                      requesting || !institution.trim() || !contact.trim()
-                    }
-                    aria-busy={requesting}
-                  >
-                    Request a connection
-                  </Button>
-                </form>
-              )}
-            </details>
+          {/* A roster connection already asked for says where it stands, in
+              plain words: one line, no form. */}
+          {session && !onboarding && rosterRequest && (
+            <p className={styles.note} role="status">
+              {rosterRequest.status === "requested"
+                ? "Roster connection requested. We’ll email you the invitation."
+                : rosterRequest.status === "invited"
+                  ? "Your roster invitation is in your email."
+                  : "Your roster connection is ready. Link Clever above to open it."}
+            </p>
           )}
           <Aside>
-            {data?.districtSignupUrl && (
+            {!session && data?.districtSignupUrl && (
               <a
                 href={data.districtSignupUrl}
                 rel="noreferrer"
@@ -357,15 +286,13 @@ export function ConnectionScreen() {
             >
               Set up a class without Clever
             </Link>
-            {!session && (
-              <Link
-                to="/schools"
-                hash="talk"
-                className={buttonClass("quiet", "", "start")}
-              >
-                Another roster system? Tell us
-              </Link>
-            )}
+            <Link
+              to="/schools"
+              hash="talk"
+              className={buttonClass("quiet", "", "start")}
+            >
+              Another roster system? Tell us
+            </Link>
           </Aside>
         </>
       ),

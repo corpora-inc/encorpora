@@ -25,6 +25,14 @@ test("duplicate people and classes use recognizable roster context", () => {
   assert.match(people[0]!.label, /Grade 3 · Oak · Pat Rivera/);
   assert.match(people[1]!.label, /Grade 4 · Elm · Jo Kim/);
   assert.equal(people[2]!.label, "Noor Ali");
+  // The kind is said only where it tells two apart.
+  assert.ok(people.every((p) => !p.label.endsWith("· Student")));
+  const mixed = adoptionLabels([
+    { id: "a", name: "Sam Ortiz", grade: "5", student: true },
+    { id: "b", name: "Sam Ortiz", grade: "5", student: false },
+  ]);
+  assert.ok(mixed.every((m) => !m.ambiguous));
+  assert.match(mixed[0]!.label, /· Student$/);
   assert.ok(people.every((p) => !p.ambiguous && !p.label.includes("private-")));
   const classes = adoptionLabels([
     { id: "one", name: "Math", grade: "3", teacherNames: ["Pat Rivera"] },

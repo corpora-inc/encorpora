@@ -36,6 +36,7 @@ import {
 import { tryGetCurrentAuthEndpointContext } from "@better-auth/core/context";
 import {
   PROVIDER_COOKIE,
+  PROVIDER_HINT_COOKIE,
   requestCookie,
   revokeProviderSession,
 } from "../identity/provider-principals.js";
@@ -771,6 +772,7 @@ export async function registerAccountRoutes(
           await revokeProviderSession(pool, request);
           cookies.push(
             `${PROVIDER_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${config.production ? "; Secure" : ""}`,
+            `${PROVIDER_HINT_COOKIE}=; Path=/; SameSite=Lax; Max-Age=0${config.production ? "; Secure" : ""}`,
           );
         }
         if (cookies.length) reply.header("set-cookie", cookies);

@@ -29,6 +29,10 @@ export type ResolveCleverPerson = (
 export const providerHash = (value: string) =>
   createHash("sha256").update(value).digest("hex");
 export const PROVIDER_COOKIE = "amp.provider-session";
+/** A readable twin of the HttpOnly session cookie, holding no secret ("1"):
+ * the app checks a school sign-in only where one exists, instead of asking
+ * the server (and logging a 401) on every boot. Set and cleared with it. */
+export const PROVIDER_HINT_COOKIE = "amp.provider";
 export const isCleverAdult = (roles: string[]) =>
   !roles.includes("student") &&
   !roles.includes("contact") &&

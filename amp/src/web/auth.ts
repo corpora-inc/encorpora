@@ -100,7 +100,12 @@ export async function accessSession(): Promise<AuthSession | null> {
   if (student && !completion) return student;
   const configuration = await authConfig();
   if (configuration.mode === "accounts") {
-    if (configuration.clever) {
+    // Only where a school sign-in exists (its readable hint cookie) or one
+    // is completing: never a round trip and a 401 on every boot.
+    if (
+      configuration.clever &&
+      (completion || /(?:^|;\s*)amp\.provider=1(?:;|$)/.test(document.cookie))
+    ) {
       const provider = await fetch("/api/v1/provider/session", {
         credentials: "same-origin",
         cache: "no-store",
