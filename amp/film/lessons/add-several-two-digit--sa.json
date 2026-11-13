@@ -1,0 +1,1230 @@
+{
+  "id": "add-several-two-digit--sa",
+  "title": "Tens with tens, ones with ones",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.3,
+          -3,
+          19.7,
+          12
+        ],
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 7,
+                  "ones": 2
+                },
+                "inks": {
+                  "tens": "blue",
+                  "ones": "warm"
+                }
+              }
+            ],
+            "squares": "rows",
+            "start": true,
+            "labels": [
+              {
+                "id": "l70",
+                "on": "n.tens",
+                "tex": "\\cb{70}",
+                "dir": "n",
+                "size": "l"
+              },
+              {
+                "id": "l2",
+                "on": "n.ones",
+                "tex": "\\cw{2}",
+                "dir": "n",
+                "size": "l"
+              }
+            ]
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Every two-digit number is made of tens and ones. Seventy-two is one of them.",
+          "do": [
+            {
+              "do": "header",
+              "tex": "72",
+              "at": "Every",
+              "label": "Tens and ones"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each cube is one.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones.1",
+              "at": "cube"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten cubes in a row make a rod, and a rod is one ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "rod"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{1}\\text{ ten}=\\cb{10}",
+              "at": "one"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven rods are seven tens: seventy.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": "l70",
+              "at": "seventy"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{7}\\text{ tens}=\\cb{70}",
+              "at": "seventy"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two cubes are two ones: two. So seventy-two is seventy plus two.",
+          "do": [
+            {
+              "do": "show",
+              "target": "l2",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "72=\\cb{70}+\\cw{2}",
+              "fresh": true,
+              "at": "So"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.5,
+          -4.4,
+          4.5,
+          4.8
+        ],
+        "points": {
+          "Hten": [
+            -2.3,
+            4
+          ],
+          "Hone": [
+            2.3,
+            4
+          ],
+          "A": [
+            0,
+            2.6
+          ],
+          "B": [
+            0,
+            0.9
+          ],
+          "C": [
+            0,
+            -0.8
+          ],
+          "AT": [
+            0,
+            2.6
+          ],
+          "AO": [
+            0.16,
+            2.6
+          ],
+          "BT": [
+            0,
+            0.9
+          ],
+          "BO": [
+            0.16,
+            0.9
+          ],
+          "CT": [
+            0,
+            -0.8
+          ],
+          "CO": [
+            0.16,
+            -0.8
+          ],
+          "L": [
+            -3.3,
+            -1.1
+          ],
+          "R": [
+            3.3,
+            -1.1
+          ],
+          "TT": [
+            -2.3,
+            -2.9
+          ],
+          "TO": [
+            2.3,
+            -2.9
+          ],
+          "Plus": [
+            0,
+            -2.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "ht",
+            "label": "\\text{Tens}",
+            "at": "Hten",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "ho",
+            "label": "\\text{Ones}",
+            "at": "Hone",
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "a",
+            "label": "72",
+            "at": "A",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "b",
+            "label": "68",
+            "at": "B",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "c",
+            "label": "60",
+            "at": "C",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "at",
+            "label": "70",
+            "at": "AT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "ao",
+            "label": "2",
+            "at": "AO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "ap",
+            "label": "+",
+            "at": "A",
+            "size": "l"
+          },
+          {
+            "id": "bt",
+            "label": "60",
+            "at": "BT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "bo",
+            "label": "8",
+            "at": "BO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "bp",
+            "label": "+",
+            "at": "B",
+            "size": "l"
+          },
+          {
+            "id": "ct",
+            "label": "60",
+            "at": "CT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "co",
+            "label": "0",
+            "at": "CO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "cp",
+            "label": "+",
+            "at": "C",
+            "size": "l"
+          },
+          {
+            "id": "rule",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted"
+          },
+          {
+            "id": "tt",
+            "label": "190",
+            "at": "TT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "to",
+            "label": "10",
+            "at": "TO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "plus",
+            "label": "+",
+            "at": "Plus",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Find seventy-two plus sixty-eight plus sixty by adding the tens, then the ones.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Find"
+            },
+            {
+              "do": "problem",
+              "text": "Find $72 + 68 + 60$ by adding the tens, then the ones.",
+              "at": "Find"
+            },
+            {
+              "do": "show",
+              "target": "a",
+              "at": "seventy-two"
+            },
+            {
+              "do": "show",
+              "target": "b",
+              "at": "sixty-eight"
+            },
+            {
+              "do": "show",
+              "target": "c",
+              "at": "sixty"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Split each number into its tens and its ones. Seventy and two.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Split"
+            },
+            {
+              "do": "header",
+              "tex": "72+68+60",
+              "label": "Add the tens, then the ones",
+              "at": "Split"
+            },
+            {
+              "do": "text",
+              "text": "Split into tens and ones.",
+              "at": "Split"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ht",
+                "ho"
+              ],
+              "at": "tens"
+            },
+            {
+              "do": "hide",
+              "target": "a",
+              "at": "Seventy"
+            },
+            {
+              "do": "show",
+              "target": [
+                "at",
+                "ao"
+              ],
+              "at": "Seventy"
+            },
+            {
+              "do": "move",
+              "points": {
+                "AT": [
+                  -2.3,
+                  2.6
+                ],
+                "AO": [
+                  2.3,
+                  2.6
+                ]
+              },
+              "at": "Seventy"
+            },
+            {
+              "do": "show",
+              "target": "ap",
+              "at": "two"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixty and eight. Sixty and zero.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "b",
+              "at": "Sixty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bt",
+                "bo"
+              ],
+              "at": "Sixty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "BT": [
+                  -2.3,
+                  0.9
+                ],
+                "BO": [
+                  2.3,
+                  0.9
+                ]
+              },
+              "at": "Sixty"
+            },
+            {
+              "do": "show",
+              "target": "bp",
+              "at": "eight"
+            },
+            {
+              "do": "hide",
+              "target": "c",
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "ct",
+                "co"
+              ],
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "CT": [
+                  -2.3,
+                  -0.8
+                ],
+                "CO": [
+                  2.3,
+                  -0.8
+                ]
+              },
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "cp",
+              "at": "zero"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Moving the parts adds nothing and loses nothing, so the total stays the same.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Nothing is added or lost.",
+              "at": "adds"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Add the tens: seventy plus sixty plus sixty is one hundred ninety.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Add"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{70}+\\cb{60}+\\cb{60}=\\cb{190}",
+              "at": "Add"
+            },
+            {
+              "do": "show",
+              "target": "rule",
+              "at": "is"
+            },
+            {
+              "do": "show",
+              "target": "tt",
+              "at": "ninety"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Two and eight make ten, and zero adds nothing. The ones make ten.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{2}+\\cw{8}+\\cw{0}=\\cw{10}",
+              "fresh": true,
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "to",
+              "at": "ten",
+              "nth": 2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Put the two totals together. One hundred ninety and ten make two hundred.",
+          "do": [
+            {
+              "do": "show",
+              "target": "plus",
+              "at": "together"
+            },
+            {
+              "do": "move",
+              "points": {
+                "TT": [
+                  -1.1,
+                  -2.9
+                ],
+                "TO": [
+                  0.9,
+                  -2.9
+                ]
+              },
+              "at": "together"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cb{190}+\\cw{10}=200",
+              "at": "hundred",
+              "nth": 2
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.5,
+          -5,
+          4.5,
+          5
+        ],
+        "points": {
+          "Hten": [
+            -2.3,
+            4.1
+          ],
+          "Hone": [
+            2.3,
+            4.1
+          ],
+          "A": [
+            0,
+            2.7
+          ],
+          "B": [
+            0,
+            1.2
+          ],
+          "C": [
+            0,
+            -0.3
+          ],
+          "D": [
+            0,
+            -1.8
+          ],
+          "AT": [
+            0,
+            2.7
+          ],
+          "AO": [
+            0.16,
+            2.7
+          ],
+          "BT": [
+            0,
+            1.2
+          ],
+          "BO": [
+            0.16,
+            1.2
+          ],
+          "CT": [
+            0,
+            -0.3
+          ],
+          "CO": [
+            0.16,
+            -0.3
+          ],
+          "DT": [
+            0,
+            -1.8
+          ],
+          "DO": [
+            0.16,
+            -1.8
+          ],
+          "L": [
+            -3.3,
+            -2
+          ],
+          "R": [
+            3.3,
+            -2
+          ],
+          "TT": [
+            -2.3,
+            -3.8
+          ],
+          "TO": [
+            2.3,
+            -3.8
+          ],
+          "Plus": [
+            0,
+            -3.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "ht",
+            "label": "\\text{Tens}",
+            "at": "Hten",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "ho",
+            "label": "\\text{Ones}",
+            "at": "Hone",
+            "ink": "warm",
+            "size": "m"
+          },
+          {
+            "id": "a",
+            "label": "43",
+            "at": "A",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "b",
+            "label": "63",
+            "at": "B",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "c",
+            "label": "68",
+            "at": "C",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "d",
+            "label": "59",
+            "at": "D",
+            "size": "l",
+            "start": false
+          },
+          {
+            "id": "at",
+            "label": "40",
+            "at": "AT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "ao",
+            "label": "3",
+            "at": "AO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "ap",
+            "label": "+",
+            "at": "A",
+            "size": "l"
+          },
+          {
+            "id": "bt",
+            "label": "60",
+            "at": "BT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "bo",
+            "label": "3",
+            "at": "BO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "bp",
+            "label": "+",
+            "at": "B",
+            "size": "l"
+          },
+          {
+            "id": "ct",
+            "label": "60",
+            "at": "CT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "co",
+            "label": "8",
+            "at": "CO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "cp",
+            "label": "+",
+            "at": "C",
+            "size": "l"
+          },
+          {
+            "id": "dt",
+            "label": "50",
+            "at": "DT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "doo",
+            "label": "9",
+            "at": "DO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "dp",
+            "label": "+",
+            "at": "D",
+            "size": "l"
+          },
+          {
+            "id": "rule",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted"
+          },
+          {
+            "id": "tt",
+            "label": "210",
+            "at": "TT",
+            "ink": "blue",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "to",
+            "label": "23",
+            "at": "TO",
+            "ink": "warm",
+            "size": "l",
+            "flies": true
+          },
+          {
+            "id": "plus",
+            "label": "+",
+            "at": "Plus",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Find forty-three plus sixty-three plus sixty-eight plus fifty-nine by adding the tens, then the ones.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Find"
+            },
+            {
+              "do": "problem",
+              "text": "Find $43 + 63 + 68 + 59$ by adding the tens, then the ones.",
+              "at": "Find"
+            },
+            {
+              "do": "show",
+              "target": "a",
+              "at": "forty-three"
+            },
+            {
+              "do": "show",
+              "target": "b",
+              "at": "sixty-three"
+            },
+            {
+              "do": "show",
+              "target": "c",
+              "at": "sixty-eight"
+            },
+            {
+              "do": "show",
+              "target": "d",
+              "at": "fifty-nine"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Four plus six plus six plus five is twenty-one. The ones make twenty-three. So twenty-one and twenty-three make forty-four.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "header",
+              "tex": "43+63+68+59",
+              "label": "Add the tens, then the ones",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "4+6+6+5=21",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "3+3+8+9=23",
+              "fresh": true,
+              "at": "ones"
+            },
+            {
+              "do": "write",
+              "tex": "21+23=44",
+              "fresh": true,
+              "id": "slip",
+              "at": "forty-four"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-four is too small. Each number is bigger than forty.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "small"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "The four in forty-three stands for four tens: forty.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "ht",
+                "ho"
+              ],
+              "at": "tens"
+            },
+            {
+              "do": "hide",
+              "target": "a",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "at",
+                "ao"
+              ],
+              "at": "forty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "AT": [
+                  -2.3,
+                  2.7
+                ],
+                "AO": [
+                  2.3,
+                  2.7
+                ]
+              },
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "ap",
+              "at": "forty"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixty and three. Sixty and eight. Fifty and nine.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "b",
+              "at": "Sixty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bt",
+                "bo"
+              ],
+              "at": "Sixty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "BT": [
+                  -2.3,
+                  1.2
+                ],
+                "BO": [
+                  2.3,
+                  1.2
+                ]
+              },
+              "at": "Sixty"
+            },
+            {
+              "do": "show",
+              "target": "bp",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": "c",
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "ct",
+                "co"
+              ],
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "CT": [
+                  -2.3,
+                  -0.3
+                ],
+                "CO": [
+                  2.3,
+                  -0.3
+                ]
+              },
+              "at": "Sixty",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "cp",
+              "at": "eight"
+            },
+            {
+              "do": "hide",
+              "target": "d",
+              "at": "Fifty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dt",
+                "doo"
+              ],
+              "at": "Fifty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "DT": [
+                  -2.3,
+                  -1.8
+                ],
+                "DO": [
+                  2.3,
+                  -1.8
+                ]
+              },
+              "at": "Fifty"
+            },
+            {
+              "do": "show",
+              "target": "dp",
+              "at": "nine"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "So my tens are forty, sixty, sixty and fifty. That is twenty-one tens: two hundred ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "at",
+                "bt",
+                "ct",
+                "dt"
+              ],
+              "at": "forty"
+            },
+            {
+              "do": "clear",
+              "at": "twenty-one"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{21}\\text{ tens}=\\cb{210}",
+              "at": "twenty-one"
+            },
+            {
+              "do": "show",
+              "target": "rule",
+              "at": "twenty-one"
+            },
+            {
+              "do": "show",
+              "target": "tt",
+              "at": "hundred"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "The ones still make twenty-three. Two hundred ten and twenty-three make two hundred thirty-three in all.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{3}+\\cw{3}+\\cw{8}+\\cw{9}=\\cw{23}",
+              "fresh": true,
+              "at": "ones"
+            },
+            {
+              "do": "show",
+              "target": "to",
+              "at": "twenty-three"
+            },
+            {
+              "do": "show",
+              "target": "plus",
+              "at": "Two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "TT": [
+                  -1.1,
+                  -3.8
+                ],
+                "TO": [
+                  0.9,
+                  -3.8
+                ]
+              },
+              "at": "Two"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cb{210}+\\cw{23}=233",
+              "at": "thirty-three"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "teacher",
+          "say": "Split each number into tens and ones, and keep each part's value.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Split"
+            },
+            {
+              "do": "header",
+              "off": true,
+              "at": "Split"
+            },
+            {
+              "do": "text",
+              "text": "Split into tens and ones.",
+              "at": "Split"
+            },
+            {
+              "do": "text",
+              "text": "Keep each part's value.",
+              "at": "keep"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Tens with tens, ones with ones, then put them together.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Tens with tens, ones with ones,",
+              "at": "Tens"
+            },
+            {
+              "do": "text",
+              "text": "then put them together.",
+              "at": "then"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "tt",
+                "to"
+              ],
+              "at": "together"
+            }
+          ],
+          "pause": 1
+        }
+      ]
+    }
+  ]
+}
