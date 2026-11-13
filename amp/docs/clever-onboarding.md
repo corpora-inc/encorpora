@@ -12,7 +12,7 @@ AMP supports teacher-led pilots and institution-managed rosters using the same l
 | Existing AMP school joining a district | The school owner authorizes adoption into one specific district. Its administrator reviews the grant and any staff identity conflicts. Learners, evidence, classes and pilot dates keep their IDs. |
 | Existing AMP school moving to Clever | Stage the first import, adopt the school if needed, and review exact school, person and section source-ID matches before starting synchronization. Names and email addresses never establish identity. |
 
-Clever's [AnySchool setup guide](https://dev.clever.com/docs/build-anyschool-csv-sftp-rostering) requires provider enablement and a dashboard invitation completed by the institution. The request in AMP does not claim to have sent that invitation or connected an SIS. Teachers can start directly while the institution completes this step.
+Clever's [AnySchool setup guide](https://dev.clever.com/docs/anyschool-rostering) requires provider enablement and a dashboard invitation completed by the institution. The request in AMP does not claim to have sent that invitation or connected an SIS. Teachers can start directly while the institution completes this step.
 
 ## Pilot and purchase lifecycle
 
@@ -48,7 +48,7 @@ Do not run this command inside an API container. API maintenance independently r
 
 ## Sandbox and launch
 
-1. Create a development application and obtain Secure Sync v3.1 and AnySchool access from Clever. Default developer credentials may have only basic SSO scopes.
+1. Create a development application and obtain Rostering API v3.0 or v3.1 and AnySchool access from Clever. Configure `AMP_CLEVER_API_VERSION` for the enabled version in both the server and worker. Default developer credentials may have only basic SSO scopes.
 2. Configure the exact redirect URI `<AMP origin>/api/v1/school/sso/clever/callback`. Enable supported user types and Events in the provider dashboard. Store credentials in secret storage, never in the repository or a shared transcript.
 3. Apply migrations and configure the variables in [Clever sign-in](clever-auth.md). Set `AMP_CLEVER_TEST_DISTRICT_ID` privately and run `npx tsx scripts/clever-probe.ts` with `AMP_CLEVER_ENVIRONMENT=sandbox`. Its output contains capability status and record counts only. A 401/403 is a capability failure, not an empty roster.
 4. Complete a real development-app round trip: district sharing, initial roster, teacher/student sign-in, sharing removal and restoration, school/class transfer, co-teacher, multiple roles, zero-section user, missing optional fields, terms/courses, Events and full resync. Exercise AnySchool invitation, source upload and import separately.

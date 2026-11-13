@@ -44,7 +44,7 @@ test("Clever API version is explicit deployment configuration", () => {
 });
 
 for (const apiVersion of ["3.0", "3.1"] as const)
-  test(`Clever ${apiVersion} uses one version for roster, identity reads and events`, async () => {
+  test(`Clever ${apiVersion} uses one version for roster, district-authorized user reads and events`, async () => {
     const requested: string[] = [];
     const client = new CleverClient({
       ...options,

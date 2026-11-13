@@ -7,10 +7,15 @@ import type { AuthSession } from "../src/web/auth.js";
 
 // Exercise the real browser session adapter, including storage and redirect
 // completion; only the external API responses are replaced.
+const port = Number(process.env.AMP_CLEVER_SESSION_UI_PORT ?? 4978);
+const origin = `http://127.0.0.1:${port}`;
 const vite = await createServer({
+  ...(process.env.AMP_VITE_CACHE_DIR
+    ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
+    : {}),
   root: fileURLToPath(new URL("../", import.meta.url)),
   configFile: fileURLToPath(new URL("../vite.config.ts", import.meta.url)),
-  server: { host: "127.0.0.1", port: 4978, strictPort: true },
+  server: { host: "127.0.0.1", port, strictPort: true },
   plugins: [
     {
       name: "clever-session-fixture",
@@ -119,7 +124,7 @@ try {
     }
     throw new Error(`Unexpected fixture API ${path}`);
   });
-  await page.goto("http://127.0.0.1:4978/clever-session-fixture");
+  await page.goto(`${origin}/clever-session-fixture`);
   await page.waitForFunction(() => "fixture" in window);
   const checked = () =>
     page.evaluate(() =>
@@ -189,13 +194,13 @@ try {
   assert.equal((await checked())?.accountId, "amp|parent-fixture");
   assert.equal(parentReads, 1);
   // Both session kinds are revoked before browser navigation on sign out.
-  await page.route("http://127.0.0.1:4978/", (route) =>
+  await page.route(`${origin}/`, (route) =>
     route.fulfill({ contentType: "text/html", body: "Signed out" }),
   );
   await page.evaluate(() =>
     (window as unknown as { fixture: Fixture }).fixture.auth.signOut(),
   );
-  await page.waitForURL("http://127.0.0.1:4978/");
+  await page.waitForURL(`${origin}/`);
   assert.equal(signOuts, 2);
   console.log(
     "Clever browser session checks passed: shared-device precedence, verified completion, expiry and sign-out.",

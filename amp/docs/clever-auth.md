@@ -2,7 +2,7 @@
 
 Clever staff sign in with their provider identity even when Clever supplies no email address. Their canonical AMP account is `amp|<uuid>`, the same account identifier shape used for mailbox accounts. The provider principal adapter leaves Better Auth users and their existing IDs intact. A Clever profile email is neither mailbox proof nor an account-linking key.
 
-Register Clever OAuth with the exact AMP origin and `/api/v1/school/sso/clever/callback` redirect path. The server requires a client ID, client secret and explicit sandbox or production environment. Credentials belong in deployment secret storage. The authorization code is exchanged only after a single-use, browser-bound state record is claimed. A Portal callback without AMP state restarts authorization; its original code is discarded. User access tokens are used to read `/v3.0/me` and that user's profile, then discarded.
+Register Clever OAuth with the exact AMP origin and `/api/v1/school/sso/clever/callback` redirect path. The server requires a client ID, client secret and explicit sandbox or production environment. Credentials belong in deployment secret storage. The authorization code is exchanged only after a single-use, browser-bound state record is claimed. A Portal callback without AMP state restarts authorization; its original code is discarded. User access tokens are used to read Identity API `/v3.0/me` and that user's `/v3.0/users` profile, then discarded. Set `AMP_CLEVER_API_VERSION=3.0` or `3.1` to match the app's enabled Rostering API; the default is `3.1`. The server and synchronization worker must use the same version. AMP does not downgrade after a permission failure.
 
 The server requires `AMP_AUTH_MODE=accounts` and uses the validated `AMP_ACCOUNTS_URL` as its origin. Configure these deployment variables:
 
@@ -10,6 +10,7 @@ The server requires `AMP_AUTH_MODE=accounts` and uses the validated `AMP_ACCOUNT
 | -------------------------------- | -------------------------------------------------------------------- |
 | `AMP_CLEVER_CLIENT_ID`           | The Clever application's client ID.                                  |
 | `AMP_CLEVER_CLIENT_SECRET`       | Its client secret, supplied through deployment secret storage.       |
+| `AMP_CLEVER_API_VERSION`         | Enabled Rostering API version: `3.0` or `3.1` (default).              |
 | `AMP_CLEVER_ENVIRONMENT`         | Exactly `sandbox` or `production`, matching those app credentials.   |
 | `AMP_CLEVER_DISTRICT_SIGNUP_URL` | Optional application signup URL under `https://schools.clever.com/`. |
 
