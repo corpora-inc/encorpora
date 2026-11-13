@@ -75,6 +75,10 @@
   --color-coin-copper-edge: #7a4530;
   --color-coin-silver: #bebebc;
   --color-coin-silver-edge: #757a7d;
+  /* Bill paper (a bill is the same object in either theme): the sheet
+   * under a bill's drawing and the thin edge that holds it on any surface. */
+  --color-bill-paper: #f1f0dc;
+  --color-bill-edge: #788474;
   --color-strand-number: #3f6fa8;
   --color-strand-operations: #6a5aa0;
   --color-strand-fractions: #b8622a;
@@ -206,6 +210,8 @@
     --color-coin-copper-edge: #7a4530;
     --color-coin-silver: #bebebc;
     --color-coin-silver-edge: #757a7d;
+    --color-bill-paper: #f1f0dc;
+    --color-bill-edge: #788474;
     --color-strand-number: #86ade3;
     --color-strand-operations: #ac9fe3;
     --color-strand-fractions: #eb9e68;
@@ -328,6 +334,8 @@
   --color-coin-copper-edge: #7a4530;
   --color-coin-silver: #bebebc;
   --color-coin-silver-edge: #757a7d;
+  --color-bill-paper: #f1f0dc;
+  --color-bill-edge: #788474;
   --color-strand-number: #86ade3;
   --color-strand-operations: #ac9fe3;
   --color-strand-fractions: #eb9e68;

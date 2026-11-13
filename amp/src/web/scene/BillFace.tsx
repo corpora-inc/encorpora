@@ -25,7 +25,7 @@ export function BillFace({
   const ring = Math.min(3, w / 12, h / 12);
   return (
     <g {...rest}>
-      <rect x={x} y={y} width={w} height={h} fill="#f1f0dc" />
+      <rect x={x} y={y} width={w} height={h} fill="var(--color-bill-paper)" />
       <image
         href={billFaceUrl[value]}
         x={x}
@@ -40,7 +40,7 @@ export function BillFace({
         width={w}
         height={h}
         fill="none"
-        stroke="#788474"
+        stroke="var(--color-bill-edge)"
         strokeWidth={edge / 2}
       />
       {emphasis > 0 && (
