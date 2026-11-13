@@ -32,6 +32,7 @@ import {
   ProfileBackAction,
   ProfileMark,
 } from "../features/profiles/ProfileBar";
+import { StudentSignOut } from "../features/practice/StudentSignOut";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
 import { AppLogo } from "../ui/AppLogo";
@@ -178,6 +179,10 @@ function ShellBar({
   const open = useShellSlots((state) => state.drawerOpen);
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   const setTools = useShellSlots((state) => state.setTools);
+  // A student's (or a child's) session: Sign out is the bar's action, at
+  // the edge, so the device passes on in one tap.
+  const student =
+    useQuery(sessionOptions).data?.accountId.startsWith("school:") === true;
   const school = useSchoolNavigation(frame);
   // Prepare every place before opening the menu: later class responses must
   // not insert destinations under the pointer. The logo keeps its fixed box.
@@ -279,7 +284,8 @@ function ShellBar({
           <ProgressAction context={context} me={me} />
         )}
         {/* Practicing as a profile: the way back, always one tap away. */}
-        {frame.kind === "practice" && <ProfileBackAction />}
+        {frame.kind === "practice" &&
+          (student ? <StudentSignOut inBar /> : <ProfileBackAction />)}
       </div>
     </header>
   );

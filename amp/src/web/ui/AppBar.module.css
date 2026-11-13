@@ -98,6 +98,32 @@
   justify-content: flex-end;
   min-width: 0;
 }
+/* No action: no column for it, so the tools reach the edge rather than
+   stopping a gap short of it. */
+.action:empty {
+  display: none;
+}
+.bar:has(> .action:empty) {
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: "logo tools";
+}
+.bar[data-tabs]:has(> .action:empty) {
+  grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr);
+  grid-template-areas: "logo tabs tools";
+}
+@media (max-width: 639px) {
+  .bar[data-tabs]:has(> .action:empty) {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "logo tools"
+      "tabs tabs";
+  }
+}
+/* An icon-only control at the edge sits with its mark on the bar's inset,
+   as the logo's mark does at the other end; its target reaches past it. */
+.action :global([data-student-sign-out]) {
+  margin-inline-end: calc((22px - 44px) / 2);
+}
 
 .logo {
   display: inline-flex;

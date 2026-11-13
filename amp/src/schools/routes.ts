@@ -1,4 +1,5 @@
 import { PERSON_NAME } from "./term-grades.js";
+import { forgedPost } from "./request-origin.js";
 import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
@@ -222,17 +223,13 @@ export async function registerSchoolRoutes(
       reply.header("X-Request-Id", request.id);
       reply.header("Cache-Control", "no-store");
       reply.header("X-Content-Type-Options", "nosniff");
-      if (
-        request.method === "POST" &&
-        (request.headers["sec-fetch-site"] === "cross-site" ||
-          (services.origin &&
-            ((request.headers.origin &&
-              request.headers.origin !== services.origin) ||
-              (request.headers.cookie &&
-                !request.headers.authorization &&
-                request.headers.origin !== services.origin))))
-      )
+      if (forgedPost(request, services.origin)) {
+        request.log.warn(
+          { origin: request.headers.origin ?? null, url: request.url },
+          "School request refused: origin",
+        );
         throw new SchoolError(403, "request_origin_invalid");
+      }
     });
     scope.setErrorHandler((error, request, reply) => {
       if (error instanceof SchoolError) {
@@ -293,8 +290,14 @@ export async function registerSchoolRoutes(
         if (
           !token ||
           !(await recordHeartbeat(options.pool, token, request.body))
-        )
+        ) {
+          // A refused heartbeat is lost class time: say so.
+          request.log.warn(
+            { student: !!token },
+            "Student activity refused: no live student session",
+          );
           throw new SchoolError(401, "sign_in_required");
+        }
         return reply.code(204).send();
       },
     );

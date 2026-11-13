@@ -1,4 +1,5 @@
 import { storedAdoptionSnapshot } from "./clever/store.js";
+import { forgedPost } from "./request-origin.js";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
@@ -41,16 +42,13 @@ export async function registerSchoolAdoptionRoutes(
         .header("Cache-Control", "no-store")
         .header("Referrer-Policy", "no-referrer");
 
-      const origin = request.headers.origin;
-      if (
-        request.method === "POST" &&
-        (request.headers["sec-fetch-site"] === "cross-site" ||
-          (origin && options.origin && origin !== options.origin) ||
-          (request.headers.cookie &&
-            !request.headers.authorization &&
-            (!options.origin || origin !== options.origin)))
-      )
+      if (forgedPost(request, options.origin, true)) {
+        request.log.warn(
+          { origin: request.headers.origin ?? null, url: request.url },
+          "Adoption request refused: origin",
+        );
         throw new SchoolError(403, "request_origin_invalid");
+      }
     });
     scope.setErrorHandler((error, request, reply) => {
       if (error instanceof SchoolError)

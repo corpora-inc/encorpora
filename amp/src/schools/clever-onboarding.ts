@@ -1,4 +1,5 @@
 import { refreshConnectionReviews } from "./operations.js";
+import { forgedPost } from "./request-origin.js";
 import { randomUUID } from "node:crypto";
 import type { Pool } from "pg";
 import type { FastifyInstance } from "fastify";
@@ -169,18 +170,13 @@ export async function registerCleverOnboarding(
   app.register(async (scope) => {
     scope.addHook("onRequest", async (_request, reply) => {
       reply.header("Cache-Control", "no-store");
-      if (
-        _request.method === "POST" &&
-        (_request.headers["sec-fetch-site"] === "cross-site" ||
-          ((options.origin ?? config?.origin) &&
-            ((_request.headers.origin &&
-              _request.headers.origin !== (options.origin ?? config?.origin)) ||
-              (_request.headers.cookie &&
-                !_request.headers.authorization &&
-                _request.headers.origin !==
-                  (options.origin ?? config?.origin)))))
-      )
+      if (forgedPost(_request, options.origin ?? config?.origin)) {
+        _request.log.warn(
+          { origin: _request.headers.origin ?? null, url: _request.url },
+          "Clever request refused: origin",
+        );
         throw new SchoolError(403, "request_origin_invalid");
+      }
     });
     scope.setErrorHandler((error, request, reply) => {
       if (error instanceof SchoolError) {
@@ -446,25 +442,40 @@ export async function registerCleverOnboarding(
   });
   // API maintenance never downloads a roster. The separate worker consumes
   // durable sync requests, independently of seat and review maintenance.
+  // Seats are every school's; the Clever housekeeping runs only where Clever
+  // is configured, so a server without it never touches Clever's tables.
   let polling = false;
+  const failed = (what: string, error: unknown) =>
+    app.log.warn(
+      {
+        code:
+          (error as { code?: unknown } | null)?.code ?? safeSyncError(error),
+        error: error instanceof Error ? error.message : String(error),
+      },
+      what,
+    );
   const poll = async () => {
     if (polling || closing) return;
     polling = true;
     try {
-      for (const tenant of await repo.dueSeatTenants())
-        await repo.reconcileSeats(tenant);
-      await refreshConnectionReviews(pool);
-      await pool.query(
-        "DELETE FROM amp_provider_sessions WHERE expires_at<now()-interval '1 day'",
-      );
-      await pool.query(
-        "DELETE FROM amp_provider_oauth_flows WHERE expires_at<now()-interval '1 day'",
-      );
-    } catch (error) {
-      app.log.warn(
-        { code: safeSyncError(error) },
-        "Clever connection polling failed",
-      );
+      try {
+        for (const tenant of await repo.dueSeatTenants())
+          await repo.reconcileSeats(tenant);
+      } catch (error) {
+        failed("School seat maintenance failed", error);
+      }
+      if (!config) return;
+      try {
+        await refreshConnectionReviews(pool);
+        await pool.query(
+          "DELETE FROM amp_provider_sessions WHERE expires_at<now()-interval '1 day'",
+        );
+        await pool.query(
+          "DELETE FROM amp_provider_oauth_flows WHERE expires_at<now()-interval '1 day'",
+        );
+      } catch (error) {
+        failed("Clever connection maintenance failed", error);
+      }
     } finally {
       polling = false;
     }
