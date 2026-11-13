@@ -45,10 +45,12 @@ import {
 import {
   periodRange,
   readEvidence,
+  readClassSkill,
   readGradebook,
   readMap,
   readReportCards,
   readStudentRecord,
+  readStudentSkill,
   readStudentTime,
   readTime,
   readToday,
@@ -61,6 +63,9 @@ const reportCardsPdfQuery = paperQuery.extend({
 });
 const workParams = z.object({
   attempt: z.string().min(1).max(160),
+});
+const skillParams = z.object({
+  skill: z.string().regex(/^[a-z0-9][a-z0-9-]{0,119}$/),
 });
 const workQuery = z.object({
   skill: z.string().min(1).max(100).optional(),
@@ -431,6 +436,31 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
     handler: ({ actor, target, pool }) => studentRecord(pool, actor, target),
+  });
+  // One skill, for a skill layer: a student's counts and answers on it, or
+  // a class's counts. Whoever can read the student or the class.
+  define({
+    method: "GET",
+    url: "/api/v1/school/students/:student/skills/:skill",
+    action: "students.read",
+    target: ({ params }) =>
+      ({ kind: "student", personId: params.student! }) as const,
+    handler: async ({ request, target, pool }) => {
+      const { skill } = skillParams.parse(request.params);
+      const found = await readStudentSkill(pool, target.personId, skill);
+      if (!found) throw new SchoolError(404, "not_found");
+      return found;
+    },
+  });
+  define({
+    method: "GET",
+    url: `${CLASS}/skills/:skill`,
+    action: "students.read",
+    target: classParam,
+    handler: async ({ request, target, pool }) => {
+      const { skill } = skillParams.parse(request.params);
+      return readClassSkill(pool, target.classId, skill);
+    },
   });
   // One answer replayed as the student saw it: whoever can read the record
   // can open its work. The attempt must be this student's.

@@ -51,3 +51,25 @@
   font-size: var(--text-label);
   font-weight: 600;
 }
+.rowFact {
+  flex: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+/* Where a student stands on the skill: label above value, one row. */
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-4);
+}
+.facts dt {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.facts dd {
+  margin: 0;
+  font-variant-numeric: var(--numeric);
+}

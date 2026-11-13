@@ -43,6 +43,8 @@ import {
   type TermStudent,
 } from "./term-grades.js";
 import type {
+  ClassSkillResponse,
+  StudentSkillResponse,
   EvidenceResponse,
   GradebookResponse,
   MapResponse,
@@ -958,5 +960,100 @@ export async function readStudentRecord(
       activeSessions: flags.activeSessions,
       lastSeenAt: flags.lastSeenAt?.toISOString() ?? null,
     },
+  };
+}
+
+/** A learner's counts on one skill, as the engine keeps them. */
+type SkillCounts = StudentSkillResponse["evidence"];
+const NO_EVIDENCE: SkillCounts = {
+  attempts: 0,
+  independentCorrect: 0,
+  status: "new",
+  lastPracticedAt: null,
+};
+async function skillCounts(
+  pool: Pool,
+  learnerIds: readonly string[],
+  skillId: string,
+): Promise<Map<string, SkillCounts>> {
+  if (!learnerIds.length) return new Map();
+  const { rows } = await pool.query(
+    `SELECT learner_id,
+       COALESCE((state->>'attempts')::numeric,0) AS attempts,
+       COALESCE((state->>'independentCorrect')::numeric,0) AS "independentCorrect",
+       COALESCE(state->>'status','new') AS status,
+       state->>'lastPracticedAt' AS "lastPracticedAt"
+     FROM amp_skill_evidence WHERE learner_id=ANY($1::text[]) AND skill_id=$2`,
+    [learnerIds, skillId],
+  );
+  return new Map(
+    rows.map((row) => [
+      row.learner_id as string,
+      {
+        attempts: Number(row.attempts),
+        independentCorrect: Number(row.independentCorrect),
+        status: row.status as string,
+        lastPracticedAt: (row.lastPracticedAt as string | null) ?? null,
+      },
+    ]),
+  );
+}
+
+/** One student on one skill (a skill layer over their record): the
+ * engine's counts and their latest answers on it. */
+export async function readStudentSkill(
+  pool: Pool,
+  personId: string,
+  skillId: string,
+): Promise<StudentSkillResponse | null> {
+  const person = (
+    await pool.query(
+      `SELECT learner_id AS "learnerId",COALESCE(timezone,'America/New_York') AS timezone
+       FROM amp_people WHERE id=$1 AND deleted_at IS NULL`,
+      [personId],
+    )
+  ).rows[0] as { learnerId: string | null; timezone: string } | undefined;
+  if (!person) return null;
+  if (!person.learnerId) return { skillId, evidence: NO_EVIDENCE, work: [] };
+  const [counts, work] = await Promise.all([
+    skillCounts(pool, [person.learnerId], skillId),
+    workSamples(
+      pool,
+      person.learnerId,
+      { from: "2000-01-01", to: "2100-01-01" },
+      person.timezone,
+      WORK_PAGE,
+      0,
+      skillId,
+    ),
+  ]);
+  return {
+    skillId,
+    evidence: counts.get(person.learnerId) ?? NO_EVIDENCE,
+    work,
+  };
+}
+
+/** A class on one skill (a skill layer over a class page): each student's
+ * counts, in roster order. */
+export async function readClassSkill(
+  pool: Pool,
+  classId: string,
+  skillId: string,
+): Promise<ClassSkillResponse> {
+  const named = await namedRoster(pool, classId);
+  const counts = await skillCounts(
+    pool,
+    named.map((student) => student.learnerId).filter(Boolean),
+    skillId,
+  );
+  return {
+    skillId,
+    students: named.map((student) => ({
+      id: student.id,
+      name: student.name,
+      first: student.first,
+      evidence: counts.get(student.learnerId) ?? NO_EVIDENCE,
+    })),
   };
 }
