@@ -416,40 +416,38 @@ test("review actions keep the displayed edition when using the shared player", a
   }
 }, 60_000);
 
-test("centres figure ink, keeps a margin, and draws no name tags", async () => {
+test.each(FILMS)("%s centres figure ink, keeps a margin, and draws no name tags", async (id) => {
   const page = await browser.newPage();
   try {
-    for (const id of FILMS) {
-      await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
-      await page.waitForSelector(".live.ready", { timeout: 60_000 });
-      const times = timesOf(id);
-      expect(times.length).toBeGreaterThan(0);
-      for (const view of VIEWS) {
-        await page.setViewportSize({ width: view.width, height: view.height });
-        await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
-        for (const theme of THEMES) {
-          await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
-          for (const t of times) {
-            const got = await measure(page, t);
-            const where = `${id} ${view.width} ${theme} t=${t.toFixed(1)}`;
-            if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
-            const hit = got;
-            const centre = Math.max(hit.dx, hit.dy);
-            const margin = Math.min(...hit.margins);
-            if (centre > worst.centre) { worst.centre = centre; worst.where = where; }
-            if (margin < worst.margin) worst.margin = margin;
-            // The frame is the whole shot, so the ink of one moment need not sit in the middle.
-            // The shot-extent test checks that the union does.
-            for (const m of hit.margins) expect(m, where).toBeGreaterThanOrEqual(hit.need);
-            expect(hit.overlaps, where).toEqual([]);
-            if (Number.isFinite(hit.pad)) {
-              if (hit.pad < worst.pad) worst.pad = hit.pad;
-              expect(hit.pad, where).toBeGreaterThanOrEqual(8);
-            }
-            if (Number.isFinite(hit.line)) {
-              if (hit.line < worst.line) worst.line = hit.line;
-              expect(hit.line, where).toBeGreaterThanOrEqual(1.3);
-            }
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const times = timesOf(id);
+    expect(times.length).toBeGreaterThan(0);
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        for (const t of times) {
+          const got = await measure(page, t);
+          const where = `${id} ${view.width} ${theme} t=${t.toFixed(1)}`;
+          if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
+          const hit = got;
+          const centre = Math.max(hit.dx, hit.dy);
+          const margin = Math.min(...hit.margins);
+          if (centre > worst.centre) { worst.centre = centre; worst.where = where; }
+          if (margin < worst.margin) worst.margin = margin;
+          // The frame is the whole shot, so the ink of one moment need not sit in the middle.
+          // The shot-extent test checks that the union does.
+          for (const m of hit.margins) expect(m, where).toBeGreaterThanOrEqual(hit.need);
+          expect(hit.overlaps, where).toEqual([]);
+          if (Number.isFinite(hit.pad)) {
+            if (hit.pad < worst.pad) worst.pad = hit.pad;
+            expect(hit.pad, where).toBeGreaterThanOrEqual(8);
+          }
+          if (Number.isFinite(hit.line)) {
+            if (hit.line < worst.line) worst.line = hit.line;
+            expect(hit.line, where).toBeGreaterThanOrEqual(1.3);
           }
         }
       }
@@ -457,7 +455,7 @@ test("centres figure ink, keeps a margin, and draws no name tags", async () => {
   } finally {
     await page.close();
   }
-}, 180_000);
+}, 120_000);
 
 test("a highlight does not move the other elements", async () => {
   const page = await browser.newPage();
