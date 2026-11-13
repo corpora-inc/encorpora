@@ -208,6 +208,25 @@ test("publication compares the actual committed screenplay and validates binding
   assert.throws(() => plan(bad), /timing/);
   assert.throws(() => plan(exported(), Buffer.from("bad")), /AAC/);
 });
+test("a marked letter is for the voice: the export and the published film carry the bare letter", () => {
+  const marked = {
+    ...script,
+    shots: [{ beats: [{ say: "Make *a* longer.", do: [{ do: "text", text: "One dot." }] }] }],
+  };
+  const bare = {
+    ...script,
+    shots: [{ beats: [{ say: "Make a longer.", do: [{ do: "text", text: "One dot." }] }] }],
+  };
+  const source = { ...exported(), script: structuredClone(bare) };
+  const published = planFilm(script.id, source, marked, audio, new Set([script.id]));
+  assert.ok(!published.data.toString("utf8").includes("*a*"));
+  assert.ok(published.data.toString("utf8").includes("Make a longer."));
+  // an export that still carries the mark was made before the kit learned it: it is not what the player shows
+  assert.throws(
+    () => planFilm(script.id, { ...exported(), script: structuredClone(marked) }, marked, audio, new Set([script.id])),
+    /Export differs from committed screenplay/,
+  );
+});
 test("content versions change with data or audio, never with private annotations", () => {
   const a = plan();
   assert.equal(

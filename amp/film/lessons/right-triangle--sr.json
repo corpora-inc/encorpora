@@ -1,0 +1,2801 @@
+{
+ "id": "right-triangle--sr",
+ "title": "Why the Pythagorean theorem works",
+ "teaches": [
+  "right-triangle-missing-leg",
+  "pythagorean-proof-area",
+  "pythagorean-proof-figure"
+ ],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1.3,
+     -1.3,
+     5.3,
+     4.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "C": [
+      0,
+      3
+     ]
+    },
+    "parts": [
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "legA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "legB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "onA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "accent",
+      "w": 11
+     },
+     {
+      "id": "onB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 11
+     },
+     {
+      "id": "onC",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "accent",
+      "w": 11
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "ink",
+      "fill": "paper"
+     },
+     {
+      "id": "a",
+      "label": "a",
+      "at": "legA",
+      "dir": "w",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "b",
+      "label": "b",
+      "at": "legB",
+      "dir": "s",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c",
+      "label": "c",
+      "at": "hyp",
+      "dir": "ne",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Knowing two sides of a right triangle lets us find the third.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Two sides known. Find the third.",
+       "label": "Right triangles"
+      },
+      {
+       "do": "text",
+       "text": "Find an unknown side length."
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A right triangle has one square corner: a right angle, ninety degrees.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "One square corner: a right angle.",
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "right",
+       "at": "square"
+      },
+      {
+       "do": "write",
+       "tex": "90^\\circ",
+       "note": "\\text{right angle}",
+       "at": "ninety"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The two sides meeting there are the legs: a and b.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Right angle: $90^\\circ$",
+       "at": "The"
+      },
+      {
+       "do": "text",
+       "text": "Legs: $a$ and $b$",
+       "at": "legs"
+      },
+      {
+       "do": "draw",
+       "target": "onA",
+       "at": "a",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "a",
+       "at": "a"
+      },
+      {
+       "do": "draw",
+       "target": "onB",
+       "at": "b",
+       "dur": 0.5
+      },
+      {
+       "do": "highlight",
+       "target": "b",
+       "at": "b"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Across from that corner is the hypotenuse, c, always the longest side.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "onA",
+        "onB"
+       ],
+       "at": "Across"
+      },
+      {
+       "do": "text",
+       "text": "Hypotenuse: $c$",
+       "at": "hypotenuse"
+      },
+      {
+       "do": "draw",
+       "target": "onC",
+       "at": "hypotenuse",
+       "dur": 0.6
+      },
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "c"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.1,
+     -5.1,
+     8.1,
+     8.1
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "C": [
+      0,
+      3
+     ],
+     "AL": [
+      -3,
+      0
+     ],
+     "AT": [
+      -3,
+      3
+     ],
+     "BL": [
+      0,
+      -4
+     ],
+     "BR": [
+      4,
+      -4
+     ],
+     "HT": [
+      3,
+      7
+     ],
+     "HR": [
+      7,
+      4
+     ],
+     "N9": [
+      -1.5,
+      1.5
+     ],
+     "N16": [
+      2,
+      -2
+     ],
+     "N25": [
+      3.5,
+      3.5
+     ],
+     "U1": [
+      3.2,
+      0.6
+     ],
+     "V1": [
+      6.2,
+      4.6
+     ],
+     "U2": [
+      2.4,
+      1.2
+     ],
+     "V2": [
+      5.4,
+      5.2
+     ],
+     "U3": [
+      1.6,
+      1.8
+     ],
+     "V3": [
+      4.6,
+      5.8
+     ],
+     "U4": [
+      0.8,
+      2.4
+     ],
+     "V4": [
+      3.8,
+      6.4
+     ],
+     "W1": [
+      4.6,
+      0.8
+     ],
+     "Z1": [
+      0.6,
+      3.8
+     ],
+     "W2": [
+      5.2,
+      1.6
+     ],
+     "Z2": [
+      1.2,
+      4.6
+     ],
+     "W3": [
+      5.8,
+      2.4
+     ],
+     "Z3": [
+      1.8,
+      5.4
+     ],
+     "W4": [
+      6.4,
+      3.2
+     ],
+     "Z4": [
+      2.4,
+      6.2
+     ],
+     "L1": [
+      -3,
+      1
+     ],
+     "R1": [
+      0,
+      1
+     ],
+     "L2": [
+      -3,
+      2
+     ],
+     "R2": [
+      0,
+      2
+     ],
+     "L3": [
+      -2,
+      0
+     ],
+     "R3": [
+      -2,
+      3
+     ],
+     "L4": [
+      -1,
+      0
+     ],
+     "R4": [
+      -1,
+      3
+     ],
+     "L5": [
+      0,
+      -1
+     ],
+     "R5": [
+      4,
+      -1
+     ],
+     "L6": [
+      0,
+      -2
+     ],
+     "R6": [
+      4,
+      -2
+     ],
+     "L7": [
+      0,
+      -3
+     ],
+     "R7": [
+      4,
+      -3
+     ],
+     "L8": [
+      1,
+      0
+     ],
+     "R8": [
+      1,
+      -4
+     ],
+     "L9": [
+      2,
+      0
+     ],
+     "R9": [
+      2,
+      -4
+     ],
+     "L10": [
+      3,
+      0
+     ],
+     "R10": [
+      3,
+      -4
+     ]
+    },
+    "parts": [
+     {
+      "id": "squareA",
+      "poly": [
+       "O",
+       "C",
+       "AT",
+       "AL"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "squareB",
+      "poly": [
+       "O",
+       "BL",
+       "BR",
+       "B"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "squareC",
+      "poly": [
+       "B",
+       "C",
+       "HT",
+       "HR"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "ga1",
+      "group": "cells",
+      "seg": [
+       "L1",
+       "R1"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "ga2",
+      "group": "cells",
+      "seg": [
+       "L2",
+       "R2"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "ga3",
+      "group": "cells",
+      "seg": [
+       "L3",
+       "R3"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "ga4",
+      "group": "cells",
+      "seg": [
+       "L4",
+       "R4"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb1",
+      "group": "cells",
+      "seg": [
+       "L5",
+       "R5"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb2",
+      "group": "cells",
+      "seg": [
+       "L6",
+       "R6"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb3",
+      "group": "cells",
+      "seg": [
+       "L7",
+       "R7"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb4",
+      "group": "cells",
+      "seg": [
+       "L8",
+       "R8"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb5",
+      "group": "cells",
+      "seg": [
+       "L9",
+       "R9"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "gb6",
+      "group": "cells",
+      "seg": [
+       "L10",
+       "R10"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g1",
+      "group": "cells",
+      "seg": [
+       "U1",
+       "V1"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g2",
+      "group": "cells",
+      "seg": [
+       "U2",
+       "V2"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g3",
+      "group": "cells",
+      "seg": [
+       "U3",
+       "V3"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g4",
+      "group": "cells",
+      "seg": [
+       "U4",
+       "V4"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g5",
+      "group": "cells",
+      "seg": [
+       "W1",
+       "Z1"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g6",
+      "group": "cells",
+      "seg": [
+       "W2",
+       "Z2"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g7",
+      "group": "cells",
+      "seg": [
+       "W3",
+       "Z3"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "g8",
+      "group": "cells",
+      "seg": [
+       "W4",
+       "Z4"
+      ],
+      "ink": "gold",
+      "w": 1.3
+     },
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 24,
+      "ink": "ink",
+      "fill": "paper",
+      "start": true
+     },
+     {
+      "id": "sideA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "sideB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "sideC",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "3",
+      "at": "sideA",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "b",
+      "label": "4",
+      "at": "sideB",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "c",
+      "label": "5",
+      "at": "sideC",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "areaA",
+      "label": "9",
+      "at": "N9",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "areaB",
+      "label": "16",
+      "at": "N16",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "areaC",
+      "label": "25",
+      "at": "N25",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Build a square on each side of this right triangle: legs three and four, hypotenuse five.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Squares turn lengths into area",
+       "at": "Build"
+      },
+      {
+       "do": "text",
+       "text": "Side length × side length = area",
+       "at": "Build"
+      },
+      {
+       "do": "show",
+       "target": [
+        "squareA",
+        "squareB",
+        "squareC",
+        "cells"
+       ],
+       "at": "Build",
+       "dur": 1.4
+      },
+      {
+       "do": "highlight",
+       "target": "a",
+       "at": "three"
+      },
+      {
+       "do": "highlight",
+       "target": "b",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three squared means three times three: nine unit squares.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "3^2=3\\times3=9",
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "areaA",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four squared is sixteen. Five squared is twenty-five.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "4^2=16",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "areaB",
+       "at": "sixteen"
+      },
+      {
+       "do": "write",
+       "tex": "5^2=25",
+       "at": "Five"
+      },
+      {
+       "do": "show",
+       "target": "areaC",
+       "at": "twenty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine and sixteen make twenty-five: the two smaller squares exactly fill the largest.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "9+16=25",
+       "at": "Nine"
+      },
+      {
+       "do": "text",
+       "text": "Equal total area",
+       "at": "exactly"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That could be luck. It is not: it holds for every right triangle, and here is why.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Every right triangle",
+       "at": "every"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.1,
+     -1.1,
+     8.1,
+     8.3
+    ],
+    "points": {
+     "BL": [
+      0,
+      0
+     ],
+     "BR": [
+      7,
+      0
+     ],
+     "TR": [
+      7,
+      7
+     ],
+     "TL": [
+      0,
+      7
+     ],
+     "P": [
+      3,
+      0
+     ],
+     "Q": [
+      7,
+      3
+     ],
+     "R": [
+      4,
+      7
+     ],
+     "S": [
+      0,
+      4
+     ],
+     "M": [
+      3.5,
+      3.5
+     ],
+     "A1": [
+      0,
+      0
+     ],
+     "B1": [
+      3,
+      0
+     ],
+     "C1": [
+      0,
+      4
+     ],
+     "A2": [
+      7,
+      0
+     ],
+     "B2": [
+      7,
+      3
+     ],
+     "C2": [
+      3,
+      0
+     ],
+     "A3": [
+      7,
+      7
+     ],
+     "B3": [
+      4,
+      7
+     ],
+     "C3": [
+      7,
+      3
+     ],
+     "A4": [
+      0,
+      7
+     ],
+     "B4": [
+      0,
+      4
+     ],
+     "C4": [
+      4,
+      7
+     ],
+     "LA": [
+      1.5,
+      0
+     ],
+     "LB": [
+      5,
+      0
+     ],
+     "AA": [
+      1.5,
+      5.5
+     ],
+     "BB": [
+      5,
+      5
+     ],
+     "HA": [
+      0,
+      4
+     ],
+     "HE": [
+      7,
+      3
+     ],
+     "DV1": [
+      3,
+      4
+     ],
+     "DV2": [
+      3,
+      7
+     ],
+     "CA": [
+      1.5,
+      2
+     ],
+     "CB": [
+      5,
+      1.5
+     ],
+     "CC": [
+      5.5,
+      5
+     ],
+     "CD": [
+      2,
+      5.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "uncovered",
+      "poly": [
+       "BL",
+       "BR",
+       "TR",
+       "TL"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "t1",
+      "poly": [
+       "A1",
+       "B1",
+       "C1"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "solid": true
+     },
+     {
+      "id": "t2",
+      "poly": [
+       "A2",
+       "B2",
+       "C2"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "solid": true
+     },
+     {
+      "id": "t3",
+      "poly": [
+       "A3",
+       "B3",
+       "C3"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "solid": true
+     },
+     {
+      "id": "t4",
+      "poly": [
+       "A4",
+       "B4",
+       "C4"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 3,
+      "solid": true
+     },
+     {
+      "id": "border",
+      "poly": [
+       "BL",
+       "BR",
+       "TR",
+       "TL"
+      ],
+      "fill": "none",
+      "ink": "ink",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "straight",
+      "seg": [
+       "BL",
+       "BR"
+      ],
+      "ink": "accent",
+      "w": 8
+     },
+     {
+      "id": "wa1",
+      "group": "rust",
+      "angle": [
+       "A1",
+       "C1",
+       "B1"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "r": 96
+     },
+     {
+      "id": "wa2",
+      "group": "rust",
+      "angle": [
+       "A2",
+       "C2",
+       "B2"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "r": 96
+     },
+     {
+      "id": "wa3",
+      "group": "rust",
+      "angle": [
+       "A3",
+       "C3",
+       "B3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "r": 96
+     },
+     {
+      "id": "wa4",
+      "group": "rust",
+      "angle": [
+       "A4",
+       "C4",
+       "B4"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "r": 96
+     },
+     {
+      "id": "wb1",
+      "group": "violet",
+      "angle": [
+       "A1",
+       "B1",
+       "C1"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 80
+     },
+     {
+      "id": "wb2",
+      "group": "violet",
+      "angle": [
+       "A2",
+       "B2",
+       "C2"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 80
+     },
+     {
+      "id": "wb3",
+      "group": "violet",
+      "angle": [
+       "A3",
+       "B3",
+       "C3"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 80
+     },
+     {
+      "id": "wb4",
+      "group": "violet",
+      "angle": [
+       "A4",
+       "B4",
+       "C4"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 80
+     },
+     {
+      "id": "rP",
+      "angle": [
+       "S",
+       "P",
+       "Q"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink"
+     },
+     {
+      "id": "rQ",
+      "group": "otherCorners",
+      "angle": [
+       "P",
+       "Q",
+       "R"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink"
+     },
+     {
+      "id": "rR",
+      "group": "otherCorners",
+      "angle": [
+       "Q",
+       "R",
+       "S"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink"
+     },
+     {
+      "id": "rS",
+      "group": "otherCorners",
+      "angle": [
+       "R",
+       "S",
+       "P"
+      ],
+      "right": true,
+      "r": 40,
+      "ink": "ink"
+     },
+     {
+      "id": "divider",
+      "seg": [
+       "DV1",
+       "DV2"
+      ],
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "wholeSide",
+      "dim": [
+       "TL",
+       "TR"
+      ],
+      "side": "n",
+      "tex": "a+b",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "a",
+      "at": "LA",
+      "dir": "s",
+      "size": "l"
+     },
+     {
+      "id": "b",
+      "label": "b",
+      "at": "LB",
+      "dir": "s",
+      "size": "l"
+     },
+     {
+      "id": "c1",
+      "group": "cs",
+      "label": "c",
+      "at": "CA",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "c2",
+      "group": "cs",
+      "label": "c",
+      "at": "CB",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "c3",
+      "group": "cs",
+      "label": "c",
+      "at": "CC",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "c4",
+      "group": "cs",
+      "label": "c",
+      "at": "CD",
+      "dir": "c",
+      "size": "l",
+      "halo": true
+     },
+     {
+      "id": "areaC",
+      "label": "c^2",
+      "at": "M",
+      "dir": "c",
+      "size": "xl"
+     },
+     {
+      "id": "areaA",
+      "label": "a^2",
+      "at": "AA",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "areaB",
+      "label": "b^2",
+      "at": "BB",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "dimensionA",
+      "dim": [
+       "HA",
+       "TL"
+      ],
+      "side": "w",
+      "tex": "a",
+      "ink": "gold"
+     },
+     {
+      "id": "dimensionB",
+      "dim": [
+       "HE",
+       "TR"
+      ],
+      "side": "e",
+      "tex": "b",
+      "ink": "gold"
+     },
+     {
+      "id": "equalC1",
+      "group": "equalCs",
+      "seg": [
+       "B1",
+       "C1"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "ticks": 1,
+      "tickAt": [0.7]
+     },
+     {
+      "id": "equalC2",
+      "group": "equalCs",
+      "seg": [
+       "B2",
+       "C2"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "ticks": 1,
+      "tickAt": [0.7]
+     },
+     {
+      "id": "equalC3",
+      "group": "equalCs",
+      "seg": [
+       "B3",
+       "C3"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "ticks": 1,
+      "tickAt": [0.7]
+     },
+     {
+      "id": "equalC4",
+      "group": "equalCs",
+      "seg": [
+       "B4",
+       "C4"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "ticks": 1,
+      "tickAt": [0.7]
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now take any right triangle, legs a and b, and a square of side a plus b.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Same square. Same four triangles.",
+       "label": "Why it is true"
+      },
+      {
+       "do": "show",
+       "target": "a",
+       "at": "a",
+       "nth": 3
+      },
+      {
+       "do": "show",
+       "target": "b",
+       "at": "b",
+       "nth": 2
+      },
+      {
+       "do": "text",
+       "text": "Side: $a+b$",
+       "at": "side"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Place four copies of the triangle inside, one in each corner.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+       ],
+       "at": "four",
+       "dur": 1.2
+      },
+      {
+       "do": "text",
+       "text": "Four copies of one right triangle",
+       "at": "copies"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The gold middle has four sides, each c. A square also needs square corners.",
+     "do": [
+      {
+       "do": "show",
+       "target": "cs",
+       "at": "sides"
+      },
+      {
+       "do": "text",
+       "text": "Four sides, each $c$",
+       "at": "each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Make leg a longer and leg b shorter.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "rust",
+        "violet",
+        "equalCs"
+       ]
+      },
+      {
+       "do": "move",
+       "points": {
+        "P": [
+         5,
+         0
+        ],
+        "Q": [
+         7,
+         5
+        ],
+        "R": [
+         2,
+         7
+        ],
+        "S": [
+         0,
+         2
+        ],
+        "B1": [
+         5,
+         0
+        ],
+        "C1": [
+         0,
+         2
+        ],
+        "B2": [
+         7,
+         5
+        ],
+        "C2": [
+         5,
+         0
+        ],
+        "B3": [
+         2,
+         7
+        ],
+        "C3": [
+         7,
+         5
+        ],
+        "B4": [
+         0,
+         2
+        ],
+        "C4": [
+         2,
+         7
+        ],
+        "LA": [
+         2.5,
+         0
+        ],
+        "LB": [
+         6,
+         0
+        ],
+        "CA": [
+         2.5,
+         1
+        ],
+        "CB": [
+         6,
+         2.5
+        ],
+        "CC": [
+         4.5,
+         6
+        ],
+        "CD": [
+         1,
+         4.5
+        ]
+       },
+       "at": "Make",
+       "dur": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The middle stays a square with four sides c.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "P": [
+         3,
+         0
+        ],
+        "Q": [
+         7,
+         3
+        ],
+        "R": [
+         4,
+         7
+        ],
+        "S": [
+         0,
+         4
+        ],
+        "B1": [
+         3,
+         0
+        ],
+        "C1": [
+         0,
+         4
+        ],
+        "B2": [
+         7,
+         3
+        ],
+        "C2": [
+         3,
+         0
+        ],
+        "B3": [
+         4,
+         7
+        ],
+        "C3": [
+         7,
+         3
+        ],
+        "B4": [
+         0,
+         4
+        ],
+        "C4": [
+         4,
+         7
+        ],
+        "LA": [
+         1.5,
+         0
+        ],
+        "LB": [
+         5,
+         0
+        ],
+        "CA": [
+         1.5,
+         2
+        ],
+        "CB": [
+         5,
+         1.5
+        ],
+        "CC": [
+         5.5,
+         5
+        ],
+        "CD": [
+         2,
+         5.5
+        ]
+       },
+       "at": "The",
+       "dur": 1.5
+      },
+      {
+       "do": "hide",
+       "target": [
+        "rust",
+        "violet",
+        "equalCs"
+       ],
+       "at": "c"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "In a right triangle, the two small angles make ninety degrees together.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": "cs"
+      },
+      {
+       "do": "show",
+       "target": "rust",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "violet",
+       "at": "small"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{\\angle}+\\cv{\\angle}=90^\\circ",
+       "at": "ninety"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "On this straight side, one of each sits beside the middle corner.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "straight",
+       "at": "straight",
+       "dur": 0.9
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "wb1",
+        "wa2"
+       ],
+       "at": "each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A straight line is one hundred eighty degrees, so ninety are left for the corner.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "180^\\circ-90^\\circ=90^\\circ",
+       "note": "\\text{corner}",
+       "at": "ninety"
+      },
+      {
+       "do": "show",
+       "target": "rP",
+       "at": "corner"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Every corner is the same, so the middle is a square of area c squared.",
+     "do": [
+      {
+       "do": "show",
+       "target": "otherCorners",
+       "at": "Every"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "rust",
+        "violet",
+        "straight"
+       ],
+       "at": "square"
+      },
+      {
+       "do": "show",
+       "target": "areaC",
+       "at": "area"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{middle}=\\cg{c^2}",
+       "at": "area"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now slide this triangle down to the bottom left.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "areaC",
+        "rP",
+        "otherCorners"
+       ],
+       "at": "Now"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{c^2}",
+       "note": "\\text{before}",
+       "at": "Now"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A3": [
+         3,
+         4
+        ],
+        "B3": [
+         0,
+         4
+        ],
+        "C3": [
+         3,
+         0
+        ]
+       },
+       "at": "slide",
+       "dur": 2.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Slide this one across the top,",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A4": [
+         3,
+         7
+        ],
+        "B4": [
+         3,
+         4
+        ],
+        "C4": [
+         7,
+         7
+        ]
+       },
+       "at": "Slide",
+       "dur": 1.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "and then down to the bottom right.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A4": [
+         3,
+         3
+        ],
+        "B4": [
+         3,
+         0
+        ],
+        "C4": [
+         7,
+         3
+        ]
+       },
+       "at": "down",
+       "dur": 1.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Same square, same four triangles: the gold area has not changed.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Same gold area",
+       "at": "Same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now it is two squares, of side a and side b.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "divider",
+       "at": "two",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": [
+        "dimensionA",
+        "areaA"
+       ],
+       "at": "a"
+      },
+      {
+       "do": "show",
+       "target": [
+        "dimensionB",
+        "areaB"
+       ],
+       "at": "b"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{a^2}+\\cg{b^2}",
+       "note": "\\text{after}",
+       "at": "b"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So a squared plus b squared equals c squared: the Pythagorean theorem.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "a^2+b^2=c^2",
+       "label": "Pythagorean theorem",
+       "keep": true,
+       "at": "So"
+      },
+      {
+       "do": "text",
+       "text": "Legs $a$, $b$. Hypotenuse $c$.",
+       "at": "Pythagorean"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.3,
+     -1.3,
+     8.6,
+     7.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      8,
+      0
+     ],
+     "C": [
+      0,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 40,
+      "fill": "paper",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "legA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "legB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "6",
+      "at": "legA",
+      "dir": "w",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "b",
+      "label": "8",
+      "at": "legB",
+      "dir": "s",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c",
+      "label": "c",
+      "at": "hyp",
+      "dir": "ne",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "result",
+      "label": "10",
+      "at": "hyp",
+      "dir": "ne",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here the legs are six and eight, and the hypotenuse c is unknown.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "a^2+b^2=c^2",
+       "label": "Pythagorean theorem",
+       "keep": true
+      },
+      {
+       "do": "write",
+       "tex": "6^2+8^2=c^2",
+       "at": "six"
+      },
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "unknown"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The hypotenuse's square is the total, so add: thirty-six plus sixty-four is one hundred.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "total"
+      },
+      {
+       "do": "write",
+       "tex": "36+64=100",
+       "at": "add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "c is the number whose square is one hundred: its square root, ten.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "number"
+      },
+      {
+       "do": "answer",
+       "tex": "c=\\sqrt{100}=10",
+       "at": "root"
+      },
+      {
+       "do": "hide",
+       "target": "c",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "result",
+       "at": "ten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.3,
+     -1.3,
+     13.3,
+     7.3
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      12,
+      0
+     ],
+     "C": [
+      0,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 36,
+      "fill": "paper",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "legA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "legB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "5",
+      "at": "legA",
+      "dir": "w",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "b",
+      "label": "b",
+      "at": "legB",
+      "dir": "s",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c",
+      "label": "13",
+      "at": "hyp",
+      "dir": "ne",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "result",
+      "label": "12",
+      "at": "legB",
+      "dir": "s",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now the hypotenuse is thirteen, one leg is five, and leg b is unknown.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "a^2+b^2=c^2",
+       "label": "Pythagorean theorem",
+       "keep": true
+      },
+      {
+       "do": "write",
+       "tex": "5^2+b^2=13^2",
+       "at": "thirteen"
+      },
+      {
+       "do": "highlight",
+       "target": "b",
+       "at": "unknown"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twenty-five plus b squared is one hundred sixty-nine.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "25+b^2=169",
+       "at": "Twenty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Adding the twenty-five is a common slip: the leg would be longer than the hypotenuse.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "b^2=169+25",
+       "id": "addingSlip",
+       "at": "Adding"
+      },
+      {
+       "do": "strike",
+       "target": "addingSlip",
+       "at": "longer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The hypotenuse's square is the total, so subtract: b squared is one hundred forty-four.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "25+b^2=169",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "b^2=144",
+       "at": "subtract",
+       "note": "-25"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So b is its square root, twelve.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "b=\\sqrt{144}=12",
+       "at": "root"
+      },
+      {
+       "do": "hide",
+       "target": "b",
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": "result",
+       "at": "twelve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.25,
+     -1.3,
+     8.25,
+     4.6
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      7,
+      0
+     ],
+     "C": [
+      0,
+      2
+     ]
+    },
+    "parts": [
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 32,
+      "fill": "paper",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "legA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "legB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "2\\text{ cm}",
+      "at": "legA",
+      "dir": "w",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "b",
+      "label": "7\\text{ cm}",
+      "at": "legB",
+      "dir": "s",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "c",
+      "label": "c",
+      "at": "hyp",
+      "dir": "ne",
+      "size": "l",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A right triangle has perpendicular legs two centimeters and seven centimeters. What is the hypotenuse length in centimeters, to the nearest whole number?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "a^2+b^2=c^2",
+       "label": "Pythagorean theorem",
+       "keep": true
+      },
+      {
+       "do": "problem",
+       "text": "A right triangle has perpendicular legs $2\\ \\text{cm}$ and $7\\ \\text{cm}$. What is the hypotenuse length in centimeters, to the nearest whole number?",
+       "id": "application"
+      },
+      {
+       "do": "highlight",
+       "target": "c",
+       "at": "hypotenuse"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Perpendicular means meeting at a right angle. Four plus forty-nine is fifty-three.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "highlight",
+       "target": "right",
+       "at": "right"
+      },
+      {
+       "do": "write",
+       "tex": "2^2+7^2=c^2",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "4+49=53",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven squared is forty-nine and eight squared is sixty-four, so c is between seven and eight.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "7^2<53<8^2",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven point three squared is about fifty-three, so c is about seven point three: seven centimeters, to the nearest whole number.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "7.3^2=53.29",
+       "note": "\\text{about } 53",
+       "at": "Seven"
+      },
+      {
+       "do": "write",
+       "tex": "c\\approx7.3",
+       "at": "about",
+       "nth": 2
+      },
+      {
+       "do": "answer",
+       "tex": "c\\approx7\\text{ cm}",
+       "at": "seven",
+       "nth": 3
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.1,
+     -5.1,
+     8.1,
+     8.1
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "B": [
+      4,
+      0
+     ],
+     "C": [
+      0,
+      3
+     ],
+     "AL": [
+      -3,
+      0
+     ],
+     "AT": [
+      -3,
+      3
+     ],
+     "BL": [
+      0,
+      -4
+     ],
+     "BR": [
+      4,
+      -4
+     ],
+     "HT": [
+      3,
+      7
+     ],
+     "HR": [
+      7,
+      4
+     ],
+     "AA": [
+      -1.5,
+      1.5
+     ],
+     "BB": [
+      2,
+      -2
+     ],
+     "CC": [
+      3.5,
+      3.5
+     ]
+    },
+    "parts": [
+     {
+      "id": "squareA",
+      "poly": [
+       "O",
+       "C",
+       "AT",
+       "AL"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "squareB",
+      "poly": [
+       "O",
+       "BL",
+       "BR",
+       "B"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "squareC",
+      "poly": [
+       "B",
+       "C",
+       "HT",
+       "HR"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "triangle",
+      "poly": [
+       "O",
+       "B",
+       "C"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "right",
+      "angle": [
+       "B",
+       "O",
+       "C"
+      ],
+      "right": true,
+      "r": 24,
+      "fill": "paper",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "legA",
+      "seg": [
+       "O",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "legB",
+      "seg": [
+       "O",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "hyp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "a",
+      "label": "a",
+      "at": "legA",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "b",
+      "label": "b",
+      "at": "legB",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "c",
+      "label": "c",
+      "at": "hyp",
+      "dir": "c",
+      "size": "l",
+      "start": true,
+      "halo": true,
+      "ink": "blue"
+     },
+     {
+      "id": "areaA",
+      "label": "a^2",
+      "at": "AA",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "areaB",
+      "label": "b^2",
+      "at": "BB",
+      "dir": "c",
+      "size": "l"
+     },
+     {
+      "id": "areaC",
+      "label": "c^2",
+      "at": "CC",
+      "dir": "c",
+      "size": "l"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Every right triangle carries three squares: a squared, b squared and c squared.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Every right triangle",
+       "at": "Every"
+      },
+      {
+       "do": "show",
+       "target": [
+        "squareA",
+        "areaA"
+       ],
+       "at": "a"
+      },
+      {
+       "do": "show",
+       "target": [
+        "squareB",
+        "areaB"
+       ],
+       "at": "b"
+      },
+      {
+       "do": "show",
+       "target": [
+        "squareC",
+        "areaC"
+       ],
+       "at": "c"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "In a right triangle, the squares on the two legs together make the square on the hypotenuse.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "text",
+       "text": "Legs' squares together make the hypotenuse's square.",
+       "at": "together"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
