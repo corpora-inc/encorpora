@@ -43,6 +43,7 @@ import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
 import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
 import { Navigate, useRouter } from "@tanstack/react-router";
+import { closeTo } from "../lib/return-to";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -1297,6 +1298,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       if (practiceAnswers.current < 100_000) practiceAnswers.current += 1;
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
       upcoming.current.batch.catch(() => undefined);
+      answered(learner.id);
       void refreshProgress().catch((error) =>
         console.error("Progress refresh failed", error),
       );
@@ -1337,9 +1339,38 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch(() => undefined);
+    answered(learner.id);
     void refreshProgress().catch((error) =>
       console.error("Progress refresh failed", error),
     );
+  }
+  /** The lesson reader's way back: Back to where it was opened (Progress,
+   * a skill on Pathways), else Pathways (lib/return-to.ts). */
+  function closeReader() {
+    const idea = progressLessonReturn.current;
+    progressLessonReturn.current = null;
+    closeTo(
+      router,
+      idea ? "/progress" : `/lessons${libraryReturn.current.search}`,
+    );
+    if (idea)
+      requestAnimationFrame(() =>
+        document
+          .querySelector<HTMLElement>(
+            `[data-progress-lesson="${CSS.escape(idea)}"]`,
+          )
+          ?.focus({ preventScroll: true }),
+      );
+  }
+  /** An answer or a skip changes the learner's level: the next screen that
+   * reads it (the Overview, Pathways) fetches it afresh, never from before
+   * the problem. Nothing refetches now; the cache is only marked stale. */
+  function answered(learnerId: string) {
+    if (!session) return;
+    void queryClient.invalidateQueries({
+      queryKey: learnerFrontierOptions(session, learnerId).queryKey,
+      refetchType: "none",
+    });
   }
   async function openBook(
     id: string,
@@ -2175,11 +2206,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           {!catalog && route.parts[1] && (
             <article className="card lesson-reader" aria-busy={!catalogFailed}>
               <div className="card-top">
-                <button
-                  className="text-button"
-                  onClick={() => navigate("/pathways")}
-                >
-                  ← Pathways
+                <button className="text-button" onClick={closeReader}>
+                  {progressLessonReturn.current ? "← Your idea" : "← Pathways"}
                 </button>
               </div>
               {catalogFailed ? (
@@ -2255,31 +2283,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             <article className="card lesson-reader">
               <style>{`${printMathStyles}.lesson-reader .worked-example li{padding:5px 0;line-height:1.6}`}</style>
               <div className="card-top">
-                <button
-                  className="text-button"
-                  onClick={() => {
-                    navigate(
-                      progressLessonReturn.current
-                        ? "/lessons"
-                        : `/lessons${libraryReturn.current.search}`,
-                    );
-                    if (progressLessonReturn.current) {
-                      const skillId = progressLessonReturn.current;
-                      progressLessonReturn.current = null;
-                      setTab("progress");
-                      requestAnimationFrame(() =>
-                        document
-                          .querySelector<HTMLElement>(
-                            `[data-progress-lesson="${CSS.escape(skillId)}"]`,
-                          )
-                          ?.focus({ preventScroll: true }),
-                      );
-                      return;
-                    }
-                    // The library puts the card it opened from back in view
-                    // (rememberLibraryCard), as browser Back does.
-                  }}
-                >
+                <button className="text-button" onClick={closeReader}>
                   {progressLessonReturn.current ? "← Your idea" : "← Pathways"}
                 </button>
                 {/* One compact control for the lesson's typeset PDFs. A

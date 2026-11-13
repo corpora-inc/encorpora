@@ -719,8 +719,16 @@ const pathways = createRoute({
     await framedScreen();
     await adoptPracticeMode(location);
   },
-  // The curriculum and the learner's record arrive with it: one paint.
-  loader: preloadLearning,
+  // The curriculum and the learner's record arrive with it: one paint. A
+  // problem type's short lesson (`?lesson=`) needs neither: it opens at
+  // once over the map, which fills in under it.
+  loader: ({ location }) => {
+    if (!new URLSearchParams(location.searchStr).has("lesson"))
+      return preloadLearning();
+    void preloadLearning().catch((error: unknown) =>
+      console.error("The map did not preload", error),
+    );
+  },
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
