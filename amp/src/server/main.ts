@@ -56,6 +56,10 @@ import {
 } from "./accounts";
 import { PostgresRepository } from "./repository";
 import { freeProblemsSetting } from "./trials";
+import { cleverAuthOptions, cleverConfiguration } from "./clever.js";
+import { withProviderSessions } from "../identity/provider-principals.js";
+import { registerCleverAuthRoutes } from "../schools/clever-auth.js";
+import { resolveCleverPerson } from "../schools/clever/identity.js";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
 function trustedProxies(value: string | undefined) {
@@ -84,6 +88,10 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   throw new Error(
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
   );
+const accountsConfig =
+  authMode === "accounts" ? accountsConfiguration(process.env) : undefined;
+const cleverConfig = cleverConfiguration(process.env, accountsConfig);
+if (accountsConfig) accountsConfig.clever = !!cleverConfig;
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   pool: serverPoolOptions,
   development,
@@ -92,24 +100,33 @@ const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
 // AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
 // GitHub), stored in AMP's database.
 const followupConfig = followupConfiguration(process.env);
-const accounts =
-  authMode === "accounts"
-    ? await createAccounts(repository.pool, accountsConfiguration(process.env))
-    : null;
+const accounts = accountsConfig
+  ? await createAccounts(repository.pool, accountsConfig)
+  : null;
+const baseIdentity = development
+  ? developmentAuth()
+  : accounts
+    ? accountsAuth(accounts)
+    : oidcAuth({
+        issuer: required("AMP_OIDC_ISSUER"),
+        audience: required("AMP_OIDC_AUDIENCE"),
+        jwksUrl: required("AMP_OIDC_JWKS_URL"),
+        accessTokenProfile:
+          process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
+            ? "token-use-access"
+            : "rfc9068",
+      });
+const cleverPerson = (claims: {
+  environment: "sandbox" | "production";
+  districtId: string;
+  userId: string;
+}) => resolveCleverPerson(repository.pool, claims);
 const authenticateIdentity = refuseStudentTokens(
-  development
-    ? developmentAuth()
-    : accounts
-      ? accountsAuth(accounts)
-      : oidcAuth({
-          issuer: required("AMP_OIDC_ISSUER"),
-          audience: required("AMP_OIDC_AUDIENCE"),
-          jwksUrl: required("AMP_OIDC_JWKS_URL"),
-          accessTokenProfile:
-            process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
-              ? "token-use-access"
-              : "rfc9068",
-        }),
+  cleverConfig
+    ? withProviderSessions(repository.pool, baseIdentity, {
+        resolvePerson: cleverPerson,
+      })
+    : baseIdentity,
 );
 const authenticate = withAdvertisingPrivacySignals(
   repository.pool,
@@ -138,6 +155,11 @@ else
   app.get("/api/v1/auth-config", async () => ({
     mode: development ? "development" : "oidc",
   }));
+if (accounts && cleverConfig)
+  await registerCleverAuthRoutes(
+    app,
+    cleverAuthOptions(repository.pool, accounts, cleverConfig, authenticate),
+  );
 await registerAdvertisingPermissionRoutes(app, {
   pool: repository.pool,
   authenticate,
@@ -179,6 +201,7 @@ await registerDeleteAccountRoutes(app, {
   pool: repository.pool,
   authenticate,
   accounts: accounts ?? undefined,
+  ...(cleverConfig ? { resolveCleverPerson: cleverPerson } : {}),
 });
 const schoolNow = schoolClock(process.env);
 await registerSchoolRoutes(app, {
