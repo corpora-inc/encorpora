@@ -6,6 +6,8 @@ import {
 } from "@tanstack/react-query";
 import { z } from "zod";
 import {
+  classSkillResponse,
+  studentSkillResponse,
   evidenceResponse,
   gradebookResponse,
   mapResponse,
@@ -152,6 +154,36 @@ export const workReplayOptions = (
         skill ? `?skill=${encodeURIComponent(skill)}` : ""
       }`,
       workReplayResponse,
+    ),
+  });
+/** A student on one skill (a skill layer over their record). */
+export const studentSkillOptions = (
+  session: Session,
+  student: string,
+  skill: string,
+) =>
+  queryOptions({
+    queryKey: [...recordKey(session, student), "skill", skill],
+    enabled: !!session,
+    queryFn: read(
+      session,
+      `/school/students/${student}/skills/${encodeURIComponent(skill)}`,
+      studentSkillResponse,
+    ),
+  });
+/** A class on one skill (a skill layer over a class page). */
+export const classSkillOptions = (
+  session: Session,
+  place: Place,
+  skill: string,
+) =>
+  queryOptions({
+    queryKey: [...classKey(session, place), "skill", skill],
+    enabled: !!session,
+    queryFn: read(
+      session,
+      `${CLASS(place)}/skills/${encodeURIComponent(skill)}`,
+      classSkillResponse,
     ),
   });
 export const studentRecordOptions = (session: Session, student: string) =>
