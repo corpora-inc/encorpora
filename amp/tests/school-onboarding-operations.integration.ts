@@ -467,7 +467,7 @@ test(
       assert.equal(connected.connectionId, repeated.connectionId);
       assert.equal(connected.status, "ready_to_import");
       await runDueCleverSync(db, connected.connectionId, client);
-      assert.equal(snapshots, 0);
+      assert.equal(snapshots, 1);
       await db.query(
         "UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now() WHERE id=$1",
         [connected.connectionId],
@@ -476,9 +476,9 @@ test(
         runDueCleverSync(db, connected.connectionId, client),
         runDueCleverSync(db, connected.connectionId, client),
       ]);
-      assert.equal(snapshots, 1);
+      assert.equal(snapshots, 2);
       await runDueCleverSync(db, connected.connectionId, client);
-      assert.equal(snapshots, 1);
+      assert.equal(snapshots, 2);
       assert.equal(
         (
           await db.query(

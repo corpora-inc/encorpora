@@ -16,10 +16,27 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          volumes:
+            - name: temporary
+              emptyDir:
+                sizeLimit: 64Mi
           containers:
             - name: sync
               image: ${AMP_API_IMAGE}
-              command: ["node", "--max-old-space-size=1408", "--import", "tsx", "scripts/clever-sync.ts", "sync", "all", "auto"]
+              command:
+                [
+                  "node",
+                  "--max-old-space-size=1408",
+                  "--import",
+                  "tsx",
+                  "scripts/clever-sync.ts",
+                  "sync",
+                  "all",
+                  "auto",
+                ]
+              volumeMounts:
+                - name: temporary
+                  mountPath: /tmp
               envFrom:
                 - secretRef:
                     name: ${AMP_CLEVER_WORKER_SECRET}

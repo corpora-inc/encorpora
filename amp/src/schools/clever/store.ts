@@ -1024,14 +1024,20 @@ export async function stageSnapshot(
   })) {
     await batches(records as RosterRecord[], (rows) =>
       db.query(
-        `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,record,last_seen_run_id)
-      SELECT $1,$2,x.record->>'id',x.record,$4 FROM jsonb_to_recordset($3::jsonb) x(record jsonb)
-      ON CONFLICT(connection_id,kind,clever_id) DO UPDATE SET record=excluded.record,last_seen_run_id=excluded.last_seen_run_id,archived_at=NULL
+        `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,record,metadata,last_seen_run_id)
+      SELECT $1,$2,x.record->>'id',x.record,x.metadata,$4 FROM jsonb_to_recordset($3::jsonb) x(record jsonb,metadata jsonb)
+      ON CONFLICT(connection_id,kind,clever_id) DO UPDATE SET record=excluded.record,metadata=excluded.metadata,last_seen_run_id=excluded.last_seen_run_id,archived_at=NULL
       WHERE amp_clever_bindings.local_id IS NULL`,
         [
           connection.id,
           kind,
-          JSON.stringify(rows.map((record) => ({ record }))),
+          JSON.stringify(
+            rows.map((record) => ({
+              record,
+              metadata:
+                kind === "user" ? { roles: userRoles(record as User) } : {},
+            })),
+          ),
           runId,
         ],
       ),

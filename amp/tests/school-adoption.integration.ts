@@ -1,3 +1,4 @@
+import { storedAdoptionSnapshot } from "../src/schools/clever/store.js";
 import test from "node:test";
 import Fastify from "fastify";
 import { registerSchoolAdoptionRoutes } from "../src/schools/adoption-routes.js";
@@ -812,12 +813,36 @@ test(
             }),
             /roster_mismatch/,
           );
+          await db!.query(
+            "UPDATE amp_clever_connections SET sync_paused=true WHERE id=$1",
+            [connection.id],
+          );
+          await syncCleverConnection(
+            db!,
+            connection.id,
+            {
+              districtToken: async () => "fixture",
+              snapshot: async () => snapshot,
+              events: async () => [],
+              latestEvent: async () => null,
+            },
+            { stageOnly: true },
+          );
+          const staged = await storedAdoptionSnapshot(
+            db!,
+            connection.id,
+            snapshot.schools[0]!.id,
+          );
           await acceptSchoolAdoption(
             db!,
             targetAccount,
             grant.token,
             decisions,
-            { snapshot },
+            { snapshot: staged },
+          );
+          await db!.query(
+            "UPDATE amp_clever_connections SET sync_paused=false WHERE id=$1",
+            [connection.id],
           );
           const ref = (
             await db!.query(

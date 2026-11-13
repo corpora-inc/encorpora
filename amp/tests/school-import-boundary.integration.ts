@@ -1,9 +1,10 @@
-// Regression: a school-B roster import can attach people to school A's class.
+// A school import must not expose or change another school’s people or classes.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { applyRoster, planRoster } from "../src/schools/reconcile.js";
@@ -26,6 +27,7 @@ test(
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async (t) => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
+    assertTestDatabaseTarget(url);
     const schema = `repro_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({ connectionString: url, max: 1 });
     const scoped = new URL(url);

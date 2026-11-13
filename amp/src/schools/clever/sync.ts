@@ -298,20 +298,22 @@ export async function syncCleverConnection(
             [connectionId, now],
           )
         ).rows[0];
-        await endMissingMemberships(db, connectionId, runId, row.day);
-        await db.query(
-          `UPDATE amp_clever_connections SET status='disconnected',disconnected_at=$2 WHERE id=$1`,
-          [connectionId, now],
-        );
-        await db.query(
-          `UPDATE amp_clever_bindings SET archived_at=COALESCE(archived_at,$2) WHERE connection_id=$1`,
-          [connectionId, now],
-        );
-        await db.query(
-          `UPDATE amp_classes c SET archived_at=COALESCE(c.archived_at,$2) FROM amp_clever_bindings b
+        if (row) {
+          await endMissingMemberships(db, connectionId, runId, row.day);
+          await db.query(
+            `UPDATE amp_clever_connections SET status='disconnected',disconnected_at=$2 WHERE id=$1`,
+            [connectionId, now],
+          );
+          await db.query(
+            `UPDATE amp_clever_bindings SET archived_at=COALESCE(archived_at,$2) WHERE connection_id=$1`,
+            [connectionId, now],
+          );
+          await db.query(
+            `UPDATE amp_classes c SET archived_at=COALESCE(c.archived_at,$2) FROM amp_clever_bindings b
           WHERE b.connection_id=$1 AND b.kind='section' AND c.id=b.local_id`,
-          [connectionId, now],
-        );
+            [connectionId, now],
+          );
+        }
         await db.query("COMMIT");
       }
       await db.query(

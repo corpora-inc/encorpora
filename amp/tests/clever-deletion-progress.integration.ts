@@ -1,9 +1,10 @@
-// Throwaway repro: one per-student privacy deletion halts the whole district's Clever sync.
+// Privacy deletion must not stop other roster arrivals and departures.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import { syncCleverConnection } from "../src/schools/clever/sync.js";
@@ -54,6 +55,7 @@ test(
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
+    assertTestDatabaseTarget(url);
     const schema = `repro_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({ connectionString: url, max: 1 });
     const scoped = new URL(url);

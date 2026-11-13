@@ -648,7 +648,7 @@ export async function acceptSchoolAdoptionIn(
         [connection.id, input.cleverSchool.schoolId],
       )
     ).rows[0];
-    if (binding && binding.local_id !== schoolId)
+    if (binding?.local_id && binding.local_id !== schoolId)
       throw new CleverSyncError("adoption_clever_school_already_bound");
     const source = cleverSource(connection.id);
     const ref = (
@@ -670,6 +670,10 @@ export async function acceptSchoolAdoptionIn(
       VALUES($1,$2,'org',$3,$4) ON CONFLICT DO NOTHING`,
       [districtId, source, input.cleverSchool.schoolId, schoolId],
     );
+    await db.query(
+      "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='school' AND clever_id=$2 AND local_id IS NULL",
+      [connection.id, input.cleverSchool.schoolId, schoolId],
+    );
   }
   if (input.cleverSchool) {
     const source = cleverSource(input.cleverSchool.connectionId);
@@ -682,13 +686,22 @@ export async function acceptSchoolAdoptionIn(
         VALUES($1,$2,'person',$3,$4) ON CONFLICT DO NOTHING`,
         [districtId, source, match.userId, personId],
       );
+      await db.query(
+        "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='user' AND clever_id=$2 AND local_id IS NULL",
+        [input.cleverSchool.connectionId, match.userId, personId],
+      );
     }
-    for (const match of input.cleverSections)
+    for (const match of input.cleverSections) {
       await db.query(
         `INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id)
       VALUES($1,$2,'class',$3,$4) ON CONFLICT DO NOTHING`,
         [districtId, source, match.sectionId, match.classId],
       );
+      await db.query(
+        "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='section' AND clever_id=$2 AND local_id IS NULL",
+        [input.cleverSchool.connectionId, match.sectionId, match.classId],
+      );
+    }
   }
   await db.query(
     `UPDATE amp_orgs SET path=ARRAY[$2::uuid]||path,

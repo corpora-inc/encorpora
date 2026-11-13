@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import {
   startSchoolClass,
@@ -29,6 +30,7 @@ async function fixture(
   run: (db: Pool, repo: SchoolRepository) => Promise<void>,
 ) {
   const url = new URL(process.env.AMP_TEST_DATABASE_URL!);
+  assertTestDatabaseTarget(url.href);
   const admin = new Pool({ connectionString: url.href });
   const schema = `reuse_${randomUUID().replaceAll("-", "")}`;
   await admin.query(`CREATE SCHEMA ${schema}`);

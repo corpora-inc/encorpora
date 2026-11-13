@@ -137,7 +137,8 @@ export async function linkCleverPerson(
     if (
       existing.some(
         (row) =>
-          row.local_id !== input.personId || row.clever_id !== input.userId,
+          (row.local_id !== null && row.local_id !== input.personId) ||
+          row.clever_id !== input.userId,
       )
     )
       throw new CleverSyncError("clever_identity_already_bound");
@@ -156,6 +157,10 @@ export async function linkCleverPerson(
     );
     if (!result.rowCount)
       throw new CleverSyncError("clever_identity_already_bound");
+    await db.query(
+      "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='user' AND clever_id=$2 AND local_id IS NULL",
+      [input.connectionId, input.userId, input.personId],
+    );
     await db.query("COMMIT");
     return { personId: input.personId };
   } catch (error) {

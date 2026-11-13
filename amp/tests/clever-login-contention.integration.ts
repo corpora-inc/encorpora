@@ -1,22 +1,25 @@
-// Throwaway repro (not committed): a running Clever sync holds the session
-// advisory lock `clever-sync:<id>` while it downloads the district snapshot.
-// Every Clever staff sign-in for that district (establishProviderPrincipal ->
-// attachProvedCleverStaffIn) waits on that lock with no lock_timeout, holding a
-// pooled connection inside an open transaction.
+// Staff sign-in and deferred attachment must complete while roster apply is locked.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerCleverConnection } from "../src/schools/clever/connection.js";
-import { establishProviderPrincipal } from "../src/identity/provider-principals.js";
+import type { FastifyRequest } from "fastify";
+import { resolveCleverPerson } from "../src/schools/clever/identity.js";
+import {
+  establishProviderPrincipal,
+  resolveProviderSession,
+} from "../src/identity/provider-principals.js";
 
 test(
   "H4: staff sign-in completes while the sync apply lock is busy",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
+    assertTestDatabaseTarget(url);
     const schema = `repro_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({ connectionString: url, max: 1 });
     const scoped = new URL(url);
@@ -37,12 +40,11 @@ test(
         districtId,
         tenantId: district.id,
       });
-      // Simulate syncCleverConnection: session lock held while fetching from Clever.
+      // Hold the database-apply lock as a busy worker would.
       await syncer.query(
         "SELECT pg_try_advisory_lock(hashtextextended($1,0))",
         [`clever-sync:${id}`],
       );
-      const started = Date.now();
       const login = establishProviderPrincipal(
         db,
         {
@@ -62,8 +64,50 @@ test(
       await syncer.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
         `clever-sync:${id}`,
       ]);
-      await login;
+      const signedIn = await login;
       assert.equal(outcome, "signed-in");
+      const teacher = await repo.addStaff({
+        orgId: district.id,
+        role: "teacher",
+        givenName: "Fixture",
+      });
+      await db.query(
+        "INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata) VALUES($1,'user',$2,$3,$4,$5)",
+        [
+          id,
+          "b".repeat(24),
+          teacher.personId,
+          JSON.stringify({ id: "b".repeat(24), district: districtId }),
+          JSON.stringify({ roles: ["teacher"] }),
+        ],
+      );
+      const request = {
+        url: "/api/v1/provider/session",
+        headers: { authorization: `Bearer ${signedIn.token}` },
+      } as FastifyRequest;
+      const resolver = (claims: Parameters<typeof resolveCleverPerson>[1]) =>
+        resolveCleverPerson(db, claims);
+      await syncer.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
+        `clever-sync:${id}`,
+      ]);
+      const read = resolveProviderSession(db, request, resolver);
+      const readOutcome = await Promise.race([
+        read.then((value) => ({ value })),
+        new Promise<null>((resolve) => setTimeout(() => resolve(null), 750)),
+      ]);
+      await syncer.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
+        `clever-sync:${id}`,
+      ]);
+      await read;
+      assert.ok(
+        readOutcome,
+        "session read must defer attachment without waiting",
+      );
+      assert.equal(readOutcome.value?.personId, null);
+      assert.equal(
+        (await resolveProviderSession(db, request, resolver))?.personId,
+        teacher.personId,
+      );
     } finally {
       syncer.release();
       await db.end();
