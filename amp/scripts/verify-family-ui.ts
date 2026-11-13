@@ -73,6 +73,8 @@ try {
       {
         id: "fixture",
         name: "Sample learner",
+        // Every child is added with a birth year; it sets where they start.
+        birthYear: 2016,
         deletedAt: null,
         access: [
           {
@@ -190,11 +192,23 @@ try {
       .getByRole("link", { name: tabNames[name] ?? name, exact: true })
       .click();
   };
+  const learnerRow = page.locator('[data-learner-row="fixture"]');
+  // Billing's row for a deleted learner whose paid term is kept.
+  const retained = page
+    .getByRole("list", { name: "What each learner holds" })
+    .getByRole("listitem")
+    .filter({
+      has: page.getByRole("heading", { name: /^Deleted learner \d+$/ }),
+    })
+    .filter({
+      hasText: "Learning data deleted. Billing records kept.",
+    });
   const privacy = async (name: string) => {
     await section("Privacy");
     await page.getByRole("button", { name, exact: false }).click();
-    await page.waitForFunction(() =>
-      document.activeElement?.matches(".family-section h2"),
+    // A privacy step's title takes focus (FamilyCenter).
+    await page.waitForFunction(
+      () => document.activeElement?.id === "family-title",
     );
   };
   for (const [width, height] of [
@@ -273,8 +287,9 @@ try {
   };
   await page.reload();
   await page.setViewportSize({ width: 320, height: 568 });
+  // Each child's row opens their settings, which end with deleting their data.
   await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
+    .getByRole("button", { name: /^Delete W+’s learning data$/ })
     .click();
   const confirmation = page.getByRole("dialog");
   await confirmation.waitFor();
@@ -305,31 +320,33 @@ try {
     "Edit name is filled",
   );
   await page.getByRole("button", { name: "Edit name", exact: true }).click();
-  await page.getByLabel("Learner display name").fill("Renamed learner");
+  await page.getByLabel("Name", { exact: true }).fill("Renamed learner");
   await page.getByRole("button", { name: "Save name", exact: true }).click();
-  await page
-    .getByRole("heading", { name: "Renamed learner", exact: true })
-    .waitFor();
+  await learnerRow.getByText("Renamed learner", { exact: true }).waitFor();
   await page.waitForFunction(
     () => document.activeElement?.textContent === "Edit name",
   );
   await section("Learners");
   await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
+    .getByRole("button", {
+      name: "Delete Renamed learner’s learning data",
+      exact: true,
+    })
     .click();
   await page.getByRole("dialog").waitFor();
   await page.keyboard.press("Escape");
   await page.waitForFunction(
-    () => document.activeElement?.textContent === "Delete learning data",
+    () =>
+      document.activeElement?.textContent ===
+      "Delete Renamed learner’s learning data",
   );
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
-    "Delete learning data",
+    "Delete Renamed learner’s learning data",
   );
   await privacy("Download your records");
-  await page
-    .getByRole("button", { name: "← Privacy choices", exact: true })
-    .click();
+  // A privacy step's way back sits above its title.
+  await page.getByRole("button", { name: "Privacy", exact: true }).click();
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("data-privacy-choice") === "export",
@@ -368,44 +385,58 @@ try {
   await section("Access");
   assert.equal(
     await page
-      .getByRole("button", { name: "Manage billing and renewal" })
+      .getByRole("button", { name: /^Manage the plan for / })
       .isVisible(),
     true,
   );
   await section("Learners");
   await page
-    .getByRole("button", { name: "Delete learning data", exact: true })
+    .getByRole("button", {
+      name: "Delete Renamed learner’s learning data",
+      exact: true,
+    })
     .click();
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Delete learning data", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: "Deleted learner · billing reference" })
-    .waitFor();
+  // The deleted learner leaves Learners; Billing keeps their paid term.
+  await learnerRow.waitFor({ state: "detached" });
   await section("Access");
+  await retained.waitFor();
   assert.equal(
     await page
-      .getByRole("button", { name: "Manage billing and renewal" })
+      .getByRole("button", { name: /^Manage the plan for / })
       .isVisible(),
     true,
   );
+  // The export stays available; with no child left it is the parent's own.
   await privacy("Download your records");
   assert.equal(
-    await page
-      .getByRole("button", { name: "Download family data" })
-      .isVisible(),
+    await page.getByRole("button", { name: "Download your data" }).isVisible(),
     true,
   );
   // A confirmed privacy mutation stays successful even when its refresh fails.
+  // Learning consent is offered while a child remains: a second child joins
+  // beside the retained reference.
   family = {
     ...family,
     consent: { ...family.consent, status: "active", withdrawnAt: null },
+    learners: [
+      ...family.learners,
+      {
+        id: "second",
+        name: "Second learner",
+        birthYear: 2018,
+        deletedAt: null,
+        access: [],
+        stripeLinked: false,
+      },
+    ],
   };
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Deleted learner · billing reference" })
-    .waitFor();
+  await section("Access");
+  await retained.waitFor();
   await privacy("Learning consent");
   await page
     .getByRole("button", { name: "Withdraw consent", exact: true })
@@ -435,21 +466,18 @@ try {
       )
     ).includes("invalidated"),
   );
-  assert.equal(
-    await page
-      .getByRole("heading", { name: "Deleted learner · billing reference" })
-      .count(),
-    0,
-  );
+  assert.equal(await retained.count(), 0);
   for (const mode of ["unmount", "switch"]) {
     family = {
       ...family,
       consent: { ...family.consent, status: "active", withdrawnAt: null },
-      learners: family.learners.map((l) => ({
-        ...l,
-        name: "Old account learner",
-        deletedAt: null,
-      })),
+      learners: family.learners
+        .filter((l) => l.id === "fixture")
+        .map((l) => ({
+          ...l,
+          name: "Old account learner",
+          deletedAt: null,
+        })),
     };
     await page.reload();
     await page
@@ -463,7 +491,7 @@ try {
     });
     holdNextSummary = true;
     await page.getByRole("button", { name: "Edit name", exact: true }).click();
-    await page.getByLabel("Learner display name").fill("Old account changed");
+    await page.getByLabel("Name", { exact: true }).fill("Old account changed");
     await page.getByRole("button", { name: "Save name", exact: true }).click();
     await summaryHeld;
     if (mode === "unmount")
@@ -479,8 +507,8 @@ try {
       await page.evaluate(() =>
         (window as any).familyHarness.render("new-account-token"),
       );
-      await page
-        .getByRole("heading", { name: "New account learner", exact: true })
+      await learnerRow
+        .getByText("New account learner", { exact: true })
         .waitFor();
     }
     const before = await page.evaluate(
@@ -496,9 +524,7 @@ try {
       `Late refresh must not notify parent after ${mode}`,
     );
     assert.equal(
-      await page
-        .getByRole("heading", { name: "Old account changed", exact: true })
-        .count(),
+      await page.getByText("Old account changed", { exact: true }).count(),
       0,
     );
   }
