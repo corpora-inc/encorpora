@@ -1,9 +1,10 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { Button } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { copiedLabel, useCopyStudent } from "./api";
+import { practiceAs } from "./practice-mode";
 
 /** "Try problems as this student", on a student's record: a practice profile
  * of the reader's own, copied once from the student's levels now, then
@@ -16,6 +17,9 @@ export function TryAsStudent({
   personId: string;
 }) {
   const navigate = useNavigate();
+  // Practicing as the student is a mode of this place: its way back, Back
+  // and a refresh return here (practice-mode.ts).
+  const here = useLocation({ select: (location) => location.href });
   const copy = useCopyStudent(session, personId);
   return (
     <>
@@ -26,8 +30,7 @@ export function TryAsStudent({
         data-try-as-student
         onClick={() =>
           copy.mutate(copiedLabel(), {
-            onSuccess: () =>
-              void navigate({ to: "/$", params: { _splat: "practice" } }),
+            onSuccess: (profile) => void navigate(practiceAs(profile, here)),
           })
         }
       >

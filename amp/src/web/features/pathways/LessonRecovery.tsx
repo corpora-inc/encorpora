@@ -4,19 +4,20 @@ import { Button } from "../../ui/Button";
 export function LessonFailure({
   onBack,
   retry,
+  backLabel = "Back to map",
 }: {
   onBack: () => void;
   retry?: () => void;
+  backLabel?: string;
 }) {
   return (
     <section aria-label="Lesson recovery">
       <p role="alert">
-        The lesson could not be opened. You can return to your map or reload the
-        page.
+        The lesson could not be opened. Retry it, or reload the page.
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
         <Button variant="primary" onClick={onBack}>
-          Back to map
+          {backLabel}
         </Button>
         {retry && (
           <Button variant="secondary" onClick={retry}>
@@ -33,7 +34,7 @@ export function LessonFailure({
 
 /** Keep the dialog shell mounted when a lazy import or lesson render fails. */
 export class LessonBoundary extends Component<
-  { children: ReactNode; onBack: () => void },
+  { children: ReactNode; onBack: () => void; backLabel?: string },
   { failed: boolean }
 > {
   state = { failed: false };
@@ -47,7 +48,10 @@ export class LessonBoundary extends Component<
   render() {
     // React.lazy retains a rejected import. A reset-only retry cannot recover it.
     return this.state.failed ? (
-      <LessonFailure onBack={this.props.onBack} />
+      <LessonFailure
+        onBack={this.props.onBack}
+        backLabel={this.props.backLabel}
+      />
     ) : (
       this.props.children
     );

@@ -42,6 +42,7 @@ import {
   useDeleteProfile,
   useUpdateProfile,
 } from "./api";
+import { practiceAs } from "./practice-mode";
 import { GradePicker } from "./GradePicker";
 import styles from "./Profiles.module.css";
 
@@ -385,8 +386,7 @@ export function NewProfileScreen() {
           create.mutate(
             { label: label.trim(), levels },
             {
-              onSuccess: () =>
-                void navigate({ to: "/$", params: { _splat: "practice" } }),
+              onSuccess: (profile) => void navigate(practiceAs(profile)),
             },
           )
         }
@@ -470,7 +470,7 @@ function ProfileEditor({
   const practice = () => {
     // Saving chooses this profile, so practice opens on it.
     choosePracticeProfile(profile.id);
-    void navigate({ to: "/$", params: { _splat: "practice" } });
+    void navigate(practiceAs(profile.id));
   };
   return (
     <main className={styles.page}>

@@ -11,8 +11,6 @@ import {
   useRef,
   useEffect,
   useState,
-  lazy,
-  Suspense,
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
@@ -52,10 +50,9 @@ import {
   type Evidence,
   type MapSkill,
 } from "./model";
-import { Dialog } from "../../ui/Dialog";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
-import { LessonBoundary } from "./LessonRecovery";
-const SkillLesson = lazy(() => import("./SkillLesson"));
+import { LessonDialog, lessonParam } from "./LessonDialog";
+import { closeSearch } from "../../lib/return-to";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
@@ -95,8 +92,6 @@ type SearchFound = {
   skill: string;
 };
 
-/** A problem type's id, as `?lesson=` carries it. */
-const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
 
 /** On a phone a long list of results can leave the page scrolled past the
  * map, under the bar. A chosen skill shows on the map, so bring the map's
@@ -332,29 +327,17 @@ export function MapView({
     () => urlQuery.trim().length > 0 && !selectedId,
   );
   // A problem type's short lesson has its own address (`?lesson=`), so a
-  // link, a refresh or Back opens it again. Opened here, closing goes back;
-  // arrived at by a link, closing leaves the address without it.
-  const lesson =
-    typeof search.lesson === "string" && LESSON_ID.test(search.lesson)
-      ? search.lesson
-      : null;
+  // link, a refresh or Back opens it again. Closing returns to this map
+  // without it: Back when it was opened here, even after a refresh.
+  const lesson = lessonParam(search.lesson);
   const lessonTrigger = useRef<HTMLElement | null>(null);
-  const openedHere = useRef(false);
-  // Closed any way (Back, a link), the next close starts afresh.
-  useEffect(() => {
-    if (!lesson) openedHere.current = false;
-  }, [lesson]);
   const openLesson = (id: string, trigger: HTMLElement) => {
     lessonTrigger.current = trigger;
-    openedHere.current = true;
     update({ lesson: id });
   };
   const closeLesson = () => {
     if (!lesson) return;
-    if (openedHere.current) {
-      openedHere.current = false;
-      router.history.back();
-    } else update({ lesson: null }, true);
+    closeSearch(router, "lesson");
   };
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
@@ -933,13 +916,9 @@ export function MapView({
           </footer>
         </>
       )}
-      <Dialog
-        open={!!lesson}
-        onOpenChange={(open) => {
-          if (!open) closeLesson();
-        }}
-        title="Explore a problem type"
-        fullOnPhone
+      <LessonDialog
+        lesson={lesson}
+        onClose={closeLesson}
         onCloseAutoFocus={(e) => {
           e.preventDefault();
           if (lessonTrigger.current?.isConnected) lessonTrigger.current.focus();
@@ -955,14 +934,7 @@ export function MapView({
             Try this problem type →
           </Link>
         )}
-        {lesson && (
-          <LessonBoundary key={lesson} onBack={closeLesson}>
-            <Suspense fallback={<Loading>Loading lesson…</Loading>}>
-              <SkillLesson templateId={lesson} onBack={closeLesson} />
-            </Suspense>
-          </LessonBoundary>
-        )}
-      </Dialog>
+      </LessonDialog>
     </main>
   );
 }

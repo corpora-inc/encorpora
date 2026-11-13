@@ -15,9 +15,11 @@ const PATHWAYS_HELP = { source: "pathways" } as const;
 export default function SkillLesson({
   templateId,
   onBack,
+  backLabel,
 }: {
   templateId: string;
   onBack: () => void;
+  backLabel?: string;
 }) {
   const lesson = useQuery({
     queryKey: ["pathways-lesson", templateId],
@@ -42,7 +44,11 @@ export default function SkillLesson({
   }, [lesson.isError]);
   if (lesson.isError)
     return (
-      <LessonFailure onBack={onBack} retry={() => void lesson.refetch()} />
+      <LessonFailure
+        onBack={onBack}
+        backLabel={backLabel}
+        retry={() => void lesson.refetch()}
+      />
     );
   if (!lesson.data) return <Loading>Loading lesson…</Loading>;
   return (

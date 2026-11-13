@@ -77,6 +77,12 @@ import {
   standingsSearchSchema,
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
+import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import {
+  adoptPracticeMode,
+  isLearningPath,
+  MODE_KEYS,
+} from "../features/profiles/practice-mode";
 const searchSchema = z
   .object({
     return: z
@@ -684,6 +690,7 @@ const inventory = createRoute({
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
     await framedScreen();
+    await adoptPracticeMode(location);
     if (!queryClient.getQueryData(sessionOptions.queryKey))
       throw redirect({
         to: "/sign-in",
@@ -703,7 +710,10 @@ const inventory = createRoute({
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
-  beforeLoad: framedScreen,
+  beforeLoad: async ({ location }) => {
+    await framedScreen();
+    await adoptPracticeMode(location);
+  },
   // The curriculum and the learner's record arrive with it: one paint.
   loader: preloadLearning,
   component: lazyRouteComponent(
@@ -1299,6 +1309,8 @@ const design = createRoute({
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
+  // The address says who practices (features/profiles/practice-mode.ts).
+  beforeLoad: ({ location }) => adoptPracticeMode(location),
   // The app screen is rendered by the layout, so load its chunk here, as the
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
@@ -1456,11 +1468,15 @@ export const router = createRouter({
 // stays on what they were looking at. Going to another screen starts at its
 // top, as before, and a navigation that says otherwise still wins. One rule
 // for every link and navigate(), at the one place they all commit.
+//
+// Each entry also records the address of the entry it was pushed from, so a
+// close (lib/return-to.ts) can tell when Back is the way to its target.
 {
   const commit = router.commitLocation;
   router.commitLocation = (next) =>
     commit({
       ...next,
+      state: stampPrevious(next, router.history.location) as typeof next.state,
       resetScroll:
         next.resetScroll ??
         (next.pathname === router.state.location.pathname ||
@@ -1480,6 +1496,28 @@ export const router = createRouter({
   router.buildLocation = ((options: Parameters<typeof build>[0]) => {
     const next = build(options);
     const here = router.state.location;
+    // A practice mode (practicing as a profile) goes with the reader
+    // between learning screens: Overview, Pathways, a lesson.
+    const mode = here.search as Record<string, unknown>;
+    if (
+      typeof mode.profile === "string" &&
+      isLearningPath(here.pathname) &&
+      isLearningPath(next.pathname) &&
+      (next.search as Record<string, unknown>).profile === undefined
+    )
+      return build({
+        ...options,
+        search: {
+          ...next.search,
+          ...Object.fromEntries(
+            MODE_KEYS.filter(
+              (key) =>
+                mode[key] !== undefined &&
+                (next.search as Record<string, unknown>)[key] === undefined,
+            ).map((key) => [key, mode[key]]),
+          ),
+        },
+      } as never);
     if (!overList(here.pathname, next.pathname)) return next;
     const from = here.search as Record<string, unknown>;
     const to = next.search as Record<string, unknown>;
@@ -1493,20 +1531,6 @@ export const router = createRouter({
       : next;
   }) as typeof build;
 }
-/** The address keys that hold a list's view, not an action. */
-const VIEW_KEYS = [
-  "sort",
-  "lens",
-  "area",
-  "strand",
-  "year",
-  "chart",
-  "rows",
-  "dot",
-  "status",
-  "period",
-  "view",
-] as const;
 /** A detail over a list (a route marked `staticData.overList`: a student's
  * sheet, an answer replayed over it, a class's standing drill, a student
  * from the list) and the list it opened from, at an ancestor address. Only
