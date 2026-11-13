@@ -2,6 +2,7 @@ import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { z } from "zod";
 import { storedAdoptionSnapshot } from "../src/schools/clever/store.js";
 import test from "node:test";
+import { attachProvedCleverStaffIn } from "../src/schools/clever/staff-link.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
@@ -440,3 +441,78 @@ test(
       }
     }),
 );
+
+for (const busy of ["none", "connection", "account", "person"] as const) {
+  test(
+    `L-b: ${busy} contention preserves caller timeout and transaction`,
+    enabled,
+    () =>
+      fixture(async (db, repo, id, orgId) => {
+        const session = await establishProviderPrincipal(
+          db,
+          {
+            environment: "sandbox",
+            districtId: D,
+            userId: U,
+            roles: ["teacher"],
+            schools: [],
+          },
+          null,
+        );
+        const person = await repo.addStaff({
+          orgId,
+          role: "teacher",
+          givenName: "Fixture",
+          accountId: session.accountId,
+        });
+        const locker = await db.connect();
+        const caller = await db.connect();
+        try {
+          await locker.query("BEGIN");
+          if (busy === "connection" || busy === "account")
+            await locker.query(
+              "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+              [busy === "connection" ? `clever-sync:${id}` : session.accountId],
+            );
+          if (busy === "person")
+            await locker.query(
+              "SELECT id FROM amp_people WHERE id=$1 FOR UPDATE",
+              [person.personId],
+            );
+          await caller.query("BEGIN");
+          await caller.query("SET LOCAL lock_timeout='7s'");
+          const result = await attachProvedCleverStaffIn(caller, {
+            connectionId: id,
+            accountId: session.accountId,
+            userId: U,
+          });
+          assert.equal(
+            result.disposition,
+            busy === "none" ? "reused" : "deferred",
+          );
+          assert.equal(
+            (await caller.query("SHOW lock_timeout")).rows[0].lock_timeout,
+            "7s",
+          );
+          assert.equal(
+            (await caller.query("SELECT 42 AS answer")).rows[0].answer,
+            42,
+          );
+          await caller.query("COMMIT");
+        } finally {
+          await caller.query("ROLLBACK");
+          await locker.query("ROLLBACK");
+          caller.release();
+          locker.release();
+        }
+        const linked = await repo.transaction((client) =>
+          attachProvedCleverStaffIn(client, {
+            connectionId: id,
+            accountId: session.accountId,
+            userId: U,
+          }),
+        );
+        assert.equal(linked.personId, person.personId);
+      }),
+  );
+}

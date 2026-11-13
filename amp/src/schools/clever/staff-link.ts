@@ -40,6 +40,29 @@ export async function attachProvedCleverStaffIn(
   disposition: "unbound" | "attached" | "reused" | "merged" | "deferred";
 }> {
   const input = inputSchema.parse(raw);
+  // Rollback recovers PostgreSQL's failed-transaction state on a lock timeout.
+  // On success restore the caller's timeout while retaining attachment writes.
+  await db.query("SAVEPOINT clever_staff_attachment");
+  const previous = (await db.query("SHOW lock_timeout")).rows[0]
+    .lock_timeout as string;
+  try {
+    const result = await attachWithTimeout(db, input);
+    await db.query("SELECT set_config('lock_timeout',$1,true)", [previous]);
+    await db.query("RELEASE SAVEPOINT clever_staff_attachment");
+    return result;
+  } catch (error) {
+    await db.query("ROLLBACK TO SAVEPOINT clever_staff_attachment");
+    await db.query("RELEASE SAVEPOINT clever_staff_attachment");
+    if ((error as { code?: string }).code === "55P03")
+      return { personId: null, disposition: "deferred" };
+    throw error;
+  }
+}
+
+async function attachWithTimeout(
+  db: PoolClient,
+  input: z.infer<typeof inputSchema>,
+): ReturnType<typeof attachProvedCleverStaffIn> {
   await db.query("SET LOCAL lock_timeout='1s'");
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     input.accountId,
