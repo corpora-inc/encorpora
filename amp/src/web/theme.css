@@ -1074,6 +1074,13 @@ header {
   stroke: var(--color-figure-paper);
   stroke-width: 0.6;
 }
+/* A place with no blocks: a faint slot under its label. */
+.figure .base-empty {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+}
 
 /* ── Page layout ──────────────────────────────────────────────────────────
    Home and Lessons are ordinary pages: the window scrolls, the header and

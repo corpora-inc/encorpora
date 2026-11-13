@@ -243,3 +243,34 @@ test("each lesson renders matching workbook and solutions with registered diagra
     }
   }
 });
+
+test("every base-ten place keeps its labelled column, even with none in it", () => {
+  for (const figure of [
+    { kind: "base-ten" as const, hundreds: 6, tens: 0, ones: 2 },
+    { kind: "base-ten" as const, hundreds: 6, tens: 4, ones: 0 },
+    { kind: "base-ten" as const, hundreds: 0, tens: 0, ones: 7 },
+    { kind: "base-ten" as const, hundreds: 9, tens: 9, ones: 9 },
+  ]) {
+    const html = renderToStaticMarkup(React.createElement(Figure, { figure }));
+    // Label centres, in order: neighbours are far enough apart that no two
+    // labels touch (half of each label's width, at 15 px bold type).
+    const labels = [
+      ...html.matchAll(/<text x="([\d.]+)"[^>]*>(Hundreds|Tens|Ones)</g),
+    ].map((m) => ({ x: Number(m[1]), word: m[2]! }));
+    assert.equal(labels.length, figure.hundreds ? 3 : 2);
+    for (const [at, label] of labels.entries()) {
+      const next = labels[at + 1];
+      if (!next) continue;
+      const room = ((label.word.length + next.word.length) * 9) / 2;
+      assert.ok(
+        next.x - label.x >= room,
+        `${label.word} and ${next.word} overlap in ${JSON.stringify(figure)}`,
+      );
+    }
+    const empty = (html.match(/data-unit="empty"/g) ?? []).length;
+    assert.equal(
+      empty,
+      (figure.tens === 0 ? 1 : 0) + (figure.ones === 0 ? 1 : 0),
+    );
+  }
+});

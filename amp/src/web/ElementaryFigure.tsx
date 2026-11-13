@@ -69,6 +69,8 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
       count: number;
       width: number;
       height: number;
+      /** The blocks' own width, centred in the column. */
+      blocks?: number;
     }[] = [];
   if (figure.hundreds)
     columns.push({
@@ -92,6 +94,14 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
     width: Math.max(u + 6, Math.min(5, Math.max(1, figure.ones)) * (u + 5)),
     height: Math.ceil(Math.max(1, figure.ones) / 5) * (u + 5),
   });
+  // Every place keeps a column at least as wide as its label, its blocks
+  // centred in it: a place with none (602's tens) is an empty slot under its
+  // own label, never a collapsed column whose label runs into the next.
+  const LABEL_EM = 8.5;
+  for (const c of columns) {
+    c.blocks = c.width;
+    c.width = Math.max(c.width, Math.ceil(c.label.length * LABEL_EM) + 8);
+  }
   const gap = 28,
     top = 30,
     width =
@@ -99,9 +109,14 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
     height = top + Math.max(...columns.map((c) => c.height)) + 12;
   let cursor = gap;
   const placed = columns.map((c) => {
-    const x = cursor;
+    const column = cursor;
     cursor += c.width + gap;
-    return { ...c, x };
+    // `x` is where the blocks start; the label centres on the column.
+    return {
+      ...c,
+      column,
+      x: column + (c.width - (c.blocks ?? c.width)) / 2,
+    };
   });
   const cells = (x: number, y: number, across: number, down: number) => (
     <>
@@ -137,13 +152,26 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
       {placed.map((c) => (
         <g key={c.key}>
           <text
-            x={c.x + c.width / 2}
+            x={c.column + c.width / 2}
             y={18}
             textAnchor="middle"
             className="fig-scale"
           >
             {c.label}
           </text>
+          {c.count === 0 && (
+            // None in this place: a faint slot the size of one, so the
+            // column reads as empty, not missing.
+            <rect
+              data-unit="empty"
+              x={c.column + (c.width - u) / 2}
+              y={top}
+              width={u}
+              height={c.key === "ten" ? rod : u}
+              rx={2}
+              className="base-empty"
+            />
+          )}
           {Array.from({ length: c.count }, (_, i) => {
             if (c.key === "hundred") {
               const x = c.x + (i % 3) * (rod + 6),
