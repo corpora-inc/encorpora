@@ -436,7 +436,7 @@ const ready = async (page: Page, screen: Screen) => {
       : page.getByRole("heading", { level: 1 });
   await heading.first().waitFor({ timeout: 45_000 });
   await page
-    .locator(".amp-loading, .amp-skeleton")
+    .locator(".amp-loading, .amp-skeleton, .app-loading")
     .first()
     .waitFor({ state: "detached", timeout: 30_000 })
     .catch(() => undefined);
