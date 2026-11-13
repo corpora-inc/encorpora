@@ -2,12 +2,12 @@
  * Practice profiles in real browsers, on the real API in accounts mode and a
  * real database (docs/families.md). Everyone here is synthetic.
  *
- *   1. An adult with their own practice opens "Practice as someone else" on
- *      `/me`, picks 4th grade behind, moves Fractions down one, and starts
+ *   1. An adult with their own practice opens "Practice as someone else" from
+ *      the drawer, picks 4th grade behind, moves Fractions down one, and starts
  *      practicing. The picker keeps its choice across a reload, Back and
  *      Forward; the bar names the profile and goes back to their own
- *      practice in one tap. The switcher lists the profile under My practice
- *      and goes back into it; its levels open from the drawer, are renamed
+ *      practice in one tap. The profile list reopens the saved profile; the
+ *      place switcher holds places only. Its levels open from the drawer, are renamed
  *      and saved, and practice resumes as it.
  *   2. A teacher opens a student's record and tries problems as that student:
  *      practice opens on a copy, and the student's record never changes.
@@ -17,7 +17,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-practice-profiles-ui.ts [--port 4560]
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, realpath, writeFile } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
 import {
@@ -95,11 +95,13 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-practice-profiles",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-practice-profiles",
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
 });
@@ -222,9 +224,21 @@ async function closeDrawer(page: Page) {
   await page.getByRole("dialog").waitFor({ state: "detached" });
 }
 /** A practice problem on screen: the normal loop, unchanged. */
-async function practicing(page: Page) {
-  await page.waitForURL(/\/practice$/);
+async function practicing(page: Page, asProfile = true) {
+  await page.waitForURL(
+    (url) =>
+      url.pathname === "/practice" &&
+      url.searchParams.has("profile") === asProfile,
+  );
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
+  const query = new URL(page.url()).searchParams;
+  check(
+    "practice URL identifies the selected mode",
+    asProfile
+      ? query.get("profile") === (await chosen(page)) && query.has("profile")
+      : !query.has("profile"),
+    page.url(),
+  );
 }
 /** Moves strands where this width keeps them: beside the choices with room,
  * otherwise in the levels sheet, which then closes. */
@@ -291,10 +305,13 @@ async function adultTriesALevel(
   check(`${label} own practice starts`, started.ok(), await started.text());
   const own = (await started.json()).learnerId as string;
 
-  // `/me` has the one quiet way in.
+  // Own Overview describes the learner's level; profiles live in the drawer.
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Lindqvist");
-  await page.getByRole("link", { name: "Practice as someone else" }).click();
+  await heading(page, "Where you are");
+  const entry = await openDrawer(page);
+  await entry.getByRole("link", { name: "Practice as someone else" }).click();
+  await heading(page, "Practice as someone else");
+  await page.getByRole("link", { name: "Try a level", exact: true }).click();
   await heading(page, "Try a level");
   check(
     `${label} the picker has a URL`,
@@ -400,7 +417,7 @@ async function adultTriesALevel(
   await page.goForward();
   await practicing(page);
 
-  // The drawer says who they practice as, and the switcher lists it.
+  // The drawer names the mode; the switcher contains only places.
   const drawer = await openDrawer(page);
   check(
     `${label} the drawer names the profile`,
@@ -418,10 +435,10 @@ async function adultTriesALevel(
   const items = await menu.getByRole("menuitem").allInnerTexts();
   const at = (pattern: RegExp) => items.findIndex((item) => pattern.test(item));
   check(
-    `${label} the switcher lists it under My practice`,
+    `${label} the switcher keeps profiles and actions out of places`,
     at(/My practice/) >= 0 &&
-      at(/4th grade · behind/) === at(/My practice/) + 1 &&
-      at(/Try a level/) === at(/My practice/) + 2,
+      at(/4th grade · behind/) === -1 &&
+      at(/Try a level/) === -1,
     items,
   );
   await measured(page, `${label} switcher`);
@@ -432,7 +449,7 @@ async function adultTriesALevel(
 
   // One tap back to their own practice; their record is untouched.
   await back.click();
-  await practicing(page);
+  await practicing(page, false);
   check(
     `${label} back to their own learner`,
     (await chosen(page)) === own &&
@@ -446,17 +463,28 @@ async function adultTriesALevel(
     )
   ).rows[0].n;
 
-  // Into the profile again from the switcher, then its levels.
+  // The profiles page lists the saved mode and reopens it, then its levels.
   const again = await openDrawer(page);
-  await again
-    .getByRole("button", { name: /: switch place$/ })
-    .filter({ visible: true })
-    .first()
+  await again.getByRole("link", { name: "Practice as someone else" }).click();
+  await heading(page, "Practice as someone else");
+  check(
+    `${label} saved profiles offer practice, editing and a new level`,
+    (await page
+      .getByRole("button", { name: /4th grade · behind.*Practice/ })
+      .count()) === 1 &&
+      (await page
+        .getByRole("link", { name: "Edit 4th grade · behind" })
+        .getAttribute("href")) === `/me/profiles/${profile.id}` &&
+      (await page
+        .getByRole("link", { name: "Try a level", exact: true })
+        .getAttribute("href")) === "/me/profiles/new",
+  );
+  await page
+    .getByRole("button", { name: /4th grade · behind.*Practice/ })
     .click();
-  await page.getByRole("menuitem", { name: /4th grade · behind/ }).click();
   await practicing(page);
   check(
-    `${label} the switcher practices as it`,
+    `${label} the saved profile resumes as it`,
     (await chosen(page)) === profile.id,
   );
   const levels = await openDrawer(page);
@@ -669,16 +697,8 @@ async function teacherCopiesAStudent(
       )
     ).rows[0].n;
   const continueFromPause = async () => {
-    // Practicing as the copy again.
-    await page.evaluate(
-      (id) =>
-        localStorage.setItem(
-          "amp.learner",
-          JSON.stringify({ state: { learnerId: id }, version: 1 }),
-        ),
-      copy.id,
-    );
-    await page.goto(`${origin}/practice`);
+    // The address selects the copied mode; device memory alone cannot.
+    await page.goto(`${origin}/practice?profile=${copy.id}`);
     await page.locator(`[data-continue-with-amp="${copy.id}"]`).click();
     await page.waitForURL(/\/continue\//);
   };

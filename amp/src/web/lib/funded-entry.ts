@@ -1,3 +1,4 @@
+import { returnTarget } from "./return-to";
 import {
   isPitchEntry,
   signupEntrySchema,
@@ -140,6 +141,10 @@ export function continuationSearch(
     isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
+    ...(search.return === "security" &&
+    returnTarget(search.next) === "/family/security/delete"
+      ? { next: "/family/security/delete" }
+      : {}),
     ...(search.return === "school" && safeSchoolPath(search.next)
       ? { next: safeSchoolPath(search.next) }
       : {}),
@@ -151,6 +156,7 @@ export function continuationUrl(
   fallback = "/start",
 ) {
   const safe = continuationSearch(search);
+  if (safe.return === "security") return safe.next ?? "/family/security";
   if (safe.return === "school") return safe.next ?? "/school";
   if (safe.return === "school-invite") {
     const invite = pendingInvite();
@@ -165,11 +171,9 @@ export function continuationUrl(
       ? "/start"
       : safe.return === "access"
         ? "/access"
-        : safe.return === "security"
-          ? "/family/security"
-          : isFundedReturn(safe.return)
-            ? fundedPrograms[safe.return].path
-            : fallback;
+        : isFundedReturn(safe.return)
+          ? fundedPrograms[safe.return].path
+          : fallback;
   const params = new URLSearchParams({
     ...campaignSearch(safe),
     ...(safe.program ? { program: safe.program } : {}),

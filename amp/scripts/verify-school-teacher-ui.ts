@@ -15,7 +15,7 @@ import { schoolShellReview } from "./school-shell-review";
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { PDFDocument } from "pdf-lib";
 import { Pool } from "pg";
 import {
@@ -107,11 +107,12 @@ await registerAnalyticsRoutes(api, { pool: db, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-teacher",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-school-teacher",
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
     watch: null,
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
@@ -350,10 +351,19 @@ async function newContext(
   );
   return context;
 }
-async function open(page: Page, path: string, heading: string | RegExp) {
+async function open(
+  page: Page,
+  path: string,
+  heading: string | RegExp,
+  studentLayer = false,
+) {
   await page.goto(origin + path, { waitUntil: "domcontentloaded" });
-  await page
-    .getByRole("heading", { name: heading, level: 1, includeHidden: true })
+  await (studentLayer ? page.getByRole("dialog") : page)
+    .getByRole("heading", {
+      name: heading,
+      level: studentLayer ? 2 : 1,
+      includeHidden: true,
+    })
     .first()
     .waitFor({ timeout: 30_000 });
   await page.evaluate(() => document.fonts.ready);
@@ -469,10 +479,22 @@ async function journey(browser: Browser, engine: string, width: number) {
       body,
     ),
   );
+  await page
+    .getByRole("region", { name: "This week" })
+    .getByRole("button", { name: "Details", exact: true })
+    .click();
+  const spread = page.getByRole("dialog", {
+    name: "Active minutes by student, the numbers",
+  });
+  await spread.waitFor();
   check(
     `${label} the week's spread states n, median, mean and sd`,
-    /n \d+ · median [\d.]+ · mean [\d.]+ · sd [\d.]+/.test(body),
+    /n \d+ · median [\d.]+ · mean [\d.]+ · sd [\d.]+/.test(
+      await spread.innerText(),
+    ),
   );
+  await page.keyboard.press("Escape");
+  await spread.waitFor({ state: "detached" });
   check(
     `${label} what's going well shows`,
     /above Grade \d in every strand|practiced today|shown twice on their own this week/i.test(
@@ -484,9 +506,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     !/\b(he|she|his|her|hers|him)\b/i.test(body),
     body.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
-  const lesson = page
-    .getByRole("link", { name: "Open the lesson" })
-    .first();
+  const lesson = page.getByRole("link", { name: "Open the lesson" }).first();
   await lesson.click();
   const sheet = page.getByRole("dialog");
   await sheet.waitFor();
@@ -811,7 +831,17 @@ async function sweep(browser: Browser, engine: string) {
       });
       for (const screen of screens) {
         const label = `${engine} ${screen.id} ${width}-${theme}`;
-        await open(page, screen.path, screen.heading);
+        await open(page, screen.path, screen.heading, screen.id === "student");
+        if (screen.id === "student") {
+          assert.equal(
+            new URL(page.url()).pathname,
+            `/school/${orgId}/students`,
+          );
+          assert.equal(
+            new URL(page.url()).searchParams.get("open"),
+            `student:${amara}`,
+          );
+        }
         await schoolShellReview(
           page,
           screen.id === "today" ? "class-today" : undefined,
@@ -934,7 +964,10 @@ async function printing(browser: Browser) {
   await page.goto(
     `${origin}/school/${orgId}/students/${people.get("Amara")!.personId}`,
   );
-  await page.getByRole("heading", { name: "Amara Osei", level: 1 }).waitFor();
+  await page
+    .getByRole("dialog")
+    .getByRole("heading", { name: "Amara Osei", level: 2 })
+    .waitFor();
   await settle(page, 400);
   const report = await page.pdf({ preferCSSPageSize: true });
   await writeFile(`${ARTIFACTS}/progress-report.pdf`, report);

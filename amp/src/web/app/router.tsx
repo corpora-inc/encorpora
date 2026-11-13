@@ -1605,9 +1605,15 @@ if (import.meta.env.DEV) {
     const next = build(options);
     const here = router.state.location;
     // A practice mode (practicing as a profile) goes with the reader
-    // between learning screens: Overview, Pathways, a lesson.
+    // between learning screens: Overview, Pathways, a lesson. An explicit
+    // profile key also allows a caller to clear the mode when leaving it.
     const mode = here.search as Record<string, unknown>;
+    const explicitMode =
+      typeof options.search === "object" &&
+      options.search !== null &&
+      "profile" in options.search;
     if (
+      !explicitMode &&
       typeof mode.profile === "string" &&
       isLearningPath(here.pathname) &&
       isLearningPath(next.pathname) &&

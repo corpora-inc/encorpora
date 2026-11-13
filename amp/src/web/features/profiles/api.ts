@@ -183,7 +183,11 @@ export function usePracticingProfile() {
       const store = useLearnerStore.getState();
       if (target.own) {
         store.select(target.own);
-        void navigate({ to: "/$", params: { _splat: "practice" } });
+        void navigate({
+          to: "/$",
+          params: { _splat: "practice" },
+          search: { profile: undefined, from: undefined },
+        });
         return;
       }
       // No mode's `from` and no practice of their own: Back to where the

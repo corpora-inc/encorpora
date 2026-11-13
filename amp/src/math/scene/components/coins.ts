@@ -1,37 +1,25 @@
 import { z } from "zod";
 import { base } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { FillRole, InkRole, Point } from "../spec";
+import type { Point } from "../spec";
+import { coinKinds, type CoinKind } from "../art";
 import { atSchema, shifted } from "./shapes";
 
 /**
- * United States coins drawn without their values, recognizable the way a
- * child learns them: size, color and edge. Diameters are true to scale (one
- * math unit is one millimeter); the penny is copper, the others silver; the
- * dime and the quarter have ridged (reeded) edges, the penny and the nickel
- * smooth ones. Each face carries the same plain emblem, an original star in
- * a ring, so no coin's design is copied and none is named on the drawing.
+ * United States coins as a child holds them: the real obverse of each coin
+ * (Lincoln on copper, Jefferson, Roosevelt and Washington on silver), drawn
+ * from the United States Mint's own photographs (web/scene/coin-art) at true
+ * relative size (one math unit is one millimeter), with ridged (reeded)
+ * edges on the dime and the quarter. No obverse states its coin's value, and
+ * nothing names the coin on the drawing.
  */
-export const coinKinds = ["penny", "nickel", "dime", "quarter"] as const;
-export type CoinKind = (typeof coinKinds)[number];
+export { coinKinds, type CoinKind };
 /** Diameter in millimeters (United States Mint specifications). */
 export const coinDiameter: Record<CoinKind, number> = {
   penny: 19.05,
   nickel: 21.21,
   dime: 17.91,
   quarter: 24.26,
-};
-const reeded: Record<CoinKind, boolean> = {
-  penny: false,
-  nickel: false,
-  dime: true,
-  quarter: true,
-};
-const metal: Record<CoinKind, { fill: FillRole; rim: InkRole }> = {
-  penny: { fill: "warm-fill", rim: "warm" },
-  nickel: { fill: "empty", rim: "axis" },
-  dime: { fill: "empty", rim: "axis" },
-  quarter: { fill: "empty", rim: "axis" },
 };
 export const coinsSchema = z
   .object({
@@ -64,13 +52,6 @@ export const coinsSchema = z
 export type Coins = z.infer<typeof coinsSchema>;
 
 const GAP = 6;
-/** Five-pointed star of outer radius r at the origin. */
-const star = (r: number): Point[] =>
-  Array.from({ length: 10 }, (_, i) => {
-    const t = Math.PI / 2 + (i * Math.PI) / 5;
-    const q = i % 2 ? r * 0.42 : r;
-    return [Math.cos(t) * q, Math.sin(t) * q];
-  });
 
 function draw(c: Coins, s: number): Prim[] {
   const perRow = c.perRow ?? Math.min(c.coins.length, 6);
@@ -86,54 +67,8 @@ function draw(c: Coins, s: number): Prim[] {
     const row = Math.floor(i / perRow);
     const center: Point = [x + r, -row * rowHeight - rowHeight / 2];
     x += d + GAP;
-    const { fill, rim } = metal[k.coin];
     const id = `coin.${i}`;
-    prims.push({
-      type: "circle",
-      id,
-      center,
-      r,
-      fill,
-      stroke: rim,
-      width: 2,
-    });
-    if (reeded[k.coin]) {
-      // Ridges: short radial strokes all around the edge.
-      const n = Math.round(d * 3.4);
-      for (let j = 0; j < n; j++) {
-        const t = (j / n) * 2 * Math.PI;
-        prims.push({
-          type: "segment",
-          id: `${id}.ridge.${j}`,
-          from: [
-            center[0] + Math.cos(t) * (r - 1.1),
-            center[1] + Math.sin(t) * (r - 1.1),
-          ],
-          to: [center[0] + Math.cos(t) * r, center[1] + Math.sin(t) * r],
-          stroke: rim,
-          width: 1,
-        });
-      }
-    }
-    prims.push(
-      {
-        type: "circle",
-        id: `${id}.ring`,
-        center,
-        r: r - 2.4,
-        fill: "none",
-        stroke: rim,
-        width: 1,
-      },
-      {
-        type: "polygon",
-        id: `${id}.emblem`,
-        points: star(r * 0.34).map(([a, b]) => [center[0] + a, center[1] + b]),
-        fill: k.coin === "penny" ? "warm" : "paper",
-        stroke: rim,
-        width: 1,
-      },
-    );
+    prims.push({ type: "image", id, center, r, art: k.coin });
     // Letters share one baseline under the row's largest coin.
     const rowCoins = c.coins.slice(row * perRow, (row + 1) * perRow);
     const rowRadius =

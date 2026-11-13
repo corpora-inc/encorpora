@@ -1,0 +1,2312 @@
+{
+  "id": "triangle-angle-sum--st",
+  "title": "The angles of a triangle make a straight line",
+  "teaches": [
+    "triangle-exterior-angle"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2.2,
+          -2.9,
+          7.2,
+          5.3
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The angles at corners A, B, and C always have the same total. Here is why.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "Three corners. One total."
+            },
+            {
+              "do": "highlight",
+              "target": "lA",
+              "at": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.6,
+          -0.7,
+          3.6,
+          3.7
+        ],
+        "points": {
+          "O": [
+            -1.5,
+            0
+          ],
+          "X": [
+            1.5,
+            0
+          ],
+          "P": {
+            "on": "ring",
+            "deg": 0
+          },
+          "T": [
+            0,
+            1.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "ring",
+            "circle": "O",
+            "r": 3,
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "swp",
+            "sweep": "P",
+            "r": 170,
+            "fill": "gold-fill",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "base",
+            "seg": [
+              "O",
+              "X"
+            ],
+            "ink": "ink",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "arm",
+            "seg": [
+              "O",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "hub",
+            "dot": "O",
+            "ink": "ink",
+            "r": 8,
+            "start": true
+          },
+          {
+            "id": "l180",
+            "label": "180^\\circ",
+            "at": "T",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An angle measures a turn between two sides, in degrees.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "angle",
+              "meaning": "a turn between two sides"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 60,
+              "at": "turn",
+              "dur": 1.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A half turn makes a straight line: one hundred eighty degrees.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "A half turn"
+            },
+            {
+              "do": "move",
+              "points": {
+                "O": [
+                  0,
+                  0
+                ],
+                "X": [
+                  3,
+                  0
+                ]
+              },
+              "at": "half",
+              "dur": 2.4
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 180,
+              "at": "half",
+              "dur": 2.4
+            },
+            {
+              "do": "write",
+              "tex": "180^\\circ",
+              "at": "hundred"
+            },
+            {
+              "do": "show",
+              "target": "l180",
+              "at": "hundred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.2,
+          -2.9,
+          7.2,
+          5.3
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "PA": [
+            3.27,
+            2.925
+          ],
+          "PB": [
+            1.541,
+            0.718
+          ],
+          "PC": [
+            3.77,
+            0.86
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "d60",
+            "label": "60^\\circ",
+            "at": "PA",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "halo": true
+          },
+          {
+            "id": "d50",
+            "label": "50^\\circ",
+            "at": "PB",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "halo": true
+          },
+          {
+            "id": "d70",
+            "label": "70^\\circ",
+            "at": "PC",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "halo": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Sixty degrees, fifty, and seventy add to one hundred eighty.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Add the three angles"
+            },
+            {
+              "do": "show",
+              "target": "d60",
+              "at": "Sixty"
+            },
+            {
+              "do": "show",
+              "target": "d50",
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "d70",
+              "at": "seventy"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{60^\\circ}+\\cw{50^\\circ}+\\ca{70^\\circ}=180^\\circ",
+              "at": "add"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -0.9,
+          6.2,
+          2.6
+        ],
+        "points": {
+          "A": [
+            3.067,
+            1.116
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "PA": [
+            3.07,
+            0.55
+          ],
+          "PB": [
+            1.75,
+            0.17
+          ],
+          "PC": [
+            3.95,
+            0.22
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 40
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 120
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 60
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "d130",
+            "label": "130^\\circ",
+            "at": "PA",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "halo": true
+          },
+          {
+            "id": "d20",
+            "label": "20^\\circ",
+            "at": "PB",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "halo": true
+          },
+          {
+            "id": "d30",
+            "label": "30^\\circ",
+            "at": "PC",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "halo": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "One wide angle: one hundred thirty degrees. Then twenty and thirty. Again, one hundred eighty. This is not luck.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "One wide angle, two narrow"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aA",
+                "d130"
+              ],
+              "at": "hundred"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aB",
+                "d20"
+              ],
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aC",
+                "d30"
+              ],
+              "at": "thirty",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{130^\\circ}+\\cw{20^\\circ}+\\ca{30^\\circ}=180^\\circ",
+              "at": "Again"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.6526,
+          -3.0,
+          8.1474,
+          7.2
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "C1": [
+            -1.5126,
+            4.1559
+          ],
+          "B2": [
+            8,
+            4.1559
+          ],
+          "M1": {
+            "mid": [
+              "A",
+              "B"
+            ]
+          },
+          "M2": {
+            "mid": [
+              "A",
+              "C"
+            ]
+          },
+          "W50": [
+            2.04,
+            3.48
+          ],
+          "W60": [
+            3.21,
+            2.58
+          ],
+          "W70": [
+            4.8,
+            3.24
+          ],
+          "SUM": [
+            3.4874,
+            6.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "bcs",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "arrows": 1
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "t1",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "b1c",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 90
+          },
+          {
+            "id": "t2",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "c2c",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 90
+          },
+          {
+            "id": "mk1",
+            "dot": "M1",
+            "ink": "gold",
+            "r": 7
+          },
+          {
+            "id": "mk2",
+            "dot": "M2",
+            "ink": "gold",
+            "r": 7
+          },
+          {
+            "id": "e1",
+            "seg": [
+              "A",
+              "C1"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "arrows": 1
+          },
+          {
+            "id": "e2",
+            "seg": [
+              "A",
+              "B2"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "arrows": 1
+          },
+          {
+            "id": "top",
+            "seg": [
+              "C1",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "dash": true
+          },
+          {
+            "id": "w50",
+            "label": "B",
+            "at": "W50",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "halo": true
+          },
+          {
+            "id": "w60",
+            "label": "A",
+            "at": "W60",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "halo": true
+          },
+          {
+            "id": "w70",
+            "label": "C",
+            "at": "W70",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "halo": true
+          },
+          {
+            "id": "sum",
+            "label": "180^\\circ",
+            "at": "SUM",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Copy the triangle. Turn it halfway around the midpoint of A B: the middle of that side.",
+          "pause": 0.65,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Half turn about the middle of $AB$"
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "b1c",
+                "mk1"
+              ],
+              "at": "Copy"
+            },
+            {
+              "do": "turn",
+              "target": [
+                "t1",
+                "b1c"
+              ],
+              "about": "M1",
+              "deg": 180,
+              "at": "Turn",
+              "dur": 3.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The ends swap. Corner B lands at A, without changing its angle.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "Corner $B$ lands at $A$",
+              "at": "swap"
+            },
+            {
+              "do": "show",
+              "target": "w50",
+              "at": "lands"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn another copy halfway around the midpoint of A C. Corner C lands beside A on the other side.",
+          "pause": 0.65,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Half turn about the middle of $AC$"
+            },
+            {
+              "do": "view",
+              "to": [
+                -2.4126,
+                -3.0,
+                9.3874,
+                7.2
+              ],
+              "at": "copy",
+              "dur": 3.6
+            },
+            {
+              "do": "move",
+              "points": {
+                "B2": [
+                  8.4874,
+                  4.1559
+                ]
+              },
+              "at": "copy",
+              "dur": 3.6
+            },
+            {
+              "do": "show",
+              "target": [
+                "t2",
+                "c2c",
+                "mk2"
+              ],
+              "at": "Turn"
+            },
+            {
+              "do": "turn",
+              "target": [
+                "t2",
+                "c2c"
+              ],
+              "about": "M2",
+              "deg": -180,
+              "at": "copy",
+              "dur": 3.6
+            },
+            {
+              "do": "show",
+              "target": "w70",
+              "at": "lands"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The three angles meet at A. The top edge must be straight.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "$B$, $A$, $C$: side by side"
+            },
+            {
+              "do": "show",
+              "target": "w60",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "mk1",
+                "mk2"
+              ],
+              "at": "top"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A half turn sends B C to a parallel line, running in the same direction.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Half turn: parallel edges"
+            },
+            {
+              "do": "draw",
+              "target": "bcs",
+              "at": "B"
+            },
+            {
+              "do": "draw",
+              "target": "e1",
+              "at": "parallel"
+            },
+            {
+              "do": "draw",
+              "target": "e2",
+              "at": "direction"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Both copies pass through A. Only one line through A is parallel to B C, so their edges lie on the same straight line.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Through $A$, parallel to $BC$"
+            },
+            {
+              "do": "draw",
+              "target": "top",
+              "at": "straight"
+            },
+            {
+              "do": "text",
+              "text": "Only one such line",
+              "at": "Only"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The three angles fill a half turn: one hundred eighty degrees, whatever the triangle.",
+          "pause": 0.65,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\cb{A}+\\cw{B}+\\ca{C}=180^\\circ",
+              "keep": true,
+              "label": "Triangle angle sum"
+            },
+            {
+              "do": "show",
+              "target": "sum",
+              "at": "hundred"
+            },
+            {
+              "do": "text",
+              "text": "Three angles fill a straight line",
+              "at": "fill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -0.9,
+          5.8,
+          3.5
+        ],
+        "points": {
+          "A": [
+            4.6,
+            2.5497
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            4.6,
+            0
+          ],
+          "P61": [
+            4.09,
+            1.69
+          ],
+          "P29": [
+            1.84,
+            0.475
+          ],
+          "PQ": [
+            4.0,
+            0.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 80,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 110,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 70,
+            "right": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "d61",
+            "label": "61^\\circ",
+            "at": "P61",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "halo": true
+          },
+          {
+            "id": "d29",
+            "label": "29^\\circ",
+            "at": "P29",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "halo": true
+          },
+          {
+            "id": "dq",
+            "label": "?",
+            "at": "PQ",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "d90",
+            "label": "90^\\circ",
+            "at": "PQ",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "halo": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "With sixty-one and twenty-nine degrees, subtract both from one hundred eighty.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Find angle $C$"
+            },
+            {
+              "do": "show",
+              "target": "d61",
+              "at": "sixty-one"
+            },
+            {
+              "do": "show",
+              "target": "d29",
+              "at": "twenty-nine"
+            },
+            {
+              "do": "write",
+              "tex": "C=180^\\circ-61^\\circ-29^\\circ",
+              "at": "subtract"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ninety degrees: a right angle. Count that angle too.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "C=90^\\circ",
+              "at": "Ninety"
+            },
+            {
+              "do": "hide",
+              "target": "dq",
+              "at": "Ninety"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aC",
+                "d90"
+              ],
+              "at": "Ninety"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.2,
+          -2.9,
+          7.2,
+          5.3
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "D": [
+            -1.5693,
+            -1.8702
+          ],
+          "M3": {
+            "mid": [
+              "B",
+              "C"
+            ]
+          },
+          "P60": [
+            3.27,
+            2.925
+          ],
+          "P50": [
+            1.541,
+            0.718
+          ],
+          "P70": [
+            3.77,
+            0.86
+          ],
+          "P130": [
+            0.93,
+            -1.99
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 70,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "nw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ext",
+            "seg": [
+              "B",
+              "D"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "extA",
+            "angle": [
+              "D",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "r": 112
+          },
+          {
+            "id": "ca",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 112
+          },
+          {
+            "id": "cc",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 112
+          },
+          {
+            "id": "mk3",
+            "dot": "M3",
+            "ink": "gold",
+            "r": 7
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Extend A B past B. The outside angle between this extension and B C is an exterior angle.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Extend $AB$ past $B$"
+            },
+            {
+              "do": "draw",
+              "target": "ext",
+              "at": "Extend"
+            },
+            {
+              "do": "draw",
+              "target": "extA",
+              "at": "outside"
+            },
+            {
+              "do": "term",
+              "word": "exterior angle",
+              "meaning": "between a side and an extended side",
+              "at": "exterior"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "It shares a straight line with angle B: together, one hundred eighty.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{B}+\\text{exterior}=180^\\circ"
+            },
+            {
+              "do": "highlight",
+              "target": "lB",
+              "at": "B"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "B plus A plus C also makes one hundred eighty.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{B}+\\cb{A}+\\ca{C}=180^\\circ"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Subtract B from both. The exterior angle equals A plus C: the two far angles.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{exterior}=\\cb{A}+\\ca{C}",
+              "at": "Subtract"
+            },
+            {
+              "do": "text",
+              "text": "The two far angles",
+              "at": "far"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide a copy of A to B. Half-turn C about the middle of B C.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "target": "ca",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "ca",
+              "by": [
+                -3.4874,
+                -4.1559
+              ],
+              "at": "Slide",
+              "dur": 2.2
+            },
+            {
+              "do": "show",
+              "target": [
+                "cc",
+                "mk3"
+              ],
+              "at": "Half-turn"
+            },
+            {
+              "do": "turn",
+              "target": "cc",
+              "about": "M3",
+              "deg": 180,
+              "at": "Half-turn",
+              "dur": 2.6
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The two angles fill the exterior angle exactly.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "hide",
+              "target": "mk3",
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "An exact fit",
+              "at": "exactly"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -0.9,
+          7.3,
+          2.5
+        ],
+        "points": {
+          "X": [
+            0,
+            0
+          ],
+          "Y": [
+            5,
+            0
+          ],
+          "Z": [
+            1.757,
+            1.582
+          ],
+          "W": [
+            6.7,
+            0
+          ],
+          "P42": [
+            1.05,
+            0.33
+          ],
+          "P112": [
+            2.3,
+            0.72
+          ],
+          "PQ": [
+            5.31,
+            1.36
+          ],
+          "P26": [
+            3.55,
+            0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "X",
+              "Y",
+              "Z"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "ext",
+            "seg": [
+              "Y",
+              "W"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "aX",
+            "angle": [
+              "Y",
+              "X",
+              "Z"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 70
+          },
+          {
+            "id": "aZ",
+            "angle": [
+              "X",
+              "Z",
+              "Y"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 40
+          },
+          {
+            "id": "extA",
+            "angle": [
+              "Z",
+              "Y",
+              "W"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "r": 100
+          },
+          {
+            "id": "aY",
+            "angle": [
+              "X",
+              "Y",
+              "Z"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 70
+          },
+          {
+            "id": "lX",
+            "label": "X",
+            "at": "X",
+            "dir": "sw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lY",
+            "label": "Y",
+            "at": "Y",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lZ",
+            "label": "Z",
+            "at": "Z",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lW",
+            "label": "W",
+            "at": "W",
+            "dir": "se",
+            "size": "l"
+          },
+          {
+            "id": "d42",
+            "label": "42^\\circ",
+            "at": "P42",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "halo": true
+          },
+          {
+            "id": "d112",
+            "label": "112^\\circ",
+            "at": "P112",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "halo": true
+          },
+          {
+            "id": "dq",
+            "label": "?",
+            "at": "PQ",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold"
+          },
+          {
+            "id": "d26",
+            "label": "26^\\circ",
+            "at": "P26",
+            "dir": "c",
+            "size": "m",
+            "ink": "warm",
+            "halo": true
+          },
+          {
+            "id": "d154",
+            "label": "154^\\circ",
+            "at": "PQ",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "In triangle X Y Z, side X Y is extended past Y to point W. Angle X measures forty-two degrees and angle Z measures one hundred twelve degrees. What is the measure of angle Z Y W, in degrees?",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "off": true
+            },
+            {
+              "do": "problem",
+              "id": "q",
+              "text": "In triangle $XYZ$, side $XY$ is extended past $Y$ to point $W$. $\\angle X$ measures 42\u00b0 and $\\angle Z$ measures 112\u00b0. What is the measure of $\\angle ZYW$, in degrees?"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "ext",
+                "lW"
+              ],
+              "at": "extended"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aX",
+                "d42"
+              ],
+              "at": "forty-two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aZ",
+                "d112"
+              ],
+              "at": "hundred"
+            },
+            {
+              "do": "show",
+              "target": [
+                "extA",
+                "dq"
+              ],
+              "at": "measure"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Use the far angles, X and Z. Forty-two plus one hundred twelve is one hundred fifty-four.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "\\cb{A}+\\cw{B}+\\ca{C}=180^\\circ",
+              "keep": true,
+              "label": "Triangle angle sum"
+            },
+            {
+              "do": "write",
+              "tex": "\\angle ZYW=\\angle X+\\angle Z"
+            },
+            {
+              "do": "write",
+              "tex": "42^\\circ+112^\\circ=154^\\circ",
+              "at": "Forty-two"
+            },
+            {
+              "do": "hide",
+              "target": "dq",
+              "at": "fifty-four"
+            },
+            {
+              "do": "show",
+              "target": "d154",
+              "at": "fifty-four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The neighboring angle is twenty-six degrees. Adding that is a common slip: it is not a far angle.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Use the two far angles"
+            },
+            {
+              "do": "show",
+              "target": [
+                "aY",
+                "d26"
+              ],
+              "at": "twenty-six"
+            },
+            {
+              "do": "text",
+              "text": "$\\angle ZYW=42^\\circ+26^\\circ$",
+              "at": "Adding",
+              "id": "slip"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "not"
+            },
+            {
+              "do": "write",
+              "tex": "\\angle ZYW=42^\\circ+112^\\circ",
+              "at": "far"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.4126,
+          -3.0,
+          9.3874,
+          7.2
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "C1": [
+            -1.5126,
+            4.1559
+          ],
+          "B2": [
+            8.4874,
+            4.1559
+          ],
+          "W50": [
+            2.04,
+            3.48
+          ],
+          "W60": [
+            3.21,
+            2.58
+          ],
+          "W70": [
+            4.8,
+            3.24
+          ],
+          "SUM": [
+            3.4874,
+            6.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "t1",
+            "poly": [
+              "A",
+              "B",
+              "C1"
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "poly": [
+              "A",
+              "C",
+              "B2"
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "wB",
+            "angle": [
+              "C1",
+              "A",
+              "B"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "wA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "wC",
+            "angle": [
+              "C",
+              "A",
+              "B2"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 90,
+            "start": true
+          },
+          {
+            "id": "top",
+            "seg": [
+              "C1",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 3,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "w50",
+            "label": "B",
+            "at": "W50",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "w60",
+            "label": "A",
+            "at": "W60",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "w70",
+            "label": "C",
+            "at": "W70",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "sum",
+            "label": "180^\\circ",
+            "at": "SUM",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The three angles of a triangle make a straight line: one hundred eighty degrees, a half turn.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Three angles fill a straight line"
+            },
+            {
+              "do": "show",
+              "target": "sum",
+              "at": "hundred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.2,
+          -2.9,
+          7.2,
+          5.3
+        ],
+        "points": {
+          "A": [
+            3.4874,
+            4.1559
+          ],
+          "B": [
+            0,
+            0
+          ],
+          "C": [
+            5,
+            0
+          ],
+          "D": [
+            -1.5693,
+            -1.8702
+          ],
+          "F": [
+            0.756,
+            -2.078
+          ],
+          "P130": [
+            0.93,
+            -1.99
+          ]
+        },
+        "parts": [
+          {
+            "id": "ext",
+            "seg": [
+              "B",
+              "D"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "dash": true,
+            "start": true
+          },
+          {
+            "id": "extA",
+            "angle": [
+              "D",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "tri",
+            "poly": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "none",
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "aA",
+            "angle": [
+              "B",
+              "A",
+              "C"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "aB",
+            "angle": [
+              "A",
+              "B",
+              "C"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 70,
+            "start": true
+          },
+          {
+            "id": "aC",
+            "angle": [
+              "B",
+              "C",
+              "A"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "xA",
+            "angle": [
+              "D",
+              "B",
+              "F"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "xC",
+            "angle": [
+              "F",
+              "B",
+              "C"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "r": 112,
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "n",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "nw",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An exterior angle equals the two far angles together.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{exterior}=\\cb{A}+\\ca{C}"
+            },
+            {
+              "do": "text",
+              "text": "The two far angles",
+              "at": "far"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

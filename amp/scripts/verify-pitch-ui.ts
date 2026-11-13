@@ -212,6 +212,9 @@ async function serve(page: Page, api: Api) {
       api.intents.push(request.postDataJSON());
       return route.fulfill({ json: { ready: true } });
     }
+    // #2257 checks the address before password signup. This is a new account.
+    if (path === "/api/auth/sign-in-methods")
+      return route.fulfill({ json: { methods: [] } });
     if (path === "/api/auth/sign-up/email") {
       api.signedIn = true;
       return route.fulfill({
@@ -681,13 +684,22 @@ async function journeys(browser: Browser, engine: string) {
       landing: async (page, api) => {
         await starter(page);
         await page.getByRole("link", { name: /^I’m a parent/ }).click();
+        // Guided family setup (#2157) names each row and saves with Next.
+        await page.waitForURL((url) => url.pathname === "/start/parent");
+        await page.getByRole("heading", { name: "Your children" }).waitFor();
         await page
-          .getByRole("button", { name: "Birth year, your child" })
+          .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
-        await page.getByRole("option", { name: "2016", exact: true }).click();
+        const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
+        await years.getByRole("radio", { name: "2016", exact: true }).click();
+        await years.waitFor({ state: "hidden" });
         await page
-          .getByRole("button", { name: "Continue", exact: true })
-          .click();
+          .getByRole("button", {
+            name: "Birth year, Child 1: 2016",
+            exact: true,
+          })
+          .waitFor();
+        await page.getByRole("button", { name: "Next", exact: true }).click();
         await page.waitForURL(
           (url) =>
             url.pathname === `/continue/${childId}` &&
@@ -761,7 +773,9 @@ async function journeys(browser: Browser, engine: string) {
     await noOverflow(page, `${tag} sign-up`);
     await page.screenshot({ path: `${shots}/${tag}-sign-up.png` });
     await page.getByLabel("Email").fill("parent@example.test");
-    await page.getByLabel("Password", { exact: true }).fill("correct horse battery");
+    await page
+      .getByLabel("Password", { exact: true })
+      .fill("correct horse battery");
     await page.getByRole("button", { name: "Create account" }).click();
     await item.landing(page, api);
     assert.equal(api.intents.length, 1, `${tag}: one signup intent`);
@@ -794,7 +808,9 @@ async function journeys(browser: Browser, engine: string) {
       .first()
       .click();
     await page.waitForURL("**/invoice/arkansas-efa?**");
-    await page.getByLabel("Email for the AMP account (parent, or the student if 18+)").waitFor();
+    await page
+      .getByLabel("Email for the AMP account (parent, or the student if 18+)")
+      .waitFor();
     await page.getByRole("button", { name: "Create invoice PDF" }).waitFor();
     // The point of sale states the program's refund terms.
     await page.getByText("Fixture refund terms.").waitFor();
@@ -854,6 +870,14 @@ try {
         await fit(browser, engine);
         await journeys(browser, engine);
       }
+    } catch (error) {
+      for (const context of browser.contexts())
+        for (const page of context.pages())
+          await page.screenshot({
+            path: `${shots}/${engine}-failure.png`,
+            fullPage: true,
+          });
+      throw error;
     } finally {
       await browser.close();
     }

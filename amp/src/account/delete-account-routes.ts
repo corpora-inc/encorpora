@@ -1,4 +1,6 @@
-import type { FastifyInstance } from "fastify";
+import { fromNodeHeaders } from "better-auth/node";
+import { ACCOUNT_PREFIX, type Accounts } from "../server/accounts.js";
+import type { FastifyInstance, FastifyRequest } from "fastify";
 import type { Pool } from "pg";
 import { SchoolError } from "../schools/contracts.js";
 import type { Authenticator } from "../server/auth.js";
@@ -14,11 +16,31 @@ import { deleteAccountSchema } from "./deletion-contracts.js";
  * refuses student tokens. */
 export async function registerDeleteAccountRoutes(
   app: FastifyInstance,
-  options: { pool: Pool; authenticate: Authenticator },
+  options: { pool: Pool; authenticate: Authenticator; accounts?: Accounts },
 ) {
-  app.get("/api/v1/account/deletion", async (request) => {
+  // Read the authenticated session itself, never an account-wide timestamp or
+  // updatedAt (ordinary session refreshes do not prove a new sign-in).
+  const freshForMs = async (request: FastifyRequest, account: string) => {
+    const result = await options.accounts?.auth.api.getSession({
+      headers: fromNodeHeaders(request.headers),
+      query: { disableCookieCache: true, disableRefresh: true },
+    });
+    if (!result || `${ACCOUNT_PREFIX}${result.user.id}` !== account) return 0;
+    const age = Date.now() - new Date(result.session.createdAt).getTime();
+    return Number.isFinite(age) && age >= 0
+      ? Math.max(0, 10 * 60_000 - age)
+      : 0;
+  };
+  // Place names, family composition, practice counts and billing status are
+  // sensitive, so the preview requires the same recent sign-in as deletion.
+  app.get("/api/v1/account/deletion", async (request, reply) => {
     const account = await options.authenticate(request);
-    return previewAccountDeletion(options.pool, account);
+    const remaining = await freshForMs(request, account);
+    if (!remaining) return reply.code(403).send({ error: "reauth_required" });
+    return {
+      ...(await previewAccountDeletion(options.pool, account)),
+      freshForMs: remaining,
+    };
   });
   app.post(
     "/api/v1/account/delete",
@@ -28,6 +50,8 @@ export async function registerDeleteAccountRoutes(
     },
     async (request, reply) => {
       const account = await options.authenticate(request);
+      if (!(await freshForMs(request, account)))
+        return reply.code(403).send({ error: "reauth_required" });
       deleteAccountSchema.parse(request.body);
       try {
         const result = await deleteAccount(options.pool, {

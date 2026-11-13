@@ -1,6 +1,6 @@
 import { queryOptions, useMutation } from "@tanstack/react-query";
 import {
-  deletionPreviewSchema,
+  deletionSessionPreviewSchema,
   deletionReceiptSchema,
 } from "../../../account/deletion-contracts";
 import { notifyAccountSessionChanged, type AuthSession } from "../../auth";
@@ -13,11 +13,21 @@ import { request } from "../../lib/api";
 export const deletionPreviewOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: ["account", session.accountId, "deletion"] as const,
-    queryFn: ({ signal }) =>
-      request("/account/deletion", deletionPreviewSchema, {
-        token: session.token,
-        signal,
-      }),
+    staleTime: 0,
+    refetchOnMount: "always",
+    retry: false,
+    queryFn: async ({ signal }) => {
+      const started = Date.now();
+      const preview = await request(
+        "/account/deletion",
+        deletionSessionPreviewSchema,
+        {
+          token: session.token,
+          signal,
+        },
+      );
+      return { ...preview, freshUntil: started + preview.freshForMs };
+    },
   });
 
 /** Deletes the account. Its sign-in ends with it: the screen moves on, then

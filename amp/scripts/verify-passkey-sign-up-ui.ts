@@ -17,6 +17,7 @@ import {
 } from "../src/server/accounts";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
+import { settleArrival } from "./ui-settle";
 
 /**
  * Passkey-first parent sign-up in a real browser with Chromium's virtual
@@ -34,7 +35,8 @@ if (!url)
 await migrate(url);
 // WebAuthn needs a secure context: `localhost` is one; 127.0.0.1 is not a
 // valid relying-party domain.
-const origin = "http://localhost:4376";
+const port = Number(process.env.AMP_PASSKEY_UI_PORT ?? 4376);
+const origin = `http://localhost:${port}`;
 const repository = new PostgresRepository(url, { development: false });
 const accounts = await createAccounts(repository.pool, {
   baseURL: origin,
@@ -52,16 +54,16 @@ await registerFamilyRoutes(app, {
   authenticate,
   development: false,
 });
-await app.listen({ host: "127.0.0.1", port: 4377 });
+await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   logLevel: "error",
   server: {
     host: "127.0.0.1",
-    port: 4376,
+    port,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4377" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${port + 1}` } },
   },
 });
 await vite.listen();
@@ -259,6 +261,9 @@ try {
     for (const size of sizes) {
       await page.emulateMedia({ colorScheme: theme });
       await page.setViewportSize(size);
+      await page.reload();
+      await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
+      await settleArrival(page);
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - innerWidth,
       );
@@ -269,6 +274,38 @@ try {
           shots,
         ).pathname,
         fullPage: true,
+      });
+      const confirm = page.getByRole("button", {
+        name: "I confirmed my email",
+      });
+      const resend = page.getByRole("button", { name: "Send another email" });
+      await resend.scrollIntoViewIfNeeded();
+      const positions = [
+        await confirm.boundingBox(),
+        await resend.boundingBox(),
+      ];
+      await confirm.click();
+      await page
+        .getByRole("alert")
+        .filter({ hasText: "Your email is not confirmed yet" })
+        .waitFor();
+      assert.deepEqual(
+        [await confirm.boundingBox(), await resend.boundingBox()],
+        positions,
+        `confirm ${theme} ${size.width}: feedback does not move either action`,
+      );
+      // Real hit testing, with no forced click or dismissal of the error.
+      await resend.click({ trial: true });
+      await confirm.click({ trial: true });
+      await check(page, `confirm feedback ${theme} ${size.width}`);
+      await page.screenshot({
+        path: new URL(
+          `passkey-confirm-feedback-${theme}-${size.width}.png`,
+          shots,
+        ).pathname,
+        // The app scrolls inside its shell. Capture the visible recovery
+        // actions without full-page stitching of the fixed shell header.
+        fullPage: false,
       });
     }
   await page.emulateMedia({ colorScheme: "light" });
@@ -284,14 +321,15 @@ try {
       .getByRole("button", { name: "I confirmed my email" })
       .boundingBox(),
     before,
-    "the message overlays; nothing moves",
+    "the message stays beside the address; nothing moves",
   );
   // Resend works in place.
   await page.getByRole("button", { name: "Send another email" }).click();
   await page.getByText("Verification email sent.", { exact: false }).waitFor();
   const link = mail
     .join("\n")
-    .match(/http:\/\/localhost:4376\/api\/auth\/verify-email\?\S+/g)
+    .split(/\s+/)
+    .filter((value) => value.startsWith(`${origin}/api/auth/verify-email?`))
     ?.at(-1);
   assert.ok(link);
   // Open the link (as from the email) in another tab of the same browser.
@@ -339,6 +377,14 @@ try {
   assert.deepEqual(errors, []);
   await context.close();
   console.log("Passkey sign-up UI verified.");
+} catch (error) {
+  for (const context of browser.contexts())
+    for (const page of context.pages())
+      await page.screenshot({
+        path: new URL("passkey-sign-up-failure.png", shots).pathname,
+        fullPage: true,
+      });
+  throw error;
 } finally {
   console.info = info;
   await browser.close();

@@ -401,6 +401,7 @@ export function shifted(prims: Prim[], at?: readonly [number, number]): Prim[] {
         return { ...p, points: p.points.map(m) };
       case "circle":
       case "arc":
+      case "image":
         return { ...p, center: m(p.center) };
       case "path":
         return {
