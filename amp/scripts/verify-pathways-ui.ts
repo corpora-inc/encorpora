@@ -989,15 +989,21 @@ async function verifySearchTyping() {
         `${tag}: "fraction" finds results`,
       );
       const problems: string[] = [];
+      // Settled: a quarter second after the last key, once results show. The
+      // device's index and the API answer in their own time (a slow runner
+      // can take longer than a quarter second); arriving is not moving.
+      const shown = frames.findIndex(
+        (frame) => frame.at > typed + 250 && frame.first !== null,
+      );
       for (let i = 1; i < frames.length; i++) {
         const [a, b] = [frames[i - 1]!, frames[i]!];
         if (JSON.stringify(a.field) !== JSON.stringify(b.field))
           problems.push(`frame ${i}: the search field moved`);
         if (a.scroll !== b.scroll)
           problems.push(`frame ${i}: the page scrolled while typing`);
-        // Settled: a quarter second after the last key, the results hold.
         if (
-          a.at > typed + 250 &&
+          shown >= 0 &&
+          i - 1 >= shown &&
           (a.first !== b.first ||
             JSON.stringify(a.box) !== JSON.stringify(b.box))
         )
