@@ -755,6 +755,9 @@ test(
             workbook: randomUUID(),
             // A recent-work replay: another tenant's student's attempt.
             attempt: randomUUID(),
+            // A skill layer: a real skill, so only the student or class
+            // decides the answer.
+            skill: "fraction-addition",
           };
           const known = new Set(Object.keys(fixtures));
           assert.ok(schoolRoutes.length >= 6);
