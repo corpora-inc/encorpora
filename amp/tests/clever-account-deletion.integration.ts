@@ -130,7 +130,6 @@ test(
             const grant = await issueSchoolAdoption(db, teacher.accountId, {
               schoolId: school.orgId,
               districtId: connected.orgId,
-              confirmed: true,
             });
             await acceptSchoolAdoption(
               db,
