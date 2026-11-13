@@ -12,7 +12,7 @@
 }
 @media (max-width: 639px) {
   .frame[data-tabs] {
-    --shell-bar: calc(56px + 52px + env(safe-area-inset-top, 0px));
+    --shell-bar: calc(56px + 48px + env(safe-area-inset-top, 0px));
   }
 }
 .content {
@@ -28,7 +28,7 @@
 }
 @media (max-width: 639px) {
   :global(html:has([data-app-frame][data-tabs])) {
-    scroll-padding-top: calc(56px + 52px + env(safe-area-inset-top, 0px));
+    scroll-padding-top: calc(56px + 48px + env(safe-area-inset-top, 0px));
   }
 }
 
