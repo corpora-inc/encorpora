@@ -124,6 +124,23 @@
   white-space: nowrap;
 }
 
+/* The narrowest phones: equal cells keep their share, so a detail gets the
+   cell's whole width, and wraps on a word rather than leaving it. */
+@media (max-width: 359.98px) {
+  .compact:not(.dense) .segment {
+    padding-inline: var(--space-1);
+    /* Names line up across the cells, whichever detail wraps. */
+    align-content: start;
+  }
+  .compact:not(.dense) .detail {
+    white-space: normal;
+    text-wrap: balance;
+  }
+  .compact:not(.dense) .detail > * {
+    white-space: normal;
+  }
+}
+
 /* Dense: a toolbar control in a staff tool. Still a 44 px target per segment. */
 .dense {
   padding: 2px;

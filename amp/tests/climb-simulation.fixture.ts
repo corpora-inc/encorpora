@@ -237,7 +237,7 @@ export const climbCases: ClimbCase[] = [
     learner: { level: 10, band: "precalculus" },
   },
   {
-    name: "Adult at grade 10, starting at grade 6",
+    name: "Adult at grade 10, starting at grade 7",
     learner: { level: 10, band: "middle-school" },
   },
   {

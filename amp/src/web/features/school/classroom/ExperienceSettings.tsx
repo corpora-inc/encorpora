@@ -90,10 +90,9 @@ const standingsRow: Row<"standings"> = {
   ],
   describe: {
     off: "No boards. Students see only their own work.",
-    class: "A top-10 board for the class, with names.",
-    school: "A top-10 board by grade across the school, with made-up names.",
-    district:
-      "A top-10 board by grade across the district, with made-up names.",
+    class: "Top 10 in the class.",
+    school: "Top 10 per grade across the school.",
+    district: "Top 10 per grade across the district.",
   },
 };
 const measureRow: Row<"measure"> = {

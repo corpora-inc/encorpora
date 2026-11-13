@@ -1,6 +1,7 @@
 import type { GradeBand } from "../curriculum/types";
 import {
   adultStarts,
+  UNCHOSEN_ADULT_START,
   completedGrade,
   pastSchoolAge,
   startingLevels,
@@ -89,6 +90,7 @@ export type Frontier = {
  * chose to begin) sets it. */
 export function initialLevel(options: {
   birthYear?: number | null;
+  adult?: boolean;
   band?: StartingChoice | null;
   now?: number;
 }): number {
@@ -97,7 +99,9 @@ export function initialLevel(options: {
       ? completedGrade(options.birthYear, options.now) + 1
       : options.band
         ? (startingLevels[options.band] ?? 2)
-        : 2;
+        : options.adult
+          ? startingLevels[UNCHOSEN_ADULT_START]
+          : 2;
   return Math.min(MAX_GRADE, Math.max(0, level));
 }
 

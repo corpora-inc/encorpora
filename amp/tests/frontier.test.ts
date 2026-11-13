@@ -11,6 +11,12 @@ import { projectSkillEvidence } from "../src/server/evidence.js";
 import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 import { guessChanceOf } from "../src/math/guess-chance";
+import {
+  adultStartOrDefault,
+  startingLevels,
+  UNCHOSEN_ADULT_START,
+} from "../src/learning/starting-point";
+import { presetLevels } from "../src/learning/practice-profiles";
 import type { Outcome } from "../src/server/repository";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -85,6 +91,43 @@ function simulate(
     }),
   };
 }
+
+test("middle-school and an adult without a start open at grade 7", () => {
+  assert.equal(UNCHOSEN_ADULT_START, "middle-school");
+  assert.equal(startingLevels["middle-school"], 7);
+  assert.equal(startingLevels["middle-school"], startingLevels["6–8"]);
+  for (const band of [undefined, null, "middle-school"] as const) {
+    assert.equal(adultStartOrDefault(band), "middle-school");
+    const start = initialLevel({ adult: true, band });
+    assert.equal(start, 7);
+    const frontier = estimateFrontier({
+      start,
+      observations: [],
+      gradeOf,
+      strandOf,
+      guessOf: guessChanceOf,
+    });
+    assert.equal(frontier.expected, 7);
+    assert.ok(Math.abs(frontier.overall.level - 7) < 0.1);
+    assert.equal(frontier.overall.answered, 0);
+    assert.ok(frontier.overall.sd > 1);
+  }
+  assert.equal(initialLevel({ adult: true, band: "counting" }), 0);
+  assert.equal(initialLevel({ adult: true, band: "precalculus" }), 12);
+  assert.equal(
+    initialLevel({}),
+    2,
+    "unknown children retain the scale default",
+  );
+  assert.ok(
+    Object.values(
+      presetLevels(startingLevels["middle-school"], "on-level"),
+    ).every((level) => level === 7),
+  );
+  assert.ok(
+    Object.values(presetLevels(6, "on-level")).every((level) => level === 6),
+  );
+});
 
 test("birth year centres placement on the grade a learner of that age is in", () => {
   assert.equal(completedGrade(2016, october), 3);

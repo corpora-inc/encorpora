@@ -570,7 +570,7 @@ test(
         assert.equal((await board(student, period.id)).statusCode, 200);
       });
 
-      await t.test("wider boards: handles, by grade, opted in", async () => {
+      await t.test("wider boards: names, by grade, opted in", async () => {
         await post(`classes/${period.id}/experience`, teacher, {
           values: { standings: "school" },
         });
@@ -579,11 +579,10 @@ test(
         assert.equal(school.board.placeName, "Alder Street School");
         assert.equal(school.board.gradeLevel, 5);
         assert.equal(school.top.length, 10);
-        assert.match(school.you.name, /^[A-Za-z]+\d{4}$/);
+        assert.equal(school.you.name, "Student23 F.");
         assert.equal(school.top[0].name, school.you.name);
         for (const row of school.top) {
-          assert.match(row.name, /^[A-Za-z]+\d{4}$/);
-          assert.equal(row.name.includes("Student"), false);
+          assert.match(row.name, /^Student\d+ F\.$/);
         }
         // The quiet class next door stays off a board it never agreed to.
         assert.equal(school.top[0].value, 120);
@@ -605,12 +604,12 @@ test(
         // Cached briefly: one more pass reads the cache, and a settings change
         // on this pod clears it.
         await db.query(
-          "UPDATE amp_people SET handle='Renamed1000' WHERE id=$1",
+          "UPDATE amp_people SET display_name='Maya' WHERE id=$1",
           [first.personId],
         );
         assert.notEqual(
           (await board(first, period.id)).json().top[0].name,
-          "Renamed1000",
+          "Maya F.",
         );
         await post(`classes/${period.id}/experience`, teacher, {
           values: { standings: "district" },
@@ -619,7 +618,7 @@ test(
         const wide = (await board(first, period.id)).json();
         assert.equal(wide.board.scope, "district");
         assert.equal(wide.board.placeName, "Riverbend District");
-        assert.equal(wide.top[0].name, "Renamed1000");
+        assert.equal(wide.top[0].name, "Maya F.");
         assert.notEqual(wide.top[0].value, 200);
         const birch = `amp|birch-${randomUUID()}`;
         await schools.addStaff({
@@ -635,7 +634,8 @@ test(
         const joined = (await board(neighbor, away.id)).json();
         assert.equal(joined.top[0].value, 200);
         assert.equal(joined.you.rank, 1);
-        assert.match(joined.you.name, /^[A-Za-z]+\d{4}$/);
+        assert.equal(joined.you.name, "Far A.");
+        assert.equal(joined.top[0].name, "Far A.");
         // A student left off anywhere is off every wider board.
         await post(
           `classes/${period.id}/students/${first.personId}/standings`,
@@ -645,7 +645,7 @@ test(
         assert.equal(
           (await board(roster[22]!, period.id))
             .json()
-            .top.some((row: { name: string }) => row.name === "Renamed1000"),
+            .top.some((row: { name: string }) => row.name === "Maya F."),
           false,
         );
         await post(
@@ -660,6 +660,92 @@ test(
           values: { standings: "off" },
         });
       });
+
+      await t.test(
+        "every board uses the same names, without handles or disambiguators",
+        async () => {
+          const cases = [
+            {
+              student: first,
+              display: "Maya",
+              family: "Reed",
+              name: "Maya R.",
+            },
+            {
+              student: roster[22]!,
+              display: "Maya",
+              family: "Ross",
+              name: "Maya R.",
+            },
+            {
+              student: roster[21]!,
+              display: "Noor",
+              family: null,
+              name: "Noor",
+            },
+            {
+              student: roster[20]!,
+              display: null,
+              family: null,
+              name: "Student20",
+            },
+            {
+              student: roster[19]!,
+              display: null,
+              family: "Lane",
+              name: "Student19 L.",
+            },
+          ];
+          for (const entry of cases)
+            await db.query(
+              "UPDATE amp_people SET display_name=$2,family_name=$3 WHERE id=$1",
+              [entry.student.personId, entry.display, entry.family],
+            );
+          const handles = (await db.query("SELECT handle FROM amp_people"))
+            .rows;
+          for (const scope of ["class", "school", "district"]) {
+            await post(`classes/${period.id}/experience`, teacher, {
+              values: { standings: scope },
+            });
+            const result = (await board(first, period.id)).json();
+            assert.equal(result.board.scope, scope);
+            assert.equal(
+              result.top.filter(
+                (row: { name: string }) => row.name === "Maya R.",
+              ).length,
+              2,
+            );
+            for (const row of result.top)
+              assert.deepEqual(Object.keys(row).sort(), [
+                "name",
+                "rank",
+                "value",
+                "you",
+              ]);
+            for (const entry of cases) {
+              const own = (await board(entry.student, period.id)).json();
+              assert.equal(own.you.name, entry.name);
+              assert.equal(
+                own.top.find((row: { you: boolean }) => row.you).name,
+                entry.name,
+              );
+              for (const { handle } of handles)
+                assert.equal(JSON.stringify(own).includes(handle), false);
+            }
+            const unlisted = (await board(last, period.id)).json();
+            assert.equal(unlisted.you.name, "Student0 F.");
+            assert.equal(unlisted.you.rank, null);
+          }
+          for (const [index, entry] of cases.entries())
+            await db.query(
+              "UPDATE amp_people SET display_name=NULL,family_name=$2 WHERE id=$1",
+              [entry.student.personId, `Family${23 - index}`],
+            );
+          await post(`classes/${period.id}/experience`, teacher, {
+            values: { standings: "off" },
+          });
+        },
+      );
 
       const date = new Intl.DateTimeFormat("en-CA", {
         timeZone: "America/New_York",

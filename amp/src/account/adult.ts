@@ -23,6 +23,8 @@ import { timezone } from "../schools/contracts.js";
 import { adultStartFor } from "../learning/frontier.js";
 import {
   adultStarts,
+  adultStartOrDefault,
+  UNCHOSEN_ADULT_START,
   ownPracticeAllowed,
   type AdultStart,
 } from "../learning/starting-point.js";
@@ -39,20 +41,17 @@ export const ownBirthYear = z
     "A birth year",
   );
 
-/** Where an adult past school age begins when they give a birth year but
- * choose no start (a screen loaded before the choice was asked): the middle of
- * the scale, the shortest climb in either direction. */
-export const UNCHOSEN_ADULT_START: AdultStart = "middle-school";
+export { UNCHOSEN_ADULT_START } from "../learning/starting-point.js";
 
 /** Where an account holder's own practice starts from the year they give:
- * a school-age year's nearest start, and mid-scale for an adult's. */
+ * a school-age year's nearest start, and middle school for an adult's. */
 export const adultStartFromYear = (birthYear: number, now?: number) =>
   adultStartFor(birthYear, now) ?? UNCHOSEN_ADULT_START;
 
 export const startPracticeSchema = z.strictObject({
   /** Where they begin. Without one, a school-age birth year sets it
-   * (`adultStartFor`) and an adult's starts mid-scale; without either,
-   * practice begins at its default level and adapts from the first answer. */
+   * (`adultStartFor`); without a school-age year, practice begins at
+   * middle school and adapts from the first answer. */
   start: z.enum(adultStarts).optional(),
   birthYear: ownBirthYear.optional(),
   timezone,
@@ -98,7 +97,7 @@ export async function startAdultPractice(
   const start =
     input.start ??
     (input.birthYear === undefined
-      ? undefined
+      ? UNCHOSEN_ADULT_START
       : adultStartFromYear(input.birthYear));
   return families.transaction(accountId, async (client) => {
     const existing = await client.query<{ id: string }>(
@@ -222,7 +221,7 @@ export async function readOwnPractice(
       id: learner.id,
       name: learner.name,
       first,
-      start: adultStarts.find((start) => start === learner.start) ?? null,
+      start: adultStartOrDefault(learner.start),
       active:
         !!learner.endsAt || learner.free_online_used < FREE_ONLINE_PROBLEMS,
       endsAt: learner.endsAt?.toISOString() ?? null,
