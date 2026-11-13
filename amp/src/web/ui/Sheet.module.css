@@ -97,16 +97,36 @@ button.close:focus-visible {
   .tall {
     height: 88dvh;
   }
-  /* A phone's narrow header can take a second line of detail when the
-     content arrives: the room is there from the start. */
+  /* A phone's header is compact: the title a step down the type scale, the
+     detail tight under it, the close button's 44 px centred on the title's
+     line, and the content close below. */
+  .header {
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  }
+  .heading {
+    padding-block: calc((44px - var(--text-heading-3) * 1.25) / 2) 0;
+  }
+  .title {
+    font-size: var(--text-heading-3);
+    line-height: 1.25;
+  }
+  .description {
+    margin-top: 0;
+    font-size: var(--text-table);
+    line-height: 1.35;
+  }
+  /* Content that arrives later can fill in the detail line: it has its one
+     line from the start, so nothing moves when it lands. */
   .tall .heading {
     min-height: calc(
-      var(--text-heading-2) * 1.2 + var(--text-table) * 2.8 + 2px + 2 *
-        var(--space-1)
+      (44px - var(--text-heading-3) * 1.25) / 2 + var(--text-heading-3) *
+        1.25 + var(--text-table) * 1.35
     );
   }
-  .header {
-    padding-inline-start: var(--space-4);
+  .tall .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .body {
     padding-inline: var(--space-4);
