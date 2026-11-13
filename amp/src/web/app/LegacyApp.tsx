@@ -217,12 +217,32 @@ const progressReturn = { current: { identity: "", href: "/progress" } };
 // place, beside Try again).
 const catalogUnavailable =
   "Lesson and skill details didn’t load. Check your connection, then reload the page.";
-/** Each learner's place in each book for this page's session. It outlives
- * this screen: Back from a book now leaves for Pathways, which unmounts it,
- * and coming back must reopen the book where the learner left it. Cleared
- * with the rest of the account's state on sign-out. */
-const sessionBookPositions: { current: Record<string, number> } = {
-  current: {},
+/** Each learner's place in each book for this tab's session. It outlives
+ * this screen and the page: Back from a book leaves for Pathways, which
+ * unmounts it, and coming back or a refresh reopens the book where the
+ * learner left it. Cleared with the rest of the account's state on sign-out
+ * (assigning `current`). */
+const BOOK_PLACES = "amp.bookPlaces";
+const sessionBookPositions = {
+  get current(): Record<string, number> {
+    try {
+      const saved: unknown = JSON.parse(
+        sessionStorage.getItem(BOOK_PLACES) ?? "{}",
+      );
+      return saved && typeof saved === "object"
+        ? (saved as Record<string, number>)
+        : {};
+    } catch {
+      return {};
+    }
+  },
+  set current(places: Record<string, number>) {
+    try {
+      sessionStorage.setItem(BOOK_PLACES, JSON.stringify(places));
+    } catch (error) {
+      console.error("A book's place could not be kept", error);
+    }
+  },
 };
 
 export function LegacyApp() {
@@ -632,7 +652,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
 
     setReadingBook(null);
     setBooks([]);
-    bookPositions.current = {};
+    // Another account's places go; this screen mounting again (back from
+    // Pathways, a refresh) keeps the account's own.
+    if (previousIdentity !== null) bookPositions.current = {};
     setFamily("");
 
     setProgress(null);
@@ -1989,8 +2011,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             });
           }}
           onPosition={(frame) => {
-            bookPositions.current[`${learner.id}:${readingBook.book.id}`] =
-              frame;
+            bookPositions.current = {
+              ...bookPositions.current,
+              [`${learner.id}:${readingBook.book.id}`]: frame,
+            };
           }}
           download={
             nativeRuntime ? undefined : () => downloadBook(readingBook.book.id)

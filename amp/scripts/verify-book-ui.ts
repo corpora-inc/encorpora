@@ -320,6 +320,23 @@ try {
       selected,
       "Book position restored",
     );
+    // A refresh restores the same place (real routes: refresh restores the
+    // screen).
+    await page.reload();
+    await page.getByRole("main", { name: book.title }).waitFor();
+    await page
+      .waitForFunction(
+        (step) =>
+          document.querySelector(".reader-position>span")?.textContent === step,
+        selected,
+        { timeout: 10_000 },
+      )
+      .catch(() => undefined);
+    assert.equal(
+      await page.locator(".reader-position>span").innerText(),
+      selected,
+      "Book position restored after a refresh",
+    );
     await page.getByRole("button", { name: "Contents", exact: true }).click();
     await page
       .getByRole("button", {
