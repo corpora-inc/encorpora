@@ -101,6 +101,13 @@ test("weeks start on Monday and a list of names reads as a sentence", () => {
   assert.equal(inSentence("Fraction addition"), "fraction addition");
   assert.equal(inSentence("Pythagorean theorem"), "Pythagorean theorem");
   assert.equal(inSentence("GCF LCM"), "GCF LCM");
+  // A title's leading article is lowercase mid-sentence.
+  assert.equal(
+    inSentence("A fraction times a whole number"),
+    "a fraction times a whole number",
+  );
+  assert.equal(inSentence("Cartesian plane"), "Cartesian plane");
+  assert.equal(inSentence("Venn diagrams"), "Venn diagrams");
 });
 
 test("no students yet: the next step is adding them", () => {

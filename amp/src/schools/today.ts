@@ -73,12 +73,17 @@ export function joinNames(names: readonly string[], limit = 6): string {
   return `${shown.slice(0, -1).join(", ")} and ${shown.at(-1)}`;
 }
 const possessive = (name: string) => `${name}’s`;
-/** A catalog title inside a sentence: "fraction addition". */
+/** A catalog title inside a sentence: "fraction addition", "a fraction
+ * times a whole number". An acronym (two or more capitals: "GCF") and a
+ * proper noun keep their capital; a lone "A" is the article. */
 export function inSentence(title: string): string {
   const first = title.split(" ")[0]!;
-  if (first === first.toUpperCase() || /^Pythagorean/.test(first)) return title;
+  const acronym = first.length > 1 && first === first.toUpperCase();
+  if (acronym || PROPER.test(first)) return title;
   return title[0]!.toLowerCase() + title.slice(1);
 }
+/** Title words named for people or places: they keep their capital. */
+const PROPER = /^(?:Pythagorean|Cartesian|Venn|Euclid)/;
 const people = (students: readonly TodayStudent[]) =>
   students.map(({ id, name }) => ({ id, name }));
 
