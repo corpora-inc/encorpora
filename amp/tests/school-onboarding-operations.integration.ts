@@ -154,6 +154,15 @@ test(
             },
           });
           assert.equal(response.statusCode, 202, response.body);
+          if (admin === admins[0]) {
+            for (let i = 0; i < 100 && !started.length; i++)
+              await new Promise((resolve) => setTimeout(resolve, 20));
+            assert.equal(
+              started.length,
+              1,
+              "first job reached the held provider call",
+            );
+          }
         }
         assert.deepEqual(
           started,
