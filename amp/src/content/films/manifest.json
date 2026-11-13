@@ -546,6 +546,50 @@
       }
     ]
   },
+  "coin-name-and-cent-value": {
+    "id": "coin-total--sc",
+    "version": "6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f",
+    "title": "Coins and their values",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/audio.m4a",
+    "duration": 133.01002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/audio.m4a",
+        "version": "6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f",
+        "duration": 133.01002267573696
+      }
+    ]
+  },
+  "coin-total": {
+    "id": "coin-total--sc",
+    "version": "6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f",
+    "title": "Coins and their values",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/audio.m4a",
+    "duration": 133.01002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/coin-total--sc/6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f/audio.m4a",
+        "version": "6f60faa3ec94f9bcb4e261027085497e04c8cfc7c333e7f2970cc6d2f2c8c06f",
+        "duration": 133.01002267573696
+      }
+    ]
+  },
   "compare-capacity": {
     "id": "compare-lengths--sm",
     "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
@@ -2735,6 +2779,28 @@
       }
     ]
   },
+  "name-polygon": {
+    "id": "name-polygon--sn",
+    "version": "b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652",
+    "title": "Count once around",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/audio.m4a",
+    "duration": 144.37002267573695,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/audio.m4a",
+        "version": "b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652",
+        "duration": 144.37002267573695
+      }
+    ]
+  },
   "name-share": {
     "id": "find-equal-thirds--sf",
     "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
@@ -3172,6 +3238,28 @@
       }
     ]
   },
+  "polygon-with-angles": {
+    "id": "name-polygon--sn",
+    "version": "b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652",
+    "title": "Count once around",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/audio.m4a",
+    "duration": 144.37002267573695,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-polygon--sn/b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652/audio.m4a",
+        "version": "b9bf81fcc84cd25d97675a065d1b4b16eb9d8eb52d519608e8c432c04d04f652",
+        "duration": 144.37002267573695
+      }
+    ]
+  },
   "predict-linear-output": {
     "id": "linear-initial-value-meaning--sk",
     "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
@@ -3191,6 +3279,48 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
         "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
         "duration": 261.19
+      }
+    ]
+  },
+  "pythagorean-proof-area": {
+    "id": "right-triangle--sr",
+    "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+    "title": "Why the Pythagorean theorem works",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+    "duration": 194.76,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+        "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+        "duration": 194.76
+      }
+    ]
+  },
+  "pythagorean-proof-figure": {
+    "id": "right-triangle--sr",
+    "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+    "title": "Why the Pythagorean theorem works",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+    "duration": 194.76,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+        "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+        "duration": 194.76
       }
     ]
   },
@@ -3451,6 +3581,48 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/relation-function-choice--sl/3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b/audio.m4a",
         "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
         "duration": 171.20997732426304
+      }
+    ]
+  },
+  "right-triangle": {
+    "id": "right-triangle--sr",
+    "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+    "title": "Why the Pythagorean theorem works",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+    "duration": 194.76,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+        "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+        "duration": 194.76
+      }
+    ]
+  },
+  "right-triangle-missing-leg": {
+    "id": "right-triangle--sr",
+    "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+    "title": "Why the Pythagorean theorem works",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+    "duration": 194.76,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
+        "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
+        "duration": 194.76
       }
     ]
   },
