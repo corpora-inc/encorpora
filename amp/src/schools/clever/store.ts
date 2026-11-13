@@ -107,6 +107,15 @@ export async function applySnapshot(
       )
     ).rows.map((row) => [row.sourced_id, row.local_id]),
   );
+  const reviewedSchools = new Map<string, string>(
+    (
+      await db.query(
+        `SELECT sourced_id,local_id
+    FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='org'`,
+        [root.id, cleverSource(connection.id)],
+      )
+    ).rows.map((row) => [row.sourced_id, row.local_id]),
+  );
   const save = async (
     kind: Kind,
     record: RosterRecord,
@@ -138,7 +147,7 @@ export async function applySnapshot(
   await save("district", snapshot.district, root.id);
   // The root is named by the institution during onboarding. Preserve that name.
   for (const school of snapshot.schools) {
-    let id = local("school", school.id);
+    let id = local("school", school.id) ?? reviewedSchools.get(school.id);
     if (!id) {
       id = randomUUID();
       await db.query(
@@ -153,6 +162,12 @@ export async function applySnapshot(
         ],
       );
     } else {
+      const owned = await db.query(
+        "SELECT 1 FROM amp_orgs WHERE id=$1 AND kind='school' AND path[1]=$2 AND NOT demo",
+        [id, root.id],
+      );
+      if (!owned.rowCount)
+        throw new CleverSyncError("clever_school_match_requires_review");
       await db.query("UPDATE amp_orgs SET name=$2 WHERE id=$1", [
         id,
         text(school.name, "School", 200),
