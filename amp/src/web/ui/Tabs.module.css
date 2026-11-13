@@ -2,6 +2,8 @@
    Legacy element rules give `nav` a border, gap and margin; the class resets
    them. The strip scrolls sideways on a narrow screen and fades at its edge. */
 .tabs {
+  /* Each tab's inline padding: the strip tightens it to fit (Tabs.tsx). */
+  --tab-pad: var(--space-3);
   display: flex;
   align-items: center;
   gap: var(--space-1);
@@ -37,8 +39,8 @@
   justify-content: center;
   box-sizing: border-box;
   min-height: 44px;
-  padding: 0 var(--space-4);
-  border-radius: 999px;
+  padding: 0 var(--tab-pad);
+  border-radius: var(--radius-control);
   color: var(--color-muted-text);
   font-size: 15px;
   font-weight: 600;
@@ -46,49 +48,48 @@
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background var(--motion-fast),
-    color var(--motion-fast);
+  transition: color var(--motion-fast);
 }
+/* The open tab: a 2 px accent line under its label (the label's width, not
+   the target's), and the label in full colour. Nothing else moves. */
 .tab::before {
-  /* The fill sits inside the 44 px target, a quieter 36 px capsule. */
   content: "";
   position: absolute;
-  inset: 4px 0;
-  z-index: -1;
-  border-radius: inherit;
+  inset: auto var(--tab-pad) 0;
+  height: 2px;
+  border-radius: 1px;
   background: transparent;
   transition: background var(--motion-fast);
 }
-/* Hover only where a pointer hovers: a tapped tab keeps no fill. */
+/* Hover only where a pointer hovers: a tapped tab keeps no change. */
 @media (hover: hover) {
   .tab:hover {
     color: var(--color-on-surface);
-  }
-  .tab:hover::before {
-    background: var(--color-surface-hover);
   }
 }
 .tab:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
-.tab[aria-current="page"] {
-  color: var(--color-on-secondary);
+.tab[aria-current="page"],
+.tabs .moreActive {
+  color: var(--color-on-surface);
 }
-.tab[aria-current="page"]::before {
-  background: var(--color-secondary);
+.tab[aria-current="page"]::before,
+.tabs .moreActive::before {
+  background: var(--color-primary);
 }
-.tabs {
-  isolation: isolate;
-}
-/* A phone: tighter labels, no gaps. */
+/* The row under the logo (a phone): its first label on the content's
+   gutter, its last on the far gutter, the tabs evenly between. */
 @media (max-width: 639px) {
   .tabs {
+    --tab-pad: var(--space-2);
+    flex: 1 1 auto;
     gap: 0;
+    margin-inline: calc(-1 * var(--tab-pad));
   }
-  .tab {
-    padding: 0 var(--space-3);
+  .tabs[data-phone] {
+    justify-content: space-between;
   }
 }
 /* A row that would otherwise scroll keeps every label in view: Tabs.tsx
@@ -97,11 +98,15 @@
 .tabs[data-fit] .tab {
   min-width: 44px;
 }
-.tabs[data-fit="snug"] .tab {
-  padding-inline: var(--space-2);
+.tabs[data-fit="snug"] {
+  --tab-pad: var(--space-2);
 }
-.tabs[data-fit="tight"] .tab {
-  padding-inline: var(--space-1);
+.tabs[data-fit="tight"],
+.tabs[data-fit="small"] {
+  --tab-pad: var(--space-1);
+}
+.tabs[data-fit="small"] .tab {
+  font-size: 14px;
 }
 /* A row too wide even at its tightest: the tabs that fit, whole, then More
    with the rest (Tabs.tsx). More is a tab: same size, type and fill. */
@@ -123,9 +128,9 @@
 .tabs .more {
   gap: var(--space-1);
   height: 44px;
-  padding: 0 var(--space-3);
+  padding: 0 var(--tab-pad);
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   background: transparent;
   color: var(--color-muted-text);
   font-size: 15px;
@@ -137,8 +142,21 @@
   background: transparent;
   color: var(--color-on-surface);
 }
-.tabs .more[data-state="open"]::before {
-  background: var(--color-surface-hover);
+.tabs .moreActive:hover:not(:disabled) {
+  color: var(--color-on-surface);
+}
+/* The shown name sits against the chevron; the room for the longest one
+   is on its far side. */
+.moreLabel {
+  display: inline-grid;
+  justify-items: end;
+}
+.moreLabel > span {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+.moreLabel > [data-shown] {
+  visibility: visible;
 }
 .tabs .more:focus-visible {
   outline: 3px solid var(--color-focus-ring);

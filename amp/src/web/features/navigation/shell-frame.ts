@@ -195,6 +195,9 @@ export function overviewPath(context: ProgressContext) {
  * has no Grades tab: each learner's grade is a line on the Map, and report
  * cards and exports are in Settings. */
 export const SMALL_CLASS = 6;
+/** The class tabs a phone shows; the rest are under More. */
+const FAMILY_PHONE = ["today", "map", "time", "workbooks"];
+const CLASS_PHONE = ["today", "map", "gradebook", "roster"];
 
 /** The one place a class's tabs are decided (docs/design/ia.md). Class
  * sub-screens keep their parent tab selected; past years retain grades and
@@ -227,6 +230,10 @@ export function classTabs(
       // co-teachers: People. A school's class lists Students.
       label: leaf === "roster" && family ? "People" : label!,
       path: `school/${org}/classes/${id}/${leaf}`,
+      // A phone's four (ui/Tabs): a family's day-to-day, a teacher's.
+      ...((family ? FAMILY_PHONE : CLASS_PHONE).includes(leaf!)
+        ? { phone: true }
+        : {}),
     }));
 }
 

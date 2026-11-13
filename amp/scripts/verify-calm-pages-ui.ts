@@ -439,8 +439,17 @@ async function frameFits(page: Page, width: number, where: string) {
     const strip = document.querySelector<HTMLElement>("header [data-tabs]");
     if (!strip) return null;
     const box = strip.getBoundingClientRect();
-    const current = strip.querySelector<HTMLElement>('[aria-current="page"]');
-    const at = current?.getBoundingClientRect();
+    // The open tab, or More wearing its name when a phone holds it there.
+    const open = strip.querySelector<HTMLElement>('[aria-current="page"]');
+    const current = open?.hasAttribute("data-hidden")
+      ? strip.querySelector<HTMLElement>("[data-tabs-more] button")
+      : open;
+    const at =
+      current &&
+      (current === open ||
+        current.textContent?.trim().startsWith(open!.textContent!.trim()))
+        ? current.getBoundingClientRect()
+        : undefined;
     const shown = [
       ...strip.querySelectorAll<HTMLElement>("[data-tab]:not([data-hidden])"),
     ];
