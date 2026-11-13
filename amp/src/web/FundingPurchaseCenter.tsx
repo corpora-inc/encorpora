@@ -24,6 +24,9 @@ interface Props {
   identity: string;
   learners: readonly { id: string; name: string }[];
   consentActive: boolean;
+  /** The account holder's own adult learner: buying for it needs no
+   * parental consent (they act for themselves). */
+  ownLearnerId?: string;
   onClose: () => void;
   /** Selections made on the "how to pay" screen, used when available. */
   preferredOfferId?: string;
@@ -61,6 +64,9 @@ const money = (minor: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
     minor / 100,
   );
+/** An offer's fixed term: twelve months, or one. */
+const termLabel = (offer: Pick<PublicFundingOffer, "termMonths">) =>
+  offer.termMonths === 1 ? "1 month" : "12 months";
 function status(request: PublicFundingRequest) {
   return request.orderId
     ? request.accessStatus === "active"
@@ -85,6 +91,7 @@ export function FundingPurchaseCenter({
   identity,
   learners,
   consentActive,
+  ownLearnerId,
   onClose,
   preferredOfferId,
   preferredLearnerId,
@@ -98,6 +105,8 @@ export function FundingPurchaseCenter({
   const [offerId, setOfferId] = useState(""),
     [learnerId, setLearnerId] = useState(""),
     [selected, setSelected] = useState<string | null>(null);
+  const consentFor = (learner: string) =>
+    consentActive || (!!ownLearnerId && learner === ownLearnerId);
   const [studentBillingName, setStudentBillingName] = useState("");
   const [classWalletOffers, setClassWalletOffers] = useState<string[]>([]);
   const [programOpened, setProgramOpened] = useState<string | null>(null);
@@ -286,7 +295,7 @@ export function FundingPurchaseCenter({
     request = requests.find((r) => r.id === selected);
   async function prepare() {
     const active = epoch.current;
-    if (!offer || !learnerId || !consentActive) return;
+    if (!offer || !learnerId || !consentFor(learnerId)) return;
     const billingName =
       offer.documentPolicy === "named-student-invoice"
         ? studentBillingName.trim()
@@ -338,7 +347,8 @@ export function FundingPurchaseCenter({
   }
   async function classWalletCheckout(record: PublicFundingRequest) {
     const active = epoch.current;
-    if (!consentActive) throw new Error(errors.verified_consent_required);
+    if (!consentFor(record.learnerId))
+      throw new Error(errors.verified_consent_required);
     const result = await json<{ checkoutUrl: string }>(
       `/requests/${encodeURIComponent(record.id)}/classwallet-checkout`,
       {},
@@ -430,7 +440,7 @@ export function FundingPurchaseCenter({
               <span>
                 {learners.find((l) => l.id === request.learnerId)?.name ??
                   "Student reference: " + request.learnerId}{" "}
-                · 12 months
+                · {termLabel(request.offer)}
               </span>
             </p>
             {request.studentBillingName && (
@@ -567,7 +577,7 @@ export function FundingPurchaseCenter({
                 Choose a program and learner. Your program reviews the purchase.
               </p>
             )}
-            {!consentActive && (
+            {!consentFor(learnerId) && (
               <p className="funding-notice">
                 Verified parent consent is needed to prepare a new request.
                 Existing requests remain available.
@@ -622,7 +632,7 @@ export function FundingPurchaseCenter({
                       maxLength={180}
                       autoComplete="off"
                       spellCheck={false}
-                      disabled={busy || !consentActive}
+                      disabled={busy || !consentFor(learnerId)}
                       required
                     />
                     <p className="funding-name-note">
@@ -652,7 +662,7 @@ export function FundingPurchaseCenter({
                       <span>
                         {learners.find((l) => l.id === learnerId)?.name ??
                           "Student reference: " + learnerId}{" "}
-                        · 12 months
+                        · {termLabel(offer)}
                       </span>
                     </p>
                     <p>
@@ -721,7 +731,7 @@ export function FundingPurchaseCenter({
                   )}
                   {integratedCheckout ? (
                     <button
-                      disabled={busy || !consentActive}
+                      disabled={busy || !consentFor(request.learnerId)}
                       onClick={() =>
                         void action(() => classWalletCheckout(request))
                       }
@@ -773,7 +783,8 @@ export function FundingPurchaseCenter({
             <>
               {offer && (
                 <p className="funding-footer-status">
-                  {money(offer.totalMinor)} total · one learner · 12 months
+                  {money(offer.totalMinor)} total · one learner ·{" "}
+                  {termLabel(offer)}
                 </p>
               )}
               <button
@@ -782,7 +793,7 @@ export function FundingPurchaseCenter({
                   busy ||
                   !offer ||
                   !learnerId ||
-                  !consentActive ||
+                  !consentFor(learnerId) ||
                   (offer.documentPolicy === "named-student-invoice" &&
                     !studentBillingName.trim())
                 }

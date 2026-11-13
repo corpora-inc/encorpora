@@ -71,12 +71,19 @@ export function startDestination(
   if (funded) {
     if (me.account.confirmationRequired)
       return pathname === "/start/verify-email" ? null : "/start/verify-email";
-    if (me.consent.status !== "active")
-      return pathname === "/start/consent" ? null : "/start/consent";
+    const program = fundedPrograms[funded === true ? "arkansas-efa" : funded];
+    const own = !!me.adultPractice?.learner;
+    if (me.consent.status !== "active") {
+      if (pathname === "/start/consent") return null;
+      // A child's details, or a family of children, need the parent's
+      // consent first. An adult buying for herself doesn't: the program's
+      // page offers her own learner (or starts it) beside any child.
+      return learnerSteps.includes(pathname) || (me.learners.length && !own)
+        ? "/start/consent"
+        : program.path;
+    }
     if (learnerSteps.includes(pathname)) return null;
-    return me.learners.length
-      ? fundedPrograms[funded === true ? "arkansas-efa" : funded].path
-      : "/start/name";
+    return me.learners.length || own ? program.path : "/start/name";
   }
   if (isStarterPath(pathname)) return null;
   if (pathname === "/start/purchase") return null;

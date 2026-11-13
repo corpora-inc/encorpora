@@ -4,7 +4,7 @@ import { z } from "zod";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import type { Authenticator } from "../server/auth.js";
-import { learningConsentActive } from "../server/account-access.js";
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
 import {
   availableOffers,
@@ -14,7 +14,8 @@ import {
 } from "./contracts.js";
 import { FundingPurchaseRepository, fundingRequestRow } from "./repository.js";
 import {
-  annualTermEnd,
+  fundedTermEnd,
+  fundedTermStart,
   fundedProvisionSchema,
   provisionFundingRequest,
 } from "./provision.js";
@@ -75,6 +76,7 @@ function approvalPayload(
   request: FundingRequest,
   purchaseOrder: string,
   at: string,
+  startsAt = at,
 ) {
   const o = request.offer,
     orderId = `classwallet-payby:${fingerprint(purchaseOrder)}`;
@@ -99,8 +101,8 @@ function approvalPayload(
             accountId: request.accountId,
             learnerId: request.learnerId,
             sku: o.sku,
-            startsAt: at,
-            endsAt: annualTermEnd(at),
+            startsAt,
+            endsAt: fundedTermEnd(startsAt, o.termMonths),
           },
           channel: "esa",
           channelReference: o.channelReference,
@@ -237,8 +239,6 @@ export async function registerClassWalletPayByRoutes(
         await repository.transaction(
           account,
           async (client) => {
-            if (!(await learningConsentActive(client, account)))
-              throw new FundingPurchaseError(403, "verified_consent_required");
             const found = await client.query(
               "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 FOR UPDATE",
               [id, account],
@@ -246,6 +246,14 @@ export async function registerClassWalletPayByRoutes(
             if (!found.rowCount)
               throw new FundingPurchaseError(404, "request_not_found");
             const record = fundingRequestRow(found.rows[0]);
+            if (
+              !(await purchaseConsentSatisfied(
+                client,
+                account,
+                record.learnerId,
+              ))
+            )
+              throw new FundingPurchaseError(403, "verified_consent_required");
             ensureOffer(record);
             ensurePending(record);
             const learner = await client.query(
@@ -324,7 +332,13 @@ export async function registerClassWalletPayByRoutes(
         if (stored.callback_status !== "complete") {
           ensureOffer(record);
           ensurePending(record);
-          if (!(await learningConsentActive(client, record.accountId)))
+          if (
+            !(await purchaseConsentSatisfied(
+              client,
+              record.accountId,
+              record.learnerId,
+            ))
+          )
             throw new FundingPurchaseError(403, "verified_consent_required");
         }
         await client.query(
@@ -410,6 +424,7 @@ export async function registerClassWalletPayByRoutes(
             ensurePending(record);
             if (!stored.fetched_at)
               throw new FundingPurchaseError(409, "order_not_fetched");
+            const at = new Date().toISOString();
             const payload =
               status === "complete" &&
               record.offer.activationPolicy === "after-approval" &&
@@ -417,7 +432,8 @@ export async function registerClassWalletPayByRoutes(
                 ? approvalPayload(
                     record,
                     body.PurchaseOrderId,
-                    new Date().toISOString(),
+                    at,
+                    await fundedTermStart(client, record.learnerId, at),
                   )
                 : null;
             await client.query(

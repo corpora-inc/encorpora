@@ -42,13 +42,18 @@ export function useStartOwnPractice(session: AuthSession) {
   return useMutation({
     // The year is enough: the server sets where it starts (an adult's
     // mid-scale) and practice finds the level from the first answers.
-    mutationFn: async (birthYear: number) => {
+    // Without one (an adult connecting a purchase to herself), practice
+    // begins at its default level and adapts from the first answer.
+    mutationFn: async (birthYear?: number) => {
       const { learnerId } = await request(
         "/me/practice",
         z.object({ learnerId: z.string() }),
         {
           token: session.token,
-          body: { birthYear, timezone: deviceTimeZone() },
+          body: {
+            ...(birthYear === undefined ? {} : { birthYear }),
+            timezone: deviceTimeZone(),
+          },
         },
       );
       useLearnerStore.getState().select(learnerId);

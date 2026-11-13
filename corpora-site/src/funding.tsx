@@ -82,9 +82,12 @@ export function FundingPage({
   const trialHref = appUrl
     ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : page.slug === "new-hampshire-efa" ? "/try?program=nh-efa" : "/try", appUrl).href
     : "/amp/";
-  // Funded purchase requests support twelve-month licenses. Personal monthly
-  // pricing does not establish a monthly offer through the funding program.
-  const fundedPlans = plans.filter((plan) => plan.interval === "year");
+  // Funded licenses are fixed-term. Arkansas, Arizona and New Hampshire sell
+  // the year or one month at a time at the list prices (AMP's
+  // program-prices.ts); another program's invoice is for twelve months.
+  const fundedPlans = plans.filter(
+    (plan) => plan.interval === "year" || (showProduct && plan.interval === "month"),
+  );
   const requestBody = directPay
     ? [
         "Hello Corpora,",

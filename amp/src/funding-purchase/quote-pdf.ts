@@ -22,6 +22,22 @@ function displayDate(iso: string): string {
   );
 }
 
+/** The term an invoice or quote states, for its offer's term. A month may be
+ * paid before the current one ends, so it says when such a month starts. */
+export function fundedTermText(o: Pick<FundingOffer, "termMonths">) {
+  return o.termMonths === 1
+    ? {
+        access:
+          "One learner, 1 month from the day access is activated, or from the end of the learner's current access if that is later. Exact start and end dates must be confirmed with the accepted order.",
+        subtotal: "monthly curriculum access",
+      }
+    : {
+        access:
+          "One learner, 12 months from the day access is activated. Exact start and end dates must be confirmed with the accepted order.",
+        subtotal: "annual curriculum access",
+      };
+}
+
 function printedFields(o: FundingOffer): string[] {
   return [
     o.programName,
@@ -222,17 +238,15 @@ export async function renderFundingQuotePdf(
     invoice ? request.studentBillingName! : request.learnerId,
   );
   field("Product", `${o.productTitle}\nSKU: ${o.sku}\n${o.productDescription}`);
-  field(
-    "Access term",
-    "One learner, 12 months from the day access is activated. Exact start and end dates must be confirmed with the accepted order.",
-  );
+  const term = fundedTermText(o);
+  field("Access term", term.access);
   const money = (n: number) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: o.currency,
     }).format(n / 100);
   if (y < 158) newPage();
-  text(`Subtotal — annual curriculum access × 1: ${money(o.subtotalMinor)}`, {
+  text(`Subtotal — ${term.subtotal} × 1: ${money(o.subtotalMinor)}`, {
     strong: true,
   });
   text(`Tax: ${money(o.taxMinor)}`);

@@ -53,6 +53,25 @@ export async function isAdultLearner(
     )
   ).rowCount;
 }
+/** Whether a purchase or a gift may be made for this learner: the account
+ * holder's own adult learner needs no parental consent (they act for
+ * themselves); any other learner, a child, needs the account's verified
+ * parental consent. Unlike `learningConsentActive`, an unnamed child's
+ * restricted permission never stands in for that consent. */
+export async function purchaseConsentSatisfied(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+  learnerId: string,
+  development = false,
+): Promise<boolean> {
+  // A practice profile is marked adult too, but is never bought for.
+  const own = await client.query(
+    "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND to_jsonb(l)->'adult'='true'::jsonb AND (to_jsonb(l)->'simulation') IS DISTINCT FROM 'true'::jsonb",
+    [learnerId, accountId],
+  );
+  if (own.rowCount) return true;
+  return learningConsentActive(client, accountId, development);
+}
 /** Whether learning data may be collected. With `learnerId`, for that learner:
  * an adult learns on their own terms, an unnamed child uses the restricted
  * learning permission, and a named child requires naming consent. */

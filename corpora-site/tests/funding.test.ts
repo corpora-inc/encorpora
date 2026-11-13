@@ -216,6 +216,33 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
   }
 });
 
+for (const slug of ["arkansas-efa", "arizona-esa", "new-hampshire-efa"]) test(`${slug} sells the year or a month from program funds, at the list prices`, async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-directpay-monthly-"));
+  try {
+    await buildSite(configSchema.parse({
+      supportEmail: "support@example.invalid",
+      plans: [
+        { interval: "year", amountMinor: 32100, currency: "USD", renews: true },
+        { interval: "month", amountMinor: 4200, currency: "USD", renews: true },
+      ],
+      funding: [{
+        ...guidedFundingFixture,
+        kind: "classwallet-direct-pay",
+        page: { ...guidedFundingFixture.page, slug },
+      }],
+    }), dir);
+    const html = await readFile(join(dir, `esa/${slug}/index.html`), "utf8");
+    assert.ok(html.includes("<strong>$321.00</strong> / 12 months"));
+    assert.ok(html.includes("<strong>$42.00</strong> / 1 month"));
+    assert.ok(html.includes("No automatic renewal."));
+    const href = html.match(/href="(mailto:[^"]+)"/)?.[1];
+    const body = href && new URL(href.replaceAll("&amp;", "&")).searchParams.get("body");
+    assert.ok(body?.includes("Plan: 12 months ($321.00) or 1 month ($42.00)"));
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 for (const [slug, program] of [["arkansas-efa", "ar-efa"], ["arizona-esa", "az-esa"]]) test(`${slug} free practice keeps the funded purchase preference without tracking`, async () => {
   const dir = await mkdtemp(join(tmpdir(), "corpora-arkansas-entry-"));
   try {

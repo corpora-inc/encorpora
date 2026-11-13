@@ -33,7 +33,7 @@ main().catch((error: unknown) => {
       ? error.code
       : "invalid_or_unavailable";
   console.error(
-    `Funded provisioning rejected (${code}). Check verified source evidence, request ownership, existing learning access, quoted SKU/amount, complete ordered commerce events and annual activation dates. No successful import is claimed.`,
+    `Funded provisioning rejected (${code}). Check verified source evidence, request ownership, existing learning access, quoted SKU/amount, complete ordered commerce events and the quoted term's activation dates. No successful import is claimed.`,
   );
   process.exitCode = 1;
 });
