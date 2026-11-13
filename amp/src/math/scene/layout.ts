@@ -10,9 +10,20 @@ import type {
 } from "./spec";
 import { typeset, type Typeset } from "./type";
 import { frameAt } from "./timeline";
+import type { SceneArt } from "./art";
 
+/** A bundled picture drawn in a circle (a coin's face). Components emit it;
+ * it is not part of the scene spec, so authors and older clients never see
+ * it. `r` is in math units. */
+export type ImagePrim = {
+  type: "image";
+  id?: string;
+  center: Point;
+  r: number;
+  art: SceneArt;
+};
 /** A primitive as components emit it: test hooks and collision hints added. */
-export type Prim = Primitive & {
+export type Prim = (Primitive | ImagePrim) & {
   data?: Record<string, string | number>;
   /** Labels avoid this shape when they are placed. */
   obstacle?: boolean;
@@ -95,6 +106,15 @@ export type Drawn = Common &
         dash?: "dash" | "dot";
       }
     | {
+        /** A bundled picture filling a circle, with a 2 px edge drawn on
+         * its rim (so it takes the room a 2 px outlined circle takes). */
+        k: "image";
+        cx: number;
+        cy: number;
+        r: number;
+        art: SceneArt;
+      }
+    | {
         k: "text";
         /** Left end of the baseline. */
         x: number;
@@ -167,6 +187,7 @@ function mathPoints(p: Prim): Point[] {
         return out;
       });
     case "circle":
+    case "image":
       return [
         [p.center[0] - p.r, p.center[1] - p.r],
         [p.center[0] + p.r, p.center[1] + p.r],
@@ -522,6 +543,11 @@ function draw(
         });
         break;
       }
+      case "image": {
+        const [cx, cy] = P(p.center);
+        items.push({ k: "image", id, data, cx, cy, r: p.r * s, art: p.art });
+        break;
+      }
       case "rect": {
         const x = X(p.at[0]),
           y = Y(p.at[1] + p.size[1]);
@@ -827,6 +853,9 @@ function itemBox(d: Drawn, b: Box) {
     case "circle":
       grow(b, d.cx, d.cy, d.r + (d.w ?? 0) / 2);
       break;
+    case "image":
+      grow(b, d.cx, d.cy, d.r + IMAGE_EDGE / 2);
+      break;
     case "rect":
       grow(b, d.x, d.y, (d.sw ?? 0) / 2);
       grow(b, d.x + d.w, d.y + d.h, (d.sw ?? 0) / 2);
@@ -850,6 +879,8 @@ function itemBox(d: Drawn, b: Box) {
   }
 }
 
+/** Width in figure pixels of the edge drawn on an image's rim. */
+export const IMAGE_EDGE = 2;
 const PAD = 4;
 /** Fit a scene to its target width: compile, map to pixels, place labels,
  * then refit until labels and marks outside the math bounds are included. */
@@ -968,6 +999,7 @@ function translate(d: Drawn, dx: number, dy: number): Drawn {
         y2: d.y2 + dy,
       };
     case "circle":
+    case "image":
       return { ...d, cx: d.cx + dx, cy: d.cy + dy };
     case "rect":
       return { ...d, x: d.x + dx, y: d.y + dy };
