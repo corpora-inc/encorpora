@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { StatRow, StatTile } from "../../ui/StatTile";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
@@ -425,16 +426,10 @@ function ReviewDecision({
       wide
     >
       <Lead>Expires {day(data.expiresAt)}</Lead>
-      <dl className={styles.stats}>
-        <div>
-          <dt>Students</dt>
-          <dd>{data.learners.toLocaleString()}</dd>
-        </div>
-        <div>
-          <dt>Classes</dt>
-          <dd>{data.classes.toLocaleString()}</dd>
-        </div>
-      </dl>
+      <StatRow label="What joins">
+        <StatTile label="Students" value={data.learners.toLocaleString()} />
+        <StatTile label="Classes" value={data.classes.toLocaleString()} />
+      </StatRow>
       {data.staffMatches.length > 0 && (
         <section className={styles.section}>
           <h2>Same person?</h2>

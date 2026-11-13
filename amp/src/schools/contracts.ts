@@ -402,6 +402,8 @@ export const studentResource = z.object({
   classIds: z.array(z.uuid()),
   /** False: rostered and shown as "needs a seat". */
   seated: z.boolean(),
+  /** A teacher's running practice covers them: no seat needed now. */
+  pilotCovered: z.boolean().optional(),
   /** How many students match, across all pages. */
   total: z.number().int().optional(),
 });

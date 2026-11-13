@@ -11,19 +11,18 @@ const MESSAGE_LIMIT = 4000;
  * a person. Sent, the thanks takes the form's place without moving the page;
  * the footer below has the address for anyone who'd rather write. */
 export function TalkToUs({
-  prefill,
+  known,
 }: {
-  /** What the page already knows (a buyer's page: the school, its seats and
-   * the request's reference), so the person writes only what's new. */
-  prefill?: { school: string; students: number; message: string };
+  /** What the page already knows and shows (a buyer's page: the school, its
+   * seats, and the request's reference and note): carried with the message,
+   * never asked again, so the person writes only what's new. */
+  known?: { school: string; students: number; context: string };
 } = {}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [school, setSchool] = useState(prefill?.school ?? "");
-  const [students, setStudents] = useState(
-    prefill ? String(prefill.students) : "",
-  );
-  const [message, setMessage] = useState(prefill?.message ?? "");
+  const [school, setSchool] = useState(known?.school ?? "");
+  const [students, setStudents] = useState(known ? String(known.students) : "");
+  const [message, setMessage] = useState("");
   const [website, setWebsite] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [failure, setFailure] = useState("");
@@ -47,13 +46,17 @@ export function TalkToUs({
     setFailure("");
     if (Object.keys(next).length) return;
     setBusy(true);
+    // What the page knows rides after what the person wrote.
+    const body = [message.trim(), known?.context ?? ""]
+      .filter(Boolean)
+      .join("\n\n");
     try {
       await sendInquiry({
         name: name.trim(),
         email: email.trim(),
         school: school.trim(),
         ...(count ? { students: count } : {}),
-        ...(message.trim() ? { message: message.trim() } : {}),
+        ...(body ? { message: body } : {}),
         ...(website ? { website } : {}),
       });
       setSent(email.trim());
@@ -95,30 +98,34 @@ export function TalkToUs({
               error={errors.email}
             />
           </div>
-          <div className={styles.pair}>
-            <TextField
-              label="School or organization"
-              autoComplete="organization"
-              value={school}
-              onChange={(event) => setSchool(event.target.value)}
-              maxLength={200}
-              error={errors.school}
-            />
-            <TextField
-              label="Approximate number of students"
-              inputMode="numeric"
-              placeholder="e.g. 120"
-              value={students}
-              onChange={(event) => setStudents(event.target.value)}
-              maxLength={9}
-              error={errors.students}
-            />
-          </div>
+          {!known && (
+            <div className={styles.pair}>
+              <TextField
+                label="School or organization"
+                autoComplete="organization"
+                value={school}
+                onChange={(event) => setSchool(event.target.value)}
+                maxLength={200}
+                error={errors.school}
+              />
+              <TextField
+                label="Approximate number of students"
+                inputMode="numeric"
+                placeholder="e.g. 120"
+                value={students}
+                onChange={(event) => setStudents(event.target.value)}
+                maxLength={9}
+                error={errors.students}
+              />
+            </div>
+          )}
           <TextArea
             label="What you’d like to talk about (optional)"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            maxLength={MESSAGE_LIMIT}
+            maxLength={
+              known ? MESSAGE_LIMIT - known.context.length - 2 : MESSAGE_LIMIT
+            }
             rows={4}
           />
           {/* Left empty by people; a form filler that completes it is

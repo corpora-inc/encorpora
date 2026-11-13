@@ -5,6 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { Badge } from "../../ui/Badge";
 import { ScreenTitle, useNamedByTab } from "../../ui/ScreenTitle";
 import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
@@ -180,3 +181,18 @@ export const roleNames: Record<string, string> = {
   aide: "Aide",
   viewer: "Viewer",
 };
+
+/** A student's seat, said once wherever students are listed: Seated, nothing
+ * while a teacher's practice covers them (or before it starts: `needed`
+ * false), else Needs a seat. */
+export function SeatBadge({
+  student,
+  needed = true,
+}: {
+  student: { seated: boolean; pilotCovered?: boolean };
+  needed?: boolean;
+}) {
+  if (student.seated) return <Badge tone="success">Seated</Badge>;
+  if (student.pilotCovered || !needed) return null;
+  return <Badge tone="warning">Needs a seat</Badge>;
+}

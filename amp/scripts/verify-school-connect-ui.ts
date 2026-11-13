@@ -348,24 +348,17 @@ try {
   state.connection.syncing = false;
   state.connection.lastSyncAt = new Date().toISOString();
   await page.reload();
-  // A sync asked for too soon recovers without a page reload.
-  await page.route("**/api/v1/school/clever/sync", (route) =>
-    route.fulfill({
-      status: 429,
-      headers: { "Retry-After": "1" },
-      json: { error: "clever_sync_rate_limited" },
-    }),
-  );
-  await page.getByRole("button", { name: "Sync now" }).click();
-  await page.getByText("Synced recently. Try again in 15 minutes.").waitFor();
-  assert.equal(await page.getByRole("alert").count(), 0);
-  await page.waitForFunction(
-    () =>
-      !Array.from(document.querySelectorAll("button")).find(
-        (b) => b.textContent === "Sync now",
-      )?.disabled,
-  );
-  await page.unroute("**/api/v1/school/clever/sync");
+  // Right after a sync the next isn't open yet: no button that would be
+  // refused, only when it opens; a refresh keeps it so (server state).
+  Object.assign(state.connection, {
+    syncAvailableAt: new Date(Date.now() + 15 * 60_000).toISOString(),
+  });
+  await page.reload();
+  await page.getByText(/· next sync /).waitFor();
+  assert.equal(await page.getByRole("button", { name: "Sync now" }).count(), 0);
+  Object.assign(state.connection, { syncAvailableAt: null });
+  await page.reload();
+  await page.getByRole("button", { name: "Sync now" }).waitFor();
   state = freshState();
   await page.reload();
   await page.getByRole("button", { name: "Link Clever", exact: true }).click();

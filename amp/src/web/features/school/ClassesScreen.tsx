@@ -32,6 +32,7 @@ import type {
 } from "../../../schools/contracts";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
+import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../ui/DataGrid";
@@ -58,7 +59,13 @@ import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
 import { JoinClass } from "./join/JoinClass";
 import { ClassExperienceSection } from "./classroom/ExperienceScreens";
-import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
+import {
+  FormNote,
+  GradePicker,
+  PageHead,
+  SeatBadge,
+  gradeLabel,
+} from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
@@ -430,6 +437,8 @@ const rosterColumns = (
   orgId: string,
   classId: string,
   family: boolean,
+  /** Practice has started: a student nothing covers needs a seat. */
+  seatsNeeded: boolean,
 ): DataGridColumn<StudentResource>[] => [
   {
     id: "name",
@@ -460,12 +469,9 @@ const rosterColumns = (
           id: "seat",
           header: "Seat",
           width: 130,
-          cell: (row: StudentResource) =>
-            row.seated ? (
-              <Badge tone="success">Seated</Badge>
-            ) : (
-              <Badge tone="warning">Needs a seat</Badge>
-            ),
+          cell: (row: StudentResource) => (
+            <SeatBadge student={row} needed={seatsNeeded} />
+          ),
         },
       ]),
 ];
@@ -632,6 +638,10 @@ export function ClassScreen() {
   // Before practice starts and after it ends, no one signs in: no code.
   const access = useClassAccess({ org: orgId, class: classId });
   const closed = practiceClosed(access.view);
+  // Before practice starts no one needs a seat yet; while it runs, the
+  // students it covers don't.
+  const seatsNeeded =
+    access.view.kind !== "start" && access.view.kind !== "waiting";
   if (!klass)
     return (
       <OrgFrame orgId={orgId} nav="classes" title="Class">
@@ -779,7 +789,7 @@ export function ClassScreen() {
             ) : rows.length ? (
               <DataGrid
                 label={`Students in ${klass.name}`}
-                columns={rosterColumns(orgId, classId, family)}
+                columns={rosterColumns(orgId, classId, family, seatsNeeded)}
                 rows={rows}
                 rowKey={(row) => row.id}
                 defaultSort={{ column: "name", direction: "ascending" }}
@@ -790,6 +800,7 @@ export function ClassScreen() {
                     entity={{ kind: "student", id: row.id }}
                     className={styles.studentCard}
                   >
+                    <Avatar name={displayName(row)} size="small" />
                     <span className={styles.studentCardText}>
                       <strong>{displayName(row)}</strong>
                       <span>
@@ -798,10 +809,8 @@ export function ClassScreen() {
                           : `Grade ${gradeLabel(row.gradeLevel)}`}
                       </span>
                     </span>
-                    {family ? null : row.seated ? (
-                      <Badge tone="success">Seated</Badge>
-                    ) : (
-                      <Badge tone="warning">Needs a seat</Badge>
+                    {family ? null : (
+                      <SeatBadge student={row} needed={seatsNeeded} />
                     )}
                   </EntityLink>
                 )}

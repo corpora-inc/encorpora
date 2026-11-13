@@ -61,8 +61,9 @@ export function AvatarStack({
 }) {
   return (
     <span className={styles.stack} role="img" aria-label={label}>
-      {names.map((name) => (
-        <Avatar key={name} name={name} size={size} />
+      {/* Two children can share a name: the place in the stack is the key. */}
+      {names.map((name, at) => (
+        <Avatar key={`${at}:${name}`} name={name} size={size} />
       ))}
     </span>
   );

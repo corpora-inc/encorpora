@@ -267,6 +267,20 @@ export function namedStudentId(
   )}`;
 }
 
+/** A second student with the same name in a names list, told apart by the
+ * teacher ("Add as a different student"): the named ID and the row it came
+ * from. The same list read again gives the same ID. */
+export const distinctNamedId = (named: string, line: number) =>
+  `${named}:${line}`;
+/** A named student ID, or one of its told-apart forms. */
+export function isNamedId(sourcedId: string, named: string) {
+  return (
+    sourcedId === named ||
+    (sourcedId.startsWith(`${named}:`) &&
+      /^\d{1,7}$/.test(sourcedId.slice(named.length + 1)))
+  );
+}
+
 /** Only a supplied student ID joins rows across classes. Repeated names
  * without IDs are held for correction, never guessed from file order. */
 export function csvRows(

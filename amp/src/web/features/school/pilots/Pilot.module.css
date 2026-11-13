@@ -96,33 +96,29 @@
   background: var(--color-secondary);
 }
 
-/* The buyer's page. */
-.facts {
+/* The buyer's page: the teacher's note in their words, under their name. */
+.note {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-  gap: var(--space-4);
+  gap: var(--space-2);
   margin: 0;
-  padding-block: var(--space-4);
-  border-block: 1px solid var(--color-border);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--color-border-strong);
 }
-.facts div {
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: var(--space-1);
-  align-content: end;
+.note blockquote {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
 }
-.facts dt {
+.note figcaption {
   color: var(--color-muted-text);
   font-size: var(--text-label);
-  font-weight: 600;
-  white-space: nowrap;
 }
-.facts dd {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-heading-1);
-  line-height: 1;
-  font-variant-numeric: var(--numeric);
+.support {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
 }
 .nowrap {
   white-space: nowrap;

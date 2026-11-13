@@ -188,7 +188,9 @@ try {
     .fill(
       "Student ID,Name,Class\n0001,Ana Ruiz,Untrusted class name\n0002,Noor Haddad,Another class\n",
     );
-  await page.getByRole("button", { name: "Use these rows" }).click();
+  await page
+    .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
+    .click();
   // Plain columns skip the column check and go straight to the students.
   await page.waitForURL(/step=review/);
   await page.getByRole("heading", { name: "2 new students" }).waitFor();
@@ -235,7 +237,9 @@ try {
   );
   await page.getByRole("link", { name: "Add students", exact: true }).click();
   await page.getByLabel("Or paste names").fill("Lena Fischer");
-  await page.getByRole("button", { name: "Use these rows" }).click();
+  await page
+    .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
+    .click();
   await page.getByRole("button", { name: "Add 1 student" }).click();
   await page.waitForURL(/\/roster$/);
   await page
@@ -394,7 +398,9 @@ try {
   await page
     .getByLabel("Or paste names")
     .fill("Name,School key\nMira Shah,007");
-  await page.getByRole("button", { name: "Use these rows" }).click();
+  await page
+    .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
+    .click();
   await page.waitForURL(/step=map/);
   await page.getByRole("heading", { name: "Check the columns" }).waitFor();
   await capture("unknown-column-review");
@@ -442,13 +448,19 @@ try {
     await buyerPage.getByText("Lena Fischer", { exact: true }).count(),
     0,
   );
-  // The quote request already carries the school and the reference.
+  // The teacher's note reaches the buyer, in their words.
+  await buyerPage
+    .getByText("Please include the whole class.", { exact: true })
+    .waitFor();
+  // The quote request carries the school, the seats and the reference: it
+  // asks for none of them again, and shows no internal reference.
   assert.equal(
     await buyerPage
       .getByRole("textbox", { name: "School or organization" })
-      .inputValue(),
-    "Alder pilot school",
+      .count(),
+    0,
   );
+  assert.equal(await buyerPage.getByText(/Reference [0-9A-F]{8}/).count(), 0);
   await buyerPage.getByRole("heading", { name: "Get a quote" }).waitFor();
   await page.goto(buyer);
   await capture("buyer-page");

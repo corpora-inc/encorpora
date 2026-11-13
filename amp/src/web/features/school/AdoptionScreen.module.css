@@ -26,29 +26,6 @@
   font-size: var(--text-label);
   font-weight: 400;
 }
-.stats {
-  display: flex;
-  gap: var(--space-7);
-  margin: 0;
-  padding-block: var(--space-4);
-  border-block: 1px solid var(--color-border);
-}
-.stats div {
-  display: grid;
-  gap: var(--space-1);
-}
-.stats dt {
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-weight: 600;
-}
-.stats dd {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-heading-1);
-  line-height: 1;
-  font-variant-numeric: var(--numeric);
-}
 .section {
   display: grid;
   gap: var(--space-3);

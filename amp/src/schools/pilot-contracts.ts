@@ -43,6 +43,10 @@ export const buyerHandoffSchema = z.object({
   schoolName: z.string(),
   seats: z.number().int(),
   status: z.string(),
+  /** The teacher's note for the buyer, as they wrote it. */
+  note: z.string().default(""),
+  /** Who sent it. */
+  teacher: z.string().nullable().default(null),
   classCount: z.number().int(),
   students: z.number().int(),
   participating: z.number().int(),

@@ -177,6 +177,11 @@ button.accountTrigger:hover:not(:disabled) {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+/* A row's badge keeps its own width at the row's end, whatever the name. */
+.studentCard > :last-child:not(.studentCardText) {
+  justify-self: end;
+  width: max-content;
+}
 .studentCardText {
   display: grid;
   gap: 1px;

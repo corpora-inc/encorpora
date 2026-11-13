@@ -40,6 +40,8 @@ export const connectionStatusSchema = z.object({
       syncRequestedAt: z.iso.datetime({ offset: true }).nullable().optional(),
       nextAttemptAt: z.iso.datetime({ offset: true }).nullable().optional(),
       lastAttemptAt: z.iso.datetime({ offset: true }).nullable().optional(),
+      /** A sync asked for before this would be refused: no button until. */
+      syncAvailableAt: z.iso.datetime({ offset: true }).nullable().optional(),
     })
     .nullable(),
   requests: z.array(

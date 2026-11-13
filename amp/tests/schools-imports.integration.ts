@@ -12,6 +12,7 @@ import {
 } from "../src/schools/reconcile.js";
 import {
   csvRows,
+  distinctNamedId,
   guessMapping,
   readTable,
 } from "../src/schools/sources/csv.js";
@@ -355,6 +356,41 @@ test(
         await assert.rejects(apply(org, duplicate, undefined, scope), {
           code: "duplicate_roster_identity",
         });
+        // Two children with one name in a names list, told apart by the
+        // teacher: each comes in as their own student, and the same list
+        // read again finds them both.
+        const namesake = (line: number) => {
+          const [base] = csv("Name,Class\nCal Rivers,My class\n");
+          return {
+            ...base!,
+            line,
+            sourcedId: distinctNamedId(base!.sourcedId, line),
+          };
+        };
+        const twins = [namesake(3), namesake(4)];
+        const twinsScope = {
+          classId: (await schools.createClass(org, { name: "Room 4" })).id,
+        };
+        // "Add as a different student" also answers the name match.
+        assert.deepEqual(
+          (await apply(org, twins, { "3": "new", "4": "new" }, twinsScope)).map(
+            (r) => r.status,
+          ),
+          ["created", "created"],
+        );
+        assert.deepEqual(
+          (await apply(org, twins, undefined, twinsScope)).map((r) => r.status),
+          ["unchanged", "unchanged"],
+        );
+        await assert.rejects(
+          apply(
+            org,
+            [{ ...namesake(5), sourcedId: `${namesake(5).sourcedId}x` }],
+            undefined,
+            twinsScope,
+          ),
+          { code: "csv_identity_invalid" },
+        );
         await assert.rejects(
           apply(
             org,

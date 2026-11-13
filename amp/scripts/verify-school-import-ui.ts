@@ -143,7 +143,9 @@ try {
     await page
       .getByLabel("Or paste from a spreadsheet")
       .fill("Name,Class\nSam Lee,Math\nSam Lee,Support\n");
-    await page.getByRole("button", { name: "Use these rows" }).click();
+    await page
+      .getByRole("button", { name: /^(Add these names|Use these rows)$/ })
+      .click();
     await page.getByRole("button", { name: "Check for changes" }).click();
     await page.waitForURL(/step=review/);
     assert.equal(

@@ -211,6 +211,8 @@ export async function registerCleverOnboarding(
          WHERE m.connection_id=c.id AND m.kind='org_role' AND m.owned LIMIT 1) AS "bootstrapValidUntil",last_sync_at AS "lastSyncAt",launch_date::text AS "launchDate",
         attempt.error_code AS "lastError",sync_requested_at AS "syncRequestedAt",
         next_attempt_at AS "nextAttemptAt",attempt.started_at AS "lastAttemptAt",
+        CASE WHEN NOT sync_paused AND last_sync_requested_at>now()-interval '15 minutes'
+          THEN last_sync_requested_at+interval '15 minutes' END AS "syncAvailableAt",
         COALESCE(attempt.status='running' AND attempt.started_at>now()-interval '30 minutes',false) AS syncing,
         CASE WHEN c.status<>'active' THEN 'idle'
           WHEN attempt.status='running' THEN CASE WHEN attempt.started_at>now()-interval '30 minutes' THEN 'running' ELSE 'delayed' END

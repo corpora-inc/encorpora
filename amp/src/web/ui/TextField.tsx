@@ -26,7 +26,8 @@ export function TextField({
     </label>
   );
 }
-/** A multi-line field with a live character count against its limit. */
+/** A multi-line field. Its count against the limit shows only once the text
+ * nears it (four fifths), on the label's line, so nothing moves. */
 export function TextArea({
   label,
   maxLength,
@@ -43,7 +44,9 @@ export function TextArea({
       <span className={styles.fieldHeading}>
         <span>{label}</span>
         <span className={styles.count} aria-hidden="true">
-          {`${value.length}/${maxLength}`}
+          {value.length >= maxLength * 0.8
+            ? `${value.length}/${maxLength}`
+            : ""}
         </span>
       </span>
       <textarea

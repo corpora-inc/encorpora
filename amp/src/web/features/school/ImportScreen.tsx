@@ -25,6 +25,7 @@ import {
   fieldLabels,
   guessMapping,
   mappingHasName,
+  distinctNamedId,
   namedStudentId,
   readTable,
   type FieldKey,
@@ -335,7 +336,7 @@ function SourceStep({
             disabled={!paste.trim() || checking}
             onClick={() => fromText(paste, "Pasted rows")}
           >
-            Use these rows
+            {classScope ? "Add these names" : "Use these rows"}
           </Button>
         </div>
       )}
@@ -663,6 +664,37 @@ function AttentionRow({
               { value: "new", label: "Different student" },
             ]}
           />
+        ) : issue?.code === "ambiguous_identity" ? (
+          // Two children with one name: each comes in as their own student
+          // (a names list has no Student ID to tell them apart), and is never
+          // taken for their namesake.
+          <Button
+            variant="secondary"
+            onClick={() => {
+              patch({ resolutions: { ...draft.resolutions, [line]: "new" } });
+              onFixRow(
+                rosterRowSchema.parse({
+                  // The parser's working keys aren't part of a row.
+                  ...Object.fromEntries(
+                    Object.entries(issue.row).filter(
+                      ([key]) => key !== "classKeys",
+                    ),
+                  ),
+                  sourcedId: distinctNamedId(
+                    issue.row.sourcedId ||
+                      namedStudentId(
+                        issue.row.givenName ?? "",
+                        issue.row.familyName,
+                        issue.row.classes[0]?.name,
+                      ),
+                    issue.line,
+                  ),
+                }),
+              );
+            }}
+          >
+            Add as a different student
+          </Button>
         ) : issue?.code === "unknown_grade" && row ? (
           <GradePicker
             label="Grade"
@@ -940,11 +972,7 @@ function ReviewStep({
           ...(counts.unchanged
             ? [`${counts.unchanged.toLocaleString("en-US")} already here`]
             : []),
-          ...(attention
-            ? [
-                `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
-              ]
-            : []),
+          // The rows to look at are counted once, in their own heading.
         ]
       : [
           `${counts.new.toLocaleString("en-US")} new`,
@@ -998,10 +1026,6 @@ function ReviewStep({
       {attention > 0 && (
         <section className={styles.attentionList}>
           <h2>{plural(attention, "row")} to look at</h2>
-          <p className={styles.attentionLead}>
-            Each is held back or brought in without the bad value until you fix
-            it. Everything else can go ahead.
-          </p>
           <ul>
             {[
               ...blocked.map((issue) => ({

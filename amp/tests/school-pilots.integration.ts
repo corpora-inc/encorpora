@@ -240,10 +240,13 @@ test(
         orgId: org.id,
         classIds: [created.classId, second.classId],
         seats: 3,
+        note: "Our two rooms, starting in January.",
       });
       const handoff = await buyerHandoff(db, purchase.token);
       assert.equal(handoff.students, 3);
       assert.equal(handoff.classCount, 2);
+      // The teacher's note is written for the buyer, and reaches them.
+      assert.equal(handoff.note, "Our two rooms, starting in January.");
       assert.ok(!JSON.stringify(handoff).includes("Ada"));
       assert.equal(
         (await schoolPilotAccess(db, first.learner_id)).active,

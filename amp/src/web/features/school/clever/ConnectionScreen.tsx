@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { ContactAddress } from "../../support/ContactAddress";
 import { Link, Navigate, useLocation, useSearch } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
@@ -84,8 +85,6 @@ export function ConnectionScreen() {
     [bringExisting, setBringExisting] = useState<boolean | null>(null),
     [busy, setBusy] = useState<"connect" | "sync" | "link" | null>(null),
     [error, setError] = useState(""),
-    [throttled, setThrottled] = useState(""),
-    [retryAt, setRetryAt] = useState(0),
     [institution, setInstitution] = useState(""),
     [contact, setContact] = useState(""),
     [requesting, setRequesting] = useState(false);
@@ -116,17 +115,6 @@ export function ConnectionScreen() {
       setRequesting(false);
     }
   }
-  useEffect(() => {
-    if (!retryAt) return;
-    const timer = window.setTimeout(
-      () => {
-        setThrottled("");
-        setRetryAt(0);
-      },
-      Math.max(0, retryAt - Date.now()),
-    );
-    return () => window.clearTimeout(timer);
-  }, [retryAt]);
   const linkProblem = [
     "clever_identity_already_linked",
     "clever_account_link_required",
@@ -161,6 +149,20 @@ export function ConnectionScreen() {
       (org) =>
         org.id === connection.orgId && org.can?.includes("integrations.manage"),
     );
+  // The next sync the server allows: until then no Sync button, only when.
+  const nextSync = connection?.syncAvailableAt
+    ? new Date(connection.syncAvailableAt)
+    : null;
+  const [, tick] = useState(0);
+  const waitingToSync = !!nextSync && nextSync.getTime() > Date.now();
+  useEffect(() => {
+    if (!nextSync || !waitingToSync) return;
+    const timer = window.setTimeout(
+      () => tick((n) => n + 1),
+      nextSync.getTime() - Date.now() + 500,
+    );
+    return () => window.clearTimeout(timer);
+  }, [nextSync?.getTime(), waitingToSync]);
   async function act(kind: "connect" | "sync") {
     if (!credential || busy) return;
     setError("");
@@ -183,19 +185,16 @@ export function ConnectionScreen() {
         queryKey: connectionOptions(credential).queryKey,
       });
     } catch (failure) {
-      // A sync asked for too soon says so beside the button, not as a fault.
+      // Asked for too soon (another admin, another tab): the status says
+      // when the next sync opens, and the button goes until then.
       if (
         failure instanceof AppError &&
         failure.code === "clever_sync_rate_limited"
       ) {
-        setThrottled(failure.message);
-        const seconds = Number(
-          (failure.body as { retryAfter?: number } | null)?.retryAfter,
-        );
-        setRetryAt(
-          Date.now() +
-            (Number.isFinite(seconds) && seconds > 0 ? seconds : 900) * 1000,
-        );
+        console.warn("Clever sync asked for too soon", failure.code);
+        await client.invalidateQueries({
+          queryKey: connectionOptions(credential).queryKey,
+        });
       } else
         setError(
           failure instanceof Error
@@ -440,7 +439,7 @@ export function ConnectionScreen() {
   else if (paused)
     state = authorityFailed
       ? {
-          title: "Clever",
+          title: "Clever roster",
           body: (
             <>
               <Lead>
@@ -451,7 +450,7 @@ export function ConnectionScreen() {
           ),
         }
       : {
-          title: "Clever",
+          title: "Clever roster",
           body: (
             <>
               <Lead>
@@ -470,10 +469,10 @@ export function ConnectionScreen() {
                     >
                       Review schools
                     </Link>
-                    {canSync && (
+                    {canSync && !waitingToSync && (
                       <Button
                         variant="secondary"
-                        disabled={!!busy || !!throttled}
+                        disabled={!!busy}
                         aria-busy={busy === "sync"}
                         onClick={() => void act("sync")}
                       >
@@ -483,9 +482,9 @@ export function ConnectionScreen() {
                   </>
                 )}
               </Actions>
-              {throttled && (
-                <p className={styles.note} role="status">
-                  {throttled}
+              {waitingToSync && (
+                <p className={styles.note}>
+                  Import opens at {time.format(nextSync!)}
                 </p>
               )}
             </>
@@ -493,7 +492,7 @@ export function ConnectionScreen() {
         };
   else
     state = {
-      title: "Clever",
+      title: "Clever roster",
       body: (
         <>
           {delayed || retrying ? (
@@ -505,7 +504,12 @@ export function ConnectionScreen() {
           ) : connection.lastError ? (
             <Lead>{connectionError(connection.lastError)}</Lead>
           ) : ready ? (
-            <Lead>{synced(connection.lastSyncAt!)}</Lead>
+            <Lead>
+              {synced(connection.lastSyncAt!)}
+              {canSync && waitingToSync
+                ? ` · next sync ${time.format(nextSync!)}`
+                : ""}
+            </Lead>
           ) : (
             <div className={styles.progress}>
               <Loading>Importing</Loading>
@@ -517,16 +521,19 @@ export function ConnectionScreen() {
                 (onboarding || !identity.personId ? (
                   withClever("Continue with Clever")
                 ) : (
-                  <a href="/school" className={buttonClass("primary")}>
+                  <Link
+                    to="/$"
+                    params={{ _splat: "school" }}
+                    className={buttonClass("primary")}
+                  >
                     Open your classes
-                  </a>
+                  </Link>
                 ))}
-              {canSync && (
+              {canSync && !waitingToSync && (
                 <Button
-                  variant="secondary"
-                  disabled={
-                    !!busy || (connection.syncing && !delayed) || !!throttled
-                  }
+                  // A delayed import's one action is to retry it.
+                  variant={delayed ? "primary" : "secondary"}
+                  disabled={!!busy || (connection.syncing && !delayed)}
                   aria-busy={
                     busy === "sync" || (connection.syncing && !delayed)
                   }
@@ -535,26 +542,13 @@ export function ConnectionScreen() {
                   {delayed ? "Retry import" : "Sync now"}
                 </Button>
               )}
-              {(delayed || retrying) && (
-                <Button
-                  variant="secondary"
-                  aria-busy={status.isFetching}
-                  onClick={() => void status.refetch()}
-                >
-                  Check again
-                </Button>
-              )}
             </Actions>
           )}
           {delayed && (
-            <p className={styles.note}>
-              If the delay continues, contact support@corpora.inc.
-            </p>
-          )}
-          {throttled && (
-            <p className={styles.note} role="status">
-              {throttled}
-            </p>
+            <div className={styles.note}>
+              <p>If the delay continues, write to us.</p>
+              <ContactAddress />
+            </div>
           )}
         </>
       ),

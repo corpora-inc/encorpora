@@ -15,7 +15,7 @@ import {
   type RosterSource,
 } from "./setup-contracts.js";
 import { nameKey, type RosterClass, type RosterRow } from "./sources/rows.js";
-import { namedStudentId } from "./sources/csv.js";
+import { isNamedId, namedStudentId } from "./sources/csv.js";
 import { inviteStaffIn, type InviteKeys, type IssuedInvite } from "./staff.js";
 
 type Existing = {
@@ -358,13 +358,18 @@ async function importRows(
   let rows = input;
   if (source === "csv")
     for (const row of rows) {
+      const named =
+        row.role === "student" && !row.identifier
+          ? namedStudentId(row.givenName, row.familyName, row.classes[0]?.name)
+          : null;
       const expected =
         row.role === "student"
-          ? (row.identifier ??
-            namedStudentId(row.givenName, row.familyName, row.classes[0]?.name))
+          ? (row.identifier ?? named!)
           : (row.email ?? `name:${fullName(row)}`);
       if (
-        row.sourcedId !== expected ||
+        (named
+          ? !isNamedId(row.sourcedId, named)
+          : row.sourcedId !== expected) ||
         row.classes.some((c) => c.sourcedId !== `name:${nameKey(c.name)}`)
       )
         throw new SchoolError(400, "csv_identity_invalid");
@@ -418,9 +423,18 @@ async function importRows(
       throw new SchoolError(400, "class_import_students_only");
     rows = rows.map((row) => ({
       ...row,
+      // A named student is named within this class; one the teacher told
+      // apart from a namesake keeps that (distinctNamedId's suffix).
       sourcedId:
         source === "csv" && !row.identifier && row.sourcedId.startsWith("name:")
-          ? namedStudentId(row.givenName, row.familyName, klass.id)
+          ? namedStudentId(row.givenName, row.familyName, klass.id) +
+            row.sourcedId.slice(
+              namedStudentId(
+                row.givenName,
+                row.familyName,
+                row.classes[0]?.name,
+              ).length,
+            )
           : row.sourcedId,
       classes: [
         {

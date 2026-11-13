@@ -722,8 +722,9 @@ export async function classPurchaseRequest(
       classIds,
       canEdit: row.account_id === accountId && fullScope,
       seats: row.seats as number,
-      // Notes may name students in another class; the public buyer handoff
-      // deliberately excludes this freeform text as well.
+      // Notes may name students in another class: a co-teacher sees one only
+      // for a request wholly within their classes. The buyer page shows it to
+      // the reader it was written for.
       note: fullScope ? (row.note as string) : "",
       status: row.status as string,
       createdAt: row.created_at.toISOString() as string,
@@ -732,7 +733,8 @@ export async function classPurchaseRequest(
   });
 }
 
-/** Read-only buyer handoff: counts and dates, no student data or staff authority. */
+/** Read-only buyer handoff: counts, dates and the teacher's note for the
+ * buyer; no student data or staff authority. */
 export async function buyerHandoff(
   db: Pick<PoolClient, "query">,
   token: string,
@@ -741,8 +743,11 @@ export async function buyerHandoff(
     throw new SchoolError(404, "not_found");
   const request = (
     await db.query(
-      `SELECT r.id,r.class_ids,r.seats,r.status,o.name FROM amp_school_purchase_requests r
-    JOIN amp_orgs o ON o.id=r.org_id WHERE r.buyer_token_hash=$1 AND r.token_expires_at>now() AND r.status<>'closed'`,
+      `SELECT r.id,r.class_ids,r.seats,r.status,r.note,o.name,
+        COALESCE(NULLIF(p.display_name,''),NULLIF(concat_ws(' ',p.given_name,p.family_name),'')) AS teacher
+      FROM amp_school_purchase_requests r JOIN amp_orgs o ON o.id=r.org_id
+      LEFT JOIN amp_people p ON p.tenant_id=o.path[1] AND p.account_id=r.account_id AND p.deleted_at IS NULL
+      WHERE r.buyer_token_hash=$1 AND r.token_expires_at>now() AND r.status<>'closed'`,
       [hash(token)],
     )
   ).rows[0];
@@ -765,6 +770,9 @@ export async function buyerHandoff(
     schoolName: request.name,
     seats: request.seats,
     status: request.status,
+    // The teacher wrote it for this reader: their words, under their name.
+    note: (request.note as string | null) ?? "",
+    teacher: (request.teacher as string | null) ?? null,
     classCount: request.class_ids.length,
     ...counts,
     pilots,

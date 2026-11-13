@@ -57,11 +57,14 @@ export function useClassAccess(place: Place): {
 
 /** Practice is over for this class. */
 export const practiceEnded = (view: AccessView) => view.kind === "ended";
-/** No student of this class can practice: not started yet (or only its
- * teacher can start it), or over. Its sign-in tools (the code, the link, the
+/** No student of this class can practice: none yet, not started (or only
+ * its teacher can start it), or over. Its sign-in tools (the code, the link, the
  * board, cards) lead nowhere, so no screen offers them. */
 export const practiceClosed = (view: AccessView) =>
-  view.kind === "start" || view.kind === "waiting" || view.kind === "ended";
+  view.kind === "empty" ||
+  view.kind === "start" ||
+  view.kind === "waiting" ||
+  view.kind === "ended";
 
 /** Starting practice: at once when the class is authorized, else through
  * the authorization sheet (a class that arrived from a roster sync). */
@@ -140,6 +143,7 @@ export function accessFeedEntry(
   pilot: PilotState | undefined,
   canRequest: boolean,
 ): FeedEntry | null {
+  // Starting is a task; the rest are states, said without a box to tick.
   const entry = (
     title: string,
     detail: string,
@@ -149,7 +153,7 @@ export function accessFeedEntry(
       id: `practice-${view.kind}`,
       title,
       detail,
-      mark: "plain",
+      mark: view.kind === "start" ? "plain" : "status",
       actions,
     }) as const;
   switch (view.kind) {

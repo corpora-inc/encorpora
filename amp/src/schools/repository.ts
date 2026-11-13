@@ -1044,7 +1044,8 @@ export class SchoolRepository {
                AND ($2::uuid[] IS NULL OR e.class_id=ANY($2::uuid[]))
              ORDER BY e.class_id) AS "classIds",
            EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id)) AS seated
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id)) AS seated,
+           COALESCE(p.learner_id IS NOT NULL AND amp_school_pilot_until(p.learner_id)>now(),false) AS "pilotCovered"
          FROM amp_people p
          WHERE p.tenant_id=(SELECT path[1] FROM amp_orgs WHERE id=$1) AND p.deleted_at IS NULL
            AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
