@@ -1,0 +1,2753 @@
+{
+ "id": "money-total-dollars--sm",
+ "title": "Dollars and cents name the same money",
+ "teaches": [],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 360,
+     "maxHeight": 360,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -40,
+        -49
+       ],
+       "size": [
+        80,
+        83
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "q0",
+       "at": [
+        -27.130000000000003,
+        30.130000000000003
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q1",
+       "at": [
+        2.869999999999999,
+        30.130000000000003
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q2",
+       "at": [
+        -27.130000000000003,
+        0.13000000000000078
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q3",
+       "at": [
+        2.869999999999999,
+        0.13000000000000078
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -33.525,
+        -29.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "text",
+       "id": "run0",
+       "at": [
+        0,
+        -40
+       ],
+       "text": "25¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "run1",
+       "at": [
+        0,
+        -40
+       ],
+       "text": "50¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "run2",
+       "at": [
+        0,
+        -40
+       ],
+       "text": "75¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "run3",
+       "at": [
+        0,
+        -40
+       ],
+       "text": "100¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A dollar is worth one hundred cents.",
+     "do": [
+      {
+       "do": "text",
+       "text": "A dollar is worth $100$¢.",
+       "at": "A"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count these four quarters: twenty-five, fifty, seventy-five, one hundred cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q0"
+        },
+        {
+         "do": "appear",
+         "target": "run0"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "fifty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q1"
+        },
+        {
+         "do": "appear",
+         "target": "run1"
+        },
+        {
+         "do": "disappear",
+         "target": "run0"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "seventy-five",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q2"
+        },
+        {
+         "do": "appear",
+         "target": "run2"
+        },
+        {
+         "do": "disappear",
+         "target": "run1"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "hundred",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q3"
+        },
+        {
+         "do": "appear",
+         "target": "run3"
+        },
+        {
+         "do": "disappear",
+         "target": "run2"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "write",
+       "tex": "25+25+25+25=100",
+       "at": "hundred"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four quarters are worth one dollar.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Four",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q0"
+        },
+        {
+         "do": "highlight",
+         "target": "q1"
+        },
+        {
+         "do": "highlight",
+         "target": "q2"
+        },
+        {
+         "do": "highlight",
+         "target": "q3"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "dollar",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "run3"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Trade the quarters for a bill. A bill is paper money. The value stays the same.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Trade",
+       "actions": [
+        {
+         "do": "move",
+         "target": "q0",
+         "by": [
+          0,
+          -15
+         ]
+        },
+        {
+         "do": "move",
+         "target": "q1",
+         "by": [
+          -20,
+          -15
+         ]
+        },
+        {
+         "do": "move",
+         "target": "q2",
+         "by": [
+          20,
+          15
+         ]
+        },
+        {
+         "do": "move",
+         "target": "q3",
+         "by": [
+          0,
+          15
+         ]
+        },
+        {
+         "do": "disappear",
+         "target": "run3"
+        }
+       ],
+       "dur": 0.85
+      },
+      {
+       "do": "scene",
+       "at": "bill",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "q0"
+        },
+        {
+         "do": "disappear",
+         "target": "q1"
+        },
+        {
+         "do": "disappear",
+         "target": "q2"
+        },
+        {
+         "do": "disappear",
+         "target": "q3"
+        },
+        {
+         "do": "appear",
+         "target": "oneBill"
+        },
+        {
+         "do": "move",
+         "target": "oneBill",
+         "by": [
+          0,
+          15
+         ]
+        }
+       ],
+       "dur": 0.85
+      },
+      {
+       "do": "clear",
+       "at": "bill"
+      },
+      {
+       "do": "header",
+       "tex": "100\\text{¢}=\\$1.00",
+       "label": "Same value",
+       "at": "bill",
+       "keep": true
+      },
+      {
+       "do": "text",
+       "text": "A bill is paper money.",
+       "at": "bill"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 360,
+     "maxHeight": 360,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -41,
+        -33
+       ],
+       "size": [
+        82,
+        65
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -33.525,
+        -6.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "text",
+       "id": "oneLabel",
+       "at": [
+        0,
+        -21
+       ],
+       "text": "$1.00",
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The dollar sign goes before the number. Write one dollar. Add two zeros for the cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "sign"
+      },
+      {
+       "do": "write",
+       "tex": "\\$1",
+       "at": "sign"
+      },
+      {
+       "do": "write",
+       "tex": "\\$1.00",
+       "at": "zeros"
+      },
+      {
+       "do": "scene",
+       "at": "zeros",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "oneLabel"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "The dot is the decimal point. It separates whole dollars from extra cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "dot"
+      },
+      {
+       "do": "write",
+       "tex": "\\$1\\cg{.}00",
+       "at": "dot"
+      },
+      {
+       "do": "term",
+       "word": "decimal point",
+       "meaning": "Separates whole dollars from extra cents.",
+       "at": "decimal"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two zeros mean no extra cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "\\$\\ca{1}.\\cw{00}",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "No extra cents",
+       "at": "no"
+      },
+      {
+       "do": "scene",
+       "at": "zeros",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "oneBill"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 360,
+     "maxHeight": 360,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -41,
+        -46
+       ],
+       "size": [
+        82,
+        100
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -33.525,
+        9.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "coins",
+       "id": "nickel",
+       "at": [
+        -10.605,
+        -9.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Add a nickel. One hundred cents plus five cents is one hundred five cents. One dollar and five cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "nickel",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "nickel"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "100\\text{¢}+5\\text{¢}=105\\text{¢}",
+       "at": "One"
+      },
+      {
+       "do": "text",
+       "text": "One dollar and five cents",
+       "at": "dollar"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 460,
+     "maxHeight": 440,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -120,
+        -104
+       ],
+       "size": [
+        240,
+        216
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "rect",
+       "id": "dimePlace",
+       "at": [
+        -37,
+        -97
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "warm-fill",
+       "stroke": "warm",
+       "width": 1
+      },
+      {
+       "type": "rect",
+       "id": "place0",
+       "at": [
+        -115,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "accent-fill",
+       "stroke": "accent",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name0a",
+       "at": [
+        -78,
+        101
+       ],
+       "text": "whole",
+       "font": "sans",
+       "size": "sm",
+       "color": "accent",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name0b",
+       "at": [
+        -78,
+        88
+       ],
+       "text": "dollars",
+       "font": "sans",
+       "size": "sm",
+       "color": "accent",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "rect",
+       "id": "place1",
+       "at": [
+        -37,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "warm-fill",
+       "stroke": "warm",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name1a",
+       "at": [
+        0,
+        101
+       ],
+       "text": "tens of",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name1b",
+       "at": [
+        0,
+        88
+       ],
+       "text": "cents",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "rect",
+       "id": "place2",
+       "at": [
+        41,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "warm-fill",
+       "stroke": "warm",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name2a",
+       "at": [
+        78,
+        101
+       ],
+       "text": "single",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name2b",
+       "at": [
+        78,
+        88
+       ],
+       "text": "cents",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -76.525,
+        37.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "coins",
+       "id": "nickel",
+       "at": [
+        55.315,
+        65.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p0",
+       "at": [
+        56.395,
+        64.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p1",
+       "at": [
+        56.395,
+        64.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p2",
+       "at": [
+        56.395,
+        64.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p3",
+       "at": [
+        56.395,
+        64.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p4",
+       "at": [
+        56.395,
+        64.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "noTens",
+       "at": [
+        0,
+        52
+       ],
+       "text": "none",
+       "font": "sans",
+       "size": "md",
+       "color": "muted",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "actual",
+       "at": [
+        0,
+        4
+       ],
+       "text": "$1.05",
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "different",
+       "at": [
+        0,
+        -23
+       ],
+       "text": "A different amount",
+       "font": "sans",
+       "size": "sm",
+       "color": "muted",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "otherBill",
+       "value": 1,
+       "at": [
+        -111.525,
+        -81.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "coins",
+       "id": "d0",
+       "at": [
+        -32.955,
+        -44.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d1",
+       "at": [
+        -8.955,
+        -44.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d2",
+       "at": [
+        15.045,
+        -44.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d3",
+       "at": [
+        -20.955,
+        -67.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "d4",
+       "at": [
+        3.045,
+        -67.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "otherAmount",
+       "at": [
+        78,
+        -67
+       ],
+       "text": "$1.50",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "drun0",
+       "at": [
+        78,
+        -91
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "drun1",
+       "at": [
+        78,
+        -91
+       ],
+       "text": "20¢",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "drun2",
+       "at": [
+        78,
+        -91
+       ],
+       "text": "30¢",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "drun3",
+       "at": [
+        78,
+        -91
+       ],
+       "text": "40¢",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "drun4",
+       "at": [
+        78,
+        -91
+       ],
+       "text": "50¢",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "One dollar and five cents. I put the five just after the dot, here.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "\\$1.\\square\\square",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "\\$1.5",
+       "at": "here",
+       "id": "slip"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Trade the nickel for five pennies. The value stays the same.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "pennies",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "nickel"
+        },
+        {
+         "do": "appear",
+         "target": "p0"
+        },
+        {
+         "do": "appear",
+         "target": "p1"
+        },
+        {
+         "do": "appear",
+         "target": "p2"
+        },
+        {
+         "do": "appear",
+         "target": "p3"
+        },
+        {
+         "do": "appear",
+         "target": "p4"
+        },
+        {
+         "do": "move",
+         "target": "oneBill",
+         "by": [
+          -35,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p0",
+         "by": [
+          -11.92,
+          11.000000000000007
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p1",
+         "by": [
+          12.08,
+          11.000000000000007
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p2",
+         "by": [
+          36.08,
+          11.000000000000007
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p3",
+         "by": [
+          0.08,
+          -12.0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "p4",
+         "by": [
+          24.08,
+          -12.0
+         ]
+        }
+       ],
+       "dur": 0.85
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "On this mat: one whole dollar. No tens of cents. Five single cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "mat",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "place0"
+        },
+        {
+         "do": "appear",
+         "target": "place1"
+        },
+        {
+         "do": "appear",
+         "target": "place2"
+        },
+        {
+         "do": "appear",
+         "target": "name0a"
+        },
+        {
+         "do": "appear",
+         "target": "name0b"
+        },
+        {
+         "do": "appear",
+         "target": "name1a"
+        },
+        {
+         "do": "appear",
+         "target": "name1b"
+        },
+        {
+         "do": "appear",
+         "target": "name2a"
+        },
+        {
+         "do": "appear",
+         "target": "name2b"
+        }
+       ],
+       "dur": 0.9
+      },
+      {
+       "do": "scene",
+       "at": "whole",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "oneBill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "tens",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "noTens"
+        },
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "single",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "name2b"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cents left over are less than one hundred. Write tens of cents, then single cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "tens",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.4
+      },
+      {
+       "do": "scene",
+       "at": "single",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "name2b"
+        }
+       ],
+       "dur": 0.4
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Compare a different amount: a dollar and five dimes.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "different",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "different"
+        },
+        {
+         "do": "appear",
+         "target": "dimePlace"
+        },
+        {
+         "do": "appear",
+         "target": "otherBill"
+        },
+        {
+         "do": "appear",
+         "target": "d0"
+        },
+        {
+         "do": "appear",
+         "target": "d1"
+        },
+        {
+         "do": "appear",
+         "target": "d2"
+        },
+        {
+         "do": "appear",
+         "target": "d3"
+        },
+        {
+         "do": "appear",
+         "target": "d4"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten, twenty, thirty, forty, fifty cents beyond the dollar.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Ten",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "d0"
+        },
+        {
+         "do": "appear",
+         "target": "drun0"
+        }
+       ],
+       "dur": 0.25
+      },
+      {
+       "do": "scene",
+       "at": "twenty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "d1"
+        },
+        {
+         "do": "appear",
+         "target": "drun1"
+        },
+        {
+         "do": "disappear",
+         "target": "drun0"
+        }
+       ],
+       "dur": 0.25
+      },
+      {
+       "do": "scene",
+       "at": "thirty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "d2"
+        },
+        {
+         "do": "appear",
+         "target": "drun2"
+        },
+        {
+         "do": "disappear",
+         "target": "drun1"
+        }
+       ],
+       "dur": 0.25
+      },
+      {
+       "do": "scene",
+       "at": "forty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "d3"
+        },
+        {
+         "do": "appear",
+         "target": "drun3"
+        },
+        {
+         "do": "disappear",
+         "target": "drun2"
+        }
+       ],
+       "dur": 0.25
+      },
+      {
+       "do": "scene",
+       "at": "fifty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "d4"
+        },
+        {
+         "do": "appear",
+         "target": "drun4"
+        },
+        {
+         "do": "disappear",
+         "target": "drun3"
+        }
+       ],
+       "dur": 0.25
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "A five just after the point means five tens of cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "point",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "otherAmount"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "tens",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dimePlace"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point five dollars is one dollar and fifty cents.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\$1.5=\\$1.50",
+       "at": "One"
+      },
+      {
+       "do": "scene",
+       "at": "fifty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "otherAmount"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "No tens of cents. The zero belongs here.",
+     "do": [
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "zero"
+      },
+      {
+       "do": "scene",
+       "at": "zero",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "here",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "actual"
+        },
+        {
+         "do": "disappear",
+         "target": "different"
+        },
+        {
+         "do": "disappear",
+         "target": "dimePlace"
+        },
+        {
+         "do": "disappear",
+         "target": "otherAmount"
+        },
+        {
+         "do": "disappear",
+         "target": "otherBill"
+        },
+        {
+         "do": "disappear",
+         "target": "d0"
+        },
+        {
+         "do": "disappear",
+         "target": "d1"
+        },
+        {
+         "do": "disappear",
+         "target": "d2"
+        },
+        {
+         "do": "disappear",
+         "target": "d3"
+        },
+        {
+         "do": "disappear",
+         "target": "d4"
+        },
+        {
+         "do": "disappear",
+         "target": "drun4"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "One dollar and five cents. One point zero five dollars.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "answer",
+       "tex": "105\\text{¢}=\\$1.05",
+       "at": "One"
+      },
+      {
+       "do": "scene",
+       "at": "zero",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.35
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 360,
+     "maxHeight": 360,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -77,
+        -101
+       ],
+       "size": [
+        154,
+        204
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "bill",
+       "id": "fiveBill",
+       "value": 5,
+       "at": [
+        -33.525,
+        68.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "text",
+       "id": "equal",
+       "at": [
+        0,
+        51
+       ],
+       "text": "=",
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "unit0Bill",
+       "value": 1,
+       "at": [
+        -70.525,
+        5.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "bill",
+       "id": "unit1Bill",
+       "value": 1,
+       "at": [
+        3.4750000000000014,
+        5.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "bill",
+       "id": "unit2Bill",
+       "value": 1,
+       "at": [
+        -70.525,
+        -41.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "bill",
+       "id": "unit3Bill",
+       "value": 1,
+       "at": [
+        3.4749999999999943,
+        -41.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "bill",
+       "id": "unit4Bill",
+       "value": 1,
+       "at": [
+        -33.525,
+        -88.250855
+       ],
+       "width": 67.05
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This five-dollar bill is worth the same as five one-dollar bills together.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "This"
+      },
+      {
+       "do": "header",
+       "off": true,
+       "at": "This"
+      },
+      {
+       "do": "text",
+       "text": "A bill counts for its value.",
+       "at": "This"
+      },
+      {
+       "do": "scene",
+       "at": "five-dollar",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "fiveBill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "worth",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "equal"
+        },
+        {
+         "do": "appear",
+         "target": "unit0Bill"
+        },
+        {
+         "do": "appear",
+         "target": "unit1Bill"
+        },
+        {
+         "do": "appear",
+         "target": "unit2Bill"
+        },
+        {
+         "do": "appear",
+         "target": "unit3Bill"
+        },
+        {
+         "do": "appear",
+         "target": "unit4Bill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "one-dollar",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "unit0Bill"
+        },
+        {
+         "do": "highlight",
+         "target": "unit1Bill"
+        },
+        {
+         "do": "highlight",
+         "target": "unit2Bill"
+        },
+        {
+         "do": "highlight",
+         "target": "unit3Bill"
+        },
+        {
+         "do": "highlight",
+         "target": "unit4Bill"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 1.0
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 360,
+     "maxHeight": 360,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -82,
+        -78
+       ],
+       "size": [
+        164,
+        164
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "bill",
+       "id": "fiveBill",
+       "value": 5,
+       "at": [
+        -73.525,
+        19.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -73.525,
+        -32.250855
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "coins",
+       "id": "qa",
+       "at": [
+        17.265,
+        49.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "qb",
+       "at": [
+        49.265,
+        49.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "nk",
+       "at": [
+        34.790000000000006,
+        -4.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bills",
+       "at": [
+        -40,
+        76
+       ],
+       "text": "bills",
+       "font": "sans",
+       "size": "md",
+       "color": "accent",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "coins",
+       "at": [
+        45.395,
+        76
+       ],
+       "text": "coins",
+       "font": "sans",
+       "size": "md",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "billTotal",
+       "at": [
+        -40,
+        -62
+       ],
+       "text": "6 dollars",
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "coinTotal0",
+       "at": [
+        45.395,
+        -62
+       ],
+       "text": "25¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "coinTotal1",
+       "at": [
+        45.395,
+        -62
+       ],
+       "text": "50¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "coinTotal2",
+       "at": [
+        45.395,
+        -62
+       ],
+       "text": "55¢",
+       "font": "sans",
+       "size": "lg",
+       "color": "warm",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How much money is shown? Enter the amount in dollars, such as two point three five.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "How"
+      },
+      {
+       "do": "header",
+       "text": "How much money is shown?",
+       "label": "Count bills and coins",
+       "at": "How"
+      },
+      {
+       "do": "problem",
+       "text": "How much money is shown? Enter the amount in dollars, such as 2.35.",
+       "at": "How"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the bills by value. Five plus one makes six dollars.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Count"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{5+1=6}",
+       "at": "five",
+       "note": "\\text{dollars}"
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "fiveBill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "one",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "oneBill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "six",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "billTotal"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the coins: twenty-five, fifty, fifty-five cents in all.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "qa"
+        },
+        {
+         "do": "appear",
+         "target": "coinTotal0"
+        }
+       ],
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "at": "fifty",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "qb"
+        },
+        {
+         "do": "disappear",
+         "target": "coinTotal0"
+        },
+        {
+         "do": "appear",
+         "target": "coinTotal1"
+        }
+       ],
+       "dur": 0.3
+      },
+      {
+       "do": "scene",
+       "at": "fifty-five",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nk"
+        },
+        {
+         "do": "disappear",
+         "target": "coinTotal1"
+        },
+        {
+         "do": "appear",
+         "target": "coinTotal2"
+        }
+       ],
+       "dur": 0.3
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{25+25+5=55}",
+       "at": "cents",
+       "note": "\\text{cents}"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "learner",
+     "say": "Six dollars and fifty-five cents. I enter six point five five here.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Six"
+      },
+      {
+       "do": "answer",
+       "tex": "\\$\\ca{6}.\\cw{55}",
+       "at": "Six"
+      },
+      {
+       "do": "scene",
+       "at": "dollars",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "billTotal"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "cents",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "coinTotal2"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "text",
+       "text": "Dollars: $6.55$",
+       "at": "enter"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "A full hundred cents in coins makes another dollar.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "header",
+       "tex": "100\\text{¢}=\\$1.00",
+       "label": "Same value",
+       "at": "A",
+       "keep": true
+      },
+      {
+       "do": "write",
+       "tex": "600\\text{¢}+55\\text{¢}=655\\text{¢}",
+       "at": "coins"
+      },
+      {
+       "do": "write",
+       "tex": "655\\text{¢}=\\$6.55",
+       "at": "dollar"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "width": 460,
+     "maxHeight": 440,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -120,
+        -104
+       ],
+       "size": [
+        240,
+        216
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "rect",
+       "id": "place0",
+       "at": [
+        -115,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "accent-fill",
+       "stroke": "accent",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name0a",
+       "at": [
+        -78,
+        101
+       ],
+       "text": "whole",
+       "font": "sans",
+       "size": "sm",
+       "color": "accent",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name0b",
+       "at": [
+        -78,
+        88
+       ],
+       "text": "dollars",
+       "font": "sans",
+       "size": "sm",
+       "color": "accent",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "rect",
+       "id": "place1",
+       "at": [
+        -37,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "warm-fill",
+       "stroke": "warm",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name1a",
+       "at": [
+        0,
+        101
+       ],
+       "text": "tens of",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name1b",
+       "at": [
+        0,
+        88
+       ],
+       "text": "cents",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "rect",
+       "id": "place2",
+       "at": [
+        41,
+        22
+       ],
+       "size": [
+        74,
+        60
+       ],
+       "fill": "warm-fill",
+       "stroke": "warm",
+       "width": 1
+      },
+      {
+       "type": "text",
+       "id": "name2a",
+       "at": [
+        78,
+        101
+       ],
+       "text": "single",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "name2b",
+       "at": [
+        78,
+        88
+       ],
+       "text": "cents",
+       "font": "sans",
+       "size": "sm",
+       "color": "warm",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "oneBill",
+       "value": 1,
+       "at": [
+        -111.525,
+        37.749145
+       ],
+       "width": 67.05
+      },
+      {
+       "type": "coins",
+       "id": "p0",
+       "at": [
+        44.475,
+        75.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p1",
+       "at": [
+        68.475,
+        75.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p2",
+       "at": [
+        92.475,
+        75.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p3",
+       "at": [
+        56.475,
+        52.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "p4",
+       "at": [
+        80.475,
+        52.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "noTens",
+       "at": [
+        0,
+        52
+       ],
+       "text": "none",
+       "font": "sans",
+       "size": "md",
+       "color": "muted",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "actual",
+       "at": [
+        0,
+        4
+       ],
+       "text": "$1.05",
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "bold": true,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q0",
+       "at": [
+        -99.13,
+        -32.87
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q1",
+       "at": [
+        -68.13,
+        -32.87
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q2",
+       "at": [
+        -99.13,
+        -63.87
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "q3",
+       "at": [
+        -68.13,
+        -63.87
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "equal",
+       "at": [
+        0,
+        -64
+       ],
+       "text": "=",
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "bold": false,
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "exchangeBill",
+       "value": 1,
+       "at": [
+        32.08,
+        -78.250855
+       ],
+       "width": 67.05
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "One whole dollar.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "header",
+       "tex": "100\\text{¢}=\\$1.00",
+       "label": "Same value",
+       "at": "One",
+       "keep": true
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{1}\\text{ whole dollar}",
+       "at": "One"
+      },
+      {
+       "do": "scene",
+       "at": "whole",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "oneBill"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero tens of cents.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{0}\\text{ tens of cents}",
+       "at": "Zero"
+      },
+      {
+       "do": "scene",
+       "at": "tens",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five single cents.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{5}\\text{ single cents}",
+       "at": "Five"
+      },
+      {
+       "do": "scene",
+       "at": "single",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "name2b"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.15
+    },
+    {
+     "speaker": "teacher",
+     "say": "The zero keeps five pennies in the single-cent place.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "zero",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "noTens"
+        }
+       ],
+       "dur": 0.45
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "One hundred cents make one dollar. Write whole dollars, a point, then two digits for cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "hundred",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "q0"
+        },
+        {
+         "do": "highlight",
+         "target": "q1"
+        },
+        {
+         "do": "highlight",
+         "target": "q2"
+        },
+        {
+         "do": "highlight",
+         "target": "q3"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "scene",
+       "at": "dollar",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "exchangeBill"
+        }
+       ],
+       "dur": 0.45
+      },
+      {
+       "do": "clear",
+       "at": "Write"
+      },
+      {
+       "do": "answer",
+       "tex": "\\$\\ca{1}.\\cw{05}",
+       "at": "Write"
+      },
+      {
+       "do": "text",
+       "text": "Whole dollars · point · cents",
+       "at": "two"
+      }
+     ],
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}
