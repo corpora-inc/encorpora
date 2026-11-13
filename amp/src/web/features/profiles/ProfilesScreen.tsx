@@ -6,6 +6,7 @@ import { buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
 import { choosePracticeProfile, recentProfiles } from "./api";
+import { practiceAs } from "./practice-mode";
 import styles from "./Profiles.module.css";
 
 /**
@@ -55,7 +56,7 @@ export function ProfilesScreen() {
                   className={styles.profileRow}
                   onClick={() => {
                     choosePracticeProfile(profile.id);
-                    void navigate({ to: "/practice" as never });
+                    void navigate(practiceAs(profile.id));
                   }}
                 >
                   <span>

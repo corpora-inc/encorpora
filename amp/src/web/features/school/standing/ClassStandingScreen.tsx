@@ -216,7 +216,8 @@ function StudentNumbers({
             <span className={styles.numbersEstimate}>{estimate(student)}</span>
           </span>
           <span className={styles.numbersMeta}>
-            sd {plain(student.sd)} · {student.answered.toLocaleString("en-US")}{" "}
+            sd {plain(student.sd)} ·{" "}
+            {student.answered.toLocaleString("en-US")}{" "}
             {student.answered === 1 ? "answer" : "answers"} · growth{" "}
             {growthWords(student) ?? "not settled yet"}
           </span>

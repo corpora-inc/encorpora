@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 import type { SignedInMe } from "../../../account/contracts";
 import {
@@ -11,6 +11,9 @@ import { useLearnerStore } from "../../learner-store";
 import { practiceProfile } from "../../lib/adult-learner";
 import { request } from "../../lib/api";
 import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+import { closeTo } from "../../lib/return-to";
+import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
+import { classesOptions } from "../school/api";
 
 /* Practice profiles (docs/families.md): the adult practicing as someone else.
    Every change refreshes `/me`, the one store the switcher, the drawer and
@@ -138,7 +141,9 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
     : { own: null, first, label: "Back home", short: "Home" };
 }
 
-/** The profile being practiced as, and the one tap back out of it. */
+/** The profile being practiced as, and the one tap back out of it: to where
+ * the mode was started (`?from=`, features/profiles/practice-mode.ts), else
+ * the adult's own practice or their home. */
 export function usePracticingProfile() {
   const session = useQuery(sessionOptions).data;
   const me = useQuery({
@@ -150,11 +155,28 @@ export function usePracticingProfile() {
   const learnerId = useLearnerStore((state) => state.learnerId);
   const profile = practiceProfile(account, learnerId);
   const navigate = useNavigate();
+  const router = useRouter();
+  const from = modeFrom(
+    useLocation({ select: (location) => location.search }) as Record<
+      string,
+      unknown
+    >,
+  );
   const target = leaveTarget(account);
+  // Its class's name, loaded with the screen (practice-mode.ts).
+  const { org } = modePlace(from);
+  const classes = useQuery({
+    ...classesOptions(session!, org ?? ""),
+    enabled: !!session && !!org && !!profile,
+  }).data;
   return {
     profile,
-    back: target,
+    back: from
+      ? { ...target, ...modeReturnLabel(from, account, classes) }
+      : target,
     leave: () => {
+      // Back where it was started: X, the browser's Back and this agree.
+      if (from) return closeTo(router, from, from);
       const store = useLearnerStore.getState();
       if (target.own) {
         store.select(target.own);
