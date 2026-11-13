@@ -161,6 +161,9 @@ h2.sectionTitle {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
+  /* A 44 px target, its line centred in it. */
+  align-content: center;
+  min-height: 44px;
   justify-self: start;
   gap: 0 var(--space-2);
   border-radius: var(--radius-small);
@@ -342,8 +345,10 @@ h3.optionsTitle {
 }
 
 /* The workbook as a sheet of paper. */
+/* At least a whole workbook's height, so the options under it never move
+   when the contents arrive. */
 .contents {
-  min-height: 420px;
+  min-height: 560px;
   box-sizing: border-box;
   padding: var(--space-6);
   border: 1px solid var(--color-border);
@@ -405,6 +410,9 @@ h3.optionsTitle {
   grid-template-columns: 28px minmax(0, 1fr) auto;
   align-items: baseline;
   gap: var(--space-3);
+  /* Its own spacing from the first paint, never the global list's margin
+     until a later stylesheet resets it (a layout shift). */
+  margin: 0;
   padding: var(--space-3) 0;
   border-top: 1px solid var(--color-border);
 }
@@ -512,7 +520,9 @@ h3.optionsTitle {
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
+  /* Its lines wrap more on a phone. */
   .contents {
+    min-height: 600px;
     padding: var(--space-5) var(--space-4);
   }
   .listActions .today,
@@ -521,7 +531,17 @@ h3.optionsTitle {
   }
 }
 @media (max-width: 439.98px) {
+  /* Download takes the row, the dice beside it, never a line of its own. */
+  .dayActions {
+    flex-wrap: nowrap;
+  }
+  .dayActions .download {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-inline: var(--space-4);
+  }
   .another {
+    flex: none;
     min-width: var(--target-size);
     padding-inline: var(--space-3);
   }
