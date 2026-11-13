@@ -7,7 +7,7 @@ import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Segmented } from "../../../ui/Segmented";
 import { Toast } from "../../../ui/Toast";
 import { ProviderMark } from "../../auth/ProviderButtons";
@@ -142,7 +142,7 @@ export function IntegrationsScreen() {
         }
       />
       {view.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data ? (
         <EmptyState
           title="Integrations didn’t load"

@@ -24,7 +24,7 @@ import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Segmented } from "../../../ui/Segmented";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { currentSession, orgOptions } from "../api";
 import {
   FigureTip,
@@ -481,7 +481,7 @@ export function OverviewScreen() {
   return (
     <OrgFrame orgId={orgId} nav="overview" title="Overview">
       {overview.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !view ? (
         <EmptyState
           title="This overview didn’t load"

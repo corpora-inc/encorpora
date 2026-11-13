@@ -38,11 +38,67 @@
   height: 18px;
 }
 
-/* Full screen over a frame: the first-paint wave, in the same place, on
-   whatever surface the frame already painted. */
+/* The whole-screen wave (`LoadingScreen`). index.html inlines the same rules
+   for the first paint, before any stylesheet; these keep the wave centred
+   wherever React mounts it, whatever document the page started from. */
+.app-loading {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding: 24px;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.app-loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  max-width: 100%;
+}
+.app-loading-mark {
+  display: block;
+  flex: none;
+  width: 56px;
+  height: 36px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  color: var(--color-primary);
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+.app-loading-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.app-loading-body p {
+  margin: 0;
+  max-width: 32ch;
+  line-height: 1.5;
+}
+
+/* A screen's wait inside a frame: the same wave, in the middle of the space
+   under the bar (where the router's pending screen puts it), over whatever
+   the frame already painted. Out of the flow, so nothing moves when it comes
+   or goes, and it fades in after a moment, so a fast response flashes
+   nothing. Outside a frame there is no bar and it centres in the viewport. */
 .app-loading.app-loading-overlay {
   position: fixed;
-  inset: 0;
+  inset: var(--shell-bar, 0px) 0 0;
   min-height: 0;
   background: transparent;
   pointer-events: none;
@@ -134,6 +190,12 @@ a[aria-busy="true"]::after {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .app-loading[aria-busy="true"] .app-loading-wave {
+    animation: amp-loading-wave 1.8s linear infinite;
+  }
+  .app-loading-overlay[aria-busy="true"] {
+    animation: amp-appear 200ms ease-out 160ms both;
+  }
   .amp-wave path {
     animation: amp-loading-wave 1.8s linear infinite;
   }
@@ -175,6 +237,11 @@ a[aria-busy="true"]::after {
   }
 }
 /* One full wavelength per loop, so its endpoints join without a jump. */
+@keyframes amp-loading-wave {
+  to {
+    transform: translateX(-24px);
+  }
+}
 @keyframes amp-wave-flow {
   to {
     -webkit-mask-position:
