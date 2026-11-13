@@ -144,6 +144,7 @@ test(
       assert.equal(saved?.token, a.token);
       assert.equal(saved?.id, a.id);
       assert.equal(saved?.seats, 12);
+      assert.equal(saved?.canEdit, true);
       await assert.rejects(
         classPurchaseRequest(
           repo,
@@ -285,7 +286,17 @@ test(
         orgId: a.orgId,
         classIds: [a.classId, b.classId],
         seats: 24,
+        note: "Private details about the Science class",
       });
+      const coTeacher = await classPurchaseRequest(
+        repo,
+        "fixture-co",
+        a.classId,
+        "fixture-school-token-secret-long-enough",
+      );
+      assert.deepEqual(coTeacher?.classIds, [a.classId]);
+      assert.equal(coTeacher?.note, "");
+      assert.equal(coTeacher?.canEdit, false);
       const app = Fastify();
       await registerSchoolRoutes(app, {
         pool: db,
@@ -302,10 +313,45 @@ test(
         );
         assert.equal(response.statusCode, 200);
         assert.equal(response.json().request.id, requested.id);
+        assert.deepEqual(response.json().request.classIds.sort(), [a.classId]);
+        assert.equal(response.json().request.canEdit, false);
+        assert.equal(response.json().request.note, "");
+        assert.ok(!response.body.includes(b.classId));
+        assert.ok(!response.body.includes("Private details"));
+        assert.equal((await buyerHandoff(db, requested.token)).classCount, 2);
+        await assert.rejects(
+          requestSchoolPurchase(repo, "fixture-co", {
+            orgId: a.orgId,
+            classIds: [a.classId],
+            seats: 12,
+          }),
+          { code: "purchase_scope_conflict" },
+        );
+        const creator = await classPurchaseRequest(
+          repo,
+          "fixture-teacher",
+          a.classId,
+          "fixture-school-token-secret-long-enough",
+        );
+        assert.equal(creator?.canEdit, true);
+        assert.equal(creator?.note, "Private details about the Science class");
         assert.deepEqual(
-          response.json().request.classIds.sort(),
+          creator?.classIds.sort(),
           [a.classId, b.classId].sort(),
         );
+        await db.query(
+          "UPDATE amp_enrollments SET end_on=current_date WHERE class_id=$1 AND person_id IN (SELECT id FROM amp_people WHERE account_id=$2)",
+          [b.classId, "fixture-teacher"],
+        );
+        const formerTeacher = await classPurchaseRequest(
+          repo,
+          "fixture-teacher",
+          a.classId,
+          "fixture-school-token-secret-long-enough",
+        );
+        assert.equal(formerTeacher?.canEdit, false);
+        assert.deepEqual(formerTeacher?.classIds, [a.classId]);
+        assert.equal(formerTeacher?.note, "");
         assert.equal(
           (
             await app.inject(

@@ -205,6 +205,48 @@ async function authorizeClass(
   );
 }
 
+/** Reusable signer details, not permission to authorize another classroom. */
+export async function previousClassAuthorization(
+  db: Pick<PoolClient, "query">,
+  accountId: string,
+  orgId: string,
+) {
+  const org = (
+    await db.query("SELECT path,kind,demo FROM amp_orgs WHERE id=$1", [orgId])
+  ).rows[0];
+  const actor = await loadActor(db, accountId);
+  if (
+    !org ||
+    org.kind !== "school" ||
+    org.demo ||
+    !actor.roles.some(
+      (role) =>
+        org.path.includes(role.orgId) &&
+        (role.role === "teacher" || role.role === "admin") &&
+        !role.family,
+    )
+  )
+    throw new SchoolError(404, "not_found");
+  const authorization = (
+    await db.query(
+      `SELECT a.signer_name,a.signer_title,a.accepted_at,a.version FROM amp_classes c
+    JOIN LATERAL (SELECT account_id,signer_name,signer_title,accepted_at,version,ended_at
+      FROM amp_class_authorizations WHERE class_id=c.id ORDER BY accepted_at DESC,id LIMIT 1) a ON true
+    WHERE c.org_id=$1 AND c.archived_at IS NULL AND a.account_id=$2 AND a.version=$3 AND a.ended_at IS NULL
+    ORDER BY a.accepted_at DESC,c.id LIMIT 1`,
+      [orgId, accountId, AGREEMENT_VERSION],
+    )
+  ).rows[0];
+  return authorization
+    ? {
+        signerName: authorization.signer_name as string,
+        signerTitle: authorization.signer_title as string,
+        acceptedAt: authorization.accepted_at.toISOString() as string,
+        version: authorization.version as string,
+      }
+    : null;
+}
+
 /** Classroom authorization may be supplied by the teacher after provider sync. */
 export async function acceptClassAuthorization(
   repo: SchoolRepository,
@@ -641,19 +683,48 @@ export async function classPurchaseRequest(
     await teachingClass(client, accountId, classId);
     const row = (
       await client.query(
-        `SELECT id,class_ids,seats,note,status,created_at,token_expires_at
+        `SELECT id,account_id,class_ids,seats,note,status,created_at,token_expires_at
       FROM amp_school_purchase_requests WHERE $1=ANY(class_ids) AND status<>'closed'
         AND token_expires_at>now() ORDER BY created_at,id LIMIT 1`,
         [classId],
       )
     ).rows[0];
     if (!row) return null;
+    const actor = await loadActor(client, accountId);
+    const classes = (
+      await client.query(
+        `SELECT c.id,c.org_id,o.path FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        WHERE c.id=ANY($1::uuid[]) AND c.archived_at IS NULL AND o.kind<>'family' AND NOT o.demo`,
+        [row.class_ids],
+      )
+    ).rows;
+    const authorized = new Set(
+      classes
+        .filter((klass) =>
+          can(actor, "classes.update", {
+            kind: "class",
+            classId: klass.id,
+            orgId: klass.org_id,
+            path: klass.path,
+          }),
+        )
+        .map((klass) => klass.id),
+    );
+    // Co-teachers can share the aggregate handoff through their own class.
+    // Class identifiers and edit controls follow their current authority.
+    const classIds = (row.class_ids as string[]).filter((id) =>
+      authorized.has(id),
+    );
+    const fullScope = classIds.length === row.class_ids.length;
     return {
       id: row.id as string,
       token: buyerToken(row.id, secret),
-      classIds: row.class_ids as string[],
+      classIds,
+      canEdit: row.account_id === accountId && fullScope,
       seats: row.seats as number,
-      note: row.note as string,
+      // Notes may name students in another class; the public buyer handoff
+      // deliberately excludes this freeform text as well.
+      note: fullScope ? (row.note as string) : "",
       status: row.status as string,
       createdAt: row.created_at.toISOString() as string,
       expiresAt: row.token_expires_at.toISOString() as string,

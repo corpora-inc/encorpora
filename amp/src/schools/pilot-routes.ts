@@ -10,6 +10,7 @@ import {
   activateClassPilot,
   acceptClassAuthorization,
   revokeClassAuthorization,
+  previousClassAuthorization,
   classPilotState,
   requestSchoolPurchase,
   classPurchaseRequest,
@@ -17,6 +18,19 @@ import {
 } from "./pilots.js";
 
 export function definePilotRoutes(define: typeof defineSchoolRoute) {
+  define({
+    method: "GET",
+    url: "/api/v1/school/orgs/:orgId/class-authorization",
+    action: "org.read",
+    target: ({ params }) => ({ kind: "org", orgId: params.orgId! }),
+    handler: async ({ pool, actor, target }) => ({
+      authorization: await previousClassAuthorization(
+        pool,
+        actor.accountId,
+        target.orgId,
+      ),
+    }),
+  });
   define({
     method: "POST",
     url: "/api/v1/school/classes/:classId/roster/plan",
