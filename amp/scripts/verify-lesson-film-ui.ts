@@ -275,3 +275,7 @@ try {
   await browser.close();
   await fixture.close();
 }
+// The fixture's API child and Vite can hold the event loop open after
+// closing (CI ran 33 minutes past the last PASS); the other fixture checks
+// end the same way.
+process.exit(0);
