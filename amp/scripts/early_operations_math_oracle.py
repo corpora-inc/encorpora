@@ -170,7 +170,7 @@ def solve_two_step(prompt, figure):
         mid = apply(s, '+', a)
         require(mid <= 100 and t <= mid, 'Story outside one hundred')
         return apply(mid, '−', t), 'add-remove'
-    m = re.fullmatch(r'A bus has (\d+) people\. At a stop, (\d+) gets? off and then (\d+) gets? on\. How many people are on the bus now\?', prompt)
+    m = re.fullmatch(r'A bus has (\d+) people\. At a stop, (\d+)(?: people| person)? gets? off and then (\d+)(?: people| person)? gets? on\. How many people are on the bus now\?', prompt)
     if m:
         s, off, on = map(int, m.groups())
         chain(figure, s, [('−', off), ('+', on)], None)

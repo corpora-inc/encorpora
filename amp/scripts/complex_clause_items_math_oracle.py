@@ -107,13 +107,37 @@ def solve_plot(public):
     return json.dumps([[a, b]], separators=(',', ':'))
 
 
+def review_modulus_hint(public, hint):
+    """The hint is written from its own z: it may name z and its parts, never
+    the conjugate, the product z times its conjugate, or the length."""
+    body = re.search(r'Let \$z=(.+?)\$', public['prompt'])[1]
+    z = num(body)
+    real, imag = z.parts()
+    product = z * z.conj()
+    root = product.rational()
+    s = 0
+    while s * s < root:
+        s += 1
+    modulus = num(str(s)) if s * s == root else _radical(int(root))
+    for segment in re.findall(r'\$([^$]+)\$', hint):
+        try:
+            value = num(segment)
+        except (ValueError, TypeError, KeyError, IndexError):
+            continue
+        require(value not in (z.conj(), product, modulus), f'Modulus hint states {segment}')
+    require('\\sqrt' not in hint, 'Modulus hint states a root')
+    givens = {str(abs(int(part.rational()))) for part in (real, imag)}
+    rest = hint.replace(body, ' ').replace('i^2', ' ')
+    for numeral in re.findall(r'\d+', rest):
+        require(numeral in givens, f'Modulus hint states {numeral}, not a part of z')
+
+
 def review_problem(problem):
     public = problem['public']
     expected = solve(public)
     require(expected == problem['answer'], 'Clause item answer mismatch')
     if public['templateId'] == 'complex-modulus-via-conjugate':
-        hint = problem.get('hint', '')
-        require(not re.search(r'\d', hint), 'Modulus hint contains a digit')
+        review_modulus_hint(public, problem.get('hint', ''))
         joined = '\n'.join(problem.get('explanation', []))
         require('z\\bar z=|z|^2' in joined, 'Explanation misses the square of the length')
     if public['templateId'] == 'complex-axis-number-plot':
@@ -195,6 +219,15 @@ def self_test():
         'explanation': ['For any complex number $z$, $z\\bar z=|z|^2$, so the length follows.'],
     }
     review_problem(problem)
+    # A hint written from its own z names it and its parts; one that states
+    # the conjugate, the product or the length is rejected.
+    review_problem({**problem, 'hint': 'For $z=5 - 12i$, keep the real part, $5$, and flip the sign of $12i$. Watch the $i^2$ corner.'})
+    for leak in ('The conjugate is $5 + 12i$.', 'The product is $169$.', 'So the length is 13.', 'The length is $\\sqrt{169}$.'):
+        try:
+            review_problem({**problem, 'hint': f'For $z=5 - 12i$, flip the sign. {leak}'})
+        except ValueError:
+            continue
+        raise ValueError(f'Accepted a hint that states the answer: {leak}')
     return {'fixtures': 3}
 
 

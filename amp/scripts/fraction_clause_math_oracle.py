@@ -140,7 +140,7 @@ def solve_clause(public):
         require(top % b != 0, "Not a whole number of pounds")
         return multipart(public, [("pounds", f"{top}/{b}"), ("bounds", f"{floor} and {floor + 1}")])
     if template == "whole-sharing-fraction" and "pound sack" in prompt:
-        b, a = map(int, re.fullmatch(r"(\d+) people share a (\d+)-pound sack equally\. Choose each share, the wholes it lies between, and the check\.", prompt).groups())
+        b, a = map(int, re.fullmatch(r"(\d+) people share an? (\d+)-pound sack equally\. Choose each share, the wholes it lies between, and the check\.", prompt).groups())
         w, rem = divmod(a, b)
         require(rem != 0 and a > b, "Mixed share")
         return multipart(public, [
@@ -156,7 +156,7 @@ def solve_clause(public):
         model = re.fullmatch(r"Which picture shows (\d+)/(\d+) × (\d+)\?", prompt)
         if model:
             n, d, total = map(int, model.groups())
-            return choose_label(public, f"{total} bars, each cut into {d}, with {n} pieces shaded.")
+            return choose_label(public, f"{total} bars, each cut into {d}, with {n} {'piece' if n == 1 else 'pieces'} shaded.")
         part = re.fullmatch(r"Mia uses (\d+)/(\d+) of a ribbon that is (\d+)/(\d+) m long\. Complete the steps\.", prompt)
         if part:
             a, b, c, d = map(int, part.groups())

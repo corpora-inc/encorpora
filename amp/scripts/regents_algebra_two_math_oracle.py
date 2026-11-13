@@ -971,8 +971,10 @@ def solve_event_complement(public, prompt):
             'not in A or B': space - (a | b),
             'not in both A and B': space - (a & b),
         }
-        require(selected[2] in ops, 'Unknown set description')
-        target = frozenset(ops[selected[2]])
+        # Event names may be typeset: "in $A$ and not in $B$".
+        description = selected[2].replace('$', '')
+        require(description in ops, 'Unknown set description')
+        target = frozenset(ops[description])
         keys = []
         for o in options:
             mm = re.fullmatch(r'\{(.*)\}', plain(o['label']))

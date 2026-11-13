@@ -7,6 +7,7 @@ import {
   triangleProofVariants,
 } from "../src/math/geometric-proof-clauses";
 import type { GeneratedProblem, TemplateMetadata } from "../src/math/contracts";
+import { generateProblem } from "../src/math/engine";
 
 test("independent public-payload oracle checks every clause and rejects changed keys", (t) => {
   const problems: GeneratedProblem[] = [];
@@ -80,4 +81,24 @@ test("independent public-payload oracle checks every clause and rejects changed 
   );
   inverse.public.prompt = inverse.public.prompt.replace("{x/2}", "{x/3}");
   rejects(inverse, "A false public inverse claim was accepted");
+});
+
+test("the sector check reads a singular radian count", () => {
+  // Counts agree with their noun ("1 radian", "1.5 radians"); the oracle must
+  // read both, and still check the area each one implies.
+  const prompts = new Map<string, GeneratedProblem>();
+  for (let i = 0; i < 256 && prompts.size < 2; i++) {
+    const problem = generateProblem("arc-sector-derivation", `independent-${i}`);
+    const found = /and angle \d+(?:\.\d+)? (radians?)\.$/.exec(
+      problem.public.prompt,
+    );
+    if (found && !prompts.has(found[1]!)) prompts.set(found[1]!, problem);
+  }
+  assert.deepEqual([...prompts.keys()].sort(), ["radian", "radians"]);
+  const run = spawnSync("python3", ["scripts/clause_coverage_oracle.py"], {
+    input: [...prompts.values()].map((p) => JSON.stringify(p)).join("\n"),
+    encoding: "utf8",
+  });
+  assert.equal(run.status, 0, run.stderr || run.stdout);
+  assert.match(run.stdout, /2 cases passed/);
 });

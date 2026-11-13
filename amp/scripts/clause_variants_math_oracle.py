@@ -800,7 +800,7 @@ def equation_sides(text):
 def solution_count(public):
     """Grouped both-sides equation, solution-count clause: its sides as linear
     expressions, and what is left once the x terms are gathered."""
-    found = re.fullmatch(r"Transform \$(.+)\$ one stage at a time until you reach x = a, a = a, or a = b\. Then say how many solutions it has\.",
+    found = re.fullmatch(r"Transform \$(.+)\$ one stage at a time until you reach \$?x = a\$?, \$?a = a\$?, or \$?a = b\$?\. Then say how many solutions it has\.",
                          public["prompt"])
     require(found is not None, "A grouped equation to transform")
     (a, b), (c, d) = start = equation_sides(found[1])

@@ -473,7 +473,9 @@ class LinearSystemReview:
         import json
         template = public['templateId']
         require(set(public)=={'id','templateId','templateVersion','seed','skillId','prompt','response'} and
-                public['templateVersion']==1 and public['skillId']=='linear-systems',
+                # The count family is version 2 and reprints version 1's
+                # systems, so its identity digest still names version 1.
+                public['templateVersion']==(2 if template==COUNT else 1) and public['skillId']=='linear-systems',
                 'Unexpected public system payload or metadata')
         material=json.dumps([template,1,public['seed']],separators=(',',':'),ensure_ascii=False)
         require(public['id']==hashlib.sha256(material.encode()).hexdigest(), 'Incorrect full system identity digest')
