@@ -1,5 +1,6 @@
 # Deployment template: substitute the release image and worker Secret name.
 # This is a separate pod, never an exec, sidecar, or child of the serving API.
+# The worker Secret supplies AMP_CLEVER_API_VERSION, matching the API deployment.
 apiVersion: batch/v1
 kind: CronJob
 metadata:

@@ -106,7 +106,8 @@ export async function syncCleverConnection(
   const runId = randomUUID();
   const lock = `clever-run:${connectionId}`;
   let locked = false,
-    running = false;
+    running = false,
+    transactionOpen = false;
   try {
     locked = (
       await db.query(
@@ -209,6 +210,7 @@ export async function syncCleverConnection(
     }
     if (snapshot) snapshot = validateSnapshot(snapshot, connection.district_id);
     await db.query("BEGIN");
+    transactionOpen = true;
     await db.query("SET LOCAL lock_timeout='5s'");
     await db.query("SET LOCAL statement_timeout='120s'");
     await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
@@ -273,9 +275,11 @@ export async function syncCleverConnection(
       [connectionId],
     );
     await db.query("COMMIT");
+    transactionOpen = false;
     return { runId, mode, counts, cursor };
   } catch (error) {
     await db.query("ROLLBACK");
+    transactionOpen = false;
     const code = safeSyncError(error);
     if (running) {
       await db.query(
@@ -283,50 +287,70 @@ export async function syncCleverConnection(
         next_attempt_at=now()+interval '1 minute'*power(2,CASE WHEN failure_code=$2 THEN least(failure_count,9) ELSE 0 END),failure_code=$2 WHERE id=$1`,
         [connectionId, code],
       );
-      if (
-        ["district_not_authorized", "clever_district_revoked"].includes(code)
-      ) {
-        await db.query("BEGIN");
-        await db.query("SET LOCAL lock_timeout='5s'");
-        await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-          `clever-sync:${connectionId}`,
-        ]);
-        const row = (
+      try {
+        if (
+          ["district_not_authorized", "clever_district_revoked"].includes(code)
+        ) {
+          await db.query("BEGIN");
+          transactionOpen = true;
+          await db.query("SET LOCAL lock_timeout='5s'");
           await db.query(
-            `SELECT c.tenant_id,to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS day
+            "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+            [`clever-sync:${connectionId}`],
+          );
+          const row = (
+            await db.query(
+              `SELECT c.tenant_id,to_char($2::timestamptz AT TIME ZONE o.timezone,'YYYY-MM-DD') AS day
           FROM amp_clever_connections c JOIN amp_orgs o ON o.id=c.tenant_id WHERE c.id=$1 FOR UPDATE OF c`,
-            [connectionId, now],
-          )
-        ).rows[0];
-        if (row) {
-          await endMissingMemberships(db, connectionId, runId, row.day);
-          await db.query(
-            `UPDATE amp_clever_connections SET status='disconnected',disconnected_at=$2 WHERE id=$1`,
-            [connectionId, now],
-          );
-          await db.query(
-            `UPDATE amp_clever_bindings SET archived_at=COALESCE(archived_at,$2) WHERE connection_id=$1`,
-            [connectionId, now],
-          );
-          await db.query(
-            `UPDATE amp_classes c SET archived_at=COALESCE(c.archived_at,$2) FROM amp_clever_bindings b
+              [connectionId, now],
+            )
+          ).rows[0];
+          if (row) {
+            await endMissingMemberships(db, connectionId, runId, row.day);
+            await db.query(
+              `UPDATE amp_clever_connections SET status='disconnected',disconnected_at=$2 WHERE id=$1`,
+              [connectionId, now],
+            );
+            await db.query(
+              `UPDATE amp_clever_bindings SET archived_at=COALESCE(archived_at,$2) WHERE connection_id=$1`,
+              [connectionId, now],
+            );
+            await db.query(
+              `UPDATE amp_classes c SET archived_at=COALESCE(c.archived_at,$2) FROM amp_clever_bindings b
           WHERE b.connection_id=$1 AND b.kind='section' AND c.id=b.local_id`,
-            [connectionId, now],
-          );
+              [connectionId, now],
+            );
+          }
+          await db.query("COMMIT");
+          transactionOpen = false;
         }
-        await db.query("COMMIT");
+      } finally {
+        if (transactionOpen) {
+          await db.query("ROLLBACK");
+          transactionOpen = false;
+        }
+        await db.query(
+          "UPDATE amp_clever_sync_runs SET status='failed',finished_at=$2,error_code=$3 WHERE id=$1",
+          [runId, new Date(), code],
+        );
       }
-      await db.query(
-        "UPDATE amp_clever_sync_runs SET status='failed',finished_at=$2,error_code=$3 WHERE id=$1",
-        [runId, new Date(), code],
-      );
     }
     throw new CleverSyncError(code);
   } finally {
-    if (locked)
-      await db.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
-        lock,
-      ]);
-    if (!options.db) db.release();
+    let broken = false;
+    try {
+      // Revocation cleanup can itself time out. Recover its failed transaction
+      // before releasing session locks or returning the connection to the pool.
+      if (transactionOpen) await db.query("ROLLBACK");
+      if (locked)
+        await db.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
+          lock,
+        ]);
+    } catch (error) {
+      broken = true;
+      throw error;
+    } finally {
+      if (!options.db) db.release(broken);
+    }
   }
 }

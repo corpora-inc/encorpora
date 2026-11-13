@@ -14,7 +14,10 @@ import { registerCleverConnection } from "../src/schools/clever/connection.js";
 import { registerCleverOnboarding } from "../src/schools/clever-onboarding.js";
 import { establishProviderPrincipal } from "../src/identity/provider-principals.js";
 import { syncCleverConnection } from "../src/schools/clever/sync.js";
-import { runDueCleverSync } from "../src/schools/clever/worker.js";
+import {
+  cleverSyncCandidates,
+  runDueCleverSync,
+} from "../src/schools/clever/worker.js";
 import { CleverSyncError, type Snapshot } from "../src/schools/clever/model.js";
 
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
@@ -61,6 +64,186 @@ const snapshot: Snapshot = {
   courses: [],
   terms: [],
 };
+
+test(
+  "an interrupted district yields the next pass to unattempted and older districts",
+  enabled,
+  () =>
+    fixture(async (db, repo, interrupted) => {
+      const ids: string[] = [];
+      for (const digit of ["3", "4"]) {
+        const org = await repo.createOrg(
+          { kind: "district", name: "Fixture", timezone: "UTC" },
+          { version: "fixture", signerName: "Fixture", signerTitle: "Admin" },
+        );
+        ids.push(
+          (
+            await registerCleverConnection(db, {
+              environment: "sandbox",
+              districtId: digit.repeat(24),
+              tenantId: org.id,
+            })
+          ).id,
+        );
+      }
+      const [older, fresh] = ids as [string, string];
+      await db.query(
+        "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,started_at) VALUES($1,$2,'full','running',now())",
+        [randomUUID(), interrupted],
+      );
+      await db.query(
+        "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,started_at) VALUES($1,$2,'full','succeeded',now()-interval '1 day')",
+        [randomUUID(), older],
+      );
+      await db.query(
+        "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,counts) VALUES($1,$2,'full','succeeded','{\"bootstrap\":1}')",
+        [randomUUID(), fresh],
+      );
+      assert.deepEqual(
+        (await cleverSyncCandidates(db, "sandbox")).map((c) => c.id),
+        [fresh, older, interrupted],
+      );
+      const client = {
+        districtToken: async () => "fixture",
+        snapshot: async (district: string) => ({
+          ...snapshot,
+          district: { id: district, name: "Fixture" },
+        }),
+        events: async () => [],
+        latestEvent: async () => null,
+      };
+      await runDueCleverSync(db, fresh, client);
+      await runDueCleverSync(db, older, client);
+      assert.equal(
+        (await cleverSyncCandidates(db, "sandbox"))[0]?.id,
+        interrupted,
+      );
+      await runDueCleverSync(db, interrupted, client);
+      assert.equal(
+        (
+          await db.query(
+            "SELECT error_code FROM amp_clever_sync_runs WHERE connection_id=$1 AND status='failed'",
+            [interrupted],
+          )
+        ).rows[0].error_code,
+        "clever_worker_interrupted",
+      );
+      await db.query(
+        "UPDATE amp_clever_connections SET sync_paused=true WHERE id=$1",
+        [older],
+      );
+      assert.equal(
+        (await cleverSyncCandidates(db, "sandbox")).some((c) => c.id === older),
+        false,
+      );
+      assert.deepEqual(await cleverSyncCandidates(db, "sandbox", older), [
+        { id: older },
+      ]);
+    }),
+);
+
+test(
+  "worker status distinguishes queue delay, stale attempts, backoff and completion",
+  enabled,
+  () =>
+    fixture(async (db, _repo, id) => {
+      const session = await establishProviderPrincipal(
+        db,
+        {
+          environment: "sandbox",
+          districtId: D,
+          userId: U,
+          roles: ["teacher"],
+          schools: [],
+        },
+        null,
+      );
+      const app = Fastify();
+      await registerCleverOnboarding(app, {
+        pool: db,
+        authenticate: async () => session.accountId,
+        config: null,
+        worker: false,
+        maintenance: false,
+      });
+      const status = async () => {
+        const response = await app.inject({
+          url: "/api/v1/school/clever/status",
+          headers: { authorization: `Bearer ${session.token}` },
+        });
+        assert.equal(response.statusCode, 200, response.body);
+        return response.json().connection;
+      };
+      try {
+        assert.equal((await status()).syncState, "idle");
+        await db.query(
+          "UPDATE amp_clever_connections SET sync_requested_at=now() WHERE id=$1",
+          [id],
+        );
+        assert.equal((await status()).syncState, "queued");
+        await db.query(
+          "UPDATE amp_clever_connections SET sync_requested_at=now()-interval '6 minutes' WHERE id=$1",
+          [id],
+        );
+        await db.query(
+          "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,counts) VALUES($1,$2,'full','succeeded','{\"bootstrap\":1}')",
+          [randomUUID(), id],
+        );
+        const delayed = await status();
+        assert.equal(delayed.syncState, "delayed");
+        assert.equal(
+          delayed.lastAttemptAt,
+          null,
+          "bootstrap is not worker readiness evidence",
+        );
+        const run = randomUUID();
+        await db.query(
+          "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','running')",
+          [run, id],
+        );
+        assert.equal((await status()).syncState, "running");
+        await db.query(
+          "UPDATE amp_clever_sync_runs SET started_at=now()-interval '31 minutes' WHERE id=$1",
+          [run],
+        );
+        assert.equal((await status()).syncState, "delayed");
+        assert.equal((await status()).syncing, false);
+        await db.query(
+          "UPDATE amp_clever_sync_runs SET status='failed',error_code='clever_sync_failed' WHERE id=$1",
+          [run],
+        );
+        await db.query(
+          "UPDATE amp_clever_connections SET next_attempt_at=now()+interval '10 minutes' WHERE id=$1",
+          [id],
+        );
+        const retry = await status();
+        assert.equal(retry.syncState, "retrying");
+        assert.ok(retry.nextAttemptAt);
+        assert.equal(retry.lastError, "clever_sync_failed");
+        await db.query(
+          "UPDATE amp_clever_connections SET next_attempt_at=now()-interval '1 minute' WHERE id=$1",
+          [id],
+        );
+        assert.equal((await status()).syncState, "queued");
+        await db.query(
+          "UPDATE amp_clever_connections SET next_attempt_at=now()-interval '6 minutes' WHERE id=$1",
+          [id],
+        );
+        assert.equal((await status()).syncState, "delayed");
+        await db.query(
+          "UPDATE amp_clever_sync_runs SET status='succeeded',error_code=NULL WHERE id=$1",
+          [run],
+        );
+        await db.query(
+          "UPDATE amp_clever_connections SET next_attempt_at=NULL,sync_requested_at=NULL,last_sync_at=now() WHERE id=$1",
+          [id],
+        );
+        assert.equal((await status()).syncState, "ready");
+      } finally {
+        await app.close();
+      }
+    }),
+);
 
 test(
   "H3/M2: API sync only queues, requires an admin and throttles the connection",
@@ -292,6 +475,95 @@ test(
         ).rows[0].status,
         "active",
       );
+    }),
+);
+
+test(
+  "revocation cleanup timeout releases the worker connection and locks",
+  enabled,
+  () =>
+    fixture(async (db, repo, id, orgId) => {
+      const person = await repo.addStaff({
+        orgId,
+        role: "teacher",
+        givenName: "Fixture",
+      });
+      const role = (
+        await db.query("SELECT id FROM amp_org_roles WHERE person_id=$1", [
+          person.personId,
+        ])
+      ).rows[0].id;
+      const run = randomUUID();
+      await db.query(
+        "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')",
+        [run, id],
+      );
+      await db.query(
+        "INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id) VALUES($1,'org_role','fixture',$2,true,$3)",
+        [id, role, run],
+      );
+      const locker = await db.connect();
+      try {
+        await locker.query("BEGIN");
+        await locker.query(
+          "SELECT id FROM amp_org_roles WHERE id=$1 FOR UPDATE",
+          [role],
+        );
+        await assert.rejects(
+          runDueCleverSync(db, id, {
+            districtToken: async () => {
+              throw new CleverSyncError("district_not_authorized");
+            },
+            snapshot: async () => snapshot,
+            events: async () => [],
+            latestEvent: async () => null,
+          }),
+          (error: unknown) => (error as { code?: string }).code === "55P03",
+        );
+        assert.equal(
+          db.totalCount - db.idleCount,
+          1,
+          "only the test's blocker may hold a pooled connection",
+        );
+        assert.equal(
+          (
+            await db.query(
+              "SELECT status FROM amp_clever_sync_runs WHERE connection_id=$1 ORDER BY started_at DESC LIMIT 1",
+              [id],
+            )
+          ).rows[0].status,
+          "failed",
+        );
+        for (const key of [
+          `clever-run:${id}`,
+          `clever-worker:${id}`,
+          `clever-sync:${id}`,
+        ]) {
+          assert.equal(
+            (
+              await locker.query(
+                "SELECT pg_try_advisory_xact_lock(hashtextextended($1,0)) AS ok",
+                [key],
+              )
+            ).rows[0].ok,
+            true,
+            key,
+          );
+        }
+        assert.equal(
+          (
+            await db.query(
+              "SELECT status FROM amp_clever_connections WHERE id=$1",
+              [id],
+            )
+          ).rows[0].status,
+          "active",
+          "failed cleanup must not partially disconnect",
+        );
+      } finally {
+        await locker.query("ROLLBACK");
+        locker.release();
+      }
     }),
 );
 

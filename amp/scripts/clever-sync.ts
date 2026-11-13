@@ -1,4 +1,7 @@
-import { runDueCleverSync } from "../src/schools/clever/worker.js";
+import {
+  cleverSyncCandidates,
+  runDueCleverSync,
+} from "../src/schools/clever/worker.js";
 import { pathToFileURL } from "node:url";
 import { createDatabasePool } from "../src/server/database.js";
 import {
@@ -56,13 +59,11 @@ export async function cleverSyncCommand(
       clientSecret: env.AMP_CLEVER_CLIENT_SECRET ?? "",
       apiVersion: cleverApiVersion(env.AMP_CLEVER_API_VERSION),
     });
-    const rows = (
-      await pool.query(
-        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active' AND (NOT sync_paused OR sync_requested_at IS NOT NULL OR $2::text IS NOT NULL)
-      AND ($2::text IS NULL OR id::text=$2) ORDER BY created_at,id`,
-        [environment, rest[0] && rest[0] !== "all" ? rest[0] : null],
-      )
-    ).rows;
+    const rows = await cleverSyncCandidates(
+      pool,
+      environment,
+      rest[0] && rest[0] !== "all" ? rest[0] : null,
+    );
     if (rest[0] && rest[0] !== "all" && !rows.length)
       throw new Error("Clever connection not found");
     const results = [];

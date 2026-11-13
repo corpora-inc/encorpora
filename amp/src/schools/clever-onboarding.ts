@@ -209,13 +209,25 @@ export async function registerCleverOnboarding(
       const connection = identity
         ? ((
             await pool.query(
-              `SELECT id,tenant_id AS "orgId",status,sync_paused AS "syncPaused",
+              `SELECT c.id,tenant_id AS "orgId",c.status,sync_paused AS "syncPaused",
         (SELECT m.bootstrap_valid_until FROM amp_clever_memberships m JOIN amp_org_roles r ON r.id=m.local_id AND r.role='admin'
          JOIN amp_clever_bindings b ON b.connection_id=m.connection_id AND b.local_id=r.person_id AND b.kind='user' AND b.clever_id=$3
          WHERE m.connection_id=c.id AND m.kind='org_role' AND m.owned LIMIT 1) AS "bootstrapValidUntil",last_sync_at AS "lastSyncAt",launch_date::text AS "launchDate",
-        (SELECT error_code FROM amp_clever_sync_runs r WHERE r.connection_id=c.id ORDER BY started_at DESC,id DESC LIMIT 1) AS "lastError",
-        EXISTS(SELECT 1 FROM amp_clever_sync_runs r WHERE r.connection_id=c.id AND r.status='running') AS syncing
-        FROM amp_clever_connections c WHERE environment=$1 AND district_id=$2`,
+        attempt.error_code AS "lastError",sync_requested_at AS "syncRequestedAt",
+        next_attempt_at AS "nextAttemptAt",attempt.started_at AS "lastAttemptAt",
+        COALESCE(attempt.status='running' AND attempt.started_at>now()-interval '30 minutes',false) AS syncing,
+        CASE WHEN c.status<>'active' THEN 'idle'
+          WHEN attempt.status='running' THEN CASE WHEN attempt.started_at>now()-interval '30 minutes' THEN 'running' ELSE 'delayed' END
+          WHEN next_attempt_at IS NOT NULL THEN CASE WHEN next_attempt_at>now() THEN 'retrying'
+            WHEN next_attempt_at>now()-interval '5 minutes' THEN 'queued' ELSE 'delayed' END
+          WHEN sync_requested_at IS NOT NULL THEN CASE WHEN sync_requested_at>now()-interval '5 minutes' THEN 'queued' ELSE 'delayed' END
+          WHEN last_sync_at IS NOT NULL OR attempt.status='succeeded' THEN 'ready'
+          ELSE 'idle' END AS "syncState"
+        FROM amp_clever_connections c LEFT JOIN LATERAL (
+          SELECT started_at,status,error_code FROM amp_clever_sync_runs r
+          WHERE r.connection_id=c.id AND NOT (r.counts ? 'bootstrap')
+          ORDER BY started_at DESC,id DESC LIMIT 1
+        ) attempt ON true WHERE environment=$1 AND district_id=$2`,
               [identity.environment, identity.districtId, identity.userId],
             )
           ).rows[0] ?? null)
