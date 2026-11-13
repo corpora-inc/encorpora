@@ -1,3 +1,4 @@
+import type { Entity } from "../../../nav/entities";
 import { Link } from "@tanstack/react-router";
 import type { StudentRecordResponse } from "../../../../schools/teacher-contracts";
 import { Badge } from "../../../ui/Badge";
@@ -37,7 +38,7 @@ export function StudentSections({
   org: string;
   single?: boolean;
   /** Where one answer's replay lives, without the leading slash. */
-  workPath?: (attempt: string) => string;
+  workPath?: (attempt: string) => string | Entity;
 }) {
   const first = data.student.first;
   const weeks = data.weeks.filter((week) => week.minutes > 0);
@@ -102,7 +103,7 @@ export function StudentSections({
       {data.objectives.length > 0 && (
         <section className={styles.recordSection}>
           <h2>Skills shown on their own</h2>
-          <RecordObjectives record={data} />
+          <RecordObjectives record={data} openSkills />
         </section>
       )}
       {data.work.length > 0 && (

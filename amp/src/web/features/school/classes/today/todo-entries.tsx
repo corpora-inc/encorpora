@@ -6,7 +6,9 @@ import type {
 } from "../../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../../ui/Button";
 import type { FeedEntry } from "./Feed";
-import { classUrl, studentUrl } from "../teacher-shared";
+import { classUrl } from "../teacher-shared";
+import { EntityLink } from "../../../../nav/links";
+import { work, type Entity } from "../../../../nav/entities";
 
 /** A check is for today, on this device: the list is back tomorrow if it's
  * still true. */
@@ -74,20 +76,28 @@ export function TodoAction({
   const miss = todo.misses?.find((entry) =>
     action.kind === "student" ? entry.personId === action.personId : false,
   );
-  const target =
-    action.kind === "skill"
-      ? { to: `pathways/${action.skillId}`, search: {} }
-      : action.kind === "student"
-        ? miss
-          ? missTarget(org, classId, miss)
-          : {
-              to: studentUrl(org, action.personId, classId),
-              search: {},
-            }
-        : {
-            to: classUrl(org, classId, action.tab as ClassTabId | "start"),
-            search: action.tab === "settings" ? { add: 1 } : {},
-          };
+  // A skill, a student or one of their answers opens over Today: Today
+  // stays, and closing comes back to it (nav/entities.ts).
+  if (action.kind === "skill" || action.kind === "student")
+    return (
+      <EntityLink
+        entity={
+          action.kind === "skill"
+            ? { kind: "skill", id: action.skillId }
+            : miss
+              ? missLayers(miss)
+              : { kind: "student", id: action.personId }
+        }
+        with={miss ? { skill: miss.skillId } : undefined}
+        className={buttonClass(look)}
+      >
+        {action.label}
+      </EntityLink>
+    );
+  const target = {
+    to: classUrl(org, classId, action.tab as ClassTabId | "start"),
+    search: action.tab === "settings" ? { add: 1 } : {},
+  };
   return (
     <Link
       to="/$"
@@ -101,12 +111,12 @@ export function TodoAction({
 }
 
 type Miss = NonNullable<TodayTodo["misses"]>[number];
-/** A student's latest miss, replayed over the class map; Previous and Next
- * stay on the skill. */
-const missTarget = (org: string, classId: string, miss: Miss) => ({
-  to: `${studentUrl(org, miss.personId, classId)}/work/${miss.attempt}`,
-  search: { skill: miss.skillId },
-});
+/** A student's latest miss, replayed over Today with their record under
+ * it; Previous and Next stay on the skill. */
+const missLayers = (miss: Miss): Entity[] => [
+  { kind: "student", id: miss.personId },
+  work(miss.personId, miss.attempt),
+];
 /** "Keeps missing": each student's misses, one link each, unless the item's
  * own action already opens them. */
 function MissLinks({
@@ -129,17 +139,15 @@ function MissLinks({
   return (
     <>
       {misses.map((miss) => {
-        const target = missTarget(org, classId, miss);
         const name = names.get(miss.personId)?.split(" ")[0] ?? "Student";
         return (
-          <Link
+          <EntityLink
             key={miss.personId}
-            to="/$"
-            params={{ _splat: target.to }}
-            search={target.search as never}
+            entity={missLayers(miss)}
+            with={{ skill: miss.skillId }}
           >
             {`${name}’s misses`}
-          </Link>
+          </EntityLink>
         );
       })}
     </>

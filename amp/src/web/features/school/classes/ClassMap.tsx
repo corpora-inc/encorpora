@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { EntityLink } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
 import type {
@@ -249,16 +249,13 @@ export function ClassMap({
             data-strand={lens === "overall" ? undefined : lens}
           >
             <span role="cell" className={styles.name}>
-              <Link
-                to="/$"
-                params={{
-                  _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${row.student.id}`,
-                }}
+              <EntityLink
+                entity={{ kind: "student", id: row.student.id }}
                 className={styles.student}
                 data-map-student={row.student.id}
               >
                 {row.student.name}
-              </Link>
+              </EntityLink>
             </span>
             <span
               role="cell"
@@ -393,16 +390,13 @@ function SmallClassMap({
           >
             <div className={styles.learnerHead}>
               <h2 id={`map-${student.id}`} className={styles.learnerName}>
-                <Link
-                  to="/$"
-                  params={{
-                    _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${student.id}`,
-                  }}
+                <EntityLink
+                  entity={{ kind: "student", id: student.id }}
                   className={styles.student}
                   data-map-student={student.id}
                 >
                   {student.name}
-                </Link>
+                </EntityLink>
               </h2>
               {!overall.estimated && (
                 <p className={styles.learnerLevel}>

@@ -77,6 +77,7 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
+import { OPEN_KEY, pushLayer, work, writeStack } from "../nav/entities";
 import {
   adoptPracticeMode,
   isLearningPath,
@@ -448,9 +449,13 @@ const home = createRoute({
         )
           throw redirect({ to: "/access" });
         // Arriving at `/` opens where this person last worked: a school, or
-        // their family side. Back and Forward reopen what `/` showed then.
-        if (me?.signedIn && !traversing()) {
-          const place = homePlace(me, rememberedPlace(me.account.id));
+        // their family side. Back and Forward reopen what `/` showed then,
+        // and for a place that is the place again: `/` never shows a
+        // place's account its first run (docs/design/ia.md, Navigation).
+        const place = me?.signedIn
+          ? homePlace(me, rememberedPlace(me.account.id))
+          : null;
+        if (me?.signedIn && place && (!traversing() || place !== "home")) {
           if (place === "me")
             throw redirect({ to: "/me", replace: true } as never);
           // A family's side is its class, once a child can practice; until
@@ -960,43 +965,44 @@ const schoolClassMap = createRoute({
   loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
-/** One student, in a sheet over the class map: the class's tabs stay. A
- * child of the map, so the map under it stays mounted, with its scroll and
- * its table's place; the map draws the sheet from this route's param. */
+/** The class map's student and answer addresses from before layers
+ * (`map/<student>`, `map/<student>/work/<answer>`): a link or a history
+ * entry still opens them, as layers over the map (nav/entities.ts). */
 const schoolClassMapStudent = createRoute({
   getParentRoute: () => schoolClassMap,
   path: "$student",
-  staticData: { overList: true },
-  component: () => null,
+  beforeLoad: ({ params, search }) => {
+    throw redirect({
+      to: "/school/$org/classes/$class/map",
+      params,
+      search: {
+        ...(search as Record<string, unknown>),
+        [OPEN_KEY]: pushLayer(undefined, {
+          kind: "student",
+          id: params.student,
+        }),
+      } as never,
+      replace: true,
+    });
+  },
 });
-/** One of that student's answers, replayed over the map (WorkReplay.tsx):
- * Back returns to their sheet. Its data and the practice screen it draws
- * with arrive before it paints. */
-/** A student's answer, replayed over the class map: under the student's
- * sheet, so the map under it stays mounted with its view. */
 const schoolClassMapWork = createRoute({
   getParentRoute: () => schoolClassMapStudent,
   path: "work/$work",
-  staticData: { overList: true },
-  loader: async (input) => {
-    const session = (input.context as { session: AuthSession }).session;
-    const { workReplayOptions } =
-      await import("../features/school/classes/teacher-api");
-    const skill = new URLSearchParams(input.location.searchStr).get("skill");
-    await Promise.all([
-      mapLoader(input),
-      preload(
-        workReplayOptions(
-          session,
-          input.params.student,
-          input.params.work,
-          skill ?? undefined,
-        ),
-      ),
-      import("../features/school/classes/WorkReplay"),
-    ]);
+  beforeLoad: ({ params, search }) => {
+    throw redirect({
+      to: "/school/$org/classes/$class/map",
+      params,
+      search: {
+        ...(search as Record<string, unknown>),
+        [OPEN_KEY]: writeStack([
+          { kind: "student", id: params.student },
+          work(params.student, params.work),
+        ]),
+      } as never,
+      replace: true,
+    });
   },
-  component: () => null,
 });
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,

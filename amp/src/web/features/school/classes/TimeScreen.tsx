@@ -1,3 +1,4 @@
+import { EntityLink } from "../../../nav/links";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
@@ -46,7 +47,6 @@ import {
   number,
   parseSort,
   shortDay,
-  studentUrl,
   TipZone,
   useClassSearch,
 } from "./teacher-shared";
@@ -295,15 +295,12 @@ function DaySheet({
       ) : (
         <div className={styles.evidence}>
           <TimeDetail time={data} who={data.student.name} />
-          <Link
-            to="/$"
-            params={{
-              _splat: studentUrl(place.org, data.student.id, place.class),
-            }}
+          <EntityLink
+            entity={{ kind: "student", id: data.student.id }}
             className={buttonClass("quiet", "", "start")}
           >
             Open {data.student.first}’s record
-          </Link>
+          </EntityLink>
         </div>
       )}
     </Sheet>

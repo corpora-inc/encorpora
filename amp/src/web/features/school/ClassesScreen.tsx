@@ -1,3 +1,4 @@
+import { EntityLink } from "../../nav/links";
 import { classColumn, teacherColumn } from "./class-columns";
 import { canAddStudents } from "./permissions";
 import {
@@ -57,7 +58,6 @@ import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
-import { studentUrl } from "./classes/teacher-shared";
 import styles from "./School.module.css";
 
 const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
@@ -413,13 +413,12 @@ const rosterColumns = (
     compare: (a, b) => displayName(a).localeCompare(displayName(b), "en"),
     // A student opens in the class, never on the school's Students page.
     cell: (row) => (
-      <Link
-        to="/$"
-        params={{ _splat: studentUrl(orgId, row.id, classId) }}
+      <EntityLink
+        entity={{ kind: "student", id: row.id }}
         className={`${styles.person} ${styles.rowLink}`}
       >
         <span>{displayName(row)}</span>
-      </Link>
+      </EntityLink>
     ),
   },
   {
@@ -756,9 +755,8 @@ export function ClassScreen() {
                 cardLayout="row"
                 cardEstimate={72}
                 card={(row) => (
-                  <Link
-                    to="/$"
-                    params={{ _splat: studentUrl(orgId, row.id, classId) }}
+                  <EntityLink
+                    entity={{ kind: "student", id: row.id }}
                     className={styles.studentCard}
                   >
                     <span className={styles.studentCardText}>
@@ -774,7 +772,7 @@ export function ClassScreen() {
                     ) : (
                       <Badge tone="warning">Needs a seat</Badge>
                     )}
-                  </Link>
+                  </EntityLink>
                 )}
               />
             ) : (

@@ -430,6 +430,26 @@ input.finalInput:focus-visible {
   align-items: baseline;
   gap: var(--space-2);
 }
+/* A skill opens over the record: the name is the link, with the row's
+   quiet hover tint and a 44 px target, never an underline. */
+.objectiveLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-size);
+  margin-block: calc((var(--target-size) - 1.4em) / -2);
+  padding-inline: var(--space-1);
+  margin-inline: calc(var(--space-1) * -1);
+  border-radius: var(--radius-small);
+  color: inherit;
+  text-decoration: none;
+}
+.objectiveLink:hover {
+  background: var(--color-surface-hover);
+}
+.objectiveLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
 .when {
   color: var(--color-subtle-text);
   font-size: var(--text-table-small);

@@ -1,3 +1,5 @@
+import { EntityLink } from "../../../nav/links";
+import type { Entity } from "../../../nav/entities";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import {
   useLayoutEffect,
@@ -296,6 +298,12 @@ export const promptLine = (prompt: string) =>
 /** Real problems a student worked, newest first: when, the skill, the prompt
  * on one line, the answer and how it went. With `href`, each row opens its
  * replay (`WorkReplay`). */
+const workChevron = (
+  <svg className={styles.workChevron} viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M6 3.5 10.5 8 6 12.5" />
+  </svg>
+);
+
 export function WorkList({
   work,
   reader = "other",
@@ -304,7 +312,12 @@ export function WorkList({
   work: readonly WorkItem[];
   reader?: RecordReader;
   /** Where a row's replay lives, as a splat path and search. */
-  href?: (item: WorkItem) => { path: string; search?: Record<string, string> };
+  href?: (
+    item: WorkItem,
+  ) =>
+    | { path: string; search?: Record<string, string> }
+    /** A layer over this page (nav/entities.ts). */
+    | { entity: Entity };
 }) {
   return (
     <ul className={styles.problems}>
@@ -348,7 +361,16 @@ export function WorkList({
         const target = href?.(item);
         return (
           <li key={item.id}>
-            {target ? (
+            {target && "entity" in target ? (
+              <EntityLink
+                entity={target.entity}
+                className={styles.workRow}
+                data-work-item={item.id}
+              >
+                {body}
+                {workChevron}
+              </EntityLink>
+            ) : target ? (
               <Link
                 to="/$"
                 params={{ _splat: target.path }}
@@ -357,13 +379,7 @@ export function WorkList({
                 data-work-item={item.id}
               >
                 {body}
-                <svg
-                  className={styles.workChevron}
-                  viewBox="0 0 16 16"
-                  aria-hidden="true"
-                >
-                  <path d="M6 3.5 10.5 8 6 12.5" />
-                </svg>
+                {workChevron}
               </Link>
             ) : (
               <div className={styles.workRow}>{body}</div>

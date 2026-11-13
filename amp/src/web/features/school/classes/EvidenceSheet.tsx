@@ -1,3 +1,5 @@
+import { EntityLink } from "../../../nav/links";
+import { work } from "../../../nav/entities";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -15,7 +17,6 @@ import {
   buttonClass,
   classUrl,
   shortDay,
-  studentUrl,
   WorkList,
 } from "./teacher-shared";
 import styles from "./Teacher.module.css";
@@ -169,15 +170,12 @@ export function EvidenceSheet({
             student={data.student.id}
           />
           <div className={styles.sheetLinks}>
-            <Link
-              to="/$"
-              params={{
-                _splat: studentUrl(place.org, data.student.id, place.class),
-              }}
+            <EntityLink
+              entity={{ kind: "student", id: data.student.id }}
               className={buttonClass("quiet", "", "start")}
             >
               Open {data.student.first}’s record
-            </Link>
+            </EntityLink>
             <Link
               to="/$"
               params={{
@@ -242,9 +240,7 @@ function EvidenceWork({
       ) : (
         <WorkList
           work={shown}
-          href={(item) => ({
-            path: `${classUrl(place.org, place.class, "map")}/${student}/work/${item.id}`,
-          })}
+          href={(item) => ({ entity: work(student, item.id) })}
         />
       )}
       {offset !== null && (
