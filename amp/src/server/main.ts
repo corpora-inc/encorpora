@@ -1,3 +1,6 @@
+import { registerSchoolAdoptionRoutes } from "../schools/adoption-routes.js";
+import { CleverClient } from "../schools/clever/client.js";
+import { SchoolError } from "../schools/contracts.js";
 import { serverPoolOptions } from "./database.js";
 import {
   registerDatabaseHealth,
@@ -37,6 +40,7 @@ import { randomBytes } from "node:crypto";
 import { startDemoWarmer } from "../schools/demo/shared.js";
 import { shippedTermsProblem } from "../schools/demo/snapshot.js";
 import { registerSchoolRoutes } from "../schools/routes.js";
+import { registerCleverOnboarding } from "../schools/clever-onboarding.js";
 import { schoolClock } from "../schools/clock.js";
 import { schoolOidcProviders } from "../schools/oidc.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
@@ -235,6 +239,35 @@ await registerSchoolRoutes(app, {
         }
       : {}),
   },
+});
+await registerCleverOnboarding(app, {
+  pool: repository.pool,
+  authenticate,
+  config: cleverConfig,
+  origin: accounts?.config.baseURL,
+});
+await registerSchoolAdoptionRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  origin: accounts?.config.baseURL,
+  ...(cleverConfig
+    ? {
+        cleverSnapshot: async (connectionId: string) => {
+          const connection = (
+            await repository.pool.query(
+              "SELECT district_id FROM amp_clever_connections WHERE id=$1 AND environment=$2 AND status='active'",
+              [connectionId, cleverConfig.environment],
+            )
+          ).rows[0];
+          if (!connection) throw new SchoolError(404, "not_found");
+          const client = new CleverClient(cleverConfig);
+          return client.snapshot(
+            connection.district_id,
+            await client.districtToken(connection.district_id),
+          );
+        },
+      }
+    : {}),
 });
 const fundingOffers = await loadFundingOffers(
   process.env.AMP_FUNDING_OFFERS_FILE,

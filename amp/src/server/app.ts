@@ -131,7 +131,7 @@ const attemptSchema = z
 export function redactUrl(url: string) {
   const parsed = new URL(url, "http://local");
   const path = parsed.pathname.replace(
-    /^(\/api\/(?:auth\/reset-password|v1\/parent-followup\/unsubscribe)\/)[^/]+/,
+    /^((?:\/api\/(?:auth\/reset-password|v1\/parent-followup\/unsubscribe|v1\/school\/buyer)|\/schools\/continue)\/)[^/]+/,
     "$1[redacted]",
   );
   for (const key of [

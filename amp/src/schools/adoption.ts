@@ -963,6 +963,7 @@ async function validateCleverMatches(
 }
 
 type AdminRole = {
+  role_id: string;
   manual: boolean;
   connection_id: string | null;
   district_id: string | null;
@@ -976,7 +977,7 @@ async function adoptionAdminRoles(
 ): Promise<AdminRole[]> {
   return (
     await db.query(
-      `SELECT NOT EXISTS(SELECT 1 FROM amp_clever_memberships own
+      `SELECT r.id AS role_id,NOT EXISTS(SELECT 1 FROM amp_clever_memberships own
     WHERE own.kind='org_role' AND own.local_id=r.id AND own.owned) AS manual,
     c.id AS connection_id,c.district_id,b.clever_id,c.status='active' AND b.archived_at IS NULL AS active
     FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role='admin'
@@ -999,20 +1000,23 @@ async function requireCurrentAdoptionAdmin(
   if (roles.some((r) => r.manual)) return;
   if (!roles.length)
     throw new CleverSyncError("adoption_destination_authority_required");
-  if (
-    roles.some(
-      (r) =>
-        r.active &&
-        snapshots.some(
-          (s) =>
-            s.district.id === r.district_id &&
-            s.users.some(
-              (u) => u.id === r.clever_id && !!u.roles.district_admin,
-            ),
-        ),
-    )
-  )
+  const proved = roles.filter(
+    (r) =>
+      r.active &&
+      snapshots.some(
+        (s) =>
+          s.district.id === r.district_id &&
+          s.users.some((u) => u.id === r.clever_id && !!u.roles.district_admin),
+      ),
+  );
+  if (proved.length) {
+    await db.query(
+      `UPDATE amp_clever_memberships SET bootstrap_valid_until=now()+interval '15 minutes'
+      WHERE kind='org_role' AND owned AND local_id=ANY($1::uuid[]) AND bootstrap_valid_until IS NOT NULL`,
+      [proved.map((r) => r.role_id)],
+    );
     return;
+  }
   throw new CleverSyncError("adoption_current_authority_required");
 }
 /** Source-owned staged administrator roles must be re-proved by Clever before

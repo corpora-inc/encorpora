@@ -222,6 +222,17 @@ export async function registerSchoolRoutes(
       reply.header("X-Request-Id", request.id);
       reply.header("Cache-Control", "no-store");
       reply.header("X-Content-Type-Options", "nosniff");
+      if (
+        request.method === "POST" &&
+        (request.headers["sec-fetch-site"] === "cross-site" ||
+          (services.origin &&
+            ((request.headers.origin &&
+              request.headers.origin !== services.origin) ||
+              (request.headers.cookie &&
+                !request.headers.authorization &&
+                request.headers.origin !== services.origin))))
+      )
+        throw new SchoolError(403, "request_origin_invalid");
     });
     scope.setErrorHandler((error, request, reply) => {
       if (error instanceof SchoolError) {

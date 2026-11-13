@@ -35,7 +35,7 @@ export type CleverAuthOptions = {
   resolvePerson: ResolveCleverPerson;
   signInPerson: (personId: string) => Promise<StudentGrant | null>;
   authenticate: Authenticator;
-  /** Read an actual, uncached Better Auth session. Both ends of account
+  /** Read an actual, uncached mailbox or ordinary provider session. Both ends of account
    * linking must prove the same recently authenticated existing account. */
   freshAccountSession?: (
     request: FastifyRequest,
@@ -333,6 +333,18 @@ export async function registerCleverAuthRoutes(
           },
           "Clever sign-in failed",
         );
+        if (
+          error instanceof Error &&
+          error.message === "identity_already_linked"
+        )
+          return reply.redirect(
+            "/school/connect?error=clever_identity_already_linked",
+          );
+        if (
+          error instanceof Error &&
+          error.message === "clever_link_proof_expired"
+        )
+          return reply.redirect("/school/connect?error=clever_link_expired");
         return reply.redirect("/sign-in?error=clever_sign_in_failed");
       }
     },

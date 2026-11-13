@@ -1,3 +1,8 @@
+import {
+  resolveProviderSession,
+  providerToken,
+  providerHash,
+} from "../identity/provider-principals.js";
 import { fromNodeHeaders } from "better-auth/node";
 import type { Pool } from "pg";
 import type { Accounts, AccountsConfig } from "./accounts.js";
@@ -101,6 +106,21 @@ export function cleverAuthOptions(
     resolvePerson: (claims) => resolveCleverPerson(pool, claims),
     signInPerson: (personId) => signIn.signInPerson(personId),
     freshAccountSession: async (request) => {
+      const token = providerToken(request);
+      if (token) {
+        const provider = await resolveProviderSession(pool, request, (claims) =>
+          resolveCleverPerson(pool, claims),
+        );
+        return provider
+          ? {
+              accountId: provider.accountId,
+              sessionId: `provider:${providerHash(token)}`,
+              createdAt: provider.createdAt,
+            }
+          : null;
+      }
+      // An onboarding proof is not a session and cannot link another identity.
+      if (request.headers.authorization?.startsWith("Bearer po_")) return null;
       const current = await accounts.auth.api.getSession({
         headers: fromNodeHeaders(request.headers),
         query: { disableCookieCache: true, disableRefresh: true },

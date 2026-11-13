@@ -1,3 +1,4 @@
+import { rememberProviderPilotAliases } from "../identity/provider-principals.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { FamilyRepository } from "../family/repository.js";
@@ -87,6 +88,21 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_campaign_creative_daily: "none",
   amp_campaign_daily: "none",
   amp_classes: "place",
+  amp_class_authorizations: "place",
+  amp_class_pilots: "place",
+  amp_teacher_pilots: "account",
+  amp_pilot_eligibility: "journal",
+  amp_pilot_extensions: "place",
+  amp_school_starts: "account",
+  amp_school_purchase_requests: "account",
+  amp_school_connection_requests: "account",
+  amp_school_connection_tasks: "place",
+  amp_school_adoptions: "account",
+  amp_courses: "place",
+  amp_clever_connections: "place",
+  amp_clever_bindings: "place",
+  amp_clever_memberships: "place",
+  amp_clever_sync_runs: "place",
   amp_classwallet_checkouts: "financial",
   amp_classwallet_payments: "financial",
   amp_commerce_events: "financial",
@@ -259,11 +275,12 @@ async function inspect(client: PoolClient, accountId: string): Promise<Plan> {
        (o.demo AND o.created_by=$1) AS own_demo,
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
-         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}) AS mine,
+         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}) OR
+       (o.kind='school' AND o.solo AND EXISTS(SELECT 1 FROM amp_school_starts ss WHERE ss.account_id=$1 AND ss.org_id=o.id)) AS mine,
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
          WHERE ro.path[1]=o.id AND p.account_id IS NOT NULL AND p.account_id<>$1
-           AND p.deleted_at IS NULL AND r.role='admin' AND ${activeToday("r", "ro")}) AS others,
+           AND p.deleted_at IS NULL AND (r.role='admin' OR o.kind='school' AND o.solo AND r.role IN ('teacher','staff')) AND ${activeToday("r", "ro")}) AS others,
        COALESCE(bool_or(m.demo_visitor),false) AS visitor,
        COALESCE(array_agg(m.id ORDER BY m.id) FILTER (WHERE m.id IS NOT NULL),'{}') AS people
      FROM roots JOIN amp_orgs o ON o.id=roots.id
@@ -592,6 +609,50 @@ export async function deleteAccount(
       if (!evidence)
         await client.query(
           "DELETE FROM amp_parent_consents WHERE account_id=$1",
+          [accountId],
+        );
+
+      await rememberProviderPilotAliases(client, accountId);
+      // Keep only the eligibility digest and dates needed to avoid reopening a
+      // consumed pilot. Shared institutions keep anonymous authorization evidence.
+      await client.query(
+        "UPDATE amp_teacher_pilots SET account_id='deleted-pilot:'||id WHERE account_id=$1",
+        [accountId],
+      );
+      await client.query(
+        "UPDATE amp_class_authorizations SET account_id='removed',signer_name='Removed',signer_title='Removed' WHERE account_id=$1",
+        [accountId],
+      );
+      for (const table of ["amp_school_starts", "amp_school_purchase_requests"])
+        await client.query(`DELETE FROM ${table} WHERE account_id=$1`, [
+          accountId,
+        ]);
+      // Independently deployable integrations may not yet be installed.
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_school_connection_requests') AS name",
+          )
+        ).rows[0].name
+      ) {
+        await client.query(
+          "DELETE FROM amp_school_connection_requests WHERE account_id=$1",
+          [accountId],
+        );
+        await client.query(
+          "UPDATE amp_data_agreements SET signer_account_id=NULL,signer_name='Removed',signer_title='Removed' WHERE signer_account_id=$1",
+          [accountId],
+        );
+      }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_school_adoptions') AS name",
+          )
+        ).rows[0].name
+      )
+        await client.query(
+          "DELETE FROM amp_school_adoptions WHERE source_account_id=$1 OR accepted_by_account_id=$1",
           [accountId],
         );
 

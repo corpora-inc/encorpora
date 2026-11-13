@@ -1,3 +1,4 @@
+import { z } from "zod";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import type { defineSchoolRoute } from "./routes.js";
@@ -44,6 +45,7 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
       await repository.transaction((client) =>
         syncSsoCredentials(client, target.path[0]!),
       );
+      await repository.reconcileSeats(target.path[0]!);
       return { results, invited: 0 };
     },
   });
@@ -97,18 +99,19 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
       );
       return {
         id: result.id,
-        url: `${services.origin}/schools/continue/${result.token}`,
+        url: `${services.origin}/schools/continue#token=${result.token}`,
       };
     },
   });
 }
 
 export function registerBuyerHandoff(app: FastifyInstance, pool: Pool) {
-  app.get<{ Params: { token: string } }>(
-    "/api/v1/school/buyer/:token",
-    async (request, reply) => {
-      reply.header("Referrer-Policy", "no-referrer");
-      return buyerHandoff(pool, request.params.token);
-    },
-  );
+  app.post("/api/v1/school/buyer", async (request, reply) => {
+    reply.header("Referrer-Policy", "no-referrer");
+    return buyerHandoff(
+      pool,
+      z.strictObject({ token: z.string().min(32).max(200) }).parse(request.body)
+        .token,
+    );
+  });
 }

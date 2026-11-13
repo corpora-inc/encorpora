@@ -368,3 +368,50 @@ test(
       );
     }),
 );
+
+test(
+  "provider-only staff can explicitly link a second subject with a fresh ordinary session",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () =>
+    fixture(async (pool) => {
+      const { cleverAuthOptions } = await import("../src/server/clever.js");
+      const first = await establishProviderPrincipal(
+        pool,
+        { ...claims, roles: ["teacher"] },
+        null,
+      );
+      const auth = cleverAuthOptions(
+        pool,
+        {} as never,
+        {
+          origin: "http://localhost:4977",
+          clientId: "fixture",
+          clientSecret: "fixture",
+          environment: "sandbox",
+        },
+        async () => first.accountId,
+      );
+      const proof = await auth.freshAccountSession!(request(first.token));
+      assert.equal(proof?.accountId, first.accountId);
+      assert.ok(proof?.sessionId.startsWith("provider:"));
+      const second = await establishProviderPrincipal(
+        pool,
+        { ...claims, userId: "300000000000000000000002" },
+        null,
+        proof!.accountId,
+      );
+      assert.equal(second.accountId, first.accountId);
+      assert.equal(
+        (await providerEligibilityKeys(pool, first.accountId)).length,
+        2,
+      );
+      assert.equal(
+        (await resolveProviderSession(pool, request(first.token)))?.accountId,
+        first.accountId,
+      );
+      assert.equal(
+        await auth.freshAccountSession!(request(`po_${"a".repeat(43)}`)),
+        null,
+      );
+    }),
+);

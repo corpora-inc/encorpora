@@ -374,7 +374,16 @@ export async function establishProviderPrincipal(
           )
         ).rows[0]
       : null;
-    if (linkAccountId && !authUser)
+    if (
+      linkAccountId &&
+      !authUser &&
+      !(
+        await client.query(
+          "SELECT 1 FROM amp_provider_principals WHERE account_id=$1",
+          [accountId],
+        )
+      ).rowCount
+    )
       throw new ApiError(403, "verified_account_required");
     await client.query(
       "INSERT INTO amp_provider_principals(account_id,auth_user_id) VALUES($1,$2) ON CONFLICT DO NOTHING",

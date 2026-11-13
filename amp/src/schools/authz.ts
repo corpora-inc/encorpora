@@ -60,7 +60,7 @@ export async function loadActor(
     `SELECT r.person_id,r.org_id,o.path,r.role,o.kind='family' AS family FROM amp_people p
      JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
      JOIN amp_orgs o ON o.id=r.org_id
-     WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}`,
+     WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")} AND amp_school_role_current(r.id)`,
     [accountId],
   );
   const classes = await db.query(
@@ -70,7 +70,7 @@ export async function loadActor(
      JOIN amp_orgs o ON o.id=c.org_id
      WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role<>'student'
-         AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})`,
+         AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")} AND amp_school_role_current(r.id))`,
     [accountId],
   );
   return {

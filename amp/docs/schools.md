@@ -44,17 +44,21 @@ It scales by collapsing. A lone teacher never sees school admin screens. A distr
 
 ## How a school starts
 
-No school exists until we issue it a license. There is no self-serve start: `/schools` offers "Talk to us", and `/school/new` without a setup invitation creates nothing and goes to `/schools`.
+A teacher can create a real class at `/school/start` after signing in and confirming authority to use AMP for the classroom. No card, purchase or AMP approval is required. Paste names, import CSV or Excel, or connect an authorized Clever roster. Retries reuse the same setup request and cannot create a second class.
 
-1. **We issue it.** After the contract and the invoice or PO, an operator runs `npm run school:admin -- create-school <private-input.json>` with `{name, adminEmail, seats, startsOn, endsOn, reference, timezone?}`. One transaction makes the org (setup pending), the license and an admin setup invitation; the command mails the invitation through the account mail path and prints JSON with the setup link. Dates are whole days in the school's time zone (America/New_York unless given), and the license runs through `endsOn`. The same name and admin again, while setup is pending, sends the same invitation and creates nothing. It runs with the server's `AMP_ACCOUNTS_URL` and `AMP_ACCOUNTS_SECRET`, so the link is the one the server reads, and its mail settings to send.
-2. **The admin opens the link,** signs in or signs up (the mailed link confirms their address), and accepts as the school's admin. They land in guided setup at the calendar. The school step is already answered, and its name, "Just my class" or "A school", and time zone stay editable.
-3. **Setup:** calendar, what students see, the data agreement, then the roster and teachers. The roster step says how many seats the license holds and through when.
+The teacher activates the pilot after the roster is ready. One teacher has one 30-day window, followed by seven days of full access. Additional classes use those dates. A class keeps its original pilot when a co-teacher joins, and verified identity aliases prevent reconnecting or recreating an account from restarting the window. School administration is separate from classroom authorization.
 
-A free pilot is the same command with reference `Pilot`, given on purpose. Schools that set themselves up before this keep their 30-day evaluation license until it ends; nothing migrates them.
+A Clever district administrator connects at `/school/connect`. The server verifies current provider authority and the district's data agreement. A new roster can import immediately. When bringing an existing AMP school, stage the connection, approve its adoption and review source-ID matches before importing. [Clever onboarding](clever-onboarding.md) covers Complete, AnySchool, mapping and sandbox requirements.
+
+An operator can also run `create-school` with a private JSON input containing the school, administrator, license dates and seat count. This assisted route creates an administrator invitation and guided setup. It is an alternative to self-service, not its prerequisite.
 
 ### When a school pays
 
-Before the license is issued: by contract and invoice or PO, recorded as the license's `reference`. `set-seats`, `extend-license` and `issue-license` change a license afterwards, and "Request more seats" on the license screen writes to the company mailbox. A later Stripe seat-pack checkout can become a second way to get a license, issuing it the same way. Prices never appear in this repository.
+A teacher shares a buyer handoff with class count, learner count, participation and pilot dates. The link contains no learner names and grants no school access. Its secret lives in a URL fragment and expires after 30 days. A quote or PO request does not extend access by itself.
+
+Negotiated purchases are recorded with `purchase-status` and activated with `activate-purchase`. Activation is idempotent and issues a license for the request's selected classes. `issue-license` also supports a school or district subtree. Each rostered learner consumes one school seat across overlapping scopes. Roster updates release invalid class seats; scheduled licenses and waiting learners are reconciled by the worker. Payment preserves all learner IDs and history.
+
+After pilot and grace expiry, new online practice and workbook creation pause. Reports, exports, issued workbooks and entry of their paper results stay available. Another valid pilot or grant wins over an expired one. `extend-pilot` records an explicit reason and operator reference. Connections with no remaining coverage enter an operational review queue; AMP never disconnects them automatically to enforce capacity.
 
 ### One account, several places
 
@@ -236,7 +240,7 @@ The link is `/p#<token>`. The first thing the app does is take the token out of 
 | Invite address differs from sign-in address | Would create a mismatch                                         | Invite binds to whichever account accepts it                                                                                                                                                                                                                                |
 | School mail filter eats the invite          | Stuck                                                           | "Copy invite link" is always visible                                                                                                                                                                                                                                        |
 | Teacher leaves                              | Account stays, but access must end                              | Role end date, checked on every request                                                                                                                                                                                                                                     |
-| Clever, ClassLink, Okta, SAML               | **Not covered**                                                 | Later: the same person resolver students use                                                                                                                                                                                                                                |
+| ClassLink, Okta, SAML                       | **Not covered**                                                 | Later: the same person resolver students use                                                                                                                                                                                                                                |
 
 A new staff account isn't treated as a new parent: the guard sends them to `/school` rather than `/try`, and no follow-up enrollment runs.
 
@@ -270,7 +274,7 @@ Another screen links a group sheet with `.../classes/$class/workbooks?students=<
 
 **Frontend:** `src/web/features/school/`, shaped like `features/workbooks/`. A new `SchoolFrame` (sidebar on wide screens, top bar and drawer on phones) resets the legacy global element rules. New kit in `src/web/ui/`: `DataGrid` (sticky header and first column, card fallback, virtualized for big rosters), link `Tabs`, `StatTile`, `Sheet`, `EmptyState`, `Avatar`, `Badge`, `SearchField`, `Stepper`, plus dense-table and heading tokens. Charts build on `LevelChart` and the frontier map, using the `dataviz` and `frontend-design` skills.
 
-**Integrations:** `.../integrations` lists CSV and spreadsheet paste with column auto-mapping and a dry-run diff; OneRoster 1.2 CSV import; configurable gradebook CSV plus OneRoster results; Google and Microsoft sign-in. Clever, ClassLink and Google Classroom show a real "set this up with us" request that records an event and notifies the mailbox, never a button that fails.
+**Integrations:** `.../integrations` lists CSV and spreadsheet paste with column auto-mapping and a dry-run diff; OneRoster 1.2 CSV import; configurable gradebook CSV plus OneRoster results; Google and Microsoft sign-in. Clever has its own connection and synchronization flow. AnySchool requests enter the operator queue for the provider-hosted invitation; direct classroom setup remains available while that invitation is pending. ClassLink and Google Classroom use an integration request.
 
 **Licensing:** operated by privileged agents, with no internal admin UI. `scripts/school-admin.ts` issues schools (`create-school`, above), creates orgs, issues licenses and adjusts seats with JSON output, reading names from a private input file, and direct database access covers the rest. Adding seats or issuing a license seats the students waiting under that org, longest-waiting first; renewals replace seats on a license that has ended. A school's own license screen shows seats and dates, with "Request more seats" notifying the company mailbox.
 

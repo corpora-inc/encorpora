@@ -437,7 +437,7 @@ export async function applySnapshot(
     await db.query(
       `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id)
       VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(connection_id,kind,source_key) DO UPDATE SET
-      local_id=EXCLUDED.local_id,owned=EXCLUDED.owned,last_seen_run_id=EXCLUDED.last_seen_run_id`,
+      local_id=EXCLUDED.local_id,owned=EXCLUDED.owned,last_seen_run_id=EXCLUDED.last_seen_run_id,bootstrap_valid_until=NULL`,
       [connection.id, kind, sourceKey, row.id, owned, runId],
     );
   };

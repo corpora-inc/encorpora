@@ -53,7 +53,7 @@ export async function cleverSyncCommand(
     });
     const rows = (
       await pool.query(
-        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active'
+        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active' AND (NOT sync_paused OR $2::text IS NOT NULL)
       AND ($2::text IS NULL OR id::text=$2) ORDER BY created_at,id`,
         [environment, rest[0] && rest[0] !== "all" ? rest[0] : null],
       )

@@ -2,32 +2,19 @@ import { randomUUID, randomBytes, createHash } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import { parentAddressConfirmed } from "../server/account-access.js";
-import { providerEligibilityKey } from "../identity/provider-principals.js";
+import { providerEligibilityKeys } from "../identity/provider-principals.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { activeToday } from "./principal.js";
 import { loadActor, can, actorPerson } from "./authz.js";
-import {
-  plainName,
-  timezone,
-  gradeLevelSchema,
-  SchoolError,
-} from "./contracts.js";
+import { plainName, SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { SchoolRepository, generateHandle } from "./repository.js";
 
-export const startSchoolClassSchema = z.strictObject({
-  requestId: z.uuid(),
-  schoolName: z.string().trim().min(1).max(200),
-  orgId: z.uuid().optional(),
-  className: plainName,
-  timezone,
-  signerName: plainName,
-  signerTitle: plainName,
-  agreementVersion: z.string(),
-  authorized: z.literal(true),
-  names: z.array(plainName).max(500).default([]),
-  gradeLevel: gradeLevelSchema.optional(),
-});
+import {
+  startSchoolClassSchema,
+  schoolPurchaseSchema,
+} from "./pilot-contracts.js";
+export { startSchoolClassSchema } from "./pilot-contracts.js";
 
 /** A teacher creates only their classroom. School names never claim an existing
  * institution, and this path never grants an institution-wide admin role. */
@@ -42,6 +29,9 @@ export async function startSchoolClass(
   if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
     throw new SchoolError(403, "adult_account_required");
   return repo.transaction(async (client) => {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-start:${accountId}`,
     ]);
@@ -202,6 +192,9 @@ export async function acceptClassAuthorization(
     })
     .parse(raw);
   return repo.transaction(async (client) => {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
     const { personId, orgId } = await teachingClass(client, accountId, classId);
     await authorizeClass(
       client,
@@ -260,6 +253,9 @@ export async function activateClassPilot(
 ) {
   return repo.transaction(async (client) => {
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `teacher-pilot:${accountId}`,
     ]);
     const { orgId, path, personId } = await teachingClass(
@@ -300,6 +296,16 @@ export async function activateClassPilot(
       )
     ).rows[0];
     if (!existing) {
+      // A school administrator can prepare a class, but only a teacher in that
+      // class can consume their personal pilot. No administrator-wide trial.
+      const teaches = await client.query(
+        `SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+        JOIN amp_orgs o ON o.id=c.org_id WHERE e.class_id=$1 AND e.person_id=$2
+        AND e.role='teacher' AND ${activeToday("e", "o")}`,
+        [classId, personId],
+      );
+      if (!teaches.rowCount)
+        throw new SchoolError(403, "pilot_teacher_required");
       const keys = await eligibilityKeys(client, accountId);
       for (const key of keys)
         await client.query(
@@ -434,7 +440,7 @@ export async function extendTeacherPilot(repo: SchoolRepository, raw: unknown) {
   return repo.transaction(async (client) => {
     const pilot = (
       await client.query(
-        "SELECT id,grace_ends_at FROM amp_teacher_pilots WHERE id=$1 FOR UPDATE",
+        "SELECT id,greatest(grace_ends_at,(SELECT max(until_at) FROM amp_pilot_extensions WHERE pilot_id=$1)) AS grace_ends_at FROM amp_teacher_pilots WHERE id=$1 FOR UPDATE",
         [input.pilotId],
       )
     ).rows[0];
@@ -463,8 +469,7 @@ async function eligibilityKeys(
   accountId: string,
 ) {
   const keys = [hash(`amp-pilot-account-v1:${accountId}`)];
-  const provider = await providerEligibilityKey(db, accountId);
-  if (provider) keys.push(provider);
+  keys.push(...(await providerEligibilityKeys(db, accountId)));
   const email = (
     await db.query(
       'SELECT lower(email) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true',
@@ -479,14 +484,7 @@ export async function requestSchoolPurchase(
   accountId: string,
   raw: unknown,
 ) {
-  const input = z
-    .strictObject({
-      orgId: z.uuid(),
-      classIds: z.array(z.uuid()).min(1).max(500),
-      seats: z.number().int().min(1).max(1_000_000),
-      note: z.string().trim().max(1000).default(""),
-    })
-    .parse(raw);
+  const input = schoolPurchaseSchema.parse(raw);
   return repo.transaction(async (client) => {
     const ids = [...new Set(input.classIds)];
     for (const id of ids) {

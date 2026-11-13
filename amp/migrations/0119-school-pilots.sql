@@ -101,8 +101,13 @@ $$;
 CREATE FUNCTION amp_school_grant_valid(grant_id text) RETURNS boolean LANGUAGE sql STABLE AS $$
  SELECT grant_id NOT LIKE 'school-seat:%' OR EXISTS(
   SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
+  JOIN amp_people p ON p.id=s.person_id AND p.deleted_at IS NULL
   WHERE s.grant_id=$1 AND s.released_at IS NULL AND l.status='active'
-   AND l.starts_at<=now() AND l.ends_at>now() AND
+   AND l.starts_at<=now() AND l.ends_at>now()
+   AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+    WHERE r.person_id=p.id AND r.role='student' AND o.path @> ARRAY[l.org_id]::uuid[]
+     AND r.begin_on<=(now() AT TIME ZONE o.timezone)::date
+     AND (r.end_on IS NULL OR r.end_on>(now() AT TIME ZONE o.timezone)::date)) AND
    (l.class_ids IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e
     JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id
     WHERE e.person_id=s.person_id AND e.role='student' AND e.class_id=ANY(l.class_ids)

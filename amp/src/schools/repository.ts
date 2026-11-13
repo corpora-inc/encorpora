@@ -121,7 +121,7 @@ export class SchoolRepository {
       client.release();
     }
   }
-  async org(client: PoolClient, orgId: string): Promise<Org> {
+  async org(client: Pick<PoolClient, "query">, orgId: string): Promise<Org> {
     const org = (await client.query(FROM_ORG, [orgId])).rows[0];
     if (!org) throw new SchoolError(404, "org_not_found");
     return org;
@@ -445,6 +445,18 @@ export class SchoolRepository {
     learnerId: string,
     path: string[],
   ): Promise<boolean> {
+    await this.lockSeats(client, path[0]!);
+    await this.releaseInvalidSeats(client, path[0]!);
+    if (
+      (
+        await client.query(
+          `SELECT 1 FROM amp_seats s WHERE s.person_id=$1
+      AND s.released_at IS NULL AND amp_school_grant_valid(s.grant_id)`,
+          [personId],
+        )
+      ).rowCount
+    )
+      return true;
     const licenses = (
       await client.query(
         `SELECT l.id,l.seats,l.ends_at FROM amp_school_licenses l
@@ -463,6 +475,41 @@ export class SchoolRepository {
         return true;
       }
     return false;
+  }
+  private async lockSeats(client: PoolClient, tenantId: string) {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      `school-seats:${tenantId}`,
+    ]);
+  }
+  private async releaseInvalidSeats(client: PoolClient, tenantId: string) {
+    await client.query(
+      `WITH released AS (
+      UPDATE amp_seats s SET released_at=now() FROM amp_people p
+      WHERE p.id=s.person_id AND p.tenant_id=$1 AND s.released_at IS NULL
+        AND NOT amp_school_grant_valid(s.grant_id) RETURNING s.grant_id)
+      UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)`,
+      [tenantId],
+    );
+  }
+  /** Roster updates and scheduled license starts share one allocator. A learner
+   * consumes at most one active school seat across overlapping purchased scopes. */
+  async reconcileSeats(tenantId: string) {
+    return this.transaction(async (client) => {
+      await this.lockSeats(client, tenantId);
+      await this.releaseInvalidSeats(client, tenantId);
+      const licenses = (
+        await client.query(
+          `SELECT l.id,l.org_id,l.seats,l.ends_at FROM amp_school_licenses l
+        JOIN amp_orgs o ON o.id=l.org_id WHERE o.path[1]=$1 AND ${IN_FORCE("l")}
+        ORDER BY cardinality(o.path) DESC,l.ends_at DESC,l.id FOR UPDATE OF l`,
+          [tenantId],
+        )
+      ).rows;
+      let assigned = 0;
+      for (const license of licenses)
+        assigned += await this.seatWaitingStudents(client, license);
+      return { assigned };
+    });
   }
   private async seatsUsed(client: PoolClient, licenseId: string) {
     return (
@@ -513,7 +560,7 @@ export class SchoolRepository {
            AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
              WHERE r.person_id=p.id AND r.role='student' AND o.path @> ARRAY[$1]::uuid[] AND ${activeToday("r", "o")})
            AND NOT EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")})
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id))
          ORDER BY p.created_at,p.id LIMIT $2`,
         [license.org_id, room, license.id],
       )
@@ -534,6 +581,8 @@ export class SchoolRepository {
   }
   async issueLicenseIn(client: PoolClient, input: IssueLicense) {
     const org = await this.org(client, input.orgId);
+    await this.lockSeats(client, org.path[0]!);
+    await this.releaseInvalidSeats(client, org.path[0]!);
     if (input.classIds) {
       const ids = [...new Set(input.classIds)];
       const classes = await client.query(
@@ -580,6 +629,15 @@ export class SchoolRepository {
   async setSeats(raw: unknown) {
     const input = setSeatsSchema.parse(raw);
     return this.transaction(async (client) => {
+      const root = (
+        await client.query(
+          "SELECT o.path[1] AS id FROM amp_school_licenses l JOIN amp_orgs o ON o.id=l.org_id WHERE l.id=$1",
+          [input.licenseId],
+        )
+      ).rows[0];
+      if (!root) throw new SchoolError(404, "license_not_found");
+      await this.lockSeats(client, root.id);
+      await this.releaseInvalidSeats(client, root.id);
       const license = (
         await client.query(
           `SELECT id,org_id,seats,ends_at,${IN_FORCE("amp_school_licenses")} AS in_force
@@ -911,7 +969,7 @@ export class SchoolRepository {
                AND ($2::uuid[] IS NULL OR e.class_id=ANY($2::uuid[]))
              ORDER BY e.class_id) AS "classIds",
            EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")}) AS seated
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id)) AS seated
          FROM amp_people p
          WHERE p.tenant_id=(SELECT path[1] FROM amp_orgs WHERE id=$1) AND p.deleted_at IS NULL
            AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
@@ -920,7 +978,7 @@ export class SchoolRepository {
              WHERE e.person_id=p.id AND e.role='student' AND e.class_id=ANY($2::uuid[]) AND c.archived_at IS NULL AND ${activeToday("e", "eo")}))
            AND ($5::text IS NULL OR lower(concat_ws(' ',p.display_name,p.given_name,p.family_name,p.identifier)) LIKE $5)
            AND ($6::text IS DISTINCT FROM 'needs-seat' OR NOT EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")}))
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id)))
            AND ($6::text IS DISTINCT FROM 'never-signed-in' OR NOT EXISTS(SELECT 1 FROM amp_student_sessions n WHERE n.person_id=p.id))
          ORDER BY lower(COALESCE(p.display_name,p.given_name)),p.id LIMIT $3 OFFSET $4`,
         [orgId, classIds, page.limit, page.offset, needle, status],

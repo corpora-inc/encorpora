@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { CleverClient, CleverHttpError, type CleverEvent } from "./client.js";
 import {
@@ -93,10 +93,10 @@ export async function syncCleverConnection(
   pool: Pool,
   connectionId: string,
   client: Client,
-  options: { mode?: SyncMode; now?: Date } = {},
+  options: { mode?: SyncMode; now?: Date; db?: PoolClient } = {},
 ): Promise<SyncResult> {
   const now = options.now ?? new Date();
-  const db = await pool.connect();
+  const db = options.db ?? (await pool.connect());
   const runId = randomUUID();
   const lock = `clever-sync:${connectionId}`;
   let locked = false,
@@ -116,7 +116,7 @@ export async function syncCleverConnection(
     ).rows[0] as Connection | undefined;
     if (!connection || connection.status !== "active")
       throw new CleverSyncError("clever_connection_inactive");
-    await requireAgreement(db, connection.tenant_id);
+
     let mode: "full" | "events" =
       options.mode === "full" ||
       !connection.events_enabled ||
@@ -134,6 +134,7 @@ export async function syncCleverConnection(
       WHERE connection_id=$1 AND status='running'`,
       [connectionId, now],
     );
+    await requireAgreement(db, connection.tenant_id);
     await db.query(
       "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,started_at) VALUES($1,$2,$3,'running',$4)",
       [runId, connectionId, mode, now],
@@ -257,6 +258,6 @@ export async function syncCleverConnection(
       await db.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
         lock,
       ]);
-    db.release();
+    if (!options.db) db.release();
   }
 }
