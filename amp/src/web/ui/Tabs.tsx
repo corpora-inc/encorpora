@@ -80,12 +80,15 @@ export function Tabs({
             ? first
             : [...first.slice(0, count - 1), tabs[current]!];
         };
+        // How many fit never depends on which tab is open, so every screen
+        // of the group shows the same number: the last slot is sized for the
+        // widest tab that could take it.
         const fits = (count: number) => {
-          const row = shown(count);
           const used =
-            row.reduce((sum, tab) => sum + width(tab), 0) +
+            tabs.slice(0, count - 1).reduce((sum, tab) => sum + width(tab), 0) +
+            Math.max(...tabs.slice(count - 1).map(width)) +
             (more ? width(more) : 0) +
-            gap * row.length;
+            gap * count;
           return used <= room;
         };
         let count = tabs.length - 1;
