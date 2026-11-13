@@ -1,12 +1,16 @@
-/** Opt-in synthetic district verification against a dedicated test database.
+/** Opt-in synthetic district verification against a dedicated local test database.
  *
  * AMP_TEST_DATABASE_URL=postgresql://localhost/amp_fixture \
  *   node --import tsx scripts/verify-clever-scale.ts --run
  *
  * Optional: --schools=100 --students-per-school=100 --classes-per-school=4
- * --page-size=250. AMP_CLEVER_SCALE_MODULE_ROOT can point at another checkout's
+ * --page-size=250. --mass-update also promotes every existing student one grade;
+ * use a test database configured for that many concurrent advisory locks.
+ * AMP_CLEVER_SCALE_MODULE_ROOT can point at another checkout's
  * amp directory. All source records and HTTP responses are generated locally;
  * this script never contacts Clever. Only its randomly named schema is dropped.
+ * --keep-schema-on-failure retains synthetic fixtures for query-plan debugging;
+ * remove the reported schema after inspection. Default runs always clean up.
  * JSON measurements go to stdout, progress to stderr. Timing is diagnostic,
  * not a performance threshold or a production-capacity claim.
  */
@@ -26,6 +30,18 @@ if (!process.argv.includes("--run"))
   );
 const databaseUrl = process.env.AMP_TEST_DATABASE_URL;
 if (!databaseUrl) throw new Error("AMP_TEST_DATABASE_URL is required");
+const databaseTarget = new URL(databaseUrl);
+if (
+  !["localhost", "127.0.0.1", "[::1]", "::1"].includes(
+    databaseTarget.hostname,
+  ) ||
+  ["host", "hostaddr", "service"].some((key) =>
+    databaseTarget.searchParams.has(key),
+  )
+)
+  throw new Error(
+    "Scale verification requires a dedicated local PostgreSQL test database",
+  );
 const moduleRoot = resolve(
   process.env.AMP_CLEVER_SCALE_MODULE_ROOT ??
     fileURLToPath(new URL("..", import.meta.url)),
@@ -97,6 +113,8 @@ const classesPerSchool = integerOption(
   studentsPerSchool,
 );
 const pageSize = integerOption("page-size", 250, 1, 1_000);
+const massUpdate = process.argv.includes("--mass-update");
+const keepSchemaOnFailure = process.argv.includes("--keep-schema-on-failure");
 const studentCount = schoolCount * studentsPerSchool;
 assert.ok(studentCount <= 100_000, "Fixture is bounded to 100,000 learners");
 const teacherCount = schoolCount * classesPerSchool;
@@ -277,6 +295,7 @@ const queryBudgets: Record<string, number> = {
   first_full: rosterQueryBudget,
   repeat_full: rosterQueryBudget,
   transfer_events: rosterQueryBudget + 8,
+  mass_update: rosterQueryBudget,
   empty_events: 25,
   issue_district_license: 20 + 4 * Math.ceil(studentCount / 1000),
   repeat_seat_reconciliation: 20,
@@ -293,6 +312,7 @@ async function measuredDatabase<T>(
   const client = await db.connect();
   const original = client.query.bind(client);
   const queries = new Map<string, QueryMetric>();
+  const diagnosticPlans: unknown[] = [];
   const databaseErrors: { code: string; message: string; sql: string }[] = [];
   let queryCount = 0,
     queryMs = 0;
@@ -304,6 +324,22 @@ async function measuredDatabase<T>(
     const key = sql.trim().replace(/\s+/g, " ");
     const started = performance.now();
     try {
+      if (
+        label === "repeat_seat_reconciliation" &&
+        key.includes("UPDATE amp_seats")
+      ) {
+        const explained = await Reflect.apply(original, client, [
+          `EXPLAIN (FORMAT JSON) ${sql}`,
+          ...args.slice(1),
+        ]);
+        const diagnostic = {
+          sql: key,
+          plan: explained.rows[0]["QUERY PLAN"][0],
+        };
+        diagnosticPlans.push(diagnostic);
+        queryCount++;
+        console.error(JSON.stringify({ phase: label, diagnostic }));
+      }
       return await Reflect.apply(original, client, args);
     } catch (error) {
       databaseErrors.push({
@@ -371,6 +407,7 @@ async function measuredDatabase<T>(
     const measurement = {
       phase: label,
       ...describe(result),
+      ...(diagnosticPlans.length ? { diagnosticPlans } : {}),
       seconds: rounded((performance.now() - started) / 1000),
       httpRequests: httpRequests - requestsBefore,
       queryCount,
@@ -410,6 +447,7 @@ async function measuredDatabase<T>(
       phase: label,
       status: "failed",
       databaseErrors,
+      diagnosticPlans,
       milliseconds: rounded(performance.now() - started),
       queryCount,
       querySeconds: rounded(queryMs / 1000),
@@ -497,7 +535,9 @@ const scoped = new URL(databaseUrl);
 scoped.searchParams.set("options", `-c search_path=${schema}`);
 let db: Pool | undefined;
 let databaseEnvironment: Record<string, unknown> | undefined;
+let failed = false;
 await admin.query(`CREATE SCHEMA ${schema}`);
+console.error(JSON.stringify({ fixtureSchema: schema }));
 try {
   await migrate(scoped.href);
   db = new Pool({ connectionString: scoped.href, max: 3 });
@@ -814,13 +854,38 @@ try {
   assert.deepEqual(await counts(), finalCounts);
   assert.equal(await identityDigest(), identities);
   assert.equal(await membershipDigest(), transferredMemberships);
+  if (massUpdate) {
+    for (const user of snapshot.users)
+      if (user.roles.student) user.roles.student.grade = "5";
+    await measuredSync(db, connection.id, "mass_update", "full");
+    assert.equal(
+      (
+        await db.query(
+          "SELECT count(*)::int AS promoted FROM amp_people WHERE learner_id IS NOT NULL AND grade_level=5",
+        )
+      ).rows[0].promoted,
+      studentCount,
+    );
+    assert.equal(await identityDigest(), identities);
+    assert.equal(await membershipDigest(), transferredMemberships);
+    assert.deepEqual(await counts(), finalCounts);
+    assert.equal(
+      (
+        await db.query(
+          "SELECT 1 FROM amp_attempts WHERE learner_id=$1 AND id='synthetic-scale-attempt'",
+          [movedBefore.learnerId],
+        )
+      ).rowCount,
+      1,
+    );
+  }
   assert.equal(
     (
       await db.query(
         "SELECT 1 FROM amp_clever_sync_runs WHERE status='succeeded'",
       )
     ).rowCount,
-    4,
+    4 + Number(massUpdate),
   );
   const license = await measuredDatabase(
     db,
@@ -939,6 +1004,7 @@ try {
           schoolViewers: 1,
           portalOnlyStaff: 1,
           districtAdmins: 1,
+          massUpdate,
           pageSize,
         },
         measurements,
@@ -964,6 +1030,11 @@ try {
           "empty Events poll preserves cursor, counts and identity/membership IDs",
           "district license seats every learner once and reconciliation is idempotent",
           "sampled paid access and indexed seat lookup",
+          ...(massUpdate
+            ? [
+                "every student's grade changes without replacing learners, memberships or attempts",
+              ]
+            : []),
         ],
         httpRequests,
         requestPaths: Object.fromEntries(requestPaths),
@@ -981,6 +1052,11 @@ try {
           "single connection on local PostgreSQL",
           "memory samples cover Node only, excluding PostgreSQL",
           "query instrumentation adds small per-call overhead",
+          ...(massUpdate
+            ? [
+                "mass update uses the reported database lock configuration; it does not establish capacity under different limits",
+              ]
+            : []),
           "excludes browser and pilot post-sync worker; paid license/reconciliation are measured separately",
         ],
       },
@@ -989,11 +1065,13 @@ try {
     ),
   );
 } catch (error) {
+  failed = true;
   console.log(
     JSON.stringify(
       {
         status: "failed",
         databaseEnvironment,
+        ...(keepSchemaOnFailure ? { retainedSchema: schema } : {}),
         fixture: {
           schools: schoolCount,
           students: studentCount,
@@ -1014,6 +1092,8 @@ try {
   throw error;
 } finally {
   await db?.end();
-  await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+  if (!failed || !keepSchemaOnFailure)
+    await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+  else console.error(JSON.stringify({ retainedSchema: schema }));
   await admin.end();
 }
