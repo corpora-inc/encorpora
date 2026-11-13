@@ -309,17 +309,17 @@ number-bonds|K|operations|Decompose quantities through ten in multiple ways|addi
 make-ten|K|operations|Find the missing part that completes ten|number-bonds|K.OA.A.4
 facts-within-5|K|operations|Recall addition and subtraction facts through five|subtraction-within-10|K.OA.A.5
 teen-place-value|K|number|Compose teen numbers from a ten and extra ones|make-ten|K.NBT.A.1,1.NBT.B.2
-compare-attributes|K|measurement|Compare objects by length weight or capacity||K.MD.A.1,K.MD.A.2
+compare-attributes|K|measurement|Compare objects by length, weight, or capacity||K.MD.A.1,K.MD.A.2
 sort-and-count|K|data|Sort objects by an attribute and count each category|count-to-20|K.MD.B.3
 name-shapes|K|geometry|Identify flat and solid shapes across orientations||K.G.A.1,K.G.A.2,K.G.A.3
 compose-shapes|K|geometry|Build and describe shapes using smaller shapes|name-shapes|K.G.B.6,K.G.A.2
 addition-within-20|1|operations|Add through twenty using decomposition and making ten|make-ten|1.OA.C.6
 subtraction-within-20|1|operations|Subtract through twenty using related addition facts|addition-within-20|1.OA.C.6
-addition-stories|1|modeling|Choose an equation for joining comparing or part-whole stories|addition-within-20|1.OA.A.1,3.OA.D.8
+addition-stories|1|modeling|Choose an equation for joining, comparing, or part-whole stories|addition-within-20|1.OA.A.1,3.OA.D.8
 three-addends|1|operations|Combine three quantities using useful grouping|addition-within-20|1.OA.A.2,1.OA.B.3
 equality|1|algebra|Decide whether both sides of an equation have equal value|addition-within-20|1.OA.D.7,1.OA.D.8,2.NBT.B.5
 missing-addend|1|algebra|Find an unknown in an addition or subtraction equation|equality,subtraction-within-20|1.OA.D.8,1.OA.A.1
-tens-and-ones|1|number|Read write and decompose two-digit quantities|teen-place-value|1.NBT.A.1,1.NBT.B.2,K.CC.A.2
+tens-and-ones|1|number|Read, write, and decompose two-digit quantities|teen-place-value|1.NBT.A.1,1.NBT.B.2,K.CC.A.2
 compare-two-digit|1|number|Compare two-digit values using tens and ones|tens-and-ones|1.NBT.B.3,2.MD.B.6
 add-two-digit|1|operations|Add a two-digit number using tens and ones|tens-and-ones,addition-within-20|1.NBT.C.4
 ten-more-less|1|operations|Find ten more or less without recounting|tens-and-ones|1.NBT.C.5,1.NBT.C.6
@@ -328,8 +328,8 @@ clock-half-hours|1|measurement|Read clocks to the hour and half hour|count-to-10
 categorical-data|1|data|Compare category counts and answer questions about a display|sort-and-count|1.MD.C.4,6.RP.A.3,8.SP.A.4
 halves-and-quarters|1|fractions|Partition a whole into equal halves and quarters|compose-shapes|1.G.A.3
 shape-attributes|1|geometry|Classify shapes by defining attributes|name-shapes|1.G.A.1,K.G.B.4
-hundreds-place-value|2|number|Compose and read hundreds tens and ones|tens-and-ones|2.NBT.A.1,2.NBT.A.3,1.NBT.B.2,2.MD.B.6
-skip-counting|2|number|Count by fives tens and hundreds|count-to-100|2.NBT.A.2
+hundreds-place-value|2|number|Compose and read hundreds, tens, and ones|tens-and-ones|2.NBT.A.1,2.NBT.A.3,1.NBT.B.2,2.MD.B.6
+skip-counting|2|number|Count by fives, tens, and hundreds|count-to-100|2.NBT.A.2
 compare-three-digit|2|number|Compare three-digit numbers using place value|hundreds-place-value|2.NBT.A.4
 addition-within-100|2|operations|Add within one hundred with regrouping|add-two-digit|2.NBT.B.5,1.OA.D.8
 subtraction-within-100|2|operations|Subtract within one hundred with regrouping|addition-within-100,subtraction-within-20|2.NBT.B.5
@@ -345,8 +345,8 @@ clock-five-minutes|2|measurement|Read analog and digital clocks in five-minute i
 money-values|2|measurement|Calculate amounts with common coins and bills|addition-within-100|2.MD.C.8,2.OA.A.1,3.OA.D.8,4.MD.A.2,5.NBT.B.7
 line-plots|2|data|Display measured lengths on a line plot|ruler-measurement|2.MD.D.9,2.MD.B.5
 picture-bar-graphs|2|data|Build and interpret picture and bar graphs|categorical-data|2.MD.D.10
-thirds-and-partitions|2|fractions|Recognize equal halves thirds and quarters in varied wholes|halves-and-quarters|2.G.A.3,1.G.A.3
-polygon-properties|2|geometry|Identify polygons and solids by sides angles and faces|shape-attributes|2.G.A.1,K.G.A.2,K.G.B.4
+thirds-and-partitions|2|fractions|Recognize equal halves, thirds, and quarters in varied wholes|halves-and-quarters|2.G.A.3,1.G.A.3
+polygon-properties|2|geometry|Identify polygons and solids by sides, angles, and faces|shape-attributes|2.G.A.1,K.G.A.2,K.G.B.4
 multiplication-meaning|3|operations|Represent equal groups with multiplication|arrays|3.OA.A.1,3.OA.A.3
 multiplication-facts|3|operations|Recall products of one-digit factors|multiplication-meaning|3.OA.C.7,3.OA.A.1,3.OA.A.3
 division-meaning|3|operations|Interpret division as equal sharing and grouping|multiplication-meaning|3.OA.A.2,3.OA.A.3
@@ -354,7 +354,7 @@ division-facts|3|operations|Use related multiplication facts to find quotients|d
 missing-factor|3|algebra|Find missing factors and quotients|division-facts|3.OA.A.4,3.OA.A.2,3.OA.A.3,3.OA.B.6,3.OA.C.7
 multiplication-division-equality|3|algebra|Decide whether multiplication and division equations have equal values on both sides|equality,multiplication-facts,division-facts|3.NBT.A.3,3.OA.C.7,4.NBT.B.5,4.NBT.B.6
 whole-number-equality|4|algebra|Decide whether whole-number equations with the four operations have equal values on both sides|multiplication-division-equality,add-subtract-thousands|3.NBT.A.2,3.OA.C.7,4.NBT.B.5,4.NBT.B.6
-operation-properties|3|operations|Use associative commutative and distributive structure|multiplication-meaning|3.OA.B.5,3.OA.A.3,3.OA.D.8
+operation-properties|3|operations|Use associative, commutative, and distributive structure|multiplication-meaning|3.OA.B.5,3.OA.A.3,3.OA.D.8
 multiplicative-stories|3|modeling|Select multiplication or division to model a story|division-meaning|3.OA.A.3,3.MD.A.2,3.OA.A.1,3.OA.A.2,3.OA.D.8
 multi-operation-stories|3|modeling|Solve two-step stories and assess reasonableness|multiplicative-stories,two-step-stories|3.OA.D.8,1.OA.A.1,3.OA.A.3,3.OA.B.6,4.MD.A.2,4.OA.A.3
 arithmetic-patterns|3|algebra|Explain patterns in arithmetic tables|multiplication-facts|3.OA.D.9,2.OA.A.1,3.OA.A.3,4.OA.C.5
@@ -376,29 +376,29 @@ quadrilateral-categories|3|geometry|Classify quadrilaterals by shared attributes
 partition-area|3|fractions|Relate equal-area partitions to fractions of a whole|rectangle-area,unit-fractions|3.G.A.2,3.NF.A.1,3.OA.A.3
 multiplicative-comparison|4|modeling|Distinguish additive and multiplicative comparisons|multiplicative-stories|4.OA.A.1,4.OA.A.2,2.OA.A.1,4.NBT.B.6
 multistep-whole-stories|4|modeling|Solve multistep stories with remainders and estimates|multi-operation-stories,round-whole-numbers|4.OA.A.3,3.NBT.A.1,3.OA.D.8,4.MD.A.1,4.MD.A.2,4.NBT.B.6,5.MD.A.1,5.NBT.B.7
-factors-multiples|4|number|Identify factor pairs multiples primes and composites|division-facts|4.OA.B.4
+factors-multiples|4|number|Identify factor pairs, multiples, primes, and composites|division-facts|4.OA.B.4
 rule-patterns|4|algebra|Generate and describe number or shape patterns from a rule|arithmetic-patterns|4.OA.C.5,3.OA.D.9,6.EE.A.2
-large-place-value|4|number|Read compare and round multidigit whole numbers|round-whole-numbers|4.NBT.A.1,4.NBT.A.2,4.NBT.A.3,5.NBT.A.1
+large-place-value|4|number|Read, compare, and round multidigit whole numbers|round-whole-numbers|4.NBT.A.1,4.NBT.A.2,4.NBT.A.3,5.NBT.A.1
 whole-add-subtract|4|operations|Use place-value algorithms to add and subtract multidigit numbers|add-subtract-thousands|4.NBT.B.4
 whole-multiplication|4|operations|Multiply multidigit values using partial products|multiply-tens,operation-properties|4.NBT.B.5,3.NBT.A.3,3.OA.A.3,3.OA.C.7
 whole-division|4|operations|Divide multidigit values by a one-digit divisor|division-facts,large-place-value|4.NBT.B.6,4.MD.A.3,5.NF.B.3
 fraction-equivalence|4|fractions|Generate equivalent fractions by scaling numerator and denominator|equivalent-fractions,multiplication-facts|4.NF.A.1,3.NF.A.3
 fraction-comparison|4|fractions|Compare fractions using benchmarks or common units|fraction-equivalence|4.NF.A.2,3.NF.A.3
 like-fraction-addition|4|fractions|Add and subtract fractions with a shared denominator|unit-fractions,addition-within-20|4.NF.B.3,4.MD.A.2,5.NF.A.2
-mixed-numbers|4|fractions|Compose decompose and operate on mixed numbers with like denominators|like-fraction-addition|4.NF.B.3,4.MD.A.2
+mixed-numbers|4|fractions|Compose, decompose, and operate on mixed numbers with like denominators|like-fraction-addition|4.NF.B.3,4.MD.A.2
 fraction-times-whole|4|fractions|Multiply a fraction by a whole number|multiplication-meaning,unit-fractions|4.NF.B.4,5.NF.B.4
-decimal-fractions|4|decimals|Connect tenths hundredths fractions and decimal notation|fraction-equivalence|4.NF.C.5,4.NF.C.6,5.NBT.B.7
+decimal-fractions|4|decimals|Connect tenths, hundredths, fractions, and decimal notation|fraction-equivalence|4.NF.C.5,4.NF.C.6,5.NBT.B.7
 compare-decimals|4|decimals|Compare decimals through hundredths|decimal-fractions|4.NF.C.7
-decimal-money-operations|4|decimals|Add subtract multiply and divide decimal money and make change|decimal-fractions,whole-add-subtract|4.MD.A.2,2.MD.C.8,4.NF.C.6,5.NBT.B.7
+decimal-money-operations|4|decimals|Add, subtract, multiply, and divide decimal money and make change|decimal-fractions,whole-add-subtract|4.MD.A.2,2.MD.C.8,4.NF.C.6,5.NBT.B.7
 unit-conversion|4|measurement|Convert larger measurement units to smaller units|whole-multiplication|4.MD.A.1,4.MD.A.2,2.MD.A.3,3.MD.A.1,3.MD.A.2,5.MD.A.1,5.NF.B.6
 area-perimeter-models|4|geometry|Use rectangle area and perimeter formulas in context|rectangle-area,perimeter|4.MD.A.3,3.MD.C.7,3.MD.D.8,5.NBT.B.7
 angle-measure|4|geometry|Measure angles and find sums of adjacent angles|polygon-properties|4.MD.C.5,4.MD.C.6,4.MD.C.7
-lines-symmetry|4|geometry|Identify parallel perpendicular and symmetric features|shape-attributes|4.G.A.1,4.G.A.2,4.G.A.3,5.G.B.4
+lines-symmetry|4|geometry|Identify parallel, perpendicular, and symmetric features|shape-attributes|4.G.A.1,4.G.A.2,4.G.A.3,5.G.B.4
 powers-of-ten|5|number|Explain place-value shifts when multiplying by powers of ten|large-place-value,decimal-fractions|5.NBT.A.1,5.NBT.A.2,5.NBT.B.7
-decimal-place-value|5|decimals|Read compare and round decimals through thousandths|compare-decimals,round-whole-numbers|5.NBT.A.3,5.NBT.A.4,4.NBT.A.2
+decimal-place-value|5|decimals|Read, compare, and round decimals through thousandths|compare-decimals,round-whole-numbers|5.NBT.A.3,5.NBT.A.4,4.NBT.A.2
 multidigit-products|5|operations|Multiply multidigit whole numbers using a standard algorithm|whole-multiplication|5.NBT.B.5
 multidigit-quotients|5|operations|Divide whole numbers with two-digit divisors|whole-division,multidigit-products|5.NBT.B.6,6.NS.B.2
-decimal-arithmetic|5|decimals|Add subtract multiply and divide decimals through hundredths|decimal-place-value,multidigit-quotients|5.NBT.B.7,3.OA.D.8,4.MD.A.2,4.MD.A.3
+decimal-arithmetic|5|decimals|Add, subtract, multiply, and divide decimals through hundredths|decimal-place-value,multidigit-quotients|5.NBT.B.7,3.OA.D.8,4.MD.A.2,4.MD.A.3
 fraction-addition|5|fractions|Add and subtract unlike-denominator fractions|fraction-equivalence,like-fraction-addition|5.NF.A.1,5.NF.A.2,4.MD.A.2,5.NBT.B.7
 fraction-as-division|5|fractions|Interpret a fraction as the quotient of two whole numbers|division-meaning,unit-fractions|5.NF.B.3
 fraction-multiplication|5|fractions|Multiply fractions and interpret scaling|fraction-times-whole,fraction-equivalence|5.NF.B.4,5.NF.B.5,5.NF.B.6
@@ -425,19 +425,19 @@ variable-expressions|6|algebra|Translate and evaluate expressions with variables
 expression-properties|6|algebra|Generate equivalent expressions using algebraic properties|variable-expressions|6.EE.A.3,6.EE.A.4,7.EE.A.1
 one-step-equations|6|algebra|Solve one-operation equations and check the solution|missing-addend,variable-expressions|6.EE.B.6,6.EE.B.7
 simple-inequalities|6|algebra|Represent inequality solutions on a number line|signed-numbers,one-step-equations|6.EE.B.8,6.EE.B.5,7.EE.B.4
-dependent-variables|6|algebra|Connect two related quantities in equations tables and graphs|coordinate-first-quadrant,variable-expressions|6.EE.C.9,6.EE.A.2,6.EE.B.7,7.RP.A.2
+dependent-variables|6|algebra|Connect two related quantities in equations, tables, and graphs|coordinate-first-quadrant,variable-expressions|6.EE.C.9,6.EE.A.2,6.EE.B.7,7.RP.A.2
 triangle-area|6|geometry|Find triangle and polygon areas by decomposition|rectangle-area,fraction-multiplication|6.G.A.1,4.MD.A.3,6.EE.B.7,6.G.A.2
 fractional-prism-volume|6|geometry|Calculate prism volume with fractional side lengths|prism-volume,fraction-multiplication|6.G.A.2
 coordinate-polygons|6|geometry|Find polygon side lengths from coordinates|coordinate-four-quadrants|6.G.A.3,6.NS.C.8
 surface-area|6|geometry|Use nets to calculate surface area of prisms and pyramids|triangle-area,prism-volume|6.G.A.4,7.G.B.6
 statistical-questions|6|data|Identify statistical questions and sources of variation|categorical-data|6.SP.A.1
 statistics-mean|6|data|Calculate the arithmetic mean of a finite dataset|decimal-arithmetic|6.SP.B.5
-mean-median|6|data|Calculate and interpret mean median and range|decimal-arithmetic|6.SP.A.3,6.SP.B.5
-distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plots,mean-median|6.SP.B.4,6.SP.B.5
-variability|6|data|Describe spread shape outliers and appropriate summaries|distribution-plots,absolute-value|6.SP.B.5
+mean-median|6|data|Calculate and interpret mean, median, and range|decimal-arithmetic|6.SP.A.3,6.SP.B.5
+distribution-plots|6|data|Interpret dot plots, histograms, and box plots|line-plots,mean-median|6.SP.B.4,6.SP.B.5
+variability|6|data|Describe spread, shape, outliers, and appropriate summaries|distribution-plots,absolute-value|6.SP.B.5
 rational-unit-rates|7|ratio|Calculate unit rates involving fractional quantities|unit-rates,fraction-division|7.RP.A.1
 proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2,6.RP.A.3,7.RP.A.1
-percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3,6.RP.A.3
+percent-change|7|ratio|Solve percent increase, decrease, markup, and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3,6.RP.A.3
 financial-literacy-elementary|5|modeling|Work out profit, cost and break-even from fixed and variable costs and tell the kinds of taxes apart|decimal-arithmetic|4.MD.A.2,4.OA.A.3
 financial-literacy-middle|7|modeling|Compute bracket income tax, payroll and property tax, budget percents, net worth and the lowest final cost among discounts|percent-change,financial-literacy-elementary,signed-addition|7.RP.A.3,7.NS.A.3,6.RP.A.3,7.NS.A.1
 signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1,7.NS.A.3
@@ -452,34 +452,34 @@ scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proport
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
 solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-area|7.G.A.3
 circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers,fraction-multiplication|7.G.B.4
-angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5,4.MD.C.7,7.EE.A.1,8.EE.C.7
-composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6,6.G.A.1,7.G.B.4
-signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data,7.NS.A.1
+angle-relationships|7|geometry|Solve unknown angles using supplementary, vertical, and adjacent relationships|angle-measure,two-step-equations|7.G.B.5,4.MD.C.7,7.EE.A.1,8.EE.C.7
+composite-measurement|7|geometry|Find area, surface area, and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6,6.G.A.1,7.G.B.4
+signed-data-summaries|7|data|Calculate exact median, range, and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data,7.NS.A.1
 sampling|7|data|Explain why sample selection affects population conclusions|statistical-questions|7.SP.A.1,7.SP.A.2
 compare-distributions|7|data|Compare centers and spread of two distributions|variability|7.SP.B.3,7.SP.B.4
 probability|7|probability|Calculate simple event probabilities and compare observed frequencies|ratios|7.SP.C.5,7.SP.C.6,7.SP.C.7,7.SP.C.8
-compound-probability|7|probability|Enumerate compound outcomes with tables trees and simulations|probability|7.SP.C.8,7.SP.C.7
+compound-probability|7|probability|Enumerate compound outcomes with tables, trees, and simulations|probability|7.SP.C.8,7.SP.C.7
 irrational-numbers|8|number|Distinguish rational numbers from irrational numbers|fraction-as-division,decimal-algorithms|8.NS.A.1,8.EE.A.2
 approximate-roots|8|number|Approximate roots and compare irrational values|irrational-numbers,integer-powers|8.NS.A.2,8.EE.A.2,6.NS.C.7
 exponent-laws|8|algebra|Simplify expressions with integer exponents|integer-powers,signed-multiplication,signed-addition,fraction-division|8.EE.A.1
-scientific-notation|8|number|Represent compare and calculate very large or small quantities|exponent-laws|8.EE.A.3,8.EE.A.4
-slope|8|algebra|Find and interpret slope from points tables and graphs|proportional-relationships,coordinate-four-quadrants|8.EE.B.5,8.EE.B.6,8.F.B.4
+scientific-notation|8|number|Represent, compare, and calculate very large or small quantities|exponent-laws|8.EE.A.3,8.EE.A.4
+slope|8|algebra|Find and interpret slope from points, tables, and graphs|proportional-relationships,coordinate-four-quadrants|8.EE.B.5,8.EE.B.6,8.F.B.4
 linear-equations|8|algebra|Solve linear equations with variables on both sides|two-step-equations,linear-expressions|8.EE.C.7,6.EE.B.5,7.EE.B.4
 linear-systems|8|algebra|Solve a pair of linear equations and interpret intersections|linear-equations,slope|8.EE.C.8,8.EE.C.7
 function-notation|8|functions|Determine whether a relation assigns one output per input|dependent-variables|8.F.A.1
-compare-functions|8|functions|Compare function behavior across tables graphs and equations|function-notation,slope|8.F.A.2,8.F.A.3,8.F.B.4
+compare-functions|8|functions|Compare function behavior across tables, graphs, and equations|function-notation,slope|8.F.A.2,8.F.A.3,8.F.B.4
 linear-models|8|modeling|Construct a linear function and interpret its rate and initial value|slope,compare-functions|8.F.B.4,4.OA.A.3,7.EE.B.4,8.EE.C.7,8.EE.C.8,8.F.A.3
-qualitative-graphs|8|functions|Describe increase decrease and linearity in graphs|function-notation|8.F.B.5
-rigid-motions|8|geometry|Describe translations rotations and reflections on coordinates|coordinate-four-quadrants|8.G.A.1,8.G.A.2,8.G.A.3
+qualitative-graphs|8|functions|Describe increase, decrease, and linearity in graphs|function-notation|8.F.B.5
+rigid-motions|8|geometry|Describe translations, rotations, and reflections on coordinates|coordinate-four-quadrants|8.G.A.1,8.G.A.2,8.G.A.3
 dilations-similarity|8|geometry|Use dilations and rigid motions to establish similarity|rigid-motions,scale-drawings|8.G.A.4,8.G.A.3
-triangle-angle-theorems|8|geometry|Reason about triangle sums exterior angles and parallel lines|angle-relationships|8.G.A.5,7.G.B.5,8.EE.C.7
+triangle-angle-theorems|8|geometry|Reason about triangle sums, exterior angles, and parallel lines|angle-relationships|8.G.A.5,7.G.B.5,8.EE.C.7
 pythagorean-theorem|8|geometry|Explain and apply the Pythagorean relationship|approximate-roots,triangle-area|8.G.B.6,8.G.B.7
 coordinate-distance|8|geometry|Find distance between two coordinate points|pythagorean-theorem,coordinate-four-quadrants|8.G.B.8
-curved-solid-volume|8|geometry|Find volumes of cylinders cones and spheres|circle-measurement,prism-volume|8.G.C.9
+curved-solid-volume|8|geometry|Find volumes of cylinders, cones, and spheres|circle-measurement,prism-volume|8.G.C.9
 scatterplots|8|data|Interpret associations and fit an informal trend line|coordinate-four-quadrants,linear-models|8.SP.A.1,8.SP.A.2,8.SP.A.3,8.F.B.4
 two-way-tables|8|data|Use relative frequencies to investigate association|probability,percentages|8.SP.A.4
 units-and-precision|algebra-1|modeling|Choose units and justify precision in quantitative models|unit-conversion,scientific-notation|HSN,HSM,SAT.data,6.RP.A.3,7.RP.A.3
-expression-structure|algebra-1|algebra|Interpret terms factors and equivalent forms in context|linear-expressions|HSA,SAT.advanced-math,8.F.B.4
+expression-structure|algebra-1|algebra|Interpret terms, factors, and equivalent forms in context|linear-expressions|HSA,SAT.advanced-math,8.F.B.4
 formula-rearrangement|algebra-1|algebra|Rearrange formulas to isolate a chosen variable|linear-equations|HSA,SAT.algebra,7.EE.B.4,8.EE.C.7
 linear-equation-modeling|algebra-1|modeling|Construct linear equations from constraints and explain solutions|linear-models,linear-equations|HSA,HSM,SAT.algebra,6.RP.A.3,7.EE.B.3,7.EE.B.4,8.F.B.4
 systems-modeling|algebra-1|modeling|Model simultaneous constraints with equations and inequalities|linear-systems,linear-inequalities|HSA,SAT.algebra,8.EE.C.8
@@ -488,27 +488,27 @@ function-evaluation|algebra-1|functions|Evaluate and interpret function notation
 piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value functions|function-domain-range,function-evaluation|HSF,SAT.advanced-math
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
-polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math,6.EE.A.2
+polynomial-arithmetic|algebra-1|algebra|Add, subtract, and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math,6.EE.A.2
 factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
 quadratic-formula|algebra-1|algebra|Use the quadratic formula and interpret the discriminant|complete-square|HSA,SAT.advanced-math
-quadratic-graphs|algebra-1|functions|Relate zeros vertex symmetry and intercepts to quadratic forms|quadratic-equations,function-domain-range|HSF,SAT.advanced-math
+quadratic-graphs|algebra-1|functions|Relate zeros, vertex, symmetry, and intercepts to quadratic forms|quadratic-equations,function-domain-range|HSF,SAT.advanced-math
 quadratic-minimum|algebra-1|functions|Find the minimum value of an upward-opening quadratic|quadratic-graphs|HSF,SAT.advanced-math
 exponential-models|algebra-1|functions|Build exponential models and compare them with linear models|geometric-sequences,percent-change|HSF,SAT.advanced-math
-residuals-correlation|algebra-1|data|Interpret residuals association and limits of correlation|scatterplots|HSS,SAT.data
+residuals-correlation|algebra-1|data|Interpret residuals, association, and limits of correlation|scatterplots|HSS,SAT.data
 geometric-definitions|geometry|geometry|Use precise definitions of geometric objects and relations|lines-symmetry|HSG
 geometric-proof|geometry|reasoning|Construct and critique deductive geometric arguments|geometric-definitions,triangle-angle-theorems|HSG
 congruence-criteria|geometry|geometry|Justify triangle congruence with transformations and criteria|rigid-motions,geometric-proof|HSG
 similarity-proofs|geometry|geometry|Justify triangle similarity and proportional side relationships|dilations-similarity,geometric-proof|HSG,SAT.geometry,8.G.A.4
-geometric-constructions|geometry|geometry|Construct bisectors perpendiculars and parallel lines with justified steps|geometric-definitions|HSG
-right-triangle-trigonometry|geometry|trigonometry|Use sine cosine and tangent ratios to solve right triangles|similarity-proofs,pythagorean-theorem|HSG,SAT.geometry
+geometric-constructions|geometry|geometry|Construct bisectors, perpendiculars, and parallel lines with justified steps|geometric-definitions|HSG
+right-triangle-trigonometry|geometry|trigonometry|Use sine, cosine, and tangent ratios to solve right triangles|similarity-proofs,pythagorean-theorem|HSG,SAT.geometry
 special-right-triangles|geometry|trigonometry|Derive and use special right-triangle side ratios|right-triangle-trigonometry|HSG,SAT.geometry,8.G.B.7
-circle-theorems|geometry|geometry|Relate chords tangents arcs and inscribed angles|angle-relationships,geometric-proof|HSG,SAT.geometry,8.G.B.7
+circle-theorems|geometry|geometry|Relate chords, tangents, arcs, and inscribed angles|angle-relationships,geometric-proof|HSG,SAT.geometry,8.G.B.7
 arc-sector-measure|geometry|geometry|Calculate arc length and sector area|circle-measurement,percentages,angle-measure,fraction-multiplication|HSG,SAT.geometry,7.G.B.4
 circle-equations|geometry|geometry|Interpret and construct coordinate equations of circles|coordinate-distance,complete-square|HSG,SAT.geometry
-coordinate-proofs|geometry|geometry|Use slopes distances and midpoints to prove geometric claims|slope,coordinate-distance,geometric-proof|HSG
-geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM,7.G.B.6,8.G.B.7
+coordinate-proofs|geometry|geometry|Use slopes, distances, and midpoints to prove geometric claims|slope,coordinate-distance,geometric-proof|HSG
+geometric-modeling|geometry|modeling|Choose geometric models for design, density, and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM,7.G.B.6,8.G.B.7
 conditional-probability|geometry|probability|Calculate conditional probabilities from tables and sample spaces|compound-probability,two-way-tables|HSS,SAT.data
 independent-events|geometry|probability|Distinguish independence from mutually exclusive outcomes|conditional-probability|HSS,SAT.data
 rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots,factors-multiples|HSN,SAT.advanced-math
@@ -516,7 +516,7 @@ square-root-equations|algebra-2|algebra|Isolate a square root and solve an equat
 radical-equations|algebra-2|algebra|Solve radical equations and reject extraneous candidates|square-root-equations,quadratic-equations|HSA,SAT.advanced-math
 complex-numbers|algebra-2|number|Calculate with complex numbers and solve quadratics over them|quadratic-formula|HSN
 polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient and remainder|polynomial-arithmetic|HSA
-polynomial-zeros|algebra-2|algebra|Connect factors zeros and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
+polynomial-zeros|algebra-2|algebra|Connect factors, zeros, and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
 rational-expression-domain|algebra-1|algebra|Find inputs excluded by a rational expression’s denominator|linear-equations,function-domain-range|HSA
 rational-expressions|algebra-2|algebra|Operate on rational expressions while retaining domain restrictions|rational-expression-domain,factor-quadratics,fraction-division|HSA,SAT.advanced-math
 rational-equation-one-denominator|algebra-2|algebra|Solve a rational equation with one variable denominator|rational-expression-domain,linear-equations,fraction-division|HSA,SAT.advanced-math
@@ -524,26 +524,26 @@ rational-equations|algebra-2|algebra|Solve rational equations and check excluded
 nonlinear-intersection-reading|algebra-2|algebra|Read shared points of a line and parabola as simultaneous solutions|graph-solution-sets,quadratic-graphs|HSA
 nonlinear-systems|algebra-2|algebra|Solve systems involving linear and nonlinear relations|nonlinear-intersection-reading,linear-systems,quadratic-equations|HSA,SAT.advanced-math
 nonlinear-intersection-count|algebra-2|algebra|Count distinct real intersections by reducing a system to a quadratic|nonlinear-systems,quadratic-formula|HSA
-function-transformations|algebra-2|functions|Describe shifts scales reflections and symmetry of functions|quadratic-graphs,piecewise-functions|HSF,SAT.advanced-math
+function-transformations|algebra-2|functions|Describe shifts, scales, reflections, and symmetry of functions|quadratic-graphs,piecewise-functions|HSF,SAT.advanced-math
 function-composition|algebra-2|functions|Compose functions and determine valid inputs|function-domain-range,function-evaluation|HSF
 inverse-functions|algebra-2|functions|Find inverses and restrict domains where needed|function-composition|HSF
 logarithms|algebra-2|functions|Use logarithms as inverses of exponential functions|exponential-models,inverse-functions|HSF
-logarithm-properties|algebra-2|functions|Rewrite and evaluate logarithms with the product quotient and power rules and change of base|logarithms|
+logarithm-properties|algebra-2|functions|Rewrite and evaluate logarithms with the product, quotient, and power rules and change of base|logarithms|
 exponential-equations|algebra-2|algebra|Solve exponential and logarithmic equations with domain checks|logarithms,logarithm-properties|HSF
 sequence-sums|algebra-2|functions|Calculate finite geometric sums and interpret them in context|geometric-sequences|HSA
-radians-unit-circle|algebra-2|trigonometry|Connect radians arc length and unit-circle coordinates|arc-sector-measure,special-right-triangles|HSF,SAT.geometry
-trigonometric-graphs|algebra-2|trigonometry|Interpret period amplitude phase and midline|radians-unit-circle,function-transformations|HSF
+radians-unit-circle|algebra-2|trigonometry|Connect radians, arc length, and unit-circle coordinates|arc-sector-measure,special-right-triangles|HSF,SAT.geometry
+trigonometric-graphs|algebra-2|trigonometry|Interpret period, amplitude, phase, and midline|radians-unit-circle,function-transformations|HSF
 normal-distributions|algebra-2|data|Use mean and standard deviation to interpret normal models|variability|HSS
-study-design|algebra-2|data|Distinguish observational studies experiments and sampling designs|sampling|HSS,SAT.data
-statistical-inference|algebra-2|data|Interpret sampling variability margin of error and supported claims|study-design,compare-distributions|HSS,SAT.data,7.SP.A.2
+study-design|algebra-2|data|Distinguish observational studies, experiments, and sampling designs|sampling|HSS,SAT.data
+statistical-inference|algebra-2|data|Interpret sampling variability, margin of error, and supported claims|study-design,compare-distributions|HSS,SAT.data,7.SP.A.2
 expected-value|algebra-2|probability|Use weighted outcomes to compare decisions|conditional-probability|HSS
-polynomial-behavior|precalculus|functions|Analyze polynomial end behavior multiplicities and turning behavior|polynomial-zeros|HSF
-rational-function-behavior|precalculus|functions|Analyze holes asymptotes intercepts and domain of rational functions|rational-expressions,function-domain-range|HSF
+polynomial-behavior|precalculus|functions|Analyze polynomial end behavior, multiplicities, and turning behavior|polynomial-zeros|HSF
+rational-function-behavior|precalculus|functions|Analyze holes, asymptotes, intercepts, and domain of rational functions|rational-expressions,function-domain-range|HSF
 inverse-trigonometry|precalculus|trigonometry|Interpret inverse trigonometric functions with restricted domains|inverse-functions,trigonometric-graphs|HSF
 trigonometric-identities|precalculus|trigonometry|Establish and use Pythagorean and angle-sum identities|radians-unit-circle,geometric-proof|HSF
 trigonometric-equations|precalculus|trigonometry|Solve trigonometric equations on specified intervals|inverse-trigonometry,trigonometric-identities|HSF
 oblique-triangles|precalculus|trigonometry|Use the laws of sines and cosines with ambiguity checks|right-triangle-trigonometry|HSG
-vectors|precalculus|number|Represent add and scale vectors and interpret components|coordinate-distance,right-triangle-trigonometry|HSN
+vectors|precalculus|number|Represent, add, and scale vectors and interpret components|coordinate-distance,right-triangle-trigonometry|HSN
 matrices|precalculus|number|Perform matrix operations and represent linear transformations|linear-systems,vectors|HSN
 complex-plane|precalculus|number|Represent complex values geometrically and interpret operations|complex-numbers,radians-unit-circle|HSN
 conic-sections|precalculus|geometry|Connect conic equations to geometric definitions|circle-equations,complete-square|HSG
@@ -563,39 +563,39 @@ fundamental-theorem-algebra|precalculus|algebra|Explain polynomial root existenc
 model-quantities|algebra-1|modeling|Define measurable quantities and their roles before constructing a model|units-and-precision|
 number-system-closure|algebra-2|reasoning|Justify rational and irrational sums and products including nonzero restrictions|irrational-numbers|
 vector-modeling|precalculus|modeling|Resolve and combine velocity or force quantities with vectors|vectors|8.G.B.7
-matrix-data|precalculus|number|Organize quantities in matrices and interpret rows columns and entries|two-way-tables|
+matrix-data|precalculus|number|Organize quantities in matrices and interpret rows, columns, and entries|two-way-tables|
 matrix-properties|precalculus|reasoning|Demonstrate matrix noncommutativity and justify associative and distributive operations|matrices|
 matrix-inverses|precalculus|algebra|Use identity matrices and determinants to determine and compute inverses|matrices|
 matrix-transformations|precalculus|geometry|Apply matrices to vectors and connect determinants with area changes|matrices,vectors|
 polynomial-identities|algebra-2|reasoning|Prove polynomial identities and use them to establish numerical relationships|polynomial-arithmetic|
 binomial-theorem|precalculus|algebra|Expand integer powers of binomials using combinatorial coefficients|polynomial-arithmetic|
-nonlinear-equation-modeling|algebra-2|modeling|Construct quadratic rational and exponential constraints with valid contextual domains|quadratic-equations,rational-equations,exponential-models|
+nonlinear-equation-modeling|algebra-2|modeling|Construct quadratic, rational, and exponential constraints with valid contextual domains|quadratic-equations,rational-equations,exponential-models|
 equation-reasoning|algebra-1|reasoning|Justify each equation transformation by equality-preserving operations|linear-equations|8.EE.C.7
 symbolic-linear-constraints|algebra-1|algebra|Solve linear equations and inequalities with literal coefficients and state exceptional cases|linear-equations,linear-inequalities|8.EE.C.7
 elimination-proof|algebra-1|reasoning|Prove that elimination preserves a linear system's solution set|linear-systems,equation-reasoning|
 matrix-systems|precalculus|algebra|Represent systems as matrix equations and solve using inverses where possible|matrix-inverses,linear-systems|
 graph-solution-sets|algebra-1|algebra|Interpret equation graphs as all ordered pairs satisfying the equation|coordinate-four-quadrants,linear-equations|
-graphical-equation-solving|algebra-2|algebra|Approximate intersections using graphs tables and successive refinement|graph-solution-sets,quadratic-graphs|
+graphical-equation-solving|algebra-2|algebra|Approximate intersections using graphs, tables, and successive refinement|graph-solution-sets,quadratic-graphs|
 inequality-regions|algebra-1|algebra|Graph intersecting half-planes with correct boundary inclusion|linear-inequalities,slope,graph-solution-sets|
-average-rate-change|algebra-1|functions|Calculate and interpret interval-average rates from graphs tables and formulas|slope,function-evaluation|
+average-rate-change|algebra-1|functions|Calculate and interpret interval-average rates from graphs, tables, and formulas|slope,function-evaluation|
 cross-representation-comparison|algebra-2|functions|Compare nonlinear functions given by different representations|compare-functions,quadratic-graphs|
 growth-comparison|algebra-2|functions|Justify linear versus exponential growth and compare eventual polynomial growth|exponential-models,polynomial-zeros|
 special-angle-values|precalculus|trigonometry|Derive exact special-angle values and related quadrant values geometrically|special-right-triangles,radians-unit-circle|
-trigonometric-symmetry|precalculus|trigonometry|Explain odd even and periodic trigonometric relationships using the unit circle|radians-unit-circle|
-periodic-modeling|algebra-2|modeling|Choose trigonometric models with appropriate amplitude frequency and midline|trigonometric-graphs|
+trigonometric-symmetry|precalculus|trigonometry|Explain odd, even, and periodic trigonometric relationships using the unit circle|radians-unit-circle|
+periodic-modeling|algebra-2|modeling|Choose trigonometric models with appropriate amplitude, frequency, and midline|trigonometric-graphs|
 circle-similarity|geometry|reasoning|Prove circle similarity using translations and dilation|similarity-proofs|8.G.A.3,8.G.A.4
 triangle-circles|geometry|geometry|Construct triangle incircles and circumcircles and prove cyclic angle properties|geometric-constructions,circle-theorems|8.G.B.7
 tangent-construction|geometry|geometry|Construct tangents from an exterior point and justify perpendicular radii|geometric-constructions,circle-theorems|8.G.B.7
 transformation-invariants|geometry|geometry|Define plane motions and compare distance and angle preservation|rigid-motions,geometric-definitions|8.G.A.3
 polygon-symmetries|geometry|geometry|Describe rotations and reflections preserving a polygon|rigid-motions|
 transformation-constructions|geometry|geometry|Construct transformed figures and describe compositions carrying one figure to another|transformation-invariants|8.G.A.2,8.G.A.3
-line-angle-proofs|geometry|reasoning|Prove vertical-angle parallel-line and perpendicular-bisector relationships|geometric-proof|
-triangle-proofs|geometry|reasoning|Prove triangle-angle base-angle midsegment and median relationships|geometric-proof,congruence-criteria|
-parallelogram-proofs|geometry|reasoning|Prove parallelogram and rectangle side angle and diagonal properties|geometric-proof,congruence-criteria|7.G.B.5
-inscribed-polygons|geometry|geometry|Construct equilateral triangles squares and regular hexagons in circles|geometric-constructions|
-measurement-formula-proofs|geometry|reasoning|Justify circle cylinder cone and pyramid formulas using dissection and comparison|geometric-proof,circle-measurement,prism-volume|7.G.B.4
+line-angle-proofs|geometry|reasoning|Prove vertical-angle, parallel-line, and perpendicular-bisector relationships|geometric-proof|
+triangle-proofs|geometry|reasoning|Prove triangle-angle, base-angle, midsegment, and median relationships|geometric-proof,congruence-criteria|
+parallelogram-proofs|geometry|reasoning|Prove parallelogram and rectangle side, angle, and diagonal properties|geometric-proof,congruence-criteria|7.G.B.5
+inscribed-polygons|geometry|geometry|Construct equilateral triangles, squares, and regular hexagons in circles|geometric-constructions|
+measurement-formula-proofs|geometry|reasoning|Justify circle, cylinder, cone, and pyramid formulas using dissection and comparison|geometric-proof,circle-measurement,prism-volume|7.G.B.4
 cavalieri-principle|geometry|reasoning|Use equal cross-sectional areas to justify solid volumes including spheres|measurement-formula-proofs|
-solid-volume-models|geometry|modeling|Solve contextual cylinder pyramid cone and sphere volume problems|curved-solid-volume,surface-area|7.G.B.6,8.G.C.9
+solid-volume-models|geometry|modeling|Solve contextual cylinder, pyramid, cone, and sphere volume problems|curved-solid-volume,surface-area|7.G.B.6,8.G.C.9
 sections-and-revolutions|geometry|geometry|Relate plane slices and rotations of plane figures to three-dimensional solids|solid-cross-sections|8.G.C.9
 parabola-locus|geometry|geometry|Derive a parabola equation from equal focus and directrix distances|coordinate-distance,quadratic-graphs|
 slope-proofs|geometry|reasoning|Prove parallel and perpendicular slope criteria and construct corresponding lines|coordinate-proofs|
@@ -603,28 +603,28 @@ segment-division|geometry|geometry|Find a directed segment's internal or externa
 coordinate-measurement|geometry|geometry|Use coordinates to compute polygon perimeters and areas|coordinate-distance,triangle-area|
 density-modeling|geometry|modeling|Model density using area or volume with consistent units|units-and-precision,geometric-modeling|
 geometric-design|geometry|modeling|Construct and compare geometric designs under stated constraints|geometric-modeling,systems-modeling|7.G.B.6
-dilation-properties|geometry|geometry|Investigate how dilation changes lengths lines and parallelism|dilations-similarity|8.G.A.3
+dilation-properties|geometry|geometry|Investigate how dilation changes lengths, lines, and parallelism|dilations-similarity|8.G.A.3
 similarity-theorems|geometry|reasoning|Prove proportional-side and Pythagorean results using triangle similarity|similarity-proofs|
 complementary-trigonometry|geometry|trigonometry|Explain and use sine cosine relationships for complementary angles|right-triangle-trigonometry|
 trigonometric-area|precalculus|trigonometry|Derive and apply the two-sides-and-included-angle triangle area formula|right-triangle-trigonometry,triangle-area|
 triangle-law-proofs|precalculus|reasoning|Derive sine and cosine laws and justify their applicability|trigonometric-area,pythagorean-theorem|
-event-sets|geometry|probability|Represent unions intersections and complements within a sample space|compound-probability|
+event-sets|geometry|probability|Represent unions, intersections, and complements within a sample space|compound-probability|
 probability-addition|geometry|probability|Calculate unions using addition with an overlap correction|event-sets|
 probability-multiplication|precalculus|probability|Apply conditional product rules and interpret joint-event probabilities|conditional-probability,fraction-multiplication|
 permutations-combinations|precalculus|probability|Count ordered and unordered selections to compute compound probabilities|compound-probability|
 simulation-model-checks|algebra-2|data|Simulate a proposed random process and assess consistency with observations|probability,sampling|
 sampling-margin-error|algebra-2|data|Estimate population means or proportions and simulate sampling margins of error|statistical-inference,simulation-model-checks|
 randomization-tests|algebra-2|data|Use randomization simulations to compare treatments and assess observed differences|study-design,simulation-model-checks|
-statistical-report-critique|algebra-2|reasoning|Evaluate reports for sampling bias uncertainty and unsupported causal claims|statistical-inference,study-design|
-statistical-summary-comparison|algebra-1|data|Compare distribution shapes center IQR and standard deviation with outlier context|compare-distributions|
-categorical-association|algebra-1|data|Interpret joint marginal and conditional relative frequencies in two-way tables|two-way-tables|
+statistical-report-critique|algebra-2|reasoning|Evaluate reports for sampling bias, uncertainty, and unsupported causal claims|statistical-inference,study-design|
+statistical-summary-comparison|algebra-1|data|Compare distribution shapes, center, IQR, and standard deviation with outlier context|compare-distributions|
+categorical-association|algebra-1|data|Interpret joint, marginal, and conditional relative frequencies in two-way tables|two-way-tables|
 regression-interpretation|algebra-1|data|Interpret fitted slopes and intercepts using quantities and units in context|linear-models,scatterplots|
 causal-claims|algebra-1|reasoning|Distinguish association from evidence that supports a causal explanation|study-design,residuals-correlation|
 random-variables|precalculus|probability|Define a numerical random variable and graph its probability distribution|compound-probability,distribution-plots|
 theoretical-distributions|precalculus|probability|Construct theoretical discrete distributions and compute their expectations|random-variables,expected-value|
 empirical-distributions|precalculus|probability|Estimate distributions from observed frequencies and compute expectations|random-variables,expected-value|
 fair-random-decisions|precalculus|probability|Design random selection procedures and justify fairness|probability|7.SP.C.7
-decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
+decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities, payoffs, and model assumptions|expected-value,conditional-probability|
 build-and-draw-shapes|K|geometry|Build shapes from sticks for sides and balls for corners and judge whether a drawing is a closed straight-sided shape|name-shapes|K.G.B.5
 represent-join-separate|K|operations|Show joining and taking away with pictures, expressions and equations, and read a picture or story as a number sentence|addition-within-10,subtraction-within-10|K.OA.A.1
 composite-shapes|1|geometry|Put flat and solid shapes together and name the composite shape they make|compose-shapes,shape-attributes|1.G.A.2

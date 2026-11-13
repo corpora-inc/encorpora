@@ -27,11 +27,12 @@
  * school-level student page (and an answer on it), Pathways' skill page and
  * `?lesson=`, and Today's `?lesson=`. A skill opened over Pathways never
  * moves the map under it. A family's and a tutor's org has no school-level
- * Students or Standing: their old addresses open the family's People and
- * Map, and none of its screens links to them. And a legacy centre's close:
+ * pages: their old addresses open the class's equivalent or Today, and none
+ * of its screens links to a school-level page. And a legacy centre's close:
  * consent goes Back to the Privacy entry it was opened from.
  *
  *   npx tsx scripts/verify-layer-crawl-ui.ts --origin http://127.0.0.1:4930
+ *   npx tsx scripts/verify-layer-crawl-ui.ts --origin http://127.0.0.1:4930 --people family,tutor --school-redirects-only
  *   AMP_TEST_DATABASE_URL=… npx tsx scripts/verify-layer-crawl-ui.ts
  */
 import assert from "node:assert/strict";
@@ -544,6 +545,70 @@ const students: string[] = [];
 const answers: string[] = [];
 /** Every link a crawled page or its layers showed: [page, href]. */
 let pageLinks: [string, string][] = [];
+async function familySchoolRoutes(page: Page, place: Context, person: string) {
+  // School-only addresses stay inside the family's or tutor's class.
+  // People manages co-teachers; Settings owns the class's configuration.
+  // School integrations, privacy, audit logs, imports and staff SSO help
+  // have no class equivalent, so they open Today.
+  const klass = `/school/${place.org}/classes/${place.classId}`;
+  for (const [from, to] of [
+    ["integrations", "today"],
+    ["privacy", "today"],
+    ["activity", "today"],
+    ["classes", "today"],
+    ["staff", "roster"],
+    ["sign-in-help", "today"],
+    ["settings", "settings"],
+    ["import", "today"],
+    ["calendar", "settings"],
+    ["schools", "today"],
+    ["year", "today"],
+    ["license", "settings"],
+    ["experience", "settings"],
+    ["students", "roster"],
+    ["standing", "map"],
+    [`standing/${place.classId}`, "map"],
+  ] as const) {
+    assert.equal(
+      await land(page, `/school/${place.org}/${from}`),
+      `${klass}/${to}`,
+      `${person}: /${from} opens the family's ${to}`,
+    );
+    const body = await page.locator("body").innerText();
+    assert.ok(
+      !MISSING.test(body) && !ONBOARDING.test(body),
+      `${person}: /${from} renders its class page`,
+    );
+    pageLinks.push(
+      ...(await hrefs(page, "main")).map((href): [string, string] => [
+        view(page).path,
+        href,
+      ]),
+    );
+  }
+  const id = students.at(-1);
+  if (id)
+    await redirects(
+      page,
+      `/school/${place.org}/students/${id}`,
+      `${klass}/roster`,
+      `student:${id}`,
+      `${person} the school-level student page`,
+    );
+  const school = new RegExp(
+    `^/school/${place.org}/(students|standing|integrations|privacy|activity|classes$|staff|sign-in-help|settings|import|calendar|schools|year|license|experience)\\b`,
+  );
+  const links = pageLinks.filter(([, href]) => school.test(href));
+  assert.deepEqual(
+    links,
+    [],
+    `${person}: no screen links to a school-level page`,
+  );
+  console.log(
+    `${person}: all school-only addresses open their class equivalent or Today; nothing links to them`,
+  );
+}
+
 try {
   await mkdir(OUT, { recursive: true });
   // A problem type, for the old `?lesson=` addresses (Playwright's
@@ -572,6 +637,32 @@ try {
     const page = await context.newPage();
     page.on("pageerror", (error) => console.error("page error:", error));
     const place = await contextOf(page, person);
+    if (process.argv.includes("--school-redirects-only")) {
+      assert.ok(
+        place.family,
+        `${person}: school redirect regression needs a family org`,
+      );
+      for (const width of [390, 1280]) {
+        await page.setViewportSize({ width, height: 860 });
+        for (const colorScheme of ["light", "dark"] as const) {
+          await page.emulateMedia({ colorScheme });
+          await familySchoolRoutes(page, place, person);
+          for (const target of ["today", "roster", "settings"]) {
+            await land(
+              page,
+              `/school/${place.org}/classes/${place.classId}/${target}`,
+            );
+            await page.screenshot({
+              path: `${OUT}/${person}-${target}-${width}-${colorScheme}.png`,
+              fullPage: true,
+            });
+          }
+        }
+      }
+      pageLinks = [];
+      await context.close();
+      continue;
+    }
     table ??= await page.evaluate(() =>
       (window as unknown as { ampRouteTable: () => Route[] }).ampRouteTable(),
     );
@@ -697,40 +788,7 @@ try {
       );
       reachedIn.add("school:student");
     }
-    if (place.family) {
-      // No school-level Students or Standing: their old addresses open the
-      // family's own People and Map, and nothing links to them.
-      const klass = `/school/${place.org}/classes/${place.classId}`;
-      for (const [from, to] of [
-        ["students", "roster"],
-        ["standing", "map"],
-        [`standing/${place.classId}`, "map"],
-      ] as const)
-        assert.equal(
-          await land(page, `/school/${place.org}/${from}`),
-          `${klass}/${to}`,
-          `${person}: /${from} opens the family's ${to}`,
-        );
-      const id = students.at(-1);
-      if (id)
-        await redirects(
-          page,
-          `/school/${place.org}/students/${id}`,
-          `${klass}/roster`,
-          `student:${id}`,
-          `${person} the school-level student page`,
-        );
-      const school = new RegExp(`^/school/${place.org}/(students|standing)\\b`);
-      const links = pageLinks.filter(([, href]) => school.test(href));
-      assert.deepEqual(
-        links,
-        [],
-        `${person}: no screen links to a school-level page`,
-      );
-      console.log(
-        `${person}: Students and Standing open as People and Map; nothing links to them`,
-      );
-    }
+    if (place.family) await familySchoolRoutes(page, place, person);
     pageLinks = [];
     // A legacy centre's close goes Back to where it was opened: the same
     // history entry, not a new one at a hard-coded address.
@@ -761,36 +819,38 @@ try {
     }
     await context.close();
   }
-  const longName = catalog.skills.find((skill) => skill.title.length > 28);
-  const longType = catalog.templates.find(
-    (template) => template.skillId === longName?.id,
-  );
-  assert.ok(longName && longType, "a skill with a long name has a lesson");
-  await hintFits(longName.id, longType.id);
-  const missing = ENTITY_KINDS.filter((kind) => !reached.has(kind));
-  assert.deepEqual(missing, [], `every kind is linked somewhere: ${missing}`);
-  const unreached = table!
-    .map((route) => route.path)
-    .filter((path) => !(path in UNREACHABLE) && !reachedRoutes.has(path));
-  if (PEOPLE.length < 6) console.log(`not reached: ${unreached.join(" ")}`);
-  if (PEOPLE.length >= 6) {
-    for (const where of [
-      "school:student",
-      "practice:skill",
-      "practice:lesson",
-      "class:lesson",
-    ])
-      assert.ok(reachedIn.has(where), `reached ${where.replace(":", " → ")}`);
-    // Every route of the table: reached by someone, or marked with why.
-    assert.deepEqual(
-      unreached,
-      [],
-      `routes no one reaches (reach them, or mark them unreachable with a reason): ${unreached.join(" ")}`,
+  if (!process.argv.includes("--school-redirects-only")) {
+    const longName = catalog.skills.find((skill) => skill.title.length > 28);
+    const longType = catalog.templates.find(
+      (template) => template.skillId === longName?.id,
+    );
+    assert.ok(longName && longType, "a skill with a long name has a lesson");
+    await hintFits(longName.id, longType.id);
+    const missing = ENTITY_KINDS.filter((kind) => !reached.has(kind));
+    assert.deepEqual(missing, [], `every kind is linked somewhere: ${missing}`);
+    const unreached = table!
+      .map((route) => route.path)
+      .filter((path) => !(path in UNREACHABLE) && !reachedRoutes.has(path));
+    if (PEOPLE.length < 6) console.log(`not reached: ${unreached.join(" ")}`);
+    if (PEOPLE.length >= 6) {
+      for (const where of [
+        "school:student",
+        "practice:skill",
+        "practice:lesson",
+        "class:lesson",
+      ])
+        assert.ok(reachedIn.has(where), `reached ${where.replace(":", " → ")}`);
+      // Every route of the table: reached by someone, or marked with why.
+      assert.deepEqual(
+        unreached,
+        [],
+        `routes no one reaches (reach them, or mark them unreachable with a reason): ${unreached.join(" ")}`,
+      );
+    }
+    console.log(
+      `navigation: ok (routes reached: ${reachedRoutes.size} of ${table!.length}, ${Object.keys(UNREACHABLE).length} marked unreachable; kinds reached: ${[...reached].join(", ")}; by place: ${[...reachedIn].sort().join(", ")})`,
     );
   }
-  console.log(
-    `navigation: ok (routes reached: ${reachedRoutes.size} of ${table!.length}, ${Object.keys(UNREACHABLE).length} marked unreachable; kinds reached: ${[...reached].join(", ")}; by place: ${[...reachedIn].sort().join(", ")})`,
-  );
 } finally {
   await browser.close();
   await stack?.stop();
