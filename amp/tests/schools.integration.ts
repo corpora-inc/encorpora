@@ -9,6 +9,7 @@ import { registerAnalyticsRoutes } from "../src/analytics/routes.js";
 import { registerUnavailableBilling } from "../src/billing/stripe/routes.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { skills } from "../src/curriculum/catalog.js";
 import { initialLevel } from "../src/learning/frontier.js";
 import { purgeInactiveLearners } from "../src/privacy/retention.js";
 import { recordEvent } from "../src/schools/events.js";
@@ -745,6 +746,21 @@ test(
             accountId: strangerAdmin,
           });
           const parent = `amp|parent-${randomUUID()}`;
+          // A real skill the first student has practised (a skill layer's
+          // counts come from amp_skill_evidence).
+          const skill = skills[0]!.id;
+          const learnerOf = async (personId: string) =>
+            (
+              await db.query("SELECT learner_id FROM amp_people WHERE id=$1", [
+                personId,
+              ])
+            ).rows[0].learner_id as string;
+          await db.query(
+            `INSERT INTO amp_skill_evidence(learner_id,skill_id,state)
+             VALUES($1,$2,jsonb_build_object('version',1,'skillId',$2::text,
+               'attempts',3,'independentCorrect',2,'status','practicing'))`,
+            [await learnerOf(student1.personId), skill],
+          );
 
           const fixtures: Record<string, string> = {
             org: home.orgId,
@@ -755,6 +771,7 @@ test(
             workbook: randomUUID(),
             // A recent-work replay: another tenant's student's attempt.
             attempt: randomUUID(),
+            skill,
           };
           const known = new Set(Object.keys(fixtures));
           assert.ok(schoolRoutes.length >= 6);
@@ -843,6 +860,37 @@ test(
               [period1.id],
             );
           }
+          // A skill layer: the teacher reads their own class's student and
+          // class on a skill, never another class's.
+          const studentSkill = (personId: string) =>
+            get(
+              `/api/v1/school/students/${personId}/skills/${skill}`,
+              as(teacher),
+            );
+          const classSkill = (classId: string) =>
+            get(
+              `/api/v1/school/classes/${classId}/skills/${skill}`,
+              as(teacher),
+            );
+          const own = await studentSkill(student1.personId);
+          assert.equal(own.statusCode, 200);
+          assert.equal(own.json().evidence.attempts, 3);
+          assert.equal(own.json().evidence.independentCorrect, 2);
+          assert.equal((await studentSkill(student2.personId)).statusCode, 404);
+          const mine = await classSkill(period1.id);
+          assert.equal(mine.statusCode, 200);
+          assert.deepEqual(
+            mine
+              .json()
+              .students.map(
+                (row: { id: string; evidence: { attempts: number } }) => [
+                  row.id,
+                  row.evidence.attempts,
+                ],
+              ),
+            [[student1.personId, 3]],
+          );
+          assert.equal((await classSkill(period2.id)).statusCode, 404);
           assert.deepEqual((await rosterOf(teacher))[0]!.classIds, [
             period1.id,
           ]);

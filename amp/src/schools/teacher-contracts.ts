@@ -557,3 +557,33 @@ export const gradebookExportSchema = z.strictObject({
     .optional(),
 });
 export const oneRosterExportSchema = z.strictObject({ term: id });
+
+/** One skill's evidence, the way a skill layer reads it (nav/SkillLayer):
+ * the counts the engine keeps per learner and skill. */
+export const skillEvidenceResource = z.object({
+  attempts: z.number(),
+  independentCorrect: z.number(),
+  /** The engine's status for the skill ("new" before any work). */
+  status: z.string(),
+  lastPracticedAt: z.string().nullable(),
+});
+/** A student on one skill: the counts and their latest answers on it. */
+export const studentSkillResponse = z.object({
+  skillId: z.string(),
+  evidence: skillEvidenceResource,
+  work: z.array(workItemResource),
+});
+export type StudentSkillResponse = z.infer<typeof studentSkillResponse>;
+/** A class on one skill: each student's counts, in roster order. */
+export const classSkillResponse = z.object({
+  skillId: z.string(),
+  students: z.array(
+    z.object({
+      id,
+      name: z.string(),
+      first: z.string(),
+      evidence: skillEvidenceResource,
+    }),
+  ),
+});
+export type ClassSkillResponse = z.infer<typeof classSkillResponse>;

@@ -1,0 +1,4483 @@
+{
+ "id": "scatter-association-choice--ss",
+ "title": "Each dot is one thing, measured two ways",
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -8.2,
+     -17,
+     9.12,
+     112
+    ],
+    "points": {
+     "XT": [
+      4.0,
+      0
+     ],
+     "YT": [
+      0,
+      104.0
+     ],
+     "TL": [
+      -7.8,
+      104
+     ],
+     "GV1a": [
+      1,
+      0
+     ],
+     "GV1b": [
+      1,
+      100
+     ],
+     "GV2a": [
+      2,
+      0
+     ],
+     "GV2b": [
+      2,
+      100
+     ],
+     "GV3a": [
+      3,
+      0
+     ],
+     "GV3b": [
+      3,
+      100
+     ],
+     "GV4a": [
+      4,
+      0
+     ],
+     "GV4b": [
+      4,
+      100
+     ],
+     "GV5a": [
+      5,
+      0
+     ],
+     "GV5b": [
+      5,
+      100
+     ],
+     "GV6a": [
+      6,
+      0
+     ],
+     "GV6b": [
+      6,
+      100
+     ],
+     "GV7a": [
+      7,
+      0
+     ],
+     "GV7b": [
+      7,
+      100
+     ],
+     "GV8a": [
+      8,
+      0
+     ],
+     "GV8b": [
+      8,
+      100
+     ],
+     "GH1a": [
+      0,
+      10
+     ],
+     "GH1b": [
+      8,
+      10
+     ],
+     "GH2a": [
+      0,
+      20
+     ],
+     "GH2b": [
+      8,
+      20
+     ],
+     "GH3a": [
+      0,
+      30
+     ],
+     "GH3b": [
+      8,
+      30
+     ],
+     "GH4a": [
+      0,
+      40
+     ],
+     "GH4b": [
+      8,
+      40
+     ],
+     "GH5a": [
+      0,
+      50
+     ],
+     "GH5b": [
+      8,
+      50
+     ],
+     "GH6a": [
+      0,
+      60
+     ],
+     "GH6b": [
+      8,
+      60
+     ],
+     "GH7a": [
+      0,
+      70
+     ],
+     "GH7b": [
+      8,
+      70
+     ],
+     "GH8a": [
+      0,
+      80
+     ],
+     "GH8b": [
+      8,
+      80
+     ],
+     "GH9a": [
+      0,
+      90
+     ],
+     "GH9b": [
+      8,
+      90
+     ],
+     "GH10a": [
+      0,
+      100
+     ],
+     "GH10b": [
+      8,
+      100
+     ],
+     "BA": [
+      0.5,
+      30
+     ],
+     "BB": [
+      8.5,
+      70
+     ],
+     "BC": [
+      8.5,
+      99.5
+     ],
+     "BD": [
+      0.5,
+      54
+     ],
+     "TA": [
+      2,
+      22
+     ],
+     "TB": [
+      7,
+      50.4
+     ],
+     "P1": [
+      0,
+      0
+     ],
+     "F1": {
+      "foot": "P1"
+     },
+     "L1": [
+      2,
+      57
+     ],
+     "P2": [
+      0,
+      0
+     ],
+     "F2": {
+      "foot": "P2"
+     },
+     "L2": [
+      5,
+      76
+     ],
+     "P3": [
+      0,
+      0
+     ],
+     "F3": {
+      "foot": "P3"
+     },
+     "L3": [
+      7,
+      85
+     ],
+     "P4": [
+      1,
+      0
+     ],
+     "F4": {
+      "foot": "P4"
+     },
+     "L4": [
+      1,
+      50
+     ],
+     "P5": [
+      3,
+      0
+     ],
+     "F5": {
+      "foot": "P5"
+     },
+     "L5": [
+      3,
+      65
+     ],
+     "P6": [
+      4,
+      0
+     ],
+     "F6": {
+      "foot": "P6"
+     },
+     "L6": [
+      4,
+      62
+     ],
+     "P7": [
+      6,
+      0
+     ],
+     "F7": {
+      "foot": "P7"
+     },
+     "L7": [
+      6,
+      82
+     ],
+     "P8": [
+      8,
+      0
+     ],
+     "F8": {
+      "foot": "P8"
+     },
+     "L8": [
+      8,
+      92
+     ],
+     "P9": [
+      3,
+      0
+     ],
+     "F9": {
+      "foot": "P9"
+     },
+     "L9": [
+      3,
+      58
+     ],
+     "P10": [
+      8,
+      0
+     ],
+     "F10": {
+      "foot": "P10"
+     },
+     "L10": [
+      8,
+      72
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv7",
+      "seg": [
+       "GV7a",
+       "GV7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv8",
+      "seg": [
+       "GV8a",
+       "GV8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh7",
+      "seg": [
+       "GH7a",
+       "GH7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh8",
+      "seg": [
+       "GH8a",
+       "GH8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh9",
+      "seg": [
+       "GH9a",
+       "GH9b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh10",
+      "seg": [
+       "GH10a",
+       "GH10b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 1,
+      "ystep": 10,
+      "yevery": 20,
+      "size": "l",
+      "xrange": [
+       0,
+       8.6
+      ],
+      "yrange": [
+       0,
+       104.0
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{hours studied}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{test score}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "t",
+      "table": true,
+      "at": "TL",
+      "corner": "Hours",
+      "head": [
+       "Score"
+      ],
+      "rows": [
+       {
+        "label": "2",
+        "cells": [
+         "57"
+        ]
+       },
+       {
+        "label": "5",
+        "cells": [
+         "76"
+        ]
+       },
+       {
+        "label": "7",
+        "cells": [
+         "85"
+        ]
+       },
+       {
+        "label": "1",
+        "cells": [
+         "50"
+        ]
+       },
+       {
+        "label": "3",
+        "cells": [
+         "65"
+        ]
+       },
+       {
+        "label": "4",
+        "cells": [
+         "62"
+        ]
+       },
+       {
+        "label": "6",
+        "cells": [
+         "82"
+        ]
+       },
+       {
+        "label": "8",
+        "cells": [
+         "92"
+        ]
+       },
+       {
+        "label": "3",
+        "cells": [
+         "58"
+        ]
+       },
+       {
+        "label": "8",
+        "cells": [
+         "72"
+        ]
+       }
+      ],
+      "cell": [
+       2.7,
+       10.4
+      ],
+      "labelW": 2.7,
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "BA",
+       "BB",
+       "BC",
+       "BD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "tilt",
+      "vector": [
+       "TA",
+       "TB"
+      ],
+      "ink": "warm",
+      "w": 6
+     },
+     {
+      "id": "lpos",
+      "label": "\\text{positive}",
+      "at": "tilt",
+      "dir": "se",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "tr1",
+      "seg": [
+       "F1",
+       "P1"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "tr2",
+      "seg": [
+       "F2",
+       "P2"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "tr3",
+      "seg": [
+       "F3",
+       "P3"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "d1",
+      "dot": "P1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d2",
+      "dot": "P2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d3",
+      "dot": "P3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d4",
+      "dot": "P4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d5",
+      "dot": "P5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d6",
+      "dot": "P6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d7",
+      "dot": "P7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d8",
+      "dot": "P8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d9",
+      "dot": "P9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "d10",
+      "dot": "P10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "lab1",
+      "label": "(2,\\,57)",
+      "at": "L1",
+      "dir": "ne",
+      "far": 1.1,
+      "size": "m"
+     },
+     {
+      "id": "lab2",
+      "label": "(5,\\,76)",
+      "at": "L2",
+      "dir": "nw",
+      "far": 1.1,
+      "size": "m"
+     },
+     {
+      "id": "lab3",
+      "label": "(7,\\,85)",
+      "at": "L3",
+      "dir": "nw",
+      "far": 1.1,
+      "size": "m"
+     },
+     {
+      "id": "lab10",
+      "label": "(8,\\,72)",
+      "at": "L10",
+      "dir": "w",
+      "far": 1.1,
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A scatter plot shows whether two measurements go together.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Do the two measurements go together?",
+       "label": "The question",
+       "keep": true,
+       "at": "whether"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten students: the hours each one studied,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t.col.0",
+        "xt"
+       ],
+       "at": "hours"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "and the score each one got on a test.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "t.col.1",
+        "yt"
+       ],
+       "at": "score"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The first studied two hours: across to two,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "t.row.1",
+       "at": "first"
+      },
+      {
+       "do": "show",
+       "target": "d1",
+       "at": "first"
+      },
+      {
+       "do": "text",
+       "text": "Across: the hours",
+       "at": "across"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P1": [
+         2,
+         0
+        ]
+       },
+       "at": "across",
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "then up to the score, fifty-seven.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "tr1",
+       "at": "up"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P1": [
+         2,
+         57
+        ]
+       },
+       "at": "up",
+       "dur": 1.2
+      },
+      {
+       "do": "text",
+       "text": "Up: the score",
+       "at": "up"
+      },
+      {
+       "do": "show",
+       "target": "lab1",
+       "at": "fifty-seven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The second: five hours, seventy-six.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "lab1",
+        "tr1"
+       ],
+       "at": "second"
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.2",
+       "at": "second"
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "second"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P2": [
+         5,
+         0
+        ]
+       },
+       "at": "five",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "tr2",
+       "at": "seventy-six"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P2": [
+         5,
+         76
+        ]
+       },
+       "at": "seventy-six",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "lab2",
+       "at": "seventy-six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The third: seven hours, eighty-five.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "lab2",
+        "tr2"
+       ],
+       "at": "third"
+      },
+      {
+       "do": "highlight",
+       "target": "t.row.3",
+       "at": "third"
+      },
+      {
+       "do": "show",
+       "target": "d3",
+       "at": "third"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P3": [
+         7,
+         0
+        ]
+       },
+       "at": "seven",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "tr3",
+       "at": "eighty-five"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P3": [
+         7,
+         85
+        ]
+       },
+       "at": "eighty-five",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "lab3",
+       "at": "eighty-five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the other seven, one after another.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "lab3",
+        "tr3"
+       ],
+       "at": "Then"
+      },
+      {
+       "do": "show",
+       "target": "d4",
+       "at": "Then"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P4": [
+         1,
+         50
+        ]
+       },
+       "at": "Then",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d5",
+       "at": "the"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P5": [
+         3,
+         65
+        ]
+       },
+       "at": "the",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d6",
+       "at": "other"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P6": [
+         4,
+         62
+        ]
+       },
+       "at": "other",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d7",
+       "at": "seven"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P7": [
+         6,
+         82
+        ]
+       },
+       "at": "seven",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d8",
+       "at": "one"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P8": [
+         8,
+         92
+        ]
+       },
+       "at": "one",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d9",
+       "at": "after"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P9": [
+         3,
+         58
+        ]
+       },
+       "at": "after",
+       "dur": 0.8
+      },
+      {
+       "do": "show",
+       "target": "d10",
+       "at": "another"
+      },
+      {
+       "do": "move",
+       "points": {
+        "P10": [
+         8,
+         72
+        ]
+       },
+       "at": "another",
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten dots: each dot is one student.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "t",
+       "at": "Ten"
+      },
+      {
+       "do": "view",
+       "to": [
+        -1.5,
+        -17,
+        9.02,
+        112
+       ],
+       "at": "Ten",
+       "dur": 1.2
+      },
+      {
+       "do": "move",
+       "points": {
+        "TL": [
+         1,
+         100
+        ]
+       },
+       "at": "student",
+       "dur": 0.2
+      },
+      {
+       "do": "clear",
+       "at": "each"
+      },
+      {
+       "do": "text",
+       "text": "Each dot is one student",
+       "at": "each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Together, the dots make a cloud, and this cloud climbs.",
+     "do": [
+      {
+       "do": "show",
+       "target": "band",
+       "at": "cloud"
+      },
+      {
+       "do": "draw",
+       "target": "tilt",
+       "at": "climbs"
+      },
+      {
+       "do": "text",
+       "text": "The cloud climbs",
+       "at": "climbs"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Measurements that go together have an association. More hours tended to come with higher scores: a positive association.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "tilt",
+       "at": "association"
+      },
+      {
+       "do": "clear",
+       "at": "positive"
+      },
+      {
+       "do": "term",
+       "word": "Positive association",
+       "meaning": "As one measurement goes up, the other tends to go up.",
+       "at": "positive"
+      },
+      {
+       "do": "show",
+       "target": "lpos",
+       "at": "positive"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Tended to, not always: this student studied eight hours,",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Tended"
+      },
+      {
+       "do": "text",
+       "text": "Tended to: not always",
+       "at": "Tended"
+      },
+      {
+       "do": "highlight",
+       "target": "d10",
+       "at": "this"
+      },
+      {
+       "do": "show",
+       "target": "lab10",
+       "at": "eight"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "but scored lower than one who studied five.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "lab2",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "An association is a pattern in the whole cloud, not a promise about every dot.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "lab2",
+        "lab10"
+       ],
+       "at": "An"
+      },
+      {
+       "do": "clear",
+       "at": "pattern"
+      },
+      {
+       "do": "text",
+       "text": "A pattern in the whole cloud,",
+       "at": "pattern"
+      },
+      {
+       "do": "highlight",
+       "target": "band",
+       "at": "whole"
+      },
+      {
+       "do": "text",
+       "text": "not a promise about every dot",
+       "at": "promise"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The dots stay near a straight band: a linear association.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "band",
+       "at": "straight"
+      },
+      {
+       "do": "clear",
+       "at": "linear"
+      },
+      {
+       "do": "term",
+       "word": "Linear association",
+       "meaning": "The dots stay near a straight band.",
+       "at": "linear"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -26.25,
+     -11.9,
+     171.0,
+     78.4
+    ],
+    "points": {
+     "XT": [
+      75.0,
+      0
+     ],
+     "YT": [
+      0,
+      72.8
+     ],
+     "E1": [
+      25,
+      62
+     ],
+     "E2": [
+      30,
+      54
+     ],
+     "E3": [
+      40,
+      57
+     ],
+     "E4": [
+      45,
+      49
+     ],
+     "E5": [
+      55,
+      48
+     ],
+     "E6": [
+      60,
+      41
+     ],
+     "E7": [
+      70,
+      44
+     ],
+     "E8": [
+      75,
+      38
+     ],
+     "E9": [
+      80,
+      31
+     ],
+     "E10": [
+      90,
+      36
+     ],
+     "E11": [
+      100,
+      26
+     ],
+     "E12": [
+      105,
+      29
+     ],
+     "E13": [
+      115,
+      19
+     ],
+     "E14": [
+      125,
+      20
+     ],
+     "E15": [
+      135,
+      11
+     ],
+     "E16": [
+      145,
+      10
+     ],
+     "BA": [
+      20,
+      53.6
+     ],
+     "BB": [
+      148,
+      0.8
+     ],
+     "BC": [
+      148,
+      15.8
+     ],
+     "BD": [
+      20,
+      69.6
+     ],
+     "TA": [
+      60,
+      61
+     ],
+     "TB": [
+      140,
+      27
+     ],
+     "NG": [
+      124,
+      52
+     ],
+     "GV1a": [
+      25,
+      0
+     ],
+     "GV1b": [
+      25,
+      70
+     ],
+     "GV2a": [
+      50,
+      0
+     ],
+     "GV2b": [
+      50,
+      70
+     ],
+     "GV3a": [
+      75,
+      0
+     ],
+     "GV3b": [
+      75,
+      70
+     ],
+     "GV4a": [
+      100,
+      0
+     ],
+     "GV4b": [
+      100,
+      70
+     ],
+     "GV5a": [
+      125,
+      0
+     ],
+     "GV5b": [
+      125,
+      70
+     ],
+     "GV6a": [
+      150,
+      0
+     ],
+     "GV6b": [
+      150,
+      70
+     ],
+     "GH1a": [
+      0,
+      10
+     ],
+     "GH1b": [
+      150,
+      10
+     ],
+     "GH2a": [
+      0,
+      20
+     ],
+     "GH2b": [
+      150,
+      20
+     ],
+     "GH3a": [
+      0,
+      30
+     ],
+     "GH3b": [
+      150,
+      30
+     ],
+     "GH4a": [
+      0,
+      40
+     ],
+     "GH4b": [
+      150,
+      40
+     ],
+     "GH5a": [
+      0,
+      50
+     ],
+     "GH5b": [
+      150,
+      50
+     ],
+     "GH6a": [
+      0,
+      60
+     ],
+     "GH6b": [
+      150,
+      60
+     ],
+     "GH7a": [
+      0,
+      70
+     ],
+     "GH7b": [
+      150,
+      70
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh7",
+      "seg": [
+       "GH7a",
+       "GH7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 25,
+      "every": 50,
+      "ystep": 10,
+      "yevery": 20,
+      "size": "l",
+      "xrange": [
+       0,
+       161.25
+      ],
+      "yrange": [
+       0,
+       72.8
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{price of a cup (cents)}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{cups sold}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "BA",
+       "BB",
+       "BC",
+       "BD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "tilt",
+      "vector": [
+       "TA",
+       "TB"
+      ],
+      "ink": "warm",
+      "w": 6
+     },
+     {
+      "id": "lneg",
+      "label": "\\text{negative}",
+      "at": "NG",
+      "dir": "c",
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "e1",
+      "dot": "E1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e2",
+      "dot": "E2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e3",
+      "dot": "E3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e4",
+      "dot": "E4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e5",
+      "dot": "E5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e6",
+      "dot": "E6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e7",
+      "dot": "E7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e8",
+      "dot": "E8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e9",
+      "dot": "E9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e10",
+      "dot": "E10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e11",
+      "dot": "E11",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e12",
+      "dot": "E12",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e13",
+      "dot": "E13",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e14",
+      "dot": "E14",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e15",
+      "dot": "E15",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "e16",
+      "dot": "E16",
+      "ink": "blue",
+      "r": 14
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Now a lemonade stand: the price of a cup, and the cups sold, on sixteen days.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6",
+        "e7",
+        "e8",
+        "e9",
+        "e10",
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15",
+        "e16"
+       ],
+       "at": "sixteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This cloud falls from left to right.",
+     "do": [
+      {
+       "do": "show",
+       "target": "band",
+       "at": "cloud"
+      },
+      {
+       "do": "draw",
+       "target": "tilt",
+       "at": "falls"
+      },
+      {
+       "do": "text",
+       "text": "The cloud falls",
+       "at": "falls"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Higher prices tended to come with fewer cups sold: a negative association.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "negative"
+      },
+      {
+       "do": "term",
+       "word": "Negative association",
+       "meaning": "As one measurement goes up, the other tends to go down.",
+       "at": "negative"
+      },
+      {
+       "do": "show",
+       "target": "lneg",
+       "at": "negative"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip calls this no association, because the dots are not on one line.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "common"
+      },
+      {
+       "do": "text",
+       "text": "A common slip: no association",
+       "id": "slip",
+       "at": "no"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "But an association never needs one line. The whole cloud falls, so it is negative.",
+     "do": [
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "never"
+      },
+      {
+       "do": "highlight",
+       "target": "band",
+       "at": "whole"
+      },
+      {
+       "do": "text",
+       "text": "The whole cloud falls: negative",
+       "at": "negative"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -5.25,
+     -17.0,
+     34.2,
+     112.0
+    ],
+    "points": {
+     "XT": [
+      15.0,
+      0
+     ],
+     "YT": [
+      0,
+      104.0
+     ],
+     "S1": [
+      2,
+      71
+     ],
+     "S2": [
+      4,
+      88
+     ],
+     "S3": [
+      6,
+      52
+     ],
+     "S4": [
+      7,
+      79
+     ],
+     "S5": [
+      10,
+      63
+     ],
+     "S6": [
+      11,
+      94
+     ],
+     "S7": [
+      13,
+      55
+     ],
+     "S8": [
+      16,
+      83
+     ],
+     "S9": [
+      17,
+      67
+     ],
+     "S10": [
+      20,
+      49
+     ],
+     "S11": [
+      22,
+      90
+     ],
+     "S12": [
+      24,
+      61
+     ],
+     "S13": [
+      27,
+      76
+     ],
+     "S14": [
+      29,
+      58
+     ],
+     "BA": [
+      1,
+      44
+     ],
+     "BB": [
+      30.5,
+      44
+     ],
+     "BC": [
+      30.5,
+      98
+     ],
+     "BD": [
+      1,
+      98
+     ],
+     "TA": [
+      3,
+      34
+     ],
+     "TB": [
+      27,
+      34
+     ],
+     "GV1a": [
+      5,
+      0
+     ],
+     "GV1b": [
+      5,
+      100
+     ],
+     "GV2a": [
+      10,
+      0
+     ],
+     "GV2b": [
+      10,
+      100
+     ],
+     "GV3a": [
+      15,
+      0
+     ],
+     "GV3b": [
+      15,
+      100
+     ],
+     "GV4a": [
+      20,
+      0
+     ],
+     "GV4b": [
+      20,
+      100
+     ],
+     "GV5a": [
+      25,
+      0
+     ],
+     "GV5b": [
+      25,
+      100
+     ],
+     "GV6a": [
+      30,
+      0
+     ],
+     "GV6b": [
+      30,
+      100
+     ],
+     "GH1a": [
+      0,
+      10
+     ],
+     "GH1b": [
+      30,
+      10
+     ],
+     "GH2a": [
+      0,
+      20
+     ],
+     "GH2b": [
+      30,
+      20
+     ],
+     "GH3a": [
+      0,
+      30
+     ],
+     "GH3b": [
+      30,
+      30
+     ],
+     "GH4a": [
+      0,
+      40
+     ],
+     "GH4b": [
+      30,
+      40
+     ],
+     "GH5a": [
+      0,
+      50
+     ],
+     "GH5b": [
+      30,
+      50
+     ],
+     "GH6a": [
+      0,
+      60
+     ],
+     "GH6b": [
+      30,
+      60
+     ],
+     "GH7a": [
+      0,
+      70
+     ],
+     "GH7b": [
+      30,
+      70
+     ],
+     "GH8a": [
+      0,
+      80
+     ],
+     "GH8b": [
+      30,
+      80
+     ],
+     "GH9a": [
+      0,
+      90
+     ],
+     "GH9b": [
+      30,
+      90
+     ],
+     "GH10a": [
+      0,
+      100
+     ],
+     "GH10b": [
+      30,
+      100
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh7",
+      "seg": [
+       "GH7a",
+       "GH7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh8",
+      "seg": [
+       "GH8a",
+       "GH8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh9",
+      "seg": [
+       "GH9a",
+       "GH9b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh10",
+      "seg": [
+       "GH10a",
+       "GH10b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 5,
+      "every": 10,
+      "ystep": 10,
+      "yevery": 20,
+      "size": "l",
+      "xrange": [
+       0,
+       32.25
+      ],
+      "yrange": [
+       0,
+       104.0
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{day of the month born}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{quiz score}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "BA",
+       "BB",
+       "BC",
+       "BD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "tilt",
+      "vector": [
+       "TA",
+       "TB"
+      ],
+      "ink": "warm",
+      "w": 6
+     },
+     {
+      "id": "lnone",
+      "label": "\\text{no tilt}",
+      "at": "tilt",
+      "dir": "s",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "s1",
+      "dot": "S1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s2",
+      "dot": "S2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s3",
+      "dot": "S3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s4",
+      "dot": "S4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s5",
+      "dot": "S5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s6",
+      "dot": "S6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s7",
+      "dot": "S7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s8",
+      "dot": "S8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s9",
+      "dot": "S9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s10",
+      "dot": "S10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s11",
+      "dot": "S11",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s12",
+      "dot": "S12",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s13",
+      "dot": "S13",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "s14",
+      "dot": "S14",
+      "ink": "blue",
+      "r": 14
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Fourteen students: the day of the month each was born, and a quiz score.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14"
+       ],
+       "at": "fourteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This cloud has no tilt: high and low scores turn up all through the month.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "s6",
+       "at": "high"
+      },
+      {
+       "do": "highlight",
+       "target": "s10",
+       "at": "low"
+      },
+      {
+       "do": "show",
+       "target": "band",
+       "at": "cloud"
+      },
+      {
+       "do": "draw",
+       "target": "tilt",
+       "at": "tilt"
+      },
+      {
+       "do": "show",
+       "target": "lnone",
+       "at": "tilt"
+      },
+      {
+       "do": "text",
+       "text": "No tilt",
+       "at": "tilt"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Knowing a birthday tells nothing about a score: no association.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "no"
+      },
+      {
+       "do": "term",
+       "word": "No association",
+       "meaning": "Knowing one measurement tells nothing about the other.",
+       "at": "no"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -2.1,
+     -10.2,
+     13.68,
+     67.2
+    ],
+    "points": {
+     "XT": [
+      6.0,
+      0
+     ],
+     "YT": [
+      0,
+      62.4
+     ],
+     "R1": [
+      1,
+      6
+     ],
+     "R2": [
+      2,
+      15
+     ],
+     "R3": [
+      3,
+      21
+     ],
+     "R4": [
+      4,
+      30
+     ],
+     "R5": [
+      5,
+      33
+     ],
+     "R6": [
+      6,
+      40
+     ],
+     "R7": [
+      7,
+      42
+     ],
+     "R8": [
+      8,
+      47
+     ],
+     "R9": [
+      9,
+      47
+     ],
+     "R10": [
+      10,
+      51
+     ],
+     "R11": [
+      11,
+      50
+     ],
+     "R12": [
+      12,
+      53
+     ],
+     "C1": [
+      0.6,
+      9.5
+     ],
+     "C2": [
+      2,
+      20.5
+     ],
+     "C3": [
+      4,
+      35
+     ],
+     "C4": [
+      6,
+      45
+     ],
+     "C5": [
+      8,
+      52
+     ],
+     "C6": [
+      10,
+      56
+     ],
+     "C7": [
+      12.3,
+      57.5
+     ],
+     "C8": [
+      12.7,
+      53
+     ],
+     "C9": [
+      12.3,
+      48.5
+     ],
+     "C10": [
+      10,
+      45.5
+     ],
+     "C11": [
+      8,
+      41.5
+     ],
+     "C12": [
+      6,
+      35
+     ],
+     "C13": [
+      4,
+      25
+     ],
+     "C14": [
+      2,
+      10
+     ],
+     "C15": [
+      0.6,
+      1.5
+     ],
+     "C16": [
+      0.3,
+      5.5
+     ],
+     "NL": [
+      9,
+      30
+     ],
+     "GV1a": [
+      1,
+      0
+     ],
+     "GV1b": [
+      1,
+      60
+     ],
+     "GV2a": [
+      2,
+      0
+     ],
+     "GV2b": [
+      2,
+      60
+     ],
+     "GV3a": [
+      3,
+      0
+     ],
+     "GV3b": [
+      3,
+      60
+     ],
+     "GV4a": [
+      4,
+      0
+     ],
+     "GV4b": [
+      4,
+      60
+     ],
+     "GV5a": [
+      5,
+      0
+     ],
+     "GV5b": [
+      5,
+      60
+     ],
+     "GV6a": [
+      6,
+      0
+     ],
+     "GV6b": [
+      6,
+      60
+     ],
+     "GV7a": [
+      7,
+      0
+     ],
+     "GV7b": [
+      7,
+      60
+     ],
+     "GV8a": [
+      8,
+      0
+     ],
+     "GV8b": [
+      8,
+      60
+     ],
+     "GV9a": [
+      9,
+      0
+     ],
+     "GV9b": [
+      9,
+      60
+     ],
+     "GV10a": [
+      10,
+      0
+     ],
+     "GV10b": [
+      10,
+      60
+     ],
+     "GV11a": [
+      11,
+      0
+     ],
+     "GV11b": [
+      11,
+      60
+     ],
+     "GV12a": [
+      12,
+      0
+     ],
+     "GV12b": [
+      12,
+      60
+     ],
+     "GH1a": [
+      0,
+      10
+     ],
+     "GH1b": [
+      12,
+      10
+     ],
+     "GH2a": [
+      0,
+      20
+     ],
+     "GH2b": [
+      12,
+      20
+     ],
+     "GH3a": [
+      0,
+      30
+     ],
+     "GH3b": [
+      12,
+      30
+     ],
+     "GH4a": [
+      0,
+      40
+     ],
+     "GH4b": [
+      12,
+      40
+     ],
+     "GH5a": [
+      0,
+      50
+     ],
+     "GH5b": [
+      12,
+      50
+     ],
+     "GH6a": [
+      0,
+      60
+     ],
+     "GH6b": [
+      12,
+      60
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv7",
+      "seg": [
+       "GV7a",
+       "GV7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv8",
+      "seg": [
+       "GV8a",
+       "GV8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv9",
+      "seg": [
+       "GV9a",
+       "GV9b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv10",
+      "seg": [
+       "GV10a",
+       "GV10b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv11",
+      "seg": [
+       "GV11a",
+       "GV11b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv12",
+      "seg": [
+       "GV12a",
+       "GV12b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 2,
+      "ystep": 10,
+      "yevery": 20,
+      "size": "l",
+      "xrange": [
+       0,
+       12.9
+      ],
+      "yrange": [
+       0,
+       62.4
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{age (months)}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{weight (pounds)}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "band",
+      "curve": [
+       "C1",
+       "C2",
+       "C3",
+       "C4",
+       "C5",
+       "C6",
+       "C7",
+       "C8",
+       "C9",
+       "C10",
+       "C11",
+       "C12",
+       "C13",
+       "C14",
+       "C15",
+       "C16",
+       "C1"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "lnl",
+      "label": "\\text{nonlinear}",
+      "at": "NL",
+      "dir": "c",
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "r1",
+      "dot": "R1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r2",
+      "dot": "R2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r3",
+      "dot": "R3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r4",
+      "dot": "R4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r5",
+      "dot": "R5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r6",
+      "dot": "R6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r7",
+      "dot": "R7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r8",
+      "dot": "R8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r9",
+      "dot": "R9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r10",
+      "dot": "R10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r11",
+      "dot": "R11",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "r12",
+      "dot": "R12",
+      "ink": "blue",
+      "r": 14
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A puppy, weighed each month for a year.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12"
+       ],
+       "at": "weighed"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "It gains fast, then slower, so the dots follow a curve: a nonlinear association.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "band",
+       "at": "curve"
+      },
+      {
+       "do": "clear",
+       "at": "nonlinear"
+      },
+      {
+       "do": "term",
+       "word": "Nonlinear association",
+       "meaning": "The dots follow a curve, not a straight band.",
+       "at": "nonlinear"
+      },
+      {
+       "do": "show",
+       "target": "lnl",
+       "at": "nonlinear"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -1.75,
+     -6.8,
+     11.4,
+     44.8
+    ],
+    "points": {
+     "XT": [
+      5.0,
+      0
+     ],
+     "YT": [
+      0,
+      41.6
+     ],
+     "O1": [
+      1,
+      5
+     ],
+     "O2": [
+      2,
+      9
+     ],
+     "O3": [
+      3,
+      11
+     ],
+     "O4": [
+      3,
+      14
+     ],
+     "O5": [
+      4,
+      15
+     ],
+     "O6": [
+      5,
+      19
+     ],
+     "O7": [
+      5,
+      17
+     ],
+     "O8": [
+      6,
+      22
+     ],
+     "O9": [
+      7,
+      24
+     ],
+     "O10": [
+      8,
+      28
+     ],
+     "O11": [
+      9,
+      30
+     ],
+     "O12": [
+      9,
+      33
+     ],
+     "OX": [
+      2,
+      36
+     ],
+     "BA": [
+      0.8,
+      0.9
+     ],
+     "BB": [
+      9.5,
+      29.6
+     ],
+     "BC": [
+      9.5,
+      38.1
+     ],
+     "BD": [
+      0.8,
+      9.4
+     ],
+     "GV1a": [
+      1,
+      0
+     ],
+     "GV1b": [
+      1,
+      40
+     ],
+     "GV2a": [
+      2,
+      0
+     ],
+     "GV2b": [
+      2,
+      40
+     ],
+     "GV3a": [
+      3,
+      0
+     ],
+     "GV3b": [
+      3,
+      40
+     ],
+     "GV4a": [
+      4,
+      0
+     ],
+     "GV4b": [
+      4,
+      40
+     ],
+     "GV5a": [
+      5,
+      0
+     ],
+     "GV5b": [
+      5,
+      40
+     ],
+     "GV6a": [
+      6,
+      0
+     ],
+     "GV6b": [
+      6,
+      40
+     ],
+     "GV7a": [
+      7,
+      0
+     ],
+     "GV7b": [
+      7,
+      40
+     ],
+     "GV8a": [
+      8,
+      0
+     ],
+     "GV8b": [
+      8,
+      40
+     ],
+     "GV9a": [
+      9,
+      0
+     ],
+     "GV9b": [
+      9,
+      40
+     ],
+     "GV10a": [
+      10,
+      0
+     ],
+     "GV10b": [
+      10,
+      40
+     ],
+     "GH1a": [
+      0,
+      5
+     ],
+     "GH1b": [
+      10,
+      5
+     ],
+     "GH2a": [
+      0,
+      10
+     ],
+     "GH2b": [
+      10,
+      10
+     ],
+     "GH3a": [
+      0,
+      15
+     ],
+     "GH3b": [
+      10,
+      15
+     ],
+     "GH4a": [
+      0,
+      20
+     ],
+     "GH4b": [
+      10,
+      20
+     ],
+     "GH5a": [
+      0,
+      25
+     ],
+     "GH5b": [
+      10,
+      25
+     ],
+     "GH6a": [
+      0,
+      30
+     ],
+     "GH6b": [
+      10,
+      30
+     ],
+     "GH7a": [
+      0,
+      35
+     ],
+     "GH7b": [
+      10,
+      35
+     ],
+     "GH8a": [
+      0,
+      40
+     ],
+     "GH8b": [
+      10,
+      40
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv7",
+      "seg": [
+       "GV7a",
+       "GV7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv8",
+      "seg": [
+       "GV8a",
+       "GV8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv9",
+      "seg": [
+       "GV9a",
+       "GV9b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv10",
+      "seg": [
+       "GV10a",
+       "GV10b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh7",
+      "seg": [
+       "GH7a",
+       "GH7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh8",
+      "seg": [
+       "GH8a",
+       "GH8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 1,
+      "every": 2,
+      "ystep": 5,
+      "yevery": 10,
+      "size": "l",
+      "xrange": [
+       0,
+       10.75
+      ],
+      "yrange": [
+       0,
+       41.6
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{miles from school}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{minutes to get there}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "band",
+      "poly": [
+       "BA",
+       "BB",
+       "BC",
+       "BD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "o1",
+      "dot": "O1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o2",
+      "dot": "O2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o3",
+      "dot": "O3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o4",
+      "dot": "O4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o5",
+      "dot": "O5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o6",
+      "dot": "O6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o7",
+      "dot": "O7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o8",
+      "dot": "O8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o9",
+      "dot": "O9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o10",
+      "dot": "O10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o11",
+      "dot": "O11",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "o12",
+      "dot": "O12",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "ox",
+      "dot": "OX",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "lout",
+      "label": "\\text{outlier}",
+      "at": "OX",
+      "dir": "e",
+      "far": 1.4,
+      "ink": "warm",
+      "size": "m"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Thirteen students: miles from school, and minutes to get there.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5",
+        "o6",
+        "o7",
+        "o8",
+        "o9",
+        "o10",
+        "o11",
+        "o12",
+        "ox"
+       ],
+       "at": "thirteen"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One dot sits far from the rest. A dot like that is an outlier.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ox",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "band",
+       "at": "rest"
+      },
+      {
+       "do": "clear",
+       "at": "outlier"
+      },
+      {
+       "do": "term",
+       "word": "Outlier",
+       "meaning": "A dot far from the rest of the cloud.",
+       "at": "outlier"
+      },
+      {
+       "do": "show",
+       "target": "lout",
+       "at": "outlier"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "stretch": true,
+    "view": [
+     -17.5,
+     -5.1,
+     114.0,
+     33.6
+    ],
+    "points": {
+     "XT": [
+      50.0,
+      0
+     ],
+     "YT": [
+      0,
+      31.2
+     ],
+     "G1": [
+      9,
+      9
+     ],
+     "G2": [
+      11,
+      10
+     ],
+     "G3": [
+      12,
+      12
+     ],
+     "G4": [
+      14,
+      11
+     ],
+     "G5": [
+      16,
+      12
+     ],
+     "G6": [
+      62,
+      24
+     ],
+     "G7": [
+      68,
+      26
+     ],
+     "G8": [
+      72,
+      23
+     ],
+     "G9": [
+      75,
+      27
+     ],
+     "G10": [
+      80,
+      25
+     ],
+     "G11": [
+      84,
+      26
+     ],
+     "AA": [
+      6,
+      7
+     ],
+     "AB": [
+      19,
+      7
+     ],
+     "AC": [
+      19,
+      14
+     ],
+     "AD": [
+      6,
+      14
+     ],
+     "ZA": [
+      58,
+      21
+     ],
+     "ZB": [
+      88,
+      21
+     ],
+     "ZC": [
+      88,
+      28.5
+     ],
+     "ZD": [
+      58,
+      28.5
+     ],
+     "KA": [
+      12.5,
+      14
+     ],
+     "KZ": [
+      73,
+      21
+     ],
+     "GV1a": [
+      10,
+      0
+     ],
+     "GV1b": [
+      10,
+      30
+     ],
+     "GV2a": [
+      20,
+      0
+     ],
+     "GV2b": [
+      20,
+      30
+     ],
+     "GV3a": [
+      30,
+      0
+     ],
+     "GV3b": [
+      30,
+      30
+     ],
+     "GV4a": [
+      40,
+      0
+     ],
+     "GV4b": [
+      40,
+      30
+     ],
+     "GV5a": [
+      50,
+      0
+     ],
+     "GV5b": [
+      50,
+      30
+     ],
+     "GV6a": [
+      60,
+      0
+     ],
+     "GV6b": [
+      60,
+      30
+     ],
+     "GV7a": [
+      70,
+      0
+     ],
+     "GV7b": [
+      70,
+      30
+     ],
+     "GV8a": [
+      80,
+      0
+     ],
+     "GV8b": [
+      80,
+      30
+     ],
+     "GV9a": [
+      90,
+      0
+     ],
+     "GV9b": [
+      90,
+      30
+     ],
+     "GV10a": [
+      100,
+      0
+     ],
+     "GV10b": [
+      100,
+      30
+     ],
+     "GH1a": [
+      0,
+      5
+     ],
+     "GH1b": [
+      100,
+      5
+     ],
+     "GH2a": [
+      0,
+      10
+     ],
+     "GH2b": [
+      100,
+      10
+     ],
+     "GH3a": [
+      0,
+      15
+     ],
+     "GH3b": [
+      100,
+      15
+     ],
+     "GH4a": [
+      0,
+      20
+     ],
+     "GH4b": [
+      100,
+      20
+     ],
+     "GH5a": [
+      0,
+      25
+     ],
+     "GH5b": [
+      100,
+      25
+     ],
+     "GH6a": [
+      0,
+      30
+     ],
+     "GH6b": [
+      100,
+      30
+     ]
+    },
+    "parts": [
+     {
+      "id": "gv1",
+      "seg": [
+       "GV1a",
+       "GV1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv2",
+      "seg": [
+       "GV2a",
+       "GV2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv3",
+      "seg": [
+       "GV3a",
+       "GV3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv4",
+      "seg": [
+       "GV4a",
+       "GV4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv5",
+      "seg": [
+       "GV5a",
+       "GV5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv6",
+      "seg": [
+       "GV6a",
+       "GV6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv7",
+      "seg": [
+       "GV7a",
+       "GV7b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv8",
+      "seg": [
+       "GV8a",
+       "GV8b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv9",
+      "seg": [
+       "GV9a",
+       "GV9b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gv10",
+      "seg": [
+       "GV10a",
+       "GV10b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh1",
+      "seg": [
+       "GH1a",
+       "GH1b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh2",
+      "seg": [
+       "GH2a",
+       "GH2b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh3",
+      "seg": [
+       "GH3a",
+       "GH3b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh4",
+      "seg": [
+       "GH4a",
+       "GH4b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh5",
+      "seg": [
+       "GH5a",
+       "GH5b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "gh6",
+      "seg": [
+       "GH6a",
+       "GH6b"
+      ],
+      "ink": "muted",
+      "w": 0.7,
+      "start": true
+     },
+     {
+      "id": "axes",
+      "axes": true,
+      "step": 10,
+      "every": 20,
+      "ystep": 5,
+      "yevery": 10,
+      "size": "l",
+      "xrange": [
+       0,
+       107.5
+      ],
+      "yrange": [
+       0,
+       31.2
+      ],
+      "start": true
+     },
+     {
+      "id": "xt",
+      "label": "\\text{weight (pounds)}",
+      "at": "XT",
+      "dir": "s",
+      "far": 1.8,
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "yt",
+      "label": "\\text{height (inches)}",
+      "at": "YT",
+      "dir": "e",
+      "size": "m",
+      "start": true
+     },
+     {
+      "id": "small",
+      "poly": [
+       "AA",
+       "AB",
+       "AC",
+       "AD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "large",
+      "poly": [
+       "ZA",
+       "ZB",
+       "ZC",
+       "ZD"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3,
+      "sheer": true
+     },
+     {
+      "id": "lc1",
+      "label": "\\text{cluster}",
+      "at": "KA",
+      "dir": "n",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "lc2",
+      "label": "\\text{cluster}",
+      "at": "KZ",
+      "dir": "s",
+      "far": 1.2,
+      "ink": "warm",
+      "size": "m"
+     },
+     {
+      "id": "g1",
+      "dot": "G1",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g2",
+      "dot": "G2",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g3",
+      "dot": "G3",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g4",
+      "dot": "G4",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g5",
+      "dot": "G5",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g6",
+      "dot": "G6",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g7",
+      "dot": "G7",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g8",
+      "dot": "G8",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g9",
+      "dot": "G9",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g10",
+      "dot": "G10",
+      "ink": "blue",
+      "r": 14
+     },
+     {
+      "id": "g11",
+      "dot": "G11",
+      "ink": "blue",
+      "r": 14
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The weights and heights of eleven dogs.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5",
+        "g6",
+        "g7",
+        "g8",
+        "g9",
+        "g10",
+        "g11"
+       ],
+       "at": "eleven"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Small dogs bunch here, and big dogs there. A bunch apart from the others is a cluster.",
+     "do": [
+      {
+       "do": "show",
+       "target": "small",
+       "at": "here"
+      },
+      {
+       "do": "show",
+       "target": "large",
+       "at": "there"
+      },
+      {
+       "do": "clear",
+       "at": "cluster"
+      },
+      {
+       "do": "term",
+       "word": "Cluster",
+       "meaning": "A bunch of dots apart from the others.",
+       "at": "cluster"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lc1",
+        "lc2"
+       ],
+       "at": "cluster"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Climbing is positive, falling is negative, and no tilt is none.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "text",
+       "text": "Climbs: positive",
+       "at": "Climbing"
+      },
+      {
+       "do": "text",
+       "text": "Falls: negative",
+       "at": "falling"
+      },
+      {
+       "do": "text",
+       "text": "No tilt: none",
+       "at": "tilt"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A straight band is linear; a bend is nonlinear.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Straight band: linear",
+       "at": "straight"
+      },
+      {
+       "do": "text",
+       "text": "A bend: nonlinear",
+       "at": "bend"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each dot is one thing, measured two ways. The tilt of the cloud is the association.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Each"
+      },
+      {
+       "do": "text",
+       "text": "Each dot is one thing,",
+       "at": "Each"
+      },
+      {
+       "do": "text",
+       "text": "measured two ways.",
+       "at": "measured"
+      },
+      {
+       "do": "text",
+       "text": "The tilt of the cloud",
+       "at": "tilt"
+      },
+      {
+       "do": "text",
+       "text": "is the association.",
+       "at": "association"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
