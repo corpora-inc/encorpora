@@ -9,6 +9,7 @@ import { arraySchema } from "./array";
 import { barChartSchema } from "./bar-chart";
 import { barsSchema } from "./bars";
 import { baseTenSchema } from "./base-ten";
+import { billSchema } from "./bill";
 import { boxPlotSchema } from "./box-plot";
 import { circleDiagramSchema } from "./circle-diagram";
 import { circleGraphSchema } from "./circle-graph";
@@ -43,6 +44,7 @@ export const componentSchemas = [
   barChartSchema,
   barsSchema,
   baseTenSchema,
+  billSchema,
   boxPlotSchema,
   circleDiagramSchema,
   circleGraphSchema,
@@ -78,6 +80,7 @@ export * from "./array";
 export * from "./bar-chart";
 export * from "./bars";
 export * from "./base-ten";
+export * from "./bill";
 export * from "./box-plot";
 export * from "./circle-diagram";
 export * from "./circle-graph";

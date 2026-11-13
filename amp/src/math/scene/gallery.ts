@@ -1060,6 +1060,19 @@ export const galleryCases: GalleryCase[] = [
     }).scene({ title: "Tangent PT and radius OT" }),
   },
   ...sceneV2Cases,
+  {
+    name: "Bills: one dollar, five dollars and a stack of three ones",
+    scene: {
+      v: 1,
+      elements: [
+        { type: "bill", id: "one", value: 1, at: [0, 65], width: 100 },
+        { type: "bill", id: "five", value: 5, at: [112, 65], width: 100 },
+        { type: "bill", id: "back", value: 1, at: [45, 12], width: 100 },
+        { type: "bill", id: "middle", value: 1, at: [53, 6], width: 100 },
+        { type: "bill", id: "front", value: 1, at: [61, 0], width: 100 },
+      ],
+    },
+  },
   ...thingsCases,
 ];
 

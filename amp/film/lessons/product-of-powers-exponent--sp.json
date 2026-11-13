@@ -1,0 +1,2517 @@
+{
+ "id": "product-of-powers-exponent--sp",
+ "title": "Multiply powers: follow the factors",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -6.5,
+     -4.6,
+     6.5,
+     4.6
+    ],
+    "points": {
+     "compactP": [
+      -4.1,
+      1.5
+     ],
+     "equalsP": [
+      -2,
+      1.5
+     ],
+     "f1P": [
+      0,
+      1.5
+     ],
+     "f2P": [
+      2,
+      1.5
+     ],
+     "f3P": [
+      4,
+      1.5
+     ],
+     "timesAP": [
+      1,
+      1.5
+     ],
+     "timesBP": [
+      3,
+      1.5
+     ],
+     "threeA": [
+      0,
+      0.1
+     ],
+     "threeB": [
+      4,
+      0.1
+     ],
+     "baseNameP": [
+      -3.6,
+      -0.9
+     ],
+     "expNameP": [
+      -2.6,
+      3.95
+     ],
+     "expFrom": [
+      -3.2,
+      3.5
+     ],
+     "expTo": [
+      -3.5,
+      2.85
+     ],
+     "baseFrom": [
+      -4,
+      -0.3
+     ],
+     "baseTo": [
+      -4.2,
+      0.55
+     ]
+    },
+    "parts": [
+     {
+      "id": "compact",
+      "label": "\\Large{2^3}",
+      "at": "compactP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "equals",
+      "label": "=",
+      "at": "equalsP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "f1",
+      "label": "\\LARGE{2}",
+      "at": "f1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "f2",
+      "label": "\\LARGE{2}",
+      "at": "f2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "f3",
+      "label": "\\LARGE{2}",
+      "at": "f3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "timesA",
+      "label": "\\times",
+      "at": "timesAP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "timesB",
+      "label": "\\times",
+      "at": "timesBP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "three",
+      "dim": [
+       "threeA",
+       "threeB"
+      ],
+      "side": "s",
+      "tex": "3\\text{ factors}",
+      "ink": "accent",
+      "far": 1
+     },
+     {
+      "id": "baseName",
+      "label": "\\text{base }2",
+      "at": "baseNameP",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "expName",
+      "label": "\\text{exponent }3",
+      "at": "expNameP",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "flies": true
+     },
+     {
+      "id": "expPointer",
+      "vector": [
+       "expFrom",
+       "expTo"
+      ],
+      "ink": "violet",
+      "w": 2
+     },
+     {
+      "id": "basePointer",
+      "vector": [
+       "baseFrom",
+       "baseTo"
+      ],
+      "ink": "accent",
+      "w": 2
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "In two cubed, the base is two: the number repeated.",
+     "do": [
+      {
+       "do": "header",
+       "tex": "2^3",
+       "label": "Repeated multiplication",
+       "at": "In"
+      },
+      {
+       "do": "show",
+       "target": [
+        "baseName",
+        "basePointer"
+       ],
+       "at": "base"
+      },
+      {
+       "do": "write",
+       "tex": "2^3=2\\times2\\times2",
+       "at": "In"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The small raised three is the exponent. It counts the numbers multiplied.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "expName",
+        "expPointer"
+       ],
+       "at": "exponent"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the factors, the numbers being multiplied: one,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f1",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "three",
+       "at": "factors"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "two,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f2",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "three. Their product is eight.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f3",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "2^3=2\\times2\\times2=8",
+       "at": "three"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -6.2,
+     -5,
+     6.2,
+     5
+    ],
+    "points": {
+     "f1P": [
+      -1,
+      3
+     ],
+     "f2P": [
+      1,
+      3
+     ],
+     "f3P": [
+      -2,
+      -2.2
+     ],
+     "f4P": [
+      0,
+      -2.2
+     ],
+     "f5P": [
+      2,
+      -2.2
+     ],
+     "aMulP": [
+      0,
+      3
+     ],
+     "bMulP": [
+      -1,
+      -2.2
+     ],
+     "cMulP": [
+      1,
+      -2.2
+     ],
+     "aCountA": [
+      -1,
+      1.4
+     ],
+     "aCountB": [
+      1,
+      1.4
+     ],
+     "bCountA": [
+      -2,
+      -3.8
+     ],
+     "bCountB": [
+      2,
+      -3.8
+     ],
+     "joinMulP": [
+      -1.15,
+      0.6
+     ],
+     "aJoinedA": [
+      -4.6,
+      -1.1
+     ],
+     "aJoinedB": [
+      -2.3,
+      -1.1
+     ],
+     "bJoinedA": [
+      0,
+      -1.1
+     ],
+     "bJoinedB": [
+      4.6,
+      -1.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "f1",
+      "label": "\\LARGE{2}",
+      "at": "f1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "f2",
+      "label": "\\LARGE{2}",
+      "at": "f2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "f3",
+      "label": "\\LARGE{2}",
+      "at": "f3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "f4",
+      "label": "\\LARGE{2}",
+      "at": "f4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "f5",
+      "label": "\\LARGE{2}",
+      "at": "f5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "aMul",
+      "label": "\\times",
+      "at": "aMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "bMul",
+      "label": "\\times",
+      "at": "bMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "cMul",
+      "label": "\\times",
+      "at": "cMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "aCount",
+      "dim": [
+       "aCountA",
+       "aCountB"
+      ],
+      "side": "s",
+      "tex": "2\\text{ factors}",
+      "ink": "accent",
+      "far": 0.1,
+      "start": true
+     },
+     {
+      "id": "bCount",
+      "dim": [
+       "bCountA",
+       "bCountB"
+      ],
+      "side": "s",
+      "tex": "3\\text{ factors}",
+      "ink": "violet",
+      "far": 0.1,
+      "start": true
+     },
+     {
+      "id": "joinMul",
+      "label": "\\times",
+      "at": "joinMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true
+     },
+     {
+      "id": "aJoined",
+      "dim": [
+       "aJoinedA",
+       "aJoinedB"
+      ],
+      "side": "s",
+      "tex": "2",
+      "ink": "accent",
+      "far": 0.1
+     },
+     {
+      "id": "bJoined",
+      "dim": [
+       "bJoinedA",
+       "bJoinedB"
+      ],
+      "side": "s",
+      "tex": "3",
+      "ink": "violet",
+      "far": 0.1
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two squared times two cubed. Join two factors to three.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "2^2\\times2^3",
+       "label": "Join the factors",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "2^2\\times2^3",
+       "at": "Two"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aCount",
+        "bCount"
+       ],
+       "at": "Join"
+      },
+      {
+       "do": "move",
+       "points": {
+        "f1P": [
+         -4.6,
+         0.6
+        ],
+        "f2P": [
+         -2.3,
+         0.6
+        ],
+        "f3P": [
+         0,
+         0.6
+        ],
+        "f4P": [
+         2.3,
+         0.6
+        ],
+        "f5P": [
+         4.6,
+         0.6
+        ],
+        "aMulP": [
+         -3.45,
+         0.6
+        ],
+        "bMulP": [
+         1.15,
+         0.6
+        ],
+        "cMulP": [
+         3.45,
+         0.6
+        ]
+       },
+       "at": "Join",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "joinMul",
+       "at": "Join"
+      },
+      {
+       "do": "show",
+       "target": [
+        "aJoined",
+        "bJoined"
+       ],
+       "at": "three"
+      }
+     ],
+     "pause": 1.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip multiplies the exponents. But we joined the factors, so we add their counts.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "multiplies"
+      },
+      {
+       "do": "write",
+       "tex": "2^2\\times2^3=2^6",
+       "at": "multiplies",
+       "id": "slip"
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "add"
+      },
+      {
+       "do": "write",
+       "tex": "2^2\\times2^3=2^5",
+       "at": "counts"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "One,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f1",
+       "at": "One"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "two,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f2",
+       "at": "two"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "three,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f3",
+       "at": "three"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "four,",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f4",
+       "at": "four"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five. Add the counts because we joined the factors into one product.",
+     "pause": 1.1,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f5",
+       "at": "Five"
+      },
+      {
+       "do": "clear",
+       "at": "Add"
+      },
+      {
+       "do": "write",
+       "tex": "2^2\\times2^3=2^{2+3}",
+       "at": "Add"
+      },
+      {
+       "do": "write",
+       "tex": "=2^5",
+       "at": "joined"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4.9,
+     4.5,
+     4.9
+    ],
+    "points": {
+     "pTwoP": [
+      0,
+      2.9899999999999998
+     ],
+     "pOneP": [
+      0,
+      0.0
+     ],
+     "pZeroP": [
+      0,
+      -2.9899999999999998
+     ],
+     "downAA": [
+      0,
+      2.015
+     ],
+     "downAB": [
+      0,
+      0.9750000000000001
+     ],
+     "downBA": [
+      0,
+      -0.9750000000000001
+     ],
+     "downBB": [
+      0,
+      -2.015
+     ],
+     "divideAP": [
+      -1.1,
+      1.4949999999999999
+     ],
+     "divideBP": [
+      -1.1,
+      -1.4949999999999999
+     ]
+    },
+    "parts": [
+     {
+      "id": "pTwo",
+      "label": "2^2=4",
+      "at": "pTwoP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "pOne",
+      "label": "2^1=2",
+      "at": "pOneP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "flies": true
+     },
+     {
+      "id": "pZero",
+      "label": "2^0=1",
+      "at": "pZeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "downA",
+      "ink": "gold",
+      "w": 3,
+      "vector": [
+       "downAA",
+       "downAB"
+      ]
+     },
+     {
+      "id": "downB",
+      "ink": "gold",
+      "w": 3,
+      "vector": [
+       "downBA",
+       "downBB"
+      ]
+     },
+     {
+      "id": "divideA",
+      "label": "\\div2",
+      "at": "divideAP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "divideB",
+      "label": "\\div2",
+      "at": "divideBP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two squared is four. Lowering its exponent by one divides its value by two.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "2^2=4",
+       "label": "Work backward",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "2^2=4",
+       "at": "Two"
+      },
+      {
+       "do": "text",
+       "text": "Exponent down 1: divide by 2",
+       "at": "Lowering"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide by two: two to the first power is two.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Divide"
+      },
+      {
+       "do": "show",
+       "target": [
+        "downA",
+        "divideA"
+       ],
+       "at": "Divide"
+      },
+      {
+       "do": "show",
+       "target": "pOne",
+       "at": "first"
+      },
+      {
+       "do": "write",
+       "tex": "4\\div2=2",
+       "at": "Divide"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide by two again. Two divided by two is one.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "downB",
+        "divideB"
+       ],
+       "at": "Divide"
+      },
+      {
+       "do": "clear",
+       "at": "Divide"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac22=1",
+       "at": "Divide"
+      },
+      {
+       "do": "show",
+       "target": "pZero",
+       "at": "one"
+      }
+     ],
+     "pause": 1
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keeping the same pattern makes the zero power one.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "2^0=1",
+       "label": "The zero power",
+       "at": "Keeping"
+      },
+      {
+       "do": "write",
+       "tex": "2\\div2=1",
+       "at": "Keeping"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.5,
+     -4.9,
+     4.5,
+     4.9
+    ],
+    "points": {
+     "pZeroP": [
+      0,
+      2.9899999999999998
+     ],
+     "pNegOneP": [
+      0,
+      0.0
+     ],
+     "pNegTwoP": [
+      0,
+      -2.9899999999999998
+     ],
+     "downAA": [
+      0,
+      2.015
+     ],
+     "downAB": [
+      0,
+      0.9750000000000001
+     ],
+     "downBA": [
+      0,
+      -0.9750000000000001
+     ],
+     "downBB": [
+      0,
+      -2.015
+     ],
+     "divideAP": [
+      -1.1,
+      1.4949999999999999
+     ],
+     "divideBP": [
+      -1.1,
+      -1.4949999999999999
+     ]
+    },
+    "parts": [
+     {
+      "id": "pZero",
+      "label": "2^0=1",
+      "at": "pZeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "pNegOne",
+      "label": "2^{-1}=\\frac12\\mkern-1.5mu",
+      "at": "pNegOneP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true
+     },
+     {
+      "id": "pNegTwo",
+      "label": "2^{-2}=\\frac14\\mkern-1.5mu",
+      "at": "pNegTwoP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true
+     },
+     {
+      "id": "downA",
+      "ink": "gold",
+      "w": 3,
+      "vector": [
+       "downAA",
+       "downAB"
+      ]
+     },
+     {
+      "id": "downB",
+      "ink": "gold",
+      "w": 3,
+      "vector": [
+       "downBA",
+       "downBB"
+      ]
+     },
+     {
+      "id": "divideA",
+      "label": "\\div2",
+      "at": "divideAP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "divideB",
+      "label": "\\div2",
+      "at": "divideBP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Keep dividing by two. Two to the negative one is one half.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "2^0=1",
+       "label": "Continue the pattern",
+       "at": "Keep"
+      },
+      {
+       "do": "write",
+       "tex": "1\\div2=\\frac12",
+       "at": "Keep"
+      },
+      {
+       "do": "show",
+       "target": [
+        "downA",
+        "divideA"
+       ],
+       "at": "dividing"
+      },
+      {
+       "do": "show",
+       "target": "pNegOne",
+       "at": "half"
+      },
+      {
+       "do": "write",
+       "tex": "2^{-1}=\\frac12",
+       "at": "Two",
+       "nth": 2
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "Again: two to the negative two is one over two times two, or one fourth.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "downB",
+        "divideB"
+       ],
+       "at": "Again"
+      },
+      {
+       "do": "show",
+       "target": "pNegTwo",
+       "at": "fourth"
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "2^{-2}=\\frac{1}{2\\times2}=\\frac14",
+       "at": "Again"
+      }
+     ],
+     "pause": 0.8
+    },
+    {
+     "speaker": "teacher",
+     "say": "A negative exponent records division by the base.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "pNegTwo",
+       "at": "negative"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "A reciprocal multiplies with the original number to make one. Four times one fourth equals one.",
+     "pause": 1.1,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "4\\times\\frac14=1",
+       "label": "Reciprocal",
+       "at": "A"
+      },
+      {
+       "do": "write",
+       "tex": "4\\times\\frac14=1",
+       "at": "A"
+      },
+      {
+       "do": "highlight",
+       "target": "pNegTwo",
+       "at": "fourth"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.8,
+     -4,
+     3.8,
+     4
+    ],
+    "points": {
+     "zeroP": [
+      0,
+      2.5
+     ],
+     "negP": [
+      0,
+      -2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "zero",
+      "label": "x^0=1\\mkern-0.7mu",
+      "at": "zeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true
+     },
+     {
+      "id": "general",
+      "label": "x^{-n}=\\frac{1}{x^n}\\mkern-1.5mu",
+      "at": "negP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true
+     },
+     {
+      "id": "base",
+      "label": "x\\ne0",
+      "at": "zeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Let x stand for any number except zero. We cannot divide by zero.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "x\\ne0",
+       "label": "The same base throughout",
+       "at": "Let"
+      },
+      {
+       "do": "write",
+       "tex": "x\\ne0",
+       "at": "Let"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The same pattern makes x to the zero equal to one.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^0=1",
+       "at": "The"
+      },
+      {
+       "do": "hide",
+       "target": "base",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "zero",
+       "at": "zero"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "For a positive whole number n, x to the negative n means one over x to the n.",
+     "do": [
+      {
+       "do": "show",
+       "target": "general",
+       "at": "negative"
+      },
+      {
+       "do": "write",
+       "tex": "x^{-n}=\\frac1{x^n}",
+       "at": "x",
+       "fresh": true
+      }
+     ],
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.1,
+     -3.5,
+     4.1,
+     3.5
+    ],
+    "points": {
+     "u1P": [
+      -1,
+      1.2
+     ],
+     "u2P": [
+      1,
+      1.2
+     ],
+     "umP": [
+      0,
+      1.2
+     ],
+     "d1P": [
+      -2,
+      -1.2
+     ],
+     "d2P": [
+      0,
+      -1.2
+     ],
+     "d3P": [
+      2,
+      -1.2
+     ],
+     "dm1P": [
+      -1,
+      -1.2
+     ],
+     "dm2P": [
+      1,
+      -1.2
+     ],
+     "barA": [
+      -3.1,
+      0
+     ],
+     "barB": [
+      3.1,
+      0
+     ],
+     "uOneAP": [
+      -2,
+      1.2
+     ],
+     "dOneAP": [
+      -2,
+      -1.2
+     ],
+     "uOneBP": [
+      0,
+      1.2
+     ],
+     "dOneBP": [
+      0,
+      -1.2
+     ],
+     "finalOneP": [
+      0,
+      1.2
+     ],
+     "pairA0": [
+      -2.68,
+      2.25
+     ],
+     "pairA1": [
+      -1.3199999999999998,
+      2.25
+     ],
+     "pairA2": [
+      -1.3199999999999998,
+      -2.25
+     ],
+     "pairA3": [
+      -2.68,
+      -2.25
+     ],
+     "pairB0": [
+      -0.68,
+      2.25
+     ],
+     "pairB1": [
+      0.68,
+      2.25
+     ],
+     "pairB2": [
+      0.68,
+      -2.25
+     ],
+     "pairB3": [
+      -0.68,
+      -2.25
+     ]
+    },
+    "parts": [
+     {
+      "id": "pairA",
+      "poly": [
+       "pairA0",
+       "pairA1",
+       "pairA2",
+       "pairA3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "pairB",
+      "poly": [
+       "pairB0",
+       "pairB1",
+       "pairB2",
+       "pairB3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "u1",
+      "label": "\\LARGE{x}",
+      "at": "u1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "u2",
+      "label": "\\LARGE{x}",
+      "at": "u2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "um",
+      "label": "\\times",
+      "at": "umP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d1",
+      "label": "\\LARGE{x}",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d2",
+      "label": "\\LARGE{x}",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d3",
+      "label": "\\LARGE{x}",
+      "at": "d3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "dm1",
+      "label": "\\times",
+      "at": "dm1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "dm2",
+      "label": "\\times",
+      "at": "dm2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "bar",
+      "seg": [
+       "barA",
+       "barB"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "uOneA",
+      "label": "\\LARGE{1}",
+      "at": "uOneAP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "dOneA",
+      "label": "\\LARGE{1}",
+      "at": "dOneAP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "uOneB",
+      "label": "\\LARGE{1}",
+      "at": "uOneBP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "dOneB",
+      "label": "\\LARGE{1}",
+      "at": "dOneBP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "finalOne",
+      "label": "\\LARGE{1}",
+      "at": "finalOneP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Multiply x squared by x to the negative three.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "tex": "x^2\\times x^{-3}",
+       "label": "Multiply with a reciprocal",
+       "at": "Multiply"
+      },
+      {
+       "do": "write",
+       "tex": "=\\frac{x\\times x}{x\\times x\\times x}",
+       "at": "Multiply"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two factors above, three below. A negative exponent puts factors below, where they divide.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "below"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Align a matching pair. The same number divided by itself is one.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "u1P": [
+         -2,
+         1.2
+        ],
+        "u2P": [
+         0,
+         1.2
+        ],
+        "umP": [
+         -1,
+         1.2
+        ]
+       },
+       "at": "Align",
+       "dur": 0.6
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u1",
+        "d1"
+       ],
+       "at": "pair"
+      },
+      {
+       "do": "clear",
+       "at": "same"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac xx=1",
+       "at": "same"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "u1",
+        "d1"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "uOneA",
+        "dOneA"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "text",
+       "text": "Each matching pair makes 1.",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "pairA",
+       "at": "pair"
+      }
+     ],
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "This pair also makes one.",
+     "pause": 0.9,
+     "do": [
+      {
+       "do": "hide",
+       "target": "pairA",
+       "at": "This"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u2",
+        "d2"
+       ],
+       "at": "pair"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "u2",
+        "d2"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "uOneB",
+        "dOneB"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "pairB",
+       "at": "pair"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiplying by one changes nothing. One above and x below give one over x, or x to the negative one.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "uOneA",
+        "dOneA",
+        "uOneB",
+        "dOneB",
+        "um",
+        "dm1",
+        "dm2"
+       ],
+       "at": "nothing"
+      },
+      {
+       "do": "show",
+       "target": "finalOne",
+       "at": "nothing"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d3P": [
+         0,
+         -1.2
+        ],
+        "barA": [
+         -0.85,
+         0
+        ],
+        "barB": [
+         0.85,
+         0
+        ]
+       },
+       "at": "nothing"
+      },
+      {
+       "do": "clear",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "x^2\\times x^{-3}=\\frac1x",
+       "at": "One",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "=x^{-1}",
+       "at": "negative"
+      },
+      {
+       "do": "hide",
+       "target": "pairB",
+       "at": "nothing"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two plus negative three is negative one.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "write",
+       "tex": "2+(-3)=-1",
+       "at": "Two",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -6.2,
+     -5,
+     6.2,
+     5
+    ],
+    "points": {
+     "f1P": [
+      -1,
+      3
+     ],
+     "f2P": [
+      1,
+      3
+     ],
+     "f3P": [
+      -2,
+      -2.2
+     ],
+     "f4P": [
+      0,
+      -2.2
+     ],
+     "f5P": [
+      2,
+      -2.2
+     ],
+     "aMulP": [
+      0,
+      3
+     ],
+     "bMulP": [
+      -1,
+      -2.2
+     ],
+     "cMulP": [
+      1,
+      -2.2
+     ],
+     "aCountA": [
+      -1,
+      1.4
+     ],
+     "aCountB": [
+      1,
+      1.4
+     ],
+     "bCountA": [
+      -2,
+      -3.8
+     ],
+     "bCountB": [
+      2,
+      -3.8
+     ],
+     "joinMulP": [
+      -1.15,
+      0.6
+     ],
+     "aJoinedA": [
+      -4.6,
+      -1.1
+     ],
+     "aJoinedB": [
+      -2.3,
+      -1.1
+     ],
+     "bJoinedA": [
+      0,
+      -1.1
+     ],
+     "bJoinedB": [
+      4.6,
+      -1.1
+     ]
+    },
+    "parts": [
+     {
+      "id": "f1",
+      "label": "\\LARGE{x}",
+      "at": "f1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "f2",
+      "label": "\\LARGE{x}",
+      "at": "f2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "f3",
+      "label": "\\LARGE{x}",
+      "at": "f3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "f4",
+      "label": "\\LARGE{x}",
+      "at": "f4P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "f5",
+      "label": "\\LARGE{x}",
+      "at": "f5P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "aMul",
+      "label": "\\times",
+      "at": "aMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "first"
+     },
+     {
+      "id": "bMul",
+      "label": "\\times",
+      "at": "bMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "cMul",
+      "label": "\\times",
+      "at": "cMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "aCount",
+      "dim": [
+       "aCountA",
+       "aCountB"
+      ],
+      "side": "s",
+      "tex": "2\\text{ factors}",
+      "ink": "accent",
+      "far": 0.1,
+      "start": true
+     },
+     {
+      "id": "bCount",
+      "dim": [
+       "bCountA",
+       "bCountB"
+      ],
+      "side": "s",
+      "tex": "3\\text{ factors}",
+      "ink": "violet",
+      "far": 0.1,
+      "start": true
+     },
+     {
+      "id": "joinMul",
+      "label": "\\times",
+      "at": "joinMulP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true
+     },
+     {
+      "id": "aJoined",
+      "dim": [
+       "aJoinedA",
+       "aJoinedB"
+      ],
+      "side": "s",
+      "tex": "2",
+      "ink": "accent",
+      "far": 0.1
+     },
+     {
+      "id": "bJoined",
+      "dim": [
+       "bJoinedA",
+       "bJoinedB"
+      ],
+      "side": "s",
+      "tex": "3",
+      "ink": "violet",
+      "far": 0.1
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "For the same base, add the exponents when you multiply.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "For"
+      },
+      {
+       "do": "header",
+       "tex": "x^m\\times x^n=x^{m+n}",
+       "label": "Same base: x ≠ 0",
+       "keep": true,
+       "at": "For"
+      },
+      {
+       "do": "write",
+       "tex": "x^2\\times x^3=x^5",
+       "at": "For"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "aCount",
+        "bCount"
+       ],
+       "at": "add"
+      },
+      {
+       "do": "move",
+       "points": {
+        "f1P": [
+         -4.6,
+         0.6
+        ],
+        "f2P": [
+         -2.3,
+         0.6
+        ],
+        "f3P": [
+         0,
+         0.6
+        ],
+        "f4P": [
+         2.3,
+         0.6
+        ],
+        "f5P": [
+         4.6,
+         0.6
+        ],
+        "aMulP": [
+         -3.45,
+         0.6
+        ],
+        "bMulP": [
+         1.15,
+         0.6
+        ],
+        "cMulP": [
+         3.45,
+         0.6
+        ]
+       },
+       "at": "add",
+       "dur": 1.5
+      },
+      {
+       "do": "show",
+       "target": "joinMul",
+       "at": "add"
+      },
+      {
+       "do": "show",
+       "target": [
+        "aJoined",
+        "bJoined"
+       ],
+       "at": "add"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The exponents m and n can be positive, zero, or negative whole numbers.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "f2"
+       ],
+       "at": "positive"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "X cubed means x times x times x.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "X"
+      },
+      {
+       "do": "write",
+       "tex": "x^3=x\\times x\\times x",
+       "at": "X",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "f3",
+        "f4",
+        "f5"
+       ],
+       "at": "cubed"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "X to the zero equals one.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^0=1",
+       "at": "X",
+       "fresh": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -4.1,
+     -3.5,
+     4.1,
+     3.5
+    ],
+    "points": {
+     "u1P": [
+      -2,
+      1.2
+     ],
+     "u2P": [
+      0,
+      1.2
+     ],
+     "umP": [
+      -1,
+      1.2
+     ],
+     "d1P": [
+      -2,
+      -1.2
+     ],
+     "d2P": [
+      0,
+      -1.2
+     ],
+     "d3P": [
+      2,
+      -1.2
+     ],
+     "dm1P": [
+      -1,
+      -1.2
+     ],
+     "dm2P": [
+      1,
+      -1.2
+     ],
+     "barA": [
+      -3.1,
+      0
+     ],
+     "barB": [
+      3.1,
+      0
+     ],
+     "uOneAP": [
+      -2,
+      1.2
+     ],
+     "dOneAP": [
+      -2,
+      -1.2
+     ],
+     "uOneBP": [
+      0,
+      1.2
+     ],
+     "dOneBP": [
+      0,
+      -1.2
+     ],
+     "finalOneP": [
+      0,
+      1.2
+     ],
+     "pairA0": [
+      -2.68,
+      2.25
+     ],
+     "pairA1": [
+      -1.3199999999999998,
+      2.25
+     ],
+     "pairA2": [
+      -1.3199999999999998,
+      -2.25
+     ],
+     "pairA3": [
+      -2.68,
+      -2.25
+     ],
+     "pairB0": [
+      -0.68,
+      2.25
+     ],
+     "pairB1": [
+      0.68,
+      2.25
+     ],
+     "pairB2": [
+      0.68,
+      -2.25
+     ],
+     "pairB3": [
+      -0.68,
+      -2.25
+     ]
+    },
+    "parts": [
+     {
+      "id": "pairA",
+      "poly": [
+       "pairA0",
+       "pairA1",
+       "pairA2",
+       "pairA3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "pairB",
+      "poly": [
+       "pairB0",
+       "pairB1",
+       "pairB2",
+       "pairB3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 5
+     },
+     {
+      "id": "u1",
+      "label": "\\LARGE{x}",
+      "at": "u1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "u2",
+      "label": "\\LARGE{x}",
+      "at": "u2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "um",
+      "label": "\\times",
+      "at": "umP",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d1",
+      "label": "\\LARGE{x}",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d2",
+      "label": "\\LARGE{x}",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "d3",
+      "label": "\\LARGE{x}",
+      "at": "d3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "violet",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "dm1",
+      "label": "\\times",
+      "at": "dm1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "dm2",
+      "label": "\\times",
+      "at": "dm2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "flies": true,
+      "start": true
+     },
+     {
+      "id": "bar",
+      "seg": [
+       "barA",
+       "barB"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "uOneA",
+      "label": "\\LARGE{1}",
+      "at": "uOneAP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "dOneA",
+      "label": "\\LARGE{1}",
+      "at": "dOneAP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "uOneB",
+      "label": "\\LARGE{1}",
+      "at": "uOneBP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "dOneB",
+      "label": "\\LARGE{1}",
+      "at": "dOneBP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "gold",
+      "flies": true
+     },
+     {
+      "id": "finalOne",
+      "label": "\\LARGE{1}",
+      "at": "finalOneP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink",
+      "flies": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "X to the negative n equals one over x to the n.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^{-n}=\\frac1{x^n}",
+       "at": "X",
+       "fresh": true
+      },
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "negative"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Matching factors above and below make one.",
+     "do": [
+      {
+       "do": "show",
+       "target": "pairA",
+       "at": "Matching"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u1",
+        "d1"
+       ],
+       "at": "below"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "u1",
+        "d1"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "uOneA",
+        "dOneA"
+       ],
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "This pair makes one again, leaving one over x, or x to the negative one.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "pairA",
+       "at": "This"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "u2",
+        "d2"
+       ],
+       "at": "pair"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "u2",
+        "d2"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": [
+        "uOneB",
+        "dOneB"
+       ],
+       "at": "one"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "uOneA",
+        "dOneA",
+        "uOneB",
+        "dOneB",
+        "um",
+        "dm1",
+        "dm2"
+       ],
+       "at": "leaving"
+      },
+      {
+       "do": "show",
+       "target": "finalOne",
+       "at": "leaving"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d3P": [
+         0,
+         -1.2
+        ],
+        "barA": [
+         -0.85,
+         0
+        ],
+        "barB": [
+         0.85,
+         0
+        ]
+       },
+       "at": "leaving"
+      },
+      {
+       "do": "show",
+       "target": "pairB",
+       "at": "pair"
+      },
+      {
+       "do": "hide",
+       "target": "pairB",
+       "at": "leaving"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Open the powers and follow the factors.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d3",
+       "at": "factors"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Matching factors above and below make one.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "finalOne",
+       "at": "one"
+      }
+     ],
+     "pause": 0.3
+    }
+   ]
+  }
+ ]
+}

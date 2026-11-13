@@ -97,6 +97,17 @@ function wrongTargets() {
 
 beforeAll(async () => {
   cases.good = sceneFilm();
+  cases.bills = sceneFilm({
+    ...sceneScreenplay,
+    shots: [{ figure: { scene: { v: 1, elements: [
+      { type: "bill", id: "one", value: 1, at: [0, 0], width: 100 },
+      { type: "bill", id: "five", value: 5, at: [112, 0], width: 100 },
+    ] } }, beats: [{ say: "One dollar and five dollars.", do: [
+      { do: "scene", actions: [{ do: "appear", target: "one" }] },
+      { do: "scene", at: "five", actions: [{ do: "highlight", target: "five" }] },
+      { do: "text", text: "One dollar and five dollars." },
+    ] }] }],
+  });
   cases.wrong = sceneFilm(wrongTargets());
   // the same server and page make.ts uses
   server = await createServer({
@@ -173,3 +184,12 @@ describe("scene shots in the renderer", () => {
     }
   }, 180_000);
 });
+
+it("draws bill scenes in both film layouts with every renderer check enabled", async () => {
+  for (const layout of ["wide", "tall"] as const) {
+    const got = await render("bills", layout);
+    expect(got.errors, layout).toEqual([]);
+    expect(got.issues, layout).toEqual([]);
+    expect(got.drawn[0], layout).toEqual(["one", "five"]);
+  }
+}, 180_000);
