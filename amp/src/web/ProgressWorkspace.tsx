@@ -151,6 +151,10 @@ export function ProgressWorkspace({
   const [largeText, setLargeText] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const returnSkill = useRef<string | null>(null);
+  // The page size settled for this screen (after the overflow guard below):
+  // a list that remounts on the same screen, as when a detail closes, keeps
+  // it, so the page the parent comes back to has the cards they left.
+  const settled = useRef<{ screen: string; capacity: number } | null>(null);
   useLayoutEffect(() => {
     const target = typeMeasure.current;
     if (!target) return;
@@ -182,17 +186,25 @@ export function ProgressWorkspace({
       const gap = grid
         ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
         : 12;
-      setCapacity(
-        largeText
-          ? 1
-          : Math.max(
-              1,
-              Math.min(
-                3,
-                Math.floor((target.clientHeight + gap) / (card + gap)),
-              ),
-            ) * columns,
-      );
+      const screen = [
+        target.clientHeight,
+        columns,
+        card,
+        gap,
+        largeText,
+      ].join();
+      if (settled.current?.screen === screen) {
+        setCapacity(settled.current.capacity);
+        return;
+      }
+      const estimate = largeText
+        ? 1
+        : Math.max(
+            1,
+            Math.min(3, Math.floor((target.clientHeight + gap) / (card + gap))),
+          ) * columns;
+      settled.current = { screen, capacity: estimate };
+      setCapacity(estimate);
     };
     const observer = new ResizeObserver(measure);
     observer.observe(target);
@@ -209,7 +221,9 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
-      setCapacity(Math.max(1, capacity - columns));
+      const fewer = Math.max(1, capacity - columns);
+      if (settled.current) settled.current.capacity = fewer;
+      setCapacity(fewer);
     }
   });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {

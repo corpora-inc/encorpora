@@ -424,7 +424,9 @@ try {
       .getByRole("button", { name: "Try one problem", exact: true })
       .click();
     await batchStarted;
-    await navigateApp(page, "Lessons");
+    // The chosen screen: the learner's Overview (the lessons library is no
+    // destination of its own, docs/design/ia.md).
+    await navigateApp(page, "Progress");
     const obsoleteBatch = page.waitForResponse(
       (response) =>
         response.url().endsWith("/batches") &&
@@ -440,10 +442,9 @@ try {
         ),
     );
     assert.equal(await page.getByRole("alert").count(), 0, failure.error);
-    assert.equal(new URL(page.url()).pathname, "/lessons", failure.error);
-    assert.equal(await page.locator(".progress-workspace").count(), 0);
-    await page.getByRole("heading", { name: "Lessons", exact: true }).waitFor();
-    await page.getByRole("searchbox", { name: "Search lessons" }).waitFor();
+    assert.equal(new URL(page.url()).pathname, "/overview", failure.error);
+    assert.equal(await page.locator(".practice-workspace").count(), 0);
+    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
     await returnToHistory(page);
   }
 
