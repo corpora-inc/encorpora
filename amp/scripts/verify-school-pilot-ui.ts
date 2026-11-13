@@ -189,7 +189,7 @@ try {
   await page.getByRole("heading", { name: "2 new students" }).waitFor();
   await page.getByRole("button", { name: "Add 2 students" }).click();
   await page.waitForURL(/\/roster$/);
-  await page.getByText("2 students added", {exact:true}).waitFor();
+  await page.getByText("2 students added", { exact: true }).waitFor();
   await page
     .getByRole("button", { name: "Start practice", exact: true })
     .waitFor();
@@ -411,7 +411,15 @@ try {
   await page
     .getByRole("heading", { name: "1 of 2 students have practice access" })
     .waitFor();
-  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
+  await page
+    .locator('a[data-shell-action][aria-label="Start class"]')
+    .waitFor();
+  assert.equal(
+    await page
+      .locator('a[data-shell-action][aria-label="Start class"]')
+      .getAttribute("href"),
+    `/school/${created.org_id}/classes/${created.class_id}/start`,
+  );
   await capture("partial-coverage");
   await page.unroute(pilotUrl);
   const guest = await browser.newContext();
