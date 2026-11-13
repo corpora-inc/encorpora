@@ -12,6 +12,8 @@ import {
 } from "../../../second-parent/SecondParent";
 import { secondParentOptions } from "../../../second-parent/api";
 import { CoTeacherInviteSheet, CoTeacherRows } from "../CoTeachers";
+import { staffOptions } from "../../api";
+import { Loading } from "../../../../ui/Loading";
 import family from "../Family.module.css";
 import {
   OtherFamilyAccessSheet,
@@ -86,12 +88,22 @@ export function ClassPeople({
 }) {
   const second = useQuery(secondParentOptions(session));
   const others = useQuery(approvalsOptions(session));
+  // The co-teachers' rows read the class's staff (CoTeacherRows).
+  const staff = useQuery(staffOptions(session, orgId));
   const [open, setOpen] = useState<Open | null>(null);
   const [error, setError] = useState("");
   useLoggedError(error);
   const close = () => setOpen(null);
   const rows = others.data ?? [];
   const grownUps = !!second.data;
+  // Each list's rows, lead and actions depend on what loads; drawn before it
+  // has, the actions would move as rows and leads arrive. One wait instead.
+  if (second.isPending || others.isPending || staff.isPending)
+    return (
+      <div className={styles.people}>
+        <Loading>Loading the class’s people</Loading>
+      </div>
+    );
   return (
     <div className={styles.people}>
       <div className={styles.lists}>
