@@ -6,6 +6,8 @@
  * Optional: --schools=100 --students-per-school=100 --classes-per-school=4
  * --page-size=250. --mass-update also promotes every existing student one grade;
  * use a test database configured for that many concurrent advisory locks.
+ * --worker exercises the scheduler claim, due check, sync and seat reconciliation
+ * together, using one instrumented connection for those sequential transactions.
  * AMP_CLEVER_SCALE_MODULE_ROOT can point at another checkout's
  * amp directory. All source records and HTTP responses are generated locally;
  * this script never contacts Clever. Only its randomly named schema is dropped.
@@ -64,6 +66,9 @@ const { registerCleverConnection } = (await from(
 const { syncCleverConnection } = (await from(
   "src/schools/clever/sync.ts",
 )) as typeof import("../src/schools/clever/sync.js");
+const { runDueCleverSync } = (await from(
+  "src/schools/clever/worker.ts",
+)) as typeof import("../src/schools/clever/worker.js");
 const { CleverClient } = (await from(
   "src/schools/clever/client.ts",
 )) as typeof import("../src/schools/clever/client.js");
@@ -78,6 +83,7 @@ const codeFiles = [
   "src/schools/clever/client.ts",
   "src/schools/clever/model.ts",
   "src/schools/clever/sync.ts",
+  "src/schools/clever/worker.ts",
   "src/schools/clever/store.ts",
   "src/schools/authz.ts",
   "src/schools/repository.ts",
@@ -114,6 +120,7 @@ const classesPerSchool = integerOption(
 );
 const pageSize = integerOption("page-size", 250, 1, 1_000);
 const massUpdate = process.argv.includes("--mass-update");
+const worker = process.argv.includes("--worker");
 const keepSchemaOnFailure = process.argv.includes("--keep-schema-on-failure");
 const studentCount = schoolCount * studentsPerSchool;
 assert.ok(studentCount <= 100_000, "Fixture is bounded to 100,000 learners");
@@ -296,7 +303,7 @@ const queryBudgets: Record<string, number> = {
   repeat_full: rosterQueryBudget,
   transfer_events: rosterQueryBudget + 8,
   mass_update: rosterQueryBudget,
-  empty_events: 25,
+  empty_events: worker ? 50 : 25,
   issue_district_license: 20 + 4 * Math.ceil(studentCount / 1000),
   repeat_seat_reconciliation: 20,
   sample_paid_access: Math.min(schoolCount, 100) + 4,
@@ -470,25 +477,40 @@ async function measuredDatabase<T>(
   }
 }
 
-const measuredSync = (
+const measuredSync = async (
   db: Pool,
   connectionId: string,
   label: string,
   mode: "full" | "events",
-) =>
-  measuredDatabase(
+) => {
+  if (worker)
+    await db.query(
+      "UPDATE amp_clever_connections SET sync_requested_at=now(),last_full_sync_at=CASE WHEN $2='full' THEN NULL ELSE last_full_sync_at END WHERE id=$1",
+      [connectionId, mode],
+    );
+  return measuredDatabase(
     db,
     label,
-    (client) => {
+    async (client) => {
+      if (worker) {
+        const result = await runDueCleverSync(
+          measuredPool(db, client),
+          connectionId,
+          clever,
+        );
+        assert.ok(result, "requested worker run must be due");
+        return result;
+      }
       const options = { mode, db: client };
       return syncCleverConnection(db, connectionId, clever, options);
     },
     (result) => ({ mode: result.mode, counts: result.counts }),
   );
+};
 
 /** Give the real repository its normal transaction lifecycle while the outer
  * measurement owns/reports the client. No production pool is modified. */
-function measuredRepository(db: Pool, client: PoolClient) {
+function measuredPool(db: Pool, client: PoolClient) {
   const borrowed = new Proxy(client, {
     get(target, key) {
       if (key === "release") return () => {};
@@ -504,7 +526,10 @@ function measuredRepository(db: Pool, client: PoolClient) {
       return typeof value === "function" ? value.bind(target) : value;
     },
   });
-  const repository = new SchoolRepository(pool);
+  return pool;
+}
+function measuredRepository(db: Pool, client: PoolClient) {
+  const repository = new SchoolRepository(measuredPool(db, client));
   assert.equal(
     typeof Reflect.get(repository, "reconcileSeats"),
     "function",
@@ -1041,6 +1066,7 @@ try {
         sourceHashes,
         migrationSnapshot,
         runtime: {
+          worker,
           node: process.versions.node,
           postgres: databaseRuntime,
           platform: process.platform,
@@ -1057,7 +1083,9 @@ try {
                 "mass update uses the reported database lock configuration; it does not establish capacity under different limits",
               ]
             : []),
-          "excludes browser and pilot post-sync worker; paid license/reconciliation are measured separately",
+          worker
+            ? "includes worker claim, due check and post-sync seat reconciliation; excludes serving API and browser"
+            : "excludes browser and pilot post-sync worker; paid license/reconciliation are measured separately",
         ],
       },
       null,
