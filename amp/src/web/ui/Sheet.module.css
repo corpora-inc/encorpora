@@ -143,8 +143,8 @@ button.close.back {
      line from the start, so nothing moves when it lands. */
   .tall .heading {
     min-height: calc(
-      (44px - var(--text-heading-3) * 1.25) / 2 + var(--text-heading-3) *
-        1.25 + var(--text-table) * 1.35
+      (44px - var(--text-heading-3) * 1.25) / 2 + var(--text-heading-3) * 1.25 +
+        var(--text-table) * 1.35
     );
   }
   .tall .description {
