@@ -179,7 +179,6 @@
   top: -7px;
   right: -7px;
   z-index: 3;
-  display: grid;
   place-items: center;
   width: 20px;
   height: 20px;
@@ -188,10 +187,13 @@
   font-weight: 700;
   line-height: 1;
   color: var(--color-surface-raised);
-  visibility: hidden;
+  /* Out of the box until there is a mark: an unseen badge past an entry at
+     the stage's edge would still widen what the stage scrolls. It is
+     absolutely placed, so showing it moves nothing. */
+  display: none;
 }
 .work-slot[data-mark] .work-slot-mark {
-  visibility: visible;
+  display: grid;
 }
 .work-slot[data-mark="correct"] .work-slot-mark {
   background: var(--color-success-accent);
