@@ -391,7 +391,7 @@ try {
     .fill("Name,School key\nMira Shah,007");
   await page.getByRole("button", { name: "Use these rows" }).click();
   await page.waitForURL(/step=map/);
-  await page.getByRole("heading", { name: "Check columns" }).waitFor();
+  await page.getByRole("heading", { name: "Check the columns" }).waitFor();
   await capture("unknown-column-review");
   // Coverage from another grant or pilot keeps the working sign-in controls.
   const pilotUrl = `**/api/v1/school/classes/${created.class_id}/pilot`;
