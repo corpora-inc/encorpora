@@ -1,0 +1,1100 @@
+{
+  "id": "mental-ten-hundred--sm",
+  "title": "Ten or a hundred more or less",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -7.4,
+          -18.2,
+          58.6,
+          29.8
+        ],
+        "points": {
+          "h": [
+            15.6,
+            -7.5
+          ],
+          "t": [
+            37.8,
+            -7.5
+          ],
+          "o": [
+            49.0,
+            -7.5
+          ],
+          "t3": [
+            37.8,
+            -11.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 5,
+                  "tens": 3,
+                  "ones": 1
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows"
+          },
+          {
+            "id": "dh",
+            "label": "5",
+            "at": "h",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "dt",
+            "label": "2",
+            "at": "t",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "do",
+            "label": "1",
+            "at": "o",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "nt",
+            "label": "3",
+            "at": "t3",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A cube is one, a rod is ten cubes, and a flat is ten rods: one hundred.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b.n.hundreds.1",
+                "b.n.hundreds.2",
+                "b.n.hundreds.3",
+                "b.n.hundreds.4",
+                "b.n.hundreds.5",
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.ones.1",
+                "dh",
+                "dt",
+                "do"
+              ],
+              "dur": 0.01
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones.1",
+              "at": "cube"
+            },
+            {
+              "do": "text",
+              "text": "cube is $1$",
+              "at": "cube"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "rod"
+            },
+            {
+              "do": "text",
+              "text": "rod is $10$",
+              "at": "rod"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds.1",
+              "at": "flat"
+            },
+            {
+              "do": "text",
+              "text": "flat is $100$",
+              "at": "flat"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five flats, two rods and one cube make five hundred twenty-one. Each digit counts its pile.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "flats"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2"
+              ],
+              "at": "rods"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "cube"
+            },
+            {
+              "do": "write",
+              "tex": "521=500+20+1",
+              "at": "make"
+            },
+            {
+              "do": "text",
+              "text": "Each digit counts its pile.",
+              "at": "Each"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five hundred twenty-one plus ten equals an empty square.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Five"
+            },
+            {
+              "do": "header",
+              "tex": "521+10=\\square",
+              "at": "Five"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten more is one more rod. Three rods now, so the tens digit becomes three.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.n.tens.3",
+              "dur": 0.6,
+              "at": "rod"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "20+10=30",
+              "at": "Three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t": [
+                  37.8,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": "dt",
+              "dur": 0.2,
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "t3": [
+                  37.8,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "nt",
+              "dur": 0.45,
+              "at": "three",
+              "nth": 2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "The flats and the cube stay the same. Only the tens digit changed: five hundred thirty-one.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "flats"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "cube"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "tens"
+            },
+            {
+              "do": "answer",
+              "tex": "521+10=531",
+              "at": "five"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -7.2,
+          -12.9,
+          58.8,
+          35.1
+        ],
+        "points": {
+          "h": [
+            15.6,
+            -7.5
+          ],
+          "t": [
+            37.8,
+            -7.5
+          ],
+          "o": [
+            49.0,
+            -7.5
+          ],
+          "h7": [
+            15.6,
+            -11.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 7,
+                  "tens": 0,
+                  "ones": 8
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows"
+          },
+          {
+            "id": "dh",
+            "label": "6",
+            "at": "h",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "dt",
+            "label": "0",
+            "at": "t",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "do",
+            "label": "8",
+            "at": "o",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "nh",
+            "label": "7",
+            "at": "h7",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Six hundred eight plus one hundred equals an empty square.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b.n.hundreds.1",
+                "b.n.hundreds.2",
+                "b.n.hundreds.3",
+                "b.n.hundreds.4",
+                "b.n.hundreds.5",
+                "b.n.hundreds.6",
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.5",
+                "b.n.ones.6",
+                "b.n.ones.7",
+                "b.n.ones.8",
+                "dh",
+                "dt",
+                "do"
+              ],
+              "dur": 0.01
+            },
+            {
+              "do": "clear",
+              "at": "Six"
+            },
+            {
+              "do": "header",
+              "tex": "608+100=\\square",
+              "at": "Six"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "A hundred more is one more flat. Now there are seven flats, so the hundreds digit goes up to seven.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.n.hundreds.7",
+              "dur": 0.6,
+              "at": "flat"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds.7",
+              "at": "are"
+            },
+            {
+              "do": "write",
+              "tex": "600+100=700",
+              "at": "Now"
+            },
+            {
+              "do": "move",
+              "points": {
+                "h": [
+                  15.6,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": "dh",
+              "dur": 0.2,
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "h7": [
+                  15.6,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "nh",
+              "dur": 0.45,
+              "at": "seven",
+              "nth": 2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "The tens and ones stay, so it is seven hundred eight now.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "ones"
+            },
+            {
+              "do": "answer",
+              "tex": "608+100=708",
+              "at": "seven"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.95,
+          -18.2,
+          62.05,
+          29.8
+        ],
+        "points": {
+          "h": [
+            15.6,
+            -7.5
+          ],
+          "t": [
+            40.65,
+            -7.5
+          ],
+          "o": [
+            55.1,
+            -7.5
+          ],
+          "h6": [
+            15.6,
+            -11.5
+          ],
+          "t10": [
+            40.65,
+            -11.5
+          ],
+          "t0": [
+            40.65,
+            -11.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 5,
+                  "tens": 10,
+                  "ones": 5
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows"
+          },
+          {
+            "id": "dh",
+            "label": "5",
+            "at": "h",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "dt",
+            "label": "9",
+            "at": "t",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "do",
+            "label": "5",
+            "at": "o",
+            "size": "l",
+            "dir": "c",
+            "flies": true
+          },
+          {
+            "id": "slipd",
+            "label": "10",
+            "at": "t10",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          },
+          {
+            "id": "nh",
+            "label": "6",
+            "at": "h6",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          },
+          {
+            "id": "nt",
+            "label": "0",
+            "at": "t0",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Five hundred ninety-five plus ten equals an empty square.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b.n.hundreds.1",
+                "b.n.hundreds.2",
+                "b.n.hundreds.3",
+                "b.n.hundreds.4",
+                "b.n.hundreds.5",
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.3",
+                "b.n.tens.4",
+                "b.n.tens.5",
+                "b.n.tens.6",
+                "b.n.tens.7",
+                "b.n.tens.8",
+                "b.n.tens.9",
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.5",
+                "dh",
+                "dt",
+                "do"
+              ],
+              "dur": 0.01
+            },
+            {
+              "do": "clear",
+              "at": "Five"
+            },
+            {
+              "do": "header",
+              "tex": "595+10=\\square",
+              "at": "Five"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "learner",
+          "say": "Nine rods and one more make ten rods. So I write ten in the middle.",
+          "do": [
+            {
+              "do": "show",
+              "target": "b.n.tens.10",
+              "dur": 0.6,
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "ten"
+            },
+            {
+              "do": "text",
+              "text": "$\\Large 595+10=5\\ \\cw{10}\\ 5$",
+              "id": "slip",
+              "at": "write"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t": [
+                  40.65,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "write"
+            },
+            {
+              "do": "hide",
+              "target": "dt",
+              "dur": 0.2,
+              "at": "write"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t10": [
+                  40.65,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "write"
+            },
+            {
+              "do": "show",
+              "target": "slipd",
+              "dur": 0.45,
+              "at": "write"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One place holds only one digit, and ten tens make one hundred.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "only"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "tens"
+            },
+            {
+              "do": "text",
+              "text": "Ten tens make one hundred.",
+              "at": "make"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "So the ten rods join into one flat, and the flat moves to the hundreds.",
+          "do": [
+            {
+              "do": "join",
+              "target": "b.n.tens",
+              "dur": 2.4,
+              "at": "join"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The tens digit rolls to zero, and the hundreds digit goes up to six: six hundred five.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "t10": [
+                  40.65,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "zero"
+            },
+            {
+              "do": "hide",
+              "target": "slipd",
+              "dur": 0.2,
+              "at": "zero"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t0": [
+                  40.65,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "nt",
+              "dur": 0.45,
+              "at": "zero"
+            },
+            {
+              "do": "move",
+              "points": {
+                "h": [
+                  15.6,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "six"
+            },
+            {
+              "do": "hide",
+              "target": "dh",
+              "dur": 0.2,
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "h6": [
+                  15.6,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "nh",
+              "dur": 0.45,
+              "at": "six"
+            },
+            {
+              "do": "answer",
+              "tex": "595+10=605",
+              "at": "six",
+              "nth": 2
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -9.45,
+          -24.0,
+          56.55,
+          24.0
+        ],
+        "points": {
+          "h": [
+            10.3,
+            -7.5
+          ],
+          "t": [
+            30.05,
+            -7.5
+          ],
+          "o": [
+            43.5,
+            -7.5
+          ],
+          "h2": [
+            10.3,
+            -11.5
+          ],
+          "t9": [
+            30.05,
+            -11.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 3,
+                  "tens": 0,
+                  "ones": 4
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          },
+          {
+            "id": "dh",
+            "label": "3",
+            "at": "h",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "dt",
+            "label": "0",
+            "at": "t",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "do",
+            "label": "4",
+            "at": "o",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "start": true
+          },
+          {
+            "id": "nh",
+            "label": "2",
+            "at": "h2",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          },
+          {
+            "id": "nt",
+            "label": "9",
+            "at": "t9",
+            "size": "l",
+            "dir": "c",
+            "flies": true,
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Three hundred four minus ten equals an empty square.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Three"
+            },
+            {
+              "do": "header",
+              "tex": "304-10=\\square",
+              "at": "Three"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "There are no rods to take away, so open one flat into ten rods. Still three hundred four.",
+          "do": [
+            {
+              "do": "split",
+              "target": "b.n.hundreds",
+              "dur": 2.4,
+              "at": "open"
+            },
+            {
+              "do": "text",
+              "text": "One hundred is ten tens.",
+              "at": "open"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "One rod goes, and nine rods stay: two hundred ninety-four.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.3",
+                "b.n.tens.4",
+                "b.n.tens.5",
+                "b.n.tens.6",
+                "b.n.tens.7",
+                "b.n.tens.8",
+                "b.n.tens.9"
+              ],
+              "dur": 0.01,
+              "at": "One"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.tens.10",
+                "b.n.hundreds.3"
+              ],
+              "dur": 0.8,
+              "at": "goes"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t": [
+                  30.05,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "stay"
+            },
+            {
+              "do": "hide",
+              "target": "dt",
+              "dur": 0.2,
+              "at": "stay"
+            },
+            {
+              "do": "move",
+              "points": {
+                "t9": [
+                  30.05,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "stay"
+            },
+            {
+              "do": "show",
+              "target": "nt",
+              "dur": 0.45,
+              "at": "stay"
+            },
+            {
+              "do": "move",
+              "points": {
+                "h": [
+                  10.3,
+                  -6.3
+                ]
+              },
+              "dur": 0.3,
+              "at": "stay"
+            },
+            {
+              "do": "hide",
+              "target": "dh",
+              "dur": 0.2,
+              "at": "stay"
+            },
+            {
+              "do": "move",
+              "points": {
+                "h2": [
+                  10.3,
+                  -7.5
+                ]
+              },
+              "dur": 0.55,
+              "at": "stay"
+            },
+            {
+              "do": "show",
+              "target": "nh",
+              "dur": 0.45,
+              "at": "stay"
+            },
+            {
+              "do": "answer",
+              "tex": "304-10=294",
+              "at": "two"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "teacher",
+          "say": "Ten more: the tens digit goes up one. A hundred more: the hundreds digit goes up one.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Ten"
+            },
+            {
+              "do": "header",
+              "off": true,
+              "at": "Ten"
+            },
+            {
+              "do": "text",
+              "text": "$+10$: tens digit up $1$",
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "tens"
+            },
+            {
+              "do": "text",
+              "text": "$+100$: hundreds digit up $1$",
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "hundreds"
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}
