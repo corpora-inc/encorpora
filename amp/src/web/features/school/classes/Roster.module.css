@@ -130,6 +130,9 @@
   color: var(--color-muted-text);
   font-size: var(--text-table);
 }
+.cardPractice {
+  grid-column: 1 / -1;
+}
 .cardPictures {
   display: inline-flex;
   align-items: center;
