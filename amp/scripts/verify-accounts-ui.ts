@@ -87,7 +87,8 @@ async function fits(page: Page, label: string, focus?: string) {
       () => document.documentElement.scrollWidth - innerWidth,
     );
     assert.ok(overflow <= 0, `${label} overflows at ${width}px`);
-    if (label === "security") {
+    // "Sign in again" shows once the sign-in is too old to change settings.
+    if (label === "security-stale") {
       for (const scheme of ["light", "dark"] as const) {
         await page.emulateMedia({ colorScheme: scheme });
         const box = await page
@@ -210,7 +211,14 @@ try {
     .getByRole("dialog", { name: "Birth year, Child 1" })
     .getByRole("radio", { name: "2016", exact: true })
     .click();
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  // Setup's later steps (how they practice, a second parent) lead to Today.
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/practice$/);
+  await page.getByRole("link", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/second-parent$/);
+  await page.getByRole("link", { name: "Later", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/ready$/);
+  await page.getByRole("link", { name: "Go to Today", exact: true }).click();
   await signedIn(page, email);
 
   // Sign out, then back in; a wrong password is reported in place.
@@ -271,7 +279,11 @@ try {
   );
   async function openSecurity() {
     await page.goto(`${origin}/family/security`);
-    await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
+    await page
+      .getByRole("heading", { name: "Sign-in", exact: true, level: 1 })
+      .waitFor();
+    // Each way to sign in is a panel that opens on its own.
+    await page.getByRole("button", { name: /^Passkeys/ }).click();
     await page.getByLabel("Name for this passkey").waitFor();
   }
   await openSecurity();
@@ -314,6 +326,17 @@ try {
   await page.getByRole("button", { name: "I saved these codes" }).click();
   // Let the real per-address authentication rate window expire.
   await delay(11_000);
+  // "Sign in again" is offered once the sign-in is too old to change
+  // settings: age it, as later in this check.
+  await repository.pool.query(
+    `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '6 minutes' WHERE "userId"=(SELECT id FROM amp_auth_users WHERE email=$1)`,
+    [email],
+  );
+  await page.reload();
+  await page
+    .getByRole("link", { name: "Sign in again", exact: true })
+    .waitFor();
+  await fits(page, "security-stale");
   // Recent authentication must retain the return route through the TOTP step.
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByLabel("Email").fill(email);
@@ -380,11 +403,16 @@ try {
     `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '6 minutes' WHERE "userId"=(SELECT id FROM amp_auth_users WHERE email=$1)`,
     [email],
   );
+  // The page reads how old the sign-in is when it loads.
+  await page.reload();
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByRole("heading", { name: "Sign in", exact: true }).waitFor();
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await page.waitForURL(origin + "/family/security");
-  await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
+  await page
+    .getByRole("heading", { name: "Sign-in", exact: true, level: 1 })
+    .waitFor();
+  await page.getByRole("button", { name: /^Passkeys/ }).click();
   await page.getByRole("button", { name: "Remove", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal" }).click();
   await page
