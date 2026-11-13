@@ -70,14 +70,12 @@ export function HeatLegend({
   caption,
   midpoint,
   midpointWord,
-  unit,
   empty = false,
 }: {
   caption: string;
   midpoint: number;
   /** What the midpoint is: "target", "median week". */
   midpointWord: string;
-  unit: string;
   empty?: boolean;
 }) {
   const ticks = heatTicks(midpoint);
@@ -99,9 +97,6 @@ export function HeatLegend({
                 : format(tick)}
           </span>
         ))}
-      </span>
-      <span className={styles.legendNote}>
-        Cold: 0 {unit}. Neutral: the {midpointWord}. Hot: twice it or more.
       </span>
       {empty && (
         <span className={styles.legendKeys}>
