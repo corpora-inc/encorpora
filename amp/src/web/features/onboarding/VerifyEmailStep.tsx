@@ -9,8 +9,16 @@ import type { AuthSession } from "../../auth";
 import { refreshMe } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
-import { Toast } from "../../ui/Toast";
 import styles from "./Start.module.css";
+
+const messages = {
+  initial: "Confirm your address to continue. We sent a link to your email.",
+  unconfirmed:
+    "Your email is not confirmed yet. Open the link in your email, then try again.",
+  sent: "Verification email sent. Check your inbox.",
+  sendFailed: "We could not send the email. Please try again.",
+  checkFailed: "We could not check your email confirmation. Please try again.",
+} as const;
 
 /** Confirm the parent's address before consent or a funded purchase: they
  * need it, nothing before them does. One primary action, nothing shifts. */
@@ -38,26 +46,28 @@ export function VerifyEmailStep({
           : continuationUrl(location.search, "/"),
       });
       if (result.error) {
-        const error = new AppError(
-          "unavailable",
-          "We could not send the email. Please try again.",
-          true,
-        );
+        const error = new AppError("unavailable", messages.sendFailed, true);
         error.log();
         throw error;
       }
-      return "Verification email sent. Check your inbox.";
+      return "sent" as const;
     },
   });
   const confirmation = useMutation({
     mutationFn: async () => {
       const fresh = await refreshMe(session);
       return fresh.signedIn && fresh.account.confirmationRequired
-        ? "Your email is not confirmed yet. Open the link in your email, then try again."
-        : "";
+        ? ("unconfirmed" as const)
+        : undefined;
     },
+    onError: (error) => console.error("Email confirmation check failed", error),
   });
   const busy = confirmation.isPending || verification.isPending;
+  const feedback: keyof typeof messages = verification.error
+    ? "sendFailed"
+    : confirmation.error
+      ? "checkFailed"
+      : (verification.data ?? confirmation.data ?? "initial");
   const Heading = embedded ? "h2" : "h1";
   return (
     <section
@@ -68,24 +78,33 @@ export function VerifyEmailStep({
       }
     >
       {!embedded && <FrameBrand expanded />}
-      <Toast
-        message={
-          verification.error?.message ??
-          confirmation.error?.message ??
-          verification.data ??
-          confirmation.data ??
-          ""
-        }
-        onDismiss={() => {
-          verification.reset();
-          confirmation.reset();
-        }}
-      />
       <Heading>Confirm your email</Heading>
-      <p>
-        Confirm your address to continue. We sent a link to{" "}
-        <span className={styles.address}>{email || "your email address"}</span>.
-      </p>
+      <div>
+        {/* Reserve the largest message at this width. Feedback belongs beside
+            the address and must never move or cover the recovery actions. */}
+        <div className={styles.verificationFeedback}>
+          {Object.entries(messages).map(([key, message]) => (
+            <p
+              key={key}
+              aria-hidden={key !== feedback || undefined}
+              role={
+                key !== feedback || key === "initial"
+                  ? undefined
+                  : key === "sent"
+                    ? "status"
+                    : "alert"
+              }
+            >
+              {message}
+            </p>
+          ))}
+        </div>
+        <p>
+          <span className={styles.address}>
+            {email || "your email address"}
+          </span>
+        </p>
+      </div>
       <div className={styles.actions}>
         <Button
           variant="primary"
