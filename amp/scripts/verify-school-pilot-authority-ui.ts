@@ -89,6 +89,19 @@ async function capture(name: string) {
         document.documentElement.dataset.theme = value;
         window.scrollTo(0, 0);
       }, theme);
+      await page.waitForFunction(
+        () =>
+          !document.querySelector(".app-loading") &&
+          !document.documentElement.hasAttribute("data-arriving"),
+      );
+      await page.evaluate(async () => {
+        await document.fonts.ready;
+        // A viewport resize delivers ResizeObserver updates before the next
+        // paint. Let those updates and their React layout commit finish.
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        );
+      });
       // Name what overflows, so a failure says where to look.
       const wide = await page.evaluate(() =>
         document.documentElement.scrollWidth <= innerWidth
