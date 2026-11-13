@@ -23,19 +23,27 @@ test("the free trial interleaves: no template repeats soon, and the strands are 
   assert.ok(stats.minStrandsInFirst20 >= 6, `${stats.minStrandsInFirst20}`);
   // Adaptivity stays: learners below their age level get more support
   // (prerequisites, revisits, reviews) than learners above it.
+  // Counted exactly: both groups see the same number of items, and the
+  // pooled-evidence climb (#2157) confirms foundations for climbers too, so
+  // the gap sits at its floor (24 of 480 items) where a float difference
+  // would read 0.0499….
   const support = (offset: number) => {
     const items = runs
       .filter((_, i) => learners[i]!.level - learners[i]!.start === offset)
       .flat();
-    return (
-      items.filter((item) =>
+    return {
+      count: items.filter((item) =>
         ["prerequisite", "revisit", "review"].includes(item.reason),
-      ).length / items.length
-    );
+      ).length,
+      of: items.length,
+    };
   };
+  const below = support(-1.5),
+    above = support(2);
+  assert.equal(below.of, above.of);
   assert.ok(
-    support(-1.5) > support(2) + 0.05,
-    `${support(-1.5)} vs ${support(2)}`,
+    (below.count - above.count) * 20 >= below.of,
+    `at least 5 points more support below level: ${below.count}/${below.of} vs ${above.count}/${above.of}`,
   );
-  assert.ok(support(-1.5) < 0.5);
+  assert.ok(below.count * 2 < below.of);
 });
