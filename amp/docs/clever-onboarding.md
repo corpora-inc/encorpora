@@ -44,7 +44,7 @@ The worker requests a full snapshot daily and processes enabled Events every fiv
 
 `npx tsx scripts/clever-sync.ts sync <connection-id> full` performs an explicit full repair; `sync all auto` runs configured connections. Credentials and tokens are not written into sync logs. `npm run school:admin -- school-queue <private-input.json>` lists connection requests, commercial follow-up and connection-release reviews. AnySchool invitations are performed in Clever's dashboard; `connection-request-status` records their actual outcome and reference. Review disconnected or expired institutions before freeing an upstream slot. Capacity is not an onboarding gate.
 
-Use `AMP_TEST_DATABASE_URL=<dedicated test database> npx tsx scripts/verify-clever-scale.ts --run` for the synthetic district benchmark. It checks stable IDs, repeated imports, scoped access, transfers and empty Events polling, and reports query counts, time and memory. It uses a disposable schema and synthetic HTTP responses. These measurements do not include provider latency or establish production capacity.
+Use `AMP_TEST_DATABASE_URL=<dedicated test database> npx tsx scripts/verify-clever-scale.ts --run` for the synthetic district benchmark. It checks stable IDs, repeated imports, scoped access, transfers and empty Events polling, and reports query counts, time and memory. It uses a disposable schema and synthetic HTTP responses. See [roster performance and privacy](clever-performance.md) for measured district workloads, memory use and PostgreSQL lock sizing for mass changes. These measurements do not include provider latency or establish production capacity.
 
 ## Limits
 
