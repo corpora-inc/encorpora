@@ -45,7 +45,6 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
-import { choose as chooseOption } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
 
@@ -289,11 +288,20 @@ async function familyThenSchool(
   await heading(page, "What brings you to AMP?");
   await page.locator('[data-choice="parent"]').click();
   await page.waitForURL(`${origin}/start/parent`);
-  await chooseOption(
-    page.getByRole("button", { name: "Birth year, your child" }),
-    "2016",
-  );
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  // Guided setup (#2157): the child's year from the tiles, then each step
+  // to the class's Today.
+  await heading(page, "Your children");
+  await page.getByRole("button", { name: "Birth year, Child 1" }).click();
+  const years = page.getByRole("dialog", { name: "Birth year, Child 1" });
+  await years.getByRole("radio", { name: "2016", exact: true }).click();
+  await years.waitFor({ state: "hidden" });
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(`${origin}/start/parent/practice`);
+  await page.getByRole("link", { name: "Next", exact: true }).click();
+  await page.waitForURL(`${origin}/start/parent/second-parent`);
+  await page.getByRole("link", { name: "Later", exact: true }).click();
+  await page.waitForURL(`${origin}/start/parent/ready`);
+  await page.getByRole("link", { name: "Go to Today" }).click();
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
   await todayTitle(page);
   await settle(page, 300);
@@ -336,20 +344,19 @@ async function familyThenSchool(
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const classPath = path(page);
 
-  // The switcher lists every place and each learner; the school opens its
-  // setup.
+  // The switcher lists every place and nothing else: no child, no "Try a
+  // level", and their own practice only once they have it; adding it is in
+  // Add a place (docs/design/ia.md). The school opens its setup.
   const fromHome = await openSwitcher(page, family.name, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family, own practice, the school and the learner`,
-    items.length === 6 &&
+    `${label} the switcher lists the family, the school and Add a place`,
+    items.length === 3 &&
       items[0]!.includes(family.name) &&
-      /Start my own practice/.test(items[1]!) &&
-      /Try a level/.test(items[2]!) &&
-      items[3]!.includes(school) &&
-      /Finish setting up/.test(items[3]!) &&
-      /\nLearner$/.test(items[4]!) &&
-      /Add a place/.test(items[5]!),
+      items[1]!.includes(school) &&
+      /Finish setting up/.test(items[1]!) &&
+      /Add a place/.test(items[2]!) &&
+      /Your own practice/.test(items[2]!),
     items,
   );
   await measured(page, `${label} family switcher`);
@@ -426,11 +433,18 @@ async function familyThenSchool(
   // school's own bar, or the drawer opens on the class and closes on arrival.
   await page.locator('header[data-app-bar="school"]').waitFor();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
+  // The class setup made is reached from the school; the switcher lists only
+  // classes they teach (docs/design/ia.md).
   const fromSchool = await openSwitcher(page, school, true);
-  await fromSchool
-    .locator('[data-place^="class:"]')
-    .filter({ hasText: "Grade 5 Math" })
-    .waitFor();
+  await fromSchool.locator(`[data-place="school:${issued.orgId}"]`).waitFor();
+  await settle(page, 300);
+  check(
+    `${label} a class the admin doesn't teach isn't a place`,
+    (await fromSchool
+      .locator('[data-place^="class:"]')
+      .filter({ hasText: "Grade 5 Math" })
+      .count()) === 0,
+  );
   await measured(page, `${label} school switcher`);
   await shot(page, "school-switcher", width, theme);
   await page.keyboard.press("Escape");
@@ -516,14 +530,17 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const classPath = path(page);
   const toSchool = await openSwitcher(page, family.name, true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
-  // A parent whose child practices may also start their own practice.
+  // A parent whose child practices may also start their own practice: Add
+  // a place offers it (docs/design/ia.md).
   check(
     `${label} the family's class names the learner`,
-    items[0]?.includes(family.name) === true &&
+    items.length === 3 &&
+      items[0]?.includes(family.name) === true &&
       /Jordan/.test(items[0] ?? "") &&
-      /Start my own practice/.test(items[1] ?? "") &&
-      /Try a level/.test(items[2] ?? "") &&
-      /Admin/.test(items[3] ?? ""),
+      /Birch Road School/.test(items[1] ?? "") &&
+      /Admin/.test(items[1] ?? "") &&
+      /Add a place/.test(items[2] ?? "") &&
+      /Your own practice/.test(items[2] ?? ""),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);
