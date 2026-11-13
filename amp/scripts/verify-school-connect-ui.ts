@@ -243,6 +243,25 @@ try {
   await capture("paused-proof");
   await page.evaluate(() => sessionStorage.clear());
   accountsMode = false;
+  // The signed-in AMP account administers the connected district: only an
+  // AMP admin is offered a sync.
+  await page.route("**/api/v1/school/orgs", (route) =>
+    route.fulfill({
+      json: {
+        orgs: [
+          {
+            id: orgId,
+            kind: "district",
+            name: "Fixture district",
+            parentId: null,
+            timezone: "UTC",
+            roles: ["admin"],
+            can: ["integrations.manage"],
+          },
+        ],
+      },
+    }),
+  );
   await page.goto(`${origin}/school/connect`);
   await page.getByRole("link", { name: "Review schools" }).waitFor();
   state.connection.lastError = "clever_district_admin_required";
@@ -273,6 +292,18 @@ try {
   await page.getByText(/^Synced /).waitFor();
   await page.getByRole("link", { name: "Open your classes" }).waitFor();
   await capture("ready");
+  // A sync asked for too soon says so beside the button, not as a fault.
+  await page.route("**/api/v1/school/clever/sync", (route) =>
+    route.fulfill({
+      status: 429,
+      headers: { "Retry-After": "900" },
+      json: { error: "clever_sync_rate_limited" },
+    }),
+  );
+  await page.getByRole("button", { name: "Sync now" }).click();
+  await page.getByText("Synced recently. Try again in 15 minutes.").waitFor();
+  assert.equal(await page.getByRole("alert").count(), 0);
+  await page.unroute("**/api/v1/school/clever/sync");
   state = freshState();
   await page.reload();
   await page.getByRole("button", { name: "Link Clever", exact: true }).click();

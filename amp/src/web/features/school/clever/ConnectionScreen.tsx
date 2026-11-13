@@ -13,6 +13,7 @@ import { Toast } from "../../../ui/Toast";
 import { PublicFrame } from "../../schools/PublicFrame";
 import { deviceTimeZone } from "../../onboarding/starter-api";
 import { Actions, Aside, Lead, PlainPage } from "../PlainPage";
+import { orgsOptions } from "../api";
 import { Authorization } from "../pilots/Authorization";
 import { cleverOnboardingSession } from "./onboarding-session";
 import { linkClever as linkAccount } from "./link";
@@ -51,6 +52,10 @@ export function ConnectionScreen() {
   const hash = useLocation({ select: (location) => location.hash });
   const search = useSearch({ strict: false }) as { error?: string };
   const session = useQuery(sessionOptions).data;
+  const orgs = useQuery({
+    ...orgsOptions(session ?? { token: "", accountId: "" }),
+    enabled: !!session,
+  }).data;
   const config = useQuery(authConfigOptions).data;
   const proof = useQuery({
     queryKey: ["clever-onboarding-proof"],
@@ -77,7 +82,8 @@ export function ConnectionScreen() {
     [authorized, setAuthorized] = useState(false),
     [bringExisting, setBringExisting] = useState<boolean | null>(null),
     [busy, setBusy] = useState<"connect" | "sync" | "link" | null>(null),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [throttled, setThrottled] = useState("");
   const linkProblem = [
     "clever_identity_already_linked",
     "clever_account_link_required",
@@ -102,6 +108,14 @@ export function ConnectionScreen() {
   const ready =
     connection?.status === "active" && !!connection.lastSyncAt && !paused;
   const keepExisting = bringExisting ?? !!data?.existingSchools.length;
+  // Syncing is an AMP admin's, signed in to AMP (not mid-Clever-sign-in).
+  const canSync =
+    !onboarding &&
+    !!connection &&
+    !!orgs?.some(
+      (org) =>
+        org.id === connection.orgId && org.can?.includes("integrations.manage"),
+    );
   async function act(kind: "connect" | "sync") {
     if (!credential || busy) return;
     setError("");
@@ -124,11 +138,18 @@ export function ConnectionScreen() {
         queryKey: connectionOptions(credential).queryKey,
       });
     } catch (failure) {
-      setError(
-        failure instanceof Error
-          ? failure.message
-          : "That didn’t go through. Try again.",
-      );
+      // A sync asked for too soon says so beside the button, not as a fault.
+      if (
+        failure instanceof AppError &&
+        failure.code === "clever_sync_rate_limited"
+      )
+        setThrottled(failure.message);
+      else
+        setError(
+          failure instanceof Error
+            ? failure.message
+            : "That didn’t go through. Try again.",
+        );
     } finally {
       setBusy(null);
     }
@@ -341,17 +362,24 @@ export function ConnectionScreen() {
                     >
                       Review schools
                     </Link>
-                    <Button
-                      variant="secondary"
-                      disabled={!!busy}
-                      aria-busy={busy === "sync"}
-                      onClick={() => void act("sync")}
-                    >
-                      Import roster
-                    </Button>
+                    {canSync && (
+                      <Button
+                        variant="secondary"
+                        disabled={!!busy || !!throttled}
+                        aria-busy={busy === "sync"}
+                        onClick={() => void act("sync")}
+                      >
+                        Import roster
+                      </Button>
+                    )}
                   </>
                 )}
               </Actions>
+              {throttled && (
+                <p className={styles.note} role="status">
+                  {throttled}
+                </p>
+              )}
             </>
           ),
         };
@@ -383,10 +411,10 @@ export function ConnectionScreen() {
                     Open your classes
                   </Link>
                 ))}
-              {!onboarding && (
+              {canSync && (
                 <Button
                   variant="secondary"
-                  disabled={!!busy || connection.syncing}
+                  disabled={!!busy || connection.syncing || !!throttled}
                   aria-busy={busy === "sync" || connection.syncing}
                   onClick={() => void act("sync")}
                 >
@@ -394,6 +422,11 @@ export function ConnectionScreen() {
                 </Button>
               )}
             </Actions>
+          )}
+          {throttled && (
+            <p className={styles.note} role="status">
+              {throttled}
+            </p>
           )}
         </>
       ),

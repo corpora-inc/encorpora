@@ -131,6 +131,8 @@ export function SchoolStartScreen() {
       requestId: id,
       schoolName: school?.name ?? value.schoolName,
       ...(school ? { orgId: school.id } : {}),
+      // Only an explicit "A new school" makes a second school.
+      newSchool: !school && schools.length > 0,
       className: value.className,
       timezone: deviceTimeZone(),
       signerName: value.signerName,

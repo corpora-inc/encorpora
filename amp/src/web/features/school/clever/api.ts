@@ -70,6 +70,8 @@ const messages: Record<string, string> = {
   district_not_authorized:
     "Your district hasn’t connected AMP in Clever yet. Ask your Clever admin.",
   clever_sync_already_running: "Your roster is already importing.",
+  clever_sync_rate_limited: "Synced recently. Try again in 15 minutes.",
+  clever_admin_required: "Only an AMP admin of the district can sync Clever.",
   clever_institution_agreement_required:
     "A district admin accepts the student data agreement first.",
   confirm_email: "Confirm your AMP email address first.",

@@ -211,6 +211,23 @@ try {
   const copy = page.getByRole("button", { name: "Copy link" });
   await copy.waitFor();
   const buyer = (await copy.getAttribute("data-share-url"))!;
+  // The link is the class's: a refresh shows the same one, never a new one.
+  await page.reload();
+  await page.getByRole("button", { name: "Copy link" }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Copy link" })
+      .getAttribute("data-share-url"),
+    buyer,
+  );
+  assert.equal(
+    (
+      await learning.pool.query(
+        "SELECT count(*)::int AS n FROM amp_school_purchase_requests",
+      )
+    ).rows[0].n,
+    1,
+  );
   assert.equal(new URL(buyer).pathname, "/schools/continue");
   assert.match(new URL(buyer).hash, /^#token=[A-Za-z0-9_-]{43}$/);
   await capture("buyer-link");

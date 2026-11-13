@@ -14,7 +14,7 @@ import { currentSession, orgOptions, refreshSchool } from "../api";
 import { useClassSearch } from "../classes/teacher-shared";
 import type { FeedEntry } from "../classes/today/Feed";
 import { Authorization } from "./Authorization";
-import { pilotApi, pilotOptions } from "./api";
+import { pilotApi, pilotOptions, purchaseRequestOptions } from "./api";
 import { accessView, practiceDate, type AccessView } from "./presentation";
 import styles from "./Pilot.module.css";
 
@@ -238,12 +238,6 @@ export function AccessSheets({ place }: { place: Place }) {
   );
 }
 
-const linkKey = (accountId: string, classId: string) => [
-  "school-buyer-link",
-  accountId,
-  classId,
-];
-
 function RequestSeatsSheet({
   place,
   students,
@@ -256,14 +250,11 @@ function RequestSeatsSheet({
   onClose: () => void;
 }) {
   const session = currentSession();
-  // The link made in this session, kept across screens of the class.
-  const made = useQuery({
-    queryKey: linkKey(session.accountId, place.class),
-    queryFn: () => null as string | null,
-    staleTime: Infinity,
-    gcTime: Infinity,
-    enabled: false,
-  }).data;
+  // The class's open buyer link, read from the server: it survives a
+  // refresh, and asking again returns the same one.
+  const existing = useQuery(purchaseRequestOptions(session, place.class));
+  const request = existing.data?.request ?? null;
+  const made = request?.url ?? null;
   const [count, setCount] = useState<number | null>(null);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
@@ -278,16 +269,15 @@ function RequestSeatsSheet({
     setBusy(true);
     setError("");
     try {
-      const result = await pilotApi.purchase(session, {
+      await pilotApi.purchase(session, {
         orgId: place.org,
         classIds: [place.class],
         seats,
         note: note.trim(),
       });
-      queryClient.setQueryData(
-        linkKey(session.accountId, place.class),
-        result.url,
-      );
+      await queryClient.invalidateQueries({
+        queryKey: purchaseRequestOptions(session, place.class).queryKey,
+      });
     } catch (failure) {
       setError(
         failure instanceof AppError
@@ -315,8 +305,15 @@ function RequestSeatsSheet({
         }}
         title="Send to your school’s buyer"
       >
-        {made ? (
+        {existing.isPending ? (
+          <div className={styles.sheetBody} aria-busy="true" />
+        ) : made ? (
           <div className={styles.sheetBody}>
+            <p className={styles.quiet}>
+              {request!.seats.toLocaleString()}{" "}
+              {request!.seats === 1 ? "seat" : "seats"} · Expires{" "}
+              {practiceDate(request!.expiresAt)}
+            </p>
             <div className={styles.sheetActions}>
               <Button
                 variant="primary"
