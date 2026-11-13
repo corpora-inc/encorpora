@@ -494,24 +494,25 @@ export class SchoolRepository {
     // plans/scans the same membership data during a bulk reconciliation.
     await client.query(
       `WITH candidates AS MATERIALIZED (
-        SELECT s.id,s.person_id,s.license_id,s.grant_id,p.deleted_at
+        SELECT s.id,s.grant_id
         FROM amp_seats s JOIN amp_people p ON p.id=s.person_id
         WHERE p.tenant_id=$1 AND ($2::uuid IS NULL OR p.id=$2) AND s.released_at IS NULL
       ), valid AS MATERIALIZED (
-        SELECT s.id FROM candidates s JOIN amp_school_licenses l ON l.id=s.license_id
-        WHERE s.grant_id NOT LIKE 'school-seat:%' OR (
-          s.deleted_at IS NULL AND ${IN_FORCE("l")}
+        SELECT s.grant_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
+        JOIN amp_people p ON p.id=s.person_id
+        WHERE s.grant_id IN(SELECT grant_id FROM candidates) AND s.released_at IS NULL
+          AND p.deleted_at IS NULL AND ${IN_FORCE("l")}
           AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
             WHERE r.person_id=s.person_id AND r.role='student' AND o.path @> ARRAY[l.org_id]::uuid[]
               AND ${activeToday("r", "o")})
           AND (l.class_ids IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e
             JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id
             WHERE e.person_id=s.person_id AND e.role='student' AND e.class_id=ANY(l.class_ids)
-              AND ${activeToday("e", "o")})))
+              AND ${activeToday("e", "o")}))
       ), released AS (
         UPDATE amp_seats s SET released_at=now() FROM candidates candidate
-        WHERE s.id=candidate.id AND candidate.grant_id IS NOT NULL
-          AND NOT EXISTS(SELECT 1 FROM valid WHERE valid.id=s.id) RETURNING s.grant_id)
+        WHERE s.id=candidate.id AND s.released_at IS NULL AND candidate.grant_id LIKE 'school-seat:%'
+          AND NOT EXISTS(SELECT 1 FROM valid WHERE valid.grant_id=candidate.grant_id) RETURNING s.grant_id)
       UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)`,
       [tenantId, personId],
     );
