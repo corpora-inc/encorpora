@@ -162,8 +162,9 @@ export function FamilyCenter({
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
-    /** A corrected birth year, said over the page so nothing moves. */
-    [yearSaved, setYearSaved] = useState("");
+    /** A saved name or birth year, said over the page so nothing moves;
+     * it closes by itself (ui/Toast). */
+    [saved, setSaved] = useState("");
   useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
@@ -189,6 +190,7 @@ export function FamilyCenter({
 
     setError("");
     setNotice("");
+    setSaved("");
     setConfirmation(null);
     setRename(null);
     setBusy(false);
@@ -199,6 +201,11 @@ export function FamilyCenter({
       downloadFrame.current = null;
     };
   }, [identity]);
+  // A notice belongs to the tab where it happened: another tab opens clear,
+  // not under a fixed message about something else.
+  useLayoutEffect(() => {
+    setNotice("");
+  }, [initialSection]);
   useLayoutEffect(() => {
     if (family && returnFocus)
       document
@@ -519,7 +526,7 @@ export function FamilyCenter({
       await refresh();
       // The level, the class's grade and practice read the year: one store.
       void invalidateAccount(identity);
-      setYearSaved(`${learner.name}’s birth year is ${birthYear}.`);
+      setSaved(`${learner.name}’s birth year is ${birthYear}.`);
     });
   /** One child's settings, opened under their row in Learners. */
   const learnerDetail = (learner: FamilyLearner) => {
@@ -553,7 +560,7 @@ export function FamilyCenter({
                 );
                 setRename(null);
                 await refresh();
-                setNotice("Name saved.");
+                setSaved("Name saved.");
               });
             }}
           >
@@ -715,11 +722,7 @@ export function FamilyCenter({
         </FocusDialog>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
-      <Toast
-        message={yearSaved}
-        tone="status"
-        onDismiss={() => setYearSaved("")}
-      />
+      <Toast message={saved} tone="status" onDismiss={() => setSaved("")} />
       <div className={pages.column} ref={body} data-account-body>
         {back && family && <BackRow onClick={back.go}>{back.label}</BackRow>}
         {/* The open tab already says Sign-in, Learners, Billing or
