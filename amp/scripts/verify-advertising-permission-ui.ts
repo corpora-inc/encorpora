@@ -255,8 +255,9 @@ try {
           .getByRole("button", { name: "Withdraw permission", exact: true })
           .waitFor();
         await page.goBack();
+        // Back returns to Privacy's list of choices.
         await page
-          .getByRole("heading", { name: "Privacy and records" })
+          .getByRole("button", { name: /^Purchase measurement/ })
           .waitFor();
         await page.goForward();
         await card

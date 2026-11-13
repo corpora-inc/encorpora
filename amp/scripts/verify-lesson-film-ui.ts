@@ -196,9 +196,11 @@ try {
         "Returning must dispose narration",
       );
       if ([390, 1280].includes(viewport.width)) {
-        await page.goBack();
-        await ready(page);
+        // Back to lesson is one step back in history (one close path,
+        // docs/design/ia.md): Forward returns to the film, Back to the lesson.
         await page.goForward();
+        await ready(page);
+        await page.goBack();
         await watch.waitFor();
         await watch.click();
         await ready(page);

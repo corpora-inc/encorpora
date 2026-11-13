@@ -327,7 +327,13 @@ try {
       await page.screenshot({
         path: `${shots}/${width}-${theme}-selected.png`,
       });
-      assert.ok(geometry.optionHeights.every((size) => size >= 52));
+      // Rows are compact and sized to their content (#2195, practice.css):
+      // a 48 px row, 46 px on a phone, never under the 44 px touch target.
+      const rowFloor = width <= 650 ? 46 : 48;
+      assert.ok(
+        geometry.optionHeights.every((size) => size >= rowFloor),
+        `${width}px ${theme} option heights ${JSON.stringify(geometry.optionHeights)}`,
+      );
       assert.ok(geometry.overflow <= 0, `${width}px horizontal overflow`);
       assert.ok(
         geometry.submit.top >= 0 && geometry.submit.bottom <= height + 1,
