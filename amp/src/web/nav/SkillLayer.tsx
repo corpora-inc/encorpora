@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { skillCatalogOptions } from "../lib/learning-view";
 import { bandLabel } from "../features/pathways/model";
-import { Loading } from "../ui/Loading";
+import { LayerWait } from "./LayerWait";
 import { Sheet } from "../ui/Sheet";
 import { EntityLink } from "./links";
 import { work } from "./entities";
@@ -23,6 +23,7 @@ export function SkillLayer({
   place,
   open,
   onClose,
+  back,
 }: {
   skill: string;
   /** Opened from a student (a layer below it): their evidence on it. */
@@ -31,6 +32,8 @@ export function SkillLayer({
   place?: Place;
   open: boolean;
   onClose: () => void;
+  /** The layer under this one, where X returns. */
+  back?: string;
 }) {
   const catalog = useQuery(skillCatalogOptions);
   const found = catalog.data?.skills.find((entry) => entry.id === skill);
@@ -45,6 +48,7 @@ export function SkillLayer({
         if (!next) onClose();
       }}
       title={found?.title ?? "Skill"}
+      back={back}
       description={found ? bandLabel(found.gradeBand) : undefined}
     >
       {!catalog.data ? (
@@ -53,7 +57,7 @@ export function SkillLayer({
             The skill didn’t load. Check your connection, then try again.
           </p>
         ) : (
-          <Loading />
+          <LayerWait />
         )
       ) : !found ? (
         <p>This skill isn’t in the curriculum any more.</p>
@@ -115,7 +119,7 @@ function StudentOnSkill({
     return found.isError ? (
       <p role="alert">Their work on this skill didn’t load. Try again.</p>
     ) : (
-      <Loading />
+      <LayerWait part />
     );
   const { evidence, work: answers } = found.data;
   return (
@@ -160,7 +164,7 @@ function ClassOnSkill({ place, skill }: { place: Place; skill: string }) {
     return found.isError ? (
       <p role="alert">The class’s work on this skill didn’t load. Try again.</p>
     ) : (
-      <Loading />
+      <LayerWait part />
     );
   const practiced = found.data.students
     .filter((row) => row.evidence.attempts > 0)

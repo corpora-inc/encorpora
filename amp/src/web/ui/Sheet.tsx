@@ -16,6 +16,7 @@ export function Sheet({
   children,
   returnFocus,
   tall = false,
+  back,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -29,6 +30,9 @@ export function Sheet({
   /** Content that arrives after the sheet opens: on a phone the sheet is its
    * full height from the start, so nothing moves when it lands. */
   tall?: boolean;
+  /** A layer under this one (nav/LayerHost): X returns to it, and says so
+   * quietly in place of the cross ("‹ Kai Varga"). */
+  back?: string;
 }) {
   const content = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -63,11 +67,24 @@ export function Sheet({
                 <div className={styles.description}>{description}</div>
               )}
             </div>
-            <Dialog.Close className={styles.close} aria-label="Close">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
-              </svg>
-            </Dialog.Close>
+            {back ? (
+              <Dialog.Close
+                className={`${styles.close} ${styles.back}`}
+                aria-label={`Close, back to ${back}`}
+                data-layer-back={back}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m14.5 6-6 6 6 6" />
+                </svg>
+                <span>{back}</span>
+              </Dialog.Close>
+            ) : (
+              <Dialog.Close className={styles.close} aria-label="Close">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </Dialog.Close>
+            )}
           </div>
           <div className={styles.body}>{children}</div>
         </Dialog.Content>

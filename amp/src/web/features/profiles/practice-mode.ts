@@ -1,8 +1,8 @@
-import { redirect } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
 import { useLearnerStore } from "../../learner-store";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
+import { rootRedirect } from "../../nav/root";
 import { meOptions, queryClient, sessionOptions } from "../../lib/query";
 import { studentSession } from "../../lib/student-device";
 import { classesOptions, preload } from "../school/api";
@@ -34,9 +34,7 @@ const LEARNING = [
 /** Screens that are only someone's practice (no curriculum to browse). */
 const PRACTICE_ONLY = /^\/(?:practice|overview|progress|books)(?:\/|$)/;
 export const isLearningPath = (pathname: string) =>
-  LEARNING.some(
-    (path) => pathname === path || pathname.startsWith(`${path}/`),
-  );
+  LEARNING.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
 /** Practice as a profile, returning to `from` (an internal path). */
 export function practiceAs(profile: string, from?: string) {
@@ -118,5 +116,5 @@ export async function adoptPracticeMode(location: {
     (me.staffOf?.length ?? 0) > 0 &&
     PRACTICE_ONLY.test(location.pathname)
   )
-    throw redirect({ to: "/", replace: true });
+    throw rootRedirect();
 }

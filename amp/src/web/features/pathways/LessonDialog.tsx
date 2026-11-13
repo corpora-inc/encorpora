@@ -1,6 +1,6 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { Dialog } from "../../ui/Dialog";
-import { Loading } from "../../ui/Loading";
+import { LessonWait } from "./LessonWait";
 import { LessonBoundary } from "./LessonRecovery";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 
@@ -21,6 +21,7 @@ export function LessonDialog({
   onCloseAutoFocus,
   backLabel,
   aboveLayers = false,
+  back,
   children,
 }: {
   lesson: string | null;
@@ -30,6 +31,8 @@ export function LessonDialog({
   backLabel?: string;
   /** Over a full-screen layer (an answer's replay), not just the page. */
   aboveLayers?: boolean;
+  /** The layer under this one, where X returns. */
+  back?: string;
   /** Actions above the lesson (try this problem type). */
   children?: ReactNode;
 }) {
@@ -41,13 +44,15 @@ export function LessonDialog({
       }}
       title="Explore a problem type"
       fullOnPhone
+      tall
       aboveNavigation={aboveLayers}
       onCloseAutoFocus={onCloseAutoFocus}
+      back={back}
     >
       {lesson && children}
       {lesson && (
         <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-          <Suspense fallback={<Loading>Loading lesson…</Loading>}>
+          <Suspense fallback={<LessonWait />}>
             <SkillLesson
               templateId={lesson}
               onBack={onClose}

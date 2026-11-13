@@ -13,7 +13,8 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const ROOT = new URL("../src/web/", import.meta.url).pathname;
-/** The navigation module itself: the route table, return targets, layers. */
+/** The navigation module itself: the route table, return targets, layers,
+ * and the root (nav/root.tsx). */
 const MODULE = [
   /^nav\//,
   /^lib\/return-to\.ts$/,
@@ -30,48 +31,23 @@ const BANNED = [
 ];
 
 /** Each allowed use: file, how many, and why it isn't a screen's navigation.
- * Phase 2 (docs/design/ia.md) moves the ones marked "Phase 2" to the module. */
+ * Only leaving the app's history belongs here: signing in or out, a payment
+ * provider's page, development. Everything else moves with the navigation
+ * module (EntityLink, useLayers, closeTo, nav/root.tsx for the root). */
 const ALLOWED: Record<string, [count: number, reason: string]> = {
-  "main.tsx": [1, "boot: a stale native build reopens the root once"],
+  "main.tsx": [1, "sign-out: another account leaves a parent's purchase view"],
   "auth.ts": [3, "sign-in and sign-out hand off with a full load"],
   "lib/api.ts": [1, "an ended session reloads into sign-in"],
-  "AnnualPurchase.tsx": [2, "Stripe Checkout and the billing portal"],
-  "FundingPurchaseCenter.tsx": [1, "a funded program's payment page"],
-  "FamilyCenter.tsx": [1, "Stripe's billing portal"],
-  "ParentConsentCenter.tsx": [1, "a funded purchase's checked return URL"],
-  "features/billing/api.ts": [1, "Stripe Checkout"],
-  "features/continue/ContinueScreen.tsx": [
-    2,
-    "Stripe Checkout; Phase 2: its Back becomes closeTo",
-  ],
-  "features/onboarding/PlanStep.tsx": [1, "a funded purchase's resume URL"],
   "features/school/InviteScreen.tsx": [1, "sign-in with the invite's return"],
+  "AnnualPurchase.tsx": [2, "Stripe Checkout and the billing portal"],
+  "FamilyCenter.tsx": [1, "Stripe's billing portal"],
+  "features/billing/api.ts": [1, "Stripe Checkout"],
+  "features/continue/ContinueScreen.tsx": [1, "Stripe Checkout"],
+  "features/onboarding/PlanStep.tsx": [1, "resuming an open Stripe Checkout"],
+  "FundingPurchaseCenter.tsx": [1, "ClassWallet's payment page"],
   "features/dev/PersonaSwitcher.tsx": [
     1,
-    "development: a fresh signed-in load",
-  ],
-  "ui/PageFrame.tsx": [
-    2,
-    "signed-out public pages: the logo is the site's home",
-  ],
-  "features/pitch/PitchScreen.tsx": [1, "the signed-out pitch's own logo"],
-  "features/pitch/BuyOptions.tsx": [1, "the signed-out pitch's start"],
-  "features/onboarding/VerifyEmailStep.tsx": [1, "first run, before any place"],
-  "features/access/AccessScreen.tsx": [1, "a gift, before any place"],
-  "features/profiles/practice-mode.ts": [
-    1,
-    "root resolution: a place's account leaves a practice screen for its place",
-  ],
-  "features/profiles/api.ts": [
-    1,
-    "a profile started outside a place returns to the root; Phase 2",
-  ],
-  "app/LegacyApp.tsx": [1, "Phase 2: the learner app's unknown screen"],
-  "features/pathways/PathwaysScreen.tsx": [1, "Phase 2: the learner's logo"],
-  "features/funding/InvoiceClaim.tsx": [1, "Phase 2: a funded claim's done"],
-  "features/school/classroom/StandingsScreen.tsx": [
-    1,
-    "a student's logo: their practice is their only place",
+    "development only: a fresh signed-in load as another persona",
   ],
 };
 

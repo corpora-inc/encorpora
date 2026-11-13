@@ -52,7 +52,6 @@ export function FamilyToday({
   session,
   me,
   secondParent,
-  onLesson,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
@@ -62,7 +61,6 @@ export function FamilyToday({
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
   secondParent: unknown;
-  onLesson: (templateId: string) => void;
 }) {
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
@@ -134,7 +132,6 @@ export function FamilyToday({
     todos: data.todos,
     place,
     canPrint: data.canPrint,
-    onLesson,
     extra,
     people: false,
     // A first practice, when there is one, is the screen's primary action.

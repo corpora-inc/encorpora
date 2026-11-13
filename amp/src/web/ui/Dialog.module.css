@@ -44,6 +44,28 @@
   font-size: 24px;
   line-height: 1;
 }
+/* Over another layer: the close names where it returns, on the cross's
+   own line, quiet and never wider than a third of the header. */
+.close.back {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-1);
+  max-width: min(14rem, 40%);
+  padding: 0 var(--space-2);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.back span:first-child {
+  font-size: 22px;
+  line-height: 1;
+}
+.back span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .close:hover:not(:disabled) {
   filter: none;
   background: var(--color-surface-sunken);
@@ -62,6 +84,12 @@
 }
 .body p {
   margin: 0 0 var(--space-2);
+}
+
+/* A reading sheet whose content lands after it opens: its full height
+   from the first frame. */
+.content.tall {
+  height: calc(100dvh - 2 * var(--space-4));
 }
 
 /* A confirmation opened from the navigation sheet must sit above that sheet. */

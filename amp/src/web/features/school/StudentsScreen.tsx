@@ -45,6 +45,7 @@ import {
 import { TransferSheet, useCanMove } from "./org/TransferSheet";
 import { displayName } from "./ClassesScreen";
 import { OrgFrame } from "./OrgFrame";
+import { EntityLink } from "../../nav/links";
 import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
@@ -132,13 +133,13 @@ function StudentSheet({
       lead={<Avatar name={displayName(student)} />}
     >
       <div className={styles.sheetForm}>
-        <Link
-          to="/$"
-          params={{ _splat: orgPath(orgId, `students/${student.id}`) }}
+        {/* Their record opens over this sheet: X comes back to it. */}
+        <EntityLink
+          entity={{ kind: "student", id: student.id }}
           className={buttonClass("secondary")}
         >
           Open {student.givenName}’s record
-        </Link>
+        </EntityLink>
         {canMove && (
           <Button variant="secondary" onClick={() => setMoving(true)}>
             Move to another school

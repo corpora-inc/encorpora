@@ -1,3 +1,4 @@
+import { RootLink } from "../../nav/root";
 import {
   Link,
   useNavigate,
@@ -108,14 +109,13 @@ export function PitchScreen() {
     <div className={styles.page} data-pitch="">
       <LandingView />
       <header className={styles.header}>
-        <Link
-          to="/"
+        <RootLink
           className={styles.brand}
           aria-label={`${brand.name} ${brand.expansion}, home`}
         >
           <span className={styles.wordmark}>{brand.name}</span>{" "}
           <span className={styles.expansion}>{brand.expansion}</span>
-        </Link>
+        </RootLink>
         <Link
           to="/sign-in"
           search={pitchCarry(search)}

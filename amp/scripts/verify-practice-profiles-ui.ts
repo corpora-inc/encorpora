@@ -592,8 +592,12 @@ async function teacherCopiesAStudent(
       [pupil.learnerId],
     )
   ).rows[0];
+  // The school-level record is a student layer over Students.
   await page.goto(`${origin}/school/${org.id}/students/${pupil.personId}`);
-  await heading(page, "Pia Marlowe");
+  await page
+    .getByRole("dialog")
+    .getByRole("heading", { name: "Pia Marlowe" })
+    .waitFor({ timeout: 30_000 });
   const tryIt = page.getByRole("button", {
     name: "Try problems as this student",
   });
@@ -617,11 +621,13 @@ async function teacherCopiesAStudent(
       (await chosen(page)) === copy.id,
     copy,
   );
-  // A teacher with no practice of their own goes back home.
+  // Started from the student's record: the way back names their school.
   check(
-    `${label} the way back is home`,
-    (await page.locator("[data-profile-back]").getAttribute("aria-label")) ===
-      "Back home",
+    `${label} the way back is the school`,
+    /^Back to /.test(
+      (await page.locator("[data-profile-back]").getAttribute("aria-label")) ??
+        "",
+    ),
   );
   await measured(page, `${label} practice`);
   await page.locator("[data-problem-id]").first().waitFor();

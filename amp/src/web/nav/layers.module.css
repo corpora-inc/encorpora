@@ -73,3 +73,16 @@
   margin: 0;
   font-variant-numeric: var(--numeric);
 }
+/* A layer's wait (LayerWait.tsx): centred in the whole body, or in a
+   section's reserved block. */
+.wait,
+.waitPart {
+  display: grid;
+  place-items: center;
+}
+.wait {
+  min-height: 100%;
+}
+.waitPart {
+  min-height: 160px;
+}

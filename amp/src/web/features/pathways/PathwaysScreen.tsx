@@ -18,7 +18,6 @@ import {
   Link,
   useNavigate,
   useParams,
-  useRouter,
   useSearch,
 } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
@@ -51,8 +50,9 @@ import {
   type MapSkill,
 } from "./model";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
-import { LessonDialog, lessonParam } from "./LessonDialog";
-import { closeSearch } from "../../lib/return-to";
+import { LayerHost } from "../../nav/LayerHost";
+import { EntityLink, useLayers } from "../../nav/links";
+import { RootLink } from "../../nav/root";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
@@ -91,7 +91,6 @@ type SearchFound = {
   title: string;
   skill: string;
 };
-
 
 /** On a phone a long list of results can leave the page scrolled past the
  * map, under the bar. A chosen skill shows on the map, so bring the map's
@@ -318,7 +317,6 @@ export function MapView({
       ? search.filter
       : "";
   const navigate = useNavigate();
-  const router = useRouter();
   const { shown } = useCurriculumDetails();
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
@@ -326,19 +324,13 @@ export function MapView({
   const [browse, setBrowse] = useState(
     () => urlQuery.trim().length > 0 && !selectedId,
   );
-  // A problem type's short lesson has its own address (`?lesson=`), so a
-  // link, a refresh or Back opens it again. Closing returns to this map
-  // without it: Back when it was opened here, even after a refresh.
-  const lesson = lessonParam(search.lesson);
-  const lessonTrigger = useRef<HTMLElement | null>(null);
-  const openLesson = (id: string, trigger: HTMLElement) => {
-    lessonTrigger.current = trigger;
-    update({ lesson: id });
-  };
-  const closeLesson = () => {
-    if (!lesson) return;
-    closeSearch(router, "lesson");
-  };
+  // A problem type's short lesson is a layer over the map (nav/entities.ts,
+  // `?open=lesson:<id>`): a link, a refresh or Back opens it again, and
+  // closing returns to this map as it was.
+  const lesson =
+    useLayers()
+      .stack.filter((layer) => layer.kind === "lesson")
+      .at(-1)?.id ?? null;
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
   const searching = query.trim().length > 0;
@@ -412,8 +404,6 @@ export function MapView({
       skill?: string;
       topic?: string;
       filter?: string;
-      /** A short lesson to open; any other change closes it. */
-      lesson?: string | null;
     },
     replace = false,
   ) => {
@@ -423,7 +413,6 @@ export function MapView({
         (values.topic === undefined ? field.carry() : values.topic) ||
         undefined,
       filter: (values.filter === undefined ? band : values.filter) || undefined,
-      lesson: values.lesson || undefined,
     };
     if (skillId)
       void navigate({
@@ -488,11 +477,11 @@ export function MapView({
       {guestMode && (
         <header className="pathways-header">
           <NavigationDrawer />
-          <Link to="/" className="pathways-brand">
+          <RootLink className="pathways-brand">
             <span>
               Adaptive Math <strong>Pathways</strong>
             </span>
-          </Link>
+          </RootLink>
           <Link
             className="pathways-go"
             to="/$"
@@ -757,13 +746,12 @@ export function MapView({
                     </span>
                     <strong>{fromSearch.title}</strong>
                     {fromSearch.kind === "type" ? (
-                      <button
-                        onClick={(e) =>
-                          openLesson(fromSearch.id, e.currentTarget)
-                        }
+                      <EntityLink
+                        entity={{ kind: "lesson", id: fromSearch.id }}
+                        className="pathways-lesson-link"
                       >
                         View lesson
-                      </button>
+                      </EntityLink>
                     ) : fromSearch.kind === "film" ? (
                       <Link
                         to="/lessons/$templateId/watch"
@@ -813,13 +801,12 @@ export function MapView({
                           {actionLabel}
                         </Link>
                       )}
-                      <button
-                        onClick={(e) =>
-                          openLesson(families[0]!.id, e.currentTarget)
-                        }
+                      <EntityLink
+                        entity={{ kind: "lesson", id: families[0]!.id }}
+                        className="pathways-lesson-link"
                       >
                         View lesson
-                      </button>
+                      </EntityLink>
                     </div>
                     <details className="pathways-types">
                       <summary>
@@ -829,11 +816,12 @@ export function MapView({
                       <ul>
                         {families.map((t) => (
                           <li key={t.id}>
-                            <button
-                              onClick={(e) => openLesson(t.id, e.currentTarget)}
+                            <EntityLink
+                              entity={{ kind: "lesson", id: t.id }}
+                              className="pathways-lesson-link"
                             >
                               {t.title ?? t.id.replaceAll("-", " ")}
-                            </button>
+                            </EntityLink>
                           </li>
                         ))}
                       </ul>
@@ -916,25 +904,21 @@ export function MapView({
           </footer>
         </>
       )}
-      <LessonDialog
-        lesson={lesson}
-        onClose={closeLesson}
-        onCloseAutoFocus={(e) => {
-          e.preventDefault();
-          if (lessonTrigger.current?.isConnected) lessonTrigger.current.focus();
-        }}
-      >
-        {canPractice && lessonSkill && lesson && (
-          <Link
-            className="pathways-lesson-practice"
-            to="/$"
-            params={{ _splat: "practice" }}
-            search={{ skill: lessonSkill, template: lesson }}
-          >
-            Try this problem type →
-          </Link>
-        )}
-      </LessonDialog>
+      {/* A lesson opened here is a layer over the map: the map stays. */}
+      <LayerHost
+        lessonActions={(type) =>
+          canPractice && lessonSkill && type === lesson ? (
+            <Link
+              className="pathways-lesson-practice"
+              to="/$"
+              params={{ _splat: "practice" }}
+              search={{ skill: lessonSkill, template: type }}
+            >
+              Try this problem type →
+            </Link>
+          ) : null
+        }
+      />
     </main>
   );
 }

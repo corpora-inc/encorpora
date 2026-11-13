@@ -263,7 +263,9 @@ export function WorkReplay({
             )}
           </div>
         ) : (
-          <Loading />
+          <div className={styles.wait}>
+            <Loading />
+          </div>
         )}
       </Frame>
     );

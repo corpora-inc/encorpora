@@ -485,18 +485,19 @@ async function journey(browser: Browser, engine: string, width: number) {
     body.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
   const lesson = page
-    .getByRole("button", { name: "Open the lesson" })
+    .getByRole("link", { name: "Open the lesson" })
     .first();
   await lesson.click();
   const sheet = page.getByRole("dialog");
   await sheet.waitFor();
-  await page.waitForFunction(() => location.search.includes("lesson="));
+  // A lesson layer over Today (?open=lesson:<type>).
+  await page.waitForFunction(() => location.search.includes("open=lesson"));
   await sheet.locator("h2").first().waitFor();
   await settle(page, 400);
   await shot(page, "today-lesson", width, theme);
   await page.keyboard.press("Escape");
   await sheet.waitFor({ state: "detached" });
-  await page.waitForFunction(() => !location.search.includes("lesson="));
+  await page.waitForFunction(() => !location.search.includes("open="));
 
   // Checking off survives a reload, today.
   const box = page.getByRole("checkbox", {

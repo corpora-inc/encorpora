@@ -20,7 +20,12 @@ const ATTEMPT = /^[0-9a-f][0-9a-f-]{7,99}$/i;
 /** Each kind: how its id reads, and what it is called. */
 export const ENTITIES = {
   /** A student's record, in their class or school. */
-  student: { id: (id: string) => UUID.test(id), noun: "student" },
+  student: {
+    id: (id: string) => UUID.test(id),
+    noun: "student",
+    /** Only in a school or class: a staff member's view of a student. */
+    staff: true,
+  },
   /** One answer of a student's, replayed: `<student>.<attempt>`. */
   work: {
     id: (id: string) => {
@@ -32,6 +37,7 @@ export const ENTITIES = {
       );
     },
     noun: "answer",
+    staff: true,
     /** Narrows Previous and Next to one skill; it goes with the answer. */
     keys: ["skill"],
   },
@@ -64,6 +70,11 @@ export type Entity = { kind: EntityKind; id: string };
 export const MAX_LAYERS = 5;
 /** The address key that holds the stack. */
 export const OPEN_KEY = "open";
+
+/** Whether a kind opens only in a school or class (a student, an answer);
+ * own practice opens the rest (a skill, a lesson). */
+export const staffOnly = (kind: EntityKind) =>
+  "staff" in ENTITIES[kind] && ENTITIES[kind].staff === true;
 
 export const isEntity = (entity: Entity) =>
   ENTITY_KINDS.includes(entity.kind) && ENTITIES[entity.kind].id(entity.id);

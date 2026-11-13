@@ -1,3 +1,4 @@
+import { useToRoot } from "../../nav/root";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
@@ -129,6 +130,7 @@ export function BuyOptions({
   onInterval?: (interval: "year" | "month") => void;
 }) {
   const navigate = useNavigate();
+  const toRoot = useToRoot();
   const [own, setOwn] = useState<"year" | "month">("year");
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
@@ -148,7 +150,8 @@ export function BuyOptions({
     // brings you to AMP?", it opens for them with this plan chosen.
     rememberPlanChoice(next);
     if (signedIn) {
-      void navigate({ to: "/" });
+      // Signed in: the root opens their place, where the plan waits.
+      toRoot();
       return;
     }
     void navigate(pitchTarget("card", search));

@@ -4,7 +4,7 @@ import type {
   ClassTabId,
   TodayTodo,
 } from "../../../../../schools/teacher-contracts";
-import { Button, buttonClass } from "../../../../ui/Button";
+import { buttonClass } from "../../../../ui/Button";
 import type { FeedEntry } from "./Feed";
 import { classUrl } from "../teacher-shared";
 import { EntityLink } from "../../../../nav/links";
@@ -57,21 +57,23 @@ export function TodoAction({
   org,
   classId,
   primary,
-  onLesson,
 }: {
   todo: TodayTodo;
   org: string;
   classId: string;
   primary: boolean;
-  onLesson: (templateId: string) => void;
 }) {
   const { action } = todo;
   const look = primary ? "primary" : "secondary";
+  // A lesson to teach opens over Today as a layer, as a skill does.
   if (action.kind === "lesson")
     return (
-      <Button variant={look} onClick={() => onLesson(action.templateId)}>
+      <EntityLink
+        entity={{ kind: "lesson", id: action.templateId }}
+        className={buttonClass(look)}
+      >
         {action.label}
-      </Button>
+      </EntityLink>
     );
   const miss = todo.misses?.find((entry) =>
     action.kind === "student" ? entry.personId === action.personId : false,
@@ -166,7 +168,6 @@ export function todoEntries({
   todos,
   place,
   canPrint,
-  onLesson,
   extra,
   people,
   lead = true,
@@ -174,7 +175,6 @@ export function todoEntries({
   todos: readonly TodayTodo[];
   place: { org: string; class: string };
   canPrint: boolean;
-  onLesson: (templateId: string) => void;
   extra?: (todo: TodayTodo) => ReactNode;
   people: boolean;
   /** The first to-do carries the screen's one primary action. */
@@ -197,7 +197,6 @@ export function todoEntries({
           org={place.org}
           classId={place.class}
           primary={lead && index === 0}
-          onLesson={onLesson}
         />
         {todo.groupSheet && canPrint && (
           <Link

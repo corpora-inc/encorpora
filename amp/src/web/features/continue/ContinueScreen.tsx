@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { RootLink } from "../../nav/root";
 import {
   Link,
   Navigate,
@@ -92,9 +93,7 @@ function Continue({ session }: { session: AuthSession }) {
         <EmptyState
           title="This learner isn’t in your account"
           action={
-            <Link to="/" className={buttonClass("primary")}>
-              Go home
-            </Link>
+            <RootLink className={buttonClass("primary")}>Go home</RootLink>
           }
         >
           Choose a learner from your family to continue with AMP.

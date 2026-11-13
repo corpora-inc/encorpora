@@ -9,6 +9,8 @@ import type { ConsentView } from "../parent-consent/contracts.js";
 import type { ConsentChallenge } from "./consent-link.js";
 import "./parent-consent.css";
 import { Loading } from "./ui/Loading";
+import { useRouter } from "@tanstack/react-router";
+import { returnTarget } from "./lib/return-to";
 export function ParentConsentCenter({
   token,
   identity,
@@ -30,6 +32,7 @@ export function ParentConsentCenter({
     [error, setError] = useState(""),
     [challenge, setChallenge] = useState(initialChallenge);
   useLoggedError(error);
+  const router = useRouter();
   const view = viewOwner === identity ? storedView : null;
   const epoch = useRef(0),
     tokenRef = useRef(token),
@@ -205,8 +208,10 @@ export function ParentConsentCenter({
     challenge.noticeDigest === view?.noticeDigest &&
     phase === "awaiting-confirmation"
   );
+  // A funded purchase waiting on consent: its step in this app, carried on
+  // in place (never a full reload).
   const fundedReturn = view?.consentActive
-    ? pendingFundedPurchase(identity)
+    ? (returnTarget(pendingFundedPurchase(identity)) ?? null)
     : null;
   return (
     <section className="parent-consent-center" aria-label="Parent consent">
@@ -407,7 +412,9 @@ export function ParentConsentCenter({
           <button
             type="button"
             onClick={() =>
-              fundedReturn ? window.location.assign(fundedReturn) : onClose()
+              fundedReturn
+                ? void router.navigate({ href: fundedReturn })
+                : onClose()
             }
           >
             {fundedReturn

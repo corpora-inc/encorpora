@@ -5,6 +5,7 @@ import {
   pushLayer,
   readStack,
   replaceTop,
+  staffOnly,
   work,
   writeStack,
 } from "../entities";
@@ -62,4 +63,24 @@ test("an answer's `skill` leaves with the last answer", () => {
   const withAnswer = readStack(`student:${S1},work:${S1}.${A}`);
   expect(layerKeysLeft(withAnswer, withAnswer.slice(0, 1))).toEqual(["skill"]);
   expect(layerKeysLeft(withAnswer, withAnswer)).toEqual([]);
+});
+
+test("own practice opens skills and lessons; students and answers are staff-only", () => {
+  expect(staffOnly("student")).toBe(true);
+  expect(staffOnly("work")).toBe(true);
+  expect(staffOnly("skill")).toBe(false);
+  expect(staffOnly("lesson")).toBe(false);
+});
+
+test("a lesson opens over any stack, and an old `?lesson=` becomes one", () => {
+  expect(pushLayer(undefined, { kind: "lesson", id: "unit-cube-volume" })).toBe(
+    "lesson:unit-cube-volume",
+  );
+  expect(
+    readStack(pushLayer(`student:${S1}`, { kind: "lesson", id: "a-type" })),
+  ).toEqual([
+    { kind: "student", id: S1 },
+    { kind: "lesson", id: "a-type" },
+  ]);
+  expect(readStack("lesson:Not A Slug")).toEqual([]);
 });

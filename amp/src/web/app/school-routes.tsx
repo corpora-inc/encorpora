@@ -7,6 +7,7 @@ import {
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
+import { OPEN_KEY, work, writeStack } from "../nav/entities";
 import type { AuthSession } from "../auth";
 import {
   calendarOptions,
@@ -134,10 +135,6 @@ export function schoolRoutes(root: AnyRoute) {
     students: screen(
       () => import("../features/school/StudentsScreen"),
       "StudentsScreen",
-    ),
-    student: screen(
-      () => import("../features/school/classes/StudentScreen"),
-      "StudentScreen",
     ),
     staff: screen(
       () => import("../features/school/StaffScreen"),
@@ -355,35 +352,52 @@ export function schoolRoutes(root: AnyRoute) {
       preload(yearsOptions(session, orgId)),
     ]),
     orgScreen("/students", screens.students),
-    // A student from the school's list keeps the list's view.
-    orgScreen("/students/$student", screens.student, undefined, {
-      overList: true,
+    // The school-level student page from before layers, and one of their
+    // answers on it: a student layer over the school's Students, as the
+    // class map's old addresses redirect (nav/entities.ts).
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/$org/students/$student",
+      beforeLoad: ({ params, search }) => {
+        const { org, student } = params as unknown as {
+          org: string;
+          student: string;
+        };
+        throw redirect({
+          to: `/school/${org}/students`,
+          search: {
+            ...(search as Record<string, unknown>),
+            [OPEN_KEY]: writeStack([{ kind: "student", id: student }]),
+          },
+          replace: true,
+        } as never);
+      },
     }),
-    // One of the student's answers, replayed over their page (WorkReplay.tsx).
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/students/$student/work/$work",
-      staticData: { overList: true },
-      beforeLoad: staffScreen,
-      loader: async ({ context, params, location }) => {
-        const { session } = context as unknown as { session: AuthSession };
-        const { org, student, work } = params as unknown as {
+      beforeLoad: ({ params, search }) => {
+        const {
+          org,
+          student,
+          work: attempt,
+        } = params as unknown as {
           org: string;
           student: string;
           work: string;
         };
-        const { workReplayOptions } =
-          await import("../features/school/classes/teacher-api");
-        const skill = new URLSearchParams(location.searchStr).get("skill");
-        await Promise.all([
-          frameData(session, org),
-          preload(
-            workReplayOptions(session, student, work, skill ?? undefined),
-          ),
-          import("../features/school/classes/WorkReplay"),
-        ]);
+        throw redirect({
+          to: `/school/${org}/students`,
+          search: {
+            ...(search as Record<string, unknown>),
+            [OPEN_KEY]: writeStack([
+              { kind: "student", id: student },
+              work(student, attempt),
+            ]),
+          },
+          replace: true,
+        } as never);
       },
-      component: screens.student,
     }),
     orgScreen("/staff", screens.staff, (session, orgId) => [
       preload(staffOptions(session, orgId)),

@@ -7,6 +7,7 @@ import { request } from "../../lib/api";
 import { continuationSearch, type FundedProgram } from "../../lib/funded-entry";
 import { Button, buttonClass } from "../../ui/Button";
 import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { useCloseClick } from "../../nav/links";
 import { TileChoice } from "../../ui/TileChoice";
 import { useStartOwnPractice } from "../me/api";
 import styles from "./InvoiceClaim.module.css";
@@ -75,6 +76,8 @@ export function InvoiceClaim({
   );
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
+  // Back to where the claim was opened, else practice (lib/return-to.ts).
+  const closeClick = useCloseClick("/practice");
   // Once started, "Me" is the account holder's learner itself.
   const value = learner === NEW_OWN && own ? own.id : learner;
   const forChild = learners.some((l) => l.id === value);
@@ -245,7 +248,9 @@ export function InvoiceClaim({
           </div>
         ))}
         <p role="alert">{error}</p>
-        <Link to="/">Back to practice</Link>
+        <Link to="/$" params={{ _splat: "practice" }} onClick={closeClick}>
+          Back
+        </Link>
       </section>
     </PageFrame>
   );

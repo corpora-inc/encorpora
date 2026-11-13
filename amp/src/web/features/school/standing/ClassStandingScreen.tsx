@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
+import { EntityLink, useLayers } from "../../../nav/links";
 import type {
   ClassStandingResponse,
   StandingGrid,
@@ -64,9 +65,8 @@ function StudentBand({
   }.`;
   return (
     <li>
-      <Link
-        to="/$"
-        params={{ _splat: orgPath(orgId, `students/${student.id}`) }}
+      <EntityLink
+        entity={{ kind: "student", id: student.id }}
         className={styles.bandRow}
         aria-label={words}
         title={words}
@@ -92,7 +92,7 @@ function StudentBand({
             style={{ left: `${across(grid, student.mu)}%` }}
           />
         </span>
-      </Link>
+      </EntityLink>
     </li>
   );
 }
@@ -128,16 +128,15 @@ function StudentNumbers({
   showGrade: boolean;
   term: string;
 }) {
-  const navigate = useNavigate();
-  const pathOf = (student: Student) => orgPath(orgId, `students/${student.id}`);
+  // A student opens as a layer over this class's drill: it stays.
+  const layers = useLayers();
   const name = (student: Student) => (
-    <Link
-      to="/$"
-      params={{ _splat: pathOf(student) }}
+    <EntityLink
+      entity={{ kind: "student", id: student.id }}
       className={styles.numbersName}
     >
       {student.name}
-    </Link>
+    </EntityLink>
   );
   const estimate = (student: Student) => {
     const { low, high } = rangeOf(student);
@@ -199,7 +198,7 @@ function StudentNumbers({
       rows={students}
       rowKey={(student) => student.id}
       onRowActivate={(student) =>
-        void navigate({ to: "/$", params: { _splat: pathOf(student) } })
+        layers.open({ kind: "student", id: student.id })
       }
       rules={false}
       cardLayout="list"
@@ -216,8 +215,7 @@ function StudentNumbers({
             <span className={styles.numbersEstimate}>{estimate(student)}</span>
           </span>
           <span className={styles.numbersMeta}>
-            sd {plain(student.sd)} ·{" "}
-            {student.answered.toLocaleString("en-US")}{" "}
+            sd {plain(student.sd)} · {student.answered.toLocaleString("en-US")}{" "}
             {student.answered === 1 ? "answer" : "answers"} · growth{" "}
             {growthWords(student) ?? "not settled yet"}
           </span>
