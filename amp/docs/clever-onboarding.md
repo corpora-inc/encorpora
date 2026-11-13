@@ -20,7 +20,7 @@ The first explicitly activated class starts a teacher's 30-day pilot. Seven days
 
 Expiry pauses new online practice and new workbooks. Reports, exports, issued materials and entry of their paper results remain accessible. Another valid pilot, license or grant continues access. A paid class scope requires current membership; leaving every purchased class invalidates and releases that seat. Overlapping school licenses count a learner once. An operator can extend a pilot with an auditable reason and reference.
 
-The teacher's buyer link contains aggregate adoption information, expires after 30 days and grants no account or school authority. Negotiation, quotes, POs and invoices can precede activation. The operator commands `purchase-status` and `activate-purchase` record that process. Activation uses existing records and is idempotent by purchase request. `issue-license` supports selected classes or an entire school/district subtree. No public price lock is imposed.
+The teacher's buyer link contains aggregate adoption information, expires after 30 days and grants no account or school authority. Negotiation, quotes, POs and invoices can precede activation. The operator commands `purchase-status` and `activate-purchase` record that process. Activation uses existing records and is idempotent by purchase request. `issue-license` supports selected classes or an entire school/district subtree.
 
 ## Identity and source ownership
 

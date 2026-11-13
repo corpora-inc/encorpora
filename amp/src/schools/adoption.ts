@@ -1009,6 +1009,19 @@ async function requireCurrentAdoptionAdmin(
           s.users.some((u) => u.id === r.clever_id && !!u.roles.district_admin),
       ),
   );
+  // A successful provider read can revoke temporary authority immediately.
+  // Missing transport evidence never extends or revokes another identity.
+  const revoked = roles.filter(
+    (r) =>
+      snapshots.some((s) => s.district.id === r.district_id) &&
+      !proved.some((p) => p.role_id === r.role_id),
+  );
+  if (revoked.length)
+    await db.query(
+      `UPDATE amp_clever_memberships SET bootstrap_valid_until=now()
+      WHERE kind='org_role' AND owned AND local_id=ANY($1::uuid[]) AND bootstrap_valid_until IS NOT NULL`,
+      [revoked.map((r) => r.role_id)],
+    );
   if (proved.length) {
     await db.query(
       `UPDATE amp_clever_memberships SET bootstrap_valid_until=now()+interval '15 minutes'
