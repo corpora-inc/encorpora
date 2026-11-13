@@ -34,6 +34,11 @@ import {
   signInMethodLookup,
 } from "./sign-in-methods";
 import { tryGetCurrentAuthEndpointContext } from "@better-auth/core/context";
+import {
+  PROVIDER_COOKIE,
+  requestCookie,
+  revokeProviderSession,
+} from "../identity/provider-principals.js";
 import { SignJWT, importPKCS8 } from "jose";
 import { Resend } from "resend";
 import type { FastifyInstance } from "fastify";
@@ -66,6 +71,8 @@ export type SocialProvider = (typeof SOCIAL_PROVIDERS)[number];
 const CLIENT_IP_HEADER = "x-amp-client-ip";
 
 export interface AccountsConfig {
+  /** Clever school sign-in is registered separately from mailbox providers. */
+  clever?: boolean;
   baseURL: string;
   secret: string;
   production: boolean;
@@ -613,7 +620,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       database: { validateSchema: false },
     },
   });
-  return { auth, config, send };
+  return { auth, config, send, pool };
 }
 export type Accounts = Awaited<ReturnType<typeof createAccounts>>;
 
@@ -675,7 +682,7 @@ export function accountsAuth({ auth }: Accounts): Authenticator {
  * Apple posts its callback as a form, which Fastify does not parse. */
 export async function registerAccountRoutes(
   app: FastifyInstance,
-  { auth, config }: Accounts,
+  { auth, config, pool }: Accounts,
   privacyAuthenticate?: Authenticator,
 ) {
   // Tells the browser which sign-in methods this deployment offers.
@@ -685,6 +692,7 @@ export async function registerAccountRoutes(
     passkeySignup: config.passwords,
     parentFollowup: !!config.parentFollowup,
     providers: enabledProviders(config),
+    ...(config.clever ? { clever: true } : {}),
   }));
   await app.register(async (scope) => {
     scope.removeAllContentTypeParsers();
@@ -753,6 +761,18 @@ export async function registerAccountRoutes(
             reply.header(key, value);
         });
         const cookies = response.headers.getSetCookie();
+        // A deliberate mailbox sign-in supersedes the school identity on this
+        // shared browser. Ordinary get-session refreshes prove no new identity.
+        if (
+          response.headers.has("set-auth-token") &&
+          pathname !== "/api/auth/get-session" &&
+          requestCookie(request, PROVIDER_COOKIE)
+        ) {
+          await revokeProviderSession(pool, request);
+          cookies.push(
+            `${PROVIDER_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${config.production ? "; Secure" : ""}`,
+          );
+        }
         if (cookies.length) reply.header("set-cookie", cookies);
         return reply.send(
           response.body ? Buffer.from(await response.arrayBuffer()) : null,

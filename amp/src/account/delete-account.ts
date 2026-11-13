@@ -161,6 +161,10 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_privacy_events: "account",
   amp_problem_flags: "learner",
   amp_provider_signup_exports: "sign-in",
+  amp_provider_principals: "account",
+  amp_provider_identities: "account",
+  amp_provider_sessions: "account",
+  amp_provider_oauth_flows: "account",
   amp_purchase_consents: "consent-evidence",
   amp_school_events: "place",
   amp_school_licenses: "place",
@@ -592,6 +596,24 @@ export async function deleteAccount(
         );
 
       // 5. Everything else keyed to the account.
+      // School principals have no mailbox user to cascade from. The principal
+      // owns identities and sessions; pending explicit-link proofs also go.
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_provider_principals') AS relation",
+          )
+        ).rows[0].relation
+      ) {
+        await client.query(
+          "DELETE FROM amp_provider_oauth_flows WHERE link_account_id=$1",
+          [accountId],
+        );
+        await client.query(
+          "DELETE FROM amp_provider_principals WHERE account_id=$1",
+          [accountId],
+        );
+      }
       for (const sql of [
         "DELETE FROM amp_family_approvals WHERE account_id=$1",
         "DELETE FROM amp_demo_visitors WHERE account_id=$1",

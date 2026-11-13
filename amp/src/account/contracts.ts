@@ -78,7 +78,7 @@ const accountSchema = z.object({
   confirmationRequired: z.boolean().optional(),
   /** Set for a school student, whose token and learner the school manages.
    * Staff are ordinary accounts: one person can be a teacher and a parent. */
-  kind: z.literal("student").optional(),
+  kind: z.enum(["student", "provider"]).optional(),
 });
 export const meSchema = z.discriminatedUnion("signedIn", [
   z.object({ signedIn: z.literal(false), next: z.literal("sign-in") }),

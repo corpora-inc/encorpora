@@ -1,0 +1,150 @@
+import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
+import { createServer } from "vite";
+import { chromium as rawChromium } from "playwright";
+import { secureChromium } from "../browser-security.mjs";
+import type { AuthSession } from "../src/web/auth.js";
+
+// Exercise the real browser session adapter, including storage and redirect
+// completion; only the external API responses are replaced.
+const vite = await createServer({
+  root: fileURLToPath(new URL("../", import.meta.url)),
+  configFile: fileURLToPath(new URL("../vite.config.ts", import.meta.url)),
+  server: { host: "127.0.0.1", port: 4978, strictPort: true },
+  plugins: [
+    {
+      name: "clever-session-fixture",
+      configureServer(server) {
+        server.middlewares.use((request, response, next) => {
+          if (request.url !== "/clever-session-fixture") return next();
+          response.setHeader("content-type", "text/html");
+          response.end(
+            '<script type="module">import * as auth from "/src/web/auth.ts"; import * as device from "/src/web/lib/student-device.ts"; window.fixture={auth,device};</script>',
+          );
+        });
+      },
+    },
+  ],
+});
+await vite.listen();
+const browser = await secureChromium(rawChromium).launch({ headless: true });
+try {
+  const page = await browser.newPage();
+  type Fixture = {
+    auth: {
+      accessSession(): Promise<AuthSession | null>;
+      signOut(): Promise<void>;
+    };
+    device: {
+      rememberStudentSession(session: AuthSession, mode: "shared"): void;
+      clearStudentDevice(): void;
+    };
+  };
+  const provider = {
+    token: `ps_${"p".repeat(43)}`,
+    accountId: "amp|provider-fixture",
+  };
+  const student = {
+    token: `st_${"s".repeat(43)}`,
+    accountId: "school:student-fixture",
+  };
+  let providerState: "active" | "expired" | "none" = "active";
+  let parentReads = 0,
+    providerReads = 0,
+    signOuts = 0;
+  await page.route("**/api/**", async (route) => {
+    const path = new URL(route.request().url()).pathname;
+    if (path === "/api/v1/events")
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
+    if (path === "/api/v1/auth-config")
+      return route.fulfill({
+        json: {
+          mode: "accounts",
+          passwords: true,
+          providers: [],
+          clever: true,
+        },
+      });
+    if (path === "/api/v1/provider/session") {
+      providerReads++;
+      return providerState === "active"
+        ? route.fulfill({ json: provider })
+        : route.fulfill({
+            status: 401,
+            json: {
+              error:
+                providerState === "expired"
+                  ? "provider_session_expired"
+                  : "sign_in_required",
+            },
+          });
+    }
+    if (path === "/api/auth/get-session") {
+      parentReads++;
+      return route.fulfill({
+        json: {
+          session: { token: "parent-token" },
+          user: { id: "parent-fixture", name: "Parent" },
+        },
+      });
+    }
+    if (path === "/api/v1/provider/sign-out" || path === "/api/auth/sign-out") {
+      signOuts++;
+      return route.fulfill({ json: { success: true } });
+    }
+    throw new Error(`Unexpected fixture API ${path}`);
+  });
+  await page.goto("http://127.0.0.1:4978/clever-session-fixture");
+  await page.waitForFunction(() => "fixture" in window);
+  const checked = () =>
+    page.evaluate(() =>
+      (window as unknown as { fixture: Fixture }).fixture.auth.accessSession(),
+    );
+  assert.deepEqual(await checked(), provider);
+  assert.equal(parentReads, 0);
+  await page.evaluate(
+    (session) =>
+      (
+        window as unknown as { fixture: Fixture }
+      ).fixture.device.rememberStudentSession(session, "shared"),
+    student,
+  );
+  const before = providerReads;
+  assert.deepEqual(await checked(), student);
+  assert.equal(providerReads, before);
+  // A guessed completion marker cannot expose the existing adult cookie.
+  await page.evaluate(() => {
+    location.hash = "clever-session=wrong";
+  });
+  assert.deepEqual(await checked(), student);
+  await page.evaluate((token) => {
+    location.hash = `clever-session=${token}`;
+  }, provider.token);
+  assert.deepEqual(await checked(), provider);
+  assert.equal(
+    await page.evaluate(() => sessionStorage.getItem("amp.student")),
+    null,
+  );
+  assert.equal(await page.evaluate(() => location.hash), "");
+  providerState = "expired";
+  assert.equal(await checked(), null);
+  assert.equal(parentReads, 0);
+  providerState = "none";
+  assert.equal((await checked())?.accountId, "amp|parent-fixture");
+  assert.equal(parentReads, 1);
+  // Both session kinds are revoked before browser navigation on sign out.
+  await page.route("http://127.0.0.1:4978/", (route) =>
+    route.fulfill({ contentType: "text/html", body: "Signed out" }),
+  );
+  await page.evaluate(() =>
+    (window as unknown as { fixture: Fixture }).fixture.auth.signOut(),
+  );
+  await page.waitForURL("http://127.0.0.1:4978/");
+  assert.equal(signOuts, 2);
+  console.log(
+    "Clever browser session checks passed: shared-device precedence, verified completion, expiry and sign-out.",
+  );
+} finally {
+  await browser.close();
+  await vite.close();
+}
