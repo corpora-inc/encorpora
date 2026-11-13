@@ -109,8 +109,8 @@ try {
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       buffer: workbook(`00${width}`),
     });
-    await page.getByRole("button", { name: "Roster sheet" }).click();
-    await page.getByRole("option", { name: "Support", exact: true }).click();
+    await page.getByRole("button", { name: "Sheet" }).click();
+    await page.getByRole("option", { name: /^Support · / }).click();
     await page.getByRole("button", { name: "Use this sheet" }).click();
     await page
       .getByRole("heading", { name: "Check the columns", exact: true })
@@ -144,7 +144,7 @@ try {
     await page.getByRole("button", { name: "Check for changes" }).click();
     await page.waitForURL(/step=review/);
     assert.equal(
-      await page.getByText(/This name appears more than once/).count(),
+      await page.getByText(/Two students share this name/).count(),
       2,
     );
     assert.equal(

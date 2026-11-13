@@ -60,6 +60,7 @@ import {
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { ClassFrame } from "./classes/ClassFrame";
+import { useFlash } from "./classes/flash";
 import type { ReactNode } from "react";
 import { GradePicker, PageHead, gradeLabel } from "./parts";
 import { classPath, orgPath } from "./paths";
@@ -111,9 +112,15 @@ const fullName = (row: { givenName?: string; familyName?: string }) =>
 /* Step one: anything a school might have. */
 function SourceStep({
   orgId,
+  classScope,
+  checking,
   onLoaded,
 }: {
   orgId: string;
+  /** A teacher adding students to their class: names, Excel or CSV. */
+  classScope: boolean;
+  /** The rows are being checked against the roster. */
+  checking: boolean;
   onLoaded: (draft: Draft) => void;
 }) {
   const fileInput = useRef<HTMLInputElement>(null);
@@ -204,9 +211,7 @@ function SourceStep({
       fromText(text, file.name);
     } catch (failure) {
       console.error("Roster file could not be read", failure);
-      setError(
-        "That file can’t be read. Choose an Excel .xlsx file, CSV or OneRoster ZIP, or paste the rows below.",
-      );
+      setError("That file can’t be read. Try Excel or CSV, or paste the rows.");
     } finally {
       setBusy(false);
     }
@@ -237,8 +242,17 @@ function SourceStep({
         <svg viewBox="0 0 48 48" aria-hidden="true" className={styles.dropMark}>
           <path d="M14 6h15l9 9v27H14V6Zm15 0v9h9M20 26h12M20 32h12M20 20h4" />
         </svg>
-        <h2>Drop your roster here</h2>
-        <p>An Excel .xlsx workbook, CSV, or OneRoster ZIP.</p>
+        {workbook ? (
+          <>
+            <h2>{workbook.fileName}</h2>
+            <p>{plural(workbook.sheets.length, "sheet")}</p>
+          </>
+        ) : (
+          <>
+            <h2>Drop your roster here</h2>
+            <p>{classScope ? "Excel or CSV" : "Excel, CSV or OneRoster"}</p>
+          </>
+        )}
         <input
           ref={fileInput}
           className={styles.fileInput}
@@ -249,32 +263,39 @@ function SourceStep({
           onChange={onPick}
         />
         <Button
-          variant="primary"
+          variant={workbook ? "secondary" : "primary"}
           aria-busy={busy}
-          disabled={busy}
+          disabled={busy || checking}
           onClick={() => fileInput.current?.click()}
         >
-          Choose a file
+          {workbook ? "Choose another file" : "Choose a file"}
         </Button>
       </div>
       {workbook && (
         <div className={styles.paste}>
-          <p className={styles.pasteLabel}>
-            Choose the sheet with your roster.
-          </p>
+          <span className={styles.pasteLabel} aria-hidden="true">
+            Sheet
+          </span>
           <Select
-            aria-label="Roster sheet"
+            aria-label="Sheet"
             value={sheetName}
             onValueChange={setSheetName}
           >
             {workbook.sheets.map((sheet) => (
               <option key={sheet.name} value={sheet.name}>
-                {sheet.name}
+                {sheet.name} ·{" "}
+                {plural(
+                  sheet.table.rows.length,
+                  classScope ? "student" : "row",
+                )}
               </option>
             ))}
           </Select>
           <Button
             variant="primary"
+            className={styles.pasteAction}
+            aria-busy={checking}
+            disabled={checking}
             onClick={() => {
               const selected = workbook.sheets.find(
                 (sheet) => sheet.name === sheetName,
@@ -290,39 +311,42 @@ function SourceStep({
           </Button>
         </div>
       )}
-      <div className={styles.paste}>
-        <label className={styles.pasteLabel} htmlFor="roster-paste">
-          Or paste from a spreadsheet
-        </label>
-        <textarea
-          id="roster-paste"
-          className={styles.pasteBox}
-          rows={7}
-          value={paste}
-          placeholder={
-            "Name\tGrade\tClass\nAna Ruiz\t5\tPeriod 1\nNoor Haddad\t5\tPeriod 1"
-          }
-          onChange={(event) => setPaste(event.target.value)}
-        />
-        <Button
-          variant="secondary"
-          className={styles.pasteAction}
-          disabled={!paste.trim()}
-          onClick={() => fromText(paste, "Pasted rows")}
-        >
-          Use these rows
-        </Button>
-      </div>
+      {!workbook && (
+        <div className={styles.paste}>
+          <label className={styles.pasteLabel} htmlFor="roster-paste">
+            {classScope ? "Or paste names" : "Or paste from a spreadsheet"}
+          </label>
+          <textarea
+            id="roster-paste"
+            className={styles.pasteBox}
+            rows={7}
+            value={paste}
+            placeholder={
+              classScope
+                ? "Ana Ruiz\nNoor Haddad\nKai Varga"
+                : "Name\tGrade\tClass\nAna Ruiz\t5\tPeriod 1\nNoor Haddad\t5\tPeriod 1"
+            }
+            onChange={(event) => setPaste(event.target.value)}
+          />
+          <Button
+            variant="secondary"
+            className={styles.pasteAction}
+            aria-busy={checking && !workbook}
+            disabled={!paste.trim() || checking}
+            onClick={() => fromText(paste, "Pasted rows")}
+          >
+            Use these rows
+          </Button>
+        </div>
+      )}
       <p className={styles.error} role={error ? "alert" : undefined}>
         {error}
       </p>
-      <p className={styles.footnote}>
-        Include Student IDs when available to keep records connected across
-        class and name changes.
-      </p>
-      <p className={styles.footnote}>
-        Nothing is saved until you’ve seen every change and chosen Apply.
-      </p>
+      {!classScope && (
+        <p className={styles.footnote}>
+          Nothing is saved until you’ve seen every change and chosen Apply.
+        </p>
+      )}
     </div>
   );
 }
@@ -422,11 +446,6 @@ function MapStep({
         {plural(table.rows.length, "row")} in {draft.fileName}. Check what each
         column holds.
       </p>
-      {draft.classId && (
-        <p>
-          All students will be added to {defaultClass}. Staff rows are skipped.
-        </p>
-      )}
       <ul className={styles.columns}>
         {table.headers.map((header, index) => (
           <li
@@ -507,15 +526,13 @@ const issueText: Record<RosterIssue["code"], (value: string) => string> = {
   missing_name: () => "No name on this row.",
   source_conflict: (value) =>
     `${value} Correct the OneRoster export and import again.`,
-  unsupported_role: (value) =>
-    `AMP does not assign these roles from a roster file: ${value}. Supported teaching and student memberships can be imported.`,
+  unsupported_role: (value) => `Skipped: ${value}`,
   name_too_long: (value) => `“${value.slice(0, 40)}…” is too long for a name.`,
   unknown_grade: (value) => `“${value}” isn’t a grade AMP knows.`,
   invalid_email: (value) => `“${value}” isn’t an email address.`,
-  conflicting_identity: (value) =>
-    `Student ID ${value} is assigned to different names. Correct the IDs or names and import again.`,
+  conflicting_identity: (value) => `Student ID ${value} has two names.`,
   ambiguous_identity: () =>
-    "This name appears more than once. Add Student IDs to these rows and import again: the same ID for one student in several classes, different IDs for different students.",
+    "Two students share this name. Add a Student ID to each.",
 };
 
 function FixMissingName({
@@ -602,7 +619,7 @@ function AttentionRow({
             ? plan.reason === "outside_class"
               ? "This student needs a school administrator to add them to this class."
               : plan.reason === "ambiguous_match"
-                ? "This ID or name does not identify a single student record. Check the school’s Student ID, or confirm this is a different student."
+                ? "Matches more than one student."
                 : plan.reason === "name_changed"
                   ? `This ID belongs to ${plan.existing} on your roster, under a different name.`
                   : `${plan.existing} is already on your roster, without this ID.`
@@ -710,6 +727,8 @@ function ReviewStep({
 }) {
   const session = currentSession();
   const patch = useImport((state) => state.patch);
+  // A teacher adding students to their own class: one class, students only.
+  const classScope = !!draft.classId;
   const [progress, setProgress] = useState<{
     done: number;
     total: number;
@@ -853,24 +872,32 @@ function ReviewStep({
       compare: (a, b) => fullName(a).localeCompare(fullName(b), "en"),
       cell: (row) => fullName(row),
     },
-    {
-      id: "role",
-      header: "Role",
-      width: 90,
-      cell: (row) => (row.role === "student" ? "Student" : "Teacher"),
-    },
+    ...(classScope
+      ? []
+      : ([
+          {
+            id: "role",
+            header: "Role",
+            width: 90,
+            cell: (row) => (row.role === "student" ? "Student" : "Teacher"),
+          },
+        ] satisfies DataGridColumn<RosterRow>[])),
     {
       id: "grade",
       header: "Grade",
       width: 70,
       cell: (row) => (row.role === "student" ? gradeLabel(row.gradeLevel) : ""),
     },
-    {
-      id: "classes",
-      header: "Classes",
-      width: 220,
-      cell: (row) => row.classes.map((klass) => klass.name).join(", "),
-    },
+    ...(classScope
+      ? []
+      : ([
+          {
+            id: "classes",
+            header: "Classes",
+            width: 220,
+            cell: (row) => row.classes.map((klass) => klass.name).join(", "),
+          },
+        ] satisfies DataGridColumn<RosterRow>[])),
     {
       id: "status",
       header: "Result",
@@ -895,41 +922,70 @@ function ReviewStep({
     show === "all"
       ? rows
       : rows.filter((row) => bucketOf(planFor(row)) === show);
-  const headline = [
-    plural(students.length, "student"),
-    plural(classes.size, "class", "classes"),
-    plural(teachers.length, "teacher"),
-  ].join(", ");
-  const summary = [
-    `${counts.new.toLocaleString("en-US")} new`,
-    ...(counts.changed
-      ? [`${counts.changed.toLocaleString("en-US")} updated`]
-      : []),
-    `${counts.unchanged.toLocaleString("en-US")} unchanged`,
-    `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
-  ].join(", ");
+  const headline = classScope
+    ? counts.new
+      ? plural(counts.new, "new student")
+      : "No new students"
+    : [
+        plural(students.length, "student"),
+        plural(classes.size, "class", "classes"),
+        plural(teachers.length, "teacher"),
+      ].join(", ");
+  const summary = (
+    classScope
+      ? [
+          ...(counts.changed
+            ? [`${counts.changed.toLocaleString("en-US")} updated`]
+            : []),
+          ...(counts.unchanged
+            ? [`${counts.unchanged.toLocaleString("en-US")} already here`]
+            : []),
+          ...(attention
+            ? [
+                `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
+              ]
+            : []),
+        ]
+      : [
+          `${counts.new.toLocaleString("en-US")} new`,
+          ...(counts.changed
+            ? [`${counts.changed.toLocaleString("en-US")} updated`]
+            : []),
+          `${counts.unchanged.toLocaleString("en-US")} unchanged`,
+          `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
+        ]
+  ).join(", ");
+  // Filters only where the rows differ: all new needs no filter.
+  const filters = counts.changed + counts.unchanged + counts.attention > 0;
   return (
     <div className={styles.review}>
       <header className={styles.diff}>
-        <h1 className={styles.diffHeadline}>{headline}.</h1>
-        <p className={styles.diffSummary}>{summary}.</p>
-        <div
-          className={styles.diffBar}
-          role="img"
-          aria-label={summary}
-          data-empty={total ? undefined : "true"}
-        >
-          <span data-kind="new" style={{ width: share(counts.new) }} />
-          <span data-kind="changed" style={{ width: share(counts.changed) }} />
-          <span
-            data-kind="unchanged"
-            style={{ width: share(counts.unchanged) }}
-          />
-          <span
-            data-kind="attention"
-            style={{ width: share(blocked.length + counts.attention) }}
-          />
-        </div>
+        <h1 className={styles.diffHeadline}>
+          {classScope ? headline : `${headline}.`}
+        </h1>
+        {summary && <p className={styles.diffSummary}>{summary}.</p>}
+        {(!classScope || filters) && (
+          <div
+            className={styles.diffBar}
+            role="img"
+            aria-label={summary || headline}
+            data-empty={total ? undefined : "true"}
+          >
+            <span data-kind="new" style={{ width: share(counts.new) }} />
+            <span
+              data-kind="changed"
+              style={{ width: share(counts.changed) }}
+            />
+            <span
+              data-kind="unchanged"
+              style={{ width: share(counts.unchanged) }}
+            />
+            <span
+              data-kind="attention"
+              style={{ width: share(blocked.length + counts.attention) }}
+            />
+          </div>
+        )}
         {(result.skipped > 0 || result.inactive > 0) && (
           <p className={styles.diffNote}>
             {result.skipped > 0 &&
@@ -1004,28 +1060,34 @@ function ReviewStep({
       )}
       <section className={styles.preview}>
         <div className={styles.previewHead}>
-          <h2>Every row</h2>
-          <Segmented
-            label="Show"
-            compact
-            dense
-            value={show}
-            onChange={onShow}
-            options={[
-              {
-                value: "all",
-                label: `All ${rows.length.toLocaleString("en-US")}`,
-              },
-              {
-                value: "new",
-                label: `New ${counts.new.toLocaleString("en-US")}`,
-              },
-              {
-                value: "changed",
-                label: `Updated ${counts.changed.toLocaleString("en-US")}`,
-              },
-            ]}
-          />
+          <h2>{classScope ? "Students" : "Every row"}</h2>
+          {filters && (
+            <Segmented
+              label="Show"
+              compact
+              dense
+              value={show}
+              onChange={onShow}
+              options={[
+                {
+                  value: "all",
+                  label: `All ${rows.length.toLocaleString("en-US")}`,
+                },
+                {
+                  value: "new",
+                  label: `New ${counts.new.toLocaleString("en-US")}`,
+                },
+                ...(counts.changed
+                  ? [
+                      {
+                        value: "changed" as const,
+                        label: `Updated ${counts.changed.toLocaleString("en-US")}`,
+                      },
+                    ]
+                  : []),
+              ]}
+            />
+          )}
         </div>
         {shownRows.length ? (
           <DataGrid
@@ -1047,7 +1109,9 @@ function ReviewStep({
                         row.role === "student" && row.gradeLevel !== undefined
                           ? `Grade ${gradeLabel(row.gradeLevel)}`
                           : "",
-                        row.classes.map((klass) => klass.name).join(", "),
+                        classScope
+                          ? ""
+                          : row.classes.map((klass) => klass.name).join(", "),
                       ]
                         .filter(Boolean)
                         .join(", ")}
@@ -1100,7 +1164,8 @@ function ReviewStep({
             </div>
           ) : (
             <div className={styles.applyText}>
-              {toWrite.length ? (
+              {classScope &&
+              toWrite.length === counts.new ? null : toWrite.length ? (
                 <>
                   <strong>
                     {[
@@ -1119,8 +1184,8 @@ function ReviewStep({
                       .replace(/^./, (char) => char.toUpperCase()) ||
                       `Applies ${plural(toWrite.length, "decision")}`}
                     .
-                  </strong>{" "}
-                  <span>Importing never removes anyone.</span>
+                  </strong>
+                  {!classScope && <span> Importing never removes anyone.</span>}
                 </>
               ) : (
                 <strong>
@@ -1157,25 +1222,47 @@ function ReviewStep({
                 disabled={!!running || recheck}
                 onClick={() => void apply(0, [], 0)}
               >
-                Apply changes
+                {classScope && toWrite.length === counts.new
+                  ? `Add ${plural(toWrite.length, "student")}`
+                  : "Apply changes"}
               </Button>
             ) : (
-              <Link
-                to="/$"
-                params={{
-                  _splat: draft?.classId
-                    ? `school/${orgId}/classes/${draft.classId}/roster`
-                    : orgPath(orgId, "students"),
-                }}
-                className={buttonClass("primary")}
-              >
-                See students
-              </Link>
+              <StudentsLink orgId={orgId} classId={draft.classId} />
             )}
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+/** Back to the students this import was for: the class's, or the school's. */
+function StudentsLink({
+  orgId,
+  classId,
+  primary = true,
+}: {
+  orgId: string;
+  classId?: string;
+  primary?: boolean;
+}) {
+  const look = buttonClass(primary ? "primary" : "secondary");
+  return classId ? (
+    <Link
+      to="/school/$org/classes/$class/roster"
+      params={{ org: orgId, class: classId }}
+      className={look}
+    >
+      See students
+    </Link>
+  ) : (
+    <Link
+      to="/$"
+      params={{ _splat: orgPath(orgId, "students") }}
+      className={look}
+    >
+      See students
+    </Link>
   );
 }
 
@@ -1256,17 +1343,7 @@ function DoneStep({
         </p>
       )}
       <div className={styles.doneActions}>
-        <Link
-          to="/$"
-          params={{
-            _splat: draft?.classId
-              ? `school/${orgId}/classes/${draft.classId}/roster`
-              : orgPath(orgId, "students"),
-          }}
-          className={buttonClass("primary")}
-        >
-          See students
-        </Link>
+        <StudentsLink orgId={orgId} classId={draft.classId} />
         {firstClass && (
           <Link
             to="/$"
@@ -1315,6 +1392,8 @@ export function ImportScreen() {
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const [checking, setChecking] = useState(false);
+  const showFlash = useFlash((state) => state.show);
   const stored = useImport((state) => state.draft);
   const setDraft = useImport((state) => state.set);
   const patch = useImport((state) => state.patch);
@@ -1392,33 +1471,6 @@ export function ImportScreen() {
     patch({ result, plan, resolutions: {}, applied: undefined });
     goTo("review");
   };
-  if (
-    org &&
-    !org.can?.includes("roster.import") &&
-    !(classId && org.teaches?.includes(classId))
-  )
-    return (
-      <OrgFrame orgId={orgId} nav="import" title="Import">
-        <EmptyState
-          title="Your school’s admin handles imports"
-          action={
-            <Link
-              to="/$"
-              params={{
-                _splat: draft?.classId
-                  ? `school/${orgId}/classes/${draft.classId}/roster`
-                  : orgPath(orgId, "students"),
-              }}
-              className={buttonClass("secondary")}
-            >
-              See students
-            </Link>
-          }
-        >
-          You can add students to your own classes one at a time.
-        </EmptyState>
-      </OrgFrame>
-    );
   const frame = (children: ReactNode) =>
     classId ? (
       <ClassFrame org={orgId} classId={classId} loading={false} tab="roster">
@@ -1434,16 +1486,64 @@ export function ImportScreen() {
         {children}
       </OrgFrame>
     );
+  if (
+    org &&
+    !org.can?.includes("roster.import") &&
+    !(classId && org.teaches?.includes(classId))
+  )
+    return frame(
+      <EmptyState
+        title="Your school’s admin handles imports"
+        action={
+          <StudentsLink orgId={orgId} classId={classId} primary={false} />
+        }
+      >
+        You can add students to your own classes one at a time.
+      </EmptyState>,
+    );
+  /** A teacher's paste or file whose columns are plain goes straight to the
+   * students it adds; the columns stay one Back away. */
+  const loaded = async (next: Draft) => {
+    setDraft({
+      ...next,
+      ...(classId ? { classId, fallbackClass: defaultClass } : {}),
+    });
+    if (!classId || next.source !== "csv" || !mappingHasName(next.mapping!)) {
+      goTo("map");
+      return;
+    }
+    setChecking(true);
+    try {
+      await check();
+    } catch (failure) {
+      console.error("The pasted students couldn’t be checked", failure);
+      goTo("map");
+    } finally {
+      setChecking(false);
+    }
+  };
+  /** A class's students are added: back to Students, which says so. */
+  const added = () => {
+    const count = (useImport.getState().draft?.applied ?? []).filter(
+      (row) => row.status === "created",
+    ).length;
+    showFlash(count ? `${plural(count, "student")} added` : "Students updated");
+    void navigate({
+      to: "/school/$org/classes/$class/roster",
+      params: { org: orgId, class: classId! },
+      replace: true,
+    }).then(() => setDraft(null));
+  };
   return frame(
     <div className={styles.page} data-step={step}>
       {(step === "source" || step === "map") && (
         <PageHead
-          title={STEP_TITLES[step]}
+          title={
+            classId && step === "source" ? "Add students" : STEP_TITLES[step]
+          }
           detail={
-            step === "source"
-              ? classId
-                ? `Add students to ${defaultClass}.`
-                : "Students, classes and teachers, all from one file."
+            step === "source" && !classId
+              ? "Students, classes and teachers, all from one file."
               : undefined
           }
         />
@@ -1451,13 +1551,9 @@ export function ImportScreen() {
       {step === "source" && (
         <SourceStep
           orgId={orgId}
-          onLoaded={(next) => {
-            setDraft({
-              ...next,
-              ...(classId ? { classId, fallbackClass: defaultClass } : {}),
-            });
-            goTo("map");
-          }}
+          classScope={!!classId}
+          checking={checking}
+          onLoaded={(next) => void loaded(next)}
         />
       )}
       {step === "map" && draft && (
@@ -1488,7 +1584,7 @@ export function ImportScreen() {
             })
           }
           onBack={() => goTo("map")}
-          onDone={() => goTo("done", true)}
+          onDone={() => (classId ? added() : goTo("done", true))}
         />
       )}
       {step === "done" && draft && (

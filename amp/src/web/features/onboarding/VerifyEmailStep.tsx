@@ -27,6 +27,7 @@ export function VerifyEmailStep({
   me,
   invitation = false,
   embedded = false,
+  headingLevel,
 }: {
   session: AuthSession;
   me: SignedInMe;
@@ -34,6 +35,8 @@ export function VerifyEmailStep({
   /** Inside another screen ("Continue with AMP"), which has the title, the
    * frame and its own "Not now". */
   embedded?: boolean;
+  /** Inside a page whose title this step is (class setup): its own h1. */
+  headingLevel?: 1 | 2;
 }) {
   const email = me.account.email ?? "";
   const location = useLocation();
@@ -68,7 +71,7 @@ export function VerifyEmailStep({
     : confirmation.error
       ? "checkFailed"
       : (verification.data ?? confirmation.data ?? "initial");
-  const Heading = embedded ? "h2" : "h1";
+  const Heading = (headingLevel ?? (embedded ? 2 : 1)) === 1 ? "h1" : "h2";
   return (
     <section
       className={

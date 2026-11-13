@@ -10,12 +10,20 @@ const MESSAGE_LIMIT = 4000;
 /** "Talk to us" on `/schools`: a few lines to the company mailbox, answered by
  * a person. Sent, the thanks takes the form's place without moving the page;
  * the footer below has the address for anyone who'd rather write. */
-export function TalkToUs() {
+export function TalkToUs({
+  prefill,
+}: {
+  /** What the page already knows (a buyer's page: the school, its seats and
+   * the request's reference), so the person writes only what's new. */
+  prefill?: { school: string; students: number; message: string };
+} = {}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [school, setSchool] = useState("");
-  const [students, setStudents] = useState("");
-  const [message, setMessage] = useState("");
+  const [school, setSchool] = useState(prefill?.school ?? "");
+  const [students, setStudents] = useState(
+    prefill ? String(prefill.students) : "",
+  );
+  const [message, setMessage] = useState(prefill?.message ?? "");
   const [website, setWebsite] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [failure, setFailure] = useState("");

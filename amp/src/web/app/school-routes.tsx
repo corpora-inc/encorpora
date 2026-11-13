@@ -9,9 +9,6 @@ import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { OPEN_KEY, work, writeStack } from "../nav/entities";
 import type { AuthSession } from "../auth";
-import { z } from "zod";
-import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
-import { prepareSchoolAdoption } from "../features/school/adoption-session";
 import {
   calendarOptions,
   classesOptions,
@@ -216,94 +213,12 @@ export function schoolRoutes(root: AnyRoute) {
   return [
     createRoute({
       getParentRoute: () => root,
-      path: "/school/start",
-      beforeLoad: staffScreen,
-      validateSearch: (search) => ({
-        org: z.uuid().safeParse(search.org).success
-          ? String(search.org)
-          : undefined,
-        return: "school" as const,
-        next: "/school/start",
-      }),
-      loader: async ({ context }) => {
-        const { session } = context as unknown as { session: AuthSession };
-        await Promise.all([
-          preload(meOptions(session)),
-          preload(orgsOptions(session)),
-        ]);
-      },
-      component: screen(
-        () => import("../features/school/pilots/SchoolStartScreen"),
-        "SchoolStartScreen",
-      ),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/connect",
-      validateSearch: (search) => ({
-        error: [
-          "clever_identity_already_linked",
-          "clever_link_expired",
-        ].includes(String(search.error))
-          ? search.error
-          : undefined,
-      }),
-      beforeLoad: () => {
-        if (nativeRuntime || studentSession())
-          throw redirect({ to: "/", replace: true });
-      },
-      component: screen(
-        () => import("../features/school/clever/ConnectionScreen"),
-        "ConnectionScreen",
-      ),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/adopt",
-      validateSearch: (search) => ({
-        district: z.uuid().safeParse(search.district).success
-          ? String(search.district)
-          : undefined,
-        manage: search.manage === 1 || search.manage === "1" ? 1 : undefined,
-      }),
-      beforeLoad: (context) => {
-        prepareSchoolAdoption();
-        return staffScreen(context);
-      },
-      component: screen(
-        () => import("../features/school/AdoptionScreen"),
-        "AdoptionScreen",
-      ),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/schools/continue",
-      beforeLoad: () => {
-        prepareBuyerHandoff();
-      },
-      component: screen(
-        () => import("../features/school/pilots/BuyerHandoffScreen"),
-        "BuyerHandoffScreen",
-      ),
-    }),
-    createRoute({
-      getParentRoute: () => root,
-      path: "/school/$org/classes/$class/import",
-      beforeLoad: staffScreen,
-      loader: async ({ context, params }) => {
-        const { session } = context as unknown as { session: AuthSession };
-        await frameData(session, (params as unknown as { org: string }).org);
-      },
-      component: screens.importer,
-    }),
-    createRoute({
-      getParentRoute: () => root,
       path: "/school",
       beforeLoad: async ({ location }) => {
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
         if (orgs.length === 0)
-          throw redirect({ to: "/school/start", replace: true } as never);
+          throw redirect({ to: "/school/start", replace: true });
         if (orgs.length === 1)
           throw redirect({ ...orgHome(orgs[0]!), replace: true } as never);
       },

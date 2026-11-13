@@ -99,20 +99,17 @@ async function capture(name: string) {
     }
 }
 try {
+  const waiting = "Waiting for the class’s teacher to start practice";
   for (const tab of ["roster", "today"]) {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
-    await page
-      .getByRole("heading", { name: "Ready for your teacher", exact: true })
-      .waitFor();
-    assert.equal(
+    await page.waitForLoadState("networkidle");
+    if (tab === "today")
+      await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
+    assert.equal(await page.getByRole("button", { name: /^Start/ }).count(), 0);
+    if (tab === "today")
       await page
-        .getByRole("button", { name: "Start 30-day pilot", exact: true })
-        .count(),
-      0,
-    );
-    await page
-      .getByRole("button", { name: "Request seats", exact: true })
-      .waitFor();
+        .getByRole("button", { name: "Request seats", exact: true })
+        .waitFor();
     await capture(`administrator-${tab}`);
   }
   assert.equal(
@@ -130,12 +127,10 @@ try {
     });
   });
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Ready for your teacher", exact: true })
-    .waitFor();
+  await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
   assert.equal(
     await page
-      .getByRole("heading", { name: "Your pilot has ended", exact: true })
+      .getByRole("heading", { name: "Practice has ended", exact: true })
       .count(),
     0,
   );
@@ -153,22 +148,21 @@ try {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
     await page.reload();
     await page
-      .getByRole("button", { name: "Start 30-day pilot", exact: true })
+      .getByRole("button", {
+        name: tab === "today" ? "Start" : "Start practice",
+        exact: true,
+      })
       .waitFor();
     assert.equal(
-      await page
-        .getByRole("heading", { name: "Ready for your teacher", exact: true })
-        .count(),
+      await page.getByRole("heading", { name: waiting, exact: true }).count(),
       0,
     );
   }
   await capture("enrolled-teacher");
   await page
-    .getByRole("button", { name: "Start 30-day pilot", exact: true })
+    .getByRole("button", { name: "Start practice", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: "Your pilot is active", exact: true })
-    .waitFor();
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
   assert.equal(
     (
       await learning.pool.query(

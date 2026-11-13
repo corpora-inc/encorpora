@@ -209,7 +209,7 @@ try {
   await page.getByLabel("Your name", { exact: true }).fill("District Admin");
   await page.getByRole("checkbox", { name: /authorized to connect/ }).check();
   assert.ok(
-    await page.getByRole("checkbox", { name: /Bring existing/ }).isChecked(),
+    await page.getByRole("checkbox", { name: /Bring in schools/ }).isChecked(),
   );
   failConnect = true;
   await page
@@ -217,7 +217,7 @@ try {
     .click();
   await page
     .getByRole("alert")
-    .filter({ hasText: /has not granted/ })
+    .filter({ hasText: /hasn’t shared/ })
     .waitFor();
   assert.equal(
     await page.getByLabel("Your name", { exact: true }).inputValue(),
@@ -228,67 +228,58 @@ try {
     .getByRole("button", { name: "Reconnect district", exact: true })
     .click();
   await page
-    .getByRole("heading", { name: "Bring your existing classes" })
+    .getByText("Connected. Bring in your existing AMP schools")
     .waitFor();
   assert.equal(
-    await page.getByRole("button", { name: "Import Clever roster" }).count(),
+    await page.getByRole("button", { name: "Import roster" }).count(),
     0,
   );
-  await page
-    .getByRole("link", { name: "Continue with Clever to review schools" })
-    .waitFor();
+  await page.getByRole("link", { name: "Review schools" }).waitFor();
+  // A Clever sign-in mid-way is the sign-in: no second "Sign in" above it.
+  assert.equal(await page.getByRole("link", { name: "Sign in" }).count(), 0);
   await capture("paused-proof");
   await page.evaluate(() => sessionStorage.clear());
   accountsMode = false;
   await page.goto(`${origin}/school/connect`);
-  await page.getByRole("link", { name: "Review existing schools" }).waitFor();
+  await page.getByRole("link", { name: "Review schools" }).waitFor();
   state.connection.lastError = "clever_district_admin_required";
   await page.reload();
   await page
-    .getByRole("heading", { name: "Check district authorization" })
+    .getByText("Sign in with Clever again to confirm you’re a district admin.")
     .waitFor();
-  await page
-    .getByRole("link", { name: "Verify district access with Clever" })
-    .waitFor();
+  await page.getByRole("link", { name: "Sign in with Clever" }).waitFor();
   assert.equal(
-    await page.getByRole("button", { name: "Import Clever roster" }).count(),
+    await page.getByRole("button", { name: "Import roster" }).count(),
     0,
   );
   assert.equal(
-    await page.getByRole("link", { name: "Review existing schools" }).count(),
+    await page.getByRole("link", { name: "Review schools" }).count(),
     0,
   );
   await capture("paused-authority-error");
   state.connection.lastError = null;
   await page.reload();
-  await page.getByRole("button", { name: "Import Clever roster" }).click();
-  await page.getByText("Syncing schools, classes and students").waitFor();
+  await page.getByRole("button", { name: "Import roster" }).click();
+  await page.getByText("Importing").waitFor();
   state.connection = {
     ...state.connection,
     lastSyncAt: new Date().toISOString(),
     syncing: false,
   };
   state.identity.personId = randomUUID();
-  await page
-    .getByRole("heading", { name: "Your roster is connected" })
-    .waitFor();
+  await page.getByText(/^Synced /).waitFor();
   await page.getByRole("link", { name: "Open your classes" }).waitFor();
   await capture("ready");
   state = freshState();
   await page.reload();
+  await page.getByRole("button", { name: "Link Clever", exact: true }).click();
   await page
-    .getByRole("button", {
-      name: "Link Clever to this AMP account",
-      exact: true,
-    })
-    .click();
-  await page
-    .getByRole("link", { name: "Sign in again to link Clever", exact: true })
+    .getByRole("link", { name: "Sign in again", exact: true })
     .waitFor();
   assert.ok(
     (
       await page
-        .getByRole("link", { name: "Sign in again to link Clever" })
+        .getByRole("link", { name: "Sign in again" })
         .getAttribute("href")
     )?.includes("next=%2Fschool%2Fconnect"),
   );
@@ -298,43 +289,23 @@ try {
     identity: { districtId: "fixture", roles: ["teacher"], personId: null },
   };
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Your administrator connects Clever" })
-    .waitFor();
-  await page.getByLabel("School or district name").fill("Fixture school");
-  await page.getByLabel("Contact email").fill("admin@example.test");
-  await page
-    .getByRole("button", { name: "Request a connection", exact: true })
-    .click();
-  await page
-    .getByRole("status")
-    .filter({ hasText: /Request saved/ })
-    .waitFor();
-  await capture("provider-invitation");
+  await page.getByText("Your district admin connects Clever.").waitFor();
+  await page.getByRole("link", { name: "Set up your class" }).waitFor();
+  await capture("teacher-waits");
   await page.goto(`${origin}/schools/continue#token=${"b".repeat(43)}`);
-  await page
-    .getByRole("heading", { name: "Purchase confirmed", exact: true })
-    .waitFor();
+  await page.getByText("Your seats are confirmed.").waitFor();
   assert.equal(new URL(page.url()).hash, "");
   assert.equal(
-    await page
-      .getByRole("link", { name: "Discuss seats with Corpora" })
-      .count(),
+    await page.getByRole("heading", { name: "Get a quote" }).count(),
     0,
   );
   paidStudents = 25;
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Access activated", exact: true })
-    .waitFor();
-  assert.equal(
-    await page.getByRole("button", { name: "Copy request details" }).count(),
-    0,
-  );
+  await page.getByText("Your seats are confirmed.").waitFor();
   await capture("purchase-active");
   assert.deepEqual(failures, []);
   console.info(
-    "Clever connection, paused authority recovery, pending AnySchool and confirmed purchase browser states passed.",
+    "Clever connection, paused authority recovery, teacher hand-off and confirmed purchase browser states passed.",
   );
 } catch (error) {
   await page.screenshot({ path: `${artifacts}/failure.png`, fullPage: true });

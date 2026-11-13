@@ -6,7 +6,8 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
-import { sessionOptions } from "../../lib/query";
+import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
@@ -103,7 +104,7 @@ export function Starter() {
   if (params.choice === "myself") return <MyselfStep session={session} />;
   if (params.choice === "school") return <SchoolStep session={session} />;
   if (params.choice === "teacher")
-    return <Navigate to="/$" params={{ _splat: "school/start" }} replace />;
+    return <Navigate to="/school/start" replace />;
   return <StarterScreen session={session} />;
 }
 
@@ -131,7 +132,6 @@ export function StarterStep() {
 function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
-  const busy = false;
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
       <h1 className={styles.title}>What brings you to AMP?</h1>
@@ -156,8 +156,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
             <li key={entry.id}>
               {entry.id === "teacher" ? (
                 <Link
-                  to="/$"
-                  params={{ _splat: "school/start" }}
+                  to="/school/start"
                   className={styles.choice}
                   data-choice={entry.id}
                   onClick={() => track("starter_choice", { answer: entry.id })}
@@ -170,7 +169,6 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   params={{ choice: entry.id }}
                   className={styles.choice}
                   data-choice={entry.id}
-                  disabled={busy}
                   onClick={() => track("starter_choice", { answer: entry.id })}
                 >
                   {content}
@@ -184,15 +182,15 @@ function StarterScreen({ session }: { session: AuthSession }) {
   );
 }
 
-/** A teacher or a school can explore a separate place with sample students. */
+/** A school can explore a separate demo school with sample students. */
 function useExplore(session: AuthSession) {
   const navigate = useNavigate();
   const demo = useStartDemo(session);
   const [error, setError] = useState("");
-  const explore = (kind: "class" | "school") => {
+  const explore = () => {
     if (demo.isPending) return;
     setError("");
-    demo.mutate(kind, {
+    demo.mutate("school", {
       onSuccess: (home) => void navigate({ href: `/${home}` }),
       onError: (failure) => {
         console.error("The demo didn’t open", failure);
@@ -282,7 +280,7 @@ function SchoolStep({ session }: { session: AuthSession }) {
     <>
       <School
         exploring={demo.isPending && demo.variables === "school"}
-        onExplore={() => explore("school")}
+        onExplore={explore}
       />
       <Toast message={error} onDismiss={() => setError("")} />
     </>
@@ -370,6 +368,7 @@ function School({
     staleTime: Infinity,
   });
   const count = (value: number) => value.toLocaleString("en-US");
+  const clever = cleverEnabled(useQuery(authConfigOptions).data);
   return (
     <StepFrame
       steps={ONE_STEP.school}
@@ -379,21 +378,19 @@ function School({
       lede="Every student works at their own level in every area of math, from counting to precalculus, with unlimited problems and personalized workbooks. Teachers see who needs them today, and they decide every grade."
       next={
         <div className={styles.actions}>
-          <Link
-            to="/$"
-            params={{ _splat: "school/connect" }}
-            className={buttonClass("primary")}
-          >
-            Connect your school
-          </Link>
           <Button
-            variant="secondary"
+            variant="primary"
             aria-busy={exploring || undefined}
             disabled={exploring}
             onClick={onExplore}
           >
             Explore a demo school
           </Button>
+          {clever && (
+            <Link to="/school/connect" className={buttonClass("secondary")}>
+              Use Clever
+            </Link>
+          )}
         </div>
       }
     >

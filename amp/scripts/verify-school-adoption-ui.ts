@@ -164,21 +164,19 @@ try {
     .waitFor();
   await shots(ownerPage, "school-approval");
   await ownerPage.getByRole("checkbox").check();
-  await ownerPage
-    .getByRole("button", { name: "Create district approval" })
-    .click();
-  const link = await ownerPage
-    .getByLabel("District approval link")
-    .inputValue();
+  await ownerPage.getByRole("button", { name: "Approve", exact: true }).click();
+  const link = (await ownerPage
+    .getByRole("button", { name: "Copy link" })
+    .getAttribute("data-share-url"))!;
   assert.ok(link.includes("#token=adopt_"));
   await leaderPage.goto(link);
   await leaderPage
-    .getByRole("heading", { name: "Birch School → River District" })
+    .getByRole("heading", { name: "Birch School wants to join River District" })
     .waitFor();
   assert.equal(new URL(leaderPage.url()).hash, "");
   await leaderPage.reload();
   await leaderPage
-    .getByRole("heading", { name: "Birch School → River District" })
+    .getByRole("heading", { name: "Birch School wants to join River District" })
     .waitFor();
   await shots(leaderPage, "district-review");
   await leaderPage.getByRole("checkbox").check();
@@ -194,7 +192,7 @@ try {
     .click();
   await leaderPage
     .getByRole("alert")
-    .filter({ hasText: /didn’t save|could not|did not/ })
+    .filter({ hasText: /didn’t|could not|did not|unavailable/ })
     .first()
     .waitFor();
   assert.equal(
@@ -207,7 +205,7 @@ try {
     .getByRole("button", { name: "Add school to district" })
     .click();
   await leaderPage
-    .getByRole("heading", { name: "Birch School is part of River District" })
+    .getByRole("heading", { name: "Birch School joined River District" })
     .waitFor();
   assert.equal(
     (await db.query("SELECT parent_id FROM amp_orgs WHERE id=$1", [school.id]))

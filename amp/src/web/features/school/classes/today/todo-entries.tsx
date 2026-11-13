@@ -57,14 +57,27 @@ export function TodoAction({
   org,
   classId,
   primary,
+  importStudents = false,
 }: {
   todo: TodayTodo;
   org: string;
   classId: string;
   primary: boolean;
+  /** A school class adds its students by pasting or importing them. */
+  importStudents?: boolean;
 }) {
   const { action } = todo;
   const look = primary ? "primary" : "secondary";
+  if (importStudents && todo.id === "add-students")
+    return (
+      <Link
+        to="/school/$org/classes/$class/import"
+        params={{ org, class: classId }}
+        className={buttonClass(look)}
+      >
+        {action.label}
+      </Link>
+    );
   // A lesson to teach opens over Today as a layer, as a skill does.
   if (action.kind === "lesson")
     return (
@@ -171,6 +184,7 @@ export function todoEntries({
   extra,
   people,
   lead = true,
+  importStudents = false,
 }: {
   todos: readonly TodayTodo[];
   place: { org: string; class: string };
@@ -179,6 +193,7 @@ export function todoEntries({
   people: boolean;
   /** The first to-do carries the screen's one primary action. */
   lead?: boolean;
+  importStudents?: boolean;
 }): FeedEntry[] {
   return todos.map((todo, index) => ({
     id: todo.id,
@@ -197,6 +212,7 @@ export function todoEntries({
           org={place.org}
           classId={place.class}
           primary={lead && index === 0}
+          importStudents={importStudents}
         />
         {todo.groupSheet && canPrint && (
           <Link

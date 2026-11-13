@@ -1,103 +1,150 @@
-.page {
-  width: min(100%, 760px);
-  margin-inline: auto;
-  padding: var(--space-6) var(--space-4);
-  display: grid;
-  gap: var(--space-5);
-}
-.page > header {
-  display: block;
-}
-.page h1 {
-  margin: 0;
-  font-size: var(--text-heading-1);
-  line-height: 1.15;
-}
-.lead {
-  color: var(--color-muted-text);
-  line-height: 1.5;
-  margin-top: var(--space-2);
-}
-.form {
-  display: grid;
-  gap: var(--space-3);
-}
+/* Class practice access and its sheets, the signer's fields, the buyer's page. */
 .pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
 }
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  align-items: center;
+.pair > *,
+.pair input {
+  min-width: 0;
 }
-.panel {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface);
+.pair input {
+  width: 100%;
 }
-.panel h2 {
-  font-size: var(--text-heading-3);
-  margin: 0;
+/* The agreement's name inside the line that accepts it. */
+.inlineLink {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
 }
-.panel p {
-  line-height: 1.5;
-  margin: 0;
-}
-.error {
-  min-height: 1.5em;
-  color: var(--color-danger-accent);
-  line-height: 1.5;
-  margin: 0;
-}
-.status {
-  min-height: 1.5em;
-  color: var(--color-muted-text);
-  margin: 0;
-}
-.facts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-  margin: 0;
-}
-.facts div {
-  display: grid;
-  gap: var(--space-1);
-}
-.facts dt {
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-}
-.facts dd {
-  margin: 0;
-  font-size: var(--text-heading-1);
-  font-variant-numeric: tabular-nums;
+.inlineLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 .agreement {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-5);
 }
-.agreement p {
+.agreement > p,
+.agreement section p {
+  margin: 0;
   line-height: 1.55;
 }
+.agreement section {
+  display: grid;
+  gap: var(--space-2);
+}
+.agreement h3 {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.agreementAccept {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Settings: practice access in one line. */
+.accessLine {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+}
+.accessLabel {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.accessLine p {
+  margin: 0;
+  font-variant-numeric: var(--numeric);
+}
+
+/* A practice sheet's body: its fields, then its actions. */
+.sheetBody {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+.sheetBody > :not(.sheetActions) {
+  justify-self: stretch;
+}
+.sheetActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.quietLink:hover {
+  background: var(--color-secondary);
+}
+
+/* The buyer's page. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--color-border);
+}
+.facts div {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: var(--space-1);
+  align-content: end;
+}
+.facts dt {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.facts dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-1);
+  line-height: 1;
+  font-variant-numeric: var(--numeric);
+}
+.nowrap {
+  white-space: nowrap;
+}
+.quiet {
+  margin: 0;
+  color: var(--color-muted-text);
+  line-height: 1.5;
+}
+.quote {
+  display: grid;
+  gap: var(--space-3);
+}
+.quote h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 500;
+}
 @media (max-width: 639px) {
-  .page {
-    padding-block: var(--space-4);
-  }
   .pair {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-2);
-  }
-  .actions > * {
-    flex: 1 1 auto;
-  }
-  .facts {
-    gap: var(--space-2);
+    gap: 0;
   }
 }

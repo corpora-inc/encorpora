@@ -124,23 +124,24 @@ try {
     ).rows[0].n,
     0,
   );
+  // Day 0: one step, nothing else to do.
+  await page.getByRole("heading", { name: "Add your students" }).waitFor();
+  assert.equal(await page.getByLabel("Class code").count(), 0);
+  await page.getByRole("link", { name: "Add students", exact: true }).click();
   await page
-    .getByRole("link", { name: "Import students", exact: true })
-    .first()
-    .click();
-  await page
-    .getByLabel("Or paste from a spreadsheet")
+    .getByLabel("Or paste names")
     .fill(
       "Student ID,Name,Class\n0001,Ana Ruiz,Untrusted class name\n0002,Noor Haddad,Another class\n",
     );
   await page.getByRole("button", { name: "Use these rows" }).click();
-  await page.getByRole("button", { name: "Check for changes" }).click();
+  // Plain columns skip the column check and go straight to the students.
   await page.waitForURL(/step=review/);
-  await page.getByRole("button", { name: "Apply changes" }).click();
-  await page.waitForURL(/step=done/);
-  await page.getByRole("link", { name: "See students", exact: true }).click();
+  await page.getByRole("heading", { name: "2 new students" }).waitFor();
+  await page.getByRole("button", { name: "Add 2 students" }).click();
+  await page.waitForURL(/\/roster$/);
+  await page.getByText("2 students added").waitFor();
   await page
-    .getByRole("button", { name: "Start 30-day pilot", exact: true })
+    .getByRole("button", { name: "Start practice", exact: true })
     .waitFor();
   assert.equal(
     (
@@ -153,28 +154,38 @@ try {
   );
   await capture("ready");
   await page
-    .getByRole("button", { name: "Start 30-day pilot", exact: true })
+    .getByRole("button", { name: "Start practice", exact: true })
     .click();
-  await page.getByRole("heading", { name: "Your pilot is active" }).waitFor();
+  // The same slot now starts the class: the header never reflows.
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
   const first = (
     await learning.pool.query("SELECT id,ends_at FROM amp_teacher_pilots")
   ).rows[0];
-  await page.goto(`${origin}/school/start?org=${created.org_id}`);
+  // A second class goes to the same school, never a new one.
+  await page.goto(`${origin}/school/start`);
   await page.getByLabel("Class name").fill("Math support");
+  assert.equal(await page.getByLabel("School name").count(), 0);
   await page.getByLabel("Your name", { exact: true }).fill("Teacher Example");
   await page.getByRole("checkbox").check();
-  await page
-    .getByText("Add student names now (optional)", { exact: true })
-    .click();
-  await page
-    .getByRole("textbox", { name: /Student names/ })
-    .fill("Lena Fischer");
   await page.getByRole("button", { name: "Create class", exact: true }).click();
   await page.waitForURL(/\/classes\/[\w-]+\/roster/);
+  assert.equal(
+    (
+      await learning.pool.query(
+        "SELECT count(DISTINCT org_id)::int AS n FROM amp_school_starts",
+      )
+    ).rows[0].n,
+    1,
+  );
+  await page.getByRole("link", { name: "Add students", exact: true }).click();
+  await page.getByLabel("Or paste names").fill("Lena Fischer");
+  await page.getByRole("button", { name: "Use these rows" }).click();
+  await page.getByRole("button", { name: "Add 1 student" }).click();
+  await page.waitForURL(/\/roster$/);
   await page
-    .getByRole("button", { name: "Add class to pilot", exact: true })
+    .getByRole("button", { name: "Start practice", exact: true })
     .click();
-  await page.getByRole("heading", { name: "Your pilot is active" }).waitFor();
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
   assert.deepEqual(
     (await learning.pool.query("SELECT id,ends_at FROM amp_teacher_pilots"))
       .rows,
@@ -183,21 +194,20 @@ try {
   await learning.pool.query(
     "UPDATE amp_teacher_pilots SET started_at=now()-interval '40 days',ends_at=now()-interval '10 days',grace_ends_at=now()-interval '3 days'",
   );
-  await page.reload();
-  await page.getByRole("heading", { name: "Your pilot has ended" }).waitFor();
-  assert.equal(
-    await page
-      .getByRole("button", { name: /Start 30-day pilot|Add class to pilot/ })
-      .count(),
-    0,
-  );
+  await page.goto(page.url().replace(/\/roster$/, "/today"));
+  await page.getByRole("heading", { name: "Practice has ended" }).waitFor();
+  // Nothing that leads nowhere: no class code, no cards, no Start.
+  assert.equal(await page.getByText("Copy link").count(), 0);
+  assert.equal(await page.getByRole("button", { name: /Start/ }).count(), 0);
   await page
     .getByRole("button", { name: "Request seats", exact: true })
     .click();
-  await page.getByLabel("Seats to discuss").fill("30");
-  await page.getByRole("button", { name: "Create buyer link" }).click();
-  await page.getByLabel("Buyer link").waitFor();
-  const buyer = await page.getByLabel("Buyer link").inputValue();
+  await page.waitForURL(/seats=1/);
+  await page.getByRole("spinbutton", { name: "Seats" }).press("PageUp");
+  await page.getByRole("button", { name: "Get link" }).click();
+  const copy = page.getByRole("button", { name: "Copy link" });
+  await copy.waitFor();
+  const buyer = (await copy.getAttribute("data-share-url"))!;
   assert.equal(new URL(buyer).pathname, "/schools/continue");
   assert.match(new URL(buyer).hash, /^#token=[A-Za-z0-9_-]{43}$/);
   await capture("buyer-link");
@@ -216,12 +226,15 @@ try {
     await buyerPage.getByText("Lena Fischer", { exact: true }).count(),
     0,
   );
+  // The quote request already carries the school and the reference.
   assert.equal(
     await buyerPage
-      .getByRole("link", { name: "Discuss seats with Corpora" })
-      .count(),
-    1,
+      .getByLabel(/School/)
+      .first()
+      .inputValue(),
+    "Alder pilot school",
   );
+  await buyerPage.getByRole("heading", { name: "Get a quote" }).waitFor();
   await page.goto(buyer);
   await capture("buyer-page");
   await guest.close();

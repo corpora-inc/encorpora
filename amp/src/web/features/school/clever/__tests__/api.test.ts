@@ -51,7 +51,7 @@ test("expired proof gives a local recovery without changing account auth", async
     } as never),
   ).rejects.toMatchObject({
     status: 401,
-    message: "Your connection session ended. Sign in with Clever again.",
+    message: "Your Clever session ended. Sign in with Clever again.",
   });
 });
 test("a provider invitation is reported as pending, never as roster-ready", async () => {

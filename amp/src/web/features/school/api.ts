@@ -34,16 +34,12 @@ const messages: Record<string, string> = {
   agreement_changed:
     "The agreement was just updated. Read the new version, then accept it.",
   agreement_required: "Accept the data agreement first, then continue.",
-  confirm_email:
-    "Confirm your email address, then return to finish setting up your class.",
-  pilot_teacher_required:
-    "A teacher assigned to this class starts their pilot. Ask that teacher to open the class and activate it.",
-  students_required: "Add students to this class before starting the pilot.",
-  real_school_required: "Open your real class to use this action.",
-  class_import_students_only:
-    "A class import adds students. Remove teacher rows, or ask an administrator to import the school roster.",
-  duplicate_roster_identity:
-    "Two rows use the same identity. Correct their Student IDs and check the file again.",
+  confirm_email: "Confirm your email address, then set up your class.",
+  pilot_teacher_required: "Only this class’s teacher can start practice.",
+  students_required: "Add students to this class first.",
+  real_school_required: "Not available in a demo.",
+  class_import_students_only: "A class import adds students only.",
+  duplicate_roster_identity: "Two rows have the same Student ID.",
   setting_locked:
     "Your district set this and locked it, so it can’t be changed here.",
   last_admin:

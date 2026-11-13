@@ -32,23 +32,23 @@ export function OrgSettingsScreen() {
         )}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}
-        {org && !org.demo && org.kind !== "family" && (
-          <section>
-            <h2>School connections</h2>
-            <Link
-              to="/$"
-              params={{ _splat: "school/connect" }}
-              className={buttonClass("secondary")}
-            >
-              Connect a school roster
-            </Link>
-            <Link
-              to="/$"
-              params={{ _splat: "school/adopt" }}
-              className={buttonClass("quiet")}
-            >
-              Bring an existing school into a district
-            </Link>
+        {/* A district brings in schools that already use AMP; the school
+            approves from the link (docs/schools.md). */}
+        {org?.kind === "district" && can.has("schools.add") && (
+          <section
+            className={styles.settingsSection}
+            aria-labelledby="settings-schools"
+          >
+            <h2 id="settings-schools">Schools</h2>
+            <div>
+              <Link
+                to="/school/adopt"
+                search={{ district: orgId, manage: 1 }}
+                className={buttonClass("secondary")}
+              >
+                Invite a school
+              </Link>
+            </div>
           </section>
         )}
         {/* Privacy and Integrations are the sub-tabs above, not links here. */}

@@ -11,6 +11,8 @@ import { Sheet } from "../../../ui/Sheet";
 import { TextField } from "../../../ui/TextField";
 import styles from "./Pilot.module.css";
 
+/** Who signs, and one tick that accepts the student data agreement. The
+ * agreement opens from its name in that line, and accepting there ticks it. */
 export function Authorization({
   name,
   title,
@@ -18,6 +20,7 @@ export function Authorization({
   onName,
   onTitle,
   onAuthorized,
+  errors = {},
   disabled = false,
   scope = "class",
 }: {
@@ -27,17 +30,25 @@ export function Authorization({
   onName: (value: string) => void;
   onTitle: (value: string) => void;
   onAuthorized: (value: boolean) => void;
+  errors?: { name?: string; title?: string };
   disabled?: boolean;
   scope?: "class" | "district";
 }) {
   const [reading, setReading] = useState(false);
-  return (
-    <section
-      className={styles.form}
-      aria-label={
-        scope === "district" ? "District authorization" : "Class authorization"
-      }
+  const agreement = (
+    <button
+      type="button"
+      className={styles.inlineLink}
+      onClick={(event) => {
+        event.preventDefault();
+        setReading(true);
+      }}
     >
+      student data agreement
+    </button>
+  );
+  return (
+    <>
       <div className={styles.pair}>
         <TextField
           label="Your name"
@@ -45,37 +56,41 @@ export function Authorization({
           onChange={(event) => onName(event.target.value)}
           autoComplete="name"
           maxLength={100}
-          required
+          error={errors.name}
           disabled={disabled}
         />
         <TextField
-          label="Your role at the school"
+          label="Your role"
           value={title}
           onChange={(event) => onTitle(event.target.value)}
           autoComplete="organization-title"
-          placeholder="Teacher"
           maxLength={100}
-          required
+          error={errors.title}
           disabled={disabled}
         />
       </div>
-      <Button type="button" variant="quiet" onClick={() => setReading(true)}>
-        Read the student data agreement
-      </Button>
       <Checkbox
         checked={authorized}
         onChange={onAuthorized}
         disabled={disabled}
       >
-        {scope === "district"
-          ? "I am authorized to connect this district to AMP, share its selected roster, and accept the student data agreement for the district."
-          : "I am authorized by my school to use AMP with this class, share its roster, and accept the student data agreement for this use."}
+        {scope === "district" ? (
+          <>
+            I’m authorized to connect this district and accept the {agreement}.
+          </>
+        ) : (
+          <>
+            My school authorizes me to use AMP with this class, and I accept the{" "}
+            {agreement}.
+          </>
+        )}
       </Checkbox>
       <Sheet
         open={reading}
         onOpenChange={setReading}
         title={agreementTitle}
         description={`Version ${AGREEMENT_VERSION}`}
+        tall
       >
         <div className={styles.agreement}>
           <p>{agreementLead}</p>
@@ -87,8 +102,20 @@ export function Authorization({
               ))}
             </section>
           ))}
+          <div className={styles.agreementAccept}>
+            <Button
+              variant="primary"
+              disabled={disabled}
+              onClick={() => {
+                onAuthorized(true);
+                setReading(false);
+              }}
+            >
+              I’m authorized and accept
+            </Button>
+          </div>
         </div>
       </Sheet>
-    </section>
+    </>
   );
 }

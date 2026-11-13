@@ -3,6 +3,7 @@ import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { plainName, timezone } from "../../../../schools/contracts";
 import { AppError } from "../../../lib/AppError";
+export { cleverEnabled } from "./enabled";
 
 export type ConnectionCredential = {
   token: string;
@@ -55,36 +56,28 @@ export const connectInstitutionSchema = z.strictObject({
 });
 const messages: Record<string, string> = {
   clever_account_link_required:
-    "These staff records need review before Clever can be linked. Contact support to review the records.",
-  clever_link_expired:
-    "The sign-in used to link Clever expired. Sign in again, then retry linking from this page.",
-  reauth_required:
-    "Sign in again to confirm that Clever should link to this AMP account.",
+    "These staff records need a review. Contact support@corpora.inc.",
+  clever_link_expired: "Linking Clever timed out. Sign in again and retry.",
+  reauth_required: "Sign in again to link Clever to this account.",
   clever_identity_already_linked:
-    "That Clever sign-in already belongs to another AMP account. Use that account, or contact support to review the connection. Your accounts have not been merged.",
-  clever_sign_in_required:
-    "Sign in with Clever to confirm your school connection.",
-  sign_in_required: "Your connection session ended. Sign in with Clever again.",
+    "That Clever sign-in belongs to another AMP account. Use that account.",
+  clever_sign_in_required: "Sign in with Clever to continue.",
+  sign_in_required: "Your Clever session ended. Sign in with Clever again.",
   clever_district_admin_required:
-    "A Clever district administrator must authorize this connection. You can start your own class while they do that.",
-  clever_unconfigured:
-    "Clever setup is being prepared. You can start your class directly or request a connection.",
+    "A Clever district admin authorizes this connection.",
   clever_http_403:
-    "Clever has not granted AMP access to this roster. Ask your Clever administrator to check the app’s sharing settings, then retry.",
+    "Clever hasn’t shared this roster with AMP. Ask your Clever admin to check sharing.",
   district_not_authorized:
-    "This district has not authorized AMP in Clever. Ask your Clever administrator to connect AMP, then sign in again.",
-  clever_sync_already_running:
-    "Your roster is already syncing. This page will update when it finishes.",
+    "Your district hasn’t connected AMP in Clever yet. Ask your Clever admin.",
+  clever_sync_already_running: "Your roster is already importing.",
   clever_institution_agreement_required:
-    "An authorized district administrator must accept the student data agreement before this roster can sync.",
-  confirm_email:
-    "Confirm your AMP email address before submitting a connection request.",
+    "A district admin accepts the student data agreement first.",
+  confirm_email: "Confirm your AMP email address first.",
   request_origin_invalid: "Open AMP in a new tab and try again.",
 };
 export function connectionError(code: string | null | undefined) {
   return code
-    ? (messages[code] ??
-        "The roster did not finish syncing. Retry, or contact support@corpora.inc if it happens again.")
+    ? (messages[code] ?? "The roster didn’t finish importing. Try again.")
     : "";
 }
 /** An onboarding proof is deliberately isolated from ordinary app auth. A
@@ -103,7 +96,7 @@ async function connectionCall<T>(
   )
     throw new AppError(
       "permission",
-      "Sign in with Clever again to open your district and continue setup.",
+      "Sign in with Clever again to continue.",
       false,
     );
   let response: Response;
@@ -143,8 +136,8 @@ async function connectionCall<T>(
             : "validation",
       messages[code] ??
         (response.status >= 500
-          ? "The connection service is unavailable. Try again in a moment."
-          : "The request did not go through. Check the details and try again."),
+          ? "Clever setup is unavailable. Try again in a moment."
+          : "That didn’t go through. Try again."),
       response.status >= 500,
       response.headers.get("x-request-id"),
       code,
@@ -155,7 +148,7 @@ async function connectionCall<T>(
   if (!parsed.success)
     throw new AppError(
       "contract",
-      "The service returned incomplete connection details. Try again.",
+      "Clever setup didn’t load. Try again.",
       true,
     );
   return parsed.data;

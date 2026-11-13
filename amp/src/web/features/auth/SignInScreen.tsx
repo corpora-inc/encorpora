@@ -8,7 +8,7 @@ import {
 } from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
-import { Button } from "../../ui/Button";
+import { Button, buttonClass } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { authConfigOptions } from "../../lib/query";
@@ -152,7 +152,7 @@ export function SignInScreen() {
     invalidReset || params.get("error") === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
       : params.get("error") === "clever_sign_in_failed"
-        ? "Clever sign-in did not finish. Try Clever again. If your school has not connected AMP yet, you can sign in to AMP and set up your class directly."
+        ? "Clever sign-in didn’t finish."
         : params.get("error") === "link_failed"
           ? "That login could not be linked. Sign in again, then try linking it from Security."
           : params.get("error") && isProvider(errorProvider)
@@ -658,6 +658,17 @@ export function SignInScreen() {
           takeFocus
           onDismiss={() => setError("")}
         />
+        {/* A Clever sign-in that didn't finish: the way to try it again. */}
+        {accounts &&
+          config.clever &&
+          params.get("error") === "clever_sign_in_failed" && (
+            <a
+              href="/api/v1/school/sso/clever/start"
+              className={buttonClass("primary")}
+            >
+              Sign in with Clever
+            </a>
+          )}
         {showProviders && (
           <ProviderButtons
             providers={primaryProviders}
