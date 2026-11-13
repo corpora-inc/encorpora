@@ -430,61 +430,70 @@ async function journey(
   await go(rowan, classUrl);
   await todayTitle(rowan);
 
-  // 4. Maya's progress, then her own practice.
-  const toMaya = await openSwitcher(rowan, "Fern’s class");
-  const places = await toMaya.getByRole("menuitem").allInnerTexts();
+  // 4. Maya's progress, then her own practice. The switcher holds places,
+  // never a child; a child is reached from the class, opening as a layer
+  // over its Map (docs/design/ia.md).
+  const switcher = await openSwitcher(rowan, "Fern’s class");
+  const places = await switcher.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the class, Maya and her own practice`,
+    `${label} the switcher lists the class and Add a place, no child`,
     places.some((item) => item.includes("Fern’s class")) &&
-      places.some((item) => /^Maya/.test(item)) &&
-      places.some((item) => /Start my own practice/.test(item)),
+      !places.some((item) => /^Maya/.test(item)) &&
+      places.some(
+        (item) => /Add a place/.test(item) && /Your own practice/.test(item),
+      ),
     places,
   );
   await shot(rowan, "switcher", width, theme, engine);
-  await toMaya
-    .getByRole("menuitem")
-    .filter({ has: rowan.locator(`[data-place="learner:${maya}"]`) })
+  await rowan.keyboard.press("Escape");
+  await switcher.waitFor({ state: "detached" });
+  if (await rowan.getByRole("dialog").count()) {
+    await rowan.keyboard.press("Escape");
+    await rowan.getByRole("dialog").waitFor({ state: "detached" });
+  }
+  const mapUrl = classUrl.replace(/\/today$/, "/map");
+  await go(rowan, mapUrl);
+  await rowan
+    .locator(`[data-map-student]`)
+    .filter({ hasText: "Maya" })
+    .first()
     .click();
-  await rowan.waitForURL(/\/overview$/);
-  await heading(rowan, "Maya");
-  await rowan.getByRole("button", { name: "Let Maya practice here" }).waitFor();
+  await rowan.waitForURL((at) =>
+    (at.searchParams.get("open") ?? "").startsWith("student:"),
+  );
+  const record = rowan.getByRole("dialog", { name: "Maya" });
+  await record.locator("[data-map-student-record]").waitFor();
+  check(
+    `${label} Maya's record opens over the class map`,
+    new URL(rowan.url()).pathname === new URL(mapUrl).pathname,
+    rowan.url(),
+  );
   check(
     `${label} the family's decisions aren't offered`,
-    (await rowan.getByRole("button", { name: "Change birth year" }).count()) ===
-      0,
+    (await record
+      .getByRole("button", {
+        name: /Change birth year|Move to another school|Share with family/,
+      })
+      .count()) === 0,
   );
-  await measured(rowan, `${label} child overview`);
+  await measured(rowan, `${label} child record`);
   await shot(rowan, "child-overview", width, theme, engine);
-  await rowan
-    .getByRole("link", { name: "Pathways", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
-  await rowan.waitForURL(/\/pathways/);
-  await heading(rowan, "Pathways");
-  // Maya's record: her name in the learner picker, the record's line loaded.
-  await rowan
-    .locator(".pathways-learner")
-    .getByText("Maya")
-    .waitFor({ state: "attached" });
-  await rowan
-    .getByText(/^Skills grow with independent successes/)
-    .waitFor({ state: "attached" });
-  await measured(rowan, `${label} child pathways`);
-  await shot(rowan, "child-pathways", width, theme, engine);
-  await rowan
-    .getByRole("link", { name: "Inventory", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
-  await rowan.waitForURL(/\/inventory/);
-  await settle(rowan, 600);
-  await measured(rowan, `${label} child inventory`);
-  const own = await openSwitcher(rowan, "Maya");
+  // Back closes the layer to the map it was opened over.
+  await rowan.goBack();
+  await record.waitFor({ state: "detached" });
+  check(
+    `${label} Back closes Maya's record to the map`,
+    rowan.url() === mapUrl,
+    rowan.url(),
+  );
+  const own = await openSwitcher(rowan, "Fern’s class");
   await own
     .getByRole("menuitem")
-    .filter({ has: rowan.locator('[data-place="me"]') })
+    .filter({ has: rowan.locator('[data-place="add"]') })
     .click();
+  await heading(rowan, "What brings you to AMP?");
+  await rowan.getByRole("link", { name: /^I’m learning for myself/ }).click();
+  await rowan.waitForURL(`${origin}/start/myself`);
   await heading(rowan, "What year were you born?");
   await rowan.getByRole("radio", { name: "Adult", exact: true }).click();
   await rowan.getByRole("button", { name: "Start practicing" }).click();

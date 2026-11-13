@@ -116,7 +116,9 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  min-width: 0;
+  /* A short name ("Ana") is still a 44 px target of its own; a long one
+     still wraps. */
+  min-width: 44px;
   border-radius: var(--radius-small);
   color: inherit;
   font-size: var(--text-table);

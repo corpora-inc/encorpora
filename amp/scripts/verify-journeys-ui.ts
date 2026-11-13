@@ -545,7 +545,10 @@ async function parentJourney(
     ["Child 2", "2018"],
   ] as const) {
     await page.getByRole("button", { name: `Birth year, ${child}` }).click();
-    await page.getByRole("option", { name: year, exact: true }).click();
+    await page
+      .getByRole("dialog", { name: `Birth year, ${child}` })
+      .getByRole("radio", { name: year, exact: true })
+      .click();
   }
   // One child named by the parent, one left blank ("Child 1").
   await page.getByLabel("Name, Child 2").fill("Sam");
@@ -607,10 +610,14 @@ async function parentJourney(
   // The device comes back to the parent, on Today, with both children.
   await page.waitForURL(CLASS_TODAY);
   await todayTitle(page);
-  await page.getByText("99 free problems left", { exact: true }).waitFor();
   await page
     .getByRole("button", { name: `Let ${moon.name} practice here` })
     .waitFor();
+  // Today speaks of free problems only once few are left (FamilyToday).
+  check(
+    `${label} a nearly full allowance is no task on Today`,
+    (await page.getByText(/free problems? left/).count()) === 0,
+  );
   check(
     `${label} the class code for a child's own device`,
     (await page
@@ -620,6 +627,20 @@ async function parentJourney(
   );
   await measured(page, `${label} today`);
   await shot(page, 1, "today", width, theme);
+  // The count itself is each child's line in Account → Billing.
+  await page.goto(`${origin}/family/access`);
+  const holds = page.getByRole("list", { name: "What each learner holds" });
+  await holds
+    .getByText(/free problems/)
+    .first()
+    .waitFor();
+  check(
+    `${label} the problem done here counts against ${fox.name}'s allowance`,
+    (await holds.locator("li", { hasText: fox.name }).innerText()).includes(
+      "99 of 100 free problems left",
+    ),
+    await holds.innerText(),
+  );
 
   // Moon joins on a device of their own: class code, then pictures.
   const own = await newContext(browser, width, theme);
@@ -745,6 +766,9 @@ async function parentJourney(
   // Family: the parent renames a child in place and adds another, with no
   // consent step for either name.
   await page.goto(`${origin}/family/learners`);
+  // Learners lists each child as a row; a row opens its settings.
+  const rowan = page.locator(`[data-learner-row="${fox.id}"]`);
+  await rowan.click();
   await page.getByRole("button", { name: "Edit name", exact: true }).click();
   // The field's reason sits inside its label, so match the name's start.
   const rename = page.getByRole("textbox", { name: /^Name/ });
@@ -755,36 +779,35 @@ async function parentJourney(
   await shot(page, 1, "family-rename", width, theme);
   await rename.fill("Ro");
   await page.getByRole("button", { name: "Save name" }).click();
-  await page.getByRole("heading", { name: "Ro", exact: true }).waitFor();
-  await page.goto(`${origin}/family/learners/new`);
-  await page.getByText("You’re adding your own children").waitFor();
-  await measured(page, `${label} add learner`);
-  await shot(page, 1, "family-add", width, theme);
-
-  // The class's Settings adds a child the family way, never the school form,
-  // and the child is on Today and the map at once.
+  await rowan.getByText("Ro", { exact: true }).waitFor();
+  // A family adds a child in Account → Learners (a family class's People
+  // sends "Add a child" there): a name and a birth year, never the school
+  // form; the child is on Today and the map at once.
   const place = await classOf(account);
-  await page.goto(
-    `${origin}/school/${place.org_id}/classes/${place.class_id}/settings`,
-  );
-  await page.getByRole("button", { name: "Add a child", exact: true }).click();
-  const sheet = page.getByRole("dialog", { name: "Add a child" });
-  await sheet.waitFor();
+  await page.goto(`${origin}/family/learners/new`);
+  const adding = page.locator("#family-add-learner");
+  await adding.getByRole("heading", { name: "Add a child" }).waitFor();
   check(
     `${label} no school roster fields in a family`,
-    (await sheet.getByText(/Last name|Grade/).count()) === 0,
+    (await adding.getByText(/Last name|Grade/).count()) === 0,
   );
-  await sheet.getByRole("textbox", { name: /^Name/ }).fill("Ivy");
-  await sheet.getByRole("button", { name: "Birth year" }).click();
-  await page.getByRole("option", { name: "2019", exact: true }).click();
-  await measured(page, `${label} add a child`);
-  await shot(page, 1, "settings-add-child", width, theme);
-  await sheet.getByRole("button", { name: "Add child" }).click();
-  await sheet.getByText("Ivy is in your class.").waitFor();
-  await page.keyboard.press("Escape");
-  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/today`);
+  await adding.getByRole("textbox", { name: "Name", exact: true }).fill("Ivy");
+  await adding.getByRole("button", { name: "Birth year", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("radio", { name: "2019", exact: true })
+    .click();
+  await measured(page, `${label} add learner`);
+  await shot(page, 1, "family-add", width, theme);
+  await adding.getByRole("button", { name: "Add", exact: true }).click();
+  await page.getByText("Ivy added.").waitFor();
+  await page.goto(
+    `${origin}/school/${place.org_id}/classes/${place.class_id}/today`,
+  );
   await page.getByRole("button", { name: "Let Ivy practice here" }).waitFor();
-  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/map`);
+  await page.goto(
+    `${origin}/school/${place.org_id}/classes/${place.class_id}/map`,
+  );
   check(
     `${label} the new child is on the map`,
     await page
@@ -827,7 +850,8 @@ async function adultJourney(
     ).rows[0]?.starting_band === "middle-school",
   );
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
+  // Their own record, titled "Where you are", never by their name.
+  await heading(page, "Where you are");
   await page.getByText("100 free problems left", { exact: true }).waitFor();
   await measured(page, `${label} record`);
   await shot(page, 2, "me", width, theme);
@@ -837,11 +861,19 @@ async function adultJourney(
       [account],
     )
   ).rows[0].id as string;
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
+  // The record's one Practice: its own start before any answer (day 0),
+  // the bar's after.
+  const start = page
+    .getByRole("link", { name: "Start practicing", exact: true })
+    .or(page.getByRole("link", { name: "Practice", exact: true }))
+    .filter({ visible: true });
+  await start.first().waitFor();
+  check(
+    `${label} one Practice on the record`,
+    (await start.count()) === 1,
+    await start.count(),
+  );
+  await start.first().click();
   await practicing(page);
   await freeUsed(learnerId, 99);
   await skipOne(page);
@@ -886,22 +918,21 @@ async function teacherJourney(
   const label = `${engine} ${width} ${theme} teacher`;
   const context = await newContext(browser, width, theme);
   const page = await opened(context, label);
-  const { account } = await signUp(page, "Dana Fixture");
+  await signUp(page, "Dana Fixture");
   await page.getByRole("button", { name: /^I’m a teacher/ }).click();
   await page.waitForURL(CLASS_TODAY);
   await todayTitle(page);
+  // The zone's shared demo school (#2214), the same for every teacher.
+  const demoOrg = new URL(page.url()).pathname.split("/")[2];
   check(
-    `${label} the demo is theirs`,
-    (
-      await db.query(
-        "SELECT count(*)::int AS n FROM amp_orgs WHERE demo AND created_by=$1",
-        [account],
-      )
-    ).rows[0].n === 1,
+    `${label} the class is a demo's`,
+    (await db.query("SELECT demo FROM amp_orgs WHERE id=$1", [demoOrg])).rows[0]
+      ?.demo === true,
   );
   const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
-  // Alive: made-up students’ work, marked Demo, with the class code and
-  // Start class on Today, and the bar’s one action to the real class.
+  // Alive: made-up students’ work, marked Demo, with the class code on
+  // Today, and the bar’s one action to the real class (no Start class in a
+  // demo: AppShell).
   await page
     .getByText(/Noor|Diego|Lena/)
     .first()
@@ -914,7 +945,11 @@ async function teacherJourney(
       .count()) >= 1,
   );
   await page.locator("[data-class-code]").waitFor();
-  await page.getByRole("link", { name: "Start class" }).waitFor();
+  await page.locator("[data-demo-action]").filter({ visible: true }).waitFor();
+  check(
+    `${label} the bar's one action`,
+    (await page.getByRole("link", { name: "Start class" }).count()) === 0,
+  );
   await measured(page, `${label} demo today`);
   await shot(page, 3, "demo-today", width, theme);
 
@@ -976,7 +1011,10 @@ async function tutorJourney(
     await page
       .getByRole("button", { name: `Birth year, Student ${index}` })
       .click();
-    await page.getByRole("option", { name: year, exact: true }).click();
+    await page
+      .getByRole("dialog", { name: `Birth year, Student ${index}` })
+      .getByRole("radio", { name: year, exact: true })
+      .click();
   }
   await page.getByLabel("Nickname or initials, Student 1").fill("KJ");
   await measured(page, `${label} students`);
@@ -1002,6 +1040,10 @@ async function tutorJourney(
     )
   ).rows.map((row) => row.name);
   check(`${label} three numbered students`, names.length === 3, names);
+  // A tutor's students are on the class's People tab (the roster's name in
+  // a family org: docs/design/ia.md).
+  await page.goto(page.url().replace(/\/today$/, "/roster"));
+  await heading(page, "People");
   const others = page.getByRole("region", { name: "From other families" });
   for (const name of names)
     await others.getByText(name, { exact: true }).waitFor();
@@ -1064,7 +1106,7 @@ async function tutorJourney(
 
   last.page = page;
   await reloaded(page);
-  await heading(page, "Students");
+  await heading(page, "People");
   const ana = others.locator("li", { hasText: "Ana" });
   await ana.waitFor();
   check(
@@ -1096,7 +1138,8 @@ async function schoolJourney(
   await signUp(page, "Ruth Fixture");
   await page.getByRole("link", { name: /^I run a school/ }).click();
   await page.waitForURL(/\/start\/school$/);
-  await heading(page, "AMP for your school", 2);
+  // The school's step is titled like every step (setup/StepFrame's h1).
+  await heading(page, "AMP for your school");
   await page.getByText("objectives mapped to Common Core standards").waitFor();
   await measured(page, `${label} pitch`);
   await shot(page, 5, "pitch", width, theme);
@@ -1179,24 +1222,22 @@ async function returningJourney(
   // Adding an adult in Family asks once whether it is them: their own
   // practice is their own learner.
   await back.goto(`${origin}/family/learners`);
+  await back.getByRole("button", { name: "Add a child", exact: true }).click();
+  const add = back.locator("#family-add-learner");
+  await add.getByLabel("Name", { exact: true }).fill("Sam");
+  await add.getByRole("button", { name: "Birth year", exact: true }).click();
   await back
-    .getByRole("button", { name: "Add learner", exact: true })
-    .filter({ visible: true })
-    .first()
+    .getByRole("dialog", { name: "Birth year" })
+    .getByRole("radio", { name: "Adult", exact: true })
     .click();
-  await back.getByLabel("Name", { exact: true }).fill("Sam");
-  await back.getByRole("button", { name: "Birth year" }).click();
-  await back.getByRole("option", { name: "Adult", exact: true }).click();
-  await back
-    .locator("form.family-add-learner")
-    .getByRole("button", { name: "Add learner", exact: true })
-    .click();
+  await add.getByRole("button", { name: "Add", exact: true }).click();
   const askSelf = back.getByRole("dialog", { name: "Is this you?" });
   await askSelf.waitFor();
   await shot(back, 6, "is-this-you", width, theme);
   await askSelf.getByRole("button", { name: "Yes, it’s me" }).click();
   await back.waitForURL(/\/me$/);
-  await heading(back, "Sam Fixture");
+  // Their own record, titled "Where you are", never by their name.
+  await heading(back, "Where you are");
   check(
     `${label} their own learner, not a family one`,
     (
@@ -1267,9 +1308,20 @@ async function journey7(
   await page.waitForURL(/\/start$/);
   await heading(page, "What brings you to AMP?");
   await page.getByRole("link", { name: /I’m a parent/ }).click();
-  await page.getByRole("button", { name: "Birth year, your child" }).click();
-  await page.getByRole("option").first().click();
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/start\/parent$/);
+  await page.getByRole("button", { name: "Birth year, Child 1" }).click();
+  await page
+    .getByRole("dialog", { name: "Birth year, Child 1" })
+    .getByRole("radio")
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/practice$/);
+  await page.getByRole("link", { name: "Next", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/second-parent$/);
+  await page.getByRole("link", { name: "Later", exact: true }).click();
+  await page.waitForURL(/\/start\/parent\/ready$/);
+  await page.getByRole("link", { name: "Go to Today" }).click();
   await page.waitForURL(CLASS_TODAY);
   await visit(page, `${origin}/try/map`);
   await page.waitForURL(CLASS_TODAY);

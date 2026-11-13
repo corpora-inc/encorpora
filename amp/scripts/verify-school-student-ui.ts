@@ -189,6 +189,10 @@ async function open(
   await page.goto(`${origin}${options.path ?? "/"}`);
   return { page, requests, close: () => context.close() };
 }
+/** The student's Overview has its level: their home. A measured learner's
+ * one Practice is the bar's (Home.tsx), so the level is the ready mark. */
+const overview = (page: Page) =>
+  page.locator('.frontier-map[aria-busy="false"]').waitFor();
 const askTeacher = (page: Page) =>
   page.getByRole("heading", { name: "Ask your teacher about your seat." });
 const drawer = async (page: Page) =>
@@ -226,7 +230,7 @@ try {
         path: "/overview",
       });
       try {
-        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        await overview(page);
         await drawer(page);
         const label = page
           .locator('[aria-label="Where you are"] strong')
@@ -265,7 +269,7 @@ try {
         path: "/overview",
       });
       try {
-        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        await overview(page);
         const practice = page.getByRole("link", {
           name: "Practice",
           exact: true,
@@ -371,10 +375,14 @@ try {
   {
     // A seated student's home: the setting decides the grade numbers.
     const { page, close } = await open(fresh({ levels: "hidden" }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await overview(page);
     assert.equal(await page.getByText("Change birth year").count(), 0);
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
+    await page.getByRole("link", { name: "Progress", exact: true }).waitFor();
+    // Grade numbers are the drawer's setting (docs/design/ia.md); the school
+    // decided, so a student has none.
+    assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
     await page.waitForURL(`${origin}/overview`);
     assert.equal(await page.getByTestId("level-readout").count(), 0);
@@ -382,21 +390,26 @@ try {
   }
   {
     const { page, close } = await open(fresh({ levels: "shown" }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await overview(page);
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
+    await page.getByRole("link", { name: "Progress", exact: true }).waitFor();
+    assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
     await page.waitForURL(`${origin}/overview`);
     await page.getByTestId("level-readout").waitFor();
     await close();
   }
   {
+    // The school left it to the student: the drawer's setting.
     const { page, close } = await open(fresh({ levels: "choice" }));
+    await overview(page);
+    assert.equal(await page.getByTestId("level-readout").count(), 0);
+    await drawer(page);
     const toggle = page.getByLabel("Show grade numbers");
     await toggle.first().waitFor();
     assert.equal(await toggle.first().isChecked(), false);
     await toggle.first().check();
-    await drawer(page);
     await page.getByRole("link", { name: "Progress", exact: true }).click();
     await page.waitForURL(`${origin}/overview`);
     await page.getByTestId("level-readout").waitFor();
@@ -405,7 +418,7 @@ try {
   {
     // A student with no grade on file still reaches practice; no prompt opens.
     const { page, close } = await open(fresh({ birthYear: null }));
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await overview(page);
     assert.equal(await page.getByLabel(/birth year/i).count(), 0);
     await close();
   }
@@ -421,11 +434,29 @@ try {
     `/learners/${learnerId}/workbooks`,
     "/profile/birth-year",
   ]) {
-    // Family and purchase screens aren't a student's, even by direct link.
+    // Family and purchase screens aren't a student's, even by direct link:
+    // those open practice, their one place (LegacyApp); the rest of these
+    // addresses settle on their Overview.
     const { page, requests, close } = await open(fresh(), { path });
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    const practice = ["/family/learners", "/purchase/choose", "/consent"];
+    if (practice.includes(path)) {
+      await page.waitForURL(`${origin}/practice`);
+      // Practice asks for the student's own problems: their screen, loaded.
+      for (let i = 0; i < 100; i++) {
+        if (requests.some((request) => request.endsWith("/batches"))) break;
+        await page.waitForTimeout(100);
+      }
+      assert.ok(
+        requests.some((request) => request.endsWith("/batches")),
+        `${path}: practice loads the student's problems`,
+      );
+    } else await overview(page);
     if (path !== "/profile/birth-year")
-      assert.equal(new URL(page.url()).pathname, "/overview", path);
+      assert.equal(
+        new URL(page.url()).pathname,
+        practice.includes(path) ? "/practice" : "/overview",
+        path,
+      );
     assert.equal(await page.getByLabel(/birth year/i).count(), 0, path);
     noParentCalls(requests);
     await close();
@@ -449,7 +480,7 @@ try {
   {
     // Signing out ends only the student's sign-in, and goes to /join.
     const { page, requests, close } = await open(fresh());
-    await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+    await overview(page);
     await drawer(page);
     await page.getByRole("button", { name: "Sign out" }).click();
     await page.waitForURL("**/join");

@@ -252,6 +252,17 @@ for (const [index, [given, family, points]] of NAMES.entries()) {
   });
   roster.push(student);
 }
+// A student's term growth counts from the day they joined as a student
+// (schools/standings.ts, termStartSql): these students have been in the
+// class all term, so their history counts as the teachers' does.
+await db.query(
+  "UPDATE amp_org_roles SET begin_on=$2 WHERE org_id=$1 AND role='student'",
+  [school.id, day(365)],
+);
+await db.query(
+  "UPDATE amp_enrollments SET begin_on=$2 WHERE class_id=$1 AND role='student'",
+  [klass.id, day(365)],
+);
 
 const staff = async (
   account: string,
@@ -617,7 +628,9 @@ async function sweep(
   try {
     for (const [name, leaf, title, ready] of [
       ["map", "map", "Class map", `${NAMES[0]![0]} ${NAMES[0]![1]}`],
-      ["today", "today", /^Good /, `${NAMES[0]![0]} ${NAMES[0]![1]}`],
+      // A class's Today is titled by the class (docs/design/ia.md); it names
+      // a student only when one needs the teacher, so its week is the mark.
+      ["today", "today", "Grade 5 Math", `${NAMES.length} of ${NAMES.length}`],
       ["experience", "experience", "Student experience", "Show me in my class"],
     ] as const) {
       await teacher.page.goto(classUrl(leaf));

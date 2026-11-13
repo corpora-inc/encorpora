@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
 import { sessionOptions } from "../../lib/query";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -75,7 +75,9 @@ export function AllowancePause({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
   const words = pauseWords(kind, viewer, learner?.name ?? "");
-  const headingId = `pause-${kind}-${learner?.id ?? viewer}`;
+  // Unique per showing: a workbook day's sheet shows the pause over its
+  // history page, which shows it too, and each section names itself.
+  const headingId = `pause-${kind}-${useId()}`;
   const Heading = compact ? "h2" : "h1";
   const continued = useRef(false);
   // One record per showing. The second frame cancels the first, so strict

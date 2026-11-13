@@ -619,6 +619,37 @@ const starterStep = createRoute({
   getParentRoute: () => root,
   path: "/start/$choice/$step",
   beforeLoad: beforeStarter,
+  // Each step paints once with what it shows: the class code for how the
+  // children join, the invitation for a second parent. A refresh then never
+  // draws a wait that resizes to the step's own content.
+  loader: async ({ params }) => {
+    const { step } = params as { step: string };
+    const session = queryClient.getQueryData(sessionOptions.queryKey);
+    if (!session) return;
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch(() => null);
+    const place = me?.signedIn ? me.familyClass : null;
+    const ahead = (what: string) => (error: unknown) =>
+      console.warn(`${what} didn’t load ahead`, error);
+    if (place && (step === "practice" || step === "join"))
+      await import("../features/school/classes/api")
+        .then(({ presenceOptions }) =>
+          queryClient.ensureQueryData(
+            presenceOptions(session, {
+              org: place.orgId,
+              class: place.classId,
+            }),
+          ),
+        )
+        .catch(ahead("The class code"));
+    if (step === "second-parent")
+      await import("../features/second-parent/api")
+        .then(({ secondParentOptions }) =>
+          queryClient.ensureQueryData(secondParentOptions(session)),
+        )
+        .catch(ahead("The second parent"));
+  },
   component: lazyRouteComponent(
     () => import("../features/onboarding/Starter"),
     "StarterStep",

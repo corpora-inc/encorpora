@@ -48,6 +48,7 @@ import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { todayTitle } from "./today-title";
+import { choose } from "./ui-controls";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -317,6 +318,12 @@ async function journey(
     (await name.inputValue()) === "",
   );
   await name.fill("Ana");
+  // A child new to the class: the parent gives the birth year that sets
+  // where Ana starts (family/approvals.ts, asksBirthYear).
+  await choose(
+    parent.getByRole("button", { name: "Your child’s birth year" }),
+    "2016",
+  );
   await measured(parent, `${label} approve`);
   await shot(parent, "approve", width, theme);
   await parent

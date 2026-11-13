@@ -425,6 +425,12 @@ export function RosterScreen() {
                         : "Not signed in yet"}
                     </span>
                   </span>
+                  {/* A demo's student view, on a phone too. */}
+                  {demo && canManage && (
+                    <span className={styles.cardPractice}>
+                      <PracticeAs student={row} />
+                    </span>
+                  )}
                 </div>
               )}
             />

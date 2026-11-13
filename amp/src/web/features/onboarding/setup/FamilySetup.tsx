@@ -590,6 +590,9 @@ function JoinStep({ session, me, kind, index }: StepProps) {
   const code = presence.data?.class.joinCode;
   const first = me.learners[0]?.name;
   const parent = kind === "parent";
+  // The next step's invitation, read now, so that step opens on its form
+  // instead of a wait that resizes to it.
+  useQuery({ ...secondParentOptions(session), enabled: parent });
   return (
     <Frame
       kind={kind}
@@ -691,7 +694,7 @@ function SecondParentStep({ session, kind, index }: StepProps) {
               type="submit"
               form="setup-second-parent"
               aria-busy={busy || undefined}
-              disabled={busy}
+              disabled={busy || current.isPending}
             >
               Send invitation
             </Button>
@@ -699,9 +702,9 @@ function SecondParentStep({ session, kind, index }: StepProps) {
         )
       }
     >
-      {current.isPending ? (
-        <div className={styles.loading} aria-busy="true" />
-      ) : invited ? (
+      {/* While the invitation is read, the form itself waits, disabled:
+          the step's usual answer, at its own size, so nothing moves. */}
+      {invited ? (
         <p className={styles.done}>
           {invited.status === "active"
             ? `${invited.name ?? "They"} joined your family.`
@@ -711,6 +714,7 @@ function SecondParentStep({ session, kind, index }: StepProps) {
         <form
           id="setup-second-parent"
           className={styles.form}
+          aria-busy={current.isPending || undefined}
           noValidate
           onSubmit={(event) => {
             event.preventDefault();
@@ -723,6 +727,7 @@ function SecondParentStep({ session, kind, index }: StepProps) {
             autoComplete="off"
             value={email}
             maxLength={254}
+            disabled={current.isPending}
             error={problem}
             onChange={(event) => {
               setEmail(event.target.value);
