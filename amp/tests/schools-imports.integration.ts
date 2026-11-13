@@ -86,6 +86,40 @@ test(
         )
       ).rows[0].n;
 
+    await t.test(
+      "valid staff CSV key cannot claim a student's matching name",
+      async () => {
+        const org = await school("Role collision school");
+        await apply(
+          org,
+          csv("ID,Name,Class\nnoor@example.com,Noor Haddad,Math\n"),
+        );
+        const staff = csv(
+          "Name,Role,Email\nNoor Haddad,teacher,noor@example.com\n",
+        );
+        assert.equal((await plan(org, staff))[0]!.reason, "ambiguous_match");
+        assert.equal((await apply(org, staff))[0]!.status, "held");
+        assert.equal(await count(org), 1);
+      },
+    );
+    await t.test(
+      "valid distinct CSV identities cannot reuse a roster line",
+      async () => {
+        const org = await school("Duplicate lines school");
+        const rows = csv(
+          "ID,Name,Class\nA,Ana Ruiz,Math\nB,Noor Haddad,Math\n",
+        );
+        rows[1]!.line = rows[0]!.line;
+        await assert.rejects(plan(org, rows), {
+          code: "duplicate_roster_line",
+        });
+        await assert.rejects(apply(org, rows), {
+          code: "duplicate_roster_line",
+        });
+        assert.equal(await count(org), 0);
+      },
+    );
+
     await t.test("grade and row order changes keep learner IDs", async () => {
       const org = await school("Stable school");
       const first = csv(
