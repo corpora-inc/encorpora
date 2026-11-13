@@ -16,10 +16,12 @@ export function ClassPilotPanel({
   orgId,
   classId,
   students,
+  teaches,
 }: {
   orgId: string;
   classId: string;
   students: number;
+  teaches: boolean;
 }) {
   const session = currentSession();
   const state = useQuery(pilotOptions(session, classId));
@@ -36,7 +38,7 @@ export function ClassPilotPanel({
   const [copied, setCopied] = useState(false);
   const pilot = state.data;
   async function activate() {
-    if (busy || !pilot) return;
+    if (busy || !pilot || !teaches) return;
     setWorking("activate");
     setError("");
     try {
@@ -100,7 +102,19 @@ export function ClassPilotPanel({
         </Button>
       </section>
     );
-  const view = pilotPresentation(pilot, students);
+  const presentation = pilotPresentation(pilot, students);
+  const view =
+    !teaches &&
+    pilot.status === "ready" &&
+    students > 0 &&
+    (pilot.coverage?.paid ?? 0) < students
+      ? {
+          title: "Ready for your teacher",
+          detail:
+            "The class’s teacher starts the 30-day pilot when students are ready. You can prepare the roster and request seats.",
+          action: null,
+        }
+      : presentation;
   return (
     <section className={styles.panel} aria-label="Class access">
       <h2>{view.title}</h2>

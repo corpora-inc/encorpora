@@ -162,6 +162,7 @@ export function TodayScreen() {
               orgId={place.org}
               classId={place.class}
               students={data.students.length}
+              teaches={org.data?.teaches?.includes(place.class) ?? false}
             />
           )}
           {signedIn && holder && (

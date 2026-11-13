@@ -384,6 +384,7 @@ export function RosterScreen() {
               orgId={params.org}
               classId={params.class}
               students={data.students.length}
+              teaches={org?.teaches?.includes(params.class) ?? false}
             />
           )}
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
