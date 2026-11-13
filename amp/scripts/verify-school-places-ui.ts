@@ -148,6 +148,13 @@ async function heading(page: Page, name: RegExp | string) {
     throw error;
   }
 }
+/** Opening `/`, which the app sends on to a place at once: WebKit may report
+ * the first navigation as interrupted by the second, which is the point. */
+async function visit(page: Page, url: string) {
+  await page.goto(url).catch((error: unknown) => {
+    if (!/interrupted/i.test(String(error))) throw error;
+  });
+}
 const path = (page: Page) => {
   const at = new URL(page.url());
   return `${at.pathname}${at.search}`;
@@ -339,7 +346,7 @@ async function familyThenSchool(
   await shot(page, "setup-with-switcher", width, theme);
 
   // `/` keeps the family's class: a half-finished setup never captures it.
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(family.inClass);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const classPath = path(page);
@@ -385,6 +392,9 @@ async function familyThenSchool(
   check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
   await page.goForward();
   await page.waitForURL(family.inClass);
+  // Settled on the class before reloading it: WebKit can still be finishing
+  // Forward's load, which a reload would cut short.
+  await todayTitle(page);
   await page.reload();
   await page.waitForURL(family.inClass);
   check(
@@ -396,7 +406,7 @@ async function familyThenSchool(
   await heading(page, "When does your school year run?");
 
   // Having worked in setup, `/` is still the family's class.
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(family.inClass);
 
   // Setup finished: the school is a place `/` can open.
@@ -450,7 +460,7 @@ async function familyThenSchool(
   await page.keyboard.press("Escape");
   await fromSchool.waitFor({ state: "detached" });
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   check(
     `${label} / returns to the school`,
@@ -460,7 +470,7 @@ async function familyThenSchool(
   const back = await openSwitcher(page, school, true);
   await choose(page, back, family.named);
   await page.waitForURL(family.inClass);
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(family.inClass);
   check(
     `${label} / returns to the family's class`,
@@ -524,7 +534,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
     )
   ).rows[0] as { org_id: string; name: string };
   const inClass = new RegExp(`/school/${family.org_id}/classes/[^/]+/today$`);
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(inClass);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const classPath = path(page);
@@ -548,7 +558,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const schoolPath = path(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   // Last worked at the school: `/` opens it.
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   // Back to the family's class, then Back and Forward between the two.
   const back = await openSwitcher(page, school, true);
@@ -577,7 +587,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
     path(page),
   );
   // Remembered there, `/` opens it again.
-  await page.goto(`${origin}/`);
+  await visit(page, `${origin}/`);
   await page.waitForURL(inClass);
   await page.goBack();
   await page.waitForURL(inClass);

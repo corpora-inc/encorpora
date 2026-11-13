@@ -12,6 +12,7 @@ import {
   webkit,
   type Browser,
   type BrowserContext,
+  type Locator,
   type Page,
 } from "playwright";
 import { createServer } from "vite";
@@ -205,8 +206,10 @@ async function workbooksUsed(
   page: Page,
   label: string,
   action: "Continue with AMP" | "Talk to us" | null,
+  /** The layer it is read in, when one is open over a page that has it too. */
+  within: Page | Locator = page,
 ) {
-  const pause = page
+  const pause = within
     .locator('[data-allowance-pause="workbooks"]')
     .filter({ visible: true });
   await pause.first().waitFor();
@@ -240,6 +243,17 @@ async function workbooksUsed(
   );
 }
 
+/** Each learner's line in Account → Billing (BillingList's `holding`). */
+async function freeBalances(page: Page) {
+  await page.goto(`${origin}/family/access`);
+  const list = page.getByRole("list", { name: "What each learner holds" });
+  await list
+    .getByText(/free problems/)
+    .first()
+    .waitFor();
+  return list.locator("li p").allInnerTexts();
+}
+
 async function journey(
   browser: Browser,
   width: number,
@@ -264,11 +278,11 @@ async function journey(
   await page
     .getByRole("button", { name: `Let ${fox.name} practice here` })
     .waitFor();
+  // Today speaks of the free problems only once few are left (FamilyToday's
+  // FEW_FREE); the balance itself is each child's line in Account → Billing.
   check(
-    `${label} free balance visible`,
-    (await page
-      .getByText("100 free problems left", { exact: true })
-      .count()) === 2,
+    `${label} a full allowance is no task on Today`,
+    (await page.getByText(/free problems? left/).count()) === 0,
   );
   check(
     `${label} no false lack of access`,
@@ -276,6 +290,15 @@ async function journey(
   );
   await measured(page, `${label} family`);
   await shot(page, "family", width, theme);
+  check(
+    `${label} free balance visible`,
+    (await freeBalances(page)).filter((line) =>
+      line.startsWith("100 of 100 free problems left"),
+    ).length === 2,
+  );
+  await page.goto(`${origin}/`);
+  await page.waitForURL(CLASS_TODAY);
+  await todayTitle(page);
   const home = (
     await db.query(
       `SELECT f.org_id,f.class_id,c.join_code FROM amp_families f
@@ -311,7 +334,13 @@ async function journey(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL(CLASS_TODAY);
-  await page.getByText("99 free problems left", { exact: true }).waitFor();
+  await todayTitle(page);
+  check(
+    `${label} the skipped problem counts against the allowance`,
+    (await freeBalances(page)).some((line) =>
+      line.startsWith("99 of 100 free problems left"),
+    ),
+  );
   // Their first free workbook is selectable in the teacher view.
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
@@ -321,17 +350,20 @@ async function journey(
   await measured(page, `${label} workbook stack`);
   await shot(page, "workbooks", width, theme);
 
+  // The Overview's one Practice: its own start before any answer (a skip
+  // is none), the bar's once a level is measured (Home.tsx).
   await page.goto(`${origin}/overview`);
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .waitFor();
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
+  const start = page
+    .getByRole("button", { name: "Start practicing", exact: true })
+    .or(page.getByRole("link", { name: "Practice", exact: true }))
+    .filter({ visible: true });
+  await start.first().waitFor();
+  check(
+    `${label} one Practice on the Overview`,
+    (await start.count()) === 1,
+    await start.count(),
+  );
+  await start.first().click();
   await practicing(page);
   await page.goto(
     `${origin}/school/${home.org_id}/classes/${home.class_id}/workbooks`,
@@ -436,9 +468,9 @@ async function journey(
     .getByRole("link", { name: /Enter results for workbook/ })
     .first()
     .click();
-  await page
-    .getByText(`${fox.name} · Workbook results`, { exact: true })
-    .waitFor();
+  // The results page is titled by the workbook; its lede names whose it is.
+  await page.getByRole("heading", { level: 1, name: /^No\. \d+ · / }).waitFor();
+  await page.getByText(`Type ${fox.name}’s answer`, { exact: false }).waitFor();
   await page.getByRole("radio", { name: "Right", exact: true }).first().click();
   await page
     .getByRole("button", { name: "Save 1 result", exact: true })
@@ -464,14 +496,16 @@ async function journey(
   );
   // Today, with no workbook yet: the line first, and no controls that can
   // no longer make one.
+  // The day opens as a sheet over the learner's workbooks, which say so too.
   await page.goto(`${origin}/learners/${moon.id}/workbooks/${stack.today}`);
-  await page.locator('[data-allowance-pause="workbooks"]').waitFor();
+  const day = page.getByRole("dialog");
+  await day.locator('[data-allowance-pause="workbooks"]').waitFor();
   await settle(page, 600);
   check(
     `${label} exhausted day offers nothing that fails`,
     (await page.getByRole("button", { name: "Roll another" }).count()) === 0,
   );
-  await workbooksUsed(page, `${label} exhausted day`, purchase);
+  await workbooksUsed(page, `${label} exhausted day`, purchase, day);
   await measured(page, `${label} exhausted day`);
   await shot(page, "workbook-day-used", width, theme);
   await db.query(
@@ -594,12 +628,20 @@ async function adultJourney(
     learnerId,
   ]);
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
-  await page
-    .getByRole("link", { name: "Practice", exact: true })
-    .filter({ visible: true })
-    .first()
-    .click();
+  await heading(page, "Where you are");
+  // The record's one Practice: its own start before any answer (day 0),
+  // the bar's after.
+  const start = page
+    .getByRole("link", { name: "Start practicing", exact: true })
+    .or(page.getByRole("link", { name: "Practice", exact: true }))
+    .filter({ visible: true });
+  await start.first().waitFor();
+  check(
+    `${label} one Practice on the record`,
+    (await start.count()) === 1,
+    await start.count(),
+  );
+  await start.first().click();
   await practicing(page);
   await page
     .getByRole("button", { name: "Skip this problem and see its answer" })
@@ -634,7 +676,7 @@ async function adultJourney(
       JSON.stringify(["Continue with AMP"]),
   );
   await page.goto(`${origin}/me`);
-  await heading(page, "Avery Fixture");
+  await heading(page, "Where you are");
   check(
     `${label} the record shows the same pause`,
     (await page
