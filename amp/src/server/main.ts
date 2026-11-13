@@ -37,7 +37,7 @@ import {
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
 import { registerDeleteAccountRoutes } from "../account/delete-account-routes.js";
-import { randomBytes } from "node:crypto";
+import { linkSecretConfiguration } from "./link-secret.js";
 import { startDemoWarmer } from "../schools/demo/shared.js";
 import { shippedTermsProblem } from "../schools/demo/snapshot.js";
 import { registerSchoolRoutes } from "../schools/routes.js";
@@ -96,6 +96,7 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
 const accountsConfig =
   authMode === "accounts" ? accountsConfiguration(process.env) : undefined;
 const cleverConfig = cleverConfiguration(process.env, accountsConfig);
+const linkSecret = linkSecretConfiguration(process.env);
 if (accountsConfig) accountsConfig.clever = !!cleverConfig;
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   pool: serverPoolOptions,
@@ -187,9 +188,6 @@ await registerAccessGiftRoutes(app, {
   authenticate,
   development,
 });
-// Without AMP accounts there's no mail, and a restart only means sending an
-// invitation or an approval link again.
-const linkSecret = accounts?.config.secret ?? randomBytes(32).toString("hex");
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
