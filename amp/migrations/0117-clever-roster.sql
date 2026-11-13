@@ -84,3 +84,7 @@ CREATE TRIGGER amp_clever_person_tombstoned AFTER UPDATE ON amp_people
  EXECUTE FUNCTION amp_clever_scrub_person();
 CREATE TRIGGER amp_clever_person_deleted AFTER DELETE ON amp_people
  FOR EACH ROW EXECUTE FUNCTION amp_clever_scrub_person();
+
+CREATE INDEX amp_clever_bindings_run_idx ON amp_clever_bindings(last_seen_run_id);
+CREATE INDEX amp_clever_memberships_run_idx ON amp_clever_memberships(last_seen_run_id);
+CREATE INDEX amp_classes_course_idx ON amp_classes(course_id);

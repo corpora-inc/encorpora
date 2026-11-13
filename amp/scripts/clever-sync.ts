@@ -1,3 +1,4 @@
+import { runDueCleverSync } from "../src/schools/clever/worker.js";
 import { pathToFileURL } from "node:url";
 import { createDatabasePool } from "../src/server/database.js";
 import { CleverClient } from "../src/schools/clever/client.js";
@@ -53,7 +54,7 @@ export async function cleverSyncCommand(
     });
     const rows = (
       await pool.query(
-        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active' AND (NOT sync_paused OR $2::text IS NOT NULL)
+        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active' AND (NOT sync_paused OR sync_requested_at IS NOT NULL OR $2::text IS NOT NULL)
       AND ($2::text IS NULL OR id::text=$2) ORDER BY created_at,id`,
         [environment, rest[0] && rest[0] !== "all" ? rest[0] : null],
       )
@@ -65,9 +66,12 @@ export async function cleverSyncCommand(
       try {
         results.push({
           connectionId: row.id,
-          ...(await syncCleverConnection(pool, row.id, client, {
-            mode: rest[1] as SyncMode | undefined,
-          })),
+          ...((!rest[0] || rest[0] === "all") &&
+          (!rest[1] || rest[1] === "auto")
+            ? await runDueCleverSync(pool, row.id, client)
+            : await syncCleverConnection(pool, row.id, client, {
+                mode: rest[1] as SyncMode | undefined,
+              })),
         });
       } catch (error) {
         results.push({ connectionId: row.id, error: safeSyncError(error) });

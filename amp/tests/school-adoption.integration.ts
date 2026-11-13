@@ -60,8 +60,10 @@ test(
           { kind: "school", name: "School", timezone: "America/New_York" },
           agreement,
         );
-        await db!.query("UPDATE amp_orgs SET solo=true WHERE id=$1", [school.id]);
-      const district = await repo.createOrg(
+        await db!.query("UPDATE amp_orgs SET solo=true WHERE id=$1", [
+          school.id,
+        ]);
+        const district = await repo.createOrg(
           { kind: "district", name: "District", timezone: "America/Chicago" },
           agreement,
         );
@@ -263,7 +265,8 @@ test(
           await registerSchoolAdoptionRoutes(app, {
             pool: db!,
             authenticate: async () => targetAccount,
-            cleverSnapshot: async () => snapshot,
+            cleverUser: async (_connection, userId) =>
+              snapshot.users.find((u) => u.id === userId)!,
           });
           try {
             for (const path of ["review", "clever-preview", "accept"]) {
@@ -310,7 +313,8 @@ test(
               db!,
               targetAccount,
               { token: grant.token },
-              async () => snapshot,
+              async (_connection, userId) =>
+                snapshot.users.find((u) => u.id === userId)!,
             );
             const review = await app.inject({
               method: "POST",

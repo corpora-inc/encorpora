@@ -13,12 +13,12 @@ import { CleverClient } from "./clever/client.js";
 import { districtSchema, userSchema } from "./clever/model.js";
 import { bootstrapCleverAdmin } from "./clever/bootstrap.js";
 import { registerCleverConnectionIn } from "./clever/connection.js";
-import { syncCleverConnection, safeSyncError } from "./clever/sync.js";
+import { safeSyncError } from "./clever/sync.js";
 import { AGREEMENT_VERSION } from "./agreement.js";
 import { plainName, timezone, SchoolError } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { parentAddressConfirmed } from "../server/account-access.js";
-import { runDueCleverSync } from "./clever/worker.js";
+
 import { can, loadActor } from "./authz.js";
 
 export type CleverOnboardingConfig = {
@@ -131,7 +131,9 @@ export async function connectCleverInstitution(
       );
     const paused = !input.importNow && !previous?.last_sync_at;
     await db.query(
-      "UPDATE amp_clever_connections SET sync_paused=$2,sync_requested_at=CASE WHEN $2 THEN NULL ELSE now() END WHERE id=$1",
+      `UPDATE amp_clever_connections SET sync_paused=$2,
+        sync_requested_at=CASE WHEN last_sync_requested_at IS NULL OR last_sync_requested_at<=now()-interval '15 minutes' THEN now() ELSE sync_requested_at END,
+        last_sync_requested_at=CASE WHEN last_sync_requested_at IS NULL OR last_sync_requested_at<=now()-interval '15 minutes' THEN now() ELSE last_sync_requested_at END WHERE id=$1`,
       [connection.id, paused],
     );
     return {
@@ -150,6 +152,7 @@ export async function registerCleverOnboarding(
     config: CleverOnboardingConfig | null;
     client?: Client;
     worker?: boolean;
+    maintenance?: boolean;
     origin?: string;
   },
 ) {
@@ -161,37 +164,7 @@ export async function registerCleverOnboarding(
     districtId: string;
     userId: string;
   }) => resolveCleverPerson(pool, claims);
-  const jobs = new Map<string, Promise<void>>();
-  const pending = new Set<string>();
   let closing = false;
-  const kick = (id: string) => {
-    // Snapshot reconciliation holds a complete district in memory. Keep one
-    // automatic import per process; queued institutions retain their request.
-    if (closing || !client) return;
-    if (jobs.size >= 1) {
-      pending.add(id);
-      return;
-    }
-    pending.delete(id);
-    const job = runDueCleverSync(pool, id, client)
-      .catch((error) => {
-        app.log.warn(
-          { connectionId: id, code: safeSyncError(error) },
-          "Clever roster synchronization failed",
-        );
-      })
-      .finally(() => {
-        jobs.delete(id);
-        // Serve waiting institutions as soon as memory is available. Failed
-        // jobs return to the durable poll instead of retrying in a tight loop.
-        const next = pending.values().next().value;
-        if (next) {
-          pending.delete(next);
-          kick(next);
-        }
-      });
-    jobs.set(id, job);
-  };
   app.register(async (scope) => {
     scope.addHook("onRequest", async (_request, reply) => {
       reply.header("Cache-Control", "no-store");
@@ -398,7 +371,7 @@ export async function registerCleverOnboarding(
           request.body,
           client,
         );
-        if (result.status === "syncing") kick(result.connectionId);
+
         return reply.code(202).send(result);
       },
     );
@@ -415,8 +388,13 @@ export async function registerCleverOnboarding(
       ).rows[0];
       if (!connection) throw new SchoolError(404, "not_found");
       if (!config || !client) throw new SchoolError(503, "clever_unconfigured");
+      const actor = await loadActor(pool, accountId);
+      const admin = actor.roles.some(
+        (r) =>
+          r.role === "admin" && r.path[0] === connection.tenant_id && !r.family,
+      );
+      if (!admin) throw new SchoolError(403, "clever_admin_required");
       if (connection.sync_paused) {
-        const actor = await loadActor(pool, accountId);
         if (
           !actor.roles.some(
             (r) => r.orgId === connection.tenant_id && r.role === "admin",
@@ -436,17 +414,20 @@ export async function registerCleverOnboarding(
         )
           throw new SchoolError(403, "clever_district_admin_required");
       }
-      await pool.query(
-        "UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now() WHERE id=$1",
+      const queued = await pool.query(
+        `UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now(),last_sync_requested_at=now()
+         WHERE id=$1 AND (sync_paused OR last_sync_requested_at IS NULL OR last_sync_requested_at<=now()-interval '15 minutes') RETURNING id`,
         [connection.id],
       );
-      kick(connection.id);
+      if (!queued.rowCount) {
+        reply.header("Retry-After", "900");
+        throw new SchoolError(429, "clever_sync_rate_limited");
+      }
       return reply.code(202).send({ status: "syncing" });
     });
   });
-  // A durable connection/run record plus per-connection database locks makes
-  // each deployed instance safe to poll. Full snapshots run daily; opted-in
-  // Events run every five minutes. Failed runs are retried on the next poll.
+  // API maintenance never downloads a roster. The separate worker consumes
+  // durable sync requests, independently of seat and review maintenance.
   let polling = false;
   const poll = async () => {
     if (polling || closing) return;
@@ -455,14 +436,12 @@ export async function registerCleverOnboarding(
       for (const tenant of await repo.dueSeatTenants())
         await repo.reconcileSeats(tenant);
       await refreshConnectionReviews(pool);
-      if (!config) return;
-      const rows = await pool.query(
-        `SELECT id FROM amp_clever_connections WHERE environment=$1 AND status='active' AND NOT sync_paused AND
-        (sync_requested_at IS NOT NULL OR last_sync_at IS NULL OR last_sync_at<now()-CASE WHEN events_enabled THEN interval '5 minutes' ELSE interval '1 day' END)
-        ORDER BY (SELECT max(r.started_at) FROM amp_clever_sync_runs r WHERE r.connection_id=amp_clever_connections.id) ASC NULLS FIRST LIMIT 100`,
-        [config.environment],
+      await pool.query(
+        "DELETE FROM amp_provider_sessions WHERE expires_at<now()-interval '1 day'",
       );
-      for (const row of rows.rows) kick(row.id);
+      await pool.query(
+        "DELETE FROM amp_provider_oauth_flows WHERE expires_at<now()-interval '1 day'",
+      );
     } catch (error) {
       app.log.warn(
         { code: safeSyncError(error) },
@@ -474,7 +453,7 @@ export async function registerCleverOnboarding(
   };
   let pollPromise: Promise<void> | null = null;
   const timer =
-    options.worker !== false
+    options.maintenance !== false
       ? setInterval(() => {
           if (!polling && !closing) pollPromise = poll();
         }, 60_000)
@@ -484,6 +463,5 @@ export async function registerCleverOnboarding(
     closing = true;
     if (timer) clearInterval(timer);
     await pollPromise;
-    await Promise.allSettled(jobs.values());
   });
 }

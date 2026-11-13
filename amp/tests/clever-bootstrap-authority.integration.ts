@@ -199,6 +199,10 @@ test(
       );
 
       f.failSnapshot(false);
+      await db.query(
+        "UPDATE amp_clever_connections SET next_attempt_at=NULL WHERE id=$1",
+        [f.connected.connectionId],
+      );
       await runDueCleverSync(db, f.connected.connectionId, f.client);
       assert.equal(
         await f.deadline(first),
@@ -240,9 +244,9 @@ test(
         db,
         first,
         { districtId: f.connected.orgId },
-        async (connectionId) => {
+        async (connectionId, userId) => {
           assert.equal(connectionId, f.connected.connectionId);
-          return f.source;
+          return f.source.users.find((u) => u.id === userId)!;
         },
       );
       const renewed = await f.deadline(first);
@@ -261,7 +265,8 @@ test(
           db,
           first,
           { districtId: f.connected.orgId },
-          async () => f.source,
+          async (_connection, userId) =>
+            f.source.users.find((u) => u.id === userId)!,
         ),
         /adoption_current_authority_required/,
       );
@@ -278,7 +283,8 @@ test(
         db,
         first,
         { districtId: f.connected.orgId },
-        async () => f.source,
+        async (_connection, userId) =>
+          f.source.users.find((u) => u.id === userId)!,
       );
       const beforeOutage = await f.deadline(first);
       assert.equal(await f.allowed(first), true);

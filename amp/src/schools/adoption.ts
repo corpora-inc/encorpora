@@ -6,6 +6,8 @@ import { recordEvent } from "./events.js";
 import {
   validateSnapshot,
   type Snapshot,
+  type User,
+  userSchema,
   CleverSyncError,
 } from "./clever/model.js";
 import {
@@ -17,7 +19,9 @@ import { syncSsoCredentials } from "./sso-credentials.js";
 
 type Database = Pick<PoolClient, "query">;
 type Decisions = z.input<typeof decisions>;
-type Authority = { authoritySnapshots?: Snapshot[] };
+type Authority = {
+  authoritySnapshots?: Pick<Snapshot, "district" | "users">[];
+};
 type Grant = {
   id: string;
   source_account_id: string;
@@ -1010,7 +1014,7 @@ async function requireCurrentAdoptionAdmin(
   db: Database,
   accountId: string,
   districtId: string,
-  snapshots: Snapshot[],
+  snapshots: Pick<Snapshot, "district" | "users">[],
 ) {
   const roles = await adoptionAdminRoles(db, accountId, districtId);
   if (roles.some((r) => r.manual)) return;
@@ -1054,7 +1058,7 @@ export async function schoolAdoptionAuthority(
   db: Database,
   accountId: string,
   input: { token?: string; districtId?: string },
-  fetchSnapshot?: (connectionId: string) => Promise<Snapshot>,
+  fetchUser?: (connectionId: string, userId: string) => Promise<User>,
 ): Promise<Authority> {
   let districtId = input.districtId;
   if (input.token) {
@@ -1075,19 +1079,21 @@ export async function schoolAdoptionAuthority(
   if (roles.some((r) => r.manual)) return {};
   if (!roles.length)
     throw new CleverSyncError("adoption_destination_authority_required");
-  if (!fetchSnapshot)
+  if (!fetchUser)
     throw new CleverSyncError("adoption_current_authority_required");
-  const snapshots: Snapshot[] = [];
-  for (const connection of new Set(
-    roles
-      .filter((r) => r.active)
-      .map((r) => r.connection_id)
-      .filter((id): id is string => !!id),
+  const snapshots: Pick<Snapshot, "district" | "users">[] = [];
+  for (const role of roles.filter(
+    (r) => r.active && r.connection_id && r.clever_id,
   )) {
-    const district = roles.find(
-      (r) => r.connection_id === connection,
-    )!.district_id!;
-    snapshots.push(validateSnapshot(await fetchSnapshot(connection), district));
+    const user = userSchema.parse(
+      await fetchUser(role.connection_id!, role.clever_id!),
+    );
+    if (user.id !== role.clever_id || user.district !== role.district_id)
+      throw new CleverSyncError("adoption_current_authority_required");
+    snapshots.push({
+      district: { id: role.district_id!, name: "" },
+      users: [user],
+    });
   }
   await requireCurrentAdoptionAdmin(db, accountId, districtId, snapshots);
   return { authoritySnapshots: snapshots };

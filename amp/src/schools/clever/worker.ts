@@ -24,19 +24,24 @@ export async function runDueCleverSync(pool: Pool, id: string, client: Client) {
     if (!locked) return;
     const due = (
       await db.query(
-        `SELECT tenant_id,clock_timestamp()::text AS started_at FROM amp_clever_connections
-      WHERE id=$1 AND status='active' AND NOT sync_paused AND (sync_requested_at IS NOT NULL OR last_sync_at IS NULL
+        `SELECT tenant_id,sync_paused,clock_timestamp()::text AS started_at FROM amp_clever_connections
+      WHERE id=$1 AND status='active' AND (NOT sync_paused OR sync_requested_at IS NOT NULL) AND (next_attempt_at IS NULL OR next_attempt_at<=now()) AND (sync_requested_at IS NOT NULL OR last_sync_at IS NULL
        OR last_sync_at<now()-CASE WHEN events_enabled THEN interval '5 minutes' ELSE interval '1 day' END)`,
         [id],
       )
     ).rows[0];
     if (!due) return;
-    await syncCleverConnection(pool, id, client, { db });
+    const result = await syncCleverConnection(pool, id, client, {
+      db,
+      stageOnly: due.sync_paused,
+    });
     await db.query(
       "UPDATE amp_clever_connections SET sync_requested_at=NULL WHERE id=$1 AND sync_requested_at<=$2",
       [id, due.started_at],
     );
     tenantId = due.tenant_id;
+    await new SchoolRepository(pool).reconcileSeats(tenantId!);
+    return result;
   } finally {
     if (locked)
       await db.query("SELECT pg_advisory_unlock(hashtextextended($1,0))", [
@@ -44,5 +49,4 @@ export async function runDueCleverSync(pool: Pool, id: string, client: Client) {
       ]);
     db.release();
   }
-  if (tenantId) await new SchoolRepository(pool).reconcileSeats(tenantId);
 }
