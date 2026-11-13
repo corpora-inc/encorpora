@@ -1,5 +1,4 @@
-import { withArticle } from "./agreement";
-import { count, nounFor, term } from "./agreement";
+import { article, withArticle, count, nounFor, term } from "./agreement";
 import {
   choice,
   clean,
@@ -391,7 +390,7 @@ function story(r: Rng, variant: string): Item {
       })),
       answerId = bank[order.indexOf(0)]!.id;
     return {
-      prompt: `A $${fracTex(bar * 4, 4)}$-inch towel bar is centered on a $${fracTex(door * 2, 2)}$-inch door. Choose an estimate for the gap at each edge, then find the exact gap in inches.`,
+      prompt: `${article(bar * 4, true)} $${fracTex(bar * 4, 4)}$-inch towel bar is centered on ${article(door * 2)} $${fracTex(door * 2, 2)}$-inch door. Choose an estimate for the gap at each edge, then find the exact gap in inches.`,
       response: {
         kind: "structured-work",
         layout: "steps",

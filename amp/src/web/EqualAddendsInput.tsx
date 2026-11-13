@@ -1,3 +1,4 @@
+import { withArticle } from "../math/agreement";
 import { useEffect, useId, useState } from "react";
 import {
   emptyEqualAddends,
@@ -212,7 +213,7 @@ export function EqualAddendsInput({
       </div>
       <p className="equal-instruction">
         {r.mode === "given"
-          ? `Tap a ${direction === "rows" ? "row" : "column"} to add its count.`
+          ? `Tap ${withArticle(direction === "rows" ? "row" : "column")} to add its count.`
           : "Rows go across. Columns go down."}
       </p>
       <NumberSentence

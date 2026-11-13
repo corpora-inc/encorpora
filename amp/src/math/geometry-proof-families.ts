@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { TemplateMetadata } from "./contracts";
 import type { Scene } from "./scene/spec";
@@ -1678,8 +1679,7 @@ const inscribedFamily: Family = {
           "Draw a diameter, construct the perpendicular diameter, and join its four endpoints in order.",
         ],
       } as const;
-      const article = (name: string) =>
-        `${/^[aeiou]/.test(name) ? "an" : "a"} ${name}`;
+      const article = withArticle;
       const shape = pick(r, ["hexagon", "triangle", "square"] as const);
       const others = (["hexagon", "triangle", "square"] as const).filter(
         (s) => s !== shape,

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { count } from "./agreement";
+import { count, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { random, shuffle, type Random } from "./distribution-practice";
 import {
@@ -494,7 +494,6 @@ type Pose = {
 type Drawn = { kind: Kind; size: number; pose: Pose; filled: boolean };
 const pick = <T>(r: Random, items: readonly T[]) =>
   items[r(0, items.length - 1)]!;
-const article = (word: string) => (/^[aeiou]/i.test(word) ? "an" : "a");
 
 /** A pose; `odd` asks for a non-prototypical one: a square turned at least
  * 15°, a triangle that does not point up, a tall rectangle, a hexagon that

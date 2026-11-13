@@ -1,4 +1,4 @@
-import { withArticle } from "./agreement";
+import { withArticle, article } from "./agreement";
 import type { GeneratedProblem } from "./contracts";
 import { dispatch, pick } from "./chain-kit";
 import {
@@ -22,7 +22,7 @@ import {
   st,
 } from "./select-kit";
 import type { Element } from "./scene/spec";
-import { defineAxis, type Random } from "./variation/axes";
+import { defineAxis, generatingVersion, type Random } from "./variation/axes";
 import type { Statement } from "./variation/statement-set";
 import { shapeStory, spreadPick } from "./story-kit/geometry.js";
 
@@ -231,9 +231,14 @@ export const shapeRelationTemplate = {
     description:
       "Select every drawn polygon that has a pair of parallel sides, a pair of perpendicular sides, an obtuse angle, or no right angle, among triangles, quadrilaterals and larger polygons turned in any direction.",
   }),
-  version: 2,
+  version: 3,
   reprintsFrom: 1,
 };
+
+/** Versions 1–2 printed "a L shape" in explanations. Preserve stored
+ * reprints; version 3 changes only that article, never the random draws. */
+const shapeRelationArticle = (name: string) =>
+  name === "L shape" && (generatingVersion() ?? 3) < 3 ? "a" : article(name);
 
 /** Legacy values keep the parallel/perpendicular surface and its old prompt. */
 export const shapeSidesAxes = {
@@ -345,11 +350,11 @@ function shapeByAngle(
         ok,
         property === "obtuse"
           ? ok
-            ? `Shape $${L[i]}$ is ${article(name)} ${name} with at least one obtuse angle.`
-            : `Shape $${L[i]}$ is ${article(name)} ${name}; it has no obtuse angle.`
+            ? `Shape $${L[i]}$ is ${shapeRelationArticle(name)} ${name} with at least one obtuse angle.`
+            : `Shape $${L[i]}$ is ${shapeRelationArticle(name)} ${name}; it has no obtuse angle.`
           : ok
-            ? `Shape $${L[i]}$ is ${article(name)} ${name} with no right angle.`
-            : `Shape $${L[i]}$ is ${article(name)} ${name}; it has a right angle.`,
+            ? `Shape $${L[i]}$ is ${shapeRelationArticle(name)} ${name} with no right angle.`
+            : `Shape $${L[i]}$ is ${shapeRelationArticle(name)} ${name}; it has a right angle.`,
       ),
     );
   });
@@ -445,8 +450,8 @@ function shapeRelation(r: Random, axes: Record<string, string> = {}) {
         shapeWord(L[i]!),
         holds,
         holds
-          ? `Shape $${L[i]}$ is ${article(def.name)} ${def.name} with a pair of ${word}.`
-          : `Shape $${L[i]}$ is ${article(def.name)} ${def.name}; it has no pair of ${word}.`,
+          ? `Shape $${L[i]}$ is ${shapeRelationArticle(def.name)} ${def.name} with a pair of ${word}.`
+          : `Shape $${L[i]}$ is ${shapeRelationArticle(def.name)} ${def.name}; it has no pair of ${word}.`,
       ),
     );
   });
@@ -1470,7 +1475,6 @@ function solidFigures(r: Random) {
   });
 }
 const cap = (w: string) => w[0]!.toUpperCase() + w.slice(1);
-const article = (word: string) => (/^[aeiou]/i.test(word) ? "an" : "a");
 
 /* ------------------------------------------------------ stem-and-leaf plots */
 

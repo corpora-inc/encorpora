@@ -1,3 +1,4 @@
+import { withArticle } from "../math/agreement";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   useEffect,
@@ -147,7 +148,7 @@ function ChoicePicker({
   const [open, setOpen] = useState(false);
   const bank = r.banks.find((b) => b.id === field.bank)!;
   const chosen = bank.options.find((o) => o.id === value);
-  const placeholder = `Choose a ${field.label.toLowerCase()}`;
+  const placeholder = `Choose ${withArticle(field.label.toLowerCase())}`;
   return (
     <DropdownMenu.Root
       open={open && !disabled}

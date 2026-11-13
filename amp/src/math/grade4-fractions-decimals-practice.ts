@@ -1,6 +1,6 @@
 import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
-import { count } from "./agreement";
+import { count, withArticle } from "./agreement";
 import { choiceSurface, type ChoiceOption } from "./chain-kit";
 import {
   generatedProblemSchema,
@@ -775,7 +775,6 @@ type DecimalThing = {
   unit: string;
   verb: string;
   attr: string;
-  article: string;
   min: number;
   max: number;
 };
@@ -786,7 +785,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "A",
     min: 0.2,
     max: 0.8,
   },
@@ -795,7 +793,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "A",
     min: 0.1,
     max: 0.6,
   },
@@ -804,7 +801,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "A",
     min: 0.02,
     max: 0.12,
   },
@@ -813,7 +809,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "A",
     min: 0.005,
     max: 0.03,
   },
@@ -822,7 +817,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "A",
     min: 0.12,
     max: 0.2,
   },
@@ -831,7 +825,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "centimeters",
     verb: "is",
     attr: "thick",
-    article: "An",
     min: 0.4,
     max: 1,
   },
@@ -840,7 +833,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.15,
     max: 0.9,
   },
@@ -849,7 +841,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.35,
     max: 0.65,
   },
@@ -858,7 +849,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "tall",
-    article: "A",
     min: 0.05,
     max: 0.4,
   },
@@ -867,7 +857,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.12,
     max: 0.22,
   },
@@ -876,7 +865,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.1,
     max: 0.25,
   },
@@ -885,7 +873,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.15,
     max: 0.4,
   },
@@ -894,7 +881,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.3,
     max: 1,
   },
@@ -903,7 +889,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.2,
     max: 0.5,
   },
@@ -912,7 +897,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.005,
     max: 0.02,
   },
@@ -921,7 +905,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "seconds",
     verb: "takes",
     attr: "",
-    article: "A",
     min: 0.1,
     max: 0.5,
   },
@@ -930,7 +913,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.15,
     max: 0.7,
   },
@@ -939,7 +921,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.01,
     max: 0.2,
   },
@@ -948,7 +929,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.01,
     max: 0.15,
   },
@@ -957,7 +937,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.4,
     max: 0.99,
   },
@@ -966,7 +945,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.45,
     max: 0.99,
   },
@@ -975,7 +953,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "meters",
     verb: "is",
     attr: "long",
-    article: "A",
     min: 0.55,
     max: 0.95,
   },
@@ -984,7 +961,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "contains",
     attr: "",
-    article: "A",
     min: 0.01,
     max: 0.25,
   },
@@ -993,7 +969,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "contains",
     attr: "",
-    article: "A",
     min: 0.01,
     max: 0.3,
   },
@@ -1002,7 +977,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.09,
     max: 0.18,
   },
@@ -1011,7 +985,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.1,
     max: 0.18,
   },
@@ -1020,7 +993,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.25,
     max: 0.4,
   },
@@ -1029,7 +1001,6 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     unit: "liters",
     verb: "holds",
     attr: "",
-    article: "A",
     min: 0.5,
     max: 1,
   },
@@ -1039,7 +1010,7 @@ const decimalValue = (text: string) => Number(text);
 
 function thingSentence(thing: DecimalThing, value: string): string {
   const tail = thing.attr ? ` ${thing.attr}` : "";
-  return `${thing.article} ${thing.name} ${thing.verb} ${value} ${thing.unit}${tail}.`;
+  return `${withArticle(thing.name, true)} ${thing.verb} ${value} ${thing.unit}${tail}.`;
 }
 
 function pairGroups(left: string, right: string): DecimalThing[][] {

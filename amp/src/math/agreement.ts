@@ -52,7 +52,8 @@ export function count(n: number, noun: string, many = plural(noun)): string {
  * "An"). A number: an 8, an 11, an 18, an 80, an 800, an 8,000, an 11,000
  * and an 18,000; a for every other number. A word by its first sound: an
  * apple, an hour, an equilateral triangle; a unit, a one-digit number, a
- * European. A single letter by its name: an L shape, an x-value, a B. Math
+ * European. Initialisms and single letters use their names: an LCD, a GCF,
+ * an L shape, an x-value, a B. MAD is spoken as the word "mad". Math
  * set in $…$ is read for what it says ("$85^\circ$" is eighty-five). */
 export function article(n: number | string, capital = false): string {
   const said = String(n)
@@ -67,12 +68,19 @@ export function article(n: number | string, capital = false): string {
     an = /^8/.test(digits) || /^1[18](\d{3})*(?!\d)/.test(digits);
   } else {
     const word = said.toLowerCase();
-    if (/^[a-z](?![a-z])/.test(word)) an = /^[aefhilmnorsx]/.test(word);
+    if (/^MAD\b/.test(said)) an = false;
     else if (
-      /^(uni|use|usu|uti|ur[aeio]|eu|ewe|one(?![a-z])|once|ubiq)/.test(word)
+      /^[A-Z]{2,}(?=$|[^A-Za-z])/.test(said) ||
+      /^[a-z](?![a-z])/.test(word)
+    )
+      an = /^[aefhilmnorsx]/.test(word);
+    else if (
+      /^(uni(?:corn|cycle|direction|f|lateral|modal|on|que|sex|son|t|v)|use|usu|ut[ie]|ur[aeio]|eu|ewe|ones?(?![a-z])|once|ubiq)/.test(
+        word,
+      )
     )
       an = false;
-    else if (/^(hour|honest|honou?r|heir)/.test(word)) an = true;
+    else if (/^(hour|honest|honou?r|heir|nth\b)/.test(word)) an = true;
     else an = /^[aeiou]/.test(word);
   }
   return capital ? (an ? "An" : "A") : an ? "an" : "a";

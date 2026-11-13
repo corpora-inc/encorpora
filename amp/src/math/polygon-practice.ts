@@ -107,8 +107,8 @@ const series = (items: string[]) =>
   items.length < 2
     ? items.join("")
     : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
-const An = (word: string) => `${/^[aeiou]/.test(word) ? "An" : "A"} ${word}`;
-const an = (word: string) => `${/^[aeiou]/.test(word) ? "an" : "a"} ${word}`;
+const An = (word: string) => withArticle(word, true);
+const an = (word: string) => withArticle(word);
 
 export type Quad =
   | "square"

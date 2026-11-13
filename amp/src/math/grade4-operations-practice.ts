@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { count as countNoun, plural } from "./agreement";
+import { count as countNoun, plural, article } from "./agreement";
 import { storyName } from "./story-kit/names";
 import type {
   GeneratedProblem,
@@ -1049,8 +1049,7 @@ function quotientPrompt(
     if (packed) {
       const groups = packed[1]!;
       const one = groups === "boxes" ? "box" : groups.replace(/s$/, "");
-      const article = /^[aeiou]/i.test(one) ? "an" : "a";
-      return `${lead} How many full ${groups} can be filled, and what fraction of ${article} ${one} is left?`;
+      return `${lead} How many full ${groups} can be filled, and what fraction of ${article(one)} ${one} is left?`;
     }
     return `${lead} Give the quotient and the remainder as a fraction of the divisor.`;
   }
