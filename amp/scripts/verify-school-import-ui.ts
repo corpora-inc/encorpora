@@ -38,6 +38,9 @@ await registerSchoolRoutes(api, { pool: learning.pool, authenticate });
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  ...(process.env.AMP_VITE_CACHE_DIR
+    ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
+    : {}),
   server: {
     host: "127.0.0.1",
     port,
@@ -109,7 +112,7 @@ try {
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       buffer: workbook(`00${width}`),
     });
-    await page.getByRole("button", { name: "Sheet" }).click();
+    await page.getByRole("button", { name: "Sheet", exact: true }).click();
     await page.getByRole("option", { name: /^Support · / }).click();
     await page.getByRole("button", { name: "Use this sheet" }).click();
     await page

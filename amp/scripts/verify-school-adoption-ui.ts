@@ -53,7 +53,8 @@ await registerSchoolRoutes(app, {
 await registerSchoolAdoptionRoutes(app, { pool: db, authenticate, origin });
 await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-adoption",
+  cacheDir:
+    process.env.AMP_VITE_CACHE_DIR ?? "node_modules/.vite-school-adoption",
   server: {
     host: "127.0.0.1",
     port,

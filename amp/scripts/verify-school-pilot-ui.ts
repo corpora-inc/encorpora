@@ -39,6 +39,9 @@ await registerSchoolRoutes(api, {
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  ...(process.env.AMP_VITE_CACHE_DIR
+    ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
+    : {}),
   server: {
     host: "127.0.0.1",
     port,
@@ -229,8 +232,7 @@ try {
   // The quote request already carries the school and the reference.
   assert.equal(
     await buyerPage
-      .getByLabel(/School/)
-      .first()
+      .getByRole("textbox", { name: "School or organization" })
       .inputValue(),
     "Alder pilot school",
   );

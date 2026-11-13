@@ -16,7 +16,7 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const url = process.env.AMP_TEST_DATABASE_URL!;
 assertTestDatabaseTarget(url);
-const port = 4492,
+const port = Number(process.env.AMP_SCHOOL_CONNECT_UI_PORT ?? 4492),
   origin = `http://127.0.0.1:${port}`;
 const schema = `school_connect_ui_${randomUUID().replaceAll("-", "")}`;
 const admin = new Pool({ connectionString: url, max: 1 });
@@ -135,6 +135,9 @@ api.post("/api/v1/school/connection-requests", async (request, reply) => {
 });
 await api.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  ...(process.env.AMP_VITE_CACHE_DIR
+    ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
+    : {}),
   server: {
     host: "127.0.0.1",
     port,
