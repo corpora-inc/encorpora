@@ -4,6 +4,7 @@ import { parseArgs } from "node:util";
 import { z } from "zod";
 import { semanticFigureSchema } from "../src/math/contracts";
 import { scriptSchema, type Script } from "./schema";
+import { displayScript } from "./letters";
 import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from "./cast";
 import {
   FILM_CAPABILITY,
@@ -300,7 +301,8 @@ export function planFilm(
     .parse(exported);
   const source = { ...raw, script: screenplayFromExport(exported) };
   const committed = scriptSchema.parse(committedScript);
-  const script = filmContent(committed);
+  // A marked letter ("*a*") is for the voice: the export and the published film carry the bare letter.
+  const script = filmContent(displayScript(committed));
   const teaches = committed.teaches ?? [];
   const templateId = templateOf(id).template;
   if (

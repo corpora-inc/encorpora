@@ -20,6 +20,7 @@ import { join } from "node:path";
 import { EDGE, envelope, even, SR } from "./audio";
 import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
+import { displayText, heldLetterFaults, scriptWords } from "./letters";
 import type { WordTime } from "./schema";
 import { describe, strayPlan, type TimedWord } from "./strays";
 
@@ -124,7 +125,7 @@ export function spokenWords(items: { text: string; t: number }[]) {
   });
   return split;
 }
-export const spoken = (text: string) => spokenWords([{ text, t: 0 }]).map((x) => x.w);
+export const spoken = (text: string) => spokenWords([{ text: displayText(text), t: 0 }]).map((x) => x.w);
 
 /** Where the hearing differs from the script, as short readable pieces with the time heard. */
 export function differences(script: string, heard: Heard) {
@@ -170,7 +171,7 @@ export const pcmOf = (t: Take) => {
  * last: the service gives the pause after a sentence to its full stop, so a
  * word that kept its punctuation would end at the start of the next word.
  */
-export function wordsOf(a: Alignment): WordTime[] {
+export function wordsOf(a: Alignment, script?: string): WordTime[] {
   const out: WordTime[] = [];
   let buf = "", st = -1, en = -1, st0 = 0, en0 = 0;
   // an audio tag ("[energetic]") sent before the words may come back in the alignment: it was not spoken
@@ -186,7 +187,7 @@ export function wordsOf(a: Alignment): WordTime[] {
     buf += ch;
   });
   push();
-  return out;
+  return script === undefined ? out : scriptWords(script, out);
 }
 
 /** The transcript's words of each take judged in this run, for telling a word from a stray sound. */
@@ -238,7 +239,7 @@ async function hear(pcm: Int16Array, cache: string): Promise<Heard> {
 /** What is wrong with a take, if anything. Empty means it is good to use. */
 export async function judge(text: string, take: Take, cache: string) {
   const pcm = pcmOf(take), env = envelope(pcm);
-  const faults: string[] = [];
+  const faults: string[] = heldLetterFaults(text, wordsOf(take.alignment));
   const tail = env.slice(-5);
   if (!tail.length || Math.max(...tail) >= EDGE) faults.push("the voice is cut off at the end");
   for (let i = 0, run = 0; i < pcm.length; i++) {
@@ -251,7 +252,7 @@ export async function judge(text: string, take: Take, cache: string) {
   // A stray sound in a pause is removed when the film is made; one too close to a word cannot be.
   const said = heard.words.filter((w) => w.type === "word").map((w) => ({ text: w.text, start: w.start, end: w.end }));
   heardOf.set(take, said);
-  for (const s of strayPlan(even(pcm), wordsOf(take.alignment), said)) if (s.kind === "near") faults.push(describe(s));
+  for (const s of strayPlan(even(pcm), wordsOf(take.alignment, text), said)) if (s.kind === "near") faults.push(describe(s));
   return faults;
 }
 

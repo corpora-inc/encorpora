@@ -9,6 +9,7 @@
  * (and free of node modules, so the stage can import it in the browser).
  */
 import type { Script } from "./schema";
+import { voiceText } from "./letters";
 import { isRoleKind, NARRATOR_ID, VOICES, voicesFor, type RoleKind, type VoiceSpec } from "./voices";
 
 export { NARRATOR_ID };
@@ -160,7 +161,7 @@ export function neighbours(runs: Run[], i: number): { prev?: string; next?: stri
 }
 
 /** The text sent to the voice: a per-voice tag, if any, then the words. */
-export const spokenText = (voice: Voice, text: string) => (voice.tag ? `${voice.tag} ${text}` : text);
+export const spokenText = (voice: Voice, text: string) => (voice.tag ? `${voice.tag} ${voiceText(text)}` : voiceText(text));
 
 /**
  * What a take's cache key is made of. The narrator's untagged takes keep the

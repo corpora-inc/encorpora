@@ -12,6 +12,7 @@ import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 import { resolveCast, templateOf, voiceBindings } from "./cast";
 import { FILM_OUT } from "./paths";
+import { displayScript } from "./letters";
 
 const [out, ...ids] = process.argv.slice(2);
 if (!out || !ids.length) throw new Error("Usage: npx tsx film/export-live.ts <out-dir> <template-id>...");
@@ -24,7 +25,7 @@ const index: Row[] = existsSync(indexPath) ? JSON.parse(readFileSync(indexPath, 
 for (const id of ids) {
   // `<template>--<variant>` has its own screenplay, narration and files; its figure and metadata are the template's
   const { template } = templateOf(id);
-  const script = scriptSchema.parse(JSON.parse(readFileSync(join(here, "lessons", `${id}.json`), "utf8")));
+  const script = displayScript(scriptSchema.parse(JSON.parse(readFileSync(join(here, "lessons", `${id}.json`), "utf8"))));
   const timing = JSON.parse(readFileSync(join(films, id, "timing.json"), "utf8"));
   // Speaker key → voice id, the same shape timing.json recorded. Two-speaker films stay {teacher, learner}.
   timing.voices = voiceBindings(resolveCast(script, timing.voices));
