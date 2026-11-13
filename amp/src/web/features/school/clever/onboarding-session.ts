@@ -1,4 +1,7 @@
-import { clearStudentDevice } from "../../../lib/student-device";
+import {
+  clearStudentDevice,
+  studentSession,
+} from "../../../lib/student-device";
 
 export type CleverOnboardingSession = {
   token: string;
@@ -9,11 +12,13 @@ const key = "amp.clever.onboarding";
 const tokenPattern = /^po_[\w-]{43}$/;
 let memoryToken: string | null = null;
 let completing = false;
+let replacingStudentToken: string | null = null;
 let pending: Promise<CleverOnboardingSession | null> | null = null;
 
 export function clearCleverOnboardingSession() {
   memoryToken = null;
   completing = false;
+  replacingStudentToken = null;
   try {
     sessionStorage.removeItem(key);
   } catch {
@@ -44,6 +49,7 @@ async function load(): Promise<CleverOnboardingSession | null> {
     if (!tokenPattern.test(completion)) return null;
     memoryToken = completion;
     completing = true;
+    replacingStudentToken = studentSession()?.token ?? null;
   }
   let token = memoryToken;
   if (!token) {
@@ -78,6 +84,15 @@ async function load(): Promise<CleverOnboardingSession | null> {
     clearCleverOnboardingSession();
     return null;
   }
+  if (
+    completing &&
+    (studentSession()?.token ?? null) !== replacingStudentToken
+  ) {
+    // A later student sign-in supersedes this handoff, including when the
+    // earlier proof needed a network retry. Never clear the newer student.
+    clearCleverOnboardingSession();
+    return null;
+  }
   memoryToken = token;
   try {
     sessionStorage.setItem(key, token);
@@ -86,6 +101,7 @@ async function load(): Promise<CleverOnboardingSession | null> {
   }
   if (completing) {
     completing = false;
+    replacingStudentToken = null;
     clearStudentDevice();
     window.dispatchEvent(new Event("amp-account-session-changed"));
   }

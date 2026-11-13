@@ -101,3 +101,36 @@ test("a transient validation failure retains only in-memory completion intent fo
   expect((await cleverOnboardingSession())?.token).toBe(token);
   expect(sessionStorage.getItem("amp.student")).toBe("later student");
 });
+
+test("a later student supersedes an in-flight adult setup completion", async () => {
+  history.replaceState({}, "", `/school/connect#clever-onboarding=${token}`);
+  sessionStorage.setItem(
+    "amp.student",
+    JSON.stringify({ accountId: "school:first", token: "st_first" }),
+  );
+  let release: () => void = () => {};
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => {
+      await gate;
+      return Response.json({
+        token,
+        accountId: "amp|fixture",
+        expiresAt: new Date(Date.now() + 600000).toISOString(),
+      });
+    }),
+  );
+  const pending = cleverOnboardingSession();
+  const later = JSON.stringify({
+    accountId: "school:later",
+    token: "st_later",
+  });
+  sessionStorage.setItem("amp.student", later);
+  release();
+  expect(await pending).toBeNull();
+  expect(sessionStorage.getItem("amp.student")).toBe(later);
+  expect(sessionStorage.getItem("amp.clever.onboarding")).toBeNull();
+});
