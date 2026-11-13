@@ -534,7 +534,7 @@ async function verifyLessonRecovery() {
       await page.close();
       continue;
     }
-    const opener = page.getByRole("button", {
+    const opener = page.getByRole("link", {
       name: "View lesson",
       exact: true,
     });
@@ -586,16 +586,17 @@ async function verifyLessonRecovery() {
         .waitFor();
     }
     if (failure === "api") {
-      // Real routes: opening writes ?lesson=, Back closes, Forward reopens.
-      assert.match(page.url(), /[?&]lesson=[a-z0-9-]+/);
+      // A layer: opening writes ?open=lesson:<type>, Back closes, Forward
+      // reopens.
+      assert.match(page.url(), /[?&]open=lesson(?::|%3A)[a-z0-9-]+/);
       await page.goBack();
       await dialog.waitFor({ state: "detached" });
-      assert.doesNotMatch(page.url(), /[?&]lesson=/);
+      assert.doesNotMatch(page.url(), /[?&]open=/);
       await page.goForward();
       await dialog.getByText("Example", { exact: true }).waitFor();
       await dialog.getByRole("button", { name: "Close", exact: true }).click();
       await dialog.waitFor({ state: "detached" });
-      assert.doesNotMatch(page.url(), /[?&]lesson=/);
+      assert.doesNotMatch(page.url(), /[?&]open=/);
     }
     await page.close();
   }
@@ -1052,7 +1053,7 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
-      const opener = page.getByRole("button", {
+      const opener = page.getByRole("link", {
         name: "View lesson",
         exact: true,
       });
@@ -1278,7 +1279,7 @@ try {
   await linked.goBack();
   await linked.getByRole("heading", { name: target.title }).waitFor();
   await linked
-    .getByRole("button", { name: "View lesson", exact: true })
+    .getByRole("link", { name: "View lesson", exact: true })
     .click();
   await linked
     .getByRole("dialog")
