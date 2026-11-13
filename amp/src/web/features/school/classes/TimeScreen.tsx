@@ -242,7 +242,6 @@ function ExampleTime() {
         caption="Active minutes a week"
         midpoint={60}
         midpointWord="target"
-        unit="minutes"
       />
     </div>
   );
@@ -579,7 +578,6 @@ export function TimeScreen() {
                     }
                     midpoint={isDay ? midpoint / 5 : midpoint}
                     midpointWord={measure === "minutes" ? "target" : "median"}
-                    unit={measure === "minutes" ? "minutes" : "problems"}
                     empty={data.students.some(
                       (row) => (row.from ?? data.range.from) > data.range.from,
                     )}

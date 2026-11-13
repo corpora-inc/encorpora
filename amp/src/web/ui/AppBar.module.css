@@ -9,6 +9,8 @@
 .sheetBar {
   --bar-inline: var(--space-3);
   --bar-row: 56px;
+  /* A phone's second row: the group's tabs, 44 px targets with 4 px under. */
+  --bar-tabs-row: 48px;
   box-sizing: border-box;
   margin: 0;
   color: var(--color-on-surface);
@@ -57,7 +59,7 @@
     grid-template-areas:
       "logo tools action"
       "tabs tabs tabs";
-    grid-template-rows: var(--bar-row) 52px;
+    grid-template-rows: var(--bar-row) var(--bar-tabs-row);
     column-gap: var(--space-2);
   }
 }
@@ -75,11 +77,10 @@
   min-width: 0;
 }
 @media (max-width: 639px) {
-  /* The strip runs to the screen's edges; its first label lines up with the
-     logo's wordmark. */
+  /* The strip keeps the bar's inset at both ends, so no tab ever meets the
+     screen's edge: the open tab's fill starts where the logo does. */
   .tabsCell {
-    margin-inline: calc(-1 * var(--space-2));
-    padding-bottom: var(--space-2);
+    align-items: flex-start;
   }
 }
 .tools {

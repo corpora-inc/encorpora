@@ -304,6 +304,36 @@ export function TipZone({
   );
 }
 
+/**
+ * A figure whose uncertainty is a tap away: the point value stays on the
+ * page, quietly underlined, and its 95% range, n and spread open in the
+ * shared tip (it must sit inside a `TipZone`). A real button, so a finger, a
+ * mouse and the keyboard all reach it, and in a row that is a link it is its
+ * own target, above the link. Its hit area reaches 44 px without moving the
+ * line it sits on.
+ */
+export function FigureTip({
+  tip,
+  children,
+  className = "",
+}: {
+  tip: TipCard;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      className={`${styles.figureTip} ${className}`}
+      aria-label={cardText(tip).replace(/\n/g, ". ")}
+      data-figure-tip=""
+      {...tipAttributes(tip)}
+    >
+      {children}
+    </button>
+  );
+}
+
 /** A screen's data didn't arrive: what happened, and the step that works. */
 export function LoadFailed({
   what,

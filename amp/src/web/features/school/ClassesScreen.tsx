@@ -1,5 +1,11 @@
 import { EntityLink } from "../../nav/links";
-import { classColumn, teacherColumn } from "./class-columns";
+import {
+  ClassList,
+  classColumn,
+  teacherColumn,
+  TeacherNames,
+  type ListFigure,
+} from "./class-columns";
 import { canAddStudents } from "./permissions";
 import {
   AddChildSheet,
@@ -235,6 +241,22 @@ const classColumns = (
   },
 ];
 
+/** On a phone: who's in it and what it teaches; its periods are in its
+ * Settings. */
+const classFigures: ListFigure<ClassResource>[] = [
+  { column: "students", label: "Students", width: 60 },
+  {
+    column: "course",
+    label: "Course",
+    width: 92,
+    cell: (row) => (
+      <span className={styles.courseFigure}>
+        {courseLabel(row.courseBands)}
+      </span>
+    ),
+  },
+];
+
 /** A class from another year opens on its gradebook: there's no today in it. */
 const classHome = (orgId: string, classId: string, earlier: boolean) =>
   earlier
@@ -296,13 +318,6 @@ export function ClassesScreen() {
             .filter(Boolean)
             .join(", ") || undefined
         }
-        action={
-          canAdd ? (
-            <Button variant="primary" onClick={() => setAdding(true)}>
-              Add class
-            </Button>
-          ) : undefined
-        }
       />
       {years.length > 1 && (
         <div className={styles.toolbar}>
@@ -350,17 +365,21 @@ export function ClassesScreen() {
           }
         />
       ) : rows.length ? (
-        <DataGrid
+        <ClassList
           label="Classes"
           columns={classColumns(orgId, earlier, org?.personName)}
           rows={rows}
-          rowKey={(row) => row.id}
-          defaultSort={{ column: "name", direction: "ascending" }}
-          onRowActivate={(row) =>
-            void navigate({
-              to: "/$",
-              params: { _splat: classHome(orgId, row.id, earlier) },
-            })
+          href={(row) => classHome(orgId, row.id, earlier)}
+          detail={(row) => (
+            <TeacherNames teachers={row.teachers} self={org?.personName} />
+          )}
+          figures={classFigures}
+          action={
+            canAdd ? (
+              <Button variant="primary" onClick={() => setAdding(true)}>
+                Add class
+              </Button>
+            ) : undefined
           }
         />
       ) : canAdd ? (

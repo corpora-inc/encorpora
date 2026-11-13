@@ -81,9 +81,6 @@
   color: var(--color-on-surface);
   font-weight: 600;
 }
-.legendNote {
-  margin-top: var(--space-1);
-}
 /* The keys are the map's own cells in miniature, beside the scale on a wide
    screen and under it on a narrow one. */
 .legendKeys {

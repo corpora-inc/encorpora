@@ -62,6 +62,7 @@ export function DataGrid<Row>({
   cardsBelow = 640,
   cardLayout = "card",
   cardsToolbar,
+  action,
   cardsHeader,
   cardsSort = true,
   cardEstimate = 120,
@@ -89,6 +90,10 @@ export function DataGrid<Row>({
   cardLayout?: "card" | "row" | "list";
   /** Beside the sort control above the cards: another way to view them. */
   cardsToolbar?: ReactNode;
+  /** The list's one primary action ("Add class"): at the end of the row
+   * above it, with the sort control at the start on a phone, so the two
+   * share one row. */
+  action?: ReactNode;
   /** Directly above the cards: a key or scale for what they draw. */
   cardsHeader?: ReactNode;
   /** A sort control above the cards, since they have no header to click. */
@@ -152,13 +157,34 @@ export function DataGrid<Row>({
     >
       {asCards ? (
         <>
-          {(sortable.length > 0 || cardsToolbar) && (
+          {(sortable.length > 0 || cardsToolbar || action) && (
             <div className={styles.cardsBar}>
               {cardsToolbar}
               {sortable.length > 0 && (
                 <Menu
                   align="start"
-                  label={current ? `Sorted by ${current.header}` : "Sort"}
+                  aria-label={current ? `Sorted by ${current.header}` : "Sort"}
+                  label={
+                    current ? (
+                      // On the narrowest phones, beside the list's action,
+                      // "Sorted by" gives way to a sort mark.
+                      <>
+                        <svg
+                          className={styles.sortMark}
+                          viewBox="0 0 16 16"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 2.5v11M2.5 11 5 13.5 7.5 11M11 13.5v-11M8.5 5 11 2.5 13.5 5" />
+                        </svg>
+                        <span>
+                          <span className={styles.sortedBy}>Sorted by </span>
+                          {current.header}
+                        </span>
+                      </>
+                    ) : (
+                      "Sort"
+                    )
+                  }
                 >
                   {sortable.map((column) => (
                     <MenuItem key={column.id} onSelect={() => sortBy(column)}>
@@ -167,6 +193,7 @@ export function DataGrid<Row>({
                   ))}
                 </Menu>
               )}
+              {action && <div className={styles.action}>{action}</div>}
             </div>
           )}
           {cardsHeader}
@@ -182,19 +209,26 @@ export function DataGrid<Row>({
           />
         </>
       ) : (
-        <Table
-          label={label}
-          columns={columns}
-          rows={sorted}
-          rowKey={rowKey}
-          sort={sort}
-          onSort={sortBy}
-          onRowActivate={onRowActivate}
-          available={width}
-          virtual={virtual}
-          rowHeight={rowHeight}
-          rules={rules}
-        />
+        <>
+          {action && (
+            <div className={styles.cardsBar}>
+              <div className={styles.action}>{action}</div>
+            </div>
+          )}
+          <Table
+            label={label}
+            columns={columns}
+            rows={sorted}
+            rowKey={rowKey}
+            sort={sort}
+            onSort={sortBy}
+            onRowActivate={onRowActivate}
+            available={width}
+            virtual={virtual}
+            rowHeight={rowHeight}
+            rules={rules}
+          />
+        </>
       )}
     </div>
   );
@@ -386,6 +420,7 @@ function Table<Row>({
                   )}
                   data-r={0}
                   data-c={c}
+                  data-column={column.id}
                   data-align={column.align}
                   className={`${styles.columnHeader} ${c === 0 ? styles.first : ""}`}
                 >
@@ -449,6 +484,7 @@ function Table<Row>({
                     aria-label={column.cellLabel?.(row)}
                     data-r={index + 1}
                     data-c={c}
+                    data-column={column.id}
                     data-align={column.align}
                     className={`${styles.cell} ${c === 0 ? styles.first : ""}`}
                     style={{ height: rowHeight }}
