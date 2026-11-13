@@ -116,6 +116,18 @@ export async function applySnapshot(
       )
     ).rows.map((row) => [row.sourced_id, row.local_id]),
   );
+  const reviewedClasses = new Map<string, string>(
+    (
+      await db.query(
+        `SELECT sourced_id,local_id FROM amp_external_refs
+    WHERE tenant_id=$1 AND source=$2 AND kind='class'`,
+        [root.id, cleverSource(connection.id)],
+      )
+    ).rows.map((row) => [row.sourced_id, row.local_id]),
+  );
+  const adoptedPeople = new Set(reviewedPeople.values()),
+    adoptedClasses = new Set(reviewedClasses.values()),
+    adoptedSchools = new Set(reviewedSchools.values());
   const save = async (
     kind: Kind,
     record: RosterRecord,
@@ -317,7 +329,7 @@ export async function applySnapshot(
   };
   for (const section of snapshot.sections) {
     const prior = lookup("section", section.id);
-    let id = prior?.local_id;
+    let id = prior?.local_id ?? reviewedClasses.get(section.id);
     const term =
       section.term_id && snapshot.terms.some((t) => t.id === section.term_id)
         ? lookup("term", section.term_id)
@@ -346,7 +358,10 @@ export async function applySnapshot(
         ],
       );
     } else {
-      const oldName = text((prior?.record as { name?: string }).name, "Class");
+      const oldName = text(
+        (prior?.record as { name?: string } | undefined)?.name,
+        "Class",
+      );
       await db.query(
         `UPDATE amp_classes SET org_id=$2,session_id=$3,
         name=CASE WHEN name=$4 THEN $5 ELSE name END,course_id=$6,
@@ -391,7 +406,15 @@ export async function applySnapshot(
         [scope, person, role],
       )
     ).rows[0];
-    let owned = prior?.owned === true && prior.local_id === row?.id;
+    // An explicit adoption match transfers roster maintenance to Clever for
+    // that matched scope/person. Unmatched manual memberships stay manual.
+    const adopted =
+      adoptedPeople.has(person) &&
+      (kind === "enrollment"
+        ? adoptedClasses.has(scope)
+        : adoptedSchools.has(scope));
+    let owned =
+      (prior?.owned === true && prior.local_id === row?.id) || adopted;
     if (!row) {
       const id = randomUUID();
       row = (

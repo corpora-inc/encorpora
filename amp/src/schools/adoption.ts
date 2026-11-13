@@ -3,22 +3,21 @@ import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { activeToday } from "./principal.js";
 import { recordEvent } from "./events.js";
-import { cleverId, CleverSyncError } from "./clever/model.js";
+import {
+  validateSnapshot,
+  type Snapshot,
+  CleverSyncError,
+} from "./clever/model.js";
+import {
+  adoptionDestination as destinations,
+  adoptionDecisions as decisions,
+} from "./adoption-contracts.js";
 import { cleverSource, requireAgreement } from "./clever/connection.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 
 type Database = Pick<PoolClient, "query">;
-const destinations = z.object({ schoolId: z.uuid(), districtId: z.uuid() });
-const decisions = z.object({
-  staffMerges: z
-    .array(z.object({ sourcePersonId: z.uuid(), targetPersonId: z.uuid() }))
-    .max(1000)
-    .default([]),
-  cleverSchool: z
-    .object({ connectionId: z.uuid(), schoolId: cleverId })
-    .optional(),
-});
 type Decisions = z.input<typeof decisions>;
+type Authority = { authoritySnapshots?: Snapshot[] };
 type Grant = {
   id: string;
   source_account_id: string;
@@ -181,6 +180,7 @@ async function grantFor(
   token: string,
   lock = false,
   now = new Date(),
+  authority: Authority = {},
 ): Promise<Grant> {
   if (!/^adopt_[A-Za-z0-9_-]{43}$/.test(token))
     throw new CleverSyncError("adoption_not_found");
@@ -193,8 +193,12 @@ async function grantFor(
   if (!grant || grant.revoked_at || grant.expires_at <= now)
     throw new CleverSyncError("adoption_expired_or_revoked");
   if (grant.consumed_at) throw new CleverSyncError("adoption_already_used");
-  if (!(await isAdmin(db, accountId, grant.district_id)))
-    throw new CleverSyncError("adoption_destination_authority_required");
+  await requireCurrentAdoptionAdmin(
+    db,
+    accountId,
+    grant.district_id,
+    authority.authoritySnapshots ?? [],
+  );
   await institutions(db, grant.school_id, grant.district_id);
   if (!(await isSourceOwner(db, grant.source_account_id, grant.school_id)))
     throw new CleverSyncError("adoption_source_authority_changed");
@@ -274,9 +278,165 @@ export async function previewSchoolAdoption(
   db: Database,
   accountId: string,
   token: string,
+  authority: Authority = {},
 ): Promise<AdoptionPlan> {
-  const grant = await grantFor(db, accountId, token);
+  const grant = await grantFor(
+    db,
+    accountId,
+    token,
+    false,
+    new Date(),
+    authority,
+  );
   return adoptionPlan(db, grant.school_id, grant.district_id);
+}
+
+export async function schoolAdoptionOptions(
+  db: Database,
+  accountId: string,
+  districtId?: string,
+) {
+  const candidates = (
+    await db.query(
+      `SELECT DISTINCT o.id,o.name FROM amp_orgs o
+    JOIN amp_people p ON p.tenant_id=o.id WHERE p.account_id=$1 AND p.deleted_at IS NULL
+    AND o.parent_id IS NULL AND o.kind='school' AND NOT o.demo ORDER BY o.name,o.id`,
+      [accountId],
+    )
+  ).rows;
+  const schools = [];
+  for (const school of candidates)
+    if (await isSourceOwner(db, accountId, school.id)) {
+      const classes = (
+        await db.query(
+          `SELECT count(*)::int AS n FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+      WHERE o.path[1]=$1 AND c.archived_at IS NULL`,
+          [school.id],
+        )
+      ).rows[0].n;
+      schools.push({ ...school, classes });
+    }
+  let district = null;
+  if (districtId) {
+    z.uuid().parse(districtId);
+    await requireAgreement(db, districtId);
+    district = (
+      await db.query("SELECT id,name FROM amp_orgs WHERE id=$1", [districtId])
+    ).rows[0];
+  }
+  const grants = (
+    await db.query(
+      `SELECT a.id,s.name AS "schoolName",d.name AS "districtName",a.expires_at AS "expiresAt",
+    CASE WHEN a.consumed_at IS NOT NULL THEN 'used' WHEN a.revoked_at IS NOT NULL THEN 'revoked'
+      WHEN a.expires_at<=now() THEN 'expired' ELSE 'open' END AS status
+    FROM amp_school_adoptions a JOIN amp_orgs s ON s.id=a.school_id JOIN amp_orgs d ON d.id=a.district_id
+    WHERE a.source_account_id=$1 ORDER BY a.created_at DESC LIMIT 100`,
+      [accountId],
+    )
+  ).rows.map((r) => ({ ...r, expiresAt: r.expiresAt.toISOString() }));
+  const districts = (
+    await db.query(
+      `SELECT DISTINCT o.id,o.name FROM amp_orgs o
+    JOIN amp_org_roles r ON r.org_id=o.id AND r.role='admin' JOIN amp_people p ON p.id=r.person_id
+    JOIN LATERAL (SELECT ended_at FROM amp_data_agreements a WHERE a.org_id=o.id ORDER BY accepted_at DESC,id DESC LIMIT 1) a ON a.ended_at IS NULL
+    WHERE p.account_id=$1 AND p.deleted_at IS NULL AND o.kind='district' AND o.parent_id IS NULL AND NOT o.demo
+      AND ${activeToday("r", "o")} ORDER BY o.name,o.id`,
+      [accountId],
+    )
+  ).rows;
+  return { schools, districts, district, grants };
+}
+
+export async function schoolAdoptionDistrict(
+  db: Database,
+  accountId: string,
+  districtId: string,
+  authority: Authority = {},
+) {
+  z.uuid().parse(districtId);
+  await requireCurrentAdoptionAdmin(
+    db,
+    accountId,
+    districtId,
+    authority.authoritySnapshots ?? [],
+  );
+  await requireAgreement(db, districtId);
+  return {
+    district: (
+      await db.query("SELECT id,name FROM amp_orgs WHERE id=$1", [districtId])
+    ).rows[0],
+  };
+}
+
+export async function reviewSchoolAdoption(
+  db: Database,
+  accountId: string,
+  token: string,
+  authority: Authority = {},
+) {
+  const grant = await grantFor(
+    db,
+    accountId,
+    token,
+    false,
+    new Date(),
+    authority,
+  );
+  const plan = await adoptionPlan(db, grant.school_id, grant.district_id);
+  const places = (
+    await db.query("SELECT id,name FROM amp_orgs WHERE id=ANY($1::uuid[])", [
+      [grant.school_id, grant.district_id],
+    ])
+  ).rows;
+  const staffMatches = [];
+  for (const conflict of plan.conflicts)
+    if (conflict.code === "account_already_in_district") {
+      const people = (
+        await db.query(
+          `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
+      p.learner_id IS NULL AND p.deleted_at IS NULL AND NOT EXISTS(SELECT 1 FROM amp_org_roles WHERE person_id=p.id AND role='student')
+      AND NOT EXISTS(SELECT 1 FROM amp_enrollments WHERE person_id=p.id AND role='student') AS allowed
+      FROM amp_people p WHERE id=ANY($1::uuid[])`,
+          [[conflict.sourcePersonId, conflict.targetPersonId]],
+        )
+      ).rows;
+      staffMatches.push({
+        sourcePersonId: conflict.sourcePersonId!,
+        targetPersonId: conflict.targetPersonId!,
+        sourceName:
+          people.find((p) => p.id === conflict.sourcePersonId)?.name ??
+          "Staff member",
+        targetName:
+          people.find((p) => p.id === conflict.targetPersonId)?.name ??
+          "Staff member",
+        allowed: people.length === 2 && people.every((p) => p.allowed),
+      });
+    }
+  const cleverConnections = (
+    await db.query(
+      `SELECT c.id,c.environment,o.name AS "districtName" FROM amp_clever_connections c
+    JOIN amp_orgs o ON o.id=c.tenant_id WHERE c.tenant_id=$1 AND c.status='active' ORDER BY c.environment`,
+      [grant.district_id],
+    )
+  ).rows;
+  const source = await sourceRoster(db, grant.school_id);
+  return {
+    ...plan,
+    sourcePeople: source.people,
+    sourceClasses: source.classes,
+    conflicts: plan.conflicts.map(
+      ({ code, sourcePersonId, targetPersonId }) => ({
+        code,
+        sourcePersonId,
+        targetPersonId,
+      }),
+    ),
+    schoolName: places.find((p) => p.id === grant.school_id).name,
+    districtName: places.find((p) => p.id === grant.district_id).name,
+    expiresAt: grant.expires_at.toISOString(),
+    staffMatches,
+    cleverConnections,
+  };
 }
 
 /** The only permitted duplicate-person resolution is an explicit match between
@@ -354,9 +514,10 @@ export async function acceptSchoolAdoptionIn(
   accountId: string,
   token: string,
   raw: Decisions = {},
+  trusted: { snapshot?: Snapshot } & Authority = {},
 ) {
   const input = decisions.parse(raw);
-  const grant = await grantFor(db, accountId, token, true);
+  const grant = await grantFor(db, accountId, token, true, new Date(), trusted);
   const { school_id: schoolId, district_id: districtId } = grant;
   if (input.cleverSchool) {
     await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
@@ -412,8 +573,18 @@ export async function acceptSchoolAdoptionIn(
   );
   // Re-read after waiting for locks. The bearer token does not replace either
   // party's current institutional authority.
-  await grantFor(db, accountId, token);
+  await grantFor(db, accountId, token, false, new Date(), trusted);
   const before = await adoptionPlan(db, schoolId, districtId);
+  if (input.cleverSchool)
+    await validateCleverMatches(
+      db,
+      schoolId,
+      districtId,
+      input,
+      trusted.snapshot,
+    );
+  else if (input.cleverPeople.length || input.cleverSections.length)
+    throw new CleverSyncError("adoption_clever_school_required");
   if (
     before.conflicts.some(
       (c) =>
@@ -480,6 +651,25 @@ export async function acceptSchoolAdoptionIn(
       [districtId, source, input.cleverSchool.schoolId, schoolId],
     );
   }
+  if (input.cleverSchool) {
+    const source = cleverSource(input.cleverSchool.connectionId);
+    for (const match of input.cleverPeople) {
+      const personId =
+        input.staffMerges.find((m) => m.sourcePersonId === match.personId)
+          ?.targetPersonId ?? match.personId;
+      await db.query(
+        `INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id)
+        VALUES($1,$2,'person',$3,$4) ON CONFLICT DO NOTHING`,
+        [districtId, source, match.userId, personId],
+      );
+    }
+    for (const match of input.cleverSections)
+      await db.query(
+        `INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id)
+      VALUES($1,$2,'class',$3,$4) ON CONFLICT DO NOTHING`,
+        [districtId, source, match.sectionId, match.classId],
+      );
+  }
   await db.query(
     `UPDATE amp_orgs SET path=ARRAY[$2::uuid]||path,
     parent_id=CASE WHEN id=$1 THEN $2::uuid ELSE parent_id END WHERE path[1]=$1`,
@@ -533,9 +723,10 @@ export const acceptSchoolAdoption = (
   accountId: string,
   token: string,
   input: Decisions = {},
+  trusted: { snapshot?: Snapshot } & Authority = {},
 ) =>
   transaction(pool, (db) =>
-    acceptSchoolAdoptionIn(db, accountId, token, input),
+    acceptSchoolAdoptionIn(db, accountId, token, input, trusted),
   );
 
 export async function revokeSchoolAdoption(
@@ -564,4 +755,307 @@ export async function revokeSchoolAdoption(
     );
     return { revoked: true };
   });
+}
+
+async function sourceRoster(db: Database, schoolId: string) {
+  const people = (
+    await db.query(
+      `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
+    p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
+    AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+      WHERE r.person_id=p.id AND ${activeToday("r", "o")}) ORDER BY p.learner_id IS NOT NULL,p.given_name,p.id`,
+      [schoolId],
+    )
+  ).rows as { id: string; name: string; student: boolean }[];
+  const classes = (
+    await db.query(
+      `SELECT c.id,c.name,c.org_id FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+    WHERE o.path[1]=$1 AND c.archived_at IS NULL ORDER BY c.name,c.id`,
+      [schoolId],
+    )
+  ).rows as { id: string; name: string; org_id: string }[];
+  return { people, classes };
+}
+export async function schoolAdoptionCleverSource(
+  db: Database,
+  accountId: string,
+  token: string,
+  connectionId: string,
+  authority: Authority = {},
+) {
+  const grant = await grantFor(
+    db,
+    accountId,
+    token,
+    false,
+    new Date(),
+    authority,
+  );
+  const connection = (
+    await db.query(
+      `SELECT id,district_id,environment,last_sync_at FROM amp_clever_connections
+    WHERE id=$1 AND tenant_id=$2 AND status='active'`,
+      [connectionId, grant.district_id],
+    )
+  ).rows[0];
+  if (!connection)
+    throw new CleverSyncError("adoption_clever_connection_mismatch");
+  if (connection.last_sync_at)
+    throw new CleverSyncError("adoption_clever_already_imported");
+  return connection as {
+    id: string;
+    district_id: string;
+    environment: "sandbox" | "production";
+    last_sync_at: null;
+  };
+}
+export function schoolAdoptionCleverPreview(
+  snapshot: Snapshot,
+  schoolId?: string,
+) {
+  const schools = snapshot.schools.map(({ id, name }) => ({ id, name }));
+  if (!schoolId) return { schools, users: [], sections: [] };
+  if (!schools.some((s) => s.id === schoolId))
+    throw new CleverSyncError("adoption_clever_school_mismatch");
+  const sections = snapshot.sections.filter((s) => s.school === schoolId);
+  const users = snapshot.users.filter(
+    (u) =>
+      Object.values(u.roles).some(
+        (r) =>
+          r &&
+          (("school" in r && r.school === schoolId) ||
+            ("schools" in r && r.schools?.includes(schoolId))),
+      ) ||
+      u.roles.district_admin ||
+      sections.some(
+        (s) =>
+          s.students.includes(u.id) ||
+          s.teachers?.includes(u.id) ||
+          s.teacher === u.id,
+      ),
+  );
+  return {
+    schools,
+    users: users.map((u) => ({
+      id: u.id,
+      name:
+        [u.name.first, u.name.last].filter(Boolean).join(" ") || "Unnamed user",
+      student: !!u.roles.student,
+    })),
+    sections: sections.map(({ id, name }) => ({ id, name })),
+  };
+}
+async function validateCleverMatches(
+  db: PoolClient,
+  schoolId: string,
+  districtId: string,
+  input: z.output<typeof decisions>,
+  raw?: Snapshot,
+) {
+  if (!raw) throw new CleverSyncError("adoption_clever_review_required");
+  const school = input.cleverSchool!;
+  const connection = (
+    await db.query(
+      `SELECT district_id,last_sync_at FROM amp_clever_connections
+    WHERE id=$1 AND tenant_id=$2 AND status='active' FOR UPDATE`,
+      [school.connectionId, districtId],
+    )
+  ).rows[0];
+  if (!connection)
+    throw new CleverSyncError("adoption_clever_connection_mismatch");
+  if (connection.last_sync_at)
+    throw new CleverSyncError("adoption_clever_already_imported");
+  const snapshot = validateSnapshot(raw, connection.district_id),
+    preview = schoolAdoptionCleverPreview(snapshot, school.schoolId),
+    source = await sourceRoster(db, schoolId);
+  if (source.classes.some((c) => c.org_id !== schoolId))
+    throw new CleverSyncError("adoption_clever_nested_school_review");
+  const people = new Map(input.cleverPeople.map((p) => [p.personId, p.userId])),
+    sections = new Map(
+      input.cleverSections.map((c) => [c.classId, c.sectionId]),
+    );
+  if (
+    people.size !== input.cleverPeople.length ||
+    new Set(people.values()).size !== people.size ||
+    sections.size !== input.cleverSections.length ||
+    new Set(sections.values()).size !== sections.size
+  )
+    throw new CleverSyncError("adoption_clever_duplicate_match");
+  if (
+    people.size !== source.people.length ||
+    source.people.some((p) => !people.has(p.id)) ||
+    sections.size !== source.classes.length ||
+    source.classes.some((c) => !sections.has(c.id))
+  )
+    throw new CleverSyncError("adoption_clever_incomplete_match");
+  for (const person of source.people) {
+    const user = preview.users.find((u) => u.id === people.get(person.id));
+    if (!user || user.student !== person.student)
+      throw new CleverSyncError("adoption_clever_role_mismatch");
+    const owner = (
+      await db.query(
+        `SELECT l.account_id FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id WHERE p.id=$1`,
+        [person.id],
+      )
+    ).rows[0];
+    if (owner && owner.account_id !== `school:${person.id}`)
+      throw new CleverSyncError("adoption_learner_merge_forbidden");
+  }
+  for (const klass of source.classes) {
+    const section = snapshot.sections.find(
+      (s) => s.id === sections.get(klass.id) && s.school === school.schoolId,
+    );
+    if (!section) throw new CleverSyncError("adoption_clever_class_mismatch");
+    const members = (
+      await db.query(
+        `SELECT e.person_id,e.role FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+      JOIN amp_orgs o ON o.id=c.org_id WHERE e.class_id=$1 AND e.role IN ('student','teacher') AND ${activeToday("e", "o")}`,
+        [klass.id],
+      )
+    ).rows;
+    for (const member of members) {
+      const id = people.get(member.person_id),
+        remote =
+          member.role === "student"
+            ? section.students
+            : [
+                ...(section.teachers ?? []),
+                ...(section.teacher ? [section.teacher] : []),
+              ];
+      if (!id || !remote.includes(id))
+        throw new CleverSyncError("adoption_clever_roster_mismatch");
+    }
+  }
+  const refs = [
+    { kind: "org", id: school.schoolId, local: schoolId },
+    ...input.cleverPeople.map((p) => ({
+      kind: "person",
+      id: p.userId,
+      local:
+        input.staffMerges.find((m) => m.sourcePersonId === p.personId)
+          ?.targetPersonId ?? p.personId,
+    })),
+    ...input.cleverSections.map((c) => ({
+      kind: "class",
+      id: c.sectionId,
+      local: c.classId,
+    })),
+  ];
+  for (const ref of refs) {
+    const existing = await db.query(
+      `SELECT 1 FROM amp_external_refs WHERE tenant_id=ANY($1::uuid[]) AND source=$2 AND kind=$3
+      AND (sourced_id=$4 OR local_id=$5) AND (sourced_id<>$4 OR local_id<>$5)
+      UNION ALL SELECT 1 FROM amp_clever_bindings WHERE connection_id=$6 AND kind=$7
+      AND (clever_id=$4 OR local_id=$5) AND (clever_id<>$4 OR local_id<>$5) LIMIT 1`,
+      [
+        [schoolId, districtId],
+        cleverSource(school.connectionId),
+        ref.kind,
+        ref.id,
+        ref.local,
+        school.connectionId,
+        { org: "school", person: "user", class: "section" }[ref.kind],
+      ],
+    );
+    if (existing.rowCount)
+      throw new CleverSyncError("adoption_clever_identity_already_bound");
+  }
+}
+
+type AdminRole = {
+  manual: boolean;
+  connection_id: string | null;
+  district_id: string | null;
+  clever_id: string | null;
+  active: boolean;
+};
+async function adoptionAdminRoles(
+  db: Database,
+  accountId: string,
+  districtId: string,
+): Promise<AdminRole[]> {
+  return (
+    await db.query(
+      `SELECT NOT EXISTS(SELECT 1 FROM amp_clever_memberships own
+    WHERE own.kind='org_role' AND own.local_id=r.id AND own.owned) AS manual,
+    c.id AS connection_id,c.district_id,b.clever_id,c.status='active' AND b.archived_at IS NULL AS active
+    FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role='admin'
+    JOIN amp_orgs o ON o.id=r.org_id JOIN amp_orgs target ON r.org_id=ANY(target.path)
+    LEFT JOIN amp_clever_memberships m ON m.kind='org_role' AND m.local_id=r.id AND m.owned
+    LEFT JOIN amp_clever_connections c ON c.id=m.connection_id
+    LEFT JOIN amp_clever_bindings b ON b.connection_id=c.id AND b.kind='user' AND b.local_id=p.id
+    WHERE p.account_id=$1 AND p.deleted_at IS NULL AND target.id=$2 AND ${activeToday("r", "o")}`,
+      [accountId, districtId],
+    )
+  ).rows;
+}
+async function requireCurrentAdoptionAdmin(
+  db: Database,
+  accountId: string,
+  districtId: string,
+  snapshots: Snapshot[],
+) {
+  const roles = await adoptionAdminRoles(db, accountId, districtId);
+  if (roles.some((r) => r.manual)) return;
+  if (!roles.length)
+    throw new CleverSyncError("adoption_destination_authority_required");
+  if (
+    roles.some(
+      (r) =>
+        r.active &&
+        snapshots.some(
+          (s) =>
+            s.district.id === r.district_id &&
+            s.users.some(
+              (u) => u.id === r.clever_id && !!u.roles.district_admin,
+            ),
+        ),
+    )
+  )
+    return;
+  throw new CleverSyncError("adoption_current_authority_required");
+}
+/** Source-owned staged administrator roles must be re-proved by Clever before
+ * they expose the approving school's records. Independent admin grants stand. */
+export async function schoolAdoptionAuthority(
+  db: Database,
+  accountId: string,
+  input: { token?: string; districtId?: string },
+  fetchSnapshot?: (connectionId: string) => Promise<Snapshot>,
+): Promise<Authority> {
+  let districtId = input.districtId;
+  if (input.token) {
+    if (!/^adopt_[A-Za-z0-9_-]{43}$/.test(input.token))
+      throw new CleverSyncError("adoption_not_found");
+    const grant = (
+      await db.query(
+        "SELECT district_id,consumed_at FROM amp_school_adoptions WHERE token_hash=$1 AND revoked_at IS NULL AND expires_at>now()",
+        [tokenHash(input.token)],
+      )
+    ).rows[0];
+    if (!grant) throw new CleverSyncError("adoption_expired_or_revoked");
+    if (grant.consumed_at) throw new CleverSyncError("adoption_already_used");
+    districtId = grant.district_id;
+  }
+  if (!districtId) throw new CleverSyncError("adoption_not_found");
+  const roles = await adoptionAdminRoles(db, accountId, districtId);
+  if (roles.some((r) => r.manual)) return {};
+  if (!roles.length)
+    throw new CleverSyncError("adoption_destination_authority_required");
+  if (!fetchSnapshot)
+    throw new CleverSyncError("adoption_current_authority_required");
+  const snapshots: Snapshot[] = [];
+  for (const connection of new Set(
+    roles
+      .filter((r) => r.active)
+      .map((r) => r.connection_id)
+      .filter((id): id is string => !!id),
+  )) {
+    const district = roles.find(
+      (r) => r.connection_id === connection,
+    )!.district_id!;
+    snapshots.push(validateSnapshot(await fetchSnapshot(connection), district));
+  }
+  await requireCurrentAdoptionAdmin(db, accountId, districtId, snapshots);
+  return { authoritySnapshots: snapshots };
 }

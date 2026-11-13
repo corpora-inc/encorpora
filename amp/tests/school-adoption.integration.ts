@@ -1,4 +1,11 @@
 import test from "node:test";
+import Fastify from "fastify";
+import { registerSchoolAdoptionRoutes } from "../src/schools/adoption-routes.js";
+import { ApiError } from "../src/server/repository.js";
+import {
+  adoptionOptions,
+  adoptionReview,
+} from "../src/schools/adoption-contracts.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
@@ -10,6 +17,7 @@ import {
   issueSchoolAdoption,
   previewSchoolAdoption,
   revokeSchoolAdoption,
+  schoolAdoptionAuthority,
 } from "../src/schools/adoption.js";
 import {
   cleverSource,
@@ -84,6 +92,269 @@ test(
         });
         return { school, district, klass, teacher, leader, learner, account };
       }
+
+      await t.test(
+        "HTTP adoption requires both accounts, body-only proof and same-origin cookie writes",
+        async () => {
+          const f = await fixture(),
+            app = Fastify();
+          await registerSchoolAdoptionRoutes(app, {
+            pool: db!,
+            origin: "https://amp.example.test",
+            authenticate: async (request) => {
+              const value =
+                request.headers.authorization?.replace(/^Bearer /, "") ??
+                request.headers.cookie?.replace(/^account=/, "");
+              if (!value) throw new ApiError(401, "sign_in_required");
+              return value;
+            },
+          });
+          try {
+            const post = (
+              path: string,
+              account: string,
+              body: unknown,
+              headers: Record<string, string> = {},
+            ) =>
+              app.inject({
+                method: "POST",
+                url: `/api/v1/school/adoptions/${path}`,
+                headers: { authorization: `Bearer ${account}`, ...headers },
+                payload: body as object,
+              });
+            const options = await post("options", sourceAccount, {
+              districtId: f.district.id,
+            });
+            assert.equal(options.statusCode, 200, options.body);
+            const view = adoptionOptions.parse(options.json());
+            assert.ok(view.schools.some((s) => s.id === f.school.id));
+            assert.equal(view.district?.id, f.district.id);
+            assert.equal(
+              (
+                await post("issue", targetAccount, {
+                  schoolId: f.school.id,
+                  districtId: f.district.id,
+                  confirmed: true,
+                })
+              ).statusCode,
+              403,
+            );
+            const created = await post("issue", sourceAccount, {
+              schoolId: f.school.id,
+              districtId: f.district.id,
+              confirmed: true,
+            });
+            assert.equal(created.statusCode, 200, created.body);
+            const token = created.json().token;
+            assert.equal(created.headers["cache-control"], "no-store");
+            assert.equal(
+              (await post("review", sourceAccount, { token })).statusCode,
+              403,
+            );
+            assert.equal(
+              (await post("review", `st_${"x".repeat(43)}`, { token }))
+                .statusCode,
+              401,
+            );
+            const review = await post("review", targetAccount, { token });
+            assert.equal(review.statusCode, 200, review.body);
+            const reviewed = adoptionReview.parse(review.json());
+            assert.equal(reviewed.schoolName, "School");
+            assert.equal(reviewed.learners, 1);
+            assert.equal(reviewed.sourcePeople.length, 2);
+            assert.equal(reviewed.sourceClasses[0]?.id, f.klass.id);
+            for (const origin of [undefined, "https://other.example.test"]) {
+              const blocked = await app.inject({
+                method: "POST",
+                url: "/api/v1/school/adoptions/accept",
+                headers: {
+                  cookie: `account=${targetAccount}`,
+                  ...(origin ? { origin } : {}),
+                },
+                payload: { token, confirmed: true },
+              });
+              assert.equal(blocked.statusCode, 403);
+              assert.equal(blocked.json().error, "request_origin_invalid");
+            }
+            const accepted = await app.inject({
+              method: "POST",
+              url: "/api/v1/school/adoptions/accept",
+              headers: {
+                cookie: `account=${targetAccount}`,
+                origin: "https://amp.example.test",
+              },
+              payload: { token, confirmed: true },
+            });
+            assert.equal(accepted.statusCode, 200, accepted.body);
+            assert.equal(accepted.json().schoolId, f.school.id);
+            assert.equal(
+              (await post("accept", targetAccount, { token, confirmed: true }))
+                .statusCode,
+              409,
+            );
+          } finally {
+            await app.close();
+          }
+        },
+      );
+
+      await t.test(
+        "staged Clever administrators must retain current provider authority before reading or accepting a school",
+        async () => {
+          const f = await fixture(),
+            districtId = "100000000000000000000077",
+            userId = "300000000000000000000077";
+          const connection = await registerCleverConnection(db!, {
+            environment: "sandbox",
+            districtId,
+            tenantId: f.district.id,
+          });
+          const runId = randomUUID(),
+            role = (
+              await db!.query(
+                "SELECT id FROM amp_org_roles WHERE person_id=$1 AND role='admin'",
+                [f.leader.personId],
+              )
+            ).rows[0];
+          await db!.query(
+            "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status,finished_at) VALUES($1,$2,'full','succeeded',now())",
+            [runId, connection.id],
+          );
+          await db!.query(
+            "INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,last_seen_run_id) VALUES($1,'user',$2,$3,$4,$5)",
+            [
+              connection.id,
+              userId,
+              f.leader.personId,
+              {
+                id: userId,
+                district: districtId,
+                name: { first: "Leader" },
+                roles: { district_admin: {} },
+              },
+              runId,
+            ],
+          );
+          await db!.query(
+            "INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id) VALUES($1,'org_role','fixture-admin',$2,true,$3)",
+            [connection.id, role.id, runId],
+          );
+          const grant = await issueSchoolAdoption(db!, sourceAccount, {
+            schoolId: f.school.id,
+            districtId: f.district.id,
+          });
+          let snapshot: Snapshot = {
+            district: { id: districtId, name: "District" },
+            schools: [],
+            users: [
+              {
+                id: userId,
+                district: districtId,
+                name: { first: "Former admin" },
+                roles: { teacher: {} },
+              },
+            ],
+            sections: [],
+            courses: [],
+            terms: [],
+          };
+          const app = Fastify();
+          await registerSchoolAdoptionRoutes(app, {
+            pool: db!,
+            authenticate: async () => targetAccount,
+            cleverSnapshot: async () => snapshot,
+          });
+          try {
+            for (const path of ["review", "clever-preview", "accept"]) {
+              const result = await app.inject({
+                method: "POST",
+                url: `/api/v1/school/adoptions/${path}`,
+                payload: {
+                  token: grant.token,
+                  connectionId: connection.id,
+                  confirmed: true,
+                },
+              });
+              assert.equal(result.statusCode, 403, result.body);
+              assert.equal(
+                result.json().error,
+                "adoption_current_authority_required",
+              );
+              assert.equal("sourcePeople" in result.json(), false);
+            }
+            assert.equal(
+              (
+                await db!.query("SELECT parent_id FROM amp_orgs WHERE id=$1", [
+                  f.school.id,
+                ])
+              ).rows[0].parent_id,
+              null,
+            );
+            await assert.rejects(
+              acceptSchoolAdoption(db!, targetAccount, grant.token),
+              /current_authority_required/,
+            );
+            snapshot = {
+              ...snapshot,
+              users: [
+                {
+                  id: userId,
+                  district: districtId,
+                  name: { first: "Leader" },
+                  roles: { district_admin: {} },
+                },
+              ],
+            };
+            const proof = await schoolAdoptionAuthority(
+              db!,
+              targetAccount,
+              { token: grant.token },
+              async () => snapshot,
+            );
+            const review = await app.inject({
+              method: "POST",
+              url: "/api/v1/school/adoptions/review",
+              payload: { token: grant.token },
+            });
+            assert.equal(review.statusCode, 200, review.body);
+            assert.equal(proof.authoritySnapshots?.length, 1);
+            const accepted = await app.inject({
+              method: "POST",
+              url: "/api/v1/school/adoptions/accept",
+              payload: { token: grant.token, confirmed: true },
+            });
+            assert.equal(accepted.statusCode, 200, accepted.body);
+          } finally {
+            await app.close();
+          }
+        },
+      );
+      await t.test(
+        "independent district admin grants do not depend on Clever authority",
+        async () => {
+          const f = await fixture();
+          const grant = await issueSchoolAdoption(db!, sourceAccount, {
+            schoolId: f.school.id,
+            districtId: f.district.id,
+          });
+          const proof = await schoolAdoptionAuthority(
+            db!,
+            targetAccount,
+            { token: grant.token },
+            async () => {
+              throw new Error("must not fetch");
+            },
+          );
+          assert.deepEqual(proof, {});
+          await acceptSchoolAdoption(
+            db!,
+            targetAccount,
+            grant.token,
+            {},
+            proof,
+          );
+        },
+      );
 
       await t.test(
         "teacher-owner authorizes exact district; its administrator accepts without recreating learners",
@@ -457,9 +728,92 @@ test(
             schoolId: f.school.id,
             districtId: f.district.id,
           });
-          await acceptSchoolAdoption(db!, targetAccount, grant.token, {
+          const studentId = "300000000000000000000098",
+            teacherId = "300000000000000000000099",
+            sectionId = "400000000000000000000098";
+          const snapshot: Snapshot = {
+            district: { id: districtId, name: "District" },
+            schools: [{ id: schoolId, district: districtId, name: "School" }],
+            users: [
+              {
+                id: studentId,
+                district: districtId,
+                name: { first: "Student" },
+                roles: { student: { school: schoolId, grade: "4" } },
+              },
+              {
+                id: teacherId,
+                district: districtId,
+                name: { first: "Teacher" },
+                roles: { teacher: { school: schoolId } },
+              },
+            ],
+            sections: [
+              {
+                id: sectionId,
+                district: districtId,
+                school: schoolId,
+                name: "Existing Class",
+                students: [studentId],
+                teachers: [teacherId],
+              },
+            ],
+            courses: [],
+            terms: [],
+          };
+          const decisions = {
             cleverSchool: { connectionId: connection.id, schoolId },
-          });
+            cleverPeople: [
+              { personId: f.teacher.personId, userId: teacherId },
+              { personId: f.learner.personId, userId: studentId },
+            ],
+            cleverSections: [{ classId: f.klass.id, sectionId }],
+          };
+          await assert.rejects(
+            acceptSchoolAdoption(db!, targetAccount, grant.token, decisions),
+            /review_required/,
+          );
+          await assert.rejects(
+            acceptSchoolAdoption(
+              db!,
+              targetAccount,
+              grant.token,
+              { ...decisions, cleverPeople: [] },
+              { snapshot },
+            ),
+            /incomplete_match/,
+          );
+          await assert.rejects(
+            acceptSchoolAdoption(
+              db!,
+              targetAccount,
+              grant.token,
+              {
+                ...decisions,
+                cleverPeople: [
+                  { personId: f.teacher.personId, userId: studentId },
+                  { personId: f.learner.personId, userId: teacherId },
+                ],
+              },
+              { snapshot },
+            ),
+            /role_mismatch/,
+          );
+          const badRoster = structuredClone(snapshot);
+          badRoster.sections[0]!.students = [];
+          await assert.rejects(
+            acceptSchoolAdoption(db!, targetAccount, grant.token, decisions, {
+              snapshot: badRoster,
+            }),
+            /roster_mismatch/,
+          );
+          await acceptSchoolAdoption(
+            db!,
+            targetAccount,
+            grant.token,
+            decisions,
+            { snapshot },
+          );
           const ref = (
             await db!.query(
               "SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='org'",
@@ -467,20 +821,74 @@ test(
             )
           ).rows[0];
           assert.equal(ref.local_id, f.school.id);
-          const snapshot: Snapshot = {
-            district: { id: districtId, name: "District" },
-            schools: [{ id: schoolId, district: districtId, name: "School" }],
-            users: [],
-            sections: [],
-            courses: [],
-            terms: [],
-          };
           await syncCleverConnection(db!, connection.id, {
             districtToken: async () => "not-persisted",
             latestEvent: async () => null,
             events: async () => [],
             snapshot: async () => snapshot,
           });
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT local_id FROM amp_clever_bindings WHERE connection_id=$1 AND kind='section'",
+                [connection.id],
+              )
+            ).rows[0].local_id,
+            f.klass.id,
+          );
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT local_id FROM amp_clever_bindings WHERE connection_id=$1 AND kind='user' AND clever_id=$2",
+                [connection.id, studentId],
+              )
+            ).rows[0].local_id,
+            f.learner.personId,
+          );
+          assert.equal(
+            (
+              await db!.query("SELECT learner_id FROM amp_people WHERE id=$1", [
+                f.learner.personId,
+              ])
+            ).rows[0].learner_id,
+            f.learner.learnerId,
+          );
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT count(*)::int AS n FROM amp_people WHERE tenant_id=$1 AND learner_id IS NOT NULL",
+                [f.district.id],
+              )
+            ).rows[0].n,
+            1,
+          );
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT count(*)::int AS n FROM amp_clever_memberships WHERE connection_id=$1 AND owned=false",
+                [connection.id],
+              )
+            ).rows[0].n,
+            0,
+          );
+          const removed = structuredClone(snapshot);
+          removed.users = removed.users.filter((u) => u.id !== studentId);
+          removed.sections[0]!.students = [];
+          await syncCleverConnection(db!, connection.id, {
+            districtToken: async () => "not-persisted",
+            latestEvent: async () => null,
+            events: async () => [],
+            snapshot: async () => removed,
+          });
+          assert.equal(
+            (
+              await db!.query(
+                "SELECT count(*)::int AS n FROM amp_enrollments WHERE person_id=$1 AND end_on IS NULL",
+                [f.learner.personId],
+              )
+            ).rows[0].n,
+            0,
+          );
           assert.equal(
             (
               await db!.query(
