@@ -2,7 +2,7 @@
 
 School adoption moves a standalone school's existing records under a district. Learners keep their IDs, work and progress. Classes keep their IDs, join codes and pilot associations. Licenses and pilot deadlines do not restart.
 
-Both institutions authorize the move. The district must have an active school data agreement and an AMP administrator. The school approves through its administrator or through the teacher who started and actively teaches all its live classes. A school name or email domain never establishes ownership.
+Both institutions authorize the move. The district must have an active school data agreement and an AMP administrator. The school approves through its administrator. A teacher may approve their own standalone pilot school only if they created it and all its classes, teach every active class and student, and no other staff member has access. A school name or email domain never establishes ownership.
 
 ## Approval and review
 
@@ -19,7 +19,7 @@ Staff records may be combined only when they belong to the same signed-in AMP ac
 
 When connecting Clever for a school that already uses AMP, prepare the connection without importing its roster. Complete the school approval before the first import.
 
-The district review offers the actual schools, people and sections shared by Clever. Select the school's Clever record, then explicitly match each existing active person and class. AMP checks roles, class membership, unique matches and existing identity bindings against a fresh provider snapshot when accepting.
+The district review offers the actual schools, people and sections shared by Clever. Select the school's Clever record, then explicitly match each existing active person and class. Matching choices show available grade, class, teacher and course names. If two choices are indistinguishable, correct the roster names or context before selecting a match. AMP checks roles, class membership, unique matches and existing identity bindings against a fresh provider snapshot when accepting.
 
 Every active source person and class must be matched for this route. If a record is missing from Clever, correct the district's sharing settings or move the school while keeping its existing manual roster. A Clever connection that has already imported a different school or learner record requires separate review; the adoption operation does not guess which records should be combined.
 

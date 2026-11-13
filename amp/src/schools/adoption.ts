@@ -408,30 +408,37 @@ export async function reviewSchoolAdoption(
       [grant.school_id, grant.district_id],
     ])
   ).rows;
-  const staffMatches = [];
-  for (const conflict of plan.conflicts)
-    if (conflict.code === "account_already_in_district") {
-      const people = (
+  const staffConflicts = plan.conflicts.filter(
+    (c) => c.code === "account_already_in_district",
+  );
+  const staffIds = [
+    ...new Set(
+      staffConflicts.flatMap((c) => [c.sourcePersonId!, c.targetPersonId!]),
+    ),
+  ];
+  const staff = staffIds.length
+    ? (
         await db.query(
           `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
       p.learner_id IS NULL AND p.deleted_at IS NULL AND NOT EXISTS(SELECT 1 FROM amp_org_roles WHERE person_id=p.id AND role='student')
       AND NOT EXISTS(SELECT 1 FROM amp_enrollments WHERE person_id=p.id AND role='student') AS allowed
       FROM amp_people p WHERE id=ANY($1::uuid[])`,
-          [[conflict.sourcePersonId, conflict.targetPersonId]],
+          [staffIds],
         )
-      ).rows;
-      staffMatches.push({
-        sourcePersonId: conflict.sourcePersonId!,
-        targetPersonId: conflict.targetPersonId!,
-        sourceName:
-          people.find((p) => p.id === conflict.sourcePersonId)?.name ??
-          "Staff member",
-        targetName:
-          people.find((p) => p.id === conflict.targetPersonId)?.name ??
-          "Staff member",
-        allowed: people.length === 2 && people.every((p) => p.allowed),
-      });
-    }
+      ).rows
+    : [];
+  const staffById = new Map(staff.map((p) => [p.id, p]));
+  const staffMatches = staffConflicts.map((conflict) => {
+    const source = staffById.get(conflict.sourcePersonId!);
+    const target = staffById.get(conflict.targetPersonId!);
+    return {
+      sourcePersonId: conflict.sourcePersonId!,
+      targetPersonId: conflict.targetPersonId!,
+      sourceName: source?.name ?? "Staff member",
+      targetName: target?.name ?? "Staff member",
+      allowed: !!(source?.allowed && target?.allowed),
+    };
+  });
   const cleverConnections = (
     await db.query(
       `SELECT c.id,c.environment,o.name AS "districtName" FROM amp_clever_connections c
@@ -790,24 +797,99 @@ export async function revokeSchoolAdoption(
   });
 }
 
+const distinctNames = (values: string[]) =>
+  [...new Set(values)].sort((a, b) => a.localeCompare(b));
+const displayedGrade = (grade: number | null) =>
+  grade === 0 ? "Kindergarten" : grade == null ? null : String(grade);
+
 async function sourceRoster(db: Database, schoolId: string) {
   const people = (
     await db.query(
       `SELECT p.id,COALESCE(p.display_name,concat_ws(' ',p.given_name,p.family_name)) AS name,
-    p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
+    p.grade_level, p.learner_id IS NOT NULL AS student FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
     AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
       WHERE r.person_id=p.id AND ${activeToday("r", "o")}) ORDER BY p.learner_id IS NOT NULL,p.given_name,p.id`,
       [schoolId],
     )
-  ).rows as { id: string; name: string; student: boolean }[];
+  ).rows as {
+    id: string;
+    name: string;
+    student: boolean;
+    grade_level: number | null;
+  }[];
   const classes = (
     await db.query(
-      `SELECT c.id,c.name,c.org_id FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+      `SELECT c.id,c.name,c.org_id,course.name AS "courseName" FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+    LEFT JOIN amp_courses course ON course.id=c.course_id
     WHERE o.path[1]=$1 AND c.archived_at IS NULL ORDER BY c.name,c.id`,
       [schoolId],
     )
-  ).rows as { id: string; name: string; org_id: string }[];
-  return { people, classes };
+  ).rows as {
+    id: string;
+    name: string;
+    org_id: string;
+    courseName: string | null;
+  }[];
+  // One school-scoped membership read supplies context for every choice. Avoid
+  // one query per person/class when reviewing a large school.
+  const memberships = (
+    await db.query(
+      `SELECT e.person_id,e.class_id,e.role FROM amp_enrollments e
+      JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+      WHERE o.path[1]=$1 AND c.archived_at IS NULL AND ${activeToday("e", "o")}`,
+      [schoolId],
+    )
+  ).rows as { person_id: string; class_id: string; role: string }[];
+  const peopleById = new Map(people.map((p) => [p.id, p]));
+  const classesById = new Map(classes.map((c) => [c.id, c]));
+  const classMembers = new Map<string, typeof memberships>();
+  const personClasses = new Map<string, string[]>();
+  for (const member of memberships) {
+    const members = classMembers.get(member.class_id) ?? [];
+    members.push(member);
+    classMembers.set(member.class_id, members);
+    const ids = personClasses.get(member.person_id) ?? [];
+    ids.push(member.class_id);
+    personClasses.set(member.person_id, ids);
+  }
+  const classTeachers = new Map(
+    classes.map((c) => [
+      c.id,
+      distinctNames(
+        (classMembers.get(c.id) ?? [])
+          .filter((m) => m.role === "teacher")
+          .flatMap((m) => peopleById.get(m.person_id)?.name ?? []),
+      ),
+    ]),
+  );
+  return {
+    people: people.map(({ grade_level, ...p }) => ({
+      ...p,
+      grade: displayedGrade(grade_level),
+      classNames: distinctNames(
+        (personClasses.get(p.id) ?? []).flatMap(
+          (id) => classesById.get(id)?.name ?? [],
+        ),
+      ),
+      teacherNames: distinctNames(
+        (personClasses.get(p.id) ?? []).flatMap(
+          (id) => classTeachers.get(id) ?? [],
+        ),
+      ),
+    })),
+    classes: classes.map((c) => {
+      const grades = new Set(
+        (classMembers.get(c.id) ?? [])
+          .filter((m) => m.role === "student")
+          .map((m) => peopleById.get(m.person_id)?.grade_level ?? null),
+      );
+      return {
+        ...c,
+        teacherNames: classTeachers.get(c.id) ?? [],
+        grade: grades.size === 1 ? displayedGrade([...grades][0]!) : null,
+      };
+    }),
+  };
 }
 export async function schoolAdoptionCleverSource(
   db: Database,
@@ -851,6 +933,34 @@ export function schoolAdoptionCleverPreview(
   if (!schools.some((s) => s.id === schoolId))
     throw new CleverSyncError("adoption_clever_school_mismatch");
   const sections = snapshot.sections.filter((s) => s.school === schoolId);
+  const usersById = new Map(snapshot.users.map((u) => [u.id, u]));
+  const coursesById = new Map(snapshot.courses.map((c) => [c.id, c]));
+  const nameOf = (u: User) =>
+    [u.name.first, u.name.last].filter(Boolean).join(" ") || "Unnamed user";
+  const userSections = new Map<string, typeof sections>();
+  const sectionTeachers = new Map<string, string[]>();
+  for (const section of sections) {
+    const teacherIds = [
+      ...new Set([
+        ...(section.teachers ?? []),
+        ...(section.teacher ? [section.teacher] : []),
+      ]),
+    ];
+    sectionTeachers.set(
+      section.id,
+      distinctNames(
+        teacherIds.flatMap((id) => {
+          const teacher = usersById.get(id);
+          return teacher ? [nameOf(teacher)] : [];
+        }),
+      ),
+    );
+    for (const id of new Set([...section.students, ...teacherIds])) {
+      const memberSections = userSections.get(id) ?? [];
+      memberSections.push(section);
+      userSections.set(id, memberSections);
+    }
+  }
   const users = snapshot.users.filter(
     (u) =>
       Object.values(u.roles).some(
@@ -860,22 +970,31 @@ export function schoolAdoptionCleverPreview(
             ("schools" in r && r.schools?.includes(schoolId))),
       ) ||
       u.roles.district_admin ||
-      sections.some(
-        (s) =>
-          s.students.includes(u.id) ||
-          s.teachers?.includes(u.id) ||
-          s.teacher === u.id,
-      ),
+      userSections.has(u.id),
   );
   return {
     schools,
     users: users.map((u) => ({
       id: u.id,
-      name:
-        [u.name.first, u.name.last].filter(Boolean).join(" ") || "Unnamed user",
+      name: nameOf(u),
       student: !!u.roles.student,
+      grade: u.roles.student?.grade ?? null,
+      classNames: distinctNames(
+        (userSections.get(u.id) ?? []).map((s) => s.name),
+      ),
+      teacherNames: distinctNames(
+        (userSections.get(u.id) ?? []).flatMap(
+          (s) => sectionTeachers.get(s.id) ?? [],
+        ),
+      ),
     })),
-    sections: sections.map(({ id, name }) => ({ id, name })),
+    sections: sections.map((s) => ({
+      id: s.id,
+      name: s.name,
+      grade: s.grade ?? null,
+      teacherNames: sectionTeachers.get(s.id) ?? [],
+      courseName: s.course ? (coursesById.get(s.course)?.name ?? null) : null,
+    })),
   };
 }
 async function validateCleverMatches(

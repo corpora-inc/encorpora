@@ -64,6 +64,16 @@ export const adoptionIssued = z.object({
   token: adoptionToken,
   expiresAt: z.string(),
 });
+const personContext = {
+  grade: z.string().nullable().optional(),
+  classNames: z.array(z.string()).optional(),
+  teacherNames: z.array(z.string()).optional(),
+};
+const classContext = {
+  grade: z.string().nullable().optional(),
+  teacherNames: z.array(z.string()).optional(),
+  courseName: z.string().nullable().optional(),
+};
 export const adoptionReview = z.object({
   schoolId: z.uuid(),
   districtId: z.uuid(),
@@ -90,9 +100,16 @@ export const adoptionReview = z.object({
     }),
   ),
   sourcePeople: z.array(
-    z.object({ id: z.uuid(), name: z.string(), student: z.boolean() }),
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      student: z.boolean(),
+      ...personContext,
+    }),
   ),
-  sourceClasses: z.array(z.object({ id: z.uuid(), name: z.string() })),
+  sourceClasses: z.array(
+    z.object({ id: z.uuid(), name: z.string(), ...classContext }),
+  ),
   cleverConnections: z.array(
     z.object({
       id: z.uuid(),
@@ -122,7 +139,14 @@ export const adoptionCleverRequest = z.object({
 export const adoptionCleverPreview = z.object({
   schools: z.array(z.object({ id: z.string(), name: z.string() })),
   users: z.array(
-    z.object({ id: z.string(), name: z.string(), student: z.boolean() }),
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      student: z.boolean(),
+      ...personContext,
+    }),
   ),
-  sections: z.array(z.object({ id: z.string(), name: z.string() })),
+  sections: z.array(
+    z.object({ id: z.string(), name: z.string(), ...classContext }),
+  ),
 });

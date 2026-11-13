@@ -232,6 +232,8 @@ Name-only files with repeated names must be updated to include these IDs. Reuse 
 
 The import wizard accepts a OneRoster ZIP or its CSV files. Choose the source school when the export includes several schools; import each school into its corresponding AMP school. Identity matches use the tenant and source IDs. A class name alone never links two OneRoster classes.
 
+A teacher who works in several schools needs an assignment in each school before its file import can use the existing staff record. A district administrator opens the destination school's **Staff** page, enters the teacher's existing email and chooses **Teacher**. The invitation form reuses the district's existing staff record and applies the role immediately if that teacher already has an AMP account. Then import the destination school's file. A classroom teacher cannot use an import to grant themselves another school's access.
+
 The [OneRoster CSV binding](https://www.imsglobal.org/spec/oneroster/v1p2/bind/csv) permits several roles and organizations per user, several terms per class, and dated roles and enrollments. AMP preserves this evidence on the source bindings. Student, teacher and aide memberships retain their individual begin and end dates. Other roles are reported without granting permissions. Mixed student and teaching identities, duplicate IDs, missing calendar references and conflicting intervals are held for correction.
 
 Every referenced term and its school-year ancestry is retained. A class spanning several terms belongs to the common school year in AMP; its source binding retains all term IDs. Calendar periods are scoped to their AMP school, including exports that share academic-session IDs across a district. The preview includes membership and calendar changes.
