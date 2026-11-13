@@ -21,9 +21,12 @@ export function InfoPopover({
   children,
   details,
   title,
+  label = "Details",
 }: {
-  /** The reading that stays on the page. */
-  children: ReactNode;
+  /** The reading that stays on the page, if any. */
+  children?: ReactNode;
+  /** The button's words. */
+  label?: string;
   /** What opens. */
   details: ReactNode;
   /** Names the details for assistive technology. */
@@ -86,7 +89,7 @@ export function InfoPopover({
           setOpen(false);
       }}
     >
-      <div className={styles.reading}>{children}</div>
+      {children != null && <div className={styles.reading}>{children}</div>}
       <button
         ref={trigger}
         type="button"
@@ -106,7 +109,7 @@ export function InfoPopover({
           <path d="M10 9v5" />
           <circle cx="10" cy="6.25" r="0.6" className={styles.dot} />
         </svg>
-        Details
+        {label}
       </button>
       {open && (
         <div
