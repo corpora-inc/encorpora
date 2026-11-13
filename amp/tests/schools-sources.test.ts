@@ -93,45 +93,75 @@ test("a paste with no header row is still read", () => {
   assert.equal(rows[2]!.gradeLevel, 4);
 });
 
-test("twins stay two people, and siblings can share an address", () => {
-  const { rows } = fromCsv(
+test("identical names require IDs, while siblings can share an address", () => {
+  const text =
     "Name,Grade,Email,Class\n" +
-      "Ava Chen,3,chen.family@example.com,Room 2\n" +
-      "Mia Chen,3,chen.family@example.com,Room 2\n" +
-      "Sam Lee,3,,Room 2\n" +
-      "Sam Lee,3,,Room 2\n",
-  );
-  assert.equal(rows.length, 4);
-  const ids = rows.map((row) => row.sourcedId);
-  assert.equal(new Set(ids).size, 4);
+    "Ava Chen,3,chen.family@example.com,Room 2\n" +
+    "Mia Chen,3,chen.family@example.com,Room 2\n" +
+    "Sam Lee,3,,Room 2\n" +
+    "Sam Lee,3,,Room 2\n";
+  const { rows, issues } = fromCsv(text);
+  assert.equal(rows.length, 2);
   assert.equal(rows[0]!.email, rows[1]!.email);
-  // The same file twice lands on the same IDs, so a re-import changes nothing.
   assert.deepEqual(
-    ids,
-    fromCsv(
-      "Name,Grade,Email,Class\n" +
-        "Ava Chen,3,chen.family@example.com,Room 2\n" +
-        "Mia Chen,3,chen.family@example.com,Room 2\n" +
-        "Sam Lee,3,,Room 2\n" +
-        "Sam Lee,3,,Room 2\n",
-    ).rows.map((row) => row.sourcedId),
+    issues.map(({ line, code }) => [line, code]),
+    [
+      [4, "ambiguous_identity"],
+      [5, "ambiguous_identity"],
+    ],
   );
+  assert.deepEqual(rows, fromCsv(text).rows);
+  const resolved = fromCsv(
+    "ID,Name,Class\n1,Sam Lee,Room 2\n2,Sam Lee,Room 2\n",
+  );
+  assert.equal(resolved.rows.length, 2);
+  assert.equal(resolved.issues.length, 0);
 });
 
-test("a student listed once per class is one student in both", () => {
+test("only a supplied ID joins student rows across classes", () => {
   const noId = fromCsv(
     "Name,Grade,Class\nAna Ruiz,5,Math\nAna Ruiz,5,Intervention\n",
   );
-  assert.equal(noId.rows.length, 1);
+  assert.equal(noId.rows.length, 0);
   assert.deepEqual(
-    noId.rows[0]!.classes.map((klass) => klass.name),
-    ["Math", "Intervention"],
+    noId.issues.map(({ code }) => code),
+    ["ambiguous_identity", "ambiguous_identity"],
   );
   const withId = fromCsv(
     "ID,Name,Class\n7,Ana Ruiz,Math\n7,Ana Ruiz,Support\n",
   );
   assert.equal(withId.rows.length, 1);
   assert.equal(withId.rows[0]!.classes.length, 2);
+  assert.equal(withId.issues.length, 0);
+});
+
+test("name-only identity survives grade changes and row order, but never spans classes", () => {
+  const before = fromCsv(
+    "Name,Grade,Class\nAna Ruiz,5,Math\nNoor Haddad,5,Math\n",
+  );
+  const after = fromCsv(
+    "Name,Grade,Class\nNoor Haddad,6,Math\nAna Ruiz,6,Math\n",
+  );
+  assert.equal(before.rows[0]!.sourcedId, after.rows[1]!.sourcedId);
+  assert.equal(before.rows[1]!.sourcedId, after.rows[0]!.sourcedId);
+  const other = fromCsv("Name,Class\nAna Ruiz,Support\n");
+  assert.notEqual(before.rows[0]!.sourcedId, other.rows[0]!.sourcedId);
+});
+
+test("conflicting supplied IDs and incomplete same-name IDs are exceptions", () => {
+  const conflict = fromCsv(
+    "ID,Name,Class\n7,Ana Ruiz,Math\n7,Noor Haddad,Support\n7,Ana Ruiz,Support\n",
+  );
+  assert.equal(conflict.rows.length, 0);
+  assert.deepEqual(
+    conflict.issues.map(({ code }) => code),
+    ["conflicting_identity", "conflicting_identity"],
+  );
+  const partial = fromCsv(
+    "ID,Name,Class\n7,Ana Ruiz,Math\n,Ana Ruiz,Support\n",
+  );
+  assert.equal(partial.rows.length, 1);
+  assert.equal(partial.issues[0]!.code, "ambiguous_identity");
 });
 
 test("problems come back with the row, not as a thrown file", () => {

@@ -230,7 +230,14 @@ export const planResultSchema = z.object({
   line: z.number().int(),
   status: z.enum(["new", "unchanged", "changed", "held"]),
   /** Why it is held: an ID that now names someone else, or a likely match. */
-  reason: z.enum(["name_changed", "possible_match"]).optional(),
+  reason: z
+    .enum([
+      "name_changed",
+      "possible_match",
+      "ambiguous_match",
+      "outside_class",
+    ])
+    .optional(),
   /** The student already on the roster that this row was compared with. */
   existing: z.string().optional(),
   /** What would change, in words a person can check. */

@@ -12,6 +12,7 @@ import {
   type RosterSource,
 } from "./setup-contracts.js";
 import { nameKey, type RosterClass, type RosterRow } from "./sources/rows.js";
+import { namedStudentId } from "./sources/csv.js";
 import { inviteStaffIn, type InviteKeys, type IssuedInvite } from "./staff.js";
 
 type Existing = {
@@ -25,11 +26,15 @@ type Existing = {
   learner_id: string | null;
   account_id: string | null;
   classes: string[];
+  class_ids: string[];
+  org_ids: string[];
   deleted_at: Date | null;
 };
 const FROM_PEOPLE = `SELECT p.id,p.given_name,p.family_name,p.display_name,p.email,p.identifier,p.grade_level,p.learner_id,p.account_id,p.deleted_at,
   ARRAY(SELECT r.sourced_id FROM amp_enrollments e JOIN amp_external_refs r ON r.local_id=e.class_id AND r.kind='class' AND r.tenant_id=p.tenant_id AND r.source=$2
-    WHERE e.person_id=p.id AND e.end_on IS NULL) AS classes
+    WHERE e.person_id=p.id AND e.end_on IS NULL) AS classes,
+  ARRAY(SELECT e.class_id FROM amp_enrollments e WHERE e.person_id=p.id AND e.end_on IS NULL) AS class_ids,
+  ARRAY(SELECT r.org_id FROM amp_org_roles r WHERE r.person_id=p.id AND r.end_on IS NULL) AS org_ids
   FROM amp_people p`;
 const fullName = (row: { givenName: string; familyName?: string }) =>
   nameKey(`${row.givenName} ${row.familyName ?? ""}`);
@@ -50,7 +55,11 @@ async function tenantOf(repo: SchoolRepository, orgId: string) {
 
 /** What differs between a row and the person it matched, in words a person can
  * check. Names are never in this list: a changed name is held, not changed. */
-function differences(row: RosterRow, person: Existing): string[] {
+function differences(
+  row: RosterRow,
+  person: Existing,
+  scope?: ImportScope,
+): string[] {
   const out: string[] = [];
   if (row.gradeLevel !== undefined && row.gradeLevel !== person.grade_level)
     out.push("grade");
@@ -58,7 +67,11 @@ function differences(row: RosterRow, person: Existing): string[] {
   if (row.identifier && row.identifier !== person.identifier)
     out.push("student ID");
   const had = new Set(person.classes);
-  if (row.classes.some((klass) => !had.has(klass.sourcedId)))
+  if (
+    scope
+      ? !person.class_ids.includes(scope.classId)
+      : row.classes.some((klass) => !had.has(klass.sourcedId))
+  )
     out.push("classes");
   return out;
 }
@@ -91,35 +104,48 @@ async function lookUp(
   return { refs, people };
 }
 
-/** People in this tenant no import has claimed: someone typed in by hand, for
- * example. A row with no ref may be one of them. */
+/** Unclaimed people can match a stable ID. CSV name-only keys may also change
+ * after a class move or a legacy import; those names require review. */
 async function unclaimed(
   db: Pick<PoolClient, "query">,
   tenantId: string,
   source: RosterSource,
+  orgId: string,
 ) {
   return (
     await db.query(
       `${FROM_PEOPLE} WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
-       AND NOT EXISTS(SELECT 1 FROM amp_external_refs x WHERE x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person' AND x.local_id=p.id)`,
-      [tenantId, source],
+       AND (NOT EXISTS(SELECT 1 FROM amp_external_refs x WHERE x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person' AND x.local_id=p.id)
+         OR ($2='csv' AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.org_id=$3 AND r.end_on IS NULL)))`,
+      [tenantId, source, orgId],
     )
   ).rows as Existing[];
 }
 type Match = {
   person: Existing | null;
-  held?: "name_changed" | "possible_match";
+  held?:
+    "name_changed" | "possible_match" | "ambiguous_match" | "outside_class";
 };
 function matcher(
   refs: Map<string, string>,
   people: Map<string, Existing>,
   loose: Existing[],
+  orgId: string,
+  scope?: ImportScope,
+  taken = new Set<string>(refs.values()),
 ) {
-  const taken = new Set<string>();
   const student = (person: Existing) => !!person.learner_id;
   return (row: RosterRow): Match => {
     const refId = refs.get(row.sourcedId);
     const person = refId ? people.get(refId) : undefined;
+    if (person && scope && !person.class_ids.includes(scope.classId))
+      return { person: null, held: "outside_class" };
+    if (
+      person &&
+      !person.deleted_at &&
+      student(person) !== (row.role === "student")
+    )
+      return { person: null, held: "ambiguous_match" };
     if (person && !person.deleted_at)
       // A reused SIS ID can't hand one child another's record.
       return fullName(row) === personName(person) || row.role !== "student"
@@ -135,34 +161,83 @@ function matcher(
       return { person: staff ?? null };
     }
     if (row.identifier) {
-      const same = loose.find(
+      const matches = loose.filter(
         (other) =>
           student(other) &&
           !taken.has(other.id) &&
           other.identifier === row.identifier,
       );
+      if (matches.length > 1) return { person: null, held: "ambiguous_match" };
+      const same = matches[0];
       if (same) {
+        if (scope && !same.class_ids.includes(scope.classId))
+          return { person: null, held: "outside_class" };
         taken.add(same.id);
         return fullName(row) === personName(same)
           ? { person: same }
           : { person: same, held: "name_changed" };
       }
     }
-    const named = loose.find(
+    const matches = loose.filter(
       (other) =>
         student(other) &&
         !taken.has(other.id) &&
+        other.org_ids.includes(orgId) &&
+        (!scope || other.class_ids.includes(scope.classId)) &&
         personName(other) === fullName(row) &&
-        (other.grade_level === null ||
-          row.gradeLevel === undefined ||
-          other.grade_level === row.gradeLevel),
+        (!row.identifier || !other.identifier),
     );
+    if (matches.length > 1) return { person: null, held: "ambiguous_match" };
+    const named = matches[0];
     if (named) {
       taken.add(named.id);
       return { person: named, held: "possible_match" };
     }
     return { person: null };
   };
+}
+
+/** Authorization belongs to the route. This bound prevents a class import
+ * from creating classes or attaching people outside its authorized class. */
+export type ImportScope = { classId: string };
+async function importRows(
+  repo: SchoolRepository,
+  orgId: string,
+  source: RosterSource,
+  input: RosterRow[],
+  scope?: ImportScope,
+) {
+  let rows = input;
+  if (scope) {
+    const { rows: classes } = await repo.pool.query(
+      `SELECT id,name,course_bands FROM amp_classes WHERE id=$1 AND org_id=$2 AND archived_at IS NULL`,
+      [scope.classId, orgId],
+    );
+    const klass = classes[0];
+    if (!klass) throw new SchoolError(404, "class_not_found");
+    if (rows.some((row) => row.role !== "student"))
+      throw new SchoolError(400, "class_import_students_only");
+    rows = rows.map((row) => ({
+      ...row,
+      sourcedId:
+        source === "csv" && !row.identifier && row.sourcedId.startsWith("name:")
+          ? namedStudentId(row.givenName, row.familyName, klass.name)
+          : row.sourcedId,
+      classes: [
+        {
+          sourcedId: `amp-class:${klass.id}`,
+          name: klass.name,
+          courseBands: klass.course_bands,
+        },
+      ],
+    }));
+  }
+  const scoped = scopedRows(source, orgId, rows);
+  if (new Set(scoped.map((row) => row.sourcedId)).size !== scoped.length)
+    throw new SchoolError(400, "duplicate_roster_identity");
+  if (new Set(scoped.map((row) => row.line)).size !== scoped.length)
+    throw new SchoolError(400, "duplicate_roster_line");
+  return scoped;
 }
 
 /** A CSV knows a class, or a person with no student ID, only by name, and a
@@ -179,7 +254,7 @@ export function scopedRows(
   const key = (id: string) => (id.startsWith("name:") ? `${orgId}/${id}` : id);
   return rows.map((row) => ({
     ...row,
-    sourcedId: key(row.sourcedId),
+    sourcedId: row.identifier ? row.sourcedId : key(row.sourcedId),
     classes: row.classes.map((klass) => ({
       ...klass,
       sourcedId: key(klass.sourcedId),
@@ -192,16 +267,17 @@ export async function planRoster(
   repo: SchoolRepository,
   orgId: string,
   raw: unknown,
+  scope?: ImportScope,
 ): Promise<PlanResult[]> {
   const parsed = planRosterSchema.parse(raw);
   const { source } = parsed;
-  const rows = scopedRows(source, orgId, parsed.rows);
+  const rows = await importRows(repo, orgId, source, parsed.rows, scope);
   const { tenantId } = await tenantOf(repo, orgId);
   const { refs, people } = await lookUp(repo.pool, tenantId, source, rows);
   const loose = rows.some((row) => !refs.has(row.sourcedId))
-    ? await unclaimed(repo.pool, tenantId, source)
+    ? await unclaimed(repo.pool, tenantId, source, orgId)
     : [];
-  const match = matcher(refs, people, loose);
+  const match = matcher(refs, people, loose, orgId, scope);
   return rows.map((row) => {
     const { person, held } = match(row);
     if (held)
@@ -209,10 +285,10 @@ export async function planRoster(
         line: row.line,
         status: "held",
         reason: held,
-        existing: learnerNameFrom(person!),
+        ...(person ? { existing: learnerNameFrom(person) } : {}),
       };
     if (!person) return { line: row.line, status: "new" };
-    const changes = differences(row, person);
+    const changes = differences(row, person, scope);
     return changes.length
       ? { line: row.line, status: "changed", changes }
       : { line: row.line, status: "unchanged" };
@@ -375,33 +451,21 @@ export async function applyRoster(
   orgId: string,
   raw: unknown,
   actorPersonId: string | null,
+  scope?: ImportScope,
 ): Promise<{ results: ApplyResult[]; invites: RosterInvite[] }> {
   const parsed = applyRosterSchema.parse(raw);
   const { source, resolutions = {} } = parsed;
-  const rows = scopedRows(source, orgId, parsed.rows);
+  const rows = await importRows(repo, orgId, source, parsed.rows, scope);
   const { tenantId } = await tenantOf(repo, orgId);
-  const classIds = await ensureClasses(
-    repo,
-    tenantId,
-    orgId,
-    source,
-    rows,
-    actorPersonId,
-  );
-  const { refs, people } = await lookUp(repo.pool, tenantId, source, rows);
-  const loose = rows.some((row) => !refs.has(row.sourcedId))
-    ? await unclaimed(repo.pool, tenantId, source)
-    : [];
-  const match = matcher(refs, people, loose);
+  const classIds = scope
+    ? new Map([[`amp-class:${scope.classId}`, scope.classId]])
+    : await ensureClasses(repo, tenantId, orgId, source, rows, actorPersonId);
+  const initial = await lookUp(repo.pool, tenantId, source, rows);
+  const taken = new Set<string>(initial.refs.values());
   const results: ApplyResult[] = [];
   const invites: RosterInvite[] = [];
   for (const row of rows) {
-    const found = match(row);
     const decision = resolutions[String(row.line)];
-    if (found.held && !decision) {
-      results.push({ line: row.line, status: "held" });
-      continue;
-    }
     const classes = row.classes.map((klass) => classIds.get(klass.sourcedId)!);
     const context = {
       tenantId,
@@ -410,18 +474,40 @@ export async function applyRoster(
       row,
       classes,
       actorPersonId,
+      scope,
     };
     try {
       results.push(
         await repo.transaction(async (client) => {
+          // Imports into the same tenant/source serialize identity decisions.
+          // A concurrent retry must see the ref created by the first request
+          // before deciding whether "Different student" replaces anything.
+          await client.query(
+            "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+            [`school-roster:${tenantId}:${source}`],
+          );
+          const { refs, people } = await lookUp(client, tenantId, source, [
+            row,
+          ]);
+          const loose = refs.has(row.sourcedId)
+            ? []
+            : await unclaimed(client, tenantId, source, orgId);
+          const found = matcher(refs, people, loose, orgId, scope, taken)(row);
+          if (
+            found.held === "outside_class" ||
+            (found.held === "ambiguous_match" && decision !== "new") ||
+            (found.held && !decision)
+          )
+            return { line: row.line, status: "held" as const };
           // A different child, or an ID left by someone since removed: this row
           // starts a new record, and the ID belongs to it from here on.
-          if (decision === "new" || (!found.person && refs.has(row.sourcedId)))
+          const makeNew = decision === "new" && !!found.held;
+          if (makeNew || (!found.person && refs.has(row.sourcedId)))
             await client.query(
               `DELETE FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='person' AND sourced_id=$3`,
               [tenantId, source, row.sourcedId],
             );
-          const person = decision === "new" ? null : found.person;
+          const person = makeNew ? null : found.person;
           if (person)
             return updateExisting(client, repo, {
               ...context,
@@ -454,6 +540,7 @@ type RowContext = {
   row: RosterRow;
   classes: string[];
   actorPersonId: string | null;
+  scope?: ImportScope;
 };
 async function addStudent(
   client: PoolClient,
@@ -532,6 +619,7 @@ async function updateExisting(
     classes,
     rename,
     actorPersonId,
+    scope,
   }: RowContext & { person: Existing; rename: boolean },
 ): Promise<ApplyResult> {
   const linked = await claimRef(
@@ -541,7 +629,7 @@ async function updateExisting(
     row.sourcedId,
     person.id,
   );
-  const changes = differences(row, person);
+  const changes = differences(row, person, scope);
   if (!changes.length && !rename)
     return { line: row.line, status: linked ? "updated" : "unchanged" };
   const org = await repo.org(client, orgId);

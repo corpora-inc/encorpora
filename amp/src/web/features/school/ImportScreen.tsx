@@ -25,6 +25,7 @@ import {
   fieldLabels,
   guessMapping,
   mappingHasName,
+  namedStudentId,
   readTable,
   type FieldKey,
   type Mapping,
@@ -38,6 +39,7 @@ import {
   type SourceResult,
 } from "../../../schools/sources/rows";
 import type { OneRosterFiles } from "../../../schools/sources/oneroster";
+import type { RosterSheet } from "../../../schools/sources/excel";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge, type BadgeTone } from "../../ui/Badge";
@@ -116,9 +118,13 @@ function SourceStep({
   const [paste, setPaste] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [workbook, setWorkbook] = useState<{
+    fileName: string;
+    sheets: RosterSheet[];
+  } | null>(null);
+  const [sheetName, setSheetName] = useState("");
   useLoggedError(error);
-  const fromText = (text: string, fileName: string) => {
-    const table = readTable(text);
+  const fromTable = (table: Table, fileName: string) => {
     if (!table.rows.length) {
       setError(
         "That has no rows to read. Check that it’s the roster, with one student per row.",
@@ -136,11 +142,30 @@ function SourceStep({
       resolutions: {},
     });
   };
+  const fromText = (text: string, fileName: string) =>
+    fromTable(readTable(text), fileName);
   const readFile = async (file: File) => {
     setBusy(true);
     setError("");
+    setWorkbook(null);
     try {
+      if (file.size > 10 * 1024 * 1024) {
+        setError("Choose a roster file smaller than 10 MB.");
+        return;
+      }
       const bytes = new Uint8Array(await file.arrayBuffer());
+      if (/\.xlsx$/i.test(file.name)) {
+        const { readExcelRoster } =
+          await import("../../../schools/sources/excel");
+        const sheets = await readExcelRoster(bytes);
+        if (!sheets.length) setError("That workbook has no roster rows.");
+        else if (sheets.length === 1) fromTable(sheets[0]!.table, file.name);
+        else {
+          setWorkbook({ fileName: file.name, sheets });
+          setSheetName(sheets[0]!.name);
+        }
+        return;
+      }
       if (bytes[0] === 0x50 && bytes[1] === 0x4b) {
         const { isOneRoster, oneRosterSchools, readOneRosterZip } =
           await import("../../../schools/sources/oneroster");
@@ -177,7 +202,7 @@ function SourceStep({
     } catch (failure) {
       console.error("Roster file could not be read", failure);
       setError(
-        "That file can’t be read. Save it from your spreadsheet as CSV, or paste the rows below.",
+        "That file can’t be read. Choose an Excel .xlsx file, CSV or OneRoster ZIP, or paste the rows below.",
       );
     } finally {
       setBusy(false);
@@ -210,14 +235,14 @@ function SourceStep({
           <path d="M14 6h15l9 9v27H14V6Zm15 0v9h9M20 26h12M20 32h12M20 20h4" />
         </svg>
         <h2>Drop your roster here</h2>
-        <p>A CSV from any spreadsheet or SIS, or a OneRoster ZIP.</p>
+        <p>An Excel .xlsx workbook, CSV, or OneRoster ZIP.</p>
         <input
           ref={fileInput}
           className={styles.fileInput}
           type="file"
           tabIndex={-1}
           aria-label="Choose a roster file"
-          accept=".csv,.tsv,.txt,.zip,text/csv,application/zip"
+          accept=".xlsx,.csv,.tsv,.txt,.zip,text/csv,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
           onChange={onPick}
         />
         <Button
@@ -229,6 +254,39 @@ function SourceStep({
           Choose a file
         </Button>
       </div>
+      {workbook && (
+        <div className={styles.paste}>
+          <p className={styles.pasteLabel}>
+            Choose the sheet with your roster.
+          </p>
+          <Select
+            aria-label="Roster sheet"
+            value={sheetName}
+            onValueChange={setSheetName}
+          >
+            {workbook.sheets.map((sheet) => (
+              <option key={sheet.name} value={sheet.name}>
+                {sheet.name}
+              </option>
+            ))}
+          </Select>
+          <Button
+            variant="primary"
+            onClick={() => {
+              const selected = workbook.sheets.find(
+                (sheet) => sheet.name === sheetName,
+              );
+              if (selected)
+                fromTable(
+                  selected.table,
+                  `${workbook.fileName} · ${selected.name}`,
+                );
+            }}
+          >
+            Use this sheet
+          </Button>
+        </div>
+      )}
       <div className={styles.paste}>
         <label className={styles.pasteLabel} htmlFor="roster-paste">
           Or paste from a spreadsheet
@@ -254,6 +312,10 @@ function SourceStep({
       </div>
       <p className={styles.error} role={error ? "alert" : undefined}>
         {error}
+      </p>
+      <p className={styles.footnote}>
+        Include Student IDs when available to keep records connected across
+        class and name changes.
       </p>
       <p className={styles.footnote}>
         Nothing is saved until you’ve seen every change and chosen Apply.
@@ -438,6 +500,10 @@ const issueText: Record<RosterIssue["code"], (value: string) => string> = {
   name_too_long: (value) => `“${value.slice(0, 40)}…” is too long for a name.`,
   unknown_grade: (value) => `“${value}” isn’t a grade AMP knows.`,
   invalid_email: (value) => `“${value}” isn’t an email address.`,
+  conflicting_identity: (value) =>
+    `Student ID ${value} is assigned to different names. Correct the IDs or names and import again.`,
+  ambiguous_identity: () =>
+    "This name appears more than once. Add Student IDs to these rows and import again: the same ID for one student in several classes, different IDs for different students.",
 };
 
 function FixMissingName({
@@ -459,7 +525,12 @@ function FixMissingName({
         if (!typed) return;
         const parts = splitName(typed);
         const sourcedId =
-          issue.row.sourcedId || `name:${typed.toLowerCase()}|${issue.line}`;
+          issue.row.sourcedId ||
+          namedStudentId(
+            parts.givenName,
+            parts.familyName,
+            issue.row.classes[0]?.name,
+          );
         onFix(
           rosterRowSchema.parse({
             ...issue.row,
@@ -516,16 +587,32 @@ function AttentionRow({
         <strong>{name}</strong>
         <span>
           {plan?.status === "held"
-            ? plan.reason === "name_changed"
-              ? `This ID belongs to ${plan.existing} on your roster, under a different name.`
-              : `${plan.existing} is already on your roster, without this ID.`
+            ? plan.reason === "outside_class"
+              ? "This student needs a school administrator to add them to this class."
+              : plan.reason === "ambiguous_match"
+                ? "This ID or name does not identify a single student record. Check the school’s Student ID, or confirm this is a different student."
+                : plan.reason === "name_changed"
+                  ? `This ID belongs to ${plan.existing} on your roster, under a different name.`
+                  : `${plan.existing} is already on your roster, without this ID.`
             : issue
               ? issueText[issue.code](issue.value)
               : ""}
         </span>
       </div>
       <div className={styles.attentionFix}>
-        {plan?.status === "held" ? (
+        {plan?.reason === "outside_class" ? null : plan?.reason ===
+          "ambiguous_match" ? (
+          <Button
+            variant="secondary"
+            onClick={() =>
+              patch({ resolutions: { ...draft.resolutions, [line]: "new" } })
+            }
+          >
+            {decided === "new"
+              ? "Marked as a different student"
+              : "Different student"}
+          </Button>
+        ) : plan?.status === "held" ? (
           <Segmented
             label={`What to do with ${name}`}
             compact
@@ -633,7 +720,11 @@ function ReviewStep({
   for (const row of rows) counts[bucketOf(planFor(row))]++;
   const issues = result.issues;
   const blocked = issues.filter(
-    (issue) => issue.code === "missing_name" || issue.code === "name_too_long",
+    (issue) =>
+      issue.code === "missing_name" ||
+      issue.code === "name_too_long" ||
+      issue.code === "ambiguous_identity" ||
+      issue.code === "conflicting_identity",
   );
   const soft = issues.filter(
     (issue) => issue.code === "unknown_grade" || issue.code === "invalid_email",

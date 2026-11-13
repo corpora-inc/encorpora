@@ -50,11 +50,17 @@ export type RosterRow = z.infer<typeof rosterRowSchema>;
 export type RosterClass = z.infer<typeof rosterClass>;
 export type RosterSession = z.infer<typeof rosterSession>;
 
-/** A row the source could read but not fully use. `missing_name` rows aren't in
- * `rows` until fixed; the others are, without the bad value. */
+/** A row the source could read but not fully use. Rows with missing names or ambiguous identities are held out of `rows`;
+ * invalid grades and emails are omitted from otherwise usable rows. */
 export type RosterIssue = {
   line: number;
-  code: "missing_name" | "name_too_long" | "unknown_grade" | "invalid_email";
+  code:
+    | "missing_name"
+    | "name_too_long"
+    | "unknown_grade"
+    | "invalid_email"
+    | "ambiguous_identity"
+    | "conflicting_identity";
   /** What the file said. */
   value: string;
   /** Everything else usable on the row, so a fix can complete it. */
