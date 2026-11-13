@@ -40,13 +40,56 @@ test("start frame hides entrances; the final frame is the whole figure", () => {
   assert.equal(mid["nl.hop.0"]!.drawn, 0.5);
   assert.equal(mid["nl.hop.0.head"]!.opacity, 0);
   assert.equal(frameAt(l, steps, 0, 1)["nl.mark.0"]!.highlight, true);
-  // Highlight lasts only for its own step.
+  // Highlight fades through the next step and is gone at its end.
+  assert.equal(mid["nl.mark.0"]!.emphasis, 0.5);
   assert.equal(frameAt(l, steps, 1, 1)["nl.mark.0"]?.highlight, undefined);
   const counting = frameAt(l, steps, 2, 0.5)["nl.hop.0.landing"]!;
   assert.equal(counting.text, "7");
   const end = frameAt(l, steps, 2, 1);
   assert.equal(end["nl.hop.0"]!.drawn, 1);
   assert.equal(end["nl.hop.0.landing"]?.text, undefined);
+});
+
+test("a highlight falls through the next step, with its boolean set until dark", () => {
+  const layout = layoutScene(hopScene);
+  for (const progress of [0, 0.5, 1]) {
+    const state = frameAt(layout, hopScene.steps!, 1, progress)["nl.mark.0"];
+    assert.equal(state?.emphasis ?? 0, 1 - progress);
+    assert.equal(state?.highlight, progress < 1 ? true : undefined);
+  }
+  for (const progress of [0, 0.5, 1]) {
+    const state = frameAt(layout, hopScene.steps!, 2, progress)["nl.mark.0"];
+    assert.equal(state?.emphasis ?? 0, 0);
+    assert.equal(state?.highlight, undefined);
+  }
+});
+
+test("consecutive highlights hold shared parts without lighting older items", () => {
+  const layout = layoutScene(hopScene);
+  const steps = [
+    step("All.", act.highlight("nl")),
+    step("Mark.", act.highlight("nl.mark.0"), act.highlight("nl.mark.0")),
+    step("Hop.", act.highlight("nl.hop.0")),
+  ];
+  // A broad target and a narrower target share items, even at progress zero.
+  for (const progress of [0, 0.5, 1]) {
+    const state = frameAt(layout, steps, 1, progress)["nl.mark.0"]!;
+    assert.equal(state.emphasis, 1);
+    assert.equal(state.highlight, true);
+    const hop = frameAt(layout, steps, 2, progress)["nl.hop.0"]!;
+    assert.equal(hop.emphasis ?? 0, progress);
+  }
+  // The final highlight holds; no synthetic fade after the last step.
+  const end = frameAt(layout, steps, 2, 1);
+  assert.equal(end["nl.hop.0"]!.emphasis, 1);
+  assert.equal(end["nl.hop.0"]!.highlight, true);
+  assert.equal(end["nl.mark.0"]?.highlight, undefined);
+  assert.equal(end["nl.axis"]?.highlight, undefined);
+  // The same matching rule applies when the new target is broader.
+  assert.equal(
+    frameAt(layout, steps.slice(0, 2).reverse(), 1, 0)["nl.mark.0"]!.emphasis,
+    1,
+  );
 });
 
 test("a move is math units times the fitted scale, y up", () => {

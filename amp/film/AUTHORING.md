@@ -387,7 +387,7 @@ List the part names a target can use (from a spec, `{"scene": ...}` or a whole s
 npx tsx film/parts.ts shot.json
 ```
 
-The actions are the scene actions in the table above. A highlight lasts until the shot's next scene action. `--dry` reports a target that names no part, and notes a crowded tick value the figure leaves out. A film with a shot like this plays only in app versions that can draw it; older ones keep showing the written lesson.
+The actions are the scene actions in the table above. A highlight eases out as the shot's next scene action begins. `--dry` reports a target that names no part, and notes a crowded tick value the figure leaves out. A film with a shot like this plays only in app versions that can draw it; older ones keep showing the written lesson.
 
 For money, `coins` places coin faces; `bill` places an original vector note:
 `{"type":"bill","id":"dollar","value":1,"at":[0,0],"width":100}`.
