@@ -2145,11 +2145,63 @@ test(
       );
       assert.equal(mails.length, 1);
       assert.equal(mails[0]!.recipient, "parent@example.test");
-      assert.match(mails[0]!.text, new RegExp(request.id));
+      assert.equal(mails[0]!.subject, "Your AMP Math access is ready");
+      assert.equal(
+        mails[0]!.idempotencyKey,
+        `amp-funded-activation:${request.id}`,
+      );
+      assert.equal(
+        mails[0]!.text,
+        [
+          "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
+          `Invoice: ${request.id}`,
+          "Sign in to your AMP parent account, then select your learner to start learning.",
+          "Open AMP: https://example.com/",
+          "You do not need to make another payment.",
+          "Need help getting started? Email support@corpora.inc and include the invoice number above.",
+        ].join("\n\n"),
+      );
       assert.ok(!mails[0]!.text.includes("Private learner"));
       assert.equal(
         await deliverFundedActivationMail(pool, transport, notificationPolicy),
         false,
+      );
+    }),
+);
+test(
+  "funded notification never calls an unsettled scheduled purchase a received payment",
+  enabled,
+  () =>
+    fixture(async (pool, repo) => {
+      const { input } = await notificationFixture(pool, repo);
+      const first = input.events[0]!;
+      if (first.type !== "order.created") throw new Error("fixture");
+      first.order.license.startsAt = new Date(
+        Date.now() + 86400000,
+      ).toISOString();
+      first.order.license.endsAt = annualTermEnd(first.order.license.startsAt);
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('current','mail-child','pilot','current','active',now()-interval '1 day',$1)",
+        [first.order.license.startsAt],
+      );
+      await provisionFundingRequest(pool, input, [offer]);
+      let sends = 0;
+      await deliverFundedActivationMail(
+        pool,
+        notificationTransport(async () => {
+          sends++;
+          return { kind: "accepted", receipt: "fixture-receipt" };
+        }),
+        notificationPolicy,
+      );
+      assert.equal(sends, 0);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "access-inactive",
       );
     }),
 );

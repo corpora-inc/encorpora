@@ -444,8 +444,10 @@ for (const mode of [
           assert.equal(create.statusCode, 200);
           const id = create.json().invoiceId;
           if (mode === "expired") {
+            // Shift both timestamps by elapsed hours so DST cannot change the
+            // retention duration enforced by the database's 2160-hour limit.
             await pool.query(
-              "UPDATE amp_ad_click_journeys SET created_at=created_at-interval '91 days',expires_at=expires_at-interval '91 days'",
+              "UPDATE amp_ad_click_journeys SET created_at=created_at-interval '2184 hours',expires_at=expires_at-interval '2184 hours'",
             );
             const c = await pool.connect();
             try {

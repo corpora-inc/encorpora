@@ -60,8 +60,8 @@ export async function deliverFundedActivationMail(
       await currentPolicy(client, policy);
       const row = (
         await client.query(
-          `SELECT o.*, r.account_id,r.learner_id,r.order_id,
-      c.grant_state,u.email,u."emailVerified",l.deleted_at,
+          `SELECT o.*, r.account_id,r.learner_id,r.order_id,r.offer_snapshot,
+      c.grant_state,c.order_state,u.email,u."emailVerified",l.deleted_at,
       o.first_dispatch_at+interval '23 hours'<=clock_timestamp()+interval '15 seconds' AS window_ended
       FROM amp_funded_activation_outbox o JOIN amp_funding_requests r ON r.id=o.request_id
       JOIN amp_commerce_orders c ON c.id=r.order_id JOIN amp_learners l ON l.id=r.learner_id
@@ -74,9 +74,14 @@ export async function deliverFundedActivationMail(
       ).rows[0];
       if (!row) return null;
       const grant = row.grant_state;
-      const active =
+      // Issuance and term dates are immutable. A retry crossing the start date
+      // must keep the same confirmation and provider idempotency binding.
+      const scheduled =
+        Date.parse(grant?.startsAt) > Date.parse(grant?.issuedAt) &&
+        row.order_state.settlement === "settled";
+      const eligible =
         grant?.status === "active" &&
-        Date.parse(grant.startsAt) <= Date.now() &&
+        (scheduled || Date.parse(grant.startsAt) <= Date.now()) &&
         Date.parse(grant.endsAt) > Date.now() &&
         !row.deleted_at &&
         (await purchaseConsentSatisfied(
@@ -84,21 +89,33 @@ export async function deliverFundedActivationMail(
           row.account_id,
           row.learner_id,
         ));
+      const period = row.offer_snapshot.termMonths === 1 ? "month" : "year";
       const mail = {
         idempotencyKey: `amp-funded-activation:${row.request_id}`,
         recipient: row.email ?? "",
-        subject: "Your AMP Math access is ready",
-        text: [
-          "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
-          `Invoice: ${row.request_id}`,
-          "Sign in to your AMP parent account, then select your learner to start learning.",
-          `Open AMP: ${link.href}`,
-          "You do not need to make another payment.",
-          "Need help getting started? Email support@corpora.inc and include the invoice number above.",
-        ].join("\n\n"),
+        ...(scheduled
+          ? {
+              subject: `Your next ${period} of AMP Math is confirmed`,
+              text: [
+                `Payment for invoice ${row.request_id} was received.`,
+                `Your learner's next ${period} runs from ${grant.startsAt.slice(0, 10)} to ${grant.endsAt.slice(0, 10)} (UTC).`,
+                `Open AMP: ${link.href}`,
+              ].join("\n\n"),
+            }
+          : {
+              subject: "Your AMP Math access is ready",
+              text: [
+                "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
+                `Invoice: ${row.request_id}`,
+                "Sign in to your AMP parent account, then select your learner to start learning.",
+                `Open AMP: ${link.href}`,
+                "You do not need to make another payment.",
+                "Need help getting started? Email support@corpora.inc and include the invoice number above.",
+              ].join("\n\n"),
+            }),
       };
       const binding = digest({ transport: transport.binding, mail });
-      const reason = !active
+      const reason = !eligible
         ? "access-inactive"
         : row.emailVerified !== true || !z.email().safeParse(row.email).success
           ? "verified-recipient-unavailable"
