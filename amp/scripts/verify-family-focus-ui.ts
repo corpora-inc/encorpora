@@ -1,6 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
-import { choose } from "./ui-controls";
+import { currentLearner } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -47,6 +47,26 @@ async function fits(page: Page, selector: string) {
     `${selector} visible at ${JSON.stringify(page.viewportSize())}: ${JSON.stringify(box)}`,
   );
 }
+// Purchases and records follows every learner's row: on a short phone the
+// page scrolls to it, and it then sits whole on screen.
+async function reachable(page: Page, selector: string) {
+  const element = page.locator(selector);
+  // Put the page back where it was, so later checks see it unscrolled.
+  const saved = await element.evaluate((e) => {
+    const tops: number[] = [];
+    for (let n = e.parentElement; n; n = n.parentElement)
+      tops.push(n.scrollTop);
+    return { tops, y: scrollY };
+  });
+  await element.scrollIntoViewIfNeeded();
+  await fits(page, selector);
+  await element.evaluate((e, { tops, y }) => {
+    let i = 0;
+    for (let n = e.parentElement; n; n = n.parentElement)
+      n.scrollTop = tops[i++];
+    scrollTo(0, y);
+  }, saved);
+}
 try {
   await mkdir("artifacts/family-focus", { recursive: true });
   for (const [width, height] of [
@@ -77,6 +97,7 @@ try {
         {
           id: "avery",
           name: "Avery",
+          birthYear: 2016,
           deletedAt: null,
           stripeLinked: true,
           access: [
@@ -97,6 +118,7 @@ try {
         {
           id: "jordan",
           name: "Jordan",
+          birthYear: 2018,
           deletedAt: null,
           stripeLinked: false,
           access: [
@@ -113,7 +135,15 @@ try {
           name: "",
           deletedAt: date(-1),
           stripeLinked: true,
-          access: [],
+          // A paid term outlives the deleted learner as a billing record.
+          access: [
+            {
+              channel: "stripe",
+              status: "active",
+              startsAt: date(-400),
+              endsAt: date(-35),
+            },
+          ],
         },
       ],
       retained: retentionNotice,
@@ -164,6 +194,14 @@ try {
           },
         });
       }
+      // Account opens on Sign-in, whose "Delete my account" link the router
+      // preloads on intent (pointer or focus); its loader reads what the
+      // account holds. Seen in phone landscape. This check never opens it.
+      if (path === "/api/v1/account/deletion")
+        return route.fulfill({
+          status: 404,
+          json: { error: "not_in_fixture" },
+        });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -178,58 +216,106 @@ try {
         json: { error: "unexpected_fixture" },
       });
     });
+    const account = page.getByRole("navigation", { name: "Account" });
+    const tab = (name: "Learners" | "Billing") =>
+      account.getByRole("link", { name, exact: true }).click();
+    const row = (id: string) => page.locator(`[data-learner-row="${id}"]`);
+    const expanded = page.locator('[data-learner-row][aria-expanded="true"]');
+    const holds = (name: string) =>
+      page
+        .getByRole("list", { name: "What each learner holds" })
+        .getByRole("listitem")
+        .filter({ has: page.getByRole("heading", { name, exact: true }) });
+    // The billing list is part of the page, never a scroller of its own,
+    // and nothing in it widens the page. (A row that opens something
+    // reaches into the gutter on purpose, so the list's own width is not
+    // the measure.)
+    const noInnerScroll = async (label: string) => {
+      const space = await page
+        .getByRole("list", { name: "What each learner holds" })
+        .evaluate((e) => ({
+          content: e.scrollHeight,
+          available: e.clientHeight,
+          width: document.documentElement.scrollWidth,
+          room: innerWidth,
+        }));
+      assert.ok(
+        !strict ||
+          (space.content <= space.available + 1 &&
+            space.width <= space.room + 1),
+        `${label} fits without inner scrolling at ${width}×${height}: ${JSON.stringify(space)}`,
+      );
+    };
     await page.goto("http://127.0.0.1:4384/overview");
     await page.getByRole("button", { name: "Open AMP menu" }).click();
     await page.getByRole("link", { name: "Account", exact: true }).click();
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Learners", exact: true })
-      .click();
-    await page.getByLabel("Family learner", { exact: true }).waitFor();
-    assert.equal(await page.locator(".family-learner").count(), 1);
-    await fits(page, ".family-profile-select");
-    assert.ok(
-      (await page.getByLabel("Family learner", { exact: true }).boundingBox())!
-        .height >= 44,
-      "learner selector has a full touch target",
+    await tab("Learners");
+    // Learners lists each live child as a row; a deleted learner has none.
+    await row("jordan").waitFor();
+    assert.equal(await row("avery").count(), 1);
+    assert.equal(await row("reference").count(), 0);
+    for (const id of ["avery", "jordan"]) {
+      await fits(page, `[data-learner-row="${id}"]`);
+      assert.ok(
+        (await row(id).boundingBox())!.height >= 44,
+        `${id}'s row has a full touch target`,
+      );
+    }
+    // Opening a row chooses that learner; one row's settings open at a time.
+    await row("avery").click();
+    await row("jordan").click();
+    assert.equal(await expanded.count(), 1);
+    assert.equal(await row("jordan").getAttribute("aria-expanded"), "true");
+    assert.equal(await currentLearner(page), "jordan");
+    await fits(page, '[data-learner-row="jordan"]');
+    await tab("Billing");
+    // A current card term, a scheduled funded term and a retained reference.
+    await holds("Avery")
+      .getByText(/^Card subscription, through /)
+      .waitFor();
+    await holds("Jordan")
+      .getByText(/^Education funds, starts /)
+      .waitFor();
+    await holds("Deleted learner 3")
+      .getByText("Learning data deleted. Billing records kept.", {
+        exact: true,
+      })
+      .waitFor();
+    assert.equal(
+      await holds("Jordan")
+        .getByRole("button", { name: /Manage|Continue/ })
+        .count(),
+      0,
+      "a scheduled funded term offers no card management or purchase",
     );
-    await fits(page, ".family-learner");
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Billing", exact: true })
-      .click();
-    await page.getByText("License active", { exact: true }).waitFor();
-    await fits(page, ".family-purchase-open");
-    await fits(page, ".family-billing button");
+    await fits(page, '[aria-label="Manage the plan for Avery"]');
+    await reachable(page, "[data-purchase-options]");
     await page.screenshot({
       path: `artifacts/family-focus/access-${width}.png`,
     });
-    const cardSpace = await page.locator(".family-learners").evaluate((e) => ({
-      content: e.scrollHeight,
-      available: e.clientHeight,
-    }));
-    assert.ok(
-      !strict || cardSpace.content <= cardSpace.available + 1,
-      `ordinary active license fits without inner scrolling at ${width}×${height}: ${JSON.stringify(cardSpace)}`,
-    );
+    await noInnerScroll("ordinary active license");
 
-    await page
-      .getByRole("button", { name: "License history and dates" })
-      .click();
-    await page.getByRole("dialog").waitFor();
-    await page.getByText("Education funds · revoked").waitFor();
+    await holds("Avery").getByRole("button", { name: "History" }).click();
+    const dates = page.getByRole("dialog", { name: "Plan dates" });
+    await dates.waitFor();
+    await dates.getByText("Education funds · revoked").waitFor();
     await page.keyboard.press("Escape");
+    await dates.waitFor({ state: "detached" });
     assert.equal(
       await page.evaluate(() => document.activeElement?.textContent),
-      "License history and dates",
+      "History",
     );
-    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
-    await page.getByText("License scheduled", { exact: true }).waitFor();
-    assert.equal(await page.locator(".family-billing").count(), 0);
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Learners", exact: true })
+    await holds("Deleted learner 3")
+      .getByRole("button", { name: "History" })
       .click();
+    await dates
+      .getByText("Retained billing reference", { exact: true })
+      .waitFor();
+    await page.keyboard.press("Escape");
+    await dates.waitFor({ state: "detached" });
+    await tab("Learners");
+    if ((await row("jordan").getAttribute("aria-expanded")) !== "true")
+      await row("jordan").click();
     await page.getByRole("button", { name: "Edit name", exact: true }).click();
     // A long display name and a revoked future term must not displace the dock.
     const longName = "Jordan Alexandra Montgomery";
@@ -237,111 +323,80 @@ try {
       "revoked";
     await page.getByLabel("Name", { exact: true }).fill(longName);
     await page.getByRole("button", { name: "Save name", exact: true }).click();
-    await page.getByRole("heading", { name: longName, exact: true }).waitFor();
+    await row("jordan").getByText(longName, { exact: true }).waitFor();
     assert.deepEqual(renamed, ["jordan"]);
+    // "Name saved." is a confirmation over the page that closes by itself.
+    await page.getByRole("status").filter({ hasText: "Name saved." }).waitFor();
     await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Billing", exact: true })
-      .click();
-    await page.getByText("No current license", { exact: true }).waitFor();
-    await fits(page, ".family-profile-select");
-    await fits(page, ".family-purchase-open");
+      .getByText("Name saved.", { exact: true })
+      .first()
+      .waitFor({ state: "detached" });
+    await fits(page, '[data-learner-row="jordan"]');
+    await tab("Billing");
+    await holds(longName).getByText("No plan", { exact: true }).waitFor();
+    await fits(page, '[data-continue-with-amp="jordan"]');
+    await reachable(page, "[data-purchase-options]");
     await page.screenshot({
       path: `artifacts/family-focus/no-license-${width}.png`,
     });
-    assert.equal(
-      await page
-        .getByLabel("Family learner", { exact: true })
-        .getAttribute("data-value"),
-      "jordan",
-    );
+    assert.equal(await currentLearner(page), "jordan");
     await page.evaluate(() => {
       (
         window as unknown as { familyFocus: { emit(session: unknown): void } }
       ).familyFocus.emit({ accountId: "parent", token: "renewed-fixture" });
     });
     assert.equal(
-      await page
-        .getByLabel("Family learner", { exact: true })
-        .getAttribute("data-value"),
+      await currentLearner(page),
       "jordan",
       "same-parent token renewal preserves family selection",
     );
-    await choose(
-      page.getByLabel("Family learner", { exact: true }),
-      "reference",
-    );
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Billing", exact: true })
-      .click();
-    await fits(page, ".family-billing button");
+    await fits(page, '[aria-label="Manage the plan for Avery"]');
     await page.screenshot({
       path: `artifacts/family-focus/reference-${width}.png`,
     });
-    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
+    await tab("Learners");
+    if ((await row("jordan").getAttribute("aria-expanded")) !== "true")
+      await row("jordan").click();
     await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Learners", exact: true })
-      .click();
-    await page
-      .getByRole("button", { name: "Delete learning data", exact: true })
+      .getByRole("button", {
+        name: `Delete ${longName}’s learning data`,
+        exact: true,
+      })
       .click();
     await page
       .getByRole("dialog")
       .getByRole("button", { name: /Delete/ })
       .click();
-    await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
-    assert.equal(
-      await page
-        .getByLabel("Family learner", { exact: true })
-        .getAttribute("data-value"),
-      "avery",
-    );
+    // Deleting the chosen learner falls back to the family's other child,
+    // whose settings open on their own as the only row.
+    await row("jordan").waitFor({ state: "detached" });
+    assert.equal(await row("avery").getAttribute("aria-expanded"), "true");
+    assert.equal(await currentLearner(page), "avery");
     family.consent.status = "withdrawn";
     family.consent.withdrawnAt = date(0);
     await page.reload();
-    await page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Billing", exact: true })
-      .click();
-    await page
-      .getByText("Learning paused: consent needed.", {
+    await tab("Billing");
+    await holds("Avery")
+      .getByText("Learning is paused until consent is given.", {
         exact: true,
       })
       .waitFor();
-    await fits(page, ".family-billing button");
-    await fits(page, ".family-purchase-open");
+    await fits(page, '[aria-label="Manage the plan for Avery"]');
+    await reachable(page, "[data-purchase-options]");
     await page.screenshot({
       path: `artifacts/family-focus/paused-${width}.png`,
     });
-    const pausedSpace = await page
-      .locator(".family-learners")
-      .evaluate((e) => ({
-        content: e.scrollHeight,
-        available: e.clientHeight,
-      }));
-    assert.ok(
-      !strict || pausedSpace.content <= pausedSpace.available + 1,
-      `paid license plus paused learning fits ${width}: ${JSON.stringify(pausedSpace)}`,
-    );
+    await noInnerScroll("paid license plus paused learning");
     // Force the term line to wrap even when the local font would keep it on one line.
-    await page
-      .locator(".family-license-summary p")
+    await holds("Avery")
+      .locator("p")
       .first()
       .evaluate((e) => {
         (e as HTMLElement).style.maxWidth = "150px";
       });
-    const wrappedSpace = await page
-      .locator(".family-learners")
-      .evaluate((e) => ({
-        content: e.scrollHeight,
-        available: e.clientHeight,
-      }));
-    assert.ok(
-      !strict || wrappedSpace.content <= wrappedSpace.available + 1,
-      `wrapped term and paused status fit ${width}: ${JSON.stringify(wrappedSpace)}`,
-    );
+    await noInnerScroll("wrapped term and paused status");
+    await fits(page, '[aria-label="Manage the plan for Avery"]');
+    await reachable(page, "[data-purchase-options]");
     await page.screenshot({
       path: `artifacts/family-focus/paused-wrapped-${width}.png`,
     });
