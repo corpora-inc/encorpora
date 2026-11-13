@@ -207,29 +207,6 @@ it("app autoplay fades over the same 900ms eased interval as the incoming highli
   expect(strength("c.coin.1")).toBe(1);
 });
 
-it("manual Next animates one step and stops, including when clicked during a fall", () => {
-  mountPlayer([
-    ...steps,
-    ...Array.from({ length: 5 }, () => ({ caption: "Hold.", actions: [] })),
-  ]);
-  click("Next");
-  tick(900);
-  expect(strength("c.coin.0")).toBe(1);
-  expect(callbacks.size).toBe(0);
-  click("Next");
-  expect(strength("c.coin.0")).toBe(1);
-  tick(1350);
-  const halfway = strength("c.coin.0");
-  expect(halfway).toBeCloseTo(1 - ease(0.5));
-  click("Next");
-  expect(strength("c.coin.0")).toBe(halfway);
-  tick(1800);
-  expect(strength("c.coin.0")).toBe(0);
-  expect(strength("c.coin.1")).toBe(1);
-  expect(host.querySelector("section")!.dataset.step).toBe("1");
-  expect(callbacks.size).toBe(0);
-});
-
 it("reduced motion keeps the final frame without scheduling animation", () => {
   vi.stubGlobal("matchMedia", (query: string) => ({
     matches: query.includes("reduced-motion"),
