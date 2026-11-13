@@ -11,9 +11,9 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
  *   capture phase, so no element beneath (a chart that stops propagation, an
  *   SVG, plain text) can swallow it. A press inside its own zone is left to
  *   the zone, which toggles it (the same target again) or moves it.
- * - A scroll of the page or of any panel, a resize, Escape, Back and Forward,
- *   and a route change close it. Escape closes only the top one, and focus
- *   returns to its trigger.
+ * - A scroll of the page or of any panel but its own list, a resize, Escape,
+ *   Back and Forward, and a route change close it. Escape closes only the
+ *   top one, and focus returns to its trigger.
  *
  * A modal (a dialog-style picker, the glossary card, a Radix menu) keeps its
  * own outside-press and Escape handling, focus trap and scroll lock: the layer
@@ -84,10 +84,13 @@ function listen() {
     },
     true,
   );
-  const moved = (reason: CloseReason) => () => {
+  const moved = (reason: CloseReason) => (event: Event) => {
+    const target = event.target instanceof Node ? event.target : null;
     for (let index = stack.length - 1; index >= 0; index--) {
       const popover = stack[index]!;
       if (popover.modal || popover.keepOnScroll?.()) continue;
+      // Scrolling its own long list moves nothing it is anchored to.
+      if (reason === "scroll" && target && popover.contains(target)) continue;
       closeAt(index, reason);
     }
   };
