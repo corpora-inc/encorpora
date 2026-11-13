@@ -1,0 +1,3257 @@
+{
+  "id": "two-step-change--st",
+  "title": "A story with two changes",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          1.2,
+          19.7,
+          24.75
+        ],
+        "points": {
+          "s1": [
+            0.4,
+            3.6
+          ],
+          "s2": [
+            4.2,
+            3.6
+          ],
+          "s3": [
+            4.2,
+            8.4
+          ],
+          "s4": [
+            0.4,
+            8.4
+          ],
+          "m1": [
+            7.8,
+            3.6
+          ],
+          "m2": [
+            11.6,
+            3.6
+          ],
+          "m3": [
+            11.6,
+            8.4
+          ],
+          "m4": [
+            7.8,
+            8.4
+          ],
+          "e1": [
+            15.2,
+            3.6
+          ],
+          "e2": [
+            19,
+            3.6
+          ],
+          "e3": [
+            19,
+            8.4
+          ],
+          "e4": [
+            15.2,
+            8.4
+          ],
+          "a1t": [
+            4.5,
+            7.0
+          ],
+          "a1h": [
+            7.5,
+            7.0
+          ],
+          "a2t": [
+            11.9,
+            7.0
+          ],
+          "a2h": [
+            14.9,
+            7.0
+          ],
+          "ma1": {
+            "mid": [
+              "a1t",
+              "a1h"
+            ]
+          },
+          "ma2": {
+            "mid": [
+              "a2t",
+              "a2h"
+            ]
+          },
+          "ns": [
+            2.3,
+            2.7
+          ],
+          "nm": [
+            9.7,
+            2.7
+          ],
+          "ne": [
+            17.1,
+            2.7
+          ],
+          "cS": [
+            2.3,
+            6.0
+          ],
+          "cM": [
+            9.7,
+            6.0
+          ],
+          "cE": [
+            17.1,
+            6.0
+          ],
+          "mkp": [
+            2.3,
+            10.4
+          ],
+          "GL": [
+            4.449999999999999,
+            21.4
+          ],
+          "GR": [
+            9.95,
+            21.4
+          ],
+          "AL": [
+            4.449999999999999,
+            23.4
+          ],
+          "AR": [
+            9.95,
+            23.4
+          ],
+          "k1": [
+            3.8999999999999995,
+            11.9
+          ],
+          "k2": [
+            15.5,
+            11.9
+          ],
+          "k3": [
+            16.55,
+            22.15
+          ],
+          "k4": [
+            2.849999999999999,
+            22.15
+          ],
+          "h0": [
+            3.2,
+            22.15
+          ],
+          "h1": [
+            3.695,
+            22.915
+          ],
+          "h2": [
+            5.104,
+            23.564
+          ],
+          "h3": [
+            7.213,
+            23.998
+          ],
+          "h4": [
+            9.7,
+            24.15
+          ],
+          "h5": [
+            12.187,
+            23.998
+          ],
+          "h6": [
+            14.296,
+            23.564
+          ],
+          "h7": [
+            15.705,
+            22.915
+          ],
+          "h8": [
+            16.2,
+            22.15
+          ]
+        },
+        "parts": [
+          {
+            "id": "bucket",
+            "poly": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "fill": "blue-fill",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "handle",
+            "curve": [
+              "h0",
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "h7",
+              "h8"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "rim",
+            "seg": [
+              "k4",
+              "k3"
+            ],
+            "ink": "ink",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "L",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "GL",
+            "size": 1.0
+          },
+          {
+            "id": "R",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "GR",
+            "size": 1.0
+          },
+          {
+            "id": "AL",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "AL",
+            "size": 1.0
+          },
+          {
+            "id": "AR",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "AR",
+            "size": 1.0
+          },
+          {
+            "id": "pl",
+            "counters": "L",
+            "n": 25,
+            "from": 21,
+            "ink": "muted"
+          },
+          {
+            "id": "pr",
+            "counters": "R",
+            "n": 20,
+            "from": 26,
+            "ink": "muted"
+          },
+          {
+            "id": "ql",
+            "counters": "AL",
+            "n": 15,
+            "from": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "qr",
+            "counters": "AR",
+            "n": 15,
+            "from": 11,
+            "ink": "accent"
+          },
+          {
+            "id": "bS",
+            "poly": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bM",
+            "poly": [
+              "m1",
+              "m2",
+              "m3",
+              "m4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bE",
+            "poly": [
+              "e1",
+              "e2",
+              "e3",
+              "e4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "a1",
+            "vector": [
+              "a1t",
+              "a1h"
+            ],
+            "ink": "accent",
+            "w": 4,
+            "group": "ar"
+          },
+          {
+            "id": "a2",
+            "vector": [
+              "a2t",
+              "a2h"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "ar"
+          },
+          {
+            "id": "nS",
+            "label": "\\text{start}",
+            "at": "ns",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted"
+          },
+          {
+            "id": "nM",
+            "label": "\\text{middle}",
+            "at": "nm",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted"
+          },
+          {
+            "id": "nE",
+            "label": "\\text{end}",
+            "at": "ne",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted"
+          },
+          {
+            "id": "lA1",
+            "label": "+30",
+            "at": "ma1",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent",
+            "group": "ar"
+          },
+          {
+            "id": "lA2",
+            "label": "-54",
+            "at": "ma2",
+            "dir": "n",
+            "size": "l",
+            "ink": "warm",
+            "group": "ar"
+          },
+          {
+            "id": "v45",
+            "label": "45",
+            "at": "cS",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "v75",
+            "label": "75",
+            "at": "cM",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "v21",
+            "label": "21",
+            "at": "cE",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "qE",
+            "label": "?",
+            "at": "cE",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted"
+          },
+          {
+            "id": "mk",
+            "dot": "mkp",
+            "ink": "accent",
+            "r": 16
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A bucket has forty-five pebbles. Thirty are put in, then fifty-four are taken out. How many pebbles are in the bucket now?",
+          "do": [
+            {
+              "do": "problem",
+              "text": "A bucket has $45$ pebbles. $30$ are put in, then $54$ are taken out. How many pebbles are in the bucket now?",
+              "at": "A"
+            },
+            {
+              "do": "show",
+              "target": [
+                "v45",
+                "pl",
+                "pr"
+              ],
+              "at": "forty-five"
+            },
+            {
+              "do": "draw",
+              "target": "a1",
+              "at": "Thirty"
+            },
+            {
+              "do": "show",
+              "target": "lA1",
+              "at": "put"
+            },
+            {
+              "do": "draw",
+              "target": "a2",
+              "at": "fifty-four"
+            },
+            {
+              "do": "show",
+              "target": "lA2",
+              "at": "taken"
+            },
+            {
+              "do": "show",
+              "target": "qE",
+              "at": "now"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forty-five is the start. Each arrow is a change, something put in or taken out. The end is what we want to find.",
+          "do": [
+            {
+              "do": "show",
+              "target": "nS",
+              "at": "start"
+            },
+            {
+              "do": "highlight",
+              "target": "ar",
+              "at": "arrow"
+            },
+            {
+              "do": "show",
+              "target": "nE",
+              "at": "end"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Walk forward, one change at a time. First, thirty are put in.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Walk"
+            },
+            {
+              "do": "header",
+              "text": "How many pebbles now?",
+              "at": "Walk"
+            },
+            {
+              "do": "show",
+              "target": "mk",
+              "at": "Walk"
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  9.7,
+                  10.4
+                ]
+              },
+              "at": "thirty",
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "target": [
+                "ql",
+                "qr"
+              ],
+              "at": "put",
+              "dur": 0.4
+            },
+            {
+              "do": "move",
+              "points": {
+                "ql1": {
+                  "cell": [
+                    "L",
+                    6
+                  ]
+                },
+                "ql2": {
+                  "cell": [
+                    "L",
+                    7
+                  ]
+                },
+                "ql3": {
+                  "cell": [
+                    "L",
+                    8
+                  ]
+                },
+                "ql4": {
+                  "cell": [
+                    "L",
+                    9
+                  ]
+                },
+                "ql5": {
+                  "cell": [
+                    "L",
+                    10
+                  ]
+                },
+                "ql6": {
+                  "cell": [
+                    "L",
+                    11
+                  ]
+                },
+                "ql7": {
+                  "cell": [
+                    "L",
+                    12
+                  ]
+                },
+                "ql8": {
+                  "cell": [
+                    "L",
+                    13
+                  ]
+                },
+                "ql9": {
+                  "cell": [
+                    "L",
+                    14
+                  ]
+                },
+                "ql10": {
+                  "cell": [
+                    "L",
+                    15
+                  ]
+                },
+                "ql11": {
+                  "cell": [
+                    "L",
+                    16
+                  ]
+                },
+                "ql12": {
+                  "cell": [
+                    "L",
+                    17
+                  ]
+                },
+                "ql13": {
+                  "cell": [
+                    "L",
+                    18
+                  ]
+                },
+                "ql14": {
+                  "cell": [
+                    "L",
+                    19
+                  ]
+                },
+                "ql15": {
+                  "cell": [
+                    "L",
+                    20
+                  ]
+                },
+                "qr1": {
+                  "cell": [
+                    "R",
+                    11
+                  ]
+                },
+                "qr2": {
+                  "cell": [
+                    "R",
+                    12
+                  ]
+                },
+                "qr3": {
+                  "cell": [
+                    "R",
+                    13
+                  ]
+                },
+                "qr4": {
+                  "cell": [
+                    "R",
+                    14
+                  ]
+                },
+                "qr5": {
+                  "cell": [
+                    "R",
+                    15
+                  ]
+                },
+                "qr6": {
+                  "cell": [
+                    "R",
+                    16
+                  ]
+                },
+                "qr7": {
+                  "cell": [
+                    "R",
+                    17
+                  ]
+                },
+                "qr8": {
+                  "cell": [
+                    "R",
+                    18
+                  ]
+                },
+                "qr9": {
+                  "cell": [
+                    "R",
+                    19
+                  ]
+                },
+                "qr10": {
+                  "cell": [
+                    "R",
+                    20
+                  ]
+                },
+                "qr11": {
+                  "cell": [
+                    "R",
+                    21
+                  ]
+                },
+                "qr12": {
+                  "cell": [
+                    "R",
+                    22
+                  ]
+                },
+                "qr13": {
+                  "cell": [
+                    "R",
+                    23
+                  ]
+                },
+                "qr14": {
+                  "cell": [
+                    "R",
+                    24
+                  ]
+                },
+                "qr15": {
+                  "cell": [
+                    "R",
+                    25
+                  ]
+                }
+              },
+              "at": "put",
+              "dur": 0.9
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Forty-five plus thirty is seventy-five. That is the middle number.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "45+30=75",
+              "note": "\\text{put 30 in}",
+              "fresh": true,
+              "at": "Forty-five"
+            },
+            {
+              "do": "show",
+              "target": "v75",
+              "at": "seventy-five"
+            },
+            {
+              "do": "show",
+              "target": "nM",
+              "at": "middle"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Then fifty-four are taken out. The second change starts from seventy-five, the middle number.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  17.1,
+                  10.4
+                ]
+              },
+              "at": "taken",
+              "dur": 1.5
+            },
+            {
+              "do": "highlight",
+              "target": "bM",
+              "at": "seventy-five"
+            },
+            {
+              "do": "move",
+              "points": {
+                "pl1": {
+                  "cell": [
+                    "AL",
+                    21
+                  ]
+                },
+                "pl2": {
+                  "cell": [
+                    "AL",
+                    22
+                  ]
+                },
+                "pl3": {
+                  "cell": [
+                    "AL",
+                    23
+                  ]
+                },
+                "pl4": {
+                  "cell": [
+                    "AL",
+                    24
+                  ]
+                },
+                "pl5": {
+                  "cell": [
+                    "AL",
+                    25
+                  ]
+                },
+                "pl6": {
+                  "cell": [
+                    "AL",
+                    26
+                  ]
+                },
+                "pl7": {
+                  "cell": [
+                    "AL",
+                    27
+                  ]
+                },
+                "pl8": {
+                  "cell": [
+                    "AL",
+                    28
+                  ]
+                },
+                "pl9": {
+                  "cell": [
+                    "AL",
+                    29
+                  ]
+                },
+                "pl10": {
+                  "cell": [
+                    "AL",
+                    30
+                  ]
+                },
+                "pl11": {
+                  "cell": [
+                    "AL",
+                    31
+                  ]
+                },
+                "pl12": {
+                  "cell": [
+                    "AL",
+                    32
+                  ]
+                },
+                "pl13": {
+                  "cell": [
+                    "AL",
+                    33
+                  ]
+                },
+                "pl14": {
+                  "cell": [
+                    "AL",
+                    34
+                  ]
+                },
+                "pl15": {
+                  "cell": [
+                    "AL",
+                    35
+                  ]
+                },
+                "pr1": {
+                  "cell": [
+                    "AR",
+                    26
+                  ]
+                },
+                "pr2": {
+                  "cell": [
+                    "AR",
+                    27
+                  ]
+                },
+                "pr3": {
+                  "cell": [
+                    "AR",
+                    28
+                  ]
+                },
+                "pr4": {
+                  "cell": [
+                    "AR",
+                    29
+                  ]
+                },
+                "pr5": {
+                  "cell": [
+                    "AR",
+                    30
+                  ]
+                },
+                "pr6": {
+                  "cell": [
+                    "AR",
+                    31
+                  ]
+                },
+                "pr7": {
+                  "cell": [
+                    "AR",
+                    32
+                  ]
+                },
+                "pr8": {
+                  "cell": [
+                    "AR",
+                    33
+                  ]
+                },
+                "pr9": {
+                  "cell": [
+                    "AR",
+                    34
+                  ]
+                },
+                "pr10": {
+                  "cell": [
+                    "AR",
+                    35
+                  ]
+                },
+                "ql6": {
+                  "cell": [
+                    "AL",
+                    11
+                  ]
+                },
+                "ql7": {
+                  "cell": [
+                    "AL",
+                    12
+                  ]
+                },
+                "ql8": {
+                  "cell": [
+                    "AL",
+                    13
+                  ]
+                },
+                "ql9": {
+                  "cell": [
+                    "AL",
+                    14
+                  ]
+                },
+                "ql10": {
+                  "cell": [
+                    "AL",
+                    15
+                  ]
+                },
+                "ql11": {
+                  "cell": [
+                    "AL",
+                    16
+                  ]
+                },
+                "ql12": {
+                  "cell": [
+                    "AL",
+                    17
+                  ]
+                },
+                "ql13": {
+                  "cell": [
+                    "AL",
+                    18
+                  ]
+                },
+                "ql14": {
+                  "cell": [
+                    "AL",
+                    19
+                  ]
+                },
+                "ql15": {
+                  "cell": [
+                    "AL",
+                    20
+                  ]
+                },
+                "qr1": {
+                  "cell": [
+                    "AR",
+                    11
+                  ]
+                },
+                "qr2": {
+                  "cell": [
+                    "AR",
+                    12
+                  ]
+                },
+                "qr3": {
+                  "cell": [
+                    "AR",
+                    13
+                  ]
+                },
+                "qr4": {
+                  "cell": [
+                    "AR",
+                    14
+                  ]
+                },
+                "qr5": {
+                  "cell": [
+                    "AR",
+                    15
+                  ]
+                },
+                "qr6": {
+                  "cell": [
+                    "AR",
+                    16
+                  ]
+                },
+                "qr7": {
+                  "cell": [
+                    "AR",
+                    17
+                  ]
+                },
+                "qr8": {
+                  "cell": [
+                    "AR",
+                    18
+                  ]
+                },
+                "qr9": {
+                  "cell": [
+                    "AR",
+                    19
+                  ]
+                },
+                "qr10": {
+                  "cell": [
+                    "AR",
+                    20
+                  ]
+                },
+                "qr11": {
+                  "cell": [
+                    "AR",
+                    21
+                  ]
+                },
+                "qr12": {
+                  "cell": [
+                    "AR",
+                    22
+                  ]
+                },
+                "qr13": {
+                  "cell": [
+                    "AR",
+                    23
+                  ]
+                },
+                "qr14": {
+                  "cell": [
+                    "AR",
+                    24
+                  ]
+                },
+                "qr15": {
+                  "cell": [
+                    "AR",
+                    25
+                  ]
+                },
+                "ql2": {
+                  "cell": [
+                    "AL",
+                    7
+                  ]
+                },
+                "ql3": {
+                  "cell": [
+                    "AL",
+                    8
+                  ]
+                },
+                "ql4": {
+                  "cell": [
+                    "AL",
+                    9
+                  ]
+                },
+                "ql5": {
+                  "cell": [
+                    "AL",
+                    10
+                  ]
+                }
+              },
+              "at": "taken",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "pl1",
+                "pl2",
+                "pl3",
+                "pl4",
+                "pl5",
+                "pl6",
+                "pl7",
+                "pl8",
+                "pl9",
+                "pl10",
+                "pl11",
+                "pl12",
+                "pl13",
+                "pl14",
+                "pl15",
+                "pr1",
+                "pr2",
+                "pr3",
+                "pr4",
+                "pr5",
+                "pr6",
+                "pr7",
+                "pr8",
+                "pr9",
+                "pr10",
+                "ql6",
+                "ql7",
+                "ql8",
+                "ql9",
+                "ql10",
+                "ql11",
+                "ql12",
+                "ql13",
+                "ql14",
+                "ql15",
+                "qr1",
+                "qr2",
+                "qr3",
+                "qr4",
+                "qr5",
+                "qr6",
+                "qr7",
+                "qr8",
+                "qr9",
+                "qr10",
+                "qr11",
+                "qr12",
+                "qr13",
+                "qr14",
+                "qr15",
+                "ql2",
+                "ql3",
+                "ql4",
+                "ql5"
+              ],
+              "at": "taken",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "ql1": {
+                  "cell": [
+                    "L",
+                    31
+                  ]
+                }
+              },
+              "at": "second",
+              "dur": 0.6
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Seventy-five minus fifty-four is twenty-one. Twenty-one pebbles are in the bucket now.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "qE",
+              "at": "Seventy-five"
+            },
+            {
+              "do": "write",
+              "tex": "75-54=21",
+              "note": "\\text{take 54 out}",
+              "fresh": true,
+              "at": "Seventy-five"
+            },
+            {
+              "do": "show",
+              "target": "v21",
+              "at": "twenty-one"
+            },
+            {
+              "do": "answer",
+              "tex": "21",
+              "at": "pebbles"
+            }
+          ],
+          "pause": 0.6
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.3,
+          1.2,
+          19.7,
+          24.75
+        ],
+        "points": {
+          "s1": [
+            0.4,
+            3.6
+          ],
+          "s2": [
+            4.2,
+            3.6
+          ],
+          "s3": [
+            4.2,
+            8.4
+          ],
+          "s4": [
+            0.4,
+            8.4
+          ],
+          "m1": [
+            7.8,
+            3.6
+          ],
+          "m2": [
+            11.6,
+            3.6
+          ],
+          "m3": [
+            11.6,
+            8.4
+          ],
+          "m4": [
+            7.8,
+            8.4
+          ],
+          "e1": [
+            15.2,
+            3.6
+          ],
+          "e2": [
+            19,
+            3.6
+          ],
+          "e3": [
+            19,
+            8.4
+          ],
+          "e4": [
+            15.2,
+            8.4
+          ],
+          "a1t": [
+            4.5,
+            7.0
+          ],
+          "a1h": [
+            7.5,
+            7.0
+          ],
+          "a2t": [
+            11.9,
+            7.0
+          ],
+          "a2h": [
+            14.9,
+            7.0
+          ],
+          "u2t": [
+            14.9,
+            5.0
+          ],
+          "u2h": [
+            11.9,
+            5.0
+          ],
+          "u1t": [
+            7.5,
+            5.0
+          ],
+          "u1h": [
+            4.5,
+            5.0
+          ],
+          "ma1": {
+            "mid": [
+              "a1t",
+              "a1h"
+            ]
+          },
+          "ma2": {
+            "mid": [
+              "a2t",
+              "a2h"
+            ]
+          },
+          "mu1": {
+            "mid": [
+              "u1t",
+              "u1h"
+            ]
+          },
+          "mu2": {
+            "mid": [
+              "u2t",
+              "u2h"
+            ]
+          },
+          "ns": [
+            2.3,
+            2.7
+          ],
+          "nm": [
+            9.7,
+            2.7
+          ],
+          "ne": [
+            17.1,
+            2.7
+          ],
+          "cS": [
+            2.3,
+            6.0
+          ],
+          "cM": [
+            9.7,
+            6.0
+          ],
+          "cE": [
+            17.1,
+            6.0
+          ],
+          "mkp": [
+            17.1,
+            10.4
+          ],
+          "GL": [
+            4.449999999999999,
+            21.4
+          ],
+          "GR": [
+            9.95,
+            21.4
+          ],
+          "AL": [
+            4.449999999999999,
+            23.4
+          ],
+          "AR": [
+            9.95,
+            23.4
+          ],
+          "g1": [
+            3.899999999999999,
+            11.9
+          ],
+          "g2": [
+            15.499999999999998,
+            11.9
+          ],
+          "g3": [
+            15.799999999999999,
+            22.15
+          ],
+          "g4": [
+            3.599999999999999,
+            22.15
+          ],
+          "j0": [
+            5.1,
+            22.15
+          ],
+          "j1": [
+            5.245,
+            22.801
+          ],
+          "j2": [
+            5.656,
+            23.352
+          ],
+          "j3": [
+            6.273,
+            23.721
+          ],
+          "j4": [
+            7.0,
+            23.85
+          ],
+          "j5": [
+            7.727,
+            23.721
+          ],
+          "j6": [
+            8.344,
+            23.352
+          ],
+          "j7": [
+            8.755,
+            22.801
+          ],
+          "j8": [
+            8.9,
+            22.15
+          ],
+          "k0": [
+            10.5,
+            22.15
+          ],
+          "k1": [
+            10.645,
+            22.801
+          ],
+          "k2": [
+            11.056,
+            23.352
+          ],
+          "k3": [
+            11.673,
+            23.721
+          ],
+          "k4": [
+            12.4,
+            23.85
+          ],
+          "k5": [
+            13.127,
+            23.721
+          ],
+          "k6": [
+            13.744,
+            23.352
+          ],
+          "k7": [
+            14.155,
+            22.801
+          ],
+          "k8": [
+            14.3,
+            22.15
+          ]
+        },
+        "parts": [
+          {
+            "id": "bag",
+            "poly": [
+              "g1",
+              "g2",
+              "g3",
+              "g4"
+            ],
+            "fill": "warm-fill",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "hd1",
+            "curve": [
+              "j0",
+              "j1",
+              "j2",
+              "j3",
+              "j4",
+              "j5",
+              "j6",
+              "j7",
+              "j8"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "hd2",
+            "curve": [
+              "k0",
+              "k1",
+              "k2",
+              "k3",
+              "k4",
+              "k5",
+              "k6",
+              "k7",
+              "k8"
+            ],
+            "ink": "ink",
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "tie",
+            "seg": [
+              "g4",
+              "g3"
+            ],
+            "ink": "ink",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "L",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "GL",
+            "size": 1.0
+          },
+          {
+            "id": "R",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "GR",
+            "size": 1.0
+          },
+          {
+            "id": "AL",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "AL",
+            "size": 1.0
+          },
+          {
+            "id": "AR",
+            "grid": [
+              5,
+              9
+            ],
+            "at": "AR",
+            "size": 1.0
+          },
+          {
+            "id": "ml",
+            "counters": "L",
+            "n": 30,
+            "from": 16,
+            "ink": "violet"
+          },
+          {
+            "id": "mr",
+            "counters": "R",
+            "n": 30,
+            "from": 16,
+            "ink": "violet"
+          },
+          {
+            "id": "mo",
+            "counters": "L",
+            "n": 1,
+            "from": 11,
+            "ink": "violet"
+          },
+          {
+            "id": "na",
+            "counters": "AL",
+            "n": 3,
+            "from": 1,
+            "ink": "accent"
+          },
+          {
+            "id": "nb",
+            "counters": "AL",
+            "n": 5,
+            "from": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "nc",
+            "counters": "AL",
+            "n": 4,
+            "from": 12,
+            "ink": "accent"
+          },
+          {
+            "id": "nr",
+            "counters": "AR",
+            "n": 10,
+            "from": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "bS",
+            "poly": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bM",
+            "poly": [
+              "m1",
+              "m2",
+              "m3",
+              "m4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bE",
+            "poly": [
+              "e1",
+              "e2",
+              "e3",
+              "e4"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "a1",
+            "vector": [
+              "a1t",
+              "a1h"
+            ],
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "a2",
+            "vector": [
+              "a2t",
+              "a2h"
+            ],
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "u1",
+            "vector": [
+              "u1t",
+              "u1h"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "back"
+          },
+          {
+            "id": "u2",
+            "vector": [
+              "u2t",
+              "u2h"
+            ],
+            "ink": "accent",
+            "w": 4,
+            "group": "back"
+          },
+          {
+            "id": "nS",
+            "label": "\\text{start}",
+            "at": "ns",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "nM",
+            "label": "\\text{middle}",
+            "at": "nm",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "nE",
+            "label": "\\text{end}",
+            "at": "ne",
+            "dir": "s",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "lA1",
+            "label": "+28",
+            "at": "ma1",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "lA2",
+            "label": "-22",
+            "at": "ma2",
+            "dir": "n",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "lU2",
+            "label": "+22",
+            "at": "mu2",
+            "dir": "s",
+            "size": "l",
+            "ink": "accent",
+            "group": "back"
+          },
+          {
+            "id": "lU1",
+            "label": "-28",
+            "at": "mu1",
+            "dir": "s",
+            "size": "l",
+            "ink": "warm",
+            "group": "back"
+          },
+          {
+            "id": "qS",
+            "label": "?",
+            "at": "cS",
+            "dir": "c",
+            "size": "xl",
+            "ink": "muted"
+          },
+          {
+            "id": "v83",
+            "label": "83",
+            "at": "cM",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "v55",
+            "label": "55",
+            "at": "cS",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "v61",
+            "label": "61",
+            "at": "cE",
+            "dir": "c",
+            "size": "xl"
+          },
+          {
+            "id": "mk",
+            "dot": "mkp",
+            "ink": "accent",
+            "r": 16
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Some marbles were in a bag. Twenty-eight were put in, then twenty-two were taken out. Now there are sixty-one. How many marbles were in the bag at first?",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Some"
+            },
+            {
+              "do": "problem",
+              "text": "Some marbles were in a bag. $28$ were put in, then $22$ were taken out. Now there are $61$. How many marbles were in the bag at first?",
+              "at": "Some"
+            },
+            {
+              "do": "draw",
+              "target": "a1",
+              "at": "Twenty-eight"
+            },
+            {
+              "do": "show",
+              "target": "lA1",
+              "at": "Twenty-eight"
+            },
+            {
+              "do": "draw",
+              "target": "a2",
+              "at": "twenty-two"
+            },
+            {
+              "do": "show",
+              "target": "lA2",
+              "at": "twenty-two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "v61",
+                "mk",
+                "ml",
+                "mr",
+                "mo"
+              ],
+              "at": "sixty-one"
+            },
+            {
+              "do": "show",
+              "target": "qS",
+              "at": "first"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "learner",
+          "say": "The story puts in twenty-eight first, so sixty-one plus twenty-eight is eighty-nine. Then minus twenty-two is sixty-seven.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "The"
+            },
+            {
+              "do": "header",
+              "text": "How many marbles at first?",
+              "at": "The"
+            },
+            {
+              "do": "highlight",
+              "target": "a1",
+              "at": "twenty-eight"
+            },
+            {
+              "do": "write",
+              "tex": "61+28=89",
+              "id": "slip1",
+              "fresh": true,
+              "at": "so"
+            },
+            {
+              "do": "write",
+              "tex": "89-22=67",
+              "id": "slip2",
+              "fresh": true,
+              "at": "Then"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The last change was twenty-two taken out. We stand at the end, so walking back, we meet it first.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip1",
+              "at": "last"
+            },
+            {
+              "do": "strike",
+              "target": "slip2",
+              "at": "last"
+            },
+            {
+              "do": "highlight",
+              "target": "a2",
+              "at": "last"
+            },
+            {
+              "do": "draw",
+              "target": "u2",
+              "at": "walking"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Going back undoes it: the twenty-two that were taken out are put back.",
+          "do": [
+            {
+              "do": "show",
+              "target": "lU2",
+              "at": "undoes"
+            },
+            {
+              "do": "show",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10"
+              ],
+              "at": "put",
+              "dur": 0.4
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "L",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "L",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "L",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "L",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "L",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "L",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "L",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "L",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "L",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "L",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "L",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "L",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "R",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "R",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "R",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "R",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "R",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "R",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "R",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "R",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "R",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "R",
+                    15
+                  ]
+                }
+              },
+              "at": "put",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  9.7,
+                  10.4
+                ]
+              },
+              "at": "put",
+              "dur": 1.5
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Sixty-one plus twenty-two is eighty-three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Sixty-one"
+            },
+            {
+              "do": "write",
+              "tex": "61+22=83",
+              "note": "\\text{put 22 back}",
+              "fresh": true,
+              "at": "Sixty-one"
+            },
+            {
+              "do": "show",
+              "target": "v83",
+              "at": "eighty-three"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Next, the twenty-eight that were put in come back out.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "u1",
+              "at": "Next"
+            },
+            {
+              "do": "show",
+              "target": "lU1",
+              "at": "twenty-eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "AL",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "AL",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "AL",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "AL",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "AL",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "AL",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "AL",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "AL",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "AL",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "AL",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "AL",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "AL",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "AR",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "AR",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "AR",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "AR",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "AR",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "AR",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "AR",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "AR",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "AR",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "AR",
+                    15
+                  ]
+                },
+                "mo1": {
+                  "cell": [
+                    "AL",
+                    11
+                  ]
+                },
+                "mr1": {
+                  "cell": [
+                    "AR",
+                    16
+                  ]
+                },
+                "mr2": {
+                  "cell": [
+                    "AR",
+                    17
+                  ]
+                },
+                "mr3": {
+                  "cell": [
+                    "AR",
+                    18
+                  ]
+                },
+                "mr4": {
+                  "cell": [
+                    "AR",
+                    19
+                  ]
+                },
+                "mr5": {
+                  "cell": [
+                    "AR",
+                    20
+                  ]
+                }
+              },
+              "at": "come",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10",
+                "mo1",
+                "mr1",
+                "mr2",
+                "mr3",
+                "mr4",
+                "mr5"
+              ],
+              "at": "come",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  2.3,
+                  10.4
+                ]
+              },
+              "at": "come",
+              "dur": 1.5
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "learner",
+          "say": "Eighty-three minus twenty-eight is fifty-five. So the bag started with fifty-five.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "83-28=55",
+              "note": "\\text{take 28 out}",
+              "fresh": true,
+              "at": "Eighty-three"
+            },
+            {
+              "do": "hide",
+              "target": "qS",
+              "at": "Eighty-three"
+            },
+            {
+              "do": "show",
+              "target": "v55",
+              "at": "fifty-five"
+            },
+            {
+              "do": "answer",
+              "tex": "55",
+              "at": "started"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "learner",
+          "say": "Walking forward, fifty-five plus twenty-eight is eighty-three, and eighty-three minus twenty-two is sixty-one.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Walking"
+            },
+            {
+              "do": "write",
+              "tex": "55+28=83",
+              "note": "\\text{put 28 in}",
+              "fresh": true,
+              "at": "fifty-five"
+            },
+            {
+              "do": "write",
+              "tex": "83-22=61",
+              "fresh": true,
+              "at": "eighty-three",
+              "nth": 2,
+              "note": "\\text{take 22 out}"
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  9.7,
+                  10.4
+                ]
+              },
+              "at": "fifty-five",
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10",
+                "mo1",
+                "mr1",
+                "mr2",
+                "mr3",
+                "mr4",
+                "mr5"
+              ],
+              "at": "plus",
+              "dur": 0.4
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "L",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "L",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "L",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "L",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "L",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "L",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "L",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "L",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "L",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "L",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "L",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "L",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "R",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "R",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "R",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "R",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "R",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "R",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "R",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "R",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "R",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "R",
+                    15
+                  ]
+                },
+                "mo1": {
+                  "cell": [
+                    "L",
+                    11
+                  ]
+                },
+                "mr1": {
+                  "cell": [
+                    "R",
+                    16
+                  ]
+                },
+                "mr2": {
+                  "cell": [
+                    "R",
+                    17
+                  ]
+                },
+                "mr3": {
+                  "cell": [
+                    "R",
+                    18
+                  ]
+                },
+                "mr4": {
+                  "cell": [
+                    "R",
+                    19
+                  ]
+                },
+                "mr5": {
+                  "cell": [
+                    "R",
+                    20
+                  ]
+                }
+              },
+              "at": "plus",
+              "dur": 0.9
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  17.1,
+                  10.4
+                ]
+              },
+              "at": "eighty-three",
+              "dur": 1.5,
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "AL",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "AL",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "AL",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "AL",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "AL",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "AL",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "AL",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "AL",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "AL",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "AL",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "AL",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "AL",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "AR",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "AR",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "AR",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "AR",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "AR",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "AR",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "AR",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "AR",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "AR",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "AR",
+                    15
+                  ]
+                }
+              },
+              "at": "minus",
+              "dur": 0.9
+            },
+            {
+              "do": "hide",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10"
+              ],
+              "at": "minus",
+              "dur": 0.9
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Sixty-one is the end of the story, so fifty-five is right.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "bE",
+              "at": "end"
+            }
+          ],
+          "pause": 0.4
+        },
+        {
+          "speaker": "teacher",
+          "say": "Going back along a change does its opposite: what was taken out is put back, what was put in is taken out.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Going"
+            },
+            {
+              "do": "header",
+              "off": true,
+              "at": "Going"
+            },
+            {
+              "do": "text",
+              "text": "Going back: do the opposite",
+              "at": "Going"
+            },
+            {
+              "do": "highlight",
+              "target": "back",
+              "at": "opposite"
+            },
+            {
+              "do": "show",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10"
+              ],
+              "at": "put",
+              "dur": 0.4,
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "L",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "L",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "L",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "L",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "L",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "L",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "L",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "L",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "L",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "L",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "L",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "L",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "R",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "R",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "R",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "R",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "R",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "R",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "R",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "R",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "R",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "R",
+                    15
+                  ]
+                }
+              },
+              "at": "put",
+              "dur": 0.9,
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  9.7,
+                  10.4
+                ]
+              },
+              "at": "put",
+              "dur": 1.0,
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "na1": {
+                  "cell": [
+                    "AL",
+                    1
+                  ]
+                },
+                "na2": {
+                  "cell": [
+                    "AL",
+                    2
+                  ]
+                },
+                "na3": {
+                  "cell": [
+                    "AL",
+                    3
+                  ]
+                },
+                "nb1": {
+                  "cell": [
+                    "AL",
+                    6
+                  ]
+                },
+                "nb2": {
+                  "cell": [
+                    "AL",
+                    7
+                  ]
+                },
+                "nb3": {
+                  "cell": [
+                    "AL",
+                    8
+                  ]
+                },
+                "nb4": {
+                  "cell": [
+                    "AL",
+                    9
+                  ]
+                },
+                "nb5": {
+                  "cell": [
+                    "AL",
+                    10
+                  ]
+                },
+                "nc1": {
+                  "cell": [
+                    "AL",
+                    12
+                  ]
+                },
+                "nc2": {
+                  "cell": [
+                    "AL",
+                    13
+                  ]
+                },
+                "nc3": {
+                  "cell": [
+                    "AL",
+                    14
+                  ]
+                },
+                "nc4": {
+                  "cell": [
+                    "AL",
+                    15
+                  ]
+                },
+                "nr1": {
+                  "cell": [
+                    "AR",
+                    6
+                  ]
+                },
+                "nr2": {
+                  "cell": [
+                    "AR",
+                    7
+                  ]
+                },
+                "nr3": {
+                  "cell": [
+                    "AR",
+                    8
+                  ]
+                },
+                "nr4": {
+                  "cell": [
+                    "AR",
+                    9
+                  ]
+                },
+                "nr5": {
+                  "cell": [
+                    "AR",
+                    10
+                  ]
+                },
+                "nr6": {
+                  "cell": [
+                    "AR",
+                    11
+                  ]
+                },
+                "nr7": {
+                  "cell": [
+                    "AR",
+                    12
+                  ]
+                },
+                "nr8": {
+                  "cell": [
+                    "AR",
+                    13
+                  ]
+                },
+                "nr9": {
+                  "cell": [
+                    "AR",
+                    14
+                  ]
+                },
+                "nr10": {
+                  "cell": [
+                    "AR",
+                    15
+                  ]
+                },
+                "mo1": {
+                  "cell": [
+                    "AL",
+                    11
+                  ]
+                },
+                "mr1": {
+                  "cell": [
+                    "AR",
+                    16
+                  ]
+                },
+                "mr2": {
+                  "cell": [
+                    "AR",
+                    17
+                  ]
+                },
+                "mr3": {
+                  "cell": [
+                    "AR",
+                    18
+                  ]
+                },
+                "mr4": {
+                  "cell": [
+                    "AR",
+                    19
+                  ]
+                },
+                "mr5": {
+                  "cell": [
+                    "AR",
+                    20
+                  ]
+                }
+              },
+              "at": "taken",
+              "dur": 0.9,
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": [
+                "na1",
+                "na2",
+                "na3",
+                "nb1",
+                "nb2",
+                "nb3",
+                "nb4",
+                "nb5",
+                "nc1",
+                "nc2",
+                "nc3",
+                "nc4",
+                "nr1",
+                "nr2",
+                "nr3",
+                "nr4",
+                "nr5",
+                "nr6",
+                "nr7",
+                "nr8",
+                "nr9",
+                "nr10",
+                "mo1",
+                "mr1",
+                "mr2",
+                "mr3",
+                "mr4",
+                "mr5"
+              ],
+              "at": "taken",
+              "dur": 0.9,
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "mkp": [
+                  2.3,
+                  10.4
+                ]
+              },
+              "at": "taken",
+              "dur": 1.0,
+              "nth": 2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Forward: one change at a time. Backward: undo the last change first.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Forward: one change at a time",
+              "at": "Forward"
+            },
+            {
+              "do": "text",
+              "text": "Backward: undo last change first",
+              "at": "Backward"
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2266 @@
+{
+ "id": "related-subtraction--sr",
+ "title": "To subtract, think addition",
+ "teaches": [
+  "make-ten-fact",
+  "related-subtraction-sentence"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -1.4,
+     -2.9,
+     15,
+     11.1
+    ],
+    "points": {
+     "TA": [
+      0,
+      10
+     ],
+     "TB": [
+      0,
+      4
+     ],
+     "NA": [
+      12.6,
+      8
+     ],
+     "NB": [
+      12.6,
+      2
+     ],
+     "NA2": [
+      12.35,
+      8
+     ],
+     "W": [
+      5.5,
+      -1.5
+     ],
+     "ga1c": [
+      1.1,
+      9.0
+     ],
+     "ga2c": [
+      3.3,
+      9.0
+     ],
+     "ga3c": [
+      5.5,
+      9.0
+     ],
+     "ga4c": [
+      7.7,
+      9.0
+     ],
+     "ga5c": [
+      9.9,
+      9.0
+     ],
+     "ga6c": [
+      1.1,
+      7.0
+     ],
+     "ga7c": [
+      3.3,
+      7.0
+     ],
+     "ga8c": [
+      5.5,
+      7.0
+     ],
+     "PAD": [
+      0.25,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "frameA",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TA",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "frameB",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TB",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "ga1",
+      "circle": "ga1c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga2",
+      "circle": "ga2c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga3",
+      "circle": "ga3c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga4",
+      "circle": "ga4c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga5",
+      "circle": "ga5c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga6",
+      "circle": "ga6c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga7",
+      "circle": "ga7c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga8",
+      "circle": "ga8c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "blue",
+      "counters": "frameA",
+      "n": 8,
+      "ink": "blue"
+     },
+     {
+      "id": "orange",
+      "counters": "frameB",
+      "n": 5,
+      "ink": "warm",
+      "shape": "square"
+     },
+     {
+      "id": "la8",
+      "label": "8",
+      "at": "NA",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue"
+     },
+     {
+      "id": "la10",
+      "label": "10",
+      "at": "NA2",
+      "dir": "c",
+      "size": "xl",
+      "ink": "ink"
+     },
+     {
+      "id": "la2",
+      "label": "2",
+      "at": "NA",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "lb5",
+      "label": "5",
+      "at": "NB",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "lb3",
+      "label": "3",
+      "at": "NB",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm"
+     },
+     {
+      "id": "pad",
+      "label": "8",
+      "at": "PAD",
+      "dir": "c",
+      "size": "xl",
+      "ink": "paper",
+      "start": true
+     },
+     {
+      "id": "whole",
+      "label": "\\text{whole: }13",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Eight counters, and five more. Find how many in all.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "blue",
+        "la8"
+       ],
+       "at": "Eight"
+      },
+      {
+       "do": "header",
+       "tex": "\\cb{8}+\\cw{5}",
+       "label": "How many in all",
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": [
+        "orange",
+        "lb5"
+       ],
+       "at": "five"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each frame is a ten-frame: ten boxes, two rows of five.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "frameA",
+        "frameB"
+       ],
+       "at": "ten-frame"
+      },
+      {
+       "do": "text",
+       "text": "A ten-frame holds $10$",
+       "tone": "muted",
+       "at": "ten-frame"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Fill the ten first. Two boxes are empty, so two counters slide up: one, two.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cb{8}+\\cw{2}=10",
+       "fresh": true,
+       "at": "empty"
+      },
+      {
+       "do": "move",
+       "points": {
+        "orange4": {
+         "cell": [
+          "frameA",
+          9
+         ]
+        }
+       },
+       "at": "one",
+       "dur": 0.9
+      },
+      {
+       "do": "move",
+       "points": {
+        "orange5": {
+         "cell": [
+          "frameA",
+          10
+         ]
+        }
+       },
+       "at": "two",
+       "nth": 3,
+       "dur": 0.9
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "A full ten, and three more below.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "la8",
+        "lb5"
+       ],
+       "at": "full"
+      },
+      {
+       "do": "show",
+       "target": "la10",
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "lb3",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Ten and three make thirteen in all.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "10+\\cw{3}=\\cv{13}",
+       "fresh": true,
+       "at": "Ten"
+      },
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "thirteen"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight plus five is thirteen. Eight and five are the parts.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Eight"
+      },
+      {
+       "do": "header",
+       "tex": "\\cb{8}+\\cw{5}=\\cv{13}",
+       "label": "Parts and whole",
+       "at": "Eight"
+      },
+      {
+       "do": "text",
+       "text": "Parts: $\\cb{8}$ and $\\cw{5}$",
+       "at": "parts"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "blue",
+        "orange"
+       ],
+       "at": "parts"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Thirteen, all of them, is the whole.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Whole: $\\cv{13}$",
+       "at": "whole"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The same counters answer thirteen minus eight. Think: eight and what make thirteen.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "thirteen"
+      },
+      {
+       "do": "header",
+       "tex": "\\cv{13}-\\cb{8}=\\square",
+       "label": "Find the other part",
+       "at": "thirteen"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{8}+\\square=\\cv{13}",
+       "fresh": true,
+       "at": "Think"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start from the whole, and take the eight away.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "blue",
+        "la10"
+       ],
+       "at": "away",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "ghostA",
+       "at": "away",
+       "dur": 0.9
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two filled the ten.",
+     "do": [
+      {
+       "do": "show",
+       "target": "la2",
+       "at": "Two"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "orange4",
+        "orange5",
+        "la2"
+       ],
+       "at": "Two"
+      }
+     ],
+     "pause": 0.1
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three more made thirteen.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "orange1",
+        "orange2",
+        "orange3",
+        "lb3"
+       ],
+       "at": "Three"
+      }
+     ],
+     "pause": 0.1
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two and three are five. So thirteen minus eight is five.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{2}+\\cw{3}=\\cw{5}",
+       "fresh": true,
+       "at": "Two"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cv{13}-\\cb{8}=\\cw{5}",
+       "at": "thirteen"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Put them back. Eight, five and thirteen make a fact family: two additions, two subtractions.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "la2",
+        "lb3",
+        "ghostA"
+       ],
+       "at": "Put"
+      },
+      {
+       "do": "move",
+       "points": {
+        "orange4": {
+         "cell": [
+          "frameB",
+          4
+         ]
+        },
+        "orange5": {
+         "cell": [
+          "frameB",
+          5
+         ]
+        }
+       },
+       "at": "Put",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "blue",
+        "la8",
+        "lb5"
+       ],
+       "at": "back"
+      },
+      {
+       "do": "clear",
+       "at": "Eight"
+      },
+      {
+       "do": "header",
+       "off": true,
+       "at": "Eight"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{8}+\\cw{5}=\\cv{13}",
+       "fresh": true,
+       "at": "family"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{5}+\\cb{8}=\\cv{13}",
+       "fresh": true,
+       "at": "additions"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{13}-\\cb{8}=\\cw{5}",
+       "fresh": true,
+       "at": "two",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{13}-\\cw{5}=\\cb{8}",
+       "fresh": true,
+       "at": "subtractions"
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.4,
+     -2.9,
+     15,
+     11.1
+    ],
+    "points": {
+     "TA": [
+      0,
+      10
+     ],
+     "TB": [
+      0,
+      4
+     ],
+     "NA": [
+      12.6,
+      8
+     ],
+     "NB": [
+      12.6,
+      2
+     ],
+     "NA2": [
+      12.35,
+      8
+     ],
+     "W": [
+      5.5,
+      -1.5
+     ],
+     "ga1c": [
+      1.1,
+      9.0
+     ],
+     "ga2c": [
+      3.3,
+      9.0
+     ],
+     "ga3c": [
+      5.5,
+      9.0
+     ],
+     "ga4c": [
+      7.7,
+      9.0
+     ],
+     "ga5c": [
+      9.9,
+      9.0
+     ],
+     "ga6c": [
+      1.1,
+      7.0
+     ],
+     "ga7c": [
+      3.3,
+      7.0
+     ],
+     "ga8c": [
+      5.5,
+      7.0
+     ],
+     "ga9c": [
+      7.7,
+      7.0
+     ],
+     "PAD": [
+      0.31,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "frameA",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TA",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "frameB",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TB",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "ga1",
+      "circle": "ga1c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga2",
+      "circle": "ga2c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga3",
+      "circle": "ga3c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga4",
+      "circle": "ga4c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga5",
+      "circle": "ga5c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga6",
+      "circle": "ga6c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga7",
+      "circle": "ga7c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga8",
+      "circle": "ga8c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga9",
+      "circle": "ga9c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "blue",
+      "counters": "frameA",
+      "n": 9,
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "orange",
+      "counters": "frameB",
+      "n": 3,
+      "ink": "warm",
+      "shape": "square",
+      "start": true
+     },
+     {
+      "id": "la9",
+      "label": "9",
+      "at": "NA",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "lb3",
+      "label": "3",
+      "at": "NB",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "pad",
+      "label": "8",
+      "at": "PAD",
+      "dir": "c",
+      "size": "xl",
+      "ink": "paper",
+      "start": true
+     },
+     {
+      "id": "whole",
+      "label": "\\text{whole: }12",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "violet"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is an addition fact: nine plus three equals twelve.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Here"
+      },
+      {
+       "do": "problem",
+       "text": "Here is an addition fact: $9+3=12$ Which subtraction sentence can this fact help you solve? Use $n$ for the unknown.",
+       "at": "Here"
+      },
+      {
+       "do": "show",
+       "target": "whole",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Which subtraction sentence can this fact help you solve? Use n for the unknown.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "fact"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "n is the number to find. Here are three choices: nine minus three, twelve minus nine, or nine minus twelve. Choose one of them.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "n"
+      },
+      {
+       "do": "header",
+       "tex": "\\cb{9}+\\cw{3}=\\cv{12}",
+       "label": "The addition fact",
+       "at": "n"
+      },
+      {
+       "do": "text",
+       "text": "$\\cb{9}-\\cw{3}=n$",
+       "id": "slip",
+       "at": "nine"
+      },
+      {
+       "do": "text",
+       "text": "$\\cv{12}-\\cb{9}=n$",
+       "id": "right",
+       "at": "twelve"
+      },
+      {
+       "do": "text",
+       "text": "$\\cb{9}-\\cv{12}=n$",
+       "id": "rev",
+       "at": "nine",
+       "nth": 3
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "I pick nine minus three. Nine and three are the numbers I see first in the addition.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "la9",
+        "lb3"
+       ],
+       "at": "numbers"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nine and three are both parts. Taking one part from the other is a different question.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "blue",
+        "orange"
+       ],
+       "at": "both"
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "different"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtraction starts from the whole, twelve. Nine minus twelve does not.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      },
+      {
+       "do": "strike",
+       "target": "rev",
+       "at": "not"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "Twelve minus nine. Take the nine away, and three are left: n is three, the other part of the whole.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Twelve"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cv{12}-\\cb{9}=n",
+       "at": "Twelve"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "blue",
+        "la9"
+       ],
+       "at": "away",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "ghostA",
+       "at": "away",
+       "dur": 0.9
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "orange",
+        "lb3"
+       ],
+       "at": "left"
+      },
+      {
+       "do": "write",
+       "tex": "n=\\cw{3}",
+       "fresh": true,
+       "at": "three",
+       "nth": 2
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     4.9,
+     -3.9,
+     17.1,
+     5.6
+    ],
+    "points": {
+     "L0": [
+      5.5,
+      0
+     ],
+     "R0": [
+      16.5,
+      0
+     ],
+     "t6a": [
+      6,
+      0.35
+     ],
+     "t6b": [
+      6,
+      -0.35
+     ],
+     "n6": [
+      6,
+      -1.1
+     ],
+     "t7a": [
+      7,
+      0.35
+     ],
+     "t7b": [
+      7,
+      -0.35
+     ],
+     "n7": [
+      7,
+      -1.1
+     ],
+     "t8a": [
+      8,
+      0.35
+     ],
+     "t8b": [
+      8,
+      -0.35
+     ],
+     "n8": [
+      8,
+      -1.1
+     ],
+     "t9a": [
+      9,
+      0.35
+     ],
+     "t9b": [
+      9,
+      -0.35
+     ],
+     "n9": [
+      9,
+      -1.1
+     ],
+     "t10a": [
+      10,
+      0.6
+     ],
+     "t10b": [
+      10,
+      -0.6
+     ],
+     "n10": [
+      10,
+      -1.1
+     ],
+     "t11a": [
+      11,
+      0.35
+     ],
+     "t11b": [
+      11,
+      -0.35
+     ],
+     "n11": [
+      11,
+      -1.1
+     ],
+     "t12a": [
+      12,
+      0.35
+     ],
+     "t12b": [
+      12,
+      -0.35
+     ],
+     "n12": [
+      12,
+      -1.1
+     ],
+     "t13a": [
+      13,
+      0.35
+     ],
+     "t13b": [
+      13,
+      -0.35
+     ],
+     "n13": [
+      13,
+      -1.1
+     ],
+     "t14a": [
+      14,
+      0.35
+     ],
+     "t14b": [
+      14,
+      -0.35
+     ],
+     "n14": [
+      14,
+      -1.1
+     ],
+     "t15a": [
+      15,
+      0.35
+     ],
+     "t15b": [
+      15,
+      -0.35
+     ],
+     "n15": [
+      15,
+      -1.1
+     ],
+     "t16a": [
+      16,
+      0.35
+     ],
+     "t16b": [
+      16,
+      -0.35
+     ],
+     "n16": [
+      16,
+      -1.1
+     ],
+     "hopa0": [
+      7.0,
+      0.14
+     ],
+     "hopa1": [
+      7.0128,
+      0.4794
+     ],
+     "hopa2": [
+      7.0511,
+      0.8129
+     ],
+     "hopa3": [
+      7.1142,
+      1.135
+     ],
+     "hopa4": [
+      7.201,
+      1.44
+     ],
+     "hopa5": [
+      7.31,
+      1.7228
+     ],
+     "hopa6": [
+      7.4393,
+      1.9785
+     ],
+     "hopa7": [
+      7.5869,
+      2.2027
+     ],
+     "hopa8": [
+      7.75,
+      2.3917
+     ],
+     "hopa9": [
+      7.926,
+      2.5421
+     ],
+     "hopa10": [
+      8.1118,
+      2.6514
+     ],
+     "hopa11": [
+      8.3042,
+      2.7178
+     ],
+     "hopa12": [
+      8.5,
+      2.74
+     ],
+     "hopa13": [
+      8.6958,
+      2.7178
+     ],
+     "hopa14": [
+      8.8882,
+      2.6514
+     ],
+     "hopa15": [
+      9.074,
+      2.5421
+     ],
+     "hopa16": [
+      9.25,
+      2.3917
+     ],
+     "hopa17": [
+      9.4131,
+      2.2027
+     ],
+     "hopa18": [
+      9.5607,
+      1.9785
+     ],
+     "hopa19": [
+      9.69,
+      1.7228
+     ],
+     "hopa20": [
+      9.799,
+      1.44
+     ],
+     "hopa21": [
+      9.8858,
+      1.135
+     ],
+     "hopa22": [
+      9.9489,
+      0.8129
+     ],
+     "hopa23": [
+      9.9872,
+      0.4794
+     ],
+     "hopa24": [
+      10.0,
+      0.14
+     ],
+     "hopaw1": [
+      9.7,
+      0.69
+     ],
+     "hopaw2": [
+      10.3,
+      0.69
+     ],
+     "hopalab": [
+      8.5,
+      3.49
+     ],
+     "hopb0": [
+      10.0,
+      0.14
+     ],
+     "hopb1": [
+      10.0214,
+      0.636
+     ],
+     "hopb2": [
+      10.0852,
+      1.1235
+     ],
+     "hopb3": [
+      10.1903,
+      1.5942
+     ],
+     "hopb4": [
+      10.3349,
+      2.04
+     ],
+     "hopb5": [
+      10.5166,
+      2.4533
+     ],
+     "hopb6": [
+      10.7322,
+      2.827
+     ],
+     "hopb7": [
+      10.9781,
+      3.1547
+     ],
+     "hopb8": [
+      11.25,
+      3.4309
+     ],
+     "hopb9": [
+      11.5433,
+      3.6507
+     ],
+     "hopb10": [
+      11.853,
+      3.8105
+     ],
+     "hopb11": [
+      12.1737,
+      3.9075
+     ],
+     "hopb12": [
+      12.5,
+      3.94
+     ],
+     "hopb13": [
+      12.8263,
+      3.9075
+     ],
+     "hopb14": [
+      13.147,
+      3.8105
+     ],
+     "hopb15": [
+      13.4567,
+      3.6507
+     ],
+     "hopb16": [
+      13.75,
+      3.4309
+     ],
+     "hopb17": [
+      14.0219,
+      3.1547
+     ],
+     "hopb18": [
+      14.2678,
+      2.827
+     ],
+     "hopb19": [
+      14.4834,
+      2.4533
+     ],
+     "hopb20": [
+      14.6651,
+      2.04
+     ],
+     "hopb21": [
+      14.8097,
+      1.5942
+     ],
+     "hopb22": [
+      14.9148,
+      1.1235
+     ],
+     "hopb23": [
+      14.9786,
+      0.636
+     ],
+     "hopb24": [
+      15.0,
+      0.14
+     ],
+     "hopbw1": [
+      14.7,
+      0.69
+     ],
+     "hopbw2": [
+      15.3,
+      0.69
+     ],
+     "hopblab": [
+      12.5,
+      4.69
+     ],
+     "P7": [
+      7,
+      0
+     ],
+     "P15": [
+      15,
+      0
+     ],
+     "B7": [
+      7,
+      -2.0
+     ],
+     "B15": [
+      15,
+      -2.0
+     ],
+     "B7u": [
+      7,
+      -1.65
+     ],
+     "B15u": [
+      15,
+      -1.65
+     ],
+     "B8": [
+      11,
+      -2.75
+     ]
+    },
+    "parts": [
+     {
+      "id": "axis",
+      "seg": [
+       "L0",
+       "R0"
+      ],
+      "ink": "muted",
+      "w": 5,
+      "start": true
+     },
+     {
+      "id": "tick6",
+      "seg": [
+       "t6a",
+       "t6b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num6",
+      "label": "6",
+      "at": "n6",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick7",
+      "seg": [
+       "t7a",
+       "t7b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num7",
+      "label": "7",
+      "at": "n7",
+      "dir": "c",
+      "size": "m",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "tick8",
+      "seg": [
+       "t8a",
+       "t8b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num8",
+      "label": "8",
+      "at": "n8",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick9",
+      "seg": [
+       "t9a",
+       "t9b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num9",
+      "label": "9",
+      "at": "n9",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick10",
+      "seg": [
+       "t10a",
+       "t10b"
+      ],
+      "ink": "ink",
+      "w": 4.5,
+      "start": true
+     },
+     {
+      "id": "num10",
+      "label": "10",
+      "at": "n10",
+      "dir": "c",
+      "size": "m",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "tick11",
+      "seg": [
+       "t11a",
+       "t11b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num11",
+      "label": "11",
+      "at": "n11",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick12",
+      "seg": [
+       "t12a",
+       "t12b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num12",
+      "label": "12",
+      "at": "n12",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick13",
+      "seg": [
+       "t13a",
+       "t13b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num13",
+      "label": "13",
+      "at": "n13",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick14",
+      "seg": [
+       "t14a",
+       "t14b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num14",
+      "label": "14",
+      "at": "n14",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "tick15",
+      "seg": [
+       "t15a",
+       "t15b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num15",
+      "label": "15",
+      "at": "n15",
+      "dir": "c",
+      "size": "m",
+      "ink": "violet",
+      "start": true
+     },
+     {
+      "id": "tick16",
+      "seg": [
+       "t16a",
+       "t16b"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "num16",
+      "label": "16",
+      "at": "n16",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "hopa",
+      "curve": [
+       "hopa0",
+       "hopa1",
+       "hopa2",
+       "hopa3",
+       "hopa4",
+       "hopa5",
+       "hopa6",
+       "hopa7",
+       "hopa8",
+       "hopa9",
+       "hopa10",
+       "hopa11",
+       "hopa12",
+       "hopa13",
+       "hopa14",
+       "hopa15",
+       "hopa16",
+       "hopa17",
+       "hopa18",
+       "hopa19",
+       "hopa20",
+       "hopa21",
+       "hopa22",
+       "hopa23",
+       "hopa24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "hopah1",
+      "seg": [
+       "hopaw1",
+       "hopa24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "hopah2",
+      "seg": [
+       "hopaw2",
+       "hopa24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "laba",
+      "label": "+3",
+      "at": "hopalab",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "hopb",
+      "curve": [
+       "hopb0",
+       "hopb1",
+       "hopb2",
+       "hopb3",
+       "hopb4",
+       "hopb5",
+       "hopb6",
+       "hopb7",
+       "hopb8",
+       "hopb9",
+       "hopb10",
+       "hopb11",
+       "hopb12",
+       "hopb13",
+       "hopb14",
+       "hopb15",
+       "hopb16",
+       "hopb17",
+       "hopb18",
+       "hopb19",
+       "hopb20",
+       "hopb21",
+       "hopb22",
+       "hopb23",
+       "hopb24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "hopbh1",
+      "seg": [
+       "hopbw1",
+       "hopb24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "hopbh2",
+      "seg": [
+       "hopbw2",
+       "hopb24"
+      ],
+      "ink": "warm",
+      "w": 7
+     },
+     {
+      "id": "labb",
+      "label": "+5",
+      "at": "hopblab",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "dot7",
+      "dot": "P7",
+      "r": 12,
+      "ink": "blue"
+     },
+     {
+      "id": "dot15",
+      "dot": "P15",
+      "r": 12,
+      "ink": "violet"
+     },
+     {
+      "id": "brk",
+      "seg": [
+       "B7",
+       "B15"
+      ],
+      "ink": "warm",
+      "w": 4,
+      "group": "span"
+     },
+     {
+      "id": "brkl",
+      "seg": [
+       "B7",
+       "B7u"
+      ],
+      "ink": "warm",
+      "w": 4,
+      "group": "span"
+     },
+     {
+      "id": "brkr",
+      "seg": [
+       "B15",
+       "B15u"
+      ],
+      "ink": "warm",
+      "w": 4,
+      "group": "span"
+     },
+     {
+      "id": "lab8",
+      "label": "8",
+      "at": "B8",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm",
+      "group": "span"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What is fifteen minus seven?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is 15 − 7?",
+       "at": "What"
+      },
+      {
+       "do": "show",
+       "target": "dot15",
+       "at": "fifteen"
+      },
+      {
+       "do": "show",
+       "target": "dot7",
+       "at": "seven"
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "learner",
+     "say": "Seven and what make fifteen? From seven, three more reach ten.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Seven"
+      },
+      {
+       "do": "header",
+       "tex": "\\cv{15}-\\cb{7}=\\square",
+       "label": "Find the other part",
+       "at": "Seven"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{7}+\\square=\\cv{15}",
+       "fresh": true,
+       "at": "Seven"
+      },
+      {
+       "do": "draw",
+       "target": "hopa",
+       "at": "three",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "hopah1",
+        "hopah2",
+        "laba"
+       ],
+       "at": "ten"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{7}+\\cw{3}=10",
+       "fresh": true,
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Then five more reach fifteen.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "hopb",
+       "at": "five",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "hopbh1",
+        "hopbh2",
+        "labb"
+       ],
+       "at": "fifteen"
+      },
+      {
+       "do": "write",
+       "tex": "10+\\cw{5}=\\cv{15}",
+       "fresh": true,
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three and five make eight altogether.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Three"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{3}+\\cw{5}=\\cw{8}",
+       "fresh": true,
+       "at": "Three"
+      },
+      {
+       "do": "show",
+       "target": "span",
+       "at": "eight"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "So fifteen minus seven is eight.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\cv{15}-\\cb{7}=\\cw{8}",
+       "at": "fifteen"
+      },
+      {
+       "do": "highlight",
+       "target": "lab8",
+       "at": "eight"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.4,
+     -2.9,
+     15,
+     11.1
+    ],
+    "points": {
+     "TA": [
+      0,
+      10
+     ],
+     "TB": [
+      0,
+      4
+     ],
+     "NA": [
+      12.6,
+      8
+     ],
+     "NB": [
+      12.6,
+      2
+     ],
+     "NA2": [
+      12.35,
+      8
+     ],
+     "W": [
+      5.5,
+      -1.5
+     ],
+     "ga1c": [
+      1.1,
+      9.0
+     ],
+     "ga2c": [
+      3.3,
+      9.0
+     ],
+     "ga3c": [
+      5.5,
+      9.0
+     ],
+     "ga4c": [
+      7.7,
+      9.0
+     ],
+     "ga5c": [
+      9.9,
+      9.0
+     ],
+     "ga6c": [
+      1.1,
+      7.0
+     ],
+     "ga7c": [
+      3.3,
+      7.0
+     ],
+     "ga8c": [
+      5.5,
+      7.0
+     ],
+     "PAD": [
+      0.31,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "frameA",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TA",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "frameB",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "TB",
+      "size": [
+       2.2,
+       2
+      ],
+      "start": true
+     },
+     {
+      "id": "ga1",
+      "circle": "ga1c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga2",
+      "circle": "ga2c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga3",
+      "circle": "ga3c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga4",
+      "circle": "ga4c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga5",
+      "circle": "ga5c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga6",
+      "circle": "ga6c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga7",
+      "circle": "ga7c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "ga8",
+      "circle": "ga8c",
+      "r": 0.58,
+      "fill": "none",
+      "ink": "muted",
+      "w": 2.5,
+      "group": "ghostA"
+     },
+     {
+      "id": "blue",
+      "counters": "frameA",
+      "n": 8,
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "orange",
+      "counters": "frameB",
+      "n": 5,
+      "ink": "warm",
+      "shape": "square",
+      "start": true
+     },
+     {
+      "id": "la8",
+      "label": "8",
+      "at": "NA",
+      "dir": "c",
+      "size": "xl",
+      "ink": "blue",
+      "start": true
+     },
+     {
+      "id": "lb5",
+      "label": "5",
+      "at": "NB",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "pad",
+      "label": "8",
+      "at": "PAD",
+      "dir": "c",
+      "size": "xl",
+      "ink": "paper",
+      "start": true
+     },
+     {
+      "id": "whole",
+      "label": "\\text{whole: }13",
+      "at": "W",
+      "dir": "c",
+      "size": "l",
+      "ink": "violet",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Addition joins the two parts to make the whole.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Addition"
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{8}+\\cw{5}=\\cv{13}",
+       "fresh": true,
+       "at": "Addition"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{5}+\\cb{8}=\\cv{13}",
+       "fresh": true,
+       "at": "whole"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Subtraction starts from the whole and takes one part away.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cv{13}-\\cb{8}=\\cw{5}",
+       "fresh": true,
+       "at": "Subtraction"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{13}-\\cw{5}=\\cb{8}",
+       "fresh": true,
+       "at": "whole"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "blue",
+        "la8"
+       ],
+       "at": "away",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "ghostA",
+       "at": "away",
+       "dur": 0.9
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "To subtract, think addition: what joins the part to make the whole?",
+     "do": [
+      {
+       "do": "hide",
+       "target": "ghostA",
+       "at": "joins"
+      },
+      {
+       "do": "show",
+       "target": [
+        "blue",
+        "la8"
+       ],
+       "at": "joins",
+       "dur": 0.9
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "orange",
+        "lb5"
+       ],
+       "at": "part"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      }
+     ],
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}

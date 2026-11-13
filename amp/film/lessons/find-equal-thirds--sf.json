@@ -1,0 +1,2548 @@
+{
+  "id": "find-equal-thirds--sf",
+  "title": "Equal shares: halves, thirds, and fourths",
+  "teaches": [
+    "name-share",
+    "same-share-different-shape"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -4,
+          -2.8,
+          4,
+          2.8
+        ],
+        "points": {
+          "wholep0": [
+            -3,
+            -1.5
+          ],
+          "wholep1": [
+            3,
+            -1.5
+          ],
+          "wholep2": [
+            3,
+            1.5
+          ],
+          "wholep3": [
+            -3,
+            1.5
+          ],
+          "cut1a": [
+            0,
+            -1.5
+          ],
+          "cut1b": [
+            0,
+            1.5
+          ],
+          "part0p0": [
+            -3,
+            -1.5
+          ],
+          "part0p1": [
+            0,
+            -1.5
+          ],
+          "part0p2": [
+            0,
+            1.5
+          ],
+          "part0p3": [
+            -3,
+            1.5
+          ],
+          "count0p": [
+            -1.5,
+            0
+          ],
+          "part1p0": [
+            0,
+            -1.5
+          ],
+          "part1p1": [
+            3,
+            -1.5
+          ],
+          "part1p2": [
+            3,
+            1.5
+          ],
+          "part1p3": [
+            0,
+            1.5
+          ],
+          "count1p": [
+            1.5,
+            0
+          ],
+          "namep": [
+            0,
+            -2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole",
+            "poly": [
+              "wholep0",
+              "wholep1",
+              "wholep2",
+              "wholep3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut1",
+            "seg": [
+              "cut1a",
+              "cut1b"
+            ]
+          },
+          {
+            "id": "part0",
+            "poly": [
+              "part0p0",
+              "part0p1",
+              "part0p2",
+              "part0p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count0",
+            "label": "1",
+            "at": "count0p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part1",
+            "poly": [
+              "part1p0",
+              "part1p1",
+              "part1p2",
+              "part1p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count1",
+            "label": "2",
+            "at": "count1p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "name",
+            "label": "\\text{halves}",
+            "at": "namep",
+            "dir": "c",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A whole is all of one thing. This rectangle is one whole.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Equal shares"
+            },
+            {
+              "do": "text",
+              "text": "One whole"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Cut it into two equal shares, called halves.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "cut1",
+              "at": "Cut"
+            },
+            {
+              "do": "show",
+              "target": "name",
+              "at": "halves"
+            },
+            {
+              "do": "text",
+              "text": "2 equal shares: halves",
+              "at": "two"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Now slide one share over the other. It covers it exactly.",
+          "do": [
+            {
+              "do": "show",
+              "target": "part0"
+            },
+            {
+              "do": "slide",
+              "target": "part0",
+              "by": [
+                3,
+                0
+              ],
+              "at": "slide",
+              "dur": 2
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Equal means the same size, the same amount.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Equal: the same amount"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each share is one half. Two halves make the whole.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "part0",
+              "by": [
+                -3,
+                0
+              ],
+              "dur": 1.3,
+              "at": "Each"
+            },
+            {
+              "do": "text",
+              "text": "2 halves make 1 whole",
+              "at": "Two"
+            }
+          ],
+          "pause": 0.25
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -2.8,
+          4,
+          2.8
+        ],
+        "points": {
+          "wholep0": [
+            -3,
+            -1.5
+          ],
+          "wholep1": [
+            3,
+            -1.5
+          ],
+          "wholep2": [
+            3,
+            1.5
+          ],
+          "wholep3": [
+            -3,
+            1.5
+          ],
+          "cut1a": [
+            -1,
+            -1.5
+          ],
+          "cut1b": [
+            -1,
+            1.5
+          ],
+          "cut2a": [
+            1,
+            -1.5
+          ],
+          "cut2b": [
+            1,
+            1.5
+          ],
+          "part0p0": [
+            -3,
+            -1.5
+          ],
+          "part0p1": [
+            -1,
+            -1.5
+          ],
+          "part0p2": [
+            -1,
+            1.5
+          ],
+          "part0p3": [
+            -3,
+            1.5
+          ],
+          "count0p": [
+            -2,
+            0
+          ],
+          "part1p0": [
+            -1,
+            -1.5
+          ],
+          "part1p1": [
+            1,
+            -1.5
+          ],
+          "part1p2": [
+            1,
+            1.5
+          ],
+          "part1p3": [
+            -1,
+            1.5
+          ],
+          "count1p": [
+            0,
+            0
+          ],
+          "part2p0": [
+            1,
+            -1.5
+          ],
+          "part2p1": [
+            3,
+            -1.5
+          ],
+          "part2p2": [
+            3,
+            1.5
+          ],
+          "part2p3": [
+            1,
+            1.5
+          ],
+          "count2p": [
+            2,
+            0
+          ],
+          "namep": [
+            0,
+            -2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole",
+            "poly": [
+              "wholep0",
+              "wholep1",
+              "wholep2",
+              "wholep3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut1",
+            "seg": [
+              "cut1a",
+              "cut1b"
+            ]
+          },
+          {
+            "id": "cut2",
+            "seg": [
+              "cut2a",
+              "cut2b"
+            ]
+          },
+          {
+            "id": "part0",
+            "poly": [
+              "part0p0",
+              "part0p1",
+              "part0p2",
+              "part0p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count0",
+            "label": "1",
+            "at": "count0p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part1",
+            "poly": [
+              "part1p0",
+              "part1p1",
+              "part1p2",
+              "part1p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count1",
+            "label": "2",
+            "at": "count1p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part2",
+            "poly": [
+              "part2p0",
+              "part2p1",
+              "part2p2",
+              "part2p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count2",
+            "label": "3",
+            "at": "count2p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "name",
+            "label": "\\text{thirds}",
+            "at": "namep",
+            "dir": "c",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Three equal shares are thirds. One, two, three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Name the equal shares"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "cut1",
+                "cut2"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "name",
+              "at": "thirds"
+            },
+            {
+              "do": "text",
+              "text": "3 equal shares: thirds",
+              "at": "thirds"
+            },
+            {
+              "do": "show",
+              "target": "count0",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "count1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "count2",
+              "at": "three",
+              "nth": 2
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each share is one third. Three thirds make the whole.",
+          "do": [
+            {
+              "do": "show",
+              "target": "part0",
+              "at": "Each"
+            },
+            {
+              "do": "text",
+              "text": "3 thirds make 1 whole",
+              "at": "Three"
+            }
+          ],
+          "pause": 0.25
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -2.8,
+          4,
+          2.8
+        ],
+        "points": {
+          "wholep0": [
+            -3,
+            -1.5
+          ],
+          "wholep1": [
+            3,
+            -1.5
+          ],
+          "wholep2": [
+            3,
+            1.5
+          ],
+          "wholep3": [
+            -3,
+            1.5
+          ],
+          "cut1a": [
+            -1.5,
+            -1.5
+          ],
+          "cut1b": [
+            -1.5,
+            1.5
+          ],
+          "cut2a": [
+            0,
+            -1.5
+          ],
+          "cut2b": [
+            0,
+            1.5
+          ],
+          "cut3a": [
+            1.5,
+            -1.5
+          ],
+          "cut3b": [
+            1.5,
+            1.5
+          ],
+          "part0p0": [
+            -3,
+            -1.5
+          ],
+          "part0p1": [
+            -1.5,
+            -1.5
+          ],
+          "part0p2": [
+            -1.5,
+            1.5
+          ],
+          "part0p3": [
+            -3,
+            1.5
+          ],
+          "count0p": [
+            -2.25,
+            0
+          ],
+          "part1p0": [
+            -1.5,
+            -1.5
+          ],
+          "part1p1": [
+            0,
+            -1.5
+          ],
+          "part1p2": [
+            0,
+            1.5
+          ],
+          "part1p3": [
+            -1.5,
+            1.5
+          ],
+          "count1p": [
+            -0.75,
+            0
+          ],
+          "part2p0": [
+            0,
+            -1.5
+          ],
+          "part2p1": [
+            1.5,
+            -1.5
+          ],
+          "part2p2": [
+            1.5,
+            1.5
+          ],
+          "part2p3": [
+            0,
+            1.5
+          ],
+          "count2p": [
+            0.75,
+            0
+          ],
+          "part3p0": [
+            1.5,
+            -1.5
+          ],
+          "part3p1": [
+            3,
+            -1.5
+          ],
+          "part3p2": [
+            3,
+            1.5
+          ],
+          "part3p3": [
+            1.5,
+            1.5
+          ],
+          "count3p": [
+            2.25,
+            0
+          ],
+          "namep": [
+            0,
+            -2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole",
+            "poly": [
+              "wholep0",
+              "wholep1",
+              "wholep2",
+              "wholep3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut1",
+            "seg": [
+              "cut1a",
+              "cut1b"
+            ]
+          },
+          {
+            "id": "cut2",
+            "seg": [
+              "cut2a",
+              "cut2b"
+            ]
+          },
+          {
+            "id": "cut3",
+            "seg": [
+              "cut3a",
+              "cut3b"
+            ]
+          },
+          {
+            "id": "part0",
+            "poly": [
+              "part0p0",
+              "part0p1",
+              "part0p2",
+              "part0p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count0",
+            "label": "1",
+            "at": "count0p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part1",
+            "poly": [
+              "part1p0",
+              "part1p1",
+              "part1p2",
+              "part1p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count1",
+            "label": "2",
+            "at": "count1p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part2",
+            "poly": [
+              "part2p0",
+              "part2p1",
+              "part2p2",
+              "part2p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count2",
+            "label": "3",
+            "at": "count2p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part3",
+            "poly": [
+              "part3p0",
+              "part3p1",
+              "part3p2",
+              "part3p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count3",
+            "label": "4",
+            "at": "count3p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "name",
+            "label": "\\text{fourths}",
+            "at": "namep",
+            "dir": "c",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Four equal shares are fourths.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Name the equal shares"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "cut1",
+                "cut2",
+                "cut3"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": "name",
+              "at": "fourths"
+            },
+            {
+              "do": "text",
+              "text": "4 equal shares: fourths",
+              "at": "fourths"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "One, two, three, four. Four fourths make the whole.",
+          "do": [
+            {
+              "do": "show",
+              "target": "count0",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "count1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "count2",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "count3",
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "4 fourths make 1 whole",
+              "at": "make"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "The name counts the equal shares in the whole.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "name",
+              "at": "name"
+            }
+          ],
+          "pause": 0.25
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -2.8,
+          4,
+          2.8
+        ],
+        "points": {
+          "wholep0": [
+            -3,
+            -1.5
+          ],
+          "wholep1": [
+            3,
+            -1.5
+          ],
+          "wholep2": [
+            3,
+            1.5
+          ],
+          "wholep3": [
+            -3,
+            1.5
+          ],
+          "cut1a": [
+            -2,
+            -1.5
+          ],
+          "cut1b": [
+            -2,
+            1.5
+          ],
+          "cut2a": [
+            0,
+            -1.5
+          ],
+          "cut2b": [
+            0,
+            1.5
+          ],
+          "smallp0": [
+            -3,
+            -1.5
+          ],
+          "smallp1": [
+            -2,
+            -1.5
+          ],
+          "smallp2": [
+            -2,
+            1.5
+          ],
+          "smallp3": [
+            -3,
+            1.5
+          ],
+          "namep": [
+            0,
+            -2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole",
+            "poly": [
+              "wholep0",
+              "wholep1",
+              "wholep2",
+              "wholep3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut1",
+            "seg": [
+              "cut1a",
+              "cut1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "cut2",
+            "seg": [
+              "cut2a",
+              "cut2b"
+            ],
+            "start": true
+          },
+          {
+            "id": "small",
+            "poly": [
+              "smallp0",
+              "smallp1",
+              "smallp2",
+              "smallp3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "name",
+            "label": "\\text{unequal parts}",
+            "at": "namep",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "These three parts are unequal: different sizes.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Check that shares are equal"
+            },
+            {
+              "do": "text",
+              "text": "3 parts"
+            },
+            {
+              "do": "show",
+              "target": "small",
+              "at": "unequal"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide the small part onto the big one. Some stays uncovered.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "small",
+              "by": [
+                3,
+                0
+              ],
+              "at": "Slide",
+              "dur": 2
+            },
+            {
+              "do": "text",
+              "text": "Different amounts",
+              "at": "uncovered"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three parts, but not thirds. Thirds must be equal.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Not thirds",
+              "at": "not"
+            },
+            {
+              "do": "slide",
+              "target": "small",
+              "by": [
+                -3,
+                0
+              ],
+              "at": "Three",
+              "dur": 1.3
+            }
+          ],
+          "pause": 0.25
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -2.8,
+          4,
+          2.8
+        ],
+        "points": {
+          "wholep0": [
+            -3,
+            -1.5
+          ],
+          "wholep1": [
+            3,
+            -1.5
+          ],
+          "wholep2": [
+            3,
+            1.5
+          ],
+          "wholep3": [
+            -3,
+            1.5
+          ],
+          "cut1a": [
+            -1,
+            -1.5
+          ],
+          "cut1b": [
+            -1,
+            1.5
+          ],
+          "cut2a": [
+            1,
+            -1.5
+          ],
+          "cut2b": [
+            1,
+            1.5
+          ],
+          "part0p0": [
+            -3,
+            -1.5
+          ],
+          "part0p1": [
+            -1,
+            -1.5
+          ],
+          "part0p2": [
+            -1,
+            1.5
+          ],
+          "part0p3": [
+            -3,
+            1.5
+          ],
+          "count0p": [
+            -2,
+            0
+          ],
+          "part1p0": [
+            -1,
+            -1.5
+          ],
+          "part1p1": [
+            1,
+            -1.5
+          ],
+          "part1p2": [
+            1,
+            1.5
+          ],
+          "part1p3": [
+            -1,
+            1.5
+          ],
+          "count1p": [
+            0,
+            0
+          ],
+          "part2p0": [
+            1,
+            -1.5
+          ],
+          "part2p1": [
+            3,
+            -1.5
+          ],
+          "part2p2": [
+            3,
+            1.5
+          ],
+          "part2p3": [
+            1,
+            1.5
+          ],
+          "count2p": [
+            2,
+            0
+          ],
+          "namep": [
+            0,
+            -2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole",
+            "poly": [
+              "wholep0",
+              "wholep1",
+              "wholep2",
+              "wholep3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut1",
+            "seg": [
+              "cut1a",
+              "cut1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "cut2",
+            "seg": [
+              "cut2a",
+              "cut2b"
+            ],
+            "start": true
+          },
+          {
+            "id": "part0",
+            "poly": [
+              "part0p0",
+              "part0p1",
+              "part0p2",
+              "part0p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count0",
+            "label": "1",
+            "at": "count0p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part1",
+            "poly": [
+              "part1p0",
+              "part1p1",
+              "part1p2",
+              "part1p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count1",
+            "label": "2",
+            "at": "count1p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "part2",
+            "poly": [
+              "part2p0",
+              "part2p1",
+              "part2p2",
+              "part2p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "count2",
+            "label": "3",
+            "at": "count2p",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "name",
+            "label": "\\text{thirds}",
+            "at": "namep",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Shaded means colored in. One share is one third.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Name the shaded amount"
+            },
+            {
+              "do": "show",
+              "target": "part0",
+              "at": "Shaded"
+            },
+            {
+              "do": "show",
+              "target": "count0",
+              "at": "One"
+            },
+            {
+              "do": "text",
+              "text": "1 shaded: one third",
+              "at": "One"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two shaded shares: two thirds.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "part1",
+                "count1"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "text",
+              "text": "2 shaded: two thirds",
+              "at": "Two"
+            }
+          ],
+          "pause": 0.35
+        },
+        {
+          "speaker": "teacher",
+          "say": "Thirds means three equal shares, colored or uncolored.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "name",
+              "at": "three"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three shaded: three thirds, the whole.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "part2",
+                "count2"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "text",
+              "text": "3 shaded: three thirds",
+              "at": "three"
+            }
+          ],
+          "pause": 0.35
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.4,
+          -3.6,
+          5.4,
+          3.6
+        ],
+        "points": {
+          "leftp0": [
+            -4.6,
+            -2
+          ],
+          "leftp1": [
+            -0.6,
+            -2
+          ],
+          "leftp2": [
+            -0.6,
+            2
+          ],
+          "leftp3": [
+            -4.6,
+            2
+          ],
+          "rightp0": [
+            0.6,
+            -2
+          ],
+          "rightp1": [
+            4.6,
+            -2
+          ],
+          "rightp2": [
+            4.6,
+            2
+          ],
+          "rightp3": [
+            0.6,
+            2
+          ],
+          "leftHalfp0": [
+            -4.6,
+            -2
+          ],
+          "leftHalfp1": [
+            -0.6,
+            -2
+          ],
+          "leftHalfp2": [
+            -0.6,
+            0
+          ],
+          "leftHalfp3": [
+            -4.6,
+            0
+          ],
+          "leftCuta": [
+            -4.6,
+            0
+          ],
+          "leftCutb": [
+            -0.6,
+            0
+          ],
+          "trianglep0": [
+            0.6,
+            -2
+          ],
+          "trianglep1": [
+            4.6,
+            -2
+          ],
+          "trianglep2": [
+            0.6,
+            2
+          ],
+          "diagonala": [
+            0.6,
+            2
+          ],
+          "diagonalb": [
+            4.6,
+            -2
+          ],
+          "basep0": [
+            0.6,
+            -2
+          ],
+          "basep1": [
+            4.6,
+            -2
+          ],
+          "basep2": [
+            2.6,
+            0
+          ],
+          "basep3": [
+            0.6,
+            0
+          ],
+          "tipp0": [
+            0.6,
+            0
+          ],
+          "tipp1": [
+            2.6,
+            0
+          ],
+          "tipp2": [
+            0.6,
+            2
+          ],
+          "newCuta": [
+            0.6,
+            0
+          ],
+          "newCutb": [
+            2.6,
+            0
+          ],
+          "pivot": [
+            2.6,
+            0
+          ],
+          "leftNamep": [
+            -2.6,
+            2.65
+          ],
+          "rightNamep": [
+            2.6,
+            2.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "left",
+            "poly": [
+              "leftp0",
+              "leftp1",
+              "leftp2",
+              "leftp3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "right",
+            "poly": [
+              "rightp0",
+              "rightp1",
+              "rightp2",
+              "rightp3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "leftHalf",
+            "poly": [
+              "leftHalfp0",
+              "leftHalfp1",
+              "leftHalfp2",
+              "leftHalfp3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "leftCut",
+            "seg": [
+              "leftCuta",
+              "leftCutb"
+            ],
+            "start": true
+          },
+          {
+            "id": "triangle",
+            "poly": [
+              "trianglep0",
+              "trianglep1",
+              "trianglep2"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "diagonala",
+              "diagonalb"
+            ],
+            "start": true
+          },
+          {
+            "id": "base",
+            "poly": [
+              "basep0",
+              "basep1",
+              "basep2",
+              "basep3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "group": "pieces"
+          },
+          {
+            "id": "tip",
+            "poly": [
+              "tipp0",
+              "tipp1",
+              "tipp2"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "group": "pieces"
+          },
+          {
+            "id": "newCut",
+            "seg": [
+              "newCuta",
+              "newCutb"
+            ]
+          },
+          {
+            "id": "leftName",
+            "label": "\\text{one half}",
+            "at": "leftNamep",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "rightName",
+            "label": "\\text{one half}",
+            "at": "rightNamep",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "These squares are the same size. Each has one half shaded.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Same amount, different shapes"
+            },
+            {
+              "do": "text",
+              "text": "Same-size wholes"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "A rectangle half here; a triangle half there.",
+          "do": [
+            {
+              "do": "text",
+              "text": "One half in each square"
+            },
+            {
+              "do": "highlight",
+              "target": "rightName",
+              "at": "triangle"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Cut the triangle here. Turn this piece to fill the gap.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "newCut",
+              "at": "Cut"
+            },
+            {
+              "do": "hide",
+              "target": "triangle",
+              "at": "Cut"
+            },
+            {
+              "do": "show",
+              "target": [
+                "base",
+                "tip"
+              ],
+              "at": "Cut"
+            },
+            {
+              "do": "hide",
+              "target": "diagonal",
+              "at": "Turn"
+            },
+            {
+              "do": "hide",
+              "target": "newCut",
+              "at": "Turn"
+            },
+            {
+              "do": "turn",
+              "target": "tip",
+              "about": "pivot",
+              "deg": 180,
+              "at": "Turn",
+              "dur": 2.0
+            }
+          ],
+          "pause": 0.8
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide them over. They cover the rectangle half exactly.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "pieces",
+              "by": [
+                -5.2,
+                0
+              ],
+              "at": "Slide",
+              "dur": 2
+            },
+            {
+              "do": "hide",
+              "target": "rightName",
+              "at": "Slide"
+            },
+            {
+              "do": "text",
+              "text": "Same amount",
+              "at": "exactly"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "learner",
+          "say": "Changing the shape did not change how much was there.",
+          "do": [
+            {
+              "do": "slide",
+              "target": "pieces",
+              "by": [
+                5.2,
+                0
+              ],
+              "dur": 1.6,
+              "at": "Changing"
+            },
+            {
+              "do": "show",
+              "target": "rightName",
+              "at": "there"
+            }
+          ],
+          "pause": 0.3
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.8,
+          -4.4,
+          4.8,
+          4.4
+        ],
+        "points": {
+          "center": [
+            0,
+            2
+          ],
+          "Aonea": [
+            0,
+            2
+          ],
+          "Aoneb": [
+            0,
+            3.5
+          ],
+          "Atwoa": [
+            0,
+            2
+          ],
+          "Atwob": [
+            0,
+            0.5
+          ],
+          "Athreea": [
+            0,
+            2
+          ],
+          "Athreeb": [
+            1.5,
+            2
+          ],
+          "Alabelp": [
+            0,
+            4
+          ],
+          "Blabelp": [
+            -2.3,
+            -0.7
+          ],
+          "Clabelp": [
+            2.3,
+            -0.7
+          ],
+          "Bp0": [
+            -4,
+            -3.4
+          ],
+          "Bp1": [
+            -0.6000000000000001,
+            -3.4
+          ],
+          "Bp2": [
+            -0.6000000000000001,
+            -1.1999999999999997
+          ],
+          "Bp3": [
+            -4,
+            -1.1999999999999997
+          ],
+          "Bva": [
+            -2.3,
+            -3.4
+          ],
+          "Bvb": [
+            -2.3,
+            -1.2
+          ],
+          "Bha": [
+            -4,
+            -2.3
+          ],
+          "Bhb": [
+            -0.6,
+            -2.3
+          ],
+          "Cp0": [
+            0.6,
+            -3.4
+          ],
+          "Cp1": [
+            4,
+            -3.4
+          ],
+          "Cp2": [
+            4,
+            -1.1999999999999997
+          ],
+          "Cp3": [
+            0.6,
+            -1.1999999999999997
+          ],
+          "Cc1a": [
+            1.7333333333333334,
+            -3.4
+          ],
+          "Cc1b": [
+            1.7333333333333334,
+            -1.2
+          ],
+          "Cc2a": [
+            2.8666666666666667,
+            -3.4
+          ],
+          "Cc2b": [
+            2.8666666666666667,
+            -1.2
+          ],
+          "Aringa": [
+            -1.05,
+            2.7
+          ],
+          "Aringb": [
+            -1.05,
+            1.3
+          ],
+          "Ccheckp": [
+            2.3,
+            -3.95
+          ],
+          "largeArc0": [
+            9.184850993605148e-17,
+            3.5
+          ],
+          "largeArc1": [
+            -0.19578928833007742,
+            3.4871672920607155
+          ],
+          "largeArc2": [
+            -0.38822856765378094,
+            3.4488887394336025
+          ],
+          "largeArc3": [
+            -0.5740251485476346,
+            3.38581929876693
+          ],
+          "largeArc4": [
+            -0.7499999999999997,
+            3.299038105676658
+          ],
+          "largeArc5": [
+            -0.913142143513081,
+            3.190030010436853
+          ],
+          "largeArc6": [
+            -1.0606601717798212,
+            3.0606601717798214
+          ],
+          "largeArc7": [
+            -1.1900300104368526,
+            2.913142143513081
+          ],
+          "largeArc8": [
+            -1.2990381056766578,
+            2.7500000000000004
+          ],
+          "largeArc9": [
+            -1.38581929876693,
+            2.574025148547635
+          ],
+          "largeArc10": [
+            -1.4488887394336025,
+            2.3882285676537807
+          ],
+          "largeArc11": [
+            -1.4871672920607155,
+            2.1957892883300776
+          ],
+          "largeArc12": [
+            -1.5,
+            2
+          ],
+          "largeArc13": [
+            -1.4871672920607157,
+            1.804210711669923
+          ],
+          "largeArc14": [
+            -1.4488887394336025,
+            1.6117714323462193
+          ],
+          "largeArc15": [
+            -1.3858192987669304,
+            1.425974851452366
+          ],
+          "largeArc16": [
+            -1.2990381056766582,
+            1.2500000000000004
+          ],
+          "largeArc17": [
+            -1.1900300104368529,
+            1.086857856486919
+          ],
+          "largeArc18": [
+            -1.0606601717798214,
+            0.9393398282201788
+          ],
+          "largeArc19": [
+            -0.9131421435130813,
+            0.8099699895631476
+          ],
+          "largeArc20": [
+            -0.7499999999999994,
+            0.7009618943233418
+          ],
+          "largeArc21": [
+            -0.5740251485476355,
+            0.6141807012330702
+          ],
+          "largeArc22": [
+            -0.38822856765378094,
+            0.5511112605663975
+          ],
+          "largeArc23": [
+            -0.19578928833007875,
+            0.5128327079392845
+          ],
+          "largeArc24": [
+            -2.755455298081545e-16,
+            0.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "circleA",
+            "circle": "center",
+            "r": 1.5,
+            "fill": "paper",
+            "start": true
+          },
+          {
+            "id": "Aone",
+            "seg": [
+              "Aonea",
+              "Aoneb"
+            ],
+            "start": true
+          },
+          {
+            "id": "Atwo",
+            "seg": [
+              "Atwoa",
+              "Atwob"
+            ],
+            "start": true
+          },
+          {
+            "id": "Athree",
+            "seg": [
+              "Athreea",
+              "Athreeb"
+            ],
+            "start": true
+          },
+          {
+            "id": "Alabel",
+            "label": "A",
+            "at": "Alabelp",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "Blabel",
+            "label": "B",
+            "at": "Blabelp",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "Clabel",
+            "label": "C",
+            "at": "Clabelp",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "B",
+            "poly": [
+              "Bp0",
+              "Bp1",
+              "Bp2",
+              "Bp3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "Bv",
+            "seg": [
+              "Bva",
+              "Bvb"
+            ],
+            "start": true
+          },
+          {
+            "id": "Bh",
+            "seg": [
+              "Bha",
+              "Bhb"
+            ],
+            "start": true
+          },
+          {
+            "id": "C",
+            "poly": [
+              "Cp0",
+              "Cp1",
+              "Cp2",
+              "Cp3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "Cc1",
+            "seg": [
+              "Cc1a",
+              "Cc1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "Cc2",
+            "seg": [
+              "Cc2a",
+              "Cc2b"
+            ],
+            "start": true
+          },
+          {
+            "id": "Ccheck",
+            "label": "\\checkmark",
+            "at": "Ccheckp",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "Aring",
+            "poly": [
+              "largeArc0",
+              "largeArc1",
+              "largeArc2",
+              "largeArc3",
+              "largeArc4",
+              "largeArc5",
+              "largeArc6",
+              "largeArc7",
+              "largeArc8",
+              "largeArc9",
+              "largeArc10",
+              "largeArc11",
+              "largeArc12",
+              "largeArc13",
+              "largeArc14",
+              "largeArc15",
+              "largeArc16",
+              "largeArc17",
+              "largeArc18",
+              "largeArc19",
+              "largeArc20",
+              "largeArc21",
+              "largeArc22",
+              "largeArc23",
+              "largeArc24"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which shape is cut into thirds?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which shape is cut into thirds?"
+            }
+          ],
+          "pause": 0.7
+        },
+        {
+          "speaker": "learner",
+          "say": "I choose shape A. I see three pieces there.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Shape A",
+              "at": "choose",
+              "id": "wrong"
+            },
+            {
+              "do": "highlight",
+              "target": "Alabel",
+              "at": "A"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three pieces are not enough. In A, one piece is bigger than the others.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "wrong",
+              "at": "not"
+            },
+            {
+              "do": "text",
+              "text": "A: unequal parts",
+              "at": "bigger"
+            },
+            {
+              "do": "show",
+              "target": "Aring",
+              "at": "bigger"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Shape B is cut into four equal parts. Those are fourths.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Which shape is cut into thirds?"
+            },
+            {
+              "do": "hide",
+              "target": "Aring",
+              "at": "B"
+            },
+            {
+              "do": "text",
+              "text": "B: fourths",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "Blabel",
+              "at": "four"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "learner",
+          "say": "C has three equal shares. I choose C here.",
+          "do": [
+            {
+              "do": "text",
+              "text": "C: three equal shares",
+              "at": "three"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Shape C}",
+              "at": "choose"
+            },
+            {
+              "do": "show",
+              "target": "Ccheck",
+              "at": "choose"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4,
+          -4.5,
+          4,
+          4.5
+        ],
+        "points": {
+          "whole2p0": [
+            -3,
+            2.2
+          ],
+          "whole2p1": [
+            3,
+            2.2
+          ],
+          "whole2p2": [
+            3,
+            3.7
+          ],
+          "whole2p3": [
+            -3,
+            3.7
+          ],
+          "cut2x1a": [
+            0,
+            2.2
+          ],
+          "cut2x1b": [
+            0,
+            3.7
+          ],
+          "shade2p0": [
+            -3,
+            2.2
+          ],
+          "shade2p1": [
+            0,
+            2.2
+          ],
+          "shade2p2": [
+            0,
+            3.7
+          ],
+          "shade2p3": [
+            -3,
+            3.7
+          ],
+          "name2p": [
+            0,
+            1.6500000000000001
+          ],
+          "whole3p0": [
+            -3,
+            -0.5
+          ],
+          "whole3p1": [
+            3,
+            -0.5
+          ],
+          "whole3p2": [
+            3,
+            1
+          ],
+          "whole3p3": [
+            -3,
+            1
+          ],
+          "cut3x1a": [
+            -1,
+            -0.5
+          ],
+          "cut3x1b": [
+            -1,
+            1
+          ],
+          "cut3x2a": [
+            1,
+            -0.5
+          ],
+          "cut3x2b": [
+            1,
+            1
+          ],
+          "shade3p0": [
+            -3,
+            -0.5
+          ],
+          "shade3p1": [
+            -1,
+            -0.5
+          ],
+          "shade3p2": [
+            -1,
+            1
+          ],
+          "shade3p3": [
+            -3,
+            1
+          ],
+          "name3p": [
+            0,
+            -1.05
+          ],
+          "whole4p0": [
+            -3,
+            -3.2
+          ],
+          "whole4p1": [
+            3,
+            -3.2
+          ],
+          "whole4p2": [
+            3,
+            -1.7000000000000002
+          ],
+          "whole4p3": [
+            -3,
+            -1.7000000000000002
+          ],
+          "cut4x1a": [
+            -1.5,
+            -3.2
+          ],
+          "cut4x1b": [
+            -1.5,
+            -1.7000000000000002
+          ],
+          "cut4x2a": [
+            0,
+            -3.2
+          ],
+          "cut4x2b": [
+            0,
+            -1.7000000000000002
+          ],
+          "cut4x3a": [
+            1.5,
+            -3.2
+          ],
+          "cut4x3b": [
+            1.5,
+            -1.7000000000000002
+          ],
+          "shade4p0": [
+            -3,
+            -3.2
+          ],
+          "shade4p1": [
+            -1.5,
+            -3.2
+          ],
+          "shade4p2": [
+            -1.5,
+            -1.7000000000000002
+          ],
+          "shade4p3": [
+            -3,
+            -1.7000000000000002
+          ],
+          "name4p": [
+            0,
+            -3.75
+          ]
+        },
+        "parts": [
+          {
+            "id": "whole2",
+            "poly": [
+              "whole2p0",
+              "whole2p1",
+              "whole2p2",
+              "whole2p3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut2x1",
+            "seg": [
+              "cut2x1a",
+              "cut2x1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "shade2",
+            "poly": [
+              "shade2p0",
+              "shade2p1",
+              "shade2p2",
+              "shade2p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "name2",
+            "label": "\\text{halves}",
+            "at": "name2p",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "whole3",
+            "poly": [
+              "whole3p0",
+              "whole3p1",
+              "whole3p2",
+              "whole3p3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut3x1",
+            "seg": [
+              "cut3x1a",
+              "cut3x1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "cut3x2",
+            "seg": [
+              "cut3x2a",
+              "cut3x2b"
+            ],
+            "start": true
+          },
+          {
+            "id": "shade3",
+            "poly": [
+              "shade3p0",
+              "shade3p1",
+              "shade3p2",
+              "shade3p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "name3",
+            "label": "\\text{thirds}",
+            "at": "name3p",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "whole4",
+            "poly": [
+              "whole4p0",
+              "whole4p1",
+              "whole4p2",
+              "whole4p3"
+            ],
+            "fill": "paper",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "cut4x1",
+            "seg": [
+              "cut4x1a",
+              "cut4x1b"
+            ],
+            "start": true
+          },
+          {
+            "id": "cut4x2",
+            "seg": [
+              "cut4x2a",
+              "cut4x2b"
+            ],
+            "start": true
+          },
+          {
+            "id": "cut4x3",
+            "seg": [
+              "cut4x3a",
+              "cut4x3b"
+            ],
+            "start": true
+          },
+          {
+            "id": "shade4",
+            "poly": [
+              "shade4p0",
+              "shade4p1",
+              "shade4p2",
+              "shade4p3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue"
+          },
+          {
+            "id": "name4",
+            "label": "\\text{fourths}",
+            "at": "name4p",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two equal shares: halves. Three: thirds. Four: fourths.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Equal shares"
+            },
+            {
+              "do": "show",
+              "target": "shade2",
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "shade3",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "shade4",
+              "at": "Four"
+            },
+            {
+              "do": "text",
+              "text": "Equal shares: the same size"
+            }
+          ],
+          "pause": 0.25
+        },
+        {
+          "speaker": "teacher",
+          "say": "Equal shares are the same size. The name counts how many make the whole.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Count equal shares in the whole.",
+              "at": "The"
+            }
+          ],
+          "pause": 0.7
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count equal shares, then name the amount.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "name3",
+              "at": "name"
+            }
+          ],
+          "pause": 0.7
+        }
+      ]
+    }
+  ]
+}
