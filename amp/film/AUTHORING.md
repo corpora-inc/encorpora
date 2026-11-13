@@ -77,6 +77,7 @@ A **beat** is one spoken phrase and what starts as it is spoken:
 ```
 
 - `say` is exactly what the voice reads. Spell out math in words: "x plus six", "three x", "A B", "forty-two degrees", "twenty-three dollars", "negative four, negative four" for a point, "two sevenths", "y two minus y one". Numbers as words. Never TeX, and never symbols.
+- Write a letter that is a name (a variable, side or point) as `*a*` in `say`: `"Make *a* longer and *b* shorter."` Otherwise the voice may read "a" as the article. Captions, transcripts and storyboards show the bare letter; word cues still use `"at": "a"`, with the same `nth` counting.
 - Use `"at": "word"` on an action to start it as that word is spoken. It must be a word in this beat's `say`; `"nth": 2` picks the second time it occurs. Sync what appears to the word that names it. This is what makes a film feel alive, so use it often.
 - `"pause"` adds silence after a beat. Use it after a question, and to give a motion time to finish.
 - Split a sentence into two beats whenever the picture should change in the middle.
