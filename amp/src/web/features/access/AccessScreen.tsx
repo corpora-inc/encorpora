@@ -9,6 +9,7 @@ import { VerifyEmailStep } from "../onboarding/VerifyEmailStep";
 import styles from "../onboarding/Start.module.css";
 import giftStyles from "./Access.module.css";
 import { useActivateGift } from "./api";
+import { useStartOwnPractice } from "../me/api";
 
 /** Shareable invitation destination. The URL contains no email or bearer capability. */
 export function AccessScreen() {
@@ -18,6 +19,7 @@ export function AccessScreen() {
     enabled: !!session,
   });
   const claim = useActivateGift(session ?? { accountId: "", token: "" });
+  const startOwn = useStartOwnPractice(session ?? { accountId: "", token: "" });
   const navigate = useNavigate();
   if (!session)
     return <Navigate to="/sign-in" search={{ return: "access" }} replace />;
@@ -43,6 +45,56 @@ export function AccessScreen() {
     !paidSetup &&
     me?.consent.status === "active" &&
     me.learners.length > 0;
+  // A one-learner gift may be the account holder's own: an adult uses it for
+  // herself, with no parental consent and no child to set up (starting her
+  // own learner if she has none). Not when her own learner already has
+  // access: a gift neither replaces nor stacks on it.
+  const own = me?.adultPractice?.learner ?? null;
+  const ownLicensed = !!me?.family.learners.some(
+    (learner) =>
+      learner.adult &&
+      !learner.simulation &&
+      !learner.deletedAt &&
+      learner.access.some(
+        (grant) =>
+          grant.status === "active" && Date.parse(grant.endsAt) > Date.now(),
+      ),
+  );
+  const forMe = !!gift && !family && !paidSetup && !ownLicensed;
+  const hasChildren = (me?.learners.length ?? 0) > 0;
+  // An adult on her own (her own learner, no children) uses it for herself
+  // first; anyone else keeps setting it up as before, with "for me" beside.
+  const meFirst = forMe && !!own && !hasChildren;
+  const busy = claim.isPending || startOwn.isPending;
+  const activateForMe = async () => {
+    if (!gift) return;
+    try {
+      const learnerId = own?.id ?? (await startOwn.mutateAsync(undefined));
+      claim.mutate(
+        { id: gift.id, learnerId },
+        {
+          onSuccess: () =>
+            void navigate({
+              to: "/$",
+              params: { _splat: "practice" },
+              replace: true,
+            }),
+        },
+      );
+    } catch (reason) {
+      console.error("Own learner did not start for a gift", reason);
+    }
+  };
+  const forMeButton = (variant: "primary" | "secondary") => (
+    <Button
+      variant={variant}
+      disabled={busy}
+      aria-busy={busy || undefined}
+      onClick={() => void activateForMe()}
+    >
+      Use it for me
+    </Button>
+  );
   return (
     <PageFrame centered>
       <section
@@ -51,8 +103,11 @@ export function AccessScreen() {
       >
         <FrameBrand expanded />
         <Toast
-          message={claim.error?.message ?? ""}
-          onDismiss={() => claim.reset()}
+          message={claim.error?.message ?? startOwn.error?.message ?? ""}
+          onDismiss={() => {
+            claim.reset();
+            startOwn.reset();
+          }}
         />
         {!me ? (
           <>
@@ -114,7 +169,9 @@ export function AccessScreen() {
                     ? `Your paid plan is ready to assign first. Finish that setup; this gift stays reserved for ${family ? "" : "another learner or "}later use. Your paid plan’s renewal terms are unchanged.`
                     : startFamily
                       ? "It starts for everyone at once, when you begin. No payment details or automatic renewal."
-                      : "Choose who’s learning and finish setup. Your access starts then. No payment details or automatic renewal."}
+                      : meFirst
+                        ? "Use it for yourself, or set it up for your child. Access starts then. No payment details or automatic renewal."
+                        : "Choose who’s learning and finish setup. Your access starts then. No payment details or automatic renewal."}
                 </p>
                 {gift.claimBy && (
                   <p className={styles.fine}>
@@ -155,17 +212,25 @@ export function AccessScreen() {
                     Start your family’s {term} →
                   </Button>
                 ) : (
-                  <Link
-                    to={
-                      me.consent.status === "active"
-                        ? "/start/name"
-                        : "/start/consent"
-                    }
-                    search={{ return: "access" }}
-                    className={buttonClass("primary")}
-                  >
-                    {paidSetup ? "Finish paid setup →" : "Continue setup →"}
-                  </Link>
+                  <>
+                    {meFirst && forMeButton("primary")}
+                    <Link
+                      to={
+                        me.consent.status === "active"
+                          ? "/start/name"
+                          : "/start/consent"
+                      }
+                      search={{ return: "access" }}
+                      className={buttonClass(meFirst ? "secondary" : "primary")}
+                    >
+                      {paidSetup
+                        ? "Finish paid setup →"
+                        : meFirst
+                          ? "Set it up for my child"
+                          : "Continue setup →"}
+                    </Link>
+                    {forMe && !meFirst && forMeButton("secondary")}
+                  </>
                 )}
               </>
             ) : active ? (

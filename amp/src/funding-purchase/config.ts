@@ -3,6 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import { z } from "zod";
 import { fundingPrograms } from "./programs.js";
 import { programAnnualPriceMinor } from "./program-prices.js";
+import { withMonthlyOffers } from "./monthly-offers.js";
 import {
   fundingOfferSchema,
   availableOffers,
@@ -44,6 +45,9 @@ export async function loadFundingOffers(
     );
     return { ...offer, subtotalMinor: listed };
   });
-  await validateQuoteFonts(priced);
-  return priced;
+  // Each funded program also sells a month at a time (monthly-offers.ts).
+  const sold = withMonthlyOffers(priced);
+  availableOffers(sold, new Date());
+  await validateQuoteFonts(sold);
+  return sold;
 }

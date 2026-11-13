@@ -1,6 +1,6 @@
 # ClassWallet payment reconciliation
 
-AMP matches an authenticated vendor payment report to the UUID printed on an AMP invoice. A settled, fully matched payment provisions the quoted learner through the commerce ledger. Parent names and email addresses are not matching keys.
+AMP matches an authenticated vendor payment report to the UUID printed on an AMP invoice. A settled, fully matched payment provisions the quoted learner through the commerce ledger for the invoice's term: twelve months, or one month for a monthly invoice ($59). A month paid before the learner's current access ends starts when that access ends (`fundedTermStart` in `src/funding-purchase/provision.ts`), so paying the next month early extends access instead of being rejected as an overlap. That start is fixed in the persisted conversion, so a retry keeps it. Parent names and email addresses are not matching keys.
 
 Run from `amp/`:
 
@@ -23,7 +23,7 @@ This command automates reconciliation and provisioning after a verified report i
 
 A family can obtain an invoice before creating an AMP account. A trusted payment report can match that invoice UUID and its immutable price and program snapshot. Apply stores only the report’s economic fields, the verified mapping and the source report hash. Names and school names from the report are excluded. Unknown invoices, cancelled invoices and payments recorded after an unprovisioned invoice expired require review. Settlement for an already activated, exactly matched Pay By purchase may arrive after its invoice expired.
 
-A staged payment grants no access until the parent verifies the invoice email, accepts the learning consent and selects an owned learner. Claiming preserves the original invoice UUID. The funded delivery worker then converts the payment through the same ownership, consent, amount, term and current-offer checks used for other funded purchases. Successful conversion schedules the activation email. The worker persists the exact conversion before provisioning, so a crash or repeated delivery cannot extend access or create a second grant.
+A staged payment grants no access until the account holder verifies the invoice email and selects an owned learner: for a child, after accepting the learning consent; for their own adult learner, no parental consent applies. Claiming preserves the original invoice UUID. The funded delivery worker then converts the payment through the same ownership, consent, amount, term and current-offer checks used for other funded purchases. Successful conversion schedules the activation email. The worker persists the exact conversion before provisioning, so a crash or repeated delivery cannot extend access or create a second grant.
 
 Private table `amp_classwallet_payments` holds pending payment evidence. Unclaimed payments stay pending without consuming retries. Claimed payments are attempted in batches of eight, retry after five minutes and stop after eight failures. `error_code` and `stopped_at` identify cases needing operator review; `completed_at` identifies successful fulfillment. A paid invoice that expires before claim requires review; payment evidence is retained under the shared financial-record retention period. Never reset a stopped payment or edit its immutable economic evidence without resolving the cause.
 

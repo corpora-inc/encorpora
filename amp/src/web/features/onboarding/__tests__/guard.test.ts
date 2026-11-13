@@ -169,8 +169,14 @@ test("funded entry requires confirmation and active consent before learner detai
     expect(startDestination(unconfirmed, path, false, true)).toBe(
       path === "/start/verify-email" ? null : "/start/verify-email",
     );
+    // A new account with no learner yet chooses who it's for on the program's
+    // page (themselves, or a child); a child's details still need consent.
     expect(startDestination(me(), path, false, true)).toBe(
-      path === "/start/consent" ? null : "/start/consent",
+      path === "/start/consent"
+        ? null
+        : path === "/start/name" || path === "/start/birth-year"
+          ? "/start/consent"
+          : "/purchase/arkansas-efa",
     );
   }
   expect(
@@ -247,6 +253,67 @@ test("funded learner setup returns to its selected state without a card purchase
       ),
     ).toBe("/start/consent");
   }
+});
+
+test("an adult buying for herself goes to the program, never through parent consent or a child's setup", () => {
+  const own = {
+    eligible: false,
+    learner: { id: "own", name: "Student", active: true },
+  };
+  const myself = me({ adultPractice: own, next: "practice" });
+  for (const slug of ["arizona-esa", "arkansas-efa"] as const) {
+    for (const path of ["/start", `/purchase/${slug}`, "/start/plan"])
+      expect(startDestination(myself, path, false, slug)).toBe(
+        `/purchase/${slug}`,
+      );
+    // Adding a child from there still asks for consent first.
+    expect(startDestination(myself, "/start/consent", false, slug)).toBeNull();
+    expect(startDestination(myself, "/start/name", false, slug)).toBe(
+      "/start/consent",
+    );
+  }
+  // Confirming the email still comes first.
+  expect(
+    startDestination(
+      {
+        ...myself,
+        account: { ...myself.account, confirmationRequired: true },
+      },
+      "/start",
+      false,
+      "arizona-esa",
+    ),
+  ).toBe("/start/verify-email");
+});
+
+test("a parent's children still need consent before a funded purchase", () => {
+  const learner = {
+    id: "child",
+    name: "Child",
+    birthYear: 2016,
+    entitlement: { active: false, plan: null, endsAt: null },
+  };
+  for (const path of ["/start", "/purchase/arizona-esa", "/start/name"])
+    expect(
+      startDestination(me({ learners: [learner] }), path, false, "arizona-esa"),
+    ).toBe("/start/consent");
+});
+
+test("a gift for an adult on her own goes to the gift, never to a child's setup", () => {
+  const myself = me({
+    next: "accept-gift",
+    adultPractice: {
+      eligible: false,
+      learner: { id: "own", name: "Student", active: true },
+    },
+    availableAccessGrant: {
+      id: "b24d441b-38d5-42ec-ae99-dbe186b1ffba",
+      months: 1,
+      claimBy: null,
+    },
+  });
+  for (const path of ["/start/plan", "/start/name", "/start/birth-year", "/"])
+    expect(startDestination(myself, path)).toBe("/access");
 });
 
 test("an email gift routes around checkout but never around verification or consent", () => {

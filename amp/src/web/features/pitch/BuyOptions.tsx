@@ -11,6 +11,7 @@ import { Button, buttonClass, type ButtonVariant } from "../../ui/Button";
 import { PlanChoice } from "../billing";
 import { formatUsd } from "../billing/payment-url";
 import {
+  annualInvoiceOffer,
   invoiceOffersOptions,
   offerRefunds,
   type InvoiceOffer,
@@ -79,7 +80,7 @@ export function useBuyData(search: Record<string, unknown>): BuyData {
     ...invoiceOffersOptions(program?.id ?? ""),
     enabled: !!program,
   });
-  const fundedOffer = funded.data?.offers[0];
+  const fundedOffer = annualInvoiceOffer(funded.data?.offers);
   return {
     program,
     fundedOffer,

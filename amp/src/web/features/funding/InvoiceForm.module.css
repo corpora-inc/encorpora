@@ -27,13 +27,22 @@
   margin: 0 0 1rem;
 }
 .price {
+  display: grid;
+  padding: 0.85rem 0;
+  margin-bottom: 0.5rem;
+  border-block: 1px solid var(--color-border);
+}
+/* Each term's line shares one cell; the tallest sets the height. */
+.priceLine {
+  grid-area: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.85rem 0;
-  margin-bottom: 0.5rem;
-  border-block: 1px solid var(--color-border);
+  visibility: hidden;
+}
+.priceLine[data-shown] {
+  visibility: visible;
 }
 .price strong {
   font-size: 1.5rem;
@@ -43,6 +52,9 @@
   display: block;
   margin-top: 0.25rem;
   color: var(--color-muted-text);
+}
+.term {
+  margin: 0 0 1rem;
 }
 .panel form > button {
   width: 100%;

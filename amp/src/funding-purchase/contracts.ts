@@ -42,8 +42,14 @@ export const fundingOfferSchema = z
     currency: z.literal("USD"),
     subtotalMinor: z.number().int().positive().max(100_000_000),
     taxMinor: z.number().int().nonnegative().max(100_000_000),
-    termMonths: z.literal(12),
-    termPolicy: z.literal("twelve-months-from-verified-provisioning"),
+    /** A year, or one month (funded programs that let a family pay month
+     * to month). Each term has its own policy, so an issued snapshot never
+     * reads as the other. */
+    termMonths: z.union([z.literal(12), z.literal(1)]),
+    termPolicy: z.enum([
+      "twelve-months-from-verified-provisioning",
+      "one-month-from-verified-provisioning",
+    ]),
     route: z.enum(["marketplace", "direct-pay"]),
     /** Prepare a vendor invoice for the program's individual purchase review. */
     purchaseReview: z.literal("individual-approval-required").optional(),
@@ -105,6 +111,14 @@ export const fundingOfferSchema = z
   .refine(
     (v) => Date.parse(v.validFrom) < Date.parse(v.validUntil),
     "Offer validity must increase",
+  )
+  .refine(
+    (v) =>
+      v.termPolicy ===
+      (v.termMonths === 1
+        ? "one-month-from-verified-provisioning"
+        : "twelve-months-from-verified-provisioning"),
+    "An offer's term policy names its term",
   )
   .refine(
     (v) => !v.refundPolicy || v.refundPolicy === "none" || !!v.refundSummary,

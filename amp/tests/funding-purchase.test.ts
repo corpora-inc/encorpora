@@ -309,11 +309,11 @@ test("a program's listed price decides what its offer sells for", async (t) => {
   assert.equal(loaded!.subtotalMinor, programAnnualPriceMinor[listed]);
   assert.notEqual(file, programAnnualPriceMinor[listed]);
   assert.match(warnings.join("\n"), /listing is/);
-  // The table carries one line per program, at the price its listing states.
+  // The table carries one line per program, at the public list price.
   assert.deepEqual(programAnnualPriceMinor, {
-    "ar-efa": 49900,
-    "az-esa": 49900,
-    "nh-efa": 49900,
+    "ar-efa": 59900,
+    "az-esa": 59900,
+    "nh-efa": 59900,
   });
 });
 
