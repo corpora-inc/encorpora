@@ -145,8 +145,11 @@ beforeEach(() => {
     ),
   );
 });
-afterEach(() => {
+afterEach(async () => {
   cleanup();
+  // Each test imports fresh modules; this test's analytics buffer must not
+  // flush into the next test's requests 2 s later.
+  (await import("../../../lib/analytics")).resetAnalyticsForTests();
   vi.unstubAllGlobals();
 });
 async function open(url: string) {
