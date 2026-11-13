@@ -22,15 +22,6 @@
     "platform": "darwin",
     "architecture": "arm64"
   },
-  "sourceHashes": {
-    "src/schools/clever/client.ts": "5a56d646cab7ae43baf014ae772baf28cb2c9166a5c99852f689f7c59edfdc63",
-    "src/schools/clever/model.ts": "c8734de3259037362c82c94967351e85540141797fcad134710c14c632692df0",
-    "src/schools/clever/sync.ts": "184745c6984c578b4c432500ea5882d8a41bd74de0e9cbc23f0270b0a6928398",
-    "src/schools/clever/worker.ts": "b82bfb5e3275adc543060d81f8ce8b82643e56f970e428c1400c05865de42db8",
-    "src/schools/clever/store.ts": "33ab2df176149769bd5dbfd74fa4631bb17bb34a0a9598792509498b24d744d6",
-    "src/schools/authz.ts": "c5bc89af759d1fba014b4aaafb8ad368ef59ea934c699e12291a5348f036b3ff",
-    "src/schools/repository.ts": "025a0c5c1296c334f4c32cefc345bf973099acf216aeeb4ec209d498ba8b2b64"
-  },
   "migrationSnapshot": {
     "count": 129,
     "latest": "0124-school-access-indexes.sql",
@@ -756,5 +747,35 @@
     "beforeRssMiB": 183.40625,
     "afterRssMiB": 184.84375,
     "peakRssMiB": 184.84375
-  }
+  },
+  "sourceFingerprints": [
+    {
+      "file": "src/schools/clever/client.ts",
+      "sha256": "5a56d646cab7ae43baf014ae772baf28cb2c9166a5c99852f689f7c59edfdc63"
+    },
+    {
+      "file": "src/schools/clever/model.ts",
+      "sha256": "c8734de3259037362c82c94967351e85540141797fcad134710c14c632692df0"
+    },
+    {
+      "file": "src/schools/clever/sync.ts",
+      "sha256": "184745c6984c578b4c432500ea5882d8a41bd74de0e9cbc23f0270b0a6928398"
+    },
+    {
+      "file": "src/schools/clever/worker.ts",
+      "sha256": "b82bfb5e3275adc543060d81f8ce8b82643e56f970e428c1400c05865de42db8"
+    },
+    {
+      "file": "src/schools/clever/store.ts",
+      "sha256": "33ab2df176149769bd5dbfd74fa4631bb17bb34a0a9598792509498b24d744d6"
+    },
+    {
+      "file": "src/schools/authz.ts",
+      "sha256": "c5bc89af759d1fba014b4aaafb8ad368ef59ea934c699e12291a5348f036b3ff"
+    },
+    {
+      "file": "src/schools/repository.ts",
+      "sha256": "025a0c5c1296c334f4c32cefc345bf973099acf216aeeb4ec209d498ba8b2b64"
+    }
+  ]
 }

@@ -1,0 +1,7 @@
+# Verified SHA-256 digests of public Clever client/authz source files in the
+# synthetic benchmark receipt, not credentials. Each exact historical finding
+# is scoped to its commit, file, rule and line; current receipts label digests
+# as sha256 separately from source paths. Keep all secret-scan rules enabled.
+85fe606f7a9568ecedd0f89ace8800b5e434f7f6:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:31
+c47d30de0d960772639fbe9f0404660a27c646c5:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:26
+c47d30de0d960772639fbe9f0404660a27c646c5:amp/docs/reviews/school-onboarding/clever-worker-50000.json:generic-api-key:31
