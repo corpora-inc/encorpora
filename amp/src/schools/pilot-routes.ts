@@ -45,7 +45,6 @@ export function definePilotRoutes(define: typeof defineSchoolRoute) {
       await repository.transaction((client) =>
         syncSsoCredentials(client, target.path[0]!),
       );
-      await repository.reconcileSeats(target.path[0]!);
       return { results, invited: 0 };
     },
   });

@@ -620,6 +620,7 @@ export async function applyRoster(
   const taken = new Set<string>(initial.refs.values());
   const results: ApplyResult[] = [];
   const invites: RosterInvite[] = [];
+  const createdStudents = new Map<number, string>();
   for (const row of rows) {
     const decision = resolutions[String(row.line)];
     const classes = row.classes.map((klass) => classIds.get(klass.sourcedId)!);
@@ -632,6 +633,7 @@ export async function applyRoster(
       classIds,
       actorPersonId,
       scope,
+      createdStudents,
     };
     try {
       results.push(
@@ -687,6 +689,23 @@ export async function applyRoster(
       results.push({ line: row.line, status: "failed", code });
     }
   }
+  // Allocation sees the final source dates and every class membership. Running
+  // it once avoids a growing district-wide seat scan for each imported row.
+  await repo.reconcileSeats(tenantId);
+  const seated = new Set(
+    (
+      await repo.pool.query(
+        `SELECT person_id FROM amp_seats WHERE person_id=ANY($1::uuid[]) AND released_at IS NULL
+      AND amp_school_grant_valid(grant_id)`,
+        [[...createdStudents.values()]],
+      )
+    ).rows.map((row) => row.person_id),
+  );
+  for (const result of results) {
+    const personId = createdStudents.get(result.line);
+    if (result.status === "created" && personId)
+      result.seated = seated.has(personId);
+  }
   return { results, invites };
 }
 
@@ -699,6 +718,7 @@ type RowContext = {
   classIds: Map<string, string>;
   actorPersonId: string | null;
   scope?: ImportScope;
+  createdStudents: Map<number, string>;
 };
 async function addStudent(
   client: PoolClient,
@@ -712,6 +732,7 @@ async function addStudent(
     classIds,
     actorPersonId,
     scope,
+    createdStudents,
   }: RowContext,
 ): Promise<ApplyResult> {
   const personId = randomUUID();
@@ -732,6 +753,7 @@ async function addStudent(
     actorPersonId,
     new Date(),
     personId,
+    { deferSeat: true },
   );
   if (row.sourceEvidence && !scope) {
     // This newly allocated person has no independent memberships. Replace only
@@ -759,7 +781,8 @@ async function addStudent(
     today: await repo.today(client, org.timezone),
     scope,
   });
-  return { line: row.line, status: "created", seated: created.seated };
+  createdStudents.set(row.line, personId);
+  return { line: row.line, status: "created", seated: false };
 }
 async function addStaff(
   client: PoolClient,

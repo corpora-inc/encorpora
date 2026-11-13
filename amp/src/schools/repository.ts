@@ -335,6 +335,7 @@ export class SchoolRepository {
     actorPersonId: string | null = null,
     now = new Date(),
     personId: string = randomUUID(),
+    options: { deferSeat?: boolean } = {},
   ) {
     const named = await this.org(client, orgId);
     const home = input.classId
@@ -413,7 +414,9 @@ export class SchoolRepository {
       [randomUUID(), personId, org.id, today],
     );
     if (home) await this.enroll(client, home.id, personId, "student", today);
-    const seated = await this.takeSeat(client, personId, learnerId, org.path);
+    const seated = options.deferSeat
+      ? false
+      : await this.takeSeat(client, personId, learnerId, org.path);
     await recordEvent(client, {
       orgId: org.id,
       actorPersonId,
@@ -446,7 +449,7 @@ export class SchoolRepository {
     path: string[],
   ): Promise<boolean> {
     await this.lockSeats(client, path[0]!);
-    await this.releaseInvalidSeats(client, path[0]!);
+    await this.releaseInvalidSeats(client, path[0]!, personId);
     if (
       (
         await client.query(
@@ -481,14 +484,18 @@ export class SchoolRepository {
       `school-seats:${tenantId}`,
     ]);
   }
-  private async releaseInvalidSeats(client: PoolClient, tenantId: string) {
+  private async releaseInvalidSeats(
+    client: PoolClient,
+    tenantId: string,
+    personId: string | null = null,
+  ) {
     await client.query(
       `WITH released AS (
       UPDATE amp_seats s SET released_at=now() FROM amp_people p
-      WHERE p.id=s.person_id AND p.tenant_id=$1 AND s.released_at IS NULL
+      WHERE p.id=s.person_id AND p.tenant_id=$1 AND ($2::uuid IS NULL OR p.id=$2) AND s.released_at IS NULL
         AND NOT amp_school_grant_valid(s.grant_id) RETURNING s.grant_id)
       UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)`,
-      [tenantId],
+      [tenantId, personId],
     );
   }
   /** Roster updates and scheduled license starts share one allocator. A learner
