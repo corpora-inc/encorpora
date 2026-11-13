@@ -44,6 +44,8 @@ The Node process peaked at 598.42 MiB RSS with a 1,408 MiB JavaScript heap limit
 
 Full snapshots and nonempty Events reconciliation run in a separate worker pod. The API only queues imports and performs bounded adoption reads. Its administrator proof fetches one provider user. A stored school selector excludes users; a selected-school preview is limited to 5,000 source records. The worker also prepares paused connections for review without provisioning a roster.
 
+The optional roster-matching screen uses one searchable picker for the selected school. Closed rows retain only their selected labels; the picker renders at most 50 candidates. This avoids constructing a full candidate list for every roster row.
+
 A separate API-read driver stored a 50,000-student district in PostgreSQL, then performed 20 school-list and selected-school reads. Each selected school contained 500 students. Process RSS increased from 183.41 to a peak of 184.84 MiB. This isolates the bounded data-read path; it excludes the rest of the serving API's idle memory and PostgreSQL's memory.
 
 ```sh
