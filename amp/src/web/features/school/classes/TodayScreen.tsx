@@ -217,6 +217,11 @@ export function MapScreen() {
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), place.org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({
@@ -245,7 +250,7 @@ export function MapScreen() {
         <div>
           <div className={styles.mapHead}>
             <ScreenTitle>Class map</ScreenTitle>
-            <MapKey data={map.data} />
+            <MapKey data={map.data} family={family} />
           </div>
           <ClassMap
             data={map.data}

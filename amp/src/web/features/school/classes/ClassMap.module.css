@@ -229,35 +229,34 @@
   gap: var(--space-2);
   white-space: nowrap;
 }
+/* The key draws the chart's own marks, so neither reads as a control: a
+   slice of the shaded grade column, and a short dashed range with its
+   hollow best guess. */
 .keyCourse {
-  width: 16px;
+  width: 8px;
   height: 18px;
-  border-radius: 3px;
   background: var(--color-course-band);
 }
 .keyBand {
   position: relative;
-  width: 28px;
+  width: 30px;
   height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(
+  background: repeating-linear-gradient(
     90deg,
-    color-mix(in srgb, var(--color-primary) 16%, transparent),
-    color-mix(in srgb, var(--color-primary) 52%, transparent) 55%,
-    color-mix(in srgb, var(--color-primary) 16%, transparent)
+    color-mix(in srgb, var(--color-primary) 52%, transparent) 0 3px,
+    transparent 3px 5px
   );
 }
 .keyBand span {
   position: absolute;
   top: 50%;
-  left: 55%;
-  width: 12px;
-  height: 12px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
   box-sizing: border-box;
-  border: 2.5px solid var(--color-surface);
+  border: 2.5px solid var(--color-primary);
   border-radius: 50%;
-  background: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  background: var(--color-surface);
   transform: translate(-50%, -50%);
 }
 
@@ -269,10 +268,6 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3) var(--space-5);
-}
-.startingTitle {
-  margin: 0;
-  font-weight: 700;
 }
 .toolbar[hidden] {
   display: none;
