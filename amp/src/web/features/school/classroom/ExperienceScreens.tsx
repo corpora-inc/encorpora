@@ -72,9 +72,7 @@ export function ClassExperienceSection({
         {family ? "What children see" : "Student experience"}
       </h2>
       <p className={styles.sectionLead}>
-        {family
-          ? "Levels, standings and devices for your children. The math they practice is the same either way."
-          : "What students in this class see. The math they practice is the same either way."}
+        The math stays the same whichever you choose.
       </p>
       {experience.data ? (
         <ExperienceSettings
@@ -112,10 +110,6 @@ export function OrgExperienceSection({ orgId }: { orgId: string }) {
       aria-labelledby="student-experience"
     >
       <h2 id="student-experience">Student experience</h2>
-      <p className={styles.sectionLead}>
-        What students see unless a class chooses otherwise. Lock a setting to
-        decide it for everyone below.
-      </p>
       {experience.data ? (
         <ExperienceSettings
           session={session}

@@ -1445,10 +1445,6 @@ export function Graph({
           </svg>
         </button>
       </div>
-      <p className="pathways-gesture">
-        {orbit ? "Drag to orbit" : "Drag to explore"} · Pinch or scroll to zoom
-        · Select a skill
-      </p>
     </section>
   );
 }

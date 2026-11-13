@@ -7,7 +7,6 @@ import type { SignedInMe } from "../../../../account/contracts";
 import {
   CHILD_NAME_MAX,
   childNameProblem,
-  NICKNAME_HINT,
   NICKNAME_MAX,
   PARENT_ENTRY_LINE,
 } from "../../../../learning/nickname";
@@ -260,7 +259,7 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
       kind={kind}
       index={index}
       title="Your children"
-      lede="A first name or nickname, and the year each was born. The year sets where they start."
+      lede="The birth year sets where each child starts."
       next={
         <Button
           variant="primary"
@@ -399,7 +398,7 @@ function StudentsStep({ session, me, kind, index }: StepProps) {
       lede={
         created
           ? "Your class is made. Children from other families join it by their parent’s approval, from Today."
-          : `${NICKNAME_HINT} Each student’s own parent adds their name through a link you send.`
+          : "Each student’s own parent adds their name through a link you send."
       }
       next={
         <Button

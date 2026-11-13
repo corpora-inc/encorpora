@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { summarize } from "../../../../../schools/practice-stats";
 import type { TodayResponse } from "../../../../../schools/teacher-contracts";
 import { HeatCell, HeatLegend, StatsLine } from "../../practice/heat";
+import { InfoPopover } from "../../../../ui/InfoPopover";
 import { number, TipZone } from "../teacher-shared";
 import styles from "./Today.module.css";
 
@@ -9,7 +10,7 @@ import styles from "./Today.module.css";
 const PROBLEMS_WORTH_STATING = 1000;
 
 /** The week so far in one line of figures, then every student's minutes on
- * the cold-to-hot scale with the distribution's n, median, mean and sd. No
+ * the cold-to-hot scale, the distribution's n, median, mean and sd a tap away. No
  * verdict. Nothing until there's work: an empty week is the children's rows
  * saying "Not yet", never a row of zeros. */
 export function WeekFacts({
@@ -87,9 +88,13 @@ function Spread({
   const stats = summarize(students.map((student) => student.weekMinutes))!;
   return (
     <div className={styles.spread}>
-      <h3 className={styles.spreadTitle}>
-        Active minutes this week so far, by student
-      </h3>
+      {/* The spread's n, median, mean and sd, a tap away. */}
+      <InfoPopover
+        title="Active minutes by student, the numbers"
+        details={<StatsLine label="Minutes" {...stats} />}
+      >
+        <h3 className={styles.spreadTitle}>Active minutes by student</h3>
+      </InfoPopover>
       <TipZone>
         <span
           className={styles.spreadStrip}
@@ -107,12 +112,7 @@ function Spread({
           ))}
         </span>
       </TipZone>
-      <StatsLine label="Minutes" {...stats} />
-      <HeatLegend
-        caption="Active minutes this week"
-        midpoint={target}
-        midpointWord="target"
-      />
+      <HeatLegend midpoint={target} midpointWord="target" />
     </div>
   );
 }

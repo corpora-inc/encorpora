@@ -105,6 +105,12 @@ button.preset[aria-pressed="true"]:disabled {
   line-height: 1.45;
   text-wrap: pretty;
 }
+/* What a setting does, a tap away from its title (InfoPopover). */
+.rowText .detail {
+  min-height: 0;
+  margin: 0;
+  color: inherit;
+}
 /* The control, then where its value comes from on the same row, at its
    end (SettingMeta): two columns every row shares, so the actions line up
    down the page. A phone stacks them. */

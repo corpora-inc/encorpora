@@ -410,8 +410,6 @@ function EmptyMap({ org, classId }: { org: string; classId: string }) {
           Add students
         </Link>
       }
-    >
-      Each student gets a row here, placed by the work they do.
-    </EmptyState>
+    />
   );
 }

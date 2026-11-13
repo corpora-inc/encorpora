@@ -183,10 +183,6 @@ export function ClassMap({
         <div className={styles.starting}>
           <div>
             <p className={styles.startingTitle}>Starting estimates</p>
-            <p className={styles.startingBody}>
-              Each range starts from age and grade, and narrows as each one
-              practices.
-            </p>
           </div>
           {action}
         </div>
@@ -374,10 +370,6 @@ function SmallClassMap({
         <div className={styles.starting}>
           <div>
             <p className={styles.startingTitle}>Starting estimates</p>
-            <p className={styles.startingBody}>
-              Each range starts from age and grade, and narrows as each one
-              practices.
-            </p>
           </div>
           {action}
         </div>
