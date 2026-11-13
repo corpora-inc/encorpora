@@ -296,8 +296,10 @@ try {
         .getByRole("link", { name: "Learners", exact: true })
         .click();
       await held;
+      // Learners lists the child as a row, open as the only one.
       await page
-        .getByRole("heading", { name: "Before rename", exact: true })
+        .locator('[data-learner-row="current-child"]')
+        .getByText("Before rename", { exact: true })
         .waitFor();
       await page
         .getByRole("button", { name: "Edit name", exact: true })
