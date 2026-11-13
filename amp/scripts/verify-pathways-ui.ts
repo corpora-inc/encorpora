@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { mkdir } from "node:fs/promises";
+import { mkdir, realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
 import {
@@ -29,6 +29,7 @@ import {
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `export async function accessSession(){return window.pathwaysAccount ? {token:window.pathwaysAccount,accountId:window.pathwaysAccount} : null;}export function onSessionChanged(fn){const handler=()=>accessSession().then(fn);window.addEventListener('pathways-session',handler);return()=>window.removeEventListener('pathways-session',handler);}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-pathways",
   plugins: [
     {
       name: "pathways-proof-auth",
@@ -38,7 +39,12 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 0 },
+  server: {
+    host: "127.0.0.1",
+    port: Number(process.env.AMP_WEB_PORT ?? 0),
+    strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
+  },
 });
 await vite.listen();
 const address = vite.httpServer!.address();
@@ -218,6 +224,21 @@ async function fixture(
               },
             },
       );
+    // One skill, for the skill layer: the learner's counts and answers.
+    if (/\/learners\/[^/]+\/skills\//.test(pathname)) {
+      const skillId = pathname.split("/").at(-1)!;
+      const counts =
+        pathname.includes("parent-one-a") && skillId === target.id
+          ? { attempts: 25, independentCorrect: 20, status: "practicing" }
+          : { attempts: 0, independentCorrect: 0, status: "new" };
+      return route.fulfill({
+        json: {
+          skillId,
+          evidence: { ...counts, lastPracticedAt: null },
+          work: [],
+        },
+      });
+    }
     if (pathname.endsWith("/frontier"))
       return route.fulfill({
         json: {
@@ -534,19 +555,17 @@ async function verifyLessonRecovery() {
       await page.close();
       continue;
     }
-    const opener = page
-      .getByRole("link", {
-        name: "View lesson",
-        exact: true,
-      })
-      .first();
+    // A problem type's lesson, opened over the skill's layer: its way back
+    // names the skill.
+    const opener = lessonRow(page);
     await opener.waitFor();
     await opener.click();
-    const dialog = page.getByRole("dialog");
+    const dialog = page.getByRole("dialog", { name: "Explore a problem type" });
+    const backToSkill = `Back to ${target.title}`;
     await dialog
-      .getByRole("button", { name: "Back to map", exact: true })
+      .getByRole("button", { name: backToSkill, exact: true })
       .waitFor();
-    const close = dialog.getByRole("button", { name: "Close", exact: true });
+    const close = dialog.getByRole("button", { name: /^Close/ });
     assert((await close.boundingBox())!.height >= 44);
     assert.equal(
       await dialog
@@ -559,15 +578,19 @@ async function verifyLessonRecovery() {
       fullPage: true,
     });
     await close.click();
-    await page.waitForFunction(
-      () => document.activeElement?.textContent === "View lesson",
+    await dialog.waitFor({ state: "detached" });
+    assert(
+      await opener.evaluate((el) => el === document.activeElement),
+      "closing the lesson returns focus to its row",
     );
     await opener.click();
     await dialog
-      .getByRole("button", { name: "Back to map", exact: true })
+      .getByRole("button", { name: backToSkill, exact: true })
       .click();
-    await page.waitForFunction(
-      () => document.activeElement?.textContent === "View lesson",
+    await dialog.waitFor({ state: "detached" });
+    assert(
+      await opener.evaluate((el) => el === document.activeElement),
+      "its way back returns focus to its row",
     );
     await opener.click();
     if (failure === "api") {
@@ -590,15 +613,16 @@ async function verifyLessonRecovery() {
     if (failure === "api") {
       // A layer: opening writes ?open=lesson:<type>, Back closes, Forward
       // reopens.
-      assert.match(page.url(), /[?&]open=lesson(?::|%3A)[a-z0-9-]+/);
+      assert.match(page.url(), /[?&]open=\S*lesson(?::|%3A)[a-z0-9-]+/);
       await page.goBack();
       await dialog.waitFor({ state: "detached" });
-      assert.doesNotMatch(page.url(), /[?&]open=/);
+      assert.doesNotMatch(page.url(), /lesson(?::|%3A)/);
+      assert.deepEqual(openSkills(page), [target.id], "the skill stays open");
       await page.goForward();
       await dialog.getByText("Example", { exact: true }).waitFor();
-      await dialog.getByRole("button", { name: "Close", exact: true }).click();
+      await dialog.getByRole("button", { name: /^Close/ }).click();
       await dialog.waitFor({ state: "detached" });
-      assert.doesNotMatch(page.url(), /[?&]open=/);
+      assert.doesNotMatch(page.url(), /lesson(?::|%3A)/);
     }
     await page.close();
   }
@@ -617,16 +641,27 @@ async function choose(page: Page, label: string, value: string) {
 /** The one search's field (docs/design/ia.md): skills, lessons, films and
  * math words, grouped once something is typed. */
 const SEARCH = "Search skills, lessons and math words";
-/** A skill among the grouped search results (its link keeps the page's
- * search, so it may carry `?topic=`). */
-const skillResult = (page: Page, id: string) => {
-  const path = `/pathways/${encodeURIComponent(id)}`;
-  return page
+/** A skill among the grouped search results: a link that opens it as a
+ * layer over the map (`?open=skill:<id>`), keeping the page's search. */
+const skillResult = (page: Page, id: string) =>
+  page
     .locator(
-      `[data-search-results] a[href="${path}"], [data-search-results] a[href^="${path}?"]`,
+      `[data-search-results] a[href*="open=skill%3A${encodeURIComponent(id)}"]`,
     )
     .first();
-};
+/** The skills open over the map, oldest first (`?open=`). */
+const openSkills = (page: Page) =>
+  (new URL(page.url()).searchParams.get("open") ?? "")
+    .split(",")
+    .filter((layer) => layer.startsWith("skill:"))
+    .map((layer) => layer.slice(6));
+/** The skill layer on top, and a problem type's lesson link in it. */
+const skillLayer = (page: Page) => page.locator("[data-skill-layer]").last();
+const lessonRow = (page: Page) =>
+  skillLayer(page).locator('a[data-entity="lesson"]').first();
+/** The search field, read even while a layer hides the page from the
+ * accessibility tree. */
+const searchField = (page: Page) => page.locator(".pathways-search input");
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -641,7 +676,7 @@ async function verifySearchFilters() {
     });
     try {
       await fixture(page, { signedIn: width !== 390 });
-      await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
+      await page.goto(`${origin}/pathways?topic=L&filter=K`);
       const input = page.getByRole("searchbox", {
         name: SEARCH,
         exact: true,
@@ -798,7 +833,7 @@ async function verifySearchFilters() {
         "",
         "Clearing the search removes the URL filter",
       );
-      assert.equal(new URL(page.url()).pathname, `/pathways/${target.id}`);
+      assert.equal(new URL(page.url()).pathname, "/pathways");
       await page.reload();
       await input.waitFor();
       assert.equal(
@@ -806,9 +841,7 @@ async function verifySearchFilters() {
         "",
         "The cleared search survives reload",
       );
-      await page.goto(
-        `${origin}/pathways/${target.id}?topic=${"L".repeat(101)}&filter=K`,
-      );
+      await page.goto(`${origin}/pathways?topic=${"L".repeat(101)}&filter=K`);
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
@@ -831,7 +864,9 @@ async function verifySearchFilters() {
         (url) => url.searchParams.get("topic") === countingTitle,
       );
       await skillResult(page, "count-to-20").click();
-      await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
+      await page.waitForURL(() => openSkills(page).join() === "count-to-20");
+      await skillLayer(page).waitFor();
+      assert.equal(new URL(page.url()).pathname, "/pathways");
       await page.goBack();
       await input.waitFor();
       assert.equal(
@@ -840,12 +875,16 @@ async function verifySearchFilters() {
         "Browser Back restores the search",
       );
       await page.goForward();
-      await input.waitFor();
+      await skillLayer(page).waitFor();
       assert.equal(
-        await input.inputValue(),
+        await searchField(page).inputValue(),
         countingTitle,
         "Browser Forward restores the search",
       );
+      // Closing the skill comes back to the search, as it was.
+      await page.keyboard.press("Escape");
+      await input.waitFor();
+      assert.equal(await input.inputValue(), countingTitle);
       await input.fill("");
       await page.waitForURL((url) => !url.searchParams.has("topic"));
       await choose(page, "Grade or course", "");
@@ -1034,6 +1073,9 @@ try {
         0,
         "no simulated learner progress in the product",
       );
+      // A skill found by the search opens as a layer over the map: the map
+      // keeps its size and place under it.
+      const mapBox = await page.locator(".pathways-viewport").boundingBox();
       await page
         .getByRole("searchbox", { name: SEARCH, exact: true })
         .fill(target.title);
@@ -1041,7 +1083,13 @@ try {
       await page
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
-      assert.equal(new URL(page.url()).pathname, `/pathways/${target.id}`);
+      assert.equal(new URL(page.url()).pathname, "/pathways");
+      assert.deepEqual(openSkills(page), [target.id]);
+      assert.deepEqual(
+        await page.locator(".pathways-viewport").boundingBox(),
+        mapBox,
+        "the map keeps its size and place under the skill",
+      );
       assert.equal(
         await page.locator('link[rel="canonical"]').getAttribute("href"),
         `https://amp.corpora.inc/pathways/${target.id}`,
@@ -1058,24 +1106,19 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
-      const opener = page
-        .getByRole("link", {
-          name: "View lesson",
-          exact: true,
-        })
-        .first();
-      await opener.click();
-      await page
-        .getByRole("dialog")
-        .getByText("Example", { exact: true })
-        .waitFor();
-      await page
-        .getByRole("dialog")
-        .getByRole("button", { name: "Close", exact: true })
-        .click();
-      await page.waitForFunction(
-        () => document.activeElement?.textContent === "View lesson",
+      // The learner's own record on it: its progress, from the skill's read.
+      assert.equal(
+        await skillLayer(page).getByRole("meter").getAttribute("aria-valuenow"),
+        "10",
       );
+      const opener = lessonRow(page);
+      await opener.click();
+      const lesson = page.getByRole("dialog", {
+        name: "Explore a problem type",
+      });
+      await lesson.getByText("Example", { exact: true }).waitFor();
+      await lesson.getByRole("button", { name: /^Close/ }).click();
+      await lesson.waitFor({ state: "detached" });
       assert.equal(
         await opener.evaluate((el) => el === document.activeElement),
         true,
@@ -1083,28 +1126,37 @@ try {
       );
       if (width === 1280 && theme === "light") {
         await opener.click();
-        await page.getByRole("dialog").waitFor();
+        await lesson.waitFor();
         await page.goBack();
-        await page.getByRole("dialog").waitFor({ state: "hidden" });
+        await lesson.waitFor({ state: "detached" });
         // The lesson is a real route: Forward opens it again.
         await page.goForward();
-        await page
-          .getByRole("dialog")
-          .getByText("Example", { exact: true })
-          .waitFor();
-        await page
-          .getByRole("dialog")
-          .getByRole("button", { name: "Close", exact: true })
-          .click();
-        await page.getByRole("dialog").waitFor({ state: "hidden" });
+        await lesson.getByText("Example", { exact: true }).waitFor();
+        await lesson.getByRole("button", { name: /^Close/ }).click();
+        await lesson.waitFor({ state: "detached" });
         await page
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
       }
+      await noOverflow(page);
+      await page.screenshot({
+        path: `${output}/${width}-${theme}-selected.png`,
+        fullPage: true,
+      });
+      // A refresh brings the skill back over the map, the search kept.
+      await page.reload();
+      await page
+        .getByRole("heading", { name: target.title, exact: true })
+        .waitFor();
+      assert.equal(await searchField(page).inputValue(), target.title);
+      // With grade numbers on, the skill names its area's estimated range.
       assert.equal(
         await page.getByText("Algebra frontier:", { exact: false }).count(),
         0,
       );
+      await page.keyboard.press("Escape");
+      await skillLayer(page).waitFor({ state: "detached" });
+      assert.deepEqual(openSkills(page), []);
       await page
         .getByRole("button", { name: "Browse skills", exact: true })
         .click();
@@ -1112,23 +1164,14 @@ try {
       await page
         .getByRole("button", { name: "Close browser", exact: true })
         .click();
-      await page.getByText("Algebra frontier:", { exact: false }).waitFor();
+      await page.goForward();
+      await skillLayer(page)
+        .getByText("Algebra frontier:", { exact: false })
+        .waitFor();
+      await page.keyboard.press("Escape");
+      await skillLayer(page).waitFor({ state: "detached" });
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
-      const workspace = (await page
-        .locator(".pathways-workspace")
-        .boundingBox())!;
-      const inspector = (await page.locator(".pathways-detail").boundingBox())!;
-      assert(
-        inspector.y + inspector.height <= workspace.y + workspace.height + 1,
-        "inspector is not clipped by the map workspace",
-      );
-      if (width <= 390)
-        assert(
-          (await page.locator(".pathways-viewport").boundingBox())!.height >=
-            190,
-          "selected skill keeps room for the map",
-        );
       await page.waitForFunction(
         () =>
           document
@@ -1137,25 +1180,8 @@ try {
         undefined,
         { timeout: 8000 },
       );
-      await page.screenshot({
-        path: `${output}/${width}-${theme}-selected.png`,
-        fullPage: true,
-      });
       if (theme === "light" && [390, 1280].includes(width))
         await verifySettledLabels(page);
-      await page
-        .getByRole("button", { name: "Whole map", exact: true })
-        .click();
-      await page.reload();
-      await page
-        .getByRole("heading", { name: target.title, exact: true })
-        .waitFor();
-      assert.equal(
-        await page
-          .getByRole("searchbox", { name: SEARCH, exact: true })
-          .inputValue(),
-        target.title,
-      );
       assert.deepEqual(errors, []);
       await page.close();
     }
@@ -1183,6 +1209,12 @@ try {
     await page
       .getByRole("heading", { name: target.title, exact: true })
       .waitFor();
+    await noOverflow(page);
+    await page.screenshot({
+      path: `${output}/${viewport.width}-${viewport.height}-skill.png`,
+    });
+    await page.keyboard.press("Escape");
+    await skillLayer(page).waitFor({ state: "detached" });
     if (viewport.width <= 650)
       await page.waitForFunction(
         () => {
@@ -1231,13 +1263,6 @@ try {
         "leaving full screen restores the map",
       );
     }
-    if (viewport.width === 320)
-      assert(
-        await page.evaluate(
-          () => document.documentElement.scrollHeight > innerHeight,
-        ),
-        "selected skill uses page scroll after leaving fullscreen",
-      );
     await page.screenshot({
       path: `${output}/${viewport.width}-${viewport.height}-compact.png`,
       fullPage: true,
@@ -1278,17 +1303,20 @@ try {
   const linkedBatches = await fixture(linked);
   await linked.goto(`${origin}/pathways?skill=${target.id}`);
   await linked.getByRole("heading", { name: target.title }).waitFor();
-  const related = linked
-    .locator(".pathways-detail a")
+  const related = skillLayer(linked)
+    .locator('a[data-entity="skill"]')
     .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   await related.click();
-  await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
+  // A connection opens over the skill, which X and Back return to.
+  await linked.waitForURL(
+    () =>
+      openSkills(linked).join() ===
+      `${target.id},nonlinear-intersection-reading`,
+  );
+  await linked.locator(`[data-layer-back="${target.title}"]`).waitFor();
   await linked.goBack();
   await linked.getByRole("heading", { name: target.title }).waitFor();
-  await linked
-    .getByRole("link", { name: "View lesson", exact: true })
-    .first()
-    .click();
+  await lessonRow(linked).click();
   await linked
     .getByRole("dialog")
     .getByRole("link", { name: "Try this problem type →", exact: true })
@@ -1343,15 +1371,27 @@ try {
     await guest.locator('meta[name="description"]').getAttribute("content"),
     `${target.description}. Explore this skill and its connections in AMP's free math map.`,
   );
-  const parentLink = guest
-    .locator(".pathways-detail a")
+  assert.deepEqual(openSkills(guest), [target.id]);
+  const parentLink = skillLayer(guest)
+    .locator('a[data-entity="skill"]')
     .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
-  assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
+  assert.equal(parentUrl.pathname, "/pathways");
+  assert.equal(
+    parentUrl.searchParams.get("open"),
+    `skill:${target.id},skill:nonlinear-intersection-reading`,
+  );
   assert.equal(parentUrl.searchParams.get("topic"), "systems");
   assert.equal(parentUrl.searchParams.get("filter"), "algebra-2");
-  await guest.getByRole("button", { name: "Close skill" }).click();
-  await guest.waitForURL((url) => url.pathname === "/pathways");
+  assert.equal(
+    await skillLayer(guest)
+      .getByRole("link", { name: "Try it free", exact: true })
+      .getAttribute("href"),
+    "/sign-up",
+  );
+  await guest.getByRole("button", { name: "Close", exact: true }).click();
+  await guest.waitForURL((url) => !url.searchParams.has("open"));
+  assert.equal(new URL(guest.url()).pathname, "/pathways");
   assert.equal(await guest.title(), "Explore Math Skills | AMP Pathways");
   await guest.locator(".pathways-brand").click();
   await guest.waitForURL(origin + "/");
@@ -1471,7 +1511,9 @@ try {
     await fixture(unknown, { signedIn: false });
     await unknown.goto(`${origin}${path}`);
     await unknown
-      .getByText("This skill is not in the map.", { exact: false })
+      .getByText("This skill isn’t in the curriculum any more.", {
+        exact: false,
+      })
       .waitFor();
     assert.equal(
       await unknown.locator('meta[name="robots"]').getAttribute("content"),
@@ -1497,39 +1539,19 @@ try {
     await phone
       .getByRole("heading", { name: long.title, exact: true })
       .waitFor();
-    const card = await phone
-      .locator(".pathways-detail")
-      .evaluate((element) => ({
-        scrollHeight: element.scrollHeight,
-        clientHeight: element.clientHeight,
-        overflow: getComputedStyle(element).overflowY,
-      }));
+    // The skill's sheet scrolls on its own: its last connection is
+    // reachable, and the page under it never moves.
+    const last = skillLayer(phone)
+      .locator("[data-skill-connections] li:last-child")
+      .last();
+    await last.evaluate((el) => el.scrollIntoView({ block: "end" }));
     assert(
-      card.scrollHeight <= card.clientHeight + 1,
-      "phone card has no inner scroll",
-    );
-    assert.equal(card.overflow, "visible");
-    assert(
-      await phone.evaluate(
-        () => document.documentElement.scrollHeight > innerHeight,
+      await last.evaluate(
+        (el) => el.getBoundingClientRect().bottom <= innerHeight + 1,
       ),
-      "long skill card grows the phone document",
+      "last relationship stays reachable in the sheet",
     );
-    await phone
-      .locator(".pathways-detail .pathways-connections li:last-child")
-      .last()
-      .evaluate((el) => el.scrollIntoView({ block: "end" }));
-    assert(
-      await phone
-        .locator(".pathways-detail .pathways-connections li:last-child")
-        .last()
-        .evaluate((el) => el.getBoundingClientRect().bottom <= innerHeight + 1),
-      "last relationship stays reachable by page scroll",
-    );
-    assert(
-      await phone.evaluate(() => scrollY > 0),
-      "page scroll reaches relationships",
-    );
+    assert.equal(await phone.evaluate(() => scrollY), 0);
     await noOverflow(phone);
     await phone.screenshot({
       path: `${output}/${width}-long-skill.png`,
@@ -1560,7 +1582,15 @@ try {
   // The account-scoped store must not carry earned crystals into another learner or account.
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await fixture(page);
-  await page.goto(`${origin}/pathways?skill=${target.id}`);
+  /** Opens the target skill from the map's list, as a learner would. */
+  const openTarget = async () => {
+    await page.getByRole("button", { name: "Browse skills" }).click();
+    await page
+      .locator(`#pathways-browser a[href*="skill%3A${target.id}"]`)
+      .click();
+    await skillLayer(page).waitFor();
+  };
+  await page.goto(`${origin}/pathways`);
   await page
     .getByText(/^2 of \d+ skills earned/)
     .first()
@@ -1570,10 +1600,13 @@ try {
     .getByText(/^0 of \d+ skills earned/)
     .first()
     .waitFor({ state: "attached" });
+  await openTarget();
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
   );
+  await page.keyboard.press("Escape");
+  await skillLayer(page).waitFor({ state: "detached" });
   await choose(page, "Learner", "parent-one-a");
   await page
     .getByText(/^2 of \d+ skills earned/)
@@ -1590,6 +1623,7 @@ try {
     await page.locator(".pathways-summary").textContent(),
     `0 of ${skills.length} skills earned · kindergarten through precalculus`,
   );
+  await openTarget();
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
@@ -1603,13 +1637,20 @@ try {
   const growingCatalog = [...skills];
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
-  await evolving.goto(`${origin}/pathways?skill=${target.id}`);
-  // A deep link frames its skill; that skill's name is the witness.
+  await evolving.goto(`${origin}/pathways`);
+  await evolving.locator(".pathways-canvas canvas").waitFor();
+  await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
+  // Found in the list, the skill is framed; its name is the witness.
+  await evolving.getByRole("button", { name: "Browse skills" }).click();
+  await evolving
+    .locator(`#pathways-browser a[href*="skill%3A${target.id}"]`)
+    .click();
+  await skillLayer(evolving).waitFor();
   const label = evolving
     .locator(".skill-label")
     .filter({ hasText: target.title });
   await label.waitFor();
-  await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await evolving.waitForTimeout(300);
   const before = (await label.boundingBox())!;
   growingCatalog.push({
     ...target,
@@ -1628,10 +1669,10 @@ try {
     "catalog refresh preserves the explored camera",
   );
   assert.equal(
-    await evolving.getByRole("meter").getAttribute("aria-valuenow"),
+    await skillLayer(evolving).getByRole("meter").getAttribute("aria-valuenow"),
     "10",
   );
-  assert(new URL(evolving.url()).searchParams.get("skill") === target.id);
+  assert.deepEqual(openSkills(evolving), [target.id]);
   await evolving.close();
   // The accessible list stays functional without WebGL and on an unauthenticated visit.
   const fallback = await browser.newPage({
@@ -1657,8 +1698,8 @@ try {
     .getByRole("heading", { name: target.title, exact: true })
     .waitFor();
   assert.equal(
-    await fallback
-      .getByRole("link", { name: "Try it free →" })
+    await skillLayer(fallback)
+      .getByRole("link", { name: "Try it free", exact: true })
       .getAttribute("href"),
     "/sign-up",
   );
@@ -1677,7 +1718,7 @@ try {
   await failed.close();
   const lost = await browser.newPage({ viewport: { width: 390, height: 900 } });
   await fixture(lost);
-  await lost.goto(`${origin}/pathways?skill=${target.id}`);
+  await lost.goto(`${origin}/pathways`);
   await lost.locator(".pathways-canvas canvas").waitFor();
   await lost.getByRole("button", { name: "Zoom in", exact: true }).click();
   await lost
@@ -1705,7 +1746,7 @@ try {
       });
       await fixture(parity, { signedIn: false });
       await parity.goto(`${origin}/pathways/odd-and-even`);
-      const related = parity.locator(".pathways-connections");
+      const related = skillLayer(parity);
       await related
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
@@ -1721,34 +1762,33 @@ try {
         );
 
       const application = related.getByRole("link", {
-        name: skillTitle("event-sets"),
+        name: new RegExp(`^${skillTitle("event-sets")}`),
       });
+      const href = new URL((await application.getAttribute("href"))!, origin);
+      assert.equal(href.pathname, "/pathways");
       assert.equal(
-        await application.getAttribute("href"),
-        "/pathways/event-sets",
+        href.searchParams.get("open"),
+        "skill:odd-and-even,skill:event-sets",
       );
       await application.scrollIntoViewIfNeeded();
       await noOverflow(parity);
-      if (width <= 390)
-        assert(
-          await parity
-            .locator(".pathways-detail")
-            .evaluate((el) => el.scrollHeight <= el.clientHeight + 2),
-          "related explanations expand the phone card",
-        );
       await parity.screenshot({
         path: `${output}/connections-${width}-${colorScheme}.png`,
       });
       await application.click();
-      await parity.waitForURL("**/pathways/event-sets");
+      await parity.waitForURL(
+        () => openSkills(parity).join() === "odd-and-even,event-sets",
+      );
       await parity
         .getByRole("heading", { name: skillTitle("event-sets"), exact: true })
         .waitFor();
-      await parity
-        .locator(".pathways-connections")
-        .getByRole("link", { name: /Odd and even/ })
+      // Back to the skill it came from: the stack steps back to it.
+      await skillLayer(parity)
+        .getByRole("link", { name: /^Odd and even/ })
         .click();
-      await parity.waitForURL("**/pathways/odd-and-even");
+      await parity.waitForURL(
+        () => openSkills(parity).join() === "odd-and-even",
+      );
       await parity
         .getByRole("heading", {
           name: skillTitle("odd-and-even"),

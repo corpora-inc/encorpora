@@ -1,6 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
-import { mkdir } from "node:fs/promises";
+import { mkdir, realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
 import { chromium as rawChromium } from "playwright";
@@ -11,7 +11,8 @@ import { retentionNotice } from "../src/family/contracts";
 import { skillNeighbors } from "../src/web/features/pathways/neighbors";
 import { fixtureMe } from "./me-fixture";
 
-// Real route, catalog and CSS; synthetic account. Checks the connected-skills lists.
+// Real route, catalog and CSS; synthetic account. Checks the connected-skills
+// lists of a skill opened over the map (its layer, nav/SkillLayer.tsx).
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const vite = await createServer({
   plugins: [
@@ -24,7 +25,12 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 0 },
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-connections",
+  server: {
+    host: "127.0.0.1",
+    port: 0,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
+  },
 });
 await vite.listen();
 const address = vite.httpServer!.address();
@@ -102,6 +108,19 @@ try {
             return route.fulfill({
               json: { asOf: new Date().toISOString(), skills: [] },
             });
+          if (/\/learners\/[^/]+\/skills\//.test(path))
+            return route.fulfill({
+              json: {
+                skillId: path.split("/").at(-1),
+                evidence: {
+                  attempts: 0,
+                  independentCorrect: 0,
+                  status: "new",
+                  lastPracticedAt: null,
+                },
+                work: [],
+              },
+            });
           if (path.endsWith("/frontier"))
             return route.fulfill({
               json: {
@@ -122,16 +141,16 @@ try {
         const errors: string[] = [];
         page.on("pageerror", (error) => errors.push(error.message));
         await page.goto(`${origin}/pathways/${id}`);
-        const detail = page.locator(".pathways-detail");
+        const detail = page.locator("[data-skill-layer]");
         await detail.getByRole("heading", { name: "Leads to" }).waitFor();
         const expected = skillNeighbors(skills, id, { shared: true });
         const groups = {
-          "builds-on": expected.buildsOn,
-          "leads-to": expected.leadsTo,
+          buildsOn: expected.buildsOn,
+          leadsTo: expected.leadsTo,
           related: expected.related,
         };
         for (const [group, items] of Object.entries(groups)) {
-          const list = detail.locator(`[data-group="${group}"] li`);
+          const list = detail.locator(`[data-skill-connections="${group}"] li`);
           if (!items.length) continue;
           assert.equal(
             await list.count(),
@@ -139,7 +158,7 @@ try {
             `${id} ${group} default count`,
           );
         }
-        const toggle = detail.locator(".pathways-show-all").first();
+        const toggle = detail.locator("[data-show-all]").first();
         const label = `${id} ${theme} ${width}`;
         if (await toggle.count()) {
           await toggle.scrollIntoViewIfNeeded();
@@ -148,11 +167,11 @@ try {
             box.height >= 44 - 0.5,
             `${label}: target height ${box.height}`,
           );
-          const heading = detail.locator("h2");
+          const heading = page.getByRole("dialog").locator("h2");
           const before = {
             heading: (await heading.boundingBox())!.y,
             first: (await toggle
-              .locator("xpath=ancestor::*[@data-group][1]//li[1]")
+              .locator("xpath=ancestor::*[@data-skill-connections][1]//li[1]")
               .boundingBox())!.y,
             scroll: await page.evaluate(() => scrollY),
           };
@@ -162,12 +181,14 @@ try {
           await toggle.focus();
           await page.keyboard.press("Enter");
           assert.equal(await toggle.getAttribute("aria-expanded"), "true");
-          const group = toggle.locator("xpath=ancestor::*[@data-group][1]");
+          const group = toggle.locator(
+            "xpath=ancestor::*[@data-skill-connections][1]",
+          );
           assert.equal(await group.locator("li").count(), total);
           const after = {
             heading: (await heading.boundingBox())!.y,
             first: (await toggle
-              .locator("xpath=ancestor::*[@data-group][1]//li[1]")
+              .locator("xpath=ancestor::*[@data-skill-connections][1]//li[1]")
               .boundingBox())!.y,
             scroll: await page.evaluate(() => scrollY),
           };
@@ -187,7 +208,7 @@ try {
           assert.equal(await toggle.getAttribute("aria-expanded"), "false");
         }
         for (const link of await detail
-          .locator(".pathways-connections a")
+          .locator("[data-skill-connections] a")
           .all()) {
           const box = await link.boundingBox();
           assert(box && box.height >= 44 - 0.5, `${label}: link target`);
@@ -200,7 +221,7 @@ try {
         );
         assert.deepEqual(errors, [], label);
         await detail
-          .locator(".pathways-connection-group")
+          .locator("[data-skill-connections]")
           .first()
           .scrollIntoViewIfNeeded();
         await page.screenshot({
