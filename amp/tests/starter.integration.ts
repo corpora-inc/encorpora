@@ -343,8 +343,7 @@ test(
 );
 
 test(
-  // Without a chosen start, the starting point is empty as a whole
-  // (`amp_starting_point_valid`): practice begins at its default level.
+  // Without a year or chosen start, an adult begins at middle school.
   "learning for myself makes the account's adult learner, once",
   database,
   async (t) => {
@@ -365,7 +364,7 @@ test(
         {
           id: first.learnerId,
           adult: true,
-          starting_band: null,
+          starting_band: "middle-school",
           timezone: "America/Denver",
           name_pending: false,
         },
@@ -377,7 +376,13 @@ test(
     const practice = await f.get("/api/v1/me/practice", adult);
     assert.equal(practice.statusCode, 200, practice.body);
     assert.equal(practice.json().learner.id, first.learnerId);
-    assert.equal(practice.json().learner.start, null);
+    assert.equal(practice.json().learner.start, "middle-school");
+    const frontier = await f.repository.transaction(
+      adult,
+      first.learnerId!,
+      (tx) => tx.frontier(),
+    );
+    assert.equal(frontier.expected, 7);
 
     const again = await f.started(adult, body);
     assert.deepEqual(again, first);
@@ -467,10 +472,31 @@ test(
     // and a start already set stays.
     const earlier = await f.user("Lee Fixture");
     await f.started(earlier, { as: "myself", timezone: "America/Denver" });
+    await f.db.query(
+      "UPDATE amp_learners SET starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL WHERE account_id=$1",
+      [earlier],
+    );
     const before = await startOf(earlier);
     assert.equal(before.starting_band, null);
-    assert.equal(before.start, 2, "the default the founder met: grade 2");
-    assert.ok(before.level < born1985.level - 6, `${before.level}`);
+    assert.equal(
+      before.start,
+      7,
+      "a legacy adult without a start uses middle school",
+    );
+    const point = await f.get(
+      `/api/v1/learners/${before.id}/starting-point`,
+      earlier,
+    );
+    assert.deepEqual(point.json(), { band: "middle-school", policyVersion: 1 });
+    const legacy = await f.get("/api/v1/me/practice", earlier);
+    assert.equal(legacy.json().learner.start, "middle-school");
+    const family = await f.me(earlier);
+    assert.equal(
+      family.family.learners.find(
+        (learner: { id: string }) => learner.id === before.id,
+      ).start,
+      "middle-school",
+    );
     await f.started(earlier, {
       as: "myself",
       timezone: "America/Denver",

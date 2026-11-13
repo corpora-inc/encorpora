@@ -9,11 +9,10 @@
 -- start in Account → Learners → Your practice.
 BEGIN READ ONLY;
 
--- 1. An adult's own learner with no start: practice reads the scale's default
---    (grade 2) instead of an adult's mid-scale. Came from an adult trial moved
---    in before this change, or an older client that sent neither a year nor a
---    start. Repair, if approved (idempotent; the level is read again from the
---    same answers with the new start, nothing else changes):
+-- 1. An adult's own learner with no stored start, from a legacy trial or a
+--    client that sent neither a year nor a start. Reads use middle school
+--    (grade 7). The repair stores that middle-school start (grade 7), without
+--    changing answers. Run only if approved; it is idempotent:
 --      UPDATE amp_learners SET starting_band='middle-school',starting_policy=1,
 --        starting_excluded_strands='{}'::text[]
 --      WHERE adult AND NOT simulation AND deleted_at IS NULL

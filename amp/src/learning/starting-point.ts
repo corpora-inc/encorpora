@@ -13,6 +13,10 @@ export const adultStarts = [
   "precalculus",
 ] as const;
 export type AdultStart = (typeof adultStarts)[number];
+/** An adult with no chosen start begins at late middle school (pre-algebra). */
+export const UNCHOSEN_ADULT_START: AdultStart = "middle-school";
+export const adultStartOrDefault = (start: unknown): AdultStart =>
+  adultStarts.find((choice) => choice === start) ?? UNCHOSEN_ADULT_START;
 /** Where an adult's own practice starts, in words. */
 export const adultStartNames: Record<AdultStart, string> = {
   counting: "Counting",
@@ -54,7 +58,7 @@ export const startingLevels: Record<StartingChoice, number> = {
   "9–12": 10,
   counting: 0,
   elementary: 3,
-  "middle-school": 6,
+  "middle-school": 7,
   "algebra-1": 9,
   geometry: 10,
   "algebra-2": 11,
