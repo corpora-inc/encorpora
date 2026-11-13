@@ -142,10 +142,13 @@ export async function resolveProviderSession(
     try {
       await client.query("BEGIN");
       await client.query("SET LOCAL lock_timeout='1s'");
-      await client.query(
-        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
-        [row.account_id],
-      );
+      // The attachment helper owns its nonblocking account lock. Legacy
+      // fixtures without the adapter still serialize attachment with erasure.
+      if (!installed)
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+          [row.account_id],
+        );
       // A teacher may sign in before their first sync. Only the identity
       // already proved by this session can attach the subsequently imported
       // person. The deletion lock prevents resurrecting a deleted account.
@@ -410,9 +413,13 @@ export async function establishProviderPrincipal(
     )
       throw new ApiError(409, "identity_already_linked");
     const accountId = old?.account_id ?? linkAccountId ?? `amp|${randomUUID()}`;
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      accountId,
-    ]);
+    // Identity proof may coexist with a roster update, while account erasure
+    // remains exclusive. Attachment separately tries the exclusive lock and
+    // defers if the worker is changing this person's roster record.
+    await client.query(
+      "SELECT pg_advisory_xact_lock_shared(hashtextextended($1,0))",
+      [accountId],
+    );
     if (
       (
         await client.query(
@@ -511,6 +518,8 @@ export async function establishProviderPrincipal(
     return { token, accountId, onboarding, expiresAt };
   } catch (error) {
     await client.query("ROLLBACK");
+    if ((error as { code?: string }).code === "55P03")
+      throw new ApiError(503, "clever_sign_in_busy");
     throw error;
   } finally {
     client.release();

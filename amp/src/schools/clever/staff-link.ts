@@ -64,9 +64,13 @@ async function attachWithTimeout(
   input: z.infer<typeof inputSchema>,
 ): ReturnType<typeof attachProvedCleverStaffIn> {
   await db.query("SET LOCAL lock_timeout='1s'");
-  await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-    input.accountId,
-  ]);
+  const accountAvailable = (
+    await db.query(
+      "SELECT pg_try_advisory_xact_lock(hashtextextended($1,0)) AS ok",
+      [input.accountId],
+    )
+  ).rows[0].ok;
+  if (!accountAvailable) return { personId: null, disposition: "deferred" };
   const acquired = (
     await db.query(
       "SELECT pg_try_advisory_xact_lock(hashtextextended($1,0)) AS ok",

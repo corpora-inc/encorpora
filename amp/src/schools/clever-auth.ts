@@ -333,6 +333,8 @@ export async function registerCleverAuthRoutes(
           },
           "Clever sign-in failed",
         );
+        if (error instanceof Error && error.message === "clever_sign_in_busy")
+          return reply.redirect("/school/connect?error=clever_sign_in_busy");
         if (
           error instanceof Error &&
           error.message === "identity_already_linked"

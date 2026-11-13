@@ -164,7 +164,24 @@ test(
             });
           await f.prove(f.a);
           await f.prove(f.b);
-          const results = await Promise.all([f.attach(f.a), f.attach(f.b)]);
+          const subjects = [f.a, f.b];
+          const concurrent = await Promise.all(subjects.map(f.attach));
+          assert.ok(
+            concurrent.every(
+              (r) =>
+                (r.disposition === "reused" && r.personId === staff.personId) ||
+                (r.disposition === "deferred" && r.personId === null),
+            ),
+          );
+          // A competing canonical-account attachment yields immediately. The
+          // next session read retries it after the first transaction commits.
+          const results = [];
+          for (const [index, result] of concurrent.entries())
+            results.push(
+              result.disposition === "deferred"
+                ? await f.attach(subjects[index]!)
+                : result,
+            );
           assert.ok(
             results.every(
               (r) =>
