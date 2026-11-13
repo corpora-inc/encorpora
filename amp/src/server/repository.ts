@@ -20,6 +20,8 @@ import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
 import { recordPrint } from "../schools/help-events.js";
+import { readLearnerSkill } from "../schools/teacher-reads.js";
+import type { StudentSkillResponse } from "../schools/teacher-contracts.js";
 import {
   estimateFrontier,
   initialLevel,
@@ -202,6 +204,9 @@ export interface LearnerTransaction {
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
   attemptByProblem(problemId: string): Promise<Outcome | undefined>;
   progress(skillIds: string[]): Promise<LearnerSkillProgress[]>;
+  /** This learner on one skill (a skill layer over Pathways): the engine's
+   * counts and their latest answers on it, as a teacher reads a student's. */
+  skillWork(skillId: string): Promise<StudentSkillResponse>;
   problem(id: string): Promise<SavedProblem | undefined>;
   saveProblem(problem: SavedProblem): Promise<void>;
   saveProblems(problems: readonly SavedProblem[]): Promise<void>;
@@ -971,6 +976,18 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId],
     );
     return result.rows.map((row) => row.state as SkillEvidence);
+  }
+  async skillWork(skillId: string): Promise<StudentSkillResponse> {
+    const { rows } = await this.db.query(
+      "SELECT COALESCE(timezone,'America/New_York') AS timezone FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    return readLearnerSkill(
+      this.db,
+      this.learnerId,
+      (rows[0]?.timezone as string | undefined) ?? "America/New_York",
+      skillId,
+    );
   }
   async progress(skillIds: string[]): Promise<LearnerSkillProgress[]> {
     const bySkill = new Map(

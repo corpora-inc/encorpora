@@ -207,6 +207,22 @@ test(
           },
         );
         assert.equal(answered.statusCode, 200, answered.body);
+        // The skill layer over their Pathways: their counts and their answer
+        // on that skill, and no one else's to read.
+        const skill = await get(
+          `/api/v1/learners/${adultId}/skills/${problem.skillId}`,
+          teacher,
+        );
+        assert.equal(skill.statusCode, 200, skill.body);
+        assert.equal(skill.json().skillId, problem.skillId);
+        assert.equal(skill.json().evidence.attempts, 1);
+        assert.equal(skill.json().work.length, 1);
+        assert.ok(skill.json().work[0].prompt);
+        const stranger = await get(
+          `/api/v1/learners/${adultId}/skills/${problem.skillId}`,
+          "amp|someone-else",
+        );
+        assert.ok([403, 404].includes(stranger.statusCode), stranger.body);
         // Their facts roll up like a student's, in their own time zone.
         const days = await db.query(
           "SELECT attempts FROM amp_skill_days WHERE learner_id=$1",

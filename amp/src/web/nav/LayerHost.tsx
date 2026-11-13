@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useSearch } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useLayoutEffect, useState, type ReactNode } from "react";
 import { LessonDialog } from "../features/pathways/LessonDialog";
 import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
@@ -21,19 +21,35 @@ import { SkillLayer } from "./SkillLayer";
  * (lib/return-to.ts), and its header names the layer it returns to.
  *
  * A school or class frame passes its `org`: every kind opens. Own practice
- * (Pathways) passes none: a skill and a lesson open, never a student.
+ * (Pathways) passes none: a skill and a lesson open, never a student, and a
+ * skill shows the `learner`'s own work on it and the skills around it.
  */
 export function LayerHost({
   org,
+  learner,
   lessonActions,
+  skillActions,
 }: {
   org?: string;
+  /** Own practice: whose map this is (none for a visitor). */
+  learner?: string;
   /** Above a lesson: what this page offers with it (try this problem type). */
   lessonActions?: (lesson: string) => ReactNode;
+  /** In a skill: what this page offers with it (try a problem). */
+  skillActions?: (skill: string) => ReactNode;
 }) {
   const { stack, close } = useLayers();
   const shown = org ? stack : stack.filter((entity) => !staffOnly(entity.kind));
-  return shown.map((entity, index) => (
+  // A stack restored at once (a refresh, a shared link) mounts a layer per
+  // pass, before paint, so each one's modal hides those under it from
+  // assistive technology, never the one above it.
+  const [depth, setDepth] = useState(1);
+  useLayoutEffect(() => {
+    if (depth < shown.length) setDepth(depth + 1);
+    else if (depth > Math.max(1, shown.length))
+      setDepth(Math.max(1, shown.length));
+  }, [depth, shown.length]);
+  return shown.slice(0, depth).map((entity, index) => (
     <Layer
       key={
         entity.kind === "work"
@@ -44,8 +60,10 @@ export function LayerHost({
       below={shown.slice(0, index)}
       above={shown.slice(index + 1)}
       org={org}
+      learner={learner}
       close={close}
       lessonActions={lessonActions}
+      skillActions={skillActions}
     />
   ));
 }
@@ -55,15 +73,19 @@ function Layer({
   below,
   above,
   org,
+  learner,
   close,
   lessonActions,
+  skillActions,
 }: {
   entity: Entity;
   below: Entity[];
   above: Entity[];
   org?: string;
+  learner?: string;
   close: () => void;
   lessonActions?: (lesson: string) => ReactNode;
+  skillActions?: (skill: string) => ReactNode;
 }) {
   const classId = (useParams({ strict: false }) as { class?: string }).class;
   const search = useSearch({ strict: false }) as { skill?: unknown };
@@ -92,10 +114,14 @@ function Layer({
           skill={entity.id}
           student={from?.id}
           place={org && classId ? { org, class: classId } : undefined}
+          learner={org ? undefined : learner}
+          connections={!org}
           open={!underAnswer}
           onClose={close}
           back={back}
-        />
+        >
+          {skillActions?.(entity.id)}
+        </SkillLayer>
       );
     }
     case "lesson":

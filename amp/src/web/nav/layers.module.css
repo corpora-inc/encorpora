@@ -45,6 +45,17 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
+/* A row's name, with a quiet line under it (why two skills connect). */
+.rowMain {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.rowMain small {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.4;
+}
 .rowAction {
   flex: none;
   color: var(--color-primary);
@@ -56,6 +67,40 @@
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   font-variant-numeric: var(--numeric);
+}
+/* More of a list than it shows at first: a quiet text button. */
+.more {
+  min-height: var(--target-size);
+  margin-inline: calc(var(--space-2) * -1);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  cursor: pointer;
+}
+.more:hover {
+  background: var(--color-surface-hover);
+}
+.more:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+/* What the page offers with the layer's subject: its one action first. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+/* A quiet line of context under the actions. */
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
 }
 /* Where a student stands on the skill: label above value, one row. */
 .facts {

@@ -93,7 +93,7 @@ export const illuminationPolicy = {
   maximum: 10,
   independentSuccessesForFull: 20,
 } as const;
-export function illumination(evidence?: Evidence) {
+export function illumination(evidence?: Pick<Evidence, "independentCorrect">) {
   return Math.min(
     illuminationPolicy.maximum,
     ((evidence?.independentCorrect ?? 0) /

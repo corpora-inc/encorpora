@@ -15,6 +15,7 @@ import {
   frontierSchema,
 } from "../features/pathways/model";
 import type { AuthSession } from "../auth";
+import { studentSkillResponse } from "../../schools/teacher-contracts";
 import {
   secondParentChild,
   secondParentChildren,
@@ -35,6 +36,29 @@ export const learnerEvidenceOptions = (
       request(
         `/learners/${encodeURIComponent(learnerId)}/progress`,
         progressSchema,
+        { token: session.token, signal },
+      ),
+  });
+/** A learner on one skill (the skill layer over Pathways): the engine's
+ * counts and their latest answers on it, as a teacher reads a student's. */
+export const learnerSkillOptions = (
+  session: AuthSession,
+  learnerId: string,
+  skillId: string,
+) =>
+  queryOptions({
+    queryKey: [
+      "account",
+      session.accountId,
+      "pathways",
+      learnerId,
+      "skill",
+      skillId,
+    ],
+    queryFn: ({ signal }) =>
+      request(
+        `/learners/${encodeURIComponent(learnerId)}/skills/${encodeURIComponent(skillId)}`,
+        studentSkillResponse,
         { token: session.token, signal },
       ),
   });

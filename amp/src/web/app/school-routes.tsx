@@ -67,6 +67,43 @@ export const staffScreen = async ({
   location: { pathname: string; searchStr: string };
 }) => ({ session: await staffSession(location) });
 
+/** A school-level page a family org (a family's or a tutor's) doesn't have
+ * (docs/design/ia.md: a family never lands on one). An old link opens the
+ * family's own equivalent instead, in its one class: Students is its People,
+ * Standing its Map. Layers open over it come along (a student). */
+const familyEquivalent =
+  (leaf: "roster" | "map") =>
+  async ({
+    location,
+    params,
+  }: {
+    location: { pathname: string; searchStr: string; search: unknown };
+    params: unknown;
+  }) => {
+    const session = await staffSession(location);
+    const { org: orgId, class: classId } = params as {
+      org: string;
+      class?: string;
+    };
+    const org = await queryClient
+      .ensureQueryData(orgOptions(session, orgId))
+      .catch(() => null);
+    if (org?.kind !== "family") return { session };
+    const classes = await queryClient
+      .ensureQueryData(classesOptions(session, orgId))
+      .catch(() => []);
+    const klass =
+      classes.find((entry) => entry.id === classId) ?? classes.at(0);
+    const open = (location.search as Record<string, unknown>)[OPEN_KEY];
+    throw redirect({
+      to: klass
+        ? `/school/${orgId}/classes/${klass.id}/${leaf}`
+        : `/school/${orgId}/classes`,
+      search: typeof open === "string" ? { [OPEN_KEY]: open } : {},
+      replace: true,
+    } as never);
+  };
+
 /** The frame's data, loaded with the screen so its navigation is whole. */
 export async function frameData(session: AuthSession, orgId: string) {
   await Promise.all([
@@ -87,13 +124,13 @@ export function schoolRoutes(root: AnyRoute) {
     path: string,
     component: ReturnType<typeof screen>,
     load?: (session: AuthSession, orgId: string) => unknown[],
-    staticData?: { overList?: boolean },
+    /** A family org's own page in place of this school-level one. */
+    family?: "roster" | "map",
   ) =>
     createRoute({
-      staticData,
       getParentRoute: () => root,
       path: `/school/$org${path}`,
-      beforeLoad: staffScreen,
+      beforeLoad: family ? familyEquivalent(family) : staffScreen,
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
         const orgId = (params as unknown as { org: string }).org;
@@ -313,15 +350,18 @@ export function schoolRoutes(root: AnyRoute) {
       }),
     ]),
     // Where students stand: the school's curves, then one class's students.
-    orgScreen("/standing", screens.standing, (session, orgId) => [
-      preload(orgStandingOptions(session, orgId)),
-    ]),
+    orgScreen(
+      "/standing",
+      screens.standing,
+      (session, orgId) => [preload(orgStandingOptions(session, orgId))],
+      "map",
+    ),
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/standing/$class",
       // A class's drill over the school's curves: it keeps their view.
       staticData: { overList: true },
-      beforeLoad: staffScreen,
+      beforeLoad: familyEquivalent("map"),
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
         const { org: orgId, class: classId } = params as unknown as {
@@ -351,7 +391,7 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/classes", screens.classes, (session, orgId) => [
       preload(yearsOptions(session, orgId)),
     ]),
-    orgScreen("/students", screens.students),
+    orgScreen("/students", screens.students, undefined, "roster"),
     // The school-level student page from before layers, and one of their
     // answers on it: a student layer over the school's Students, as the
     // class map's old addresses redirect (nav/entities.ts).
