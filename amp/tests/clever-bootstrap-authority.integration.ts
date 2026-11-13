@@ -1,4 +1,7 @@
 import test from "node:test";
+import Fastify from "fastify";
+import { bootstrapCleverAdmin } from "../src/schools/clever/bootstrap.js";
+import { registerCleverOnboarding } from "../src/schools/clever-onboarding.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
@@ -311,4 +314,120 @@ test(
       assert.equal(await f.allowed(first), true);
       assert.deepEqual(await f.deadline(second), otherDeadline);
     }),
+);
+
+test(
+  "L-a: bootstrap contention returns retryable busy without inserting a person",
+  enabled,
+  () =>
+    fixture(async (db) => {
+      const f = await staging(db);
+      const login = await establishProviderPrincipal(
+        db,
+        claims(adminIds[0]),
+        await resolveCleverPerson(db, claims(adminIds[0])),
+      );
+      const locker = await db.connect();
+      const app = Fastify();
+      await registerCleverOnboarding(app, {
+        pool: db,
+        authenticate: async () => f.accounts[0],
+        config: {
+          environment: "sandbox",
+          clientId: "fixture",
+          clientSecret: "fixture",
+        },
+        client: f.client,
+        worker: false,
+      });
+      try {
+        await locker.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
+          `clever-sync:${f.connected.connectionId}`,
+        ]);
+        const before = (
+          await db.query("SELECT count(*)::int n FROM amp_people")
+        ).rows[0].n;
+        const response = await app.inject({
+          method: "POST",
+          url: "/api/v1/school/clever/connect",
+          headers: { authorization: `Bearer ${login.token}` },
+          payload: input,
+        });
+        assert.equal(response.statusCode, 409);
+        assert.equal(response.headers["retry-after"], "1");
+        assert.deepEqual(response.json(), {
+          error: "clever_sync_already_running",
+          retryAfter: 1,
+        });
+        assert.equal(
+          (await db.query("SELECT count(*)::int n FROM amp_people")).rows[0].n,
+          before,
+        );
+        await locker.query("SELECT pg_advisory_unlock_all()");
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/school/clever/connect",
+              headers: { authorization: `Bearer ${login.token}` },
+              payload: input,
+            })
+          ).statusCode,
+          202,
+        );
+      } finally {
+        await locker.query("SELECT pg_advisory_unlock_all()");
+        locker.release();
+        await app.close();
+      }
+    }),
+);
+
+test("L-a: deferred bootstrap never falls through to INSERT", enabled, () =>
+  fixture(async (db) => {
+    const f = await staging(db);
+    const locker = await db.connect();
+    try {
+      await locker.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
+        `clever-sync:${f.connected.connectionId}`,
+      ]);
+      await assert.rejects(
+        f.repo.transaction((client) =>
+          bootstrapCleverAdmin(
+            client,
+            f.connected.connectionId,
+            f.connected.orgId,
+            f.accounts[0],
+            f.source.users[0],
+          ),
+        ),
+        {
+          statusCode: 409,
+          code: "clever_sync_already_running",
+          retryAfter: 1,
+        },
+      );
+    } finally {
+      await locker.query("SELECT pg_advisory_unlock_all()");
+      locker.release();
+    }
+    await f.repo.transaction((client) =>
+      bootstrapCleverAdmin(
+        client,
+        f.connected.connectionId,
+        f.connected.orgId,
+        f.accounts[0],
+        f.source.users[0],
+      ),
+    );
+    assert.equal(
+      (
+        await db.query(
+          "SELECT count(*)::int n FROM amp_people WHERE account_id=$1",
+          [f.accounts[0]],
+        )
+      ).rows[0].n,
+      1,
+    );
+  }),
 );

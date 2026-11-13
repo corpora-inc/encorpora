@@ -1,3 +1,4 @@
+import { SchoolError } from "../contracts.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { generateHandle } from "../repository.js";
@@ -14,14 +15,13 @@ export async function bootstrapCleverAdmin(
   accountId: string,
   user: User,
 ) {
-  await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-    accountId,
-  ]);
   const attached = await attachProvedCleverStaffIn(db, {
     connectionId,
     accountId,
     userId: user.id,
   });
+  if (attached.disposition === "deferred")
+    throw new SchoolError(409, "clever_sync_already_running", 1);
   const found = (
     await db.query(
       `SELECT id,account_id,deleted_at FROM amp_people WHERE id=$1`,

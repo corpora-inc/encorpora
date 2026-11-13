@@ -59,3 +59,11 @@ Use `AMP_TEST_DATABASE_URL=<dedicated test database> npx tsx scripts/verify-clev
 Provider access, institution sharing and certification are external prerequisites. A connected district exposes only what it shares. Existing Clever bindings cannot be silently repointed to another learner or institution; established duplicate identities need a reviewed resolution. District adoption grants are single-use, expire after seven days and recheck both parties' authority at acceptance. Learner names and school names are never matching keys.
 
 LMS grade passback, graded assignment authoring, teacher referral commissions and public seat-pack checkout are outside this onboarding implementation. AMP's core remains adaptive practice.
+
+### Retrying a busy connection
+
+When a roster apply holds the connection lock, connecting returns HTTP 409 with
+`{error: "clever_sync_already_running", retryAfter: 1}` and `Retry-After: 1`.
+Retry after that delay. A deferred administrator attachment does not create a
+person or grant bootstrap authority. Staff sign-in defers attachment during lock
+contention and can attach on a later session read.

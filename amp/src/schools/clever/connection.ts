@@ -1,3 +1,4 @@
+import { SchoolError } from "../contracts.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
@@ -39,10 +40,15 @@ export async function registerCleverConnectionIn(
       [input.environment, input.districtId],
     )
   ).rows[0];
-  if (existing)
-    await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      `clever-sync:${existing.id}`,
-    ]);
+  if (existing) {
+    const acquired = (
+      await db.query(
+        "SELECT pg_try_advisory_xact_lock(hashtextextended($1,0)) AS ok",
+        [`clever-sync:${existing.id}`],
+      )
+    ).rows[0].ok;
+    if (!acquired) throw new SchoolError(409, "clever_sync_already_running", 1);
+  }
   await requireAgreement(db, input.tenantId);
   const result = await db.query(
     `INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id,events_enabled)

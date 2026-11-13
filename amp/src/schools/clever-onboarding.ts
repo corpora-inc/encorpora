@@ -182,8 +182,13 @@ export async function registerCleverOnboarding(
         throw new SchoolError(403, "request_origin_invalid");
     });
     scope.setErrorHandler((error, request, reply) => {
-      if (error instanceof SchoolError)
-        return reply.code(error.statusCode).send({ error: error.code });
+      if (error instanceof SchoolError) {
+        if (error.retryAfter) reply.header("Retry-After", error.retryAfter);
+        return reply.code(error.statusCode).send({
+          error: error.code,
+          ...(error.retryAfter ? { retryAfter: error.retryAfter } : {}),
+        });
+      }
       if (error instanceof z.ZodError)
         return reply.code(400).send({ error: "invalid_school_request" });
       if ((error as { statusCode?: number }).statusCode === 401)
