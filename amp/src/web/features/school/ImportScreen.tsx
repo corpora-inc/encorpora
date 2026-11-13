@@ -505,6 +505,10 @@ const bucketLabels: Record<Bucket, [string, BadgeTone]> = {
 
 const issueText: Record<RosterIssue["code"], (value: string) => string> = {
   missing_name: () => "No name on this row.",
+  source_conflict: (value) =>
+    `${value} Correct the OneRoster export and import again.`,
+  unsupported_role: (value) =>
+    `AMP does not assign these roles from a roster file: ${value}. Supported teaching and student memberships can be imported.`,
   name_too_long: (value) => `“${value.slice(0, 40)}…” is too long for a name.`,
   unknown_grade: (value) => `“${value}” isn’t a grade AMP knows.`,
   invalid_email: (value) => `“${value}” isn’t an email address.`,
@@ -732,10 +736,14 @@ function ReviewStep({
       issue.code === "missing_name" ||
       issue.code === "name_too_long" ||
       issue.code === "ambiguous_identity" ||
-      issue.code === "conflicting_identity",
+      issue.code === "conflicting_identity" ||
+      issue.code === "source_conflict",
   );
   const soft = issues.filter(
-    (issue) => issue.code === "unknown_grade" || issue.code === "invalid_email",
+    (issue) =>
+      issue.code === "unknown_grade" ||
+      issue.code === "invalid_email" ||
+      issue.code === "unsupported_role",
   );
   const held = rows.filter((row) => planFor(row)?.status === "held");
   const unresolved = held.filter((row) => !draft.resolutions[String(row.line)]);

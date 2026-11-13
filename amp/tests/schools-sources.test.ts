@@ -298,10 +298,7 @@ test("OneRoster: a ZIP becomes the same rows a CSV does", () => {
     false,
     "a chosen school leaves the other one out",
   );
-  assert.equal(
-    oneRosterRows(files).rows.some((row) => row.givenName === "Far"),
-    true,
-  );
+  assert.equal(oneRosterRows(files).rows.length, 0);
 });
 
 test("a ZIP that isn't a roster says so instead of half-reading", () => {

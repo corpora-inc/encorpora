@@ -111,6 +111,8 @@ export async function inviteStaffIn(
      * applied to whoever already has this address here: a family's second
      * parent (src/family/second-parent.ts) accepts with that address. */
     newPerson?: boolean;
+    /** A reviewed source applies its exact role/enrollment periods separately. */
+    skipMemberships?: boolean;
   },
   actorPersonId: string | null,
 ): Promise<IssuedInvite> {
@@ -145,12 +147,16 @@ export async function inviteStaffIn(
       ],
     );
   const today = await repo.today(client, org.timezone);
-  await client.query(
-    `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,$4,$5)
+  if (!input.skipMemberships)
+    await client.query(
+      `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,$4,$5)
      ON CONFLICT (person_id,org_id,role) WHERE end_on IS NULL DO NOTHING`,
-    [randomUUID(), personId, org.id, input.role, today],
-  );
-  if (input.role === "teacher" || input.role === "aide")
+      [randomUUID(), personId, org.id, input.role, today],
+    );
+  if (
+    !input.skipMemberships &&
+    (input.role === "teacher" || input.role === "aide")
+  )
     for (const classId of input.classIds ?? []) {
       const home = await repo.classIn(client, classId, org.path);
       await repo.enroll(client, home.id, personId, input.role, today);

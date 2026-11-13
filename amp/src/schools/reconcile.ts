@@ -1,6 +1,9 @@
+import { isDeepStrictEqual } from "node:util";
+import { applySourceEvidence, rosterClassDigest } from "./source-evidence.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { SchoolError, type GradingKind } from "./contracts.js";
+import { activeToday } from "./principal.js";
 import { recordEvent } from "./events.js";
 import type { SchoolRepository } from "./repository.js";
 import { learnerNameFrom, writeStudent } from "./roster.js";
@@ -28,13 +31,28 @@ type Existing = {
   classes: string[];
   class_ids: string[];
   org_ids: string[];
+  source_metadata: Record<
+    string,
+    {
+      schoolImports?: Record<
+        string,
+        { evidence?: RosterRow["sourceEvidence"]; classDigest?: string }
+      >;
+      classImports?: Record<
+        string,
+        { evidence?: RosterRow["sourceEvidence"]; classDigest?: string }
+      >;
+    }
+  >;
   deleted_at: Date | null;
 };
 const FROM_PEOPLE = `SELECT p.id,p.given_name,p.family_name,p.display_name,p.email,p.identifier,p.grade_level,p.learner_id,p.account_id,p.deleted_at,
   ARRAY(SELECT r.sourced_id FROM amp_enrollments e JOIN amp_external_refs r ON r.local_id=e.class_id AND r.kind='class' AND r.tenant_id=p.tenant_id AND r.source=$2
-    WHERE e.person_id=p.id AND e.end_on IS NULL) AS classes,
-  ARRAY(SELECT e.class_id FROM amp_enrollments e WHERE e.person_id=p.id AND e.end_on IS NULL) AS class_ids,
-  ARRAY(SELECT r.org_id FROM amp_org_roles r WHERE r.person_id=p.id AND r.end_on IS NULL) AS org_ids
+    JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+    WHERE e.person_id=p.id AND ${activeToday("e", "o")}) AS classes,
+  ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id WHERE e.person_id=p.id AND ${activeToday("e", "o")}) AS class_ids,
+  ARRAY(SELECT r.org_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id WHERE r.person_id=p.id AND ${activeToday("r", "o")}) AS org_ids,
+  (SELECT jsonb_object_agg(x.sourced_id,x.metadata) FROM amp_external_refs x WHERE x.local_id=p.id AND x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person') AS source_metadata
   FROM amp_people p`;
 const fullName = (row: { givenName: string; familyName?: string }) =>
   nameKey(`${row.givenName} ${row.familyName ?? ""}`);
@@ -59,6 +77,7 @@ function differences(
   row: RosterRow,
   person: Existing,
   scope?: ImportScope,
+  orgId?: string,
 ): string[] {
   const out: string[] = [];
   if (row.gradeLevel !== undefined && row.gradeLevel !== person.grade_level)
@@ -66,11 +85,21 @@ function differences(
   if (row.email && row.email !== person.email?.toLowerCase()) out.push("email");
   if (row.identifier && row.identifier !== person.identifier)
     out.push("student ID");
+  const previous = scope
+    ? person.source_metadata?.[row.sourcedId]?.classImports?.[scope.classId]
+    : person.source_metadata?.[row.sourcedId]?.schoolImports?.[orgId!];
+  if (
+    row.sourceEvidence &&
+    (!isDeepStrictEqual(previous?.evidence, row.sourceEvidence) ||
+      previous?.classDigest !== rosterClassDigest(row))
+  )
+    out.push("source memberships");
   const had = new Set(person.classes);
   if (
     scope
       ? !person.class_ids.includes(scope.classId)
-      : row.classes.some((klass) => !had.has(klass.sourcedId))
+      : !row.sourceEvidence &&
+        row.classes.some((klass) => !had.has(klass.sourcedId))
   )
     out.push("classes");
   return out;
@@ -208,6 +237,44 @@ async function importRows(
   scope?: ImportScope,
 ) {
   let rows = input;
+  for (const row of rows)
+    if (row.sourceEvidence) {
+      if (source !== "oneroster")
+        throw new SchoolError(400, "source_evidence_invalid");
+      const evidence = row.sourceEvidence;
+      const roleNames = [
+        ...evidence.roles
+          .filter((role) => ["student", "teacher", "aide"].includes(role.role))
+          .map((role) => role.role),
+        ...evidence.enrollments.map((e) => e.role),
+      ];
+      if (
+        roleNames.some(
+          (role) => (role === "student") !== (row.role === "student"),
+        )
+      )
+        throw new SchoolError(400, "source_identity_role_conflict");
+      const ids = new Set(row.classes.map((c) => c.sourcedId));
+      if (
+        row.classes.some(
+          (c) =>
+            c.sourceSchoolId && c.sourceSchoolId !== evidence.schoolSourcedId,
+        ) ||
+        evidence.enrollments.some(
+          (e) =>
+            !ids.has(e.classSourcedId) ||
+            (e.schoolSourcedId &&
+              e.schoolSourcedId !== evidence.schoolSourcedId),
+        )
+      )
+        throw new SchoolError(400, "source_school_scope_invalid");
+      if (
+        [...evidence.roles, ...evidence.enrollments].some(
+          (e) => e.startsOn && e.endsOn && e.endsOn < e.startsOn,
+        )
+      )
+        throw new SchoolError(400, "source_membership_dates_invalid");
+    }
   if (scope) {
     const { rows: classes } = await repo.pool.query(
       `SELECT id,name,course_bands FROM amp_classes WHERE id=$1 AND org_id=$2 AND archived_at IS NULL`,
@@ -288,7 +355,7 @@ export async function planRoster(
         ...(person ? { existing: learnerNameFrom(person) } : {}),
       };
     if (!person) return { line: row.line, status: "new" };
-    const changes = differences(row, person, scope);
+    const changes = differences(row, person, scope, orgId);
     return changes.length
       ? { line: row.line, status: "changed", changes }
       : { line: row.line, status: "unchanged" };
@@ -305,13 +372,32 @@ async function ensureSession(
   session: NonNullable<RosterClass["session"]>,
   parentId: string | null,
 ) {
+  const key =
+    source === "oneroster"
+      ? `${orgId}/${session.sourcedId}`
+      : session.sourcedId;
   const known = (
     await client.query(
       `SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='session' AND sourced_id=$3`,
-      [tenantId, source, session.sourcedId],
+      [tenantId, source, key],
     )
   ).rows[0];
-  if (known) return known.local_id as string;
+  if (known) {
+    if (source === "oneroster")
+      await client.query(
+        `UPDATE amp_academic_sessions SET name=$2,kind=$3,starts_on=$4,ends_on=$5,parent_id=$6 WHERE id=$1 AND org_id=$7`,
+        [
+          known.local_id,
+          session.name,
+          session.kind,
+          session.startsOn,
+          session.endsOn,
+          parentId,
+          orgId,
+        ],
+      );
+    return known.local_id as string;
+  }
   const id = randomUUID();
   await client.query(
     `INSERT INTO amp_academic_sessions(id,org_id,parent_id,kind,name,starts_on,ends_on) VALUES($1,$2,$3,$4,$5,$6,$7)`,
@@ -327,7 +413,7 @@ async function ensureSession(
   );
   await client.query(
     `INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id) VALUES($1,$2,'session',$3,$4)`,
-    [tenantId, source, session.sourcedId, id],
+    [tenantId, source, key, id],
   );
   return id;
 }
@@ -343,7 +429,12 @@ async function ensureClasses(
 ) {
   const wanted = new Map<string, RosterClass>();
   for (const row of rows)
-    for (const klass of row.classes) wanted.set(klass.sourcedId, klass);
+    for (const klass of row.classes) {
+      const previous = wanted.get(klass.sourcedId);
+      if (previous && !isDeepStrictEqual(previous, klass))
+        throw new SchoolError(400, "source_class_conflict");
+      wanted.set(klass.sourcedId, klass);
+    }
   const ids = new Map<string, string>();
   if (!wanted.size) return ids;
   await repo.transaction(async (client) => {
@@ -367,38 +458,70 @@ async function ensureClasses(
     ).rows[0]?.kind as GradingKind | undefined;
     for (const row of known.rows) ids.set(row.sourced_id, row.local_id);
     for (const klass of wanted.values()) {
-      if (ids.has(klass.sourcedId)) continue;
-      const named = (
-        await client.query(
-          `SELECT id FROM amp_classes WHERE org_id=$1 AND lower(name)=lower($2) AND archived_at IS NULL
+      if (ids.has(klass.sourcedId) && source !== "oneroster") continue;
+      const named =
+        source === "oneroster"
+          ? undefined
+          : (
+              await client.query(
+                `SELECT id FROM amp_classes WHERE org_id=$1 AND lower(name)=lower($2) AND archived_at IS NULL
            AND NOT EXISTS(SELECT 1 FROM amp_external_refs x WHERE x.tenant_id=$3 AND x.source=$4 AND x.kind='class' AND x.local_id=amp_classes.id)
            ORDER BY created_at,id LIMIT 1`,
-          [orgId, klass.name, tenantId, source],
-        )
-      ).rows[0];
-      let classId = named?.id as string | undefined;
-      if (!classId) {
-        const year = klass.year
+                [orgId, klass.name, tenantId, source],
+              )
+            ).rows[0];
+      let classId =
+        ids.get(klass.sourcedId) ?? (named?.id as string | undefined);
+      if (
+        classId &&
+        source === "oneroster" &&
+        !(
+          await client.query(
+            "SELECT 1 FROM amp_classes WHERE id=$1 AND org_id=$2",
+            [classId, orgId],
+          )
+        ).rowCount
+      )
+        throw new SchoolError(409, "source_school_scope_invalid");
+      const year = klass.year
+        ? await ensureSession(client, tenantId, orgId, source, klass.year, null)
+        : null;
+      if (source === "oneroster")
+        for (const session of klass.sessions ?? []) {
+          const local = await ensureSession(
+            client,
+            tenantId,
+            orgId,
+            source,
+            session,
+            session.kind === "year" ? null : year,
+          );
+          await client.query(
+            `UPDATE amp_external_refs SET metadata=$5 WHERE tenant_id=$1 AND source=$2 AND kind='session' AND local_id=$3 AND sourced_id=$4`,
+            [
+              tenantId,
+              source,
+              local,
+              `${orgId}/${session.sourcedId}`,
+              {
+                sourcedId: session.sourcedId,
+                parentSourcedId: session.parentSourcedId ?? null,
+              },
+            ],
+          );
+        }
+      const sessionId =
+        klass.session && klass.session.sourcedId !== klass.year?.sourcedId
           ? await ensureSession(
               client,
               tenantId,
               orgId,
               source,
-              klass.year,
-              null,
+              klass.session,
+              year,
             )
-          : null;
-        const sessionId =
-          klass.session && klass.session.sourcedId !== klass.year?.sourcedId
-            ? await ensureSession(
-                client,
-                tenantId,
-                orgId,
-                source,
-                klass.session,
-                year,
-              )
-            : year;
+          : year;
+      if (!classId) {
         const created = await repo.createClassIn(
           client,
           orgId,
@@ -420,6 +543,28 @@ async function ensureClasses(
          ON CONFLICT DO NOTHING`,
         [tenantId, source, klass.sourcedId, classId],
       );
+      if (source === "oneroster") {
+        if (sessionId)
+          await client.query(
+            "UPDATE amp_classes SET session_id=$2 WHERE id=$1",
+            [classId, sessionId],
+          );
+        await client.query(
+          `UPDATE amp_external_refs SET metadata=$4 WHERE tenant_id=$1 AND source=$2 AND kind='class' AND sourced_id=$3`,
+          [
+            tenantId,
+            source,
+            klass.sourcedId,
+            {
+              schoolSourcedId: klass.sourceSchoolId ?? null,
+              termSourcedIds: klass.termSourcedIds ?? [],
+              sessionSourcedIds: (klass.sessions ?? []).map(
+                (session) => session.sourcedId,
+              ),
+            },
+          ],
+        );
+      }
       ids.set(klass.sourcedId, classId);
     }
   });
@@ -455,6 +600,17 @@ export async function applyRoster(
 ): Promise<{ results: ApplyResult[]; invites: RosterInvite[] }> {
   const parsed = applyRosterSchema.parse(raw);
   const { source, resolutions = {} } = parsed;
+  if (!scope && parsed.rows.some((row) => row.sourceEvidence)) {
+    const agreement = (
+      await repo.pool.query(
+        `SELECT a.ended_at FROM amp_orgs o JOIN LATERAL
+      (SELECT ended_at FROM amp_data_agreements WHERE org_id=ANY(o.path) ORDER BY array_position(o.path,org_id) DESC,accepted_at DESC,id LIMIT 1) a ON true WHERE o.id=$1`,
+        [orgId],
+      )
+    ).rows[0];
+    if (!agreement || agreement.ended_at)
+      throw new SchoolError(409, "agreement_required");
+  }
   const rows = await importRows(repo, orgId, source, parsed.rows, scope);
   const { tenantId } = await tenantOf(repo, orgId);
   const classIds = scope
@@ -473,6 +629,7 @@ export async function applyRoster(
       orgId,
       row,
       classes,
+      classIds,
       actorPersonId,
       scope,
     };
@@ -539,13 +696,23 @@ type RowContext = {
   orgId: string;
   row: RosterRow;
   classes: string[];
+  classIds: Map<string, string>;
   actorPersonId: string | null;
   scope?: ImportScope;
 };
 async function addStudent(
   client: PoolClient,
   repo: SchoolRepository,
-  { tenantId, source, orgId, row, classes, actorPersonId }: RowContext,
+  {
+    tenantId,
+    source,
+    orgId,
+    row,
+    classes,
+    classIds,
+    actorPersonId,
+    scope,
+  }: RowContext,
 ): Promise<ApplyResult> {
   const personId = randomUUID();
   if (!(await claimRef(client, tenantId, source, row.sourcedId, personId)))
@@ -566,12 +733,32 @@ async function addStudent(
     new Date(),
     personId,
   );
-  if (more.length) {
+  if (row.sourceEvidence && !scope) {
+    // This newly allocated person has no independent memberships. Replace only
+    // the provisioner's initial defaults, before the transaction is visible.
+    await client.query("DELETE FROM amp_enrollments WHERE person_id=$1", [
+      personId,
+    ]);
+    await client.query("DELETE FROM amp_org_roles WHERE person_id=$1", [
+      personId,
+    ]);
+  } else if (more.length) {
     const org = await repo.org(client, created.orgId);
     const today = await repo.today(client, org.timezone);
     for (const classId of more)
       await repo.enroll(client, classId, personId, "student", today);
   }
+  const org = await repo.org(client, orgId);
+  await applySourceEvidence(client, {
+    tenantId,
+    orgId,
+    personId,
+    source,
+    row,
+    classIds,
+    today: await repo.today(client, org.timezone),
+    scope,
+  });
   return { line: row.line, status: "created", seated: created.seated };
 }
 async function addStaff(
@@ -579,7 +766,16 @@ async function addStaff(
   repo: SchoolRepository,
   keys: InviteKeys,
   invites: RosterInvite[],
-  { tenantId, source, orgId, row, classes, actorPersonId }: RowContext,
+  {
+    tenantId,
+    source,
+    orgId,
+    row,
+    classes,
+    classIds,
+    actorPersonId,
+    scope,
+  }: RowContext,
 ): Promise<ApplyResult> {
   const personId = randomUUID();
   if (!(await claimRef(client, tenantId, source, row.sourcedId, personId)))
@@ -596,6 +792,7 @@ async function addStaff(
       ...(row.familyName ? { familyName: row.familyName } : {}),
       classIds: classes,
       personId,
+      skipMemberships: !!row.sourceEvidence && !scope,
     },
     actorPersonId,
   );
@@ -604,6 +801,17 @@ async function addStaff(
       `UPDATE amp_external_refs SET local_id=$4 WHERE tenant_id=$1 AND source=$2 AND kind='person' AND sourced_id=$3`,
       [tenantId, source, row.sourcedId, issued.personId],
     );
+  const org = await repo.org(client, orgId);
+  await applySourceEvidence(client, {
+    tenantId,
+    orgId,
+    personId: issued.personId,
+    source,
+    row,
+    classIds,
+    today: await repo.today(client, org.timezone),
+    scope,
+  });
   invites.push(issued);
   return { line: row.line, status: "created" };
 }
@@ -617,6 +825,7 @@ async function updateExisting(
     row,
     person,
     classes,
+    classIds,
     rename,
     actorPersonId,
     scope,
@@ -629,7 +838,20 @@ async function updateExisting(
     row.sourcedId,
     person.id,
   );
-  const changes = differences(row, person, scope);
+  const changes = differences(row, person, scope, orgId);
+  const sourceOrg = await repo.org(client, orgId);
+  const sourceChanged = await applySourceEvidence(client, {
+    tenantId,
+    orgId,
+    personId: person.id,
+    source,
+    row,
+    classIds,
+    today: await repo.today(client, sourceOrg.timezone),
+    scope,
+  });
+  if (sourceChanged && !changes.includes("source memberships"))
+    changes.push("source memberships");
   if (!changes.length && !rename)
     return { line: row.line, status: linked ? "updated" : "unchanged" };
   const org = await repo.org(client, orgId);
@@ -646,9 +868,10 @@ async function updateExisting(
     ...(row.identifier ? { identifier: row.identifier } : {}),
   });
   const role = isStudent ? "student" : row.role === "aide" ? "aide" : "teacher";
-  for (const classId of classes)
-    await repo.enroll(client, classId, person.id, role, today);
-  if (!isStudent)
+  if (!row.sourceEvidence || scope)
+    for (const classId of classes)
+      await repo.enroll(client, classId, person.id, role, today);
+  if (!isStudent && !row.sourceEvidence)
     await client.query(
       `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,$4,$5)
        ON CONFLICT (person_id,org_id,role) WHERE end_on IS NULL DO NOTHING`,

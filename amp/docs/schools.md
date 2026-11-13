@@ -211,6 +211,18 @@ Merging duplicate students and a standalone school joining a district are agent-
 
 Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a teacher and a parent at once.
 
+### OneRoster CSV imports
+
+The import wizard accepts a OneRoster ZIP or its CSV files. Choose the source school when the export includes several schools; import each school into its corresponding AMP school. Identity matches use the tenant and source IDs. A class name alone never links two OneRoster classes.
+
+The [OneRoster CSV binding](https://www.imsglobal.org/spec/oneroster/v1p2/bind/csv) permits several roles and organizations per user, several terms per class, and dated roles and enrollments. AMP preserves this evidence on the source bindings. Student, teacher and aide memberships retain their individual begin and end dates. Other roles are reported without granting permissions. Mixed student and teaching identities, duplicate IDs, missing calendar references and conflicting intervals are held for correction.
+
+Every referenced term and its school-year ancestry is retained. A class spanning several terms belongs to the common school year in AMP; its source binding retains all term IDs. Calendar periods are scoped to their AMP school, including exports that share academic-session IDs across a district. The preview includes membership and calendar changes.
+
+File imports are additive. Omitting a person or membership does not remove earlier or manual memberships; explicit dates update memberships owned by that source. Teachers can import students only into their authorized class. Their file's other school and class references are provenance, not permission to create or change those memberships. An administrator's school import requires an active school data agreement.
+
+This is a roster import, not continuous SIS synchronization or OneRoster certification. Demographics, credentials and unrelated CSV files are not imported. ZIPs with duplicate roster filenames or more than 64 MiB of expanded roster data are rejected.
+
 ## Sign-in
 
 ### Students

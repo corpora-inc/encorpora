@@ -12,14 +12,37 @@ const name = z
   .max(100)
   .refine((value) => !/[\u0000-\u001f\u007f]/.test(value));
 const id = z.string().trim().min(1).max(200);
-const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+const isoDate = z.iso.date();
 const rosterSession = z.strictObject({
   sourcedId: id,
   name,
   kind: z.enum(gradingKinds),
   startsOn: isoDate,
   endsOn: isoDate,
+  parentSourcedId: id.optional(),
 });
+const period = { startsOn: isoDate.optional(), endsOn: isoDate.optional() };
+const sourceRole = z.strictObject({
+  sourcedId: id.optional(),
+  orgSourcedId: id.optional(),
+  role: z.string().trim().min(1).max(64),
+  primary: z.boolean().optional(),
+  ...period,
+});
+const sourceEnrollment = z.strictObject({
+  sourcedId: id,
+  classSourcedId: id,
+  schoolSourcedId: id.optional(),
+  role: z.enum(rosterRoles),
+  ...period,
+});
+export const rosterEvidenceSchema = z.strictObject({
+  schoolSourcedId: id,
+  orgSourcedIds: z.array(id).max(500),
+  roles: z.array(sourceRole).max(500),
+  enrollments: z.array(sourceEnrollment).max(500),
+});
+export type RosterEvidence = z.infer<typeof rosterEvidenceSchema>;
 const rosterClass = z.strictObject({
   sourcedId: id,
   name,
@@ -27,6 +50,9 @@ const rosterClass = z.strictObject({
   gradingKind: z.enum(gradingKinds).optional(),
   session: rosterSession.optional(),
   year: rosterSession.optional(),
+  sessions: z.array(rosterSession).max(100).optional(),
+  termSourcedIds: z.array(id).max(100).optional(),
+  sourceSchoolId: id.optional(),
 });
 export const rosterRowSchema = z.strictObject({
   /** Where this came from in the file, so an error can point at it. */
@@ -44,7 +70,8 @@ export const rosterRowSchema = z.strictObject({
     .optional(),
   identifier: z.string().trim().min(1).max(100).optional(),
   gradeLevel: z.number().int().min(0).max(13).optional(),
-  classes: z.array(rosterClass).max(40),
+  classes: z.array(rosterClass).max(100),
+  sourceEvidence: rosterEvidenceSchema.optional(),
 });
 export type RosterRow = z.infer<typeof rosterRowSchema>;
 export type RosterClass = z.infer<typeof rosterClass>;
@@ -60,7 +87,9 @@ export type RosterIssue = {
     | "unknown_grade"
     | "invalid_email"
     | "ambiguous_identity"
-    | "conflicting_identity";
+    | "conflicting_identity"
+    | "source_conflict"
+    | "unsupported_role";
   /** What the file said. */
   value: string;
   /** Everything else usable on the row, so a fix can complete it. */
