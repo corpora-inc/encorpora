@@ -345,8 +345,7 @@ export function SignInScreen() {
       await navigate({ href: continuationUrl(carry), replace: true });
     else if (carry.return === "security")
       await navigate({
-        to: "/$",
-        params: { _splat: "family/security" },
+        href: continuationUrl(carry),
         replace: true,
       });
     else

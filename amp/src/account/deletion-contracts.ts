@@ -52,6 +52,13 @@ export const deletionPreviewSchema = z.object({
 });
 export type DeletionPreview = z.infer<typeof deletionPreviewSchema>;
 
+export const deletionSessionPreviewSchema = deletionPreviewSchema.extend({
+  freshForMs: z
+    .number()
+    .nonnegative()
+    .max(10 * 60_000),
+});
+
 export const deletionReceiptSchema = z.object({
   deleted: z.literal(true),
 });
