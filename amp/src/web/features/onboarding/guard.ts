@@ -78,7 +78,11 @@ export function startDestination(
       // A child's details, or a family of children, need the parent's
       // consent first. An adult buying for herself doesn't: the program's
       // page offers her own learner (or starts it) beside any child.
-      return learnerSteps.includes(pathname) || (me.learners.length && !own)
+      const parent =
+        me.learners.length > 0 ||
+        me.consent.status !== "none" ||
+        me.consent.method !== null;
+      return learnerSteps.includes(pathname) || (parent && !own)
         ? "/start/consent"
         : program.path;
     }

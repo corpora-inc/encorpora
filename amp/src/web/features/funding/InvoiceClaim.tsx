@@ -16,6 +16,7 @@ const invoicesSchema = z.object({
     z.object({
       id: z.string(),
       studentBillingName: z.string(),
+      parentEmail: z.string().optional(),
       state: z.enum(["prepared", "claimed", "cancelled"]),
       expiresAt: z.string(),
       offer: z.object({ programId: z.string() }),
@@ -25,19 +26,56 @@ const invoicesSchema = z.object({
 /** The account holder's own learner, before it exists: started on use. */
 const NEW_OWN = "own:new";
 
+const normalized = (value: string) =>
+  value.trim().replace(/\s+/g, " ").toLowerCase();
+
+/** Billing names are hints, never consent or authority to claim an invoice.
+ * The server scopes this list to the verified account email. Require an exact,
+ * unique name match; an email's local part says nothing about the learner. */
+function invoiceLearner(
+  invoices: z.infer<typeof invoicesSchema>["invoices"],
+  accountEmail: string | null,
+  candidates: readonly { id: string; name: string }[],
+) {
+  if (!invoices.length || !accountEmail) return null;
+  const matches = invoices.map((invoice) => {
+    if (
+      !invoice.parentEmail ||
+      normalized(invoice.parentEmail) !== normalized(accountEmail) ||
+      !(Date.parse(invoice.expiresAt) > Date.now())
+    )
+      return null;
+    const ids = new Set(
+      candidates
+        .filter(
+          (candidate) =>
+            normalized(candidate.name) &&
+            normalized(candidate.name) ===
+              normalized(invoice.studentBillingName),
+        )
+        .map((candidate) => candidate.id),
+    );
+    return ids.size === 1 ? [...ids][0]! : null;
+  });
+  return matches[0] && matches.every((id) => id === matches[0])
+    ? matches[0]
+    : null;
+}
+
 /**
  * Connects an invoice made out before sign-in to a learner: the account
  * holder's own ("Me", started here if she has none yet) or one of her
  * children. Buying for herself needs no parental consent; a child does, so a
  * child chosen without it leads to the consent step instead of a claim that
- * would fail. With no invoice waiting and no learner at all, it asks who's
- * learning first.
+ * would fail. Without a learner or an unambiguous invoice recipient, it asks
+ * who's learning first.
  */
 export function InvoiceClaim({
   session,
   program,
   learners,
   own,
+  accountEmail,
   consentActive,
   preferredLearnerId,
   children,
@@ -47,7 +85,8 @@ export function InvoiceClaim({
   /** The account's children. */
   learners: readonly { id: string; name: string }[];
   /** The account holder's own adult learner, when she has one. */
-  own: { id: string } | null;
+  own: { id: string; name: string } | null;
+  accountEmail: string | null;
   consentActive: boolean;
   preferredLearnerId?: string;
   children: React.ReactNode;
@@ -70,22 +109,29 @@ export function InvoiceClaim({
     { value: own?.id ?? NEW_OWN, label: "Me" },
     ...learners.map((l) => ({ value: l.id, label: l.name })),
   ];
-  const [learner, setLearner] = useState(
-    choices.find((c) => c.value === preferredLearnerId)?.value ??
-      (choices.length === 1 ? choices[0]!.value : ""),
-  );
+  const [learner, setLearner] = useState<string | null>(null);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   // Back to where the claim was opened, else practice (lib/return-to.ts).
   const closeClick = useCloseClick("/practice");
-  // Once started, "Me" is the account holder's learner itself.
-  const value = learner === NEW_OWN && own ? own.id : learner;
-  const forChild = learners.some((l) => l.id === value);
-  const needsConsent = forChild && !consentActive;
   const pending =
     invoices.data?.invoices.filter(
       (i) => i.offer.programId === program.id && i.state === "prepared",
     ) ?? [];
+  const inferred = invoiceLearner(pending, accountEmail, [
+    ...learners,
+    ...(own ? [own] : []),
+    ...(session.name ? [{ id: own?.id ?? NEW_OWN, name: session.name }] : []),
+  ]);
+  const selected =
+    learner ??
+    inferred ??
+    choices.find((c) => c.value === preferredLearnerId)?.value ??
+    (choices.length === 1 ? choices[0]!.value : "");
+  // Once started, "Me" is the account holder's learner itself.
+  const value = selected === NEW_OWN && own ? own.id : selected;
+  const forChild = learners.some((l) => l.id === value);
+  const needsConsent = forChild && !consentActive;
   if (invoices.isPending)
     return (
       <PageFrame centered>
@@ -115,9 +161,9 @@ export function InvoiceClaim({
       Continue to parent consent
     </Link>
   );
-  if (!pending.length) {
-    if (own || learners.length) return children;
-    // No invoice and no learner yet: who is this for?
+  if (!pending.length && (own || learners.length)) return children;
+  if (!own && !learners.length && !inferred) {
+    // Neither the account nor its invoices identify who is learning.
     return (
       <PageFrame centered>
         <section className={frameCard}>

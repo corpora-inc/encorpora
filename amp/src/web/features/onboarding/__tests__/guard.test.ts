@@ -299,6 +299,42 @@ test("a parent's children still need consent before a funded purchase", () => {
     ).toBe("/start/consent");
 });
 
+test.each(["pending", "withdrawn"] as const)(
+  "funded entry resumes %s parental consent before a child exists",
+  (status) => {
+    const parent = me({ consent: { status, method: null } });
+    for (const path of ["/start", "/purchase/arizona-esa", "/start/name"])
+      expect(startDestination(parent, path, false, "arizona-esa")).toBe(
+        "/start/consent",
+      );
+    expect(
+      startDestination(parent, "/start/consent", false, "arizona-esa"),
+    ).toBeNull();
+    expect(
+      startDestination(
+        {
+          ...parent,
+          account: { ...parent.account, confirmationRequired: true },
+        },
+        "/purchase/arizona-esa",
+        false,
+        "arizona-esa",
+      ),
+    ).toBe("/start/verify-email");
+  },
+);
+
+test("a recorded consent method identifies a parent even when consent is no longer active", () => {
+  expect(
+    startDestination(
+      me({ consent: { status: "none", method: "internal-email-plus-v1" } }),
+      "/purchase/arizona-esa",
+      false,
+      "arizona-esa",
+    ),
+  ).toBe("/start/consent");
+});
+
 test("a gift for an adult on her own goes to the gift, never to a child's setup", () => {
   const myself = me({
     next: "accept-gift",
