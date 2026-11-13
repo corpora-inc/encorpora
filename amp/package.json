@@ -181,7 +181,8 @@
     "test:clever-session-ui": "tsx scripts/verify-clever-session-ui.ts",
     "test:school-connect-ui": "tsx scripts/verify-school-connect-ui.ts",
     "test:school-adoption-ui": "tsx scripts/verify-school-adoption-ui.ts",
-    "test:school-onboarding-ui": "npm run test:clever-session-ui && npm run test:school-pilot-ui && npm run test:school-import-ui && npm run test:school-connect-ui && npm run test:school-adoption-ui"
+    "test:school-onboarding-ui": "npm run test:clever-session-ui && npm run test:school-pilot-ui && npm run test:school-pilot-authority-ui && npm run test:school-import-ui && npm run test:school-connect-ui && npm run test:school-adoption-ui",
+    "test:school-pilot-authority-ui": "tsx scripts/verify-school-pilot-authority-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",
