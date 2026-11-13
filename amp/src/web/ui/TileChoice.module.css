@@ -7,6 +7,11 @@
   gap: var(--space-2);
   width: 100%;
 }
+@media (max-width: 359.98px) {
+  .grid {
+    grid-template-columns: repeat(var(--tiles-tiny, 4), minmax(0, 1fr));
+  }
+}
 @media (min-width: 560px) {
   .grid {
     grid-template-columns: repeat(var(--tiles-wide, 8), minmax(0, 1fr));

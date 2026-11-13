@@ -321,6 +321,39 @@ async function adultTriesALevel(
   const start = page.getByRole("button", { name: "Start practicing" });
   check(`${label} start waits for a grade`, await start.isDisabled());
   await measured(page, `${label} picker`);
+  // Pace: three equal segments, each name and detail inside its own cell,
+  // inside the screen, a 44 px target.
+  const segments = await page
+    .getByRole("radiogroup", { name: "Pace" })
+    .getByRole("radio")
+    .evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const box = node.getBoundingClientRect();
+        return {
+          left: box.left,
+          right: box.right,
+          height: box.height,
+          clipped: node.scrollWidth > node.clientWidth,
+          spill: [...node.querySelectorAll("span")].some((span) => {
+            const inner = span.getBoundingClientRect();
+            return inner.right > box.right + 0.5 || inner.left < box.left - 0.5;
+          }),
+        };
+      }),
+    );
+  check(`${label} pace has three segments`, segments.length === 3, segments);
+  check(
+    `${label} no pace segment overflows`,
+    segments.every(
+      (s) =>
+        !s.clipped &&
+        !s.spill &&
+        s.left >= 0 &&
+        s.right <= width &&
+        s.height >= 44,
+    ),
+    segments,
+  );
 
   // One tap for the grade, one for the pace; every area fills in.
   await page.getByRole("radio", { name: "4th grade" }).click();

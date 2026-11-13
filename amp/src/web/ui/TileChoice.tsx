@@ -40,7 +40,8 @@ export function TileChoice<V extends string | number>({
   value: V | null;
   onChange: (value: V | null) => void;
   /** Tiles to a row on a phone, and from 560 px. */
-  columns?: { narrow: number; wide: number };
+  /** `tiny`: under 360 px, where a 44 px tile needs fewer to a row. */
+  columns?: { narrow: number; wide: number; tiny?: number };
   disabled?: boolean;
   clearable?: boolean;
   className?: string;
@@ -76,6 +77,7 @@ export function TileChoice<V extends string | number>({
         {
           "--tiles-narrow": columns.narrow,
           "--tiles-wide": columns.wide,
+          "--tiles-tiny": columns.tiny ?? columns.narrow,
         } as CSSProperties
       }
     >

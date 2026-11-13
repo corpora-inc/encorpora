@@ -83,7 +83,7 @@ button.close.back {
   display: flex;
   gap: 2px;
   width: auto;
-  max-width: min(14rem, 36%);
+  max-width: min(14rem, 50%);
   padding: 0 var(--space-2) 0 var(--space-1);
   font: inherit;
   font-size: var(--text-table);
@@ -98,8 +98,11 @@ button.close.back {
 .back span {
   min-width: 0;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .body {
   flex: 1;

@@ -490,6 +490,50 @@ async function mapStays(page: Page, person: string) {
   console.log(`${person}: a skill opens and closes over Pathways in place`);
 }
 
+/** On a phone, a lesson over a skill with a long name keeps its hint, the
+ * close that names where X returns, inside the screen: a 44 px target, never
+ * past the edge, and nothing on the page wider than the screen. */
+async function hintFits(skillId: string, templateId: string) {
+  for (const width of [320, 390]) {
+    const context = await browser.newContext({
+      viewport: { width, height: 800 },
+    });
+    const signIn = await context.request.post(
+      `${origin}/api/auth/sign-in/email`,
+      {
+        headers: { Origin: origin },
+        data: { email: personaEmail("teacher"), password: PERSONA_PASSPHRASE },
+      },
+    );
+    assert.ok(signIn.ok(), "teacher signs in");
+    const page = await context.newPage();
+    await page.goto(
+      `${origin}/pathways?${OPEN_KEY}=skill:${skillId},lesson:${templateId}`,
+    );
+    const back = top(page).locator("[data-layer-back]");
+    await back.waitFor({ timeout: 15_000 });
+    await page.waitForTimeout(500);
+    const box = (await back.boundingBox())!;
+    const title = (await top(page).locator("header h2").boundingBox())!;
+    assert.ok(
+      box.x >= 0 && box.x + box.width <= width,
+      `${width}: the hint sits inside the screen (${box.x}..${box.x + box.width})`,
+    );
+    assert.ok(box.height >= 44, `${width}: the hint is a 44 px target`);
+    assert.ok(
+      title.x >= 0 && title.x + title.width <= box.x,
+      `${width}: the title is whole and clear of the hint`,
+    );
+    const spill = await page.evaluate(
+      () => document.documentElement.scrollWidth - innerWidth,
+    );
+    assert.ok(spill <= 0, `${width}: nothing wider than the screen (${spill})`);
+    await page.screenshot({ path: `${OUT}/hint-${width}.png` });
+    await context.close();
+  }
+  console.log("hint: inside the screen at 320 and 390");
+}
+
 const browser = await chromium.launch();
 const reached = new Set<string>();
 const reachedIn = new Set<string>();
@@ -507,7 +551,9 @@ try {
   const api = await browser.newContext();
   const catalog = (await (
     await api.request.get(`${origin}/api/v1/catalog`)
-  ).json()) as { templates: { id: string; skillId: string }[] };
+  ).json()) as { templates: { id: string; skillId: string }[];
+    skills: { id: string; title: string }[];
+  };
   await api.close();
   const type = catalog.templates[0]!;
   let table: Route[] | null = null;
@@ -715,6 +761,12 @@ try {
     }
     await context.close();
   }
+  const longName = catalog.skills.find((skill) => skill.title.length > 28);
+  const longType = catalog.templates.find(
+    (template) => template.skillId === longName?.id,
+  );
+  assert.ok(longName && longType, "a skill with a long name has a lesson");
+  await hintFits(longName.id, longType.id);
   const missing = ENTITY_KINDS.filter((kind) => !reached.has(kind));
   assert.deepEqual(missing, [], `every kind is linked somewhere: ${missing}`);
   const unreached = table!

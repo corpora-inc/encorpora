@@ -6,7 +6,7 @@ import {
 import { TileChoice } from "../../ui/TileChoice";
 
 /** Grades K to 12, one tap each, as the shared tile grid (ui/TileChoice):
- * seven to a row, the arrow keys moving along the grade axis. */
+ * seven to a row (five under 360 px, for 44 px targets), the arrow keys moving along the grade axis. */
 export function GradePicker({
   value,
   onChange,
@@ -26,7 +26,7 @@ export function GradePicker({
       }))}
       value={value}
       onChange={(grade) => grade !== null && onChange(grade)}
-      columns={{ narrow: 7, wide: 7 }}
+      columns={{ narrow: 7, wide: 7, tiny: 5 }}
       disabled={disabled}
     />
   );
