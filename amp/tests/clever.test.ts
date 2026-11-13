@@ -211,6 +211,32 @@ test("Clever validates district boundaries and dependencies before reconciliatio
         {
           ...snapshot,
           users: [
+            { ...snapshot.users[0], roles: { student: {}, teacher: {} } },
+          ],
+        },
+        district,
+      ),
+    /clever_invalid_roles/,
+  );
+  const staff = validateSnapshot(
+    {
+      ...snapshot,
+      users: [
+        {
+          ...snapshot.users[0],
+          roles: { staff: { schools: [school], roles: ["PortalOnly"] } },
+        },
+      ],
+    },
+    district,
+  );
+  assert.deepEqual(staff.users[0].roles.staff?.roles, ["PortalOnly"]);
+  assert.throws(
+    () =>
+      validateSnapshot(
+        {
+          ...snapshot,
+          users: [
             { ...snapshot.users[0], district: "100000000000000000000002" },
           ],
         },

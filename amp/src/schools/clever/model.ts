@@ -57,7 +57,11 @@ export const userSchema = z.object({
       .nullable()
       .optional(),
     staff: schoolRole
-      .extend({ staff_id: optionalText, title: optionalText })
+      .extend({
+        staff_id: optionalText,
+        title: optionalText,
+        roles: z.array(z.string()).optional(),
+      })
       .nullable()
       .optional(),
     district_admin: z.object({ title: optionalText }).nullable().optional(),
@@ -147,12 +151,19 @@ export function validateSnapshot(
   const district = districtSchema.parse(snapshot.district);
   if (district.id !== districtId)
     throw new CleverSyncError("district_mismatch");
+  const users = snapshot.users.map((x) => userSchema.parse(x));
+  for (const user of users) {
+    const roles = userRoles(user);
+    if (
+      (roles.includes("student") || roles.includes("contact")) &&
+      roles.length !== 1
+    )
+      throw new CleverSyncError("clever_invalid_roles");
+  }
   const result: Snapshot = {
     district,
     schools: snapshot.schools.map((x) => schoolSchema.parse(x)),
-    users: snapshot.users
-      .map((x) => userSchema.parse(x))
-      .filter((x) => userRoles(x).some((role) => role !== "contact")),
+    users: users.filter((x) => userRoles(x).some((role) => role !== "contact")),
     sections: snapshot.sections.map((x) => sectionSchema.parse(x)),
     courses: snapshot.courses.map((x) => courseSchema.parse(x)),
     terms: snapshot.terms.map((x) => termSchema.parse(x)),
