@@ -180,9 +180,7 @@ export function SchoolsScreen() {
               </Button>
             ) : undefined
           }
-        >
-          Each school gets its own classes, staff and overview, rolled up here.
-        </EmptyState>
+        />
       )}
       {canAdd && data && (
         <AddSchool

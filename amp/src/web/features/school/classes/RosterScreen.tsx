@@ -444,11 +444,7 @@ export function RosterScreen() {
                   </Link>
                 ) : undefined
               }
-            >
-              {family
-                ? "Each child appears here with their card, their pictures and when they last signed in."
-                : "Each student appears here with their card, their pictures and when they last signed in."}
-            </EmptyState>
+            />
           )}
           {family && holder && (
             <ClassPeople

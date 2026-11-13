@@ -526,11 +526,7 @@ export function GradebookScreen() {
                     {family ? "Add a child" : "Add students"}
                   </Link>
                 }
-              >
-                {family
-                  ? "Each child gets a suggested range as they practice."
-                  : "Add students and each one gets a suggested range as they work."}
-              </EmptyState>
+              />
             </div>
           ) : waiting ? (
             <div className={styles.gradeEmpty}>
@@ -549,9 +545,7 @@ export function GradebookScreen() {
                   </Link>
                 }
               >
-                A range comes from course progress, growth, practice and
-                retention, and opens to its evidence. You decide every final
-                grade.
+                You decide every final grade.
               </EmptyState>
             </div>
           ) : (
