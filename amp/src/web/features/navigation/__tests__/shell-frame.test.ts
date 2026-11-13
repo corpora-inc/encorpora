@@ -48,6 +48,8 @@ test("each group's screens share one frame and name their tab", () => {
     practice: true,
   });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/start")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/connect")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
@@ -104,6 +106,7 @@ test("class sub-screens retain their tab and existing URLs", () => {
     ["start", "today"],
     ["report-cards", "gradebook"],
     ["cards", "roster"],
+    ["import", "roster"],
     // What children see is a section of the class's Settings (ia.md).
     ["experience", "settings"],
     ["workbooks/2026-11-09", "workbooks"],

@@ -22,6 +22,7 @@ import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
+import { ClassPilotPanel } from "../pilots/ClassPilotPanel";
 
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
@@ -33,8 +34,15 @@ function ClassToday({
   place: { org: string; class: string };
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
+  const { start: canStart } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "today",
+    board: false,
+  });
   const entries = todoEntries({
-    todos: data.todos,
+    todos: data.todos.filter((todo) => canStart || todo.id !== "start-class"),
     place,
     canPrint: data.canPrint,
     people: true,
@@ -149,6 +157,13 @@ export function TodayScreen() {
               />
             )}
           </header>
+          {!family && !demo && presence.data?.canManage && (
+            <ClassPilotPanel
+              orgId={place.org}
+              classId={place.class}
+              students={data.students.length}
+            />
+          )}
           {signedIn && holder && (
             <FamilyNotice session={account} me={signedIn} />
           )}

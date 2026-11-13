@@ -14,11 +14,24 @@ const count = (value: number) => value.toLocaleString("en-US");
 function Actions({ className = "" }: { className?: string }) {
   return (
     <div className={`${styles.actions} ${className}`}>
-      {/* Schools are set up with us: the conversation starts here. */}
+      <Link
+        to="/$"
+        params={{ _splat: "school/start" }}
+        className={buttonClass("primary", styles.action)}
+      >
+        Start with your class
+      </Link>
+      <Link
+        to="/$"
+        params={{ _splat: "school/connect" }}
+        className={buttonClass("secondary", styles.action)}
+      >
+        Use Clever
+      </Link>
       <Link
         to="/schools"
         hash="talk"
-        className={buttonClass("primary", styles.action)}
+        className={buttonClass("quiet", styles.action)}
       >
         Talk to us
       </Link>
@@ -62,7 +75,7 @@ export function SchoolsScreen() {
             <div className={styles.heroActions}>
               <Actions />
               <p className={styles.note}>
-                Guided setup in minutes, with nothing for IT to do.
+                Bring your roster and choose when to start your class’s pilot.
               </p>
             </div>
           </div>

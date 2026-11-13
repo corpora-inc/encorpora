@@ -34,6 +34,14 @@ const messages: Record<string, string> = {
   agreement_changed:
     "The agreement was just updated. Read the new version, then accept it.",
   agreement_required: "Accept the data agreement first, then continue.",
+  confirm_email:
+    "Confirm your email address, then return to finish setting up your class.",
+  students_required: "Add students to this class before starting the pilot.",
+  real_school_required: "Open your real class to use this action.",
+  class_import_students_only:
+    "A class import adds students. Remove teacher rows, or ask an administrator to import the school roster.",
+  duplicate_roster_identity:
+    "Two rows use the same identity. Correct their Student IDs and check the file again.",
   setting_locked:
     "Your district set this and locked it, so it can’t be changed here.",
   last_admin:
@@ -407,9 +415,12 @@ export const school = {
     orgId: string,
     source: RosterSource,
     rows: RosterRow[],
+    classId?: string,
   ) =>
     call(
-      `/orgs/${orgId}/roster/plan`,
+      classId
+        ? `/classes/${classId}/roster/plan`
+        : `/orgs/${orgId}/roster/plan`,
       z.object({ results: z.array(planResultSchema) }),
       session,
       { body: { source, rows } },
@@ -420,9 +431,12 @@ export const school = {
     source: RosterSource,
     rows: RosterRow[],
     resolutions: Record<string, "same" | "new">,
+    classId?: string,
   ) =>
     call(
-      `/orgs/${orgId}/roster/apply`,
+      classId
+        ? `/classes/${classId}/roster/apply`
+        : `/orgs/${orgId}/roster/apply`,
       z.object({
         results: z.array(applyResultSchema),
         invited: z.number().int(),

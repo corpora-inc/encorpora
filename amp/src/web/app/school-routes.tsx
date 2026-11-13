@@ -9,6 +9,7 @@ import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import { OPEN_KEY, work, writeStack } from "../nav/entities";
 import type { AuthSession } from "../auth";
+import { z } from "zod";
 import {
   calendarOptions,
   classesOptions,
@@ -213,13 +214,53 @@ export function schoolRoutes(root: AnyRoute) {
   return [
     createRoute({
       getParentRoute: () => root,
+      path: "/school/start",
+      beforeLoad: staffScreen,
+      validateSearch: (search) => ({
+        org: z.uuid().safeParse(search.org).success
+          ? String(search.org)
+          : undefined,
+        return: "school" as const,
+        next: "/school/start",
+      }),
+      loader: async ({ context }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        await Promise.all([
+          preload(meOptions(session)),
+          preload(orgsOptions(session)),
+        ]);
+      },
+      component: screen(
+        () => import("../features/school/pilots/SchoolStartScreen"),
+        "SchoolStartScreen",
+      ),
+    }),
+    createRoute({
+      getParentRoute: () => root,
+      path: "/schools/continue/$token",
+      component: screen(
+        () => import("../features/school/pilots/BuyerHandoffScreen"),
+        "BuyerHandoffScreen",
+      ),
+    }),
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/$org/classes/$class/import",
+      beforeLoad: staffScreen,
+      loader: async ({ context, params }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        await frameData(session, (params as unknown as { org: string }).org);
+      },
+      component: screens.importer,
+    }),
+    createRoute({
+      getParentRoute: () => root,
       path: "/school",
       beforeLoad: async ({ location }) => {
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
-        // No school yet: we issue them, so the way in is to talk to us.
         if (orgs.length === 0)
-          throw redirect({ to: "/schools", replace: true });
+          throw redirect({ to: "/school/start", replace: true } as never);
         if (orgs.length === 1)
           throw redirect({ ...orgHome(orgs[0]!), replace: true } as never);
       },

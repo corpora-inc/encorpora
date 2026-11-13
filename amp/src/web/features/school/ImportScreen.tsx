@@ -59,12 +59,15 @@ import {
   school,
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
+import { ClassFrame } from "./classes/ClassFrame";
+import type { ReactNode } from "react";
 import { GradePicker, PageHead, gradeLabel } from "./parts";
 import { classPath, orgPath } from "./paths";
 import styles from "./Import.module.css";
 
 type Draft = {
   orgId: string;
+  classId?: string;
   fileName: string;
   source: RosterSource;
   table?: Table;
@@ -419,6 +422,11 @@ function MapStep({
         {plural(table.rows.length, "row")} in {draft.fileName}. Check what each
         column holds.
       </p>
+      {draft.classId && (
+        <p>
+          All students will be added to {defaultClass}. Staff rows are skipped.
+        </p>
+      )}
       <ul className={styles.columns}>
         {table.headers.map((header, index) => (
           <li
@@ -443,7 +451,7 @@ function MapStep({
           </li>
         ))}
       </ul>
-      {!hasClass && (
+      {!hasClass && !draft.classId && (
         <div className={styles.fallback}>
           <TextField
             label="This file has no class column. Put everyone in"
@@ -752,7 +760,13 @@ function ReviewStep({
     });
     setRecheck(true);
     try {
-      const [planned] = await school.plan(session, orgId, draft.source, [next]);
+      const [planned] = await school.plan(
+        session,
+        orgId,
+        draft.source,
+        [next],
+        draft.classId,
+      );
       if (planned) {
         const plan = new Map(useImport.getState().draft?.plan);
         plan.set(next.line, planned);
@@ -789,6 +803,7 @@ function ReviewStep({
             draft.source,
             parts[index]!,
             draft.resolutions,
+            draft.classId,
           ),
         );
         results.push(...answer.results);
@@ -1139,7 +1154,11 @@ function ReviewStep({
             ) : (
               <Link
                 to="/$"
-                params={{ _splat: orgPath(orgId, "students") }}
+                params={{
+                  _splat: draft?.classId
+                    ? `school/${orgId}/classes/${draft.classId}/roster`
+                    : orgPath(orgId, "students"),
+                }}
                 className={buttonClass("primary")}
               >
                 See students
@@ -1163,7 +1182,10 @@ function DoneStep({
 }) {
   const session = currentSession();
   const applied = draft.applied ?? [];
-  const license = useQuery(licenseOptions(session, orgId)).data;
+  const license = useQuery({
+    ...licenseOptions(session, orgId),
+    enabled: !draft.classId,
+  }).data;
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
   const count = (status: ApplyResult["status"]) =>
     applied.filter((row) => row.status === status).length;
@@ -1179,7 +1201,9 @@ function DoneStep({
     : `${plural(count("updated"), "change")} saved.`;
   const waiting = applied.filter((row) => row.seated === false).length;
   const failed = applied.filter((row) => row.status === "failed");
-  const firstClass = classes[0];
+  const firstClass = draft.classId
+    ? classes.find((klass) => klass.id === draft.classId)
+    : classes[0];
   return (
     <div className={styles.done}>
       <h1 className={styles.diffHeadline}>{headline}</h1>
@@ -1203,7 +1227,7 @@ function DoneStep({
           />
         )}
       </StatRow>
-      {waiting > 0 && (
+      {waiting > 0 && !draft.classId && (
         <p className={styles.doneNote}>
           <Badge tone="warning">
             {plural(waiting, "student")} {waiting === 1 ? "needs" : "need"} a
@@ -1226,7 +1250,11 @@ function DoneStep({
       <div className={styles.doneActions}>
         <Link
           to="/$"
-          params={{ _splat: orgPath(orgId, "students") }}
+          params={{
+            _splat: draft?.classId
+              ? `school/${orgId}/classes/${draft.classId}/roster`
+              : orgPath(orgId, "students"),
+          }}
           className={buttonClass("primary")}
         >
           See students
@@ -1240,7 +1268,7 @@ function DoneStep({
             Open {firstClass.name}
           </Link>
         )}
-        {waiting > 0 && (
+        {waiting > 0 && !draft.classId && (
           <Link
             to="/$"
             params={{ _splat: orgPath(orgId, "license") }}
@@ -1267,7 +1295,10 @@ const STEP_TITLES: Record<Step, string> = {
 /** The import: drop, check, see every change, apply. Each step has a URL; the
  * file itself stays in memory, so a reload starts again from the drop. */
 export function ImportScreen() {
-  const { org: orgId } = useParams({ strict: false }) as { org: string };
+  const { org: orgId, class: classId } = useParams({ strict: false }) as {
+    org: string;
+    class?: string;
+  };
   const search = useSearch({ strict: false }) as {
     step?: unknown;
     show?: unknown;
@@ -1279,7 +1310,8 @@ export function ImportScreen() {
   const stored = useImport((state) => state.draft);
   const setDraft = useImport((state) => state.set);
   const patch = useImport((state) => state.patch);
-  const draft = stored?.orgId === orgId ? stored : null;
+  const draft =
+    stored?.orgId === orgId && stored.classId === classId ? stored : null;
   const asked = STEPS.find((step) => step === search.step) ?? "source";
   const step: Step = !draft
     ? "source"
@@ -1304,9 +1336,11 @@ export function ImportScreen() {
   const showAsked = ["new", "changed", "unchanged", "attention"].find(
     (value) => value === search.show,
   ) as Bucket | undefined;
-  const defaultClass = org?.solo
-    ? (classes[0]?.name ?? "My class")
-    : (classes[0]?.name ?? "");
+  const defaultClass = classId
+    ? (classes.find((klass) => klass.id === classId)?.name ?? "My class")
+    : org?.solo
+      ? (classes[0]?.name ?? "My class")
+      : (classes[0]?.name ?? "");
   const check = async () => {
     const current = useImport.getState().draft!;
     let result: SourceResult;
@@ -1321,17 +1355,40 @@ export function ImportScreen() {
         fallbackClass: current.fallbackClass ?? defaultClass,
       });
     }
+    if (classId)
+      result = {
+        ...result,
+        rows: result.rows
+          .filter((row) => row.role === "student")
+          .map((row) => ({
+            ...row,
+            classes: [
+              {
+                sourcedId: `amp-class:${classId}`,
+                name: defaultClass,
+                courseBands: [],
+              },
+            ],
+          })),
+        skipped:
+          result.skipped +
+          result.rows.filter((row) => row.role !== "student").length,
+      };
     const rows = result.rows;
     const plan = new Map<number, PlanResult>();
     for (const part of chunks(rows))
       for (const entry of await withRetries(() =>
-        school.plan(session, orgId, current.source, part),
+        school.plan(session, orgId, current.source, part, classId),
       ))
         plan.set(entry.line, entry);
     patch({ result, plan, resolutions: {}, applied: undefined });
     goTo("review");
   };
-  if (org && !org.can?.includes("roster.import"))
+  if (
+    org &&
+    !org.can?.includes("roster.import") &&
+    !(classId && org.teaches?.includes(classId))
+  )
     return (
       <OrgFrame orgId={orgId} nav="import" title="Import">
         <EmptyState
@@ -1339,7 +1396,11 @@ export function ImportScreen() {
           action={
             <Link
               to="/$"
-              params={{ _splat: orgPath(orgId, "students") }}
+              params={{
+                _splat: draft?.classId
+                  ? `school/${orgId}/classes/${draft.classId}/roster`
+                  : orgPath(orgId, "students"),
+              }}
               className={buttonClass("secondary")}
             >
               See students
@@ -1350,75 +1411,88 @@ export function ImportScreen() {
         </EmptyState>
       </OrgFrame>
     );
-  return (
-    <OrgFrame
-      orgId={orgId}
-      nav="import"
-      title="Import"
-      crumbs={[{ label: "Import" }]}
-    >
-      <div className={styles.page} data-step={step}>
-        {(step === "source" || step === "map") && (
-          <PageHead
-            title={STEP_TITLES[step]}
-            detail={
-              step === "source"
-                ? "Students, classes and teachers, all from one file."
-                : undefined
-            }
-          />
-        )}
-        {step === "source" && (
-          <SourceStep
-            orgId={orgId}
-            onLoaded={(next) => {
-              setDraft(next);
-              goTo("map");
-            }}
-          />
-        )}
-        {step === "map" && draft && (
-          <MapStep
-            draft={draft}
-            defaultClass={defaultClass}
-            onBack={() => {
-              setDraft(null);
-              goTo("source");
-            }}
-            onContinue={check}
-          />
-        )}
-        {step === "review" && draft && (
-          <ReviewStep
-            draft={draft}
-            orgId={orgId}
-            show={showAsked ?? "all"}
-            onShow={(show) =>
-              void navigate({
-                to: ".",
-                search: ((previous: Record<string, unknown>) => ({
-                  ...previous,
-                  show: show === "all" ? undefined : show,
-                })) as never,
-                replace: true,
-                resetScroll: false,
-              })
-            }
-            onBack={() => goTo("map")}
-            onDone={() => goTo("done", true)}
-          />
-        )}
-        {step === "done" && draft && (
-          <DoneStep
-            draft={draft}
-            orgId={orgId}
-            onAgain={() => {
-              setDraft(null);
-              goTo("source");
-            }}
-          />
-        )}
-      </div>
-    </OrgFrame>
+  const frame = (children: ReactNode) =>
+    classId ? (
+      <ClassFrame org={orgId} classId={classId} loading={false} tab="roster">
+        {children}
+      </ClassFrame>
+    ) : (
+      <OrgFrame
+        orgId={orgId}
+        nav="import"
+        title="Import"
+        crumbs={[{ label: "Import" }]}
+      >
+        {children}
+      </OrgFrame>
+    );
+  return frame(
+    <div className={styles.page} data-step={step}>
+      {(step === "source" || step === "map") && (
+        <PageHead
+          title={STEP_TITLES[step]}
+          detail={
+            step === "source"
+              ? classId
+                ? `Add students to ${defaultClass}.`
+                : "Students, classes and teachers, all from one file."
+              : undefined
+          }
+        />
+      )}
+      {step === "source" && (
+        <SourceStep
+          orgId={orgId}
+          onLoaded={(next) => {
+            setDraft({
+              ...next,
+              ...(classId ? { classId, fallbackClass: defaultClass } : {}),
+            });
+            goTo("map");
+          }}
+        />
+      )}
+      {step === "map" && draft && (
+        <MapStep
+          draft={draft}
+          defaultClass={defaultClass}
+          onBack={() => {
+            setDraft(null);
+            goTo("source");
+          }}
+          onContinue={check}
+        />
+      )}
+      {step === "review" && draft && (
+        <ReviewStep
+          draft={draft}
+          orgId={orgId}
+          show={showAsked ?? "all"}
+          onShow={(show) =>
+            void navigate({
+              to: ".",
+              search: ((previous: Record<string, unknown>) => ({
+                ...previous,
+                show: show === "all" ? undefined : show,
+              })) as never,
+              replace: true,
+              resetScroll: false,
+            })
+          }
+          onBack={() => goTo("map")}
+          onDone={() => goTo("done", true)}
+        />
+      )}
+      {step === "done" && draft && (
+        <DoneStep
+          draft={draft}
+          orgId={orgId}
+          onAgain={() => {
+            setDraft(null);
+            goTo("source");
+          }}
+        />
+      )}
+    </div>,
   );
 }

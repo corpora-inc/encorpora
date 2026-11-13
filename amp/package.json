@@ -85,6 +85,8 @@
     "test:navigation-ui": "tsx scripts/verify-navigation-ui.ts",
     "test:app-shell-stability-ui": "tsx scripts/verify-app-shell-stability.ts",
     "test:school-teacher-ui": "tsx scripts/verify-school-teacher-ui.ts",
+    "test:school-import-ui": "tsx scripts/verify-school-import-ui.ts",
+    "test:school-pilot-ui": "tsx scripts/verify-school-pilot-ui.ts",
     "test:school-setup-ui": "tsx scripts/verify-school-setup-ui.ts",
     "test:school-places-ui": "tsx scripts/verify-school-places-ui.ts",
     "test:adult-practice-ui": "tsx scripts/verify-adult-practice-ui.ts",

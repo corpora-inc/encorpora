@@ -32,6 +32,8 @@ import { classUrl } from "./teacher-shared";
 import { approvalsOptions } from "../../family-approval/api";
 import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
+import { ClassPilotPanel } from "../pilots/ClassPilotPanel";
+import { useSchoolNavigation } from "../../navigation/school-navigation";
 
 type Row = SignInRoster["students"][number];
 const shortDate = new Intl.DateTimeFormat(undefined, {
@@ -94,6 +96,13 @@ type Pending =
 export function RosterScreen() {
   const params = useParams({ from: "/school/$org/classes/$class/roster" });
   const place = { org: params.org, class: params.class };
+  const { start: canStart } = useSchoolNavigation({
+    kind: "class",
+    org: params.org,
+    classId: params.class,
+    active: "roster",
+    board: false,
+  });
   const navigate = useNavigate();
   const session = useStaffSession();
   const roster = useQuery({
@@ -328,7 +337,18 @@ export function RosterScreen() {
               )}
             </div>
             <div className={styles.actions}>
-              {!family && (
+              {!family && !demo && canManage && (
+                <Link
+                  to="/$"
+                  params={{
+                    _splat: `school/${params.org}/classes/${params.class}/import`,
+                  }}
+                  className={buttonClass("secondary")}
+                >
+                  Import students
+                </Link>
+              )}
+              {!family && canStart && (
                 <Link
                   to="/school/$org/classes/$class/start"
                   params={params}
@@ -359,6 +379,13 @@ export function RosterScreen() {
               )}
             </div>
           </header>
+          {!family && !demo && canManage && (
+            <ClassPilotPanel
+              orgId={params.org}
+              classId={params.class}
+              students={data.students.length}
+            />
+          )}
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
           <section className={styles.code} aria-label="Class code">
             <div className={styles.codeText}>

@@ -11,11 +11,9 @@ import { currentSession, orgOptions } from "../api";
 import { useFinishSignIn } from "../join/api";
 import styles from "./Demo.module.css";
 
-/** Where a demo's owner sets up the real thing: never the demo converted in
- * place. A teacher's class starts with the data agreement and the roster, and
- * a school's with a person; both begin at "Talk to us" (white-glove). */
-export const REAL_SETUP_PATH = "schools";
-export const REAL_SETUP_HASH = "talk";
+/** Demo records stay separate from the real classroom. */
+export const REAL_SETUP_PATH = "school/start";
+export const REAL_SETUP_HASH = "";
 
 /** Whether this org is a demo, from the org the frame already loaded. */
 export function useDemoOrg(orgId: string) {
@@ -25,13 +23,13 @@ export function useDemoOrg(orgId: string) {
 /** The bar's one action in a demo: the way to the real class or school. Its
  * full label from 640 px, a short one on a phone, always a 44 px target. */
 export function DemoSetupAction({ school }: { school: boolean }) {
-  const label = school ? "Talk to us" : "Set up your real class";
+  const label = school ? "Connect your school" : "Set up your real class";
   // A phone keeps a short word beside the arrow: an arrow alone says nothing.
-  const short = school ? "Talk to us" : "Real class";
+  const short = school ? "Connect" : "Real class";
   return (
     <Link
       to="/$"
-      params={{ _splat: REAL_SETUP_PATH }}
+      params={{ _splat: school ? "school/connect" : REAL_SETUP_PATH }}
       hash={REAL_SETUP_HASH}
       className={`${bar.actionLink} ${styles.action}`}
       aria-label={label}

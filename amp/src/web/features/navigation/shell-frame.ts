@@ -47,7 +47,8 @@ export function shellFrame(
       board: false,
     };
   if (path === "/school/new") return null;
-  if (path === "/school/invite") return { kind: "plain" };
+  if (["/school/invite", "/school/start", "/school/connect"].includes(path))
+    return { kind: "plain" };
   const klass = path.match(
     /^\/school\/([^/]+)\/classes\/([^/]+)(?:\/([^/]+))?/,
   );
@@ -59,6 +60,7 @@ export function shellFrame(
           start: "today",
           "report-cards": "gradebook",
           cards: "roster",
+          import: "roster",
           // A class's own overrides of what students see.
           experience: "settings",
         } as Record<string, string>

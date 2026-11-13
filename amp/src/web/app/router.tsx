@@ -979,6 +979,13 @@ const schoolClass = createRoute({
           params.class,
         ),
       ),
+      import("../features/school/pilots/api").then(({ preloadClassPilot }) =>
+        preloadClassPilot(
+          (context as { session: AuthSession }).session,
+          params.org,
+          params.class,
+        ),
+      ),
     ]),
 });
 const schoolClassHome = createRoute({
