@@ -10,6 +10,7 @@ export function Dialog({
   onCloseAutoFocus,
   aboveNavigation = false,
   fullOnPhone = false,
+  tall = false,
   back,
 }: {
   open: boolean;
@@ -20,6 +21,10 @@ export function Dialog({
   aboveNavigation?: boolean;
   /** At 390 px and below the sheet fills the screen, with its own close. */
   fullOnPhone?: boolean;
+  /** Content that arrives after it opens and is longer than the screen (a
+   * lesson): the sheet is its full height from the start, so nothing moves
+   * when it lands. */
+  tall?: boolean;
   /** A layer under this one (nav/LayerHost): X returns to it, and says so
    * quietly in place of the cross ("‹ Adding fractions"). */
   back?: string;
@@ -31,7 +36,7 @@ export function Dialog({
           className={`${styles.overlay} ${aboveNavigation ? styles.aboveNavigation : ""}`}
         />
         <RadixDialog.Content
-          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""}`}
+          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""} ${tall ? styles.tall : ""}`}
           aria-describedby={undefined}
           onCloseAutoFocus={onCloseAutoFocus}
         >

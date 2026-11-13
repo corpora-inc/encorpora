@@ -1,0 +1,7 @@
+/* The lesson's dialog is its full height from the start (Dialog's
+   `tall`): the wave waits in its centre, and the lesson fills it. */
+.wait {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+}

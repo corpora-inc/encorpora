@@ -1,6 +1,6 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { Dialog } from "../../ui/Dialog";
-import { Loading } from "../../ui/Loading";
+import { LessonWait } from "./LessonWait";
 import { LessonBoundary } from "./LessonRecovery";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 
@@ -44,6 +44,7 @@ export function LessonDialog({
       }}
       title="Explore a problem type"
       fullOnPhone
+      tall
       aboveNavigation={aboveLayers}
       onCloseAutoFocus={onCloseAutoFocus}
       back={back}
@@ -51,7 +52,7 @@ export function LessonDialog({
       {lesson && children}
       {lesson && (
         <LessonBoundary key={lesson} onBack={onClose} backLabel={backLabel}>
-          <Suspense fallback={<Loading>Loading lesson…</Loading>}>
+          <Suspense fallback={<LessonWait />}>
             <SkillLesson
               templateId={lesson}
               onBack={onClose}

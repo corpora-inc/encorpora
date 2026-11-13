@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
-import { Loading } from "../../../ui/Loading";
+import { LayerWait } from "../../../nav/LayerWait";
 import { Sheet } from "../../../ui/Sheet";
 import { OPEN_KEY, work, writeStack } from "../../../nav/entities";
 import { currentSession, orgOptions } from "../api";
@@ -79,7 +79,7 @@ export function StudentLayer({
             onRetry={() => void record.refetch()}
           />
         ) : (
-          <Loading />
+          <LayerWait />
         )
       ) : (
         <div className={styles.sheetRecord} data-map-student-record={student}>

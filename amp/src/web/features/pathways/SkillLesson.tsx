@@ -9,7 +9,7 @@ import { ProblemLesson } from "../../ProblemLesson";
 import "../../practice.css";
 import "../../scene/scene-player.css";
 import "katex/dist/katex.min.css";
-import { Loading } from "../../ui/Loading";
+import { LessonWait } from "./LessonWait";
 /** A lesson opened from Pathways, recorded as such. */
 const PATHWAYS_HELP = { source: "pathways" } as const;
 export default function SkillLesson({
@@ -50,7 +50,7 @@ export default function SkillLesson({
         retry={() => void lesson.refetch()}
       />
     );
-  if (!lesson.data) return <Loading>Loading lesson…</Loading>;
+  if (!lesson.data) return <LessonWait />;
   return (
     <>
       <h2>{lesson.data.lesson.title}</h2>
