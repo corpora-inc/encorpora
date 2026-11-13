@@ -77,6 +77,30 @@ button.close:focus-visible {
   stroke-width: 1.7;
   stroke-linecap: round;
 }
+/* Over another layer: the close names where it returns, on the cross's
+   own 44 px line, quiet and never wider than a third of the header. */
+button.close.back {
+  display: flex;
+  gap: 2px;
+  width: auto;
+  max-width: min(14rem, 36%);
+  padding: 0 var(--space-2) 0 var(--space-1);
+  font: inherit;
+  font-size: var(--text-table);
+  line-height: 1.2;
+}
+.back svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  stroke-linejoin: round;
+}
+.back span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .body {
   flex: 1;
   min-height: 0;

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { RootLink } from "../../../nav/root";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
@@ -229,9 +230,9 @@ export function StandingsScreen() {
     <div className={styles.frame}>
       <header className={styles.bar}>
         <NavigationDrawer />
-        <Link to="/" className={styles.brand} aria-label="AMP home">
+        <RootLink className={styles.brand} aria-label="AMP home">
           AMP
-        </Link>
+        </RootLink>
         <span className={styles.spacer} />
         <StudentSignOut inBar />
         <Link

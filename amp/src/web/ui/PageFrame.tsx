@@ -1,4 +1,5 @@
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
+import { RootLink } from "../nav/root";
 import { SupportHelp } from "../features/support/SupportHelp";
 import { Link } from "@tanstack/react-router";
 import { type ReactNode } from "react";
@@ -35,9 +36,9 @@ export function PageFrame({
     <div className={`${styles.frame} ${className}`}>
       <header className={styles.header}>
         <NavigationDrawer />
-        <Link to="/" className={styles.brand} aria-label={`${brand.name} home`}>
+        <RootLink className={styles.brand} aria-label={`${brand.name} home`}>
           {brand.name}
-        </Link>
+        </RootLink>
       </header>
       <main className={styles.main}>{children}</main>
       <SupportHelp feedback={false} />
@@ -49,8 +50,7 @@ export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
   return (
     <div className={styles.cardBrandRow}>
       <NavigationDrawer />
-      <Link
-        to="/"
+      <RootLink
         className={`${styles.brand} ${styles.cardBrand}`}
         aria-label={`${brand.name} home`}
       >
@@ -63,7 +63,7 @@ export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
             <span className={styles.brandExpansion}>{brand.expansion}</span>
           </>
         )}
-      </Link>
+      </RootLink>
     </div>
   );
 }

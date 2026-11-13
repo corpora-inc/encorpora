@@ -23,6 +23,7 @@ export function SkillLayer({
   place,
   open,
   onClose,
+  back,
 }: {
   skill: string;
   /** Opened from a student (a layer below it): their evidence on it. */
@@ -31,6 +32,8 @@ export function SkillLayer({
   place?: Place;
   open: boolean;
   onClose: () => void;
+  /** The layer under this one, where X returns. */
+  back?: string;
 }) {
   const catalog = useQuery(skillCatalogOptions);
   const found = catalog.data?.skills.find((entry) => entry.id === skill);
@@ -45,6 +48,7 @@ export function SkillLayer({
         if (!next) onClose();
       }}
       title={found?.title ?? "Skill"}
+      back={back}
       description={found ? bandLabel(found.gradeBand) : undefined}
     >
       {!catalog.data ? (

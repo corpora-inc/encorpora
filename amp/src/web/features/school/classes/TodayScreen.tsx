@@ -1,15 +1,10 @@
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams, useRouter } from "@tanstack/react-router";
-import { closeSearch } from "../../../lib/return-to";
-import { lazy, Suspense } from "react";
+import { Link, useParams } from "@tanstack/react-router";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
-import { Button, buttonClass } from "../../../ui/Button";
+import { buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
-import { Sheet } from "../../../ui/Sheet";
 import { meOptions } from "../../../lib/query";
-import { LessonBoundary } from "../../pathways/LessonRecovery";
 import { secondParentOptions } from "../../second-parent/api";
 import { currentSession, orgOptions } from "../api";
 import { useDemoOrg } from "../demo/DemoPlace";
@@ -18,12 +13,7 @@ import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { mapOptions, todayOptions } from "./teacher-api";
-import {
-  classUrl,
-  fullDay,
-  LoadFailed,
-  useClassSearch,
-} from "./teacher-shared";
+import { classUrl, fullDay, LoadFailed } from "./teacher-shared";
 import { FamilyNotice } from "./today/FamilyNotice";
 import { FamilyToday } from "./today/FamilyToday";
 import { Feed } from "./today/Feed";
@@ -33,25 +23,20 @@ import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
 
-const SkillLesson = lazy(() => import("../../pathways/SkillLesson"));
-
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
 function ClassToday({
   data,
   place,
-  onLesson,
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
-  onLesson: (templateId: string) => void;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
   const entries = todoEntries({
     todos: data.todos,
     place,
     canPrint: data.canPrint,
-    onLesson,
     people: true,
   });
   // Before anyone has started, the next step after the board: cards for
@@ -118,13 +103,6 @@ export function TodayScreen() {
     ...secondParentOptions(account),
     enabled: holder,
   });
-  const [search, set] = useClassSearch();
-  const lesson =
-    typeof search.lesson === "string" ? search.lesson.slice(0, 100) : undefined;
-  const lessonTodo = today.data?.todos.find(
-    (todo) =>
-      todo.action.kind === "lesson" && todo.action.templateId === lesson,
-  );
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const loading =
@@ -132,9 +110,6 @@ export function TodayScreen() {
     today.isPending ||
     presence.isPending ||
     (holder && secondParent.isPending);
-  const onLesson = (templateId: string) => set({ lesson: templateId });
-  const router = useRouter();
-  const closeLesson = () => closeSearch(router, "lesson");
   return (
     <ClassFrame
       org={place.org}
@@ -185,42 +160,12 @@ export function TodayScreen() {
               session={account}
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}
-              onLesson={onLesson}
             />
           ) : (
-            <ClassToday data={data} place={place} onLesson={onLesson} />
+            <ClassToday data={data} place={place} />
           )}
         </div>
       )}
-      <Sheet
-        tall
-        open={!!lesson}
-        onOpenChange={(open) => {
-          if (!open) closeLesson();
-        }}
-        title={lessonTodo?.title ?? "Lesson"}
-        description={
-          lessonTodo
-            ? lessonTodo.students.map((student) => student.name).join(", ")
-            : undefined
-        }
-      >
-        {lesson && (
-          <LessonBoundary
-            key={lesson}
-            onBack={closeLesson}
-            backLabel="Back to Today"
-          >
-            <Suspense fallback={<Loading>Loading lesson…</Loading>}>
-              <SkillLesson
-                templateId={lesson}
-                onBack={closeLesson}
-                backLabel="Back to Today"
-              />
-            </Suspense>
-          </LessonBoundary>
-        )}
-      </Sheet>
     </ClassFrame>
   );
 }

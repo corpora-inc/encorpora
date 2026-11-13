@@ -1402,3 +1402,20 @@
 .pathways .pathways-results li a:hover {
   background: var(--color-surface-hover);
 }
+/* A problem type's lesson opens as a layer over the map: a real link, in
+   the look of the panel's buttons. */
+.pathways .pathways-lesson-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  text-decoration: none;
+}
+.pathways .pathways-lesson-link:hover {
+  border-color: var(--atlas-muted);
+}

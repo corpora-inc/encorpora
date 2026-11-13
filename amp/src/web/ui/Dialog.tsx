@@ -10,6 +10,7 @@ export function Dialog({
   onCloseAutoFocus,
   aboveNavigation = false,
   fullOnPhone = false,
+  back,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -19,6 +20,9 @@ export function Dialog({
   aboveNavigation?: boolean;
   /** At 390 px and below the sheet fills the screen, with its own close. */
   fullOnPhone?: boolean;
+  /** A layer under this one (nav/LayerHost): X returns to it, and says so
+   * quietly in place of the cross ("‹ Adding fractions"). */
+  back?: string;
 }) {
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -35,9 +39,20 @@ export function Dialog({
             <RadixDialog.Title className={styles.title}>
               {title}
             </RadixDialog.Title>
-            <RadixDialog.Close className={styles.close} aria-label="Close">
-              ×
-            </RadixDialog.Close>
+            {back ? (
+              <RadixDialog.Close
+                className={`${styles.close} ${styles.back}`}
+                aria-label={`Close, back to ${back}`}
+                data-layer-back={back}
+              >
+                <span aria-hidden="true">‹</span>
+                <span>{back}</span>
+              </RadixDialog.Close>
+            ) : (
+              <RadixDialog.Close className={styles.close} aria-label="Close">
+                ×
+              </RadixDialog.Close>
+            )}
           </header>
           <div className={styles.body}>{children}</div>
         </RadixDialog.Content>

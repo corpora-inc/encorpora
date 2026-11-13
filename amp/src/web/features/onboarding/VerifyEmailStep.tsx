@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { RootLink } from "../../nav/root";
 import { Link, useLocation } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
 import { continuationUrl } from "../../lib/funded-entry";
@@ -109,9 +110,7 @@ export function VerifyEmailStep({
           {verification.isPending ? "Sending email…" : "Send another email"}
         </Button>
         {!embedded && (
-          <Link to="/" className={buttonClass("quiet")}>
-            Not now
-          </Link>
+          <RootLink className={buttonClass("quiet")}>Not now</RootLink>
         )}
       </div>
     </section>

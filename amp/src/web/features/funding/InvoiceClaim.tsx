@@ -8,6 +8,7 @@ import type { FundedProgram } from "../../lib/funded-entry";
 import { Button } from "../../ui/Button";
 import { Select } from "../../ui/Select";
 import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { useCloseClick } from "../../nav/links";
 const invoicesSchema = z.object({
   invoices: z.array(
     z.object({
@@ -45,6 +46,8 @@ export function InvoiceClaim({
   );
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
+  // Back to where the claim was opened, else practice (lib/return-to.ts).
+  const closeClick = useCloseClick("/practice");
   const pending =
     invoices.data?.invoices.filter(
       (i) => i.offer.programId === program.id && i.state === "prepared",
@@ -152,7 +155,9 @@ export function InvoiceClaim({
           </div>
         ))}
         <p role="alert">{error}</p>
-        <Link to="/">Back to practice</Link>
+        <Link to="/$" params={{ _splat: "practice" }} onClick={closeClick}>
+          Back
+        </Link>
       </section>
     </PageFrame>
   );

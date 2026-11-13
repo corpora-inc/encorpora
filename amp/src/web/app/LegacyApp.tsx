@@ -44,6 +44,7 @@ import { noteActiveProblem } from "../lib/student-activity";
 import { forgetHelp, helpUsedBefore, noteHelp } from "../lib/help-events";
 import { Navigate, useRouter } from "@tanstack/react-router";
 import { closeTo } from "../lib/return-to";
+import { ROOT } from "../nav/root";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -248,8 +249,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setFamilyMenuOpen(false);
   }, [route.location.pathname]);
   const familyOpen = route.familyOpen && !student;
+  // Leaving the family centre is a close (lib/return-to.ts): Back to where
+  // it was opened, else the root, which resolves to the account's place.
   const setFamilyOpen = (open: boolean) =>
-    navigate(open ? "/family/learners" : "/");
+    open ? navigate("/family/learners") : closeTo(router, ROOT);
   const consentOpen = route.consentOpen && !student;
   const setConsentOpen = (open: boolean) => {
     if (open) navigate("/consent");
@@ -259,8 +262,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (view) navigate(`/purchase/${view}`);
   };
   const familySection = route.familySection;
+  // A section of the family centre is its view, not something opened over
+  // it: switching replaces the entry, so closing the centre goes Back to
+  // where it was opened, never to the previous section.
   const setFamilySection = (section: typeof familySection) =>
-    navigate(`/family/${section}`);
+    navigate(`/family/${section}`, { replace: true });
   const tab = route.tab;
   const setTab = (tab: "practice" | "library" | "progress") =>
     navigate(
@@ -368,7 +374,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     route.location.pathname === "/profile/birth-year";
   // On the web the birth year belongs to the Overview it is changed from.
   const setChangingBirthYear = (open: boolean) =>
-    navigate(open ? "/profile/birth-year" : nativeRuntime ? "/" : "/overview");
+    open
+      ? navigate("/profile/birth-year")
+      : closeTo(router, nativeRuntime ? ROOT : "/overview");
   // Outside immersive practice: home, lessons, progress and family are visible.
 
   useLayoutEffect(() => {
@@ -651,7 +659,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     consentEpoch.current++;
 
     setConsentChallenge(null);
-    navigate("/family/privacy/consent");
+    // Back to where consent was opened (Privacy, or a funded purchase's
+    // step), else Privacy's consent section.
+    closeTo(router, "/family/privacy/consent");
     setConsentReturn(true);
   }
   useEffect(() => {
@@ -1004,11 +1014,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function closePurchase() {
     navigationEpoch.current++;
     clearOwnedPurchaseReturn();
-    // A purchase opened from "how to pay" returns there.
+    // Every close is Back to where it was opened (lib/return-to.ts): a
+    // purchase opened from "how to pay" returns there; else, with no
+    // history, to Access or its purchases.
     if (purchaseView !== "choose" && purchaseFromChoice) {
       setPurchaseFromChoice(false);
-      setPurchaseView("choose");
       setError("");
+      closeTo(router, "/purchase/choose");
       return;
     }
     setPurchaseFocus(
@@ -1016,7 +1028,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     );
 
     setPurchaseReturn(null);
-    navigate(
+    closeTo(
+      router,
       purchaseView === "choose" ? "/family/access" : "/family/access/purchases",
     );
     setError("");
@@ -1571,8 +1584,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (!problem || !learnerEntry?.hasAccess) return;
     trackOnce("paid-practice-first", "paid_practice_first", {});
   }, [problem?.id, learnerEntry?.hasAccess]);
+  // A school student has no family or purchase screens: their practice is
+  // their one place.
   if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
-    return <Navigate to="/" replace />;
+    return <Navigate to="/$" params={{ _splat: "practice" }} replace />;
   // The adult's home is their own record.
   if (
     ownLearner &&

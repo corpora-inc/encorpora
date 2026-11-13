@@ -78,7 +78,13 @@ import {
 } from "../features/school/classroom/search";
 import { designAllowed, designSearchSchema } from "../features/design/search";
 import { stampPrevious, VIEW_KEYS } from "../lib/return-to";
-import { OPEN_KEY, pushLayer, work, writeStack } from "../nav/entities";
+import {
+  OPEN_KEY,
+  pushLayer,
+  readStack,
+  work,
+  writeStack,
+} from "../nav/entities";
 import {
   adoptPracticeMode,
   isLearningPath,
@@ -712,18 +718,40 @@ const inventory = createRoute({
 /** One map for the whole curriculum and each skill in it: choosing or
  * closing a skill changes the URL, never the map (its camera, full screen
  * and orbit stay as they were). */
+/** A screen's address from before lesson layers (`?lesson=<type>`): the
+ * same screen with the lesson as a layer over it (nav/entities.ts). */
+function lessonAsLayer(location: {
+  pathname: string;
+  search: Record<string, unknown>;
+}) {
+  const { lesson, ...search } = location.search;
+  if (lesson === undefined) return;
+  const open =
+    typeof lesson === "string"
+      ? pushLayer(search[OPEN_KEY], { kind: "lesson", id: lesson })
+      : (search[OPEN_KEY] as string | undefined);
+  throw redirect({
+    href: router.buildLocation({
+      to: location.pathname,
+      search: { ...search, ...(open ? { [OPEN_KEY]: open } : {}) } as never,
+    }).href,
+    replace: true,
+  });
+}
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   beforeLoad: async ({ location }) => {
+    lessonAsLayer(location);
     await framedScreen();
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
-  // problem type's short lesson (`?lesson=`) needs neither: it opens at
-  // once over the map, which fills in under it.
+  // problem type's short lesson (a layer, `?open=lesson:<type>`) needs
+  // neither: it opens at once over the map, which fills in under it.
   loader: ({ location }) => {
-    if (!new URLSearchParams(location.searchStr).has("lesson"))
+    const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
+    if (!readStack(open).some((layer) => layer.kind === "lesson"))
       return preloadLearning();
     void preloadLearning().catch((error: unknown) =>
       console.error("The map did not preload", error),
@@ -753,7 +781,9 @@ const lessonsHome = createRoute({
       to: "/pathways",
       search: {
         ...(query ? { topic: query } : {}),
-        ...(lesson ? { lesson } : {}),
+        ...(lesson
+          ? { [OPEN_KEY]: pushLayer(undefined, { kind: "lesson", id: lesson }) }
+          : {}),
       } as never,
       replace: true,
     });
@@ -934,6 +964,8 @@ const schoolClassHome = createRoute({
 const schoolClassToday = createRoute({
   getParentRoute: () => schoolClass,
   path: "today",
+  // Today's lesson from before layers (`?lesson=`): a layer over Today.
+  beforeLoad: ({ location }) => lessonAsLayer(location),
   // A family's own class lists children from other families: there before
   // the screen paints.
   loader: async ({ context, params }) => {

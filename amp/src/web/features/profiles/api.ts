@@ -12,6 +12,7 @@ import { practiceProfile } from "../../lib/adult-learner";
 import { request } from "../../lib/api";
 import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { closeTo } from "../../lib/return-to";
+import { ROOT } from "../../nav/root";
 import { modeFrom, modePlace, modeReturnLabel } from "./practice-mode";
 import { classesOptions } from "../school/api";
 
@@ -43,7 +44,9 @@ function rememberProfileUse(id: string) {
   try {
     localStorage.setItem(
       RECENT_KEY,
-      JSON.stringify([id, ...recentProfiles().filter((old) => old !== id)].slice(0, 20)),
+      JSON.stringify(
+        [id, ...recentProfiles().filter((old) => old !== id)].slice(0, 20),
+      ),
     );
   } catch (error) {
     console.warn("The profile list order couldn’t be kept", error);
@@ -124,8 +127,8 @@ export function copiedLabel(now = new Date()) {
   })}`;
 }
 
-/** The way back from a profile: the adult's own practice, or their normal
- * home when they have no learner of their own. */
+/** The way back from a profile: the adult's own practice, or, with none,
+ * Back to where it was started (else their place). */
 export function leaveTarget(me: SignedInMe | null | undefined) {
   const own = me?.adultPractice?.learner ?? null;
   // Without their own, the family's first child is chosen again, as `/`
@@ -138,7 +141,7 @@ export function leaveTarget(me: SignedInMe | null | undefined) {
         label: "Back to my own practice",
         short: "My practice",
       }
-    : { own: null, first, label: "Back home", short: "Home" };
+    : { own: null, first, label: "Back", short: "Back" };
 }
 
 /** The profile being practiced as, and the one tap back out of it: to where
@@ -183,10 +186,11 @@ export function usePracticingProfile() {
         void navigate({ to: "/$", params: { _splat: "practice" } });
         return;
       }
-      // Their normal home: the family's first child, if any, and `/` opens
-      // the place they work.
+      // No mode's `from` and no practice of their own: Back to where the
+      // profile was started, else the root, which opens the place they work
+      // (the family's first child chosen again, as the root would).
       store.select(target.first);
-      void navigate({ to: "/" });
+      closeTo(router, ROOT);
     },
   };
 }

@@ -1,4 +1,5 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { RootLink } from "../../nav/root";
 import { Link, Navigate, useNavigate } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -206,9 +207,7 @@ export function AccessScreen() {
                 Continue learning
               </Link>
             ) : !active ? (
-              <Link to="/" className={buttonClass("quiet")}>
-                Not now
-              </Link>
+              <RootLink className={buttonClass("quiet")}>Not now</RootLink>
             ) : null}
           </>
         )}
