@@ -106,10 +106,10 @@ of them too, except a type with an approved film of its own, which always wins.
 A type taught by two such films is reported and gets neither until one
 screenplay drops it. `teaches` is not part of the reviewed film, so changing it
 needs no new review. Review records, notes, voiced data and audio stay outside
-Git. A film with a board header (`{"do": "header"}`) is published as
-`lesson-film-v4` and reaches only clients that declare it. A film with a shot's
-own app figure (`{"scene": ...}`) and no header is published as
-`lesson-film-v3` and reaches v3 and v4 clients; other films also reach
+Git. A film using a `bill` scene element is published as `lesson-film-v5` and
+reaches v5 clients. A film with a board header (`{"do": "header"}`) and no bill
+requires v4; a shot's own scene (`{"scene": ...}`) without either requires v3.
+Each player receives films at or below its capability. Other films also reach
 `lesson-film-v2` and `lesson-film-v1` clients. Clients that declare none
 receive written lessons only.
 

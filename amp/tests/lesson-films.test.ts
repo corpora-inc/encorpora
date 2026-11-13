@@ -365,6 +365,7 @@ test("committed manifest resolves real problem types, committed screenplays and 
     // The manifest records the oldest player that can draw the committed screenplay.
     assert.equal(film.capability, filmCapability(scriptSchema.parse(committed)), id);
     assert.equal(film.editions[0]?.voices && Object.keys(film.editions[0].voices).length > 0, true);
+    assert.equal(lessonFilmFor(id, "lesson-film-v4"), film.capability === "lesson-film-v5" ? undefined : film);
     if (film.capability !== "lesson-film-v2") {
       assert.equal(lessonFilmFor(id, "lesson-film-v3"), film.capability === "lesson-film-v3" ? film : undefined);
       assert.equal(lessonFilmFor(id, "lesson-film-v2"), undefined);
@@ -406,7 +407,7 @@ test("a film with a shot's own app figure is published for v3 players only", () 
   assert.equal(filmForClient(v2, "lesson-film-v3"), v2);
   assert.equal(filmForClient(v2, "lesson-film-v2"), v2);
   assert.equal(filmForClient(v2, "lesson-film-v1")?.capability, "lesson-film-v1");
-  assert.equal(FILM_CAPABILITY, "lesson-film-v4");
+  assert.equal(FILM_CAPABILITY, "lesson-film-v5");
 });
 /** The same film with a header pinned on its board: a player that does not know headers would play it without one. */
 const headerScript = {
@@ -436,6 +437,7 @@ test("a film with a board header is published for v4 players only", () => {
   for (const capability of [undefined, "future-unsupported", "lesson-film-v1", "lesson-film-v2", "lesson-film-v3"])
     assert.equal(filmForClient(v4, capability), undefined, String(capability));
   assert.equal(filmForClient(v4, FILM_CAPABILITY), v4);
+  assert.equal(filmForClient(v4, "lesson-film-v4"), v4);
 });
 test("a film is linked from its own problem type and every problem type it teaches", async () => {
   const film = skillPlan("compare-groups--sk", ["dot-group-compared-to-number", "count-objects"]);
@@ -799,6 +801,75 @@ test("the server sends a v3 film only to a client that declares v3", async () =>
       assert.equal(reply.json().lesson.film, undefined, older);
       assert.ok(reply.json().lesson.title, older);
     }
+  } finally {
+    lessonFilms[id] = published;
+    await server.close();
+  }
+});
+
+const billScene = {
+  v: 1 as const,
+  elements: [{ type: "bill" as const, id: "cash", value: 1 as const, at: [0, 0] as [number, number], width: 100 }],
+};
+const billScript = {
+  ...sceneScript,
+  shots: [{
+    figure: { scene: billScene },
+    beats: [{ say: "One dot.", do: [{ do: "scene", actions: [{ do: "highlight", target: "cash" }] }] }],
+  }],
+};
+test("a bill film requires v5, including a bill in the template's example figure", () => {
+  const make = (raw: unknown, figure?: unknown) => planFilm(
+    script.id, { ...exported(), script: structuredClone(raw), figure }, raw, audio, new Set([script.id]),
+  ).film;
+  const v5 = make(billScript);
+  assert.equal(v5.capability, "lesson-film-v5");
+  assert.doesNotThrow(() => filmManifestSchema.parse({ [script.id]: v5 }));
+  const withHeader = structuredClone(billScript);
+  withHeader.shots[0]!.beats[0]!.do.push({ do: "header", text: "Money" } as never);
+  assert.equal(make(withHeader).capability, "lesson-film-v5");
+  // Any shot, either denomination; only a displayed example imposes the gate.
+  const five = scriptSchema.parse({ ...billScript, shots: [sceneScript.shots[0], {
+    ...billScript.shots[0], figure: { scene: { ...billScene, elements: [{ ...billScene.elements[0], value: 5 }] } },
+  }] });
+  assert.equal(filmCapability(five), "lesson-film-v5");
+  const exampleScript = { ...script, shots: [{ ...script.shots[0], figure: { example: true } }] };
+  assert.equal(make(exampleScript, { kind: "scene", scene: billScene }).capability, "lesson-film-v5");
+  assert.equal(make(script, { kind: "scene", scene: billScene }).capability, "lesson-film-v2");
+  for (const capability of [undefined, "future-unsupported", "lesson-film-v1", "lesson-film-v2", "lesson-film-v3", "lesson-film-v4"])
+    assert.equal(filmForClient(v5, capability), undefined, String(capability));
+  assert.equal(filmForClient(v5, FILM_CAPABILITY), v5);
+  // The new client draws every preceding film; preceding clients keep their films.
+  for (const capability of ["lesson-film-v2", "lesson-film-v3", "lesson-film-v4"] as const) {
+    const older = { ...plan().film, capability };
+    assert.equal(filmForClient(older, capability), older);
+    assert.equal(filmForClient(older, FILM_CAPABILITY), older);
+  }
+});
+
+test("the server sends a bill film only to v5 clients and separates the cached answers", async () => {
+  const id = "count-objects";
+  const published = lessonFilms[id];
+  assert.ok(published);
+  lessonFilms[id] = { ...published, capability: "lesson-film-v5" };
+  const server = buildApp({
+    repository: { limits: trialLimits() } as Repository,
+    authenticate: async () => { throw Error("public endpoint"); },
+  });
+  try {
+    const path = `/api/v1/problem-lessons/${id}`;
+    const current = await server.inject({ url: `${path}?film=${FILM_CAPABILITY}` });
+    assert.equal(current.statusCode, 200);
+    assert.equal(current.json().lesson.film.capability, "lesson-film-v5");
+    for (const older of ["lesson-film-v4", "lesson-film-v3", "lesson-film-v2", "lesson-film-v1", "unsupported"]) {
+      const reply = await server.inject({ url: `${path}?film=${older}` });
+      assert.equal(reply.statusCode, 200, older);
+      assert.equal(reply.json().lesson.film, undefined, older);
+      assert.ok(reply.json().lesson.title, older);
+      assert.notEqual(reply.headers.etag, current.headers.etag, older);
+    }
+    const repeated = await server.inject({ url: `${path}?film=${FILM_CAPABILITY}` });
+    assert.deepEqual(repeated.json(), current.json());
   } finally {
     lessonFilms[id] = published;
     await server.close();

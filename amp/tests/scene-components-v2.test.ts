@@ -78,7 +78,11 @@ test("every earlier gallery scene stays scenes-v1; the new components need scene
   for (const c of galleryCases)
     assert.equal(
       sceneCapability(c.scene),
-      v3.has(c.name) ? "scenes-v3" : v2.has(c.name) ? "scenes-v2" : "scenes-v1",
+      v3.has(c.name) || c.scene.elements.some((e) => e.type === "bill")
+        ? "scenes-v3"
+        : v2.has(c.name)
+          ? "scenes-v2"
+          : "scenes-v1",
       c.name,
     );
   // An unchanged form of an existing component stays scenes-v1.
@@ -461,4 +465,58 @@ test("an axis value that needs a newer figure falls back to its legacy value for
       needs: { table: "scenes-v2" },
     }),
   );
+});
+
+test("bills accept only supported values and finite positive widths", () => {
+  const bill = { type: "bill", id: "cash", value: 1, at: [2, -3], width: 100 };
+  assert.ok(valid(bill));
+  assert.ok(valid({ ...bill, value: 5 }));
+  for (const value of [0, 2, 10, "1", NaN])
+    assert.ok(!valid({ ...bill, value }));
+  for (const width of [0, -1, Infinity, NaN, 1e6 + 1])
+    assert.ok(!valid({ ...bill, width }));
+  assert.ok(!valid({ ...bill, at: [0] }));
+  assert.ok(!valid({ ...bill, at: [0, Infinity] }));
+  assert.ok(!valid({ ...bill, height: 40 }));
+  assert.equal(sceneCapability(one(bill)), "scenes-v3");
+  assert.ok(
+    !figureCapabilities.some((c: string) => c === "scenes-v3"),
+    "bills must not reach clients using the existing problem wire contract",
+  );
+  assert.match(describeScene(one(bill)), /one-dollar.*Washington.*ONE DOLLAR/);
+  assert.match(
+    describeScene(one({ ...bill, value: 5 })),
+    /five-dollar.*Lincoln.*FIVE DOLLARS/,
+  );
+});
+
+test("bill rows and stacks preserve order, position and denomination-independent size", () => {
+  const s: Scene = {
+    v: 1,
+    elements: [
+      { type: "bill", id: "a", value: 1, at: [0, 0], width: 100 },
+      { type: "bill", id: "b", value: 5, at: [110, 0], width: 100 },
+      { type: "bill", id: "c", value: 1, at: [118, 6], width: 100 },
+    ],
+  };
+  const layout = layoutScene(s);
+  const faces = layout.items.map((d) => {
+    assert.equal(d.k, "billImage");
+    if (d.k !== "billImage") throw Error("not a bill");
+    return d;
+  });
+  assert.deepEqual(
+    faces.map((d) => [d.id, d.value]),
+    [
+      ["a", 1],
+      ["b", 5],
+      ["c", 1],
+    ],
+  );
+  const [a, b, c] = faces;
+  assert.equal(a!.w, b!.w);
+  assert.equal(a!.h, b!.h);
+  assert.ok(Math.abs(b!.x - a!.x - 110 * layout.scale) < 1e-8);
+  assert.ok(Math.abs(c!.x - b!.x - 8 * layout.scale) < 1e-8);
+  assert.ok(Math.abs(c!.y - b!.y + 6 * layout.scale) < 1e-8);
 });
