@@ -590,6 +590,9 @@ function JoinStep({ session, me, kind, index }: StepProps) {
   const code = presence.data?.class.joinCode;
   const first = me.learners[0]?.name;
   const parent = kind === "parent";
+  // The next step's invitation, read now, so that step opens on its form
+  // instead of a wait that resizes to it.
+  useQuery({ ...secondParentOptions(session), enabled: parent });
   return (
     <Frame
       kind={kind}

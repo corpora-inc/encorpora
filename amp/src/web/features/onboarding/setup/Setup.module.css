@@ -238,6 +238,16 @@
   top: 0;
   right: 0;
 }
+/* That line is as tall as Remove, so the button never covers the name field
+   below it; every row keeps it, so adding a second child moves nothing. */
+@media (max-width: 559px) {
+  .person > .cell:first-child > .cellLabel {
+    display: flex;
+    align-items: center;
+    min-height: var(--target-size);
+    padding-right: var(--target-size);
+  }
+}
 .remove {
   display: grid;
   place-items: center;
