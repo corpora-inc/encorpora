@@ -155,6 +155,14 @@ async function visit(page: Page, url: string) {
     if (!/interrupted/i.test(String(error))) throw error;
   });
 }
+/** A reload of a place the app sends on at once (a class's Today): the
+ * engine may report the reload as interrupted by that second navigation. */
+async function reload(page: Page) {
+  await page.reload().catch(async (error: unknown) => {
+    if (!/interrupted/i.test(String(error))) throw error;
+    await page.waitForLoadState("load");
+  });
+}
 const path = (page: Page) => {
   const at = new URL(page.url());
   return `${at.pathname}${at.search}`;
@@ -387,7 +395,7 @@ async function familyThenSchool(
   await page.goBack();
   await heading(page, "When does your school year run?");
   check(`${label} Back reopens setup`, path(page) === setupPath, path(page));
-  await page.reload();
+  await reload(page);
   await heading(page, "When does your school year run?");
   check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
   await page.goForward();
@@ -395,7 +403,7 @@ async function familyThenSchool(
   // Settled on the class before reloading it: WebKit can still be finishing
   // Forward's load, which a reload would cut short.
   await todayTitle(page);
-  await page.reload();
+  await reload(page);
   await page.waitForURL(family.inClass);
   check(
     `${label} reload keeps the family's class`,
@@ -433,7 +441,7 @@ async function familyThenSchool(
     headers,
   });
   check(`${label} setup finishes`, finished.ok(), await finished.text());
-  await page.reload();
+  await reload(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const toSchool = await openSwitcher(page, family.name, true);
   await choose(page, toSchool, new RegExp(school));
@@ -579,7 +587,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
     path(page) === classPath,
     path(page),
   );
-  await page.reload();
+  await reload(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   check(
     `${label} reload keeps the family's class`,
@@ -593,7 +601,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   await page.waitForURL(inClass);
   await page.goBack();
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
-  await page.reload();
+  await reload(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   check(
     `${label} reload keeps the school`,
