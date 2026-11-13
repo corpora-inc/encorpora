@@ -375,8 +375,8 @@ function RequestSeatsSheet({
           <div className={styles.sheetBody}>
             <p className={styles.quiet} role="status">
               {holder
-                ? `${holder} already sent your school’s buyer a link for this class. Ask ${holder} to share it.`
-                : "Another teacher already sent your school’s buyer a link for this class. Ask them to share it."}
+                ? `${holder} already has a buyer link for this class. Ask ${holder} for it.`
+                : "Another teacher already has a buyer link for this class. Ask them for it."}
             </p>
           </div>
         ) : (

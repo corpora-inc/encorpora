@@ -247,7 +247,7 @@ try {
   );
   await page.getByRole("button", { name: "Get link" }).click();
   await page
-    .getByText("Rowan Ellis already sent your school’s buyer a link")
+    .getByText("Rowan Ellis already has a buyer link for this class.")
     .waitFor();
   assert.equal(await page.getByRole("button", { name: "Get link" }).count(), 0);
   await capture("buyer-link-held");
