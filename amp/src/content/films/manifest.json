@@ -2216,6 +2216,28 @@
       }
     ]
   },
+  "line-plot-build": {
+    "id": "line-plot-build--sl",
+    "version": "e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16",
+    "title": "One measurement, one mark",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-build--sl/e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-build--sl/e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16/audio.m4a",
+    "duration": 116.98997732426304,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-build--sl/e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-plot-build--sl/e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16/audio.m4a",
+        "version": "e1607d5dc746d4911e45168c6353cf755d40636a38d9a5f026f7f394765dbb16",
+        "duration": 116.98997732426304
+      }
+    ]
+  },
   "line-relationship-equations": {
     "id": "line-relationship-equations--sp",
     "version": "dff598563190896408e828cdda5513a7b945afa090fadca41f3920dfbe8a5057",
@@ -2732,6 +2754,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/missing-start-story--ss/ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06/audio.m4a",
         "version": "ba620ed16943c1805470f96b356f624965e3897e2102d42c1f0d05d2592d8d06",
         "duration": 109.62002267573696
+      }
+    ]
+  },
+  "money-total-dollars": {
+    "id": "money-total-dollars--sm",
+    "version": "f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5",
+    "title": "Dollars and cents name the same money",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/money-total-dollars--sm/f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/money-total-dollars--sm/f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5/audio.m4a",
+    "duration": 149.31997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v5",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/money-total-dollars--sm/f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/money-total-dollars--sm/f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5/audio.m4a",
+        "version": "f50ebc51e27497c915e1cf1fc87469e6776c5f5b6d22319d36e979e523558cf5",
+        "duration": 149.31997732426305
       }
     ]
   },
@@ -3279,6 +3323,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
         "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
         "duration": 261.19
+      }
+    ]
+  },
+  "product-of-powers-exponent": {
+    "id": "product-of-powers-exponent--sp",
+    "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
+    "title": "Multiply powers: follow the factors",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
+    "duration": 167.12,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
+        "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
+        "duration": 167.12
       }
     ]
   },
@@ -4014,6 +4079,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/array-add-rows-total--sa/ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5/audio.m4a",
         "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
         "duration": 109.33
+      }
+    ]
+  },
+  "solid-parts": {
+    "id": "solid-parts--ss",
+    "version": "070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137",
+    "title": "Faces, edges, and vertices",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-parts--ss/070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-parts--ss/070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137/audio.m4a",
+    "duration": 128.19997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-parts--ss/070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-parts--ss/070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137/audio.m4a",
+        "version": "070ce232577237c8043db21b0d2817258c6b13279f5f89fee93759ef076d0137",
+        "duration": 128.19997732426305
       }
     ]
   },
