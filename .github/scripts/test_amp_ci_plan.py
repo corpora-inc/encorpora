@@ -191,10 +191,11 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "family-c", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
     for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
                           ('npm run test:family-ui:a', 'family-a'), ('npm run test:family-ui:b', 'family-b'),
+                          ('npm run test:family-ui:c', 'family-c'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')"
@@ -241,10 +242,11 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
     assert second_a + second_b == second
     assert first + second_a + second_b == full
     assert not set(second_a) & set(second_b)
-    # The family chain runs as two lanes that together are the whole chain.
-    family_a, family_b = expand('test:family-ui:a'), expand('test:family-ui:b')
-    assert family_a and family_b and family_a + family_b == expand('test:family-ui')
-    assert not set(family_a) & set(family_b)
+    # The family chain runs as three lanes that together are the whole chain.
+    family_a, family_b, family_c = (expand(f'test:family-ui:{lane}') for lane in 'abc')
+    assert family_a and family_b and family_c
+    assert family_a + family_b + family_c == expand('test:family-ui')
+    assert not set(family_a) & set(family_b) and not set(family_b) & set(family_c) and not set(family_a) & set(family_c)
     assert len(set(full)) == len(full)
     assert not set(first) & set(second)
     assert any('verify-ui.ts' in command for command in first)
