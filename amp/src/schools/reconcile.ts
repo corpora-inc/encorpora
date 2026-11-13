@@ -51,7 +51,10 @@ const FROM_PEOPLE = `SELECT p.id,p.given_name,p.family_name,p.display_name,p.ema
     JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
     WHERE e.person_id=p.id AND ${activeToday("e", "o")}) AS classes,
   ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id WHERE e.person_id=p.id AND ${activeToday("e", "o")}) AS class_ids,
-  ARRAY(SELECT r.org_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id WHERE r.person_id=p.id AND ${activeToday("r", "o")}) AS org_ids,
+  ARRAY(SELECT r.org_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+    WHERE r.person_id=p.id AND o.kind='school' AND ${activeToday("r", "o")}
+    UNION SELECT c.org_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+    WHERE e.person_id=p.id AND o.kind='school' AND ${activeToday("e", "o")}) AS org_ids,
   (SELECT jsonb_object_agg(x.sourced_id,x.metadata) FROM amp_external_refs x WHERE x.local_id=p.id AND x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person') AS source_metadata
   FROM amp_people p`;
 const fullName = (row: { givenName: string; familyName?: string }) =>
@@ -80,6 +83,13 @@ function differences(
   orgId?: string,
 ): string[] {
   const out: string[] = [];
+  if (
+    row.role !== "student" &&
+    !row.sourceEvidence &&
+    orgId &&
+    !person.org_ids.includes(orgId)
+  )
+    out.push("school membership");
   if (row.gradeLevel !== undefined && row.gradeLevel !== person.grade_level)
     out.push("grade");
   if (row.email && row.email !== person.email?.toLowerCase()) out.push("email");
@@ -223,11 +233,7 @@ function matcher(
   return (row: RosterRow): Match => {
     const refId = refs.get(row.sourcedId);
     const person = refId ? people.get(refId) : undefined;
-    if (
-      person &&
-      !person.org_ids.includes(orgId) &&
-      !person.source_metadata?.[row.sourcedId]?.schoolImports?.[orgId]
-    )
+    if (person && person.org_ids.length > 0 && !person.org_ids.includes(orgId))
       return { person: null, held: "outside_school" };
     if (person && scope && !person.class_ids.includes(scope.classId))
       return { person: null, held: "outside_class" };
@@ -249,7 +255,7 @@ function matcher(
               !student(other) && other.email?.toLowerCase() === row.email,
           )
         : undefined;
-      if (staff && !staff.org_ids.includes(orgId))
+      if (staff && staff.org_ids.length > 0 && !staff.org_ids.includes(orgId))
         return { person: null, held: "outside_school" };
       return { person: staff ?? null };
     }
@@ -263,7 +269,7 @@ function matcher(
       if (matches.length > 1) return { person: null, held: "ambiguous_match" };
       const same = matches[0];
       if (same) {
-        if (!same.org_ids.includes(orgId))
+        if (same.org_ids.length > 0 && !same.org_ids.includes(orgId))
           return { person: null, held: "outside_school" };
         if (scope && !same.class_ids.includes(scope.classId))
           return { person: null, held: "outside_class" };
