@@ -422,13 +422,15 @@ try {
           }
         });
 
-      // Sign-up has no bar: its card carries the brand and is centered in
-      // the viewport (or top-aligned with padding when taller than it).
+      // Phone auth starts at the top so the keyboard leaves the form in view
+      // (#2157). Wider screens center the card above the support footer.
       await page.goto(`${origin}/sign-up`);
       await page
         .getByRole("heading", { name: "Create your account" })
         .waitFor();
       await page.getByRole("link", { name: "AMP home" }).waitFor();
+      await settleArrival(page);
+      await page.screenshot({ path: `${shots}/sign-up-${tag}.png` });
       const signUp = await box(page.locator("main section").first());
       const viewport = page.viewportSize()!;
       const content = await box(page.locator("main"));
@@ -437,7 +439,12 @@ try {
         bottom: parseFloat(getComputedStyle(node).paddingBottom),
       }));
       // The support footer has its own row; center inside the usable main area.
-      if (signUp.height + padding.top + padding.bottom <= content.height)
+      if (width <= 520)
+        assert.ok(
+          Math.abs(signUp.y - content.y - padding.top) <= 1,
+          `${tag}: phone sign-up card starts at the main area's top padding`,
+        );
+      else if (signUp.height + padding.top + padding.bottom <= content.height)
         assert.ok(
           Math.abs(
             signUp.y +
@@ -476,7 +483,14 @@ try {
         });
       const primary = await look("I confirmed my email"),
         secondary = await look("Send another email"),
-        back = await look("Not now", "link");
+        // #2157 gives Continue with AMP one Back above its heading.
+        back = await look("Back", "link");
+      assert.equal(
+        await page
+          .getByRole("link", { name: "Back", exact: true })
+          .getAttribute("href"),
+        "/",
+      );
       assert.notEqual(
         primary.background,
         secondary.background,
@@ -490,12 +504,12 @@ try {
       assert.equal(
         back.decoration,
         "none",
-        `${tag}: "Not now" is a designed control`,
+        `${tag}: Back is a designed control`,
       );
       assert.equal(
         back.color,
         secondary.color,
-        `${tag}: "Not now" uses the accent token`,
+        `${tag}: Back uses the accent token`,
       );
       for (const control of [primary, secondary, back])
         assert.ok(control.height >= 44, `${tag}: 44px targets`);
@@ -954,6 +968,11 @@ try {
   console.log(
     "Onboarding: Continue with AMP for a child: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → claim for the child → back; every return phase, a paid plan's learner → birth year → claim retry, and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
+} catch (error) {
+  for (const context of browser.contexts())
+    for (const page of context.pages())
+      await page.screenshot({ path: `${shots}/failure.png`, fullPage: true });
+  throw error;
 } finally {
   await browser.close();
   await vite.close();

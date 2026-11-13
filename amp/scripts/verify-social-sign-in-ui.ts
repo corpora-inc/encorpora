@@ -36,7 +36,8 @@ const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
 await migrate(url);
-const origin = "http://localhost:4366";
+const port = Number(process.env.AMP_SOCIAL_UI_PORT ?? 4366);
+const origin = `http://localhost:${port}`;
 const repository = new PostgresRepository(url, { development: true });
 const accounts = await createAccounts(repository.pool, {
   baseURL: origin,
@@ -81,7 +82,7 @@ async function startAccountsServer() {
     authenticate,
     services: { secret: accounts.config.secret, origin },
   });
-  await server.listen({ host: "127.0.0.1", port: 4367 });
+  await server.listen({ host: "127.0.0.1", port: port + 1 });
   return server;
 }
 let app = await startAccountsServer();
@@ -91,9 +92,9 @@ const vite = await createServer({
   logLevel: "error",
   server: {
     host: "127.0.0.1",
-    port: 4366,
+    port,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4367" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${port + 1}` } },
   },
 });
 await vite.listen();
@@ -808,8 +809,11 @@ try {
     ),
   );
   await page.goto(`${origin}/overview`);
+  // This learner has no answers yet: #2157 gives their starting estimate
+  // its own heading. Naming the learner also proves the stale selection
+  // from another account did not leak into this overview.
   await page
-    .getByRole("heading", { name: "Test Learner", exact: true })
+    .getByRole("heading", { name: "Where Test Learner is", exact: true })
     .waitFor();
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
@@ -952,7 +956,7 @@ try {
     await router.navigate({ to: "/$", params: { _splat: "overview" } });
   });
   await page
-    .getByRole("heading", { name: "Test Learner", exact: true })
+    .getByRole("heading", { name: "Where Test Learner is", exact: true })
     .waitFor();
   await page.unroute(`**/api/v1/billing/purchase/${purchaseId}`);
   let replayedPurchases = 0;
@@ -1004,6 +1008,14 @@ try {
   assert.deepEqual(errors, []);
   await context.close();
   console.log("Social sign-in UI verified.");
+} catch (error) {
+  for (const context of browser.contexts())
+    for (const page of context.pages())
+      await page.screenshot({
+        path: new URL("social-sign-in-failure.png", shots).pathname,
+        fullPage: true,
+      });
+  throw error;
 } finally {
   globalThis.fetch = realFetch;
   await browser.close();
