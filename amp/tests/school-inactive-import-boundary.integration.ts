@@ -108,7 +108,13 @@ test(
             const attempt = { source: "csv", rows: foreign };
             assert.deepEqual(
               await planRoster(repo, b!.id, attempt),
-              [{ line: 2, status: "held", reason: "outside_school" }],
+              [
+                {
+                  line: foreign[0]!.line,
+                  status: "held",
+                  reason: "outside_school",
+                },
+              ],
               "preview must not reveal an inactive person's name or ID",
             );
             for (const decision of ["same", "new"]) {
@@ -120,7 +126,7 @@ test(
                     b!.id,
                     {
                       ...attempt,
-                      resolutions: { "2": decision },
+                      resolutions: { [String(foreign[0]!.line)]: decision },
                     },
                     null,
                   )
@@ -205,7 +211,11 @@ test(
           false,
         );
         assert.deepEqual(await planRoster(repo, a!.id, body), [
-          { line: 2, status: "changed", changes: ["school membership"] },
+          {
+            line: body.rows[0]!.line,
+            status: "changed",
+            changes: ["school membership"],
+          },
         ]);
         assert.equal(
           (await applyRoster(repo, keys, a!.id, body, null)).results[0]!.status,
@@ -256,7 +266,7 @@ test(
         ).rows[0];
         await removeStudent(repo, a!.id, old.id, null);
         assert.deepEqual(await planRoster(repo, a!.id, body, scope), [
-          { line: 2, status: "new" },
+          { line: body.rows[0]!.line, status: "new" },
         ]);
         assert.equal(
           (await applyRoster(repo, keys, a!.id, body, null, scope)).results[0]!

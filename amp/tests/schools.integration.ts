@@ -764,6 +764,7 @@ test(
 
           const fixtures: Record<string, string> = {
             org: home.orgId,
+            orgId: home.orgId,
             class: period1.id,
             classId: period1.id,
             student: student1.personId,
