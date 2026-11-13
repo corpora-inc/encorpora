@@ -91,7 +91,21 @@ try {
                 recordedAt: null,
                 withdrawnAt: null,
               },
-              learners: [],
+              // Learning consent is about children: Privacy offers it to a
+              // parent once a child is added (consent follows).
+              learners:
+                req.headers().authorization === "Bearer other"
+                  ? []
+                  : [
+                      {
+                        id: "child",
+                        name: "Avery",
+                        birthYear: 2016,
+                        deletedAt: null,
+                        stripeLinked: false,
+                        access: [],
+                      },
+                    ],
               retained: retentionNotice,
             },
             req.headers().authorization === "Bearer other" ? "other" : "parent",
@@ -100,6 +114,15 @@ try {
       }
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
+      // The child's level, read once the family opens after consent.
+      if (path.endsWith("/frontier"))
+        return route.fulfill({
+          json: {
+            expected: 4,
+            overall: { level: 4, sd: 2.5, answered: 0, independent: 0 },
+            strands: {},
+          },
+        });
       if (path.endsWith("/consent")) {
         const bearer = req.headers().authorization;
         assert.ok(
@@ -166,7 +189,7 @@ try {
     });
     await page.locator('[data-privacy-choice="consent"]').click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .click();
     await page
       .getByRole("heading", { name: "Enrollment is unavailable" })
@@ -188,11 +211,11 @@ try {
     });
     await page.getByRole("button", { name: "Back", exact: true }).click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .waitFor();
     assert.equal(
       await page.evaluate(() => document.activeElement?.textContent?.trim()),
-      "Review consent options",
+      "Consent options",
     );
     view = {
       available: true,
@@ -247,7 +270,7 @@ try {
     await enteredPromise;
     await page.getByRole("button", { name: "Back", exact: true }).click();
     await page
-      .getByRole("button", { name: "Review consent options", exact: true })
+      .getByRole("button", { name: "Consent options", exact: true })
       .waitFor();
     const afterClose = familyReads;
     release();
