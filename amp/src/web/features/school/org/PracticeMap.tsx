@@ -185,7 +185,6 @@ export function PracticeMap({
           targets.size === 1 ? [...targets][0]! : medianOf([...targets])
         }
         midpointWord={targets.size === 1 ? "target" : "median target"}
-        unit="minutes"
         empty={rows.some((row) =>
           row.cells.some((cell, index) => !cell && index <= currentIndex),
         )}
@@ -195,7 +194,6 @@ export function PracticeMap({
         caption="Problems per student, mean for the week. Midpoint: the median student-week with any problems this term"
         midpoint={data.problemsMidpoint}
         midpointWord="median"
-        unit="problems"
       />
     ) : null;
   return (

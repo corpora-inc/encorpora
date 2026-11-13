@@ -112,7 +112,6 @@ function Spread({
         caption="Active minutes this week"
         midpoint={target}
         midpointWord="target"
-        unit="minutes"
       />
     </div>
   );
