@@ -1,0 +1,125 @@
+/* One centred column for the school pages outside a place. */
+.page {
+  width: min(100%, calc(var(--width-form) + 2 * var(--space-4)));
+  margin-inline: auto;
+  padding: var(--space-2) var(--space-4) var(--space-8);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-5);
+}
+.page[data-wide] {
+  width: min(100%, calc(720px + 2 * var(--space-4)));
+}
+.back,
+.backSlot {
+  min-height: 44px;
+}
+.back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-inline-start: calc(-1 * var(--space-2));
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-control);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+}
+.back:hover {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.back:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 6vw, 36px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+/* The title and its one sentence read as one block. */
+.title + .lead {
+  margin-top: calc(-1 * var(--space-3));
+}
+.lead {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+/* A form's fields sit closer than the page's sections; its actions keep the
+   page's distance. */
+.form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+.form > .actions {
+  margin-top: var(--space-3);
+}
+/* A labelled picker in a form, matching the text fields' labels. */
+.field {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.label {
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+/* A wait that is the page's whole state (an import running). */
+.progress {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--color-muted-text);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.aside {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+@media (min-width: 768px) {
+  .page {
+    padding-top: var(--space-5);
+  }
+}
+@media (max-width: 479px) {
+  /* The one primary action of a step spans the column on a phone. */
+  .actions > :first-child:last-child,
+  .actions > [data-primary] {
+    flex: 1 1 100%;
+  }
+}
+/* What an action says back in place (a sync asked for too soon). */
+.note {
+  margin: calc(-1 * var(--space-3)) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}

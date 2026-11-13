@@ -18,7 +18,7 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const url = process.env.AMP_TEST_DATABASE_URL!;
 assertTestDatabaseTarget(url);
-const port = 4496,
+const port = Number(process.env.AMP_PILOT_AUTHORITY_UI_PORT ?? 4496),
   origin = `http://127.0.0.1:${port}`;
 const schema = `pilot_authority_ui_${randomUUID().replaceAll("-", "")}`;
 const admin = new Pool({ connectionString: url, max: 1 });
@@ -59,6 +59,9 @@ await registerSchoolRoutes(api, {
 api.get("/api/v1/auth-config", async () => ({ mode: "development" }));
 await api.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
+  ...(process.env.AMP_VITE_CACHE_DIR
+    ? { cacheDir: process.env.AMP_VITE_CACHE_DIR }
+    : {}),
   server: {
     host: "127.0.0.1",
     port,
@@ -86,12 +89,16 @@ async function capture(name: string) {
         document.documentElement.dataset.theme = value;
         window.scrollTo(0, 0);
       }, theme);
-      assert.ok(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth <= innerWidth,
-        ),
-        `${name} fits ${width}`,
+      // Name what overflows, so a failure says where to look.
+      const wide = await page.evaluate(() =>
+        document.documentElement.scrollWidth <= innerWidth
+          ? null
+          : [...document.querySelectorAll("body *")]
+              .filter((node) => node.getBoundingClientRect().right > innerWidth)
+              .slice(-3)
+              .map((node) => `${node.tagName}.${node.className}`),
       );
+      assert.equal(wide, null, `${name} fits ${width}`);
       await page.screenshot({
         path: `${artifacts}/${name}-${width}-${theme}.png`,
         fullPage: true,
@@ -99,20 +106,18 @@ async function capture(name: string) {
     }
 }
 try {
+  const waiting = "Waiting for the class’s teacher to start practice";
   for (const tab of ["roster", "today"]) {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
-    await page
-      .getByRole("heading", { name: "Ready for your teacher", exact: true })
-      .waitFor();
-    assert.equal(
+    // Today says who starts; Students simply has nothing to start.
+    if (tab === "today")
+      await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
+    else await page.getByLabel("Class code").waitFor();
+    assert.equal(await page.getByRole("button", { name: /^Start/ }).count(), 0);
+    if (tab === "today")
       await page
-        .getByRole("button", { name: "Start 30-day pilot", exact: true })
-        .count(),
-      0,
-    );
-    await page
-      .getByRole("button", { name: "Request seats", exact: true })
-      .waitFor();
+        .getByRole("button", { name: "Request seats", exact: true })
+        .waitFor();
     await capture(`administrator-${tab}`);
   }
   assert.equal(
@@ -130,12 +135,10 @@ try {
     });
   });
   await page.reload();
-  await page
-    .getByRole("heading", { name: "Ready for your teacher", exact: true })
-    .waitFor();
+  await page.getByRole("heading", { name: waiting, exact: true }).waitFor();
   assert.equal(
     await page
-      .getByRole("heading", { name: "Your pilot has ended", exact: true })
+      .getByRole("heading", { name: "Practice has ended", exact: true })
       .count(),
     0,
   );
@@ -153,22 +156,21 @@ try {
     await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/${tab}`);
     await page.reload();
     await page
-      .getByRole("button", { name: "Start 30-day pilot", exact: true })
+      .getByRole("button", {
+        name: tab === "today" ? "Start" : "Start practice",
+        exact: true,
+      })
       .waitFor();
     assert.equal(
-      await page
-        .getByRole("heading", { name: "Ready for your teacher", exact: true })
-        .count(),
+      await page.getByRole("heading", { name: waiting, exact: true }).count(),
       0,
     );
   }
   await capture("enrolled-teacher");
   await page
-    .getByRole("button", { name: "Start 30-day pilot", exact: true })
+    .getByRole("button", { name: "Start practice", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: "Your pilot is active", exact: true })
-    .waitFor();
+  await page.getByRole("link", { name: "Start class", exact: true }).waitFor();
   assert.equal(
     (
       await learning.pool.query(

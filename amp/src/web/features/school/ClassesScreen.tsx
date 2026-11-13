@@ -62,6 +62,7 @@ import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
+import { AccessLine, AccessSheets } from "./pilots/ClassAccess";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
@@ -716,6 +717,7 @@ export function ClassScreen() {
               onChange={pick}
             />
           )}
+          {!family && <AccessLine place={{ org: orgId, class: classId }} />}
         </section>
         {small && org?.can?.includes("calendar.read") && (
           <YearCalendar
@@ -830,6 +832,7 @@ export function ClassScreen() {
           <SmallClassGrades orgId={orgId} classId={classId} />
         )}
       </div>
+      {!family && <AccessSheets place={{ org: orgId, class: classId }} />}
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />
     </OrgFrame>

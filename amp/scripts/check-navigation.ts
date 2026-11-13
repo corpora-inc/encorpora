@@ -38,7 +38,7 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
   "main.tsx": [1, "sign-out: another account leaves a parent's purchase view"],
   "auth.ts": [3, "sign-in and sign-out hand off with a full load"],
   "lib/api.ts": [1, "an ended session reloads into sign-in"],
-  "features/school/clever/ConnectionScreen.tsx": [
+  "features/school/clever/link.ts": [
     1,
     "explicit account linking hands off to Clever OAuth",
   ],

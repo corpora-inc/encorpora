@@ -17,23 +17,18 @@ export function buttonClass(
     .replace(/\s+/g, " ")
     .trim();
 }
+/** Every button says what it is: the one primary action, a secondary one,
+ * or a quiet one. There is no unstyled button. */
 export function Button({
   className = "",
   variant,
   align = "center",
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant;
+  variant: ButtonVariant;
   align?: ButtonAlign;
 }) {
   return (
-    <button
-      {...props}
-      className={
-        variant
-          ? buttonClass(variant, className, align)
-          : `${styles.button} ${className}`
-      }
-    />
+    <button {...props} className={buttonClass(variant, className, align)} />
   );
 }

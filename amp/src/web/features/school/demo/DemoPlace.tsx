@@ -11,30 +11,26 @@ import { currentSession, orgOptions } from "../api";
 import { useFinishSignIn } from "../join/api";
 import styles from "./Demo.module.css";
 
-/** Demo records stay separate from the real classroom. */
-export const REAL_SETUP_PATH = "school/start";
-export const REAL_SETUP_HASH = "";
-
 /** Whether this org is a demo, from the org the frame already loaded. */
 export function useDemoOrg(orgId: string) {
   return useQuery(orgOptions(currentSession(), orgId)).data?.demo === true;
 }
 
-/** The bar's one action in a demo: the way to the real class or school. Its
- * full label from 640 px, a short one on a phone, always a 44 px target. */
+/** The bar's one action in a demo: the way to the real thing, never the demo
+ * converted in place. A teacher sets up their real class; a school starts
+ * with a person (white-glove). Its full label from 640 px, a short one on a
+ * phone, always a 44 px target. */
 export function DemoSetupAction({ school }: { school: boolean }) {
-  const label = school ? "Connect your school" : "Set up your real class";
+  const label = school ? "Talk to us" : "Set up your real class";
   // A phone keeps a short word beside the arrow: an arrow alone says nothing.
-  const short = school ? "Connect" : "Real class";
-  return (
-    <Link
-      to="/$"
-      params={{ _splat: school ? "school/connect" : REAL_SETUP_PATH }}
-      hash={REAL_SETUP_HASH}
-      className={`${bar.actionLink} ${styles.action}`}
-      aria-label={label}
-      data-demo-action
-    >
+  const short = school ? "Talk to us" : "Real class";
+  const look = {
+    className: `${bar.actionLink} ${styles.action}`,
+    "aria-label": label,
+    "data-demo-action": true,
+  };
+  const content = (
+    <>
       <svg viewBox="0 0 16 16" aria-hidden="true">
         <path
           d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
@@ -49,6 +45,15 @@ export function DemoSetupAction({ school }: { school: boolean }) {
       <span className={styles.short} aria-hidden="true">
         {short}
       </span>
+    </>
+  );
+  return school ? (
+    <Link to="/schools" hash="talk" {...look}>
+      {content}
+    </Link>
+  ) : (
+    <Link to="/school/start" {...look}>
+      {content}
     </Link>
   );
 }

@@ -146,6 +146,7 @@ export function PurchaseMeasurement({
       >
         {!active && view.eligible && !optedOut && matchingNotice && (
           <Button
+            variant="primary"
             disabled={!agreed || mutation.isPending}
             onClick={() =>
               mutation.mutate({

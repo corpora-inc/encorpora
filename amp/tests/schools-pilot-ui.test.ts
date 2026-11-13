@@ -4,8 +4,12 @@ import {
   pilotStateSchema,
   startSchoolClassSchema,
 } from "../src/schools/pilot-contracts.js";
-import { pilotPresentation } from "../src/web/features/school/pilots/presentation.js";
+import {
+  accessView,
+  practiceDate,
+} from "../src/web/features/school/pilots/presentation.js";
 
+const now = new Date("2026-11-13T15:00:00Z");
 const ready = pilotStateSchema.parse({
   status: "ready",
   startedAt: null,
@@ -13,33 +17,53 @@ const ready = pilotStateSchema.parse({
   graceEndsAt: null,
   eligible: true,
   authorized: true,
+  coverage: { students: 20, covered: 0, paid: 0 },
 });
-test("a pilot starts after roster setup and only the first eligible class offers 30 days", () => {
-  assert.equal(pilotPresentation(ready, 0).action, null);
-  assert.equal(pilotPresentation(ready, 20).action, "Start 30-day pilot");
-  const existing = {
-    ...ready,
-    startedAt: "2026-11-01T00:00:00Z",
-    endsAt: "2026-12-01T00:00:00Z",
-    graceEndsAt: "2026-12-08T00:00:00Z",
-  };
-  assert.equal(pilotPresentation(existing, 20).action, "Add class to pilot");
+const existing = {
+  ...ready,
+  startedAt: "2026-11-01T00:00:00Z",
+  endsAt: "2026-12-01T00:00:00Z",
+  graceEndsAt: "2026-12-08T00:00:00Z",
+};
+test("practice starts after students arrive, for 30 days, by the class's teacher", () => {
+  assert.deepEqual(
+    accessView(
+      { ...ready, coverage: { students: 0, covered: 0, paid: 0 } },
+      true,
+      now,
+    ),
+    { kind: "empty" },
+  );
+  const fresh = accessView(ready, true, now);
+  assert.equal(fresh.kind, "start");
+  assert.equal(fresh.kind === "start" && fresh.joining, false);
   assert.equal(
-    pilotPresentation({ ...existing, eligible: false }, 20).action,
-    null,
+    fresh.kind === "start" && fresh.until.slice(0, 10),
+    "2026-12-13",
   );
-  assert.match(
-    pilotPresentation({ ...existing, eligible: false }, 20).title,
-    /ended/,
-  );
-  assert.equal(
-    pilotPresentation({ ...existing, status: "active" }, 20).action,
-    null,
-  );
-  assert.equal(
-    pilotPresentation({ ...existing, status: "grace" }, 20).action,
-    null,
-  );
+  assert.deepEqual(accessView(ready, false, now), { kind: "waiting" });
+  // An administrator's own ended pilot never describes a class they don't teach.
+  assert.deepEqual(accessView({ ...ready, eligible: false }, false, now), {
+    kind: "waiting",
+  });
+});
+test("a second class joins the running pilot on its dates; an ended one offers seats", () => {
+  assert.deepEqual(accessView(existing, true, now), {
+    kind: "start",
+    joining: true,
+    until: "2026-12-01T00:00:00Z",
+  });
+  assert.deepEqual(accessView({ ...existing, eligible: false }, true, now), {
+    kind: "ended",
+  });
+  assert.deepEqual(accessView({ ...existing, status: "active" }, true, now), {
+    kind: "active",
+    until: "2026-12-01T00:00:00Z",
+  });
+  assert.deepEqual(accessView({ ...existing, status: "grace" }, true, now), {
+    kind: "ending",
+    until: "2026-12-08T00:00:00Z",
+  });
 });
 test("paid coverage takes precedence over pilot expiry, while partial coverage does not hide it", () => {
   const expired = {
@@ -48,14 +72,19 @@ test("paid coverage takes precedence over pilot expiry, while partial coverage d
     eligible: false,
     coverage: { students: 20, paid: 20, covered: 20 },
   };
-  assert.equal(pilotPresentation(expired, 20).title, "Your class has seats");
-  assert.equal(
-    pilotPresentation(
+  assert.deepEqual(accessView(expired, true, now), { kind: "paid" });
+  assert.deepEqual(
+    accessView(
       { ...expired, coverage: { students: 20, paid: 19, covered: 19 } },
-      20,
-    ).title,
-    "Your pilot has ended",
+      true,
+      now,
+    ),
+    { kind: "ended" },
   );
+});
+test("practice dates drop the year only when it is this one", () => {
+  assert.match(practiceDate("2026-12-13T12:00:00Z", now), /Dec 13$/);
+  assert.match(practiceDate("2027-01-05T12:00:00Z", now), /2027/);
 });
 test("class setup requires explicit school authorization and bounds student names", () => {
   const input = {

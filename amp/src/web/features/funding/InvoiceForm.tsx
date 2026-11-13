@@ -148,7 +148,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
           ) : offers.error ? (
             <div role="alert">
               <p>The offer could not be loaded.</p>
-              <Button onClick={() => void offers.refetch()}>Try again</Button>
+              <Button variant="secondary" onClick={() => void offers.refetch()}>
+                Try again
+              </Button>
             </div>
           ) : !offer ? (
             <>

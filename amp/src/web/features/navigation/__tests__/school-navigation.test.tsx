@@ -7,6 +7,7 @@ import type { OrgResource } from "../../../../schools/contracts";
 import { sessionOptions } from "../../../lib/query";
 import { classesOptions, orgOptions } from "../../school/api";
 import { classYearOptions } from "../../school/org/org-api";
+import { pilotOptions } from "../../school/pilots/api";
 import { useSchoolNavigation } from "../school-navigation";
 
 // Use Node directly: Vite stubs node:crypto in browser modules.
@@ -57,6 +58,16 @@ function navigation({
       teachers: [],
     })),
   );
+  // Practice is running for the class: Start class has someone to start.
+  client.setQueryData(pilotOptions(session, "current").queryKey, {
+    status: "active",
+    startedAt: "2026-11-01T00:00:00Z",
+    endsAt: "2026-12-01T00:00:00Z",
+    graceEndsAt: "2026-12-08T00:00:00Z",
+    eligible: true,
+    authorized: true,
+    coverage: { students: 3, covered: 3, paid: 0 },
+  });
   if (past !== null)
     client.setQueryData(classYearOptions(session, "current").queryKey, {
       past,

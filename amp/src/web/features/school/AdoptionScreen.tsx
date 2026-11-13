@@ -1,15 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
 import type { AuthSession } from "../../auth";
+import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
-import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Select } from "../../ui/Select";
 import { TextField } from "../../ui/TextField";
+import { Toast } from "../../ui/Toast";
 import { currentSession, refreshSchool } from "./api";
 import {
   acceptAdoption,
@@ -26,45 +32,91 @@ import {
   prepareSchoolAdoption,
   schoolAdoptionToken,
 } from "./adoption-session";
-import { CopyButton, FormNote, PageHead } from "./parts";
-import "./SchoolFrame.module.css";
+import { Actions, Lead, PlainPage } from "./PlainPage";
 import styles from "./AdoptionScreen.module.css";
+
 const day = (value: string) =>
-  new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(
+  new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(
     new Date(value),
   );
-const destination = (district: string, manage = false) =>
-  `/school/adopt?district=${encodeURIComponent(district)}${manage ? "&manage=1" : ""}`;
 const address = (path: string) => `${window.location.origin}${path}`;
-function Failed({ error, retry }: { error: unknown; retry: () => void }) {
+const plural = (count: number, one: string, many = `${one}s`) =>
+  `${count.toLocaleString()} ${count === 1 ? one : many}`;
+
+/** A name, and only when two share it, enough of the record to tell them
+ * apart. */
+function labelled<T extends { id: string; name: string }>(items: T[]) {
+  const seen = new Map<string, number>();
+  for (const item of items) seen.set(item.name, (seen.get(item.name) ?? 0) + 1);
+  return items.map((item) => ({
+    ...item,
+    label:
+      (seen.get(item.name) ?? 0) > 1
+        ? `${item.name} · ${item.id.slice(-4)}`
+        : item.name,
+  }));
+}
+
+function Failed({
+  error,
+  retry,
+  label = "Try again",
+}: {
+  error: unknown;
+  retry: () => void;
+  label?: string;
+}) {
+  const message = adoptionError(error);
+  useLoggedError(message);
   return (
-    <EmptyState
-      title="This school connection could not be opened"
-      action={
+    <PlainPage title="This link didn’t open" back="/school">
+      <Lead>{message}</Lead>
+      <Actions>
         <Button variant="secondary" onClick={retry}>
-          Try again
+          {label}
         </Button>
-      }
-    >
-      {adoptionError(error)}
-    </EmptyState>
+      </Actions>
+    </PlainPage>
   );
 }
-function ShareLink({ url, label }: { url: string; label: string }) {
+
+/** The link copied out of AMP: one button, the address kept on it for
+ * assistive tools and tests rather than shown as a field. */
+function CopyLink({ url }: { url: string }) {
+  const [state, setState] = useState<"copied" | "failed" | null>(null);
   return (
-    <div className={styles.stack}>
-      <TextField
-        label={label}
-        readOnly
-        value={url}
-        onFocus={(e) => e.target.select()}
-      />
-      <div className={styles.actions}>
-        <CopyButton text={url} label="Copy link" />
-      </div>
-    </div>
+    <>
+      <Actions>
+        <Button
+          variant="primary"
+          data-primary
+          data-share-url={url}
+          onClick={() =>
+            void navigator.clipboard.writeText(url).then(
+              () => setState("copied"),
+              (failure) => {
+                console.error("The link could not be copied", failure);
+                setState("failed");
+              },
+            )
+          }
+        >
+          {state === "copied" ? "Copied" : "Copy link"}
+        </Button>
+      </Actions>
+      {state === "failed" && (
+        <TextField
+          label="Select the link and copy it"
+          readOnly
+          value={url}
+          onFocus={(event) => event.target.select()}
+        />
+      )}
+    </>
   );
 }
+
+/** A district admin's invitation: the link a school opens to approve. */
 function DistrictInvite({
   session,
   districtId,
@@ -73,28 +125,27 @@ function DistrictInvite({
   districtId: string;
 }) {
   const query = useQuery(adoptionDistrictQuery(session, districtId));
-  if (query.isPending) return <LoadingScreen />;
+  if (query.isPending) return <LoadingScreen overlay />;
   if (!query.data)
     return <Failed error={query.error} retry={() => void query.refetch()} />;
   return (
-    <section className={styles.card}>
-      <h2>{query.data.district.name}</h2>
-      <p>
-        Share this link with the teacher or administrator who manages the
-        existing school in AMP. They choose their school and approve the move.
-        You review and accept their approval here.
-      </p>
-      <ShareLink
-        url={address(destination(districtId))}
-        label="School invitation link"
+    <PlainPage
+      title={`Invite a school to ${query.data.district.name}`}
+      back="/school"
+    >
+      <Lead>
+        Send this link to the school. You’ll accept here once they approve.
+      </Lead>
+      <CopyLink
+        url={address(
+          `/school/adopt?district=${encodeURIComponent(districtId)}`,
+        )}
       />
-      <p>
-        Classes, learners, work and pilot dates stay with their existing
-        records.
-      </p>
-    </section>
+    </PlainPage>
   );
 }
+
+/** The school's side: approve joining a district, then send the approval. */
 function AuthorizeSchool({
   session,
   districtId,
@@ -112,180 +163,138 @@ function AuthorizeSchool({
     token: string;
     expiresAt: string;
   } | null>(null);
-  if (query.isPending) return <LoadingScreen />;
+  useLoggedError(error);
+  if (query.isPending) return <LoadingScreen overlay />;
   if (!query.data)
     return <Failed error={query.error} retry={() => void query.refetch()} />;
-  const data = query.data,
-    school = data.schools.find(
-      (x) => x.id === (schoolId || data.schools[0]?.id),
-    );
+  const data = query.data;
+  const district = data.district;
+  const school = data.schools.find(
+    (x) => x.id === (schoolId || data.schools[0]?.id),
+  );
+  const open = data.grants.filter((grant) => grant.status === "open");
+  // Nothing to approve, invite or withdraw: this page has no job here.
+  if (!district && !data.districts.length && !open.length)
+    return <Navigate to="/$" params={{ _splat: "school" }} replace />;
+  const withdraw = (id: string) => {
+    setBusy(true);
+    setError("");
+    void revokeAdoption(session, id)
+      .then(async () => {
+        if (issued?.id === id) setIssued(null);
+        await query.refetch();
+      })
+      .catch((e) => setError(adoptionError(e)))
+      .finally(() => setBusy(false));
+  };
   return (
-    <div className={styles.stack}>
-      {data.district ? (
-        <section className={styles.card}>
-          <h2>Join {data.district.name}</h2>
-          {issued ? (
-            <>
-              <p>
-                Share this approval with an AMP administrator at{" "}
-                {data.district.name}. They must review and accept it by{" "}
-                {day(issued.expiresAt)}.
-              </p>
-              <ShareLink
-                url={address(`/school/adopt#token=${issued.token}`)}
-                label="District approval link"
-              />
-              <p>
-                Only administrators of this district can use the link. You can
-                withdraw it below before they accept.
-              </p>
-            </>
-          ) : school ? (
-            <>
-              <p>
-                Your school’s existing classes, students and work will become
-                part of {data.district.name}. Its administrators will be able to
-                manage them. Your classes and pilot dates stay the same.
-              </p>
-              <label className={styles.field}>
-                School
-                <Select
-                  aria-label="School to join the district"
-                  value={school.id}
-                  onValueChange={(value) => {
-                    setSchoolId(value);
-                    setConfirmed(false);
-                  }}
-                >
-                  {data.schools.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.name} · {item.classes}{" "}
-                      {item.classes === 1 ? "class" : "classes"}
-                    </option>
-                  ))}
-                </Select>
-              </label>
-              <Checkbox
-                checked={confirmed}
-                onChange={setConfirmed}
-                disabled={busy}
+    <PlainPage
+      title={district ? `Join ${district.name}` : "Districts"}
+      back="/school"
+    >
+      {district &&
+        (issued ? (
+          <>
+            <Lead>
+              Send this to {district.name}. It expires {day(issued.expiresAt)}.
+            </Lead>
+            <CopyLink url={address(`/school/adopt#token=${issued.token}`)} />
+          </>
+        ) : school ? (
+          <>
+            <Lead>
+              {district.name}’s admins will manage {school.name}. Classes and
+              work stay the same.
+            </Lead>
+            {data.schools.length > 1 && (
+              <Select
+                aria-label="School"
+                value={school.id}
+                onValueChange={(value) => {
+                  setSchoolId(value);
+                  setConfirmed(false);
+                }}
               >
-                I authorize {school.name} to join {data.district.name} and share
-                its records with the district’s administrators.
-              </Checkbox>
-              <div className={styles.actions}>
-                <Button
-                  disabled={!confirmed || busy}
-                  aria-busy={busy}
-                  onClick={() => {
-                    setBusy(true);
-                    setError("");
-                    void issueAdoption(session, school.id, data.district!.id)
-                      .then(async (result) => {
-                        setIssued(result);
-                        await query.refetch();
-                      })
-                      .catch((e) => setError(adoptionError(e)))
-                      .finally(() => setBusy(false));
-                  }}
-                >
-                  Create district approval
-                </Button>
-              </div>
-            </>
-          ) : (
-            <p>
-              No standalone school is available to move from this account. Sign
-              in as its administrator or the teacher who started and teaches all
-              its active classes.
-            </p>
-          )}
-          <FormNote error={error} />
-        </section>
-      ) : (
-        <section className={styles.card}>
-          <h2>Connect an existing school</h2>
-          <p>
-            Ask your district’s AMP administrator for a school invitation link.
-            Open it to choose your school and approve sharing its records with
-            that district.
-          </p>
-          <p>
-            A move keeps the same learners, classes, learning history and pilot
-            dates.
-          </p>
-        </section>
+                {data.schools.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name} · {plural(item.classes, "class", "classes")}
+                  </option>
+                ))}
+              </Select>
+            )}
+            <Checkbox
+              checked={confirmed}
+              onChange={setConfirmed}
+              disabled={busy}
+            >
+              I authorize {school.name} to join {district.name} and share its
+              records with the district’s administrators.
+            </Checkbox>
+            <Actions>
+              <Button
+                variant="primary"
+                data-primary
+                disabled={!confirmed || busy}
+                aria-busy={busy}
+                onClick={() => {
+                  setBusy(true);
+                  setError("");
+                  void issueAdoption(session, school.id, district.id)
+                    .then(async (result) => {
+                      setIssued(result);
+                      await query.refetch();
+                    })
+                    .catch((e) => setError(adoptionError(e)))
+                    .finally(() => setBusy(false));
+                }}
+              >
+                Approve
+              </Button>
+            </Actions>
+          </>
+        ) : (
+          <Lead>Only the school’s admin can approve this.</Lead>
+        ))}
+      {!district && data.districts.length > 0 && (
+        <ul className={styles.rows}>
+          {data.districts.map((item) => (
+            <li key={item.id}>
+              <span>{item.name}</span>
+              <Link
+                to="/school/adopt"
+                search={{ district: item.id, manage: 1 }}
+                className={buttonClass("secondary")}
+              >
+                Invite a school
+              </Link>
+            </li>
+          ))}
+        </ul>
       )}
-      {data.districts.length > 0 && (
-        <section className={styles.card}>
-          <h2>Your districts</h2>
-          <p>
-            Invite a school that already uses AMP to join a district you
-            administer.
-          </p>
-          <ul className={styles.list}>
-            {data.districts.map((district) => (
-              <li className={styles.row} key={district.id}>
-                <strong>{district.name}</strong>
-                <Link
-                  to={destination(district.id, true) as never}
-                  className={buttonClass("secondary")}
-                >
-                  Invite a school
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {open.length > 0 && !issued && (
+        <ul className={styles.rows} aria-label="Approvals">
+          {open.map((grant) => (
+            <li key={grant.id}>
+              <span>
+                {grant.schoolName} → {grant.districtName}
+                <small>Expires {day(grant.expiresAt)}</small>
+              </span>
+              <Button
+                variant="quiet"
+                disabled={busy}
+                onClick={() => withdraw(grant.id)}
+              >
+                Withdraw
+              </Button>
+            </li>
+          ))}
+        </ul>
       )}
-      {data.grants.length > 0 && (
-        <section className={styles.card}>
-          <h2>School approvals</h2>
-          <ul className={styles.list}>
-            {data.grants.map((grant) => (
-              <li className={styles.row} key={grant.id}>
-                <div>
-                  <strong>
-                    {grant.schoolName} → {grant.districtName}
-                  </strong>
-                  <span className={styles.help}>
-                    {grant.status === "open"
-                      ? `Awaiting district review · expires ${day(grant.expiresAt)}`
-                      : {
-                          used: "Accepted",
-                          expired: "Expired",
-                          revoked: "Withdrawn",
-                        }[grant.status]}
-                  </span>
-                </div>
-                {grant.status === "open" && (
-                  <Button
-                    variant="secondary"
-                    disabled={busy}
-                    onClick={() => {
-                      setBusy(true);
-                      setError("");
-                      void revokeAdoption(session, grant.id)
-                        .then(async () => {
-                          if (issued?.id === grant.id) setIssued(null);
-                          await query.refetch();
-                        })
-                        .catch((e) => setError(adoptionError(e)))
-                        .finally(() => setBusy(false));
-                    }}
-                  >
-                    Withdraw approval
-                  </Button>
-                )}
-              </li>
-            ))}
-          </ul>
-          <FormNote error={error} />
-        </section>
-      )}
-    </div>
+      <Toast message={error} onDismiss={() => setError("")} />
+    </PlainPage>
   );
 }
+
 function ReviewSchool({
   session,
   token,
@@ -295,23 +304,17 @@ function ReviewSchool({
 }) {
   const navigate = useNavigate();
   const query = useQuery(adoptionReviewQuery(session, token));
-  if (query.isPending) return <LoadingScreen />;
+  if (query.isPending) return <LoadingScreen overlay />;
   if (!query.data)
     return (
-      <div className={styles.stack}>
-        <Failed error={query.error} retry={() => void query.refetch()} />
-        <div className={styles.actions}>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              clearSchoolAdoption();
-              void navigate({ to: "/school" as never });
-            }}
-          >
-            Open your schools
-          </Button>
-        </div>
-      </div>
+      <Failed
+        error={query.error}
+        label="Open your schools"
+        retry={() => {
+          clearSchoolAdoption();
+          void navigate({ to: "/$", params: { _splat: "school" } });
+        }}
+      />
     );
   return (
     <ReviewDecision
@@ -322,6 +325,8 @@ function ReviewSchool({
     />
   );
 }
+
+/** The district's side: what moves, who is the same person, and accept. */
 function ReviewDecision({
   session,
   token,
@@ -340,6 +345,7 @@ function ReviewDecision({
     [cleverSchoolId, setCleverSchoolId] = useState(""),
     [people, setPeople] = useState<Record<string, string>>({}),
     [classes, setClasses] = useState<Record<string, string>>({});
+  useLoggedError(error);
   const preview = useQuery(
     adoptionCleverQuery(
       session,
@@ -362,63 +368,49 @@ function ReviewDecision({
       data.sourceClasses.every((c) => classes[c.id]));
   if (accepted)
     return (
-      <section className={styles.card}>
-        <h2>
-          {data.schoolName} is part of {data.districtName}
-        </h2>
-        <p>
-          The same classes, learners and learning history are ready to use.
-          Staff retain their classroom roles.
-        </p>
-        <div className={styles.actions}>
+      <PlainPage
+        title={`${data.schoolName} joined ${data.districtName}`}
+        back="/school"
+      >
+        <Actions>
           <Link
-            to={`/school/${data.schoolId}` as never}
+            to="/$"
+            params={{ _splat: `school/${data.schoolId}` }}
             className={buttonClass("primary")}
+            data-primary
           >
             Open school
           </Link>
           {connectionId && (
-            <Link
-              to={"/school/connect" as never}
-              className={buttonClass("secondary")}
-            >
-              Review and import Clever roster
+            <Link to="/school/connect" className={buttonClass("secondary")}>
+              Import Clever roster
             </Link>
           )}
-        </div>
-      </section>
+        </Actions>
+      </PlainPage>
     );
+  const users = preview.data ? labelled(preview.data.users) : [];
+  const sections = preview.data ? labelled(preview.data.sections) : [];
   return (
-    <section className={styles.card}>
-      <h2>
-        {data.schoolName} → {data.districtName}
-      </h2>
-      <p>
-        The school has approved this move. Review its records before accepting.
-        This approval expires {day(data.expiresAt)}.
-      </p>
+    <PlainPage
+      title={`${data.schoolName} wants to join ${data.districtName}`}
+      back="/school"
+      wide
+    >
+      <Lead>Expires {day(data.expiresAt)}</Lead>
       <dl className={styles.stats}>
         <div>
-          <dt>Learners</dt>
-          <dd>{data.learners}</dd>
+          <dt>Students</dt>
+          <dd>{data.learners.toLocaleString()}</dd>
         </div>
         <div>
           <dt>Classes</dt>
-          <dd>{data.classes}</dd>
+          <dd>{data.classes.toLocaleString()}</dd>
         </div>
       </dl>
-      <p>
-        District administrators will be able to manage the school. Learner IDs,
-        work, class memberships, licenses and pilot dates stay on the existing
-        records.
-      </p>
       {data.staffMatches.length > 0 && (
-        <div className={styles.stack}>
-          <h3>Staff with a place in both institutions</h3>
-          <p>
-            These records use the same signed-in AMP account. Confirm each pair
-            to keep one district staff record and its school roles.
-          </p>
+        <section className={styles.section}>
+          <h2>Same person?</h2>
           {data.staffMatches.map((match) => (
             <Checkbox
               key={match.sourcePersonId}
@@ -432,148 +424,130 @@ function ReviewDecision({
                 )
               }
             >
-              {match.sourceName} at the school and {match.targetName} in the
-              district belong to the same staff member.
-              {!match.allowed && " This record needs support review."}
+              {match.sourceName} and {match.targetName}
             </Checkbox>
           ))}
-        </div>
+        </section>
       )}
-      {blocked && (
-        <div className={styles.conflict}>
-          <p>
-            Some records need review before the school can move. Contact
-            support@corpora.inc with the school and district names. Nothing has
-            changed.
-          </p>
-          <CopyButton text="support@corpora.inc" label="Copy support address" />
-        </div>
-      )}
-      {!blocked && data.cleverConnections.length > 0 && (
-        <details className={styles.details}>
-          <summary>Match the school’s Clever roster (optional)</summary>
-          <div>
-            <p>
-              Before the first Clever import, match each existing person and
-              class to its Clever record. If any are missing, update Clever’s
-              sharing settings or keep the existing roster for this move.
-            </p>
-            <label className={styles.field}>
-              Clever connection
-              <Select
-                aria-label="Clever connection"
-                value={connectionId}
-                onValueChange={(value) => {
-                  setConnectionId(value);
-                  setCleverSchoolId("");
-                  setPeople({});
-                  setClasses({});
-                }}
-              >
-                <option value="">Keep the existing roster</option>
-                {data.cleverConnections.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.districtName} · {c.environment}
-                  </option>
-                ))}
-              </Select>
-            </label>
-            {connectionId &&
-              (preview.isPending ? (
-                <LoadingScreen />
-              ) : preview.error ? (
-                <Failed
-                  error={preview.error}
-                  retry={() => void preview.refetch()}
-                />
-              ) : (
-                preview.data && (
-                  <>
-                    <label className={styles.field}>
-                      School in Clever
-                      <Select
-                        aria-label="School in Clever"
-                        value={cleverSchoolId}
-                        onValueChange={(value) => {
-                          setCleverSchoolId(value);
-                          setPeople({});
-                          setClasses({});
-                        }}
-                      >
-                        <option value="">Choose a school</option>
-                        {preview.data.schools.map((s) => (
-                          <option key={s.id} value={s.id}>
-                            {s.name}
-                          </option>
-                        ))}
-                      </Select>
-                    </label>
-                    {cleverSchoolId && (
-                      <>
-                        <h3>People</h3>
-                        {data.sourcePeople.map((p) => (
-                          <label className={styles.field} key={p.id}>
-                            {p.name} · {p.student ? "student" : "staff"}
-                            <Select
-                              aria-label={`Clever match for ${p.name}`}
-                              value={people[p.id] ?? ""}
-                              onValueChange={(value) =>
-                                setPeople((old) => ({ ...old, [p.id]: value }))
-                              }
-                            >
-                              <option value="">
-                                Choose the same person in Clever
-                              </option>
-                              {preview
-                                .data!.users.filter(
-                                  (u) => u.student === p.student,
-                                )
-                                .map((u) => (
-                                  <option key={u.id} value={u.id}>
-                                    {u.name} · {u.id.slice(-6)}
-                                  </option>
-                                ))}
-                            </Select>
-                          </label>
-                        ))}
-                        <h3>Classes</h3>
-                        {data.sourceClasses.map((c) => (
-                          <label className={styles.field} key={c.id}>
-                            {c.name}
-                            <Select
-                              aria-label={`Clever match for ${c.name}`}
-                              value={classes[c.id] ?? ""}
-                              onValueChange={(value) =>
-                                setClasses((old) => ({ ...old, [c.id]: value }))
-                              }
-                            >
-                              <option value="">
-                                Choose the same class in Clever
-                              </option>
-                              {preview.data!.sections.map((s) => (
-                                <option key={s.id} value={s.id}>
-                                  {s.name} · {s.id.slice(-6)}
-                                </option>
-                              ))}
-                            </Select>
-                          </label>
-                        ))}
-                      </>
-                    )}
-                  </>
-                )
-              ))}
-          </div>
-        </details>
-      )}
-      {!blocked && (
+      {blocked ? (
+        <Lead>Contact support@corpora.inc to finish this move.</Lead>
+      ) : (
         <>
+          {data.cleverConnections.length > 0 && (
+            <details className={styles.details}>
+              <summary>Match to Clever (optional)</summary>
+              <div className={styles.section}>
+                <Select
+                  aria-label="Clever connection"
+                  value={connectionId}
+                  onValueChange={(value) => {
+                    setConnectionId(value);
+                    setCleverSchoolId("");
+                    setPeople({});
+                    setClasses({});
+                  }}
+                >
+                  <option value="">Keep the existing roster</option>
+                  {data.cleverConnections.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.districtName}
+                    </option>
+                  ))}
+                </Select>
+                {connectionId &&
+                  (preview.isPending ? (
+                    <div className={styles.wait} aria-busy="true" />
+                  ) : preview.error ? (
+                    <p role="alert">{adoptionError(preview.error)}</p>
+                  ) : (
+                    preview.data && (
+                      <>
+                        <Select
+                          aria-label="School in Clever"
+                          value={cleverSchoolId}
+                          onValueChange={(value) => {
+                            setCleverSchoolId(value);
+                            setPeople({});
+                            setClasses({});
+                          }}
+                        >
+                          <option value="">Choose a school</option>
+                          {preview.data.schools.map((s) => (
+                            <option key={s.id} value={s.id}>
+                              {s.name}
+                            </option>
+                          ))}
+                        </Select>
+                        {cleverSchoolId && (
+                          <>
+                            <h3>People</h3>
+                            {data.sourcePeople.map((p) => (
+                              <label className={styles.match} key={p.id}>
+                                <span>{p.name}</span>
+                                <Select
+                                  aria-label={`Clever match for ${p.name}`}
+                                  value={people[p.id] ?? ""}
+                                  onValueChange={(value) =>
+                                    setPeople((old) => ({
+                                      ...old,
+                                      [p.id]: value,
+                                    }))
+                                  }
+                                >
+                                  <option value="">
+                                    Choose the same person
+                                  </option>
+                                  {users
+                                    .filter((u) => u.student === p.student)
+                                    .map((u) => (
+                                      <option key={u.id} value={u.id}>
+                                        {u.label}
+                                      </option>
+                                    ))}
+                                </Select>
+                              </label>
+                            ))}
+                            <h3>Classes</h3>
+                            {data.sourceClasses.map((c) => (
+                              <label className={styles.match} key={c.id}>
+                                <span>{c.name}</span>
+                                <Select
+                                  aria-label={`Clever match for ${c.name}`}
+                                  value={classes[c.id] ?? ""}
+                                  onValueChange={(value) =>
+                                    setClasses((old) => ({
+                                      ...old,
+                                      [c.id]: value,
+                                    }))
+                                  }
+                                >
+                                  <option value="">
+                                    Choose the same class
+                                  </option>
+                                  {sections.map((s) => (
+                                    <option key={s.id} value={s.id}>
+                                      {s.label}
+                                    </option>
+                                  ))}
+                                </Select>
+                              </label>
+                            ))}
+                          </>
+                        )}
+                      </>
+                    )
+                  ))}
+              </div>
+            </details>
+          )}
           <Checkbox checked={confirmed} onChange={setConfirmed} disabled={busy}>
             I have reviewed this school’s records and authorize it to join{" "}
             {data.districtName}.
           </Checkbox>
-          <div className={styles.actions}>
+          <Actions>
             <Button
+              variant="primary"
+              data-primary
               disabled={busy || !confirmed || !allMatches || !cleverValid}
               aria-busy={busy}
               onClick={() => {
@@ -612,13 +586,16 @@ function ReviewDecision({
             >
               Add school to district
             </Button>
-          </div>
+          </Actions>
         </>
       )}
-      <FormNote error={error} />
-    </section>
+      <Toast message={error} onDismiss={() => setError("")} />
+    </PlainPage>
   );
 }
+
+/** `/school/adopt`: an existing school joins a district. The school approves
+ * by a district's invitation link; the district reviews by the approval link. */
 export function AdoptionScreen() {
   const session = currentSession(),
     location = useLocation();
@@ -631,21 +608,11 @@ export function AdoptionScreen() {
     () => setToken(schoolAdoptionToken()),
     [location.hash, session.accountId],
   );
-  return (
-    <main className={styles.screen} data-dense>
-      <PageHead
-        title="School connections"
-        detail="Bring an existing school into its district."
-      />
-      <div className={styles.stack}>
-        {token && !districtId ? (
-          <ReviewSchool session={session} token={token} />
-        ) : districtId && query.get("manage") === "1" ? (
-          <DistrictInvite session={session} districtId={districtId} />
-        ) : (
-          <AuthorizeSchool session={session} districtId={districtId} />
-        )}
-      </div>
-    </main>
+  return token && !districtId ? (
+    <ReviewSchool session={session} token={token} />
+  ) : districtId && query.get("manage") === "1" ? (
+    <DistrictInvite session={session} districtId={districtId} />
+  ) : (
+    <AuthorizeSchool session={session} districtId={districtId} />
   );
 }

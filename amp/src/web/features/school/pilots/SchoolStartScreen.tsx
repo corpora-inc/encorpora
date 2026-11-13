@@ -1,56 +1,51 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import { create } from "zustand";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import { startSchoolClassSchema } from "../../../../schools/pilot-contracts";
 import { AppError } from "../../../lib/AppError";
 import { meOptions } from "../../../lib/query";
-import { Button, buttonClass } from "../../../ui/Button";
-import { TextArea, TextField } from "../../../ui/TextField";
-import { Loading } from "../../../ui/Loading";
+import { useLoggedError } from "../../../feedback";
+import { Button } from "../../../ui/Button";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
+import { Select } from "../../../ui/Select";
+import { TextField } from "../../../ui/TextField";
+import { Toast } from "../../../ui/Toast";
 import { VerifyEmailStep } from "../../onboarding/VerifyEmailStep";
 import { deviceTimeZone, useStartDemo } from "../../onboarding/starter-api";
 import { currentSession, orgsOptions, refreshSchool } from "../api";
-import { GradePicker } from "../parts";
+import { Actions, Aside, PlainPage, plainStyles } from "../PlainPage";
 import { Authorization } from "./Authorization";
 import { pilotApi } from "./api";
-import styles from "./Pilot.module.css";
 
-const useDraft = create<{
+const NEW = "new";
+type Draft = {
   owner: string | null;
+  school: string | null;
   schoolName: string;
   className: string;
   signerName: string;
   signerTitle: string;
-  names: string;
-  grade: number | null;
   authorized: boolean;
-  set: (owner: string, value: Record<string, unknown>) => void;
-}>((set) => ({
-  owner: null,
+};
+const blank: Omit<Draft, "owner"> = {
+  school: null,
   schoolName: "",
   className: "",
   signerName: "",
   signerTitle: "Teacher",
-  names: "",
-  grade: null,
   authorized: false,
+};
+/** What's typed survives a trip to the agreement or the demo and back. */
+const useDraft = create<
+  Draft & { set: (owner: string, value: Partial<Draft>) => void }
+>((set) => ({
+  owner: null,
+  ...blank,
   set: (owner, value) =>
     set((state) =>
-      state.owner === owner
-        ? value
-        : {
-            owner,
-            schoolName: "",
-            className: "",
-            signerName: "",
-            signerTitle: "Teacher",
-            names: "",
-            grade: null,
-            authorized: false,
-            ...value,
-          },
+      state.owner === owner ? value : { owner, ...blank, ...value },
     ),
 }));
 function requestId(accountId: string) {
@@ -65,162 +60,187 @@ function requestId(accountId: string) {
     const id = crypto.randomUUID();
     sessionStorage.setItem(key, id);
     return id;
-  } catch {
+  } catch (failure) {
+    console.warn(
+      "Class setup couldn’t keep its request on this device",
+      failure,
+    );
     return crypto.randomUUID();
   }
 }
 
-/** A teacher authorizes their class, then adds students or imports a roster. */
+/** `/school/start`: a teacher's class, in one short form. A teacher who
+ * already has a school adds the class to it; the agreement is one tick. */
 export function SchoolStartScreen() {
   const session = currentSession();
   const account = useQuery(meOptions(session));
   const orgs = useQuery(orgsOptions(session));
   const search = useSearch({ strict: false }) as { org?: string };
-  const existing = orgs.data?.find(
-    (org) => org.id === search.org && !org.demo && org.kind === "school",
+  const schools = (orgs.data ?? []).filter(
+    (org) => org.kind === "school" && !org.demo,
   );
   const navigate = useNavigate();
   const demo = useStartDemo(session);
   const draft = useDraft();
   const mine = draft.owner === session.accountId;
+  const chosen = mine ? draft.school : null;
+  const school =
+    chosen === NEW
+      ? null
+      : (schools.find((org) => org.id === (chosen ?? search.org)) ??
+        (chosen === null ? schools[0] : undefined) ??
+        null);
   const value = {
-    schoolName: existing?.name ?? (mine ? draft.schoolName : ""),
+    schoolName: mine ? draft.schoolName : "",
     className: mine ? draft.className : "",
     signerName: mine ? draft.signerName : (session.name ?? ""),
     signerTitle: mine ? draft.signerTitle : "Teacher",
-    names: mine ? draft.names : "",
-    grade: mine ? draft.grade : null,
     authorized: mine && draft.authorized,
   };
-  const edit = (change: Record<string, unknown>) =>
-    draft.set(session.accountId, { ...value, ...change });
+  const edit = (change: Partial<Draft>) =>
+    draft.set(session.accountId, {
+      ...value,
+      school: mine ? draft.school : null,
+      ...change,
+    });
   const [id] = useState(() => requestId(session.accountId));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  if (account.isPending)
-    return (
-      <main className={styles.page}>
-        <Loading>Opening classroom setup</Loading>
-      </main>
-    );
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<
+      Record<"schoolName" | "className" | "signerName" | "signerTitle", string>
+    >
+  >({});
+  useLoggedError(error);
+  useLoggedError(Object.values(fieldErrors).filter(Boolean).join(" "));
+  if (account.isPending || orgs.isPending) return <LoadingScreen overlay />;
   if (account.data?.signedIn && account.data.account.confirmationRequired)
     return (
-      <main className={styles.page}>
-        <VerifyEmailStep session={session} me={account.data} embedded />
-      </main>
+      <PlainPage back="/start">
+        <VerifyEmailStep
+          session={session}
+          me={account.data}
+          embedded
+          headingLevel={1}
+        />
+      </PlainPage>
     );
   async function submit() {
     if (busy) return;
-    const names = value.names
-      .split(/\r?\n/)
-      .map((name) => name.trim())
-      .filter(Boolean);
     const parsed = startSchoolClassSchema.safeParse({
       requestId: id,
-      schoolName: value.schoolName,
-      ...(existing ? { orgId: existing.id } : {}),
+      schoolName: school?.name ?? value.schoolName,
+      ...(school ? { orgId: school.id } : {}),
+      // Only an explicit "A new school" makes a second school.
+      newSchool: !school && schools.length > 0,
       className: value.className,
       timezone: deviceTimeZone(),
       signerName: value.signerName,
       signerTitle: value.signerTitle,
       agreementVersion: AGREEMENT_VERSION,
       authorized: value.authorized,
-      names,
-      ...(value.grade !== null ? { gradeLevel: value.grade } : {}),
+      names: [],
     });
     if (!parsed.success) {
-      setError(
-        "Enter your school, class and name, and confirm your authorization. Use one student name per line, up to 500 names.",
-      );
+      const errors: typeof fieldErrors = {};
+      for (const issue of parsed.error.issues) {
+        const field = issue.path[0];
+        if (
+          field === "schoolName" ||
+          field === "className" ||
+          field === "signerName" ||
+          field === "signerTitle"
+        )
+          errors[field] ??= "Use letters, numbers and spaces.";
+      }
+      if (!Object.keys(errors).length)
+        setError("The class didn’t save. Try again.");
+      setFieldErrors(errors);
       return;
     }
     setBusy(true);
     setError("");
+    setFieldErrors({});
     try {
       const created = await pilotApi.start(session, parsed.data);
       await refreshSchool(session);
       try {
         sessionStorage.removeItem(`amp.school-start.${session.accountId}`);
-      } catch {
-        /* Storage is optional. */
+      } catch (failure) {
+        console.warn("Class setup couldn’t clear its request", failure);
       }
-      draft.set(session.accountId, {
-        names: "",
-        authorized: false,
-        className: "",
-      });
+      draft.set(session.accountId, { ...blank, signerName: value.signerName });
       await navigate({
-        to: "/$",
-        params: {
-          _splat: `school/${created.orgId}/classes/${created.classId}/roster`,
-        },
+        to: "/school/$org/classes/$class/roster",
+        params: { org: created.orgId, class: created.classId },
       });
     } catch (failure) {
       setError(
         failure instanceof AppError
           ? failure.message
-          : "The class didn’t save. Try again; the same request creates it only once.",
+          : "The class didn’t save. Try again.",
       );
       setBusy(false);
     }
   }
+  const ready =
+    value.authorized &&
+    (!!school || !!value.schoolName.trim()) &&
+    !!value.className.trim() &&
+    !!value.signerName.trim() &&
+    !!value.signerTitle.trim();
   return (
-    <main className={styles.page}>
-      <header>
-        <h1>Set up your class</h1>
-        <p className={styles.lead}>
-          Bring your roster, then choose when to start practice.
-        </p>
-      </header>
-      <div className={styles.actions}>
-        <Link
-          to="/$"
-          params={{ _splat: "school/connect" }}
-          className={buttonClass("secondary")}
-        >
-          Use Clever
-        </Link>
-        <Button
-          variant="quiet"
-          aria-busy={demo.isPending}
-          disabled={demo.isPending}
-          onClick={() =>
-            demo.mutate("class", {
-              onSuccess: (path) => void navigate({ href: `/${path}` }),
-              onError: (failure) => setError(failure.message),
-            })
-          }
-        >
-          Explore a demo first
-        </Button>
-      </div>
+    <PlainPage
+      title="Set up your class"
+      back={schools.length ? "/school" : "/start"}
+    >
       <form
-        className={styles.form}
+        className={plainStyles.form}
         onSubmit={(event) => {
           event.preventDefault();
           void submit();
         }}
       >
-        <div className={styles.pair}>
+        {schools.length > 0 && (
+          <div className={plainStyles.field}>
+            <span className={plainStyles.label} aria-hidden="true">
+              School
+            </span>
+            <Select
+              aria-label="School"
+              value={school?.id ?? NEW}
+              onValueChange={(next) => edit({ school: next })}
+              disabled={busy}
+            >
+              {schools.map((org) => (
+                <option key={org.id} value={org.id}>
+                  {org.name}
+                </option>
+              ))}
+              <option value={NEW}>A new school</option>
+            </Select>
+          </div>
+        )}
+        {!school && (
           <TextField
             label="School name"
             value={value.schoolName}
             onChange={(event) => edit({ schoolName: event.target.value })}
             maxLength={200}
             autoComplete="organization"
-            required
-            disabled={busy || !!existing}
-          />
-          <TextField
-            label="Class name"
-            value={value.className}
-            onChange={(event) => edit({ className: event.target.value })}
-            maxLength={100}
-            placeholder="Grade 3 Math"
-            required
+            error={fieldErrors.schoolName}
             disabled={busy}
           />
-        </div>
+        )}
+        <TextField
+          label="Class name"
+          value={value.className}
+          onChange={(event) => edit({ className: event.target.value })}
+          maxLength={100}
+          placeholder="Grade 3 Math"
+          error={fieldErrors.className}
+          disabled={busy}
+        />
         <Authorization
           name={value.signerName}
           title={value.signerTitle}
@@ -228,58 +248,43 @@ export function SchoolStartScreen() {
           onName={(signerName) => edit({ signerName })}
           onTitle={(signerTitle) => edit({ signerTitle })}
           onAuthorized={(authorized) => edit({ authorized })}
+          errors={{
+            name: fieldErrors.signerName,
+            title: fieldErrors.signerTitle,
+          }}
           disabled={busy}
         />
-        <details>
-          <summary>Add student names now (optional)</summary>
-          <div className={styles.form}>
-            <p className={styles.lead}>
-              One name per line. You can also import Excel, CSV or OneRoster
-              after creating the class.
-            </p>
-            <TextArea
-              label="Student names"
-              value={value.names}
-              onChange={(event) => edit({ names: event.target.value })}
-              maxLength={50_000}
-              rows={6}
-              disabled={busy}
-            />
-            <GradePicker
-              label="Starting grade"
-              value={value.grade}
-              onChange={(grade) => edit({ grade })}
-            />
-          </div>
-        </details>
-        <p className={styles.error} role={error ? "alert" : undefined}>
-          {error}
-        </p>
-        <div className={styles.actions}>
+        <Actions>
           <Button
             type="submit"
             variant="primary"
+            data-primary
             aria-busy={busy}
-            disabled={
-              busy ||
-              !value.authorized ||
-              !value.schoolName.trim() ||
-              !value.className.trim() ||
-              !value.signerName.trim() ||
-              !value.signerTitle.trim()
-            }
+            disabled={busy || !ready}
           >
             Create class
           </Button>
-          <Link
-            to="/$"
-            params={{ _splat: "school" }}
-            className={buttonClass("quiet")}
-          >
-            Your classes
-          </Link>
-        </div>
+        </Actions>
       </form>
-    </main>
+      {!schools.length && (
+        <Aside>
+          <Button
+            variant="quiet"
+            align="start"
+            aria-busy={demo.isPending}
+            disabled={demo.isPending}
+            onClick={() =>
+              demo.mutate("class", {
+                onSuccess: (path) => void navigate({ href: `/${path}` }),
+                onError: (failure) => setError(failure.message),
+              })
+            }
+          >
+            Explore a demo first
+          </Button>
+        </Aside>
+      )}
+      <Toast message={error} onDismiss={() => setError("")} />
+    </PlainPage>
   );
 }

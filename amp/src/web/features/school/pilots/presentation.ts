@@ -1,56 +1,69 @@
 import type { PilotState } from "../../../../schools/pilot-contracts";
-const date = (value: string | null) =>
-  value
-    ? new Intl.DateTimeFormat(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }).format(new Date(value))
-    : "";
-export function pilotPresentation(pilot: PilotState, students: number) {
-  const paid = students > 0 && (pilot.coverage?.paid ?? 0) >= students;
-  if (paid)
+
+/** A pilot runs this many days from the day a teacher starts it. */
+export const PILOT_DAYS = 30;
+
+/** Where a school class stands on practice, as the screens show it. */
+export type AccessView =
+  /** Not a school class, or nothing known yet. */
+  | { kind: "none" }
+  /** No students yet: adding them comes first. */
+  | { kind: "empty" }
+  /** Ready to start, until the date it would run to. `joining` adds the
+   * class to the teacher's running pilot, on its dates. */
+  | { kind: "start"; until: string; joining: boolean }
+  /** Ready, and only the class's teacher can start it. */
+  | { kind: "waiting" }
+  | { kind: "active"; until: string }
+  /** The pilot is over and practice continues until `until`. */
+  | { kind: "ending"; until: string }
+  | { kind: "ended" }
+  /** Every student has a paid seat. */
+  | { kind: "paid" };
+
+export function accessView(
+  pilot: PilotState,
+  teaches: boolean,
+  now = new Date(),
+): AccessView {
+  const students = pilot.coverage?.students ?? 0;
+  if (students > 0 && (pilot.coverage?.paid ?? 0) >= students)
+    return { kind: "paid" };
+  // A class no one has started is its teacher's to start, whatever an
+  // administrator's own pilot says.
+  if (pilot.status === "ready" && students > 0 && !teaches)
+    return { kind: "waiting" };
+  if (pilot.status === "active" && pilot.endsAt)
+    return { kind: "active", until: pilot.endsAt };
+  if (pilot.status === "grace" && pilot.graceEndsAt)
+    return { kind: "ending", until: pilot.graceEndsAt };
+  if (pilot.status === "expired" || !pilot.eligible) return { kind: "ended" };
+  if (!students) return { kind: "empty" };
+  if (pilot.startedAt && pilot.endsAt)
     return {
-      title: "Your class has seats",
-      detail: `All ${students} students have access to practice.`,
-      action: null,
+      kind: "start",
+      joining: true,
+      until:
+        new Date(pilot.endsAt) < now && pilot.graceEndsAt
+          ? pilot.graceEndsAt
+          : pilot.endsAt,
     };
-  if (pilot.status === "active")
-    return {
-      title: "Your pilot is active",
-      detail: `Practice continues through ${date(pilot.endsAt)}. Share a buyer link when your school is ready to discuss seats.`,
-      action: null,
-    };
-  if (pilot.status === "grace")
-    return {
-      title: "Arrange seats for your class",
-      detail: `Practice continues through ${date(pilot.graceEndsAt)} while you arrange seats.`,
-      action: null,
-    };
-  if (pilot.status === "expired" || !pilot.eligible)
-    return {
-      title: "Your pilot has ended",
-      detail:
-        "Request seats to continue practice with your existing students and their learning records.",
-      action: null,
-    };
-  if (!students)
-    return {
-      title: "Get your class ready",
-      detail:
-        "Add students or import a roster. Start the pilot when you are ready for them to practice.",
-      action: null,
-    };
-  if (pilot.startedAt)
-    return {
-      title: "Add this class to your pilot",
-      detail: `This class shares your existing pilot dates, through ${date(pilot.endsAt)}${pilot.graceEndsAt && new Date(pilot.endsAt ?? 0) < new Date() ? `, with continued access through ${date(pilot.graceEndsAt)}` : ""}.`,
-      action: "Add class to pilot",
-    };
-  return {
-    title: "Ready for your students",
-    detail:
-      "Start 30 days of practice for this class. Your pilot begins when you choose Start.",
-    action: "Start 30-day pilot",
-  };
+  const until = new Date(now);
+  until.setDate(until.getDate() + PILOT_DAYS);
+  return { kind: "start", joining: false, until: until.toISOString() };
+}
+
+const short = new Intl.DateTimeFormat(undefined, {
+  month: "short",
+  day: "numeric",
+});
+const long = new Intl.DateTimeFormat(undefined, {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+/** "Dec 13", with the year only when it isn't this one. */
+export function practiceDate(iso: string, now = new Date()) {
+  const date = new Date(iso);
+  return (date.getFullYear() === now.getFullYear() ? short : long).format(date);
 }

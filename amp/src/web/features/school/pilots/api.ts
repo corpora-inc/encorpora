@@ -26,6 +26,33 @@ export async function preloadClassPilot(
   if (org?.kind === "school" && !org.demo)
     await preload(pilotOptions(session, classId));
 }
+const purchaseRequestSchema = z.object({
+  request: z
+    .object({
+      id: z.uuid(),
+      url: z.url(),
+      classIds: z.array(z.uuid()),
+      seats: z.number().int(),
+      note: z.string(),
+      status: z.string(),
+      createdAt: z.string(),
+      expiresAt: z.string(),
+    })
+    .nullable(),
+});
+/** The class's open buyer link, so it survives a refresh and is never
+ * made twice. */
+export const purchaseRequestOptions = (session: AuthSession, classId: string) =>
+  queryOptions({
+    queryKey: keyFor(session, "class", classId, "purchase-request"),
+    queryFn: ({ signal }) =>
+      call(
+        `/classes/${classId}/purchase-request`,
+        purchaseRequestSchema,
+        session,
+        { signal },
+      ),
+  });
 export const buyerOptions = (token: string) =>
   queryOptions({
     queryKey: ["school-buyer", token],

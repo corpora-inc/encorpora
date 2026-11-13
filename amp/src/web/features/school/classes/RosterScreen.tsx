@@ -32,8 +32,14 @@ import { classUrl } from "./teacher-shared";
 import { approvalsOptions } from "../../family-approval/api";
 import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
-import { ClassPilotPanel } from "../pilots/ClassPilotPanel";
 import { useSchoolNavigation } from "../../navigation/school-navigation";
+import {
+  AccessHeaderAction,
+  AccessSheets,
+  practiceEnded,
+  useClassAccess,
+} from "../pilots/ClassAccess";
+import { useFlash } from "./flash";
 
 type Row = SignInRoster["students"][number];
 const shortDate = new Intl.DateTimeFormat(undefined, {
@@ -103,6 +109,11 @@ export function RosterScreen() {
     active: "roster",
     board: false,
   });
+  const access = useClassAccess(place);
+  // Practice is over: sign-in tools lead nowhere until seats arrive.
+  const ended = practiceEnded(access.view);
+  const flash = useFlash((state) => state.message);
+  const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
   const session = useStaffSession();
   const roster = useQuery({
@@ -148,6 +159,8 @@ export function RosterScreen() {
   useQuery({ ...secondParentOptions(account), enabled: holder && family });
   useQuery({ ...approvalsOptions(account), enabled: holder && family });
   const busy = making || reset.isPending || revoke.isPending;
+  const canAdd = !family && !demo && canAddStudents(org, params.class);
+  const dayZero = !family && data?.students.length === 0;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
     () => [
@@ -337,18 +350,9 @@ export function RosterScreen() {
               )}
             </div>
             <div className={styles.actions}>
-              {!family && !demo && canManage && (
-                <Link
-                  to="/$"
-                  params={{
-                    _splat: `school/${params.org}/classes/${params.class}/import`,
-                  }}
-                  className={buttonClass("secondary")}
-                >
-                  Import students
-                </Link>
-              )}
-              {!family && canStart && (
+              {/* One primary slot: Start practice before the pilot, Start
+                  class while it runs, Request seats after. */}
+              {!family && canStart && !ended ? (
                 <Link
                   to="/school/$org/classes/$class/start"
                   params={params}
@@ -356,8 +360,17 @@ export function RosterScreen() {
                 >
                   Start class
                 </Link>
+              ) : (
+                !family &&
+                canManage && (
+                  <AccessHeaderAction
+                    view={access.view}
+                    place={place}
+                    pilot={access.pilot}
+                  />
+                )
               )}
-              {canManage && data.students.length > 0 && (
+              {canManage && data.students.length > 0 && !ended && (
                 <Link
                   to="/school/$org/classes/$class/cards"
                   params={params}
@@ -369,7 +382,7 @@ export function RosterScreen() {
               )}
               {/* A family's own class has no parent links: its parents
                   see the children's progress themselves. */}
-              {data.canShare === true && data.students.length > 0 && (
+              {data.canShare === true && data.students.length > 0 && !ended && (
                 <Button
                   variant="secondary"
                   onClick={() => setPending({ kind: "links" })}
@@ -379,40 +392,56 @@ export function RosterScreen() {
               )}
             </div>
           </header>
-          {!family && !demo && canManage && (
-            <ClassPilotPanel
-              orgId={params.org}
-              classId={params.class}
-              students={data.students.length}
-              teaches={org?.teaches?.includes(params.class) ?? false}
-            />
-          )}
           {family && <h2 className={styles.sectionTitle}>Children</h2>}
-          <section className={styles.code} aria-label="Class code">
-            <div className={styles.codeText}>
-              <h2>Class code</h2>
-              <p>
-                {data.class.joinLockedUntil
-                  ? "Sign-in is paused after many wrong pictures. A new code opens it now."
-                  : family
-                    ? "Children type this at /join on a device of their own. Printed cards don’t need it."
-                    : "Students type this at /join. Printed cards don’t need it."}
-              </p>
-            </div>
-            {/* The compact form of the one Join element: the code in its one
+          {/* Day 0 of a school class is its one step; the code waits for a
+              roster, and practice that has ended takes no one in. */}
+          {!dayZero && !ended && (
+            <section className={styles.code} aria-label="Class code">
+              <div className={styles.codeText}>
+                <h2>Class code</h2>
+                <p>
+                  {data.class.joinLockedUntil
+                    ? "Sign-in is paused after many wrong pictures. A new code opens it now."
+                    : family
+                      ? "Children type this at /join on a device of their own. Printed cards don’t need it."
+                      : "Students type this at /join. Printed cards don’t need it."}
+                </p>
+              </div>
+              {/* The compact form of the one Join element: the code in its one
                 face, then Copy link, the board, the QR and More (New code). */}
-            <JoinClass
-              compact
-              code={data.class.joinCode}
-              place={params}
-              family={family}
-              boardLink={family}
-              label={false}
-              manage={data.canNewCode ?? canManage}
-              locked={!!data.class.joinLockedUntil}
-            />
-          </section>
-          {data.students.length ? (
+              <JoinClass
+                compact
+                code={data.class.joinCode}
+                place={params}
+                family={family}
+                boardLink={family}
+                label={false}
+                manage={data.canNewCode ?? canManage}
+                locked={!!data.class.joinLockedUntil}
+              />
+            </section>
+          )}
+          {dayZero && canAdd ? (
+            <section
+              className={styles.dayZero}
+              aria-labelledby="roster-day-zero"
+            >
+              <div className={styles.dayZeroRows} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+              <h2 id="roster-day-zero">Add your students</h2>
+              <p>Paste names, or import Excel or CSV.</p>
+              <Link
+                to="/school/$org/classes/$class/import"
+                params={params}
+                className={buttonClass("primary")}
+              >
+                Add students
+              </Link>
+            </section>
+          ) : data.students.length ? (
             <DataGrid
               label={`Sign-in for ${data.class.name}`}
               columns={columns}
@@ -469,20 +498,18 @@ export function RosterScreen() {
                   >
                     Add a child
                   </Link>
-                ) : !family && canAddStudents(org, params.class) ? (
-                  <Link
-                    to="/$"
-                    params={{
-                      _splat: classUrl(params.org, params.class, "settings"),
-                    }}
-                    search={{ add: 1 } as never}
-                    className={buttonClass("primary")}
-                  >
-                    Add students
-                  </Link>
                 ) : undefined
               }
             />
+          )}
+          {!family && canAdd && !ended && data.students.length > 0 && (
+            <Link
+              to="/school/$org/classes/$class/import"
+              params={params}
+              className={buttonClass("quiet", styles.addMore, "start")}
+            >
+              Add students
+            </Link>
           )}
           {family && holder && (
             <ClassPeople
@@ -540,6 +567,8 @@ export function RosterScreen() {
         </div>
       </Dialog>
       <Toast message={status} tone="status" onDismiss={() => setStatus("")} />
+      <Toast message={flash} tone="status" onDismiss={clearFlash} />
+      {!family && <AccessSheets place={place} />}
       <Toast message={error} onDismiss={() => setError("")} />
     </ClassFrame>
   );

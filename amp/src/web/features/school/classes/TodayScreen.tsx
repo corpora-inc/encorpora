@@ -22,7 +22,12 @@ import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
-import { ClassPilotPanel } from "../pilots/ClassPilotPanel";
+import {
+  accessFeedEntry,
+  AccessSheets,
+  practiceEnded,
+  useClassAccess,
+} from "../pilots/ClassAccess";
 
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
@@ -41,16 +46,25 @@ function ClassToday({
     active: "today",
     board: false,
   });
+  const access = useClassAccess(place);
+  const ended = practiceEnded(access.view);
+  const practice = accessFeedEntry(access.view, place, access.pilot);
   const entries = todoEntries({
-    todos: data.todos.filter((todo) => canStart || todo.id !== "start-class"),
+    todos: data.todos.filter(
+      (todo) => (canStart && !ended) || todo.id !== "start-class",
+    ),
     place,
     canPrint: data.canPrint,
     people: true,
+    // Practice access leads when it needs doing; then the class's own items.
+    lead: !practice,
+    importStudents: true,
   });
+  if (practice) entries.unshift(practice);
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
-  if (starting && data.canPrint)
+  if (starting && data.canPrint && !ended)
     entries.push({
       id: "cards",
       title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
@@ -113,6 +127,7 @@ export function TodayScreen() {
   });
   const data = today.data;
   const demo = useDemoOrg(place.org);
+  const ended = practiceEnded(useClassAccess(place).view);
   const loading =
     org.isPending ||
     today.isPending ||
@@ -143,7 +158,8 @@ export function TodayScreen() {
                 <p>{fullDay(data.today)}</p>
               </div>
             )}
-            {code && (
+            {/* The code waits for a roster, and for practice. */}
+            {code && !ended && (family || data.students.length > 0) && (
               <SignInCode
                 code={code}
                 place={place}
@@ -157,14 +173,6 @@ export function TodayScreen() {
               />
             )}
           </header>
-          {!family && !demo && presence.data?.canManage && (
-            <ClassPilotPanel
-              orgId={place.org}
-              classId={place.class}
-              students={data.students.length}
-              teaches={org.data?.teaches?.includes(place.class) ?? false}
-            />
-          )}
           {signedIn && holder && (
             <FamilyNotice session={account} me={signedIn} />
           )}
@@ -178,7 +186,10 @@ export function TodayScreen() {
               secondParent={holder ? secondParent.data : undefined}
             />
           ) : (
-            <ClassToday data={data} place={place} />
+            <>
+              <ClassToday data={data} place={place} />
+              <AccessSheets place={place} />
+            </>
           )}
         </div>
       )}
