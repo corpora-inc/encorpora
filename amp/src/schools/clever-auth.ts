@@ -342,6 +342,13 @@ export async function registerCleverAuthRoutes(
           );
         if (
           error instanceof Error &&
+          error.message === "clever_account_link_required"
+        )
+          return reply.redirect(
+            "/school/connect?error=clever_account_link_required",
+          );
+        if (
+          error instanceof Error &&
           error.message === "clever_link_proof_expired"
         )
           return reply.redirect("/school/connect?error=clever_link_expired");

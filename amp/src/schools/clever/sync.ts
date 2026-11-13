@@ -141,13 +141,20 @@ export async function syncCleverConnection(
     );
     running = true;
     const token = await client.districtToken(connection.district_id);
-    let snapshot: Snapshot;
+    let snapshot: Snapshot | undefined;
     let cursor = connection.event_cursor;
     if (mode === "events") {
       try {
         const events = await client.events(token, cursor!);
-        snapshot = applyEvents(await storedSnapshot(db, connectionId), events);
-        snapshot = validateSnapshot(snapshot, connection.district_id);
+        // Most polls have no changes. Do not read/rewrite a whole district for
+        // an empty feed; the daily full snapshot still repairs local drift.
+        if (events.length) {
+          snapshot = applyEvents(
+            await storedSnapshot(db, connectionId),
+            events,
+          );
+          snapshot = validateSnapshot(snapshot, connection.district_id);
+        }
         cursor = events.at(-1)?.id ?? cursor;
       } catch (error) {
         // A retained cursor can expire, and a delta may require dependencies
@@ -182,7 +189,7 @@ export async function syncCleverConnection(
         : null;
       snapshot = await client.snapshot(connection.district_id, token);
     }
-    snapshot = validateSnapshot(snapshot, connection.district_id);
+    if (snapshot) snapshot = validateSnapshot(snapshot, connection.district_id);
     await db.query("BEGIN");
     await db.query("SET LOCAL lock_timeout='5s'");
     await db.query("SET LOCAL statement_timeout='120s'");
@@ -194,22 +201,38 @@ export async function syncCleverConnection(
     ).rows[0];
     if (active?.status !== "active")
       throw new CleverSyncError("clever_connection_inactive");
-    const counts = await applySnapshot(db, connection, runId, snapshot, now);
-    const launchDate = snapshot.district.launch_date?.slice(0, 10) || null;
-    await db.query(
-      `UPDATE amp_clever_connections SET event_cursor=$2,last_sync_at=$3,
+    const counts: SyncResult["counts"] = snapshot
+      ? await applySnapshot(db, connection, runId, snapshot, now)
+      : { schools: 0, users: 0, sections: 0, courses: 0, terms: 0 };
+    if (!snapshot) {
+      const rows = await db.query(
+        "SELECT kind,count(*)::int AS count FROM amp_clever_bindings WHERE connection_id=$1 AND archived_at IS NULL GROUP BY kind",
+        [connectionId],
+      );
+      for (const row of rows.rows) {
+        const collection = collections[row.kind as Kind];
+        if (collection in counts)
+          counts[collection as keyof typeof counts] = row.count;
+      }
+      await db.query(
+        "UPDATE amp_clever_connections SET last_sync_at=$2 WHERE id=$1",
+        [connectionId, now],
+      );
+    } else
+      await db.query(
+        `UPDATE amp_clever_connections SET event_cursor=$2,last_sync_at=$3,
       last_full_sync_at=CASE WHEN $4='full' THEN $3 ELSE last_full_sync_at END,
       connection_type=$5,launch_date=$6,last_clever_sync=$7 WHERE id=$1`,
-      [
-        connectionId,
-        cursor,
-        now,
-        mode,
-        snapshot.district.connection_type ?? null,
-        launchDate,
-        snapshot.district.last_clever_sync ?? null,
-      ],
-    );
+        [
+          connectionId,
+          cursor,
+          now,
+          mode,
+          snapshot.district.connection_type ?? null,
+          snapshot.district.launch_date?.slice(0, 10) || null,
+          snapshot.district.last_clever_sync ?? null,
+        ],
+      );
     await db.query(
       `UPDATE amp_clever_sync_runs SET status='succeeded',finished_at=$2,counts=$3,mode=$4 WHERE id=$1`,
       [runId, new Date(), JSON.stringify(counts), mode],

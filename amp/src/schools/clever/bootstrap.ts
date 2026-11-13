@@ -3,6 +3,7 @@ import type { PoolClient } from "pg";
 import { generateHandle } from "../repository.js";
 import { CleverSyncError, type User } from "./model.js";
 import { cleverSource } from "./connection.js";
+import { attachProvedCleverStaffIn } from "./staff-link.js";
 
 /** A current district-admin profile verified by the provider authorizes staging
  * an import. Its role is source-owned, so later sharing/role revocation ends it. */
@@ -16,11 +17,15 @@ export async function bootstrapCleverAdmin(
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     accountId,
   ]);
+  const attached = await attachProvedCleverStaffIn(db, {
+    connectionId,
+    accountId,
+    userId: user.id,
+  });
   const found = (
     await db.query(
-      `SELECT p.id,p.account_id,p.deleted_at FROM amp_clever_bindings b JOIN amp_people p ON p.id=b.local_id
-    WHERE b.connection_id=$1 AND b.kind='user' AND b.clever_id=$2`,
-      [connectionId, user.id],
+      `SELECT id,account_id,deleted_at FROM amp_people WHERE id=$1`,
+      [attached.personId],
     )
   ).rows[0];
   if (

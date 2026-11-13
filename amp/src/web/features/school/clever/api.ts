@@ -54,6 +54,8 @@ export const connectInstitutionSchema = z.strictObject({
   importNow: z.boolean().optional(),
 });
 const messages: Record<string, string> = {
+  clever_account_link_required:
+    "These staff records need review before Clever can be linked. Contact support to review the records.",
   clever_link_expired:
     "The sign-in used to link Clever expired. Sign in again, then retry linking from this page.",
   reauth_required:

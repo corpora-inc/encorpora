@@ -5,6 +5,7 @@ import type { Authenticator } from "../server/auth.js";
 import { ApiError } from "../server/repository.js";
 import { activeToday, studentBearer } from "../schools/principal.js";
 import { markStaffAccount } from "../schools/staff-account.js";
+import { attachProvedCleverStaffIn } from "../schools/clever/staff-link.js";
 
 export type CleverClaims = {
   environment: "sandbox" | "production";
@@ -108,14 +109,27 @@ export async function resolveProviderSession(
     )
       return null;
   }
-  const person = await resolvePerson?.(row.claims);
+  let person = await resolvePerson?.(row.claims);
   if (
     person &&
     ((person.accountId && person.accountId !== row.account_id) ||
       !isCleverAdult(person.roles))
   )
     return null;
-  if (person) {
+  if (
+    person &&
+    !(
+      await pool.query(
+        `SELECT 1 FROM amp_people p WHERE p.id=$1 AND p.deleted_at IS NULL
+      AND (NOT EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id)
+        OR EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+          WHERE r.person_id=p.id AND r.role<>'student' AND ${activeToday("r", "o")}))`,
+        [person.personId],
+      )
+    ).rowCount
+  )
+    return null;
+  if (person && person.accountId !== row.account_id) {
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
@@ -126,17 +140,28 @@ export async function resolveProviderSession(
       // A teacher may sign in before their first sync. Only the identity
       // already proved by this session can attach the subsequently imported
       // person. The deletion lock prevents resurrecting a deleted account.
-      const attached = await client.query(
-        `UPDATE amp_people p SET account_id=$1 WHERE p.id=$2 AND p.deleted_at IS NULL
-         AND (p.account_id IS NULL OR p.account_id=$1)
-         AND EXISTS(SELECT 1 FROM amp_provider_identities i WHERE i.id=$3 AND i.account_id=$1)
-         AND (NOT EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id)
-           OR EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
-             WHERE r.person_id=p.id AND r.role<>'student' AND ${activeToday("r", "o")}))`,
-        [row.account_id, person.personId, row.identity_id],
-      );
+      const attached = installed
+        ? await attachProvedCleverStaffIn(client, {
+            connectionId: person.connectionId,
+            accountId: row.account_id,
+            userId: row.claims.userId,
+          })
+        : { personId: person.personId };
+      if (!attached.personId)
+        throw new ApiError(409, "identity_already_linked");
+      // The helper may consolidate a freshly rostered staff alias into an
+      // existing canonical person. The session must return that surviving ID.
+      if (!installed)
+        await client.query(
+          "UPDATE amp_people SET account_id=$1 WHERE id=$2 AND deleted_at IS NULL AND account_id IS NULL",
+          [row.account_id, attached.personId],
+        );
       await client.query("COMMIT");
-      if (!attached.rowCount) return null;
+      person = {
+        ...person,
+        personId: attached.personId,
+        accountId: row.account_id,
+      };
     } catch (error) {
       await client.query("ROLLBACK");
       throw error;
@@ -404,7 +429,27 @@ export async function establishProviderPrincipal(
       ],
     );
     const onboarding = await requiresOnboardingProof(client, claims);
-    if (person && !onboarding) {
+    const installed = (
+      await client.query(
+        "SELECT to_regclass('amp_clever_connections') AS relation",
+      )
+    ).rows[0].relation;
+    const connection =
+      installed && !onboarding
+        ? (
+            await client.query(
+              "SELECT id FROM amp_clever_connections WHERE environment=$1 AND district_id=$2 AND status='active'",
+              [claims.environment, claims.districtId],
+            )
+          ).rows[0]
+        : null;
+    if (connection) {
+      await attachProvedCleverStaffIn(client, {
+        connectionId: connection.id,
+        accountId,
+        userId: claims.userId,
+      });
+    } else if (person && !onboarding) {
       const result = await client.query(
         "UPDATE amp_people SET account_id=$1 WHERE id=$2 AND deleted_at IS NULL AND (account_id IS NULL OR account_id=$1)",
         [accountId, person.personId],

@@ -25,6 +25,7 @@ import {
   refreshConnectionReviews,
 } from "../src/schools/operations.js";
 import type { Snapshot } from "../src/schools/clever/model.js";
+import { establishProviderPrincipal } from "../src/identity/provider-principals.js";
 
 const D = "100000000000000000000001",
   U = "200000000000000000000001";
@@ -292,9 +293,12 @@ test(
         environment: "sandbox" as const,
         districtId: D,
         userId: U,
-        accountId: "admin",
+        accountId: "",
         roles: ["district_admin"],
       };
+      identity.accountId = (
+        await establishProviderPrincipal(db, { ...identity, schools: [] }, null)
+      ).accountId;
       const input = {
         signerName: "Administrator",
         signerTitle: "Head",

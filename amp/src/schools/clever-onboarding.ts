@@ -164,7 +164,9 @@ export async function registerCleverOnboarding(
   const jobs = new Map<string, Promise<void>>();
   let closing = false;
   const kick = (id: string) => {
-    if (closing || !client || jobs.has(id) || jobs.size >= 4) return;
+    // Snapshot reconciliation holds a complete district in memory. Keep one
+    // automatic import per process; queued institutions retain their request.
+    if (closing || !client || jobs.has(id) || jobs.size >= 1) return;
     const job = runDueCleverSync(pool, id, client)
       .catch((error) => {
         app.log.warn(

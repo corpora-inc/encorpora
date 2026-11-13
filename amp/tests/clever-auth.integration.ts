@@ -59,8 +59,10 @@ test(
     });
     await registerAccountRoutes(app, accounts);
     let exchanges = 0;
-    let subject = "teacher-1";
-    let roles: Record<string, object> = { teacher: { schools: ["school-1"] } };
+    let subject = "200000000000000000000001";
+    let roles: Record<string, object> = {
+      teacher: { schools: ["300000000000000000000001"] },
+    };
     let linkedProof: FreshAccountProof | null = null;
     let boundPerson: CleverPerson | null = null;
     let cleared = 0;
@@ -102,12 +104,12 @@ test(
         if (String(input).endsWith("/me"))
           return Response.json({
             type: "user",
-            data: { id: subject, district: "district-1" },
+            data: { id: subject, district: "100000000000000000000001" },
           });
         return Response.json({
           data: {
             id: subject,
-            district: "district-1",
+            district: "100000000000000000000001",
             email: "existing@example.test",
             roles,
           },
@@ -232,10 +234,10 @@ test(
       })
     ).json();
     assert.deepEqual(claims.roles, ["teacher"]);
-    assert.equal(claims.districtId, "district-1");
+    assert.equal(claims.districtId, "100000000000000000000001");
     const eligibility = await providerEligibilityKey(pool, session.accountId);
     assert.match(eligibility!, /^[a-f0-9]{64}$/);
-    assert.ok(!eligibility!.includes("teacher-1"));
+    assert.ok(!eligibility!.includes("200000000000000000000001"));
     // Initial SSO can precede the first roster sync. That later imported
     // person attaches on the next authenticated request, without new login.
     const orgId = randomUUID(),
@@ -248,8 +250,29 @@ test(
       "INSERT INTO amp_people(id,tenant_id,given_name,handle,timezone) VALUES($1,$2,'Teacher','teacher-fixture','UTC')",
       [personId, orgId],
     );
+    const connectionId = randomUUID(),
+      runId = randomUUID();
+    await pool.query(
+      "INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id) VALUES($1,'sandbox','100000000000000000000001',$2)",
+      [connectionId, orgId],
+    );
+    await pool.query(
+      "INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')",
+      [runId, connectionId],
+    );
+    await pool.query(
+      "INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id) VALUES($1,'user',$2,$3,$4,$5,$6)",
+      [
+        connectionId,
+        subject,
+        personId,
+        { id: subject, roles },
+        { roles: ["teacher"] },
+        runId,
+      ],
+    );
     boundPerson = {
-      connectionId: randomUUID(),
+      connectionId,
       tenantId: orgId,
       personId,
       accountId: null,
@@ -352,12 +375,12 @@ test(
     assert.equal(
       (
         await pool.query(
-          "SELECT account_id FROM amp_provider_identities WHERE subject='teacher-1'",
+          "SELECT account_id FROM amp_provider_identities WHERE subject='200000000000000000000001'",
         )
       ).rows[0].account_id,
       session.accountId,
     );
-    subject = "teacher-2";
+    subject = "200000000000000000000002";
     const newLink = await app.inject({
       method: "POST",
       url: "/api/v1/school/sso/clever/link",
@@ -374,7 +397,7 @@ test(
     assert.equal(
       (
         await pool.query(
-          "SELECT account_id FROM amp_provider_identities WHERE subject='teacher-2'",
+          "SELECT account_id FROM amp_provider_identities WHERE subject='200000000000000000000002'",
         )
       ).rows[0].account_id,
       `amp|${parentId}`,
@@ -493,12 +516,41 @@ test(
       ).statusCode,
       401,
     );
-    // Erasure removes raw provider identifiers; signing in again gets a new
-    // account id and the same non-contact pilot eligibility reference.
-    subject = "teacher-1";
-    roles = { teacher: { schools: ["school-1"] } };
+    // Erasure removes account identity; the source tombstone requires review.
+    // Fresh provider proof keeps the same non-contact pilot eligibility key.
+    subject = "200000000000000000000001";
+    roles = { teacher: { schools: ["300000000000000000000001"] } };
     const recreated = await finish(await start());
-    const recreatedCookie = cookieOf(recreated, "amp.provider-session");
+    const onboardingToken = new URL(
+      recreated.headers.location!,
+      origin,
+    ).hash.split("=")[1];
+    assert.match(onboardingToken, /^po_/);
+    const recreatedProof = await app.inject({
+      method: "GET",
+      url: "/api/v1/provider/onboarding-session",
+      headers: { authorization: `Bearer ${onboardingToken}` },
+    });
+    assert.equal(recreatedProof.statusCode, 200, recreatedProof.body);
+    assert.notEqual(recreatedProof.json().accountId, session.accountId);
+    assert.equal(
+      await providerEligibilityKey(pool, recreatedProof.json().accountId),
+      eligibility,
+    );
+    assert.equal(
+      (
+        await app.inject({
+          method: "GET",
+          url: "/account",
+          headers: { authorization: `Bearer ${onboardingToken}` },
+        })
+      ).statusCode,
+      401,
+    );
+    // An independent staff identity can start without a shared roster.
+    subject = "200000000000000000000003";
+    const fresh = await finish(await start());
+    const recreatedCookie = cookieOf(fresh, "amp.provider-session");
     const recreatedSession = (
       await app.inject({
         method: "GET",
@@ -506,11 +558,7 @@ test(
         headers: { cookie: recreatedCookie },
       })
     ).json();
-    assert.notEqual(recreatedSession.accountId, session.accountId);
-    assert.equal(
-      await providerEligibilityKey(pool, recreatedSession.accountId),
-      eligibility,
-    );
+    assert.ok(recreatedSession.token);
     // Explicit mailbox signup on the same browser replaces the provider
     // cookie and revokes its bearer, so either direction changes identity.
     const mailbox = await app.inject({

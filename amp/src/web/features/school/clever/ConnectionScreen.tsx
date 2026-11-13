@@ -154,9 +154,13 @@ export function ConnectionScreen() {
           card or purchase is required to begin a pilot.
         </p>
       </header>
-      {["clever_identity_already_linked", "clever_link_expired"].includes(
-        search.error ?? "",
-      ) && <p role="alert">{connectionError(search.error)}</p>}
+      {[
+        "clever_identity_already_linked",
+        "clever_account_link_required",
+        "clever_link_expired",
+      ].includes(search.error ?? "") && (
+        <p role="alert">{connectionError(search.error)}</p>
+      )}
       {loading ? (
         <Loading>Checking your connection</Loading>
       ) : (
