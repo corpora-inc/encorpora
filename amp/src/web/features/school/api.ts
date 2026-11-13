@@ -80,6 +80,8 @@ function explained(error: unknown): unknown {
       error.requestId,
       error.code,
       error.status,
+      error.validationPaths,
+      error.body,
     );
   return error;
 }

@@ -89,12 +89,16 @@ async function capture(name: string) {
         document.documentElement.dataset.theme = value;
         window.scrollTo(0, 0);
       }, theme);
-      assert.ok(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth <= innerWidth,
-        ),
-        `${name} fits ${width}`,
+      // Name what overflows, so a failure says where to look.
+      const wide = await page.evaluate(() =>
+        document.documentElement.scrollWidth <= innerWidth
+          ? null
+          : [...document.querySelectorAll("body *")]
+              .filter((node) => node.getBoundingClientRect().right > innerWidth)
+              .slice(-3)
+              .map((node) => `${node.tagName}.${node.className}`),
       );
+      assert.equal(wide, null, `${name} fits ${width}`);
       await page.screenshot({
         path: `${artifacts}/${name}-${width}-${theme}.png`,
         fullPage: true,

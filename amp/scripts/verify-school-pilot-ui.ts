@@ -231,6 +231,27 @@ try {
   assert.equal(new URL(buyer).pathname, "/schools/continue");
   assert.match(new URL(buyer).hash, /^#token=[A-Za-z0-9_-]{43}$/);
   await capture("buyer-link");
+  // Another teacher's open link already covers a class: the sheet says who
+  // and offers no button that would only be refused again.
+  await page.route("**/api/v1/school/purchase-requests", (route) =>
+    route.fulfill({
+      status: 409,
+      json: {
+        error: "purchase_scope_conflict",
+        holder: { name: "Rowan Ellis" },
+      },
+    }),
+  );
+  await page.goto(
+    `${origin}/school/${created.org_id}/classes/${created.class_id}/today?seats=1`,
+  );
+  await page.getByRole("button", { name: "Get link" }).click();
+  await page
+    .getByText("Rowan Ellis already sent your school’s buyer a link")
+    .waitFor();
+  assert.equal(await page.getByRole("button", { name: "Get link" }).count(), 0);
+  await capture("buyer-link-held");
+  await page.unroute("**/api/v1/school/purchase-requests");
   const guest = await browser.newContext();
   const buyerPage = await guest.newPage();
   await buyerPage.goto(buyer);

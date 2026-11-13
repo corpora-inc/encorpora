@@ -1442,21 +1442,12 @@ export function ImportScreen() {
         fallbackClass: current.fallbackClass ?? defaultClass,
       });
     }
+    // A class import adds students to this class only; the server binds
+    // each row to the class, so rows keep the identities the file gave them.
     if (classId)
       result = {
         ...result,
-        rows: result.rows
-          .filter((row) => row.role === "student")
-          .map((row) => ({
-            ...row,
-            classes: [
-              {
-                sourcedId: `amp-class:${classId}`,
-                name: defaultClass,
-                courseBands: [],
-              },
-            ],
-          })),
+        rows: result.rows.filter((row) => row.role === "student"),
         skipped:
           result.skipped +
           result.rows.filter((row) => row.role !== "student").length,

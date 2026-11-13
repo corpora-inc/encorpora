@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, type FormEvent } from "react";
+import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
 import { AppError } from "../../../lib/AppError";
@@ -238,6 +239,23 @@ export function AccessSheets({ place }: { place: Place }) {
   );
 }
 
+/** Who holds the open buyer link, from the server's refusal. */
+function holderName(body: unknown): string {
+  const parsed = z
+    .object({
+      holder: z.union([z.string(), z.object({ name: z.string() })]).optional(),
+      holderName: z.string().optional(),
+    })
+    .safeParse(body);
+  if (!parsed.success) return "";
+  const holder = parsed.data.holder;
+  return (
+    (typeof holder === "string" ? holder : holder?.name) ??
+    parsed.data.holderName ??
+    ""
+  ).trim();
+}
+
 function RequestSeatsSheet({
   place,
   students,
@@ -261,7 +279,13 @@ function RequestSeatsSheet({
   const [copied, setCopied] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
   const [error, setError] = useState("");
+  // Another teacher's open link already covers this class: say who, and
+  // offer no button that would only be refused again.
+  const [holder, setHolder] = useState<string | null>(null);
   useLoggedError(error);
+  useLoggedError(
+    holder === null ? "" : `Buyer link held by ${holder || "another teacher"}`,
+  );
   const seats = count ?? Math.max(1, students);
   async function submit(event: FormEvent) {
     event.preventDefault();
@@ -279,11 +303,17 @@ function RequestSeatsSheet({
         queryKey: purchaseRequestOptions(session, place.class).queryKey,
       });
     } catch (failure) {
-      setError(
-        failure instanceof AppError
-          ? failure.message
-          : "The link didn’t save. Try again.",
-      );
+      if (
+        failure instanceof AppError &&
+        failure.code === "purchase_scope_conflict"
+      )
+        setHolder(holderName(failure.body));
+      else
+        setError(
+          failure instanceof AppError
+            ? failure.message
+            : "The link didn’t save. Try again.",
+        );
     } finally {
       setBusy(false);
     }
@@ -340,6 +370,14 @@ function RequestSeatsSheet({
                 onFocus={(event) => event.target.select()}
               />
             )}
+          </div>
+        ) : holder !== null ? (
+          <div className={styles.sheetBody}>
+            <p className={styles.quiet} role="status">
+              {holder
+                ? `${holder} already sent your school’s buyer a link for this class. Ask ${holder} to share it.`
+                : "Another teacher already sent your school’s buyer a link for this class. Ask them to share it."}
+            </p>
           </div>
         ) : (
           <form className={styles.sheetBody} onSubmit={submit}>

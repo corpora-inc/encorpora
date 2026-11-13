@@ -274,6 +274,7 @@ export async function request<T>(
         "details" in data
         ? validationPaths(data.details)
         : null,
+      response.status < 500 ? data : null,
     );
     observe("failed", error.kind);
     error.log();

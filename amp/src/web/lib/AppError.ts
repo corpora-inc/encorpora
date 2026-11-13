@@ -17,6 +17,9 @@ export class AppError extends Error {
     /** Paths only, never values or messages from the rejected request. */
     readonly validationPaths:
       readonly (readonly (string | number)[])[] | null = null,
+    /** The server's own refusal, for a screen that says more than the code
+     * (who holds a buyer link, say). Never the request's values. */
+    readonly body: unknown = null,
   ) {
     super(message);
     this.name = "AppError";
