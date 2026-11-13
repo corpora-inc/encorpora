@@ -126,8 +126,14 @@ try {
     (title) => document.title.includes(title),
     countingTitle,
   );
+  assert.match(await map.title(), new RegExp(countingTitle));
+  // The skill is a layer over the map (docs/design/ia.md): close it, then
+  // the map's brand leads home.
+  await map.keyboard.press("Escape");
+  await map.locator('[data-skill-layer="count-to-20"]').waitFor({
+    state: "detached",
+  });
   const pageTitle = await map.title();
-  assert.match(pageTitle, new RegExp(countingTitle));
   await map.locator(".pathways-brand").click();
   await map.waitForURL("http://127.0.0.1:4394/");
   // Signed out, / is the pitch, with one parameter-free canonical.

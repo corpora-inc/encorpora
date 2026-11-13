@@ -11,7 +11,7 @@ import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
 import { migrate } from "./migrate.js";
-import { books, bookFor } from "../src/books/catalog.js";
+import { books, bookFor, bookSummaries } from "../src/books/catalog.js";
 import { readingFrames } from "../src/books/reading.js";
 const args = process.argv.slice(2);
 if (args.length && (args.length !== 2 || args[0] !== "--book"))
@@ -300,7 +300,11 @@ try {
     await page.getByRole("button", { name: "Next →", exact: true }).click();
     const selected = await page.locator(".reader-position>span").innerText();
     await page.getByRole("button", { name: "← Back", exact: true }).click();
-    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    await page.waitForURL((url) => !url.pathname.startsWith("/books/"));
+    // Returning to the book (history; no library lists it now) restores the
+    // reader's place.
+    await page.goBack();
+    await page.getByRole("main", { name: book.title }).waitFor();
     assert.equal(
       await page.locator(".reader-position>span").innerText(),
       selected,
@@ -331,6 +335,20 @@ try {
       await page.evaluate(() => document.activeElement?.textContent),
       "See the model",
     );
+    // A book is opened from a skill's detail in Progress, and Back returns
+    // there, to its button.
+    const skill = bookSummaries
+      .find((summary) => summary.id === book.id)!
+      .skills.find(
+        (id) =>
+          bookSummaries.find((summary) => summary.skills.includes(id))?.id ===
+          book.id,
+      );
+    assert.ok(skill, `${book.id} is the related book of one of its skills`);
+    const fromProgress = `http://127.0.0.1:4340/progress?skill=${skill}`;
+    await page.goto(fromProgress);
+    await page.locator(`button[data-book-id="${book.id}"]`).click();
+    await page.getByRole("main", { name: book.title }).waitFor();
     await page.route("**/books/*/download", (route) =>
       route.fulfill({
         status: 503,
