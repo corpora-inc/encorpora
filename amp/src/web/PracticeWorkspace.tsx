@@ -124,6 +124,10 @@ export function FocusDialog({
   const titleId = useId();
   const dialog = useRef<HTMLDialogElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
+  // The content mounts once the dialog is open, in the same commit before
+  // any paint: what measures itself on mount (ChoiceList's columns) then
+  // measures the open dialog, not a closed one, and never reflows after.
+  const [open, setOpen] = useState(false);
   useLayoutEffect(() => {
     const previous =
       returnFocus ??
@@ -131,6 +135,7 @@ export function FocusDialog({
         ? document.activeElement
         : null);
     dialog.current?.showModal();
+    setOpen(true);
     heading.current?.focus({ preventScroll: true });
     return () => {
       dialog.current?.close();
@@ -160,7 +165,7 @@ export function FocusDialog({
           ×
         </button>
       </div>
-      <div className="dialog-content">{children}</div>
+      <div className="dialog-content">{open && children}</div>
     </dialog>
   );
 }
