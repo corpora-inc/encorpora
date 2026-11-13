@@ -75,7 +75,7 @@ function Item({
       : r
         ? blend(ink[r], ink.accent, emphasis)
         : emphasis > 0
-          ? ink.accent
+          ? blend("transparent", ink.accent, emphasis)
           : undefined;
   const fillOf = (r: FillRole) => fill[state?.fill ?? r];
   const focusedFill = (r: FillRole) =>
@@ -220,12 +220,11 @@ function Label({
   common: Record<string, unknown>;
 }) {
   const fam = families(medium);
+  const emphasis = state?.emphasis ?? (state?.highlight ? 1 : 0);
   // A focused label sits on a tinted fill. Keep its ink contrast in both themes.
   const color = state?.stroke
     ? strokeOrInk(state.stroke)
-    : state?.highlight
-      ? ink.ink
-      : strokeOrInk(d.color);
+    : blend(strokeOrInk(d.color), ink.ink, emphasis);
   const halo = d.halo
     ? {
         paintOrder: "stroke" as const,
