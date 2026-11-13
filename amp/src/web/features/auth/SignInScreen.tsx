@@ -13,7 +13,7 @@ import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
 import { signIn, accessSession, notifyAccountSessionChanged } from "../../auth";
@@ -26,6 +26,11 @@ import {
 } from "./ProviderButtons";
 import { socialCopyFor, socialErrorMessage } from "./social-copy";
 import { passkeysAvailable, signUpWithPasskey } from "./passkey";
+import {
+  lookUpSignInMethods,
+  methodList,
+  type SignInMethod,
+} from "./sign-in-methods";
 import {
   continuationSearch,
   continuationUrl,
@@ -134,6 +139,15 @@ export function SignInScreen() {
   const [code, setCode] = useState("");
   const [backup, setBackup] = useState(false);
   const [busy, setBusy] = useState(false);
+  // An account without a password, answered in place of the password form
+  // (at the form's height, so nothing moves) with the methods that work.
+  const [methodHint, setMethodHint] = useState<{
+    step: Step;
+    methods: SignInMethod[];
+    minHeight?: number;
+  } | null>(null);
+  const hinted = methodHint?.step === step ? methodHint : null;
+  const formRef = useRef<HTMLFormElement>(null);
   const [error, setError] = useState(
     invalidReset || params.get("error") === "reset_link_invalid"
       ? "That password reset link expired or is invalid. Request a new link."
@@ -177,6 +191,7 @@ export function SignInScreen() {
     setStep(next);
     setError("");
     setNotice("");
+    setMethodHint(null);
   }
   const carry = continuationSearch(routeLocation.search);
   const freeEntry = carry.return === "free-practice";
@@ -189,8 +204,11 @@ export function SignInScreen() {
   const schoolEntry =
     carry.return === "school" || carry.return === "school-invite";
   const parentEntry = signupEntry && step === "create";
+  // Parents sent to sign in from /access get the parent signup layout:
+  // "Continue with Google" in full on its own row.
+  const parentLayout = parentEntry || carry.return === "access";
   const primaryProviders =
-    parentEntry && providers.some((p) => p !== "github")
+    parentLayout && providers.some((p) => p !== "github")
       ? providers.filter((p) => p !== "github")
       : providers;
   const additionalProviders = providers.filter(
@@ -369,6 +387,34 @@ export function SignInScreen() {
       setBusy(false);
     }
   }
+  /** A password cannot work for an account that has none: show the methods
+   * that will, in place of the form. False when there is nothing better to
+   * offer than the ordinary path (no answer, a password exists, or no
+   * account; at sign-in, no account is said plainly). */
+  async function offerAccountMethods(address: string) {
+    const methods = await lookUpSignInMethods(address);
+    if (!methods) return false;
+    if (!methods.length) {
+      if (step === "sign-in")
+        throw new Error(
+          "No AMP account uses that email. Check it, or create an account.",
+        );
+      return false;
+    }
+    if (methods.includes("password")) return false;
+    const usable = methods.filter((m) =>
+      m === "passkey"
+        ? passkeysAvailable()
+        : m !== "password" && providers.includes(m),
+    );
+    if (!usable.length) return false;
+    setMethodHint({
+      step,
+      methods: usable,
+      minHeight: formRef.current?.getBoundingClientRect().height,
+    });
+    return true;
+  }
   const fail = (result: {
     error: { message?: string; code?: string; status?: number } | null;
   }) => {
@@ -402,6 +448,11 @@ export function SignInScreen() {
         });
         if (result.error?.code === "EMAIL_NOT_VERIFIED")
           return go("check-email");
+        if (
+          result.error?.code === "INVALID_EMAIL_OR_PASSWORD" &&
+          (await offerAccountMethods(email.trim()))
+        )
+          return;
         fail(result);
         if (
           result.data &&
@@ -411,6 +462,7 @@ export function SignInScreen() {
           return go("two-factor");
         await done();
       } else if (step === "create") {
+        if (await offerAccountMethods(email.trim())) return;
         await prepareFreeSignup();
         const result = await accountClient.signUp.email({
           name: "",
@@ -528,6 +580,12 @@ export function SignInScreen() {
       );
     }, null);
   };
+  const signInWithPasskey = () =>
+    void run(async () => {
+      await prepareFreeSignup();
+      fail(await accountClient.signIn.passkey());
+      await done();
+    });
   const showProviders = step === "sign-in" || step === "create";
   return (
     <PageFrame centered className={styles.authFrame}>
@@ -602,7 +660,7 @@ export function SignInScreen() {
         {showProviders && (
           <ProviderButtons
             providers={primaryProviders}
-            emphasizeFirst={parentEntry}
+            emphasizeFirst={parentLayout}
             copy={copy}
             busy={busy || !!pending}
             pending={pending}
@@ -614,13 +672,7 @@ export function SignInScreen() {
             type="button"
             variant="secondary"
             disabled={busy || !!pending}
-            onClick={() =>
-              void run(async () => {
-                await prepareFreeSignup();
-                fail(await accountClient.signIn.passkey());
-                await done();
-              })
-            }
+            onClick={signInWithPasskey}
           >
             Sign in with a passkey
           </Button>
@@ -628,8 +680,51 @@ export function SignInScreen() {
         {showProviders &&
           providers.length > 0 &&
           (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
-        {passkeyMethod ? (
-          <form className="account-form" onSubmit={createWithPasskey}>
+        {hinted ? (
+          <div
+            className={styles.methodHint}
+            data-method-hint
+            style={{ minHeight: hinted.minHeight }}
+          >
+            <div className={styles.emailHeader}>
+              <span className={styles.hintEmail}>{email.trim()}</span>
+              <button
+                type="button"
+                className={styles.inlineLink}
+                aria-label="Use a different email"
+                disabled={busy || !!pending}
+                onClick={() => setMethodHint(null)}
+              >
+                Change
+              </button>
+            </div>
+            <p role="status">
+              This email signs in with {methodList(hinted.methods)}.
+            </p>
+            <ProviderButtons
+              providers={hinted.methods.filter(isProvider)}
+              copy={copy}
+              busy={busy || !!pending}
+              pending={pending}
+              onSelect={social}
+            />
+            {hinted.methods.includes("passkey") && (
+              <Button
+                type="button"
+                variant="primary"
+                disabled={busy || !!pending}
+                onClick={signInWithPasskey}
+              >
+                Sign in with a passkey
+              </Button>
+            )}
+          </div>
+        ) : passkeyMethod ? (
+          <form
+            ref={formRef}
+            className="account-form"
+            onSubmit={createWithPasskey}
+          >
             <div className={styles.emailHeader}>
               <label htmlFor="signup-passkey-email">Email</label>
               {passwords && (
@@ -664,19 +759,22 @@ export function SignInScreen() {
             <small className={styles.hint}>No password to remember.</small>
           </form>
         ) : step === "check-email" ? (
-          <div className={styles.emailHelp}>
+          <div className={styles.emailHelp} data-check-email>
             <p>
-              For a new account, check {email} for a confirmation link. Check
-              your spam folder too.
+              {`${email.trim() ? `We sent an email to ${email.trim()}.` : "We sent you an email."} A new address gets a confirmation link; an existing account gets the way to sign in. Check your spam folder too.`}
             </p>
-            <p>
-              If you already have an account, sign in using the method you chose
-              before. Creating it again won’t change your password.
-            </p>
+            <ProviderButtons
+              providers={providers}
+              emphasizeFirst={providers.length > 2}
+              copy={copy}
+              busy={busy || !!pending}
+              pending={pending}
+              onSelect={social}
+            />
           </div>
         ) : (
           (passwords || !showProviders) && (
-            <form className="account-form" onSubmit={submit}>
+            <form ref={formRef} className="account-form" onSubmit={submit}>
               {step !== "reset" && step !== "two-factor" && (
                 <label>
                   Email
