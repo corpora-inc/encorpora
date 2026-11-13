@@ -80,7 +80,7 @@ function levelsOf(
   settings: PracticeSettings | null,
   band: StartingChoice | null,
 ): ProfileLevels {
-  const overall = initialLevel({ band });
+  const overall = initialLevel({ band, adult: true });
   return roundedLevels(
     overall,
     Object.fromEntries(
@@ -266,9 +266,10 @@ export async function studentLevels(
     await db.query<{
       id: string;
       birthYear: number | null;
+      adult: boolean;
       band: StartingChoice | null;
     }>(
-      `SELECT l.id,l.birth_year AS "birthYear",l.starting_band AS band
+      `SELECT l.id,l.birth_year AS "birthYear",l.adult,l.starting_band AS band
        FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
        WHERE p.id=$1 AND p.deleted_at IS NULL`,
       [personId],
@@ -296,8 +297,5 @@ export async function studentLevels(
         ]),
       ),
     );
-  return roundedLevels(
-    initialLevel({ birthYear: learner.birthYear, band: learner.band }),
-    {},
-  );
+  return roundedLevels(initialLevel(learner), {});
 }

@@ -6,7 +6,8 @@ import { migrate } from "../scripts/migrate.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { applyRoster, planRoster } from "../src/schools/reconcile.js";
-import type { RosterRow } from "../src/schools/sources/rows.js";
+import { nameKey, type RosterRow } from "../src/schools/sources/rows.js";
+import { namedStudentId } from "../src/schools/sources/csv.js";
 
 test(
   "roster candidate lookup preserves identity decisions and durable retries",
@@ -47,15 +48,28 @@ test(
       line: number,
       givenName: string,
       extra: Partial<RosterRow> = {},
-    ): RosterRow => ({
-      line,
-      role: "student",
-      sourcedId: `fixture-${line}`,
-      givenName,
-      familyName: "Example",
-      classes: [],
-      ...extra,
-    });
+    ): RosterRow => {
+      const value: RosterRow = {
+        line,
+        role: "student",
+        sourcedId: "",
+        givenName,
+        familyName: "Example",
+        classes: [],
+        ...extra,
+      };
+      value.sourcedId =
+        value.role === "student"
+          ? (value.identifier ??
+            namedStudentId(
+              value.givenName,
+              value.familyName,
+              value.classes[0]?.name,
+            ))
+          : (value.email ??
+            `name:${nameKey(`${value.givenName} ${value.familyName ?? ""}`)}`);
+      return value;
+    };
     const apply = (
       orgId: string,
       rows: RosterRow[],
@@ -68,11 +82,13 @@ test(
         { source: "csv", rows, resolutions },
         null,
       );
+    const sourceKey = (orgId: string, id: string) =>
+      id.startsWith("name:") ? `${orgId}/${id}` : id;
     const ref = async (orgId: string, sourcedId: string) =>
       (
         await db.query(
           "SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source='csv' AND kind='person' AND sourced_id=$2",
-          [orgId, sourcedId],
+          [orgId, sourceKey(orgId, sourcedId)],
         )
       ).rows[0]?.local_id;
 
@@ -104,7 +120,20 @@ test(
           "updated",
         );
         assert.equal(await ref(orgId, named.sourcedId), ana.personId);
-        const movedKey = { ...named, sourcedId: "another-csv-class-key" };
+        await assert.rejects(
+          apply(orgId, [{ ...named, sourcedId: "another-csv-class-key" }]),
+          /csv_identity_invalid/,
+        );
+        const movedKey = {
+          ...named,
+          classes: [
+            {
+              sourcedId: "name:next class",
+              name: "Next Class",
+              courseBands: [],
+            },
+          ],
+        };
         assert.equal(
           (await apply(orgId, [movedKey])).results[0]?.status,
           "updated",
@@ -213,7 +242,7 @@ test(
         const orphan = row(11, "Orphan");
         await db.query(
           "INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id) VALUES($1,'csv','person',$2,$3)",
-          [orgId, orphan.sourcedId, randomUUID()],
+          [orgId, sourceKey(orgId, orphan.sourcedId), randomUUID()],
         );
         assert.equal(
           (await apply(orgId, [orphan])).results[0]?.status,

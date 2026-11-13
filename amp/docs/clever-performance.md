@@ -40,6 +40,21 @@ One local run used Node 22.23.4 and PostgreSQL 16.14 on macOS ARM64, with one di
 
 An empty Events poll used 14 SQL calls. The 50,000-student fixture included 2,000 teachers and 2,000 classes. Its Node process peaked at 917 MiB RSS, including the synthetic provider, complete fixtures and instrumentation. Measure the deployed worker separately and budget memory for concurrent jobs.
 
+## Serving-process boundary
+
+Full snapshots and nonempty Events reconciliation run in a separate worker pod. The API only queues imports and performs bounded adoption reads. Its administrator proof fetches one provider user. A stored school selector excludes users; a selected-school preview is limited to 5,000 source records. The worker also prepares paused connections for review without provisioning a roster.
+
+A local Node 22.23.4/PostgreSQL 17.10 ARM64 run with 20,000 students, 40 schools and 800 classes measured 484 MiB maximum RSS for the synthetic worker driver. First import took 7.19 seconds, repeat import 3.11 seconds, and an Events transfer 3.12 seconds. This process includes synthetic provider responses and instrumentation; it is not the serving API and does not establish a production memory limit.
+
+The API-read driver generated a 50,000-student district in PostgreSQL, then performed 20 school-list and selected-school reads. Each selected school contained 500 students. Maximum process RSS was 187 MiB, with RSS increasing from 185 to 187 MiB across the reads. This isolates the data-read path; it excludes the rest of the serving API's idle memory and PostgreSQL's memory.
+
+```sh
+AMP_TEST_DATABASE_URL=postgresql://localhost/amp_scratch_preview \
+  node --import tsx scripts/verify-clever-api-memory.ts
+```
+
+The API-read driver leaves its synthetic schema for disposal with the scratch database. The worker CronJob template sets a separate 2 GiB memory limit. Size the worker and PostgreSQL lock budget against the largest expected district, including bulk changes.
+
 ## Bulk changes and PostgreSQL lock capacity
 
 A district-wide grade promotion can change many existing learners in one transaction. Every changed learner account retains its advisory lock through commit. PostgreSQL advisory locks share the server's lock pool; capacity depends on server configuration and other active transactions. `max_locks_per_transaction` controls average shared lock capacity, not a per-transaction row limit, and changing it requires a server restart. See PostgreSQL's [lock configuration](https://www.postgresql.org/docs/16/runtime-config-locks.html) and [advisory-lock documentation](https://www.postgresql.org/docs/16/explicit-locking.html#ADVISORY-LOCKS).

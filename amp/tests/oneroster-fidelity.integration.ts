@@ -159,6 +159,15 @@ test(
       };
       assert.equal(
         (await applyRoster(repo, keys, b.id, second, null)).results[0]!.status,
+        "held",
+      );
+      // Cross-school staff must first be assigned there by a district administrator.
+      await db.query(
+        "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'teacher','2020-01-01')",
+        [randomUUID(), teacher, b.id],
+      );
+      assert.equal(
+        (await applyRoster(repo, keys, b.id, second, null)).results[0]!.status,
         "updated",
       );
       assert.deepEqual(
@@ -235,6 +244,10 @@ test(
         rows: oneRosterRows(derived, { schoolSourcedId: "c" }).rows,
       };
       assert.equal(derivedInput.rows.length, 1);
+      await db.query(
+        "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'teacher','2021-01-01')",
+        [randomUUID(), teacher, c.id],
+      );
       assert.equal(
         (await applyRoster(repo, keys, c.id, derivedInput, null)).results[0]!
           .status,

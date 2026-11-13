@@ -582,15 +582,15 @@ test(
           assert.equal(binding.record.email, undefined);
           assert.deepEqual(binding.metadata.roles, []);
           assert.ok(binding.archived_at);
-          source.schools[0].name = "Must Roll Back";
-          await assert.rejects(sync(), /deleted_person_requires_review/);
+          source.schools[0].name = "School Renamed";
+          await sync();
           assert.equal(
             (
               await db!.query("SELECT name FROM amp_orgs WHERE id=$1", [
                 (await mapping("school", S)).local_id,
               ])
             ).rows[0].name,
-            "School A",
+            "School Renamed",
           );
           assert.equal(await person(), null);
           assert.equal(

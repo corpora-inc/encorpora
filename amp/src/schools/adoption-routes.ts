@@ -1,13 +1,10 @@
+import { storedAdoptionSnapshot } from "./clever/store.js";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { refuseStudentTokens, type Authenticator } from "../server/auth.js";
 import { SchoolError } from "./contracts.js";
-import {
-  validateSnapshot,
-  type Snapshot,
-  CleverSyncError,
-} from "./clever/model.js";
+import { type Snapshot, type User, CleverSyncError } from "./clever/model.js";
 import {
   adoptionCleverRequest,
   adoptionAcceptRequest,
@@ -34,7 +31,7 @@ export async function registerSchoolAdoptionRoutes(
     pool: Pool;
     authenticate: Authenticator;
     origin?: string;
-    cleverSnapshot?: (connectionId: string) => Promise<Snapshot>;
+    cleverUser?: (connectionId: string, userId: string) => Promise<User>;
   },
 ) {
   const authenticate = refuseStudentTokens(options.authenticate);
@@ -98,7 +95,7 @@ export async function registerSchoolAdoptionRoutes(
         options.pool,
         account,
         { districtId },
-        options.cleverSnapshot,
+        options.cleverUser,
       );
       return schoolAdoptionDistrict(
         options.pool,
@@ -116,7 +113,7 @@ export async function registerSchoolAdoptionRoutes(
         options.pool,
         account,
         { token },
-        options.cleverSnapshot,
+        options.cleverUser,
       );
       return reviewSchoolAdoption(options.pool, account, token, authority);
     });
@@ -126,7 +123,7 @@ export async function registerSchoolAdoptionRoutes(
         options.pool,
         account,
         { token: input.token },
-        options.cleverSnapshot,
+        options.cleverUser,
       );
       const connection = await schoolAdoptionCleverSource(
         options.pool,
@@ -135,16 +132,11 @@ export async function registerSchoolAdoptionRoutes(
         input.connectionId,
         authority,
       );
-      if (!options.cleverSnapshot)
-        throw new CleverSyncError("adoption_clever_review_unavailable");
-      const snapshot =
-        authority.authoritySnapshots?.find(
-          (s) => s.district.id === connection.district_id,
-        ) ??
-        validateSnapshot(
-          await options.cleverSnapshot(connection.id),
-          connection.district_id,
-        );
+      const snapshot = await storedAdoptionSnapshot(
+        options.pool,
+        connection.id,
+        input.schoolId,
+      );
       return schoolAdoptionCleverPreview(snapshot, input.schoolId);
     });
     post("accept", async (account, body) => {
@@ -153,7 +145,7 @@ export async function registerSchoolAdoptionRoutes(
         options.pool,
         account,
         { token: input.token },
-        options.cleverSnapshot,
+        options.cleverUser,
       );
       let snapshot: Snapshot | undefined;
       if (input.cleverSchool) {
@@ -164,16 +156,11 @@ export async function registerSchoolAdoptionRoutes(
           input.cleverSchool.connectionId,
           authority,
         );
-        if (!options.cleverSnapshot)
-          throw new CleverSyncError("adoption_clever_review_unavailable");
-        snapshot =
-          authority.authoritySnapshots?.find(
-            (s) => s.district.id === connection.district_id,
-          ) ??
-          validateSnapshot(
-            await options.cleverSnapshot(connection.id),
-            connection.district_id,
-          );
+        snapshot = await storedAdoptionSnapshot(
+          options.pool,
+          connection.id,
+          input.cleverSchool.schoolId,
+        );
       }
       return acceptSchoolAdoption(options.pool, account, input.token, input, {
         snapshot,

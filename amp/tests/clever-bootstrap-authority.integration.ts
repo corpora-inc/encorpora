@@ -164,7 +164,11 @@ test(
       );
       assert.equal(await f.allowed(first), false);
       await runDueCleverSync(db, f.connected.connectionId, f.client);
-      assert.equal(f.snapshotCount(), 0, "staged rosters stay paused");
+      assert.equal(
+        f.snapshotCount(),
+        1,
+        "paused worker stages source without importing",
+      );
 
       await db.query(
         "UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now() WHERE id=$1",
@@ -180,7 +184,7 @@ test(
         runDueCleverSync(db, f.connected.connectionId, f.client),
         /clever_sync_failed/,
       );
-      assert.equal(f.snapshotCount(), 1);
+      assert.equal(f.snapshotCount(), 2);
       assert.equal(await f.allowed(first), false);
       assert.deepEqual(await f.deadline(first), expired);
 
@@ -199,6 +203,10 @@ test(
       );
 
       f.failSnapshot(false);
+      await db.query(
+        "UPDATE amp_clever_connections SET next_attempt_at=NULL WHERE id=$1",
+        [f.connected.connectionId],
+      );
       await runDueCleverSync(db, f.connected.connectionId, f.client);
       assert.equal(
         await f.deadline(first),
@@ -240,9 +248,9 @@ test(
         db,
         first,
         { districtId: f.connected.orgId },
-        async (connectionId) => {
+        async (connectionId, userId) => {
           assert.equal(connectionId, f.connected.connectionId);
-          return f.source;
+          return f.source.users.find((u) => u.id === userId)!;
         },
       );
       const renewed = await f.deadline(first);
@@ -261,7 +269,8 @@ test(
           db,
           first,
           { districtId: f.connected.orgId },
-          async () => f.source,
+          async (_connection, userId) =>
+            f.source.users.find((u) => u.id === userId)!,
         ),
         /adoption_current_authority_required/,
       );
@@ -278,7 +287,8 @@ test(
         db,
         first,
         { districtId: f.connected.orgId },
-        async () => f.source,
+        async (_connection, userId) =>
+          f.source.users.find((u) => u.id === userId)!,
       );
       const beforeOutage = await f.deadline(first);
       assert.equal(await f.allowed(first), true);

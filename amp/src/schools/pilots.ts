@@ -1,4 +1,4 @@
-import { randomUUID, randomBytes, createHash } from "node:crypto";
+import { randomUUID, createHash, createHmac } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import { parentAddressConfirmed } from "../server/account-access.js";
@@ -16,8 +16,8 @@ import {
 } from "./pilot-contracts.js";
 export { startSchoolClassSchema } from "./pilot-contracts.js";
 
-/** A teacher creates only their classroom. School names never claim an existing
- * institution, and this path never grants an institution-wide admin role. */
+/** A teacher creates a classroom in a school they belong to, or a new solo
+ * school. A name never claims another account’s school or grants admin authority. */
 export async function startSchoolClass(
   repo: SchoolRepository,
   accountId: string,
@@ -59,6 +59,31 @@ export async function startSchoolClass(
       ).rowCount;
     if (!verified) throw new SchoolError(403, "confirm_email");
     let orgId = input.orgId;
+    if (!orgId) {
+      const schools = (
+        await client.query(
+          `SELECT DISTINCT o.id,o.name FROM amp_people p
+        JOIN amp_org_roles r ON r.person_id=p.id JOIN amp_orgs scope ON scope.id=r.org_id
+        JOIN amp_orgs o ON r.org_id=ANY(o.path) WHERE p.account_id=$1 AND p.deleted_at IS NULL
+          AND r.role IN ('teacher','admin') AND ${activeToday("r", "scope")}
+          AND o.kind='school' AND NOT o.demo ORDER BY o.id`,
+          [accountId],
+        )
+      ).rows;
+      const matching = schools.filter(
+        (o) =>
+          o.name.trim().toLowerCase() === input.schoolName.trim().toLowerCase(),
+      );
+      if (
+        matching.length > 1 ||
+        (!input.newSchool && !matching.length && schools.length > 1)
+      )
+        throw new SchoolError(409, "school_selection_required");
+      orgId =
+        matching[0]?.id ??
+        (!input.newSchool && schools.length === 1 ? schools[0].id : undefined);
+    }
+    const createdSchool = !orgId;
     let personId: string;
     if (orgId) {
       const org = await repo.org(client, orgId);
@@ -73,8 +98,12 @@ export async function startSchoolClass(
       )
         throw new SchoolError(404, "not_found");
       if (
-        (await client.query("SELECT demo FROM amp_orgs WHERE id=$1", [orgId]))
-          .rows[0].demo
+        (
+          await client.query(
+            "SELECT demo OR kind<>'school' AS invalid FROM amp_orgs WHERE id=$1",
+            [orgId],
+          )
+        ).rows[0].invalid
       )
         throw new SchoolError(409, "real_school_required");
       personId = actorPerson(actor, org)!;
@@ -139,8 +168,8 @@ export async function startSchoolClass(
       );
     }
     await client.query(
-      "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id) VALUES($1,$2,$3,$4)",
-      [accountId, input.requestId, orgId, klass.id],
+      "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id,created_school) VALUES($1,$2,$3,$4,$5)",
+      [accountId, input.requestId, orgId, klass.id, createdSchool],
     );
     await recordEvent(client, {
       orgId,
@@ -211,6 +240,32 @@ export async function acceptClassAuthorization(
       targetKind: "class",
       targetId: classId,
       detail: { after: { version: input.version } },
+    });
+    return { classId };
+  });
+}
+
+/** Withdraw classroom consent without deleting the class or its evidence. */
+export async function revokeClassAuthorization(
+  repo: SchoolRepository,
+  accountId: string,
+  classId: string,
+) {
+  return repo.transaction(async (client) => {
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      accountId,
+    ]);
+    const { orgId, personId } = await teachingClass(client, accountId, classId);
+    await client.query(
+      "UPDATE amp_class_authorizations SET ended_at=now() WHERE class_id=$1 AND ended_at IS NULL",
+      [classId],
+    );
+    await recordEvent(client, {
+      orgId,
+      actorPersonId: personId,
+      action: "class.authorization-revoked",
+      targetKind: "class",
+      targetId: classId,
     });
     return { classId };
   });
@@ -476,24 +531,65 @@ async function eligibilityKeys(
       [accountId.slice(4)],
     )
   ).rows[0]?.email;
-  if (email) keys.push(hash(`amp-pilot-mailbox-v1:${email}`));
+  if (email) {
+    // Retain the original digest for old eligibility records as well.
+    keys.push(hash(`amp-pilot-mailbox-v1:${email}`));
+    keys.push(hash(`amp-pilot-mailbox-v1:${normalizePilotEmail(email)}`));
+  }
   return keys.sort();
 }
+export function normalizePilotEmail(email: string) {
+  const [local, domain] = email.trim().toLowerCase().split("@");
+  return domain === "gmail.com" || domain === "googlemail.com"
+    ? `${local!.split("+")[0]!.replaceAll(".", "")}@gmail.com`
+    : `${local}@${domain}`;
+}
+const buyerToken = (id: string, secret: string) => {
+  if (secret.length < 24) throw new Error("School token secret required");
+  return createHmac("sha256", secret)
+    .update(`amp-buyer-link-v1:${id}`)
+    .digest("base64url");
+};
 export async function requestSchoolPurchase(
   repo: SchoolRepository,
   accountId: string,
   raw: unknown,
+  secret: string,
 ) {
   const input = schoolPurchaseSchema.parse(raw);
   return repo.transaction(async (client) => {
-    const ids = [...new Set(input.classIds)];
+    const ids = [...new Set(input.classIds)].sort();
+    for (const id of ids)
+      await client.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+        [`buyer-class:${id}`],
+      );
     for (const id of ids) {
       const klass = await teachingClass(client, accountId, id);
       if (!klass.path.includes(input.orgId))
         throw new SchoolError(404, "not_found");
     }
+    const existing = (
+      await client.query(
+        `SELECT id,class_ids FROM amp_school_purchase_requests
+      WHERE class_ids && $1::uuid[] AND status<>'closed' AND token_expires_at>now() ORDER BY created_at,id`,
+        [ids],
+      )
+    ).rows;
+    if (existing.length) {
+      if (
+        existing.length !== 1 ||
+        existing[0].class_ids.length !== ids.length ||
+        !ids.every((id) => existing[0].class_ids.includes(id))
+      )
+        throw new SchoolError(409, "purchase_scope_conflict");
+      return {
+        id: existing[0].id as string,
+        token: buyerToken(existing[0].id, secret),
+      };
+    }
     const id = randomUUID(),
-      token = randomBytes(32).toString("base64url");
+      token = buyerToken(id, secret);
     await client.query(
       `INSERT INTO amp_school_purchase_requests(id,account_id,org_id,class_ids,seats,note,buyer_token_hash,token_expires_at)
       VALUES($1,$2,$3,$4,$5,$6,$7,now()+interval '30 days')`,
@@ -510,6 +606,38 @@ export async function requestSchoolPurchase(
   });
 }
 
+/** Authenticated teachers can recover the same active aggregate-only link. */
+export async function classPurchaseRequest(
+  repo: SchoolRepository,
+  accountId: string,
+  classId: string,
+  secret: string,
+) {
+  return repo.transaction(async (client) => {
+    await teachingClass(client, accountId, classId);
+    const row = (
+      await client.query(
+        `SELECT id,class_ids,seats,note,status,created_at,token_expires_at
+      FROM amp_school_purchase_requests WHERE $1=ANY(class_ids) AND status<>'closed'
+        AND token_expires_at>now() ORDER BY created_at,id LIMIT 1`,
+        [classId],
+      )
+    ).rows[0];
+    if (!row) return null;
+    for (const id of row.class_ids) await teachingClass(client, accountId, id);
+    return {
+      id: row.id as string,
+      token: buyerToken(row.id, secret),
+      classIds: row.class_ids as string[],
+      seats: row.seats as number,
+      note: row.note as string,
+      status: row.status as string,
+      createdAt: row.created_at.toISOString() as string,
+      expiresAt: row.token_expires_at.toISOString() as string,
+    };
+  });
+}
+
 /** Read-only buyer handoff: counts and dates, no student data or staff authority. */
 export async function buyerHandoff(
   db: Pick<PoolClient, "query">,
@@ -520,7 +648,7 @@ export async function buyerHandoff(
   const request = (
     await db.query(
       `SELECT r.id,r.class_ids,r.seats,r.status,o.name FROM amp_school_purchase_requests r
-    JOIN amp_orgs o ON o.id=r.org_id WHERE r.buyer_token_hash=$1 AND r.token_expires_at>now()`,
+    JOIN amp_orgs o ON o.id=r.org_id WHERE r.buyer_token_hash=$1 AND r.token_expires_at>now() AND r.status<>'closed'`,
       [hash(token)],
     )
   ).rows[0];

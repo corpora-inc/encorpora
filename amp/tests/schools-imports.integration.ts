@@ -171,7 +171,11 @@ test(
         const org = await school("Legacy school");
         const rows = csv("Name,Grade,Class\nAna Ruiz,3,Math\n");
         const legacy = [{ ...rows[0]!, sourcedId: "name:ana ruiz:3:1" }];
-        await apply(org, legacy);
+        await apply(org, rows);
+        await db.query(
+          "UPDATE amp_external_refs SET sourced_id=$2 WHERE tenant_id=$1 AND kind='person'",
+          [org, `${org}/${legacy[0]!.sourcedId}`],
+        );
         const original = (
           await db.query(
             "SELECT id,learner_id FROM amp_people WHERE tenant_id=$1 AND learner_id IS NOT NULL",
@@ -184,7 +188,7 @@ test(
           "updated",
         );
         assert.equal(await count(org), 1);
-        assert.equal((await apply(org, legacy))[0]!.status, "unchanged");
+        await assert.rejects(apply(org, legacy), /csv_identity_invalid/);
         assert.equal((await apply(org, rows))[0]!.status, "unchanged");
         assert.deepEqual(
           (
@@ -262,11 +266,7 @@ test(
           "unchanged",
         );
         const staff = [{ ...row[0]!, role: "teacher" as const }];
-        assert.equal((await plan(org, staff))[0]!.reason, "ambiguous_match");
-        assert.equal(
-          (await apply(org, staff, { "2": "same" }))[0]!.status,
-          "held",
-        );
+        await assert.rejects(plan(org, staff), /csv_identity_invalid/);
       },
     );
 
@@ -329,7 +329,7 @@ test(
             scope,
           ),
           {
-            code: "duplicate_roster_line",
+            code: "csv_identity_invalid",
           },
         );
         assert.equal(

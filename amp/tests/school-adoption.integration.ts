@@ -1,3 +1,4 @@
+import { storedAdoptionSnapshot } from "../src/schools/clever/store.js";
 import test from "node:test";
 import Fastify from "fastify";
 import { registerSchoolAdoptionRoutes } from "../src/schools/adoption-routes.js";
@@ -60,6 +61,9 @@ test(
           { kind: "school", name: "School", timezone: "America/New_York" },
           agreement,
         );
+        await db!.query("UPDATE amp_orgs SET solo=true WHERE id=$1", [
+          school.id,
+        ]);
         const district = await repo.createOrg(
           { kind: "district", name: "District", timezone: "America/Chicago" },
           agreement,
@@ -82,7 +86,7 @@ test(
           accountId: account,
         });
         await db!.query(
-          "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id) VALUES($1,$2,$3,$4)",
+          "INSERT INTO amp_school_starts(account_id,request_id,org_id,class_id,created_school) VALUES($1,$2,$3,$4,true)",
           [sourceAccount, randomUUID(), school.id, klass.id],
         );
         const learner = await repo.provisionStudent(school.id, {
@@ -262,7 +266,8 @@ test(
           await registerSchoolAdoptionRoutes(app, {
             pool: db!,
             authenticate: async () => targetAccount,
-            cleverSnapshot: async () => snapshot,
+            cleverUser: async (_connection, userId) =>
+              snapshot.users.find((u) => u.id === userId)!,
           });
           try {
             for (const path of ["review", "clever-preview", "accept"]) {
@@ -309,7 +314,8 @@ test(
               db!,
               targetAccount,
               { token: grant.token },
-              async () => snapshot,
+              async (_connection, userId) =>
+                snapshot.users.find((u) => u.id === userId)!,
             );
             const review = await app.inject({
               method: "POST",
@@ -807,12 +813,36 @@ test(
             }),
             /roster_mismatch/,
           );
+          await db!.query(
+            "UPDATE amp_clever_connections SET sync_paused=true WHERE id=$1",
+            [connection.id],
+          );
+          await syncCleverConnection(
+            db!,
+            connection.id,
+            {
+              districtToken: async () => "fixture",
+              snapshot: async () => snapshot,
+              events: async () => [],
+              latestEvent: async () => null,
+            },
+            { stageOnly: true },
+          );
+          const staged = await storedAdoptionSnapshot(
+            db!,
+            connection.id,
+            snapshot.schools[0]!.id,
+          );
           await acceptSchoolAdoption(
             db!,
             targetAccount,
             grant.token,
             decisions,
-            { snapshot },
+            { snapshot: staged },
+          );
+          await db!.query(
+            "UPDATE amp_clever_connections SET sync_paused=false WHERE id=$1",
+            [connection.id],
           );
           const ref = (
             await db!.query(

@@ -104,8 +104,11 @@ export async function applySourceEvidence(
           ).rows[0]
         : null;
       if (open) {
-        if (period.startsOn && open.begin_on !== period.startsOn)
-          throw new SchoolError(409, "source_membership_conflict");
+        if (period.startsOn && period.startsOn < open.begin_on)
+          await db.query(`UPDATE ${table} SET begin_on=$2 WHERE id=$1`, [
+            open.id,
+            period.startsOn,
+          ]);
         return undefined; // A manual role satisfies it; this source never owns it.
       }
       const id = randomUUID();

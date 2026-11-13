@@ -244,7 +244,15 @@ test(
           1,
         );
         await runDueCleverSync(db, connectionId, f.client);
-        assert.equal(f.snapshotCount(), 0, "staging cannot import the roster");
+        assert.equal(
+          f.snapshotCount(),
+          1,
+          "worker stages the source for adoption",
+        );
+        assert.equal(
+          (await db.query("SELECT count(*)::int n FROM amp_classes")).rows[0].n,
+          0,
+        );
         const imported = await app.inject({
           method: "POST",
           url: "/api/v1/school/clever/sync",
@@ -254,7 +262,8 @@ test(
       } finally {
         await app.close();
       }
-      assert.equal(f.snapshotCount(), 1);
+      await runDueCleverSync(db, connectionId, f.client);
+      assert.equal(f.snapshotCount(), 2);
       assert.ok(
         (
           await db.query(

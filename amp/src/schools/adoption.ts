@@ -6,6 +6,8 @@ import { recordEvent } from "./events.js";
 import {
   validateSnapshot,
   type Snapshot,
+  type User,
+  userSchema,
   CleverSyncError,
 } from "./clever/model.js";
 import {
@@ -17,7 +19,9 @@ import { syncSsoCredentials } from "./sso-credentials.js";
 
 type Database = Pick<PoolClient, "query">;
 type Decisions = z.input<typeof decisions>;
-type Authority = { authoritySnapshots?: Snapshot[] };
+type Authority = {
+  authoritySnapshots?: Pick<Snapshot, "district" | "users">[];
+};
 type Grant = {
   id: string;
   source_account_id: string;
@@ -79,8 +83,8 @@ async function isAdmin(db: Database, accountId: string, orgId: string) {
     )
   ).rowCount;
 }
-/** A teacher owns the school only when every live class was started by that
- * account and that account is still actively enrolled as its teacher. */
+/** Solo-school adoption requires the creator to own every class and all active
+ * staff roles, and to teach every student. Other schools require an admin. */
 async function isSourceOwner(
   db: Database,
   accountId: string,
@@ -94,7 +98,23 @@ async function isSourceOwner(
   return (
     (
       await db.query(
-        `SELECT EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        `SELECT EXISTS(SELECT 1 FROM amp_orgs o JOIN amp_school_starts s ON s.org_id=o.id
+        WHERE o.id=$2 AND o.solo AND s.account_id=$1 AND s.created_school)
+      AND NOT EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_people p ON p.id=r.person_id
+        JOIN amp_orgs o ON o.id=r.org_id WHERE o.path[1]=$2 AND r.role<>'student'
+          AND p.account_id IS DISTINCT FROM $1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")})
+      AND NOT EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+        JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+        WHERE o.path[1]=$2 AND e.role<>'student' AND p.account_id IS DISTINCT FROM $1
+          AND p.deleted_at IS NULL AND ${activeToday("e", "o")})
+      AND NOT EXISTS(SELECT 1 FROM amp_people p WHERE p.tenant_id=$2 AND p.deleted_at IS NULL
+        AND (p.learner_id IS NOT NULL OR EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'))
+        AND NOT EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+          JOIN amp_orgs o ON o.id=c.org_id JOIN amp_school_starts s ON s.class_id=c.id AND s.account_id=$1
+          WHERE e.person_id=p.id AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "o")}))
+      AND NOT EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        WHERE o.path[1]=$2 AND NOT EXISTS(SELECT 1 FROM amp_school_starts s WHERE s.class_id=c.id AND s.account_id=$1))
+      AND EXISTS(SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
       WHERE o.path[1]=$2 AND c.archived_at IS NULL) AND NOT EXISTS(
     SELECT 1 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
     WHERE o.path[1]=$2 AND c.archived_at IS NULL AND (
@@ -628,7 +648,7 @@ export async function acceptSchoolAdoptionIn(
         [connection.id, input.cleverSchool.schoolId],
       )
     ).rows[0];
-    if (binding && binding.local_id !== schoolId)
+    if (binding?.local_id && binding.local_id !== schoolId)
       throw new CleverSyncError("adoption_clever_school_already_bound");
     const source = cleverSource(connection.id);
     const ref = (
@@ -650,6 +670,10 @@ export async function acceptSchoolAdoptionIn(
       VALUES($1,$2,'org',$3,$4) ON CONFLICT DO NOTHING`,
       [districtId, source, input.cleverSchool.schoolId, schoolId],
     );
+    await db.query(
+      "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='school' AND clever_id=$2 AND local_id IS NULL",
+      [connection.id, input.cleverSchool.schoolId, schoolId],
+    );
   }
   if (input.cleverSchool) {
     const source = cleverSource(input.cleverSchool.connectionId);
@@ -662,13 +686,22 @@ export async function acceptSchoolAdoptionIn(
         VALUES($1,$2,'person',$3,$4) ON CONFLICT DO NOTHING`,
         [districtId, source, match.userId, personId],
       );
+      await db.query(
+        "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='user' AND clever_id=$2 AND local_id IS NULL",
+        [input.cleverSchool.connectionId, match.userId, personId],
+      );
     }
-    for (const match of input.cleverSections)
+    for (const match of input.cleverSections) {
       await db.query(
         `INSERT INTO amp_external_refs(tenant_id,source,kind,sourced_id,local_id)
       VALUES($1,$2,'class',$3,$4) ON CONFLICT DO NOTHING`,
         [districtId, source, match.sectionId, match.classId],
       );
+      await db.query(
+        "UPDATE amp_clever_bindings SET local_id=$3 WHERE connection_id=$1 AND kind='section' AND clever_id=$2 AND local_id IS NULL",
+        [input.cleverSchool.connectionId, match.sectionId, match.classId],
+      );
+    }
   }
   await db.query(
     `UPDATE amp_orgs SET path=ARRAY[$2::uuid]||path,
@@ -994,7 +1027,7 @@ async function requireCurrentAdoptionAdmin(
   db: Database,
   accountId: string,
   districtId: string,
-  snapshots: Snapshot[],
+  snapshots: Pick<Snapshot, "district" | "users">[],
 ) {
   const roles = await adoptionAdminRoles(db, accountId, districtId);
   if (roles.some((r) => r.manual)) return;
@@ -1038,7 +1071,7 @@ export async function schoolAdoptionAuthority(
   db: Database,
   accountId: string,
   input: { token?: string; districtId?: string },
-  fetchSnapshot?: (connectionId: string) => Promise<Snapshot>,
+  fetchUser?: (connectionId: string, userId: string) => Promise<User>,
 ): Promise<Authority> {
   let districtId = input.districtId;
   if (input.token) {
@@ -1059,19 +1092,21 @@ export async function schoolAdoptionAuthority(
   if (roles.some((r) => r.manual)) return {};
   if (!roles.length)
     throw new CleverSyncError("adoption_destination_authority_required");
-  if (!fetchSnapshot)
+  if (!fetchUser)
     throw new CleverSyncError("adoption_current_authority_required");
-  const snapshots: Snapshot[] = [];
-  for (const connection of new Set(
-    roles
-      .filter((r) => r.active)
-      .map((r) => r.connection_id)
-      .filter((id): id is string => !!id),
+  const snapshots: Pick<Snapshot, "district" | "users">[] = [];
+  for (const role of roles.filter(
+    (r) => r.active && r.connection_id && r.clever_id,
   )) {
-    const district = roles.find(
-      (r) => r.connection_id === connection,
-    )!.district_id!;
-    snapshots.push(validateSnapshot(await fetchSnapshot(connection), district));
+    const user = userSchema.parse(
+      await fetchUser(role.connection_id!, role.clever_id!),
+    );
+    if (user.id !== role.clever_id || user.district !== role.district_id)
+      throw new CleverSyncError("adoption_current_authority_required");
+    snapshots.push({
+      district: { id: role.district_id!, name: "" },
+      users: [user],
+    });
   }
   await requireCurrentAdoptionAdmin(db, accountId, districtId, snapshots);
   return { authoritySnapshots: snapshots };

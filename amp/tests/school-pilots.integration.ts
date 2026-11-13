@@ -9,7 +9,7 @@ import {
   startSchoolClass,
   activateClassPilot,
   classPilotState,
-  requestSchoolPurchase,
+  requestSchoolPurchase as purchase,
   buyerHandoff,
   extendTeacherPilot,
 } from "../src/schools/pilots.js";
@@ -358,3 +358,16 @@ test(
     }
   },
 );
+
+function requestSchoolPurchase(
+  ...args: Parameters<typeof purchase> extends [
+    infer R,
+    infer A,
+    infer B,
+    string,
+  ]
+    ? [R, A, B]
+    : never
+) {
+  return purchase(...args, "fixture-school-token-secret-long-enough");
+}

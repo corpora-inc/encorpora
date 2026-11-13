@@ -11,7 +11,7 @@ import {
   startSchoolClass,
   activateClassPilot,
   classPilotState,
-  requestSchoolPurchase,
+  requestSchoolPurchase as purchase,
   extendTeacherPilot,
 } from "../src/schools/pilots.js";
 import { deleteAccount } from "../src/account/delete-account.js";
@@ -154,22 +154,21 @@ test(
             },
           });
           assert.equal(response.statusCode, 202, response.body);
-          if (admin === admins[0]) {
-            for (let i = 0; i < 100 && !started.length; i++)
-              await new Promise((resolve) => setTimeout(resolve, 20));
-            assert.equal(
-              started.length,
-              1,
-              "first job reached the held provider call",
-            );
-          }
         }
-        assert.deepEqual(
-          started,
-          [districts[0]],
-          "second snapshot waits for the first job",
+        assert.deepEqual(started, [], "API handlers never download snapshots");
+        const connections = (
+          await db.query(
+            "SELECT id FROM amp_clever_connections ORDER BY district_id",
+          )
+        ).rows;
+        const firstRun = runDueCleverSync(db, connections[0].id, client).catch(
+          () => null,
         );
+        for (let i = 0; i < 100 && !started.length; i++)
+          await new Promise((r) => setTimeout(r, 10));
         releaseFirst();
+        await firstRun;
+        await runDueCleverSync(db, connections[1].id, client);
         let complete = false;
         for (let i = 0; i < 200; i++) {
           complete = !!(
@@ -468,7 +467,7 @@ test(
       assert.equal(connected.connectionId, repeated.connectionId);
       assert.equal(connected.status, "ready_to_import");
       await runDueCleverSync(db, connected.connectionId, client);
-      assert.equal(snapshots, 0);
+      assert.equal(snapshots, 1);
       await db.query(
         "UPDATE amp_clever_connections SET sync_paused=false,sync_requested_at=now() WHERE id=$1",
         [connected.connectionId],
@@ -477,9 +476,9 @@ test(
         runDueCleverSync(db, connected.connectionId, client),
         runDueCleverSync(db, connected.connectionId, client),
       ]);
-      assert.equal(snapshots, 1);
+      assert.equal(snapshots, 2);
       await runDueCleverSync(db, connected.connectionId, client);
-      assert.equal(snapshots, 1);
+      assert.equal(snapshots, 2);
       assert.equal(
         (
           await db.query(
@@ -663,17 +662,7 @@ test(
           },
         });
         assert.equal(response.statusCode, 202, response.body);
-        for (let i = 0; i < 100; i++) {
-          if (
-            (
-              await db.query(
-                "SELECT 1 FROM amp_clever_connections WHERE last_sync_at IS NOT NULL",
-              )
-            ).rowCount
-          )
-            break;
-          await new Promise((r) => setTimeout(r, 20));
-        }
+        await runDueCleverSync(db, response.json().connectionId, client);
         const status = await app.inject({
           url: "/api/v1/school/clever/status",
           headers: { authorization: `Bearer ${admin.token}` },
@@ -728,3 +717,16 @@ test(
       }
     }),
 );
+
+function requestSchoolPurchase(
+  ...args: Parameters<typeof purchase> extends [
+    infer R,
+    infer A,
+    infer B,
+    string,
+  ]
+    ? [R, A, B]
+    : never
+) {
+  return purchase(...args, "fixture-school-token-secret-long-enough");
+}

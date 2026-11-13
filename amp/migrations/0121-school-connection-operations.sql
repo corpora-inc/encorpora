@@ -26,7 +26,7 @@ CREATE UNIQUE INDEX amp_school_connection_requests_open_idx ON amp_school_connec
 CREATE TABLE amp_school_connection_tasks (
  id uuid PRIMARY KEY,
  connection_id uuid NOT NULL REFERENCES amp_clever_connections(id) ON DELETE CASCADE,
- kind text NOT NULL CHECK(kind IN ('review_release','provider_disconnected')),
+ kind text NOT NULL CHECK(kind IN ('review_release','provider_disconnected','deleted_people')),
  status text NOT NULL DEFAULT 'open' CHECK(status IN ('open','completed','cancelled')),
  reference text,
  created_at timestamptz NOT NULL DEFAULT now(),
@@ -53,3 +53,8 @@ CREATE FUNCTION amp_school_role_current(role_id uuid) RETURNS boolean LANGUAGE s
    ))
  )
 $$;
+
+ALTER TABLE amp_clever_connections ADD COLUMN failure_code text;
+ALTER TABLE amp_clever_connections ADD COLUMN failure_count integer NOT NULL DEFAULT 0;
+ALTER TABLE amp_clever_connections ADD COLUMN next_attempt_at timestamptz;
+ALTER TABLE amp_clever_connections ADD COLUMN last_sync_requested_at timestamptz;

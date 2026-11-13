@@ -239,10 +239,40 @@ export async function applySnapshot(
       local("user", b.id) ?? reviewedPeople.get(b.id) ?? b.id,
     ),
   );
+  // A retained source binding is a tombstone, never permission to recreate a person.
+  const blocked = new Set<string>();
+  const boundIds = [
+    ...new Set(
+      orderedUsers.flatMap((u) => {
+        const id = local("user", u.id) ?? reviewedPeople.get(u.id);
+        return id ? [id] : [];
+      }),
+    ),
+  ];
+  await batches(boundIds, async (ids) => {
+    const rows = await db.query(
+      `SELECT x.id FROM unnest($1::uuid[]) x(id)
+      LEFT JOIN amp_people p ON p.id=x.id LEFT JOIN amp_learners l ON l.id=p.learner_id
+      WHERE p.id IS NULL OR p.deleted_at IS NOT NULL OR (p.learner_id IS NOT NULL AND (l.id IS NULL OR l.deleted_at IS NOT NULL))`,
+      [ids],
+    );
+    for (const row of rows.rows) blocked.add(row.id);
+  });
+  if (blocked.size)
+    await db.query(
+      `INSERT INTO amp_school_connection_tasks(id,connection_id,kind)
+      VALUES($1,$2,'deleted_people') ON CONFLICT(connection_id,kind) WHERE status='open' DO NOTHING`,
+      [randomUUID(), connection.id],
+    );
   const people = new Map<string, PersonWrite>();
   for (const user of orderedUsers) {
     const roles = userRoles(user);
     let id = local("user", user.id) ?? reviewedPeople.get(user.id) ?? null;
+    if (id && blocked.has(id)) {
+      // Keep the scrubbed binding archived, including on repeated imports.
+      seen.push({ kind: "user", clever_id: user.id });
+      continue;
+    }
     if (!roles.some((role) => role !== "contact")) {
       save("user", user, id, { roles });
       continue;
@@ -367,6 +397,7 @@ export async function applySnapshot(
     person: string,
     role: string,
   ) => {
+    if (blocked.has(person)) return;
     const source_key = `${scope}:${person}:${role}`;
     wanted.set(`${kind}:${source_key}`, {
       kind,
@@ -442,17 +473,50 @@ export async function applySnapshot(
   );
   for (const group of memberships.groups)
     for (const m of group.missing) protectedPeople.add(m.person_id);
-  await writeRosterPeople(db, root, [...people.values()], now, protectedPeople);
-  await writeMemberships(db, connection.id, runId, today, memberships);
-  await batches(saved, (rows) =>
-    db.query(
-      `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id)
+  const skipped = await writeRosterPeople(
+    db,
+    root,
+    [...people.values()],
+    now,
+    protectedPeople,
+  );
+  if (skipped.size) {
+    await db.query(
+      `INSERT INTO amp_school_connection_tasks(id,connection_id,kind)
+      VALUES($1,$2,'deleted_people') ON CONFLICT(connection_id,kind) WHERE status='open' DO NOTHING`,
+      [randomUUID(), connection.id],
+    );
+    for (const row of saved)
+      if (row.kind === "user" && row.local_id && skipped.has(row.local_id))
+        seen.push({ kind: row.kind, clever_id: row.clever_id });
+  }
+  await writeMemberships(
+    db,
+    connection.id,
+    runId,
+    today,
+    skipped.size
+      ? await prepareMemberships(
+          db,
+          connection.id,
+          [...wanted.values()].filter((m) => !skipped.has(m.person_id)),
+        )
+      : memberships,
+  );
+  await batches(
+    saved.filter(
+      (row) =>
+        row.kind !== "user" || !row.local_id || !skipped.has(row.local_id),
+    ),
+    (rows) =>
+      db.query(
+        `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,local_id,record,metadata,last_seen_run_id)
      SELECT $2,x.kind,x.clever_id,x.local_id,x.record,x.metadata,$3 FROM jsonb_to_recordset($1::jsonb)
        AS x(kind text,clever_id text,local_id uuid,record jsonb,metadata jsonb)
      ON CONFLICT(connection_id,kind,clever_id) DO UPDATE SET local_id=excluded.local_id,
        record=excluded.record,metadata=excluded.metadata,archived_at=NULL,last_seen_run_id=excluded.last_seen_run_id`,
-      [JSON.stringify(rows), connection.id, runId],
-    ),
+        [JSON.stringify(rows), connection.id, runId],
+      ),
   );
   // An unchanged source row needs only a checkpoint. In particular, never
   // restore its personal payload or clear an archive written by privacy deletion.
@@ -535,9 +599,10 @@ async function writeRosterPeople(
   now: Date,
   protectedPeople: Set<string>,
 ) {
-  const all = plans.sort((a, b) => a.id.localeCompare(b.id)),
-    freshIds = new Set(all.filter((p) => p.fresh).map((p) => p.id));
-  const existingIds = [
+  let all = plans.sort((a, b) => a.id.localeCompare(b.id));
+  const skipped = new Set<string>();
+  const freshIds = new Set(all.filter((p) => p.fresh).map((p) => p.id));
+  let existingIds = [
     ...new Set(
       [
         ...all.filter((p) => !p.fresh).map((p) => p.id),
@@ -553,16 +618,19 @@ async function writeRosterPeople(
       FROM amp_people p LEFT JOIN amp_learners l ON l.id=p.learner_id WHERE p.id=ANY($1::uuid[]) AND p.tenant_id=$2`,
       [ids, root.id],
     );
-    if (found.rowCount !== ids.length)
-      throw new CleverSyncError("clever_deleted_person_requires_review");
+    const foundIds = new Set(found.rows.map((row) => row.id));
+    for (const id of ids) if (!foundIds.has(id)) skipped.add(id);
     for (const row of found.rows) {
-      if (row.deleted_at)
-        throw new CleverSyncError("clever_deleted_person_requires_review");
-      if (row.learner_id && (!row.account_id || row.learner_deleted_at))
-        throw new SchoolError(409, "student_changed");
-      before.set(row.id, row);
+      if (
+        row.deleted_at ||
+        (row.learner_id && (!row.account_id || row.learner_deleted_at))
+      )
+        skipped.add(row.id);
+      else before.set(row.id, row);
     }
   });
+  all = all.filter((p) => !skipped.has(p.id));
+  existingIds = existingIds.filter((id) => !skipped.has(id));
   const possibleGradeChanges = all
     .filter((p) => {
       const old = before.get(p.id);
@@ -617,10 +685,10 @@ async function writeRosterPeople(
     ...protectedPeople,
     ...all.filter(changed).map((p) => p.id),
   ]);
-  const ordered = all.filter((p) => selected.has(p.id));
+  let ordered = all.filter((p) => selected.has(p.id));
   // Fresh people are uncommitted and cannot yet be reached by practice or
   // privacy routes. Avoid allocating an advisory lock for every new learner.
-  const selectedIds = existingIds.filter((id) => selected.has(id));
+  let selectedIds = existingIds.filter((id) => selected.has(id));
   const accounts = [
     ...new Set(
       selectedIds
@@ -645,16 +713,20 @@ async function writeRosterPeople(
       WHERE id=ANY($1::uuid[]) AND tenant_id=$2 ORDER BY id FOR UPDATE`,
       [ids, root.id],
     );
-    if (found.rowCount !== ids.length)
-      throw new CleverSyncError("clever_deleted_person_requires_review");
+    const foundIds = new Set(found.rows.map((row) => row.id));
+    for (const id of ids) if (!foundIds.has(id)) skipped.add(id);
     for (const row of found.rows) {
-      if (row.deleted_at)
-        throw new CleverSyncError("clever_deleted_person_requires_review");
+      if (row.deleted_at) {
+        skipped.add(row.id);
+        continue;
+      }
       if (row.learner_id !== before.get(row.id)?.learner_id)
         throw new SchoolError(409, "student_changed");
       people.set(row.id, row);
     }
   });
+  ordered = ordered.filter((p) => !skipped.has(p.id));
+  selectedIds = selectedIds.filter((id) => !skipped.has(id));
   const owners = new Map(
     selectedIds
       .map((id) => before.get(id)!)
@@ -748,6 +820,7 @@ async function writeRosterPeople(
         [JSON.stringify(rows)],
       ),
   );
+  return skipped;
 }
 
 type MembershipWrite = {
@@ -889,4 +962,100 @@ function termDates(term: Term): [string, string] | null {
     Number.isFinite(Date.parse(d)) &&
     new Date(d).toISOString().slice(0, 10) === d;
   return valid(start) && valid(end) && end >= start ? [start, end] : null;
+}
+
+/** API adoption reads one bounded school from committed source data. A district
+ * selector loads only district/school records; no API path materializes a district roster. */
+export async function storedAdoptionSnapshot(
+  db: Pick<PoolClient, "query">,
+  connectionId: string,
+  schoolId?: string,
+): Promise<Snapshot> {
+  const rows = (
+    await db.query(
+      `SELECT kind,record FROM amp_clever_bindings
+    WHERE connection_id=$1 AND archived_at IS NULL AND (
+      kind='district' OR kind='school' AND ($2::text IS NULL OR clever_id=$2)
+      OR $2::text IS NOT NULL AND (
+        kind='course' AND clever_id IN (SELECT record->>'course' FROM amp_clever_bindings
+          WHERE connection_id=$1 AND kind='section' AND archived_at IS NULL AND record->>'school'=$2)
+        OR kind='term' AND clever_id IN (SELECT record->>'term_id' FROM amp_clever_bindings
+          WHERE connection_id=$1 AND kind='section' AND archived_at IS NULL AND record->>'school'=$2)
+        OR kind='section' AND record->>'school'=$2
+        OR kind='user' AND (jsonb_typeof(record->'roles'->'district_admin')='object' OR record->'roles'->'student'->>'school'=$2 OR record->'roles'->'student'->'schools' ? $2
+          OR record->'roles'->'teacher'->>'school'=$2 OR record->'roles'->'teacher'->'schools' ? $2
+          OR record->'roles'->'staff'->>'school'=$2 OR record->'roles'->'staff'->'schools' ? $2
+          OR clever_id IN (SELECT jsonb_array_elements_text(COALESCE(section.record->'students','[]') || COALESCE(section.record->'teachers','[]') ||
+            CASE WHEN section.record->>'teacher' IS NOT NULL THEN jsonb_build_array(section.record->>'teacher') ELSE '[]'::jsonb END)
+            FROM amp_clever_bindings section WHERE section.connection_id=$1 AND section.kind='section'
+              AND section.archived_at IS NULL AND section.record->>'school'=$2))))
+    ORDER BY kind,clever_id LIMIT 5001`,
+      [connectionId, schoolId ?? null],
+    )
+  ).rows;
+  if (rows.length > 5000)
+    throw new CleverSyncError("adoption_roster_too_large");
+  const records = (kind: Kind) =>
+    rows.filter((r) => r.kind === kind).map((r) => r.record);
+  const district = records("district")[0];
+  if (!district)
+    throw new CleverSyncError("adoption_clever_review_unavailable");
+  return {
+    district,
+    schools: records("school"),
+    users: records("user"),
+    sections: records("section"),
+    courses: records("course"),
+    terms: records("term"),
+  };
+}
+
+/** Cache provider records for reviewed adoption before the first import. This
+ * worker-only stage does not create people, learners, classes or memberships. */
+export async function stageSnapshot(
+  db: PoolClient,
+  connection: Connection,
+  runId: string,
+  snapshot: Snapshot,
+) {
+  for (const [kind, records] of Object.entries({
+    district: [snapshot.district],
+    school: snapshot.schools,
+    user: snapshot.users,
+    section: snapshot.sections,
+    course: snapshot.courses,
+    term: snapshot.terms,
+  })) {
+    await batches(records as RosterRecord[], (rows) =>
+      db.query(
+        `INSERT INTO amp_clever_bindings(connection_id,kind,clever_id,record,metadata,last_seen_run_id)
+      SELECT $1,$2,x.record->>'id',x.record,x.metadata,$4 FROM jsonb_to_recordset($3::jsonb) x(record jsonb,metadata jsonb)
+      ON CONFLICT(connection_id,kind,clever_id) DO UPDATE SET record=excluded.record,metadata=excluded.metadata,last_seen_run_id=excluded.last_seen_run_id,archived_at=NULL
+      WHERE amp_clever_bindings.local_id IS NULL`,
+        [
+          connection.id,
+          kind,
+          JSON.stringify(
+            rows.map((record) => ({
+              record,
+              metadata:
+                kind === "user" ? { roles: userRoles(record as User) } : {},
+            })),
+          ),
+          runId,
+        ],
+      ),
+    );
+  }
+  await db.query(
+    "UPDATE amp_clever_bindings SET archived_at=now() WHERE connection_id=$1 AND last_seen_run_id<>$2 AND local_id IS NULL",
+    [connection.id, runId],
+  );
+  return {
+    schools: snapshot.schools.length,
+    users: snapshot.users.length,
+    sections: snapshot.sections.length,
+    courses: snapshot.courses.length,
+    terms: snapshot.terms.length,
+  };
 }

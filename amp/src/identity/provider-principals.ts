@@ -1,3 +1,4 @@
+import { SchoolError } from "../schools/contracts.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { FastifyRequest } from "fastify";
 import type { Pool } from "pg";
@@ -44,6 +45,11 @@ export function requestCookie(
       ?.slice(name.length + 1) ?? null
   );
 }
+function providerCookieAllowed(request: FastifyRequest) {
+  return ["/api/v1/provider/session", "/api/v1/provider/sign-out"].includes(
+    request.url?.split("?")[0] ?? "",
+  );
+}
 export function providerToken(request: FastifyRequest): string | null {
   if (studentBearer(request)) return null;
   const authorization = request.headers.authorization;
@@ -51,7 +57,9 @@ export function providerToken(request: FastifyRequest): string | null {
   // An explicitly supplied credential must never fall back to a shared cookie.
   const token = authorization
     ? bearer
-    : requestCookie(request, PROVIDER_COOKIE);
+    : providerCookieAllowed(request)
+      ? requestCookie(request, PROVIDER_COOKIE)
+      : null;
   return token && /^ps_[\w-]{43}$/.test(token) ? token : null;
 }
 export type ProviderSession = CleverClaims & {
@@ -133,6 +141,7 @@ export async function resolveProviderSession(
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
+      await client.query("SET LOCAL lock_timeout='1s'");
       await client.query(
         "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
         [row.account_id],
@@ -147,6 +156,16 @@ export async function resolveProviderSession(
             userId: row.claims.userId,
           })
         : { personId: person.personId };
+      if ("disposition" in attached && attached.disposition === "deferred") {
+        await client.query("COMMIT");
+        return {
+          ...row.claims,
+          accountId: row.account_id,
+          identityId: row.identity_id,
+          createdAt: row.created_at,
+          personId: null,
+        };
+      }
       if (!attached.personId)
         throw new ApiError(409, "identity_already_linked");
       // The helper may consolidate a freshly rostered staff alias into an
@@ -164,6 +183,16 @@ export async function resolveProviderSession(
       };
     } catch (error) {
       await client.query("ROLLBACK");
+      if (
+        (error instanceof SchoolError || error instanceof ApiError) &&
+        error.statusCode === 409
+      ) {
+        await client.query(
+          "UPDATE amp_provider_sessions SET revoked_at=now() WHERE token_hash=$1",
+          [providerHash(token)],
+        );
+        return null;
+      }
       throw error;
     } finally {
       client.release();
@@ -334,6 +363,7 @@ export function withProviderSessions(
       providerToken(request) ||
       /^bearer\s+ps_/i.test(request.headers.authorization ?? "") ||
       (!request.headers.authorization &&
+        providerCookieAllowed(request) &&
         requestCookie(request, PROVIDER_COOKIE))
     ) {
       const session = await resolveProviderSession(
@@ -363,6 +393,7 @@ export async function establishProviderPrincipal(
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
+    await client.query("SET LOCAL lock_timeout='1s'");
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `clever:${claims.environment}:${claims.districtId}:${claims.userId}`,
     ]);

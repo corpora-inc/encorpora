@@ -37,15 +37,20 @@ export async function attachProvedCleverStaffIn(
   raw: z.input<typeof inputSchema>,
 ): Promise<{
   personId: string | null;
-  disposition: "unbound" | "attached" | "reused" | "merged";
+  disposition: "unbound" | "attached" | "reused" | "merged" | "deferred";
 }> {
   const input = inputSchema.parse(raw);
+  await db.query("SET LOCAL lock_timeout='1s'");
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     input.accountId,
   ]);
-  await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-    `clever-sync:${input.connectionId}`,
-  ]);
+  const acquired = (
+    await db.query(
+      "SELECT pg_try_advisory_xact_lock(hashtextextended($1,0)) AS ok",
+      [`clever-sync:${input.connectionId}`],
+    )
+  ).rows[0].ok;
+  if (!acquired) return { personId: null, disposition: "deferred" };
   const connection = (
     await db.query(
       `SELECT c.tenant_id,c.environment,c.district_id,i.claims FROM amp_clever_connections c

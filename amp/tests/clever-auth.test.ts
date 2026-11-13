@@ -80,11 +80,21 @@ test("Clever rejects a mismatched district and impossible student/adult roles", 
 });
 test("explicit shared-device credentials take precedence over adult provider cookies", () => {
   const token = `ps_${"a".repeat(43)}`;
-  const request = (authorization?: string) =>
+  const request = (authorization?: string, url = "/api/v1/provider/session") =>
     ({
+      url,
       headers: { cookie: `amp.provider-session=${token}`, authorization },
     }) as FastifyRequest;
   assert.equal(providerToken(request()), token);
+  assert.equal(
+    providerToken(request(undefined, "/api/v1/provider/sign-out")),
+    token,
+  );
+  assert.equal(providerToken(request(undefined, "/api/v1/account")), null);
+  assert.equal(
+    providerToken(request(`Bearer ${token}`, "/api/v1/account")),
+    token,
+  );
   assert.equal(providerToken(request(`Bearer st_${"b".repeat(43)}`)), null);
   assert.equal(providerToken(request("Bearer old-parent-token")), null);
   assert.equal(providerToken(request("malformed credential")), null);

@@ -1,3 +1,4 @@
+import { userSchema } from "../schools/clever/model.js";
 import { registerSchoolAdoptionRoutes } from "../schools/adoption-routes.js";
 import { CleverClient } from "../schools/clever/client.js";
 import { SchoolError } from "../schools/contracts.js";
@@ -244,6 +245,8 @@ await registerCleverOnboarding(app, {
   pool: repository.pool,
   authenticate,
   config: cleverConfig,
+  worker: false,
+  maintenance: true,
   origin: accounts?.config.baseURL,
 });
 await registerSchoolAdoptionRoutes(app, {
@@ -252,7 +255,7 @@ await registerSchoolAdoptionRoutes(app, {
   origin: accounts?.config.baseURL,
   ...(cleverConfig
     ? {
-        cleverSnapshot: async (connectionId: string) => {
+        cleverUser: async (connectionId: string, userId: string) => {
           const connection = (
             await repository.pool.query(
               "SELECT district_id FROM amp_clever_connections WHERE id=$1 AND environment=$2 AND status='active'",
@@ -261,9 +264,10 @@ await registerSchoolAdoptionRoutes(app, {
           ).rows[0];
           if (!connection) throw new SchoolError(404, "not_found");
           const client = new CleverClient(cleverConfig);
-          return client.snapshot(
-            connection.district_id,
+          return client.get(
+            `/v3.1/users/${userId}`,
             await client.districtToken(connection.district_id),
+            userSchema,
           );
         },
       }

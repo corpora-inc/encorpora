@@ -37,3 +37,6 @@ CREATE TABLE amp_provider_oauth_flows (
   code_hash text UNIQUE,
   CHECK ((link_account_id IS NULL)=(link_proof_hash IS NULL))
 );
+
+CREATE INDEX amp_provider_sessions_expiry_idx ON amp_provider_sessions(expires_at);
+CREATE INDEX amp_provider_oauth_flows_expiry_idx ON amp_provider_oauth_flows(expires_at);
