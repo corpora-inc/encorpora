@@ -11,6 +11,13 @@ import type {
 import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js";
 import { FundingInvoiceRepository } from "../src/funding-purchase/invoice-intents.js";
 import { provisionFundingRequest } from "../src/funding-purchase/provision.js";
+import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
+import { installConsentPolicy } from "../src/parent-consent/policy.js";
+import type {
+  ConsentMail,
+  ConsentTransport,
+} from "../src/parent-consent/contracts.js";
+import { consentFixture } from "./parent-consent.fixture.js";
 import {
   reconcileClassWalletPayments,
   stageClassWalletPayment,
@@ -49,6 +56,34 @@ const monthly = {
   termPolicy: "one-month-from-verified-provisioning",
 } as unknown as FundingOffer;
 const offers = [yearly, monthly];
+
+const notificationPolicy = {
+  ...consentFixture,
+  review: { ...consentFixture.review, paymentNotificationsReviewed: true },
+  notice: {
+    ...consentFixture.notice,
+    processors: [
+      ...consentFixture.notice.processors,
+      {
+        name: "Resend (Plus Five Five, Inc.)",
+        service: "Transactional email",
+        data: "Account email",
+        purpose: "Payment notifications",
+        retention: "Fixture retention",
+      },
+    ],
+  },
+};
+const notificationTransport = (
+  send: ConsentTransport["send"],
+): ConsentTransport => ({
+  binding: {
+    provider: "resend",
+    sender: "sender@example.test",
+    credentialFingerprint: "fixture",
+  },
+  send,
+});
 
 async function fixture(
   run: (pool: Pool, invoices: FundingInvoiceRepository) => Promise<void>,
@@ -182,11 +217,16 @@ const justNow = async () => {
   await new Promise((resolve) => setTimeout(resolve, 5));
   return new Date().toISOString();
 };
-/** One calendar month later, as the funded term counts it (no clamping is
- * needed on the fixed dates these tests use). */
+/** Calendar-month expectation, including fixtures created at month end. */
 const monthAfter = (iso: string) => {
   const date = new Date(iso);
+  const day = date.getUTCDate();
+  date.setUTCDate(1);
   date.setUTCMonth(date.getUTCMonth() + 1);
+  const lastDay = new Date(
+    Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0),
+  ).getUTCDate();
+  date.setUTCDate(Math.min(day, lastDay));
   return date.toISOString();
 };
 
@@ -296,6 +336,238 @@ test(
     }),
 );
 
+/** A paid term following existing access; no mail is owed for the fixture grant. */
+async function scheduledPurchase(
+  pool: Pool,
+  invoices: FundingInvoiceRepository,
+  offer = monthly,
+) {
+  await installConsentPolicy(pool, notificationPolicy);
+  await pool.query(
+    "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','private')",
+  );
+  const request = await invoices.claim(
+    "amp|parent",
+    (await invoiceFor(invoices, "parent@example.com", offer)).id,
+    "child",
+  );
+  // Near midnight UTC, so host-local formatting would give the wrong date.
+  const start = new Date(Date.now() + 86400000);
+  start.setUTCHours(0, 15, 0, 0);
+  const startsAt = start.toISOString();
+  const end = new Date(startsAt);
+  end.setUTCFullYear(end.getUTCFullYear() + 1);
+  if (end.getUTCMonth() !== start.getUTCMonth()) end.setUTCDate(0);
+  const endsAt =
+    offer.termMonths === 1 ? monthAfter(startsAt) : end.toISOString();
+  await pool.query(
+    "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('current','child','pilot','current','active',now()-interval '1 day',$1)",
+    [startsAt],
+  );
+  const input = settlement(request, {
+    activatedAt: await justNow(),
+    startsAt,
+    endsAt,
+  });
+  await provisionFundingRequest(pool, input, offers);
+  return { request, input, startsAt, endsAt };
+}
+
+function assertScheduledMail(
+  mail: ConsentMail,
+  invoice: string,
+  startsAt: string,
+  endsAt: string,
+) {
+  assert.equal(mail.subject, "Your next month of AMP Math is confirmed");
+  assert.equal(mail.idempotencyKey, `amp-funded-activation:${invoice}`);
+  assert.equal(
+    mail.text,
+    [
+      `Payment for invoice ${invoice} was received.`,
+      `Your learner's next month runs from ${startsAt.slice(0, 10)} to ${endsAt.slice(0, 10)} (UTC).`,
+      "Open AMP: https://example.com/",
+    ].join("\n\n"),
+  );
+}
+
+test(
+  "a scheduled month queues one confirmation with grant dates and provisioning replay never sends another",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      const { request, input, startsAt, endsAt } = await scheduledPurchase(
+        pool,
+        invoices,
+      );
+      await Promise.all([
+        provisionFundingRequest(pool, input, offers),
+        provisionFundingRequest(pool, input, offers),
+      ]);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].n,
+        1,
+      );
+      const mails: ConsentMail[] = [];
+      const transport = notificationTransport(async (mail) => {
+        mails.push(mail);
+        return { kind: "accepted", receipt: "fixture-receipt" };
+      });
+      await Promise.all(
+        Array.from({ length: 4 }, () =>
+          deliverFundedActivationMail(pool, transport, notificationPolicy),
+        ),
+      );
+      assert.equal(mails.length, 1);
+      assert.equal(mails[0]!.recipient, "parent@example.com");
+      assertScheduledMail(mails[0]!, request.id, startsAt, endsAt);
+      await provisionFundingRequest(pool, input, offers);
+      assert.equal(
+        await deliverFundedActivationMail(pool, transport, notificationPolicy),
+        false,
+      );
+      assert.equal(mails.length, 1);
+      assert.ok(
+        (
+          await pool.query(
+            "SELECT accepted_at FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].accepted_at,
+      );
+    }),
+);
+
+test(
+  "a scheduled yearly purchase confirms its own term without calling it a month",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      const { request, startsAt, endsAt } = await scheduledPurchase(
+        pool,
+        invoices,
+        yearly,
+      );
+      const mails: ConsentMail[] = [];
+      await deliverFundedActivationMail(
+        pool,
+        notificationTransport(async (mail) => {
+          mails.push(mail);
+          return { kind: "accepted", receipt: "fixture-receipt" };
+        }),
+        notificationPolicy,
+      );
+      assert.equal(mails.length, 1);
+      assert.equal(
+        mails[0]!.subject,
+        "Your next year of AMP Math is confirmed",
+      );
+      assert.equal(
+        mails[0]!.text,
+        [
+          `Payment for invoice ${request.id} was received.`,
+          `Your learner's next year runs from ${startsAt.slice(0, 10)} to ${endsAt.slice(0, 10)} (UTC).`,
+          "Open AMP: https://example.com/",
+        ].join("\n\n"),
+      );
+    }),
+);
+
+for (const [name, reason, change] of [
+  [
+    "revoked grant",
+    "access-inactive",
+    "UPDATE amp_commerce_orders SET grant_state=jsonb_set(grant_state,'{status}','\"revoked\"')",
+  ],
+  [
+    "deleted learner",
+    "access-inactive",
+    "UPDATE amp_learners SET deleted_at=now() WHERE id='child'",
+  ],
+  [
+    "withdrawn consent",
+    "access-inactive",
+    "UPDATE amp_parent_consents SET withdrawn_at=now()",
+  ],
+  [
+    "unverified account email",
+    "verified-recipient-unavailable",
+    'UPDATE amp_auth_users SET "emailVerified"=false',
+  ],
+] as const) {
+  test(`a scheduled confirmation is stopped for a ${name}`, enabled, () =>
+    fixture(async (pool, invoices) => {
+      await scheduledPurchase(pool, invoices);
+      await pool.query(change);
+      let sends = 0;
+      await deliverFundedActivationMail(
+        pool,
+        notificationTransport(async () => {
+          sends++;
+          return { kind: "accepted", receipt: "fixture-receipt" };
+        }),
+        notificationPolicy,
+      );
+      assert.equal(sends, 0);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        reason,
+      );
+    }),
+  );
+}
+
+test(
+  "a scheduled confirmation retries the identical message after its start date and stops at the retry deadline",
+  enabled,
+  (t) =>
+    fixture(async (pool, invoices) => {
+      const { request, startsAt, endsAt } = await scheduledPurchase(
+        pool,
+        invoices,
+      );
+      const mails: ConsentMail[] = [];
+      const transport = notificationTransport(async (mail) => {
+        mails.push(mail);
+        return { kind: "unknown" };
+      });
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(mails.length, 1);
+      assertScheduledMail(mails[0]!, request.id, startsAt, endsAt);
+      // Move the application clock across the term boundary, inside the same retry window.
+      t.mock.timers.enable({
+        apis: ["Date"],
+        now: Date.parse(startsAt) + 1000,
+      });
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET available_at=now()",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(mails.length, 2);
+      assert.deepEqual(mails[1], mails[0]);
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET available_at=now(),first_dispatch_at=now()-interval '24 hours'",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(mails.length, 2);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "retry-window-ended",
+      );
+    }),
+);
+
 test(
   "the ClassWallet import grants a settled monthly invoice and starts an early month at the current end",
   enabled,
@@ -319,6 +591,12 @@ test(
           },
         ],
       };
+      await installConsentPolicy(pool, notificationPolicy);
+      const mails: ConsentMail[] = [];
+      const transport = notificationTransport(async (mail) => {
+        mails.push(mail);
+        return { kind: "accepted", receipt: randomUUID() };
+      });
       const pay = async () => {
         const invoice = await invoiceFor(invoices, "student@example.com");
         await invoices.claim("amp|student", invoice.id, "own");
@@ -326,40 +604,82 @@ test(
         await new Promise((resolve) => setTimeout(resolve, 5));
         const at = new Date().toISOString();
         await new Promise((resolve) => setTimeout(resolve, 5));
-        await stageClassWalletPayment(
-          pool,
-          {
-            "Order ID": randomUUID(),
-            "Transaction ID": randomUUID(),
-            "Invoice/Quote": invoice.id,
-            Organization: "Fixture",
-            State: "XX",
-            "Distribution Name": "Fixture",
-            "Payment Amount": "59.00",
-            Total: "59.00",
-            Fee: "0.00",
-            Status: "Settled",
-            "Payment Approval Date": at,
-            "Last Update": at,
-          },
-          config,
-          "b".repeat(64),
+        const row = {
+          "Order ID": randomUUID(),
+          "Transaction ID": randomUUID(),
+          "Invoice/Quote": invoice.id,
+          Organization: "Fixture",
+          State: "XX",
+          "Distribution Name": "Fixture",
+          "Payment Amount": "59.00",
+          Total: "59.00",
+          Fee: "0.00",
+          Status: "Settled",
+          "Payment Approval Date": at,
+          "Last Update": at,
+        };
+        await stageClassWalletPayment(pool, row, config, "b".repeat(64), true);
+        assert.deepEqual(await reconcileClassWalletPayments(pool, offers), {
+          provisioned: 1,
+          deferred: 0,
+          stopped: 0,
+        });
+        await deliverFundedActivationMail(pool, transport, notificationPolicy);
+        const sent = mails.length;
+        assert.equal(
+          (
+            await stageClassWalletPayment(
+              pool,
+              row,
+              config,
+              "c".repeat(64),
+              true,
+            )
+          ).replay,
           true,
         );
-        return reconcileClassWalletPayments(pool, offers);
+        assert.deepEqual(await reconcileClassWalletPayments(pool, offers), {
+          provisioned: 0,
+          deferred: 0,
+          stopped: 0,
+        });
+        assert.equal(
+          await deliverFundedActivationMail(
+            pool,
+            transport,
+            notificationPolicy,
+          ),
+          false,
+        );
+        assert.equal(mails.length, sent);
+        return invoice.id;
       };
-      assert.deepEqual(await pay(), {
-        provisioned: 1,
-        deferred: 0,
-        stopped: 0,
-      });
+      const firstInvoice = await pay();
+      assert.equal(mails.length, 1);
+      assert.equal(mails[0]!.subject, "Your AMP Math access is ready");
+      assert.equal(
+        mails[0]!.idempotencyKey,
+        `amp-funded-activation:${firstInvoice}`,
+      );
       const [first] = await grants(pool, "own");
       assert.equal(first!.endsAt, monthAfter(first!.startsAt));
-      assert.deepEqual(await pay(), {
-        provisioned: 1,
-        deferred: 0,
-        stopped: 0,
-      });
+      const secondInvoice = await pay();
+      assert.equal(mails.length, 2);
+      assert.equal(mails[1]!.recipient, "student@example.com");
+      assertScheduledMail(
+        mails[1]!,
+        secondInvoice,
+        first!.endsAt,
+        monthAfter(first!.endsAt),
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].n,
+        2,
+      );
       assert.deepEqual(await grants(pool, "own"), [
         first,
         { startsAt: first!.endsAt, endsAt: monthAfter(first!.endsAt) },
