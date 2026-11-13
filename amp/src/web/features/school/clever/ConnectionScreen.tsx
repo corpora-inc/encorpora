@@ -72,6 +72,8 @@ export function ConnectionScreen() {
     (r) => r.status === "requested" || r.status === "invited",
   );
   const paused = connection?.status === "active" && connection.syncPaused;
+  const authorityFailed =
+    connection?.lastError === "clever_district_admin_required";
   const keepExisting = bringExisting ?? !!data?.existingSchools.length;
   const ready =
     connection?.status === "active" && !!connection.lastSyncAt && !paused;
@@ -331,15 +333,29 @@ export function ConnectionScreen() {
             )}
           {!status.error && paused && (
             <section className={styles.panel}>
-              <h2>Bring your existing classes</h2>
-              <p>
-                Your district is connected. The Clever roster import is paused
-                while you bring existing AMP schools into the district and
-                review their roster matches.
-              </p>
-              {proof.data ? (
+              <h2>
+                {authorityFailed
+                  ? "Check district authorization"
+                  : "Bring your existing classes"}
+              </h2>
+              {authorityFailed ? (
+                <p role="alert">
+                  Your district administrator access could not be verified. Sign
+                  in with Clever again. If your role has changed, ask a current
+                  district administrator to continue setup.
+                </p>
+              ) : (
+                <p>
+                  Your district is connected. The Clever roster import is paused
+                  while you bring existing AMP schools into the district and
+                  review their roster matches.
+                </p>
+              )}
+              {proof.data || authorityFailed ? (
                 <a href={startUrl} className={buttonClass("primary")}>
-                  Continue with Clever to review schools
+                  {authorityFailed
+                    ? "Verify district access with Clever"
+                    : "Continue with Clever to review schools"}
                 </a>
               ) : (
                 <>

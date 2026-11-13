@@ -13,6 +13,8 @@ export function BuyerHandoffScreen() {
   const [copied, setCopied] = useState("");
   const request = useQuery({ ...buyerOptions(token ?? ""), enabled: !!token });
   const data = request.data;
+  const purchased = data?.status === "active";
+  const paid = data?.pilots.some((pilot) => (pilot.coverage?.paid ?? 0) > 0);
   const ends = [
     ...new Set(
       data?.pilots
@@ -45,10 +47,21 @@ export function BuyerHandoffScreen() {
             <header>
               <h1>AMP for {data.schoolName}</h1>
               <p className={styles.lead}>
-                Your teacher is ready to discuss seats for adaptive math
-                practice from counting through precalculus.
+                {purchased
+                  ? "Your school’s seat purchase is confirmed. Teachers and students keep their existing AMP records and learning history."
+                  : "Your teacher is ready to discuss seats for adaptive math practice from counting through precalculus."}
               </p>
             </header>
+            {purchased && (
+              <section className={styles.panel}>
+                <h2>{paid ? "Access activated" : "Purchase confirmed"}</h2>
+                <p>
+                  {paid
+                    ? "Paid access is available for rostered students covered by your school’s seats. Teachers can check each class’s coverage in AMP."
+                    : "Your seat purchase is recorded. Contact Corpora to confirm the agreed access dates or check coverage with your school administrator."}
+                </p>
+              </section>
+            )}
             <dl className={styles.facts}>
               <div>
                 <dt>Seats requested</dt>
@@ -67,14 +80,14 @@ export function BuyerHandoffScreen() {
               {data.students}{" "}
               {data.students === 1 ? "student is" : "students are"} on these
               class rosters.
-              {ends.length
+              {!purchased && ends.length
                 ? ` Pilot end date: ${ends.map((date) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long", day: "numeric" }).format(new Date(date))).join(" and ")}.`
                 : ""}
             </p>
             <p>
-              Tell us your purchasing requirements and the number of students
-              you want to include. We’ll agree on pricing and help with your
-              school’s purchase order or invoice process.
+              {purchased
+                ? "Contact Corpora if your school needs more seats or help with its purchase. Include the request reference below."
+                : "Tell us your purchasing requirements and the number of students you want to include. We’ll agree on pricing and help with your school’s purchase order or invoice process."}
             </p>
             <div className={styles.actions}>
               <Link
@@ -82,27 +95,29 @@ export function BuyerHandoffScreen() {
                 hash="talk"
                 className={buttonClass("primary")}
               >
-                Discuss seats with Corpora
+                {purchased ? "Contact Corpora" : "Discuss seats with Corpora"}
               </Link>
-              <Button
-                variant="secondary"
-                onClick={() =>
-                  void navigator.clipboard
-                    .writeText(`${subject}\n\n${body}`)
-                    .then(
-                      () =>
-                        setCopied(
-                          "Request details copied. Include them when you contact us.",
-                        ),
-                      () =>
-                        setCopied(
-                          "Copy the request reference below and include it when you contact us.",
-                        ),
-                    )
-                }
-              >
-                Copy request details
-              </Button>
+              {!purchased && (
+                <Button
+                  variant="secondary"
+                  onClick={() =>
+                    void navigator.clipboard
+                      .writeText(`${subject}\n\n${body}`)
+                      .then(
+                        () =>
+                          setCopied(
+                            "Request details copied. Include them when you contact us.",
+                          ),
+                        () =>
+                          setCopied(
+                            "Copy the request reference below and include it when you contact us.",
+                          ),
+                      )
+                  }
+                >
+                  Copy request details
+                </Button>
+              )}
             </div>
             <p className={styles.status} role="status">
               {copied}

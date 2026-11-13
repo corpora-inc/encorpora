@@ -29,7 +29,8 @@ const authenticate = refuseStudentTokens(developmentAuth());
 const api = buildApp({ repository: learning, authenticate });
 await registerFamilyRoutes(api, { pool: learning.pool, authenticate });
 let accountsMode = true,
-  failConnect = false;
+  failConnect = false,
+  paidStudents = 0;
 let state: any;
 const connectionId = randomUUID(),
   orgId = randomUUID(),
@@ -63,6 +64,26 @@ api.get("/api/v1/provider/onboarding-session", async (request, reply) =>
     : reply.code(401).send({ error: "sign_in_required" }),
 );
 api.get("/api/v1/school/clever/status", async () => state);
+api.post("/api/v1/school/buyer", async () => ({
+  id: schoolId,
+  schoolName: "Fixture school",
+  seats: 30,
+  status: "active",
+  classCount: 1,
+  students: 25,
+  participating: 20,
+  pilots: [
+    {
+      status: "expired",
+      startedAt: null,
+      endsAt: null,
+      graceEndsAt: null,
+      eligible: false,
+      authorized: true,
+      coverage: { students: 25, covered: paidStudents, paid: paidStudents },
+    },
+  ],
+}));
 api.post("/api/v1/school/sso/clever/link", async (_request, reply) =>
   reply.code(403).send({ error: "reauth_required" }),
 );
@@ -221,6 +242,25 @@ try {
   accountsMode = false;
   await page.goto(`${origin}/school/connect`);
   await page.getByRole("link", { name: "Review existing schools" }).waitFor();
+  state.connection.lastError = "clever_district_admin_required";
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Check district authorization" })
+    .waitFor();
+  await page
+    .getByRole("link", { name: "Verify district access with Clever" })
+    .waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Import Clever roster" }).count(),
+    0,
+  );
+  assert.equal(
+    await page.getByRole("link", { name: "Review existing schools" }).count(),
+    0,
+  );
+  await capture("paused-authority-error");
+  state.connection.lastError = null;
+  await page.reload();
   await page.getByRole("button", { name: "Import Clever roster" }).click();
   await page.getByText("Syncing schools, classes and students").waitFor();
   state.connection = {
@@ -271,9 +311,30 @@ try {
     .filter({ hasText: /Request saved/ })
     .waitFor();
   await capture("provider-invitation");
+  await page.goto(`${origin}/schools/continue#token=${"b".repeat(43)}`);
+  await page
+    .getByRole("heading", { name: "Purchase confirmed", exact: true })
+    .waitFor();
+  assert.equal(new URL(page.url()).hash, "");
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Discuss seats with Corpora" })
+      .count(),
+    0,
+  );
+  paidStudents = 25;
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Access activated", exact: true })
+    .waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Copy request details" }).count(),
+    0,
+  );
+  await capture("purchase-active");
   assert.deepEqual(failures, []);
   console.info(
-    "Clever guest, reconnect failure/retry, preserved-roster pause, ready roster and pending AnySchool browser states passed.",
+    "Clever connection, paused authority recovery, pending AnySchool and confirmed purchase browser states passed.",
   );
 } catch (error) {
   await page.screenshot({ path: `${artifacts}/failure.png`, fullPage: true });
