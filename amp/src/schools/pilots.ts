@@ -542,7 +542,7 @@ export function normalizePilotEmail(email: string) {
   const [local, domain] = email.trim().toLowerCase().split("@");
   return domain === "gmail.com" || domain === "googlemail.com"
     ? `${local!.split("+")[0]!.replaceAll(".", "")}@gmail.com`
-    : `${local}@${domain}`;
+    : `${local!.split("+")[0]}@${domain}`;
 }
 const buyerToken = (id: string, secret: string) => {
   if (secret.length < 24) throw new Error("School token secret required");
