@@ -96,7 +96,9 @@ def prepare_runtime(config, row, workspace):
         (runtime/'film/lessons').mkdir(parents=True, exist_ok=True)
         entries = []
         sources = [p for p in kit.iterdir() if p.is_file() and p.suffix in ('.ts', '.tsx', '.css', '.html') and '.test.' not in p.name]
-        sources += [source/'browser-security.mjs', source/'package.json']
+        # tsconfig.json travels too: without it the copied film/*.tsx compile with the classic JSX
+        # runtime and a shot that mounts an app figure fails with "React is not defined".
+        sources += [source/'browser-security.mjs', source/'package.json', source/'tsconfig.json']
         for path in sources:
             relative = path.relative_to(source)
             target = runtime/relative
