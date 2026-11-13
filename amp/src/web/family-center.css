@@ -208,10 +208,14 @@
   }
 }
 
-/* A parent workspace has its own frame; controls never extend the lesson. */
+/* A parent workspace has its own frame; controls never extend the lesson.
+   The shell is fixed to the viewport, so a page taller than it (Privacy's
+   rows on a phone held sideways) scrolls inside it. */
 .shell.family-shell > .family-center {
   flex: 1;
   height: auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .family-heading {
