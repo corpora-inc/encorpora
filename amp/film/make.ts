@@ -30,6 +30,8 @@ import { neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, v
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
 import { heldFrames } from "./held-frames";
+import { displayScript, letterNotes } from "./letters";
+import { captionText } from "./captions";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -74,7 +76,8 @@ if (misuse.length) {
   console.error(`PROBLEMS in ${id}:\n- ${misuse.join("\n- ")}`);
   process.exit(1);
 }
-const script: Script = scriptSchema.parse(raw);
+const screenplay: Script = scriptSchema.parse(raw);
+const script = displayScript(screenplay);
 const overrides = Object.fromEntries(values.voice.map((v) => {
   const m = v.match(/^([\w-]+)=(.+)$/);
   if (!m) throw new Error(`--voice takes role=voice, not "${v}"`);
@@ -82,7 +85,7 @@ const overrides = Object.fromEntries(values.voice.map((v) => {
 }));
 // Overrides name approved voices. A speaker left without a distinct one fails when the film is voiced, not in a dry check.
 const cast = resolveCast(script, overrides);
-const runs = runsOf(script, cast);
+const runs = runsOf(screenplay, cast);
 
 // ------------------------------------------------------------------ voice
 let charsSpent = 0;
@@ -111,7 +114,7 @@ function wav(pcm: Int16Array) {
   return Buffer.concat([h, data]);
 }
 /** Notes that do not stop the film: about the voice, and labels a crowded app figure left out. */
-const voiceNotes: string[] = [];
+const voiceNotes: string[] = values.dry ? letterNotes(screenplay) : [];
 /** Stray sounds too close to a word to remove: they stop the narration. */
 const strayFaults: string[] = [];
 async function voice(): Promise<Timing> {
@@ -143,9 +146,9 @@ async function voice(): Promise<Timing> {
     // last sound, so nothing after the last word (or before the first) reaches the film. A stray
     // too close to a word to remove stops the narration (voice.ts retakes such a take first).
     const raw = even(pcmOf(r));
-    const plan = strayPlan(raw, wordsOf(r.alignment), heardWords(r));
+    const plan = strayPlan(raw, wordsOf(r.alignment, run.text), heardWords(r));
     const repaired = repairTake(raw, plan);
-    const { pcm, words, joins: tightJoins, map } = tighten(repaired.pcm, wordsOf(r.alignment).map((w) => ({ ...w, start: repaired.map(w.start), end: repaired.map(w.end) })));
+    const { pcm, words, joins: tightJoins, map } = tighten(repaired.pcm, wordsOf(r.alignment, run.text).map((w) => ({ ...w, start: repaired.map(w.start), end: repaired.map(w.end) })));
     const joins = [
       ...tightJoins.map((at) => ({ at, what: `shortened silence in shot ${si + 1}` })),
       ...repaired.joins.map((j) => ({ at: map(j.at), what: `"${j.word}" joined to its loose end in shot ${si + 1}`, within: JOIN / 2 })),
@@ -267,37 +270,10 @@ function estimate(): Timing {
 
 // ------------------------------------------------------------------ captions
 function captions(timing: Timing) {
-  const words = timing.shots.flat().flatMap((b) => b.words);
-  const cues: WordTime[][] = [];
-  let cur: WordTime[] = [];
-  for (const w of words) {
-    cur.push(w);
-    const len = cur.map((x) => x.text).join(" ").length;
-    if (/[.?!:]$/.test(w.text) || (len > 62 && /,$/.test(w.text)) || len > 74) { cues.push(cur); cur = []; }
-  }
-  if (cur.length) cues.push(cur);
-  const fmt = (t: number, sep: string) => {
-    const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
-    return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(Math.floor(s)).padStart(2, "0")}${sep}${String(Math.round((s % 1) * 1000)).padStart(3, "0")}`;
-  };
-  const fix = (s: string) => s.replace(/\b([A-Z]) ([A-Z])\b/g, "$1$2");
-  const wrap = (s: string) => {
-    if (s.length <= 42) return s;
-    const mid = s.length / 2;
-    let best = -1;
-    for (let i = 0; i < s.length; i++) if (s[i] === " " && (best < 0 || Math.abs(i - mid) < Math.abs(best - mid))) best = i;
-    return `${s.slice(0, best)}\n${s.slice(best + 1)}`;
-  };
-  const srt: string[] = [], vtt: string[] = ["WEBVTT\n"];
-  cues.forEach((c, i) => {
-    const a = c[0]!.start, b = Math.min(cues[i + 1]?.[0]!.start ?? c[c.length - 1]!.end + 0.4, c[c.length - 1]!.end + 0.5);
-    const line = wrap(fix(c.map((x) => x.text).join(" ")));
-    srt.push(`${i + 1}\n${fmt(a, ",")} --> ${fmt(b, ",")}\n${line}\n`);
-    vtt.push(`${fmt(a, ".")} --> ${fmt(b, ".")}\n${line}\n`);
-  });
-  writeFileSync(join(OUT, `${id}.en.srt`), srt.join("\n"));
-  writeFileSync(join(OUT, `${id}.en.vtt`), vtt.join("\n"));
-  writeFileSync(join(OUT, "transcript.txt"), fix(words.map((w) => w.text).join(" ")));
+  const { srt, vtt, transcript } = captionText(timing);
+  writeFileSync(join(OUT, `${id}.en.srt`), srt);
+  writeFileSync(join(OUT, `${id}.en.vtt`), vtt);
+  writeFileSync(join(OUT, "transcript.txt"), transcript);
 }
 
 // ------------------------------------------------------------------ machine budget

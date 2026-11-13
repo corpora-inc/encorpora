@@ -2,25 +2,32 @@
 import { createHash } from "node:crypto";
 import { parseArgs } from "node:util";
 import { z } from "zod";
-import { semanticFigureSchema } from "../src/math/contracts";
+import { semanticFigureSchema, type SemanticFigure } from "../src/math/contracts";
 import { scriptSchema, type Script } from "./schema";
+import { displayScript } from "./letters";
 import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from "./cast";
 import {
   FILM_CAPABILITY,
   FILM_CAPABILITY_V2,
   FILM_CAPABILITY_V3,
+  FILM_CAPABILITY_V4,
   FILM_CDN,
   type LessonFilm,
 } from "../src/content/lesson-films";
 
 /**
- * The oldest player that can draw the film: a board header needs v4, a shot
- * with its own app figure ({scene}) v3. An older player would skip a header it
- * does not know and play the film without it, so such a film never reaches one.
+ * The oldest player that can draw the film: a bill needs v5, a board header
+ * v4, a shot's own scene v3. Check example figures too when a shot uses one.
  */
-export function filmCapability(script: Script): LessonFilm["capability"] {
+export function filmCapability(script: Script, example?: SemanticFigure | null): LessonFilm["capability"] {
+  if (script.shots.some((shot) => {
+    const figure = shot.figure;
+    const scene = figure && "scene" in figure ? figure.scene
+      : figure && "example" in figure && example?.kind === "scene" ? example.scene : undefined;
+    return scene?.elements.some((e) => e.type === "bill");
+  })) return FILM_CAPABILITY;
   if (script.shots.some((shot) => shot.beats.some((b) => (b.do ?? []).some((a) => a.do === "header"))))
-    return FILM_CAPABILITY;
+    return FILM_CAPABILITY_V4;
   return script.shots.some((shot) => shot.figure && "scene" in shot.figure)
     ? FILM_CAPABILITY_V3
     : FILM_CAPABILITY_V2;
@@ -300,7 +307,8 @@ export function planFilm(
     .parse(exported);
   const source = { ...raw, script: screenplayFromExport(exported) };
   const committed = scriptSchema.parse(committedScript);
-  const script = filmContent(committed);
+  // A marked letter ("*a*") is for the voice: the export and the published film carry the bare letter.
+  const script = filmContent(displayScript(committed));
   const teaches = committed.teaches ?? [];
   const templateId = templateOf(id).template;
   if (
@@ -399,7 +407,7 @@ export function planFilm(
       audioUrl,
       duration: timing.duration,
       teacher: teacher.name as LessonFilm["teacher"],
-      capability: filmCapability(script),
+      capability: filmCapability(script, source.figure),
       editions: [edition],
     },
   };

@@ -4,6 +4,7 @@ import type { FillRole, InkRole } from "../../math/scene/spec";
 import type { RunFont } from "../../math/scene/type";
 import type { ItemState } from "../../math/scene/timeline";
 import { CoinFace } from "./CoinFace";
+import { BillFace } from "./BillFace";
 
 /** Every paint is a theme role; print pages carry the light roles. */
 const ink: Record<InkRole, string> = {
@@ -143,6 +144,19 @@ function Item({
           cx={d.cx}
           cy={d.cy}
           r={d.r}
+          edge={IMAGE_EDGE}
+          emphasis={emphasis}
+        />
+      );
+    case "billImage":
+      return (
+        <BillFace
+          {...common}
+          value={d.value}
+          x={d.x}
+          y={d.y}
+          w={d.w}
+          h={d.h}
           edge={IMAGE_EDGE}
           emphasis={emphasis}
         />

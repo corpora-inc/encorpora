@@ -1,0 +1,2297 @@
+{
+ "id": "coin-total--sc",
+ "title": "Coins and their values",
+ "teaches": [
+  "coin-name-and-cent-value"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -36,
+        -39.4
+       ],
+       "size": [
+        72,
+        77.1
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "pn",
+       "at": [
+        -28.725,
+        36.575
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pnN",
+       "at": [
+        -30.56,
+        7.075
+       ],
+       "text": "penny",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pnV",
+       "at": [
+        -7.84,
+        7.075
+       ],
+       "text": "1¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "nk",
+       "at": [
+        5.195,
+        37.655
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nkN",
+       "at": [
+        4.415,
+        7.075
+       ],
+       "text": "nickel",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nkV",
+       "at": [
+        27.185,
+        7.075
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "dm",
+       "at": [
+        -28.155,
+        -3.275
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dmN",
+       "at": [
+        -30.82,
+        -33.735
+       ],
+       "text": "dime",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dmV",
+       "at": [
+        -7.58,
+        -33.735
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "qt",
+       "at": [
+        3.67,
+        -0.1
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qtN",
+       "at": [
+        0.855,
+        -33.735
+       ],
+       "text": "quarter",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qtV",
+       "at": [
+        30.745,
+        -33.735
+       ],
+       "text": "25¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here are four coins. Money is counted in cents.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Money is counted in cents.",
+       "at": "Money"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A coin's value is how many cents it is worth.",
+     "do": [
+      {
+       "do": "term",
+       "word": "value",
+       "meaning": "how many cents a coin is worth",
+       "at": "value"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The copper coin is a penny. Its value is one cent.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "penny",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "pn"
+        },
+        {
+         "do": "appear",
+         "target": "pnN"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "one",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pnV"
+        }
+       ],
+       "dur": 0.5
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "One cent is written with the cent sign after the number.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "1\\text{¢}",
+       "note": "\\text{one cent}",
+       "at": "sign"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The silver coin with a smooth edge is a nickel, worth five cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "nickel",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nk"
+        },
+        {
+         "do": "appear",
+         "target": "nkN"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "nkV"
+        }
+       ],
+       "dur": 0.5
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The smallest coin is a dime, worth ten cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "dime",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dm"
+        },
+        {
+         "do": "appear",
+         "target": "dmN"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "dmV"
+        }
+       ],
+       "dur": 0.5
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The biggest coin is a quarter, worth twenty-five cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "quarter",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "qt"
+        },
+        {
+         "do": "appear",
+         "target": "qtN"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "qtV"
+        }
+       ],
+       "dur": 0.5
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -54,
+        -50
+       ],
+       "size": [
+        108,
+        100
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "nk",
+       "at": [
+        -29.805,
+        49.005
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nkV",
+       "at": [
+        -19.2,
+        18.07
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "dm",
+       "at": [
+        11.845,
+        47.355
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dmV",
+       "at": [
+        20.8,
+        18.07
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "a1",
+       "at": [
+        -51.625,
+        14.925
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "ac1",
+       "at": [
+        -42.1,
+        -12.155
+       ],
+       "text": "1",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "a2",
+       "at": [
+        -30.575,
+        14.925
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "ac2",
+       "at": [
+        -21.05,
+        -12.155
+       ],
+       "text": "2",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "a3",
+       "at": [
+        -9.525,
+        14.925
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "ac3",
+       "at": [
+        0.0,
+        -12.155
+       ],
+       "text": "3",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "a4",
+       "at": [
+        11.525,
+        14.925
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "ac4",
+       "at": [
+        21.05,
+        -12.155
+       ],
+       "text": "4",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "a5",
+       "at": [
+        32.575,
+        14.925
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "ac5",
+       "at": [
+        42.1,
+        -12.155
+       ],
+       "text": "5",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "b1",
+       "at": [
+        -51.625,
+        -14.875
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bc1",
+       "at": [
+        -42.1,
+        -41.955
+       ],
+       "text": "6",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "b2",
+       "at": [
+        -30.575,
+        -14.875
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bc2",
+       "at": [
+        -21.05,
+        -41.955
+       ],
+       "text": "7",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "b3",
+       "at": [
+        -9.525,
+        -14.875
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bc3",
+       "at": [
+        0.0,
+        -41.955
+       ],
+       "text": "8",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "b4",
+       "at": [
+        11.525,
+        -14.875
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bc4",
+       "at": [
+        21.05,
+        -41.955
+       ],
+       "text": "9",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "coins",
+       "id": "b5",
+       "at": [
+        32.575,
+        -14.875
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "bc5",
+       "at": [
+        42.1,
+        -41.955
+       ],
+       "text": "10",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "n1V",
+       "at": [
+        5.6,
+        2.4
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        -1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "n2",
+       "at": [
+        -17.605,
+        -13.795
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "n2V",
+       "at": [
+        5.6,
+        -27.4
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        -1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "dmV2",
+       "at": [
+        5.6,
+        30
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        -1,
+        0
+       ],
+       "bold": true
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Size does not tell the value.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Size"
+      },
+      {
+       "do": "header",
+       "text": "Size does not tell the value.",
+       "at": "Size"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "The nickel is bigger,",
+     "do": [
+      {
+       "do": "scene",
+       "at": "nickel",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nk"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "but the dime is worth more.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "dime",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dm"
+        }
+       ]
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five pennies are worth a nickel. One, two, three, four, five.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "nickel",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nk"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "text",
+       "text": "$5$ pennies $=$ $1$ nickel",
+       "at": "nickel"
+      },
+      {
+       "do": "scene",
+       "at": "One",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "a1"
+        },
+        {
+         "do": "appear",
+         "target": "ac1"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "two",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "a2"
+        },
+        {
+         "do": "appear",
+         "target": "ac2"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "three",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "a3"
+        },
+        {
+         "do": "appear",
+         "target": "ac3"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "four",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "a4"
+        },
+        {
+         "do": "appear",
+         "target": "ac4"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "a5"
+        },
+        {
+         "do": "appear",
+         "target": "ac5"
+        }
+       ],
+       "dur": 0.35,
+       "nth": 2
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten pennies are worth a dime. Six, seven, eight, nine, ten.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "dime",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dm"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "text",
+       "text": "$10$ pennies $=$ $1$ dime",
+       "at": "dime"
+      },
+      {
+       "do": "scene",
+       "at": "Six",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "b1"
+        },
+        {
+         "do": "appear",
+         "target": "bc1"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "seven",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "b2"
+        },
+        {
+         "do": "appear",
+         "target": "bc2"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "eight",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "b3"
+        },
+        {
+         "do": "appear",
+         "target": "bc3"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "nine",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "b4"
+        },
+        {
+         "do": "appear",
+         "target": "bc4"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "b5"
+        },
+        {
+         "do": "appear",
+         "target": "bc5"
+        }
+       ],
+       "dur": 0.35,
+       "nth": 2
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five pennies make a nickel, and five more make another nickel.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "nickel",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "a1"
+        },
+        {
+         "do": "disappear",
+         "target": "a2"
+        },
+        {
+         "do": "disappear",
+         "target": "a3"
+        },
+        {
+         "do": "disappear",
+         "target": "a4"
+        },
+        {
+         "do": "disappear",
+         "target": "a5"
+        },
+        {
+         "do": "disappear",
+         "target": "ac1"
+        },
+        {
+         "do": "disappear",
+         "target": "ac2"
+        },
+        {
+         "do": "disappear",
+         "target": "ac3"
+        },
+        {
+         "do": "disappear",
+         "target": "ac4"
+        },
+        {
+         "do": "disappear",
+         "target": "ac5"
+        },
+        {
+         "do": "disappear",
+         "target": "nkV"
+        },
+        {
+         "do": "move",
+         "target": "nk",
+         "by": [
+          12.2,
+          -33.0
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "n1V"
+        }
+       ],
+       "dur": 1.0
+      },
+      {
+       "do": "scene",
+       "at": "another",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "b1"
+        },
+        {
+         "do": "disappear",
+         "target": "b2"
+        },
+        {
+         "do": "disappear",
+         "target": "b3"
+        },
+        {
+         "do": "disappear",
+         "target": "b4"
+        },
+        {
+         "do": "disappear",
+         "target": "b5"
+        },
+        {
+         "do": "disappear",
+         "target": "bc1"
+        },
+        {
+         "do": "disappear",
+         "target": "bc2"
+        },
+        {
+         "do": "disappear",
+         "target": "bc3"
+        },
+        {
+         "do": "disappear",
+         "target": "bc4"
+        },
+        {
+         "do": "disappear",
+         "target": "bc5"
+        },
+        {
+         "do": "appear",
+         "target": "n2"
+        },
+        {
+         "do": "appear",
+         "target": "n2V"
+        }
+       ],
+       "dur": 0.8
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "So two nickels make one dime.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "So",
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "dmV"
+        },
+        {
+         "do": "move",
+         "target": "dm",
+         "by": [
+          -27.8,
+          -5.4
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "dmV2"
+        }
+       ],
+       "dur": 0.9
+      },
+      {
+       "do": "text",
+       "text": "$2$ nickels $=$ $1$ dime",
+       "at": "nickels"
+      }
+     ],
+     "pause": 0.4
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -54,
+        -50
+       ],
+       "size": [
+        108,
+        100
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "h1",
+       "at": [
+        -39.955,
+        46.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "h2",
+       "at": [
+        12.87,
+        48.63
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "h3",
+       "at": [
+        -24.525,
+        -22.475
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "h4",
+       "at": [
+        22.045,
+        -24.045
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "v1",
+       "at": [
+        -36.2,
+        -10.86
+       ],
+       "text": "25¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "v2",
+       "at": [
+        -11.2,
+        -10.86
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "v3",
+       "at": [
+        13.8,
+        -10.86
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "v4",
+       "at": [
+        38.8,
+        -10.86
+       ],
+       "text": "1¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "k1",
+       "at": [
+        -36.2,
+        -19.42
+       ],
+       "text": "25",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "k2",
+       "at": [
+        -11.2,
+        -19.42
+       ],
+       "text": "35",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "k3",
+       "at": [
+        13.8,
+        -19.42
+       ],
+       "text": "45",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "k4",
+       "at": [
+        38.8,
+        -19.42
+       ],
+       "text": "46",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Here is a handful: a dime, a quarter, a penny and a dime.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "handful"
+      },
+      {
+       "do": "text",
+       "text": "Each coin counts for its value.",
+       "at": "handful"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with the coin worth the most: the quarter, twenty-five cents.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Greatest value first.",
+       "at": "Start"
+      },
+      {
+       "do": "scene",
+       "at": "quarter",
+       "actions": [
+        {
+         "do": "move",
+         "target": "h2",
+         "by": [
+          -61.2,
+          -25.5
+         ]
+        }
+       ],
+       "dur": 1.0
+      },
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "v1"
+        }
+       ],
+       "dur": 0.4
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then the dimes, ten cents each.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "dimes",
+       "actions": [
+        {
+         "do": "move",
+         "target": "h1",
+         "by": [
+          19.8,
+          -27
+         ]
+        },
+        {
+         "do": "move",
+         "target": "h4",
+         "by": [
+          -17.2,
+          44
+         ]
+        }
+       ],
+       "dur": 1.0
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "v2"
+        },
+        {
+         "do": "appear",
+         "target": "v3"
+        }
+       ],
+       "dur": 0.4
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "The penny, one cent, goes last.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "penny",
+       "actions": [
+        {
+         "do": "move",
+         "target": "h3",
+         "by": [
+          53.8,
+          43
+         ]
+        }
+       ],
+       "dur": 1.0
+      },
+      {
+       "do": "scene",
+       "at": "one",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "v4"
+        }
+       ],
+       "dur": 0.4
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count on: twenty-five, thirty-five, forty-five, forty-six.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "k1"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "thirty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "k2"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "forty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "k3"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "forty-six",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "k4"
+        }
+       ],
+       "dur": 0.35
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The coins are worth forty-six cents in all.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "46\\text{¢}",
+       "at": "forty-six"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "The greatest first keeps the counting easy: the tens come first, and the ones come last.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "tens",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "h1"
+        },
+        {
+         "do": "highlight",
+         "target": "h4"
+        }
+       ],
+       "dur": 0.6
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Any order gives the same total.",
+     "do": [],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -54,
+        -50
+       ],
+       "size": [
+        108,
+        100
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "m1",
+       "at": [
+        -33.105,
+        47.105
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "m2",
+       "at": [
+        13.975,
+        47.525
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "m3",
+       "at": [
+        -9.105,
+        -20.395
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "w1",
+       "at": [
+        -25.5,
+        -9.33
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "w2",
+       "at": [
+        0.5,
+        -9.33
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "w3",
+       "at": [
+        26.5,
+        -9.33
+       ],
+       "text": "1¢",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "text",
+       "id": "q1",
+       "at": [
+        -25.5,
+        -17.89
+       ],
+       "text": "5",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "q2",
+       "at": [
+        0.5,
+        -17.89
+       ],
+       "text": "10",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      },
+      {
+       "type": "text",
+       "id": "q3",
+       "at": [
+        26.5,
+        -17.89
+       ],
+       "text": "11",
+       "font": "sans",
+       "size": "lg",
+       "align": [
+        0,
+        0
+       ],
+       "bold": true,
+       "color": "accent"
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "How many cents are these coins worth in all?",
+     "do": [
+      {
+       "do": "clear",
+       "at": "How"
+      },
+      {
+       "do": "problem",
+       "text": "How many cents are these coins worth in all?",
+       "at": "How"
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "learner",
+     "say": "I count three coins, so I say three cents in all.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "3\\text{¢}",
+       "id": "slip",
+       "note": "\\text{three coins}",
+       "at": "three",
+       "nth": 2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three is how many coins there are. The card asks what they are worth.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Three",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "m1"
+        },
+        {
+         "do": "highlight",
+         "target": "m2"
+        },
+        {
+         "do": "highlight",
+         "target": "m3"
+        }
+       ],
+       "dur": 0.6
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "asks"
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count each coin for its value, the greatest first.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "greatest",
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "m1"
+        },
+        {
+         "do": "highlight",
+         "target": "m3"
+        }
+       ],
+       "dur": 0.6
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Nickel, five. Nickel, ten. Penny, eleven.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Nickel",
+       "actions": [
+        {
+         "do": "move",
+         "target": "m1",
+         "by": [
+          -3.0,
+          -25.5
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "w1"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "q1"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "Nickel",
+       "actions": [
+        {
+         "do": "move",
+         "target": "m3",
+         "by": [
+          -1.0,
+          42
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "w2"
+        }
+       ],
+       "dur": 0.5,
+       "nth": 2
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "q2"
+        }
+       ],
+       "dur": 0.35
+      },
+      {
+       "do": "scene",
+       "at": "Penny",
+       "actions": [
+        {
+         "do": "move",
+         "target": "m2",
+         "by": [
+          3.0,
+          -27
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "w3"
+        }
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "scene",
+       "at": "eleven",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "q3"
+        }
+       ],
+       "dur": 0.35
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "learner",
+     "say": "Now I see. The coins are worth eleven cents in all.",
+     "do": [
+      {
+       "do": "answer",
+       "tex": "11\\text{¢}",
+       "at": "eleven"
+      }
+     ],
+     "pause": 0.5
+    }
+   ]
+  },
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "frame",
+       "at": [
+        -36,
+        -39.4
+       ],
+       "size": [
+        72,
+        77.1
+       ],
+       "fill": "none"
+      },
+      {
+       "type": "coins",
+       "id": "pn",
+       "at": [
+        -28.725,
+        36.575
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pnN",
+       "at": [
+        -30.56,
+        7.075
+       ],
+       "text": "penny",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pnV",
+       "at": [
+        -7.84,
+        7.075
+       ],
+       "text": "1¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "nk",
+       "at": [
+        5.195,
+        37.655
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nkN",
+       "at": [
+        4.415,
+        7.075
+       ],
+       "text": "nickel",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nkV",
+       "at": [
+        27.185,
+        7.075
+       ],
+       "text": "5¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "dm",
+       "at": [
+        -28.155,
+        -3.275
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dmN",
+       "at": [
+        -30.82,
+        -33.735
+       ],
+       "text": "dime",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dmV",
+       "at": [
+        -7.58,
+        -33.735
+       ],
+       "text": "10¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      },
+      {
+       "type": "coins",
+       "id": "qt",
+       "at": [
+        3.67,
+        -0.1
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qtN",
+       "at": [
+        0.855,
+        -33.735
+       ],
+       "text": "quarter",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "qtV",
+       "at": [
+        30.745,
+        -33.735
+       ],
+       "text": "25¢",
+       "font": "sans",
+       "size": "md",
+       "align": [
+        1,
+        0
+       ],
+       "bold": true
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A penny is one cent, a nickel five, a dime ten, and a quarter twenty-five cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "penny"
+      },
+      {
+       "do": "text",
+       "text": "Each coin is worth its value.",
+       "at": "penny"
+      },
+      {
+       "do": "scene",
+       "at": "one",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pnV"
+        }
+       ],
+       "dur": 0.4
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "nkV"
+        }
+       ],
+       "dur": 0.4
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "dmV"
+        }
+       ],
+       "dur": 0.4
+      },
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "actions": [
+        {
+         "do": "appear",
+         "target": "qtV"
+        }
+       ],
+       "dur": 0.4
+      }
+     ],
+     "pause": 0.3
+    },
+    {
+     "speaker": "teacher",
+     "say": "A coin counts for its value, not its size. Start with the greatest value and count on.",
+     "do": [
+      {
+       "do": "text",
+       "text": "Value, not size.",
+       "at": "value"
+      },
+      {
+       "do": "text",
+       "text": "Greatest first, then count on.",
+       "at": "Start"
+      }
+     ],
+     "pause": 0.8
+    }
+   ]
+  }
+ ]
+}

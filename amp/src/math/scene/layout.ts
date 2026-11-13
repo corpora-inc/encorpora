@@ -10,7 +10,7 @@ import type {
 } from "./spec";
 import { typeset, type Typeset } from "./type";
 import { frameAt } from "./timeline";
-import type { SceneArt } from "./art";
+import type { BillValue, SceneArt } from "./art";
 
 /** A bundled picture drawn in a circle (a coin's face). Components emit it;
  * it is not part of the scene spec, so authors and older clients never see
@@ -22,8 +22,17 @@ export type ImagePrim = {
   r: number;
   art: SceneArt;
 };
+/** A bundled bill illustration. Component-only, with the same lower-left
+ * position and math-unit size as a rect; it never enters the wire spec. */
+export type BillImagePrim = {
+  type: "billImage";
+  id?: string;
+  at: Point;
+  size: Point;
+  value: BillValue;
+};
 /** A primitive as components emit it: test hooks and collision hints added. */
-export type Prim = (Primitive | ImagePrim) & {
+export type Prim = (Primitive | ImagePrim | BillImagePrim) & {
   data?: Record<string, string | number>;
   /** Labels avoid this shape when they are placed. */
   obstacle?: boolean;
@@ -115,6 +124,14 @@ export type Drawn = Common &
         art: SceneArt;
       }
     | {
+        k: "billImage";
+        x: number;
+        y: number;
+        w: number;
+        h: number;
+        value: BillValue;
+      }
+    | {
         k: "text";
         /** Left end of the baseline. */
         x: number;
@@ -197,6 +214,7 @@ function mathPoints(p: Prim): Point[] {
         p.fill ? [p.center] : [],
       );
     case "rect":
+    case "billImage":
       return [p.at, [p.at[0] + p.size[0], p.at[1] + p.size[1]]];
   }
 }
@@ -548,6 +566,19 @@ function draw(
         items.push({ k: "image", id, data, cx, cy, r: p.r * s, art: p.art });
         break;
       }
+      case "billImage": {
+        items.push({
+          k: "billImage",
+          id,
+          data,
+          x: X(p.at[0]),
+          y: Y(p.at[1] + p.size[1]),
+          w: p.size[0] * s,
+          h: p.size[1] * s,
+          value: p.value,
+        });
+        break;
+      }
       case "rect": {
         const x = X(p.at[0]),
           y = Y(p.at[1] + p.size[1]);
@@ -856,6 +887,10 @@ function itemBox(d: Drawn, b: Box) {
     case "image":
       grow(b, d.cx, d.cy, d.r + IMAGE_EDGE / 2);
       break;
+    case "billImage":
+      grow(b, d.x, d.y, IMAGE_EDGE / 2);
+      grow(b, d.x + d.w, d.y + d.h, IMAGE_EDGE / 2);
+      break;
     case "rect":
       grow(b, d.x, d.y, (d.sw ?? 0) / 2);
       grow(b, d.x + d.w, d.y + d.h, (d.sw ?? 0) / 2);
@@ -1002,6 +1037,7 @@ function translate(d: Drawn, dx: number, dy: number): Drawn {
     case "image":
       return { ...d, cx: d.cx + dx, cy: d.cy + dy };
     case "rect":
+    case "billImage":
       return { ...d, x: d.x + dx, y: d.y + dy };
     case "text":
       return {

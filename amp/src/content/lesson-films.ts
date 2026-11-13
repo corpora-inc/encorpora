@@ -2,12 +2,12 @@ import { z } from "zod";
 import manifest from "./films/manifest.json";
 
 /**
- * Current clients draw a header pinned at the top of a film's board (v4). v3
- * clients draw any app figure in a film and receive films without a header. v2
- * clients receive voice editions of films with neither; v1 clients the default
- * edition of those.
+ * Current clients draw bills in film scenes (v5). v4 clients draw board
+ * headers; v3 clients draw earlier scene components. v2 clients receive voice
+ * editions of films without scenes or headers; v1 clients their default edition.
  */
-export const FILM_CAPABILITY = "lesson-film-v4";
+export const FILM_CAPABILITY = "lesson-film-v5";
+export const FILM_CAPABILITY_V4 = "lesson-film-v4";
 export const FILM_CAPABILITY_V3 = "lesson-film-v3";
 export const FILM_CAPABILITY_V2 = "lesson-film-v2";
 export const FILM_CAPABILITY_V1 = "lesson-film-v1";
@@ -34,8 +34,13 @@ export const lessonFilmSchema = z
     audioUrl: z.string().url(),
     duration: z.number().positive().finite(),
     teacher: z.enum(["Madeline Brousseaux", "Paul"]),
-    /** The oldest player that can draw it: a shot with its own app figure needs v3, a board header v4. */
-    capability: z.enum([FILM_CAPABILITY_V2, FILM_CAPABILITY_V3, FILM_CAPABILITY]),
+    /** The oldest player: a scene needs v3, a board header v4, a bill v5. */
+    capability: z.enum([
+      FILM_CAPABILITY_V2,
+      FILM_CAPABILITY_V3,
+      FILM_CAPABILITY_V4,
+      FILM_CAPABILITY,
+    ]),
     /** Every voice edition of this film. The first is the default the app plays. */
     editions: z.array(filmEditionSchema).min(1),
   })
@@ -99,8 +104,13 @@ export function filmForClient(
 ): LessonFilm | LessonFilmV1 | undefined {
   if (!film) return undefined;
   if (capability === FILM_CAPABILITY) return film;
-  if (capability === FILM_CAPABILITY_V3)
+  if (capability === FILM_CAPABILITY_V4)
     return film.capability === FILM_CAPABILITY ? undefined : film;
+  if (capability === FILM_CAPABILITY_V3)
+    return film.capability === FILM_CAPABILITY_V2 ||
+      film.capability === FILM_CAPABILITY_V3
+      ? film
+      : undefined;
   if (film.capability !== FILM_CAPABILITY_V2) return undefined;
   if (capability === FILM_CAPABILITY_V2) return film;
   if (capability === FILM_CAPABILITY_V1) {
