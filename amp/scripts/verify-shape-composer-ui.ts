@@ -135,8 +135,12 @@ async function stable(
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
 }
-async function visibleLayout(page: Page, resolved = false) {
-  const layout = await page.evaluate((resolved) => {
+const innerSize = (page: Page) => {
+  const size = page.viewportSize();
+  return size ? `${size.width}x${size.height}` : "";
+};
+async function visibleLayout(page: Page, where: string, resolved = false) {
+  const { stageScroll, ...layout } = await page.evaluate((resolved) => {
     const stage = document.querySelector<HTMLElement>(".problem-stage")!;
     const bounds = stage.getBoundingClientRect();
     const prompt = document
@@ -178,10 +182,18 @@ async function visibleLayout(page: Page, resolved = false) {
       outlineVisible:
         getComputedStyle(edge).stroke !== "none" &&
         Number.parseFloat(getComputedStyle(edge).strokeWidth) >= 0.05,
+      stageScroll: {
+        scrollHeight: stage.scrollHeight,
+        clientHeight: stage.clientHeight,
+        scrollTop: stage.scrollTop,
+      },
     };
   }, resolved);
   for (const [key, value] of Object.entries(layout))
-    assert.ok(value, `${key}: ${JSON.stringify(layout)}`);
+    assert.ok(
+      value,
+      `${where} ${innerSize(page)}: ${key}: ${JSON.stringify({ ...layout, stageScroll })}`,
+    );
 }
 try {
   for (const theme of smoke
@@ -198,7 +210,11 @@ try {
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
         colorScheme: theme,
+        // A phone draws overlay scrollbars. Without isMobile, Linux Chromium
+        // in CI gives the 390 px stage two 15 px scrollbar gutters no phone
+        // has, and the tray's five pieces wrap to a second row.
         hasTouch: width! < 400,
+        isMobile: width! < 400,
         reducedMotion: "reduce",
       });
       await context.addInitScript("globalThis.__name = (f) => f");
@@ -243,7 +259,10 @@ try {
           await page.evaluate(() => document.fonts.ready);
           assert.ok(capabilities.includes("shape-composer-v1"));
           const before = await geometry(page);
-          await visibleLayout(page);
+          await visibleLayout(
+            page,
+            `${tag}-${theme} ${correct ? "correct" : "wrong"} run, empty`,
+          );
           assert.equal(before.overflow, 0);
           assert.equal(before.stageOverflow, 0);
           assert.equal(await page.locator(".shape-composer").count(), 1);
@@ -387,7 +406,7 @@ try {
                 .getByRole("button", { name: "Reset", exact: true })
                 .tap();
               await stable(page, before);
-              await visibleLayout(page);
+              await visibleLayout(page, `${name} after touch reset`);
               await touch.detach();
             }
           }
@@ -408,7 +427,7 @@ try {
                 .filter({ hasText: "Use it as one piece" })
                 .waitFor();
               await stable(page, before);
-              await visibleLayout(page);
+              await visibleLayout(page, `${name} joined stage`);
             }
           }
           await page.locator(".shape-board").scrollIntoViewIfNeeded();
@@ -429,7 +448,7 @@ try {
           await page.screenshot({
             path: `${shots}/${name}-${correct ? "filled" : "gap"}.png`,
           });
-          await visibleLayout(page);
+          await visibleLayout(page, `${name} ${correct ? "filled" : "gap"}`);
           const attempt = page.waitForResponse(
             (res) =>
               res.url().endsWith("/attempts") &&
@@ -480,7 +499,11 @@ try {
           await page.screenshot({
             path: `${shots}/${name}-${correct ? "correct" : "incorrect"}.png`,
           });
-          await visibleLayout(page, true);
+          await visibleLayout(
+            page,
+            `${name} ${correct ? "correct" : "incorrect"}`,
+            true,
+          );
           const request = res.request(),
             body = request.postDataJSON(),
             headers = {
@@ -506,7 +529,7 @@ try {
           );
           assert.equal(await page.locator(".shape-cursor").count(), 0);
           await page.screenshot({ path: `${shots}/${name}-solution.png` });
-          await visibleLayout(page, true);
+          await visibleLayout(page, `${name} solution`, true);
           if (correct && width === 390 && theme === "light") {
             const report = await page.request.post(
               `http://127.0.0.1:4586/api/v1/learners/${learner.id}/problem-flags`,
