@@ -171,7 +171,7 @@ test("a family's Today speaks of children and never asks to start a class", () =
   assert.equal(stuck?.title, "Ada keeps missing fraction addition");
   assert.equal(
     stuck?.detail,
-    "3 misses without help in the last 14 days, and no right answer since.",
+    "3 misses without help in 14 days, none right since.",
   );
   assert.equal(stuck?.action.label, "Open the lesson");
   assert.equal(stuck?.groupSheet?.label, "Print a sheet");
@@ -198,11 +198,17 @@ test("a shared gap names the skill and the students, and opens the lesson", () =
   const [first] = todos;
   assert.equal(first!.kind, "shared-gap");
   assert.equal(first!.title, "3 students keep missing fraction addition");
-  assert.equal(
-    first!.detail,
-    "Amara, Diego and Lena: each has 2 or more misses without help in the last 14 days, and no right answer since.",
+  // The faces say who; how it's decided is a tap away.
+  assert.equal(first!.detail, "");
+  assert.deepEqual(
+    first!.students.map((student) => student.name.split(" ")[0]),
+    ["Amara", "Diego", "Lena"],
   );
-  assert.doesNotMatch(first!.detail, /should|together|try/i);
+  assert.equal(
+    first!.rule,
+    "Each has 2 or more misses without help in the last 14 days, and no right answer since.",
+  );
+  assert.doesNotMatch(first!.rule!, /should|together|try/i);
   assert.deepEqual(first!.action, {
     kind: "lesson",
     templateId: "fraction-add",
@@ -347,7 +353,7 @@ test("ready for more means past the course in every strand, and holding it", () 
   ])!;
   assert.equal(both.title, "Priya and Sam: above Grade 5 in every strand");
   assert.equal(
-    both.detail,
+    both.rule,
     "Spaced review right without help in 80% or more of at least 3 reviews.",
   );
   assert.equal(both.action.kind, "tab");
@@ -402,10 +408,7 @@ test("a day with most of the class working says how many, without a verdict", ()
   );
   const good = todos.find((todo) => todo.kind === "good-day")!;
   assert.equal(good.title, "3 of 4 students practiced today");
-  assert.equal(
-    good.detail,
-    "60 active minutes so far; 6 skills shown twice on their own this week.",
-  );
+  assert.equal(good.detail, "60 active minutes.");
   // Too few for a good day, but what's going well still shows.
   const quiet = todayTodos(
     input({
