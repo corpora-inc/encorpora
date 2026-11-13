@@ -1278,9 +1278,7 @@ try {
   await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
   await linked.goBack();
   await linked.getByRole("heading", { name: target.title }).waitFor();
-  await linked
-    .getByRole("link", { name: "View lesson", exact: true })
-    .click();
+  await linked.getByRole("link", { name: "View lesson", exact: true }).click();
   await linked
     .getByRole("dialog")
     .getByRole("link", { name: "Try this problem type →", exact: true })
