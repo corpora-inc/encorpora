@@ -164,6 +164,11 @@ page.on("framenavigated", (frame) => {
 });
 page.setDefaultTimeout(30000);
 async function capture(name: string) {
+  await page.waitForFunction(
+    () =>
+      !document.querySelector(".app-loading") &&
+      !document.documentElement.hasAttribute("data-arriving"),
+  );
   for (const width of [320, 390, 768, 1280])
     for (const theme of ["light", "dark"]) {
       await page.setViewportSize({ width, height: 900 });

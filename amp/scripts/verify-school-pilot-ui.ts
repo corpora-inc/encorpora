@@ -83,6 +83,11 @@ page.on("pageerror", (error) => failures.push(error.message));
 const artifacts = "artifacts/school-pilot";
 await mkdir(artifacts, { recursive: true });
 async function capture(name: string) {
+  await page.waitForFunction(
+    () =>
+      !document.querySelector(".app-loading") &&
+      !document.documentElement.hasAttribute("data-arriving"),
+  );
   for (const width of [320, 390, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await page.evaluate(() => window.scrollTo(0, 0));

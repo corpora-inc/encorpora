@@ -67,6 +67,11 @@ const browser = await secureChromium(rawChromium).launch();
 await mkdir("artifacts/school-adoption", { recursive: true });
 const errors: string[] = [];
 async function shots(page: Page, name: string) {
+  await page.waitForFunction(
+    () =>
+      !document.querySelector(".app-loading") &&
+      !document.documentElement.hasAttribute("data-arriving"),
+  );
   for (const theme of ["light", "dark"] as const)
     for (const width of [320, 390, 768, 1280]) {
       await page.emulateMedia({ colorScheme: theme });
