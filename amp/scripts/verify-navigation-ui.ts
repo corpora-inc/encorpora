@@ -325,9 +325,17 @@ try {
       const clip = (await trigger.boundingBox())!;
       await page.keyboard.press("Enter");
       await drawer.waitFor();
-      await drawer.evaluate(async (el) => {
-        await Promise.all(el.getAnimations().map((a) => a.finished));
-      });
+      // The sheet's own animation is not the only one: its overlay and the
+      // controls inside it (the focused logo) animate too. Compare pixels
+      // only once every finite animation on the page has finished.
+      await page.evaluate(() =>
+        Promise.all(
+          document
+            .getAnimations()
+            .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
+            .map((a) => a.finished),
+        ),
+      );
       const toolbar = page.locator(".workspace-toolbar");
       const covered = await page.screenshot({ clip });
       await toolbar.evaluate((el) => (el.style.visibility = "hidden"));
@@ -513,7 +521,7 @@ try {
       }
       const searchBox = await page
         .getByRole("searchbox", {
-          name: "Search skills, lessons and math words",
+          name: "Find a skill",
         })
         .evaluate((el) => {
           const box = el.closest("label")!.getBoundingClientRect();
@@ -642,25 +650,30 @@ try {
   );
   await page.keyboard.press("Enter");
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  // Four or more choices fold behind a button whose list overlays the card
-  // below it. Long names wrap between words only; a single word too wide for
-  // the row is the one thing that may break, and it stays inside the row.
+  // Up to six learners are rows in view; seven or more fold behind a button
+  // whose list overlays the card below it (DrawerContents). Long names wrap
+  // between words only; a single word too wide for the row is the one thing
+  // that may break, and it stays inside the row.
   account = fixtureMe(
     {
       ...twoLearners.family,
       learners: [
         ...twoLearners.family.learners,
-        ...["Maximiliana Okonkwo-Reyes", "Bartholomewmaximilianwolfgang"].map(
-          (name, i) => ({
-            id: `extra-${i}`,
-            name,
-            birthYear: 2016,
-            deletedAt: null,
-            access: [],
-            stripeLinked: false,
-            canPractice: true,
-          }),
-        ),
+        ...[
+          "Maximiliana Okonkwo-Reyes",
+          "Bartholomewmaximilianwolfgang",
+          "Riley",
+          "Sam",
+          "Quinn",
+        ].map((name, i) => ({
+          id: `extra-${i}`,
+          name,
+          birthYear: 2016,
+          deletedAt: null,
+          access: [],
+          stripeLinked: false,
+          canPractice: true,
+        })),
       ],
     },
     "amp|drawer-fixture",
@@ -692,8 +705,8 @@ try {
     await Promise.all(el.getAnimations().map((a) => a.finished));
   });
   assert.equal(await learnerButton.getAttribute("aria-expanded"), "true");
-  // The four learners (the free-assessment row left with the trial, #2110).
-  assert.equal(await crowded.getByRole("option").count(), 4);
+  // The seven learners (the free-assessment row left with the trial, #2110).
+  assert.equal(await crowded.getByRole("option").count(), 7);
   assert.deepEqual(await card.boundingBox(), cardBox, "opening shifts card");
   assert.deepEqual(
     await navigation.boundingBox(),
@@ -740,16 +753,10 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  await page
-    .getByRole("searchbox", { name: "Search skills, lessons and math words" })
-    .fill("L");
-  await page
-    .getByRole("searchbox", { name: "Search skills, lessons and math words" })
-    .fill("");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("L");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("");
   assert.equal(
-    await page
-      .getByRole("searchbox", { name: "Search skills, lessons and math words" })
-      .inputValue(),
+    await page.getByRole("searchbox", { name: "Find a skill" }).inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();
