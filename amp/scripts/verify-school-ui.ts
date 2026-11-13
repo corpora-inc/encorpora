@@ -23,7 +23,7 @@
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { PDFDocument } from "pdf-lib";
 import pg from "pg";
 import {
@@ -117,12 +117,13 @@ await registerSchoolRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-school-launch",
+  cacheDir: process.env.AMP_VITE_CACHE_DIR ?? "artifacts/vite-school-launch",
   optimizeDeps: { include: ["pdf-lib"] },
   server: {
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
+    fs: { allow: [process.cwd(), await realpath("node_modules")] },
     proxy: { "/api": `http://127.0.0.1:${apiPort}` },
   },
 });
