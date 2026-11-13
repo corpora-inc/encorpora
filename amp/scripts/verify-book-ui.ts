@@ -305,6 +305,16 @@ try {
     // reader's place.
     await page.goBack();
     await page.getByRole("main", { name: book.title }).waitFor();
+    // The reader reopens through the book's open request; wait for it to
+    // settle on a page before comparing.
+    await page
+      .waitForFunction(
+        (step) =>
+          document.querySelector(".reader-position>span")?.textContent === step,
+        selected,
+        { timeout: 10_000 },
+      )
+      .catch(() => undefined);
     assert.equal(
       await page.locator(".reader-position>span").innerText(),
       selected,
