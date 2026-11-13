@@ -1,5 +1,5 @@
 import { Link, useRouter, useSearch } from "@tanstack/react-router";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, MouseEvent, ReactNode } from "react";
 import { closeTo } from "../lib/return-to";
 import {
   OPEN_KEY,
@@ -51,9 +51,10 @@ export function EntityLink({
               ? replaceTop(search[OPEN_KEY], entity)
               : [entity]
                   .flat()
-                  .reduce<
-                    string | undefined
-                  >((open, next) => pushLayer(open, next), search[OPEN_KEY] as string | undefined),
+                  .reduce<string | undefined>(
+                    (open, next) => pushLayer(open, next),
+                    search[OPEN_KEY] as string | undefined,
+                  ),
           )) as never
       }
       replace={replace}
@@ -91,5 +92,18 @@ export function useLayers() {
       }),
     /** Pops the top layer: Back to where it was opened, as X and Escape. */
     close: () => closeTo(router, hrefWith(popLayer(raw))),
+  };
+}
+
+/** A way back on a page of its own (Back, Exit, X): a click goes Back to
+ * where the page was opened, else to `parent`, its logical parent
+ * (lib/return-to.ts). Keep the link's own href for a new tab. */
+export function useCloseClick(parent: string) {
+  const router = useRouter();
+  return (event: MouseEvent) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0)
+      return;
+    event.preventDefault();
+    closeTo(router, parent);
   };
 }

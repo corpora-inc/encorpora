@@ -116,7 +116,8 @@ export function pushLayer(raw: unknown, entity: Entity) {
   );
 }
 /** The stack without its top layer. */
-export const popLayer = (raw: unknown) => writeStack(readStack(raw).slice(0, -1));
+export const popLayer = (raw: unknown) =>
+  writeStack(readStack(raw).slice(0, -1));
 /** The stack with its top layer swapped (stepping through answers). */
 export const replaceTop = (raw: unknown, entity: Entity) =>
   writeStack([...readStack(raw).slice(0, -1), entity]);

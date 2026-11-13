@@ -46,8 +46,14 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
   ],
   "features/onboarding/PlanStep.tsx": [1, "a funded purchase's resume URL"],
   "features/school/InviteScreen.tsx": [1, "sign-in with the invite's return"],
-  "features/dev/PersonaSwitcher.tsx": [1, "development: a fresh signed-in load"],
-  "ui/PageFrame.tsx": [2, "signed-out public pages: the logo is the site's home"],
+  "features/dev/PersonaSwitcher.tsx": [
+    1,
+    "development: a fresh signed-in load",
+  ],
+  "ui/PageFrame.tsx": [
+    2,
+    "signed-out public pages: the logo is the site's home",
+  ],
   "features/pitch/PitchScreen.tsx": [1, "the signed-out pitch's own logo"],
   "features/pitch/BuyOptions.tsx": [1, "the signed-out pitch's start"],
   "features/onboarding/VerifyEmailStep.tsx": [1, "first run, before any place"],

@@ -4,7 +4,8 @@
  * new tab or a new kind of entity is covered without editing this file.
  *
  * For each person (a demo school's leader, a real school's admin, a demo
- * class's teacher): open each of the place's tabs, and on each, every kind
+ * class's teacher, a parent's family class, a tutor's class): open each of
+ * the place's tabs, and on each, every kind
  * of entity link it shows. Open one, then one inside it (two layers), then
  * pop with Escape, Back, Forward, a refresh and Escape again. After every
  * step: the place's prefix never changes, the page under the layers is the
@@ -31,7 +32,9 @@ const argument = (name: string) => {
   return at > 0 ? process.argv[at + 1] : undefined;
 };
 const OUT = argument("out") ?? "artifacts/layer-crawl";
-const PEOPLE = (argument("people") ?? "school,teacher-class,teacher").split(",");
+const PEOPLE = (
+  argument("people") ?? "school,teacher-class,teacher,family,tutor"
+).split(",");
 const stack = argument("origin")
   ? null
   : await startPersonaStack({
@@ -100,8 +103,7 @@ async function shown(page: Page) {
 }
 
 /** The topmost layer's element, where nested links are looked for. */
-const top = (page: Page) =>
-  page.locator('[role="dialog"]:visible').last();
+const top = (page: Page) => page.locator('[role="dialog"]:visible').last();
 
 const browser = await chromium.launch();
 const reached = new Set<string>();
@@ -124,7 +126,9 @@ try {
     await page.goto(`${origin}/`);
     await page.waitForURL(/\/school\/[^/]+/);
     const prefix = view(page).path.match(/^\/school\/[^/]+/)![0];
-    let classPath = view(page).path.match(/^\/school\/[^/]+\/classes\/[^/]+/)?.[0];
+    let classPath = view(page).path.match(
+      /^\/school\/[^/]+\/classes\/[^/]+/,
+    )?.[0];
     if (!classPath) {
       const href = await page
         .locator(`a[href^="${prefix}/classes/"]`)
@@ -141,16 +145,22 @@ try {
           await page
             .locator(`a[href^="${classPath}/"]`)
             .evaluateAll((links) =>
-              links.map((link) => new URL((link as HTMLAnchorElement).href).pathname),
+              links.map(
+                (link) => new URL((link as HTMLAnchorElement).href).pathname,
+              ),
             )
-        ).filter((path) => /^\/school\/[^/]+\/classes\/[^/]+\/[a-z-]+$/.test(path)),
+        ).filter((path) =>
+          /^\/school\/[^/]+\/classes\/[^/]+\/[a-z-]+$/.test(path),
+        ),
       ),
     ];
     for (const tab of tabs) {
       for (const kind of ENTITY_KINDS) {
         await page.goto(`${origin}${tab}`);
         await page.waitForTimeout(1200);
-        const link = page.locator(`main a[data-entity="${kind}"]:visible`).first();
+        const link = page
+          .locator(`main a[data-entity="${kind}"]:visible`)
+          .first();
         if (!(await link.count())) continue;
         // Scroll the page a little, so its scroll must come back too.
         await page.mouse.wheel(0, 240);

@@ -66,7 +66,9 @@ async function findMiss(context: BrowserContext) {
   const session = await (
     await context.request.get(`${origin}/api/auth/get-session`)
   ).json();
-  const auth = { headers: { Authorization: `Bearer ${session.session.token}` } };
+  const auth = {
+    headers: { Authorization: `Bearer ${session.session.token}` },
+  };
   const get = async (path: string) => {
     const response = await context.request.get(`${origin}/api/v1${path}`, auth);
     assert.ok(response.ok(), `${path}: ${response.status()}`);
@@ -99,7 +101,9 @@ async function findMiss(context: BrowserContext) {
         return { org, classId, student: student.id, work: item.id, template };
     }
   }
-  throw new Error("No missed answer with a filmed lesson in the teacher's class");
+  throw new Error(
+    "No missed answer with a filmed lesson in the teacher's class",
+  );
 }
 
 const here = (page: Page) => {
@@ -347,7 +351,9 @@ try {
   //    closes one layer at a time, back to Today.
   {
     const { context, page } = await fresh(1280);
-    await page.goto(`${origin}/school/${miss.org}/classes/${miss.classId}/today`);
+    await page.goto(
+      `${origin}/school/${miss.org}/classes/${miss.classId}/today`,
+    );
     const link = page.locator('main a[data-entity="work"]').first();
     await link.waitFor();
     const today = here(page);
@@ -355,7 +361,11 @@ try {
     await replayLayer(page).waitFor();
     await closeAnswer(page);
     await page.locator("[data-map-student-record]").waitFor();
-    assert.match(here(page), /\/today\?.*open=student/, "X pops to the student");
+    assert.match(
+      here(page),
+      /\/today\?.*open=student/,
+      "X pops to the student",
+    );
     await page
       .locator('[role="dialog"]:has([data-map-student-record])')
       .getByRole("button", { name: /^Close/ })

@@ -311,7 +311,7 @@ function DaySheet({
 export function TimeScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/time" });
   const session = useStaffSession();
-  const [search, set] = useClassSearch();
+  const [search, set, close] = useClassSearch();
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
@@ -691,7 +691,7 @@ export function TimeScreen() {
         period={period}
         student={student}
         returnFocus={lastOpen.current}
-        onClose={() => set({ student: undefined })}
+        onClose={() => close("student")}
       />
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />

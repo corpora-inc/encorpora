@@ -1,3 +1,4 @@
+import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
@@ -70,13 +71,18 @@ export function CardsScreen() {
   const roster = useQuery(rosterOptions(session, place));
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
+  // Back to where it was opened: the roster, Today, sign-in help.
+  const closeClick = useCloseClick(
+    `/school/${params.org}/classes/${params.class}/roster`,
+  );
   const back = (
     <Link
       to="/school/$org/classes/$class/roster"
       params={params}
       className={buttonClass("secondary")}
+      onClick={closeClick}
     >
-      Back to roster
+      Back
     </Link>
   );
   async function make(input: { personIds?: string[]; missingOnly?: boolean }) {

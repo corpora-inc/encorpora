@@ -60,15 +60,21 @@ The founder (Q-67, Q-69, Q-70): "Almost everything should be addressable and lin
 6. **The root `/` resolves to a place,** the one last used, on arrival and on Back and Forward alike. First-run onboarding appears only for an account with no place. An account with a place and no practice of its own never sees family setup: a practice screen sends it to its place.
 7. **Banned outside the navigation module:** `navigate({ to: "/" })`, `<Link to="/">`, `redirect({ to: "/" })`, `window.location` assignment and `history.back()`. `npm run lint:navigation` (`scripts/check-navigation.ts`, part of `npm run build`) fails on any new one. The remaining uses (sign-out, payment providers, signed-out pages) are listed there, each with its reason.
 
-**Proof that grows with the app:** `scripts/verify-layer-crawl-ui.ts` reads the place's own tabs and the entity registry. As a demo school's leader, a real school's admin and a teacher, it opens every kind of entity link on every tab, nests one more, then pops with Escape, Back, Forward, refresh and Escape again. It asserts that the prefix, the page under the layers and its view and scroll never change, that no first-run screen shows, and that every registered kind is reachable. `verify-close-context-ui.ts` (an answer's lesson and film) and `verify-place-mode-ui.ts` (practicing as a student) cover the founder's exact paths.
+**Proof that grows with the app:** `scripts/verify-layer-crawl-ui.ts` reads the place's own tabs and the entity registry. As a demo school's leader, a real school's admin, a teacher, a parent and a tutor, it opens every kind of entity link on every tab, nests one more, then pops with Escape, Back, Forward, refresh and Escape again. It asserts that the prefix, the page under the layers and its view and scroll never change, that no first-run screen shows, and that every registered kind is reachable. `verify-close-context-ui.ts` (an answer's lesson and film) and `verify-place-mode-ui.ts` (practicing as a student) cover the founder's exact paths.
 
-### Phase 2 (proposed): the rest of the places
+### Phase 2: the rest of the places
 
-- **Family and own practice.** Pathways' `?lesson=` and the Today lesson sheet (`?lesson=`) become `lesson` layers. The skill panel on Pathways becomes a `skill` layer. The family's child panel becomes a `student` layer.
-- **The school-level student page** (`/school/<org>/students/<id>` and its `work/<id>`) becomes a `student` layer over Students. Its route redirects, as the map's do.
-- **Settings sheets** opened by a search key (`?add`, `?edit`, `?student`, `?curve`, `?export`) close with `closeSearch`. Export and Report cards opened from Settings come back to Settings.
-- **Legacy learner screens** (`LegacyApp`: the lesson reader, the book reader, the birth-year prompt, the family and purchase centres) replace their hard-coded returns (`/pathways`, `/overview`, `/family/access`) with `closeTo` and a `from`. Their allowed uses in `check-navigation.ts` then drop to zero.
-- **The crawler** grows to the family, tutor and own-practice personas, and its page list comes from the router's route table rather than the tab bar.
+Done:
+- Sheets opened by a search key close with `closeSearch`: a gradebook's evidence, curve and export sheets, a Time day sheet, Students' student and add sheets, and Calendar's edit sheet. Settings → Export now comes back to Settings.
+- Pages of their own go Back to where they were opened, else to their logical parent (`useCloseClick`): Report cards, Sign-in cards, the Start-class board and a workbook day. Their labels read "Back" where the opener varies.
+- The lesson reader goes Back to Progress or to the skill it was opened from.
+- The crawler covers the family and the tutor places.
+
+Still to do:
+- Pathways' `?lesson=` and the Today lesson sheet become `lesson` layers, and Pathways' skill panel becomes a `skill` layer.
+- The school-level student page (`/school/<org>/students/<id>` and its `work/<id>`) becomes a `student` layer over Students, its route redirecting as the map's do.
+- The legacy family and purchase centres (`LegacyApp`) replace their hard-coded returns (`/family/access`, `/overview`) with `closeTo` and a `from`. Their allowed uses in `check-navigation.ts` then drop to zero.
+- The crawler's page list comes from the router's route table, and it covers own practice.
 
 ## Where settings live
 

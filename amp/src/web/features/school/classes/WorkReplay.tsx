@@ -205,7 +205,9 @@ export function WorkReplay({
               [OPEN_KEY]: popLayer(current[OPEN_KEY]),
             }),
           }
-        : { to: "/$", params: { _splat: closePath } }) as unknown as { to: "." })}
+        : { to: "/$", params: { _splat: closePath } }) as unknown as {
+        to: ".";
+      })}
       onClick={(event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey) return;
         event.preventDefault();
@@ -322,9 +324,7 @@ export function WorkReplay({
           review={{
             who,
             actions: steps,
-            facts: (
-              <Facts replay={replay} Answer={Answer} />
-            ),
+            facts: <Facts replay={replay} Answer={Answer} />,
             support: supportWords(replay.help),
           }}
         />

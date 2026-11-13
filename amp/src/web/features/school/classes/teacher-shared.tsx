@@ -1,6 +1,12 @@
+import { closeSearch } from "../../../lib/return-to";
 import { EntityLink } from "../../../nav/links";
 import type { Entity } from "../../../nav/entities";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useRouter,
+  useSearch,
+} from "@tanstack/react-router";
 import {
   useEffect,
   useId,
@@ -58,7 +64,11 @@ export function useClassSearch() {
       replace: options.replace,
       resetScroll: false,
     });
-  return [raw, set] as const;
+  const router = useRouter();
+  /** Closes what these keys opened (a sheet): Back to where it was opened,
+   * as X and the browser's Back both do (lib/return-to.ts). */
+  const close = (...keys: string[]) => closeSearch(router, ...keys);
+  return [raw, set, close] as const;
 }
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 /** A value from the address bar that may be nonsense: it recovers, not errors. */
@@ -405,9 +415,7 @@ export function WorkList({
   work: readonly WorkItem[];
   reader?: RecordReader;
   /** Where a row's replay lives, as a splat path and search. */
-  href?: (
-    item: WorkItem,
-  ) =>
+  href?: (item: WorkItem) =>
     | { path: string; search?: Record<string, string> }
     /** A layer over this page (nav/entities.ts). */
     | { entity: Entity };

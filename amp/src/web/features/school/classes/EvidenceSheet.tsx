@@ -13,12 +13,7 @@ import { Sheet } from "../../../ui/Sheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurvePlace } from "./GradeCurve";
 import { evidenceOptions, type Place } from "./teacher-api";
-import {
-  buttonClass,
-  classUrl,
-  shortDay,
-  WorkList,
-} from "./teacher-shared";
+import { buttonClass, classUrl, shortDay, WorkList } from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
 /** "Why a B?" in one click: each component in a sentence with its number, the

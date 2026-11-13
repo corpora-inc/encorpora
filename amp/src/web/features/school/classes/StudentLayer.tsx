@@ -49,7 +49,10 @@ export function StudentLayer({
     >
       {!data ? (
         record.isError ? (
-          <LoadFailed what="This record" onRetry={() => void record.refetch()} />
+          <LoadFailed
+            what="This record"
+            onRetry={() => void record.refetch()}
+          />
         ) : (
           <Loading />
         )

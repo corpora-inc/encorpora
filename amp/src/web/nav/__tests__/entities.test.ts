@@ -14,12 +14,13 @@ const S2 = "a289b93a-c7ab-4117-9a32-013ee1a3da27";
 const A = "b47a1fe7febbaceff2a7ceec1e205927783d8f89a5a59be21f8474eb1005a540";
 
 test("a stack reads only well-formed layers, oldest first", () => {
-  expect(readStack(`student:${S1},work:${S1}.${A},lesson:find-what-was-added`))
-    .toEqual([
-      { kind: "student", id: S1 },
-      { kind: "work", id: `${S1}.${A}` },
-      { kind: "lesson", id: "find-what-was-added" },
-    ]);
+  expect(
+    readStack(`student:${S1},work:${S1}.${A},lesson:find-what-was-added`),
+  ).toEqual([
+    { kind: "student", id: S1 },
+    { kind: "work", id: `${S1}.${A}` },
+    { kind: "lesson", id: "find-what-was-added" },
+  ]);
   for (const raw of [
     "student:not-a-uuid",
     "evil:x",

@@ -292,7 +292,7 @@ function ExampleGrade() {
 export function GradebookScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/gradebook" });
   const session = useStaffSession();
-  const [search, set] = useClassSearch();
+  const [search, set, closeSheet] = useClassSearch();
   const requested = uuidOr(search.term);
   const book = useQuery(gradebookOptions(session, place, requested));
   const family =
@@ -651,7 +651,7 @@ export function GradebookScreen() {
             term={term.id}
             student={open}
             returnFocus={lastOpen.current}
-            onClose={() => set({ student: undefined })}
+            onClose={() => closeSheet("student")}
             onError={setError}
             onSaved={setAnnouncement}
           />
@@ -659,7 +659,7 @@ export function GradebookScreen() {
             <CurveSheet
               open={curveOpen}
               onOpenChange={(next) => {
-                if (!next) set({ curve: undefined });
+                if (!next) closeSheet("curve");
               }}
               session={session}
               place={place}
@@ -672,7 +672,7 @@ export function GradebookScreen() {
           <ExportSheet
             open={search.export === 1 || search.export === "1"}
             onOpenChange={(next) => {
-              if (!next) set({ export: undefined });
+              if (!next) closeSheet("export");
             }}
             session={session}
             place={place}
