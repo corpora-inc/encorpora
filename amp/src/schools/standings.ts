@@ -10,7 +10,6 @@ import {
   type SchoolSettings,
   type SettingsScope,
 } from "./settings.js";
-import { STUDENT_NAME } from "./sign-in.js";
 import { growthArraySql } from "./growth.js";
 import { shownTeachers } from "./teacher-line.js";
 
@@ -23,6 +22,10 @@ type Measure = SchoolSettings["measure"];
 type Roster = { personId: string; learnerId: string };
 type Term = { from: string; to: string };
 type Row = { personId: string; name: string; value: number };
+
+/** The name a student goes by, with a family initial, at every board scope.
+ * Equal names stay equal; ranked lines expose no student identifier. */
+const BOARD_NAME = `COALESCE(p.display_name,p.given_name)||COALESCE(' '||left(p.family_name,1)||'.','')`;
 
 const LEFT_OFF_SQL = `"values"->'leftOff' ? $2`;
 const scopeRank: Record<SchoolSettings["standings"], number> = {
@@ -54,7 +57,6 @@ type Place = {
   person: {
     id: string;
     learner_id: string;
-    handle: string;
     name: string;
     grade_level: number | null;
   };
@@ -70,7 +72,7 @@ async function studentPlace(
 ): Promise<Place | null> {
   const person = (
     await db.query(
-      `SELECT p.id,p.learner_id,p.handle,p.grade_level,${STUDENT_NAME} AS name FROM amp_people p
+      `SELECT p.id,p.learner_id,p.grade_level,${BOARD_NAME} AS name FROM amp_people p
        WHERE p.id=$1 AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL`,
       [personId],
     )
@@ -323,7 +325,7 @@ async function loadWide(
 ): Promise<WideBoard> {
   const people = (
     await db.query(
-      `SELECT DISTINCT p.id,p.learner_id,p.handle,p.grade_level
+      `SELECT DISTINCT p.id,p.learner_id,p.grade_level,${BOARD_NAME} AS name
        FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
        JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
        WHERE r.role='student' AND o.path @> ARRAY[$1]::uuid[] AND ${activeToday("r", "o")}`,
@@ -332,7 +334,7 @@ async function loadWide(
   ).rows as {
     id: string;
     learner_id: string;
-    handle: string;
+    name: string;
     grade_level: number | null;
   }[];
   const enrolled = (
@@ -389,7 +391,7 @@ async function loadWide(
     const value = values.get(person.id);
     if (value === undefined) continue;
     const group = byGrade.get(person.grade_level) ?? [];
-    group.push({ personId: person.id, name: person.handle, value });
+    group.push({ personId: person.id, name: person.name, value });
     byGrade.set(person.grade_level, group);
   }
   for (const group of byGrade.values()) sorted(group);
@@ -404,7 +406,7 @@ async function classBoardRows(
 ): Promise<Row[]> {
   const rows = (
     await db.query(
-      `SELECT p.id AS "personId",p.learner_id AS "learnerId",${STUDENT_NAME} AS name
+      `SELECT p.id AS "personId",p.learner_id AS "learnerId",${BOARD_NAME} AS name
        FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
        WHERE e.class_id=$1 AND e.role='student' AND ${activeToday("e", "o")}
@@ -529,7 +531,7 @@ export async function studentBoard(
     },
     top,
     you: {
-      name: scope === "class" ? place.person.name : place.person.handle,
+      name: place.person.name,
       value: own.get(personId) ?? 0,
       thisWeek: week.get(personId) ?? 0,
       rank: listed?.rank ?? null,
