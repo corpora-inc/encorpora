@@ -29,6 +29,20 @@ export async function adultPracticeEnd(
        JOIN amp_school_licenses l ON l.org_id=ANY(o.path)
          AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND (l.class_ids IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e
+           JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+           WHERE e.person_id=p.id AND e.role='teacher' AND e.class_id=ANY(l.class_ids) AND ${activeToday("e", "o")}))
+       UNION ALL
+       SELECT LEAST(greatest(t.grace_ends_at,(SELECT max(x.until_at) FROM amp_pilot_extensions x WHERE x.pilot_id=t.id)),
+         COALESCE(e.end_on::timestamp AT TIME ZONE o.timezone,'infinity'),
+         COALESCE(r.end_on::timestamp AT TIME ZONE o.timezone,'infinity')) AS ends
+       FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id AND e.role='teacher'
+       JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+       JOIN amp_orgs o ON o.id=c.org_id AND NOT o.demo AND o.kind<>'family'
+       JOIN amp_org_roles r ON r.person_id=p.id AND r.role='teacher' AND r.org_id=ANY(o.path)
+       JOIN amp_class_pilots cp ON cp.class_id=c.id JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
+       WHERE p.account_id=$1 AND p.deleted_at IS NULL AND t.started_at<=now()
+         AND ${activeToday("e", "o")} AND ${activeToday("r", "o")}
        UNION ALL
        SELECT g.ends_at FROM amp_learners c
        JOIN amp_grants g ON g.learner_id=c.id

@@ -1,4 +1,5 @@
 import type { FastifyBaseLogger } from "fastify";
+import { schoolPilotAccess, schoolAllowance } from "./pilot-access.js";
 import type { Pool } from "pg";
 import { skills } from "../curriculum/catalog.js";
 import { ApiError, type Repository } from "../server/repository.js";
@@ -68,7 +69,7 @@ async function stackRoster(
     await pool.query(
       `SELECT p.id,p.learner_id,l.account_id,l.free_online_used,l.free_workbooks_used,${STUDENT_NAME} AS name,
          EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=p.learner_id AND g.status='active'
-           AND g.starts_at<=now() AND g.ends_at>now()) AS seated
+           AND g.starts_at<=now() AND g.ends_at>now() AND amp_school_grant_valid(g.id)) AS seated
        FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
@@ -137,9 +138,10 @@ export async function stackView(
     pdf: !!renderer,
     students: await Promise.all(
       roster.map(async (row) => {
-        const allowance = freeAllowance(
-          row.free_online_used,
-          row.free_workbooks_used,
+        const pilot = await schoolPilotAccess(pool, row.learner_id);
+        const allowance = schoolAllowance(
+          freeAllowance(row.free_online_used, row.free_workbooks_used),
+          pilot.managed,
         );
         const permitted = await learningConsentActive(
           pool,
@@ -150,9 +152,10 @@ export async function stackView(
         return {
           id: row.id,
           name: row.name,
-          seated: row.seated,
+          seated: row.seated || pilot.active,
           canMakeWorkbook:
-            permitted && (row.seated || allowance.workbooks.available > 0),
+            permitted &&
+            (row.seated || pilot.active || allowance.workbooks.available > 0),
           canReadWorkbooks: permitted,
           freeAllowance: allowance,
         };

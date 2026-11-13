@@ -114,13 +114,19 @@ export async function schoolConsentActive(
        SELECT 1 FROM amp_people p
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role='student'
        JOIN amp_orgs o ON o.id=r.org_id
-       JOIN LATERAL (
-         SELECT a.ended_at FROM amp_data_agreements a
+       LEFT JOIN LATERAL (
+         SELECT a.id,a.ended_at FROM amp_data_agreements a
          WHERE a.org_id=ANY(o.path)
          ORDER BY array_position(o.path,a.org_id) DESC,a.accepted_at DESC,a.id
          LIMIT 1
-       ) nearest ON nearest.ended_at IS NULL
+       ) nearest ON true
        WHERE p.id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND nearest.ended_at IS NULL AND (nearest.id IS NOT NULL OR EXISTS(
+           SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+           JOIN LATERAL (SELECT a.ended_at FROM amp_class_authorizations a WHERE a.class_id=c.id
+             ORDER BY a.accepted_at DESC,a.id LIMIT 1) authorized ON authorized.ended_at IS NULL
+           WHERE e.person_id=p.id AND e.role='student' AND c.org_id=o.id AND ${activeToday("e", "o")}
+         ))
      ) AS active`,
     [personId],
   );

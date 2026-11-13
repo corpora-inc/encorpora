@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { extendTeacherPilot } from "../src/schools/pilots.js";
 import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
@@ -34,7 +35,8 @@ import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
  *     and AMP_ACCOUNTS_SECRET, and its mail settings to send.
  * create-org             {kind, name, timezone?, parentId?, agreement?: {version, signerName, signerTitle}}
  * add-staff              {orgId, role, givenName, familyName?, email?, accountId?, classId?}
- * issue-license          {orgId, seats, endsAt, startsAt?, reference?}
+ * issue-license          {orgId, seats, endsAt, startsAt?, reference?, classIds?}
+ * extend-pilot           {pilotId, until, reason, operatorReference}
  * set-seats              {licenseId, seats}
  * extend-license         {licenseId, endsAt}
  * add-student            {orgId, givenName, familyName?, displayName?, email?, identifier?, gradeLevel?, classId?}
@@ -56,6 +58,8 @@ export async function schoolAdmin(
   services?: Pick<SchoolServices, "secret" | "origin" | "mail">,
 ): Promise<unknown> {
   switch (command) {
+    case "extend-pilot":
+      return extendTeacherPilot(repository, input);
     case "create-school": {
       if (!services) throw new SchoolError(503, "accounts_unconfigured");
       const school = await createSchool(repository, services, input);

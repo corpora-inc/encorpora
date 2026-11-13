@@ -26,6 +26,12 @@ export const sessionModes = ["shared", "personal"] as const;
 /** Everything a school route can ask to do. `can` is the only reader. */
 export const schoolActions = [
   "orgs.list",
+  "school.start",
+  "pilot.manage",
+  "pilot.read",
+  "class.authorize",
+  "class.import",
+  "purchase.request",
   "org.read",
   "classes.read",
   "classes.create",
@@ -194,6 +200,7 @@ export type AddStaff = z.infer<typeof addStaffSchema>;
 
 export const issueLicenseSchema = z.strictObject({
   orgId: z.uuid(),
+  classIds: z.array(z.uuid()).min(1).max(10000).optional(),
   seats: z.number().int().min(0).max(1_000_000),
   startsAt: z.iso.datetime({ offset: true }).optional(),
   endsAt: z.iso.datetime({ offset: true }),

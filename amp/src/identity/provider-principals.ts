@@ -161,7 +161,7 @@ export const verifiedCleverIdentity = resolveProviderSession;
  * that ledger prevents deleting/recreating a sign-in from restarting a pilot.
  * This key grants no access and is never used to merge accounts. */
 export async function providerEligibilityKey(
-  pool: Pool,
+  pool: Pick<Pool, "query">,
   accountId: string,
 ): Promise<string | null> {
   const identity = (

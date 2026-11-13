@@ -141,6 +141,26 @@ export async function removeOrgTree(
     [licenseIds],
   );
   // Approval links of the tree's family classes, then the family rows.
+  await purge(
+    "classAuthorizations",
+    "amp_class_authorizations",
+    "class_id=ANY($1::uuid[])",
+    [classes],
+  );
+  await purge("classPilots", "amp_class_pilots", "class_id=ANY($1::uuid[])", [
+    classes,
+  ]);
+  await purge("schoolStarts", "amp_school_starts", "org_id=ANY($1::uuid[])", [
+    orgs,
+  ]);
+  await purge(
+    "purchaseRequests",
+    "amp_school_purchase_requests",
+    "org_id=ANY($1::uuid[])",
+    [orgs],
+  );
+  // Teacher eligibility and non-contact extension history survive deleting a
+  // place; recreating the school must not grant another introductory pilot.
   const families = await ids(
     "SELECT account_id AS id FROM amp_families WHERE org_id=ANY($1::uuid[])",
     [orgs],

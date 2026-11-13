@@ -122,6 +122,10 @@ const AIDE_CLASS = new Set<SchoolAction>([
   "workbooks.write",
 ]);
 const TEACHER_CLASS = new Set<SchoolAction>([
+  "pilot.manage",
+  "pilot.read",
+  "class.authorize",
+  "class.import",
   ...AIDE_CLASS,
   "students.add",
   "classes.update",
@@ -132,7 +136,12 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "settings.write",
   "share.manage",
 ]);
-const SELF = new Set<SchoolAction>(["orgs.list", "invites.accept"]);
+const SELF = new Set<SchoolAction>([
+  "orgs.list",
+  "invites.accept",
+  "school.start",
+  "purchase.request",
+]);
 /** All a family's teachers do: teach their class and invite a co-teacher.
  * Its children's access is their own grants, so there are no seats or
  * licenses; its privacy and deletion are the family's own (`/family`); and
@@ -161,6 +170,9 @@ const FAMILY = new Set<SchoolAction>([
  * person, import a roster, or write to anyone. Its students are made up, so a
  * real child's name or address never enters one, and it sends no mail. */
 const NOT_IN_A_DEMO = new Set<SchoolAction>([
+  "pilot.manage",
+  "class.authorize",
+  "class.import",
   "students.add",
   "students.transfer",
   "roster.import",

@@ -350,7 +350,21 @@ export class SchoolRepository {
         [org.path],
       )
     ).rows[0];
-    if (agreement?.ended_at || (input.givenName !== undefined && !agreement))
+    const classAuthorization =
+      !agreement && input.classId
+        ? (
+            await client.query(
+              "SELECT ended_at FROM amp_class_authorizations WHERE class_id=$1 ORDER BY accepted_at DESC,id LIMIT 1",
+              [input.classId],
+            )
+          ).rows[0]
+        : undefined;
+    if (
+      agreement?.ended_at ||
+      (input.givenName !== undefined &&
+        !agreement &&
+        (!classAuthorization || classAuthorization.ended_at))
+    )
       throw new SchoolError(409, "agreement_required");
     // Without a name, the student goes by a nickname or their number
     // ("Student 3") until a parent or the school names them.
@@ -435,9 +449,12 @@ export class SchoolRepository {
       await client.query(
         `SELECT l.id,l.seats,l.ends_at FROM amp_school_licenses l
          WHERE l.org_id=ANY($1::uuid[]) AND ${IN_FORCE("l")}
+           AND (l.class_ids IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e
+             JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id
+             WHERE e.person_id=$2 AND e.role='student' AND e.class_id=ANY(l.class_ids) AND ${activeToday("e", "o")}))
          ORDER BY array_position($1::uuid[],l.org_id) DESC,l.ends_at DESC,l.id
          FOR UPDATE`,
-        [path],
+        [path, personId],
       )
     ).rows;
     for (const license of licenses)
@@ -488,12 +505,17 @@ export class SchoolRepository {
         `SELECT p.id,p.learner_id FROM amp_people p
          WHERE p.tenant_id=(SELECT path[1] FROM amp_orgs WHERE id=$1)
            AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
+           AND ((SELECT class_ids FROM amp_school_licenses WHERE id=$3) IS NULL OR EXISTS(
+             SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+             JOIN amp_orgs o ON o.id=c.org_id WHERE e.person_id=p.id AND e.role='student'
+               AND e.class_id=ANY((SELECT class_ids FROM amp_school_licenses WHERE id=$3)::uuid[])
+               AND ${activeToday("e", "o")}))
            AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
              WHERE r.person_id=p.id AND r.role='student' AND o.path @> ARRAY[$1]::uuid[] AND ${activeToday("r", "o")})
            AND NOT EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
              WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")})
          ORDER BY p.created_at,p.id LIMIT $2`,
-        [license.org_id, room],
+        [license.org_id, room, license.id],
       )
     ).rows;
     for (const person of waiting) {
@@ -512,11 +534,21 @@ export class SchoolRepository {
   }
   async issueLicenseIn(client: PoolClient, input: IssueLicense) {
     const org = await this.org(client, input.orgId);
+    if (input.classIds) {
+      const ids = [...new Set(input.classIds)];
+      const classes = await client.query(
+        `SELECT c.id FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+        WHERE c.id=ANY($1::uuid[]) AND o.path @> ARRAY[$2]::uuid[] AND c.archived_at IS NULL`,
+        [ids, org.id],
+      );
+      if (classes.rowCount !== ids.length)
+        throw new SchoolError(400, "license_class_scope_invalid");
+    }
     const id = randomUUID();
     const license = (
       await client.query(
-        `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,reference)
-           VALUES($1,$2,$3,COALESCE($4::timestamptz,now()),$5,$6)
+        `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,reference,class_ids)
+           VALUES($1,$2,$3,COALESCE($4::timestamptz,now()),$5,$6,$7)
            RETURNING id,org_id,seats,starts_at,ends_at,starts_at<=now() AND ends_at>now() AS in_force`,
         [
           id,
@@ -525,6 +557,7 @@ export class SchoolRepository {
           input.startsAt ?? null,
           input.endsAt,
           input.reference ?? null,
+          input.classIds ? [...new Set(input.classIds)] : null,
         ],
       )
     ).rows[0];

@@ -1,4 +1,5 @@
 import { PERSON_NAME } from "./term-grades.js";
+import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
 import type { Pool } from "pg";
@@ -258,6 +259,7 @@ export async function registerSchoolRoutes(
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
     registerJoinRoutes(scope, repository, services.oidc);
+    registerBuyerHandoff(scope, options.pool);
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
     registerStudentStandings(scope, options.pool);
@@ -521,6 +523,7 @@ defineSchoolRoute({
   },
 });
 defineSignInRoutes(defineSchoolRoute);
+definePilotRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);

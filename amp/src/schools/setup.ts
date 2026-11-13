@@ -350,7 +350,7 @@ export async function finishSetup(
   return repo.transaction(async (client) => {
     const org = (
       await client.query(
-        "SELECT solo,setup_pending FROM amp_orgs WHERE id=$1",
+        "SELECT solo,setup_pending FROM amp_orgs WHERE id=$1 FOR UPDATE",
         [orgId],
       )
     ).rows[0];
@@ -367,6 +367,8 @@ export async function finishSetup(
       )
     ).rows[0]?.id as string | undefined;
     let classId = existing ?? null;
+    // The committed setup boundary makes retrying names safe.
+    if (!org.setup_pending) return { classId, solo: org.solo as boolean };
     if (!existing && (input.className || org.solo)) {
       const division = (
         await client.query(
