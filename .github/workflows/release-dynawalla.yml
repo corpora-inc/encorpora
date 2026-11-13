@@ -77,6 +77,11 @@ permissions:
   contents: read
 
 env:
+  # Three fetch attempts with 20s/120s backoff for transient registry failures.
+  # Lockfile mismatches and HTTP 404s fail without retrying.
+  npm_config_fetch_retries: '2'
+  npm_config_fetch_retry_mintimeout: '20000'
+  npm_config_fetch_retry_maxtimeout: '120000'
   NODE_OPTIONS: --use-openssl-ca
   APP_DIR: dynawalla/dynawalla-app
   BUNDLE_ID: inc.corpora.dynawalla
