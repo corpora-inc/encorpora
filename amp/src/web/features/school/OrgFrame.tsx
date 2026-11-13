@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
-import { Loading } from "../../ui/Loading";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import { currentSession, orgOptions } from "./api";
 import type { SchoolCrumb } from "./SchoolFrame";
 import frame from "./SchoolFrame.module.css";
@@ -56,7 +56,7 @@ export function OrgFrame({
   if (org.isPending)
     return (
       <main className={frame.content} data-dense>
-        <Loading />
+        <LoadingScreen overlay />
       </main>
     );
   if (!org.data) {

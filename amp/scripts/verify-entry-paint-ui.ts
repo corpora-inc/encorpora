@@ -14,17 +14,19 @@ import { retentionNotice } from "../src/family/contracts";
 // Synthetic API responses exercise real auth, routing and CSS. The same check
 // can inspect deployed assets without signing into or changing a real account.
 const external = process.env.AMP_ENTRY_ORIGIN;
+const port = Number(process.env.AMP_ENTRY_PORT ?? 4395);
 const server = external
   ? null
   : process.argv.includes("--production")
     ? await preview({
-        preview: { host: "127.0.0.1", port: 4395, strictPort: true },
+        preview: { host: "127.0.0.1", port, strictPort: true },
       })
     : await createServer({
-        server: { host: "127.0.0.1", port: 4395, strictPort: true },
+        cacheDir: process.env.AMP_ENTRY_CACHE_DIR,
+        server: { host: "127.0.0.1", port, strictPort: true },
       });
 if (server && "listen" in server) await server.listen();
-const origin = external ?? "http://127.0.0.1:4395";
+const origin = external ?? `http://127.0.0.1:${port}`;
 const shots = process.env.AMP_ENTRY_SHOTS ?? "artifacts/entry-paint";
 await mkdir(shots, { recursive: true });
 const me = fixtureMe(
@@ -90,7 +92,10 @@ async function paint(page: Page) {
   });
 }
 try {
-  for (const engine of [chromium, webkit]) {
+  // `--placement-only` runs just the placement checks below.
+  for (const engine of process.argv.includes("--placement-only")
+    ? []
+    : [chromium, webkit]) {
     const browser = await engine.launch();
     try {
       for (const colorScheme of ["light", "dark"] as const) {
@@ -335,8 +340,298 @@ try {
       await browser.close();
     }
   }
+  await verifyPlacements();
 } finally {
   if (server && "close" in server) await server.close();
+}
+
+/**
+ * Wherever the wave shows, it sits in the middle of the space it stands for:
+ * the viewport on every document the server sends, and the space under the
+ * bar inside a frame, both for a route's pending screen and for a screen's
+ * own wait for its data. Each wait is held open and every painted frame is
+ * sampled, so a wave that lands anywhere else for even one frame fails.
+ */
+async function verifyPlacements() {
+  const browser = await chromium.launch();
+  const out = process.env.AMP_WAVE_SHOTS ?? "artifacts/wave-position";
+  await mkdir(out, { recursive: true });
+  const org = "00000000-0000-4000-8000-0000000000a1";
+  const klass = "00000000-0000-4000-8000-0000000000c1";
+  const adult = "00000000-0000-4000-8000-0000000000d1";
+  const staffMe = {
+    ...newMe,
+    next: "practice" as const,
+    staffOf: [{ orgId: org, orgName: "Synthetic School", role: "admin" }],
+  };
+  const adultMe = {
+    ...newMe,
+    next: "practice" as const,
+    adultPractice: {
+      eligible: true,
+      learner: { id: adult, name: "Test Adult", active: true },
+    },
+  };
+  const school = {
+    org: {
+      id: org,
+      kind: "school",
+      name: "Synthetic School",
+      parentId: null,
+      timezone: "America/New_York",
+      solo: false,
+      setupPending: false,
+      roles: ["admin", "teacher"],
+      personName: "Test Teacher",
+      can: [
+        "org.read",
+        "classes.read",
+        "students.read",
+        "grades.read",
+        "overview.read",
+      ],
+      teaches: [klass],
+      ancestors: [],
+    },
+  };
+  const classes = {
+    classes: [
+      {
+        id: klass,
+        orgId: org,
+        sessionId: "00000000-0000-4000-8000-0000000000e1",
+        name: "Synthetic Class",
+        courseBands: ["5"],
+        gradingKind: "semester",
+        joinCode: "SYNTH1",
+        studentCount: 3,
+        teachers: ["Test Teacher"],
+      },
+    ],
+    nextOffset: null,
+  };
+  const signedIn = {
+    user: {
+      id: "synthetic-entry",
+      email: "entry@example.test",
+      emailVerified: true,
+      name: "Test Account",
+    },
+    session: {
+      id: "synthetic-session",
+      token: "synthetic-entry-token",
+      userId: "synthetic-entry",
+      expiresAt: "2099-01-01T00:00:00.000Z",
+    },
+  };
+  // Every document type nginx serves. The home and skill documents exist only
+  // in a production build (`--production`, or a deployed AMP_ENTRY_ORIGIN).
+  const built = !!external || process.argv.includes("--production");
+  const documents: [string, string][] = [
+    ["spa-index", "/"],
+    ["spa-404", "/no-such-page"],
+    ["pathways-route", "/pathways/count-to-20"],
+    ...(built
+      ? ([
+          ["home-document", external ? "/" : "/home.html"],
+          ["pathways-document", "/pathways/count-to-20/"],
+          ["pathways-map-document", "/pathways/"],
+        ] as [string, string][])
+      : []),
+  ];
+  type Case = {
+    name: string;
+    path: string;
+    me?: unknown;
+    /** The request held open, so its wait stays on screen. */
+    hold: RegExp;
+    /** Open `path` first, then follow the link to this one in the app. */
+    navigate?: string;
+    framed: boolean;
+  };
+  const failures: string[] = [];
+  const cases: Case[] = [
+    ...documents.map(([name, path]) => ({
+      name,
+      path,
+      hold: /^\/api\/auth\/get-session$/,
+      framed: false,
+    })),
+    // Moving inside the class frame to a route whose loader is still
+    // fetching: the router's pending screen, under the bar.
+    {
+      name: "class-route-pending",
+      path: `/school/${org}/classes/${klass}/gradebook`,
+      navigate: `/school/${org}/classes/${klass}/map`,
+      me: staffMe,
+      hold: /\/school\/classes\/[^/]+\/map$/,
+      framed: true,
+    },
+    // The class frame is up and the screen waits for its own data.
+    {
+      name: "class-frame-wait",
+      path: `/school/${org}/classes/${klass}/gradebook`,
+      me: staffMe,
+      hold: /\/school\/classes\/[^/]+\/gradebook$/,
+      framed: true,
+    },
+    // The same inside the school frame: from a class to the school's overview.
+    {
+      name: "school-route-pending",
+      path: `/school/${org}/classes/${klass}/gradebook`,
+      navigate: `/school/${org}`,
+      me: staffMe,
+      hold: /\/school\/orgs\/[^/]+\/overview$/,
+      framed: true,
+    },
+    // The learner's own frame waits for their practice record.
+    {
+      name: "learner-frame-wait",
+      path: "/me",
+      me: adultMe,
+      hold: /^\/api\/v1\/me\/practice$/,
+      framed: true,
+    },
+  ];
+  try {
+    for (const [width, colorScheme] of [
+      [390, "light"],
+      [1280, "light"],
+      [390, "dark"],
+      [1280, "dark"],
+    ] as const) {
+      for (const test of cases) {
+        // Signed-in cases only make sense against the synthetic API.
+        if (external && test.me) continue;
+        const context = await browser.newContext({
+          viewport: { width, height: 844 },
+          colorScheme,
+        });
+        const page = await context.newPage();
+        page.setDefaultTimeout(20000);
+        let held = false;
+        let holding = !test.navigate;
+        await context.addInitScript(`
+          window.wavePlacements = [];
+          (function sample(){
+            for (const mark of document.querySelectorAll(".app-loading-mark, .amp-wave")) {
+              const box = mark.getBoundingClientRect();
+              const wait = mark.closest('[aria-busy="true"]');
+              if (!box.width || !wait || mark.closest(".amp-loading-inline, button, a")) continue;
+              let opacity = 1;
+              for (let node = mark; node; node = node.parentElement)
+                opacity *= Number(getComputedStyle(node).opacity);
+              if (opacity < 0.5) continue;
+              const content = document.querySelector("[data-shell-content]");
+              const area = content ? content.getBoundingClientRect() : null;
+              const top = content ? parseFloat(getComputedStyle(content).paddingTop) : 0;
+              window.wavePlacements.push({
+                x: box.x + box.width / 2,
+                y: box.y + box.height / 2,
+                width: box.width,
+                cx: area ? area.x + area.width / 2 : innerWidth / 2,
+                cy: (top + innerHeight) / 2,
+                framed: !!content,
+                scrolls: document.documentElement.scrollHeight > innerHeight + 1,
+              });
+            }
+            requestAnimationFrame(sample);
+          })();
+        `);
+        if (!external)
+          await page.route("**/api/**", async (route) => {
+            const path = new URL(route.request().url()).pathname;
+            if (holding && test.hold.test(path)) {
+              held = true;
+              // Held until the context closes.
+              return new Promise<void>(() => undefined);
+            }
+            if (path === "/api/v1/auth-config")
+              return route.fulfill({
+                json: { mode: "accounts", passwords: true, providers: [] },
+              });
+            if (path === "/api/auth/get-session")
+              return route.fulfill({ json: test.me ? signedIn : null });
+            if (path === "/api/v1/me" && test.me)
+              return route.fulfill({ json: test.me });
+            if (path === `/api/v1/school/orgs/${org}`)
+              return route.fulfill({ json: school });
+            if (path === `/api/v1/school/orgs/${org}/classes`)
+              return route.fulfill({ json: classes });
+            if (path === "/api/v1/school/orgs")
+              return route.fulfill({ json: { orgs: [school.org] } });
+            if (path === `/api/v1/school/classes/${klass}/year`)
+              return route.fulfill({ json: { past: false } });
+            return route.fulfill({
+              status: 503,
+              json: { message: "Unavailable in synthetic entry fixture" },
+            });
+          });
+        await page.goto(`${origin}${test.path}`, { waitUntil: "commit" });
+        if (test.navigate) {
+          // The frame is up with the screen settled; then the move.
+          await page.locator("[data-shell-content] main").first().waitFor();
+          await page.waitForTimeout(500);
+          await page.evaluate("window.wavePlacements = []");
+          holding = true;
+          const link = page.locator(`a[href="${test.navigate}"]`).first();
+          if (await link.count()) await link.dispatchEvent("click");
+          else
+            await page.evaluate((to) => {
+              history.pushState(history.state, "", to);
+              dispatchEvent(
+                new PopStateEvent("popstate", { state: history.state }),
+              );
+            }, test.navigate);
+        }
+        if (!external) await assertEventually(() => held);
+        // Past the router's one-second pending delay and any fade-in.
+        await page.waitForTimeout(1800);
+        await page.screenshot({
+          path: `${out}/${test.name}-${width}-${colorScheme}.png`,
+        });
+        const samples = await page.evaluate<
+          {
+            x: number;
+            y: number;
+            width: number;
+            cx: number;
+            cy: number;
+            framed: boolean;
+            scrolls: boolean;
+          }[]
+        >("window.wavePlacements");
+        await context.close();
+        try {
+          assert.ok(
+            samples.length > 5,
+            `${test.name} ${width} ${colorScheme}: a wave showed`,
+          );
+          assert.equal(
+            samples.at(-1)!.framed,
+            test.framed,
+            `${test.name} ${width} ${colorScheme}: the wait ${test.framed ? "sits inside" : "has no"} frame`,
+          );
+          for (const sample of samples) {
+            const where = `${test.name} ${width} ${colorScheme}: wave at ${Math.round(sample.x)},${Math.round(sample.y)}, expected ${Math.round(sample.cx)},${Math.round(sample.cy)}`;
+            assert.ok(Math.abs(sample.x - sample.cx) <= 2, `${where}: centred`);
+            assert.ok(Math.abs(sample.y - sample.cy) <= 2, `${where}: centred`);
+            assert.equal(sample.width, 56, `${where}: the full-size mark`);
+            assert.ok(!sample.scrolls, `${where}: the wait never scrolls`);
+          }
+          console.log(
+            `wave placement ${test.name} ${width} ${colorScheme}: centred`,
+          );
+        } catch (error) {
+          failures.push((error as Error).message);
+          console.error((error as Error).message);
+        }
+      }
+    }
+  } finally {
+    await browser.close();
+  }
+  assert.deepEqual(failures, [], "every wave sits in the middle of its space");
 }
 async function assertEventually(check: () => boolean) {
   const start = Date.now();

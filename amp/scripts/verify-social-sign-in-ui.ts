@@ -667,6 +667,15 @@ try {
       }),
     }),
   );
+  // This account has a password, so a wrong one gets the general message.
+  await page.route("**/api/auth/sign-in-methods", (route) =>
+    route.fulfill({ json: { methods: ["password"] } }),
+  );
+  // From /access the stack uses the parent layout (Google in full first).
+  const stackTops = () =>
+    page
+      .locator("button[data-provider]")
+      .evaluateAll((all) => all.map((b) => b.getBoundingClientRect().y));
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
     for (const size of sizes.filter((s) => s.width !== 384)) {
@@ -674,7 +683,7 @@ try {
       await page
         .getByLabel("Password", { exact: true })
         .fill("not-an-AMP-password");
-      const positions = await measureStack(page, "before failed password");
+      const positions = await stackTops();
       await page.getByRole("button", { name: "Sign in", exact: true }).click();
       const feedback = page.getByRole("alert");
       await feedback.waitFor();
@@ -693,8 +702,8 @@ try {
         "feedback is visible in the viewport",
       );
       assert.deepEqual(
-        (await measureStack(page, "after failed password")).map((b) => b.y + 0),
-        positions.map((b) => b.y),
+        await stackTops(),
+        positions,
         "failed request does not reflow controls",
       );
       assert.equal(
@@ -711,6 +720,7 @@ try {
     }
   }
   await page.unroute("**/api/auth/sign-in/email");
+  await page.unroute("**/api/auth/sign-in-methods");
   await page.setViewportSize(sizes[2]);
   await page.goto(`${origin}/sign-up`);
 

@@ -16,7 +16,7 @@ import { analyticsVisitorHeaders, flush } from "../../lib/analytics";
 import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
-import { Loading } from "../../ui/Loading";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import { Toast } from "../../ui/Toast";
 import {
   offerOptions,
@@ -314,7 +314,7 @@ function Page({
   if (busy || !head)
     return (
       <main className={styles.page} aria-busy={busy || undefined}>
-        {busy ? <Loading /> : children}
+        {busy ? <LoadingScreen overlay /> : children}
       </main>
     );
   return (

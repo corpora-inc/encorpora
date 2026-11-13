@@ -31,8 +31,13 @@ function markArrival() {
 
 /**
  * Match the centered first paint in index.html while the destination resolves.
- * The inline stylesheet owns both frames, including before scripts arrive.
- * CSS handles the motion; JavaScript only synchronizes each newly mounted wave.
+ * index.html inlines its styles for the paint before any stylesheet;
+ * `ui/loading.css` carries the same rules for every later mount. CSS handles
+ * the motion; JavaScript only synchronizes each newly mounted wave.
+ *
+ * `overlay` is a screen's own wait for its data inside a frame: the same wave
+ * in the same place as the router's pending screen, never a small one in the
+ * corner of the content.
  */
 export function LoadingScreen({
   error = "",
@@ -45,7 +50,8 @@ export function LoadingScreen({
   retry?: () => void;
   busy?: boolean;
   recovery?: ReactNode;
-  /** Over a frame that has already painted, keeping its surface. */
+  /** Over a frame that has already painted, keeping its surface: centred in
+   * the space under the bar. */
   overlay?: boolean;
 }) {
   const wave = useRef<SVGPathElement>(null);
@@ -59,9 +65,10 @@ export function LoadingScreen({
     const stop = onMediaChange("(prefers-reduced-motion: no-preference)", sync);
     return () => {
       stop();
-      markArrival();
+      // Over a frame, the frame stays put; only a whole screen arrives.
+      if (!overlay) markArrival();
     };
-  }, [error]);
+  }, [error, overlay]);
   return (
     <div
       className={`app-loading ${overlay ? "app-loading-overlay" : ""}`}

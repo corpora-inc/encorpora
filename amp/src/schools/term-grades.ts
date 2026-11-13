@@ -1020,6 +1020,8 @@ export async function workSamples(
   timezone: string,
   limit: number,
   offset = 0,
+  /** Only this skill's answers. */
+  skillId?: string,
 ): Promise<WorkItem[]> {
   const { rows } = await db.query(
     `SELECT a.id,a.outcome,i.content->'public' AS problem,
@@ -1028,8 +1030,9 @@ export async function workSamples(
      FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=a.learner_id
      WHERE a.learner_id=$1
        AND ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE $4)::date BETWEEN $2::date AND $3::date
+       AND ($7::text IS NULL OR COALESCE(a.outcome->>'skillId',i.content->'public'->>'skillId')=$7)
      ORDER BY a.evidence_sequence DESC LIMIT $5 OFFSET $6`,
-    [learnerId, range.from, range.to, timezone, limit, offset],
+    [learnerId, range.from, range.to, timezone, limit, offset, skillId ?? null],
   );
   return rows.map((row) => {
     const { outcome, problem } = row;

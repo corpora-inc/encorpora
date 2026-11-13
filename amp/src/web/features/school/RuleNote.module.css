@@ -1,33 +1,12 @@
+/* The rule behind a flag: a quiet button; the rule opens over the page. */
 .rule {
+  margin-inline-start: calc(var(--space-2) * -1);
+}
+.text {
   max-width: 60ch;
-  color: var(--color-muted-text);
+  margin: 0;
+  color: var(--color-on-surface);
   font-size: var(--text-table-small);
   line-height: 1.45;
-}
-.rule summary {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: 44px;
-  color: var(--color-muted-text);
-  cursor: pointer;
-  list-style: none;
-  text-decoration: underline;
-  text-decoration-color: var(--color-border-strong);
-  text-underline-offset: 3px;
-}
-.rule summary::-webkit-details-marker {
-  display: none;
-}
-.rule summary:hover {
-  color: var(--color-on-surface);
-}
-.rule summary:focus-visible {
-  border-radius: 4px;
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.rule p {
-  padding-bottom: var(--space-2);
   text-wrap: pretty;
 }

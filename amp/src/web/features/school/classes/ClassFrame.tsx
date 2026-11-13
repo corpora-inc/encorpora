@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ReactNode } from "react";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { classesOptions, currentSession } from "../api";
 import { OrgFrame } from "../OrgFrame";
 
@@ -42,7 +42,7 @@ export function ClassFrame({
       crumbs={[{ label: name }]}
       place={place}
     >
-      {loading ? <Loading /> : children}
+      {loading ? <LoadingScreen overlay /> : children}
     </OrgFrame>
   );
 }

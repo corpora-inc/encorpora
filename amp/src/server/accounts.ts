@@ -26,6 +26,14 @@ import { APIError } from "better-auth/api";
 import { passkey } from "@better-auth/passkey";
 import { microsoftEmailVerified } from "./provider-email";
 import { passkeySignup, PASSKEY_SIGNUP_SECONDS } from "./passkey-signup";
+import {
+  accountSignInMethods,
+  existingAccountEmail,
+  resetPasswordEmail,
+  signInLink,
+  signInMethodLookup,
+} from "./sign-in-methods";
+import { tryGetCurrentAuthEndpointContext } from "@better-auth/core/context";
 import { SignJWT, importPKCS8 } from "jose";
 import { Resend } from "resend";
 import type { FastifyInstance } from "fastify";
@@ -237,6 +245,27 @@ export function accountMail(
 
 export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const send = accountMail(config);
+  const methodsEnabled = {
+    providers: enabledProviders(config),
+    passwords: config.passwords,
+  };
+  /** Account mail that names what it is; every send and failure is logged. */
+  const sendLogged = async (
+    kind: string,
+    user: { id: string; email: string },
+    message: { subject: string; text: string; url: string },
+  ) => {
+    try {
+      await send(user.email, message.subject, message.text, message.url);
+      console.info(`[accounts] ${kind} email sent`, { userId: user.id });
+    } catch (error) {
+      console.error(`[accounts] ${kind} email not sent`, {
+        userId: user.id,
+        error,
+      });
+      throw error;
+    }
+  };
   const { origin, hostname } = new URL(config.baseURL);
   const twoFactorPlugin = twoFactor({
     issuer: brand.name,
@@ -398,13 +427,53 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       onPasswordReset: async ({ user }) => {
         if (!user.emailVerified) await confirmByReset(pool, user.id);
       },
-      sendResetPassword: ({ user, url }) =>
-        send(
-          user.email,
-          `Reset your ${brand.name} password`,
-          "Use this link to choose a new password. It expires in one hour. If you did not ask for it, ignore this email.",
+      // Without a password, the email says how the account signs in and
+      // offers the link only as a way to add one.
+      sendResetPassword: async ({ user, url }) => {
+        const methods = await accountSignInMethods(
+          pool,
+          { userId: user.id },
+          methodsEnabled,
+        );
+        const signIn = signInLink(
+          config.baseURL,
+          new URL(url).searchParams.get("callbackURL"),
+        );
+        await sendLogged("password reset", user, {
+          ...resetPasswordEmail(brand.name, methods, signIn),
           url,
-        ),
+        });
+      },
+      // With confirmation required, signing up with a used address answers
+      // like a new one and sends nothing by default. The owner gets an email
+      // that names how the account actually signs in. A failure is logged and
+      // never changes the response.
+      onExistingUserSignUp: async ({ user }) => {
+        let message;
+        try {
+          const methods = await accountSignInMethods(
+            pool,
+            { userId: user.id },
+            methodsEnabled,
+          );
+          const from = (
+            tryGetCurrentAuthEndpointContext() as
+              { body?: { callbackURL?: unknown } } | undefined
+          )?.body?.callbackURL;
+          message = existingAccountEmail(brand.name, methods ?? [], {
+            signIn: signInLink(config.baseURL, from),
+            forgot: signInLink(config.baseURL, from, "/sign-in/forgot"),
+          });
+        } catch (error) {
+          console.error("[accounts] existing-account email not sent", {
+            userId: user.id,
+            error,
+          });
+          return;
+        }
+        // sendLogged has already logged a failure.
+        await sendLogged("existing-account", user, message).catch(() => {});
+      },
     },
     databaseHooks: {
       session: {
@@ -513,6 +582,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       twoFactorPlugin,
       passkeyPlugin,
       signupPlugin,
+      signInMethodLookup(pool, methodsEnabled),
     ],
     rateLimit: {
       enabled: true,
@@ -529,6 +599,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         // Each attempt says whether an email has an account; keep that slow.
         "/passkey-signup/options": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
         "/passkey-signup/verify": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
+        "/sign-in-methods": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
       },
     },
     // Internal failures reach clients as a generic 500; log the cause.

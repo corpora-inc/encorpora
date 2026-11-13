@@ -5,7 +5,7 @@ import { AppError } from "../../../lib/AppError";
 import { useLoggedError } from "../../../feedback";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { Select } from "../../../ui/Select";
 import { Sheet } from "../../../ui/Sheet";
 import { TextField } from "../../../ui/TextField";
@@ -149,7 +149,7 @@ export function SchoolsScreen() {
         }
       />
       {schools.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data ? (
         <EmptyState
           title="The schools didn’t load"

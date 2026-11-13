@@ -1,4 +1,4 @@
-import { useSearch } from "@tanstack/react-router";
+import { useParams, useSearch } from "@tanstack/react-router";
 import { LessonDialog } from "../features/pathways/LessonDialog";
 import { StudentLayer } from "../features/school/classes/StudentLayer";
 import {
@@ -17,6 +17,7 @@ import { SkillLayer } from "./SkillLayer";
  */
 export function LayerHost({ org }: { org: string }) {
   const { stack, close } = useLayers();
+  const classId = (useParams({ strict: false }) as { class?: string }).class;
   const search = useSearch({ strict: false }) as { skill?: unknown };
   return stack.map((entity, index) => {
     const top = index === stack.length - 1;
@@ -37,15 +38,23 @@ export function LayerHost({ org }: { org: string }) {
             onClose={close}
           />
         );
-      case "skill":
+      case "skill": {
+        // Opened from a student: theirs; else, in a class, the class's.
+        const from = stack
+          .slice(0, index)
+          .filter((below) => below.kind === "student")
+          .at(-1);
         return (
           <SkillLayer
             key={key}
             skill={entity.id}
+            student={from?.id}
+            place={classId ? { org, class: classId } : undefined}
             open={!underAnswer}
             onClose={close}
           />
         );
+      }
       case "lesson":
         return (
           <LessonDialog

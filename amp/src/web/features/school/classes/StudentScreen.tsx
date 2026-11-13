@@ -13,7 +13,7 @@ import { Button, buttonClass } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
-import { Loading } from "../../../ui/Loading";
+import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { AppError } from "../../../lib/AppError";
 import { shareOptions } from "../../schools/share-api";
 import { ShareWithFamily } from "../../schools/ShareWithFamily";
@@ -61,7 +61,7 @@ export function StudentScreen() {
       ]}
     >
       {record.isPending || share.isPending ? (
-        <Loading />
+        <LoadingScreen overlay />
       ) : !data ? (
         <EmptyState
           title={

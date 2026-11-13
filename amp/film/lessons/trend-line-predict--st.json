@@ -1,0 +1,1700 @@
+{
+  "id": "trend-line-predict--st",
+  "title": "A line through the cloud",
+  "teaches": [
+    "trend-line-best-fit-choice",
+    "trend-line-fit-assess",
+    "trend-line-compare",
+    "trend-line-fit",
+    "trend-line-read",
+    "trend-slope-meaning"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2,
+          6,
+          11.8,
+          119
+        ],
+        "stretch": true,
+        "points": {
+          "O": [
+            0,
+            40
+          ],
+          "X": [
+            10.4,
+            40
+          ],
+          "Y": [
+            0,
+            108
+          ],
+          "XT": [
+            5,
+            15.5
+          ],
+          "YT": [
+            4.7,
+            111
+          ],
+          "L": [
+            0,
+            65
+          ],
+          "R": [
+            10,
+            105
+          ],
+          "A": [
+            2,
+            61
+          ],
+          "B": [
+            7,
+            81
+          ],
+          "C": [
+            7,
+            61
+          ],
+          "P": [
+            6,
+            77
+          ],
+          "H": [
+            6,
+            40
+          ],
+          "J": [
+            0,
+            77
+          ],
+          "I": [
+            0,
+            53
+          ],
+          "Z": [
+            0,
+            40
+          ],
+          "S": [
+            1,
+            44
+          ],
+          "E": [
+            10,
+            44
+          ],
+          "x0": [
+            0,
+            40
+          ],
+          "tx0a": [
+            0,
+            39.2
+          ],
+          "tx0b": [
+            0,
+            40.8
+          ],
+          "x2": [
+            2,
+            40
+          ],
+          "tx2a": [
+            2,
+            39.2
+          ],
+          "tx2b": [
+            2,
+            40.8
+          ],
+          "gx2t": [
+            2,
+            100
+          ],
+          "x4": [
+            4,
+            40
+          ],
+          "tx4a": [
+            4,
+            39.2
+          ],
+          "tx4b": [
+            4,
+            40.8
+          ],
+          "gx4t": [
+            4,
+            100
+          ],
+          "x6": [
+            6,
+            40
+          ],
+          "tx6a": [
+            6,
+            39.2
+          ],
+          "tx6b": [
+            6,
+            40.8
+          ],
+          "gx6t": [
+            6,
+            100
+          ],
+          "x8": [
+            8,
+            40
+          ],
+          "tx8a": [
+            8,
+            39.2
+          ],
+          "tx8b": [
+            8,
+            40.8
+          ],
+          "gx8t": [
+            8,
+            100
+          ],
+          "x10": [
+            10,
+            40
+          ],
+          "tx10a": [
+            10,
+            39.2
+          ],
+          "tx10b": [
+            10,
+            40.8
+          ],
+          "gx10t": [
+            10,
+            100
+          ],
+          "y40": [
+            0,
+            40
+          ],
+          "ty40a": [
+            -0.12,
+            40
+          ],
+          "ty40b": [
+            0.12,
+            40
+          ],
+          "y60": [
+            0,
+            60
+          ],
+          "ty60a": [
+            -0.12,
+            60
+          ],
+          "ty60b": [
+            0.12,
+            60
+          ],
+          "gy60r": [
+            10,
+            60
+          ],
+          "y80": [
+            0,
+            80
+          ],
+          "ty80a": [
+            -0.12,
+            80
+          ],
+          "ty80b": [
+            0.12,
+            80
+          ],
+          "gy80r": [
+            10,
+            80
+          ],
+          "y100": [
+            0,
+            100
+          ],
+          "ty100a": [
+            -0.12,
+            100
+          ],
+          "ty100b": [
+            0.12,
+            100
+          ],
+          "gy100r": [
+            10,
+            100
+          ],
+          "D0": [
+            1,
+            63
+          ],
+          "F0": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.1
+          },
+          "D1": [
+            2,
+            57
+          ],
+          "F1": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.2
+          },
+          "D2": [
+            3,
+            67
+          ],
+          "F2": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.3
+          },
+          "D3": [
+            4,
+            66
+          ],
+          "F3": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.4
+          },
+          "D4": [
+            5,
+            76
+          ],
+          "F4": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.5
+          },
+          "D5": [
+            6,
+            73
+          ],
+          "F5": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.6
+          },
+          "D6": [
+            7,
+            85
+          ],
+          "F6": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.7
+          },
+          "D7": [
+            8,
+            82
+          ],
+          "F7": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.8
+          },
+          "D8": [
+            9,
+            86
+          ],
+          "F8": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.9
+          },
+          "D9": [
+            10,
+            98
+          ],
+          "F9": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 1
+          },
+          "D10": [
+            6,
+            81
+          ],
+          "F10": {
+            "along": [
+              "L",
+              "R"
+            ],
+            "t": 0.6
+          },
+          "U0": [
+            2,
+            61
+          ],
+          "U1": [
+            3,
+            61
+          ],
+          "U2": [
+            3,
+            65
+          ]
+        },
+        "parts": [
+          {
+            "id": "gy100",
+            "seg": [
+              "y100",
+              "gy100r"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy80",
+            "seg": [
+              "y80",
+              "gy80r"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gy60",
+            "seg": [
+              "y60",
+              "gy60r"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gx10",
+            "seg": [
+              "x10",
+              "gx10t"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gx8",
+            "seg": [
+              "x8",
+              "gx8t"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gx6",
+            "seg": [
+              "x6",
+              "gx6t"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gx4",
+            "seg": [
+              "x4",
+              "gx4t"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "gx2",
+            "seg": [
+              "x2",
+              "gx2t"
+            ],
+            "w": 0.6,
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "xaxis",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "yaxis",
+            "vector": [
+              "O",
+              "Y"
+            ],
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{study time (hours)}",
+            "at": "XT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{test score (points)}",
+            "at": "YT",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx0",
+            "seg": [
+              "tx0a",
+              "tx0b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx0",
+            "label": "0",
+            "at": "x0",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx2",
+            "seg": [
+              "tx2a",
+              "tx2b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx2",
+            "label": "2",
+            "at": "x2",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx4",
+            "seg": [
+              "tx4a",
+              "tx4b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx4",
+            "label": "4",
+            "at": "x4",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx6",
+            "seg": [
+              "tx6a",
+              "tx6b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx6",
+            "label": "6",
+            "at": "x6",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx8",
+            "seg": [
+              "tx8a",
+              "tx8b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx8",
+            "label": "8",
+            "at": "x8",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "tickx10",
+            "seg": [
+              "tx10a",
+              "tx10b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "nx10",
+            "label": "10",
+            "at": "x10",
+            "dir": "s",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ticky40",
+            "seg": [
+              "ty40a",
+              "ty40b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ny40",
+            "label": "40",
+            "at": "y40",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ticky60",
+            "seg": [
+              "ty60a",
+              "ty60b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ny60",
+            "label": "60",
+            "at": "y60",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ticky80",
+            "seg": [
+              "ty80a",
+              "ty80b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ny80",
+            "label": "80",
+            "at": "y80",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "ticky100",
+            "seg": [
+              "ty100a",
+              "ty100b"
+            ],
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "ny100",
+            "label": "100",
+            "at": "y100",
+            "dir": "w",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "gap0",
+            "seg": [
+              "D0",
+              "F0"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap1",
+            "seg": [
+              "D1",
+              "F1"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap2",
+            "seg": [
+              "D2",
+              "F2"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap3",
+            "seg": [
+              "D3",
+              "F3"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap4",
+            "seg": [
+              "D4",
+              "F4"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap5",
+            "seg": [
+              "D5",
+              "F5"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap6",
+            "seg": [
+              "D6",
+              "F6"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap7",
+            "seg": [
+              "D7",
+              "F7"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap8",
+            "seg": [
+              "D8",
+              "F8"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap9",
+            "seg": [
+              "D9",
+              "F9"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "gap10",
+            "seg": [
+              "D10",
+              "F10"
+            ],
+            "ink": "warm",
+            "w": 4,
+            "group": "gaps"
+          },
+          {
+            "id": "fit",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "dot0",
+            "dot": "D0",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot1",
+            "dot": "D1",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot2",
+            "dot": "D2",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot3",
+            "dot": "D3",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot4",
+            "dot": "D4",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot5",
+            "dot": "D5",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot6",
+            "dot": "D6",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot7",
+            "dot": "D7",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot8",
+            "dot": "D8",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot9",
+            "dot": "D9",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "dot10",
+            "dot": "D10",
+            "ink": "blue",
+            "r": 12,
+            "start": true,
+            "group": "data"
+          },
+          {
+            "id": "pointA",
+            "dot": "A",
+            "ink": "gold",
+            "r": 14,
+            "group": "modelPoints"
+          },
+          {
+            "id": "pointB",
+            "dot": "B",
+            "ink": "gold",
+            "r": 14,
+            "group": "modelPoints"
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "group": "triangle"
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 5,
+            "group": "triangle"
+          },
+          {
+            "id": "runLabel",
+            "label": "5",
+            "at": "run",
+            "dir": "s",
+            "size": "l",
+            "ink": "blue",
+            "group": "triangle"
+          },
+          {
+            "id": "riseLabel",
+            "label": "20",
+            "at": "rise",
+            "dir": "e",
+            "size": "l",
+            "ink": "warm",
+            "group": "triangle"
+          },
+          {
+            "id": "unitRun",
+            "seg": [
+              "U0",
+              "U1"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "group": "unit"
+          },
+          {
+            "id": "unitRise",
+            "seg": [
+              "U1",
+              "U2"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "group": "unit"
+          },
+          {
+            "id": "up",
+            "vector": [
+              "H",
+              "P"
+            ],
+            "ink": "gold",
+            "w": 4,
+            "dash": true,
+            "group": "prediction"
+          },
+          {
+            "id": "across",
+            "vector": [
+              "P",
+              "J"
+            ],
+            "ink": "gold",
+            "w": 4,
+            "dash": true,
+            "group": "prediction"
+          },
+          {
+            "id": "predPoint",
+            "dot": "P",
+            "ink": "gold",
+            "r": 14,
+            "group": "prediction"
+          },
+          {
+            "id": "predLabel",
+            "label": "77",
+            "at": "J",
+            "dir": "w",
+            "size": "l",
+            "ink": "gold",
+            "group": "prediction"
+          },
+          {
+            "id": "range",
+            "dim": [
+              "S",
+              "E"
+            ],
+            "side": "n",
+            "tex": "\\text{the data}",
+            "ink": "blue"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Each dot is one student: hours of study across, and test score up.",
+          "do": [
+            {
+              "do": "term",
+              "word": "Scatter plot",
+              "meaning": "Each dot is one student",
+              "at": "Each"
+            },
+            {
+              "do": "highlight",
+              "target": "dot4",
+              "at": "student"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The cloud of dots climbs. One straight line can stand for the whole cloud, if it goes in the right place.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "data",
+              "at": "climbs"
+            },
+            {
+              "do": "draw",
+              "target": "fit",
+              "at": "line"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This one is too high: every dot sits below it.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "high"
+            },
+            {
+              "do": "text",
+              "text": "Too high: every dot is below it",
+              "at": "high"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A stick from each dot to the line shows how far that score is from the line. That distance is the dot's error.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "gaps",
+              "at": "stick"
+            },
+            {
+              "do": "text",
+              "text": "Each stick: one dot's error",
+              "at": "shows"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide the line down into the cloud, and the sticks shrink.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Slide"
+            },
+            {
+              "do": "text",
+              "text": "Slide it down: the sticks shrink",
+              "at": "Slide"
+            },
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0,
+                  53
+                ],
+                "R": [
+                  10,
+                  93
+                ]
+              },
+              "at": "Slide",
+              "dur": 2.2
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "A flat line through the middle has about as many dots above it as below.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0,
+                  75
+                ],
+                "R": [
+                  10,
+                  75
+                ]
+              },
+              "at": "flat",
+              "dur": 1.6
+            },
+            {
+              "do": "clear",
+              "at": "flat"
+            },
+            {
+              "do": "text",
+              "text": "Flat, through the middle",
+              "at": "flat"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "But the left dots sit below it, and the right dots above. It misses the tilt, and the end sticks grow long.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "dot0",
+                "dot1",
+                "dot2",
+                "dot3"
+              ],
+              "at": "left"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dot6",
+                "dot7",
+                "dot8",
+                "dot9"
+              ],
+              "at": "right"
+            },
+            {
+              "do": "text",
+              "text": "It misses the tilt",
+              "at": "misses"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Tilt it to follow the cloud, and the sticks shrink again.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0,
+                  53
+                ],
+                "R": [
+                  10,
+                  93
+                ]
+              },
+              "at": "Tilt",
+              "dur": 1.8
+            },
+            {
+              "do": "clear",
+              "at": "Tilt"
+            },
+            {
+              "do": "text",
+              "text": "Tilt it to follow the cloud",
+              "at": "Tilt"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "A common slip is to join the first dot to the last.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0,
+                  59.111111111111114
+                ],
+                "R": [
+                  10,
+                  98
+                ]
+              },
+              "at": "join",
+              "dur": 1.6
+            },
+            {
+              "do": "clear",
+              "at": "join"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{join the end dots}",
+              "fresh": true,
+              "at": "join",
+              "id": "slip",
+              "note": "\\text{common slip}"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two dots cannot speak for eleven: every other dot sits below this line.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "below"
+            },
+            {
+              "do": "text",
+              "text": "Every other dot is below it",
+              "at": "below"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Settle it in the middle: dots on both sides all along, and every stick short.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "L": [
+                  0,
+                  53
+                ],
+                "R": [
+                  10,
+                  93
+                ]
+              },
+              "at": "Settle",
+              "dur": 1.8
+            },
+            {
+              "do": "clear",
+              "at": "Settle"
+            },
+            {
+              "do": "text",
+              "text": "Both sides, every stick short",
+              "at": "Settle"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is a trend line, also called the line of best fit. It minimizes the errors: the sticks, taken together, are as short as they can be. It need not touch any dot.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "trend"
+            },
+            {
+              "do": "term",
+              "word": "Trend line",
+              "meaning": "The straight line that minimizes the errors: it runs through the middle of the cloud, close to its dots",
+              "at": "trend"
+            },
+            {
+              "do": "text",
+              "text": "Also called the line of best fit",
+              "at": "best"
+            },
+            {
+              "do": "text",
+              "text": "It minimizes the errors",
+              "at": "minimizes"
+            },
+            {
+              "do": "highlight",
+              "target": "fit",
+              "at": "touch"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its slope says how fast the score climbs. Take two points on the line, not dots: two, sixty-one and seven, eighty-one.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "gaps",
+              "at": "slope"
+            },
+            {
+              "do": "highlight",
+              "target": "fit",
+              "at": "line"
+            },
+            {
+              "do": "clear",
+              "at": "sixty-one"
+            },
+            {
+              "do": "header",
+              "tex": "(2,61)\\qquad(7,81)",
+              "label": "Two points on the trend line",
+              "at": "sixty-one"
+            },
+            {
+              "do": "show",
+              "target": "pointA",
+              "at": "sixty-one"
+            },
+            {
+              "do": "show",
+              "target": "pointB",
+              "at": "eighty-one"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five hours across, then twenty points up.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "runLabel",
+              "at": "hours"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "twenty"
+            },
+            {
+              "do": "show",
+              "target": "riseLabel",
+              "at": "points"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slope is the change up divided by the change across: twenty over five, which is four.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\text{slope}=\\frac{\\cw{20}}{\\cb{5}}=4",
+              "fresh": true,
+              "at": "Slope"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Shrink the step to one hour across, and it rises four points.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "triangle",
+              "at": "Shrink"
+            },
+            {
+              "do": "draw",
+              "target": "unitRun",
+              "at": "hour"
+            },
+            {
+              "do": "draw",
+              "target": "unitRise",
+              "at": "rises"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each additional hour of study goes with about four more points.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "+1\\text{ hour}\\;\\longrightarrow\\;\\text{about }{+4}\\text{ points}",
+              "fresh": true,
+              "at": "Each"
+            },
+            {
+              "do": "move",
+              "points": {
+                "U0": [
+                  3,
+                  65
+                ],
+                "U1": [
+                  4,
+                  65
+                ],
+                "U2": [
+                  4,
+                  69
+                ]
+              },
+              "at": "hour",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "U0": [
+                  4,
+                  69
+                ],
+                "U1": [
+                  5,
+                  69
+                ],
+                "U2": [
+                  5,
+                  73
+                ]
+              },
+              "at": "goes",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "U0": [
+                  5,
+                  73
+                ],
+                "U1": [
+                  6,
+                  73
+                ],
+                "U2": [
+                  6,
+                  77
+                ]
+              },
+              "at": "about",
+              "dur": 0.55
+            },
+            {
+              "do": "move",
+              "points": {
+                "U0": [
+                  6,
+                  77
+                ],
+                "U1": [
+                  7,
+                  77
+                ],
+                "U2": [
+                  7,
+                  81
+                ]
+              },
+              "at": "more",
+              "dur": 0.55
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "About, because the dots scatter around the line. Four is the typical change, not a rule for every student.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "unit",
+              "at": "About"
+            },
+            {
+              "do": "show",
+              "target": "gaps",
+              "at": "scatter"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "To predict the score for six hours of study, go up from six to the line, then across: about seventy-seven.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "gaps",
+                "pointB"
+              ],
+              "at": "predict"
+            },
+            {
+              "do": "draw",
+              "target": "up",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "predPoint",
+              "at": "line"
+            },
+            {
+              "do": "hide",
+              "target": "ny80",
+              "at": "across"
+            },
+            {
+              "do": "draw",
+              "target": "across",
+              "at": "across"
+            },
+            {
+              "do": "show",
+              "target": "predLabel",
+              "at": "seventy-seven"
+            },
+            {
+              "do": "clear",
+              "at": "seventy-seven"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{about }77\\text{ points}",
+              "at": "seventy-seven"
+            }
+          ],
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "The slope agrees: four more hours after two is sixteen more points, and sixty-one plus sixteen is seventy-seven.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "pointA",
+              "at": "two"
+            },
+            {
+              "do": "clear",
+              "at": "agrees"
+            },
+            {
+              "do": "write",
+              "tex": "61+4\\times4=77",
+              "fresh": true,
+              "at": "agrees",
+              "note": "\\text{from }(2,61)"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two students here studied six hours: one scored above the line, and one below. Seventy-seven is the typical score, an estimate, not a promise.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "pointA",
+              "at": "students"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "gap5",
+                "gap10"
+              ],
+              "at": "above"
+            },
+            {
+              "do": "clear",
+              "at": "typical"
+            },
+            {
+              "do": "header",
+              "off": true,
+              "at": "typical"
+            },
+            {
+              "do": "text",
+              "text": "$77$: a typical score, not a promise",
+              "at": "typical"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Trust the line inside the data. Far outside it, at forty hours, it would predict over two hundred points, which makes no sense.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "prediction",
+                "gap5",
+                "gap10"
+              ],
+              "at": "Trust"
+            },
+            {
+              "do": "show",
+              "target": "ny80",
+              "at": "Trust"
+            },
+            {
+              "do": "draw",
+              "target": "range",
+              "at": "inside"
+            },
+            {
+              "do": "clear",
+              "at": "Far"
+            },
+            {
+              "do": "text",
+              "text": "Far outside: it may not hold",
+              "at": "Far"
+            },
+            {
+              "do": "text",
+              "text": "At $40$ hours: over $200$ points",
+              "at": "forty"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Keep the line in the middle, with short sticks on both sides. Read its slope from two points on the line.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "range",
+              "at": "Keep"
+            },
+            {
+              "do": "clear",
+              "at": "Keep"
+            },
+            {
+              "do": "text",
+              "text": "Short sticks on both sides",
+              "at": "Keep"
+            },
+            {
+              "do": "show",
+              "target": "gaps",
+              "at": "sticks"
+            },
+            {
+              "do": "text",
+              "text": "Slope: from two points on the line",
+              "at": "Read"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A trend line runs through the middle of the cloud. Its slope is the typical change; its height is the typical value.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "trend"
+            },
+            {
+              "do": "text",
+              "text": "Through the middle of the cloud",
+              "at": "trend"
+            },
+            {
+              "do": "highlight",
+              "target": "fit",
+              "at": "middle"
+            },
+            {
+              "do": "text",
+              "text": "Slope: the typical change",
+              "at": "slope"
+            },
+            {
+              "do": "text",
+              "text": "Height: the typical value",
+              "at": "height"
+            }
+          ],
+          "pause": 1.0
+        }
+      ]
+    }
+  ]
+}

@@ -21,6 +21,28 @@
       }
     ]
   },
+  "add-several-two-digit": {
+    "id": "add-several-two-digit--sa",
+    "version": "cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da",
+    "title": "Tens with tens, ones with ones",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-several-two-digit--sa/cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-several-two-digit--sa/cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da/audio.m4a",
+    "duration": 120.91,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-several-two-digit--sa/cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/add-several-two-digit--sa/cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da/audio.m4a",
+        "version": "cc566d1af8f9330d2e0214bfcb75629a411cb1e21a27160054674a22c8ee90da",
+        "duration": 120.91
+      }
+    ]
+  },
   "add-two-digit-regroup": {
     "id": "add-two-digit-regroup--sa",
     "version": "e829fdccead714494bf58f6ae73800d0df0dde2c7681b579ffdaf654fcdf07d6",
@@ -630,6 +652,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-lengths--sm/93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2/audio.m4a",
         "version": "93d2af5ef800ca4acf6279f4ce8ea654d93ac4322b382372619985f66d5a83e2",
         "duration": 111.39
+      }
+    ]
+  },
+  "compare-measured-lengths": {
+    "id": "shifted-ruler-length--sr",
+    "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+    "title": "Length is the spaces between the ends",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+    "duration": 116.52,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+        "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+        "duration": 116.52
       }
     ]
   },
@@ -2537,6 +2581,28 @@
       }
     ]
   },
+  "mental-ten-hundred": {
+    "id": "mental-ten-hundred--sm",
+    "version": "351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe",
+    "title": "Ten or a hundred more or less",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mental-ten-hundred--sm/351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mental-ten-hundred--sm/351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe/audio.m4a",
+    "duration": 102.59,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mental-ten-hundred--sm/351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mental-ten-hundred--sm/351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe/audio.m4a",
+        "version": "351eb88b233795e505ae96460b3ccb278904a8bc189cd9fdcd38237c7f7f01fe",
+        "duration": 102.59
+      }
+    ]
+  },
   "minutes-past-hour": {
     "id": "read-clock-five-minutes--sr",
     "version": "0c13d1ddadad34dd6587077d7616dae23f1513be44bb61e8d0122916f44873d9",
@@ -3299,6 +3365,28 @@
       }
     ]
   },
+  "ruler-length-difference": {
+    "id": "shifted-ruler-length--sr",
+    "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+    "title": "Length is the spaces between the ends",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+    "duration": 116.52,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+        "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+        "duration": 116.52
+      }
+    ]
+  },
   "ruler-read-nearest-unit": {
     "id": "ruler-read-nearest-unit--ws",
     "version": "0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c",
@@ -3407,6 +3495,27 @@
       }
     ]
   },
+  "scatter-association-choice": {
+    "id": "scatter-association-choice--ss",
+    "version": "f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f",
+    "title": "Each dot is one thing, measured two ways",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scatter-association-choice--ss/f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scatter-association-choice--ss/f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f/audio.m4a",
+    "duration": 143.47,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scatter-association-choice--ss/f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scatter-association-choice--ss/f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f/audio.m4a",
+        "version": "f9e1a76aaa5492580e9fbef17e812c600de9f9f6770e6aa05f74f8b63f91684f",
+        "duration": 143.47
+      }
+    ]
+  },
   "series-recursion": {
     "id": "arithmetic-distant-term--sq",
     "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
@@ -3448,6 +3557,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-whole-items--bc/cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6/audio.m4a",
         "version": "cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6",
         "duration": 513.73
+      }
+    ]
+  },
+  "shifted-ruler-length": {
+    "id": "shifted-ruler-length--sr",
+    "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+    "title": "Length is the spaces between the ends",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+    "duration": 116.52,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/shifted-ruler-length--sr/02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac/audio.m4a",
+        "version": "02ae117747c02ccbc92395359bccc562038b8fe6215e24d932cf90b72d96eeac",
+        "duration": 116.52
       }
     ]
   },
@@ -4210,6 +4341,153 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-three-digit--sc/e11c59616b92691f060594c5a52aaa5cf82c06ebb5023298cd29b41afe88adb8/audio.m4a",
         "version": "e11c59616b92691f060594c5a52aaa5cf82c06ebb5023298cd29b41afe88adb8",
         "duration": 129.37997732426305
+      }
+    ]
+  },
+  "trend-line-best-fit-choice": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-line-compare": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-line-fit": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-line-fit-assess": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-line-predict": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-line-read": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
+      }
+    ]
+  },
+  "trend-slope-meaning": {
+    "id": "trend-line-predict--st",
+    "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+    "title": "A line through the cloud",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+    "duration": 146.26,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/trend-line-predict--st/f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588/audio.m4a",
+        "version": "f3c6eb2bb59d3fc47f4f40d1aae34c8962218378ca0dc75860043086ff88d588",
+        "duration": 146.26
       }
     ]
   },

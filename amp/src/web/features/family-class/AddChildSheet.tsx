@@ -5,7 +5,6 @@ import type { OrgResource } from "../../../schools/contracts";
 import {
   CHILD_NAME_MAX,
   childNameProblem,
-  NICKNAME_HINT,
   NICKNAME_MAX,
   PARENT_ENTRY_LINE,
 } from "../../../learning/nickname";
@@ -162,7 +161,7 @@ export function AddChildSheet({
         <p className={styles.note}>
           {child
             ? PARENT_ENTRY_LINE
-            : `${NICKNAME_HINT} Their own parent adds their name through a link you send.`}
+            : "Their own parent adds their name through a link you send."}
         </p>
         <p
           className={error ? styles.failed : styles.done}
