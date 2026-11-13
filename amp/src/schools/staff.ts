@@ -338,6 +338,7 @@ export async function endStaffIn(
   orgId: string,
   personId: string,
   actorPersonId: string | null,
+  options: { allowLastAdmin?: boolean } = {},
 ) {
   // The family's row first, in the order inviting and accepting take it.
   const family = (
@@ -362,7 +363,9 @@ export async function endStaffIn(
      WHERE r.role='admin' AND r.person_id<>$1 AND o.path @> ARRAY[$2]::uuid[] AND ${activeToday("r", "o")} LIMIT 1`,
     [personId, org.path[0]],
   );
-  if (!others.rowCount) {
+  // Personal account erasure may leave a provider-managed institution without
+  // its last local admin; its records and provider authority stay independent.
+  if (!others.rowCount && !options.allowLastAdmin) {
     const isAdmin = await client.query(
       `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
        WHERE r.person_id=$1 AND r.role='admin' AND ${activeToday("r", "o")} LIMIT 1`,

@@ -273,9 +273,11 @@ async function inspect(client: PoolClient, accountId: string): Promise<Plan> {
      SELECT o.id,o.name,o.kind,o.demo,
        COALESCE(o.created_by LIKE 'amp-demo:%',false) AS shared_demo,
        (o.demo AND o.created_by=$1) AS own_demo,
+       (NOT EXISTS(SELECT 1 FROM amp_clever_connections c WHERE c.tenant_id=o.id) AND
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
-         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}) OR
+         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}
+           AND amp_school_role_current(r.id))) OR
        (o.kind='school' AND o.solo AND EXISTS(SELECT 1 FROM amp_school_starts ss WHERE ss.account_id=$1 AND ss.org_id=o.id)) AS mine,
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
@@ -551,8 +553,20 @@ export async function deleteAccount(
              WHERE r.person_id=$1 AND r.role<>'student' AND ${activeToday("r", "o")} LIMIT 1`,
             [person],
           );
-          if (staff.length)
-            await endStaffIn(client, schools, root, person, null);
+          if (staff.length) {
+            // Institutional sharing belongs to the district, not to the adult
+            // who connected it. Personal erasure leaves that institution intact.
+            const institution =
+              (
+                await client.query(
+                  "SELECT 1 FROM amp_clever_connections WHERE tenant_id=$1",
+                  [root],
+                )
+              ).rowCount !== 0;
+            await endStaffIn(client, schools, root, person, null, {
+              allowLastAdmin: institution,
+            });
+          }
           await client.query(
             "UPDATE amp_families SET second_parent=NULL WHERE second_parent=$1",
             [person],
