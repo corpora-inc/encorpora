@@ -21,10 +21,15 @@ export function LinePlotBuildDrawing({
   response,
   value,
   answer,
+  print = false,
 }: {
   response: LinePlotBuildResponse;
   value: string;
   answer?: string;
+  /** Paper: the marks and values only. The count under each value is the
+   * screen's running total of taps; on paper it would read "0 Xs" under an
+   * empty plot, and the box ends below the values. */
+  print?: boolean;
 }) {
   const counts = linePlotCounts(response, value),
     values = linePlotValues(response);
@@ -34,7 +39,7 @@ export function LinePlotBuildDrawing({
   return (
     <svg
       className="line-build-drawing"
-      viewBox="0 0 360 264"
+      viewBox={print ? "0 0 360 224" : "0 0 360 264"}
       aria-hidden="true"
       style={{
         width: "100%",
@@ -84,16 +89,18 @@ export function LinePlotBuildDrawing({
             >
               {v}
             </text>
-            <text
-              x={x}
-              y="237"
-              textAnchor="middle"
-              fontSize="14"
-              fill="currentColor"
-              className="line-build-count"
-            >
-              {count} X{count === 1 ? "" : "s"}
-            </text>
+            {!print && (
+              <text
+                x={x}
+                y="237"
+                textAnchor="middle"
+                fontSize="14"
+                fill="currentColor"
+                className="line-build-count"
+              >
+                {count} X{count === 1 ? "" : "s"}
+              </text>
+            )}
             {expected && (
               <text
                 x={x}
