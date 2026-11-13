@@ -478,7 +478,7 @@ function payExact(r: Random): Draft {
   const labels = ["A", "B", "C"] as const;
   const right = labels[sets.findIndex((s) => s.items === correct)];
   return {
-    prompt: `${/^[aeiou]/.test(thing) ? "An" : "A"} ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
+    prompt: `${withArticle(thing, true)} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
     hint: `Count each set from its largest coin down, and check whether it lands exactly on ${cents(price)}. Read each coin's value, not its size: a dime is 10¢ and a nickel 5¢.`,
     figure: {
       kind: "money-sets",

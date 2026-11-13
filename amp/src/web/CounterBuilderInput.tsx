@@ -1,3 +1,4 @@
+import { withArticle } from "../math/agreement";
 import { useEffect, useId, useRef, useState } from "react";
 import {
   counterBuilderAnswerText,
@@ -141,12 +142,12 @@ export function CounterBuilderInput({
             : group;
         const removed = placed && shownCrosses.has(index) && r.canRemove;
         const action = !placed
-          ? `Add a ${r.thing}`
+          ? `Add ${withArticle(r.thing)}`
           : r.canRemove
             ? removed
               ? `Put back ${r.thing}`
               : `Cross out ${r.thing}`
-            : `Remove a ${r.thing}`;
+            : `Remove ${withArticle(r.thing)}`;
         const key = `${group}-${index}`;
         return (
           <button

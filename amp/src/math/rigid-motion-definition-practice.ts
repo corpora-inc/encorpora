@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -1331,7 +1332,7 @@ function checkSurface(c: CheckCase): Surface {
     claim = `The rotation about $C${pt(C)}$ by $${t}^\\circ$ counterclockwise is claimed to send $P${pt(P)}$ to $P'${pt(Q)}$.`;
     first =
       "First condition: is $CP'=CP$ (is $P'$ on the circle with center $C$ through $P$)?";
-    second = `Second condition: is ray $CP'$ a $${t}^\\circ$ counterclockwise turn of ray $CP$?`;
+    second = `Second condition: is ray $CP'$ ${article(t)} $${t}^\\circ$ counterclockwise turn of ray $CP$?`;
     work = [
       `First condition: $CP^2=${sq(v[0])}+${sq(v[1])}=${dot(v, v)}$ and $CP'^2=${sq(w[0])}+${sq(w[1])}=${dot(w, w)}$, so ${c.first ? "$CP'=CP$: yes" : "$CP'\\ne CP$: no"}.`,
       t === 180
@@ -1398,7 +1399,7 @@ function checkSurface(c: CheckCase): Surface {
     c.motion === "reflection"
       ? "The reflection across $m$ sends $P$ to the point $P'$ for which $m$ is the perpendicular bisector of $\\overline{PP'}$: $\\overline{PP'}\\perp m$, and $m$ passes through its midpoint."
       : c.motion === "rotation"
-        ? `The rotation about $C$ by $${c.theta}^\\circ$ sends $P$ to the point $P'$ on the circle with center $C$ through $P$ with ray $CP'$ a $${c.theta}^\\circ$ counterclockwise turn of ray $CP$.`
+        ? `The rotation about $C$ by $${c.theta}^\\circ$ sends $P$ to the point $P'$ on the circle with center $C$ through $P$ with ray $CP'$ ${article(c.theta!)} $${c.theta}^\\circ$ counterclockwise turn of ray $CP$.`
         : "The translation along $\\overrightarrow{AB}$ sends $P$ to the point $P'$ with $\\overline{PP'}$ parallel to line $AB$, the same way as $A$ to $B$, and $PP'=AB$.";
   return {
     prompt: `${claim} Check it against the definition: answer each condition, then decide.`,

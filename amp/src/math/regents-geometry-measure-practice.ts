@@ -275,7 +275,7 @@ export const sphereDiameter = chainFamily({
     if (!clearOfTie(value, 1)) return null;
     const answer = roundText(value, 1);
     return numeric(
-      `A sphere has a volume of ${tex(`${m.volume}\\ \\text{${m.unit}}^3`)}. Find its ${a.ask} to the nearest tenth of ${/^[aeiou]/.test(uw(m.unit)[0]) ? "an" : "a"} ${uw(m.unit)[0]}.`,
+      `A sphere has a volume of ${tex(`${m.volume}\\ \\text{${m.unit}}^3`)}. Find its ${a.ask} to the nearest tenth of ${withArticle(uw(m.unit)[0])}.`,
       answer,
       `A sphere's volume is ${tex("\\frac43\\pi r^3")}, where ${tex("r")} is the radius. Set ${tex(`\\frac43\\pi r^3=${m.volume}`)} and get ${tex("r^3")} alone before taking a cube root.${a.ask === "diameter" ? " The question asks for the diameter, which is twice the radius." : ""}`,
       [

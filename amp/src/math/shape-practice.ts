@@ -1,3 +1,4 @@
+import { article, withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import { geometryScene } from "./geometry-scenes.js";
 import type { Scene } from "./scene/spec.js";
@@ -240,9 +241,8 @@ function flat(r: Rand, name: FlatName, degrees: number, size: number) {
   }
 }
 const turns = [0, 15, 20, 30, 45, 60, 75, 90, 105, 135, 150, 165, 180, 200];
-const article = (word: string) => (/^[aeiou]/.test(word) ? "an" : "a");
 /** "A square", "An oval": the sentence-initial article and noun. */
-const An = (word: string) => `${/^[aeiou]/.test(word) ? "An" : "A"} ${word}`;
+const An = (word: string) => withArticle(word, true);
 const sides: Record<FlatName, string> = {
   circle: "one curved edge, equally round all the way around, and no corners",
   oval: "one curved edge, longer one way than the other, and no corners",

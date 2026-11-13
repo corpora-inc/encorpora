@@ -1,3 +1,4 @@
+import { withArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { clauseFamily } from "./clause-family";
@@ -1989,7 +1990,7 @@ function conicCase(r: Random): Spec {
         "The equation tells them apart. Check which variables are squared, then how the squared terms are combined.",
         "Both squared and added: a circle if the coefficients match, an ellipse if not. Both squared with a minus sign between: a hyperbola. Only one squared: a parabola.",
         reason,
-        `So the graph of $${eq}$ is ${kind === "ellipse" ? "an" : "a"} ${NAMES[kind].toLowerCase()}.`,
+        `So the graph of $${eq}$ is ${withArticle(NAMES[kind].toLowerCase())}.`,
       ],
       correct: NAMES[kind],
       wrong: (Object.keys(NAMES) as Conic[])

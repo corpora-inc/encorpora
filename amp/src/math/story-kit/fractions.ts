@@ -54,13 +54,12 @@ export function fractionAmount(
   numerator: number,
   denominator: number,
   unit: string,
-  article = "a",
 ): string {
   const many = unit === "foot" ? "feet" : `${unit}s`;
   if (numerator === denominator) return `1 ${unit}`;
   if (unit === "hour" || unit === "inch") {
     if (numerator < denominator)
-      return `${numerator}/${denominator} of ${article} ${unit}`;
+      return `${numerator}/${denominator} of ${withArticle(unit)}`;
     return `${numerator}/${denominator} ${many}`;
   }
   if (numerator < denominator) return `${numerator}/${denominator} ${unit}`;
@@ -98,7 +97,6 @@ const simplest = (denominator: number, limit: number): number[] => {
 type DiffScene = {
   object: string;
   unit: string;
-  article?: string;
   denoms: readonly number[];
   min: number;
   max: number;
@@ -118,22 +116,20 @@ const diffScenes: readonly DiffScene[] = [
   {
     object: "wood",
     unit: "inch",
-    article: "an",
     denoms: UNIT_DENOMS.inch,
     min: 0.125,
     max: 8,
     prompt: (who, a, b, d) =>
-      `${who} has a wood shim ${fractionAmount(a, d, "inch", "an")} thick. ${who} sands off ${fractionAmount(b, d, "inch", "an")}. How much of the shim is left?`,
+      `${who} has a wood shim ${fractionAmount(a, d, "inch")} thick. ${who} sands off ${fractionAmount(b, d, "inch")}. How much of the shim is left?`,
   },
   {
     object: "bead",
     unit: "inch",
-    article: "an",
     denoms: UNIT_DENOMS.inch,
     min: 1 / 16,
     max: 1 / 8,
     prompt: (who, a, b, d) =>
-      `${who} lines up seed beads that measure ${fractionAmount(a, d, "inch", "an")} long. ${who} takes off beads that measure ${fractionAmount(b, d, "inch", "an")}. How long is the row now?`,
+      `${who} lines up seed beads that measure ${fractionAmount(a, d, "inch")} long. ${who} takes off beads that measure ${fractionAmount(b, d, "inch")}. How long is the row now?`,
   },
   {
     object: "rope",
@@ -174,32 +170,29 @@ const diffScenes: readonly DiffScene[] = [
   {
     object: "practice",
     unit: "hour",
-    article: "an",
     denoms: UNIT_DENOMS.hour,
     min: 1 / 6,
     max: 2,
     prompt: (who, a, b, d) =>
-      `${who} planned ${fractionAmount(a, d, "hour", "an")} of piano. ${who} has practiced ${fractionAmount(b, d, "hour", "an")}. How much practice time is left?`,
+      `${who} planned ${fractionAmount(a, d, "hour")} of piano. ${who} has practiced ${fractionAmount(b, d, "hour")}. How much practice time is left?`,
   },
   {
     object: "reading",
     unit: "hour",
-    article: "an",
     denoms: UNIT_DENOMS.hour,
     min: 1 / 6,
     max: 2,
     prompt: (who, a, b, d) =>
-      `${who} set aside ${fractionAmount(a, d, "hour", "an")} for reading. ${who} has read for ${fractionAmount(b, d, "hour", "an")}. How much reading time is left?`,
+      `${who} set aside ${fractionAmount(a, d, "hour")} for reading. ${who} has read for ${fractionAmount(b, d, "hour")}. How much reading time is left?`,
   },
   {
     object: "movie",
     unit: "hour",
-    article: "an",
     denoms: UNIT_DENOMS.hour,
     min: 2 / 3,
     max: 2,
     prompt: (who, a, b, d) =>
-      `A movie lasts ${fractionAmount(a, d, "hour", "an")}. ${who} has watched ${fractionAmount(b, d, "hour", "an")}. How much of the movie is left?`,
+      `A movie lasts ${fractionAmount(a, d, "hour")}. ${who} has watched ${fractionAmount(b, d, "hour")}. How much of the movie is left?`,
   },
   {
     object: "milk",
@@ -567,8 +560,7 @@ export function groupsStory(
   if (!fitting.length)
     throw new Error(`No groups scene for ${groups} × ${n}/${d}`);
   const scene = pick(r, fitting);
-  const article = scene.unit === "inch" || scene.unit === "hour" ? "an" : "a";
-  const bit = fractionAmount(n, d, scene.unit, article);
+  const bit = fractionAmount(n, d, scene.unit);
   const money = scene.unit === "dollar" ? centWords(n, d) : null;
   const said = money ? `${bit} (${money})` : bit;
   return {

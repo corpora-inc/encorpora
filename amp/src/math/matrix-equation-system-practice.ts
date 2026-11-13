@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   chainFamily,
@@ -328,7 +329,7 @@ function entrySurface(m: EntryModel, r: Random): Surface {
         `$A$ holds only the coefficients: one row per equation and one column per unknown, so it is ${rows} by ${cols} ($${rows}\\times${cols}$). The constants are not a column of $A$.`,
         `$X$ lists the ${cols} unknowns once each in a single column, so it is ${cols} by 1 ($${cols}\\times1$).`,
         `$B$ lists the ${rows} constants in a single column, one per equation, so it is ${rows} by 1 ($${rows}\\times1$).`,
-        `Check: a $${rows}\\times${cols}$ matrix times a $${cols}\\times1$ column gives a $${rows}\\times1$ column, the size of $B$.`,
+        `Check: ${article(rows)} $${rows}\\times${cols}$ matrix times ${article(cols)} $${cols}\\times1$ column gives ${article(rows)} $${rows}\\times1$ column, the size of $B$.`,
       ],
     });
   }

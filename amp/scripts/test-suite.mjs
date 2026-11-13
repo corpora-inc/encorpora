@@ -14,6 +14,7 @@ const inventory = "independent-review.test.ts";
 // Complete-catalog sweeps run in the independent deep-check workflow.
 const content = new Set([
   "grammar.test.ts",
+  "articles.test.ts",
   "math-typography.test.ts",
   "publications.test.ts",
   "instance-hints.test.ts",

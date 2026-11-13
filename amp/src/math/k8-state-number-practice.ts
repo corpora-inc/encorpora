@@ -1,5 +1,4 @@
-import { withArticle } from "./agreement";
-import { count as plural, article as numberArticle } from "./agreement";
+import { withArticle, count as plural, article as numberArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -1066,7 +1065,7 @@ const U = {
   gal: { one: "gallon", many: "gallons" },
 } satisfies Record<string, Unit>;
 type UnitKey = keyof typeof U;
-const article = (w: string) => (/^[aeiou]/i.test(w) ? "An" : "A");
+const article = (w: string) => numberArticle(w, true);
 const nameOf = (u: UnitKey, n: number) => `${n === 1 ? U[u].one : U[u].many}`;
 const withUnit = (n: number, u: UnitKey) => `${commas(n)} ${nameOf(u, n)}`;
 
