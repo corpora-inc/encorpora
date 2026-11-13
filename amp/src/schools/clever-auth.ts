@@ -12,6 +12,7 @@ import {
   providerToken,
   requestCookie,
   resolveProviderSession,
+  verifiedCleverOnboarding,
   revokeProviderSession,
   type CleverClaims,
   type ResolveCleverPerson,
@@ -312,8 +313,16 @@ export async function registerCleverAuthRoutes(
         await revokeProviderSession(pool, request);
         if (!flow.link_account_id)
           await options.clearAccountSession?.(request, reply);
+        if (session.onboarding) {
+          cookie(reply, PROVIDER_COOKIE, "", secure, 0);
+          return reply.redirect(
+            `/school/connect#clever-onboarding=${session.token}`,
+          );
+        }
         cookie(reply, PROVIDER_COOKIE, session.token, secure, 7200);
-        return reply.redirect(`/school#clever-session=${session.token}`);
+        return reply.redirect(
+          `${person ? "/school" : "/school/connect"}#clever-session=${session.token}`,
+        );
       } catch (error) {
         request.log.warn(
           {
@@ -349,6 +358,24 @@ export async function registerCleverAuthRoutes(
             : "sign_in_required",
       });
     return { token: providerToken(request), accountId: session.accountId };
+  });
+  app.get("/api/v1/provider/onboarding-session", async (request, reply) => {
+    reply
+      .header("cache-control", "no-store")
+      .header("referrer-policy", "no-referrer");
+    if (
+      (request.headers.origin && !sameOrigin(request)) ||
+      request.headers["sec-fetch-site"] === "cross-site"
+    )
+      return reply.code(403).send({ error: "origin_required" });
+    const proof = await verifiedCleverOnboarding(pool, request);
+    if (!proof)
+      return reply.code(401).send({ error: "clever_onboarding_expired" });
+    return {
+      token: request.headers.authorization!.split(/\s+/)[1],
+      accountId: proof.accountId,
+      expiresAt: proof.expiresAt.toISOString(),
+    };
   });
   app.post("/api/v1/provider/sign-out", async (request, reply) => {
     if (!sameOrigin(request))

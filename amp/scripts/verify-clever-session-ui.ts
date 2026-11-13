@@ -19,7 +19,7 @@ const vite = await createServer({
           if (request.url !== "/clever-session-fixture") return next();
           response.setHeader("content-type", "text/html");
           response.end(
-            '<script type="module">import * as auth from "/src/web/auth.ts"; import * as device from "/src/web/lib/student-device.ts"; window.fixture={auth,device};</script>',
+            '<script type="module">import * as auth from "/src/web/auth.ts"; import * as device from "/src/web/lib/student-device.ts"; import * as onboarding from "/src/web/features/school/clever/onboarding-session.ts"; window.fixture={auth,device,onboarding};</script>',
           );
         });
       },
@@ -35,6 +35,13 @@ try {
       accessSession(): Promise<AuthSession | null>;
       signOut(): Promise<void>;
     };
+    onboarding: {
+      cleverOnboardingSession(): Promise<{
+        token: string;
+        accountId: string;
+        expiresAt: string;
+      } | null>;
+    };
     device: {
       rememberStudentSession(session: AuthSession, mode: "shared"): void;
       clearStudentDevice(): void;
@@ -48,6 +55,12 @@ try {
     token: `st_${"s".repeat(43)}`,
     accountId: "school:student-fixture",
   };
+  const onboarding = {
+    token: `po_${"o".repeat(43)}`,
+    accountId: provider.accountId,
+    expiresAt: new Date(Date.now() + 600000).toISOString(),
+  };
+  let onboardingActive = true;
   let providerState: "active" | "expired" | "none" = "active";
   let parentReads = 0,
     providerReads = 0,
@@ -65,6 +78,18 @@ try {
           clever: true,
         },
       });
+    if (path === "/api/v1/provider/onboarding-session") {
+      assert.equal(
+        route.request().headers().authorization,
+        `Bearer ${onboarding.token}`,
+      );
+      return onboardingActive
+        ? route.fulfill({ json: onboarding })
+        : route.fulfill({
+            status: 401,
+            json: { error: "clever_onboarding_expired" },
+          });
+    }
     if (path === "/api/v1/provider/session") {
       providerReads++;
       return providerState === "active"
@@ -129,6 +154,37 @@ try {
   providerState = "expired";
   assert.equal(await checked(), null);
   assert.equal(parentReads, 0);
+  // Reauthorization has its own short-lived storage and is never an account
+  // credential. It clears an older student only after its proof is validated.
+  await page.evaluate(
+    ({ student, token }) => {
+      (
+        window as unknown as { fixture: Fixture }
+      ).fixture.device.rememberStudentSession(student, "shared");
+      location.hash = `clever-onboarding=${token}`;
+    },
+    { student, token: onboarding.token },
+  );
+  const setup = () =>
+    page.evaluate(() =>
+      (
+        window as unknown as { fixture: Fixture }
+      ).fixture.onboarding.cleverOnboardingSession(),
+    );
+  assert.deepEqual(await setup(), onboarding);
+  assert.equal(await page.evaluate(() => location.hash), "");
+  assert.equal(
+    await page.evaluate(() => sessionStorage.getItem("amp.student")),
+    null,
+  );
+  assert.equal(await checked(), null);
+  assert.equal(parentReads, 0);
+  onboardingActive = false;
+  assert.equal(await setup(), null);
+  assert.equal(
+    await page.evaluate(() => sessionStorage.getItem("amp.clever.onboarding")),
+    null,
+  );
   providerState = "none";
   assert.equal((await checked())?.accountId, "amp|parent-fixture");
   assert.equal(parentReads, 1);

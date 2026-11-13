@@ -191,7 +191,10 @@ test(
       },
       [parent.cookie],
     );
-    assert.match(String(linked.headers.location), /^\/school#clever-session=/);
+    assert.match(
+      String(linked.headers.location),
+      /^\/school(?:\/connect)?#clever-session=/,
+    );
     assert.equal(
       (
         await pool.query(
@@ -214,7 +217,10 @@ test(
     const previous = await signUp("previous-parent@example.test");
     subject = teacher;
     const staff = await finish(await start(), [previous.cookie]);
-    assert.match(String(staff.headers.location), /^\/school#clever-session=/);
+    assert.match(
+      String(staff.headers.location),
+      /^\/school(?:\/connect)?#clever-session=/,
+    );
     assert.equal(
       (
         await pool.query("SELECT 1 FROM amp_auth_sessions WHERE id=$1", [

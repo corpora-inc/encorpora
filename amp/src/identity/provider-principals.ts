@@ -78,7 +78,7 @@ export async function resolveProviderSession(
     }>(
       `SELECT i.account_id,s.identity_id,i.claims,s.created_at FROM amp_provider_sessions s
      JOIN amp_provider_identities i ON i.id=s.identity_id
-     WHERE s.token_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>now()`,
+     WHERE s.token_hash=$1 AND s.purpose='session' AND s.revoked_at IS NULL AND s.expires_at>now()`,
       [providerHash(token)],
     )
   ).rows[0];
@@ -157,35 +157,139 @@ export async function resolveProviderSession(
 }
 export const verifiedCleverIdentity = resolveProviderSession;
 
-/** A one-way eligibility reference for the separate pilot ledger. Retaining
- * that ledger prevents deleting/recreating a sign-in from restarting a pilot.
- * This key grants no access and is never used to merge accounts. */
-export async function providerEligibilityKey(
+/** A provider proof for reauthorization cannot read an account or school. It
+ * is accepted only by connection status/setup, which rechecks upstream roles. */
+export async function verifiedCleverOnboarding(
   pool: Pick<Pool, "query">,
+  request: FastifyRequest,
+): Promise<(ProviderSession & { expiresAt: Date }) | null> {
+  const token = request.headers.authorization?.match(
+    /^Bearer (po_[\w-]{43})$/i,
+  )?.[1];
+  if (!token || studentBearer(request)) return null;
+  const row = (
+    await pool.query(
+      `SELECT i.account_id,s.identity_id,i.claims,s.created_at,s.expires_at
+    FROM amp_provider_sessions s JOIN amp_provider_identities i ON i.id=s.identity_id
+    WHERE s.token_hash=$1 AND s.purpose='onboarding' AND s.revoked_at IS NULL
+      AND s.expires_at>now() AND s.created_at>now()-interval '10 minutes'`,
+      [providerHash(token)],
+    )
+  ).rows[0];
+  if (!row || !isCleverAdult(row.claims.roles)) return null;
+  return {
+    ...row.claims,
+    accountId: row.account_id,
+    identityId: row.identity_id,
+    createdAt: row.created_at,
+    expiresAt: row.expires_at,
+    personId: null,
+  };
+}
+
+async function requiresOnboardingProof(
+  db: Pick<Pool, "query">,
+  claims: CleverClaims,
+) {
+  if (
+    !(
+      await db.query("SELECT to_regclass('amp_clever_connections') AS relation")
+    ).rows[0].relation
+  )
+    return false;
+  return !!(
+    await db.query(
+      `SELECT 1 FROM amp_clever_connections c
+    LEFT JOIN amp_clever_bindings b ON b.connection_id=c.id AND b.kind='user' AND b.clever_id=$3
+    LEFT JOIN amp_people p ON p.id=b.local_id
+    WHERE c.environment=$1 AND c.district_id=$2 AND (c.status<>'active' OR b.archived_at IS NOT NULL
+      OR b.local_id IS NOT NULL AND (p.id IS NULL OR p.deleted_at IS NOT NULL))`,
+      [claims.environment, claims.districtId, claims.userId],
+    )
+  ).rowCount;
+}
+
+/** One-way references for EVERY linked identity. They grant no access and are
+ * never used to merge accounts or infer that a reported email is verified. */
+export async function providerEligibilityKeys(
+  db: Pick<Pool, "query">,
   accountId: string,
-): Promise<string | null> {
-  const identity = (
-    await pool.query<{
+): Promise<string[]> {
+  const identities = (
+    await db.query<{
       provider: string;
       environment: string;
       district_id: string;
       subject: string;
     }>(
-      "SELECT provider,environment,district_id,subject FROM amp_provider_identities WHERE account_id=$1 ORDER BY created_at,id LIMIT 1",
+      "SELECT provider,environment,district_id,subject FROM amp_provider_identities WHERE account_id=$1 ORDER BY created_at,id",
       [accountId],
     )
+  ).rows;
+  return identities.map((identity) =>
+    providerHash(
+      JSON.stringify([
+        "amp-school-pilot-eligibility-v1",
+        identity.provider,
+        identity.environment,
+        identity.district_id,
+        identity.subject,
+      ]),
+    ),
+  );
+}
+/** Compatibility for integrations that need one reference, never pilot policy. */
+export async function providerEligibilityKey(
+  db: Pick<Pool, "query">,
+  accountId: string,
+): Promise<string | null> {
+  return (await providerEligibilityKeys(db, accountId))[0] ?? null;
+}
+
+/** Caller holds the canonical account lock in a transaction. Remember aliases
+ * when they are linked, including after a pilot has already begun, and before
+ * account erasure. Only opaque digests and the original pilot dates survive. */
+export async function rememberProviderPilotAliases(
+  db: Pick<Pool, "query">,
+  accountId: string,
+) {
+  if (
+    !(await db.query("SELECT to_regclass('amp_teacher_pilots') AS relation"))
+      .rows[0].relation
+  )
+    return;
+  await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+    `teacher-pilot:${accountId}`,
+  ]);
+  const keys = [
+    providerHash(`amp-pilot-account-v1:${accountId}`),
+    ...(await providerEligibilityKeys(db, accountId)),
+  ];
+  const mailbox = (
+    await db.query(
+      'SELECT lower(email) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true',
+      [accountId.slice(4)],
+    )
+  ).rows[0]?.email;
+  if (mailbox) keys.push(providerHash(`amp-pilot-mailbox-v1:${mailbox}`));
+  keys.sort();
+  for (const key of keys)
+    await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      `pilot-identity:${key}`,
+    ]);
+  const pilot = (
+    await db.query(
+      `SELECT id FROM amp_teacher_pilots WHERE account_id=$1 OR id IN
+    (SELECT pilot_id FROM amp_pilot_eligibility WHERE identity_digest=ANY($2::text[])) ORDER BY started_at,id LIMIT 1`,
+      [accountId, keys],
+    )
   ).rows[0];
-  return identity
-    ? providerHash(
-        JSON.stringify([
-          "amp-school-pilot-eligibility-v1",
-          identity.provider,
-          identity.environment,
-          identity.district_id,
-          identity.subject,
-        ]),
-      )
-    : null;
+  if (pilot)
+    for (const key of keys)
+      await db.query(
+        "INSERT INTO amp_pilot_eligibility(identity_digest,pilot_id) VALUES($1,$2) ON CONFLICT DO NOTHING",
+        [key, pilot.id],
+      );
 }
 
 /** Provider credentials take precedence over an older adult cookie. Invalid
@@ -196,7 +300,11 @@ export function withProviderSessions(
   options: { resolvePerson?: ResolveCleverPerson } = {},
 ): Authenticator {
   return async (request) => {
-    if (studentBearer(request)) throw new ApiError(401, "Sign in to continue");
+    if (
+      studentBearer(request) ||
+      /^bearer\s+po_/i.test(request.headers.authorization ?? "")
+    )
+      throw new ApiError(401, "Sign in to continue");
     if (
       providerToken(request) ||
       /^bearer\s+ps_/i.test(request.headers.authorization ?? "") ||
@@ -235,7 +343,7 @@ export async function establishProviderPrincipal(
     ]);
     const old = (
       await client.query(
-        `SELECT id,account_id FROM amp_provider_identities WHERE provider='clever' AND environment=$1 AND district_id=$2 AND subject=$3 FOR UPDATE`,
+        `SELECT id,account_id FROM amp_provider_identities WHERE provider='clever' AND environment=$1 AND district_id=$2 AND subject=$3`,
         [claims.environment, claims.districtId, claims.userId],
       )
     ).rows[0];
@@ -286,7 +394,8 @@ export async function establishProviderPrincipal(
         claims,
       ],
     );
-    if (person) {
+    const onboarding = await requiresOnboardingProof(client, claims);
+    if (person && !onboarding) {
       const result = await client.query(
         "UPDATE amp_people SET account_id=$1 WHERE id=$2 AND deleted_at IS NULL AND (account_id IS NULL OR account_id=$1)",
         [accountId, person.personId],
@@ -294,13 +403,27 @@ export async function establishProviderPrincipal(
       if (!result.rowCount) throw new ApiError(409, "identity_already_linked");
     }
     await markStaffAccount(client, accountId);
-    const token = `ps_${randomBytes(32).toString("base64url")}`;
-    await client.query(
-      "INSERT INTO amp_provider_sessions(token_hash,identity_id,expires_at) VALUES($1,$2,now()+interval '2 hours')",
-      [providerHash(token), identityId],
-    );
+    await rememberProviderPilotAliases(client, accountId);
+    if (onboarding)
+      await client.query(
+        "UPDATE amp_provider_sessions SET revoked_at=now() WHERE identity_id=$1 AND purpose='session' AND revoked_at IS NULL",
+        [identityId],
+      );
+    const token = `${onboarding ? "po" : "ps"}_${randomBytes(32).toString("base64url")}`;
+    const expiresAt = (
+      await client.query(
+        `INSERT INTO amp_provider_sessions(token_hash,identity_id,purpose,expires_at)
+       VALUES($1,$2,$3,now()+CASE WHEN $3='onboarding' THEN interval '10 minutes' ELSE interval '2 hours' END)
+       RETURNING expires_at`,
+        [
+          providerHash(token),
+          identityId,
+          onboarding ? "onboarding" : "session",
+        ],
+      )
+    ).rows[0].expires_at as Date;
     await client.query("COMMIT");
-    return { token, accountId };
+    return { token, accountId, onboarding, expiresAt };
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;

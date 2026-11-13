@@ -189,7 +189,7 @@ test(
       finish(flow, "one-code"),
     ]);
     const signed = [first, duplicate].find((response) =>
-      response.headers.location?.startsWith("/school#clever-session="),
+      response.headers.location?.startsWith("/school/connect#clever-session="),
     )!;
     assert.ok(signed);
     assert.equal(exchanges, 1);
@@ -367,7 +367,10 @@ test(
       state: new URL(newLink.json().url).searchParams.get("state")!,
       cookie: cookieOf(newLink, "amp.clever-flow"),
     });
-    assert.match(String(linked.headers.location), /^\/school#clever-session=/);
+    assert.match(
+      String(linked.headers.location),
+      /^\/school(?:\/connect)?#clever-session=/,
+    );
     assert.equal(
       (
         await pool.query(
