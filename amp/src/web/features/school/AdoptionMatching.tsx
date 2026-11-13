@@ -131,6 +131,16 @@ export function AdoptionMatching({
             : "Choose the same class"
         }
         description={source?.label}
+        onEscapeKeyDown={(event) => {
+          if (
+            search &&
+            event.target instanceof HTMLInputElement &&
+            event.target.getAttribute("aria-label") === "Search Clever records"
+          ) {
+            event.preventDefault();
+            setSearch("");
+          }
+        }}
       >
         {source && (
           <div className={styles.section}>

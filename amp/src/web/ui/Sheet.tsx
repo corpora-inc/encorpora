@@ -17,6 +17,7 @@ export function Sheet({
   returnFocus,
   tall = false,
   back,
+  onEscapeKeyDown,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -33,6 +34,8 @@ export function Sheet({
   /** A layer under this one (nav/LayerHost): X returns to it, and says so
    * quietly in place of the cross ("‹ Kai Varga"). */
   back?: string;
+  /** Let an active control consume Escape before it closes the sheet. */
+  onEscapeKeyDown?: (event: KeyboardEvent) => void;
 }) {
   const content = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -45,6 +48,7 @@ export function Sheet({
           className={`${styles.sheet} ${tall ? styles.tall : ""}`}
           data-dense
           aria-describedby={undefined}
+          onEscapeKeyDown={onEscapeKeyDown}
           onOpenAutoFocus={(event) => {
             event.preventDefault();
             opener.current = document.activeElement as HTMLElement | null;
