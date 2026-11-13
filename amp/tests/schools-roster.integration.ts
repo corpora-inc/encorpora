@@ -760,8 +760,25 @@ test(
       assert.equal(tombstone.family_name, null);
       assert.ok(tombstone.identifier, "the SIS mapping stays");
       const freed = (await get(`${base}/license`, head)).json();
-      assert.equal(freed.used, SEATS - 1);
-      assert.equal(freed.available, 1);
+      assert.equal(freed.used, SEATS);
+      assert.equal(freed.available, 0);
+      assert.equal(
+        freed.waiting,
+        1,
+        "removal immediately seats a waiting learner",
+      );
+      const waitingIds = students
+        .filter((s: { seated: boolean }) => !s.seated)
+        .map((s: { id: string }) => s.id);
+      const afterRemoval = (await get(`${base}/students`, head)).json()
+        .students;
+      assert.equal(
+        afterRemoval.filter(
+          (s: { id: string; seated: boolean }) =>
+            waitingIds.includes(s.id) && s.seated,
+        ).length,
+        1,
+      );
       // Importing someone removed brings them back as new, not as nothing.
       const removedRow = rows.find(
         (row) => row.identifier === leaving.identifier,

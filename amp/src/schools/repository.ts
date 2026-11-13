@@ -492,27 +492,32 @@ export class SchoolRepository {
     // The same eligibility rules as amp_school_grant_valid, evaluated as one
     // set. Calling the per-grant function for every district seat repeatedly
     // plans/scans the same membership data during a bulk reconciliation.
+    // Keep the membership subqueries as hashable IN/NOT IN expressions: just
+    // after a large import, stale statistics can select a quadratic nested-loop
+    // semi/anti join over these materialized sets. Valid grant IDs cannot be null.
     await client.query(
       `WITH candidates AS MATERIALIZED (
         SELECT s.id,s.grant_id
         FROM amp_seats s JOIN amp_people p ON p.id=s.person_id
         WHERE p.tenant_id=$1 AND ($2::uuid IS NULL OR p.id=$2) AND s.released_at IS NULL
-      ), valid AS MATERIALIZED (
-        SELECT s.grant_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
+      ), eligible AS MATERIALIZED (
+        SELECT s.grant_id,s.person_id,l.class_ids FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
         JOIN amp_people p ON p.id=s.person_id
-        WHERE s.grant_id IN(SELECT grant_id FROM candidates) AND s.released_at IS NULL
-          AND p.deleted_at IS NULL AND ${IN_FORCE("l")}
-          AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
-            WHERE r.person_id=s.person_id AND r.role='student' AND o.path @> ARRAY[l.org_id]::uuid[]
-              AND ${activeToday("r", "o")})
-          AND (l.class_ids IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e
-            JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id
-            WHERE e.person_id=s.person_id AND e.role='student' AND e.class_id=ANY(l.class_ids)
-              AND ${activeToday("e", "o")}))
+        JOIN amp_org_roles r ON r.person_id=s.person_id AND r.role='student'
+        JOIN amp_orgs o ON o.id=r.org_id AND o.path @> ARRAY[l.org_id]::uuid[]
+        WHERE (s.grant_id IN(SELECT grant_id FROM candidates)) IS TRUE AND s.released_at IS NULL
+          AND p.deleted_at IS NULL AND ${IN_FORCE("l")} AND ${activeToday("r", "o")}
+      ), valid AS MATERIALIZED (
+        SELECT grant_id FROM eligible WHERE class_ids IS NULL
+        UNION ALL
+        SELECT s.grant_id FROM eligible s JOIN amp_enrollments e
+          ON e.person_id=s.person_id AND e.role='student' AND e.class_id=ANY(s.class_ids)
+        JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id
+        WHERE s.class_ids IS NOT NULL AND ${activeToday("e", "o")}
       ), released AS (
         UPDATE amp_seats s SET released_at=now() FROM candidates candidate
         WHERE s.id=candidate.id AND s.released_at IS NULL AND candidate.grant_id LIKE 'school-seat:%'
-          AND NOT EXISTS(SELECT 1 FROM valid WHERE valid.grant_id=candidate.grant_id) RETURNING s.grant_id)
+          AND candidate.grant_id NOT IN(SELECT grant_id FROM valid) RETURNING s.grant_id)
       UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)`,
       [tenantId, personId],
     );
@@ -582,7 +587,10 @@ export class SchoolRepository {
   }
   /** Gives open seats to rostered students waiting under this license's org,
    * longest-waiting first: those with no seat, or one on a license that has
-   * ended, which this replaces. Caller holds the license row lock. */
+   * ended, which this replaces. Caller holds the license row lock and has
+   * released invalid seats for the tenant. A concurrent roster change can
+   * invalidate coverage afterward; live access checks reject it and the
+   * roster's reconciliation (or the periodic poll) updates the allocation. */
   private async seatWaitingStudents(
     client: PoolClient,
     license: { id: string; org_id: string; seats: number; ends_at: Date },
@@ -602,7 +610,7 @@ export class SchoolRepository {
            AND EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
              WHERE r.person_id=p.id AND r.role='student' AND o.path @> ARRAY[$1]::uuid[] AND ${activeToday("r", "o")})
            AND NOT EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
-             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")} AND amp_school_grant_valid(s.grant_id))
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND s.grant_id IS NOT NULL AND ${IN_FORCE("l")})
          ORDER BY p.created_at,p.id LIMIT $2`,
         [license.org_id, room, license.id],
       )
