@@ -6,6 +6,7 @@ import { migrate } from "../scripts/migrate.js";
 import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import {
+  buyerHandoff,
   startSchoolClass,
   activateClassPilot,
   classPurchaseRequest,
@@ -13,6 +14,8 @@ import {
   classPilotState,
   requestSchoolPurchase as purchase,
 } from "../src/schools/pilots.js";
+import Fastify from "fastify";
+import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 const input = () => ({
@@ -211,5 +214,183 @@ test(
         (await db.query("SELECT count(*)::int n FROM amp_learners")).rows[0].n,
         1,
       );
+    }),
+);
+
+test(
+  "L-c: same teacher replaces overlapping buyer requests and closes old links",
+  enabled,
+  () =>
+    fixture(async (db, repo) => {
+      const a = await startSchoolClass(repo, "fixture-teacher", input());
+      const b = await startSchoolClass(repo, "fixture-teacher", {
+        ...input(),
+        className: "Science",
+      });
+      const first = await requestSchoolPurchase(repo, "fixture-teacher", {
+        orgId: a.orgId,
+        classIds: [a.classId],
+        seats: 12,
+      });
+      const next = await requestSchoolPurchase(repo, "fixture-teacher", {
+        orgId: a.orgId,
+        classIds: [a.classId, b.classId],
+        seats: 24,
+        note: "Both classes",
+      });
+      assert.notEqual(next.id, first.id);
+      assert.equal(
+        (
+          await db.query(
+            "SELECT status FROM amp_school_purchase_requests WHERE id=$1",
+            [first.id],
+          )
+        ).rows[0].status,
+        "closed",
+      );
+      await assert.rejects(buyerHandoff(db, first.token), {
+        code: "not_found",
+      });
+      assert.equal((await buyerHandoff(db, next.token)).seats, 24);
+      const changed = await requestSchoolPurchase(repo, "fixture-teacher", {
+        orgId: a.orgId,
+        classIds: [a.classId, b.classId],
+        seats: 25,
+        note: "Updated",
+      });
+      assert.notEqual(changed.id, next.id);
+      await assert.rejects(buyerHandoff(db, next.token), { code: "not_found" });
+      assert.equal((await buyerHandoff(db, changed.token)).seats, 25);
+    }),
+);
+
+test(
+  "L-c: co-teacher GET reads a multi-class request through the class they teach",
+  enabled,
+  () =>
+    fixture(async (db, repo) => {
+      const a = await startSchoolClass(repo, "fixture-teacher", input());
+      const b = await startSchoolClass(repo, "fixture-teacher", {
+        ...input(),
+        className: "Science",
+      });
+      await repo.addStaff({
+        orgId: a.orgId,
+        givenName: "Co teacher",
+        accountId: "fixture-co",
+        role: "teacher",
+        classId: a.classId,
+      });
+      const requested = await requestSchoolPurchase(repo, "fixture-teacher", {
+        orgId: a.orgId,
+        classIds: [a.classId, b.classId],
+        seats: 24,
+      });
+      const app = Fastify();
+      await registerSchoolRoutes(app, {
+        pool: db,
+        authenticate: async () => "fixture-co",
+        services: {
+          secret: "fixture-school-token-secret-long-enough",
+          origin: "https://amp.example",
+          mail: async () => {},
+        },
+      });
+      try {
+        const response = await app.inject(
+          `/api/v1/school/classes/${a.classId}/purchase-request`,
+        );
+        assert.equal(response.statusCode, 200);
+        assert.equal(response.json().request.id, requested.id);
+        assert.deepEqual(
+          response.json().request.classIds.sort(),
+          [a.classId, b.classId].sort(),
+        );
+        assert.equal(
+          (
+            await app.inject(
+              `/api/v1/school/classes/${b.classId}/purchase-request`,
+            )
+          ).statusCode,
+          404,
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
+
+test(
+  "L-c: another teacher's overlap returns actionable conflict without closing either request",
+  enabled,
+  () =>
+    fixture(async (db, repo) => {
+      const a = await startSchoolClass(repo, "fixture-teacher", input());
+      const b = await startSchoolClass(repo, "fixture-teacher", {
+        ...input(),
+        className: "Science",
+      });
+      await repo.addStaff({
+        orgId: a.orgId,
+        givenName: "Casey",
+        familyName: "Teacher",
+        accountId: "fixture-co",
+        role: "teacher",
+        classId: b.classId,
+      });
+      const own = await requestSchoolPurchase(repo, "fixture-teacher", {
+        orgId: a.orgId,
+        classIds: [a.classId],
+        seats: 12,
+      });
+      const other = await requestSchoolPurchase(repo, "fixture-co", {
+        orgId: a.orgId,
+        classIds: [b.classId],
+        seats: 12,
+      });
+      const app = Fastify();
+      await registerSchoolRoutes(app, {
+        pool: db,
+        authenticate: async () => "fixture-teacher",
+        services: {
+          secret: "fixture-school-token-secret-long-enough",
+          origin: "https://amp.example",
+          mail: async () => {},
+        },
+      });
+      try {
+        const response = await app.inject({
+          method: "POST",
+          url: "/api/v1/school/purchase-requests",
+          payload: {
+            orgId: a.orgId,
+            classIds: [a.classId, b.classId],
+            seats: 24,
+          },
+        });
+        assert.equal(response.statusCode, 409);
+        assert.deepEqual(response.json(), {
+          error: "purchase_scope_conflict",
+          conflicts: [
+            {
+              requestId: other.id,
+              holderName: "Casey Teacher",
+              classIds: [b.classId],
+            },
+          ],
+        });
+        assert.equal((await buyerHandoff(db, own.token)).id, own.id);
+        assert.equal((await buyerHandoff(db, other.token)).id, other.id);
+        await assert.rejects(
+          requestSchoolPurchase(repo, "fixture-teacher", {
+            orgId: a.orgId,
+            classIds: [b.classId],
+            seats: 12,
+          }),
+          { code: "purchase_scope_conflict" },
+        );
+      } finally {
+        await app.close();
+      }
     }),
 );

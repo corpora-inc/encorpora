@@ -241,6 +241,7 @@ export async function registerSchoolRoutes(
           error: error.code,
           ...(error.retryAfter ? { retryAfter: error.retryAfter } : {}),
           ...(error.path ? { path: error.path } : {}),
+          ...(error.conflicts ? { conflicts: error.conflicts } : {}),
         });
       }
       if (error instanceof z.ZodError)

@@ -571,23 +571,47 @@ export async function requestSchoolPurchase(
     }
     const existing = (
       await client.query(
-        `SELECT id,class_ids FROM amp_school_purchase_requests
-      WHERE class_ids && $1::uuid[] AND status<>'closed' AND token_expires_at>now() ORDER BY created_at,id`,
+        `SELECT r.id,r.account_id,r.org_id,r.class_ids,r.seats,r.note,
+          COALESCE(NULLIF(p.display_name,''),NULLIF(concat_ws(' ',p.given_name,p.family_name),''),'Teacher') AS holder_name
+        FROM amp_school_purchase_requests r JOIN amp_orgs o ON o.id=r.org_id
+        LEFT JOIN amp_people p ON p.tenant_id=o.path[1] AND p.account_id=r.account_id AND p.deleted_at IS NULL
+        WHERE r.class_ids && $1::uuid[] AND r.status<>'closed' AND r.token_expires_at>now()
+        ORDER BY r.created_at,r.id FOR UPDATE OF r`,
         [ids],
       )
     ).rows;
-    if (existing.length) {
-      if (
-        existing.length !== 1 ||
-        existing[0].class_ids.length !== ids.length ||
-        !ids.every((id) => existing[0].class_ids.includes(id))
-      )
-        throw new SchoolError(409, "purchase_scope_conflict");
+    const conflicts = existing.filter((row) => row.account_id !== accountId);
+    if (conflicts.length)
+      throw new SchoolError(
+        409,
+        "purchase_scope_conflict",
+        undefined,
+        undefined,
+        conflicts.map((row) => ({
+          requestId: row.id as string,
+          holderName: row.holder_name as string,
+          classIds: ids.filter((id) => row.class_ids.includes(id)),
+        })),
+      );
+    // Identical retries recover the link. An edited scope, seat count or note
+    // replaces this teacher's overlapping requests atomically.
+    if (
+      existing.length === 1 &&
+      existing[0].org_id === input.orgId &&
+      existing[0].seats === input.seats &&
+      existing[0].note === input.note &&
+      existing[0].class_ids.length === ids.length &&
+      ids.every((id) => existing[0].class_ids.includes(id))
+    )
       return {
         id: existing[0].id as string,
         token: buyerToken(existing[0].id, secret),
       };
-    }
+    if (existing.length)
+      await client.query(
+        "UPDATE amp_school_purchase_requests SET status='closed' WHERE id=ANY($1::uuid[])",
+        [existing.map((row) => row.id)],
+      );
     const id = randomUUID(),
       token = buyerToken(id, secret);
     await client.query(
@@ -624,7 +648,6 @@ export async function classPurchaseRequest(
       )
     ).rows[0];
     if (!row) return null;
-    for (const id of row.class_ids) await teachingClass(client, accountId, id);
     return {
       id: row.id as string,
       token: buyerToken(row.id, secret),

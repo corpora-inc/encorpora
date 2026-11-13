@@ -88,6 +88,12 @@ export class SchoolError extends Error {
     public readonly retryAfter?: number,
     /** Where to go instead: `demo_moved` names the visitor's new demo. */
     public readonly path?: string,
+    /** Open buyer requests overlapping the authorized classes being requested. */
+    public readonly conflicts?: {
+      requestId: string;
+      holderName: string;
+      classIds: string[];
+    }[],
   ) {
     super(code);
   }
