@@ -1,0 +1,2065 @@
+{
+ "id": "solid-parts--ss",
+ "title": "Faces, edges, and vertices",
+ "teaches": [],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3,
+     -3,
+     4.4,
+     4.4
+    ],
+    "points": {
+     "A": [
+      -2,
+      -2
+     ],
+     "B": [
+      2,
+      -2
+     ],
+     "C": [
+      2,
+      2
+     ],
+     "D": [
+      -2,
+      2
+     ],
+     "E": [
+      -0.6,
+      -0.6
+     ],
+     "F": [
+      3.4,
+      -0.6
+     ],
+     "G": [
+      3.4,
+      3.4
+     ],
+     "H": [
+      -0.6,
+      3.4
+     ],
+     "marktop": [
+      0.7,
+      2.7
+     ],
+     "markbottom": [
+      0.7,
+      -1.3
+     ],
+     "markfront": [
+      0,
+      0
+     ],
+     "markback": [
+      1.4,
+      1.4
+     ],
+     "markleft": [
+      -1.3,
+      0.7
+     ],
+     "markright": [
+      2.7,
+      0.7
+     ],
+     "cursor": [
+      2,
+      -2
+     ]
+    },
+    "parts": [
+     {
+      "id": "skinfront",
+      "group": "skin",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "start": true
+     },
+     {
+      "id": "skintop",
+      "group": "skin",
+      "poly": [
+       "D",
+       "C",
+       "G",
+       "H"
+      ],
+      "fill": "paper",
+      "start": true
+     },
+     {
+      "id": "skinright",
+      "group": "skin",
+      "poly": [
+       "B",
+       "C",
+       "G",
+       "F"
+      ],
+      "fill": "accent-fill",
+      "start": true
+     },
+     {
+      "id": "top",
+      "poly": [
+       "D",
+       "C",
+       "G",
+       "H"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checktop",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "marktop",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "bottom",
+      "poly": [
+       "A",
+       "B",
+       "F",
+       "E"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checkbottom",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "markbottom",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "front",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checkfront",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "markfront",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "back",
+      "poly": [
+       "E",
+       "F",
+       "G",
+       "H"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checkback",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "markback",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "left",
+      "poly": [
+       "A",
+       "D",
+       "H",
+       "E"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checkleft",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "markleft",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "right",
+      "poly": [
+       "B",
+       "C",
+       "G",
+       "F"
+      ],
+      "fill": "gold-fill",
+      "sheer": true
+     },
+     {
+      "id": "checkright",
+      "group": "facechecks",
+      "label": "\\checkmark",
+      "at": "markright",
+      "dir": "c",
+      "size": "m",
+      "ink": "accent",
+      "halo": true
+     },
+     {
+      "id": "edge1",
+      "group": "outline",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge1",
+      "group": "countedges",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge2",
+      "group": "outline",
+      "seg": [
+       "C",
+       "G"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge2",
+      "group": "countedges",
+      "seg": [
+       "C",
+       "G"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge3",
+      "group": "outline",
+      "seg": [
+       "G",
+       "H"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge3",
+      "group": "countedges",
+      "seg": [
+       "G",
+       "H"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge4",
+      "group": "outline",
+      "seg": [
+       "H",
+       "D"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge4",
+      "group": "countedges",
+      "seg": [
+       "H",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge5",
+      "group": "outline",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge5",
+      "group": "countedges",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge6",
+      "group": "outline",
+      "seg": [
+       "B",
+       "F"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge6",
+      "group": "countedges",
+      "seg": [
+       "B",
+       "F"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge7",
+      "group": "hidden",
+      "seg": [
+       "F",
+       "E"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true,
+      "start": false
+     },
+     {
+      "id": "countedge7",
+      "group": "countedges",
+      "seg": [
+       "F",
+       "E"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "edge8",
+      "group": "hidden",
+      "seg": [
+       "E",
+       "A"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true,
+      "start": false
+     },
+     {
+      "id": "countedge8",
+      "group": "countedges",
+      "seg": [
+       "E",
+       "A"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "edge9",
+      "group": "outline",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge9",
+      "group": "countedges",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "violet",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge10",
+      "group": "outline",
+      "seg": [
+       "C",
+       "B"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge10",
+      "group": "countedges",
+      "seg": [
+       "C",
+       "B"
+      ],
+      "ink": "violet",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge11",
+      "group": "outline",
+      "seg": [
+       "G",
+       "F"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": false,
+      "start": true
+     },
+     {
+      "id": "countedge11",
+      "group": "countedges",
+      "seg": [
+       "G",
+       "F"
+      ],
+      "ink": "violet",
+      "w": 3,
+      "dash": false
+     },
+     {
+      "id": "edge12",
+      "group": "hidden",
+      "seg": [
+       "H",
+       "E"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "dash": true,
+      "start": false
+     },
+     {
+      "id": "countedge12",
+      "group": "countedges",
+      "seg": [
+       "H",
+       "E"
+      ],
+      "ink": "violet",
+      "w": 3,
+      "dash": true
+     },
+     {
+      "id": "vA",
+      "group": "vertices",
+      "dot": "A",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vB",
+      "group": "vertices",
+      "dot": "B",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vC",
+      "group": "vertices",
+      "dot": "C",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vD",
+      "group": "vertices",
+      "dot": "D",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vE",
+      "group": "vertices",
+      "dot": "E",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vF",
+      "group": "vertices",
+      "dot": "F",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vG",
+      "group": "vertices",
+      "dot": "G",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "vH",
+      "group": "vertices",
+      "dot": "H",
+      "ink": "warm",
+      "r": 11
+     },
+     {
+      "id": "squarecorner0",
+      "group": "squarecorners",
+      "angle": [
+       "D",
+       "A",
+       "B"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "blue"
+     },
+     {
+      "id": "squarecorner1",
+      "group": "squarecorners",
+      "angle": [
+       "A",
+       "B",
+       "C"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "blue"
+     },
+     {
+      "id": "squarecorner2",
+      "group": "squarecorners",
+      "angle": [
+       "B",
+       "C",
+       "D"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "blue"
+     },
+     {
+      "id": "squarecorner3",
+      "group": "squarecorners",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "right": true,
+      "r": 42,
+      "ink": "blue"
+     },
+     {
+      "id": "explainhidden",
+      "seg": [
+       "F",
+       "E"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": true
+     },
+     {
+      "id": "summaryedge",
+      "seg": [
+       "C",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 9
+     },
+     {
+      "id": "activeedge1",
+      "group": "activeedges",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge2",
+      "group": "activeedges",
+      "seg": [
+       "C",
+       "G"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge3",
+      "group": "activeedges",
+      "seg": [
+       "G",
+       "H"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge4",
+      "group": "activeedges",
+      "seg": [
+       "H",
+       "D"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge5",
+      "group": "activeedges",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge6",
+      "group": "activeedges",
+      "seg": [
+       "B",
+       "F"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge7",
+      "group": "activeedges",
+      "seg": [
+       "F",
+       "E"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": true
+     },
+     {
+      "id": "activeedge8",
+      "group": "activeedges",
+      "seg": [
+       "E",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": true
+     },
+     {
+      "id": "activeedge9",
+      "group": "activeedges",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge10",
+      "group": "activeedges",
+      "seg": [
+       "C",
+       "B"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge11",
+      "group": "activeedges",
+      "seg": [
+       "G",
+       "F"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": false
+     },
+     {
+      "id": "activeedge12",
+      "group": "activeedges",
+      "seg": [
+       "H",
+       "E"
+      ],
+      "ink": "gold",
+      "w": 9,
+      "dash": true
+     },
+     {
+      "id": "cornerlight",
+      "dot": "cursor",
+      "ink": "gold",
+      "r": 18
+     },
+     {
+      "id": "squareside0",
+      "group": "squaresides",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "blue",
+      "w": 6
+     },
+     {
+      "id": "squareside1",
+      "group": "squaresides",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "blue",
+      "w": 6
+     },
+     {
+      "id": "squareside2",
+      "group": "squaresides",
+      "seg": [
+       "C",
+       "D"
+      ],
+      "ink": "blue",
+      "w": 6
+     },
+     {
+      "id": "squareside3",
+      "group": "squaresides",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "blue",
+      "w": 6
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "This gift box takes up space. Its shape is a solid. A face is one flat surface.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Parts of a solid",
+       "keep": true,
+       "at": "This"
+      },
+      {
+       "do": "text",
+       "text": "Solid: takes up space",
+       "at": "This"
+      },
+      {
+       "do": "clear",
+       "at": "face"
+      },
+      {
+       "do": "text",
+       "text": "Face: one flat surface",
+       "at": "face"
+      },
+      {
+       "do": "show",
+       "target": "front",
+       "at": "face",
+       "dur": 0.55
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "We can see the front,",
+     "do": [],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "the top,",
+     "do": [
+      {
+       "do": "hide",
+       "target": "front",
+       "at": "the"
+      },
+      {
+       "do": "show",
+       "target": "top",
+       "at": "top"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "and the right side.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "top",
+       "at": "and"
+      },
+      {
+       "do": "show",
+       "target": "right",
+       "at": "right"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "I see three, so the box has three faces in all.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "right",
+       "at": "I"
+      },
+      {
+       "do": "clear",
+       "at": "I"
+      },
+      {
+       "do": "text",
+       "text": "3 faces in all",
+       "at": "three",
+       "id": "slip"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now make the box see-through. Hidden faces count, too. Count them in opposite pairs.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "skin",
+       "at": "see-through",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "hidden",
+       "at": "see-through",
+       "dur": 1.2
+      },
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "hidden"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "The top,",
+     "do": [
+      {
+       "do": "show",
+       "target": "top",
+       "at": "Top"
+      },
+      {
+       "do": "show",
+       "target": "checktop",
+       "at": "Top"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "and the bottom: two.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "top",
+       "at": "bottom",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "bottom",
+       "at": "bottom",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "checkbottom",
+       "at": "bottom"
+      },
+      {
+       "do": "clear",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "2\\text{ faces}",
+       "fresh": true,
+       "at": "two"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "The front,",
+     "do": [
+      {
+       "do": "hide",
+       "target": "bottom",
+       "at": "Front",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "front",
+       "at": "Front",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "checkfront",
+       "at": "Front"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "and the back: two.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "front",
+       "at": "back",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "back",
+       "at": "back",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "checkback",
+       "at": "back"
+      },
+      {
+       "do": "clear",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "2+2\\text{ faces}",
+       "fresh": true,
+       "at": "two"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "The left side,",
+     "do": [
+      {
+       "do": "hide",
+       "target": "back",
+       "at": "Left",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "left",
+       "at": "Left",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "checkleft",
+       "at": "Left"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "and the right side: two.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "left",
+       "at": "right",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "right",
+       "at": "right",
+       "dur": 0.3
+      },
+      {
+       "do": "show",
+       "target": "checkright",
+       "at": "right"
+      }
+     ],
+     "pause": 0.35
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two plus two plus two make six faces.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "right",
+       "at": "Two"
+      },
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "2+2+2=6\\text{ faces}",
+       "at": "Two",
+       "fresh": true
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "learner",
+     "say": "The hidden faces belong to the box, too.",
+     "do": [],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "An edge is where two flat faces meet.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "facechecks",
+       "at": "An"
+      },
+      {
+       "do": "show",
+       "target": "skin",
+       "at": "An"
+      },
+      {
+       "do": "hide",
+       "target": "hidden",
+       "at": "An"
+      },
+      {
+       "do": "clear",
+       "at": "An"
+      },
+      {
+       "do": "text",
+       "text": "Edge: where two faces meet",
+       "at": "An"
+      },
+      {
+       "do": "draw",
+       "target": "activeedge10",
+       "at": "edge",
+       "dur": 1.3
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count four edges around the top: one, two, three, four.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "skin",
+       "at": "Count"
+      },
+      {
+       "do": "show",
+       "target": "hidden",
+       "at": "Count"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge10",
+       "at": "Count"
+      },
+      {
+       "do": "clear",
+       "at": "Count"
+      },
+      {
+       "do": "text",
+       "text": "Edges around the top",
+       "at": "Count"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge10",
+       "dur": 0.08,
+       "at": "one"
+      },
+      {
+       "do": "draw",
+       "target": "countedge1",
+       "at": "one",
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge1",
+       "dur": 0.24,
+       "at": "one"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge1",
+       "dur": 0.08,
+       "at": "two"
+      },
+      {
+       "do": "draw",
+       "target": "countedge2",
+       "at": "two",
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge2",
+       "dur": 0.24,
+       "at": "two"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge2",
+       "dur": 0.08,
+       "at": "three"
+      },
+      {
+       "do": "draw",
+       "target": "countedge3",
+       "at": "three",
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge3",
+       "dur": 0.24,
+       "at": "three"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge3",
+       "dur": 0.08,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": "countedge4",
+       "at": "four",
+       "nth": 2,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge4",
+       "dur": 0.24,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4}\\text{ edges}",
+       "at": "four",
+       "fresh": true,
+       "nth": 2
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Dashes show a hidden edge. Count the whole path as one edge.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "activeedge4",
+       "at": "Dashes",
+       "dur": 0.12
+      },
+      {
+       "do": "draw",
+       "target": "explainhidden",
+       "at": "Dashes",
+       "dur": 0.9
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four around the bottom: one, two, three, four.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "explainhidden",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge4",
+       "dur": 0.08,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge5",
+       "at": "one",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge5",
+       "dur": 0.24,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge5",
+       "dur": 0.08,
+       "at": "two",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge6",
+       "at": "two",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge6",
+       "dur": 0.24,
+       "at": "two",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge6",
+       "dur": 0.08,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge7",
+       "at": "three",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge7",
+       "dur": 0.24,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge7",
+       "dur": 0.08,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": "countedge8",
+       "at": "four",
+       "nth": 2,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge8",
+       "dur": 0.24,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4}+\\ca{4}\\text{ edges}",
+       "at": "four",
+       "fresh": true,
+       "nth": 2
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four joining top to bottom: one, two, three, four.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "activeedge8",
+       "dur": 0.08,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge9",
+       "at": "one",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge9",
+       "dur": 0.24,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge9",
+       "dur": 0.08,
+       "at": "two",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge10",
+       "at": "two",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge10",
+       "dur": 0.24,
+       "at": "two",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge10",
+       "dur": 0.08,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "draw",
+       "target": "countedge11",
+       "at": "three",
+       "nth": 1,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge11",
+       "dur": 0.24,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "hide",
+       "target": "activeedge11",
+       "dur": 0.08,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "draw",
+       "target": "countedge12",
+       "at": "four",
+       "nth": 2,
+       "dur": 0.22
+      },
+      {
+       "do": "draw",
+       "target": "activeedge12",
+       "dur": 0.24,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "write",
+       "tex": "\\cb{4}+\\ca{4}+\\cv{4}=12\\text{ edges}",
+       "at": "four",
+       "fresh": true,
+       "nth": 2
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four plus four plus four make twelve edges.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "activeedge12",
+       "at": "Four",
+       "dur": 0.2
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "A vertex is a corner where edges meet. More than one vertex: vertices.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "countedges",
+       "at": "A"
+      },
+      {
+       "do": "draw",
+       "target": "activeedge10",
+       "at": "vertex",
+       "dur": 0.45
+      },
+      {
+       "do": "show",
+       "target": "cornerlight",
+       "at": "corner",
+       "dur": 0.18
+      },
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Vertex: a corner",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "More than one: vertices",
+       "at": "vertices"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge10",
+       "at": "corner",
+       "dur": 0.18
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four corners on top: one, two, three, four.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "cornerlight",
+       "at": "Four",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -2,
+         2
+        ]
+       },
+       "at": "corners",
+       "dur": 0.1
+      },
+      {
+       "do": "hide",
+       "target": "vB",
+       "at": "Four"
+      },
+      {
+       "do": "hide",
+       "target": "activeedge10",
+       "at": "Four"
+      },
+      {
+       "do": "show",
+       "target": "vD",
+       "at": "one",
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -2,
+         2
+        ]
+       },
+       "dur": 0.22,
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "cornerlight",
+       "dur": 0.18,
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "vC",
+       "at": "two",
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         2,
+         2
+        ]
+       },
+       "dur": 0.22,
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "vG",
+       "at": "three",
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         3.4,
+         3.4
+        ]
+       },
+       "dur": 0.22,
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "vH",
+       "at": "four",
+       "nth": 2,
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -0.6,
+         3.4
+        ]
+       },
+       "dur": 0.22,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Vertices on top",
+       "at": "Four"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four below: one, two, three, four.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "cornerlight",
+       "at": "Four",
+       "dur": 0.12
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -2,
+         -2
+        ]
+       },
+       "at": "below",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "vA",
+       "at": "one",
+       "nth": 1,
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -2,
+         -2
+        ]
+       },
+       "dur": 0.22,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "cornerlight",
+       "dur": 0.18,
+       "at": "one",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "vB",
+       "at": "two",
+       "nth": 1,
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         2,
+         -2
+        ]
+       },
+       "dur": 0.22,
+       "at": "two",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "vF",
+       "at": "three",
+       "nth": 1,
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         3.4,
+         -0.6
+        ]
+       },
+       "dur": 0.22,
+       "at": "three",
+       "nth": 1
+      },
+      {
+       "do": "show",
+       "target": "vE",
+       "at": "four",
+       "nth": 2,
+       "dur": 0.18
+      },
+      {
+       "do": "move",
+       "points": {
+        "cursor": [
+         -0.6,
+         -0.6
+        ]
+       },
+       "dur": 0.22,
+       "at": "four",
+       "nth": 2
+      },
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Vertices below",
+       "at": "Four"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Where lines cross inside the drawing is not another corner.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "cornerlight",
+       "at": "Where",
+       "dur": 0.2
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "Four above and four below make eight corners in all.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "eight"
+      },
+      {
+       "do": "write",
+       "tex": "4+4=8\\text{ vertices}",
+       "at": "eight",
+       "fresh": true
+      }
+     ],
+     "pause": 0.6
+    },
+    {
+     "speaker": "teacher",
+     "say": "Look at a face. It is a square: four equal sides and four square corners.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "vertices",
+       "at": "Look"
+      },
+      {
+       "do": "hide",
+       "target": "hidden",
+       "at": "Look"
+      },
+      {
+       "do": "show",
+       "target": "skin",
+       "at": "Look"
+      },
+      {
+       "do": "show",
+       "target": "front",
+       "at": "face"
+      },
+      {
+       "do": "clear",
+       "at": "Look"
+      },
+      {
+       "do": "header",
+       "off": true,
+       "at": "Look"
+      },
+      {
+       "do": "text",
+       "text": "Square face",
+       "at": "Look"
+      },
+      {
+       "do": "show",
+       "target": "squarecorners",
+       "at": "corners"
+      },
+      {
+       "do": "show",
+       "target": "squaresides",
+       "at": "equal"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "All six faces are squares of the same size. A solid with six equal square faces is a cube.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "squaresides",
+       "at": "All"
+      },
+      {
+       "do": "hide",
+       "target": "front",
+       "at": "All"
+      },
+      {
+       "do": "hide",
+       "target": "squarecorners",
+       "at": "All"
+      },
+      {
+       "do": "clear",
+       "at": "All"
+      },
+      {
+       "do": "text",
+       "text": "6 equal square faces",
+       "at": "All"
+      },
+      {
+       "do": "clear",
+       "at": "cube"
+      },
+      {
+       "do": "header",
+       "text": "Cube",
+       "at": "cube"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cube. Six equal square faces.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Cube"
+      },
+      {
+       "do": "header",
+       "text": "Cube",
+       "at": "Cube"
+      },
+      {
+       "do": "write",
+       "tex": "6\\text{ equal square faces}",
+       "at": "Six"
+      },
+      {
+       "do": "hide",
+       "target": "skin",
+       "at": "Cube"
+      },
+      {
+       "do": "show",
+       "target": "hidden",
+       "at": "Cube"
+      },
+      {
+       "do": "show",
+       "target": "front",
+       "at": "faces"
+      }
+     ],
+     "pause": 2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Twelve edges, where the faces meet.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "12\\text{ edges}",
+       "at": "Twelve"
+      },
+      {
+       "do": "hide",
+       "target": "front",
+       "at": "Twelve"
+      },
+      {
+       "do": "draw",
+       "target": "summaryedge",
+       "at": "edges"
+      }
+     ],
+     "pause": 2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Eight vertices, the corners where edges meet.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "8\\text{ vertices}",
+       "at": "Eight"
+      },
+      {
+       "do": "hide",
+       "target": "summaryedge",
+       "at": "Eight"
+      },
+      {
+       "do": "show",
+       "target": "vertices",
+       "at": "vertices"
+      },
+      {
+       "do": "highlight",
+       "target": "vB",
+       "at": "vertices"
+      }
+     ],
+     "pause": 2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Faces meet at edges; edges meet at vertices. Count the hidden parts, too.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "vertices",
+       "at": "Faces"
+      },
+      {
+       "do": "show",
+       "target": "front",
+       "at": "Faces"
+      },
+      {
+       "do": "hide",
+       "target": "front",
+       "at": "edges"
+      },
+      {
+       "do": "draw",
+       "target": "summaryedge",
+       "at": "edges",
+       "dur": 0.7
+      },
+      {
+       "do": "show",
+       "target": "vB",
+       "at": "vertices",
+       "dur": 0.18
+      },
+      {
+       "do": "hide",
+       "target": "summaryedge",
+       "at": "vertices",
+       "dur": 0.18
+      },
+      {
+       "do": "hide",
+       "target": "vB",
+       "at": "hidden",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "target": "vE",
+       "at": "hidden",
+       "dur": 0.25
+      }
+     ],
+     "pause": 0.2
+    }
+   ]
+  }
+ ]
+}
