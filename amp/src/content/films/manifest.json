@@ -1545,6 +1545,28 @@
       }
     ]
   },
+  "find-equal-thirds": {
+    "id": "find-equal-thirds--sf",
+    "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+    "title": "Equal shares: halves, thirds, and fourths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+    "duration": 136.78997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+        "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+        "duration": 136.78997732426305
+      }
+    ]
+  },
   "find-named-shape": {
     "id": "name-flat-shape--sn",
     "version": "69e8eaf51571542e1cf5824642ffdabedd3a82bbc335e8b04184c3b60a2ff3aa",
@@ -2385,6 +2407,28 @@
       }
     ]
   },
+  "make-ten-fact": {
+    "id": "related-subtraction--sr",
+    "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+    "title": "To subtract, think addition",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+    "duration": 132.4,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+        "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+        "duration": 132.4
+      }
+    ]
+  },
   "make-ten-grouping": {
     "id": "three-addend-story--st",
     "version": "fdbd00a4380255e181388e4ee060dcc4aa819d58e201036f20f21b05f2ab8f8a",
@@ -2688,6 +2732,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/name-flat-shape--sn/69e8eaf51571542e1cf5824642ffdabedd3a82bbc335e8b04184c3b60a2ff3aa/audio.m4a",
         "version": "69e8eaf51571542e1cf5824642ffdabedd3a82bbc335e8b04184c3b60a2ff3aa",
         "duration": 144.59
+      }
+    ]
+  },
+  "name-share": {
+    "id": "find-equal-thirds--sf",
+    "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+    "title": "Equal shares: halves, thirds, and fourths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+    "duration": 136.78997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+        "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+        "duration": 136.78997732426305
       }
     ]
   },
@@ -3300,6 +3366,50 @@
       }
     ]
   },
+  "related-subtraction": {
+    "id": "related-subtraction--sr",
+    "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+    "title": "To subtract, think addition",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+    "duration": 132.4,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+        "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+        "duration": 132.4
+      }
+    ]
+  },
+  "related-subtraction-sentence": {
+    "id": "related-subtraction--sr",
+    "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+    "title": "To subtract, think addition",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+    "duration": 132.4,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/related-subtraction--sr/814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b/audio.m4a",
+        "version": "814846d630d776a83a45e81d329bd0e55e8699d481f094f11256003215b48c1b",
+        "duration": 132.4
+      }
+    ]
+  },
   "relation-function-choice": {
     "id": "relation-function-choice--sl",
     "version": "3627d5c2b128cb1f535a388a52d22af1118a0f8cddf693fcbcbca0a030ff957b",
@@ -3406,6 +3516,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ruler-read-nearest-unit--ws/0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c/audio.m4a",
         "version": "0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c",
         "duration": 287.97
+      }
+    ]
+  },
+  "same-share-different-shape": {
+    "id": "find-equal-thirds--sf",
+    "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+    "title": "Equal shares: halves, thirds, and fourths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+    "duration": 136.78997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/find-equal-thirds--sf/486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42/audio.m4a",
+        "version": "486f4db978cb0f1e978fc62b7c6c97a5088cbd512a4452c97559b9b45d6c5a42",
+        "duration": 136.78997732426305
       }
     ]
   },
@@ -4015,6 +4147,28 @@
       }
     ]
   },
+  "subtract-with-regrouping": {
+    "id": "subtract-with-regrouping--ss",
+    "version": "2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67",
+    "title": "Open a block to subtract",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-with-regrouping--ss/2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-with-regrouping--ss/2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67/audio.m4a",
+    "duration": 113.09,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-with-regrouping--ss/2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/subtract-with-regrouping--ss/2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67/audio.m4a",
+        "version": "2d496f24a62eb3af8f6f68d4ca5cc20d08ab022cb6b45ff7a25257d608a04b67",
+        "duration": 113.09
+      }
+    ]
+  },
   "subtract-within-20": {
     "id": "subtract-through-ten--ss",
     "version": "90c93eb0716b91a84f9a54895c4540cc4df33d70e554419a95b7a8af1354a4cc",
@@ -4491,6 +4645,27 @@
       }
     ]
   },
+  "triangle-angle-sum": {
+    "id": "triangle-angle-sum--st",
+    "version": "2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25",
+    "title": "The angles of a triangle make a straight line",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/audio.m4a",
+    "duration": 165.78,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/audio.m4a",
+        "version": "2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25",
+        "duration": 165.78
+      }
+    ]
+  },
   "triangle-area-base-height": {
     "id": "triangle-area-base-height",
     "version": "08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268",
@@ -4509,6 +4684,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-area-base-height/08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268/audio.m4a",
         "version": "08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268",
         "duration": 118.81
+      }
+    ]
+  },
+  "triangle-exterior-angle": {
+    "id": "triangle-angle-sum--st",
+    "version": "2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25",
+    "title": "The angles of a triangle make a straight line",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/audio.m4a",
+    "duration": 165.78,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-angle-sum--st/2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25/audio.m4a",
+        "version": "2404e079aeef693dc9514b1520f8f00504036894758400feb9879b5f594b0b25",
+        "duration": 165.78
       }
     ]
   },
@@ -4575,6 +4771,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-two-digit--sc/74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d/audio.m4a",
         "version": "74676487135676819df4a82c6570c5a14c518685096489baea047361c7872b8d",
         "duration": 91.55
+      }
+    ]
+  },
+  "two-step-change": {
+    "id": "two-step-change--st",
+    "version": "5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5",
+    "title": "A story with two changes",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-change--st/5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-change--st/5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5/audio.m4a",
+    "duration": 119.03,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-change--st/5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-change--st/5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5/audio.m4a",
+        "version": "5f58159055db755d881bdeba681cc57234e695169f2a6af18c2e5146f3c7aea5",
+        "duration": 119.03
       }
     ]
   },

@@ -383,7 +383,7 @@ test("ruler ticks shorten with the part, and the object ends on ticks", () => {
   );
 });
 
-test("coins are drawn to true relative size, ridged only on dimes and quarters, and never named", () => {
+test("coins are each coin's real face at true relative size, and never named", () => {
   const coins = ["penny", "nickel", "dime", "quarter"] as const;
   const s = one({
     type: "coins",
@@ -391,18 +391,20 @@ test("coins are drawn to true relative size, ridged only on dimes and quarters, 
     coins: coins.map((coin, i) => ({ coin, label: "ABCD"[i] })),
   });
   const l = layoutScene(s);
-  const r = coins.map(
-    (_, i) =>
-      (item(l.items, `c.coin.${i}`) as Extract<Drawn, { k: "circle" }>).r,
+  const faces = coins.map(
+    (_, i) => item(l.items, `c.coin.${i}`) as Extract<Drawn, { k: "image" }>,
+  );
+  assert.deepEqual(
+    faces.map((f) => [f.k, f.art]),
+    coins.map((coin) => ["image", coin]),
   );
   coins.forEach((coin, i) =>
     assert.ok(
-      Math.abs(r[i]! / r[0]! - coinDiameter[coin] / coinDiameter.penny) < 1e-9,
+      Math.abs(
+        faces[i]!.r / faces[0]!.r - coinDiameter[coin] / coinDiameter.penny,
+      ) < 1e-9,
     ),
   );
-  const ridged = (i: number) =>
-    l.items.some((d) => d.id.startsWith(`c.coin.${i}.ridge.`));
-  assert.deepEqual([0, 1, 2, 3].map(ridged), [false, false, true, true]);
   const said = describeScene(s).toLowerCase();
   for (const word of [...coins, "cent", "¢", "value"])
     assert.ok(!said.includes(word), `description names "${word}"`);

@@ -1,0 +1,768 @@
+{
+  "id": "subtract-with-regrouping--ss",
+  "title": "Open a block to subtract",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 5,
+                  "tens": 7,
+                  "ones": 2
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -4,
+          56,
+          24
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Subtract place by place. Five hundred seventy-two, take away fifty-six.",
+          "do": [
+            {
+              "do": "header",
+              "tex": "572-56",
+              "at": "Subtract",
+              "keep": true
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "572",
+                "56"
+              ],
+              "op": "-",
+              "id": "first",
+              "at": "Subtract"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 7,
+                  "ones": 2
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -3,
+          22,
+          13
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "learner",
+          "say": "Only two ones here, and we have to take six away.",
+          "do": [],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Open a ten: a rod of ten cubes. Seven tens become six tens. Ten new cubes join the two: twelve ones. Still five hundred seventy-two, just different pieces. Twelve ones take away six leaves six.",
+          "do": [
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "Open",
+              "dur": 2.2
+            },
+            {
+              "do": "column",
+              "of": "first",
+              "at": "Open",
+              "trade": "Open",
+              "write": "leaves"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.ones",
+              "at": "twelve"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.9",
+                "b.n.ones.10",
+                "b.n.ones.11",
+                "b.n.ones.12"
+              ],
+              "at": "away",
+              "dur": 0.7
+            },
+            {
+              "do": "hide",
+              "target": "b.n.tens.7",
+              "at": "Seven",
+              "dur": 0.01
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 5,
+                  "tens": 6,
+                  "ones": 6
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -4,
+          56,
+          24
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The five hundreds stayed in place. The small numbers record the opened ten. Six tens take away five leaves one ten.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds",
+              "at": "hundreds"
+            },
+            {
+              "do": "column",
+              "of": "first",
+              "at": "Six",
+              "write": "leaves"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.3",
+                "b.n.tens.4",
+                "b.n.tens.5"
+              ],
+              "at": "away",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each flat is one hundred. Five hundreds, none taken away, leaves five hundreds. Five hundred sixteen.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b.n.hundreds.1",
+              "at": "flat"
+            },
+            {
+              "do": "column",
+              "of": "first",
+              "at": "Five",
+              "write": "leaves"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 4,
+                  "tens": 2,
+                  "ones": 8
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -4,
+          50,
+          24
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Four hundred twenty-eight minus one hundred seventy-three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "header",
+              "tex": "428-173",
+              "at": "Four",
+              "keep": true
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "428",
+                "173"
+              ],
+              "op": "-",
+              "id": "second",
+              "at": "Four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "ones": 8
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -3,
+          9,
+          5
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Eight ones minus three leaves five.",
+          "do": [
+            {
+              "do": "column",
+              "of": "second",
+              "at": "Eight",
+              "write": "leaves"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.ones.6",
+                "b.n.ones.7",
+                "b.n.ones.8"
+              ],
+              "at": "three",
+              "dur": 0.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 4,
+                  "tens": 2,
+                  "ones": 5
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -4,
+          50,
+          24
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "learner",
+          "say": "Seven minus two is five here.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Seven"
+            },
+            {
+              "do": "text",
+              "text": "Tens: $7-2=5$",
+              "id": "slip",
+              "at": "Seven"
+            }
+          ],
+          "pause": 0.1
+        },
+        {
+          "speaker": "teacher",
+          "say": "Only two rods are here, and seven cannot come out of two. Turning the numbers around answers a different question.",
+          "do": [
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "Only"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "two"
+            }
+          ],
+          "pause": 0.2
+        },
+        {
+          "speaker": "teacher",
+          "say": "Open one hundred: a flat becomes ten rods. Four hundreds become three; two tens become twelve tens. The blocks have the same value. Twelve tens take away seven leaves five tens.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Open"
+            },
+            {
+              "do": "stack",
+              "rows": [
+                "428",
+                "173"
+              ],
+              "op": "-",
+              "id": "secondResume",
+              "at": "Open"
+            },
+            {
+              "do": "column",
+              "of": "secondResume",
+              "at": "Open",
+              "write": "Open"
+            },
+            {
+              "do": "split",
+              "target": "b.n.hundreds",
+              "at": "Open",
+              "dur": 2.2
+            },
+            {
+              "do": "column",
+              "of": "second",
+              "at": "Open",
+              "trade": "Open",
+              "write": "leaves"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens",
+              "at": "twelve"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.8",
+                "b.n.tens.9",
+                "b.n.tens.10",
+                "b.n.tens.11",
+                "b.n.tens.12"
+              ],
+              "at": "away",
+              "dur": 0.7
+            },
+            {
+              "do": "hide",
+              "target": "b.n.hundreds.4",
+              "at": "Four",
+              "dur": 0.01
+            },
+            {
+              "do": "column",
+              "of": "secondResume",
+              "at": "Open",
+              "trade": "Open",
+              "write": "leaves"
+            }
+          ],
+          "pause": 0.6
+        },
+        {
+          "speaker": "learner",
+          "say": "Three hundreds take away one leaves two. Two hundred fifty-five in all.",
+          "do": [
+            {
+              "do": "column",
+              "of": "second",
+              "at": "Three",
+              "write": "leaves"
+            },
+            {
+              "do": "hide",
+              "target": "b.n.hundreds.3",
+              "at": "away",
+              "dur": 0.7
+            },
+            {
+              "do": "column",
+              "of": "secondResume",
+              "at": "Three",
+              "write": "leaves"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 3,
+                  "tens": 12,
+                  "ones": 8
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows"
+          }
+        ],
+        "view": [
+          -1,
+          -4,
+          50,
+          24
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Check by adding back. Two hundred fifty-five plus one hundred seventy-three.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Check"
+            },
+            {
+              "do": "header",
+              "tex": "428-173=255",
+              "label": "Add back to check",
+              "at": "Check"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.hundreds.1",
+                "b.n.hundreds.2",
+                "b.n.tens.1",
+                "b.n.tens.2",
+                "b.n.tens.3",
+                "b.n.tens.4",
+                "b.n.tens.5",
+                "b.n.ones.1",
+                "b.n.ones.2",
+                "b.n.ones.3",
+                "b.n.ones.4",
+                "b.n.ones.5"
+              ],
+              "at": "Check",
+              "dur": 0.01
+            },
+            {
+              "do": "write",
+              "tex": "255+173",
+              "at": "Two",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": [
+                "b.n.hundreds.3",
+                "b.n.tens.6",
+                "b.n.tens.7",
+                "b.n.tens.8",
+                "b.n.tens.9",
+                "b.n.tens.10",
+                "b.n.tens.11",
+                "b.n.tens.12",
+                "b.n.ones.6",
+                "b.n.ones.7",
+                "b.n.ones.8"
+              ],
+              "at": "plus",
+              "dur": 0.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Join ten tens into a hundred: four hundred twenty-eight, our starting number.",
+          "do": [
+            {
+              "do": "join",
+              "target": "b.n.tens",
+              "at": "Join",
+              "dur": 1.7
+            },
+            {
+              "do": "write",
+              "tex": "255+173=428",
+              "at": "four",
+              "fresh": true
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "tens",
+              "ones"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "tens": 1,
+                  "ones": 0
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -3,
+          20,
+          13
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Subtract matching places. Not enough in a place? Open the next block.",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Subtract"
+            },
+            {
+              "do": "header",
+              "text": "Open the next block",
+              "keep": true,
+              "at": "Subtract"
+            },
+            {
+              "do": "text",
+              "text": "Keep the same total.",
+              "at": "Subtract"
+            },
+            {
+              "do": "highlight",
+              "target": "b.n.tens.1",
+              "at": "Open"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One ten is ten ones. The total stays the same.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "1\\text{ ten}=10\\text{ ones}",
+              "fresh": true,
+              "at": "One"
+            },
+            {
+              "do": "split",
+              "target": "b.n.tens",
+              "at": "is",
+              "dur": 2.2
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": [
+              "hundreds",
+              "tens"
+            ],
+            "rows": [
+              {
+                "id": "n",
+                "pieces": {
+                  "hundreds": 1,
+                  "tens": 0
+                },
+                "ink": "blue"
+              }
+            ],
+            "squares": "rows",
+            "start": true
+          }
+        ],
+        "view": [
+          -1,
+          -3,
+          29,
+          13
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "This flat is one hundred.",
+          "pause": 0.3
+        },
+        {
+          "speaker": "teacher",
+          "say": "One hundred is ten tens. The total stays the same.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "1\\text{ hundred}=10\\text{ tens}",
+              "fresh": true,
+              "at": "One"
+            },
+            {
+              "do": "split",
+              "target": "b.n.hundreds",
+              "at": "is",
+              "dur": 2.2
+            }
+          ],
+          "pause": 0.8
+        }
+      ]
+    }
+  ]
+}
