@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
-import { Loading } from "../../ui/Loading";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import { currentSession } from "../school/api";
 import { meOptions } from "../../lib/query";
 import { learnerFrontierOptions } from "../../lib/learning-view";
@@ -100,7 +100,7 @@ export function OwnRecordScreen() {
   if (record.isPending || (data && frontier.isPending))
     return (
       <OwnPage>
-        <Loading />
+        <LoadingScreen overlay />
       </OwnPage>
     );
   if (!data || frontier.isError)
