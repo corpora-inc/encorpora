@@ -1,10 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import type { AdoptionReview } from "../../../schools/adoption-contracts";
@@ -132,6 +127,14 @@ function DistrictInvite({
   );
 }
 
+function SchoolHomeRedirect() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    void navigate({ href: "/school", replace: true });
+  }, [navigate]);
+  return <LoadingScreen overlay />;
+}
+
 /** The school's side: approve joining a district, then send the approval. */
 function AuthorizeSchool({
   session,
@@ -162,7 +165,7 @@ function AuthorizeSchool({
   const open = data.grants.filter((grant) => grant.status === "open");
   // Nothing to approve, invite or withdraw: this page has no job here.
   if (!district && !data.districts.length && !open.length)
-    return <Navigate href="/school" replace />;
+    return <SchoolHomeRedirect />;
   const withdraw = (id: string) => {
     setBusy(true);
     setError("");
@@ -372,13 +375,13 @@ function ReviewDecision({
         back="/school"
       >
         <Actions>
-          <Link
+          <a
             href={`/school/${data.schoolId}`}
             className={buttonClass("primary")}
             data-primary
           >
             Open school
-          </Link>
+          </a>
           {connectionId && (
             <Link to="/school/connect" className={buttonClass("secondary")}>
               Import Clever roster

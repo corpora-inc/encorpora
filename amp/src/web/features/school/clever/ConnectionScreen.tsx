@@ -517,9 +517,9 @@ export function ConnectionScreen() {
                 (onboarding || !identity.personId ? (
                   withClever("Continue with Clever")
                 ) : (
-                  <Link href="/school" className={buttonClass("primary")}>
+                  <a href="/school" className={buttonClass("primary")}>
                     Open your classes
-                  </Link>
+                  </a>
                 ))}
               {canSync && (
                 <Button
