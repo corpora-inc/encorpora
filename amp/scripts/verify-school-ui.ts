@@ -595,9 +595,11 @@ async function journey(browser: Browser, engine: string, width: number) {
 
     // 7. A family link opens, signed out.
     const amara = roster.get("Amara")!;
+    // The school-level record is a student layer over Students; sharing
+    // opens over it.
     await teacher.goto(`${origin}/school/${orgId}/students/${amara.personId}`);
     await teacher.getByRole("button", { name: "Share with family" }).click();
-    const share = teacher.getByRole("dialog");
+    const share = teacher.getByRole("dialog").last();
     await share.getByRole("button", { name: "Make a link" }).click();
     const link = await share.getByLabel("Family link").inputValue();
     check(`${label} the link is a family link`, /\/p#/.test(link), link);

@@ -592,8 +592,12 @@ async function teacherCopiesAStudent(
       [pupil.learnerId],
     )
   ).rows[0];
+  // The school-level record is a student layer over Students.
   await page.goto(`${origin}/school/${org.id}/students/${pupil.personId}`);
-  await heading(page, "Pia Marlowe");
+  await page
+    .getByRole("dialog")
+    .getByRole("heading", { name: "Pia Marlowe" })
+    .waitFor({ timeout: 30_000 });
   const tryIt = page.getByRole("button", {
     name: "Try problems as this student",
   });
