@@ -186,11 +186,11 @@ function ConnectionGroup({
               >
                 <span className={styles.rowMain}>
                   <span>{item.skill.title}</span>
+                  {label && <small>{label}</small>}
                   {item.connection && (
                     <small>{item.connection.explanation}</small>
                   )}
                 </span>
-                {label && <span className={styles.rowFact}>{label}</span>}
               </EntityLink>
             </li>
           );

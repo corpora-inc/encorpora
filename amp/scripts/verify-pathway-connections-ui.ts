@@ -142,7 +142,8 @@ try {
         page.on("pageerror", (error) => errors.push(error.message));
         await page.goto(`${origin}/pathways/${id}`);
         const detail = page.locator("[data-skill-layer]");
-        await detail.getByRole("heading", { name: "Leads to" }).waitFor();
+        // A group with no skills isn't drawn; the first that has some is.
+        await detail.locator("[data-skill-connections]").first().waitFor();
         const expected = skillNeighbors(skills, id, { shared: true });
         const groups = {
           buildsOn: expected.buildsOn,
@@ -151,7 +152,10 @@ try {
         };
         for (const [group, items] of Object.entries(groups)) {
           const list = detail.locator(`[data-skill-connections="${group}"] li`);
-          if (!items.length) continue;
+          if (!items.length) {
+            assert.equal(await list.count(), 0, `${id} ${group} not drawn`);
+            continue;
+          }
           assert.equal(
             await list.count(),
             Math.min(items.length, 5),
