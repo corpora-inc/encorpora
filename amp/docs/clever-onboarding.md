@@ -28,6 +28,8 @@ Clever identities are keyed by environment, district and user ID. Sandbox and pr
 
 The roster adapter imports districts, schools, multi-role users, multi-school memberships, sections with co-teachers, courses and terms. Optional fields may be absent. Contacts are recognized but do not create guardian permissions. AMP retains an allowlisted source snapshot and discards sensitive fields it does not use. One person has one learner within a district, even across several schools or sections.
 
+Clever staff designations are distinct from teaching or district administration. A `SchoolTechLead` receives read-only school access; `PortalOnly` staff receive no school-wide roster permissions. A teacher's access follows their class enrollments. Multiple supported roles combine their scopes, while student and contact identities cannot also hold staff roles. See Clever's [staff-role definitions](https://dev.clever.com/docs/api-v3-upgrade-guide).
+
 Full snapshots and Events update source-owned memberships. Manual memberships remain independently controlled. Unshared records are archived and can be restored under the same provider IDs. Learning evidence is not deleted by a roster removal. Privacy deletion tombstones identities so synchronization cannot silently recreate the learner. Events, source records and the resulting roster commit atomically. Invalid, partial or forbidden responses cannot trigger a removal sweep.
 
 The worker requests a full snapshot daily and processes enabled Events every five minutes. On-demand synchronization is available. Deployment-wide claims prevent duplicate polling work; interrupted runs are recovered. Staged connections are excluded until an administrator starts the import. A provider revocation ends source access; reauthorization uses a short-lived onboarding proof and a current provider-role check before normal access can resume.
@@ -41,6 +43,8 @@ The worker requests a full snapshot daily and processes enabled Events every fiv
 5. Use Clever's [Secure Sync certification guide](https://dev.clever.com/docs/secure-sync-certification-guide) and certification dataset. Request the certification form through the partner contact. Fixture tests and a successful token request do not establish provider certification or production readiness.
 
 `npx tsx scripts/clever-sync.ts sync <connection-id> full` performs an explicit full repair; `sync all auto` runs configured connections. Credentials and tokens are not written into sync logs. `npm run school:admin -- school-queue <private-input.json>` lists connection requests, commercial follow-up and connection-release reviews. AnySchool invitations are performed in Clever's dashboard; `connection-request-status` records their actual outcome and reference. Review disconnected or expired institutions before freeing an upstream slot. Capacity is not an onboarding gate.
+
+Use `AMP_TEST_DATABASE_URL=<dedicated test database> npx tsx scripts/verify-clever-scale.ts --run` for the synthetic district benchmark. It checks stable IDs, repeated imports, scoped access, transfers and empty Events polling, and reports query counts, time and memory. It uses a disposable schema and synthetic HTTP responses. These measurements do not include provider latency or establish production capacity.
 
 ## Limits
 

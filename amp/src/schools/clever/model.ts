@@ -151,8 +151,8 @@ export function validateSnapshot(
   const district = districtSchema.parse(snapshot.district);
   if (district.id !== districtId)
     throw new CleverSyncError("district_mismatch");
-  const users = snapshot.users.map((x) => userSchema.parse(x));
-  for (const user of users) {
+  const parsedUsers = snapshot.users.map((x) => userSchema.parse(x));
+  for (const user of parsedUsers) {
     const roles = userRoles(user);
     if (
       (roles.includes("student") || roles.includes("contact")) &&
@@ -163,7 +163,9 @@ export function validateSnapshot(
   const result: Snapshot = {
     district,
     schools: snapshot.schools.map((x) => schoolSchema.parse(x)),
-    users: users.filter((x) => userRoles(x).some((role) => role !== "contact")),
+    users: parsedUsers.filter((x) =>
+      userRoles(x).some((role) => role !== "contact"),
+    ),
     sections: snapshot.sections.map((x) => sectionSchema.parse(x)),
     courses: snapshot.courses.map((x) => courseSchema.parse(x)),
     terms: snapshot.terms.map((x) => termSchema.parse(x)),
