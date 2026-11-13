@@ -26,7 +26,7 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("disappear"), target }).strict(),
   /** Draw a stroke from its start (a hop, a curve, a segment). Hidden before. */
   z.object({ do: z.literal("trace"), target }).strict(),
-  /** Emphasize during this step only. */
+  /** Emphasize during this step, easing out during the next. */
   z.object({ do: z.literal("highlight"), target }).strict(),
   /** Change a shape's fill (or a line's ink) from this step on. */
   z
@@ -84,7 +84,7 @@ export type ItemState = {
   fill?: FillRole;
   stroke?: InkRole;
   highlight?: boolean;
-  /** Current-step focus strength, eased from 0 to 1. */
+  /** Focus strength, rising this step or falling from the previous step. */
   emphasis?: number;
   /** A reshaped polygon's path, in figure pixels. */
   d?: string;
@@ -175,12 +175,25 @@ export function frameAt(
               st.opacity = clamp((q - 0.85) / 0.15);
             else st.opacity = clamp((q - 0.6) / 0.4);
             break;
-          case "highlight":
-            if (current && p > 0) {
+          case "highlight": {
+            const continued =
+              current &&
+              steps[k - 1]?.actions.some(
+                (a) => a.do === "highlight" && matches(d.id, a.target),
+              );
+            const strength = current
+              ? continued
+                ? 1
+                : p
+              : k === step - 1
+                ? 1 - clamp(progress)
+                : 0;
+            if (strength > 0) {
               st.highlight = true;
-              st.emphasis = p;
+              st.emphasis = strength;
             }
             break;
+          }
           case "fill":
             if (p > 0) {
               if (a.fill) st.fill = a.fill;

@@ -93,6 +93,7 @@ export function ScenePlayer({
   const [inView, setInView] = useState(false);
   const panel = useRef<HTMLElement>(null);
   const raf = useRef(0);
+  const stopAfterStep = useRef(false);
   useEffect(() => {
     if (staticFocus) return;
     const media = window.matchMedia(reducedQuery);
@@ -117,6 +118,7 @@ export function ScenePlayer({
   }, [key, staticFocus]);
   // A new scene or cue starts over.
   useEffect(() => {
+    stopAfterStep.current = false;
     setStep(0);
     setProgress(staticFocus ? 1 : 0);
     setCycle(0);
@@ -134,7 +136,8 @@ export function ScenePlayer({
       const t = Math.min(1, (now - start) / duration);
       setProgress(t);
       if (t < 1) raf.current = requestAnimationFrame(tick);
-      else if (step >= last && !loop) setPlaying(false);
+      else if (stopAfterStep.current || (step >= last && !loop))
+        setPlaying(false);
       else {
         holdUntil ||= now + m.hold * (steps[step]?.hold ?? 1);
         if (now >= holdUntil) {
@@ -240,6 +243,7 @@ export function ScenePlayer({
               className="scene-player-primary"
               onClick={() => {
                 if (playing) return setPlaying(false);
+                stopAfterStep.current = false;
                 if (done) {
                   setStep(0);
                   setProgress(0);
@@ -257,8 +261,13 @@ export function ScenePlayer({
               aria-disabled={done}
               onClick={() => {
                 if (done) return;
-                if (progress < 1) go(step, 1);
-                else go(step + 1, 1);
+                // Manual Next plays one step, including the outgoing focus.
+                if (progress >= 1) {
+                  setStep(step + 1);
+                  setProgress(0);
+                }
+                stopAfterStep.current = true;
+                setPlaying(true);
               }}
             >
               Next
