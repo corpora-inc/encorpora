@@ -211,6 +211,19 @@ Merging duplicate students and a standalone school joining a district are agent-
 
 Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a teacher and a parent at once.
 
+### CSV and Excel student identities
+
+Names alone cannot distinguish two students with the same name or one student listed in several classes. Those rows are held before import. Add a **Student ID** column: use different stable IDs for different students, and repeat the same ID for one student in several classes. School-assigned identifiers are sufficient; no government identifier is needed.
+
+```csv
+Student ID,Name,Class
+student-101,Alex Rivera,Math
+student-102,Alex Rivera,Math
+student-101,Alex Rivera,Intervention
+```
+
+Name-only files with repeated names must be updated to include these IDs. Reuse the IDs in later files and review the preview before applying. Existing AMP records and learning history are preserved; an ambiguous match is never silently merged. If the same-named students already have AMP records without distinct IDs, keep those records and ask AMP support to review their source mapping before importing. Do not select “different student” or delete a learner to clear an identity warning.
+
 ### OneRoster CSV imports
 
 The import wizard accepts a OneRoster ZIP or its CSV files. Choose the source school when the export includes several schools; import each school into its corresponding AMP school. Identity matches use the tenant and source IDs. A class name alone never links two OneRoster classes.
