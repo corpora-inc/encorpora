@@ -358,6 +358,9 @@ try {
   await leaderPage.getByText("Match to Clever (optional)").click();
   await choose("Clever connection", "River District");
   await choose("School in Clever", "Birch School");
+  await leaderPage
+    .locator(`[data-match-source="${largeSource[500].id}"]`)
+    .waitFor();
   assert.equal(await leaderPage.locator("[data-match-source]").count(), 1001);
   assert.equal(
     await leaderPage.locator("[data-adoption-candidate]").count(),
