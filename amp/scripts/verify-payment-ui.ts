@@ -383,9 +383,7 @@ try {
   await page.evaluate(() => {
     (window as any).paymentHarness.family();
   });
-  await page
-    .getByRole("button", { name: "Purchases & records", exact: true })
-    .click();
+  await page.getByRole("button", { name: /^Purchases and records/ }).click();
   await page.locator("[data-payment-history]").click();
   await page
     .getByRole("heading", { name: "Payment records", exact: true })
@@ -417,9 +415,7 @@ try {
     await page.evaluate(() => {
       (window as any).paymentHarness.family();
     });
-    await page
-      .getByRole("button", { name: "Purchases & records", exact: true })
-      .click();
+    await page.getByRole("button", { name: /^Purchases and records/ }).click();
     await page.locator("[data-payment-history]").click();
     await page.getByRole("button", { name: /AMP annual/ }).waitFor();
     await shot(learners.length ? "tombstone-history" : "empty-family-history");

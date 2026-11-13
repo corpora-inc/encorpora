@@ -221,6 +221,24 @@ async function setup(
       route.request().method() === "GET"
     )
       return route.fulfill({ json: { offerIds: [] } });
+    // Account → Sign-in preloads what "Delete my account" would remove
+    // (verified in verify-delete-account-ui).
+    if (
+      path === "/api/v1/account/deletion" &&
+      route.request().method() === "GET"
+    )
+      return route.fulfill({
+        json: {
+          learners: { children: 2, own: false, profiles: 0 },
+          answers: 0,
+          removed: [],
+          left: [],
+          secondParent: false,
+          billingRecords: false,
+          blockers: [],
+          freshForMs: 60_000,
+        },
+      });
     // First-party funnel beacons (verified in verify-funnel-ui).
     if (path.endsWith("/events"))
       return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -277,9 +295,7 @@ async function openAccess(page: Page) {
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Billing", exact: true })
     .click();
-  await page
-    .getByRole("button", { name: "Purchases & records", exact: true })
-    .click();
+  await page.getByRole("button", { name: /^Purchases and records/ }).click();
   await page.locator('[data-purchase-entry="annual"]').waitFor();
 }
 async function expectCurrentLearner(page: Page, id: string) {
@@ -345,9 +361,13 @@ try {
     await f.page.screenshot({
       path: `artifacts/purchase-app/access-${width}.png`,
     });
-    await visible(f.page, ".family-learner:first-child");
+    // Billing lists what each learner holds (features/account/BillingList).
+    await visible(
+      f.page,
+      '[aria-label="What each learner holds"] > li:first-child',
+    );
     await f.page
-      .getByRole("button", { name: "Purchases & records", exact: true })
+      .getByRole("button", { name: /^Purchases and records/ })
       .click();
     await f.page.locator('[data-purchase-entry="annual"]').click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
@@ -633,10 +653,13 @@ try {
       .getByRole("navigation", { name: "Account" })
       .getByRole("link", { name: "Billing", exact: true })
       .click();
+    // Each learner without a plan has its own Continue with AMP; it opens
+    // that learner's plan.
     await f.page
       .getByRole("button", { name: "Continue with AMP", exact: true })
+      .nth(1)
       .click();
-    await f.page.waitForURL(/\/continue\/child-a-\d$/);
+    await f.page.waitForURL(/\/continue\/child-a-2$/);
     await f.page.goto("http://127.0.0.1:4390/purchase/choose");
     await f.page
       .getByRole("heading", { name: "Choose your AMP plan" })
@@ -673,9 +696,7 @@ try {
       .getByRole("heading", { name: "Choose your AMP plan" })
       .waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
-    await f.page
-      .getByRole("button", { name: "Continue with AMP", exact: true })
-      .waitFor();
+    await f.page.locator('[data-continue-with-amp="child-a-2"]').waitFor();
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }
