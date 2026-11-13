@@ -48,7 +48,7 @@ import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { actualFacetMappings } from "../src/content/facet-mappings";
 import { templateArchetypes } from "../src/curriculum/template-archetypes";
-import { keypadKeys } from "../src/web/StructuredWorkInput";
+import { keypadCells, keypadKeys } from "../src/web/StructuredWorkInput";
 
 const families = [
   "solve-justify-linear",
@@ -1167,4 +1167,21 @@ test("a diagram places every field once, fills undrawn places with 0 and marks e
   // A diagram that leaves a field out is rejected.
   const missing = { ...r, diagram: { ...r.diagram, zeros: undefined } };
   assert.equal(structuralProblem(missing), "A diagram leaves a field out");
+});
+
+test("one keypad: four across, digits, Delete and Next in fixed places", () => {
+  const width = (cells: (string | null)[]) =>
+    cells.reduce((n, k) => n + (k === "0" ? 2 : 1), 0);
+  const number = keypadCells(["−", "/"], false);
+  assert.equal(width(number) % 4, 0);
+  assert.deepEqual(number.slice(0, 4), ["7", "8", "9", "backspace"]);
+  assert.deepEqual(number.slice(-3), ["0", ".", "next"]);
+  // A place's digit: digits only, no stray symbol or point.
+  const digits = keypadCells([], true);
+  assert.equal(width(digits), 16);
+  assert.ok(!digits.some((k) => k === "." || k === "−" || k === "/"));
+  // An expression's own symbols sit in rows above the same digit block.
+  const expr = keypadCells(["x", "²", "=", "or", "(", ")", "+", "−"], false);
+  assert.equal(width(expr) % 4, 0);
+  assert.deepEqual(expr.slice(-15, -11), ["7", "8", "9", "backspace"]);
 });

@@ -395,8 +395,9 @@ async function fill(page: Page, kind: string) {
         await input.scrollIntoViewIfNeeded();
         await input.fill("1");
       }
-      const done = page.locator('.work-keypad [data-key="done"]:visible');
-      if (await done.count()) await done.click();
+      // Next walks the entries; on the last it closes the keypad.
+      const next = page.locator('.work-keypad [data-key="next"]:visible');
+      for (let n = 0; n < 24 && (await next.count()); n++) await next.click();
       const choices = page.locator(".work-choice");
       for (let i = 0; i < (await choices.count()); i++) {
         const c = choices.nth(i);

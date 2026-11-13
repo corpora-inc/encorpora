@@ -200,8 +200,10 @@ export async function preparePracticeAnswer(
               await cell.locator(".work-input").fill(values[fieldIndex]!);
             }
           }
-          const done = page.locator('.work-keypad [data-key="done"]');
-          if (await done.isVisible()) await done.click();
+          // Next walks the entries; on the last it closes the keypad.
+          const next = page.locator('.work-keypad [data-key="next"]');
+          for (let n = 0; n < 24 && (await next.isVisible()); n++)
+            await next.click();
         }
       }
       await page.locator(".choice-submit:visible").click();

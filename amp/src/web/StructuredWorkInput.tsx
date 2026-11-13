@@ -81,6 +81,8 @@ export function keypadKeys(r: StructuredWorkResponse): string[] {
   const add = (k: string) => {
     if (!keys.includes(k)) keys.push(k);
   };
+  // A place's digit (one character) takes digits and nothing else.
+  if (fields.every((f) => f.kind === "number" && f.maxLength === 1)) return [];
   for (const f of fields)
     if (f.kind === "expression") for (const v of f.variables ?? []) add(v);
   const expressions = fields.some((f) => f.kind === "expression");
@@ -94,6 +96,37 @@ export function keypadKeys(r: StructuredWorkResponse): string[] {
   }
   if (expressions && fields.some((f) => f.kind === "number")) add("/");
   return keys.slice(0, 11);
+}
+
+/** The keypad's cells, four across like the answer keypad's
+ * (PracticeWorkspace): a response's own symbols in rows above, then
+ * 7 8 9 ⌫ / 4 5 6 · / 1 2 3 · / 0 (wide) . Next. The digits, Delete and Next
+ * sit in the same place on every keypad; `null` is an empty cell. */
+export function keypadCells(
+  keys: readonly string[],
+  digitsOnly: boolean,
+): (string | null)[] {
+  const [a = null, b = null, ...rest] = keys;
+  const symbols: (string | null)[] = [...rest];
+  while (symbols.length % 4) symbols.push(null);
+  return [
+    ...symbols,
+    "7",
+    "8",
+    "9",
+    "backspace",
+    "4",
+    "5",
+    "6",
+    a,
+    "1",
+    "2",
+    "3",
+    b,
+    "0",
+    digitsOnly ? null : ".",
+    "next",
+  ];
 }
 const keyInsert = (k: string) => (k === "÷" ? "/" : k === "or" ? " or " : k);
 const keyLabel = (k: string) =>
@@ -321,7 +354,12 @@ export function StructuredWorkInput({
     input.focus({ preventScroll: true });
     input.setSelectionRange(p.caret, p.caret);
   });
-  const keypadOpen = small && active !== null && !locked && keys.length > 0;
+  // Any typed entry has the keypad (a digits-only stack has no symbols).
+  const typed = (r.open ? [r.rows[0]!] : r.rows).some((row) =>
+    row.fields.some((f) => f.given === undefined && f.kind !== "choice"),
+  );
+  const digitsOnly = typed && keys.length === 0;
+  const keypadOpen = small && active !== null && !locked && typed;
   // Keep the active entry above the keypad within its own scrolling workspace.
   useLayoutEffect(() => {
     if (!keypadOpen || !active) return;
@@ -329,13 +367,31 @@ export function StructuredWorkInput({
     const pad = keypad.current;
     const stage = input?.closest<HTMLElement>(".answer-editor, .problem-stage");
     if (!input || !pad || !stage) return;
+    // Just above the keypad, both ways: never hidden behind it, and never
+    // stranded above a dead band when the stage can scroll back.
     const field = input.closest<HTMLElement>(".work-entry") ?? input;
     const bottom = field.getBoundingClientRect().bottom;
     const top = pad.getBoundingClientRect().top - 12;
-    if (bottom > top) stage.scrollTop += bottom - top;
+    stage.scrollTop = Math.max(0, stage.scrollTop + bottom - top);
   }, [keypadOpen, active?.row, active?.field]);
 
   const rows = r.mode === "order" ? [] : draftRows(r, value);
+  // The typed entries in reading order, for the keypad's Next.
+  const typedEntries = rows.flatMap((_, i) =>
+    rowShape(r, i).fields.flatMap((f, j) =>
+      f.given === undefined && f.kind !== "choice"
+        ? [{ row: i, field: j }]
+        : [],
+    ),
+  );
+  const nextLabel =
+    active &&
+    typedEntries.findIndex(
+      (e) => e.row === active.row && e.field === active.field,
+    ) <
+      typedEntries.length - 1
+      ? "Next"
+      : "Done";
   const order = r.mode === "order" ? draftOrder(r, value) : [];
   const setEntry = (row: number, field: number, text: string) => {
     if (locked) return;
@@ -362,7 +418,21 @@ export function StructuredWorkInput({
     const input = inputs.current.get(key) ?? null;
     const f = rowShape(r, active.row).fields[active.field]!;
     const current = rows[active.row]?.[active.field] ?? "";
-    if (k === "done") {
+    if (k === "next") {
+      // On to the next typed entry, else close the keypad for Check.
+      const after = typedEntries.findIndex(
+        (e) => e.row === active.row && e.field === active.field,
+      );
+      const next = typedEntries[after + 1];
+      if (next) {
+        const target = `${next.row}:${next.field}`;
+        setActive(next);
+        pendingCaret.current = {
+          key: target,
+          caret: (rows[next.row]?.[next.field] ?? "").length,
+        };
+        return;
+      }
       input?.blur();
       setActive(null);
       return;
@@ -834,7 +904,7 @@ export function StructuredWorkInput({
       data-keypad={keypadOpen ? "" : undefined}
       // Room for the keypad is reserved from the first frame, so opening
       // and closing it never changes the scroll extent under a finger.
-      data-keypad-space={small && keys.length > 0 ? "" : undefined}
+      data-keypad-space={small && typed ? "" : undefined}
       role="group"
       aria-label={spokenMath(r.label)}
     >
@@ -899,33 +969,8 @@ export function StructuredWorkInput({
           aria-label="Math keypad"
           onPointerDown={(event) => event.preventDefault()}
         >
-          {[
-            "7",
-            "8",
-            "9",
-            keys[0],
-            keys[1],
-            "backspace",
-            "4",
-            "5",
-            "6",
-            keys[2],
-            keys[3],
-            keys[4],
-            "1",
-            "2",
-            "3",
-            keys[5],
-            keys[6],
-            keys[7],
-            "0",
-            ".",
-            keys[8],
-            keys[9],
-            keys[10],
-            "done",
-          ].map((k, n) =>
-            k === undefined ? (
+          {keypadCells(keys, digitsOnly).map((k, n) =>
+            k === null ? (
               <span key={`blank-${n}`} className="work-key-blank" />
             ) : (
               <button
@@ -935,16 +980,17 @@ export function StructuredWorkInput({
                 className="work-key"
                 data-key={k}
                 data-variable={/^[a-zA-Z]$/.test(k) ? "" : undefined}
+                data-wide={k === "0" ? "" : undefined}
                 aria-label={
                   k === "backspace"
                     ? "Delete"
-                    : k === "done"
-                      ? "Done"
+                    : k === "next"
+                      ? nextLabel
                       : keyLabel(k)
                 }
                 onClick={() => press(k)}
               >
-                {k === "backspace" ? "⌫" : k === "done" ? "Done" : k}
+                {k === "backspace" ? "⌫" : k === "next" ? nextLabel : k}
               </button>
             ),
           )}
