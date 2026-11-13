@@ -31,6 +31,8 @@ type Existing = {
   classes: string[];
   class_ids: string[];
   org_ids: string[];
+  role_org_ids: string[];
+  historical_school_ids: string[];
   source_metadata: Record<
     string,
     {
@@ -55,6 +57,13 @@ const FROM_PEOPLE = `SELECT p.id,p.given_name,p.family_name,p.display_name,p.ema
     WHERE r.person_id=p.id AND o.kind='school' AND ${activeToday("r", "o")}
     UNION SELECT c.org_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
     WHERE e.person_id=p.id AND o.kind='school' AND ${activeToday("e", "o")}) AS org_ids,
+  ARRAY(SELECT r.org_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+    WHERE r.person_id=p.id AND o.kind='school' AND ${activeToday("r", "o")}
+      AND ((p.learner_id IS NOT NULL AND r.role='student') OR (p.learner_id IS NULL AND r.role<>'student'))) AS role_org_ids,
+  ARRAY(SELECT r.org_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+    WHERE r.person_id=p.id AND o.kind='school'
+    UNION SELECT c.org_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+    WHERE e.person_id=p.id AND o.kind='school') AS historical_school_ids,
   (SELECT jsonb_object_agg(x.sourced_id,x.metadata) FROM amp_external_refs x WHERE x.local_id=p.id AND x.tenant_id=p.tenant_id AND x.source=$2 AND x.kind='person') AS source_metadata
   FROM amp_people p`;
 const fullName = (row: { givenName: string; familyName?: string }) =>
@@ -83,12 +92,7 @@ function differences(
   orgId?: string,
 ): string[] {
   const out: string[] = [];
-  if (
-    row.role !== "student" &&
-    !row.sourceEvidence &&
-    orgId &&
-    !person.org_ids.includes(orgId)
-  )
+  if (!row.sourceEvidence && orgId && !person.role_org_ids.includes(orgId))
     out.push("school membership");
   if (row.gradeLevel !== undefined && row.gradeLevel !== person.grade_level)
     out.push("grade");
@@ -171,11 +175,18 @@ async function unclaimed(
   if (!students.length && !emails.size) return [];
   // These membership IDs are NOT NULL. Uncorrelated sets avoid a repeated
   // membership scan for each person when a new roster has no table statistics.
+  // Name candidates are school-scoped; stable IDs and staff emails retain
+  // tenant-wide lookup so a foreign identity is held instead of duplicated.
   const compact = (
     await db.query(
       `SELECT p.id,p.given_name,p.family_name,p.email,p.identifier,p.learner_id
        FROM amp_people p WHERE p.tenant_id=$1 AND p.deleted_at IS NULL
-       AND (($4::boolean AND p.learner_id IS NOT NULL AND ($5::boolean OR p.identifier IS NULL OR p.identifier='' OR p.identifier=ANY($6::text[])))
+       AND (($4::boolean AND p.learner_id IS NOT NULL AND (p.identifier=ANY($6::text[])
+         OR (($5::boolean OR p.identifier IS NULL OR p.identifier='') AND p.id IN (
+           SELECT r.person_id FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+           WHERE r.org_id=$3 AND ${activeToday("r", "o")}
+           UNION SELECT e.person_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+           JOIN amp_orgs o ON o.id=c.org_id WHERE c.org_id=$3 AND ${activeToday("e", "o")}))))
          OR (p.learner_id IS NULL AND lower(p.email)=ANY($7::text[])))
        AND (p.id NOT IN (SELECT local_id FROM amp_external_refs WHERE tenant_id=$1 AND source=$2 AND kind='person')
          OR ($2='csv' AND p.id IN (SELECT person_id FROM amp_org_roles WHERE org_id=$3 AND end_on IS NULL)))`,
@@ -230,10 +241,61 @@ function matcher(
   taken = new Set<string>(refs.values()),
 ) {
   const student = (person: Existing) => !!person.learner_id;
+  const staffByEmail = new Map<string, Existing>();
+  const studentsByIdentifier = new Map<string, Existing[]>();
+  const studentsByName = new Map<string, Existing[]>();
+  const append = (
+    index: Map<string, Existing[]>,
+    key: string,
+    person: Existing,
+  ) => {
+    const bucket = index.get(key);
+    if (bucket) bucket.push(person);
+    else index.set(key, [person]);
+  };
+  // Hydration is bounded by candidate identities. Index that candidate set once
+  // for the preview, while retaining the shared, changing set of claimed IDs.
+  for (const person of loose) {
+    if (!student(person)) {
+      const email = person.email?.toLowerCase();
+      if (email && !staffByEmail.has(email)) staffByEmail.set(email, person);
+    } else {
+      if (person.identifier)
+        append(studentsByIdentifier, person.identifier, person);
+      if (
+        person.org_ids.includes(orgId) &&
+        (!scope || person.class_ids.includes(scope.classId))
+      )
+        append(studentsByName, personName(person), person);
+    }
+  }
+  const candidates = (
+    bucket: Existing[] | undefined,
+    needsMissingIdentifier = false,
+  ) => {
+    const matches: Existing[] = [];
+    for (const person of bucket ?? []) {
+      if (taken.has(person.id) || (needsMissingIdentifier && person.identifier))
+        continue;
+      matches.push(person);
+      // Two matches prove ambiguity; materializing a whole common-name bucket
+      // for every input row adds work without changing that decision.
+      if (matches.length === 2) break;
+    }
+    return matches;
+  };
+  // An ended roster can return to its school. It cannot make a live historical
+  // record available to other schools that happen to import the same ID/email.
+  const belongsToSchool = (person: Existing) =>
+    person.org_ids.includes(orgId) ||
+    (!person.org_ids.length && person.historical_school_ids.includes(orgId));
   return (row: RosterRow): Match => {
     const refId = refs.get(row.sourcedId);
-    const person = refId ? people.get(refId) : undefined;
-    if (person && person.org_ids.length > 0 && !person.org_ids.includes(orgId))
+    const referenced = refId ? people.get(refId) : undefined;
+    // A tombstone never supplies an identity, even when its old class scope
+    // differs. A returning student receives a new person and learner record.
+    const person = referenced?.deleted_at ? undefined : referenced;
+    if (person && !belongsToSchool(person))
       return { person: null, held: "outside_school" };
     if (person && scope && !person.class_ids.includes(scope.classId))
       return { person: null, held: "outside_class" };
@@ -249,27 +311,17 @@ function matcher(
         ? { person }
         : { person, held: "name_changed" };
     if (row.role !== "student") {
-      const staff = row.email
-        ? loose.find(
-            (other) =>
-              !student(other) && other.email?.toLowerCase() === row.email,
-          )
-        : undefined;
-      if (staff && staff.org_ids.length > 0 && !staff.org_ids.includes(orgId))
+      const staff = row.email ? staffByEmail.get(row.email) : undefined;
+      if (staff && !belongsToSchool(staff))
         return { person: null, held: "outside_school" };
       return { person: staff ?? null };
     }
     if (row.identifier) {
-      const matches = loose.filter(
-        (other) =>
-          student(other) &&
-          !taken.has(other.id) &&
-          other.identifier === row.identifier,
-      );
+      const matches = candidates(studentsByIdentifier.get(row.identifier));
       if (matches.length > 1) return { person: null, held: "ambiguous_match" };
       const same = matches[0];
       if (same) {
-        if (same.org_ids.length > 0 && !same.org_ids.includes(orgId))
+        if (!belongsToSchool(same))
           return { person: null, held: "outside_school" };
         if (scope && !same.class_ids.includes(scope.classId))
           return { person: null, held: "outside_class" };
@@ -279,14 +331,9 @@ function matcher(
           : { person: same, held: "name_changed" };
       }
     }
-    const matches = loose.filter(
-      (other) =>
-        student(other) &&
-        !taken.has(other.id) &&
-        other.org_ids.includes(orgId) &&
-        (!scope || other.class_ids.includes(scope.classId)) &&
-        personName(other) === fullName(row) &&
-        (!row.identifier || !other.identifier),
+    const matches = candidates(
+      studentsByName.get(fullName(row)),
+      !!row.identifier,
     );
     if (matches.length > 1) return { person: null, held: "ambiguous_match" };
     const named = matches[0];
@@ -1012,7 +1059,7 @@ async function updateExisting(
   if (!row.sourceEvidence || scope)
     for (const classId of classes)
       await repo.enroll(client, classId, person.id, role, today);
-  if (!isStudent && !row.sourceEvidence)
+  if (!row.sourceEvidence && changes.includes("school membership"))
     await client.query(
       `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,$4,$5)
        ON CONFLICT (person_id,org_id,role) WHERE end_on IS NULL DO NOTHING`,

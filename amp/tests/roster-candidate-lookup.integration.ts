@@ -219,6 +219,77 @@ test(
     );
 
     await t.test(
+      "mixed identity buckets retain ambiguity and each earlier row's claimed student",
+      async () => {
+        const orgId = await school();
+        const identified = await repo.provisionStudent(orgId, {
+          givenName: "Shared",
+          familyName: "Example",
+          identifier: "existing-id",
+        });
+        const named = await repo.provisionStudent(orgId, {
+          givenName: "Shared",
+          familyName: "Example",
+        });
+        for (const givenName of ["Duplicate", "Different"])
+          await repo.provisionStudent(orgId, {
+            givenName,
+            familyName: "Example",
+            identifier: "duplicate-id",
+          });
+        const staff = await repo.addStaff({
+          orgId,
+          role: "teacher",
+          givenName: "Shared",
+          familyName: "Example",
+          email: "shared@example.test",
+        });
+        const classes = (name: string) => [
+          { sourcedId: `name:${nameKey(name)}`, name, courseBands: [] },
+        ];
+        const rows = [
+          row(1, "Shared", { identifier: "existing-id" }),
+          row(2, "SHARED", { classes: classes("Class Two") }),
+          row(3, "Shared", { classes: classes("Class Three") }),
+          row(4, "Duplicate", { identifier: "duplicate-id" }),
+          row(5, "Shared", { role: "teacher", email: "shared@example.test" }),
+        ];
+        const preview = await planRoster(repo, orgId, { source: "csv", rows });
+        assert.deepEqual(
+          preview.map(({ status, reason }) => ({
+            status,
+            ...(reason ? { reason } : {}),
+          })),
+          [
+            { status: "unchanged" },
+            { status: "held", reason: "possible_match" },
+            { status: "new" },
+            { status: "held", reason: "ambiguous_match" },
+            { status: "unchanged" },
+          ],
+        );
+        assert.deepEqual(
+          (await apply(orgId, rows, { "2": "same", "4": "same" })).results.map(
+            (result) => result.status,
+          ),
+          ["updated", "updated", "created", "held", "updated"],
+        );
+        assert.equal(await ref(orgId, rows[0]!.sourcedId), identified.personId);
+        assert.equal(await ref(orgId, rows[1]!.sourcedId), named.personId);
+        assert.notEqual(await ref(orgId, rows[2]!.sourcedId), named.personId);
+        assert.notEqual(
+          await ref(orgId, rows[2]!.sourcedId),
+          identified.personId,
+        );
+        assert.equal(await ref(orgId, rows[4]!.sourcedId), staff.personId);
+        assert.deepEqual(
+          (await apply(orgId, rows)).results.map((result) => result.status),
+          ["unchanged", "unchanged", "unchanged", "held", "unchanged"],
+        );
+      },
+    );
+
+    await t.test(
       "concurrent source claims, orphaned references, and row failures are retriable",
       async () => {
         const orgId = await school();
