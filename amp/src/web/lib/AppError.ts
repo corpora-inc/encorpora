@@ -51,3 +51,31 @@ export function standing<T>(query: {
 }): T | null | undefined {
   return query.isError && refused(query.error) ? null : query.data;
 }
+
+/** Refusals that stand, by query key: a refusal stays the answer until a
+ * successful read says otherwise (CP-3 r8). */
+const refusals = new Map<string, unknown>();
+
+/** Reads `read` for the resource at `key`, keeping a refusal: once the
+ * server refused it (401, 403, 404), a later passing failure (a 503, a
+ * dropped connection) fails with that refusal again, so cached data the
+ * refusal cleared never comes back on a transient error (`standing`). Only
+ * a successful read clears it. Keys carry their session, so a new session
+ * starts clean. */
+export async function keepRefusal<T>(
+  key: readonly unknown[],
+  read: () => Promise<T>,
+): Promise<T> {
+  const id = JSON.stringify(key);
+  try {
+    const value = await read();
+    refusals.delete(id);
+    return value;
+  } catch (error) {
+    if (refused(error)) refusals.set(id, error);
+    else if (refusals.has(id) && !aborted(error)) throw refusals.get(id);
+    throw error;
+  }
+}
+const aborted = (error: unknown) =>
+  error instanceof DOMException && error.name === "AbortError";

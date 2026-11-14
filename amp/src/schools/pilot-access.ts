@@ -150,7 +150,7 @@ export async function classRecheckAt(
 ): Promise<string | null> {
   const row = (
     await db.query<{ exempt: boolean; next: Date | null }>(
-      classRecheckQuery(classId, accountId),
+      await classRecheckQuery(db, classId, accountId),
     )
   ).rows[0];
   if (!row || row.exempt !== false || !row.next) return null;
@@ -165,8 +165,22 @@ export async function classRecheckAt(
  * class's org path: its work grows with the roster and those people's own
  * enrollments, roles, seats and grants, never with the rest of the
  * district. */
-export function classRecheckQuery(classId: string, accountId: string | null) {
+export async function classRecheckQuery(
+  db: Pick<PoolClient, "query">,
+  classId: string,
+  accountId: string | null,
+) {
   const day = localDayStart("dz.d", "dz.tz");
+  // The class's org path, read first (in the caller's snapshot), so its
+  // licenses are planned for those very orgs: an org's own licenses by its
+  // index, never a scan of every license in the district.
+  const path =
+    ((
+      await db.query<{ path: string[] }>(
+        "SELECT o.path FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1",
+        [classId],
+      )
+    ).rows[0]?.path as string[] | undefined) ?? [];
   return {
     text: `WITH klass AS (
          SELECT c.id,c.session_id,o.path,o.timezone,o.demo OR o.kind='family' AS exempt
@@ -189,12 +203,27 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
            JOIN amp_orgs o ON o.id=c.org_id
            WHERE e.person_id=u.person AND e.role='student'
              AND (e.end_on IS NULL OR e.end_on>=current_date-2) OFFSET 0) x),
+       -- Each student role, with the zones of that student's own classes
+       -- (a pilot reads the role in its class's zone), read per person:
+       -- never a join of one person's rows against everyone's.
        roles AS MATERIALIZED (
          SELECT x.* FROM pupils u CROSS JOIN LATERAL (
-           SELECT r.person_id AS person,r.begin_on,r.end_on,o.timezone
+           SELECT r.person_id AS person,r.begin_on,r.end_on,o.timezone,
+             ARRAY(SELECT DISTINCT co.timezone FROM amp_enrollments e2
+               JOIN amp_classes c2 ON c2.id=e2.class_id AND c2.archived_at IS NULL
+               JOIN amp_orgs co ON co.id=c2.org_id
+               WHERE e2.person_id=u.person AND e2.role='student'
+                 AND (e2.end_on IS NULL OR e2.end_on>=current_date-2)) AS class_zones
            FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
            WHERE r.person_id=u.person AND r.role='student'
              AND (r.end_on IS NULL OR r.end_on>=current_date-2) OFFSET 0) x),
+       -- The pilots of the classes the students are in, by each class.
+       pilots AS MATERIALIZED (
+         SELECT DISTINCT t.id,t.started_at,t.ends_at,t.grace_ends_at
+         FROM (SELECT DISTINCT class FROM placed) e CROSS JOIN LATERAL (
+           SELECT t.id,t.started_at,t.ends_at,t.grace_ends_at FROM amp_class_pilots cp
+           JOIN amp_teacher_pilots t ON t.id=cp.pilot_id
+           WHERE cp.class_id=e.class OFFSET 0) t),
        mine AS (
          SELECT r.id,r.role,r.begin_on,r.end_on,o.timezone FROM amp_people me
          JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k
@@ -207,7 +236,7 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
        dz(d,tz) AS (
          SELECT x,e.timezone FROM placed e, LATERAL unnest(ARRAY[e.begin_on,e.end_on]) x
          UNION SELECT x,r.timezone FROM roles r, LATERAL unnest(ARRAY[r.begin_on,r.end_on]) x
-         UNION SELECT x,e.timezone FROM roles r JOIN placed e ON e.person=r.person,
+         UNION SELECT x,z FROM roles r, unnest(r.class_zones) z,
            LATERAL unnest(ARRAY[r.begin_on,r.end_on]) x
          UNION SELECT x,m.timezone FROM mine m, LATERAL unnest(ARRAY[m.begin_on,m.end_on]) x
          UNION SELECT x,k.timezone FROM mine m, klass k,
@@ -220,9 +249,10 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
            JOIN amp_academic_sessions s ON s.id=k.session_id),
        times(t) AS (
          SELECT ${day} FROM dz WHERE dz.d IS NOT NULL AND dz.d>=current_date-2
-         UNION ALL SELECT x FROM amp_school_licenses l, klass k,
+         -- Licenses of each org on the class's path.
+         UNION ALL SELECT x FROM amp_school_licenses l,
            LATERAL unnest(ARRAY[l.starts_at,l.ends_at]) x
-           WHERE l.org_id=ANY(k.path) AND l.status='active'
+           WHERE l.org_id=ANY($3::uuid[]) AND l.status='active'
          -- Only a seat that can be valid: open, on an active license.
          UNION ALL SELECT x FROM pupils u CROSS JOIN LATERAL (
              SELECT l.starts_at,l.ends_at FROM amp_seats s
@@ -233,13 +263,10 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
              SELECT g.starts_at,g.ends_at FROM amp_grants g
              WHERE g.learner_id=u.learner AND g.status='active' OFFSET 0) g,
            LATERAL unnest(ARRAY[g.starts_at,g.ends_at]) x
-         UNION ALL SELECT x FROM (SELECT DISTINCT cp.pilot_id FROM placed e
-             JOIN amp_class_pilots cp ON cp.class_id=e.class) used
-           JOIN amp_teacher_pilots t ON t.id=used.pilot_id,
+         UNION ALL SELECT x FROM pilots t,
            LATERAL unnest(ARRAY[t.started_at,t.ends_at,t.grace_ends_at]) x
-         UNION ALL SELECT x.until_at FROM (SELECT DISTINCT cp.pilot_id FROM placed e
-             JOIN amp_class_pilots cp ON cp.class_id=e.class) used
-           JOIN amp_pilot_extensions x ON x.pilot_id=used.pilot_id
+         UNION ALL SELECT x.until_at FROM pilots t CROSS JOIN LATERAL (
+             SELECT x.until_at FROM amp_pilot_extensions x WHERE x.pilot_id=t.id OFFSET 0) x
          -- A Clever administrator's authority ends at its bootstrap's end:
          -- the same membership amp_school_role_current reads (owned, an
          -- admin role), found by the owned (kind,local_id) index.
@@ -248,7 +275,7 @@ export function classRecheckQuery(classId: string, accountId: string | null) {
            WHERE mine.role='admin' AND m.bootstrap_valid_until IS NOT NULL)
        SELECT (SELECT exempt FROM klass) AS exempt,
          (SELECT min(t) FROM times WHERE t>now()) AS next`,
-    values: [classId, accountId],
+    values: [classId, accountId, path],
   };
 }
 
