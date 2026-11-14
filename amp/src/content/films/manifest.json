@@ -3280,6 +3280,28 @@
       }
     ]
   },
+  "pay-exact-coins": {
+    "id": "pay-exact-coins--sp",
+    "version": "439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020",
+    "title": "Exact payment, fewest coins",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/audio.m4a",
+    "duration": 157.03997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/audio.m4a",
+        "version": "439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020",
+        "duration": 157.03997732426305
+      }
+    ]
+  },
   "percent-amounts-blanks": {
     "id": "percent-amounts-blanks",
     "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
