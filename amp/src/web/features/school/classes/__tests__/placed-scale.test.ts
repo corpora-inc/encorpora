@@ -26,8 +26,6 @@ test("the map fits its measured learners; one not started never flattens them", 
 });
 
 test("before anyone has answered, the whole K to Precalc scale", () => {
-  expect(placedScale([unstarted("a"), unstarted("b")], 4)).toEqual(
-    WHOLE_SCALE,
-  );
+  expect(placedScale([unstarted("a"), unstarted("b")], 4)).toEqual(WHOLE_SCALE);
   expect(placedScale([], 4)).toEqual(WHOLE_SCALE);
 });

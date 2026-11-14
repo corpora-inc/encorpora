@@ -51,35 +51,57 @@ const browser = await chromium.launch({
 });
 
 const LEARNER = "parent-one-a";
-// One film of two problem types, every type filmed, and none.
-const oneFilm = skills.find((s) => s.id === "count-to-20")!;
-const manyFilms = skills.find((s) => s.id === "line-plots")!;
-const noFilms = skills.find((s) => s.id === "volume-cubes")!;
 const typesOf = (skill: string) => templates.filter((t) => t.skillId === skill);
 const filmsOf = (skill: string) =>
   typesOf(skill).filter((t) => lessonFilms[t.id]);
 /** A skill's distinct films: one film can teach several of its types. */
 const distinctFilms = (skill: string) =>
   new Set(filmsOf(skill).map((t) => lessonFilms[t.id]!.id)).size;
-assert.equal(filmsOf(oneFilm.id).length, 1);
-assert(typesOf(oneFilm.id).length > 1);
-assert(distinctFilms(manyFilms.id) >= 3);
-assert.equal(filmsOf(noFilms.id).length, 0);
+/** The first skill, in the catalog's order, that is a case to prove: picked
+ * from the catalogue, so publishing a film never breaks the proof. */
+const first = (what: string, test: (skill: string) => boolean) => {
+  const found = skills.find((s) => test(s.id));
+  assert(found, `No skill with ${what} in the catalogue`);
+  return found;
+};
+// One film among several problem types, several distinct films, and none.
+const oneFilm = first(
+  "one film among several types",
+  (s) => filmsOf(s).length === 1 && typesOf(s).length > 1,
+);
+const manyFilms = first("three distinct films", (s) => distinctFilms(s) >= 3);
+const noFilms = first(
+  "no film",
+  (s) => typesOf(s).length > 0 && filmsOf(s).length === 0,
+);
 const filmed = filmsOf(oneFilm.id)[0]!.id;
+const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
 // One film shared by several problem types.
-const sharedFilm = skills.find((s) => s.id === "name-shapes")!;
-assert(filmsOf(sharedFilm.id).length > distinctFilms(sharedFilm.id));
+const sharedFilm = first(
+  "a shared film",
+  (s) => filmsOf(s).length > distinctFilms(s),
+);
 // A filmed problem type whose title wraps on a phone.
-const longTitle = templates.find((t) => t.id === "grouped-both-sides-steps")!;
-assert(lessonFilms[longTitle.id] && longTitle.title.length > 60);
+const longTitle = templates.find(
+  (t) => lessonFilms[t.id] && t.title.length > 70,
+)!;
+assert(longTitle, "No filmed problem type with a long title");
 // Skills far down the pathway, a phone's several screens from its top.
 const farSkill = skills.find((s) => s.id === "similarity-theorems")!;
 const otherFar = skills.find((s) => s.id === "nonlinear-systems")!;
-const unfilmed = typesOf(oneFilm.id).find((t) => !lessonFilms[t.id])!.id;
+console.log(
+  `Cases: one film ${oneFilm.id}, several ${manyFilms.id}, none ${noFilms.id}, shared ${sharedFilm.id}, long title ${longTitle.id}`,
+);
 
 async function fixture(
   page: Page,
-  { holdLessons = 0, holdFrontier = 0, holdCatalog = 0 } = {},
+  {
+    holdLessons = 0,
+    holdFrontier = 0,
+    holdCatalog = 0,
+    catalogGate = Promise.resolve(),
+    lessonGate = Promise.resolve(),
+  } = {},
 ) {
   await page.addInitScript((learner) => {
     localStorage.setItem(
@@ -91,6 +113,7 @@ async function fixture(
     const pathname = new URL(route.request().url()).pathname;
     if (pathname.endsWith("/catalog")) {
       if (holdCatalog) await new Promise((r) => setTimeout(r, holdCatalog));
+      await catalogGate;
       return route.fulfill({
         json: {
           skills,
@@ -137,6 +160,7 @@ async function fixture(
       return route.fulfill({ json: defaultPracticeSettings() });
     if (pathname.includes("/problem-lessons/")) {
       if (holdLessons) await new Promise((r) => setTimeout(r, holdLessons));
+      await lessonGate;
       return route.fulfill({
         json: {
           lesson: problemLesson(pathname.split("/").pop()!, "flat-proof"),
@@ -224,6 +248,8 @@ for (const width of widths)
       viewport: { width, height: width >= 768 ? 900 : 844 },
       colorScheme,
     });
+    // A loaded machine (several builders at once) is slow, not broken.
+    context.setDefaultTimeout(90_000);
     const page = await context.newPage();
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -242,6 +268,12 @@ for (const width of widths)
       `${tag}: the level's arrival never moves a skill in the pathway`,
     );
     assert.equal(await page.locator("canvas").count(), 0, `${tag}: canvas`);
+    // No dead option: without WebGL there is no choice of view.
+    assert.equal(
+      await page.getByRole("radiogroup", { name: "Map view" }).count(),
+      0,
+      `${tag}: no view toggle without WebGL`,
+    );
     assert.equal(await page.locator(".pathways-camera").count(), 0);
     assert.doesNotMatch(
       await page.evaluate(() =>
@@ -457,36 +489,66 @@ for (const width of widths)
     );
     await cold.close();
 
-    // A cold link to a lesson whose title wraps, its catalog and lesson both
-    // slow: the head is drawn whole once its title is known, so Watch is
-    // where it first appears (Astra, CP-6 round 2).
-    const wrapping = await context.newPage();
-    await fixture(wrapping, { holdCatalog: 1500, holdLessons: 1500 });
-    await wrapping.goto(`${origin}/pathways?open=lesson:${longTitle.id}`);
-    const longDialog = wrapping.getByRole("dialog", {
-      name: "Explore a problem type",
-    });
-    const longWatch = longDialog.getByRole("link", { name: /^Watch lesson/ });
-    await longWatch.waitFor();
-    const first = (await longWatch.boundingBox())!;
-    const longHeading = longDialog.getByRole("heading", {
-      name: longTitle.title,
-      exact: true,
-    });
-    assert(
-      (await longHeading.boundingBox())!.height > 40 || width >= 1280,
-      `${tag}: the title wraps`,
-    );
-    await longDialog.locator(".problem-lesson").waitFor();
-    await longDialog
-      .getByRole("link", { name: "Try this problem type", exact: true })
-      .waitFor();
-    assert.deepEqual(
-      await longWatch.boundingBox(),
-      first,
-      `${tag}: Watch never moves under a wrapping title`,
-    );
-    await wrapping.close();
+    // A cold link to a lesson whose title wraps (Astra, CP-6 rounds 2 and
+    // 3): the catalog arrives first, the lesson later. The head, the body
+    // and the wait are in their final places from the first frame.
+    for (const type of [longTitle, templates.find((t) => t.id === filmed)!]) {
+      const wrapping = await context.newPage();
+      // Each response waits until the test lets it go, however slow the
+      // machine.
+      let releaseCatalog!: () => void;
+      let releaseLesson!: () => void;
+      await fixture(wrapping, {
+        catalogGate: new Promise<void>((r) => (releaseCatalog = r)),
+        lessonGate: new Promise<void>((r) => (releaseLesson = r)),
+      });
+      await wrapping.goto(`${origin}/pathways?open=lesson:${type.id}`);
+      const longDialog = wrapping.getByRole("dialog", {
+        name: "Explore a problem type",
+      });
+      const parts = async () => {
+        const at = async (selector: string) => {
+          const el = longDialog.locator(selector).first();
+          return (await el.count()) ? el.boundingBox() : null;
+        };
+        return {
+          title: await at("h2:not([id])"),
+          watch: await at("[data-film-link]"),
+          wait: await at("[data-layer-wait]"),
+        };
+      };
+      await longDialog.waitFor();
+      const first = await parts();
+      // A wait that is missing is the bug: keep its picture.
+      if (!first.wait) await shot(wrapping, `missing-wait-${tag}`);
+      assert(
+        first.title && first.watch && first.wait,
+        `${tag}: all there at once ${JSON.stringify(first)}`,
+      );
+      if (type === longTitle && width < 1280)
+        assert(first.title.height > 40, `${tag}: the title wraps`);
+      // The catalog is in; the lesson is still on its way.
+      const catalogIn = wrapping.waitForResponse((r) =>
+        r.url().endsWith("/api/v1/catalog"),
+      );
+      releaseCatalog();
+      await catalogIn;
+      await wrapping.waitForTimeout(500);
+      assert.deepEqual(
+        await parts(),
+        first,
+        `${tag}: nothing moves (${type.id})`,
+      );
+      releaseLesson();
+      await longDialog.locator(".problem-lesson").waitFor();
+      const done = await parts();
+      assert.deepEqual(
+        { title: done.title, watch: done.watch },
+        { title: first.title, watch: first.watch },
+        `${tag}: the head holds when the lesson lands (${type.id})`,
+      );
+      await wrapping.close();
+    }
 
     // A film shared by several problem types: one card, a glyph on each row.
     const shared = await context.newPage();
@@ -567,6 +629,90 @@ for (const width of widths)
     console.log(`${tag}: passed`);
   }
 await browser.close();
+
+// Q-212: Grades | 3D, where WebGL is there. Grades by default; the choice is
+// in the address and remembered on the device; the map keeps its size; a
+// skill's sheet stays open across a switch; context loss leaves no toggle.
+const glBrowser = await chromium.launch();
+for (const width of [390, 1280]) {
+  const tag = `${width}-toggle`;
+  const context = await glBrowser.newContext({
+    viewport: { width, height: width >= 768 ? 900 : 844 },
+  });
+  context.setDefaultTimeout(90_000);
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await fixture(page);
+  await page.goto(`${origin}/pathways`);
+  const toggle = page.getByRole("radiogroup", { name: "Map view" });
+  await toggle.waitFor();
+  const grades = toggle.getByRole("radio", { name: "Grades" });
+  const threeD = toggle.getByRole("radio", { name: "3D" });
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await page.locator("canvas").count(), 0, `${tag}: grades first`);
+  for (const radio of [grades, threeD])
+    assert((await radio.boundingBox())!.height >= 44, `${tag}: 44 px target`);
+  const area = await page.locator(".pathways-workspace").boundingBox();
+  await shot(page, `q212-grades-${tag}`);
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.match(page.url(), /[?&]view=3d\b/, `${tag}: the address says 3D`);
+  assert.equal(await page.locator(".pathways-plan").count(), 0);
+  assert.deepEqual(
+    await page.locator(".pathways-workspace").boundingBox(),
+    area,
+    `${tag}: the map keeps its size`,
+  );
+  await noOverflow(page, `${tag} 3D`);
+  await page.waitForTimeout(600);
+  await shot(page, `q212-3d-${tag}`);
+  // A refresh, and a fresh visit on this device, keep 3D.
+  await page.reload();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.goto(`${origin}/pathways`);
+  await page.locator(".pathways-canvas canvas").waitFor();
+  assert.equal(await threeD.getAttribute("aria-checked"), "true");
+  // The address wins over the device's choice, and is shareable.
+  await page.goto(`${origin}/pathways?view=grades`);
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await grades.getAttribute("aria-checked"), "true");
+  // A skill open over either view stays open, centred under it.
+  await page.goto(`${origin}/pathways?view=grades&open=skill:${farSkill.id}`);
+  const heading = page.getByRole("heading", {
+    name: farSkill.title,
+    exact: true,
+  });
+  await heading.waitFor();
+  await page.goto(`${origin}/pathways?view=3d&open=skill:${farSkill.id}`);
+  await heading.waitFor();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page.keyboard.press("Escape");
+  await heading.waitFor({ state: "detached" });
+  await grades.click();
+  await page.locator(".pathways-plan").waitFor();
+  assert.match(page.url(), /[?&]view=grades\b/);
+  assert.deepEqual(
+    await page.locator(".pathways-workspace").boundingBox(),
+    area,
+    `${tag}: the map keeps its size back in grades`,
+  );
+  // A context lost in 3D: the grades view, and no toggle left.
+  await threeD.click();
+  await page.locator(".pathways-canvas canvas").waitFor();
+  await page
+    .locator(".pathways-canvas canvas")
+    .evaluate((el) =>
+      el.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
+    );
+  await page.locator(".pathways-plan").waitFor();
+  assert.equal(await toggle.count(), 0, `${tag}: no toggle after a lost map`);
+  assert.deepEqual(errors, [], `${tag}: page errors`);
+  await context.close();
+  console.log(`${tag}: passed`);
+}
+await glBrowser.close();
 await vite.close();
 console.log(
   "Pathways flat pathway, lesson head and skill films: every width and theme passed.",

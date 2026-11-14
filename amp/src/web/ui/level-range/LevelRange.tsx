@@ -385,73 +385,69 @@ function AreaRow({
   point: { enter: (id: string) => void; leave: (id: string) => void };
 }) {
   const rowClass = `${styles.row} ${strong ? styles.rowStrong : ""}`;
-  if (!area.estimate)
-    return (
-      <li
-        className={rowClass}
-        data-strand={area.id || undefined}
-        aria-label={`${area.label}: ${notStarted ?? words.notYet}`}
-        data-not-started={notStarted ? "" : undefined}
-      >
-        <span className={styles.rowName} aria-hidden="true">
-          {area.label}
-        </span>
-        <span className={styles.rowBar} aria-hidden="true">
-          {notStarted ? (
-            <LevelNotStarted
-              label={notStarted}
-              size={strong ? "large" : "regular"}
-            />
-          ) : (
-            <LevelBar
-              estimate={null}
-              scale={scale}
-              size={strong ? "large" : "regular"}
-              moving={moving}
-            />
-          )}
-        </span>
-        <span className={styles.rowNumbers} aria-hidden="true">
-          {numbers && !notStarted ? "Not yet" : ""}
-        </span>
-      </li>
-    );
-  const [from, to] = likelyRange(area.estimate);
-  const label = numbers
-    ? words.row(
-        area.label,
-        gradeName(area.estimate.level),
-        gradeName(from),
-        gradeName(to),
-      )
-    : words.rowUnnumbered(area.label);
+  const size = strong ? "large" : "regular";
+  const estimate = area.estimate;
+  const range = estimate ? likelyRange(estimate) : null;
+  const label =
+    !estimate || !range
+      ? `${area.label}: ${notStarted ?? words.notYet}`
+      : numbers
+        ? words.row(
+            area.label,
+            gradeName(estimate.level),
+            gradeName(range[0]),
+            gradeName(range[1]),
+          )
+        : words.rowUnnumbered(area.label);
+  // One shape before and after the first answer, so the same bar element
+  // glides from the whole scale to the estimate (CP-5 r2 #2).
   const parts = (
     <>
       <span className={styles.rowName} aria-hidden="true">
         {area.label}
       </span>
       <span className={styles.rowBar} aria-hidden="true">
-        <LevelBar
-          estimate={area.estimate}
-          scale={scale}
-          band={grade}
-          estimated={area.estimated}
-          size={strong ? "large" : "regular"}
-        />
+        {!estimate && notStarted ? (
+          <LevelNotStarted label={notStarted} size={size} />
+        ) : (
+          <LevelBar
+            estimate={estimate}
+            scale={scale}
+            band={estimate ? grade : null}
+            estimated={!!estimate && area.estimated}
+            size={size}
+            moving={!estimate && moving}
+          />
+        )}
       </span>
       <span className={styles.rowNumbers} aria-hidden="true">
         {!numbers
           ? ""
-          : area.estimated
-            ? strong
-              ? "Starting"
+          : !estimate || !range
+            ? notStarted
+              ? ""
               : "Not yet"
-            : decimals
-              ? `${from.toFixed(1)}–${to.toFixed(1)}`
-              : ""}
+            : area.estimated
+              ? strong
+                ? "Starting"
+                : "Not yet"
+              : decimals
+                ? `${range[0].toFixed(1)}–${range[1].toFixed(1)}`
+                : ""}
       </span>
     </>
   );
+  if (!estimate)
+    return (
+      <li
+        className={rowClass}
+        data-strand={area.id || undefined}
+        aria-label={label}
+        data-not-started={notStarted ? "" : undefined}
+      >
+        {parts}
+      </li>
+    );
   if (rowLink) {
     const id = area.id || "overall";
     return (

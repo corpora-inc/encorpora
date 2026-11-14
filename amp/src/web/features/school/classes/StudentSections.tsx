@@ -1,5 +1,7 @@
 import type { Entity } from "../../../nav/entities";
 import { Link } from "@tanstack/react-router";
+import { useRef } from "react";
+import { measured } from "../../../../learning/level-check";
 import type { StudentRecordResponse } from "../../../../schools/teacher-contracts";
 import { Badge } from "../../../ui/Badge";
 import { buttonClass } from "../../../ui/Button";
@@ -41,6 +43,10 @@ export function StudentSections({
   workPath?: (attempt: string) => string | Entity;
 }) {
   const first = data.student.first;
+  // Opened before the first answer: the level stays held, so its bar takes
+  // the first estimate in place (CP-5 r2 #2).
+  const openedUnmeasured = useRef<boolean | null>(null);
+  openedUnmeasured.current ??= !(data.level && measured(data.level.overall));
   const weeks = data.weeks.filter((week) => week.minutes > 0);
   const minutes = weeks.reduce((sum, week) => sum + week.minutes, 0);
   return (
@@ -54,6 +60,7 @@ export function StudentSections({
           record={data}
           empty={`We’ll find ${first}’s level in a few minutes of practice.`}
           openAreas
+          holdFirst={openedUnmeasured.current}
         />
       </section>
       {data.grades.length > 0 && (

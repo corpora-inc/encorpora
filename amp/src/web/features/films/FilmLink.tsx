@@ -1,6 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import type { LessonFilm } from "../../../content/lesson-films";
-import { buttonClass } from "../../ui/Button";
 
 /** A film's length as a player shows it: 1:30. */
 export function filmDuration(seconds: number) {
@@ -27,23 +26,22 @@ export function FilmLink({
   film,
   onOpen,
   problemId,
-  button = false,
+  button,
 }: {
   templateId: string;
   film: Pick<LessonFilm, "duration" | "teacher">;
   onOpen?: () => void;
   /** The problem the lesson was opened for: the film is help for it. */
   problemId?: string;
-  button?: boolean;
+  /** A secondary button in an action row: its class, from the caller that
+   * draws the row (ui/Button's buttonClass). Passed in, so this module, which
+   * lessons render under Node too, imports no stylesheet. */
+  button?: string;
 }) {
   const from = useLocation({ select: (location) => location.href });
   return (
     <Link
-      className={
-        button
-          ? buttonClass("secondary", "lesson-film-button")
-          : "lesson-film-link"
-      }
+      className={button ?? "lesson-film-link"}
       to="/lessons/$templateId/watch"
       params={{ templateId }}
       search={{ from, ...(problemId ? { problem: problemId } : {}) }}

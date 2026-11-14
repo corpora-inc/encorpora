@@ -1,7 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useSearch } from "@tanstack/react-router";
-import { useLayoutEffect, useState, type ReactNode } from "react";
-import { LessonDialog } from "../features/pathways/LessonDialog";
+import {
+  lazy,
+  Suspense,
+  useLayoutEffect,
+  useState,
+  type ReactNode,
+} from "react";
+// A lesson is its own chunk, with every problem type's title: it opens with
+// its head laid out (features/pathways/LessonDialog.tsx).
+const LessonDialog = lazy(() => import("../features/pathways/LessonDialog"));
 import { StudentLayer } from "../features/school/classes/StudentLayer";
 import { studentRecordOptions } from "../features/school/classes/teacher-api";
 import {
@@ -43,8 +51,9 @@ export function LayerHost({
   allow?: (entity: Entity) => boolean;
   /** Own practice: whose map this is (none for a visitor). */
   learner?: string;
-  /** Above a lesson: what this page offers with it (try this problem type). */
-  lessonActions?: (lesson: string) => ReactNode;
+  /** Above a lesson: what this page offers with it (try this problem type),
+   * given the type's skill. */
+  lessonActions?: (lesson: string, skill?: string) => ReactNode;
   /** In a skill: what this page offers with it (try a problem). */
   skillActions?: (skill: string) => ReactNode;
 }) {
@@ -100,7 +109,7 @@ function Layer({
   org?: string;
   learner?: string;
   close: () => void;
-  lessonActions?: (lesson: string) => ReactNode;
+  lessonActions?: (lesson: string, skill?: string) => ReactNode;
   skillActions?: (skill: string) => ReactNode;
   area?: AreaSource;
 }) {
@@ -145,17 +154,20 @@ function Layer({
     }
     case "lesson":
       return (
-        <LessonDialog
-          lesson={entity.id}
-          onClose={close}
-          // The recovery's way back names where closing goes: the layer
-          // under it, else the page (in own practice, the map).
-          backLabel={back ? `Back to ${back}` : org ? "Back" : undefined}
-          back={back}
-          aboveLayers
-        >
-          {lessonActions?.(entity.id)}
-        </LessonDialog>
+        <Suspense fallback={null}>
+          <LessonDialog
+            lesson={entity.id}
+            onClose={close}
+            // The recovery's way back names where closing goes: the layer
+            // under it, else the page (in own practice, the map).
+            backLabel={back ? `Back to ${back}` : org ? "Back" : undefined}
+            back={back}
+            aboveLayers
+            actions={
+              lessonActions && ((skill) => lessonActions(entity.id, skill))
+            }
+          />
+        </Suspense>
       );
     case "area": {
       // Opened from a student's record: their level; else the page's.

@@ -320,9 +320,15 @@
 }
 
 /* A child's week on their page: the same figures as Today's row. */
+/* A figure holding the two cells the week's figures take once there are
+   some, so the row never reflows at the first answer. */
+.factWide {
+  grid-column: span 2;
+}
 .weekRow {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, max-content));
+  /* Fixed columns: a figure's width never moves the next one. */
+  grid-template-columns: repeat(3, minmax(0, 11rem));
   gap: var(--space-3) var(--space-7);
 }
 @container (max-width: 399px) {

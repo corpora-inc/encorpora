@@ -272,119 +272,149 @@ test(
     });
 
     await t.test(
-      "practice at a level: one unnamed profile, fresh at every choice",
+      "practice at a level: one unnamed profile, a fresh simulation at every choice",
       async () => {
         const helper = await user("Sage Fixture");
-        const choose = (grade: number, pace: string) =>
-          send("PUT", "/api/v1/me/practice-at-level", helper, { grade, pace });
+        const choose = async (grade: number, pace: string) => {
+          const response = await send(
+            "PUT",
+            "/api/v1/me/practice-at-level",
+            helper,
+            { grade, pace },
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          return response.json().learnerId as string;
+        };
+        const read = async (id: string, what: "frontier" | "progress") => {
+          const response = await send(
+            "GET",
+            `/api/v1/learners/${id}/${what}`,
+            helper,
+          );
+          assert.equal(response.statusCode, 200, response.body);
+          return response.json();
+        };
+        /** Everything the simulation's practice reads, by learner. */
+        const evidence = async (id: string) =>
+          (
+            await db.query(
+              `SELECT (SELECT count(*) FROM amp_attempts WHERE learner_id=$1)::int AS attempts,
+                 (SELECT count(*) FROM amp_skill_evidence WHERE learner_id=$1)::int AS skills,
+                 (SELECT count(*) FROM amp_level_days WHERE learner_id=$1)::int AS levels,
+                 (SELECT count(*) FROM amp_instances WHERE learner_id=$1)::int AS served`,
+              [id],
+            )
+          ).rows[0];
         // No child, no consent, no birth year: an adult and a grade.
-        const first = await choose(4, "on-level");
-        assert.equal(first.statusCode, 200, first.body);
-        const id = first.json().learnerId as string;
-        const fourthGrade = await send(
-          "GET",
-          `/api/v1/learners/${id}/frontier`,
-          helper,
-        );
-        assert.equal(fourthGrade.statusCode, 200, fourthGrade.body);
+        const fourth = await choose(4, "on-level");
         assert.ok(
-          Math.abs(fourthGrade.json().overall.level - 4) < 0.75,
+          Math.abs((await read(fourth, "frontier")).overall.level - 4) < 0.75,
           "it starts at grade 4",
         );
-        for (let i = 0; i < 3; i++) await practice(helper, id);
-        const before = JSON.parse((await footprint(id)).settings);
+        for (let i = 0; i < 3; i++) await practice(helper, fourth);
+        assert.equal((await evidence(fourth)).attempts, 3);
+        const used = (
+          await db.query(
+            "SELECT free_online_used FROM amp_learners WHERE id=$1",
+            [fourth],
+          )
+        ).rows[0].free_online_used as number;
+        assert.ok(used >= 3);
 
-        // The same grade again starts it again: every strand, a new revision.
-        const again = await choose(4, "on-level");
-        assert.equal(again.json().learnerId, id);
-        const restarted = JSON.parse((await footprint(id)).settings);
-        assert.equal(restarted.revision, before.revision + 1);
-        for (const strand of profileStrands)
-          assert.deepEqual(restarted.strandStarts[strand], {
-            level: 4,
-            revision: restarted.revision,
-          });
-
-        // Two tabs: one has a problem open at grade 4 when the other
-        // chooses grade 9. The new choice is a fresh simulation: nothing
-        // answered before counts toward it, and the old tab's answer, given
-        // after, never does either.
+        // Two tabs: one still has a grade-4 problem open when the other
+        // chooses grade 9.
         const oldTab = await send(
           "POST",
-          `/api/v1/learners/${id}/batches`,
+          `/api/v1/learners/${fourth}/batches`,
           helper,
           { count: 1 },
         );
         assert.equal(oldTab.statusCode, 200, oldTab.body);
         const stale = oldTab.json().problems[0];
         const ninth = await choose(9, "on-level");
-        assert.equal(ninth.json().learnerId, id);
-        const frontierOf = async () => {
-          const response = await send(
-            "GET",
-            `/api/v1/learners/${id}/frontier`,
-            helper,
-          );
-          assert.equal(response.statusCode, 200, response.body);
-          return response.json();
-        };
-        const fresh = await frontierOf();
-        assert.equal(fresh.overall.answered, 0, "nothing carries over");
+        assert.notEqual(ninth, fourth, "a new choice is a new simulation");
+        // The last choice is gone whole: its answers, skill evidence,
+        // levels and served problems, so nothing of it reaches the new one.
+        assert.deepEqual(await evidence(fourth), {
+          attempts: 0,
+          skills: 0,
+          levels: 0,
+          served: 0,
+        });
+        const fresh = await read(ninth, "frontier");
+        assert.equal(fresh.overall.answered, 0);
+        assert.ok(Math.abs(fresh.overall.level - 9) < 0.75, "it starts at 9");
+        const progress = await read(ninth, "progress");
+        assert.deepEqual(
+          (progress.skills as { attempts?: number }[]).filter(
+            (skill) => (skill.attempts ?? 0) > 0,
+          ),
+          [],
+          "no skill carries its old work",
+        );
+        // The old tab's answer changes nothing: its practice is gone.
         const late = await send(
           "POST",
-          `/api/v1/learners/${id}/attempts`,
+          `/api/v1/learners/${fourth}/attempts`,
           helper,
           { problemId: stale.id, requestId: randomUUID(), response: "1" },
         );
-        assert.ok([200, 409].includes(late.statusCode), late.body);
-        const afterLate = await frontierOf();
+        // Refused, whichever check meets it first (no such practice, or
+        // no learner here to consent for).
+        assert.ok([403, 404].includes(late.statusCode), late.body);
+        assert.deepEqual(await evidence(fourth), {
+          attempts: 0,
+          skills: 0,
+          levels: 0,
+          served: 0,
+        });
+        assert.deepEqual(await evidence(ninth), {
+          attempts: 0,
+          skills: 0,
+          levels: (await evidence(ninth)).levels,
+          served: (await evidence(ninth)).served,
+        });
+        assert.equal((await read(ninth, "frontier")).overall.answered, 0);
+        // The free allowance carries over: a new choice never refills it.
         assert.equal(
-          afterLate.overall.answered,
-          0,
-          "the old tab's answer is not counted",
+          (
+            await db.query(
+              "SELECT free_online_used FROM amp_learners WHERE id=$1",
+              [ninth],
+            )
+          ).rows[0].free_online_used,
+          used,
         );
-        assert.equal(afterLate.overall.level, fresh.overall.level);
-        await practice(helper, id);
-        assert.equal((await frontierOf()).overall.answered, 1);
+        await practice(helper, ninth);
+        assert.equal((await read(ninth, "frontier")).overall.answered, 1);
 
-        // A new choice reuses it, named by the choice, never a person.
-        const algebra = await choose(9, "on-level");
-        assert.equal(algebra.json().learnerId, id);
-        const listed = (await me(helper)).practiceProfiles;
-        assert.deepEqual(listed, [
+        // The same grade again is fresh again; one level profile at a time.
+        const again = await choose(9, "on-level");
+        assert.notEqual(again, ninth);
+        assert.equal((await read(again, "frontier")).overall.answered, 0);
+        assert.deepEqual((await me(helper)).practiceProfiles, [
           {
-            id,
+            id: again,
             label: "9th grade · on level",
             levels: presetLevels(9, "on-level"),
             level: { grade: 9, pace: "on-level" },
           },
         ]);
-        const row = (
+        const rows = (
           await db.query(
-            "SELECT birth_year,adult,simulation FROM amp_learners WHERE id=$1",
-            [id],
+            "SELECT birth_year,adult,simulation FROM amp_learners WHERE account_id=$1",
+            [helper],
           )
-        ).rows[0];
-        assert.deepEqual(row, {
-          birth_year: null,
-          adult: true,
-          simulation: true,
-        });
-        assert.equal(
-          (
-            await db.query(
-              "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1",
-              [helper],
-            )
-          ).rows[0].n,
-          1,
-        );
+        ).rows;
+        assert.deepEqual(rows, [
+          { birth_year: null, adult: true, simulation: true },
+        ]);
 
         // It is never renamed or adjusted as a saved profile: that would
         // be lost at the next choice.
         const renamed = await send(
           "PATCH",
-          `/api/v1/me/profiles/${id}`,
+          `/api/v1/me/profiles/${again}`,
           helper,
           { label: "Niece Fixture" },
         );
@@ -399,10 +429,10 @@ test(
           other,
           { grade: 0, pace: "ahead" },
         );
-        assert.notEqual(theirs.json().learnerId, id);
+        assert.notEqual(theirs.json().learnerId, again);
         const refused = await send(
           "POST",
-          `/api/v1/learners/${id}/batches`,
+          `/api/v1/learners/${again}/batches`,
           other,
           { count: 1 },
         );
@@ -423,10 +453,7 @@ test(
           );
           assert.equal(bad.statusCode, 400, bad.body);
         }
-        assert.equal(
-          (await me(helper)).practiceProfiles[0].label,
-          "9th grade · on level",
-        );
+        assert.equal((await me(helper)).practiceProfiles[0].id, again);
       },
     );
 

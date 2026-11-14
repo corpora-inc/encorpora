@@ -126,6 +126,8 @@ const searchSchema = z
     topic: z.string().max(100).optional().catch(undefined),
     strand: z.string().max(100).optional(),
     filter: z.string().max(100).optional(),
+    /** Pathways' map: by grade, or in 3D. */
+    view: z.enum(["grades", "3d"]).optional().catch(undefined),
     skill: z.string().max(100).optional(),
     template: z.string().max(100).optional(),
     page: z.coerce.number().int().nonnegative().optional(),

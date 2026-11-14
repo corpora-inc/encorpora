@@ -243,3 +243,33 @@ test("TeX delimiter dots and exclaimed currency are not sentence math", () => {
     { kind: "text", source: "A pen costs $3! A book costs $5." },
   ]);
 });
+
+test("mixed division keeps its inline notation until the divisor is explicit", () => {
+  for (const text of [
+    "Divide the cost by the pounds: 2 ÷ 1/6.",
+    "Divide the amounts: 3/8 ÷ 1/3.",
+    "Solve: $BC = 7 ÷ 1/5 = 35$.",
+    String.raw`Solve: $BC = 7 \div 1/5 = 35$.`,
+  ]) {
+    assert.equal(trailingDisplayMath(text), null, text);
+    assert.equal(normalizeTrailingMath(text), text);
+    for (const Component of [MathText, PrintMathText])
+      assert.doesNotMatch(
+        renderToStaticMarkup(React.createElement(Component, { text })),
+        /class="math-display"/,
+        text,
+      );
+  }
+  const text = String.raw`Divide the cost by the pounds: $2 \div \frac{1}{6}$.`;
+  assert.equal(trailingDisplayMath(text)?.tex, String.raw`2 \div \frac{1}{6}`);
+  for (const Component of [MathText, PrintMathText]) {
+    const document = new JSDOM(
+      renderToStaticMarkup(React.createElement(Component, { text })),
+    ).window.document;
+    assert.equal(document.querySelector("mfrac")?.textContent, "16");
+    assert.equal(
+      document.querySelector("mfrac")?.previousElementSibling?.textContent,
+      "÷",
+    );
+  }
+});

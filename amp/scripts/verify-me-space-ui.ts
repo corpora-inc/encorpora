@@ -42,7 +42,8 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
-/** `--only day0,answer,level,family,live,served,levelmode,maps`: parts. */
+/** `--only` any of: day0, answer, level, family, live, served, levelmode,
+ * maps, familylive, profiles. */
 const onlyArg = process.argv.indexOf("--only");
 const ONLY =
   onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
@@ -142,6 +143,59 @@ async function newAdult() {
   );
   await context.close();
   return { email, learnerId };
+}
+
+/** Text that runs into other text in `main` (a line through a button, a
+ * button over a line): every pair of visible text boxes overlapping by more
+ * than a pixel, after scripts/verify-family-space-ui.ts. Runs in the page. */
+function textCollisions(): string[] {
+  const boxes: { text: string; rect: DOMRect; node: Node }[] = [];
+  const walker = document.createTreeWalker(
+    document.querySelector("main") ?? document.body,
+    NodeFilter.SHOW_TEXT,
+  );
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = (node.textContent ?? "").trim();
+    const parent = node.parentElement;
+    if (!text || !parent) continue;
+    const style = getComputedStyle(parent);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+    if (parent.closest("[aria-hidden=true], svg")) continue;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    for (const rect of range.getClientRects())
+      if (rect.width > 1 && rect.height > 1)
+        boxes.push({ text: text.slice(0, 30), rect, node });
+  }
+  // Controls too: a line must not run under a button.
+  for (const control of document.querySelectorAll(
+    "main a[href], main button",
+  )) {
+    const rect = control.getBoundingClientRect();
+    if (rect.width > 1 && rect.height > 1)
+      boxes.push({
+        text: `[${(control.textContent ?? "").trim().slice(0, 20)}]`,
+        rect,
+        node: control,
+      });
+  }
+  const hits: string[] = [];
+  for (let a = 0; a < boxes.length; a++)
+    for (let b = a + 1; b < boxes.length; b++) {
+      const one = boxes[a]!;
+      const two = boxes[b]!;
+      if (one.node === two.node) continue;
+      // A control's own text sits inside it.
+      if (one.node.contains(two.node) || two.node.contains(one.node)) continue;
+      const x =
+        Math.min(one.rect.right, two.rect.right) -
+        Math.max(one.rect.left, two.rect.left);
+      const y =
+        Math.min(one.rect.bottom, two.rect.bottom) -
+        Math.max(one.rect.top, two.rect.top);
+      if (x > 1 && y > 1) hits.push(`${one.text} × ${two.text}`);
+    }
+  return hits.slice(0, 5);
 }
 
 async function settle(page: Page) {
@@ -278,10 +332,11 @@ if (part("answer")) {
   await page.locator("[data-level-start]").waitFor();
   await page.getByRole("link", { name: "Start practicing" }).click();
   await page.waitForURL(/\/practice/);
+  // The first problem, whatever its kind: its Check (or Next) is there.
   await page
-    .getByText(/Answer|Choose/)
+    .getByRole("button", { name: /^(Check|Next)/ })
     .first()
-    .waitFor({ timeout: 30000 });
+    .waitFor({ timeout: 90000 });
   await page.screenshot({ path: join(shots, "me-start-practice-390.png") });
   // The first answer, as practice sends it.
   const batch = await api<{ problems: { id: string }[] }>(
@@ -372,8 +427,26 @@ if (part("level")) {
         }
         await context.close();
       }
-  if (ids.size !== 1)
-    fail("practice at a level", `${ids.size} profiles, not one reused`);
+  // Each choice is a fresh simulation (CP-5 r2 #1): a new profile each
+  // time, and only the last one left on the account.
+  if (ids.size !== 3)
+    fail("practice at a level", `${ids.size} profiles for three choices`);
+  const context = await reader(390, "light");
+  await signIn(context, adult.email);
+  const me = await api<{
+    practiceProfiles?: { id: string; level?: unknown }[];
+  }>(context.request, "GET", "/me");
+  const level = (me.practiceProfiles ?? []).filter((entry) => entry.level);
+  if (
+    level.length !== 1 ||
+    !ids.has(level[0]!.id) ||
+    [...ids].at(-1) !== level[0]!.id
+  )
+    fail(
+      "practice at a level",
+      `the account holds ${level.length} level profile(s)`,
+    );
+  await context.close();
 }
 
 // 3. A family's child with no answers: the same unmeasured level.
@@ -632,6 +705,163 @@ if (part("maps")) {
     fullPage: true,
   });
   await context.close();
+}
+
+// 9. The first answer while a family child's page is open (CP-5 r2 #2):
+// the same overall bar takes the estimate in place, nothing above it moves.
+if (part("familylive"))
+  for (const width of [320, 390, 1280]) {
+    const where = `family child live first answer ${width}`;
+    const context = await reader(width, "light", "reduce");
+    const email = `fam-${randomUUID().slice(0, 8)}@personas.amp.test`;
+    const signed = await context.request.post(
+      `${origin}/api/auth/sign-up/email`,
+      {
+        headers: { Origin: origin },
+        data: { email, password: PASSWORD, name: "Kit Vale" },
+      },
+    );
+    if (!signed.ok()) throw new Error(`sign-up ${signed.status()}`);
+    await api(context.request, "POST", "/start", {
+      as: "parent",
+      children: [{ birthYear: new Date().getFullYear() - 9 }],
+    });
+    const me = await api<{ learners: { id: string }[] }>(
+      context.request,
+      "GET",
+      "/me",
+    );
+    const child = me.learners[0]!.id;
+    const page = await context.newPage();
+    await page.goto(`${origin}/family`, { waitUntil: "load" });
+    await page
+      .getByRole("link", { name: /^Child 1/ })
+      .first()
+      .click();
+    await page.locator("[data-levels-not-yet] [data-unmeasured]").waitFor();
+    await settle(page);
+    const bar = await page
+      .locator("[data-levels-not-yet] [data-level-bar]")
+      .elementHandle();
+    const before = await bar!.boundingBox();
+    const mark = await shift(page);
+    const batch = await api<{ problems: { id: string }[] }>(
+      context.request,
+      "POST",
+      `/learners/${child}/batches`,
+      { count: 1 },
+    );
+    await api(context.request, "POST", `/learners/${child}/attempts`, {
+      problemId: batch.problems[0]!.id,
+      requestId: randomUUID(),
+      response: "1",
+    });
+    // Practice serves the next problem, as it does after an answer.
+    await api(context.request, "POST", `/learners/${child}/batches`, {
+      count: 1,
+    });
+    await page.evaluate(() => {
+      window.dispatchEvent(new Event("visibilitychange"));
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await page.locator("[data-levels-found]").waitFor({ timeout: 30000 });
+    await page.waitForTimeout(800);
+    const after = await bar!.boundingBox();
+    if (!(await bar!.evaluate((node) => node.isConnected)))
+      fail(where, "the bar was replaced");
+    if (await bar!.evaluate((node) => node.hasAttribute("data-unmeasured")))
+      fail(where, "the bar still reads not measured");
+    if (
+      !before ||
+      !after ||
+      Math.abs(before.x - after.x) > 0.5 ||
+      Math.abs(before.y - after.y) > 0.5 ||
+      Math.abs(before.width - after.width) > 0.5 ||
+      Math.abs(before.height - after.height) > 0.5
+    )
+      fail(
+        where,
+        `the bar moved: ${JSON.stringify(before)} → ${JSON.stringify(after)}`,
+      );
+    const moved = (await shift(page)) - mark;
+    if (moved > 0.001) fail(where, `layout shift ${moved.toFixed(4)}`);
+    await page.screenshot({
+      path: join(shots, `family-child-live-first-answer-${width}.png`),
+      fullPage: true,
+    });
+    await context.close();
+  }
+
+// 10. Profiles (Q-213): the actions sit under the title with room, nothing
+// runs into anything, and an empty list adds no line repeating the intro.
+if (part("profiles")) {
+  const owner = await newAdult();
+  for (const saved of [false, true]) {
+    if (saved) {
+      const context = await browser.newContext();
+      await signIn(context, owner.email);
+      await api(context.request, "POST", "/me/profiles", {
+        label: "4th grade · behind",
+        levels: Object.fromEntries(
+          [
+            "number",
+            "operations",
+            "measurement",
+            "data",
+            "geometry",
+            "fractions",
+            "decimals",
+            "ratio",
+            "algebra",
+            "modeling",
+            "probability",
+            "functions",
+            "reasoning",
+            "trigonometry",
+          ].map((strand) => [strand, 3]),
+        ),
+      });
+      await context.close();
+    }
+    for (const width of WIDTHS)
+      for (const scheme of SCHEMES) {
+        const where = `/me/profiles ${saved ? "one saved" : "none saved"} ${width} ${scheme}`;
+        const context = await reader(width, scheme);
+        await signIn(context, owner.email);
+        const page = await context.newPage();
+        await page.goto(`${origin}/me/profiles`, { waitUntil: "load" });
+        await page.getByRole("heading", { name: "Profiles" }).waitFor();
+        await settle(page);
+        await check(page, where, "me");
+        const hits = await page.evaluate(textCollisions);
+        if (hits.length)
+          fail(where, `text runs into text: ${hits.join(" | ")}`);
+        const layout = await page.evaluate(() => {
+          const head = document.querySelector("main header");
+          const next = head?.nextElementSibling;
+          return {
+            gap:
+              head && next
+                ? next.getBoundingClientRect().top -
+                  head.getBoundingClientRect().bottom
+                : null,
+            text: document.querySelector("main")?.textContent ?? "",
+          };
+        });
+        if (layout.gap !== null && layout.gap < 16)
+          fail(where, `the list starts ${layout.gap}px under the actions`);
+        if (/Saved levels appear here/.test(layout.text))
+          fail(where, "an empty list repeats the intro");
+        await page.screenshot({
+          path: join(
+            shots,
+            `profiles-${saved ? "saved" : "empty"}-${width}-${scheme}.png`,
+          ),
+          fullPage: true,
+        });
+        await context.close();
+      }
+  }
 }
 
 await browser.close();
