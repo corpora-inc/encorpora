@@ -416,10 +416,12 @@ export function FundingPurchaseCenter({
       </header>
       {!consentActive &&
         requests.some(
-          (item) => item.fundedPending?.status === "funded-pending",
+          (item) =>
+            !item.orderId &&
+            item.status !== "cancelled" &&
+            item.learnerId !== ownLearnerId,
         ) && (
           <p className="funding-notice">
-            Practice can continue while payment is pending.{" "}
             <a
               href={`/start/consent${program ? `?return=${({ "az-esa": "arizona-esa", "ar-efa": "arkansas-efa", "nh-efa": "new-hampshire-efa" } as Record<string, string>)[program.id] ?? ""}` : ""}`}
             >

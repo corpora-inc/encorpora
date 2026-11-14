@@ -196,6 +196,16 @@ try {
       await page
         .getByRole("heading", { name: "Your invoice is ready" })
         .waitFor();
+      const start = page.getByRole("link", {
+        name: "Set up learner and start",
+      });
+      assert.ok(
+        await start.evaluate((el) => {
+          const box = el.getBoundingClientRect();
+          return box.top >= 0 && box.bottom <= innerHeight;
+        }),
+        "start action visible after submit",
+      );
       await shot(page, `ready-${width}-${theme}`);
       const invoice = (
         await db.query(
@@ -260,10 +270,24 @@ try {
             exact: true,
           })
           .click();
+        await page.getByRole("button", { name: "Use this invoice" }).waitFor();
+        // Prove the bridge grants practice even without the free allowance.
+        await db.query(
+          "UPDATE amp_learners SET free_online_used=100 WHERE account_id=$1",
+          [`amp|${session.user.id}`],
+        );
         await page.getByRole("button", { name: "Use this invoice" }).click();
         await page.waitForURL(/\/practice/);
         await page.locator("[data-problem-id]").first().waitFor();
         await shot(page, `practice-${width}-${theme}`);
+        await page
+          .getByRole("button", { name: "Skip this problem and see its answer" })
+          .click();
+        await page
+          .getByText("Skipped. Your progress is unchanged.", { exact: true })
+          .waitFor();
+        await page.locator(".next-action").click();
+        await page.locator("[data-problem-id]").first().waitFor();
         const grant = (
           await db.query(
             "SELECT g.* FROM amp_access_gifts a JOIN amp_grants g ON g.id=a.grant_id WHERE a.funding_invoice_id=$1",

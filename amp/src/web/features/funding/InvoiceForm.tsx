@@ -58,6 +58,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     null,
   );
   const [pdfUrl, setPdfUrl] = useState("");
+  const heading = useRef<HTMLHeadingElement>(null);
   const retry = useRef<{ payload: string; key: string } | null>(null);
   const offers = useQuery({
     ...invoiceOffersOptions(program?.id ?? ""),
@@ -80,6 +81,8 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
   }, []);
   useEffect(() => {
     if (!result) return;
+    heading.current?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: "instant" });
     const bytes = Uint8Array.from(atob(result.pdfBase64), (c) =>
       c.charCodeAt(0),
     );
@@ -145,7 +148,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
         </Link>
       </header>
       <p className={styles.eyebrow}>{program.name}</p>
-      <h1>{result ? "Your invoice is ready" : "Get your AMP invoice"}</h1>
+      <h1 ref={heading} tabIndex={-1}>
+        {result ? "Your invoice is ready" : "Get your AMP invoice"}
+      </h1>
       {!result && (
         <>
           <p className={styles.summary}>

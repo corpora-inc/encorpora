@@ -212,6 +212,7 @@ export async function reconcileClassWalletPayments(
       // Keep received payment available while they finish it, without spending
       // the error-retry budget or fixing the paid term before it can start.
       if (
+        !request.orderId &&
         !(await purchaseConsentSatisfied(
           client,
           request.accountId,
