@@ -140,12 +140,13 @@ for (const id of ids) {
     ),
   );
 }
-const { manifest, conflicts } = filmManifest(plans);
+const { manifest, conflicts, skillFilms, skillProblemTypes } = filmManifest(plans);
 for (const conflict of conflicts) console.warn(conflict);
 if (args.check) {
   console.log(
     `${plans.length} approved films validated for ${Object.keys(manifest).length} problem types; no uploads or manifest changes.`,
   );
+  console.log(`${skillFilms} skills have a skill film; ${skillProblemTypes} problem types reached through skill fallback.`);
 } else {
   // Check the cleanup dependency before performing any external writes.
   try {

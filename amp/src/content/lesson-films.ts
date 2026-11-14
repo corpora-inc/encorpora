@@ -28,6 +28,8 @@ export const filmEditionSchema = z
 export const lessonFilmSchema = z
   .object({
     id,
+    /** The skill this film represents, present on every link to its skill film. */
+    skill: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
     version: hash,
     title: z.string().min(1),
     dataUrl: z.string().url(),
@@ -92,6 +94,12 @@ export type LessonFilmV1 = Omit<LessonFilm, "editions" | "capability"> & {
 };
 export const filmManifestSchema = z.record(id, lessonFilmSchema);
 export const lessonFilms = filmManifestSchema.parse(manifest);
+
+/** The skill's film and the problem type it was made for, independent of its routing key. */
+export function skillFilm(skillId: string): { film: LessonFilm; templateId: string } | undefined {
+  const film = Object.values(lessonFilms).find((entry) => entry.skill === skillId);
+  return film ? { film, templateId: film.id.split("--")[0]! } : undefined;
+}
 
 /** Opt in explicitly: clients predating the player receive written lessons only. */
 export function lessonFilmFor(templateId: string, capability?: unknown) {

@@ -7,6 +7,7 @@
 import katex from "katex";
 import type { Action, BeatTime, Geo, Part, Script, Shot, Timing } from "./schema";
 import { compile } from "./expr";
+import { highlightEnd, sceneHighlightHeld, wordTime } from "./timing";
 import { placeNames, planStack, type StackPlan } from "./stack";
 import { BlocksModel, chartView, subBox, zoomView, type Box, type Dir, type Place } from "./blocks";
 import { axisSpan, glided, onCircle, sectorAngles, sweepLabelAngle, traceRange } from "./wave";
@@ -32,7 +33,8 @@ const ease = (u: number) => {
   return u * u * u * (u * (u * 6 - 15) + 10);
 };
 /**
- * A highlight grows about its own centre and takes no layout space. It stops
+ * A highlight grows about its own centre and takes no layout space. Open
+ * strokes only bolden: their endpoints and measured spans must stay put. Growth stops
  * at the card's inner margin and at a label, and a part with no room still
  * boldens. The shot's view is a tight drawing area, so a light on its edge
  * would be clipped there: the picture's clip opens around the lit part, stroke
@@ -73,11 +75,11 @@ export function sheerSide(pts: readonly (readonly [number, number])[], up: numbe
 }
 /**
  * The moment a highlight is fully held: the ease-in has finished, and the
- * ease-out (which starts just after the beat) has not. A light that is still
- * rising at the end of the beat is sampled at its fullest, just before it fades.
+ * ease-out (which starts just after the release cue) has not. A light that is
+ * still rising at release is sampled just before it fades.
  */
-export function highlightHeld(t0: number, beatEnd: number): number {
-  return Math.min(t0 + EMPH_IN + 0.02, beatEnd + 0.04);
+export function highlightHeld(t0: number, end: number): number {
+  return Math.min(t0 + EMPH_IN + 0.02, end + 0.04);
 }
 const svgNS = "http://www.w3.org/2000/svg";
 const svg = (tag: string, cls?: string) => {
@@ -172,6 +174,8 @@ const TRADE_MAX = 2.5;
 type Entry = {
   a: Action; t0: number; dur: number; beatEnd: number; words?: Record<string, number>; /** A count's numbers, as the voice says them. */ run?: CountRun;
   /** When a count's lights and ticks let go: the end of the speech, or the end of the beat's own pause. */ hold?: number;
+  /** Explicit highlight release; scene releases correspond to the nested action indices. */
+  highlightEnd?: number; sceneEnds?: (number | undefined)[];
 };
 type P = [number, number];
 /** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
@@ -183,13 +187,6 @@ const THING_PAINT: Record<string, string> = {
   "accent-strong": "var(--color-figure-accent-fill-strong)", "gold-strong": "var(--color-figure-gold-fill-strong)",
 };
 
-function wordTime(beat: BeatTime, word: string, nth = 1) {
-  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-  const hits = beat.words.filter((w) => norm(w.text) === norm(word));
-  const hit = hits[nth - 1];
-  if (!hit) throw new Error(`Word "${word}" (occurrence ${nth}) is not in: ${beat.words.map((w) => w.text).join(" ")}`);
-  return hit.start;
-}
 /** The first time a word is said in this beat at or after t. */
 function wordAfter(beat: BeatTime, word: string, t: number, what: string) {
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -217,6 +214,8 @@ function entries(shot: Shot, times: BeatTime[], shotEnd = Infinity) {
       const t0 = a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
       const entry: Entry = { a, t0, dur: a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end };
+      if (a.do === "highlight") entry.highlightEnd = highlightEnd(t, a, t0);
+      if (a.do === "scene") entry.sceneEnds = a.actions.map((x) => x.do === "highlight" ? highlightEnd(t, x, t0) : undefined);
       if (a.do === "column") {
         const trade = a.trade ? wordAfter(t, a.trade, t0, `column of "${a.of}", trade`) : undefined;
         const write = a.write ? wordAfter(t, a.write, trade ?? t0, `column of "${a.of}", write`) : undefined;
@@ -244,12 +243,19 @@ export function heldHighlights(script: Script, timing: Timing): HeldHighlight[] 
         if (a.do === "count") continue;
         const t0 = a.at ? wordTime(span, a.at, a.nth ?? 1) : span.start + stagger;
         if (!a.at) stagger += 0.1;
-        if (a.do !== "highlight") continue;
-        const t = Math.round(highlightHeld(t0, span.end) * 100) / 100;
-        const word = (a.at ?? "").trim();
-        const list = groups.get(t) ?? [];
-        if (word && !list.includes(word)) list.push(word);
-        groups.set(t, list);
+        const moments = a.do === "highlight" ? [highlightHeld(t0, highlightEnd(span, a, t0) ?? span.end)]
+          : a.do === "scene" ? a.actions.flatMap((x) => {
+            if (x.do !== "highlight") return [];
+            const end = highlightEnd(span, x, t0);
+            return end === undefined ? [] : [sceneHighlightHeld(t0, end, a.dur ?? DEFAULT_DUR.scene!)];
+          }) : [];
+        for (const moment of moments) {
+          const t = Math.round(moment * 100) / 100;
+          const word = (a.at ?? "").trim();
+          const list = groups.get(t) ?? [];
+          if (word && !list.includes(word)) list.push(word);
+          groups.set(t, list);
+        }
       }
       for (const [t, words] of [...groups.entries()].sort((a, b) => a[0] - b[0])) out.push({ beat: index, t, word: words.join("-") || "highlight" });
     });
@@ -287,7 +293,7 @@ type Blocks = Extract<Part, { blocks: unknown }>;
 type ThingsPart = Extract<Part, { things: unknown }>;
 /** One thing's elements: its layer, the art that a light grows, and its painted layers with their stroke weights. */
 type ThingView = { g: SVGElement; art: SVGElement; tick: SVGElement; layers: { el: SVGElement; w: number }[]; px: number };
-type Fade = { kind: string; t0: number; dur: number; end?: number };
+type Fade = { kind: string; t0: number; dur: number; end?: number; light?: string };
 /** `b.n.tenths.3` is also part of `b.n.tenths`, `b.n` and `b`: a fade on any of them reaches it. */
 const prefixes = (id: string) => id.split(".").map((_, i, a) => a.slice(0, i + 1).join("."));
 /** The elements of one place-value chart, built once; `drawBlocks` sets them from t. */
@@ -699,7 +705,8 @@ function litFaults(fit: HTMLElement): GrowFault[] {
   return [...found];
 }
 function limitGrow(root: HTMLElement) {
-  for (const members of growGroups(root).values()) {
+  const groups = growGroups(root);
+  for (const members of groups.values()) {
     if (!growFault(members, root, -LABEL_AIR)) continue;
     let lo = 0, hi = 1;
     for (let n = 0; n < 12; n++) {
@@ -710,6 +717,29 @@ function limitGrow(root: HTMLElement) {
     }
     for (const el of members) setFactor(el, lo);
     if (growFault(members, root, -LABEL_AIR)) for (const el of members) setFactor(el, 0);
+  }
+  // Keep the collision groups separate: combining their boxes would hide the
+  // neighbours between them. Only share the smallest permitted growth, and
+  // only among groups driven by the same action (never merely the same time).
+  const lights = new Map<string, (SVGElement | HTMLElement)[]>();
+  for (const members of groups.values()) {
+    const ids = new Set(members.filter((el) => el.dataset.hot === "1").map((el) => el.dataset.light));
+    // A frame cluster can already contain independently lit frames. Do not
+    // couple their actions through the cluster.
+    if (ids.size !== 1 || ids.has(undefined)) continue;
+    const id = [...ids][0]!;
+    lights.set(id, [...(lights.get(id) ?? []), ...members]);
+  }
+  for (const members of lights.values()) {
+    // One part may have several painted elements (for example a solid's top
+    // and side). Leave a single lit part's existing limits alone.
+    const parts = new Set(members.filter((el) => el.dataset.hot === "1" && el.dataset.part).map((el) => el.dataset.part));
+    if (parts.size < 2) continue;
+    const grow = Math.min(...members.map((el) => Number(el.dataset.em0) * Number(el.dataset.factor)));
+    for (const el of members) {
+      const em0 = Number(el.dataset.em0);
+      if (em0 > 0 && em0 * Number(el.dataset.factor) > grow) setFactor(el, grow / em0);
+    }
   }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
@@ -744,7 +774,8 @@ class GeoStage {
   /** For a chart that starts pushed in on one piece: when the camera first pulls back to the whole chart, and its frame (names, point) comes in. */
   frameFrom = new Map<string, { t0: number; dur: number }>();
   xforms: { targets: Set<string>; kind: string; t0: number; dur: number; a: any; about?: P; over?: [P, P] }[] = [];
-  fades: Map<string, { kind: string; t0: number; dur: number; end?: number }[]> = new Map();
+  fades: Map<string, Fade[]> = new Map();
+  lightSeq = 0;
   view0: number[];
   box: { x: number; y: number; w: number; h: number };
   size = 1;
@@ -1157,10 +1188,13 @@ class GeoStage {
         over: a.over ? [this.at(a.over[0], e.t0), this.at(a.over[1], e.t0)] : undefined,
       });
     } else if (a.do === "show" || a.do === "hide" || a.do === "draw" || a.do === "highlight") {
+      // A single target (including a compound part's group name) keeps its
+      // existing internal growth. Multiple targets share this action's id.
+      const light = a.do === "highlight" && list(a.target).length > 1 ? String(this.lightSeq++) : undefined;
       for (const n of list(a.target)) {
         // a group of things, or one thing: the plan fades and lights them (a light is paint only)
         if (this.thingsModel?.has(n)) {
-          this.thingsModel.apply({ do: a.do === "draw" ? "show" : a.do, target: n, dur: a.dur }, { t0: e.t0, beatEnd: e.beatEnd });
+          this.thingsModel.apply({ do: a.do === "draw" ? "show" : a.do, target: n, dur: a.dur }, { t0: e.t0, beatEnd: e.highlightEnd ?? e.beatEnd });
           continue;
         }
         // a table's or a mosaic's parts are named by pattern: a typo would fade nothing, silently
@@ -1183,7 +1217,7 @@ class GeoStage {
           if (!ok) throw new Error(`${a.do} "${n}": a mosaic has ${id}.slab.i, ${id}.part.i, ${id}.name.i, ${id}.parts and ${id}.guide; this one has ${p.groups.length} slabs.`);
         }
         if (!this.fades.has(n)) this.fades.set(n, []);
-        this.fades.get(n)!.push({ kind: a.do, t0: e.t0, dur: e.dur, end: e.beatEnd });
+        this.fades.get(n)!.push({ kind: a.do, t0: e.t0, dur: e.dur, end: e.highlightEnd ?? e.beatEnd, light });
       }
     }
   }
@@ -1255,6 +1289,7 @@ class GeoStage {
   fadeState(lists: Fade[], start: boolean, t: number) {
     lists = [...lists].sort((a, b) => a.t0 - b.t0);
     let o = start ? 1 : 0, drawn = start ? 1 : 0, em = 0;
+    let light: string | undefined;
     for (const f of lists) {
       if (t < f.t0) continue;
       const u = ease((t - f.t0) / f.dur);
@@ -1264,10 +1299,10 @@ class GeoStage {
       else if (f.kind === "highlight") {
         const off = (f.end ?? f.t0 + f.dur) + 0.06;
         const v = t < off ? ease((t - f.t0) / EMPH_IN) : 1 - ease((t - off) / EMPH_OUT);
-        em = Math.max(em, v);
+        if (v > em) { em = v; light = f.light; }
       }
     }
-    return { o, drawn, em };
+    return { o, drawn, em, light };
   }
   build(p: Part) {
     const entry: GeoStage["parts"][number] = { p, el: svg("g"), a0: 0 };
@@ -1798,10 +1833,11 @@ class GeoStage {
     const clearGrow = (old: SVGElement | HTMLElement) => {
       delete old.dataset.em; delete old.dataset.em0; delete old.dataset.sem; delete old.dataset.factor;
       delete old.dataset.grow; delete old.dataset.hot; delete old.dataset.ax; delete old.dataset.ay;
+      delete old.dataset.light;
       delete old.dataset.rl; delete old.dataset.rt; delete old.dataset.rr; delete old.dataset.rb;
       delete old.dataset.ox; delete old.dataset.oy; delete old.dataset.cx; delete old.dataset.cy;
     };
-    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em], [data-grow]")) {
+    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em], [data-grow], [data-hot]")) {
       clearGrow(old);
       old.removeAttribute("transform");
     }
@@ -1814,7 +1850,7 @@ class GeoStage {
       if (e.mosaic) { this.drawMosaic(e.mosaic, e.el, t, map, s); continue; }
       if (e.bar) { this.drawBar(e.bar, e.el, t, map, s); continue; }
       if ("things" in p) continue;
-      const { o, drawn, em } = this.opacity(p, t);
+      const { o, drawn, em, light } = this.opacity(p, t);
       const show = o > 0.001;
       const set = (el: Element | undefined, v: string) => { if (el) (el as SVGElement).style.display = v; };
       set(e.el, show ? "" : "none"); set(e.shadow, show ? "" : "none"); set(e.side, show ? "" : "none"); e.extra?.forEach((x) => set(x, show ? "" : "none"));
@@ -1893,7 +1929,7 @@ class GeoStage {
             }
           }
           e.extra[0]!.setAttribute("d", d);
-          e.extra[0]!.style.stroke = INK[p.ink ?? "ink"]!;
+          e.extra[0]!.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em);
           e.extra[0]!.style.strokeWidth = "4.5";
           e.extra[0]!.style.opacity = String(o);
         }
@@ -2073,7 +2109,7 @@ class GeoStage {
           if (Math.abs(y / yevery - Math.round(y / yevery)) < 1e-6) nums.push([fmtNum(y), q, "w"]);
         }
         e.el.setAttribute("d", d);
-        e.el.style.stroke = INK[p.ink ?? "muted"]!; e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "muted"]!, em); e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
         // numbers that would touch each other (near the origin, or crowded) drop out, nearest the origin first
         {
           const o0 = map([0, 0]), fs = AXIS_NUM_PX[p.size ?? "s"]!, gap = LABEL_GAP * 0.62;
@@ -2137,12 +2173,28 @@ class GeoStage {
         const q0: P = [a[0] + dirv[0] * gap, a[1] + dirv[1] * gap], q1: P = [b[0] + dirv[0] * gap, b[1] + dirv[1] * gap];
         const tick = 13;
         e.el.setAttribute("d", `M${q0[0] - dirv[0] * tick} ${q0[1] - dirv[1] * tick}L${q0[0]} ${q0[1]}L${q1[0]} ${q1[1]}L${q1[0] - dirv[0] * tick} ${q1[1] - dirv[1] * tick}`);
-        e.el.style.stroke = INK[p.ink ?? "ink"]!; e.el.style.strokeWidth = "4"; e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em); e.el.style.strokeWidth = "4"; e.el.style.opacity = String(o);
         place(e.html!, [(q0[0] + q1[0]) / 2, (q0[1] + q1[1]) / 2], p.side, 0.7, o, em);
       }
       void unit;
-      if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
-      e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
+      if ("seg" in p || "vector" in p || "dim" in p || "curve" in p || "plot" in p || "axes" in p) {
+        // Open paths, including their ticks and arrowheads, encode exact joins
+        // or coordinates. Keep them out of grow groups, but retain lit clipping.
+        for (const el of [e.el, ...(e.extra ?? [])]) {
+          if (em <= 0.02) continue;
+          el.style.strokeWidth = String(parseFloat(el.style.strokeWidth) * (1 + 0.75 * em));
+          el.dataset.hot = "1";
+          el.dataset.em0 = em.toFixed(3);
+        }
+      } else {
+        if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
+        e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
+      }
+      if (light !== undefined && em > 0.02) {
+        for (const el of [e.el, e.html, e.side, ...(e.extra ?? [])]) {
+          if (el && !el.classList.contains("film-em")) el.dataset.light = light;
+        }
+      }
     }
     if (this.thingsModel) this.drawThings(t, map, s);
     this.rideFrames(t, map);
@@ -3918,7 +3970,8 @@ export class Film {
       const raw = [start, Math.max(start, end)];
       for (const e of s.list) {
         raw.push(e.t0, e.t0 + e.dur);
-        if (e.a.do === "highlight") raw.push(e.t0 + EMPH_IN + 0.02, e.beatEnd);
+        if (e.a.do === "highlight") raw.push(e.highlightEnd === undefined ? e.t0 + EMPH_IN + 0.02 : highlightHeld(e.t0, e.highlightEnd), e.highlightEnd ?? e.beatEnd);
+        for (const end of e.sceneEnds ?? []) if (end !== undefined) raw.push(sceneHighlightHeld(e.t0, end, e.dur), end + e.dur);
         if (motion.has(e.a.do)) raw.push(e.t0 + e.dur * 0.33, e.t0 + e.dur * 0.66);
       }
       // every thing this shot will show or move, including while it is in the air and while it is lit
@@ -4029,7 +4082,7 @@ export class Film {
     const flagged = new Set<string>();
     for (const e of s.list) {
       if (e.a.do !== "highlight") continue;
-      const t = highlightHeld(e.t0, e.beatEnd);
+      const t = highlightHeld(e.t0, e.highlightEnd ?? e.beatEnd);
       if (t < s.t0 - 0.05 || t > end + 0.05) continue;
       s.geo.draw(t);
       const beat = beats.find((b) => e.t0 >= b.start - 1e-3 && e.t0 <= b.end + 1e-3);
@@ -4144,7 +4197,8 @@ export class Film {
       out.push([s.t0 - 0.05, s.t0 + 0.75]);
       for (const e of s.list) {
         out.push([e.t0 - 0.02, e.t0 + e.dur + 0.02]);
-        if (e.a.do === "highlight") out.push([e.beatEnd + 0.02, e.beatEnd + 0.34]);
+        if (e.a.do === "highlight") out.push([(e.highlightEnd ?? e.beatEnd) + 0.02, (e.highlightEnd ?? e.beatEnd) + 0.34]);
+        for (const end of e.sceneEnds ?? []) if (end !== undefined) out.push([end - 0.02, end + e.dur + 0.02]);
       }
       // each thing's arrival, flight, leaving and light
       if (s.geo?.thingsModel) out.push(...s.geo.thingsModel.ranges());

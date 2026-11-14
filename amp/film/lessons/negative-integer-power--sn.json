@@ -1,0 +1,4610 @@
+{
+  "id": "negative-integer-power--sn",
+  "title": "Down the staircase, past zero",
+  "teaches": [],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.4,
+          -2.4,
+          14.4,
+          10.4
+        ],
+        "points": {
+          "FL": [
+            -1,
+            0
+          ],
+          "FR": [
+            14,
+            0
+          ],
+          "Z": [
+            -0.9,
+            -0.65
+          ],
+          "Walker": [
+            7.8,
+            1.3
+          ],
+          "BL0": [
+            -0.7,
+            0
+          ],
+          "BR0": [
+            0.7,
+            0
+          ],
+          "TR0": [
+            0.7,
+            8
+          ],
+          "TL0": [
+            -0.7,
+            8
+          ],
+          "E0": [
+            0.0,
+            10.1
+          ],
+          "V0": [
+            0.0,
+            8.95
+          ],
+          "G0": [
+            0.0,
+            8.3
+          ],
+          "Top0": [
+            0.0,
+            8
+          ],
+          "A0": [
+            0.85,
+            -0.65
+          ],
+          "B0": [
+            1.75,
+            -0.65
+          ],
+          "D0": [
+            1.3,
+            -1.7
+          ],
+          "BL1": [
+            1.9000000000000001,
+            0
+          ],
+          "BR1": [
+            3.3,
+            0
+          ],
+          "TR1": [
+            3.3,
+            4
+          ],
+          "TL1": [
+            1.9000000000000001,
+            4
+          ],
+          "E1": [
+            2.6,
+            6.1
+          ],
+          "V1": [
+            2.6,
+            4.95
+          ],
+          "G1": [
+            2.6,
+            4.3
+          ],
+          "Top1": [
+            2.6,
+            4
+          ],
+          "A1": [
+            3.45,
+            -0.65
+          ],
+          "B1": [
+            4.35,
+            -0.65
+          ],
+          "D1": [
+            3.9000000000000004,
+            -1.7
+          ],
+          "BL2": [
+            4.5,
+            0
+          ],
+          "BR2": [
+            5.9,
+            0
+          ],
+          "TR2": [
+            5.9,
+            2
+          ],
+          "TL2": [
+            4.5,
+            2
+          ],
+          "E2": [
+            5.2,
+            4.1
+          ],
+          "V2": [
+            5.2,
+            2.95
+          ],
+          "G2": [
+            5.2,
+            2.3
+          ],
+          "Top2": [
+            5.2,
+            2
+          ],
+          "A2": [
+            6.05,
+            -0.65
+          ],
+          "B2": [
+            6.95,
+            -0.65
+          ],
+          "D2": [
+            6.5,
+            -1.7
+          ],
+          "BL3": [
+            7.1000000000000005,
+            0
+          ],
+          "BR3": [
+            8.5,
+            0
+          ],
+          "TR3": [
+            8.5,
+            1
+          ],
+          "TL3": [
+            7.1000000000000005,
+            1
+          ],
+          "E3": [
+            7.800000000000001,
+            3.5
+          ],
+          "V3": [
+            7.800000000000001,
+            2.15
+          ],
+          "G3": [
+            7.800000000000001,
+            1.6
+          ],
+          "Top3": [
+            7.800000000000001,
+            1
+          ],
+          "A3": [
+            8.65,
+            -0.65
+          ],
+          "B3": [
+            9.55,
+            -0.65
+          ],
+          "D3": [
+            9.100000000000001,
+            -1.7
+          ],
+          "BL4": [
+            9.700000000000001,
+            0
+          ],
+          "BR4": [
+            11.1,
+            0
+          ],
+          "TR4": [
+            11.1,
+            0.5
+          ],
+          "TL4": [
+            9.700000000000001,
+            0.5
+          ],
+          "E4": [
+            10.4,
+            3.5
+          ],
+          "V4": [
+            10.4,
+            2.15
+          ],
+          "G4": [
+            10.4,
+            0.8
+          ],
+          "Top4": [
+            10.4,
+            0.5
+          ],
+          "A4": [
+            11.25,
+            -0.65
+          ],
+          "B4": [
+            12.15,
+            -0.65
+          ],
+          "D4": [
+            11.700000000000001,
+            -1.7
+          ],
+          "BL5": [
+            12.3,
+            0
+          ],
+          "BR5": [
+            13.7,
+            0
+          ],
+          "TR5": [
+            13.7,
+            0.25
+          ],
+          "TL5": [
+            12.3,
+            0.25
+          ],
+          "E5": [
+            13.0,
+            3.5
+          ],
+          "V5": [
+            13.0,
+            2.15
+          ],
+          "G5": [
+            13.0,
+            0.55
+          ],
+          "Top5": [
+            13.0,
+            0.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "floor",
+            "seg": [
+              "FL",
+              "FR"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "Z",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "column0",
+            "poly": [
+              "BL0",
+              "BR0",
+              "TR0",
+              "TL0"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp0",
+            "label": "2^{3}",
+            "at": "E0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "val0",
+            "label": "8",
+            "at": "V0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "arrow0",
+            "vector": [
+              "A0",
+              "B0"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": false
+          },
+          {
+            "id": "divide0",
+            "label": "\\div2",
+            "at": "D0",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "column1",
+            "poly": [
+              "BL1",
+              "BR1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "exp1",
+            "label": "2^{2}",
+            "at": "E1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "val1",
+            "label": "4",
+            "at": "V1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "arrow1",
+            "vector": [
+              "A1",
+              "B1"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": false
+          },
+          {
+            "id": "divide1",
+            "label": "\\div2",
+            "at": "D1",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "column2",
+            "poly": [
+              "BL2",
+              "BR2",
+              "TR2",
+              "TL2"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "exp2",
+            "label": "2^{1}",
+            "at": "E2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "val2",
+            "label": "2",
+            "at": "V2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "arrow2",
+            "vector": [
+              "A2",
+              "B2"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": false
+          },
+          {
+            "id": "divide2",
+            "label": "\\div2",
+            "at": "D2",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "column3",
+            "poly": [
+              "BL3",
+              "BR3",
+              "TR3",
+              "TL3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "exp3",
+            "label": "2^{0}",
+            "at": "E3",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "val3",
+            "label": "1",
+            "at": "V3",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "guide3",
+            "seg": [
+              "G3",
+              "Top3"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": false
+          },
+          {
+            "id": "arrow3",
+            "vector": [
+              "A3",
+              "B3"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": false
+          },
+          {
+            "id": "divide3",
+            "label": "\\div2",
+            "at": "D3",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "column4",
+            "poly": [
+              "BL4",
+              "BR4",
+              "TR4",
+              "TL4"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "exp4",
+            "label": "2^{-1}",
+            "at": "E4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "val4",
+            "label": "\\tfrac{1}{2}",
+            "at": "V4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "guide4",
+            "seg": [
+              "G4",
+              "Top4"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": false
+          },
+          {
+            "id": "arrow4",
+            "vector": [
+              "A4",
+              "B4"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": false
+          },
+          {
+            "id": "divide4",
+            "label": "\\div2",
+            "at": "D4",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "column5",
+            "poly": [
+              "BL5",
+              "BR5",
+              "TR5",
+              "TL5"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "exp5",
+            "label": "2^{-2}",
+            "at": "E5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "val5",
+            "label": "\\tfrac{1}{4}",
+            "at": "V5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "guide5",
+            "seg": [
+              "G5",
+              "Top5"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": false
+          },
+          {
+            "id": "walker",
+            "dot": "Walker",
+            "ink": "gold",
+            "r": 10
+          },
+          {
+            "id": "heightLight0",
+            "group": "heightLights",
+            "poly": [
+              "BL0",
+              "BR0",
+              "TR0",
+              "TL0"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "heightLight1",
+            "group": "heightLights",
+            "poly": [
+              "BL1",
+              "BR1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "heightLight2",
+            "group": "heightLights",
+            "poly": [
+              "BL2",
+              "BR2",
+              "TR2",
+              "TL2"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "heightLight3",
+            "group": "heightLights",
+            "poly": [
+              "BL3",
+              "BR3",
+              "TR3",
+              "TL3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "heightLight4",
+            "group": "heightLights",
+            "poly": [
+              "BL4",
+              "BR4",
+              "TR4",
+              "TL4"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "heightLight5",
+            "group": "heightLights",
+            "poly": [
+              "BL5",
+              "BR5",
+              "TR5",
+              "TL5"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two cubed: three twos multiplied together make eight.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "header",
+              "text": "Each step halves the height"
+            },
+            {
+              "do": "write",
+              "tex": "2^3=2\\times2\\times2",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "val0",
+              "at": "eight"
+            },
+            {
+              "do": "write",
+              "tex": "=8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two is the base. The raised three is the exponent.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Base: 2. Exponent: 3.",
+              "at": "base"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two squared. Divide by two: four. Half the height.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "show",
+              "target": "exp1",
+              "at": "squared"
+            },
+            {
+              "do": "show",
+              "target": [
+                "arrow0",
+                "divide0"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "turn",
+              "target": "arrow0",
+              "about": "A0",
+              "deg": -25,
+              "dur": 0.8,
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": [
+                "column1",
+                "val1"
+              ],
+              "dur": 0.65,
+              "at": "four"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "8\\div2=4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two to the first. Divide by two: two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "show",
+              "target": "exp2",
+              "at": "first"
+            },
+            {
+              "do": "show",
+              "target": [
+                "arrow1",
+                "divide1"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "turn",
+              "target": "arrow1",
+              "about": "A1",
+              "deg": -25,
+              "dur": 0.8,
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": [
+                "column2",
+                "val2"
+              ],
+              "dur": 0.65,
+              "at": "two",
+              "nth": 3
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^1=2",
+              "at": "first"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The exponent drops by one; the height halves. What happens at exponent zero?",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Exponent: subtract 1"
+            },
+            {
+              "do": "text",
+              "text": "Value: divide by 2",
+              "at": "height"
+            },
+            {
+              "do": "show",
+              "target": "exp3",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Divide two by two. One. Height one, not zero.",
+          "pause": 0.65,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "arrow2",
+                "divide2"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "turn",
+              "target": "arrow2",
+              "about": "A2",
+              "deg": -25,
+              "dur": 0.8,
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": [
+                "column3",
+                "val3",
+                "guide3"
+              ],
+              "dur": 0.65,
+              "at": "One"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^0=2\\div2=1",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two to the negative one.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "show",
+              "target": "exp4",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Divide one by two. One half.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "arrow3",
+                "divide3"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "turn",
+              "target": "arrow3",
+              "about": "A3",
+              "deg": -25,
+              "dur": 0.8,
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": [
+                "column4",
+                "val4",
+                "guide4"
+              ],
+              "dur": 0.65,
+              "at": "half"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^{-1}=1\\div2=\\frac12",
+              "at": "half"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two to the negative two.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "show",
+              "target": "exp5",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Divide by two again. One fourth.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "arrow4",
+                "divide4"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "turn",
+              "target": "arrow4",
+              "about": "A4",
+              "deg": -25,
+              "dur": 0.8,
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": [
+                "column5",
+                "val5",
+                "guide5"
+              ],
+              "dur": 0.65,
+              "at": "fourth"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^{-2}=\\frac12\\div2=\\frac14",
+              "at": "fourth"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The exponents pass zero. These heights stay positive, never reaching the floor.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "These values stay positive.",
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "heightLights",
+              "at": "heights",
+              "dur": 0.2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Read that last step as a journey from one. Divide once. Divide twice.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "hide",
+              "target": "heightLights",
+              "dur": 0.2
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^{-2}=1\\div2\\div2",
+              "at": "journey"
+            },
+            {
+              "do": "show",
+              "target": "walker",
+              "at": "one"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Walker": [
+                  10.4,
+                  0.8
+                ]
+              },
+              "dur": 0.7,
+              "at": "once"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Walker": [
+                  13,
+                  0.55
+                ]
+              },
+              "dur": 0.7,
+              "at": "twice"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two divisions put two twos underneath the one: one over two squared.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "hide",
+              "target": "walker"
+            },
+            {
+              "do": "write",
+              "tex": "=\\frac{1}{2\\times2}",
+              "at": "divisions"
+            },
+            {
+              "do": "write",
+              "tex": "=\\frac{1}{2^2}",
+              "at": "squared",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "arrow3",
+                "arrow4"
+              ],
+              "at": "divisions"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "That is the reciprocal of four: the number that multiplies by four to make one.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "2^{-2}=\\frac14"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac14\\times4=1",
+              "at": "multiplies"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "With base *a*, negative *n* counts divisions: one over *a* to the power *n*.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Count divisions from 1"
+            },
+            {
+              "do": "answer",
+              "tex": "a^{-n}=\\frac1{a^n}",
+              "at": "negative"
+            },
+            {
+              "do": "text",
+              "text": "$n=1,2,3,\\ldots$",
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The base cannot be zero: dividing by zero is undefined.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "text",
+              "text": "$a\\ne0$",
+              "at": "zero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.5,
+          -10,
+          12.1,
+          5.5
+        ],
+        "points": {
+          "L": [
+            -1.2,
+            0
+          ],
+          "R": [
+            12.0,
+            0
+          ],
+          "Zero": [
+            -1.08,
+            -0.7
+          ],
+          "Title": [
+            5.3999999999999995,
+            4.8
+          ],
+          "BL0": [
+            -0.72,
+            0
+          ],
+          "BR0": [
+            0.72,
+            0
+          ],
+          "TR0": [
+            0.72,
+            0.3
+          ],
+          "TL0": [
+            -0.72,
+            0.3
+          ],
+          "V0": [
+            0.0,
+            1.3
+          ],
+          "BL1": [
+            2.88,
+            0
+          ],
+          "BR1": [
+            4.32,
+            0
+          ],
+          "TR1": [
+            4.32,
+            -0.8999999999999999
+          ],
+          "TL1": [
+            2.88,
+            -0.8999999999999999
+          ],
+          "V1": [
+            3.5999999999999996,
+            -1.9
+          ],
+          "T1": [
+            1.45,
+            -3.5
+          ],
+          "AA1": [
+            0.67,
+            -4.5
+          ],
+          "AB1": [
+            2.23,
+            -4.5
+          ],
+          "BL2": [
+            6.48,
+            0
+          ],
+          "BR2": [
+            7.919999999999999,
+            0
+          ],
+          "TR2": [
+            7.919999999999999,
+            2.6999999999999997
+          ],
+          "TL2": [
+            6.48,
+            2.6999999999999997
+          ],
+          "V2": [
+            7.199999999999999,
+            3.6999999999999997
+          ],
+          "T2": [
+            5.05,
+            -3.5
+          ],
+          "AA2": [
+            4.27,
+            -4.5
+          ],
+          "AB2": [
+            5.83,
+            -4.5
+          ],
+          "BL3": [
+            10.08,
+            0
+          ],
+          "BR3": [
+            11.52,
+            0
+          ],
+          "TR3": [
+            11.52,
+            -8.1
+          ],
+          "TL3": [
+            10.08,
+            -8.1
+          ],
+          "V3": [
+            10.799999999999999,
+            -9.1
+          ],
+          "T3": [
+            8.65,
+            -3.5
+          ],
+          "AA3": [
+            7.87,
+            -4.5
+          ],
+          "AB3": [
+            9.43,
+            -4.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "z",
+            "label": "0",
+            "at": "Zero",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "title",
+            "label": "\\text{Build }(-3)^3",
+            "at": "Title",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bar0",
+            "poly": [
+              "BL0",
+              "BR0",
+              "TR0",
+              "TL0"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "v0",
+            "label": "1",
+            "at": "V0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "bar1",
+            "poly": [
+              "BL1",
+              "BR1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "v1",
+            "label": "-3",
+            "at": "V1",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "times1",
+            "label": "\\times(-3)",
+            "at": "T1",
+            "dir": "c",
+            "size": "s",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "arr1",
+            "vector": [
+              "AA1",
+              "AB1"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "bar2",
+            "poly": [
+              "BL2",
+              "BR2",
+              "TR2",
+              "TL2"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "v2",
+            "label": "9",
+            "at": "V2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "times2",
+            "label": "\\times(-3)",
+            "at": "T2",
+            "dir": "c",
+            "size": "s",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "arr2",
+            "vector": [
+              "AA2",
+              "AB2"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "bar3",
+            "poly": [
+              "BL3",
+              "BR3",
+              "TR3",
+              "TL3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "v3",
+            "label": "-27",
+            "at": "V3",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "times3",
+            "label": "\\times(-3)",
+            "at": "T3",
+            "dir": "c",
+            "size": "s",
+            "ink": "gold",
+            "start": false
+          },
+          {
+            "id": "arr3",
+            "vector": [
+              "AA3",
+              "AB3"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "baseLight",
+            "poly": [
+              "BL1",
+              "BR1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Negative three, in parentheses, to the negative third.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Evaluate $(-3)^{-3}$."
+            },
+            {
+              "do": "write",
+              "tex": "(-3)^{-3}=\\frac1{(-3)^3}",
+              "at": "third"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Keep the minus inside. The denominator has three factors of negative three.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(-3)(-3)(-3)"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Start at one. Multiply by negative three: negative three.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "times1",
+                "arr1"
+              ],
+              "at": "Multiply"
+            },
+            {
+              "do": "show",
+              "nth": 2,
+              "target": [
+                "bar1",
+                "v1"
+              ],
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Times negative three again: positive nine. Once more: negative twenty-seven.",
+          "pause": 0.65,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "times2",
+                "arr2"
+              ],
+              "at": "Times"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bar2",
+                "v2"
+              ],
+              "at": "nine"
+            },
+            {
+              "do": "write",
+              "tex": "9(-3)",
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": [
+                "times3",
+                "arr3"
+              ],
+              "at": "Once"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bar3",
+                "v3"
+              ],
+              "at": "twenty-seven"
+            },
+            {
+              "do": "write",
+              "tex": "=-27",
+              "at": "twenty-seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The reciprocal is negative one twenty-seventh. Its minus comes from the base.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac1{-27}=-\\frac1{27}",
+              "at": "reciprocal"
+            },
+            {
+              "do": "answer",
+              "tex": "(-3)^{-3}=-\\frac1{27}",
+              "at": "twenty-seventh"
+            },
+            {
+              "do": "show",
+              "target": "baseLight",
+              "at": "base",
+              "dur": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -7.3,
+          -3.5,
+          -1.7,
+          4.2
+        ],
+        "points": {
+          "Title": [
+            -4.5,
+            3.6
+          ],
+          "FL0": [
+            -5.6,
+            0
+          ],
+          "FR0": [
+            -3.4,
+            0
+          ],
+          "four0_0_0": [
+            -5.26,
+            0.7
+          ],
+          "four0_0_1": [
+            -4.91,
+            0.7
+          ],
+          "four0_0_2": [
+            -4.91,
+            1.3
+          ],
+          "four0_0_3": [
+            -5.26,
+            1.3
+          ],
+          "four0_1_0": [
+            -4.87,
+            0.7
+          ],
+          "four0_1_1": [
+            -4.5200000000000005,
+            0.7
+          ],
+          "four0_1_2": [
+            -4.5200000000000005,
+            1.3
+          ],
+          "four0_1_3": [
+            -4.87,
+            1.3
+          ],
+          "four0_2_0": [
+            -4.4799999999999995,
+            0.7
+          ],
+          "four0_2_1": [
+            -4.13,
+            0.7
+          ],
+          "four0_2_2": [
+            -4.13,
+            1.3
+          ],
+          "four0_2_3": [
+            -4.4799999999999995,
+            1.3
+          ],
+          "four0_3_0": [
+            -4.09,
+            0.7
+          ],
+          "four0_3_1": [
+            -3.74,
+            0.7
+          ],
+          "four0_3_2": [
+            -3.74,
+            1.3
+          ],
+          "four0_3_3": [
+            -4.09,
+            1.3
+          ],
+          "Nfour0": [
+            -4.5,
+            2.3
+          ],
+          "five0_0_0": [
+            -5.455,
+            -1.3
+          ],
+          "five0_0_1": [
+            -5.105,
+            -1.3
+          ],
+          "five0_0_2": [
+            -5.105,
+            -0.7
+          ],
+          "five0_0_3": [
+            -5.455,
+            -0.7
+          ],
+          "five0_1_0": [
+            -5.0649999999999995,
+            -1.3
+          ],
+          "five0_1_1": [
+            -4.715,
+            -1.3
+          ],
+          "five0_1_2": [
+            -4.715,
+            -0.7
+          ],
+          "five0_1_3": [
+            -5.0649999999999995,
+            -0.7
+          ],
+          "five0_2_0": [
+            -4.675,
+            -1.3
+          ],
+          "five0_2_1": [
+            -4.325,
+            -1.3
+          ],
+          "five0_2_2": [
+            -4.325,
+            -0.7
+          ],
+          "five0_2_3": [
+            -4.675,
+            -0.7
+          ],
+          "five0_3_0": [
+            -4.285,
+            -1.3
+          ],
+          "five0_3_1": [
+            -3.9350000000000005,
+            -1.3
+          ],
+          "five0_3_2": [
+            -3.9350000000000005,
+            -0.7
+          ],
+          "five0_3_3": [
+            -4.285,
+            -0.7
+          ],
+          "five0_4_0": [
+            -3.8949999999999996,
+            -1.3
+          ],
+          "five0_4_1": [
+            -3.545,
+            -1.3
+          ],
+          "five0_4_2": [
+            -3.545,
+            -0.7
+          ],
+          "five0_4_3": [
+            -3.8949999999999996,
+            -0.7
+          ],
+          "Nfive0": [
+            -4.5,
+            -2.3
+          ],
+          "NewFour": [
+            -4.5,
+            -2.3
+          ],
+          "NewFive": [
+            -4.5,
+            2.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "label": "\\text{The reciprocal}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "line0",
+            "seg": [
+              "FL0",
+              "FR0"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "four0_0",
+            "group": "four0",
+            "poly": [
+              "four0_0_0",
+              "four0_0_1",
+              "four0_0_2",
+              "four0_0_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_1",
+            "group": "four0",
+            "poly": [
+              "four0_1_0",
+              "four0_1_1",
+              "four0_1_2",
+              "four0_1_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_2",
+            "group": "four0",
+            "poly": [
+              "four0_2_0",
+              "four0_2_1",
+              "four0_2_2",
+              "four0_2_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_3",
+            "group": "four0",
+            "poly": [
+              "four0_3_0",
+              "four0_3_1",
+              "four0_3_2",
+              "four0_3_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "nfour0",
+            "label": "4",
+            "at": "Nfour0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "five0_0",
+            "group": "five0",
+            "poly": [
+              "five0_0_0",
+              "five0_0_1",
+              "five0_0_2",
+              "five0_0_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_1",
+            "group": "five0",
+            "poly": [
+              "five0_1_0",
+              "five0_1_1",
+              "five0_1_2",
+              "five0_1_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_2",
+            "group": "five0",
+            "poly": [
+              "five0_2_0",
+              "five0_2_1",
+              "five0_2_2",
+              "five0_2_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_3",
+            "group": "five0",
+            "poly": [
+              "five0_3_0",
+              "five0_3_1",
+              "five0_3_2",
+              "five0_3_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_4",
+            "group": "five0",
+            "poly": [
+              "five0_4_0",
+              "five0_4_1",
+              "five0_4_2",
+              "five0_4_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "nfive0",
+            "label": "5",
+            "at": "Nfive0",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "swappedFour",
+            "label": "4",
+            "at": "NewFour",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "swappedFive",
+            "label": "5",
+            "at": "NewFive",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "For four fifths to the negative fourth, divide by four fifths four times.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Evaluate $\\left(\\frac45\\right)^{-4}$."
+            },
+            {
+              "do": "write",
+              "tex": "1\\div\\frac45\\div\\frac45\\div\\frac45\\div\\frac45",
+              "at": "divide"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Dividing by four fifths means multiplying by five fourths. Swap top and bottom.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "1\\div\\frac45=1\\times\\frac54",
+              "at": "multiplying"
+            },
+            {
+              "do": "move",
+              "points": {
+                "four0_0_0": [
+                  -5.26,
+                  -1.3
+                ],
+                "four0_0_1": [
+                  -4.91,
+                  -1.3
+                ],
+                "four0_0_2": [
+                  -4.91,
+                  -0.7
+                ],
+                "four0_0_3": [
+                  -5.26,
+                  -0.7
+                ],
+                "four0_1_0": [
+                  -4.87,
+                  -1.3
+                ],
+                "four0_1_1": [
+                  -4.5200000000000005,
+                  -1.3
+                ],
+                "four0_1_2": [
+                  -4.5200000000000005,
+                  -0.7
+                ],
+                "four0_1_3": [
+                  -4.87,
+                  -0.7
+                ],
+                "four0_2_0": [
+                  -4.4799999999999995,
+                  -1.3
+                ],
+                "four0_2_1": [
+                  -4.13,
+                  -1.3
+                ],
+                "four0_2_2": [
+                  -4.13,
+                  -0.7
+                ],
+                "four0_2_3": [
+                  -4.4799999999999995,
+                  -0.7
+                ],
+                "four0_3_0": [
+                  -4.09,
+                  -1.3
+                ],
+                "four0_3_1": [
+                  -3.74,
+                  -1.3
+                ],
+                "four0_3_2": [
+                  -3.74,
+                  -0.7
+                ],
+                "four0_3_3": [
+                  -4.09,
+                  -0.7
+                ],
+                "five0_0_0": [
+                  -5.455,
+                  0.7
+                ],
+                "five0_0_1": [
+                  -5.105,
+                  0.7
+                ],
+                "five0_0_2": [
+                  -5.105,
+                  1.3
+                ],
+                "five0_0_3": [
+                  -5.455,
+                  1.3
+                ],
+                "five0_1_0": [
+                  -5.0649999999999995,
+                  0.7
+                ],
+                "five0_1_1": [
+                  -4.715,
+                  0.7
+                ],
+                "five0_1_2": [
+                  -4.715,
+                  1.3
+                ],
+                "five0_1_3": [
+                  -5.0649999999999995,
+                  1.3
+                ],
+                "five0_2_0": [
+                  -4.675,
+                  0.7
+                ],
+                "five0_2_1": [
+                  -4.325,
+                  0.7
+                ],
+                "five0_2_2": [
+                  -4.325,
+                  1.3
+                ],
+                "five0_2_3": [
+                  -4.675,
+                  1.3
+                ],
+                "five0_3_0": [
+                  -4.285,
+                  0.7
+                ],
+                "five0_3_1": [
+                  -3.9350000000000005,
+                  0.7
+                ],
+                "five0_3_2": [
+                  -3.9350000000000005,
+                  1.3
+                ],
+                "five0_3_3": [
+                  -4.285,
+                  1.3
+                ],
+                "five0_4_0": [
+                  -3.8949999999999996,
+                  0.7
+                ],
+                "five0_4_1": [
+                  -3.545,
+                  0.7
+                ],
+                "five0_4_2": [
+                  -3.545,
+                  1.3
+                ],
+                "five0_4_3": [
+                  -3.8949999999999996,
+                  1.3
+                ]
+              },
+              "dur": 1.4,
+              "at": "Swap"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "nfour0",
+                "nfive0"
+              ],
+              "at": "Swap"
+            },
+            {
+              "do": "show",
+              "target": [
+                "swappedFour",
+                "swappedFive"
+              ],
+              "at": "bottom"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.3,
+          -3.7,
+          6.3,
+          4.2
+        ],
+        "points": {
+          "Title": [
+            0,
+            3.8
+          ],
+          "FL0": [
+            -5.6,
+            0
+          ],
+          "FR0": [
+            -3.4,
+            0
+          ],
+          "four0_0_0": [
+            -5.26,
+            -0.7
+          ],
+          "four0_0_1": [
+            -4.91,
+            -0.7
+          ],
+          "four0_0_2": [
+            -4.91,
+            -1.3
+          ],
+          "four0_0_3": [
+            -5.26,
+            -1.3
+          ],
+          "four0_1_0": [
+            -4.87,
+            -0.7
+          ],
+          "four0_1_1": [
+            -4.5200000000000005,
+            -0.7
+          ],
+          "four0_1_2": [
+            -4.5200000000000005,
+            -1.3
+          ],
+          "four0_1_3": [
+            -4.87,
+            -1.3
+          ],
+          "four0_2_0": [
+            -4.4799999999999995,
+            -0.7
+          ],
+          "four0_2_1": [
+            -4.13,
+            -0.7
+          ],
+          "four0_2_2": [
+            -4.13,
+            -1.3
+          ],
+          "four0_2_3": [
+            -4.4799999999999995,
+            -1.3
+          ],
+          "four0_3_0": [
+            -4.09,
+            -0.7
+          ],
+          "four0_3_1": [
+            -3.74,
+            -0.7
+          ],
+          "four0_3_2": [
+            -3.74,
+            -1.3
+          ],
+          "four0_3_3": [
+            -4.09,
+            -1.3
+          ],
+          "Nfour0": [
+            -4.5,
+            -2.3
+          ],
+          "five0_0_0": [
+            -5.455,
+            1.3
+          ],
+          "five0_0_1": [
+            -5.105,
+            1.3
+          ],
+          "five0_0_2": [
+            -5.105,
+            0.7
+          ],
+          "five0_0_3": [
+            -5.455,
+            0.7
+          ],
+          "five0_1_0": [
+            -5.0649999999999995,
+            1.3
+          ],
+          "five0_1_1": [
+            -4.715,
+            1.3
+          ],
+          "five0_1_2": [
+            -4.715,
+            0.7
+          ],
+          "five0_1_3": [
+            -5.0649999999999995,
+            0.7
+          ],
+          "five0_2_0": [
+            -4.675,
+            1.3
+          ],
+          "five0_2_1": [
+            -4.325,
+            1.3
+          ],
+          "five0_2_2": [
+            -4.325,
+            0.7
+          ],
+          "five0_2_3": [
+            -4.675,
+            0.7
+          ],
+          "five0_3_0": [
+            -4.285,
+            1.3
+          ],
+          "five0_3_1": [
+            -3.9350000000000005,
+            1.3
+          ],
+          "five0_3_2": [
+            -3.9350000000000005,
+            0.7
+          ],
+          "five0_3_3": [
+            -4.285,
+            0.7
+          ],
+          "five0_4_0": [
+            -3.8949999999999996,
+            1.3
+          ],
+          "five0_4_1": [
+            -3.545,
+            1.3
+          ],
+          "five0_4_2": [
+            -3.545,
+            0.7
+          ],
+          "five0_4_3": [
+            -3.8949999999999996,
+            0.7
+          ],
+          "Nfive0": [
+            -4.5,
+            2.3
+          ],
+          "M0": [
+            -3.0,
+            0
+          ],
+          "FL1": [
+            -2.6,
+            0
+          ],
+          "FR1": [
+            -0.3999999999999999,
+            0
+          ],
+          "four1_0_0": [
+            -2.26,
+            -1.3
+          ],
+          "four1_0_1": [
+            -1.91,
+            -1.3
+          ],
+          "four1_0_2": [
+            -1.91,
+            -0.7
+          ],
+          "four1_0_3": [
+            -2.26,
+            -0.7
+          ],
+          "four1_1_0": [
+            -1.87,
+            -1.3
+          ],
+          "four1_1_1": [
+            -1.52,
+            -1.3
+          ],
+          "four1_1_2": [
+            -1.52,
+            -0.7
+          ],
+          "four1_1_3": [
+            -1.87,
+            -0.7
+          ],
+          "four1_2_0": [
+            -1.48,
+            -1.3
+          ],
+          "four1_2_1": [
+            -1.13,
+            -1.3
+          ],
+          "four1_2_2": [
+            -1.13,
+            -0.7
+          ],
+          "four1_2_3": [
+            -1.48,
+            -0.7
+          ],
+          "four1_3_0": [
+            -1.09,
+            -1.3
+          ],
+          "four1_3_1": [
+            -0.74,
+            -1.3
+          ],
+          "four1_3_2": [
+            -0.74,
+            -0.7
+          ],
+          "four1_3_3": [
+            -1.09,
+            -0.7
+          ],
+          "Nfour1": [
+            -1.5,
+            -2.3
+          ],
+          "five1_0_0": [
+            -2.455,
+            0.7
+          ],
+          "five1_0_1": [
+            -2.1050000000000004,
+            0.7
+          ],
+          "five1_0_2": [
+            -2.1050000000000004,
+            1.3
+          ],
+          "five1_0_3": [
+            -2.455,
+            1.3
+          ],
+          "five1_1_0": [
+            -2.065,
+            0.7
+          ],
+          "five1_1_1": [
+            -1.715,
+            0.7
+          ],
+          "five1_1_2": [
+            -1.715,
+            1.3
+          ],
+          "five1_1_3": [
+            -2.065,
+            1.3
+          ],
+          "five1_2_0": [
+            -1.675,
+            0.7
+          ],
+          "five1_2_1": [
+            -1.325,
+            0.7
+          ],
+          "five1_2_2": [
+            -1.325,
+            1.3
+          ],
+          "five1_2_3": [
+            -1.675,
+            1.3
+          ],
+          "five1_3_0": [
+            -1.285,
+            0.7
+          ],
+          "five1_3_1": [
+            -0.9349999999999998,
+            0.7
+          ],
+          "five1_3_2": [
+            -0.9349999999999998,
+            1.3
+          ],
+          "five1_3_3": [
+            -1.285,
+            1.3
+          ],
+          "five1_4_0": [
+            -0.895,
+            0.7
+          ],
+          "five1_4_1": [
+            -0.5449999999999999,
+            0.7
+          ],
+          "five1_4_2": [
+            -0.5449999999999999,
+            1.3
+          ],
+          "five1_4_3": [
+            -0.895,
+            1.3
+          ],
+          "Nfive1": [
+            -1.5,
+            2.3
+          ],
+          "M1": [
+            0.0,
+            0
+          ],
+          "FL2": [
+            0.3999999999999999,
+            0
+          ],
+          "FR2": [
+            2.6,
+            0
+          ],
+          "four2_0_0": [
+            0.74,
+            -1.3
+          ],
+          "four2_0_1": [
+            1.09,
+            -1.3
+          ],
+          "four2_0_2": [
+            1.09,
+            -0.7
+          ],
+          "four2_0_3": [
+            0.74,
+            -0.7
+          ],
+          "four2_1_0": [
+            1.13,
+            -1.3
+          ],
+          "four2_1_1": [
+            1.48,
+            -1.3
+          ],
+          "four2_1_2": [
+            1.48,
+            -0.7
+          ],
+          "four2_1_3": [
+            1.13,
+            -0.7
+          ],
+          "four2_2_0": [
+            1.52,
+            -1.3
+          ],
+          "four2_2_1": [
+            1.87,
+            -1.3
+          ],
+          "four2_2_2": [
+            1.87,
+            -0.7
+          ],
+          "four2_2_3": [
+            1.52,
+            -0.7
+          ],
+          "four2_3_0": [
+            1.91,
+            -1.3
+          ],
+          "four2_3_1": [
+            2.26,
+            -1.3
+          ],
+          "four2_3_2": [
+            2.26,
+            -0.7
+          ],
+          "four2_3_3": [
+            1.91,
+            -0.7
+          ],
+          "Nfour2": [
+            1.5,
+            -2.3
+          ],
+          "five2_0_0": [
+            0.5449999999999999,
+            0.7
+          ],
+          "five2_0_1": [
+            0.895,
+            0.7
+          ],
+          "five2_0_2": [
+            0.895,
+            1.3
+          ],
+          "five2_0_3": [
+            0.5449999999999999,
+            1.3
+          ],
+          "five2_1_0": [
+            0.9349999999999998,
+            0.7
+          ],
+          "five2_1_1": [
+            1.285,
+            0.7
+          ],
+          "five2_1_2": [
+            1.285,
+            1.3
+          ],
+          "five2_1_3": [
+            0.9349999999999998,
+            1.3
+          ],
+          "five2_2_0": [
+            1.325,
+            0.7
+          ],
+          "five2_2_1": [
+            1.675,
+            0.7
+          ],
+          "five2_2_2": [
+            1.675,
+            1.3
+          ],
+          "five2_2_3": [
+            1.325,
+            1.3
+          ],
+          "five2_3_0": [
+            1.715,
+            0.7
+          ],
+          "five2_3_1": [
+            2.065,
+            0.7
+          ],
+          "five2_3_2": [
+            2.065,
+            1.3
+          ],
+          "five2_3_3": [
+            1.715,
+            1.3
+          ],
+          "five2_4_0": [
+            2.1050000000000004,
+            0.7
+          ],
+          "five2_4_1": [
+            2.455,
+            0.7
+          ],
+          "five2_4_2": [
+            2.455,
+            1.3
+          ],
+          "five2_4_3": [
+            2.1050000000000004,
+            1.3
+          ],
+          "Nfive2": [
+            1.5,
+            2.3
+          ],
+          "M2": [
+            3.0,
+            0
+          ],
+          "FL3": [
+            3.4,
+            0
+          ],
+          "FR3": [
+            5.6,
+            0
+          ],
+          "four3_0_0": [
+            3.74,
+            -1.3
+          ],
+          "four3_0_1": [
+            4.09,
+            -1.3
+          ],
+          "four3_0_2": [
+            4.09,
+            -0.7
+          ],
+          "four3_0_3": [
+            3.74,
+            -0.7
+          ],
+          "four3_1_0": [
+            4.13,
+            -1.3
+          ],
+          "four3_1_1": [
+            4.4799999999999995,
+            -1.3
+          ],
+          "four3_1_2": [
+            4.4799999999999995,
+            -0.7
+          ],
+          "four3_1_3": [
+            4.13,
+            -0.7
+          ],
+          "four3_2_0": [
+            4.5200000000000005,
+            -1.3
+          ],
+          "four3_2_1": [
+            4.87,
+            -1.3
+          ],
+          "four3_2_2": [
+            4.87,
+            -0.7
+          ],
+          "four3_2_3": [
+            4.5200000000000005,
+            -0.7
+          ],
+          "four3_3_0": [
+            4.91,
+            -1.3
+          ],
+          "four3_3_1": [
+            5.26,
+            -1.3
+          ],
+          "four3_3_2": [
+            5.26,
+            -0.7
+          ],
+          "four3_3_3": [
+            4.91,
+            -0.7
+          ],
+          "Nfour3": [
+            4.5,
+            -2.3
+          ],
+          "five3_0_0": [
+            3.545,
+            0.7
+          ],
+          "five3_0_1": [
+            3.8949999999999996,
+            0.7
+          ],
+          "five3_0_2": [
+            3.8949999999999996,
+            1.3
+          ],
+          "five3_0_3": [
+            3.545,
+            1.3
+          ],
+          "five3_1_0": [
+            3.9350000000000005,
+            0.7
+          ],
+          "five3_1_1": [
+            4.285,
+            0.7
+          ],
+          "five3_1_2": [
+            4.285,
+            1.3
+          ],
+          "five3_1_3": [
+            3.9350000000000005,
+            1.3
+          ],
+          "five3_2_0": [
+            4.325,
+            0.7
+          ],
+          "five3_2_1": [
+            4.675,
+            0.7
+          ],
+          "five3_2_2": [
+            4.675,
+            1.3
+          ],
+          "five3_2_3": [
+            4.325,
+            1.3
+          ],
+          "five3_3_0": [
+            4.715,
+            0.7
+          ],
+          "five3_3_1": [
+            5.0649999999999995,
+            0.7
+          ],
+          "five3_3_2": [
+            5.0649999999999995,
+            1.3
+          ],
+          "five3_3_3": [
+            4.715,
+            1.3
+          ],
+          "five3_4_0": [
+            5.105,
+            0.7
+          ],
+          "five3_4_1": [
+            5.455,
+            0.7
+          ],
+          "five3_4_2": [
+            5.455,
+            1.3
+          ],
+          "five3_4_3": [
+            5.105,
+            1.3
+          ],
+          "Nfive3": [
+            4.5,
+            2.3
+          ],
+          "fiveFrame0P0": [
+            -5.535,
+            0.6
+          ],
+          "fiveFrame0P1": [
+            -3.465,
+            0.6
+          ],
+          "fiveFrame0P2": [
+            -3.465,
+            1.4
+          ],
+          "fiveFrame0P3": [
+            -5.535,
+            1.4
+          ],
+          "fiveFrame1P0": [
+            -2.535,
+            0.6
+          ],
+          "fiveFrame1P1": [
+            -0.465,
+            0.6
+          ],
+          "fiveFrame1P2": [
+            -0.465,
+            1.4
+          ],
+          "fiveFrame1P3": [
+            -2.535,
+            1.4
+          ],
+          "fiveFrame2P0": [
+            0.465,
+            0.6
+          ],
+          "fiveFrame2P1": [
+            2.535,
+            0.6
+          ],
+          "fiveFrame2P2": [
+            2.535,
+            1.4
+          ],
+          "fiveFrame2P3": [
+            0.465,
+            1.4
+          ],
+          "fiveFrame3P0": [
+            3.465,
+            0.6
+          ],
+          "fiveFrame3P1": [
+            5.535,
+            0.6
+          ],
+          "fiveFrame3P2": [
+            5.535,
+            1.4
+          ],
+          "fiveFrame3P3": [
+            3.465,
+            1.4
+          ],
+          "fourFrame0P0": [
+            -5.34,
+            -1.4
+          ],
+          "fourFrame0P1": [
+            -3.66,
+            -1.4
+          ],
+          "fourFrame0P2": [
+            -3.66,
+            -0.6
+          ],
+          "fourFrame0P3": [
+            -5.34,
+            -0.6
+          ],
+          "fourFrame1P0": [
+            -2.34,
+            -1.4
+          ],
+          "fourFrame1P1": [
+            -0.66,
+            -1.4
+          ],
+          "fourFrame1P2": [
+            -0.66,
+            -0.6
+          ],
+          "fourFrame1P3": [
+            -2.34,
+            -0.6
+          ],
+          "fourFrame2P0": [
+            0.66,
+            -1.4
+          ],
+          "fourFrame2P1": [
+            2.34,
+            -1.4
+          ],
+          "fourFrame2P2": [
+            2.34,
+            -0.6
+          ],
+          "fourFrame2P3": [
+            0.66,
+            -0.6
+          ],
+          "fourFrame3P0": [
+            3.66,
+            -1.4
+          ],
+          "fourFrame3P1": [
+            5.34,
+            -1.4
+          ],
+          "fourFrame3P2": [
+            5.34,
+            -0.6
+          ],
+          "fourFrame3P3": [
+            3.66,
+            -0.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "label": "\\text{Four factors of }\\frac54",
+            "at": "Title",
+            "dir": "c",
+            "size": "m",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "line0",
+            "seg": [
+              "FL0",
+              "FR0"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "four0_0",
+            "group": "four0",
+            "poly": [
+              "four0_0_0",
+              "four0_0_1",
+              "four0_0_2",
+              "four0_0_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_1",
+            "group": "four0",
+            "poly": [
+              "four0_1_0",
+              "four0_1_1",
+              "four0_1_2",
+              "four0_1_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_2",
+            "group": "four0",
+            "poly": [
+              "four0_2_0",
+              "four0_2_1",
+              "four0_2_2",
+              "four0_2_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "four0_3",
+            "group": "four0",
+            "poly": [
+              "four0_3_0",
+              "four0_3_1",
+              "four0_3_2",
+              "four0_3_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "nfour0",
+            "label": "4",
+            "at": "Nfour0",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "five0_0",
+            "group": "five0",
+            "poly": [
+              "five0_0_0",
+              "five0_0_1",
+              "five0_0_2",
+              "five0_0_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_1",
+            "group": "five0",
+            "poly": [
+              "five0_1_0",
+              "five0_1_1",
+              "five0_1_2",
+              "five0_1_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_2",
+            "group": "five0",
+            "poly": [
+              "five0_2_0",
+              "five0_2_1",
+              "five0_2_2",
+              "five0_2_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_3",
+            "group": "five0",
+            "poly": [
+              "five0_3_0",
+              "five0_3_1",
+              "five0_3_2",
+              "five0_3_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "five0_4",
+            "group": "five0",
+            "poly": [
+              "five0_4_0",
+              "five0_4_1",
+              "five0_4_2",
+              "five0_4_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "nfive0",
+            "label": "5",
+            "at": "Nfive0",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "mul0",
+            "label": "\\times",
+            "at": "M0",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": false
+          },
+          {
+            "id": "line1",
+            "seg": [
+              "FL1",
+              "FR1"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "four1_0",
+            "group": "four1",
+            "poly": [
+              "four1_0_0",
+              "four1_0_1",
+              "four1_0_2",
+              "four1_0_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four1_1",
+            "group": "four1",
+            "poly": [
+              "four1_1_0",
+              "four1_1_1",
+              "four1_1_2",
+              "four1_1_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four1_2",
+            "group": "four1",
+            "poly": [
+              "four1_2_0",
+              "four1_2_1",
+              "four1_2_2",
+              "four1_2_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four1_3",
+            "group": "four1",
+            "poly": [
+              "four1_3_0",
+              "four1_3_1",
+              "four1_3_2",
+              "four1_3_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfour1",
+            "label": "4",
+            "at": "Nfour1",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "five1_0",
+            "group": "five1",
+            "poly": [
+              "five1_0_0",
+              "five1_0_1",
+              "five1_0_2",
+              "five1_0_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five1_1",
+            "group": "five1",
+            "poly": [
+              "five1_1_0",
+              "five1_1_1",
+              "five1_1_2",
+              "five1_1_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five1_2",
+            "group": "five1",
+            "poly": [
+              "five1_2_0",
+              "five1_2_1",
+              "five1_2_2",
+              "five1_2_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five1_3",
+            "group": "five1",
+            "poly": [
+              "five1_3_0",
+              "five1_3_1",
+              "five1_3_2",
+              "five1_3_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five1_4",
+            "group": "five1",
+            "poly": [
+              "five1_4_0",
+              "five1_4_1",
+              "five1_4_2",
+              "five1_4_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfive1",
+            "label": "5",
+            "at": "Nfive1",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "mul1",
+            "label": "\\times",
+            "at": "M1",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": false
+          },
+          {
+            "id": "line2",
+            "seg": [
+              "FL2",
+              "FR2"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "four2_0",
+            "group": "four2",
+            "poly": [
+              "four2_0_0",
+              "four2_0_1",
+              "four2_0_2",
+              "four2_0_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four2_1",
+            "group": "four2",
+            "poly": [
+              "four2_1_0",
+              "four2_1_1",
+              "four2_1_2",
+              "four2_1_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four2_2",
+            "group": "four2",
+            "poly": [
+              "four2_2_0",
+              "four2_2_1",
+              "four2_2_2",
+              "four2_2_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four2_3",
+            "group": "four2",
+            "poly": [
+              "four2_3_0",
+              "four2_3_1",
+              "four2_3_2",
+              "four2_3_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfour2",
+            "label": "4",
+            "at": "Nfour2",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "five2_0",
+            "group": "five2",
+            "poly": [
+              "five2_0_0",
+              "five2_0_1",
+              "five2_0_2",
+              "five2_0_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five2_1",
+            "group": "five2",
+            "poly": [
+              "five2_1_0",
+              "five2_1_1",
+              "five2_1_2",
+              "five2_1_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five2_2",
+            "group": "five2",
+            "poly": [
+              "five2_2_0",
+              "five2_2_1",
+              "five2_2_2",
+              "five2_2_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five2_3",
+            "group": "five2",
+            "poly": [
+              "five2_3_0",
+              "five2_3_1",
+              "five2_3_2",
+              "five2_3_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five2_4",
+            "group": "five2",
+            "poly": [
+              "five2_4_0",
+              "five2_4_1",
+              "five2_4_2",
+              "five2_4_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfive2",
+            "label": "5",
+            "at": "Nfive2",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "mul2",
+            "label": "\\times",
+            "at": "M2",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": false
+          },
+          {
+            "id": "line3",
+            "seg": [
+              "FL3",
+              "FR3"
+            ],
+            "ink": "ink",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "four3_0",
+            "group": "four3",
+            "poly": [
+              "four3_0_0",
+              "four3_0_1",
+              "four3_0_2",
+              "four3_0_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four3_1",
+            "group": "four3",
+            "poly": [
+              "four3_1_0",
+              "four3_1_1",
+              "four3_1_2",
+              "four3_1_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four3_2",
+            "group": "four3",
+            "poly": [
+              "four3_2_0",
+              "four3_2_1",
+              "four3_2_2",
+              "four3_2_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "four3_3",
+            "group": "four3",
+            "poly": [
+              "four3_3_0",
+              "four3_3_1",
+              "four3_3_2",
+              "four3_3_3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfour3",
+            "label": "4",
+            "at": "Nfour3",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": false
+          },
+          {
+            "id": "five3_0",
+            "group": "five3",
+            "poly": [
+              "five3_0_0",
+              "five3_0_1",
+              "five3_0_2",
+              "five3_0_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five3_1",
+            "group": "five3",
+            "poly": [
+              "five3_1_0",
+              "five3_1_1",
+              "five3_1_2",
+              "five3_1_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five3_2",
+            "group": "five3",
+            "poly": [
+              "five3_2_0",
+              "five3_2_1",
+              "five3_2_2",
+              "five3_2_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five3_3",
+            "group": "five3",
+            "poly": [
+              "five3_3_0",
+              "five3_3_1",
+              "five3_3_2",
+              "five3_3_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "five3_4",
+            "group": "five3",
+            "poly": [
+              "five3_4_0",
+              "five3_4_1",
+              "five3_4_2",
+              "five3_4_3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 1.5,
+            "solid": true,
+            "start": false
+          },
+          {
+            "id": "nfive3",
+            "label": "5",
+            "at": "Nfive3",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "fiveFrame0",
+            "group": "fiveFrames",
+            "poly": [
+              "fiveFrame0P0",
+              "fiveFrame0P1",
+              "fiveFrame0P2",
+              "fiveFrame0P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fiveFrame1",
+            "group": "fiveFrames",
+            "poly": [
+              "fiveFrame1P0",
+              "fiveFrame1P1",
+              "fiveFrame1P2",
+              "fiveFrame1P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fiveFrame2",
+            "group": "fiveFrames",
+            "poly": [
+              "fiveFrame2P0",
+              "fiveFrame2P1",
+              "fiveFrame2P2",
+              "fiveFrame2P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fiveFrame3",
+            "group": "fiveFrames",
+            "poly": [
+              "fiveFrame3P0",
+              "fiveFrame3P1",
+              "fiveFrame3P2",
+              "fiveFrame3P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fourFrame0",
+            "group": "fourFrames",
+            "poly": [
+              "fourFrame0P0",
+              "fourFrame0P1",
+              "fourFrame0P2",
+              "fourFrame0P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fourFrame1",
+            "group": "fourFrames",
+            "poly": [
+              "fourFrame1P0",
+              "fourFrame1P1",
+              "fourFrame1P2",
+              "fourFrame1P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fourFrame2",
+            "group": "fourFrames",
+            "poly": [
+              "fourFrame2P0",
+              "fourFrame2P1",
+              "fourFrame2P2",
+              "fourFrame2P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "fourFrame3",
+            "group": "fourFrames",
+            "poly": [
+              "fourFrame3P0",
+              "fourFrame3P1",
+              "fourFrame3P2",
+              "fourFrame3P3"
+            ],
+            "fill": "none",
+            "ink": "gold",
+            "w": 4,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Four divisions give four factors of five fourths.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\left(\\frac54\\right)^4",
+              "at": "factors"
+            },
+            {
+              "do": "show",
+              "nth": 2,
+              "target": [
+                "line1",
+                "four1",
+                "five1",
+                "nfour1",
+                "nfive1",
+                "mul0"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "line2",
+                "four2",
+                "five2",
+                "nfour2",
+                "nfive2",
+                "mul1"
+              ],
+              "at": "factors"
+            },
+            {
+              "do": "show",
+              "target": [
+                "line3",
+                "four3",
+                "five3",
+                "nfour3",
+                "nfive3",
+                "mul2"
+              ],
+              "at": "fourths"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four fives multiply on top. Four fours multiply underneath.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "write",
+              "tex": "=\\frac{5^4}{4^4}",
+              "at": "top"
+            },
+            {
+              "do": "show",
+              "target": "fiveFrames",
+              "at": "Four",
+              "dur": 0.15
+            },
+            {
+              "do": "hide",
+              "target": "fiveFrames",
+              "at": "Four",
+              "nth": 2,
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "fourFrames",
+              "at": "Four",
+              "nth": 2,
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Five to the fourth: six hundred twenty-five. Four to the fourth: two hundred fifty-six.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "hide",
+              "target": "fourFrames",
+              "dur": 0.15
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "5^4=625",
+              "at": "twenty-five"
+            },
+            {
+              "do": "write",
+              "tex": "4^4=256",
+              "at": "fifty-six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Six hundred twenty-five over two hundred fifty-six.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "answer",
+              "tex": "\\left(\\frac45\\right)^{-4}=\\frac{625}{256}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.4,
+          -2.4,
+          14.4,
+          10.4
+        ],
+        "points": {
+          "FL": [
+            -1,
+            0
+          ],
+          "FR": [
+            14,
+            0
+          ],
+          "Z": [
+            -0.9,
+            -0.65
+          ],
+          "Walker": [
+            7.8,
+            1.3
+          ],
+          "BL0": [
+            -0.7,
+            0
+          ],
+          "BR0": [
+            0.7,
+            0
+          ],
+          "TR0": [
+            0.7,
+            8
+          ],
+          "TL0": [
+            -0.7,
+            8
+          ],
+          "E0": [
+            0.0,
+            10.1
+          ],
+          "V0": [
+            0.0,
+            8.95
+          ],
+          "G0": [
+            0.0,
+            8.3
+          ],
+          "Top0": [
+            0.0,
+            8
+          ],
+          "A0": [
+            0.85,
+            -0.65
+          ],
+          "B0": [
+            1.665677008332985,
+            -1.0303564355666295
+          ],
+          "D0": [
+            1.3,
+            -1.7
+          ],
+          "BL1": [
+            1.9000000000000001,
+            0
+          ],
+          "BR1": [
+            3.3,
+            0
+          ],
+          "TR1": [
+            3.3,
+            4
+          ],
+          "TL1": [
+            1.9000000000000001,
+            4
+          ],
+          "E1": [
+            2.6,
+            6.1
+          ],
+          "V1": [
+            2.6,
+            4.95
+          ],
+          "G1": [
+            2.6,
+            4.3
+          ],
+          "Top1": [
+            2.6,
+            4
+          ],
+          "A1": [
+            3.45,
+            -0.65
+          ],
+          "B1": [
+            4.265677008332985,
+            -1.0303564355666295
+          ],
+          "D1": [
+            3.9000000000000004,
+            -1.7
+          ],
+          "BL2": [
+            4.5,
+            0
+          ],
+          "BR2": [
+            5.9,
+            0
+          ],
+          "TR2": [
+            5.9,
+            2
+          ],
+          "TL2": [
+            4.5,
+            2
+          ],
+          "E2": [
+            5.2,
+            4.1
+          ],
+          "V2": [
+            5.2,
+            2.95
+          ],
+          "G2": [
+            5.2,
+            2.3
+          ],
+          "Top2": [
+            5.2,
+            2
+          ],
+          "A2": [
+            6.05,
+            -0.65
+          ],
+          "B2": [
+            6.865677008332985,
+            -1.0303564355666295
+          ],
+          "D2": [
+            6.5,
+            -1.7
+          ],
+          "BL3": [
+            7.1000000000000005,
+            0
+          ],
+          "BR3": [
+            8.5,
+            0
+          ],
+          "TR3": [
+            8.5,
+            1
+          ],
+          "TL3": [
+            7.1000000000000005,
+            1
+          ],
+          "E3": [
+            7.800000000000001,
+            3.5
+          ],
+          "V3": [
+            7.800000000000001,
+            2.15
+          ],
+          "G3": [
+            7.800000000000001,
+            1.6
+          ],
+          "Top3": [
+            7.800000000000001,
+            1
+          ],
+          "A3": [
+            8.65,
+            -0.65
+          ],
+          "B3": [
+            9.465677008332985,
+            -1.0303564355666295
+          ],
+          "D3": [
+            9.100000000000001,
+            -1.7
+          ],
+          "BL4": [
+            9.700000000000001,
+            0
+          ],
+          "BR4": [
+            11.1,
+            0
+          ],
+          "TR4": [
+            11.1,
+            0.5
+          ],
+          "TL4": [
+            9.700000000000001,
+            0.5
+          ],
+          "E4": [
+            10.4,
+            3.5
+          ],
+          "V4": [
+            10.4,
+            2.15
+          ],
+          "G4": [
+            10.4,
+            0.8
+          ],
+          "Top4": [
+            10.4,
+            0.5
+          ],
+          "A4": [
+            11.25,
+            -0.65
+          ],
+          "B4": [
+            12.065677008332985,
+            -1.0303564355666295
+          ],
+          "D4": [
+            11.700000000000001,
+            -1.7
+          ],
+          "BL5": [
+            12.3,
+            0
+          ],
+          "BR5": [
+            13.7,
+            0
+          ],
+          "TR5": [
+            13.7,
+            0.25
+          ],
+          "TL5": [
+            12.3,
+            0.25
+          ],
+          "E5": [
+            13.0,
+            3.5
+          ],
+          "V5": [
+            13.0,
+            2.15
+          ],
+          "G5": [
+            13.0,
+            0.55
+          ],
+          "Top5": [
+            13.0,
+            0.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "floor",
+            "seg": [
+              "FL",
+              "FR"
+            ],
+            "ink": "muted",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "Z",
+            "dir": "c",
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "column0",
+            "poly": [
+              "BL0",
+              "BR0",
+              "TR0",
+              "TL0"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp0",
+            "label": "2^{3}",
+            "at": "E0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "val0",
+            "label": "8",
+            "at": "V0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "arrow0",
+            "vector": [
+              "A0",
+              "B0"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "divide0",
+            "label": "\\div2",
+            "at": "D0",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "column1",
+            "poly": [
+              "BL1",
+              "BR1",
+              "TR1",
+              "TL1"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp1",
+            "label": "2^{2}",
+            "at": "E1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "val1",
+            "label": "4",
+            "at": "V1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "arrow1",
+            "vector": [
+              "A1",
+              "B1"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "divide1",
+            "label": "\\div2",
+            "at": "D1",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "column2",
+            "poly": [
+              "BL2",
+              "BR2",
+              "TR2",
+              "TL2"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp2",
+            "label": "2^{1}",
+            "at": "E2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "val2",
+            "label": "2",
+            "at": "V2",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "arrow2",
+            "vector": [
+              "A2",
+              "B2"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "divide2",
+            "label": "\\div2",
+            "at": "D2",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "column3",
+            "poly": [
+              "BL3",
+              "BR3",
+              "TR3",
+              "TL3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp3",
+            "label": "2^{0}",
+            "at": "E3",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "val3",
+            "label": "1",
+            "at": "V3",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "guide3",
+            "seg": [
+              "G3",
+              "Top3"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "arrow3",
+            "vector": [
+              "A3",
+              "B3"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "divide3",
+            "label": "\\div2",
+            "at": "D3",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "column4",
+            "poly": [
+              "BL4",
+              "BR4",
+              "TR4",
+              "TL4"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp4",
+            "label": "2^{-1}",
+            "at": "E4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "val4",
+            "label": "\\tfrac{1}{2}",
+            "at": "V4",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "guide4",
+            "seg": [
+              "G4",
+              "Top4"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "arrow4",
+            "vector": [
+              "A4",
+              "B4"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "divide4",
+            "label": "\\div2",
+            "at": "D4",
+            "dir": "c",
+            "size": "m",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "column5",
+            "poly": [
+              "BL5",
+              "BR5",
+              "TR5",
+              "TL5"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "exp5",
+            "label": "2^{-2}",
+            "at": "E5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "val5",
+            "label": "\\tfrac{1}{4}",
+            "at": "V5",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "guide5",
+            "seg": [
+              "G5",
+              "Top5"
+            ],
+            "ink": "muted",
+            "dash": true,
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "walker",
+            "dot": "Walker",
+            "ink": "gold",
+            "r": 10
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "One staircase. The same division at every step, even as the exponent passes zero.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Start at 1. Count divisions."
+            },
+            {
+              "do": "write",
+              "tex": "2^0=1"
+            },
+            {
+              "do": "write",
+              "tex": "2^{-2}=\\frac1{2^2}",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "arrow0",
+                "arrow1",
+                "arrow2",
+                "arrow3",
+                "arrow4"
+              ],
+              "at": "division"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A negative exponent means divide by the base, as many times as it says.",
+          "pause": 1.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "arrow3",
+                "arrow4"
+              ],
+              "at": "divide"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

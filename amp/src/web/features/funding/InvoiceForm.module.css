@@ -105,3 +105,31 @@
   justify-content: space-between;
   gap: 0.5rem;
 }
+
+.header {
+  margin-bottom: 1rem;
+}
+.back {
+  flex-shrink: 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-muted-text);
+  font-size: 0.875rem;
+}
+.introSteps {
+  padding-left: 1.4rem;
+  line-height: 1.45;
+  margin: 0 0 1.5rem;
+}
+.introSteps li {
+  padding-left: 0.25rem;
+  margin-bottom: 0.65rem;
+}
+.offerWait {
+  min-height: 36rem;
+}
+.panel > a {
+  min-height: 44px;
+}

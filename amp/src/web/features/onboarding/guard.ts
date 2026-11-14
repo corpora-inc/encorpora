@@ -75,6 +75,16 @@ export function startDestination(
     const own = !!me.adultPractice?.learner;
     if (me.consent.status !== "active") {
       if (pathname === "/start/consent") return null;
+      // Pending invoices use the same restricted parent-entry learning basis
+      // as ordinary first run. Withdrawal still stops setup and access.
+      if (me.consent.status === "none" && me.consent.method === null) {
+        if (learnerSteps.includes(pathname)) return null;
+        if (
+          !me.learners.length ||
+          me.learners.some((learner) => learner.namePending)
+        )
+          return program.path;
+      }
       // A child's details, or a family of children, need the parent's
       // consent first. An adult buying for herself doesn't: the program's
       // page offers her own learner (or starts it) beside any child.

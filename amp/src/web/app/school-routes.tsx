@@ -1,9 +1,5 @@
-import {
-  createRoute,
-  lazyRouteComponent,
-  redirect,
-  type AnyRoute,
-} from "@tanstack/react-router";
+import { createRoute, redirect, type AnyRoute } from "@tanstack/react-router";
+import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";

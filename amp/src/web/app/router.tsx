@@ -1,4 +1,5 @@
 import { requestFetch } from "../lib/request-transport";
+import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
@@ -6,7 +7,6 @@ import {
   createRouter,
   createBrowserHistory,
   createMemoryHistory,
-  lazyRouteComponent,
   Outlet,
   redirect,
   retainSearchParams,
@@ -14,6 +14,7 @@ import {
   useRouter,
   useRouterState,
 } from "@tanstack/react-router";
+import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect, useRef } from "react";
@@ -58,6 +59,7 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import { autoReloadBlock } from "../lib/reload-guard";
 import {
   clearStudentDevice,
   studentSession,
@@ -220,7 +222,14 @@ const root = createRootRoute({
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
-    if (knownStale()) {
+    if (
+      knownStale() &&
+      !preload &&
+      !autoReloadBlock({
+        pathname: location.pathname,
+        search: location.searchStr,
+      })
+    ) {
       window.location.assign(location.href);
       return new Promise<never>(() => {});
     }
@@ -410,9 +419,7 @@ const home = createRoute({
     setPitchShown(shown);
     if (!shown) await legacy.preload?.();
     else {
-      // The lazy screen's own chunk too: rendering it before it has loaded
-      // suspends inside TanStack's Lazy with `use()`, which React then
-      // reports as a conditional use() once it resolves.
+      // Preload the route component alongside its data before showing the pitch.
       const [{ loadPitch }] = await Promise.all([
         import("../features/pitch/PitchScreen"),
         pitch.preload?.(),
@@ -979,18 +986,30 @@ const invoiceArkansas = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arkansas-efa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("ar-efa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 const invoiceArizona = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arizona-esa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("az-esa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 const invoiceNewHampshire = createRoute({
   getParentRoute: () => root,
   path: "/invoice/new-hampshire-efa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("nh-efa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */

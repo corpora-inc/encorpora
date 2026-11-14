@@ -97,6 +97,7 @@ export class ResendConsentTransport implements ConsentTransport {
           to: [mail.recipient],
           subject: mail.subject,
           text: mail.text,
+          ...(mail.attachments ? { attachments: mail.attachments } : {}),
         },
         requestOptions,
       );

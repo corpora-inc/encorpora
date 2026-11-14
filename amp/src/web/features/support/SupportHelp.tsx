@@ -7,7 +7,8 @@ import { Checkbox } from "../../ui/Checkbox";
 import { Dialog } from "../../ui/Dialog";
 import { TextArea } from "../../ui/TextField";
 import styles from "./SupportHelp.module.css";
-export const SUPPORT_EMAIL = "support@corpora.inc";
+import { SupportAddress, SUPPORT_EMAIL } from "./SupportAddress";
+export { SUPPORT_EMAIL } from "./SupportAddress";
 type Context = z.infer<typeof parentFeedbackSchema>["context"];
 type Program = z.infer<typeof parentFeedbackSchema>["program"];
 /** Voluntary adult feedback, shown only after a deliberate click. Never exit-blocking. */
@@ -121,9 +122,10 @@ export function SupportHelp({
       className={styles.help}
     >
       {contact && (
-        <p>
-          Need a hand? <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
-        </p>
+        <>
+          <p>Need a hand?</p>
+          <SupportAddress />
+        </>
       )}
       {feedback && (
         <>
