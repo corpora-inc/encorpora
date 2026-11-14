@@ -73,7 +73,7 @@ test("CP-2 r4 M1: a replaced session's late 401 never signs the new one out", as
 });
 
 test("CP-2 r4 M1: cancelling the session check doesn't bring the old session back", async () => {
-  const gate = deferred<unknown>();
+  const gate = deferred<typeof parent | null>();
   const checking = queryClient
     .fetchQuery({
       ...sessionOptions,
