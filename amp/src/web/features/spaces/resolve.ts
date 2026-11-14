@@ -72,8 +72,18 @@ export type SpaceResources = {
   org?: OrgResource | null;
   /** The org's classes in use, as this person reads them. */
   classes?: readonly ClassResource[] | null;
-  /** The class's year: the server's answer for this one class. */
-  year?: { past: boolean } | null;
+  /** The server's answer for the one class the route names: its year, and
+   * (from a current server) what binds it to a place and what this person
+   * may do in it. */
+  year?: {
+    past: boolean;
+    /** The class's own org. */
+    orgId?: string;
+    /** The orgs from the top down to the class's own. */
+    path?: readonly string[];
+    name?: string | null;
+    can?: readonly string[];
+  } | null;
   /** Students covered by the class's running practice. */
   covered?: number;
 };
@@ -162,9 +172,16 @@ export type SpaceDescriptor =
       space: "account";
       scope: "settings" | "setup" | "starter" | "steps";
     })
-  | (Frame & { space: "student"; learner: LearnerRef | null })
+  | (Frame & {
+      space: "student";
+      status: Resolution;
+      learner: LearnerRef | null;
+    })
   | (Frame & {
       space: "me";
+      /** `unavailable`: the address named a learner this account doesn't
+       * read. */
+      status: Resolution;
       /** Their own practice, a practice profile, or nothing started yet. */
       mode: "own" | "profile" | "none";
       learner: LearnerRef | null;
@@ -173,8 +190,10 @@ export type SpaceDescriptor =
       space: "family";
       status: Resolution;
       /** The family is its org: the holder's, or one this person is the
-       * second parent or a co-teacher of. Never "the account's family". */
-      family: { id: string; name: string | null; demo: boolean };
+       * second parent or a co-teacher of. Never "the account's family". Null
+       * only for a learning screen of their own child who is hosted in
+       * another family's class, until the family projection (P2) names it. */
+      family: { id: string | null; name: string | null; demo: boolean };
       relation: FamilyRelation | null;
       class: ClassRef | null;
       learner: LearnerRef | null;
@@ -199,6 +218,18 @@ export type SpaceDescriptor =
     });
 
 const text = (value: unknown) => (typeof value === "string" ? value : null);
+
+/** The class the server answered for belongs to the org the route names
+ * (its own org, or one above it). An older server says nothing: unknown. */
+const boundTo = (year: SpaceResources["year"], orgId: string) =>
+  !year?.path || year.path.includes(orgId);
+
+/** The class's own capabilities, when the server sent them. */
+const classTarget = (
+  classId: string,
+  year: SpaceResources["year"],
+): TargetCapabilities[] =>
+  year?.can ? [{ target: { kind: "class", id: classId }, can: year.can }] : [];
 
 type FamilyPlace = {
   orgId: string;
@@ -242,6 +273,7 @@ function chosenLearner(
   routeLearner: string | null,
   profileId: string | null,
   selected: string | null,
+  named: string | null = null,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
   const pick = (id: string | null): Chosen | null => {
@@ -259,8 +291,13 @@ function chosenLearner(
     }
     return null;
   };
+  // One order everywhere (adoption, the address builder, here): the route's
+  // own `$learnerId`, then a practice profile (a mode), then `?learner=`,
+  // then the device's choice.
   if (routeLearner) return pick(routeLearner);
-  if (profileId) return pick(profileId);
+  const profile = profileId ? pick(profileId) : null;
+  if (profile?.kind === "own" && profile.profile) return profile;
+  if (named) return pick(named);
   const chosen = pick(selected);
   if (chosen) return chosen;
   const first = me?.learners[0];
@@ -368,32 +405,44 @@ export function resolveSpace(
   }
   if (route === "learner" || route === "me" || route === "family") {
     const profile = text(match.search?.profile);
+    const named = text(match.search?.learner);
     const chosen =
       route === "me"
         ? null
         : chosenLearner(
             me,
-            match.learner ?? text(match.search?.learner),
+            match.learner ?? null,
             profile,
             session.learnerId,
+            named,
           );
+    // The address named someone this account doesn't read: unavailable,
+    // never whoever was chosen before.
+    const validProfile = !!me?.practiceProfiles?.some(
+      (entry) => entry.id === profile,
+    );
+    const foreign =
+      route === "learner" &&
+      !chosen &&
+      (!!match.learner || (!validProfile && !!named));
     if (chosen?.kind === "child")
       return familySpace({ ...base, ...words("family") }, frame, me, {
         orgId: chosen.family ?? me?.familyClass?.orgId ?? null,
-        relation: chosen.family ? null : "holder",
+        relation: chosen.family ? "second-parent" : "holder",
         resources: {},
         selected: chosen.id,
         learnerOnly: true,
+        child: { id: chosen.id, name: chosen.name },
       });
     return meSpace(
       { ...base, ...words("me") },
       frame,
       me,
-      chosen ?? chosenLearner(me, null, profile, session.learnerId),
+      foreign
+        ? null
+        : (chosen ?? chosenLearner(me, null, profile, session.learnerId)),
       match.pathname,
-      route === "learner" &&
-        !!(match.learner ?? text(match.search?.learner)) &&
-        !chosen,
+      foreign,
     );
   }
   // A class or school address with no place in it: the account's setup.
@@ -425,6 +474,7 @@ function studentSpace(
   return {
     ...base,
     space: "student",
+    status: "ready",
     learner: learner ? { id: learner.id, name: learner.name } : null,
     label: learner?.name ?? null,
     // A student's own record; nothing of a class's or a parent's.
@@ -507,6 +557,7 @@ function meSpace(
   return {
     ...base,
     space: "me",
+    status: foreign ? "unavailable" : "ready",
     mode:
       chosen?.kind === "own" && chosen.profile
         ? "profile"
@@ -514,7 +565,13 @@ function meSpace(
           ? "own"
           : "none",
     learner,
-    tabs: tabbed && !foreign ? meTabs(own?.id ?? null) : [],
+    tabs:
+      tabbed && !foreign
+        ? meTabs(
+            own?.id ?? null,
+            chosen?.kind === "own" && chosen.profile ? chosen.id : null,
+          )
+        : [],
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
     actions:
@@ -562,6 +619,7 @@ function familySpace(
     resources,
     selected,
     learnerOnly = false,
+    child,
   }: {
     orgId: string | null;
     relation: "holder" | "second-parent" | null;
@@ -569,6 +627,8 @@ function familySpace(
     selected: string | null;
     /** A learning screen for one of the family's children. */
     learnerOnly?: boolean;
+    /** The child a learning screen names, already found to be theirs. */
+    child?: { id: string; name: string };
   },
 ): SpaceDescriptor {
   const onClass = frame?.kind === "class" || frame?.kind === "school";
@@ -580,8 +640,12 @@ function familySpace(
   // names that isn't the family's is unavailable, never swapped for another.
   const classId =
     frame?.kind === "class" ? frame.classId : (family?.classId ?? null);
+  // The named class must be the family's (by relationship) and must belong
+  // to the org the route names (by the server's answer for it).
   const mismatch =
-    frame?.kind === "class" && !!family && family.classId !== frame.classId;
+    frame?.kind === "class" &&
+    ((!!family && family.classId !== frame.classId) ||
+      (!!orgId && !boundTo(resources.year, orgId)));
   const klass = (resources.classes ?? []).find((entry) => entry.id === classId);
   const status: Resolution = learnerOnly
     ? "ready"
@@ -593,7 +657,15 @@ function familySpace(
           ? "loading"
           : "ready";
   // A co-teacher teaches the family's class; its children are not theirs.
-  const learners = family?.learners ?? [];
+  // A child of theirs hosted in another family's class has no family class
+  // of their own here yet: they are still theirs, never dropped.
+  const learners =
+    family?.learners ??
+    (child && relation === "holder"
+      ? (me?.learners ?? [child])
+      : child
+        ? [child]
+        : []);
   const learner =
     learners.find((entry) => entry.id === selected) ?? learners[0] ?? null;
   const past = resources.year?.past === true;
@@ -628,7 +700,7 @@ function familySpace(
     space: "family",
     status,
     family: {
-      id: orgId ?? "",
+      id: orgId,
       name: org?.name ?? family?.name ?? null,
       demo: org?.demo === true,
     },
@@ -636,7 +708,7 @@ function familySpace(
     class: classId
       ? {
           id: classId,
-          name: klass?.name ?? family?.name ?? null,
+          name: klass?.name ?? resources.year?.name ?? family?.name ?? null,
           past,
           board: frame?.kind === "class" && frame.board,
           start: false,
@@ -644,9 +716,14 @@ function familySpace(
       : null,
     learner: learner ? { id: learner.id, name: learner.name } : null,
     learners: learners.map(({ id, name }) => ({ id, name })),
-    capabilities: org
-      ? [{ target: { kind: "org", id: org.id }, can: org.can ?? [] }]
-      : [],
+    capabilities: [
+      ...(org
+        ? [{ target: { kind: "org" as const, id: org.id }, can: org.can ?? [] }]
+        : []),
+      ...(classId && frame?.kind === "class"
+        ? classTarget(classId, resources.year)
+        : []),
+    ],
     tabs,
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
@@ -731,7 +808,8 @@ function teachingSpace(
   const year = resources.year;
   const past = year?.past === true;
   const status: Resolution =
-    resources.org === null || (onClass && year === null)
+    resources.org === null ||
+    (onClass && (year === null || !boundTo(year, orgId)))
       ? "unavailable"
       : !org || (onClass && year === undefined)
         ? "loading"
@@ -739,10 +817,12 @@ function teachingSpace(
   const klass = onClass
     ? classes.find((entry) => entry.id === frame.classId)
     : undefined;
+  // Starting needs the class's sign-in board, where the server says so.
   const start =
     onClass &&
     status === "ready" &&
     !past &&
+    (!year?.can || year.can.includes("signin.read")) &&
     (demo || (resources.covered ?? 0) > 0);
   const tabs =
     status !== "ready" || !org
@@ -759,9 +839,12 @@ function teachingSpace(
     demo,
     lone,
   };
-  const capabilities: TargetCapabilities[] = org
-    ? [{ target: { kind: "org", id: org.id }, can: org.can ?? [] }]
-    : [];
+  const capabilities: TargetCapabilities[] = [
+    ...(org
+      ? [{ target: { kind: "org" as const, id: org.id }, can: org.can ?? [] }]
+      : []),
+    ...(onClass ? classTarget(frame.classId, year) : []),
+  ];
   const actions: SpaceAction[] = [
     ...(demo ? (["demo-setup"] as const) : []),
     ...(start && !demo ? (["start-class"] as const) : []),
@@ -811,20 +894,22 @@ function teachingSpace(
     org: orgRef,
     class: {
       id: frame.classId,
-      name: klass?.name ?? null,
+      name: klass?.name ?? year?.name ?? null,
       past,
       board: frame.board,
       start,
     },
     // How they reach this class: teaching it, or from above it. A viewer or
     // an admin inspecting it is never offered a teacher's controls by this.
+    // A role from above (a district's admin or viewer) shows in what the
+    // server lets them do here, not in a role held at this org.
     role: !org
       ? null
       : org.teaches?.includes(frame.classId)
         ? "teacher"
-        : roles.has("admin")
+        : roles.has("admin") || can.has("staff.manage")
           ? "admin"
-          : roles.has("viewer")
+          : roles.has("viewer") || can.has("overview.read")
             ? "viewer"
             : roles.has("aide")
               ? "aide"
@@ -838,7 +923,7 @@ function teachingSpace(
         : [
             {
               id: "class",
-              label: klass?.name ?? "Class",
+              label: klass?.name ?? year?.name ?? "Class",
               path: `school/${orgId}/classes/${frame.classId}/today`,
               icon: "class",
               current: true,
@@ -847,6 +932,13 @@ function teachingSpace(
           ],
     place: `class:${orgId}:${frame.classId}`,
     // The class and its school, by name (R16), a one-class school too.
-    label: klass ? (org ? `${klass.name} · ${org.name}` : klass.name) : null,
+    label: (() => {
+      const name = klass?.name ?? year?.name ?? null;
+      return name && status !== "unavailable"
+        ? org
+          ? `${name} · ${org.name}`
+          : name
+        : null;
+    })(),
   };
 }

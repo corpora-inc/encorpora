@@ -108,16 +108,53 @@ test(
     assert.equal(cut.more, true);
 
     // A role that ended is gone on the next read.
-    await db.query(
-      "UPDATE amp_org_roles SET end_on=begin_on WHERE org_id=$1",
-      [district.id],
-    );
+    await db.query("UPDATE amp_org_roles SET end_on=begin_on WHERE org_id=$1", [
+      district.id,
+    ]);
     const after = await readPlaces(repo, await loadActor(db, account));
     assert.deepEqual(
       after.orgs.map((org) => org.name),
       ["Alder Grove"],
     );
     assert.deepEqual(after.schools, []);
+
+    // A provider-owned admin role whose connection ended: `can` refuses it,
+    // so the switcher never lists it.
+    await repo.addStaff({
+      orgId: elsewhere.id,
+      role: "admin",
+      givenName: "Jo",
+      accountId: account,
+    });
+    assert.ok(
+      (await readPlaces(repo, await loadActor(db, account))).orgs.some(
+        (org) => org.id === elsewhere.id,
+      ),
+    );
+    const connection = randomUUID();
+    const run = randomUUID();
+    await db.query(
+      `INSERT INTO amp_clever_connections(id,environment,district_id,tenant_id,status)
+       VALUES($1,'sandbox','0123456789abcdef01234567',$2,'disconnected')`,
+      [connection, elsewhere.id],
+    );
+    await db.query(
+      `INSERT INTO amp_clever_sync_runs(id,connection_id,mode,status) VALUES($1,$2,'full','succeeded')`,
+      [run, connection],
+    );
+    const role = (
+      await db.query(
+        "SELECT id FROM amp_org_roles WHERE org_id=$1 AND role='admin'",
+        [elsewhere.id],
+      )
+    ).rows[0].id;
+    await db.query(
+      `INSERT INTO amp_clever_memberships(connection_id,kind,source_key,local_id,owned,last_seen_run_id)
+       VALUES($1,'org_role','admin-1',$2,true,$3)`,
+      [connection, role, run],
+    );
+    const revoked = await readPlaces(repo, await loadActor(db, account));
+    assert.ok(!revoked.orgs.some((org) => org.id === elsewhere.id));
 
     // Nobody's places: an account with no role reads none.
     assert.deepEqual(

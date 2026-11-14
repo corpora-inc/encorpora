@@ -1,3 +1,4 @@
+import { dropCapability } from "../../capability-entry";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import {
@@ -87,6 +88,7 @@ const SIGNUP_COOKIE = "amp.family-approval";
  * hold the token, so it stays out of every URL a server or report sees; the
  * cookie tells account creation a mailed link proved the address. */
 export function rememberApproval(fragment: string | null) {
+  if (!fragment) dropCapability("/family/approve");
   try {
     if (fragment) localStorage.setItem(PENDING, fragment);
     else localStorage.removeItem(PENDING);

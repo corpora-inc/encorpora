@@ -1,3 +1,4 @@
+import { heldCapability } from "../../capability-entry";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -30,8 +31,7 @@ export const teacherLine = (teachers: string[]) =>
 const failures: Record<string, string> = {
   approval_used:
     "This link has been used by another account. Ask the teacher to add your child again.",
-  approval_expired:
-    "This link has expired. Ask the teacher to send it again.",
+  approval_expired: "This link has expired. Ask the teacher to send it again.",
   approval_ended: "The teacher withdrew this link.",
   teacher_cannot_approve:
     "You teach this class, so the child’s own parent approves. Send them the link.",
@@ -44,7 +44,11 @@ const failures: Record<string, string> = {
 export function ApproveLinkScreen() {
   const location = useLocation();
   const navigate = useNavigate();
-  const fragment = location.hash || rememberedApproval() || "";
+  const fragment =
+    location.hash ||
+    heldCapability("/family/approve") ||
+    rememberedApproval() ||
+    "";
   const parsed = parseFragment(fragment);
   const session = useQuery(sessionOptions).data;
   const me = useQuery({

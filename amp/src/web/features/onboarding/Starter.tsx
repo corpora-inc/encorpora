@@ -14,7 +14,8 @@ import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
 import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { authConfigOptions, meOptions, sessionOptions } from "../../lib/query";
-import { closeTo, returnTarget } from "../../lib/return-to";
+import { closeTo } from "../../lib/return-to";
+import { appReturn } from "../spaces/returns";
 import { cleverEnabled } from "../school/clever/enabled";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -147,7 +148,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const params = useParams({ strict: false }) as { choice?: string };
   const choice = isStarterChoice(params.choice) ? params.choice : null;
   const router = useRouter();
-  const from = returnTarget(
+  const from = appReturn(
     (useLocation().search as Record<string, unknown>).from,
   );
   const me = useQuery(meOptions(session)).data;
