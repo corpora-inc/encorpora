@@ -342,7 +342,7 @@ export function FamilyTodayScreen() {
                 {children.length === 1 ? "Your child" : "Your kids"}
               </h2>
               {sharedAccess && (
-                <p className={styles.sub} data-shared-access="">
+                <p className={styles.shared} data-shared-access="">
                   {children.length === 2 ? "Both have" : "All have"} AMP through{" "}
                   {sharedAccess}
                 </p>
