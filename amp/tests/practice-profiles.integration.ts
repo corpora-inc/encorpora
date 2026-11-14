@@ -57,7 +57,7 @@ test(
 
     const as = (account: string) => ({ authorization: `Bearer ${account}` });
     const send = (
-      method: "GET" | "POST" | "PATCH" | "DELETE",
+      method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
       path: string,
       account: string,
       payload?: object,
@@ -270,6 +270,113 @@ test(
         0,
       );
     });
+
+    await t.test(
+      "practice at a level: one unnamed profile, fresh at every choice",
+      async () => {
+        const helper = await user("Sage Fixture");
+        const choose = (grade: number, pace: string) =>
+          send("PUT", "/api/v1/me/practice-at-level", helper, { grade, pace });
+        // No child, no consent, no birth year: an adult and a grade.
+        const first = await choose(4, "on-level");
+        assert.equal(first.statusCode, 200, first.body);
+        const id = first.json().learnerId as string;
+        const fourthGrade = await send(
+          "GET",
+          `/api/v1/learners/${id}/frontier`,
+          helper,
+        );
+        assert.equal(fourthGrade.statusCode, 200, fourthGrade.body);
+        assert.ok(
+          Math.abs(fourthGrade.json().overall.level - 4) < 0.75,
+          "it starts at grade 4",
+        );
+        for (let i = 0; i < 3; i++) await practice(helper, id);
+        const before = JSON.parse((await footprint(id)).settings);
+
+        // The same grade again starts it again: every strand, a new revision.
+        const again = await choose(4, "on-level");
+        assert.equal(again.json().learnerId, id);
+        const restarted = JSON.parse((await footprint(id)).settings);
+        assert.equal(restarted.revision, before.revision + 1);
+        for (const strand of profileStrands)
+          assert.deepEqual(restarted.strandStarts[strand], {
+            level: 4,
+            revision: restarted.revision,
+          });
+
+        // A new choice reuses it, named by the choice, never a person.
+        const algebra = await choose(9, "on-level");
+        assert.equal(algebra.json().learnerId, id);
+        const listed = (await me(helper)).practiceProfiles;
+        assert.deepEqual(listed, [
+          {
+            id,
+            label: "9th grade · on level",
+            levels: presetLevels(9, "on-level"),
+            level: { grade: 9, pace: "on-level" },
+          },
+        ]);
+        const row = (
+          await db.query(
+            "SELECT birth_year,adult,simulation FROM amp_learners WHERE id=$1",
+            [id],
+          )
+        ).rows[0];
+        assert.deepEqual(row, {
+          birth_year: null,
+          adult: true,
+          simulation: true,
+        });
+        assert.equal(
+          (
+            await db.query(
+              "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1",
+              [helper],
+            )
+          ).rows[0].n,
+          1,
+        );
+
+        // Another account's level profile is its own; nothing crosses.
+        const other = await user("Remy Fixture");
+        await consent(other);
+        const theirs = await send(
+          "PUT",
+          "/api/v1/me/practice-at-level",
+          other,
+          { grade: 0, pace: "ahead" },
+        );
+        assert.notEqual(theirs.json().learnerId, id);
+        const refused = await send(
+          "POST",
+          `/api/v1/learners/${id}/batches`,
+          other,
+          { count: 1 },
+        );
+        assert.equal(refused.statusCode, 404, refused.body);
+
+        // A grade outside K–12 or an unknown pace is refused, and nothing
+        // changes.
+        for (const body of [
+          { grade: 13, pace: "on-level" },
+          { grade: 4, pace: "fast" },
+          { grade: 4, pace: "on-level", label: "Maya" },
+        ]) {
+          const bad = await send(
+            "PUT",
+            "/api/v1/me/practice-at-level",
+            helper,
+            body,
+          );
+          assert.equal(bad.statusCode, 400, bad.body);
+        }
+        assert.equal(
+          (await me(helper)).practiceProfiles[0].label,
+          "9th grade · on level",
+        );
+      },
+    );
 
     await t.test(
       "a profile is left out of every real learner's place",

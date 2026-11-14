@@ -42,7 +42,7 @@ export type ProgressReportInput = {
 };
 
 /** Where an adult chose to begin, in words. */
-export { adultStartNames } from "../learning/starting-point";
+export { adultStartNames, adultStartPhrases } from "../learning/starting-point";
 
 type Estimate = { level: number; sd: number };
 const fixed = (value: number) => value.toFixed(1);

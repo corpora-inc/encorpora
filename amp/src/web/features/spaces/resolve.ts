@@ -706,18 +706,30 @@ function meSpace(
           }),
           destination("levels", "Levels", "me", "level"),
           destination("workbooks", "Workbooks", workbooks!, "workbooks"),
+          destination(
+            "level-practice",
+            "Practice at a level",
+            "me/level",
+            "someone",
+          ),
           destination("profiles", "Profiles", "me/profiles", "someone"),
         ]
       : [
           ...(me?.adultPractice?.eligible
             ? [destination("start", "Practice yourself", "me/start", "learn")]
             : []),
+          destination(
+            "level-practice",
+            "Practice at a level",
+            "me/level",
+            "someone",
+          ),
           destination("profiles", "Profiles", "me/profiles", "someone"),
         ],
     place: "me",
-    // No place name: the tabs and the screen say whose this is. A practice
-    // profile is named, so its levels are never mistaken for theirs.
-    label: chosen?.kind === "own" && chosen.profile ? chosen.name : "",
+    // No place name (Q-204): the tabs and the screen say whose this is, and
+    // a practice profile is named by the bar's own "Practicing as" mark.
+    label: "",
   };
 }
 

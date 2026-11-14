@@ -97,9 +97,9 @@ test("Family: Today and its own children as rows, then the switcher, then the ac
   // No child picker: the children are rows, each opening their page.
   expect(sections()).toEqual(["AMP navigation", "Your places", "Account"]);
   expect(links()).toEqual(["Today", "Pip", "Wren"]);
-  expect(
-    screen.getByRole("link", { name: "Wren" }).getAttribute("href"),
-  ).toBe(`/family/${FAMILY}/kids/wren`);
+  expect(screen.getByRole("link", { name: "Wren" }).getAttribute("href")).toBe(
+    `/family/${FAMILY}/kids/wren`,
+  );
   expect(screen.queryByRole("option", { name: "Pip" })).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe("home");
   // One account for every space; the family's settings are its own tab.
@@ -167,20 +167,31 @@ test("Classroom: the class, no family learner, no practice settings", () => {
   ).toBe("/account/security");
 });
 
-test("My practice: never the family's class or a child (audit #8)", () => {
+test("Me: never the family's class or a child, no family or class words (audit #8)", () => {
   harness.pathname.value = "/me";
   const space = resolveSpace(
     { pathname: "/me" },
     { kind: "adult", me: account, learnerId: "pip" },
   );
   render(<DrawerContents close={() => {}} space={space} />);
-  expect(links()).toEqual(["Practice", "Levels", "Workbooks", "Profiles"]);
+  expect(links()).toEqual([
+    "Practice",
+    "Levels",
+    "Workbooks",
+    "Practice at a level",
+    "Profiles",
+  ]);
   expect(
     screen.getByRole("link", { name: "Levels" }).getAttribute("aria-current"),
   ).toBe("page");
   expect(screen.queryByText("Pip")).toBeNull();
   expect(screen.queryByRole("link", { name: /class/i })).toBeNull();
   expect(screen.queryByRole("link", { name: "Family & account" })).toBeNull();
+  // Me speaks of practice: no family, kid, class or student words, and no
+  // "My …" (Q-204).
+  expect(document.body.textContent).not.toMatch(
+    /\b(family|kids?|children|class|students?|roster)\b|\bMy /i,
+  );
 });
 
 test("School: the school itself, no learner, the switcher names it", () => {

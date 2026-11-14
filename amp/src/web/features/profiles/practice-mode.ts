@@ -71,6 +71,9 @@ export function modeReturnLabel(
   me: SignedInMe | null | undefined,
   classes: { id: string; name: string }[] | undefined,
 ) {
+  // Practice at a level returns to its grade and pace, to choose again.
+  if (/^\/me\/level(?:[?#]|$)/.test(from))
+    return { label: "Change level", short: "Change level" };
   const { org, classId } = modePlace(from);
   const name =
     (classId && classes?.find((entry) => entry.id === classId)?.name) ||

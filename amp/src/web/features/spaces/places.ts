@@ -304,7 +304,7 @@ export function placeGroups(
       id: "level",
       name: "Practice at a level",
       detail: "Any grade, any pace",
-      path: "me/profiles/new",
+      path: "me/level",
     },
   ];
   return [
