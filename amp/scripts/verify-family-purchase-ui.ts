@@ -41,7 +41,7 @@ try {
       {
         headers: { Origin: origin },
         data: {
-          email: "parent-new@personas.amp.test",
+          email: `${process.env.AMP_PURCHASE_PERSONA ?? "parent-new"}@personas.amp.test`,
           password: "design pass persona passphrase",
         },
       },
