@@ -162,9 +162,16 @@ export type SpaceDescriptor =
       space: "account";
       scope: "settings" | "setup" | "starter" | "steps";
     })
-  | (Frame & { space: "student"; learner: LearnerRef | null })
+  | (Frame & {
+      space: "student";
+      status: Resolution;
+      learner: LearnerRef | null;
+    })
   | (Frame & {
       space: "me";
+      /** `unavailable`: the address named a learner this account doesn't
+       * read. */
+      status: Resolution;
       /** Their own practice, a practice profile, or nothing started yet. */
       mode: "own" | "profile" | "none";
       learner: LearnerRef | null;
@@ -173,8 +180,10 @@ export type SpaceDescriptor =
       space: "family";
       status: Resolution;
       /** The family is its org: the holder's, or one this person is the
-       * second parent or a co-teacher of. Never "the account's family". */
-      family: { id: string; name: string | null; demo: boolean };
+       * second parent or a co-teacher of. Never "the account's family". Null
+       * only for a learning screen of their own child who is hosted in
+       * another family's class, until the family projection (P2) names it. */
+      family: { id: string | null; name: string | null; demo: boolean };
       relation: FamilyRelation | null;
       class: ClassRef | null;
       learner: LearnerRef | null;
@@ -242,6 +251,7 @@ function chosenLearner(
   routeLearner: string | null,
   profileId: string | null,
   selected: string | null,
+  named: string | null = null,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
   const pick = (id: string | null): Chosen | null => {
@@ -259,8 +269,13 @@ function chosenLearner(
     }
     return null;
   };
+  // One order everywhere (adoption, the address builder, here): the route's
+  // own `$learnerId`, then a practice profile (a mode), then `?learner=`,
+  // then the device's choice.
   if (routeLearner) return pick(routeLearner);
-  if (profileId) return pick(profileId);
+  const profile = profileId ? pick(profileId) : null;
+  if (profile?.kind === "own" && profile.profile) return profile;
+  if (named) return pick(named);
   const chosen = pick(selected);
   if (chosen) return chosen;
   const first = me?.learners[0];
@@ -368,32 +383,44 @@ export function resolveSpace(
   }
   if (route === "learner" || route === "me" || route === "family") {
     const profile = text(match.search?.profile);
+    const named = text(match.search?.learner);
     const chosen =
       route === "me"
         ? null
         : chosenLearner(
             me,
-            match.learner ?? text(match.search?.learner),
+            match.learner ?? null,
             profile,
             session.learnerId,
+            named,
           );
+    // The address named someone this account doesn't read: unavailable,
+    // never whoever was chosen before.
+    const validProfile = !!me?.practiceProfiles?.some(
+      (entry) => entry.id === profile,
+    );
+    const foreign =
+      route === "learner" &&
+      !chosen &&
+      (!!match.learner || (!validProfile && !!named));
     if (chosen?.kind === "child")
       return familySpace({ ...base, ...words("family") }, frame, me, {
         orgId: chosen.family ?? me?.familyClass?.orgId ?? null,
-        relation: chosen.family ? null : "holder",
+        relation: chosen.family ? "second-parent" : "holder",
         resources: {},
         selected: chosen.id,
         learnerOnly: true,
+        child: { id: chosen.id, name: chosen.name },
       });
     return meSpace(
       { ...base, ...words("me") },
       frame,
       me,
-      chosen ?? chosenLearner(me, null, profile, session.learnerId),
+      foreign
+        ? null
+        : (chosen ?? chosenLearner(me, null, profile, session.learnerId)),
       match.pathname,
-      route === "learner" &&
-        !!(match.learner ?? text(match.search?.learner)) &&
-        !chosen,
+      foreign,
     );
   }
   // A class or school address with no place in it: the account's setup.
@@ -425,6 +452,7 @@ function studentSpace(
   return {
     ...base,
     space: "student",
+    status: "ready",
     learner: learner ? { id: learner.id, name: learner.name } : null,
     label: learner?.name ?? null,
     // A student's own record; nothing of a class's or a parent's.
@@ -507,6 +535,7 @@ function meSpace(
   return {
     ...base,
     space: "me",
+    status: foreign ? "unavailable" : "ready",
     mode:
       chosen?.kind === "own" && chosen.profile
         ? "profile"
@@ -514,7 +543,13 @@ function meSpace(
           ? "own"
           : "none",
     learner,
-    tabs: tabbed && !foreign ? meTabs(own?.id ?? null) : [],
+    tabs:
+      tabbed && !foreign
+        ? meTabs(
+            own?.id ?? null,
+            chosen?.kind === "own" && chosen.profile ? chosen.id : null,
+          )
+        : [],
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
     actions:
@@ -562,6 +597,7 @@ function familySpace(
     resources,
     selected,
     learnerOnly = false,
+    child,
   }: {
     orgId: string | null;
     relation: "holder" | "second-parent" | null;
@@ -569,6 +605,8 @@ function familySpace(
     selected: string | null;
     /** A learning screen for one of the family's children. */
     learnerOnly?: boolean;
+    /** The child a learning screen names, already found to be theirs. */
+    child?: { id: string; name: string };
   },
 ): SpaceDescriptor {
   const onClass = frame?.kind === "class" || frame?.kind === "school";
@@ -593,7 +631,15 @@ function familySpace(
           ? "loading"
           : "ready";
   // A co-teacher teaches the family's class; its children are not theirs.
-  const learners = family?.learners ?? [];
+  // A child of theirs hosted in another family's class has no family class
+  // of their own here yet: they are still theirs, never dropped.
+  const learners =
+    family?.learners ??
+    (child && relation === "holder"
+      ? (me?.learners ?? [child])
+      : child
+        ? [child]
+        : []);
   const learner =
     learners.find((entry) => entry.id === selected) ?? learners[0] ?? null;
   const past = resources.year?.past === true;
@@ -628,7 +674,7 @@ function familySpace(
     space: "family",
     status,
     family: {
-      id: orgId ?? "",
+      id: orgId,
       name: org?.name ?? family?.name ?? null,
       demo: org?.demo === true,
     },

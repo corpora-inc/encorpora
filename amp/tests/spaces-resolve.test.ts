@@ -842,3 +842,54 @@ test("every space has its words, and a family's never say student", () => {
   const room = Object.values(spaceWords("classroom")).join(" ").toLowerCase();
   assert.ok(!/\b(child|children|kids)\b/.test(room));
 });
+
+test("CP-2 H2: one learner per address, the same order as adoption", () => {
+  // A profile outranks ?learner=: the frame is the profile's, not Pip's.
+  const both = resolveSpace(
+    at("/practice", { search: { profile: "profile-4", learner: "pip" } }),
+    adult(power, "wren"),
+  );
+  expectSpace(both, "me");
+  assert.equal(both.mode, "profile");
+  assert.equal(both.learner?.id, "profile-4");
+  // A profile's tabs are the profile's own: its levels, its address.
+  const tabs = resolveSpace(
+    at("/pathways", { search: { profile: "profile-4" } }),
+    adult(power, "pip"),
+  );
+  assert.deepEqual(
+    tabs.tabs.map((tab) => [tab.id, tab.path, tab.search ?? null]),
+    [
+      ["practice", "practice", { profile: "profile-4" }],
+      ["levels", "me/profiles/profile-4", null],
+      ["pathways", "pathways", { profile: "profile-4" }],
+      ["inventory", "inventory", { profile: "profile-4" }],
+      ["profiles", "me/profiles", null],
+    ],
+  );
+  // A learner this account doesn't read is unavailable, never another.
+  const foreign = resolveSpace(
+    at("/practice", { search: { learner: "stranger" } }),
+    adult(power, "wren"),
+  );
+  expectSpace(foreign, "me");
+  assert.equal(foreign.status, "unavailable");
+  assert.equal(foreign.learner, null);
+  assert.deepEqual(foreign.tabs, []);
+});
+
+test("CP-2 H4: their own child hosted in another family's class stays theirs", () => {
+  const hosted = me({ learners: [child("pip", "Pip")] });
+  const space = resolveSpace(
+    at("/overview", { search: { learner: "pip" } }),
+    adult(hosted, null),
+  );
+  expectSpace(space, "family");
+  assert.equal(space.learner?.id, "pip");
+  assert.equal(space.label, "Pip");
+  assert.equal(space.family.id, null);
+  assert.deepEqual(
+    space.learners.map((learner) => learner.id),
+    ["pip"],
+  );
+});
