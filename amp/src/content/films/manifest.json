@@ -315,6 +315,29 @@
     ],
     "skill": "arrays"
   },
+  "array-division-slots": {
+    "id": "divide-facts--sd",
+    "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+    "title": "Walk the table backward",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+    "duration": 117.32002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+        "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+        "duration": 117.32002267573696
+      }
+    ],
+    "skill": "division-facts"
+  },
   "array-equal-addends-equation": {
     "id": "array-add-rows-total--sa",
     "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
@@ -2288,6 +2311,29 @@
       }
     ],
     "skill": "qualitative-graphs"
+  },
+  "divide-facts": {
+    "id": "divide-facts--sd",
+    "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+    "title": "Walk the table backward",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+    "duration": 117.32002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+        "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+        "duration": 117.32002267573696
+      }
+    ],
+    "skill": "division-facts"
   },
   "dot-group-compared-to-number": {
     "id": "compare-groups--sk",
@@ -6400,6 +6446,29 @@
       }
     ],
     "skill": "arithmetic-sequences"
+  },
+  "related-division-sentence": {
+    "id": "divide-facts--sd",
+    "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+    "title": "Walk the table backward",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+    "duration": 117.32002267573696,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/divide-facts--sd/52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1/audio.m4a",
+        "version": "52debeb051d8ec82d3222686338bd168cb9e27aa99523c8dcc2605d7cbf38ec1",
+        "duration": 117.32002267573696
+      }
+    ],
+    "skill": "division-facts"
   },
   "related-subtraction": {
     "id": "related-subtraction--sr",
