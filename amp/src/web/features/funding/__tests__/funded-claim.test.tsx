@@ -10,6 +10,10 @@ import { RouterProvider } from "@tanstack/react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { AuthSession } from "../../../auth";
 
+// Analytics has its own transport tests. Its delayed flush must not outlive
+// a module reset and appear as a claim POST in the next test's fetch fixture.
+vi.mock("../../../lib/analytics");
+
 /* The program page after sign-in, for an invoice made out before it: the
    account holder may connect it to her own learner, with or without one yet,
    and a child still needs the parent's consent first. */
