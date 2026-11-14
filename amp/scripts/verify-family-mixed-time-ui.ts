@@ -247,7 +247,12 @@ try {
     let saved = false;
     page.on("download", () => (saved = true));
     await page.getByRole("button", { name: "Export" }).click();
-    await page.getByText(/didn’t download/).waitFor({ timeout: 15_000 });
+    // The toast's own words, not Radix's screen-reader announcement of
+    // them ("Notification …"), which can be in the page at the same time.
+    await page
+      .getByRole("alert")
+      .filter({ hasText: /didn’t download/ })
+      .waitFor({ timeout: 15_000 });
     await page.waitForTimeout(500);
     assert.ok(!saved, "a partial export was saved");
     await page.unroute(/\/children\/[^/]+\/time\.csv/);
