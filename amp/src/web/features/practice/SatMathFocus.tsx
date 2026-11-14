@@ -41,11 +41,11 @@ export function SatMathFocus({
       if (!current.current) return;
       await onSaved();
       if (current.current)
-        setNotice("Practice setting saved. It applies to the next problem.");
+        setNotice("Saved. It applies from the next problem.");
     } catch {
       if (current.current)
         setError(
-          "Could not confirm the practice setting. Refresh your family details and try again.",
+          "The setting didn’t save. Refresh the page and try again.",
         );
     } finally {
       if (current.current) setBusy(false);
@@ -61,7 +61,7 @@ export function SatMathFocus({
         SAT Math focus
       </Checkbox>
       <p>
-        Practice SAT Math and its foundations. Excludes topics beyond the SAT.
+        Skips topics beyond the SAT.
       </p>
       <Toast
         tone={error ? "alert" : "status"}

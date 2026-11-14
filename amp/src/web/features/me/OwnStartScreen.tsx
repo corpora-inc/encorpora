@@ -30,7 +30,7 @@ function StartCard({ session }: { session: AuthSession }) {
   const failure =
     start.error instanceof AppError
       ? start.error.code === "adult_practice_unavailable"
-        ? "Your own practice comes with teaching a class at a school with AMP, or with a child of yours practicing. Neither is active on this account now."
+        ? "Your own practice needs a child of yours practicing, or a class you teach."
         : start.error.message
       : start.error
         ? "Your practice didn’t start. Check your connection, then try again."
@@ -41,10 +41,6 @@ function StartCard({ session }: { session: AuthSession }) {
       <section className={`${frameCard} ${styles.step}`}>
         <FrameBrand expanded />
         <h1 id="own-start-year">What year were you born?</h1>
-        <p>
-          Practice starts at the level for your age, then adjusts with every
-          answer.
-        </p>
         <form
           onSubmit={(event) => {
             event.preventDefault();

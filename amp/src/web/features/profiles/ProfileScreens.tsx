@@ -450,7 +450,7 @@ export function EditProfileScreen() {
           }
         >
           {account
-            ? "It may have been deleted. Make a new one at any grade and pace."
+            ? "It may have been deleted."
             : "Check your connection, then try again."}
         </EmptyState>
       </main>
