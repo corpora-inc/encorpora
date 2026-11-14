@@ -6,6 +6,9 @@ export {
   LevelRangeStart,
   LevelRows,
   type LevelRangeArea,
+  plainLevel,
+  type RowLink,
+  type RowLinkProps,
   WHOLE_SCALE,
 } from "./LevelRange";
 export { LevelAxis, LevelBar } from "./LevelBar";
