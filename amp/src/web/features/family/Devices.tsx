@@ -6,6 +6,7 @@ import { Dialog } from "../../ui/Dialog";
 import { Menu, MenuItem } from "../../ui/Menu";
 import { Sheet } from "../../ui/Sheet";
 import { Toast } from "../../ui/Toast";
+import { AppError } from "../../lib/AppError";
 import {
   presenceOptions,
   rosterOptions,
@@ -79,7 +80,13 @@ export function DevicesSheet({
       }
     } catch (failure) {
       console.error("A device change didn’t save", failure);
-      setError("That didn’t save. Check your connection and try again.");
+      // A typed refusal says what to do (a sign-in still being checked);
+      // anything else is the connection.
+      setError(
+        failure instanceof AppError && failure.code
+          ? failure.message
+          : "That didn’t save. Check your connection and try again.",
+      );
     } finally {
       setPending(null);
     }

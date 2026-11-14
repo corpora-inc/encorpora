@@ -1,7 +1,19 @@
+import {
+  requestWith,
+  requestMethod,
+  replacedSession,
+  type RequestOptions,
+} from "./request-transport";
+export {
+  requestWith,
+  requestFetch,
+  SessionUnconfirmedError,
+} from "./request-transport";
 import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
+import { isRetired } from "./session-generation";
 import { validationPaths } from "./batch-capability-fallback";
 import {
   buildIsStale,
@@ -154,19 +166,20 @@ const errorCode = (data: unknown) =>
   typeof data.error === "string"
     ? data.error
     : "";
-export async function request<T>(
+export function request<T>(
   path: string,
   schema: z.ZodType<T>,
-  options: {
-    token?: string | null;
-    body?: unknown;
-    signal?: AbortSignal;
-    method?: string;
-    headers?: Record<string, string>;
-  } = {},
+  options: RequestOptions = {},
 ): Promise<T> {
-  const method =
-    options.method ?? (options.body === undefined ? "GET" : "POST");
+  return requestWith(() => send(path, schema, options), options);
+}
+
+async function send<T>(
+  path: string,
+  schema: z.ZodType<T>,
+  options: RequestOptions,
+): Promise<T> {
+  const method = requestMethod(options);
   // A student's token opens only the student routes. When a device is handed
   // to a child ("Let Wren practice here"), the staff screen still mounted
   // reads again with the child's session for a moment before practice
@@ -200,6 +213,15 @@ export async function request<T>(
       options.signal.throwIfAborted();
     }
   };
+  // A session that ended while this was on its way: its answer, success or
+  // failure, is nobody's now. Checked before any handler (a 401's sign-out
+  // included) can act on it in the session on screen.
+  const checkSession = () => {
+    if (isRetired(options.token)) {
+      observe("cancelled");
+      throw replacedSession();
+    }
+  };
   let response: Response;
   try {
     response = await fetch(`/api/v1${path}`, {
@@ -217,6 +239,7 @@ export async function request<T>(
         : { body: JSON.stringify(options.body) }),
     });
   } catch (cause) {
+    checkSession();
     if (options.signal?.aborted) {
       observe("cancelled");
       throw cause;
@@ -232,17 +255,22 @@ export async function request<T>(
   }
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
+  checkSession();
   checkAborted();
   // A tab running an older release than the API: a missing route or a
   // rejected sign-in reloads into the current release rather than reporting a
   // failure the visitor didn't cause. Other errors still show, so a filled-in
   // form is never wiped by a reload.
-  if (
-    (response.status === 401 || response.status === 404) &&
-    (await buildIsStale())
-  ) {
-    const reloading = reloadIntoCurrentRelease();
-    if (reloading) return reloading;
+  if (response.status === 401 || response.status === 404) {
+    const stale = await buildIsStale();
+    // The release lookup is another async boundary: this request's session
+    // may have ended while it waited, even though its API response arrived.
+    checkSession();
+    checkAborted();
+    if (stale) {
+      const reloading = reloadIntoCurrentRelease();
+      if (reloading) return reloading;
+    }
   }
   // The demo school was rebuilt overnight: this link was into yesterday's.
   // The visitor's place is already in today's, so open it there instead of
@@ -310,6 +338,7 @@ export async function request<T>(
     error.log();
     throw error;
   }
+  checkSession();
   checkAborted();
   observe("succeeded");
   return parsed.data;

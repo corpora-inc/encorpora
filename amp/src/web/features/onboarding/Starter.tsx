@@ -197,6 +197,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
               {entry.id === "teacher" ? (
                 <Link
                   to="/school/start"
+                  // Its way back, if this is adding a place.
+                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
                   onClick={() => track("starter_choice", { answer: entry.id })}

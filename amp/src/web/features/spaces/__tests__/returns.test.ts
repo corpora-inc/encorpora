@@ -25,19 +25,56 @@ test("a return never carries a link's secret or returns to one", () => {
 
 test("a place keeps its view, never its fragment or other keys", () => {
   expect(
-    appReturn(`/school/o/classes/c/map?sort=level&token=${TOKEN}#${TOKEN}`),
-  ).toBe("/school/o/classes/c/map?sort=level");
+    appReturn(
+      `/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level&token=${TOKEN}#${TOKEN}`,
+    ),
+  ).toBe(
+    "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level",
+  );
   expect(appReturn("/pathways?learner=pip&skill=add")).toBe(
     "/pathways?learner=pip&skill=add",
   );
   const person = "11111111-1111-4111-8111-111111111111";
-  expect(appReturn(`/school/o/students?open=student:${person}`)).toBe(
-    `/school/o/students?open=student%3A${person}`,
+  expect(
+    appReturn(
+      `/school/11111111-1111-4111-8111-111111111111/students?open=student:${person}`,
+    ),
+  ).toBe(
+    `/school/11111111-1111-4111-8111-111111111111/students?open=student%3A${person}`,
   );
   // A layer stack that isn't one is dropped, the place kept.
-  expect(appReturn("/school/o/students?open=%3Cnot%20a%20stack%3E")).toBe(
-    "/school/o/students",
-  );
+  expect(
+    appReturn(
+      "/school/11111111-1111-4111-8111-111111111111/students?open=%3Cnot%20a%20stack%3E",
+    ),
+  ).toBe("/school/11111111-1111-4111-8111-111111111111/students");
   expect(appReturn("/account/security")).toBe("/account/security");
   expect(appReturn(`/me?x=${"y".repeat(3000)}`)).toBeUndefined();
+});
+
+test("CP-2 r2 M3: what the documented returns need, and nothing that isn't a place", () => {
+  const school = "/school/11111111-1111-4111-8111-111111111111";
+  // A practice profile keeps its own way back, one level deep.
+  expect(
+    appReturn(
+      `/practice?profile=grade-4&from=${encodeURIComponent(`${school}/classes`)}`,
+    ),
+  ).toBe(
+    `/practice?profile=grade-4&from=${encodeURIComponent(`${school}/classes`)}`,
+  );
+  // …never a secret-bearing or nested one.
+  expect(
+    appReturn(
+      `/practice?profile=grade-4&from=${encodeURIComponent("/school/invite#x")}`,
+    ),
+  ).toBe("/practice?profile=grade-4");
+  // Time's range, a devices sheet and a settings section survive.
+  expect(appReturn(`${school}/classes?from=2026-11-01&to=2026-11-07`)).toBe(
+    `${school}/classes?from=2026-11-01&to=2026-11-07`,
+  );
+  expect(appReturn(`${school}?devices=cards&section=calendar`)).toBe(
+    `${school}?devices=cards&section=calendar`,
+  );
+  // An address that isn't one of the app's places is not a return.
+  expect(appReturn("/not-a-real-app-page")).toBeUndefined();
 });

@@ -42,7 +42,6 @@ const ALLOWED: Record<string, [count: number, reason: string]> = {
     1,
     "explicit account linking hands off to Clever OAuth",
   ],
-  "features/school/InviteScreen.tsx": [1, "sign-in with the invite's return"],
   "AnnualPurchase.tsx": [2, "Stripe Checkout and the billing portal"],
   "FamilyCenter.tsx": [1, "Stripe's billing portal"],
   "features/billing/api.ts": [1, "Stripe Checkout"],

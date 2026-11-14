@@ -64,6 +64,9 @@ test("this account's /me makes the family's class address its tutoring group", (
     );
     client.setQueryData(classYearOptions(session, CLASS).queryKey, {
       past: false,
+      orgId: FAMILY,
+      path: [FAMILY],
+      can: ["students.read"],
     });
   });
   // A parent's own family opens at /family; at its class address it is the
@@ -94,6 +97,9 @@ test("before the org answers, the account's own relationship names the group", (
     );
     client.setQueryData(classYearOptions(session, CLASS).queryKey, {
       past: false,
+      orgId: FAMILY,
+      path: [FAMILY],
+      can: ["students.read"],
     });
   });
   expect(result?.space).toBe("classroom");

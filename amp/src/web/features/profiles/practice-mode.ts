@@ -1,6 +1,6 @@
 import type { SignedInMe } from "../../../account/contracts";
-import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
+import { addressedIdentity, type AddressedIdentity } from "../spaces/identity";
 import { hasHome } from "../onboarding/guard";
 import { returnTarget } from "../../lib/return-to";
 import { rootRedirect } from "../../nav/root";
@@ -90,15 +90,10 @@ export function modeReturnLabel(
  *   a demo school's admin) goes from practice screens to its place: never
  *   family setup.
  */
-export async function adoptPracticeMode(
-  location: {
-    pathname: string;
-    search: Record<string, unknown>;
-  },
-  /** A preload (hover, focus): look, change nothing. Whose screen is on view
-   * changes only when one is opened. */
-  preloading = false,
-) {
+export async function adoptPracticeMode(location: {
+  pathname: string;
+  search: Record<string, unknown>;
+}) {
   if (studentSession() || !isLearningPath(location.pathname)) return;
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) return;
@@ -106,44 +101,26 @@ export async function adoptPracticeMode(
     .ensureQueryData(meOptions(session))
     .catch(() => null);
   if (!me?.signedIn) return;
-  const store = useLearnerStore.getState();
-  const named = location.search.profile;
-  const profile = me.practiceProfiles?.find((entry) => entry.id === named);
-  // A profile is a mode and outranks `?learner=` (docs/architecture/
-  // spaces.md, "Learning screens"); the resolver and the address builder
-  // follow the same order.
-  if (profile) {
-    if (!preloading && store.learnerId !== profile.id) store.select(profile.id);
+  // The address names whose screen this is (features/spaces/identity.ts): a
+  // profile or a learner this account doesn't read is unavailable, never
+  // someone else. Nothing here changes this device's choice: a guard also
+  // runs for preloads and for navigations that never show, so the shell
+  // adopts the named learner once its screen is on view (AppShell).
+  const named = addressedIdentity(location.pathname, location.search);
+  if (named && !readsIdentity(me, named))
+    throw new AppError(
+      "permission",
+      named.kind === "profile"
+        ? "This practice profile isn’t available to your account."
+        : "This learner isn’t available to your account.",
+      false,
+    );
+  if (named?.kind === "profile") {
     const [, org] = PLACE.exec(modeFrom(location.search) ?? "") ?? [];
     if (org) await preload(classesOptions(session, org));
     return;
   }
   const own = me.adultPractice?.learner?.id ?? null;
-  // `?learner=` names whose record this is (docs/architecture/spaces.md):
-  // a refresh, Back or a second tab keeps that person. A learner this
-  // account doesn't read is unavailable, never the previous one instead.
-  const whose = location.search[LEARNER_KEY];
-  if (typeof whose === "string" && whose !== "") {
-    const reads =
-      whose === own ||
-      me.learners.some((learner) => learner.id === whose) ||
-      (me.secondParentOf ?? []).some((family) =>
-        family.learners.some((learner) => learner.id === whose),
-      );
-    if (!reads)
-      throw new AppError(
-        "permission",
-        "This learner isn’t available to your account.",
-        false,
-      );
-    if (!preloading && store.learnerId !== whose) store.select(whose);
-    return;
-  }
-  if (
-    !preloading &&
-    me.practiceProfiles?.some((entry) => entry.id === store.learnerId)
-  )
-    store.select(own ?? me.learners[0]?.id ?? null);
   if (
     !own &&
     !hasHome(me) &&
@@ -151,6 +128,45 @@ export async function adoptPracticeMode(
     PRACTICE_ONLY.test(location.pathname)
   )
     throw rootRedirect();
+}
+
+/** This account reads the learner or profile an address names. */
+export function readsIdentity(me: SignedInMe, named: AddressedIdentity) {
+  if (named.kind === "profile")
+    return !!me.practiceProfiles?.some((entry) => entry.id === named.id);
+  return (
+    named.id === me.adultPractice?.learner?.id ||
+    me.learners.some((learner) => learner.id === named.id) ||
+    (me.secondParentOf ?? []).some((family) =>
+      family.learners.some((learner) => learner.id === named.id),
+    )
+  );
+}
+
+/**
+ * The device's choice once a screen is on view (called by the shell with the
+ * committed address): the learner or profile the address names, the adult's
+ * own on `/me`, and a profile left chosen is put down on a learning screen
+ * that names none. Returns the choice to make, or undefined for none.
+ */
+export function committedChoice(
+  me: SignedInMe,
+  pathname: string,
+  search: Record<string, unknown>,
+  current: string | null,
+): string | null | undefined {
+  const own = me.adultPractice?.learner?.id ?? null;
+  if (pathname === "/me") return own && current !== own ? own : undefined;
+  if (!isLearningPath(pathname) && !/^\/learners\//.test(pathname))
+    return undefined;
+  const named = addressedIdentity(pathname, search);
+  if (named)
+    return readsIdentity(me, named) && current !== named.id
+      ? named.id
+      : undefined;
+  if (me.practiceProfiles?.some((entry) => entry.id === current))
+    return own ?? me.learners[0]?.id ?? null;
+  return undefined;
 }
 
 type Place = { pathname: string; search: Record<string, unknown> };

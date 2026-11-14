@@ -1,4 +1,6 @@
+import { readFileSync } from "node:fs";
 import { afterEach, beforeEach, expect, test } from "vitest";
+import type { SignedInMe } from "../../../../account/contracts";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { useLearnerStore } from "../../../learner-store";
@@ -11,19 +13,20 @@ const child = (id: string, name: string) => ({
   birthYear: 2017,
   entitlement: { active: true, plan: null, endsAt: null },
 });
+const me = {
+  signedIn: true,
+  account: { id: session.accountId, email: null, emailVerified: true },
+  learners: [child("pip", "Pip"), child("wren", "Wren")],
+  family: { learners: [] },
+  adultPractice: {
+    eligible: true,
+    learner: { id: "jonah", name: "Jonah", active: true },
+  },
+  practiceProfiles: [{ id: "grade-4", label: "Grade 4" }],
+} as unknown as SignedInMe;
 beforeEach(() => {
   queryClient.setQueryData(sessionOptions.queryKey, session);
-  queryClient.setQueryData(meOptions(session).queryKey, {
-    signedIn: true,
-    account: { id: session.accountId, email: null, emailVerified: true },
-    learners: [child("pip", "Pip"), child("wren", "Wren")],
-    family: { learners: [] },
-    adultPractice: {
-      eligible: true,
-      learner: { id: "jonah", name: "Jonah", active: true },
-    },
-    practiceProfiles: [{ id: "grade-4", label: "Grade 4" }],
-  } as never);
+  queryClient.setQueryData(meOptions(session).queryKey, me as never);
   useLearnerStore.getState().select("wren");
 });
 afterEach(() => queryClient.clear());
@@ -32,31 +35,25 @@ const at = (search: Record<string, unknown>) => ({
   search,
 });
 
-test("CP-2 H2: a preload never changes whose screen is on view", async () => {
-  await adoptPracticeMode(at({ learner: "pip" }), true);
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
-  await adoptPracticeMode(at({ profile: "grade-4" }), true);
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
-  // Opening it does.
+test("CP-2 r2 H2: a route guard never chooses (a preload or a pending navigation runs it too)", async () => {
   await adoptPracticeMode(at({ learner: "pip" }));
-  expect(useLearnerStore.getState().learnerId).toBe("pip");
-});
-
-test("CP-2 H2: a learner this account doesn't read is unavailable, not the previous one", async () => {
-  const opened = adoptPracticeMode(at({ learner: "someone-else" }));
-  await expect(opened).rejects.toBeInstanceOf(AppError);
-  await expect(opened).rejects.toMatchObject({ kind: "permission" });
+  await adoptPracticeMode(at({ profile: "grade-4" }));
   expect(useLearnerStore.getState().learnerId).toBe("wren");
 });
 
-test("an empty ?learner= names nobody: the device's choice stands", async () => {
-  await adoptPracticeMode(at({ learner: "" }));
-  expect(useLearnerStore.getState().learnerId).toBe("wren");
+test("CP-2 r2 H2: no route guard in the router chooses a learner", () => {
+  const router = readFileSync("src/web/app/router.tsx", "utf8");
+  // The workbook guard and /me's did; the shell adopts after the screen shows.
+  expect(router).not.toMatch(/useLearnerStore\.getState\(\)\.select\(/);
 });
 
-test("CP-2 H2: a profile outranks ?learner= when both are in the address", async () => {
-  await adoptPracticeMode(at({ profile: "grade-4", learner: "pip" }));
-  expect(useLearnerStore.getState().learnerId).toBe("grade-4");
+test("CP-2 H2: a learner or profile this account doesn't read is unavailable, not the previous one", async () => {
+  for (const search of [{ learner: "someone-else" }, { profile: "revoked" }]) {
+    const opened = adoptPracticeMode(at(search));
+    await expect(opened).rejects.toBeInstanceOf(AppError);
+    await expect(opened).rejects.toMatchObject({ kind: "permission" });
+  }
+  expect(useLearnerStore.getState().learnerId).toBe("wren");
 });
 
 test("CP-2 H2: one identity travels between learning screens", () => {
@@ -71,12 +68,10 @@ test("CP-2 H2: one identity travels between learning screens", () => {
   expect(
     carriedKeys(here({ profile: "grade-4", from: "/me" }), there, []),
   ).toEqual({ profile: "grade-4", from: "/me" });
-  // A destination naming its own learner drops the profile, and the reverse.
   expect(
     carriedKeys(here({ profile: "grade-4" }), there, ["learner"]),
   ).toBeNull();
   expect(carriedKeys(here({ learner: "pip" }), there, ["profile"])).toBeNull();
-  // Never onto a screen that isn't a learning screen.
   expect(
     carriedKeys(here({ learner: "pip" }), { pathname: "/me", search: {} }, []),
   ).toBeNull();

@@ -18,6 +18,8 @@ import styles from "./PersonaSwitcher.module.css";
 const groups: PersonaGroup[] = ["Adults", "Families", "Teaching"];
 
 async function signInAs(persona: PreviewPersona) {
+  // Development-only identity replacement: sign out and sign in before a full
+  // reload. It must also recover a preview whose /me renewal cannot finish.
   const post = (path: string, body: unknown) =>
     fetch(path, {
       method: "POST",

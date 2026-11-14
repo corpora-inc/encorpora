@@ -1,3 +1,4 @@
+import { requestFetch } from "../lib/request-transport";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
@@ -72,7 +73,7 @@ import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
-import { RETURN_LIMIT } from "../features/spaces/returns";
+import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
@@ -372,7 +373,7 @@ async function retiredTrial({ search }: { search: Record<string, unknown> }) {
   }
   // A follow-up email's way back, now signed in: the follow-up is done.
   if (search.return === "free-practice")
-    void fetch("/api/v1/parent-followup/complete", {
+    void requestFetch("/api/v1/parent-followup/complete", {
       signal: AbortSignal.timeout(10000),
       method: "POST",
       credentials: "same-origin",
@@ -726,9 +727,12 @@ const startVerify = createRoute({
  * the frame's bar is there from their first frame and nothing moves under it. */
 /** A learning screen's data before it renders (lib/learning-view), its code
  * loaded only when one is visited. */
-async function preloadLearning() {
+async function preloadLearning(location?: {
+  pathname: string;
+  search: Record<string, unknown>;
+}) {
   const { preloadLearningView } = await import("../lib/learning-view");
-  await preloadLearningView();
+  await preloadLearningView(location);
 }
 async function framedScreen() {
   if (nativeRuntime) throw redirect({ to: "/" });
@@ -739,9 +743,9 @@ const inventory = createRoute({
   path: "/inventory",
   staticData: { space: "learner" },
   // A learning record belongs to an account: signed out, sign in first.
-  beforeLoad: async ({ location, preload }) => {
+  beforeLoad: async ({ location }) => {
     await framedScreen();
-    await adoptPracticeMode(location, preload);
+    await adoptPracticeMode(location);
     if (!queryClient.getQueryData(sessionOptions.queryKey))
       throw redirect({
         to: "/sign-in",
@@ -749,7 +753,11 @@ const inventory = createRoute({
       });
   },
   // Its record and level arrive with it: one paint, whole.
-  loader: preloadLearning,
+  loader: ({ location }) =>
+    preloadLearning({
+      pathname: location.pathname,
+      search: location.search as Record<string, unknown>,
+    }),
   component: lazyRouteComponent(
     () => import("../features/inventory/InventoryScreen"),
     "InventoryScreen",
@@ -808,22 +816,26 @@ const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
   staticData: { space: "learner" },
-  beforeLoad: async ({ location, preload }) => {
+  beforeLoad: async ({ location }) => {
     lessonAsLayer(location);
     const { skill } = location.search as { skill?: unknown };
     if (skill !== undefined && location.pathname === "/pathways")
       skillAsLayer(location, skill);
     await framedScreen();
-    await adoptPracticeMode(location, preload);
+    await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
   // problem type's short lesson (a layer, `?open=lesson:<type>`) needs
   // neither: it opens at once over the map, which fills in under it.
   loader: ({ location }) => {
     const open = new URLSearchParams(location.searchStr).get(OPEN_KEY);
+    const at = {
+      pathname: location.pathname,
+      search: location.search as Record<string, unknown>,
+    };
     if (!readStack(open).some((layer) => layer.kind === "lesson"))
-      return preloadLearning();
-    void preloadLearning().catch((error: unknown) =>
+      return preloadLearning(at);
+    void preloadLearning(at).catch((error: unknown) =>
       console.error("The map did not preload", error),
     );
   },
@@ -882,14 +894,11 @@ async function beforeWorkbooks<Params extends { learnerId: string }>({
   const me = await queryClient
     .ensureQueryData(meOptions(session))
     .catch(() => null);
-  if (
-    me?.signedIn &&
-    me.family.learners.some(
-      (learner) =>
-        learner.id === learnerId && !learner.deletedAt && !learner.simulation,
-    )
-  )
-    useLearnerStore.getState().select(learnerId);
+  // The address names the learner (`$learnerId`): the screen reads it from
+  // there, and the shell adopts it as this device's choice once the screen
+  // shows. A guard never chooses (a preload runs it too).
+  void me;
+  void learnerId;
 }
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
@@ -1220,8 +1229,18 @@ const schoolStart = createRoute({
   path: "/school/start",
   staticData: { space: "account" },
   beforeLoad: staffScreen,
-  validateSearch: (search: Record<string, unknown>): { org?: string } =>
-    z.uuid().safeParse(search.org).success ? { org: String(search.org) } : {},
+  // `from`: adding a place from somewhere, its way back (appReturn).
+  validateSearch: (
+    search: Record<string, unknown>,
+  ): { org?: string; from?: string } => {
+    const from = appReturn(search.from);
+    return {
+      ...(z.uuid().safeParse(search.org).success
+        ? { org: String(search.org) }
+        : {}),
+      ...(from ? { from } : {}),
+    };
+  },
   loader: async ({ context }) => {
     const { session } = context as unknown as { session: AuthSession };
     await Promise.all([
@@ -1400,7 +1419,8 @@ const ownRecord = createRoute({
         to: me.adultPractice?.eligible ? "/me/start" : "/",
         replace: true,
       } as never);
-    useLearnerStore.getState().select(own.id);
+    // The shell makes the adult's own learner this device's choice once
+    // `/me` shows; a guard never chooses (a preload runs it too).
     return { session, learnerId: own.id };
   },
   loader: ({ context }) => {
@@ -1566,7 +1586,7 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The address says who practices (features/profiles/practice-mode.ts).
-  beforeLoad: ({ location, preload }) => adoptPracticeMode(location, preload),
+  beforeLoad: ({ location }) => adoptPracticeMode(location),
   // The app screen is rendered by the layout, so load its chunk here, as the
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
@@ -1575,7 +1595,10 @@ const fallback = createRoute({
       legacy.preload?.(),
       location.pathname === "/overview" &&
         import("../lib/learning-view").then((view) =>
-          view.preloadOverviewLevel(),
+          view.preloadOverviewLevel({
+            pathname: location.pathname,
+            search: location.search as Record<string, unknown>,
+          }),
         ),
     ]);
   },

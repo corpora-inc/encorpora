@@ -1,3 +1,4 @@
+import { requestFetch } from "../lib/request-transport";
 import { PracticeControls } from "../features/practice/PracticeControls";
 import {
   practiceSettingsOptions,
@@ -116,6 +117,7 @@ import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { track, trackOnce } from "../lib/analytics";
 import { useLearnerStore } from "../learner-store";
+import { useAddressedIdentity } from "../features/spaces/useAddressed";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
@@ -310,7 +312,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   };
   // The current learner is global state shared by every screen (see
   // learner-store.ts); this component derives the learner object from it.
-  const learnerId = useLearnerStore((state) => state.learnerId);
+  // The displayed screen's address names whose practice it is
+  // (features/spaces/identity.ts); otherwise this device's choice.
+  const addressed = useAddressedIdentity();
+  const addressedRef = useRef(addressed);
+  addressedRef.current = addressed;
+  const chosenId = useLearnerStore((state) => state.learnerId);
+  const learnerId = addressed?.id ?? chosenId;
   const selectLearner = useLearnerStore((state) => state.select);
   // A child of a family this account is the second parent of, chosen to read
   // their progress: their Overview is read-only (docs/families.md).
@@ -924,16 +932,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     );
     // The adult's own learner stays chosen only when it was chosen; a device
     // with no choice opens on the family's first learner, never the adult's.
+    // A screen whose address names its learner is that learner's: nothing
+    // here chooses another (features/spaces/identity.ts).
+    const named = addressedRef.current?.id ?? null;
     const selected =
       available.find(
-        (entry) => entry.id === useLearnerStore.getState().learnerId,
-      ) ??
-      available.find((entry) => !entry.adult) ??
-      null;
+        (entry) => entry.id === (named ?? useLearnerStore.getState().learnerId),
+      ) ?? (named ? null : (available.find((entry) => !entry.adult) ?? null));
     learnerRef.current = selected?.id;
     // Keep the chosen learner unless it no longer exists or learning is not
     // allowed; never forget the choice merely because data is reloading.
-    if (selected) selectLearner(selected.id);
+    if (selected && !named) selectLearner(selected.id);
   }
   useEffect(() => {
     if (
@@ -1455,7 +1464,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       throw new Error("PDF downloads require the configured web application.");
     if (!learner || !token) return;
     const epoch = authEpoch.current;
-    const result = await fetch(
+    const result = await requestFetch(
       `/api/v1/learners/${learner.id}/books/${id}/download`,
       {
         method: "POST",

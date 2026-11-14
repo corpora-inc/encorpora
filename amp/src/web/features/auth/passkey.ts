@@ -1,3 +1,4 @@
+import { requestFetch } from "../../lib/request-transport";
 import { errorDetails } from "../../../analytics/error-details";
 import type { FunnelProps } from "../../../analytics/events";
 import {
@@ -37,7 +38,7 @@ export type PasskeySignUpResult =
     };
 
 async function post(path: string, body: unknown) {
-  const response = await fetch(`/api/auth${path}`, {
+  const response = await requestFetch(`/api/auth${path}`, {
     method: "POST",
     credentials: "same-origin",
     signal: AbortSignal.timeout(15000),

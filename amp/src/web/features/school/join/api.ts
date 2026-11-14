@@ -1,3 +1,4 @@
+import { requestFetch } from "../../../lib/request-transport";
 import { queryOptions } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
@@ -51,8 +52,8 @@ export class JoinError extends AppError {
   }
 }
 
-/** These answer with what went wrong, not a sign-in that ended, so they don't
- * go through the shared `request` and its redirect to sign-in. */
+/** Keep the child-specific error contract without sign-out recovery,
+ * using the shared transport boundary for the request itself. */
 async function post<T>(
   path: string,
   body: object,
@@ -60,13 +61,14 @@ async function post<T>(
 ): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(`/api/v1/school/join/${path}`, {
+    response = await requestFetch(`/api/v1/school/join/${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
       signal: AbortSignal.timeout(15_000),
     });
-  } catch {
+  } catch (error) {
+    if (error instanceof AppError) throw error;
     const failure = new JoinError(OFFLINE, true, null, null, null, null);
     failure.log();
     throw failure;

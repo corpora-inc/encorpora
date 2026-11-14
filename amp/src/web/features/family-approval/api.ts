@@ -1,4 +1,5 @@
 import { dropCapability } from "../../capability-entry";
+import { carriedLink, carryLink, dropCarry } from "../../lib/link-carry";
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import {
@@ -82,28 +83,28 @@ export const approvals = {
     ),
 };
 
-const PENDING = "amp.family-approval";
 const SIGNUP_COOKIE = "amp.family-approval";
-/** Carried across sign-in on this device. Only the fragment and this store
- * hold the token, so it stays out of every URL a server or report sees; the
- * cookie tells account creation a mailed link proved the address. */
-export function rememberApproval(fragment: string | null) {
-  if (!fragment) dropCapability("/family/approve");
-  try {
-    if (fragment) localStorage.setItem(PENDING, fragment);
-    else localStorage.removeItem(PENDING);
-  } catch (error) {
-    console.warn("The approval link couldn’t be saved on this device", error);
+/** Carried while the parent signs in, creates an account or switches account
+ * from it (`lib/link-carry.ts`); `null` lets it go, held and carried alike.
+ * Only the fragment and this carry hold the token, so it stays out of every
+ * URL a server or report sees; the cookie tells account creation a mailed
+ * link proved the address. */
+export function rememberApproval(
+  fragment: string | null,
+  { switching = false } = {},
+) {
+  if (fragment) carryLink("/family/approve", fragment, { switching });
+  else {
+    dropCapability("/family/approve");
+    dropCarry("/family/approve");
   }
+  approvalSignup(fragment);
+}
+/** The proof account creation reads, for an hour at most. */
+export function approvalSignup(fragment: string | null) {
   const secure = location.protocol === "https:" ? "; Secure" : "";
   document.cookie = fragment
     ? `${SIGNUP_COOKIE}=${encodeURIComponent(fragment)}; Path=/api/auth; Max-Age=3600; SameSite=Lax${secure}`
     : `${SIGNUP_COOKIE}=; Path=/api/auth; Max-Age=0; SameSite=Lax${secure}`;
 }
-export function rememberedApproval() {
-  try {
-    return localStorage.getItem(PENDING);
-  } catch {
-    return null;
-  }
-}
+export const rememberedApproval = () => carriedLink("/family/approve");

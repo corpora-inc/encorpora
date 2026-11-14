@@ -28,6 +28,7 @@ export function VerifyEmailStep({
   invitation = false,
   embedded = false,
   headingLevel,
+  continueTo,
 }: {
   session: AuthSession;
   me: SignedInMe;
@@ -37,6 +38,10 @@ export function VerifyEmailStep({
   embedded?: boolean;
   /** Inside a page whose title this step is (class setup): its own h1. */
   headingLevel?: 1 | 2;
+  /** Where the confirmation email's link continues: the step it was sent
+   * from (class setup, with its own way back), when it isn't the address's
+   * own continuation. An app path. */
+  continueTo?: string;
 }) {
   const email = me.account.email ?? "";
   const location = useLocation();
@@ -46,7 +51,7 @@ export function VerifyEmailStep({
         email,
         callbackURL: invitation
           ? "/access"
-          : continuationUrl(location.search, "/"),
+          : (continueTo ?? continuationUrl(location.search, "/")),
       });
       if (result.error) {
         const error = new AppError("unavailable", messages.sendFailed, true);

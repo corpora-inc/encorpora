@@ -71,6 +71,15 @@ function navigation({
   if (past !== null)
     client.setQueryData(classYearOptions(session, "current").queryKey, {
       past,
+      orgId: "org",
+      path: ["org"],
+      can: [
+        "students.read",
+        "grades.read",
+        "workbooks.read",
+        "settings.read",
+        "signin.read",
+      ],
     });
   const hook = renderHook(
     () =>

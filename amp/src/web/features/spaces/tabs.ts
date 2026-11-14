@@ -7,6 +7,21 @@ import type { TabItem } from "../../ui/Tabs";
  * screen shows every tab inline, in the same order. Paths have no leading
  * slash.
  */
+/** What each class tab's screen asks the server (its route's action): a tab
+ * shows only where the class's own `can` allows it. */
+const CLASS_READS: Record<string, string> = {
+  today: "students.read",
+  map: "students.read",
+  gradebook: "grades.read",
+  "report-cards": "grades.read",
+  time: "students.read",
+  workbooks: "workbooks.read",
+  roster: "students.read",
+  settings: "settings.read",
+};
+const allowed = (can: readonly string[] | undefined) => (item: TabItem) =>
+  !can || can.includes(CLASS_READS[item.id] ?? "classes.read");
+
 const tab = (
   id: string,
   label: string,
@@ -23,7 +38,11 @@ export const SMALL_CLASS = 6;
 export function familyTabs(
   org: string,
   classId: string,
-  { past = false, learners = 0 }: { past?: boolean; learners?: number } = {},
+  {
+    past = false,
+    learners = 0,
+    can,
+  }: { past?: boolean; learners?: number; can?: readonly string[] } = {},
 ): TabItem[] {
   const at = (leaf: string) => `school/${org}/classes/${classId}/${leaf}`;
   const items = [
@@ -39,11 +58,13 @@ export function familyTabs(
     tab("roster", "People", at("roster")),
     tab("settings", "Settings", at("settings")),
   ];
-  return past
-    ? items.filter((item) =>
-        ["report-cards", "gradebook", "time"].includes(item.id),
-      )
-    : items;
+  return (
+    past
+      ? items.filter((item) =>
+          ["report-cards", "gradebook", "time"].includes(item.id),
+        )
+      : items
+  ).filter(allowed(can));
 }
 
 /** A family's own screens (`/family/<family>/…`): its children's
@@ -71,7 +92,7 @@ export function familyPlaceTabs(
 export function classroomTabs(
   org: string,
   classId: string,
-  { past = false }: { past?: boolean } = {},
+  { past = false, can }: { past?: boolean; can?: readonly string[] } = {},
 ): TabItem[] {
   const at = (leaf: string) => `school/${org}/classes/${classId}/${leaf}`;
   const items = [
@@ -83,9 +104,11 @@ export function classroomTabs(
     tab("workbooks", "Workbooks", at("workbooks")),
     tab("settings", "Settings", at("settings")),
   ];
-  return past
-    ? items.filter((item) => item.id === "gradebook" || item.id === "time")
-    : items;
+  return (
+    past
+      ? items.filter((item) => item.id === "gradebook" || item.id === "time")
+      : items
+  ).filter(allowed(can));
 }
 
 /** A school, network or district: exactly what its API says this person may

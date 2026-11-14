@@ -1,3 +1,4 @@
+import { requestFetch, requestWith } from "./lib/request-transport";
 import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
 import screenTitle from "./ui/ScreenTitle.module.css";
 import { SatMathFocus } from "./features/practice/SatMathFocus";
@@ -265,7 +266,7 @@ export function FamilyCenter({
     signal?: AbortSignal,
   ): Promise<T> {
     const epoch = generation.current;
-    const response = await fetch(`/api/v1${path}`, {
+    const response = await requestFetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         authorization: `Bearer ${tokenRef.current}`,
@@ -435,10 +436,20 @@ export function FamilyCenter({
       field.name = "ticket";
       field.value = ticket;
       form.append(field);
-      document.body.append(frame, form);
-      form.submit();
-      form.remove();
-      setTimeout(() => frame.remove(), 120_000);
+      // The ticket request and the browser's streaming POST are separate
+      // sends; renewal can begin between them. Gate the actual submission.
+      await requestWith(
+        async () => {
+          document.body.append(frame, form);
+          try {
+            form.submit();
+          } finally {
+            form.remove();
+            setTimeout(() => frame.remove(), 120_000);
+          }
+        },
+        { token: tokenRef.current, method: form.method },
+      );
       setNotice(
         "Download requested. Check your browser’s downloads and keep the file private. If it is interrupted, request a fresh download.",
       );

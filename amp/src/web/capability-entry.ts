@@ -1,3 +1,4 @@
+import { HELD_FOR_MS, LINK_PATHS, type LinkPath } from "./lib/link-carry";
 import { prepareSchoolAdoption } from "./features/school/adoption-session";
 import { prepareBuyerHandoff } from "./features/school/pilots/buyer-session";
 
@@ -7,64 +8,66 @@ import { prepareBuyerHandoff } from "./features/school/pilots/buyer-session";
  * invitation (`/school/invite#…`), a parent's approval (`/family/approve#…`),
  * a buyer's link (`/schools/continue#token=…`) and an adoption
  * (`/school/adopt#token=…`). Before the router, or any return built from the
- * address, can read the URL, the secret moves to this tab's own store and
- * leaves the address bar and history. Only `main.tsx` imports this for its
- * effect; `/c` and `/join/continue` have `card-entry.ts`, `/p` has
- * `share-entry.ts`.
+ * address, can read the URL, the secret moves out of the address bar and
+ * history. Only `main.tsx` imports this for its effect; `/c` and
+ * `/join/continue` have `card-entry.ts`, `/p` has `share-entry.ts`.
+ *
+ * An invitation or approval is held in this page's memory only, for two
+ * hours at most. Opening it writes nothing where another tab, or a later
+ * page, could read it: a tab opened from this one, or this one reloaded, has
+ * nothing held, and opens the link from the email again. The one deliberate
+ * carry is the holder leaving to authenticate from the link
+ * (`lib/link-carry.ts`), with the same lifetime, which `forgetEveryLink`
+ * clears.
  */
-const HELD: Record<string, string> = {
-  "/school/invite": "amp.capability.invite",
-  "/family/approve": "amp.capability.approval",
-};
+type HeldPath = LinkPath;
+const PATHS = LINK_PATHS;
+export { HELD_FOR_MS };
+/** Where an earlier version kept them: removed whenever a link is taken. */
+const RETIRED_KEYS = ["amp.capability.invite", "amp.capability.approval"];
 
 type Place = Pick<Location, "pathname" | "search" | "hash">;
-type Store = Pick<Storage, "getItem" | "setItem" | "removeItem">;
-const session = (): Store | null => {
-  try {
-    return sessionStorage;
-  } catch {
-    return null;
-  }
-};
+const memory = new Map<HeldPath, { value: string; until: number }>();
 
 export function takeCapabilityFragment(
   location: Place = window.location,
   history: Pick<History, "replaceState" | "state"> = window.history,
-  store: Store | null = session(),
+  now = Date.now(),
 ) {
-  const path = location.pathname.replace(/\/+$/, "") || "/";
-  const key = HELD[path];
-  if (!key || location.hash.length < 2) return;
+  const path = (location.pathname.replace(/\/+$/, "") || "/") as HeldPath;
+  if (!PATHS.includes(path) || location.hash.length < 2) return;
+  memory.set(path, { value: location.hash.slice(1), until: now + HELD_FOR_MS });
   try {
-    store?.setItem(key, location.hash.slice(1));
-  } catch (error) {
-    console.warn("The link's secret couldn’t be held for this tab", error);
+    for (const key of RETIRED_KEYS) sessionStorage.removeItem(key);
+  } catch {
+    // Nothing kept there, then.
   }
   history.replaceState(history.state, "", location.pathname + location.search);
 }
 
-/** The invitation or approval this tab opened, without its leading `#`. */
+/** The invitation or approval this page opened, without its leading `#`. */
 export function heldCapability(
-  path: "/school/invite" | "/family/approve",
-  store: Store | null = session(),
+  path: HeldPath,
+  now = Date.now(),
 ): string | null {
-  try {
-    return store?.getItem(HELD[path]!) ?? null;
-  } catch {
+  const held = memory.get(path);
+  if (!held) return null;
+  if (held.until <= now) {
+    memory.delete(path);
     return null;
   }
+  return held.value;
 }
 
-/** Done with it: accepted, declined, or replaced. */
-export function dropCapability(
-  path: "/school/invite" | "/family/approve",
-  store: Store | null = session(),
-) {
-  try {
-    store?.removeItem(HELD[path]!);
-  } catch {
-    // Nothing was held.
-  }
+/** Done with it: accepted, refused, ended or expired. */
+export function dropCapability(path: HeldPath) {
+  memory.delete(path);
+}
+
+/** Every link this page holds goes (`forgetEveryLink` also clears the
+ * screens' sign-in carry). */
+export function dropAllCapabilities() {
+  memory.clear();
 }
 
 if (typeof window !== "undefined") {
