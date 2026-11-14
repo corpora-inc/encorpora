@@ -84,6 +84,13 @@ export function RecordLevels({
 export function RecordWeeks({ record }: { record: ProgressRecord }) {
   const largest = Math.max(1, ...record.weeks.map((week) => week.minutes));
   const total = record.weeks.reduce((sum, week) => sum + week.minutes, 0);
+  // No practice in these weeks: say so, never an empty chart.
+  if (total === 0)
+    return (
+      <p className={styles.quietLine}>
+        No active minutes in the last {record.weeks.length} weeks.
+      </p>
+    );
   return (
     <TipZone>
       <div

@@ -534,8 +534,8 @@ hosted-only parents. `scripts/backfill-family-identities.ts` is also an idempote
 repair command; discovery does not depend on its manual execution.
 
 Never replace the contents of an applied migration in a persistent deployment. The runner checks file checksums. Ordinary migrations
-commit separately. 0126 adds a nullable column without a table rewrite or a
-backfill; existing answered learners derive the legacy prior lazily. 0127 builds
+commit separately. 0127 adds a nullable column without a table rewrite or a
+backfill; existing answered learners derive the legacy prior lazily. 0128 builds
 the history indexes with `CREATE INDEX CONCURRENTLY`, one statement at a time
 outside a transaction, so evidence writes can continue during the builds.
 
