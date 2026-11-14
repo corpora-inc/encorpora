@@ -59,8 +59,13 @@ function ClassToday({
     access.teaches,
   );
   const entries = todoEntries({
+    // Anything that opens the board ("Start class", students who haven't
+    // started) waits for practice: the board would only say it's closed.
     todos: data.todos.filter(
-      (todo) => (canStart && !closed) || todo.id !== "start-class",
+      (todo) =>
+        (canStart && !closed) ||
+        (todo.id !== "start-class" &&
+          !("tab" in todo.action && todo.action.tab === "start")),
     ),
     place,
     canPrint: data.canPrint,

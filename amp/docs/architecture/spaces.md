@@ -82,28 +82,29 @@ Full power in both spaces (SPEC R7): every retained action has a URL, a tab or a
 
 ### Classroom (`/school/<org>/classes/<class>/…`)
 
-| Action                                                                                                    | Where                                                                                | Taps |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---- |
-| Today: who needs you, the week, the class code (only while practice runs)                                 | `today`                                                                              | 1    |
-| Start practice (the pilot; authorization first when the class has none)                                   | Today's first item and Students' header, one name; the sheet `?authorize=1`          | 1    |
-| Start class (the sign-in board)                                                                           | the bar's action while practice runs; `start`                                        | 1    |
-| Class map, a student's record and its layers (answers, skills, lessons)                                   | `map`, `?open=student:<id>` and deeper `open` layers                                 | 2    |
-| Grades: suggested ranges, finals, each row's evidence                                                     | `gradebook`, `?student=<id>`                                                         | 1    |
-| Close a term                                                                                              | Grades › Close term (`?close=1`)                                                     | 2    |
-| Report cards, print or PDF                                                                                | Grades › Report cards (`report-cards?term=`)                                         | 2    |
-| Exports (OneRoster, CSV)                                                                                  | Grades › Export (`?export=1`)                                                        | 2    |
-| Previous years' classes, their grades and time                                                            | the drawer's School › Classes (`?year=`), then the past class (Grades, Time)         | 2    |
-| Time                                                                                                      | `time` (More on a phone)                                                             | 1–2  |
-| Workbooks: generate, the day, marking and correction                                                      | `workbooks`, `workbooks/<date>`                                                      | 1–2  |
-| Students: roster, pictures reset, sign out everywhere                                                     | `roster`, a row's Manage                                                             | 2    |
-| Cards (all, or one student's)                                                                             | Students › Print cards (`cards`, `cards?student=`)                                   | 2    |
-| New class code                                                                                            | Today's code, Students' code (More › New code)                                       | 2    |
-| Roster import (paste, CSV, Excel)                                                                         | Students › Add students (`import`)                                                   | 2    |
-| Parent links                                                                                              | Students › Parent links                                                              | 2    |
-| Teachers of the class; invite a co-teacher (staff managers)                                               | the foot of Students; Staff with the class chosen (`/school/<org>/staff?class=<id>`) | 2    |
-| Student experience (levels, standings opt-in, devices)                                                    | `settings`                                                                           | 1–2  |
-| Practice status, Request seats (the buyer handoff)                                                        | Settings › Practice; Today's item; the sheet `?seats=1`                              | 2    |
-| The school above (license, staff, calendar, settings) for someone who oversees it, a one-class school too | the drawer's School                                                                  | 2    |
+| Action                                                                                                    | Where                                                                                                        | Taps |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---- |
+| Today: who needs you, the week, the class code (only while practice runs)                                 | `today`                                                                                                      | 1    |
+| Start practice (the pilot; authorization first when the class has none)                                   | Today's first item and Students' header, one name; the sheet `?authorize=1`                                  | 1    |
+| Start class (the sign-in board)                                                                           | the bar's action while practice runs; `start`                                                                | 1    |
+| Class map, a student's record and its layers (answers, skills, lessons)                                   | `map`, `?open=student:<id>` and deeper `open` layers                                                         | 2    |
+| Grades: suggested ranges, finals, each row's evidence                                                     | `gradebook`, `?student=<id>`                                                                                 | 1    |
+| Close a term                                                                                              | Grades › Close term (`?close=1`)                                                                             | 2    |
+| Report cards, print or PDF                                                                                | Grades › Report cards (`report-cards?term=`)                                                                 | 2    |
+| Exports (OneRoster, CSV)                                                                                  | Grades › Export (`?export=1`)                                                                                | 2    |
+| Previous years' classes, their grades and time                                                            | the drawer's School › Classes (`?year=`), then the past class (Grades, Time)                                 | 2    |
+| Time                                                                                                      | `time` (More on a phone)                                                                                     | 1–2  |
+| Workbooks: generate, the day, marking and correction                                                      | `workbooks`, `workbooks/<date>`                                                                              | 1–2  |
+| Students: roster, pictures reset, sign out everywhere                                                     | `roster`, a row's Manage                                                                                     | 2    |
+| Cards (all, or one student's)                                                                             | Students › Print cards (`cards`, `cards?student=`)                                                           | 2    |
+| New class code                                                                                            | Today's code, Students' code (More › New code)                                                               | 2    |
+| Roster import (paste, CSV, Excel)                                                                         | Students › Add students (`import`)                                                                           | 2    |
+| Parent links                                                                                              | Students › Parent links                                                                                      | 2    |
+| Teachers of the class; invite a co-teacher (staff managers)                                               | the foot of Students; Staff with the class chosen (`/school/<org>/staff?class=<id>`)                         | 2    |
+| Student experience (levels, standings opt-in, devices)                                                    | `settings`                                                                                                   | 1–2  |
+| Practice status, Request seats (the buyer handoff)                                                        | Settings › Practice; Today's item; the sheet `?seats=1`                                                      | 2    |
+| Bring the class's school into a district (adoption): a solo school's own teacher may approve              | the district's link, `/school/adopt?district=<id>` (an address a district sends; nothing to offer before it) | 1    |
+| The school above (license, staff, calendar, settings) for someone who oversees it, a one-class school too | the drawer's School                                                                                          | 2    |
 
 Not offered: reopening a closed term. A closed term is frozen with its evidence; no endpoint reopens it.
 
