@@ -1,7 +1,8 @@
 {
  "id": "product-of-powers-exponent--sp",
  "title": "Multiply powers: follow the factors",
- "teaches": [],
+ "teaches": ["negative-integer-power"],
+ "skill": "exponent-laws",
  "cast": {
   "teacher": {}
  },

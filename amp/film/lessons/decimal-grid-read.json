@@ -1,6 +1,7 @@
 {
   "id": "decimal-grid-read",
   "title": "Name a shaded decimal",
+  "teaches": ["tenths-as-hundredths"],
   "seed": "film",
   "shots": [
     {

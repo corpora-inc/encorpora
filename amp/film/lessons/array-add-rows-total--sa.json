@@ -1,15 +1,8 @@
 {
   "id": "array-add-rows-total--sa",
   "title": "Rows with the same number",
-  "teaches": [
-    "small-array-total",
-    "equal-addends-match",
-    "equal-addends-array",
-    "equal-addends-select",
-    "array-equal-addends-equation",
-    "partition-from-marks",
-    "choose-partition"
-  ],
+  "teaches": ["small-array-total", "equal-addends-match", "equal-addends-array", "equal-addends-select", "array-equal-addends-equation", "partition-from-marks", "choose-partition"],
+  "skill": "arrays",
   "cast": {
     "teacher": {},
     "learner": {}

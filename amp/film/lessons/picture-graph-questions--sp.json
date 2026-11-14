@@ -2,6 +2,7 @@
   "id": "picture-graph-questions--sp",
   "title": "One picture, one answer",
   "teaches": ["tally-and-t-chart"],
+  "skill": "categorical-data",
   "cast": { "teacher": {}, "learner": {} },
   "shots": [
     {

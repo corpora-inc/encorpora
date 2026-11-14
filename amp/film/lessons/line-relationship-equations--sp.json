@@ -1,6 +1,7 @@
 {
   "id": "line-relationship-equations--sp",
   "title": "Parallel and perpendicular lines",
+  "teaches": ["line-equation-forms"],
   "cast": {
     "teacher": {}
   },

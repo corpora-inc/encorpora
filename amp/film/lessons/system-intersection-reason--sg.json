@@ -1,13 +1,8 @@
 {
  "id": "system-intersection-reason--sg",
  "title": "On both lines",
- "teaches": [
-  "graph-estimate-system-solution",
-  "system-line-points",
-  "system-crossing-estimate",
-  "linear-system-solution-count",
-  "system-second-equation"
- ],
+ "teaches": ["graph-estimate-system-solution", "system-line-points", "system-crossing-estimate", "linear-system-solution-count", "system-second-equation"],
+ "skill": "linear-systems",
  "cast": {
   "teacher": {},
   "learner": {}

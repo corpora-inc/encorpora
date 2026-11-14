@@ -1,10 +1,8 @@
 {
   "id": "read-clock-five-minutes--sr",
   "title": "Two hands tell the time",
-  "teaches": [
-    "minutes-past-hour",
-    "clock-am-pm"
-  ],
+  "teaches": ["minutes-past-hour", "clock-am-pm", "match-clock-five-minutes"],
+  "skill": "clock-five-minutes",
   "cast": {
     "teacher": {},
     "learner": {}

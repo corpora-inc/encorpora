@@ -1,6 +1,8 @@
 {
  "id": "facts-to-five--sf",
  "title": "Plus hops forward, minus hops back",
+ "teaches": [],
+ "skill": "facts-within-5",
  "cast": {
   "teacher": {},
   "learner": {}

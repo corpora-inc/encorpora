@@ -1,12 +1,8 @@
 {
  "id": "grouped-both-sides-solve--sg",
  "title": "Tidy, gather, undo: brackets and x on both sides",
- "teaches": [
-  "grouped-both-sides-steps",
-  "staar-multistep-equations",
-  "both-sides-situation-equation",
-  "decimal-both-sides-equation"
- ],
+ "teaches": ["grouped-both-sides-steps", "staar-multistep-equations", "both-sides-situation-equation", "decimal-both-sides-equation", "linear-equation", "both-sides-linear-equation", "grouped-linear-equation", "check-equation-candidate", "substitution-match-table"],
+ "skill": "linear-equations",
  "cast": {
   "teacher": {}
  },

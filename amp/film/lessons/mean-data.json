@@ -1,6 +1,8 @@
 {
   "id": "mean-data",
   "title": "Mean of a dataset",
+  "teaches": [],
+  "skill": "statistics-mean",
   "shots": [
     {
       "figure": {

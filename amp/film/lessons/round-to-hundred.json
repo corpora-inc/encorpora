@@ -1,6 +1,8 @@
 {
   "id": "round-to-hundred",
   "title": "Round to the nearest hundred",
+  "teaches": ["mcas-round-hundred-select"],
+  "skill": "round-whole-numbers",
   "seed": "film",
   "shots": [
     {

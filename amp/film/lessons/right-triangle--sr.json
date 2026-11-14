@@ -1,11 +1,8 @@
 {
  "id": "right-triangle--sr",
  "title": "Why the Pythagorean theorem works",
- "teaches": [
-  "right-triangle-missing-leg",
-  "pythagorean-proof-area",
-  "pythagorean-proof-figure"
- ],
+ "teaches": ["right-triangle-missing-leg", "pythagorean-proof-area", "pythagorean-proof-figure", "pythagorean-proof-steps", "pythagorean-proof-flaw", "radical-side-entry"],
+ "skill": "pythagorean-theorem",
  "cast": {
   "teacher": {}
  },

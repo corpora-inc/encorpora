@@ -1,6 +1,8 @@
 {
  "id": "hundred-chart-missing--sh",
  "title": "Follow the hundred chart",
+ "teaches": ["count-sequence-missing"],
+ "skill": "count-to-100",
  "cast": {
   "teacher": {},
   "learner": {}

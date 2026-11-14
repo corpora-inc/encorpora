@@ -1,6 +1,7 @@
 {
   "id": "share-whole-items--bc",
   "title": "Share equally among trays: find how many on each",
+  "teaches": ["share-or-group", "story-for-expression"],
   "cast": {
     "teacher": {},
     "learner": {}

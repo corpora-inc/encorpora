@@ -1,10 +1,8 @@
 {
   "id": "number-line-hops--sh",
   "title": "Add and subtract with number-line hops",
-  "teaches": [
-    "number-line-missing-hop",
-    "number-line-jump-story"
-  ],
+  "teaches": ["number-line-missing-hop", "number-line-jump-story"],
+  "skill": "number-line-arithmetic",
   "cast": {
     "teacher": {},
     "learner": {}

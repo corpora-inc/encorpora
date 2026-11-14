@@ -1,11 +1,7 @@
 {
   "id": "linear-equation--sb",
   "title": "Keep the balance: solve a linear equation",
-  "teaches": [
-    "both-sides-linear-equation",
-    "check-equation-candidate",
-    "equation-solution-count"
-  ],
+  "teaches": ["both-sides-linear-equation", "check-equation-candidate", "equation-solution-count", "equation-make-example"],
   "cast": {
     "teacher": {}
   },

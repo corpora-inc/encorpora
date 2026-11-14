@@ -1,6 +1,8 @@
 {
  "id": "rational-two-denominators",
  "title": "Solve a rational equation with two denominators and reject an excluded value",
+ "teaches": ["sat-entry-rational-equation", "rational-equation-check"],
+ "skill": "rational-equations",
  "seed": "film",
  "shots": [
   {

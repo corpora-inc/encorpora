@@ -1,9 +1,8 @@
 {
   "id": "count-on-back--sc",
   "title": "Count on and count back",
-  "teaches": [
-    "counted-steps"
-  ],
+  "teaches": ["counted-steps"],
+  "skill": "counting-arithmetic",
   "cast": {
     "teacher": {},
     "learner": {}

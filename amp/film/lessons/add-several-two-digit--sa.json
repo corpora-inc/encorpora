@@ -1,6 +1,8 @@
 {
   "id": "add-several-two-digit--sa",
   "title": "Tens with tens, ones with ones",
+  "teaches": [],
+  "skill": "multiple-addends",
   "cast": {
     "teacher": {},
     "learner": {}

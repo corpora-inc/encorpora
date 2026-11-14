@@ -1,7 +1,8 @@
 {
  "id": "compare-money-sets--sc",
  "title": "Compare money by value",
- "teaches": [],
+ "teaches": ["coin-total", "money-total-dollars", "coin-name-and-cent-value", "pay-exact-coins"],
+ "skill": "money-values",
  "cast": {
   "teacher": {},
   "learner": {}
