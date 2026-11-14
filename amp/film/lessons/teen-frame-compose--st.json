@@ -1,6 +1,8 @@
 {
   "id": "teen-frame-compose--st",
   "title": "A teen number is ten and some more",
+  "teaches": [],
+  "skill": "teen-place-value",
   "cast": {
     "teacher": {},
     "learner": {}

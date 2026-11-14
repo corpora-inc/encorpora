@@ -12,6 +12,7 @@ import {
   setAnalyticsSession,
   captureAnalyticsTracker,
   trackClientError,
+  countExternalRuntimeError,
   initializeAnalyticsContext,
 } from "../analytics";
 import { eventBatchSchema } from "../../../analytics/events";
@@ -304,4 +305,16 @@ test("unload dispatches new events even while a prior request is pending", async
   ).toBe(true);
   complete(new Response(null, { status: 202 }));
   await settle();
+});
+
+test("injected runtime noise is aggregated separately and flushed on unload", async () => {
+  for (let i = 0; i < 60; i++) countExternalRuntimeError();
+  flush(true);
+  const events = (await sentBatches()).flatMap((b) => b.events);
+  expect(events.filter((e) => e.event === "client_error")).toEqual([]);
+  expect(
+    events
+      .filter((e) => e.event === "external_runtime_error")
+      .map((e) => e.props),
+  ).toEqual([expect.objectContaining({ count: 60 })]);
 });

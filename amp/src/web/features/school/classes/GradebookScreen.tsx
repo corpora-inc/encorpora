@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   gradebookColumns,
@@ -24,7 +24,13 @@ import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "./api";
-import { ClassFrame } from "./ClassFrame";
+import {
+  keptPerson,
+  offersWholeClass,
+  useClassHost,
+  wholeClass,
+  type ClassHost,
+} from "./host";
 import { EvidenceSheet } from "./EvidenceSheet";
 import { FinalField, Suggested } from "./grade-parts";
 import { CurveSheet, CurveStrip } from "./GradeCurve";
@@ -85,6 +91,8 @@ function ExportSheet({
   term,
   onMessage,
   onError,
+  words,
+  school,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -93,9 +101,17 @@ function ExportSheet({
   term: TermResource;
   onMessage: (message: string) => void;
   onError: (message: string) => void;
+  /** What the page calls the people in it. */
+  words: ClassHost["words"];
+  /** A school's class: its SIS ID and a OneRoster file. Elsewhere, a plain
+   * spreadsheet of the grades. */
+  school: boolean;
 }) {
+  const offered = gradebookColumns.filter(
+    (column) => school || column !== "sis",
+  );
   const [columns, setColumns] = useState<ReadonlySet<GradebookColumn>>(
-    () => new Set(gradebookColumns),
+    () => new Set(offered),
   );
   const [busy, setBusy] = useState<"csv" | "zip" | null>(null);
   const run = (kind: "csv" | "zip") => {
@@ -105,7 +121,7 @@ function ExportSheet({
           session,
           place,
           term.id,
-          gradebookColumns.filter((column) => columns.has(column)),
+          offered.filter((column) => columns.has(column)),
         )
       : downloadOneRoster(session, place, term.id)
     )
@@ -132,13 +148,14 @@ function ExportSheet({
     >
       <div className={styles.exportSheet}>
         <section>
-          <h3>Gradebook CSV</h3>
+          <h3>{school ? "Gradebook CSV" : "A spreadsheet of the grades"}</h3>
           <p className={styles.exportHint}>
-            A column for each thing your gradebook or SIS needs. Blend it with
-            the rest of the course grade however your school does.
+            {school
+              ? "A column for each thing your gradebook or SIS needs. Blend it with the rest of the course grade however your school does."
+              : `A row for each ${words.learner}, with the columns you choose: for a portfolio or a program’s records.`}
           </p>
           <div className={styles.columnPicks}>
-            {gradebookColumns.map((column) => (
+            {offered.map((column) => (
               <label key={column} className={styles.columnPick}>
                 <CheckboxControl
                   checked={columns.has(column)}
@@ -149,7 +166,11 @@ function ExportSheet({
                     setColumns(next);
                   }}
                 />
-                <span>{COLUMN_LABELS[column]}</span>
+                <span>
+                  {column === "name"
+                    ? `${words.Learner} name`
+                    : COLUMN_LABELS[column]}
+                </span>
               </label>
             ))}
           </div>
@@ -168,21 +189,23 @@ function ExportSheet({
             </p>
           )}
         </section>
-        <section>
-          <h3>OneRoster 1.2</h3>
-          <p className={styles.exportHint}>
-            A ZIP with lineItems.csv and results.csv, for an SIS that imports
-            OneRoster. Only final grades you’ve entered are sent.
-          </p>
-          <Button
-            variant="secondary"
-            aria-busy={busy === "zip" || undefined}
-            disabled={busy !== null}
-            onClick={() => run("zip")}
-          >
-            Download ZIP
-          </Button>
-        </section>
+        {school && (
+          <section>
+            <h3>OneRoster 1.2</h3>
+            <p className={styles.exportHint}>
+              A ZIP with lineItems.csv and results.csv, for an SIS that imports
+              OneRoster. Only final grades you’ve entered are sent.
+            </p>
+            <Button
+              variant="secondary"
+              aria-busy={busy === "zip" || undefined}
+              disabled={busy !== null}
+              onClick={() => run("zip")}
+            >
+              Download ZIP
+            </Button>
+          </section>
+        )}
       </div>
     </Sheet>
   );
@@ -251,7 +274,7 @@ export function WeeklyTarget({
 
 /** One made-up line of the gradebook, for the empty state: what a suggested
  * range and its four parts look like once there's work. */
-function ExampleGrade() {
+function ExampleGrade({ name }: { name: string }) {
   const parts = [
     ["Course progress", 92],
     ["Growth", 100],
@@ -261,7 +284,7 @@ function ExampleGrade() {
   return (
     <div className={styles.exampleGrade}>
       <div className={styles.exampleGradeTop}>
-        <span className={styles.exampleName}>A student</span>
+        <span className={styles.exampleName}>{name}</span>
         <Suggested
           suggestion={{
             status: "ready",
@@ -289,8 +312,9 @@ function ExampleGrade() {
 
 /** A class's term: a suggested range and four components per student, and a
  * final grade the teacher decides. Every row opens to its evidence. */
-export function GradebookScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/gradebook" });
+export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
+  const host = useClassHost(given);
+  const place = host.place;
   const session = useStaffSession();
   const [search, set, closeSheet] = useClassSearch();
   const requested = uuidOr(search.term);
@@ -300,12 +324,25 @@ export function GradebookScreen() {
       ...orgOptions(currentSession(), place.org),
       refetchOnMount: false,
     }).data?.kind === "family";
+  // What this page calls the people in it: its host's words, or a family
+  // class's own at its class address.
+  const words =
+    given || !family
+      ? host.words
+      : {
+          learner: "child",
+          learners: "children",
+          Learner: "Child",
+          group: "your children",
+        };
   const close = useCloseTerm(session, place);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [closingHere, setClosing] = useState(false);
   // Settings of a small class opens this with `?close=1`.
-  const closing = closingHere || search.close === 1 || search.close === "1";
+  const closing =
+    (closingHere || search.close === 1 || search.close === "1") &&
+    offersWholeClass(host);
   const stopClosing = () => {
     setClosing(false);
     if (search.close) set({ close: undefined });
@@ -321,9 +358,18 @@ export function GradebookScreen() {
     // `set` changes each render; this is about the failure.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unknownTerm]);
-  const open = uuidOr(search.student);
+  // Only a person this page shows ever opens, whatever the address says.
+  const open = keptPerson(host, uuidOr(search.student));
   const editable = !!data?.canEdit && term?.state === "open";
-  const rows = data?.students ?? [];
+  const rows = (data?.students ?? []).filter(
+    (row) => !host.keep || host.keep(row.id),
+  );
+  // Whatever acts on the whole class (export, closing the term, the curve)
+  // is offered only where this page shows the whole class, so what it says
+  // it will change is exactly what the server changes.
+  const whole = wholeClass(host, rows.length, data?.students.length ?? 0);
+  // The curve and every figure read the people shown, never the others.
+  const shown = data && host.keep ? { ...data, students: rows } : data;
   const entered = rows.filter((row) => row.final).length;
   // Who the sheet showed last, once the URL has already moved on.
   const lastOpen = useRef(open);
@@ -366,7 +412,7 @@ export function GradebookScreen() {
     () => [
       {
         id: "student",
-        header: family ? "Child" : "Student",
+        header: words.Learner,
         width: 160,
         compare: (a, b) => a.name.localeCompare(b.name, "en"),
         cell: name,
@@ -398,7 +444,7 @@ export function GradebookScreen() {
     ],
     // Cells read the current row and term; a row only changes with new data.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [term?.id, editable, session, place.class, family],
+    [term?.id, editable, session, place.class, words.Learner],
   );
   const card = (row: GradeRow) => (
     <div className={styles.gradeCard}>
@@ -431,7 +477,7 @@ export function GradebookScreen() {
     rows.length > 1 &&
     !rows.some((row) => row.suggestion.status === "facts-only");
   const curveOpen =
-    curved && editable && (search.curve === 1 || search.curve === "1");
+    curved && editable && whole && (search.curve === 1 || search.curve === "1");
   // Nobody has a week's work yet: what a grade will look like, not a table of
   // dashes.
   const waiting =
@@ -440,9 +486,7 @@ export function GradebookScreen() {
       (row) => row.suggestion.status === "not-enough-work" && !row.final,
     );
   return (
-    <ClassFrame
-      org={place.org}
-      classId={place.class}
+    <host.Frame
       className={data?.class.name}
       loading={book.isPending}
       tab="gradebook"
@@ -451,23 +495,31 @@ export function GradebookScreen() {
         <LoadFailed what="The gradebook" onRetry={() => void book.refetch()} />
       ) : !term ? (
         <EmptyState
-          title="This class has no grading periods yet"
+          title={
+            given
+              ? "No grading periods yet"
+              : "This class has no grading periods yet"
+          }
           action={
             <Link
               to="/$"
               params={{
                 // A family's calendar is a section of its class's Settings.
-                _splat: family
-                  ? classUrl(place.org, place.class, "settings")
-                  : `school/${place.org}/calendar`,
+                _splat: given
+                  ? host.href("report-cards")
+                  : family
+                    ? host.href("settings")
+                    : `school/${place.org}/calendar`,
               }}
               className={buttonClass("primary")}
             >
-              Open the calendar
+              {given ? "Set grading periods" : "Open the calendar"}
             </Link>
           }
         >
-          Add the school year and its terms, and suggested ranges appear here.
+          {given
+            ? "Set the school year and its grading periods under Report cards, and suggested ranges appear here."
+            : "Add the school year and its terms, and suggested ranges appear here."}
         </EmptyState>
       ) : (
         <div className={styles.gradePage} aria-busy={book.isFetching}>
@@ -499,31 +551,31 @@ export function GradebookScreen() {
               <EmptyState
                 title={`${term.name} starts ${longDay(term.startsOn)}`}
               >
-                Suggested ranges appear here once students have work in this
-                term.
+                Suggested ranges appear here once {words.learners} have work in
+                this term.
               </EmptyState>
             </div>
           ) : rows.length === 0 ? (
             <div className={styles.gradeEmpty}>
               <EmptyState
-                title={
-                  family
-                    ? "No children in this term"
-                    : "No students in this term"
-                }
-                example={<ExampleGrade />}
+                title={`No ${words.learners} in this term`}
+                example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: family
-                        ? "family/learners"
-                        : classUrl(place.org, place.class, "settings"),
+                      _splat: given
+                        ? host.href("today")
+                        : family
+                          ? "family/learners"
+                          : classUrl(place.org, place.class, "settings"),
                     }}
-                    search={(family ? {} : { add: 1 }) as never}
+                    search={
+                      (given ? { add: 1 } : family ? {} : { add: 1 }) as never
+                    }
                     className={buttonClass("primary")}
                   >
-                    {family ? "Add a child" : "Add students"}
+                    {given || family ? "Add a child" : "Add students"}
                   </Link>
                 }
               />
@@ -532,12 +584,12 @@ export function GradebookScreen() {
             <div className={styles.gradeEmpty}>
               <EmptyState
                 title="Suggested grades appear after a week of work"
-                example={<ExampleGrade />}
+                example={<ExampleGrade name={`A ${words.learner}`} />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "today"),
+                      _splat: host.href("today"),
                     }}
                     className={buttonClass("primary")}
                   >
@@ -554,7 +606,9 @@ export function GradebookScreen() {
                 <div className={styles.toolbarMain}>
                   {term.state === "closed" ? (
                     <Badge>Closed</Badge>
-                  ) : data.canEdit ? (
+                  ) : data.canEdit && whole ? (
+                    // The class's weekly target grades everyone in it: set
+                    // only where this page shows the whole class.
                     <WeeklyTarget
                       session={session}
                       place={place}
@@ -575,13 +629,15 @@ export function GradebookScreen() {
                     : `${entered} of ${rows.length} final grades entered`}
                 </span>
                 <div className={styles.toolbarActions}>
-                  <Button variant="quiet" onClick={() => set({ export: 1 })}>
-                    Export
-                  </Button>
+                  {whole && (
+                    <Button variant="quiet" onClick={() => set({ export: 1 })}>
+                      Export
+                    </Button>
+                  )}
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "report-cards"),
+                      _splat: host.href("report-cards"),
                     }}
                     search={{ term: term.id } as never}
                     // Beside Export, never pulled over it: a start-aligned
@@ -591,7 +647,7 @@ export function GradebookScreen() {
                   >
                     Report cards
                   </Link>
-                  {editable && (
+                  {editable && whole && (
                     <Button
                       variant="secondary"
                       onClick={() => setClosing(true)}
@@ -603,9 +659,9 @@ export function GradebookScreen() {
               </div>
               {curved && (
                 <CurveStrip
-                  book={data}
+                  book={shown!}
                   term={term}
-                  onEdit={editable ? () => set({ curve: 1 }) : null}
+                  onEdit={editable && whole ? () => set({ curve: 1 }) : null}
                 />
               )}
               <DataGrid
@@ -648,9 +704,18 @@ export function GradebookScreen() {
             onClose={() => closeSheet("student")}
             onError={setError}
             onSaved={setAnnouncement}
+            links={
+              given && host.record
+                ? {
+                    record: host.record,
+                    reportCard: host.href("report-cards"),
+                  }
+                : undefined
+            }
           />
-          {curved && editable && (
+          {curved && editable && whole && (
             <CurveSheet
+              words={words}
               open={curveOpen}
               onOpenChange={(next) => {
                 if (!next) closeSheet("curve");
@@ -663,17 +728,21 @@ export function GradebookScreen() {
               onError={setError}
             />
           )}
-          <ExportSheet
-            open={search.export === 1 || search.export === "1"}
-            onOpenChange={(next) => {
-              if (!next) closeSheet("export");
-            }}
-            session={session}
-            place={place}
-            term={term}
-            onMessage={setMessage}
-            onError={setError}
-          />
+          {whole && (
+            <ExportSheet
+              words={words}
+              school={!given && !family}
+              open={search.export === 1 || search.export === "1"}
+              onOpenChange={(next) => {
+                if (!next) closeSheet("export");
+              }}
+              session={session}
+              place={place}
+              term={term}
+              onMessage={setMessage}
+              onError={setError}
+            />
+          )}
           <Dialog
             open={closing}
             onOpenChange={(next) => {
@@ -686,7 +755,7 @@ export function GradebookScreen() {
                 This freezes every suggested range with the evidence behind it,
                 and final grades can no longer change.
                 {missing > 0
-                  ? ` ${missing === 1 ? "1 student has" : `${missing} students have`} no final grade yet.`
+                  ? ` ${missing === 1 ? `1 ${words.learner} has` : `${missing} ${words.learners} have`} no final grade yet.`
                   : ""}
               </p>
               <div className={styles.dialogActions}>
@@ -731,6 +800,6 @@ export function GradebookScreen() {
       </span>
       <Toast tone="status" message={message} onDismiss={() => setMessage("")} />
       <Toast message={error} onDismiss={() => setError("")} />
-    </ClassFrame>
+    </host.Frame>
   );
 }

@@ -151,7 +151,7 @@ test("an adult on her own uses the gift on her learner, offered first", async ()
   const mine = await screen.findByRole("button", { name: "Use it for me" });
   // Setting it up for a child is still there, second.
   expect(
-    screen.getByRole("link", { name: "Set it up for my child" }),
+    screen.getByRole("link", { name: "Set it up for a child" }),
   ).toBeTruthy();
   fireEvent.click(mine);
   await vi.waitFor(() => expect(state.posts).toHaveLength(1));

@@ -7,7 +7,6 @@ import {
   createRouter,
   createBrowserHistory,
   createMemoryHistory,
-  lazyRouteComponent,
   Outlet,
   redirect,
   retainSearchParams,
@@ -15,6 +14,7 @@ import {
   useRouter,
   useRouterState,
 } from "@tanstack/react-router";
+import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect, useRef } from "react";
@@ -39,7 +39,6 @@ import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import { closeAllPopovers } from "../ui/popover-owner";
 import {
-  familyClassPath,
   homePlace,
   isStarterChoice,
   placeOfPath,
@@ -60,6 +59,7 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import { autoReloadBlock } from "../lib/reload-guard";
 import {
   clearStudentDevice,
   studentSession,
@@ -74,7 +74,9 @@ import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
-import { appReturn } from "../features/spaces/returns";
+import { familyRoutes } from "./family-routes";
+import { appReturn, RETURN_LIMIT } from "../features/spaces/returns";
+import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
@@ -93,6 +95,7 @@ import {
 } from "../nav/entities";
 import {
   adoptPracticeMode,
+  canonicalLearnerAddress,
   carriedKeys,
   isLearningPath,
 } from "../features/profiles/practice-mode";
@@ -112,8 +115,9 @@ const searchSchema = z
       ])
       .optional()
       .catch(undefined),
-    /** Where a school sign-in continues; `continuationSearch` checks it. */
-    next: z.string().max(300).optional().catch(undefined),
+    /** Where a sign-in continues; `continuationSearch` holds it to the one
+     * return contract (`appReturn`). */
+    next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
     entry: signupEntrySchema.optional().catch(undefined),
     program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
@@ -218,7 +222,14 @@ const root = createRootRoute({
   // until the new page paints, so no loading screen shows in between.
   beforeLoad: async ({ location, preload }) => {
     if (nativeRuntime) return;
-    if (knownStale()) {
+    if (
+      knownStale() &&
+      !preload &&
+      !autoReloadBlock({
+        pathname: location.pathname,
+        search: location.searchStr,
+      })
+    ) {
       window.location.assign(location.href);
       return new Promise<never>(() => {});
     }
@@ -408,9 +419,7 @@ const home = createRoute({
     setPitchShown(shown);
     if (!shown) await legacy.preload?.();
     else {
-      // The lazy screen's own chunk too: rendering it before it has loaded
-      // suspends inside TanStack's Lazy with `use()`, which React then
-      // reports as a conditional use() once it resolves.
+      // Preload the route component alongside its data before showing the pitch.
       const [{ loadPitch }] = await Promise.all([
         import("../features/pitch/PitchScreen"),
         pitch.preload?.(),
@@ -476,12 +485,14 @@ const home = createRoute({
             throw redirect({ to: "/me", replace: true } as never);
           // A family's side is its class, once a child can practice; until
           // then first-run routing below guides the parent there.
-          if (place === "home" && me.familyClass && me.next === "practice")
-            throw redirect({
-              to: "/$",
-              params: { _splat: familyClassPath(me.familyClass) },
-              replace: true,
-            });
+          if (
+            place === "home" &&
+            me.next === "practice" &&
+            (me.familyClass ||
+              me.learners.length > 0 ||
+              !!me.secondParentOf?.length)
+          )
+            throw redirect({ to: "/family", replace: true } as never);
           if (place !== "home")
             throw redirect({
               to: "/$",
@@ -750,6 +761,7 @@ const inventory = createRoute({
   // A learning record belongs to an account: signed out, sign in first.
   beforeLoad: async ({ location }) => {
     await framedScreen();
+    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
     if (!queryClient.getQueryData(sessionOptions.queryKey))
       throw redirect({
@@ -827,6 +839,7 @@ const pathways = createRoute({
     if (skill !== undefined && location.pathname === "/pathways")
       skillAsLayer(location, skill);
     await framedScreen();
+    await canonicalLearnerAddress(location);
     await adoptPracticeMode(location);
   },
   // The curriculum and the learner's record arrive with it: one paint. A
@@ -1051,7 +1064,13 @@ const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
   staticData: { space: "classroom" },
-  beforeLoad: staffScreen,
+  // A parent's family lived at its class before it had an address of its
+  // own: each old leaf opens the family's matching screen.
+  beforeLoad: async (context) => {
+    const result = await staffScreen(context);
+    await toFamilyAddress(result.session, context);
+    return result;
+  },
   loader: ({ context, params }) =>
     Promise.all([
       frameData((context as { session: AuthSession }).session, params.org),
@@ -1443,6 +1462,27 @@ const ownRecord = createRoute({
   },
   component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
 });
+/** The adult's own time, by day and by week (R15), from `/me`'s "This
+ * week". The same record `/me` reads, so it paints from the cache. */
+const ownTime = createRoute({
+  getParentRoute: () => root,
+  path: "/me/time",
+  staticData: { space: "me" },
+  beforeLoad: async () => {
+    const { me, session } = await ownPractice();
+    if (!me.adultPractice?.learner)
+      throw redirect({ to: "/me", replace: true } as never);
+    return { session };
+  },
+  loader: async ({ context }) => {
+    const { session } = context as { session: AuthSession };
+    const { ownPracticeOptions } = await import("../features/me/api");
+    await queryClient
+      .ensureQueryData(ownPracticeOptions(session))
+      .catch((error) => console.warn("Your time didn’t load ahead", error));
+  },
+  component: lazyRouteComponent(ownScreens, "OwnTimeScreen"),
+});
 const ownStart = createRoute({
   getParentRoute: () => root,
   path: "/me/start",
@@ -1475,6 +1515,16 @@ const newProfile = createRoute({
     await ownPractice();
   },
   component: lazyRouteComponent(profileScreens, "NewProfileScreen"),
+});
+/** "Practice at a level" (SPEC R5): a grade and pace, then practice there. */
+const levelPractice = createRoute({
+  getParentRoute: () => root,
+  path: "/me/level",
+  staticData: { space: "me" },
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "LevelScreen"),
 });
 const editProfile = createRoute({
   getParentRoute: () => root,
@@ -1597,7 +1647,10 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The address says who practices (features/profiles/practice-mode.ts).
-  beforeLoad: ({ location }) => adoptPracticeMode(location),
+  beforeLoad: async ({ location }) => {
+    await canonicalLearnerAddress(location);
+    await adoptPracticeMode(location);
+  },
   // The app screen is rendered by the layout, so load its chunk here, as the
   // route's own component would have been. The Overview's level too, so it
   // paints in its final layout (a learner's first day has its own).
@@ -1696,9 +1749,11 @@ export const router = createRouter({
     ]),
     standings,
     ownRecord,
+    ownTime,
     ownStart,
     profiles,
     newProfile,
+    levelPractice,
     editProfile,
     schoolsHome,
     schoolsScope,
@@ -1747,6 +1802,7 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
+    ...(familyRoutes(root) as unknown as []),
     ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,

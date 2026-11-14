@@ -100,6 +100,9 @@
 .content.tall {
   height: calc(100dvh - 2 * var(--space-4));
 }
+.content.wide {
+  width: min(920px, calc(100vw - 2 * var(--space-4)));
+}
 
 /* A confirmation opened from the navigation sheet must sit above that sheet. */
 .overlay.aboveNavigation {

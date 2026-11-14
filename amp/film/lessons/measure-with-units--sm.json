@@ -2,6 +2,7 @@
  "id": "measure-with-units--sm",
  "title": "Measuring length with equal units",
  "teaches": ["correct-unit-measure", "unit-size-and-count"],
+ "skill": "measure-equal-units",
  "cast": {
   "teacher": {},
   "learner": {}

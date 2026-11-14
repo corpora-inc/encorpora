@@ -5,13 +5,23 @@ import type {
   OrgResource,
   StaffRole,
 } from "../../../schools/contracts";
+import type {
+  FamilyPlaces,
+  FamilyProjection,
+} from "../../../family/projection-contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
-import { addressedIdentity, type AddressedIdentity } from "./identity";
+import {
+  childAddress,
+  learningIdentity,
+  type AddressedIdentity,
+} from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
   accountTabs,
+  childTabs,
   classroomTabs,
+  familyPlaceTabs,
   familyTabs,
   learnerTabs,
   meTabs,
@@ -91,6 +101,12 @@ export type SpaceResources = {
   /** Students covered by the class's running practice (an answer that
    * doesn't carry `year.practice`, from an older server). */
   covered?: number;
+  /** The family a `/family/<family>/…` address names: its own children and
+   * what this reader may do with each (docs/architecture/family-api.md). */
+  family?: FamilyProjection | null;
+  /** The families this account belongs to (`GET /families`): which family a
+   * tutoring group's class is, for the switcher. */
+  families?: FamilyPlaces | null;
   /** A lookup failed without a refusal (the network, a server error). */
   failed?: boolean;
   /** This session's own `/me` failed before it ever answered: whatever is
@@ -102,6 +118,7 @@ export type SpaceAction =
   "start-class" | "demo-setup" | "practice" | "sign-out" | "profile-back";
 
 export type DestinationIcon =
+  | "child"
   | "learn"
   | "level"
   | "workbooks"
@@ -117,15 +134,14 @@ export type Destination = {
   /** Without the leading slash. */
   path: string;
   icon: DestinationIcon;
-  /** The learner a learning screen is for, in its address: a refresh or a
-   * shared link never changes whose record it is. */
-  search?: { learner: string };
   detail?: string;
   current: boolean;
 };
 
 /** What the server said one target allows this person. */
 export type TargetCapabilities = {
+  /** A learner target is one child of a family: naming, consent, purchase
+   * and the rest are that child's, never the family's at large. */
   target: { kind: "org" | "class" | "learner"; id: string };
   can: readonly string[];
 };
@@ -466,6 +482,10 @@ function resolveOnce(
       actions: frame?.kind === "plain" && frame.practice ? ["practice"] : [],
       label: frame?.kind === "account" ? "Account" : null,
     };
+  if (frame?.kind === "family")
+    return frame.leaf === "group" || frame.leaf.startsWith("group/")
+      ? groupSpace({ ...base, ...words("classroom") }, frame, resources)
+      : familyPlaceSpace({ ...base, ...words("family") }, frame, me, resources);
   if (route === "classroom" || route === "school") {
     const orgId =
       frame?.kind === "class" || frame?.kind === "school" ? frame.org : null;
@@ -475,6 +495,44 @@ function resolveOnce(
       const family =
         familyAt(me, orgId) ??
         (org?.kind === "family" ? ("co-teacher" as const) : null);
+      // A family-kind class at its class address is a tutoring group: a
+      // parent's own family class opens at /family (its old addresses
+      // redirect), so what renders here is the whole group, the classroom
+      // composition, a teaching place of its own (R2).
+      if (family && frame?.kind === "class") {
+        const group = resources.families?.families.find(
+          (entry) => entry.teachingPlace?.classId === frame.classId,
+        );
+        const space = teachingSpace(
+          { ...base, ...words("classroom") },
+          "classroom",
+          frame,
+          orgId,
+          { ...resources, org: missing ? null : org },
+        );
+        // The class the parent's relationship names, never another one.
+        const named =
+          family !== "co-teacher" && family.classId !== frame.classId;
+        if (named)
+          return {
+            ...space,
+            status: "unavailable",
+            tabs: [],
+            destinations: [],
+            actions: [],
+            label: null,
+          } as SpaceDescriptor;
+        return {
+          ...space,
+          label: "Tutoring group",
+          place: `group:${group?.familyId ?? orgId}`,
+          destinations: space.destinations.map((entry) =>
+            entry.id === "class"
+              ? { ...entry, label: "Tutoring group" }
+              : entry,
+          ),
+        };
+      }
       if (family)
         return familySpace({ ...base, ...words("family") }, frame, me, {
           orgId,
@@ -489,10 +547,15 @@ function resolveOnce(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
+    // An unnamed shared learning screen is the adult's own (self).
     const named =
       route === "me"
         ? null
-        : addressedIdentity(match.pathname, match.search ?? {});
+        : learningIdentity(
+            match.pathname,
+            match.search ?? {},
+            me?.adultPractice?.learner?.id,
+          );
     const chosen =
       route === "me" ? null : chosenLearner(me, named, session.learnerId);
     // The address named someone this account doesn't read: unavailable,
@@ -616,13 +679,11 @@ function meSpace(
     label: string,
     path: string,
     icon: DestinationIcon,
-    search?: { learner: string },
   ): Destination => ({
     id,
     label,
     path,
     icon,
-    ...(search ? { search } : {}),
     current: id === active && (tabbed || frame?.kind === "practice"),
   });
   return {
@@ -641,6 +702,10 @@ function meSpace(
         ? meTabs(
             own?.id ?? null,
             chosen?.kind === "own" && chosen.profile ? chosen.id : null,
+            chosen?.kind === "own" &&
+              chosen.profile &&
+              !!me?.practiceProfiles?.find((entry) => entry.id === chosen.id)
+                ?.level,
           )
         : [],
     bar: frame?.kind === "account" ? "plain" : base.bar,
@@ -654,29 +719,33 @@ function meSpace(
           : [],
     destinations: own
       ? [
-          destination("practice", "Practice", "practice", "learn", {
-            learner: own.id,
-          }),
+          destination("practice", "Practice", "practice", "learn"),
           destination("levels", "Levels", "me", "level"),
           destination("workbooks", "Workbooks", workbooks!, "workbooks"),
+          destination(
+            "level-practice",
+            "Practice at a level",
+            "me/level",
+            "someone",
+          ),
           destination("profiles", "Profiles", "me/profiles", "someone"),
         ]
       : [
           ...(me?.adultPractice?.eligible
-            ? [
-                destination(
-                  "start",
-                  "Start my own practice",
-                  "me/start",
-                  "learn",
-                ),
-              ]
+            ? [destination("start", "Practice yourself", "me/start", "learn")]
             : []),
+          destination(
+            "level-practice",
+            "Practice at a level",
+            "me/level",
+            "someone",
+          ),
           destination("profiles", "Profiles", "me/profiles", "someone"),
         ],
     place: "me",
-    label:
-      chosen?.kind === "own" && chosen.profile ? chosen.name : "My practice",
+    // No place name (Q-204): the tabs and the screen say whose this is, and
+    // a practice profile is named by the bar's own "Practicing as" mark.
+    label: "",
   };
 }
 
@@ -753,24 +822,24 @@ function familySpace(
               ? { can: resources.year?.can ?? [] }
               : {}),
           })
-        : frame?.kind === "progress"
-          ? learnerTabs().map((item) =>
-              learner ? { ...item, search: { learner: learner.id } } : item,
-            )
+        : frame?.kind === "progress" && learner && orgId
+          ? childTabs(orgId, learner.id)
           : [];
   const active =
     frame?.kind === "class" && frame.leaf === "report-cards"
       ? "report-cards"
       : base.active;
+  // A parent's family opens at its own address; a co-teacher's class is
+  // the class's Today.
   const home =
-    status !== "unavailable" && orgId && classId
-      ? `school/${orgId}/classes/${classId}/today`
-      : null;
-  // Practice as the child only where the server's own answer for them says
-  // so (their learner target), never from the space.
-  const practices =
-    !!learner &&
-    !!learnerTarget(me, learner.id)?.can.includes("learner.practice");
+    status === "unavailable" || !orgId
+      ? null
+      : relation === "holder" || relation === "second-parent"
+        ? // A family's id need not be its org's: the landing alias opens it.
+          "family"
+        : classId
+          ? `school/${orgId}/classes/${classId}/today`
+          : null;
   return {
     ...base,
     space: "family",
@@ -808,11 +877,13 @@ function familySpace(
     tabs,
     bar: frame?.kind === "account" ? "plain" : base.bar,
     active,
+    // A child's practice is their own session, from their page or the
+    // family's Today ("Let Pip practice here"): an unnamed /practice from
+    // here would be the adult's own.
     actions:
       frame?.kind === "practice"
         ? ["profile-back"]
-        : frame?.kind === "progress" ||
-            (frame?.kind === "plain" && frame.practice)
+        : frame?.kind === "plain" && frame.practice && !learnerOnly
           ? ["practice"]
           : [],
     destinations:
@@ -827,34 +898,6 @@ function familySpace(
                     path: home,
                     icon: "class" as const,
                     current: onClass && active === "today",
-                  },
-                ]
-              : []),
-            // A second parent's children practice from the family's Today
-            // ("Let … practice here"), never as hers.
-            ...(practices
-              ? [
-                  {
-                    // Never "Practice": that is the adult's own, in My
-                    // practice. This is the child's, as on Today.
-                    id: "practice",
-                    label: `Let ${learner!.name} practice`,
-                    path: "practice",
-                    icon: "learn" as const,
-                    search: { learner: learner!.id },
-                    current: frame?.kind === "practice",
-                  },
-                ]
-              : []),
-            ...(learner
-              ? [
-                  {
-                    id: "progress",
-                    label: `${learner.name}’s progress`,
-                    path: "overview",
-                    icon: "level" as const,
-                    search: { learner: learner.id },
-                    current: frame?.kind === "progress",
                   },
                 ]
               : []),
@@ -1031,4 +1074,262 @@ function teachingSpace(
       };
     })(),
   };
+}
+
+type FamilyFrame = Extract<ShellFrame, { kind: "family" }>;
+
+/**
+ * The family's own class, when it has one, with the org that holds it. A
+ * family's id is an opaque key that need not be its class's org
+ * (docs/architecture/family-api.md), so the class comes from the projection
+ * (a child's class hosted by the family, or its tutoring class) or, for an
+ * account holder before any child, their own family class; never from
+ * comparing ids. A family whose children are all hosted elsewhere has none.
+ */
+export function ownClassOf(
+  me: SignedInMe | null,
+  family: string,
+  projection?: FamilyProjection | null,
+): { id: string; name: string; org: string } | null {
+  const data = projection?.familyId === family ? projection : null;
+  const relationClass = (classId: string) => {
+    if (me?.familyClass?.classId === classId)
+      return {
+        id: classId,
+        name: me.familyClass.className,
+        org: me.familyClass.orgId,
+      };
+    const shared = me?.secondParentOf?.find(
+      (entry) => entry.classId === classId,
+    );
+    return shared
+      ? { id: classId, name: shared.className, org: shared.orgId }
+      : null;
+  };
+  if (data) {
+    const hosted = data.children
+      .flatMap((child) => child.classes)
+      .find((entry) => entry.hostedByFamily);
+    if (hosted) return { id: hosted.id, name: hosted.name, org: hosted.orgId };
+    if (data.teachingPlace) return relationClass(data.teachingPlace.classId);
+    if (data.role === "holder" && me?.familyClass)
+      return relationClass(me.familyClass.classId);
+    return null;
+  }
+  // Before the projection answers: the relationship whose org is this id
+  // (a family made by a compatible API).
+  if (me?.familyClass?.orgId === family)
+    return relationClass(me.familyClass.classId);
+  const shared = me?.secondParentOf?.find((entry) => entry.orgId === family);
+  return shared ? relationClass(shared.classId) : null;
+}
+
+/** What a family is called: its chosen name, else to its holder "Your
+ * family", and to a second parent the holder's family by their name. */
+export function familyDisplayName(
+  data: Pick<FamilyProjection, "displayName" | "role"> & {
+    holderName?: string | null;
+  },
+): string {
+  if (data.displayName) return data.displayName;
+  if (data.role !== "holder" && data.holderName)
+    return `${data.holderName}’s family`;
+  return "Your family";
+}
+
+/** The capabilities a family projection grants, by name, for one target. */
+function familyCan(data: FamilyProjection): string[] {
+  return Object.entries(data.capabilities)
+    .filter(([, allowed]) => allowed)
+    .map(([name]) => name);
+}
+
+/**
+ * A family's own screens (`/family/<family>/…`), from the family projection
+ * that address names: its children (owned, or this second parent's family's,
+ * never a class's other students), its tabs, and the children as the drawer's
+ * rows. A projection for another family is never read; a refused or missing
+ * one is unavailable.
+ */
+function familyPlaceSpace(
+  base: Frame,
+  frame: FamilyFrame,
+  me: SignedInMe | null,
+  resources: SpaceResources,
+): SpaceDescriptor {
+  const data =
+    resources.family === null
+      ? null
+      : resources.family?.familyId === frame.family
+        ? resources.family
+        : undefined;
+  const status: Resolution =
+    data === null ? "unavailable" : data === undefined ? "loading" : "ready";
+  const children = data?.children ?? [];
+  const learners = children.map(({ id, name }) => ({ id, name }));
+  const kid = /^kids\/([^/]+)/.exec(frame.leaf)?.[1] ?? null;
+  const learner = kid
+    ? (learners.find((entry) => entry.id === kid) ?? null)
+    : null;
+  // A child's Pathways and Inventory (`kids/<learner>/pathways`): the
+  // child's record, its tabs at the child's own addresses, the bar naming
+  // them. A child who isn't this family's is unavailable, never another.
+  const record = childAddress(`/family/${frame.family}/${frame.leaf}`);
+  const onRecord = !!record && record.screen !== "overview";
+  const shown: Resolution =
+    onRecord && status === "ready" && !learner ? "unavailable" : status;
+  const own = ownClassOf(me, frame.family, data);
+  const home = `family/${frame.family}`;
+  const workbooks = children.length
+    ? children.some((child) => child.capabilities.readWorkbooks)
+    : data?.role === "holder";
+  return {
+    ...base,
+    space: "family",
+    status: shown,
+    family: {
+      id: frame.family,
+      name: data ? familyDisplayName(data) : null,
+      demo: false,
+    },
+    relation: data?.role ?? null,
+    class: own
+      ? { id: own.id, name: own.name, past: false, board: false, start: false }
+      : null,
+    learner,
+    learners,
+    capabilities: data
+      ? [
+          { target: { kind: "org", id: frame.family }, can: familyCan(data) },
+          // Each child's own rights, as the projection grants them.
+          ...data.children.map((child) => ({
+            target: { kind: "learner" as const, id: child.id },
+            can: Object.entries(child.capabilities)
+              .filter(([, allowed]) => allowed)
+              .map(([name]) => name),
+          })),
+        ]
+      : [],
+    tabs:
+      shown !== "ready"
+        ? []
+        : onRecord && learner
+          ? childTabs(frame.family, learner.id)
+          : familyPlaceTabs(frame.family, { workbooks }),
+    bar: "tabs",
+    active: onRecord ? record.screen : frame.active,
+    actions: [],
+    destinations:
+      shown === "unavailable"
+        ? []
+        : [
+            {
+              id: "today",
+              label: "Today",
+              path: home,
+              icon: "class",
+              current: frame.leaf === "",
+            },
+            ...learners.map((child) => ({
+              id: `child:${child.id}`,
+              label: child.name,
+              path: `${home}/kids/${child.id}`,
+              icon: "child" as const,
+              current: kid === child.id,
+            })),
+          ],
+    place:
+      shown === "unavailable"
+        ? null
+        : data?.role === "holder"
+          ? "home"
+          : `family:${frame.family}`,
+    label:
+      onRecord && learner
+        ? learner.name
+        : data && shown !== "unavailable"
+          ? familyDisplayName(data)
+          : null,
+  };
+}
+
+/**
+ * A tutoring group (`/family/<family>/group`): a family-kind class that holds
+ * other families' children, presented as a teaching place of its own, the
+ * whole class in a classroom's words. It is never mixed into the family.
+ */
+function groupSpace(
+  base: Frame,
+  frame: FamilyFrame,
+  resources: SpaceResources,
+): SpaceDescriptor {
+  const data =
+    resources.family === null
+      ? null
+      : resources.family?.familyId === frame.family
+        ? resources.family
+        : undefined;
+  const place = data?.teachingPlace ?? null;
+  const status: Resolution =
+    data === null || (data && !place)
+      ? "unavailable"
+      : data === undefined
+        ? "loading"
+        : "ready";
+  return {
+    ...base,
+    space: "classroom",
+    status,
+    org: {
+      id: frame.family,
+      name: data?.displayName ?? null,
+      kind: "family",
+      demo: false,
+      lone: true,
+    },
+    class: {
+      id: place?.classId ?? "",
+      name: place?.displayName ?? null,
+      past: false,
+      board: false,
+      start: false,
+    },
+    role: data ? "teacher" : null,
+    capabilities: [],
+    tabs: [],
+    // One screen: the bar names it, with no row of tabs under it.
+    bar: "plain",
+    active: null,
+    actions: [],
+    destinations:
+      status === "unavailable"
+        ? []
+        : [
+            {
+              id: "group",
+              label: "Tutoring group",
+              path: `family/${frame.family}/group`,
+              icon: "class",
+              current: true,
+            },
+          ],
+    place: `group:${frame.family}`,
+    label: "Tutoring group",
+  };
+}
+
+/** What the space's descriptor says this person may do with one target:
+ * the server's own list, never inferred from a space or a role. */
+export function canOn(
+  space: SpaceDescriptor | null | undefined,
+  target: TargetCapabilities["target"],
+  capability: string,
+): boolean {
+  if (!space || !("capabilities" in space)) return false;
+  return space.capabilities.some(
+    (entry) =>
+      entry.target.kind === target.kind &&
+      entry.target.id === target.id &&
+      entry.can.includes(capability),
+  );
 }

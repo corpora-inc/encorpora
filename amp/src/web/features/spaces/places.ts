@@ -6,6 +6,7 @@ import {
   type StaffRole,
 } from "../../../schools/contracts";
 import type { AuthSession } from "../../auth";
+import type { FamilyPlaces } from "../../../family/projection-contracts";
 import { call, keyFor } from "../school/api";
 import { spaceWords } from "./words";
 
@@ -25,6 +26,7 @@ export type PlaceId =
   | "level"
   | `school:${string}`
   | `family:${string}`
+  | `group:${string}`
   | `class:${string}:${string}`;
 
 export type PlaceEntry = {
@@ -63,6 +65,13 @@ const count = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 
 /** Their own family's side: their children, or the way into it. */
+/** The adult's own name as they gave it (R12): their given name, else the
+ * name they go by; null when they haven't given one. */
+export function adultName(me: SignedInMe): string | null {
+  const name = me.account.givenName?.trim() || me.account.displayName?.trim();
+  return name || null;
+}
+
 function ownFamily(me: SignedInMe): PlaceEntry | null {
   const home =
     me.learners.length > 0 ||
@@ -82,9 +91,7 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
         : children.length > 1
           ? count(children.length, words.learner, words.learners)
           : "Getting started",
-    path: me.familyClass
-      ? `school/${me.familyClass.orgId}/classes/${me.familyClass.classId}/today`
-      : "",
+    path: "family",
   };
 }
 
@@ -92,28 +99,100 @@ function ownFamily(me: SignedInMe): PlaceEntry | null {
  * The switcher's places, grouped by space: Family (their own, the families
  * they are a second parent or co-teacher of), Teaching (each school, network
  * or district with their role, the schools below one they oversee, and each
- * class they teach or aide) and My practice. Every place the account may
+ * class they teach or aide) and Practice. Every place the account may
  * open, with its role; nothing it may not. Without the places read (it
  * failed, or there is none), the schools `/me` names stand in.
  */
 export function placeGroups(
   me: SignedInMe,
   places: PlacesResource | null,
+  /** The families this account belongs to (`GET /families`), when read:
+   * each named as the family is, never by its class. */
+  families: FamilyPlaces | null = null,
 ): PlaceGroup[] {
   const family: PlaceEntry[] = [];
-  const own = ownFamily(me);
-  if (own) family.push(own);
-  for (const shared of me.secondParentOf ?? [])
-    family.push({
-      id: `family:${shared.orgId}`,
-      name: shared.className,
-      detail: "Second parent",
-      path: `school/${shared.orgId}/classes/${shared.classId}/today`,
-    });
+  const groups: PlaceEntry[] = [];
   const known = new Set<string>([
     ...(me.familyClass ? [me.familyClass.orgId] : []),
     ...(me.secondParentOf ?? []).map((shared) => shared.orgId),
   ]);
+  if (families && Array.isArray(families.families)) {
+    const words = spaceWords("family");
+    const children = me.learners;
+    for (const entry of families.families) {
+      known.add(entry.familyId);
+      if (entry.role === "co-teacher") {
+        // Someone else's family class this account teaches: a teaching
+        // place, its children never theirs.
+        groups.push({
+          id: `school:${entry.familyId}`,
+          name:
+            entry.teachingPlace?.displayName ??
+            entry.displayName ??
+            "Tutoring group",
+          detail: "Co-teacher",
+          // The class's own org, as the server names it.
+          path:
+            entry.teachingPlace && entry.orgId
+              ? `school/${entry.orgId}/classes/${entry.teachingPlace.classId}/today`
+              : `school/${entry.orgId ?? entry.familyId}`,
+        });
+        continue;
+      }
+      // A tutor with no children of their own: their group is their place,
+      // never an empty family.
+      const tutorOnly =
+        entry.role === "holder" && !!entry.teachingPlace && !children.length;
+      if (!tutorOnly)
+        family.push({
+          id: entry.role === "holder" ? "home" : `family:${entry.familyId}`,
+          // A family without a chosen name is the reader's own: "Your
+          // family"; a second parent's is named by its holder.
+          name: entry.displayName ?? "Your family",
+          detail:
+            entry.role === "second-parent"
+              ? "Second parent"
+              : children.length === 1
+                ? children[0]!.name
+                : children.length > 1
+                  ? count(children.length, words.learner, words.learners)
+                  : "Getting started",
+          path: `family/${entry.familyId}`,
+        });
+      // Other families' children in this family's class: a tutoring group,
+      // a teaching place of its own, never mixed into the family.
+      if (entry.teachingPlace) {
+        // Its class's classroom, under the org that holds it (a family's id
+        // need not be that org); the family's group address redirects there.
+        const classId = entry.teachingPlace.classId;
+        const org =
+          entry.classId === classId
+            ? entry.orgId
+            : me.familyClass?.classId === classId
+              ? me.familyClass.orgId
+              : me.secondParentOf?.find((shared) => shared.classId === classId)
+                  ?.orgId;
+        groups.push({
+          id: `group:${entry.familyId}`,
+          name: "Tutoring group",
+          detail: entry.teachingPlace.displayName,
+          path: org
+            ? `school/${org}/classes/${classId}/today`
+            : `family/${entry.familyId}/group`,
+        });
+      }
+    }
+  } else {
+    const own = ownFamily(me);
+    if (own) family.push(own);
+    for (const shared of me.secondParentOf ?? [])
+      family.push({
+        id: `family:${shared.orgId}`,
+        name: shared.className,
+        detail: "Second parent",
+        path: `family/${shared.orgId}`,
+      });
+  }
   const orgs =
     places?.orgs ??
     (me.staffOf ?? []).map((org) => ({
@@ -125,7 +204,7 @@ export function placeGroups(
       ...(org.setupPending ? { setupPending: true } : {}),
       ...(org.demo ? { demo: true as const } : {}),
     }));
-  const teaching: PlaceEntry[] = [];
+  const teaching: PlaceEntry[] = [...groups];
   const classes = [...(places?.classes ?? [])];
   for (const org of orgs) {
     if (known.has(org.id)) continue;
@@ -204,9 +283,10 @@ export function placeGroups(
       ? [
           {
             id: "me" as const,
-            name: "My practice",
-            // Never their own name back to them (docs/design/ia.md).
-            detail: "Your levels and practice",
+            // Their own name where it is known (a switcher lists places by
+            // name), else what the place is.
+            name: adultName(me) ?? "Practice",
+            detail: "Levels, practice and workbooks",
             path: "me",
           },
         ]
@@ -214,7 +294,7 @@ export function placeGroups(
         ? [
             {
               id: "me" as const,
-              name: "Start my own practice",
+              name: "Practice yourself",
               detail: "Free for you",
               path: "me/start",
             },
@@ -224,13 +304,13 @@ export function placeGroups(
       id: "level",
       name: "Practice at a level",
       detail: "Any grade, any pace",
-      path: "me/profiles/new",
+      path: "me/level",
     },
   ];
   return [
     { id: "family" as const, label: "Family", entries: family },
     { id: "teaching" as const, label: "Teaching", entries: teaching },
-    { id: "practice" as const, label: "My practice", entries: practice },
+    { id: "practice" as const, label: "Practice", entries: practice },
   ].filter((group) => group.entries.length > 0);
 }
 

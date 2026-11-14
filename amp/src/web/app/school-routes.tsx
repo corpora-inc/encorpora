@@ -1,9 +1,5 @@
-import {
-  createRoute,
-  lazyRouteComponent,
-  redirect,
-  type AnyRoute,
-} from "@tanstack/react-router";
+import { createRoute, redirect, type AnyRoute } from "@tanstack/react-router";
+import { lazyRouteComponent } from "../lib/lazy-route-component";
 import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
@@ -38,6 +34,7 @@ import {
   setupSteps,
   type SetupStep,
 } from "../features/school/paths";
+import { toFamilyChild, toFamilyPage } from "./family-redirect";
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
@@ -86,6 +83,8 @@ const familyEquivalent =
       org: string;
       class?: string;
     };
+    // A parent's own family: its own screen, by the one return contract.
+    await toFamilyPage(session, orgId, leaf, location as never, classId);
     const org = await queryClient
       .ensureQueryData(orgOptions(session, orgId))
       .catch(() => null);
@@ -93,8 +92,13 @@ const familyEquivalent =
     const classes = await queryClient.ensureQueryData(
       classesOptions(session, orgId),
     );
-    const klass =
-      classes.find((entry) => entry.id === classId) ?? classes.at(0);
+    // The class the address names, or the family's one class; never the
+    // first of several.
+    const klass = classId
+      ? classes.find((entry) => entry.id === classId)
+      : classes.length === 1
+        ? classes[0]
+        : undefined;
     // A failed or empty class lookup must not redirect back to /classes,
     // which uses this same guard. Let the route's error view offer a retry.
     if (!klass)
@@ -331,6 +335,8 @@ export function schoolRoutes(root: AnyRoute) {
         beforeLoad: async ({ location, params }) => {
           const session = await staffSession(location);
           const orgId = (params as unknown as { org: string }).org;
+          // A parent's own family org: the family's Today.
+          await toFamilyPage(session, orgId, "today", location as never);
           const org = await queryClient
             .fetchQuery(orgOptions(session, orgId))
             .catch(() => null);
@@ -429,11 +435,19 @@ export function schoolRoutes(root: AnyRoute) {
       getParentRoute: () => root,
       path: "/school/$org/students/$student",
       staticData: { space: "school" },
-      beforeLoad: ({ params, search }) => {
+      beforeLoad: async ({ params, search, location }) => {
         const { org, student } = params as unknown as {
           org: string;
           student: string;
         };
+        // A family's child: their own page.
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          null,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {
@@ -448,7 +462,7 @@ export function schoolRoutes(root: AnyRoute) {
       getParentRoute: () => root,
       path: "/school/$org/students/$student/work/$work",
       staticData: { space: "school" },
-      beforeLoad: ({ params, search }) => {
+      beforeLoad: async ({ params, search, location }) => {
         const {
           org,
           student,
@@ -458,6 +472,13 @@ export function schoolRoutes(root: AnyRoute) {
           student: string;
           work: string;
         };
+        await toFamilyChild(
+          await staffSession(location),
+          org,
+          student,
+          attempt,
+          location as never,
+        );
         throw redirect({
           to: `/school/${org}/students`,
           search: {

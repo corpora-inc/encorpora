@@ -1,6 +1,8 @@
 {
  "id": "fl-trapezoid-consequences",
  "title": "Trapezoid midsegment, base angles and diagonals",
+ "teaches": ["rg-quadrilateral-choice"],
+ "skill": "parallelogram-proofs",
  "shots": [
   {
    "figure": {

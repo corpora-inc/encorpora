@@ -1,9 +1,7 @@
 {
   "id": "name-polygon--sn",
   "title": "Count once around",
-  "teaches": [
-    "polygon-with-angles"
-  ],
+  "teaches": ["polygon-with-angles", "polygon-sides-select"],
   "cast": {
     "teacher": {},
     "learner": {}

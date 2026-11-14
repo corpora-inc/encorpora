@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { measured } from "../../../learning/level-check";
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
@@ -19,10 +20,14 @@ import {
 import { strandEstimate } from "../../../learning/frontier";
 import "../school/SchoolFrame.module.css";
 import {
+  areaRowLink,
   RecordObjectives,
-  RecordWeeks,
   RecordWork,
 } from "../school/classes/ProgressRecord";
+import { LayerHost } from "../../nav/LayerHost";
+import type { AreaSource } from "../../nav/AreaLayer";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import teacher from "../school/classes/Teacher.module.css";
 import type { OwnPractice } from "../../../account/adult-contracts";
 import type { Frontier } from "../pathways/model";
@@ -57,7 +62,7 @@ function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
     ...known,
     ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
   ]
-    .filter((id) => (frontier.strands[id]?.answered ?? 0) > 0)
+    .filter((id) => measured(frontier.strands[id]))
     .map((id) => ({
       id,
       label: label(id),
@@ -71,6 +76,9 @@ function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
  * some. Nothing here names them: it is their own place. */
 export function OwnRecordScreen() {
   const session = currentSession();
+  // Opened before the first answer: this visit keeps the hero, whose bar
+  // takes the first estimate in place when it arrives (CP-5 #5).
+  const openedUnmeasured = useRef<boolean | null>(null);
   const record = useQuery(ownPracticeOptions(session));
   const data = record.data;
   const me = useQuery(meOptions(session)).data;
@@ -79,10 +87,9 @@ export function OwnRecordScreen() {
     ...learnerFrontierOptions(session, learnerId),
     enabled: !!data,
   });
-  const answered = frontier.data?.overall.answered ?? 0;
   const trend = useQuery({
     ...levelTrendOptions(session, learnerId),
-    enabled: !!data && answered > 0,
+    enabled: !!data && measured(frontier.data?.overall),
   });
   // Their free allowance, from the account's one store (`/me`).
   const own = me?.signedIn
@@ -125,11 +132,13 @@ export function OwnRecordScreen() {
       </OwnPage>
     );
   const level = frontier.data!;
-  const started = level.overall.answered > 0;
+  const started = measured(level.overall);
+  openedUnmeasured.current ??= !started;
+  const heroLayout = !started || openedUnmeasured.current;
   const shown = activityShown(data);
   // Before the first answer the page's own Start practicing is the one
   // Practice; after, the bar's is (one per screen).
-  const hero = !started && data.learner.active;
+  const hero = heroLayout && data.learner.active;
   const freeLine = left != null && left > 0 && (
     <span className={styles.free} data-free-left={left}>
       {freeProblemsLeft(left)}
@@ -147,7 +156,7 @@ export function OwnRecordScreen() {
   );
   // Day 0 (docs/design/ia.md, rule 7): one centred hero, its Start practicing
   // the only Practice on screen.
-  if (!started)
+  if (heroLayout)
     return (
       <OwnPage>
         <HeroAction active={hero} />
@@ -156,7 +165,11 @@ export function OwnRecordScreen() {
           <LevelRangeStart
             title="Where you are"
             heading={1}
-            start={level.overall}
+            found={
+              started
+                ? { estimate: level.overall, answered: level.overall.answered }
+                : null
+            }
             action={
               hero ? (
                 <Link
@@ -167,75 +180,121 @@ export function OwnRecordScreen() {
                   <svg viewBox="0 0 16 16" aria-hidden="true">
                     <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
                   </svg>
-                  Start practicing
+                  {started ? "Keep practicing" : "Start practicing"}
                 </Link>
               ) : undefined
             }
-            secondary={freeLine}
+            secondary={
+              <>
+                {freeLine}
+                <AtALevel />
+              </>
+            }
           />
         </div>
       </OwnPage>
     );
-  const side = shown.week || shown.objectives;
+  const areas = levelAreas(level, data);
+  const area: AreaSource = {
+    overall: level.overall,
+    areas,
+    objectives: data.record.objectives,
+    path: trend.data ?? null,
+    practice: data.learner.active,
+  };
   return (
     <OwnPage>
-      <div
-        className={styles.stack}
-        data-own-page
-        data-wide={side ? "" : undefined}
-      >
-        {/* The title alone: where you are. Workbooks and Practicing as
-            someone else are in the drawer under Practice (docs/design/ia.md),
-            the page prints itself (Cmd+P), and the bar holds the one
-            Practice. The free count is one quiet line. */}
-        <header className={styles.titleRow}>
-          <h1 id="me-title">Where you are</h1>
-          {freeLine && <span className={styles.titleTools}>{freeLine}</span>}
+      <div className={styles.stack} data-own-page data-wide="">
+        {/* The title, then one quiet line: this week (opening their time)
+            and the free problems left. Practicing at a level and the
+            printed report sit beside the title; the bar holds the one
+            Practice. */}
+        <header className={styles.head}>
+          <div className={styles.titleRow}>
+            <h1 id="me-title">Where you are</h1>
+            <div className={styles.titleTools}>
+              <AtALevel />
+              <PrintButton
+                variant="quiet"
+                download={() =>
+                  downloadPdf({
+                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
+                    token: session.token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
+              >
+                Progress report
+              </PrintButton>
+            </div>
+          </div>
+          <p className={styles.meta}>
+            <Link to="/me/time" className={styles.weekLink} data-this-week="">
+              {shown.week ? (
+                <>
+                  <span className={styles.weekLabel}>This week</span>
+                  {` · ${shown.week}`}
+                </>
+              ) : (
+                <span className={styles.weekLabel}>Time, by week</span>
+              )}
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M6 3.5 10.5 8 6 12.5" />
+              </svg>
+            </Link>
+            {freeLine}
+          </p>
         </header>
         {pause}
-        {/* From 1024 px with something beside it: the level on the left,
-            this week and objectives on the right; one column otherwise. */}
-        <div className={styles.columns}>
-          <LevelRange
-            title={null}
-            labelledBy="me-title"
-            overall={level.overall}
-            answered={level.overall.answered}
-            areas={levelAreas(level, data)}
-            path={trend.data ?? null}
-            pathState={
-              trend.isError ? "failed" : trend.data ? "ready" : "loading"
-            }
-            decimals={numbersShown}
-          />
-          {side && (
-            <div className={styles.side}>
-              {/* Their time and work, each part only once it has something
-                  to say. Never an empty chart. */}
-              {shown.week && (
-                <section className={teacher.recordSection} data-this-week>
-                  <h2>This week</h2>
-                  <p className={styles.weekLine}>{shown.week}</p>
-                  {shown.weeks && <RecordWeeks record={data.record} />}
-                </section>
-              )}
-              {shown.objectives && (
-                <section className={teacher.recordSection}>
-                  <h2>Skills shown on their own</h2>
-                  <RecordObjectives record={data.record} />
-                </section>
-              )}
-            </div>
-          )}
-        </div>
+        <LevelRange
+          title={null}
+          labelledBy="me-title"
+          overall={level.overall}
+          answered={level.overall.answered}
+          areas={areas}
+          path={trend.data ?? null}
+          pathState={
+            trend.isError ? "failed" : trend.data ? "ready" : "loading"
+          }
+          decimals={numbersShown}
+          rowLink={areaRowLink}
+        />
+        {shown.objectives && (
+          <section className={teacher.recordSection}>
+            <h2>Skills shown on their own</h2>
+            <RecordObjectives record={data.record} openSkills />
+          </section>
+        )}
         {shown.work && (
           <section className={teacher.recordSection}>
             <h2>Recent work</h2>
-            <RecordWork record={data.record} reader="self" />
+            <RecordWork
+              record={data.record}
+              reader="self"
+              // Each row opens that answer, replayed as it was seen.
+              workPath={(attempt) => ({ kind: "own-work", id: attempt })}
+            />
           </section>
         )}
       </div>
+      {/* Details over the page (?open=): an area of the level, a skill. */}
+      <LayerHost learner={data.learner.id} area={area} />
     </OwnPage>
+  );
+}
+
+/** Practicing at a level (`/me/level`): a grade and a pace, then the main
+ * loop there. One quiet link, the same on day 0 and after. */
+function AtALevel() {
+  return (
+    <Link
+      to="/$"
+      params={{ _splat: "me/level" }}
+      className={styles.quietLink}
+      data-at-a-level=""
+    >
+      Practice at a level
+    </Link>
   );
 }
 
@@ -255,7 +314,9 @@ export function activityShown(data: Pick<OwnPractice, "record" | "time">) {
     week:
       minutes > 0 || problems > 0
         ? [
-            count(minutes, "minute", "minutes"),
+            // A day of answers too quick to count as minutes says no
+            // "0 min".
+            ...(minutes > 0 ? [`${minutes} min`] : []),
             count(days.length, "day", "days"),
             count(problems, "problem", "problems"),
           ].join(" · ")

@@ -76,8 +76,8 @@ const WORDS = {
     people: "Profiles",
     ownGrade: "Your own grade",
     signIn: "Sign in on another device",
-    places: "My practice",
-    tabs: "My practice",
+    places: "Practice",
+    tabs: "Practice",
   },
   student: {
     learner: "you",

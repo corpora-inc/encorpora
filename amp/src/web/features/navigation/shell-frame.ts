@@ -22,6 +22,14 @@ export type ShellFrame =
       board: boolean;
     }
   | { kind: "school"; org: string; active: string }
+  /** A family's own screens, `/family/<family>/…`: the family is its id. */
+  | {
+      kind: "family";
+      family: string;
+      active: string;
+      /** The rest of the address (`map`, `kids/<learner>`, `reports/grades`). */
+      leaf: string;
+    }
   | { kind: "practice" }
   /** `practice`: a learning screen (lessons, books) whose bar keeps the
    * one way to practice, as the Progress tabs do. */
@@ -106,17 +114,40 @@ export function shellFrame(
   // quiet button (docs/design/ia.md): the Progress tabs stay, Overview marked.
   if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
     return { kind: "progress", active: "overview" };
-  // Practicing as someone else: the profiles are a tab of their own; "Try a
-  // level…" and a profile's levels are steps with their own way back.
+  // Practicing as someone else: the profiles are a tab of their own; a new
+  // profile and a profile's levels are steps with their own way back.
   if (path === "/me/profiles") return { kind: "progress", active: "profiles" };
+  // Practice at a level: one step, then practice; its way back is the bar's.
+  if (path === "/me/level") return { kind: "plain" };
   if (under(path, "/me/profiles")) return { kind: "plain" };
-  if (path === "/overview" || path === "/me")
+  if (path === "/overview" || path === "/me" || path === "/me/time")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
   if (path === "/profile/birth-year")
     return { kind: "progress", active: "overview" };
   if (under(path, "/pathways")) return { kind: "progress", active: "pathways" };
   if (path === "/inventory") return { kind: "progress", active: "inventory" };
+  // A family's own screens: Today at its root, a child's page, and its tabs.
+  const family = path.match(
+    /^\/family\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:\/(.*))?$/i,
+  );
+  if (family) {
+    const leaf = family[2] ?? "";
+    const first = leaf.split("/")[0] ?? "";
+    const active =
+      (
+        {
+          "": "today",
+          // A child's page is reached from Today, where each child is a row.
+          kids: "today",
+          cards: "people",
+          reports: "reports",
+        } as Record<string, string>
+      )[first] ?? first;
+    return { kind: "family", family: family[1]!.toLowerCase(), active, leaf };
+  }
+  // The landing alias, while it decides which family to open.
+  if (path === "/family") return { kind: "plain" };
   // A family's approvals and a school's link are screens of their own.
   if (under(path, "/family/approve") || under(path, "/family/approvals"))
     return null;
@@ -191,6 +222,8 @@ const TAB_NAMES: Record<string, readonly string[]> = {
   calendar: ["Calendar"],
   integrations: ["Integrations"],
   "report-cards": ["Report cards"],
+  reports: ["Report cards"],
+  people: ["People"],
   levels: ["Levels"],
   profiles: ["Profiles"],
 };

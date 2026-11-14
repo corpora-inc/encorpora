@@ -98,6 +98,9 @@ export const workbookSummarySchema = z.object({
     lesson: true,
   }),
   problems: z.number().int(),
+  /** In the history list: how many of its problems have results entered
+   * from the printout (all of them: nothing left to enter). */
+  entered: z.number().int().optional(),
   sections: z.array(
     z.object({
       kind: z.enum(workbookSectionKinds),

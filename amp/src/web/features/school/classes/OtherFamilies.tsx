@@ -92,9 +92,13 @@ export function OtherFamilyRow({
   onAccess,
   onSend,
   onError,
+  offerTalk = true,
 }: {
   row: ApprovalRowResource;
   session: AuthSession;
+  /** Offer "Talk to us" once their free problems are used (a class's
+   * access is set up with a person). Off where their own parent buys. */
+  offerTalk?: boolean;
   onAccess: () => void;
   /** An unnamed student: send their parent the link that names them. */
   onSend: () => void;
@@ -144,7 +148,7 @@ export function OtherFamilyRow({
             </Button>
             {/* Their free problems are used: a class's access is set up
                 with us. */}
-            {row.freeLeft === 0 && <TalkToUsButton />}
+            {offerTalk && row.freeLeft === 0 && <TalkToUsButton />}
           </>
         ) : confirming ? (
           <>
@@ -191,9 +195,9 @@ export function OtherFamilyRow({
             )}
             {/* Their free problems are used: a class's access is set up
                 with us. */}
-            {row.status === "needs-access" && row.freeLeft === 0 && (
-              <TalkToUsButton variant="secondary" />
-            )}
+            {offerTalk &&
+              row.status === "needs-access" &&
+              row.freeLeft === 0 && <TalkToUsButton variant="secondary" />}
             <Button
               variant="quiet"
               disabled={!!busy}

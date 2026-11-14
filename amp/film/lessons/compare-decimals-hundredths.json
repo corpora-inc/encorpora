@@ -1,6 +1,8 @@
 {
   "id": "compare-decimals-hundredths",
   "title": "Compare decimals to hundredths",
+  "teaches": ["compare-decimals-symbol-blanks", "staar-order-decimals"],
+  "skill": "compare-decimals",
   "shots": [
     {
       "figure": {

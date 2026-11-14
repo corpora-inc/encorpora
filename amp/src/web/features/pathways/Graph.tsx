@@ -42,10 +42,13 @@ type Props = {
   frame?: { id: string } | null;
   range: { lo: number; hi: number; level: number } | null;
   rangeStrand?: string;
-  /** The learner's level on the map ("My level"), once estimated. */
+  /** The learner's level on the map ("Where you are"), once estimated. */
   level?: { wide: string[]; close: string[] } | null;
   /** The level is still loading: its control keeps its place. */
   levelLoading?: boolean;
+  /** This browser can't draw the map after all (no context, or it was lost
+   * mid-session): the page shows the flat pathway in its place. */
+  onUnavailable: () => void;
 };
 type Pose = { position: THREE.Vector3; target: THREE.Vector3 };
 type Frame = { left: number; top: number; width: number; height: number };
@@ -81,7 +84,10 @@ export function Graph({
   rangeStrand,
   level = null,
   levelLoading = false,
+  onUnavailable,
 }: Props) {
+  const unavailable = useRef(onUnavailable);
+  unavailable.current = onUnavailable;
   const host = useRef<HTMLDivElement>(null);
   const labelHost = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
@@ -114,11 +120,10 @@ export function Graph({
   } | null>(null);
   const earnedMemory = useRef(new Map<string, number>());
   const { shown } = useCurriculumDetails();
-  const [failed, setFailed] = useState(false);
   const [orbit, setOrbit] = useState(false);
   const viewport = useRef<HTMLElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
-  // The toolbar appears whole, once it knows whether "My level" belongs in
+  // The toolbar appears whole, once it knows whether "Where you are" belongs in
   // it, so no button ever shifts (at most 1.5 s on a slow estimate).
   const [toolbarReady, setToolbarReady] = useState(!levelLoading);
   useEffect(() => {
@@ -180,13 +185,14 @@ export function Graph({
         alpha: true,
         powerPreference: "low-power",
       });
-    } catch {
-      setLabels([]);
-      setHover("");
-      setFailed(true);
+    } catch (error) {
+      console.warn(
+        "The 3D map has no drawing context; showing the flat pathway.",
+        error,
+      );
+      unavailable.current();
       return;
     }
-    setFailed(false);
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
     renderer.setClearColor(0x000000, 0);
     el.appendChild(renderer.domElement);
@@ -1148,9 +1154,10 @@ export function Graph({
       disposed = true;
       clearTimeout(labelTimer);
       controls.enabled = false;
-      setLabels([]);
-      setHover("");
-      setFailed(true);
+      console.warn(
+        "The 3D map lost its drawing context; showing the flat pathway.",
+      );
+      unavailable.current();
     };
     const changed = () => {
       settleLabels();
@@ -1365,12 +1372,6 @@ export function Graph({
           )}
         </p>
       )}
-      {failed && (
-        <p className="pathways-fallback" role="status">
-          3D is unavailable on this device. Use the skill list to explore every
-          pathway.
-        </p>
-      )}
       <div className="pathways-camera" data-ready={toolbarReady}>
         <button
           aria-label={fullscreen ? "Exit full screen" : "Full screen"}
@@ -1384,11 +1385,7 @@ export function Graph({
             <path d="M7 3H3v4M13 3h4v4M3 13v4h4M17 13v4h-4" />
           </svg>
         </button>
-        <button
-          disabled={failed}
-          aria-label="Whole map"
-          onClick={() => reset.current()}
-        >
+        <button aria-label="Whole map" onClick={() => reset.current()}>
           <span className="camera-wide">Whole map</span>
           <span className="camera-narrow" aria-hidden="true">
             All
@@ -1396,11 +1393,10 @@ export function Graph({
         </button>
         {level && (
           <button
-            disabled={failed}
-            aria-label="My level"
+            aria-label="Where you are"
             onClick={() => home.current(false)}
           >
-            <span className="camera-wide">My level</span>
+            <span className="camera-wide">Where you are</span>
             <svg
               className="camera-narrow"
               viewBox="0 0 20 20"
@@ -1412,22 +1408,13 @@ export function Graph({
             </svg>
           </button>
         )}
-        <button
-          disabled={failed}
-          aria-label="Zoom in"
-          onClick={() => zoom.current(0.72)}
-        >
+        <button aria-label="Zoom in" onClick={() => zoom.current(0.72)}>
           +
         </button>
-        <button
-          disabled={failed}
-          aria-label="Zoom out"
-          onClick={() => zoom.current(1.4)}
-        >
+        <button aria-label="Zoom out" onClick={() => zoom.current(1.4)}>
           −
         </button>
         <button
-          disabled={failed}
           aria-label="3D orbit"
           aria-pressed={orbit}
           onClick={() => setOrbit((v) => !v)}
@@ -1438,7 +1425,6 @@ export function Graph({
           </span>
         </button>
         <button
-          disabled={failed}
           aria-label={motion ? "Pause motion" : "Enable motion"}
           aria-pressed={!motion}
           onClick={() => setMotion((v) => !v)}

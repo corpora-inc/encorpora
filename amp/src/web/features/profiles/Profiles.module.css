@@ -279,6 +279,11 @@
   margin: var(--space-2) 0 0;
   color: var(--color-muted-text);
 }
+.listActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
 .profileRows {
   display: grid;
   margin: 0;

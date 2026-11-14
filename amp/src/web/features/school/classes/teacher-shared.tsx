@@ -84,8 +84,12 @@ const WEEKDAY = inUtc({ weekday: "long", month: "long", day: "numeric" });
 export const shortDay = (iso: string) => SHORT.format(dayAt(iso));
 export const longDay = (iso: string) => LONG.format(dayAt(iso));
 export const fullDay = (iso: string) => WEEKDAY.format(dayAt(iso));
+const YEAR_DAY = inUtc({ month: "long", day: "numeric", year: "numeric" });
+/** "July 1 to November 14"; a range across a new year names both years. */
 export const dayRange = (from: string, to: string) =>
-  `${longDay(from)} to ${longDay(to)}`;
+  from.slice(0, 4) === to.slice(0, 4)
+    ? `${longDay(from)} to ${longDay(to)}`
+    : `${YEAR_DAY.format(dayAt(from))} to ${YEAR_DAY.format(dayAt(to))}`;
 export const number = (value: number) => value.toLocaleString("en-US");
 /** A tip that is a small designed card rather than a line of text: a title,
  * one large figure, the distribution behind it, and a share with its bar.
@@ -411,7 +415,9 @@ export function WorkList({
   href?: (item: WorkItem) =>
     | { path: string; search?: Record<string, string> }
     /** A layer over this page (nav/entities.ts). */
-    | { entity: Entity };
+    | { entity: Entity }
+    /** This row opens nothing. */
+    | undefined;
 }) {
   return (
     <ul className={styles.problems}>

@@ -56,7 +56,7 @@ function space(
   return result;
 }
 
-test("this account's /me makes the family theirs", () => {
+test("this account's /me makes the family's class address its tutoring group", () => {
   const result = space((client, session) => {
     client.setQueryData(
       meOptions(session).queryKey,
@@ -69,8 +69,10 @@ test("this account's /me makes the family theirs", () => {
       can: ["students.read"],
     });
   });
-  expect(result?.space).toBe("family");
-  expect(result?.space === "family" && result.relation).toBe("holder");
+  // A parent's own family opens at /family; at its class address it is the
+  // whole group, a teaching place of its own.
+  expect(result?.space).toBe("classroom");
+  expect(result?.label).toBe("Tutoring group");
 });
 
 test("another account's /me (a stale answer after switching) is never read", () => {
@@ -87,7 +89,7 @@ test("another account's /me (a stale answer after switching) is never read", () 
   expect(result?.space === "classroom" && result.status).toBe("loading");
 });
 
-test("before the org answers, the account's own relationship names the family", () => {
+test("before the org answers, the account's own relationship names the group", () => {
   const result = space((client, session) => {
     client.setQueryData(
       meOptions(session).queryKey,
@@ -100,6 +102,6 @@ test("before the org answers, the account's own relationship names the family", 
       can: ["students.read"],
     });
   });
-  expect(result?.space).toBe("family");
-  expect(result?.space === "family" && result.status).toBe("ready");
+  expect(result?.space).toBe("classroom");
+  expect(result?.label).toBe("Tutoring group");
 });

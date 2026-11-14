@@ -1,10 +1,17 @@
 import { EntityLink } from "../../../nav/links";
+import { measured } from "../../../../learning/level-check";
 import type { Entity } from "../../../nav/entities";
 import type {
   ProgressRecord,
   StudentTimeResponse,
+  WorkItem,
 } from "../../../../schools/teacher-contracts";
-import { fitScale, LevelRows } from "../../../ui/level-range";
+import {
+  fitScale,
+  LevelRows,
+  WHOLE_SCALE,
+  type RowLink,
+} from "../../../ui/level-range";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import {
   fullDay,
@@ -20,19 +27,39 @@ import styles from "./Teacher.module.css";
    an adult's own record are the same parts on the same facts; only who reads
    them differs. */
 
+/** Each row of a level opens its area as a layer over the page
+ * (`?open=area:<strand>`, nav/AreaLayer.tsx): the one row link every level
+ * view shares. */
+export const areaRowLink: RowLink = (area, { children, ...props }) => (
+  <EntityLink entity={{ kind: "area", id: area }} {...props}>
+    {children}
+  </EntityLink>
+);
+
 /** Levels on every strand: overall first, then each strand by the work in
  * it, as error bars on one fitted scale (ui/level-range), over the
- * student's own grade when there is one. */
+ * student's own grade when there is one. Before any work, the overall row
+ * is not measured yet: the whole scale, searching, with one line under it,
+ * and nothing opens. With `openAreas`, each measured row opens its area. */
 export function RecordLevels({
   record,
   empty,
+  openAreas = false,
 }: {
   record: ProgressRecord;
-  /** What shows before there's any work to read a level from. */
+  /** The line under the level before there's any work to read it from. */
   empty: string;
+  /** Each row opens its area over the page (the page hosts the layer). */
+  openAreas?: boolean;
 }) {
   const { level, reference } = record;
-  if (!level) return <p className={styles.quietLine}>{empty}</p>;
+  if (!level || !measured(level.overall))
+    return (
+      <div className={styles.levelsNotYet} data-levels-not-yet>
+        <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />
+        {empty && <p className={styles.quietLine}>{empty}</p>}
+      </div>
+    );
   const areas = record.strands.flatMap((strand) => {
     const estimate = level.strands[strand.id];
     return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
@@ -48,6 +75,7 @@ export function RecordLevels({
       areas={areas}
       scale={scale}
       grade={grade}
+      rowLink={openAreas ? areaRowLink : undefined}
     />
   );
 }
@@ -130,9 +158,9 @@ export function RecordWork({
 }: {
   record: ProgressRecord;
   reader?: RecordReader;
-  /** Where one answer's replay lives, without the leading slash. */
-  /** Where a row's replay opens: a path, or a layer over this page. */
-  workPath?: (attempt: string) => string | Entity;
+  /** Where a row opens: a path, a layer over this page, or (undefined)
+   * nowhere. */
+  workPath?: (attempt: string, item: WorkItem) => string | Entity | undefined;
 }) {
   if (record.work.length === 0)
     return <p className={styles.quietLine}>No problems yet.</p>;
@@ -143,10 +171,12 @@ export function RecordWork({
       href={
         workPath &&
         ((item) => {
-          const target = workPath(item.id);
-          return typeof target === "string"
-            ? { path: target }
-            : { entity: target };
+          const target = workPath(item.id, item);
+          return target === undefined
+            ? undefined
+            : typeof target === "string"
+              ? { path: target }
+              : { entity: target };
         })
       }
     />

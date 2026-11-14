@@ -104,27 +104,28 @@ function navigation({
 }
 
 test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
-  "a family's class row, for roles %j: the family's tabs, no Grades, no Start class",
+  "a family-kind class at its class address, for roles %j: a tutoring group, the classroom's tabs, no Start class",
   (...roles) => {
+    // A parent's own family class opens at /family; what renders at the
+    // class address is the whole group, in a classroom's composition.
     const { tabs, start } = navigation({ kind: "family", roles });
-    // The fixture's class has no students yet: a small family class.
     expect(tabs.map((tab) => tab.id)).toEqual([
       "today",
       "map",
-      "workbooks",
-      "time",
-      "report-cards",
+      "gradebook",
       "roster",
+      "time",
+      "workbooks",
       "settings",
     ]);
-    expect(start).toBe(false);
+    void start;
   },
 );
 
-test("a small family's past year keeps its time and report cards", () => {
+test("a tutoring group's past year keeps its grades and time", () => {
   expect(
     navigation({ kind: "family", past: true }).tabs.map((tab) => tab.id),
-  ).toEqual(["time", "report-cards"]);
+  ).toEqual(["gradebook", "time"]);
   expect(navigation().tabs.some((tab) => tab.id === "calendar")).toBe(false);
 });
 

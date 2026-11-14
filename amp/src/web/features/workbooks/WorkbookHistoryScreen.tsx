@@ -4,9 +4,10 @@ import { useState, type FormEvent } from "react";
 import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
+import { EmptyState } from "../../ui/EmptyState";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
-import { workbookByCode, workbookHistoryOptions } from "./api";
+import { awaitingResults, workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
 import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
@@ -25,8 +26,10 @@ export function WorkbookHistoryScreen() {
 }
 
 /** A learner's workbooks: today's as the one primary action, the ones made
- * before as a list, and results by code as a quiet second action. On the
- * adult's own practice it speaks to them and never names them. */
+ * before as a list, and results by code as a quiet second action while a
+ * workbook still waits for them. With none made yet, the list's place says
+ * so and holds the one way to make the first. On the adult's own practice
+ * it speaks to them and never names them. */
 export function WorkbookHistory({
   session,
   learner,
@@ -37,6 +40,19 @@ export function WorkbookHistory({
   const history = useQuery(workbookHistoryOptions(session, learner.id));
   const [entering, setEntering] = useState(false);
   const who = whose(learner);
+  const canMake = canMakeWorkbook(learner);
+  const workbooks = history.data?.workbooks;
+  const none = workbooks?.length === 0;
+  const today = (label: string) => (
+    <Link
+      to="/learners/$learnerId/workbooks/$date"
+      params={{ learnerId: learner.id, date: localDate() }}
+      className={buttonClass("primary", styles.today)}
+    >
+      <PlusIcon />
+      {label}
+    </Link>
+  );
   return (
     <>
       <header className={styles.listHead}>
@@ -51,28 +67,35 @@ export function WorkbookHistory({
               : `Printable practice chosen from ${learner.name}’s progress, with an answer key.`}
           </p>
         </div>
-        <div className={styles.listActions}>
-          <Button
-            variant="secondary"
-            onClick={() => setEntering(true)}
-            data-results-code
-          >
-            Enter results with a code
-          </Button>
-          {/* Known from the account's data on first paint. */}
-          {canMakeWorkbook(learner) && (
-            <Link
-              to="/learners/$learnerId/workbooks/$date"
-              params={{ learnerId: learner.id, date: localDate() }}
-              className={buttonClass("primary", styles.today)}
-            >
-              <PlusIcon />
-              Today’s workbook
-            </Link>
-          )}
-        </div>
+        {/* The actions land with the list: the first workbook is made from
+            the empty list's own button, and results by code are offered only
+            while a workbook waits for them. */}
+        {!none && (
+          <div className={styles.listActions}>
+            {workbooks && awaitingResults(workbooks) && (
+              <Button
+                variant="secondary"
+                onClick={() => setEntering(true)}
+                data-results-code
+              >
+                Enter results with a code
+              </Button>
+            )}
+            {canMake &&
+              (workbooks || history.error ? (
+                today("Today’s workbook")
+              ) : (
+                <span
+                  className={`${styles.actionSkeleton} amp-skeleton`}
+                  aria-hidden="true"
+                >
+                  <span />
+                </span>
+              ))}
+          </div>
+        )}
       </header>
-      {!canMakeWorkbook(learner) && (
+      {!canMake && (
         <AllowancePause
           kind="workbooks"
           compact
@@ -80,26 +103,29 @@ export function WorkbookHistory({
           learner={learner}
         />
       )}
-      <section className={styles.past} aria-labelledby="past-workbooks">
-        <h2 id="past-workbooks" className={styles.sectionTitle}>
-          Past workbooks
-        </h2>
-        {history.data && !history.data.workbooks.length ? (
-          <div className={styles.emptyPanel}>
-            <p>
-              {who.own
-                ? "Your workbooks appear here once you make one."
-                : "Workbooks appear here once you make one."}
-            </p>
-          </div>
-        ) : (
+      {none ? (
+        <div className={styles.empty}>
+          <EmptyState
+            title="No workbooks yet"
+            action={canMake ? today("Make a workbook") : undefined}
+          >
+            {who.own
+              ? "Each one you make is kept here, ready to print again."
+              : `Each one you make for ${learner.name} is kept here, ready to print again.`}
+          </EmptyState>
+        </div>
+      ) : (
+        <section className={styles.past} aria-labelledby="past-workbooks">
+          <h2 id="past-workbooks" className={styles.sectionTitle}>
+            Past workbooks
+          </h2>
           <WorkbookList
             session={session}
             learnerId={learner.id}
             query={history}
           />
-        )}
-      </section>
+        </section>
+      )}
       <Sheet
         open={entering}
         onOpenChange={setEntering}

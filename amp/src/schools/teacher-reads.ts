@@ -1,3 +1,4 @@
+import { SchoolError } from "./contracts.js";
 import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
 import { hasProblemLesson } from "../content/problem-lessons.js";
@@ -333,7 +334,11 @@ const mapLevel = (row: StoredLevel | undefined) => ({
   provisional: !row || row.overall.answered < PROVISIONAL_ANSWERS,
   level: row
     ? {
-        overall: { level: row.overall.level, sd: row.overall.sd },
+        overall: {
+          level: row.overall.level,
+          sd: row.overall.sd,
+          answered: row.overall.answered,
+        },
         strands: Object.fromEntries(
           Object.entries(row.strands).map(([id, { level, sd }]) => [
             id,
@@ -551,23 +556,42 @@ export async function readEvidence(
   };
 }
 
+/** Inclusive calendar days; shared by every Time JSON and CSV reader. */
+export const MAX_TIME_DAYS = 400;
+
 /** The dates a report covers, in the school's timezone. */
 export async function periodRange(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<{ from: string; to: string }> {
   const today = context.today;
-  if (period === "week") return { from: weekStart(today), to: today };
-  if (period === "month")
-    return { from: shift(weekStart(today), -21), to: today };
-  const term = currentTerm(await termsFor(pool, context), today);
-  return term && term.startsOn <= today
-    ? {
-        from: term.startsOn,
-        to: term.endsOn < today ? term.endsOn : today,
-      }
-    : { from: shift(weekStart(today), -21), to: today };
+  let range: { from: string; to: string };
+  if (period === "week") range = { from: weekStart(today), to: today };
+  else if (period === "month")
+    range = { from: shift(weekStart(today), -21), to: today };
+  else {
+    const term = context.sessionId
+      ? currentTerm(await termsFor(pool, context), today)
+      : null;
+    range =
+      term && term.startsOn <= today
+        ? {
+            from: term.startsOn,
+            to: term.endsOn < today ? term.endsOn : today,
+          }
+        : { from: shift(weekStart(today), -21), to: today };
+  }
+  if (from !== undefined) range.from = from;
+  if (range.from > range.to) throw new SchoolError(400, "invalid_time_range");
+  const days =
+    (Date.parse(`${range.to}T00:00:00Z`) -
+      Date.parse(`${range.from}T00:00:00Z`)) /
+      86_400_000 +
+    1;
+  if (days > MAX_TIME_DAYS) throw new SchoolError(400, "time_range_too_long");
+  return range;
 }
 
 function mondays({ from, to }: { from: string; to: string }): string[] {
@@ -583,8 +607,9 @@ export async function readTime(
   pool: Pool,
   context: ClassContext,
   period: TimePeriod,
+  from?: string,
 ): Promise<TimeResponse> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const students = await termRoster(pool, context.id, range);
   const roster = asMembers(students);
   const weeks = mondays(range);
@@ -662,8 +687,9 @@ export async function readStudentTime(
   context: ClassContext,
   period: TimePeriod,
   personId: string,
+  from?: string,
 ): Promise<StudentTimeResponse | null> {
-  const range = await periodRange(pool, context, period);
+  const range = await periodRange(pool, context, period, from);
   const student = (await termRoster(pool, context.id, range)).find(
     (entry) => entry.id === personId,
   );
@@ -815,7 +841,11 @@ export async function readProgress(
   return {
     level: level
       ? {
-          overall: { level: level.overall.level, sd: level.overall.sd },
+          overall: {
+            level: level.overall.level,
+            sd: level.overall.sd,
+            answered: level.overall.answered,
+          },
           strands: Object.fromEntries(
             Object.entries(level.strands).map(([id, { level: at, sd }]) => [
               id,

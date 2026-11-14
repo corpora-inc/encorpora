@@ -482,13 +482,21 @@ input.finalInput:focus-visible {
   align-items: baseline;
   gap: var(--space-2);
 }
+/* Rows whose names open a skill are 44 px each, touching, never overlapping:
+   the date and the dot sit on the link's middle. */
+.objectives:has(.objectiveLink) {
+  gap: 0;
+}
+.objectives li:has(.objectiveLink) {
+  align-items: center;
+}
 /* A skill opens over the record: the name is the link, with the row's
    quiet hover tint and a 44 px target, never an underline. */
 .objectiveLink {
   display: flex;
   align-items: center;
-  min-height: var(--target-size);
-  margin-block: calc((var(--target-size) - 1.4em) / -2);
+  /* A full 44 px row of its own: neighbours never share a target. */
+  min-height: 44px;
   padding-inline: var(--space-1);
   margin-inline: calc(var(--space-1) * -1);
   border-radius: var(--radius-small);
@@ -524,9 +532,13 @@ input.finalInput:focus-visible {
 .problems li + li {
   border-top: 1px solid var(--color-border);
 }
+/* The date column's room after it is its own token, so the date never
+   crowds the skill beside it. */
 .workRow {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) auto;
+  grid-template-columns:
+    calc(var(--record-date-width) + var(--record-date-gap) - var(--space-2))
+    minmax(0, 1fr) auto;
   grid-template-areas:
     "when skill result"
     "when prompt prompt"
@@ -540,7 +552,9 @@ input.finalInput:focus-visible {
   text-decoration: none;
 }
 a.workRow {
-  grid-template-columns: 56px minmax(0, 1fr) auto 16px;
+  grid-template-columns:
+    calc(var(--record-date-width) + var(--record-date-gap) - var(--space-2))
+    minmax(0, 1fr) auto 16px;
   grid-template-areas:
     "when skill result chevron"
     "when prompt prompt chevron"
@@ -1065,4 +1079,44 @@ label.columnPick {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+/* Someone's time from another group didn't load: said in place, with the
+   way to try again; the totals above leave them out and say so. */
+.timeMissing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  min-height: 56px;
+  margin-block: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: var(--text-table);
+}
+.timeMissing p {
+  margin: 0;
+}
+.timeMissing > button {
+  min-height: 44px;
+}
+.groupName {
+  display: block;
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}
+/* A term longer than Time reads at once: said beside its dates. */
+.gradeTitle p.timeLimit {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+}
+/* A level not measured yet: its row and axis, then one line. */
+.levelsNotYet {
+  display: grid;
+  gap: var(--space-3);
+}
+.levelsNotYet > p {
+  margin: 0;
 }

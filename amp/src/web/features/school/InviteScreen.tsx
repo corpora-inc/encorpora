@@ -68,6 +68,11 @@ export function InviteScreen() {
   const [error, setError] = useState("");
   const [confirmSent, setConfirmSent] = useState(false);
   useLoggedError(error);
+  // A name this account already gave is the one it joins with.
+  const known = me?.signedIn ? (me.account.displayName ?? "") : "";
+  useEffect(() => {
+    if (known) setName((typed) => typed || known);
+  }, [known]);
   // The address it was sent to starts the sign-in form. The link itself is
   // carried only when its holder leaves to sign in (`carry`).
   useEffect(() => {
@@ -98,13 +103,10 @@ export function InviteScreen() {
       await refreshSchool(session);
       await client.invalidateQueries({ queryKey: ["school-invite"] });
       // A new school's admin carries on into its setup, the school step done;
-      // a family's second parent opens its class.
+      // a family's second parent opens the family (`/family` chooses it).
       await navigate(
         joined.familyClassId && joined.orgId
-          ? ({
-              to: `/school/${joined.orgId}/classes/${joined.familyClassId}/today`,
-              replace: true,
-            } as never)
+          ? ({ to: "/family", replace: true } as never)
           : joined.setup && joined.orgId
             ? ({
                 to: "/school/new",
@@ -127,8 +129,12 @@ export function InviteScreen() {
   const view = invite.data;
   const email = me?.signedIn ? me.account.email : null;
   const signInSearch = { return: "school-invite" } as never;
-  // A family's second parent joins only as the address it was sent to.
-  const family = view?.secondParent;
+  // A family's second parent joins only as the address it was sent to. The
+  // family is named as the family, and its parent by their own name.
+  const family = view?.secondParent
+    ? { ...view.secondParent, name: view.orgName }
+    : undefined;
+  const inviter = view?.inviterName?.trim() || null;
   const otherAccount =
     !!family &&
     !!email &&
@@ -215,7 +221,7 @@ export function InviteScreen() {
           </h1>
           <p>
             {family
-              ? `Ask the parent who invited you for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
+              ? `Ask ${inviter ?? "the parent who invited you"} for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
               : !view.setup
                 ? `Ask ${view.orgName}’s admin for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
                 : view.status !== "used"
@@ -233,7 +239,7 @@ export function InviteScreen() {
           <h1>This invitation is for another address</h1>
           <p>
             It was sent to <strong>{view.email}</strong>, and you’re signed in
-            as {email}. To join {family.className} as a parent, sign in with
+            as {email}. To join {family.name} as a parent, sign in with
             that address, or create an account with it.
           </p>
           <div className={styles.inviteActions}>
@@ -247,7 +253,7 @@ export function InviteScreen() {
           <h1>Confirm {email}</h1>
           <p>
             Open the confirmation email we sent to {email}, then open this
-            invitation again to join {family!.className}.
+            invitation again to join {family!.name}.
           </p>
           <div className={styles.inviteActions}>
             <Button
@@ -269,14 +275,14 @@ export function InviteScreen() {
         >
           <h1>
             {family
-              ? `Join ${family.className}`
+              ? `Join ${family.name}`
               : view.setup
                 ? `Set up ${view.orgName}`
                 : `Join ${view.orgName}`}
           </h1>
           <p>
             {family
-              ? "You’re invited as a parent. You’ll see the class and the children’s progress, and your own practice is free."
+              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. You’ll see each child’s progress and can let them practice on your device, and your own practice is free.`
               : view.setup
                 ? "AMP for Schools is ready for your school, and you’re its admin."
                 : `You’ve been invited as ${roleWord(view.role)}.`}
@@ -333,14 +339,14 @@ export function InviteScreen() {
         <>
           <h1>
             {family
-              ? `Join ${family.className}`
+              ? `Join ${family.name}`
               : view.setup
                 ? `Set up ${view.orgName}`
                 : `Join ${view.orgName}`}
           </h1>
           <p>
             {family
-              ? `You’re invited as a parent. Create an account or sign in with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
+              ? `${inviter ? `${inviter} invited you` : "You’re invited"} as the second parent. Create an account or sign in with ${view.email} to accept: Google, Microsoft, Apple, a password or a passkey.`
               : view.setup
                 ? "AMP for Schools is ready for your school, and you’re its admin. Create an account or sign in to set it up."
                 : `You’ve been invited as ${roleWord(view.role)}. Create an account or sign in to accept.`}

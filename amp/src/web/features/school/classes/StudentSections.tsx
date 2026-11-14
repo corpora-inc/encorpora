@@ -52,7 +52,8 @@ export function StudentSections({
         <h2>Where {first} is</h2>
         <RecordLevels
           record={data}
-          empty={`Levels appear here once ${first} has some work to read.`}
+          empty={`We’ll find ${first}’s level in a few minutes of practice.`}
+          openAreas
         />
       </section>
       {data.grades.length > 0 && (

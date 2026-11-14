@@ -385,7 +385,7 @@ export async function finishSetup(
         client,
         orgId,
         {
-          name: input.className ?? "My class",
+          name: input.className ?? "Math class",
           gradingKind: division ?? "year",
         },
         actorPersonId,

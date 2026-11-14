@@ -428,7 +428,7 @@ export function ParentConsentCenter({
             disabled={busy || !attest || !email.includes("@")}
             onClick={() => void act("begin")}
           >
-            {busy ? "Saving…" : "Email my privacy notice"}
+            {busy ? "Saving…" : "Email the privacy notice"}
           </button>
         ) : view?.request?.delivery === "stopped-unknown" &&
           phase !== "withdrawn" ? (
@@ -448,7 +448,7 @@ export function ParentConsentCenter({
             {busy
               ? "Saving…"
               : challenge?.stage === "initial"
-                ? "Record my first response"
+                ? "Record the first response"
                 : "Confirm learning consent"}
           </button>
         ) : (

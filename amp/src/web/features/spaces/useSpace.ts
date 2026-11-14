@@ -8,6 +8,7 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
 import { pilotOptions } from "../school/pilots/api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -129,6 +130,17 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const orgId =
     frame?.kind === "class" || frame?.kind === "school" ? frame.org : "";
   const classId = frame?.kind === "class" ? frame.classId : "";
+  const familyId = frame?.kind === "family" ? frame.family : "";
+  const family = useQuery({
+    ...familyOptions(auth, familyId),
+    enabled: !!familyId && !!session && !student,
+    refetchOnMount: false,
+  });
+  const families = useQuery({
+    ...familyPlacesOptions(auth),
+    enabled: !!classId && !!session && !student,
+    refetchOnMount: false,
+  });
   const org = useQuery({
     ...orgOptions(auth, orgId),
     enabled: !!orgId,
@@ -183,8 +195,9 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     org: orgNow,
     classes: current(classes) ?? null,
     year: current(year),
-    // Practice that can't be confirmed running offers nothing to start.
     // Coverage that can't be confirmed counts nobody as covered.
     covered: pilot.isError ? 0 : (pilot.data?.coverage?.covered ?? 0),
+    family: current(family),
+    families: current(families),
   });
 }

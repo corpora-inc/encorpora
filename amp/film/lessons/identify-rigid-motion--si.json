@@ -1,7 +1,8 @@
 {
  "id": "identify-rigid-motion--si",
  "title": "Translation, reflection, rotation",
- "teaches": [],
+ "teaches": ["place-transformed-image", "transformation-image", "transformation-rule-slots"],
+ "skill": "rigid-motions",
  "cast": {
   "teacher": {}
  },

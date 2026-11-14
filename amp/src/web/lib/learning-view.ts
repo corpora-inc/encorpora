@@ -3,10 +3,13 @@ import { queryOptions, skipToken, useQuery } from "@tanstack/react-query";
 import { meOptions, queryClient, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import {
-  addressedIdentity,
+  learningIdentity,
   type AddressedIdentity,
 } from "../features/spaces/identity";
-import { useAddressedIdentity } from "../features/spaces/useAddressed";
+import {
+  useAddressedIdentity,
+  useAddressedRecordsReadable,
+} from "../features/spaces/useAddressed";
 import {
   adultLearner,
   practiceProfile,
@@ -169,7 +172,13 @@ export async function preloadOverviewLevel(location?: {
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
-    location ? addressedIdentity(location.pathname, location.search) : null,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   if (learner)
     await queryClient
@@ -208,7 +217,13 @@ export async function preloadLearningView(location?: {
   const { learner } = chooseLearner(
     account as SignedIn | null,
     useLearnerStore.getState().learnerId,
-    location ? addressedIdentity(location.pathname, location.search) : null,
+    location
+      ? learningIdentity(
+          location.pathname,
+          location.search,
+          account?.adultPractice?.learner?.id,
+        )
+      : null,
   );
   await Promise.all([
     catalog,
@@ -251,6 +266,8 @@ export function useLearningView({
   // family's child (read-only), else the first child, as practice
   // (LegacyApp) takes it, so every screen and the drawer agree.
   const addressed = useAddressedIdentity();
+  // A family's child's records only where that family shows them (CP-5 #6).
+  const readable = useAddressedRecordsReadable();
   const { learners, shared, profile, solo, own, learner, unavailable } =
     chooseLearner(account, selectedId, addressed);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
@@ -280,7 +297,7 @@ export function useLearningView({
             session.data ?? { accountId: "", token: "" },
             learner?.id ?? "",
           ),
-          enabled: !!session.data && !!learner,
+          enabled: !!session.data && !!learner && readable,
         }
       : {
           queryKey: ["learning-view", "no-records", "evidence"],
@@ -294,7 +311,7 @@ export function useLearningView({
             session.data ?? { accountId: "", token: "" },
             learner?.id ?? "",
           ),
-          enabled: !!session.data && !!learner,
+          enabled: !!session.data && !!learner && readable,
         }
       : {
           queryKey: ["learning-view", "no-records", "frontier"],

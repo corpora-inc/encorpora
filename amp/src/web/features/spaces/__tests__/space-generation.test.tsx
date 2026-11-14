@@ -108,7 +108,9 @@ test("CP-2 M1: a refused /me leaves no relationship behind; a failed lookup is f
       notice: false,
     },
   } as never);
-  expect(render(queries)?.space).toBe("family");
+  // Before: the account's relationship makes the family class's address
+  // its tutoring group (a parent's own family opens at /family).
+  expect(render(queries)?.label).toBe("Tutoring group");
   queries
     .getQueryCache()
     .find({ queryKey: meOptions(session).queryKey })!
@@ -117,6 +119,7 @@ test("CP-2 M1: a refused /me leaves no relationship behind; a failed lookup is f
       error: new AppError("permission", "Signed out", false, null, null, 401),
     });
   expect(render(queries)?.space).toBe("classroom");
+  expect(render(queries)?.label).not.toBe("Tutoring group");
   queries.setQueryData(orgOptions(session, SCHOOL).queryKey, org as never);
   const query = queries
     .getQueryCache()

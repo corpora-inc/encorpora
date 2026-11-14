@@ -1,0 +1,72 @@
+/* A few choices, each a full-width row (features/family/OptionList.tsx): a
+   round mark, the name and one line of what it means, which wrap inside
+   their own row and never into a neighbour. Tokens only. */
+.list {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+}
+.option {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 56px;
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.option + .option {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.option:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+}
+.option:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.option:disabled {
+  cursor: default;
+}
+.option[aria-checked="true"] {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.mark {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  box-sizing: border-box;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+}
+.option[aria-checked="true"] .mark {
+  border: 6px solid var(--color-selected);
+}
+.text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.label {
+  font-weight: 650;
+  line-height: 1.3;
+}
+.detail {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.option[aria-checked="true"] .detail {
+  color: var(--color-on-secondary);
+}

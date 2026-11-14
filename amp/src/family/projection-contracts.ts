@@ -130,6 +130,21 @@ export const familyChildProgressSchema = progressRecordResource.extend({
   id: z.string(),
   name: z.string(),
 });
+export const familyChildTimeSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  group: z.string(),
+  joined: z.iso.date().nullable(),
+  timezone: z.string(),
+  period: z.enum(["week", "weeks", "term"]),
+  range: z.object({ from: z.iso.date(), to: z.iso.date() }),
+  minutes: z.number(),
+  problems: z.number(),
+  days: z.array(
+    z.object({ day: z.iso.date(), minutes: z.number(), problems: z.number() }),
+  ),
+});
+export type FamilyChildTime = z.infer<typeof familyChildTimeSchema>;
 export const familyTeachingSchema = z.object({
   familyId: z.uuid(),
   place: z.literal("teaching"),

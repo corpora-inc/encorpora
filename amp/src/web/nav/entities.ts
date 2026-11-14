@@ -2,7 +2,7 @@
  * The entity registry and the layer stack (docs/design/ia.md, "Navigation").
  *
  * Every detail a person can dip into from anywhere (a student, one of their
- * answers, a skill, a problem type's lesson) is an entity: a kind and an id.
+ * answers, a skill, a problem type's lesson, an area of a level) is an entity: a kind and an id.
  * Opening one never leaves the page: it becomes a layer over it, carried in
  * the page's own address as `?open=student:<id>,work:<id>.<attempt>`. The
  * page under it stays mounted with its scroll, sort and filters; X, Escape
@@ -41,10 +41,19 @@ export const ENTITIES = {
     /** Narrows Previous and Next to one skill; it goes with the answer. */
     keys: ["skill"],
   },
+  /** One of the reader's own answers (`/me`), replayed: `<attempt>`. */
+  "own-work": {
+    id: (id: string) => ATTEMPT.test(id),
+    noun: "answer",
+    keys: ["skill"],
+  },
   /** A skill of the curriculum. */
   skill: { id: (id: string) => SLUG.test(id), noun: "skill" },
   /** A problem type's short lesson. */
   lesson: { id: (id: string) => SLUG.test(id), noun: "lesson" },
+  /** One area of a learner's level (a strand, or `overall`): its skills on
+   * the grade scale, over the page whose level it is. */
+  area: { id: (id: string) => SLUG.test(id), noun: "area" },
 } as const;
 
 export type EntityKind = keyof typeof ENTITIES;
@@ -83,6 +92,11 @@ export const isEntity = (entity: Entity) =>
 export const work = (student: string, attempt: string): Entity => ({
   kind: "work",
   id: `${student}.${attempt}`,
+});
+/** One of the reader's own answers. */
+export const ownWork = (attempt: string): Entity => ({
+  kind: "own-work",
+  id: attempt,
 });
 /** The student and attempt of an answer's entity. */
 export function workParts(id: string) {

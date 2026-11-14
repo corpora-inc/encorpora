@@ -13,7 +13,7 @@ const argument = (key: string) => {
 const shots = argument("shots") ?? "artifacts/lesson-films";
 await mkdir(shots, { recursive: true });
 const fixture = await startShellFixture({
-  webPort: 4991,
+  webPort: Number(argument("port") ?? 4991),
   production: process.argv.includes("--production"),
 });
 const browser = await secureChromium(rawChromium).launch();
@@ -132,7 +132,7 @@ try {
       });
       // An old short-lesson link: it opens the lesson in Pathways.
       await page.goto(`${fixture.origin}/lessons?topic=count-objects`);
-      await page.waitForURL(/\/pathways\?lesson=count-objects/);
+      await page.waitForURL(/\/pathways\?open=lesson%3Acount-objects/);
       const watch = page.getByRole("link", { name: /Watch lesson/ });
       await watch.waitFor();
       assert.equal(

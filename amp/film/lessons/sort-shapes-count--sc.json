@@ -2,6 +2,7 @@
   "id": "sort-shapes-count--sc",
   "title": "Sort first. Then count.",
   "teaches": ["sort-shapes-most"],
+  "skill": "sort-and-count",
   "cast": {
     "teacher": {},
     "learner": {}

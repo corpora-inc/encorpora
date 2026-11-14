@@ -22,6 +22,19 @@ export function levelCheckDue(
   );
 }
 
+/** Whether a level is measured: at least one answer behind it. Before the
+ * first answer every reader draws it as not measured yet (the whole scale,
+ * a "?"), whatever estimate a served batch has already stored. The one
+ * predicate for every reader (Q-201): a level from a server that predates
+ * `answered` counts as measured, since it stored none without answers. */
+export function measured(
+  estimate: { answered?: number } | null | undefined,
+): boolean {
+  return (
+    !!estimate && (estimate.answered === undefined || estimate.answered > 0)
+  );
+}
+
 /** Display envelope around a provisional estimate, not a norm-referenced
  * confidence interval. Surprise reserves can widen the overall uncertainty. */
 export const RANGE_SD_MULTIPLIER = 1.64;

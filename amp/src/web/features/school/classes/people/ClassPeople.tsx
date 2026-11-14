@@ -79,12 +79,18 @@ export function ClassPeople({
   session,
   orgId,
   classId,
+  secondParent = true,
 }: {
   session: AuthSession;
   orgId: string;
   classId: string;
+  /** Offer the family's second parent here; a tutoring group has none. */
+  secondParent?: boolean;
 }) {
-  const second = useQuery(secondParentOptions(session));
+  const second = useQuery({
+    ...secondParentOptions(session),
+    enabled: secondParent,
+  });
   const others = useQuery(approvalsOptions(session));
   const [open, setOpen] = useState<Open | null>(null);
   const [error, setError] = useState("");
@@ -97,11 +103,13 @@ export function ClassPeople({
       <div className={styles.lists}>
         <PeopleList
           id="people-grown-ups"
-          title="Grown-ups"
+          title={secondParent ? "Grown-ups" : "Co-teachers"}
           lead={
-            second.isSuccess && !grownUps
-              ? "A second parent or a co-teacher sees the class and can let a child practice on their device."
-              : undefined
+            !secondParent
+              ? "A co-teacher sees the whole group, including other families’ children."
+              : second.isSuccess && !grownUps
+                ? "A second parent or a co-teacher sees the class and can let a child practice on their device."
+                : undefined
           }
           rows={
             <>
@@ -128,7 +136,7 @@ export function ClassPeople({
           actions={
             <>
               {/* One second parent per family: once invited, the row is it. */}
-              {second.isSuccess && !second.data && (
+              {secondParent && second.isSuccess && !second.data && (
                 <AddAction onClick={() => setOpen({ kind: "second-parent" })}>
                   Add a second parent
                 </AddAction>

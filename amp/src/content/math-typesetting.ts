@@ -75,7 +75,7 @@ function tokens(source: string): Token[] | null {
       /^[A-Za-z]+/.exec(rest)?.[0] ??
       /^[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺]+/.exec(rest)?.[0] ??
       /^[₀₁₂₃₄₅₆₇₈₉ₙ]+/.exec(rest)?.[0] ??
-      /^[|()+−\-±×*·÷/^_=<>≤≥≠√%]/.exec(rest)?.[0];
+      /^[|()+−\-±×*·÷/^_=<>≤≥≠√%!]/.exec(rest)?.[0];
     if (!value || (/^[A-Za-z]/.test(value) && !isIdentifier(value)))
       return null;
     // Adjacent letters are separate variables, never a word or a function name.
@@ -138,7 +138,7 @@ export function expressionToTex(source: string): string | null {
     "≠": "\\ne",
   };
 
-  function atom(): Expression {
+  function atom(postfix = true): Expression {
     const token = take();
     if (++depth > 32) throw new Error("Expression nesting limit");
     let value: Expression;
@@ -185,6 +185,9 @@ export function expressionToTex(source: string): string | null {
         argument.end,
       );
     } else throw new Error("Unsupported operand");
+    while (postfix && peek() === "!") {
+      value = node(`${value.tex}!`, "factorial", take().end);
+    }
     depth--;
     return value;
   }
@@ -195,7 +198,7 @@ export function expressionToTex(source: string): string | null {
       const sub = take();
       let indexTex: string;
       if (sub.value === "_") {
-        const lower = atom();
+        const lower = atom(false);
         indexTex = inside(lower);
         base = node(base.tex, base.kind, lower.end, base.inner);
       } else
@@ -207,6 +210,9 @@ export function expressionToTex(source: string): string | null {
         "subscript",
         Math.max(base.end, sub.end),
       );
+    }
+    while (peek() === "!") {
+      base = node(`${base.tex}!`, "factorial", take().end);
     }
     if (peek() === "^" || (peek() && superscripts.includes(peek()![0]!))) {
       const exponent = take();
@@ -419,7 +425,9 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const converted = expressionToTex(tex);
     // A command or a braced script is TeX and prints as written.
     const isTex =
-      match[1] !== undefined || /\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(tex);
+      match[1] !== undefined ||
+      (converted !== null && tex.includes("!")) ||
+      /\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(tex);
     // Like the app, every \$…\$ span is mathematics, except prose captured
     // between two currency amounts: it has two words in a row, or a space at
     // its edge ("\$3 and a book costs \$"). Generators write money in words.

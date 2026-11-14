@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
+  Navigate,
   useNavigate,
   useParams,
   useSearch,
@@ -292,7 +293,7 @@ export function newProfileSearch(
   };
 }
 
-/** `/me/profiles/new` ("Try a level…"): practice as someone else, at a grade
+/** `/me/profiles/new` ("New profile"): practice as someone else, at a grade
  * and pace, adjusted area by area, saved under a name. The grade and pace
  * live in the URL, so a refresh or a shared link opens the same choice. */
 export function NewProfileScreen() {
@@ -340,8 +341,8 @@ export function NewProfileScreen() {
         takeFocus
       />
       <ProfileForm
-        heading="Try a level"
-        intro="Practice at any grade and pace. Nobody’s record changes, yours included."
+        heading="New profile"
+        intro="A grade and pace saved under a name, to come back to. Nobody’s record changes, yours included."
         choose={
           <>
             <div className={styles.field}>
@@ -411,6 +412,18 @@ export function EditProfileScreen() {
         <LoadingScreen overlay />
       </main>
     );
+  // Practice at a level's profile is chosen again where it was chosen.
+  if (profile?.level)
+    return (
+      <Navigate
+        to="/$"
+        params={{ _splat: "me/level" }}
+        search={
+          { grade: profile.level.grade, pace: profile.level.pace } as never
+        }
+        replace
+      />
+    );
   if (!profile)
     return (
       <main className={styles.page}>
@@ -424,10 +437,10 @@ export function EditProfileScreen() {
             account ? (
               <Link
                 to="/$"
-                params={{ _splat: "me/profiles/new" }}
+                params={{ _splat: "me/level" }}
                 className={buttonClass("primary")}
               >
-                Try a level
+                Practice at a level
               </Link>
             ) : (
               <Button variant="primary" onClick={() => void me.refetch()}>

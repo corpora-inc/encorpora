@@ -69,7 +69,16 @@ export function StepFrame({
       <div className={styles.body}>{children}</div>
       <div className={styles.foot}>
         <div className={styles.actions}>
-          <Link to={back as never} className={buttonClass("quiet")}>
+          <Link
+            to={back.split("?")[0] as never}
+            // The query apart from the path, so `from` stays a search key.
+            search={
+              Object.fromEntries(
+                new URLSearchParams(back.split("?")[1] ?? ""),
+              ) as never
+            }
+            className={buttonClass("quiet")}
+          >
             Back
           </Link>
           {from && (

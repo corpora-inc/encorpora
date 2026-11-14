@@ -4,7 +4,12 @@ import type { SignedInMe } from "../../../../account/contracts";
 import { AppError } from "../../../lib/AppError";
 import { meOptions, queryClient, sessionOptions } from "../../../lib/query";
 import { useLearnerStore } from "../../../learner-store";
-import { adoptPracticeMode, carriedKeys } from "../practice-mode";
+import { isRedirect } from "@tanstack/react-router";
+import {
+  adoptPracticeMode,
+  canonicalLearnerAddress,
+  carriedKeys,
+} from "../practice-mode";
 
 const session = { accountId: "amp|jonah", token: "t" };
 const child = (id: string, name: string) => ({
@@ -62,9 +67,9 @@ test("CP-2 H2: one identity travels between learning screens", () => {
     search,
   });
   const there = { pathname: "/practice", search: {} };
-  expect(carriedKeys(here({ learner: "pip" }), there, [])).toEqual({
-    learner: "pip",
-  });
+  // Q-209: a learner never travels (yourself is unnamed; a child's screens
+  // name them in their path); only a practice profile does.
+  expect(carriedKeys(here({ learner: "pip" }), there, [])).toBeNull();
   expect(
     carriedKeys(here({ profile: "grade-4", from: "/me" }), there, []),
   ).toEqual({ profile: "grade-4", from: "/me" });
@@ -99,4 +104,36 @@ test("CP-2 M4: adding a place keeps its return through every starter step", () =
   expect(
     carriedKeys(start("/start", { from: "/school/o" }), start("/me"), []),
   ).toBeNull();
+});
+
+test("Q-209: an older ?learner= address is sent to its canonical one, and nobody is chosen", async () => {
+  queryClient.setQueryData(
+    ["account", session.accountId, "families", "places"],
+    {
+      families: [{ familyId: "fam", orgId: "fam", role: "holder" }],
+      next: null,
+    },
+  );
+  const redirected = async (pathname: string, searchStr: string) => {
+    try {
+      await canonicalLearnerAddress({ pathname, searchStr });
+      return null;
+    } catch (thrown) {
+      expect(isRedirect(thrown)).toBe(true);
+      return (thrown as { options: { href: string } }).options.href;
+    }
+  };
+  // Yourself: unnamed. A child: their own address, in their family.
+  expect(await redirected("/pathways", "?learner=jonah")).toBe("/pathways");
+  expect(await redirected("/pathways", "?learner=pip&topic=frac")).toBe(
+    "/family/fam/kids/pip/pathways?topic=frac",
+  );
+  expect(await redirected("/overview", "?learner=wren")).toBe(
+    "/family/fam/kids/wren",
+  );
+  // Canonical already, or someone not theirs (unavailable, shown by the
+  // screen): no redirect.
+  expect(await redirected("/pathways", "")).toBeNull();
+  expect(await redirected("/pathways", "?learner=someone-else")).toBeNull();
+  expect(useLearnerStore.getState().learnerId).toBe("wren");
 });

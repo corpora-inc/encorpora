@@ -6,6 +6,8 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import {
+  createContext,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -25,7 +27,8 @@ import { Segmented } from "../../../ui/Segmented";
 import { Toast } from "../../../ui/Toast";
 import { dateLabel, sectionNames } from "../../workbooks/model";
 import { useStaffSession } from "../classes/api";
-import { ClassFrame } from "../classes/ClassFrame";
+import { useClassHost, type ClassHost } from "../classes/host";
+import { marksSearchSchema } from "./search";
 import { PageHead } from "../parts";
 import { invalidateStack, marksOptions, saveMarks, say } from "./api";
 import type { MarksSearch } from "./search";
@@ -69,86 +72,106 @@ const markWord: Record<PaperMark, string> = {
   "not-yet": "Not yet",
 };
 type Student = MarksView["students"][number];
+/** What this host calls the people whose sheets these are. */
+const Who = createContext({ learner: "student", learners: "students" });
 const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
 
 /** `.../workbooks/$date`: who got what, entered by hand from the printed sheets.
  * A printed QR code opens this on its own student. */
-export function MarkingScreen() {
-  const params = useParams({
-    from: "/school/$org/classes/$class/workbooks/$date",
-  });
-  const search = useSearch({
-    from: "/school/$org/classes/$class/workbooks/$date",
-  }) as MarksSearch;
+export function MarkingScreen({ host: given }: { host?: ClassHost } = {}) {
+  const host = useClassHost(given);
+  const { date = "" } = useParams({ strict: false }) as { date?: string };
+  const params = { ...host.place, date };
+  const raw = useSearch({ strict: false });
+  const search = useMemo(
+    () => marksSearchSchema.parse(raw) as MarksSearch,
+    [raw],
+  );
   const session = useStaffSession();
   const query = useQuery(
     marksOptions(session, params.class, params.date, search.set),
   );
   const navigate = useNavigate();
-  const data = query.data;
+  // Only the people this host shows: a family's own children.
+  const data = useMemo(
+    () =>
+      query.data && host.keep
+        ? {
+            ...query.data,
+            students: query.data.students.filter((student) =>
+              host.keep!(student.id),
+            ),
+          }
+        : query.data,
+    // The host is the screen's for its life.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [query.data],
+  );
   return (
-    <ClassFrame
-      org={params.org}
-      classId={params.class}
-      className={data?.class.name}
-      loading={query.isPending}
-      tab="workbooks"
-    >
-      <PageHead
-        title={dateLabel(params.date)}
-        detail={
-          data?.set
-            ? "Tap a problem for right or not yet, then save. Saved marks stay as they are."
-            : "Mark the workbooks printed for this day."
-        }
-      />
-      {!data ? (
-        <EmptyState
-          title="These workbooks didn’t load"
-          action={
-            <Button variant="primary" onClick={() => void query.refetch()}>
-              Try again
-            </Button>
-          }
-        >
-          {say(query.error, "The sheets couldn’t be read.")}
-        </EmptyState>
-      ) : data.set === null ? (
-        <EmptyState
-          title="Nothing printed for this day"
-          action={
-            <Link
-              to="/school/$org/classes/$class/workbooks"
-              params={{ org: params.org, class: params.class }}
-              search={{}}
-              className={buttonClass("primary")}
-            >
-              Print workbooks
-            </Link>
-          }
-        >
-          Print a set first, and its sheets show here to mark.
-        </EmptyState>
-      ) : (
-        <Marks
-          key={`${params.class}:${params.date}:${data.set}`}
-          data={data}
-          search={search}
-          classId={params.class}
-          date={params.date}
-          session={session}
-          setSearch={(change, replace = false) =>
-            void navigate({
-              to: "/school/$org/classes/$class/workbooks/$date",
-              params,
-              search: (previous: MarksSearch) => ({ ...previous, ...change }),
-              replace,
-            })
+    <Who.Provider value={host.words}>
+      <host.Frame
+        className={data?.class.name}
+        loading={query.isPending}
+        tab="workbooks"
+      >
+        <PageHead
+          title={dateLabel(params.date)}
+          detail={
+            data?.set
+              ? "Tap a problem for right or not yet, then save. Saved marks stay as they are."
+              : "Mark the workbooks printed for this day."
           }
         />
-      )}
-    </ClassFrame>
+        {!data ? (
+          <EmptyState
+            title="These workbooks didn’t load"
+            action={
+              <Button variant="primary" onClick={() => void query.refetch()}>
+                Try again
+              </Button>
+            }
+          >
+            {say(query.error, "The sheets couldn’t be read.")}
+          </EmptyState>
+        ) : data.set === null ? (
+          <EmptyState
+            title="Nothing printed for this day"
+            action={
+              <Link
+                to="/$"
+                params={{ _splat: host.href("workbooks") }}
+                search={{}}
+                className={buttonClass("primary")}
+              >
+                Print workbooks
+              </Link>
+            }
+          >
+            Print a set first, and its sheets show here to mark.
+          </EmptyState>
+        ) : (
+          <Marks
+            key={`${params.class}:${params.date}:${data.set}`}
+            data={data}
+            search={search}
+            classId={params.class}
+            date={params.date}
+            session={session}
+            setSearch={(change, replace = false) =>
+              void navigate({
+                to: ".",
+                search: ((previous: MarksSearch) => ({
+                  ...previous,
+                  ...change,
+                })) as never,
+                replace,
+              })
+            }
+          />
+        )}
+      </host.Frame>
+    </Who.Provider>
   );
 }
 
@@ -167,6 +190,7 @@ function Marks({
   session: ReturnType<typeof useStaffSession>;
   setSearch: (change: Partial<MarksSearch>, replace?: boolean) => void;
 }) {
+  const who = useContext(Who);
   const client = useQueryClient();
   const phone = usePhone();
   const sheet = `${classId}:${date}:${data.set}`;
@@ -268,7 +292,7 @@ function Marks({
       );
     } else {
       setStatus(
-        `Saved ${count(saved, "mark")} for ${count(sheets, "student")}. Progress is updated.`,
+        `Saved ${count(saved, "mark")} for ${count(sheets, who.learner, who.learners)}. Progress is updated.`,
       );
     }
   };
@@ -327,7 +351,7 @@ function Marks({
             <p aria-live="polite" className={styles.footerText}>
               {status ||
                 (total
-                  ? `${count(total, "mark")} for ${count(waiting.length, "student")} not saved yet.`
+                  ? `${count(total, "mark")} for ${count(waiting.length, who.learner, who.learners)} not saved yet.`
                   : "Nothing waiting to save.")}
             </p>
             <Button
@@ -399,6 +423,7 @@ function MarkGrid({
   onMark: (student: string, n: number, mark: PaperMark | null) => void;
   onAllRight: (student: Student) => void;
 }) {
+  const who = useContext(Who);
   const columns = useMemo(
     () =>
       Math.max(
@@ -513,7 +538,7 @@ function MarkGrid({
       <div
         className={styles.grid}
         role="grid"
-        aria-label="Marks by student and problem"
+        aria-label={`Marks by ${who.learner} and problem`}
         tabIndex={-1}
         style={{ "--columns": columns } as never}
       >
@@ -638,6 +663,7 @@ function PhoneSheet({
   onAllRight: () => void;
   onStudent: (id: string) => void;
 }) {
+  const who = useContext(Who);
   const index = students.indexOf(student);
   const previous = students[index - 1];
   const next = students[index + 1];
@@ -649,7 +675,9 @@ function PhoneSheet({
         <Button
           variant="secondary"
           className={styles.phoneStep}
-          aria-label={previous ? `Back to ${previous.name}` : "First student"}
+          aria-label={
+            previous ? `Back to ${previous.name}` : `First ${who.learner}`
+          }
           disabled={!previous}
           onClick={() => previous && onStudent(previous.id)}
         >
@@ -660,13 +688,14 @@ function PhoneSheet({
         <div className={styles.phoneWho}>
           <strong>{student.name}</strong>
           <span>
-            Student {index + 1} of {students.length}
+            {who.learner[0]!.toUpperCase() + who.learner.slice(1)} {index + 1}{" "}
+            of {students.length}
           </span>
         </div>
         <Button
           variant="secondary"
           className={styles.phoneStep}
-          aria-label={next ? `On to ${next.name}` : "Last student"}
+          aria-label={next ? `On to ${next.name}` : `Last ${who.learner}`}
           disabled={!next}
           onClick={() => next && onStudent(next.id)}
         >
@@ -677,12 +706,12 @@ function PhoneSheet({
       </div>
       {!student.workbook ? (
         <p className={styles.phoneNone}>
-          No workbook for this student in this set.
+          No workbook for this {who.learner} in this set.
         </p>
       ) : student.workbook.stale ? (
         <p className={styles.phoneNone}>
           Some of these problems have changed since this sheet was printed.
-          Print a new set for this student.
+          Print a new set for this {who.learner}.
         </p>
       ) : (
         <>

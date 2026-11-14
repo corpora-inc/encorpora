@@ -12,6 +12,7 @@ import { useAccountCache, useFamilyCache } from "./lib/family-cache";
 import { YearField } from "./ui/YearField";
 import { OwnStartSetting } from "./features/me/OwnStartSetting";
 import { AccountSecurity } from "./AccountSecurity";
+import { YourName } from "./features/account/YourName";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
 import { licenseChannel } from "./family-access";
@@ -756,6 +757,8 @@ export function FamilyCenter({
             </h1>
           </div>
         )}
+        {/* Every adult's own name, as others see it (R9, R12). */}
+        {section === "security" && <YourName />}
         {section === "security" && accountsEnabled && <AccountSecurity />}
         {/* With AMP accounts, the row follows Sign-in's settings once they
             load (AccountSecurity), so nothing below them moves. */}
@@ -1275,7 +1278,7 @@ export function FamilyCenter({
           </div>
           <div className="family-actions">
             <button disabled={busy} onClick={() => setConfirmation(null)}>
-              Keep my settings
+              Keep these settings
             </button>
             <button
               className="family-danger"

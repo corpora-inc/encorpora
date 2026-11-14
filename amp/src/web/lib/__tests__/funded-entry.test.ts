@@ -229,8 +229,9 @@ test("NH free practice retains its program and attribution through authenticatio
   });
 });
 
-test("only a path inside staff screens survives a school sign-in", () => {
-  const next = "/school/new?org=abc-1&step=calendar";
+test("a sign-in comes back to any place, or a school's own setup step, by the one return contract", () => {
+  const next =
+    "/school/new?org=00000000-0000-4000-8000-0000000000ab&step=calendar";
   expect(continuationSearch({ return: "school", next })).toEqual({
     return: "school",
     next,
@@ -240,16 +241,35 @@ test("only a path inside staff screens survives a school sign-in", () => {
     "https://example.com/school",
     "//example.com",
     "/school/../start",
-    "/school//example.com",
-    "/schoolhouse",
     "/school\\example.com",
-    `/school/${"a".repeat(300)}`,
+    "/join/ABC123",
+    "/p",
     12,
   ])
     expect(continuationUrl({ return: "school", next: hostile })).toBe(
       "/school",
     );
   expect(continuationSearch({ next })).toEqual({});
+  // A setup step keeps only its own validated fields: never a token, a
+  // nested return or an unknown key.
+  const org = "00000000-0000-4000-8000-000000000009";
+  expect(
+    continuationUrl({
+      return: "school",
+      next: `/school/new?org=${org}&step=calendar&token=fixture-secret&next=/x`,
+    }),
+  ).toBe(`/school/new?org=${org}&step=calendar`);
+  expect(
+    continuationUrl({ return: "school", next: "/school/new?org=nope&step=x" }),
+  ).toBe("/school/new");
+  // A family's own screens: a signed-out parent signs in and comes back,
+  // with its view keys and never a fragment.
+  const family =
+    "/family/00000000-0000-4000-8000-000000000001/kids/pip?sort=name%3Aascending";
+  expect(continuationUrl({ return: "school", next: family })).toBe(family);
+  expect(
+    continuationUrl({ return: "school", next: `${family}#secret` }),
+  ).toBe(family);
 });
 
 test("security sign-in only returns to the validated deletion page", () => {

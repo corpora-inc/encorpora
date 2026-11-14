@@ -22,7 +22,7 @@ test("the transport contains the fixed milestones and separate engagement and ma
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS, "page_engagement", "site_action"].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 46);
+  assert.equal(FUNNEL_EVENTS.length, 47);
 });
 
 test("pitch events carry only their fixed choices", () => {

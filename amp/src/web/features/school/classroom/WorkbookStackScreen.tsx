@@ -1,10 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearch,
-} from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   StackSet,
@@ -21,7 +16,8 @@ import { AllowancePause } from "../../continue/AllowancePause";
 import { dateLabel, defaultPaper } from "../../workbooks/model";
 import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "../classes/api";
-import { ClassFrame } from "../classes/ClassFrame";
+import { useClassHost, type ClassHost } from "../classes/host";
+import { stackSearchSchema } from "./search";
 import { PageHead } from "../parts";
 import { invalidateStack, say, stackOptions } from "./api";
 import type { StackSearch } from "./search";
@@ -140,22 +136,44 @@ function Sheet({ tile, chosen }: { tile?: Tile; chosen: boolean }) {
 }
 
 /** `.../workbooks`: one click prints a different workbook for each student. */
-export function WorkbookStackScreen() {
-  const params = useParams({ from: "/school/$org/classes/$class/workbooks" });
-  const search = useSearch({
-    from: "/school/$org/classes/$class/workbooks",
-  }) as StackSearch;
+export function WorkbookStackScreen({
+  host: given,
+}: { host?: ClassHost } = {}) {
+  const host = useClassHost(given);
+  const params = host.place;
+  const raw = useSearch({ strict: false });
+  const search = useMemo(
+    () => stackSearchSchema.parse(raw) as StackSearch,
+    [raw],
+  );
   const navigate = useNavigate();
   const session = useStaffSession();
   const client = useQueryClient();
   const query = useQuery(stackOptions(session, params.class, search.skill));
+  // Only the people this host shows: a family's own children.
+  const shown = useMemo(
+    () =>
+      query.data && host.keep
+        ? {
+            ...query.data,
+            students: query.data.students.filter((student) =>
+              host.keep!(student.id),
+            ),
+          }
+        : query.data,
+    // The host is the screen's for its life.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [query.data],
+  );
   const run = useStackRun(params.class);
-  const data = query.data;
+  const data = shown;
   const set = (change: Partial<StackSearch>) =>
     void navigate({
-      to: "/school/$org/classes/$class/workbooks",
-      params,
-      search: (previous: StackSearch) => ({ ...previous, ...change }),
+      to: ".",
+      search: ((previous: StackSearch) => ({
+        ...previous,
+        ...change,
+      })) as never,
       replace: true,
     });
   const busy = run?.status === "running" || run?.status === "merging";
@@ -165,7 +183,11 @@ export function WorkbookStackScreen() {
       ...orgOptions(currentSession(), params.org),
       refetchOnMount: false,
     }).data?.kind === "family";
-  const who = family ? "child" : "student";
+  const who = given
+    ? (host.words.learner as "student" | "child")
+    : family
+      ? "child"
+      : "student";
 
   // A print that just finished shows in "Mark" below.
   const status = run?.status;
@@ -175,9 +197,7 @@ export function WorkbookStackScreen() {
   }, [client, session, status]);
 
   return (
-    <ClassFrame
-      org={params.org}
-      classId={params.class}
+    <host.Frame
       className={data?.class.name}
       loading={query.isPending}
       tab="workbooks"
@@ -185,24 +205,26 @@ export function WorkbookStackScreen() {
       <PageHead title="Workbooks" />
       {!data ? (
         <EmptyState
-          title="This class’s workbooks didn’t load"
+          title="These workbooks didn’t load"
           action={
             <Button variant="primary" onClick={() => void query.refetch()}>
               Try again
             </Button>
           }
         >
-          {say(query.error, "The class’s list couldn’t be read.")}
+          {say(query.error, "The list couldn’t be read.")}
         </EmptyState>
       ) : !data.students.length ? (
         <EmptyState
           title={
-            family
-              ? "No children in this class yet"
-              : "No students in this class yet"
+            given
+              ? `No ${host.words.learners} here yet`
+              : family
+                ? "No children in this class yet"
+                : "No students in this class yet"
           }
         >
-          {family
+          {given || family
             ? "Add a child, then print a workbook made from their own work."
             : "Add students to the class, then print a workbook for each of them."}
         </EmptyState>
@@ -216,9 +238,10 @@ export function WorkbookStackScreen() {
           classId={params.class}
           session={session}
           who={who}
+          href={host.href}
         />
       )}
-    </ClassFrame>
+    </host.Frame>
   );
 }
 
@@ -231,7 +254,10 @@ function Stack({
   classId,
   session,
   who,
+  href,
 }: {
+  /** A sibling screen's address in this host. */
+  href: (leaf: string) => string;
   /** What the class calls the people in it: "student", or "child". */
   who: "student" | "child";
   data: StackView;
@@ -371,8 +397,10 @@ function Stack({
       return here?.note
         ? `${ready} of ${printable} ready. ${here.note}`
         : `Stopped at ${ready} of ${printable}.`;
-    if (!eligible.length) return "No student here can get a new workbook.";
-    if (!selected) return "Choose at least one student.";
+    if (!eligible.length)
+      return `No ${who === "child" ? "child" : "student"} here can get a new workbook.`;
+    if (!selected)
+      return `Choose at least one ${who === "child" ? "child" : "student"}.`;
     return `About ${minutes} minutes each.${reprint ? " The same ones as last time." : ""}`;
   })();
   const firstFile = here?.files[0];
@@ -553,9 +581,9 @@ function Stack({
                     : `${entry.marked} of ${entry.students} marked`}
                 </Badge>
                 <Link
-                  to="/school/$org/classes/$class/workbooks/$date"
-                  params={{ org, class: classId, date: entry.date }}
-                  search={{ set: entry.number }}
+                  to="/$"
+                  params={{ _splat: href(`workbooks/${entry.date}`) }}
+                  search={{ set: entry.number } as never}
                   className={buttonClass("secondary")}
                 >
                   Mark

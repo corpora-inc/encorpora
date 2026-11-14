@@ -64,6 +64,13 @@ export function spaceOfPath(pathname: string): RouteSpace {
   )
     return "public";
   if (under(path, "/me")) return "me";
+  // A family's own screens, by its id (`/family/<family>/…`).
+  if (
+    /^\/family\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(\/|$)/i.test(
+      path,
+    )
+  )
+    return "family";
   if (["/join", "/c", "/standings"].some((root) => under(path, root)))
     return "student";
   if (

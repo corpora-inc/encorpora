@@ -1,0 +1,67 @@
+/* A problem type's lesson layer (LessonDialog.tsx): the head, then the
+   lesson. The sheet is wide on a desktop; the lesson's figures use its
+   width, its prose keeps its reading measure (lesson-reading.css). */
+.lesson {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-height: 100%;
+}
+/* The lesson, or its wait, filling what the head leaves. */
+.body {
+  display: grid;
+  flex: 1 0 auto;
+}
+.lesson :global(.problem-lesson) {
+  max-inline-size: none;
+}
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+.title {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  line-height: 1.2;
+}
+/* One row: the page's Try first (primary), then the film (secondary). */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.actions > * {
+  margin: 0;
+}
+/* A desktop: each action one width, whatever its words ("Try it free",
+   "Try this problem type"), so the film never slides when the first
+   settles. */
+@media (min-width: 641px) {
+  .actions > * {
+    min-width: 15rem;
+  }
+}
+.actions :global(.lesson-film-meta) {
+  display: inline;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-variant-numeric: var(--numeric);
+}
+.actions :global(.lesson-film-glyph) {
+  margin-right: var(--space-2);
+  font-size: 0.8em;
+}
+/* A phone: the same two, stacked, each the full width. */
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+  }
+  .actions.actions > * {
+    width: 100%;
+  }
+}

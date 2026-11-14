@@ -124,7 +124,7 @@ export function VerifyEmailStep({
         >
           {confirmation.isPending
             ? "Checking confirmation…"
-            : "I confirmed my email"}
+            : "I’ve confirmed it"}
         </Button>
         <Button
           variant="secondary"

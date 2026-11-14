@@ -10,9 +10,10 @@ import { practiceAs } from "./practice-mode";
 import styles from "./Profiles.module.css";
 
 /**
- * `/me/profiles`, "Practice as someone else": every saved profile, the ones
- * this device used last first, and "Try a level…". Reached from /me; never
- * from the place switcher, which holds places only (docs/design/ia.md).
+ * `/me/profiles`: every saved profile, the ones this device used last first,
+ * then "Practice at a level" (nothing saved) and "New profile" (saved under
+ * a name). The account's one level profile is practice at a level's own,
+ * never listed here.
  */
 export function ProfilesScreen() {
   const session = currentSession();
@@ -24,26 +25,36 @@ export function ProfilesScreen() {
     const at = recent.indexOf(id);
     return at < 0 ? recent.length : at;
   };
-  const profiles = [...(account?.practiceProfiles ?? [])].sort(
-    (a, b) => rank(a.id) - rank(b.id),
-  );
+  const profiles = (account?.practiceProfiles ?? [])
+    .filter((profile) => !profile.level)
+    .sort((a, b) => rank(a.id) - rank(b.id));
   return (
     <main className={styles.page}>
       <div className={styles.list}>
         <header className={styles.listHead}>
           <div>
-            <h1>Practice as someone else</h1>
+            <h1>Profiles</h1>
             <p>
-              Practice at any grade and pace. Your own record never changes.
+              Levels saved under a name, to come back to. Your own levels never
+              change.
             </p>
           </div>
-          <Link
-            to="/$"
-            params={{ _splat: "me/profiles/new" }}
-            className={buttonClass("primary")}
-          >
-            Try a level
-          </Link>
+          <div className={styles.listActions}>
+            <Link
+              to="/$"
+              params={{ _splat: "me/level" }}
+              className={buttonClass("primary")}
+            >
+              Practice at a level
+            </Link>
+            <Link
+              to="/$"
+              params={{ _splat: "me/profiles/new" }}
+              className={buttonClass("secondary")}
+            >
+              New profile
+            </Link>
+          </div>
         </header>
         {me.isPending ? (
           <Loading />

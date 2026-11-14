@@ -17,6 +17,12 @@ import styles from "./LevelRange.module.css";
  * behind it dashed and hollow. Gridlines at each whole grade line up with
  * the bars above and below and with the `LevelAxis` under them. The hue is
  * the nearest `[data-strand]`'s, or the primary colour.
+ *
+ * With no estimate (`null`: nothing answered yet) the bar is not yet
+ * measured: the range spans the whole scale and the dot carries a "?".
+ * `moving` lets that dot drift along the scale while the range breathes
+ * (never under reduced motion). The same element takes the first estimate,
+ * so the range and dot glide from the whole scale to it, at the same size.
  */
 export function LevelBar({
   estimate,
@@ -25,24 +31,37 @@ export function LevelBar({
   estimated = false,
   size = "regular",
   gridlines = true,
+  moving = false,
 }: {
-  estimate: Estimate;
+  /** Null before the first answer: not yet measured. */
+  estimate: Estimate | null;
   scale: RangeScale;
   band?: readonly [from: number, to: number] | null;
   estimated?: boolean;
   size?: "regular" | "large";
   gridlines?: boolean;
+  /** Not yet measured: the dot drifts and the range breathes. */
+  moving?: boolean;
 }) {
-  const [from, to] = likelyRange(estimate);
+  const unmeasured = !estimate;
+  const [from, to] = estimate ? likelyRange(estimate) : [scale.lo, scale.hi];
   const left = scaleAt(scale, from),
     right = scaleAt(scale, to);
+  const at = estimate ? scaleAt(scale, estimate.level) : 0.5;
   return (
     <span
-      className={`${styles.bar} ${styles[size]} ${estimated ? styles.estimated : ""}`}
+      className={[
+        styles.bar,
+        styles[size],
+        estimated && !unmeasured ? styles.estimated : "",
+        unmeasured ? styles.unmeasured : "",
+        unmeasured && moving ? styles.moving : "",
+      ].join(" ")}
       aria-hidden="true"
       // Stable hooks for the browser checks (module class names are hashed).
       data-level-bar=""
-      data-estimated={estimated || undefined}
+      data-estimated={(estimated && !unmeasured) || undefined}
+      data-unmeasured={unmeasured || undefined}
     >
       {gridlines &&
         scaleGrades(scale).map((g) => (
@@ -52,7 +71,7 @@ export function LevelBar({
             style={{ left: percent(scaleAt(scale, g)) }}
           />
         ))}
-      {band && (
+      {band && !unmeasured && (
         <span
           className={styles.ownBand}
           style={{
@@ -70,18 +89,54 @@ export function LevelBar({
             width: percent(Math.max(0, right - left)),
             // Densest at the best guess, fading toward the range's ends.
             "--peak": percent(
-              right > left
-                ? (scaleAt(scale, estimate.level) - left) / (right - left)
-                : 0.5,
+              right > left ? (at - left) / (right - left) : 0.5,
             ),
           } as CSSProperties
         }
       />
-      <span
-        className={styles.dot}
-        data-level-dot=""
-        style={{ left: percent(scaleAt(scale, estimate.level)) }}
-      />
+      {/* The dot rides in a full-width track, so a drift is one transform
+          of the track and the dot's own position still glides. */}
+      <span className={styles.track}>
+        <span
+          className={styles.dot}
+          data-level-dot=""
+          style={{ left: percent(at) }}
+        >
+          {unmeasured && (
+            <span className={styles.mark} data-level-mark="">
+              ?
+            </span>
+          )}
+        </span>
+      </span>
+    </span>
+  );
+}
+
+/**
+ * In a column of learners where others are measured, one with no answers
+ * yet: no bar (a range would claim a place on a scale fitted to the others),
+ * only a calm "?" pill where the bar would be, at the bar's own height.
+ */
+export function LevelNotStarted({
+  label,
+  size = "regular",
+}: {
+  /** What it says, in the space's words: "Not started". */
+  label: string;
+  size?: "regular" | "large";
+}) {
+  return (
+    <span
+      className={`${styles.bar} ${styles[size]} ${styles.notStarted}`}
+      data-level-not-started=""
+    >
+      <span className={styles.pill}>
+        <span className={styles.pillMark} aria-hidden="true">
+          ?
+        </span>
+        {label}
+      </span>
     </span>
   );
 }

@@ -5,6 +5,9 @@
   gap: var(--space-2);
   width: 100%;
 }
+.bare {
+  grid-template-columns: minmax(0, 1fr);
+}
 .track {
   display: block;
   height: 6px;

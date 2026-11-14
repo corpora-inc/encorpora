@@ -56,7 +56,10 @@ export function workbookIsCurrent(spec: WorkbookRecord["spec"]): boolean {
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;
 const lessonTitle = new Map(lessons.map((l) => [l.id, l.title]));
 
-export function workbookSummary(record: WorkbookRecord): WorkbookSummary {
+export function workbookSummary(
+  record: WorkbookRecord,
+  entered?: number,
+): WorkbookSummary {
   return {
     id: record.id,
     date: record.date,
@@ -68,6 +71,7 @@ export function workbookSummary(record: WorkbookRecord): WorkbookSummary {
     estimatedMinutes: workbookMinutes(record.spec),
     choices: specChoices(record.spec),
     problems: record.spec.sections.reduce((n, s) => n + s.items.length, 0),
+    ...(entered === undefined ? {} : { entered }),
     sections: record.spec.sections.map((s) => ({
       kind: s.kind,
       problems: s.items.length,
@@ -370,12 +374,15 @@ export function registerWorkbookRoutes(
     return options.repository.transaction(accountId, learnerId, async (tx) => {
       await access(tx, trial);
       const found = code ? await tx.workbookByCode(code) : undefined;
+      const entered = code ? null : await tx.paperResultCounts();
       return {
         workbooks: code
           ? found
             ? [workbookSummary(found)]
             : []
-          : (await tx.workbooks(date)).map(workbookSummary),
+          : (await tx.workbooks(date)).map((record) =>
+              workbookSummary(record, entered?.get(record.id) ?? 0),
+            ),
         /** Whether downloads are PDFs; otherwise the printable document. */
         pdf: !!options.renderer,
       };

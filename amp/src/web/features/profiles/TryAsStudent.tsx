@@ -12,9 +12,12 @@ import { practiceAs } from "./practice-mode";
 export function TryAsStudent({
   session,
   personId,
+  label = "Try problems as this student",
 }: {
   session: AuthSession;
   personId: string;
+  /** In the space's words: "Try problems as Maya" in a family. */
+  label?: string;
 }) {
   const navigate = useNavigate();
   // Practicing as the student is a mode of this place: its way back, Back
@@ -34,7 +37,7 @@ export function TryAsStudent({
           })
         }
       >
-        Try problems as this student
+        {label}
       </Button>
       <Toast
         message={

@@ -314,6 +314,77 @@ includes no host roster. The PDF contains the child's progress and family name;
 print rendering is per request. Missing rendering service returns `503 report_unavailable`.
 The download path is `paths.progress + ".pdf"`.
 
+## Individual time
+
+`GET /api/v1/families/:family/children/:learner/time?period=week|weeks|term&from=YYYY-MM-DD`
+returns one owned child's daily active time. Authorization is the same as individual
+progress: the family's holder or active second parent, with live non-adult learner
+ownership checked on every read. Teaching the host class does not grant this access.
+Student sessions, co-teachers and unrelated families cannot read or export it.
+
+```ts
+type FamilyChildTime = {
+  id: string;                 // learner ID
+  name: string;
+  group: string;              // display label only, no host class ID or link
+  joined: string | null;      // first overlapping enrollment start in that group
+  timezone: string;
+  period: "week" | "weeks" | "term";
+  range: { from: string; to: string }; // inclusive YYYY-MM-DD dates
+  minutes: number;            // rounded total, as in class Time
+  problems: number;
+  days: Array<{ day: string; minutes: number; problems: number }>;
+};
+```
+
+The reader reuses class Time's `periodRange` and `perDay` aggregation. The calendar
+is the owning family's class calendar and timezone, or `America/New_York` when
+that family has no class. `week` begins Monday; `weeks` starts three Mondays before
+this week's Monday. Both end today in that timezone. `term` uses the current term,
+or the last begun term, ending at the earlier of today and its end date. With no
+begun term or no class calendar it uses the four-week range. The default is `weeks`;
+`month` is accepted as the existing class API's alias.
+
+`from`, when supplied, replaces only the inclusive start date without rounding it
+to Monday. It must be a valid ISO date at or before the resolved end; invalid dates
+return 400, and a start after the end returns `400 invalid_time_range`. Class Time,
+its individual-student read and its CSV accept the same `from` and `weeks` alias.
+All Time JSON and CSV readers enforce one shared maximum of **400 inclusive
+calendar days**, including default term ranges. A longer resolved range returns
+`400 time_range_too_long` before evidence queries or week expansion; it is never
+truncated. Supply a later `from` to narrow a long term.
+Pass the same start date when combining owned children with a Family Time range.
+A host class can have a different calendar; compare its results over identical
+resolved dates, within that child's enrollment.
+
+`joined` is the earliest student enrollment start in the displayed group among
+enrollments overlapping the inclusive report range, using the same overlap and
+minimum-start rules as class Time. It is an ISO date, or null when there is no
+current group or no overlapping enrollment. Class Time clips its roster start to
+`max(joined, range.from)`; the child response preserves the actual enrollment date
+so clients can hatch weeks before joining. Rejoining does not hide an earlier
+start within the range. This is roster metadata only: it does not filter the
+owned child's evidence or describe every gap between enrollments.
+
+Days come from the stored evidence dates, with no rebucketing into UTC. Minutes
+include every active-time surface counted by class Time: practice, lesson,
+feedback, map, other, hint, video and example. Problem counts come from the same
+skill-day rollups. Days without evidence are omitted and mean zero; daily minutes
+retain class Time's one-decimal precision. Sum the daily values for exact-date
+family totals, then round the combined total for display. Ownership reads include
+learning outside a group's enrollment dates and work without an active enrollment.
+They return no host roster, class summary, grades, credentials or other children.
+
+`GET /api/v1/families/:family/children/:learner/time.csv` accepts the same query and
+authorization. It uses the class CSV serializer: UTF-8 BOM, CRLF, formula-safe
+cells and columns `SIS ID,Student,Date,Active minutes,Problems`, followed by `Group`.
+`SIS ID` is blank because this ownership read does not disclose host identifiers.
+The group label prefers an active enrollment in the family's own class, otherwise
+the first active group by class ID; absent a group it uses the family display name
+or `Your family`. This labels the current group, not historical attribution of each
+activity day. The JSON uses the same label. Both routes are read-only and send
+`Cache-Control: no-store`.
+
 ## Teaching projection
 
 `GET /api/v1/families/:family/teaching` has no body. It requires the existing

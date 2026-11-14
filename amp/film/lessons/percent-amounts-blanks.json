@@ -1,6 +1,8 @@
 {
   "id": "percent-amounts-blanks",
   "title": "Two percents. One whole.",
+  "teaches": ["percent-of", "staar-salary-percent"],
+  "skill": "percentages",
   "seed": "film",
   "shots": [
     {

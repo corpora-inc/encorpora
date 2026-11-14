@@ -15,7 +15,11 @@ import {
   type SchoolTarget,
 } from "../schools/authz.js";
 import { activeToday, isSchoolAccount } from "../schools/principal.js";
-import { readProgress, readToday } from "../schools/teacher-reads.js";
+import {
+  periodRange,
+  readProgress,
+  readToday,
+} from "../schools/teacher-reads.js";
 import {
   classContext,
   courseBand,
@@ -24,6 +28,9 @@ import {
 } from "../schools/term-grades.js";
 import { parentConsentStates } from "../server/account-access.js";
 import { adultNameSql } from "../account/profile.js";
+
+import { perDay } from "../schools/evidence.js";
+import type { TimePeriod } from "../schools/teacher-contracts.js";
 
 export type FamilyRole = "holder" | "second-parent" | "co-teacher";
 type Identity = {
@@ -469,8 +476,7 @@ export async function familyProjection(
     today: { date: today.today, tasks: today.todos, week: today.week },
   };
 }
-/** Individual evidence requires parent authority, never host-class authority. */
-export async function familyChildProgress(
+async function ownedChild(
   pool: Pool,
   account: string,
   familyId: string,
@@ -485,6 +491,77 @@ export async function familyChildProgress(
     )
   ).rows[0];
   if (!child) throw new FamilyError(404, "learner_not_found");
+  return { row, child };
+}
+
+/** Ownership selects the evidence; a group label grants no class access. */
+export async function familyChildTime(
+  pool: Pool,
+  account: string,
+  familyId: string,
+  learnerId: string,
+  period: TimePeriod,
+  from?: string,
+) {
+  const { row, child } = await ownedChild(pool, account, familyId, learnerId);
+  const context = await familyContext(pool, row);
+  const range = await periodRange(pool, context, period, from);
+  const group = (
+    await pool.query(
+      `SELECT c.name,
+       (SELECT min(history.begin_on)::text FROM amp_enrollments history
+        WHERE history.person_id=p.id AND history.class_id=c.id AND history.role='student'
+          AND history.begin_on<=$4::date AND (history.end_on IS NULL OR history.end_on>$3::date)) AS joined
+     FROM amp_people p
+     JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+     JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+     JOIN amp_orgs o ON o.id=c.org_id
+     WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+       AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id
+         AND r.role='student' AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
+     ORDER BY (c.id=$2::uuid) DESC,c.id LIMIT 1`,
+      [learnerId, row.classId, range.from, range.to],
+    )
+  ).rows[0] as { name: string; joined: string | null } | undefined;
+  const days = (
+    await perDay(
+      pool,
+      [
+        {
+          // perDay keys its authorized roster by UUID; the learner ID is opaque.
+          personId: familyId,
+          learnerId,
+        },
+      ],
+      range,
+    )
+  ).map(({ day, activeMinutes, problems }) => ({
+    day,
+    minutes: activeMinutes,
+    problems,
+  }));
+  return {
+    id: learnerId,
+    name: child.name as string,
+    group: group?.name ?? row.displayName ?? "Your family",
+    joined: group?.joined ?? null,
+    timezone: context.timezone,
+    period: period === "month" ? ("weeks" as const) : period,
+    range,
+    minutes: Math.round(days.reduce((sum, day) => sum + day.minutes, 0)),
+    problems: days.reduce((sum, day) => sum + day.problems, 0),
+    days,
+  };
+}
+
+/** Individual evidence requires parent authority, never host-class authority. */
+export async function familyChildProgress(
+  pool: Pool,
+  account: string,
+  familyId: string,
+  learnerId: string,
+) {
+  const { row, child } = await ownedChild(pool, account, familyId, learnerId);
   const context = await familyContext(pool, row);
   return {
     id: learnerId,
