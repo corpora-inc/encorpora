@@ -1,6 +1,6 @@
 import { TimeScreen } from "../school/classes/TimeScreen";
 import { Loading } from "../../ui/Loading";
-import { childrenElsewhere, minutesIn } from "./redirects";
+import { childrenElsewhere } from "./redirects";
 import { familyDisplayName } from "../spaces/resolve";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
@@ -256,71 +256,123 @@ export function FamilyTimeScreen() {
     place.own?.id ?? null,
   );
   const records = useRecords(place, host ? elsewhere : []);
-  if (host)
+  if (host) {
+    const inClass = (place.data?.children ?? []).filter(
+      (child) => !elsewhere.includes(child),
+    );
     return (
       <TimeScreen
         host={host}
         extra={
           elsewhere.length
-            ? (range) => {
-                const minutes = elsewhere.map((child, index) =>
-                  minutesIn(records[index]?.data?.weeks ?? [], range),
-                );
-                return {
-                  minutes: minutes.reduce((sum, value) => sum + value, 0),
-                  count: elsewhere.length,
-                  working: minutes.filter((value) => value > 0).length,
-                  node: (
-                    <section
-                      aria-labelledby="time-elsewhere"
-                      className={styles.section}
-                      data-time-elsewhere=""
-                    >
-                      <h2 id="time-elsewhere">In another group</h2>
-                      {elsewhere.map((child, index) => {
-                        const record = records[index];
-                        return (
-                          <div
-                            key={child.id}
-                            className={styles.section}
-                            data-time-child={child.id}
-                          >
-                            <div className={styles.sectionHead}>
-                              <h3>{childLink(place.family, child)}</h3>
-                              <span className={styles.sub}>
-                                {minutes[index]! > 0
-                                  ? `${number(minutes[index]!)} active minutes in these dates`
-                                  : "No time in these dates"}
-                              </span>
-                            </div>
-                            {record?.data ? (
-                              <RecordWeeks record={record.data} />
-                            ) : record?.isError ? (
-                              <p className={styles.footnote} role="alert">
-                                {child.name}’s weeks didn’t load.{" "}
-                                <button
-                                  type="button"
-                                  className={buttonClass("secondary")}
-                                  onClick={() => void record.refetch()}
-                                >
-                                  Try again
-                                </button>
-                              </p>
-                            ) : (
-                              <Loading>Reading {child.name}’s weeks</Loading>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </section>
-                  ),
-                };
+            ? {
+                scope: `For ${names(inClass)}, in your family’s class. ${
+                  elsewhere.length === 1 ? elsewhere[0]!.name : names(elsewhere)
+                } ${elsewhere.length === 1 ? "practices" : "practice"} in another group, below.`,
+                node: (
+                  <ElsewhereTime
+                    place={place}
+                    children={elsewhere}
+                    records={records}
+                  />
+                ),
               }
             : undefined
         }
       />
     );
+  }
   return <ChildrenTime place={place} />;
+}
+
+/** "Pip", "Pip and Wren", "Pip, Wren and Theo". */
+const names = (children: readonly { name: string }[]) =>
+  children.length <= 1
+    ? (children[0]?.name ?? "")
+    : `${children
+        .slice(0, -1)
+        .map((child) => child.name)
+        .join(", ")} and ${children.at(-1)!.name}`;
+
+/**
+ * The family's children who practice in another family's group, under the
+ * class's Time: their own scope, said. This week's minutes are the server's
+ * (the same as Today's); the chart is their last twelve weeks of minutes,
+ * from their record. Neither is the class's dates or measure, and neither is
+ * in the class's totals or export. A read that fails says so with Try again
+ * and is never a zero.
+ */
+function ElsewhereTime({
+  place,
+  children,
+  records,
+}: {
+  place: FamilyPlace;
+  children: readonly FamilyChild[];
+  records: ReturnType<typeof useRecords>;
+}) {
+  const failed = records.filter((record) => record.isError).length;
+  useEffect(() => {
+    if (failed)
+      console.error(`${failed} child’s weeks didn’t load in Family Time`);
+  }, [failed]);
+  return (
+    <section
+      aria-labelledby="time-elsewhere"
+      className={styles.section}
+      data-time-elsewhere=""
+    >
+      <div className={styles.head}>
+        <h2 id="time-elsewhere">In another group</h2>
+        <p className={styles.sub}>
+          Their own weeks, in active minutes: not the dates or the measure
+          above, and not in its totals or its export.
+        </p>
+      </div>
+      {children.map((child, index) => {
+        const record = records[index];
+        return (
+          <div
+            key={child.id}
+            className={styles.section}
+            data-time-child={child.id}
+          >
+            <div className={styles.sectionHead}>
+              <h3>{childLink(place.family, child)}</h3>
+              <span className={styles.sub}>
+                {child.week.minutes > 0
+                  ? `${number(child.week.minutes)} active minutes this week`
+                  : "No time yet this week"}
+              </span>
+            </div>
+            {record?.data ? (
+              <>
+                <p className={styles.footnote}>The last twelve weeks</p>
+                <RecordWeeks record={record.data} />
+              </>
+            ) : record?.isError ? (
+              <div
+                className={styles.readFailed}
+                role="alert"
+                data-read-failed=""
+              >
+                <p>Couldn’t load {child.name}’s weeks.</p>
+                <button
+                  type="button"
+                  className={buttonClass("secondary")}
+                  onClick={() => void record.refetch()}
+                >
+                  Try again
+                </button>
+              </div>
+            ) : (
+              <Loading>Reading {child.name}’s weeks</Loading>
+            )}
+          </div>
+        );
+      })}
+    </section>
+  );
 }
 
 /** Time for a family whose children are all hosted elsewhere: each child's
@@ -377,12 +429,27 @@ function ChildrenTime({ place }: { place: FamilyPlace }) {
                     </div>
                     {record ? (
                       <RecordWeeks record={record} />
-                    ) : (
+                    ) : !child.capabilities.readProgress ? (
                       <p className={styles.footnote}>
-                        {child.capabilities.readProgress
-                          ? `${child.name}’s weeks didn’t load. Reload to try again.`
-                          : `${child.name}’s weeks aren’t shared with this account.`}
+                        {child.name}’s weeks aren’t shared with this account.
                       </p>
+                    ) : records[index]?.isError ? (
+                      <div
+                        className={styles.readFailed}
+                        role="alert"
+                        data-read-failed=""
+                      >
+                        <p>Couldn’t load {child.name}’s weeks.</p>
+                        <button
+                          type="button"
+                          className={buttonClass("secondary")}
+                          onClick={() => void records[index]?.refetch()}
+                        >
+                          Try again
+                        </button>
+                      </div>
+                    ) : (
+                      <Loading>Reading {child.name}’s weeks</Loading>
                     )}
                   </section>
                 );

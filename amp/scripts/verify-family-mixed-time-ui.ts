@@ -94,10 +94,16 @@ try {
     after.children.some((child) => child.id === hosted!.id),
     "the projection holds the child practicing elsewhere",
   );
+  const minutesShown = async (page: import("playwright").Page) =>
+    (
+      await page.$$eval("[data-stat-value], strong, dd", (nodes) =>
+        nodes.map((node) => (node.textContent ?? "").trim()),
+      )
+    ).join("|");
   for (const width of [390, 1280]) {
     const context = await signedIn("parent-day1", width);
     const page = await context.newPage();
-    await page.goto(`${origin}/family/${family}/time?period=month`);
+    await page.goto(`${origin}/family/${family}/time?period=term`);
     await page.waitForSelector("[data-time-elsewhere]", { timeout: 30_000 });
     await page.waitForLoadState("networkidle").catch(() => undefined);
     await page.waitForTimeout(1000);
@@ -108,18 +114,79 @@ try {
       "the child elsewhere is in Family Time",
     );
     assert.match(text, /In another group/);
-    assert.ok(!/No practice time yet/.test(text) || /Elsewhere Kid/.test(text));
-    // The class's own child is the grid's; the tutor's others never appear.
     assert.ok(!/Student \d/.test(text), "a tutor's other child appeared");
-    const total = await page.$$eval("[data-time-child]", (rows) => rows.length);
-    assert.ok(total >= 1);
+    // M14/M15: the dates, totals and export are the class's, and say whose;
+    // the child elsewhere has their own labelled scope, outside them.
+    const scope = (await page.textContent("[data-time-scope]")) ?? "";
+    assert.match(scope, /in your family’s class/, `scope: ${scope}`);
+    assert.match(scope, /Elsewhere Kid practices in another group/);
+    assert.ok(
+      !/Elsewhere Kid/.test(scope.split(".")[0]!),
+      "the class scope names the child elsewhere",
+    );
+    const elsewhere = (await page.textContent("[data-time-elsewhere]")) ?? "";
+    assert.match(
+      elsewhere,
+      /not the dates or the measure above, and not in its totals or its export/,
+    );
+    const classTotal = (await (
+      await context.request.get(
+        `${origin}/api/v1/school/classes/${(await (await context.request.get(`${origin}/api/v1/me`)).json()).familyClass.classId}/time?period=term`,
+      )
+    ).json()) as { students: { minutes: number }[] };
+    const sum = classTotal.students.reduce(
+      (total, row) => total + row.minutes,
+      0,
+    );
+    if (sum > 0) {
+      const shown = await minutesShown(page);
+      assert.ok(
+        shown.includes(String(sum)),
+        `the total is the class's ${sum}: ${shown}`,
+      );
+    }
     await page.screenshot({
       path: join(shots, `mixed-time-${width}.png`),
       fullPage: true,
     });
+    // M16: the child elsewhere's read fails: "Couldn't load", Try again, and
+    // never a zero, with the class's totals unchanged.
+    const before = await minutesShown(page);
+    await page.route("**/api/v1/families/*/children/*/progress", (route) =>
+      route.fulfill({ status: 503, json: { error: "unavailable" } }),
+    );
+    await page.reload();
+    await page.waitForSelector(
+      "[data-time-elsewhere] [data-read-failed] button",
+      {
+        timeout: 30_000,
+      },
+    );
+    await page.waitForTimeout(800);
+    const failed = (await page.textContent("[data-time-elsewhere]")) ?? "";
+    assert.match(failed, /Couldn’t load Elsewhere Kid’s weeks/);
+    assert.ok(
+      !/No time in these dates|0 active minutes in/.test(failed),
+      "a failed read shows as zero",
+    );
+    assert.equal(
+      await minutesShown(page),
+      before,
+      "the totals changed when the read failed",
+    );
+    await page.screenshot({
+      path: join(shots, `mixed-time-failed-${width}.png`),
+      fullPage: true,
+    });
+    // Try again recovers.
+    await page.unroute("**/api/v1/families/*/children/*/progress");
+    await page.click("[data-time-elsewhere] [data-read-failed] button");
+    await page.waitForSelector("[data-time-elsewhere] [role=img]", {
+      timeout: 30_000,
+    });
     await context.close();
     console.log(
-      `${width}: Family Time shows the class's child and the child elsewhere`,
+      `${width}: Family Time scopes the class and the child elsewhere; a failed read says so and recovers`,
     );
   }
   await tutor.close();

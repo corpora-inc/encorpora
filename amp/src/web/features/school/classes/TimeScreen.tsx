@@ -325,19 +325,14 @@ function DaySheet({
 /** Minutes per student over days or weeks, as one grid of one hue: who's working
  * and when reads at a glance, with the numbers a hover away and in the export. */
 /** What a host adds to Time beyond its class: people of its own who practice
- * elsewhere (a family's child in another group), for the same range, with
- * their minutes in the page's totals. */
-export type TimeExtra = (range: {
-  period: TimePeriod;
-  from: string;
-  to: string;
-}) => {
+ * elsewhere (a family's child in another group). Their time isn't this
+ * class's report, so the page's dates, measure, totals and export say whose
+ * they are (`scope`), and `node` shows the others with their own scope. */
+export type TimeExtra = {
+  /** Whom this class's report, totals and export cover: "Pip and Theo, in
+   * your family's class". */
+  scope: string;
   node: ReactNode;
-  /** Their active minutes over the range. */
-  minutes: number;
-  /** How many of them, and how many practiced in the range. */
-  count: number;
-  working: number;
 };
 
 export function TimeScreen({
@@ -494,16 +489,15 @@ export function TimeScreen({
     0,
   );
   const working = (data?.students ?? []).filter((row) => row.minutes > 0);
-  // A host's own people elsewhere, over this same range: in the totals too.
-  const more = data
-    ? extra?.({ period, from: data.range.from, to: data.range.to })
-    : undefined;
-  const allMinutes = totalMinutes + (more?.minutes ?? 0);
+  // A host's own people elsewhere: shown after, with their own scope; the
+  // totals, the dates and the export here are this class's alone, and say so.
+  const more = extra;
+  const allMinutes = totalMinutes;
   const facts = data && (
     <StatRow>
       <StatTile value={number(allMinutes)} label="active minutes" />
       <StatTile
-        value={`${working.length + (more?.working ?? 0)} of ${data.students.length + (more?.count ?? 0)}`}
+        value={`${working.length} of ${data.students.length}`}
         label={
           family ? "children with active time" : "students with active time"
         }
@@ -531,6 +525,10 @@ export function TimeScreen({
             <div className={styles.gradeTitle}>
               <ScreenTitle>Time</ScreenTitle>
               <p>{dayRange(data.range.from, data.range.to)}</p>
+              {more && (
+                // Whose time these dates, totals and the export cover.
+                <p data-time-scope="">{more.scope}</p>
+              )}
             </div>
             <div className={styles.gradeControls}>
               <div className={styles.period}>
@@ -717,7 +715,9 @@ export function TimeScreen({
               {more?.node}
               {whole && data.skills.some((skill) => skill.minutes > 0) && (
                 <section className={styles.timeSkills}>
-                  <h2>Where the time went</h2>
+                  <h2>
+                    {more ? "Where their time went" : "Where the time went"}
+                  </h2>
                   <ul className={styles.skillBars}>
                     {data.skills
                       .filter((skill) => skill.minutes > 0)

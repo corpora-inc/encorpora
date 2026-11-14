@@ -13,7 +13,6 @@ import { placeGroups } from "../src/web/features/spaces/places.js";
 import {
   childrenElsewhere,
   landingFamily,
-  minutesIn,
 } from "../src/web/features/family/redirects.js";
 import { sharedAccessOf } from "../src/web/features/family/access.js";
 
@@ -639,13 +638,4 @@ test("Family Time reads every owned child: the class's, and each one practicing 
     childrenElsewhere([local, hosted], null).map((child) => child.id),
     ["local", "hosted"],
   );
-  // Their minutes over the page's range, by the week each started in.
-  const weeks = [
-    { week: "2026-10-12", minutes: 5 },
-    { week: "2026-10-19", minutes: 7 },
-    { week: "2026-11-09", minutes: 16 },
-  ];
-  assert.equal(minutesIn(weeks, { from: "2026-11-09", to: "2026-11-14" }), 16);
-  assert.equal(minutesIn(weeks, { from: "2026-10-21", to: "2026-11-14" }), 23);
-  assert.equal(minutesIn(weeks, { from: "2026-01-01", to: "2026-11-14" }), 28);
 });

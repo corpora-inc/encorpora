@@ -243,10 +243,10 @@ export function ChildPracticeSettings({
                   A grown-up is helping {child.name} with these problems
                 </small>
               </span>
-              <span
-                className={switches.track}
-                style={{ visibility: "hidden" }}
-              />
+              {/* The moving wave where the switch will be, the same width. */}
+              <span className={switches.track} data-switch-loading="">
+                <Loading inline>{null}</Loading>
+              </span>
             </div>
           ) : (
             <Switch
