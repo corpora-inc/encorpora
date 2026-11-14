@@ -1,3 +1,4 @@
+import { familyDisplayName } from "../spaces/resolve";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
@@ -184,8 +185,8 @@ export function FamilyMapScreen() {
       class: {
         id: family,
         orgId: family,
-        name: data.displayName,
-        orgName: data.displayName,
+        name: familyDisplayName(data),
+        orgName: familyDisplayName(data),
         course: null,
       },
       strands: [...strands].map(([id, label]) => ({ id, label })),
@@ -477,32 +478,22 @@ function ProgressReport({
   place: FamilyPlace;
   child: FamilyChild;
 }): ReactNode {
-  const person = place.own
-    ? child.classes.find((entry) => entry.id === place.own!.id)?.personId
-    : undefined;
-  if (person)
-    return (
-      <PrintButton
-        variant="secondary"
-        download={() =>
-          downloadPdf({
-            path: `/school/students/${encodeURIComponent(person)}/record.pdf?format=${paperFormat()}`,
-            token: place.session.token,
-            name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
-          })
-        }
-      >
-        Print
-      </PrintButton>
-    );
+  // The family's own progress report for one child (its PDF beside the
+  // child's progress read): the family's name and the parent's words, for
+  // a child in the family's class or hosted in someone else's.
   return (
-    <Link
-      to="/$"
-      params={{ _splat: familyHref(place.family, `kids/${child.id}`) }}
-      className={buttonClass("secondary")}
+    <PrintButton
+      variant="secondary"
+      download={() =>
+        downloadPdf({
+          path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+          token: place.session.token,
+          name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
+        })
+      }
     >
-      Open record
-    </Link>
+      Print
+    </PrintButton>
   );
 }
 

@@ -1080,6 +1080,19 @@ export function ownClassOf(
   return shared ? relationClass(shared.classId) : null;
 }
 
+/** What a family is called: its chosen name, else to its holder "Your
+ * family", and to a second parent the holder's family by their name. */
+export function familyDisplayName(
+  data: Pick<FamilyProjection, "displayName" | "role"> & {
+    holderName?: string | null;
+  },
+): string {
+  if (data.displayName) return data.displayName;
+  if (data.role !== "holder" && data.holderName)
+    return `${data.holderName}’s family`;
+  return "Your family";
+}
+
 /** The capabilities a family projection grants, by name, for one target. */
 function familyCan(data: FamilyProjection): string[] {
   return Object.entries(data.capabilities)
@@ -1125,7 +1138,7 @@ function familyPlaceSpace(
     status,
     family: {
       id: frame.family,
-      name: data?.displayName ?? null,
+      name: data ? familyDisplayName(data) : null,
       demo: false,
     },
     relation: data?.role ?? null,
@@ -1176,7 +1189,7 @@ function familyPlaceSpace(
         : data?.role === "holder"
           ? "home"
           : `family:${frame.family}`,
-    label: data?.displayName ?? null,
+    label: data ? familyDisplayName(data) : null,
   };
 }
 

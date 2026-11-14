@@ -1010,12 +1010,14 @@ test("CP-2 r2 H4: a class's tabs are what its own capabilities allow", () => {
       },
     },
   );
+  // A family class at its class address is its tutoring group: the
+  // classroom's tabs, filtered by the class's own capabilities.
   assert.deepEqual(ids(family), [
     "today",
     "map",
-    "workbooks",
-    "time",
     "roster",
+    "time",
+    "workbooks",
   ]);
 });
 

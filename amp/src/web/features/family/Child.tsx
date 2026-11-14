@@ -22,6 +22,8 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { YearField } from "../../ui/YearField";
 import { TryAsStudent } from "../profiles/TryAsStudent";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { SatMathFocus } from "../practice/SatMathFocus";
 import { rememberContinuation } from "../continue/memory";
 import {
@@ -151,6 +153,20 @@ export function ChildScreen() {
                     Continue with AMP
                   </Link>
                 )}
+              {child.capabilities.readProgress && (
+                <PrintButton
+                  variant="secondary"
+                  download={() =>
+                    downloadPdf({
+                      path: `${child.paths.progress.replace(/^\/api\/v1/, "")}.pdf?format=${paperFormat()}`,
+                      token: session.token,
+                      name: `amp-progress-report-${child.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.pdf`,
+                    })
+                  }
+                >
+                  Progress report
+                </PrintButton>
+              )}
               {person && (
                 <TryAsStudent
                   session={session}

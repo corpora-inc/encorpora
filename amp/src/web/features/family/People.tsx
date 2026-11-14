@@ -1,3 +1,4 @@
+import { familyDisplayName } from "../spaces/resolve";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
@@ -205,7 +206,7 @@ export function FamilyPeopleScreen() {
           {second ? (
             <section className={people.list} aria-labelledby="people-family">
               <h2 id="people-family" className={people.title}>
-                In {data.displayName}
+                In {familyDisplayName(data)}
               </h2>
               <dl className={styles.settings}>
                 <div className={styles.setting}>
@@ -252,8 +253,8 @@ export function FamilyPeopleScreen() {
                 )}
               </dl>
               <p className={styles.footnote}>
-                The parent who invited you buys access, names the children,
-                gives consent and can delete their data.
+                {data.holderName ?? "The parent who invited you"} buys access,
+                names the children, gives consent and can delete their data.
               </p>
             </section>
           ) : (
@@ -359,7 +360,7 @@ export function FamilySettingsScreen() {
         <div className={styles.page} data-family-settings="">
           <header className={styles.head}>
             <ScreenTitle>Settings</ScreenTitle>
-            <p className={styles.sub}>For {data.displayName}.</p>
+            <p className={styles.sub}>For {familyDisplayName(data)}.</p>
           </header>
           <section className={styles.section} aria-labelledby="family-children">
             <div className={styles.sectionHead}>

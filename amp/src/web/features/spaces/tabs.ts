@@ -79,7 +79,9 @@ export function familyPlaceTabs(
   return [
     tab("today", "Today", at(""), true),
     tab("map", "Map", at("map"), true),
-    ...(workbooks ? [tab("workbooks", "Workbooks", at("workbooks"), true)] : []),
+    ...(workbooks
+      ? [tab("workbooks", "Workbooks", at("workbooks"), true)]
+      : []),
     tab("time", "Time", at("time"), true),
     tab("reports", "Report cards", at("reports")),
     tab("people", "People", at("people")),

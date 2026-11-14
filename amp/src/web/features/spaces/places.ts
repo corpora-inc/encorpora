@@ -109,7 +109,7 @@ export function placeGroups(
     ...(me.familyClass ? [me.familyClass.orgId] : []),
     ...(me.secondParentOf ?? []).map((shared) => shared.orgId),
   ]);
-  if (families) {
+  if (families && Array.isArray(families.families)) {
     const words = spaceWords("family");
     const children = me.learners;
     for (const entry of families.families) {
@@ -119,11 +119,16 @@ export function placeGroups(
         // place, its children never theirs.
         groups.push({
           id: `school:${entry.familyId}`,
-          name: entry.teachingPlace?.displayName ?? entry.displayName,
+          name:
+            entry.teachingPlace?.displayName ??
+            entry.displayName ??
+            "Tutoring group",
           detail: "Co-teacher",
-          path: entry.teachingPlace
-            ? `school/${entry.familyId}/classes/${entry.teachingPlace.classId}/today`
-            : `school/${entry.familyId}`,
+          // The class's own org, as the server names it.
+          path:
+            entry.teachingPlace && entry.orgId
+              ? `school/${entry.orgId}/classes/${entry.teachingPlace.classId}/today`
+              : `school/${entry.orgId ?? entry.familyId}`,
         });
         continue;
       }
@@ -134,7 +139,9 @@ export function placeGroups(
       if (!tutorOnly)
         family.push({
           id: entry.role === "holder" ? "home" : `family:${entry.familyId}`,
-          name: entry.displayName,
+          // A family without a chosen name is the reader's own: "Your
+          // family"; a second parent's is named by its holder.
+          name: entry.displayName ?? "Your family",
           detail:
             entry.role === "second-parent"
               ? "Second parent"
@@ -152,10 +159,12 @@ export function placeGroups(
         // need not be that org); the family's group address redirects there.
         const classId = entry.teachingPlace.classId;
         const org =
-          me.familyClass?.classId === classId
-            ? me.familyClass.orgId
-            : me.secondParentOf?.find((shared) => shared.classId === classId)
-                ?.orgId;
+          entry.classId === classId
+            ? entry.orgId
+            : me.familyClass?.classId === classId
+              ? me.familyClass.orgId
+              : me.secondParentOf?.find((shared) => shared.classId === classId)
+                  ?.orgId;
         groups.push({
           id: `group:${entry.familyId}`,
           name: "Tutoring group",

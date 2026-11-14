@@ -196,10 +196,9 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     org: orgNow,
     classes: current(classes) ?? null,
     year: current(year),
-    // Practice that can't be confirmed running offers nothing to start.
     // Coverage that can't be confirmed counts nobody as covered.
     covered: pilot.isError ? 0 : (pilot.data?.coverage?.covered ?? 0),
-    family: current(family, since),
-    families: current(families, since),
+    family: current(family),
+    families: current(families),
   });
 }

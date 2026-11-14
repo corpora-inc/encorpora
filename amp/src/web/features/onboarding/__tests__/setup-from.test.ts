@@ -57,9 +57,9 @@ test("a first run has no from, and a from that isn't a place is dropped", () => 
     expect(withFrom("/start/parent", hostile)).toBe("/start/parent");
   // A place's view keys come along; anything else and the fragment don't.
   expect(
-    withFrom("/start", "/family/f?sort=name:ascending&token=x#secret"),
+    withFrom("/start", "/family/00000000-0000-4000-8000-00000000000f?sort=name:ascending&token=x#secret"),
   ).toBe(
-    `/start?from=${encodeURIComponent("/family/f?sort=name%3Aascending")}`,
+    `/start?from=${encodeURIComponent("/family/00000000-0000-4000-8000-00000000000f?sort=name%3Aascending")}`,
   );
 });
 

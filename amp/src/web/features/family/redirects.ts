@@ -225,6 +225,12 @@ export function familyClassTarget({
   const opens: Search = {
     ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
     ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
+    // A time range's start: a day, typed (a bare `from` is a return).
+    ...(target.leaf === "time" &&
+    typeof search.from === "string" &&
+    DAY.test(search.from)
+      ? { from: search.from }
+      : {}),
   };
   const result = viaReturn(
     familyPath(family, target.leaf),

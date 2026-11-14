@@ -134,8 +134,13 @@ test("Time, with its week and child, through the one return contract", () => {
     go(["time"], { week: "2026-11-09", from: "a", to: "b", student: P_PIP }),
     {
       to: `/family/${F}/time`,
-      search: { week: "2026-11-09", student: P_PIP },
+      // A `from` that isn't a day is never carried (it could be a return).
+      search: { week: "2026-11-09", to: "b", student: P_PIP },
     },
+  );
+  assert.deepEqual(
+    go(["time"], { from: "2026-10-01", to: "2026-11-01" }).search,
+    { to: "2026-11-01", from: "2026-10-01" },
   );
 });
 

@@ -68,7 +68,7 @@ export function FamilyChooserScreen() {
               {parents.map((family) => (
                 <RowLink
                   key={family.familyId}
-                  title={family.displayName}
+                  title={family.displayName ?? "Your family"}
                   meta={
                     family.role === "holder" ? "Your family" : "Second parent"
                   }

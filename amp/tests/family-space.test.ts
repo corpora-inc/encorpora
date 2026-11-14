@@ -98,6 +98,7 @@ const projection = (
     readTeaching: true,
   },
   children,
+  holderName: null,
   today: {
     date: "2026-11-14",
     tasks: [],
@@ -423,6 +424,8 @@ test("the switcher names each family as the family, with a tutoring group under 
       {
         familyId: A,
         displayName: "Pell family",
+        classId: null,
+        orgId: null,
         role: "holder",
         teachingPlace: familyA.teachingPlace,
         capabilities: { readFamily: true, readTeaching: true },
@@ -430,6 +433,8 @@ test("the switcher names each family as the family, with a tutoring group under 
       {
         familyId: B,
         displayName: "Lund family",
+        classId: null,
+        orgId: null,
         role: "second-parent",
         teachingPlace: null,
         capabilities: { readFamily: true, readTeaching: false },
@@ -462,6 +467,8 @@ test("/family opens the holder's own family, else the one they belong to, else a
   ) => ({
     familyId,
     displayName: "",
+    classId: null,
+    orgId: null,
     role,
     teachingPlace: null,
     capabilities: { readFamily: role !== "co-teacher", readTeaching: false },
