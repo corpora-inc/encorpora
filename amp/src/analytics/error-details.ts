@@ -84,9 +84,12 @@ export function errorDetails(
     const message =
       typeof (error as Error)?.message === "string"
         ? (error as Error).message
-        : "";
+        : typeof error === "string"
+          ? error
+          : "";
     result.category =
-      /Loading chunk|dynamically imported module|Importing a module script failed|Unable to preload CSS/i.test(
+      result.exception === "ChunkLoadError" ||
+      /Loading (?:CSS )?chunk|dynamically imported module|Importing a module script failed|error loading dynamically imported module|Unable to preload CSS|Failed to (?:fetch|load) module script/i.test(
         message,
       )
         ? "chunk"
@@ -106,7 +109,7 @@ export function errorDetails(
                     : "runtime";
     const reactCode = message.match(/^Minified React error #([1-9]\d{0,3});/);
     if (reactCode) result.reactCode = Number(reactCode[1]);
-    source ??= origin ? appFrame(error, origin) : undefined;
+    source = (origin ? appFrame(error, origin) : undefined) ?? source;
     if (source) {
       // No script URL and no error object: the browser withheld a cross-origin
       // script's details ("Script error."). No URL with an error: code the
