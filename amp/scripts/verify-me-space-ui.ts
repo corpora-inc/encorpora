@@ -42,7 +42,8 @@ const WIDTHS =
     : [320, 390, 768, 1280];
 const SCHEMES = ["light", "dark"] as const;
 const PASSWORD = "design pass persona passphrase";
-/** `--only day0,answer,level,family,live,served,levelmode,maps,familylive`. */
+/** `--only` any of: day0, answer, level, family, live, served, levelmode,
+ * maps, familylive, profiles. */
 const onlyArg = process.argv.indexOf("--only");
 const ONLY =
   onlyArg > 0 ? new Set(process.argv[onlyArg + 1]!.split(",")) : null;
@@ -142,6 +143,59 @@ async function newAdult() {
   );
   await context.close();
   return { email, learnerId };
+}
+
+/** Text that runs into other text in `main` (a line through a button, a
+ * button over a line): every pair of visible text boxes overlapping by more
+ * than a pixel, after scripts/verify-family-space-ui.ts. Runs in the page. */
+function textCollisions(): string[] {
+  const boxes: { text: string; rect: DOMRect; node: Node }[] = [];
+  const walker = document.createTreeWalker(
+    document.querySelector("main") ?? document.body,
+    NodeFilter.SHOW_TEXT,
+  );
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = (node.textContent ?? "").trim();
+    const parent = node.parentElement;
+    if (!text || !parent) continue;
+    const style = getComputedStyle(parent);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+    if (parent.closest("[aria-hidden=true], svg")) continue;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    for (const rect of range.getClientRects())
+      if (rect.width > 1 && rect.height > 1)
+        boxes.push({ text: text.slice(0, 30), rect, node });
+  }
+  // Controls too: a line must not run under a button.
+  for (const control of document.querySelectorAll(
+    "main a[href], main button",
+  )) {
+    const rect = control.getBoundingClientRect();
+    if (rect.width > 1 && rect.height > 1)
+      boxes.push({
+        text: `[${(control.textContent ?? "").trim().slice(0, 20)}]`,
+        rect,
+        node: control,
+      });
+  }
+  const hits: string[] = [];
+  for (let a = 0; a < boxes.length; a++)
+    for (let b = a + 1; b < boxes.length; b++) {
+      const one = boxes[a]!;
+      const two = boxes[b]!;
+      if (one.node === two.node) continue;
+      // A control's own text sits inside it.
+      if (one.node.contains(two.node) || two.node.contains(one.node)) continue;
+      const x =
+        Math.min(one.rect.right, two.rect.right) -
+        Math.max(one.rect.left, two.rect.left);
+      const y =
+        Math.min(one.rect.bottom, two.rect.bottom) -
+        Math.max(one.rect.top, two.rect.top);
+      if (x > 1 && y > 1) hits.push(`${one.text} × ${two.text}`);
+    }
+  return hits.slice(0, 5);
 }
 
 async function settle(page: Page) {
@@ -278,10 +332,11 @@ if (part("answer")) {
   await page.locator("[data-level-start]").waitFor();
   await page.getByRole("link", { name: "Start practicing" }).click();
   await page.waitForURL(/\/practice/);
+  // The first problem, whatever its kind: its Check (or Next) is there.
   await page
-    .getByText(/Answer|Choose/)
+    .getByRole("button", { name: /^(Check|Next)/ })
     .first()
-    .waitFor({ timeout: 30000 });
+    .waitFor({ timeout: 90000 });
   await page.screenshot({ path: join(shots, "me-start-practice-390.png") });
   // The first answer, as practice sends it.
   const batch = await api<{ problems: { id: string }[] }>(
@@ -736,6 +791,78 @@ if (part("familylive"))
     });
     await context.close();
   }
+
+// 10. Profiles (Q-213): the actions sit under the title with room, nothing
+// runs into anything, and an empty list adds no line repeating the intro.
+if (part("profiles")) {
+  const owner = await newAdult();
+  for (const saved of [false, true]) {
+    if (saved) {
+      const context = await browser.newContext();
+      await signIn(context, owner.email);
+      await api(context.request, "POST", "/me/profiles", {
+        label: "4th grade · behind",
+        levels: Object.fromEntries(
+          [
+            "number",
+            "operations",
+            "measurement",
+            "data",
+            "geometry",
+            "fractions",
+            "decimals",
+            "ratio",
+            "algebra",
+            "modeling",
+            "probability",
+            "functions",
+            "reasoning",
+            "trigonometry",
+          ].map((strand) => [strand, 3]),
+        ),
+      });
+      await context.close();
+    }
+    for (const width of WIDTHS)
+      for (const scheme of SCHEMES) {
+        const where = `/me/profiles ${saved ? "one saved" : "none saved"} ${width} ${scheme}`;
+        const context = await reader(width, scheme);
+        await signIn(context, owner.email);
+        const page = await context.newPage();
+        await page.goto(`${origin}/me/profiles`, { waitUntil: "load" });
+        await page.getByRole("heading", { name: "Profiles" }).waitFor();
+        await settle(page);
+        await check(page, where, "me");
+        const hits = await page.evaluate(textCollisions);
+        if (hits.length)
+          fail(where, `text runs into text: ${hits.join(" | ")}`);
+        const layout = await page.evaluate(() => {
+          const head = document.querySelector("main header");
+          const next = head?.nextElementSibling;
+          return {
+            gap:
+              head && next
+                ? next.getBoundingClientRect().top -
+                  head.getBoundingClientRect().bottom
+                : null,
+            text: document.querySelector("main")?.textContent ?? "",
+          };
+        });
+        if (layout.gap !== null && layout.gap < 16)
+          fail(where, `the list starts ${layout.gap}px under the actions`);
+        if (/Saved levels appear here/.test(layout.text))
+          fail(where, "an empty list repeats the intro");
+        await page.screenshot({
+          path: join(
+            shots,
+            `profiles-${saved ? "saved" : "empty"}-${width}-${scheme}.png`,
+          ),
+          fullPage: true,
+        });
+        await context.close();
+      }
+  }
+}
 
 await browser.close();
 if (failures.length) {

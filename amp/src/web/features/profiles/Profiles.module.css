@@ -262,12 +262,14 @@
   margin-inline: auto;
   padding-bottom: var(--space-7);
 }
+/* The title and its line, then the actions under them. Its own height:
+   a page header never inherits the app bar's (Q-213). */
 .listHead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
   gap: var(--space-4);
+  height: auto;
+  min-height: 0;
+  padding: 0;
 }
 .listHead h1 {
   margin: 0;
@@ -338,8 +340,4 @@
   color: var(--color-primary);
   font-weight: 600;
   font-size: var(--text-label);
-}
-.listEmpty {
-  margin: 0;
-  color: var(--color-muted-text);
 }
