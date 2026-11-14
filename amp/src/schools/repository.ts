@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { visibleToSql } from "./demo/sql.js";
 import { randomInt, randomUUID } from "node:crypto";
@@ -1010,10 +1011,14 @@ export class SchoolRepository {
            c.grading_kind AS "gradingKind",c.join_code AS "joinCode",
            (SELECT count(*)::int FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount",
-           ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+           array_remove(ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
                AND ${visibleToSql("p", "$6::text")}
-             ORDER BY e.begin_on,p.id) AS teachers
+             ORDER BY e.begin_on,p.id),NULL) AS teachers,
+           ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+             WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+               AND ${visibleToSql("p", "$6::text")}
+             ORDER BY e.begin_on,p.id) AS "teacherNames"
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          JOIN amp_academic_sessions cs ON cs.id=c.session_id
          WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL

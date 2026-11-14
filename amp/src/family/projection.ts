@@ -1,7 +1,9 @@
+import { freeAllowance } from "../learning/free-allowance.js";
+import { StripeRepository } from "../billing/stripe/repository.js";
+import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import type { Pool } from "pg";
 import { FamilyError } from "./contracts.js";
 import { ensureFamilyIdentity } from "./identity.js";
-import { secondParentFamilies } from "./second-parent.js";
 import { gradeFor } from "./family-class.js";
 import { FamilyRepository } from "./repository.js";
 import {
@@ -18,15 +20,13 @@ import {
   weeklyTargetFor,
   type ClassContext,
 } from "../schools/term-grades.js";
-import {
-  parentAddressConfirmed,
-  purchaseConsentSatisfied,
-} from "../server/account-access.js";
+import { parentConsentStates } from "../server/account-access.js";
 import { adultNameSql } from "../account/profile.js";
 
 export type FamilyRole = "holder" | "second-parent" | "co-teacher";
 type Identity = {
   familyId: string;
+  orgId: string | null;
   holder: string;
   displayName: string;
   classId: string | null;
@@ -35,7 +35,7 @@ type Identity = {
   hasHosted: boolean;
   timezone: string;
 };
-const IDENTITIES = `SELECT fs.id AS "familyId",fs.account_id AS holder,
+const IDENTITIES = `SELECT fs.id AS "familyId",f.org_id AS "orgId",fs.account_id AS holder,
   COALESCE(o.name,'Our family') AS "displayName",f.class_id AS "classId",f.second_parent AS "secondParent",
   (SELECT name FROM amp_classes WHERE id=f.class_id) AS "className",
   EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
@@ -53,7 +53,7 @@ const targetFor = (familyId: string, classId: string): SchoolTarget => ({
 const teachingPlace = (row: Identity, role: FamilyRole, actor: Actor) =>
   row.classId &&
   (row.hasHosted || role === "co-teacher") &&
-  can(actor, "students.read", targetFor(row.familyId, row.classId))
+  can(actor, "students.read", targetFor(row.orgId!, row.classId))
     ? {
         classId: row.classId,
         displayName: row.className!,
@@ -65,31 +65,26 @@ const adultOnly = (account: string) => {
   if (isSchoolAccount(account) || account.startsWith("trial:"))
     throw new FamilyError(403, "adult_account_required");
 };
-async function relationships(pool: Pool, account: string) {
-  adultOnly(account);
-  const [parents, actor] = await Promise.all([
-    secondParentFamilies(pool, account),
-    loadActor(pool, account),
-  ]);
-  return { parents, actor };
-}
 function roleFor(
   row: Identity,
   account: string,
-  parents: Awaited<ReturnType<typeof secondParentFamilies>>,
   actor: Actor,
 ): FamilyRole | null {
   if (row.holder === account) return "holder";
   if (
-    parents.some(
-      (family) => family.holder === row.holder && family.orgId === row.familyId,
+    row.secondParent &&
+    actor.roles.some(
+      (entry) =>
+        entry.personId === row.secondParent &&
+        entry.orgId === row.orgId &&
+        entry.role === "teacher",
     )
   )
     return "second-parent";
   if (
     row.classId &&
     actor.classes.some((entry) => entry.classId === row.classId) &&
-    can(actor, "students.read", targetFor(row.familyId, row.classId))
+    can(actor, "students.read", targetFor(row.orgId!, row.classId))
   )
     return "co-teacher";
   return null;
@@ -101,7 +96,7 @@ export async function listFamilies(
   account: string,
   after?: string,
 ) {
-  const { parents, actor } = await relationships(pool, account);
+  adultOnly(account);
   await new FamilyRepository(pool).transaction(account, async (client) => {
     const owned = await client.query(
       `SELECT 1 FROM amp_families WHERE account_id=$1
@@ -110,22 +105,30 @@ export async function listFamilies(
     );
     if (owned.rowCount) await ensureFamilyIdentity(client, account);
   });
-  const ids = [
-    ...new Set([
-      ...parents.map((row) => row.orgId),
-      ...actor.classes.filter((row) => row.family).map((row) => row.orgId),
-    ]),
-  ];
   const rows = (
     await pool.query<Identity>(
       `${IDENTITIES}
-    WHERE (fs.account_id=$1 OR fs.id=ANY($2::uuid[])) AND ($3::uuid IS NULL OR fs.id>$3::uuid)
+    WHERE (fs.account_id=$1 OR EXISTS(
+      SELECT 1 FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id
+      WHERE p.id=f.second_parent AND p.account_id=$1 AND p.deleted_at IS NULL
+        AND r.org_id=f.org_id AND r.role='teacher' AND ${activeToday("r", "o")} AND amp_school_role_current(r.id)) OR EXISTS(
+      SELECT 1 FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id
+      WHERE p.account_id=$1 AND p.deleted_at IS NULL AND e.class_id=f.class_id
+      AND e.role<>'student' AND ${activeToday("e", "o")}
+      AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id
+        AND r.org_id=ANY(o.path) AND r.role<>'student' AND ${activeToday("r", "o")} AND amp_school_role_current(r.id))))
+      AND ($2::uuid IS NULL OR fs.id>$2::uuid)
     ORDER BY fs.id LIMIT 51`,
-      [account, ids, after ?? null],
+      [account, after ?? null],
     )
   ).rows;
+  const actor = await loadActor(
+    pool,
+    account,
+    rows.flatMap((row) => (row.orgId ? [row.orgId] : [])),
+  );
   const places = rows
-    .map((row) => ({ row, role: roleFor(row, account, parents, actor) }))
+    .map((row) => ({ row, role: roleFor(row, account, actor) }))
     .filter((entry) => entry.role !== null);
   return {
     families: places.slice(0, 50).map(({ row, role }) => ({
@@ -137,18 +140,19 @@ export async function listFamilies(
         readFamily: role !== "co-teacher",
         readTeaching:
           !!row.classId &&
-          can(actor, "students.read", targetFor(row.familyId, row.classId)),
+          can(actor, "students.read", targetFor(row.orgId!, row.classId)),
       },
     })),
     next: rows.length > 50 ? rows[49]!.familyId : null,
   };
 }
 async function authorize(pool: Pool, account: string, familyId: string) {
-  const { parents, actor } = await relationships(pool, account);
+  adultOnly(account);
   const row = (
     await pool.query<Identity>(`${IDENTITIES} WHERE fs.id=$1`, [familyId])
   ).rows[0];
-  const role = row && roleFor(row, account, parents, actor);
+  const actor = await loadActor(pool, account, row?.orgId ? [row.orgId] : []);
+  const role = row && roleFor(row, account, actor);
   if (!row || !role) throw new FamilyError(404, "family_not_found");
   return { row, role, actor };
 }
@@ -193,21 +197,70 @@ export async function familyProjection(
   account: string,
   familyId: string,
   development = false,
+  billingConfig: StripeBillingConfig | null = null,
 ) {
-  const initial = await authorize(pool, account, familyId);
-  if (initial.role === "co-teacher")
-    throw new FamilyError(403, "family_parent_only");
-  const summary = await new FamilyRepository(pool, development).summary(
-    initial.row.holder,
-  );
-  // The legacy summary can create the holder's local class after a host has
-  // released a child. Reload its identity and authority in this same response.
-  const { row, role, actor } = await authorize(pool, account, familyId);
+  const { row, role } = await authorize(pool, account, familyId);
   if (role === "co-teacher") throw new FamilyError(403, "family_parent_only");
   const holder = role === "holder";
-  const children = summary.learners.filter(
-    (child) => !child.deletedAt && !child.adult,
-  );
+  const consent = (
+    await parentConsentStates(pool, [row.holder], development)
+  ).get(row.holder)!;
+  const owned = (
+    await pool.query(
+      `SELECT l.id,l.name,l.birth_year,l.name_pending,l.free_online_used,l.free_workbooks_used,
+      EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
+        AND g.starts_at<=now() AND g.ends_at>now()) AS has_access
+     FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL AND NOT l.adult
+     ORDER BY l.created_at,l.id LIMIT 1001`,
+      [row.holder],
+    )
+  ).rows;
+  if (owned.length > 1000) throw new FamilyError(409, "family_child_limit");
+  const grants = (
+    await pool.query(
+      `SELECT l.id AS learner_id,g.* FROM unnest($1::text[]) l(id)
+     CROSS JOIN LATERAL (SELECT channel,status,starts_at,ends_at FROM amp_grants
+       WHERE learner_id=l.id ORDER BY starts_at DESC,id DESC LIMIT 20) g`,
+      [owned.map((child) => child.id)],
+    )
+  ).rows;
+  const children = owned.map((child) => {
+    const learningAllowed =
+      consent.active || (child.name_pending && !consent.withdrawn);
+    return {
+      id: child.id as string,
+      name: child.name as string,
+      birthYear: child.birth_year as number | null,
+      hasAccess: child.has_access as boolean,
+      learningAllowed,
+      canPractice:
+        learningAllowed &&
+        (development || child.has_access || child.free_online_used < 100),
+      freeAllowance: freeAllowance(
+        child.free_online_used,
+        child.free_workbooks_used,
+      ),
+      access: grants
+        .filter((g) => g.learner_id === child.id)
+        .map((g) => ({
+          channel: g.channel,
+          status: g.status,
+          startsAt: g.starts_at.toISOString(),
+          endsAt: g.ends_at.toISOString(),
+        })),
+    };
+  });
+  const purchase =
+    holder && billingConfig
+      ? await new StripeRepository(
+          pool,
+          billingConfig,
+        ).ownedCheckoutEligibility(
+          pool,
+          row.holder,
+          children.map((child) => child.id),
+        )
+      : new Set<string>();
   const [context, hosted, memberships] = await Promise.all([
     familyContext(pool, row),
     hostedCount(pool, row),
@@ -222,6 +275,14 @@ export async function familyProjection(
       ORDER BY c.id`,
       [children.map((child) => child.id)],
     ),
+  ]);
+  // Include only the actual displayed memberships, so a parent who also
+  // teaches their child's host class receives its real canOpen capability.
+  const actor = await loadActor(pool, account, [
+    ...new Set([
+      ...(row.orgId ? [row.orgId] : []),
+      ...memberships.rows.flatMap((member) => member.path as string[]),
+    ]),
   ]);
   const gradeOf = (child: (typeof children)[number]) => {
     const membership = memberships.rows.find(
@@ -251,10 +312,9 @@ export async function familyProjection(
   const lastPractice = new Map(
     (
       await pool.query<{ learner_id: string; day: string }>(
-        `SELECT learner_id,max(day)::text AS day FROM (
-       SELECT learner_id,day FROM amp_skill_days WHERE learner_id=ANY($1::text[]) AND attempts>0
-       UNION ALL SELECT learner_id,day FROM amp_active_days WHERE learner_id=ANY($1::text[]) AND active_ms>0
-     ) activity GROUP BY learner_id`,
+        `SELECT l.id AS learner_id,greatest(s.day,a.day)::text AS day FROM unnest($1::text[]) l(id)
+       LEFT JOIN LATERAL (SELECT day FROM amp_skill_days WHERE learner_id=l.id AND attempts>0 ORDER BY day DESC LIMIT 1) s ON true
+       LEFT JOIN LATERAL (SELECT day FROM amp_active_days WHERE learner_id=l.id AND active_ms>0 ORDER BY day DESC LIMIT 1) a ON true`,
         [children.map((child) => child.id)],
       )
     ).rows.map((entry) => [entry.learner_id, entry.day]),
@@ -264,8 +324,8 @@ export async function familyProjection(
     const roster = memberships.rows.filter(
       (member) => member.learner_id === child.id,
     );
-    const home = roster.find((member) => member.org_id === familyId);
-    const target = home ? targetFor(familyId, home.class_id) : null;
+    const home = roster.find((member) => member.org_id === row.orgId);
+    const target = home ? targetFor(row.orgId!, home.class_id) : null;
     const teaching = (action: Parameters<typeof can>[1]) =>
       !!target && can(actor, action, target);
     // Parent-entry naming remains allowed after withdrawal; namingConsentActive
@@ -287,15 +347,7 @@ export async function familyProjection(
       recordWorkbook: holder && child.learningAllowed === true,
       practiceHere,
       continuePurchase: holder,
-      purchase:
-        holder &&
-        (await parentAddressConfirmed(pool, row.holder)) &&
-        (await purchaseConsentSatisfied(
-          pool,
-          row.holder,
-          child.id,
-          development,
-        )),
+      purchase: purchase.has(child.id),
       rename: names,
       changeBirthYear: holder,
       changePracticeSettings: holder && child.learningAllowed === true,
@@ -340,7 +392,7 @@ export async function familyProjection(
         name: member.class_name,
         orgId: member.org_id,
         personId: member.person_id,
-        hostedByFamily: member.org_id === familyId,
+        hostedByFamily: member.org_id === row.orgId,
         canOpen: can(actor, "students.read", {
           kind: "class",
           classId: member.class_id,
@@ -367,10 +419,7 @@ export async function familyProjection(
     teachingPlace: teachingPlace(row, role, actor),
     capabilities: {
       readFamily: true,
-      addChildren:
-        holder &&
-        summary.consent.status !== "withdrawn" &&
-        summary.learners.filter((child) => !child.deletedAt).length < 1000,
+      addChildren: holder && !consent.withdrawn && children.length < 1000,
       manageConsent: holder,
       manageBilling: holder,
       inviteSecondParent:
@@ -378,7 +427,7 @@ export async function familyProjection(
       manageSecondParent: holder && !!row.classId,
       readTeaching:
         !!row.classId &&
-        can(actor, "students.read", targetFor(familyId, row.classId)),
+        can(actor, "students.read", targetFor(row.orgId!, row.classId)),
     },
     children: projected,
     today: { date: today.today, tasks: today.todos, week: today.week },
@@ -427,14 +476,14 @@ export async function familyTeaching(
 ) {
   const { row, actor } = await authorize(pool, account, familyId);
   if (!row.classId) throw new FamilyError(404, "teaching_place_not_found");
-  const target = targetFor(familyId, row.classId);
+  const target = targetFor(row.orgId!, row.classId);
   if (!can(actor, "students.read", target))
     throw new FamilyError(403, "teaching_forbidden");
   const context = await classContext(pool, row.classId);
   const readStaff = can(actor, "staff.read", {
     kind: "org",
-    orgId: familyId,
-    path: [familyId],
+    orgId: row.orgId!,
+    path: [row.orgId!],
   });
   const readApprovals = row.holder === account;
   const [today, staff, approvals] = await Promise.all([
@@ -458,12 +507,15 @@ export async function familyTeaching(
         )
       : Promise.resolve({ rows: [] }),
   ]);
+  const approvalConsents = await parentConsentStates(
+    pool,
+    approvals.rows
+      .filter((a) => !a.ended_at && a.approved_at && a.account_id)
+      .map((a) => a.account_id),
+  );
   const states = [];
   for (const approval of approvals.rows) {
-    const consent =
-      approval.approved_at && approval.account_id
-        ? await purchaseConsentSatisfied(pool, approval.account_id, "", false)
-        : true;
+    const consent = approvalConsents.get(approval.account_id)?.active ?? false;
     states.push({
       id: approval.id,
       personId: approval.person_id,
@@ -507,8 +559,8 @@ export async function familyTeaching(
       manageApprovals: row.holder === account,
       manageStaff: can(actor, "staff.manage", {
         kind: "org",
-        orgId: familyId,
-        path: [familyId],
+        orgId: row.orgId!,
+        path: [row.orgId!],
       }),
       manageDevices: can(actor, "signin.manage", target),
       editGrades: can(actor, "grades.write", target),

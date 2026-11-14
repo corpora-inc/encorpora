@@ -1,3 +1,4 @@
+import { config as billingConfig } from "./stripe-fixtures.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -9,7 +10,7 @@ import { refuseStudentTokens } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { templates } from "../src/math/engine.js";
-import { schoolDay } from "./helpers/school-day.js";
+import { schoolDay } from "../tests/helpers/school-day.js";
 
 test(
   "family identity, exact ownership projections, teaching compatibility and adult names",
@@ -38,6 +39,7 @@ test(
     };
     const app = buildApp({ repository: learning, authenticate });
     await registerFamilyRoutes(app, {
+      billingConfig,
       pool: db,
       authenticate,
       approvals: keys,
@@ -606,6 +608,376 @@ test(
           .families;
         assert.equal(places.length, 1);
         assert.equal(places[0].familyId, externalFamily);
+      },
+    );
+
+    await t.test(
+      "REVIEW: last-name-only and cleared names do not invent a map teacher name",
+      async () => {
+        await db.query(
+          "INSERT INTO amp_learners(id,account_id,name,adult,timezone) SELECT $1,$2,'Me',true,'UTC' WHERE NOT EXISTS (SELECT 1 FROM amp_learners WHERE account_id=$2 AND adult AND NOT simulation)",
+          [randomUUID(), a.account],
+        );
+        await ok(
+          patch(a.account, { givenName: null, familyName: "OnlySurname" }),
+        );
+        const mapped = await ok(
+          get(`/api/v1/school/classes/${fa.class_id}/map`, a.account),
+        );
+        console.log(
+          "REVIEW map teacher names",
+          mapped.teachers.map((p: any) => p.name),
+        );
+        assert.equal(mapped.teachers[0].name, "OnlySurname");
+      },
+    );
+    await t.test(
+      "REVIEW: account export includes exact profile and family identity",
+      async () => {
+        const { FamilyRepository } =
+          await import("../src/family/repository.js");
+        const rows = [];
+        for await (const line of new FamilyRepository(db).export(a.account))
+          rows.push(JSON.parse(line));
+        const profile = rows.find((r: any) => r.type === "account-profile");
+        const identity = rows.find((r: any) => r.type === "family-identity");
+        console.log("REVIEW exported profile and identity", profile, identity);
+        assert.ok(profile);
+        assert.ok(identity);
+        assert.ok(JSON.stringify(profile).includes("OnlySurname"));
+        assert.ok(JSON.stringify(identity).includes(fa.org_id));
+      },
+    );
+    await t.test(
+      "REVIEW: child projection query count is independent of child count",
+      async () => {
+        const measure = async () => {
+          let count = 0;
+          const original = db.query;
+          (db as any).query = function (...args: any[]) {
+            count++;
+            return original.apply(this, args as any);
+          };
+          try {
+            await family(fa.org_id, a.account);
+          } finally {
+            db.query = original;
+          }
+          return count;
+        };
+        const one = await measure();
+        for (let i = 0; i < 3; i++)
+          await ok(
+            post("/api/v1/learners", a.account, {
+              name: `Count ${i}`,
+              birthYear: 2017,
+            }),
+            201,
+          );
+        const four = await measure();
+        console.log("REVIEW direct pool queries", {
+          oneChild: one,
+          fourChildren: four,
+        });
+        assert.equal(four, one);
+      },
+    );
+    await t.test(
+      "REVIEW: hosted-only identity survives creation by an old API instance",
+      async () => {
+        const legacy = await user("Legacy Writer");
+        await consent(legacy.account);
+        await db.query(
+          "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,'Legacy child')",
+          [randomUUID(), legacy.account],
+        );
+        const discovery = await ok(get("/api/v1/families", legacy.account));
+        const stable = discovery.families[0].familyId;
+        const { ensureFamilyClass: oldEnsure } =
+          await import("./helpers/legacy-family-class.js");
+        const client = await db.connect();
+        try {
+          await client.query("BEGIN");
+          await oldEnsure(client, db, legacy.account, { converting: true });
+          await client.query("COMMIT");
+        } finally {
+          client.release();
+        }
+        const oldClass = await familyOf(legacy.account);
+        const view = await family(stable, legacy.account);
+        const legacyRead = await get(
+          `/api/v1/school/classes/${oldClass.class_id}/today`,
+          legacy.account,
+        );
+        console.log("REVIEW old/new family identity", {
+          same: stable === oldClass.org_id,
+          newReadTeaching: view.capabilities.readTeaching,
+          oldClassReadStatus: legacyRead.statusCode,
+          childReadGrades: view.children[0].capabilities.readGrades,
+        });
+        assert.equal(view.familyId, stable);
+        assert.equal(view.children[0].capabilities.readGrades, true);
+        await ok(
+          post(
+            `/api/v1/school/orgs/${oldClass.org_id}/staff/invites`,
+            legacy.account,
+            { email: co.email, role: "teacher", classIds: [oldClass.class_id] },
+          ),
+          201,
+        );
+        const staff = await ok(
+          get(`/api/v1/school/orgs/${oldClass.org_id}/staff`, legacy.account),
+        );
+        const invited = (Array.isArray(staff) ? staff : staff.staff).find(
+          (p: any) => p.email === co.email,
+        );
+        await ok(
+          post(
+            "/api/v1/school/invites/accept",
+            co.account,
+            fragment(invited.inviteUrl),
+          ),
+        );
+        const places = (await ok(get("/api/v1/families", co.account))).families;
+        assert.equal(
+          places.find((p: any) => p.familyId === stable)?.role,
+          "co-teacher",
+        );
+        await ok(get(`/api/v1/families/${stable}/teaching`, co.account));
+        assert.equal(
+          (await get(`/api/v1/families/${stable}`, co.account)).statusCode,
+          403,
+        );
+      },
+    );
+
+    await t.test(
+      "REVIEW: purchase capability agrees with billing for an already licensed child",
+      async () => {
+        const { StripeRepository } =
+          await import("../src/billing/stripe/repository.js");
+        const { config } = await import("../tests/stripe-fixtures.js");
+        await db.query(
+          "UPDATE amp_parent_consents SET policy_version=$2 WHERE account_id=$1",
+          [a.account, config.consentPolicyVersion],
+        );
+        await db.query(
+          "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 day',now()+interval '30 days')",
+          [randomUUID(), ownedA.id],
+        );
+        const projected = (await family(fa.org_id, a.account)).children.find(
+          (r: any) => r.id === ownedA.id,
+        );
+        let refused = "";
+        try {
+          await new StripeRepository(db, config).reserve(
+            a.account,
+            ownedA.id,
+            randomUUID(),
+          );
+        } catch (e: any) {
+          refused = e.code;
+        }
+        console.log("REVIEW purchase mismatch", {
+          purchase: projected.capabilities.purchase,
+          hasAccess: projected.access.hasAccess,
+          refused,
+        });
+        assert.equal(refused, "learner_already_licensed");
+        assert.equal(projected.capabilities.purchase, false);
+      },
+    );
+    await t.test(
+      "REVIEW: rollback-era deletion removes the new adult profile",
+      async () => {
+        const who = await user("Delete Old API");
+        await ok(
+          patch(who.account, { givenName: "Delete", familyName: "Old API" }),
+        );
+        await db.query(
+          "INSERT INTO amp_family_spaces(account_id,id) VALUES($1,$2)",
+          [who.account, randomUUID()],
+        );
+        const { deleteAccount: oldDelete } =
+          await import("./helpers/legacy-delete-account.js");
+        const result = await oldDelete(db, {
+          accountId: who.account,
+          via: "self",
+          commit: true,
+        });
+        const remaining = await db.query(
+          "SELECT given_name,family_name FROM amp_account_profiles WHERE account_id=$1",
+          [who.account],
+        );
+        const auth = await db.query(
+          "SELECT id FROM amp_auth_users WHERE id=$1",
+          [who.account.slice(4)],
+        );
+        console.log("REVIEW old API deletion", {
+          committed: result.committed,
+          authUsers: auth.rowCount,
+          profiles: remaining.rowCount,
+        });
+        assert.equal(remaining.rowCount, 0);
+        assert.equal(
+          (
+            await db.query(
+              "SELECT 1 FROM amp_family_spaces WHERE account_id=$1",
+              [who.account],
+            )
+          ).rowCount,
+          0,
+        );
+      },
+    );
+    await t.test(
+      "billing capability uses configured consent, unassigned plans and email confirmation",
+      async () => {
+        const { StripeRepository } =
+          await import("../src/billing/stripe/repository.js");
+        const buyer = await user("Checkout Parent");
+        await consent(buyer.account);
+        const child = await ok(
+          post("/api/v1/learners", buyer.account, {
+            name: "Checkout child",
+            birthYear: 2017,
+          }),
+          201,
+        );
+        const home = await familyOf(buyer.account);
+        const canBuy = async () =>
+          (await family(home.org_id, buyer.account)).children.find(
+            (c: any) => c.id === child.id,
+          ).capabilities.purchase;
+        assert.equal(await canBuy(), false, "outdated policy version");
+        await db.query(
+          "UPDATE amp_parent_consents SET policy_version=$2 WHERE account_id=$1",
+          [buyer.account, billingConfig.consentPolicyVersion],
+        );
+        assert.equal(await canBuy(), true, "eligible unlicensed child");
+        await db.query(
+          'UPDATE amp_auth_users SET "emailVerified"=false WHERE id=$1',
+          [buyer.account.slice(4)],
+        );
+        assert.equal(await canBuy(), false);
+        await db.query(
+          'UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1',
+          [buyer.account.slice(4)],
+        );
+        const billing = new StripeRepository(db, billingConfig),
+          checkout = randomUUID();
+        await db.query(
+          "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,$2,$3,$4)",
+          [checkout, billing.namespace, buyer.account, randomUUID()],
+        );
+        await db.query(
+          "INSERT INTO amp_account_entitlements(namespace,invoice_id,checkout_id,payment,status,ends_at) VALUES($1,$2,$3,'{}','active',now()+interval '1 day')",
+          [billing.namespace, randomUUID(), checkout],
+        );
+        assert.equal(
+          await canBuy(),
+          false,
+          "paid unassigned plan must be assigned",
+        );
+        await assert.rejects(
+          billing.reserve(buyer.account, child.id, randomUUID()),
+          (e: any) => e.code === "license_ready_for_assignment",
+        );
+      },
+    );
+    await t.test(
+      "grant preview is bounded and cleared adult names ignore roster overrides",
+      async () => {
+        await db.query(
+          `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+        SELECT gen_random_uuid()::text,$1,'pilot','history-'||n,'revoked',now()-n*interval '2 days',now()-n*interval '1 day'
+        FROM generate_series(1,60) n`,
+          [ownedA.id],
+        );
+        const child = (await family(fa.org_id, a.account)).children.find(
+          (c: any) => c.id === ownedA.id,
+        );
+        assert.equal(child.access.grants.length, 20);
+        await ok(patch(a.account, { givenName: null, familyName: null }));
+        await db.query(
+          "UPDATE amp_people SET display_name='Stale override' WHERE account_id=$1",
+          [a.account],
+        );
+        const map = await ok(
+          get(`/api/v1/school/classes/${fa.class_id}/map`, a.account),
+        );
+        assert.equal(map.teachers[0].adultName, null);
+        assert.equal(map.teachers[0].name, "");
+        const { SchoolRepository } =
+          await import("../src/schools/repository.js");
+        const classes = await new SchoolRepository(db).classes(
+          fa.org_id,
+          { classIds: null },
+          { limit: 50, offset: 0 },
+        );
+        assert.ok(classes[0].teacherNames?.includes(null));
+        assert.ok(!classes[0].teachers.includes("Staff"));
+        assert.ok(!classes[0].teachers.includes("Stale override"));
+        const { classTeachers } =
+          await import("../src/schools/teacher-line.js");
+        assert.equal(
+          (await classTeachers(db, fa.class_id))[0].adultName,
+          null,
+          "board and map share the resolver",
+        );
+      },
+    );
+    await t.test(
+      "approval permission work is batched and ended history needs no consent lookup",
+      async () => {
+        const person = (
+          await db.query("SELECT id FROM amp_people WHERE learner_id=$1", [
+            ownedA.id,
+          ])
+        ).rows[0].id;
+        const measure = async () => {
+          let count = 0;
+          const original = db.query;
+          (db as any).query = function (...args: any[]) {
+            count++;
+            return original.apply(this, args as any);
+          };
+          try {
+            await ok(get(`/api/v1/families/${fa.org_id}/teaching`, a.account));
+          } finally {
+            db.query = original;
+          }
+          return count;
+        };
+        const before = await measure();
+        await db.query(
+          `INSERT INTO amp_family_approvals(id,family_account_id,class_id,lookup_hash,secret_hash,expires_at,account_id,approved_at,person_id,ended_at)
+        SELECT gen_random_uuid(),$1,$2,gen_random_uuid()::text,'fixture',now()+interval '1 day',$1,now(),$3,
+          CASE WHEN n%2=0 THEN now() ELSE NULL END FROM generate_series(1,30) n`,
+          [a.account, fa.class_id, person],
+        );
+        assert.equal(await measure(), before);
+        const { parentConsentStates, learningConsentActive } =
+          await import("../src/server/account-access.js");
+        for (const method of [
+          "verified",
+          "internal-email-plus-future",
+          "internal-email-plus-v1",
+          "monetary-transaction",
+        ]) {
+          const parent = await user("Consent fixture");
+          await consent(parent.account);
+          await db.query(
+            "UPDATE amp_parent_consents SET verification_method=$2 WHERE account_id=$1",
+            [parent.account, method],
+          );
+          const batch = await parentConsentStates(db, [parent.account]);
+          assert.equal(
+            batch.get(parent.account)?.active,
+            await learningConsentActive(db, parent.account),
+            method,
+          );
+        }
       },
     );
   },

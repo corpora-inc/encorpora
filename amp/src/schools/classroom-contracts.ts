@@ -153,6 +153,7 @@ export const standingsBoardResource = z.object({
     .array(
       z.object({
         name: z.string(),
+        adultName: z.string().nullable().optional(),
         value: z.number(),
         inList: z.boolean(),
       }),

@@ -189,6 +189,7 @@ await registerAccessGiftRoutes(app, {
   development,
 });
 await registerFamilyRoutes(app, {
+  billingConfig,
   pool: repository.pool,
   authenticate,
   development,

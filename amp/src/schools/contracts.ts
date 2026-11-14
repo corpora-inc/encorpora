@@ -390,6 +390,7 @@ export const classResource = z.object({
   studentCount: z.number().int(),
   /** Its teachers today, by name. */
   teachers: z.array(z.string()).default([]),
+  teacherNames: z.array(z.string().nullable()).optional(),
 });
 export const studentResource = z.object({
   id: z.uuid(),

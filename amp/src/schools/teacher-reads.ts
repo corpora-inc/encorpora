@@ -389,6 +389,7 @@ export async function readMap(
     teachers: teachers.map((teacher) => ({
       id: teacher.personId,
       name: teacher.name,
+      adultName: teacher.adultName,
       first: teacher.first,
       you: teacher.accountId === readerAccountId,
       ...mapLevel(stored.get(teacher.personId)),

@@ -1,4 +1,4 @@
-import { PERSON_NAME } from "./term-grades.js";
+import { adultNameSql } from "../account/profile.js";
 import { forgedPost } from "./request-origin.js";
 import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
@@ -408,7 +408,7 @@ defineSchoolRoute({
         personName: person
           ? (((
               await pool.query(
-                `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+                `SELECT ${adultNameSql()} AS name FROM amp_people p WHERE p.id=$1`,
                 [person],
               )
             ).rows[0]?.name as string | undefined) ?? null)

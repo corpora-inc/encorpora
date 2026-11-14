@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import type { Pool, PoolClient } from "pg";
 import type {
   AttentionItem,
@@ -311,12 +312,18 @@ export async function classesHere(
 ) {
   const { rows } = await db.query(
     `SELECT c.id,c.name,c.org_id AS org,
-       ARRAY(SELECT ${PERSON_NAME} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+       array_remove(ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
          WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL
            AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
            AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)
            AND (NOT p.demo_visitor OR p.id IS NOT DISTINCT FROM $2::uuid)
-         ORDER BY e.begin_on,p.id) AS teachers
+         ORDER BY e.begin_on,p.id),NULL) AS teachers,
+           ARRAY(SELECT ${adultNameSql()} FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+         WHERE e.class_id=c.id AND e.role='teacher' AND p.deleted_at IS NULL
+           AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
+           AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)
+           AND (NOT p.demo_visitor OR p.id IS NOT DISTINCT FROM $2::uuid)
+         ORDER BY e.begin_on,p.id) AS "teacherNames"
      FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
      JOIN amp_academic_sessions cs ON cs.id=c.session_id
      WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL AND ${YEAR_IN_USE}
@@ -328,6 +335,7 @@ export async function classesHere(
     name: string;
     org: string;
     teachers: string[];
+    teacherNames: (string | null)[];
   }[];
 }
 export async function classMembers(db: Database, classIds: readonly string[]) {
@@ -506,7 +514,9 @@ export function attentionFor({
         rule: `Shown to admins from ${ATTENTION.yearDays} days before the year ends, until next year’s dates are set.`,
       });
   }
-  const untaught = classes.filter((row) => row.teachers.length === 0);
+  const untaught = classes.filter(
+    (row) => (row.teacherNames ?? row.teachers).length === 0,
+  );
   if (untaught.length)
     items.push({
       id: "no-teacher",
@@ -655,7 +665,7 @@ export async function readOverview(
     actorPersonId
       ? pool
           .query(
-            `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+            `SELECT ${adultNameSql()} AS name FROM amp_people p WHERE p.id=$1`,
             [actorPersonId],
           )
           .then((result) => (result.rows[0]?.name as string) ?? null)

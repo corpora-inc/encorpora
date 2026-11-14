@@ -104,7 +104,7 @@ export async function setAccountProfile(
     // Roster storage requires a given_name; public adult payloads resolve the
     // canonical nullable profile, including an explicitly cleared name.
     await client.query(
-      "UPDATE amp_people SET given_name=$2,family_name=$3 WHERE account_id=$1 AND deleted_at IS NULL",
+      "UPDATE amp_people SET given_name=$2,family_name=$3,display_name=NULL WHERE account_id=$1 AND deleted_at IS NULL",
       [account, input.givenName ?? "Staff", input.familyName],
     );
     await client.query(

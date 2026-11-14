@@ -1,3 +1,4 @@
+import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import {
   familyPlacesSchema,
   familyProjectionSchema,
@@ -82,6 +83,7 @@ export interface FamilyRouteOptions {
   development?: boolean;
   /** Stripe namespace of the configured billing, for paid-purchase routing. */
   billingNamespace?: string | null;
+  billingConfig?: StripeBillingConfig | null;
   /** Approval links for another family's child (docs/families.md, step 5):
    * the key that derives them, where they point and the account mail path.
    * Absent: no approval links. */
@@ -160,6 +162,7 @@ export async function registerFamilyRoutes(
           account,
           family,
           options.development,
+          options.billingConfig,
         ),
       );
     });
