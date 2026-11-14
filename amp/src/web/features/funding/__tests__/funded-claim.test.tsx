@@ -87,6 +87,8 @@ const me = () => ({
 let invoices: unknown[] = [];
 function respond(url: string, init?: RequestInit) {
   const path = new URL(url, location.origin).pathname;
+  if (path === "/api/v1/events")
+    return Promise.resolve(new Response(null, { status: 204 }));
   if (init?.method === "POST") {
     state.posts.push({ url: path, body: JSON.parse(String(init.body)) });
     if (path === "/api/v1/me/practice") {
@@ -318,7 +320,7 @@ test.each([
     expect(state.posts).toEqual([]);
     fireEvent.click(screen.getByRole("link", { name: "For my child" }));
     await vi.waitFor(() =>
-      expect(router.state.location.pathname).toBe("/start/consent"),
+      expect(router.state.location.pathname).toBe("/start/name"),
     );
     expect(state.posts).toEqual([]);
   },
@@ -409,7 +411,7 @@ test.each([
   },
 );
 
-test("the question waits for consent history instead of flashing before the parent path", async () => {
+test("the question waits for invoices before choosing a recipient", async () => {
   invoices = [];
   let release!: (response: Response) => void;
   let requested = false;
@@ -417,7 +419,9 @@ test("the question waits for consent history instead of flashing before the pare
     "fetch",
     vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input instanceof Request ? input.url : input);
-      if (new URL(url, location.origin).pathname === "/api/v1/consent") {
+      if (
+        new URL(url, location.origin).pathname === "/api/v1/funding/invoices"
+      ) {
         requested = true;
         return new Promise<Response>((resolve) => {
           release = resolve;
@@ -429,11 +433,11 @@ test("the question waits for consent history instead of flashing before the pare
   await open("/purchase/arizona-esa");
   await vi.waitFor(() => expect(requested).toBe(true));
   expect(screen.queryByRole("button", { name: "For me" })).toBeNull();
-  release(Response.json({ request: { id: "pending-consent" } }));
-  await screen.findByRole("heading", { name: "Learning consent" });
+  release(Response.json({ invoices: [] }));
+  await screen.findByRole("heading", { name: "Who’s learning?" });
 });
 
-test("refreshing consent history keeps the current question and its controls mounted", async () => {
+test("refreshing invoices keeps the current question and its controls mounted", async () => {
   invoices = [];
   await open("/purchase/arizona-esa");
   const button = await screen.findByRole("button", { name: "For me" });
@@ -443,7 +447,9 @@ test("refreshing consent history keeps the current question and its controls mou
     "fetch",
     vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input instanceof Request ? input.url : input);
-      if (new URL(url, location.origin).pathname === "/api/v1/consent") {
+      if (
+        new URL(url, location.origin).pathname === "/api/v1/funding/invoices"
+      ) {
         requested = true;
         return new Promise<Response>((resolve) => {
           release = resolve;
@@ -456,7 +462,7 @@ test("refreshing consent history keeps the current question and its controls mou
   let refresh!: Promise<void>;
   await act(async () => {
     refresh = queryClient.invalidateQueries({
-      queryKey: ["account", "adult", "funded-consent-history"],
+      queryKey: ["account", "adult", "invoice-intents"],
     });
     // Flush Query's scheduled observer notification while the request is held.
     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -465,7 +471,7 @@ test("refreshing consent history keeps the current question and its controls mou
     await vi.waitFor(() => expect(requested).toBe(true));
     expect(screen.queryByRole("button", { name: "For me" })).toBe(button);
   } finally {
-    release(Response.json({ request: null }));
+    release(Response.json({ invoices: [] }));
     await refresh;
   }
 });

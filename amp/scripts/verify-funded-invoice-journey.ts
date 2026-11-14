@@ -159,6 +159,16 @@ try {
         (await steps.boundingBox())!.y <
           (await page.getByLabel(/Email for/).boundingBox())!.y,
       );
+      for (const target of [
+        page.getByRole("link", { name: "Back to AMP" }),
+        page.getByRole("button", { name: "Create invoice PDF" }),
+      ]) {
+        const bounds = await target.boundingBox();
+        assert.ok(
+          bounds && bounds.height >= 44 && bounds.width >= 44,
+          "invoice actions have 44px targets",
+        );
+      }
       const email = `invoice-${randomUUID()}@example.test`;
       await page.getByLabel(/Email for/).fill(email);
       await page

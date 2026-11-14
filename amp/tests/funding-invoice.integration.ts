@@ -903,6 +903,37 @@ test(
 );
 
 test(
+  "deleting an unpaid learner removes the invoice reservation without cascade conflicts",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|owner','test','verified','test')",
+      );
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('child','amp|owner','Child')",
+      );
+      const intent = await invoices.create(input());
+      await invoices.claim("amp|owner", intent.id, "child");
+      const deletion = await new FamilyRepository(pool).deleteLearning(
+        "amp|owner",
+        "child",
+      );
+      assert.equal(deletion.retainedBillingReferences, 0);
+      for (const table of [
+        "amp_funding_invoice_intents",
+        "amp_access_gifts",
+        "amp_funding_invoice_outbox",
+        "amp_grants",
+      ])
+        assert.equal(
+          (await pool.query(`SELECT count(*)::int n FROM ${table}`)).rows[0].n,
+          0,
+        );
+    }),
+);
+
+test(
   "learning deletion removes queued PDFs even when received payments retain the financial invoice",
   enabled,
   () =>
@@ -919,7 +950,28 @@ test(
         "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
         [intent.id],
       );
-      await new FamilyRepository(pool).deleteLearning("amp|owner", "child");
+      const deletion = await new FamilyRepository(pool).deleteLearning(
+        "amp|owner",
+        "child",
+      );
+      assert.equal(deletion.retainedBillingReferences, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funding_invoice_intents WHERE id=$1",
+            [intent.id],
+          )
+        ).rows[0].n,
+        1,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT status FROM amp_grants WHERE learner_id='child'",
+          )
+        ).rows[0].status,
+        "revoked",
+      );
       assert.equal(
         (
           await pool.query(

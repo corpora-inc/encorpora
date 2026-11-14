@@ -77,7 +77,7 @@ export function startDestination(
       if (pathname === "/start/consent") return null;
       // Pending invoices use the same restricted parent-entry learning basis
       // as ordinary first run. Withdrawal still stops setup and access.
-      if (me.consent.status === "none") {
+      if (me.consent.status === "none" && me.consent.method === null) {
         if (learnerSteps.includes(pathname)) return null;
         if (
           !me.learners.length ||
