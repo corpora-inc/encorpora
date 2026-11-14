@@ -87,7 +87,10 @@ export function InviteScreen() {
       });
       forgetInvite();
       await refreshSchool(session);
-      await client.invalidateQueries({ queryKey: ["school-invite"] });
+      // The invitation is spent: drop it rather than fetch it again (which
+      // answers that it was used, and waits on the network before we move
+      // on).
+      client.removeQueries({ queryKey: ["school-invite"] });
       // A new school's admin carries on into its setup, the school step done;
       // a family's second parent opens its class.
       await navigate(
