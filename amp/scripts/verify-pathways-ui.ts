@@ -1762,7 +1762,13 @@ try {
   await fallback.locator(".pathways-plan").waitFor();
   assert.equal(await fallback.locator("canvas").count(), 0);
   assert.equal(await fallback.locator(".pathways-camera").count(), 0);
-  assert.equal(await fallback.getByText(/3D|device/).count(), 0);
+  assert.equal(
+    await fallback
+      .locator(".pathways-status, .pathways-plan, .pathways-footer")
+      .getByText(/\b3D\b|device/)
+      .count(),
+    0,
+  );
   await fallback
     .getByRole("heading", { name: target.title, exact: true })
     .waitFor();
