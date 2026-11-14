@@ -61,6 +61,10 @@ describe("letter names", () => {
     const heard = { text, words: text.split(" ").map((text, start) => ({ text, start, end: start + 0.24, type: "word" })) };
     expect(differences("Make *a* longer and *b* shorter.", heard)).toEqual([]);
     expect(differences("Make ay longer and b shorter.", heard)).not.toEqual([]);
+    // the transcriber sometimes writes the respelling it heard: that is the letter, not a fault
+    const respelled = { text: "AY is one, one.", words: ["AY", "is", "one,", "one."].map((text, i) => ({ text, start: i, end: i + 0.5, type: "word" })) };
+    expect(differences("*A* is one, one.", respelled)).toEqual([]);
+    expect(differences("A is one, one.", respelled)).not.toEqual([]);
   });
 
   it("restores alignment words one for one, including punctuation and split hyphenated words", () => {

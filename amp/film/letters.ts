@@ -9,6 +9,19 @@ export const MIN_LETTER_HOLD = 0.12;
 
 export const displayText = (text: string) => text.replace(LETTER, "$1");
 export const voiceText = (text: string) => text.replace(LETTER, (_, letter: string) => RESPELLINGS[letter.toLowerCase()] ?? letter);
+/**
+ * A transcriber may write a respelled letter the way it was sent ("AY is one, one").
+ * For a script with marked letters, read such a word back as its letter before comparing.
+ */
+export function heardLetters(script: string): (word: string) => string {
+  const back = new Map<string, string>();
+  for (const [, letter] of script.matchAll(LETTER)) {
+    const sent = RESPELLINGS[letter!.toLowerCase()];
+    if (sent) back.set(sent, letter!.toLowerCase());
+  }
+  if (!back.size) return (word) => word;
+  return (word) => word.replace(/[a-z]+/gi, (run) => back.get(run.toLowerCase()) ?? run);
+}
 export const displayScript = (script: Script): Script => ({
   ...script,
   shots: script.shots.map((shot) => ({ ...shot, beats: shot.beats.map((beat) => ({ ...beat, say: displayText(beat.say) })) })),
