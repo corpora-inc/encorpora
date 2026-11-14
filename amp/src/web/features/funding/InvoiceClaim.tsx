@@ -145,7 +145,9 @@ export function InvoiceClaim({
       <PageFrame centered>
         <section className={frameCard}>
           <p>Your invoices could not be loaded.</p>
-          <Button onClick={() => void invoices.refetch()}>Try again</Button>
+          <Button variant="secondary" onClick={() => void invoices.refetch()}>
+            Try again
+          </Button>
         </section>
       </PageFrame>
     );
@@ -237,6 +239,7 @@ export function InvoiceClaim({
               consentLink
             ) : (
               <Button
+                variant="primary"
                 disabled={busy || !value}
                 onClick={async () => {
                   setBusy(true);

@@ -64,7 +64,9 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { preload } from "../features/school/api";
+import { orgsOptions, preload } from "../features/school/api";
+import { prepareBuyerHandoff } from "../features/school/pilots/buyer-session";
+import { prepareSchoolAdoption } from "../features/school/adoption-session";
 import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
@@ -979,6 +981,13 @@ const schoolClass = createRoute({
           params.class,
         ),
       ),
+      import("../features/school/pilots/api").then(({ preloadClassPilot }) =>
+        preloadClassPilot(
+          (context as { session: AuthSession }).session,
+          params.org,
+          params.class,
+        ),
+      ),
     ]),
 });
 const schoolClassHome = createRoute({
@@ -1135,6 +1144,99 @@ const schoolClassSettings = createRoute({
   component: lazyRouteComponent(
     () => import("../features/school/ClassesScreen"),
     "ClassScreen",
+  ),
+});
+const schoolClassImport = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "import",
+  component: lazyRouteComponent(
+    () => import("../features/school/ImportScreen"),
+    "ImportScreen",
+  ),
+});
+/** A teacher sets up a class (one short form). `org` preselects a school. */
+const schoolStart = createRoute({
+  getParentRoute: () => root,
+  path: "/school/start",
+  beforeLoad: staffScreen,
+  validateSearch: (search: Record<string, unknown>): { org?: string } =>
+    z.uuid().safeParse(search.org).success ? { org: String(search.org) } : {},
+  loader: async ({ context }) => {
+    const { session } = context as unknown as { session: AuthSession };
+    await Promise.all([
+      preload(meOptions(session)),
+      preload(orgsOptions(session)),
+    ]);
+  },
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/SchoolStartScreen"),
+    "SchoolStartScreen",
+  ),
+});
+/** Clever. Without Clever enabled there is nothing to connect here, so the
+ * address opens class setup instead (no page that can only fail). */
+const schoolConnect = createRoute({
+  getParentRoute: () => root,
+  path: "/school/connect",
+  validateSearch: (search: Record<string, unknown>): { error?: string } =>
+    ["clever_identity_already_linked", "clever_link_expired"].includes(
+      String(search.error),
+    )
+      ? { error: String(search.error) }
+      : {},
+  beforeLoad: async () => {
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    const config = await queryClient.ensureQueryData(authConfigOptions);
+    if (config.mode === "accounts" && !config.clever)
+      throw redirect({ to: "/school/start", replace: true });
+    if (studentSession()) {
+      // The component may already have captured a hash-only completion.
+      // Await its validation; only the helper can replace a student, and
+      // only for an explicitly received completion rather than an old proof.
+      const { cleverOnboardingSession } =
+        await import("../features/school/clever/onboarding-session");
+      await cleverOnboardingSession();
+    }
+    if (studentSession()) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/school/clever/ConnectionScreen"),
+    "ConnectionScreen",
+  ),
+});
+/** An existing school joins a district (`docs/schools.md`). */
+const schoolAdopt = createRoute({
+  getParentRoute: () => root,
+  path: "/school/adopt",
+  validateSearch: (
+    search: Record<string, unknown>,
+  ): { district?: string; manage?: 1 } => ({
+    ...(z.uuid().safeParse(search.district).success
+      ? { district: String(search.district) }
+      : {}),
+    ...(search.manage === 1 || search.manage === "1"
+      ? { manage: 1 as const }
+      : {}),
+  }),
+  beforeLoad: (context) => {
+    prepareSchoolAdoption();
+    return staffScreen(context);
+  },
+  component: lazyRouteComponent(
+    () => import("../features/school/AdoptionScreen"),
+    "AdoptionScreen",
+  ),
+});
+/** The page a teacher sends their school's buyer. */
+const schoolsContinue = createRoute({
+  getParentRoute: () => root,
+  path: "/schools/continue",
+  beforeLoad: () => {
+    prepareBuyerHandoff();
+  },
+  component: lazyRouteComponent(
+    () => import("../features/school/pilots/BuyerHandoffScreen"),
+    "BuyerHandoffScreen",
   ),
 });
 const schoolClassRoster = createRoute({
@@ -1471,6 +1573,7 @@ export const router = createRouter({
       schoolClassReportCards,
       schoolClassSettings,
       schoolClassRoster,
+      schoolClassImport,
       schoolClassStart,
       schoolClassCards,
       schoolClassExperience,
@@ -1487,6 +1590,10 @@ export const router = createRouter({
     schoolsHome,
     schoolsScope,
     schoolsTrust,
+    schoolsContinue,
+    schoolStart,
+    schoolConnect,
+    schoolAdopt,
     familyLink,
     familyApprove,
     familyApproval,
@@ -1722,6 +1829,9 @@ let leavingStudent = false;
 onSignedOut(() => {
   if (leavingStudent) return true;
   const student = studentSession();
+  // Setup handles an expired credential in place. A late response from the
+  // previous student must not replace an explicitly started Clever handoff.
+  if (window.location.pathname === "/school/connect") return false;
   if (student) {
     // A student's ended sign-in goes to /join. Any other route that refuses a
     // student fails where it stands, without signing the class out.
@@ -1729,7 +1839,7 @@ onSignedOut(() => {
       checkingStudent = true;
       void studentSignInEnded(student)
         .then(async (ended) => {
-          if (!ended) return;
+          if (!ended || studentSession()?.token !== student.token) return;
           leavingStudent = true;
           clearStudentDevice();
           try {

@@ -26,6 +26,12 @@ export const sessionModes = ["shared", "personal"] as const;
 /** Everything a school route can ask to do. `can` is the only reader. */
 export const schoolActions = [
   "orgs.list",
+  "school.start",
+  "pilot.manage",
+  "pilot.read",
+  "class.authorize",
+  "class.import",
+  "purchase.request",
   "org.read",
   "classes.read",
   "classes.create",
@@ -82,6 +88,12 @@ export class SchoolError extends Error {
     public readonly retryAfter?: number,
     /** Where to go instead: `demo_moved` names the visitor's new demo. */
     public readonly path?: string,
+    /** Open buyer requests overlapping the authorized classes being requested. */
+    public readonly conflicts?: {
+      requestId: string;
+      holderName: string;
+      classIds: string[];
+    }[],
   ) {
     super(code);
   }
@@ -194,6 +206,7 @@ export type AddStaff = z.infer<typeof addStaffSchema>;
 
 export const issueLicenseSchema = z.strictObject({
   orgId: z.uuid(),
+  classIds: z.array(z.uuid()).min(1).max(10000).optional(),
   seats: z.number().int().min(0).max(1_000_000),
   startsAt: z.iso.datetime({ offset: true }).optional(),
   endsAt: z.iso.datetime({ offset: true }),
@@ -265,6 +278,8 @@ export const ssoProviders = ["google", "microsoft"] as const;
 export type SsoProvider = (typeof ssoProviders)[number];
 export const joinRosterResource = z.object({
   class: z.object({ name: z.string() }),
+  /** Practice hasn't started, or has ended: no names to tap. */
+  practice: z.enum(["waiting", "ended"]).optional(),
   /** Outside sign-ins this class's school has turned on. */
   signIn: z.array(z.enum(ssoProviders)).optional(),
   /** All a stranger with the code can learn: no learner data of any kind. */
@@ -387,6 +402,8 @@ export const studentResource = z.object({
   classIds: z.array(z.uuid()),
   /** False: rostered and shown as "needs a seat". */
   seated: z.boolean(),
+  /** A teacher's running practice covers them: no seat needed now. */
+  pilotCovered: z.boolean().optional(),
   /** How many students match, across all pages. */
   total: z.number().int().optional(),
 });

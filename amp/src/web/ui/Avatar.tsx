@@ -14,9 +14,13 @@ export function avatarHue(name: string) {
   return (hash >>> 0) % AVATAR_HUES;
 }
 
-/** First and last initials: "Amara Osei" is AO, "Cher" is C. */
+/** First and last initials: "Amara Osei" is AO, "Cher" is C. Only words that
+ * begin with a letter count, so "Ana Ruiz (2)" is AR. */
 export function initials(name: string) {
-  const words = name.trim().split(/\s+/).filter(Boolean);
+  const words = name
+    .trim()
+    .split(/\s+/)
+    .filter((word) => /^\p{L}/u.test(word));
   const first = [...(words[0] ?? "")][0] ?? "";
   const last = words.length > 1 ? ([...words.at(-1)!][0] ?? "") : "";
   return `${first}${last}`.toUpperCase();
@@ -61,8 +65,9 @@ export function AvatarStack({
 }) {
   return (
     <span className={styles.stack} role="img" aria-label={label}>
-      {names.map((name) => (
-        <Avatar key={name} name={name} size={size} />
+      {/* Two children can share a name: the place in the stack is the key. */}
+      {names.map((name, at) => (
+        <Avatar key={`${at}:${name}`} name={name} size={size} />
       ))}
     </span>
   );

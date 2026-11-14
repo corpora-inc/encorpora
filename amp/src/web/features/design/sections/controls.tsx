@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { birthYears } from "../../../lib/birth-years";
 import { Button, buttonClass, type ButtonVariant } from "../../../ui/Button";
 import { Checkbox } from "../../../ui/Checkbox";
 import { Chips } from "../../../ui/Chips";
@@ -606,11 +607,11 @@ function TileSection() {
             <TileChoice
               label="Birth year"
               tiles={[
-                ...Array.from({ length: 16 }, (_, i) => ({
-                  value: now - 4 - i,
-                  label: String(now - 4 - i),
-                })),
                 { value: now - 25, label: "Adult", span: "row" as const },
+                ...birthYears(16, 4).map((year) => ({
+                  value: year,
+                  label: String(year),
+                })),
               ]}
               value={value}
               onChange={set}

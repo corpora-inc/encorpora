@@ -1,4 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link, useLoaderData } from "@tanstack/react-router";
+import { authConfigOptions, sessionOptions } from "../../lib/query";
+import { cleverEnabled } from "../school/clever/enabled";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
 import { SCOPE_CSV, SCOPE_PDF } from "./api";
@@ -12,13 +15,40 @@ import styles from "./Schools.module.css";
 const count = (value: number) => value.toLocaleString("en-US");
 
 function Actions({ className = "" }: { className?: string }) {
+  const session = useQuery(sessionOptions).data;
+  const clever = cleverEnabled(useQuery(authConfigOptions).data);
   return (
     <div className={`${styles.actions} ${className}`}>
-      {/* Schools are set up with us: the conversation starts here. */}
+      {/* A new teacher creates the account first; a signed-in one goes
+          straight to the class. */}
+      {session ? (
+        <Link
+          to="/school/start"
+          className={buttonClass("primary", styles.action)}
+        >
+          Start with your class
+        </Link>
+      ) : (
+        <Link
+          to="/sign-up"
+          search={{ return: "school", next: "/school/start" }}
+          className={buttonClass("primary", styles.action)}
+        >
+          Start with your class
+        </Link>
+      )}
+      {clever && (
+        <Link
+          to="/school/connect"
+          className={buttonClass("secondary", styles.action)}
+        >
+          Use Clever
+        </Link>
+      )}
       <Link
         to="/schools"
         hash="talk"
-        className={buttonClass("primary", styles.action)}
+        className={buttonClass(clever ? "quiet" : "secondary", styles.action)}
       >
         Talk to us
       </Link>
@@ -61,9 +91,7 @@ export function SchoolsScreen() {
             </p>
             <div className={styles.heroActions}>
               <Actions />
-              <p className={styles.note}>
-                Guided setup in minutes, with nothing for IT to do.
-              </p>
+              <p className={styles.note}>30 days of free practice for your class.</p>
             </div>
           </div>
           {summary && (

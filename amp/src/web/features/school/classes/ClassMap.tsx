@@ -179,14 +179,9 @@ export function ClassMap({
     );
   return (
     <div className={styles.map}>
-      {starting && (
-        <div className={styles.starting}>
-          <div>
-            <p className={styles.startingTitle}>Starting estimates</p>
-          </div>
-          {action}
-        </div>
-      )}
+      {/* Before any practice each row says "Starting" or "Not yet": no
+          heading repeats it. Only the step that starts it stays. */}
+      {starting && action && <div className={styles.starting}>{action}</div>}
       <div className={styles.toolbar} hidden={starting || undefined}>
         <Menu
           align="start"
@@ -363,14 +358,9 @@ function SmallClassMap({
   return (
     <div className={styles.map}>
       <Toast message={message} onDismiss={() => setMessage("")} />
-      {starting && (
-        <div className={styles.starting}>
-          <div>
-            <p className={styles.startingTitle}>Starting estimates</p>
-          </div>
-          {action}
-        </div>
-      )}
+      {/* Before any practice each row says "Starting" or "Not yet": no
+          heading repeats it. Only the step that starts it stays. */}
+      {starting && action && <div className={styles.starting}>{action}</div>}
       {learners.map((learner) => {
         const { student, overall } = learner;
         const [from, to] = likelyRange(overall.estimate);
@@ -407,17 +397,23 @@ function SmallClassMap({
                   : null
               }
             />
-            {book.data?.term && (
-              <GradeLine
-                session={session}
-                place={classPlace}
-                term={book.data.term}
-                editable={book.data.canEdit && book.data.term.state === "open"}
-                row={grades.get(student.id)}
-                student={student}
-                onMessage={setMessage}
-              />
-            )}
+            {/* A term's grade line only once there's work to grade (or a
+                final set): a family's map carries no gradebook leftovers. */}
+            {book.data?.term &&
+              (grades.get(student.id)?.suggestion.status === "ready" ||
+                grades.get(student.id)?.final != null) && (
+                <GradeLine
+                  session={session}
+                  place={classPlace}
+                  term={book.data.term}
+                  editable={
+                    book.data.canEdit && book.data.term.state === "open"
+                  }
+                  row={grades.get(student.id)}
+                  student={student}
+                  onMessage={setMessage}
+                />
+              )}
           </section>
         );
       })}
@@ -452,6 +448,10 @@ function GradeLine({
   onMessage: (message: string) => void;
 }) {
   const ready = row?.suggestion.status === "ready";
+  // A final grade is a report-card entry: it appears once the term has work
+  // to grade (or already has one), never as an empty box beside "Not enough
+  // work yet".
+  const final = ready || row?.final != null;
   return (
     <div className={styles.gradeLine} data-grade-line>
       <span className={styles.gradeTerm}>{term.name}</span>
@@ -469,23 +469,25 @@ function GradeLine({
           </span>
         )}
       </span>
-      <span className={styles.gradeFinal}>
-        <span className={styles.gradeFinalLabel}>Final</span>
-        <FinalField
-          session={session}
-          place={place}
-          student={{
-            id: student.id,
-            name: student.name,
-            first: student.first,
-          }}
-          term={term.id}
-          final={row?.final ?? null}
-          editable={editable}
-          onError={onMessage}
-          onSaved={onMessage}
-        />
-      </span>
+      {final && (
+        <span className={styles.gradeFinal}>
+          <span className={styles.gradeFinalLabel}>Final grade</span>
+          <FinalField
+            session={session}
+            place={place}
+            student={{
+              id: student.id,
+              name: student.name,
+              first: student.first,
+            }}
+            term={term.id}
+            final={row?.final ?? null}
+            editable={editable}
+            onError={onMessage}
+            onSaved={onMessage}
+          />
+        </span>
+      )}
     </div>
   );
 }
@@ -522,13 +524,22 @@ function SortButton({
 }
 
 /** What the marks mean. */
-export function MapKey({ data }: { data: MapResponse }) {
+export function MapKey({
+  data,
+  family = false,
+}: {
+  data: MapResponse;
+  /** A family's class: its learners are children. */
+  family?: boolean;
+}) {
   const { course } = data.class;
   return (
     <div className={styles.key}>
       <span className={styles.keyItem}>
         <span className={styles.keyCourse} />
-        {course ? `${course.label}, this course` : "Each student’s own grade"}
+        {course
+          ? `${course.label}, this course`
+          : `Each ${family ? "child" : "student"}’s own grade`}
       </span>
       <span className={styles.keyItem}>
         <span className={styles.keyBand}>

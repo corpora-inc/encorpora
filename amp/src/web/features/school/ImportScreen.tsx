@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { queryClient } from "../../lib/query";
+import { pilotOptions } from "./pilots/api";
 import {
   Link,
   useNavigate,
@@ -25,6 +27,8 @@ import {
   fieldLabels,
   guessMapping,
   mappingHasName,
+  distinctNamedId,
+  namedStudentId,
   readTable,
   type FieldKey,
   type Mapping,
@@ -38,6 +42,7 @@ import {
   type SourceResult,
 } from "../../../schools/sources/rows";
 import type { OneRosterFiles } from "../../../schools/sources/oneroster";
+import type { RosterSheet } from "../../../schools/sources/excel";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge, type BadgeTone } from "../../ui/Badge";
@@ -57,12 +62,16 @@ import {
   school,
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
+import { ClassFrame } from "./classes/ClassFrame";
+import { useFlash } from "./classes/flash";
+import type { ReactNode } from "react";
 import { GradePicker, PageHead, gradeLabel } from "./parts";
 import { classPath, orgPath } from "./paths";
 import styles from "./Import.module.css";
 
 type Draft = {
   orgId: string;
+  classId?: string;
   fileName: string;
   source: RosterSource;
   table?: Table;
@@ -106,9 +115,18 @@ const fullName = (row: { givenName?: string; familyName?: string }) =>
 /* Step one: anything a school might have. */
 function SourceStep({
   orgId,
+  classScope,
+  checking,
   onLoaded,
+  notice = "",
 }: {
   orgId: string;
+  /** A teacher adding students to their class: names, Excel or CSV. */
+  classScope: boolean;
+  /** A calm line in the error's place (a review lost to a refresh). */
+  notice?: string;
+  /** The rows are being checked against the roster. */
+  checking: boolean;
   onLoaded: (draft: Draft) => void;
 }) {
   const fileInput = useRef<HTMLInputElement>(null);
@@ -116,9 +134,13 @@ function SourceStep({
   const [paste, setPaste] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [workbook, setWorkbook] = useState<{
+    fileName: string;
+    sheets: RosterSheet[];
+  } | null>(null);
+  const [sheetName, setSheetName] = useState("");
   useLoggedError(error);
-  const fromText = (text: string, fileName: string) => {
-    const table = readTable(text);
+  const fromTable = (table: Table, fileName: string) => {
     if (!table.rows.length) {
       setError(
         "That has no rows to read. Check that it’s the roster, with one student per row.",
@@ -136,11 +158,30 @@ function SourceStep({
       resolutions: {},
     });
   };
+  const fromText = (text: string, fileName: string) =>
+    fromTable(readTable(text), fileName);
   const readFile = async (file: File) => {
     setBusy(true);
     setError("");
+    setWorkbook(null);
     try {
+      if (file.size > 10 * 1024 * 1024) {
+        setError("Choose a roster file smaller than 10 MB.");
+        return;
+      }
       const bytes = new Uint8Array(await file.arrayBuffer());
+      if (/\.xlsx$/i.test(file.name)) {
+        const { readExcelRoster } =
+          await import("../../../schools/sources/excel");
+        const sheets = await readExcelRoster(bytes);
+        if (!sheets.length) setError("That workbook has no roster rows.");
+        else if (sheets.length === 1) fromTable(sheets[0]!.table, file.name);
+        else {
+          setWorkbook({ fileName: file.name, sheets });
+          setSheetName(sheets[0]!.name);
+        }
+        return;
+      }
       if (bytes[0] === 0x50 && bytes[1] === 0x4b) {
         const { isOneRoster, oneRosterSchools, readOneRosterZip } =
           await import("../../../schools/sources/oneroster");
@@ -176,9 +217,7 @@ function SourceStep({
       fromText(text, file.name);
     } catch (failure) {
       console.error("Roster file could not be read", failure);
-      setError(
-        "That file can’t be read. Save it from your spreadsheet as CSV, or paste the rows below.",
-      );
+      setError("That file can’t be read. Try Excel or CSV, or paste the rows.");
     } finally {
       setBusy(false);
     }
@@ -209,55 +248,115 @@ function SourceStep({
         <svg viewBox="0 0 48 48" aria-hidden="true" className={styles.dropMark}>
           <path d="M14 6h15l9 9v27H14V6Zm15 0v9h9M20 26h12M20 32h12M20 20h4" />
         </svg>
-        <h2>Drop your roster here</h2>
-        <p>A CSV from any spreadsheet or SIS, or a OneRoster ZIP.</p>
+        {workbook ? (
+          <>
+            <h2>{workbook.fileName}</h2>
+            <p>{plural(workbook.sheets.length, "sheet")}</p>
+          </>
+        ) : (
+          <>
+            <h2>Drop your roster here</h2>
+            <p>{classScope ? "Excel or CSV" : "Excel, CSV or OneRoster"}</p>
+          </>
+        )}
         <input
           ref={fileInput}
           className={styles.fileInput}
           type="file"
           tabIndex={-1}
           aria-label="Choose a roster file"
-          accept=".csv,.tsv,.txt,.zip,text/csv,application/zip"
+          accept=".xlsx,.csv,.tsv,.txt,.zip,text/csv,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
           onChange={onPick}
         />
         <Button
-          variant="primary"
+          variant={workbook ? "secondary" : "primary"}
           aria-busy={busy}
-          disabled={busy}
+          disabled={busy || checking}
           onClick={() => fileInput.current?.click()}
         >
-          Choose a file
+          {workbook ? "Choose another file" : "Choose a file"}
         </Button>
       </div>
-      <div className={styles.paste}>
-        <label className={styles.pasteLabel} htmlFor="roster-paste">
-          Or paste from a spreadsheet
-        </label>
-        <textarea
-          id="roster-paste"
-          className={styles.pasteBox}
-          rows={7}
-          value={paste}
-          placeholder={
-            "Name\tGrade\tClass\nAna Ruiz\t5\tPeriod 1\nNoor Haddad\t5\tPeriod 1"
-          }
-          onChange={(event) => setPaste(event.target.value)}
-        />
-        <Button
-          variant="secondary"
-          className={styles.pasteAction}
-          disabled={!paste.trim()}
-          onClick={() => fromText(paste, "Pasted rows")}
-        >
-          Use these rows
-        </Button>
-      </div>
-      <p className={styles.error} role={error ? "alert" : undefined}>
-        {error}
+      {workbook && (
+        <div className={styles.paste}>
+          <span className={styles.pasteLabel} aria-hidden="true">
+            Sheet
+          </span>
+          <Select
+            aria-label="Sheet"
+            value={sheetName}
+            onValueChange={setSheetName}
+          >
+            {workbook.sheets.map((sheet) => (
+              <option key={sheet.name} value={sheet.name}>
+                {sheet.name} ·{" "}
+                {plural(
+                  sheet.table.rows.length,
+                  classScope ? "student" : "row",
+                )}
+              </option>
+            ))}
+          </Select>
+          <Button
+            variant="primary"
+            className={styles.pasteAction}
+            aria-busy={checking}
+            disabled={checking}
+            onClick={() => {
+              const selected = workbook.sheets.find(
+                (sheet) => sheet.name === sheetName,
+              );
+              if (selected)
+                fromTable(
+                  selected.table,
+                  `${workbook.fileName} · ${selected.name}`,
+                );
+            }}
+          >
+            Use this sheet
+          </Button>
+        </div>
+      )}
+      {!workbook && (
+        <div className={styles.paste}>
+          <label className={styles.pasteLabel} htmlFor="roster-paste">
+            {classScope ? "Or paste names" : "Or paste from a spreadsheet"}
+          </label>
+          <textarea
+            id="roster-paste"
+            className={styles.pasteBox}
+            rows={7}
+            value={paste}
+            placeholder={
+              classScope
+                ? "Ana Ruiz\nNoor Haddad\nKai Varga"
+                : "Name\tGrade\tClass\nAna Ruiz\t5\tPeriod 1\nNoor Haddad\t5\tPeriod 1"
+            }
+            onChange={(event) => setPaste(event.target.value)}
+          />
+          <Button
+            variant="secondary"
+            className={styles.pasteAction}
+            aria-busy={checking && !workbook}
+            disabled={!paste.trim() || checking}
+            onClick={() => fromText(paste, "Pasted rows")}
+          >
+            {classScope ? "Add these names" : "Use these rows"}
+          </Button>
+        </div>
+      )}
+      <p
+        className={styles.error}
+        role={error ? "alert" : undefined}
+        data-calm={!error && notice ? "" : undefined}
+      >
+        {error || notice}
       </p>
-      <p className={styles.footnote}>
-        Nothing is saved until you’ve seen every change and chosen Apply.
-      </p>
+      {!classScope && (
+        <p className={styles.footnote}>
+          Nothing is saved until you’ve seen every change and chosen Apply.
+        </p>
+      )}
     </div>
   );
 }
@@ -381,7 +480,7 @@ function MapStep({
           </li>
         ))}
       </ul>
-      {!hasClass && (
+      {!hasClass && !draft.classId && (
         <div className={styles.fallback}>
           <TextField
             label="This file has no class column. Put everyone in"
@@ -435,9 +534,15 @@ const bucketLabels: Record<Bucket, [string, BadgeTone]> = {
 
 const issueText: Record<RosterIssue["code"], (value: string) => string> = {
   missing_name: () => "No name on this row.",
+  source_conflict: (value) =>
+    `${value} Correct the OneRoster export and import again.`,
+  unsupported_role: (value) => `Skipped: ${value}`,
   name_too_long: (value) => `“${value.slice(0, 40)}…” is too long for a name.`,
   unknown_grade: (value) => `“${value}” isn’t a grade AMP knows.`,
   invalid_email: (value) => `“${value}” isn’t an email address.`,
+  conflicting_identity: (value) => `Student ID ${value} has two names.`,
+  ambiguous_identity: () =>
+    "Two students share this name. Add a Student ID to each.",
 };
 
 function FixMissingName({
@@ -459,7 +564,12 @@ function FixMissingName({
         if (!typed) return;
         const parts = splitName(typed);
         const sourcedId =
-          issue.row.sourcedId || `name:${typed.toLowerCase()}|${issue.line}`;
+          issue.row.sourcedId ||
+          namedStudentId(
+            parts.givenName,
+            parts.familyName,
+            issue.row.classes[0]?.name,
+          );
         onFix(
           rosterRowSchema.parse({
             ...issue.row,
@@ -516,16 +626,32 @@ function AttentionRow({
         <strong>{name}</strong>
         <span>
           {plan?.status === "held"
-            ? plan.reason === "name_changed"
-              ? `This ID belongs to ${plan.existing} on your roster, under a different name.`
-              : `${plan.existing} is already on your roster, without this ID.`
+            ? plan.reason === "outside_class"
+              ? "This student needs a school administrator to add them to this class."
+              : plan.reason === "ambiguous_match"
+                ? "Matches more than one student."
+                : plan.reason === "name_changed"
+                  ? `This ID belongs to ${plan.existing} on your roster, under a different name.`
+                  : `${plan.existing} is already on your roster, without this ID.`
             : issue
               ? issueText[issue.code](issue.value)
               : ""}
         </span>
       </div>
       <div className={styles.attentionFix}>
-        {plan?.status === "held" ? (
+        {plan?.reason === "outside_class" ? null : plan?.reason ===
+          "ambiguous_match" ? (
+          <Button
+            variant="secondary"
+            onClick={() =>
+              patch({ resolutions: { ...draft.resolutions, [line]: "new" } })
+            }
+          >
+            {decided === "new"
+              ? "Marked as a different student"
+              : "Different student"}
+          </Button>
+        ) : plan?.status === "held" ? (
           <Segmented
             label={`What to do with ${name}`}
             compact
@@ -547,6 +673,37 @@ function AttentionRow({
               { value: "new", label: "Different student" },
             ]}
           />
+        ) : issue?.code === "ambiguous_identity" ? (
+          // Two children with one name: each comes in as their own student
+          // (a names list has no Student ID to tell them apart), and is never
+          // taken for their namesake.
+          <Button
+            variant="secondary"
+            onClick={() => {
+              patch({ resolutions: { ...draft.resolutions, [line]: "new" } });
+              onFixRow(
+                rosterRowSchema.parse({
+                  // The parser's working keys aren't part of a row.
+                  ...Object.fromEntries(
+                    Object.entries(issue.row).filter(
+                      ([key]) => key !== "classKeys",
+                    ),
+                  ),
+                  sourcedId: distinctNamedId(
+                    issue.row.sourcedId ||
+                      namedStudentId(
+                        issue.row.givenName ?? "",
+                        issue.row.familyName,
+                        issue.row.classes[0]?.name,
+                      ),
+                    issue.line,
+                  ),
+                }),
+              );
+            }}
+          >
+            Add as a different student
+          </Button>
         ) : issue?.code === "unknown_grade" && row ? (
           <GradePicker
             label="Grade"
@@ -611,6 +768,8 @@ function ReviewStep({
 }) {
   const session = currentSession();
   const patch = useImport((state) => state.patch);
+  // A teacher adding students to their own class: one class, students only.
+  const classScope = !!draft.classId;
   const [progress, setProgress] = useState<{
     done: number;
     total: number;
@@ -633,10 +792,18 @@ function ReviewStep({
   for (const row of rows) counts[bucketOf(planFor(row))]++;
   const issues = result.issues;
   const blocked = issues.filter(
-    (issue) => issue.code === "missing_name" || issue.code === "name_too_long",
+    (issue) =>
+      issue.code === "missing_name" ||
+      issue.code === "name_too_long" ||
+      issue.code === "ambiguous_identity" ||
+      issue.code === "conflicting_identity" ||
+      issue.code === "source_conflict",
   );
   const soft = issues.filter(
-    (issue) => issue.code === "unknown_grade" || issue.code === "invalid_email",
+    (issue) =>
+      issue.code === "unknown_grade" ||
+      issue.code === "invalid_email" ||
+      issue.code === "unsupported_role",
   );
   const held = rows.filter((row) => planFor(row)?.status === "held");
   const unresolved = held.filter((row) => !draft.resolutions[String(row.line)]);
@@ -661,7 +828,13 @@ function ReviewStep({
     });
     setRecheck(true);
     try {
-      const [planned] = await school.plan(session, orgId, draft.source, [next]);
+      const [planned] = await school.plan(
+        session,
+        orgId,
+        draft.source,
+        [next],
+        draft.classId,
+      );
       if (planned) {
         const plan = new Map(useImport.getState().draft?.plan);
         plan.set(next.line, planned);
@@ -698,6 +871,7 @@ function ReviewStep({
             draft.source,
             parts[index]!,
             draft.resolutions,
+            draft.classId,
           ),
         );
         results.push(...answer.results);
@@ -727,6 +901,16 @@ function ReviewStep({
     }
     patch({ applied: results, invited });
     await refreshSchool(session);
+    // The class's practice state changes with its first students (no one,
+    // then Start): read it before Students opens, so its header is right
+    // from the first frame instead of gaining an action.
+    const org = queryClient.getQueryData(orgOptions(session, orgId).queryKey);
+    if (draft.classId && org?.kind === "school" && !org.demo)
+      await queryClient
+        .fetchQuery({ ...pilotOptions(session, draft.classId), staleTime: 0 })
+        .catch((failure) =>
+          console.error("The class's practice state didn't load", failure),
+        );
     onDone();
   };
   const running = progress && !progress.failed;
@@ -739,24 +923,32 @@ function ReviewStep({
       compare: (a, b) => fullName(a).localeCompare(fullName(b), "en"),
       cell: (row) => fullName(row),
     },
-    {
-      id: "role",
-      header: "Role",
-      width: 90,
-      cell: (row) => (row.role === "student" ? "Student" : "Teacher"),
-    },
+    ...(classScope
+      ? []
+      : ([
+          {
+            id: "role",
+            header: "Role",
+            width: 90,
+            cell: (row) => (row.role === "student" ? "Student" : "Teacher"),
+          },
+        ] satisfies DataGridColumn<RosterRow>[])),
     {
       id: "grade",
       header: "Grade",
       width: 70,
       cell: (row) => (row.role === "student" ? gradeLabel(row.gradeLevel) : ""),
     },
-    {
-      id: "classes",
-      header: "Classes",
-      width: 220,
-      cell: (row) => row.classes.map((klass) => klass.name).join(", "),
-    },
+    ...(classScope
+      ? []
+      : ([
+          {
+            id: "classes",
+            header: "Classes",
+            width: 220,
+            cell: (row) => row.classes.map((klass) => klass.name).join(", "),
+          },
+        ] satisfies DataGridColumn<RosterRow>[])),
     {
       id: "status",
       header: "Result",
@@ -777,45 +969,74 @@ function ReviewStep({
       },
     },
   ];
+  const allNew =
+    classScope &&
+    rows.length > 0 &&
+    rows.every((row) => bucketOf(planFor(row)) === "new");
   const shownRows =
     show === "all"
       ? rows
       : rows.filter((row) => bucketOf(planFor(row)) === show);
-  const headline = [
-    plural(students.length, "student"),
-    plural(classes.size, "class", "classes"),
-    plural(teachers.length, "teacher"),
-  ].join(", ");
-  const summary = [
-    `${counts.new.toLocaleString("en-US")} new`,
-    ...(counts.changed
-      ? [`${counts.changed.toLocaleString("en-US")} updated`]
-      : []),
-    `${counts.unchanged.toLocaleString("en-US")} unchanged`,
-    `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
-  ].join(", ");
+  const headline = classScope
+    ? counts.new
+      ? plural(counts.new, "new student")
+      : "No new students"
+    : [
+        plural(students.length, "student"),
+        plural(classes.size, "class", "classes"),
+        plural(teachers.length, "teacher"),
+      ].join(", ");
+  const summary = (
+    classScope
+      ? [
+          ...(counts.changed
+            ? [`${counts.changed.toLocaleString("en-US")} updated`]
+            : []),
+          ...(counts.unchanged
+            ? [`${counts.unchanged.toLocaleString("en-US")} already here`]
+            : []),
+          // The rows to look at are counted once, in their own heading.
+        ]
+      : [
+          `${counts.new.toLocaleString("en-US")} new`,
+          ...(counts.changed
+            ? [`${counts.changed.toLocaleString("en-US")} updated`]
+            : []),
+          `${counts.unchanged.toLocaleString("en-US")} unchanged`,
+          `${attention.toLocaleString("en-US")} ${attention === 1 ? "needs" : "need"} attention`,
+        ]
+  ).join(", ");
+  // Filters only where the rows differ: all new needs no filter.
+  const filters = counts.changed + counts.unchanged + counts.attention > 0;
   return (
     <div className={styles.review}>
       <header className={styles.diff}>
-        <h1 className={styles.diffHeadline}>{headline}.</h1>
-        <p className={styles.diffSummary}>{summary}.</p>
-        <div
-          className={styles.diffBar}
-          role="img"
-          aria-label={summary}
-          data-empty={total ? undefined : "true"}
-        >
-          <span data-kind="new" style={{ width: share(counts.new) }} />
-          <span data-kind="changed" style={{ width: share(counts.changed) }} />
-          <span
-            data-kind="unchanged"
-            style={{ width: share(counts.unchanged) }}
-          />
-          <span
-            data-kind="attention"
-            style={{ width: share(blocked.length + counts.attention) }}
-          />
-        </div>
+        <h1 className={styles.diffHeadline}>
+          {classScope ? headline : `${headline}.`}
+        </h1>
+        {summary && <p className={styles.diffSummary}>{summary}.</p>}
+        {(!classScope || filters) && (
+          <div
+            className={styles.diffBar}
+            role="img"
+            aria-label={summary || headline}
+            data-empty={total ? undefined : "true"}
+          >
+            <span data-kind="new" style={{ width: share(counts.new) }} />
+            <span
+              data-kind="changed"
+              style={{ width: share(counts.changed) }}
+            />
+            <span
+              data-kind="unchanged"
+              style={{ width: share(counts.unchanged) }}
+            />
+            <span
+              data-kind="attention"
+              style={{ width: share(blocked.length + counts.attention) }}
+            />
+          </div>
+        )}
         {(result.skipped > 0 || result.inactive > 0) && (
           <p className={styles.diffNote}>
             {result.skipped > 0 &&
@@ -828,10 +1049,6 @@ function ReviewStep({
       {attention > 0 && (
         <section className={styles.attentionList}>
           <h2>{plural(attention, "row")} to look at</h2>
-          <p className={styles.attentionLead}>
-            Each is held back or brought in without the bad value until you fix
-            it. Everything else can go ahead.
-          </p>
           <ul>
             {[
               ...blocked.map((issue) => ({
@@ -890,34 +1107,42 @@ function ReviewStep({
       )}
       <section className={styles.preview}>
         <div className={styles.previewHead}>
-          <h2>Every row</h2>
-          <Segmented
-            label="Show"
-            compact
-            dense
-            value={show}
-            onChange={onShow}
-            options={[
-              {
-                value: "all",
-                label: `All ${rows.length.toLocaleString("en-US")}`,
-              },
-              {
-                value: "new",
-                label: `New ${counts.new.toLocaleString("en-US")}`,
-              },
-              {
-                value: "changed",
-                label: `Updated ${counts.changed.toLocaleString("en-US")}`,
-              },
-            ]}
-          />
+          <h2>{classScope ? "Students" : "Every row"}</h2>
+          {filters && (
+            <Segmented
+              label="Show"
+              compact
+              dense
+              value={show}
+              onChange={onShow}
+              options={[
+                {
+                  value: "all",
+                  label: `All ${rows.length.toLocaleString("en-US")}`,
+                },
+                {
+                  value: "new",
+                  label: `New ${counts.new.toLocaleString("en-US")}`,
+                },
+                ...(counts.changed
+                  ? [
+                      {
+                        value: "changed" as const,
+                        label: `Updated ${counts.changed.toLocaleString("en-US")}`,
+                      },
+                    ]
+                  : []),
+              ]}
+            />
+          )}
         </div>
         {shownRows.length ? (
           <DataGrid
             label="Roster changes"
             columns={grid}
             rows={shownRows}
+            // A class's short list reads in its own order: no sort to find.
+            cardsSort={!(classScope && shownRows.length <= 30)}
             rowKey={(row) => `${row.line}-${row.sourcedId}`}
             cardLayout="row"
             cardEstimate={72}
@@ -933,15 +1158,21 @@ function ReviewStep({
                         row.role === "student" && row.gradeLevel !== undefined
                           ? `Grade ${gradeLabel(row.gradeLevel)}`
                           : "",
-                        row.classes.map((klass) => klass.name).join(", "),
+                        classScope
+                          ? ""
+                          : row.classes.map((klass) => klass.name).join(", "),
                       ]
                         .filter(Boolean)
                         .join(", ")}
                     </span>
                   </span>
-                  <Badge tone={bucketLabels[bucket][1]}>
-                    {bucketLabels[bucket][0]}
-                  </Badge>
+                  {/* Every row new (a class's first list): the title says
+                      so once, not a badge on each row. */}
+                  {!allNew && (
+                    <Badge tone={bucketLabels[bucket][1]}>
+                      {bucketLabels[bucket][0]}
+                    </Badge>
+                  )}
                 </div>
               );
             }}
@@ -986,7 +1217,8 @@ function ReviewStep({
             </div>
           ) : (
             <div className={styles.applyText}>
-              {toWrite.length ? (
+              {classScope &&
+              toWrite.length === counts.new ? null : toWrite.length ? (
                 <>
                   <strong>
                     {[
@@ -1005,8 +1237,8 @@ function ReviewStep({
                       .replace(/^./, (char) => char.toUpperCase()) ||
                       `Applies ${plural(toWrite.length, "decision")}`}
                     .
-                  </strong>{" "}
-                  <span>Importing never removes anyone.</span>
+                  </strong>
+                  {!classScope && <span> Importing never removes anyone.</span>}
                 </>
               ) : (
                 <strong>
@@ -1043,21 +1275,47 @@ function ReviewStep({
                 disabled={!!running || recheck}
                 onClick={() => void apply(0, [], 0)}
               >
-                Apply changes
+                {classScope && toWrite.length === counts.new
+                  ? `Add ${plural(toWrite.length, "student")}`
+                  : "Apply changes"}
               </Button>
             ) : (
-              <Link
-                to="/$"
-                params={{ _splat: orgPath(orgId, "students") }}
-                className={buttonClass("primary")}
-              >
-                See students
-              </Link>
+              <StudentsLink orgId={orgId} classId={draft.classId} />
             )}
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+/** Back to the students this import was for: the class's, or the school's. */
+function StudentsLink({
+  orgId,
+  classId,
+  primary = true,
+}: {
+  orgId: string;
+  classId?: string;
+  primary?: boolean;
+}) {
+  const look = buttonClass(primary ? "primary" : "secondary");
+  return classId ? (
+    <Link
+      to="/school/$org/classes/$class/roster"
+      params={{ org: orgId, class: classId }}
+      className={look}
+    >
+      See students
+    </Link>
+  ) : (
+    <Link
+      to="/$"
+      params={{ _splat: orgPath(orgId, "students") }}
+      className={look}
+    >
+      See students
+    </Link>
   );
 }
 
@@ -1072,7 +1330,10 @@ function DoneStep({
 }) {
   const session = currentSession();
   const applied = draft.applied ?? [];
-  const license = useQuery(licenseOptions(session, orgId)).data;
+  const license = useQuery({
+    ...licenseOptions(session, orgId),
+    enabled: !draft.classId,
+  }).data;
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
   const count = (status: ApplyResult["status"]) =>
     applied.filter((row) => row.status === status).length;
@@ -1088,7 +1349,9 @@ function DoneStep({
     : `${plural(count("updated"), "change")} saved.`;
   const waiting = applied.filter((row) => row.seated === false).length;
   const failed = applied.filter((row) => row.status === "failed");
-  const firstClass = classes[0];
+  const firstClass = draft.classId
+    ? classes.find((klass) => klass.id === draft.classId)
+    : classes[0];
   return (
     <div className={styles.done}>
       <h1 className={styles.diffHeadline}>{headline}</h1>
@@ -1112,7 +1375,7 @@ function DoneStep({
           />
         )}
       </StatRow>
-      {waiting > 0 && (
+      {waiting > 0 && !draft.classId && (
         <p className={styles.doneNote}>
           <Badge tone="warning">
             {plural(waiting, "student")} {waiting === 1 ? "needs" : "need"} a
@@ -1133,13 +1396,7 @@ function DoneStep({
         </p>
       )}
       <div className={styles.doneActions}>
-        <Link
-          to="/$"
-          params={{ _splat: orgPath(orgId, "students") }}
-          className={buttonClass("primary")}
-        >
-          See students
-        </Link>
+        <StudentsLink orgId={orgId} classId={draft.classId} />
         {firstClass && (
           <Link
             to="/$"
@@ -1149,7 +1406,7 @@ function DoneStep({
             Open {firstClass.name}
           </Link>
         )}
-        {waiting > 0 && (
+        {waiting > 0 && !draft.classId && (
           <Link
             to="/$"
             params={{ _splat: orgPath(orgId, "license") }}
@@ -1176,7 +1433,10 @@ const STEP_TITLES: Record<Step, string> = {
 /** The import: drop, check, see every change, apply. Each step has a URL; the
  * file itself stays in memory, so a reload starts again from the drop. */
 export function ImportScreen() {
-  const { org: orgId } = useParams({ strict: false }) as { org: string };
+  const { org: orgId, class: classId } = useParams({ strict: false }) as {
+    org: string;
+    class?: string;
+  };
   const search = useSearch({ strict: false }) as {
     step?: unknown;
     show?: unknown;
@@ -1185,10 +1445,13 @@ export function ImportScreen() {
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const [checking, setChecking] = useState(false);
+  const showFlash = useFlash((state) => state.show);
   const stored = useImport((state) => state.draft);
   const setDraft = useImport((state) => state.set);
   const patch = useImport((state) => state.patch);
-  const draft = stored?.orgId === orgId ? stored : null;
+  const draft =
+    stored?.orgId === orgId && stored.classId === classId ? stored : null;
   const asked = STEPS.find((step) => step === search.step) ?? "source";
   const step: Step = !draft
     ? "source"
@@ -1207,15 +1470,27 @@ export function ImportScreen() {
       })) as never,
       replace,
     });
+  // A roster is children's names, held in memory only: a refresh past the
+  // first step comes back here, calmly, with the class kept.
+  const [lost] = useState(() => !draft && asked !== "source");
+  const [lostKind] = useState(() => {
+    try {
+      return sessionStorage.getItem("amp.import.kind");
+    } catch {
+      return null;
+    }
+  });
   useEffect(() => {
     if (step !== asked) goTo(step, true);
   }, [step, asked]);
   const showAsked = ["new", "changed", "unchanged", "attention"].find(
     (value) => value === search.show,
   ) as Bucket | undefined;
-  const defaultClass = org?.solo
-    ? (classes[0]?.name ?? "My class")
-    : (classes[0]?.name ?? "");
+  const defaultClass = classId
+    ? (classes.find((klass) => klass.id === classId)?.name ?? "My class")
+    : org?.solo
+      ? (classes[0]?.name ?? "My class")
+      : (classes[0]?.name ?? "");
   const check = async () => {
     const current = useImport.getState().draft!;
     let result: SourceResult;
@@ -1230,104 +1505,178 @@ export function ImportScreen() {
         fallbackClass: current.fallbackClass ?? defaultClass,
       });
     }
+    // A class import adds students to this class only; the server binds
+    // each row to the class, so rows keep the identities the file gave them.
+    if (classId)
+      result = {
+        ...result,
+        rows: result.rows.filter((row) => row.role === "student"),
+        skipped:
+          result.skipped +
+          result.rows.filter((row) => row.role !== "student").length,
+      };
     const rows = result.rows;
     const plan = new Map<number, PlanResult>();
     for (const part of chunks(rows))
       for (const entry of await withRetries(() =>
-        school.plan(session, orgId, current.source, part),
+        school.plan(session, orgId, current.source, part, classId),
       ))
         plan.set(entry.line, entry);
     patch({ result, plan, resolutions: {}, applied: undefined });
     goTo("review");
   };
-  if (org && !org.can?.includes("roster.import"))
-    return (
-      <OrgFrame orgId={orgId} nav="import" title="Import">
-        <EmptyState
-          title="Your school’s admin handles imports"
-          action={
-            <Link
-              to="/$"
-              params={{ _splat: orgPath(orgId, "students") }}
-              className={buttonClass("secondary")}
-            >
-              See students
-            </Link>
-          }
-        >
-          You can add students to your own classes one at a time.
-        </EmptyState>
+  const frame = (children: ReactNode) =>
+    classId ? (
+      <ClassFrame org={orgId} classId={classId} loading={false} tab="roster">
+        {children}
+      </ClassFrame>
+    ) : (
+      <OrgFrame
+        orgId={orgId}
+        nav="import"
+        title="Import"
+        crumbs={[{ label: "Import" }]}
+      >
+        {children}
       </OrgFrame>
     );
-  return (
-    <OrgFrame
-      orgId={orgId}
-      nav="import"
-      title="Import"
-      crumbs={[{ label: "Import" }]}
-    >
-      <div className={styles.page} data-step={step}>
-        {(step === "source" || step === "map") && (
-          <PageHead
-            title={STEP_TITLES[step]}
-            detail={
-              step === "source"
-                ? "Students, classes and teachers, all from one file."
-                : undefined
-            }
-          />
-        )}
-        {step === "source" && (
-          <SourceStep
-            orgId={orgId}
-            onLoaded={(next) => {
-              setDraft(next);
-              goTo("map");
-            }}
-          />
-        )}
-        {step === "map" && draft && (
-          <MapStep
-            draft={draft}
-            defaultClass={defaultClass}
-            onBack={() => {
-              setDraft(null);
-              goTo("source");
-            }}
-            onContinue={check}
-          />
-        )}
-        {step === "review" && draft && (
-          <ReviewStep
-            draft={draft}
-            orgId={orgId}
-            show={showAsked ?? "all"}
-            onShow={(show) =>
-              void navigate({
-                to: ".",
-                search: ((previous: Record<string, unknown>) => ({
-                  ...previous,
-                  show: show === "all" ? undefined : show,
-                })) as never,
-                replace: true,
-                resetScroll: false,
-              })
-            }
-            onBack={() => goTo("map")}
-            onDone={() => goTo("done", true)}
-          />
-        )}
-        {step === "done" && draft && (
-          <DoneStep
-            draft={draft}
-            orgId={orgId}
-            onAgain={() => {
-              setDraft(null);
-              goTo("source");
-            }}
-          />
-        )}
-      </div>
-    </OrgFrame>
+  if (
+    org &&
+    !org.can?.includes("roster.import") &&
+    !(classId && org.teaches?.includes(classId))
+  )
+    return frame(
+      <EmptyState
+        title="Your school’s admin handles imports"
+        action={
+          <StudentsLink orgId={orgId} classId={classId} primary={false} />
+        }
+      >
+        You can add students to your own classes one at a time.
+      </EmptyState>,
+    );
+  /** A teacher's paste or file whose columns are plain goes straight to the
+   * students it adds; the columns stay one Back away. */
+  const loaded = async (next: Draft) => {
+    // Only how the roster came (pasted or a file), never what it holds, so a
+    // refresh can say which to do again.
+    try {
+      sessionStorage.setItem(
+        "amp.import.kind",
+        next.fileName === "Pasted rows" ? "paste" : "file",
+      );
+    } catch (failure) {
+      console.warn("How the roster came isn't kept", failure);
+    }
+    setDraft({
+      ...next,
+      ...(classId ? { classId, fallbackClass: defaultClass } : {}),
+    });
+    if (
+      !classId ||
+      next.source !== "csv" ||
+      !mappingHasName(next.mapping!) ||
+      next.table?.headers.some(
+        (_, index) =>
+          (!next.mapping?.[index] || next.mapping[index] === "ignore") &&
+          next.table!.rows.some((row) => row[index]?.trim()),
+      )
+    ) {
+      goTo("map");
+      return;
+    }
+    setChecking(true);
+    try {
+      await check();
+    } catch (failure) {
+      console.error("The pasted students couldn’t be checked", failure);
+      goTo("map");
+    } finally {
+      setChecking(false);
+    }
+  };
+  /** A class's students are added: back to Students, which says so. */
+  const added = () => {
+    const count = (useImport.getState().draft?.applied ?? []).filter(
+      (row) => row.status === "created",
+    ).length;
+    showFlash(count ? `${plural(count, "student")} added` : "Students updated");
+    void navigate({
+      to: "/school/$org/classes/$class/roster",
+      params: { org: orgId, class: classId! },
+      replace: true,
+    }).then(() => setDraft(null));
+  };
+  return frame(
+    <div className={styles.page} data-step={step}>
+      {(step === "source" || step === "map") && (
+        <PageHead
+          title={
+            classId && step === "source" ? "Add students" : STEP_TITLES[step]
+          }
+          detail={
+            step === "source" && !classId
+              ? "Students, classes and teachers, all from one file."
+              : undefined
+          }
+        />
+      )}
+      {step === "source" && (
+        <SourceStep
+          orgId={orgId}
+          classScope={!!classId}
+          checking={checking}
+          onLoaded={(next) => void loaded(next)}
+          notice={
+            lost
+              ? lostKind === "paste"
+                ? "Paste the names again to review them."
+                : "Choose the file again to review it."
+              : ""
+          }
+        />
+      )}
+      {step === "map" && draft && (
+        <MapStep
+          draft={draft}
+          defaultClass={defaultClass}
+          onBack={() => {
+            setDraft(null);
+            goTo("source");
+          }}
+          onContinue={check}
+        />
+      )}
+      {step === "review" && draft && (
+        <ReviewStep
+          draft={draft}
+          orgId={orgId}
+          show={showAsked ?? "all"}
+          onShow={(show) =>
+            void navigate({
+              to: ".",
+              search: ((previous: Record<string, unknown>) => ({
+                ...previous,
+                show: show === "all" ? undefined : show,
+              })) as never,
+              replace: true,
+              resetScroll: false,
+            })
+          }
+          onBack={() => goTo("map")}
+          onDone={() => (classId ? added() : goTo("done", true))}
+        />
+      )}
+      {step === "done" && draft && (
+        <DoneStep
+          draft={draft}
+          orgId={orgId}
+          onAgain={() => {
+            setDraft(null);
+            goTo("source");
+          }}
+        />
+      )}
+    </div>,
   );
 }

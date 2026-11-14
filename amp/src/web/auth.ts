@@ -50,6 +50,7 @@ export type AuthConfig =
       passkeySignup?: boolean;
       parentFollowup?: boolean;
       providers: string[];
+      clever?: boolean;
     }
   | { mode: "oidc" | "development" | "native" };
 let config: Promise<AuthConfig> | null = null;
@@ -90,11 +91,49 @@ function session(user: User): AuthSession {
 }
 export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
+  const completion = new URLSearchParams(location.hash.slice(1)).get(
+    "clever-session",
+  );
   // A student on a device with a parent session stays the student until they
-  // sign out.
+  // sign out or a new, explicitly completed Clever staff login replaces it.
   const student = studentSession();
-  if (student) return student;
-  if ((await authConfig()).mode === "accounts") {
+  if (student && !completion) return student;
+  const configuration = await authConfig();
+  if (configuration.mode === "accounts") {
+    // Only where a school sign-in exists (its readable hint cookie) or one
+    // is completing: never a round trip and a 401 on every boot.
+    if (
+      configuration.clever &&
+      (completion || /(?:^|;\s*)amp\.provider=1(?:;|$)/.test(document.cookie))
+    ) {
+      const provider = await fetch("/api/v1/provider/session", {
+        credentials: "same-origin",
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000),
+      });
+      if (provider.ok) {
+        const signedIn = (await provider.json()) as AuthSession;
+        if (completion) {
+          history.replaceState({}, "", location.pathname + location.search);
+          if (signedIn.token !== completion) return student ?? null;
+          clearStudentDevice();
+          return signedIn;
+        }
+        return student ?? signedIn;
+      }
+      if (completion) {
+        history.replaceState({}, "", location.pathname + location.search);
+        return student ?? null;
+      }
+      if (provider.status === 401) {
+        const failure = (await provider.json()) as { error?: string };
+        // An expired school login must not reveal another adult's old cookie.
+        if (failure.error === "provider_session_expired") return null;
+      } else if (provider.status !== 404) {
+        throw new Error("School sign-in could not be checked");
+      }
+    }
+    if (student) return student;
     // AMP's own accounts: the session token doubles as the API bearer token.
     const { data, error } = await accountClient.getSession({
       fetchOptions: { timeout: 10000 },
@@ -158,7 +197,17 @@ export async function signOut() {
     location.assign(handed ? back : "/join");
     return;
   }
-  if ((await authConfig()).mode === "accounts") {
+  const configuration = await authConfig();
+  if (configuration.mode === "accounts") {
+    if (configuration.clever) {
+      const provider = await fetch("/api/v1/provider/sign-out", {
+        method: "POST",
+        credentials: "same-origin",
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!provider.ok && provider.status !== 404)
+        throw new Error("School sign out did not finish");
+    }
     const result = await accountClient.signOut();
     if (result.error)
       throw new Error(result.error.message ?? "Sign out did not finish");

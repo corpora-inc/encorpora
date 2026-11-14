@@ -138,3 +138,60 @@
 .sectionTitle {
   margin-bottom: calc(var(--space-3) - var(--space-5));
 }
+/* Day 0 of a school class (docs/design/ia.md, rule 7): one centred column,
+   the roster's rows waiting to fill, one sentence, one action. */
+.dayZero {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  max-width: var(--width-form);
+  margin: var(--space-6) auto 0;
+  text-align: center;
+}
+.dayZero h2 {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.dayZero p {
+  margin: 0 0 var(--space-2);
+  color: var(--color-muted-text);
+}
+.dayZeroRows {
+  display: grid;
+  width: min(100%, calc(var(--width-form) * 0.6));
+  margin-bottom: var(--space-2);
+}
+.dayZeroRows span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: var(--target-size);
+  border-bottom: 1px solid var(--color-border);
+}
+.dayZeroRows span::before {
+  content: "";
+  flex: none;
+  width: var(--space-6);
+  height: var(--space-6);
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+}
+.dayZeroRows span::after {
+  content: "";
+  height: var(--space-2);
+  border-radius: var(--space-1);
+  background: var(--color-surface-sunken);
+  width: 62%;
+}
+.dayZeroRows span:nth-child(2)::after {
+  width: 48%;
+}
+.dayZeroRows span:nth-child(3)::after {
+  width: 70%;
+}
+.addMore {
+  justify-self: start;
+}

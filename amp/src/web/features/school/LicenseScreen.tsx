@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { formatDay } from "../../../schools/calendar";
+import { formatDay, formatLastDay } from "../../../schools/calendar";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Badge } from "../../ui/Badge";
@@ -97,6 +97,7 @@ export function LicenseSection({ orgId }: { orgId: string }) {
   const data = view.data;
   const license = data?.license;
   const ended = !!license && Date.parse(license.endsAt) <= Date.now();
+  const zone = org?.timezone ?? "UTC";
   return (
     <section className={styles.settingsSection} aria-labelledby="license">
       <div className={styles.settingsHead}>
@@ -105,8 +106,8 @@ export function LicenseSection({ orgId }: { orgId: string }) {
           <p className={styles.quiet}>
             {license
               ? ended
-                ? `Ended ${formatDay(license.endsAt.slice(0, 10))}`
-                : `${license.evaluation ? "Evaluation, through" : "Through"} ${formatDay(license.endsAt.slice(0, 10))}`
+                ? `Ended ${formatLastDay(license.endsAt, zone)}`
+                : `${license.evaluation ? "Evaluation, through" : "Through"} ${formatLastDay(license.endsAt, zone)}`
               : "\u00a0"}
             {license?.reference ? ` · Reference ${license.reference}` : ""}
           </p>

@@ -78,7 +78,7 @@ const accountSchema = z.object({
   confirmationRequired: z.boolean().optional(),
   /** Set for a school student, whose token and learner the school manages.
    * Staff are ordinary accounts: one person can be a teacher and a parent. */
-  kind: z.literal("student").optional(),
+  kind: z.enum(["student", "provider"]).optional(),
 });
 export const meSchema = z.discriminatedUnion("signedIn", [
   z.object({ signedIn: z.literal(false), next: z.literal("sign-in") }),
@@ -105,6 +105,9 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         orgName: z.string(),
         className: z.string().optional(),
         levels: z.enum(["hidden", "choice", "shown"]),
+        /** Why this student can't practice now: their teacher hasn't
+         * started practice, it has ended, or they need a seat. */
+        practice: z.enum(["waiting", "ended", "seat"]).optional(),
         /** A current class has a board this student can open. */
         standings: z.boolean().optional(),
       })

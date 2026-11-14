@@ -347,14 +347,17 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
     action: "students.transfer",
     target: studentParam,
     bodyLimit: 4096,
-    handler: async (context) =>
-      setStudentClasses(
+    handler: async (context) => {
+      const result = await setStudentClasses(
         context.repository,
         context.target.orgId,
         context.target.personId,
         context.request.body,
         who(context),
-      ),
+      );
+      await context.repository.reconcileSeats(context.target.path[0]!);
+      return result;
+    },
   });
   define({
     method: "POST",
@@ -364,12 +367,14 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
     bodyLimit: 256,
     handler: async (context) => {
       removeStudentSchema.parse(context.request.body);
-      return removeStudent(
+      const result = await removeStudent(
         context.repository,
         context.target.orgId,
         context.target.personId,
         who(context),
       );
+      await context.repository.reconcileSeats(context.target.path[0]!);
+      return result;
     },
   });
 

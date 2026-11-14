@@ -15,7 +15,8 @@ export type FeedEntry = {
   rule?: string;
   /** `check`: marked done on this device for today. `plain`: done by doing
    * it. `dismiss`: an offer the reader can put away for good. */
-  mark: "check" | "plain" | "dismiss";
+  /** `status`: a state, not a task (practice has ended): no box to tick. */
+  mark: "check" | "plain" | "dismiss" | "status";
   actions: ReactNode;
   /** Other people the item is about, to scan by face (a teacher's class). */
   people?: readonly string[];
@@ -43,19 +44,23 @@ function FeedItem({
     <li
       className={styles.todo}
       data-done={done || undefined}
+      data-status={entry.mark === "status" || undefined}
       data-feed={entry.id}
     >
       {/* One treatment for every item: a box to tick off. An offer that can
           be put away for good is put away by ticking it. */}
       <span className={styles.todoCheck}>
-        <CheckboxControl
-          aria-label={`Done: ${entry.title}`}
-          checked={done}
-          onChange={(event) => {
-            onDone(event.target.checked);
-            if (entry.mark === "dismiss" && event.target.checked) onDismiss?.();
-          }}
-        />
+        {entry.mark === "status" ? null : (
+          <CheckboxControl
+            aria-label={`Done: ${entry.title}`}
+            checked={done}
+            onChange={(event) => {
+              onDone(event.target.checked);
+              if (entry.mark === "dismiss" && event.target.checked)
+                onDismiss?.();
+            }}
+          />
+        )}
       </span>
       <div className={styles.todoBody}>
         <h3 className={styles.todoTitle}>{entry.title}</h3>

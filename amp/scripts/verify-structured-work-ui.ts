@@ -636,8 +636,12 @@ try {
               }
             }
             // Close the keypad between rows on touch, as a learner taps Done.
-            if (touch && (await page.locator(".work-keypad").count()))
-              await page.locator('.work-keypad [data-key="done"]').tap();
+            for (
+              let n = 0;
+              n < 24 && touch && (await page.locator(".work-keypad").count());
+              n++
+            )
+              await page.locator('.work-keypad [data-key="next"]').tap();
           }
           // Removing and re-adding the last step of an open list.
           if (r.open && plan.length > 1 && width === 1280) {
@@ -662,8 +666,12 @@ try {
             );
           }
         }
-        if (touch && (await page.locator(".work-keypad").count()))
-          await page.locator('.work-keypad [data-key="done"]').tap();
+        for (
+          let n = 0;
+          n < 24 && touch && (await page.locator(".work-keypad").count());
+          n++
+        )
+          await page.locator('.work-keypad [data-key="next"]').tap();
         await page.locator(".work-keypad").waitFor({ state: "detached" });
         assert.ok(
           await check.isEnabled(),

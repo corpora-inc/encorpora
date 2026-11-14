@@ -5,6 +5,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { Badge } from "../../ui/Badge";
+import { buttonClass } from "../../ui/Button";
+import { TextField } from "../../ui/TextField";
 import { ScreenTitle, useNamedByTab } from "../../ui/ScreenTitle";
 import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
@@ -122,13 +125,18 @@ export function GradePicker({
   );
 }
 
-/** Copies, says so where the button is, and never moves. */
+/** The one copy control (a link, a code, an address): copies, says so where
+ * the button is, and never moves. `primary` when copying is the step's one
+ * action. If the clipboard refuses, the text appears beside it, selected on
+ * focus, so it can still be copied by hand. */
 export function CopyButton({
   text,
   label,
   copied = "Copied",
   className,
   icon,
+  primary = false,
+  shareUrl,
 }: {
   text: string;
   label: string;
@@ -136,41 +144,49 @@ export function CopyButton({
   className?: string;
   /** A glyph before the words, kept through Copied. */
   icon?: ReactNode;
+  primary?: boolean;
+  /** The link this copies, kept on the button for assistive tools and tests. */
+  shareUrl?: string;
 }) {
   const [done, setDone] = useState<"copied" | "failed" | null>(null);
   return (
-    <button
-      type="button"
-      className={`${styles.copy} ${className ?? ""}`}
-      data-done={done ?? undefined}
-      onClick={() => {
-        void navigator.clipboard
-          .writeText(text)
-          .then(() => setDone("copied"))
-          .catch((error) => {
-            console.error("The link could not be copied", error);
-            setDone("failed");
-          })
-          .finally(() => {
-            setTimeout(() => setDone(null), 2400);
-          });
-      }}
-    >
-      <span className={styles.copySizer} aria-hidden="true">
-        {icon}
-        {label.length > copied.length ? label : copied}
-      </span>
-      <span className={styles.copyText}>
-        {icon}
-        <span aria-live="polite">
-          {done === "copied"
-            ? copied
-            : done === "failed"
-              ? "Press to retry"
-              : label}
+    <>
+      <button
+        type="button"
+        className={`${primary ? buttonClass("primary", styles.copyPrimary) : styles.copy} ${className ?? ""}`}
+        data-done={done === "copied" ? "copied" : undefined}
+        data-share-url={shareUrl}
+        onClick={() => {
+          void navigator.clipboard
+            .writeText(text)
+            .then(() => {
+              setDone("copied");
+              setTimeout(() => setDone(null), 2400);
+            })
+            .catch((error) => {
+              console.error("The link could not be copied", error);
+              setDone("failed");
+            });
+        }}
+      >
+        <span className={styles.copySizer} aria-hidden="true">
+          {icon}
+          {label.length > copied.length ? label : copied}
         </span>
-      </span>
-    </button>
+        <span className={styles.copyText}>
+          {icon}
+          <span aria-live="polite">{done === "copied" ? copied : label}</span>
+        </span>
+      </button>
+      {done === "failed" && (
+        <TextField
+          label="Select it and copy"
+          readOnly
+          value={text}
+          onFocus={(event) => event.target.select()}
+        />
+      )}
+    </>
   );
 }
 
@@ -180,3 +196,18 @@ export const roleNames: Record<string, string> = {
   aide: "Aide",
   viewer: "Viewer",
 };
+
+/** A student's seat, said once wherever students are listed: Seated, nothing
+ * while a teacher's practice covers them (or before it starts: `needed`
+ * false), else Needs a seat. */
+export function SeatBadge({
+  student,
+  needed = true,
+}: {
+  student: { seated: boolean; pilotCovered?: boolean };
+  needed?: boolean;
+}) {
+  if (student.seated) return <Badge tone="success">Seated</Badge>;
+  if (student.pilotCovered || !needed) return null;
+  return <Badge tone="warning">Needs a seat</Badge>;
+}

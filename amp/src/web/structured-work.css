@@ -290,10 +290,12 @@
   min-height: var(--target-size);
   margin: 0;
   padding: var(--space-2) var(--space-3);
-  border: 2px dashed var(--color-border-strong);
+  /* The same field as the typed entries beside it (.work-input): one
+     answer surface and border, never a dashed box of its own. */
+  border: 2px solid var(--color-answer-border);
   border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
   font: inherit;
   font-size: var(--text-label);
   font-weight: 600;
@@ -304,22 +306,19 @@
   -webkit-tap-highlight-color: transparent;
 }
 .work-choice:hover:not(:disabled) {
-  background: var(--color-surface-raised-hover);
-  color: var(--color-on-surface-raised);
+  border-color: var(--color-primary);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .work-choice[data-state="open"] {
-  background: var(--color-surface-raised-active);
-  color: var(--color-on-surface-raised);
-}
-.work-choice[data-filled] {
-  border-style: solid;
   border-color: var(--color-primary);
-  background: var(--color-secondary);
-  color: var(--color-on-secondary);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
+.work-choice[data-filled],
 .work-choice[data-filled]:hover:not(:disabled) {
-  background: var(--color-secondary-hover);
-  color: var(--color-on-secondary);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .work-choice:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -510,7 +509,8 @@
   box-sizing: border-box;
   width: min(100%, 560px);
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  /* Four across, as the answer keypad (.math-keypad): one keypad design. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   padding: var(--space-2) var(--space-4)
     calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
@@ -541,7 +541,10 @@
   color: var(--color-on-secondary);
   transform: translateY(1px);
 }
-.work-key[data-key="done"] {
+.work-key[data-wide] {
+  grid-column: span 2;
+}
+.work-key[data-key="next"] {
   background: var(--color-primary);
   color: var(--color-on-primary);
   font-size: var(--text-label);

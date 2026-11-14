@@ -57,6 +57,17 @@ export function suggestedYear(today: string): {
 }
 
 /** "Aug 15, 2026", without a timezone that could move the day. */
+/** A license's last day, from its exclusive end (midnight after it, in the
+ * school's zone): "Through Dec 13, 2026", never the day after. Setup's
+ * `endsOn` is the same day. */
+export function formatLastDay(endsAt: string, timeZone: string) {
+  return new Date(Date.parse(endsAt) - 1000).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone,
+  });
+}
 export function formatDay(iso: string, withYear = true) {
   return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
     month: "short",

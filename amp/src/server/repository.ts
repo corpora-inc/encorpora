@@ -1,4 +1,5 @@
 import type { PoolConfig } from "pg";
+import { schoolPilotAccess, schoolAllowance } from "../schools/pilot-access.js";
 import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
 import {
   defaultPracticeSettings,
@@ -1227,17 +1228,23 @@ export class PgTransaction implements LearnerTransaction {
         this.learnerId,
       );
     const result = await this.db.query(
-      "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() LIMIT 1",
+      "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() AND amp_school_grant_valid(id) LIMIT 1",
       [this.learnerId],
     );
-    return !!result.rowCount;
+    return (
+      !!result.rowCount ||
+      (await schoolPilotAccess(this.db, this.learnerId)).active
+    );
   }
   async freeAllowance() {
     const { rows } = await this.db.query(
       "SELECT free_online_used,free_workbooks_used FROM amp_learners WHERE id=$1",
       [this.learnerId],
     );
-    return freeAllowance(rows[0].free_online_used, rows[0].free_workbooks_used);
+    return schoolAllowance(
+      freeAllowance(rows[0].free_online_used, rows[0].free_workbooks_used),
+      (await schoolPilotAccess(this.db, this.learnerId)).managed,
+    );
   }
   private async chargeFreeOnline() {
     if (await this.hasAccess()) return;

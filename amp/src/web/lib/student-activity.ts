@@ -76,9 +76,11 @@ export function noteAttention() {
   for (const clock of running) clock.attend();
 }
 
-/** A school student's time in class. */
+/** A school student's time in class. The clock runs from boot whoever is
+ * signed in, and sends only while a student is: a student session often
+ * begins without a reload ("Let Aug practice here", a class code typed in the
+ * app), and a clock decided once at boot never counted it. */
 export function startStudentActivity(): Activity {
-  if (!isStudentDevice()) return idle;
   return startActivity(() => {
     const session = studentSession();
     return session
@@ -199,13 +201,22 @@ export function startActivity(
           ...(events.length ? { events } : {}),
         }),
       });
-      if (!response.ok && response.status !== 401)
-        console.warn("Active time not saved", response.status);
+      // Lost time is a wrong record for a teacher and a family: every
+      // refusal is said aloud, with the server's reason.
+      if (!response.ok)
+        console.error(
+          "Active time not saved",
+          response.status,
+          await response
+            .json()
+            .then((body: { error?: unknown }) => body?.error ?? null)
+            .catch(() => null),
+        );
     } catch (error) {
       // Offline: the help waits for the next heartbeat (time already passed
       // can't be claimed again, so its deltas are not kept).
       help.restore(events, takenAt);
-      console.warn("Active time not saved", error);
+      console.error("Active time not saved", error);
     }
   }
   const interact = () => clock.sample(performance.now(), visible(), true);

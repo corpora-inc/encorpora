@@ -1,4 +1,6 @@
 import { readFile } from "node:fs/promises";
+import { schoolOperations } from "../src/schools/operations.js";
+import { extendTeacherPilot } from "../src/schools/pilots.js";
 import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
@@ -25,8 +27,8 @@ import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
  * link and the student's token.
  *
  * create-school          {name, adminEmail, seats, startsOn, endsOn, reference, timezone?}
- *     A new school, after a contract and invoice or PO; a free pilot is given on
- *     purpose with reference "Pilot". Dates are days in the school's zone
+ *     Assisted school creation with a negotiated license or an explicit free
+ *     license reference "Pilot". Self-service teachers use /school/start. Dates are days in the school's zone
  *     (default America/New_York), through `endsOn`. Makes the org, the license
  *     and the admin's setup invitation in one transaction, mails the link and
  *     prints it. The same name and admin again, while setup is pending, sends the
@@ -34,7 +36,12 @@ import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
  *     and AMP_ACCOUNTS_SECRET, and its mail settings to send.
  * create-org             {kind, name, timezone?, parentId?, agreement?: {version, signerName, signerTitle}}
  * add-staff              {orgId, role, givenName, familyName?, email?, accountId?, classId?}
- * issue-license          {orgId, seats, endsAt, startsAt?, reference?}
+ * issue-license          {orgId, seats, endsAt, startsAt?, reference?, classIds?}
+ * extend-pilot           {pilotId, until, reason, operatorReference}
+ * school-queue           {} (private output includes institution contacts)
+ * connection-request-status {id,status: "invited"|"connected"|"closed",reference}
+ * purchase-status        {id,status: "quoted"|"awaiting_po"|"invoiced"|"closed",reference}
+ * activate-purchase      {id,seats,startsAt?,endsAt,reference} (idempotent by request)
  * set-seats              {licenseId, seats}
  * extend-license         {licenseId, endsAt}
  * add-student            {orgId, givenName, familyName?, displayName?, email?, identifier?, gradeLevel?, classId?}
@@ -56,6 +63,13 @@ export async function schoolAdmin(
   services?: Pick<SchoolServices, "secret" | "origin" | "mail">,
 ): Promise<unknown> {
   switch (command) {
+    case "school-queue":
+    case "connection-request-status":
+    case "purchase-status":
+    case "activate-purchase":
+      return schoolOperations(repository, command, input);
+    case "extend-pilot":
+      return extendTeacherPilot(repository, input);
     case "create-school": {
       if (!services) throw new SchoolError(503, "accounts_unconfigured");
       const school = await createSchool(repository, services, input);

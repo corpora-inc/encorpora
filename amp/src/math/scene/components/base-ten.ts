@@ -2,6 +2,7 @@ import { count } from "../../agreement";
 import { z } from "zod";
 import { base, fill, label, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
+import { advance, typeSizes } from "../type";
 
 /** Hundred flats, ten rods and unit cubes, grouped in labeled columns. */
 export const baseTenSchema = z
@@ -18,9 +19,16 @@ export type BaseTen = z.infer<typeof baseTenSchema>;
 
 registerComponent("baseTen", {
   maxScale: (c) => (c.hundreds ? 8 : 12),
-  compile(c) {
+  compile(c, { s }) {
     const prims: Prim[] = [];
-    const cols: { key: string; label: string; n: number; w: number }[] = [];
+    const cols: {
+      key: string;
+      label: string;
+      n: number;
+      w: number;
+      /** Where the blocks start in the column, so they sit centred. */
+      inset?: number;
+    }[] = [];
     if (c.hundreds)
       cols.push({
         key: "hundred",
@@ -40,6 +48,19 @@ registerComponent("baseTen", {
       n: c.ones,
       w: Math.max(1, Math.min(5, c.ones) * 1.5 - 0.5),
     });
+    // Every place keeps a column as wide as its label (in math units at this
+    // scale), its blocks centred: a place with none (602's tens) is an empty
+    // slot under its own label, never a collapsed column whose label runs
+    // into the next ("TensOnes").
+    if (c.labels !== false)
+      for (const col of cols) {
+        const label =
+          (advance(col.label, "sansBold", typeSizes.sm, true) + 6) / s;
+        if (label > col.w) {
+          col.inset = (label - col.w) / 2;
+          col.w = label;
+        }
+      }
     let x = 0;
     for (const col of cols) {
       if (c.labels !== false)
@@ -55,6 +76,21 @@ registerComponent("baseTen", {
           offset: [0, -8],
           align: [0, 1],
         });
+      if (col.n === 0)
+        // None in this place: a faint slot the size of one.
+        prims.push({
+          type: "rect",
+          id: `${col.key}.empty`,
+          at: [x + col.w / 2 - 0.5, col.key === "ten" ? -10 : -1],
+          size: [1, col.key === "ten" ? 10 : 1],
+          stroke: "muted",
+          width: 1,
+          dash: "dash",
+          radius: 2,
+          data: { unit: "empty" },
+        });
+      const x0 = x;
+      x += col.inset ?? 0;
       for (let i = 0; i < col.n; i++) {
         if (col.key === "hundred") {
           const bx = x + (i % 3) * 10.6,
@@ -127,7 +163,7 @@ registerComponent("baseTen", {
           });
         }
       }
-      x += col.w + 3;
+      x = x0 + col.w + 3;
     }
     return prims;
   },

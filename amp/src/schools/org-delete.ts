@@ -6,9 +6,9 @@ export const FREE_LICENSE_REFERENCES = ["pilot", "evaluation", "demo"];
 
 /** Removes a root org with its whole tree, inside the caller's transaction:
  * the operator's `delete-org` command and removing a demo place
- * (`schools/demo`) share it. Locks follow the order of other school writes:
- * licenses by id, then each person's account lock (as `removeStudent` takes
- * it), then the people and the learners. Every delete is bounded by the ids of
+ * (`schools/demo`) share it. Clever connections are locked before other school
+ * writes, followed by licenses, account locks, and person/learner rows.
+ * Every delete is bounded by the ids of
  * the tree, and rows of the tree's people that sit in another tree stop it
  * before anything is deleted. School events can only be deleted inside the
  * transaction's `amp.retention_purge='school-org'`. */
@@ -43,6 +43,17 @@ export async function removeOrgTree(
     "SELECT id FROM amp_orgs WHERE path[1]=$1 ORDER BY id",
     [org.id],
   );
+  // Imports acquire the connection lock before any learning-account locks.
+  // Join that order before taking licenses/accounts, so an import never waits
+  // on a purge that is itself waiting to delete the import's connection.
+  const connections = await ids(
+    "SELECT id FROM amp_clever_connections WHERE tenant_id=ANY($1::uuid[]) ORDER BY id",
+    [orgs],
+  );
+  for (const id of connections)
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      `clever-sync:${id}`,
+    ]);
   const licenses = await rows(
     `SELECT id,reference,(status='active' AND starts_at<=now() AND ends_at>now()) AS active
      FROM amp_school_licenses WHERE org_id=ANY($1::uuid[]) ORDER BY id FOR UPDATE`,
@@ -141,6 +152,26 @@ export async function removeOrgTree(
     [licenseIds],
   );
   // Approval links of the tree's family classes, then the family rows.
+  await purge(
+    "classAuthorizations",
+    "amp_class_authorizations",
+    "class_id=ANY($1::uuid[])",
+    [classes],
+  );
+  await purge("classPilots", "amp_class_pilots", "class_id=ANY($1::uuid[])", [
+    classes,
+  ]);
+  await purge("schoolStarts", "amp_school_starts", "org_id=ANY($1::uuid[])", [
+    orgs,
+  ]);
+  await purge(
+    "purchaseRequests",
+    "amp_school_purchase_requests",
+    "org_id=ANY($1::uuid[])",
+    [orgs],
+  );
+  // Teacher eligibility and non-contact extension history survive deleting a
+  // place; recreating the school must not grant another introductory pilot.
   const families = await ids(
     "SELECT account_id AS id FROM amp_families WHERE org_id=ANY($1::uuid[])",
     [orgs],

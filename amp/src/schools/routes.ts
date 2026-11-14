@@ -1,4 +1,6 @@
 import { PERSON_NAME } from "./term-grades.js";
+import { forgedPost } from "./request-origin.js";
+import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
 import type { Pool } from "pg";
@@ -221,6 +223,13 @@ export async function registerSchoolRoutes(
       reply.header("X-Request-Id", request.id);
       reply.header("Cache-Control", "no-store");
       reply.header("X-Content-Type-Options", "nosniff");
+      if (forgedPost(request, services.origin)) {
+        request.log.warn(
+          { origin: request.headers.origin ?? null, url: request.url },
+          "School request refused: origin",
+        );
+        throw new SchoolError(403, "request_origin_invalid");
+      }
     });
     scope.setErrorHandler((error, request, reply) => {
       if (error instanceof SchoolError) {
@@ -229,6 +238,7 @@ export async function registerSchoolRoutes(
           error: error.code,
           ...(error.retryAfter ? { retryAfter: error.retryAfter } : {}),
           ...(error.path ? { path: error.path } : {}),
+          ...(error.conflicts ? { conflicts: error.conflicts } : {}),
         });
       }
       if (error instanceof z.ZodError)
@@ -258,6 +268,7 @@ export async function registerSchoolRoutes(
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
     registerJoinRoutes(scope, repository, services.oidc);
+    registerBuyerHandoff(scope, options.pool);
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
     registerStudentStandings(scope, options.pool);
@@ -279,8 +290,14 @@ export async function registerSchoolRoutes(
         if (
           !token ||
           !(await recordHeartbeat(options.pool, token, request.body))
-        )
+        ) {
+          // A refused heartbeat is lost class time: say so.
+          request.log.warn(
+            { student: !!token },
+            "Student activity refused: no live student session",
+          );
           throw new SchoolError(401, "sign_in_required");
+        }
         return reply.code(204).send();
       },
     );
@@ -521,6 +538,7 @@ defineSchoolRoute({
   },
 });
 defineSignInRoutes(defineSchoolRoute);
+definePilotRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);

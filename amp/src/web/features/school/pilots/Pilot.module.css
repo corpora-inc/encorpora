@@ -1,0 +1,167 @@
+/* Class practice access and its sheets, the signer's fields, the buyer's page. */
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.pair > *,
+.pair input {
+  min-width: 0;
+}
+.pair input {
+  width: 100%;
+}
+/* The agreement's name inside the line that accepts it. */
+.inlineLink {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.inlineLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.agreement {
+  display: grid;
+  gap: var(--space-5);
+}
+.agreement > p,
+.agreement section p {
+  margin: 0;
+  line-height: 1.55;
+}
+.agreement section {
+  display: grid;
+  gap: var(--space-2);
+}
+.agreement h3 {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+/* Accepting stays in reach however far the reader is: a footer that sticks
+   to the sheet's foot while the text scrolls under it. */
+.agreementAccept {
+  --sheet-foot: max(var(--space-6), env(safe-area-inset-bottom));
+  position: sticky;
+  bottom: calc(-1 * var(--sheet-foot));
+  margin-bottom: calc(-1 * var(--sheet-foot));
+  padding: var(--space-3) 0 var(--sheet-foot);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+}
+
+.accessLine p {
+  margin: 0;
+  font-variant-numeric: var(--numeric);
+}
+
+/* A practice sheet's body: its fields, then its actions. */
+.sheetBody {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+.sheetBody > :not(.sheetActions) {
+  justify-self: stretch;
+}
+.sheetActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.quietLink:hover {
+  background: var(--color-secondary);
+}
+
+/* The buyer's page: the teacher's note in their words, under their name. */
+.note {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--color-border-strong);
+}
+.note blockquote {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.note figcaption {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.support {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.quiet {
+  margin: 0;
+  color: var(--color-muted-text);
+  line-height: 1.5;
+}
+.quote {
+  display: grid;
+  gap: var(--space-3);
+}
+.quote h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 500;
+}
+@media (max-width: 639px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* An agreement already in force: one line, its change at the end, both on
+   the text's own edge. */
+.covered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.covered p {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+
+/* Request seats: one height for its form, its link and its wait (the
+   editing form's, the tallest). */
+.seatsBody {
+  min-height: 375px;
+}
+@media (min-width: 641px) {
+  .seatsBody {
+    min-height: 351px;
+  }
+}

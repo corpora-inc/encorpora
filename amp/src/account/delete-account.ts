@@ -1,3 +1,4 @@
+import { rememberProviderPilotAliases } from "../identity/provider-principals.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { FamilyRepository } from "../family/repository.js";
@@ -87,6 +88,21 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_campaign_creative_daily: "none",
   amp_campaign_daily: "none",
   amp_classes: "place",
+  amp_class_authorizations: "place",
+  amp_class_pilots: "place",
+  amp_teacher_pilots: "account",
+  amp_pilot_eligibility: "journal",
+  amp_pilot_extensions: "place",
+  amp_school_starts: "account",
+  amp_school_purchase_requests: "account",
+  amp_school_connection_requests: "account",
+  amp_school_connection_tasks: "place",
+  amp_school_adoptions: "account",
+  amp_courses: "place",
+  amp_clever_connections: "place",
+  amp_clever_bindings: "place",
+  amp_clever_memberships: "place",
+  amp_clever_sync_runs: "place",
   amp_classwallet_checkouts: "financial",
   amp_classwallet_payments: "financial",
   amp_commerce_events: "financial",
@@ -161,6 +177,10 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_privacy_events: "account",
   amp_problem_flags: "learner",
   amp_provider_signup_exports: "sign-in",
+  amp_provider_principals: "account",
+  amp_provider_identities: "account",
+  amp_provider_sessions: "account",
+  amp_provider_oauth_flows: "account",
   amp_purchase_consents: "consent-evidence",
   amp_school_events: "place",
   amp_school_licenses: "place",
@@ -253,13 +273,16 @@ async function inspect(client: PoolClient, accountId: string): Promise<Plan> {
      SELECT o.id,o.name,o.kind,o.demo,
        COALESCE(o.created_by LIKE 'amp-demo:%',false) AS shared_demo,
        (o.demo AND o.created_by=$1) AS own_demo,
+       (NOT EXISTS(SELECT 1 FROM amp_clever_connections c WHERE c.tenant_id=o.id) AND
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
-         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}) AS mine,
+         WHERE ro.path[1]=o.id AND p.account_id=$1 AND r.role='admin' AND ${activeToday("r", "ro")}
+           AND amp_school_role_current(r.id))) OR
+       (o.kind='school' AND o.solo AND EXISTS(SELECT 1 FROM amp_school_starts ss WHERE ss.account_id=$1 AND ss.org_id=o.id)) AS mine,
        EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs ro ON ro.id=r.org_id
          JOIN amp_people p ON p.id=r.person_id
          WHERE ro.path[1]=o.id AND p.account_id IS NOT NULL AND p.account_id<>$1
-           AND p.deleted_at IS NULL AND r.role='admin' AND ${activeToday("r", "ro")}) AS others,
+           AND p.deleted_at IS NULL AND (r.role='admin' OR o.kind='school' AND o.solo AND r.role IN ('teacher','staff')) AND ${activeToday("r", "ro")}) AS others,
        COALESCE(bool_or(m.demo_visitor),false) AS visitor,
        COALESCE(array_agg(m.id ORDER BY m.id) FILTER (WHERE m.id IS NOT NULL),'{}') AS people
      FROM roots JOIN amp_orgs o ON o.id=roots.id
@@ -530,8 +553,20 @@ export async function deleteAccount(
              WHERE r.person_id=$1 AND r.role<>'student' AND ${activeToday("r", "o")} LIMIT 1`,
             [person],
           );
-          if (staff.length)
-            await endStaffIn(client, schools, root, person, null);
+          if (staff.length) {
+            // Institutional sharing belongs to the district, not to the adult
+            // who connected it. Personal erasure leaves that institution intact.
+            const institution =
+              (
+                await client.query(
+                  "SELECT 1 FROM amp_clever_connections WHERE tenant_id=$1",
+                  [root],
+                )
+              ).rowCount !== 0;
+            await endStaffIn(client, schools, root, person, null, {
+              allowLastAdmin: institution,
+            });
+          }
           await client.query(
             "UPDATE amp_families SET second_parent=NULL WHERE second_parent=$1",
             [person],
@@ -591,7 +626,69 @@ export async function deleteAccount(
           [accountId],
         );
 
+      await rememberProviderPilotAliases(client, accountId);
+      // Keep only the eligibility digest and dates needed to avoid reopening a
+      // consumed pilot. Shared institutions keep anonymous authorization evidence.
+      await client.query(
+        "UPDATE amp_teacher_pilots SET account_id='deleted-pilot:'||id WHERE account_id=$1",
+        [accountId],
+      );
+      await client.query(
+        "UPDATE amp_class_authorizations SET account_id='removed',signer_name='Removed',signer_title='Removed' WHERE account_id=$1",
+        [accountId],
+      );
+      for (const table of ["amp_school_starts", "amp_school_purchase_requests"])
+        await client.query(`DELETE FROM ${table} WHERE account_id=$1`, [
+          accountId,
+        ]);
+      // Independently deployable integrations may not yet be installed.
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_school_connection_requests') AS name",
+          )
+        ).rows[0].name
+      ) {
+        await client.query(
+          "DELETE FROM amp_school_connection_requests WHERE account_id=$1",
+          [accountId],
+        );
+        await client.query(
+          "UPDATE amp_data_agreements SET signer_account_id=NULL,signer_name='Removed',signer_title='Removed' WHERE signer_account_id=$1",
+          [accountId],
+        );
+      }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_school_adoptions') AS name",
+          )
+        ).rows[0].name
+      )
+        await client.query(
+          "DELETE FROM amp_school_adoptions WHERE source_account_id=$1 OR accepted_by_account_id=$1",
+          [accountId],
+        );
+
       // 5. Everything else keyed to the account.
+      // School principals have no mailbox user to cascade from. The principal
+      // owns identities and sessions; pending explicit-link proofs also go.
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_provider_principals') AS relation",
+          )
+        ).rows[0].relation
+      ) {
+        await client.query(
+          "DELETE FROM amp_provider_oauth_flows WHERE link_account_id=$1",
+          [accountId],
+        );
+        await client.query(
+          "DELETE FROM amp_provider_principals WHERE account_id=$1",
+          [accountId],
+        );
+      }
       for (const sql of [
         "DELETE FROM amp_family_approvals WHERE account_id=$1",
         "DELETE FROM amp_demo_visitors WHERE account_id=$1",

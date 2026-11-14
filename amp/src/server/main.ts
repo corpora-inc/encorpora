@@ -1,3 +1,7 @@
+import { userSchema } from "../schools/clever/model.js";
+import { registerSchoolAdoptionRoutes } from "../schools/adoption-routes.js";
+import { CleverClient } from "../schools/clever/client.js";
+import { SchoolError } from "../schools/contracts.js";
 import { serverPoolOptions } from "./database.js";
 import {
   registerDatabaseHealth,
@@ -33,10 +37,11 @@ import {
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
 import { registerDeleteAccountRoutes } from "../account/delete-account-routes.js";
-import { randomBytes } from "node:crypto";
+import { linkSecretConfiguration } from "./link-secret.js";
 import { startDemoWarmer } from "../schools/demo/shared.js";
 import { shippedTermsProblem } from "../schools/demo/snapshot.js";
 import { registerSchoolRoutes } from "../schools/routes.js";
+import { registerCleverOnboarding } from "../schools/clever-onboarding.js";
 import { schoolClock } from "../schools/clock.js";
 import { schoolOidcProviders } from "../schools/oidc.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
@@ -56,6 +61,10 @@ import {
 } from "./accounts";
 import { PostgresRepository } from "./repository";
 import { freeProblemsSetting } from "./trials";
+import { cleverAuthOptions, cleverConfiguration } from "./clever.js";
+import { withProviderSessions } from "../identity/provider-principals.js";
+import { registerCleverAuthRoutes } from "../schools/clever-auth.js";
+import { resolveCleverPerson } from "../schools/clever/identity.js";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
 function trustedProxies(value: string | undefined) {
@@ -84,6 +93,11 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   throw new Error(
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
   );
+const accountsConfig =
+  authMode === "accounts" ? accountsConfiguration(process.env) : undefined;
+const cleverConfig = cleverConfiguration(process.env, accountsConfig);
+const linkSecret = linkSecretConfiguration(process.env);
+if (accountsConfig) accountsConfig.clever = !!cleverConfig;
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   pool: serverPoolOptions,
   development,
@@ -92,24 +106,33 @@ const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
 // AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
 // GitHub), stored in AMP's database.
 const followupConfig = followupConfiguration(process.env);
-const accounts =
-  authMode === "accounts"
-    ? await createAccounts(repository.pool, accountsConfiguration(process.env))
-    : null;
+const accounts = accountsConfig
+  ? await createAccounts(repository.pool, accountsConfig)
+  : null;
+const baseIdentity = development
+  ? developmentAuth()
+  : accounts
+    ? accountsAuth(accounts)
+    : oidcAuth({
+        issuer: required("AMP_OIDC_ISSUER"),
+        audience: required("AMP_OIDC_AUDIENCE"),
+        jwksUrl: required("AMP_OIDC_JWKS_URL"),
+        accessTokenProfile:
+          process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
+            ? "token-use-access"
+            : "rfc9068",
+      });
+const cleverPerson = (claims: {
+  environment: "sandbox" | "production";
+  districtId: string;
+  userId: string;
+}) => resolveCleverPerson(repository.pool, claims);
 const authenticateIdentity = refuseStudentTokens(
-  development
-    ? developmentAuth()
-    : accounts
-      ? accountsAuth(accounts)
-      : oidcAuth({
-          issuer: required("AMP_OIDC_ISSUER"),
-          audience: required("AMP_OIDC_AUDIENCE"),
-          jwksUrl: required("AMP_OIDC_JWKS_URL"),
-          accessTokenProfile:
-            process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
-              ? "token-use-access"
-              : "rfc9068",
-        }),
+  cleverConfig
+    ? withProviderSessions(repository.pool, baseIdentity, {
+        resolvePerson: cleverPerson,
+      })
+    : baseIdentity,
 );
 const authenticate = withAdvertisingPrivacySignals(
   repository.pool,
@@ -138,6 +161,11 @@ else
   app.get("/api/v1/auth-config", async () => ({
     mode: development ? "development" : "oidc",
   }));
+if (accounts && cleverConfig)
+  await registerCleverAuthRoutes(
+    app,
+    cleverAuthOptions(repository.pool, accounts, cleverConfig, authenticate),
+  );
 await registerAdvertisingPermissionRoutes(app, {
   pool: repository.pool,
   authenticate,
@@ -160,9 +188,6 @@ await registerAccessGiftRoutes(app, {
   authenticate,
   development,
 });
-// Without AMP accounts there's no mail, and a restart only means sending an
-// invitation or an approval link again.
-const linkSecret = accounts?.config.secret ?? randomBytes(32).toString("hex");
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
@@ -179,6 +204,7 @@ await registerDeleteAccountRoutes(app, {
   pool: repository.pool,
   authenticate,
   accounts: accounts ?? undefined,
+  ...(cleverConfig ? { resolveCleverPerson: cleverPerson } : {}),
 });
 const schoolNow = schoolClock(process.env);
 await registerSchoolRoutes(app, {
@@ -212,6 +238,39 @@ await registerSchoolRoutes(app, {
         }
       : {}),
   },
+});
+await registerCleverOnboarding(app, {
+  pool: repository.pool,
+  authenticate,
+  config: cleverConfig,
+  worker: false,
+  maintenance: true,
+  origin: accounts?.config.baseURL,
+});
+await registerSchoolAdoptionRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  origin: accounts?.config.baseURL,
+  secret: linkSecret,
+  ...(cleverConfig
+    ? {
+        cleverUser: async (connectionId: string, userId: string) => {
+          const connection = (
+            await repository.pool.query(
+              "SELECT district_id FROM amp_clever_connections WHERE id=$1 AND environment=$2 AND status='active'",
+              [connectionId, cleverConfig.environment],
+            )
+          ).rows[0];
+          if (!connection) throw new SchoolError(404, "not_found");
+          const client = new CleverClient(cleverConfig);
+          return client.get(
+            `/users/${userId}`,
+            await client.districtToken(connection.district_id),
+            userSchema,
+          );
+        },
+      }
+    : {}),
 });
 const fundingOffers = await loadFundingOffers(
   process.env.AMP_FUNDING_OFFERS_FILE,

@@ -4,6 +4,8 @@ import { useState, type ReactNode } from "react";
 import { formatDay } from "../../../../schools/calendar";
 import type { IntegrationsResponse } from "../../../../schools/org-contracts";
 import { AppError } from "../../../lib/AppError";
+import { authConfigOptions } from "../../../lib/query";
+import { cleverEnabled } from "../clever/enabled";
 import { useLoggedError } from "../../../feedback";
 import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
@@ -120,6 +122,7 @@ export function IntegrationsScreen() {
   const view = useQuery(integrationsOptions(session, orgId));
   const data = view.data;
   const canManage = org?.can?.includes("integrations.manage") === true;
+  const clever = cleverEnabled(useQuery(authConfigOptions).data);
   const canImport = org?.can?.includes("roster.import") === true;
   const [saving, setSaving] = useState<string | null>(null);
   const [notice, setNotice] = useState("");
@@ -296,15 +299,24 @@ export function IntegrationsScreen() {
                     title={about.name}
                     detail={about.detail}
                   >
-                    <SetUpWithUs
-                      id={request.id}
-                      name={about.name}
-                      requestedAt={request.requestedAt}
-                      canManage={canManage}
-                      orgId={orgId}
-                      onError={setError}
-                      onDone={setNotice}
-                    />
+                    {request.id === "clever" && clever && canManage ? (
+                      <Link
+                        to="/school/connect"
+                        className={buttonClass("secondary")}
+                      >
+                        Connect
+                      </Link>
+                    ) : (
+                      <SetUpWithUs
+                        id={request.id}
+                        name={about.name}
+                        requestedAt={request.requestedAt}
+                        canManage={canManage}
+                        orgId={orgId}
+                        onError={setError}
+                        onDone={setNotice}
+                      />
+                    )}
                   </Row>
                 );
               })}

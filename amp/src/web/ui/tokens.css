@@ -554,6 +554,8 @@
   --text-small: 13px;
   --text-price: 22px;
   --width-form: 480px;
+  /* A page of reading and forms: the plain pages, the narrow column. */
+  --width-content: 720px;
   --text-title-min: 28px;
   --text-title-max: 42px;
   --shadow-overlay: 0 20px 80px var(--color-shadow);

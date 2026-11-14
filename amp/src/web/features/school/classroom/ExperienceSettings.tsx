@@ -26,6 +26,7 @@ import {
   useTeacherShown,
   type ExperienceScope,
 } from "./api";
+import { orgOptions } from "../api";
 import styles from "./Experience.module.css";
 
 const presets: Record<ExperiencePreset, { title: string; detail: string }> = {
@@ -231,6 +232,12 @@ export function ExperienceSettings({
   experience: Experience;
 }) {
   const write = useExperienceWrite(session, scope);
+  const solo =
+    useQuery({
+      ...orgOptions(session ?? { accountId: "", token: "" }, scope.id),
+      enabled: !!session && scope.kind === "org",
+      refetchOnMount: false,
+    }).data?.solo === true;
   const leaveOff = useLeaveOff(session, scope.id);
   const teacherShown = useTeacherShown(session, scope.id);
   const [error, setError] = useState("");
@@ -344,7 +351,11 @@ export function ExperienceSettings({
       {experience.canEdit ? null : (
         <p className={styles.readOnly}>
           {experience.scope.kind === "org"
-            ? "A school admin changes these. Each class can choose its own from its Student experience tab, unless it’s locked here."
+            ? // A teacher's own school has no admin to point to: each class
+              // chooses for itself.
+              solo
+              ? "Each class chooses its own from its Student experience tab."
+              : "A school admin changes these. Each class can choose its own from its Student experience tab, unless it’s locked here."
             : "This class’s teacher changes these."}
         </p>
       )}

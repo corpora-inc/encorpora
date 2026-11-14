@@ -12,6 +12,7 @@ export function Dialog({
   fullOnPhone = false,
   tall = false,
   back,
+  initialFocus,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -28,8 +29,12 @@ export function Dialog({
   /** A layer under this one (nav/LayerHost): X returns to it, and says so
    * quietly in place of the cross ("‹ Adding fractions"). */
   back?: string;
+  /** A selector inside the sheet to focus, and bring into view, on open (a
+   * picker's chosen tile) in place of the first control. */
+  initialFocus?: string;
 }) {
   const opener = useRef<HTMLElement | null>(null);
+  const content = useRef<HTMLDivElement | null>(null);
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
@@ -41,8 +46,16 @@ export function Dialog({
           aria-describedby={undefined}
           // Focus goes back to what opened it, as a sheet's does, also when
           // it closes by its address (a layer popped by Back).
-          onOpenAutoFocus={() => {
+          ref={content}
+          onOpenAutoFocus={(event) => {
             opener.current = document.activeElement as HTMLElement | null;
+            const target = initialFocus
+              ? content.current?.querySelector<HTMLElement>(initialFocus)
+              : null;
+            if (!target) return;
+            event.preventDefault();
+            target.focus();
+            target.scrollIntoView({ block: "nearest" });
           }}
           onCloseAutoFocus={(event) => {
             onCloseAutoFocus?.(event);

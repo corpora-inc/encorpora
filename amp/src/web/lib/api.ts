@@ -167,6 +167,24 @@ export async function request<T>(
 ): Promise<T> {
   const method =
     options.method ?? (options.body === undefined ? "GET" : "POST");
+  // A student's token opens only the student routes. When a device is handed
+  // to a child ("Let Wren practice here"), the staff screen still mounted
+  // reads again with the child's session for a moment before practice
+  // replaces it: those reads would only be refused (and logged as a session
+  // that ended), so they wait for that screen to go instead.
+  if (
+    method === "GET" &&
+    options.token?.startsWith("st_") &&
+    path.startsWith("/school/") &&
+    !/^\/school\/(student|join)\//.test(path)
+  )
+    return new Promise<T>((_, reject) =>
+      options.signal?.addEventListener(
+        "abort",
+        () => reject(options.signal!.reason),
+        { once: true },
+      ),
+    );
   const purchase = observePurchaseRequest(path, method);
   const learning = observeLearningRequest(path, method);
   const observe = (
@@ -274,6 +292,7 @@ export async function request<T>(
         "details" in data
         ? validationPaths(data.details)
         : null,
+      response.status < 500 ? data : null,
     );
     observe("failed", error.kind);
     error.log();

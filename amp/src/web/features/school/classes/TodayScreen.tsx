@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
@@ -22,6 +23,12 @@ import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
+import {
+  accessFeedEntry,
+  AccessSheets,
+  practiceClosed,
+  useClassAccess,
+} from "../pilots/ClassAccess";
 
 /** A class's Today (the /schools product shot): a feed of what to do and
  * why, then the week in a line. No map: Map is its own tab. */
@@ -33,16 +40,38 @@ function ClassToday({
   place: { org: string; class: string };
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
+  const { start: canStart } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "today",
+    board: false,
+  });
+  const access = useClassAccess(place);
+  // The board and cards wait for practice, and end with it.
+  const closed = practiceClosed(access.view);
+  const practice = accessFeedEntry(
+    access.view,
+    place,
+    access.pilot,
+    access.teaches,
+  );
   const entries = todoEntries({
-    todos: data.todos,
+    todos: data.todos.filter(
+      (todo) => (canStart && !closed) || todo.id !== "start-class",
+    ),
     place,
     canPrint: data.canPrint,
     people: true,
+    // Practice access leads when it needs doing; then the class's own items.
+    lead: !practice,
+    importStudents: true,
   });
+  if (practice) entries.unshift(practice);
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
-  if (starting && data.canPrint)
+  if (starting && data.canPrint && !closed)
     entries.push({
       id: "cards",
       title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
@@ -105,7 +134,17 @@ export function TodayScreen() {
   });
   const data = today.data;
   const demo = useDemoOrg(place.org);
+  const access = useClassAccess(place);
+  const closed = practiceClosed(access.view);
+  // Practice started from this page: the code waits for the next visit
+  // rather than pushing the feed down under the teacher's finger (rule 1).
+  // The new first item, Start class, opens the board with the code.
+  const closedOnArrival = useRef<boolean | null>(null);
+  if (closedOnArrival.current === null && !access.pending)
+    closedOnArrival.current = closed;
+  const codeShown = !closed && !closedOnArrival.current;
   const loading =
+    access.pending ||
     org.isPending ||
     today.isPending ||
     presence.isPending ||
@@ -135,15 +174,17 @@ export function TodayScreen() {
                 <p>{fullDay(data.today)}</p>
               </div>
             )}
-            {code && (
+            {/* The code waits for a roster, and for practice. A family's
+                children mostly practice on the parent's device: their code
+                is an option under the children, not the page's lead. */}
+            {code && codeShown && !family && data.students.length > 0 && (
               <SignInCode
                 code={code}
                 place={place}
                 family={family}
                 // The bar's Start class opens the board, except in a demo
-                // (its bar leads to the real class) and a family (no class
-                // to start).
-                board={family || demo}
+                // (its bar leads to the real class).
+                board={demo}
                 manage={presence.data?.canManage ?? false}
                 locked={!!presence.data?.class.joinLockedUntil}
               />
@@ -157,12 +198,17 @@ export function TodayScreen() {
               data={data}
               place={place}
               code={code ?? null}
+              manage={presence.data?.canManage ?? false}
+              locked={!!presence.data?.class.joinLockedUntil}
               session={account}
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}
             />
           ) : (
-            <ClassToday data={data} place={place} />
+            <>
+              <ClassToday data={data} place={place} />
+              <AccessSheets place={place} />
+            </>
           )}
         </div>
       )}
@@ -179,6 +225,11 @@ export function MapScreen() {
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), place.org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({
@@ -207,7 +258,7 @@ export function MapScreen() {
         <div>
           <div className={styles.mapHead}>
             <ScreenTitle>Class map</ScreenTitle>
-            <MapKey data={map.data} />
+            <MapKey data={map.data} family={family} />
           </div>
           <ClassMap
             data={map.data}

@@ -87,6 +87,9 @@ start_web() {
   set +m
   wait_for "$ORIGIN/"
 }
+migrate() {
+  AMP_DATABASE_URL="$DB_URL" npx tsx -e "import('./scripts/migrate.ts').then(m=>m.migrate(process.env.AMP_DATABASE_URL)).then(()=>process.exit(0))"
+}
 seed() {
   AMP_DATABASE_URL="$DB_URL" AMP_PREVIEW_ORIGIN="$ORIGIN" npx tsx scripts/design-personas.ts
 }
@@ -94,13 +97,14 @@ case "${1:-start}" in
   start)
     psql "$PG/postgres" -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'" | grep -q 1 ||
       psql "$PG/postgres" -c "CREATE DATABASE $DB_NAME" >/dev/null
-    # The API migrates nothing itself; the seed script does, so run it first
-    # against an empty database with the API not yet answering.
-    AMP_DATABASE_URL="$DB_URL" npx tsx -e "import('./scripts/migrate.ts').then(m=>m.migrate(process.env.AMP_DATABASE_URL)).then(()=>process.exit(0))"
+    # The API migrates nothing itself, so migrate first, with the API not yet
+    # answering.
+    migrate
     start_render; start_api; start_web; seed
     echo "Preview: $ORIGIN/dev/personas" ;;
   stop) stop_one web; stop_one api; stop_one render ;;
-  restart) stop_one web; stop_one api; stop_one render; start_render; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
+  # A branch's new migrations apply before it serves: never an old schema.
+  restart) stop_one web; stop_one api; stop_one render; migrate; start_render; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
   reseed)
     stop_one web; stop_one api; stop_one render
     psql "$PG/postgres" -c "DROP DATABASE IF EXISTS $DB_NAME WITH (FORCE)" >/dev/null

@@ -57,7 +57,7 @@ export function Toast({
       </RadixToast.Root>
       {/* A confirmation shows at the top, clear of the actions at the bottom. */}
       <RadixToast.Viewport
-        className={`${styles.viewport} ${(placement ?? (tone === "status" ? "top" : "bottom")) === "top" ? styles.top : ""}`}
+        className={`${styles.viewport} ${(placement ?? (tone === "status" ? "top" : "bottom")) === "top" ? styles.top : ""} ${!placement && tone === "status" ? styles.statusTop : ""}`}
       />
     </RadixToast.Provider>,
     document.body,

@@ -10,17 +10,39 @@ import {
   previewAccountDeletion,
 } from "./delete-account.js";
 import { deleteAccountSchema } from "./deletion-contracts.js";
+import {
+  providerToken,
+  resolveProviderSession,
+  type ResolveCleverPerson,
+} from "../identity/provider-principals.js";
 
 /** "Delete my account" (src/account/delete-account.ts): what goes, then the
  * deletion itself. A student session never reaches either: `authenticate`
  * refuses student tokens. */
 export async function registerDeleteAccountRoutes(
   app: FastifyInstance,
-  options: { pool: Pool; authenticate: Authenticator; accounts?: Accounts },
+  options: {
+    pool: Pool;
+    authenticate: Authenticator;
+    accounts?: Accounts;
+    resolveCleverPerson?: ResolveCleverPerson;
+  },
 ) {
   // Read the authenticated session itself, never an account-wide timestamp or
   // updatedAt (ordinary session refreshes do not prove a new sign-in).
   const freshForMs = async (request: FastifyRequest, account: string) => {
+    if (providerToken(request)) {
+      const session = await resolveProviderSession(
+        options.pool,
+        request,
+        options.resolveCleverPerson,
+      );
+      if (!session || session.accountId !== account) return 0;
+      const age = Date.now() - session.createdAt.getTime();
+      return Number.isFinite(age) && age >= 0
+        ? Math.max(0, 10 * 60_000 - age)
+        : 0;
+    }
     const result = await options.accounts?.auth.api.getSession({
       headers: fromNodeHeaders(request.headers),
       query: { disableCookieCache: true, disableRefresh: true },

@@ -5,6 +5,7 @@ import { accountClient } from "./account-client";
 import { buttonClass } from "./ui/Button";
 import "./account-security.css";
 import { DeleteAccountEntry } from "./features/account/DeleteAccountEntry";
+import { LinkCleverButton } from "./features/school/clever/LinkCleverButton";
 
 type Summary = {
   email: string;
@@ -653,6 +654,7 @@ export function AccountSecurity() {
                               Link {names[provider] ?? provider}
                             </button>
                           ))}
+                        <LinkCleverButton className="secondary" />
                         {!summary.providers.length && (
                           <p>No external sign-in providers are available.</p>
                         )}

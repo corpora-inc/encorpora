@@ -14,6 +14,7 @@ import {
   noteAttention,
   showHelpSurface,
   startActivity,
+  startStudentActivity,
 } from "../student-activity";
 
 const fetchMock = vi.fn((_url: string, _init: RequestInit) =>
@@ -113,9 +114,9 @@ test("help rides on the heartbeat, with time under the help's surface", async ()
       .reduce((sum: number, d: { activeMs: number }) => sum + d.activeMs, 0);
   expect(by("hint")).toBe(5_000);
   expect(by("video")).toBe(50_000);
-  expect(deltas.every((d: { problemId?: string }) => d.problemId === "p1")).toBe(
-    true,
-  );
+  expect(
+    deltas.every((d: { problemId?: string }) => d.problemId === "p1"),
+  ).toBe(true);
   const events = sent.flatMap((b) => b.events ?? []);
   expect(events).toHaveLength(1);
   expect(events[0]).toMatchObject({
@@ -137,7 +138,7 @@ test("a learner whose time isn't recorded sends nothing, help included", async (
 
 test("offline: help waits for the next heartbeat", async () => {
   fetchMock.mockRejectedValueOnce(new Error("offline"));
-  vi.spyOn(console, "warn").mockImplementation(() => {});
+  const said = vi.spyOn(console, "error").mockImplementation(() => {});
   const activity = startActivity(() => ({ url: "/beat", token: "t" }));
   noteHelp({ kind: "lesson", source: "pathways", ref: "x" });
   await vi.advanceTimersByTimeAsync(30_000);
@@ -147,4 +148,48 @@ test("offline: help waits for the next heartbeat", async () => {
   expect(sent[0].events).toHaveLength(1);
   expect(sent[1].events).toHaveLength(1);
   expect(sent[1].events[0].ageMs).toBe(60_000);
+});
+
+test("a student signed in after boot is counted, without a reload", async () => {
+  // "Let Aug practice here": the app booted as the parent's, then the child's
+  // session began in place. Its time goes to the school's activity route.
+  sessionStorage.clear();
+  localStorage.clear();
+  const activity = startStudentActivity();
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(30_000);
+  expect(fetchMock).not.toHaveBeenCalled();
+  sessionStorage.setItem(
+    "amp.student",
+    JSON.stringify({ accountId: "school:p1", token: "st_fixture" }),
+  );
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(10_000);
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(25_000);
+  activity.stop();
+  const [url, init] = fetchMock.mock.calls[0]!;
+  expect(url).toBe("/api/v1/school/student/activity");
+  expect((init.headers as Record<string, string>).Authorization).toBe(
+    "Bearer st_fixture",
+  );
+  sessionStorage.clear();
+});
+
+test("a refused heartbeat is logged with its reason", async () => {
+  fetchMock.mockResolvedValueOnce(
+    new Response(JSON.stringify({ error: "request_origin_invalid" }), {
+      status: 403,
+    }),
+  );
+  const said = vi.spyOn(console, "error").mockImplementation(() => {});
+  const activity = startActivity(() => ({ url: "/beat", token: "t" }));
+  window.dispatchEvent(new Event("pointerdown"));
+  await vi.advanceTimersByTimeAsync(30_000);
+  activity.stop();
+  expect(said).toHaveBeenCalledWith(
+    "Active time not saved",
+    403,
+    "request_origin_invalid",
+  );
 });

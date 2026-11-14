@@ -1,0 +1,781 @@
+{
+  "status": "passed",
+  "fixture": {
+    "schools": 100,
+    "students": 50000,
+    "teachers": 2000,
+    "classes": 2000,
+    "schoolViewers": 1,
+    "portalOnlyStaff": 1,
+    "districtAdmins": 1,
+    "massUpdate": false,
+    "pageSize": 250
+  },
+  "runtime": {
+    "worker": true,
+    "node": "22.23.4",
+    "postgres": {
+      "version": "17.10",
+      "max_connections": 100,
+      "max_locks_per_transaction": 64
+    },
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "migrationSnapshot": {
+    "count": 129,
+    "latest": "0124-school-access-indexes.sql",
+    "checksum": "ac7a88e5ccb14d7f4327a38b77d1a3f0"
+  },
+  "assertions": [
+    "first import counts and every school's distribution",
+    "repeat stable person/learner/membership IDs",
+    "teacher class scope",
+    "SchoolTechLead viewer scope and PortalOnly denial",
+    "district admin tenant scope",
+    "student denied staff access",
+    "Events transfer retains learner and attempt",
+    "former teacher loses transferred student access",
+    "empty Events poll preserves cursor, counts and identity/membership IDs",
+    "district license seats every learner once and reconciliation is idempotent",
+    "sampled paid access and indexed seat lookup"
+  ],
+  "limitations": [
+    "synthetic HTTP transport, no external network latency",
+    "single connection on local PostgreSQL",
+    "memory samples cover Node only, excluding PostgreSQL",
+    "query instrumentation adds small per-call overhead",
+    "includes worker claim, due check and post-sync seat reconciliation; excludes serving API and browser"
+  ],
+  "measurementDate": "2026-11-13",
+  "nodeHeapLimitMiB": 1408,
+  "processMaximumRssMiB": 598.42,
+  "measurements": [
+    {
+      "phase": "first_full",
+      "mode": "full",
+      "counts": {
+        "schools": 100,
+        "users": 52003,
+        "sections": 2000,
+        "courses": 1,
+        "terms": 1
+      },
+      "seconds": 22.8,
+      "httpRequests": 223,
+      "queryCount": 619,
+      "queryBudget": 3492,
+      "milliseconds": 22801.85,
+      "querySeconds": 21.06,
+      "cpuSeconds": 3.93,
+      "baselineRssMiB": 226.05,
+      "peakRssMiB": 543.59,
+      "baselineHeapUsedMiB": 128.53,
+      "baselineHeapTotalMiB": 152.83,
+      "peakHeapUsedMiB": 393.77,
+      "peakHeapTotalMiB": 438.58
+    },
+    {
+      "phase": "repeat_full",
+      "mode": "full",
+      "counts": {
+        "schools": 100,
+        "users": 52003,
+        "sections": 2000,
+        "courses": 1,
+        "terms": 1
+      },
+      "seconds": 9.91,
+      "httpRequests": 223,
+      "queryCount": 415,
+      "queryBudget": 3492,
+      "milliseconds": 9908.52,
+      "querySeconds": 8.27,
+      "cpuSeconds": 3.26,
+      "baselineRssMiB": 467.28,
+      "peakRssMiB": 530.13,
+      "baselineHeapUsedMiB": 237.91,
+      "baselineHeapTotalMiB": 326.59,
+      "peakHeapUsedMiB": 366.23,
+      "peakHeapTotalMiB": 409.86
+    },
+    {
+      "phase": "transfer_events",
+      "mode": "events",
+      "counts": {
+        "schools": 100,
+        "users": 52003,
+        "sections": 2000,
+        "courses": 1,
+        "terms": 1
+      },
+      "seconds": 9.29,
+      "httpRequests": 2,
+      "queryCount": 424,
+      "queryBudget": 3500,
+      "milliseconds": 9290.2,
+      "querySeconds": 8.11,
+      "cpuSeconds": 3.17,
+      "baselineRssMiB": 530.16,
+      "peakRssMiB": 598,
+      "baselineHeapUsedMiB": 361.66,
+      "baselineHeapTotalMiB": 409.86,
+      "peakHeapUsedMiB": 441.85,
+      "peakHeapTotalMiB": 477.44
+    },
+    {
+      "phase": "empty_events",
+      "mode": "events",
+      "counts": {
+        "schools": 100,
+        "users": 52003,
+        "sections": 2000,
+        "courses": 1,
+        "terms": 1
+      },
+      "seconds": 0.02,
+      "httpRequests": 2,
+      "queryCount": 29,
+      "queryBudget": 50,
+      "milliseconds": 23.31,
+      "querySeconds": 0.02,
+      "cpuSeconds": 0,
+      "baselineRssMiB": 555.36,
+      "peakRssMiB": 555.36,
+      "baselineHeapUsedMiB": 286.48,
+      "baselineHeapTotalMiB": 357.78,
+      "peakHeapUsedMiB": 286.92,
+      "peakHeapTotalMiB": 357.78
+    },
+    {
+      "phase": "issue_district_license",
+      "assigned": 50000,
+      "seats": 50000,
+      "seconds": 3.38,
+      "httpRequests": 0,
+      "queryCount": 162,
+      "queryBudget": 220,
+      "milliseconds": 3379.23,
+      "querySeconds": 3.34,
+      "cpuSeconds": 0.13,
+      "baselineRssMiB": 555.36,
+      "peakRssMiB": 571.61,
+      "baselineHeapUsedMiB": 286.97,
+      "baselineHeapTotalMiB": 357.78,
+      "peakHeapUsedMiB": 315.51,
+      "peakHeapTotalMiB": 374
+    },
+    {
+      "phase": "repeat_seat_reconciliation",
+      "assigned": 0,
+      "diagnosticPlans": [
+        {
+          "sql": "WITH candidates AS MATERIALIZED ( SELECT s.id,s.grant_id FROM amp_seats s JOIN amp_people p ON p.id=s.person_id WHERE p.tenant_id=$1 AND ($2::uuid IS NULL OR p.id=$2) AND s.released_at IS NULL ), eligible AS MATERIALIZED ( SELECT s.grant_id,s.person_id,l.class_ids FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id JOIN amp_people p ON p.id=s.person_id JOIN amp_org_roles r ON r.person_id=s.person_id AND r.role='student' JOIN amp_orgs o ON o.id=r.org_id AND o.path @> ARRAY[l.org_id]::uuid[] WHERE (s.grant_id IN(SELECT grant_id FROM candidates)) IS TRUE AND s.released_at IS NULL AND p.deleted_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now() AND r.begin_on<=(now() AT TIME ZONE o.timezone)::date AND (r.end_on IS NULL OR r.end_on>(now() AT TIME ZONE o.timezone)::date) ), valid AS MATERIALIZED ( SELECT grant_id FROM eligible WHERE class_ids IS NULL UNION ALL SELECT s.grant_id FROM eligible s JOIN amp_enrollments e ON e.person_id=s.person_id AND e.role='student' AND e.class_id=ANY(s.class_ids) JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL JOIN amp_orgs o ON o.id=c.org_id WHERE s.class_ids IS NOT NULL AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date) ), released AS ( UPDATE amp_seats s SET released_at=now() FROM candidates candidate WHERE s.id=candidate.id AND s.released_at IS NULL AND candidate.grant_id LIKE 'school-seat:%' AND candidate.grant_id NOT IN(SELECT grant_id FROM valid) RETURNING s.grant_id) UPDATE amp_grants SET status='revoked' WHERE id IN(SELECT grant_id FROM released)",
+          "plan": {
+            "Plan": {
+              "Node Type": "ModifyTable",
+              "Operation": "Update",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "amp_grants",
+              "Alias": "amp_grants",
+              "Startup Cost": 2656.12,
+              "Total Cost": 2664.15,
+              "Plan Rows": 0,
+              "Plan Width": 0,
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE candidates",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 10.17,
+                  "Total Cost": 2592.28,
+                  "Plan Rows": 280,
+                  "Plan Width": 48,
+                  "Inner Unique": true,
+                  "Plans": [
+                    {
+                      "Node Type": "Bitmap Heap Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "amp_seats",
+                      "Alias": "s",
+                      "Startup Cost": 9.75,
+                      "Total Cost": 594.48,
+                      "Plan Rows": 280,
+                      "Plan Width": 64,
+                      "Recheck Cond": "(released_at IS NULL)",
+                      "Plans": [
+                        {
+                          "Node Type": "Bitmap Index Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Index Name": "amp_seats_open_license_idx",
+                          "Startup Cost": 0,
+                          "Total Cost": 9.68,
+                          "Plan Rows": 280,
+                          "Plan Width": 0
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "amp_people_pkey",
+                      "Relation Name": "amp_people",
+                      "Alias": "p",
+                      "Startup Cost": 0.41,
+                      "Total Cost": 7.13,
+                      "Plan Rows": 1,
+                      "Plan Width": 16,
+                      "Index Cond": "(id = s.person_id)",
+                      "Filter": "(tenant_id = 'fe8d19a2-b200-4fe4-b773-843ccf6d17a7'::uuid)"
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE eligible",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 7.58,
+                  "Total Cost": 38.98,
+                  "Plan Rows": 1,
+                  "Plan Width": 80,
+                  "Inner Unique": true,
+                  "Join Filter": "(o.path @> ARRAY[l.org_id])",
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 7.44,
+                      "Total Cost": 38.78,
+                      "Plan Rows": 1,
+                      "Plan Width": 120,
+                      "Inner Unique": true,
+                      "Join Filter": "(p_1.id = s_1.person_id)",
+                      "Plans": [
+                        {
+                          "Node Type": "Nested Loop",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 7.02,
+                          "Total Cost": 38.15,
+                          "Plan Rows": 1,
+                          "Plan Width": 136,
+                          "Inner Unique": false,
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 6.73,
+                              "Total Cost": 30.98,
+                              "Plan Rows": 1,
+                              "Plan Width": 96,
+                              "Inner Unique": false,
+                              "Plans": [
+                                {
+                                  "Node Type": "Index Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Scan Direction": "Forward",
+                                  "Index Name": "amp_school_licenses_org_idx",
+                                  "Relation Name": "amp_school_licenses",
+                                  "Alias": "l",
+                                  "Startup Cost": 0.15,
+                                  "Total Cost": 16.36,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 64,
+                                  "Index Cond": "((status = 'active'::text) AND (ends_at > now()))",
+                                  "Filter": "(starts_at <= now())"
+                                },
+                                {
+                                  "Node Type": "Index Scan",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Scan Direction": "Forward",
+                                  "Index Name": "amp_seats_open_license_idx",
+                                  "Relation Name": "amp_seats",
+                                  "Alias": "s_1",
+                                  "Startup Cost": 6.58,
+                                  "Total Cost": 14.6,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 64,
+                                  "Index Cond": "(license_id = l.id)",
+                                  "Filter": "((ANY (grant_id = (hashed SubPlan 2).col1)) IS TRUE)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "CTE Scan",
+                                      "Parent Relationship": "SubPlan",
+                                      "Subplan Name": "SubPlan 2",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "CTE Name": "candidates",
+                                      "Alias": "candidates",
+                                      "Startup Cost": 0,
+                                      "Total Cost": 5.6,
+                                      "Plan Rows": 280,
+                                      "Plan Width": 32
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Index Scan",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Scan Direction": "Forward",
+                              "Index Name": "amp_org_roles_person_idx",
+                              "Relation Name": "amp_org_roles",
+                              "Alias": "r",
+                              "Startup Cost": 0.29,
+                              "Total Cost": 7.17,
+                              "Plan Rows": 1,
+                              "Plan Width": 40,
+                              "Index Cond": "(person_id = s_1.person_id)",
+                              "Filter": "(role = 'student'::text)"
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "amp_people_pkey",
+                          "Relation Name": "amp_people",
+                          "Alias": "p_1",
+                          "Startup Cost": 0.41,
+                          "Total Cost": 0.62,
+                          "Plan Rows": 1,
+                          "Plan Width": 16,
+                          "Index Cond": "(id = r.person_id)",
+                          "Filter": "(deleted_at IS NULL)"
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "amp_orgs_pkey",
+                      "Relation Name": "amp_orgs",
+                      "Alias": "o",
+                      "Startup Cost": 0.14,
+                      "Total Cost": 0.18,
+                      "Plan Rows": 1,
+                      "Plan Width": 72,
+                      "Index Cond": "(id = r.org_id)",
+                      "Filter": "((r.begin_on <= ((now() AT TIME ZONE timezone))::date) AND ((r.end_on IS NULL) OR (r.end_on > ((now() AT TIME ZONE timezone))::date)))"
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Append",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE valid",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 0,
+                  "Total Cost": 9.01,
+                  "Plan Rows": 2,
+                  "Plan Width": 32,
+                  "Subplans Removed": 0,
+                  "Plans": [
+                    {
+                      "Node Type": "CTE Scan",
+                      "Parent Relationship": "Member",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "CTE Name": "eligible",
+                      "Alias": "eligible",
+                      "Startup Cost": 0,
+                      "Total Cost": 0.02,
+                      "Plan Rows": 1,
+                      "Plan Width": 32,
+                      "Filter": "(class_ids IS NULL)"
+                    },
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Member",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 0.83,
+                      "Total Cost": 8.98,
+                      "Plan Rows": 1,
+                      "Plan Width": 32,
+                      "Inner Unique": true,
+                      "Join Filter": "((e.begin_on <= ((now() AT TIME ZONE o_1.timezone))::date) AND ((e.end_on IS NULL) OR (e.end_on > ((now() AT TIME ZONE o_1.timezone))::date)))",
+                      "Plans": [
+                        {
+                          "Node Type": "Nested Loop",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Join Type": "Inner",
+                          "Startup Cost": 0.69,
+                          "Total Cost": 8.78,
+                          "Plan Rows": 1,
+                          "Plan Width": 56,
+                          "Inner Unique": true,
+                          "Plans": [
+                            {
+                              "Node Type": "Nested Loop",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Join Type": "Inner",
+                              "Startup Cost": 0.41,
+                              "Total Cost": 8.48,
+                              "Plan Rows": 1,
+                              "Plan Width": 56,
+                              "Inner Unique": false,
+                              "Plans": [
+                                {
+                                  "Node Type": "CTE Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "CTE Name": "eligible",
+                                  "Alias": "s_2",
+                                  "Startup Cost": 0,
+                                  "Total Cost": 0.02,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 80,
+                                  "Filter": "(class_ids IS NOT NULL)"
+                                },
+                                {
+                                  "Node Type": "Index Scan",
+                                  "Parent Relationship": "Inner",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Scan Direction": "Forward",
+                                  "Index Name": "amp_enrollments_person_idx",
+                                  "Relation Name": "amp_enrollments",
+                                  "Alias": "e",
+                                  "Startup Cost": 0.41,
+                                  "Total Cost": 8.45,
+                                  "Plan Rows": 1,
+                                  "Plan Width": 40,
+                                  "Index Cond": "((person_id = s_2.person_id) AND (role = 'student'::text))",
+                                  "Filter": "(class_id = ANY (s_2.class_ids))"
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Index Scan",
+                              "Parent Relationship": "Inner",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Scan Direction": "Forward",
+                              "Index Name": "amp_classes_pkey",
+                              "Relation Name": "amp_classes",
+                              "Alias": "c",
+                              "Startup Cost": 0.28,
+                              "Total Cost": 0.3,
+                              "Plan Rows": 1,
+                              "Plan Width": 32,
+                              "Index Cond": "(id = e.class_id)",
+                              "Filter": "(archived_at IS NULL)"
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "amp_orgs_pkey",
+                          "Relation Name": "amp_orgs",
+                          "Alias": "o_1",
+                          "Startup Cost": 0.14,
+                          "Total Cost": 0.17,
+                          "Plan Rows": 1,
+                          "Plan Width": 20,
+                          "Index Cond": "(id = c.org_id)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "ModifyTable",
+                  "Operation": "Update",
+                  "Parent Relationship": "InitPlan",
+                  "Subplan Name": "CTE released",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "amp_seats",
+                  "Alias": "s_3",
+                  "Startup Cost": 0.33,
+                  "Total Cost": 15.41,
+                  "Plan Rows": 1,
+                  "Plan Width": 54,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 0.33,
+                      "Total Cost": 15.41,
+                      "Plan Rows": 1,
+                      "Plan Width": 54,
+                      "Inner Unique": true,
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "candidates",
+                          "Alias": "candidate",
+                          "Startup Cost": 0.04,
+                          "Total Cost": 7.04,
+                          "Plan Rows": 1,
+                          "Plan Width": 56,
+                          "Filter": "((grant_id ~~ 'school-seat:%'::text) AND (NOT (ANY (grant_id = (hashed SubPlan 5).col1))))",
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "SubPlan",
+                              "Subplan Name": "SubPlan 5",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "valid",
+                              "Alias": "valid",
+                              "Startup Cost": 0,
+                              "Total Cost": 0.04,
+                              "Plan Rows": 2,
+                              "Plan Width": 32
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "amp_seats_pkey",
+                          "Relation Name": "amp_seats",
+                          "Alias": "s_3",
+                          "Startup Cost": 0.29,
+                          "Total Cost": 8.31,
+                          "Plan Rows": 1,
+                          "Plan Width": 22,
+                          "Index Cond": "(id = candidate.id)",
+                          "Filter": "(released_at IS NULL)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 0.44,
+                  "Total Cost": 8.47,
+                  "Plan Rows": 1,
+                  "Plan Width": 94,
+                  "Inner Unique": true,
+                  "Plans": [
+                    {
+                      "Node Type": "Aggregate",
+                      "Strategy": "Hashed",
+                      "Partial Mode": "Simple",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 0.02,
+                      "Total Cost": 0.03,
+                      "Plan Rows": 1,
+                      "Plan Width": 88,
+                      "Group Key": [
+                        "released.grant_id"
+                      ],
+                      "Planned Partitions": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "CTE Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "CTE Name": "released",
+                          "Alias": "released",
+                          "Startup Cost": 0,
+                          "Total Cost": 0.02,
+                          "Plan Rows": 1,
+                          "Plan Width": 88
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "amp_grants_pkey",
+                      "Relation Name": "amp_grants",
+                      "Alias": "amp_grants",
+                      "Startup Cost": 0.41,
+                      "Total Cost": 8.43,
+                      "Plan Rows": 1,
+                      "Plan Width": 38,
+                      "Index Cond": "(id = released.grant_id)"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "seconds": 0.27,
+      "httpRequests": 0,
+      "queryCount": 10,
+      "queryBudget": 20,
+      "milliseconds": 265.01,
+      "querySeconds": 0.26,
+      "cpuSeconds": 0,
+      "baselineRssMiB": 571.61,
+      "peakRssMiB": 571.61,
+      "baselineHeapUsedMiB": 314.57,
+      "baselineHeapTotalMiB": 374,
+      "peakHeapUsedMiB": 314.76,
+      "peakHeapTotalMiB": 374
+    },
+    {
+      "phase": "sample_paid_access",
+      "samples": 100,
+      "seconds": 0.18,
+      "httpRequests": 0,
+      "queryCount": 101,
+      "queryBudget": 104,
+      "milliseconds": 176.6,
+      "querySeconds": 0.18,
+      "cpuSeconds": 0.01,
+      "baselineRssMiB": 571.61,
+      "peakRssMiB": 571.61,
+      "baselineHeapUsedMiB": 314.84,
+      "baselineHeapTotalMiB": 374,
+      "peakHeapUsedMiB": 315.67,
+      "peakHeapTotalMiB": 374
+    }
+  ],
+  "paidAccess": {
+    "samples": 100,
+    "medianMs": 1.41,
+    "p95Ms": 5.56,
+    "maxMs": 10.85,
+    "seats": 50000,
+    "grants": 50000,
+    "lookupPlans": {
+      "seatByGrant": {
+        "planningMs": 0.261,
+        "executionMs": 0.039,
+        "plan": {
+          "node": "Index Scan",
+          "index": "amp_seats_grant_idx",
+          "relation": "amp_seats",
+          "rows": 1,
+          "loops": 1,
+          "sharedHitBlocks": 4,
+          "sharedReadBlocks": 0
+        }
+      },
+      "paidGrant": {
+        "planningMs": 0.349,
+        "executionMs": 1.032,
+        "plan": {
+          "node": "Limit",
+          "rows": 1,
+          "loops": 1,
+          "sharedHitBlocks": 81,
+          "sharedReadBlocks": 0,
+          "children": [
+            {
+              "node": "Index Scan",
+              "index": "amp_grants_learner_idx",
+              "relation": "amp_grants",
+              "rows": 1,
+              "loops": 1,
+              "sharedHitBlocks": 81,
+              "sharedReadBlocks": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "boundedApiReads": {
+    "districtStudents": 50000,
+    "selectedSchoolStudents": 500,
+    "iterations": 20,
+    "beforeRssMiB": 183.40625,
+    "afterRssMiB": 184.84375,
+    "peakRssMiB": 184.84375
+  },
+  "sourceFingerprints": [
+    {
+      "file": "src/schools/clever/client.ts",
+      "sha256": "5a56d646cab7ae43baf014ae772baf28cb2c9166a5c99852f689f7c59edfdc63"
+    },
+    {
+      "file": "src/schools/clever/model.ts",
+      "sha256": "c8734de3259037362c82c94967351e85540141797fcad134710c14c632692df0"
+    },
+    {
+      "file": "src/schools/clever/sync.ts",
+      "sha256": "184745c6984c578b4c432500ea5882d8a41bd74de0e9cbc23f0270b0a6928398"
+    },
+    {
+      "file": "src/schools/clever/worker.ts",
+      "sha256": "b82bfb5e3275adc543060d81f8ce8b82643e56f970e428c1400c05865de42db8"
+    },
+    {
+      "file": "src/schools/clever/store.ts",
+      "sha256": "33ab2df176149769bd5dbfd74fa4631bb17bb34a0a9598792509498b24d744d6"
+    },
+    {
+      "file": "src/schools/authz.ts",
+      "sha256": "c5bc89af759d1fba014b4aaafb8ad368ef59ea934c699e12291a5348f036b3ff"
+    },
+    {
+      "file": "src/schools/repository.ts",
+      "sha256": "025a0c5c1296c334f4c32cefc345bf973099acf216aeeb4ec209d498ba8b2b64"
+    }
+  ]
+}

@@ -26,16 +26,20 @@ export function TextField({
     </label>
   );
 }
-/** A multi-line field with a live character count against its limit. */
+/** A multi-line field. Its count against the limit shows only once the text
+ * nears it (four fifths), on the label's line, so nothing moves. */
 export function TextArea({
   label,
   maxLength,
   value,
+  hint,
   ...props
 }: TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string;
   maxLength: number;
   value: string;
+  /** One quiet line under the field: who reads it, what to leave out. */
+  hint?: string;
 }) {
   const id = useId();
   return (
@@ -43,7 +47,9 @@ export function TextArea({
       <span className={styles.fieldHeading}>
         <span>{label}</span>
         <span className={styles.count} aria-hidden="true">
-          {`${value.length}/${maxLength}`}
+          {value.length >= maxLength * 0.8
+            ? `${value.length}/${maxLength}`
+            : ""}
         </span>
       </span>
       <textarea
@@ -52,7 +58,13 @@ export function TextArea({
         value={value}
         maxLength={maxLength}
         className={`${styles.input} ${styles.textarea}`}
+        aria-describedby={hint ? `${id}-hint` : undefined}
       />
+      {hint && (
+        <span id={`${id}-hint`} className={styles.fieldHint}>
+          {hint}
+        </span>
+      )}
     </label>
   );
 }

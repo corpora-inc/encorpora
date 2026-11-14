@@ -1,0 +1,61 @@
+# Deployment template: substitute the release image and worker Secret name.
+# This is a separate pod, never an exec, sidecar, or child of the serving API.
+# The worker Secret supplies AMP_CLEVER_API_VERSION, matching the API deployment.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: amp-clever-sync
+spec:
+  schedule: "* * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 1800
+      template:
+        spec:
+          restartPolicy: Never
+          volumes:
+            - name: temporary
+              emptyDir:
+                sizeLimit: 64Mi
+          containers:
+            - name: sync
+              image: ${AMP_API_IMAGE}
+              command:
+                [
+                  "node",
+                  "--max-old-space-size=1408",
+                  "--import",
+                  "tsx",
+                  "scripts/clever-sync.ts",
+                  "sync",
+                  "all",
+                  "auto",
+                ]
+              volumeMounts:
+                - name: temporary
+                  mountPath: /tmp
+              envFrom:
+                - secretRef:
+                    name: ${AMP_CLEVER_WORKER_SECRET}
+              env:
+                - name: TMPDIR
+                  value: "/tmp"
+                - name: AMP_DATABASE_POOL_MAX
+                  value: "2"
+              resources:
+                requests:
+                  cpu: "1"
+                  memory: "1Gi"
+                limits:
+                  cpu: "1"
+                  memory: "2Gi"
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                capabilities:
+                  drop: ["ALL"]

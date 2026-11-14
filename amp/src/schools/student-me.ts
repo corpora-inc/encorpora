@@ -1,4 +1,9 @@
 import type { Pool } from "pg";
+import {
+  schoolPilotAccess,
+  schoolAllowance,
+  studentPracticeGate,
+} from "./pilot-access.js";
 import { meSchema, type SignedInMe } from "../account/contracts.js";
 import { retentionNotice } from "../family/contracts.js";
 import { ApiError } from "../server/repository.js";
@@ -54,7 +59,7 @@ export async function studentMe(
   ).rows;
   const grants = (
     await pool.query(
-      `SELECT channel,status,starts_at,ends_at,status='active' AND starts_at<=now() AND ends_at>now() AS in_force
+      `SELECT channel,status,starts_at,ends_at,status='active' AND starts_at<=now() AND ends_at>now() AND amp_school_grant_valid(id) AS in_force
        FROM amp_grants WHERE learner_id=$1 ORDER BY starts_at,id`,
       [learner.id],
     )
@@ -62,9 +67,11 @@ export async function studentMe(
   const current = grants
     .filter((grant) => grant.in_force)
     .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
-  const allowance = freeAllowance(
-    learner.free_online_used,
-    learner.free_workbooks_used,
+  const pilot = await schoolPilotAccess(pool, learner.id);
+  const covered = !!current || pilot.active;
+  const allowance = schoolAllowance(
+    freeAllowance(learner.free_online_used, learner.free_workbooks_used),
+    pilot.managed,
   );
   const learningAllowed = await learningConsentActive(
     pool,
@@ -73,7 +80,12 @@ export async function studentMe(
     learner.id,
   );
   const canPractice =
-    learningAllowed && (!!current || allowance.problems.remaining > 0);
+    learningAllowed && (covered || allowance.problems.remaining > 0);
+  // A school's student whom nothing covers is waiting on their teacher, never
+  // on a family's free problems: the app says which, in school terms.
+  const practice = covered
+    ? null
+    : await studentPracticeGate(pool, pilot, home.path);
   const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,
@@ -99,9 +111,11 @@ export async function studentMe(
         freeAllowance: allowance,
         entitlement: {
           active: canPractice,
-          licensed: !!current,
-          plan: current?.channel ?? null,
-          endsAt: current?.ends_at.toISOString() ?? null,
+          licensed: covered,
+          plan: current?.channel ?? (pilot.active ? "pilot" : null),
+          endsAt:
+            current?.ends_at.toISOString() ??
+            (pilot.active ? pilot.until?.toISOString() : null),
         },
       },
     ],
@@ -122,7 +136,7 @@ export async function studentMe(
           stripeLinked: false,
           canPractice,
           learningAllowed,
-          hasAccess: !!current,
+          hasAccess: covered,
           namePending: learner.name_pending,
           ...(goesByNumber(learner) ? { defaultName: true as const } : {}),
           freeAllowance: allowance,
@@ -141,6 +155,7 @@ export async function studentMe(
       orgName: home.name,
       ...(classes[0] ? { className: classes[0].name } : {}),
       levels: studentLevelVisibility(settings).value,
+      ...(practice ? { practice } : {}),
       standings: await hasOpenBoard(pool, personId, classes, settings),
     },
   }) as SignedInMe;

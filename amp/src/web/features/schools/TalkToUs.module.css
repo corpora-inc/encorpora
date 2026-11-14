@@ -45,9 +45,9 @@
   gap: var(--space-2);
   justify-items: start;
 }
+/* Send is the page's primary button at its usual size, as every other. */
 .send button {
   min-width: 160px;
-  min-height: 56px;
 }
 .failure {
   min-height: 1.4em;

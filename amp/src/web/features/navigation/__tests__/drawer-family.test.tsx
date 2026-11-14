@@ -65,3 +65,40 @@ test("review regression: a family class opens Family & account at /family, one r
   expect(screen.queryByRole("link", { name: "Account" })).toBeNull();
   expect(screen.queryByRole("link", { name: "Family" })).toBeNull();
 });
+
+test("a parent who teaches gets the class's drawer in their school class", () => {
+  const learners = [
+    { id: "pip", name: "Pip" },
+    { id: "wren", name: "Wren" },
+  ];
+  learningView.mockReturnValue({
+    account: {
+      account: { kind: "parent" },
+      familyClass: { orgId: "family-org", classId: "family-class" },
+      staffOf: [{ orgId: "school-org" }],
+    },
+    learner: learners[0],
+    learners,
+    ownPractice: false,
+    session: { data: {} },
+    canPractice: true,
+    practiceHref: "/practice",
+  });
+  render(
+    <DrawerContents
+      close={() => {}}
+      frame={{
+        kind: "class",
+        org: "school-org",
+        classId: "room-12",
+        active: "today",
+        board: false,
+      }}
+    />,
+  );
+  // No family learners, Practice or Progress here: the switcher goes home.
+  expect(screen.queryByText("Pip")).toBeNull();
+  expect(screen.queryByRole("link", { name: "Practice" })).toBeNull();
+  expect(screen.queryByRole("link", { name: "Progress" })).toBeNull();
+  expect(screen.getByRole("link", { name: "Account" })).toBeTruthy();
+});

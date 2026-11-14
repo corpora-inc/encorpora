@@ -241,7 +241,18 @@ export default function DrawerContents({
         ? places.find((place) => place.id.startsWith(`class:${here.org}:`))?.id
         : undefined) ??
       currentPlace);
-  const learnerName = own ? (view.learner?.name ?? "") : (learner?.name ?? "");
+  // Teaching here (a school's class or the school itself, not the family's
+  // own class): the drawer is the place's, never the family's. No learner,
+  // no Practice or Progress, no per-learner settings; the switcher goes back
+  // to the family (docs/design/ia.md).
+  const teachingHere =
+    inSchool &&
+    !(here?.kind === "class" && account?.familyClass?.classId === here.classId);
+  const learnerName = teachingHere
+    ? ""
+    : own
+      ? (view.learner?.name ?? "")
+      : (learner?.name ?? "");
   // Get started is the first run only: once a person has any place (a
   // school, a class, a family, their own practice), starting something new
   // lives in the switcher's "Add a place".
@@ -252,15 +263,16 @@ export default function DrawerContents({
       (account.learners?.length ?? 0) > 0 ||
       !!account.adultPractice?.learner);
   const practiceLabel = view.learner || student ? "Practice" : "Get started";
-  const showPractice = !!view.learner || student || !hasPlace;
+  const showPractice =
+    !teachingHere && (!!view.learner || student || !hasPlace);
   const practiceHref = view.practiceHref;
-  const hasProgress = !!view.learner;
+  const hasProgress = !teachingHere && !!view.learner;
   return (
     <>
       {/* One place still shows the switcher: it is where another place is
           added (docs/design/ia.md). */}
       {(places.length > 0 ||
-        learnerChoices.length > 1 ||
+        (!teachingHere && learnerChoices.length > 1) ||
         (!!learnerName && !own)) && (
         <section className={styles.switcher} aria-label="Where you are">
           {account && places.length > 0 && (
@@ -271,7 +283,7 @@ export default function DrawerContents({
               onNavigate={close}
             />
           )}
-          {profile ? (
+          {teachingHere ? null : profile ? (
             <ProfilePlace onNavigate={close} />
           ) : learnerChoices.length > 1 && !own ? (
             // A few learners are quiet rows, the chosen one marked; a long
@@ -340,6 +352,7 @@ export default function DrawerContents({
             current: currentItem === "practice",
           })}
         {own &&
+          !teachingHere &&
           !profile &&
           ownWorkbooks &&
           nav(ownWorkbooks, "Workbooks", "workbooks", {
@@ -354,6 +367,7 @@ export default function DrawerContents({
         {/* Practicing at another grade and pace: a page of its own, never a
             place in the switcher (docs/design/ia.md). */}
         {own &&
+          !teachingHere &&
           !profile &&
           nav("/me/profiles", "Practice as someone else", "someone", {
             current: currentItem === "someone",
@@ -400,10 +414,11 @@ export default function DrawerContents({
               }))}
       </nav>
       <div className={styles.settings}>
-        {practiceControls}
+        {!teachingHere && practiceControls}
         {/* The screen's own settings (practice adjustments) portal here. */}
         <div ref={setDrawerSettings} data-drawer-settings />
-        <CurriculumDetailsControl variant="row" />
+        {/* Grade numbers are a learner's setting: not a class's. */}
+        {!teachingHere && <CurriculumDetailsControl variant="row" />}
         <FeedbackPreferences />
       </div>
     </>

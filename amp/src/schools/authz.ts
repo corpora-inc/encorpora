@@ -60,7 +60,7 @@ export async function loadActor(
     `SELECT r.person_id,r.org_id,o.path,r.role,o.kind='family' AS family FROM amp_people p
      JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
      JOIN amp_orgs o ON o.id=r.org_id
-     WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}`,
+     WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")} AND amp_school_role_current(r.id)`,
     [accountId],
   );
   const classes = await db.query(
@@ -70,7 +70,7 @@ export async function loadActor(
      JOIN amp_orgs o ON o.id=c.org_id
      WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role<>'student'
-         AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})`,
+         AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")} AND amp_school_role_current(r.id))`,
     [accountId],
   );
   return {
@@ -122,6 +122,10 @@ const AIDE_CLASS = new Set<SchoolAction>([
   "workbooks.write",
 ]);
 const TEACHER_CLASS = new Set<SchoolAction>([
+  "pilot.manage",
+  "pilot.read",
+  "class.authorize",
+  "class.import",
   ...AIDE_CLASS,
   "students.add",
   "classes.update",
@@ -132,7 +136,12 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "settings.write",
   "share.manage",
 ]);
-const SELF = new Set<SchoolAction>(["orgs.list", "invites.accept"]);
+const SELF = new Set<SchoolAction>([
+  "orgs.list",
+  "invites.accept",
+  "school.start",
+  "purchase.request",
+]);
 /** All a family's teachers do: teach their class and invite a co-teacher.
  * Its children's access is their own grants, so there are no seats or
  * licenses; its privacy and deletion are the family's own (`/family`); and
@@ -161,6 +170,9 @@ const FAMILY = new Set<SchoolAction>([
  * person, import a roster, or write to anyone. Its students are made up, so a
  * real child's name or address never enters one, and it sends no mail. */
 const NOT_IN_A_DEMO = new Set<SchoolAction>([
+  "pilot.manage",
+  "class.authorize",
+  "class.import",
   "students.add",
   "students.transfer",
   "roster.import",

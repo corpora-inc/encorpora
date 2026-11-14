@@ -66,6 +66,7 @@ export async function accountSummary(
   const family = await families.summary(accountId);
   let email: string | null = null,
     emailVerified = true;
+  let providerOnly = false;
   if (
     accountId.startsWith("amp|") &&
     (await pool.query("SELECT to_regclass('amp_auth_users') AS relation"))
@@ -79,6 +80,21 @@ export async function accountSummary(
     ).rows[0];
     email = user?.email ?? null;
     emailVerified = user?.emailVerified === true;
+    if (!user) {
+      const installed = (
+        await pool.query(
+          "SELECT to_regclass('amp_provider_principals') AS relation",
+        )
+      ).rows[0].relation;
+      providerOnly =
+        !!installed &&
+        !!(
+          await pool.query(
+            "SELECT 1 FROM amp_provider_principals WHERE account_id=$1 AND auth_user_id IS NULL",
+            [accountId],
+          )
+        ).rowCount;
+    }
   }
   const record = (
     await pool.query(
@@ -192,7 +208,9 @@ export async function accountSummary(
       id: accountId,
       email,
       emailVerified,
-      confirmationRequired: !emailVerified && !families.development,
+      confirmationRequired:
+        !emailVerified && !providerOnly && !families.development,
+      ...(providerOnly ? { kind: "provider" as const } : {}),
     },
     consent: {
       status: active

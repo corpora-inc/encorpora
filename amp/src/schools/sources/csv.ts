@@ -1,3 +1,5 @@
+import { sha256 } from "@noble/hashes/sha2.js";
+import { bytesToHex, utf8ToBytes } from "@noble/hashes/utils.js";
 import {
   cleanCell,
   looksLikeEmail,
@@ -168,8 +170,20 @@ function fieldFromValues(values: readonly string[]): FieldKey {
 
 export function readTable(text: string): Table {
   const { rows, lines } = parseDelimited(text);
+  return tableFromRows(rows, lines);
+}
+
+/** The same column mapping for a spreadsheet and a delimited file. */
+export function tableFromRows(input: string[][], rowLines?: number[]): Table {
+  const entries = input.flatMap((row, index) =>
+    row.some((cell) => cell.trim())
+      ? [{ row, line: rowLines?.[index] ?? index + 1 }]
+      : [],
+  );
+  const rows = entries.map((entry) => entry.row);
+  const lines = entries.map((entry) => entry.line);
   if (!rows.length) return { headers: [], rows: [], lines: [], headed: false };
-  const width = Math.max(...rows.map((row) => row.length));
+  const width = rows.reduce((max, row) => Math.max(max, row.length), 0);
   const pad = (row: string[]) =>
     Array.from({ length: width }, (_, index) => row[index] ?? "");
   const first = rows[0]!;
@@ -234,11 +248,41 @@ function classFrom(name: string): RosterClass {
 
 type Draft = RosterRow & { classKeys: Set<string> };
 
-/** Rows from a mapped table. A person with an ID is one person however many
- * rows they have; without one, the same name and grade in another class is the
- * same student, and the same name in the same class is a second student
- * (twins are real), kept apart by which occurrence they are, in file order, so
- * re-importing the file lands on the same people. */
+/** A name-only key stays stable when rows move or a grade changes. A class
+ * change is a possible identity match for an administrator to review. */
+export function namedStudentId(
+  givenName: string,
+  familyName = "",
+  className = "",
+) {
+  return `name:v2:${bytesToHex(
+    sha256(
+      utf8ToBytes(
+        JSON.stringify([
+          nameKey(`${givenName} ${familyName}`),
+          nameKey(className),
+        ]),
+      ),
+    ),
+  )}`;
+}
+
+/** A second student with the same name in a names list, told apart by the
+ * teacher ("Add as a different student"): the named ID and the row it came
+ * from. The same list read again gives the same ID. */
+export const distinctNamedId = (named: string, line: number) =>
+  `${named}:${line}`;
+/** A named student ID, or one of its told-apart forms. */
+export function isNamedId(sourcedId: string, named: string) {
+  return (
+    sourcedId === named ||
+    (sourcedId.startsWith(`${named}:`) &&
+      /^\d{1,7}$/.test(sourcedId.slice(named.length + 1)))
+  );
+}
+
+/** Only a supplied student ID joins rows across classes. Repeated names
+ * without IDs are held for correction, never guessed from file order. */
 export function csvRows(
   table: Table,
   mapping: Mapping,
@@ -255,7 +299,8 @@ export function csvRows(
   const issues: RosterIssue[] = [];
   const people = new Map<string, Draft>();
   const teachers = new Map<string, Draft>();
-  const nameOccurrences = new Map<string, number>();
+  const namedRows = new Map<string, Draft[]>();
+  const conflictingIds = new Set<string>();
   let skipped = 0;
   const addClass = (person: Draft, klass: RosterClass | null) => {
     if (!klass || person.classKeys.has(klass.sourcedId)) return;
@@ -343,8 +388,8 @@ export function csvRows(
       classes: klass ? [klass] : [],
     };
     if (!parts) {
-      if (id && people.has(id)) {
-        addClass(people.get(id)!, klass);
+      if (id && people.has(`id:${id}`)) {
+        addClass(people.get(`id:${id}`)!, klass);
         return;
       }
       issues.push({ line, code: "missing_name", value: "", row: base });
@@ -361,15 +406,26 @@ export function csvRows(
       });
       return;
     }
-    let sourcedId = id;
-    if (!sourcedId) {
-      const nameId = `name:${nameKey(`${parts.givenName} ${parts.familyName ?? ""}`)}|${gradeLevel ?? ""}`;
-      const classKey = `${nameId}|${klass?.sourcedId ?? ""}`;
-      const occurrence = (nameOccurrences.get(classKey) ?? 0) + 1;
-      nameOccurrences.set(classKey, occurrence);
-      sourcedId = occurrence === 1 ? nameId : `${nameId}#${occurrence}`;
+    const sourcedId =
+      id || namedStudentId(parts.givenName, parts.familyName, className);
+    // Keep every name-only row until ambiguity has been checked, including
+    // identical rows in the same class.
+    const key = id ? `id:${id}` : `row:${line}`;
+    let person = people.get(key);
+    if (
+      person &&
+      nameKey(`${person.givenName} ${person.familyName ?? ""}`) !==
+        nameKey(`${parts.givenName} ${parts.familyName ?? ""}`)
+    ) {
+      conflictingIds.add(id);
+      issues.push({
+        line,
+        code: "conflicting_identity",
+        value: id,
+        row: { ...base, ...parts },
+      });
+      return;
     }
-    let person = people.get(sourcedId);
     if (!person) {
       person = {
         ...shared,
@@ -378,7 +434,7 @@ export function csvRows(
         classes: [],
         classKeys: new Set(),
       };
-      people.set(sourcedId, person);
+      people.set(key, person);
       if (gradeCell && gradeLevel === null)
         issues.push({
           line,
@@ -394,12 +450,38 @@ export function csvRows(
           row: person,
         });
     }
+    const name = nameKey(`${parts.givenName} ${parts.familyName ?? ""}`);
+    const names = namedRows.get(name) ?? [];
+    if (!names.includes(person)) namedRows.set(name, [...names, person]);
     addClass(person, klass);
   });
+  for (const id of conflictingIds) {
+    const person = people.get(`id:${id}`)!;
+    people.delete(`id:${id}`);
+    issues.push({
+      line: person.line,
+      code: "conflicting_identity",
+      value: id,
+      row: person,
+    });
+  }
+  for (const group of namedRows.values()) {
+    if (group.length < 2) continue;
+    for (const person of group) {
+      if (person.identifier) continue;
+      people.delete(`row:${person.line}`);
+      issues.push({
+        line: person.line,
+        code: "ambiguous_identity",
+        value: `${person.givenName} ${person.familyName ?? ""}`.trim(),
+        row: person,
+      });
+    }
+  }
   const strip = ({ classKeys: _keys, ...row }: Draft): RosterRow => row;
   // A teacher came from a student's row, so that line is taken: every row keeps
   // a line of its own, which is how a dry run's answer finds it again.
-  const end = Math.max(1, ...table.lines);
+  const end = table.lines.reduce((max, line) => Math.max(max, line), 1);
   return {
     rows: [
       ...people.values(),

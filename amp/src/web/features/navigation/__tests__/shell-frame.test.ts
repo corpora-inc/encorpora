@@ -7,6 +7,7 @@ import {
   progressTabs,
   shellFrame,
 } from "../shell-frame";
+import { phoneTabs } from "../../../ui/Tabs";
 
 test("each group's screens share one frame and name their tab", () => {
   expect(shellFrame("/overview")).toEqual({
@@ -48,6 +49,9 @@ test("each group's screens share one frame and name their tab", () => {
     practice: true,
   });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/start")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/connect")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/adopt")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
@@ -104,6 +108,7 @@ test("class sub-screens retain their tab and existing URLs", () => {
     ["start", "today"],
     ["report-cards", "gradebook"],
     ["cards", "roster"],
+    ["import", "roster"],
     // What children see is a section of the class's Settings (ia.md).
     ["experience", "settings"],
     ["workbooks/2026-11-09", "workbooks"],
@@ -273,4 +278,29 @@ test("review regression: a lone school hides Overview, Staff and Activity", () =
     "activity",
     "settings",
   ]);
+});
+
+test("a phone shows the same four class tabs in every place", () => {
+  const ids = (items: readonly { id: string }[]) => items.map((tab) => tab.id);
+  expect(ids(phoneTabs(classTabs("org", "class")))).toEqual([
+    "today",
+    "map",
+    "gradebook",
+    "roster",
+  ]);
+  expect(ids(phoneTabs(classTabs("org", "class", false, true, 3)))).toEqual([
+    "today",
+    "map",
+    "time",
+    "workbooks",
+  ]);
+  // A tutor's larger class has Grades, still under More on a phone.
+  expect(ids(phoneTabs(classTabs("org", "class", false, true, 12)))).toEqual([
+    "today",
+    "map",
+    "time",
+    "workbooks",
+  ]);
+  // A group that marks none shows its first four.
+  expect(ids(phoneTabs(accountTabs))).toEqual(ids(accountTabs));
 });

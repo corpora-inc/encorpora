@@ -7,7 +7,14 @@ import styles from "./PublicFrame.module.css";
 
 /** The school pages' header and footer. Every page offers the same few places:
  * the curriculum, student data, and signing in. */
-export function PublicFrame({ children }: { children: ReactNode }) {
+export function PublicFrame({
+  children,
+  signIn = true,
+}: {
+  children: ReactNode;
+  /** Off while a Clever sign-in is mid-way: it is the sign-in. */
+  signIn?: boolean;
+}) {
   return (
     <div className={styles.page} data-schools-public="">
       <header className={styles.header}>
@@ -34,13 +41,15 @@ export function PublicFrame({ children }: { children: ReactNode }) {
             >
               Student data
             </Link>
-            <Link
-              to="/sign-in"
-              search={{ return: "school", next: "/school" } as never}
-              className={buttonClass("quiet", styles.signIn)}
-            >
-              Sign in
-            </Link>
+            {signIn && (
+              <Link
+                to="/sign-in"
+                search={{ return: "school", next: "/school" } as never}
+                className={buttonClass("quiet", styles.signIn)}
+              >
+                Sign in
+              </Link>
+            )}
           </div>
         </div>
       </header>

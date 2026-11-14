@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Authorization } from "./pilots/Authorization";
 import { Link, Navigate, useNavigate, useSearch } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import {
@@ -650,7 +651,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const accepted = state.agreement;
   const [name, setName] = useState(accepted?.signerName ?? "");
   const [title, setTitle] = useState(accepted?.signerTitle ?? "");
-  const [reading, setReading] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; title?: string }>({});
   const [error, setError] = useErrorState();
@@ -663,7 +664,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const accept = async () => {
     const missing = {
       ...(name.trim() ? {} : { name: "Enter your name." }),
-      ...(title.trim() ? {} : { title: "Enter your title." }),
+      ...(title.trim() ? {} : { title: "Enter your role." }),
     };
     setErrors(missing);
     if (missing.name || missing.title) return;
@@ -703,7 +704,7 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
               variant="primary"
               className={styles.next}
               aria-busy={busy}
-              disabled={busy}
+              disabled={busy || !authorized}
               onClick={() => void accept()}
             >
               Accept
@@ -725,59 +726,34 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
           </li>
         ))}
       </ul>
-      <Button
-        variant="secondary"
-        className={styles.readAgreement}
-        onClick={() => setReading(true)}
+      {/* The one agreement control, as a teacher's class setup has it
+          (pilots/Authorization): who signs, the tick, the text a tap away. */}
+      <form
+        className={styles.signer}
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (!accepted && authorized) void accept();
+        }}
       >
-        Read the agreement
-      </Button>
-      {accepted ? (
-        <p className={styles.accepted}>
-          Accepted by {accepted.signerName}, {accepted.signerTitle}, on{" "}
-          {formatDay(accepted.acceptedAt.slice(0, 10))}.
-        </p>
-      ) : (
-        <form
-          className={styles.signer}
-          onSubmit={(event) => {
-            event.preventDefault();
-            void accept();
+        <Authorization
+          scope="school"
+          acceptedAt={accepted?.acceptedAt}
+          name={name}
+          title={title}
+          authorized={!!accepted || authorized}
+          onName={(value) => {
+            setName(value);
+            setErrors((prior) => ({ ...prior, name: undefined }));
           }}
-        >
-          <TextField
-            label="Your name"
-            autoComplete="name"
-            value={name}
-            maxLength={100}
-            error={errors.name}
-            onChange={(event) => {
-              setName(event.target.value);
-              setErrors((prior) => ({ ...prior, name: undefined }));
-            }}
-          />
-          <TextField
-            label="Your title"
-            autoComplete="organization-title"
-            placeholder="Head of School"
-            value={title}
-            maxLength={100}
-            error={errors.title}
-            onChange={(event) => {
-              setTitle(event.target.value);
-              setErrors((prior) => ({ ...prior, title: undefined }));
-            }}
-          />
-        </form>
-      )}
-      <Sheet
-        open={reading}
-        onOpenChange={setReading}
-        title={agreementTitle}
-        description={`For ${state.org.name}`}
-      >
-        <AgreementText />
-      </Sheet>
+          onTitle={(value) => {
+            setTitle(value);
+            setErrors((prior) => ({ ...prior, title: undefined }));
+          }}
+          onAuthorized={setAuthorized}
+          errors={errors}
+          disabled={busy || !!accepted}
+        />
+      </form>
       <Toast message={error} onDismiss={() => setError("")} />
     </Frame>
   );

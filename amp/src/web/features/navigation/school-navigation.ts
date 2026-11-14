@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
+import { pilotOptions } from "../school/pilots/api";
 import { classTabs, schoolTabs, type ShellFrame } from "./shell-frame";
 
 /** Route loaders fill these account-scoped resources before the bar changes. */
@@ -28,6 +29,15 @@ export function useSchoolNavigation(frame: ShellFrame) {
   // The year endpoint authorizes this class independently of the paginated roster.
   const available = frame.kind === "class" && year !== undefined;
   const family = org?.kind === "family";
+  const access = useQuery({
+    ...pilotOptions(auth, frame.kind === "class" ? frame.classId : ""),
+    enabled:
+      frame.kind === "class" &&
+      !!session &&
+      org?.kind === "school" &&
+      !org.demo,
+    refetchOnMount: false,
+  }).data;
   // A family has one class: on any of its org's screens (an old link to its
   // calendar, say) the row stays the class's own.
   const familyClass =
@@ -63,7 +73,8 @@ export function useSchoolNavigation(frame: ShellFrame) {
       frame.kind === "class" &&
       available &&
       !year?.past &&
-      org?.kind !== "family",
+      org?.kind !== "family" &&
+      (org?.demo === true || (access?.coverage?.covered ?? 0) > 0),
     /** A demo place (docs/schools.md#demo-places), and whether it is a demo
      * class ("Just my class") rather than a demo school. */
     demo: active && org?.demo === true,

@@ -46,7 +46,13 @@ import { TransferSheet, useCanMove } from "./org/TransferSheet";
 import { displayName } from "./ClassesScreen";
 import { OrgFrame } from "./OrgFrame";
 import { EntityLink } from "../../nav/links";
-import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
+import {
+  FormNote,
+  GradePicker,
+  PageHead,
+  SeatBadge,
+  gradeLabel,
+} from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
@@ -159,10 +165,10 @@ function StudentSheet({
         <div className={styles.field}>
           <span className={styles.fieldLabel}>Seat</span>
           <span className={styles.seatLine}>
-            {student.seated ? (
-              <Badge tone="success">Seated</Badge>
+            {student.seated || !student.pilotCovered ? (
+              <SeatBadge student={student} />
             ) : (
-              <Badge tone="warning">Needs a seat</Badge>
+              "Covered by their class’s practice"
             )}
           </span>
         </div>
@@ -474,12 +480,7 @@ export function StudentsScreen() {
         header: "Seat",
         width: 130,
         compare: (a, b) => Number(a.seated) - Number(b.seated),
-        cell: (row) =>
-          row.seated ? (
-            <Badge tone="success">Seated</Badge>
-          ) : (
-            <Badge tone="warning">Needs a seat</Badge>
-          ),
+        cell: (row) => <SeatBadge student={row} />,
       },
     ],
     [classNames, rows],
@@ -574,11 +575,7 @@ export function StudentsScreen() {
                     .join(", ") || "No class yet"}
                 </span>
               </span>
-              {row.seated ? (
-                <Badge tone="success">Seated</Badge>
-              ) : (
-                <Badge tone="warning">Needs a seat</Badge>
-              )}
+              <SeatBadge student={row} />
             </button>
           )}
         />

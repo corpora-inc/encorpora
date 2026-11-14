@@ -34,3 +34,13 @@ test("a class's own address opens the class, an unknown one says so", () => {
   expect(routeOf(`${place}/today`)).toBe("/school/$org/classes/$class/today");
   expect(routeOf(`${place}/grades`)).toBe("/school/$org/classes/$class/$");
 });
+
+test("self-service and buyer links resolve outside org catch-all routes", () => {
+  expect(routeOf("/school/start")).toBe("/school/start");
+  expect(routeOf("/school/connect")).toBe("/school/connect");
+  expect(routeOf("/school/adopt")).toBe("/school/adopt");
+  expect(routeOf("/schools/continue")).toBe("/schools/continue");
+  expect(routeOf(`/school/${org}/classes/${klass}/import`)).toBe(
+    "/school/$org/classes/$class/import",
+  );
+});

@@ -443,7 +443,8 @@ async function journey(
       { rows, now: await ledgerRows(page) },
     );
   await shot(page, "setup-4-agreement", width, theme);
-  await page.getByRole("button", { name: "Read the agreement" }).click();
+  // The one agreement control: the text opens from its name in the tick's line.
+  await page.getByRole("button", { name: "student data agreement" }).click();
   const sheet = page.getByRole("dialog");
   await sheet.getByText("3. FERPA").waitFor();
   await pause(page);
@@ -458,7 +459,8 @@ async function journey(
   await sheet.getByRole("button", { name: "Close" }).click();
   await sheet.waitFor({ state: "detached" });
   await page.getByLabel("Your name").fill("Grace Okafor");
-  await page.getByLabel("Your title").fill("Head of School");
+  await page.getByLabel("Your role").fill("Head of School");
+  await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Accept" }).click();
   await heading(page, "Add your students");
   if (wide)
@@ -701,7 +703,8 @@ async function loneTeacher(
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "Accept the data agreement");
   await page.getByLabel("Your name").fill("Ines Vega");
-  await page.getByLabel("Your title").fill("Teacher");
+  await page.getByLabel("Your role").fill("Teacher");
+  await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Accept" }).click();
   await heading(page, "Add your students");
   await page.getByRole("link", { name: /Type their names/ }).click();

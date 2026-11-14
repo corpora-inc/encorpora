@@ -217,9 +217,8 @@ export function schoolRoutes(root: AnyRoute) {
       beforeLoad: async ({ location }) => {
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
-        // No school yet: we issue them, so the way in is to talk to us.
         if (orgs.length === 0)
-          throw redirect({ to: "/schools", replace: true });
+          throw redirect({ to: "/school/start", replace: true });
         if (orgs.length === 1)
           throw redirect({ ...orgHome(orgs[0]!), replace: true } as never);
       },
@@ -464,7 +463,13 @@ export function schoolRoutes(root: AnyRoute) {
       screens.settings,
       (session, orgId) => [
         preload(calendarOptions(session, orgId)),
-        preload(licenseOptions(session, orgId)),
+        // Only a license this person can read: a teacher's own pilot
+        // school has none to show, and asking would only be refused.
+        preload(orgOptions(session, orgId)).then((org) =>
+          (org as { can?: string[] } | undefined)?.can?.includes("license.read")
+            ? preload(licenseOptions(session, orgId))
+            : undefined,
+        ),
         import("../features/school/classroom/api").then(
           ({ experienceOptions }) =>
             preload(experienceOptions(session, { kind: "org", id: orgId })),

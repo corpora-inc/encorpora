@@ -1,4 +1,5 @@
 import { touchDemoOfPersonSql } from "./demo/sql.js";
+import { classPracticeGate } from "./pilot-access.js";
 import {
   createHash,
   randomBytes,
@@ -70,6 +71,16 @@ const sha256 = (value: string) =>
 
 /** SQL: what a roster shows a student as. `display_name` is the school's own. */
 export const STUDENT_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||left(p.family_name,1)||'.',''))`;
+const FULL_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||p.family_name,''))`;
+/** A student's name in a list of their class (the board, /join, the
+ * roster): the short name, unless another child in the list has it too.
+ * Then the whole name; and two children with the very same name are told
+ * apart by when each joined ("Ana Ruiz", "Ana Ruiz (2)"), never by a made-up
+ * name. Only for a query that returns the whole class's rows. */
+export const STUDENT_LABEL = `CASE WHEN count(*) OVER (PARTITION BY lower(${STUDENT_NAME}))=1 THEN ${STUDENT_NAME}
+  WHEN count(*) OVER (PARTITION BY lower(${FULL_NAME}))=1 THEN ${FULL_NAME}
+  ELSE ${FULL_NAME}||CASE WHEN row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)>1
+    THEN ' ('||row_number() OVER (PARTITION BY lower(${FULL_NAME}) ORDER BY p.created_at,p.id)||')' ELSE '' END END`;
 /** SQL: `p` is a live student of class `c`, whose org is `o`, today. */
 const IN_CLASS = `e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")}
   AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
@@ -120,8 +131,13 @@ export class SchoolSignIn {
 
   async lookup({ code }: { code: string }): Promise<JoinRoster> {
     const found = await this.liveClass(code);
+    // Practice isn't open for this class: say so before anyone picks a name
+    // and three pictures for nothing.
+    const practice = await classPracticeGate(this.pool, found.id);
+    if (practice)
+      return { class: { name: found.name }, practice, students: [] };
     const { rows } = await this.pool.query(
-      `SELECT p.id,${STUDENT_NAME} AS name,
+      `SELECT p.id,${STUDENT_LABEL} AS name,
          EXISTS(SELECT 1 FROM amp_person_credentials k
            WHERE k.person_id=p.id AND k.kind='picture' AND k.revoked_at IS NULL) AS "picturesSet"
        FROM ${STUDENTS_OF_CLASS}
@@ -364,7 +380,7 @@ export class SchoolSignIn {
   async presence(classId: string, canManage = false): Promise<Presence> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
-      `SELECT p.id,${STUDENT_NAME} AS name,
+      `SELECT p.id,${STUDENT_LABEL} AS name,
          EXISTS(SELECT 1 FROM amp_student_sessions s WHERE s.person_id=p.id AND s.revoked_at IS NULL
            AND s.last_seen_at>=(date_trunc('day',now() AT TIME ZONE o.timezone) AT TIME ZONE o.timezone)) AS here
        FROM ${STUDENTS_OF_CLASS}
@@ -391,7 +407,7 @@ export class SchoolSignIn {
   ): Promise<SignInRoster> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
-      `SELECT p.id,${STUDENT_NAME} AS name,
+      `SELECT p.id,${STUDENT_LABEL} AS name,
          (SELECT max(k.created_at) FROM amp_person_credentials k WHERE k.person_id=p.id AND ${WORKING_CARD}) AS "cardIssuedAt",
          EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=p.id AND k.kind='picture' AND k.revoked_at IS NULL) AS "picturesSet",
          EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=p.id AND k.kind='picture' AND k.revoked_at IS NULL AND k.locked_until>now()) AS locked,

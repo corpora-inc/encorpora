@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
+import { buttonClass } from "../../ui/Button";
 import { OrgExperienceSection } from "./classroom/ExperienceScreens";
 import { WeeklyTargetSection } from "./classroom/WeeklyTargetSection";
 import { currentSession, orgOptions } from "./api";
@@ -31,6 +32,25 @@ export function OrgSettingsScreen() {
         )}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}
+        {/* A district brings in schools that already use AMP; the school
+            approves from the link (docs/schools.md). */}
+        {org?.kind === "district" && can.has("schools.add") && (
+          <section
+            className={styles.settingsSection}
+            aria-labelledby="settings-schools"
+          >
+            <h2 id="settings-schools">Schools</h2>
+            <div>
+              <Link
+                to="/school/adopt"
+                search={{ district: orgId, manage: 1 }}
+                className={buttonClass("secondary")}
+              >
+                Invite a school
+              </Link>
+            </div>
+          </section>
+        )}
         {/* Privacy and Integrations are the sub-tabs above, not links here. */}
       </div>
     </OrgFrame>

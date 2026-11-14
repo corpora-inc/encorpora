@@ -1,6 +1,6 @@
 # AMP product model: people, places, sign-in and screens
 
-The current shape of AMP as of 2026-11-09, for anyone changing its screens. It sums up the decisions behind the people, places and licenses, what each person sees, and what isn't built yet. For the details, see the [schools design](schools.md), [families, classes and adult learners](families.md), [Stripe](stripe.md), and [the web architecture](architecture/web-app.md).
+AMP organizes adaptive practice around people, places and access. This document describes the product rules for anyone changing its screens. For the details, see the [schools design](schools.md), [families, classes and adult learners](families.md), [Stripe](stripe.md), and [the web architecture](architecture/web-app.md).
 
 The practice loop (one problem at a time, adaptive across strands) is the product, and none of this changes it. Everything below decides who practices, who watches, and who pays.
 
@@ -15,8 +15,8 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 
 | Who                           | Signs in with                                                                                                                              | Practices as                                  |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                        | Their own **adult learner**, if they have one |
-| Child                         | A class: class code → their name (or "Child 2") → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
+| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft, Apple, or a verified Clever staff identity                                                                        | Their own **adult learner**, if they have one |
+| Child                         | A class: class code → their name (or "Child 2") → 3 of 16 pictures; or a printed card's QR; or Google, Microsoft or Clever through the school | Their one learner                             |
 
 - **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a family class, and the school if they are staff only. An account with no place yet answers "What brings you to AMP?" first. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
@@ -29,7 +29,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Org tree:** `amp_orgs` with `kind` family, school, network or district. Every child learns in a class, and every class belongs to an org.
 - **A family** is the smallest org: one class, whose parent is its admin and teacher. The class can mix grades: with no course band, each child works at their own level. A child's learner stays owned by the parent's account, so purchases, consent and family settings stay where they were. Every family that existed was converted to this model on 2026-11-08.
 - **A child from another family** can begin in a tutor’s class with the tutor's nickname or initials for them (or "Student 3"). An emailed parent approval names and transfers that same learner to the parent after verified consent, preserving answers, class membership and the free balance. A new invitation collects only the parent’s email address; the parent supplies the child’s name after consent. The teacher sees the child’s work in the class and nothing of the other family’s account.
-- **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. Before that, a teacher or a school explores a demo from the starter. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
+- **A school** can begin with a teacher's own class at `/school/start`, without payment, a card or operator approval. The teacher confirms classroom data authority and imports or enters the roster. They receive classroom authority, not school administration. A verified Clever district administrator can connect an institution at `/school/connect`. Existing school pilots join a district through an explicitly approved adoption, preserving learner and evidence IDs. A school with "Just my class" collapses around that class.
 - **A district** is the same screens rolled up, with policy it can set and lock.
 - **A demo class or school** ([demo places](schools.md#demo-places)) lets a teacher or school leader explore AMP fully alive before any agreement or payment: made-up students marked "Demo", twelve weeks of practice, and "Practice as" any of them. It is never billed, counted or mailed, goes after 30 idle days, and is never converted: the real class comes from the real onboarding.
 - **An adult on their own,** for example an 18-year-old preparing for the SAT, buys a license for themselves. Their home is their own progress record, and adding a child later makes them a family.
@@ -40,17 +40,17 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Free adult practice:** every teaching adult practices free. That means any parent with a paid child, the family's second parent included, and any teacher at a licensed school.
 - **Existing subscriptions** keep the price they bought.
 - **Funded programs** (education savings accounts and similar): Arkansas, Arizona and New Hampshire sell at the public prices, $599 a year or $59 a month, paid from the program account by invoice. A family pays for a child; an adult student can pay for her own learner, with no parental consent ([funded purchases](funded-purchases.md#an-adult-buying-for-herself)). A month paid early starts when the current one ends.
-- **Schools:** seats by license, issued by an operator. A school's students practice while it holds a seat. There is no self-serve school purchase yet; a self-serve seat pack is a possible second way later.
-- **Free allowance:** every learner, including an adult, has 100 online answers or skips and five separate workbooks. All five workbooks are available immediately. Recording printed results spends neither allowance. Paid activity preserves the unused free balance.
-- **Access:** after checking ownership and learning permission, `canPractice = hasAccess || freeRemaining > 0`. An active grant also covers new workbooks; otherwise the separate workbook allowance applies. Issued workbooks and result entry stay available after either allowance is exhausted.
+- **Schools:** a teacher activates one 30-day pilot when the first real class is ready, followed by seven days of full-access grace. Later classes share those dates; co-teachers and reconnects do not restart an activated class. Paid licenses can cover selected classes, a school or a district, with each learner taking one school seat. Negotiated purchases activate the existing records. Teachers share an aggregate buyer link; it gives no student information or administrative rights.
+- **Free allowance:** family, individual and demo learners have 100 online answers or skips and five separate workbooks. All five workbooks are available immediately. Recording printed results spends neither allowance. Paid activity preserves the unused free balance.
+- **Access:** after checking ownership and learning permission, real school learners need an active pilot or valid grant. Other learners use `canPractice = hasAccess || freeRemaining > 0`. An active grant also covers new workbooks; otherwise the separate workbook allowance applies. Issued workbooks and result entry stay available after either allowance is exhausted.
 - **Children's names** ([parent consent](parent-consent.md#childrens-names)): a parent enters their own child's first name or nickname, optional, with no consent step; the add step says "You’re adding your own children as their parent or guardian", and the learner records that basis. A tutor gives a nickname or initials; the child's own parent names them through the approval link. Schools name students under their data agreement. Without a name a child is "Child 2" in a family or "Student 3" in a tutor's class, never a picture. Children's practice data is used only to run AMP. Consent withdrawal or an ended school agreement stops further learning; a grant does not replace consent.
-- **One product:** trying AMP and paying for it are the same app. There is no separate trial: a learner is covered by the free allowance or by a paid grant, and nothing moves when someone pays.
+- **One product:** trying AMP and paying for it use the same app and learning records. School pilot expiry pauses new online practice and workbook creation; reports, exports, issued materials and entry of their paper results stay available. An audited extension or another valid grant can continue access.
 - **Starting:** a new account answers one question, "What brings you to AMP?" (`/start`), and the answer creates only the place it needs, in one call (`POST /api/v1/start`, `src/account/starter.ts`):
   - **Myself:** the adult's own learner; home is `/me`.
   - **Parent:** the family class with 1–6 children, each with a name (optional) and a birth year; home is the class's Today.
   - **Tutor or co-op:** the family class with students owned by their roster person, each with a nickname or initials (optional) and a birth year, so each one's own parent names them by an approval link; home is the class's Today.
-  - **Teacher:** a demo class, alive with fictional students marked "Demo" and months of their work (`POST /api/v1/school/demo {kind:"class"}`); its bar offers "Set up your real class", which leads to the real onboarding: the data agreement, then the roster. No real student exists before that.
-  - **School:** the school pitch inline, with "Explore a demo school" (`{kind:"school"}`) and "Talk to us".
+  - **Teacher:** start a real class, connect through Clever, or explore a demo. Real onboarding confirms classroom data authority before importing student names.
+  - **School:** start a class, connect the institution, explore a demo school, or contact AMP.
   Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
 - **When the allowance ends:** the screen in use shows one pause (`features/continue/AllowancePause.tsx`) naming the learner and the fact, with the one action that works for whoever is looking. A parent or an adult continues with AMP for that learner (`/continue/<learner>`: the plan, with the parent notice when no consent is recorded yet, then Stripe, then back to the same screen with access active, then an optional "Add Child 2's name" for a child still going by their number). A class's teacher, a tutor or a school talks to us. A student is told their grown-up can continue.
 
@@ -93,7 +93,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
 - **Admin and district:**
   - `/school/$org`: the overview. The shared bar has Overview, Classes, Staff, Calendar, License, Privacy and Activity tabs, filtered by the person’s access. Districts and networks also have a Schools tab. A one-class solo school omits Overview, Staff and Activity. Classes opens students, imports and student-experience settings; Staff opens sign-in help and integrations; Calendar opens year rollover.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
-  - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
+  - `/school/start`: self-service classroom setup. `/school/connect`: Clever and AnySchool connection. `/school/adopt`: reviewed adoption of an existing school into a district. `/school/new?org=…`: assisted setup from an administrator invitation.
 
 Screenshots of most of these, at 390 and 1280 px in light and dark, are under `docs/reviews/`. The relevant folders are `schools-public`, `school-setup`, `school-places`, `school-classroom`, `school-teacher`, `school-org`, `adult-practice`, `teacher-in-class`, `family-class`, `family-approval`, `second-parent`, `extra-child-price` and `practice-profiles`.
 
@@ -103,7 +103,7 @@ Screenshots of most of these, at 390 and 1280 px in light and dark, are under `d
 - **Defaults for schools and families:** levels hidden from students, standings off, shared devices. A higher level can lock a setting, and the screen says who set it.
 - **Standings:** independent work only. A board shows the top 10 plus your own line, never a list down to last place.
 - **Contact:** show the address with a Copy button; don't open a mail app.
-- **No operator UI:** schools, licenses and seats are run by operator commands (`npm run school:admin -- create-school | issue-license | set-seats | delete-org …`, `npm run family:convert`) and the API, not by admin screens.
+- **No operator UI:** negotiated licenses and operational follow-up use operator commands (`npm run school:admin -- create-school | issue-license | set-seats | delete-org …`, `npm run family:convert`) and the API, not by admin screens.
 - **Student data:** students get no analytics or ad measurement, and staff get no marketing collection.
 
 ## Not built yet
@@ -112,4 +112,4 @@ Screenshots of most of these, at 390 and 1280 px in light and dark, are under `d
 - **Teacher-paid access for another family's child:** this needs that child's parent to give verified consent without buying. Today a purchase is the verified method.
 - **Moving a child who already has their own account into a parent's family class.**
 - **Self-serve seat packs** for co-ops and tutors.
-- **Clever, ClassLink, SAML and gradebook passback** to student information systems.
+- **ClassLink, SAML and gradebook passback** to student information systems. Clever production launch requires provider enablement and certification; see [Clever onboarding](clever-onboarding.md).

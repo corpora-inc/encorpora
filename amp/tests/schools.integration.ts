@@ -524,14 +524,14 @@ test(
             personId: waiting.personId,
             mode: "personal",
           });
-          // A student without a seat has no grant, and practises under the
-          // free allowance until it is spent.
+          // Real school learners need pilot or paid coverage. A missing seat
+          // never silently consumes the family's individual free allowance.
           const me = (await get("/api/v1/me", as(token))).json();
           assert.equal(me.learners[0].entitlement.licensed, false);
-          assert.equal(me.learners[0].entitlement.active, true);
+          assert.equal(me.learners[0].entitlement.active, false);
           const waitingBatch = () =>
             post(`/api/v1/learners/${waiting.learnerId}/batches`, as(token));
-          assert.equal((await waitingBatch()).statusCode, 200);
+          assert.equal((await waitingBatch()).statusCode, 402);
           await db.query(
             "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
             [waiting.learnerId],
@@ -764,7 +764,9 @@ test(
 
           const fixtures: Record<string, string> = {
             org: home.orgId,
+            orgId: home.orgId,
             class: period1.id,
+            classId: period1.id,
             student: student1.personId,
             person: randomUUID(),
             session: randomUUID(),
