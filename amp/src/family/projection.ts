@@ -6,9 +6,8 @@ import { StripeRepository } from "../billing/stripe/repository.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import type { Pool } from "pg";
 import { FamilyError } from "./contracts.js";
-import { ensureFamilyIdentity } from "./identity.js";
+import { familyDisplayNameSql, holderDisplayNameSql } from "./identity.js";
 import { gradeFor } from "./family-class.js";
-import { FamilyRepository } from "./repository.js";
 import {
   can,
   loadActor,
@@ -31,21 +30,24 @@ type Identity = {
   familyId: string;
   orgId: string | null;
   holder: string;
-  displayName: string;
+  displayName: string | null;
+  holderName: string | null;
   classId: string | null;
   secondParent: string | null;
   className: string | null;
   hasHosted: boolean;
   timezone: string;
 };
-const IDENTITIES = `SELECT fs.id AS "familyId",f.org_id AS "orgId",fs.account_id AS holder,
-  COALESCE(o.name,'Our family') AS "displayName",f.class_id AS "classId",f.second_parent AS "secondParent",
+const identities = (
+  source: string,
+) => `SELECT fs.id AS "familyId",f.org_id AS "orgId",fs.account_id AS holder,
+  ${familyDisplayNameSql("fs.account_id", "o")} AS "displayName",${holderDisplayNameSql("fs.account_id")} AS "holderName",f.class_id AS "classId",f.second_parent AS "secondParent",
   (SELECT name FROM amp_classes WHERE id=f.class_id) AS "className",
   EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
     JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL AND NOT l.adult
     WHERE e.class_id=f.class_id AND e.role='student' AND ${activeToday("e", "o")} AND l.account_id<>fs.account_id) AS "hasHosted",
   COALESCE(o.timezone,'America/New_York') AS timezone
-  FROM amp_family_spaces fs LEFT JOIN amp_families f ON f.account_id=fs.account_id
+  FROM ${source} fs LEFT JOIN amp_families f ON f.account_id=fs.account_id
   LEFT JOIN amp_orgs o ON o.id=f.org_id`;
 const targetFor = (familyId: string, classId: string): SchoolTarget => ({
   kind: "class",
@@ -100,28 +102,36 @@ export async function listFamilies(
   after?: string,
 ) {
   adultOnly(account);
-  await new FamilyRepository(pool).transaction(account, async (client) => {
-    const owned = await client.query(
-      `SELECT 1 FROM amp_families WHERE account_id=$1
-      UNION ALL SELECT 1 FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT adult LIMIT 1`,
-      [account],
-    );
-    if (owned.rowCount) await ensureFamilyIdentity(client, account);
-  });
   const rows = (
     await pool.query<Identity>(
-      `${IDENTITIES}
-    WHERE (fs.account_id=$1 OR EXISTS(
-      SELECT 1 FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id
-      WHERE p.id=f.second_parent AND p.account_id=$1 AND p.deleted_at IS NULL
-        AND r.org_id=f.org_id AND r.role='teacher' AND ${activeToday("r", "o")} AND amp_school_role_current(r.id)) OR EXISTS(
-      SELECT 1 FROM amp_people p JOIN amp_enrollments e ON e.person_id=p.id
-      WHERE p.account_id=$1 AND p.deleted_at IS NULL AND e.class_id=f.class_id
-      AND e.role<>'student' AND ${activeToday("e", "o")}
-      AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id
-        AND r.org_id=ANY(o.path) AND r.role<>'student' AND ${activeToday("r", "o")} AND amp_school_role_current(r.id))))
-      AND ($2::uuid IS NULL OR fs.id>$2::uuid)
-    ORDER BY fs.id LIMIT 51`,
+      `WITH associated AS MATERIALIZED (
+        SELECT $1::text AS account_id WHERE
+          EXISTS(SELECT 1 FROM amp_family_spaces WHERE account_id=$1)
+          OR EXISTS(SELECT 1 FROM amp_families WHERE account_id=$1)
+          OR EXISTS(SELECT 1 FROM amp_learners WHERE account_id=$1 AND NOT adult AND deleted_at IS NULL)
+        UNION
+        SELECT f.account_id FROM amp_people p
+          JOIN amp_families f ON f.second_parent=p.id
+          JOIN amp_orgs o ON o.id=f.org_id
+          JOIN amp_org_roles r ON r.person_id=p.id AND r.org_id=f.org_id AND r.role='teacher'
+          WHERE p.account_id=$1 AND p.deleted_at IS NULL
+            AND ${activeToday("r", "o")} AND amp_school_role_current(r.id)
+        UNION
+        SELECT f.account_id FROM amp_people p
+          JOIN amp_enrollments e ON e.person_id=p.id AND e.role<>'student'
+          JOIN amp_families f ON f.class_id=e.class_id
+          JOIN amp_orgs o ON o.id=f.org_id
+          WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+            AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id
+              AND r.org_id=ANY(o.path) AND r.role<>'student' AND ${activeToday("r", "o")} AND amp_school_role_current(r.id))
+      ), keys AS MATERIALIZED (
+        SELECT a.account_id,COALESCE(fs.id,f.org_id,amp_family_identity(a.account_id)) AS id
+          FROM associated a LEFT JOIN amp_family_spaces fs ON fs.account_id=a.account_id
+          LEFT JOIN amp_families f ON f.account_id=a.account_id
+          WHERE NOT EXISTS(SELECT 1 FROM amp_account_deletions d WHERE d.account_id=a.account_id)
+      ), page AS MATERIALIZED (
+        SELECT * FROM keys WHERE ($2::uuid IS NULL OR id>$2::uuid) ORDER BY id LIMIT 51
+      ) ${identities("page")} ORDER BY fs.id`,
       [account, after ?? null],
     )
   ).rows;
@@ -136,6 +146,8 @@ export async function listFamilies(
   return {
     families: places.slice(0, 50).map(({ row, role }) => ({
       familyId: row.familyId,
+      classId: row.classId,
+      orgId: row.orgId,
       displayName: row.displayName,
       role: role!,
       teachingPlace: teachingPlace(row, role!, actor),
@@ -152,7 +164,19 @@ export async function listFamilies(
 async function authorize(pool: Pool, account: string, familyId: string) {
   adultOnly(account);
   const row = (
-    await pool.query<Identity>(`${IDENTITIES} WHERE fs.id=$1`, [familyId])
+    await pool.query<Identity>(
+      `${identities(`(
+      SELECT id,account_id FROM amp_family_spaces WHERE id=$1
+      UNION ALL
+      SELECT COALESCE(f.org_id,amp_family_identity($2)),$2::text
+        FROM (SELECT 1) seed LEFT JOIN amp_families f ON f.account_id=$2
+        WHERE NOT EXISTS(SELECT 1 FROM amp_family_spaces WHERE account_id=$2)
+          AND NOT EXISTS(SELECT 1 FROM amp_account_deletions WHERE account_id=$2)
+          AND (f.account_id IS NOT NULL OR EXISTS(SELECT 1 FROM amp_learners
+            WHERE account_id=$2 AND NOT adult AND deleted_at IS NULL))
+    )`)} WHERE fs.id=$1`,
+      [familyId, account],
+    )
   ).rows[0];
   const actor = await loadActor(pool, account, row?.orgId ? [row.orgId] : []);
   const role = row && roleFor(row, account, actor);
@@ -172,8 +196,8 @@ async function familyContext(pool: Pool, row: Identity): Promise<ClassContext> {
     id: row.familyId,
     orgId: row.familyId,
     path: [row.familyId],
-    name: row.displayName,
-    orgName: row.displayName,
+    name: row.displayName ?? "Your family",
+    orgName: row.displayName ?? "Your family",
     orgKind: "family",
     courseBands: [],
     gradingKind: "year",
@@ -423,6 +447,7 @@ export async function familyProjection(
   return {
     familyId,
     displayName: row.displayName,
+    holderName: row.holderName,
     role,
     teachingPlace: teachingPlace(row, role, actor),
     capabilities: {
@@ -464,6 +489,8 @@ export async function familyChildProgress(
   return {
     id: learnerId,
     name: child.name,
+    today: context.today,
+    familyDisplayName: row.displayName,
     ...(await readProgress(
       pool,
       {

@@ -53,6 +53,10 @@ async function writeSchool(
     "UPDATE amp_orgs SET name=$2,timezone=$3,solo=$4 WHERE id=$1",
     [orgId, input.name, input.timezone, input.shape === "class"],
   );
+  await client.query(
+    "UPDATE amp_family_spaces fs SET display_name=$2 FROM amp_families f WHERE f.account_id=fs.account_id AND f.org_id=$1",
+    [orgId, input.name],
+  );
   await client.query("UPDATE amp_people SET timezone=$2 WHERE tenant_id=$1", [
     orgId,
     input.timezone,

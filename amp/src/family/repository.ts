@@ -2,13 +2,9 @@ import {
   purchaseMeasurementView,
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
-import { refreshAdultAccess } from "../account/adult-access.js";
+import { adultPracticeEnd, adultGrantId } from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
-import {
-  ensureFamilyClass,
-  practiceHere,
-  syncFamilyGrade,
-} from "./family-class.js";
+import { practiceHere, syncFamilyGrade } from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import {
   learningConsentActive,
@@ -65,6 +61,22 @@ export class FamilyRepository {
       client.release();
     }
   }
+  /** A consistent snapshot without mutation locks or write permission. */
+  async read<T>(action: (client: PoolClient) => Promise<T>): Promise<T> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
+      await client.query("SET LOCAL statement_timeout='30s'");
+      const result = await action(client);
+      await client.query("COMMIT");
+      return result;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
   async audit(
     client: PoolClient,
     accountId: string,
@@ -87,23 +99,7 @@ export class FamilyRepository {
     ).rows[0].relation;
   }
   async summary(accountId: string): Promise<FamilySummary> {
-    return this.transaction(accountId, async (client) => {
-      // Families are classes: children who were here before that get their
-      // family's class on the parent's next visit, under this account lock.
-      await ensureFamilyClass(client, this.pool, accountId, {
-        converting: true,
-      });
-      // The adult's own learner keeps its free access current with what
-      // qualifies it, so every read below sees the refreshed grant. Read
-      // through the row, so a database before 0093 has none.
-      const adult = (
-        await client.query<{ id: string }>(
-          `SELECT l.id FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL
-           AND to_jsonb(l)->'adult'='true'::jsonb AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false)`,
-          [accountId],
-        )
-      ).rows[0];
-      if (adult) await refreshAdultAccess(client, accountId, adult.id);
+    return this.read(async (client) => {
       const consent = (
         await client.query(
           "SELECT policy_version,recorded_at,withdrawn_at FROM amp_parent_consents WHERE account_id=$1",
@@ -123,12 +119,46 @@ export class FamilyRepository {
         for (const row of learners)
           if (row.simulation) row.has_access = covered;
       }
-      const grants = (
+      let grants = (
         await client.query(
           "SELECT g.* FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=$1 ORDER BY g.starts_at,g.id",
           [accountId],
         )
       ).rows;
+      // Project the derived adult entitlement from its live sources. Learning
+      // mutations persist the grant; GETs neither extend nor revoke rows.
+      const adult = learners.find(
+        (row) => row.adult && !row.simulation && !row.deleted_at,
+      );
+      if (adult) {
+        const ends = await adultPracticeEnd(client, accountId);
+        const derivedId = adultGrantId(adult.id);
+        const stored = grants.find((g) => g.id === derivedId);
+        grants = grants.filter((g) => g.id !== derivedId);
+        const now = (await client.query("SELECT now() AS at")).rows[0]
+          .at as Date;
+        if (ends)
+          grants.push({
+            id: derivedId,
+            learner_id: adult.id,
+            channel: "pilot",
+            status: "active",
+            starts_at: stored?.starts_at ?? now,
+            ends_at: ends,
+          });
+        else if (stored)
+          grants.push({
+            ...stored,
+            ends_at: stored.ends_at > now ? now : stored.ends_at,
+          });
+        adult.has_access = grants.some(
+          (g) =>
+            g.learner_id === adult.id &&
+            g.status === "active" &&
+            g.starts_at <= now &&
+            g.ends_at > now,
+        );
+      }
       const linked = (await this.stripeTable(client))
         ? (
             await client.query(
@@ -156,6 +186,8 @@ export class FamilyRepository {
         client,
         accountId,
         this.development,
+        undefined,
+        false,
       );
       const permitted = new Set<string>();
       for (const row of learners) {
@@ -169,21 +201,29 @@ export class FamilyRepository {
                 accountId,
                 this.development,
                 row.id,
+                false,
               ))))
         )
           permitted.add(row.id);
       }
       return {
-        purchaseMeasurement: await purchaseMeasurementView(client, accountId),
+        purchaseMeasurement: await purchaseMeasurementView(
+          client,
+          accountId,
+          "google",
+          false,
+        ),
         metaPurchaseMeasurement: await purchaseMeasurementView(
           client,
           accountId,
           "meta",
+          false,
         ),
         openaiPurchaseMeasurement: await purchaseMeasurementView(
           client,
           accountId,
           "openai",
+          false,
         ),
         consent: {
           status: consent
@@ -752,7 +792,7 @@ export class FamilyRepository {
         ]);
         datasets.push([
           "family-identity",
-          "SELECT jsonb_build_object('familyId',id) AS value FROM amp_family_spaces WHERE account_id=$1",
+          "SELECT jsonb_build_object('familyId',id,'displayName',display_name) AS value FROM amp_family_spaces WHERE account_id=$1",
         ]);
       }
       if (

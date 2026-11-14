@@ -19,19 +19,21 @@ page. It returns at most 50 places, ordered by UUID, and a nullable cursor:
 ```ts
 {
   families: Array<{
-    familyId: string;                 // UUID
-    displayName: string;
+    familyId: string; // UUID
+    displayName: string | null;
+    classId: string | null; // family’s own class, not a hosted child’s class
+    orgId: string | null; // actual org for that class
     role: "holder" | "second-parent" | "co-teacher";
     teachingPlace: TeachingPlace | null;
     capabilities: { readFamily: boolean; readTeaching: boolean };
   }>;
-  next: string | null;                // pass as after; null ends pagination
+  next: string | null; // pass as after; null ends pagination
 }
 type TeachingPlace = {
   classId: string;
   displayName: string;
   scope: "whole-class";
-  path: string;                      // API path to the teaching projection
+  path: string; // API path to the teaching projection
 };
 ```
 
@@ -40,13 +42,64 @@ A co-teacher belongs in Teaching. `teachingPlace` additionally identifies the
 holder's or second parent's mixed tutoring class. Its presence, rather than
 `readTeaching` alone, determines whether to show that separate place.
 
-A family ID is an opaque, stable URL key. It need not equal the class's org ID. A parent whose children are all
-hosted elsewhere receives a persisted `amp_family_spaces.id` on the first places
-read. This creates no class, staff role or enrollment. A local class created by a compatible API uses that ID for its org. A legacy
-API can allocate a different org ID; projections resolve that association through
-the holder account. Authorization always uses the actual org, and the public
-family ID never changes. A database hook registers families created by legacy APIs. An adult without children or a family class receives
-no new Family place merely because they teach elsewhere.
+A family ID is an opaque, stable URL key. It need not equal the class's org ID.
+Ownership transfer, family creation and second-parent acceptance persist that key.
+When an eligible holder lacks an identity, discovery derives it without writing:
+an existing family uses its org ID; otherwise `amp_family_identity(account)` supplies
+a deterministic UUIDv8 from a namespaced SHA-256 digest. The owner can open that
+URL immediately. Existing persisted IDs always win. Database insert hooks make
+legacy identity and class writers preserve the same key, even during a rolling
+upgrade. Authorization uses the actual org associated with the holder account.
+Teaching elsewhere alone does not give an adult a new owned Family place.
+
+Every `/api/v1/families` GET, including Teaching and individual progress/PDF, is
+read-only. Discovery starts with indexed ownership, second-parent and staff
+membership branches, unions the associated account keys, paginates their stable
+family IDs, and then loads the page's details. It performs at most four database
+queries and takes no account or row lock. Purchase previews use read-only consent
+and verified-address checks; mutations retain their locks and recheck eligibility.
+
+### Legacy Family and account GETs
+
+`GET /api/v1/family` uses a read-only snapshot without an account lock. It creates
+no identity, class, roster or grant. Adult eligibility and derived grant dates are
+calculated from current child/school access; learning mutations persist the adult
+grant. Refunded or revoked qualifying access cannot be extended by a stale grant.
+`GET /api/v1/me/practice` and its `/report.pdf` variant use the same live eligibility
+sources without refreshing grants. Family second-parent, approval-list and
+approval-detail GETs are also read-only, including their consent checks.
+
+Child creation, starter setup and the explicit
+`POST /api/v1/family/learners/:learnerId/practice-here` action create or repair a
+needed family class. An unrostered legacy child remains visible before that action.
+`GET /api/v1/me` reports the persisted class, if any, without creating one.
+
+These legacy GET side effects are retained for compatibility:
+
+- `GET /api/v1/me` adopts practiced, unexpired owned legacy trials through
+  `absorbLiveTrial`. The retired trial screens cannot expose those records; removing
+  adoption here without a coordinated sign-in/client change would hide saved work.
+  Adoption uses the existing account transaction and can create the child's family
+  class or refresh an adult grant. Accounts without eligible trials skip it.
+- The same `/me` endpoint calls `followDemo`: it records a demo visitor's presence
+  or moves them to the replacement nightly demo. Existing clients depend on this
+  refresh to avoid opening a retired demo. Non-visitors skip it.
+- `GET /api/v1/family/export` writes `export.started` and `export.completed` privacy
+  audit events around its read-only export snapshot. These record the explicit
+  download; removing them would remove the established export audit trail.
+
+`GET /api/v1/account/deletion` performs no data writes, but retains the account
+advisory lock while computing its deletion preview. It must not be described as
+lock-free. The deletion mutation recomputes that plan under its own lock.
+
+`displayName` uses an explicitly saved family name, then the holder's adult profile
+family name followed by ` family`, otherwise null. A provider's full display name
+does not establish a family name. The interface may render null as “Your family”.
+The required org storage labels `Our family` and generated `…’s family` are not
+public family names. Other legacy org names are treated as explicit names; a name
+saved through the org settings writer is stored in `amp_family_spaces.display_name`
+and wins even if it resembles a storage default. That nullable field is included in
+the account export and erased with the family identity.
 
 ## Family projection
 
@@ -56,7 +109,8 @@ receive `403 family_parent_only`; unrelated accounts receive `404 family_not_fou
 ```ts
 {
   familyId: string;
-  displayName: string;
+  displayName: string | null;
+  holderName: string | null;          // canonical adult display name, including explicit clearing
   role: "holder" | "second-parent";
   teachingPlace: TeachingPlace | null;
   capabilities: {
@@ -137,13 +191,18 @@ roster person IDs. The shared renderer must interpret IDs in its supplied scope.
 type TodayTodo = {
   id: string;
   kind: "shared-gap" | "stuck" | "no-practice" | "ready" | "good-day" | "start";
-  title: string; detail: string;
+  title: string;
+  detail: string;
   students: Array<{ id: string; name: string }>;
   action:
     | { kind: "lesson"; templateId: string; skillId: string; label: string }
     | { kind: "skill"; skillId: string; label: string }
     | { kind: "student"; personId: string; label: string }
-    | { kind: "tab"; tab: "map" | "time" | "start" | "settings"; label: string };
+    | {
+        kind: "tab";
+        tab: "map" | "time" | "start" | "settings";
+        label: string;
+      };
   groupSheet?: { skillId: string; label: string };
   rule?: string;
   misses?: Array<{ personId: string; attempt: string; skillId: string }>;
@@ -177,6 +236,19 @@ remain available under the Teaching scope. `readGrades`, `editGrades` and
 A second-parent invitation requires a local class, an empty second-parent slot
 and no currently hosted children.
 
+## Invitations and printed reports
+
+Second-parent invitation lookup retains `role: "teacher"` and
+`secondParent.className` for older clients. Its family presentation fields are
+`secondParent.familyDisplayName: string | null` and
+`secondParent.inviterName: string | null`, resolved from the holder's adult profile.
+
+Family-kind term cards and individual reports use the family display name and
+“decided by <parent name>”, falling back to “decided by the parent”. School reports
+retain teacher wording. A term counts practice only within its term and enrollment
+dates; Today counts the selected recent days. Design personas align their synthetic
+enrollment dates to the first seeded practice day so historical practice is included.
+
 ## Individual progress
 
 `GET /api/v1/families/:family/children/:learner/progress` has no body. It requires
@@ -193,16 +265,38 @@ type ProgressRecord = {
   reference: { from: number; to: number } | null;
   strands: Array<{ id: string; label: string }>;
   weeks: Array<{ week: string; minutes: number }>;
-  objectives: Array<{ skillId: string; title: string; strand: string; day: string }>;
+  objectives: Array<{
+    skillId: string;
+    title: string;
+    strand: string;
+    day: string;
+  }>;
   work: Array<{
-    id: string; day: string; at: string; prompt: string;
-    answer: string | null; response: string | null;
+    id: string;
+    day: string;
+    at: string;
+    prompt: string;
+    answer: string | null;
+    response: string | null;
     result: "independent" | "hint" | "missed" | "paper";
-    review: boolean; skill: string; strand: string;
+    review: boolean;
+    skill: string;
+    strand: string;
   }>;
 };
 type Estimate = { level: number; sd: number };
 ```
+
+### Individual progress PDF
+
+`GET /api/v1/families/:family/children/:learner/progress.pdf?format=Letter` (or `A4`)
+uses the same individual progress reader and shared `progress-report.ts` composer.
+It authorizes the holder or that family's active second parent against the child's
+live ownership, including a child rostered only in another family's class. A
+co-teacher cannot use this route. It grants no host-class or grade access and
+includes no host roster. The PDF contains the child's progress and family name;
+print rendering is per request. Missing rendering service returns `503 report_unavailable`.
+The download path is `paths.progress + ".pdf"`.
 
 ## Teaching projection
 
@@ -240,14 +334,24 @@ returns `404 teaching_place_not_found`.
 
 ```ts
 type ClassSummary = {
-  id: string; orgId: string; name: string; orgName: string;
+  id: string;
+  orgId: string;
+  name: string;
+  orgName: string;
   course: { label: string; level: number; from: number; to: number } | null;
 };
 type TodayStudent = {
-  id: string; learnerId?: string; name: string; gradeLevel: number | null;
-  level: Estimate | null; provisional: boolean;
-  todayMinutes: number; todayProblems: number;
-  weekMinutes: number; weekProblems: number; lastActive: string | null;
+  id: string;
+  learnerId?: string;
+  name: string;
+  gradeLevel: number | null;
+  level: Estimate | null;
+  provisional: boolean;
+  todayMinutes: number;
+  todayProblems: number;
+  weekMinutes: number;
+  weekProblems: number;
+  lastActive: string | null;
 };
 ```
 
@@ -271,14 +375,14 @@ Family scope does not revoke that legacy authority.
 `PATCH /api/v1/me/profile` accepts exactly:
 
 ```json
-{"givenName":"Ada","familyName":"Okafor"}
+{ "givenName": "Ada", "familyName": "Okafor" }
 ```
 
 Each field is a trimmed string of 1–100 characters without control characters,
 or `null`. Both fields are required; unknown fields are rejected. Its response is:
 
 ```json
-{"givenName":"Ada","familyName":"Okafor","displayName":"Ada Okafor"}
+{ "givenName": "Ada", "familyName": "Okafor", "displayName": "Ada Okafor" }
 ```
 
 `GET /api/v1/me` includes these three nullable fields in `account`. A legacy auth
@@ -318,9 +422,29 @@ label as the person's name.
 
 ## First course placement and deployment
 
-Apply migrations 0125–0127 before serving these endpoints. These migrations are
-unpublished branch migrations; never replace the contents of an applied migration
-in a persistent deployment. The runner checks file checksums. Ordinary migrations
+Run `npm run db:migrate` before serving these endpoints. Migrations 0125–0130
+install the identity/name schema, deterministic identity hooks and concurrent
+class-to-family lookup index. The runner automatically performs the family identity
+data migration after committing all schema transactions. No separate operator
+backfill step is required. Successful completion is persisted as
+`data:family-identities-v1` in `amp_migrations`; a failure prevents migration success
+and leaves that receipt absent.
+
+The data migration scans family account keys and learner IDs in keyset pages of
+250 (the reusable backfill accepts 1–1,000), committing one account at a time.
+Page reads and account work have a five-second statement timeout; account locks
+have a two-second timeout. The runner bounds connection acquisition to five seconds,
+serializes migrators with its session lock, and retries lock/deadlock failures up to
+three attempts. Account transactions recheck ownership, existing identities and
+the deletion journal. They never create classes or enrollments, rewrite published
+IDs, or hold the schema migrations' DDL locks. A failed run preserves committed
+accounts and safely revisits them on retry. The receipt skips completed work on
+subsequent deployments. Ownership fallback remains available during migration and
+for transfers from legacy writers after the scan, so rolling upgrades cannot hide
+hosted-only parents. `scripts/backfill-family-identities.ts` is also an idempotent
+repair command; discovery does not depend on its manual execution.
+
+Never replace the contents of an applied migration in a persistent deployment. The runner checks file checksums. Ordinary migrations
 commit separately. 0126 adds a nullable column without a table rewrite or a
 backfill; existing answered learners derive the legacy prior lazily. 0127 builds
 the history indexes with `CREATE INDEX CONCURRENTLY`, one statement at a time

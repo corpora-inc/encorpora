@@ -731,6 +731,14 @@ export async function readReportCards(
   ]);
   const course = courseBand(context.courseBands);
   return {
+    ...(context.orgKind === "family"
+      ? {
+          family: {
+            displayName: context.familyDisplayName ?? null,
+            parentName: context.parentName ?? null,
+          },
+        }
+      : {}),
     school: context.orgName,
     class: { name: context.name, course: course?.label ?? context.name },
     term,
@@ -925,6 +933,14 @@ export async function readStudentRecord(
                     {
                       classId: context.id,
                       className: context.name,
+                      ...(context.orgKind === "family"
+                        ? {
+                            family: {
+                              displayName: context.familyDisplayName ?? null,
+                              parentName: context.parentName ?? null,
+                            },
+                          }
+                        : {}),
                       termId: term.id,
                       termName: term.name,
                       state: term.state,
@@ -956,6 +972,9 @@ export async function readStudentRecord(
     classes: contexts.map((context) => ({
       id: context.id,
       name: context.name,
+      ...(context.orgKind === "family"
+        ? { familyDisplayName: context.familyDisplayName ?? null }
+        : {}),
       course: courseBand(context.courseBands),
     })),
     ...progress,

@@ -10,7 +10,7 @@ import { AccessGiftError, issueGiftSchema } from "./contracts.js";
 
 type Database = Pool | PoolClient;
 /** Only the authenticated identity store supplies the recipient, never a request body. */
-async function verifiedEmail(db: Database, accountId: string) {
+async function verifiedEmail(db: Database, accountId: string, lock = true) {
   if (!accountId.startsWith("amp|")) return null;
   if (
     !(await db.query("SELECT to_regclass('amp_auth_users') AS relation"))
@@ -19,7 +19,8 @@ async function verifiedEmail(db: Database, accountId: string) {
     return null;
   const row = (
     await db.query(
-      'SELECT lower(btrim(email)) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true FOR SHARE',
+      'SELECT lower(btrim(email)) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true' +
+        (lock ? " FOR SHARE" : ""),
       [accountId.slice(4)],
     )
   ).rows[0];
@@ -32,7 +33,7 @@ async function installed(db: Database) {
 }
 export async function availableGift(db: Database, accountId: string) {
   if (!(await installed(db))) return undefined;
-  const email = await verifiedEmail(db, accountId);
+  const email = await verifiedEmail(db, accountId, false);
   if (!email) return undefined;
   const row = (
     await db.query(

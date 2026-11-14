@@ -25,6 +25,7 @@ export async function lockLearningAccount(
 export async function parentAddressConfirmed(
   client: Pick<PoolClient, "query">,
   accountId: string,
+  lock = true,
 ): Promise<boolean> {
   if (!accountId.startsWith("amp|")) return true;
   const table = await client.query(
@@ -32,7 +33,7 @@ export async function parentAddressConfirmed(
   );
   if (!table.rows[0].present) return true;
   const user = await client.query(
-    'SELECT "emailVerified" FROM amp_auth_users WHERE id=$1 FOR SHARE',
+    `SELECT "emailVerified" FROM amp_auth_users WHERE id=$1${lock ? " FOR SHARE" : ""}`,
     [accountId.slice(4)],
   );
   return user.rows[0]?.emailVerified === true;
@@ -80,12 +81,15 @@ export async function learningConsentActive(
   accountId: string,
   development = false,
   learnerId?: string,
+  lock = true,
 ): Promise<boolean> {
   // Trial learners use a separate namespace and expire after 14 days.
   // A parent owns the trial for cross-device resume; adopting its answers
   // into a named family learner requires the regular consent checks.
   if (accountId.startsWith("trial:")) return true;
-  if (await namingConsentActive(client, accountId, development, learnerId))
+  if (
+    await namingConsentActive(client, accountId, development, learnerId, lock)
+  )
     return true;
   if (!learnerId) return false;
   const unnamed = await client.query(
@@ -110,10 +114,12 @@ export async function namingConsentActive(
   accountId: string,
   development = false,
   learnerId?: string,
+  lock = true,
 ): Promise<boolean> {
   if (accountId.startsWith("trial:")) return false;
   if (isSchoolAccount(accountId)) return schoolConsentActive(client, accountId);
-  if (await parentConsentActive(client, accountId, development)) return true;
+  if (await parentConsentActive(client, accountId, development, lock))
+    return true;
   return !!learnerId && (await isAdultLearner(client, accountId, learnerId));
 }
 /** The account's verified parental consent for collecting children's names. */
@@ -121,6 +127,7 @@ async function parentConsentActive(
   client: Pick<PoolClient, "query">,
   accountId: string,
   development: boolean,
+  lock = true,
 ): Promise<boolean> {
   const result = await client.query(
     "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
@@ -132,7 +139,7 @@ async function parentConsentActive(
   if (consent.verification_method === "monetary-transaction") {
     const effective = await client.query(
       `SELECT 1 FROM amp_purchase_consents c JOIN amp_consent_policy p ON p.singleton AND p.digest=c.policy_digest AND p.generation=c.policy_generation
-       WHERE c.checkout_id::text=$1 AND c.account_id=$2 AND c.consent_at IS NOT NULL AND c.revoked_at IS NULL AND p.enabled AND p.reviewed_until>clock_timestamp() FOR SHARE OF p`,
+       WHERE c.checkout_id::text=$1 AND c.account_id=$2 AND c.consent_at IS NOT NULL AND c.revoked_at IS NULL AND p.enabled AND p.reviewed_until>clock_timestamp()${lock ? " FOR SHARE OF p" : ""}`,
       [consent.evidence_reference, accountId],
     );
     return !!effective.rowCount;
@@ -143,7 +150,7 @@ async function parentConsentActive(
   if (consent.verification_method !== EMAIL_PLUS_METHOD) return false;
   const effective = await client.query(
     `SELECT 1 FROM amp_consent_requests r JOIN amp_consent_policy p ON p.singleton AND p.digest=r.policy_digest AND p.generation=r.policy_generation
-    WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>clock_timestamp() FOR SHARE OF p`,
+    WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>clock_timestamp()${lock ? " FOR SHARE OF p" : ""}`,
     [consent.evidence_reference, accountId],
   );
   return !!effective.rowCount;

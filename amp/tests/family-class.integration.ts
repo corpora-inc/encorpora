@@ -395,7 +395,7 @@ test(
     };
 
     await t.test(
-      "an existing family converts on its next visit, once, leaving every record as it was",
+      "an existing family converts on its first practice action, once, leaving every record as it was",
       async () => {
         const { parent, ids } = await existing("Ilse Fixture", ["Pia", "Noor"]);
         // Practice before conversion, through the parent as it always was.
@@ -418,8 +418,14 @@ test(
         );
         assert.equal(answered.statusCode, 200, answered.body);
         const before = await record(parent);
+        assert.equal((await me(parent)).familyClass, undefined);
+        const firstPractice = await post(
+          `/api/v1/family/learners/${ids[0]}/practice-here`,
+          parent,
+        );
+        assert.equal(firstPractice.statusCode, 201, firstPractice.body);
         const visit = await me(parent);
-        assert.equal(visit.familyClass.notice, true);
+        assert.ok(visit.familyClass);
         assert.equal(await record(parent), before, "evidence, grants, consent");
         const roster = await db.query(
           "SELECT count(*)::int AS n FROM amp_people WHERE learner_id=ANY($1)",
@@ -493,6 +499,11 @@ test(
       async () => {
         const { parent, ids } = await existing("Vera Fixture", ["Kai", "Lumi"]);
         const [kai, lumi] = ids as [string, string];
+        assert.equal(
+          (await post(`/api/v1/family/learners/${kai}/practice-here`, parent))
+            .statusCode,
+          201,
+        );
         const code = (await me(parent)).familyClass
           ? (
               await db.query(
@@ -550,7 +561,15 @@ test(
       "renaming a child renames them on the teacher's roster",
       async () => {
         const { parent, ids } = await existing("Nell Fixture", ["Oro"]);
-        await me(parent);
+        assert.equal(
+          (
+            await post(
+              `/api/v1/family/learners/${ids[0]}/practice-here`,
+              parent,
+            )
+          ).statusCode,
+          201,
+        );
         const code = (
           await db.query(
             "SELECT c.join_code FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",

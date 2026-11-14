@@ -1,3 +1,4 @@
+import { ensureFamilyIdentity } from "./identity.js";
 import { adultNameSql } from "../account/profile.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { childNameSchema } from "../learning/nickname.js";
@@ -349,7 +350,13 @@ export async function listApprovals(
     }
     const client = await pool.connect();
     try {
-      const consent = await learningConsentActive(client, row.account_id!);
+      const consent = await learningConsentActive(
+        client,
+        row.account_id!,
+        false,
+        undefined,
+        false,
+      );
       const ends = await activeGrant(client, row.learner_id!);
       // Without a plan, their own free problems still count down here.
       const used = ends
@@ -675,6 +682,7 @@ export async function readApproval(
       accountId,
       development,
       here ? row.learner_id! : undefined,
+      false,
     );
     return {
       id,
@@ -762,6 +770,7 @@ async function approveInside(
       )
     ).rows[0]?.learner_id;
     if (!learner) throw new FamilyError(410, "approval_ended");
+    await ensureFamilyIdentity(client, accountId);
     return { learnerId: learner };
   }
   if (row.expires_at <= new Date())
@@ -834,6 +843,7 @@ async function approveInside(
   // The approving family's gift in force covers this child too, whether
   // they were just added or moved in from a school's unnamed roster.
   await coverWithFamilyGift(client, accountId, learnerId);
+  await ensureFamilyIdentity(client, accountId);
   await client.query(
     "UPDATE amp_family_approvals SET approved_at=now(),person_id=$2,child_name=NULL,parent_email=NULL WHERE id=$1",
     [id, personId],
