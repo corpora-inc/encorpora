@@ -69,6 +69,9 @@ const filmed = filmsOf(oneFilm.id)[0]!.id;
 // One film shared by several problem types.
 const sharedFilm = skills.find((s) => s.id === "name-shapes")!;
 assert(filmsOf(sharedFilm.id).length > distinctFilms(sharedFilm.id));
+// A filmed problem type whose title wraps on a phone.
+const longTitle = templates.find((t) => t.id === "grouped-both-sides-steps")!;
+assert(lessonFilms[longTitle.id] && longTitle.title.length > 60);
 // Skills far down the pathway, a phone's several screens from its top.
 const farSkill = skills.find((s) => s.id === "similarity-theorems")!;
 const otherFar = skills.find((s) => s.id === "nonlinear-systems")!;
@@ -453,6 +456,37 @@ for (const width of widths)
       `${tag}: Watch never moves when the catalog arrives`,
     );
     await cold.close();
+
+    // A cold link to a lesson whose title wraps, its catalog and lesson both
+    // slow: the head is drawn whole once its title is known, so Watch is
+    // where it first appears (Astra, CP-6 round 2).
+    const wrapping = await context.newPage();
+    await fixture(wrapping, { holdCatalog: 1500, holdLessons: 1500 });
+    await wrapping.goto(`${origin}/pathways?open=lesson:${longTitle.id}`);
+    const longDialog = wrapping.getByRole("dialog", {
+      name: "Explore a problem type",
+    });
+    const longWatch = longDialog.getByRole("link", { name: /^Watch lesson/ });
+    await longWatch.waitFor();
+    const first = (await longWatch.boundingBox())!;
+    const longHeading = longDialog.getByRole("heading", {
+      name: longTitle.title,
+      exact: true,
+    });
+    assert(
+      (await longHeading.boundingBox())!.height > 40 || width >= 1280,
+      `${tag}: the title wraps`,
+    );
+    await longDialog.locator(".problem-lesson").waitFor();
+    await longDialog
+      .getByRole("link", { name: "Try this problem type", exact: true })
+      .waitFor();
+    assert.deepEqual(
+      await longWatch.boundingBox(),
+      first,
+      `${tag}: Watch never moves under a wrapping title`,
+    );
+    await wrapping.close();
 
     // A film shared by several problem types: one card, a glyph on each row.
     const shared = await context.newPage();

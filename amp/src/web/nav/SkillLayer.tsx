@@ -73,7 +73,7 @@ export function SkillLayer({
     [];
   // Every film the skill has, from the film catalogue: at the top, so a
   // film is never only behind one problem type's lesson.
-  const films = skillFilms(types);
+  const films = skillFilms(types, undefined, skill);
   // Every problem type whose lesson has a film, shared or its own: the
   // cards above offer a shared film once, its rows each say so.
   const filmed = new Set(
