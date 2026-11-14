@@ -1,4 +1,4 @@
-import { displayMathFitScript } from "./DisplayMath";
+import { displayMathFitScript } from "./display-math-styles";
 import { areaVolumeWorksheet } from "./area-volume-worksheets";
 import { areaVolumeTemplates } from "../math/area-volume-practice";
 import { transformationWorksheet } from "./transformation-worksheets";

@@ -1,4 +1,4 @@
-import { displayMathStyles } from "../../content/DisplayMath";
+import { displayMathStyles } from "../../content/display-math-styles";
 
 const displayMathStyle = document.createElement("style");
 displayMathStyle.textContent = displayMathStyles;
