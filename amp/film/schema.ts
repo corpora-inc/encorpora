@@ -429,6 +429,19 @@ const timing = {
   dur: num.positive().optional(),
 };
 const targets = z.union([dotted, z.array(dotted).min(1)]);
+const highlightTiming = {
+  /** Release on this word of the same beat; omitted keeps the default hold. */
+  until: z.string().optional(),
+  /** Which occurrence of `until`, from 1, just like `nth` for `at`. */
+  untilNth: z.number().int().min(1).optional(),
+};
+// Spoken-word timing belongs to films, not the app's scene timeline.
+type SceneHighlightSchema = Extract<(typeof sceneActionSchema.options)[number], { shape: { do: z.ZodLiteral<"highlight"> } }>;
+const sceneHighlightSchema = sceneActionSchema.options.find((s): s is SceneHighlightSchema => s.shape.do.value === "highlight")!;
+const filmSceneActionSchema = z.discriminatedUnion("do", [
+  sceneHighlightSchema.extend(highlightTiming),
+  ...sceneActionSchema.options.filter((s): s is Exclude<typeof s, SceneHighlightSchema> => s.shape.do.value !== "highlight"),
+]);
 /** A name for a line on the board, so a recap step can point back at it. */
 const lineId = { id: name.optional() };
 export const actionSchema = z.discriminatedUnion("do", [
@@ -437,8 +450,8 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("hide"), target: targets, ...timing }).strict(),
   /** Draw strokes from their start; fills fade in. */
   z.object({ do: z.literal("draw"), target: targets, ...timing }).strict(),
-  /** Emphasize until the end of this beat. */
-  z.object({ do: z.literal("highlight"), target: targets, ...timing }).strict(),
+  /** Emphasize until a spoken word, or the end of this beat. */
+  z.object({ do: z.literal("highlight"), target: targets, ...timing, ...highlightTiming }).strict(),
   /**
    * Move named points: shapes and labels built on them follow. Each goes to
    * [x, y], to where another point is (its name), or into a grid cell ({cell: [grid, n]}).
@@ -490,7 +503,7 @@ export const actionSchema = z.discriminatedUnion("do", [
   /** Things go away one by one. With `toward`, each drifts that way as it fades (ducks fly off upward) instead of fading where it sits. */
   z.object({ do: z.literal("leave"), target: targets, toward: z.enum(["n", "s", "e", "w", "ne", "nw", "se", "sw"]).optional(), ...timing }).strict(),
   /** An app figure (figure {example: true} or {scene: ...}): scene timeline actions on its part names. */
-  z.object({ do: z.literal("scene"), actions: z.array(sceneActionSchema).min(1), ...timing }).strict(),
+  z.object({ do: z.literal("scene"), actions: z.array(filmSceneActionSchema).min(1), ...timing }).strict(),
   // ---- the work column
   /** The problem as the learner sees it, with its answer choices if it has them. */
   z.object({ do: z.literal("problem"), text: z.string().min(1), choices: z.array(z.string().min(1)).optional(), ...lineId, ...timing }).strict(),
@@ -611,6 +624,8 @@ export const scriptSchema = z
      * `--`). Publishing links the film from each one that has no film of its own.
      */
     teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
+    /** Routing only: this film is the lesson film for its own problem type's skill. */
+    skill: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**
