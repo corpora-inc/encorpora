@@ -150,6 +150,129 @@ async function injectChunk(
       if (!/Execution context was destroyed/.test(String(error))) throw error;
     });
 }
+// Sample every paint opportunity; eventual content alone misses a short flash.
+async function watchLoadingFrames(page: Page) {
+  // A string keeps tsx's function-name helper out of the browser callback.
+  return page.evaluateHandle<{
+    stop(): { frames: number; loadingFrames: number };
+  }>(`(() => {
+    let frames = 0;
+    let loadingFrames = 0;
+    let request = 0;
+    const sample = () => {
+      frames++;
+      if (
+        [...document.querySelectorAll(".app-loading")].some(
+          (element) => element.offsetHeight > 0,
+        )
+      )
+        loadingFrames++;
+      request = requestAnimationFrame(sample);
+    };
+    request = requestAnimationFrame(sample);
+    return {
+      stop() {
+        cancelAnimationFrame(request);
+        return { frames, loadingFrames };
+      },
+    };
+  })()`);
+}
+async function verifyNavigationPaint() {
+  for (const width of [390, 1280]) {
+    for (const mode of ["loaded", "preloaded", "new-module"] as const) {
+      const context = await browser.newContext({
+        viewport: { width, height: 900 },
+      });
+      try {
+        const state = await fixture(context);
+        const page = await context.newPage();
+        page.setDefaultTimeout(15_000);
+        await page.goto(`${origin}/schools`);
+        await page.locator("h1").waitFor();
+        // Trust shares the source module; sign-in requires a separate chunk.
+        const destination =
+          mode === "new-module" ? "/sign-in" : "/schools/trust";
+        const link = page.locator(`a[href^="${destination}"]:visible`).first();
+        if (mode !== "loaded") {
+          await link.hover();
+          await page.waitForTimeout(700);
+        }
+        const samples = await watchLoadingFrames(page);
+        // A DOM click avoids intent preloading in the already-loaded case.
+        if (mode === "loaded")
+          await link.evaluate((element: HTMLElement) => element.click());
+        else await link.click();
+        await page.waitForURL((url) => url.pathname === destination);
+        if (mode === "new-module")
+          await page.locator('input[type="email"]').waitFor();
+        else await page.locator("#trust-title").waitFor();
+        await page.waitForTimeout(500);
+        const result = await samples.evaluate((monitor) => monitor.stop());
+        await samples.dispose();
+        assert(result.frames > 0);
+        assert.equal(
+          result.loadingFrames,
+          0,
+          `${width}/${mode}: no loading flash`,
+        );
+        assert.equal(state.documents, 1);
+        assert.equal(state.aborted.length, 0);
+        await page.screenshot({
+          path: join(shots, `navigation-${width}-${mode}.png`),
+        });
+        console.log(
+          `navigation ${width}/${mode}: ${result.loadingFrames} loading frames / ${result.frames} sampled`,
+        );
+      } finally {
+        await context.close();
+      }
+    }
+  }
+  // Keep a real import unresolved to exercise the router's delayed pending UI.
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 900 },
+  });
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  try {
+    await fixture(context);
+    await context.route(/\/assets\/SignInScreen-[^/]+\.js$/, async (route) => {
+      await held;
+      await route.continue();
+    });
+    const page = await context.newPage();
+    page.setDefaultTimeout(15_000);
+    await page.goto(`${origin}/schools`);
+    await page.locator("h1").waitFor();
+    const samples = await watchLoadingFrames(page);
+    await page
+      .locator('a[href^="/sign-in"]:visible')
+      .first()
+      .evaluate((element: HTMLElement) => element.click());
+    await page.waitForTimeout(400);
+    assert(
+      await page.locator("h1").isVisible(),
+      "source remains visible during a short wait",
+    );
+    const result = await samples.evaluate((monitor) => monitor.stop());
+    await samples.dispose();
+    assert.equal(result.loadingFrames, 0, "no early pending UI");
+    await page.locator(".app-loading").waitFor({ state: "visible" });
+    await page.screenshot({ path: join(shots, "navigation-delayed.png") });
+    release();
+    await page.locator('input[type="email"]').waitFor();
+    assert.equal(await page.locator(".app-loading:visible").count(), 0);
+    console.log(
+      "delayed navigation: source retained for 400 ms, pending UI during held import, destination after release",
+    );
+  } finally {
+    release();
+    await context.close();
+  }
+}
 // Real imports exercise the route loader's rejection path, including any reload
 // it might attempt independently of Vite and the application's recovery guard.
 async function verifyRouteImports() {
@@ -503,6 +626,7 @@ async function verifyOtherRecovery() {
   }
 }
 try {
+  await verifyNavigationPaint();
   await verifyRouteImports();
   if (!process.argv.includes("--route-imports-only"))
     await verifyOtherRecovery();
