@@ -3237,6 +3237,27 @@
       }
     ]
   },
+  "parallel-lines-angle": {
+    "id": "parallel-lines-angle--sp",
+    "version": "ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06",
+    "title": "Eight angles, two sizes",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/audio.m4a",
+    "duration": 152,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/audio.m4a",
+        "version": "ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06",
+        "duration": 152
+      }
+    ]
+  },
   "partition-from-marks": {
     "id": "array-add-rows-total--sa",
     "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
