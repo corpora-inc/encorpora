@@ -116,11 +116,18 @@ for (const earlyPayment of [false, true])
           `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='parent'`,
         );
         // A parent may add and name their own child before consent; the child
-        // learns on the restricted basis (docs/parent-consent.md#childrens-names)
-        // and gets no funded access from it.
+        // learns on the restricted basis (docs/parent-consent.md#childrens-names).
+        const learner = await learners.create(account, "Early", 2017);
+        assert.equal(learner.namePending, true);
+        const request = await invoices.claim(account, invoice.id, learner.id);
         assert.equal(
-          (await learners.create(account, "Early", 2017)).namePending,
-          true,
+          (
+            await pool.query(
+              "SELECT status FROM amp_grants WHERE learner_id=$1",
+              [learner.id],
+            )
+          ).rows[0].status,
+          "active",
         );
         const now = new Date().toISOString();
         const config: ClassWalletConfig = {
@@ -167,8 +174,17 @@ for (const earlyPayment of [false, true])
           assert.equal(
             (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0]
               .n,
-            0,
+            1,
           );
+          const deferred = (
+            await pool.query(
+              "SELECT attempts,error_code,stopped_at,conversion_payload FROM amp_classwallet_payments",
+            )
+          ).rows[0];
+          assert.equal(deferred.attempts, 0);
+          assert.equal(deferred.error_code, "awaiting_parent_consent");
+          assert.equal(deferred.stopped_at, null);
+          assert.equal(deferred.conversion_payload, null);
         }
         await consent.begin(account, begin);
         await deliverConsentMail(consent, transport);
@@ -185,9 +201,11 @@ for (const earlyPayment of [false, true])
         await deliverConsentMail(consent, transport);
         await consent.acknowledge(account, acknowledge(sent[1]!));
         assert.equal(await learners.hasConsent(account), true);
-        const learner = await learners.create(account, "Fixture", 2016);
-        const request = await invoices.claim(account, invoice.id, learner.id);
         await invoices.claim(account, invoice.id, learner.id);
+        await pool.query(
+          "UPDATE amp_classwallet_payments SET next_attempt_at=now() WHERE invoice_id=$1",
+          [invoice.id],
+        );
         if (!earlyPayment) {
           const settledAt = new Date().toISOString();
           payment["Payment Approval Date"] = settledAt;
@@ -205,8 +223,11 @@ for (const earlyPayment of [false, true])
         const verified = await funding.read(account, request.id);
         assert.ok(verified.orderId);
         assert.equal(
-          (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0]
-            .n,
+          (
+            await pool.query(
+              "SELECT count(*)::int n FROM amp_grants WHERE status='active'",
+            )
+          ).rows[0].n,
           1,
         );
         assert.equal(

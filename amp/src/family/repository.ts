@@ -455,6 +455,23 @@ export class FamilyRepository {
         "SELECT to_regclass('amp_funding_invoice_intents') AS relation",
       )
     ).rows[0]?.relation;
+    if (
+      invoiceIntents &&
+      (
+        await client.query(
+          "SELECT to_regclass('amp_funding_invoice_outbox') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        `DELETE FROM amp_funding_invoice_outbox o USING amp_funding_invoice_intents i
+         WHERE o.invoice_id=i.id AND (
+           (i.claimed_account_id=$1 AND ($2::text IS NULL OR EXISTS (
+             SELECT 1 FROM amp_funding_requests r WHERE r.id=i.claimed_request_id AND r.learner_id=$2)))
+           OR ($2::text IS NULL AND i.claimed_account_id IS NULL AND EXISTS (
+             SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)))`,
+        [accountId, learnerId ?? null],
+      );
     if (!learnerId && invoiceIntents)
       await client.query(
         `DELETE FROM amp_funding_invoice_intents i WHERE i.received_payment_at IS NULL AND (i.claimed_account_id=$1 OR (i.claimed_account_id IS NULL AND EXISTS (SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)))`,

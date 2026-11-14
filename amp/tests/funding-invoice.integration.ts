@@ -1,3 +1,15 @@
+import { deleteAccount } from "../src/account/delete-account.js";
+import {
+  AccessGiftRepository,
+  availableGift,
+} from "../src/access-grants/repository.js";
+import { deliverFundingInvoiceMail } from "../src/funding-purchase/invoice-mail.js";
+import { installConsentPolicy } from "../src/parent-consent/policy.js";
+import { consentFixture } from "./parent-consent.fixture.js";
+import type {
+  ConsentMail,
+  ConsentTransport,
+} from "../src/parent-consent/contracts.js";
 import {
   createSignupIntent,
   completeSignup,
@@ -62,7 +74,7 @@ const input = () => ({
 });
 
 test(
-  "guest prepares PDF without account, consent, learner or grant; private fields never returned",
+  "guest invoice atomically reserves funded-pending access and queues its PDF without inventing an account or learner",
   enabled,
   () =>
     fixture(async (pool) => {
@@ -82,6 +94,24 @@ test(
         });
         assert.equal(response.statusCode, 200);
         const result = response.json();
+        assert.equal(result.accessStatus, "funded-pending");
+        assert.equal(result.emailStatus, "queued");
+        const gift = (await pool.query("SELECT * FROM amp_access_gifts"))
+          .rows[0];
+        assert.equal(gift.source, "funded-pending");
+        assert.equal(gift.funding_invoice_id, result.invoiceId);
+        assert.equal(gift.activated_at, null);
+        assert.equal(new Date(gift.claim_by).toISOString(), result.expiresAt);
+        const outbox = (
+          await pool.query("SELECT * FROM amp_funding_invoice_outbox")
+        ).rows[0];
+        assert.equal(outbox.invoice_id, result.invoiceId);
+        assert.ok(
+          Buffer.from(outbox.pdf_base64, "base64")
+            .toString()
+            .startsWith("%PDF"),
+        );
+        assert.equal(outbox.attempts, 0);
         assert.ok(
           Buffer.from(result.pdfBase64, "base64").toString().startsWith("%PDF"),
         );
@@ -180,6 +210,16 @@ test(
       assert.equal(claimed.id, intent.id);
       assert.equal(claimed.createdAt, intent.createdAt);
       assert.equal(claimed.studentBillingName, "Test Student");
+      const grant = (
+        await pool.query("SELECT * FROM amp_grants WHERE learner_id='child'")
+      ).rows[0];
+      assert.equal(grant.id, "funded-pending:child");
+      assert.equal(grant.status, "active");
+      assert.equal(grant.ends_at.toISOString(), intent.expiresAt);
+      const status = await invoices.funding.present("amp|owner", claimed);
+      assert.equal(status.paymentStatus, "not-verified");
+      assert.equal(status.fundedPending?.status, "funded-pending");
+      assert.equal(await availableGift(pool, "amp|owner"), undefined);
       assert.equal(
         (await invoices.claim("amp|owner", intent.id, "child")).id,
         intent.id,
@@ -673,5 +713,260 @@ test(
       } finally {
         await app.close();
       }
+    }),
+);
+
+const invoicePolicy = {
+  ...consentFixture,
+  review: { ...consentFixture.review, paymentNotificationsReviewed: true },
+  notice: {
+    ...consentFixture.notice,
+    processors: [
+      ...consentFixture.notice.processors,
+      {
+        name: "Resend",
+        service: "Email",
+        data: "Invoice",
+        purpose: "Requested delivery",
+        retention: "Limited",
+      },
+    ],
+  },
+};
+const invoiceTransport = (
+  send: ConsentTransport["send"],
+): ConsentTransport => ({
+  binding: {
+    provider: "resend",
+    sender: "sender@example.test",
+    credentialFingerprint: "fixture",
+  },
+  send,
+});
+
+test(
+  "invoice email has the PDF, payment steps and setup route; concurrent delivery and creation retries send once",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, invoicePolicy);
+      const data = input();
+      const intent = await invoices.create(data);
+      await invoices.create(data);
+      const messages: ConsentMail[] = [];
+      const transport = invoiceTransport(async (mail) => {
+        messages.push(mail);
+        await new Promise((resolve) => setTimeout(resolve, 20));
+        return { kind: "accepted", receipt: randomUUID() };
+      });
+      await Promise.all(
+        Array.from({ length: 4 }, () =>
+          deliverFundingInvoiceMail(pool, transport, invoicePolicy),
+        ),
+      );
+      assert.equal(messages.length, 1);
+      const mail = messages[0]!;
+      assert.equal(mail.recipient, data.parentEmail);
+      assert.equal(mail.idempotencyKey, `amp-funding-invoice:${intent.id}`);
+      assert.match(mail.text, /child can start today/);
+      assert.ok(mail.text.includes(offer.instructions));
+      assert.match(mail.text, /https:\/\/example.com\/purchase\/arizona-esa/);
+      assert.ok(
+        Buffer.from(mail.attachments![0]!.content, "base64")
+          .toString()
+          .startsWith("%PDF"),
+      );
+      assert.equal(
+        await deliverFundingInvoiceMail(pool, transport, invoicePolicy),
+        false,
+      );
+    }),
+);
+
+test(
+  "ambiguous invoice email retries keep identical bytes and stop on changed transport or expired window",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await installConsentPolicy(pool, invoicePolicy);
+      await invoices.create(input());
+      const messages: ConsentMail[] = [];
+      const transport = invoiceTransport(async (mail) => {
+        messages.push(mail);
+        return { kind: "unknown" };
+      });
+      await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+      await pool.query(
+        "UPDATE amp_funding_invoice_outbox SET available_at=now()",
+      );
+      await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+      assert.deepEqual(messages[0], messages[1]);
+      await pool.query(
+        "UPDATE amp_funding_invoice_outbox SET available_at=now(),first_dispatch_at=now()-interval '24 hours'",
+      );
+      await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+      assert.equal(messages.length, 2);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funding_invoice_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "retry-window-ended",
+      );
+      await invoices.create(input());
+      await deliverFundingInvoiceMail(pool, transport, invoicePolicy);
+      await pool.query(
+        "UPDATE amp_funding_invoice_outbox SET available_at=now() WHERE stopped_at IS NULL",
+      );
+      await deliverFundingInvoiceMail(
+        pool,
+        {
+          ...transport,
+          binding: { ...transport.binding, sender: "changed@example.test" },
+        },
+        invoicePolicy,
+      );
+      assert.equal(messages.length, 3);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funding_invoice_outbox WHERE stopped_reason='binding-changed'",
+          )
+        ).rows[0].n,
+        1,
+      );
+    }),
+);
+
+test(
+  "funded pending cannot bypass invoice claim, is reversible, and another invoice cannot restart expired access",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|owner','test','verified','test')",
+      );
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('child','amp|owner','Child')",
+      );
+      const intent = await invoices.create(input());
+      const gift = (await pool.query("SELECT id FROM amp_access_gifts"))
+        .rows[0];
+      await assert.rejects(
+        new AccessGiftRepository(pool).activate("amp|owner", gift.id, "child"),
+        /invoice_claim_required/,
+      );
+      await invoices.claim("amp|owner", intent.id, "child");
+      await new AccessGiftRepository(pool).revoke(gift.id);
+      assert.equal(
+        (await pool.query("SELECT status FROM amp_grants")).rows[0].status,
+        "revoked",
+      );
+      const next = await invoices.create(input());
+      await invoices.claim("amp|owner", next.id, "child");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT state FROM amp_funding_invoice_intents WHERE id=$1",
+            [next.id],
+          )
+        ).rows[0].state,
+        "claimed",
+      );
+      assert.equal(
+        (await pool.query("SELECT status FROM amp_grants")).rows[0].status,
+        "revoked",
+      );
+    }),
+);
+
+test(
+  "invoice reservation and mail roll back together if enqueue fails",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await pool.query(
+        "ALTER TABLE amp_funding_invoice_outbox ADD CONSTRAINT fixture_reject CHECK (false)",
+      );
+      await assert.rejects(invoices.create(input()));
+      for (const table of [
+        "amp_funding_invoice_intents",
+        "amp_access_gifts",
+        "amp_funding_invoice_outbox",
+      ])
+        assert.equal(
+          (await pool.query(`SELECT count(*)::int n FROM ${table}`)).rows[0].n,
+          0,
+        );
+    }),
+);
+
+test(
+  "learning deletion removes queued PDFs even when received payments retain the financial invoice",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|owner','test','verified','test')",
+      );
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('child','amp|owner','Child')",
+      );
+      const intent = await invoices.create(input());
+      await invoices.claim("amp|owner", intent.id, "child");
+      await pool.query(
+        "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+        [intent.id],
+      );
+      await new FamilyRepository(pool).deleteLearning("amp|owner", "child");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funding_invoice_outbox",
+          )
+        ).rows[0].n,
+        0,
+      );
+      await installConsentPolicy(pool, invoicePolicy);
+      await deliverFundingInvoiceMail(
+        pool,
+        invoiceTransport(async () => {
+          throw new Error("Deleted learner must not receive mail");
+        }),
+        invoicePolicy,
+      );
+    }),
+);
+
+test(
+  "account deletion erases PDF delivery for a financially retained guest invoice",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      const intent = await invoices.create(input());
+      await pool.query(
+        "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+        [intent.id],
+      );
+      await deleteAccount(pool, {
+        accountId: "amp|owner",
+        via: "self",
+        commit: true,
+      });
+      assert.ok(await invoices.readInvoiceIntent(intent.id));
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funding_invoice_outbox",
+          )
+        ).rows[0].n,
+        0,
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_access_gifts"))
+          .rows[0].n,
+        0,
+      );
     }),
 );

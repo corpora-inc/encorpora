@@ -1,3 +1,4 @@
+import { purchaseConsentSatisfied } from "../server/account-access.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
@@ -207,6 +208,24 @@ export async function reconcileClassWalletPayments(
       }
       const stored = requests.rows[0],
         request = fundingRequestRow(stored);
+      // A temporary invoice grant can precede the parent's full consent.
+      // Keep received payment available while they finish it, without spending
+      // the error-retry budget or fixing the paid term before it can start.
+      if (
+        !(await purchaseConsentSatisfied(
+          client,
+          request.accountId,
+          request.learnerId,
+        ))
+      ) {
+        await client.query(
+          "UPDATE amp_classwallet_payments SET next_attempt_at=now()+interval '5 minutes',error_code='awaiting_parent_consent' WHERE order_id=$1",
+          [orderId],
+        );
+        await client.query("COMMIT");
+        deferred++;
+        continue;
+      }
       const at = new Date().toISOString();
       payload =
         payment.conversion_payload ??

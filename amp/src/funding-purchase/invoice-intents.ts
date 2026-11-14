@@ -1,3 +1,4 @@
+import { activateGiftInTransaction } from "../access-grants/repository.js";
 import {
   linkFundedVisitor,
   recordFundedParentStatus,
@@ -14,7 +15,10 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
-import { purchaseConsentSatisfied } from "../server/account-access.js";
+import {
+  learningConsentActive,
+  purchaseConsentSatisfied,
+} from "../server/account-access.js";
 import { FundingPurchaseRepository, fundingRequestRow } from "./repository.js";
 import {
   availableOffers,
@@ -23,7 +27,10 @@ import {
   type FundingOffer,
   type FundingRequest,
 } from "./contracts.js";
-import { validateInvoiceStudentName } from "./quote-pdf.js";
+import {
+  renderFundingQuotePdf,
+  validateInvoiceStudentName,
+} from "./quote-pdf.js";
 
 export const createInvoiceIntentSchema = z.strictObject({
   offerId: z.string().min(1).max(120),
@@ -124,6 +131,16 @@ export class FundingInvoiceRepository {
           await linkFundedVisitor(client, intent, "guest_invoice", visitor);
           return intent;
         }
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,10))",
+          [data.parentEmail],
+        );
+        const recent = await client.query(
+          "SELECT 1 FROM amp_funding_invoice_intents WHERE parent_email=$1 AND created_at>$2::timestamptz-interval '1 hour' LIMIT 5",
+          [data.parentEmail, at.toISOString()],
+        );
+        if (recent.rowCount === 5)
+          throw new FundingPurchaseError(429, "invoice_email_limit");
         const offer = this.offers(at).find(
           (o) => o.id === data.offerId && o.revision === data.offerRevision,
         );
@@ -163,6 +180,18 @@ export class FundingInvoiceRepository {
           ],
         );
         const intent = rowIntent(result.rows[0]);
+        await client.query(
+          `INSERT INTO amp_access_gifts(id,recipient_email,months,source,reference,claim_by,funding_invoice_id)
+           VALUES($1,$2,1,'funded-pending',$3,$4,$3)`,
+          [randomUUID(), intent.parentEmail, intent.id, intent.expiresAt],
+        );
+        const pdf = Buffer.from(
+          await renderFundingQuotePdf(invoiceDocument(intent)),
+        ).toString("base64");
+        await client.query(
+          "INSERT INTO amp_funding_invoice_outbox(invoice_id,pdf_base64) VALUES($1,$2)",
+          [intent.id, pdf],
+        );
         await linkFundedVisitor(client, intent, "guest_invoice", visitor);
         return intent;
       },
@@ -216,6 +245,10 @@ export class FundingInvoiceRepository {
       );
       if (!result.rowCount)
         throw new FundingPurchaseError(409, "invoice_cannot_discard");
+      await client.query(
+        "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE funding_invoice_id=$1",
+        [id],
+      );
       await recordFundedParentStatus(client, id, "cancelled", new Date());
     });
   }
@@ -226,140 +259,161 @@ export class FundingInvoiceRepository {
     at = new Date(),
     attributionAllowed = true,
   ): Promise<FundingRequest> {
-    return this.funding.transaction(account, async (client) => {
-      const email = await this.verifiedEmail(client, account);
-      // A child needs the parent's verified consent; an adult claiming for
-      // their own learner acts for themselves.
-      if (!(await purchaseConsentSatisfied(client, account, learnerId)))
-        throw new FundingPurchaseError(403, "verified_consent_required");
-      const learner = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
-        [learnerId, account],
-      );
-      if (!learner.rowCount)
-        throw new FundingPurchaseError(404, "learner_not_found");
-      // Match retention's journey -> invoice lock order. Reserve an anonymous
-      // journey only after the authenticated parent and learner are verified.
-      let retainedJourney: string | null = null;
-      let withdrawn = false;
-      let acquisitionFailed = false;
-      await client.query("SAVEPOINT invoice_claim_acquisition");
-      try {
-        const withdrawals = await client.query<{ provider: "google" | "meta" }>(
-          "SELECT provider FROM amp_ad_collection_withdrawals WHERE account_id=$1",
-          [account],
+    return this.funding.transaction(
+      account,
+      async (client) => {
+        const email = await this.verifiedEmail(client, account);
+        // A child needs the parent's verified consent; an adult claiming for
+        // their own learner acts for themselves.
+        const pendingGift = (
+          await client.query(
+            "SELECT id FROM amp_access_gifts WHERE funding_invoice_id=$1",
+            [id],
+          )
+        ).rows[0];
+        const permitted =
+          (await purchaseConsentSatisfied(client, account, learnerId)) ||
+          (pendingGift &&
+            (await learningConsentActive(client, account, false, learnerId)));
+        if (!permitted)
+          throw new FundingPurchaseError(403, "verified_consent_required");
+        const learner = await client.query(
+          "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
+          [learnerId, account],
         );
-        withdrawn = withdrawals.rows.length > 0;
-        if (attributionAllowed) {
-          const journey = (
-            await client.query(
-              `SELECT j.id FROM amp_ad_click_journeys j
+        if (!learner.rowCount)
+          throw new FundingPurchaseError(404, "learner_not_found");
+        // Match retention's journey -> invoice lock order. Reserve an anonymous
+        // journey only after the authenticated parent and learner are verified.
+        let retainedJourney: string | null = null;
+        let withdrawn = false;
+        let acquisitionFailed = false;
+        await client.query("SAVEPOINT invoice_claim_acquisition");
+        try {
+          const withdrawals = await client.query<{
+            provider: "google" | "meta";
+          }>(
+            "SELECT provider FROM amp_ad_collection_withdrawals WHERE account_id=$1",
+            [account],
+          );
+          withdrawn = withdrawals.rows.length > 0;
+          if (attributionAllowed) {
+            const journey = (
+              await client.query(
+                `SELECT j.id FROM amp_ad_click_journeys j
              JOIN amp_funding_invoice_intents i ON i.acquisition_journey_id=j.id
              WHERE i.id=$1 AND i.parent_email=$2 AND i.state='prepared'
                AND (j.account_id IS NULL OR j.account_id=$3) AND j.expires_at>clock_timestamp()
              FOR UPDATE OF j`,
-              [id, email, account],
-            )
-          ).rows[0];
-          if (journey) {
-            retainedJourney = journey.id;
+                [id, email, account],
+              )
+            ).rows[0];
+            if (journey) {
+              retainedJourney = journey.id;
+              await client.query(
+                "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
+                [retainedJourney, account],
+              );
+              for (const { provider } of withdrawals.rows)
+                await eraseAccountAdClicks(client, account, provider);
+            }
+          }
+          await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
+        } catch {
+          await client.query("ROLLBACK TO SAVEPOINT invoice_claim_acquisition");
+          await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
+          retainedJourney = null;
+          acquisitionFailed = true;
+          console.warn("Invoice acquisition claim unavailable");
+        }
+        const rows = await client.query(
+          "SELECT * FROM amp_funding_invoice_intents WHERE id=$1 AND parent_email=$2 FOR UPDATE",
+          [id, email],
+        );
+        if (!rows.rowCount)
+          throw new FundingPurchaseError(404, "invoice_not_found");
+        const intent = rowIntent(rows.rows[0]);
+        if (!attributionAllowed || acquisitionFailed)
+          await client.query(
+            "UPDATE amp_funding_invoice_intents SET acquisition_journey_id=NULL,campaign_attribution=NULL WHERE id=$1",
+            [id],
+          );
+        if (intent.state === "claimed") {
+          const existing = await client.query(
+            "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 AND learner_id=$3",
+            [id, account, learnerId],
+          );
+          if (!existing.rowCount)
+            throw new FundingPurchaseError(409, "invoice_already_claimed");
+          return fundingRequestRow(existing.rows[0]);
+        }
+        if (
+          intent.state !== "prepared" ||
+          Date.parse(intent.expiresAt) <= at.getTime()
+        )
+          throw new FundingPurchaseError(409, "invoice_unavailable");
+        if (
+          !this.offers(at).some(
+            (o) =>
+              canonicalCommercePayload(o) ===
+              canonicalCommercePayload(intent.offer),
+          )
+        )
+          throw new FundingPurchaseError(409, "offer_unavailable");
+        const attribution =
+          retainedJourney !== null &&
+          retainedJourney === rows.rows[0].acquisition_journey_id;
+        const labels =
+          attribution && !withdrawn ? rows.rows[0].campaign_attribution : null;
+        const result = await client.query(
+          `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,student_billing_name,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
+          [
+            id,
+            account,
+            learnerId,
+            intent.idempotencyKey,
+            intent.offer.id,
+            intent.offer.revision,
+            JSON.stringify(intent.offer),
+            intent.createdAt,
+            intent.expiresAt,
+            intent.studentBillingName,
+            null,
+          ],
+        );
+        if (labels) {
+          await client.query("SAVEPOINT invoice_campaign");
+          try {
             await client.query(
-              "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
-              [retainedJourney, account],
+              "UPDATE amp_funding_requests SET campaign_attribution=$2 WHERE id=$1",
+              [id, JSON.stringify(fundedCampaignSchema.parse(labels))],
             );
-            for (const { provider } of withdrawals.rows)
-              await eraseAccountAdClicks(client, account, provider);
+            await incrementFundedCampaign(
+              client,
+              labels,
+              "request_prepared",
+              intent.createdAt,
+            );
+            await client.query("RELEASE SAVEPOINT invoice_campaign");
+            result.rows[0].campaign_attribution = labels;
+          } catch {
+            await client.query("ROLLBACK TO SAVEPOINT invoice_campaign");
+            await client.query("RELEASE SAVEPOINT invoice_campaign");
+            console.warn("Invoice campaign binding unavailable");
           }
         }
-        await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
-      } catch {
-        await client.query("ROLLBACK TO SAVEPOINT invoice_claim_acquisition");
-        await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
-        retainedJourney = null;
-        acquisitionFailed = true;
-        console.warn("Invoice acquisition claim unavailable");
-      }
-      const rows = await client.query(
-        "SELECT * FROM amp_funding_invoice_intents WHERE id=$1 AND parent_email=$2 FOR UPDATE",
-        [id, email],
-      );
-      if (!rows.rowCount)
-        throw new FundingPurchaseError(404, "invoice_not_found");
-      const intent = rowIntent(rows.rows[0]);
-      if (!attributionAllowed || acquisitionFailed)
         await client.query(
-          "UPDATE amp_funding_invoice_intents SET acquisition_journey_id=NULL,campaign_attribution=NULL WHERE id=$1",
-          [id],
+          "UPDATE amp_funding_invoice_intents SET state='claimed',claimed_account_id=$2,claimed_request_id=id WHERE id=$1",
+          [id, account],
         );
-      if (intent.state === "claimed") {
-        const existing = await client.query(
-          "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 AND learner_id=$3",
-          [id, account, learnerId],
-        );
-        if (!existing.rowCount)
-          throw new FundingPurchaseError(409, "invoice_already_claimed");
-        return fundingRequestRow(existing.rows[0]);
-      }
-      if (
-        intent.state !== "prepared" ||
-        Date.parse(intent.expiresAt) <= at.getTime()
-      )
-        throw new FundingPurchaseError(409, "invoice_unavailable");
-      if (
-        !this.offers(at).some(
-          (o) =>
-            canonicalCommercePayload(o) ===
-            canonicalCommercePayload(intent.offer),
-        )
-      )
-        throw new FundingPurchaseError(409, "offer_unavailable");
-      const attribution =
-        retainedJourney !== null &&
-        retainedJourney === rows.rows[0].acquisition_journey_id;
-      const labels =
-        attribution && !withdrawn ? rows.rows[0].campaign_attribution : null;
-      const result = await client.query(
-        `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,student_billing_name,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
-        [
-          id,
-          account,
-          learnerId,
-          intent.idempotencyKey,
-          intent.offer.id,
-          intent.offer.revision,
-          JSON.stringify(intent.offer),
-          intent.createdAt,
-          intent.expiresAt,
-          intent.studentBillingName,
-          null,
-        ],
-      );
-      if (labels) {
-        await client.query("SAVEPOINT invoice_campaign");
-        try {
-          await client.query(
-            "UPDATE amp_funding_requests SET campaign_attribution=$2 WHERE id=$1",
-            [id, JSON.stringify(fundedCampaignSchema.parse(labels))],
-          );
-          await incrementFundedCampaign(
-            client,
-            labels,
-            "request_prepared",
-            intent.createdAt,
-          );
-          await client.query("RELEASE SAVEPOINT invoice_campaign");
-          result.rows[0].campaign_attribution = labels;
-        } catch {
-          await client.query("ROLLBACK TO SAVEPOINT invoice_campaign");
-          await client.query("RELEASE SAVEPOINT invoice_campaign");
-          console.warn("Invoice campaign binding unavailable");
-        }
-      }
-      await client.query(
-        "UPDATE amp_funding_invoice_intents SET state='claimed',claimed_account_id=$2,claimed_request_id=id WHERE id=$1",
-        [id, account],
-      );
-      return fundingRequestRow(result.rows[0]);
-    });
+        if (pendingGift)
+          await activateGiftInTransaction(client, account, learnerId, {
+            giftId: pendingGift.id,
+            fundingInvoiceId: id,
+          });
+        return fundingRequestRow(result.rows[0]);
+      },
+      true,
+    );
   }
 }

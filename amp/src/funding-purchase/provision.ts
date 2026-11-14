@@ -53,8 +53,8 @@ export async function fundedTermStart(
   for (let step = 0; step < 24; step++) {
     const covering = (
       await db.query<{ ends_at: Date }>(
-        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2",
-        [learnerId, start],
+        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2 AND id<>$3",
+        [learnerId, start, `funded-pending:${learnerId}`],
       )
     ).rows[0]?.ends_at;
     if (!covering) break;
@@ -206,6 +206,15 @@ export async function provisionFundingRequest(
           ).rowCount)
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
+      // Replace only this learner's unpaid bridge. Validation and replacement
+      // share the transaction, so a rejected payment cannot revoke access.
+      await client.query("UPDATE amp_grants SET status='revoked' WHERE id=$1", [
+        `funded-pending:${request.learnerId}`,
+      ]);
+      await client.query(
+        "UPDATE amp_access_gifts SET revoked_at=COALESCE(revoked_at,now()) WHERE grant_id=$1",
+        [`funded-pending:${request.learnerId}`],
+      );
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
       const overlap = await client.query(
