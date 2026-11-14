@@ -39,7 +39,8 @@ const nodes = new Map(skills.map((skill) => [skill.id, skill]));
  * the assumption still holds, otherwise drop or revise the entry. */
 const reviewedGenerators: Record<string, string> = {
   "count-objects@2": "0103f7629159f756",
-  "linear-equation@1": "7343048ca8611071",
+  // Display punctuation only; coefficients, responses and calibration are unchanged.
+  "linear-equation@1": "97c9e894118dd543",
   "divide-fractions@2": "d82f1d261b1533eb",
 };
 const generatorOutput = (id: string) =>

@@ -1,3 +1,4 @@
+import { displayMathFitScript } from "./DisplayMath";
 import { areaVolumeWorksheet } from "./area-volume-worksheets";
 import { areaVolumeTemplates } from "../math/area-volume-practice";
 import { transformationWorksheet } from "./transformation-worksheets";
@@ -350,7 +351,15 @@ function buildPublicationHtml(
             <style>{workbookTallExerciseCss}</style>
           ) : null}
         </head>
-        <body dangerouslySetInnerHTML={{ __html: bodyMarkup }} />
+        <body>
+          <div dangerouslySetInnerHTML={{ __html: bodyMarkup }} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `${displayMathFitScript}
+document.fonts.ready.then(function () { fitDisplayMath(document); });`,
+            }}
+          />
+        </body>
       </html>,
     )
   );

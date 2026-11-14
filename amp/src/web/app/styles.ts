@@ -1,3 +1,9 @@
+import { displayMathStyles } from "../../content/DisplayMath";
+
+const displayMathStyle = document.createElement("style");
+displayMathStyle.textContent = displayMathStyles;
+document.head.append(displayMathStyle);
+
 // Load the legacy structural cascade before the shared theme. Lazy JavaScript
 // must not append global surface rules after the theme on a route transition.
 import "../style.css";
