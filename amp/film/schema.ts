@@ -611,6 +611,8 @@ export const scriptSchema = z
      * `--`). Publishing links the film from each one that has no film of its own.
      */
     teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
+    /** Routing only: this film is the lesson film for its own problem type's skill. */
+    skill: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**
