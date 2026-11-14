@@ -27,7 +27,10 @@ export function PlaceName({
   useLayoutEffect(() => {
     const element = box.current;
     if (!element) return;
-    const phone = window.matchMedia(PHONE);
+    // Where the browser can't say (an old engine, a test document), the
+    // whole name fits a wide window and the short one a phone's.
+    const phone =
+      typeof window.matchMedia === "function" ? window.matchMedia(PHONE) : null;
     const fit = () => {
       const style = getComputedStyle(element);
       const room =
@@ -40,18 +43,19 @@ export function PlaceName({
       const pick = widths.findIndex(
         (width, index) =>
           width <= room + 0.5 &&
-          !(phone.matches && widths.length > 1 && index === 0),
+          !(phone?.matches && widths.length > 1 && index === 0),
       );
       setShown(pick);
     };
     fit();
-    const observer = new ResizeObserver(fit);
-    observer.observe(element);
-    phone.addEventListener("change", fit);
+    const observer =
+      typeof ResizeObserver === "function" ? new ResizeObserver(fit) : null;
+    observer?.observe(element);
+    phone?.addEventListener("change", fit);
     void document.fonts?.ready.then(fit);
     return () => {
-      observer.disconnect();
-      phone.removeEventListener("change", fit);
+      observer?.disconnect();
+      phone?.removeEventListener("change", fit);
     };
   }, [key]);
   const text = shown !== null && shown >= 0 ? names[shown]! : null;
