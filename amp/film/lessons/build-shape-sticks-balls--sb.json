@@ -1,11 +1,8 @@
 {
  "id": "build-shape-sticks-balls--sb",
  "title": "Build it. Close it.",
- "teaches": [
-  "sticks-and-balls-needed",
-  "build-shape-by-count",
-  "drawing-mistake"
- ],
+ "teaches": ["sticks-and-balls-needed", "build-shape-by-count", "drawing-mistake", "check-the-drawing"],
+ "skill": "build-and-draw-shapes",
  "cast": {
   "teacher": {},
   "learner": {}

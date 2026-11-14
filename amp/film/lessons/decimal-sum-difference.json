@@ -1,6 +1,8 @@
 {
   "id": "decimal-sum-difference",
   "title": "Add or subtract decimals to hundredths",
+  "teaches": [],
+  "skill": "decimal-money-operations",
   "seed": "film",
   "shots": [
     {

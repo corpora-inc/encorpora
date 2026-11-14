@@ -1,10 +1,8 @@
 {
  "id": "name-equal-share--sh",
  "title": "Halves and quarters of a whole",
- "teaches": [
-  "find-equal-shares",
-  "larger-share"
- ],
+ "teaches": ["find-equal-shares", "larger-share"],
+ "skill": "halves-and-quarters",
  "cast": {
   "teacher": {},
   "learner": {}

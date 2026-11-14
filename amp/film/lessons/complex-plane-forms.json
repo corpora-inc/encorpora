@@ -1,6 +1,8 @@
 {
   "id": "complex-plane-forms",
   "title": "Complex plane, modulus and polar form",
+  "teaches": ["complex-axis-number-plot"],
+  "skill": "complex-plane",
   "shots": [
     {
       "figure": {

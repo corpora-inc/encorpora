@@ -1,13 +1,8 @@
 {
  "id": "name-flat-shape--sn",
  "title": "Shapes: names, flat and solid",
- "teaches": [
-  "find-named-shape",
-  "name-solid-shape",
-  "flat-or-solid-name",
-  "pick-flat-or-solid",
-  "count-flat-or-solid"
- ],
+ "teaches": ["find-named-shape", "name-solid-shape", "flat-or-solid-name", "pick-flat-or-solid", "count-flat-or-solid"],
+ "skill": "name-shapes",
  "cast": {
   "teacher": {},
   "learner": {}

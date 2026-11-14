@@ -1,6 +1,7 @@
 {
   "id": "make-ten-remainder",
   "title": "Split an addend to make ten",
+  "teaches": ["add-within-20"],
   "seed": "film-0",
   "shots": [
     {

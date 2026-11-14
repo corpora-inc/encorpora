@@ -1,9 +1,7 @@
 {
   "id": "line-equation-forms--sf",
   "title": "One line, three forms",
-  "teaches": [
-    "point-slope-two-points"
-  ],
+  "teaches": ["point-slope-two-points", "table-standard-form"],
   "cast": {
     "teacher": {}
   },

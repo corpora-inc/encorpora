@@ -1,6 +1,8 @@
 {
   "id": "independence-test",
   "title": "Testing independence in a two-way table",
+  "teaches": ["independent-events-probability"],
+  "skill": "independent-events",
   "shots": [
     {
       "figure": {

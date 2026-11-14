@@ -1,7 +1,7 @@
 {
   "id": "zero-one-groups--sz",
   "title": "Zero groups, empty groups, one group",
-  "teaches": [],
+  "teaches": ["equal-tray-total"],
   "cast": {
     "teacher": {},
     "learner": {}

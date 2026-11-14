@@ -1,6 +1,8 @@
 {
   "id": "staar-dot-plot-threshold--rr",
   "title": "Counting dots on a dot plot",
+  "teaches": ["line-plot-build", "line-plot-choose-for-data", "data-list-for-display", "line-plot-whole"],
+  "skill": "line-plots",
   "seed": "20261110:staar-dot-plot-threshold:7",
   "cast": {
     "teacher": {},

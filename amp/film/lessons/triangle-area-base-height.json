@@ -1,6 +1,8 @@
 {
   "id": "triangle-area-base-height",
   "title": "Triangle area",
+  "teaches": ["polygon-show-the-pieces"],
+  "skill": "triangle-area",
   "seed": "film",
   "shots": [
     {

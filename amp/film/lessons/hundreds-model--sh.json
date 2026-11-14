@@ -1,12 +1,8 @@
 {
   "id": "hundreds-model--sh",
   "title": "Hundreds, tens, and ones",
-  "teaches": [
-    "place-value-digit",
-    "expanded-form-missing",
-    "exchange-base-ten",
-    "three-digit-number-names"
-  ],
+  "teaches": ["place-value-digit", "expanded-form-missing", "exchange-base-ten", "three-digit-number-names"],
+  "skill": "hundreds-place-value",
   "cast": {
     "teacher": {},
     "learner": {}

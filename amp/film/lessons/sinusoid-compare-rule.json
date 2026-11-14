@@ -1,6 +1,8 @@
 {
   "id": "sinusoid-compare-rule",
   "title": "Compare a graphed sinusoid with a sine rule",
+  "teaches": ["sinusoid-parameters"],
+  "skill": "trigonometric-graphs",
   "shots": [
     {
       "figure": {

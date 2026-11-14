@@ -1,10 +1,8 @@
 {
  "id": "picture-to-number-sentence--sj",
  "title": "A story in pictures and numbers",
- "teaches": [
-  "build-the-number-sentence",
-  "number-sentence-to-picture"
- ],
+ "teaches": ["build-the-number-sentence", "number-sentence-to-picture"],
+ "skill": "represent-join-separate",
  "cast": {
   "teacher": {},
   "learner": {}

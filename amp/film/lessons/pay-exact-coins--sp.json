@@ -1,7 +1,7 @@
 {
  "id": "pay-exact-coins--sp",
  "title": "Exact payment, fewest coins",
- "teaches": [],
+ "teaches": ["fewest-coins-change"],
  "seed": "line:money-values:pay-exact-coins:1",
  "cast": {
   "teacher": {},

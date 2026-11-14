@@ -1,10 +1,8 @@
 {
   "id": "find-equal-thirds--sf",
   "title": "Equal shares: halves, thirds, and fourths",
-  "teaches": [
-    "name-share",
-    "same-share-different-shape"
-  ],
+  "teaches": ["name-share", "same-share-different-shape"],
+  "skill": "thirds-and-partitions",
   "cast": {
     "teacher": {},
     "learner": {}
