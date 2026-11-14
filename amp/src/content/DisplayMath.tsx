@@ -46,7 +46,16 @@ function fitDisplayMath(root) {
 `;
 
 /** Shared static markup for web, lessons, review cards and printed exercises. */
-export function DisplayMath({ tex, source }: { tex: string; source: string }) {
+export function DisplayMath({
+  tex,
+  source,
+  originalSource,
+}: {
+  tex: string;
+  source: string;
+  /** Print auditing retains authored sentence punctuation outside the visible math. */
+  originalSource?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const element = ref.current;
@@ -83,7 +92,7 @@ export function DisplayMath({ tex, source }: { tex: string; source: string }) {
     <span
       className="math-display"
       ref={ref}
-      data-plain={source}
+      data-plain={originalSource ?? source}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

@@ -20,12 +20,11 @@ const CLASSIC = {
     "8d9e2b50a3a2273bf0ef22a4672d1ced1f131e8bdb423eef8d7502431ef02c40",
   "complex-distance-midpoint":
     "971aeaffe422063c69339659c5b45e4396b39fdc7bcd9fdf5a302f50d2677e36",
-  // This family is current at v1; its pin includes display punctuation cleanup.
   "complex-conjugate-division":
-    "ee936368cdb30a8bab9537c61fdaf31344adc352dc2764668e76b6174a8c46f5",
+    "76e961d48a6f00c6dce41f4cec73f387312facae48ff801e6d4a147b74d54cf9",
 } as const;
 
-test("complex versions retain pinned frozen and current presentation", () => {
+test("version 1 reprints the classic complex bytes", () => {
   for (const [id, expected] of Object.entries(CLASSIC)) {
     const hashes = [];
     for (let i = 0; i < 30; i++) {

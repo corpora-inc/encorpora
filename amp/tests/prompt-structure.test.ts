@@ -84,10 +84,10 @@ test("web, lesson and print markup display the same formula without a final peri
       assert.doesNotMatch(html, /katex-error|\\text\{[.!?]\}/);
       assert.ok(html.endsWith("</span>"), text);
       assert.equal(
-        html,
+        html.replace(/ data-plain="[^"]*"/g, ""),
         renderToStaticMarkup(
           React.createElement(Component, { text: `${lead} ${source}` }),
-        ),
+        ).replace(/ data-plain="[^"]*"/g, ""),
       );
     }
 });

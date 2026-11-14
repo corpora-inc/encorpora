@@ -36,8 +36,16 @@ export function PrintMathText({ text }: { text: string }) {
   if (display)
     return (
       <>
-        {display.lead && <PrintMathText text={display.lead} />}
-        <DisplayMath tex={display.tex} source={display.source} />
+        {display.lead && (
+          <>
+            <PrintMathText text={display.lead} />{" "}
+          </>
+        )}
+        <DisplayMath
+          tex={display.tex}
+          source={display.source}
+          originalSource={display.originalSource}
+        />
       </>
     );
   let attachedPunctuationLength = 0;

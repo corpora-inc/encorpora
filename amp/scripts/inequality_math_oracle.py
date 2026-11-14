@@ -431,7 +431,7 @@ class PublicationNode:
                 yield from child.descendants()
 
     def text(self):
-        if self.has_class('print-math'):
+        if self.has_class('print-math') or self.has_class('math-display'):
             require(isinstance(self.attributes.get('data-plain'), str) and
                     self.attributes['data-plain'].strip(), 'Printed math lacks its plain expression')
             return self.attributes['data-plain']

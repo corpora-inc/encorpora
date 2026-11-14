@@ -117,6 +117,11 @@ const server = await createServer({
       configureServer(vite) {
         vite.middlewares.use((req, res, next) => {
           const url = new URL(req.url ?? "/", "http://fixture");
+          if (url.pathname.startsWith("/api/")) {
+            res.statusCode = 204;
+            res.end();
+            return;
+          }
           if (url.pathname === "/__display-case") {
             const value =
               cases[url.searchParams.get("case") as keyof typeof cases];
@@ -248,7 +253,6 @@ try {
         });
         results.push({
           name,
-          width,
           theme,
           prompt: fixture.problem.public.prompt,
           ...geometry,

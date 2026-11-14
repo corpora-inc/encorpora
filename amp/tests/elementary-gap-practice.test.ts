@@ -5,7 +5,6 @@ import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
   generateProblem,
-  polishProblem,
   generateProblemFor,
   gradeAnswer,
   templates,
@@ -159,7 +158,7 @@ test("generation is deterministic, reaches the engine and every axis value and v
     for (const [i, c] of cases(id).entries()) {
       assert.deepEqual(
         generateProblem(id, `eg:${i}`),
-        asCurrent(polishProblem(c.problem)),
+        asCurrent(c.problem),
         id,
       );
       assert.equal(c.problem.public.templateId, id);

@@ -7,6 +7,7 @@ export interface TrailingDisplayMath {
   tex: string;
   punctuation: string;
   normalized: string;
+  originalSource: string;
 }
 
 const command =
@@ -100,6 +101,7 @@ export function trailingDisplayMath(
         tex,
         punctuation,
         normalized: text.slice(0, start) + source,
+        originalSource: suffix,
       };
   }
   return null;

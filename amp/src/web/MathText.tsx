@@ -54,7 +54,9 @@ export function MathText({
     return (
       <>
         {display.lead && (
-          <MathText text={display.lead} sourceText={sourceText} />
+          <>
+            <MathText text={display.lead} sourceText={sourceText} />{" "}
+          </>
         )}
         <DisplayMath tex={display.tex} source={display.source} />
       </>

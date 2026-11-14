@@ -8,7 +8,12 @@ import {
   staarGapTemplateIds,
   staarGapTemplates,
 } from "../src/math/staar-gap-practice";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import {
+  generateProblem,
+  polishProblem,
+  gradeAnswer,
+  templates,
+} from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
 import { lessons } from "../src/content/lessons";
 import { templateArchetypes } from "../src/curriculum/template-archetypes";
@@ -126,7 +131,10 @@ test("every template is registered, deterministic, reaches the engine and genera
     for (let i = 0; i < 25; i++) {
       const g = generateProblem(id, `sg:${i}`);
       if (!g.variant?.axes?.clause) {
-        assert.deepEqual(g.public, asCurrent(cases(id)[i]!.problem).public);
+        assert.deepEqual(
+          g.public,
+          asCurrent(polishProblem(cases(id)[i]!.problem)).public,
+        );
         assert.equal(g.answer, cases(id)[i]!.problem.answer);
       }
       assert.deepEqual(

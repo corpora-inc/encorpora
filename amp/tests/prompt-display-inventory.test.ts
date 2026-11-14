@@ -57,7 +57,7 @@ test("every template generates clean prompt and worked-step displays in web and 
           const display = trailingDisplayMath(text);
           if (expectedDisplay(text)) assert.ok(display, label);
           const standalone = trailingDisplayMath(text, true);
-          if (standalone && version === template.version)
+          if (standalone && index === 0 && version === template.version)
             assert.equal(standalone.punctuation, "", label);
           if (!display) continue;
           (index === 0 ? affected : worked).add(template.id);

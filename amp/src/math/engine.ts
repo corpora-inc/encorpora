@@ -1057,7 +1057,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   const current = templateById.get(problem.public.templateId)?.version;
   // Frozen versions reproduce their original payloads. The shared renderers
   // apply display formatting to saved text without rewriting its evidence.
-  if (version !== null && current !== undefined && version < current)
+  if (current === undefined || (version !== null && version < current))
     return formatted;
   return {
     ...formatted,
@@ -1065,8 +1065,6 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
       ...formatted.public,
       prompt: normalizeTrailingMath(formatted.public.prompt),
     },
-    explanation: formatted.explanation.map(normalizeTrailingMath),
-    hint: normalizeTrailingMath(formatted.hint),
   };
 }
 function polishAuthoredProblem(problem: GeneratedProblem): GeneratedProblem {

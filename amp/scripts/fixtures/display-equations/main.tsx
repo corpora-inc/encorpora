@@ -54,6 +54,7 @@ function App() {
         next={() => {}}
         requestHint={() => {}}
         exitHref="/"
+        exit={() => {}}
         requestLesson={async () => {
           throw new Error("No lesson in this fixture");
         }}
