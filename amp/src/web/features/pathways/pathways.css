@@ -1098,6 +1098,7 @@
 }
 /* One area chosen (`?area=`): the other areas' names step back with their
    skills. */
-.pathways-map-labels .area-label[data-dim] {
+.pathways-map-labels .area-label[data-dim],
+.pathways-map-labels .skill-label[data-dim] {
   opacity: 0.4;
 }

@@ -893,7 +893,9 @@ export function MapView({
                   )}
                 </p>
               )}
-              {frontier && <PathwayLevels frontier={frontier} />}
+              {frontier && (
+                <PathwayLevels frontier={frontier} numbers={shown} />
+              )}
             </details>
           </footer>
         </>
@@ -950,7 +952,10 @@ export function MapView({
  * (ui/level-range): the overall estimate, then each area practiced. */
 function PathwayLevels({
   frontier,
+  numbers,
 }: {
+  /** Grade names on the axis: off where the child's grades are hidden. */
+  numbers: boolean;
   frontier: {
     overall: { level: number; sd: number; answered?: number };
     strands: Record<string, { level: number; sd: number; answered?: number }>;
@@ -958,7 +963,15 @@ function PathwayLevels({
 }) {
   // Before the first answer: not measured yet, the whole scale (Q-201).
   if (!measured(frontier.overall))
-    return <LevelRows overall={null} areas={[]} scale={WHOLE_SCALE} moving />;
+    return (
+      <LevelRows
+        overall={null}
+        areas={[]}
+        scale={WHOLE_SCALE}
+        numbers={numbers}
+        moving
+      />
+    );
   const areas = byArea(
     Object.entries(frontier.strands)
       .filter(([, estimate]) => measured(estimate))
@@ -972,5 +985,12 @@ function PathwayLevels({
     [frontier.overall, ...areas.map((area) => area.estimate)],
     { minSpan: 5 },
   );
-  return <LevelRows overall={frontier.overall} areas={areas} scale={scale} />;
+  return (
+    <LevelRows
+      overall={frontier.overall}
+      areas={areas}
+      scale={scale}
+      numbers={numbers}
+    />
+  );
 }

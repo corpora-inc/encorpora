@@ -39,7 +39,7 @@ export function AreaKey({
           resetScroll={false}
           className={styles.chip}
           data-area-choice={option.id ?? "all"}
-          aria-current={option.id === area ? "true" : undefined}
+          data-selected={option.id === area ? "" : undefined}
           style={
             option.slot >= 0
               ? ({

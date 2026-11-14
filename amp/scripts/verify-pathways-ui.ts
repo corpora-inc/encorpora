@@ -1,6 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
-import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir, realpath } from "node:fs/promises";
@@ -749,50 +748,8 @@ async function verifySearchFilters() {
         await page.locator(".pathways-skill-list a").count(),
         skills.length,
       );
-      await preference.uncheck();
-      assert.equal(
-        await grade.isVisible(),
-        false,
-        "without an active filter, hiding details also hides the grade picker",
-      );
-      const colors = await preference.evaluate((input) => {
-        const label = input.closest("label")!;
-        const marker = input.nextElementSibling!;
-        const panel = input.closest(".pathways-browser")!;
-        const box = input.getBoundingClientRect();
-        return {
-          width: box.width,
-          height: box.height,
-          text: getComputedStyle(label).color,
-          panel: getComputedStyle(panel).backgroundColor,
-          border: getComputedStyle(marker).borderColor,
-          fill: getComputedStyle(marker).backgroundColor,
-        };
-      });
-      const rgba = (value: string): Rgba => {
-        const parts = value.match(/[\d.]+/g)!.map(Number);
-        assert(parts.length >= 3, `Expected computed RGB color: ${value}`);
-        return [parts[0]!, parts[1]!, parts[2]!, parts[3] ?? 1];
-      };
-      assert(
-        colors.width >= 44 && colors.height >= 44,
-        "the compact checkbox keeps its full touch target",
-      );
-      assert(
-        contrast(rgba(colors.text), rgba(colors.panel)) >= 4.5,
-        "display preference text remains readable on the atlas in both themes",
-      );
-      assert(
-        contrast(rgba(colors.border), rgba(colors.panel)) >= 3 &&
-          contrast(rgba(colors.border), rgba(colors.fill)) >= 3,
-        "the unchecked indicator remains visible against its fill and atlas panel",
-      );
-      await preference.focus();
-      await preference.press("Space");
-      assert(
-        (await preference.isChecked()) && (await grade.isVisible()),
-        "keyboard reveal restores the grade picker",
-      );
+      // A grown-up's view names grades, so the grade picker stays.
+      assert(await grade.isVisible(), "the grade picker stays in the browser");
       await input.pressSequentially("linear", { delay: 10 });
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",

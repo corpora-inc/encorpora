@@ -1,5 +1,5 @@
 import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePopover } from "../../ui/popover-owner";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -90,6 +90,10 @@ export function Graph({
   area = null,
   onUnavailable,
 }: Props) {
+  const skillsById = useMemo(
+    () => new Map(skills.map((skill) => [skill.id, skill])),
+    [skills],
+  );
   const areaShown = useRef(area);
   areaShown.current = area;
   /** Paint the chosen area bright and the rest dim, in place. */
@@ -1402,6 +1406,13 @@ export function Graph({
             <span
               key={l.id}
               className="skill-label"
+              data-dim={
+                area &&
+                skillsById.get(l.id) &&
+                areas[areaSlot(skillsById.get(l.id)!)]?.id !== area
+                  ? ""
+                  : undefined
+              }
               style={{ left: l.x, top: l.y }}
             >
               {l.title}
