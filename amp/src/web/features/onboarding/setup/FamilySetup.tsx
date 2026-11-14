@@ -1,6 +1,11 @@
 import { spaceWords } from "../../spaces/words";
 import { useQuery } from "@tanstack/react-query";
-import { Link, Navigate, useNavigate } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "@tanstack/react-router";
 import { useId, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import { z } from "zod";
@@ -30,6 +35,7 @@ import { useFinishSignIn } from "../../school/join/api";
 import { useStartPlace } from "../starter-api";
 import { saveProfile } from "../../family/api";
 import { StepFrame } from "./StepFrame";
+import { appReturn } from "../../spaces/returns";
 import styles from "./Setup.module.css";
 
 /* A parent's or a tutor's first run (docs/product-model.md): a few calm steps,
@@ -87,8 +93,33 @@ export const setupStepIds = (kind: SetupKind): readonly string[] =>
   kind === "parent"
     ? [NAME_STEP.id, ...STEPS.parent.map((step) => step.id)]
     : STEPS[kind].map((step) => step.id);
-const stepUrl = (kind: SetupKind, id: string) =>
-  id ? `/start/${kind}/${id}` : `/start/${kind}`;
+/** A step's address. Adding a place from elsewhere keeps where it was
+ * added from (`?from=`, validated by the one return contract) on every
+ * step, so Cancel and Back always lead back there. */
+export const stepUrl = (kind: SetupKind, id: string, from?: string) =>
+  withFrom(id ? `/start/${kind}/${id}` : `/start/${kind}`, from);
+/** An address with the validated place this setup was opened from. */
+export const withFrom = (url: string, from?: string) => {
+  const back = appReturn(from);
+  return back ? `${url}?from=${encodeURIComponent(back)}` : url;
+};
+/** An address as the router's target: its path and its search apart, so the
+ * query is never read as part of the path. */
+export const target = (url: string) => {
+  const [to = "", query = ""] = url.split("?");
+  return {
+    to: to as never,
+    search: Object.fromEntries(new URLSearchParams(query)) as never,
+  };
+};
+/** Where this setup was opened from, by the one return contract. */
+function useSetupFrom() {
+  return appReturn(
+    useLocation({
+      select: (location) => (location.search as Record<string, unknown>).from,
+    }),
+  );
+}
 const todayUrl = (place: { orgId: string; classId: string }) =>
   `/school/${place.orgId}/classes/${place.classId}/today`;
 /** A family's Today: its own address, the landing alias for theirs. */
@@ -129,12 +160,13 @@ export function FamilySetup({
   step: string;
 }) {
   const me = useQuery(meOptions(session)).data;
+  const from = useSetupFrom();
   // A parent's setup from before (how they practice, a second parent): its
   // links in flight open who practices first; both stay on Today and People.
   if (kind === "parent" && (step === "practice" || step === "second-parent"))
-    return <Navigate to={stepUrl(kind, "ready") as never} replace />;
+    return <Navigate {...target(stepUrl(kind, "ready", from))} replace />;
   const known = setupStepIds(kind).includes(step);
-  if (!known) return <Navigate to={stepUrl(kind, "") as never} replace />;
+  if (!known) return <Navigate {...target(stepUrl(kind, "", from))} replace />;
   if (!me?.signedIn)
     return (
       <StepFrame
@@ -149,7 +181,7 @@ export function FamilySetup({
                 : "Your students"
               : ""
         }
-        back="/start"
+        back={withFrom("/start", from)}
       >
         <div className={styles.loading} aria-busy="true" />
       </StepFrame>
@@ -161,18 +193,19 @@ export function FamilySetup({
   );
   const index = steps.findIndex((entry) => entry.id === step);
   // The name step, once the name is on file and this setup never asked it.
-  if (index < 0) return <Navigate to={stepUrl(kind, "") as never} replace />;
+  if (index < 0)
+    return <Navigate {...target(stepUrl(kind, "", from))} replace />;
   if (steps[0]!.id === "name" && step !== "name") {
     // A parent without a name answers it before anything else.
     if (!me.account.givenName?.trim())
-      return <Navigate to={stepUrl(kind, "name") as never} replace />;
+      return <Navigate {...target(stepUrl(kind, "name", from))} replace />;
   }
   if (step === "name") markAskedName(session.accountId);
   const first = steps.findIndex((entry) => entry.id === "");
   // Every step after the children needs the family step one makes.
   if (index > first && !me.familyClass)
-    return <Navigate to={stepUrl(kind, "") as never} replace />;
-  const props = { session, me, kind, index, steps };
+    return <Navigate {...target(stepUrl(kind, "", from))} replace />;
+  const props = { session, me, kind, index, steps, from };
   if (step === "name") return <NameStep {...props} />;
   if (step === "")
     return kind === "parent" ? (
@@ -190,24 +223,44 @@ type StepProps = {
   kind: SetupKind;
   index: number;
   steps: readonly Step[];
+  /** Where this setup was opened from (validated), carried to every step. */
+  from?: string;
 };
 /** The address of the step after this one. */
-const nextUrl = ({ kind, index, steps }: StepProps) =>
-  stepUrl(kind, steps[index + 1]!.id);
+export const nextUrl = ({ kind, index, steps, from }: StepProps) =>
+  stepUrl(kind, steps[index + 1]!.id, from);
 
 /** One step of a parent's or tutor's setup, in the shared step frame. */
 function Frame({
   steps,
   kind,
   index,
-  back = index === 0 ? "/start" : stepUrl(kind, steps[index - 1]!.id),
+  back,
   ...rest
 }: Omit<Parameters<typeof StepFrame>[0], "back"> & {
   kind: SetupKind;
   back?: string;
 }) {
-  return <StepFrame steps={steps} index={index} back={back} {...rest} />;
+  const from = useSetupFrom();
+  return (
+    <StepFrame
+      steps={steps}
+      index={index}
+      back={back ?? backUrl(kind, steps, index, from)}
+      {...rest}
+    />
+  );
 }
+/** Back from a step: the one before it, or the starter, keeping `from`. */
+export const backUrl = (
+  kind: SetupKind,
+  steps: readonly { id: string }[],
+  index: number,
+  from?: string,
+) =>
+  index === 0
+    ? withFrom("/start", from)
+    : stepUrl(kind, steps[index - 1]!.id, from);
 
 const why = (failure: unknown, fallback: string) => {
   console.error(fallback, failure);
@@ -228,9 +281,7 @@ function NameStep(props: StepProps) {
     .trim()
     .split(/\s+/);
   const [given, setGiven] = useState(me.account.givenName ?? first);
-  const [family, setFamily] = useState(
-    me.account.familyName ?? rest.join(" "),
-  );
+  const [family, setFamily] = useState(me.account.familyName ?? rest.join(" "));
   const [asked, setAsked] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -245,7 +296,7 @@ function NameStep(props: StepProps) {
         givenName: given.trim(),
         familyName: family.trim(),
       });
-      await navigate({ href: nextUrl(props) });
+      await navigate(target(nextUrl(props)));
     } catch (failure) {
       setError(why(failure, "Your name didn’t save. Try again."));
     } finally {
@@ -409,7 +460,7 @@ function ChildrenStep(props: StepProps) {
         }
       }
       draft.set(session.accountId, { rows: [], renames: {}, years: {} });
-      await navigate({ href: nextUrl(props) });
+      await navigate(target(nextUrl(props)));
     } catch (failure) {
       setError(
         why(failure, "That didn’t save. Check your connection and try again."),
@@ -544,7 +595,7 @@ function StudentsStep(props: StepProps) {
           })),
         });
       draft.set(session.accountId, { rows: [] });
-      await navigate({ href: nextUrl(props) });
+      await navigate(target(nextUrl(props)));
     } catch (failure) {
       setError(
         why(failure, "That didn’t save. Check your connection and try again."),
@@ -796,10 +847,7 @@ function JoinStep(props: StepProps) {
       index={index}
       title={parent ? "How they practice" : "How they join"}
       next={
-        <Link
-          to={nextUrl(props) as never}
-          className={buttonClass("primary")}
-        >
+        <Link {...target(nextUrl(props))} className={buttonClass("primary")}>
           Next
         </Link>
       }

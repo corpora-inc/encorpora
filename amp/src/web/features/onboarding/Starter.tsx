@@ -207,6 +207,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 <Link
                   to="/start/$choice"
                   params={{ choice: entry.id }}
+                  // Adding a place keeps where it was added from.
+                  search={(from ? { from } : {}) as never}
                   className={styles.choice}
                   data-choice={entry.id}
                   onClick={() => track("starter_choice", { answer: entry.id })}

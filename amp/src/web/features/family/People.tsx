@@ -29,7 +29,7 @@ import {
   SecondParentRow,
 } from "../second-parent/SecondParent";
 import type { ApprovalRowResource } from "../../../family/approval-contracts";
-import { familyTeachingOptions, saveProfile } from "./api";
+import { familyTeachingOptions } from "./api";
 import { AddKidsSheet } from "./AddKids";
 import { DevicesSheet } from "./Devices";
 import {
@@ -85,117 +85,30 @@ function AddAction({
 
 /**
  * The adult's own name, as the other parent, an approving parent and an
- * invitation show it. Asked once, quietly, where it's missing.
+ * invitation show it. It is the account's (R9, R12): changed in Account.
  */
 function YourName({ place }: { place: FamilyPlace }) {
-  const { me, session } = place;
-  const account = me?.account;
-  const known = account?.displayName ?? null;
-  const [editing, setEditing] = useState(false);
-  const [given, setGiven] = useState(account?.givenName ?? "");
-  const [family, setFamily] = useState(account?.familyName ?? "");
-  const [errors, setErrors] = useState<{ given?: string }>({});
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  const [error, setError] = useState("");
-  const start = () => {
-    // A name from before given and family names were asked: split it once.
-    const [first = "", ...rest] = (known ?? "").split(" ");
-    setGiven(account?.givenName ?? first);
-    setFamily(account?.familyName ?? rest.join(" "));
-    setErrors({});
-    setEditing(true);
-  };
-  const save = async () => {
-    const first = given.trim();
-    if (!first) return setErrors({ given: "Enter your first name." });
-    setBusy(true);
-    try {
-      await saveProfile(session, {
-        givenName: first,
-        familyName: family.trim() || null,
-      });
-      setEditing(false);
-      setNotice("Your name is saved.");
-    } catch (failure) {
-      console.error("The adult’s name didn’t save", failure);
-      setError("Your name didn’t save. Try again in a moment.");
-    } finally {
-      setBusy(false);
-    }
-  };
+  const known = place.me?.account.displayName?.trim() || null;
   return (
     <div className={styles.setting} data-your-name={known ? "" : "missing"}>
-      {editing ? (
-        <form
-          className={styles.form}
-          style={{ gridColumn: "1 / -1" }}
-          noValidate
-          onSubmit={(event) => {
-            event.preventDefault();
-            void save();
-          }}
+      <div className={styles.settingText}>
+        <dt>{known ?? "Your name"}</dt>
+        <dd>
+          {known
+            ? "You. Other parents see this name."
+            : "Other parents see it when you invite them."}
+        </dd>
+      </div>
+      <div className={styles.settingAction}>
+        <Link
+          to="/$"
+          params={{ _splat: "account/security" }}
+          className={buttonClass("secondary")}
+          data-change-in-account=""
         >
-          <TextField
-            label="First name"
-            autoComplete="given-name"
-            value={given}
-            maxLength={100}
-            error={errors.given}
-            autoFocus
-            disabled={busy}
-            onChange={(event) => {
-              setGiven(event.target.value);
-              setErrors({});
-            }}
-          />
-          <TextField
-            label="Last name"
-            autoComplete="family-name"
-            value={family}
-            maxLength={100}
-            disabled={busy}
-            onChange={(event) => setFamily(event.target.value)}
-          />
-          <div className={styles.formActions}>
-            <Button
-              variant="primary"
-              disabled={busy}
-              aria-busy={busy || undefined}
-            >
-              Save name
-            </Button>
-            <Button
-              variant="quiet"
-              type="button"
-              disabled={busy}
-              onClick={() => setEditing(false)}
-            >
-              Cancel
-            </Button>
-          </div>
-        </form>
-      ) : (
-        <>
-          <div className={styles.settingText}>
-            <dt>{known ?? "Your name"}</dt>
-            <dd>
-              {known
-                ? "You. Other parents see this name."
-                : "Other parents see it when you invite them."}
-            </dd>
-          </div>
-          <div className={styles.settingAction}>
-            <Button variant="secondary" onClick={start}>
-              {known ? "Change" : "Add your name"}
-            </Button>
-          </div>
-        </>
-      )}
-      <Toast
-        message={notice || error}
-        onDismiss={() => (setNotice(""), setError(""))}
-      />
+          {known ? "Change in Account" : "Add in Account"}
+        </Link>
+      </div>
     </div>
   );
 }
