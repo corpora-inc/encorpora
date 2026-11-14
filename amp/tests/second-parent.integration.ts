@@ -200,7 +200,10 @@ test(
       assert.equal(sent.mailed, true);
       assert.equal(mailed.length, 1);
       assert.equal(mailed[0]!.to, rowanEmail);
-      assert.match(mailed[0]!.subject, /Fern invited you to Fern’s class/);
+      assert.match(
+        mailed[0]!.subject,
+        /Fern Fixture invited you to Fern’s class/,
+      );
       link = mailed[0]!.url;
       assert.match(
         link,

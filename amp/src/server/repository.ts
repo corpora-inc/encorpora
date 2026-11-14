@@ -1,3 +1,5 @@
+import { courseBand } from "../schools/term-grades.js";
+import { activeToday } from "../schools/principal.js";
 import type { PoolConfig } from "pg";
 import { schoolPilotAccess, schoolAllowance } from "../schools/pilot-access.js";
 import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
@@ -916,6 +918,38 @@ export class PgTransaction implements LearnerTransaction {
   }
   private async startingLevel(now: number) {
     const learner = await this.learner();
+    if (
+      learner &&
+      "starting_course_level" in learner &&
+      learner.birth_year == null &&
+      !learner.starting_band &&
+      !learner.adult
+    ) {
+      if (learner.starting_course_level != null)
+        return Number(learner.starting_course_level);
+      const classes = await this.db.query<{ course_bands: string[] }>(
+        `SELECT c.course_bands FROM amp_people p
+         JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
+         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+         JOIN amp_orgs o ON o.id=c.org_id
+         WHERE p.learner_id=$1 AND p.deleted_at IS NULL AND ${activeToday("e", "o")}
+           AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role='student'
+             AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
+         ORDER BY e.begin_on,c.id`,
+        [this.learnerId],
+      );
+      const course = classes.rows
+        .map((row) => courseBand(row.course_bands))
+        .find(Boolean);
+      if (course) {
+        await this.db.query(
+          "UPDATE amp_learners SET starting_course_level=$2 WHERE id=$1",
+          [this.learnerId, course.level],
+        );
+        learner.starting_course_level = course.level;
+        return course.level;
+      }
+    }
     return initialLevel({
       birthYear: learner?.birth_year as number | null | undefined,
       adult: learner?.adult === true,

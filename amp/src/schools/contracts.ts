@@ -91,7 +91,7 @@ export class SchoolError extends Error {
     /** Open buyer requests overlapping the authorized classes being requested. */
     public readonly conflicts?: {
       requestId: string;
-      holderName: string;
+      holderName: string | null;
       classIds: string[];
     }[],
   ) {

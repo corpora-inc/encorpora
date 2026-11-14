@@ -742,6 +742,22 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_account_profiles') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push([
+          "account-profile",
+          "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_account_profiles p WHERE account_id=$1",
+        ]);
+        datasets.push([
+          "family-identity",
+          "SELECT jsonb_build_object('familyId',id) AS value FROM amp_family_spaces WHERE account_id=$1",
+        ]);
+      }
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_practice_settings') AS relation",
           )
         ).rows[0]?.relation

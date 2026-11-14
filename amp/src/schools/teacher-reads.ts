@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import type { Pool } from "pg";
 import { hasProblemLesson } from "../content/problem-lessons.js";
 import { templates } from "../math/engine.js";
@@ -109,7 +110,7 @@ const teacherOf = async (pool: Pool, personId: string | null) =>
   personId
     ? ((
         await pool.query(
-          `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+          `SELECT ${adultNameSql()} AS name FROM amp_people p WHERE p.id=$1`,
           [personId],
         )
       ).rows[0]?.name ?? null)
@@ -142,8 +143,11 @@ export async function readToday(
   pool: Pool,
   context: ClassContext,
   actorPersonId: string | null,
+  /** Authorized ownership projection; IDs key children, not class persons.
+   * Its aggregates and tasks must be computed before any presentation. */
+  projection?: { children: Named[]; weeklyTargetMinutes: number | null },
 ): Promise<Omit<TodayResponse, "canPrint">> {
-  const named = await namedRoster(pool, context.id);
+  const named = projection?.children ?? (await namedRoster(pool, context.id));
   const roster = members(named);
   const policy = DEFAULT_GRADE_POLICY;
   const today = context.today;
@@ -165,7 +169,9 @@ export async function readToday(
     totals(pool, roster, { from: lookback, to: today }),
     totals(pool, roster, { from: today, to: today }),
     levels(pool, roster),
-    weeklyTargetFor(pool, context),
+    projection
+      ? Promise.resolve({ minutes: projection.weeklyTargetMinutes })
+      : weeklyTargetFor(pool, context),
     teacherOf(pool, actorPersonId),
     pool
       .query(
@@ -699,14 +705,14 @@ export async function teachersOf(
   viewer: string | null = null,
 ) {
   const { rows } = await pool.query(
-    `SELECT ${PERSON_NAME} AS name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+    `SELECT ${adultNameSql()} AS name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
      WHERE e.class_id=$1 AND e.role='teacher' AND p.deleted_at IS NULL
        AND e.begin_on<=$2::date AND (e.end_on IS NULL OR e.end_on>$2::date)
        AND ${visibleToSql("p", "$3::text")}
      ORDER BY e.begin_on,p.id`,
     [context.id, context.today, viewer],
   );
-  return rows.map((row) => row.name as string);
+  return rows.map((row) => row.name as string | null);
 }
 
 export async function readReportCards(
@@ -727,7 +733,8 @@ export async function readReportCards(
     school: context.orgName,
     class: { name: context.name, course: course?.label ?? context.name },
     term,
-    teachers,
+    teacherNames: teachers,
+    teachers: teachers.filter((name): name is string => name !== null),
     students: rows.map(({ student, suggestion, final }) => {
       const end = suggestion.inputs.endLevel;
       return {
