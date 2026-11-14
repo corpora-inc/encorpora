@@ -67,7 +67,7 @@ export function CardScreen() {
             styles.bigButton,
           )}
         >
-          Type a class code
+          Type a code
         </Link>
       </div>
     </JoinFrame>

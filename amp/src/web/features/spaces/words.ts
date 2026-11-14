@@ -24,6 +24,10 @@ export type SpaceWords = {
   ownGrade: string;
   /** How sign-in on another device is introduced. */
   signIn: string;
+  /** The code that opens sign-in: "family code", "class code". */
+  code: string;
+  /** The same, starting a line or as a label. */
+  Code: string;
   /** The switcher's heading for places of this space. */
   places: string;
   /** The row of tabs, to a screen reader. */
@@ -38,6 +42,8 @@ const SCHOOL_PEOPLE: Omit<SpaceWords, "group" | "people" | "places" | "tabs"> =
     names: "the class’s",
     ownGrade: "Each student’s own grade",
     signIn: "Students sign in",
+    code: "class code",
+    Code: "Class code",
   };
 
 const WORDS = {
@@ -50,6 +56,8 @@ const WORDS = {
     people: "People",
     ownGrade: "Each child’s own grade",
     signIn: "Sign in on their own device",
+    code: "family code",
+    Code: "Family code",
     places: "Family",
     tabs: "Family",
   },
@@ -76,6 +84,8 @@ const WORDS = {
     people: "Profiles",
     ownGrade: "Your own grade",
     signIn: "Sign in on another device",
+    code: "code",
+    Code: "Code",
     places: "Practice",
     tabs: "Practice",
   },
@@ -88,6 +98,8 @@ const WORDS = {
     people: "Class",
     ownGrade: "Your own grade",
     signIn: "Sign in",
+    code: "class code",
+    Code: "Class code",
     places: "Class",
     tabs: "Progress",
   },
@@ -100,6 +112,8 @@ const WORDS = {
     people: "Learners",
     ownGrade: "Each learner’s own grade",
     signIn: "Sign in on another device",
+    code: "code",
+    Code: "Code",
     places: "Account",
     tabs: "Account",
   },
@@ -112,6 +126,8 @@ const WORDS = {
     people: "Learners",
     ownGrade: "Each learner’s own grade",
     signIn: "Sign in",
+    code: "code",
+    Code: "Code",
     places: "",
     tabs: "AMP",
   },

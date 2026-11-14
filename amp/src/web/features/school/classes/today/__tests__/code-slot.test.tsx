@@ -175,6 +175,7 @@ async function mount(can: string[] = []) {
                 names: "names",
                 signIn: "sign in",
                 Learners: "Students",
+                Code: "Class code",
               }}
               board={false}
               manage

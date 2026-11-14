@@ -252,6 +252,12 @@ export const JOIN_CODE_LENGTH = 6;
 /** What a person types or a board shows: any case, with or without a hyphen. */
 export const normalizeJoinCode = (value: string) =>
   value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+/** A code as people read and type it, and as its link says it: 275-XKT.
+ * Either form is accepted on the way in. */
+export const formatJoinCode = (code: string) => {
+  const plain = normalizeJoinCode(code);
+  return plain.length === 6 ? `${plain.slice(0, 3)}-${plain.slice(3)}` : plain;
+};
 const joinCode = z.string().max(40).transform(normalizeJoinCode);
 export const joinLookupSchema = z.strictObject({ code: joinCode });
 export const joinPictureSchema = z.strictObject({
@@ -277,7 +283,12 @@ export const issueCardsSchema = z.strictObject({
 export const ssoProviders = ["google", "microsoft"] as const;
 export type SsoProvider = (typeof ssoProviders)[number];
 export const joinRosterResource = z.object({
-  class: z.object({ name: z.string() }),
+  /** A family's code names the family ("Achterberg family"), a class's the
+   * class. `kind` is absent from an older server: a class. */
+  class: z.object({
+    name: z.string(),
+    kind: z.enum(["family", "class"]).optional(),
+  }),
   /** Practice hasn't started, or has ended: no names to tap. */
   practice: z.enum(["waiting", "ended"]).optional(),
   /** Outside sign-ins this class's school has turned on. */
