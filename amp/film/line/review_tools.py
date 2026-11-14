@@ -10,12 +10,12 @@ from urllib.parse import urljoin
 
 from providers import clean_environment, write_json
 from runtime import HERE, _run, digest, workspace_for
-from state import read_json
+from state import display_script, read_json
 from review_notes import mechanical_notes, moments, script_text
 
 
 def checked_payload(local, workspace):
-    script = read_json(workspace/'screenplay.json')
+    script = display_script(read_json(workspace/'screenplay.json'))
     identifier = local['film']['id']
     voiced = Path(local['root'])/'voiced'/identifier/'line-payload.json'
     dry = workspace/'check-output'/identifier/'line-payload.json'
@@ -150,7 +150,7 @@ def play_film(config, identifier):
         if not path.is_file() or receipt.get(key) != digest(path):
             raise ValueError('Run export for this film before play')
     payload = read_json(data/(identifier+'.json'))
-    current = read_json(workspace/'screenplay.json')
+    current = display_script(read_json(workspace/'screenplay.json'))
     if {**payload['script'], 'cast': current['cast']} != current:
         raise ValueError('Export the current screenplay before play')
     worker(local, 'play')

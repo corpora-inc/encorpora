@@ -4,6 +4,7 @@ import fcntl
 import json
 import os
 from pathlib import Path
+import re
 
 from providers import now
 
@@ -11,6 +12,17 @@ from providers import now
 def read_json(path, default=None):
     path = Path(path)
     return json.loads(path.read_text()) if path.exists() else default
+
+
+LETTER = re.compile(r'\*([a-z])\*', re.I)
+
+
+def display_script(script):
+    """The screenplay as the kit emits it (film/letters.ts displayScript): a letter marked
+    to be spoken by name (*x*) is bare in every say. Compare emitted payloads against this,
+    never against the raw screenplay, or any film with a marked letter looks stale."""
+    return {**script, 'shots': [{**shot, 'beats': [{**beat, 'say': LETTER.sub(r'\1', beat['say'])} for beat in shot['beats']]}
+                                for shot in script['shots']]}
 
 
 def private_destination(root, worktree):
