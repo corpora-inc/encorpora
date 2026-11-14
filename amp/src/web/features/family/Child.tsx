@@ -22,6 +22,7 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { YearField } from "../../ui/YearField";
 import { TryAsStudent } from "../profiles/TryAsStudent";
+import { SatMathFocus } from "../practice/SatMathFocus";
 import { rememberContinuation } from "../continue/memory";
 import {
   RecordLevels,
@@ -319,7 +320,17 @@ function ChildSettings({
       setBusy(false);
     }
   };
+  // Practice settings that are this child's own (the SAT focus, from 13).
+  const summary = place.me?.family.learners.find(
+    (entry) => entry.id === child.id,
+  );
+  const age = child.birthYear
+    ? new Date().getFullYear() - child.birthYear
+    : null;
+  const practice =
+    caps.changePracticeSettings && !!summary && (age === null || age >= 13);
   const rows = [
+    practice,
     caps.rename || caps.changeBirthYear || !!child.birthYear,
     caps.manageConsent,
     caps.manageDevices && !!place.own,
@@ -406,6 +417,22 @@ function ChildSettings({
                 placeholder="Choose a year"
                 disabled={busy || !caps.changeBirthYear}
                 onChange={(year) => void saveYear(year)}
+              />
+            </div>
+          </div>
+        )}
+        {practice && summary && (
+          <div className={styles.setting} data-practice-settings="">
+            <div
+              className={styles.settingText}
+              style={{ gridColumn: "1 / -1" }}
+            >
+              <SatMathFocus
+                key={`${session.accountId}:${child.id}`}
+                learner={summary}
+                token={session.token}
+                identity={session.accountId}
+                onSaved={() => invalidateAccount(session.accountId)}
               />
             </div>
           </div>

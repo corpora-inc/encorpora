@@ -87,8 +87,8 @@ const familyEquivalent =
       org: string;
       class?: string;
     };
-    // A parent's own family: its own screen, everything in the address kept.
-    await toFamilyPage(session, orgId, leaf, location as never);
+    // A parent's own family: its own screen, by the one return contract.
+    await toFamilyPage(session, orgId, leaf, location as never, classId);
     const org = await queryClient
       .ensureQueryData(orgOptions(session, orgId))
       .catch(() => null);
@@ -96,8 +96,13 @@ const familyEquivalent =
     const classes = await queryClient.ensureQueryData(
       classesOptions(session, orgId),
     );
-    const klass =
-      classes.find((entry) => entry.id === classId) ?? classes.at(0);
+    // The class the address names, or the family's one class; never the
+    // first of several.
+    const klass = classId
+      ? classes.find((entry) => entry.id === classId)
+      : classes.length === 1
+        ? classes[0]
+        : undefined;
     // A failed or empty class lookup must not redirect back to /classes,
     // which uses this same guard. Let the route's error view offer a retry.
     if (!klass)

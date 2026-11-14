@@ -12,6 +12,7 @@ import {
 } from "../src/web/features/spaces/resolve.js";
 import { spaceOfPath, SPACES } from "../src/web/features/spaces/space.js";
 import { spaceWords } from "../src/web/features/spaces/words.js";
+import { familyPlaceTabs } from "../src/web/features/spaces/tabs.js";
 
 /*
  * The resolution truth table (docs/architecture/spaces.md): every session
@@ -231,7 +232,9 @@ test("a parent's cookie beside a student's session never brings the parent's chr
   assert.equal(space.place, null);
 });
 
-test("holder: their family is Family, named by its org, with only their children", () => {
+test("a family's class at its class address is its tutoring group: the whole group's classroom", () => {
+  // A parent's own family opens at /family/<family> (family-space.test.ts);
+  // what renders at the class address is the classroom composition.
   const space = resolveSpace(
     at(classPath(FAMILY, FAMILY_CLASS)),
     adult(holder, "wren"),
@@ -241,56 +244,37 @@ test("holder: their family is Family, named by its org, with only their children
       year: { past: false },
     },
   );
-  expectSpace(space, "family");
+  expectSpace(space, "classroom");
   assert.equal(space.status, "ready");
-  assert.equal(space.relation, "holder");
-  assert.equal(space.family.id, FAMILY);
-  assert.equal(space.label, "Pell family");
-  assert.equal(space.place, "home");
+  assert.equal(space.label, "Tutoring group");
+  assert.equal(space.place, `group:${FAMILY}`);
   assert.deepEqual(ids(space), [
     "today",
     "map",
-    "workbooks",
-    "time",
-    "report-cards",
+    "gradebook",
     "roster",
+    "time",
+    "workbooks",
     "settings",
   ]);
-  assert.deepEqual(
-    space.tabs.filter((tab) => tab.phone).map((tab) => tab.id),
-    ["today", "map", "workbooks", "time"],
-  );
-  assert.equal(space.learner?.id, "wren");
-  assert.deepEqual(
-    space.learners.map((learner) => learner.id),
-    ["pip", "wren"],
-  );
-  // The family's Today, by the landing alias (a family's id need not be its
-  // org's); never the adult's "Practice".
-  assert.deepEqual(destinations(space), ["Today"]);
-  assert.equal(space.destinations[0]!.path, "family");
-  assert.equal(space.words.learner, "child");
-  assert.equal(space.words.people, "People");
+  assert.deepEqual(destinations(space), ["Tutoring group"]);
+  assert.equal(space.words.learner, "student");
+  // The holder's own children are never this place's learners.
+  assert.ok(!("learners" in space));
 });
 
-test("second parent: the family they belong to, its children read-only, never her own practice", () => {
+test("second parent at the family class's address: the group, never her own practice", () => {
   const space = resolveSpace(
     at(classPath(OTHER_FAMILY, OTHER_FAMILY_CLASS)),
     adult(secondParent),
     { org: familyOrg(OTHER_FAMILY, "Lund family"), year: { past: false } },
   );
-  expectSpace(space, "family");
-  assert.equal(space.relation, "second-parent");
-  assert.equal(space.place, `family:${OTHER_FAMILY}`);
-  assert.deepEqual(
-    space.learners.map((learner) => learner.id),
-    ["kai"],
-  );
-  // Kai practices from the family's Today ("Let Kai practice here").
-  assert.deepEqual(destinations(space), ["Today"]);
+  expectSpace(space, "classroom");
+  assert.equal(space.label, "Tutoring group");
+  assert.ok(!destinations(space).includes("Practice"));
 });
 
-test("family co-teacher: the family's place, none of its children as theirs", () => {
+test("family co-teacher: a tutoring group, none of its children as theirs", () => {
   const space = resolveSpace(
     at(classPath(TUTOR_FAMILY, TUTOR_CLASS)),
     adult(adultOnly),
@@ -300,33 +284,28 @@ test("family co-teacher: the family's place, none of its children as theirs", ()
       year: { past: false },
     },
   );
-  expectSpace(space, "family");
-  assert.equal(space.relation, "co-teacher");
-  assert.deepEqual(space.learners, []);
-  assert.equal(space.learner, null);
-  assert.equal(space.place, `school:${TUTOR_FAMILY}`);
-  // A larger group keeps its gradebook, under More.
+  expectSpace(space, "classroom");
+  assert.equal(space.label, "Tutoring group");
+  assert.equal(space.place, `group:${TUTOR_FAMILY}`);
   assert.ok(ids(space).includes("gradebook"));
-  assert.ok(!space.tabs.find((tab) => tab.id === "gradebook")?.phone);
 });
 
 test("a family's tabs never look like a classroom's", () => {
-  const family = resolveSpace(
-    at(classPath(FAMILY, FAMILY_CLASS)),
-    adult(holder),
-    { org: familyOrg(), year: { past: false } },
-  );
+  const family = familyPlaceTabs(FAMILY);
   const room = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
     org: school({ teaches: [ROOM] }),
     classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
     year: { past: false },
   });
-  assert.notDeepEqual(ids(family), ids(room));
   assert.notDeepEqual(
-    family.tabs.map((tab) => tab.label),
+    family.map((tab) => tab.id),
+    ids(room),
+  );
+  assert.notDeepEqual(
+    family.map((tab) => tab.label),
     room.tabs.map((tab) => tab.label),
   );
-  assert.notEqual(family.words.tabs, room.words.tabs);
+  assert.notEqual(spaceWords("family").tabs, room.words.tabs);
 });
 
 test("classroom roles: teacher, aide, viewer and admin each reach the class as themselves", () => {
@@ -518,19 +497,19 @@ test("late, refused and mismatched resources never describe another place", () =
       year: { past: false },
     },
   );
-  expectSpace(mismatch, "family");
+  expectSpace(mismatch, "classroom");
   assert.equal(mismatch.status, "unavailable");
   assert.deepEqual(mismatch.tabs, []);
   assert.deepEqual(mismatch.destinations, []);
-  assert.equal(mismatch.class?.id, ROOM_TWO);
-  // Before its org answers, the account's own relationship already knows a
-  // family: no flash of a classroom's chrome.
+  assert.equal(mismatch.class.id, ROOM_TWO);
+  // Before its org answers: loading, no tabs, never another place.
   const early = resolveSpace(
     at(classPath(FAMILY, FAMILY_CLASS)),
     adult(holder),
   );
-  expectSpace(early, "family");
+  expectSpace(early, "classroom");
   assert.equal(early.status, "loading");
+  assert.deepEqual(early.tabs, []);
 });
 
 test("role loss: the same route with the role gone keeps no tab and no action", () => {
@@ -633,8 +612,10 @@ test("power user: each place looks right on its own terms, and nothing follows t
       year: { past: false },
     },
   );
-  expectSpace(family, "family");
-  assert.equal(family.learner?.id, "pip");
+  // The family class's address is its tutoring group; the family itself is
+  // /family/<family> (family-space.test.ts).
+  expectSpace(family, "classroom");
+  assert.equal(family.label, "Tutoring group");
   assert.ok(!destinations(family).includes("Practice"));
   const room = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(power, "pip"), {
     org: school({
@@ -654,12 +635,9 @@ test("power user: each place looks right on its own terms, and nothing follows t
     adult(power, "pip"),
     { org: familyOrg(OTHER_FAMILY, "Lund family"), year: { past: false } },
   );
-  expectSpace(other, "family");
-  assert.equal(other.relation, "second-parent");
-  assert.deepEqual(
-    other.learners.map((learner) => learner.id),
-    ["kai"],
-  );
+  expectSpace(other, "classroom");
+  assert.equal(other.label, "Tutoring group");
+  assert.ok(!JSON.stringify(other).includes("Pip"));
 });
 
 test("me: Practice, Levels and Workbooks on a phone; the rest under More", () => {
@@ -698,11 +676,7 @@ test("account: its own neutral addresses and the old ones, never family chrome",
     assert.equal(space.scope, "settings", path);
     assert.deepEqual(
       space.tabs.map((tab) => tab.path),
-      [
-        "account/security",
-        "account/billing",
-        "account/privacy",
-      ],
+      ["account/security", "account/billing", "account/privacy"],
     );
     assert.equal(space.label, "Account");
     assert.deepEqual(space.destinations, []);
@@ -945,7 +919,7 @@ test("CP-2 H4: a class is framed only under its own org", () => {
       year: { past: false, orgId: SCHOOL, path: [SCHOOL] },
     },
   );
-  expectSpace(family, "family");
+  expectSpace(family, "classroom");
   assert.equal(family.status, "unavailable");
   assert.deepEqual(family.tabs, []);
 });

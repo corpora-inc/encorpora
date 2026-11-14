@@ -33,19 +33,28 @@ const browser = await chromium.launch();
 const pool = new pg.Pool({ connectionString: database, max: 1 });
 try {
   for (const width of [390, 1280]) {
-    const context = await browser.newContext({ viewport: { width, height: 900 } });
-    const signIn = await context.request.post(`${origin}/api/auth/sign-in/email`, {
-      headers: { Origin: origin },
-      data: {
-        email: "parent-new@personas.amp.test",
-        password: "design pass persona passphrase",
-      },
+    const context = await browser.newContext({
+      viewport: { width, height: 900 },
     });
+    const signIn = await context.request.post(
+      `${origin}/api/auth/sign-in/email`,
+      {
+        headers: { Origin: origin },
+        data: {
+          email: "parent-new@personas.amp.test",
+          password: "design pass persona passphrase",
+        },
+      },
+    );
     assert.ok(signIn.ok(), `sign-in ${signIn.status()}`);
-    const places = (await (await context.request.get(`${origin}/api/v1/families`)).json()) as {
+    const places = (await (
+      await context.request.get(`${origin}/api/v1/families`)
+    ).json()) as {
       families: { familyId: string; role: string }[];
     };
-    const family = places.families.find((entry) => entry.role === "holder")!.familyId;
+    const family = places.families.find(
+      (entry) => entry.role === "holder",
+    )!.familyId;
     const projection = (await (
       await context.request.get(`${origin}/api/v1/families/${family}`)
     ).json()) as { children: { id: string; access: { hasAccess: boolean } }[] };
@@ -59,12 +68,20 @@ try {
     const childPage = `/family/${family}/kids/${child.id}`;
     await page.goto(`${origin}${childPage}`);
     await page.waitForSelector(`[data-continue="${child.id}"]`);
-    await page.screenshot({ path: join(shots, `purchase-1-child-${width}.png`), fullPage: true });
+    await page.screenshot({
+      path: join(shots, `purchase-1-child-${width}.png`),
+      fullPage: true,
+    });
     await page.click(`[data-continue="${child.id}"]`);
     await page.waitForURL(`**/continue/${child.id}`);
     await page.waitForLoadState("networkidle").catch(() => undefined);
-    await page.screenshot({ path: join(shots, `purchase-2-plan-${width}.png`), fullPage: true });
-    const remembered = await page.evaluate(() => sessionStorage.getItem("amp.continue.v1"));
+    await page.screenshot({
+      path: join(shots, `purchase-2-plan-${width}.png`),
+      fullPage: true,
+    });
+    const remembered = await page.evaluate(() =>
+      sessionStorage.getItem("amp.continue.v1"),
+    );
     assert.ok(remembered, "the continuation is remembered");
     assert.equal(JSON.parse(remembered!).returnTo, childPage);
     assert.equal(JSON.parse(remembered!).learnerId, child.id);
@@ -94,10 +111,16 @@ try {
       { timeout: 30_000 },
     );
     await page.waitForTimeout(800);
-    await page.screenshot({ path: join(shots, `purchase-3-returned-${width}.png`), fullPage: true });
+    await page.screenshot({
+      path: join(shots, `purchase-3-returned-${width}.png`),
+      fullPage: true,
+    });
     console.log(`${width}: returned to ${childPage} with access active`);
-    // Another account's memory, and an expired one: never followed.
+    // No usable memory on this device (none, another account's, an expired
+    // one): the paid child's own page, read from the server, never the
+    // root and never the purchase screen.
     for (const memory of [
+      null,
       { accountId: "amp|someone-else", savedAt: Date.now() },
       { accountId: "", savedAt: Date.now() - 4 * 60 * 60 * 1000 },
     ]) {
@@ -106,28 +129,34 @@ try {
           const session = JSON.parse(
             sessionStorage.getItem("amp.continue.v1") ?? "{}",
           ) as { accountId?: string };
-          sessionStorage.setItem(
-            "amp.continue.v1",
-            JSON.stringify({
-              accountId: memory.accountId || session.accountId,
-              learnerId,
-              returnTo: `${childPage}?stale=1`,
-              stage: "paying",
-              savedAt: memory.savedAt,
-            }),
-          );
+          if (!memory) sessionStorage.removeItem("amp.continue.v1");
+          else
+            sessionStorage.setItem(
+              "amp.continue.v1",
+              JSON.stringify({
+                accountId: memory.accountId || session.accountId,
+                learnerId,
+                returnTo: `${childPage}?stale=1`,
+                stage: "paying",
+                savedAt: memory.savedAt,
+              }),
+            );
         },
         { memory, childPage, learnerId: child.id },
       );
       await page.goto(`${origin}/?billing=processing&purchase=${purchase}`);
-      await page.waitForLoadState("networkidle").catch(() => undefined);
-      await page.waitForTimeout(1500);
-      assert.ok(!page.url().includes("stale=1"), `followed ${JSON.stringify(memory)}`);
+      await page.waitForURL(
+        (url) => url.pathname === childPage && !url.search.includes("stale"),
+        { timeout: 30_000 },
+      );
     }
+    console.log(`${width}: with no usable memory, the paid child's page too`);
     await context.close();
   }
 } finally {
   await pool.end();
   await browser.close();
 }
-console.log("Continue with AMP returns to the child's page with access active.");
+console.log(
+  "Continue with AMP returns to the child's page with access active.",
+);

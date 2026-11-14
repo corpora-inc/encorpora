@@ -12,7 +12,7 @@ import {
 } from "../../../family/projection-contracts";
 import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
-import { invalidateAccount } from "../../lib/query";
+import { invalidateAccount, queryClient } from "../../lib/query";
 
 /*
  * A family's reads (docs/architecture/family-api.md): the places this account
@@ -112,3 +112,25 @@ export const saveProfile = (
  * account's older `/family/<section>` addresses. */
 export const isFamilyId = (value: string) =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+
+/** A child's own page, when the learner is a child of a family this
+ * account holds: where a paid "Continue with AMP" lands when nothing on
+ * this device remembers where it began. Null otherwise (their own practice,
+ * or nobody's here). */
+export async function childPagePath(
+  session: AuthSession,
+  learnerId: string,
+): Promise<string | null> {
+  const places = await queryClient
+    .fetchQuery(familyPlacesOptions(session))
+    .catch(() => null);
+  for (const place of places?.families ?? []) {
+    if (place.role !== "holder") continue;
+    const family = await queryClient
+      .fetchQuery(familyOptions(session, place.familyId))
+      .catch(() => null);
+    if (family?.children.some((child) => child.id === learnerId))
+      return `/family/${place.familyId}/kids/${learnerId}`;
+  }
+  return null;
+}

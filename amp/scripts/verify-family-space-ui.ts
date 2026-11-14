@@ -53,7 +53,8 @@ async function signedIn(
       data: { email: `${persona}@personas.amp.test`, password: PASSWORD },
     },
   );
-  if (!response.ok()) throw new Error(`${persona} sign-in ${response.status()}`);
+  if (!response.ok())
+    throw new Error(`${persona} sign-in ${response.status()}`);
   await context.addInitScript(() => {
     (window as unknown as { __shift: number }).__shift = 0;
     new PerformanceObserver((list) => {
@@ -77,21 +78,23 @@ async function settle(page: Page) {
  * words. */
 async function check(page: Page, where: string, words = true) {
   const result = await page.evaluate(() => {
-    const overflow =
-      document.documentElement.scrollWidth - window.innerWidth;
+    const overflow = document.documentElement.scrollWidth - window.innerWidth;
     const small = [
       ...document.querySelectorAll<HTMLElement>(
-        "main button, main a[href], header button, header a[href], [role=switch]",
+        "main button, main a[href], header button, header a[href], [role=switch], [role=dialog] button, [role=dialog] a[href]",
       ),
     ]
       .filter((element) => {
         const box = element.getBoundingClientRect();
         if (!box.width || !box.height) return false;
+        // The effective target: the element, or the hit area its ::after
+        // draws out around it, measured, never assumed.
         const after = getComputedStyle(element, "::after");
-        // A small link whose hit area is drawn out to 44 px.
-        if (after.position === "absolute" && after.content !== "none")
-          return false;
-        return box.height < 43.5;
+        const drawn =
+          after.position === "absolute" && after.content !== "none"
+            ? parseFloat(after.height) || 0
+            : 0;
+        return Math.max(box.height, drawn) < 43.5;
       })
       .map((element) => (element.textContent ?? "").trim().slice(0, 40));
     const text = [
@@ -100,7 +103,8 @@ async function check(page: Page, where: string, words = true) {
     ].join(" ");
     return { overflow, small, text };
   });
-  if (result.overflow > 0) fail(where, `scrolls sideways by ${result.overflow}px`);
+  if (result.overflow > 0)
+    fail(where, `scrolls sideways by ${result.overflow}px`);
   if (result.small.length)
     fail(where, `targets under 44px: ${result.small.slice(0, 5).join(" | ")}`);
   if (words && NEVER.test(result.text))
@@ -153,8 +157,7 @@ async function familyId(context: BrowserContext) {
   const body = (await response.json()) as {
     families: { familyId: string; role: string }[];
   };
-  return body.families.find((family) => family.role !== "co-teacher")!
-    .familyId;
+  return body.families.find((family) => family.role !== "co-teacher")!.familyId;
 }
 
 /** Jonah as the power user: his own family, a tutoring group (another
@@ -167,11 +170,16 @@ async function powerUser(context: BrowserContext) {
   if (!places.families.some((family) => family.teachingPlace)) {
     const added = await context.request.post(
       `${origin}/api/v1/family/class/students`,
-      { headers: { Origin: origin }, data: { nickname: "JR", birthYear: 2015 } },
+      {
+        headers: { Origin: origin },
+        data: { nickname: "JR", birthYear: 2015 },
+      },
     );
     if (!added.ok()) throw new Error(`tutored child ${added.status()}`);
   }
-  const me = (await (await context.request.get(`${origin}/api/v1/me`)).json()) as {
+  const me = (await (
+    await context.request.get(`${origin}/api/v1/me`)
+  ).json()) as {
     adultPractice?: { learner: unknown };
   };
   if (!me.adultPractice?.learner) {
@@ -208,15 +216,22 @@ try {
           );
           return {
             id: item.getAttribute("data-child")!,
-            action: action ? Math.round(action.getBoundingClientRect().width) : null,
-            left: action ? Math.round(action.getBoundingClientRect().left) : null,
+            action: action
+              ? Math.round(action.getBoundingClientRect().width)
+              : null,
+            left: action
+              ? Math.round(action.getBoundingClientRect().left)
+              : null,
           };
         }),
       );
       const widths = new Set(rows.map((row) => row.action));
       const lefts = new Set(rows.map((row) => row.left));
       if (widths.size > 1 || lefts.size > 1)
-        fail(`family-today-${tag}`, `row actions differ: ${JSON.stringify(rows)}`);
+        fail(
+          `family-today-${tag}`,
+          `row actions differ: ${JSON.stringify(rows)}`,
+        );
       for (const [index, row] of rows.entries()) {
         const page = await visit(
           family,
@@ -236,21 +251,37 @@ try {
       await today.waitForSelector("[data-devices-sheet] [data-class-code]");
       await today.waitForTimeout(500);
       await shoot(today, `family-devices-${tag}`);
+      const sheet = (await today.textContent("[role=dialog]")) ?? "";
+      if (NEVER.test(sheet))
+        fail(`family-devices-${tag}`, `says "${NEVER.exec(sheet)![0]}"`);
       if (!/devices=1/.test(today.url()))
         fail(`family-devices-${tag}`, "the sheet has no address");
       await today.close();
-      // An old family-class address lands on the family's own screen.
-      const old = await family.newPage();
-      const classes = (await (
-        await family.request.get(`${origin}/api/v1/me`)
-      ).json()) as { familyClass?: { classId: string } };
-      await old.goto(
-        `${origin}/school/${id}/classes/${classes.familyClass!.classId}/map`,
-      );
+      // An old family-class address: a family's own class opens the
+      // family's screen (with its workbook identity); a class that also
+      // holds other families' children stays its tutoring group.
+      const pure = await signedIn("parent-new", width, scheme);
+      const pureId = await familyId(pure);
+      const pureMe = (await (
+        await pure.request.get(`${origin}/api/v1/me`)
+      ).json()) as { familyClass?: { orgId: string; classId: string } };
+      const old = await pure.newPage();
+      const at = `/school/${pureMe.familyClass!.orgId}/classes/${pureMe.familyClass!.classId}`;
+      await old.goto(`${origin}${at}/map`);
       await settle(old);
-      if (!old.url().endsWith(`/family/${id}/map`))
+      if (!old.url().endsWith(`/family/${pureId}/map`))
         fail(`family-old-address-${tag}`, `landed on ${old.url()}`);
+      await old.goto(`${origin}${at}/workbooks/2026-11-12?set=2`);
+      await settle(old);
+      if (
+        !new URL(old.url()).pathname.endsWith(
+          `/family/${pureId}/workbooks/2026-11-12`,
+        ) ||
+        new URL(old.url()).searchParams.get("set") !== "2"
+      )
+        fail(`family-old-workbook-${tag}`, `landed on ${old.url()}`);
       await old.close();
+      await pure.close();
       await family.close();
       // The second parent: the same children, nothing she can't do.
       const second = await signedIn("second-parent", width, scheme);
@@ -272,12 +303,38 @@ try {
       await tour.goto(`${origin}/family/${id}`);
       await settle(tour);
       await switchTo(tour, `group:${id}`);
-      if (!tour.url().endsWith(`/family/${id}/group`))
+      // The tutoring group is its class's whole classroom, a teaching place.
+      if (
+        !/\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/.test(
+          tour.url(),
+        )
+      )
         fail(`power-group-${tag}`, `landed on ${tour.url()}`);
+      const bar = (await tour.textContent("[data-place-name]")) ?? "";
+      if (bar !== "Tutoring group")
+        fail(`power-group-${tag}`, `bar says ${bar}`);
       await check(tour, `power-group-${tag}`, false);
       await shoot(tour, `power-group-${tag}`);
+      await tour.goto(tour.url().replace(/\/today$/, "/roster"));
+      await settle(tour);
       const group = (await tour.textContent("main")) ?? "";
-      if (!/JR/.test(group)) fail(`power-group-${tag}`, "the tutored child is missing");
+      if (!/JR/.test(group))
+        fail(`power-group-${tag}`, "the tutored child is missing");
+      await shoot(tour, `power-group-roster-${tag}`);
+      // A hosted child's record never opens over a family screen.
+      const teaching = (await (
+        await power.request.get(`${origin}/api/v1/families/${id}/teaching`)
+      ).json()) as { students: { id: string; name: string }[] };
+      const hosted = teaching.students.find((student) => student.name === "JR");
+      if (hosted) {
+        await tour.goto(`${origin}/family/${id}?open=student:${hosted.id}`);
+        await settle(tour);
+        if (await tour.$("[role=dialog]"))
+          fail(
+            `power-hosted-layer-${tag}`,
+            "a hosted child's record opened in Family",
+          );
+      }
       await switchTo(tour, "me");
       if (!new URL(tour.url()).pathname.startsWith("/me"))
         fail(`power-me-${tag}`, `landed on ${tour.url()}`);
@@ -301,4 +358,5 @@ try {
 if (failures.length) {
   console.error(`${failures.length} failures`);
   process.exitCode = 1;
-} else console.log("Family space: every screen whole at every width and theme.");
+} else
+  console.log("Family space: every screen whole at every width and theme.");

@@ -147,13 +147,24 @@ export function placeGroups(
         });
       // Other families' children in this family's class: a tutoring group,
       // a teaching place of its own, never mixed into the family.
-      if (entry.teachingPlace)
+      if (entry.teachingPlace) {
+        // Its class's classroom, under the org that holds it (a family's id
+        // need not be that org); the family's group address redirects there.
+        const classId = entry.teachingPlace.classId;
+        const org =
+          me.familyClass?.classId === classId
+            ? me.familyClass.orgId
+            : me.secondParentOf?.find((shared) => shared.classId === classId)
+                ?.orgId;
         groups.push({
           id: `group:${entry.familyId}`,
           name: "Tutoring group",
           detail: entry.teachingPlace.displayName,
-          path: `family/${entry.familyId}/group`,
+          path: org
+            ? `school/${org}/classes/${classId}/today`
+            : `family/${entry.familyId}/group`,
         });
+      }
     }
   } else {
     const own = ownFamily(me);

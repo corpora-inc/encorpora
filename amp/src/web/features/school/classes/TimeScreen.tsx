@@ -316,11 +316,10 @@ export function TimeScreen() {
   const period = timePeriods.find((entry) => entry === search.period) ?? "term";
   const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
-  const family =
-    useQuery({
-      ...orgOptions(currentSession(), place.org),
-      refetchOnMount: false,
-    }).data?.kind === "family";
+  // A family-kind class reached at its class address is a tutoring group: a
+  // parent's own family class opens at /family, so this is the classroom
+  // composition, the whole group, in a classroom's words.
+  const family = false;
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);

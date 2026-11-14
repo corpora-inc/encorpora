@@ -7,7 +7,7 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
 import { pilotOptions } from "../school/pilots/api";
-import { familyOptions } from "../family/api";
+import { familyOptions, familyPlacesOptions } from "../family/api";
 import { shellFrame } from "../navigation/shell-frame";
 import {
   resolveSpace,
@@ -146,6 +146,11 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     enabled: !!familyId && !!session && !student,
     refetchOnMount: false,
   });
+  const families = useQuery({
+    ...familyPlacesOptions(auth),
+    enabled: !!classId && !!session && !student,
+    refetchOnMount: false,
+  });
   const org = useQuery({
     ...orgOptions(auth, orgId),
     enabled: !!orgId,
@@ -181,5 +186,6 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     // Practice that can't be confirmed running offers nothing to start.
     covered: current(pilot, since)?.coverage?.covered ?? 0,
     family: current(family, since),
+    families: current(families, since),
   });
 }

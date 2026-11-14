@@ -6,6 +6,7 @@ import {
   familyOrgTarget,
   parentFamilyAt,
   peopleOf,
+  workbookIdentity,
 } from "../src/web/features/family/redirects.js";
 
 /*
@@ -118,10 +119,14 @@ test("Grades and report cards are the family's records, with their term and year
       search: { term: "t1", year: "y", student: P_PIP },
     },
   );
-  assert.deepEqual(go(["report-cards"], { term: "t1", year: "y" }), {
-    to: `/family/${F}/reports`,
-    search: { term: "t1", year: "y" },
-  });
+  // One child's card stays one child's card.
+  assert.deepEqual(
+    go(["report-cards"], { term: "t1", year: "y", student: P_PIP }),
+    {
+      to: `/family/${F}/reports`,
+      search: { term: "t1", year: "y", student: P_PIP },
+    },
+  );
 });
 
 test("Time, with its week and child, through the one return contract", () => {
@@ -134,20 +139,47 @@ test("Time, with its week and child, through the one return contract", () => {
   );
 });
 
-test("Workbooks and a day's marking, with everything their screens read", () => {
+test("Workbooks keep their identity: a day's set, the stack's day, minutes, paper and children", () => {
+  // A printed QR code names its set: the same workbook opens for marking.
   assert.deepEqual(
-    go(["workbooks"], { students: `${P_PIP},${P_WREN}`, skill: "add" }),
+    go(["workbooks", "2026-11-12"], { set: "2", student: P_PIP, x: "y" }),
     {
-      to: `/family/${F}/workbooks`,
-      search: { students: `${P_PIP},${P_WREN}`, skill: "add" },
+      to: `/family/${F}/workbooks/2026-11-12`,
+      search: { student: P_PIP, set: 2 },
     },
   );
   assert.deepEqual(
-    go(["workbooks", "2026-11-12"], { student: P_PIP, x: "y" }),
+    go(["workbooks"], {
+      date: "2026-11-12",
+      minutes: "45",
+      paper: "a4",
+      set: 3,
+      students: `${P_PIP},${P_WREN}`,
+      skill: "add",
+    }),
     {
-      to: `/family/${F}/workbooks/2026-11-12`,
-      search: { student: P_PIP },
+      to: `/family/${F}/workbooks`,
+      search: {
+        skill: "add",
+        set: 3,
+        date: "2026-11-12",
+        minutes: 45,
+        paper: "a4",
+        students: `${P_PIP},${P_WREN}`,
+        several: 1,
+      },
     },
+  );
+  // Malformed identity is dropped, never forwarded.
+  assert.deepEqual(
+    go(["workbooks"], {
+      set: "0",
+      minutes: "50",
+      paper: "legal",
+      students: "x,y",
+      date: "soon",
+    }),
+    { to: `/family/${F}/workbooks`, search: {} },
   );
 });
 
@@ -202,6 +234,16 @@ test("school-level pages of a family org: the family's equivalent, its view keys
       to: `/family/${F}/people`,
       search: { sort: "name:ascending", open: "skill:add" },
     },
+  );
+  // A child named by their person on a school-level page: their page.
+  assert.deepEqual(
+    familyOrgTarget({
+      family: F,
+      page: "roster",
+      search: { open: `student:${P_WREN}` },
+      people,
+    }),
+    { to: `/family/${F}/kids/wren`, search: {} },
   );
   assert.deepEqual(familyOrgTarget({ family: F, page: "map", search: {} }), {
     to: `/family/${F}/map`,

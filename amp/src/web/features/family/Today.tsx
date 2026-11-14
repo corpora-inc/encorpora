@@ -47,6 +47,29 @@ export function accessUntil(child: FamilyChild): string | null {
   return last ? DATE.format(new Date(last)) : null;
 }
 
+const SOON_MS = 30 * 86_400_000;
+/** One access line for the whole family when every child has the same
+ * access, ending the same day and not soon; otherwise each row says its
+ * own (a different date, ending soon, or free problems left). */
+export function sharedAccessOf(children: readonly FamilyChild[]) {
+  if (children.length < 2) return null;
+  const ends = children.map((child) =>
+    child.access.hasAccess
+      ? child.access.grants
+          .filter((grant) => grant.status === "active")
+          .map((grant) => grant.endsAt)
+          .sort()
+          .at(-1)
+      : undefined,
+  );
+  // The same day is the same access (grants made together differ by ms).
+  const first = ends[0];
+  const day = (end: string | undefined) => end?.slice(0, 10);
+  if (!first || ends.some((end) => day(end) !== day(first))) return null;
+  if (Date.parse(first) - Date.now() < SOON_MS) return null;
+  return accessUntil(children[0]!);
+}
+
 /** Access, or the free problems left: what lets this child practice. */
 export function AccessFact({ child }: { child: FamilyChild }) {
   if (child.access.hasAccess) {
@@ -255,6 +278,7 @@ export function FamilyTodayScreen() {
       replace: !open,
     });
   const children = data?.children ?? [];
+  const sharedAccess = sharedAccessOf(children);
   const byId = new Map(children.map((child) => [child.id, child]));
   const own = place.own;
   const manageDevices = children.some(
@@ -317,6 +341,12 @@ export function FamilyTodayScreen() {
               <h2 id="family-kids" className={styles.sectionTitle}>
                 {children.length === 1 ? "Your child" : "Your kids"}
               </h2>
+              {sharedAccess && (
+                <p className={styles.sub} data-shared-access="">
+                  {children.length === 2 ? "Both have" : "All have"} AMP through{" "}
+                  {sharedAccess}
+                </p>
+              )}
               <ul className={styles.kids} data-family-kids="">
                 {children.map((child) => (
                   <li
@@ -339,7 +369,7 @@ export function FamilyTodayScreen() {
                     </Link>
                     <span className={styles.facts}>
                       <WeekFactsOf child={child} today={data.today.date} />
-                      <AccessFact child={child} />
+                      {!sharedAccess && <AccessFact child={child} />}
                     </span>
                     <span className={styles.action}>
                       <ChildAction

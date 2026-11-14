@@ -29,8 +29,12 @@ export function LayerHost({
   learner,
   lessonActions,
   skillActions,
+  allow,
 }: {
   org?: string;
+  /** Which of the address's layers this page may open (a family's own
+   * children's records, never another family's): others are not drawn. */
+  allow?: (entity: Entity) => boolean;
   /** Own practice: whose map this is (none for a visitor). */
   learner?: string;
   /** Above a lesson: what this page offers with it (try this problem type). */
@@ -39,7 +43,9 @@ export function LayerHost({
   skillActions?: (skill: string) => ReactNode;
 }) {
   const { stack, close } = useLayers();
-  const shown = org ? stack : stack.filter((entity) => !staffOnly(entity.kind));
+  const shown = (
+    org ? stack : stack.filter((entity) => !staffOnly(entity.kind))
+  ).filter((entity) => !allow || allow(entity));
   // A stack restored at once (a refresh, a shared link) mounts a layer per
   // pass, before paint, so each one's modal hides those under it from
   // assistive technology, never the one above it.
@@ -49,23 +55,25 @@ export function LayerHost({
     else if (depth > Math.max(1, shown.length))
       setDepth(Math.max(1, shown.length));
   }, [depth, shown.length]);
-  return shown.slice(0, depth).map((entity, index) => (
-    <Layer
-      key={
-        entity.kind === "work"
-          ? `${index}:work`
-          : `${index}:${entity.kind}:${entity.id}`
-      }
-      entity={entity}
-      below={shown.slice(0, index)}
-      above={shown.slice(index + 1)}
-      org={org}
-      learner={learner}
-      close={close}
-      lessonActions={lessonActions}
-      skillActions={skillActions}
-    />
-  ));
+  return shown
+    .slice(0, depth)
+    .map((entity, index) => (
+      <Layer
+        key={
+          entity.kind === "work"
+            ? `${index}:work`
+            : `${index}:${entity.kind}:${entity.id}`
+        }
+        entity={entity}
+        below={shown.slice(0, index)}
+        above={shown.slice(index + 1)}
+        org={org}
+        learner={learner}
+        close={close}
+        lessonActions={lessonActions}
+        skillActions={skillActions}
+      />
+    ));
 }
 
 function Layer({

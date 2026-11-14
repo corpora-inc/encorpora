@@ -1,16 +1,36 @@
-/* A designed on/off switch (ui/Switch.tsx): a track and its thumb, the
-   accent when on, a 44 px target around the whole control. Tokens only. */
+/* A designed on/off switch (ui/Switch.tsx): the whole row is the control, at
+   least 44 px tall and as wide as its column; a track and its thumb, the
+   accent when on. Tokens only. */
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
   min-height: 44px;
+  margin: 0;
   padding: var(--space-1) var(--space-2);
+  border: 0;
   border-radius: var(--radius-control);
+  background: transparent;
   color: var(--color-on-surface-raised);
+  font: inherit;
   font-size: var(--text-label);
   font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+}
+.row:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+}
+.row:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.row:disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 .text {
   display: grid;
@@ -23,36 +43,30 @@
   font-weight: 400;
   line-height: 1.3;
 }
-.switch {
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.track {
   position: relative;
   flex: none;
   width: 44px;
   height: 26px;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;
   border: 1px solid var(--color-border-strong);
   border-radius: 999px;
   background: var(--color-surface-sunken);
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
-/* 44 px to touch. */
-.switch::after {
-  content: "";
-  position: absolute;
-  inset: -9px -2px;
-}
-.switch[aria-checked="true"] {
+.row[aria-checked="true"] .track {
   border-color: var(--color-selected);
   background: var(--color-selected);
-}
-.switch:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.switch:disabled {
-  cursor: default;
-  opacity: 0.5;
 }
 .thumb {
   position: absolute;
@@ -64,12 +78,12 @@
   background: var(--color-on-surface-raised);
   transition: transform 160ms ease;
 }
-.switch[aria-checked="true"] .thumb {
+.row[aria-checked="true"] .thumb {
   background: var(--color-on-selected);
   transform: translateX(18px);
 }
 @media (prefers-reduced-motion: reduce) {
-  .switch,
+  .track,
   .thumb {
     transition: none;
   }

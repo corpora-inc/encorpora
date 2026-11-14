@@ -122,7 +122,10 @@ export function TodayScreen() {
     ...orgOptions(account, place.org),
     refetchOnMount: false,
   });
-  const family = org.data?.kind === "family";
+  // A family-kind class reached at its class address is a tutoring group: a
+  // parent's own family class opens at /family, so this is the classroom
+  // composition, the whole group, in a classroom's words.
+  const family = false;
   const today = useQuery(todayOptions(session, place));
   // The class code, for a student's own device: with Today, never after it.
   const presence = useQuery(presenceOptions(session, place));
@@ -227,12 +230,11 @@ export function MapScreen() {
   const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
-  const family =
-    useQuery({
-      ...orgOptions(currentSession(), place.org),
-      refetchOnMount: false,
-    }).data?.kind === "family";
-  const words = spaceWords(family ? "family" : "classroom");
+  // A family-kind class reached at its class address is a tutoring group: a
+  // parent's own family class opens at /family, so this is the classroom
+  // composition, the whole group, in a classroom's words.
+  const family = false;
+  const words = spaceWords("classroom");
   // The class's code board, where students join; offered as the map's one
   // step only where the bar would offer it (a current class).
   const { start } = useSchoolNavigation({

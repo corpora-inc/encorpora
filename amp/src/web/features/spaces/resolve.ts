@@ -5,7 +5,10 @@ import type {
   OrgResource,
   StaffRole,
 } from "../../../schools/contracts";
-import type { FamilyProjection } from "../../../family/projection-contracts";
+import type {
+  FamilyPlaces,
+  FamilyProjection,
+} from "../../../family/projection-contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
@@ -91,6 +94,9 @@ export type SpaceResources = {
   /** The family a `/family/<family>/…` address names: its own children and
    * what this reader may do with each (docs/architecture/family-api.md). */
   family?: FamilyProjection | null;
+  /** The families this account belongs to (`GET /families`): which family a
+   * tutoring group's class is, for the switcher. */
+  families?: FamilyPlaces | null;
 };
 
 export type SpaceAction =
@@ -402,6 +408,44 @@ export function resolveSpace(
       const family =
         familyAt(me, orgId) ??
         (org?.kind === "family" ? ("co-teacher" as const) : null);
+      // A family-kind class at its class address is a tutoring group: a
+      // parent's own family class opens at /family (its old addresses
+      // redirect), so what renders here is the whole group, the classroom
+      // composition, a teaching place of its own (R2).
+      if (family && frame?.kind === "class") {
+        const group = resources.families?.families.find(
+          (entry) => entry.teachingPlace?.classId === frame.classId,
+        );
+        const space = teachingSpace(
+          { ...base, ...words("classroom") },
+          "classroom",
+          frame,
+          orgId,
+          { ...resources, org: missing ? null : org },
+        );
+        // The class the parent's relationship names, never another one.
+        const named =
+          family !== "co-teacher" && family.classId !== frame.classId;
+        if (named)
+          return {
+            ...space,
+            status: "unavailable",
+            tabs: [],
+            destinations: [],
+            actions: [],
+            label: null,
+          } as SpaceDescriptor;
+        return {
+          ...space,
+          label: "Tutoring group",
+          place: `group:${group?.familyId ?? orgId}`,
+          destinations: space.destinations.map((entry) =>
+            entry.id === "class"
+              ? { ...entry, label: "Tutoring group" }
+              : entry,
+          ),
+        };
+      }
       if (family)
         return familySpace({ ...base, ...words("family") }, frame, me, {
           orgId,

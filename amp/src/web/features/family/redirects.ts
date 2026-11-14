@@ -44,6 +44,8 @@ export type FamilyTarget = {
   /** The new address, with its leading slash. */
   to: string;
   search: Search;
+  /** Only a known settings section, never a secret. */
+  hash?: string;
 };
 
 const pick = (search: Search, keys: readonly string[]) =>
@@ -58,7 +60,7 @@ const CARRIED: Record<string, readonly string[]> = {
   "": ["devices"],
   map: ["skill", "lens", "sort"],
   "reports/grades": ["term", "year", "student"],
-  reports: ["term", "year"],
+  reports: ["term", "year", "student"],
   time: ["week", "from", "to", "student"],
   people: ["devices"],
   settings: [],
@@ -172,12 +174,14 @@ export function familyClassTarget({
   family,
   parts,
   search,
+  hash,
   people,
 }: {
   family: string;
   parts: readonly string[];
   search: Search;
-  /** Read, never carried: a fragment is where a link's secret lives. */
+  /** Never carried, except a known settings section: a fragment is where a
+   * link's secret lives. */
   hash?: string;
   people: PersonMap;
 }): FamilyTarget {
@@ -212,38 +216,71 @@ export function familyClassTarget({
     (target.leaf.startsWith("workbooks")
       ? Object.keys(search).filter((key) => key !== OPEN_KEY)
       : []);
-  // What the screen opens itself: the devices sheet, and a workbook
-  // stack's chosen children (person ids, bounded).
+  // What the screen opens itself, typed and validated beyond the shared
+  // return keys: the devices sheet, a workbook's identity (its set on a
+  // day, the stack's day, minutes, paper and chosen children) and a
+  // settings section. Anything else, and every other fragment, is dropped.
   const devices =
     target.devices || search.devices === 1 || search.devices === "1";
-  const students =
-    target.leaf.startsWith("workbooks") &&
-    typeof search.students === "string" &&
-    search.students.length <= 1000 &&
-    /^[0-9a-f,-]+$/i.test(search.students)
-      ? { students: search.students }
-      : {};
-  return viaReturn(
+  const opens: Search = {
+    ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
+    ...(target.leaf.startsWith("workbooks") ? workbookIdentity(search) : {}),
+  };
+  const result = viaReturn(
     familyPath(family, target.leaf),
     withOpen(pick(search, keys), rest),
-    {
-      ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
-      ...students,
-    },
+    opens,
   );
+  return target.leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
+    ? { ...result, hash }
+    : result;
+}
+
+/** The family Settings sections an old settings anchor may name. */
+const SETTINGS_SECTIONS = new Set([
+  "family-children",
+  "family-year",
+  "family-account",
+]);
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+/** A workbook's own identity in an old address: the set printed on a day
+ * (its QR code names it), and a stack's day, minutes, paper and children. */
+export function workbookIdentity(search: Search): Search {
+  const text = (key: string) =>
+    typeof search[key] === "string" || typeof search[key] === "number"
+      ? String(search[key])
+      : "";
+  const students = text("students")
+    .split(",")
+    .filter((id) => UUID.test(id))
+    .slice(0, 60);
+  return {
+    ...(/^[1-9]\d{0,2}$/.test(text("set")) ? { set: Number(text("set")) } : {}),
+    ...(DAY.test(text("date")) ? { date: text("date") } : {}),
+    ...(/^(30|45|60)$/.test(text("minutes"))
+      ? { minutes: Number(text("minutes")) }
+      : {}),
+    ...(/^(letter|a4)$/.test(text("paper")) ? { paper: text("paper") } : {}),
+    ...(students.length ? { students: students.join(","), several: 1 } : {}),
+  };
 }
 
 /** A school-level page of a family's org (`/school/<family>/<page>`): the
- * family's own equivalent, through the one return contract. */
+ * family's own equivalent, through the one return contract; a child named
+ * by their roster person opens as their page, as on a class address. */
 export function familyOrgTarget({
   family,
   page,
   search,
+  people = new Map(),
 }: {
   family: string;
   page: "roster" | "map" | "settings" | "today";
   search: Search;
   hash?: string;
+  people?: PersonMap;
 }): FamilyTarget {
   const leaf = {
     roster: "people",
@@ -251,6 +288,12 @@ export function familyOrgTarget({
     settings: "settings",
     today: "",
   }[page];
+  const { learner, rest } = childOf(search[OPEN_KEY], people);
+  if (learner)
+    return viaReturn(
+      familyPath(family, `kids/${learner}`),
+      withOpen(pick(search, ["skill"]), rest),
+    );
   return viaReturn(familyPath(family, leaf), search);
 }
 

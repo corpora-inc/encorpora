@@ -62,7 +62,11 @@ export function DevicesSheet({
     people.has(row.id),
   );
   const code = presence.data?.class.joinCode ?? null;
-  const manage = presence.data?.canManage ?? false;
+  // A new code is the class's: in a class that also holds other families'
+  // children it changes theirs too, so it lives in the tutoring group,
+  // where that scope is said.
+  const shared = !!data?.teachingPlace;
+  const manage = !shared && (presence.data?.canManage ?? false);
   const confirm = async () => {
     if (!pending) return;
     try {
@@ -102,6 +106,12 @@ export function DevicesSheet({
                 manage={manage}
                 locked={!!presence.data?.class.joinLockedUntil}
               />
+              {shared && presence.data?.canManage && (
+                <p className={styles.footnote} data-shared-code="">
+                  This code is your tutoring group’s too. A new one is made
+                  there, for everyone in the group.
+                </p>
+              )}
               <section
                 aria-labelledby="devices-cards"
                 className={styles.section}

@@ -153,7 +153,11 @@ export function RosterScreen() {
     ...orgOptions(account, params.org),
     refetchOnMount: false,
   }).data;
-  const family = org?.kind === "family";
+  // A family-kind class at its class address is a tutoring group (a
+  // parent's own family class opens at /family): students in a classroom's
+  // words, with its other families' approvals and co-teachers.
+  const group = org?.kind === "family";
+  const family = false;
   const me = useQuery(meOptions(account)).data;
   const holder = !!me?.signedIn && me.familyClass?.classId === params.class;
   const who = family ? "child" : "student";
@@ -161,8 +165,7 @@ export function RosterScreen() {
   // nothing moves when they arrive, and a list that fails says so in its
   // place rather than holding the page (a query refetched after an error
   // is pending again, which would loop the page through its wait).
-  useQuery({ ...secondParentOptions(account), enabled: holder && family });
-  useQuery({ ...approvalsOptions(account), enabled: holder && family });
+  useQuery({ ...approvalsOptions(account), enabled: holder && group });
   const busy = making || reset.isPending || revoke.isPending;
   const canAdd = !family && !demo && canAddStudents(org, params.class);
   const dayZero = !family && data?.students.length === 0;
@@ -516,8 +519,9 @@ export function RosterScreen() {
               Add students
             </Link>
           )}
-          {family && holder && (
+          {group && holder && (
             <ClassPeople
+              secondParent={false}
               session={account}
               orgId={params.org}
               classId={params.class}

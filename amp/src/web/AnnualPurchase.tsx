@@ -1,3 +1,4 @@
+import { childPagePath } from "./features/family/api";
 import { purchaseFetch } from "./lib/purchase-analytics";
 import { useFamilyCache } from "./lib/family-cache";
 import { queryClient, meOptions } from "./lib/query";
@@ -268,6 +269,16 @@ function PurchasePanel({
         if (continuation?.learnerId === id) {
           continuationPaid(identity);
           void navigate({ href: continuation.returnTo, replace: true });
+        } else {
+          // Nothing here remembers where it began (another tab, another
+          // account's or an expired memory): the paid child's own page,
+          // read from the server, never the root.
+          const page = await childPagePath(
+            { accountId: identity, token: tokenRef.current },
+            id,
+          ).catch(() => null);
+          if (page && alive.current && stamp === revision.current)
+            void navigate({ href: page, replace: true });
         }
       }
     } catch (failure) {

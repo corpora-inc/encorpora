@@ -71,13 +71,10 @@ export async function toFamilyAddress(
   const projection = await queryClient
     .ensureQueryData(familyOptions(session, family))
     .catch(() => null);
-  // A tutor's class with no children of their own: the tutoring group.
-  if (projection && !projection.children.length && projection.teachingPlace)
-    throw redirect({
-      to: `/family/${family}/group`,
-      search: (location.search ?? {}) as never,
-      replace: true,
-    } as never);
+  // A class that also holds other families' children is a tutoring group:
+  // it stays at its class address, the whole group's classroom (R2). Only
+  // a family's own class becomes the family's screens.
+  if (!projection || projection.teachingPlace?.classId === classId) return;
   const prefix = `/school/${org}/classes/${classId}`;
   const parts = location.pathname
     .slice(prefix.length)
@@ -94,12 +91,15 @@ export async function toFamilyAddress(
 }
 
 /** A school-level page of a parent's own family org: the family's own
- * screen. Null for anyone else. */
+ * screen, a child named by their person their page. A class the address
+ * names that isn't the family's own is the family's unavailable view, never
+ * another class. Null for anyone else. */
 export async function toFamilyPage(
   session: AuthSession,
   org: string,
   page: "roster" | "map" | "settings" | "today",
   location: Located["location"],
+  classId?: string,
 ) {
   const me = await queryClient
     .ensureQueryData(meOptions(session))
@@ -109,12 +109,22 @@ export async function toFamilyPage(
   if (!account || !parent) return;
   const family = await familyOfClass(session, account, parent);
   if (!family) return;
+  const projection = await queryClient
+    .ensureQueryData(familyOptions(session, family))
+    .catch(() => null);
+  // A tutoring group's class keeps its classroom.
+  if (projection?.teachingPlace?.classId === parent.classId) return;
+  if (classId && classId !== parent.classId)
+    throw redirect({
+      to: `/family/${family}/unavailable`,
+      replace: true,
+    } as never);
   throw redirect({
     ...familyOrgTarget({
       family,
       page,
       search: (location.search ?? {}) as Record<string, unknown>,
-      hash: location.hash || undefined,
+      people: peopleOf(projection?.children ?? [], parent.classId),
     }),
     replace: true,
   } as never);
@@ -151,4 +161,25 @@ export async function toFamilyChild(
     }),
     replace: true,
   } as never);
+}
+
+/** Where a family's tutoring group lives: its class's own classroom
+ * screens, at the class's address under the org that holds it. Null when
+ * the family has no tutoring group. */
+export async function groupAddress(
+  session: AuthSession,
+  family: string,
+): Promise<string | null> {
+  const [me, projection] = await Promise.all([
+    queryClient.ensureQueryData(meOptions(session)).catch(() => null),
+    queryClient
+      .ensureQueryData(familyOptions(session, family))
+      .catch(() => null),
+  ]);
+  const classId = projection?.teachingPlace?.classId;
+  if (!classId || !me?.signedIn) return null;
+  const own = ownClassOf(me, family, projection);
+  return own && own.id === classId
+    ? `/school/${own.org}/classes/${classId}/today`
+    : null;
 }

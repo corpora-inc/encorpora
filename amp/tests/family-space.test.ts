@@ -448,7 +448,8 @@ test("the switcher names each family as the family, with a tutoring group under 
   const teaching = groups.find((group) => group.id === "teaching")!;
   assert.deepEqual(
     teaching.entries.map((entry) => [entry.id, entry.name, entry.path]),
-    [[`group:${A}`, "Tutoring group", `family/${A}/group`]],
+    // Its class's classroom, under the org that holds that class.
+    [[`group:${A}`, "Tutoring group", `school/${A}/classes/${A_CLASS}/today`]],
   );
   // Never a class's name for a family.
   assert.ok(!family.entries.some((entry) => /class/i.test(entry.name)));

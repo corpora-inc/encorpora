@@ -50,32 +50,51 @@ const sections = () =>
     node.getAttribute("aria-label"),
   );
 
-test("Family: its own children and destinations, then the switcher, then the account", () => {
+const child = (id: string, name: string) => ({
+  id,
+  name,
+  birthYear: 2017,
+  gradeLevel: 3,
+  access: {
+    grants: [],
+    hasAccess: true,
+    canPractice: true,
+    learningAllowed: true,
+    freeAllowance: {
+      problems: { total: 100, used: 0, remaining: 100 },
+      workbooks: { total: 0, earned: 0, made: 0, available: 0, nextAt: null },
+    },
+  },
+  week: { minutes: 0, problems: 0, lastPracticed: null },
+  nextUp: { kind: "adaptive-practice", learnerId: id, task: null },
+  capabilities: {},
+  classes: [],
+  paths: { progress: "", workbooks: null, practiceHere: null, continue: null },
+});
+
+test("Family: Today and its own children as rows, then the switcher, then the account", () => {
   const space = resolveSpace(
-    { pathname: `/school/${FAMILY}/classes/${CLASS}/today` },
+    { pathname: `/family/${FAMILY}`, space: "family" },
     { kind: "adult", me: account, learnerId: "wren" },
     {
-      org: {
-        id: FAMILY,
-        kind: "family",
-        name: "Pell family",
-        parentId: null,
-        timezone: "UTC",
-        roles: [],
-        can: [],
-      },
-      year: { past: false },
+      family: {
+        familyId: FAMILY,
+        displayName: "Pell family",
+        role: "holder",
+        teachingPlace: null,
+        capabilities: {},
+        children: [child("pip", "Pip"), child("wren", "Wren")],
+        today: { date: "2026-11-14", tasks: [], week: {} },
+      } as never,
     },
   );
   render(<DrawerContents close={() => {}} space={space} />);
   // No child picker: the children are rows, each opening their page.
   expect(sections()).toEqual(["AMP navigation", "Your places", "Account"]);
-  // An old class address: the family's Today by its landing alias (the
-  // family's own screens list the children as rows).
-  expect(links()).toEqual(["Today"]);
-  expect(screen.getByRole("link", { name: "Today" }).getAttribute("href")).toBe(
-    "/family",
-  );
+  expect(links()).toEqual(["Today", "Pip", "Wren"]);
+  expect(
+    screen.getByRole("link", { name: "Wren" }).getAttribute("href"),
+  ).toBe(`/family/${FAMILY}/kids/wren`);
   expect(screen.queryByRole("option", { name: "Pip" })).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe("home");
   // One account for every space; the family's settings are its own tab.

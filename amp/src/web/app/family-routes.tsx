@@ -14,6 +14,7 @@ import {
 } from "../features/family/api";
 import { familyPath, landingFamily } from "../features/family/redirects";
 import { staffScreen } from "./school-routes";
+import { groupAddress } from "./family-redirect";
 
 /*
  * A family's own screens (docs/architecture/spaces.md, P2): `/family/<family>`
@@ -89,17 +90,16 @@ export function familyRoutes(root: AnyRoute) {
         .catch(() => null);
       const own = places?.families.find((entry) => entry.familyId === family);
       // A tutor whose class holds only other families' children: their
-      // tutoring group, never an empty family.
+      // tutoring group's classroom, never an empty family.
       if (
         own?.role === "holder" &&
         own.teachingPlace &&
         me?.signedIn &&
         me.learners.length === 0
-      )
-        throw redirect({
-          to: familyPath(own.familyId, "group"),
-          replace: true,
-        } as never);
+      ) {
+        const group = await groupAddress(session, own.familyId);
+        if (group) throw redirect({ href: group, replace: true });
+      }
       if (family)
         throw redirect({
           to: familyPath(family),
@@ -161,7 +161,20 @@ export function familyRoutes(root: AnyRoute) {
       leaf("people", "FamilyPeopleScreen"),
       leaf("settings", "FamilySettingsScreen"),
       leaf("cards", "FamilyCardsScreen"),
-      leaf("group", "TutoringGroupScreen"),
+      // The tutoring group is its class's classroom: this address opens it.
+      createRoute({
+        getParentRoute: () => family,
+        path: "group",
+        beforeLoad: async ({ context, params }) => {
+          const { session } = context as unknown as { session: AuthSession };
+          const group = await groupAddress(
+            session,
+            (params as { family: string }).family,
+          );
+          if (group) throw redirect({ href: group, replace: true });
+        },
+        component: screen("TutoringGroupScreen"),
+      }),
       leaf("$", "FamilyMissingScreen"),
     ]),
   ];

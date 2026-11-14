@@ -2,9 +2,10 @@ import { useId, type ReactNode } from "react";
 import styles from "./Switch.module.css";
 
 /**
- * An on/off setting that takes effect at once: a designed switch beside its
- * label, the whole row a 44 px target. For a choice that waits for a Save,
- * use a checkbox.
+ * An on/off setting that takes effect at once: the whole row is the switch
+ * (at least 44 px tall and as wide as its column), its label on the left and
+ * a designed track on the right. For a choice that waits for a Save, use a
+ * checkbox.
  */
 export function Switch({
   checked,
@@ -22,27 +23,28 @@ export function Switch({
 }) {
   const id = useId();
   return (
-    <div className={styles.row}>
-      <span className={styles.text}>
-        <span id={`${id}-label`}>{label}</span>
-        {detail && (
-          <small id={`${id}-detail`} className={styles.detail}>
-            {detail}
-          </small>
-        )}
+    <button
+      type="button"
+      role="switch"
+      className={styles.row}
+      aria-checked={checked}
+      aria-label={label}
+      aria-describedby={detail ? `${id}-detail` : undefined}
+      disabled={disabled}
+      onClick={() => onChange(!checked)}
+    >
+      <span className={styles.text} aria-hidden="true">
+        <span>{label}</span>
+        {detail && <small className={styles.detail}>{detail}</small>}
       </span>
-      <button
-        type="button"
-        role="switch"
-        className={styles.switch}
-        aria-checked={checked}
-        aria-labelledby={`${id}-label`}
-        aria-describedby={detail ? `${id}-detail` : undefined}
-        disabled={disabled}
-        onClick={() => onChange(!checked)}
-      >
-        <span className={styles.thumb} aria-hidden="true" />
-      </button>
-    </div>
+      {detail && (
+        <span id={`${id}-detail`} className={styles.hidden}>
+          {detail}
+        </span>
+      )}
+      <span className={styles.track} aria-hidden="true">
+        <span className={styles.thumb} />
+      </span>
+    </button>
   );
 }

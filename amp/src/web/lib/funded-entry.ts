@@ -1,3 +1,4 @@
+import { setupSteps } from "../features/school/paths";
 import { appReturn } from "../features/spaces/returns";
 import { returnTarget } from "./return-to";
 import {
@@ -81,13 +82,36 @@ export type FundedSearch = CampaignSearch & {
   next?: string;
 };
 /** A school's own setup steps, which a sign-in must come back to (an
- * invitation's `/school/new?org=…`): never another site, no `..`. */
-const schoolStep = (value: unknown) =>
-  typeof value === "string" &&
-  value.length <= 300 &&
-  /^\/school\/(new|start|connect|adopt)(\?[\w=&%-]*)?$/.test(value)
-    ? value
-    : undefined;
+ * invitation's `/school/new?org=…`). Only each step's own fields, each
+ * validated: an org or district id, a setup step, `manage=1`. Nothing else
+ * in the query, and never a fragment. */
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const SETUP_STEPS: readonly string[] = setupSteps;
+const schoolStep = (value: unknown) => {
+  if (typeof value !== "string" || value.length > 2048) return undefined;
+  let url: URL;
+  try {
+    url = new URL(value, "https://amp.invalid");
+  } catch {
+    return undefined;
+  }
+  if (url.origin !== "https://amp.invalid") return undefined;
+  const step = /^\/school\/(new|start|connect|adopt)$/.exec(url.pathname)?.[1];
+  if (!step || !value.startsWith("/school/")) return undefined;
+  const kept = new URLSearchParams();
+  const org = url.searchParams.get("org");
+  if ((step === "new" || step === "start") && org && UUID.test(org))
+    kept.set("org", org);
+  const at = url.searchParams.get("step");
+  if (step === "new" && at && SETUP_STEPS.includes(at)) kept.set("step", at);
+  const district = url.searchParams.get("district");
+  if (step === "adopt" && district && UUID.test(district))
+    kept.set("district", district);
+  if (step === "adopt" && url.searchParams.get("manage") === "1")
+    kept.set("manage", "1");
+  const query = kept.toString();
+  return query ? `${url.pathname}?${query}` : url.pathname;
+};
 /** Where a sign-in continues: any place, by the one return contract
  * (`appReturn`), or a school's own setup step. */
 export const safeSchoolPath = (value: unknown) =>

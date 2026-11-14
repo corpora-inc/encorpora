@@ -6,6 +6,8 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { LayerHost } from "../../nav/LayerHost";
+import { workParts, type Entity } from "../../nav/entities";
+import { peopleOf } from "./redirects";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
@@ -83,7 +85,12 @@ export function FamilyFrame({
       {body}
       {/* Details opened over the page (?open=): it stays, they stack. A
           family with its own class opens a child's answers too. */}
-      {data && <LayerHost org={place.own?.org} />}
+      {data && (
+        <LayerHost
+          org={place.own?.org}
+          allow={(entity) => ownLayer(place, entity)}
+        />
+      )}
     </main>
   );
   if (!data && (query.isPending || !place.signedIn))
@@ -126,3 +133,17 @@ export function FamilyFrame({
 /** A family screen's address, for links: `/family/<family>/<leaf>`. */
 export const familyHref = (family: string, leaf = "") =>
   leaf ? `family/${family}/${leaf}` : `family/${family}`;
+
+/**
+ * Whether a layer over a family screen is the family's own (R2): a skill or
+ * a lesson always; a child's record or answer only for one of the family's
+ * own children, by their person in its own class. Another family's child
+ * in a shared class is never opened here, whatever the address says.
+ */
+export function ownLayer(place: FamilyPlace, entity: Entity): boolean {
+  if (entity.kind !== "student" && entity.kind !== "work") return true;
+  if (!place.own || !place.data) return false;
+  const person =
+    entity.kind === "student" ? entity.id : workParts(entity.id).student;
+  return peopleOf(place.data.children, place.own.id).has(person);
+}
