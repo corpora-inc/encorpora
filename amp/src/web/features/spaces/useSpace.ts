@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useRouterState } from "@tanstack/react-router";
 import { useMemo, useRef } from "react";
 import { useLearnerStore } from "../../learner-store";
+import { AppError } from "../../lib/AppError";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { classesOptions, orgOptions } from "../school/api";
 import { classYearOptions } from "../school/org/org-api";
@@ -85,11 +86,60 @@ export function useLocationMatch(): SpaceMatch {
  * of them changes (a sign-out, an ended role, a refetch): it is a render
  * snapshot, never a cached grant.
  */
+/**
+ * When this account's current session began, by account: a sign-in again
+ * as the same account (a new token) starts a new generation, and every
+ * answer from before it is quarantined until it is asked again. The first
+ * session a tab sees keeps what it already has.
+ */
+const generations = new Map<string, { token: string; since: number }>();
+export function sessionGeneration(
+  session: { accountId: string; token: string } | null,
+  now = Date.now(),
+) {
+  if (!session) return 0;
+  const known = generations.get(session.accountId);
+  if (!known) {
+    generations.set(session.accountId, { token: session.token, since: 0 });
+    return 0;
+  }
+  if (known.token !== session.token)
+    generations.set(session.accountId, { token: session.token, since: now });
+  return generations.get(session.accountId)!.since;
+}
+
+/** An answer the server refused: the place is gone for this person (a
+ * revoked role, a removed class), unlike a passing network failure. */
+const refused = (error: unknown) =>
+  error instanceof AppError &&
+  (error.status === 401 || error.status === 403 || error.status === 404);
+
+type Answer<T> = {
+  data: T | undefined;
+  error: unknown;
+  isError: boolean;
+  dataUpdatedAt: number;
+};
+/** A resource as the resolver reads it: undefined until answered in this
+ * session's generation, null once refused or failed. */
+function current<T>(query: Answer<T>, since: number): T | null | undefined {
+  if (query.isError) return null;
+  return query.dataUpdatedAt >= since ? query.data : undefined;
+}
+
 export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
   const session = useQuery(sessionOptions).data ?? null;
+  const since = sessionGeneration(session);
   const auth = session ?? { accountId: "", token: "" };
   const student = !!session?.accountId.startsWith("school:");
-  const me = useQuery({ ...meOptions(auth), enabled: !!session }).data;
+  const meQuery = useQuery({ ...meOptions(auth), enabled: !!session });
+  // A refused `/me` means no relationships; a passing failure keeps the
+  // last answer from this session.
+  const me = refused(meQuery.error)
+    ? undefined
+    : meQuery.dataUpdatedAt >= since
+      ? meQuery.data
+      : undefined;
   const account =
     me?.signedIn && me.account.id === session?.accountId ? me : null;
   const learnerId = useLearnerStore((state) => state.learnerId);
@@ -120,10 +170,11 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     enabled: !!classId,
     refetchOnMount: false,
   });
+  const orgNow = current(org, since);
   // Only a real school's class has practice to start.
   const pilot = useQuery({
     ...pilotOptions(auth, classId),
-    enabled: !!classId && org.data?.kind === "school" && org.data.demo !== true,
+    enabled: !!classId && orgNow?.kind === "school" && orgNow.demo !== true,
     refetchOnMount: false,
   });
   if (!match) return null;
@@ -133,9 +184,10 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
       ? { kind: "student", me: account }
       : { kind: "adult", me: account, learnerId };
   return resolveSpace(match, spaceSession, {
-    org: org.isError ? null : org.data,
-    classes: classes.data ?? null,
-    year: year.isError ? null : year.data,
-    covered: pilot.data?.coverage?.covered ?? 0,
+    org: orgNow,
+    classes: current(classes, since) ?? null,
+    year: current(year, since),
+    // Practice that can't be confirmed running offers nothing to start.
+    covered: current(pilot, since)?.coverage?.covered ?? 0,
   });
 }
