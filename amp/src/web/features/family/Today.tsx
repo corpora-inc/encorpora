@@ -319,7 +319,11 @@ export function FamilyTodayScreen() {
               </h2>
               <ul className={styles.kids} data-family-kids="">
                 {children.map((child) => (
-                  <li key={child.id} className={styles.kid} data-child={child.id}>
+                  <li
+                    key={child.id}
+                    className={styles.kid}
+                    data-child={child.id}
+                  >
                     <Link
                       to="/$"
                       params={{
@@ -362,7 +366,11 @@ export function FamilyTodayScreen() {
                     )}
                     {(practiceSelf || startSelf) && (
                       <RowButton
-                        title={practiceSelf ? "Practice yourself" : "Start your own practice"}
+                        title={
+                          practiceSelf
+                            ? "Practice yourself"
+                            : "Start your own practice"
+                        }
                         meta={
                           practiceSelf
                             ? "Your own levels, in My practice"

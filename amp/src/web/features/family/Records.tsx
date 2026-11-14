@@ -80,7 +80,7 @@ function useFamilyHost(place: FamilyPlace): ClassHost | null {
   );
   if (!own) return null;
   return {
-    place: { org: family, class: own.id },
+    place: { org: own.org, class: own.id },
     Frame: FamilyClassFrame,
     href: (leaf) => {
       const mapped = FAMILY_LEAF[leaf];

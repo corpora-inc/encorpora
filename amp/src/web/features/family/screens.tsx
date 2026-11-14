@@ -44,7 +44,10 @@ export function FamilyChooserScreen() {
       {places.isPending ? (
         <LoadingScreen overlay />
       ) : places.isError ? (
-        <LoadFailed what="Your families" onRetry={() => void places.refetch()} />
+        <LoadFailed
+          what="Your families"
+          onRetry={() => void places.refetch()}
+        />
       ) : (
         <div style={{ display: "grid", gap: "var(--space-5)" }}>
           <h1>Your families</h1>
@@ -52,7 +55,10 @@ export function FamilyChooserScreen() {
             <EmptyState
               title="No family yet"
               action={
-                <Link to={"/start/parent" as never} className={buttonClass("primary")}>
+                <Link
+                  to={"/start/parent" as never}
+                  className={buttonClass("primary")}
+                >
                   Add your kids
                 </Link>
               }
@@ -63,7 +69,9 @@ export function FamilyChooserScreen() {
                 <RowLink
                   key={family.familyId}
                   title={family.displayName}
-                  meta={family.role === "holder" ? "Your family" : "Second parent"}
+                  meta={
+                    family.role === "holder" ? "Your family" : "Second parent"
+                  }
                   to={familyHref(family.familyId)}
                   data-family={family.familyId}
                 />

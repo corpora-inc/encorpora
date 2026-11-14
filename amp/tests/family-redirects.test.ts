@@ -227,8 +227,16 @@ test("only a parent of that family is redirected; a co-teacher keeps the class",
   const teacher = {
     staffOf: [{ orgId: F, orgName: "x", role: "teacher" }],
   } as unknown as SignedInMe;
-  assert.deepEqual(parentFamilyAt(holder, F), { family: F, classId: C });
-  assert.deepEqual(parentFamilyAt(second, F), { family: F, classId: C });
+  assert.deepEqual(parentFamilyAt(holder, F), {
+    org: F,
+    classId: C,
+    holder: true,
+  });
+  assert.deepEqual(parentFamilyAt(second, F), {
+    org: F,
+    classId: C,
+    holder: false,
+  });
   assert.equal(parentFamilyAt(teacher, F), null);
   assert.equal(parentFamilyAt(null, F), null);
 });

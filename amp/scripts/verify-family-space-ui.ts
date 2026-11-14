@@ -116,7 +116,12 @@ async function shiftSince(page: Page, mark: number, where: string) {
 }
 
 async function shoot(page: Page, name: string) {
-  await page.screenshot({ path: join(shots, `${name}.png`), fullPage: true });
+  await page.screenshot({
+    path: join(shots, `${name}.png`),
+    fullPage: true,
+    // A loaded machine renders a long page slowly; the check is the page.
+    timeout: 120_000,
+  });
 }
 
 async function visit(

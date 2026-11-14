@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams, useRouterState } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useRouterState,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
@@ -27,7 +32,13 @@ import {
 import { useHandOver } from "../school/classes/today/use-hand-over";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet } from "./Devices";
-import { childOf, FamilyFrame, familyHref, useFamilyPlace, type FamilyPlace } from "./FamilyFrame";
+import {
+  childOf,
+  FamilyFrame,
+  familyHref,
+  useFamilyPlace,
+  type FamilyPlace,
+} from "./FamilyFrame";
 import { AccessFact, ChildAction, WeekFactsOf } from "./Today";
 import styles from "./Family.module.css";
 
@@ -159,7 +170,10 @@ export function ChildScreen() {
           </section>
           {record ? (
             <div className={styles.record}>
-              <section aria-labelledby="child-levels" className={styles.section}>
+              <section
+                aria-labelledby="child-levels"
+                className={styles.section}
+              >
                 <h2 id="child-levels">Where {child.name} is</h2>
                 <RecordLevels
                   record={record}
@@ -170,7 +184,10 @@ export function ChildScreen() {
                 <h2 id="child-weeks">Time, by week</h2>
                 <RecordWeeks record={record} />
               </section>
-              <section aria-labelledby="child-skills" className={styles.section}>
+              <section
+                aria-labelledby="child-skills"
+                className={styles.section}
+              >
                 <h2 id="child-skills">Skills earned</h2>
                 <RecordObjectives record={record} openSkills />
               </section>
@@ -191,7 +208,10 @@ export function ChildScreen() {
                   record={record}
                   workPath={
                     person
-                      ? (attempt) => ({ kind: "work", id: `${person}.${attempt}` })
+                      ? (attempt) => ({
+                          kind: "work",
+                          id: `${person}.${attempt}`,
+                        })
                       : undefined
                   }
                 />
@@ -201,7 +221,10 @@ export function ChildScreen() {
             <EmptyState
               title={`${child.name}’s record didn’t load`}
               action={
-                <Button variant="primary" onClick={() => void progress.refetch()}>
+                <Button
+                  variant="primary"
+                  onClick={() => void progress.refetch()}
+                >
                   Try again
                 </Button>
               }
@@ -335,7 +358,11 @@ function ChildSettings({
                   disabled={busy}
                 />
                 <div className={styles.formActions}>
-                  <Button variant="primary" disabled={busy} aria-busy={busy || undefined}>
+                  <Button
+                    variant="primary"
+                    disabled={busy}
+                    aria-busy={busy || undefined}
+                  >
                     Save name
                   </Button>
                   <Button
@@ -431,8 +458,10 @@ function ChildSettings({
           </div>
         )}
       </dl>
-      <Toast message={notice || error} onDismiss={() => (setNotice(""), setError(""))} />
+      <Toast
+        message={notice || error}
+        onDismiss={() => (setNotice(""), setError(""))}
+      />
     </section>
   );
 }
-

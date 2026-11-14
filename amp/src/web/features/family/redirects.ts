@@ -28,11 +28,11 @@ export const familyPath = (family: string, leaf = "") =>
 export function parentFamilyAt(
   me: SignedInMe | null | undefined,
   org: string,
-): { family: string; classId: string } | null {
+): { org: string; classId: string; holder: boolean } | null {
   if (me?.familyClass?.orgId === org)
-    return { family: org, classId: me.familyClass.classId };
+    return { org, classId: me.familyClass.classId, holder: true };
   const shared = me?.secondParentOf?.find((entry) => entry.orgId === org);
-  return shared ? { family: org, classId: shared.classId } : null;
+  return shared ? { org, classId: shared.classId, holder: false } : null;
 }
 
 /** A child of the family, by the roster person that names them in its

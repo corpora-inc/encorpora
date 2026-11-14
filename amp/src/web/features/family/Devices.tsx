@@ -17,7 +17,10 @@ import { peopleOf } from "./redirects";
 import { familyHref, type FamilyPlace } from "./FamilyFrame";
 import styles from "./Family.module.css";
 
-const DAY = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+const DAY = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
 
 type Pending = { kind: "reset" | "revoke"; person: string; name: string };
 
@@ -40,8 +43,12 @@ export function DevicesSheet({
   onOpenChange: (open: boolean) => void;
 }) {
   const { session, family, data } = place;
-  const where = { org: family, class: classId };
-  const presence = useQuery({ ...presenceOptions(session, where), enabled: open });
+  // The class's own org: a family's id need not be it.
+  const where = { org: place.own?.org ?? family, class: classId };
+  const presence = useQuery({
+    ...presenceOptions(session, where),
+    enabled: open,
+  });
   const roster = useQuery({ ...rosterOptions(session, where), enabled: open });
   const reset = useResetPictures(session, where);
   const revoke = useRevokeSessions(session, where);
@@ -51,7 +58,9 @@ export function DevicesSheet({
   const [error, setError] = useState("");
   // The family's own children, by the person each is in its class.
   const people = peopleOf(data?.children ?? [], classId);
-  const rows = (roster.data?.students ?? []).filter((row) => people.has(row.id));
+  const rows = (roster.data?.students ?? []).filter((row) =>
+    people.has(row.id),
+  );
   const code = presence.data?.class.joinCode ?? null;
   const manage = presence.data?.canManage ?? false;
   const confirm = async () => {
@@ -93,7 +102,10 @@ export function DevicesSheet({
                 manage={manage}
                 locked={!!presence.data?.class.joinLockedUntil}
               />
-              <section aria-labelledby="devices-cards" className={styles.section}>
+              <section
+                aria-labelledby="devices-cards"
+                className={styles.section}
+              >
                 <div className={styles.sectionHead}>
                   <h3 id="devices-cards">Sign-in cards</h3>
                   <Link
@@ -118,7 +130,9 @@ export function DevicesSheet({
                             row.cardIssuedAt
                               ? `Card printed ${DAY.format(new Date(row.cardIssuedAt))}`
                               : "No card",
-                            row.picturesSet ? "Pictures set" : "No pictures yet",
+                            row.picturesSet
+                              ? "Pictures set"
+                              : "No pictures yet",
                           ].join(" · ")}
                         </small>
                       </span>
@@ -133,7 +147,9 @@ export function DevicesSheet({
                               })
                             }
                           >
-                            {row.cardIssuedAt ? "Print a new card" : "Print a card"}
+                            {row.cardIssuedAt
+                              ? "Print a new card"
+                              : "Print a card"}
                           </MenuItem>
                           {row.picturesSet && (
                             <MenuItem
@@ -193,14 +209,19 @@ export function DevicesSheet({
             aria-busy={reset.isPending || revoke.isPending || undefined}
             onClick={() => void confirm()}
           >
-            {pending?.kind === "reset" ? "Give new pictures" : "Sign out everywhere"}
+            {pending?.kind === "reset"
+              ? "Give new pictures"
+              : "Sign out everywhere"}
           </Button>
           <Button variant="quiet" onClick={() => setPending(null)}>
             Cancel
           </Button>
         </div>
       </Dialog>
-      <Toast message={status || error} onDismiss={() => (setStatus(""), setError(""))} />
+      <Toast
+        message={status || error}
+        onDismiss={() => (setStatus(""), setError(""))}
+      />
     </>
   );
 }

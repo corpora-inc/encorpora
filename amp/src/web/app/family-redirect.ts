@@ -1,13 +1,43 @@
 import { redirect } from "@tanstack/react-router";
 import type { AuthSession } from "../auth";
 import { meOptions, queryClient } from "../lib/query";
-import { familyOptions } from "../features/family/api";
+import type { SignedInMe } from "../../account/contracts";
+import { familyOptions, familyPlacesOptions } from "../features/family/api";
+import { ownClassOf } from "../features/spaces/resolve";
 import {
   familyClassTarget,
   familyOrgTarget,
   parentFamilyAt,
   peopleOf,
 } from "../features/family/redirects";
+
+/**
+ * The family a parent's class belongs to. A family's id is an opaque key that
+ * need not be its class's org (docs/architecture/family-api.md): it is the
+ * family whose own class, by its projection, is this one, among the families
+ * this account is that kind of parent of. Null when none is (a refused or
+ * failed read): the old address then stays as it was.
+ */
+async function familyOfClass(
+  session: AuthSession,
+  me: SignedInMe,
+  parent: { classId: string; holder: boolean },
+): Promise<string | null> {
+  const places = await queryClient
+    .ensureQueryData(familyPlacesOptions(session))
+    .catch(() => null);
+  const candidates = (places?.families ?? []).filter((entry) =>
+    parent.holder ? entry.role === "holder" : entry.role === "second-parent",
+  );
+  for (const entry of candidates) {
+    const projection = await queryClient
+      .ensureQueryData(familyOptions(session, entry.familyId))
+      .catch(() => null);
+    if (ownClassOf(me, entry.familyId, projection)?.id === parent.classId)
+      return entry.familyId;
+  }
+  return null;
+}
 
 type Located = {
   location: {
@@ -33,15 +63,18 @@ export async function toFamilyAddress(
   const me = await queryClient
     .ensureQueryData(meOptions(session))
     .catch(() => null);
-  const parent = parentFamilyAt(me?.signedIn ? me : null, org);
-  if (!parent || parent.classId !== classId) return;
+  const account = me?.signedIn ? me : null;
+  const parent = parentFamilyAt(account, org);
+  if (!account || !parent || parent.classId !== classId) return;
+  const family = await familyOfClass(session, account, parent);
+  if (!family) return;
   const projection = await queryClient
-    .ensureQueryData(familyOptions(session, parent.family))
+    .ensureQueryData(familyOptions(session, family))
     .catch(() => null);
   // A tutor's class with no children of their own: the tutoring group.
   if (projection && !projection.children.length && projection.teachingPlace)
     throw redirect({
-      to: `/family/${parent.family}/group`,
+      to: `/family/${family}/group`,
       search: (location.search ?? {}) as never,
       replace: true,
     } as never);
@@ -51,7 +84,7 @@ export async function toFamilyAddress(
     .split("/")
     .filter(Boolean);
   const target = familyClassTarget({
-    family: parent.family,
+    family,
     parts,
     search: (location.search ?? {}) as Record<string, unknown>,
     hash: location.hash || undefined,
@@ -71,10 +104,14 @@ export async function toFamilyPage(
   const me = await queryClient
     .ensureQueryData(meOptions(session))
     .catch(() => null);
-  if (!parentFamilyAt(me?.signedIn ? me : null, org)) return;
+  const account = me?.signedIn ? me : null;
+  const parent = parentFamilyAt(account, org);
+  if (!account || !parent) return;
+  const family = await familyOfClass(session, account, parent);
+  if (!family) return;
   throw redirect({
     ...familyOrgTarget({
-      family: org,
+      family,
       page,
       search: (location.search ?? {}) as Record<string, unknown>,
       hash: location.hash || undefined,
@@ -82,7 +119,6 @@ export async function toFamilyPage(
     replace: true,
   } as never);
 }
-
 
 /** A family child's older school-level address
  * (`/school/<family>/students/<person>[/work/<attempt>]`): the child's own
@@ -97,14 +133,17 @@ export async function toFamilyChild(
   const me = await queryClient
     .ensureQueryData(meOptions(session))
     .catch(() => null);
-  const parent = parentFamilyAt(me?.signedIn ? me : null, org);
-  if (!parent) return;
+  const account = me?.signedIn ? me : null;
+  const parent = parentFamilyAt(account, org);
+  if (!account || !parent) return;
+  const family = await familyOfClass(session, account, parent);
+  if (!family) return;
   const projection = await queryClient
-    .ensureQueryData(familyOptions(session, parent.family))
+    .ensureQueryData(familyOptions(session, family))
     .catch(() => null);
   throw redirect({
     ...familyClassTarget({
-      family: parent.family,
+      family,
       parts: attempt ? ["map", person, "work", attempt] : ["map", person],
       search: (location.search ?? {}) as Record<string, unknown>,
       hash: location.hash || undefined,

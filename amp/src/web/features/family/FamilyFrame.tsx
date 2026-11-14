@@ -39,7 +39,7 @@ export function useFamilyPlace() {
     data,
     me: account,
     /** The family's own class: its code, cards, grades and workbook stack. */
-    own: ownClassOf(account, family),
+    own: ownClassOf(account, family, data),
     words: spaceWords("family"),
     holder: data?.role === "holder",
   };
@@ -83,7 +83,7 @@ export function FamilyFrame({
       {body}
       {/* Details opened over the page (?open=): it stays, they stack. A
           family with its own class opens a child's answers too. */}
-      {data && <LayerHost org={place.own ? place.family : undefined} />}
+      {data && <LayerHost org={place.own?.org} />}
     </main>
   );
   if (!data && (query.isPending || !place.signedIn))

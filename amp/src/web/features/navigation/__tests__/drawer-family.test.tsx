@@ -70,12 +70,11 @@ test("Family: its own children and destinations, then the switcher, then the acc
   render(<DrawerContents close={() => {}} space={space} />);
   // No child picker: the children are rows, each opening their page.
   expect(sections()).toEqual(["AMP navigation", "Your places", "Account"]);
-  expect(links()).toEqual(["Today", "Pip", "Wren"]);
-  expect(
-    screen.getByRole("link", { name: "Wren" }).getAttribute("href"),
-  ).toBe(`/family/${FAMILY}/kids/wren`);
+  // An old class address: the family's Today by its landing alias (the
+  // family's own screens list the children as rows).
+  expect(links()).toEqual(["Today"]);
   expect(screen.getByRole("link", { name: "Today" }).getAttribute("href")).toBe(
-    `/family/${FAMILY}`,
+    "/family",
   );
   expect(screen.queryByRole("option", { name: "Pip" })).toBeNull();
   expect(screen.getByTestId("switcher").dataset.current).toBe("home");

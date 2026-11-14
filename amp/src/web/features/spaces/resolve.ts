@@ -704,7 +704,8 @@ function familySpace(
     status === "unavailable" || !orgId
       ? null
       : relation === "holder" || relation === "second-parent"
-        ? `family/${orgId}`
+        ? // A family's id need not be its org's: the landing alias opens it.
+          "family"
         : classId
           ? `school/${orgId}/classes/${classId}/today`
           : null;
@@ -761,17 +762,6 @@ function familySpace(
                     current: onClass && active === "today",
                   },
                 ]
-              : []),
-            // The family's children, each opening their page. A co-teacher's
-            // class has none of its children as theirs.
-            ...(orgId && (relation === "holder" || relation === "second-parent")
-              ? learners.map((child) => ({
-                  id: `child:${child.id}`,
-                  label: child.name,
-                  path: `family/${orgId}/kids/${child.id}`,
-                  icon: "child" as const,
-                  current: false,
-                }))
               : []),
           ],
     place: !orgId
@@ -928,17 +918,50 @@ function teachingSpace(
 
 type FamilyFrame = Extract<ShellFrame, { kind: "family" }>;
 
-/** The family's own class, when it has one: the holder's, or the one this
- * second parent shares. A family whose children are all hosted elsewhere
- * has none. */
+/**
+ * The family's own class, when it has one, with the org that holds it. A
+ * family's id is an opaque key that need not be its class's org
+ * (docs/architecture/family-api.md), so the class comes from the projection
+ * (a child's class hosted by the family, or its tutoring class) or, for an
+ * account holder before any child, their own family class; never from
+ * comparing ids. A family whose children are all hosted elsewhere has none.
+ */
 export function ownClassOf(
   me: SignedInMe | null,
   family: string,
-): { id: string; name: string } | null {
+  projection?: FamilyProjection | null,
+): { id: string; name: string; org: string } | null {
+  const data = projection?.familyId === family ? projection : null;
+  const relationClass = (classId: string) => {
+    if (me?.familyClass?.classId === classId)
+      return {
+        id: classId,
+        name: me.familyClass.className,
+        org: me.familyClass.orgId,
+      };
+    const shared = me?.secondParentOf?.find(
+      (entry) => entry.classId === classId,
+    );
+    return shared
+      ? { id: classId, name: shared.className, org: shared.orgId }
+      : null;
+  };
+  if (data) {
+    const hosted = data.children
+      .flatMap((child) => child.classes)
+      .find((entry) => entry.hostedByFamily);
+    if (hosted) return { id: hosted.id, name: hosted.name, org: hosted.orgId };
+    if (data.teachingPlace) return relationClass(data.teachingPlace.classId);
+    if (data.role === "holder" && me?.familyClass)
+      return relationClass(me.familyClass.classId);
+    return null;
+  }
+  // Before the projection answers: the relationship whose org is this id
+  // (a family made by a compatible API).
   if (me?.familyClass?.orgId === family)
-    return { id: me.familyClass.classId, name: me.familyClass.className };
+    return relationClass(me.familyClass.classId);
   const shared = me?.secondParentOf?.find((entry) => entry.orgId === family);
-  return shared ? { id: shared.classId, name: shared.className } : null;
+  return shared ? relationClass(shared.classId) : null;
 }
 
 /** The capabilities a family projection grants, by name, for one target. */
@@ -975,7 +998,7 @@ function familyPlaceSpace(
   const learner = kid
     ? (learners.find((entry) => entry.id === kid) ?? null)
     : null;
-  const own = ownClassOf(me, frame.family);
+  const own = ownClassOf(me, frame.family, data);
   const home = `family/${frame.family}`;
   const workbooks = children.length
     ? children.some((child) => child.capabilities.readWorkbooks)

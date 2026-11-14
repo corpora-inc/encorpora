@@ -363,13 +363,15 @@ export function FamilyPeopleScreen() {
 /** The family's school year: its dates, and changing them. No terms or
  * grading periods: a family's records run the whole year. */
 function SchoolYear({ place }: { place: FamilyPlace }) {
-  const { session, family } = place;
+  const { session } = place;
+  // The class's own org: a family's id need not be it.
+  const orgId = place.own?.org ?? "";
   const org = useQuery({
-    ...orgOptions(session, family),
+    ...orgOptions(session, orgId),
     enabled: !!place.own,
   });
   const calendar = useQuery({
-    ...calendarOptions(session, family),
+    ...calendarOptions(session, orgId),
     enabled: !!place.own && !!org.data?.can?.includes("calendar.read"),
   });
   const [editing, setEditing] = useState(false);
@@ -415,7 +417,7 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
       </p>
       {editing && year && (
         <EditSheet
-          orgId={family}
+          orgId={orgId}
           session={year}
           onClose={() => setEditing(false)}
         />
@@ -670,7 +672,7 @@ export function TutoringGroupScreen() {
               <ul className={`${rowStyles.children} ${people.rows}`}>
                 <CoTeacherRows
                   session={session}
-                  orgId={family}
+                  orgId={t?.class.orgId ?? family}
                   onError={setError}
                 />
               </ul>
@@ -686,7 +688,7 @@ export function TutoringGroupScreen() {
           {open?.kind === "co-teacher" && (
             <CoTeacherInviteSheet
               session={session}
-              orgId={family}
+              orgId={t?.class.orgId ?? family}
               classId={t.class.id}
               onClose={close}
             />

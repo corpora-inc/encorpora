@@ -2,7 +2,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { SignedInMe } from "../src/account/contracts.js";
 import type { FamilyProjection } from "../src/family/projection-contracts.js";
-import { canOn, resolveSpace } from "../src/web/features/spaces/resolve.js";
+import {
+  canOn,
+  ownClassOf,
+  resolveSpace,
+} from "../src/web/features/spaces/resolve.js";
 import { shellFrame } from "../src/web/features/navigation/shell-frame.js";
 import { spaceOfPath } from "../src/web/features/spaces/space.js";
 import { placeGroups } from "../src/web/features/spaces/places.js";
@@ -282,6 +286,17 @@ test("second parent of B: B's children, B's name, never A's children or A's clas
     {
       family: projection(B, "second-parent", [
         kid("kai", "Kai", {
+          classes: [
+            {
+              id: B_CLASS,
+              name: "Lund class",
+              orgId: B,
+              personId: ID(81),
+              hostedByFamily: true,
+              canOpen: true,
+            },
+          ],
+
           capabilities: caps({
             readWorkbooks: false,
             continuePurchase: false,
@@ -473,4 +488,51 @@ test("/family opens the holder's own family, else the one they belong to, else a
     null,
   );
   assert.equal(landingFamily(null), null);
+});
+
+test("a family's id need not be its class's org: the class comes from the projection", () => {
+  const ORG = ID(77);
+  const legacy = me({
+    learners: [{ id: "pip", name: "Pip" }] as SignedInMe["learners"],
+    familyClass: {
+      orgId: ORG,
+      classId: A_CLASS,
+      className: "Pell class",
+      notice: false,
+    },
+  });
+  const data = projection(A, "holder", [
+    kid("pip", "Pip", {
+      classes: [
+        {
+          id: A_CLASS,
+          name: "Pell class",
+          orgId: ORG,
+          personId: ID(80),
+          hostedByFamily: true,
+          canOpen: true,
+        },
+      ],
+    }),
+  ]);
+  assert.deepEqual(ownClassOf(legacy, A, data), {
+    id: A_CLASS,
+    name: "Pell class",
+    org: ORG,
+  });
+  // A holder before any child: their own family class.
+  assert.deepEqual(ownClassOf(legacy, A, projection(A, "holder", [])), {
+    id: A_CLASS,
+    name: "Pell class",
+    org: ORG,
+  });
+  // Never another family's class by an id that happens to match.
+  assert.equal(ownClassOf(legacy, B, projection(B, "second-parent", [])), null);
+  const space = resolveSpace(
+    { pathname: `/family/${A}`, space: "family" },
+    adult(legacy),
+    { family: data },
+  );
+  if (space.space !== "family") throw new Error(space.space);
+  assert.equal(space.class?.id, A_CLASS);
 });

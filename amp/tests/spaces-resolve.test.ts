@@ -265,11 +265,10 @@ test("holder: their family is Family, named by its org, with only their children
     space.learners.map((learner) => learner.id),
     ["pip", "wren"],
   );
-  // The family's Today at its own address, then each child as a row
-  // opening their page; never the adult's "Practice".
-  assert.deepEqual(destinations(space), ["Today", "Pip", "Wren"]);
-  assert.equal(space.destinations[0]!.path, `family/${FAMILY}`);
-  assert.equal(space.destinations[2]!.path, `family/${FAMILY}/kids/wren`);
+  // The family's Today, by the landing alias (a family's id need not be its
+  // org's); never the adult's "Practice".
+  assert.deepEqual(destinations(space), ["Today"]);
+  assert.equal(space.destinations[0]!.path, "family");
   assert.equal(space.words.learner, "child");
   assert.equal(space.words.people, "People");
 });
@@ -287,9 +286,8 @@ test("second parent: the family they belong to, its children read-only, never he
     space.learners.map((learner) => learner.id),
     ["kai"],
   );
-  // Kai practices from the family's Today ("Let Kai practice here"); his
-  // page is a row of the menu.
-  assert.deepEqual(destinations(space), ["Today", "Kai"]);
+  // Kai practices from the family's Today ("Let Kai practice here").
+  assert.deepEqual(destinations(space), ["Today"]);
 });
 
 test("family co-teacher: the family's place, none of its children as theirs", () => {
