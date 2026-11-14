@@ -379,7 +379,11 @@ export function FamilySettingsScreen() {
         <div className={styles.page} data-family-settings="">
           <header className={styles.head}>
             <ScreenTitle>Settings</ScreenTitle>
-            <p className={styles.sub}>For {familyDisplayName(data)}.</p>
+            <p className={styles.sub}>
+              {data.displayName
+                ? `For ${data.displayName}.`
+                : "For your family."}
+            </p>
           </header>
           <section className={styles.section} aria-labelledby="family-children">
             <div className={styles.sectionHead}>

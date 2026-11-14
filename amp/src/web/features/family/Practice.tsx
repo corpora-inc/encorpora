@@ -107,20 +107,26 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
         // Both groups hold their size while the settings load: nothing
         // below them moves when they arrive.
         <div className={styles.form} aria-busy={!data || undefined}>
-          <Segmented
-            label="Grade levels"
-            options={LEVELS}
-            value={levels}
-            disabled={!editable || write.isPending}
-            onChange={(value) => set("levels", value)}
-          />
-          <Segmented
-            label="Devices"
-            options={DEVICES}
-            value={devices}
-            disabled={!editable || write.isPending}
-            onChange={(value) => set("deviceMode", value)}
-          />
+          <div>
+            <h3 className={styles.label}>Grade levels</h3>
+            <Segmented
+              label="Grade levels"
+              options={LEVELS}
+              value={levels}
+              disabled={!editable || write.isPending}
+              onChange={(value) => set("levels", value)}
+            />
+          </div>
+          <div>
+            <h3 className={styles.label}>Devices</h3>
+            <Segmented
+              label="Devices"
+              options={DEVICES}
+              value={devices}
+              disabled={!editable || write.isPending}
+              onChange={(value) => set("deviceMode", value)}
+            />
+          </div>
         </div>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
