@@ -51,7 +51,8 @@ const TERM_CHOICES: ("year" | DivisionKind)[] = [
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
 
-function EditSheet({
+/** Changing one session's dates (the year, a term): a sheet of two days. */
+export function EditSheet({
   orgId,
   session: entry,
   onClose,

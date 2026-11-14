@@ -68,7 +68,7 @@ const choices: {
   {
     id: "myself",
     label: "I’m learning for myself",
-    detail: "Practice for you, at your level",
+    detail: "Practice at your level, or for someone you help",
     icon: (
       <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
     ),
@@ -76,7 +76,7 @@ const choices: {
   {
     id: "parent",
     label: "I’m a parent",
-    detail: "Your children practice, and you see their progress",
+    detail: "Your kids practice, and you see their progress",
     icon: (
       <path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM2.5 20a6.5 6.5 0 0 1 13 0M17 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM16 15.2a5 5 0 0 1 5.5 4.8" />
     ),
@@ -153,7 +153,10 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const account = me?.signedIn ? me : null;
   // Adding a place (docs/architecture/spaces.md): only what the account
   // doesn't have yet, never "I'm a parent" to a parent, and a way back.
-  const adding = !!account && placesFor(account).length > 0;
+  // A new account (`next: "start"`) is answering for the first time, even
+  // when it may already start its own practice.
+  const adding =
+    !!account && account.next !== "start" && placesFor(account).length > 0;
   const has = (id: StarterChoice) =>
     !!account &&
     (id === "myself"
@@ -161,7 +164,11 @@ function StarterScreen({ session }: { session: AuthSession }) {
       : id === "parent" || id === "tutor"
         ? hasHome(account)
         : false);
-  const shown = choices.filter((entry) => !has(entry.id));
+  // Tutoring is practice at a level in My practice (R8): its answer is no
+  // longer offered, and `/start/tutor` keeps working for links in flight.
+  const shown = choices.filter(
+    (entry) => entry.id !== "tutor" && !has(entry.id),
+  );
   return (
     <main className={styles.page} data-starter={choice ?? ""}>
       <h1 className={styles.title}>

@@ -248,6 +248,8 @@ const check = (label: string, ok: boolean, detail: unknown = "") => {
 const PASSWORD = "synthetic long fixture passphrase";
 const last: { page: Page | null } = { page: null };
 const CLASS_TODAY = /\/school\/[0-9a-f-]{36}\/classes\/[0-9a-f-]{36}\/today$/;
+/** A family's Today, at its own address (spaces P2). */
+const FAMILY_TODAY = /\/family\/[0-9a-f-]{36}$/;
 const APPROVAL_PAGE = /\/family\/approvals\/[0-9a-f-]{36}$/;
 
 async function newContext(
@@ -535,10 +537,17 @@ async function parentJourney(
   await measured(page, `${label} starter`);
   await shot(page, 1, "starter", width, theme);
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
-  // Setup, step by step: the children, how they practice, a second parent,
-  // then the first child's first problem.
+  // Setup, step by step (R11): the parent's name, their kids, then who
+  // practices first, straight into that child's first problem.
+  await page.waitForURL(/\/start\/parent\/name$/);
+  await heading(page, "Your name");
+  await page.getByLabel("First name").fill("Casey");
+  await page.getByLabel("Last name").fill("Fixture");
+  await measured(page, `${label} name`);
+  await shot(page, 1, "setup-name", width, theme);
+  await page.getByRole("button", { name: "Next" }).click();
   await page.waitForURL(/\/start\/parent$/);
-  await heading(page, "Your children");
+  await heading(page, "Add your kids");
   await page.getByRole("button", { name: "Add a child" }).click();
   for (const [child, year] of [
     ["Child 1", "2016"],
@@ -551,33 +560,21 @@ async function parentJourney(
   await page.getByLabel("Name, Child 2").fill("Sam");
   await measured(page, `${label} children`);
   await shot(page, 1, "children", width, theme);
-  // Back and forward keep the same step and what was typed.
+  // Back and forward keep the same step and what was typed; the name step
+  // stays in the list once answered.
   await page.goBack();
-  await page.waitForURL(/\/start$/);
+  await page.waitForURL(/\/start\/parent\/name$/);
+  await heading(page, "Your name");
   await page.goForward();
   await page.waitForURL(/\/start\/parent$/);
-  await heading(page, "Your children");
+  await heading(page, "Add your kids");
   check(
     `${label} the drafted children survive Back and Forward`,
     (await page.getByRole("button", { name: "Next" }).isEnabled()) === true,
   );
   await page.getByRole("button", { name: "Next" }).click();
-  await page.waitForURL(/\/start\/parent\/practice$/);
-  await heading(page, "How they practice");
-  const home = await classOf(account);
-  await page.locator(`[data-class-code="${home.join_code}"]`).waitFor();
-  await measured(page, `${label} how they practice`);
-  await shot(page, 1, "setup-practice", width, theme);
-  // A refresh keeps the step.
-  await reloaded(page);
-  await heading(page, "How they practice");
-  await page.getByRole("link", { name: "Next", exact: true }).click();
-  await page.waitForURL(/\/start\/parent\/second-parent$/);
-  await heading(page, "A second parent");
-  await measured(page, `${label} second parent`);
-  await shot(page, 1, "setup-second-parent", width, theme);
-  await page.getByRole("link", { name: "Later", exact: true }).click();
   await page.waitForURL(/\/start\/parent\/ready$/);
+  const home = await classOf(account);
   const [fox, moon] = await learnersOf(account);
   assert.ok(fox && moon, "two children");
   check(
@@ -585,14 +582,15 @@ async function parentJourney(
     fox.name === "Child 1" && moon.name === "Sam",
     [fox.name, moon.name],
   );
-  await heading(page, `${fox.name} is ready`);
+  await heading(page, "Who’s practicing first?");
+  // A refresh keeps the step.
+  await reloaded(page);
+  await heading(page, "Who’s practicing first?");
   await measured(page, `${label} ready`);
   await shot(page, 1, "setup-ready", width, theme);
 
   // The first child's first problem, right here on this device.
-  await page
-    .getByRole("button", { name: `Start ${fox.name}’s first problem` })
-    .click();
+  await page.locator(`[data-practice-here="${fox.id}"]`).click();
   await practicing(page);
   await measured(page, `${label} practice here`);
   await shot(page, 1, "practice-here", width, theme);
@@ -605,7 +603,7 @@ async function parentJourney(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   // The device comes back to the parent, on Today, with both children.
-  await page.waitForURL(CLASS_TODAY);
+  await page.waitForURL(FAMILY_TODAY);
   await todayTitle(page);
   await page.getByText("99 free problems left", { exact: true }).waitFor();
   await page

@@ -25,6 +25,8 @@
   color: var(--color-on-surface);
   font: inherit;
   text-align: start;
+  /* A row that is a link reads as the row, never as underlined text. */
+  text-decoration: none;
   cursor: pointer;
 }
 .row:hover:not(:disabled) {

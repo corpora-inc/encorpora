@@ -685,8 +685,13 @@ async function journeys(browser: Browser, engine: string) {
         await starter(page);
         await page.getByRole("link", { name: /^I’m a parent/ }).click();
         // Guided family setup (#2157) names each row and saves with Next.
+        // The parent's name first (R12), then their kids.
+        await page.waitForURL((url) => url.pathname === "/start/parent/name");
+        await page.getByLabel("First name").fill("Casey");
+        await page.getByLabel("Last name").fill("Fixture");
+        await page.getByRole("button", { name: "Next" }).click();
         await page.waitForURL((url) => url.pathname === "/start/parent");
-        await page.getByRole("heading", { name: "Your children" }).waitFor();
+        await page.getByRole("heading", { name: "Add your kids" }).waitFor();
         await page
           .getByRole("button", { name: "Birth year, Child 1", exact: true })
           .click();
