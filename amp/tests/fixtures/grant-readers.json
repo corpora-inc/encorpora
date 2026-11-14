@@ -251,8 +251,13 @@
   },
   {
     "path": "src/schools/pilot-access.ts",
-    "hash": "f26a4aff4428f65ae8594fc1e789faf49b3650ff80417e2a2003436a265c3586",
-    "reason": "Class practice gate reads student enrollment learners only, not the separate teacher adult learner."
+    "hash": "8224164e24d369231b7700b9a15455176769d689ff3316f52966bbec8015e1be",
+    "reason": "Class practice gate reads grants of the class's student enrollments only (role 'student'), never the separate teacher adult learner."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "5749362eb400c30bc9ff4b8885f945222f20709ba963c6037bc137c7244fae5d",
+    "reason": "Class practice recheck time reads grant start and end moments of the class's student enrollments only; it schedules a re-read and never authorizes adult learning."
   },
   {
     "path": "src/schools/pilots.ts",
