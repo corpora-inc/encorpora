@@ -61,7 +61,9 @@ export function MathText({
             <MathText
               text={display.lead}
               sourceText={sourceText}
-              displayLead
+              // In the whole sentence, a letter before the colon shares a
+              // formula run only with plain notation, never with $…$ TeX.
+              displayLead={!/^(?:\$|\\\()/.test(display.source)}
             />{" "}
           </>
         )}

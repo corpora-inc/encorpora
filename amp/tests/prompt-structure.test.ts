@@ -346,3 +346,22 @@ test("a variable in a display's introduction is typeset on the web as in print",
     );
   }
 });
+
+test("a label letter before explicit TeX stays prose, as in the whole sentence", () => {
+  for (const text of [
+    "Plan A: $y=4x+10$. Plan B: $y=6x+4$.",
+    "B must happen given A: $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$.",
+  ]) {
+    const element = new JSDOM(
+      renderToStaticMarkup(React.createElement(MathText, { text })),
+    ).window.document.body;
+    element.querySelector(".math-display")!.remove();
+    element.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+    assert.match(element.textContent!, /[AB]:\s*$/, text);
+    assert.equal(
+      element.querySelectorAll(".katex").length,
+      text.startsWith("Plan") ? 1 : 0,
+      text,
+    );
+  }
+});
