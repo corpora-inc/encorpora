@@ -1,3 +1,4 @@
+import { accountProfile } from "./profile.js";
 import { followDemo } from "../schools/demo/shared.js";
 import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
@@ -206,6 +207,7 @@ export async function accountSummary(
     signedIn: true as const,
     account: {
       id: accountId,
+      ...(await accountProfile(pool, accountId)),
       email,
       emailVerified,
       confirmationRequired:

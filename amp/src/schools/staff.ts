@@ -1,3 +1,4 @@
+import { adultNameSql, accountProfile } from "../account/profile.js";
 import { visibleToSql } from "./demo/sql.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
@@ -136,10 +137,7 @@ export async function inviteStaffIn(
       [
         personId,
         tenantId,
-        (input.givenName ?? input.email?.split("@")[0] ?? "Staff").slice(
-          0,
-          100,
-        ),
+        (input.givenName ?? "Staff").slice(0, 100),
         input.familyName ?? null,
         generateHandle(),
         input.email ?? null,
@@ -272,7 +270,7 @@ export async function listStaff(
 ): Promise<StaffResource[]> {
   const rows = (
     await repo.pool.query(
-      `SELECT p.id,concat_ws(' ',p.given_name,p.family_name) AS name,p.email,p.account_id,
+      `SELECT p.id,${adultNameSql()} AS name,p.email,p.account_id,
          array_agg(DISTINCT r.role) AS roles,
          ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
            WHERE e.person_id=p.id AND e.role<>'student' AND c.archived_at IS NULL AND ${activeToday("e", "eo")}) AS "classIds",
@@ -299,7 +297,8 @@ export async function listStaff(
       hash(token!) === row.invite.lookup_hash;
     return {
       id: row.id,
-      name: row.name,
+      name: row.name ?? "",
+      adultName: row.name,
       email: row.email,
       roles: row.roles,
       classIds: row.classIds,
@@ -496,6 +495,7 @@ export async function lookupInvite(
   const row = (
     await repo.pool.query(
       `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending,
+         (SELECT ${adultNameSql("sender")} FROM amp_school_events ev JOIN amp_people sender ON sender.id=ev.actor_person_id WHERE ev.target_id=p.id::text AND ev.action='staff.invited' ORDER BY ev.at DESC LIMIT 1) AS inviter_name,
          (SELECT k.name FROM amp_families f JOIN amp_classes k ON k.id=f.class_id
            WHERE f.second_parent=p.id) AS family_class
        FROM amp_person_credentials c JOIN amp_people p ON p.id=c.person_id
@@ -516,6 +516,7 @@ export async function lookupInvite(
         ? "expired"
         : "open",
     orgName: row.name,
+    inviterName: row.inviter_name ?? null,
     role: row.role,
     email: row.email,
     setup: row.role === "admin" && row.setup_pending === true,
@@ -595,7 +596,9 @@ export async function acceptInvite(
       await moveStaffRecords(client, person.id, already.id);
       personId = already.id;
     } else {
-      const words = input.name?.trim().split(/\s+/);
+      const named =
+        input.name ?? (await accountProfile(client, accountId)).displayName;
+      const words = named?.trim().split(/\s+/);
       await client.query(
         `UPDATE amp_people SET account_id=$2,given_name=COALESCE($3,given_name),family_name=CASE WHEN $3::text IS NULL THEN family_name ELSE $4 END WHERE id=$1`,
         [

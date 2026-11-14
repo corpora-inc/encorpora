@@ -1,3 +1,4 @@
+import { adultNameSql } from "../account/profile.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { childNameSchema } from "../learning/nickname.js";
 import type { Pool, PoolClient } from "pg";
@@ -489,14 +490,22 @@ export async function removeApproval(
 /** Who teaches the class, by the names the class shows. */
 async function teachers(db: Database, classId: string) {
   return (
-    await db.query<{ name: string }>(
-      `SELECT concat_ws(' ',p.given_name,p.family_name) AS name FROM amp_enrollments e
+    await db.query<{ name: string | null }>(
+      `SELECT ${adultNameSql()} AS name FROM amp_enrollments e
        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
        WHERE e.class_id=$1 AND e.role='teacher' AND e.end_on IS NULL
        ORDER BY e.created_at,p.id LIMIT 4`,
       [classId],
     )
   ).rows.map((row) => row.name);
+}
+
+async function teacherNames(db: Database, classId: string) {
+  const names = await teachers(db, classId);
+  return {
+    teacherNames: names,
+    teachers: names.filter((name): name is string => name !== null),
+  };
 }
 
 /** What the link's holder sees before signing in: the child, the class and
@@ -531,7 +540,7 @@ export async function lookupApproval(pool: Pool, raw: unknown) {
     status,
     childName: status === "open" ? row.child_name : null,
     className: row.class_name,
-    teachers: await teachers(pool, row.class_id),
+    ...(await teacherNames(pool, row.class_id)),
   };
 }
 
@@ -672,7 +681,7 @@ export async function readApproval(
       status,
       childName: here ? row.given_name : (row.child_name ?? null),
       className: row.class_name,
-      teachers: await teachers(client, row.class_id),
+      ...(await teacherNames(client, row.class_id)),
       consentActive,
       canPractice:
         consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),

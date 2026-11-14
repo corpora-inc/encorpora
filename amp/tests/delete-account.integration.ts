@@ -263,6 +263,10 @@ test(
     const email = `fern-${randomUUID().slice(0, 8)}@example.test`;
     const holder = await signUp(email, "Fern Fixture");
     assert.equal(holder.me.next, "start");
+    await db.query(
+      "INSERT INTO amp_account_profiles(account_id,given_name,family_name) VALUES($1,'Fern','Fixture')",
+      [holder.account],
+    );
     await ok(
       api("POST", "/start", holder.token, {
         as: "parent",

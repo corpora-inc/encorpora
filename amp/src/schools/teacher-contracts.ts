@@ -426,6 +426,7 @@ export const reportCardsResponse = z.object({
   class: z.object({ name: z.string(), course: z.string() }),
   term: termResource,
   teachers: z.array(z.string()),
+  teacherNames: z.array(z.string().nullable()).optional(),
   students: z.array(
     z.object({
       id,

@@ -421,6 +421,7 @@ test(
         assert.deepEqual(preview.json().invite, {
           status: "open",
           orgName: "Linden Park School",
+          inviterName: null,
           role: "admin",
           email: "head@linden.example",
           setup: true,
@@ -956,6 +957,7 @@ test(
       assert.deepEqual(preview.json().invite, {
         status: "open",
         orgName: "Gum Tree School",
+        inviterName: "Grace Okafor",
         role: "teacher",
         email: "teacher@gum.example",
         setup: false,

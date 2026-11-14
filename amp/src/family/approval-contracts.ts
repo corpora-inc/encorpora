@@ -34,6 +34,7 @@ export const approvalLookupSchema = z.object({
   childName: z.string().nullable(),
   className: z.string(),
   teachers: z.array(z.string()),
+  teacherNames: z.array(z.string().nullable()).optional(),
 });
 export type ApprovalLookup = z.infer<typeof approvalLookupSchema>;
 
@@ -44,6 +45,7 @@ export const approvalViewSchema = z.object({
   childName: z.string().nullable(),
   className: z.string(),
   teachers: z.array(z.string()),
+  teacherNames: z.array(z.string().nullable()).optional(),
   consentActive: z.boolean(),
   canPractice: z.boolean().optional(),
   freeAllowance: freeAllowanceSchema.optional(),
