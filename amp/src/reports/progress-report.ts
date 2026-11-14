@@ -115,10 +115,20 @@ function skills(time: NonNullable<ProgressReportInput["time"]>) {
 
 function grades(list: NonNullable<ProgressReportInput["grades"]>) {
   if (!list.length) return "";
-  return `<section class="section"><div class="sectionHead"><h2>Grades</h2><p>Final grades are the teacher’s</p></div><table class="grades"><thead><tr><th>Class</th><th>Term</th><th>AMP suggests</th><th>Final</th></tr></thead><tbody>${list
+  const deciders = [
+    ...new Set(
+      list.map((g) =>
+        g.family ? (g.family.parentName ?? "the parent") : "the teacher",
+      ),
+    ),
+  ];
+  const decision = list.some((g) => g.family)
+    ? `Final grades are decided by ${deciders.join(" and ")}`
+    : "Final grades are the teacher’s";
+  return `<section class="section"><div class="sectionHead"><h2>Grades</h2><p>${esc(decision)}</p></div><table class="grades"><thead><tr><th>${list.every((g) => g.family) ? "Family" : "Class"}</th><th>Term</th><th>AMP suggests</th><th>Final</th></tr></thead><tbody>${list
     .map(
       (g) =>
-        `<tr><td>${esc(g.className)}</td><td>${esc(g.termName)}${g.state === "closed" ? ' <span class="quiet">(closed)</span>' : ""}</td><td>${g.suggestion.letters ? esc(g.suggestion.letters) : '<span class="quiet">Not enough work yet</span>'}</td><td class="final">${g.final ? esc(g.final) : '<span class="quiet">—</span>'}</td></tr>`,
+        `<tr><td>${esc(g.family ? (g.family.displayName ?? "Your family") : g.className)}</td><td>${esc(g.termName)}${g.state === "closed" ? ' <span class="quiet">(closed)</span>' : ""}</td><td>${g.suggestion.letters ? esc(g.suggestion.letters) : '<span class="quiet">Not enough work yet</span>'}</td><td class="final">${g.final ? esc(g.final) : '<span class="quiet">—</span>'}</td></tr>`,
     )
     .join("")}</tbody></table></section>`;
 }

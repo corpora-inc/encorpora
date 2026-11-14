@@ -2,6 +2,7 @@ import { parseDocumentProfile } from "../evidence/profile.js";
 import {
   learningConsentActive,
   parentAddressConfirmed,
+  parentConsentStates,
 } from "../../server/account-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
@@ -82,13 +83,18 @@ export class StripeRepository {
   async purchaseConsentActive(
     client: Pick<PoolClient, "query">,
     accountId: string,
+    readOnly = false,
   ): Promise<boolean> {
     const consent = await client.query(
       "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
       [accountId, this.config.consentPolicyVersion],
     );
     return (
-      !!consent.rowCount && (await learningConsentActive(client, accountId))
+      !!consent.rowCount &&
+      (readOnly
+        ? (await parentConsentStates(client, [accountId])).get(accountId)
+            ?.active === true
+        : await learningConsentActive(client, accountId))
     );
   }
   /**
@@ -210,8 +216,8 @@ export class StripeRepository {
     ids: string[],
   ) {
     if (
-      !(await parentAddressConfirmed(db, accountId)) ||
-      !(await this.purchaseConsentActive(db, accountId))
+      !(await parentAddressConfirmed(db, accountId, false)) ||
+      !(await this.purchaseConsentActive(db, accountId, true))
     )
       return new Set<string>();
     const owned = (

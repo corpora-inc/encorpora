@@ -16,6 +16,7 @@
  * fixture, scripts/verify-smooth-load-ui.ts).
  */
 import pg from "pg";
+import { alignPersonaEnrollments } from "./persona-enrollment";
 import {
   seedClassHistory,
   type DemoStudent,
@@ -137,10 +138,7 @@ async function grant(learnerId: string, startedDaysAgo = 30) {
  * first session yesterday and nothing since. */
 async function history(
   learners: { learnerId: string; persona: Persona }[],
-  {
-    weeks,
-    grade,
-  }: { weeks: number; grade: number; recentDays?: number },
+  { weeks, grade }: { weeks: number; grade: number; recentDays?: number },
 ) {
   const students: DemoStudent[] = learners.map((learner) => ({
     personId: learner.learnerId,
@@ -165,6 +163,10 @@ async function history(
       workToday: true,
       model: "persona",
     });
+    await alignPersonaEnrollments(
+      client,
+      learners.map((learner) => learner.learnerId),
+    );
     // The weekly rollups, summed once, as a demo's bulk writer does.
     await sumWeeks(client, "SELECT unnest($1::text[])", [
       learners.map((learner) => learner.learnerId),

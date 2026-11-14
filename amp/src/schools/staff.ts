@@ -1,3 +1,8 @@
+import {
+  ensureFamilyIdentity,
+  familyDisplayNameSql,
+  holderDisplayNameSql,
+} from "../family/identity.js";
 import { adultNameSql, accountProfile } from "../account/profile.js";
 import { visibleToSql } from "./demo/sql.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
@@ -497,7 +502,9 @@ export async function lookupInvite(
       `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending,
          (SELECT ${adultNameSql("sender")} FROM amp_school_events ev JOIN amp_people sender ON sender.id=ev.actor_person_id WHERE ev.target_id=p.id::text AND ev.action='staff.invited' ORDER BY ev.at DESC LIMIT 1) AS inviter_name,
          (SELECT k.name FROM amp_families f JOIN amp_classes k ON k.id=f.class_id
-           WHERE f.second_parent=p.id) AS family_class
+           WHERE f.second_parent=p.id) AS family_class,
+         (SELECT ${familyDisplayNameSql("f.account_id", "fo")} FROM amp_families f JOIN amp_orgs fo ON fo.id=f.org_id WHERE f.second_parent=p.id) AS family_display_name,
+         (SELECT ${holderDisplayNameSql("f.account_id")} FROM amp_families f WHERE f.second_parent=p.id) AS family_inviter_name
        FROM amp_person_credentials c JOIN amp_people p ON p.id=c.person_id
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
@@ -521,7 +528,13 @@ export async function lookupInvite(
     email: row.email,
     setup: row.role === "admin" && row.setup_pending === true,
     ...(row.family_class
-      ? { secondParent: { className: row.family_class } }
+      ? {
+          secondParent: {
+            className: row.family_class,
+            familyDisplayName: row.family_display_name ?? null,
+            inviterName: row.family_inviter_name ?? null,
+          },
+        }
       : {}),
   };
 }
@@ -547,6 +560,7 @@ export async function acceptInvite(
         [hash(input.token)],
       )
     ).rows[0];
+    if (family) await ensureFamilyIdentity(client, family.account_id);
     const invite = (
       await client.query(
         `SELECT c.id,c.person_id,c.revoked_at,c.expires_at,c.secret_hash

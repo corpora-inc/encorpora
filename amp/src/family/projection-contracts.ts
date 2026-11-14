@@ -25,7 +25,9 @@ export const familyPlacesSchema = z.object({
   families: z.array(
     z.object({
       familyId: z.uuid(),
-      displayName: z.string(),
+      displayName: z.string().nullable(),
+      classId: z.uuid().nullable(),
+      orgId: z.uuid().nullable(),
       role: familyRoleSchema,
       teachingPlace,
       capabilities: z.object({
@@ -60,7 +62,8 @@ const today = z.object({
 });
 export const familyProjectionSchema = z.object({
   familyId: z.uuid(),
-  displayName: z.string(),
+  displayName: z.string().nullable(),
+  holderName: z.string().nullable(),
   role: z.enum(["holder", "second-parent"]),
   teachingPlace,
   capabilities: z.object({

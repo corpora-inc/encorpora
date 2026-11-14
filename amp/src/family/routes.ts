@@ -185,6 +185,46 @@ export async function registerFamilyRoutes(
         );
       },
     );
+    scope.get(
+      "/api/v1/families/:family/children/:learner/progress.pdf",
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { family, learner } = familyParams
+          .extend({ learner: z.string().min(1).max(200) })
+          .parse(request.params);
+        const { format } = paperQuery.parse(request.query);
+        // Same ownership/second-parent authorization as the individual JSON read.
+        const record = await familyChildProgress(
+          options.pool,
+          account,
+          family,
+          learner,
+        );
+        const { html, footer } = progressReportHtml({
+          paper: format,
+          name: record.name,
+          first: record.name,
+          subtitle: record.familyDisplayName ?? "Your family",
+          facts: [],
+          today: record.today,
+          record,
+        });
+        const pdf = await renderReportPdf(
+          options.renderer,
+          { html, format, footer },
+          request.log,
+          "Progress report",
+        );
+        if (!pdf) throw new FamilyError(503, "report_unavailable");
+        return reply
+          .type("application/pdf")
+          .header(
+            "Content-Disposition",
+            `attachment; filename="${fileName("amp-progress", record.name, record.today)}.pdf"`,
+          )
+          .send(pdf);
+      },
+    );
     scope.patch("/api/v1/me/profile", { bodyLimit: 2048 }, async (request) => {
       const account = await options.authenticate(request);
       return setAccountProfile(

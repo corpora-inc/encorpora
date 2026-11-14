@@ -504,11 +504,21 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
         paper: format,
         name: record.student.name,
         first: record.student.first,
-        subtitle: record.classes.map((entry) => entry.name).join(", "),
+        subtitle: record.classes
+          .map((entry) =>
+            entry.familyDisplayName !== undefined
+              ? (entry.familyDisplayName ?? "Your family")
+              : entry.name,
+          )
+          .join(", "),
         facts: [
-          ...(record.orgName
-            ? [{ label: "School", value: record.orgName }]
-            : []),
+          ...(record.classes.some(
+            (entry) => entry.familyDisplayName !== undefined,
+          )
+            ? []
+            : record.orgName
+              ? [{ label: "School", value: record.orgName }]
+              : []),
           ...(record.student.identifier
             ? [{ label: "Student ID", value: record.student.identifier }]
             : []),
