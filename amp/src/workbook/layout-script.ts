@@ -19,7 +19,7 @@
  * It sets `data-layout` on <html> to "ready", or "error" after logging why.
  * Printers wait for that (see `pdf.ts`). Plain ES5 text, never transpiled.
  */
-import { displayMathFitScript } from "../content/DisplayMath";
+import { displayMathFitScript } from "../content/display-math-styles";
 
 export const workbookLayoutScript = String.raw`(function () {
   ${displayMathFitScript}

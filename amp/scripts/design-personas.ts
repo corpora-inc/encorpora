@@ -438,6 +438,11 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
       "UPDATE amp_orgs SET demo=false,demo_kind=NULL,demo_seen_at=NULL,name='Alder Street School' WHERE id=$1",
       [own.orgId],
     );
+    // A licensed school's data agreement is its own, never AMP's for a demo.
+    await pool.query(
+      "UPDATE amp_data_agreements SET signer_name='Ms. Okafor',signer_title='Head of school' WHERE org_id=$1",
+      [own.orgId],
+    );
   },
   school: async (session) => {
     await call(session, "POST", "/api/v1/school/demo", { kind: "school" });
