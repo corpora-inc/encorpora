@@ -244,6 +244,7 @@ export function FamilyMapScreen() {
                 data={map}
                 words={place.words}
                 grades={false}
+                plain
                 name={(student) => childLink(family, student)}
               />
             </div>
