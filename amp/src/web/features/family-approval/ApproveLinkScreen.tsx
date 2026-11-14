@@ -6,6 +6,7 @@ import type { ApprovalLookup } from "../../../family/approval-contracts";
 import { signOut } from "../../auth";
 import { useLoggedError } from "../../feedback";
 import { AppError } from "../../lib/AppError";
+import { linkRefused } from "../../lib/link-carry";
 import { invalidateAccount, meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
@@ -38,8 +39,9 @@ const failures: Record<string, string> = {
 };
 
 /** A teacher's link for this parent's child, from mail or a copy. The token
- * lives only in the URL's fragment, which no server or report sees, and in
- * this device's store while the parent signs in. Continuing makes the link
+ * lives only in the URL's fragment, which no server or report sees, this
+ * page's memory, and the carry the parent starts by leaving to sign in from
+ * it (`lib/link-carry.ts`). Continuing makes the link
  * this account's, and opens the parent's own page about their child. */
 export function ApproveLinkScreen() {
   const location = useLocation();
@@ -62,23 +64,30 @@ export function ApproveLinkScreen() {
     queryFn: () => approvals.lookup(parsed!.token),
   });
   // A link that is over (used, expired, ended) or that the server refuses is
-  // let go here, held and carried alike; a passing network failure is not
-  // (capability-entry.ts).
-  const over =
-    (!!lookup.data && lookup.data.status !== "open") ||
-    (lookup.error instanceof AppError &&
-      (lookup.error.status ?? 0) >= 400 &&
-      (lookup.error.status ?? 0) < 500);
+  // let go here, held and carried alike; a failure that may pass is not.
+  const refused = linkRefused(lookup.error);
+  const over = (!!lookup.data && lookup.data.status !== "open") || refused;
   useEffect(() => {
     if (over) rememberApproval(null);
   }, [over]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
-  // Carry the link across sign-in, and its proof to account creation.
-  useEffect(() => {
-    if (parsed && !session) rememberApproval(fragment.replace(/^#/, ""));
-  }, [parsed?.token, session]);
+  // Carried, with its proof for account creation, only when the parent leaves
+  // to sign in from it.
+  const value = fragment.replace(/^#/, "");
+  const carry = () => rememberApproval(value);
+  const useAnother = async () => {
+    // This link, and only this one, survives the sign-out; the other
+    // sign-in comes straight back to it (lib/link-carry.ts).
+    rememberApproval(value, { switching: true });
+    try {
+      await signOut("/sign-in?return=family-approval");
+    } catch (failure) {
+      console.error("Signing out didn’t finish", failure);
+      setError("Signing out didn’t finish. Try again in a moment.");
+    }
+  };
   const proceed = async () => {
     if (!session || !parsed) return;
     setBusy(true);
@@ -110,13 +119,36 @@ export function ApproveLinkScreen() {
   return (
     <main className={school.inviteCard} data-dense>
       <Brand for={null} />
-      {!parsed || lookup.isError ? (
+      {!parsed ? (
+        <>
+          <h1>Open the link from your email</h1>
+          <p>
+            The approval opens from the link in the teacher’s email. Open it
+            there to carry on.
+          </p>
+        </>
+      ) : refused ? (
         <>
           <h1>This link isn’t valid</h1>
           <p>
             Open the link from your email again. If it still doesn’t work, ask
             the teacher to send it again.
           </p>
+        </>
+      ) : lookup.isError ? (
+        <>
+          <h1>The link couldn’t be checked</h1>
+          <p>Check your connection, then try again.</p>
+          <div className={school.inviteActions}>
+            <Button
+              variant="primary"
+              aria-busy={lookup.isFetching}
+              disabled={lookup.isFetching}
+              onClick={() => void lookup.refetch()}
+            >
+              Try again
+            </Button>
+          </div>
         </>
       ) : !view ? (
         <div className={styles.wait}>
@@ -172,7 +204,7 @@ export function ApproveLinkScreen() {
               <Button
                 variant="secondary"
                 disabled={busy}
-                onClick={() => void signOut()}
+                onClick={() => void useAnother()}
               >
                 Use another account
               </Button>
@@ -183,6 +215,7 @@ export function ApproveLinkScreen() {
                 to="/sign-up"
                 search={search}
                 className={buttonClass("primary")}
+                onClick={carry}
               >
                 Create an account
               </Link>
@@ -190,6 +223,7 @@ export function ApproveLinkScreen() {
                 to="/sign-in"
                 search={search}
                 className={buttonClass("secondary")}
+                onClick={carry}
               >
                 I already have one
               </Link>

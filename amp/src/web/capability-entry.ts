@@ -1,3 +1,4 @@
+import { HELD_FOR_MS, LINK_PATHS, type LinkPath } from "./lib/link-carry";
 import { prepareSchoolAdoption } from "./features/school/adoption-session";
 import { prepareBuyerHandoff } from "./features/school/pilots/buyer-session";
 
@@ -12,15 +13,16 @@ import { prepareBuyerHandoff } from "./features/school/pilots/buyer-session";
  * `/join/continue` have `card-entry.ts`, `/p` has `share-entry.ts`.
  *
  * An invitation or approval is held in this page's memory only, for two
- * hours at most. Nothing is written where another tab, or a later page, could
- * read it: a tab opened from this one, or this one reloaded, has nothing
- * held, and opens the link from the email again. The one deliberate carry is
- * a sign-in the person starts from the link (the screens' own
- * `rememberInvite`/`rememberApproval`), which `forgetEveryLink` clears.
+ * hours at most. Opening it writes nothing where another tab, or a later
+ * page, could read it: a tab opened from this one, or this one reloaded, has
+ * nothing held, and opens the link from the email again. The one deliberate
+ * carry is the holder leaving to authenticate from the link
+ * (`lib/link-carry.ts`), with the same lifetime, which `forgetEveryLink`
+ * clears.
  */
-type HeldPath = "/school/invite" | "/family/approve";
-const PATHS: readonly HeldPath[] = ["/school/invite", "/family/approve"];
-export const HELD_FOR_MS = 2 * 60 * 60 * 1000;
+type HeldPath = LinkPath;
+const PATHS = LINK_PATHS;
+export { HELD_FOR_MS };
 /** Where an earlier version kept them: removed whenever a link is taken. */
 const RETIRED_KEYS = ["amp.capability.invite", "amp.capability.approval"];
 

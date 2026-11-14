@@ -1,4 +1,5 @@
 import { forgetEveryLink } from "../features/links/forget";
+import { settleSwitches } from "../lib/link-carry";
 import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
@@ -95,8 +96,10 @@ function SessionProviders({
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
           // A link held for one account never carries to another; a sign-in
-          // from no account keeps the link that started it.
+          // from no account keeps the link that started it, and an account
+          // switch started from a link is an ordinary carry once it arrives.
           if (previous?.accountId) forgetEveryLink();
+          else if (session) settleSwitches();
           setIdentityVersion((version) => version + 1);
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });

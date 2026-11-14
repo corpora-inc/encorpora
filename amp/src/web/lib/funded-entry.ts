@@ -1,3 +1,4 @@
+import { carriedLink } from "./link-carry";
 import { returnTarget } from "./return-to";
 import {
   isPitchEntry,
@@ -87,16 +88,6 @@ export const safeSchoolPath = (value: unknown) =>
   /^\/school(\/[\w-]+)*(\?[\w=&%-]*)?$/.test(value)
     ? value
     : undefined;
-/** An invitation being carried across sign-in on this device. Its token never
- * goes in a query string, which a server or report could see. */
-const stored = (key: string) => {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-};
-const pendingInvite = () => stored("amp.school-invite");
 
 export function measurementOptOut() {
   if (typeof navigator === "undefined") return false;
@@ -160,12 +151,15 @@ export function continuationUrl(
   const safe = continuationSearch(search);
   if (safe.return === "security") return safe.next ?? "/account/security";
   if (safe.return === "school") return safe.next ?? "/school";
+  // A link carried across sign-in on this device (lib/link-carry.ts). Its
+  // token goes only in the fragment, never a query string a server or report
+  // could see.
   if (safe.return === "school-invite") {
-    const invite = pendingInvite();
+    const invite = carriedLink("/school/invite");
     return `/school/invite${invite ? `#${invite}` : ""}`;
   }
   if (safe.return === "family-approval") {
-    const approval = stored("amp.family-approval");
+    const approval = carriedLink("/family/approve");
     return `/family/approve${approval ? `#${approval}` : ""}`;
   }
   const path =
