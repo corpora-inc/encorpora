@@ -1120,3 +1120,15 @@ label.columnPick {
 .levelsNotYet > p {
   margin: 0;
 }
+/* The line under a held level: before and after the first answer in one
+   cell, the one shown on top. */
+.levelsLines {
+  display: grid;
+}
+.levelsLines > p {
+  grid-area: 1 / 1;
+  margin: 0;
+}
+.levelsLines > p[data-hidden] {
+  visibility: hidden;
+}

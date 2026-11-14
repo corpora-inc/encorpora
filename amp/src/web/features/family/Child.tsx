@@ -5,7 +5,8 @@ import {
   useParams,
   useRouterState,
 } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { measured } from "../../../learning/level-check";
 import { useLearnerStore } from "../../learner-store";
 import { z } from "zod";
 import {
@@ -64,6 +65,13 @@ export function ChildScreen() {
     enabled: !!child?.capabilities.readProgress,
   });
   const { starting, error, clearError, handOver } = useHandOver(session);
+  // Opened before the first answer: this visit keeps the level held, so its
+  // bar takes the first estimate in place (CP-5 r2 #2).
+  const openedUnmeasured = useRef<boolean | null>(null);
+  if (progress.data)
+    openedUnmeasured.current ??= !(
+      progress.data.level && measured(progress.data.level.overall)
+    );
   // This child is the one chosen on this device while their page is open:
   // their grade numbers (This device) and their learning screens are theirs.
   const known = !!child;
@@ -184,7 +192,7 @@ export function ChildScreen() {
               This week
             </h2>
             <div className={styles.weekRow}>
-              <WeekFactsOf child={child} today={data.today.date} />
+              <WeekFactsOf child={child} today={data.today.date} steady />
               <AccessFact child={child} />
             </div>
           </section>
@@ -199,6 +207,7 @@ export function ChildScreen() {
                   record={record}
                   empty={`We’ll find ${child.name}’s level in a few minutes of practice.`}
                   openAreas
+                  holdFirst={!!openedUnmeasured.current}
                 />
               </section>
               <section aria-labelledby="child-weeks" className={styles.section}>
