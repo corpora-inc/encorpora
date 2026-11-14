@@ -206,7 +206,33 @@ export function ChildScreen() {
                 aria-labelledby="child-skills"
                 className={styles.section}
               >
-                <h2 id="child-skills">Skills earned</h2>
+                <div className={styles.sectionHead}>
+                  <h2 id="child-skills">Skills earned</h2>
+                  {/* Their map and inventory, at their own addresses. */}
+                  <span className={styles.sectionLinks}>
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: familyHref(family, `kids/${child.id}/pathways`),
+                      }}
+                      className={buttonClass("secondary")}
+                    >
+                      Pathways
+                    </Link>
+                    <Link
+                      to="/$"
+                      params={{
+                        _splat: familyHref(
+                          family,
+                          `kids/${child.id}/inventory`,
+                        ),
+                      }}
+                      className={buttonClass("secondary")}
+                    >
+                      Inventory
+                    </Link>
+                  </span>
+                </div>
                 <RecordObjectives record={record} openSkills />
               </section>
               <section aria-labelledby="child-work" className={styles.section}>

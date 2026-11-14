@@ -7,7 +7,13 @@ import {
 } from "../curriculum/CurriculumDetails";
 import { useDeferredValue, useMemo, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useSearch, Link } from "@tanstack/react-router";
+import {
+  useLocation,
+  useNavigate,
+  useSearch,
+  Link,
+} from "@tanstack/react-router";
+import { childAddress } from "../spaces/identity";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useHeroAction } from "../../lib/shell-slots";
@@ -70,6 +76,11 @@ const shows = (filter: Filter, e?: Evidence) =>
 
 export function InventoryScreen() {
   const view = useLearningView();
+  // A family's child's inventory (/family/<family>/kids/<learner>/inventory):
+  // theirs to read. Their practice is their own session, never this adult's.
+  const child = !!childAddress(
+    useLocation({ select: (location) => location.pathname }),
+  );
   const { shown } = useCurriculumDetails();
   const catalog = useQuery(skillCatalogOptions);
   const search = useSearch({ strict: false });
@@ -112,7 +123,8 @@ export function InventoryScreen() {
     replace = false,
   ) =>
     void navigate({
-      to: "/inventory",
+      // This inventory's own address: yours, or a child's.
+      to: ".",
       search: {
         topic: field.carry() || undefined,
         collection: search.collection ? filter : undefined,
@@ -150,6 +162,7 @@ export function InventoryScreen() {
     !busy &&
     !failure &&
     view.active &&
+    !child &&
     !triedAnything &&
     !search.collection &&
     !query &&
@@ -319,6 +332,7 @@ export function InventoryScreen() {
         skillActions={(skill) =>
           view.canPractice &&
           !view.viewOnly &&
+          !child &&
           catalog.data?.templates.some((type) => type.skillId === skill) ? (
             <div className={layers.actions}>
               <Link
