@@ -59,7 +59,10 @@ async function approvalScreen() {
   queryClient.setQueryData(sessionOptions.queryKey, session);
   // This screen can inspect a link before the account check succeeds. Keep
   // that check local instead of letting an unrelated real /me request race.
-  queryClient.setQueryData(meOptions(session).queryKey, { signedIn: false });
+  queryClient.setQueryData(meOptions(session).queryKey, {
+    signedIn: false,
+    next: "sign-in",
+  });
   const router = createRouter({
     routeTree: createRootRoute({ component: ApproveLinkScreen }),
     history: createMemoryHistory({ initialEntries: ["/"] }),

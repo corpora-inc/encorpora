@@ -129,7 +129,8 @@ beforeEach(() => {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (url: string) => {
-      if (url === "/api/v1/me") return Response.json({ signedIn: false });
+      if (url === "/api/v1/me")
+        return Response.json({ signedIn: false, next: "sign-in" });
       throw new Error(`Unexpected synthetic request ${url}`);
     }),
   );
