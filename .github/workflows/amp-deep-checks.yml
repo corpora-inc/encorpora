@@ -84,7 +84,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "family-c", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b", "family-c", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
     # The longest lanes take 40 to 50 minutes on a typical runner; slow runners
     # have taken 60.
     timeout-minutes: 75
@@ -164,8 +164,10 @@ jobs:
       - name: Selected browser entrypoints
         if: matrix.lane == 'selected'
         run: node scripts/run-ci-tests.mjs browser
-      - if: matrix.lane == 'ui-1'
-        run: npm run test:ui:1
+      - if: matrix.lane == 'ui-1a'
+        run: npm run test:ui:1a
+      - if: matrix.lane == 'ui-1b'
+        run: npm run test:ui:1b
       - if: matrix.lane == 'ui-2a'
         run: npm run test:ui:2a
       - if: matrix.lane == 'ui-2b'
@@ -192,9 +194,9 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
       - uses: dtolnay/rust-toolchain@1.93.0
-        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')
+        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1b' || matrix.lane == 'selected')
       - run: npm run test:native-session
-        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')
+        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1b' || matrix.lane == 'selected')
       - name: Remove this job's PostgreSQL container
         if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
         shell: bash

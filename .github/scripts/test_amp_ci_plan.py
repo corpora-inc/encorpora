@@ -191,14 +191,14 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "family-c", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b", "family-c", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
-    for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
+    for command, lane in [('npm run test:ui:1a', 'ui-1a'), ('npm run test:ui:1b', 'ui-1b'), ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
                           ('npm run test:family-ui:a', 'family-a'), ('npm run test:family-ui:b', 'family-b'),
                           ('npm run test:family-ui:c', 'family-c'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
-    assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')"
+    assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1b' || matrix.lane == 'selected')"
     assert sum(step.get('run') == 'npm run test:native-session' for step in browser['steps']) == 1
     contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
     assert contrast_report['if'] == "always() && (startsWith(matrix.lane, 'contrast-') || matrix.lane == 'selected')"
@@ -235,6 +235,9 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
     # duplicated command in any hosted group fails this comparison.
     full = expand('test:ui')
     first, second = expand('test:ui:1'), expand('test:ui:2')
+    first_a, first_b = expand('test:ui:1a'), expand('test:ui:1b')
+    assert first_a and first_b and first_a + first_b == first
+    assert not set(first_a) & set(first_b)
     assert first and second
     assert first + second == full
     second_a, second_b = expand('test:ui:2a'), expand('test:ui:2b')
