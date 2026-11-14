@@ -62,8 +62,13 @@ export const classYearResource = z.object({
   /** Whether the class's students can practice, for anyone who reads the
    * class (SPEC R14): its sign-in tools follow this, whatever the role. */
   practice: z.enum(["open", "waiting", "ended"]).optional(),
-  /** While open: when that ends as things stand (null: not by a date). */
-  practiceUntil: z.string().nullable().optional(),
+  /** When anything deciding practice can next change (null: nothing
+   * dated ahead): ask again then. */
+  recheckAt: z.string().nullable().optional(),
+  /** The server's clock at this answer: the device's is never trusted. */
+  serverNow: z.string().optional(),
+  /** When this answer arrived, on this page's monotonic clock. */
+  receivedAt: z.number().optional(),
 });
 export type ClassYear = z.infer<typeof classYearResource>;
 export const classYearOptions = (session: AuthSession, classId: string) =>
@@ -72,7 +77,9 @@ export const classYearOptions = (session: AuthSession, classId: string) =>
     queryFn: ({ signal }) =>
       call(`/classes/${classId}/year`, classYearResource, session, {
         signal,
-      }),
+      }).then(
+        (year): ClassYear => ({ ...year, receivedAt: performance.now() }),
+      ),
   });
 export const rolloverOptions = (session: AuthSession, orgId: string) =>
   queryOptions({

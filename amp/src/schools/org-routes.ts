@@ -1,4 +1,4 @@
-import { classPracticeGate, classPracticeUntil } from "./pilot-access.js";
+import { classPracticeGate, classRecheckAt } from "./pilot-access.js";
 import { randomUUID } from "node:crypto";
 import { actorPerson, can, rosterScope } from "./authz.js";
 import { activityPeople, readActivity } from "./activity.js";
@@ -127,19 +127,22 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
     // as every route). The shell frames a class only under its own org
     // (docs/architecture/spaces.md).
     handler: async ({ actor, target, pool }) => {
-      const [past, named, gate, until] = await Promise.all([
+      const [past, named, gate, recheck, clock] = await Promise.all([
         classIsPast(pool, target.classId),
         pool.query("SELECT name FROM amp_classes WHERE id=$1", [
           target.classId,
         ]),
         classPracticeGate(pool, target.classId),
-        classPracticeUntil(pool, target.classId),
+        classRecheckAt(pool, target.classId, actor.accountId),
+        pool.query<{ now: Date }>("SELECT now() AS now"),
       ]);
       return {
         past,
-        // When open practice ends, as things stand: a screen left open
-        // reads the class again then.
-        ...(gate ? {} : { practiceUntil: until }),
+        // When anything deciding practice can change next, and the
+        // server's own clock: a screen left open asks again then, measured
+        // in server time, never the device's (CP-3 r4).
+        recheckAt: recheck,
+        serverNow: new Date(clock.rows[0]!.now).toISOString(),
         // Whether students can practice: the sign-in tools follow it for
         // every reader of the class, not only those who read its pilot.
         practice: gate ?? "open",

@@ -85,39 +85,71 @@ export async function classPracticeGates(
   return gates;
 }
 
-/** When a class's students stop being able to practice, as things stand:
- * the last of its licenses and its students' coverage (a teacher's pilot,
- * its grace, a seat) to end. Null for a class never gated (a family's, a
- * demo), or one already closed. A screen left open re-reads the class then
- * (SPEC R14): the code never outlives practice on a page left open. */
-export async function classPracticeUntil(
+/** The next moment anything that decides a class's practice, or this
+ * reader's access to it, can change (CP-3 r4 H1): a license, a seat or
+ * grant, a teacher's pilot, its grace or an extension starting or ending;
+ * any of the class's students' enrollments (here, or in a class whose pilot
+ * covers them) or student roles starting or ending, at midnight in their
+ * school's own time zone; and the reader's own role or enrollment. Not a
+ * verdict: a screen left open asks the server again then, and the answer
+ * decides. Null for a class never gated (a family's, a demo) or with no
+ * dated boundary ahead. */
+export async function classRecheckAt(
   db: Pick<PoolClient, "query">,
   classId: string,
+  accountId: string | null = null,
 ): Promise<string | null> {
   const row = (
-    await db.query<{ exempt: boolean; until: Date | null }>(
-      `SELECT o.demo OR o.kind='family' AS exempt,
-        GREATEST(
-          (SELECT max(l.ends_at) FROM amp_school_licenses l WHERE l.org_id=ANY(o.path)
-            AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()),
-          (SELECT max(GREATEST(
-              COALESCE(amp_school_pilot_until(p.learner_id),'-infinity'::timestamptz),
-              COALESCE((SELECT max(g.ends_at) FROM amp_grants g WHERE g.learner_id=p.learner_id
-                AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()
-                AND amp_school_grant_valid(g.id)),'-infinity'::timestamptz)))
-            FROM amp_enrollments e
-            JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
-            WHERE e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")})
-        ) AS until
-      FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,
-      [classId],
+    await db.query<{ exempt: boolean; next: Date | null }>(
+      `WITH klass AS (
+         SELECT c.id,o.path,o.timezone,o.demo OR o.kind='family' AS exempt
+         FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1),
+       pupils AS (
+         SELECT DISTINCT p.id AS person,p.learner_id AS learner FROM amp_enrollments e
+         JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+         WHERE e.class_id=$1 AND e.role='student'),
+       -- Every class a student is enrolled in (its pilot may cover them).
+       placed AS (
+         SELECT e.*,o.timezone,c.id AS class FROM amp_enrollments e
+         JOIN pupils u ON u.person=e.person_id
+         JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
+         JOIN amp_orgs o ON o.id=c.org_id
+         WHERE e.role='student'),
+       times(t) AS (
+         SELECT l.starts_at FROM amp_school_licenses l, klass k WHERE l.org_id=ANY(k.path)
+         UNION ALL SELECT l.ends_at FROM amp_school_licenses l, klass k WHERE l.org_id=ANY(k.path)
+         UNION ALL SELECT x FROM amp_seats s JOIN pupils u ON u.person=s.person_id
+           JOIN amp_school_licenses l ON l.id=s.license_id,
+           LATERAL unnest(ARRAY[l.starts_at,l.ends_at,s.released_at]) x
+         UNION ALL SELECT x FROM amp_grants g JOIN pupils u ON u.learner=g.learner_id,
+           LATERAL unnest(ARRAY[g.starts_at,g.ends_at]) x
+         UNION ALL SELECT x FROM placed e JOIN amp_class_pilots cp ON cp.class_id=e.class
+           JOIN amp_teacher_pilots t ON t.id=cp.pilot_id,
+           LATERAL unnest(ARRAY[t.started_at,t.ends_at,t.grace_ends_at]) x
+         UNION ALL SELECT x.until_at FROM placed e JOIN amp_class_pilots cp ON cp.class_id=e.class
+           JOIN amp_pilot_extensions x ON x.pilot_id=cp.pilot_id
+         UNION ALL SELECT (d::timestamp AT TIME ZONE e.timezone) FROM placed e,
+           LATERAL unnest(ARRAY[e.begin_on,e.end_on]) d
+         UNION ALL SELECT (d::timestamp AT TIME ZONE o.timezone) FROM amp_org_roles r
+           JOIN pupils u ON u.person=r.person_id JOIN amp_orgs o ON o.id=r.org_id,
+           LATERAL unnest(ARRAY[r.begin_on,r.end_on]) d
+           WHERE r.role='student'
+         -- The reader's own role and enrollment here.
+         UNION ALL SELECT (d::timestamp AT TIME ZONE o.timezone) FROM amp_people me
+           JOIN amp_org_roles r ON r.person_id=me.id JOIN amp_orgs o ON o.id=r.org_id, klass k,
+           LATERAL unnest(ARRAY[r.begin_on,r.end_on]) d
+           WHERE me.account_id=$2 AND me.deleted_at IS NULL AND r.org_id=ANY(k.path)
+         UNION ALL SELECT (d::timestamp AT TIME ZONE k.timezone) FROM amp_people me
+           JOIN amp_enrollments e ON e.person_id=me.id AND e.class_id=$1, klass k,
+           LATERAL unnest(ARRAY[e.begin_on,e.end_on]) d
+           WHERE me.account_id=$2 AND me.deleted_at IS NULL)
+       SELECT (SELECT exempt FROM klass) AS exempt,
+         (SELECT min(t) FROM times WHERE t>now()) AS next`,
+      [classId, accountId],
     )
   ).rows[0];
-  if (!row || row.exempt || !row.until) return null;
-  const until = new Date(row.until);
-  return Number.isFinite(until.getTime()) && until.getTime() > Date.now()
-    ? until.toISOString()
-    : null;
+  if (!row || row.exempt !== false || !row.next) return null;
+  return new Date(row.next).toISOString();
 }
 
 /** Sign-in tools (the class code, the board, printed cards) only while a

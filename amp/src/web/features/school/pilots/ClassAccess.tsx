@@ -48,6 +48,8 @@ export function useClassAccess(place: Place): {
   /** No student can sign in now (or it couldn't be checked): its code,
    * board and cards are withheld. */
   closed: boolean;
+  /** A known moment passed: the tools wait while the server is asked. */
+  checking: boolean;
   /** Where the class stands couldn't be checked: say so, with Try again. */
   unavailable: boolean;
   retry: () => void;
@@ -81,29 +83,46 @@ export function useClassAccess(place: Place): {
     // A screen left open, then looked at again, reads where it stands.
     refetchOnWindowFocus: true,
   });
-  // Open practice ends at a known time (a pilot's grace, a seat, a
-  // license): a screen left open closes its code and cards the moment it
-  // passes, and reads the class again to confirm (CP-3 r3 H1).
-  const until = year.data?.practiceUntil
-    ? Date.parse(year.data.practiceUntil)
-    : null;
-  const [, tick] = useState(0);
+  // Anything deciding practice can next change at a known moment (the
+  // server's `recheckAt`): a screen left open withholds its sign-in tools
+  // from that moment and asks the server again; the answer decides
+  // (CP-3 r4). Time is measured in the server's clock, from its answer and
+  // this page's monotonic clock: a device clock set wrong can't close an
+  // open class or open a closed one.
+  const remaining = recheckRemaining(year.data);
+  const due = remaining !== null && remaining <= 0;
+  const [wake, setWake] = useState(0);
   useEffect(() => {
-    if (until === null || !Number.isFinite(until)) return;
-    const wait = until - Date.now();
-    if (wait <= 0) return;
+    if (remaining === null) return;
+    const ask = () => {
+      void year.refetch();
+      void queryClient.invalidateQueries({
+        predicate: (entry) =>
+          entry.queryKey.includes(place.class) &&
+          !entry.queryKey.includes("class-year"),
+      });
+    };
+    if (remaining <= 0) {
+      // Due: ask once now; a failed answer is asked again within the hour.
+      if (!year.isFetching) ask();
+      const again = setTimeout(() => setWake((n) => n + 1), MAX_WAIT_MS);
+      return () => clearTimeout(again);
+    }
+    // Never armed further than an hour ahead: each wake re-measures and
+    // re-arms, so a far deadline (or setTimeout's 24.8-day limit) is never
+    // lost.
     const timer = setTimeout(
-      () => {
-        tick((n) => n + 1);
-        void year.refetch();
-        void queryClient.invalidateQueries({
-          predicate: (entry) => entry.queryKey.includes(place.class),
-        });
-      },
-      Math.min(wait + 250, 2 ** 31 - 1),
+      () => setWake((n) => n + 1),
+      Math.min(remaining + 250, MAX_WAIT_MS),
     );
     return () => clearTimeout(timer);
-  }, [until, place.class]);
+  }, [
+    year.data?.recheckAt,
+    year.data?.serverNow,
+    year.data?.receivedAt,
+    wake,
+    place.class,
+  ]);
   const retry = () => {
     void year.refetch();
     if (readable) void query.refetch();
@@ -119,6 +138,7 @@ export function useClassAccess(place: Place): {
       pending,
       practice: "open",
       closed: false,
+      checking: false,
       unavailable: false,
       retry,
     };
@@ -128,9 +148,9 @@ export function useClassAccess(place: Place): {
     : year.isError
       ? "unknown"
       : "waiting";
-  // Past its end, open practice has ended, before the next read says so.
-  const practice: Practice =
-    read === "open" && until !== null && Date.now() >= until ? "ended" : read;
+  // The server's word; while a recheck is due, its tools wait for the next.
+  const practice: Practice = read;
+  const checking = due && read === "open";
   const unavailable =
     !pending && (practice === "unknown" || (readable && query.isError));
   const view: AccessView = pilot
@@ -146,10 +166,32 @@ export function useClassAccess(place: Place): {
     teaches,
     pending,
     practice,
-    closed: practice !== "open",
+    closed: practice !== "open" || checking,
+    checking,
     unavailable,
     retry,
   };
+}
+
+/** The longest a screen waits before measuring again. */
+const MAX_WAIT_MS = 60 * 60 * 1000;
+
+/** How long until the class should be asked again, in the server's time:
+ * its `recheckAt` less its clock at the answer, less what this page's
+ * monotonic clock says has passed since. Null when there's nothing dated
+ * (or an older server sent no clock). */
+export function recheckRemaining(
+  year:
+    | { recheckAt?: string | null; serverNow?: string; receivedAt?: number }
+    | undefined,
+  now = performance.now(),
+): number | null {
+  if (!year?.recheckAt || !year.serverNow || year.receivedAt === undefined)
+    return null;
+  const at = Date.parse(year.recheckAt),
+    server = Date.parse(year.serverNow);
+  if (!Number.isFinite(at) || !Number.isFinite(server)) return null;
+  return at - server - (now - year.receivedAt);
 }
 
 /** Practice is over for this class. */
@@ -713,6 +755,14 @@ export function ClosedSignIn({
       {label}
     </Link>
   );
+  // A known moment passed: asking the server, briefly.
+  if (access.checking && practice === "open" && !unavailable)
+    return (
+      <div className={styles.sheetBody} data-practice-checking="">
+        <Loading>Checking practice</Loading>
+        {also}
+      </div>
+    );
   // Couldn't check, or the answers disagree (the code withheld while the
   // class reads as open): say so calmly, and try again.
   if (unavailable || practice === "open" || practice === "unknown")

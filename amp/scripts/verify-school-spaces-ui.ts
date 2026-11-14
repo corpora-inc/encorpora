@@ -339,7 +339,9 @@ try {
        COALESCE((SELECT json_agg(json_build_object('id',a.id,'digest',md5(a.outcome::text),
            'skill',a.outcome->>'skillId','problem',a.problem_id) ORDER BY a.id)
          FROM amp_attempts a WHERE a.learner_id=p.learner_id),'[]') AS attempts,
-       COALESCE((SELECT json_agg(json_build_object('skill',s.skill_id,'digest',md5(s.state::text))
+       COALESCE((SELECT json_agg(json_build_object('skill',s.skill_id,'digest',md5(s.state::text),
+           'attempts',(s.state->>'attempts')::int,
+           'recent',COALESCE((SELECT json_agg(x->>'id') FROM jsonb_array_elements(s.state->'recentOutcomes') x),'[]'))
            ORDER BY s.skill_id)
          FROM amp_skill_evidence s WHERE s.learner_id=p.learner_id),'[]') AS evidence,
        COALESCE((SELECT json_agg(json_build_object('day',d.day::text,'surface',d.surface,
@@ -365,7 +367,12 @@ try {
         skill: string;
         problem: string;
       }[];
-      evidence: { skill: string; digest: string }[];
+      evidence: {
+        skill: string;
+        digest: string;
+        attempts: number;
+        recent: string[];
+      }[];
       days: { day: string; surface: string; skill: string; ms: number }[];
       workbooks: { id: string; digest: string }[];
       grades: { session: string; final: string; by: string }[];
@@ -414,6 +421,32 @@ try {
             state,
             `evidence for ${state.skill} unchanged`,
           );
+      // Each practiced skill's evidence is the earlier evidence plus the
+      // marks: it exists, counts exactly the new answers on top of the old,
+      // holds each new answer, and keeps the earlier ones it had room for.
+      for (const skill of practiced) {
+        const now = evidence.find((entry) => entry.skill === skill);
+        const then = wasEvidence.find((entry) => entry.skill === skill);
+        const marked = added.filter((entry) => entry.skill === skill);
+        assert.ok(now, `evidence for the marked skill ${skill} exists`);
+        assert.equal(
+          now.attempts,
+          (then?.attempts ?? 0) + marked.length,
+          `${skill}: the marks counted on top of the earlier answers`,
+        );
+        for (const answer of marked)
+          assert.ok(
+            now.recent.includes(answer.id),
+            `${skill}: the mark is in it`,
+          );
+        const keptEarlier = (then?.recent ?? []).filter((id) =>
+          now.recent.includes(id),
+        ).length;
+        assert.ok(
+          keptEarlier >= (then?.recent.length ?? 0) - marked.length,
+          `${skill}: the earlier answers are kept, but for any the window let go`,
+        );
+      }
     }
   }
 

@@ -73,7 +73,8 @@ export function CardsScreen() {
   const access = useClassAccess(place);
   // Cards made while practice ran go when it closes, on a page left open:
   // they would only lead to a closed class (CP-3 r3 H1).
-  const closedNow = access.closed;
+  // Only when the server says so: while a recheck is asked, they wait.
+  const closedNow = access.practice !== "open";
   useEffect(() => {
     if (closedNow) setIssued(null);
   }, [closedNow]);
