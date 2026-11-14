@@ -1,0 +1,5266 @@
+{
+  "id": "zero-one-groups--sz",
+  "title": "Zero groups, empty groups, one group",
+  "teaches": [],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "points": {
+          "tableP0": [
+            -3.3,
+            3.1
+          ],
+          "tableP1": [
+            3.3,
+            3.1
+          ],
+          "tableP2": [
+            3.3,
+            -3.1
+          ],
+          "tableP3": [
+            -3.3,
+            -3.1
+          ],
+          "tray0P0": [
+            -2.625,
+            2.75
+          ],
+          "tray0P1": [
+            2.625,
+            2.75
+          ],
+          "tray0P2": [
+            2.775,
+            2.6
+          ],
+          "tray0P3": [
+            2.775,
+            1.4
+          ],
+          "tray0P4": [
+            2.625,
+            1.25
+          ],
+          "tray0P5": [
+            -2.625,
+            1.25
+          ],
+          "tray0P6": [
+            -2.775,
+            1.4
+          ],
+          "tray0P7": [
+            -2.775,
+            2.6
+          ],
+          "c0_0P": [
+            -1.8,
+            2
+          ],
+          "c0_0ChipP0": [
+            -1.92,
+            2.112
+          ],
+          "c0_0ChipP1": [
+            -1.6640000000000001,
+            2.06
+          ],
+          "c0_0ChipP2": [
+            -1.832,
+            1.8479999999999999
+          ],
+          "c0_1P": [
+            -0.6,
+            2
+          ],
+          "c0_1ChipP0": [
+            -0.72,
+            2.112
+          ],
+          "c0_1ChipP1": [
+            -0.46399999999999997,
+            2.06
+          ],
+          "c0_1ChipP2": [
+            -0.632,
+            1.8479999999999999
+          ],
+          "c0_2P": [
+            0.6,
+            2
+          ],
+          "c0_2ChipP0": [
+            0.48,
+            2.112
+          ],
+          "c0_2ChipP1": [
+            0.736,
+            2.06
+          ],
+          "c0_2ChipP2": [
+            0.568,
+            1.8479999999999999
+          ],
+          "c0_3P": [
+            1.8,
+            2
+          ],
+          "c0_3ChipP0": [
+            1.6800000000000002,
+            2.112
+          ],
+          "c0_3ChipP1": [
+            1.936,
+            2.06
+          ],
+          "c0_3ChipP2": [
+            1.768,
+            1.8479999999999999
+          ],
+          "tray1P0": [
+            -2.625,
+            0.75
+          ],
+          "tray1P1": [
+            2.625,
+            0.75
+          ],
+          "tray1P2": [
+            2.775,
+            0.6
+          ],
+          "tray1P3": [
+            2.775,
+            -0.6
+          ],
+          "tray1P4": [
+            2.625,
+            -0.75
+          ],
+          "tray1P5": [
+            -2.625,
+            -0.75
+          ],
+          "tray1P6": [
+            -2.775,
+            -0.6
+          ],
+          "tray1P7": [
+            -2.775,
+            0.6
+          ],
+          "c1_0P": [
+            -1.8,
+            0
+          ],
+          "c1_0ChipP0": [
+            -1.92,
+            0.11200000000000002
+          ],
+          "c1_0ChipP1": [
+            -1.6640000000000001,
+            0.06
+          ],
+          "c1_0ChipP2": [
+            -1.832,
+            -0.15200000000000002
+          ],
+          "c1_1P": [
+            -0.6,
+            0
+          ],
+          "c1_1ChipP0": [
+            -0.72,
+            0.11200000000000002
+          ],
+          "c1_1ChipP1": [
+            -0.46399999999999997,
+            0.06
+          ],
+          "c1_1ChipP2": [
+            -0.632,
+            -0.15200000000000002
+          ],
+          "c1_2P": [
+            0.6,
+            0
+          ],
+          "c1_2ChipP0": [
+            0.48,
+            0.11200000000000002
+          ],
+          "c1_2ChipP1": [
+            0.736,
+            0.06
+          ],
+          "c1_2ChipP2": [
+            0.568,
+            -0.15200000000000002
+          ],
+          "c1_3P": [
+            1.8,
+            0
+          ],
+          "c1_3ChipP0": [
+            1.6800000000000002,
+            0.11200000000000002
+          ],
+          "c1_3ChipP1": [
+            1.936,
+            0.06
+          ],
+          "c1_3ChipP2": [
+            1.768,
+            -0.15200000000000002
+          ],
+          "tray2P0": [
+            -2.625,
+            -1.25
+          ],
+          "tray2P1": [
+            2.625,
+            -1.25
+          ],
+          "tray2P2": [
+            2.775,
+            -1.4
+          ],
+          "tray2P3": [
+            2.775,
+            -2.6
+          ],
+          "tray2P4": [
+            2.625,
+            -2.75
+          ],
+          "tray2P5": [
+            -2.625,
+            -2.75
+          ],
+          "tray2P6": [
+            -2.775,
+            -2.6
+          ],
+          "tray2P7": [
+            -2.775,
+            -1.4
+          ],
+          "c2_0P": [
+            -1.8,
+            -2
+          ],
+          "c2_0ChipP0": [
+            -1.92,
+            -1.888
+          ],
+          "c2_0ChipP1": [
+            -1.6640000000000001,
+            -1.94
+          ],
+          "c2_0ChipP2": [
+            -1.832,
+            -2.152
+          ],
+          "c2_1P": [
+            -0.6,
+            -2
+          ],
+          "c2_1ChipP0": [
+            -0.72,
+            -1.888
+          ],
+          "c2_1ChipP1": [
+            -0.46399999999999997,
+            -1.94
+          ],
+          "c2_1ChipP2": [
+            -0.632,
+            -2.152
+          ],
+          "c2_2P": [
+            0.6,
+            -2
+          ],
+          "c2_2ChipP0": [
+            0.48,
+            -1.888
+          ],
+          "c2_2ChipP1": [
+            0.736,
+            -1.94
+          ],
+          "c2_2ChipP2": [
+            0.568,
+            -2.152
+          ],
+          "c2_3P": [
+            1.8,
+            -2
+          ],
+          "c2_3ChipP0": [
+            1.6800000000000002,
+            -1.888
+          ],
+          "c2_3ChipP1": [
+            1.936,
+            -1.94
+          ],
+          "c2_3ChipP2": [
+            1.768,
+            -2.152
+          ]
+        },
+        "parts": [
+          {
+            "id": "table",
+            "poly": [
+              "tableP0",
+              "tableP1",
+              "tableP2",
+              "tableP3"
+            ],
+            "fill": "warm-fill",
+            "ink": "wood",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tray0",
+            "group": "tray0",
+            "poly": [
+              "tray0P0",
+              "tray0P1",
+              "tray0P2",
+              "tray0P3",
+              "tray0P4",
+              "tray0P5",
+              "tray0P6",
+              "tray0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c0_0Body",
+            "group": "c0_0",
+            "circle": "c0_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c0_0Chip0",
+            "group": "c0_0",
+            "circle": "c0_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_0Chip1",
+            "group": "c0_0",
+            "circle": "c0_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_0Chip2",
+            "group": "c0_0",
+            "circle": "c0_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_1Body",
+            "group": "c0_1",
+            "circle": "c0_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c0_1Chip0",
+            "group": "c0_1",
+            "circle": "c0_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_1Chip1",
+            "group": "c0_1",
+            "circle": "c0_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_1Chip2",
+            "group": "c0_1",
+            "circle": "c0_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_2Body",
+            "group": "c0_2",
+            "circle": "c0_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c0_2Chip0",
+            "group": "c0_2",
+            "circle": "c0_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_2Chip1",
+            "group": "c0_2",
+            "circle": "c0_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_2Chip2",
+            "group": "c0_2",
+            "circle": "c0_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_3Body",
+            "group": "c0_3",
+            "circle": "c0_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c0_3Chip0",
+            "group": "c0_3",
+            "circle": "c0_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_3Chip1",
+            "group": "c0_3",
+            "circle": "c0_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c0_3Chip2",
+            "group": "c0_3",
+            "circle": "c0_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "tray1",
+            "group": "tray1",
+            "poly": [
+              "tray1P0",
+              "tray1P1",
+              "tray1P2",
+              "tray1P3",
+              "tray1P4",
+              "tray1P5",
+              "tray1P6",
+              "tray1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c1_0Body",
+            "group": "c1_0",
+            "circle": "c1_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c1_0Chip0",
+            "group": "c1_0",
+            "circle": "c1_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_0Chip1",
+            "group": "c1_0",
+            "circle": "c1_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_0Chip2",
+            "group": "c1_0",
+            "circle": "c1_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_1Body",
+            "group": "c1_1",
+            "circle": "c1_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c1_1Chip0",
+            "group": "c1_1",
+            "circle": "c1_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_1Chip1",
+            "group": "c1_1",
+            "circle": "c1_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_1Chip2",
+            "group": "c1_1",
+            "circle": "c1_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_2Body",
+            "group": "c1_2",
+            "circle": "c1_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c1_2Chip0",
+            "group": "c1_2",
+            "circle": "c1_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_2Chip1",
+            "group": "c1_2",
+            "circle": "c1_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_2Chip2",
+            "group": "c1_2",
+            "circle": "c1_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_3Body",
+            "group": "c1_3",
+            "circle": "c1_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c1_3Chip0",
+            "group": "c1_3",
+            "circle": "c1_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_3Chip1",
+            "group": "c1_3",
+            "circle": "c1_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c1_3Chip2",
+            "group": "c1_3",
+            "circle": "c1_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "tray2",
+            "group": "tray2",
+            "poly": [
+              "tray2P0",
+              "tray2P1",
+              "tray2P2",
+              "tray2P3",
+              "tray2P4",
+              "tray2P5",
+              "tray2P6",
+              "tray2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c2_0Body",
+            "group": "c2_0",
+            "circle": "c2_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c2_0Chip0",
+            "group": "c2_0",
+            "circle": "c2_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_0Chip1",
+            "group": "c2_0",
+            "circle": "c2_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_0Chip2",
+            "group": "c2_0",
+            "circle": "c2_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_1Body",
+            "group": "c2_1",
+            "circle": "c2_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c2_1Chip0",
+            "group": "c2_1",
+            "circle": "c2_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_1Chip1",
+            "group": "c2_1",
+            "circle": "c2_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_1Chip2",
+            "group": "c2_1",
+            "circle": "c2_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_2Body",
+            "group": "c2_2",
+            "circle": "c2_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c2_2Chip0",
+            "group": "c2_2",
+            "circle": "c2_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_2Chip1",
+            "group": "c2_2",
+            "circle": "c2_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_2Chip2",
+            "group": "c2_2",
+            "circle": "c2_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_3Body",
+            "group": "c2_3",
+            "circle": "c2_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "c2_3Chip0",
+            "group": "c2_3",
+            "circle": "c2_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_3Chip1",
+            "group": "c2_3",
+            "circle": "c2_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "c2_3Chip2",
+            "group": "c2_3",
+            "circle": "c2_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          }
+        ],
+        "view": [
+          -3.5,
+          -3.4,
+          3.5,
+          3.4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Three trays, four cookies on each. Three groups of four make twelve.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "header",
+              "text": "Groups of cookies"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times4=12",
+              "at": "twelve"
+            },
+            {
+              "do": "text",
+              "text": "Groups × cookies in each",
+              "at": "groups"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take one cookie from every tray.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "c0_3",
+                "c1_3",
+                "c2_3"
+              ],
+              "by": [
+                0,
+                0.55
+              ],
+              "at": "Take",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "c0_3",
+                "c1_3",
+                "c2_3"
+              ],
+              "at": "Take",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "Take"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times3=\\;?",
+              "at": "Take",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Three groups of three. Nine cookies.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Nine"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times3=9",
+              "at": "Nine",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Again. Three groups of two. Six cookies.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "c0_2",
+                "c1_2",
+                "c2_2"
+              ],
+              "by": [
+                0,
+                0.55
+              ],
+              "at": "Again",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "c0_2",
+                "c1_2",
+                "c2_2"
+              ],
+              "at": "Again",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "Again"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times2=\\;?",
+              "at": "Again",
+              "fresh": true
+            },
+            {
+              "do": "clear",
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times2=6",
+              "at": "Six",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Again. Three groups of one. Three cookies.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "c0_1",
+                "c1_1",
+                "c2_1"
+              ],
+              "by": [
+                0,
+                0.55
+              ],
+              "at": "Again",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "c0_1",
+                "c1_1",
+                "c2_1"
+              ],
+              "at": "Again",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "Again"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times1=\\;?",
+              "at": "Again",
+              "fresh": true
+            },
+            {
+              "do": "clear",
+              "at": "cookies"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times1=3",
+              "at": "cookies",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Take the last cookie from every tray.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "c0_0",
+                "c1_0",
+                "c2_0"
+              ],
+              "by": [
+                0,
+                0.55
+              ],
+              "at": "Take",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "c0_0",
+                "c1_0",
+                "c2_0"
+              ],
+              "at": "Take",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "Take"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times0=\\;?",
+              "at": "Take",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The trays are there, but every group is empty.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "tray0",
+                "tray1",
+                "tray2"
+              ],
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three groups of zero. Zero cookies!",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Zero"
+            },
+            {
+              "do": "write",
+              "tex": "3\\times0=0",
+              "at": "Zero",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Yes. We count cookies, not trays.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "3 empty groups → 0 cookies",
+              "at": "cookies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "tableP0": [
+            -3.3,
+            3.1
+          ],
+          "tableP1": [
+            3.3,
+            3.1
+          ],
+          "tableP2": [
+            3.3,
+            -3.1
+          ],
+          "tableP3": [
+            -3.3,
+            -3.1
+          ],
+          "tray0P0": [
+            -2.625,
+            2.75
+          ],
+          "tray0P1": [
+            2.625,
+            2.75
+          ],
+          "tray0P2": [
+            2.775,
+            2.6
+          ],
+          "tray0P3": [
+            2.775,
+            1.4
+          ],
+          "tray0P4": [
+            2.625,
+            1.25
+          ],
+          "tray0P5": [
+            -2.625,
+            1.25
+          ],
+          "tray0P6": [
+            -2.775,
+            1.4
+          ],
+          "tray0P7": [
+            -2.775,
+            2.6
+          ],
+          "c0_0P": [
+            -1.8,
+            2
+          ],
+          "c0_0ChipP0": [
+            -1.92,
+            2.112
+          ],
+          "c0_0ChipP1": [
+            -1.6640000000000001,
+            2.06
+          ],
+          "c0_0ChipP2": [
+            -1.832,
+            1.8479999999999999
+          ],
+          "c0_1P": [
+            -0.6,
+            2
+          ],
+          "c0_1ChipP0": [
+            -0.72,
+            2.112
+          ],
+          "c0_1ChipP1": [
+            -0.46399999999999997,
+            2.06
+          ],
+          "c0_1ChipP2": [
+            -0.632,
+            1.8479999999999999
+          ],
+          "c0_2P": [
+            0.6,
+            2
+          ],
+          "c0_2ChipP0": [
+            0.48,
+            2.112
+          ],
+          "c0_2ChipP1": [
+            0.736,
+            2.06
+          ],
+          "c0_2ChipP2": [
+            0.568,
+            1.8479999999999999
+          ],
+          "c0_3P": [
+            1.8,
+            2
+          ],
+          "c0_3ChipP0": [
+            1.6800000000000002,
+            2.112
+          ],
+          "c0_3ChipP1": [
+            1.936,
+            2.06
+          ],
+          "c0_3ChipP2": [
+            1.768,
+            1.8479999999999999
+          ],
+          "tray1P0": [
+            -2.625,
+            0.75
+          ],
+          "tray1P1": [
+            2.625,
+            0.75
+          ],
+          "tray1P2": [
+            2.775,
+            0.6
+          ],
+          "tray1P3": [
+            2.775,
+            -0.6
+          ],
+          "tray1P4": [
+            2.625,
+            -0.75
+          ],
+          "tray1P5": [
+            -2.625,
+            -0.75
+          ],
+          "tray1P6": [
+            -2.775,
+            -0.6
+          ],
+          "tray1P7": [
+            -2.775,
+            0.6
+          ],
+          "c1_0P": [
+            -1.8,
+            0
+          ],
+          "c1_0ChipP0": [
+            -1.92,
+            0.11200000000000002
+          ],
+          "c1_0ChipP1": [
+            -1.6640000000000001,
+            0.06
+          ],
+          "c1_0ChipP2": [
+            -1.832,
+            -0.15200000000000002
+          ],
+          "c1_1P": [
+            -0.6,
+            0
+          ],
+          "c1_1ChipP0": [
+            -0.72,
+            0.11200000000000002
+          ],
+          "c1_1ChipP1": [
+            -0.46399999999999997,
+            0.06
+          ],
+          "c1_1ChipP2": [
+            -0.632,
+            -0.15200000000000002
+          ],
+          "c1_2P": [
+            0.6,
+            0
+          ],
+          "c1_2ChipP0": [
+            0.48,
+            0.11200000000000002
+          ],
+          "c1_2ChipP1": [
+            0.736,
+            0.06
+          ],
+          "c1_2ChipP2": [
+            0.568,
+            -0.15200000000000002
+          ],
+          "c1_3P": [
+            1.8,
+            0
+          ],
+          "c1_3ChipP0": [
+            1.6800000000000002,
+            0.11200000000000002
+          ],
+          "c1_3ChipP1": [
+            1.936,
+            0.06
+          ],
+          "c1_3ChipP2": [
+            1.768,
+            -0.15200000000000002
+          ],
+          "tray2P0": [
+            -2.625,
+            -1.25
+          ],
+          "tray2P1": [
+            2.625,
+            -1.25
+          ],
+          "tray2P2": [
+            2.775,
+            -1.4
+          ],
+          "tray2P3": [
+            2.775,
+            -2.6
+          ],
+          "tray2P4": [
+            2.625,
+            -2.75
+          ],
+          "tray2P5": [
+            -2.625,
+            -2.75
+          ],
+          "tray2P6": [
+            -2.775,
+            -2.6
+          ],
+          "tray2P7": [
+            -2.775,
+            -1.4
+          ],
+          "c2_0P": [
+            -1.8,
+            -2
+          ],
+          "c2_0ChipP0": [
+            -1.92,
+            -1.888
+          ],
+          "c2_0ChipP1": [
+            -1.6640000000000001,
+            -1.94
+          ],
+          "c2_0ChipP2": [
+            -1.832,
+            -2.152
+          ],
+          "c2_1P": [
+            -0.6,
+            -2
+          ],
+          "c2_1ChipP0": [
+            -0.72,
+            -1.888
+          ],
+          "c2_1ChipP1": [
+            -0.46399999999999997,
+            -1.94
+          ],
+          "c2_1ChipP2": [
+            -0.632,
+            -2.152
+          ],
+          "c2_2P": [
+            0.6,
+            -2
+          ],
+          "c2_2ChipP0": [
+            0.48,
+            -1.888
+          ],
+          "c2_2ChipP1": [
+            0.736,
+            -1.94
+          ],
+          "c2_2ChipP2": [
+            0.568,
+            -2.152
+          ],
+          "c2_3P": [
+            1.8,
+            -2
+          ],
+          "c2_3ChipP0": [
+            1.6800000000000002,
+            -1.888
+          ],
+          "c2_3ChipP1": [
+            1.936,
+            -1.94
+          ],
+          "c2_3ChipP2": [
+            1.768,
+            -2.152
+          ]
+        },
+        "parts": [
+          {
+            "id": "table",
+            "poly": [
+              "tableP0",
+              "tableP1",
+              "tableP2",
+              "tableP3"
+            ],
+            "fill": "warm-fill",
+            "ink": "wood",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "tray0",
+            "group": "tray0",
+            "poly": [
+              "tray0P0",
+              "tray0P1",
+              "tray0P2",
+              "tray0P3",
+              "tray0P4",
+              "tray0P5",
+              "tray0P6",
+              "tray0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c0_0Body",
+            "group": "c0_0",
+            "circle": "c0_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c0_0Chip0",
+            "group": "c0_0",
+            "circle": "c0_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_0Chip1",
+            "group": "c0_0",
+            "circle": "c0_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_0Chip2",
+            "group": "c0_0",
+            "circle": "c0_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_1Body",
+            "group": "c0_1",
+            "circle": "c0_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c0_1Chip0",
+            "group": "c0_1",
+            "circle": "c0_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_1Chip1",
+            "group": "c0_1",
+            "circle": "c0_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_1Chip2",
+            "group": "c0_1",
+            "circle": "c0_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_2Body",
+            "group": "c0_2",
+            "circle": "c0_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c0_2Chip0",
+            "group": "c0_2",
+            "circle": "c0_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_2Chip1",
+            "group": "c0_2",
+            "circle": "c0_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_2Chip2",
+            "group": "c0_2",
+            "circle": "c0_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_3Body",
+            "group": "c0_3",
+            "circle": "c0_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c0_3Chip0",
+            "group": "c0_3",
+            "circle": "c0_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_3Chip1",
+            "group": "c0_3",
+            "circle": "c0_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c0_3Chip2",
+            "group": "c0_3",
+            "circle": "c0_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "tray1",
+            "group": "tray1",
+            "poly": [
+              "tray1P0",
+              "tray1P1",
+              "tray1P2",
+              "tray1P3",
+              "tray1P4",
+              "tray1P5",
+              "tray1P6",
+              "tray1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c1_0Body",
+            "group": "c1_0",
+            "circle": "c1_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c1_0Chip0",
+            "group": "c1_0",
+            "circle": "c1_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_0Chip1",
+            "group": "c1_0",
+            "circle": "c1_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_0Chip2",
+            "group": "c1_0",
+            "circle": "c1_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_1Body",
+            "group": "c1_1",
+            "circle": "c1_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c1_1Chip0",
+            "group": "c1_1",
+            "circle": "c1_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_1Chip1",
+            "group": "c1_1",
+            "circle": "c1_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_1Chip2",
+            "group": "c1_1",
+            "circle": "c1_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_2Body",
+            "group": "c1_2",
+            "circle": "c1_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c1_2Chip0",
+            "group": "c1_2",
+            "circle": "c1_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_2Chip1",
+            "group": "c1_2",
+            "circle": "c1_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_2Chip2",
+            "group": "c1_2",
+            "circle": "c1_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_3Body",
+            "group": "c1_3",
+            "circle": "c1_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c1_3Chip0",
+            "group": "c1_3",
+            "circle": "c1_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_3Chip1",
+            "group": "c1_3",
+            "circle": "c1_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c1_3Chip2",
+            "group": "c1_3",
+            "circle": "c1_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "tray2",
+            "group": "tray2",
+            "poly": [
+              "tray2P0",
+              "tray2P1",
+              "tray2P2",
+              "tray2P3",
+              "tray2P4",
+              "tray2P5",
+              "tray2P6",
+              "tray2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "c2_0Body",
+            "group": "c2_0",
+            "circle": "c2_0P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c2_0Chip0",
+            "group": "c2_0",
+            "circle": "c2_0ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_0Chip1",
+            "group": "c2_0",
+            "circle": "c2_0ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_0Chip2",
+            "group": "c2_0",
+            "circle": "c2_0ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_1Body",
+            "group": "c2_1",
+            "circle": "c2_1P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c2_1Chip0",
+            "group": "c2_1",
+            "circle": "c2_1ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_1Chip1",
+            "group": "c2_1",
+            "circle": "c2_1ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_1Chip2",
+            "group": "c2_1",
+            "circle": "c2_1ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_2Body",
+            "group": "c2_2",
+            "circle": "c2_2P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c2_2Chip0",
+            "group": "c2_2",
+            "circle": "c2_2ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_2Chip1",
+            "group": "c2_2",
+            "circle": "c2_2ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_2Chip2",
+            "group": "c2_2",
+            "circle": "c2_2ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_3Body",
+            "group": "c2_3",
+            "circle": "c2_3P",
+            "r": 0.4,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "c2_3Chip0",
+            "group": "c2_3",
+            "circle": "c2_3ChipP0",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_3Chip1",
+            "group": "c2_3",
+            "circle": "c2_3ChipP1",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "c2_3Chip2",
+            "group": "c2_3",
+            "circle": "c2_3ChipP2",
+            "r": 0.042,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          }
+        ],
+        "view": [
+          -3.5,
+          -3.4,
+          3.5,
+          3.4
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Put back four cookies on each tray.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Take away whole groups"
+            },
+            {
+              "do": "show",
+              "target": [
+                "c0_0",
+                "c1_0",
+                "c2_0",
+                "c0_1",
+                "c1_1",
+                "c2_1",
+                "c0_2",
+                "c1_2",
+                "c2_2",
+                "c0_3",
+                "c1_3",
+                "c2_3"
+              ],
+              "at": "back",
+              "dur": 0.8
+            },
+            {
+              "do": "write",
+              "tex": "3\\times4=12",
+              "at": "tray"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "This time, take away a whole tray. Two groups of four. Eight.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "tray2",
+                "c2_0",
+                "c2_1",
+                "c2_2",
+                "c2_3"
+              ],
+              "by": [
+                0.8,
+                0
+              ],
+              "at": "take",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "tray2",
+                "c2_0",
+                "c2_1",
+                "c2_2",
+                "c2_3"
+              ],
+              "at": "take",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "take"
+            },
+            {
+              "do": "write",
+              "tex": "2\\times4=\\;?",
+              "at": "take",
+              "fresh": true
+            },
+            {
+              "do": "clear",
+              "at": "Eight"
+            },
+            {
+              "do": "write",
+              "tex": "2\\times4=8",
+              "at": "Eight",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Another tray leaves. One group of four. Four.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "tray1",
+                "c1_0",
+                "c1_1",
+                "c1_2",
+                "c1_3"
+              ],
+              "by": [
+                0.8,
+                0
+              ],
+              "at": "Another",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "tray1",
+                "c1_0",
+                "c1_1",
+                "c1_2",
+                "c1_3"
+              ],
+              "at": "Another",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "Another"
+            },
+            {
+              "do": "write",
+              "tex": "1\\times4=\\;?",
+              "at": "Another",
+              "fresh": true
+            },
+            {
+              "do": "clear",
+              "at": "Four",
+              "nth": 2
+            },
+            {
+              "do": "write",
+              "tex": "1\\times4=4",
+              "at": "Four",
+              "fresh": true,
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One group gives exactly the cookies on that tray.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tray0",
+              "at": "One"
+            },
+            {
+              "do": "text",
+              "text": "1 group of 4",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The last tray leaves. Zero groups of four. How many cookies?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "slide",
+              "target": [
+                "tray0",
+                "c0_0",
+                "c0_1",
+                "c0_2",
+                "c0_3"
+              ],
+              "by": [
+                0.8,
+                0
+              ],
+              "at": "last",
+              "dur": 0.6
+            },
+            {
+              "do": "hide",
+              "target": [
+                "tray0",
+                "c0_0",
+                "c0_1",
+                "c0_2",
+                "c0_3"
+              ],
+              "at": "last",
+              "dur": 0.6
+            },
+            {
+              "do": "clear",
+              "at": "last"
+            },
+            {
+              "do": "write",
+              "tex": "0\\times4=\\;?",
+              "at": "last",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four?",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "text",
+              "text": "4 cookies?",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Where would those four cookies be?",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "table",
+              "at": "Where"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "There are no trays! So there are zero cookies.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear",
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "0\\times4=0",
+              "at": "zero",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zero groups means nothing to count.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "No groups → 0 cookies",
+              "at": "nothing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "bigP0": [
+            -4.55,
+            1.7999999999999998
+          ],
+          "bigP1": [
+            -0.75,
+            1.7999999999999998
+          ],
+          "bigP2": [
+            -0.6000000000000001,
+            1.65
+          ],
+          "bigP3": [
+            -0.6000000000000001,
+            -0.85
+          ],
+          "bigP4": [
+            -0.75,
+            -0.9999999999999999
+          ],
+          "bigP5": [
+            -4.55,
+            -0.9999999999999999
+          ],
+          "bigP6": [
+            -4.699999999999999,
+            -0.85
+          ],
+          "bigP7": [
+            -4.699999999999999,
+            1.65
+          ],
+          "left0P": [
+            -4.05,
+            1.1
+          ],
+          "left0ChipP0": [
+            -4.149,
+            1.1924000000000001
+          ],
+          "left0ChipP1": [
+            -3.9377999999999997,
+            1.1495000000000002
+          ],
+          "left0ChipP2": [
+            -4.0764,
+            0.9746000000000001
+          ],
+          "left1P": [
+            -3.12,
+            1.1
+          ],
+          "left1ChipP0": [
+            -3.2190000000000003,
+            1.1924000000000001
+          ],
+          "left1ChipP1": [
+            -3.0078,
+            1.1495000000000002
+          ],
+          "left1ChipP2": [
+            -3.1464000000000003,
+            0.9746000000000001
+          ],
+          "left2P": [
+            -2.19,
+            1.1
+          ],
+          "left2ChipP0": [
+            -2.289,
+            1.1924000000000001
+          ],
+          "left2ChipP1": [
+            -2.0778,
+            1.1495000000000002
+          ],
+          "left2ChipP2": [
+            -2.2164,
+            0.9746000000000001
+          ],
+          "left3P": [
+            -1.26,
+            1.1
+          ],
+          "left3ChipP0": [
+            -1.359,
+            1.1924000000000001
+          ],
+          "left3ChipP1": [
+            -1.1478,
+            1.1495000000000002
+          ],
+          "left3ChipP2": [
+            -1.2864,
+            0.9746000000000001
+          ],
+          "left4P": [
+            -3.58,
+            -0.25
+          ],
+          "left4ChipP0": [
+            -3.6790000000000003,
+            -0.1576
+          ],
+          "left4ChipP1": [
+            -3.4678,
+            -0.2005
+          ],
+          "left4ChipP2": [
+            -3.6064000000000003,
+            -0.3754
+          ],
+          "left5P": [
+            -2.65,
+            -0.25
+          ],
+          "left5ChipP0": [
+            -2.749,
+            -0.1576
+          ],
+          "left5ChipP1": [
+            -2.5378,
+            -0.2005
+          ],
+          "left5ChipP2": [
+            -2.6764,
+            -0.3754
+          ],
+          "left6P": [
+            -1.72,
+            -0.25
+          ],
+          "left6ChipP0": [
+            -1.819,
+            -0.1576
+          ],
+          "left6ChipP1": [
+            -1.6078,
+            -0.2005
+          ],
+          "left6ChipP2": [
+            -1.7464,
+            -0.3754
+          ],
+          "small0P0": [
+            0.8524999999999999,
+            1.5750000000000002
+          ],
+          "small0P1": [
+            1.4474999999999998,
+            1.5750000000000002
+          ],
+          "small0P2": [
+            1.5899999999999999,
+            1.4325
+          ],
+          "small0P3": [
+            1.5899999999999999,
+            0.7675000000000001
+          ],
+          "small0P4": [
+            1.4474999999999998,
+            0.6250000000000001
+          ],
+          "small0P5": [
+            0.8524999999999999,
+            0.6250000000000001
+          ],
+          "small0P6": [
+            0.71,
+            0.7675000000000001
+          ],
+          "small0P7": [
+            0.71,
+            1.4325
+          ],
+          "right0P": [
+            1.15,
+            1.1
+          ],
+          "right0ChipP0": [
+            1.051,
+            1.1924000000000001
+          ],
+          "right0ChipP1": [
+            1.2622,
+            1.1495000000000002
+          ],
+          "right0ChipP2": [
+            1.1236,
+            0.9746000000000001
+          ],
+          "small1P0": [
+            1.8525,
+            1.5750000000000002
+          ],
+          "small1P1": [
+            2.4475,
+            1.5750000000000002
+          ],
+          "small1P2": [
+            2.59,
+            1.4325
+          ],
+          "small1P3": [
+            2.59,
+            0.7675000000000001
+          ],
+          "small1P4": [
+            2.4475,
+            0.6250000000000001
+          ],
+          "small1P5": [
+            1.8525,
+            0.6250000000000001
+          ],
+          "small1P6": [
+            1.71,
+            0.7675000000000001
+          ],
+          "small1P7": [
+            1.71,
+            1.4325
+          ],
+          "right1P": [
+            2.15,
+            1.1
+          ],
+          "right1ChipP0": [
+            2.0509999999999997,
+            1.1924000000000001
+          ],
+          "right1ChipP1": [
+            2.2622,
+            1.1495000000000002
+          ],
+          "right1ChipP2": [
+            2.1235999999999997,
+            0.9746000000000001
+          ],
+          "small2P0": [
+            2.8525,
+            1.5750000000000002
+          ],
+          "small2P1": [
+            3.4475,
+            1.5750000000000002
+          ],
+          "small2P2": [
+            3.59,
+            1.4325
+          ],
+          "small2P3": [
+            3.59,
+            0.7675000000000001
+          ],
+          "small2P4": [
+            3.4475,
+            0.6250000000000001
+          ],
+          "small2P5": [
+            2.8525,
+            0.6250000000000001
+          ],
+          "small2P6": [
+            2.71,
+            0.7675000000000001
+          ],
+          "small2P7": [
+            2.71,
+            1.4325
+          ],
+          "right2P": [
+            3.15,
+            1.1
+          ],
+          "right2ChipP0": [
+            3.0509999999999997,
+            1.1924000000000001
+          ],
+          "right2ChipP1": [
+            3.2622,
+            1.1495000000000002
+          ],
+          "right2ChipP2": [
+            3.1235999999999997,
+            0.9746000000000001
+          ],
+          "small3P0": [
+            3.8525000000000005,
+            1.5750000000000002
+          ],
+          "small3P1": [
+            4.447500000000001,
+            1.5750000000000002
+          ],
+          "small3P2": [
+            4.590000000000001,
+            1.4325
+          ],
+          "small3P3": [
+            4.590000000000001,
+            0.7675000000000001
+          ],
+          "small3P4": [
+            4.447500000000001,
+            0.6250000000000001
+          ],
+          "small3P5": [
+            3.8525000000000005,
+            0.6250000000000001
+          ],
+          "small3P6": [
+            3.7100000000000004,
+            0.7675000000000001
+          ],
+          "small3P7": [
+            3.7100000000000004,
+            1.4325
+          ],
+          "right3P": [
+            4.15,
+            1.1
+          ],
+          "right3ChipP0": [
+            4.051,
+            1.1924000000000001
+          ],
+          "right3ChipP1": [
+            4.2622,
+            1.1495000000000002
+          ],
+          "right3ChipP2": [
+            4.123600000000001,
+            0.9746000000000001
+          ],
+          "small4P0": [
+            1.3525,
+            0.22499999999999998
+          ],
+          "small4P1": [
+            1.9474999999999998,
+            0.22499999999999998
+          ],
+          "small4P2": [
+            2.09,
+            0.08250000000000002
+          ],
+          "small4P3": [
+            2.09,
+            -0.5825
+          ],
+          "small4P4": [
+            1.9474999999999998,
+            -0.725
+          ],
+          "small4P5": [
+            1.3525,
+            -0.725
+          ],
+          "small4P6": [
+            1.21,
+            -0.5825
+          ],
+          "small4P7": [
+            1.21,
+            0.08250000000000002
+          ],
+          "right4P": [
+            1.65,
+            -0.25
+          ],
+          "right4ChipP0": [
+            1.551,
+            -0.1576
+          ],
+          "right4ChipP1": [
+            1.7622,
+            -0.2005
+          ],
+          "right4ChipP2": [
+            1.6236,
+            -0.3754
+          ],
+          "small5P0": [
+            2.3525,
+            0.22499999999999998
+          ],
+          "small5P1": [
+            2.9475,
+            0.22499999999999998
+          ],
+          "small5P2": [
+            3.09,
+            0.08250000000000002
+          ],
+          "small5P3": [
+            3.09,
+            -0.5825
+          ],
+          "small5P4": [
+            2.9475,
+            -0.725
+          ],
+          "small5P5": [
+            2.3525,
+            -0.725
+          ],
+          "small5P6": [
+            2.21,
+            -0.5825
+          ],
+          "small5P7": [
+            2.21,
+            0.08250000000000002
+          ],
+          "right5P": [
+            2.65,
+            -0.25
+          ],
+          "right5ChipP0": [
+            2.5509999999999997,
+            -0.1576
+          ],
+          "right5ChipP1": [
+            2.7622,
+            -0.2005
+          ],
+          "right5ChipP2": [
+            2.6235999999999997,
+            -0.3754
+          ],
+          "small6P0": [
+            3.3525,
+            0.22499999999999998
+          ],
+          "small6P1": [
+            3.9475,
+            0.22499999999999998
+          ],
+          "small6P2": [
+            4.09,
+            0.08250000000000002
+          ],
+          "small6P3": [
+            4.09,
+            -0.5825
+          ],
+          "small6P4": [
+            3.9475,
+            -0.725
+          ],
+          "small6P5": [
+            3.3525,
+            -0.725
+          ],
+          "small6P6": [
+            3.21,
+            -0.5825
+          ],
+          "small6P7": [
+            3.21,
+            0.08250000000000002
+          ],
+          "right6P": [
+            3.65,
+            -0.25
+          ],
+          "right6ChipP0": [
+            3.5509999999999997,
+            -0.1576
+          ],
+          "right6ChipP1": [
+            3.7622,
+            -0.2005
+          ],
+          "right6ChipP2": [
+            3.6235999999999997,
+            -0.3754
+          ],
+          "leftNameP": [
+            -2.65,
+            2.5
+          ],
+          "rightNameP": [
+            2.65,
+            2.5
+          ],
+          "leftEqP": [
+            -2.65,
+            -1.85
+          ],
+          "rightEqP": [
+            2.65,
+            -1.85
+          ]
+        },
+        "parts": [
+          {
+            "id": "big",
+            "group": "big",
+            "poly": [
+              "bigP0",
+              "bigP1",
+              "bigP2",
+              "bigP3",
+              "bigP4",
+              "bigP5",
+              "bigP6",
+              "bigP7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "left0Body",
+            "group": "left0",
+            "circle": "left0P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left0Chip0",
+            "group": "left0",
+            "circle": "left0ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left0Chip1",
+            "group": "left0",
+            "circle": "left0ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left0Chip2",
+            "group": "left0",
+            "circle": "left0ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left1Body",
+            "group": "left1",
+            "circle": "left1P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left1Chip0",
+            "group": "left1",
+            "circle": "left1ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left1Chip1",
+            "group": "left1",
+            "circle": "left1ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left1Chip2",
+            "group": "left1",
+            "circle": "left1ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left2Body",
+            "group": "left2",
+            "circle": "left2P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left2Chip0",
+            "group": "left2",
+            "circle": "left2ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left2Chip1",
+            "group": "left2",
+            "circle": "left2ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left2Chip2",
+            "group": "left2",
+            "circle": "left2ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left3Body",
+            "group": "left3",
+            "circle": "left3P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left3Chip0",
+            "group": "left3",
+            "circle": "left3ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left3Chip1",
+            "group": "left3",
+            "circle": "left3ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left3Chip2",
+            "group": "left3",
+            "circle": "left3ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left4Body",
+            "group": "left4",
+            "circle": "left4P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left4Chip0",
+            "group": "left4",
+            "circle": "left4ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left4Chip1",
+            "group": "left4",
+            "circle": "left4ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left4Chip2",
+            "group": "left4",
+            "circle": "left4ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left5Body",
+            "group": "left5",
+            "circle": "left5P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left5Chip0",
+            "group": "left5",
+            "circle": "left5ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left5Chip1",
+            "group": "left5",
+            "circle": "left5ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left5Chip2",
+            "group": "left5",
+            "circle": "left5ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left6Body",
+            "group": "left6",
+            "circle": "left6P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "left6Chip0",
+            "group": "left6",
+            "circle": "left6ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left6Chip1",
+            "group": "left6",
+            "circle": "left6ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "left6Chip2",
+            "group": "left6",
+            "circle": "left6ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "small0",
+            "group": "small0",
+            "poly": [
+              "small0P0",
+              "small0P1",
+              "small0P2",
+              "small0P3",
+              "small0P4",
+              "small0P5",
+              "small0P6",
+              "small0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right0Body",
+            "group": "right0",
+            "circle": "right0P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right0Chip0",
+            "group": "right0",
+            "circle": "right0ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right0Chip1",
+            "group": "right0",
+            "circle": "right0ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right0Chip2",
+            "group": "right0",
+            "circle": "right0ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small1",
+            "group": "small1",
+            "poly": [
+              "small1P0",
+              "small1P1",
+              "small1P2",
+              "small1P3",
+              "small1P4",
+              "small1P5",
+              "small1P6",
+              "small1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right1Body",
+            "group": "right1",
+            "circle": "right1P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right1Chip0",
+            "group": "right1",
+            "circle": "right1ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right1Chip1",
+            "group": "right1",
+            "circle": "right1ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right1Chip2",
+            "group": "right1",
+            "circle": "right1ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small2",
+            "group": "small2",
+            "poly": [
+              "small2P0",
+              "small2P1",
+              "small2P2",
+              "small2P3",
+              "small2P4",
+              "small2P5",
+              "small2P6",
+              "small2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right2Body",
+            "group": "right2",
+            "circle": "right2P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right2Chip0",
+            "group": "right2",
+            "circle": "right2ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right2Chip1",
+            "group": "right2",
+            "circle": "right2ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right2Chip2",
+            "group": "right2",
+            "circle": "right2ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small3",
+            "group": "small3",
+            "poly": [
+              "small3P0",
+              "small3P1",
+              "small3P2",
+              "small3P3",
+              "small3P4",
+              "small3P5",
+              "small3P6",
+              "small3P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right3Body",
+            "group": "right3",
+            "circle": "right3P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right3Chip0",
+            "group": "right3",
+            "circle": "right3ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right3Chip1",
+            "group": "right3",
+            "circle": "right3ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right3Chip2",
+            "group": "right3",
+            "circle": "right3ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small4",
+            "group": "small4",
+            "poly": [
+              "small4P0",
+              "small4P1",
+              "small4P2",
+              "small4P3",
+              "small4P4",
+              "small4P5",
+              "small4P6",
+              "small4P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right4Body",
+            "group": "right4",
+            "circle": "right4P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right4Chip0",
+            "group": "right4",
+            "circle": "right4ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right4Chip1",
+            "group": "right4",
+            "circle": "right4ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right4Chip2",
+            "group": "right4",
+            "circle": "right4ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small5",
+            "group": "small5",
+            "poly": [
+              "small5P0",
+              "small5P1",
+              "small5P2",
+              "small5P3",
+              "small5P4",
+              "small5P5",
+              "small5P6",
+              "small5P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right5Body",
+            "group": "right5",
+            "circle": "right5P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right5Chip0",
+            "group": "right5",
+            "circle": "right5ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right5Chip1",
+            "group": "right5",
+            "circle": "right5ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right5Chip2",
+            "group": "right5",
+            "circle": "right5ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "small6",
+            "group": "small6",
+            "poly": [
+              "small6P0",
+              "small6P1",
+              "small6P2",
+              "small6P3",
+              "small6P4",
+              "small6P5",
+              "small6P6",
+              "small6P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": false
+          },
+          {
+            "id": "right6Body",
+            "group": "right6",
+            "circle": "right6P",
+            "r": 0.33,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": false
+          },
+          {
+            "id": "right6Chip0",
+            "group": "right6",
+            "circle": "right6ChipP0",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right6Chip1",
+            "group": "right6",
+            "circle": "right6ChipP1",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "right6Chip2",
+            "group": "right6",
+            "circle": "right6ChipP2",
+            "r": 0.03465,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": false
+          },
+          {
+            "id": "leftName",
+            "label": "\\text{One group}",
+            "at": "leftNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "rightName",
+            "label": "\\text{Groups of one}",
+            "at": "rightNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false
+          },
+          {
+            "id": "leftEq",
+            "label": "1\\times7=7",
+            "at": "leftEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false
+          },
+          {
+            "id": "rightEq",
+            "label": "7\\times1=7",
+            "at": "rightEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false
+          }
+        ],
+        "view": [
+          -5,
+          -2.8,
+          5,
+          3.1
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Here is one tray of seven. What does the one count?",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "What does the 1 count?"
+            },
+            {
+              "do": "write",
+              "tex": "1\\times7=\\;?",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "big",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One tray. There are seven cookies.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear",
+              "at": "seven"
+            },
+            {
+              "do": "write",
+              "tex": "1\\times7=7",
+              "at": "seven",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "leftEq",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "And here are seven trays, with one cookie on each.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "small0",
+                "small1",
+                "small2",
+                "small3",
+                "small4",
+                "small5",
+                "small6",
+                "rightName"
+              ],
+              "at": "trays"
+            },
+            {
+              "do": "show",
+              "target": [
+                "right0",
+                "right1",
+                "right2",
+                "right3",
+                "right4",
+                "right5",
+                "right6"
+              ],
+              "at": "cookie"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Count one for each tray: one, two, three, four, five, six, seven.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "right0",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "right1",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "right2",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "right3",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "right4",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "right5",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "right6",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Seven groups of one make seven.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "clear",
+              "at": "make"
+            },
+            {
+              "do": "write",
+              "tex": "7\\times1=7",
+              "at": "make",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "rightEq",
+              "at": "make"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The pictures are different, but both have seven cookies.",
+          "pause": 0.05,
+          "do": [
+            {
+              "do": "text",
+              "text": "Different groups. Same total.",
+              "at": "different"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {
+          "emptyTableP0": [
+            -4.824999999999999,
+            3.35
+          ],
+          "emptyTableP1": [
+            -0.4750000000000001,
+            3.35
+          ],
+          "emptyTableP2": [
+            -0.4750000000000001,
+            0.6499999999999999
+          ],
+          "emptyTableP3": [
+            -4.824999999999999,
+            0.6499999999999999
+          ],
+          "empty0P0": [
+            -4.385,
+            3.0999999999999996
+          ],
+          "empty0P1": [
+            -0.915,
+            3.0999999999999996
+          ],
+          "empty0P2": [
+            -0.825,
+            3.01
+          ],
+          "empty0P3": [
+            -0.825,
+            2.59
+          ],
+          "empty0P4": [
+            -0.915,
+            2.5
+          ],
+          "empty0P5": [
+            -4.385,
+            2.5
+          ],
+          "empty0P6": [
+            -4.475,
+            2.59
+          ],
+          "empty0P7": [
+            -4.475,
+            3.01
+          ],
+          "empty1P0": [
+            -4.385,
+            2.3
+          ],
+          "empty1P1": [
+            -0.915,
+            2.3
+          ],
+          "empty1P2": [
+            -0.825,
+            2.21
+          ],
+          "empty1P3": [
+            -0.825,
+            1.79
+          ],
+          "empty1P4": [
+            -0.915,
+            1.7
+          ],
+          "empty1P5": [
+            -4.385,
+            1.7
+          ],
+          "empty1P6": [
+            -4.475,
+            1.79
+          ],
+          "empty1P7": [
+            -4.475,
+            2.21
+          ],
+          "empty2P0": [
+            -4.385,
+            1.5
+          ],
+          "empty2P1": [
+            -0.915,
+            1.5
+          ],
+          "empty2P2": [
+            -0.825,
+            1.41
+          ],
+          "empty2P3": [
+            -0.825,
+            0.99
+          ],
+          "empty2P4": [
+            -0.915,
+            0.8999999999999999
+          ],
+          "empty2P5": [
+            -4.385,
+            0.8999999999999999
+          ],
+          "empty2P6": [
+            -4.475,
+            0.99
+          ],
+          "empty2P7": [
+            -4.475,
+            1.41
+          ],
+          "noTableP0": [
+            0.4750000000000001,
+            3.35
+          ],
+          "noTableP1": [
+            4.824999999999999,
+            3.35
+          ],
+          "noTableP2": [
+            4.824999999999999,
+            0.6499999999999999
+          ],
+          "noTableP3": [
+            0.4750000000000001,
+            0.6499999999999999
+          ],
+          "emptyNameP": [
+            -2.65,
+            3.95
+          ],
+          "noNameP": [
+            2.65,
+            3.95
+          ],
+          "emptyEqP": [
+            -2.65,
+            0.1
+          ],
+          "noEqP": [
+            2.65,
+            0.1
+          ],
+          "oneTrayP0": [
+            -4.55,
+            -1.725
+          ],
+          "oneTrayP1": [
+            -0.75,
+            -1.725
+          ],
+          "oneTrayP2": [
+            -0.6000000000000001,
+            -1.8750000000000002
+          ],
+          "oneTrayP3": [
+            -0.6000000000000001,
+            -3.7249999999999996
+          ],
+          "oneTrayP4": [
+            -0.75,
+            -3.875
+          ],
+          "oneTrayP5": [
+            -4.55,
+            -3.875
+          ],
+          "oneTrayP6": [
+            -4.699999999999999,
+            -3.7249999999999996
+          ],
+          "oneTrayP7": [
+            -4.699999999999999,
+            -1.8750000000000002
+          ],
+          "oneCookie0P": [
+            -4.05,
+            -2.0999999999999996
+          ],
+          "oneCookie0ChipP0": [
+            -4.14,
+            -2.016
+          ],
+          "oneCookie0ChipP1": [
+            -3.948,
+            -2.0549999999999997
+          ],
+          "oneCookie0ChipP2": [
+            -4.074,
+            -2.2139999999999995
+          ],
+          "oneCookie1P": [
+            -3.12,
+            -2.0999999999999996
+          ],
+          "oneCookie1ChipP0": [
+            -3.21,
+            -2.016
+          ],
+          "oneCookie1ChipP1": [
+            -3.0180000000000002,
+            -2.0549999999999997
+          ],
+          "oneCookie1ChipP2": [
+            -3.144,
+            -2.2139999999999995
+          ],
+          "oneCookie2P": [
+            -2.19,
+            -2.0999999999999996
+          ],
+          "oneCookie2ChipP0": [
+            -2.28,
+            -2.016
+          ],
+          "oneCookie2ChipP1": [
+            -2.088,
+            -2.0549999999999997
+          ],
+          "oneCookie2ChipP2": [
+            -2.214,
+            -2.2139999999999995
+          ],
+          "oneCookie3P": [
+            -1.26,
+            -2.0999999999999996
+          ],
+          "oneCookie3ChipP0": [
+            -1.35,
+            -2.016
+          ],
+          "oneCookie3ChipP1": [
+            -1.158,
+            -2.0549999999999997
+          ],
+          "oneCookie3ChipP2": [
+            -1.284,
+            -2.2139999999999995
+          ],
+          "oneCookie4P": [
+            -3.58,
+            -3.45
+          ],
+          "oneCookie4ChipP0": [
+            -3.67,
+            -3.3659999999999997
+          ],
+          "oneCookie4ChipP1": [
+            -3.478,
+            -3.4050000000000002
+          ],
+          "oneCookie4ChipP2": [
+            -3.604,
+            -3.564
+          ],
+          "oneCookie5P": [
+            -2.65,
+            -3.45
+          ],
+          "oneCookie5ChipP0": [
+            -2.7399999999999998,
+            -3.3659999999999997
+          ],
+          "oneCookie5ChipP1": [
+            -2.548,
+            -3.4050000000000002
+          ],
+          "oneCookie5ChipP2": [
+            -2.674,
+            -3.564
+          ],
+          "oneCookie6P": [
+            -1.72,
+            -3.45
+          ],
+          "oneCookie6ChipP0": [
+            -1.81,
+            -3.3659999999999997
+          ],
+          "oneCookie6ChipP1": [
+            -1.6179999999999999,
+            -3.4050000000000002
+          ],
+          "oneCookie6ChipP2": [
+            -1.744,
+            -3.564
+          ],
+          "unitTray0P0": [
+            0.845,
+            -1.65
+          ],
+          "unitTray0P1": [
+            1.4549999999999998,
+            -1.65
+          ],
+          "unitTray0P2": [
+            1.5899999999999999,
+            -1.785
+          ],
+          "unitTray0P3": [
+            1.5899999999999999,
+            -2.415
+          ],
+          "unitTray0P4": [
+            1.4549999999999998,
+            -2.55
+          ],
+          "unitTray0P5": [
+            0.845,
+            -2.55
+          ],
+          "unitTray0P6": [
+            0.71,
+            -2.415
+          ],
+          "unitTray0P7": [
+            0.71,
+            -1.785
+          ],
+          "unitCookie0P": [
+            1.15,
+            -2.0999999999999996
+          ],
+          "unitCookie0ChipP0": [
+            1.0599999999999998,
+            -2.016
+          ],
+          "unitCookie0ChipP1": [
+            1.252,
+            -2.0549999999999997
+          ],
+          "unitCookie0ChipP2": [
+            1.126,
+            -2.2139999999999995
+          ],
+          "unitTray1P0": [
+            1.845,
+            -1.65
+          ],
+          "unitTray1P1": [
+            2.455,
+            -1.65
+          ],
+          "unitTray1P2": [
+            2.59,
+            -1.785
+          ],
+          "unitTray1P3": [
+            2.59,
+            -2.415
+          ],
+          "unitTray1P4": [
+            2.455,
+            -2.55
+          ],
+          "unitTray1P5": [
+            1.845,
+            -2.55
+          ],
+          "unitTray1P6": [
+            1.71,
+            -2.415
+          ],
+          "unitTray1P7": [
+            1.71,
+            -1.785
+          ],
+          "unitCookie1P": [
+            2.15,
+            -2.0999999999999996
+          ],
+          "unitCookie1ChipP0": [
+            2.06,
+            -2.016
+          ],
+          "unitCookie1ChipP1": [
+            2.252,
+            -2.0549999999999997
+          ],
+          "unitCookie1ChipP2": [
+            2.126,
+            -2.2139999999999995
+          ],
+          "unitTray2P0": [
+            2.8449999999999998,
+            -1.65
+          ],
+          "unitTray2P1": [
+            3.455,
+            -1.65
+          ],
+          "unitTray2P2": [
+            3.59,
+            -1.785
+          ],
+          "unitTray2P3": [
+            3.59,
+            -2.415
+          ],
+          "unitTray2P4": [
+            3.455,
+            -2.55
+          ],
+          "unitTray2P5": [
+            2.8449999999999998,
+            -2.55
+          ],
+          "unitTray2P6": [
+            2.71,
+            -2.415
+          ],
+          "unitTray2P7": [
+            2.71,
+            -1.785
+          ],
+          "unitCookie2P": [
+            3.15,
+            -2.0999999999999996
+          ],
+          "unitCookie2ChipP0": [
+            3.06,
+            -2.016
+          ],
+          "unitCookie2ChipP1": [
+            3.252,
+            -2.0549999999999997
+          ],
+          "unitCookie2ChipP2": [
+            3.126,
+            -2.2139999999999995
+          ],
+          "unitTray3P0": [
+            3.845,
+            -1.65
+          ],
+          "unitTray3P1": [
+            4.455,
+            -1.65
+          ],
+          "unitTray3P2": [
+            4.590000000000001,
+            -1.785
+          ],
+          "unitTray3P3": [
+            4.590000000000001,
+            -2.415
+          ],
+          "unitTray3P4": [
+            4.455,
+            -2.55
+          ],
+          "unitTray3P5": [
+            3.845,
+            -2.55
+          ],
+          "unitTray3P6": [
+            3.7100000000000004,
+            -2.415
+          ],
+          "unitTray3P7": [
+            3.7100000000000004,
+            -1.785
+          ],
+          "unitCookie3P": [
+            4.15,
+            -2.0999999999999996
+          ],
+          "unitCookie3ChipP0": [
+            4.0600000000000005,
+            -2.016
+          ],
+          "unitCookie3ChipP1": [
+            4.252000000000001,
+            -2.0549999999999997
+          ],
+          "unitCookie3ChipP2": [
+            4.126,
+            -2.2139999999999995
+          ],
+          "unitTray4P0": [
+            1.345,
+            -3
+          ],
+          "unitTray4P1": [
+            1.9549999999999998,
+            -3
+          ],
+          "unitTray4P2": [
+            2.09,
+            -3.135
+          ],
+          "unitTray4P3": [
+            2.09,
+            -3.7649999999999997
+          ],
+          "unitTray4P4": [
+            1.9549999999999998,
+            -3.9000000000000004
+          ],
+          "unitTray4P5": [
+            1.345,
+            -3.9000000000000004
+          ],
+          "unitTray4P6": [
+            1.21,
+            -3.7649999999999997
+          ],
+          "unitTray4P7": [
+            1.21,
+            -3.135
+          ],
+          "unitCookie4P": [
+            1.65,
+            -3.45
+          ],
+          "unitCookie4ChipP0": [
+            1.5599999999999998,
+            -3.3659999999999997
+          ],
+          "unitCookie4ChipP1": [
+            1.752,
+            -3.4050000000000002
+          ],
+          "unitCookie4ChipP2": [
+            1.626,
+            -3.564
+          ],
+          "unitTray5P0": [
+            2.3449999999999998,
+            -3
+          ],
+          "unitTray5P1": [
+            2.955,
+            -3
+          ],
+          "unitTray5P2": [
+            3.09,
+            -3.135
+          ],
+          "unitTray5P3": [
+            3.09,
+            -3.7649999999999997
+          ],
+          "unitTray5P4": [
+            2.955,
+            -3.9000000000000004
+          ],
+          "unitTray5P5": [
+            2.3449999999999998,
+            -3.9000000000000004
+          ],
+          "unitTray5P6": [
+            2.21,
+            -3.7649999999999997
+          ],
+          "unitTray5P7": [
+            2.21,
+            -3.135
+          ],
+          "unitCookie5P": [
+            2.65,
+            -3.45
+          ],
+          "unitCookie5ChipP0": [
+            2.56,
+            -3.3659999999999997
+          ],
+          "unitCookie5ChipP1": [
+            2.752,
+            -3.4050000000000002
+          ],
+          "unitCookie5ChipP2": [
+            2.626,
+            -3.564
+          ],
+          "unitTray6P0": [
+            3.3449999999999998,
+            -3
+          ],
+          "unitTray6P1": [
+            3.955,
+            -3
+          ],
+          "unitTray6P2": [
+            4.09,
+            -3.135
+          ],
+          "unitTray6P3": [
+            4.09,
+            -3.7649999999999997
+          ],
+          "unitTray6P4": [
+            3.955,
+            -3.9000000000000004
+          ],
+          "unitTray6P5": [
+            3.3449999999999998,
+            -3.9000000000000004
+          ],
+          "unitTray6P6": [
+            3.21,
+            -3.7649999999999997
+          ],
+          "unitTray6P7": [
+            3.21,
+            -3.135
+          ],
+          "unitCookie6P": [
+            3.65,
+            -3.45
+          ],
+          "unitCookie6ChipP0": [
+            3.56,
+            -3.3659999999999997
+          ],
+          "unitCookie6ChipP1": [
+            3.752,
+            -3.4050000000000002
+          ],
+          "unitCookie6ChipP2": [
+            3.626,
+            -3.564
+          ],
+          "oneNameP": [
+            -2.65,
+            -1.15
+          ],
+          "unitNameP": [
+            2.65,
+            -1.15
+          ],
+          "oneEqP": [
+            -2.65,
+            -4.65
+          ],
+          "unitEqP": [
+            2.65,
+            -4.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "emptyTable",
+            "poly": [
+              "emptyTableP0",
+              "emptyTableP1",
+              "emptyTableP2",
+              "emptyTableP3"
+            ],
+            "fill": "warm-fill",
+            "ink": "wood",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "empty0",
+            "group": "empty0",
+            "poly": [
+              "empty0P0",
+              "empty0P1",
+              "empty0P2",
+              "empty0P3",
+              "empty0P4",
+              "empty0P5",
+              "empty0P6",
+              "empty0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "empty1",
+            "group": "empty1",
+            "poly": [
+              "empty1P0",
+              "empty1P1",
+              "empty1P2",
+              "empty1P3",
+              "empty1P4",
+              "empty1P5",
+              "empty1P6",
+              "empty1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "empty2",
+            "group": "empty2",
+            "poly": [
+              "empty2P0",
+              "empty2P1",
+              "empty2P2",
+              "empty2P3",
+              "empty2P4",
+              "empty2P5",
+              "empty2P6",
+              "empty2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "noTable",
+            "poly": [
+              "noTableP0",
+              "noTableP1",
+              "noTableP2",
+              "noTableP3"
+            ],
+            "fill": "warm-fill",
+            "ink": "wood",
+            "w": 1,
+            "start": true
+          },
+          {
+            "id": "emptyName",
+            "label": "\\text{Empty groups}",
+            "at": "emptyNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "noName",
+            "label": "\\text{No groups}",
+            "at": "noNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "emptyEq",
+            "label": "3\\times0=0",
+            "at": "emptyEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "noEq",
+            "label": "0\\times4=0",
+            "at": "noEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "oneTray",
+            "group": "oneTray",
+            "poly": [
+              "oneTrayP0",
+              "oneTrayP1",
+              "oneTrayP2",
+              "oneTrayP3",
+              "oneTrayP4",
+              "oneTrayP5",
+              "oneTrayP6",
+              "oneTrayP7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "oneCookie0Body",
+            "group": "oneCookie0",
+            "circle": "oneCookie0P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie0Chip0",
+            "group": "oneCookie0",
+            "circle": "oneCookie0ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie0Chip1",
+            "group": "oneCookie0",
+            "circle": "oneCookie0ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie0Chip2",
+            "group": "oneCookie0",
+            "circle": "oneCookie0ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie1Body",
+            "group": "oneCookie1",
+            "circle": "oneCookie1P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie1Chip0",
+            "group": "oneCookie1",
+            "circle": "oneCookie1ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie1Chip1",
+            "group": "oneCookie1",
+            "circle": "oneCookie1ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie1Chip2",
+            "group": "oneCookie1",
+            "circle": "oneCookie1ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie2Body",
+            "group": "oneCookie2",
+            "circle": "oneCookie2P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie2Chip0",
+            "group": "oneCookie2",
+            "circle": "oneCookie2ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie2Chip1",
+            "group": "oneCookie2",
+            "circle": "oneCookie2ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie2Chip2",
+            "group": "oneCookie2",
+            "circle": "oneCookie2ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie3Body",
+            "group": "oneCookie3",
+            "circle": "oneCookie3P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie3Chip0",
+            "group": "oneCookie3",
+            "circle": "oneCookie3ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie3Chip1",
+            "group": "oneCookie3",
+            "circle": "oneCookie3ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie3Chip2",
+            "group": "oneCookie3",
+            "circle": "oneCookie3ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie4Body",
+            "group": "oneCookie4",
+            "circle": "oneCookie4P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie4Chip0",
+            "group": "oneCookie4",
+            "circle": "oneCookie4ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie4Chip1",
+            "group": "oneCookie4",
+            "circle": "oneCookie4ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie4Chip2",
+            "group": "oneCookie4",
+            "circle": "oneCookie4ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie5Body",
+            "group": "oneCookie5",
+            "circle": "oneCookie5P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie5Chip0",
+            "group": "oneCookie5",
+            "circle": "oneCookie5ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie5Chip1",
+            "group": "oneCookie5",
+            "circle": "oneCookie5ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie5Chip2",
+            "group": "oneCookie5",
+            "circle": "oneCookie5ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie6Body",
+            "group": "oneCookie6",
+            "circle": "oneCookie6P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "oneCookie6Chip0",
+            "group": "oneCookie6",
+            "circle": "oneCookie6ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie6Chip1",
+            "group": "oneCookie6",
+            "circle": "oneCookie6ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneCookie6Chip2",
+            "group": "oneCookie6",
+            "circle": "oneCookie6ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray0",
+            "group": "unitTray0",
+            "poly": [
+              "unitTray0P0",
+              "unitTray0P1",
+              "unitTray0P2",
+              "unitTray0P3",
+              "unitTray0P4",
+              "unitTray0P5",
+              "unitTray0P6",
+              "unitTray0P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie0Body",
+            "group": "unitCookie0",
+            "circle": "unitCookie0P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie0Chip0",
+            "group": "unitCookie0",
+            "circle": "unitCookie0ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie0Chip1",
+            "group": "unitCookie0",
+            "circle": "unitCookie0ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie0Chip2",
+            "group": "unitCookie0",
+            "circle": "unitCookie0ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray1",
+            "group": "unitTray1",
+            "poly": [
+              "unitTray1P0",
+              "unitTray1P1",
+              "unitTray1P2",
+              "unitTray1P3",
+              "unitTray1P4",
+              "unitTray1P5",
+              "unitTray1P6",
+              "unitTray1P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie1Body",
+            "group": "unitCookie1",
+            "circle": "unitCookie1P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie1Chip0",
+            "group": "unitCookie1",
+            "circle": "unitCookie1ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie1Chip1",
+            "group": "unitCookie1",
+            "circle": "unitCookie1ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie1Chip2",
+            "group": "unitCookie1",
+            "circle": "unitCookie1ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray2",
+            "group": "unitTray2",
+            "poly": [
+              "unitTray2P0",
+              "unitTray2P1",
+              "unitTray2P2",
+              "unitTray2P3",
+              "unitTray2P4",
+              "unitTray2P5",
+              "unitTray2P6",
+              "unitTray2P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie2Body",
+            "group": "unitCookie2",
+            "circle": "unitCookie2P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie2Chip0",
+            "group": "unitCookie2",
+            "circle": "unitCookie2ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie2Chip1",
+            "group": "unitCookie2",
+            "circle": "unitCookie2ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie2Chip2",
+            "group": "unitCookie2",
+            "circle": "unitCookie2ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray3",
+            "group": "unitTray3",
+            "poly": [
+              "unitTray3P0",
+              "unitTray3P1",
+              "unitTray3P2",
+              "unitTray3P3",
+              "unitTray3P4",
+              "unitTray3P5",
+              "unitTray3P6",
+              "unitTray3P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie3Body",
+            "group": "unitCookie3",
+            "circle": "unitCookie3P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie3Chip0",
+            "group": "unitCookie3",
+            "circle": "unitCookie3ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie3Chip1",
+            "group": "unitCookie3",
+            "circle": "unitCookie3ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie3Chip2",
+            "group": "unitCookie3",
+            "circle": "unitCookie3ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray4",
+            "group": "unitTray4",
+            "poly": [
+              "unitTray4P0",
+              "unitTray4P1",
+              "unitTray4P2",
+              "unitTray4P3",
+              "unitTray4P4",
+              "unitTray4P5",
+              "unitTray4P6",
+              "unitTray4P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie4Body",
+            "group": "unitCookie4",
+            "circle": "unitCookie4P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie4Chip0",
+            "group": "unitCookie4",
+            "circle": "unitCookie4ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie4Chip1",
+            "group": "unitCookie4",
+            "circle": "unitCookie4ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie4Chip2",
+            "group": "unitCookie4",
+            "circle": "unitCookie4ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray5",
+            "group": "unitTray5",
+            "poly": [
+              "unitTray5P0",
+              "unitTray5P1",
+              "unitTray5P2",
+              "unitTray5P3",
+              "unitTray5P4",
+              "unitTray5P5",
+              "unitTray5P6",
+              "unitTray5P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie5Body",
+            "group": "unitCookie5",
+            "circle": "unitCookie5P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie5Chip0",
+            "group": "unitCookie5",
+            "circle": "unitCookie5ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie5Chip1",
+            "group": "unitCookie5",
+            "circle": "unitCookie5ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie5Chip2",
+            "group": "unitCookie5",
+            "circle": "unitCookie5ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitTray6",
+            "group": "unitTray6",
+            "poly": [
+              "unitTray6P0",
+              "unitTray6P1",
+              "unitTray6P2",
+              "unitTray6P3",
+              "unitTray6P4",
+              "unitTray6P5",
+              "unitTray6P6",
+              "unitTray6P7"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 2,
+            "start": true
+          },
+          {
+            "id": "unitCookie6Body",
+            "group": "unitCookie6",
+            "circle": "unitCookie6P",
+            "r": 0.3,
+            "fill": "gold-fill",
+            "ink": "wood",
+            "w": 1.8,
+            "start": true
+          },
+          {
+            "id": "unitCookie6Chip0",
+            "group": "unitCookie6",
+            "circle": "unitCookie6ChipP0",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie6Chip1",
+            "group": "unitCookie6",
+            "circle": "unitCookie6ChipP1",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "unitCookie6Chip2",
+            "group": "unitCookie6",
+            "circle": "unitCookie6ChipP2",
+            "r": 0.0315,
+            "fill": "walnut",
+            "ink": "wood",
+            "w": 0.3,
+            "start": true
+          },
+          {
+            "id": "oneName",
+            "label": "\\text{One group}",
+            "at": "oneNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "unitName",
+            "label": "\\text{Groups of one}",
+            "at": "unitNameP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "oneEq",
+            "label": "1\\times7=7",
+            "at": "oneEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "unitEq",
+            "label": "7\\times1=7",
+            "at": "unitEqP",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          }
+        ],
+        "view": [
+          -5.2,
+          -5.3,
+          5.2,
+          4.6
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Empty trays, or no trays. Different pictures of zero cookies.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear",
+              "at": "Empty"
+            },
+            {
+              "do": "header",
+              "text": "Picture the groups",
+              "at": "Empty"
+            },
+            {
+              "do": "highlight",
+              "target": "emptyEq",
+              "at": "Empty"
+            },
+            {
+              "do": "highlight",
+              "target": "noEq",
+              "at": "no"
+            },
+            {
+              "do": "text",
+              "text": "Zero cookies",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "One in each group? Count one cookie for every tray.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "unitEq",
+              "at": "One"
+            },
+            {
+              "do": "text",
+              "text": "One cookie per tray",
+              "at": "every"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Zero groups or empty groups make zero. One group is just the group.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "emptyEq",
+                "noEq"
+              ],
+              "at": "Zero"
+            },
+            {
+              "do": "highlight",
+              "target": "oneEq",
+              "at": "One"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
