@@ -39,6 +39,7 @@ import {
 } from "../../features/school/api";
 import { classYearOptions } from "../../features/school/org/org-api";
 import { pilotOptions } from "../../features/school/pilots/api";
+import { StaffScreen } from "../../features/school/StaffScreen";
 
 const h = vi.hoisted(() => ({
   changed: null as null | ((session: unknown) => void),
@@ -75,6 +76,11 @@ vi.mock("../../ui/Toast", () => ({
     <div data-testid="toast">{message}</div>
   ),
 }));
+
+// Load the large screen graph as a fixture, outside each interaction test's
+// timeout. Cold transforms under a full run can consume that entire budget.
+const { LegacyApp: RealLegacyApp } =
+  await vi.importActual<typeof import("../LegacyApp")>("../LegacyApp");
 
 const O = "11111111-1111-4111-8111-111111111111";
 const C = "22222222-2222-4222-8222-222222222222";
@@ -354,7 +360,6 @@ test("CP-2 r3 M1: a new session whose account didn't load shows nothing of the o
 });
 
 test("CP-2 r3 M1: the real staff screen's management form goes with the old session", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, [] as never);
   await mount(
@@ -381,7 +386,6 @@ test("CP-2 r3 M1: the real staff screen's management form goes with the old sess
 });
 
 test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's draft", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, [] as never);
   const router = await mount(
@@ -425,7 +429,6 @@ test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's 
 });
 
 test("a pending renewal refuses staff invitations while keeping the editable draft mounted", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
   await mount(
@@ -469,7 +472,6 @@ test("a pending renewal refuses staff invitations while keeping the editable dra
 });
 
 test("an edited draft survives refused submissions and submits after renewal confirms", async () => {
-  const { StaffScreen } = await import("../../features/school/StaffScreen");
   seedSchool();
   queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
   await mount(
@@ -678,9 +680,7 @@ test("the real LegacyApp consent route refuses withdrawal until replacement /me 
     },
   };
   queryClient.setQueryData(meOptions(auth).queryKey, consentMe as never);
-  const { LegacyApp } =
-    await vi.importActual<typeof import("../LegacyApp")>("../LegacyApp");
-  await mount("/consent", LegacyApp);
+  await mount("/consent", RealLegacyApp);
   const button = screen.getByRole("button", { name: "Withdraw consent" });
   const replacement = deferred();
   h.request.mockImplementation((url: string) =>
