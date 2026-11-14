@@ -84,3 +84,70 @@ test("grant reader guard detects new, changed and duplicate direct readers", () 
     1,
   );
 });
+
+test("every SQL/ORM bypass fixture changes the approved reader inventory", async (t) => {
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/grant-reader-bypasses.json", import.meta.url),
+      "utf8",
+    ),
+  ) as { name: string; path: string; source: string }[];
+  const approved = JSON.parse(
+    await readFile(
+      new URL("./fixtures/grant-readers.json", import.meta.url),
+      "utf8",
+    ),
+  ) as { path: string; hash: string }[];
+  const baseline = approved.map((e) => `${e.path}:${e.hash}`).sort();
+  for (const fixture of fixtures)
+    await t.test(fixture.name, () => {
+      const found = grantReads(fixture.path, fixture.source);
+      assert.ok(found.length, `Unreviewed reader escaped: ${fixture.source}`);
+      assert.notDeepEqual(
+        [...baseline, ...found.map((h) => `${fixture.path}:${h}`)].sort(),
+        baseline,
+      );
+      if (fixture.path.endsWith(".sql"))
+        assert.notDeepEqual(
+          grantReads(fixture.path, fixture.source + "\n" + fixture.source),
+          found,
+        );
+      if (!fixture.path.endsWith(".sql"))
+        assert.equal(
+          grantReads(fixture.path, fixture.source + "\n" + fixture.source)
+            .length,
+          found.length * 2,
+        );
+    });
+});
+
+test("reader guard ignores comments, unrelated reads and plain grant writes", () => {
+  for (const source of [
+    '// db.query("SELECT * FROM amp_grants");',
+    'db.query("SELECT * FROM amp_learners");',
+    'db.query("UPDATE amp_grants SET status=$1 WHERE id=$2");',
+    'db.query("INSERT INTO amp_grants(id) VALUES($1)");',
+    "const values = Array.from(items);",
+  ])
+    assert.deepEqual(grantReads("reader.ts", source), []);
+  assert.deepEqual(
+    grantReads(
+      "schema.sql",
+      "CREATE TABLE amp_grants(id text); -- SELECT * FROM amp_grants",
+    ),
+    [],
+  );
+});
+
+test("query fingerprints preserve significant whitespace and SQL comment boundaries", () => {
+  const source = `db.query("SELECT * FROM amp_grants WHERE external_order_id='two  spaces'");`;
+  assert.notDeepEqual(
+    grantReads("reader.ts", source),
+    grantReads("reader.ts", source.replace("two  spaces", "two spaces")),
+  );
+  const sql = "SELECT * FROM amp_grants -- limit\nWHERE learner_id='fixture'";
+  assert.notDeepEqual(
+    grantReads("reader.sql", sql),
+    grantReads("reader.sql", sql.replace("\n", " ")),
+  );
+});

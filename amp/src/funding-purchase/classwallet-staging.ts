@@ -218,7 +218,7 @@ export async function reconcileClassWalletPayments(
           stored.conversion_payload ?? undefined,
           // A month (or year) paid before the learner's access ends starts
           // when it ends.
-          await fundedTermStart(client, request.learnerId, at),
+          await fundedTermStart(client, request.learnerId, at, request.id),
         );
       if (
         request.orderId &&

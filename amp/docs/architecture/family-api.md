@@ -440,7 +440,9 @@ label as the person's name.
 
 Run `npm run db:migrate` before serving these endpoints. Migrations 0125–0130
 install the identity/name schema, deterministic identity hooks and concurrent
-class-to-family lookup index. The runner automatically performs the family identity
+class-to-family lookup index. Migration 0131 adds nullable funded-term scheduling
+evidence to the financial request; apply it before running the funding workers.
+The runner automatically performs the family identity
 data migration after committing all schema transactions. No separate operator
 backfill step is required. Successful completion is persisted as
 `data:family-identities-v1` in `amp_migrations`; a failure prevents migration success
@@ -540,7 +542,7 @@ Projected adult dates describe current coverage, not historical paid access.
 | `billing/stripe/service.ts` | Final checkout resolves access again after provider/catalog preparation, in the final account transaction. |
 | `billing/stripe/enrollment.ts` | Paid enrollment assignment resolves access before financial reconciliation and assignment. |
 | `access-grants/repository.ts` | Explicit and automatic learner-gift activation resolve access inside the activation transaction. Family-gift writes refresh the adult through the shared resolver. |
-| `funding-purchase/provision.ts` | `fundedTermStart` resolves once before following contiguous terms. ClassWallet pay-by and staging call it on their own client. Provisioning independently resolves before checking a scheduled start and overlap. |
+| `funding-purchase/provision.ts` | `fundedTermStart` resolves once before following contiguous terms. ClassWallet pay-by and staging call it on their own client. Scheduling saves the validated activation/start pair on the pending funding request (or pending learner quotes when called without a request ID). Provisioning accepts that pair or the exact saved provider payload after preceding coverage expires or is revoked, and independently resolves current overlap. |
 | `family/approvals.ts` | The active-grant helper uses the resolver. Unnamed roster previews read child grants only. |
 | `family/repository.ts` account export | Each learner page resolves grants on the read-only export snapshot, preserving direct grant history and projecting current adult coverage. |
 | `analytics/insights.ts` | Free-practice conversion coverage uses the resolver in a read-only repeatable-read transaction. |
@@ -566,10 +568,19 @@ Remaining direct reads have narrower meanings:
 | `scripts/verify-clever-scale.ts`, `scripts/verify-journeys-ui.ts` | Synthetic ledger-count/child-access benchmarks and child purchase assertions, not product entitlement readers. Other fixture scripts only insert or update synthetic grants. |
 | `migrations/0006-commerce-orders.sql` | Historical commerce projection parity, restricted to `commerce:` identities. Other grant migrations define schema, indexes and offline revisions. |
 
-`tests/adult-grant-readers.test.ts` inventories SQL reads across source, scripts
-and migrations. `tests/fixtures/grant-readers.json` pins each reviewed query by
-path and normalized SQL hash, including its reason. A new query, changed query
-or duplicated query fails, even within an approved file. Review the scope of any
-exception before updating its hash. Offline refresh ordering is also guarded;
-DB regressions verify missing, expired, extended, shortened and revoked sources,
-final checkout revalidation, paid assignment, export and contiguous funded terms.
+`tests/adult-grant-readers.test.ts` scans TypeScript expressions and PostgreSQL
+lexical tokens across source, scripts and migrations. It follows literal
+concatenations, templates and local aliases; recognizes qualified/quoted
+relations, comments, `ONLY`, `TABLE`, ORM calls and SQL function/view bodies;
+and flags unresolved query calls, dynamic relations and SQL `EXECUTE` for review.
+Standalone ledger-name fragments are also reviewed, so a helper cannot hide a
+relation behind string assembly. This source guard does not prove the behavior
+of arbitrary runtime-generated code.
+
+`tests/fixtures/grant-readers.json` pins each reviewed expression by path and
+whitespace-preserving hash, with a concrete reason. Query counts detect duplicate uses.
+Exceptions include restricted child/history readers, grant writers and dynamic
+helpers whose relation choices have been inspected. New or changed expressions
+require review even within an approved file. The bypass fixtures exercise the
+complete inventory comparison, including SQL functions and views. Offline
+refresh ordering and the database consumer matrix guard the resolver boundary.
