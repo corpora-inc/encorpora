@@ -108,6 +108,7 @@ try {
             await page.addInitScript({
               content: `
               window.__shifts = 0;
+              window.__shiftDetails = [];
               Object.defineProperty(navigator, "clipboard", {
                 configurable: true,
                 value: { writeText: async (value) => {
@@ -117,7 +118,13 @@ try {
               });
               if (PerformanceObserver.supportedEntryTypes.includes("layout-shift")) {
                 new PerformanceObserver((entries) => {
-                  for (const entry of entries.getEntries()) window.__shifts += entry.value;
+                  for (const entry of entries.getEntries()) {
+                    window.__shifts += entry.value;
+                    window.__shiftDetails.push(entry.sources?.map(source => ({
+                      node: source.node?.className,
+                      before: source.previousRect.toJSON(), after: source.currentRect.toJSON(),
+                    })));
+                  }
                 }).observe({ type: "layout-shift", buffered: true });
               }
             `,
@@ -189,6 +196,52 @@ try {
                   0,
                   "arrival has zero layout shift",
                 );
+                const support = page.getByRole("complementary", {
+                  name: "Help and feedback",
+                });
+                assert.equal(
+                  await support.locator('a[href^="mailto:"]').count(),
+                  0,
+                );
+                const supportGeometry = () =>
+                  support.evaluate((el) => {
+                    const r = el.getBoundingClientRect();
+                    return [r.x, r.y + scrollY, r.width, r.height].map(
+                      Math.round,
+                    );
+                  });
+                const supportBox = await supportGeometry();
+                const supportCopy = support.getByRole("button", {
+                  name: "Copy support address",
+                });
+                await supportCopy.click();
+                await support
+                  .getByRole("status")
+                  .filter({ hasText: "Copied" })
+                  .waitFor();
+                assert.equal(
+                  await page.evaluate(() => (window as any).__copied),
+                  "support@corpora.inc",
+                );
+                await page.evaluate(() => {
+                  (window as any).__denyCopy = true;
+                });
+                await supportCopy.click();
+                await support
+                  .getByText("Select the address to copy it.")
+                  .waitFor();
+                assert.equal(
+                  await page.evaluate(() => window.getSelection()?.toString()),
+                  "support@corpora.inc",
+                );
+                assert.deepEqual(
+                  await supportGeometry(),
+                  supportBox,
+                  "support feedback does not move the footer",
+                );
+                await page.evaluate(() => {
+                  (window as any).__denyCopy = false;
+                });
                 const before = await geometry(page);
                 await page.evaluate(() => {
                   (window as any).__shifts = 0;
@@ -271,7 +324,7 @@ try {
                 assert.equal(
                   await page.evaluate(() => (window as any).__shifts),
                   0,
-                  "copy feedback has zero layout shift",
+                  `copy feedback has zero layout shift: ${JSON.stringify(await page.evaluate(() => (window as any).__shiftDetails))}`,
                 );
                 await page.evaluate(() => {
                   (window as any).__denyCopy = false;

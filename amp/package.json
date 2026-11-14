@@ -102,7 +102,7 @@
     "test:acquisition-ui": "tsx scripts/verify-acquisition-ui.ts",
     "test:pitch-ui": "tsx scripts/verify-pitch-ui.ts && tsx scripts/verify-pitch-ui.ts --no-media",
     "test:in-app-browser-ui": "tsx scripts/verify-in-app-browser-ui.ts",
-    "test:in-app-auth-ui": "tsx scripts/verify-in-app-auth-ui.ts",
+    "test:in-app-auth-ui": "tsx scripts/verify-in-app-auth-ui.ts && tsx scripts/verify-in-app-handoff-ui.ts",
     "test:social-ui": "tsx scripts/verify-social-sign-in-ui.ts",
     "test:existing-account-ui": "tsx scripts/verify-existing-account-sign-in-ui.ts",
     "test:passkey-ui": "tsx scripts/verify-passkey-sign-up-ui.ts",

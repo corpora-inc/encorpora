@@ -1,16 +1,17 @@
 import { useRef, useState } from "react";
+import { browserHandoffUrl } from "../../lib/funded-entry";
 import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import styles from "./Auth.module.css";
 
 /** Host apps can block external schemes and clipboard APIs. Always provide a
  * selectable link; never assume Chrome is installed or claim an app opened.
- * Copy the route, including its Try/Buy continuation, never the form draft. */
+ * Copy the continuation across browser storage boundaries, never the form draft. */
 export function OpenInBrowser() {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
   const link = useRef<HTMLTextAreaElement>(null);
-  const url = window.location.href;
+  const url = browserHandoffUrl(window.location.href);
   async function copy() {
     try {
       await navigator.clipboard.writeText(url);
