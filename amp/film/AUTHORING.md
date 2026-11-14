@@ -387,7 +387,7 @@ List the part names a target can use (from a spec, `{"scene": ...}` or a whole s
 npx tsx film/parts.ts shot.json
 ```
 
-The actions are the scene actions in the table above. A highlight eases out as the shot's next scene action begins. `--dry` reports a target that names no part, and notes a crowded tick value the figure leaves out. A film with a shot like this plays only in app versions that can draw it; older ones keep showing the written lesson.
+The actions are the scene actions in the table above. A highlight eases out as the shot's next scene action begins unless its own `until` names a release word; `untilNth` selects that word's occurrence, and the enclosing `scene` action's `at` and `nth` set the start. `--dry` reports a target that names no part, and notes a crowded tick value the figure leaves out. A film with a shot like this plays only in app versions that can draw it; older ones keep showing the written lesson.
 
 For money, `coins` places coin faces; `bill` places an original vector note:
 `{"type":"bill","id":"dollar","value":1,"at":[0,0],"width":100}`.
@@ -671,6 +671,8 @@ Figure actions:
 | `{"do":"view","to":[-8,-8,8,8]}` | Push in or pull back, on purpose |
 
 `target` may be a list. Leave `dur` out unless a motion needs more room.
+
+`highlight` holds through the beat unless `until` names the spoken word where it starts easing out, using the same word matching as `at`. Use `untilNth` to select a repeated word's occurrence, counting from 1 just like `nth`; a missing word or a release before the start is an error. For “The radius is five. The height is twelve,” use `{"do":"highlight","target":"radius","at":"radius","until":"height"}`.
 
 ### Pairs, and things that travel to a label
 

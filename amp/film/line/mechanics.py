@@ -24,6 +24,12 @@ Work-column actions include problem, write, text, term, stack, column, answer,
 clear, overview and recap. clear starts a new work column; overview can display
 the columns. An action's at field matches a word in that beat's say; nth selects
 an occurrence. Omit timing fields to use defaults. Geometry resets for each shot.
+highlight can release on a spoken word with until; untilNth selects its occurrence
+just as nth does for at. The word must exist in the same beat and not precede the
+start. For example: {"do":"highlight","target":"radius","at":"radius","until":"height"}.
+Without until, it holds through the beat. A highlight inside scene.actions uses
+the enclosing scene action's start and holds until the next scene action unless
+its own until specifies a release word.
 
 The files in references/ are approved screenplays supplied as format references
 only, not a teaching template. Use the assigned film ID, never a reference ID.
