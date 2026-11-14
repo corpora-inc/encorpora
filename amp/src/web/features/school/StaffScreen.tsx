@@ -56,9 +56,17 @@ function InviteForm({ orgId }: { orgId: string }) {
   const classes = [
     ...(useQuery(classesOptions(session, orgId)).data ?? []),
   ].sort((a, b) => compareClassNames(a.name, b.name));
+  // "Invite a co-teacher" on a class's Students arrives with that class.
+  const { class: forClass } = useSearch({ strict: false }) as {
+    class?: unknown;
+  };
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<InviteRole>("teacher");
-  const [classIds, setClassIds] = useState<string[]>([]);
+  const [classIds, setClassIds] = useState<string[]>(() =>
+    typeof forClass === "string" && classes.some((c) => c.id === forClass)
+      ? [forClass]
+      : [],
+  );
   const [busy, setBusy] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [error, setError] = useState("");

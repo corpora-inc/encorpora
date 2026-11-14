@@ -26,7 +26,7 @@ import {
 import { ClassFrame } from "./ClassFrame";
 import { PracticeAs, useDemoOrg } from "../demo/DemoPlace";
 import { meOptions } from "../../../lib/query";
-import { currentSession, orgOptions } from "../api";
+import { classesOptions, currentSession, orgOptions } from "../api";
 import { ClassPeople } from "./people/ClassPeople";
 import { canAddStudents } from "../permissions";
 import { classUrl } from "./teacher-shared";
@@ -516,6 +516,7 @@ export function RosterScreen() {
               Add students
             </Link>
           )}
+          {!family && <ClassTeachers org={params.org} classId={params.class} />}
           {family && holder && (
             <ClassPeople
               session={account}
@@ -576,5 +577,44 @@ export function RosterScreen() {
       {!family && <AccessSheets place={place} />}
       <Toast message={error} onDismiss={() => setError("")} />
     </ClassFrame>
+  );
+}
+
+/** Who teaches the class, by the names the school knows them by (R12),
+ * and, for someone who manages the school's staff, the way to add a
+ * co-teacher: the school's own invitation, this class already chosen. A
+ * teacher sees their colleagues; inviting is the school's. */
+function ClassTeachers({ org, classId }: { org: string; classId: string }) {
+  const session = currentSession();
+  const school = useQuery({
+    ...orgOptions(session, org),
+    refetchOnMount: false,
+  }).data;
+  const klass = useQuery({
+    ...classesOptions(session, org),
+    refetchOnMount: false,
+  }).data?.find((entry) => entry.id === classId);
+  const invites = !!school?.can?.includes("staff.manage") && !school.demo;
+  if (!klass || (!klass.teachers.length && !invites)) return null;
+  return (
+    <section className={styles.teachers} aria-labelledby="class-teachers">
+      <h2 id="class-teachers">Teachers</h2>
+      {klass.teachers.length > 0 && (
+        <ul>
+          {klass.teachers.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      )}
+      {invites && (
+        <Link
+          to={`/school/${org}/staff` as never}
+          search={{ class: classId } as never}
+          className={buttonClass("quiet", "", "start")}
+        >
+          Invite a co-teacher
+        </Link>
+      )}
+    </section>
   );
 }

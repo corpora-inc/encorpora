@@ -770,9 +770,9 @@ function teachingSpace(
   // its license, staff, calendar and settings stay two taps away even when
   // a one-class school collapses to its class. A teacher with only their
   // own class's rights never gets the admin screens this way.
-  const oversees = ["overview.read", "staff.read", "license.read"].some(
-    (permission) => can.has(permission),
-  );
+  const oversees = (
+    ["overview.read", "staff.read", "license.read"] as const
+  ).some((permission) => can.has(permission));
   const schoolHome =
     org && lone ? (schoolTabs(org, { lone })[0]?.path ?? null) : null;
   const school: Destination[] =
