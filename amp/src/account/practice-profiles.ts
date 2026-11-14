@@ -1,7 +1,11 @@
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import type { z } from "zod";
-import { adultPracticeEnd } from "./adult-access.js";
+import {
+  adultPracticeEnd,
+  accessGrantsFor,
+  grantInForce,
+} from "./adult-access.js";
 import { FamilyError } from "../family/contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
 import { familyHasLearnerRoom } from "../learning/free-allowance.js";
@@ -54,14 +58,16 @@ export async function profilesCovered(
   db: Database,
   accountId: string,
 ): Promise<boolean> {
-  const own = await db.query(
-    `SELECT 1 FROM amp_learners a JOIN amp_grants g ON g.learner_id=a.id
-     WHERE a.account_id=$1 AND a.adult AND NOT a.simulation AND a.deleted_at IS NULL
-       AND g.id NOT LIKE 'adult:%'
-       AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now() LIMIT 1`,
+  const own = await db.query<{ id: string }>(
+    `SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL`,
     [accountId],
   );
-  return !!own.rowCount || (await adultPracticeEnd(db, accountId)) !== null;
+  if (!own.rowCount) return (await adultPracticeEnd(db, accountId)) !== null;
+  const access = await accessGrantsFor(
+    db,
+    own.rows.map((row) => row.id),
+  );
+  return access.grants.some((g) => grantInForce(g, access.now));
 }
 
 /** The starting choice closest to a profile's levels, for the overall

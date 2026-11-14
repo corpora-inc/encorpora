@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { ensureFamilyIdentity } from "./identity.js";
 import { adultNameSql } from "../account/profile.js";
 import { createHash, createHmac, randomUUID } from "node:crypto";
@@ -115,14 +116,15 @@ const lockFamily = (client: Database, familyAccountId: string) =>
   client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
     `family-class:${familyAccountId}`,
   ]);
-const activeGrant = async (db: Database, learnerId: string) =>
-  (
-    await db.query<{ ends_at: Date }>(
-      `SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active'
-       AND starts_at<=now() AND ends_at>now()`,
-      [learnerId],
-    )
-  ).rows[0]?.ends_at ?? null;
+const activeGrant = async (db: Database, learnerId: string) => {
+  const access = await accessGrantsFor(db, [learnerId]);
+  return (
+    access.grants
+      .filter((g) => grantInForce(g, access.now))
+      .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0]?.ends_at ??
+    null
+  );
+};
 
 async function transaction<T>(
   pool: Pool,

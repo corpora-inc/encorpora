@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
 import { parseDocumentProfile } from "../evidence/profile.js";
 import {
   learningConsentActive,
@@ -188,14 +189,11 @@ export class StripeRepository {
           [accountId, this.namespace],
         )
       ).rowCount;
+    const access = await accessGrantsFor(db, ids);
     const licensed = new Set(
-      (
-        await db.query<{ id: string }>(
-          `SELECT l.id FROM unnest($1::text[]) l(id) WHERE EXISTS(SELECT 1 FROM amp_grants g
-       WHERE g.learner_id=l.id AND g.status='active' AND g.ends_at>now())`,
-          [ids],
-        )
-      ).rows.map((row) => row.id),
+      access.grants
+        .filter((g) => grantReserved(g, access.now))
+        .map((g) => g.learner_id),
     );
     return new Map(
       ids.map((id) => [

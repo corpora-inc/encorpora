@@ -120,9 +120,9 @@ Every table has a stated handling in `ACCOUNT_TABLES`; `tests/delete-account.int
 
 ## Existing families
 
-Every family from before is converted automatically, one transaction per family, adding only roster rows:
+Family conversion runs in one transaction per account, adding roster rows while preserving learner records:
 
-- **On the parent's next visit:** their `/me` runs `ensureFamilyClass` inside the family summary's transaction, under the account's exclusive lock, before anything else reads.
+- **On explicit writes:** child creation, starter setup, practice-here, learner rename and birth-year changes call `ensureFamilyClass` under the account lock. POST class-code lookup and picture sign-in maintain existing unarchived family classes. Account GETs are read-only and do not convert families.
 - **The rest:** `npm run family:convert -- [--dry-run] [--batch 200]` with the deployment's `AMP_DATABASE_URL` converts every family still waiting, in batches, and prints JSON counts (`accounts`, `familiesCreated`, `childrenEnrolled`, `failed`). Running it again changes nothing.
 - The parent is the admin and teacher of the new class, and each child a student with picture sign-in. Evidence, purchases, grants and consent stay byte for byte as they were (`tests/family-class.integration.ts`).
 - An account whose only learners are adults isn't converted.

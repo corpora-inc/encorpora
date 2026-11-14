@@ -79,7 +79,11 @@ import {
   TOO_MANY_LEARNERS,
   type FreeAllowance,
 } from "../learning/free-allowance.js";
-import { refreshAdultAccess } from "../account/adult-access.js";
+import {
+  refreshAdultAccess,
+  accessGrantsFor,
+  grantInForce,
+} from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
 import { secondParentOwner } from "../family/second-parent.js";
 import {
@@ -1290,9 +1294,14 @@ export class PgTransaction implements LearnerTransaction {
     if (learner?.simulation)
       return profilesCovered(this.db, learner.account_id as string);
     await this.refreshDerivedAccess();
+    const access = await accessGrantsFor(this.db, [this.learnerId]);
     const result = await this.db.query(
-      "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() AND amp_school_grant_valid(id) LIMIT 1",
-      [this.learnerId],
+      "SELECT 1 FROM unnest($1::text[]) g(id) WHERE amp_school_grant_valid(id) LIMIT 1",
+      [
+        access.grants
+          .filter((g) => grantInForce(g, access.now))
+          .map((g) => g.id),
+      ],
     );
     return (
       !!result.rowCount ||

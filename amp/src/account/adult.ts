@@ -2,8 +2,8 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import {
-  adultPracticeEnd,
-  adultGrantId,
+  accessGrantsFor,
+  grantInForce,
   refreshAdultAccess,
 } from "./adult-access.js";
 import {
@@ -193,23 +193,11 @@ export async function readOwnPractice(
       )
     ).rows[0];
     if (!own) return null;
-    const qualifying = await adultPracticeEnd(client, accountId);
-    const paid = (
-      await client.query<{ ends: Date | null }>(
-        `SELECT max(ends_at) AS ends FROM amp_grants WHERE learner_id=$1 AND id<>$2
-        AND status='active' AND starts_at<=now() AND ends_at>now()`,
-        [own.id, adultGrantId(own.id)],
-      )
-    ).rows[0]!.ends;
-    return {
-      ...own,
-      endsAt:
-        qualifying && paid
-          ? qualifying > paid
-            ? qualifying
-            : paid
-          : (qualifying ?? paid),
-    };
+    const access = await accessGrantsFor(client, [own.id]);
+    const current = access.grants
+      .filter((g) => grantInForce(g, access.now))
+      .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime());
+    return { ...own, endsAt: current[0]?.ends_at ?? null };
   });
   if (!learner) return null;
   const member = { personId: learner.id, learnerId: learner.id };

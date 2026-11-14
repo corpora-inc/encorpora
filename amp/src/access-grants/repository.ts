@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../account/adult-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { refreshAdultAccess } from "../account/adult-access.js";
@@ -310,10 +311,13 @@ export async function activateGiftInTransaction(
   if (learnerId === undefined)
     throw new AccessGiftError(400, "invalid_gift_request");
   // Future paid terms also reserve this learner; gifts neither replace nor stack on subscriptions.
-  const licensed = await db.query(
-    "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
-    [learnerId],
+  const access = await accessGrantsFor(
+    db,
+    learnerId === null ? [] : [learnerId],
   );
+  const licensed = {
+    rowCount: access.grants.some((g) => grantReserved(g, access.now)),
+  };
   const stripeLinked = (
     await db.query("SELECT to_regclass('amp_stripe_checkouts') AS relation")
   ).rows[0].relation

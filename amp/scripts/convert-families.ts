@@ -7,8 +7,8 @@ import { createDatabasePool } from "../src/server/database.js";
 /** Families are classes (docs/families.md). Converts every family that is
  * still waiting: a parent account with a live child learner who isn't on any
  * roster yet gets its family org and class, with every child a student of it.
- * A parent's next `/me` does the same for their own family; this finishes the
- * rest. Accounts whose only learners are adults are never touched.
+ * Explicit family writes also maintain their own class; account GETs do not
+ * convert families. Accounts whose only learners are adults are never touched.
  *
  *   AMP_DATABASE_URL=… npm run family:convert -- [--dry-run] [--batch 200]
  *

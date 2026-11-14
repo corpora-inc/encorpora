@@ -81,7 +81,7 @@ Family maintenance runs on explicit writes:
 | Expired family academic year | `ensureFamilyClass` advances the class to `yearSession` during child creation, starter setup, practice-here, rename and birth-year edits. POST class-code lookup and picture sign-in call the same helper under the account and family locks before validating the session. School years and archived classes are not reopened by sign-in. |
 | Family class, parent staff roles, child roster/enrollment and conversion notice | The same helper creates missing rows during those writes; `family:convert` provides an explicit migration/repair command. Existing children keep their learner IDs, evidence and consent. |
 | Roster names and birth-year-derived grades | The helper synchronizes owned children in their home family during those writes and class-code sign-in. Name changes also use migration 0098's trigger; birth-year changes call `syncFamilyGrade`, including hosted children in other family tenants. School grades are left to the school. Merely visiting a report does not advance a stored grade. |
-| Adult grant creation, extension and expiry | Online `hasAccess` and the offline transaction both call `PgTransaction.refreshDerivedAccess`, which uses `refreshAdultAccess` and `adultPracticeEnd`. Offline refresh precedes issue, quota checks, request reuse, preflight and reconciliation. An interval change invalidates an existing pack's binding; the client requests a new pack. Adult setup, access assignment and legacy trial adoption also refresh through the same derivation. |
+| Adult grant creation, extension and expiry | Online `hasAccess` and the offline transaction both call `PgTransaction.refreshDerivedAccess`, which uses `refreshAdultAccess` → `accessGrantsFor` → `adultPracticeEnd`. Offline refresh precedes issue, quota checks, request reuse, preflight and reconciliation. An interval change invalidates an existing pack's binding; the client requests a new pack. Adult setup, access assignment and legacy trial adoption also refresh through the same derivation. |
 | Stable family identity | Family creation, parent approval and second-parent acceptance ensure the identity. The migration runner backfills existing eligible accounts; database hooks cover legacy writers. Discovery derives a stable fallback without writing. |
 | Creation audit events and default student-device settings | Family/class/roster creation writes its events and default personal-device setting in the creating transaction. Reads emit no creation events. |
 
@@ -509,3 +509,67 @@ batch account consent. Last activity and level use indexed latest-row probes;
 Today facts retain their ownership-selected, date-bounded computation. Teaching
 approval history is capped at 1,000 rows, with consent fetched in one batch for
 active approvals only.
+
+
+## Adult access and grant reader inventory
+
+`account/adult-access.ts:accessGrantsFor` resolves current grants using the
+reader's transaction client. It reads direct grants, removes stored `adult:`
+projections, and derives the account's free adult access from current qualifying
+child grants, second-parent relationships, school licenses and teacher pilots.
+Deleted adults and simulation profiles do not receive derived access. The result
+includes PostgreSQL's transaction clock, used by `grantInForce` and
+`grantReserved`; the latter also reserves future direct paid terms.
+
+A stored adult grant is an offline binding, not entitlement authority. Its
+absence, expiry, old end date or active status cannot override live sources.
+`refreshAdultAccess` materializes the resolver's result under the account lock;
+unchanged access leaves the offline revision unchanged. Revocation or an interval
+change invalidates the existing pack. Reads never materialize a missing grant.
+Projected adult dates describe current coverage, not historical paid access.
+
+| Reader | Resolution |
+| --- | --- |
+| `family/repository.ts` summary (`/family`, account `/me`) | `accessGrantsFor` on the read-only snapshot; profiles use `profilesCovered`. |
+| `account/adult.ts` own practice and PDF | `accessGrantsFor` on the family read-only snapshot. |
+| `account/practice-profiles.ts` | Own adult grants use `accessGrantsFor`; an account without an adult learner uses its shared `adultPracticeEnd` source calculation. Profiles acquire no grants. |
+| `server/repository.ts:hasAccess` | Shared refresh and `accessGrantsFor`, followed by school-grant validity and pilot checks. Online practice, books, individual/classroom workbooks and workbook allowances inherit this path. |
+| `offline/repository.ts` | Transaction refresh precedes all three stored queries: pack binding/preflight/reconciliation, quota and idempotent reuse, and grant selection/issuance. These queries need the physical row and exact signed interval/revision. |
+| `billing/stripe/purchase.ts` | Status uses `accessGrantsFor` in its billing transaction; no write is needed for missing adult access. |
+| `billing/stripe/repository.ts` | Batched checkout blockers, owned eligibility and reservation use the resolver on the caller's client. |
+| `billing/stripe/service.ts` | Final checkout resolves access again after provider/catalog preparation, in the final account transaction. |
+| `billing/stripe/enrollment.ts` | Paid enrollment assignment resolves access before financial reconciliation and assignment. |
+| `access-grants/repository.ts` | Explicit and automatic learner-gift activation resolve access inside the activation transaction. Family-gift writes refresh the adult through the shared resolver. |
+| `funding-purchase/provision.ts` | `fundedTermStart` resolves once before following contiguous terms. ClassWallet pay-by and staging call it on their own client. Provisioning independently resolves before checking a scheduled start and overlap. |
+| `family/approvals.ts` | The active-grant helper uses the resolver. Unnamed roster previews read child grants only. |
+| `family/repository.ts` account export | Each learner page resolves grants on the read-only export snapshot, preserving direct grant history and projecting current adult coverage. |
+| `analytics/insights.ts` | Free-practice conversion coverage uses the resolver in a read-only repeatable-read transaction. |
+| `scripts/preview-billing.mjs` | Development billing status uses the resolver in a read-only snapshot. |
+
+The physical ledger is `amp_grants`; there is no `amp_access_grants` table.
+Remaining direct reads have narrower meanings:
+
+| Direct reader | Why an adult projection cannot determine current access |
+| --- | --- |
+| `account/adult-access.ts` | The central resolver and its live child-source calculation own these reads. |
+| `billing/stripe/repository.ts:priceTier` | Reads only Stripe grants for other non-adult children. Adult projections use the pilot channel. |
+| `family/projection.ts` | Both coverage and bounded history are scoped to selected `NOT adult` children. |
+| `family/repository.ts:practiceHere` | Explicitly selects a non-adult child. |
+| `family/approvals.ts` unnamed preview | Selects student learners owned by `school:<person>`; account-owned adults cannot match. |
+| `schools/classroom-workbooks.ts`, `schools/pilot-access.ts`, `schools/pilots.ts` | Select student enrollment learners. Teachers' own adult learners are separate from student enrollments. |
+| `schools/student-me.ts` | The authenticated student principal resolves a roster learner. Adult own-practice reads use the resolver above. |
+| `schools/operations.ts` | Connection retention reads `amp_people.learner_id` roster records. A staff person's separate account-owned adult learner is not linked there. |
+| `commerce/postgres.ts`, `analytics/funded-cohort.ts` | Read exact `commerce:` grant IDs for financial binding and reporting. |
+| `acquisition/evidence.ts` | Explicitly excludes `adult:%` from commercial-interest evidence. |
+| `privacy/retention.ts` | Explicitly excludes adult grants from paid retention; other reads address exact commerce IDs, historical orphan existence or expired-row purge. |
+| `family/repository.ts` deletion | Financial preservation excludes the pilot channel. `account/delete-account.ts` enumerates/deletes learner records and revokes exact seat grants; it does not authorize from adult access. School deletion, transfer, roster and rollover writers likewise revoke exact seat grants. |
+| `scripts/verify-clever-scale.ts`, `scripts/verify-journeys-ui.ts` | Synthetic ledger-count/child-access benchmarks and child purchase assertions, not product entitlement readers. Other fixture scripts only insert or update synthetic grants. |
+| `migrations/0006-commerce-orders.sql` | Historical commerce projection parity, restricted to `commerce:` identities. Other grant migrations define schema, indexes and offline revisions. |
+
+`tests/adult-grant-readers.test.ts` inventories SQL reads across source, scripts
+and migrations. `tests/fixtures/grant-readers.json` pins each reviewed query by
+path and normalized SQL hash, including its reason. A new query, changed query
+or duplicated query fails, even within an approved file. Review the scope of any
+exception before updating its hash. Offline refresh ordering is also guarded;
+DB regressions verify missing, expired, extended, shortened and revoked sources,
+final checkout revalidation, paid assignment, export and contiguous funded terms.

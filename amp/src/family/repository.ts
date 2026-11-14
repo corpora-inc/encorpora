@@ -2,7 +2,7 @@ import {
   purchaseMeasurementView,
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
-import { adultPracticeEnd, adultGrantId } from "../account/adult-access.js";
+import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
 import {
   ensureFamilyClass,
@@ -112,56 +112,23 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.starting_band,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.starting_band,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
-      // Practice profiles have no grants: the account's own access covers
-      // them all (docs/families.md), read once.
+      const access = await accessGrantsFor(
+        client,
+        learners.map((row) => row.id),
+      );
+      const grants = access.grants;
+      for (const row of learners)
+        row.has_access = grants.some(
+          (g) => g.learner_id === row.id && grantInForce(g, access.now),
+        );
       if (learners.some((row) => row.simulation)) {
         const covered = await profilesCovered(client, accountId);
         for (const row of learners)
           if (row.simulation) row.has_access = covered;
-      }
-      let grants = (
-        await client.query(
-          "SELECT g.* FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=$1 ORDER BY g.starts_at,g.id",
-          [accountId],
-        )
-      ).rows;
-      // Project the derived adult entitlement from its live sources. Learning
-      // mutations persist the grant; GETs neither extend nor revoke rows.
-      const adult = learners.find(
-        (row) => row.adult && !row.simulation && !row.deleted_at,
-      );
-      if (adult) {
-        const ends = await adultPracticeEnd(client, accountId);
-        const derivedId = adultGrantId(adult.id);
-        const stored = grants.find((g) => g.id === derivedId);
-        grants = grants.filter((g) => g.id !== derivedId);
-        const now = (await client.query("SELECT now() AS at")).rows[0]
-          .at as Date;
-        if (ends)
-          grants.push({
-            id: derivedId,
-            learner_id: adult.id,
-            channel: "pilot",
-            status: "active",
-            starts_at: stored?.starts_at ?? now,
-            ends_at: ends,
-          });
-        else if (stored)
-          grants.push({
-            ...stored,
-            ends_at: stored.ends_at > now ? now : stored.ends_at,
-          });
-        adult.has_access = grants.some(
-          (g) =>
-            g.learner_id === adult.id &&
-            g.status === "active" &&
-            g.starts_at <= now &&
-            g.ends_at > now,
-        );
       }
       const linked = (await this.stripeTable(client))
         ? (
@@ -303,7 +270,7 @@ export class FamilyRepository {
         (this.development ||
           !!(
             await client.query(
-              `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL
+              `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND NOT l.adult
                AND (l.free_online_used<100 OR EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id
                  AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()))`,
               [learnerId, accountId],
@@ -775,7 +742,7 @@ export class FamilyRepository {
         ],
         [
           "license",
-          "SELECT to_jsonb(g) AS value FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY g.id",
+          "SELECT l.id AS learner_id FROM amp_learners l WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY l.id",
         ],
         [
           "order",
@@ -1201,7 +1168,16 @@ export class FamilyRepository {
             await client.query("FETCH FORWARD 100 FROM export_rows")
           ).rows;
           if (!rows.length) break;
-          for (const row of rows) {
+          const values =
+            type === "license"
+              ? (
+                  await accessGrantsFor(
+                    client,
+                    rows.map((row) => row.learner_id),
+                  )
+                ).grants.map((value) => ({ value }))
+              : rows;
+          for (const row of values) {
             if (signal?.aborted) throw new Error("Export canceled");
             yield JSON.stringify({ type, data: row.value }) + "\n";
           }
