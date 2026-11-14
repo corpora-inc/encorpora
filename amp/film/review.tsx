@@ -15,7 +15,9 @@ import "./review.css";
 
 type Note = { t: number; text: string };
 type Review = { score: number | null; summary: string; notes: Note[]; added?: string };
-type Row = { id: string; title?: string; added?: string };
+type Standard = { id: string; text: string };
+/** `level` and `standards` say what the film is meant to teach, so a score can judge it against that. */
+type Row = { id: string; title?: string; added?: string; level?: string; standards?: Standard[] };
 
 const $ = <T extends HTMLElement>(tag: string, cls: string, parent: HTMLElement, text = "") => {
   const e = document.createElement(tag) as T;
@@ -243,6 +245,9 @@ async function openReview(filmId: string) {
   $("span", "", ends, "1");
   $("span", "", ends, "10");
 
+  const scope = $("div", "scope", panel);
+  scope.hidden = true;
+
   const feedback = $("div", "feedback", panel);
   const feedbackLabel = $<HTMLLabelElement>("label", "block-label", feedback, "Feedback");
   feedbackLabel.htmlFor = "feedback";
@@ -402,6 +407,19 @@ async function openReview(filmId: string) {
   if (row?.title) {
     title.textContent = row.title;
     document.title = `Review · ${row.title}`;
+  }
+  const level = typeof row?.level === "string" ? row.level : "";
+  const standards = Array.isArray(row?.standards)
+    ? row.standards.filter((st) => st && typeof st.id === "string" && typeof st.text === "string")
+    : [];
+  if (level || standards.length) {
+    if (level) $("p", "scope-level", scope, level);
+    for (const st of standards) {
+      const line = $("p", "scope-standard", scope);
+      $("span", "scope-code", line, st.id);
+      line.append(` ${st.text}`);
+    }
+    scope.hidden = false;
   }
   review.added = row?.added ?? "";
 
