@@ -1,0 +1,142 @@
+[
+  {
+    "path": "src/account/adult-access.ts",
+    "hash": "fe867ead1b0bfb43b601dfe935032723abd7cd84d816225746f3114169e5b5a2",
+    "reason": "Central resolver: reads direct grants and live non-adult source grants; replaces every adult projection before returning current access."
+  },
+  {
+    "path": "src/account/adult-access.ts",
+    "hash": "2cd3631805c7800a071c5399bb07058d501a52f35bf41aa6b3c5b02a99974ddc",
+    "reason": "Central resolver: reads direct grants and live non-adult source grants; replaces every adult projection before returning current access."
+  },
+  {
+    "path": "src/acquisition/evidence.ts",
+    "hash": "26ec0bd1793a9bd943544241b876613ac2f1a06a750b71a644a1857dfdf55c78",
+    "reason": "Commercial interest evidence explicitly excludes adult:%; free teaching access is not a purchase signal."
+  },
+  {
+    "path": "src/analytics/funded-cohort.ts",
+    "hash": "fa1848f8816bb8e47b8aeb0abb866a5ddd3c44821abdc49c9c96e23f3feb6793",
+    "reason": "Financial report joins exact commerce: order grant IDs, which cannot be derived adult grant IDs."
+  },
+  {
+    "path": "src/billing/stripe/repository.ts",
+    "hash": "a0c3f79edb7b15cb55e09bc958c8d7865fe470da30177d111c8319410a494533",
+    "reason": "Additional-child pricing reads only channel=stripe for non-adult children; derived adult grants have channel=pilot."
+  },
+  {
+    "path": "src/commerce/postgres.ts",
+    "hash": "ac6ebe54dc3e10e8ed4dbaae7a74060935d76d38a9c57aa3aa4ebbb3c0c1fa1d",
+    "reason": "Financial projection writer checks the exact commerce grant ID for immutable source/ownership binding, not current access."
+  },
+  {
+    "path": "src/family/approvals.ts",
+    "hash": "57d5ca8955c810c6133aa8dc4966990577d55d57a0cbf3afa8ed19af33ca5e35",
+    "reason": "Unnamed roster students owned by school:<person> are children, never account-owned adult learners."
+  },
+  {
+    "path": "src/family/projection.ts",
+    "hash": "8bdba9e3c8a89402aa3446f0abe95721bff772b716e6c92da4286d2226958d65",
+    "reason": "Family children are explicitly NOT adult; the grant history query only receives those selected child IDs."
+  },
+  {
+    "path": "src/family/projection.ts",
+    "hash": "110e23df9d9a825508c1ff3d15e92436b580a635044f1bd081369b0877baddcb",
+    "reason": "Family children are explicitly NOT adult; the grant history query only receives those selected child IDs."
+  },
+  {
+    "path": "src/family/repository.ts",
+    "hash": "e071725a9e5ea7b74ce07c7df33f1b0f43ec362521a561c12970bae3d3854ea8",
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+  },
+  {
+    "path": "src/family/repository.ts",
+    "hash": "128fb8a3eeff56841680b3d79b4f08a271e077d8923f59b756e45f91079ca9f0",
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "d0850a52b988915f72e36d3f5d4154a8aef81650aaebde60d0376ca6f40f0dd7",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "defa0bbc6e63f645aa1944338dbfd967a0c396704ab0e84b3760fb2d349954dc",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "9ffb9531a0c3d08f1a97dad492677193af6bbb6e7390694340fa633b6a9572ef",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "035f7f1c17d7756e6b26add67a846985eecde475771e53b0ac5324b1731a735c",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "a1dfd809a39a1cf6bba49cba5376edab10ec7ea2073271c1079a985f74799a20",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "08d450429638fc5647510006f999aeaca2b1aa2003cbdd6ad5d78f32989a1610",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "2188e2dba3747515a7b5191357d0a27f570733ffcd3ac4e5db36c6a6ab4e184f",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "def3b7f894ec9658b85c02f4a562ab6d75faac72f47acdfd26128e92b93f5a18",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/schools/classroom-workbooks.ts",
+    "hash": "758daf71d91318f23228b8894e4f75f13724c7fb949103ff0c2160bc26f13dca",
+    "reason": "Classroom roster query selects student enrollments; adult teachers are not student roster learners."
+  },
+  {
+    "path": "src/schools/operations.ts",
+    "hash": "5babcbea4e957a028186801c0ce42324d5527d4441013dd745d1762a2e2a393f",
+    "reason": "Connection retention reads amp_people.learner_id roster records; an account-owned adult learner is separate from the staff person and is not linked there."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "73700f632e820830d8982dcf603861c3e867075f050eadac3ffb31e8c6663361",
+    "reason": "Class practice gate reads student enrollment learners only, not the separate teacher adult learner."
+  },
+  {
+    "path": "src/schools/pilots.ts",
+    "hash": "261103485ec3148633dadb696b8433343c50a61bc3409776ee9726985dc77680",
+    "reason": "Pilot buyer counts select student enrollments only; adult teachers are excluded from enrollment counts."
+  },
+  {
+    "path": "src/schools/student-me.ts",
+    "hash": "7457a31b7b376ab7fc0020a8b6c2715a2aea197ad5d815a2d56cc52ef993333a",
+    "reason": "Student principal resolves the roster learner; teacher own practice uses readOwnPractice and accessGrantsFor."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "1aded9fabedfe1d39fb0d5db936aeeffa80f4fa08312b3b00b848d62e63d18ed",
+    "reason": "Synthetic school scale harness counts physical ledger rows and benchmarks child-only school access; not a product authorization reader."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "84fe8c68fbb2748d1cbcce614724edad2c61131e0ce9af9eea07ee9f3078138c",
+    "reason": "Synthetic school scale harness counts physical ledger rows and benchmarks child-only school access; not a product authorization reader."
+  },
+  {
+    "path": "scripts/verify-journeys-ui.ts",
+    "hash": "fecef55ae50ce9c49db685c99680da8a6c8a4754ff24a4ec59efc5a4274ebf72",
+    "reason": "Synthetic browser fixture assertion checks its explicitly created child learner after consent; not an adult authorization reader."
+  },
+  {
+    "path": "migrations/0006-commerce-orders.sql",
+    "hash": "64cd2fa9d8e321ddeb415ed2e82ebeee503d543671da2b92134420da39811c1a",
+    "reason": "Immutable historical migration checks commerce: ledger parity and orphan commerce rows, never adult access."
+  }
+]

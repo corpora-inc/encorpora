@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
@@ -409,10 +410,13 @@ export async function claimEnrollment(
       )
     ).rows;
     if (!terms.length) throw new BillingError("paid_license_unavailable");
-    const grants = await client.query(
-      "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now()",
-      [learnerId],
+    const access = await accessGrantsFor(
+      client,
+      learnerId === null ? [] : [learnerId],
     );
+    const grants = {
+      rowCount: access.grants.some((g) => grantReserved(g, access.now)),
+    };
     if (grants.rowCount) throw new BillingError("learner_already_licensed");
     // Refresh under the same lock as settlement; a refund received before claim cannot grant access.
     for (const term of terms) {

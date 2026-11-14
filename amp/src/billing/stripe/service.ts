@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../../account/adult-access.js";
 import {
   queueRejectedEnrollment,
   stopRejectedEnrollmentRenewals,
@@ -153,10 +154,13 @@ export class StripeBilling {
           accountId,
           learnerId,
         );
-      const grants = await client.query(
-        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
-        [learnerId],
+      const access = await accessGrantsFor(
+        client,
+        learnerId === null ? [] : [learnerId],
       );
+      const grants = {
+        rowCount: access.grants.some((g) => grantReserved(g, access.now)),
+      };
       if (grants.rowCount) throw new BillingError("learner_already_licensed");
       const result = await client.query(
         "SELECT * FROM amp_stripe_checkouts WHERE id=$1 AND account_id=$2 FOR UPDATE",

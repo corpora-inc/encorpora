@@ -1,3 +1,8 @@
+import {
+  accessGrantsFor,
+  grantInForce,
+  adultGrantId,
+} from "../account/adult-access.js";
 import { purchaseConsentSatisfied } from "../server/account-access.js";
 import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
 import type { Pool, PoolClient } from "pg";
@@ -49,16 +54,23 @@ export async function fundedTermStart(
   learnerId: string,
   activatedAt: string,
 ): Promise<string> {
+  const access = await accessGrantsFor(db, [learnerId]);
   let start = activatedAt;
   for (let step = 0; step < 24; step++) {
-    const covering = (
-      await db.query<{ ends_at: Date }>(
-        "SELECT max(ends_at) AS ends_at FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=$2 AND ends_at>$2",
-        [learnerId, start],
+    // Current derived access also covers activation captured just before this
+    // transaction. Direct scheduled terms keep their actual start dates.
+    const at = new Date(start);
+    const covering = access.grants
+      .filter(
+        (g) =>
+          grantInForce(g, at) ||
+          (g.id === adultGrantId(learnerId) &&
+            grantInForce(g, access.now) &&
+            g.ends_at > at),
       )
-    ).rows[0]?.ends_at;
+      .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
     if (!covering) break;
-    start = new Date(covering).toISOString();
+    start = covering.ends_at.toISOString();
   }
   return Date.parse(start) - Date.parse(activatedAt) > EARLY_RENEWAL_LIMIT_MS
     ? activatedAt
@@ -191,6 +203,7 @@ export async function provisionFundingRequest(
         order.channelReference !== o.channelReference
       )
         throw new FundingPurchaseError(409, "order_quote_mismatch");
+      const access = await accessGrantsFor(client, [request.learnerId]);
       // A term scheduled after activation is a month (or year) paid early:
       // it must start exactly when the learner's current access ends.
       if (
@@ -198,21 +211,23 @@ export async function provisionFundingRequest(
         (Date.parse(order.license.startsAt) -
           Date.parse(activation.occurredAt) >
           EARLY_RENEWAL_LIMIT_MS ||
-          !(
-            await client.query(
-              "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at=$2 AND starts_at<$2 LIMIT 1",
-              [request.learnerId, order.license.startsAt],
-            )
-          ).rowCount)
+          !access.grants.some(
+            (g) =>
+              g.status === "active" &&
+              g.ends_at.getTime() === Date.parse(order.license.startsAt) &&
+              g.starts_at.getTime() < Date.parse(order.license.startsAt),
+          ))
       )
         throw new FundingPurchaseError(409, "funded_term_start_unsupported");
       // The exclusive account lock is acquired before request/order/learner locks.
       // It serializes this bounded operator import with other grant and privacy writers.
-      const overlap = await client.query(
-        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<$3 AND ends_at>$2 LIMIT 1",
-        [request.learnerId, order.license.startsAt, order.license.endsAt],
+      const overlap = access.grants.some(
+        (g) =>
+          g.status === "active" &&
+          g.starts_at.getTime() < Date.parse(order.license.endsAt) &&
+          g.ends_at.getTime() > Date.parse(order.license.startsAt),
       );
-      if (overlap.rowCount)
+      if (overlap)
         throw new FundingPurchaseError(409, "overlapping_learning_access");
       for (const event of data.events)
         await applyCommerceEventInTransaction(client, event);
