@@ -138,7 +138,7 @@ export function expressionToTex(source: string): string | null {
     "≠": "\\ne",
   };
 
-  function atom(postfix = true): Expression {
+  function atom(): Expression {
     const token = take();
     if (++depth > 32) throw new Error("Expression nesting limit");
     let value: Expression;
@@ -160,7 +160,8 @@ export function expressionToTex(source: string): string | null {
     } else if (/^[A-Za-z]$/.test(token.value)) {
       value = node(token.value, "variable", token.end);
     } else if (token.value === "√") {
-      // Written parentheses close the radicand before any following outer power.
+      // A closed argument ends the function application. Its outer postfix
+      // operators belong to the root, not to the parenthesized radicand.
       const radicand = peek() === "(" ? atom() : power();
       // Without a written group, a following product has ambiguous radical scope.
       if (radicand.kind !== "group" && startsAtom(peek()))
@@ -185,10 +186,13 @@ export function expressionToTex(source: string): string | null {
         argument.end,
       );
     } else throw new Error("Unsupported operand");
-    while (postfix && peek() === "!") {
-      value = node(`${value.tex}!`, "factorial", take().end);
-    }
     depth--;
+    return value;
+  }
+
+  function factorial(value: Expression): Expression {
+    while (peek() === "!")
+      value = node(`${value.tex}!`, "factorial", take().end);
     return value;
   }
 
@@ -198,7 +202,7 @@ export function expressionToTex(source: string): string | null {
       const sub = take();
       let indexTex: string;
       if (sub.value === "_") {
-        const lower = atom(false);
+        const lower = atom();
         indexTex = inside(lower);
         base = node(base.tex, base.kind, lower.end, base.inner);
       } else
@@ -211,9 +215,7 @@ export function expressionToTex(source: string): string | null {
         Math.max(base.end, sub.end),
       );
     }
-    while (peek() === "!") {
-      base = node(`${base.tex}!`, "factorial", take().end);
-    }
+    base = factorial(base);
     if (peek() === "^" || (peek() && superscripts.includes(peek()![0]!))) {
       const exponent = take();
       let upper: Expression;
@@ -222,7 +224,9 @@ export function expressionToTex(source: string): string | null {
           peek() === "−" || peek() === "-" || peek() === "+"
             ? take().value.replace("−", "-")
             : "";
-        upper = atom();
+        // Factorial binds to the exponent atom, including a written group.
+        // To take the factorial of the power, write (2^3)! instead.
+        upper = factorial(atom());
         // An external sign applies to the whole written exponent group.
         upper = node(
           sign + (sign ? upper.tex : inside(upper)),
@@ -237,9 +241,12 @@ export function expressionToTex(source: string): string | null {
           throw new Error("Unsupported exponent");
         upper = node(text, "exponent", exponent.end);
       }
-      const groupedBase = base.kind === "group" ? `{${base.tex}}` : base.tex;
+      const groupedBase = ["group", "factorial"].includes(base.kind)
+        ? `{${base.tex}}`
+        : base.tex;
       base = node(`${groupedBase}^{${upper.tex}}`, "power", upper.end);
     }
+    base = factorial(base);
     if (peek() === "%") base = node(`${base.tex}\\%`, "percent", take().end);
     return base;
   }

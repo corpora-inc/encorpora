@@ -3,6 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Discover math fonts before the application module executes. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href="/node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href="/node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href="/node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff2"
+    />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"

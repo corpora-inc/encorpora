@@ -14,6 +14,11 @@ const command =
   /(?:^|[.!?]\s+)(?:solve(?:\s+for\s+(?:real\s+)?\$?[a-z]\$?)?|(?:expand and |rationalize the denominator and )?simplify|evaluate|factor(?:\s+completely)?|expand|calculate|compute)\s*:?[ \t]*$/i;
 
 function completeMath(source: string): string | null {
+  // Legacy web notation treats an adjacent a/b as one fraction, whereas the
+  // print grammar reads mixed division from left to right. Moving such a run
+  // to the shared display must not silently choose a different grouping.
+  // Authors can disambiguate with explicit TeX fractions.
+  if (/(?:÷|\\div\b)/.test(source) && source.includes("/")) return null;
   const parts = segmentPrintText(source);
   if (parts.length === 1 && parts[0]?.kind === "math") return parts[0].tex;
   // Bare words can be abbreviations (Dr., Mr., etc.), not implicit products.
