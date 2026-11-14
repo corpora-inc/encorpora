@@ -1,7 +1,11 @@
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
-import { refreshAdultAccess } from "./adult-access.js";
+import {
+  accessGrantsFor,
+  grantInForce,
+  refreshAdultAccess,
+} from "./adult-access.js";
 import {
   familyHasLearnerRoom,
   FREE_ONLINE_PROBLEMS,
@@ -178,26 +182,22 @@ export async function readOwnPractice(
   accountId: string,
 ): Promise<OwnPractice | null> {
   const pool = families.pool;
-  const learner = await families.transaction(accountId, async (client) => {
+  const learner = await families.read(async (client) => {
     const own = (
-      await client.query<{ id: string }>(
-        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
-        [accountId],
-      )
-    ).rows[0];
-    if (!own) return null;
-    await refreshAdultAccess(client, accountId, own.id);
-    return (
       await client.query(
         `SELECT l.id,l.name,l.free_online_used,l.starting_band AS start,COALESCE(l.timezone,'America/New_York') AS timezone,
          to_char(l.created_at AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS began,
-         to_char(now() AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS today,
-         (SELECT max(g.ends_at) FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
-            AND g.starts_at<=now() AND g.ends_at>now()) AS "endsAt"
+         to_char(now() AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS today
        FROM amp_learners l WHERE l.account_id=$1 AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL`,
         [accountId],
       )
     ).rows[0];
+    if (!own) return null;
+    const access = await accessGrantsFor(client, [own.id]);
+    const current = access.grants
+      .filter((g) => grantInForce(g, access.now))
+      .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime());
+    return { ...own, endsAt: current[0]?.ends_at ?? null };
   });
   if (!learner) return null;
   const member = { personId: learner.id, learnerId: learner.id };

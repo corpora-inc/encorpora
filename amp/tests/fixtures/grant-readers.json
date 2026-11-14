@@ -1,0 +1,417 @@
+[
+  {
+    "path": "src/access-grants/repository.ts",
+    "hash": "cb509eca0f5ca3990555e59f2d48cc6c14cde1eac65ec7d134f2e2a89d1864f8",
+    "reason": "Gift grant INSERT selects the explicitly owned non-adult learner; it writes access rather than authorizing from an adult projection."
+  },
+  {
+    "path": "src/account/adult-access.ts",
+    "hash": "a05e5fc41cfde163aa73ee1e757f6b9ba5af9b779298221698d235426e17eacf",
+    "reason": "Central resolver: reads direct grants and live non-adult source grants; replaces every adult projection before returning current access."
+  },
+  {
+    "path": "src/account/adult-access.ts",
+    "hash": "2ed05706ee66549ba5c33c69cb48dfbb21d23ecbecb2cb0c6ddc6dede180c78d",
+    "reason": "Central resolver materialization revokes a stored binding after resolving live adult sources; its subquery checks learner ownership only."
+  },
+  {
+    "path": "src/account/adult-access.ts",
+    "hash": "2cd3631805c7800a071c5399bb07058d501a52f35bf41aa6b3c5b02a99974ddc",
+    "reason": "Central resolver: reads direct grants and live non-adult source grants; replaces every adult projection before returning current access."
+  },
+  {
+    "path": "src/account/delete-account.ts",
+    "hash": "61f43d311a4a822e9e0415f0ccac5c3e5a7e7eb50527cdf984a05a0bbdafac15",
+    "reason": "Account deletion query executor and seat-grant revocation perform scoped erasure and retention; they never authorize current adult learning."
+  },
+  {
+    "path": "src/account/delete-account.ts",
+    "hash": "9952247aec84f5fd46d4c375f02199c5f6624950398ae141edb1c88dbe923cba",
+    "reason": "Account deletion query executor and seat-grant revocation perform scoped erasure and retention; they never authorize current adult learning."
+  },
+  {
+    "path": "src/account/delete-account.ts",
+    "hash": "18e874b9ed043edac3d42aa7b3d198907975a9e2a739db7dbcc7e632792cb847",
+    "reason": "Account deletion query executor and seat-grant revocation perform scoped erasure and retention; they never authorize current adult learning."
+  },
+  {
+    "path": "src/acquisition/evidence.ts",
+    "hash": "4e13436a500eba819cc2b0b564289260c3e1d6790f99814535bcb98b2bc9f33a",
+    "reason": "Commercial interest evidence explicitly excludes adult:%; free teaching access is not a purchase signal."
+  },
+  {
+    "path": "src/advertising/permission.ts",
+    "hash": "f80fa9866649b2067f779c55f84b88a015d76d647220163945886cb2bf9d5f9d",
+    "reason": "Dynamic relation comes from the closed Google, Meta and OpenAI permission-table mapping; it reads measurement permission, not learning grants."
+  },
+  {
+    "path": "src/analytics/engagement-report.ts",
+    "hash": "98e0269f80d6220dc13fab8c59b72f6022f9955a5453bbfa7e93555b222cc2fe",
+    "reason": "Local query wrapper executes engagement aggregates over anonymous page and visitor records; no current grant entitlement decision."
+  },
+  {
+    "path": "src/analytics/funded-cohort.ts",
+    "hash": "3d85562b3a1293fe14bb74e47f5265f97909152ecb3d352c1b3dbc70c87856af",
+    "reason": "Financial report joins exact commerce: order grant IDs, which cannot be derived adult grant IDs."
+  },
+  {
+    "path": "src/analytics/funded-journey-report.ts",
+    "hash": "a234ff9c4d39f6722308533d05ddc1deea272e5a6627c40a738c98dde0465f0e",
+    "reason": "Local query wrapper executes funded funnel and conversion reporting; no current grant entitlement decision."
+  },
+  {
+    "path": "src/analytics/insights.ts",
+    "hash": "f581025a5afc786d501dc36ea64a5622dd7363763e1becd53afec4f7f785ae82",
+    "reason": "Local report query wrapper reads acquisition and conversion facts; current adult learning coverage is resolved separately by accessGrantsFor."
+  },
+  {
+    "path": "src/analytics/report.ts",
+    "hash": "f581025a5afc786d501dc36ea64a5622dd7363763e1becd53afec4f7f785ae82",
+    "reason": "Local report query wrapper reads funnel, checkout and paid-order analytics; no adult current-access authorization."
+  },
+  {
+    "path": "src/analytics/visitor-journey-report.ts",
+    "hash": "652b49fe3ff2a3342bef93fed7b4442045a3ab2bc1f5eab0fa8b74c60316c5e4",
+    "reason": "Local query wrapper reads the selected account journey, acquisition and visitor evidence; no current-access grant authorization."
+  },
+  {
+    "path": "src/billing/stripe/repository.ts",
+    "hash": "6a67ef5965f6142314f26bd9a5e214cd7c34bde290214fffd1c5038f0aa6ca64",
+    "reason": "Additional-child pricing reads only channel=stripe for non-adult children; derived adult grants have channel=pilot."
+  },
+  {
+    "path": "src/commerce/postgres.ts",
+    "hash": "ac6ebe54dc3e10e8ed4dbaae7a74060935d76d38a9c57aa3aa4ebbb3c0c1fa1d",
+    "reason": "Financial projection writer checks the exact commerce grant ID for immutable source/ownership binding, not current access."
+  },
+  {
+    "path": "src/family/approvals.ts",
+    "hash": "d2e41bd89214249093fdf3da8fdc48bd5ef44c74af65485128a77a0c0ed90fb1",
+    "reason": "Unnamed roster students owned by school:<person> are children, never account-owned adult learners."
+  },
+  {
+    "path": "src/family/projection.ts",
+    "hash": "d67c4c9a522b0fb7cd7d771034c061d07e4a4c1cf4156777b143e37d18758da9",
+    "reason": "Identity SQL composes the page CTE or family-space selection as its source; it reads family identity and relationships, not grant entitlement."
+  },
+  {
+    "path": "src/family/projection.ts",
+    "hash": "7117f0b7185f6bfdf9f620264879649ed353f15f5886ca98a9ba6a8e1bfa13cc",
+    "reason": "Family children are explicitly NOT adult; the grant history query only receives those selected child IDs."
+  },
+  {
+    "path": "src/family/projection.ts",
+    "hash": "8a598e0d20259b9424cf6b5d07066d3c3e4fed323ffda40a9706916626d9b215",
+    "reason": "Family children are explicitly NOT adult; the grant history query only receives those selected child IDs."
+  },
+  {
+    "path": "src/family/repository.ts",
+    "hash": "eaf3f617d14a1d0bcc7a1b6fefebe924e6d9eebea6d4ee07d1ddb55ac3095c9d",
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+  },
+  {
+    "path": "src/family/repository.ts",
+    "hash": "f1888988809faf010d35289dccc24e9eb2c98b989ced48e550aa927f91325717",
+    "reason": "Child-only practice-here predicate explicitly excludes adults; deletion financial retention explicitly excludes pilot grants."
+  },
+  {
+    "path": "src/family/repository.ts",
+    "hash": "ea8fc62c587655517927f92150b6eba28492168be719da545cd4f7bae2373d1b",
+    "reason": "Dynamic account-export relation is selected from fixed learning-rollup tables; exported grant rows are resolved separately by accessGrantsFor."
+  },
+  {
+    "path": "src/feedback/retention.ts",
+    "hash": "b7cad2d8e6323640f65582b4f996a0e049b722888fa8dcb4dc1a1fec5c5cc871",
+    "reason": "Local batch executor deletes problem flags or erases their notes using fixed retention statements; no grant access decision."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "d37a47fb0d4de1bfb0cf8a5495d7e7911e6dba4a33ed991fc55410a5ec171bd0",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "defa0bbc6e63f645aa1944338dbfd967a0c396704ab0e84b3760fb2d349954dc",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/offline/repository.ts",
+    "hash": "9ffb9531a0c3d08f1a97dad492677193af6bbb6e7390694340fa633b6a9572ef",
+    "reason": "Signed offline binding, quota/reuse and selection reads run only inside transaction after refreshDerivedAccess -> refreshAdultAccess -> accessGrantsFor."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "a1a43b5fa54dc88053f34ba537633f17d0327521941c509a98a9c77514443e58",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "12d9e78d8ce80655fab842bb1894fb90c627bc65f82d919445f809f79ecafe1c",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "e371b26bd9cce2aee01588c956cbbd7f389b2bb78cf26fc391f3a1bac1b8b78d",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "002ec687de2c60078d90184fa1ad5661f2cbd942db43d088688b2e603e39d2c0",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "0b7bce5aaeeae6af3b5b0c7708e5b06dad328b3e071caa4ceb4580a5e9a62361",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "282121e8e162c7a27d57d2502953c0beddbb5154996a0bf0841261758131e0c7",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "ae44f0cffb07870ebf10163c16f3cf6003e64278530c03b46f1b9c947eb85569",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "2bfd1c488fb36b3cff5932bb4564288bd31eb0de504aefe10b4e63b144bb57fc",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "da04aa32edb2c8de711a8c146a6fc3dcfef967f3261a7113cfc56a808f1ef4a0",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "2188e2dba3747515a7b5191357d0a27f570733ffcd3ac4e5db36c6a6ab4e184f",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "528b1c382bf9f0828eba4d34a6b90e29706fe35e9fec08f0f56381dded60941d",
+    "reason": "Retention uses direct financial history (adult:% excluded), exact commerce IDs, orphan existence or expired-row purge; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "9795721cc19cb1fbf57cf9cdbdd7799d5a24be7e542913fc8a243638e27bb667",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "408b977b5cba677dfe74f6b2e36568d853ab00024c6a03619be110cd4ec5a3ac",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/privacy/retention.ts",
+    "hash": "4387272f429bc8c821363ce7834fe3969bbb2c1e84b61459e8b168a89a1631da",
+    "reason": "Composed retention predicates and batch executors use financial history, opaque commerce identities and orphan checks; never current adult authorization."
+  },
+  {
+    "path": "src/schools/classroom-workbooks.ts",
+    "hash": "f374ce8eef0690352db2ce94a765847d043aea498df6a639678371228c20f8d0",
+    "reason": "Classroom roster query selects student enrollments; adult teachers are not student roster learners."
+  },
+  {
+    "path": "src/schools/clever/staff-link.ts",
+    "hash": "858806497fa63c729991b38bf8dc4d3806ab108c227cd42185b738d61c0ae1d9",
+    "reason": "Dynamic relation ranges over org roles and enrollments to link dated staff memberships; it does not read learning grants."
+  },
+  {
+    "path": "src/schools/clever/store.ts",
+    "hash": "d132f6fd9eef6e4020486e4b5b1b56db7c73c8f8c73922f614099a16b8b7472a",
+    "reason": "Dynamic relation ranges over org roles and enrollments for source reconciliation; no grant-based current-access decision."
+  },
+  {
+    "path": "src/schools/demo/build.ts",
+    "hash": "4be7b62fb2d576012bb19b26d4041b1981d76a8f2994c661b46c5357a3f3f848",
+    "reason": "Synthetic demo writer inserts seat grants from supplied UUID arrays; the SELECT is an insertion source, not an entitlement read."
+  },
+  {
+    "path": "src/schools/operations.ts",
+    "hash": "3b71d984cea494368d95295459340596803c07da99091c2b1d27b93b8ff10e32",
+    "reason": "Connection retention reads amp_people.learner_id roster records; an account-owned adult learner is separate from the staff person and is not linked there."
+  },
+  {
+    "path": "src/schools/org-delete.ts",
+    "hash": "61f43d311a4a822e9e0415f0ccac5c3e5a7e7eb50527cdf984a05a0bbdafac15",
+    "reason": "Scoped org deletion uses relation-count helpers and revokes exact school seat grants; it never authorizes adult learning from a stored projection."
+  },
+  {
+    "path": "src/schools/org-delete.ts",
+    "hash": "7cc49972e5adccbe9f154ad83e6d961e518e5ab09c6af794e58d42c637ba04f2",
+    "reason": "Scoped org deletion uses relation-count helpers and revokes exact school seat grants; it never authorizes adult learning from a stored projection."
+  },
+  {
+    "path": "src/schools/org-delete.ts",
+    "hash": "6663530136ad3fabf73b4127496b5e5c4d2583d36c908f527f685fe2fe79add6",
+    "reason": "Scoped org deletion uses relation-count helpers and revokes exact school seat grants; it never authorizes adult learning from a stored projection."
+  },
+  {
+    "path": "src/schools/pilot-access.ts",
+    "hash": "f26a4aff4428f65ae8594fc1e789faf49b3650ff80417e2a2003436a265c3586",
+    "reason": "Class practice gate reads student enrollment learners only, not the separate teacher adult learner."
+  },
+  {
+    "path": "src/schools/pilots.ts",
+    "hash": "f0f114050b9c3f7ff719d2a4dab2f28d954a39f5f946003fc7b6b682604c8c09",
+    "reason": "Pilot buyer counts select student enrollments only; adult teachers are excluded from enrollment counts."
+  },
+  {
+    "path": "src/schools/privacy.ts",
+    "hash": "bd76f3fe88efae26ff7c6887c30268a8f8249889d2c698e9c71153cab6d4bd19",
+    "reason": "Dynamic export source is a fixed list of skill, active, help and level daily rollups/events for roster students; not a grant reader."
+  },
+  {
+    "path": "src/schools/repository.ts",
+    "hash": "fe26195f4a2ff3ae20243e2ebf5d3b7cb7664d0fbddf2c43c1c9a0f4da262d98",
+    "reason": "Seat allocation and reconciliation insert or revoke exact school-seat grant identities; their SELECT subqueries address seat/roster ownership."
+  },
+  {
+    "path": "src/schools/repository.ts",
+    "hash": "ff175388dd3b8543e2faf868da876784d16616ac244bdc4e9f7e15c700e12f58",
+    "reason": "Seat allocation and reconciliation insert or revoke exact school-seat grant identities; their SELECT subqueries address seat/roster ownership."
+  },
+  {
+    "path": "src/schools/repository.ts",
+    "hash": "d285a175ebab0023f0c263cc0826841e8d8a1d116328c6513f413282e7516d6b",
+    "reason": "Seat allocation and reconciliation insert or revoke exact school-seat grant identities; their SELECT subqueries address seat/roster ownership."
+  },
+  {
+    "path": "src/schools/rollover.ts",
+    "hash": "5d413abfbd847c1537525478b2c7efce77dd3cd7efce30117fbbb6e945f22ece",
+    "reason": "Dynamic FROM substitutes the fixed current-classes fragment and academic-session join; no learning-grant relation."
+  },
+  {
+    "path": "src/schools/sign-in.ts",
+    "hash": "2bf0eb8eda875330768ddd252ed5ae1aff3b3e51534bf31f4fac229e5be088fd",
+    "reason": "Query helper touches demo activity for the signed-in person; no grant relation or current learning entitlement decision."
+  },
+  {
+    "path": "src/schools/source-evidence.ts",
+    "hash": "7aef9457f9ea0b616262c1e2dc2113643b43433082f42879917d3400254ccc0b",
+    "reason": "Dynamic relation is constrained to amp_org_roles or amp_enrollments; it applies dated membership evidence, not grant authorization."
+  },
+  {
+    "path": "src/schools/source-evidence.ts",
+    "hash": "03898024ceba8f1a9a9cfe19e97590bc2f5819edc2c9bbfe6027e9c86bf67f3c",
+    "reason": "Dynamic relation is constrained to amp_org_roles or amp_enrollments; it applies dated membership evidence, not grant authorization."
+  },
+  {
+    "path": "src/schools/source-evidence.ts",
+    "hash": "0a423bd5e4d4f6d302dd076c1b94140235ecc1d1379557d150b0d9235bb60e71",
+    "reason": "Dynamic relation is constrained to amp_org_roles or amp_enrollments; it applies dated membership evidence, not grant authorization."
+  },
+  {
+    "path": "src/schools/student-me.ts",
+    "hash": "1dc5d839f4eb1d0c4d33bb3372874882fd91eedc954e30e51726e43a4df9fea2",
+    "reason": "Student principal resolves the roster learner; teacher own practice uses readOwnPractice and accessGrantsFor."
+  },
+  {
+    "path": "src/server/repository.ts",
+    "hash": "608e2f98912ec29f01e76c05c1e69408156866e6b4811ff4b32c9ae6d6122fe3",
+    "reason": "Drizzle FROM selects schema.learners for the account learner list; current learning access uses the shared grant resolver."
+  },
+  {
+    "path": "src/server/schema.ts",
+    "hash": "ef6185c9580e4d4dbf784fde5bdeeb5a9d4d4c2c63a5508e3a415083c06bd641",
+    "reason": "Drizzle schema declaration maps the grants export to its physical ledger; it defines the table and does not execute a reader."
+  },
+  {
+    "path": "scripts/migrate.ts",
+    "hash": "ea44f5932fb0f635c3ae4253e3a2ecb37716b3a1184b35ea1b8d6556318ff467",
+    "reason": "Migration runner executes checksum-reviewed SQL files and parsed concurrent index statements; those files are independently scanned by this guard."
+  },
+  {
+    "path": "scripts/migrate.ts",
+    "hash": "d24d7ca165cebc3594eeb09a695cd810d1edfa5fb1a0af6aa74c0c16c0d00e80",
+    "reason": "Migration runner executes checksum-reviewed SQL files and parsed concurrent index statements; those files are independently scanned by this guard."
+  },
+  {
+    "path": "scripts/repair-template-versions.ts",
+    "hash": "ec9e3cdc684e2edb871f23b2c9de6759e2fbf6c0080cb4e34889675c65c84e2a",
+    "reason": "Repair tool selects instance/offline-instance content from a fixed table list to repair immutable template versions; no grant access read."
+  },
+  {
+    "path": "scripts/school-org-fixture.ts",
+    "hash": "d273f26f390479097a138a14f89e082cc05797c5b7690649f555ed727b563b05",
+    "reason": "Synthetic school fixture inserts exact school-seat grants from roster rows; this SELECT is a write source, not adult authorization."
+  },
+  {
+    "path": "scripts/verify-checkout-privacy-ui.ts",
+    "hash": "5c6d7716cdcca4ad3edef689edcd95e5b6e37738c77c5d71c8d242a76e821863",
+    "reason": "Synthetic browser fixture checks its fixed consent/measurement table set for redaction; not a current entitlement reader."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "e63a21445e73d0354572b8b83b54687ed2dde44dc1995151cd7d5b6b0751eb8a",
+    "reason": "Synthetic school scale harness counts physical ledger rows and benchmarks child-only school access; not a product authorization reader."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "84fe8c68fbb2748d1cbcce614724edad2c61131e0ce9af9eea07ee9f3078138c",
+    "reason": "Synthetic school scale harness counts physical ledger rows and benchmarks child-only school access; not a product authorization reader."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "d487abb4e6b087b564fd773484ebedcf4217c6d2737eb030c057ae2ad65c139c",
+    "reason": "Synthetic scale benchmark reuses the reviewed paidLookup query against selected student roster learners and random nonexistent IDs."
+  },
+  {
+    "path": "scripts/verify-clever-scale.ts",
+    "hash": "0d8d27d042d8fde137add854e13abea643592157cb99b25ee53b1c57497ec4e5",
+    "reason": "Synthetic scale benchmark reuses the reviewed paidLookup query against selected student roster learners and random nonexistent IDs."
+  },
+  {
+    "path": "scripts/verify-journeys-ui.ts",
+    "hash": "fecef55ae50ce9c49db685c99680da8a6c8a4754ff24a4ec59efc5a4274ebf72",
+    "reason": "Synthetic browser fixture assertion checks its explicitly created child learner after consent; not an adult authorization reader."
+  },
+  {
+    "path": "scripts/verify-ui.ts",
+    "hash": "dfc7622969db9a3c8b8924efcb45e3978d26653c7c38687f9591b18888fc8c59",
+    "reason": "Synthetic UI failure capture submits a query config selecting the public problem from amp_instances for its fixture learners only."
+  },
+  {
+    "path": "migrations/0006-commerce-orders.sql",
+    "hash": "025bea713eef10a0f817d0dd67d52a91bcadc11c03a500d9d2838101fbdb9453",
+    "reason": "Immutable historical migration checks commerce: ledger parity and orphan commerce rows, never adult access."
+  },
+  {
+    "path": "migrations/0100-line-plot-build-problem-flags.sql",
+    "hash": "5cfef1672bf39df7f189c900a4b35f5ba8b365e3d5ef5bbcf38245d42878f3d4",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0101-unit-square-marking-problem-flags.sql",
+    "hash": "1233d6aa52d978fa67e32b5b561d5a665e5e1802dcb95675fe3c62280366edaf",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0104-counter-builder-problem-flags.sql",
+    "hash": "80bf6e594e8f98377e3041b8f6d5f1aa9e3963b283d3977aaa1c5dcd21fc64be",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0105-shape-composer-problem-flags.sql",
+    "hash": "39add95f1aa79238362343361d3c64369e4003e42345eaae92831ec1641093d5",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0106-equal-addends-problem-flags.sql",
+    "hash": "7f2fb6b781dd8039210cf829398980bbd7de9b54f1d22e9d0b51bba29955ff8c",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0106-peg-board-problem-flags.sql",
+    "hash": "4f7bc022956032e08f34d316d3382bc3fed6275a52339db45a8038e7fb51a417",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  },
+  {
+    "path": "migrations/0106-trend-line-fit-problem-flags.sql",
+    "hash": "278a49ae17993e3b11100e47788e4c3bbc2f036c9112ebbe3d52327f6231d2fa",
+    "reason": "Dynamic migration DDL preserves and extends the installed problem-flag response-kind CHECK; it reads pg_constraint and alters amp_problem_flags only."
+  }
+]

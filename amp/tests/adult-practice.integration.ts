@@ -318,12 +318,27 @@ test(
         [teacher, daysFromNow(0)],
       );
       assert.equal(role.rowCount, 1);
+      const storedBeforeRead = await grant(adultId);
       const after = await me(teacher);
+      assert.deepEqual(
+        await grant(adultId),
+        storedBeforeRead,
+        "GET does not refresh the stored grant",
+      );
       assert.deepEqual(after.adultPractice, {
         eligible: false,
         learner: { id: adultId, name: "Dana Fixture", active: false },
       });
-      assert.ok((await grant(adultId)).ends_at.getTime() <= Date.now());
+      const projected = after.family.learners.find(
+        (l: { id: string }) => l.id === adultId,
+      );
+      assert.ok(
+        Date.parse(
+          projected.access.find(
+            (g: { channel: string }) => g.channel === "pilot",
+          ).endsAt,
+        ) <= Date.now(),
+      );
       assert.equal((await batch(teacher, adultId)).statusCode, 402);
       // Their record stays theirs to read.
       assert.equal((await get("/api/v1/me/practice", teacher)).statusCode, 200);
@@ -334,7 +349,13 @@ test(
         [teacher, daysFromNow(10)],
       );
       assert.equal((await me(teacher)).adultPractice.learner.active, true);
-      const ends = (await grant(adultId)).ends_at.getTime();
+      const extended = (await me(teacher)).family.learners.find(
+        (l: { id: string }) => l.id === adultId,
+      );
+      const ends = Date.parse(
+        extended.access.find((g: { channel: string }) => g.channel === "pilot")
+          .endsAt,
+      );
       assert.ok(ends < licenseEnds.getTime());
       assert.ok(Math.abs(ends - (Date.now() + 10 * DAY)) < 1.1 * DAY);
       assert.equal((await batch(teacher, adultId)).statusCode, 200);

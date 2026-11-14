@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { demoLearnerSql } from "../schools/demo/sql.js";
 import { simulationLearnerSql } from "../account/practice-profiles.js";
 import type { Pool } from "pg";
@@ -270,21 +271,50 @@ export async function insightsReport(
   // while it ran (answers per trial; saved = adopted), and since then each
   // learner's own free problems (used of the 100; saved = now covered by a
   // grant). Both stay in one count, so history doesn't fall out of it.
-  const trialAnswers = (
-    await q<{ answered: number; saved: boolean }>(
-      `SELECT t.adopted_at IS NOT NULL AS saved,
+  const trialAnswers: { answered: number; saved: boolean }[] = [];
+  const accessClient = await pool.connect();
+  try {
+    await accessClient.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
+    const rows = (
+      await accessClient.query<{
+        learner_id: string | null;
+        answered: number;
+        saved: boolean;
+      }>(
+        `SELECT NULL::text AS learner_id,t.adopted_at IS NOT NULL AS saved,
          (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=t.learner_id) AS answered
        FROM amp_trials t WHERE t.created_at>=$1 AND t.created_at<$2
        UNION ALL
-       SELECT EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
-           AND g.starts_at<=now() AND g.ends_at>now()) AS saved,
-         l.free_online_used AS answered
+       SELECT l.id AS learner_id,false AS saved,l.free_online_used AS answered
        FROM amp_learners l
        WHERE l.created_at>=$1 AND l.created_at<$2 AND l.free_online_used>0
          AND l.account_id NOT LIKE 'trial:%' AND NOT l.simulation
          AND NOT EXISTS(SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id)`,
-    )
-  ).map((row) => ({ answered: Number(row.answered), saved: row.saved }));
+        range,
+      )
+    ).rows;
+    const access = await accessGrantsFor(
+      accessClient,
+      rows.flatMap((row) => (row.learner_id ? [row.learner_id] : [])),
+    );
+    const covered = new Set(
+      access.grants
+        .filter((g) => grantInForce(g, access.now))
+        .map((g) => g.learner_id),
+    );
+    trialAnswers.push(
+      ...rows.map((row) => ({
+        answered: Number(row.answered),
+        saved: row.learner_id ? covered.has(row.learner_id) : row.saved,
+      })),
+    );
+    await accessClient.query("COMMIT");
+  } catch (error) {
+    await accessClient.query("ROLLBACK");
+    throw error;
+  } finally {
+    accessClient.release();
+  }
   const [events] = await q<{ placement: number; paywall: number }>(
     `SELECT count(*) FILTER (WHERE event='placement_done')::int AS placement,
        count(*) FILTER (WHERE event='paywall')::int AS paywall

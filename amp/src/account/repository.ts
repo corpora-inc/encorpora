@@ -160,7 +160,7 @@ export async function accountSummary(
           [accountId],
         )
         .catch(missing("42P01")),
-      // The family's class, which `families.summary` above keeps current. It's
+      // The family's persisted class. Creation belongs to explicit actions. It's
       // this account's family side, so it isn't among the places above; a
       // co-teacher from another account finds it there.
       familyClassOf(pool, accountId),

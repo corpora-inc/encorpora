@@ -1,3 +1,4 @@
+import { accessGrantsFor, grantReserved } from "../account/adult-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { refreshAdultAccess } from "../account/adult-access.js";
@@ -10,7 +11,7 @@ import { AccessGiftError, issueGiftSchema } from "./contracts.js";
 
 type Database = Pool | PoolClient;
 /** Only the authenticated identity store supplies the recipient, never a request body. */
-async function verifiedEmail(db: Database, accountId: string) {
+async function verifiedEmail(db: Database, accountId: string, lock = true) {
   if (!accountId.startsWith("amp|")) return null;
   if (
     !(await db.query("SELECT to_regclass('amp_auth_users') AS relation"))
@@ -19,7 +20,8 @@ async function verifiedEmail(db: Database, accountId: string) {
     return null;
   const row = (
     await db.query(
-      'SELECT lower(btrim(email)) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true FOR SHARE',
+      'SELECT lower(btrim(email)) AS email FROM amp_auth_users WHERE id=$1 AND "emailVerified"=true' +
+        (lock ? " FOR SHARE" : ""),
       [accountId.slice(4)],
     )
   ).rows[0];
@@ -32,7 +34,7 @@ async function installed(db: Database) {
 }
 export async function availableGift(db: Database, accountId: string) {
   if (!(await installed(db))) return undefined;
-  const email = await verifiedEmail(db, accountId);
+  const email = await verifiedEmail(db, accountId, false);
   if (!email) return undefined;
   const row = (
     await db.query(
@@ -309,10 +311,13 @@ export async function activateGiftInTransaction(
   if (learnerId === undefined)
     throw new AccessGiftError(400, "invalid_gift_request");
   // Future paid terms also reserve this learner; gifts neither replace nor stack on subscriptions.
-  const licensed = await db.query(
-    "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
-    [learnerId],
+  const access = await accessGrantsFor(
+    db,
+    learnerId === null ? [] : [learnerId],
   );
+  const licensed = {
+    rowCount: access.grants.some((g) => grantReserved(g, access.now)),
+  };
   const stripeLinked = (
     await db.query("SELECT to_regclass('amp_stripe_checkouts') AS relation")
   ).rows[0].relation

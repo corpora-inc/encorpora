@@ -19,21 +19,21 @@ page. It returns at most 50 places, ordered by UUID, and a nullable cursor:
 ```ts
 {
   families: Array<{
-    familyId: string;                 // UUID
+    familyId: string; // UUID
     displayName: string | null;
-    classId: string | null;           // family’s own class, not a hosted child’s class
-    orgId: string | null;             // actual org for that class
+    classId: string | null; // family’s own class, not a hosted child’s class
+    orgId: string | null; // actual org for that class
     role: "holder" | "second-parent" | "co-teacher";
     teachingPlace: TeachingPlace | null;
     capabilities: { readFamily: boolean; readTeaching: boolean };
   }>;
-  next: string | null;                // pass as after; null ends pagination
+  next: string | null; // pass as after; null ends pagination
 }
 type TeachingPlace = {
   classId: string;
   displayName: string;
   scope: "whole-class";
-  path: string;                      // API path to the teaching projection
+  path: string; // API path to the teaching projection
 };
 ```
 
@@ -42,19 +42,71 @@ A co-teacher belongs in Teaching. `teachingPlace` additionally identifies the
 holder's or second parent's mixed tutoring class. Its presence, rather than
 `readTeaching` alone, determines whether to show that separate place.
 
-A family ID is an opaque, stable URL key. It need not equal the class's org ID. A parent whose children are all
-hosted elsewhere receives a persisted `amp_family_spaces.id` when approval transfers
-ownership. Family creation and second-parent acceptance also ensure that identity.
-These reads create no identity, class, staff role or enrollment. A local class created by a compatible API uses that ID for its org. A legacy
-API can allocate a different org ID; projections resolve that association through
-the holder account. Authorization always uses the actual org, and the public
-family ID never changes. A database hook registers families created by legacy APIs. An adult without children or a family class receives
-no new Family place merely because they teach elsewhere.
+A family ID is an opaque, stable URL key. It need not equal the class's org ID.
+Ownership transfer, family creation and second-parent acceptance persist that key.
+When an eligible holder lacks an identity, discovery derives it without writing:
+an existing family uses its org ID; otherwise `amp_family_identity(account)` supplies
+a deterministic UUIDv8 from a namespaced SHA-256 digest. The owner can open that
+URL immediately. Existing persisted IDs always win. Database insert hooks make
+legacy identity and class writers preserve the same key, even during a rolling
+upgrade. Authorization uses the actual org associated with the holder account.
+Teaching elsewhere alone does not give an adult a new owned Family place.
 
-All Family GET routes, including Teaching and individual progress/PDF, are read-only.
-Discovery performs at most four database queries for a page; it acquires no account
-or row lock. Purchase capability previews use read-only consent and verified-address
-checks; purchase mutations retain their locks and recheck eligibility.
+Every `/api/v1/families` GET, including Teaching and individual progress/PDF, is
+read-only. Discovery starts with indexed ownership, second-parent and staff
+membership branches, unions the associated account keys, paginates their stable
+family IDs, and then loads the page's details. It performs at most four database
+queries and takes no account or row lock. Purchase previews use read-only consent
+and verified-address checks; mutations retain their locks and recheck eligibility.
+
+### Legacy Family and account GETs
+
+`GET /api/v1/family` uses a read-only snapshot without an account lock. It creates
+no identity, class, roster or grant. Adult eligibility and derived grant dates are
+calculated from current child/school access; learning mutations persist the adult
+grant. Refunded or revoked qualifying access cannot be extended by a stale grant.
+`GET /api/v1/me/practice` and its `/report.pdf` variant use the same live eligibility
+sources without refreshing grants. Family second-parent, approval-list and
+approval-detail GETs are also read-only, including their consent checks.
+
+Child creation, starter setup and the explicit
+`POST /api/v1/family/learners/:learnerId/practice-here` action create or repair a
+needed family class. An unrostered legacy child remains visible before that action.
+`GET /api/v1/me` reports the persisted class, if any, without creating one.
+
+Family maintenance runs on explicit writes:
+
+| Maintenance | Write path |
+| --- | --- |
+| Expired family academic year | `ensureFamilyClass` advances the class to `yearSession` during child creation, starter setup, practice-here, rename and birth-year edits. POST class-code lookup and picture sign-in call the same helper under the account and family locks before validating the session. School years and archived classes are not reopened by sign-in. |
+| Family class, parent staff roles, child roster/enrollment and conversion notice | The same helper creates missing rows during those writes; `family:convert` provides an explicit migration/repair command. Existing children keep their learner IDs, evidence and consent. |
+| Roster names and birth-year-derived grades | The helper synchronizes owned children in their home family during those writes and class-code sign-in. Name changes also use migration 0098's trigger; birth-year changes call `syncFamilyGrade`, including hosted children in other family tenants. School grades are left to the school. Merely visiting a report does not advance a stored grade. |
+| Adult grant creation, extension and expiry | Online `hasAccess` and the offline transaction both call `PgTransaction.refreshDerivedAccess`, which uses `refreshAdultAccess` → `accessGrantsFor` → `adultPracticeEnd`. Offline refresh precedes issue, quota checks, request reuse, preflight and reconciliation. An interval change invalidates an existing pack's binding; the client requests a new pack. Adult setup, access assignment and legacy trial adoption also refresh through the same derivation. |
+| Stable family identity | Family creation, parent approval and second-parent acceptance ensure the identity. The migration runner backfills existing eligible accounts; database hooks cover legacy writers. Discovery derives a stable fallback without writing. |
+| Creation audit events and default student-device settings | Family/class/roster creation writes its events and default personal-device setting in the creating transaction. Reads emit no creation events. |
+
+The class validator used by OIDC GET routes stays read-only. The POST class-code
+entry path performs family maintenance; no scheduled family-year job is required.
+Consent/address/advertising reads use their nonlocking variants; their mutations
+retain the existing authorization locks.
+
+These legacy GET side effects are retained for compatibility:
+
+- `GET /api/v1/me` adopts practiced, unexpired owned legacy trials through
+  `absorbLiveTrial`. The retired trial screens cannot expose those records; removing
+  adoption here without a coordinated sign-in/client change would hide saved work.
+  Adoption uses the existing account transaction and can create the child's family
+  class or refresh an adult grant. Accounts without live unadopted trials skip it.
+- The same `/me` endpoint calls `followDemo`: it records a demo visitor's presence
+  or moves them to the replacement nightly demo. Existing clients depend on this
+  refresh to avoid opening a retired demo. Non-visitors skip it.
+- `GET /api/v1/family/export` writes `export.started` and `export.completed` privacy
+  audit events around its read-only export snapshot. These record the explicit
+  download; removing them would remove the established export audit trail.
+
+`GET /api/v1/account/deletion` performs no data writes, but retains the account
+advisory lock while computing its deletion preview. It must not be described as
+lock-free. The deletion mutation recomputes that plan under its own lock.
 
 `displayName` uses an explicitly saved family name, then the holder's adult profile
 family name followed by ` family`, otherwise null. A provider's full display name
@@ -155,13 +207,18 @@ roster person IDs. The shared renderer must interpret IDs in its supplied scope.
 type TodayTodo = {
   id: string;
   kind: "shared-gap" | "stuck" | "no-practice" | "ready" | "good-day" | "start";
-  title: string; detail: string;
+  title: string;
+  detail: string;
   students: Array<{ id: string; name: string }>;
   action:
     | { kind: "lesson"; templateId: string; skillId: string; label: string }
     | { kind: "skill"; skillId: string; label: string }
     | { kind: "student"; personId: string; label: string }
-    | { kind: "tab"; tab: "map" | "time" | "start" | "settings"; label: string };
+    | {
+        kind: "tab";
+        tab: "map" | "time" | "start" | "settings";
+        label: string;
+      };
   groupSheet?: { skillId: string; label: string };
   rule?: string;
   misses?: Array<{ personId: string; attempt: string; skillId: string }>;
@@ -224,12 +281,23 @@ type ProgressRecord = {
   reference: { from: number; to: number } | null;
   strands: Array<{ id: string; label: string }>;
   weeks: Array<{ week: string; minutes: number }>;
-  objectives: Array<{ skillId: string; title: string; strand: string; day: string }>;
+  objectives: Array<{
+    skillId: string;
+    title: string;
+    strand: string;
+    day: string;
+  }>;
   work: Array<{
-    id: string; day: string; at: string; prompt: string;
-    answer: string | null; response: string | null;
+    id: string;
+    day: string;
+    at: string;
+    prompt: string;
+    answer: string | null;
+    response: string | null;
     result: "independent" | "hint" | "missed" | "paper";
-    review: boolean; skill: string; strand: string;
+    review: boolean;
+    skill: string;
+    strand: string;
   }>;
 };
 type Estimate = { level: number; sd: number };
@@ -245,7 +313,6 @@ co-teacher cannot use this route. It grants no host-class or grade access and
 includes no host roster. The PDF contains the child's progress and family name;
 print rendering is per request. Missing rendering service returns `503 report_unavailable`.
 The download path is `paths.progress + ".pdf"`.
-
 
 ## Teaching projection
 
@@ -283,14 +350,24 @@ returns `404 teaching_place_not_found`.
 
 ```ts
 type ClassSummary = {
-  id: string; orgId: string; name: string; orgName: string;
+  id: string;
+  orgId: string;
+  name: string;
+  orgName: string;
   course: { label: string; level: number; from: number; to: number } | null;
 };
 type TodayStudent = {
-  id: string; learnerId?: string; name: string; gradeLevel: number | null;
-  level: Estimate | null; provisional: boolean;
-  todayMinutes: number; todayProblems: number;
-  weekMinutes: number; weekProblems: number; lastActive: string | null;
+  id: string;
+  learnerId?: string;
+  name: string;
+  gradeLevel: number | null;
+  level: Estimate | null;
+  provisional: boolean;
+  todayMinutes: number;
+  todayProblems: number;
+  weekMinutes: number;
+  weekProblems: number;
+  lastActive: string | null;
 };
 ```
 
@@ -314,14 +391,14 @@ Family scope does not revoke that legacy authority.
 `PATCH /api/v1/me/profile` accepts exactly:
 
 ```json
-{"givenName":"Ada","familyName":"Okafor"}
+{ "givenName": "Ada", "familyName": "Okafor" }
 ```
 
 Each field is a trimmed string of 1–100 characters without control characters,
 or `null`. Both fields are required; unknown fields are rejected. Its response is:
 
 ```json
-{"givenName":"Ada","familyName":"Okafor","displayName":"Ada Okafor"}
+{ "givenName": "Ada", "familyName": "Okafor", "displayName": "Ada Okafor" }
 ```
 
 `GET /api/v1/me` includes these three nullable fields in `account`. A legacy auth
@@ -361,23 +438,29 @@ label as the person's name.
 
 ## First course placement and deployment
 
-Apply migrations 0125–0128 before serving these endpoints. Migration 0128 adds only
-nullable name metadata, with no rewrite or row backfill under the DDL lock. Before
-serving Family reads for existing accounts, run the one-off data migration:
+Run `npm run db:migrate` before serving these endpoints. Migrations 0125–0130
+install the identity/name schema, deterministic identity hooks and concurrent
+class-to-family lookup index. Migration 0131 adds nullable funded-term scheduling
+evidence to the financial request; apply it before running the funding workers.
+The runner automatically performs the family identity
+data migration after committing all schema transactions. No separate operator
+backfill step is required. Successful completion is persisted as
+`data:family-identities-v1` in `amp_migrations`; a failure prevents migration success
+and leaves that receipt absent.
 
-```sh
-AMP_DATABASE_URL='<database URL>' npx tsx scripts/backfill-family-identities.ts
-```
-
-It scans family account keys and learner IDs in keyset pages of 250,
-commits one account at a time, and uses a two-second lock timeout and five-second
-statement timeout for each account. It takes the account mutation lock, rechecks
-eligibility and the deletion journal, and skips school/trial accounts. It neither
-changes published IDs nor creates classes or enrollments. A timeout or interruption
-leaves earlier commits intact; rerun the command unchanged to resume safely. Run
-it after deploying all identity-writing mutations so concurrent approvals cannot
-leave an account behind. The script is separate from schema migration transactions
-to avoid a long live-table transaction.
+The data migration scans family account keys and learner IDs in keyset pages of
+250 (the reusable backfill accepts 1–1,000), committing one account at a time.
+Page reads and account work have a five-second statement timeout; account locks
+have a two-second timeout. The runner bounds connection acquisition to five seconds,
+serializes migrators with its session lock, and retries lock/deadlock failures up to
+three attempts. Account transactions recheck ownership, existing identities and
+the deletion journal. They never create classes or enrollments, rewrite published
+IDs, or hold the schema migrations' DDL locks. A failed run preserves committed
+accounts and safely revisits them on retry. The receipt skips completed work on
+subsequent deployments. Ownership fallback remains available during migration and
+for transfers from legacy writers after the scan, so rolling upgrades cannot hide
+hosted-only parents. `scripts/backfill-family-identities.ts` is also an idempotent
+repair command; discovery does not depend on its manual execution.
 
 Never replace the contents of an applied migration in a persistent deployment. The runner checks file checksums. Ordinary migrations
 commit separately. 0126 adds a nullable column without a table rewrite or a
@@ -428,3 +511,76 @@ batch account consent. Last activity and level use indexed latest-row probes;
 Today facts retain their ownership-selected, date-bounded computation. Teaching
 approval history is capped at 1,000 rows, with consent fetched in one batch for
 active approvals only.
+
+
+## Adult access and grant reader inventory
+
+`account/adult-access.ts:accessGrantsFor` resolves current grants using the
+reader's transaction client. It reads direct grants, removes stored `adult:`
+projections, and derives the account's free adult access from current qualifying
+child grants, second-parent relationships, school licenses and teacher pilots.
+Deleted adults and simulation profiles do not receive derived access. The result
+includes PostgreSQL's transaction clock, used by `grantInForce` and
+`grantReserved`; the latter also reserves future direct paid terms.
+
+A stored adult grant is an offline binding, not entitlement authority. Its
+absence, expiry, old end date or active status cannot override live sources.
+`refreshAdultAccess` materializes the resolver's result under the account lock;
+unchanged access leaves the offline revision unchanged. Revocation or an interval
+change invalidates the existing pack. Reads never materialize a missing grant.
+Projected adult dates describe current coverage, not historical paid access.
+
+| Reader | Resolution |
+| --- | --- |
+| `family/repository.ts` summary (`/family`, account `/me`) | `accessGrantsFor` on the read-only snapshot; profiles use `profilesCovered`. |
+| `account/adult.ts` own practice and PDF | `accessGrantsFor` on the family read-only snapshot. |
+| `account/practice-profiles.ts` | Own adult grants use `accessGrantsFor`; an account without an adult learner uses its shared `adultPracticeEnd` source calculation. Profiles acquire no grants. |
+| `server/repository.ts:hasAccess` | Shared refresh and `accessGrantsFor`, followed by school-grant validity and pilot checks. Online practice, books, individual/classroom workbooks and workbook allowances inherit this path. |
+| `offline/repository.ts` | Transaction refresh precedes all three stored queries: pack binding/preflight/reconciliation, quota and idempotent reuse, and grant selection/issuance. These queries need the physical row and exact signed interval/revision. |
+| `billing/stripe/purchase.ts` | Status uses `accessGrantsFor` in its billing transaction; no write is needed for missing adult access. |
+| `billing/stripe/repository.ts` | Batched checkout blockers, owned eligibility and reservation use the resolver on the caller's client. |
+| `billing/stripe/service.ts` | Final checkout resolves access again after provider/catalog preparation, in the final account transaction. |
+| `billing/stripe/enrollment.ts` | Paid enrollment assignment resolves access before financial reconciliation and assignment. |
+| `access-grants/repository.ts` | Explicit and automatic learner-gift activation resolve access inside the activation transaction. Family-gift writes refresh the adult through the shared resolver. |
+| `funding-purchase/provision.ts` | `fundedTermStart` resolves once before following contiguous terms. ClassWallet pay-by and staging call it on their own client. Scheduling saves the validated activation/start pair on the pending funding request (or pending learner quotes when called without a request ID). Provisioning accepts that pair or the exact saved provider payload after preceding coverage expires or is revoked, and independently resolves current overlap. |
+| `family/approvals.ts` | The active-grant helper uses the resolver. Unnamed roster previews read child grants only. |
+| `family/repository.ts` account export | Each learner page resolves grants on the read-only export snapshot, preserving direct grant history and projecting current adult coverage. |
+| `analytics/insights.ts` | Free-practice conversion coverage uses the resolver in a read-only repeatable-read transaction. |
+| `scripts/preview-billing.mjs` | Development billing status uses the resolver in a read-only snapshot. |
+
+The physical ledger is `amp_grants`; there is no `amp_access_grants` table.
+Remaining direct reads have narrower meanings:
+
+| Direct reader | Why an adult projection cannot determine current access |
+| --- | --- |
+| `account/adult-access.ts` | The central resolver and its live child-source calculation own these reads. |
+| `billing/stripe/repository.ts:priceTier` | Reads only Stripe grants for other non-adult children. Adult projections use the pilot channel. |
+| `family/projection.ts` | Both coverage and bounded history are scoped to selected `NOT adult` children. |
+| `family/repository.ts:practiceHere` | Explicitly selects a non-adult child. |
+| `family/approvals.ts` unnamed preview | Selects student learners owned by `school:<person>`; account-owned adults cannot match. |
+| `schools/classroom-workbooks.ts`, `schools/pilot-access.ts`, `schools/pilots.ts` | Select student enrollment learners. Teachers' own adult learners are separate from student enrollments. |
+| `schools/student-me.ts` | The authenticated student principal resolves a roster learner. Adult own-practice reads use the resolver above. |
+| `schools/operations.ts` | Connection retention reads `amp_people.learner_id` roster records. A staff person's separate account-owned adult learner is not linked there. |
+| `commerce/postgres.ts`, `analytics/funded-cohort.ts` | Read exact `commerce:` grant IDs for financial binding and reporting. |
+| `acquisition/evidence.ts` | Explicitly excludes `adult:%` from commercial-interest evidence. |
+| `privacy/retention.ts` | Explicitly excludes adult grants from paid retention; other reads address exact commerce IDs, historical orphan existence or expired-row purge. |
+| `family/repository.ts` deletion | Financial preservation excludes the pilot channel. `account/delete-account.ts` enumerates/deletes learner records and revokes exact seat grants; it does not authorize from adult access. School deletion, transfer, roster and rollover writers likewise revoke exact seat grants. |
+| `scripts/verify-clever-scale.ts`, `scripts/verify-journeys-ui.ts` | Synthetic ledger-count/child-access benchmarks and child purchase assertions, not product entitlement readers. Other fixture scripts only insert or update synthetic grants. |
+| `migrations/0006-commerce-orders.sql` | Historical commerce projection parity, restricted to `commerce:` identities. Other grant migrations define schema, indexes and offline revisions. |
+
+`tests/adult-grant-readers.test.ts` scans TypeScript expressions and PostgreSQL
+lexical tokens across source, scripts and migrations. It follows literal
+concatenations, templates and local aliases; recognizes qualified/quoted
+relations, comments, `ONLY`, `TABLE`, ORM calls and SQL function/view bodies;
+and flags unresolved query calls, dynamic relations and SQL `EXECUTE` for review.
+Standalone ledger-name fragments are also reviewed, so a helper cannot hide a
+relation behind string assembly. This source guard does not prove the behavior
+of arbitrary runtime-generated code.
+
+`tests/fixtures/grant-readers.json` pins each reviewed expression by path and
+whitespace-preserving hash, with a concrete reason. Query counts detect duplicate uses.
+Exceptions include restricted child/history readers, grant writers and dynamic
+helpers whose relation choices have been inspected. New or changed expressions
+require review even within an approved file. The bypass fixtures exercise the
+complete inventory comparison, including SQL functions and views. Offline
+refresh ordering and the database consumer matrix guard the resolver boundary.

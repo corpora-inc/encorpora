@@ -2,7 +2,7 @@ import {
   purchaseMeasurementView,
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
-import { refreshAdultAccess } from "../account/adult-access.js";
+import { accessGrantsFor, grantInForce } from "../account/adult-access.js";
 import { profilesCovered } from "../account/practice-profiles.js";
 import {
   ensureFamilyClass,
@@ -65,6 +65,22 @@ export class FamilyRepository {
       client.release();
     }
   }
+  /** A consistent snapshot without mutation locks or write permission. */
+  async read<T>(action: (client: PoolClient) => Promise<T>): Promise<T> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY");
+      await client.query("SET LOCAL statement_timeout='30s'");
+      const result = await action(client);
+      await client.query("COMMIT");
+      return result;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
   async audit(
     client: PoolClient,
     accountId: string,
@@ -87,23 +103,7 @@ export class FamilyRepository {
     ).rows[0].relation;
   }
   async summary(accountId: string): Promise<FamilySummary> {
-    return this.transaction(accountId, async (client) => {
-      // Families are classes: children who were here before that get their
-      // family's class on the parent's next visit, under this account lock.
-      await ensureFamilyClass(client, this.pool, accountId, {
-        converting: true,
-      });
-      // The adult's own learner keeps its free access current with what
-      // qualifies it, so every read below sees the refreshed grant. Read
-      // through the row, so a database before 0093 has none.
-      const adult = (
-        await client.query<{ id: string }>(
-          `SELECT l.id FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL
-           AND to_jsonb(l)->'adult'='true'::jsonb AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false)`,
-          [accountId],
-        )
-      ).rows[0];
-      if (adult) await refreshAdultAccess(client, accountId, adult.id);
+    return this.read(async (client) => {
       const consent = (
         await client.query(
           "SELECT policy_version,recorded_at,withdrawn_at FROM amp_parent_consents WHERE account_id=$1",
@@ -112,23 +112,24 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.starting_band,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.starting_band,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
-      // Practice profiles have no grants: the account's own access covers
-      // them all (docs/families.md), read once.
+      const access = await accessGrantsFor(
+        client,
+        learners.map((row) => row.id),
+      );
+      const grants = access.grants;
+      for (const row of learners)
+        row.has_access = grants.some(
+          (g) => g.learner_id === row.id && grantInForce(g, access.now),
+        );
       if (learners.some((row) => row.simulation)) {
         const covered = await profilesCovered(client, accountId);
         for (const row of learners)
           if (row.simulation) row.has_access = covered;
       }
-      const grants = (
-        await client.query(
-          "SELECT g.* FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=$1 ORDER BY g.starts_at,g.id",
-          [accountId],
-        )
-      ).rows;
       const linked = (await this.stripeTable(client))
         ? (
             await client.query(
@@ -156,6 +157,8 @@ export class FamilyRepository {
         client,
         accountId,
         this.development,
+        undefined,
+        false,
       );
       const permitted = new Set<string>();
       for (const row of learners) {
@@ -169,21 +172,29 @@ export class FamilyRepository {
                 accountId,
                 this.development,
                 row.id,
+                false,
               ))))
         )
           permitted.add(row.id);
       }
       return {
-        purchaseMeasurement: await purchaseMeasurementView(client, accountId),
+        purchaseMeasurement: await purchaseMeasurementView(
+          client,
+          accountId,
+          "google",
+          false,
+        ),
         metaPurchaseMeasurement: await purchaseMeasurementView(
           client,
           accountId,
           "meta",
+          false,
         ),
         openaiPurchaseMeasurement: await purchaseMeasurementView(
           client,
           accountId,
           "openai",
+          false,
         ),
         consent: {
           status: consent
@@ -259,7 +270,7 @@ export class FamilyRepository {
         (this.development ||
           !!(
             await client.query(
-              `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL
+              `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND NOT l.adult
                AND (l.free_online_used<100 OR EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id
                  AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()))`,
               [learnerId, accountId],
@@ -342,7 +353,11 @@ export class FamilyRepository {
         ],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
-      // The class roster follows by trigger (migration 0098).
+      // Names follow by trigger (0098); maintain the family's year and roster
+      // on this explicit parent write as well.
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: true,
+      });
       await this.audit(client, accountId, "learner.renamed", learnerId, 1);
     });
   }
@@ -367,6 +382,9 @@ export class FamilyRepository {
       ).rows[0];
       if (!learner) throw new FamilyError(404, "learner_not_found");
       if (learner.adult) throw new FamilyError(409, "adult_has_no_birth_year");
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: true,
+      });
       if (learner.birth_year === birthYear) return { birthYear };
       await client.query("UPDATE amp_learners SET birth_year=$2 WHERE id=$1", [
         learnerId,
@@ -724,7 +742,7 @@ export class FamilyRepository {
         ],
         [
           "license",
-          "SELECT to_jsonb(g) AS value FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY g.id",
+          "SELECT l.id AS learner_id FROM amp_learners l WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY l.id",
         ],
         [
           "order",
@@ -1150,7 +1168,16 @@ export class FamilyRepository {
             await client.query("FETCH FORWARD 100 FROM export_rows")
           ).rows;
           if (!rows.length) break;
-          for (const row of rows) {
+          const values =
+            type === "license"
+              ? (
+                  await accessGrantsFor(
+                    client,
+                    rows.map((row) => row.learner_id),
+                  )
+                ).grants.map((value) => ({ value }))
+              : rows;
+          for (const row of values) {
             if (signal?.aborted) throw new Error("Export canceled");
             yield JSON.stringify({ type, data: row.value }) + "\n";
           }

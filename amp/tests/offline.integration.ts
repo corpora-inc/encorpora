@@ -1,3 +1,4 @@
+import { startAdultPractice } from "../src/account/adult.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -854,3 +855,138 @@ test(
     }
   },
 );
+
+for (const scenario of ["missing", "expired", "extended", "revoked"] as const) {
+  test(
+    `derived adult access agrees online/offline when ${scenario}`,
+    enabled,
+    async () => {
+      const f = await fixture();
+      try {
+        const account = "parent-a";
+        // Start the adult before the child's payment, leaving no derived grant.
+        const { learnerId: adult } = await startAdultPractice(
+          f.family,
+          account,
+          { timezone: "America/New_York" },
+        );
+        const child = await f.learner(account);
+        const input = {
+          requestId: randomUUID(),
+          responseCapabilities: [],
+          figureCapabilities: [],
+        };
+        const online = async () => {
+          let answer = false;
+          const rollback = new Error("probe rollback");
+          await assert.rejects(
+            f.repo.transaction(account, adult, async (tx) => {
+              answer = await tx.hasAccess();
+              throw rollback;
+            }),
+            (error) => error === rollback,
+          );
+          return answer;
+        };
+        if (scenario === "missing" || scenario === "expired") {
+          if (scenario === "expired")
+            await f.repo.pool.query(
+              `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+           VALUES($1,$2,'pilot',$1,'active',now()-interval '2 days',now()-interval '1 day')`,
+              [`adult:${adult}`, adult],
+            );
+          assert.equal(await online(), true);
+          const summary = await f.family.summary(account);
+          assert.equal(
+            summary.learners.find((l) => l.id === adult)?.hasAccess,
+            true,
+          );
+          const issued = await f.offline.issue(account, adult, input);
+          assert.ok(issued.packId);
+          const grant = (
+            await f.repo.pool.query(
+              "SELECT ends_at FROM amp_grants WHERE id=$1",
+              [`adult:${adult}`],
+            )
+          ).rows[0];
+          const paid = (
+            await f.repo.pool.query(
+              "SELECT ends_at FROM amp_grants WHERE learner_id=$1",
+              [child],
+            )
+          ).rows[0];
+          assert.equal(grant.ends_at.toISOString(), paid.ends_at.toISOString());
+          assert.equal(
+            (await f.offline.issue(account, adult, input)).signedPack,
+            issued.signedPack,
+          );
+          await f.offline.preflight(account, adult, issued.packId);
+        } else {
+          // Materialize an initial pack, then change only its qualifying source.
+          await f.repo.transaction(account, adult, (tx) => tx.hasAccess());
+          const issued = await f.offline.issue(account, adult, input);
+          if (scenario === "extended")
+            await f.repo.pool.query(
+              "UPDATE amp_grants SET ends_at=ends_at+interval '1 year' WHERE learner_id=$1",
+              [child],
+            );
+          else
+            await f.repo.pool.query(
+              "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1",
+              [child],
+            );
+          const allowed = scenario === "extended";
+          assert.equal(await online(), allowed);
+          assert.equal(
+            (await f.family.summary(account)).learners.find(
+              (l) => l.id === adult,
+            )?.hasAccess,
+            allowed,
+          );
+          // Each failing operation rolls its refresh back, so every path must
+          // independently reject the original stale grant/pack binding.
+          await assert.rejects(
+            f.offline.preflight(account, adult, issued.packId),
+            /offline_pack_no_longer_eligible/,
+          );
+          await assert.rejects(
+            f.offline.issue(account, adult, input),
+            /offline_pack_no_longer_eligible/,
+          );
+          await assert.rejects(
+            f.offline.reconcile(account, adult, issued.packId, {
+              attempts: [],
+            }),
+            /offline_pack_no_longer_eligible/,
+          );
+          const fresh = { ...input, requestId: randomUUID() };
+          if (allowed) {
+            await f.offline.issue(account, adult, fresh);
+            const grant = (
+              await f.repo.pool.query(
+                "SELECT ends_at FROM amp_grants WHERE id=$1",
+                [`adult:${adult}`],
+              )
+            ).rows[0];
+            const paid = (
+              await f.repo.pool.query(
+                "SELECT ends_at FROM amp_grants WHERE learner_id=$1",
+                [child],
+              )
+            ).rows[0];
+            assert.equal(
+              grant.ends_at.toISOString(),
+              paid.ends_at.toISOString(),
+            );
+          } else
+            await assert.rejects(
+              f.offline.issue(account, adult, fresh),
+              /offline_license_required/,
+            );
+        }
+      } finally {
+        await f.close();
+      }
+    },
+  );
+}
