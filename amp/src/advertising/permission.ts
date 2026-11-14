@@ -42,6 +42,7 @@ async function installed(
 export async function confirmedAdvertisingEmail(
   client: PoolClient,
   account: string,
+  lock = true,
 ): Promise<string | null> {
   if (
     !account.startsWith("amp|") ||
@@ -51,7 +52,8 @@ export async function confirmedAdvertisingEmail(
     return null;
   const row = (
     await client.query(
-      'SELECT email,"emailVerified" FROM amp_auth_users WHERE id=$1 FOR SHARE',
+      'SELECT email,"emailVerified" FROM amp_auth_users WHERE id=$1' +
+        (lock ? " FOR SHARE" : ""),
       [account.slice(4)],
     )
   ).rows[0];
@@ -61,17 +63,18 @@ export async function confirmedAdvertisingEmail(
 }
 const fingerprint = (email: string) =>
   createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
-/** Caller holds the account lock. The digest binds permission to the address
+/** Mutations hold the account lock; snapshot reads pass lock=false. The digest binds permission to the address
  * shown at grant time; it is never the provider payload or a learner identifier. */
 export async function purchaseMeasurementView(
   client: PoolClient,
   account: string,
   provider: AdvertisingProvider = "google",
+  lock = true,
 ): Promise<PurchaseMeasurement> {
   const notice = measurementNotice(provider);
   const available = await installed(client, provider);
   const email = available
-    ? await confirmedAdvertisingEmail(client, account)
+    ? await confirmedAdvertisingEmail(client, account, lock)
     : null;
   const row = available
     ? (

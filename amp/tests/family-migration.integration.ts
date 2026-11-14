@@ -86,6 +86,9 @@ async function historyFixture() {
       createHash("sha256").update(sql).digest("hex"),
     ]);
   }
+  await db.query(
+    "INSERT INTO amp_migrations VALUES('data:family-identities-v1','v1')",
+  );
   return {
     db,
     schema,

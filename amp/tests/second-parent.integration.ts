@@ -560,7 +560,18 @@ test(
             `fixture:${maya}`,
           ])
         ).rows[0];
-        assert.equal(grant.ends_at.getTime(), child.ends_at.getTime());
+        assert.equal(grant, undefined, "GET does not create a derived grant");
+        const snapshot = await me(rowan);
+        const own = snapshot.family.learners.find(
+          (l: { id: string }) => l.id === snapshot.adultPractice.learner.id,
+        );
+        assert.equal(
+          Date.parse(
+            own.access.find((g: { channel: string }) => g.channel === "pilot")
+              .endsAt,
+          ),
+          child.ends_at.getTime(),
+        );
         await lapse(maya);
         assert.equal(await adultHasAccess(rowan), false);
         await paid(maya);

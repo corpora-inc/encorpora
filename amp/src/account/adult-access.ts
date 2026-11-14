@@ -5,8 +5,9 @@ import { activeToday } from "../schools/principal.js";
    free: a teacher at a school with a license in force (never a demo's), or a
    parent of a child with access, the account holder and the family's second
    parent alike. `hasAccess` still reads only `amp_grants`: one grant per adult
-   learner, refreshed on account reads and learning transactions, carries the
-   latest qualifying end. The separate free allowance creates no grant. */
+   learner, refreshed on learning transactions, carries the
+   latest qualifying end. Account reads project eligibility directly from its
+   sources. The separate free allowance creates no grant. */
 
 type Database = Pick<PoolClient, "query">;
 export const adultGrantId = (learnerId: string) => `adult:${learnerId}`;

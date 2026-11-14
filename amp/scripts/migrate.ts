@@ -1,3 +1,4 @@
+import { backfillFamilyIdentities } from "./backfill-family-identities.js";
 import { createDatabasePool } from "../src/server/database.js";
 import { readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
@@ -38,7 +39,10 @@ export async function migrate(connectionString: string) {
   }
 }
 async function migrateOnce(connectionString: string) {
-  const pool = createDatabasePool({ connectionString });
+  const pool = createDatabasePool({
+    connectionString,
+    connectionTimeoutMillis: 5000,
+  });
   const client = await pool.connect();
   try {
     await client.query("SET lock_timeout='5s'");
@@ -88,6 +92,22 @@ async function migrateOnce(connectionString: string) {
         checksum,
       ]);
       if (!indexes) await client.query("COMMIT");
+    }
+    // Data work commits per account, after all DDL transactions have released
+    // their table locks. The session migration lock serializes runners; a
+    // failure leaves no receipt and the ordinary bounded retry resumes safely.
+    const dataMigration = "data:family-identities-v1";
+    if (
+      !(
+        await client.query("SELECT 1 FROM amp_migrations WHERE name=$1", [
+          dataMigration,
+        ])
+      ).rowCount
+    ) {
+      await backfillFamilyIdentities(pool);
+      await client.query("INSERT INTO amp_migrations VALUES($1,'v1')", [
+        dataMigration,
+      ]);
     }
   } catch (error) {
     await client.query("ROLLBACK");

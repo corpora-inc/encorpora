@@ -350,7 +350,13 @@ export async function listApprovals(
     }
     const client = await pool.connect();
     try {
-      const consent = await learningConsentActive(client, row.account_id!);
+      const consent = await learningConsentActive(
+        client,
+        row.account_id!,
+        false,
+        undefined,
+        false,
+      );
       const ends = await activeGrant(client, row.learner_id!);
       // Without a plan, their own free problems still count down here.
       const used = ends
@@ -676,6 +682,7 @@ export async function readApproval(
       accountId,
       development,
       here ? row.learner_id! : undefined,
+      false,
     );
     return {
       id,

@@ -336,6 +336,7 @@ test(
           authenticate,
           renderer,
           billingConfig,
+          approvals: keys,
         });
         await reader.ready();
         let count = 0;
@@ -363,11 +364,22 @@ test(
           await ok(request("/api/v1/families"));
           assert.equal(count, discoveryQueries);
           for (const path of [
+            "/api/v1/family",
+            "/api/v1/me",
+            "/api/v1/family/second-parent",
+            "/api/v1/family/approvals",
             `/api/v1/families/${fa.org_id}`,
             `/api/v1/families/${fa.org_id}/teaching`,
             `/api/v1/families/${fa.org_id}/children/${ownedA.id}/progress`,
           ])
-            await ok(request(path));
+            assert.equal((await request(path)).statusCode, 200, path);
+          await ok(
+            reader.inject({
+              method: "GET",
+              url: `/api/v1/family/approvals/${approvalId}`,
+              headers: { authorization: `Bearer ${external.account}` },
+            }),
+          );
           assert.equal(
             (
               await request(
@@ -1021,10 +1033,8 @@ test(
           "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,'Legacy child')",
           [randomUUID(), legacy.account],
         );
-        assert.deepEqual(
-          (await ok(get("/api/v1/families", legacy.account))).families,
-          [],
-        );
+        const fallback = await ok(get("/api/v1/families", legacy.account));
+        assert.equal(fallback.families.length, 1);
         await backfillFamilyIdentities(db, 2);
         const discovery = await ok(get("/api/v1/families", legacy.account));
         await backfillFamilyIdentities(db, 2);
@@ -1032,6 +1042,7 @@ test(
           await ok(get("/api/v1/families", legacy.account)),
           discovery,
         );
+        assert.deepEqual(discovery, fallback);
         const stable = discovery.families[0].familyId;
         const { ensureFamilyClass: oldEnsure } =
           await import("./helpers/legacy-family-class.js");
