@@ -1,7 +1,11 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
-import { changeSession, confirmSession } from "./session-generation";
+import {
+  beginRenewal,
+  changeSession,
+  confirmSession,
+} from "./session-generation";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
@@ -90,6 +94,7 @@ export function retireSession(
     previous.token === next.token
   )
     return false;
+  beginRenewal(next.token);
   void client.cancelQueries({ queryKey: ["account", previous.accountId] });
   return true;
 }

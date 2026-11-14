@@ -405,6 +405,64 @@ test("CP-2 r4 N4: a routine renewal for the same account keeps the staff form's 
   });
   expect(router.state.location.pathname).toBe(`/school/${O}/staff`);
   expect(email().value).toBe("colleague@example.test");
+  await act(async () => {
+    fireEvent.click(screen.getByRole("button", { name: "Send invitation" }));
+    await pause();
+  });
+  const invites = h.request.mock.calls.filter(([url]) =>
+    url.endsWith("/invites"),
+  );
+  expect(invites).toHaveLength(1);
+  expect(invites[0]![2]).toMatchObject({
+    token: "new",
+    body: { email: "colleague@example.test", role: "teacher" },
+  });
+});
+
+test("a pending renewal refuses staff invitations while keeping the editable draft mounted", async () => {
+  const { StaffScreen } = await import("../../features/school/StaffScreen");
+  seedSchool();
+  queryClient.setQueryData(staffOptions(auth, O).queryKey, []);
+  await mount(
+    `/school/${O}/staff`,
+    StaffScreen,
+    undefined,
+    "/school/$org/staff",
+  );
+  const email = screen.getByRole("textbox", {
+    name: "Email",
+  }) as HTMLInputElement;
+  fireEvent.change(email, { target: { value: "colleague@example.test" } });
+  const replacement = deferred();
+  h.request.mockImplementation((url: string) =>
+    url === "/me" ? replacement.promise : never(),
+  );
+  await act(async () => {
+    h.changed!({ ...auth, token: "new-pending" });
+    await pause();
+  });
+  expect(screen.getByRole("textbox", { name: "Email" })).toBe(email);
+  expect(email.value).toBe("colleague@example.test");
+  // Editing makes the submit closure read the replacement token; an old
+  // closure's retirement rejection must not be the only protection.
+  await act(async () => {
+    fireEvent.change(email, { target: { value: "edited@example.test" } });
+    fireEvent.submit(email.closest("form")!);
+    await pause();
+  });
+  expect(
+    h.request.mock.calls.filter(([url]) => url.endsWith("/invites")),
+  ).toEqual([]);
+  expect(
+    screen.getByText("Your sign-in is being checked. Try again in a moment."),
+  ).toBeTruthy();
+  expect(email.value).toBe("edited@example.test");
+  await act(async () => {
+    replacement.reject(new Error("replacement /me offline"));
+    await pause();
+  });
+  expect(screen.queryByRole("textbox", { name: "Email" })).toBeNull();
+  expect(document.querySelector("[data-space-blocked]")).toBeTruthy();
 });
 
 test("CP-2 r4 M1: cancelling the session check during a renewal leaves the old token retired", async () => {

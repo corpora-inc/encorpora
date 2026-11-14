@@ -2,7 +2,7 @@ import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
-import { isRetired } from "./session-generation";
+import { isRenewing, isRetired } from "./session-generation";
 import { validationPaths } from "./batch-capability-fallback";
 import {
   buildIsStale,
@@ -162,6 +162,10 @@ type RequestOptions = {
   method?: string;
   headers?: Record<string, string>;
 };
+const requestMethod = (options: RequestOptions) =>
+  (
+    options.method ?? (options.body === undefined ? "GET" : "POST")
+  ).toUpperCase();
 
 /** A request from a session this tab has left (lib/session-generation.ts):
  * refused, so neither the asking nor the answer reaches the new session. */
@@ -185,12 +189,24 @@ export function request<T>(
 
 /** A request's session checks around its sending: checked when it is
  * asked, and again when it answers, so a session retired in between never
- * has its answer read or cached. */
+ * has its answer read or cached. During renewal, reads can confirm the
+ * session; mutations wait for its own `/me`, even with cached authority. */
 export async function requestWith<T>(
   sending: () => Promise<T>,
-  options: { token?: string | null },
+  options: RequestOptions,
 ): Promise<T> {
   if (isRetired(options.token)) throw replacedSession();
+  if (
+    isRenewing(options.token) &&
+    !["GET", "HEAD", "OPTIONS"].includes(requestMethod(options))
+  )
+    throw new AppError(
+      "authentication",
+      "Your sign-in is being checked. Try again in a moment.",
+      true,
+      null,
+      "session_unconfirmed",
+    );
   const answer = await sending();
   if (isRetired(options.token)) throw replacedSession();
   return answer;
@@ -201,8 +217,7 @@ async function send<T>(
   schema: z.ZodType<T>,
   options: RequestOptions,
 ): Promise<T> {
-  const method =
-    options.method ?? (options.body === undefined ? "GET" : "POST");
+  const method = requestMethod(options);
   // A student's token opens only the student routes. When a device is handed
   // to a child ("Let Wren practice here"), the staff screen still mounted
   // reads again with the child's session for a moment before practice

@@ -6,6 +6,7 @@ import { onSignedOut, resetAppRecoveryForTest } from "../app-recovery";
 import { queryClient, retireSession, sessionOptions } from "../query";
 import {
   changeSession,
+  confirmSession,
   forgetRetiredSessions,
   isRetired,
 } from "../session-generation";
@@ -101,6 +102,33 @@ test("the current session and a parent handed back to both work", async () => {
   ).resolves.toEqual({});
   expect(isRetired(child.token)).toBe(true);
 });
+
+test.each([
+  { body: {} },
+  { method: "POST" },
+  { method: "PUT", body: {} },
+  { method: "patch", body: {} },
+  { method: "DELETE" },
+])(
+  "renewal refuses mutations before transport until confirmed: %j",
+  async (options) => {
+    // Even a token confirmed on an earlier use must confirm this renewal.
+    confirmSession(next.token);
+    become(parent, next);
+    await expect(
+      request("/probe", z.unknown(), { ...options, token: next.token }),
+    ).rejects.toMatchObject({ code: "session_unconfirmed" });
+    expect(fetch).not.toHaveBeenCalled();
+    await expect(
+      request("/me", z.unknown(), { token: next.token }),
+    ).resolves.toEqual({});
+    confirmSession(next.token);
+    await expect(
+      request("/probe", z.unknown(), { ...options, token: next.token }),
+    ).resolves.toEqual({});
+    expect(fetch).toHaveBeenCalledTimes(2);
+  },
+);
 
 test("CP-2 r4 M1: a replaced session's late 401 never signs the new one out", async () => {
   const gate = deferred<Response>();

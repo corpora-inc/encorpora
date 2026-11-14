@@ -107,8 +107,8 @@ function SessionProviders({
         // A new session: nothing asked with the old one is sent, handled or
         // cached again. The same account's renewal keeps what is on screen,
         // drafts included; only another account resets it (above), and a
-        // renewal whose account doesn't load keeps the screen out (the
-        // shell's content guard).
+        // renewal refuses mutations until its own /me confirms. If that
+        // fails, the shell's content guard keeps the screen out.
         retireSession(previous, session);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
