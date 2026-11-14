@@ -55,8 +55,10 @@ test("CP-2 H1: Add a place from an invitation never copies its secret", () => {
 });
 
 test("from a place, it returns there with only the view's keys", () => {
-  router.href = `/school/o/classes/c/map?sort=level&token=${TOKEN}#${TOKEN}`;
+  router.href = `/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level&token=${TOKEN}#${TOKEN}`;
   const target = addPlace();
-  expect(target.search.from).toBe("/school/o/classes/c/map?sort=level");
+  expect(target.search.from).toBe(
+    "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/map?sort=level",
+  );
   expect(JSON.stringify(target)).not.toContain(TOKEN);
 });

@@ -1,3 +1,4 @@
+import { forgetEveryLink } from "../features/links/forget";
 import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
@@ -13,7 +14,13 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, signOut, type AuthSession } from "../auth";
 import { watchStudentIdle } from "../lib/student-device";
-import { meKey, meOptions, queryClient, sessionOptions } from "../lib/query";
+import {
+  meKey,
+  meOptions,
+  queryClient,
+  retireSession,
+  sessionOptions,
+} from "../lib/query";
 export function Providers({
   children,
   onAccountExit,
@@ -87,10 +94,18 @@ function SessionProviders({
         }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
+          // A link held for one account never carries to another; a sign-in
+          // from no account keeps the link that started it.
+          if (previous?.accountId) forgetEveryLink();
           setIdentityVersion((version) => version + 1);
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }
+        // A new session: nothing asked with the old one is sent, read or
+        // cached again, and every mounted screen starts over in it, so no
+        // screen keeps the old session's answers or actions.
+        if (retireSession(previous, session))
+          setIdentityVersion((version) => version + 1);
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
         if (previous?.accountId && previous.accountId !== session?.accountId)

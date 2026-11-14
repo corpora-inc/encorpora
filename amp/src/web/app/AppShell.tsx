@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import {
   Component,
@@ -18,7 +18,13 @@ import { useLearnerStore } from "../learner-store";
 import { useShellSlots } from "../lib/shell-slots";
 import { usePlaces } from "../features/navigation/PlaceSwitcher";
 import type { SpaceDescriptor } from "../features/spaces/resolve";
-import { holdFrame, nextHeld, type Held } from "../features/spaces/hold";
+import {
+  blockedBy,
+  holdFrame,
+  nextHeld,
+  sessionIdentity,
+  type Held,
+} from "../features/spaces/hold";
 import { useSettledMatch, useSpace } from "../features/spaces/useSpace";
 import { DemoMark } from "../features/school/demo/DemoMark";
 import { DemoSetupAction } from "../features/school/demo/DemoPlace";
@@ -29,6 +35,10 @@ import {
 import { StudentSignOut } from "../features/practice/StudentSignOut";
 import { Tabs } from "../ui/Tabs";
 import { Toast } from "../ui/Toast";
+import { Button, buttonClass } from "../ui/Button";
+import { EmptyState } from "../ui/EmptyState";
+import { RootLink } from "../nav/root";
+import { committedChoice } from "../features/profiles/practice-mode";
 import { AppLogo } from "../ui/AppLogo";
 import { PlaceName } from "../ui/PlaceName";
 import bar from "../ui/AppBar.module.css";
@@ -70,16 +80,32 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The same place asked again for the same account keeps its frame while
   // it answers (features/spaces/hold.ts).
   const held = useRef<Held>(null);
-  const account = session.data?.accountId ?? null;
-  const steady = holdFrame(held.current, resolved, account);
+  const identity = sessionIdentity(session.data);
+  const steady = holdFrame(held.current, resolved, identity);
   const refusedHere =
     !!steady && "status" in steady && steady.status === "unavailable";
   held.current = refusedHere
     ? null
-    : (nextHeld(steady, account) ?? held.current);
-  if (!account || (held.current && held.current.account !== account))
+    : (nextHeld(steady, identity) ?? held.current);
+  if (!identity || (held.current && held.current.session !== identity))
     held.current = null;
   const space = session.data && steady?.bar ? steady : null;
+  // Once a screen is on view, the learner its address names becomes this
+  // device's choice (never during a load or a preload: features/spaces).
+  const me = useAccount();
+  useEffect(() => {
+    if (!me || !match) return;
+    const choice = committedChoice(
+      me,
+      match.pathname,
+      match.search ?? {},
+      useLearnerStore.getState().learnerId,
+    );
+    if (choice !== undefined) useLearnerStore.getState().select(choice);
+  }, [me, match]);
+  // A place this person can no longer open, or one that didn't load, shows
+  // that in place of the screen: nothing of it renders or asks the server.
+  const blocked = session.data ? blockedBy(resolved) : null;
   const pathname = match?.pathname ?? "";
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
@@ -100,7 +126,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         className={space ? styles.content : styles.bare}
         data-shell-content={space ? "" : undefined}
       >
-        {children}
+        {blocked ? <SpaceBlocked failed={blocked === "failed"} /> : children}
       </div>
       {framed.current && (
         <DrawerRecovery>
@@ -255,6 +281,39 @@ function useAccount(): SignedInMe | null {
     enabled: !!session,
   }).data;
   return me?.signedIn && me.account.id === session?.accountId ? me : null;
+}
+
+/** In place of a screen this person can't open, or one that didn't load:
+ * what happened and the one way on. */
+function SpaceBlocked({ failed }: { failed: boolean }) {
+  const queries = useQueryClient();
+  return (
+    <main className={styles.blocked} data-space-blocked>
+      <EmptyState
+        title={
+          failed ? "This didn’t load" : "This isn’t available to your account"
+        }
+        action={
+          failed ? (
+            <Button
+              variant="primary"
+              onClick={() => void queries.refetchQueries({ type: "active" })}
+            >
+              Try again
+            </Button>
+          ) : (
+            <RootLink className={buttonClass("primary")}>
+              Go to your places
+            </RootLink>
+          )
+        }
+      >
+        {failed
+          ? "Check your connection, then try again."
+          : "If someone sent you this link, ask them to share it with this account."}
+      </EmptyState>
+    </main>
+  );
 }
 
 /** One way to practice from every Progress tab, decided from the account

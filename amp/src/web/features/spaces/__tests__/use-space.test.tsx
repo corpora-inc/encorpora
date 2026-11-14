@@ -64,6 +64,9 @@ test("this account's /me makes the family theirs", () => {
     );
     client.setQueryData(classYearOptions(session, CLASS).queryKey, {
       past: false,
+      orgId: FAMILY,
+      path: [FAMILY],
+      can: ["students.read"],
     });
   });
   expect(result?.space).toBe("family");
@@ -92,6 +95,9 @@ test("before the org answers, the account's own relationship names the family", 
     );
     client.setQueryData(classYearOptions(session, CLASS).queryKey, {
       past: false,
+      orgId: FAMILY,
+      path: [FAMILY],
+      can: ["students.read"],
     });
   });
   expect(result?.space).toBe("family");

@@ -61,6 +61,17 @@ export function ApproveLinkScreen() {
     retry: false,
     queryFn: () => approvals.lookup(parsed!.token),
   });
+  // A link that is over (used, expired, ended) or that the server refuses is
+  // let go here, held and carried alike; a passing network failure is not
+  // (capability-entry.ts).
+  const over =
+    (!!lookup.data && lookup.data.status !== "open") ||
+    (lookup.error instanceof AppError &&
+      (lookup.error.status ?? 0) >= 400 &&
+      (lookup.error.status ?? 0) < 500);
+  useEffect(() => {
+    if (over) rememberApproval(null);
+  }, [over]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);

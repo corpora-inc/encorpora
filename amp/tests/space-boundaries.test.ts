@@ -31,7 +31,21 @@ test("the lint reads the syntax tree: every way a widget could guess its space",
     "const schools = me.staffOf;",
     "const teachingHere = inSchool;",
     // Choosing its own words or space.
+    // CP-2 r2 M2: aliases, element access, a failure-like name, a table.
+    'const { kind: placeKind } = org;\nconst label = placeKind === "family" ? "child" : "student";',
+    'const k = org.kind;\nconst label = k === "family" ? "child" : "student";',
+    'const label = context["space"] === "family" ? "child" : "student";',
+    'const label = result.kind === "family" ? "child" : "student";',
+    'const label = { family: "child", school: "student" }[org.kind];',
+    'const NOUN = { family: "child", school: "student" };\nconst label = NOUN[org.kind];',
     'const words = spaceWords("family");',
+    // CP-2 r3 M2: a space's alias against a space's own names; chains;
+    // quoted binding names; a switch on a space alias.
+    'const { space: place } = props;\nreturn place === "me" ? "Practice" : "Class";',
+    'const place = descriptor.space;\nreturn place === "classroom" ? "Students" : "People";',
+    'const k = org.kind;\nconst alias = k;\nreturn alias === "family" ? "Child" : "Student";',
+    'const { "kind": placeKind } = org;\nreturn placeKind === "family" ? "Child" : "Student";',
+    'const place = props.space;\nswitch (place) { case "me": return 1; }',
     "const here = spaceOfPath(location.pathname);",
   ])
     assert.ok(
@@ -101,4 +115,18 @@ test("imports: split, aliased, re-exported, dynamic or reached through another m
       'import type { SpaceWords } from "../features/spaces/words";\nimport type { Thing } from "../features/onboarding/guard";\n',
   });
   assert.deepEqual(reaches("ui/Widget.tsx", root), []);
+});
+
+test("CP-2 r2 M2: a decision moved into a helper is still the widget's", () => {
+  const root = tree({
+    "ui/Widget.tsx":
+      'import { label } from "../lib/helper";\nexport const Widget = () => label;\n',
+    "lib/helper.ts":
+      'export const label = (org: { kind: string }) => org.kind === "family" ? "child" : "student";\n',
+  });
+  const { found } = check(root);
+  assert.ok(
+    found.some((line) => line.includes("lib/helper.ts")),
+    found.join("\n"),
+  );
 });

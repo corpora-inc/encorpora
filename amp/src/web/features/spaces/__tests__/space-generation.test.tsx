@@ -3,7 +3,7 @@ import { cleanup, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { afterEach, expect, test } from "vitest";
 import { AppError } from "../../../lib/AppError";
-import { meOptions, sessionOptions } from "../../../lib/query";
+import { meOptions, retireSession, sessionOptions } from "../../../lib/query";
 import { orgOptions } from "../../school/api";
 import { classYearOptions } from "../../school/org/org-api";
 import { pilotOptions } from "../../school/pilots/api";
@@ -21,6 +21,12 @@ const org = {
   roles: ["teacher"],
   can: ["org.read", "classes.read"],
   teaches: [ROOM],
+};
+const year = {
+  past: false,
+  orgId: SCHOOL,
+  path: [SCHOOL],
+  can: ["students.read" as const, "signin.read" as const],
 };
 
 function render(client: QueryClient) {
@@ -41,58 +47,52 @@ const client = () =>
     defaultOptions: { queries: { retry: false, staleTime: Infinity } },
   });
 
-test("CP-2 M1: a new session for the same account never reads the old one's answers", () => {
+test("CP-2 r2 M1: an answer asked with the old session never lands after a new one", async () => {
   const queries = client();
   const first = { accountId: "amp|gen-1", token: "first" };
-  queries.setQueryData(sessionOptions.queryKey, first, { updatedAt: 1_000 });
-  queries.setQueryData(orgOptions(first, SCHOOL).queryKey, org as never, {
-    updatedAt: 2_000,
-  });
-  queries.setQueryData(
-    classYearOptions(first, ROOM).queryKey,
-    { past: false },
-    { updatedAt: 2_000 },
-  );
-  expect(render(queries)?.tabs.length).toBeGreaterThan(0);
-  // Signed in again as the same account: same keys, a new generation. The
-  // answers from before stay unread until they are asked again.
+  queries.setQueryData(sessionOptions.queryKey, first);
+  // A request asked with the first session, still on its way.
+  let answer!: (value: unknown) => void;
+  const pending = queries
+    .fetchQuery({
+      queryKey: orgOptions(first, SCHOOL).queryKey,
+      queryFn: () => new Promise((resolve) => (answer = resolve)),
+    })
+    .catch(() => undefined);
+  // The same account signs in again.
   const second = { accountId: "amp|gen-1", token: "second" };
-  queries.setQueryData(sessionOptions.queryKey, second, { updatedAt: 3_000 });
+  expect(retireSession(first, second, queries)).toBe(true);
+  queries.setQueryData(sessionOptions.queryKey, second);
+  answer(org);
+  await pending;
+  expect(queries.getQueryData(orgOptions(second, SCHOOL).queryKey)).toBe(
+    undefined,
+  );
   const after = render(queries);
   expect(after?.space === "classroom" && after.status).toBe("loading");
-  expect(after?.tabs).toEqual([]);
-  queries.setQueryData(orgOptions(second, SCHOOL).queryKey, org as never, {
-    updatedAt: 4_000,
-  });
-  queries.setQueryData(
-    classYearOptions(second, ROOM).queryKey,
-    { past: false },
-    { updatedAt: 4_000 },
-  );
-  expect(render(queries)?.tabs.length).toBeGreaterThan(0);
+  expect(after?.actions).toEqual([]);
+  // A token check with the same token retires nothing.
+  expect(retireSession(second, { ...second }, queries)).toBe(false);
 });
 
-test("CP-2 M1: practice that can't be confirmed running offers nothing to start", async () => {
+test("CP-2 M1: practice that can't be confirmed running offers nothing to start", () => {
   const queries = client();
   const session = { accountId: "amp|gen-2", token: "t" };
   queries.setQueryData(sessionOptions.queryKey, session);
   queries.setQueryData(orgOptions(session, SCHOOL).queryKey, org as never);
-  queries.setQueryData(classYearOptions(session, ROOM).queryKey, {
-    past: false,
-  });
+  queries.setQueryData(classYearOptions(session, ROOM).queryKey, year);
   queries.setQueryData(pilotOptions(session, ROOM).queryKey, {
     coverage: { students: 3, covered: 3, paid: 0 },
   } as never);
   expect(render(queries)?.actions).toEqual(["start-class"]);
-  // The refetch failed: the cached coverage no longer counts.
-  const cache = queries
+  queries
     .getQueryCache()
-    .find({ queryKey: pilotOptions(session, ROOM).queryKey })!;
-  cache.setState({ status: "error", error: new Error("offline") });
+    .find({ queryKey: pilotOptions(session, ROOM).queryKey })!
+    .setState({ status: "error", error: new Error("offline") });
   expect(render(queries)?.actions).toEqual([]);
 });
 
-test("CP-2 M1: a refused /me leaves no relationship behind", () => {
+test("CP-2 M1: a refused /me leaves no relationship behind; a failed lookup is failed", () => {
   const queries = client();
   const session = { accountId: "amp|gen-3", token: "t" };
   queries.setQueryData(sessionOptions.queryKey, session);
@@ -108,7 +108,6 @@ test("CP-2 M1: a refused /me leaves no relationship behind", () => {
       notice: false,
     },
   } as never);
-  // Before: the account's relationship names it a family.
   expect(render(queries)?.space).toBe("family");
   queries
     .getQueryCache()
@@ -118,4 +117,11 @@ test("CP-2 M1: a refused /me leaves no relationship behind", () => {
       error: new AppError("permission", "Signed out", false, null, null, 401),
     });
   expect(render(queries)?.space).toBe("classroom");
+  queries.setQueryData(orgOptions(session, SCHOOL).queryKey, org as never);
+  queries
+    .getQueryCache()
+    .find({ queryKey: orgOptions(session, SCHOOL).queryKey })!
+    .setState({ status: "error", error: new Error("offline") });
+  const failed = render(queries);
+  expect(failed?.space === "classroom" && failed.status).toBe("failed");
 });

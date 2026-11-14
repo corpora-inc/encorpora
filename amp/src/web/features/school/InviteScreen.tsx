@@ -58,6 +58,17 @@ export function InviteScreen() {
     retry: false,
     queryFn: () => school.lookupInvite(parsed!.token),
   });
+  // A link that is over (used, expired, ended) or that the server refuses is
+  // let go here, held and carried alike; a passing network failure is not
+  // (capability-entry.ts).
+  const over =
+    (!!invite.data && invite.data.status !== "open") ||
+    (invite.error instanceof AppError &&
+      (invite.error.status ?? 0) >= 400 &&
+      (invite.error.status ?? 0) < 500);
+  useEffect(() => {
+    if (over) forgetInvite();
+  }, [over]);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [busy, setBusy] = useState(false);

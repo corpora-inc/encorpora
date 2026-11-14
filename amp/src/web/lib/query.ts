@@ -1,6 +1,7 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
+import { retireToken, reviveToken } from "./session-generation";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
@@ -21,7 +22,15 @@ export const queryClient = new QueryClient({
     },
     mutations: { retry: false },
   },
+});// The session on screen is never a retired one: whatever sets it (a sign-in,
+// a handback to the parent after a child's session), its own requests are
+// its own (lib/session-generation.ts).
+queryClient.getQueryCache().subscribe((event) => {
+  if (event.type !== "updated" || event.query.queryKey[0] !== "session") return;
+  const session = event.query.state.data as AuthSession | null | undefined;
+  reviveToken(session?.token);
 });
+
 export const sessionOptions = queryOptions({
   queryKey: ["session"],
   queryFn: async ({ signal }) => {
@@ -61,6 +70,35 @@ export const meOptions = (session: AuthSession) =>
     refetchOnMount: (query) => query.state.isInvalidated,
     refetchOnWindowFocus: "always",
   });
+/**
+ * A new session for the same account (a new token behind the same keys)
+ * retires everything the old one asked: in-flight requests are cancelled, so
+ * their answers are discarded, and every cached answer is removed. What the
+ * cache holds afterwards was asked with the new session
+ * (docs/architecture/spaces.md, "Generations"). Another account is retired
+ * by the caller's own account change.
+ */
+export function retireSession(
+  previous: AuthSession | null | undefined,
+  next: AuthSession | null,
+  client = queryClient,
+) {
+  // Any session left behind, by sign-out, another account or a new token:
+  // nothing it asked is sent, read or cached from now on.
+  if (previous?.token && previous.token !== next?.token)
+    retireToken(previous.token);
+  reviveToken(next?.token);
+  if (
+    !previous ||
+    !next ||
+    previous.accountId !== next.accountId ||
+    previous.token === next.token
+  )
+    return false;
+  void client.cancelQueries({ queryKey: ["account", previous.accountId] });
+  client.removeQueries({ queryKey: ["account", previous.accountId] });
+  return true;
+}
 export function invalidateAccount(identity: string) {
   return queryClient.invalidateQueries({ queryKey: ["account", identity] });
 }

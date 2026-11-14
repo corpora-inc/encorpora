@@ -30,20 +30,56 @@ const KEPT = new Set<string>([
   "term",
   "week",
   "student",
+  "to",
+  "devices",
+  "section",
 ]);
+/** The places a return may name: an allowlist of real screens, never "any
+ * address that isn't something else". */
+const PLACES = [
+  /^\/school\/[0-9a-f-]{36}(?:\/[A-Za-z0-9._-]+)*$/,
+  /^\/family\/[0-9a-f-]{36}(?:\/[A-Za-z0-9._-]+)*$/,
+  /^\/me(?:\/profiles(?:\/[A-Za-z0-9-]+)?)?$/,
+  /^\/(?:overview|practice|progress|inventory)$/,
+  /^\/(?:pathways|lessons|books)(?:\/[A-Za-z0-9._-]+)?$/,
+  /^\/learners\/[A-Za-z0-9-]+\/workbooks(?:\/[A-Za-z0-9._-]+){0,2}$/,
+  /^\/account\/(?:security|billing|privacy)(?:\/[a-z-]+)?$/,
+  /^\/family(?:\/learners(?:\/new)?)?$/,
+];
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const STEPS =
   /^\/(start|continue|sign-in|sign-up|reset-password|purchase|invoice|consent|access|school\/(new|start|connect|adopt|invite))(\/|$)/;
 
-export function appReturn(value: unknown): string | undefined {
+export function appReturn(
+  value: unknown,
+  /** A return inside a return (a practice profile's `from`): one level. */
+  nested = false,
+): string | undefined {
   const target = returnTarget(value);
   if (!target) return undefined;
   const url = new URL(target, "https://amp.invalid");
   const path = url.pathname;
   const space = spaceOfPath(path);
-  if (space === "public" || space === "student" || STEPS.test(path))
+  if (
+    space === "public" ||
+    space === "student" ||
+    STEPS.test(path) ||
+    !PLACES.some((place) => place.test(path))
+  )
     return undefined;
   const kept = new URLSearchParams();
   for (const [key, raw] of url.searchParams) {
+    // `from`: a date range's start (Time), or the place a practice profile
+    // returns to, itself a return, one level deep.
+    if (key === "from") {
+      const back = DATE.test(raw)
+        ? raw
+        : nested
+          ? undefined
+          : appReturn(raw, true);
+      if (back) kept.set(key, back);
+      continue;
+    }
     if (!KEPT.has(key)) continue;
     if (key === OPEN_KEY) {
       const stack = writeStack(readStack(raw));

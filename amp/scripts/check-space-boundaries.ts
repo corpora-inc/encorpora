@@ -119,14 +119,26 @@ function readsKind(node: ts.Node): string | null {
 }
 const readsSpace = (node: ts.Node) =>
   (ts.isIdentifier(node) && node.text === "space") ||
-  (ts.isPropertyAccessExpression(node) && node.name.text === "space");
-/** A failure's kind (`error.kind === "network"`) is not an org's. */
-const failure = (owner: string) => /error|failure|problem|result/i.test(owner);
+  (ts.isPropertyAccessExpression(node) && node.name.text === "space") ||
+  (ts.isElementAccessExpression(node) &&
+    ts.isStringLiteralLike(node.argumentExpression) &&
+    node.argumentExpression.text === "space");
+/** A failure's kind (`error.kind === "network"`) is not an org's: only for
+ * "network", the one word a failure's kind shares with an org's. */
+const failure = (owner: string, value: string | null) =>
+  value === "network" && /error|failure|problem/i.test(owner);
 const literal = (node: ts.Node) =>
   ts.isStringLiteralLike(node) ? node.text : null;
 
 /** Every branch on a space in one module's source. */
-export function findings(file: string, source: string): string[] {
+export function findings(
+  file: string,
+  source: string,
+  /** A helper a widget reaches: only its decisions (comparisons, switches,
+   * lookups, choosing words) are its widget's; data plumbing may name the
+   * account's places. */
+  helper = false,
+): string[] {
   const found: string[] = [];
   const tree = parse(file, source);
   const report = (node: ts.Node, why: string) => {
@@ -135,12 +147,76 @@ export function findings(file: string, source: string): string[] {
       `${file}:${line + 1}: ${why}: ${node.getText().split("\n")[0]!.trim()}`,
     );
   };
+  // Names bound to a kind or a space: `const k = org.kind`,
+  // `const { kind: placeKind } = org`, `const { space } = props`.
+  // Names bound to a kind or a space, by category, through any chain of
+  // ordinary bindings: `const k = org.kind`, `const alias = k`,
+  // `const { kind: placeKind } = org`, `const { "kind": k } = org`,
+  // `const { space: place } = props`, `const place = descriptor.space`.
+  const aliases = new Map<string, "kind" | "space">();
+  // Tables keyed by an org's kind or a space: `{ family: …, school: … }`.
+  const bare = (node: ts.Node) =>
+    ts.isAsExpression(node) || ts.isSatisfiesExpression(node)
+      ? node.expression
+      : node;
+  const keyedByKind = (node: ts.Node | undefined) =>
+    !!node &&
+    ts.isObjectLiteralExpression(bare(node)) &&
+    (bare(node) as ts.ObjectLiteralExpression).properties.some(
+      (property) =>
+        !!property.name &&
+        KINDS.has(property.name.getText().replace(/["']/g, "")),
+    );
+  const tables = new Set<string>();
+  const categoryOf = (node: ts.Node): "kind" | "space" | null => {
+    const value = bare(
+      ts.isParenthesizedExpression(node) ? node.expression : node,
+    );
+    if (readsSpace(value)) return "space";
+    if (readsKind(value) !== null) return "kind";
+    return ts.isIdentifier(value) ? (aliases.get(value.text) ?? null) : null;
+  };
+  const propertyNameOf = (element: ts.BindingElement) => {
+    const name = element.propertyName ?? element.name;
+    return ts.isIdentifier(name) || ts.isStringLiteralLike(name)
+      ? name.text
+      : null;
+  };
+  const collect = (node: ts.Node): boolean => {
+    let grew = false;
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name)) {
+      if (keyedByKind(node.initializer)) tables.add(node.name.text);
+      const category = node.initializer ? categoryOf(node.initializer) : null;
+      if (category && aliases.get(node.name.text) !== category) {
+        aliases.set(node.name.text, category);
+        grew = true;
+      }
+    }
+    if (ts.isBindingElement(node) && ts.isIdentifier(node.name)) {
+      const property = propertyNameOf(node);
+      if (
+        (property === "kind" || property === "space") &&
+        aliases.get(node.name.text) !== property
+      ) {
+        aliases.set(node.name.text, property);
+        grew = true;
+      }
+    }
+    ts.forEachChild(node, (child) => {
+      if (collect(child)) grew = true;
+    });
+    return grew;
+  };
+  // Until every chain of aliases is followed.
+  for (let pass = 0; pass < 8 && collect(tree); pass++);
+  const discriminates = (side: ts.Node) => categoryOf(side) !== null;
   const compares = (side: ts.Node, other: ts.Node) => {
     const value = literal(other);
-    if (value === null) return false;
-    const owner = readsKind(side);
-    if (owner !== null && KINDS.has(value) && !failure(owner)) return true;
-    return readsSpace(side);
+    const category = categoryOf(side);
+    if (value === null || !category) return false;
+    // A space has its own names (me, classroom, student…): any is a branch.
+    if (category === "space") return true;
+    return KINDS.has(value) && !failure(readsKind(side) ?? "", value);
   };
   const visit = (node: ts.Node) => {
     if (
@@ -155,21 +231,35 @@ export function findings(file: string, source: string): string[] {
     )
       report(node, "branches on an org's kind or a space");
     if (ts.isSwitchStatement(node)) {
-      const owner = readsKind(node.expression);
+      const owner = readsKind(node.expression) ?? "";
       const cases = node.caseBlock.clauses
         .filter(ts.isCaseClause)
         .map((clause) => literal(clause.expression));
       if (
-        (owner !== null &&
-          !failure(owner) &&
-          cases.some((value) => value && KINDS.has(value))) ||
-        readsSpace(node.expression)
+        (discriminates(node.expression) &&
+          cases.some(
+            (value) => value && KINDS.has(value) && !failure(owner, value),
+          )) ||
+        categoryOf(node.expression) === "space"
       )
         report(node.expression, "switches on an org's kind or a space");
     }
-    if (ts.isIdentifier(node) && PLACE_NAMES.has(node.text))
+    // A table looked up by kind or space: `{ family: …, school: … }[org.kind]`.
+    if (
+      ts.isElementAccessExpression(node) &&
+      discriminates(node.argumentExpression) &&
+      (keyedByKind(
+        ts.isParenthesizedExpression(node.expression)
+          ? node.expression.expression
+          : node.expression,
+      ) ||
+        (ts.isIdentifier(node.expression) && tables.has(node.expression.text)))
+    )
+      report(node, "looks up by an org's kind or a space");
+    if (!helper && ts.isIdentifier(node) && PLACE_NAMES.has(node.text))
       report(node, "reads the account's places or guesses the place");
     if (
+      !helper &&
       (ts.isParameter(node) ||
         ts.isPropertySignature(node) ||
         ts.isBindingElement(node)) &&
@@ -178,7 +268,7 @@ export function findings(file: string, source: string): string[] {
       node.name.text === "family"
     )
       report(node, "takes a family flag");
-    if (ts.isJsxAttribute(node) && node.name.getText() === "family")
+    if (!helper && ts.isJsxAttribute(node) && node.name.getText() === "family")
       report(node, "passes a family flag");
     if (
       ts.isCallExpression(node) &&
@@ -295,6 +385,13 @@ export function reaches(
       }
       if (seen.has(target)) continue;
       seen.add(target);
+      // Only the web client's own modules: the server's contracts and
+      // policies decide on the server, where spaces don't exist.
+      if (target.startsWith("..")) continue;
+      // A decision moved into a helper is still the widget's: every client
+      // module a shared one reaches is read for its decisions.
+      for (const line of findings(target, read(target), true))
+        found.push(`${[...chain, target].join(" → ")}: ${line}`);
       queue.push([target, [...chain, target]]);
     }
   }

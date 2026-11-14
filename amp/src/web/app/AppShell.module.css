@@ -66,3 +66,13 @@
     padding-top: 0;
   }
 }
+
+/* A screen this person can't open, or one that didn't load: centred in the
+   space under the bar. */
+.blocked {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-height: calc(100dvh - var(--shell-bar, 0px));
+  padding: var(--space-6) var(--space-4);
+}

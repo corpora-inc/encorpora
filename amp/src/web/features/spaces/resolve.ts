@@ -7,6 +7,7 @@ import type {
 } from "../../../schools/contracts";
 import type { TabItem } from "../../ui/Tabs";
 import { shellFrame, type ShellFrame } from "../navigation/shell-frame";
+import { addressedIdentity, type AddressedIdentity } from "./identity";
 import { spaceOfPath, type RouteSpace, type Space } from "./space";
 import {
   accountTabs,
@@ -86,6 +87,8 @@ export type SpaceResources = {
   } | null;
   /** Students covered by the class's running practice. */
   covered?: number;
+  /** A lookup failed without a refusal (the network, a server error). */
+  failed?: boolean;
 };
 
 export type SpaceAction =
@@ -116,9 +119,56 @@ export type Destination = {
 
 /** What the server said one target allows this person. */
 export type TargetCapabilities = {
-  target: { kind: "org" | "class"; id: string };
+  target: { kind: "org" | "class" | "learner"; id: string };
   can: readonly string[];
 };
+
+/**
+ * A learner's own target, from what the server's `/me` says of them: whose
+ * they are (the account's own children, a family it is the second parent
+ * of, the adult's own learner) and their access. Never from a space.
+ * - `learner.read`: their record;
+ * - `learner.practice`: practice as them on this device (`canPractice`);
+ * - `learner.handover`: let them practice here from the family's Today (a
+ *   second parent's children);
+ * - `learner.name`, `learner.consent`, `learner.purchase`: the account
+ *   holder's own children only.
+ */
+export function learnerTarget(
+  me: SignedInMe | null,
+  id: string,
+): TargetCapabilities | null {
+  if (!me) return null;
+  const access = me.family.learners.find((entry) => entry.id === id);
+  const practice =
+    access?.canPractice === true ? (["learner.practice"] as const) : [];
+  if (me.adultPractice?.learner?.id === id)
+    return {
+      target: { kind: "learner", id },
+      can: ["learner.read", "learner.practice"],
+    };
+  if (me.learners.some((learner) => learner.id === id))
+    return {
+      target: { kind: "learner", id },
+      can: [
+        "learner.read",
+        ...practice,
+        "learner.name",
+        "learner.consent",
+        "learner.purchase",
+      ],
+    };
+  if (
+    (me.secondParentOf ?? []).some((family) =>
+      family.learners.some((learner) => learner.id === id),
+    )
+  )
+    return {
+      target: { kind: "learner", id },
+      can: ["learner.read", "learner.handover"],
+    };
+  return null;
+}
 
 export type LearnerRef = { id: string; name: string };
 export type OrgRef = {
@@ -138,7 +188,9 @@ export type ClassRef = {
   /** Practice can be started for someone in it, or it's a demo. */
   start: boolean;
 };
-export type Resolution = "ready" | "loading" | "unavailable";
+/** `failed`: a lookup failed (not refused): the place may be fine, and
+ * trying again may show it. */
+export type Resolution = "ready" | "loading" | "unavailable" | "failed";
 /** How this person belongs to the family on screen. */
 export type FamilyRelation = "holder" | "second-parent" | "co-teacher";
 /** How this person reaches the class on screen. */
@@ -223,10 +275,14 @@ export type SpaceDescriptor =
 
 const text = (value: unknown) => (typeof value === "string" ? value : null);
 
-/** The class the server answered for belongs to the org the route names
- * (its own org, or one above it). An older server says nothing: unknown. */
-const boundTo = (year: SpaceResources["year"], orgId: string) =>
-  !year?.path || year.path.includes(orgId);
+/** Whether the server's answer for the class places it under the org the
+ * route names (its own org, or one above it): `true`, `false`, or `null`
+ * when the answer proves nothing (an older answer without its place), which
+ * is unresolved, never accepted. */
+const boundTo = (
+  year: SpaceResources["year"],
+  orgId: string,
+): boolean | null => (year?.path ? year.path.includes(orgId) : null);
 
 /** The class's own capabilities, when the server sent them. */
 const classTarget = (
@@ -274,18 +330,16 @@ type Chosen =
  * practice. A learner who is none of theirs is nobody's here. */
 function chosenLearner(
   me: SignedInMe | null,
-  routeLearner: string | null,
-  profileId: string | null,
+  /** What the address names (features/spaces/identity.ts): the one answer
+   * when present, in the same order and with the same kinds as the
+   * learning view and practice read it. */
+  named: AddressedIdentity | null,
   selected: string | null,
-  named: string | null = null,
 ): Chosen | null {
   const own = me?.adultPractice?.learner ?? null;
-  const pick = (id: string | null): Chosen | null => {
-    if (!id) return null;
+  const learnerOf = (id: string): Chosen | null => {
     if (own?.id === id)
       return { kind: "own", id, name: own.name, profile: false };
-    const profile = me?.practiceProfiles?.find((entry) => entry.id === id);
-    if (profile) return { kind: "own", id, name: profile.label, profile: true };
     const child = me?.learners.find((learner) => learner.id === id);
     if (child) return { kind: "child", id, name: child.name, family: null };
     for (const family of me?.secondParentOf ?? []) {
@@ -295,14 +349,16 @@ function chosenLearner(
     }
     return null;
   };
-  // One order everywhere (adoption, the address builder, here): the route's
-  // own `$learnerId`, then a practice profile (a mode), then `?learner=`,
-  // then the device's choice.
-  if (routeLearner) return pick(routeLearner);
-  const profile = profileId ? pick(profileId) : null;
-  if (profile?.kind === "own" && profile.profile) return profile;
-  if (named) return pick(named);
-  const chosen = pick(selected);
+  const profileOf = (id: string): Chosen | null => {
+    const profile = me?.practiceProfiles?.find((entry) => entry.id === id);
+    return profile
+      ? { kind: "own", id, name: profile.label, profile: true }
+      : null;
+  };
+  // Named: that learner or profile, of the kind named, or nobody.
+  if (named)
+    return named.kind === "profile" ? profileOf(named.id) : learnerOf(named.id);
+  const chosen = selected ? (learnerOf(selected) ?? profileOf(selected)) : null;
   if (chosen) return chosen;
   const first = me?.learners[0];
   if (first)
@@ -331,6 +387,21 @@ export function resolveSpace(
   match: SpaceMatch,
   session: SpaceSession,
   resources: SpaceResources = {},
+): SpaceDescriptor {
+  const resolved = resolveOnce(match, session, resources);
+  // What is still unanswered because a lookup failed is `failed`: nothing of
+  // it shows until it is asked again.
+  return resources.failed &&
+    "status" in resolved &&
+    resolved.status === "loading"
+    ? { ...resolved, status: "failed", tabs: [], actions: [], destinations: [] }
+    : resolved;
+}
+
+function resolveOnce(
+  match: SpaceMatch,
+  session: SpaceSession,
+  resources: SpaceResources,
 ): SpaceDescriptor {
   const frame =
     session.kind === "none"
@@ -409,27 +480,15 @@ export function resolveSpace(
     }
   }
   if (route === "learner" || route === "me" || route === "family") {
-    const profile = text(match.search?.profile);
-    const named = text(match.search?.learner);
-    const chosen =
+    const named =
       route === "me"
         ? null
-        : chosenLearner(
-            me,
-            match.learner ?? null,
-            profile,
-            session.learnerId,
-            named,
-          );
+        : addressedIdentity(match.pathname, match.search ?? {});
+    const chosen =
+      route === "me" ? null : chosenLearner(me, named, session.learnerId);
     // The address named someone this account doesn't read: unavailable,
     // never whoever was chosen before.
-    const validProfile = !!me?.practiceProfiles?.some(
-      (entry) => entry.id === profile,
-    );
-    const foreign =
-      route === "learner" &&
-      !chosen &&
-      (!!match.learner || (!validProfile && !!named));
+    const foreign = route === "learner" && !chosen && !!named;
     if (chosen?.kind === "child")
       return familySpace({ ...base, ...words("family") }, frame, me, {
         orgId: chosen.family ?? me?.familyClass?.orgId ?? null,
@@ -443,9 +502,7 @@ export function resolveSpace(
       { ...base, ...words("me") },
       frame,
       me,
-      foreign
-        ? null
-        : (chosen ?? chosenLearner(me, null, profile, session.learnerId)),
+      foreign ? null : (chosen ?? chosenLearner(me, null, session.learnerId)),
       match.pathname,
       foreign,
     );
@@ -647,10 +704,11 @@ function familySpace(
     frame?.kind === "class" ? frame.classId : (family?.classId ?? null);
   // The named class must be the family's (by relationship) and must belong
   // to the org the route names (by the server's answer for it).
+  const bound =
+    frame?.kind === "class" && orgId ? boundTo(resources.year, orgId) : true;
   const mismatch =
     frame?.kind === "class" &&
-    ((!!family && family.classId !== frame.classId) ||
-      (!!orgId && !boundTo(resources.year, orgId)));
+    ((!!family && family.classId !== frame.classId) || bound === false);
   const klass = (resources.classes ?? []).find((entry) => entry.id === classId);
   const status: Resolution = learnerOnly
     ? "ready"
@@ -658,7 +716,8 @@ function familySpace(
       ? "unavailable"
       : !family && !org
         ? "loading"
-        : frame?.kind === "class" && resources.year === undefined
+        : frame?.kind === "class" &&
+            (resources.year === undefined || bound !== true)
           ? "loading"
           : "ready";
   // A co-teacher teaches the family's class; its children are not theirs.
@@ -681,6 +740,9 @@ function familySpace(
         ? familyTabs(orgId, classId, {
             past,
             learners: klass?.studentCount ?? learners.length,
+            ...(frame?.kind === "class"
+              ? { can: resources.year?.can ?? [] }
+              : {}),
           })
         : frame?.kind === "progress"
           ? learnerTabs().map((item) =>
@@ -695,11 +757,11 @@ function familySpace(
     status !== "unavailable" && orgId && classId
       ? `school/${orgId}/classes/${classId}/today`
       : null;
+  // Practice as the child only where the server's own answer for them says
+  // so (their learner target), never from the space.
   const practices =
     !!learner &&
-    relation === "holder" &&
-    me?.family.learners.find((entry) => entry.id === learner.id)
-      ?.learningAllowed !== false;
+    !!learnerTarget(me, learner.id)?.can.includes("learner.practice");
   return {
     ...base,
     space: "family",
@@ -727,6 +789,11 @@ function familySpace(
         : []),
       ...(classId && frame?.kind === "class"
         ? classTarget(classId, resources.year)
+        : []),
+      ...(learner
+        ? [learnerTarget(me, learner.id)].filter(
+            (entry): entry is TargetCapabilities => !!entry,
+          )
         : []),
     ],
     tabs,
@@ -812,11 +879,11 @@ function teachingSpace(
   const demo = org?.demo === true;
   const year = resources.year;
   const past = year?.past === true;
+  const bound = onClass ? boundTo(year, orgId) : true;
   const status: Resolution =
-    resources.org === null ||
-    (onClass && (year === null || !boundTo(year, orgId)))
+    resources.org === null || (onClass && (year === null || bound === false))
       ? "unavailable"
-      : !org || (onClass && year === undefined)
+      : !org || (onClass && (year === undefined || bound !== true))
         ? "loading"
         : "ready";
   const klass = onClass
@@ -827,13 +894,13 @@ function teachingSpace(
     onClass &&
     status === "ready" &&
     !past &&
-    (!year?.can || year.can.includes("signin.read")) &&
+    !!year?.can?.includes("signin.read") &&
     (demo || (resources.covered ?? 0) > 0);
   const tabs =
     status !== "ready" || !org
       ? []
       : onClass
-        ? classroomTabs(org.id, frame.classId, { past })
+        ? classroomTabs(org.id, frame.classId, { past, can: year?.can ?? [] })
         : schoolTabs(org, { lone });
   const can = new Set(org?.can ?? []);
   const roles = new Set<StaffRole>(org?.roles ?? []);

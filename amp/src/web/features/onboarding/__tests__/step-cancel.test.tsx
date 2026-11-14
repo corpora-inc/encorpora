@@ -36,10 +36,14 @@ const step = () =>
   );
 
 test("CP-2 M4: a step of Add a place can Cancel back to where it came from", () => {
-  state.search = { from: "/school/o/classes/c/today" };
+  state.search = {
+    from: "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/today",
+  };
   step();
   fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
-  expect(state.closed).toEqual(["/school/o/classes/c/today"]);
+  expect(state.closed).toEqual([
+    "/school/11111111-1111-4111-8111-111111111111/classes/22222222-2222-4222-8222-222222222222/today",
+  ]);
 });
 
 test("a first run, and a return that isn't a place, offer no Cancel", () => {

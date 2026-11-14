@@ -40,7 +40,7 @@ const child = (id: string, name: string) => ({
 });
 
 function me(overrides: Partial<SignedInMe> = {}): SignedInMe {
-  return {
+  const account = {
     signedIn: true,
     account: { id: "amp|adult", email: null, emailVerified: true },
     consent: { status: "active", method: null },
@@ -63,6 +63,19 @@ function me(overrides: Partial<SignedInMe> = {}): SignedInMe {
     next: "practice",
     ...overrides,
   } as SignedInMe;
+  // The server's access for each of their own children: they may practice.
+  account.family = {
+    ...account.family,
+    learners: account.learners.map((learner) => ({
+      id: learner.id,
+      name: learner.name,
+      deletedAt: null,
+      access: [],
+      stripeLinked: false,
+      canPractice: true,
+    })),
+  };
+  return account;
 }
 
 /** Jonah: Pip and Wren's holder, his own practice, a teacher at Alder
@@ -142,6 +155,20 @@ const klass = (id: string, orgId: string, name: string, studentCount = 20) =>
     teachers: [],
   }) satisfies ClassResource;
 
+/** The server's answer for a class: under every org these tests name, with
+ * every read a class screen asks. */
+const YEAR = {
+  past: false,
+  path: [DISTRICT, SCHOOL, FAMILY, OTHER_FAMILY, TUTOR_FAMILY],
+  can: [
+    "classes.read",
+    "students.read",
+    "grades.read",
+    "workbooks.read",
+    "settings.read",
+    "signin.read",
+  ],
+};
 const ADMIN_CAN = [
   "org.read",
   "classes.read",
@@ -223,7 +250,7 @@ test("a parent's cookie beside a student's session never brings the parent's chr
   const space = resolveSpace(
     at(classPath(FAMILY, FAMILY_CLASS)),
     { kind: "student", me: holder },
-    { org: familyOrg(), year: { past: false } },
+    { org: familyOrg(), year: YEAR },
   );
   expectSpace(space, "student");
   assert.deepEqual(space.tabs, []);
@@ -238,7 +265,7 @@ test("holder: their family is Family, named by its org, with only their children
     {
       org: familyOrg(),
       classes: [klass(FAMILY_CLASS, FAMILY, "Pell family", 2)],
-      year: { past: false },
+      year: YEAR,
     },
   );
   expectSpace(space, "family");
@@ -279,7 +306,7 @@ test("second parent: the family they belong to, its children read-only, never he
   const space = resolveSpace(
     at(classPath(OTHER_FAMILY, OTHER_FAMILY_CLASS)),
     adult(secondParent),
-    { org: familyOrg(OTHER_FAMILY, "Lund family"), year: { past: false } },
+    { org: familyOrg(OTHER_FAMILY, "Lund family"), year: YEAR },
   );
   expectSpace(space, "family");
   assert.equal(space.relation, "second-parent");
@@ -299,7 +326,7 @@ test("family co-teacher: the family's place, none of its children as theirs", ()
     {
       org: familyOrg(TUTOR_FAMILY, "Lund co-op"),
       classes: [klass(TUTOR_CLASS, TUTOR_FAMILY, "Lund co-op", 12)],
-      year: { past: false },
+      year: YEAR,
     },
   );
   expectSpace(space, "family");
@@ -316,12 +343,12 @@ test("a family's tabs never look like a classroom's", () => {
   const family = resolveSpace(
     at(classPath(FAMILY, FAMILY_CLASS)),
     adult(holder),
-    { org: familyOrg(), year: { past: false } },
+    { org: familyOrg(), year: YEAR },
   );
   const room = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
     org: school({ teaches: [ROOM] }),
     classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
-    year: { past: false },
+    year: YEAR,
   });
   assert.notDeepEqual(ids(family), ids(room));
   assert.notDeepEqual(
@@ -338,7 +365,7 @@ test("classroom roles: teacher, aide, viewer and admin each reach the class as t
       klass(ROOM, SCHOOL, "Grade 4 Math"),
       klass(ROOM_TWO, SCHOOL, "Grade 5 Math"),
     ],
-    year: { past: false },
+    year: YEAR,
   });
   const cases = [
     [
@@ -392,21 +419,17 @@ test("Start class only for a real class with practice running, never in a past y
   };
   const space = (resources: SpaceResources) =>
     resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), resources);
-  assert.deepEqual(
-    space({ ...base, year: { past: false }, covered: 3 }).actions,
-    ["start-class"],
-  );
-  assert.deepEqual(
-    space({ ...base, year: { past: false }, covered: 0 }).actions,
-    [],
-  );
-  const past = space({ ...base, year: { past: true }, covered: 3 });
+  assert.deepEqual(space({ ...base, year: YEAR, covered: 3 }).actions, [
+    "start-class",
+  ]);
+  assert.deepEqual(space({ ...base, year: YEAR, covered: 0 }).actions, []);
+  const past = space({ ...base, year: { ...YEAR, past: true }, covered: 3 });
   assert.deepEqual(past.actions, []);
   assert.deepEqual(ids(past), ["gradebook", "time"]);
   const demo = space({
     ...base,
     org: school({ demo: true, teaches: [ROOM] }),
-    year: { past: false },
+    year: YEAR,
   });
   assert.deepEqual(demo.actions, ["demo-setup"]);
 });
@@ -490,7 +513,7 @@ test("late, refused and mismatched resources never describe another place", () =
   // An answer for another org (a late response after switching): loading.
   const late = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
     org: org({ id: DISTRICT, kind: "district", can: [...ADMIN_CAN] }),
-    year: { past: false },
+    year: YEAR,
   });
   expectSpace(late, "classroom");
   assert.equal(late.status, "loading");
@@ -519,7 +542,7 @@ test("late, refused and mismatched resources never describe another place", () =
     adult(holder),
     {
       org: familyOrg(),
-      year: { past: false },
+      year: YEAR,
     },
   );
   expectSpace(mismatch, "family");
@@ -600,7 +623,7 @@ test("Back and two tabs: the same inputs always describe the same place", () => 
   const resources = {
     org: school({ teaches: [ROOM] }),
     classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
-    year: { past: false },
+    year: YEAR,
   };
   assert.deepEqual(
     resolveSpace(there, adult(power), resources),
@@ -634,7 +657,7 @@ test("power user: each place looks right on its own terms, and nothing follows t
     adult(power, "jonah"),
     {
       org: familyOrg(),
-      year: { past: false },
+      year: YEAR,
     },
   );
   expectSpace(family, "family");
@@ -647,7 +670,7 @@ test("power user: each place looks right on its own terms, and nothing follows t
       can: ["org.read", "classes.read"],
     }),
     classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
-    year: { past: false },
+    year: YEAR,
   });
   expectSpace(room, "classroom");
   assert.ok(!("learner" in room));
@@ -657,7 +680,7 @@ test("power user: each place looks right on its own terms, and nothing follows t
   const other = resolveSpace(
     at(classPath(OTHER_FAMILY, OTHER_FAMILY_CLASS)),
     adult(power, "pip"),
-    { org: familyOrg(OTHER_FAMILY, "Lund family"), year: { past: false } },
+    { org: familyOrg(OTHER_FAMILY, "Lund family"), year: YEAR },
   );
   expectSpace(other, "family");
   assert.equal(other.relation, "second-parent");
@@ -1041,4 +1064,116 @@ test("CP-2 H4: a role from above reads as what it may do here; Start needs the b
     covered: 3,
   });
   assert.deepEqual(noBoard.actions, []);
+});
+
+test("CP-2 r2 H4: an answer that doesn't prove where the class is proves nothing", () => {
+  const unproven = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+    org: school({ teaches: [ROOM] }),
+    classes: [],
+    year: { past: false },
+    covered: 3,
+  });
+  expectSpace(unproven, "classroom");
+  assert.equal(unproven.status, "loading");
+  assert.deepEqual(unproven.tabs, []);
+  assert.deepEqual(unproven.actions, []);
+});
+
+test("CP-2 r2 H4: a class's tabs are what its own capabilities allow", () => {
+  const only = (can: string[]) =>
+    resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+      org: school({ teaches: [ROOM] }),
+      classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+      year: { past: false, orgId: SCHOOL, path: [SCHOOL], can },
+    });
+  assert.deepEqual(ids(only(["classes.read"])), []);
+  assert.deepEqual(ids(only(["classes.read", "students.read"])), [
+    "today",
+    "map",
+    "roster",
+    "time",
+  ]);
+  const family = resolveSpace(
+    at(classPath(FAMILY, FAMILY_CLASS)),
+    adult(holder),
+    {
+      org: familyOrg(),
+      year: {
+        past: false,
+        orgId: FAMILY,
+        path: [FAMILY],
+        can: ["students.read", "workbooks.read"],
+      },
+    },
+  );
+  assert.deepEqual(ids(family), [
+    "today",
+    "map",
+    "workbooks",
+    "time",
+    "roster",
+  ]);
+});
+
+test("CP-2 r2 H4: a learner's own target: the holder's child, a second parent's, the adult's own", () => {
+  const family = resolveSpace(
+    at("/overview", { search: { learner: "pip" } }),
+    adult(power, null),
+  );
+  expectSpace(family, "family");
+  assert.deepEqual(
+    family.capabilities.find((entry) => entry.target.kind === "learner"),
+    {
+      target: { kind: "learner", id: "pip" },
+      can: [
+        "learner.read",
+        "learner.practice",
+        "learner.name",
+        "learner.consent",
+        "learner.purchase",
+      ],
+    },
+  );
+  const shared = resolveSpace(
+    at("/overview", { search: { learner: "kai" } }),
+    adult(power, null),
+  );
+  expectSpace(shared, "family");
+  assert.deepEqual(
+    shared.capabilities.find((entry) => entry.target.kind === "learner")?.can,
+    ["learner.read", "learner.handover"],
+  );
+  // No practice destination for a child the server says can't practice.
+  const paused = me({ learners: [child("pip", "Pip")] });
+  paused.family = {
+    ...paused.family,
+    learners: paused.family.learners.map((entry) => ({
+      ...entry,
+      canPractice: false,
+    })),
+  };
+  const view = resolveSpace(
+    at("/overview", { search: { learner: "pip" } }),
+    adult(paused, null),
+  );
+  assert.ok(!destinations(view).some((label) => label.startsWith("Let ")));
+});
+
+test("CP-2 r2 H2: a profile this account doesn't have is unavailable, never ?learner= or the device's choice", () => {
+  const space = resolveSpace(
+    at("/practice", { search: { profile: "revoked", learner: "pip" } }),
+    adult(power, "wren"),
+  );
+  expectSpace(space, "me");
+  assert.equal(space.status, "unavailable");
+  assert.equal(space.learner, null);
+});
+
+test("CP-2 r3: the frame reads the address as the learning view does: ?learner= never names a profile", () => {
+  const space = resolveSpace(
+    at("/practice", { search: { learner: "profile-4" } }),
+    adult(power, "jonah"),
+  );
+  expectSpace(space, "me");
+  assert.equal(space.status, "unavailable");
 });
