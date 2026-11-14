@@ -445,8 +445,12 @@ try {
   assert.deepEqual(escapedProof, []);
   accountsMode = true;
   await page.goto(`${origin}/sign-in?error=clever_sign_in_busy`);
+  // Exact: the toast's own words, not Radix's screen-reader announcement
+  // of them ("Notification …"), which can be in the page at the same time.
   await page
-    .getByText("Clever sign-in is busy. Try again in a moment.")
+    .getByText("Clever sign-in is busy. Try again in a moment.", {
+      exact: true,
+    })
     .waitFor();
   await page
     .getByRole("link", { name: "Sign in with Clever", exact: true })
