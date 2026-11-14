@@ -65,15 +65,8 @@ scoped.searchParams.set("options", `-c search_path=${schema}`);
 await migrate(scoped.href);
 const learning = new PostgresRepository(scoped.href);
 // Course placement (R14) is the server's, behind its rollout switch: on
-// here wherever this branch has it.
-const coursePlacement =
-  (
-    await learning.pool.query(
-      "SELECT to_regclass('amp_course_placement') IS NOT NULL AS present",
-    )
-  ).rows[0].present === true;
-if (coursePlacement)
-  await learning.pool.query("UPDATE amp_course_placement SET enabled=true");
+// here, so a class's course decides where its students begin.
+await learning.pool.query("UPDATE amp_course_placement SET enabled=true");
 const schools = new SchoolRepository(learning.pool);
 const db = learning.pool;
 const mail: string[] = [];
@@ -492,12 +485,15 @@ try {
   const band = templates.find(
     (entry) => entry.id === firstProblem.templateId,
   )?.gradeBand;
-  if (coursePlacement)
-    assert.notEqual(band, "K–2", "a grade 4 student starts at grade 4");
-  else
-    console.warn(
-      `Course placement is not on this branch yet: the first problem was ${firstProblem.templateId} (${band}).`,
-    );
+  assert.ok(
+    band,
+    `the first problem's template is known (${firstProblem.templateId})`,
+  );
+  assert.notEqual(
+    band,
+    "K–2",
+    `a grade 4 student starts at grade 4, not ${firstProblem.templateId}`,
+  );
   await capture(student, "student-first-problem");
   // A few answers, so the records have something in them.
   for (let n = 0; n < 3; n++) {
