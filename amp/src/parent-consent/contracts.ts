@@ -127,6 +127,11 @@ export interface ConsentMail {
   recipient: string;
   subject: string;
   text: string;
+  attachments?: {
+    filename: string;
+    content: string;
+    contentType: "application/pdf";
+  }[];
 }
 export type DeliveryResult =
   | { kind: "accepted"; receipt: string }
