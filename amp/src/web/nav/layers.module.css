@@ -57,10 +57,24 @@
   line-height: 1.4;
 }
 .rowAction {
+  display: inline-flex;
   flex: none;
+  align-items: center;
+  gap: 6px;
   color: var(--color-primary);
   font-size: var(--text-label);
   font-weight: 600;
+}
+/* A skill's films: a phone's strip scrolls inside the column, never
+   widening it. */
+.films {
+  min-width: 0;
+}
+/* A problem type with a film: a small play glyph before its "Lesson". */
+.filmGlyph {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
 }
 .rowFact {
   flex: none;

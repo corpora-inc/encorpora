@@ -32,6 +32,8 @@ import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
+import { PathwayPlan } from "./PathwayPlan";
+import { canDrawMap } from "./drawable";
 import {
   bandLabel,
   bands,
@@ -100,7 +102,9 @@ type SearchFound = {
  * top back into view (a cut under reduced motion). */
 function showMap() {
   requestAnimationFrame(() => {
-    const map = document.querySelector<HTMLElement>(".pathways-viewport");
+    const map = document.querySelector<HTMLElement>(
+      ".pathways-viewport, .pathways-plan",
+    );
     if (!map || !matchMedia("(max-width: 650px)").matches) return;
     const margin = parseFloat(getComputedStyle(map).scrollMarginTop) || 0;
     if (map.getBoundingClientRect().top >= margin) return;
@@ -351,6 +355,9 @@ export function MapView({
       : "";
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
+  // A browser that can't draw the 3D map (or loses its context while it is
+  // open) gets the flat pathway in its place: no canvas, no camera controls.
+  const [drawn, setDrawn] = useState(canDrawMap);
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
   // the skill is what it shows, its search kept in the field.
@@ -477,6 +484,7 @@ export function MapView({
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
+  const overall = frontier ? frontierRange(frontier) : null;
   const level = useMemo(
     () =>
       skills && !frontierLoading
@@ -492,11 +500,7 @@ export function MapView({
       (t) => t.skillId === skillId,
     );
     const shownFound = found && found.kind !== "term" ? found : null;
-    // With grade numbers on: the estimated range in the skill's area.
-    const strand = skills?.find((s) => s.id === skillId)?.strand;
-    const area =
-      shown && frontier && strand ? frontierRange(frontier, strand) : null;
-    if (!shownFound && !area && (readOnly || !practiced)) return null;
+    if (!shownFound && (readOnly || !practiced)) return null;
     return (
       <>
         {shownFound && (
@@ -567,12 +571,6 @@ export function MapView({
               </Link>
             )}
           </div>
-        )}
-        {area && strand && (
-          <p className={layers.note}>
-            {strandNames[strand] ?? strand} frontier: {gradeName(area.lo)} to{" "}
-            {gradeName(area.hi)} · estimated range.
-          </p>
         )}
       </>
     );
@@ -774,17 +772,28 @@ export function MapView({
                 <p>No matching skills. Try another grade.</p>
               )}
             </section>
-            <Graph
-              skills={skills}
-              evidence={evidence}
-              selected={selectedId}
-              onSelect={select}
-              frame={frame}
-              range={range}
-              rangeStrand={selected?.strand}
-              level={level}
-              levelLoading={frontierLoading}
-            />
+            {drawn ? (
+              <Graph
+                skills={skills}
+                evidence={evidence}
+                selected={selectedId}
+                onSelect={select}
+                frame={frame}
+                range={range}
+                rangeStrand={selected?.strand}
+                level={level}
+                levelLoading={frontierLoading}
+                onUnavailable={() => setDrawn(false)}
+              />
+            ) : (
+              <PathwayPlan
+                skills={skills}
+                evidence={evidence}
+                selected={selectedId}
+                frame={frame}
+                here={level ? overall : null}
+              />
+            )}
           </div>
           <footer className="pathways-footer">
             <div className="pathways-legend">
@@ -799,9 +808,13 @@ export function MapView({
               ))}
             </div>
             <p>
-              {selected
-                ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
-                : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
+              {!drawn
+                ? selected
+                  ? "Cyan: what it builds on · Violet: what it leads to"
+                  : "Rows run from the first skills to precalculus. Brighter gems mark stronger practice."
+                : selected
+                  ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
+                  : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
             </p>
             <details className="pathways-note">
               <summary>How skills grow</summary>
@@ -813,14 +826,16 @@ export function MapView({
               </p>
               {range && !selected && (
                 <p>
-                  {shown ? (
+                  {shown && drawn ? (
                     <>
                       Overall frontier: {gradeName(range.lo)} to{" "}
                       {gradeName(range.hi)} · estimated range shown by faint
                       outlines.
                     </>
-                  ) : (
+                  ) : drawn ? (
                     "Faint outlines show the estimated range of skills to practice."
+                  ) : (
+                    "“Where you are” marks the range of skills to practice next."
                   )}
                 </p>
               )}
@@ -835,16 +850,25 @@ export function MapView({
         learner={learnerId}
         skillActions={skillActions}
         lessonActions={(type) =>
-          canPractice && lessonSkill && type === lesson ? (
+          readOnly || !lessonSkill || type !== lesson ? null : canPractice ? (
             <Link
-              className="pathways-lesson-practice"
+              className={buttonClass("primary")}
               to="/$"
               params={{ _splat: "practice" }}
               search={{ skill: lessonSkill, template: type }}
             >
-              Try this problem type →
+              Try this problem type
             </Link>
-          ) : null
+          ) : (
+            // Not practicing yet: the way in, as the skill's own layer offers.
+            <Link
+              className={buttonClass("primary")}
+              to="/$"
+              params={{ _splat: start.slice(1) }}
+            >
+              {actionLabel}
+            </Link>
+          )
         }
       />
     </main>

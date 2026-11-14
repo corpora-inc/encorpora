@@ -2,7 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { learnerSkillOptions, skillCatalogOptions } from "../lib/learning-view";
 import { sessionOptions } from "../lib/query";
-import { bandLabel, illumination } from "../features/pathways/model";
+import {
+  bandLabel,
+  illumination,
+  neighborhood,
+} from "../features/pathways/model";
+import { FilmCards } from "../features/films/FilmCards";
+import { skillFilms } from "../features/films/skill-films";
 import {
   neighborLabel,
   skillNeighbors,
@@ -64,6 +70,10 @@ export function SkillLayer({
   const types =
     catalog.data?.templates.filter((template) => template.skillId === skill) ??
     [];
+  // Every film the skill has, from the film catalogue: at the top, so a
+  // film is never only behind one problem type's lesson.
+  const films = skillFilms(types);
+  const filmed = new Set(films.map((film) => film.templateId));
   return (
     <Sheet
       open={open}
@@ -89,6 +99,12 @@ export function SkillLayer({
         <div className={styles.layer} data-skill-layer={skill}>
           <p className={styles.lede}>{found.description}</p>
           {children}
+          {films.length > 0 && (
+            <section className={styles.films} data-skill-films={films.length}>
+              <h3 className={styles.heading}>Watch</h3>
+              <FilmCards films={films} area={neighborhood(found)} />
+            </section>
+          )}
           {student ? (
             <StudentOnSkill student={student} skill={skill} />
           ) : place ? (
@@ -109,7 +125,22 @@ export function SkillLayer({
                       className={styles.row}
                     >
                       <span>{type.title ?? "Its lesson"}</span>
-                      <span className={styles.rowAction}>Lesson</span>
+                      <span className={styles.rowAction}>
+                        {filmed.has(type.id) && (
+                          <svg
+                            className={styles.filmGlyph}
+                            data-film-glyph=""
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5.5v13l11-6.5z" />
+                          </svg>
+                        )}
+                        Lesson
+                        {filmed.has(type.id) && (
+                          <span className="sr-only"> and film</span>
+                        )}
+                      </span>
                     </EntityLink>
                   </li>
                 ))}
@@ -256,6 +287,7 @@ function LearnerOnSkill({
                 label="Skill progress"
                 value={Math.round(illumination(evidence) * 10) / 10}
                 max={10}
+                bare
               />
             </dd>
           </div>

@@ -1,0 +1,183 @@
+/* The flat pathway (PathwayPlan.tsx): the 3D map's place and frame, in the
+   app's theme. Selectors pair with `.plan` to sit above the Pathways
+   screen's own element styles (`.pathways li a`). */
+.plan {
+  --plan-before: color-mix(
+    in srgb,
+    var(--atlas-prerequisite) 72%,
+    var(--color-on-surface)
+  );
+  --plan-after: color-mix(
+    in srgb,
+    var(--atlas-dependent) 72%,
+    var(--color-on-surface)
+  );
+  container-type: inline-size;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.plan .areas {
+  display: none;
+}
+.plan .rows,
+.plan .cell {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plan .row {
+  padding: var(--space-2) var(--space-3) var(--space-3);
+}
+.plan .row + .row {
+  border-top: 1px solid var(--color-border);
+}
+/* The learner's estimated range: a quiet band with the accent at its edge. */
+.plan .row[data-here] {
+  background: color-mix(in srgb, var(--color-primary) 7%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+.plan .head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 24px;
+  margin-bottom: var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+}
+.plan .here {
+  margin-left: auto;
+  padding: 2px var(--space-3);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  color: var(--color-on-surface);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.plan .cells {
+  display: grid;
+  gap: 6px;
+}
+/* A phone: an area's skills share wrapping lines, a new line per area. */
+.plan .cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.plan .cell:empty {
+  display: none;
+}
+.plan .cell li {
+  min-width: 0;
+  max-width: 100%;
+}
+.plan .skill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: auto;
+  min-height: var(--target-size, 44px);
+  margin: 0;
+  padding: 6px var(--space-3) 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: 13px;
+  line-height: 1.3;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+.plan .skill:hover {
+  border-color: var(--color-muted-text);
+  background: var(--color-surface-hover);
+}
+.plan .skill[aria-current="page"] {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+.plan .skill[data-near="before"] {
+  box-shadow: inset 3px 0 0 var(--plan-before);
+}
+.plan .skill[data-near="after"] {
+  box-shadow: inset 3px 0 0 var(--plan-after);
+}
+/* How far a skill has lit, at one size: hollow, tinted, then glowing. */
+.plan .gem {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--area);
+  border-radius: 50%;
+}
+.plan .gem[data-stage="1"] {
+  background: color-mix(in srgb, var(--area) 50%, transparent);
+}
+.plan .gem[data-stage="2"] {
+  background: var(--area);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--area) 22%, transparent);
+}
+.plan .gem[data-stage="3"] {
+  background: var(--area);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--area) 32%, transparent),
+    0 0 10px var(--area);
+}
+
+/* Room for the areas side by side: a column each, named in a header that
+   stays while the rows scroll under it. */
+@container (min-width: 720px) {
+  .plan .areas {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface-raised);
+    color: var(--color-muted-text);
+    font-size: var(--text-table-small);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .plan .areas span {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .plan .areas span::before {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--area);
+  }
+  .plan .cells {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-2);
+    align-items: start;
+  }
+  .plan .cell {
+    display: grid;
+    gap: 6px;
+  }
+  .plan .cell:empty {
+    display: grid;
+  }
+  .plan .skill {
+    width: 100%;
+  }
+}
