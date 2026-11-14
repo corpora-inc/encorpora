@@ -1,0 +1,2923 @@
+{
+ "id": "compare-money-sets--sc",
+ "title": "Compare money by value",
+ "teaches": [],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "scene": {
+     "v": 1,
+     "elements": [
+      {
+       "type": "rect",
+       "id": "mat",
+       "at": [
+        0,
+        0
+       ],
+       "size": [
+        132,
+        120
+       ],
+       "radius": 4,
+       "fill": "none",
+       "stroke": "grid",
+       "width": 1
+      },
+      {
+       "type": "segment",
+       "id": "divider",
+       "from": [
+        0,
+        60
+       ],
+       "to": [
+        132,
+        60
+       ],
+       "stroke": "grid",
+       "width": 1
+      },
+      {
+       "type": "segment",
+       "id": "pair1",
+       "from": [
+        23,
+        69
+       ],
+       "to": [
+        23,
+        40
+       ],
+       "stroke": "grid",
+       "width": 1.5,
+       "dash": "dash"
+      },
+      {
+       "type": "segment",
+       "id": "pair2",
+       "from": [
+        52,
+        69
+       ],
+       "to": [
+        52,
+        40
+       ],
+       "stroke": "grid",
+       "width": 1.5,
+       "dash": "dash"
+      },
+      {
+       "type": "segment",
+       "id": "pair3",
+       "from": [
+        81,
+        69
+       ],
+       "to": [
+        81,
+        40
+       ],
+       "stroke": "grid",
+       "width": 1.5,
+       "dash": "dash"
+      },
+      {
+       "type": "text",
+       "id": "nameA",
+       "text": "Set A",
+       "at": [
+        10,
+        109
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "align": [
+        -1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "nameB",
+       "text": "Set B",
+       "at": [
+        10,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        -1,
+        0
+       ],
+       "halo": true
+      },
+      {
+       "type": "coins",
+       "id": "dime1",
+       "at": [
+        37.045,
+        93.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "dime2",
+       "at": [
+        77.045,
+        93.955
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "bn1",
+       "at": [
+        24.395,
+        40.605000000000004
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "bn2",
+       "at": [
+        55.394999999999996,
+        40.605000000000004
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "bn3",
+       "at": [
+        86.395,
+        40.605000000000004
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "an1",
+       "at": [
+        35.394999999999996,
+        95.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "an2",
+       "at": [
+        35.394999999999996,
+        95.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "an3",
+       "at": [
+        75.395,
+        95.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "an4",
+       "at": [
+        75.395,
+        95.605
+       ],
+       "coins": [
+        {
+         "coin": "nickel"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "totalA",
+       "text": "20¢",
+       "at": [
+        122,
+        109
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "totalB",
+       "text": "15¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueD1",
+       "text": "10¢",
+       "at": [
+        46,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueD2",
+       "text": "10¢",
+       "at": [
+        86,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueB1",
+       "text": "5¢",
+       "at": [
+        35,
+        9
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueB2",
+       "text": "5¢",
+       "at": [
+        66,
+        9
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueB3",
+       "text": "5¢",
+       "at": [
+        97,
+        9
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueN1",
+       "text": "5¢",
+       "at": [
+        23,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueN2",
+       "text": "5¢",
+       "at": [
+        52,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueN3",
+       "text": "5¢",
+       "at": [
+        81,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "valueN4",
+       "text": "5¢",
+       "at": [
+        110,
+        64
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      },
+      {
+       "type": "bill",
+       "id": "billA",
+       "at": [
+        9,
+        73
+       ],
+       "width": 43,
+       "value": 1
+      },
+      {
+       "type": "bill",
+       "id": "billB",
+       "at": [
+        9,
+        18
+       ],
+       "width": 43,
+       "value": 5
+      },
+      {
+       "type": "text",
+       "id": "dollarsA",
+       "text": "$1.20",
+       "at": [
+        122,
+        109
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "dollarsB",
+       "text": "$5.15",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "quarter",
+       "at": [
+        53.87,
+        97.13
+       ],
+       "coins": [
+        {
+         "coin": "quarter"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "mixD1",
+       "at": [
+        42.5,
+        49
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "mixD2",
+       "at": [
+        68.5,
+        49
+       ],
+       "coins": [
+        {
+         "coin": "dime"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "penny1",
+       "at": [
+        17,
+        28
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "penny2",
+       "at": [
+        43,
+        28
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "penny3",
+       "at": [
+        69,
+        28
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "coins",
+       "id": "penny4",
+       "at": [
+        95,
+        28
+       ],
+       "coins": [
+        {
+         "coin": "penny"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "id": "quarterTotal",
+       "text": "25¢",
+       "at": [
+        122,
+        109
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "accent",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running10",
+       "text": "10¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running20",
+       "text": "20¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running21",
+       "text": "21¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running22",
+       "text": "22¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running23",
+       "text": "23¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "running24",
+       "text": "24¢",
+       "at": [
+        122,
+        54
+       ],
+       "font": "sans",
+       "size": "lg",
+       "color": "ink",
+       "align": [
+        1,
+        0
+       ]
+      },
+      {
+       "type": "text",
+       "id": "pennyValue",
+       "text": "1¢",
+       "at": [
+        66,
+        5
+       ],
+       "font": "sans",
+       "size": "md",
+       "color": "ink",
+       "align": [
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Compare money by finding which group is worth more or less.",
+     "do": [
+      {
+       "do": "header",
+       "text": "Compare money by value",
+       "at": "Compare"
+      },
+      {
+       "do": "text",
+       "text": "Which group is worth more?",
+       "at": "Compare"
+      },
+      {
+       "do": "scene",
+       "at": "Compare",
+       "dur": 0.01,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "dime1"
+        },
+        {
+         "do": "appear",
+         "target": "dime2"
+        },
+        {
+         "do": "appear",
+         "target": "bn1"
+        },
+        {
+         "do": "appear",
+         "target": "bn2"
+        },
+        {
+         "do": "appear",
+         "target": "bn3"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A group is a set. Its value is how much money it is worth.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Set: a group of money",
+       "at": "A"
+      },
+      {
+       "do": "text",
+       "text": "Value: how much it is worth",
+       "at": "value"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "*B* has more coins, so *B* has more money.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "B",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nameB"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two dimes are in set *A*. Each dime is worth ten cents. This sign means cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ dime}=10\\text{¢}",
+       "at": "Two",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "dimes",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dime1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "valueD1"
+        },
+        {
+         "do": "appear",
+         "target": "valueD2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "sign",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "valueD1"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten plus ten makes twenty cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Ten"
+      },
+      {
+       "do": "write",
+       "tex": "10\\text{¢}+10\\text{¢}=20\\text{¢}",
+       "at": "Ten",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "Ten",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dime1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dime2"
+        }
+       ],
+       "nth": 2
+      },
+      {
+       "do": "scene",
+       "at": "twenty",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "totalA"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "*B* has three nickels. Each nickel is worth five cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "B"
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ nickel}=5\\text{¢}",
+       "at": "B",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "nickels",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "valueB1"
+        },
+        {
+         "do": "appear",
+         "target": "valueB2"
+        },
+        {
+         "do": "appear",
+         "target": "valueB3"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five, ten, fifteen cents: the whole set’s value.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Five"
+      },
+      {
+       "do": "write",
+       "tex": "5\\text{¢}+5\\text{¢}+5\\text{¢}=15\\text{¢}",
+       "at": "Five",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "Five",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "fifteen",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn3"
+        },
+        {
+         "do": "appear",
+         "target": "totalB"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "One dime trades for two nickels. Both are worth ten cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "10\\text{¢}=5\\text{¢}+5\\text{¢}",
+       "at": "One",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "trades",
+       "dur": 1.1,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "dime1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "appear",
+         "target": "an1"
+        },
+        {
+         "do": "appear",
+         "target": "an2"
+        },
+        {
+         "do": "move",
+         "target": "an1",
+         "by": [
+          -23,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "an2",
+         "by": [
+          6,
+          0
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "valueN1"
+        },
+        {
+         "do": "appear",
+         "target": "valueN2"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Trade the other dime. Four nickels keep the total at twenty cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Trade",
+       "dur": 1.1,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "dime2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "appear",
+         "target": "an3"
+        },
+        {
+         "do": "appear",
+         "target": "an4"
+        },
+        {
+         "do": "move",
+         "target": "an3",
+         "by": [
+          -5,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "an4",
+         "by": [
+          24,
+          0
+         ]
+        },
+        {
+         "do": "appear",
+         "target": "valueN3"
+        },
+        {
+         "do": "appear",
+         "target": "valueN4"
+        }
+       ]
+      },
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "text",
+       "text": "Values in cents",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "5+5+5+5=20",
+       "at": "Four",
+       "fresh": true
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Match equal values.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Match"
+      },
+      {
+       "do": "text",
+       "text": "Match equal values.",
+       "at": "Match"
+      },
+      {
+       "do": "scene",
+       "at": "Match",
+       "dur": 1.1,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "move",
+         "target": "bn1",
+         "by": [
+          -12,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn2",
+         "by": [
+          -14,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn3",
+         "by": [
+          -16,
+          0
+         ]
+        }
+       ]
+      }
+     ],
+     "pause": 0.4
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three pairs match, with one extra nickel in *A*.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Three",
+       "dur": 0.3,
+       "actions": [
+        {
+         "do": "trace",
+         "target": "pair1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "pairs",
+       "dur": 0.3,
+       "actions": [
+        {
+         "do": "trace",
+         "target": "pair2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "match",
+       "dur": 0.3,
+       "actions": [
+        {
+         "do": "trace",
+         "target": "pair3"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "extra",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "an4"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "A has one extra nickel.",
+       "at": "extra"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "Two dimes are worth more than three nickels here.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Two",
+       "dur": 0.8,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "appear",
+         "target": "dime1"
+        },
+        {
+         "do": "appear",
+         "target": "dime2"
+        },
+        {
+         "do": "appear",
+         "target": "valueD1"
+        },
+        {
+         "do": "appear",
+         "target": "valueD2"
+        },
+        {
+         "do": "move",
+         "target": "bn1",
+         "by": [
+          12,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn2",
+         "by": [
+          14,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn3",
+         "by": [
+          16,
+          0
+         ]
+        }
+       ]
+      },
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "20\\text{¢}>15\\text{¢}",
+       "at": "more",
+       "fresh": true
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try one quarter against two dimes and four pennies. Each penny is worth one cent.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Try"
+      },
+      {
+       "do": "text",
+       "text": "One coin or six coins?",
+       "at": "Try"
+      },
+      {
+       "do": "scene",
+       "at": "Try",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "disappear",
+         "target": "dime1"
+        },
+        {
+         "do": "disappear",
+         "target": "dime2"
+        },
+        {
+         "do": "disappear",
+         "target": "bn1"
+        },
+        {
+         "do": "disappear",
+         "target": "bn2"
+        },
+        {
+         "do": "disappear",
+         "target": "bn3"
+        },
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "totalA"
+        },
+        {
+         "do": "disappear",
+         "target": "totalB"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "billA"
+        },
+        {
+         "do": "disappear",
+         "target": "billB"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsA"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsB"
+        },
+        {
+         "do": "disappear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "disappear",
+         "target": "running24"
+        },
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "quarter"
+        },
+        {
+         "do": "appear",
+         "target": "mixD1"
+        },
+        {
+         "do": "appear",
+         "target": "mixD2"
+        },
+        {
+         "do": "appear",
+         "target": "penny1"
+        },
+        {
+         "do": "appear",
+         "target": "penny2"
+        },
+        {
+         "do": "appear",
+         "target": "penny3"
+        },
+        {
+         "do": "appear",
+         "target": "penny4"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "1\\text{ penny}=1\\text{¢}",
+       "at": "Each",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "Each",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "highlight",
+         "target": "penny1"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "learner",
+     "say": "Six coins must be more than one coin.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "Six",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "nameB"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Count the dimes in *B*: ten, twenty cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Count"
+      },
+      {
+       "do": "text",
+       "text": "Count the value of Set B.",
+       "at": "Count"
+      },
+      {
+       "do": "scene",
+       "at": "ten",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "running10"
+        },
+        {
+         "do": "highlight",
+         "target": "mixD1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "appear",
+         "target": "running20"
+        },
+        {
+         "do": "highlight",
+         "target": "mixD2"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Add each penny: twenty-one, twenty-two, twenty-three, twenty-four cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "twenty-one",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "appear",
+         "target": "running21"
+        },
+        {
+         "do": "highlight",
+         "target": "penny1"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty-two",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "appear",
+         "target": "running22"
+        },
+        {
+         "do": "highlight",
+         "target": "penny2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty-three",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "appear",
+         "target": "running23"
+        },
+        {
+         "do": "highlight",
+         "target": "penny3"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty-four",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "appear",
+         "target": "running24"
+        },
+        {
+         "do": "highlight",
+         "target": "penny4"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "The quarter is worth twenty-five cents, one cent more.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "text",
+       "text": "One coin is worth more.",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "25\\text{¢}>24\\text{¢}",
+       "at": "twenty-five",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "highlight",
+         "target": "quarter"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "25\\text{¢}-24\\text{¢}=1\\text{¢}",
+       "at": "more",
+       "fresh": true
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Back to our first sets: add a one-dollar bill to *A*, making one dollar and twenty cents.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Back"
+      },
+      {
+       "do": "text",
+       "text": "Bills and coins together",
+       "at": "Back"
+      },
+      {
+       "do": "scene",
+       "at": "Back",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "totalA"
+        },
+        {
+         "do": "disappear",
+         "target": "totalB"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "billA"
+        },
+        {
+         "do": "disappear",
+         "target": "billB"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsA"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsB"
+        },
+        {
+         "do": "disappear",
+         "target": "quarter"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD1"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny1"
+        },
+        {
+         "do": "disappear",
+         "target": "penny2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny3"
+        },
+        {
+         "do": "disappear",
+         "target": "penny4"
+        },
+        {
+         "do": "disappear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "disappear",
+         "target": "running24"
+        },
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "dime1"
+        },
+        {
+         "do": "appear",
+         "target": "dime2"
+        },
+        {
+         "do": "appear",
+         "target": "bn1"
+        },
+        {
+         "do": "appear",
+         "target": "bn2"
+        },
+        {
+         "do": "appear",
+         "target": "bn3"
+        },
+        {
+         "do": "move",
+         "target": "dime1",
+         "by": [
+          31,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dime2",
+         "by": [
+          20,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn1",
+         "by": [
+          32,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn2",
+         "by": [
+          25,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn3",
+         "by": [
+          18,
+          0
+         ]
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "one-dollar",
+       "dur": 0.7,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "billA"
+        },
+        {
+         "do": "move",
+         "target": "billA",
+         "by": [
+          0,
+          -3
+         ]
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "dollarsA"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Set A}=\\$1.20",
+       "at": "twenty",
+       "fresh": true
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "A five-dollar bill gives *B* five dollars and fifteen cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "five-dollar",
+       "dur": 0.7,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "billB"
+        },
+        {
+         "do": "move",
+         "target": "billB",
+         "by": [
+          0,
+          -3
+         ]
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "fifteen",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "appear",
+         "target": "dollarsB"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Set B}=\\$5.15",
+       "at": "fifteen",
+       "fresh": true
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Bills count by value. Compare whole dollars first, then cents if dollars match.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Bills"
+      },
+      {
+       "do": "text",
+       "text": "Compare dollars first.",
+       "at": "Bills"
+      },
+      {
+       "do": "write",
+       "tex": "\\$5.15>\\$1.20",
+       "at": "Compare",
+       "fresh": true
+      },
+      {
+       "do": "scene",
+       "at": "value",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "billB"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "Same dollars? Compare cents.",
+       "at": "then"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Most means greatest, least means smallest, and exactly means the same amount.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Most"
+      },
+      {
+       "do": "text",
+       "text": "Most: greatest value",
+       "at": "Most"
+      },
+      {
+       "do": "scene",
+       "at": "Most",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dollarsB"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "Least: smallest value",
+       "at": "least"
+      },
+      {
+       "do": "scene",
+       "at": "least",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dollarsA"
+        }
+       ]
+      },
+      {
+       "do": "text",
+       "text": "Exactly: the same amount",
+       "at": "exactly"
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two dimes beat three nickels: twenty cents is more than fifteen.",
+     "do": [
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "header",
+       "text": "Compare money by value",
+       "at": "Two"
+      },
+      {
+       "do": "scene",
+       "at": "Two",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "billA"
+        },
+        {
+         "do": "disappear",
+         "target": "billB"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsA"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsB"
+        },
+        {
+         "do": "disappear",
+         "target": "quarter"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD1"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny1"
+        },
+        {
+         "do": "disappear",
+         "target": "penny2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny3"
+        },
+        {
+         "do": "disappear",
+         "target": "penny4"
+        },
+        {
+         "do": "disappear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "disappear",
+         "target": "running24"
+        },
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "dime1"
+        },
+        {
+         "do": "appear",
+         "target": "dime2"
+        },
+        {
+         "do": "appear",
+         "target": "bn1"
+        },
+        {
+         "do": "appear",
+         "target": "bn2"
+        },
+        {
+         "do": "appear",
+         "target": "bn3"
+        },
+        {
+         "do": "appear",
+         "target": "totalA"
+        },
+        {
+         "do": "appear",
+         "target": "totalB"
+        },
+        {
+         "do": "move",
+         "target": "dime1",
+         "by": [
+          -31,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dime2",
+         "by": [
+          -20,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn1",
+         "by": [
+          -32,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn2",
+         "by": [
+          -25,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn3",
+         "by": [
+          -18,
+          0
+         ]
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "20\\text{¢}>15\\text{¢}",
+       "at": "dimes",
+       "fresh": true,
+       "id": "summaryFirst",
+       "note": "\\text{dimes / nickels}"
+      },
+      {
+       "do": "scene",
+       "at": "twenty",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dime1"
+        },
+        {
+         "do": "highlight",
+         "target": "dime2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "fifteen",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn1"
+        },
+        {
+         "do": "highlight",
+         "target": "bn2"
+        },
+        {
+         "do": "highlight",
+         "target": "bn3"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "One quarter beats six coins: twenty-five cents is more than twenty-four.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "One",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "disappear",
+         "target": "dime1"
+        },
+        {
+         "do": "disappear",
+         "target": "dime2"
+        },
+        {
+         "do": "disappear",
+         "target": "bn1"
+        },
+        {
+         "do": "disappear",
+         "target": "bn2"
+        },
+        {
+         "do": "disappear",
+         "target": "bn3"
+        },
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "totalA"
+        },
+        {
+         "do": "disappear",
+         "target": "totalB"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "billA"
+        },
+        {
+         "do": "disappear",
+         "target": "billB"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsA"
+        },
+        {
+         "do": "disappear",
+         "target": "dollarsB"
+        },
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "quarter"
+        },
+        {
+         "do": "appear",
+         "target": "mixD1"
+        },
+        {
+         "do": "appear",
+         "target": "mixD2"
+        },
+        {
+         "do": "appear",
+         "target": "penny1"
+        },
+        {
+         "do": "appear",
+         "target": "penny2"
+        },
+        {
+         "do": "appear",
+         "target": "penny3"
+        },
+        {
+         "do": "appear",
+         "target": "penny4"
+        },
+        {
+         "do": "appear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "appear",
+         "target": "running24"
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "25\\text{¢}>24\\text{¢}",
+       "at": "quarter",
+       "fresh": true,
+       "id": "summaryQuarter",
+       "note": "\\text{quarter / six coins}"
+      },
+      {
+       "do": "scene",
+       "at": "twenty-five",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "quarter"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "twenty-four",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "running24"
+        }
+       ]
+      }
+     ],
+     "pause": 0.2
+    },
+    {
+     "speaker": "teacher",
+     "say": "With bills, five dollars and fifteen cents is more than one dollar and twenty cents.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "With",
+       "dur": 0.6,
+       "actions": [
+        {
+         "do": "disappear",
+         "target": "pair1"
+        },
+        {
+         "do": "disappear",
+         "target": "pair2"
+        },
+        {
+         "do": "disappear",
+         "target": "pair3"
+        },
+        {
+         "do": "disappear",
+         "target": "an1"
+        },
+        {
+         "do": "disappear",
+         "target": "an2"
+        },
+        {
+         "do": "disappear",
+         "target": "an3"
+        },
+        {
+         "do": "disappear",
+         "target": "an4"
+        },
+        {
+         "do": "disappear",
+         "target": "totalA"
+        },
+        {
+         "do": "disappear",
+         "target": "totalB"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueD2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueB3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN1"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN2"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN3"
+        },
+        {
+         "do": "disappear",
+         "target": "valueN4"
+        },
+        {
+         "do": "disappear",
+         "target": "quarter"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD1"
+        },
+        {
+         "do": "disappear",
+         "target": "mixD2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny1"
+        },
+        {
+         "do": "disappear",
+         "target": "penny2"
+        },
+        {
+         "do": "disappear",
+         "target": "penny3"
+        },
+        {
+         "do": "disappear",
+         "target": "penny4"
+        },
+        {
+         "do": "disappear",
+         "target": "quarterTotal"
+        },
+        {
+         "do": "disappear",
+         "target": "running10"
+        },
+        {
+         "do": "disappear",
+         "target": "running20"
+        },
+        {
+         "do": "disappear",
+         "target": "running21"
+        },
+        {
+         "do": "disappear",
+         "target": "running22"
+        },
+        {
+         "do": "disappear",
+         "target": "running23"
+        },
+        {
+         "do": "disappear",
+         "target": "running24"
+        },
+        {
+         "do": "disappear",
+         "target": "pennyValue"
+        },
+        {
+         "do": "appear",
+         "target": "dime1"
+        },
+        {
+         "do": "appear",
+         "target": "dime2"
+        },
+        {
+         "do": "appear",
+         "target": "bn1"
+        },
+        {
+         "do": "appear",
+         "target": "bn2"
+        },
+        {
+         "do": "appear",
+         "target": "bn3"
+        },
+        {
+         "do": "appear",
+         "target": "billA"
+        },
+        {
+         "do": "appear",
+         "target": "billB"
+        },
+        {
+         "do": "appear",
+         "target": "dollarsA"
+        },
+        {
+         "do": "appear",
+         "target": "dollarsB"
+        },
+        {
+         "do": "move",
+         "target": "dime1",
+         "by": [
+          31,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "dime2",
+         "by": [
+          20,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn1",
+         "by": [
+          32,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn2",
+         "by": [
+          25,
+          0
+         ]
+        },
+        {
+         "do": "move",
+         "target": "bn3",
+         "by": [
+          18,
+          0
+         ]
+        }
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\$5.15>\\$1.20",
+       "at": "bills",
+       "fresh": true,
+       "id": "summaryBills",
+       "note": "\\text{bills + coins}"
+      },
+      {
+       "do": "scene",
+       "at": "five",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "billB"
+        },
+        {
+         "do": "highlight",
+         "target": "dollarsB"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "one",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "billA"
+        },
+        {
+         "do": "highlight",
+         "target": "dollarsA"
+        }
+       ]
+      }
+     ],
+     "pause": 2
+    },
+    {
+     "speaker": "learner",
+     "say": "More coins does not always mean more money. Count the value, then compare.",
+     "do": [
+      {
+       "do": "scene",
+       "at": "coins",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "bn2"
+        }
+       ]
+      },
+      {
+       "do": "scene",
+       "at": "value",
+       "dur": 0.5,
+       "actions": [
+        {
+         "do": "highlight",
+         "target": "dollarsA"
+        },
+        {
+         "do": "highlight",
+         "target": "dollarsB"
+        }
+       ]
+      }
+     ],
+     "pause": 0.7
+    }
+   ]
+  }
+ ]
+}
