@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { segments, toTex, withSeparators } from "../src/web/MathText";
+import { createRequire } from "node:module";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { MathText, segments, toTex, withSeparators } from "../src/web/MathText";
+const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
+  JSDOM: new (html: string) => { window: { document: Document } };
+};
 
 // A missing number is part of its equation: one formula, typeset spacing.
 test("a blank and its equation typeset as one formula", () => {
@@ -152,4 +158,24 @@ test("sentence-ending numbers stay separate from the next formula", () => {
   assert.deepEqual(segments("$8.10 + 8 = 16.10$"), [
     { math: true, text: "8.10 + 8 = 16.10", plain: "8.10 + 8 = 16.10" },
   ]);
+});
+
+test("a written blank (__) is the answer box, including before punctuation", () => {
+  const text =
+    "Use the regions to find 8 × 7. 8 × 5 = __, 8 × 2 = __, so 8 × 7 = __ + __ = __.";
+  const math = segments(text).filter((s) => s.math);
+  assert.deepEqual(
+    math.map((s) => s.plain),
+    ["8 × 7", "8 × 5 = __", "8 × 2 = __", "8 × 7 = __ + __ = __"],
+  );
+  const html = renderToStaticMarkup(React.createElement(MathText, { text }));
+  // KaTeX accepted every formula: no source TeX is shown as text.
+  const body = new JSDOM(html).window.document.body;
+  body.querySelectorAll(".katex-mathml").forEach((node) => node.remove());
+  assert.doesNotMatch(body.textContent!, /\\|__/);
+  assert.equal(html.match(/<menclose/g)?.length, 5);
+  assert.equal(toTex("the slope is ___"), "the slope is \\boxed{\\phantom{0}}");
+  // A subscript or an identifier with underscores is unchanged.
+  assert.equal(toTex("x_1"), "x_1");
+  assert.equal(toTex("log_2 8"), "\\log_{2} 8");
 });

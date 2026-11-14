@@ -5,7 +5,19 @@ such as “Solve”, “Simplify”, “Evaluate” or “Factor” appears on a
 below its introduction. A single final sentence period is omitted. Ellipses,
 repeating-decimal notation and factorial signs are preserved. Mathematics that
 belongs to a sentence stays inline, including units and instructions after the
-formula. Clock times and currency amounts are prose.
+formula. Clock times and currency amounts are prose. A spaced colon between
+numbers (`2 : 3`) is a ratio, not an introduction.
+
+The last value of a label: value list stays with its label: “Oak: 4, Pine: 12,
+Maple: 7” and “Ones: 6. Tenths: 2.” are not split. Shown alone on its own line,
+that value would read as a total or an answer. The rule applies when a bare
+number follows a short label (at most five words) and the previous pair, separated
+by a comma, semicolon or full stop, also ends in a bare number. An equation after
+a label is still displayed.
+
+A variable that ends a display's introduction (“Products with x:”) is typeset as
+mathematics, as it is in print. A run of underscores standing alone (`8 × 5 = __`)
+is a written blank and is typeset as the answer box on the web.
 
 `src/content/prompt-structure.ts` makes this decision for both `MathText` and
 `PrintMathText`. It accepts explicit TeX, supported plain expressions and legacy
@@ -59,7 +71,9 @@ prose, clock times, currency, systems and matching web/print markup.
 checks that command/colon introductions reach a display and checks final
 punctuation in current prompts; frozen prompts, hints and worked steps are
 checked through both renderers. It also renders representative
-web and print displays from every affected family. The inventory lint runs in
+web and print displays from every affected family, and it checks every learner
+text, choice and generated sample independently for a label: value list whose
+last value would be displayed alone. The inventory lint runs in
 `npm run test:content`.
 
 Run `node --import tsx scripts/verify-display-equations.ts` for browser evidence.

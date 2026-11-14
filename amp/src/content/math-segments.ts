@@ -42,7 +42,10 @@ function mathyWord(word: string) {
   return words.every((w) => w === "log");
 }
 
-export function segments(text: string): Segment[] {
+/** `displayLead`: the text introduces a displayed formula ("Products with
+ * x:"). It was cut from the sentence that holds the formula, where a variable
+ * before the colon is mathematics; it stays mathematics on its own. */
+export function segments(text: string, displayLead = false): Segment[] {
   const out: Segment[] = [];
   const push = (value: string, math: boolean) => {
     if (!value) return;
@@ -172,6 +175,15 @@ export function segments(text: string): Segment[] {
     flush();
     trailing.forEach((t) => push(t, false));
   });
+  const last = out.at(-1);
+  const variable =
+    displayLead && !last?.math && /(^|\s)([a-zA-Z]):$/.exec(last?.text ?? "");
+  if (last && variable) {
+    out.pop();
+    push(last.text.slice(0, variable.index + variable[1]!.length), false);
+    out.push({ text: variable[2]!, math: true, plain: variable[2]! });
+    push(":", false);
+  }
   return out;
 }
 
@@ -225,6 +237,9 @@ export function toTex(formula: string): string {
       .replace(/(\d+|[a-zA-Z])\/(\d+|[a-zA-Z])/g, "\\tfrac{$1}{$2}")
       .replace(/−/g, "-")
       .replace(/□/g, "\\boxed{\\phantom{0}}")
+      // A run of underscores standing alone is a written blank ("8 × 5 = __"),
+      // not a subscript; TeX would reject it and show the source.
+      .replace(/(?<![\w}])_{2,}(?![\w{])/g, "\\boxed{\\phantom{0}}")
       .replace(/×/g, "\\times ")
       .replace(/÷/g, "\\div ")
       .replace(/≤/g, "\\le ")

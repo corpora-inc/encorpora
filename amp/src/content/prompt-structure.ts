@@ -13,6 +13,24 @@ export interface TrailingDisplayMath {
 const command =
   /(?:^|[.!?]\s+)(?:solve(?:\s+for\s+(?:real\s+)?\$?[a-z]\$?)?|(?:expand and |rationalize the denominator and )?simplify|evaluate|factor(?:\s+completely)?|expand|calculate|compute)\s*:?[ \t]*$/i;
 
+// A bare value: a number with an optional sign, currency, separators or percent.
+const VALUE = String.raw`[+−-]?\$?\d+(?:,\d{3})*(?:\.\d+)?%?`;
+// One word of a label; a decimal point inside a number is not a full stop.
+const WORD = String.raw`(?:[^\s:,;.!?]|\.(?=\d))+`;
+const BARE_VALUE = new RegExp(`^(?:${VALUE}|\\$${VALUE}\\$)$`);
+// The lead ends with the last label of a label: value list, e.g.
+// "Oak: 4, Pine: 12, Maple:" or "Ones: 6. Tenths:". Pairs are separated by a
+// comma, semicolon or full stop; a label is at most five words.
+const LIST_TAIL = new RegExp(
+  `:\\s*\\$?${VALUE}\\$?\\s*[,;.]\\s+(?:${WORD}\\s+){0,4}${WORD}:$`,
+);
+
+/** The final value of a label: value list belongs to its label. Displaying it
+ * alone would read as a total or an answer, so it stays in the list. */
+export function isListValue(lead: string, source: string): boolean {
+  return BARE_VALUE.test(source.trim()) && LIST_TAIL.test(lead.trimEnd());
+}
+
 function completeMath(source: string): string | null {
   // Legacy web notation treats an adjacent a/b as one fraction, whereas the
   // print grammar reads mixed division from left to right. Moving such a run
@@ -116,7 +134,9 @@ export function trailingDisplayMath(
         punctuation = ".";
       }
     }
-    if (!source) continue;
+    if (!source || isListValue(lead, source)) continue;
+    // "2 : 3" is a ratio, not an introduction followed by a formula.
+    if (/\d\s+:$/.test(lead) && /^\d/.test(source)) continue;
     let tex = completeMath(source) ?? systemMath(source);
     if (tex === null && source.includes("□")) {
       const legacy = segments(source);
