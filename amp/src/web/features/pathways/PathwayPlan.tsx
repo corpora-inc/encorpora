@@ -84,10 +84,10 @@ export function PathwayPlan({
   /** One area chosen (`?area=`): only its skills, and its counts. */
   area?: AreaId | null;
 }) {
-  const { shown, decided } = useCurriculumDetails();
-  // The grades view names its grades, unless a school has chosen not to
-  // show levels: then its bands are numbered.
-  const named = shown || !decided;
+  // The grades view names its grades, unless the child's grown-up or school
+  // has chosen not to show them: then the same bands, in the same order,
+  // are numbered stages.
+  const { shown: named } = useCurriculumDetails();
   const box = useRef<HTMLElement>(null);
   const rows = useMemo(() => planRows(skills, area), [skills, area]);
   const stats = useMemo(

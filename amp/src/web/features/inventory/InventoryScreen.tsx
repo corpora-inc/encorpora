@@ -1,10 +1,7 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { EntityLink } from "../../nav/links";
 import { LayerHost } from "../../nav/LayerHost";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useDeferredValue, useMemo, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -307,7 +304,6 @@ export function InventoryScreen() {
             })
           )}
           <div className={styles.footer}>
-            <CurriculumDetailsControl />
             <details className={styles.explainer}>
               <summary>How XP and skill progress work</summary>
               <p>

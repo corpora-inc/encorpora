@@ -721,15 +721,15 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
-      const preference = page.getByRole("checkbox", {
-        name: "Show grade numbers",
-      });
-      assert.equal(await preference.isChecked(), false);
+      // A grown-up's view always names grades: no device toggle.
+      assert.equal(
+        await page.getByRole("checkbox", { name: /grade numbers/i }).count(),
+        0,
+      );
       assert(
         await page.locator(".pathways-grade").isVisible(),
-        "an active URL filter remains visible so it can be cleared while details are hidden",
+        "an active URL filter remains visible so it can be cleared",
       );
-      await preference.check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -1159,7 +1159,7 @@ try {
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
       assert.equal(await searchField(page).inputValue(), target.title);
-      // No estimate jargon on a skill (Q-211), grade numbers on or off.
+      // No estimate jargon on a skill (Q-211).
       assert.equal(
         await skillLayer(page)
           .getByText(/frontier|estimated range/)
@@ -1169,13 +1169,6 @@ try {
       await page.keyboard.press("Escape");
       await skillLayer(page).waitFor({ state: "detached" });
       assert.deepEqual(openSkills(page), []);
-      await page
-        .getByRole("button", { name: "Browse skills", exact: true })
-        .click();
-      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
-      await page
-        .getByRole("button", { name: "Close browser", exact: true })
-        .click();
       await page.goForward();
       await skillLayer(page).waitFor();
       assert.equal(

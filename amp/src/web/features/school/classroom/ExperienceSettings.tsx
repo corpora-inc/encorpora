@@ -71,12 +71,13 @@ const levelsRow: Row<"levels"> = {
   title: "Show levels to students",
   options: [
     { value: "hidden", label: "Hidden" },
-    { value: "choice", label: "Choice" },
     { value: "shown", label: "Shown" },
   ],
+  // "Choice" was a student's own device toggle; it is gone, and a stored
+  // choice reads as shown (schools/student-me.ts `studentLevels`).
   describe: {
     hidden: "Students never see a grade level.",
-    choice: "Each student decides whether to see theirs.",
+    choice: "Every student sees their own working level.",
     shown: "Every student sees their own working level.",
   },
 };

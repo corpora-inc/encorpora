@@ -548,7 +548,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const change = practiceChangeSchema.parse(request.body);
-    if (change.kind === "reset") assertFamilyManaged(account, request);
+    // A grown-up's choices: never the learner's own session's, nor a
+    // school account's.
+    if (change.kind === "reset" || change.kind === "gradeLevel")
+      assertFamilyManaged(account, request);
     return options.repository.transaction(account, learnerId, (tx) =>
       changePractice(tx, change),
     );

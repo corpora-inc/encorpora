@@ -21,26 +21,8 @@ import type { FamilyChild } from "./api";
 import type { FamilyPlace } from "./FamilyFrame";
 import styles from "./Family.module.css";
 
-type Levels = Experience["settings"]["levels"]["value"];
 type Devices = Experience["settings"]["deviceMode"]["value"];
 
-const LEVELS: { value: Levels; label: string; detail: string }[] = [
-  {
-    value: "hidden",
-    label: "Hidden",
-    detail: "No child sees a grade level while they practice.",
-  },
-  {
-    value: "choice",
-    label: "Their choice",
-    detail: "Each child decides whether to see their own level.",
-  },
-  {
-    value: "shown",
-    label: "Shown",
-    detail: "Each child sees their own working level as it grows.",
-  },
-];
 const DEVICES: { value: Devices; label: string; detail: string }[] = [
   {
     value: "shared",
@@ -71,9 +53,10 @@ const failed = (failure: unknown, fallback: string) =>
   failure instanceof AppError && failure.message ? failure.message : fallback;
 
 /**
- * The family's practice defaults (`/family/<family>/settings`): what every
- * child sees while practicing, now and as children are added, and how long a
- * child stays signed in on a device. They are the family's own class's
+ * The family's practice defaults (`/family/<family>/settings`): how long a
+ * child stays signed in on a device, now and as children are added. Whether
+ * a child sees grade levels is on each child's own settings
+ * (`ChildPracticeSettings`). They are the family's own class's
  * settings, so a class that also holds other families' children sets them
  * with the tutoring group, for everyone in it. Never standings or boards.
  */
@@ -103,7 +86,7 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
   );
   const data = experience.data;
   const editable = !!data?.canEdit && !shared;
-  const set = (key: "levels" | "deviceMode", value: string) =>
+  const set = (key: "deviceMode", value: string) =>
     write.mutate(
       { values: { [key]: value } },
       {
@@ -111,7 +94,6 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
           setError(failed(failure, "That change didn’t save. Try again.")),
       },
     );
-  const levels = data?.settings.levels.value ?? null;
   const devices = data?.settings.deviceMode.value ?? null;
   return (
     <section
@@ -152,26 +134,13 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
           ) : (
             <>
               <div>
-                <h3 className={styles.label} id="practice-levels">
-                  Grade levels{" "}
-                  {/* The saved choices are on their way: the wave beside the
-                      heading, the lists already in their places. */}
+                <h3 className={styles.label} id="practice-devices">
+                  Devices{" "}
+                  {/* The saved choice is on its way: the wave beside the
+                      heading, the list already in its place. */}
                   {experience.isPending && (
                     <Loading inline>Reading what’s saved</Loading>
                   )}
-                </h3>
-                <OptionList
-                  label="Grade levels"
-                  options={LEVELS}
-                  value={levels}
-                  disabled={!editable}
-                  busy={write.isPending}
-                  onChange={(value) => set("levels", value)}
-                />
-              </div>
-              <div>
-                <h3 className={styles.label} id="practice-devices">
-                  Devices
                 </h3>
                 <OptionList
                   label="Devices"
@@ -193,8 +162,9 @@ export function FamilyPracticeDefaults({ place }: { place: FamilyPlace }) {
 
 /**
  * One child's own practice settings, on their page: whether a grown-up is
- * working with them (hints read to them, problems paced together) and the
- * skill their practice is focused on, which the parent can clear.
+ * working with them (hints read to them, problems paced together), whether
+ * they see grade levels on their own screens, and the skill their practice
+ * is focused on, which the parent can clear.
  */
 export function ChildPracticeSettings({
   place,
@@ -214,7 +184,9 @@ export function ChildPracticeSettings({
   const [error, setError] = useState("");
   const change = async (
     intent:
-      { kind: "together"; enabled: boolean } | { kind: "focus"; skillId: null },
+      | { kind: "together"; enabled: boolean }
+      | { kind: "gradeLevel"; shown: boolean }
+      | { kind: "focus"; skillId: null },
   ) => {
     setBusy(true);
     try {
@@ -270,6 +242,37 @@ export function ChildPracticeSettings({
           )}
         </div>
       </div>
+      {/* Whether this child sees grade levels on their own screens, on any
+          device. A grown-up's view always shows them. */}
+      {!settings.isError && (
+        <div className={styles.setting} data-child-grade-level="">
+          <div className={styles.settingText} style={{ gridColumn: "1 / -1" }}>
+            {!data ? (
+              <div
+                className={switches.row}
+                aria-busy="true"
+                data-switch-wait=""
+              >
+                <span className={switches.text}>
+                  <span>Show grade level</span>
+                </span>
+                <span className={switches.track} data-switch-loading="">
+                  <Loading inline>{null}</Loading>
+                </span>
+              </div>
+            ) : (
+              <Switch
+                label="Show grade level"
+                checked={data.gradeLevelShown}
+                busy={busy}
+                onChange={(on) =>
+                  void change({ kind: "gradeLevel", shown: on })
+                }
+              />
+            )}
+          </div>
+        </div>
+      )}
       {data?.focusSkillId && (
         <div className={styles.setting}>
           <div className={styles.settingText}>

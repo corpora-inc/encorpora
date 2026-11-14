@@ -1,9 +1,6 @@
 import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
   useDeferredValue,
@@ -773,7 +770,6 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <CurriculumDetailsControl />
               <div className="pathways-grade" hidden={!shown && !band}>
                 {!shown && band && (
                   <small>

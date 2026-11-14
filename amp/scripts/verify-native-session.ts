@@ -727,14 +727,11 @@ try {
   );
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).waitFor();
-  const curriculumDetails = page.getByRole("checkbox", {
-    name: "Show grade numbers",
-    exact: true,
-  });
-  assert.equal(await curriculumDetails.isChecked(), false);
-  await curriculumDetails.check();
-  assert.equal(await curriculumDetails.isChecked(), true);
-  await curriculumDetails.uncheck();
+  // No device toggle for grade numbers: a grown-up's view shows them.
+  assert.equal(
+    await page.getByRole("checkbox", { name: /grade numbers/i }).count(),
+    0,
+  );
   assert.equal(
     (
       await repository.pool.query(

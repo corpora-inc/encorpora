@@ -34,10 +34,6 @@ import type { OwnPractice } from "../../../account/adult-contracts";
 import type { Frontier } from "../pathways/model";
 import { ownPracticeOptions } from "./api";
 import { useHeroAction } from "../../lib/shell-slots";
-import {
-  useCurriculumDetails,
-  useCurriculumPreferences,
-} from "../curriculum/CurriculumDetails";
 import styles from "./Own.module.css";
 
 /** The adult's own place, under the app frame's bar (logo, the Progress tabs
@@ -101,12 +97,6 @@ export function OwnRecordScreen() {
       )
     : undefined;
   const left = freeLeft(own);
-  // An adult always sees their levels by name; the working level's decimals
-  // only when they have switched grade numbers on for this device.
-  const { scope } = useCurriculumDetails();
-  const numbersShown = useCurriculumPreferences(
-    (state) => state.shown[scope] === true,
-  );
   if (record.isPending || (data && frontier.isPending))
     return (
       <OwnPage>
@@ -259,7 +249,6 @@ export function OwnRecordScreen() {
           pathState={
             trend.isError ? "failed" : trend.data ? "ready" : "loading"
           }
-          decimals={numbersShown}
           rowLink={areaRowLink}
         />
         {shown.objectives && (
