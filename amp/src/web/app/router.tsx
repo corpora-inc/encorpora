@@ -1459,6 +1459,27 @@ const ownRecord = createRoute({
   },
   component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
 });
+/** The adult's own time, by day and by week (R15), from `/me`'s "This
+ * week". The same record `/me` reads, so it paints from the cache. */
+const ownTime = createRoute({
+  getParentRoute: () => root,
+  path: "/me/time",
+  staticData: { space: "me" },
+  beforeLoad: async () => {
+    const { me, session } = await ownPractice();
+    if (!me.adultPractice?.learner)
+      throw redirect({ to: "/me", replace: true } as never);
+    return { session };
+  },
+  loader: async ({ context }) => {
+    const { session } = context as { session: AuthSession };
+    const { ownPracticeOptions } = await import("../features/me/api");
+    await queryClient
+      .ensureQueryData(ownPracticeOptions(session))
+      .catch((error) => console.warn("Your time didn’t load ahead", error));
+  },
+  component: lazyRouteComponent(ownScreens, "OwnTimeScreen"),
+});
 const ownStart = createRoute({
   getParentRoute: () => root,
   path: "/me/start",
@@ -1722,6 +1743,7 @@ export const router = createRouter({
     ]),
     standings,
     ownRecord,
+    ownTime,
     ownStart,
     profiles,
     newProfile,

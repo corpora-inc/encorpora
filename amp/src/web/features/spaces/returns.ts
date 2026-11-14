@@ -33,13 +33,16 @@ const KEPT = new Set<string>([
   "to",
   "devices",
   "section",
+  // Practice at a level's choice (/me/level).
+  "grade",
+  "pace",
 ]);
 /** The places a return may name: an allowlist of real screens, never "any
  * address that isn't something else". */
 const PLACES = [
   /^\/school\/[0-9a-f-]{36}(?:\/[A-Za-z0-9._-]+)*$/,
   /^\/family\/[0-9a-f-]{36}(?:\/[A-Za-z0-9._-]+)*$/,
-  /^\/me(?:\/profiles(?:\/[A-Za-z0-9-]+)?)?$/,
+  /^\/me(?:\/profiles(?:\/[A-Za-z0-9-]+)?|\/level|\/time)?$/,
   /^\/(?:overview|practice|progress|inventory)$/,
   /^\/(?:pathways|lessons|books)(?:\/[A-Za-z0-9._-]+)?$/,
   /^\/learners\/[A-Za-z0-9-]+\/workbooks(?:\/[A-Za-z0-9._-]+){0,2}$/,

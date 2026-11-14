@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { gradeName, levelDetails } from "../../../learning/level-check";
 import { LevelAxis, LevelBar } from "./LevelBar";
 import { LevelPath, type PathPoint } from "./LevelPath";
@@ -14,6 +14,36 @@ export type LevelRangeArea = {
   estimate: Estimate | null;
   estimated?: boolean;
 };
+
+/** What a row hands its link: the page decides where an area opens (a
+ * layer over it, a route); the widget draws the row inside it. */
+export type RowLinkProps = {
+  className: string;
+  "aria-label": string;
+  children: ReactNode;
+  "data-level-row": string;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
+};
+/** An area's row as a link: `area` is the strand's id, or `overall`. */
+export type RowLink = (area: string, props: RowLinkProps) => ReactNode;
+
+/** A grade in a sentence: kindergarten by name. */
+const proseGrade = (level: number) =>
+  Math.round(level) <= 0 ? "Kindergarten" : gradeName(level);
+/** An estimate in plain words: "Most likely Grade 8 · somewhere between
+ * Grade 6 and Algebra 2". */
+export function plainLevel(estimate: Estimate) {
+  const [from, to] = likelyRange(estimate);
+  const best = proseGrade(estimate.level);
+  const low = proseGrade(from),
+    high = proseGrade(to);
+  return low === high
+    ? `Most likely ${best}`
+    : `Most likely ${best} · somewhere between ${low} and ${high}`;
+}
 
 /** Whole sentences with named slots, so each translates as a unit. `who`
  * is a learner's name when someone else reads their level; without it the
@@ -33,6 +63,8 @@ const words = {
     `${area}: best guess ${level}, likely ${from} to ${to}`,
   rowUnnumbered: (area: string) =>
     `${area}: a likely range, narrowing with practice`,
+  /** A row that opens its area: what it is, then what opening it shows. */
+  open: (row: string) => `${row}. Open its skills`,
   /** Before the first answer: no grade named, only how soon it's known. */
   notYet: "Level not measured yet: anywhere from kindergarten to precalculus",
   find: (who?: string) =>
@@ -64,6 +96,7 @@ export function LevelRange({
   numbers = true,
   decimals = numbers,
   who,
+  rowLink,
 }: {
   overall: Estimate;
   /** Problems the estimate rests on. */
@@ -89,6 +122,8 @@ export function LevelRange({
   decimals?: boolean;
   /** The learner's name when someone else reads it. */
   who?: string;
+  /** Each row opens its area (and Overall the whole level). */
+  rowLink?: RowLink;
 }) {
   const [from, to] = likelyRange(overall);
   const detail = levelDetails(overall);
@@ -157,6 +192,7 @@ export function LevelRange({
           grade={grade}
           numbers={numbers}
           decimals={decimals}
+          rowLink={rowLink}
         />
       </div>
       {pathShown && (
@@ -190,6 +226,12 @@ function narrowed(path: readonly PathPoint[]) {
  * Every area as an error bar on one scale, the overall estimate first and
  * larger, with the grade axis under them. The parts of `LevelRange`, for a
  * place that shows several learners on one shared scale (the class map).
+ *
+ * With `rowLink`, every measured row is a link that opens its area: a 44 px
+ * target with a chevron, and (where a pointer hovers) a reserved line under
+ * the axis that says the hovered or focused row's range in plain words, so
+ * nothing moves. A row not measured yet is never a link: there is nothing
+ * behind it to open.
  */
 export function LevelRows({
   overall,
@@ -202,6 +244,7 @@ export function LevelRows({
   overallEstimated = false,
   axis = true,
   moving = false,
+  rowLink,
 }: {
   /** Null before the first answer: the row is not measured yet. */
   overall: Estimate | null;
@@ -218,22 +261,51 @@ export function LevelRows({
   /** A lone learner's unmeasured row searches (LevelBar's `moving`); a
    * column of many stays still. */
   moving?: boolean;
+  /** Each measured row opens its area. */
+  rowLink?: RowLink;
 }) {
+  const overallArea: LevelRangeArea = {
+    id: "",
+    label: overallLabel,
+    estimate: overall,
+    estimated: overallEstimated,
+  };
+  // The row the pointer or focus is on, for the plain-words line.
+  const [pointed, setPointed] = useState<string | null>(null);
+  const interactive =
+    !!rowLink && [overallArea, ...areas].some((area) => area.estimate !== null);
+  const readoutArea = interactive
+    ? ([overallArea, ...areas].find(
+        (area) => (area.id || "overall") === pointed && area.estimate,
+      ) ?? (overall ? overallArea : null))
+    : null;
+  // The end column says only "Not yet" or "Starting" without the range
+  // numbers; with neither to say, it takes no room.
+  const silent =
+    !numbers ||
+    (!decimals &&
+      [overallArea, ...areas].every(
+        (area) => area.estimate && !area.estimated,
+      ));
+  const bare = silent ? styles.rowsSilent : decimals ? "" : styles.rowsBare;
+  const rowClass = `${styles.rows} ${bare}`;
+  const point = {
+    enter: (id: string) => setPointed(id),
+    leave: (id: string) =>
+      setPointed((current) => (current === id ? null : current)),
+  };
   return (
     <>
-      <ul className={`${styles.rows} ${decimals ? "" : styles.rowsBare}`}>
+      <ul className={rowClass} data-interactive={interactive ? "" : undefined}>
         <AreaRow
-          area={{
-            id: "",
-            label: overallLabel,
-            estimate: overall,
-            estimated: overallEstimated,
-          }}
+          area={overallArea}
           scale={scale}
           grade={grade}
           numbers={numbers}
           decimals={decimals}
           moving={moving}
+          rowLink={rowLink}
+          point={point}
           strong
         />
         {areas.map((area) => (
@@ -244,19 +316,37 @@ export function LevelRows({
             grade={grade}
             numbers={numbers}
             decimals={decimals}
+            rowLink={rowLink}
+            point={point}
           />
         ))}
       </ul>
       {numbers && axis && (
-        <div className={`${styles.axisRow} ${decimals ? "" : styles.rowsBare}`}>
+        <div
+          className={`${styles.axisRow} ${bare}`}
+          data-interactive={interactive ? "" : undefined}
+        >
           <span />
           <LevelAxis scale={scale} />
           <span />
         </div>
       )}
+      {interactive && numbers && readoutArea?.estimate && (
+        // Reserved for the pointer: the same two lines whatever it says.
+        <p className={styles.readout} data-level-readout="" aria-hidden="true">
+          <span className={styles.readoutName}>{readoutArea.label}</span>{" "}
+          {plainLevel(readoutArea.estimate)}
+        </p>
+      )}
     </>
   );
 }
+
+const chevron = (
+  <svg className={styles.rowChevron} viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M6 3.5 10.5 8 6 12.5" />
+  </svg>
+);
 
 function AreaRow({
   area,
@@ -266,6 +356,8 @@ function AreaRow({
   decimals,
   strong = false,
   moving = false,
+  rowLink,
+  point,
 }: {
   area: LevelRangeArea;
   scale: RangeScale;
@@ -274,11 +366,14 @@ function AreaRow({
   decimals: boolean;
   strong?: boolean;
   moving?: boolean;
+  rowLink?: RowLink;
+  point: { enter: (id: string) => void; leave: (id: string) => void };
 }) {
+  const rowClass = `${styles.row} ${strong ? styles.rowStrong : ""}`;
   if (!area.estimate)
     return (
       <li
-        className={`${styles.row} ${strong ? styles.rowStrong : ""}`}
+        className={rowClass}
         data-strand={area.id || undefined}
         aria-label={`${area.label}: ${words.notYet}`}
       >
@@ -299,21 +394,16 @@ function AreaRow({
       </li>
     );
   const [from, to] = likelyRange(area.estimate);
-  return (
-    <li
-      className={`${styles.row} ${strong ? styles.rowStrong : ""}`}
-      data-strand={area.id || undefined}
-      aria-label={
-        numbers
-          ? words.row(
-              area.label,
-              gradeName(area.estimate.level),
-              gradeName(from),
-              gradeName(to),
-            )
-          : words.rowUnnumbered(area.label)
-      }
-    >
+  const label = numbers
+    ? words.row(
+        area.label,
+        gradeName(area.estimate.level),
+        gradeName(from),
+        gradeName(to),
+      )
+    : words.rowUnnumbered(area.label);
+  const parts = (
+    <>
       <span className={styles.rowName} aria-hidden="true">
         {area.label}
       </span>
@@ -337,6 +427,37 @@ function AreaRow({
               ? `${from.toFixed(1)}–${to.toFixed(1)}`
               : ""}
       </span>
+    </>
+  );
+  if (rowLink) {
+    const id = area.id || "overall";
+    return (
+      <li className={styles.rowItem} data-strand={area.id || undefined}>
+        {rowLink(id, {
+          className: `${rowClass} ${styles.rowLink}`,
+          "aria-label": words.open(label),
+          "data-level-row": id,
+          onPointerEnter: () => point.enter(id),
+          onPointerLeave: () => point.leave(id),
+          onFocus: () => point.enter(id),
+          onBlur: () => point.leave(id),
+          children: (
+            <>
+              {parts}
+              {chevron}
+            </>
+          ),
+        })}
+      </li>
+    );
+  }
+  return (
+    <li
+      className={rowClass}
+      data-strand={area.id || undefined}
+      aria-label={label}
+    >
+      {parts}
     </li>
   );
 }

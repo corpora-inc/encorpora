@@ -120,7 +120,7 @@ export function shellFrame(
   // Practice at a level: one step, then practice; its way back is the bar's.
   if (path === "/me/level") return { kind: "plain" };
   if (under(path, "/me/profiles")) return { kind: "plain" };
-  if (path === "/overview" || path === "/me")
+  if (path === "/overview" || path === "/me" || path === "/me/time")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
   if (path === "/profile/birth-year")

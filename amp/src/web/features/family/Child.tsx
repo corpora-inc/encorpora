@@ -34,6 +34,7 @@ import {
   RecordWork,
 } from "../school/classes/ProgressRecord";
 import { useHandOver } from "../school/classes/today/use-hand-over";
+import { areaSourceOf } from "../../nav/AreaLayer";
 import { childProgressOptions, type FamilyChild } from "./api";
 import { DevicesSheet } from "./Devices";
 import {
@@ -114,6 +115,7 @@ export function ChildScreen() {
     <FamilyFrame
       place={place}
       loading={!!child?.capabilities.readProgress && progress.isPending}
+      area={record ? areaSourceOf(record) : undefined}
     >
       {data && child && (
         <div className={styles.page} data-child-page={child.id}>
@@ -196,6 +198,7 @@ export function ChildScreen() {
                 <RecordLevels
                   record={record}
                   empty={`We’ll find ${child.name}’s level in a few minutes of practice.`}
+                  openAreas
                 />
               </section>
               <section aria-labelledby="child-weeks" className={styles.section}>
