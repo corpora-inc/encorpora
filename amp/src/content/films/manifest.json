@@ -1349,6 +1349,27 @@
       }
     ]
   },
+  "dilation-image": {
+    "id": "dilation-image--sd",
+    "version": "f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5",
+    "title": "Dilations from a center",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/audio.m4a",
+    "duration": 181.45,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/dilation-image--sd/f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5/audio.m4a",
+        "version": "f8fd1164400b7ec8b60fd184381aec0e873136d61c7c6394516225e7dbc6c6d5",
+        "duration": 181.45
+      }
+    ]
+  },
   "distance-graph-meaning": {
     "id": "story-graph-match--sg",
     "version": "a4a6cf8f8c3e252ac5bd1eb87755a604bbc361a9dad4d8bf87c43e283a35155f",
@@ -1477,6 +1498,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/array-add-rows-total--sa/ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5/audio.m4a",
         "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
         "duration": 109.33
+      }
+    ]
+  },
+  "equal-tray-total": {
+    "id": "equal-tray-total--se",
+    "version": "6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f",
+    "title": "Multiplication counts equal groups",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/audio.m4a",
+    "duration": 114.18993197278911,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/equal-tray-total--se/6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f/audio.m4a",
+        "version": "6ecffe9f071680236246937be29bb892f071158fbd1805c14d14caa752e5fc1f",
+        "duration": 114.18993197278911
       }
     ]
   },
@@ -3237,6 +3280,27 @@
       }
     ]
   },
+  "parallel-lines-angle": {
+    "id": "parallel-lines-angle--sp",
+    "version": "ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06",
+    "title": "Eight angles, two sizes",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/audio.m4a",
+    "duration": 152,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/parallel-lines-angle--sp/ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06/audio.m4a",
+        "version": "ec09ff321ea1d0dd241a4cb1a63e907a8a87b69b681c21962948001f92fffb06",
+        "duration": 152
+      }
+    ]
+  },
   "partition-from-marks": {
     "id": "array-add-rows-total--sa",
     "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
@@ -3256,6 +3320,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/array-add-rows-total--sa/ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5/audio.m4a",
         "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
         "duration": 109.33
+      }
+    ]
+  },
+  "pay-exact-coins": {
+    "id": "pay-exact-coins--sp",
+    "version": "439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020",
+    "title": "Exact payment, fewest coins",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/audio.m4a",
+    "duration": 157.03997732426305,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pay-exact-coins--sp/439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020/audio.m4a",
+        "version": "439a749e449fb36c90d5335706b28c255433af19a8850ff6a43a00f9a10ed020",
+        "duration": 157.03997732426305
       }
     ]
   },
@@ -3451,6 +3537,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/product-of-powers-exponent--sp/7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f/audio.m4a",
         "version": "7384e7fb1afdffe01338c96386cd74890316445de90f7b5fa6788efdd4fc1e0f",
         "duration": 167.12
+      }
+    ]
+  },
+  "pythagorean-converse": {
+    "id": "pythagorean-converse--sp",
+    "version": "bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0",
+    "title": "Three sides decide the angle",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/audio.m4a",
+    "duration": 156.57,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/pythagorean-converse--sp/bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0/audio.m4a",
+        "version": "bb9fcc42511f37ba2dc79658c8215b933dac5b87f057bdb64cf0e2455bca30f0",
+        "duration": 156.57
       }
     ]
   },
@@ -5353,6 +5460,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linear-initial-value-meaning--sk/7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f/audio.m4a",
         "version": "7633bef4ac090da1c9fac6dc3cde0b40bbf4a8e55933a93982c3d268a8e3f78f",
         "duration": 261.19
+      }
+    ]
+  },
+  "zero-one-groups": {
+    "id": "zero-one-groups--sz",
+    "version": "7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de",
+    "title": "Zero groups, empty groups, one group",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/audio.m4a",
+    "duration": 114.14995464852608,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/zero-one-groups--sz/7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de/audio.m4a",
+        "version": "7ec8aba1ac76b3cc3916648c45f9dc74e0898c405e3862a72144d085836994de",
+        "duration": 114.14995464852608
       }
     ]
   }

@@ -1,4 +1,5 @@
 import { requestFetch } from "../lib/request-transport";
+import { invoiceOffersOptions } from "../features/funding/invoice-offers";
 import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
@@ -980,18 +981,30 @@ const invoiceArkansas = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arkansas-efa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("ar-efa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 const invoiceArizona = createRoute({
   getParentRoute: () => root,
   path: "/invoice/arizona-esa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("az-esa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 const invoiceNewHampshire = createRoute({
   getParentRoute: () => root,
   path: "/invoice/new-hampshire-efa",
   staticData: { space: "account" },
+  loader: () =>
+    queryClient
+      .ensureQueryData(invoiceOffersOptions("nh-efa"))
+      .catch(() => undefined),
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */

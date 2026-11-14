@@ -1,0 +1,2292 @@
+{
+  "id": "parallel-lines-angle--sp",
+  "title": "Eight angles, two sizes",
+  "teaches": [],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -3.5,
+          -2.7,
+          3.5,
+          2.7
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "L": [
+            -3.2,
+            0
+          ],
+          "R": [
+            3.2,
+            0
+          ],
+          "U": [
+            1.9532140662667934,
+            2.5
+          ],
+          "D": [
+            -1.9532140662667934,
+            -2.5
+          ],
+          "n52P": [
+            1.65,
+            0.8
+          ],
+          "n128P": [
+            -0.9,
+            1.65
+          ],
+          "other52P": [
+            -1.65,
+            -0.8
+          ],
+          "other128P": [
+            0.9,
+            -1.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "horizontal",
+            "seg": [
+              "L",
+              "R"
+            ],
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "diagonal",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "small",
+            "angle": [
+              "R",
+              "O",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 105
+          },
+          {
+            "id": "large",
+            "angle": [
+              "U",
+              "O",
+              "L"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 105
+          },
+          {
+            "id": "opSmall",
+            "angle": [
+              "L",
+              "O",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 105
+          },
+          {
+            "id": "opLarge",
+            "angle": [
+              "D",
+              "O",
+              "R"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 105
+          },
+          {
+            "id": "turnSmall",
+            "group": "turnPair",
+            "angle": [
+              "R",
+              "O",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 105
+          },
+          {
+            "id": "turnLarge",
+            "group": "turnPair",
+            "angle": [
+              "U",
+              "O",
+              "L"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 105
+          },
+          {
+            "id": "n52",
+            "label": "52^\\circ",
+            "at": "n52P",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "n128",
+            "label": "128^\\circ",
+            "at": "n128P",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "other52",
+            "label": "52^\\circ",
+            "at": "other52P",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "other128",
+            "label": "128^\\circ",
+            "at": "other128P",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two crossing lines make four angles. Start with this one: fifty-two degrees.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "One crossing"
+            },
+            {
+              "do": "show",
+              "target": [
+                "small",
+                "n52"
+              ],
+              "at": "fifty-two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Its neighbor completes a straight line. Together, one hundred eighty degrees. So the neighbor is one hundred twenty-eight.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "show",
+              "target": "large",
+              "at": "neighbor"
+            },
+            {
+              "do": "write",
+              "tex": "52^\\circ+128^\\circ=180^\\circ",
+              "at": "Together"
+            },
+            {
+              "do": "show",
+              "target": "n128",
+              "at": "twenty-eight"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Turn a copy halfway around. The lines match themselves, and each angle fits the angle across from it.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Across from each other: equal"
+            },
+            {
+              "do": "show",
+              "target": "turnPair",
+              "at": "copy"
+            },
+            {
+              "do": "turn",
+              "target": "turnPair",
+              "about": "O",
+              "deg": 180,
+              "at": "halfway",
+              "dur": 2.7
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Four angles, just two sizes.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "opSmall",
+                "opLarge",
+                "other52",
+                "other128"
+              ]
+            },
+            {
+              "do": "hide",
+              "target": "turnPair"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -3.6,
+          4.6,
+          3.6
+        ],
+        "points": {
+          "T": [
+            1.4063141277120914,
+            1.8
+          ],
+          "B": [
+            -1.4063141277120914,
+            -1.8
+          ],
+          "TL": [
+            -4.3,
+            1.8
+          ],
+          "TR": [
+            4.3,
+            1.8
+          ],
+          "BL": [
+            -4.3,
+            -1.8
+          ],
+          "BR": [
+            4.3,
+            -1.8
+          ],
+          "U": [
+            2.6173068487975035,
+            3.35
+          ],
+          "D": [
+            -2.6173068487975035,
+            -3.35
+          ],
+          "markTL": [
+            -3.75,
+            1.8
+          ],
+          "markTR": [
+            -3.05,
+            1.8
+          ],
+          "markBL": [
+            -3.75,
+            -1.8
+          ],
+          "markBR": [
+            -3.05,
+            -1.8
+          ],
+          "CL": [
+            -0.09368587228790859,
+            1.8
+          ],
+          "CR": [
+            2.9063141277120916,
+            1.8
+          ],
+          "CU": [
+            2.421985442170824,
+            3.1
+          ],
+          "CD": [
+            0.3906428132533588,
+            0.5
+          ],
+          "G": [
+            1.3936858722879084,
+            -1.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "cross",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markT",
+            "seg": [
+              "markTL",
+              "markTR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markB",
+            "seg": [
+              "markBL",
+              "markBR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "Tne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tnw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tsw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bne",
+            "angle": [
+              "BR",
+              "B",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bnw",
+            "angle": [
+              "U",
+              "B",
+              "BL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bsw",
+            "angle": [
+              "BL",
+              "B",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bse",
+            "angle": [
+              "D",
+              "B",
+              "BR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "copyH",
+            "group": "copy",
+            "seg": [
+              "CL",
+              "CR"
+            ],
+            "ink": "violet",
+            "w": 6
+          },
+          {
+            "id": "copyT",
+            "group": "copy",
+            "seg": [
+              "CD",
+              "CU"
+            ],
+            "ink": "violet",
+            "w": 6
+          },
+          {
+            "id": "copyne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copynw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copysw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copyse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "gap",
+            "angle": [
+              "G",
+              "B",
+              "BR"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "r": 125
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Add a parallel line: it points the same way and never meets the first.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Parallel lines"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "bottom",
+                "markB"
+              ],
+              "at": "parallel"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "The crossing line is called a transversal. What sizes are the four new angles?",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "Transversal",
+              "meaning": "A line crossing two other lines",
+              "at": "transversal"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Copy the top crossing. Slide it down the transversal, without turning.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Slide without turning"
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "Copy"
+            },
+            {
+              "do": "slide",
+              "target": "copy",
+              "by": [
+                -2.812628255424183,
+                -3.6
+              ],
+              "at": "Slide",
+              "dur": 3.8
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Every angle fits. Sliding preserves angles, so all four sizes match.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Every angle fits"
+            },
+            {
+              "do": "show",
+              "target": [
+                "Bne",
+                "Bnw",
+                "Bsw",
+                "Bse"
+              ],
+              "at": "Every"
+            },
+            {
+              "do": "hide",
+              "target": "copy",
+              "at": "so"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "But tilt the lower line. Try the same slide.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Without parallel lines"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "Bne",
+                "Bnw",
+                "Bsw",
+                "Bse",
+                "markB"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "BL": [
+                  -4.236766020967819,
+                  -2.4016311224028417
+                ],
+                "BR": [
+                  4.17530334534291,
+                  -0.6135905813701117
+                ]
+              },
+              "at": "tilt",
+              "dur": 1.4
+            },
+            {
+              "do": "slide",
+              "target": "copy",
+              "by": [
+                2.812628255424183,
+                3.6
+              ],
+              "dur": 0.1
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "Try"
+            },
+            {
+              "do": "slide",
+              "target": "copy",
+              "by": [
+                -2.812628255424183,
+                -3.6
+              ],
+              "at": "same",
+              "dur": 2.8
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A gap. The copy cannot fit.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": "gap",
+              "at": "gap"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "The lines do not match"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Make the lines parallel again, and the gap closes.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "BL": [
+                  -4.3,
+                  -1.8
+                ],
+                "BR": [
+                  4.3,
+                  -1.8
+                ]
+              },
+              "at": "parallel",
+              "dur": 2.4
+            },
+            {
+              "do": "show",
+              "target": "markB",
+              "at": "closes"
+            },
+            {
+              "do": "hide",
+              "target": "gap",
+              "at": "closes"
+            },
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Parallel: an exact fit",
+              "at": "closes"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Check that the lines are given as parallel.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Look for the parallel marks"
+            },
+            {
+              "do": "show",
+              "target": [
+                "Bne",
+                "Bnw",
+                "Bsw",
+                "Bse"
+              ]
+            },
+            {
+              "do": "hide",
+              "target": "copy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -3.6,
+          4.6,
+          3.6
+        ],
+        "points": {
+          "T": [
+            1.4063141277120914,
+            1.8
+          ],
+          "B": [
+            -1.4063141277120914,
+            -1.8
+          ],
+          "TL": [
+            -4.3,
+            1.8
+          ],
+          "TR": [
+            4.3,
+            1.8
+          ],
+          "BL": [
+            -4.3,
+            -1.8
+          ],
+          "BR": [
+            4.3,
+            -1.8
+          ],
+          "U": [
+            2.6173068487975035,
+            3.35
+          ],
+          "D": [
+            -2.6173068487975035,
+            -3.35
+          ],
+          "markTL": [
+            -3.75,
+            1.8
+          ],
+          "markTR": [
+            -3.05,
+            1.8
+          ],
+          "markBL": [
+            -3.75,
+            -1.8
+          ],
+          "markBR": [
+            -3.05,
+            -1.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "cross",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markT",
+            "seg": [
+              "markTL",
+              "markTR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markB",
+            "seg": [
+              "markBL",
+              "markBR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "Tne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tnw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tsw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bne",
+            "angle": [
+              "BR",
+              "B",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bnw",
+            "angle": [
+              "U",
+              "B",
+              "BL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bsw",
+            "angle": [
+              "BL",
+              "B",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bse",
+            "angle": [
+              "D",
+              "B",
+              "BR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "warmTravel",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Corresponding angles occupy the same position at each crossing. Same color, equal angles.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "Corresponding",
+              "meaning": "Same position at each crossing"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "Tnw",
+                "Tsw",
+                "Tse",
+                "Bnw",
+                "Bsw",
+                "Bse"
+              ]
+            },
+            {
+              "do": "write",
+              "tex": "\\text{equal}",
+              "at": "equal"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Alternate interior angles are between the lines, on opposite sides of the transversal. Again, equal.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "Tne"
+            },
+            {
+              "do": "show",
+              "target": "Tsw"
+            },
+            {
+              "do": "term",
+              "word": "Alternate interior",
+              "meaning": "Between the lines; opposite sides"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{equal}",
+              "at": "equal"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Same-side interior angles are between the lines, on the same side. One of each color.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": "Tsw"
+            },
+            {
+              "do": "show",
+              "target": "Tse"
+            },
+            {
+              "do": "term",
+              "word": "Same-side interior",
+              "meaning": "Between the lines; same side"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Slide the orange angle down. Together they fill a straight line: one hundred eighty degrees.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": "warmTravel",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "warmTravel",
+              "by": [
+                -2.812628255424183,
+                -3.6
+              ],
+              "at": "Slide",
+              "dur": 2.5
+            },
+            {
+              "do": "write",
+              "tex": "\\text{sum}=180^\\circ",
+              "at": "hundred"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Outside the lines, opposite sides gives alternate exterior angles. Those are equal too.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "Tse",
+                "Bne",
+                "warmTravel"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "Tne",
+                "Bsw"
+              ]
+            },
+            {
+              "do": "term",
+              "word": "Alternate exterior",
+              "meaning": "Outside the lines; opposite sides"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{equal}",
+              "at": "equal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -3.6,
+          4.6,
+          3.6
+        ],
+        "points": {
+          "T": [
+            1.4063141277120914,
+            1.8
+          ],
+          "B": [
+            -1.4063141277120914,
+            -1.8
+          ],
+          "TL": [
+            -4.3,
+            1.8
+          ],
+          "TR": [
+            4.3,
+            1.8
+          ],
+          "BL": [
+            -4.3,
+            -1.8
+          ],
+          "BR": [
+            4.3,
+            -1.8
+          ],
+          "U": [
+            2.6173068487975035,
+            3.35
+          ],
+          "D": [
+            -2.6173068487975035,
+            -3.35
+          ],
+          "markTL": [
+            -3.75,
+            1.8
+          ],
+          "markTR": [
+            -3.05,
+            1.8
+          ],
+          "markBL": [
+            -3.75,
+            -1.8
+          ],
+          "markBR": [
+            -3.05,
+            -1.8
+          ],
+          "givenP": [
+            2.4563141277120915,
+            0.48
+          ],
+          "unknownP": [
+            0.043685872287908656,
+            -1.08
+          ],
+          "solvedP": [
+            0.043685872287908656,
+            -1.08
+          ],
+          "pNameP": [
+            4.1,
+            2.15
+          ],
+          "qNameP": [
+            4.1,
+            -1.45
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "cross",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markT",
+            "seg": [
+              "markTL",
+              "markTR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markB",
+            "seg": [
+              "markBL",
+              "markBR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "Tne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Tnw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Tsw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Tse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bne",
+            "angle": [
+              "BR",
+              "B",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bnw",
+            "angle": [
+              "U",
+              "B",
+              "BL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bsw",
+            "angle": [
+              "BL",
+              "B",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bse",
+            "angle": [
+              "D",
+              "B",
+              "BR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "given",
+            "label": "128^\\circ",
+            "at": "givenP",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "unknown",
+            "label": "x^\\circ",
+            "at": "unknownP",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "solved",
+            "label": "52^\\circ",
+            "at": "solvedP",
+            "dir": "c",
+            "ink": "blue",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "pName",
+            "label": "p",
+            "at": "pNameP",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "qName",
+            "label": "q",
+            "at": "qNameP",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m",
+            "halo": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The lines are parallel. One angle is one hundred twenty-eight degrees. Find *x*.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Find $x$."
+            },
+            {
+              "do": "show",
+              "target": "given",
+              "at": "hundred"
+            },
+            {
+              "do": "show",
+              "target": "unknown",
+              "at": "Find"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Between the lines, same side: one of each color. Their measures add to one hundred eighty.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "Same-side interior"
+            },
+            {
+              "do": "write",
+              "tex": "x+128=180",
+              "at": "add"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Subtract one hundred twenty-eight. The answer is fifty-two.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "x=180-128",
+              "at": "Subtract"
+            },
+            {
+              "do": "answer",
+              "tex": "x=52",
+              "at": "fifty-two"
+            },
+            {
+              "do": "hide",
+              "target": "unknown",
+              "at": "fifty-two"
+            },
+            {
+              "do": "show",
+              "target": "solved",
+              "at": "fifty-two"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -3.6,
+          4.6,
+          3.6
+        ],
+        "points": {
+          "T": [
+            0.15747959434666314,
+            1.8
+          ],
+          "B": [
+            -0.15747959434666314,
+            -1.8
+          ],
+          "TL": [
+            -4.3,
+            1.8
+          ],
+          "TR": [
+            4.3,
+            1.8
+          ],
+          "BL": [
+            -4.3,
+            -1.8
+          ],
+          "BR": [
+            4.3,
+            -1.8
+          ],
+          "U": [
+            0.2930870228118453,
+            3.35
+          ],
+          "D": [
+            -0.2930870228118453,
+            -3.35
+          ],
+          "markTL": [
+            -3.75,
+            1.8
+          ],
+          "markTR": [
+            -3.05,
+            1.8
+          ],
+          "markBL": [
+            -3.75,
+            -1.8
+          ],
+          "markBR": [
+            -3.05,
+            -1.8
+          ],
+          "firstP": [
+            -1.75,
+            2.75
+          ],
+          "secondP": [
+            -1.75,
+            -0.85
+          ],
+          "first95P": [
+            -0.85,
+            2.65
+          ],
+          "second95P": [
+            -1.15,
+            -0.95
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "cross",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markT",
+            "seg": [
+              "markTL",
+              "markTR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markB",
+            "seg": [
+              "markBL",
+              "markBR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "Tne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Tnw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tsw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Tse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bne",
+            "angle": [
+              "BR",
+              "B",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bnw",
+            "angle": [
+              "U",
+              "B",
+              "BL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bsw",
+            "angle": [
+              "BL",
+              "B",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "Bse",
+            "angle": [
+              "D",
+              "B",
+              "BR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false
+          },
+          {
+            "id": "first",
+            "label": "(3x+38)^\\circ",
+            "at": "firstP",
+            "dir": "c",
+            "ink": "warm",
+            "size": "m",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "second",
+            "label": "(2x+57)^\\circ",
+            "at": "secondP",
+            "dir": "c",
+            "ink": "warm",
+            "size": "m",
+            "halo": true,
+            "start": true
+          },
+          {
+            "id": "first95",
+            "label": "95^\\circ",
+            "at": "first95P",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true,
+            "start": false
+          },
+          {
+            "id": "second95",
+            "label": "95^\\circ",
+            "at": "second95P",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true,
+            "start": false
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Matching positions: equal angles, even when the measures are expressions.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Corresponding angles"
+            },
+            {
+              "do": "write",
+              "tex": "3x+38=2x+57",
+              "at": "Equal"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Subtract two *x* from both sides. Then subtract thirty-eight.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "x+38=57",
+              "at": "Subtract"
+            },
+            {
+              "do": "write",
+              "tex": "x=57-38",
+              "at": "Then"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "So *x* equals nineteen.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "x=57-38"
+            },
+            {
+              "do": "answer",
+              "tex": "x=19",
+              "at": "nineteen"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Substitute nineteen into both expressions. Each angle is ninety-five degrees.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "3(19)+38=95",
+              "at": "Substitute"
+            },
+            {
+              "do": "write",
+              "tex": "2(19)+57=95",
+              "at": "both"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "first",
+                "second"
+              ],
+              "at": "ninety-five"
+            },
+            {
+              "do": "show",
+              "target": [
+                "first95",
+                "second95"
+              ],
+              "at": "ninety-five"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -3.6,
+          4.6,
+          3.6
+        ],
+        "points": {
+          "T": [
+            1.4063141277120914,
+            1.8
+          ],
+          "B": [
+            -1.4063141277120914,
+            -1.8
+          ],
+          "TL": [
+            -4.3,
+            1.8
+          ],
+          "TR": [
+            4.3,
+            1.8
+          ],
+          "BL": [
+            -4.3,
+            -1.8
+          ],
+          "BR": [
+            4.3,
+            -1.8
+          ],
+          "U": [
+            2.6173068487975035,
+            3.35
+          ],
+          "D": [
+            -2.6173068487975035,
+            -3.35
+          ],
+          "markTL": [
+            -3.75,
+            1.8
+          ],
+          "markTR": [
+            -3.05,
+            1.8
+          ],
+          "markBL": [
+            -3.75,
+            -1.8
+          ],
+          "markBR": [
+            -3.05,
+            -1.8
+          ],
+          "CL": [
+            -0.09368587228790859,
+            1.8
+          ],
+          "CR": [
+            2.9063141277120916,
+            1.8
+          ],
+          "CU": [
+            2.421985442170824,
+            3.1
+          ],
+          "CD": [
+            0.3906428132533588,
+            0.5
+          ]
+        },
+        "parts": [
+          {
+            "id": "top",
+            "seg": [
+              "TL",
+              "TR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "BL",
+              "BR"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "cross",
+            "seg": [
+              "D",
+              "U"
+            ],
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markT",
+            "seg": [
+              "markTL",
+              "markTR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "markB",
+            "seg": [
+              "markBL",
+              "markBR"
+            ],
+            "arrows": 1,
+            "w": 4,
+            "start": true
+          },
+          {
+            "id": "Tne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tnw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tsw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Tse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bne",
+            "angle": [
+              "BR",
+              "B",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bnw",
+            "angle": [
+              "U",
+              "B",
+              "BL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bsw",
+            "angle": [
+              "BL",
+              "B",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "Bse",
+            "angle": [
+              "D",
+              "B",
+              "BR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": true
+          },
+          {
+            "id": "copyH",
+            "group": "copy",
+            "seg": [
+              "CL",
+              "CR"
+            ],
+            "ink": "violet",
+            "w": 6
+          },
+          {
+            "id": "copyT",
+            "group": "copy",
+            "seg": [
+              "CD",
+              "CU"
+            ],
+            "ink": "violet",
+            "w": 6
+          },
+          {
+            "id": "copyne",
+            "angle": [
+              "TR",
+              "T",
+              "U"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copynw",
+            "angle": [
+              "U",
+              "T",
+              "TL"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copysw",
+            "angle": [
+              "TL",
+              "T",
+              "D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          },
+          {
+            "id": "copyse",
+            "angle": [
+              "D",
+              "T",
+              "TR"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "r": 96,
+            "start": false,
+            "group": "copy"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "If the transversal meets at a right angle, all eight are ninety degrees.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "A square crossing: all $90^\\circ$"
+            },
+            {
+              "do": "move",
+              "points": {
+                "T": [
+                  0,
+                  1.8
+                ],
+                "B": [
+                  0,
+                  -1.8
+                ],
+                "U": [
+                  0,
+                  3.35
+                ],
+                "D": [
+                  0,
+                  -3.35
+                ]
+              },
+              "at": "right",
+              "dur": 1.5
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Otherwise, the slide gives two sizes. Same size: equal. One of each: one hundred eighty degrees.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "move",
+              "points": {
+                "T": [
+                  1.4063141277120914,
+                  1.8
+                ],
+                "B": [
+                  -1.4063141277120914,
+                  -1.8
+                ],
+                "U": [
+                  2.6173068487975035,
+                  3.35
+                ],
+                "D": [
+                  -2.6173068487975035,
+                  -3.35
+                ]
+              },
+              "dur": 0.8
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "slide"
+            },
+            {
+              "do": "slide",
+              "target": "copy",
+              "by": [
+                -2.812628255424183,
+                -3.6
+              ],
+              "at": "slide",
+              "dur": 3
+            },
+            {
+              "do": "text",
+              "text": "Same size: equal",
+              "at": "Same"
+            },
+            {
+              "do": "text",
+              "text": "One of each: $180^\\circ$",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Eight angles, two sizes.",
+          "pause": 1.3,
+          "do": [
+            {
+              "do": "hide",
+              "target": "copy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

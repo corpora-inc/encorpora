@@ -107,10 +107,7 @@ export function Calculator(props: Props) {
       caret.commit(clearField(), setExpression);
     } else if (key === "⌫") caret.commit(deleteBackward(field), setExpression);
     else if (key === "=") equals();
-    else if (key === "Use") {
-      const value = result ?? preview;
-      if (value) props.use(value);
-    } else if (key === "±") {
+    else if (key === "Use") useResult(); else if (key === "±") {
       caret.commit(negateExpression(continuing() ?? field), setExpression);
       setResult(null);
     } else {
@@ -119,6 +116,15 @@ export function Calculator(props: Props) {
       caret.commit(insertText(from ?? field, text), setExpression);
       setResult(null);
     }
+  }
+  function useResult() {
+    if (expression) {
+      try {
+        props.use(formatResult(evaluate(expression)));
+      } catch {
+        setError(true);
+      }
+    } else if (result !== null) props.use(result);
   }
   function equals() {
     try {
@@ -155,9 +161,11 @@ export function Calculator(props: Props) {
             setError(false);
           }}
           onKeyDown={(event) => {
+            // Enter uses the result as the answer: what the calculator
+            // was opened for. = still evaluates without using.
             if (event.key === "Enter") {
               event.preventDefault();
-              equals();
+              useResult();
             }
           }}
         />
