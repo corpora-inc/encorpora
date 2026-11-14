@@ -1,0 +1,2570 @@
+{
+ "id": "root-between-integers--sr",
+ "title": "A square root: from area to side",
+ "teaches": [],
+ "cast": {
+  "teacher": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -0.15,
+     -0.25,
+     2.45,
+     2.5
+    ],
+    "points": {
+     "O": [
+      0,
+      0
+     ],
+     "R": [
+      2,
+      0
+     ],
+     "U": [
+      2,
+      2
+     ],
+     "L": [
+      0,
+      2
+     ],
+     "G1": [
+      1,
+      0
+     ],
+     "G2": [
+      1,
+      2
+     ],
+     "G3": [
+      0,
+      1
+     ],
+     "G4": [
+      2,
+      1
+     ],
+     "C": [
+      1,
+      1
+     ],
+     "A2": [
+      1,
+      1.5
+     ],
+     "A1": [
+      0.7928932188134524,
+      0.7928932188134524
+     ],
+     "TR": [
+      1,
+      0
+     ],
+     "TU": [
+      1,
+      1
+     ],
+     "TL": [
+      0,
+      1
+     ],
+     "TM": {
+      "mid": [
+       "O",
+       "TR"
+      ]
+     },
+     "SM": {
+      "mid": [
+       "O",
+       "L"
+      ]
+     },
+     "Unit": [
+      0.5,
+      0
+     ],
+     "cell0_0": [
+      0,
+      0
+     ],
+     "cell0_1": [
+      1,
+      0
+     ],
+     "cell0_2": [
+      1,
+      1
+     ],
+     "cell0_3": [
+      0,
+      1
+     ],
+     "cell1_0": [
+      1,
+      0
+     ],
+     "cell1_1": [
+      2,
+      0
+     ],
+     "cell1_2": [
+      2,
+      1
+     ],
+     "cell1_3": [
+      1,
+      1
+     ],
+     "cell2_0": [
+      0,
+      1
+     ],
+     "cell2_1": [
+      1,
+      1
+     ],
+     "cell2_2": [
+      1,
+      2
+     ],
+     "cell2_3": [
+      0,
+      2
+     ],
+     "cell3_0": [
+      1,
+      1
+     ],
+     "cell3_1": [
+      2,
+      1
+     ],
+     "cell3_2": [
+      2,
+      2
+     ],
+     "cell3_3": [
+      1,
+      2
+     ],
+     "RootMid": {
+      "mid": [
+       "O",
+       "L"
+      ]
+     },
+     "CropO": [
+      0.05,
+      0.05
+     ],
+     "CropGT": [
+      0.05,
+      1.2
+     ],
+     "CropGR": [
+      1.2,
+      0.05
+     ],
+     "CropBT": [
+      0.05,
+      1.0635498012182858
+     ],
+     "CropBR": [
+      1.0635498012182858,
+      0.05
+     ],
+     "CornerGold": [
+      1.2,
+      1.2
+     ],
+     "CornerBlue": [
+      1.0635498012182858,
+      1.0635498012182858
+     ],
+     "InnerCorner": [
+      1.0635498012182858,
+      1.0635498012182858
+     ],
+     "InnerTop": [
+      0.05,
+      1.0635498012182858
+     ],
+     "InnerRight": [
+      1.0635498012182858,
+      0.05
+     ],
+     "OuterCorner": [
+      2.0235498012182864,
+      2.0235498012182864
+     ],
+     "OuterTop": [
+      0.05,
+      2.0235498012182864
+     ],
+     "OuterRight": [
+      2.0235498012182864,
+      0.05
+     ],
+     "Read0": [
+      0.18,
+      2.25
+     ],
+     "Read1": [
+      0.18,
+      2.25
+     ],
+     "Read2": [
+      0.18,
+      2.25
+     ],
+     "Read3": [
+      0.18,
+      2.25
+     ],
+     "dive1I": [
+      1.1595498012182859,
+      1.1595498012182859
+     ],
+     "dive1IT": [
+      0.05,
+      1.1595498012182859
+     ],
+     "dive1IR": [
+      1.1595498012182859,
+      0.05
+     ],
+     "dive1O": [
+      1.255549801218286,
+      1.255549801218286
+     ],
+     "dive1OT": [
+      0.05,
+      1.255549801218286
+     ],
+     "dive1OR": [
+      1.255549801218286,
+      0.05
+     ],
+     "trail1I": [
+      1.0635498012182858,
+      1.0635498012182858
+     ],
+     "trail1IT": [
+      0.05,
+      1.0635498012182858
+     ],
+     "trail1IR": [
+      1.0635498012182858,
+      0.05
+     ],
+     "trail1O": [
+      2.0235498012182864,
+      2.0235498012182864
+     ],
+     "trail1OT": [
+      0.05,
+      2.0235498012182864
+     ],
+     "trail1OR": [
+      2.0235498012182864,
+      0.05
+     ],
+     "dive2I": [
+      1.1794980121828587,
+      1.1794980121828587
+     ],
+     "dive2IT": [
+      0.05,
+      1.1794980121828587
+     ],
+     "dive2IR": [
+      1.1794980121828587,
+      0.05
+     ],
+     "dive2O": [
+      1.2754980121828694,
+      1.2754980121828694
+     ],
+     "dive2OT": [
+      0.05,
+      1.2754980121828694
+     ],
+     "dive2OR": [
+      1.2754980121828694,
+      0.05
+     ],
+     "trail2I": [
+      0.7954980121828583,
+      0.7954980121828583
+     ],
+     "trail2IT": [
+      0.05,
+      0.7954980121828583
+     ],
+     "trail2IR": [
+      0.7954980121828583,
+      0.05
+     ],
+     "trail2O": [
+      1.7554980121828592,
+      1.7554980121828592
+     ],
+     "trail2OT": [
+      0.05,
+      1.7554980121828592
+     ],
+     "trail2OR": [
+      1.7554980121828592,
+      0.05
+     ],
+     "dive3I": [
+      1.1869801218285658,
+      1.1869801218285658
+     ],
+     "dive3IT": [
+      0.05,
+      1.1869801218285658
+     ],
+     "dive3IR": [
+      1.1869801218285658,
+      0.05
+     ],
+     "dive3O": [
+      1.2829801218285553,
+      1.2829801218285553
+     ],
+     "dive3OT": [
+      0.05,
+      1.2829801218285553
+     ],
+     "dive3OR": [
+      1.2829801218285553,
+      0.05
+     ],
+     "trail3I": [
+      0.994980121828587,
+      0.994980121828587
+     ],
+     "trail3IT": [
+      0.05,
+      0.994980121828587
+     ],
+     "trail3IR": [
+      0.994980121828587,
+      0.05
+     ],
+     "trail3O": [
+      1.9549801218286944,
+      1.9549801218286944
+     ],
+     "trail3OT": [
+      0.05,
+      1.9549801218286944
+     ],
+     "trail3OR": [
+      1.9549801218286944,
+      0.05
+     ],
+     "Bound1HighLabel": [
+      0.65,
+      1.5554980121828592
+     ],
+     "Bound2HighLabel": [
+      0.65,
+      1.7549801218286945
+     ],
+     "Bound3HighLabel": [
+      0.65,
+      1.8298012182855532
+     ]
+    },
+    "parts": [
+     {
+      "id": "target",
+      "poly": [
+       "O",
+       "R",
+       "U",
+       "L"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "gridV",
+      "group": "grid",
+      "seg": [
+       "G1",
+       "G2"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "gridH",
+      "group": "grid",
+      "seg": [
+       "G3",
+       "G4"
+      ],
+      "ink": "gold",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "edge",
+      "seg": [
+       "O",
+       "L"
+      ],
+      "ink": "gold",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "sideTwo",
+      "label": "2",
+      "at": "SM",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "unit",
+      "label": "1",
+      "at": "Unit",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "areaFour",
+      "label": "\\text{Area }4",
+      "at": "C",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "halo": true
+     },
+     {
+      "id": "areaTwo",
+      "label": "\\text{Area }2",
+      "at": "A2",
+      "dir": "c",
+      "size": "l",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "rootSide",
+      "label": "\\sqrt{2}",
+      "at": "RootMid",
+      "dir": "w",
+      "size": "l",
+      "ink": "gold",
+      "halo": true,
+      "far": 0.35
+     },
+     {
+      "id": "trial",
+      "poly": [
+       "O",
+       "TR",
+       "TU",
+       "TL"
+      ],
+      "fill": "none",
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trialEdge",
+      "seg": [
+       "O",
+       "TR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trialOne",
+      "label": "\\text{Trial side}\\;1",
+      "at": "TM",
+      "dir": "s",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.35
+     },
+     {
+      "id": "trialTwo",
+      "label": "\\text{Trial side}\\;2",
+      "at": "TM",
+      "dir": "s",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.35
+     },
+     {
+      "id": "trialFour",
+      "label": "\\text{Trial side}\\;1.4",
+      "at": "TM",
+      "dir": "s",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.35
+     },
+     {
+      "id": "trialFive",
+      "label": "\\text{Trial side}\\;1.5",
+      "at": "TM",
+      "dir": "s",
+      "size": "l",
+      "ink": "blue",
+      "far": 0.35
+     },
+     {
+      "id": "areaOne",
+      "label": "\\text{Area }1",
+      "at": "A1",
+      "dir": "c",
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "litEdge",
+      "seg": [
+       "O",
+       "L"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "cell0",
+      "group": "cellGlow",
+      "poly": [
+       "cell0_0",
+       "cell0_1",
+       "cell0_2",
+       "cell0_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "cell1",
+      "group": "cellGlow",
+      "poly": [
+       "cell1_0",
+       "cell1_1",
+       "cell1_2",
+       "cell1_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "cell2",
+      "group": "cellGlow",
+      "poly": [
+       "cell2_0",
+       "cell2_1",
+       "cell2_2",
+       "cell2_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "cell3",
+      "group": "cellGlow",
+      "poly": [
+       "cell3_0",
+       "cell3_1",
+       "cell3_2",
+       "cell3_3"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 3
+     },
+     {
+      "id": "rootEdge",
+      "seg": [
+       "O",
+       "L"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "cornerFill",
+      "group": "corner",
+      "poly": [
+       "CropO",
+       "CropGR",
+       "CornerGold",
+       "CropGT"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "w": 0
+     },
+     {
+      "id": "intervalBand",
+      "poly": [
+       "InnerTop",
+       "OuterTop",
+       "OuterCorner",
+       "OuterRight",
+       "InnerRight",
+       "InnerCorner"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 0
+     },
+     {
+      "id": "cornerGoldTop",
+      "group": "corner",
+      "seg": [
+       "CropGT",
+       "CornerGold"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "cornerGoldRight",
+      "group": "corner",
+      "seg": [
+       "CornerGold",
+       "CropGR"
+      ],
+      "ink": "gold",
+      "w": 4
+     },
+     {
+      "id": "cornerBlueTop",
+      "group": "corner",
+      "seg": [
+       "CropBT",
+       "CornerBlue"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "cornerBlueRight",
+      "group": "corner",
+      "seg": [
+       "CornerBlue",
+       "CropBR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "cornerRoot",
+      "label": "\\sqrt{2}",
+      "at": "CornerGold",
+      "dir": "ne",
+      "far": 0.65,
+      "size": "l",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "cornerFour",
+      "label": "1.4",
+      "at": "CornerBlue",
+      "dir": "sw",
+      "far": 0.65,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "cornerFive",
+      "label": "1.5",
+      "at": "CornerBlue",
+      "dir": "nw",
+      "far": 0.65,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "blueCornerDot",
+      "dot": "CornerBlue",
+      "r": 6,
+      "ink": "blue"
+     },
+     {
+      "id": "goldCornerDot",
+      "dot": "CornerGold",
+      "r": 6,
+      "ink": "gold"
+     },
+     {
+      "id": "retainedTop",
+      "group": "retained",
+      "seg": [
+       "InnerTop",
+       "InnerCorner"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "retainedRight",
+      "group": "retained",
+      "seg": [
+       "InnerCorner",
+       "InnerRight"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "retainedLabel",
+      "group": "retained",
+      "label": "1.4",
+      "at": "InnerCorner",
+      "dir": "sw",
+      "far": 0.65,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "innerBoundDot",
+      "dot": "InnerCorner",
+      "ink": "blue",
+      "r": 7
+     },
+     {
+      "id": "outerBoundDot",
+      "dot": "OuterCorner",
+      "ink": "blue",
+      "r": 7
+     },
+     {
+      "id": "read0",
+      "label": "\\approx 1.4",
+      "at": "Read0",
+      "dir": "e",
+      "far": 0,
+      "size": "xl",
+      "ink": "blue",
+      "flies": true
+     },
+     {
+      "id": "read1",
+      "label": "\\approx 1.41",
+      "at": "Read1",
+      "dir": "e",
+      "far": 0,
+      "size": "xl",
+      "ink": "blue",
+      "flies": true
+     },
+     {
+      "id": "read2",
+      "label": "\\approx 1.414",
+      "at": "Read2",
+      "dir": "e",
+      "far": 0,
+      "size": "xl",
+      "ink": "blue",
+      "flies": true
+     },
+     {
+      "id": "read3",
+      "label": "\\approx 1.4142",
+      "at": "Read3",
+      "dir": "e",
+      "far": 0,
+      "size": "xl",
+      "ink": "blue",
+      "flies": true
+     },
+     {
+      "id": "dive1ITop",
+      "group": "dive1",
+      "seg": [
+       "dive1IT",
+       "dive1I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive1IRight",
+      "group": "dive1",
+      "seg": [
+       "dive1I",
+       "dive1IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive1OTop",
+      "group": "dive1",
+      "seg": [
+       "dive1OT",
+       "dive1O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "dive1ORight",
+      "group": "dive1",
+      "seg": [
+       "dive1O",
+       "dive1OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail1ITop",
+      "group": "trail1",
+      "seg": [
+       "trail1IT",
+       "trail1I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail1IRight",
+      "group": "trail1",
+      "seg": [
+       "trail1I",
+       "trail1IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail1OTop",
+      "group": "trail1",
+      "seg": [
+       "trail1OT",
+       "trail1O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail1ORight",
+      "group": "trail1",
+      "seg": [
+       "trail1O",
+       "trail1OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "bound1Low",
+      "group": "bounds1",
+      "label": "1.41",
+      "at": "dive1I",
+      "dir": "sw",
+      "far": 1.5,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "bound1High",
+      "group": "bounds1",
+      "label": "1.42",
+      "at": "Bound1HighLabel",
+      "dir": "c",
+      "far": 0,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "dive2ITop",
+      "group": "dive2",
+      "seg": [
+       "dive2IT",
+       "dive2I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive2IRight",
+      "group": "dive2",
+      "seg": [
+       "dive2I",
+       "dive2IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive2OTop",
+      "group": "dive2",
+      "seg": [
+       "dive2OT",
+       "dive2O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "dive2ORight",
+      "group": "dive2",
+      "seg": [
+       "dive2O",
+       "dive2OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail2ITop",
+      "group": "trail2",
+      "seg": [
+       "trail2IT",
+       "trail2I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail2IRight",
+      "group": "trail2",
+      "seg": [
+       "trail2I",
+       "trail2IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail2OTop",
+      "group": "trail2",
+      "seg": [
+       "trail2OT",
+       "trail2O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail2ORight",
+      "group": "trail2",
+      "seg": [
+       "trail2O",
+       "trail2OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "bound2Low",
+      "group": "bounds2",
+      "label": "1.414",
+      "at": "dive2I",
+      "dir": "sw",
+      "far": 1.5,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "bound2High",
+      "group": "bounds2",
+      "label": "1.415",
+      "at": "Bound2HighLabel",
+      "dir": "c",
+      "far": 0,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "dive3ITop",
+      "group": "dive3",
+      "seg": [
+       "dive3IT",
+       "dive3I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive3IRight",
+      "group": "dive3",
+      "seg": [
+       "dive3I",
+       "dive3IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "dive3OTop",
+      "group": "dive3",
+      "seg": [
+       "dive3OT",
+       "dive3O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "dive3ORight",
+      "group": "dive3",
+      "seg": [
+       "dive3O",
+       "dive3OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail3ITop",
+      "group": "trail3",
+      "seg": [
+       "trail3IT",
+       "trail3I"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail3IRight",
+      "group": "trail3",
+      "seg": [
+       "trail3I",
+       "trail3IR"
+      ],
+      "ink": "blue",
+      "w": 3
+     },
+     {
+      "id": "trail3OTop",
+      "group": "trail3",
+      "seg": [
+       "trail3OT",
+       "trail3O"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "trail3ORight",
+      "group": "trail3",
+      "seg": [
+       "trail3O",
+       "trail3OR"
+      ],
+      "ink": "blue",
+      "w": 5
+     },
+     {
+      "id": "bound3Low",
+      "group": "bounds3",
+      "label": "1.4142",
+      "at": "dive3I",
+      "dir": "sw",
+      "far": 1.5,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "bound3High",
+      "group": "bounds3",
+      "label": "1.4143",
+      "at": "Bound3HighLabel",
+      "dir": "c",
+      "far": 0,
+      "size": "l",
+      "ink": "blue",
+      "halo": true
+     },
+     {
+      "id": "exactSideDot",
+      "dot": "RootMid",
+      "ink": "gold",
+      "r": 7
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A square root tells us a square's side length when we know its area.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Square root: from area to side",
+       "at": "A"
+      },
+      {
+       "do": "draw",
+       "target": "litEdge",
+       "at": "side",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Area measures the space inside. Each unit square has side one.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "litEdge",
+       "at": "Area"
+      },
+      {
+       "do": "show",
+       "target": "cellGlow",
+       "at": "inside",
+       "dur": 0.6
+      },
+      {
+       "do": "show",
+       "target": "unit",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The large square has side two and area four square units.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "cellGlow",
+       "at": "The"
+      },
+      {
+       "do": "show",
+       "target": "sideTwo",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "2\\times2=4",
+       "at": "four"
+      },
+      {
+       "do": "highlight",
+       "target": "sideTwo",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two squared means two multiplied by itself: four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "grid",
+        "unit"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "show",
+       "target": "areaFour",
+       "at": "Two"
+      },
+      {
+       "do": "clear",
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "2^2=2\\times2=4",
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Reverse that: the square root of four is two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\sqrt{4}=2",
+       "at": "root"
+      },
+      {
+       "do": "highlight",
+       "target": "sideTwo",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A side length is never negative. The root sign means the positive answer, or zero.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "Nonnegative: positive or zero",
+       "at": "negative"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four is a perfect square: a whole number multiplied by itself.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "4=2\\times2",
+       "at": "Four"
+      },
+      {
+       "do": "term",
+       "word": "Perfect square",
+       "meaning": "A whole number multiplied by itself",
+       "at": "perfect"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Shrink the square to area two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "areaFour",
+        "sideTwo"
+       ],
+       "at": "Shrink",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "O": [
+         0.2928932188134524,
+         0.2928932188134524
+        ],
+        "R": [
+         1.7071067811865475,
+         0.2928932188134524
+        ],
+        "U": [
+         1.7071067811865475,
+         1.7071067811865475
+        ],
+        "L": [
+         0.2928932188134524,
+         1.7071067811865475
+        ],
+        "TR": [
+         1.2928932188134525,
+         0.2928932188134524
+        ],
+        "TU": [
+         1.2928932188134525,
+         1.2928932188134525
+        ],
+        "TL": [
+         0.2928932188134524,
+         1.2928932188134525
+        ]
+       },
+       "at": "Shrink",
+       "dur": 1.4
+      },
+      {
+       "do": "clear",
+       "at": "Shrink"
+      },
+      {
+       "do": "header",
+       "text": "Area 2; find the side",
+       "at": "Shrink"
+      },
+      {
+       "do": "show",
+       "target": "areaTwo",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "\\text{Side} = ?",
+       "at": "Shrink"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Two is not a perfect square, but a square of area two has a side length: the square root of two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "areaTwo",
+       "at": "Two"
+      },
+      {
+       "do": "clear",
+       "at": "root"
+      },
+      {
+       "do": "show",
+       "target": "rootSide",
+       "at": "root"
+      },
+      {
+       "do": "write",
+       "tex": "\\sqrt{2}\\times\\sqrt{2}=2",
+       "at": "root"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Test a blue trial square with side one.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "trial",
+        "trialEdge"
+       ],
+       "at": "blue"
+      },
+      {
+       "do": "show",
+       "target": "trialOne",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One squared is one: too little area.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "write",
+       "tex": "1^2=1<2",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": "areaOne",
+       "at": "one",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Grow the width and height together, keeping it square.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "trialOne",
+        "areaOne"
+       ],
+       "at": "Grow",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "TR": [
+         2.2928932188134525,
+         0.2928932188134524
+        ],
+        "TU": [
+         2.2928932188134525,
+         2.2928932188134525
+        ],
+        "TL": [
+         0.2928932188134524,
+         2.2928932188134525
+        ]
+       },
+       "at": "Grow",
+       "dur": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Side two gives two squared, four: too much area.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "trialTwo",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "2^2=4>2",
+       "at": "squared"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A longer side makes a larger square.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "trialTwo",
+       "at": "longer"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the square root of two is trapped between one and two: greater than one, less than two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "So"
+      },
+      {
+       "do": "write",
+       "tex": "1<\\sqrt{2}<2",
+       "at": "So"
+      },
+      {
+       "do": "draw",
+       "target": "rootEdge",
+       "at": "root",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "These whole numbers are consecutive: next to each other, with no whole number in between.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "rootEdge",
+       "at": "These",
+       "dur": 0.1
+      },
+      {
+       "do": "text",
+       "text": "Consecutive: next to each other",
+       "at": "consecutive"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A common slip is halving the area, but a side of one",
+     "do": [
+      {
+       "do": "clear",
+       "at": "halving"
+      },
+      {
+       "do": "write",
+       "tex": "\\sqrt{2}=2\\div2=1",
+       "id": "slip",
+       "at": "halving"
+      },
+      {
+       "do": "hide",
+       "target": "trialTwo",
+       "at": "A",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "TR": [
+         1.2928932188134525,
+         0.2928932188134524
+        ],
+        "TU": [
+         1.2928932188134525,
+         1.2928932188134525
+        ],
+        "TL": [
+         0.2928932188134524,
+         1.2928932188134525
+        ]
+       },
+       "dur": 1.3,
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "trialOne",
+       "at": "side"
+      },
+      {
+       "do": "highlight",
+       "target": "trialOne",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "makes an area of one,",
+     "do": [
+      {
+       "do": "show",
+       "target": "areaOne",
+       "at": "makes"
+      },
+      {
+       "do": "highlight",
+       "target": "areaOne",
+       "at": "area"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "so it cannot be the square root of two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "strike",
+       "target": "slip",
+       "at": "cannot"
+      },
+      {
+       "do": "write",
+       "tex": "1<\\sqrt{2}<2",
+       "at": "cannot"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Try one point four. Look closer at the top-right corners.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Try"
+      },
+      {
+       "do": "write",
+       "tex": "1<\\sqrt{2}<2",
+       "at": "Try"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "trialOne",
+        "areaOne"
+       ],
+       "at": "Try",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "TR": [
+         1.6928932188134524,
+         0.2928932188134524
+        ],
+        "TU": [
+         1.6928932188134524,
+         1.6928932188134524
+        ],
+        "TL": [
+         0.2928932188134524,
+         1.6928932188134524
+        ]
+       },
+       "at": "Try",
+       "dur": 1.5
+      },
+      {
+       "do": "hide",
+       "target": [
+        "target",
+        "edge",
+        "trial",
+        "trialEdge",
+        "areaTwo",
+        "rootSide"
+       ],
+       "at": "closer",
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "corner",
+       "at": "closer",
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": [
+        "cornerRoot",
+        "cornerFour"
+       ],
+       "at": "corners",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point four squared is one point nine six. The blue corner is inside: too small. So the root is greater than one point four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1.4^2=1.96<2",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1.4<\\sqrt{2}",
+       "at": "greater"
+      },
+      {
+       "do": "show",
+       "target": "blueCornerDot",
+       "at": "inside",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Grow the trial a little more.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "cornerFour",
+        "blueCornerDot",
+        "cornerRoot"
+       ],
+       "at": "Grow",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "retained",
+       "at": "Grow",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "TR": [
+         1.7928932188134525,
+         0.2928932188134524
+        ],
+        "TU": [
+         1.7928932188134525,
+         1.7928932188134525
+        ],
+        "TL": [
+         0.2928932188134524,
+         1.7928932188134525
+        ],
+        "CropBT": [
+         0.05,
+         2.0235498012182864
+        ],
+        "CropBR": [
+         2.0235498012182864,
+         0.05
+        ],
+        "CornerBlue": [
+         2.0235498012182864,
+         2.0235498012182864
+        ]
+       },
+       "at": "Grow",
+       "dur": 1.5
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point five squared is two point two five. The blue corner is outside: too large. So the root is less than one point five.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "show",
+       "target": [
+        "cornerFive",
+        "cornerRoot"
+       ],
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "1.5^2=2.25>2",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "tex": "\\sqrt{2}<1.5",
+       "at": "less"
+      },
+      {
+       "do": "show",
+       "target": "blueCornerDot",
+       "at": "outside",
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The gap, called an interval, has shrunk from one whole unit to one tenth.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "1.4<\\sqrt{2}<1.5",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "tex": "2-1=1",
+       "at": "one"
+      },
+      {
+       "do": "write",
+       "tex": "1.5-1.4=0.1",
+       "at": "tenth"
+      },
+      {
+       "do": "hide",
+       "target": "blueCornerDot",
+       "at": "The",
+       "dur": 0.2
+      },
+      {
+       "do": "show",
+       "target": "intervalBand",
+       "at": "interval",
+       "dur": 0.45
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Keep squeezing, ten times closer each time.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "at": "Keep",
+       "target": [
+        "intervalBand",
+        "cornerFour",
+        "cornerFive",
+        "retainedLabel"
+       ],
+       "dur": 0.25
+      },
+      {
+       "do": "clear",
+       "at": "Keep"
+      },
+      {
+       "do": "header",
+       "at": "Keep",
+       "text": "Side estimate",
+       "label": "Area 2"
+      },
+      {
+       "do": "write",
+       "at": "Keep",
+       "tex": "1.4<\\sqrt{2}<1.5",
+       "fresh": true
+      },
+      {
+       "do": "show",
+       "at": "squeezing",
+       "target": "read0",
+       "dur": 0.2
+      },
+      {
+       "do": "move",
+       "at": "squeezing",
+       "points": {
+        "Read0": [
+         0.18,
+         2.32
+        ]
+       },
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point four one.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "at": "One",
+       "target": [
+        "cornerBlueTop",
+        "cornerBlueRight",
+        "retainedTop",
+        "retainedRight"
+       ],
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "at": "One",
+       "target": "trail1",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "at": "One",
+       "points": {
+        "trail1I": [
+         0.12,
+         0.12
+        ],
+        "trail1IT": [
+         0.05,
+         0.12
+        ],
+        "trail1IR": [
+         0.12,
+         0.05
+        ],
+        "trail1O": [
+         2.22,
+         2.22
+        ],
+        "trail1OT": [
+         0.05,
+         2.22
+        ],
+        "trail1OR": [
+         2.22,
+         0.05
+        ]
+       },
+       "dur": 0.45
+      },
+      {
+       "do": "hide",
+       "at": "point",
+       "target": "trail1",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "point",
+       "target": "dive1",
+       "dur": 0.2
+      },
+      {
+       "do": "move",
+       "at": "point",
+       "points": {
+        "dive1I": [
+         0.7954980121828583,
+         0.7954980121828583
+        ],
+        "dive1IT": [
+         0.05,
+         0.7954980121828583
+        ],
+        "dive1IR": [
+         0.7954980121828583,
+         0.05
+        ],
+        "dive1O": [
+         1.7554980121828592,
+         1.7554980121828592
+        ],
+        "dive1OT": [
+         0.05,
+         1.7554980121828592
+        ],
+        "dive1OR": [
+         1.7554980121828592,
+         0.05
+        ]
+       },
+       "dur": 0.8
+      },
+      {
+       "do": "hide",
+       "at": "one",
+       "nth": 2,
+       "target": "read0",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "at": "one",
+       "nth": 2,
+       "target": "read1",
+       "dur": 0.15
+      },
+      {
+       "do": "move",
+       "at": "one",
+       "nth": 2,
+       "points": {
+        "Read1": [
+         0.18,
+         2.32
+        ]
+       },
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "one",
+       "nth": 2,
+       "target": "bounds1",
+       "dur": 0.2
+      },
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "header",
+       "tex": "10\\times\\ \\text{closer}",
+       "label": "Area 2; side estimate",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "at": "one",
+       "nth": 2,
+       "tex": "1.41^2<2",
+       "fresh": true,
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "at": "one",
+       "nth": 2,
+       "tex": "1.42^2>2",
+       "fresh": true,
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point four one four.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "at": "One",
+       "target": [
+        "dive1",
+        "bounds1"
+       ],
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "at": "One",
+       "target": "trail2",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "at": "One",
+       "points": {
+        "trail2I": [
+         0.12,
+         0.12
+        ],
+        "trail2IT": [
+         0.05,
+         0.12
+        ],
+        "trail2IR": [
+         0.12,
+         0.05
+        ],
+        "trail2O": [
+         2.22,
+         2.22
+        ],
+        "trail2OT": [
+         0.05,
+         2.22
+        ],
+        "trail2OR": [
+         2.22,
+         0.05
+        ]
+       },
+       "dur": 0.45
+      },
+      {
+       "do": "hide",
+       "at": "point",
+       "target": "trail2",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "point",
+       "target": "dive2",
+       "dur": 0.2
+      },
+      {
+       "do": "move",
+       "at": "point",
+       "points": {
+        "dive2I": [
+         0.994980121828587,
+         0.994980121828587
+        ],
+        "dive2IT": [
+         0.05,
+         0.994980121828587
+        ],
+        "dive2IR": [
+         0.994980121828587,
+         0.05
+        ],
+        "dive2O": [
+         1.9549801218286944,
+         1.9549801218286944
+        ],
+        "dive2OT": [
+         0.05,
+         1.9549801218286944
+        ],
+        "dive2OR": [
+         1.9549801218286944,
+         0.05
+        ]
+       },
+       "dur": 0.8
+      },
+      {
+       "do": "hide",
+       "at": "four",
+       "nth": 2,
+       "target": "read1",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "at": "four",
+       "nth": 2,
+       "target": "read2",
+       "dur": 0.15
+      },
+      {
+       "do": "move",
+       "at": "four",
+       "nth": 2,
+       "points": {
+        "Read2": [
+         0.18,
+         2.32
+        ]
+       },
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "four",
+       "nth": 2,
+       "target": "bounds2",
+       "dur": 0.2
+      },
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "header",
+       "tex": "100\\times\\ \\text{closer}",
+       "label": "Area 2; side estimate",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "at": "four",
+       "nth": 2,
+       "tex": "1.414^2<2",
+       "fresh": true,
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "at": "four",
+       "nth": 2,
+       "tex": "1.415^2>2",
+       "fresh": true,
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point four one four two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "at": "One",
+       "target": [
+        "dive2",
+        "bounds2"
+       ],
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "at": "One",
+       "target": "trail3",
+       "dur": 0.1
+      },
+      {
+       "do": "move",
+       "at": "One",
+       "points": {
+        "trail3I": [
+         0.12,
+         0.12
+        ],
+        "trail3IT": [
+         0.05,
+         0.12
+        ],
+        "trail3IR": [
+         0.12,
+         0.05
+        ],
+        "trail3O": [
+         2.22,
+         2.22
+        ],
+        "trail3OT": [
+         0.05,
+         2.22
+        ],
+        "trail3OR": [
+         2.22,
+         0.05
+        ]
+       },
+       "dur": 0.45
+      },
+      {
+       "do": "hide",
+       "at": "point",
+       "target": "trail3",
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "point",
+       "target": "dive3",
+       "dur": 0.2
+      },
+      {
+       "do": "move",
+       "at": "point",
+       "points": {
+        "dive3I": [
+         1.0698012182856587,
+         1.0698012182856587
+        ],
+        "dive3IT": [
+         0.05,
+         1.0698012182856587
+        ],
+        "dive3IR": [
+         1.0698012182856587,
+         0.05
+        ],
+        "dive3O": [
+         2.029801218285553,
+         2.029801218285553
+        ],
+        "dive3OT": [
+         0.05,
+         2.029801218285553
+        ],
+        "dive3OR": [
+         2.029801218285553,
+         0.05
+        ]
+       },
+       "dur": 0.8
+      },
+      {
+       "do": "hide",
+       "at": "two",
+       "nth": 1,
+       "target": "read2",
+       "dur": 0.12
+      },
+      {
+       "do": "show",
+       "at": "two",
+       "nth": 1,
+       "target": "read3",
+       "dur": 0.15
+      },
+      {
+       "do": "move",
+       "at": "two",
+       "nth": 1,
+       "points": {
+        "Read3": [
+         0.18,
+         2.32
+        ]
+       },
+       "dur": 0.25
+      },
+      {
+       "do": "show",
+       "at": "two",
+       "nth": 1,
+       "target": "bounds3",
+       "dur": 0.2
+      },
+      {
+       "do": "clear",
+       "at": "One"
+      },
+      {
+       "do": "header",
+       "tex": "1000\\times\\ \\text{closer}",
+       "label": "Area 2; side estimate",
+       "at": "One"
+      },
+      {
+       "do": "write",
+       "at": "two",
+       "nth": 1,
+       "tex": "1.4142^2<2",
+       "fresh": true,
+       "dur": 0.2
+      },
+      {
+       "do": "write",
+       "at": "two",
+       "nth": 1,
+       "tex": "1.4143^2>2",
+       "fresh": true,
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The digits never end and never repeat. A number like that is called irrational.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "write",
+       "at": "digits",
+       "tex": "\\sqrt{2}=1.41421356\\ldots",
+       "fresh": true
+      },
+      {
+       "do": "text",
+       "at": "irrational",
+       "text": "Irrational: no end, no repeating pattern."
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The decimal is an estimate. The square root of two is exact: the side of this square.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "The"
+      },
+      {
+       "do": "header",
+       "at": "The",
+       "text": "Exact side; decimal estimate"
+      },
+      {
+       "do": "write",
+       "at": "estimate",
+       "tex": "\\sqrt{2}\\approx1.4142",
+       "fresh": true
+      },
+      {
+       "do": "hide",
+       "at": "exact",
+       "target": [
+        "cornerFill",
+        "cornerGoldTop",
+        "cornerGoldRight",
+        "cornerRoot",
+        "dive3",
+        "bounds3",
+        "read3"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "at": "exact",
+       "target": [
+        "target",
+        "edge",
+        "areaTwo",
+        "rootSide"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "exactSideDot",
+       "at": "side",
+       "dur": 0.15
+      },
+      {
+       "do": "highlight",
+       "target": "exactSideDot",
+       "at": "side"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That exact side makes area two.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "hide",
+       "target": "exactSideDot",
+       "at": "That",
+       "dur": 0.15
+      },
+      {
+       "do": "clear",
+       "at": "That"
+      },
+      {
+       "do": "header",
+       "at": "That",
+       "text": "Square root: from area to side"
+      },
+      {
+       "do": "write",
+       "at": "That",
+       "tex": "(\\sqrt{2})^2=2",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "at": "That",
+       "tex": "1<\\sqrt{2}<2"
+      },
+      {
+       "do": "write",
+       "at": "That",
+       "tex": "1.4<\\sqrt{2}<1.5"
+      },
+      {
+       "do": "write",
+       "at": "That",
+       "tex": "1.4142<\\sqrt{2}<1.4143"
+      },
+      {
+       "do": "highlight",
+       "at": "area",
+       "target": "areaTwo"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Between one and two; more closely, between one point four and one point five.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "draw",
+       "at": "Between",
+       "target": "rootEdge",
+       "dur": 0.5
+      },
+      {
+       "do": "hide",
+       "at": "closely",
+       "target": [
+        "rootEdge",
+        "target",
+        "edge",
+        "areaTwo",
+        "rootSide"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "at": "closely",
+       "target": [
+        "corner",
+        "retained",
+        "cornerRoot",
+        "cornerFive"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "at": "four",
+       "target": "innerBoundDot",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "at": "four",
+       "target": "innerBoundDot"
+      },
+      {
+       "do": "hide",
+       "at": "five",
+       "target": "innerBoundDot",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "at": "five",
+       "target": "outerBoundDot",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "at": "five",
+       "target": "outerBoundDot"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "A square root gives the side from the area. Test squares to squeeze the root.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "hide",
+       "at": "A",
+       "target": [
+        "corner",
+        "retained",
+        "cornerRoot",
+        "cornerFive",
+        "outerBoundDot"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "at": "A",
+       "target": [
+        "target",
+        "edge",
+        "areaTwo",
+        "rootSide"
+       ],
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "exactSideDot",
+       "at": "side",
+       "dur": 0.15
+      },
+      {
+       "do": "highlight",
+       "target": "exactSideDot",
+       "at": "side"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
