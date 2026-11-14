@@ -17,6 +17,7 @@ import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { YearField } from "../../ui/YearField";
 import { TryAsStudent } from "../profiles/TryAsStudent";
+import { rememberContinuation } from "../continue/memory";
 import {
   RecordLevels,
   RecordObjectives,
@@ -117,6 +118,27 @@ export function ChildScreen() {
                 onPracticeHere={(id) => void handOver(id)}
                 primary
               />
+              {/* While free problems remain, the plan is one step away. */}
+              {!child.access.hasAccess &&
+                child.access.canPractice &&
+                child.capabilities.continuePurchase &&
+                child.paths.continue && (
+                  <Link
+                    to="/continue/$learnerId"
+                    params={{ learnerId: child.id }}
+                    className={buttonClass("secondary")}
+                    data-continue={child.id}
+                    onClick={() =>
+                      rememberContinuation({
+                        accountId: session.accountId,
+                        learnerId: child.id,
+                        returnTo: `/${familyHref(family, `kids/${child.id}`)}`,
+                      })
+                    }
+                  >
+                    Continue with AMP
+                  </Link>
+                )}
               {person && (
                 <TryAsStudent
                   session={session}

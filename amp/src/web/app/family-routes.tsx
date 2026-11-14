@@ -84,6 +84,22 @@ export function familyRoutes(root: AnyRoute) {
     beforeLoad: async (context) => {
       const { session } = await staffScreen(context);
       const { places, family } = await ownFamily(session);
+      const me = await queryClient
+        .ensureQueryData(meOptions(session))
+        .catch(() => null);
+      const own = places?.families.find((entry) => entry.familyId === family);
+      // A tutor whose class holds only other families' children: their
+      // tutoring group, never an empty family.
+      if (
+        own?.role === "holder" &&
+        own.teachingPlace &&
+        me?.signedIn &&
+        me.learners.length === 0
+      )
+        throw redirect({
+          to: familyPath(own.familyId, "group"),
+          replace: true,
+        } as never);
       if (family)
         throw redirect({
           to: familyPath(family),

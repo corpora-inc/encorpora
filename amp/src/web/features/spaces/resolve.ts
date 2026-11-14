@@ -985,7 +985,8 @@ function groupSpace(
     role: data ? "teacher" : null,
     capabilities: [],
     tabs: [],
-    bar: "tabs",
+    // One screen: the bar names it, with no row of tabs under it.
+    bar: "plain",
     active: null,
     actions: [],
     destinations:
@@ -1001,6 +1002,6 @@ function groupSpace(
             },
           ],
     place: `group:${frame.family}`,
-    label: place ? `Tutoring group · ${place.displayName}` : "Tutoring group",
+    label: "Tutoring group",
   };
 }

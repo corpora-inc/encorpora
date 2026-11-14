@@ -127,19 +127,24 @@ export function placeGroups(
         });
         continue;
       }
-      family.push({
-        id: entry.role === "holder" ? "home" : `family:${entry.familyId}`,
-        name: entry.displayName,
-        detail:
-          entry.role === "second-parent"
-            ? "Second parent"
-            : children.length === 1
-              ? children[0]!.name
-              : children.length > 1
-                ? count(children.length, words.learner, words.learners)
-                : "Getting started",
-        path: `family/${entry.familyId}`,
-      });
+      // A tutor with no children of their own: their group is their place,
+      // never an empty family.
+      const tutorOnly =
+        entry.role === "holder" && !!entry.teachingPlace && !children.length;
+      if (!tutorOnly)
+        family.push({
+          id: entry.role === "holder" ? "home" : `family:${entry.familyId}`,
+          name: entry.displayName,
+          detail:
+            entry.role === "second-parent"
+              ? "Second parent"
+              : children.length === 1
+                ? children[0]!.name
+                : children.length > 1
+                  ? count(children.length, words.learner, words.learners)
+                  : "Getting started",
+          path: `family/${entry.familyId}`,
+        });
       // Other families' children in this family's class: a tutoring group,
       // a teaching place of its own, never mixed into the family.
       if (entry.teachingPlace)
