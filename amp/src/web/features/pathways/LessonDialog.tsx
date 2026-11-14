@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { lessonFilms } from "../../../content/lesson-films";
 import type { LessonIndex } from "../../../content/lesson-index-build";
+import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { FilmLink } from "../films/FilmLink";
 import { LessonBoundary } from "./LessonRecovery";
@@ -103,7 +104,13 @@ function LessonHead({
       {(action || film) && (
         <div className={styles.actions}>
           {action}
-          {film && <FilmLink templateId={lesson} film={film} button />}
+          {film && (
+            <FilmLink
+              templateId={lesson}
+              film={film}
+              button={buttonClass("secondary", "lesson-film-button")}
+            />
+          )}
         </div>
       )}
     </div>
