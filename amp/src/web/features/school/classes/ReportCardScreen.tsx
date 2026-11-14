@@ -206,7 +206,7 @@ export function ReportCards({
           action={back}
         >
           {framed && !term
-            ? "Set the school year and its terms in Settings, and each term’s report cards show here."
+            ? "Set the school year and its terms in Settings."
             : "Open them again from the gradebook."}
         </EmptyState>
       </div>

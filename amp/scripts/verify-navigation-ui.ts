@@ -872,12 +872,12 @@ try {
   await failedMenu.getByRole("button", { name: "Open AMP menu" }).click();
   await failedMenu
     .getByRole("alert")
-    .filter({ hasText: "Your menu could not be loaded" })
+    .filter({ hasText: "The menu didn’t load" })
     .waitFor();
   await failedMenu.getByRole("button", { name: "Dismiss message" }).click();
   await failedMenu
     .getByRole("alert")
-    .filter({ hasText: "Your menu could not be loaded" })
+    .filter({ hasText: "The menu didn’t load" })
     .waitFor({ state: "detached" });
   assert.equal(
     await failedMenu.locator(".problem-stage .question").textContent(),
