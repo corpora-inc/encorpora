@@ -36,10 +36,12 @@ import { HEARTBEAT_BODY_LIMIT } from "../schools/evidence.js";
 import {
   createProfile,
   deleteProfile,
+  practiceAtLevel,
   updateProfile,
 } from "../account/practice-profiles.js";
 import {
   createProfileSchema,
+  practiceAtLevelSchema,
   updateProfileSchema,
 } from "../learning/practice-profiles.js";
 import { studentMe } from "../schools/student-me.js";
@@ -77,7 +79,7 @@ import {
 import { SchoolError } from "../schools/contracts.js";
 import { fileName, paperQuery, renderReportPdf } from "../reports/print.js";
 import {
-  adultStartNames,
+  adultStartPhrases,
   progressReportHtml,
 } from "../reports/progress-report.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
@@ -297,7 +299,7 @@ export async function registerFamilyRoutes(
         name: named ? practice.learner.name : null,
         first: practice.learner.first,
         subtitle: practice.learner.start
-          ? `Own practice, began at ${adultStartNames[practice.learner.start]}`
+          ? `Own practice, begun with ${adultStartPhrases[practice.learner.start]}`
           : "Own practice",
         facts: [],
         today,
@@ -356,6 +358,17 @@ export async function registerFamilyRoutes(
         return reply
           .code(201)
           .send(await createProfile(repository, account, input));
+      },
+    );
+    // "Practice at a level" (SPEC R5): the account's one level profile,
+    // started again at this grade and pace.
+    scope.put(
+      "/api/v1/me/practice-at-level",
+      { bodyLimit: 1024 },
+      async (request) => {
+        const account = await profileOwner(request);
+        const input = practiceAtLevelSchema.parse(request.body);
+        return practiceAtLevel(repository, account, input);
       },
     );
     scope.patch(

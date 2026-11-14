@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  adultStartNames,
+  adultStartPhrases,
   ownPracticeAllowed,
   type AdultStart,
 } from "../../../learning/starting-point";
@@ -47,7 +47,7 @@ export function OwnStartSetting({
     change.mutate(year, {
       onSuccess: ({ start: next }) => {
         setOpen(false);
-        setSaved(`Your practice now starts at ${adultStartNames[next]}.`);
+        setSaved(`Practice now begins with ${adultStartPhrases[next]}.`);
       },
       onError: (error) =>
         console.error("The start of own practice did not change", error),

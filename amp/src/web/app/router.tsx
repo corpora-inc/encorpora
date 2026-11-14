@@ -1479,6 +1479,16 @@ const newProfile = createRoute({
   },
   component: lazyRouteComponent(profileScreens, "NewProfileScreen"),
 });
+/** "Practice at a level" (SPEC R5): a grade and pace, then practice there. */
+const levelPractice = createRoute({
+  getParentRoute: () => root,
+  path: "/me/level",
+  staticData: { space: "me" },
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "LevelScreen"),
+});
 const editProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/$profileId",
@@ -1702,6 +1712,7 @@ export const router = createRouter({
     ownStart,
     profiles,
     newProfile,
+    levelPractice,
     editProfile,
     schoolsHome,
     schoolsScope,

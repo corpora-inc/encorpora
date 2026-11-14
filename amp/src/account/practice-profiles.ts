@@ -16,8 +16,12 @@ import {
   type PracticeSettings,
 } from "../learning/practice-settings.js";
 import {
+  levelChoiceSchema,
+  presetLabel,
+  presetLevels,
   profileStrands,
   roundedLevels,
+  type LevelChoice,
   type createProfileSchema,
   type PracticeProfile,
   type ProfileLevels,
@@ -108,8 +112,9 @@ export async function listProfiles(
     name: string;
     band: StartingChoice | null;
     state: unknown;
+    level: unknown;
   }>(
-    `SELECT l.id,l.name,l.starting_band AS band,s.state FROM amp_learners l
+    `SELECT l.id,l.name,l.starting_band AS band,s.state,l.level_practice AS level FROM amp_learners l
      LEFT JOIN amp_practice_settings s ON s.learner_id=l.id
      WHERE l.account_id=$1 AND l.simulation AND l.deleted_at IS NULL
      ORDER BY l.created_at DESC,l.id`,
@@ -119,12 +124,101 @@ export async function listProfiles(
     const settings = row.state
       ? practiceSettingsSchema.safeParse(row.state)
       : null;
+    const level = row.level ? levelChoiceSchema.safeParse(row.level) : null;
     return {
       id: row.id,
       label: row.name,
       levels: levelsOf(settings?.success ? settings.data : null, row.band),
+      ...(level?.success ? { level: level.data } : {}),
     };
   });
+}
+
+/**
+ * "Practice at a level" (SPEC R5): the account's one level profile, made the
+ * first time, then started again at each new grade and pace. Every strand
+ * starts again there, even one already at that level, so each choice is a
+ * fresh session at it. Its name is the choice ("4th grade · on level"),
+ * never a person's.
+ */
+export async function practiceAtLevel(
+  families: FamilyRepository,
+  accountId: string,
+  choice: LevelChoice,
+): Promise<{ learnerId: string }> {
+  return families.transaction(accountId, async (client) => {
+    const levels = presetLevels(choice.grade, choice.pace);
+    const label = presetLabel(choice.grade, choice.pace);
+    const found = await client.query<{ id: string }>(
+      `SELECT id FROM amp_learners WHERE account_id=$1 AND level_practice IS NOT NULL
+         AND deleted_at IS NULL FOR UPDATE`,
+      [accountId],
+    );
+    const existing = found.rows[0]?.id;
+    if (!existing) {
+      if (!(await familyHasLearnerRoom(client, accountId)))
+        throw new FamilyError(403, "too_many_learners");
+      const learnerId = randomUUID();
+      await client.query(
+        `INSERT INTO amp_learners(id,account_id,name,adult,simulation,starting_band,starting_policy,starting_excluded_strands,level_practice)
+         VALUES($1,$2,$3,true,true,$4,1,ARRAY[]::text[],$5)`,
+        [
+          learnerId,
+          accountId,
+          label,
+          nearestStart(levels),
+          JSON.stringify(choice),
+        ],
+      );
+      await client.query(
+        "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)",
+        [
+          learnerId,
+          JSON.stringify(startsAt(defaultPracticeSettings(), levels)),
+        ],
+      );
+      return { learnerId };
+    }
+    await client.query(
+      `UPDATE amp_learners SET name=$2,starting_band=$3,level_practice=$4 WHERE id=$1`,
+      [existing, label, nearestStart(levels), JSON.stringify(choice)],
+    );
+    const stored = (
+      await client.query<{ state: unknown }>(
+        "SELECT state FROM amp_practice_settings WHERE learner_id=$1 FOR UPDATE",
+        [existing],
+      )
+    ).rows[0];
+    const previous = stored
+      ? practiceSettingsSchema.parse(stored.state)
+      : defaultPracticeSettings();
+    await client.query(
+      `INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)
+       ON CONFLICT(learner_id) DO UPDATE SET state=EXCLUDED.state,updated_at=now()`,
+      [existing, JSON.stringify(startsAt(previous, levels))],
+    );
+    return { learnerId: existing };
+  });
+}
+
+/** Every strand starts again at `levels` from the next problem: a new
+ * revision for all of them, and no focus left from before. */
+function startsAt(
+  previous: PracticeSettings,
+  levels: ProfileLevels,
+): PracticeSettings {
+  const revision = previous.revision + 1;
+  return {
+    ...previous,
+    revision,
+    focusSkillId: null,
+    strandStarts: Object.fromEntries(
+      profileStrands.map((strand) => [
+        strand,
+        { level: levels[strand], revision },
+      ]),
+    ),
+  };
 }
 
 /** Makes a profile from a label and starting levels. Every strand starts at

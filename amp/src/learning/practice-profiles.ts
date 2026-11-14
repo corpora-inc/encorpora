@@ -123,10 +123,20 @@ export const profileLevelsSchema = z.strictObject(
 );
 
 /** A saved profile as `/me` lists it: its label and its starting levels. */
+/** "Practice at a level": the grade and pace last chosen. */
+export const levelChoiceSchema = z.strictObject({
+  grade: z.number().int().min(0).max(MAX_PROFILE_LEVEL),
+  pace: z.enum(profilePaces),
+});
+export type LevelChoice = z.infer<typeof levelChoiceSchema>;
+
 export const practiceProfileSchema = z.object({
   id: z.string(),
   label: z.string(),
   levels: profileLevelsSchema,
+  /** Present only on the account's one "Practice at a level" profile: the
+   * grade and pace it practices at now. */
+  level: levelChoiceSchema.optional(),
 });
 export type PracticeProfile = z.infer<typeof practiceProfileSchema>;
 
@@ -135,6 +145,10 @@ export const createProfileSchema = z.strictObject({
   label: profileLabelSchema,
   levels: profileLevelsSchema,
 });
+/** `PUT /api/v1/me/practice-at-level`: a grade and pace for the account's
+ * one level profile, which starts again there. */
+export const practiceAtLevelSchema = levelChoiceSchema;
+
 /** `PATCH /api/v1/me/profiles/:id`: a new label, new levels, or both. Only
  * the strands whose level changes start again. */
 export const updateProfileSchema = z
