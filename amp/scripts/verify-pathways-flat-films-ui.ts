@@ -513,7 +513,8 @@ for (const width of widths)
       };
       await longDialog.waitFor();
       const first = await parts();
-      if (!first.wait) await shot(wrapping, `debug-no-wait-${tag}`);
+      // A wait that is missing is the bug: keep its picture.
+      if (!first.wait) await shot(wrapping, `missing-wait-${tag}`);
       assert(
         first.title && first.watch && first.wait,
         `${tag}: all there at once ${JSON.stringify(first)}`,
