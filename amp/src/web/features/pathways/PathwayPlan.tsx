@@ -56,63 +56,69 @@ export function PathwayPlan({
     [here?.lo, here?.hi, here?.level, rows],
   );
   const firstHere = rows.find((row) => hereBands.has(row.index))?.index;
-  /** Brings a part of the pathway into its box (never the page). */
-  const reveal = (target: HTMLElement | null | undefined, smooth: boolean) => {
-    const el = box.current;
-    if (!el || !target) return;
+  const motion = (smooth: boolean): ScrollBehavior =>
+    smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "smooth"
+      : "auto";
+  /** The visible part of the box, under its sticky area header. */
+  const view = () => {
+    const el = box.current!;
+    const outer = el.getBoundingClientRect();
     const head = el.querySelector<HTMLElement>(`.${styles.areas}`);
-    const top =
-      target.getBoundingClientRect().top -
-      el.getBoundingClientRect().top +
-      el.scrollTop -
-      (head?.offsetHeight ?? 0);
+    const top = outer.top + (head?.offsetHeight ?? 0);
+    return { el, top, bottom: outer.bottom };
+  };
+  /** Brings a band's row to the top of the box (never the page). */
+  const revealRow = (target: HTMLElement | null | undefined) => {
+    if (!box.current || !target) return;
+    const { el, top } = view();
     el.scrollTo({
-      top: Math.max(0, top),
-      behavior:
-        smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "smooth"
-          : "auto",
+      top: Math.max(0, target.getBoundingClientRect().top - top + el.scrollTop),
+      behavior: "auto",
     });
   };
   const skillEl = (id: string) =>
     box.current?.querySelector<HTMLElement>(
       `[data-plan-skill="${CSS.escape(id)}"]`,
     );
+  /** Centres a skill in the box, unless it is already in full view: a skill
+   * chosen anywhere (its address, the search, the list, a sheet's link) is
+   * where the pathway shows, so closing its sheet finds it there. */
+  const revealSkill = (id: string, smooth: boolean) => {
+    const target = skillEl(id);
+    if (!box.current || !target) return;
+    const { el, top, bottom } = view();
+    const inner = target.getBoundingClientRect();
+    if (inner.top >= top && inner.bottom <= bottom) return;
+    el.scrollTo({
+      top: Math.max(
+        0,
+        el.scrollTop + inner.top - top - (bottom - top - inner.height) / 2,
+      ),
+      behavior: motion(smooth),
+    });
+  };
   /** Until the person scrolls or a skill is chosen, the first view may follow
    * the level as it arrives; once only. */
   const placed = useRef(false);
   useLayoutEffect(() => {
-    if (placed.current) return;
     if (selected) {
+      // Arriving at a skill's address cuts to it; choosing one later glides.
+      revealSkill(selected, placed.current);
       placed.current = true;
-      // A skill's address opens there, row above it in view.
-      reveal(skillEl(selected)?.closest<HTMLElement>(`.${styles.row}`), false);
-    } else if (firstHere !== undefined) {
+    } else if (!placed.current && firstHere !== undefined) {
       placed.current = true;
-      reveal(
+      revealRow(
         box.current?.querySelector<HTMLElement>(
           `[data-plan-band="${firstHere}"]`,
         ),
-        false,
       );
     }
   }, [selected, firstHere]);
   useEffect(() => {
     if (!frame) return;
     placed.current = true;
-    const target = skillEl(frame.id);
-    const el = box.current;
-    if (!target || !el) return;
-    const outer = el.getBoundingClientRect();
-    const inner = target.getBoundingClientRect();
-    const head = el.querySelector<HTMLElement>(`.${styles.areas}`);
-    // Already in full view: nothing moves.
-    if (
-      inner.top >= outer.top + (head?.offsetHeight ?? 0) &&
-      inner.bottom <= outer.bottom
-    )
-      return;
-    reveal(target.closest<HTMLElement>(`.${styles.row}`), true);
+    revealSkill(frame.id, true);
   }, [frame]);
   return (
     <section

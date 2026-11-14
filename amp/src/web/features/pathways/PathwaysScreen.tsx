@@ -850,7 +850,20 @@ export function MapView({
         learner={learnerId}
         skillActions={skillActions}
         lessonActions={(type) =>
-          readOnly || !lessonSkill || type !== lesson ? null : canPractice ? (
+          type !== lesson || readOnly ? null : !lessonSkill || recordLoading ? (
+            // The catalog or the learner is on its way: the action's place
+            // is held, so the film beside it never moves.
+            !catalog.data || recordLoading ? (
+              <span
+                className={buttonClass("primary")}
+                aria-hidden="true"
+                data-action-wait=""
+                style={{ visibility: "hidden" }}
+              >
+                Try this problem type
+              </span>
+            ) : null
+          ) : canPractice ? (
             <Link
               className={buttonClass("primary")}
               to="/$"

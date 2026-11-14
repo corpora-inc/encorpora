@@ -9,6 +9,7 @@ import {
 } from "../features/pathways/model";
 import { FilmCards } from "../features/films/FilmCards";
 import { skillFilms } from "../features/films/skill-films";
+import { lessonFilms } from "../../content/lesson-films";
 import {
   neighborLabel,
   skillNeighbors,
@@ -73,7 +74,11 @@ export function SkillLayer({
   // Every film the skill has, from the film catalogue: at the top, so a
   // film is never only behind one problem type's lesson.
   const films = skillFilms(types);
-  const filmed = new Set(films.map((film) => film.templateId));
+  // Every problem type whose lesson has a film, shared or its own: the
+  // cards above offer a shared film once, its rows each say so.
+  const filmed = new Set(
+    types.filter((type) => lessonFilms[type.id]).map((type) => type.id),
+  );
   return (
     <Sheet
       open={open}

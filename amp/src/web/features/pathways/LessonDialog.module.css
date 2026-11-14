@@ -12,6 +12,7 @@
 }
 .head {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
 }
 .title {
@@ -32,6 +33,14 @@
 }
 .actions > * {
   margin: 0;
+}
+/* A desktop: each action one width, whatever its words ("Try it free",
+   "Try this problem type"), so the film never slides when the first
+   settles. */
+@media (min-width: 641px) {
+  .actions > * {
+    min-width: 15rem;
+  }
 }
 .actions :global(.lesson-film-meta) {
   display: inline;
