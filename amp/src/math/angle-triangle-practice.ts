@@ -1386,8 +1386,15 @@ function instanceHint(id: string, c: Case): string {
   const list = (v: string[]) =>
     v.length > 1 ? `${v.slice(0, -1).join(", ")} and ${v.at(-1)}` : v[0]!;
   switch (id) {
-    case "parallel-lines-angle":
-      return `Name the marked pair first: corresponding, alternate interior, or same-side interior angles? Equal pairs share the ${list([...given].filter((v) => !/^[a-z]$/.test(v)))}° measure; same-side interior angles add to 180°.`;
+    case "parallel-lines-angle": {
+      const pairs =
+        "Matching positions, across from each other, or opposite sides of the crossing line (both inside or both outside the parallel lines): equal. Side by side on a line, or inside on the same side: they add to 180°.";
+      // Two expressions: name them whole. Their coefficients are not angle measures.
+      const marked = /The marked angles measure (.+) and (.+)\. What/.exec(c.prompt);
+      return marked
+        ? `Compare where the angles marked ${marked[1]} and ${marked[2]} sit. ${pairs} Write that as an equation, then solve it.`
+        : `Compare where the ${list([...given])}° angle and the angle marked $x$° sit. ${pairs}`;
+    }
     case "triangle-conditions":
       return `Test the given parts, ${list([...given])}: do two angles leave room for a third, and are the two shorter sides together longer than the longest? If a triangle exists, ask whether these parts fix its size and shape.`;
     case "triangle-side-test": {
