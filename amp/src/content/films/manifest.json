@@ -4872,6 +4872,52 @@
     ],
     "skill": "multiplicative-stories"
   },
+  "multiplication-fact-grid-select": {
+    "id": "multiply-facts--st",
+    "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+    "title": "The multiplication table, 1 to 12",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+    "duration": 280.17995464852606,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+        "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+        "duration": 280.17995464852606
+      }
+    ],
+    "skill": "multiplication-facts"
+  },
+  "multiply-facts": {
+    "id": "multiply-facts--st",
+    "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+    "title": "The multiplication table, 1 to 12",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+    "duration": 280.17995464852606,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/multiply-facts--st/49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e/audio.m4a",
+        "version": "49363559c32fe93080161fd4bff9c2a8c6f630a08631cb8978a5e5dbacccbe1e",
+        "duration": 280.17995464852606
+      }
+    ],
+    "skill": "multiplication-facts"
+  },
   "name-cut-shape-pieces": {
     "id": "solid-bottom-face-shape--ss",
     "version": "4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298",
@@ -9290,6 +9336,72 @@
       }
     ],
     "skill": "two-step-equations"
+  },
+  "two-way-association-choice": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
+  },
+  "two-way-missing": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
+  },
+  "two-way-row-percent": {
+    "id": "two-way-row-percent--st",
+    "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+    "title": "Two-way tables",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+    "duration": 177.29,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-way-row-percent--st/be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7/audio.m4a",
+        "version": "be98722f122ac2e0d94dd3f0f9819291464e1a3d61a85768f9aa3214f0aa50c7",
+        "duration": 177.29
+      }
+    ],
+    "skill": "two-way-tables"
   },
   "unequal-step-rate": {
     "id": "graphed-line-slope--sl",
