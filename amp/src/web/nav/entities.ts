@@ -41,6 +41,12 @@ export const ENTITIES = {
     /** Narrows Previous and Next to one skill; it goes with the answer. */
     keys: ["skill"],
   },
+  /** One of the reader's own answers (`/me`), replayed: `<attempt>`. */
+  "own-work": {
+    id: (id: string) => ATTEMPT.test(id),
+    noun: "answer",
+    keys: ["skill"],
+  },
   /** A skill of the curriculum. */
   skill: { id: (id: string) => SLUG.test(id), noun: "skill" },
   /** A problem type's short lesson. */
@@ -86,6 +92,11 @@ export const isEntity = (entity: Entity) =>
 export const work = (student: string, attempt: string): Entity => ({
   kind: "work",
   id: `${student}.${attempt}`,
+});
+/** One of the reader's own answers. */
+export const ownWork = (attempt: string): Entity => ({
+  kind: "own-work",
+  id: attempt,
 });
 /** The student and attempt of an answer's entity. */
 export function workParts(id: string) {

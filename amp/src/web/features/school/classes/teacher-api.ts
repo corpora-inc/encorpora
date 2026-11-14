@@ -169,6 +169,32 @@ export const workReplayOptions = (
       workReplayResponse,
     ),
   });
+/** One of the adult's own answers replayed (`/me`), under their own
+ * practice's key, so a change to it refreshes this too. */
+export const ownWorkReplayOptions = (
+  session: Session,
+  attempt: string,
+  skill?: string,
+) =>
+  queryOptions({
+    queryKey: [
+      "account",
+      session?.accountId ?? "",
+      "own-practice",
+      "work",
+      attempt,
+      skill ?? null,
+    ],
+    enabled: !!session,
+    staleTime: Infinity,
+    queryFn: read(
+      session,
+      `/me/practice/work/${encodeURIComponent(attempt)}${
+        skill ? `?skill=${encodeURIComponent(skill)}` : ""
+      }`,
+      workReplayResponse,
+    ),
+  });
 /** A student on one skill (a skill layer over their record). */
 export const studentSkillOptions = (
   session: Session,

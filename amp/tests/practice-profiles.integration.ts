@@ -379,6 +379,60 @@ test(
     );
 
     await t.test(
+      "an adult replays their own answer, and only their own",
+      async () => {
+        const adult = await user("Indigo Fixture");
+        const started = await send("POST", "/api/v1/me/practice", adult, {
+          start: "algebra-1",
+          timezone: "America/Chicago",
+        });
+        assert.equal(started.statusCode, 201, started.body);
+        const own = started.json().learnerId as string;
+        const problem = await practice(adult, own);
+        const attempt = (
+          await db.query(
+            "SELECT id FROM amp_attempts WHERE learner_id=$1 AND problem_id=$2",
+            [own, problem.id],
+          )
+        ).rows[0].id as string;
+        const replay = await send(
+          "GET",
+          `/api/v1/me/practice/work/${attempt}`,
+          adult,
+        );
+        assert.equal(replay.statusCode, 200, replay.body);
+        assert.equal(replay.json().item.id, attempt);
+        assert.equal(replay.json().student.id, own);
+        // Someone else's answer, or a profile's, is not theirs to replay.
+        const level = await send("PUT", "/api/v1/me/practice-at-level", adult, {
+          grade: 3,
+          pace: "on-level",
+        });
+        const profile = level.json().learnerId as string;
+        const asProfile = await practice(adult, profile);
+        const profileAttempt = (
+          await db.query(
+            "SELECT id FROM amp_attempts WHERE learner_id=$1 AND problem_id=$2",
+            [profile, asProfile.id],
+          )
+        ).rows[0].id as string;
+        const stranger = await user("Juno Fixture");
+        for (const [account, id] of [
+          [stranger, attempt],
+          [adult, profileAttempt],
+          [adult, "0123456789abcdef"],
+        ] as const) {
+          const refused = await send(
+            "GET",
+            `/api/v1/me/practice/work/${id}`,
+            account,
+          );
+          assert.equal(refused.statusCode, 404, refused.body);
+        }
+      },
+    );
+
+    await t.test(
       "a profile is left out of every real learner's place",
       async () => {
         const account = await me(parent);

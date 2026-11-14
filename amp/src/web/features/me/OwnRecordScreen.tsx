@@ -25,7 +25,6 @@ import {
 } from "../school/classes/ProgressRecord";
 import { LayerHost } from "../../nav/LayerHost";
 import type { AreaSource } from "../../nav/AreaLayer";
-import { skillCatalogOptions } from "../../lib/learning-view";
 import { PrintButton } from "../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import teacher from "../school/classes/Teacher.module.css";
@@ -85,8 +84,6 @@ export function OwnRecordScreen() {
     enabled: !!data,
   });
   const answered = frontier.data?.overall.answered ?? 0;
-  // Recent work opens each answer's skill, by the catalog's titles.
-  const catalog = useQuery(skillCatalogOptions);
   const trend = useQuery({
     ...levelTrendOptions(session, learnerId),
     enabled: !!data && answered > 0,
@@ -195,11 +192,6 @@ export function OwnRecordScreen() {
     path: trend.data ?? null,
     practice: data.learner.active,
   };
-  // An answer's skill, by its title in the catalog; a title two skills share
-  // opens neither.
-  const skillOf = new Map<string, string | null>();
-  for (const skill of catalog.data?.skills ?? [])
-    skillOf.set(skill.title, skillOf.has(skill.title) ? null : skill.id);
   return (
     <OwnPage>
       <div className={styles.stack} data-own-page data-wide="">
@@ -269,13 +261,8 @@ export function OwnRecordScreen() {
             <RecordWork
               record={data.record}
               reader="self"
-              // No replay of one's own answer exists yet (the replay is a
-              // staff read): a row opens its skill, with the latest answers
-              // on it.
-              workPath={(_attempt, item) => {
-                const id = skillOf.get(item.skill);
-                return id ? { kind: "skill", id } : undefined;
-              }}
+              // Each row opens that answer, replayed as it was seen.
+              workPath={(attempt) => ({ kind: "own-work", id: attempt })}
             />
           </section>
         )}
