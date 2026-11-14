@@ -168,7 +168,9 @@ export default function DrawerContents({
     value: learner.id,
     label: learner.name,
   }));
-  const learning = kind === "family" || kind === "me" || kind === "student";
+  // A learner's settings, only where there is a learner whose they are.
+  const learning =
+    (kind === "family" && !!chosen) || kind === "me" || kind === "student";
   // Their own family's account screens; anyone else's account is theirs.
   const familyAccount =
     space?.space === "family" && space.relation === "holder";
