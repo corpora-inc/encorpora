@@ -234,6 +234,20 @@ test(
           [adultId],
         );
         assert.equal(level.rowCount, 1);
+        // A day is stored when practice is planned (app.ts saveLevelDay), so
+        // the one stored so far was planned before this answer, and a level
+        // with no answer behind it is not a level (Q-201, CP-5 69ed8aeef).
+        // The next batch stores the day this answer moved.
+        const next = await batch(teacher, adultId);
+        assert.equal(next.statusCode, 200, next.body);
+        const stored = await db.query(
+          "SELECT overall_answered FROM amp_level_days WHERE learner_id=$1",
+          [adultId],
+        );
+        assert.deepEqual(
+          stored.rows.map((row) => row.overall_answered),
+          [1],
+        );
         const heartbeat = await post("/api/v1/me/practice/activity", teacher, {
           deltas: [
             { surface: "practice", problemId: problem.id, activeMs: 90_000 },
