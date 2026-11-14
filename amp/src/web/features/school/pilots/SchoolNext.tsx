@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import type { OrgResource } from "../../../../schools/contracts";
 import type { AuthSession } from "../../../auth";
 import { useLoggedError } from "../../../feedback";
+import { linkRefused } from "../../../lib/link-carry";
 import { Button, buttonClass } from "../../../ui/Button";
 import { classesOptions, orgOptions, orgsOptions, school } from "../api";
 import { forgetInvite, orgHome, rememberedInvite } from "../paths";
@@ -44,9 +45,14 @@ export function SchoolNext({
     retry: false,
     queryFn: () => school.lookupInvite(token!),
   });
+  // Only the server's refusal (400/403/404/410, as the invitation screen
+  // reads it) or its status ends an invitation; a failed request keeps it,
+  // with a way to try again.
   const stale =
     !!token &&
-    (invite.isError || (!!invite.data && invite.data.status !== "open"));
+    (linkRefused(invite.error) ||
+      (!!invite.data && invite.data.status !== "open"));
+  const unsure = !!token && invite.isError && !stale;
   useEffect(() => {
     if (!stale) return;
     forgetInvite();
@@ -54,7 +60,7 @@ export function SchoolNext({
   }, [stale]);
   const state =
     orgs.data && (!token || !invite.isPending)
-      ? schoolState(orgs.data, !stale && token ? stored : null)
+      ? schoolState(orgs.data, token && invite.data && !stale ? stored : null)
       : null;
   const teacherOrg = state?.kind === "teacher" ? state.org.id : null;
   // Which of its classes this teacher teaches: the org's own read says.
@@ -115,90 +121,108 @@ export function SchoolNext({
       Use Clever
     </Link>
   );
-  switch (state.kind) {
-    case "invited":
-      return (
-        <div className={className} data-school-next="invited">
-          <Link
-            to={"/school/invite" as never}
-            className={buttonClass("primary")}
-          >
-            {`Join ${invite.data?.orgName ?? "your school"}`}
-          </Link>
-        </div>
-      );
-    case "pending":
-      return (
-        <div className={className} data-school-next="pending">
-          <p role="status">
-            {state.org.name}’s admin is setting it up. It opens here once they
-            finish.
-          </p>
-        </div>
-      );
-    case "setup":
-      return (
-        <div className={className} data-school-next="setup">
-          {open(state.org, `Finish setting up ${state.org.name}`)}
-        </div>
-      );
-    case "admin":
-      return (
-        <div className={className} data-school-next="admin">
-          {open(state.org, `Open ${state.org.name}`)}
-          {cleverLink}
-        </div>
-      );
-    case "teacher": {
-      const mine =
-        classes.data?.find((klass) =>
-          teacherAt.data?.teaches?.includes(klass.id),
-        ) ?? null;
-      return (
-        <div className={className} data-school-next="teacher">
-          {open(
-            state.org,
-            mine ? `Open ${mine.name}` : `Open ${state.org.name}`,
-          )}
-          {/* The whole school pays from the class: the buyer's link carries
-              the class's records, so nothing is imported twice. */}
-          {mine && (
+  const next = (() => {
+    switch (state.kind) {
+      case "invited":
+        return (
+          <div className={className} data-school-next="invited">
             <Link
-              to={`/school/${state.org.id}/classes/${mine.id}/today` as never}
-              search={{ seats: 1 } as never}
-              className={buttonClass("secondary")}
+              to={"/school/invite" as never}
+              className={buttonClass("primary")}
             >
-              Send to your school’s buyer
+              {`Join ${invite.data?.orgName ?? "your school"}`}
             </Link>
-          )}
-        </div>
-      );
+          </div>
+        );
+      case "pending":
+        return (
+          <div className={className} data-school-next="pending">
+            <p role="status">
+              {state.org.name}’s admin is setting it up. It opens here once they
+              finish.
+            </p>
+          </div>
+        );
+      case "setup":
+        return (
+          <div className={className} data-school-next="setup">
+            {open(state.org, `Finish setting up ${state.org.name}`)}
+          </div>
+        );
+      case "admin":
+        return (
+          <div className={className} data-school-next="admin">
+            {open(state.org, `Open ${state.org.name}`)}
+            {cleverLink}
+          </div>
+        );
+      case "teacher": {
+        const mine =
+          classes.data?.find((klass) =>
+            teacherAt.data?.teaches?.includes(klass.id),
+          ) ?? null;
+        return (
+          <div className={className} data-school-next="teacher">
+            {open(
+              state.org,
+              mine ? `Open ${mine.name}` : `Open ${state.org.name}`,
+            )}
+            {/* The whole school pays from the class: the buyer's link carries
+                the class's records, so nothing is imported twice. */}
+            {mine && (
+              <Link
+                to={`/school/${state.org.id}/classes/${mine.id}/today` as never}
+                search={{ seats: 1 } as never}
+                className={buttonClass("secondary")}
+              >
+                Send to your school’s buyer
+              </Link>
+            )}
+          </div>
+        );
+      }
+      default:
+        return (
+          <div className={className} data-school-next="none">
+            <Link to="/school/start" className={buttonClass("primary")}>
+              Start with your class
+            </Link>
+            {state.demo ? (
+              <Link
+                to={`/school/${state.demo.id}` as never}
+                className={buttonClass("secondary")}
+              >
+                Open the demo school
+              </Link>
+            ) : (
+              <Button
+                variant="secondary"
+                aria-busy={exploring || undefined}
+                disabled={exploring}
+                onClick={onExplore}
+              >
+                Explore a demo school
+              </Button>
+            )}
+            {cleverLink}
+          </div>
+        );
     }
-    default:
-      return (
-        <div className={className} data-school-next="none">
-          <Link to="/school/start" className={buttonClass("primary")}>
-            Start with your class
-          </Link>
-          {state.demo ? (
-            <Link
-              to={`/school/${state.demo.id}` as never}
-              className={buttonClass("secondary")}
-            >
-              Open the demo school
-            </Link>
-          ) : (
-            <Button
-              variant="secondary"
-              aria-busy={exploring || undefined}
-              disabled={exploring}
-              onClick={onExplore}
-            >
-              Explore a demo school
-            </Button>
-          )}
-          {cleverLink}
-        </div>
-      );
-  }
+  })();
+  if (!unsure) return next;
+  return (
+    <>
+      {next}
+      <p className={className} data-invite-retry="" role="status">
+        Your invitation didn’t load.
+        <Button
+          variant="quiet"
+          aria-busy={invite.isFetching || undefined}
+          onClick={() => void invite.refetch()}
+        >
+          Try again
+        </Button>
+      </p>
+    </>
+  );
 }

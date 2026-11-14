@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
+import { z } from "zod";
 import { migrate } from "../scripts/migrate.js";
 import { assertTestDatabaseTarget } from "../scripts/test-database-preflight.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
@@ -20,6 +21,55 @@ import { ApiError, PostgresRepository } from "../src/server/repository.js";
  * administrator, a viewer and an aide alike. Records stay readable, and a
  * licensed school's class is never gated.
  */
+/* What the web client before this change parsed (origin/main's
+ * contracts.ts): a closed class's resources still read, so an older
+ * loaded build keeps the roster and records (CP-3 r2 H3). */
+const legacyPresence = z.object({
+  class: z.object({
+    id: z.uuid(),
+    name: z.string(),
+    joinCode: z.string(),
+    joinLockedUntil: z.string().nullable().optional(),
+  }),
+  canManage: z.boolean().optional(),
+  students: z.array(
+    z.object({ id: z.uuid(), name: z.string(), here: z.boolean() }),
+  ),
+});
+const legacyRoster = z.object({
+  class: z.object({
+    id: z.uuid(),
+    name: z.string(),
+    joinCode: z.string(),
+    joinLockedUntil: z.string().nullable(),
+  }),
+  canManage: z.boolean(),
+  canNewCode: z.boolean().optional(),
+  canShare: z.boolean().optional(),
+  students: z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      cardIssuedAt: z.string().nullable(),
+      picturesSet: z.boolean(),
+      locked: z.boolean(),
+      activeSessions: z.number().int(),
+      lastSeenAt: z.string().nullable(),
+    }),
+  ),
+});
+const legacyClass = z.object({
+  id: z.uuid(),
+  orgId: z.uuid(),
+  sessionId: z.uuid(),
+  name: z.string(),
+  courseBands: z.array(z.string()),
+  gradingKind: z.enum(["year", "semester", "trimester", "quarter", "custom"]),
+  joinCode: z.string(),
+  studentCount: z.number().int(),
+  teachers: z.array(z.string()).default([]),
+});
+
 test(
   "a class's code and cards reach staff only while its practice runs",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -97,10 +147,22 @@ test(
           const read = await call("GET", account, `classes/${classId}/${leaf}`);
           assert.equal(read.statusCode, 200, `${role} ${leaf}`);
           const body = read.json() as {
-            class: { joinCode: string | null; practice?: string };
+            class: {
+              joinCode: string;
+              codeAvailable?: boolean;
+              practice?: string;
+            };
             students: unknown[];
           };
-          assert.equal(body.class.joinCode, null, `${role} ${leaf} ${state}`);
+          assert.equal(body.class.joinCode, "", `${role} ${leaf} ${state}`);
+          assert.equal(body.class.codeAvailable, false, `${role} ${leaf}`);
+          // An older web build still reads it whole.
+          assert.ok(
+            (leaf === "presence" ? legacyPresence : legacyRoster).safeParse(
+              body,
+            ).success,
+            `${role} ${leaf}: the previous client parses it`,
+          );
           assert.equal(body.class.practice, state, `${role} ${leaf}`);
           // The records stay readable: the students are still listed.
           assert.equal(body.students.length, 2, `${role} ${leaf} students`);
@@ -109,6 +171,11 @@ test(
         const list = await call("GET", account, `orgs/${orgId}/classes`);
         assert.equal(list.statusCode, 200, `${role} classes`);
         assert.ok(!list.body.includes(code), `${role} classes: no code`);
+        assert.ok(
+          z.object({ classes: z.array(legacyClass) }).safeParse(list.json())
+            .success,
+          `${role} classes: the previous client parses them`,
+        );
         const year = await call("GET", account, `classes/${classId}/year`);
         assert.equal(year.json().practice, state, `${role} year`);
       }
@@ -144,6 +211,31 @@ test(
       );
     }
 
+    // A class made while practice is closed comes back without its code.
+    const createdClosed = await call(
+      "POST",
+      staff.admin!,
+      `orgs/${orgId}/classes`,
+      { name: "Made before Start" },
+    );
+    assert.equal(createdClosed.statusCode, 201);
+    const madeBody = createdClosed.json().class as {
+      id: string;
+      joinCode: string;
+      codeAvailable?: boolean;
+    };
+    assert.equal(madeBody.joinCode, "", "no code for a closed new class");
+    assert.equal(madeBody.codeAvailable, false);
+    assert.ok(legacyClass.safeParse(madeBody).success);
+    assert.match(
+      (
+        await db.query("SELECT join_code FROM amp_classes WHERE id=$1", [
+          madeBody.id,
+        ])
+      ).rows[0].join_code,
+      /^[A-Z0-9]{6}$/,
+      "the class keeps its code, for when practice runs",
+    );
     // Before Start.
     await expectClosed("waiting");
     // Started: the code, cards and a new code are the class's tools again.
@@ -174,9 +266,20 @@ test(
     const current = newer;
     for (const account of Object.values(staff)) {
       const read = await call("GET", account, `classes/${classId}/presence`);
-      assert.equal(read.json().class.joinCode, null);
+      assert.equal(read.json().class.joinCode, "");
       assert.ok(!read.body.includes(current));
     }
+    const createdEnded = await call(
+      "POST",
+      staff.admin!,
+      `orgs/${orgId}/classes`,
+      { name: "Made after practice" },
+    );
+    assert.equal(
+      createdEnded.json().class.joinCode,
+      "",
+      "no code for a new class after practice",
+    );
     for (const path of ["cards", "rotate-code"]) {
       const made = await call(
         "POST",
@@ -209,6 +312,22 @@ test(
       accountId: "fixture-gate-lake",
       classId: six.id,
     });
+    // A licensed school's new class is open at once, code and all.
+    const licensedAdmin = "fixture-gate-lake-admin";
+    await schools.addStaff({
+      orgId: licensed.id,
+      role: "admin",
+      givenName: "Lake admin",
+      accountId: licensedAdmin,
+    });
+    const licensedNew = await call(
+      "POST",
+      licensedAdmin,
+      `orgs/${licensed.id}/classes`,
+      { name: "Grade 7" },
+    );
+    assert.match(licensedNew.json().class.joinCode, /^[A-Z0-9]{6}$/);
+    assert.equal(licensedNew.json().class.codeAvailable, true);
     const open = await call(
       "GET",
       "fixture-gate-lake",

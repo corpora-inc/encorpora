@@ -1,3 +1,4 @@
+import { classPracticeGate } from "./pilot-access.js";
 import { adultNameSql } from "../account/profile.js";
 import { forgedPost } from "./request-origin.js";
 import { definePilotRoutes, registerBuyerHandoff } from "./pilot-routes.js";
@@ -446,18 +447,25 @@ defineSchoolRoute({
   action: "classes.create",
   target: orgParam,
   bodyLimit: 4096,
-  handler: async ({ request, reply, actor, target, repository }) =>
-    reply.code(201).send({
-      class: await repository.createClass(
-        target.orgId,
-        request.body,
-        actorPerson(actor, target),
-        // Someone who teaches here teaches the class they just made.
-        actor.roles.find(
-          (role) => role.role === "teacher" && target.path.includes(role.orgId),
-        )?.personId,
-      ),
-    }),
+  handler: async ({ request, reply, actor, target, repository }) => {
+    const created = await repository.createClass(
+      target.orgId,
+      request.body,
+      actorPerson(actor, target),
+      // Someone who teaches here teaches the class they just made.
+      actor.roles.find(
+        (role) => role.role === "teacher" && target.path.includes(role.orgId),
+      )?.personId,
+    );
+    // Its code, like every read's, only while its students can practice
+    // (SPEC R14): a new class of an unlicensed school has none to give yet.
+    const gate = await classPracticeGate(repository.pool, created.id);
+    return reply.code(201).send({
+      class: gate
+        ? { ...created, joinCode: "", codeAvailable: false }
+        : { ...created, codeAvailable: true },
+    });
+  },
 });
 defineSchoolRoute({
   method: "GET",

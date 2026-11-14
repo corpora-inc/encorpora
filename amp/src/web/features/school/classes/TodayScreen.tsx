@@ -4,7 +4,7 @@ import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
-import { buttonClass } from "../../../ui/Button";
+import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { meOptions } from "../../../lib/query";
 import { secondParentOptions } from "../../second-parent/api";
@@ -28,7 +28,6 @@ import styles from "./Teacher.module.css";
 import {
   accessFeedEntry,
   AccessSheets,
-  practiceClosed,
   useClassAccess,
 } from "../pilots/ClassAccess";
 
@@ -52,7 +51,7 @@ function ClassToday({
   });
   const access = useClassAccess(place);
   // The board and cards wait for practice, and end with it.
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   // What this person may do in this class, as the server says (a viewer
   // or an aide reads the class; adding students and printing cards are
   // its teacher's and its school's).
@@ -87,6 +86,20 @@ function ClassToday({
     importStudents: true,
   });
   if (practice) entries.unshift(practice);
+  // Couldn't check where practice stands: said calmly, with Try again,
+  // never a dead closed state.
+  if (access.unavailable)
+    entries.unshift({
+      id: "practice-unknown",
+      title: "Couldn’t check practice",
+      detail: "",
+      mark: "status",
+      actions: (
+        <Button variant="secondary" onClick={access.retry}>
+          Try again
+        </Button>
+      ),
+    });
   // Before anyone has started, the next step after the board: cards for
   // the students who sign in on a device of their own.
   const starting = data.todos.some((todo) => todo.id === "start-class");
@@ -154,7 +167,7 @@ export function TodayScreen() {
   const data = today.data;
   const demo = useDemoOrg(place.org);
   const access = useClassAccess(place);
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   // Practice started from this page: the code waits for the next visit
   // rather than pushing the feed down under the teacher's finger (rule 1).
   // The new first item, Start class, opens the board with the code.

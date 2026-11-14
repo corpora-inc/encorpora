@@ -297,9 +297,12 @@ export const presenceResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
-    /** Null while no student can practice: before Start, after it ends
-     * (SPEC R14). The code reaches students only while practice runs. */
-    joinCode: z.string().nullable(),
+    /** Empty while no student can practice: before Start, after it ends
+     * (SPEC R14). The code reaches students only while practice runs. Still
+     * a string, so an older web build's schema reads the resource. */
+    joinCode: z.string(),
+    /** False while the code is withheld (an empty `joinCode`). */
+    codeAvailable: z.boolean().optional(),
     /** Sign-in is paused by guessing until then; a new code reopens it. */
     joinLockedUntil: z.string().nullable().optional(),
     /** Whether students can practice, for anyone who reads the class:
@@ -316,8 +319,9 @@ export const signInRosterResource = z.object({
   class: z.object({
     id: z.uuid(),
     name: z.string(),
-    /** Null while no student can practice (SPEC R14). */
-    joinCode: z.string().nullable(),
+    /** Empty while no student can practice (SPEC R14). */
+    joinCode: z.string(),
+    codeAvailable: z.boolean().optional(),
     /** Too many wrong pictures across the class: sign-in is paused until then. */
     joinLockedUntil: z.string().nullable(),
     practice: z.enum(["open", "waiting", "ended"]).optional(),
@@ -393,8 +397,11 @@ export const classResource = z.object({
   name: z.string(),
   courseBands: z.array(z.string()),
   gradingKind: z.enum(gradingKinds),
-  /** Null while no student of the class can practice (SPEC R14). */
-  joinCode: z.string().nullable(),
+  /** Empty while no student of the class can practice (SPEC R14): a
+   * string still, for older clients. */
+  joinCode: z.string(),
+  /** False while the code is withheld. */
+  codeAvailable: z.boolean().optional(),
   studentCount: z.number().int(),
   /** Its teachers today, by name. */
   teachers: z.array(z.string()).default([]),

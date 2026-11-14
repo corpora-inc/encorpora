@@ -14,11 +14,7 @@ import { WaveMark } from "../../../ui/NavigationSheet";
 import "../SchoolFrame.module.css";
 import { rosterOptions, useIssueCards, useStaffSession } from "./api";
 import styles from "./Cards.module.css";
-import {
-  ClosedSignIn,
-  practiceClosed,
-  useClassAccess,
-} from "../pilots/ClassAccess";
+import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
 
 const PER_PAGE = 8;
 function pages<T>(items: readonly T[]) {
@@ -106,7 +102,7 @@ export function CardsScreen() {
     );
   if (!roster.data || access.pending) return <LoadingScreen />;
   // A card leads nowhere until practice runs: never print one before.
-  if (practiceClosed(access.view))
+  if (access.closed || access.unavailable)
     return (
       <main className={styles.center} data-dense>
         <ClosedSignIn place={place} />

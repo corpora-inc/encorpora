@@ -13,11 +13,7 @@ import { CodeTiles } from "../join/CodeTiles";
 import "../SchoolFrame.module.css";
 import { presenceOptions, useStaffSession } from "./api";
 import styles from "./Start.module.css";
-import {
-  ClosedSignIn,
-  practiceClosed,
-  useClassAccess,
-} from "../pilots/ClassAccess";
+import { ClosedSignIn, useClassAccess } from "../pilots/ClassAccess";
 
 const POLL_MS = 4000;
 /** Sized to the room: fewer students, bigger names. */
@@ -127,17 +123,18 @@ export function StartClassScreen() {
     );
   if (!presence.data || access.pending) return <LoadingScreen />;
   // The server sends the code only while practice runs.
-  if (practiceClosed(access.view) || !presence.data.class.joinCode)
+  if (access.closed || !presence.data.class.joinCode)
     return (
       <main className={styles.problem} data-dense>
         <ClosedSignIn
           place={{ org: params.org, class: params.class }}
           also={exit}
+          onRetry={() => void presence.refetch()}
         />
       </main>
     );
   const { class: shown, students } = presence.data;
-  const info = { ...shown, joinCode: shown.joinCode! };
+  const info = shown;
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;
   return (

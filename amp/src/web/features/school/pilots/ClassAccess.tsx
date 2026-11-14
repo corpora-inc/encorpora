@@ -27,8 +27,16 @@ import school from "../School.module.css";
 
 type Place = { org: string; class: string };
 
+/** Whether a class's students can practice, as the server says (its
+ * class-year read): the sign-in tools (the code, the board, cards) follow
+ * this exactly, for every role. `unknown`: it couldn't be read. */
+export type Practice = "open" | "waiting" | "ended" | "unknown";
+
 /** Where a school class stands on practice access, read once and shared by
- * Today, Students and Settings (the same query, so each says the same). */
+ * Today, Students and Settings (the same queries, so each says the same).
+ * The server's practice state decides whether its sign-in tools are open;
+ * the pilot, for those who may read it, says what to do about it (start,
+ * when it ends, partial coverage). */
 export function useClassAccess(place: Place): {
   view: AccessView;
   pilot: PilotState | undefined;
@@ -36,6 +44,13 @@ export function useClassAccess(place: Place): {
   /** Still learning where the class stands: screens hold their sign-in
    * tools' place rather than show and then withdraw them. */
   pending: boolean;
+  practice: Practice;
+  /** No student can sign in now (or it couldn't be checked): its code,
+   * board and cards are withheld. */
+  closed: boolean;
+  /** Where the class stands couldn't be checked: say so, with Try again. */
+  unavailable: boolean;
+  retry: () => void;
 } {
   const session = currentSession();
   const org = useQuery({
@@ -59,41 +74,53 @@ export function useClassAccess(place: Place): {
     enabled: school,
     refetchOnMount: false,
   });
+  const retry = () => {
+    void year.refetch();
+    if (readable) void query.refetch();
+  };
   const pilot = query.data;
   const pending =
     !org || (school && (year.isPending || (readable && query.isPending)));
-  if (!school) return { view: { kind: "none" }, pilot, teaches, pending };
-  // Unknown is never open: a failed read keeps the tools closed.
-  const gate = year.data?.practice ?? (year.isError ? "waiting" : "open");
-  const closedBy: AccessView | null =
-    gate === "ended"
+  if (!school)
+    return {
+      view: { kind: "none" },
+      pilot,
+      teaches,
+      pending,
+      practice: "open",
+      closed: false,
+      unavailable: false,
+      retry,
+    };
+  // Unknown is never open: a failed read, or an answer without the state.
+  const practice: Practice = year.data
+    ? (year.data.practice ?? "unknown")
+    : year.isError
+      ? "unknown"
+      : "waiting";
+  const unavailable =
+    !pending && (practice === "unknown" || (readable && query.isError));
+  const view: AccessView = pilot
+    ? accessView(pilot, teaches)
+    : practice === "ended"
       ? { kind: "ended" }
-      : gate === "waiting"
+      : practice === "waiting"
         ? { kind: "waiting" }
-        : null;
-  if (!pilot)
-    return { view: closedBy ?? { kind: "none" }, pilot, teaches, pending };
-  const view = accessView(pilot, teaches);
+        : { kind: "none" };
   return {
-    // The pilot says more (start, ending, partial); the class's own state
-    // decides whether its tools are open.
-    view: closedBy && !practiceClosed(view) ? closedBy : view,
+    view,
     pilot,
     teaches,
     pending,
+    practice,
+    closed: practice !== "open",
+    unavailable,
+    retry,
   };
 }
 
 /** Practice is over for this class. */
 export const practiceEnded = (view: AccessView) => view.kind === "ended";
-/** No student of this class can practice: none yet, not started (or only
- * its teacher can start it), or over. Its sign-in tools (the code, the link, the
- * board, cards) lead nowhere, so no screen offers them. */
-export const practiceClosed = (view: AccessView) =>
-  view.kind === "empty" ||
-  view.kind === "start" ||
-  view.kind === "waiting" ||
-  view.kind === "ended";
 
 /** Starting practice: at once when the class is authorized, else through
  * the authorization sheet (a class that arrived from a roster sync). */
@@ -616,13 +643,16 @@ function AuthorizeSheet({
 export function ClosedSignIn({
   place,
   also,
+  onRetry,
 }: {
   place: Place;
   /** A way back beside the next step (the board's Exit). */
   also?: ReactNode;
+  /** Also read again what the screen itself read (the board's presence). */
+  onRetry?: () => void;
 }) {
-  const { view, pilot, teaches } = useClassAccess(place);
-  if (!practiceClosed(view)) return null;
+  const { view, pilot, teaches, practice, unavailable, retry } =
+    useClassAccess(place);
   const actions = (next: ReactNode) => (
     <div className={styles.sheetActions}>
       {next}
@@ -639,7 +669,28 @@ export function ClosedSignIn({
       {label}
     </Link>
   );
-  if (view.kind === "empty")
+  // Couldn't check, or the answers disagree (the code withheld while the
+  // class reads as open): say so calmly, and try again.
+  if (unavailable || practice === "open" || practice === "unknown")
+    return (
+      <EmptyState
+        title="Couldn’t check practice"
+        action={actions(
+          <Button
+            variant="primary"
+            onClick={() => {
+              retry();
+              onRetry?.();
+            }}
+          >
+            Try again
+          </Button>,
+        )}
+      >
+        The class’s code shows here once it’s clear its students can practice.
+      </EmptyState>
+    );
+  if (practice === "waiting" && view.kind === "empty")
     return (
       <EmptyState
         title="Add your students first"
@@ -653,7 +704,7 @@ export function ClosedSignIn({
         )}
       />
     );
-  if (view.kind === "start")
+  if (practice === "waiting" && view.kind === "start")
     return (
       <EmptyState
         title="Practice hasn’t started"
@@ -672,7 +723,7 @@ export function ClosedSignIn({
           : `30 days, through ${practiceDate(view.until)}`}
       </EmptyState>
     );
-  if (view.kind === "waiting")
+  if (practice === "waiting")
     return (
       <EmptyState
         title="Waiting for the class’s teacher to start practice"

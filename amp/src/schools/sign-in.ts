@@ -366,7 +366,8 @@ export class SchoolSignIn {
     const gate = await classPracticeGate(this.pool, classId);
     return {
       ...found,
-      joinCode: gate ? null : found.joinCode,
+      joinCode: gate ? "" : found.joinCode,
+      codeAvailable: !gate,
       practice: gate ?? ("open" as const),
     };
   }
@@ -400,6 +401,7 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        codeAvailable: found.codeAvailable,
         practice: found.practice,
       },
       canManage,
@@ -431,6 +433,7 @@ export class SchoolSignIn {
         name: found.name,
         joinCode: found.joinCode,
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+        codeAvailable: found.codeAvailable,
         practice: found.practice,
       },
       canManage,

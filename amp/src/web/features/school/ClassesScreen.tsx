@@ -70,12 +70,7 @@ import {
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
-import {
-  AccessLine,
-  AccessSheets,
-  practiceClosed,
-  useClassAccess,
-} from "./pilots/ClassAccess";
+import { AccessLine, AccessSheets, useClassAccess } from "./pilots/ClassAccess";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import styles from "./School.module.css";
@@ -618,7 +613,7 @@ export function ClassScreen() {
   useLoggedError(error);
   // Before practice starts and after it ends, no one signs in: no code.
   const access = useClassAccess({ org: orgId, class: classId });
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   // Before practice starts no one needs a seat yet; while it runs, the
   // students it covers don't.
   const seatsNeeded =

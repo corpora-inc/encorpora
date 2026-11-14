@@ -896,7 +896,7 @@ export class SchoolRepository {
     raw: unknown,
     actorPersonId: string | null = null,
     teacherPersonId?: string,
-  ): Promise<ClassResource & { joinCode: string }> {
+  ): Promise<ClassResource> {
     const input = createClassSchema.parse(raw);
     return this.transaction(async (client) => {
       const created = await this.createClassIn(
@@ -923,7 +923,7 @@ export class SchoolRepository {
     orgId: string,
     input: CreateClass,
     actorPersonId: string | null = null,
-  ): Promise<ClassResource & { joinCode: string }> {
+  ): Promise<ClassResource> {
     const org = await this.org(client, orgId);
     let sessionId = input.sessionId;
     if (sessionId) {
@@ -1035,7 +1035,9 @@ export class SchoolRepository {
       rows.map((row) => row.id),
     );
     return rows.map((row) =>
-      gates.has(row.id) ? { ...row, joinCode: null } : row,
+      gates.has(row.id)
+        ? { ...row, joinCode: "", codeAvailable: false }
+        : { ...row, codeAvailable: true },
     );
   }
   /** Active students at this org and below; `classIds` narrows to a teacher's

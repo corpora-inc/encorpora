@@ -37,8 +37,6 @@ import { useSchoolNavigation } from "../../navigation/school-navigation";
 import {
   AccessHeaderAction,
   AccessSheets,
-  practiceClosed,
-  practiceEnded,
   useClassAccess,
 } from "../pilots/ClassAccess";
 import { useFlash } from "./flash";
@@ -114,9 +112,9 @@ export function RosterScreen() {
   });
   const access = useClassAccess(place);
   // Practice is over: sign-in tools lead nowhere until seats arrive.
-  const ended = practiceEnded(access.view);
+  const ended = access.practice === "ended";
   // Before practice starts, and after it ends, no one signs in.
-  const closed = practiceClosed(access.view);
+  const closed = access.closed;
   const flash = useFlash((state) => state.message);
   const clearFlash = useFlash((state) => state.clear);
   const navigate = useNavigate();
