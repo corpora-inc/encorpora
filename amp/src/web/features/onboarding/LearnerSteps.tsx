@@ -1,5 +1,5 @@
 import { useActivateGift } from "../access/api";
-import { CHILD_NAME_MAX } from "../../../learning/nickname";
+import { CHILD_NAME_MAX, PARENT_ENTRY_LINE } from "../../../learning/nickname";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import type { SignedInMe } from "../../../account/contracts";
@@ -222,6 +222,7 @@ export function LearnerSteps({
           void navigate({ to: "/start/birth-year", search });
         }}
       >
+        {funded && <p>{PARENT_ENTRY_LINE}</p>}
         <TextField
           label="Learner name"
           placeholder="First name or nickname"

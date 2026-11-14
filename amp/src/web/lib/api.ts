@@ -41,6 +41,12 @@ const messages: Record<string, string> = {
     "Your access could not be activated. Please try again; your gift will not be used twice.",
   confirmed_parent_email_required:
     "Sign in and confirm the parent email used on your invoice.",
+  funding_service_unavailable:
+    "Your invoice could not be prepared. Your details are saved here; try again.",
+  invoice_email_limit:
+    "Several invoices were requested for this email. Check your inbox or try again in an hour.",
+  invoice_claim_required:
+    "Open your funded purchase page to connect this invoice to your learner.",
   invoice_cannot_discard:
     "This invoice cannot be discarded. Check its payment status before making another request.",
   invoice_unavailable:

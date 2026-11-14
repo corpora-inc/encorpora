@@ -2,7 +2,10 @@ import { validateQuoteFonts } from "./quote-pdf.js";
 import { readFile, stat } from "node:fs/promises";
 import { z } from "zod";
 import { fundingPrograms } from "./programs.js";
-import { programAnnualPriceMinor } from "./program-prices.js";
+import {
+  programAnnualPriceMinor,
+  programMonthlyPriceMinor,
+} from "./program-prices.js";
 import { withMonthlyOffers } from "./monthly-offers.js";
 import {
   fundingOfferSchema,
@@ -38,7 +41,11 @@ export async function loadFundingOffers(
   }
   // The program's listed price decides what the offer sells for.
   const priced = offers.map((offer) => {
-    const listed = programAnnualPriceMinor[offer.programId];
+    const listed = (
+      offer.termMonths === 1
+        ? programMonthlyPriceMinor
+        : programAnnualPriceMinor
+    )[offer.programId];
     if (listed === undefined || listed === offer.subtotalMinor) return offer;
     console.warn(
       `Funding offer ${offer.id}: the offers file says ${offer.subtotalMinor} but ${offer.programId}'s listing is ${listed} (src/funding-purchase/program-prices.ts); selling at ${listed}.`,
