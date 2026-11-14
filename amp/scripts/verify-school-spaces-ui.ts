@@ -241,9 +241,11 @@ async function places(page: Page) {
   const list = page.getByRole("menu").last();
   await list.waitFor();
   const text = (await list.innerText()).replace(/\s+/g, " ");
+  // Escape closes the list, then the drawer, one layer at a time.
   await page.keyboard.press("Escape");
+  await list.waitFor({ state: "hidden" });
   await page.keyboard.press("Escape");
-  await page.getByRole("dialog").last().waitFor({ state: "hidden" });
+  await page.getByRole("button", { name: "Open AMP menu" }).waitFor();
   return text;
 }
 const placeName = (page: Page) =>
