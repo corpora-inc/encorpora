@@ -423,6 +423,12 @@ export const studentTimeResponse = z.object({
 export type StudentTimeResponse = z.infer<typeof studentTimeResponse>;
 
 export const reportCardsResponse = z.object({
+  family: z
+    .object({
+      displayName: z.string().nullable(),
+      parentName: z.string().nullable(),
+    })
+    .optional(),
   school: z.string(),
   class: z.object({ name: z.string(), course: z.string() }),
   term: termResource,
@@ -470,12 +476,23 @@ export const studentRecordResponse = progressRecordResource.extend({
   }),
   orgName: z.string(),
   classes: z.array(
-    z.object({ id, name: z.string(), course: courseResource.nullable() }),
+    z.object({
+      id,
+      name: z.string(),
+      course: courseResource.nullable(),
+      familyDisplayName: z.string().nullable().optional(),
+    }),
   ),
   grades: z.array(
     z.object({
       classId: id,
       className: z.string(),
+      family: z
+        .object({
+          displayName: z.string().nullable(),
+          parentName: z.string().nullable(),
+        })
+        .optional(),
       termId: id,
       termName: z.string(),
       state: z.enum(["open", "closed"]),

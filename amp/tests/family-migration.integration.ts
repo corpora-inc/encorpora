@@ -271,3 +271,82 @@ test(
     }
   },
 );
+
+test(
+  "family identity backfill commits bounded batches, resumes after contention, and never revives deleted accounts",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const { backfillFamilyIdentities } =
+      await import("../scripts/backfill-family-identities.js");
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const admin = new Pool({ connectionString: url });
+    const schema = `amp_backfill_${randomUUID().replaceAll("-", "")}`;
+    await admin.query(`CREATE SCHEMA ${schema}`);
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    await migrate(scoped.href);
+    const db = new Pool({ connectionString: scoped.href });
+    const blocker = await db.connect();
+    try {
+      for (let i = 0; i < 5; i++)
+        await db.query(
+          "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,'Child')",
+          [`child-${i}`, `amp|parent-${i}`],
+        );
+      await db.query(
+        "INSERT INTO amp_account_deletions(id,account_id,via,counts) VALUES($1,'amp|parent-4','self','{}')",
+        [randomUUID()],
+      );
+      await blocker.query("BEGIN");
+      await blocker.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended('amp|parent-2',0))",
+      );
+      // A writer on the learner table must not block the identity migration.
+      await blocker.query(
+        "UPDATE amp_learners SET name='Writing' WHERE id='child-0'",
+      );
+      await assert.rejects(
+        backfillFamilyIdentities(db, 2),
+        (error: any) => error.code === "55P03",
+      );
+      const prefix = (
+        await db.query(
+          "SELECT account_id,id FROM amp_family_spaces ORDER BY account_id",
+        )
+      ).rows;
+      assert.equal(
+        prefix.length,
+        2,
+        "earlier accounts committed before contention in the next page",
+      );
+      await blocker.query("COMMIT");
+      await backfillFamilyIdentities(db, 2);
+      const complete = (
+        await db.query(
+          "SELECT account_id,id FROM amp_family_spaces ORDER BY account_id",
+        )
+      ).rows;
+      assert.equal(complete.length, 4);
+      assert.deepEqual(complete.slice(0, 2), prefix);
+      await backfillFamilyIdentities(db, 2);
+      assert.deepEqual(
+        (
+          await db.query(
+            "SELECT account_id,id FROM amp_family_spaces ORDER BY account_id",
+          )
+        ).rows,
+        complete,
+      );
+      assert.equal(
+        (await db.query("SELECT count(*)::int n FROM amp_families")).rows[0].n,
+        0,
+      );
+    } finally {
+      await blocker.query("ROLLBACK");
+      blocker.release();
+      await db.end();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    }
+  },
+);

@@ -73,19 +73,32 @@ function card(
   student: ReportCardsInput["students"][number],
   today: string,
 ) {
-  const course = data.class.name.includes(data.class.course)
-    ? data.class.name
-    : `${data.class.name}, ${data.class.course}`;
+  const place = data.family
+    ? (data.family.displayName ?? "Your family")
+    : data.school;
+  const decider = data.family
+    ? (data.family.parentName ?? "the parent")
+    : "the teacher";
+  const role = data.family ? "Parent" : "Teacher";
+  const course = data.family
+    ? (data.family.displayName ?? "Your family")
+    : data.class.name.includes(data.class.course)
+      ? data.class.name
+      : `${data.class.name}, ${data.class.course}`;
   const people = [
-    { label: "Course", value: course },
-    ...(data.teachers.length
-      ? [
-          {
-            label: data.teachers.length === 1 ? "Teacher" : "Teachers",
-            value: data.teachers.join(", "),
-          },
-        ]
-      : []),
+    { label: data.family ? "Family" : "Course", value: course },
+    ...(data.family
+      ? data.family.parentName
+        ? [{ label: "Parent", value: data.family.parentName }]
+        : []
+      : data.teachers.length
+        ? [
+            {
+              label: data.teachers.length === 1 ? "Teacher" : "Teachers",
+              value: data.teachers.join(", "),
+            },
+          ]
+        : []),
     ...(student.identifier
       ? [{ label: "Student ID", value: student.identifier }]
       : []),
@@ -100,17 +113,17 @@ function card(
       ? `<dd><small>Not enough work yet</small></dd>`
       : `<dd>${esc(levelWords(student.levelFrom))} <small>to</small> ${student.levelTo.toFixed(1)}${levelStrip(student.levelFrom, student.levelTo)}</dd>`;
   return `<article class="card">${masthead("Report card", dayWords(today))}
-<div class="head"><div><p class="school">${esc(data.school)}</p><h1>${esc(student.name)}</h1></div><div class="term"><p>${esc(data.term.name)}</p><p class="quiet">${dayWords(data.term.startsOn, "short")} to ${dayWords(data.term.endsOn, "short")}</p></div></div>
+<div class="head"><div><p class="school">${esc(place)}</p><h1>${esc(student.name)}</h1></div><div class="term"><p>${esc(data.term.name)}</p><p class="quiet">${dayWords(data.term.startsOn, "short")} to ${dayWords(data.term.endsOn, "short")}</p></div></div>
 <dl class="people">${people}</dl>
 <div class="result"><div class="grade"><span class="label">Final grade</span>${student.final ? `<span class="gradeValue">${esc(student.final)}</span>` : `<span class="gradeBlank">Not entered yet</span>`}</div>
 <dl class="measures"><div class="measure"><dt class="label">Active minutes</dt><dd>${count(student.minutes)}</dd></div><div class="measure"><dt class="label">Skills shown on their own</dt><dd>${count(student.objectivesGained)}</dd></div><div class="measure"><dt class="label">Working level at term end</dt>${level}</div></dl></div>
-<div class="comments"><span class="label">Teacher’s comments</span>${'<div class="line"></div>'.repeat(4)}</div>
-<div class="foot"><p class="note">Final grades are decided by the teacher. AMP measures growth and time on task, and its evidence is available from the teacher on request.</p><div class="signatures"><span>Teacher</span><span>Parent or guardian</span></div></div></article>`;
+<div class="comments"><span class="label">${role}’s comments</span>${'<div class="line"></div>'.repeat(4)}</div>
+<div class="foot"><p class="note">Final grades are decided by ${esc(decider)}. AMP measures growth and time on task, and its evidence is available from ${esc(decider)} on request.</p><div class="signatures"><span>${role}</span><span>Parent or guardian</span></div></div></article>`;
 }
 
 export function reportCardsHtml(input: ReportCardsInput) {
   const html = printDocument({
-    title: `${input.data.class.name}: report cards, ${input.data.term.name}`,
+    title: `${input.data.family ? (input.data.family.displayName ?? "Your family") : input.data.class.name}: report cards, ${input.data.term.name}`,
     paper: input.paper,
     css: CSS,
     body: `<div class="paper-${input.paper}">${input.students.map((s) => card(input.data, s, input.today)).join("")}</div>`,
@@ -118,7 +131,7 @@ export function reportCardsHtml(input: ReportCardsInput) {
   return {
     html,
     footer: pageFooter(
-      `AMP · Report card · ${input.data.school} · ${input.data.term.name}`,
+      `AMP · Report card · ${input.data.family ? (input.data.family.displayName ?? "Your family") : input.data.school} · ${input.data.term.name}`,
     ),
   };
 }

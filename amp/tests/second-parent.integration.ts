@@ -259,7 +259,12 @@ test(
         );
         assert.equal(invite.status, "open");
         assert.equal(invite.email, rowanEmail);
-        assert.deepEqual(invite.secondParent, { className: "Fern’s class" });
+        assert.equal(invite.role, "teacher");
+        assert.deepEqual(invite.secondParent, {
+          className: "Fern’s class",
+          familyDisplayName: null,
+          inviterName: "Fern Fixture",
+        });
       },
     );
 

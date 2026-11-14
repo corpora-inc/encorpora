@@ -25,6 +25,7 @@ export async function lockLearningAccount(
 export async function parentAddressConfirmed(
   client: Pick<PoolClient, "query">,
   accountId: string,
+  lock = true,
 ): Promise<boolean> {
   if (!accountId.startsWith("amp|")) return true;
   const table = await client.query(
@@ -32,7 +33,7 @@ export async function parentAddressConfirmed(
   );
   if (!table.rows[0].present) return true;
   const user = await client.query(
-    'SELECT "emailVerified" FROM amp_auth_users WHERE id=$1 FOR SHARE',
+    `SELECT "emailVerified" FROM amp_auth_users WHERE id=$1${lock ? " FOR SHARE" : ""}`,
     [accountId.slice(4)],
   );
   return user.rows[0]?.emailVerified === true;

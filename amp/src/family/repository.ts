@@ -752,7 +752,7 @@ export class FamilyRepository {
         ]);
         datasets.push([
           "family-identity",
-          "SELECT jsonb_build_object('familyId',id) AS value FROM amp_family_spaces WHERE account_id=$1",
+          "SELECT jsonb_build_object('familyId',id,'displayName',display_name) AS value FROM amp_family_spaces WHERE account_id=$1",
         ]);
       }
       if (

@@ -1,5 +1,7 @@
 import { config as billingConfig } from "./stripe-fixtures.js";
 import test from "node:test";
+import { backfillFamilyIdentities } from "../scripts/backfill-family-identities.js";
+import { alignPersonaEnrollments } from "../scripts/persona-enrollment.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
@@ -38,7 +40,15 @@ test(
       origin: "https://amp.example.test",
     };
     const app = buildApp({ repository: learning, authenticate });
+    let rendered = "";
+    const renderer = {
+      render: async ({ html }: { html: string }) => {
+        rendered = html;
+        return Buffer.from("%PDF-fixture");
+      },
+    };
     await registerFamilyRoutes(app, {
+      renderer,
       billingConfig,
       pool: db,
       authenticate,
@@ -47,7 +57,7 @@ test(
     await registerSchoolRoutes(app, {
       pool: db,
       authenticate,
-      services: { ...keys, learning },
+      services: { ...keys, learning, renderer },
     });
     await app.ready();
     t.after(async () => {
@@ -127,6 +137,9 @@ test(
     );
     const sp = (await ok(get("/api/v1/family/second-parent", b.account)))
       .secondParent;
+    await db.query("DELETE FROM amp_family_spaces WHERE account_id=$1", [
+      b.account,
+    ]);
     await ok(
       post("/api/v1/school/invites/accept", a.account, fragment(sp.inviteUrl)),
     );
@@ -244,6 +257,177 @@ test(
       ok(get(`/api/v1/families/${fa.org_id}/teaching`, account));
 
     await t.test(
+      "placement and nullable family/holder names are available without projections",
+      async () => {
+        const places = (await ok(get("/api/v1/families", a.account))).families;
+        const own = places.find((p: any) => p.familyId === fa.org_id);
+        assert.equal(own.classId, fa.class_id);
+        assert.equal(own.orgId, fa.org_id);
+        assert.equal(own.displayName, null);
+        assert.equal((await family(fa.org_id, a.account)).holderName, null);
+        // A provider's full name does not establish a surname.
+        assert.equal((await family(fb.org_id, a.account)).displayName, null);
+        await ok(patch(b.account, { givenName: "Bea", familyName: "River" }));
+        const second = await family(fb.org_id, a.account);
+        assert.equal(second.holderName, "Bea River");
+        assert.equal(second.displayName, "River family");
+        const lookup = (
+          await ok(
+            post(
+              "/api/v1/school/invites/lookup",
+              a.account,
+              fragment(sp.inviteUrl),
+            ),
+          )
+        ).invite;
+        assert.equal(lookup.role, "teacher");
+        assert.equal(lookup.secondParent.familyDisplayName, "River family");
+        assert.equal(lookup.secondParent.inviterName, "Bea River");
+        assert.equal(typeof lookup.secondParent.className, "string");
+        const { updateSetupSchool } = await import("../src/schools/setup.js");
+        const { SchoolRepository } =
+          await import("../src/schools/repository.js");
+        // Exercise the name writer directly: school setup routes deliberately
+        // exclude family orgs, and that authorization must stay unchanged.
+        await updateSetupSchool(new SchoolRepository(db), fb.org_id, {
+          name: "Our family",
+          shape: "class",
+          timezone: "America/New_York",
+        });
+        assert.equal(
+          (
+            await post(
+              `/api/v1/school/orgs/${fb.org_id}/setup/school`,
+              b.account,
+              {
+                name: "No",
+                shape: "class",
+                timezone: "America/New_York",
+              },
+            )
+          ).statusCode,
+          404,
+        );
+        assert.equal(
+          (await family(fb.org_id, a.account)).displayName,
+          "Our family",
+        );
+        await db.query(
+          "UPDATE amp_family_spaces SET display_name=NULL WHERE account_id=$1",
+          [b.account],
+        );
+        await ok(patch(b.account, { givenName: null, familyName: null }));
+        assert.equal((await family(fb.org_id, a.account)).holderName, null);
+        assert.equal((await family(fb.org_id, a.account)).displayName, null);
+      },
+    );
+    await t.test(
+      "every Family GET succeeds on read-only connections; discovery has a fixed query budget",
+      async () => {
+        const readUrl = new URL(scoped.href);
+        readUrl.searchParams.set(
+          "options",
+          `-c search_path=${schema} -c default_transaction_read_only=on`,
+        );
+        const readDb = new Pool({ connectionString: readUrl.href });
+        const reader = buildApp({ repository: learning, authenticate });
+        await registerFamilyRoutes(reader, {
+          pool: readDb,
+          authenticate,
+          renderer,
+          billingConfig,
+        });
+        await reader.ready();
+        let count = 0;
+        const original = readDb.query;
+        (readDb as any).query = function (...args: any[]) {
+          count++;
+          return (original.apply(this, args as any) as any).catch(
+            (error: Error) => {
+              console.error("read-only query failed", error.message);
+              throw error;
+            },
+          );
+        };
+        try {
+          const request = (path: string) =>
+            reader.inject({
+              method: "GET",
+              url: path,
+              headers: { authorization: `Bearer ${a.account}` },
+            });
+          await ok(request("/api/v1/families"));
+          const discoveryQueries = count;
+          assert.ok(discoveryQueries <= 4, `discovery used ${count} queries`);
+          count = 0;
+          await ok(request("/api/v1/families"));
+          assert.equal(count, discoveryQueries);
+          for (const path of [
+            `/api/v1/families/${fa.org_id}`,
+            `/api/v1/families/${fa.org_id}/teaching`,
+            `/api/v1/families/${fa.org_id}/children/${ownedA.id}/progress`,
+          ])
+            await ok(request(path));
+          assert.equal(
+            (
+              await request(
+                `/api/v1/families/${fa.org_id}/children/${ownedA.id}/progress.pdf`,
+              )
+            ).statusCode,
+            200,
+          );
+        } finally {
+          await reader.close();
+          await readDb.end();
+        }
+      },
+    );
+    await t.test(
+      "family term reports retain activity; preview enrollment dates explain the old zero",
+      async () => {
+        const { classContext, termsFor } =
+          await import("../src/schools/term-grades.js");
+        const { readReportCards } =
+          await import("../src/schools/teacher-reads.js");
+        const context = await classContext(db, fb.class_id);
+        // Keep yesterday inside this fixture's term, including on July 1.
+        await db.query(
+          "UPDATE amp_academic_sessions SET starts_on=LEAST(starts_on,$2::date-7) WHERE id=$1",
+          [context.sessionId, context.today],
+        );
+        const term = (await termsFor(db, context)).find(
+          (term) =>
+            term.startsOn <= context.today && term.endsOn >= context.today,
+        )!;
+        const report = () => readReportCards(db, context, term.id);
+        assert.equal((await report()).students[0]!.minutes, 5);
+        await db.query(
+          "UPDATE amp_active_days SET day=day-1 WHERE learner_id=$1",
+          [ownedB.id],
+        );
+        assert.equal(
+          (await report()).students[0]!.minutes,
+          0,
+          "seeded practice before enrollment is excluded",
+        );
+        await alignPersonaEnrollments(db, [ownedB.id]);
+        assert.equal((await report()).students[0]!.minutes, 5);
+        await db.query(
+          "UPDATE amp_active_days SET day=day+1 WHERE learner_id=$1",
+          [ownedB.id],
+        );
+        await ok(patch(b.account, { givenName: "Bea", familyName: "River" }));
+        const pdf = await get(
+          `/api/v1/school/classes/${fb.class_id}/report-cards.pdf?term=${term.id}`,
+          a.account,
+        );
+        assert.equal(pdf.statusCode, 200, pdf.body);
+        assert.match(rendered, /River family/);
+        assert.match(rendered, /decided by Bea River/);
+        assert.doesNotMatch(rendered, /decided by the teacher/);
+      },
+    );
+    await t.test(
       "holder of A and second parent of B have distinct IDs and exact capabilities",
       async () => {
         const places = (await ok(get("/api/v1/families", a.account))).families;
@@ -341,6 +525,8 @@ test(
         externalFamily = places[0].familyId;
         assert.notEqual(externalFamily, fa.org_id);
         assert.equal(places[0].role, "holder");
+        assert.equal(places[0].classId, null);
+        assert.equal(places[0].orgId, null);
         assert.equal(await familyOf(external.account), undefined);
         const projection = await family(externalFamily, external.account);
         assert.deepEqual(
@@ -356,6 +542,42 @@ test(
         assert.equal(child.capabilities.practiceHere, true);
         assert.equal(child.capabilities.continuePurchase, true);
         await ok(get(child.paths.progress, external.account));
+        const pdf = await get(`${child.paths.progress}.pdf`, external.account);
+        assert.equal(pdf.statusCode, 200, pdf.body);
+        assert.equal(pdf.headers["content-type"], "application/pdf");
+        assert.match(rendered, /23/);
+        for (const denied of [a.account, co.account, outsider.account])
+          assert.equal(
+            (await get(`${child.paths.progress}.pdf`, denied)).statusCode,
+            404,
+          );
+        assert.equal(
+          (
+            await get(
+              `/api/v1/families/${externalFamily}/children/${ownedA.id}/progress.pdf`,
+              external.account,
+            )
+          ).statusCode,
+          404,
+        );
+        assert.equal(
+          (
+            await get(
+              `/api/v1/families/${fb.org_id}/children/${ownedB.id}/progress.pdf`,
+              a.account,
+            )
+          ).statusCode,
+          200,
+        );
+        assert.equal(
+          (
+            await get(
+              `/api/v1/families/${fa.org_id}/children/${ownedA.id}/progress.pdf`,
+              co.account,
+            )
+          ).statusCode,
+          403,
+        );
         await ok(get(child.paths.workbooks, external.account));
         assert.equal(
           (await get(`/api/v1/families/${fa.org_id}`, external.account))
@@ -799,7 +1021,17 @@ test(
           "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,'Legacy child')",
           [randomUUID(), legacy.account],
         );
+        assert.deepEqual(
+          (await ok(get("/api/v1/families", legacy.account))).families,
+          [],
+        );
+        await backfillFamilyIdentities(db, 2);
         const discovery = await ok(get("/api/v1/families", legacy.account));
+        await backfillFamilyIdentities(db, 2);
+        assert.deepEqual(
+          await ok(get("/api/v1/families", legacy.account)),
+          discovery,
+        );
         const stable = discovery.families[0].familyId;
         const { ensureFamilyClass: oldEnsure } =
           await import("./helpers/legacy-family-class.js");

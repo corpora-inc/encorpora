@@ -20,7 +20,9 @@ page. It returns at most 50 places, ordered by UUID, and a nullable cursor:
 {
   families: Array<{
     familyId: string;                 // UUID
-    displayName: string;
+    displayName: string | null;
+    classId: string | null;           // family’s own class, not a hosted child’s class
+    orgId: string | null;             // actual org for that class
     role: "holder" | "second-parent" | "co-teacher";
     teachingPlace: TeachingPlace | null;
     capabilities: { readFamily: boolean; readTeaching: boolean };
@@ -41,12 +43,27 @@ holder's or second parent's mixed tutoring class. Its presence, rather than
 `readTeaching` alone, determines whether to show that separate place.
 
 A family ID is an opaque, stable URL key. It need not equal the class's org ID. A parent whose children are all
-hosted elsewhere receives a persisted `amp_family_spaces.id` on the first places
-read. This creates no class, staff role or enrollment. A local class created by a compatible API uses that ID for its org. A legacy
+hosted elsewhere receives a persisted `amp_family_spaces.id` when approval transfers
+ownership. Family creation and second-parent acceptance also ensure that identity.
+These reads create no identity, class, staff role or enrollment. A local class created by a compatible API uses that ID for its org. A legacy
 API can allocate a different org ID; projections resolve that association through
 the holder account. Authorization always uses the actual org, and the public
 family ID never changes. A database hook registers families created by legacy APIs. An adult without children or a family class receives
 no new Family place merely because they teach elsewhere.
+
+All Family GET routes, including Teaching and individual progress/PDF, are read-only.
+Discovery performs at most four database queries for a page; it acquires no account
+or row lock. Purchase capability previews use read-only consent and verified-address
+checks; purchase mutations retain their locks and recheck eligibility.
+
+`displayName` uses an explicitly saved family name, then the holder's adult profile
+family name followed by ` family`, otherwise null. A provider's full display name
+does not establish a family name. The interface may render null as “Your family”.
+The required org storage labels `Our family` and generated `…’s family` are not
+public family names. Other legacy org names are treated as explicit names; a name
+saved through the org settings writer is stored in `amp_family_spaces.display_name`
+and wins even if it resembles a storage default. That nullable field is included in
+the account export and erased with the family identity.
 
 ## Family projection
 
@@ -56,7 +73,8 @@ receive `403 family_parent_only`; unrelated accounts receive `404 family_not_fou
 ```ts
 {
   familyId: string;
-  displayName: string;
+  displayName: string | null;
+  holderName: string | null;          // canonical adult display name, including explicit clearing
   role: "holder" | "second-parent";
   teachingPlace: TeachingPlace | null;
   capabilities: {
@@ -177,6 +195,19 @@ remain available under the Teaching scope. `readGrades`, `editGrades` and
 A second-parent invitation requires a local class, an empty second-parent slot
 and no currently hosted children.
 
+## Invitations and printed reports
+
+Second-parent invitation lookup retains `role: "teacher"` and
+`secondParent.className` for older clients. Its family presentation fields are
+`secondParent.familyDisplayName: string | null` and
+`secondParent.inviterName: string | null`, resolved from the holder's adult profile.
+
+Family-kind term cards and individual reports use the family display name and
+“decided by <parent name>”, falling back to “decided by the parent”. School reports
+retain teacher wording. A term counts practice only within its term and enrollment
+dates; Today counts the selected recent days. Design personas align their synthetic
+enrollment dates to the first seeded practice day so historical practice is included.
+
 ## Individual progress
 
 `GET /api/v1/families/:family/children/:learner/progress` has no body. It requires
@@ -203,6 +234,18 @@ type ProgressRecord = {
 };
 type Estimate = { level: number; sd: number };
 ```
+
+### Individual progress PDF
+
+`GET /api/v1/families/:family/children/:learner/progress.pdf?format=Letter` (or `A4`)
+uses the same individual progress reader and shared `progress-report.ts` composer.
+It authorizes the holder or that family's active second parent against the child's
+live ownership, including a child rostered only in another family's class. A
+co-teacher cannot use this route. It grants no host-class or grade access and
+includes no host roster. The PDF contains the child's progress and family name;
+print rendering is per request. Missing rendering service returns `503 report_unavailable`.
+The download path is `paths.progress + ".pdf"`.
+
 
 ## Teaching projection
 
@@ -318,9 +361,25 @@ label as the person's name.
 
 ## First course placement and deployment
 
-Apply migrations 0125–0127 before serving these endpoints. These migrations are
-unpublished branch migrations; never replace the contents of an applied migration
-in a persistent deployment. The runner checks file checksums. Ordinary migrations
+Apply migrations 0125–0128 before serving these endpoints. Migration 0128 adds only
+nullable name metadata, with no rewrite or row backfill under the DDL lock. Before
+serving Family reads for existing accounts, run the one-off data migration:
+
+```sh
+AMP_DATABASE_URL='<database URL>' npx tsx scripts/backfill-family-identities.ts
+```
+
+It scans family account keys and learner IDs in keyset pages of 250,
+commits one account at a time, and uses a two-second lock timeout and five-second
+statement timeout for each account. It takes the account mutation lock, rechecks
+eligibility and the deletion journal, and skips school/trial accounts. It neither
+changes published IDs nor creates classes or enrollments. A timeout or interruption
+leaves earlier commits intact; rerun the command unchanged to resume safely. Run
+it after deploying all identity-writing mutations so concurrent approvals cannot
+leave an account behind. The script is separate from schema migration transactions
+to avoid a long live-table transaction.
+
+Never replace the contents of an applied migration in a persistent deployment. The runner checks file checksums. Ordinary migrations
 commit separately. 0126 adds a nullable column without a table rewrite or a
 backfill; existing answered learners derive the legacy prior lazily. 0127 builds
 the history indexes with `CREATE INDEX CONCURRENTLY`, one statement at a time

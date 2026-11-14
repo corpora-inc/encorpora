@@ -6,9 +6,8 @@ import { StripeRepository } from "../billing/stripe/repository.js";
 import type { StripeBillingConfig } from "../billing/stripe/config.js";
 import type { Pool } from "pg";
 import { FamilyError } from "./contracts.js";
-import { ensureFamilyIdentity } from "./identity.js";
+import { familyDisplayNameSql, holderDisplayNameSql } from "./identity.js";
 import { gradeFor } from "./family-class.js";
-import { FamilyRepository } from "./repository.js";
 import {
   can,
   loadActor,
@@ -31,7 +30,8 @@ type Identity = {
   familyId: string;
   orgId: string | null;
   holder: string;
-  displayName: string;
+  displayName: string | null;
+  holderName: string | null;
   classId: string | null;
   secondParent: string | null;
   className: string | null;
@@ -39,7 +39,7 @@ type Identity = {
   timezone: string;
 };
 const IDENTITIES = `SELECT fs.id AS "familyId",f.org_id AS "orgId",fs.account_id AS holder,
-  COALESCE(o.name,'Our family') AS "displayName",f.class_id AS "classId",f.second_parent AS "secondParent",
+  ${familyDisplayNameSql("fs.account_id", "o")} AS "displayName",${holderDisplayNameSql("fs.account_id")} AS "holderName",f.class_id AS "classId",f.second_parent AS "secondParent",
   (SELECT name FROM amp_classes WHERE id=f.class_id) AS "className",
   EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
     JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL AND NOT l.adult
@@ -100,14 +100,6 @@ export async function listFamilies(
   after?: string,
 ) {
   adultOnly(account);
-  await new FamilyRepository(pool).transaction(account, async (client) => {
-    const owned = await client.query(
-      `SELECT 1 FROM amp_families WHERE account_id=$1
-      UNION ALL SELECT 1 FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT adult LIMIT 1`,
-      [account],
-    );
-    if (owned.rowCount) await ensureFamilyIdentity(client, account);
-  });
   const rows = (
     await pool.query<Identity>(
       `${IDENTITIES}
@@ -136,6 +128,8 @@ export async function listFamilies(
   return {
     families: places.slice(0, 50).map(({ row, role }) => ({
       familyId: row.familyId,
+      classId: row.classId,
+      orgId: row.orgId,
       displayName: row.displayName,
       role: role!,
       teachingPlace: teachingPlace(row, role!, actor),
@@ -172,8 +166,8 @@ async function familyContext(pool: Pool, row: Identity): Promise<ClassContext> {
     id: row.familyId,
     orgId: row.familyId,
     path: [row.familyId],
-    name: row.displayName,
-    orgName: row.displayName,
+    name: row.displayName ?? "Your family",
+    orgName: row.displayName ?? "Your family",
     orgKind: "family",
     courseBands: [],
     gradingKind: "year",
@@ -423,6 +417,7 @@ export async function familyProjection(
   return {
     familyId,
     displayName: row.displayName,
+    holderName: row.holderName,
     role,
     teachingPlace: teachingPlace(row, role, actor),
     capabilities: {
@@ -464,6 +459,8 @@ export async function familyChildProgress(
   return {
     id: learnerId,
     name: child.name,
+    today: context.today,
+    familyDisplayName: row.displayName,
     ...(await readProgress(
       pool,
       {
