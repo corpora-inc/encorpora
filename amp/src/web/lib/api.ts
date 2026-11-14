@@ -1,3 +1,14 @@
+import {
+  requestWith,
+  requestMethod,
+  replacedSession,
+  type RequestOptions,
+} from "./request-transport";
+export {
+  requestWith,
+  requestFetch,
+  SessionUnconfirmedError,
+} from "./request-transport";
 import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
@@ -155,26 +166,6 @@ const errorCode = (data: unknown) =>
   typeof data.error === "string"
     ? data.error
     : "";
-type RequestOptions = {
-  token?: string | null;
-  body?: unknown;
-  signal?: AbortSignal;
-  method?: string;
-  headers?: Record<string, string>;
-};
-
-/** A request from a session this tab has left (lib/session-generation.ts):
- * refused, so neither the asking nor the answer reaches the new session. */
-function replacedSession() {
-  return new AppError(
-    "authentication",
-    "This was asked by a sign-in that has since changed.",
-    false,
-    null,
-    "session_replaced",
-  );
-}
-
 export function request<T>(
   path: string,
   schema: z.ZodType<T>,
@@ -183,26 +174,12 @@ export function request<T>(
   return requestWith(() => send(path, schema, options), options);
 }
 
-/** A request's session checks around its sending: checked when it is
- * asked, and again when it answers, so a session retired in between never
- * has its answer read or cached. */
-export async function requestWith<T>(
-  sending: () => Promise<T>,
-  options: { token?: string | null },
-): Promise<T> {
-  if (isRetired(options.token)) throw replacedSession();
-  const answer = await sending();
-  if (isRetired(options.token)) throw replacedSession();
-  return answer;
-}
-
 async function send<T>(
   path: string,
   schema: z.ZodType<T>,
   options: RequestOptions,
 ): Promise<T> {
-  const method =
-    options.method ?? (options.body === undefined ? "GET" : "POST");
+  const method = requestMethod(options);
   // A student's token opens only the student routes. When a device is handed
   // to a child ("Let Wren practice here"), the staff screen still mounted
   // reads again with the child's session for a moment before practice
@@ -284,12 +261,16 @@ async function send<T>(
   // rejected sign-in reloads into the current release rather than reporting a
   // failure the visitor didn't cause. Other errors still show, so a filled-in
   // form is never wiped by a reload.
-  if (
-    (response.status === 401 || response.status === 404) &&
-    (await buildIsStale())
-  ) {
-    const reloading = reloadIntoCurrentRelease();
-    if (reloading) return reloading;
+  if (response.status === 401 || response.status === 404) {
+    const stale = await buildIsStale();
+    // The release lookup is another async boundary: this request's session
+    // may have ended while it waited, even though its API response arrived.
+    checkSession();
+    checkAborted();
+    if (stale) {
+      const reloading = reloadIntoCurrentRelease();
+      if (reloading) return reloading;
+    }
   }
   // The demo school was rebuilt overnight: this link was into yesterday's.
   // The visitor's place is already in today's, so open it there instead of

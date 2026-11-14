@@ -1,3 +1,4 @@
+import { requestFetch } from "../../lib/request-transport";
 import { measureAuth } from "../../lib/auth-measurement";
 import { track as trackAuth, googleSignupContext } from "../../lib/analytics";
 import { entryCapture } from "../../lib/openai-acquisition";
@@ -314,7 +315,7 @@ export function SignInScreen() {
         entryCapture,
         new Promise<void>((resolve) => setTimeout(resolve, 1800)),
       ]);
-      const response = await fetch("/api/v1/parent-followup/intent", {
+      const response = await requestFetch("/api/v1/parent-followup/intent", {
         method: "POST",
         credentials: "same-origin",
         signal: AbortSignal.timeout(10000),

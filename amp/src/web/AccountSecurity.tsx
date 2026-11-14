@@ -1,3 +1,4 @@
+import { requestFetch } from "./lib/request-transport";
 import { useLoggedError } from "./feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
@@ -24,7 +25,7 @@ const names: Record<string, string> = {
   github: "GitHub",
 };
 async function security<T>(path: string, body?: object): Promise<T> {
-  const result = await fetch(`/api/auth/security/${path}`, {
+  const result = await requestFetch(`/api/auth/security/${path}`, {
     ...(body && {
       method: "POST",
       headers: { "content-type": "application/json" },

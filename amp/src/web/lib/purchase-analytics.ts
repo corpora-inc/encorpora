@@ -1,3 +1,4 @@
+import { requestFetch } from "./request-transport";
 import {
   purchaseStage,
   type PurchaseAttempt,
@@ -48,7 +49,7 @@ export async function purchaseFetch(
   const path = url.startsWith("/api/v1/") ? url.slice("/api/v1".length) : "";
   const observe = observePurchaseRequest(path, options.method ?? "GET");
   try {
-    const response = await fetch(url, options);
+    const response = await requestFetch(url, options);
     if (options.signal?.aborted) observe("cancelled");
     else if (response.ok) observe("succeeded");
     else
