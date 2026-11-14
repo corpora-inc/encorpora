@@ -176,6 +176,8 @@ async function fixture(
           skills: [
             [oneFilm.id, 2, 1, "practicing"],
             [skills[3]!.id, 8, 6, "practicing"],
+            // Answered, not yet on its own: in progress.
+            [skills[5]!.id, 3, 0, "practicing"],
             [skills[8]!.id, 25, 20, "review-ready"],
           ].map(([skillId, attempts, independentCorrect, status]) => ({
             skillId,
@@ -258,56 +260,131 @@ for (const width of widths)
     await fixture(page, { holdFrontier: 900 });
     await page.goto(`${origin}/pathways`);
     const plan = page.locator(".pathways-plan");
-    await plan.waitFor();
-    const probe = plan.locator(`[data-plan-skill="${skills[40]!.id}"]`);
-    const before = await probe.evaluate((el) => (el as HTMLElement).offsetTop);
-    await plan.getByText("Where you are", { exact: true }).waitFor();
+    // Q-214: a checklist by grade. The bands wait for the level (it is held
+    // here), so the learner's own band is open and marked from the first
+    // frame; every other band is folded.
+    const bands = plan.locator("[data-plan-band]");
+    const headers = plan.locator("[data-plan-band] > details > summary");
+    await headers.first().waitFor();
+    const own = plan.locator(
+      "[data-plan-band]:has(summary :text-is('Where you are'))",
+    );
+    assert.equal(await own.count(), 1, `${tag}: one band is marked at once`);
+    assert.equal(await own.locator("details[open]").count(), 1);
     assert.equal(
-      await probe.evaluate((el) => (el as HTMLElement).offsetTop),
-      before,
-      `${tag}: the level's arrival never moves a skill in the pathway`,
+      await plan.locator("details[open]").count(),
+      1,
+      `${tag}: every other band starts folded`,
     );
-    assert.equal(await page.locator("canvas").count(), 0, `${tag}: canvas`);
-    // No dead option: without WebGL there is no choice of view.
-    assert.equal(
-      await page.getByRole("radiogroup", { name: "Map view" }).count(),
-      0,
-      `${tag}: no view toggle without WebGL`,
+    for (const height of await headers.evaluateAll((els) =>
+      els.map((el) => el.getBoundingClientRect().height),
+    ))
+      assert(height >= 44 && height < 60, `${tag}: one-line band headers`);
+    assert.match(
+      await headers.first().innerText(),
+      /^(Kindergarten|Grade \d+|Stage \d+)\s+\d+ \/ \d+/,
+      `${tag}: a band's count is numbers`,
     );
-    assert.equal(await page.locator(".pathways-camera").count(), 0);
-    assert.doesNotMatch(
-      await page.evaluate(() =>
-        [
-          ...document.querySelectorAll(
-            ".pathways-status, .pathways-plan, .pathways-footer",
-          ),
-        ]
-          .map((el) => (el as HTMLElement).innerText)
-          .join(" "),
-      ),
-      /\b3D\b|device/,
-      `${tag}: no 3D or device words`,
+    // Rows: 44 px, the whole row the link, words never broken.
+    const rowsInfo = await own.locator("[data-plan-skill]").evaluateAll((els) =>
+      els.map((el) => ({
+        height: el.getBoundingClientRect().height,
+        broken: getComputedStyle(el.querySelector("span:last-child")!)
+          .overflowWrap,
+      })),
     );
+    assert(rowsInfo.length > 0);
+    for (const row of rowsInfo) {
+      assert(row.height >= 44, `${tag}: 44 px rows`);
+      assert.equal(row.broken, "normal", `${tag}: no word broken`);
+    }
+    // The grades view flows in the page: no inner scroll, one key of
+    // areas, no narration, and the count sits under the search row.
     assert(
-      await plan.getByText("Where you are", { exact: true }).evaluate((el) => {
-        const box = el.closest(".pathways-plan")!.getBoundingClientRect();
-        const tagBox = el.getBoundingClientRect();
-        return tagBox.top >= box.top && tagBox.bottom <= box.bottom;
+      await plan.evaluate(
+        (el) =>
+          getComputedStyle(el).overflowY === "visible" &&
+          el.scrollHeight <= el.clientHeight + 1,
+      ),
+      `${tag}: no inner scroll box`,
+    );
+    assert.equal(await page.locator(".pathways-legend:visible").count(), 0);
+    assert.equal(
+      await page.getByText("Skills grow with independent successes").count(),
+      0,
+    );
+    if (width > 650)
+      assert(
+        (await page.locator(".pathways-summary").boundingBox())!.y >=
+          (await page.locator(".pathways-toolbar").boundingBox())!.y +
+            (await page.locator(".pathways-toolbar").boundingBox())!.height,
+        `${tag}: the count sits under the search row`,
+      );
+    // Opening a band moves only what is below it; the keyboard opens and
+    // closes it and keeps the focus; the device remembers it.
+    const total = await bands.count();
+    const target = bands.nth(total - 2);
+    // Positions in the page, whatever the window's scroll.
+    const top = (n: number) =>
+      bands
+        .nth(n)
+        .evaluate((el) => el.getBoundingClientRect().top + window.scrollY);
+    await target.locator("summary").focus();
+    const aboveTop = await top(total - 3);
+    const belowTop = await top(total - 1);
+    await page.keyboard.press("Enter");
+    await target.locator("details[open]").waitFor();
+    const bodyHeight = (await target.locator("details > div").boundingBox())!
+      .height;
+    assert.equal(await top(total - 3), aboveTop);
+    assert(
+      Math.abs((await top(total - 1)) - belowTop - bodyHeight) < 1,
+      `${tag}: only the band's own body pushes what follows`,
+    );
+    assert.equal(
+      await page.evaluate(() => document.activeElement?.tagName),
+      "SUMMARY",
+      `${tag}: focus stays on the header`,
+    );
+    // Earned a filled check, in progress half, not started an empty ring.
+    const looks = await plan.evaluate((el) =>
+      ["earned", "progress", "new"].map((state) => {
+        const check = el.querySelector(`[data-state="${state}"]`);
+        if (!check) return null;
+        const style = getComputedStyle(check);
+        return `${style.backgroundImage}|${style.backgroundColor}|${check.innerHTML.length}`;
       }),
-      `${tag}: the pathway opens on the learner's level`,
+    );
+    assert.equal(
+      new Set(looks.filter(Boolean)).size,
+      looks.filter(Boolean).length,
+      `${tag}: three distinct check states`,
+    );
+    await page.keyboard.press(" ");
+    await target.locator("details:not([open])").waitFor();
+    await page.keyboard.press("Enter");
+    await target.locator("details[open]").waitFor();
+    await page.reload();
+    await bands
+      .nth(total - 2)
+      .locator("details[open]")
+      .waitFor();
+    assert.equal(
+      await plan.locator("details[open]").count(),
+      2,
+      `${tag}: the device remembers the open band`,
     );
     const skillCount = await plan.locator("[data-plan-skill]").count();
     assert.equal(skillCount, skills.length, `${tag}: every skill is offered`);
-    const short = await plan
-      .locator("[data-plan-skill]")
-      .evaluateAll(
-        (els) =>
-          els.filter((el) => el.getBoundingClientRect().height < 44).length,
-      );
-    assert.equal(short, 0, `${tag}: 44 px skill targets`);
     await noOverflow(page, `${tag} pathway`);
     await page.waitForTimeout(300);
-    await shot(page, `q208-flat-pathway-${tag}`);
+    await shot(page, `q214-grades-${tag}`);
+    // A skill in a folded band opens with its band.
+    const oneBand = plan.locator(
+      `[data-plan-band]:has([data-plan-skill="${oneFilm.id}"])`,
+    );
+    if (!(await oneBand.locator("details[open]").count()))
+      await oneBand.locator("summary").click();
     await plan.locator(`[data-plan-skill="${oneFilm.id}"]`).click();
     await page
       .getByRole("heading", { name: oneFilm.title, exact: true })
@@ -573,22 +650,37 @@ for (const width of widths)
     await fixture(far);
     const inView = async (id: string) =>
       far.evaluate((skill) => {
-        const plan = document.querySelector(".pathways-plan")!;
-        const head = plan.firstElementChild as HTMLElement;
-        const box = plan.getBoundingClientRect();
-        const top =
-          box.top +
-          (getComputedStyle(head).display === "none" ? 0 : head.offsetHeight);
-        const el = plan
+        const el = document
           .querySelector(`[data-plan-skill="${skill}"]`)!
           .getBoundingClientRect();
-        return el.top >= top - 1 && el.bottom <= box.bottom + 1;
+        const bar = parseFloat(
+          getComputedStyle(document.documentElement).scrollPaddingTop,
+        );
+        return (
+          el.height > 0 && el.top >= bar - 1 && el.bottom <= innerHeight + 1
+        );
       }, id);
     await far.goto(`${origin}/pathways?open=skill:${farSkill.id}`);
     await far
       .getByRole("heading", { name: farSkill.title, exact: true })
       .waitFor();
-    assert(await inView(farSkill.id), `${tag}: an address's skill is in view`);
+    assert(
+      await inView(farSkill.id),
+      `${tag}: an address's skill is in view ${await far.evaluate(
+        (skill) =>
+          JSON.stringify({
+            y: scrollY,
+            h: document.documentElement.scrollHeight,
+            vh: innerHeight,
+            body: getComputedStyle(document.body).overflow,
+            html: getComputedStyle(document.documentElement).overflow,
+            rect: document
+              .querySelector(`[data-plan-skill="${skill}"]`)!
+              .getBoundingClientRect(),
+          }),
+        farSkill.id,
+      )}`,
+    );
     await far.keyboard.press("Escape");
     await far
       .getByRole("heading", { name: farSkill.title, exact: true })
@@ -654,17 +746,19 @@ for (const width of [390, 1280]) {
   assert.equal(await page.locator("canvas").count(), 0, `${tag}: grades first`);
   for (const radio of [grades, threeD])
     assert((await radio.boundingBox())!.height >= 44, `${tag}: 44 px target`);
-  const area = await page.locator(".pathways-workspace").boundingBox();
+  // The grades view flows in the page (Q-214) and 3D keeps the screen: a
+  // switch leaves the map where it starts, at the same width.
+  const where = async () => {
+    const box = (await page.locator(".pathways-workspace").boundingBox())!;
+    return { x: box.x, y: box.y, width: box.width };
+  };
+  const area = await where();
   await shot(page, `q212-grades-${tag}`);
   await threeD.click();
   await page.locator(".pathways-canvas canvas").waitFor();
   assert.match(page.url(), /[?&]view=3d\b/, `${tag}: the address says 3D`);
   assert.equal(await page.locator(".pathways-plan").count(), 0);
-  assert.deepEqual(
-    await page.locator(".pathways-workspace").boundingBox(),
-    area,
-    `${tag}: the map keeps its size`,
-  );
+  assert.deepEqual(await where(), area, `${tag}: the map starts where it did`);
   await noOverflow(page, `${tag} 3D`);
   await page.waitForTimeout(600);
   await shot(page, `q212-3d-${tag}`);
@@ -694,9 +788,9 @@ for (const width of [390, 1280]) {
   await page.locator(".pathways-plan").waitFor();
   assert.match(page.url(), /[?&]view=grades\b/);
   assert.deepEqual(
-    await page.locator(".pathways-workspace").boundingBox(),
+    await where(),
     area,
-    `${tag}: the map keeps its size back in grades`,
+    `${tag}: the map starts where it did back in grades`,
   );
   // A context lost in 3D: the grades view, and no toggle left.
   await threeD.click();

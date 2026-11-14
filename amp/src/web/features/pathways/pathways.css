@@ -176,11 +176,9 @@
 }
 .pathways-summary {
   color: var(--atlas-muted);
-  max-width: 420px;
   font-size: var(--text-label);
   line-height: 1.5;
-  margin: 0;
-  text-align: right;
+  margin: 0 0 var(--space-3);
 }
 .pathways-guest-intro {
   display: flex;
@@ -525,9 +523,6 @@
     left: 0;
     width: 270px;
     box-shadow: 0 12px 40px var(--atlas-surface);
-  }
-  .pathways-summary {
-    max-width: 260px;
   }
 }
 @media (max-width: 650px) {
@@ -926,7 +921,7 @@
   .pathways .pathways-heading {
     padding: 0;
   }
-  .pathways .pathways-heading .pathways-summary {
+  .pathways .pathways-summary {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1071,4 +1066,39 @@
   .pathways:has(.pathways-view) .pathways-workspace {
     height: max(320px, calc(100dvh - 296px));
   }
+}
+
+/* The grades view flows in the page: no screen-tall frame, no inner scroll.
+   The browser panel keeps to the screen beside or over it. */
+.pathways.is-flow {
+  height: auto;
+  min-height: calc(100dvh - var(--shell-bar, 0px));
+  overflow: visible;
+}
+.pathways.is-flow .pathways-workspace {
+  height: auto;
+  min-height: 0;
+  flex: none;
+}
+.pathways.is-flow .pathways-browser {
+  align-self: flex-start;
+  position: sticky;
+  top: calc(var(--shell-bar, 0px) + var(--space-2));
+  max-height: calc(100dvh - var(--shell-bar, 0px) - var(--space-4));
+}
+@media (max-width: 1000px) {
+  .pathways.is-flow .pathways-browser {
+    position: absolute;
+    bottom: auto;
+  }
+}
+.pathways.is-flow .pathways-footer {
+  padding-bottom: var(--space-6);
+}
+.pathways.is-flow .pathways-note[open] {
+  position: static;
+  transform: none;
+}
+.pathways .pathways-legend[hidden] {
+  display: none;
 }
