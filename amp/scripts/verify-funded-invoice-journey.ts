@@ -81,12 +81,14 @@ const offer = {
   documentPolicy: "named-student-invoice" as const,
   route: "direct-pay" as const,
   activationPolicy: "after-settlement" as const,
-  creditAgreementReference: undefined,
   instructions:
     "In ClassWallet choose Pay Vendor, select Corpora Inc and upload your invoice.",
   merchant: { ...testFundingOffer.merchant, legalName: "Corpora Inc" },
 };
 const app = buildApp({ repository, authenticate, publicUrl: origin });
+app.addHook("onError", async (_request, _reply, error) => {
+  console.error("Synthetic journey API error:", error);
+});
 await registerAccountRoutes(app, accounts, authenticate);
 await registerFamilyRoutes(app, { pool: db, authenticate });
 await registerParentFollowupRoutes(app, {
@@ -169,7 +171,7 @@ try {
           "invoice actions have 44px targets",
         );
       }
-      const email = `invoice-${randomUUID()}@example.test`;
+      const email = `parent-${width}-${theme}@example.test`;
       await page.getByLabel(/Email for/).fill(email);
       await page
         .getByLabel("Student name for the invoice")
@@ -286,7 +288,17 @@ try {
           "UPDATE amp_learners SET free_online_used=100 WHERE account_id=$1",
           [`amp|${session.user.id}`],
         );
-        await page.getByRole("button", { name: "Use this invoice" }).click();
+        const [claimResponse] = await Promise.all([
+          page.waitForResponse(
+            (response) =>
+              response
+                .url()
+                .includes(`/funding/invoices/${invoice.id}/claim`) &&
+              response.request().method() === "POST",
+          ),
+          page.getByRole("button", { name: "Use this invoice" }).click(),
+        ]);
+        assert.equal(claimResponse.status(), 200, await claimResponse.text());
         await page.waitForURL(/\/practice/);
         await page.locator("[data-problem-id]").first().waitFor();
         await shot(page, `practice-${width}-${theme}`);

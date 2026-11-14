@@ -1,3 +1,4 @@
+import { RootLink } from "../../nav/root";
 import { FrameBrand } from "../../ui/PageFrame";
 import { Loading } from "../../ui/Loading";
 import { recordPurchaseAction } from "../../lib/purchase-analytics";
@@ -143,9 +144,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     <main className={styles.panel}>
       <header className={styles.header}>
         <FrameBrand expanded />
-        <Link to="/" search={{ program: program.id }} className={styles.back}>
+        <RootLink program={program.id} className={styles.back}>
           Back to AMP
-        </Link>
+        </RootLink>
       </header>
       <p className={styles.eyebrow}>{program.name}</p>
       <h1 ref={heading} tabIndex={-1}>
