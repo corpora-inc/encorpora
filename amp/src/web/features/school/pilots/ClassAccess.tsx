@@ -245,23 +245,35 @@ export type EndedStep = {
   title: string;
   action: "seats" | "year" | "students" | null;
 };
-export function useEndedStep(place: Place): EndedStep {
-  const { end, teaches } = useClassAccess(place);
-  const rollover = !!useQuery({
-    ...orgOptions(currentSession(), place.org),
-    refetchOnMount: false,
-  }).data?.can?.includes("year.rollover");
-  if (end === "session")
+export function endedStep(
+  access: { end: "session" | "roster" | "coverage" | null; teaches: boolean },
+  /** This reader can set up the school's next year. */
+  rollover: boolean,
+): EndedStep {
+  if (access.end === "session")
     return {
       title: "This class’s school year is over",
       action: rollover ? "year" : null,
     };
-  if (end === "roster")
+  if (access.end === "roster")
     return {
       title: "None of its students can sign in today",
       action: "students",
     };
-  return { title: "Practice has ended", action: teaches ? "seats" : null };
+  return {
+    title: "Practice has ended",
+    action: access.teaches ? "seats" : null,
+  };
+}
+/** Whether this reader can set up its school's next year. */
+export function useCanRollover(place: Place) {
+  return !!useQuery({
+    ...orgOptions(currentSession(), place.org),
+    refetchOnMount: false,
+  }).data?.can?.includes("year.rollover");
+}
+export function useEndedStep(place: Place): EndedStep {
+  return endedStep(useClassAccess(place), useCanRollover(place));
 }
 
 /** A read of the class refused (401, 403, 404: this reader lost it): the

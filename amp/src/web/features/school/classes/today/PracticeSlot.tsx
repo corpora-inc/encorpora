@@ -10,8 +10,9 @@ import {
   StartPracticeButton,
   startDetail,
   useClassAccess,
+  endedStep,
   useBackoffRetry,
-  useEndedStep,
+  useCanRollover,
   useRevokeOnRefusal,
 } from "../../pilots/ClassAccess";
 import { presenceOptions } from "../api";
@@ -46,7 +47,7 @@ export function PracticeSlot(props: CodeProps) {
   const read = standing(presence);
   useRevokeOnRefusal(presence, place);
   const code = read?.class.joinCode || null;
-  const ended = useEndedStep(place);
+  const ended = endedStep(access, useCanRollover(place));
   // The server said practice opened after the code was read: read the code
   // again (CP-3 r7). Once per answer; "Checking" never outlives the reads.
   const stale =

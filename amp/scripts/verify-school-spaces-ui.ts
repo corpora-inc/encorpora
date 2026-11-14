@@ -241,6 +241,9 @@ async function noEmptyBand(page: Page, what: string) {
   const size = page.viewportSize()!;
   try {
     for (const width of [320, 390, 768, 1280]) {
+      // The decoding page must not leave this one in the background, where
+      // the browser stops its frames (and a screenshot waits for them).
+      await page.bringToFront();
       await page.setViewportSize({ width, height: 900 });
       await settled(page);
       await page.mouse.move(0, 0);
@@ -286,6 +289,7 @@ async function noEmptyBand(page: Page, what: string) {
     }
   } finally {
     await blank.close();
+    await page.bringToFront();
     await page.setViewportSize(size);
     await settled(page);
   }
