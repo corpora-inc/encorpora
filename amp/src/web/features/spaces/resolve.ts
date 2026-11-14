@@ -766,13 +766,22 @@ function teachingSpace(
     ...(demo ? (["demo-setup"] as const) : []),
     ...(start && !demo ? (["start-class"] as const) : []),
   ];
+  // The school above a class, for someone who administers or oversees it:
+  // its license, staff, calendar and settings stay two taps away even when
+  // a one-class school collapses to its class. A teacher with only their
+  // own class's rights never gets the admin screens this way.
+  const oversees = ["overview.read", "staff.read", "license.read"].some(
+    (permission) => can.has(permission),
+  );
+  const schoolHome =
+    org && lone ? (schoolTabs(org, { lone })[0]?.path ?? null) : null;
   const school: Destination[] =
-    status !== "unavailable" && !lone && (!onClass || can.has("overview.read"))
+    status !== "unavailable" && (!onClass || oversees)
       ? [
           {
             id: "school",
             label: onClass ? "School" : (org?.name ?? "School"),
-            path: `school/${orgId}`,
+            path: schoolHome ?? `school/${orgId}`,
             icon: "school",
             ...(onClass && org ? { detail: org.name } : {}),
             current: !onClass,
@@ -834,10 +843,7 @@ function teachingSpace(
             ...school,
           ],
     place: `class:${orgId}:${frame.classId}`,
-    label: klass
-      ? lone || !org
-        ? klass.name
-        : `${klass.name} · ${org.name}`
-      : null,
+    // The class and its school, by name (R16), a one-class school too.
+    label: klass ? (org ? `${klass.name} · ${org.name}` : klass.name) : null,
   };
 }
