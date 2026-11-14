@@ -683,3 +683,39 @@ test("Family Time reads every owned child: the class's, and each one practicing 
     ["local", "hosted"],
   );
 });
+
+test("D-8: a child's workbooks stay in the family's bar, its Workbooks tab current", () => {
+  for (const pathname of [
+    "/learners/pip/workbooks",
+    "/learners/pip/workbooks/2026-11-09",
+  ]) {
+    const space = resolveSpace(
+      { pathname, space: spaceOfPath(pathname) },
+      adult(power),
+    );
+    if (space.space !== "family") throw new Error(space.space);
+    assert.equal(space.learner?.id, "pip");
+    assert.equal(space.active, "workbooks");
+    // The family's own tabs, never the child's record (Overview, Pathways…).
+    assert.deepEqual(
+      space.tabs.map((tab) => tab.path),
+      [
+        `family/${A}`,
+        `family/${A}/map`,
+        `family/${A}/workbooks`,
+        `family/${A}/time`,
+        `family/${A}/reports`,
+        `family/${A}/people`,
+        `family/${A}/settings`,
+      ],
+    );
+    assert.notEqual(space.label, "Pip");
+  }
+  // A child's own record keeps its tabs.
+  const record = resolveSpace(
+    { pathname: "/overview", space: "learner", search: { learner: "pip" } },
+    adult(power),
+  );
+  if (record.space !== "family") throw new Error(record.space);
+  assert.equal(record.tabs[0]?.path, `family/${A}/kids/pip`);
+});
