@@ -47,6 +47,10 @@ try {
       },
     );
     assert.ok(signIn.ok(), `sign-in ${signIn.status()}`);
+    // Product measurement is not under test and never sent from here.
+    await context.route("**/api/v1/events", (route) =>
+      route.fulfill({ status: 202, json: {} }),
+    );
     const places = (await (
       await context.request.get(`${origin}/api/v1/families`)
     ).json()) as {

@@ -11,6 +11,7 @@ import { shellFrame } from "../src/web/features/navigation/shell-frame.js";
 import { spaceOfPath } from "../src/web/features/spaces/space.js";
 import { placeGroups } from "../src/web/features/spaces/places.js";
 import { landingFamily } from "../src/web/features/family/redirects.js";
+import { sharedAccessOf } from "../src/web/features/family/access.js";
 
 /*
  * The Family space at its own address (docs/architecture/spaces.md, P2):
@@ -543,4 +544,59 @@ test("a family's id need not be its class's org: the class comes from the projec
   );
   if (space.space !== "family") throw new Error(space.space);
   assert.equal(space.class?.id, A_CLASS);
+});
+
+test("one access line only when every child's access ends the same printed day, none soon", () => {
+  const ending = (id: string, endsAt: string) =>
+    kid(id, id, {
+      access: {
+        ...kid(id, id).access,
+        hasAccess: true,
+        grants: [
+          {
+            channel: "stripe",
+            status: "active",
+            startsAt: "2026-01-01T00:00:00Z",
+            endsAt,
+          },
+        ],
+      },
+    });
+  const now = Date.parse("2026-11-14T12:00:00Z");
+  // The same day where it's read: grouped and printed on one basis.
+  const local = (iso: string) =>
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(new Date(iso));
+  const a = "2027-01-15T02:00:00Z";
+  const b = "2027-01-15T22:00:00Z";
+  const shared = sharedAccessOf([ending("p", a), ending("w", b)], now);
+  if (local(a) === local(b)) assert.equal(shared, local(a));
+  else assert.equal(shared, null);
+  // Ending soon for either child: each row says its own.
+  assert.equal(
+    sharedAccessOf(
+      [
+        ending("p", "2026-11-20T12:00:00Z"),
+        ending("w", "2026-11-20T12:00:00Z"),
+      ],
+      now,
+    ),
+    null,
+  );
+  // A child on free problems: each row says its own.
+  assert.equal(
+    sharedAccessOf(
+      [
+        ending("p", a),
+        kid("w", "w", {
+          access: { ...kid("w", "w").access, hasAccess: false },
+        }),
+      ],
+      now,
+    ),
+    null,
+  );
 });

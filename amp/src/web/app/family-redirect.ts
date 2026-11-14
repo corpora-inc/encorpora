@@ -4,6 +4,8 @@ import { meOptions, queryClient } from "../lib/query";
 import type { SignedInMe } from "../../account/contracts";
 import { familyOptions, familyPlacesOptions } from "../features/family/api";
 import { ownClassOf } from "../features/spaces/resolve";
+import { appReturn } from "../features/spaces/returns";
+import { OPEN_KEY, readStack, writeStack } from "../nav/entities";
 import {
   familyClassTarget,
   familyOrgTarget,
@@ -124,6 +126,7 @@ export async function toFamilyPage(
       family,
       page,
       search: (location.search ?? {}) as Record<string, unknown>,
+      hash: location.hash || undefined,
       people: peopleOf(projection?.children ?? [], parent.classId),
     }),
     replace: true,
@@ -169,6 +172,7 @@ export async function toFamilyChild(
 export async function groupAddress(
   session: AuthSession,
   family: string,
+  search: Record<string, unknown> = {},
 ): Promise<string | null> {
   const [me, projection] = await Promise.all([
     queryClient.ensureQueryData(meOptions(session)).catch(() => null),
@@ -179,7 +183,18 @@ export async function groupAddress(
   const classId = projection?.teachingPlace?.classId;
   if (!classId || !me?.signedIn) return null;
   const own = ownClassOf(me, family, projection);
-  return own && own.id === classId
-    ? `/school/${own.org}/classes/${classId}/today`
-    : null;
+  if (!own || own.id !== classId) return null;
+  // A record or an answer opens over the group's Students, as the class's
+  // own addresses do; its validated layers and skill come along.
+  const stack = readStack(search[OPEN_KEY]);
+  const leaf = stack.some((layer) => layer.kind === "student")
+    ? "roster"
+    : "today";
+  const query = new URLSearchParams();
+  const open = writeStack(stack);
+  if (open) query.set(OPEN_KEY, open);
+  if (typeof search.skill === "string") query.set("skill", search.skill);
+  const path = `/school/${own.org}/classes/${classId}/${leaf}`;
+  const text = query.toString();
+  return appReturn(text ? `${path}?${text}` : path) ?? path;
 }

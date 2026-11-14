@@ -1,13 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useRouterState,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { LayerHost } from "../../nav/LayerHost";
-import { workParts, type Entity } from "../../nav/entities";
-import { peopleOf } from "./redirects";
+import { OPEN_KEY, workParts, type Entity } from "../../nav/entities";
+import { familyOrgTarget, peopleOf } from "./redirects";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { LoadingScreen } from "../../ui/LoadingScreen";
@@ -59,6 +64,43 @@ export const childOf = (data: FamilyProjection | undefined, id: string) =>
  * the layers opened over the page (a skill, a lesson, one of a child's
  * answers).
  */
+/**
+ * An address that opens one of the family's own children by their roster
+ * person (`?open=student:<person>`, a link from before): the child's own
+ * page instead, their answers over it, in a parent's words. Never the
+ * school's student record inside the family.
+ */
+function useOwnChildLayer(place: FamilyPlace) {
+  const navigate = useNavigate();
+  const search = useRouterState({
+    select: (state) => state.location.search as Record<string, unknown>,
+  });
+  const open = search[OPEN_KEY];
+  const target =
+    place.data && place.own && typeof open === "string"
+      ? familyOrgTarget({
+          family: place.family,
+          page: "today",
+          search: {
+            [OPEN_KEY]: open,
+            ...(typeof search.skill === "string"
+              ? { skill: search.skill }
+              : {}),
+          },
+          people: peopleOf(place.data.children, place.own.id),
+        })
+      : null;
+  const to = target && target.to.includes("/kids/") ? target : null;
+  useEffect(() => {
+    if (to)
+      void navigate({
+        to: to.to,
+        search: to.search as never,
+        replace: true,
+      } as never);
+  }, [to?.to, JSON.stringify(to?.search)]);
+}
+
 export function FamilyFrame({
   place,
   loading = false,
@@ -73,6 +115,7 @@ export function FamilyFrame({
   children: ReactNode;
 }) {
   const { query, data } = place;
+  useOwnChildLayer(place);
   const content = (body: ReactNode) => (
     <main
       id="family-content"
@@ -142,8 +185,9 @@ export const familyHref = (family: string, leaf = "") =>
  */
 export function ownLayer(place: FamilyPlace, entity: Entity): boolean {
   if (entity.kind !== "student" && entity.kind !== "work") return true;
+  // A child's record is their own page here, never the school's layer.
+  if (entity.kind === "student") return false;
   if (!place.own || !place.data) return false;
-  const person =
-    entity.kind === "student" ? entity.id : workParts(entity.id).student;
+  const person = workParts(entity.id).student;
   return peopleOf(place.data.children, place.own.id).has(person);
 }

@@ -12,6 +12,7 @@ import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
 import { calendarOptions, orgOptions } from "../school/api";
 import { EditSheet } from "../school/CalendarScreen";
+import { FamilyPracticeDefaults } from "./Practice";
 import {
   CoTeacherInviteSheet,
   CoTeacherRows,
@@ -291,7 +292,10 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
   const [editing, setEditing] = useState(false);
   const year = calendar.data?.find((entry) => entry.kind === "year");
   if (!place.own || !org.data?.can?.includes("calendar.read")) return null;
-  const canEdit = !!org.data.can.includes("calendar.write");
+  // The year is the class's: with other families' children in it, it is
+  // the tutoring group's to change, where that scope is said.
+  const shared = !!place.data?.teachingPlace;
+  const canEdit = !shared && !!org.data.can.includes("calendar.write");
   return (
     <section className={styles.section} aria-labelledby="family-year">
       <h2 id="family-year">School year</h2>
@@ -327,9 +331,24 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
         </div>
       </dl>
       <p className={styles.footnote}>
-        Report cards and the time records count from the first day.
+        {shared
+          ? "Your tutoring group shares this year, so its dates are changed with the group, for everyone in it."
+          : "Report cards and the time records count from the first day."}
       </p>
-      {editing && year && (
+      {shared && org.data.can.includes("calendar.write") && (
+        <Link
+          to="/$"
+          params={{
+            _splat: `school/${place.own.org}/classes/${place.own.id}/settings`,
+          }}
+          className={buttonClass("secondary")}
+          style={{ justifySelf: "start" }}
+          data-group-calendar=""
+        >
+          Open the group’s calendar
+        </Link>
+      )}
+      {editing && year && !shared && (
         <EditSheet
           orgId={orgId}
           session={year}
@@ -399,6 +418,7 @@ export function FamilySettingsScreen() {
             )}
           </section>
           <SchoolYear place={place} />
+          <FamilyPracticeDefaults place={place} />
           <section className={styles.section} aria-labelledby="family-account">
             <h2 id="family-account">Your account</h2>
             <p className={styles.footnote}>

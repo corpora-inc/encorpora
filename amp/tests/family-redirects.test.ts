@@ -130,14 +130,11 @@ test("Grades and report cards are the family's records, with their term and year
 });
 
 test("Time, with its week and child, through the one return contract", () => {
-  assert.deepEqual(
-    go(["time"], { week: "2026-11-09", from: "a", to: "b", student: P_PIP }),
-    {
-      to: `/family/${F}/time`,
-      // A `from` that isn't a day is never carried (it could be a return).
-      search: { week: "2026-11-09", to: "b", student: P_PIP },
-    },
-  );
+  assert.deepEqual(go(["time"], { week: "2026-11-09", from: "a", to: "b" }), {
+    to: `/family/${F}/time`,
+    // A `from` that isn't a day is never carried (it could be a return).
+    search: { week: "2026-11-09", to: "b" },
+  });
   assert.deepEqual(
     go(["time"], { from: "2026-10-01", to: "2026-11-01" }).search,
     { to: "2026-11-01", from: "2026-10-01" },
@@ -190,7 +187,7 @@ test("Workbooks keep their identity: a day's set, the stack's day, minutes, pape
 
 test("People, cards and the sign-in board are People and their own devices", () => {
   assert.deepEqual(go(["roster"]), { to: `/family/${F}/people`, search: {} });
-  assert.deepEqual(go(["cards"], { student: P_PIP }), {
+  assert.deepEqual(go(["cards"]), {
     to: `/family/${F}/people`,
     search: { devices: 1 },
   });
@@ -202,10 +199,6 @@ test("People, cards and the sign-in board are People and their own devices", () 
 
 test("Settings and what children see are Settings; a fragment is never carried", () => {
   assert.deepEqual(go(["settings"], {}, "access_token=secret"), {
-    to: `/family/${F}/settings`,
-    search: {},
-  });
-  assert.deepEqual(go(["experience"]), {
     to: `/family/${F}/settings`,
     search: {},
   });
@@ -286,4 +279,55 @@ test("only a parent of that family is redirected; a co-teacher keeps the class",
   });
   assert.equal(parentFamilyAt(teacher, F), null);
   assert.equal(parentFamilyAt(null, F), null);
+});
+
+test("one child's time, by their roster person, is their page's weeks", () => {
+  assert.deepEqual(
+    go(["time"], { period: "month", chart: "problems", student: P_WREN }),
+    { to: `/family/${F}/kids/wren`, search: {} },
+  );
+});
+
+test("one child's sign-in card prints on its own; another family's never here", () => {
+  assert.deepEqual(go(["cards"], { student: P_PIP }), {
+    to: `/family/${F}/cards`,
+    search: { student: P_PIP },
+  });
+  assert.deepEqual(go(["cards"], { student: P_ZED }), {
+    to: `/family/${F}/people`,
+    search: { devices: 1 },
+  });
+});
+
+test("what children see is the family's practice defaults; school-level anchors survive", () => {
+  assert.deepEqual(go(["experience"]), {
+    to: `/family/${F}/settings`,
+    search: {},
+    hash: "family-practice",
+  });
+  assert.deepEqual(
+    familyOrgTarget({
+      family: F,
+      page: "settings",
+      search: {},
+      hash: "family-year",
+    }),
+    { to: `/family/${F}/settings`, search: {}, hash: "family-year" },
+  );
+  assert.deepEqual(
+    familyOrgTarget({
+      family: F,
+      page: "settings",
+      search: {},
+      hash: "token=secret",
+    }),
+    { to: `/family/${F}/settings`, search: {} },
+  );
+});
+
+test("another family's record or answer keeps its layers and skill on the way to the group", () => {
+  assert.deepEqual(go(["map", P_ZED, "work", "abcdef12"], { skill: "add" }), {
+    to: `/family/${F}/group`,
+    search: { skill: "add", open: `student:${P_ZED},work:${P_ZED}.abcdef12` },
+  });
 });

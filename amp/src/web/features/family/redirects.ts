@@ -129,6 +129,10 @@ function leafFor(parts: readonly string[]): {
   person?: string;
   attempt?: string;
   devices?: true;
+  /** A Settings section this leaf opens at. */
+  section?: string;
+  /** A sign-in card print for one child. */
+  cards?: true;
 } {
   const [first = "today", second, third, fourth] = parts;
   switch (first) {
@@ -152,12 +156,14 @@ function leafFor(parts: readonly string[]): {
       return { leaf: "people" };
     // Cards and the sign-in board are the children's own devices.
     case "cards":
-      return { leaf: "people", devices: true };
+      return { leaf: "people", devices: true, cards: true };
     case "start":
       return { leaf: "", devices: true };
     case "settings":
-    case "experience":
       return { leaf: "settings" };
+    // What children see: the family's practice defaults.
+    case "experience":
+      return { leaf: "settings", section: "family-practice" };
     default:
       // Import, and any leaf the family doesn't have: its unavailable view.
       return { leaf: first };
@@ -196,7 +202,10 @@ export function familyClassTarget({
     if (!named)
       return viaReturn(
         familyPath(family, "group"),
-        withOpen({}, [{ kind: "student", id: target.person }, ...answer]),
+        withOpen(pick(search, ["skill"]), [
+          { kind: "student", id: target.person },
+          ...answer,
+        ]),
       );
     return viaReturn(
       familyPath(family, `kids/${named}`),
@@ -211,6 +220,19 @@ export function familyClassTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
+  // One child's view, named by their roster person: their time is their
+  // page's weeks; their card prints on its own.
+  const selected =
+    typeof search.student === "string" ? people.get(search.student) : undefined;
+  if (target.leaf === "time" && selected)
+    return viaReturn(
+      familyPath(family, `kids/${selected}`),
+      withOpen({}, rest),
+    );
+  if (target.cards && typeof search.student === "string" && selected)
+    return viaReturn(familyPath(family, "cards"), {
+      student: search.student,
+    });
   const keys =
     CARRIED[target.leaf] ??
     (target.leaf.startsWith("workbooks")
@@ -237,8 +259,9 @@ export function familyClassTarget({
     withOpen(pick(search, keys), rest),
     opens,
   );
-  return target.leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
-    ? { ...result, hash }
+  const section = target.section ?? hash;
+  return target.leaf === "settings" && section && SETTINGS_SECTIONS.has(section)
+    ? { ...result, hash: section }
     : result;
 }
 
@@ -246,6 +269,7 @@ export function familyClassTarget({
 const SETTINGS_SECTIONS = new Set([
   "family-children",
   "family-year",
+  "family-practice",
   "family-account",
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -280,6 +304,7 @@ export function familyOrgTarget({
   family,
   page,
   search,
+  hash,
   people = new Map(),
 }: {
   family: string;
@@ -300,7 +325,10 @@ export function familyOrgTarget({
       familyPath(family, `kids/${learner}`),
       withOpen(pick(search, ["skill"]), rest),
     );
-  return viaReturn(familyPath(family, leaf), search);
+  const result = viaReturn(familyPath(family, leaf), search);
+  return leaf === "settings" && hash && SETTINGS_SECTIONS.has(hash)
+    ? { ...result, hash }
+    : result;
 }
 
 /** The person→learner map of a family's own children in its class. */

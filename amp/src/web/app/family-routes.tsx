@@ -165,11 +165,12 @@ export function familyRoutes(root: AnyRoute) {
       createRoute({
         getParentRoute: () => family,
         path: "group",
-        beforeLoad: async ({ context, params }) => {
+        beforeLoad: async ({ context, params, location }) => {
           const { session } = context as unknown as { session: AuthSession };
           const group = await groupAddress(
             session,
             (params as { family: string }).family,
+            location.search as Record<string, unknown>,
           );
           if (group) throw redirect({ href: group, replace: true });
         },

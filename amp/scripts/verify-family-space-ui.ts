@@ -55,6 +55,11 @@ async function signedIn(
   );
   if (!response.ok())
     throw new Error(`${persona} sign-in ${response.status()}`);
+  // Product measurement is not under test: the harness never sends it, so
+  // its rate limit can't fail a page (and nothing is measured).
+  await context.route("**/api/v1/events", (route) =>
+    route.fulfill({ status: 202, json: {} }),
+  );
   await context.addInitScript(() => {
     (window as unknown as { __shift: number }).__shift = 0;
     new PerformanceObserver((list) => {
@@ -79,24 +84,45 @@ async function settle(page: Page) {
 async function check(page: Page, where: string, words = true) {
   const result = await page.evaluate(() => {
     const overflow = document.documentElement.scrollWidth - window.innerWidth;
-    const small = [
+    // The effective target, measured by hit testing: 44 px across both
+    // ways through the control's centre must land on the control itself (a
+    // drawn-out ::after counts only if it really takes the pointer).
+    const controls = [
       ...document.querySelectorAll<HTMLElement>(
         "main button, main a[href], header button, header a[href], [role=switch], [role=dialog] button, [role=dialog] a[href]",
       ),
-    ]
-      .filter((element) => {
-        const box = element.getBoundingClientRect();
-        if (!box.width || !box.height) return false;
-        // The effective target: the element, or the hit area its ::after
-        // draws out around it, measured, never assumed.
-        const after = getComputedStyle(element, "::after");
-        const drawn =
-          after.position === "absolute" && after.content !== "none"
-            ? parseFloat(after.height) || 0
-            : 0;
-        return Math.max(box.height, drawn) < 43.5;
-      })
-      .map((element) => (element.textContent ?? "").trim().slice(0, 40));
+    ].filter((element) => {
+      const box = element.getBoundingClientRect();
+      return (
+        box.width > 0 &&
+        box.height > 0 &&
+        !element.closest("[aria-hidden=true]")
+      );
+    });
+    const small: string[] = [];
+    for (const element of controls) {
+      element.scrollIntoView({ block: "center", inline: "center" });
+      const box = element.getBoundingClientRect();
+      const x = box.left + box.width / 2;
+      const y = box.top + box.height / 2;
+      const owns = (px: number, py: number) => {
+        const hit = document.elementFromPoint(px, py);
+        return !!hit && (hit === element || element.contains(hit));
+      };
+      const reach = 21.5;
+      if (!(
+        owns(x, y - reach) &&
+        owns(x, y + reach) &&
+        owns(x - reach, y) &&
+        owns(x + reach, y)
+      ))
+        small.push(
+          (element.textContent ?? element.getAttribute("aria-label") ?? "")
+            .trim()
+            .slice(0, 40),
+        );
+    }
+    window.scrollTo(0, 0);
     const text = [
       document.querySelector("header")?.textContent ?? "",
       document.querySelector("main")?.textContent ?? "",
@@ -326,6 +352,20 @@ try {
         await power.request.get(`${origin}/api/v1/families/${id}/teaching`)
       ).json()) as { students: { id: string; name: string }[] };
       const hosted = teaching.students.find((student) => student.name === "JR");
+      // One of the family's own children named by their roster person: their
+      // own page, never the school's record layer.
+      const ownPerson = teaching.students.find(
+        (student) => student.name === "Pip",
+      );
+      if (ownPerson) {
+        await tour.goto(`${origin}/family/${id}?open=student:${ownPerson.id}`);
+        await tour.waitForURL(/\/kids\//, { timeout: 30_000 }).catch(() => {});
+        if (!/\/family\/[0-9a-f-]+\/kids\//.test(tour.url()))
+          fail(`power-own-layer-${tag}`, `landed on ${tour.url()}`);
+        const text = (await tour.textContent("body")) ?? "";
+        if (/this student|on the roster/.test(text))
+          fail(`power-own-layer-${tag}`, "school words on a child's record");
+      }
       if (hosted) {
         await tour.goto(`${origin}/family/${id}?open=student:${hosted.id}`);
         await settle(tour);

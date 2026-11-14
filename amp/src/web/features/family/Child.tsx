@@ -25,6 +25,7 @@ import { TryAsStudent } from "../profiles/TryAsStudent";
 import { PrintButton } from "../../ui/PrintButton";
 import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { SatMathFocus } from "../practice/SatMathFocus";
+import { ChildPracticeSettings } from "./Practice";
 import { rememberContinuation } from "../continue/memory";
 import {
   RecordLevels,
@@ -346,6 +347,7 @@ function ChildSettings({
   const practice =
     caps.changePracticeSettings && !!summary && (age === null || age >= 13);
   const rows = [
+    caps.changePracticeSettings,
     practice,
     caps.rename || caps.changeBirthYear || !!child.birthYear,
     caps.manageConsent,
@@ -436,6 +438,9 @@ function ChildSettings({
               />
             </div>
           </div>
+        )}
+        {caps.changePracticeSettings && (
+          <ChildPracticeSettings place={place} child={child} />
         )}
         {practice && summary && (
           <div className={styles.setting} data-practice-settings="">

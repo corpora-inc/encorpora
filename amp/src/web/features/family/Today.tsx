@@ -15,15 +15,11 @@ import { WeekFacts } from "../school/classes/today/WeekFacts";
 import { fullDay } from "../school/classes/teacher-shared";
 import type { FamilyChild } from "./api";
 import { AddKidsSheet } from "./AddKids";
+import { accessUntil, sharedAccessOf } from "./access";
 import { DevicesSheet } from "./Devices";
 import { FamilyFrame, familyHref, useFamilyPlace } from "./FamilyFrame";
 import styles from "./Family.module.css";
 
-const DATE = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
 const count = (n: number, one: string, many = `${one}s`) =>
   `${n} ${n === 1 ? one : many}`;
 
@@ -35,39 +31,6 @@ export function Fact({ value, label }: { value: string; label: string }) {
       <span className={styles.factLabel}>{label}</span>
     </span>
   );
-}
-
-/** The latest active grant's end, when the child has access. */
-export function accessUntil(child: FamilyChild): string | null {
-  const ends = child.access.grants
-    .filter((grant) => grant.status === "active")
-    .map((grant) => grant.endsAt)
-    .sort();
-  const last = ends.at(-1);
-  return last ? DATE.format(new Date(last)) : null;
-}
-
-const SOON_MS = 30 * 86_400_000;
-/** One access line for the whole family when every child has the same
- * access, ending the same day and not soon; otherwise each row says its
- * own (a different date, ending soon, or free problems left). */
-export function sharedAccessOf(children: readonly FamilyChild[]) {
-  if (children.length < 2) return null;
-  const ends = children.map((child) =>
-    child.access.hasAccess
-      ? child.access.grants
-          .filter((grant) => grant.status === "active")
-          .map((grant) => grant.endsAt)
-          .sort()
-          .at(-1)
-      : undefined,
-  );
-  // The same day is the same access (grants made together differ by ms).
-  const first = ends[0];
-  const day = (end: string | undefined) => end?.slice(0, 10);
-  if (!first || ends.some((end) => day(end) !== day(first))) return null;
-  if (Date.parse(first) - Date.now() < SOON_MS) return null;
-  return accessUntil(children[0]!);
 }
 
 /** Access, or the free problems left: what lets this child practice. */

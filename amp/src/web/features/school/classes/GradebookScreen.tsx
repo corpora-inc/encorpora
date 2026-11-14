@@ -606,7 +606,9 @@ export function GradebookScreen({ host: given }: { host?: ClassHost } = {}) {
                 <div className={styles.toolbarMain}>
                   {term.state === "closed" ? (
                     <Badge>Closed</Badge>
-                  ) : data.canEdit ? (
+                  ) : data.canEdit && whole ? (
+                    // The class's weekly target grades everyone in it: set
+                    // only where this page shows the whole class.
                     <WeeklyTarget
                       session={session}
                       place={place}
