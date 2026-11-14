@@ -2582,6 +2582,27 @@
       }
     ]
   },
+  "mcas-sci-notation-select": {
+    "id": "scientific-to-standard--ss",
+    "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+    "title": "Scientific notation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+    "duration": 165.83,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+        "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+        "duration": 165.83
+      }
+    ]
+  },
   "mcas-slope-sign-description": {
     "id": "graphed-line-slope--sl",
     "version": "e3e90764e7b92bee13d9d3134a24affa02e8994caf0886836a62ded9947f92db",
@@ -3649,6 +3670,27 @@
       }
     ]
   },
+  "repeating-decimal-to-fraction": {
+    "id": "repeating-decimal-to-fraction--sr",
+    "version": "94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18",
+    "title": "Why repeating decimals are fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/repeating-decimal-to-fraction--sr/94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/repeating-decimal-to-fraction--sr/94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18/audio.m4a",
+    "duration": 153.84,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/repeating-decimal-to-fraction--sr/94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/repeating-decimal-to-fraction--sr/94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18/audio.m4a",
+        "version": "94c7f19809cb72717a34e016a012871fdd9ab0f2978a8520e26d499563ca8c18",
+        "duration": 153.84
+      }
+    ]
+  },
   "right-triangle": {
     "id": "right-triangle--sr",
     "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
@@ -3688,6 +3730,27 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/right-triangle--sr/40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6/audio.m4a",
         "version": "40a37b74897b1e8be613c0e942d838db0ec5b40bcc7b5a8d0e281a39720bc9c6",
         "duration": 194.76
+      }
+    ]
+  },
+  "root-between-integers": {
+    "id": "root-between-integers--sr",
+    "version": "a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d",
+    "title": "A square root: from area to side",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/root-between-integers--sr/a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/root-between-integers--sr/a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d/audio.m4a",
+    "duration": 141.12,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/root-between-integers--sr/a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/root-between-integers--sr/a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d/audio.m4a",
+        "version": "a6558917548a915f96e05b459ffca03a141eb9202f4451a414e4ae2c88b11b1d",
+        "duration": 141.12
       }
     ]
   },
@@ -3885,6 +3948,27 @@
       }
     ]
   },
+  "scientific-to-standard": {
+    "id": "scientific-to-standard--ss",
+    "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+    "title": "Scientific notation",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+    "duration": 165.83,
+    "teacher": "Paul",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/scientific-to-standard--ss/e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace/audio.m4a",
+        "version": "e8664efb15d725bb679f496686074fabf3520d4b9eed70fe9634c527ae236ace",
+        "duration": 165.83
+      }
+    ]
+  },
   "series-recursion": {
     "id": "arithmetic-distant-term--sq",
     "version": "7c8d6e169c2697fa7658e42fc371ea85a55320cd1d541d2345bbbbcdae75f7a1",
@@ -4079,6 +4163,28 @@
         "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/array-add-rows-total--sa/ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5/audio.m4a",
         "version": "ec8aac943e93c8c0f731987d916c06545eecc4dd2b495cc991995a6bb523fed5",
         "duration": 109.33
+      }
+    ]
+  },
+  "solid-bottom-face-shape": {
+    "id": "solid-bottom-face-shape--ss",
+    "version": "4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298",
+    "title": "Name a solid by its faces",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-bottom-face-shape--ss/4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-bottom-face-shape--ss/4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298/audio.m4a",
+    "duration": 128.10002267573697,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v4",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "XescS24CsOySAkKrLAO3",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-bottom-face-shape--ss/4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/solid-bottom-face-shape--ss/4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298/audio.m4a",
+        "version": "4f3f37848f1624802ff87459bf5f74bc78650885734e7e1e260174d31046a298",
+        "duration": 128.10002267573697
       }
     ]
   },

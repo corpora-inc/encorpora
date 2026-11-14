@@ -1,0 +1,8838 @@
+{
+  "id": "scientific-to-standard--ss",
+  "title": "Scientific notation",
+  "teaches": [
+    "mcas-sci-notation-select"
+  ],
+  "cast": {
+    "teacher": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -3,
+          5.7,
+          2
+        ],
+        "points": {
+          "BL": [
+            -0.35,
+            -1.8699999999999999
+          ],
+          "BR": [
+            5.35,
+            -1.8699999999999999
+          ],
+          "TR": [
+            5.35,
+            0.15
+          ],
+          "TL": [
+            -0.35,
+            0.15
+          ],
+          "A": [
+            0,
+            0.48
+          ],
+          "E": [
+            5,
+            0.48
+          ],
+          "EA": [
+            5,
+            0.22
+          ],
+          "EB": [
+            5,
+            0.75
+          ],
+          "nameP": [
+            2.5,
+            1.75
+          ],
+          "countP": [
+            2.5,
+            1.05
+          ],
+          "bL": [
+            2,
+            -2.0500000000000003
+          ],
+          "bR": [
+            2.5,
+            -2.0500000000000003
+          ],
+          "bLT": [
+            2,
+            -1.8699999999999999
+          ],
+          "bRT": [
+            2.5,
+            -1.8699999999999999
+          ],
+          "scaleP": [
+            2.5,
+            -2.62
+          ],
+          "t0A": [
+            0.0,
+            0.15
+          ],
+          "t0B": [
+            0.0,
+            -0.38
+          ],
+          "t1A": [
+            0.5,
+            0.15
+          ],
+          "t1B": [
+            0.5,
+            -0.15
+          ],
+          "t2A": [
+            1.0,
+            0.15
+          ],
+          "t2B": [
+            1.0,
+            -0.38
+          ],
+          "t3A": [
+            1.5,
+            0.15
+          ],
+          "t3B": [
+            1.5,
+            -0.15
+          ],
+          "t4A": [
+            2.0,
+            0.15
+          ],
+          "t4B": [
+            2.0,
+            -0.38
+          ],
+          "t5A": [
+            2.5,
+            0.15
+          ],
+          "t5B": [
+            2.5,
+            -0.15
+          ],
+          "t6A": [
+            3.0,
+            0.15
+          ],
+          "t6B": [
+            3.0,
+            -0.38
+          ],
+          "t7A": [
+            3.5,
+            0.15
+          ],
+          "t7B": [
+            3.5,
+            -0.15
+          ],
+          "t8A": [
+            4.0,
+            0.15
+          ],
+          "t8B": [
+            4.0,
+            -0.38
+          ],
+          "t9A": [
+            4.5,
+            0.15
+          ],
+          "t9B": [
+            4.5,
+            -0.15
+          ],
+          "t10A": [
+            5.0,
+            0.15
+          ],
+          "t10B": [
+            5.0,
+            -0.15
+          ],
+          "s0P0": [
+            0.0,
+            -0.9
+          ],
+          "s0P2": [
+            1.0,
+            -1.32
+          ],
+          "s0P4": [
+            2.0,
+            -0.9
+          ],
+          "s0P6": [
+            3.0,
+            -1.32
+          ],
+          "s0P8": [
+            4.0,
+            -0.9
+          ],
+          "s0P10": [
+            5.25,
+            -1.32
+          ],
+          "s1P0": [
+            0.0,
+            -1.05
+          ],
+          "s1P2": [
+            1.0,
+            -1.47
+          ],
+          "s1P4": [
+            2.0,
+            -1.05
+          ],
+          "s1P6": [
+            3.0,
+            -1.47
+          ],
+          "s1P8": [
+            4.0,
+            -1.05
+          ],
+          "s1P10": [
+            5.25,
+            -1.47
+          ],
+          "z11A": [
+            0.5,
+            0.15
+          ],
+          "z11B": [
+            0.5,
+            -0.15
+          ],
+          "z12A": [
+            1.0,
+            0.15
+          ],
+          "z12B": [
+            1.0,
+            -0.38
+          ],
+          "z13A": [
+            1.5,
+            0.15
+          ],
+          "z13B": [
+            1.5,
+            -0.15
+          ],
+          "z14A": [
+            2.0,
+            0.15
+          ],
+          "z14B": [
+            2.0,
+            -0.38
+          ],
+          "z15A": [
+            2.5,
+            0.15
+          ],
+          "z15B": [
+            2.5,
+            -0.15
+          ],
+          "z16A": [
+            3.0,
+            0.15
+          ],
+          "z16B": [
+            3.0,
+            -0.38
+          ],
+          "z17A": [
+            3.5,
+            0.15
+          ],
+          "z17B": [
+            3.5,
+            -0.15
+          ],
+          "z18A": [
+            4.0,
+            0.15
+          ],
+          "z18B": [
+            4.0,
+            -0.38
+          ],
+          "z19A": [
+            4.5,
+            0.15
+          ],
+          "z19B": [
+            4.5,
+            -0.15
+          ],
+          "z110A": [
+            5.0,
+            0.15
+          ],
+          "z110B": [
+            5.0,
+            -0.15
+          ],
+          "s2P0": [
+            0.0,
+            -1.05
+          ],
+          "s2P2": [
+            1.0,
+            -1.47
+          ],
+          "s2P4": [
+            2.0,
+            -1.05
+          ],
+          "s2P6": [
+            3.0,
+            -1.47
+          ],
+          "s2P8": [
+            4.0,
+            -1.05
+          ],
+          "s2P10": [
+            5.25,
+            -1.47
+          ],
+          "z21A": [
+            0.5,
+            0.15
+          ],
+          "z21B": [
+            0.5,
+            -0.15
+          ],
+          "z22A": [
+            1.0,
+            0.15
+          ],
+          "z22B": [
+            1.0,
+            -0.38
+          ],
+          "z23A": [
+            1.5,
+            0.15
+          ],
+          "z23B": [
+            1.5,
+            -0.15
+          ],
+          "z24A": [
+            2.0,
+            0.15
+          ],
+          "z24B": [
+            2.0,
+            -0.38
+          ],
+          "z25A": [
+            2.5,
+            0.15
+          ],
+          "z25B": [
+            2.5,
+            -0.15
+          ],
+          "z26A": [
+            3.0,
+            0.15
+          ],
+          "z26B": [
+            3.0,
+            -0.38
+          ],
+          "z27A": [
+            3.5,
+            0.15
+          ],
+          "z27B": [
+            3.5,
+            -0.15
+          ],
+          "z28A": [
+            4.0,
+            0.15
+          ],
+          "z28B": [
+            4.0,
+            -0.38
+          ],
+          "z29A": [
+            4.5,
+            0.15
+          ],
+          "z29B": [
+            4.5,
+            -0.15
+          ],
+          "z210A": [
+            5.0,
+            0.15
+          ],
+          "z210B": [
+            5.0,
+            -0.15
+          ],
+          "s3P0": [
+            0.0,
+            -1.05
+          ],
+          "s3P2": [
+            1.0,
+            -1.47
+          ],
+          "s3P4": [
+            2.0,
+            -1.05
+          ],
+          "s3P6": [
+            3.0,
+            -1.47
+          ],
+          "s3P8": [
+            4.0,
+            -1.05
+          ],
+          "s3P10": [
+            5.25,
+            -1.47
+          ],
+          "z31A": [
+            0.5,
+            0.15
+          ],
+          "z31B": [
+            0.5,
+            -0.15
+          ],
+          "z32A": [
+            1.0,
+            0.15
+          ],
+          "z32B": [
+            1.0,
+            -0.38
+          ],
+          "z33A": [
+            1.5,
+            0.15
+          ],
+          "z33B": [
+            1.5,
+            -0.15
+          ],
+          "z34A": [
+            2.0,
+            0.15
+          ],
+          "z34B": [
+            2.0,
+            -0.38
+          ],
+          "z35A": [
+            2.5,
+            0.15
+          ],
+          "z35B": [
+            2.5,
+            -0.15
+          ],
+          "z36A": [
+            3.0,
+            0.15
+          ],
+          "z36B": [
+            3.0,
+            -0.38
+          ],
+          "z37A": [
+            3.5,
+            0.15
+          ],
+          "z37B": [
+            3.5,
+            -0.15
+          ],
+          "z38A": [
+            4.0,
+            0.15
+          ],
+          "z38B": [
+            4.0,
+            -0.38
+          ],
+          "z39A": [
+            4.5,
+            0.15
+          ],
+          "z39B": [
+            4.5,
+            -0.15
+          ],
+          "z310A": [
+            5.0,
+            0.15
+          ],
+          "z310B": [
+            5.0,
+            -0.15
+          ],
+          "s4P0": [
+            0.0,
+            -1.05
+          ],
+          "s4P2": [
+            1.0,
+            -1.47
+          ],
+          "s4P4": [
+            2.0,
+            -1.05
+          ],
+          "s4P6": [
+            3.0,
+            -1.47
+          ],
+          "s4P8": [
+            4.0,
+            -1.05
+          ],
+          "s4P10": [
+            5.25,
+            -1.47
+          ],
+          "z41A": [
+            0.5,
+            0.15
+          ],
+          "z41B": [
+            0.5,
+            -0.15
+          ],
+          "z42A": [
+            1.0,
+            0.15
+          ],
+          "z42B": [
+            1.0,
+            -0.38
+          ],
+          "z43A": [
+            1.5,
+            0.15
+          ],
+          "z43B": [
+            1.5,
+            -0.15
+          ],
+          "z44A": [
+            2.0,
+            0.15
+          ],
+          "z44B": [
+            2.0,
+            -0.38
+          ],
+          "z45A": [
+            2.5,
+            0.15
+          ],
+          "z45B": [
+            2.5,
+            -0.15
+          ],
+          "z46A": [
+            3.0,
+            0.15
+          ],
+          "z46B": [
+            3.0,
+            -0.38
+          ],
+          "z47A": [
+            3.5,
+            0.15
+          ],
+          "z47B": [
+            3.5,
+            -0.15
+          ],
+          "z48A": [
+            4.0,
+            0.15
+          ],
+          "z48B": [
+            4.0,
+            -0.38
+          ],
+          "z49A": [
+            4.5,
+            0.15
+          ],
+          "z49B": [
+            4.5,
+            -0.15
+          ],
+          "z410A": [
+            5.0,
+            0.15
+          ],
+          "z410B": [
+            5.0,
+            -0.15
+          ],
+          "s5P0": [
+            0.0,
+            -1.05
+          ],
+          "s5P2": [
+            1.0,
+            -1.47
+          ],
+          "s5P4": [
+            2.0,
+            -1.05
+          ],
+          "s5P6": [
+            3.0,
+            -1.47
+          ],
+          "s5P8": [
+            4.0,
+            -1.05
+          ],
+          "s5P10": [
+            5.25,
+            -1.47
+          ],
+          "z51A": [
+            0.5,
+            0.15
+          ],
+          "z51B": [
+            0.5,
+            -0.15
+          ],
+          "z52A": [
+            1.0,
+            0.15
+          ],
+          "z52B": [
+            1.0,
+            -0.38
+          ],
+          "z53A": [
+            1.5,
+            0.15
+          ],
+          "z53B": [
+            1.5,
+            -0.15
+          ],
+          "z54A": [
+            2.0,
+            0.15
+          ],
+          "z54B": [
+            2.0,
+            -0.38
+          ],
+          "z55A": [
+            2.5,
+            0.15
+          ],
+          "z55B": [
+            2.5,
+            -0.15
+          ],
+          "z56A": [
+            3.0,
+            0.15
+          ],
+          "z56B": [
+            3.0,
+            -0.38
+          ],
+          "z57A": [
+            3.5,
+            0.15
+          ],
+          "z57B": [
+            3.5,
+            -0.15
+          ],
+          "z58A": [
+            4.0,
+            0.15
+          ],
+          "z58B": [
+            4.0,
+            -0.38
+          ],
+          "z59A": [
+            4.5,
+            0.15
+          ],
+          "z59B": [
+            4.5,
+            -0.15
+          ],
+          "z510A": [
+            5.0,
+            0.15
+          ],
+          "z510B": [
+            5.0,
+            -0.15
+          ],
+          "s6P0": [
+            0.0,
+            -1.05
+          ],
+          "s6P2": [
+            1.0,
+            -1.47
+          ],
+          "s6P4": [
+            2.0,
+            -1.05
+          ],
+          "s6P6": [
+            3.0,
+            -1.47
+          ],
+          "s6P8": [
+            4.0,
+            -1.05
+          ],
+          "s6P10": [
+            5.25,
+            -1.47
+          ],
+          "z61A": [
+            0.5,
+            0.15
+          ],
+          "z61B": [
+            0.5,
+            -0.15
+          ],
+          "z62A": [
+            1.0,
+            0.15
+          ],
+          "z62B": [
+            1.0,
+            -0.38
+          ],
+          "z63A": [
+            1.5,
+            0.15
+          ],
+          "z63B": [
+            1.5,
+            -0.15
+          ],
+          "z64A": [
+            2.0,
+            0.15
+          ],
+          "z64B": [
+            2.0,
+            -0.38
+          ],
+          "z65A": [
+            2.5,
+            0.15
+          ],
+          "z65B": [
+            2.5,
+            -0.15
+          ],
+          "z66A": [
+            3.0,
+            0.15
+          ],
+          "z66B": [
+            3.0,
+            -0.38
+          ],
+          "z67A": [
+            3.5,
+            0.15
+          ],
+          "z67B": [
+            3.5,
+            -0.15
+          ],
+          "z68A": [
+            4.0,
+            0.15
+          ],
+          "z68B": [
+            4.0,
+            -0.38
+          ],
+          "z69A": [
+            4.5,
+            0.15
+          ],
+          "z69B": [
+            4.5,
+            -0.15
+          ],
+          "z610A": [
+            5.0,
+            0.15
+          ],
+          "z610B": [
+            5.0,
+            -0.15
+          ],
+          "AB": [
+            0,
+            0.38
+          ],
+          "EBAR": [
+            5,
+            0.38
+          ],
+          "AT": [
+            0,
+            0.58
+          ],
+          "ET": [
+            5,
+            0.58
+          ]
+        },
+        "parts": [
+          {
+            "id": "body",
+            "poly": [
+              "BL",
+              "BR",
+              "TR",
+              "TL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "bar",
+            "ink": "accent",
+            "w": 3,
+            "start": false,
+            "poly": [
+              "AB",
+              "EBAR",
+              "ET",
+              "AT"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "end",
+            "seg": [
+              "EA",
+              "EB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": false
+          },
+          {
+            "id": "bLine",
+            "seg": [
+              "bL",
+              "bR"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bLeft",
+            "seg": [
+              "bL",
+              "bLT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bRight",
+            "seg": [
+              "bR",
+              "bRT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "name",
+            "label": "\\text{Survey length}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "count",
+            "label": "4600000.0\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "continues",
+            "vector": [
+              "A",
+              "E"
+            ],
+            "ink": "accent",
+            "w": 28,
+            "start": true
+          },
+          {
+            "id": "t0",
+            "seg": [
+              "t0A",
+              "t0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "s0N0",
+            "label": "0",
+            "at": "s0P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N2",
+            "label": "2",
+            "at": "s0P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N4",
+            "label": "4",
+            "at": "s0P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N6",
+            "label": "6",
+            "at": "s0P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N8",
+            "label": "8",
+            "at": "s0P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0Read",
+            "label": "1\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s1N0",
+            "label": "0",
+            "at": "s1P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s1N2",
+            "label": "20",
+            "at": "s1P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s1N4",
+            "label": "40",
+            "at": "s1P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s1N6",
+            "label": "60",
+            "at": "s1P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s1N8",
+            "label": "80",
+            "at": "s1P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s1Read",
+            "label": "10\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z11",
+            "seg": [
+              "z11A",
+              "z11B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z12",
+            "seg": [
+              "z12A",
+              "z12B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z13",
+            "seg": [
+              "z13A",
+              "z13B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z14",
+            "seg": [
+              "z14A",
+              "z14B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z15",
+            "seg": [
+              "z15A",
+              "z15B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z16",
+            "seg": [
+              "z16A",
+              "z16B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z17",
+            "seg": [
+              "z17A",
+              "z17B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z18",
+            "seg": [
+              "z18A",
+              "z18B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z19",
+            "seg": [
+              "z19A",
+              "z19B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z110",
+            "seg": [
+              "z110A",
+              "z110B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "s2N0",
+            "label": "0",
+            "at": "s2P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s2N2",
+            "label": "200",
+            "at": "s2P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s2N4",
+            "label": "400",
+            "at": "s2P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s2N6",
+            "label": "600",
+            "at": "s2P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s2N8",
+            "label": "800",
+            "at": "s2P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s2Read",
+            "label": "100\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z21",
+            "seg": [
+              "z21A",
+              "z21B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z22",
+            "seg": [
+              "z22A",
+              "z22B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z23",
+            "seg": [
+              "z23A",
+              "z23B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z24",
+            "seg": [
+              "z24A",
+              "z24B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z25",
+            "seg": [
+              "z25A",
+              "z25B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z26",
+            "seg": [
+              "z26A",
+              "z26B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z27",
+            "seg": [
+              "z27A",
+              "z27B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z28",
+            "seg": [
+              "z28A",
+              "z28B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z29",
+            "seg": [
+              "z29A",
+              "z29B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z210",
+            "seg": [
+              "z210A",
+              "z210B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "s3N0",
+            "label": "0",
+            "at": "s3P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s3N2",
+            "label": "\\begin{gathered}2\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s3P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s3N4",
+            "label": "\\begin{gathered}4\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s3P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s3N6",
+            "label": "\\begin{gathered}6\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s3P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s3N8",
+            "label": "\\begin{gathered}8\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s3P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s3Read",
+            "label": "1{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z31",
+            "seg": [
+              "z31A",
+              "z31B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z32",
+            "seg": [
+              "z32A",
+              "z32B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z33",
+            "seg": [
+              "z33A",
+              "z33B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z34",
+            "seg": [
+              "z34A",
+              "z34B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z35",
+            "seg": [
+              "z35A",
+              "z35B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z36",
+            "seg": [
+              "z36A",
+              "z36B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z37",
+            "seg": [
+              "z37A",
+              "z37B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z38",
+            "seg": [
+              "z38A",
+              "z38B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z39",
+            "seg": [
+              "z39A",
+              "z39B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z310",
+            "seg": [
+              "z310A",
+              "z310B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "s4N0",
+            "label": "0",
+            "at": "s4P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s4N2",
+            "label": "\\begin{gathered}20\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s4P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s4N4",
+            "label": "\\begin{gathered}40\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s4P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s4N6",
+            "label": "\\begin{gathered}60\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s4P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s4N8",
+            "label": "\\begin{gathered}80\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s4P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s4Read",
+            "label": "10{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z41",
+            "seg": [
+              "z41A",
+              "z41B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z42",
+            "seg": [
+              "z42A",
+              "z42B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z43",
+            "seg": [
+              "z43A",
+              "z43B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z44",
+            "seg": [
+              "z44A",
+              "z44B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z45",
+            "seg": [
+              "z45A",
+              "z45B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z46",
+            "seg": [
+              "z46A",
+              "z46B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z47",
+            "seg": [
+              "z47A",
+              "z47B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z48",
+            "seg": [
+              "z48A",
+              "z48B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z49",
+            "seg": [
+              "z49A",
+              "z49B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z410",
+            "seg": [
+              "z410A",
+              "z410B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "s5N0",
+            "label": "0",
+            "at": "s5P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s5N2",
+            "label": "\\begin{gathered}200\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s5P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s5N4",
+            "label": "\\begin{gathered}400\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s5P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s5N6",
+            "label": "\\begin{gathered}600\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s5P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s5N8",
+            "label": "\\begin{gathered}800\\\\[-.7em]\\scriptscriptstyle\\text{thousand}\\end{gathered}",
+            "at": "s5P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s5Read",
+            "label": "100{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z51",
+            "seg": [
+              "z51A",
+              "z51B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z52",
+            "seg": [
+              "z52A",
+              "z52B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z53",
+            "seg": [
+              "z53A",
+              "z53B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z54",
+            "seg": [
+              "z54A",
+              "z54B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z55",
+            "seg": [
+              "z55A",
+              "z55B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z56",
+            "seg": [
+              "z56A",
+              "z56B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z57",
+            "seg": [
+              "z57A",
+              "z57B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z58",
+            "seg": [
+              "z58A",
+              "z58B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z59",
+            "seg": [
+              "z59A",
+              "z59B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z510",
+            "seg": [
+              "z510A",
+              "z510B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "s6N0",
+            "label": "0",
+            "at": "s6P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s6N2",
+            "label": "\\begin{gathered}2\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s6N4",
+            "label": "\\begin{gathered}4\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s6N6",
+            "label": "\\begin{gathered}6\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s6N8",
+            "label": "\\begin{gathered}8\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "s6Read",
+            "label": "1{,}000{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "z61",
+            "seg": [
+              "z61A",
+              "z61B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z62",
+            "seg": [
+              "z62A",
+              "z62B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z63",
+            "seg": [
+              "z63A",
+              "z63B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z64",
+            "seg": [
+              "z64A",
+              "z64B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z65",
+            "seg": [
+              "z65A",
+              "z65B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z66",
+            "seg": [
+              "z66A",
+              "z66B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z67",
+            "seg": [
+              "z67A",
+              "z67B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z68",
+            "seg": [
+              "z68A",
+              "z68B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "z69",
+            "seg": [
+              "z69A",
+              "z69B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "z610",
+            "seg": [
+              "z610A",
+              "z610B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "surveyValue",
+            "label": "4{,}600{,}000\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl"
+          },
+          {
+            "id": "surveyCount",
+            "label": "4.6\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "new1t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new1t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new1t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new1t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new1t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new1t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new1t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new1t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new1t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new1t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new2t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new2t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new2t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new2t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new2t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new3t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new3t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new3t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new3t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new3t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new4t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new4t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new4t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new4t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new4t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new5t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new5t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new5t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new5t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new5t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new6t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new6t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new6t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "new6t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "new6t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Scientists use scientific notation to make long numbers easier to read without miscounting.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "header",
+              "text": "Scientific notation"
+            },
+            {
+              "do": "text",
+              "text": "Readable digits. A named scale."
+            }
+          ]
+        },
+        {
+          "say": "Each gold interval is one meter. Our survey continues beyond the ruler.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Each"
+            },
+            {
+              "do": "write",
+              "tex": "10^0=1",
+              "fresh": true,
+              "at": "Each"
+            },
+            {
+              "do": "text",
+              "text": "One meter per interval",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "s0Read",
+              "at": "meter"
+            }
+          ]
+        },
+        {
+          "say": "Watch ten one-meter intervals gather into one ten-meter interval. The length stays the same.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "gather"
+            },
+            {
+              "do": "write",
+              "tex": "10^{1}=10",
+              "fresh": true,
+              "at": "gather"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s0N0",
+                "s0N2",
+                "s0N4",
+                "s0N6",
+                "s0N8",
+                "s0Read"
+              ],
+              "dur": 0.12,
+              "at": "gather"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z11",
+                "z12",
+                "z13",
+                "z14",
+                "z15",
+                "z16",
+                "z17",
+                "z18",
+                "z19",
+                "z110"
+              ],
+              "dur": 0.1,
+              "at": "gather"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z11A": [
+                  0.05,
+                  0.15
+                ],
+                "z11B": [
+                  0.05,
+                  -0.15
+                ],
+                "z12A": [
+                  0.1,
+                  0.15
+                ],
+                "z12B": [
+                  0.1,
+                  -0.38
+                ],
+                "z13A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z13B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z14A": [
+                  0.2,
+                  0.15
+                ],
+                "z14B": [
+                  0.2,
+                  -0.38
+                ],
+                "z15A": [
+                  0.25,
+                  0.15
+                ],
+                "z15B": [
+                  0.25,
+                  -0.15
+                ],
+                "z16A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z16B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z17A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z17B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z18A": [
+                  0.4,
+                  0.15
+                ],
+                "z18B": [
+                  0.4,
+                  -0.38
+                ],
+                "z19A": [
+                  0.45,
+                  0.15
+                ],
+                "z19B": [
+                  0.45,
+                  -0.15
+                ],
+                "z110A": [
+                  0.5,
+                  0.15
+                ],
+                "z110B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 1.8,
+              "at": "gather"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s1N0",
+                "s1N2",
+                "s1N4",
+                "s1N6",
+                "s1N8",
+                "s1Read"
+              ],
+              "dur": 0.35,
+              "at": "gather"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s1P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s1P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s1P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s1P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s1P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s1P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.8,
+              "at": "gather"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new1t1",
+                "new1t2",
+                "new1t3",
+                "new1t4",
+                "new1t5",
+                "new1t6",
+                "new1t7",
+                "new1t8",
+                "new1t9",
+                "new1t10"
+              ],
+              "at": "gather",
+              "dur": 1.8
+            }
+          ]
+        },
+        {
+          "say": "Another tenfold step gives hundred-meter intervals.",
+          "pause": 0.25,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new1t1",
+                "new1t2",
+                "new1t3",
+                "new1t4",
+                "new1t5",
+                "new1t6",
+                "new1t7",
+                "new1t8",
+                "new1t9",
+                "new1t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z11",
+                "z12",
+                "z13",
+                "z14",
+                "z15",
+                "z16",
+                "z17",
+                "z18",
+                "z19",
+                "z110"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "step"
+            },
+            {
+              "do": "write",
+              "tex": "10^{2}=100",
+              "fresh": true,
+              "at": "step"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s1N0",
+                "s1N2",
+                "s1N4",
+                "s1N6",
+                "s1N8",
+                "s1Read"
+              ],
+              "dur": 0.12,
+              "at": "step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z21",
+                "z22",
+                "z23",
+                "z24",
+                "z25",
+                "z26",
+                "z27",
+                "z28",
+                "z29",
+                "z210"
+              ],
+              "dur": 0.1,
+              "at": "step"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z21A": [
+                  0.05,
+                  0.15
+                ],
+                "z21B": [
+                  0.05,
+                  -0.15
+                ],
+                "z22A": [
+                  0.1,
+                  0.15
+                ],
+                "z22B": [
+                  0.1,
+                  -0.38
+                ],
+                "z23A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z23B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z24A": [
+                  0.2,
+                  0.15
+                ],
+                "z24B": [
+                  0.2,
+                  -0.38
+                ],
+                "z25A": [
+                  0.25,
+                  0.15
+                ],
+                "z25B": [
+                  0.25,
+                  -0.15
+                ],
+                "z26A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z26B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z27A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z27B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z28A": [
+                  0.4,
+                  0.15
+                ],
+                "z28B": [
+                  0.4,
+                  -0.38
+                ],
+                "z29A": [
+                  0.45,
+                  0.15
+                ],
+                "z29B": [
+                  0.45,
+                  -0.15
+                ],
+                "z210A": [
+                  0.5,
+                  0.15
+                ],
+                "z210B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 1.1,
+              "at": "step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s2N0",
+                "s2N2",
+                "s2N4",
+                "s2N6",
+                "s2N8",
+                "s2Read"
+              ],
+              "dur": 0.35,
+              "at": "step"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s2P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s2P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s2P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s2P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s2P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s2P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.1,
+              "at": "step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new2t1",
+                "new2t2",
+                "new2t3",
+                "new2t4",
+                "new2t5",
+                "new2t6",
+                "new2t7",
+                "new2t8",
+                "new2t9",
+                "new2t10"
+              ],
+              "at": "step",
+              "dur": 1.1
+            }
+          ]
+        },
+        {
+          "say": "Then a thousand.",
+          "pause": 0.25,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new2t1",
+                "new2t2",
+                "new2t3",
+                "new2t4",
+                "new2t5",
+                "new2t6",
+                "new2t7",
+                "new2t8",
+                "new2t9",
+                "new2t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z21",
+                "z22",
+                "z23",
+                "z24",
+                "z25",
+                "z26",
+                "z27",
+                "z28",
+                "z29",
+                "z210"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "thousand"
+            },
+            {
+              "do": "write",
+              "tex": "10^{3}=1{,}000",
+              "fresh": true,
+              "at": "thousand"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s2N0",
+                "s2N2",
+                "s2N4",
+                "s2N6",
+                "s2N8",
+                "s2Read"
+              ],
+              "dur": 0.12,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z31",
+                "z32",
+                "z33",
+                "z34",
+                "z35",
+                "z36",
+                "z37",
+                "z38",
+                "z39",
+                "z310"
+              ],
+              "dur": 0.1,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z31A": [
+                  0.05,
+                  0.15
+                ],
+                "z31B": [
+                  0.05,
+                  -0.15
+                ],
+                "z32A": [
+                  0.1,
+                  0.15
+                ],
+                "z32B": [
+                  0.1,
+                  -0.38
+                ],
+                "z33A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z33B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z34A": [
+                  0.2,
+                  0.15
+                ],
+                "z34B": [
+                  0.2,
+                  -0.38
+                ],
+                "z35A": [
+                  0.25,
+                  0.15
+                ],
+                "z35B": [
+                  0.25,
+                  -0.15
+                ],
+                "z36A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z36B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z37A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z37B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z38A": [
+                  0.4,
+                  0.15
+                ],
+                "z38B": [
+                  0.4,
+                  -0.38
+                ],
+                "z39A": [
+                  0.45,
+                  0.15
+                ],
+                "z39B": [
+                  0.45,
+                  -0.15
+                ],
+                "z310A": [
+                  0.5,
+                  0.15
+                ],
+                "z310B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s3N0",
+                "s3N2",
+                "s3N4",
+                "s3N6",
+                "s3N8",
+                "s3Read"
+              ],
+              "dur": 0.35,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s3P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s3P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s3P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s3P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s3P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s3P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new3t1",
+                "new3t2",
+                "new3t3",
+                "new3t4",
+                "new3t5",
+                "new3t6",
+                "new3t7",
+                "new3t8",
+                "new3t9",
+                "new3t10"
+              ],
+              "at": "thousand",
+              "dur": 0.9
+            }
+          ]
+        },
+        {
+          "say": "Ten thousand.",
+          "pause": 0.25,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new3t1",
+                "new3t2",
+                "new3t3",
+                "new3t4",
+                "new3t5",
+                "new3t6",
+                "new3t7",
+                "new3t8",
+                "new3t9",
+                "new3t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z31",
+                "z32",
+                "z33",
+                "z34",
+                "z35",
+                "z36",
+                "z37",
+                "z38",
+                "z39",
+                "z310"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "thousand"
+            },
+            {
+              "do": "write",
+              "tex": "10^{4}=10{,}000",
+              "fresh": true,
+              "at": "thousand"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s3N0",
+                "s3N2",
+                "s3N4",
+                "s3N6",
+                "s3N8",
+                "s3Read"
+              ],
+              "dur": 0.12,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z41",
+                "z42",
+                "z43",
+                "z44",
+                "z45",
+                "z46",
+                "z47",
+                "z48",
+                "z49",
+                "z410"
+              ],
+              "dur": 0.1,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z41A": [
+                  0.05,
+                  0.15
+                ],
+                "z41B": [
+                  0.05,
+                  -0.15
+                ],
+                "z42A": [
+                  0.1,
+                  0.15
+                ],
+                "z42B": [
+                  0.1,
+                  -0.38
+                ],
+                "z43A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z43B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z44A": [
+                  0.2,
+                  0.15
+                ],
+                "z44B": [
+                  0.2,
+                  -0.38
+                ],
+                "z45A": [
+                  0.25,
+                  0.15
+                ],
+                "z45B": [
+                  0.25,
+                  -0.15
+                ],
+                "z46A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z46B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z47A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z47B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z48A": [
+                  0.4,
+                  0.15
+                ],
+                "z48B": [
+                  0.4,
+                  -0.38
+                ],
+                "z49A": [
+                  0.45,
+                  0.15
+                ],
+                "z49B": [
+                  0.45,
+                  -0.15
+                ],
+                "z410A": [
+                  0.5,
+                  0.15
+                ],
+                "z410B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s4N0",
+                "s4N2",
+                "s4N4",
+                "s4N6",
+                "s4N8",
+                "s4Read"
+              ],
+              "dur": 0.35,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s4P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s4P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s4P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s4P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s4P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s4P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new4t1",
+                "new4t2",
+                "new4t3",
+                "new4t4",
+                "new4t5",
+                "new4t6",
+                "new4t7",
+                "new4t8",
+                "new4t9",
+                "new4t10"
+              ],
+              "at": "thousand",
+              "dur": 0.9
+            }
+          ]
+        },
+        {
+          "say": "A hundred thousand.",
+          "pause": 0.25,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new4t1",
+                "new4t2",
+                "new4t3",
+                "new4t4",
+                "new4t5",
+                "new4t6",
+                "new4t7",
+                "new4t8",
+                "new4t9",
+                "new4t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z41",
+                "z42",
+                "z43",
+                "z44",
+                "z45",
+                "z46",
+                "z47",
+                "z48",
+                "z49",
+                "z410"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "thousand"
+            },
+            {
+              "do": "write",
+              "tex": "10^{5}=100{,}000",
+              "fresh": true,
+              "at": "thousand"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s4N0",
+                "s4N2",
+                "s4N4",
+                "s4N6",
+                "s4N8",
+                "s4Read"
+              ],
+              "dur": 0.12,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z51",
+                "z52",
+                "z53",
+                "z54",
+                "z55",
+                "z56",
+                "z57",
+                "z58",
+                "z59",
+                "z510"
+              ],
+              "dur": 0.1,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z51A": [
+                  0.05,
+                  0.15
+                ],
+                "z51B": [
+                  0.05,
+                  -0.15
+                ],
+                "z52A": [
+                  0.1,
+                  0.15
+                ],
+                "z52B": [
+                  0.1,
+                  -0.38
+                ],
+                "z53A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z53B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z54A": [
+                  0.2,
+                  0.15
+                ],
+                "z54B": [
+                  0.2,
+                  -0.38
+                ],
+                "z55A": [
+                  0.25,
+                  0.15
+                ],
+                "z55B": [
+                  0.25,
+                  -0.15
+                ],
+                "z56A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z56B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z57A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z57B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z58A": [
+                  0.4,
+                  0.15
+                ],
+                "z58B": [
+                  0.4,
+                  -0.38
+                ],
+                "z59A": [
+                  0.45,
+                  0.15
+                ],
+                "z59B": [
+                  0.45,
+                  -0.15
+                ],
+                "z510A": [
+                  0.5,
+                  0.15
+                ],
+                "z510B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s5N0",
+                "s5N2",
+                "s5N4",
+                "s5N6",
+                "s5N8",
+                "s5Read"
+              ],
+              "dur": 0.35,
+              "at": "thousand"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s5P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s5P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s5P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s5P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s5P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s5P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 0.9,
+              "at": "thousand"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new5t1",
+                "new5t2",
+                "new5t3",
+                "new5t4",
+                "new5t5",
+                "new5t6",
+                "new5t7",
+                "new5t8",
+                "new5t9",
+                "new5t10"
+              ],
+              "at": "thousand",
+              "dur": 0.9
+            }
+          ]
+        },
+        {
+          "say": "And a million. Now the whole length fits.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new5t1",
+                "new5t2",
+                "new5t3",
+                "new5t4",
+                "new5t5",
+                "new5t6",
+                "new5t7",
+                "new5t8",
+                "new5t9",
+                "new5t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z51",
+                "z52",
+                "z53",
+                "z54",
+                "z55",
+                "z56",
+                "z57",
+                "z58",
+                "z59",
+                "z510"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "million"
+            },
+            {
+              "do": "write",
+              "tex": "10^{6}=1{,}000{,}000",
+              "fresh": true,
+              "at": "million"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s5N0",
+                "s5N2",
+                "s5N4",
+                "s5N6",
+                "s5N8",
+                "s5Read"
+              ],
+              "dur": 0.12,
+              "at": "million"
+            },
+            {
+              "do": "show",
+              "target": [
+                "z61",
+                "z62",
+                "z63",
+                "z64",
+                "z65",
+                "z66",
+                "z67",
+                "z68",
+                "z69",
+                "z610"
+              ],
+              "dur": 0.1,
+              "at": "million"
+            },
+            {
+              "do": "move",
+              "points": {
+                "z61A": [
+                  0.05,
+                  0.15
+                ],
+                "z61B": [
+                  0.05,
+                  -0.15
+                ],
+                "z62A": [
+                  0.1,
+                  0.15
+                ],
+                "z62B": [
+                  0.1,
+                  -0.38
+                ],
+                "z63A": [
+                  0.15000000000000002,
+                  0.15
+                ],
+                "z63B": [
+                  0.15000000000000002,
+                  -0.15
+                ],
+                "z64A": [
+                  0.2,
+                  0.15
+                ],
+                "z64B": [
+                  0.2,
+                  -0.38
+                ],
+                "z65A": [
+                  0.25,
+                  0.15
+                ],
+                "z65B": [
+                  0.25,
+                  -0.15
+                ],
+                "z66A": [
+                  0.30000000000000004,
+                  0.15
+                ],
+                "z66B": [
+                  0.30000000000000004,
+                  -0.38
+                ],
+                "z67A": [
+                  0.35000000000000003,
+                  0.15
+                ],
+                "z67B": [
+                  0.35000000000000003,
+                  -0.15
+                ],
+                "z68A": [
+                  0.4,
+                  0.15
+                ],
+                "z68B": [
+                  0.4,
+                  -0.38
+                ],
+                "z69A": [
+                  0.45,
+                  0.15
+                ],
+                "z69B": [
+                  0.45,
+                  -0.15
+                ],
+                "z610A": [
+                  0.5,
+                  0.15
+                ],
+                "z610B": [
+                  0.5,
+                  -0.15
+                ]
+              },
+              "dur": 1.1,
+              "at": "million"
+            },
+            {
+              "do": "show",
+              "target": [
+                "s6N0",
+                "s6N2",
+                "s6N4",
+                "s6N6",
+                "s6N8",
+                "s6Read"
+              ],
+              "dur": 0.35,
+              "at": "million"
+            },
+            {
+              "do": "move",
+              "points": {
+                "s6P0": [
+                  0.0,
+                  -0.9
+                ],
+                "s6P2": [
+                  1.0,
+                  -1.32
+                ],
+                "s6P4": [
+                  2.0,
+                  -0.9
+                ],
+                "s6P6": [
+                  3.0,
+                  -1.32
+                ],
+                "s6P8": [
+                  4.0,
+                  -0.9
+                ],
+                "s6P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.1,
+              "at": "million"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "continues",
+                "name"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "move",
+              "points": {
+                "E": [
+                  2.3,
+                  0.48
+                ],
+                "EA": [
+                  2.3,
+                  0.22
+                ],
+                "EB": [
+                  2.3,
+                  0.75
+                ],
+                "EBAR": [
+                  2.3,
+                  0.38
+                ],
+                "ET": [
+                  2.3,
+                  0.58
+                ]
+              },
+              "dur": 1.1,
+              "at": "million"
+            },
+            {
+              "do": "show",
+              "target": [
+                "bar",
+                "end",
+                "surveyValue",
+                "surveyCount"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "show",
+              "target": [
+                "new6t1",
+                "new6t2",
+                "new6t3",
+                "new6t4",
+                "new6t5",
+                "new6t6",
+                "new6t7",
+                "new6t8",
+                "new6t9",
+                "new6t10"
+              ],
+              "at": "million",
+              "dur": 1.1
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z61",
+                "z62",
+                "z63",
+                "z64",
+                "z65",
+                "z66",
+                "z67",
+                "z68",
+                "z69",
+                "z610"
+              ],
+              "at": "whole",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "Four point six counts the intervals; ten to the sixth tells how big each interval is.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "new6t1",
+                "new6t2",
+                "new6t3",
+                "new6t4",
+                "new6t5",
+                "new6t6",
+                "new6t7",
+                "new6t8",
+                "new6t9",
+                "new6t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "hide",
+              "target": [
+                "z61",
+                "z62",
+                "z63",
+                "z64",
+                "z65",
+                "z66",
+                "z67",
+                "z68",
+                "z69",
+                "z610"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "header",
+              "tex": "4{,}600{,}000=4.6\\times10^6",
+              "label": "Same length, two forms",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "4.6\\times1{,}000{,}000",
+              "fresh": true,
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "surveyCount",
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "say": "Four point six is the coefficient. The raised six is the exponent, counting six tenfold steps from one.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Four"
+            },
+            {
+              "do": "write",
+              "tex": "4.6\\quad\\text{coefficient}",
+              "at": "Four",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "6\\quad\\text{exponent}",
+              "at": "raised",
+              "fresh": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -3,
+          5.7,
+          2
+        ],
+        "points": {
+          "BL": [
+            -0.35,
+            -1.8699999999999999
+          ],
+          "BR": [
+            5.35,
+            -1.8699999999999999
+          ],
+          "TR": [
+            5.35,
+            0.15
+          ],
+          "TL": [
+            -0.35,
+            0.15
+          ],
+          "A": [
+            0,
+            0.48
+          ],
+          "E": [
+            2.3,
+            0.48
+          ],
+          "EA": [
+            2.3,
+            0.22
+          ],
+          "EB": [
+            2.3,
+            0.75
+          ],
+          "nameP": [
+            2.5,
+            1.75
+          ],
+          "countP": [
+            2.5,
+            1.05
+          ],
+          "bL": [
+            2,
+            -2.0500000000000003
+          ],
+          "bR": [
+            2.5,
+            -2.0500000000000003
+          ],
+          "bLT": [
+            2,
+            -1.8699999999999999
+          ],
+          "bRT": [
+            2.5,
+            -1.8699999999999999
+          ],
+          "scaleP": [
+            2.5,
+            -2.62
+          ],
+          "t0A": [
+            0.0,
+            0.15
+          ],
+          "t0B": [
+            0.0,
+            -0.38
+          ],
+          "t1A": [
+            0.5,
+            0.15
+          ],
+          "t1B": [
+            0.5,
+            -0.15
+          ],
+          "t2A": [
+            1.0,
+            0.15
+          ],
+          "t2B": [
+            1.0,
+            -0.38
+          ],
+          "t3A": [
+            1.5,
+            0.15
+          ],
+          "t3B": [
+            1.5,
+            -0.15
+          ],
+          "t4A": [
+            2.0,
+            0.15
+          ],
+          "t4B": [
+            2.0,
+            -0.38
+          ],
+          "t5A": [
+            2.5,
+            0.15
+          ],
+          "t5B": [
+            2.5,
+            -0.15
+          ],
+          "t6A": [
+            3.0,
+            0.15
+          ],
+          "t6B": [
+            3.0,
+            -0.38
+          ],
+          "t7A": [
+            3.5,
+            0.15
+          ],
+          "t7B": [
+            3.5,
+            -0.15
+          ],
+          "t8A": [
+            4.0,
+            0.15
+          ],
+          "t8B": [
+            4.0,
+            -0.38
+          ],
+          "t9A": [
+            4.5,
+            0.15
+          ],
+          "t9B": [
+            4.5,
+            -0.15
+          ],
+          "t10A": [
+            5.0,
+            0.15
+          ],
+          "t10B": [
+            5.0,
+            -0.15
+          ],
+          "s6P0": [
+            0.0,
+            -0.9
+          ],
+          "s6P2": [
+            1.0,
+            -1.32
+          ],
+          "s6P4": [
+            2.0,
+            -0.9
+          ],
+          "s6P6": [
+            3.0,
+            -1.32
+          ],
+          "s6P8": [
+            4.0,
+            -0.9
+          ],
+          "s6P10": [
+            5.25,
+            -1.32
+          ],
+          "WA": [
+            0.23,
+            -0.1
+          ],
+          "WB": [
+            0.23,
+            0.8
+          ],
+          "WP": [
+            2.5,
+            1.05
+          ],
+          "AB": [
+            0,
+            0.38
+          ],
+          "EBAR": [
+            2.3,
+            0.38
+          ],
+          "AT": [
+            0,
+            0.58
+          ],
+          "ET": [
+            2.3,
+            0.58
+          ]
+        },
+        "parts": [
+          {
+            "id": "body",
+            "poly": [
+              "BL",
+              "BR",
+              "TR",
+              "TL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "bar",
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "poly": [
+              "AB",
+              "EBAR",
+              "ET",
+              "AT"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "end",
+            "seg": [
+              "EA",
+              "EB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "bLine",
+            "seg": [
+              "bL",
+              "bR"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bLeft",
+            "seg": [
+              "bL",
+              "bLT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bRight",
+            "seg": [
+              "bR",
+              "bRT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "name",
+            "label": "4{,}600{,}000\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "count",
+            "label": "4.6\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "t0",
+            "seg": [
+              "t0A",
+              "t0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "s6N0",
+            "label": "0",
+            "at": "s6P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N2",
+            "label": "\\begin{gathered}2\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N4",
+            "label": "\\begin{gathered}4\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N6",
+            "label": "\\begin{gathered}6\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N8",
+            "label": "\\begin{gathered}8\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6Read",
+            "label": "1{,}000{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "wrong",
+            "seg": [
+              "WA",
+              "WB"
+            ],
+            "ink": "warm",
+            "w": 6,
+            "dash": true
+          },
+          {
+            "id": "wrongLabel",
+            "label": "460{,}000\\,\\text{m}",
+            "at": "WP",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "To recover ordinary digits, called standard form, multiply the coefficient by ten six times.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "4.6\\times10^6",
+              "label": "To standard form"
+            },
+            {
+              "do": "write",
+              "tex": "4.6",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "4 in the ones place",
+              "at": "coefficient"
+            }
+          ]
+        },
+        {
+          "say": "Each multiplication moves every digit into a larger place: first tens, then hundreds.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "tens"
+            },
+            {
+              "do": "write",
+              "tex": "46",
+              "fresh": true,
+              "note": "\\times10",
+              "at": "tens"
+            },
+            {
+              "do": "text",
+              "text": "4 in the tens place",
+              "at": "tens"
+            },
+            {
+              "do": "clear",
+              "at": "hundreds"
+            },
+            {
+              "do": "write",
+              "tex": "460",
+              "fresh": true,
+              "note": "\\times10",
+              "at": "hundreds"
+            },
+            {
+              "do": "text",
+              "text": "4 in the hundreds place",
+              "at": "hundreds"
+            }
+          ]
+        },
+        {
+          "say": "Then thousands, ten-thousands, and hundred-thousands.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "thousands"
+            },
+            {
+              "do": "write",
+              "tex": "4{,}600",
+              "fresh": true,
+              "note": "\\times10",
+              "at": "thousands"
+            },
+            {
+              "do": "text",
+              "text": "4 in the thousands place",
+              "at": "thousands"
+            },
+            {
+              "do": "clear",
+              "at": "ten-thousands"
+            },
+            {
+              "do": "write",
+              "tex": "46{,}000",
+              "fresh": true,
+              "note": "\\times10",
+              "at": "ten-thousands"
+            },
+            {
+              "do": "text",
+              "text": "4 in the ten-thousands place",
+              "at": "ten-thousands"
+            },
+            {
+              "do": "clear",
+              "at": "hundred-thousands"
+            },
+            {
+              "do": "write",
+              "tex": "460{,}000",
+              "fresh": true,
+              "note": "\\times10",
+              "at": "hundred-thousands"
+            },
+            {
+              "do": "text",
+              "text": "4 in the hundred-thousands place",
+              "at": "hundred-thousands"
+            }
+          ]
+        },
+        {
+          "say": "A common slip counts five zeros, but the leading four moves six places from ones to millions.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "slip"
+            },
+            {
+              "do": "write",
+              "tex": "4{,}600{,}000=4.6\\times10^5",
+              "fresh": true,
+              "id": "slip",
+              "at": "slip"
+            },
+            {
+              "do": "hide",
+              "target": "count",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": [
+                "wrong",
+                "wrongLabel"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "strike",
+              "target": "slip",
+              "at": "six"
+            },
+            {
+              "do": "write",
+              "tex": "4{,}600{,}000=4.6\\times10^6",
+              "fresh": true,
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "WA": [
+                  2.3,
+                  -0.1
+                ],
+                "WB": [
+                  2.3,
+                  0.8
+                ]
+              },
+              "dur": 1.1,
+              "at": "six"
+            },
+            {
+              "do": "hide",
+              "target": "wrongLabel",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Reading backward, choose four point six. Six multiplications restore the original value.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "wrong"
+            },
+            {
+              "do": "show",
+              "target": "count"
+            },
+            {
+              "do": "clear",
+              "at": "Reading"
+            },
+            {
+              "do": "header",
+              "text": "Back to scientific notation",
+              "at": "Reading"
+            },
+            {
+              "do": "write",
+              "tex": "4{,}600{,}000=4.6\\times10^6",
+              "fresh": true,
+              "at": "Reading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -3,
+          5.7,
+          2
+        ],
+        "points": {
+          "BL": [
+            -0.35,
+            -1.8699999999999999
+          ],
+          "BR": [
+            5.35,
+            -1.8699999999999999
+          ],
+          "TR": [
+            5.35,
+            0.15
+          ],
+          "TL": [
+            -0.35,
+            0.15
+          ],
+          "A": [
+            0,
+            0.48
+          ],
+          "E": [
+            0.000125,
+            0.48
+          ],
+          "EA": [
+            0.000125,
+            0.22
+          ],
+          "EB": [
+            0.000125,
+            0.75
+          ],
+          "nameP": [
+            2.5,
+            1.75
+          ],
+          "countP": [
+            2.5,
+            1.05
+          ],
+          "bL": [
+            2,
+            -2.0500000000000003
+          ],
+          "bR": [
+            2.5,
+            -2.0500000000000003
+          ],
+          "bLT": [
+            2,
+            -1.8699999999999999
+          ],
+          "bRT": [
+            2.5,
+            -1.8699999999999999
+          ],
+          "scaleP": [
+            2.5,
+            -2.62
+          ],
+          "t0A": [
+            0.0,
+            0.15
+          ],
+          "t0B": [
+            0.0,
+            -0.38
+          ],
+          "t1A": [
+            0.5,
+            0.15
+          ],
+          "t1B": [
+            0.5,
+            -0.15
+          ],
+          "t2A": [
+            1.0,
+            0.15
+          ],
+          "t2B": [
+            1.0,
+            -0.38
+          ],
+          "t3A": [
+            1.5,
+            0.15
+          ],
+          "t3B": [
+            1.5,
+            -0.15
+          ],
+          "t4A": [
+            2.0,
+            0.15
+          ],
+          "t4B": [
+            2.0,
+            -0.38
+          ],
+          "t5A": [
+            2.5,
+            0.15
+          ],
+          "t5B": [
+            2.5,
+            -0.15
+          ],
+          "t6A": [
+            3.0,
+            0.15
+          ],
+          "t6B": [
+            3.0,
+            -0.38
+          ],
+          "t7A": [
+            3.5,
+            0.15
+          ],
+          "t7B": [
+            3.5,
+            -0.15
+          ],
+          "t8A": [
+            4.0,
+            0.15
+          ],
+          "t8B": [
+            4.0,
+            -0.38
+          ],
+          "t9A": [
+            4.5,
+            0.15
+          ],
+          "t9B": [
+            4.5,
+            -0.15
+          ],
+          "t10A": [
+            5.0,
+            0.15
+          ],
+          "t10B": [
+            5.0,
+            -0.15
+          ],
+          "s0P0": [
+            0.0,
+            -0.9
+          ],
+          "s0P2": [
+            1.0,
+            -1.32
+          ],
+          "s0P4": [
+            2.0,
+            -0.9
+          ],
+          "s0P6": [
+            3.0,
+            -1.32
+          ],
+          "s0P8": [
+            4.0,
+            -0.9
+          ],
+          "s0P10": [
+            5.25,
+            -1.32
+          ],
+          "P": [
+            0.5,
+            0.82
+          ],
+          "Q": [
+            0.000125,
+            0.49
+          ],
+          "hintP": [
+            2.5,
+            1.05
+          ],
+          "sm1P0": [
+            0.0,
+            -1.05
+          ],
+          "sm1P2": [
+            1.0,
+            -1.47
+          ],
+          "sm1P4": [
+            2.0,
+            -1.05
+          ],
+          "sm1P6": [
+            3.0,
+            -1.47
+          ],
+          "sm1P8": [
+            4.0,
+            -1.05
+          ],
+          "sm1P10": [
+            5.25,
+            -1.47
+          ],
+          "zm11A": [
+            0.05,
+            0.15
+          ],
+          "zm11B": [
+            0.05,
+            -0.15
+          ],
+          "zm12A": [
+            0.1,
+            0.15
+          ],
+          "zm12B": [
+            0.1,
+            -0.38
+          ],
+          "zm13A": [
+            0.15000000000000002,
+            0.15
+          ],
+          "zm13B": [
+            0.15000000000000002,
+            -0.15
+          ],
+          "zm14A": [
+            0.2,
+            0.15
+          ],
+          "zm14B": [
+            0.2,
+            -0.38
+          ],
+          "zm15A": [
+            0.25,
+            0.15
+          ],
+          "zm15B": [
+            0.25,
+            -0.15
+          ],
+          "zm16A": [
+            0.30000000000000004,
+            0.15
+          ],
+          "zm16B": [
+            0.30000000000000004,
+            -0.38
+          ],
+          "zm17A": [
+            0.35000000000000003,
+            0.15
+          ],
+          "zm17B": [
+            0.35000000000000003,
+            -0.15
+          ],
+          "zm18A": [
+            0.4,
+            0.15
+          ],
+          "zm18B": [
+            0.4,
+            -0.38
+          ],
+          "zm19A": [
+            0.45,
+            0.15
+          ],
+          "zm19B": [
+            0.45,
+            -0.15
+          ],
+          "zm110A": [
+            0.5,
+            0.15
+          ],
+          "zm110B": [
+            0.5,
+            -0.15
+          ],
+          "sm2P0": [
+            0.0,
+            -1.05
+          ],
+          "sm2P2": [
+            1.0,
+            -1.47
+          ],
+          "sm2P4": [
+            2.0,
+            -1.05
+          ],
+          "sm2P6": [
+            3.0,
+            -1.47
+          ],
+          "sm2P8": [
+            4.0,
+            -1.05
+          ],
+          "sm2P10": [
+            5.25,
+            -1.47
+          ],
+          "zm21A": [
+            0.05,
+            0.15
+          ],
+          "zm21B": [
+            0.05,
+            -0.15
+          ],
+          "zm22A": [
+            0.1,
+            0.15
+          ],
+          "zm22B": [
+            0.1,
+            -0.38
+          ],
+          "zm23A": [
+            0.15000000000000002,
+            0.15
+          ],
+          "zm23B": [
+            0.15000000000000002,
+            -0.15
+          ],
+          "zm24A": [
+            0.2,
+            0.15
+          ],
+          "zm24B": [
+            0.2,
+            -0.38
+          ],
+          "zm25A": [
+            0.25,
+            0.15
+          ],
+          "zm25B": [
+            0.25,
+            -0.15
+          ],
+          "zm26A": [
+            0.30000000000000004,
+            0.15
+          ],
+          "zm26B": [
+            0.30000000000000004,
+            -0.38
+          ],
+          "zm27A": [
+            0.35000000000000003,
+            0.15
+          ],
+          "zm27B": [
+            0.35000000000000003,
+            -0.15
+          ],
+          "zm28A": [
+            0.4,
+            0.15
+          ],
+          "zm28B": [
+            0.4,
+            -0.38
+          ],
+          "zm29A": [
+            0.45,
+            0.15
+          ],
+          "zm29B": [
+            0.45,
+            -0.15
+          ],
+          "zm210A": [
+            0.5,
+            0.15
+          ],
+          "zm210B": [
+            0.5,
+            -0.15
+          ],
+          "sm3P0": [
+            0.0,
+            -1.05
+          ],
+          "sm3P2": [
+            1.0,
+            -1.47
+          ],
+          "sm3P4": [
+            2.0,
+            -1.05
+          ],
+          "sm3P6": [
+            3.0,
+            -1.47
+          ],
+          "sm3P8": [
+            4.0,
+            -1.05
+          ],
+          "sm3P10": [
+            5.25,
+            -1.47
+          ],
+          "zm31A": [
+            0.05,
+            0.15
+          ],
+          "zm31B": [
+            0.05,
+            -0.15
+          ],
+          "zm32A": [
+            0.1,
+            0.15
+          ],
+          "zm32B": [
+            0.1,
+            -0.38
+          ],
+          "zm33A": [
+            0.15000000000000002,
+            0.15
+          ],
+          "zm33B": [
+            0.15000000000000002,
+            -0.15
+          ],
+          "zm34A": [
+            0.2,
+            0.15
+          ],
+          "zm34B": [
+            0.2,
+            -0.38
+          ],
+          "zm35A": [
+            0.25,
+            0.15
+          ],
+          "zm35B": [
+            0.25,
+            -0.15
+          ],
+          "zm36A": [
+            0.30000000000000004,
+            0.15
+          ],
+          "zm36B": [
+            0.30000000000000004,
+            -0.38
+          ],
+          "zm37A": [
+            0.35000000000000003,
+            0.15
+          ],
+          "zm37B": [
+            0.35000000000000003,
+            -0.15
+          ],
+          "zm38A": [
+            0.4,
+            0.15
+          ],
+          "zm38B": [
+            0.4,
+            -0.38
+          ],
+          "zm39A": [
+            0.45,
+            0.15
+          ],
+          "zm39B": [
+            0.45,
+            -0.15
+          ],
+          "zm310A": [
+            0.5,
+            0.15
+          ],
+          "zm310B": [
+            0.5,
+            -0.15
+          ],
+          "sm4P0": [
+            0.0,
+            -1.05
+          ],
+          "sm4P2": [
+            1.0,
+            -1.47
+          ],
+          "sm4P4": [
+            2.0,
+            -1.05
+          ],
+          "sm4P6": [
+            3.0,
+            -1.47
+          ],
+          "sm4P8": [
+            4.0,
+            -1.05
+          ],
+          "sm4P10": [
+            5.25,
+            -1.47
+          ],
+          "zm41A": [
+            0.05,
+            0.15
+          ],
+          "zm41B": [
+            0.05,
+            -0.15
+          ],
+          "zm42A": [
+            0.1,
+            0.15
+          ],
+          "zm42B": [
+            0.1,
+            -0.38
+          ],
+          "zm43A": [
+            0.15000000000000002,
+            0.15
+          ],
+          "zm43B": [
+            0.15000000000000002,
+            -0.15
+          ],
+          "zm44A": [
+            0.2,
+            0.15
+          ],
+          "zm44B": [
+            0.2,
+            -0.38
+          ],
+          "zm45A": [
+            0.25,
+            0.15
+          ],
+          "zm45B": [
+            0.25,
+            -0.15
+          ],
+          "zm46A": [
+            0.30000000000000004,
+            0.15
+          ],
+          "zm46B": [
+            0.30000000000000004,
+            -0.38
+          ],
+          "zm47A": [
+            0.35000000000000003,
+            0.15
+          ],
+          "zm47B": [
+            0.35000000000000003,
+            -0.15
+          ],
+          "zm48A": [
+            0.4,
+            0.15
+          ],
+          "zm48B": [
+            0.4,
+            -0.38
+          ],
+          "zm49A": [
+            0.45,
+            0.15
+          ],
+          "zm49B": [
+            0.45,
+            -0.15
+          ],
+          "zm410A": [
+            0.5,
+            0.15
+          ],
+          "zm410B": [
+            0.5,
+            -0.15
+          ],
+          "AB": [
+            0,
+            0.38
+          ],
+          "EBAR": [
+            0.000125,
+            0.38
+          ],
+          "AT": [
+            0,
+            0.58
+          ],
+          "ET": [
+            0.000125,
+            0.58
+          ]
+        },
+        "parts": [
+          {
+            "id": "body",
+            "poly": [
+              "BL",
+              "BR",
+              "TR",
+              "TL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "bar",
+            "ink": "accent",
+            "w": 3,
+            "start": false,
+            "poly": [
+              "AB",
+              "EBAR",
+              "ET",
+              "AT"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "end",
+            "seg": [
+              "EA",
+              "EB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": false
+          },
+          {
+            "id": "bLine",
+            "seg": [
+              "bL",
+              "bR"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bLeft",
+            "seg": [
+              "bL",
+              "bLT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bRight",
+            "seg": [
+              "bR",
+              "bRT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "name",
+            "label": "0.00025\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "count",
+            "label": "2.5\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "t0",
+            "seg": [
+              "t0A",
+              "t0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "s0N0",
+            "label": "0",
+            "at": "s0P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N2",
+            "label": "2",
+            "at": "s0P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N4",
+            "label": "4",
+            "at": "s0P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N6",
+            "label": "6",
+            "at": "s0P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0N8",
+            "label": "8",
+            "at": "s0P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s0Read",
+            "label": "1\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "pointer",
+            "vector": [
+              "P",
+              "Q"
+            ],
+            "ink": "accent",
+            "w": 4,
+            "start": false
+          },
+          {
+            "id": "hint",
+            "label": "\\text{Too small to see}",
+            "at": "hintP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "start": false
+          },
+          {
+            "id": "sm1N0",
+            "label": "0",
+            "at": "sm1P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm1N2",
+            "label": "0.2",
+            "at": "sm1P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm1N4",
+            "label": "0.4",
+            "at": "sm1P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm1N6",
+            "label": "0.6",
+            "at": "sm1P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm1N8",
+            "label": "0.8",
+            "at": "sm1P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm1Read",
+            "label": "0.1\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "zm11",
+            "seg": [
+              "zm11A",
+              "zm11B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm12",
+            "seg": [
+              "zm12A",
+              "zm12B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm13",
+            "seg": [
+              "zm13A",
+              "zm13B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm14",
+            "seg": [
+              "zm14A",
+              "zm14B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm15",
+            "seg": [
+              "zm15A",
+              "zm15B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm16",
+            "seg": [
+              "zm16A",
+              "zm16B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm17",
+            "seg": [
+              "zm17A",
+              "zm17B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm18",
+            "seg": [
+              "zm18A",
+              "zm18B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm19",
+            "seg": [
+              "zm19A",
+              "zm19B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm110",
+            "seg": [
+              "zm110A",
+              "zm110B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "sm2N0",
+            "label": "0",
+            "at": "sm2P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm2N2",
+            "label": "0.02",
+            "at": "sm2P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm2N4",
+            "label": "0.04",
+            "at": "sm2P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm2N6",
+            "label": "0.06",
+            "at": "sm2P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm2N8",
+            "label": "0.08",
+            "at": "sm2P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm2Read",
+            "label": "0.01\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "zm21",
+            "seg": [
+              "zm21A",
+              "zm21B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm22",
+            "seg": [
+              "zm22A",
+              "zm22B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm23",
+            "seg": [
+              "zm23A",
+              "zm23B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm24",
+            "seg": [
+              "zm24A",
+              "zm24B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm25",
+            "seg": [
+              "zm25A",
+              "zm25B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm26",
+            "seg": [
+              "zm26A",
+              "zm26B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm27",
+            "seg": [
+              "zm27A",
+              "zm27B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm28",
+            "seg": [
+              "zm28A",
+              "zm28B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm29",
+            "seg": [
+              "zm29A",
+              "zm29B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm210",
+            "seg": [
+              "zm210A",
+              "zm210B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "sm3N0",
+            "label": "0",
+            "at": "sm3P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm3N2",
+            "label": "0.002",
+            "at": "sm3P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm3N4",
+            "label": "0.004",
+            "at": "sm3P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm3N6",
+            "label": "0.006",
+            "at": "sm3P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm3N8",
+            "label": "0.008",
+            "at": "sm3P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm3Read",
+            "label": "0.001\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "zm31",
+            "seg": [
+              "zm31A",
+              "zm31B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm32",
+            "seg": [
+              "zm32A",
+              "zm32B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm33",
+            "seg": [
+              "zm33A",
+              "zm33B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm34",
+            "seg": [
+              "zm34A",
+              "zm34B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm35",
+            "seg": [
+              "zm35A",
+              "zm35B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm36",
+            "seg": [
+              "zm36A",
+              "zm36B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm37",
+            "seg": [
+              "zm37A",
+              "zm37B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm38",
+            "seg": [
+              "zm38A",
+              "zm38B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm39",
+            "seg": [
+              "zm39A",
+              "zm39B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm310",
+            "seg": [
+              "zm310A",
+              "zm310B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "sm4N0",
+            "label": "0",
+            "at": "sm4P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N2",
+            "label": "0.0002",
+            "at": "sm4P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N4",
+            "label": "0.0004",
+            "at": "sm4P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N6",
+            "label": "0.0006",
+            "at": "sm4P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N8",
+            "label": "0.0008",
+            "at": "sm4P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4Read",
+            "label": "0.0001\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "zm41",
+            "seg": [
+              "zm41A",
+              "zm41B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm42",
+            "seg": [
+              "zm42A",
+              "zm42B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm43",
+            "seg": [
+              "zm43A",
+              "zm43B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm44",
+            "seg": [
+              "zm44A",
+              "zm44B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm45",
+            "seg": [
+              "zm45A",
+              "zm45B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm46",
+            "seg": [
+              "zm46A",
+              "zm46B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm47",
+            "seg": [
+              "zm47A",
+              "zm47B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm48",
+            "seg": [
+              "zm48A",
+              "zm48B"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "zm49",
+            "seg": [
+              "zm49A",
+              "zm49B"
+            ],
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "zm410",
+            "seg": [
+              "zm410A",
+              "zm410B"
+            ],
+            "ink": "gold",
+            "w": 3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This specimen is zero point zero zero zero two five meters wide: too small for this scale.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "A smaller scale"
+            },
+            {
+              "do": "write",
+              "tex": "0.00025\\,\\text{m}",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": [
+                "hint",
+                "pointer"
+              ],
+              "at": "small"
+            }
+          ]
+        },
+        {
+          "say": "Keep its width unchanged. Open one meter into tenths.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "Open"
+            },
+            {
+              "do": "write",
+              "tex": "10^{-1}=0.1",
+              "fresh": true,
+              "at": "Open"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "s0N0",
+                "s0N2",
+                "s0N4",
+                "s0N6",
+                "s0N8",
+                "s0Read"
+              ],
+              "dur": 0.12,
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "zm11",
+                "zm12",
+                "zm13",
+                "zm14",
+                "zm15",
+                "zm16",
+                "zm17",
+                "zm18",
+                "zm19",
+                "zm110"
+              ],
+              "dur": 0.1,
+              "at": "Open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "zm11A": [
+                  0.5,
+                  0.15
+                ],
+                "zm11B": [
+                  0.5,
+                  -0.15
+                ],
+                "zm12A": [
+                  1.0,
+                  0.15
+                ],
+                "zm12B": [
+                  1.0,
+                  -0.38
+                ],
+                "zm13A": [
+                  1.5,
+                  0.15
+                ],
+                "zm13B": [
+                  1.5,
+                  -0.15
+                ],
+                "zm14A": [
+                  2.0,
+                  0.15
+                ],
+                "zm14B": [
+                  2.0,
+                  -0.38
+                ],
+                "zm15A": [
+                  2.5,
+                  0.15
+                ],
+                "zm15B": [
+                  2.5,
+                  -0.15
+                ],
+                "zm16A": [
+                  3.0,
+                  0.15
+                ],
+                "zm16B": [
+                  3.0,
+                  -0.38
+                ],
+                "zm17A": [
+                  3.5,
+                  0.15
+                ],
+                "zm17B": [
+                  3.5,
+                  -0.15
+                ],
+                "zm18A": [
+                  4.0,
+                  0.15
+                ],
+                "zm18B": [
+                  4.0,
+                  -0.38
+                ],
+                "zm19A": [
+                  4.5,
+                  0.15
+                ],
+                "zm19B": [
+                  4.5,
+                  -0.15
+                ],
+                "zm110A": [
+                  5.0,
+                  0.15
+                ],
+                "zm110B": [
+                  5.0,
+                  -0.15
+                ],
+                "E": [
+                  0.00125,
+                  0.48
+                ],
+                "EA": [
+                  0.00125,
+                  0.22
+                ],
+                "EB": [
+                  0.00125,
+                  0.75
+                ],
+                "EBAR": [
+                  0.00125,
+                  0.38
+                ],
+                "ET": [
+                  0.00125,
+                  0.58
+                ]
+              },
+              "dur": 1.6,
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sm1N0",
+                "sm1N2",
+                "sm1N4",
+                "sm1N6",
+                "sm1N8",
+                "sm1Read"
+              ],
+              "dur": 0.35,
+              "at": "Open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sm1P0": [
+                  0.0,
+                  -0.9
+                ],
+                "sm1P2": [
+                  1.0,
+                  -1.32
+                ],
+                "sm1P4": [
+                  2.0,
+                  -0.9
+                ],
+                "sm1P6": [
+                  3.0,
+                  -1.32
+                ],
+                "sm1P8": [
+                  4.0,
+                  -0.9
+                ],
+                "sm1P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.6,
+              "at": "Open"
+            }
+          ]
+        },
+        {
+          "say": "Then open a tenth into hundredths.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "zm11",
+                "zm12",
+                "zm13",
+                "zm14",
+                "zm15",
+                "zm16",
+                "zm17",
+                "zm18",
+                "zm19",
+                "zm110"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "open"
+            },
+            {
+              "do": "write",
+              "tex": "10^{-2}=0.01",
+              "fresh": true,
+              "at": "open"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "sm1N0",
+                "sm1N2",
+                "sm1N4",
+                "sm1N6",
+                "sm1N8",
+                "sm1Read"
+              ],
+              "dur": 0.12,
+              "at": "open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "zm21",
+                "zm22",
+                "zm23",
+                "zm24",
+                "zm25",
+                "zm26",
+                "zm27",
+                "zm28",
+                "zm29",
+                "zm210"
+              ],
+              "dur": 0.1,
+              "at": "open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "zm21A": [
+                  0.5,
+                  0.15
+                ],
+                "zm21B": [
+                  0.5,
+                  -0.15
+                ],
+                "zm22A": [
+                  1.0,
+                  0.15
+                ],
+                "zm22B": [
+                  1.0,
+                  -0.38
+                ],
+                "zm23A": [
+                  1.5,
+                  0.15
+                ],
+                "zm23B": [
+                  1.5,
+                  -0.15
+                ],
+                "zm24A": [
+                  2.0,
+                  0.15
+                ],
+                "zm24B": [
+                  2.0,
+                  -0.38
+                ],
+                "zm25A": [
+                  2.5,
+                  0.15
+                ],
+                "zm25B": [
+                  2.5,
+                  -0.15
+                ],
+                "zm26A": [
+                  3.0,
+                  0.15
+                ],
+                "zm26B": [
+                  3.0,
+                  -0.38
+                ],
+                "zm27A": [
+                  3.5,
+                  0.15
+                ],
+                "zm27B": [
+                  3.5,
+                  -0.15
+                ],
+                "zm28A": [
+                  4.0,
+                  0.15
+                ],
+                "zm28B": [
+                  4.0,
+                  -0.38
+                ],
+                "zm29A": [
+                  4.5,
+                  0.15
+                ],
+                "zm29B": [
+                  4.5,
+                  -0.15
+                ],
+                "zm210A": [
+                  5.0,
+                  0.15
+                ],
+                "zm210B": [
+                  5.0,
+                  -0.15
+                ],
+                "E": [
+                  0.0125,
+                  0.48
+                ],
+                "EA": [
+                  0.0125,
+                  0.22
+                ],
+                "EB": [
+                  0.0125,
+                  0.75
+                ],
+                "EBAR": [
+                  0.0125,
+                  0.38
+                ],
+                "ET": [
+                  0.0125,
+                  0.58
+                ]
+              },
+              "dur": 1.6,
+              "at": "open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sm2N0",
+                "sm2N2",
+                "sm2N4",
+                "sm2N6",
+                "sm2N8",
+                "sm2Read"
+              ],
+              "dur": 0.35,
+              "at": "open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sm2P0": [
+                  0.0,
+                  -0.9
+                ],
+                "sm2P2": [
+                  1.0,
+                  -1.32
+                ],
+                "sm2P4": [
+                  2.0,
+                  -0.9
+                ],
+                "sm2P6": [
+                  3.0,
+                  -1.32
+                ],
+                "sm2P8": [
+                  4.0,
+                  -0.9
+                ],
+                "sm2P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.6,
+              "at": "open"
+            }
+          ]
+        },
+        {
+          "say": "Open a hundredth into thousandths.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "zm21",
+                "zm22",
+                "zm23",
+                "zm24",
+                "zm25",
+                "zm26",
+                "zm27",
+                "zm28",
+                "zm29",
+                "zm210"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "Open"
+            },
+            {
+              "do": "write",
+              "tex": "10^{-3}=0.001",
+              "fresh": true,
+              "at": "Open"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "sm2N0",
+                "sm2N2",
+                "sm2N4",
+                "sm2N6",
+                "sm2N8",
+                "sm2Read"
+              ],
+              "dur": 0.12,
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "zm31",
+                "zm32",
+                "zm33",
+                "zm34",
+                "zm35",
+                "zm36",
+                "zm37",
+                "zm38",
+                "zm39",
+                "zm310"
+              ],
+              "dur": 0.1,
+              "at": "Open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "zm31A": [
+                  0.5,
+                  0.15
+                ],
+                "zm31B": [
+                  0.5,
+                  -0.15
+                ],
+                "zm32A": [
+                  1.0,
+                  0.15
+                ],
+                "zm32B": [
+                  1.0,
+                  -0.38
+                ],
+                "zm33A": [
+                  1.5,
+                  0.15
+                ],
+                "zm33B": [
+                  1.5,
+                  -0.15
+                ],
+                "zm34A": [
+                  2.0,
+                  0.15
+                ],
+                "zm34B": [
+                  2.0,
+                  -0.38
+                ],
+                "zm35A": [
+                  2.5,
+                  0.15
+                ],
+                "zm35B": [
+                  2.5,
+                  -0.15
+                ],
+                "zm36A": [
+                  3.0,
+                  0.15
+                ],
+                "zm36B": [
+                  3.0,
+                  -0.38
+                ],
+                "zm37A": [
+                  3.5,
+                  0.15
+                ],
+                "zm37B": [
+                  3.5,
+                  -0.15
+                ],
+                "zm38A": [
+                  4.0,
+                  0.15
+                ],
+                "zm38B": [
+                  4.0,
+                  -0.38
+                ],
+                "zm39A": [
+                  4.5,
+                  0.15
+                ],
+                "zm39B": [
+                  4.5,
+                  -0.15
+                ],
+                "zm310A": [
+                  5.0,
+                  0.15
+                ],
+                "zm310B": [
+                  5.0,
+                  -0.15
+                ],
+                "E": [
+                  0.125,
+                  0.48
+                ],
+                "EA": [
+                  0.125,
+                  0.22
+                ],
+                "EB": [
+                  0.125,
+                  0.75
+                ],
+                "EBAR": [
+                  0.125,
+                  0.38
+                ],
+                "ET": [
+                  0.125,
+                  0.58
+                ]
+              },
+              "dur": 1.6,
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sm3N0",
+                "sm3N2",
+                "sm3N4",
+                "sm3N6",
+                "sm3N8",
+                "sm3Read"
+              ],
+              "dur": 0.35,
+              "at": "Open"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sm3P0": [
+                  0.0,
+                  -0.9
+                ],
+                "sm3P2": [
+                  1.0,
+                  -1.32
+                ],
+                "sm3P4": [
+                  2.0,
+                  -0.9
+                ],
+                "sm3P6": [
+                  3.0,
+                  -1.32
+                ],
+                "sm3P8": [
+                  4.0,
+                  -0.9
+                ],
+                "sm3P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.6,
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": "end",
+              "at": "Open"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "pointer",
+                "hint"
+              ],
+              "at": "Open"
+            },
+            {
+              "do": "show",
+              "target": "bar",
+              "at": "Open"
+            }
+          ]
+        },
+        {
+          "say": "And a thousandth into ten-thousandths. Now we can measure it.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "zm31",
+                "zm32",
+                "zm33",
+                "zm34",
+                "zm35",
+                "zm36",
+                "zm37",
+                "zm38",
+                "zm39",
+                "zm310"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "thousandth"
+            },
+            {
+              "do": "write",
+              "tex": "10^{-4}=0.0001",
+              "fresh": true,
+              "at": "thousandth"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10",
+                "sm3N0",
+                "sm3N2",
+                "sm3N4",
+                "sm3N6",
+                "sm3N8",
+                "sm3Read"
+              ],
+              "dur": 0.12,
+              "at": "thousandth"
+            },
+            {
+              "do": "show",
+              "target": [
+                "zm41",
+                "zm42",
+                "zm43",
+                "zm44",
+                "zm45",
+                "zm46",
+                "zm47",
+                "zm48",
+                "zm49",
+                "zm410"
+              ],
+              "dur": 0.1,
+              "at": "thousandth"
+            },
+            {
+              "do": "move",
+              "points": {
+                "zm41A": [
+                  0.5,
+                  0.15
+                ],
+                "zm41B": [
+                  0.5,
+                  -0.15
+                ],
+                "zm42A": [
+                  1.0,
+                  0.15
+                ],
+                "zm42B": [
+                  1.0,
+                  -0.38
+                ],
+                "zm43A": [
+                  1.5,
+                  0.15
+                ],
+                "zm43B": [
+                  1.5,
+                  -0.15
+                ],
+                "zm44A": [
+                  2.0,
+                  0.15
+                ],
+                "zm44B": [
+                  2.0,
+                  -0.38
+                ],
+                "zm45A": [
+                  2.5,
+                  0.15
+                ],
+                "zm45B": [
+                  2.5,
+                  -0.15
+                ],
+                "zm46A": [
+                  3.0,
+                  0.15
+                ],
+                "zm46B": [
+                  3.0,
+                  -0.38
+                ],
+                "zm47A": [
+                  3.5,
+                  0.15
+                ],
+                "zm47B": [
+                  3.5,
+                  -0.15
+                ],
+                "zm48A": [
+                  4.0,
+                  0.15
+                ],
+                "zm48B": [
+                  4.0,
+                  -0.38
+                ],
+                "zm49A": [
+                  4.5,
+                  0.15
+                ],
+                "zm49B": [
+                  4.5,
+                  -0.15
+                ],
+                "zm410A": [
+                  5.0,
+                  0.15
+                ],
+                "zm410B": [
+                  5.0,
+                  -0.15
+                ],
+                "E": [
+                  1.25,
+                  0.48
+                ],
+                "EA": [
+                  1.25,
+                  0.22
+                ],
+                "EB": [
+                  1.25,
+                  0.75
+                ],
+                "EBAR": [
+                  1.25,
+                  0.38
+                ],
+                "ET": [
+                  1.25,
+                  0.58
+                ]
+              },
+              "dur": 1.6,
+              "at": "thousandth"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sm4N0",
+                "sm4N2",
+                "sm4N4",
+                "sm4N6",
+                "sm4N8",
+                "sm4Read"
+              ],
+              "dur": 0.35,
+              "at": "thousandth"
+            },
+            {
+              "do": "move",
+              "points": {
+                "sm4P0": [
+                  0.0,
+                  -0.9
+                ],
+                "sm4P2": [
+                  1.0,
+                  -1.32
+                ],
+                "sm4P4": [
+                  2.0,
+                  -0.9
+                ],
+                "sm4P6": [
+                  3.0,
+                  -1.32
+                ],
+                "sm4P8": [
+                  4.0,
+                  -0.9
+                ],
+                "sm4P10": [
+                  5.25,
+                  -1.32
+                ]
+              },
+              "dur": 1.6,
+              "at": "thousandth"
+            }
+          ]
+        },
+        {
+          "say": "Two point five intervals, each one ten-thousandth of a meter. Negative four means four divisions by ten; the length is positive.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "zm41",
+                "zm42",
+                "zm43",
+                "zm44",
+                "zm45",
+                "zm46",
+                "zm47",
+                "zm48",
+                "zm49",
+                "zm410"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "show",
+              "target": [
+                "t1",
+                "t2",
+                "t3",
+                "t4",
+                "t5",
+                "t6",
+                "t7",
+                "t8",
+                "t9",
+                "t10"
+              ],
+              "dur": 0.08
+            },
+            {
+              "do": "clear",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "2.5\\times10^{-4}\\,\\text{m}",
+              "fresh": true,
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "10^{-4}=\\frac{1}{10{,}000}=0.0001",
+              "fresh": true,
+              "at": "Negative"
+            },
+            {
+              "do": "show",
+              "target": "count",
+              "at": "Two"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -3,
+          5.7,
+          2
+        ],
+        "points": {
+          "BL": [
+            -0.35,
+            -1.8699999999999999
+          ],
+          "BR": [
+            5.35,
+            -1.8699999999999999
+          ],
+          "TR": [
+            5.35,
+            0.15
+          ],
+          "TL": [
+            -0.35,
+            0.15
+          ],
+          "A": [
+            0,
+            0.48
+          ],
+          "E": [
+            1.25,
+            0.48
+          ],
+          "EA": [
+            1.25,
+            0.22
+          ],
+          "EB": [
+            1.25,
+            0.75
+          ],
+          "nameP": [
+            2.5,
+            1.75
+          ],
+          "countP": [
+            2.5,
+            1.05
+          ],
+          "bL": [
+            2,
+            -2.0500000000000003
+          ],
+          "bR": [
+            2.5,
+            -2.0500000000000003
+          ],
+          "bLT": [
+            2,
+            -1.8699999999999999
+          ],
+          "bRT": [
+            2.5,
+            -1.8699999999999999
+          ],
+          "scaleP": [
+            2.5,
+            -2.62
+          ],
+          "t0A": [
+            0.0,
+            0.15
+          ],
+          "t0B": [
+            0.0,
+            -0.38
+          ],
+          "t1A": [
+            0.5,
+            0.15
+          ],
+          "t1B": [
+            0.5,
+            -0.15
+          ],
+          "t2A": [
+            1.0,
+            0.15
+          ],
+          "t2B": [
+            1.0,
+            -0.38
+          ],
+          "t3A": [
+            1.5,
+            0.15
+          ],
+          "t3B": [
+            1.5,
+            -0.15
+          ],
+          "t4A": [
+            2.0,
+            0.15
+          ],
+          "t4B": [
+            2.0,
+            -0.38
+          ],
+          "t5A": [
+            2.5,
+            0.15
+          ],
+          "t5B": [
+            2.5,
+            -0.15
+          ],
+          "t6A": [
+            3.0,
+            0.15
+          ],
+          "t6B": [
+            3.0,
+            -0.38
+          ],
+          "t7A": [
+            3.5,
+            0.15
+          ],
+          "t7B": [
+            3.5,
+            -0.15
+          ],
+          "t8A": [
+            4.0,
+            0.15
+          ],
+          "t8B": [
+            4.0,
+            -0.38
+          ],
+          "t9A": [
+            4.5,
+            0.15
+          ],
+          "t9B": [
+            4.5,
+            -0.15
+          ],
+          "t10A": [
+            5.0,
+            0.15
+          ],
+          "t10B": [
+            5.0,
+            -0.15
+          ],
+          "sm4P0": [
+            0.0,
+            -0.9
+          ],
+          "sm4P2": [
+            1.0,
+            -1.32
+          ],
+          "sm4P4": [
+            2.0,
+            -0.9
+          ],
+          "sm4P6": [
+            3.0,
+            -1.32
+          ],
+          "sm4P8": [
+            4.0,
+            -0.9
+          ],
+          "sm4P10": [
+            5.25,
+            -1.32
+          ],
+          "AB": [
+            0,
+            0.38
+          ],
+          "EBAR": [
+            1.25,
+            0.38
+          ],
+          "AT": [
+            0,
+            0.58
+          ],
+          "ET": [
+            1.25,
+            0.58
+          ]
+        },
+        "parts": [
+          {
+            "id": "body",
+            "poly": [
+              "BL",
+              "BR",
+              "TR",
+              "TL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "bar",
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "poly": [
+              "AB",
+              "EBAR",
+              "ET",
+              "AT"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "end",
+            "seg": [
+              "EA",
+              "EB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "bLine",
+            "seg": [
+              "bL",
+              "bR"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bLeft",
+            "seg": [
+              "bL",
+              "bLT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bRight",
+            "seg": [
+              "bR",
+              "bRT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "name",
+            "label": "0.00025\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "count",
+            "label": "2.5\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "t0",
+            "seg": [
+              "t0A",
+              "t0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "sm4N0",
+            "label": "0",
+            "at": "sm4P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4N2",
+            "label": "0.0002",
+            "at": "sm4P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4N4",
+            "label": "0.0004",
+            "at": "sm4P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4N6",
+            "label": "0.0006",
+            "at": "sm4P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4N8",
+            "label": "0.0008",
+            "at": "sm4P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4Read",
+            "label": "0.0001\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": true,
+            "flies": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Start with two point five and divide by ten.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "tex": "2.5\\times10^{-4}",
+              "label": "To standard form"
+            },
+            {
+              "do": "write",
+              "tex": "2.5",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "2 in the ones place"
+            }
+          ]
+        },
+        {
+          "say": "The two moves into tenths, then hundredths.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "tenths"
+            },
+            {
+              "do": "write",
+              "tex": "0.25",
+              "fresh": true,
+              "note": "\\div10",
+              "at": "tenths"
+            },
+            {
+              "do": "text",
+              "text": "2 in the tenths place",
+              "at": "tenths"
+            },
+            {
+              "do": "clear",
+              "at": "hundredths"
+            },
+            {
+              "do": "write",
+              "tex": "0.025",
+              "fresh": true,
+              "note": "\\div10",
+              "at": "hundredths"
+            },
+            {
+              "do": "text",
+              "text": "2 in the hundredths place",
+              "at": "hundredths"
+            }
+          ]
+        },
+        {
+          "say": "Then thousandths, and finally ten-thousandths.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear",
+              "at": "thousandths"
+            },
+            {
+              "do": "write",
+              "tex": "0.0025",
+              "fresh": true,
+              "note": "\\div10",
+              "at": "thousandths"
+            },
+            {
+              "do": "text",
+              "text": "2 in the thousandths place",
+              "at": "thousandths"
+            },
+            {
+              "do": "clear",
+              "at": "ten-thousandths"
+            },
+            {
+              "do": "write",
+              "tex": "0.00025",
+              "fresh": true,
+              "note": "\\div10",
+              "at": "ten-thousandths"
+            },
+            {
+              "do": "text",
+              "text": "2 in the ten-thousandths place",
+              "at": "ten-thousandths"
+            }
+          ]
+        },
+        {
+          "say": "Reading backward, choose two point five. Four divisions recover the original value.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Back to scientific notation"
+            },
+            {
+              "do": "write",
+              "tex": "0.00025=2.5\\times10^{-4}",
+              "fresh": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -3,
+          5.7,
+          2
+        ],
+        "points": {
+          "BL": [
+            -0.35,
+            -1.8699999999999999
+          ],
+          "BR": [
+            5.35,
+            -1.8699999999999999
+          ],
+          "TR": [
+            5.35,
+            0.15
+          ],
+          "TL": [
+            -0.35,
+            0.15
+          ],
+          "A": [
+            0,
+            0.48
+          ],
+          "E": [
+            2.3,
+            0.48
+          ],
+          "EA": [
+            2.3,
+            0.22
+          ],
+          "EB": [
+            2.3,
+            0.75
+          ],
+          "nameP": [
+            2.5,
+            1.75
+          ],
+          "countP": [
+            2.5,
+            1.05
+          ],
+          "bL": [
+            2,
+            -2.0500000000000003
+          ],
+          "bR": [
+            2.5,
+            -2.0500000000000003
+          ],
+          "bLT": [
+            2,
+            -1.8699999999999999
+          ],
+          "bRT": [
+            2.5,
+            -1.8699999999999999
+          ],
+          "scaleP": [
+            2.5,
+            -2.62
+          ],
+          "t0A": [
+            0.0,
+            0.15
+          ],
+          "t0B": [
+            0.0,
+            -0.38
+          ],
+          "t1A": [
+            0.5,
+            0.15
+          ],
+          "t1B": [
+            0.5,
+            -0.15
+          ],
+          "t2A": [
+            1.0,
+            0.15
+          ],
+          "t2B": [
+            1.0,
+            -0.38
+          ],
+          "t3A": [
+            1.5,
+            0.15
+          ],
+          "t3B": [
+            1.5,
+            -0.15
+          ],
+          "t4A": [
+            2.0,
+            0.15
+          ],
+          "t4B": [
+            2.0,
+            -0.38
+          ],
+          "t5A": [
+            2.5,
+            0.15
+          ],
+          "t5B": [
+            2.5,
+            -0.15
+          ],
+          "t6A": [
+            3.0,
+            0.15
+          ],
+          "t6B": [
+            3.0,
+            -0.38
+          ],
+          "t7A": [
+            3.5,
+            0.15
+          ],
+          "t7B": [
+            3.5,
+            -0.15
+          ],
+          "t8A": [
+            4.0,
+            0.15
+          ],
+          "t8B": [
+            4.0,
+            -0.38
+          ],
+          "t9A": [
+            4.5,
+            0.15
+          ],
+          "t9B": [
+            4.5,
+            -0.15
+          ],
+          "t10A": [
+            5.0,
+            0.15
+          ],
+          "t10B": [
+            5.0,
+            -0.15
+          ],
+          "s6P0": [
+            0.0,
+            -0.9
+          ],
+          "s6P2": [
+            1.0,
+            -1.32
+          ],
+          "s6P4": [
+            2.0,
+            -0.9
+          ],
+          "s6P6": [
+            3.0,
+            -1.32
+          ],
+          "s6P8": [
+            4.0,
+            -0.9
+          ],
+          "s6P10": [
+            5.25,
+            -1.32
+          ],
+          "sm4P0": [
+            0.0,
+            -0.9
+          ],
+          "sm4P2": [
+            1.0,
+            -1.32
+          ],
+          "sm4P4": [
+            2.0,
+            -0.9
+          ],
+          "sm4P6": [
+            3.0,
+            -1.32
+          ],
+          "sm4P8": [
+            4.0,
+            -0.9
+          ],
+          "sm4P10": [
+            5.25,
+            -1.32
+          ],
+          "AB": [
+            0,
+            0.38
+          ],
+          "EBAR": [
+            2.3,
+            0.38
+          ],
+          "AT": [
+            0,
+            0.58
+          ],
+          "ET": [
+            2.3,
+            0.58
+          ],
+          "ruleP": [
+            2.5,
+            1.05
+          ]
+        },
+        "parts": [
+          {
+            "id": "body",
+            "poly": [
+              "BL",
+              "BR",
+              "TR",
+              "TL"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3,
+            "solid": true,
+            "start": true
+          },
+          {
+            "id": "bar",
+            "ink": "accent",
+            "w": 3,
+            "start": true,
+            "poly": [
+              "AB",
+              "EBAR",
+              "ET",
+              "AT"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "end",
+            "seg": [
+              "EA",
+              "EB"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "bLine",
+            "seg": [
+              "bL",
+              "bR"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bLeft",
+            "seg": [
+              "bL",
+              "bLT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "bRight",
+            "seg": [
+              "bR",
+              "bRT"
+            ],
+            "ink": "gold",
+            "w": 9,
+            "start": true
+          },
+          {
+            "id": "name",
+            "label": "4{,}600{,}000\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "count",
+            "label": "4.6\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "t0",
+            "seg": [
+              "t0A",
+              "t0B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t1",
+            "seg": [
+              "t1A",
+              "t1B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t2",
+            "seg": [
+              "t2A",
+              "t2B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t3",
+            "seg": [
+              "t3A",
+              "t3B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t4",
+            "seg": [
+              "t4A",
+              "t4B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t5",
+            "seg": [
+              "t5A",
+              "t5B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t6",
+            "seg": [
+              "t6A",
+              "t6B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t7",
+            "seg": [
+              "t7A",
+              "t7B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t8",
+            "seg": [
+              "t8A",
+              "t8B"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "t9",
+            "seg": [
+              "t9A",
+              "t9B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "t10",
+            "seg": [
+              "t10A",
+              "t10B"
+            ],
+            "ink": "gold",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "s6N0",
+            "label": "0",
+            "at": "s6P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N2",
+            "label": "\\begin{gathered}2\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N4",
+            "label": "\\begin{gathered}4\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N6",
+            "label": "\\begin{gathered}6\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6N8",
+            "label": "\\begin{gathered}8\\\\[-.7em]\\scriptscriptstyle\\text{million}\\end{gathered}",
+            "at": "s6P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "s6Read",
+            "label": "1{,}000{,}000\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": true,
+            "flies": true
+          },
+          {
+            "id": "sm4N0",
+            "label": "0",
+            "at": "sm4P0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N2",
+            "label": "0.0002",
+            "at": "sm4P2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N4",
+            "label": "0.0004",
+            "at": "sm4P4",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N6",
+            "label": "0.0006",
+            "at": "sm4P6",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4N8",
+            "label": "0.0008",
+            "at": "sm4P8",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "sm4Read",
+            "label": "0.0001\\,\\text{m}",
+            "at": "scaleP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "gold",
+            "start": false,
+            "flies": true
+          },
+          {
+            "id": "smallName",
+            "label": "0.00025\\,\\text{m}",
+            "at": "nameP",
+            "dir": "c",
+            "size": "xl",
+            "ink": "accent"
+          },
+          {
+            "id": "smallCount",
+            "label": "2.5\\text{ intervals}",
+            "at": "countP",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "oneDigit",
+            "label": "\\text{One nonzero digit}",
+            "at": "ruleP",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "steps",
+            "label": "\\text{Exponent: tenfold steps}",
+            "at": "ruleP",
+            "dir": "c",
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "zeroScale",
+            "label": "10^0=1",
+            "at": "ruleP",
+            "dir": "c",
+            "ink": "gold",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Four million six hundred thousand is four point six times ten to the sixth.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "header",
+              "text": "Scientific notation",
+              "label": "Digits times a power of ten"
+            },
+            {
+              "do": "write",
+              "tex": "4{,}600{,}000=4.6\\times10^6",
+              "fresh": true,
+              "id": "summaryLarge"
+            }
+          ]
+        },
+        {
+          "say": "Zero point zero zero zero two five is two point five times ten to negative four.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "0.00025=2.5\\times10^{-4}",
+              "fresh": true,
+              "id": "summarySmall"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "s6N0",
+                "s6N2",
+                "s6N4",
+                "s6N6",
+                "s6N8",
+                "s6Read",
+                "name",
+                "count"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": [
+                "sm4N0",
+                "sm4N2",
+                "sm4N4",
+                "sm4N6",
+                "sm4N8",
+                "sm4Read",
+                "smallName",
+                "smallCount"
+              ],
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "E": [
+                  1.25,
+                  0.48
+                ],
+                "EA": [
+                  1.25,
+                  0.22
+                ],
+                "EB": [
+                  1.25,
+                  0.75
+                ],
+                "EBAR": [
+                  1.25,
+                  0.38
+                ],
+                "ET": [
+                  1.25,
+                  0.58
+                ]
+              },
+              "dur": 0.6
+            },
+            {
+              "do": "highlight",
+              "target": "smallCount",
+              "at": "two",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Both write a positive number *N* as *a* times ten to *n*. Keep *a* at least one and below ten, so everyone writes the same number the same way.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "N=a\\times10^n\\;{\\scriptstyle(1\\le a<10)}",
+              "fresh": true,
+              "id": "summaryForm",
+              "at": "Both"
+            },
+            {
+              "do": "highlight",
+              "target": "smallCount",
+              "at": "Keep"
+            },
+            {
+              "do": "hide",
+              "target": "smallCount",
+              "at": "below",
+              "dur": 0.05
+            },
+            {
+              "do": "show",
+              "target": "oneDigit",
+              "at": "below",
+              "dur": 0.05
+            }
+          ]
+        },
+        {
+          "say": "The exponent *n* counts whole steps: positive goes up, negative goes down, and zero leaves the scale alone.",
+          "pause": 0.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "oneDigit",
+              "dur": 0.05
+            },
+            {
+              "do": "show",
+              "target": "steps",
+              "dur": 0.05
+            },
+            {
+              "do": "highlight",
+              "target": "sm4Read",
+              "at": "negative"
+            },
+            {
+              "do": "hide",
+              "target": "steps",
+              "at": "zero",
+              "dur": 0.05
+            },
+            {
+              "do": "show",
+              "target": "zeroScale",
+              "at": "zero",
+              "dur": 0.05
+            }
+          ]
+        },
+        {
+          "say": "Keep one nonzero digit before the point. The exponent counts tenfold steps from the coefficient to the number.",
+          "pause": 3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "zeroScale",
+              "dur": 0.05
+            },
+            {
+              "do": "show",
+              "target": "oneDigit",
+              "dur": 0.05
+            },
+            {
+              "do": "hide",
+              "target": "oneDigit",
+              "at": "exponent",
+              "dur": 0.05
+            },
+            {
+              "do": "show",
+              "target": "steps",
+              "at": "exponent",
+              "dur": 0.05
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
