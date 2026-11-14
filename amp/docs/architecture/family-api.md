@@ -327,6 +327,7 @@ type FamilyChildTime = {
   id: string;                 // learner ID
   name: string;
   group: string;              // display label only, no host class ID or link
+  joined: string | null;      // first overlapping enrollment start in that group
   timezone: string;
   period: "week" | "weeks" | "term";
   range: { from: string; to: string }; // inclusive YYYY-MM-DD dates
@@ -348,9 +349,22 @@ begun term or no class calendar it uses the four-week range. The default is `wee
 to Monday. It must be a valid ISO date at or before the resolved end; invalid dates
 return 400, and a start after the end returns `400 invalid_time_range`. Class Time,
 its individual-student read and its CSV accept the same `from` and `weeks` alias.
+All Time JSON and CSV readers enforce one shared maximum of **400 inclusive
+calendar days**, including default term ranges. A longer resolved range returns
+`400 time_range_too_long` before evidence queries or week expansion; it is never
+truncated. Supply a later `from` to narrow a long term.
 Pass the same start date when combining owned children with a Family Time range.
 A host class can have a different calendar; compare its results over identical
 resolved dates, within that child's enrollment.
+
+`joined` is the earliest student enrollment start in the displayed group among
+enrollments overlapping the inclusive report range, using the same overlap and
+minimum-start rules as class Time. It is an ISO date, or null when there is no
+current group or no overlapping enrollment. Class Time clips its roster start to
+`max(joined, range.from)`; the child response preserves the actual enrollment date
+so clients can hatch weeks before joining. Rejoining does not hide an earlier
+start within the range. This is roster metadata only: it does not filter the
+owned child's evidence or describe every gap between enrollments.
 
 Days come from the stored evidence dates, with no rebucketing into UTC. Minutes
 include every active-time surface counted by class Time: practice, lesson,

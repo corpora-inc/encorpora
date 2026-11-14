@@ -552,6 +552,9 @@ export async function readEvidence(
   };
 }
 
+/** Inclusive calendar days; shared by every Time JSON and CSV reader. */
+export const MAX_TIME_DAYS = 400;
+
 /** The dates a report covers, in the school's timezone. */
 export async function periodRange(
   pool: Pool,
@@ -559,24 +562,32 @@ export async function periodRange(
   period: TimePeriod,
   from?: string,
 ): Promise<{ from: string; to: string }> {
-  if (from !== undefined) {
-    const range = await periodRange(pool, context, period);
-    if (from > range.to) throw new SchoolError(400, "invalid_time_range");
-    return { from, to: range.to };
-  }
   const today = context.today;
-  if (period === "week") return { from: weekStart(today), to: today };
-  if (period === "month")
-    return { from: shift(weekStart(today), -21), to: today };
-  const term = context.sessionId
-    ? currentTerm(await termsFor(pool, context), today)
-    : null;
-  return term && term.startsOn <= today
-    ? {
-        from: term.startsOn,
-        to: term.endsOn < today ? term.endsOn : today,
-      }
-    : { from: shift(weekStart(today), -21), to: today };
+  let range: { from: string; to: string };
+  if (period === "week") range = { from: weekStart(today), to: today };
+  else if (period === "month")
+    range = { from: shift(weekStart(today), -21), to: today };
+  else {
+    const term = context.sessionId
+      ? currentTerm(await termsFor(pool, context), today)
+      : null;
+    range =
+      term && term.startsOn <= today
+        ? {
+            from: term.startsOn,
+            to: term.endsOn < today ? term.endsOn : today,
+          }
+        : { from: shift(weekStart(today), -21), to: today };
+  }
+  if (from !== undefined) range.from = from;
+  if (range.from > range.to) throw new SchoolError(400, "invalid_time_range");
+  const days =
+    (Date.parse(`${range.to}T00:00:00Z`) -
+      Date.parse(`${range.from}T00:00:00Z`)) /
+      86_400_000 +
+    1;
+  if (days > MAX_TIME_DAYS) throw new SchoolError(400, "time_range_too_long");
+  return range;
 }
 
 function mondays({ from, to }: { from: string; to: string }): string[] {

@@ -134,6 +134,7 @@ export const familyChildTimeSchema = z.object({
   id: z.string(),
   name: z.string(),
   group: z.string(),
+  joined: z.iso.date().nullable(),
   timezone: z.string(),
   period: z.enum(["week", "weeks", "term"]),
   range: z.object({ from: z.iso.date(), to: z.iso.date() }),

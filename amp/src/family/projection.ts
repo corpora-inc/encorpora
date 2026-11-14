@@ -508,7 +508,11 @@ export async function familyChildTime(
   const range = await periodRange(pool, context, period, from);
   const group = (
     await pool.query(
-      `SELECT c.name FROM amp_people p
+      `SELECT c.name,
+       (SELECT min(history.begin_on)::text FROM amp_enrollments history
+        WHERE history.person_id=p.id AND history.class_id=c.id AND history.role='student'
+          AND history.begin_on<=$4::date AND (history.end_on IS NULL OR history.end_on>$3::date)) AS joined
+     FROM amp_people p
      JOIN amp_enrollments e ON e.person_id=p.id AND e.role='student'
      JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
      JOIN amp_orgs o ON o.id=c.org_id
@@ -516,9 +520,9 @@ export async function familyChildTime(
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id
          AND r.role='student' AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})
      ORDER BY (c.id=$2::uuid) DESC,c.id LIMIT 1`,
-      [learnerId, row.classId],
+      [learnerId, row.classId, range.from, range.to],
     )
-  ).rows[0]?.name as string | undefined;
+  ).rows[0] as { name: string; joined: string | null } | undefined;
   const days = (
     await perDay(
       pool,
@@ -539,7 +543,8 @@ export async function familyChildTime(
   return {
     id: learnerId,
     name: child.name as string,
-    group: group ?? row.displayName ?? "Your family",
+    group: group?.name ?? row.displayName ?? "Your family",
+    joined: group?.joined ?? null,
     timezone: context.timezone,
     period: period === "month" ? ("weeks" as const) : period,
     range,
