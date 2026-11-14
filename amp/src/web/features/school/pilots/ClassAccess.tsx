@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { CopyButton } from "../parts";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import { AGREEMENT_VERSION } from "../../../../schools/agreement";
 import type { PilotState } from "../../../../schools/pilot-contracts";
@@ -78,7 +78,32 @@ export function useClassAccess(place: Place): {
     enabled: school,
     refetchOnMount: false,
     retryOnMount: false,
+    // A screen left open, then looked at again, reads where it stands.
+    refetchOnWindowFocus: true,
   });
+  // Open practice ends at a known time (a pilot's grace, a seat, a
+  // license): a screen left open closes its code and cards the moment it
+  // passes, and reads the class again to confirm (CP-3 r3 H1).
+  const until = year.data?.practiceUntil
+    ? Date.parse(year.data.practiceUntil)
+    : null;
+  const [, tick] = useState(0);
+  useEffect(() => {
+    if (until === null || !Number.isFinite(until)) return;
+    const wait = until - Date.now();
+    if (wait <= 0) return;
+    const timer = setTimeout(
+      () => {
+        tick((n) => n + 1);
+        void year.refetch();
+        void queryClient.invalidateQueries({
+          predicate: (entry) => entry.queryKey.includes(place.class),
+        });
+      },
+      Math.min(wait + 250, 2 ** 31 - 1),
+    );
+    return () => clearTimeout(timer);
+  }, [until, place.class]);
   const retry = () => {
     void year.refetch();
     if (readable) void query.refetch();
@@ -98,11 +123,14 @@ export function useClassAccess(place: Place): {
       retry,
     };
   // Unknown is never open: a failed read, or an answer without the state.
-  const practice: Practice = year.data
+  const read: Practice = year.data
     ? (year.data.practice ?? "unknown")
     : year.isError
       ? "unknown"
       : "waiting";
+  // Past its end, open practice has ended, before the next read says so.
+  const practice: Practice =
+    read === "open" && until !== null && Date.now() >= until ? "ended" : read;
   const unavailable =
     !pending && (practice === "unknown" || (readable && query.isError));
   const view: AccessView = pilot
@@ -649,15 +677,26 @@ export function ClosedSignIn({
   place,
   also,
   onRetry,
+  known,
 }: {
   place: Place;
   /** A way back beside the next step (the board's Exit). */
   also?: ReactNode;
   /** Also read again what the screen itself read (the board's presence). */
   onRetry?: () => void;
+  /** What a fresher read of the screen's own said (the board's poll). */
+  known?: Practice;
 }) {
-  const { view, pilot, teaches, practice, unavailable, retry } =
-    useClassAccess(place);
+  const access = useClassAccess(place);
+  const { view, pilot, teaches, retry } = access;
+  // The fresher answer wins over a cached open or unknown one.
+  const practice =
+    known &&
+    known !== "open" &&
+    (access.practice === "open" || access.practice === "unknown")
+      ? known
+      : access.practice;
+  const unavailable = access.unavailable && practice === access.practice;
   const actions = (next: ReactNode) => (
     <div className={styles.sheetActions}>
       {next}

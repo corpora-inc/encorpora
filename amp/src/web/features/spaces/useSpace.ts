@@ -155,10 +155,19 @@ export function useSpace(match: SpaceMatch | null): SpaceDescriptor | null {
     refetchOnMount: false,
   });
   const orgNow = current(org);
-  // Only a real school's class has practice to start.
+  // Only a real school's class has practice to start, and only an older
+  // server's year read lacks the practice state; even then, only someone who
+  // may read the class's pilot asks for it.
   const pilot = useQuery({
     ...pilotOptions(auth, classId),
-    enabled: !!classId && orgNow?.kind === "school" && orgNow.demo !== true,
+    enabled:
+      !!classId &&
+      orgNow?.kind === "school" &&
+      orgNow.demo !== true &&
+      !!year.data &&
+      year.data.practice === undefined &&
+      (!!orgNow.teaches?.includes(classId) ||
+        !!orgNow.can?.includes("pilot.read")),
     refetchOnMount: false,
   });
   if (!match) return null;

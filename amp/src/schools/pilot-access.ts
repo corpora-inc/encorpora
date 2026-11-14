@@ -85,6 +85,41 @@ export async function classPracticeGates(
   return gates;
 }
 
+/** When a class's students stop being able to practice, as things stand:
+ * the last of its licenses and its students' coverage (a teacher's pilot,
+ * its grace, a seat) to end. Null for a class never gated (a family's, a
+ * demo), or one already closed. A screen left open re-reads the class then
+ * (SPEC R14): the code never outlives practice on a page left open. */
+export async function classPracticeUntil(
+  db: Pick<PoolClient, "query">,
+  classId: string,
+): Promise<string | null> {
+  const row = (
+    await db.query<{ exempt: boolean; until: Date | null }>(
+      `SELECT o.demo OR o.kind='family' AS exempt,
+        GREATEST(
+          (SELECT max(l.ends_at) FROM amp_school_licenses l WHERE l.org_id=ANY(o.path)
+            AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()),
+          (SELECT max(GREATEST(
+              COALESCE(amp_school_pilot_until(p.learner_id),'-infinity'::timestamptz),
+              COALESCE((SELECT max(g.ends_at) FROM amp_grants g WHERE g.learner_id=p.learner_id
+                AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()
+                AND amp_school_grant_valid(g.id)),'-infinity'::timestamptz)))
+            FROM amp_enrollments e
+            JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
+            WHERE e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")})
+        ) AS until
+      FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,
+      [classId],
+    )
+  ).rows[0];
+  if (!row || row.exempt || !row.until) return null;
+  const until = new Date(row.until);
+  return Number.isFinite(until.getTime()) && until.getTime() > Date.now()
+    ? until.toISOString()
+    : null;
+}
+
 /** Sign-in tools (the class code, the board, printed cards) only while a
  * student can practice: refused before Start and after practice ends
  * (SPEC R14), so a code or card never reaches a student for nothing. */

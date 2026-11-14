@@ -1,7 +1,7 @@
 import { useCloseClick } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button, buttonClass } from "../../../ui/Button";
 import { PrintButton } from "../../../ui/PrintButton";
@@ -71,6 +71,12 @@ export function CardsScreen() {
   const session = useStaffSession();
   const roster = useQuery(rosterOptions(session, place));
   const access = useClassAccess(place);
+  // Cards made while practice ran go when it closes, on a page left open:
+  // they would only lead to a closed class (CP-3 r3 H1).
+  const closedNow = access.closed;
+  useEffect(() => {
+    if (closedNow) setIssued(null);
+  }, [closedNow]);
   const issue = useIssueCards(session, place);
   const [issued, setIssued] = useState<IssuedCards | null>(null);
   // Back to where it was opened: the roster, Today, sign-in help.

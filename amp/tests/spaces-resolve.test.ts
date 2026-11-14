@@ -1177,3 +1177,45 @@ test("CP-2 r3: the frame reads the address as the learning view does: ?learner= 
   expectSpace(space, "me");
   assert.equal(space.status, "unavailable");
 });
+
+test("Start class follows the class's own practice state and board capability, for every role (CP-3 r3 M1)", () => {
+  for (const role of ["viewer", "aide", "teacher", "admin"] as const) {
+    const space = (practice: "open" | "waiting" | "ended", covered: number) =>
+      resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+        org: school({
+          roles: [role],
+          teaches: role === "teacher" ? [ROOM] : [],
+        }),
+        classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+        year: {
+          past: false,
+          orgId: SCHOOL,
+          path: [SCHOOL],
+          can: ["classes.read", "signin.read"],
+          practice,
+        },
+        // A pilot this role can't read reads as nobody covered: never the
+        // board's gate.
+        covered,
+      });
+    // Partly paid, never started, or licensed and empty: open, so the
+    // board is offered, whatever pilot coverage this person can see.
+    assert.deepEqual(space("open", 0).actions, ["start-class"], role);
+    // Closed is closed, even with stale coverage.
+    assert.deepEqual(space("waiting", 3).actions, [], role);
+    assert.deepEqual(space("ended", 3).actions, [], role);
+  }
+  // Without the board's capability, no Start class.
+  const noBoard = resolveSpace(at(classPath(SCHOOL, ROOM)), adult(staffOnly), {
+    org: school({ roles: ["viewer"] }),
+    classes: [klass(ROOM, SCHOOL, "Grade 4 Math")],
+    year: {
+      past: false,
+      orgId: SCHOOL,
+      path: [SCHOOL],
+      can: ["classes.read"],
+      practice: "open",
+    },
+  });
+  assert.deepEqual(noBoard.actions, []);
+});

@@ -62,6 +62,8 @@ export const classYearResource = z.object({
   /** Whether the class's students can practice, for anyone who reads the
    * class (SPEC R14): its sign-in tools follow this, whatever the role. */
   practice: z.enum(["open", "waiting", "ended"]).optional(),
+  /** While open: when that ends as things stand (null: not by a date). */
+  practiceUntil: z.string().nullable().optional(),
 });
 export type ClassYear = z.infer<typeof classYearResource>;
 export const classYearOptions = (session: AuthSession, classId: string) =>

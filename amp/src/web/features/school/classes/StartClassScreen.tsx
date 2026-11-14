@@ -85,6 +85,13 @@ export function StartClassScreen() {
   // The code reaches students only while practice runs (R14).
   const access = useClassAccess({ org: params.org, class: params.class });
   useKeepAwake();
+  // The board's own poll can learn first that practice closed: the class's
+  // state is read again so every screen agrees.
+  const polled = presence.data?.class.practice;
+  useEffect(() => {
+    if (polled && polled !== "open" && access.practice === "open")
+      access.retry();
+  }, [polled, access.practice]);
   const [fullscreen, setFullscreen] = useState(false);
   useEffect(() => {
     const changed = () => setFullscreen(!!document.fullscreenElement);
@@ -130,6 +137,7 @@ export function StartClassScreen() {
           place={{ org: params.org, class: params.class }}
           also={exit}
           onRetry={() => void presence.refetch()}
+          known={presence.data.class.practice}
         />
       </main>
     );

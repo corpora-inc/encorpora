@@ -44,6 +44,8 @@ import {
 import { PostgresRepository } from "../src/server/repository";
 import { templates } from "../src/math/engine";
 import { workbookWorker } from "../src/workbook/off-thread";
+import { localRenderer } from "../src/workbook/pdf";
+import { PDFDocument } from "pdf-lib";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
@@ -78,6 +80,7 @@ console.info = (...args: unknown[]) => {
     mail.push(message.split("\n").at(-1)!);
   else originalInfo(...args);
 };
+const renderer = localRenderer();
 const accounts = await createAccounts(db, {
   baseURL: origin,
   secret: "fixture-school-spaces-accounts-secret-1234",
@@ -97,7 +100,8 @@ await registerSchoolRoutes(api, {
     secret: "fixture-school-spaces-browser-secret",
     // Workbooks are made and printed as production does; nothing prints.
     learning,
-    renderer: { render: async () => Buffer.from("%PDF-1.4\n%%EOF\n") },
+    // The real renderer (Chromium), so a printed workbook is a real PDF.
+    renderer,
   },
 });
 await api.listen({ host: "127.0.0.1", port: port + 1 });
@@ -322,67 +326,94 @@ async function placeName(page: Page) {
 }
 
 try {
-  /** Every student of a class and what they have, by the records
-   * themselves (CP-3 r2 M4): the same people, learners and enrollments; each
-   * answer by its id; each skill's evidence; the active time; each workbook
-   * by id and contents; and each final grade by term. Compared across expiry
-   * and payment: never re-imported, never replaced, never changed. */
+  /** Every student of a class and what they have, by the records'
+   * contents (CP-3 r3 M2): the same people, learners and enrollments; each
+   * answer by id and a digest of its whole outcome (answer, response,
+   * correctness, skill); each skill's evidence by a digest of its state;
+   * each day's active time by surface and skill; each workbook by id and a
+   * digest of its problems; and each final grade by term, value and who
+   * decided it. */
   async function records(classId: string) {
     const { rows } = await db.query(
       `SELECT p.id AS person,p.learner_id AS learner,e.id AS enrollment,
-       ARRAY(SELECT a.id FROM amp_attempts a WHERE a.learner_id=p.learner_id ORDER BY a.id) AS attempts,
-       ARRAY(SELECT s.skill_id||':'||md5(s.state::text) FROM amp_skill_evidence s
-             WHERE s.learner_id=p.learner_id ORDER BY s.skill_id) AS evidence,
-       (SELECT COALESCE(sum(d.active_ms),0)::bigint FROM amp_active_days d WHERE d.learner_id=p.learner_id) AS "activeMs",
-       ARRAY(SELECT w.id||':'||md5(w.spec::text) FROM amp_workbooks w
-             WHERE w.learner_id=p.learner_id ORDER BY w.id) AS workbooks,
-       ARRAY(SELECT g.session_id||':'||g.final_value FROM amp_term_grades g
-             WHERE g.person_id=p.id AND g.class_id=e.class_id AND g.final_value IS NOT NULL
-             ORDER BY g.session_id) AS grades
+       COALESCE((SELECT json_agg(json_build_object('id',a.id,'digest',md5(a.outcome::text),
+           'skill',a.outcome->>'skillId','problem',a.problem_id) ORDER BY a.id)
+         FROM amp_attempts a WHERE a.learner_id=p.learner_id),'[]') AS attempts,
+       COALESCE((SELECT json_agg(json_build_object('skill',s.skill_id,'digest',md5(s.state::text))
+           ORDER BY s.skill_id)
+         FROM amp_skill_evidence s WHERE s.learner_id=p.learner_id),'[]') AS evidence,
+       COALESCE((SELECT json_agg(json_build_object('day',d.day::text,'surface',d.surface,
+           'skill',d.skill_id,'ms',d.active_ms) ORDER BY d.day,d.surface,d.skill_id)
+         FROM amp_active_days d WHERE d.learner_id=p.learner_id),'[]') AS days,
+       COALESCE((SELECT json_agg(json_build_object('id',w.id,'digest',md5(w.spec::text)) ORDER BY w.id)
+         FROM amp_workbooks w WHERE w.learner_id=p.learner_id),'[]') AS workbooks,
+       COALESCE((SELECT json_agg(json_build_object('session',g.session_id,'final',g.final_value,
+           'by',g.final_by) ORDER BY g.session_id)
+         FROM amp_term_grades g WHERE g.person_id=p.id AND g.class_id=e.class_id
+           AND g.final_value IS NOT NULL),'[]') AS grades
      FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
      WHERE e.class_id=$1 AND e.role='student' ORDER BY p.id`,
       [classId],
     );
-    return rows.map((row) => ({ ...row, activeMs: Number(row.activeMs) })) as {
+    return rows as {
       person: string;
       learner: string;
       enrollment: string;
-      attempts: string[];
-      evidence: string[];
-      activeMs: number;
-      workbooks: string[];
-      grades: string[];
+      attempts: {
+        id: string;
+        digest: string;
+        skill: string;
+        problem: string;
+      }[];
+      evidence: { skill: string; digest: string }[];
+      days: { day: string; surface: string; skill: string; ms: number }[];
+      workbooks: { id: string; digest: string }[];
+      grades: { session: string; final: string; by: string }[];
     }[];
   }
   type Records = Awaited<ReturnType<typeof records>>;
-  /** `later` keeps every record of `before`: the same identities, every
-   * answer (new ones may join), the same workbooks and grades, no less time. */
-  function kept(before: Records, later: Records, when: string) {
-    assert.deepEqual(
-      later.map(({ person, learner, enrollment }) => ({
-        person,
-        learner,
-        enrollment,
-      })),
-      before.map(({ person, learner, enrollment }) => ({
-        person,
-        learner,
-        enrollment,
-      })),
-      `${when}: the same students, learners and enrollments`,
-    );
+  /** No new work between them: every record identical, contents and all. */
+  function same(before: Records, later: Records, when: string) {
+    assert.deepEqual(later, before, `${when}: every record exactly as it was`);
+  }
+  /** Paper marks went in for one student between them: their new answers
+   * are exactly the marks, every earlier answer is unchanged, evidence
+   * changes only for the skills the marks practiced, and nothing else of
+   * anyone's changes. */
+  function afterMarks(
+    before: Records,
+    later: Records,
+    student: string,
+    marks: number,
+  ) {
+    assert.equal(later.length, before.length);
     for (const [index, row] of later.entries()) {
       const was = before[index]!;
-      for (const id of was.attempts)
-        assert.ok(row.attempts.includes(id), `${when}: answer ${id} kept`);
-      assert.deepEqual(row.workbooks, was.workbooks, `${when}: workbooks kept`);
-      assert.deepEqual(row.grades, was.grades, `${when}: grades kept`);
-      assert.ok(row.activeMs >= was.activeMs, `${when}: active time kept`);
-      for (const skill of was.evidence.map((entry) => entry.split(":")[0]))
-        assert.ok(
-          row.evidence.some((entry) => entry.startsWith(`${skill}:`)),
-          `${when}: evidence for ${skill} kept`,
+      if (row.person !== student) {
+        assert.deepEqual(row, was, "nobody else's records change");
+        continue;
+      }
+      const { attempts, evidence, ...rest } = row;
+      const { attempts: wasAttempts, evidence: wasEvidence, ...wasRest } = was;
+      assert.deepEqual(rest, wasRest, "identity, time, workbooks, grades");
+      for (const answer of wasAttempts)
+        assert.deepEqual(
+          attempts.find((entry) => entry.id === answer.id),
+          answer,
+          `answer ${answer.id} unchanged`,
         );
+      const added = attempts.filter(
+        (entry) => !wasAttempts.some((old) => old.id === entry.id),
+      );
+      assert.equal(added.length, marks, "one answer per paper mark");
+      const practiced = new Set(added.map((entry) => entry.skill));
+      for (const state of wasEvidence)
+        if (!practiced.has(state.skill))
+          assert.deepEqual(
+            evidence.find((entry) => entry.skill === state.skill),
+            state,
+            `evidence for ${state.skill} unchanged`,
+          );
     }
   }
 
@@ -733,18 +764,45 @@ try {
     },
   );
   assert.equal(graded.status(), 200, "a final grade is entered");
+  // The student steps away (the page sends its active time as it goes), so
+  // nothing records between snapshots.
+  await student.goto("about:blank");
+  const activeTime = async () =>
+    (
+      await db.query(
+        "SELECT COALESCE(sum(active_ms),0)::bigint AS ms FROM amp_active_days WHERE learner_id=$1",
+        [anaLearner],
+      )
+    ).rows[0].ms as string;
+  // Its last report lands after it leaves: wait until the time is there and
+  // holds still.
+  const timeSettled = async () => {
+    let last = "";
+    for (let tries = 0; tries < 60; tries++) {
+      const now = await activeTime();
+      if (now === last && Number(now) > 0) return;
+      last = now;
+      await new Promise((resolve) => setTimeout(resolve, 750));
+    }
+  };
+  await timeSettled();
   const before = await records(created.class_id);
   assert.equal(before.length, 4);
   const anaBefore = before.find((row) => row.person === ana)!;
   assert.ok(anaBefore.attempts.length > 0, "answers recorded");
   assert.ok(anaBefore.evidence.length > 0, "skill evidence recorded");
+  assert.ok(
+    anaBefore.days.reduce((sum, day) => sum + Number(day.ms), 0) > 0,
+    "active time recorded",
+  );
   assert.equal(anaBefore.workbooks.length, 1, "the issued workbook");
+  assert.equal(anaBefore.grades.length, 1, "one final grade");
   assert.equal(
-    anaBefore.grades.length,
-    1,
+    anaBefore.grades[0]!.final,
+    "B+",
     "the final grade, bound to the student, the class and the term",
   );
-  assert.ok(anaBefore.grades[0]!.endsWith(":B+"));
+  assert.ok(anaBefore.grades[0]!.by, "and who decided it");
 
   // A second class, not started, where one student is already covered (by
   // the first class's practice): the server says its students can practice,
@@ -867,10 +925,40 @@ try {
     .getByRole("button", { name: "Request seats", exact: true })
     .waitFor();
   await capture(teacher, "today-grace");
+  // Natural expiry on pages left open (CP-3 r3 H1): grace ends in a few
+  // seconds while the teacher's new cards and the aide's Today are open.
+  // When the clock passes it, the cards and the code go, with no reload.
+  await db.query(
+    "UPDATE amp_teacher_pilots SET grace_ends_at=now()+interval '12 seconds'",
+  );
+  await teacher.goto(`${classUrl}/cards`);
+  await teacher.getByRole("button", { name: /^Make (4|the) / }).click();
+  await teacher.getByRole("heading", { name: /cards? ready$/ }).waitFor();
+  await pilotAide.goto(`${classUrl}/today`);
+  await pilotAide
+    .getByText(`${code.slice(0, 3)}-${code.slice(3)}`)
+    .first()
+    .waitFor();
+  await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor({
+    timeout: 20_000,
+  });
+  assert.equal(
+    await teacher.getByRole("heading", { name: /cards? ready$/ }).count(),
+    0,
+    "the made cards go when practice ends",
+  );
+  await capture(teacher, "cards-natural-expiry");
+  await pilotAide
+    .getByText(`${code.slice(0, 3)}-${code.slice(3)}`)
+    .first()
+    .waitFor({ state: "detached", timeout: 10_000 });
   // Expired: no code, board or cards; the records stay.
   await db.query(
     "UPDATE amp_teacher_pilots SET started_at=now()-interval '40 days',ends_at=now()-interval '10 days',grace_ends_at=now()-interval '3 days'",
   );
+  // Practice ending changes no record.
+  const quiet = await records(created.class_id);
+  same(before, quiet, "at expiry");
   await teacher.goto(`${classUrl}/today`);
   await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
   await noCode("Today after practice");
@@ -904,6 +992,21 @@ try {
     delete body.practice;
     await route.fulfill({ response, json: body });
   });
+  // The board's own poll still says practice ended: that fresher word is
+  // the board's explanation (CP-3 r3 H1).
+  await teacher.goto(`${classUrl}/start`);
+  await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
+  await noCode("the board whose year read had no state");
+  // Neither read says: Couldn't check practice, with Try again and Exit.
+  const presenceRoute = `**/api/v1/school/classes/${created.class_id}/presence`;
+  await teacher.route(presenceRoute, async (route) => {
+    const response = await route.fetch();
+    const body = (await response.json()) as {
+      class: Record<string, unknown>;
+    };
+    delete body.class.practice;
+    await route.fulfill({ response, json: body });
+  });
   await teacher.goto(`${classUrl}/start`);
   await teacher
     .getByRole("heading", { name: "Couldn’t check practice" })
@@ -912,6 +1015,7 @@ try {
   await noCode("the board that couldn't check");
   await capture(teacher, "board-unknown");
   await teacher.unroute(yearRoute);
+  await teacher.unroute(presenceRoute);
   await teacher.getByRole("button", { name: "Try again" }).click();
   await teacher.getByRole("heading", { name: "Practice has ended" }).waitFor();
   // …and a failed pilot read.
@@ -940,6 +1044,12 @@ try {
     `${classApi}/students/${ana}/workbooks/${workbook}/pdf`,
   );
   assert.equal(pdf.status(), 200, "an issued workbook prints after practice");
+  const printed = await pdf.body();
+  assert.equal(printed.subarray(0, 5).toString(), "%PDF-", "a real PDF");
+  assert.ok(
+    (await PDFDocument.load(printed)).getPageCount() >= 1,
+    "the workbook prints at least one page",
+  );
   const mark = async (entries: { n: number; mark: "right" | "not-yet" }[]) => {
     const response = await teacher.request.post(
       `${classApi}/students/${ana}/workbooks/${workbook}/marks`,
@@ -965,6 +1075,7 @@ try {
   assert.equal(markOf(again.problems, 1), "right");
   assert.equal(markOf(again.problems, 2), "not-yet");
   // The student can't practice: the server refuses new problems (402).
+  await student.goto(`${origin}/site.webmanifest`);
   const denied = await student.evaluate(async (learner) => {
     const saved = JSON.parse(
       sessionStorage.getItem("amp.student") ??
@@ -982,14 +1093,6 @@ try {
     return response.status;
   }, anaLearner);
   assert.equal(denied, 402, "no new problems after practice ends");
-  const expired = await records(created.class_id);
-  kept(before, expired, "after practice");
-  const anaExpired = expired.find((row) => row.person === ana)!;
-  assert.equal(
-    anaExpired.attempts.length,
-    anaBefore.attempts.length + 2,
-    "the two paper marks are answers of the student's own",
-  );
   // Exports answer after practice ends (docs/schools.md, "When a school
   // pays"): the gradebook's CSV and the time CSV.
   await teacher.goto(`${classUrl}/gradebook`);
@@ -1020,6 +1123,10 @@ try {
   // A school's students have no free allowance to have used up.
   assert.equal(await count(teacher, /free workbooks/i), 0);
   await capture(teacher, "workbooks-expired");
+  // After expiry: the two paper marks are the only change, and they are
+  // Ana's answers of her own.
+  const expired = await records(created.class_id);
+  afterMarks(quiet, expired, ana, 2);
   // A student's next step says so, without a code to retry.
   await student.goto(`${origin}/practice`);
   await settled(student);
@@ -1033,6 +1140,32 @@ try {
     "no problem after practice ends",
   );
   await capture(student, "student-expired");
+  // Her visit counts its seconds on screen, and changes nothing else.
+  await student.goto("about:blank");
+  await timeSettled();
+  const visited = await records(created.class_id);
+  for (const [index, row] of visited.entries()) {
+    const was = expired[index]!;
+    const { days, ...rest } = row;
+    const { days: wasDays, ...wasRest } = was;
+    assert.deepEqual(
+      rest,
+      wasRest,
+      "a visit to a closed screen changes no record",
+    );
+    for (const day of wasDays)
+      assert.ok(
+        days.some(
+          (entry) =>
+            entry.day === day.day &&
+            entry.surface === day.surface &&
+            entry.skill === day.skill &&
+            Number(entry.ms) >= Number(day.ms),
+        ),
+        "earlier time kept",
+      );
+    if (row.person !== ana) assert.deepEqual(days, wasDays);
+  }
 
   // Paid: the school buys from the teacher's link; the same records, the
   // same students, practice back on.
@@ -1051,7 +1184,7 @@ try {
     .getByRole("heading", { name: "2 of 4 students have practice access" })
     .waitFor();
   await capture(teacher, "today-partial");
-  kept(expired, await records(created.class_id), "after partial payment");
+  same(visited, await records(created.class_id), "after partial payment");
   // Then the whole class.
   const license = (
     await db.query(
@@ -1083,27 +1216,35 @@ try {
     ana,
     "the same student, the same records",
   );
+  // Every student, learner, enrollment and record is the same one: paid
+  // coverage lands on the pilot's records, with nothing re-imported and
+  // nothing changed.
+  const paid = await records(created.class_id);
+  same(visited, paid, "after payment");
   await student.goto(`${origin}/practice`);
   await student.getByRole("button", { name: "Check", exact: true }).waitFor();
-  // Every student, learner, enrollment and record is the same one: paid
-  // coverage lands on the pilot's records, with nothing re-imported.
-  const paid = await records(created.class_id);
-  kept(expired, paid, "after payment");
-  assert.deepEqual(
-    paid.map((row) => row.attempts),
-    expired.map((row) => row.attempts),
-    "payment changes no answer",
-  );
-  // The paper marks read back after payment, as entered.
+  // The paper marks read back after payment: Ana's, on her workbook, by
+  // problem.
   const marksAfter = (await (
     await teacher.request.get(
       `${classApi}/workbooks/marks?date=${stack.today}&set=1`,
     )
-  ).json()) as unknown;
-  const marksText = JSON.stringify(marksAfter);
+  ).json()) as {
+    students: {
+      id: string;
+      workbook: {
+        id: string;
+        problems: { n: number; mark: string | null }[];
+      } | null;
+    }[];
+  };
+  const anaMarks = marksAfter.students.find((row) => row.id === ana)?.workbook;
+  assert.equal(anaMarks?.id, workbook, "her issued workbook");
+  assert.equal(markOf(anaMarks!.problems, 1), "right");
+  assert.equal(markOf(anaMarks!.problems, 2), "not-yet");
   assert.ok(
-    marksText.includes('"right"') && marksText.includes('"not-yet"'),
-    "the paper marks read back after payment",
+    anaMarks!.problems.filter((problem) => problem.mark !== null).length === 2,
+    "only the two marked problems",
   );
   assert.equal(
     (
@@ -1464,6 +1605,7 @@ try {
   for (const context of contexts) await context.close();
   await browser.close();
   await vite.close();
+  await renderer.close();
   await api.close();
   await learning.close();
   await admin.query(`DROP SCHEMA ${schema} CASCADE`);

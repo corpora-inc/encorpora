@@ -84,8 +84,12 @@ export type SpaceResources = {
     path?: readonly string[];
     name?: string | null;
     can?: readonly string[];
+    /** Whether its students can practice, for every reader of the class:
+     * the one state the sign-in board follows (SPEC R14). */
+    practice?: "open" | "waiting" | "ended";
   } | null;
-  /** Students covered by the class's running practice. */
+  /** Students covered by the class's running practice (an answer that
+   * doesn't carry `year.practice`, from an older server). */
   covered?: number;
   /** A lookup failed without a refusal (the network, a server error). */
   failed?: boolean;
@@ -894,13 +898,18 @@ function teachingSpace(
   const klass = onClass
     ? classes.find((entry) => entry.id === frame.classId)
     : undefined;
-  // Starting needs the class's sign-in board, where the server says so.
+  // Starting the class opens its sign-in board: the class's own capability
+  // to read it, and its students able to practice, as the server says for
+  // every reader (never a pilot only some roles may read).
   const start =
     onClass &&
     status === "ready" &&
     !past &&
     !!year?.can?.includes("signin.read") &&
-    (demo || (resources.covered ?? 0) > 0);
+    (demo ||
+      (year?.practice !== undefined
+        ? year.practice === "open"
+        : (resources.covered ?? 0) > 0));
   const tabs =
     status !== "ready" || !org
       ? []
