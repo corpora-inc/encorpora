@@ -1,0 +1,198 @@
+/* "Their own devices" (JoinWays.tsx): one path first. The QR, large; its
+   link with Copy and Share as one control; then Other ways, closed, which
+   opens below so nothing above it moves. */
+.ways {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  width: 100%;
+  min-width: 0;
+}
+.qr {
+  box-sizing: border-box;
+  width: min(280px, 100%);
+  aspect-ratio: 1;
+  height: auto;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-figure-paper);
+}
+.lead {
+  margin: 0;
+  color: var(--color-muted-text);
+  text-align: center;
+}
+
+/* The link and its actions, one bordered control: the link on its own
+   line, never wrapped (its size fits the line), then Copy and Share
+   sharing the row below. */
+.linkBox {
+  container-type: inline-size;
+  box-sizing: border-box;
+  display: grid;
+  width: min(420px, 100%);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+.link {
+  display: block;
+  box-sizing: border-box;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-on-surface);
+  /* About 0.6 em a character: the whole link fits the line at every width,
+     never larger than body text. */
+  font-size: min(
+    var(--text-body),
+    calc((100cqi - 2 * var(--space-4)) / (var(--chars, 30) * 0.6))
+  );
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  user-select: all;
+}
+.linkActs {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  border-top: 1px solid var(--color-border);
+}
+/* Two classes outrank the copy button's own look. */
+.linkActs .linkAct {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: var(--target-size);
+  margin: 0;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.linkActs .linkAct + .linkAct {
+  border-inline-start: 1px solid var(--color-border);
+}
+@media (hover: hover) {
+  .linkActs .linkAct:hover:not(:disabled) {
+    filter: none;
+    background: var(--color-secondary);
+  }
+  .toggle:hover {
+    background: var(--color-secondary);
+  }
+}
+.linkActs .linkAct:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.linkActs .linkAct[data-done="copied"] {
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.glyph {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Other ways: a quiet disclosure, then the ways themselves below it. */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--target-size);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  cursor: pointer;
+}
+.toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 160ms ease;
+}
+.toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.toggle:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.others {
+  display: grid;
+  gap: var(--space-4);
+  justify-self: stretch;
+  min-width: 0;
+}
+.others[hidden] {
+  display: none;
+}
+.way {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.wayTitle {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.codeBlock {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+}
+.codeLabel {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+/* The code in one face everywhere: tabular, spaced, with its dash. */
+.code {
+  font-size: 34px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  overflow-wrap: anywhere;
+}
+.note strong {
+  color: var(--color-on-surface);
+  white-space: nowrap;
+}

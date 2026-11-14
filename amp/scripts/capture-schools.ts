@@ -379,7 +379,7 @@ function screens(world: DemoWorld, pendingOrg: string): Screen[] {
       title: "Class code",
       who: "guest",
       path: "/join",
-      heading: "Type your class code",
+      heading: "Type your code",
     },
     {
       id: "join-names",

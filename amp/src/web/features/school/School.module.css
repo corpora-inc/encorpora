@@ -952,3 +952,21 @@ button.copyPrimary {
   margin: 0;
   line-height: 1.45;
 }
+/* A class's Settings: its code and Replace code, apart from the way in. */
+.replaceCode {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.replaceCode p {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.replaceCode strong {
+  color: var(--color-on-surface);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}

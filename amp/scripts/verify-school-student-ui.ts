@@ -438,7 +438,7 @@ try {
       slowJoin: 2000,
     });
     await page.waitForURL("**/join");
-    await page.getByRole("heading", { name: "Type your class code" }).waitFor();
+    await page.getByRole("heading", { name: "Type your code" }).waitFor();
     assert.equal(new URL(page.url()).pathname, "/join");
     assert.equal(
       await page.evaluate(() => sessionStorage.getItem("amp.student")),

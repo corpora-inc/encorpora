@@ -3,7 +3,7 @@ import { JoinClass } from "../../join/JoinClass";
 
 export type CodeProps = {
   place: { org: string; class: string };
-  words: Pick<SpaceWords, "names" | "signIn" | "Learners">;
+  words: Pick<SpaceWords, "names" | "signIn" | "Learners" | "Code">;
   /** Offer the full-screen code here: the bar doesn't. */
   board: boolean;
   manage: boolean;

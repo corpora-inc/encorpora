@@ -13,7 +13,7 @@ import {
   useResetPictures,
   useRevokeSessions,
 } from "../school/classes/api";
-import { JoinClass } from "../school/join/JoinClass";
+import { JoinWays } from "../school/join/JoinWays";
 import { peopleOf } from "./redirects";
 import { familyHref, type FamilyPlace } from "./FamilyFrame";
 import styles from "./Family.module.css";
@@ -27,10 +27,11 @@ type Pending = { kind: "reset" | "revoke"; person: string; name: string };
 
 /**
  * "Their own devices" (`?devices=1`): for children who practice on a device of
- * their own rather than the parent's. The code, its link and QR code, a new
- * code; printed sign-in cards; and, per child, new pictures or signing out
- * everywhere. Optional, never part of setup. Only the family's own children,
- * by the roster people of its own class.
+ * their own rather than the parent's. One path first: the QR and its link
+ * (JoinWays). Under Other ways, the family code to type, and printed
+ * sign-in cards with, per child, new pictures or signing out everywhere.
+ * Replacing the code is in Settings. Only the family's own children, by the
+ * roster people of its own class.
  */
 export function DevicesSheet({
   place,
@@ -63,9 +64,8 @@ export function DevicesSheet({
     people.has(row.id),
   );
   const code = presence.data?.class.joinCode ?? null;
-  // A new code is the class's: in a class that also holds other families'
-  // children it changes theirs too, so it lives in the tutoring group,
-  // where that scope is said.
+  // A new code is a setting (family Settings, or the tutoring group's
+  // when other families' children share the class), never in this sheet.
   const shared = !!data?.teachingPlace;
   const manage = !shared && (presence.data?.canManage ?? false);
   const confirm = async () => {
@@ -93,9 +93,14 @@ export function DevicesSheet({
   };
   return (
     <>
-      <Sheet open={open} onOpenChange={onOpenChange} title="Their own devices">
+      <Sheet
+        open={open}
+        onOpenChange={onOpenChange}
+        title="Their own devices"
+        tall
+      >
         <div className={styles.devices} data-devices-sheet="">
-          {presence.isPending || roster.isPending ? (
+          {presence.isPending || roster.isPending || !family ? (
             <div aria-busy="true" style={{ minHeight: 320 }} />
           ) : !code ? (
             <p className={styles.footnote}>
@@ -103,103 +108,115 @@ export function DevicesSheet({
             </p>
           ) : (
             <>
-              <JoinClass
+              <JoinWays
                 code={code}
-                place={where}
                 words={place.words}
-                heading={false}
-                boardLink={false}
-                cards={false}
-                manage={manage}
-                locked={!!presence.data?.class.joinLockedUntil}
-              />
-              {shared && presence.data?.canManage && (
-                <p className={styles.footnote} data-shared-code="">
-                  This code is your tutoring group’s too. A new one is made
-                  there, for everyone in the group.
-                </p>
-              )}
-              <section
-                aria-labelledby="devices-cards"
-                className={styles.section}
-              >
-                <div className={styles.sectionHead}>
-                  <h3 id="devices-cards">Sign-in cards</h3>
-                  <Link
-                    to="/$"
-                    params={{ _splat: familyHref(family, "cards") }}
-                    className={buttonClass("secondary")}
-                  >
-                    Print cards
-                  </Link>
-                </div>
-                <p className={styles.footnote}>
-                  A card signs a child in with one scan, with no code and no
-                  pictures.
-                </p>
-                <ul className={styles.deviceRows}>
-                  {rows.map((row) => (
-                    <li key={row.id} className={styles.deviceRow}>
-                      <span className={styles.deviceName}>
-                        {row.name}
-                        <small>
-                          {[
-                            row.cardIssuedAt
-                              ? `Card printed ${DAY.format(new Date(row.cardIssuedAt))}`
-                              : "No card",
-                            row.picturesSet
-                              ? "Pictures set"
-                              : "No pictures yet",
-                          ].join(" · ")}
-                        </small>
-                      </span>
-                      {roster.data?.canManage && (
-                        <Menu label="Manage" aria-label={`Manage ${row.name}`}>
-                          <MenuItem
-                            onSelect={() =>
-                              void navigate({
-                                to: "/$",
-                                params: { _splat: familyHref(family, "cards") },
-                                search: { student: row.id } as never,
-                              })
-                            }
-                          >
-                            {row.cardIssuedAt
-                              ? "Print a new card"
-                              : "Print a card"}
-                          </MenuItem>
-                          {row.picturesSet && (
-                            <MenuItem
-                              onSelect={() =>
-                                setPending({
-                                  kind: "reset",
-                                  person: row.id,
-                                  name: row.name,
-                                })
-                              }
-                            >
-                              New pictures
-                            </MenuItem>
-                          )}
-                          {row.activeSessions > 0 && (
-                            <MenuItem
-                              onSelect={() =>
-                                setPending({
-                                  kind: "revoke",
-                                  person: row.id,
-                                  name: row.name,
-                                })
-                              }
-                            >
-                              Sign out everywhere
-                            </MenuItem>
-                          )}
-                        </Menu>
+                notice={
+                  presence.data?.class.joinLockedUntil && (
+                    <p className={styles.footnote} role="status">
+                      Sign-in is paused after many wrong pictures.{" "}
+                      {manage ? (
+                        <Link
+                          to="/$"
+                          params={{ _splat: familyHref(family, "settings") }}
+                        >
+                          Replace the code in Settings
+                        </Link>
+                      ) : (
+                        "A new code opens it."
                       )}
-                    </li>
-                  ))}
-                </ul>
-              </section>
+                    </p>
+                  )
+                }
+                cards={
+                  <section
+                    aria-labelledby="devices-cards"
+                    className={styles.cardsWay}
+                  >
+                    <div className={styles.sectionHead}>
+                      <h3 id="devices-cards">Sign-in cards</h3>
+                      <Link
+                        to="/$"
+                        params={{ _splat: familyHref(family, "cards") }}
+                        className={buttonClass("secondary")}
+                      >
+                        Print cards
+                      </Link>
+                    </div>
+                    <p className={styles.footnote}>
+                      A card signs a child in with one scan, with no code and no
+                      pictures.
+                    </p>
+                    <ul className={styles.deviceRows}>
+                      {rows.map((row) => (
+                        <li key={row.id} className={styles.deviceRow}>
+                          <span className={styles.deviceName}>
+                            {row.name}
+                            <small>
+                              {[
+                                row.cardIssuedAt
+                                  ? `Card printed ${DAY.format(new Date(row.cardIssuedAt))}`
+                                  : "No card",
+                                row.picturesSet
+                                  ? "Pictures set"
+                                  : "No pictures yet",
+                              ].join(" · ")}
+                            </small>
+                          </span>
+                          {roster.data?.canManage && (
+                            <Menu
+                              label="Manage"
+                              aria-label={`Manage ${row.name}`}
+                            >
+                              <MenuItem
+                                onSelect={() =>
+                                  void navigate({
+                                    to: "/$",
+                                    params: {
+                                      _splat: familyHref(family, "cards"),
+                                    },
+                                    search: { student: row.id } as never,
+                                  })
+                                }
+                              >
+                                {row.cardIssuedAt
+                                  ? "Print a new card"
+                                  : "Print a card"}
+                              </MenuItem>
+                              {row.picturesSet && (
+                                <MenuItem
+                                  onSelect={() =>
+                                    setPending({
+                                      kind: "reset",
+                                      person: row.id,
+                                      name: row.name,
+                                    })
+                                  }
+                                >
+                                  New pictures
+                                </MenuItem>
+                              )}
+                              {row.activeSessions > 0 && (
+                                <MenuItem
+                                  onSelect={() =>
+                                    setPending({
+                                      kind: "revoke",
+                                      person: row.id,
+                                      name: row.name,
+                                    })
+                                  }
+                                >
+                                  Sign out everywhere
+                                </MenuItem>
+                              )}
+                            </Menu>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                }
+              />
             </>
           )}
         </div>

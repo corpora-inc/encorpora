@@ -1,6 +1,11 @@
 /* "Join this class" (JoinClass.tsx): the code in one face, the link with
    Copy, a QR for it, the board and cards. One element wherever children are
    brought in. */
+.full {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
 .join {
   display: grid;
   gap: var(--space-5);
