@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { measured } from "../../../learning/level-check";
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
@@ -61,7 +62,7 @@ function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
     ...known,
     ...Object.keys(frontier.strands).filter((id) => !known.includes(id)),
   ]
-    .filter((id) => (frontier.strands[id]?.answered ?? 0) > 0)
+    .filter((id) => measured(frontier.strands[id]))
     .map((id) => ({
       id,
       label: label(id),
@@ -75,6 +76,9 @@ function levelAreas(frontier: Frontier, data: OwnPractice): LevelRangeArea[] {
  * some. Nothing here names them: it is their own place. */
 export function OwnRecordScreen() {
   const session = currentSession();
+  // Opened before the first answer: this visit keeps the hero, whose bar
+  // takes the first estimate in place when it arrives (CP-5 #5).
+  const openedUnmeasured = useRef<boolean | null>(null);
   const record = useQuery(ownPracticeOptions(session));
   const data = record.data;
   const me = useQuery(meOptions(session)).data;
@@ -83,10 +87,9 @@ export function OwnRecordScreen() {
     ...learnerFrontierOptions(session, learnerId),
     enabled: !!data,
   });
-  const answered = frontier.data?.overall.answered ?? 0;
   const trend = useQuery({
     ...levelTrendOptions(session, learnerId),
-    enabled: !!data && answered > 0,
+    enabled: !!data && measured(frontier.data?.overall),
   });
   // Their free allowance, from the account's one store (`/me`).
   const own = me?.signedIn
@@ -129,11 +132,13 @@ export function OwnRecordScreen() {
       </OwnPage>
     );
   const level = frontier.data!;
-  const started = level.overall.answered > 0;
+  const started = measured(level.overall);
+  openedUnmeasured.current ??= !started;
+  const heroLayout = !started || openedUnmeasured.current;
   const shown = activityShown(data);
   // Before the first answer the page's own Start practicing is the one
   // Practice; after, the bar's is (one per screen).
-  const hero = !started && data.learner.active;
+  const hero = heroLayout && data.learner.active;
   const freeLine = left != null && left > 0 && (
     <span className={styles.free} data-free-left={left}>
       {freeProblemsLeft(left)}
@@ -151,7 +156,7 @@ export function OwnRecordScreen() {
   );
   // Day 0 (docs/design/ia.md, rule 7): one centred hero, its Start practicing
   // the only Practice on screen.
-  if (!started)
+  if (heroLayout)
     return (
       <OwnPage>
         <HeroAction active={hero} />
@@ -160,6 +165,11 @@ export function OwnRecordScreen() {
           <LevelRangeStart
             title="Where you are"
             heading={1}
+            found={
+              started
+                ? { estimate: level.overall, answered: level.overall.answered }
+                : null
+            }
             action={
               hero ? (
                 <Link
@@ -170,7 +180,7 @@ export function OwnRecordScreen() {
                   <svg viewBox="0 0 16 16" aria-hidden="true">
                     <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
                   </svg>
-                  Start practicing
+                  {started ? "Keep practicing" : "Start practicing"}
                 </Link>
               ) : undefined
             }

@@ -693,6 +693,10 @@ function meSpace(
         ? meTabs(
             own?.id ?? null,
             chosen?.kind === "own" && chosen.profile ? chosen.id : null,
+            chosen?.kind === "own" &&
+              chosen.profile &&
+              !!me?.practiceProfiles?.find((entry) => entry.id === chosen.id)
+                ?.level,
           )
         : [],
     bar: frame?.kind === "account" ? "plain" : base.bar,

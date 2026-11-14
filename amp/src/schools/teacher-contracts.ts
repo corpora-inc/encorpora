@@ -35,7 +35,13 @@ export const classSummary = z.object({
 export type ClassSummary = z.infer<typeof classSummary>;
 const person = z.object({ id, name: z.string() });
 
-export const estimateResource = z.object({ level: z.number(), sd: z.number() });
+export const estimateResource = z.object({
+  level: z.number(),
+  sd: z.number(),
+  /** Answers behind it (the overall estimate): none means not measured
+   * yet (`measured`, learning/level-check.ts). */
+  answered: z.number().int().nonnegative().optional(),
+});
 export const studentLevelResource = z.object({
   overall: estimateResource,
   strands: z.record(z.string(), estimateResource),

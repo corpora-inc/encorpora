@@ -831,7 +831,7 @@ async function journeys(browser: Browser, engine: string) {
     );
 
     if (engine === "chromium") {
-      // "Scan my card", in place: a real QR on a camera, read by jsQR here.
+      // "Scan your card", in place: a real QR on a camera, read by jsQR here.
       const scan = await open();
       const { cards } = await staff("POST", `classes/${cohort.id}/cards`, {
         personIds: [jo.personId],
@@ -882,7 +882,7 @@ async function journeys(browser: Browser, engine: string) {
         await new Promise((done) => setTimeout(done, 600));
         await route.continue();
       });
-      await tap(scan.page, "Scan my card");
+      await tap(scan.page, "Scan your card");
       await scan.page.waitForURL("**/practice", { timeout: 25_000 });
       await firstProblem(scan.page);
       const { cls: scanShift } = await shellRecord(scan.page);
@@ -919,7 +919,7 @@ async function journeys(browser: Browser, engine: string) {
         };
         const titleBefore = await title();
         const buttonBefore = await boxes(viewing.page, "button");
-        await tap(viewing.page, "Scan my card");
+        await tap(viewing.page, "Scan your card");
         await heading(viewing.page, "Hold up your card").waitFor();
         await viewing.page.locator("video").waitFor();
         await settled(viewing.page);
@@ -957,7 +957,7 @@ async function journeys(browser: Browser, engine: string) {
       await settled(denied.page);
       await resetRecord(denied.page);
       const beforeDenied = await boxes(denied.page, "h1, label, button");
-      await tap(denied.page, "Scan my card");
+      await tap(denied.page, "Scan your card");
       await denied.page.getByText("The camera is off").waitFor();
       await settled(denied.page);
       sameBoxes(

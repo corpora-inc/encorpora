@@ -21,16 +21,19 @@ function sources(dir: string): string[] {
 }
 
 /** Words a person says or posts as themselves, never product chrome:
- * `file: the text's start`. */
-const USER_CONTENT = [
+ * `file: the exact text`. */
+const USER_CONTENT = new Set([
   // The share card a learner posts in their own voice.
   "features/pathways/share-image.ts: My math",
-  // The statement a teacher signs, in the first person.
-  "features/school/pilots/Authorization.tsx: My school authorizes me",
-];
+  "features/pathways/share-image.ts: An estimate from my practice so far.",
+]);
+/** The statement a teacher signs, in the first person: one exact
+ * sentence, whatever follows it in the same text. */
+const SIGNED =
+  "features/school/pilots/Authorization.tsx: My school authorizes me to use AMP with this class, and I accept the";
 
-/** Every string and JSX text that starts with "My" or "my": chrome says
- * what a thing is, never "My …" (founder, Q-204). */
+/** Every string, template part and JSX text with "my" in it, anywhere:
+ * chrome says what a thing is, never "My …" or "… my …" (founder, Q-204). */
 function startsWithMy(file: string) {
   const source = ts.createSourceFile(
     file,
@@ -44,7 +47,9 @@ function startsWithMy(file: string) {
     const text =
       ts.isStringLiteral(node) ||
       ts.isNoSubstitutionTemplateLiteral(node) ||
-      ts.isTemplateHead(node)
+      ts.isTemplateHead(node) ||
+      ts.isTemplateMiddle(node) ||
+      ts.isTemplateTail(node)
         ? node.text
         : ts.isJsxText(node)
           ? node.getText()
@@ -52,7 +57,7 @@ function startsWithMy(file: string) {
     // Imports and module names are not words anyone reads.
     if (
       text !== null &&
-      /^\s*my\s+\S/i.test(text) &&
+      /(^|[^\p{L}\p{N}_-])my\s+\S/iu.test(text) &&
       !ts.isImportDeclaration(node.parent) &&
       !ts.isExternalModuleReference(node.parent)
     )
@@ -63,13 +68,13 @@ function startsWithMy(file: string) {
   return found;
 }
 
-test("no product chrome in src/web starts with “My”", () => {
+test("no product chrome in src/web says “my”", () => {
   const files = sources(web);
   expect(files.length).toBeGreaterThan(100);
   const offenders = files.flatMap((file) =>
     startsWithMy(file)
       .map((text) => `${relative(web, file)}: ${text}`)
-      .filter((entry) => !USER_CONTENT.some((own) => entry.startsWith(own))),
+      .filter((entry) => !USER_CONTENT.has(entry) && entry !== SIGNED),
   );
   expect(offenders).toEqual([]);
 });
@@ -79,6 +84,8 @@ test("the check finds “My” in strings and JSX text, and only there", () => {
   expect(startsWithMy(sample)).toEqual([
     "My practice",
     "my levels",
+    "Keep my settings",
+    "for my child",
     "My class",
   ]);
 });

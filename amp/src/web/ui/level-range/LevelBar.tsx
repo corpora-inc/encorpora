@@ -113,6 +113,34 @@ export function LevelBar({
   );
 }
 
+/**
+ * In a column of learners where others are measured, one with no answers
+ * yet: no bar (a range would claim a place on a scale fitted to the others),
+ * only a calm "?" pill where the bar would be, at the bar's own height.
+ */
+export function LevelNotStarted({
+  label,
+  size = "regular",
+}: {
+  /** What it says, in the space's words: "Not started". */
+  label: string;
+  size?: "regular" | "large";
+}) {
+  return (
+    <span
+      className={`${styles.bar} ${styles[size]} ${styles.notStarted}`}
+      data-level-not-started=""
+    >
+      <span className={styles.pill}>
+        <span className={styles.pillMark} aria-hidden="true">
+          ?
+        </span>
+        {label}
+      </span>
+    </span>
+  );
+}
+
 /** The order labels claim their place: both ends, then every other grade
  * back from the end, then the rest. */
 function labelPriority(count: number) {

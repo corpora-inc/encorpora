@@ -334,7 +334,11 @@ const mapLevel = (row: StoredLevel | undefined) => ({
   provisional: !row || row.overall.answered < PROVISIONAL_ANSWERS,
   level: row
     ? {
-        overall: { level: row.overall.level, sd: row.overall.sd },
+        overall: {
+          level: row.overall.level,
+          sd: row.overall.sd,
+          answered: row.overall.answered,
+        },
         strands: Object.fromEntries(
           Object.entries(row.strands).map(([id, { level, sd }]) => [
             id,
@@ -837,7 +841,11 @@ export async function readProgress(
   return {
     level: level
       ? {
-          overall: { level: level.overall.level, sd: level.overall.sd },
+          overall: {
+            level: level.overall.level,
+            sd: level.overall.sd,
+            answered: level.overall.answered,
+          },
           strands: Object.fromEntries(
             Object.entries(level.strands).map(([id, { level: at, sd }]) => [
               id,

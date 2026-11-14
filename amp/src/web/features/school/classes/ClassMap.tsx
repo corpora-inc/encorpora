@@ -1,4 +1,5 @@
 import type { SpaceWords } from "../../spaces/words";
+import { measured } from "../../../../learning/level-check";
 import { EntityLink } from "../../../nav/links";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
@@ -15,6 +16,7 @@ import {
   fitScale,
   LevelAxis,
   LevelBar,
+  LevelNotStarted,
   LevelRows,
   likelyRange,
   type Estimate,
@@ -38,6 +40,9 @@ type Placed = {
 };
 
 function place(student: MapStudent, lens: string): Placed {
+  // No answers yet: not measured, whatever a served batch stored (Q-201).
+  if (!measured(student.level?.overall))
+    return { student, estimate: null, estimated: true };
   const known =
     lens === "overall"
       ? student.level?.overall
@@ -54,11 +59,17 @@ function place(student: MapStudent, lens: string): Placed {
 }
 
 /** The scale for a set of placed rows: every measured row's whole likely
- * range and every own-grade stripe; before anyone is measured, the whole
- * curriculum, as a level not yet measured spans it. */
-function placedScale(rows: readonly Placed[], minSpan: number): RangeScale {
-  const measured = rows.flatMap((row) => row.estimate ?? []);
+ * range and every measured learner's own-grade stripe. Before anyone is
+ * measured, the whole curriculum, each row a "?" across it. Once someone is,
+ * the scale fits them: a learner not started yet shows a pill, never a bar,
+ * so one new student never flattens everyone else's (CP-5 #4). */
+export function placedScale(
+  rows: readonly Pick<Placed, "estimate" | "estimated" | "student">[],
+  minSpan: number,
+): RangeScale {
+  const measured = rows.filter((row) => row.estimate);
   if (!measured.length) return WHOLE_SCALE;
+  rows = measured;
   return fitScale(
     rows.flatMap((row) =>
       row.estimate && (!row.estimated || row.estimate.sd <= UNKNOWN_SD)
@@ -126,6 +137,9 @@ export function ClassMap({
   // its band against an end, with its dot inside.
   const scale = useMemo(() => placedScale(placed, 4), [placed]);
   const starting = placed.every((row) => row.estimated);
+  // Before anyone has answered, each row is a "?" across the whole scale;
+  // after, a learner not started yet is a pill on a scale fitted to the rest.
+  const nobody = placed.every((row) => !row.estimate);
   const sort = parseSort(search.sort);
   const byName = sort?.column === "student";
   const direction = sort?.direction ?? (byName ? "ascending" : "descending");
@@ -261,19 +275,24 @@ export function ClassMap({
               className={styles.bar}
               aria-label={`${row.student.first}: ${reading(row)}`}
             >
-              <LevelBar
-                estimate={row.estimate}
-                scale={scale}
-                band={
-                  row.student.reference
-                    ? [row.student.reference.from, row.student.reference.to]
-                    : null
-                }
-                estimated={row.estimated}
-              />
+              {!row.estimate && !nobody ? (
+                <LevelNotStarted label={NOT_STARTED} />
+              ) : (
+                <LevelBar
+                  estimate={row.estimate}
+                  scale={scale}
+                  band={
+                    row.student.reference
+                      ? [row.student.reference.from, row.student.reference.to]
+                      : null
+                  }
+                  estimated={row.estimated}
+                />
+              )}
             </span>
             <span role="cell" className={styles.numbers}>
-              {!row.estimate || row.estimated ? (
+              {!row.estimate && !nobody ? null : !row.estimate ||
+                row.estimated ? (
                 <span className={styles.notYet}>
                   {!row.estimate
                     ? "Not yet"
@@ -294,6 +313,8 @@ export function ClassMap({
   );
 }
 
+/** A learner with no answers among measured ones, in place of a bar. */
+const NOT_STARTED = "Not started";
 /** Up to this many learners, the map shows each one whole. */
 const SMALL_CLASS = 6;
 /** The curriculum's order of areas, for each learner's rows. */
@@ -350,6 +371,7 @@ function SmallClassMap({
         })
       : [],
   }));
+  const nobody = learners.every((learner) => !learner.overall.estimate);
   const scale: RangeScale = placedScale(
     learners.flatMap((learner) => [
       learner.overall,
@@ -400,6 +422,9 @@ function SmallClassMap({
             </div>
             <LevelRows
               overall={overall.estimate}
+              notStarted={nobody ? undefined : NOT_STARTED}
+              // A pill needs no scale under it.
+              axis={!!overall.estimate || nobody}
               overallEstimated={overall.estimated}
               areas={learner.areas}
               scale={scale}

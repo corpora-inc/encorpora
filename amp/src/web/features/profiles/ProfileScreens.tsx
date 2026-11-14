@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
+  Navigate,
   useNavigate,
   useParams,
   useSearch,
@@ -410,6 +411,18 @@ export function EditProfileScreen() {
       <main className={styles.page}>
         <LoadingScreen overlay />
       </main>
+    );
+  // Practice at a level's profile is chosen again where it was chosen.
+  if (profile?.level)
+    return (
+      <Navigate
+        to="/$"
+        params={{ _splat: "me/level" }}
+        search={
+          { grade: profile.level.grade, pace: profile.level.pace } as never
+        }
+        replace
+      />
     );
   if (!profile)
     return (

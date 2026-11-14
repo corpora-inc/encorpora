@@ -170,12 +170,17 @@ export function learnerTabs(): TabItem[] {
 export function meTabs(
   ownLearner: string | null,
   profile: string | null = null,
+  /** The profile is Practice at a level's: its level is chosen again on
+   * `/me/level`, never in a saved profile's editor. */
+  levelMode = false,
 ): TabItem[] {
   if (profile) {
     const as = { search: { profile } };
     return [
       { ...tab("practice", "Practice", "practice", true), ...as },
-      tab("levels", "Levels", `me/profiles/${profile}`, true),
+      levelMode
+        ? tab("levels", "Level", "me/level", true)
+        : tab("levels", "Levels", `me/profiles/${profile}`, true),
       { ...tab("pathways", "Pathways", "pathways", true), ...as },
       { ...tab("inventory", "Inventory", "inventory"), ...as },
       tab("profiles", "Profiles", "me/profiles"),
