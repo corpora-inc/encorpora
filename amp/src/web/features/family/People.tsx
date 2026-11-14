@@ -11,7 +11,10 @@ import { Toast } from "../../ui/Toast";
 import { approvalsOptions } from "../family-approval/api";
 import { calendarOptions, orgOptions } from "../school/api";
 import { EditSheet } from "../school/CalendarScreen";
-import { CoTeacherInviteSheet, CoTeacherRows } from "../school/classes/CoTeachers";
+import {
+  CoTeacherInviteSheet,
+  CoTeacherRows,
+} from "../school/classes/CoTeachers";
 import {
   OtherFamilyAccessSheet,
   OtherFamilyAddSheet,
@@ -29,7 +32,12 @@ import type { ApprovalRowResource } from "../../../family/approval-contracts";
 import { familyTeachingOptions, saveProfile } from "./api";
 import { AddKidsSheet } from "./AddKids";
 import { DevicesSheet } from "./Devices";
-import { FamilyFrame, familyHref, useFamilyPlace, type FamilyPlace } from "./FamilyFrame";
+import {
+  FamilyFrame,
+  familyHref,
+  useFamilyPlace,
+  type FamilyPlace,
+} from "./FamilyFrame";
 import styles from "./Family.module.css";
 
 /** A boolean address key (`?devices=1`), and the way to set it: an opened
@@ -356,7 +364,10 @@ export function FamilyPeopleScreen() {
  * grading periods: a family's records run the whole year. */
 function SchoolYear({ place }: { place: FamilyPlace }) {
   const { session, family } = place;
-  const org = useQuery({ ...orgOptions(session, family), enabled: !!place.own });
+  const org = useQuery({
+    ...orgOptions(session, family),
+    enabled: !!place.own,
+  });
   const calendar = useQuery({
     ...calendarOptions(session, family),
     enabled: !!place.own && !!org.data?.can?.includes("calendar.read"),
@@ -382,7 +393,10 @@ function SchoolYear({ place }: { place: FamilyPlace }) {
           </div>
           <div className={styles.settingAction}>
             {calendar.isError ? (
-              <Button variant="secondary" onClick={() => void calendar.refetch()}>
+              <Button
+                variant="secondary"
+                onClick={() => void calendar.refetch()}
+              >
                 Try again
               </Button>
             ) : (
@@ -589,6 +603,7 @@ export function TutoringGroupScreen() {
                 const row = rows.find((entry) => entry.personId === student.id);
                 return row ? (
                   <OtherFamilyRow
+                    offerTalk={false}
                     key={student.id}
                     row={row}
                     session={session}
@@ -623,6 +638,7 @@ export function TutoringGroupScreen() {
                 )
                 .map((row) => (
                   <OtherFamilyRow
+                    offerTalk={false}
                     key={row.id}
                     row={row}
                     session={session}
@@ -652,7 +668,11 @@ export function TutoringGroupScreen() {
                 Co-teachers
               </h2>
               <ul className={`${rowStyles.children} ${people.rows}`}>
-                <CoTeacherRows session={session} orgId={family} onError={setError} />
+                <CoTeacherRows
+                  session={session}
+                  orgId={family}
+                  onError={setError}
+                />
               </ul>
               {can.manageStaff && (
                 <div className={people.actions}>
