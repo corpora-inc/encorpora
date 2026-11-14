@@ -49,6 +49,11 @@ test("CP-2 H2: a learner this account doesn't read is unavailable, not the previ
   expect(useLearnerStore.getState().learnerId).toBe("wren");
 });
 
+test("an empty ?learner= names nobody: the device's choice stands", async () => {
+  await adoptPracticeMode(at({ learner: "" }));
+  expect(useLearnerStore.getState().learnerId).toBe("wren");
+});
+
 test("CP-2 H2: a profile outranks ?learner= when both are in the address", async () => {
   await adoptPracticeMode(at({ profile: "grade-4", learner: "pip" }));
   expect(useLearnerStore.getState().learnerId).toBe("grade-4");

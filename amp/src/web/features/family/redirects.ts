@@ -1,5 +1,6 @@
 import type { SignedInMe } from "../../../account/contracts";
 import type { FamilyPlaces } from "../../../family/projection-contracts";
+import { appReturn } from "../spaces/returns";
 import {
   OPEN_KEY,
   readStack,
@@ -43,7 +44,6 @@ export type FamilyTarget = {
   /** The new address, with its leading slash. */
   to: string;
   search: Search;
-  hash?: string;
 };
 
 const pick = (search: Search, keys: readonly string[]) =>
@@ -95,6 +95,31 @@ const withOpen = (search: Search, stack: Entity[]) => {
   return open ? { ...search, [OPEN_KEY]: open } : search;
 };
 
+/**
+ * A target through the one return contract (`appReturn`,
+ * docs/architecture/spaces.md "Returns"): only the search keys that describe
+ * a view survive, a layer stack is revalidated, and the fragment, where a
+ * link's secret lives, is never carried. `opens` adds what the new screen
+ * opens itself (the devices sheet).
+ */
+function viaReturn(
+  to: string,
+  search: Search,
+  opens: Search = {},
+): FamilyTarget {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(search))
+    if (typeof value === "string" || typeof value === "number")
+      query.set(key, String(value));
+  const text = query.toString();
+  const kept = appReturn(text ? `${to}?${text}` : to);
+  const url = new URL(kept ?? to, "https://amp.invalid");
+  return {
+    to: url.pathname,
+    search: { ...Object.fromEntries(url.searchParams), ...opens },
+  };
+}
+
 /** The family screen an old class leaf opens. */
 function leafFor(parts: readonly string[]): {
   leaf: string;
@@ -139,117 +164,94 @@ function leafFor(parts: readonly string[]): {
 
 /**
  * Where `/school/<family>/classes/<class>/<parts…>` opens now, for a parent
- * of that family. Everything the old screen read in its address comes along:
- * its layers (a child by their roster person becomes the child's page), its
- * query keys and its hash.
+ * of that family, through the one return contract: the layers (a child by
+ * their roster person becomes the child's page) and the view keys the old
+ * screen read come along; the fragment never does.
  */
 export function familyClassTarget({
   family,
   parts,
   search,
-  hash,
   people,
 }: {
   family: string;
   parts: readonly string[];
   search: Search;
+  /** Read, never carried: a fragment is where a link's secret lives. */
   hash?: string;
   people: PersonMap;
 }): FamilyTarget {
   const target = leafFor(parts);
   const { learner, rest, foreign } = childOf(search[OPEN_KEY], people);
   const named = target.person ? (people.get(target.person) ?? null) : null;
-  const hashPart = hash ? { hash } : {};
   // A child named in the path: their page, with the one answer opened.
   if (target.person) {
+    const answer = target.attempt
+      ? [{ kind: "work" as const, id: `${target.person}.${target.attempt}` }]
+      : [];
     if (!named)
-      return {
-        to: familyPath(family, "group"),
-        search: withOpen(
-          {},
-          [
-            { kind: "student", id: target.person },
-            ...(target.attempt
-              ? [
-                  {
-                    kind: "work" as const,
-                    id: `${target.person}.${target.attempt}`,
-                  },
-                ]
-              : []),
-          ],
-        ),
-        ...hashPart,
-      };
-    return {
-      to: familyPath(family, `kids/${named}`),
-      search: withOpen(
-        pick(search, ["skill"]),
-        target.attempt
-          ? [{ kind: "work", id: `${target.person}.${target.attempt}` }]
-          : [],
-      ),
-      ...hashPart,
-    };
+      return viaReturn(
+        familyPath(family, "group"),
+        withOpen({}, [{ kind: "student", id: target.person }, ...answer]),
+      );
+    return viaReturn(
+      familyPath(family, `kids/${named}`),
+      withOpen(pick(search, ["skill"]), answer),
+    );
   }
   // Another family's child: their tutoring group, with the same layers.
   if (foreign)
-    return {
-      to: familyPath(family, "group"),
-      search: withOpen({}, rest),
-      ...hashPart,
-    };
+    return viaReturn(familyPath(family, "group"), withOpen({}, rest));
   if (learner)
-    return {
-      to: familyPath(family, `kids/${learner}`),
-      search: withOpen(pick(search, ["skill"]), rest),
-      ...hashPart,
-    };
+    return viaReturn(
+      familyPath(family, `kids/${learner}`),
+      withOpen(pick(search, ["skill"]), rest),
+    );
   const keys =
     CARRIED[target.leaf] ??
     (target.leaf.startsWith("workbooks")
       ? Object.keys(search).filter((key) => key !== OPEN_KEY)
       : []);
-  return {
-    to: familyPath(family, target.leaf),
-    search: withOpen(
-      {
-        ...pick(search, keys),
-        ...(target.devices ? { devices: 1 } : {}),
-      },
-      rest,
-    ),
-    ...hashPart,
-  };
+  // What the screen opens itself: the devices sheet, and a workbook
+  // stack's chosen children (person ids, bounded).
+  const devices =
+    target.devices || search.devices === 1 || search.devices === "1";
+  const students =
+    target.leaf.startsWith("workbooks") &&
+    typeof search.students === "string" &&
+    search.students.length <= 1000 &&
+    /^[0-9a-f,-]+$/i.test(search.students)
+      ? { students: search.students }
+      : {};
+  return viaReturn(
+    familyPath(family, target.leaf),
+    withOpen(pick(search, keys), rest),
+    {
+      ...(devices && target.leaf !== "settings" ? { devices: 1 } : {}),
+      ...students,
+    },
+  );
 }
 
 /** A school-level page of a family's org (`/school/<family>/<page>`): the
- * family's own equivalent. */
+ * family's own equivalent, through the one return contract. */
 export function familyOrgTarget({
   family,
   page,
   search,
-  hash,
 }: {
   family: string;
   page: "roster" | "map" | "settings" | "today";
   search: Search;
   hash?: string;
 }): FamilyTarget {
-  const leaf = { roster: "people", map: "map", settings: "settings", today: "" }[
-    page
-  ];
-  const open = readStack(search[OPEN_KEY]);
-  return {
-    to: familyPath(family, leaf),
-    search: withOpen(
-      Object.fromEntries(
-        Object.entries(search).filter(([key]) => key !== OPEN_KEY),
-      ),
-      open,
-    ),
-    ...(hash ? { hash } : {}),
-  };
+  const leaf = {
+    roster: "people",
+    map: "map",
+    settings: "settings",
+    today: "",
+  }[page];
+  return viaReturn(familyPath(family, leaf), search);
 }
 
 /** The person→learner map of a family's own children in its class. */
@@ -277,4 +279,3 @@ export function landingFamily(places: FamilyPlaces | null | undefined) {
   if (own) return own.familyId;
   return parents.length === 1 ? parents[0]!.familyId : null;
 }
-

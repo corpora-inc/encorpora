@@ -72,6 +72,7 @@ import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { familyRoutes } from "./family-routes";
+import { RETURN_LIMIT } from "../features/spaces/returns";
 import { toFamilyAddress } from "./family-redirect";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
@@ -110,8 +111,9 @@ const searchSchema = z
       ])
       .optional()
       .catch(undefined),
-    /** Where a school sign-in continues; `continuationSearch` checks it. */
-    next: z.string().max(300).optional().catch(undefined),
+    /** Where a sign-in continues; `continuationSearch` holds it to the one
+     * return contract (`appReturn`). */
+    next: z.string().max(RETURN_LIMIT).optional().catch(undefined),
     entry: signupEntrySchema.optional().catch(undefined),
     program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),

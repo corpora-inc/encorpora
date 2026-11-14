@@ -123,7 +123,7 @@ export async function adoptPracticeMode(
   // a refresh, Back or a second tab keeps that person. A learner this
   // account doesn't read is unavailable, never the previous one instead.
   const whose = location.search[LEARNER_KEY];
-  if (typeof whose === "string") {
+  if (typeof whose === "string" && whose !== "") {
     const reads =
       whose === own ||
       me.learners.some((learner) => learner.id === whose) ||
@@ -133,7 +133,7 @@ export async function adoptPracticeMode(
     if (!reads)
       throw new AppError(
         "permission",
-        "This learner isn’t available to your account. Choose someone from the menu.",
+        "This learner isn’t available to your account.",
         false,
       );
     if (!preloading && store.learnerId !== whose) store.select(whose);
