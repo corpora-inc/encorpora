@@ -214,8 +214,8 @@ async function hint(page: Page, what: string) {
   assert.ok(name, `${what}: the top layer names where X returns`);
   assert.match(
     (await back.getAttribute("aria-label")) ?? "",
-    /^Close, back to /,
-    `${what}: the hint is the close`,
+    /^Back to /,
+    `${what}: the hint steps back`,
   );
 }
 
@@ -522,8 +522,8 @@ async function hintFits(skillId: string, templateId: string) {
     );
     assert.ok(box.height >= 44, `${width}: the hint is a 44 px target`);
     assert.ok(
-      title.x >= 0 && title.x + title.width <= box.x,
-      `${width}: the title is whole and clear of the hint`,
+      title.x >= 0 && title.y >= box.y + box.height - 1,
+      `${width}: the title is whole, on its own line under the hint`,
     );
     const spill = await page.evaluate(
       () => document.documentElement.scrollWidth - innerWidth,
@@ -616,7 +616,8 @@ try {
   const api = await browser.newContext();
   const catalog = (await (
     await api.request.get(`${origin}/api/v1/catalog`)
-  ).json()) as { templates: { id: string; skillId: string }[];
+  ).json()) as {
+    templates: { id: string; skillId: string }[];
     skills: { id: string; title: string }[];
   };
   await api.close();

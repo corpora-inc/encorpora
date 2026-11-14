@@ -20,6 +20,7 @@ import { skillCatalogOptions } from "../lib/learning-view";
 import { sessionOptions } from "../lib/query";
 import { staffOnly, workParts, type Entity } from "./entities";
 import { useLayers } from "./links";
+import { LayerBackProvider, useLayerBack } from "../ui/LayerControls";
 import { SkillLayer } from "./SkillLayer";
 import { AreaLayer, areaSourceOf, OVERALL, type AreaSource } from "./AreaLayer";
 import { strandNames } from "../BirthYearPrompt";
@@ -57,7 +58,7 @@ export function LayerHost({
   /** In a skill: what this page offers with it (try a problem). */
   skillActions?: (skill: string) => ReactNode;
 }) {
-  const { stack, close } = useLayers();
+  const { stack, close, closeAll } = useLayers();
   const shown = (
     org ? stack : stack.filter((entity) => !staffOnly(entity.kind))
   ).filter((entity) => !allow || allow(entity));
@@ -70,9 +71,17 @@ export function LayerHost({
     else if (depth > Math.max(1, shown.length))
       setDepth(Math.max(1, shown.length));
   }, [depth, shown.length]);
-  return shown
-    .slice(0, depth)
-    .map((entity, index) => (
+  return shown.slice(0, depth).map((entity, index) => (
+    // Each layer's back steps one layer; its close, Escape and scrim put
+    // the whole stack away.
+    <LayerBackProvider
+      value={close}
+      key={
+        entity.kind === "work" || entity.kind === "own-work"
+          ? `${index}:work`
+          : `${index}:${entity.kind}:${entity.id}`
+      }
+    >
       <Layer
         key={
           entity.kind === "work" || entity.kind === "own-work"
@@ -84,12 +93,13 @@ export function LayerHost({
         above={shown.slice(index + 1)}
         org={org}
         learner={learner}
-        close={close}
+        close={closeAll}
         lessonActions={lessonActions}
         skillActions={skillActions}
         area={area}
       />
-    ));
+    </LayerBackProvider>
+  ));
 }
 
 function Layer({
@@ -114,6 +124,8 @@ function Layer({
   area?: AreaSource;
 }) {
   const classId = (useParams({ strict: false }) as { class?: string }).class;
+  // A replayed answer's own X steps back one layer, as it always has.
+  const stepBack = useLayerBack();
   const search = useSearch({ strict: false }) as { skill?: unknown };
   // Where X returns: the layer under this one, named quietly in its header.
   const back = useLayerTitle(below.at(-1));
@@ -199,7 +211,7 @@ function Layer({
           student=""
           attempt={entity.id}
           skill={workSkill(search.skill)}
-          layer={{ close, covered: above.length > 0 }}
+          layer={{ close: stepBack ?? close, covered: above.length > 0 }}
         />
       );
     case "work": {
@@ -209,7 +221,7 @@ function Layer({
           student={student}
           attempt={attempt}
           skill={workSkill(search.skill)}
-          layer={{ close, covered: above.length > 0 }}
+          layer={{ close: stepBack ?? close, covered: above.length > 0 }}
         />
       );
     }

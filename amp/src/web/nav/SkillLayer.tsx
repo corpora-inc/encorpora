@@ -6,6 +6,7 @@ import {
   bandLabel,
   illumination,
   neighborhood,
+  neighborhoods,
 } from "../features/pathways/model";
 import { FilmCards } from "../features/films/FilmCards";
 import { skillFilms } from "../features/films/skill-films";
@@ -88,7 +89,13 @@ export function SkillLayer({
       }}
       title={found?.title ?? "Skill"}
       back={back}
-      description={found ? bandLabel(found.gradeBand) : undefined}
+      // Its grade or course, and its area: a probability skill in the
+      // Geometry course reads "Geometry · Data & probability".
+      description={
+        found
+          ? `${bandLabel(found.gradeBand)} · ${neighborhoods[neighborhood(found)]!.title}`
+          : undefined
+      }
     >
       {!catalog.data ? (
         catalog.isError ? (

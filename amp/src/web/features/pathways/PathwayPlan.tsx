@@ -110,14 +110,26 @@ export function PathwayPlan({
     if (ready && ownBand === undefined) setOwnBand(firstHere ?? "");
   }, [ready, firstHere]);
   const [choices, setChoices] = useState(savedChoices);
-  const isOpen = (band: string) => choices[band] ?? band === ownBand;
-  const choose = (band: string, open: boolean) =>
+  // Bands opened for a skill chosen in them: open for this visit only, so
+  // following a few links never leaves the device's view unfolded.
+  const [revealed, setRevealed] = useState<ReadonlySet<string>>(new Set());
+  const isOpen = (band: string) =>
+    revealed.has(band) || (choices[band] ?? band === ownBand);
+  /** A person opening or folding a band: remembered on the device. */
+  const choose = (band: string, open: boolean) => {
+    if (!open && revealed.has(band))
+      setRevealed((current) => {
+        const next = new Set(current);
+        next.delete(band);
+        return next;
+      });
     setChoices((current) => {
       if ((current[band] ?? band === ownBand) === open) return current;
       const next = { ...current, [band]: open };
       saveChoices(next);
       return next;
     });
+  };
   /** The band a skill sits in on this view (an unknown band sits with the
    * first, as `planRows` places it). */
   const bandOf = (id: string) =>
@@ -135,7 +147,9 @@ export function PathwayPlan({
     const band = bandOf(id);
     if (!band) return;
     pending.current = id;
-    choose(band, true);
+    setRevealed((current) =>
+      current.has(band) ? current : new Set(current).add(band),
+    );
   };
   useLayoutEffect(() => {
     if (selected && ready) reveal(selected);
